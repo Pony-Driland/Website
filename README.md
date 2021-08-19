@@ -13,3 +13,24 @@ You can check the progress of the project's development in this readme.
 
 ## A little about the Project Theme
 
+### Age Rating (Age 13 and Above)
+
+Adventure
+
+Action
+
+Drama
+
+Comedy
+
+Fantasy Violence
+
+Intense Violence
+
+Strong Language
+
+Animated Blood
+
+Horror (A little)
+
+<hr/>
