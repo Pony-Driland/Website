@@ -17,22 +17,6 @@ You can check the progress of the project's development in this readme.
 
 <img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/website/img/age-rating.jpg?raw=true" height="200" />
 
-Adventure
-
-Action
-
-Drama
-
-Comedy
-
-Fantasy Violence
-
-Intense Violence
-
-Strong Language
-
-Animated Blood
-
-Horror (A little)
+Adventure | Action | Drama | Comedy | Fantasy Violence | Intense Violence | Strong Language | Animated Blood | Horror (A little)
 
 <hr/>
