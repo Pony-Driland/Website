@@ -34,6 +34,17 @@ Adventure | Action | Drama | Comedy | Fantasy Violence | Intense Violence | Stro
 
 <hr/>
 
+## Where are the cutie marks?
+Don't worry about it. Cutie Marks do not exist in this fanfic.
+
+<hr/>
+
+## Progress
+
+Chapter 1 - 90% Complete
+
+<hr/>
+
 ## Characters (Spoilers)
 
 <a href="https://github.com/JasminDreasond/Pony-Driland/blob/main/website/img/characters/princess-ariella/README.md" target="_blank">Princess Ariella</a>
