@@ -11,6 +11,11 @@ You can check the progress of the project's development in this readme.
 
 <hr/>
 
+## Warning!
+Accessing the source code of this repository can make you see possible spoilers of the fanfic. If you are reading the fanfic, it is recommended that you access the website and source code updates later.
+
+<hr/>
+
 ## A little about the Project Theme
 
 ### Age Rating (Age 13 and Above)
