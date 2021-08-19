@@ -9,3 +9,11 @@ She is also a great mother and she always tries to teach her children all her et
 She uses her magic both to help her kingdom and to protect it. Your magic is also a giant reality manipulation skill and its wings can be used to produce fantastic magic in the sky such as manipulating the weather.
 
 <img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/website/img/characters/princess-ariella/ref.png?raw=true" height="500">
+
+<hr/>
+
+## Credits
+
+Character Development: JasminDreasond
+
+Character Design: <a href="https://derpibooru.org/tags/artist-colon-synthsparkle" target="_blank">Synth Sparkle</a>
