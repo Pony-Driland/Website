@@ -1,5 +1,7 @@
 # Princess Ariella
 
+## This character's description may contain possible spoilers!
+
 Ariella was the first princess of her kingdom founded by her. she has a pure heart and loves all of her creation and her kingdom very much.
 
 For her, the lives of everyone in her kingdom matters a lot. Her determination to make the kingdom a better place is extremely high. She could sacrifice herself if necessary just to save her kingdom life.
