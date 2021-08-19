@@ -15,6 +15,8 @@ You can check the progress of the project's development in this readme.
 
 ### Age Rating (Age 13 and Above)
 
+<img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/website/img/age-rating.jpg?raw=true" height="200" />
+
 Adventure
 
 Action
