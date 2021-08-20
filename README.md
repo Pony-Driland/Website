@@ -26,7 +26,7 @@ Accessing the source code of this repository can make you see possible spoilers 
 
 ## A little about the Project Theme
 
-### Age Rating (Age 13 and Above)
+### Age Rating (Age 16 and Above)
 
 <img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/website/img/age-rating.jpg?raw=true" height="200" />
 
