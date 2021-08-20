@@ -12,7 +12,7 @@ She uses her magic both to help her kingdom and to protect it. Your magic is als
 
 Her personality is kind. Her sense of justice to protect her kingdom can make her personality more dramatic and extremely defensive. Her worst fear is losing the things she love the most.
 
-<img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/website/img/characters/princess-ariella/ref.png?raw=true" height="500">
+<img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/princess-ariella/ref.png?raw=true" height="500">
 
 <hr/>
 
