@@ -28,7 +28,7 @@ Accessing the source code of this repository can make you see possible spoilers 
 
 ### Age Rating (Age 16 and Above)
 
-<img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/website/img/age-rating.jpg?raw=true" height="200" />
+<img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/age-rating.jpg?raw=true" height="200" />
 
 Adventure | Action | Drama | Comedy | Fantasy Violence | Intense Violence | Strong Language | Animated Blood | Horror (A little)
 
@@ -53,4 +53,4 @@ Final Version - 0% Complete
 
 ## Characters (Spoilers)
 
-<a href="https://github.com/JasminDreasond/Pony-Driland/blob/main/website/img/characters/princess-ariella/README.md" target="_blank">Princess Ariella</a>
+<a href="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/princess-ariella/README.md" target="_blank">Princess Ariella</a>
