@@ -45,7 +45,12 @@ Don't worry about it. Cutie Marks do not exist in this fanfic.
 Under development.
 
 ### Chapter 1
-Beta Version - 90% Complete
+Beta Version - 100% Complete
+
+Final Version - 0% Complete
+
+### Chapter 2
+Beta Version - 1% Complete
 
 Final Version - 0% Complete
 
