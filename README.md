@@ -59,3 +59,5 @@ Final Version - 0% Complete
 ## Characters (Spoilers)
 
 <a href="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/princess-ariella/README.md" target="_blank">Princess Ariella</a>
+
+<a href="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/rayane/README.md" target="_blank">Rayane</a>
