@@ -28,6 +28,8 @@ She can freely create and produce whatever she wants. But she doesn't use her po
 
 This weapon is the pure manifestation of her negative feelings. Divine creatures with negative feelings are extremely dangerous as their negative feelings can overload the amount of power evolved by anger, this scythe is invoked to try to drain the negative feelings and focus all the anger on a weapon where the negative energy can try to get controlled.
 
+<img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/rainbow-queen/scythe.gif?raw=true" height="500">
+
 <hr/>
 
 ## Credits
