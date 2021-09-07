@@ -2,6 +2,10 @@
 
 ## This character's description may contain possible spoilers!
 
+## Natural Habitat
+
+Her home has an architecture inspired by the Egyptian culture. She has a pyramid as her home and lives on an extremely high cold mountain. Due to the extreme cold of the mountain, her natural habitat is covered by snow instead of sand. This allowed her to create a great passion for the cold climates.
+
 ### Personality (Incomplete)
 
 Her personality is currently very unstable. She want to save Pony Driland and her life that depends exclusively on this dimension.
