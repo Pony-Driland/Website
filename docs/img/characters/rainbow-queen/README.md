@@ -10,7 +10,7 @@ She uses her divine elemental manipulation abilities to raise or lower her body 
 
 ### Hobby
 
-Her favorite activity is helping the souls of the ponies who have recently died in Pony Driland. She has the ability to interact with souls, which other ponies cannot do that. She helps souls find acceptance of death to be safe and rest in peace. 
+Her favorite activity is helping the souls of the ponies who have recently died in Pony Driland. She has the ability to interact with souls, which other ponies cannot do that. She helps souls find acceptance of death to be safe and rest in peace. All the souls she collect are kept in a mysterious safe place, but it is unknown what secret place is.
 
 ### Personality (Incomplete)
 
