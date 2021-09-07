@@ -2,6 +2,18 @@
 
 ## This character's description may contain possible spoilers!
 
+### Normal Version
+
+<img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/rainbow-queen/ref.png?raw=true" height="500">
+
+### Evil Version
+
+<img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/rainbow-queen/ref-evil.png?raw=true" height="500">
+
+<hr/>
+
+## Character Information
+
 ### Natural Habitat
 
 Her home has an architecture inspired by the Egyptian culture. She has a pyramid as her home and lives on an extremely high cold mountain. Due to the extreme cold of the mountain, her natural habitat is covered by snow instead of sand. This allowed her to create a great passion for the cold climates.
@@ -30,8 +42,6 @@ If something serious like depression occurs, this instability can be greater, ca
 She has high grade divine abilities. She was created to help keep order in Pony Driland. Her immense ability to manipulate the dimension allowed her to be almost completely indestructible.
 
 She can freely create and produce whatever she wants. But she doesn't use her power in its entirety for she has an ethical conduct to keep the dimension in order with less interference from her possible actions. Her powers are limited to the dimension energy. Her abilities are also used to manipulate the amount of energy stored in the dimension, making her a guardian of Pony Driland's existence.
-
-<img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/rainbow-queen/ref.png?raw=true" height="500">
 
 <hr/>
 
