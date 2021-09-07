@@ -50,7 +50,7 @@ Beta Version - 100% Complete
 Final Version - 0% Complete
 
 ### Chapter 2
-Beta Version - 1% Complete
+Beta Version - 16% Complete
 
 Final Version - 0% Complete
 
@@ -61,3 +61,5 @@ Final Version - 0% Complete
 <a href="https://github.com/Pony-Driland/Website/blob/main/docs/img/characters/princess-ariella/README.md" target="_blank">Princess Ariella</a>
 
 <a href="https://github.com/Pony-Driland/Website/blob/main/docs/img/characters/rayane/README.md" target="_blank">Rayane</a>
+
+<a href="https://github.com/Pony-Driland/Website/blob/main/docs/img/characters/rainbow-queen/README.md" target="_blank">Rainbow Queen</a>
