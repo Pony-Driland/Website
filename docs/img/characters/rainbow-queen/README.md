@@ -2,11 +2,15 @@
 
 ## This character's description may contain possible spoilers!
 
-## Natural Habitat
+### Natural Habitat
 
 Her home has an architecture inspired by the Egyptian culture. She has a pyramid as her home and lives on an extremely high cold mountain. Due to the extreme cold of the mountain, her natural habitat is covered by snow instead of sand. This allowed her to create a great passion for the cold climates.
 
 She uses her divine elemental manipulation abilities to raise or lower her body temperature to her advantage in order to withstand any hot or cold temperatures, but this can use a lot of energy from her body.
+
+### Hobby
+
+
 
 ### Personality (Incomplete)
 
@@ -18,8 +22,8 @@ Her personality is currently very unstable. She want to save Pony Driland and he
 As she grew angrier, and her heart filled with hate and fear, it manifested in her appearance, making her more and more somber. If an extremely large reality shock occurs along this path, she can literally lose control of her powers and end up destroying herself due to the large concentration of energy released by her feelings out of control due to her emotional instability.
 
 Divine powers are naturally increased through determination, fury, hatred, or love.
-When she feel sad, as your feelings become unstable, your powers also become unstable.
-If something serious like depression occurs, this instability can be greater, causing other dangerous negative feelings that can increase the power wildly while leaving the creature totally unstable and terrifying. Your physical appearance becomes sinister as the negative personality becomes sinister, resulting in a frightening and intimidating appearance.
+When she feel sad, as her feelings become unstable, her powers also become unstable.
+If something serious like depression occurs, this instability can be greater, causing other dangerous negative feelings that can increase the power wildly while leaving the creature totally unstable and terrifying. her physical appearance becomes sinister as the negative personality becomes sinister, resulting in a frightening and intimidating appearance.
 
 ### Power
 
