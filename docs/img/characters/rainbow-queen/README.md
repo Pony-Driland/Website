@@ -8,6 +8,9 @@ Her home has an architecture inspired by the Egyptian culture. She has a pyramid
 
 ### Personality (Incomplete)
 
+Her personality is naturally malignant, but that doesn't make her a villain. She also has a good heart and is concerned with taking care of the creatures and her family who live in her dimension.
+All her kind personality evolved with the help of her master.
+
 Her personality is currently very unstable. She want to save Pony Driland and her life that depends exclusively on this dimension.
 
 As she grew angrier, and her heart filled with hate and fear, it manifested in her appearance, making her more and more somber. If an extremely large reality shock occurs along this path, she can literally lose control of her powers and end up destroying herself due to the large concentration of energy released by her feelings out of control due to her emotional instability.
