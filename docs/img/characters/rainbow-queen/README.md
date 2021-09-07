@@ -10,7 +10,7 @@ She uses her divine elemental manipulation abilities to raise or lower her body 
 
 ### Hobby
 
-
+Her favorite activity is helping the souls of the ponies who have recently died in Pony Driland. She has the ability to interact with souls, which other ponies cannot do that. She helps souls find acceptance of death to be safe and rest in peace. 
 
 ### Personality (Incomplete)
 
@@ -30,7 +30,6 @@ If something serious like depression occurs, this instability can be greater, ca
 She has high grade divine abilities. She was created to help keep order in Pony Driland. Her immense ability to manipulate the dimension allowed her to be almost completely indestructible.
 
 She can freely create and produce whatever she wants. But she doesn't use her power in its entirety for she has an ethical conduct to keep the dimension in order with less interference from her possible actions. Her powers are limited to the dimension energy. Her abilities are also used to manipulate the amount of energy stored in the dimension, making her a guardian of Pony Driland's existence.
-
 
 <img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/rainbow-queen/ref.png?raw=true" height="500">
 
