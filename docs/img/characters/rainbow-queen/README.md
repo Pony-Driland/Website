@@ -39,7 +39,7 @@ If something serious like depression occurs, this instability can be greater, ca
 
 ### Power
 
-She has high grade divine abilities. She was created to help keep order in Pony Driland. Her immense ability to manipulate the dimension allowed her to be almost completely indestructible.
+She has high grade divine abilities. She was created to help keep order in Pony Driland. Her immense ability to manipulate the dimension allowed her to be almost completely indestructible. Her magic and the aura in her body and mane are covered in rainbows due to her nature of manipulative power that can control the dimension.
 
 She can freely create and produce whatever she wants. But she doesn't use her power in its entirety for she has an ethical conduct to keep the dimension in order with less interference from her possible actions. Her powers are limited to the dimension energy. Her abilities are also used to manipulate the amount of energy stored in the dimension, making her a guardian of Pony Driland's existence.
 
