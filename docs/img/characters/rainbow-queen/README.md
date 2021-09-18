@@ -14,6 +14,10 @@
 
 ## Character Information
 
+### Specie
+
+Female / Sphinx / Alicorn / Kirin
+
 ### Natural Habitat
 
 Her home has an architecture inspired by the Egyptian culture. She has a pyramid as her home and lives on an extremely high cold mountain. Due to the extreme cold of the mountain, her natural habitat is covered by snow instead of sand. This allowed her to create a great passion for the cold climates.

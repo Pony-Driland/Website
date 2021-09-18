@@ -1,5 +1,9 @@
 # Rayane
 
+## Specie
+
+Female / Unicorn
+
 ## This character's description may contain possible spoilers!
 
 Rayane is one of Pony Driland's most mysterious ponies. There are many legends about her role and why she is always spying on other ponies.

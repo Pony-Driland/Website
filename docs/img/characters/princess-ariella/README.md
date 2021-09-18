@@ -1,5 +1,9 @@
 # Princess Ariella
 
+## Specie
+
+Female / Alicorn
+
 ## This character's description may contain possible spoilers!
 
 Ariella was the first princess of her kingdom founded by her. she has a pure heart and loves all of her creation and her kingdom very much.
