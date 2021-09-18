@@ -4,11 +4,11 @@
 
 ### Normal Version
 
-<img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/rainbow-queen/ref.png?raw=true" height="500">
+<!-- <img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/rainbow-queen/ref.png?raw=true" height="500"> -->
 
 ### Evil Version
 
-<img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/rainbow-queen/ref-evil.png?raw=true" height="500">
+<!-- <img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/rainbow-queen/ref-evil.png?raw=true" height="500"> -->
 
 <hr/>
 
