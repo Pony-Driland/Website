@@ -126,6 +126,30 @@
     {
         "type": "action",
         "text": "Meanwhile, Vini began to hear the noise of the motorcycle."
-    }
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Okay okay! Let me go see the gate. YES!"
+    },
+
+    {
+        "type": "action",
+        "text": "Vini then got up from his computer. He was home alone. He then went to the gate to open it to receive the food. Meanwhile Yasmin kept laughing and answering."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Yasmin",
+        "text": "Don't worry, the surprise will be all good like your X-Tudo."
+    },
+
+    {
+        "type": "action",
+        "text": "Vini then met with the motoboy, already looking a bit confused about what Yasmin was talking about."
+    },
+
+
 
 ]
