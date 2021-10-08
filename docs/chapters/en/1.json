@@ -13,7 +13,7 @@
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "text": "ah! Ready! I finally got my tiny credit card working! I'm going to buy your X-Tudo now! Now it's time to stop this silly nonsense time!"
+        "text": "ah! Ready! I finally got my credit card working! I'm going to buy your X-Tudo now! Now it's time to stop this silly nonsense time!"
     },
 
     {
@@ -23,7 +23,22 @@
     },
 
     {
+        "type": "dialogue",
+        "character": "Yasmin",
+        "message": "You've messed up the entire online casino! Don't think this will happen again!"
+    },
 
-    }
+    {
+        "type": "action",
+        "text": "Yasmin would then sigh deeply and slowly calm down when she realized that everything was finally solved."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Yasmin",
+        "message": "Uff...Okay... I sent your order just the way you asked. The delivery man of food app is already on his way to your house. I recommend you keep an eye on the GPS, or the motoboy will pass right by."
+    },
+
+
 
 ]
