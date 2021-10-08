@@ -106,4 +106,26 @@
         "text": "What the hell? What would that be?"
     },
 
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Okay, let me enter the call on my cell, HOLD IT!!!!!!!!!!"
+    },
+
+    {
+        "type": "action",
+        "text": "Yasmin laughs harder before answering."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Yasmin",
+        "text": "Relax siily Vini... you'll find out. Please... Just don't screw it all up. Mainly the phone!"
+    },
+
+    {
+        "type": "action",
+        "text": "Meanwhile, Vini began to hear the noise of the motorcycle."
+    }
+
 ]
