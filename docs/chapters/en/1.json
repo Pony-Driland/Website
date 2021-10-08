@@ -36,7 +36,7 @@
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "message": "Uff...Okay... I sent your order just the way you asked. The delivery man of food app is already on his way to your house. I recommend you keep an eye on the GPS, or the motoboy will pass right by."
+        "message": "Uff...Okay... I sent your order just the way you asked. The delivery man of food app is already on his way to your house. I recommend you keep an eye on the GPS, or the delivery boy will pass right by."
     },
 
     {
@@ -147,9 +147,35 @@
 
     {
         "type": "action",
-        "text": "Vini then met with the motoboy, already looking a bit confused about what Yasmin was talking about."
+        "text": "Vini then met with the delivery boy, already looking a bit confused about what Yasmin was talking about."
     },
 
+    {
+        "type": "dialogue",
+        "character": "Delivery Boy",
+        "text": "Hello... good afternoon sir, are you Vinicius?"
+    },
 
+    {
+        "type": "dialogue",
+        "character": "Yasmin",
+        "text": "Look there! Go mess up the delivery boy again!"
+    },
+
+    {
+        "type": "action",
+        "text": "Yasmin reply with a silly giggle."
+    },
+
+    {
+        "type": "action",
+        "text": "Vini was wanting to speed up and get back to his room soon before the delivery boy could hear jasmin laughing"
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Oops good afternoon, it's me yes, is it the snack?"
+    },
 
 ]
