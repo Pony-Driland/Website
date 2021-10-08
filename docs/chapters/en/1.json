@@ -2,12 +2,12 @@
 
     {
         "type": "action",
-        "text": "It was just another normal day on Planet Earth. It was a beautiful normal day like any other, Vini was living his normal life, he still hadn't showered, and he was talking to his friend Yasmin through Discord. It was a simple super decisive conversation for her to finally pay the X-Tudo Vini wanted so much. Vini was very happy, as he had been waiting for this day for several months, so this was the decisive magic moment."
+        "text": "It was just another normal day on Planet Earth. It was a beautiful normal day like any other, Vini was living his normal life, he still hadn't showered, and he was talking to his friend Yasmin through Discord. It was a simple super decisive conversation for her to finally pay the X-Tudo Vini wanted so much. Vini was very happy, as he had been waiting for this day for several months, so this was the decisive magic moment. Everything was extremely quiet. It was just a silly Discord conversation like any other day."
     },
 
     {
         "type": "action",
-        "text": "Yasmin then looked at the monitor impatiently, and just wanted to get this story over with, so he wouldn't need to talk about X-Tudo anymore"
+        "text": "Yasmin then looked at the monitor impatiently, and just wanted to get this story over with, so he wouldn't need to talk about X-Tudo anymore."
     },
 
     {
@@ -30,7 +30,7 @@
 
     {
         "type": "action",
-        "text": "Yasmin would then sigh deeply and slowly calm down when she realized that everything was finally solved."
+        "text": "Yasmin would then sigh deeply and slowly calm down when she realized that everything was finally solved. She was very thoughtful observing the whole situation before confirming the order"
     },
 
     {
@@ -39,6 +39,71 @@
         "message": "Uff...Okay... I sent your order just the way you asked. The delivery man of food app is already on his way to your house. I recommend you keep an eye on the GPS, or the motoboy will pass right by."
     },
 
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Wow, my address isn't right? Motoca is going to screw up my X-Tudo!"
+    },
 
+    {
+        "type": "dialogue",
+        "character": "Yasmin",
+        "text": "Ah Vini! Nope nope! You sent the address! You're going to receive your X-Tudo!"
+    },
+
+    {
+        "type": "action",
+        "text": "Right now Vini's phone started beeping Food App Notifications."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Oh yes, man!"
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Heh! Let me see my phone beeped here."
+    },
+
+    {
+        "type": "action",
+        "text": "Vini anxiously raises his hand and takes the phone, after unlocking it with his finger he looks at the notifications"
+    },
+
+    {
+        "type": "action",
+        "text": "Vini saw the notification that the delivery boy was about to arrive, his cell phone already asking him to go to the door of his house to wait for the delivery boy"
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Yasmin",
+        "text": "so? He is coming?"
+    },
+
+    {
+        "type": "action",
+        "text": "Yasmin spoke giving a silly little laugh."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Yasmin",
+        "text": "I want you to take the phone with you, I left a reminder in App Food about a little surprise for you when the order arrives."
+    },
+
+    {
+        "type": "action",
+        "text": "Surprised Vini speaks in a curious way."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "What the hell? What would that be?"
+    },
 
 ]
