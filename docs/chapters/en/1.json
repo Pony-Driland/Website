@@ -418,6 +418,37 @@
         "text": "Stop kidding! I need help! What is happening?! W...What fuck?! My house will explode!"
     },
 
+    {
+        "type": "action",
+        "message": "The glow then started to behave like a black hole, trying to pull Vini into it."
+    },
 
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "No, no! NO! This is IMPOSSIBLE! Damn Jasmin it happened, I don't know, your X-Tudo blew up and it's sucking me, this shit stuck on my arm, I'm going to turn the Men 10!!!!"
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Yasmin",
+        "text": "Oh my god! I'll call the police!"
+    },
+
+    {
+        "type": "action",
+        "message": "Vini was in the last seconds of his presence before the black hole sucked him in completely, and suddenly he disappeared along with his phone, which was increasingly losing signal as he went deeper into the mysterious black hole."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Yasmin",
+        "text": "Vini?! C.......of.........you....O... ...What's happening?! V...Vini! The sign! Signal is horrible! N...Nooo! Came back here! V....Viiiiini!"
+    },
+
+    {
+        "type": "action",
+        "message": "and the signal was completely lost and the Discord connection dropped while Vini continued to be sucked deeper into the black hole"
+    },
 
 ]
