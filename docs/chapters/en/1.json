@@ -694,4 +694,31 @@
         "message": "Hey man, let me get my phone, as I remember, it's a device similar to that in my world, but it has other important features, like listening to music or having many books in it."
     },
 
+    {
+        "type": "action",
+        "message": "Vini looks for the phone to store the phone in somewhere."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Kenny",
+        "text": "Listen to music? I've never seen anything like this..."
+    },
+
+    {
+        "type": "action",
+        "message": "Kenny felt surprised and a little scared."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Kenny",
+        "text": "But alright, let me get it! Try to stay upright!"
+    },
+
+    {
+        "type": "action",
+        "message": "Kenny smiled and let Vini go so Vini could try to balance yourself between the 4 legs while he went to get your phone in the sand."
+    },
+
 ]
