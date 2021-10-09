@@ -721,4 +721,54 @@
         "message": "Kenny smiled and let Vini go so Vini could try to balance yourself between the 4 legs while he went to get your phone in the sand."
     },
 
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Okay... Fine..."
+    },
+
+    {
+        "type": "think",
+        "character": "Vini",
+        "text": "This is much stranger than I imagined. Will I be stuck here forever? How are my friends and my parents doing?"
+    },
+
+    {
+        "type": "action",
+        "message": "Right after Kenny give the phone, Vini hold the phone."
+    },
+
+    {
+        "type": "think",
+        "character": "Vini",
+        "text": "I remember the battery and I DIDN'T TAKE THE SHIT CHARGER! WHY?!"
+    },
+
+    {
+        "type": "action",
+        "message": "Vini got mentally pissed off. and as soon as I see that there was no signal, Vini try to turn the phone off."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Kenny",
+        "text": "Oh? Vini? Are you okay? Is something wrong with your phone?"
+    },
+
+    {
+        "type": "action",
+        "message": "Kenny said with a curious face, looked at Vini and he reactions while trying to help he keep up again."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "O..oh? Oh yeah, kind of the energy that makes it stay on runs out quickly so I'll only use it in cases of need because I need another part to recharge it. but yes he is normal, thanks for helping me get phone back."
+    },
+
+    {
+        "type": "action",
+        "message": "Vini was worried about his phone battery. It looked like his phone was the last thing left of items from Earth. Vini's clothes had mysteriously disappeared too."
+    },
+
 ]
