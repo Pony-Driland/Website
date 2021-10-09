@@ -511,4 +511,87 @@
         "message": "Vini was sad and hopeless. He didn't know what else could be done in that moment now. Suddenly Vini starts to hear the sound of footsteps approaching from the opposite direction to him, coming slowly, making him look back curiously."
     },
 
+    {
+        "type": "action",
+        "message": "Vini see a silhouette of another pony slowly approaching, thinking to do contact with you, and it gets closer and closer."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "W...what? O..Oh no.... Oh, okay then I'll wait..."
+    },
+
+    {
+        "type": "action",
+        "message": "Vini was scared, but he just accepted the fate of waiting for the mysterious earth pony to approach him."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "???",
+        "text": "oh...it's not possible... It's...Is that what I'm really seeing? Did another new pony appear? Are you new around here?"
+    },
+
+    {
+        "type": "action",
+        "message": "The mysterious pony looked a little scared, trying to understand who you are."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Aah hi, my name is Vini, are you guys okay? they look worried...."
+    },
+
+    {
+        "type": "action",
+        "message": "Vini tried to stay calm, talking calmly and trying to be calm."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "???",
+        "text": "Good? this should be my question. Are you sure you're alright? You look kind of scared. How long have you been here?"
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Oh, I kind of don't remember but I ended up waking up just now, not sure what happened to me last night."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "???",
+        "text": "Last night? Have you been attacked by Elite Color?! Keep calm, I can help you!"
+    },
+
+    {
+        "type": "action",
+        "message": "Mysterious pony comes closer to you, offering to help you"
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "E..Elite color? I really don't remember, and I accept the help, thank you very much."
+    },
+
+    {
+        "type": "action",
+        "message": "Vini tried to remain calm, but slowly felt better as he realized the gentleness of the mysterious pony. But he was still confused and scared about what was happening. He tried to get up but failed."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "I think I'll need more than help, I kind of can't walk..."
+    },
+
+    {
+        "type": "action",
+        "message": "Vini was very embarrassed to realize that he didn't know how to walk on four legs while answering."
+    },
+
 ]
