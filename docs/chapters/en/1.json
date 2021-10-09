@@ -192,12 +192,74 @@
     {
         "type": "dialogue",
         "character": "Delivery Boy",
-        "text": "This hamburguer was vibrating inside my motocycle, so please, if there's something wrong with your lunch, let me know that we'll exchange your lunch for a new one."
+        "text": "This burger was vibrating inside my motocycle, so please, if there's something wrong with your lunch, let me know that we'll exchange your lunch for a new one."
     },
 
     {
         "type": "action",
         "message": "Delivery Boy delivered the X-Tudo box kindly to you."
-    }
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Yasmin",
+        "text": "The burger has arrived! Finally arrived!"
+    },
+
+    {
+        "type": "action",
+        "message": "Yasmin continued the silly giggles, happy to see Vini's reaction."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "it's a joke, right? prank right? What is this vibration?"
+    },
+
+    {
+        "type": "action",
+        "message": "Vini reply with a surprised face and mischievousness."
+    },
+
+    {
+        "type": "action",
+        "message": "Delivery Boy looked a little awkwardly, not knowing what to say."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Delivery Boy",
+        "text": "Yes.... I saw...vibrating. Sorry for the expression, it was a quick word. Ah! Please! Just get it soon! It could be anything, maybe something inside the burguer, you'll need to check it out to see what it is."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "...Okay can i open it now before you leave?"
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Delivery Boy",
+        "text": "feel free... Just don't delay please. I'm getting late."
+    },
+
+    {
+        "type": "action",
+        "message": "Yasmin kept laughing and trying to talk to Vini."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Yasmin",
+        "text": "Then? Where's X-Tudo? We need to see the surprise together to be more fun!"
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Calm down jasmin, the guy said there's some stuff vibrating here and I'll show you on cam."
+    },
 
 ]
