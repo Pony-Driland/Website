@@ -890,4 +890,44 @@
         "text": "HOLY SHIT! NO! FOREVER?! Is everyone here alien?! That's what i understood?! WHY?!"
     },
 
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Ah..."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Kenny",
+        "text": "Ah? Please don't be too surprised, Raquel and I are going to help you! If you've been in good company, I'm sure you'll do fine around here."
+    },
+
+    {
+        "type": "action",
+        "message": "Kenny was thoughtful, trying to calm Vini down, so he responded."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Kenny",
+        "text": "It's what we can do for Pony Driland newcomers. I'm sure you'll like your new life. Unfortunately I can't hold back your curiosities... So...if you really want to find out more about this place... You'll have to try to be friends with James..."
+    },
+
+    {
+        "type": "think",
+        "character": "Vini",
+        "text": "James... Who is James? Why everyone is a alien in a pony body?! Look where I accidentally got myself into an X-Tudo! Someone save me from this nightmare... Please!"
+    },
+
+    {
+        "type": "action",
+        "message": "Kenny kept walking and he saw the village soon the front."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Kenny",
+        "text": "Oh! Look! We are almost there! Right in time!"
+    },
+
 ]
