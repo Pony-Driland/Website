@@ -178,4 +178,26 @@
         "text": "Oops good afternoon, it's me yes, is it the snack?"
     },
 
+    {
+        "type": "dialogue",
+        "character": "Delivery Boy",
+        "text": "Oops... yes, Your lunch... An X-Tudo. Everything and a little more..."
+    },
+
+    {
+        "type": "action",
+        "text": "Delivery Boy tried to react naturally when he noticed a kind of anxiety in Vini."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Delivery Boy",
+        "text": "This hamburguer was vibrating inside my motocycle, so please, if there's something wrong with your lunch, let me know that we'll exchange your lunch for a new one."
+    },
+
+    {
+        "type": "action",
+        "message": "Delivery Boy delivered the X-Tudo box kindly to you."
+    }
+
 ]
