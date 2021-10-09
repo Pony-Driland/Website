@@ -262,4 +262,65 @@
         "text": "Calm down jasmin, the guy said there's some stuff vibrating here and I'll show you on cam."
     },
 
+    {
+        "type": "action",
+        "message": "Vini opens the box slowly. Afraid about what was inside the box. Vini see an X-Tudo, very big, just the way he wanted, twice the size that was in the photo."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Delivery Boy",
+        "text": "Everything seems normal to me... Ah! It must have been a mistake, maybe it was the bike that was vibrating and I didn't notice. Sorry there bro!"
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Delivery Boy",
+        "text": "well... I have to leave now, don't forget to give me 5 stars, thanks."
+    },
+
+    {
+        "type": "action",
+        "message": "The Delivery Boy, without thinking twice, was already leaving."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Are you kidding me? What was this thing vibrating?"
+    },
+
+    {
+        "type": "action",
+        "message": "Yasmin then kept laughing until she heard Vini talking."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Yasmin",
+        "text": "Vibrating? What?! Oh silly Vini! Don't make up jokes! Haven't you noticed the surprise yet?"
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Are you kidding me? What was this thing vibrating?"
+    },
+
+    {
+        "type": "action",
+        "message": "Vini was extremely confused. Trying to understand what was going on. Trying not to think about what he was thinking."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Yasmin, did you tell the delivery boy to do this prank on me? WHY?!"
+    },
+
+    {
+        "type": "action",
+        "message": "Vini was extremely embarrassed as he answered."
+    },
+
 ]
