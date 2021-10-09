@@ -757,7 +757,7 @@
 
     {
         "type": "action",
-        "message": "Kenny said with a curious face, looked at Vini and he reactions while trying to help he keep up again."
+        "message": "Kenny said with a curious face, looked at Vini and he reactions while trying to help he keep up again. Then the two started walking towards the village."
     },
 
     {
@@ -837,6 +837,57 @@
         "type": "dialogue",
         "character": "Kenny",
         "text": "Oh? Look! By the way! You are starting to learn to walk on 4 legs! You're learning fast!"
+    },
+
+    {
+        "type": "action",
+        "message": "Vini giggles a little before answering. trying to be a little friendlier"
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "You also said at the beginning, or comment in a strange way, the way you entered me and said \"you also came from another dimension\" are there others besides me?"
+    },
+
+    {
+        "type": "action",
+        "message": "Kenny Kenny spoke with a worried face."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Kenny",
+        "text": "Oh yes... The others..."
+    },
+
+    {
+        "type": "think",
+        "character": "Vini",
+        "text": "Oh shit... Here comes the bad news."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Kenny",
+        "text": "All of us here come from many different dimensions.... We've been stuck here forever, we don't know how to get out of here, it's been many years since I've seen my family, and I don't remember in detail what my real body was like."
+    },
+
+    {
+        "type": "action",
+        "message": "Kenny tried to be positive as he continued to explain."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Kenny",
+        "text": "I hope you don't get scared by this fact, that's the motive I was worried when I found you here. It's very dangerous for newbies to walk alone around Pony Driland. This place is very dangerous if you don't know how things work around here."
+    },
+
+    {
+        "type": "think",
+        "character": "Vini",
+        "text": "HOLY SHIT! NO! FOREVER?! Is everyone here alien?! That's what i understood?! WHY?!"
     },
 
 ]
