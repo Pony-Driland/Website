@@ -478,4 +478,37 @@
         "message": "Vini look at he arm curiously. Soon Vini noticed that everything was very different with his body when he felt the shape of his body. Instead of him seeing hands, he saw pony paws, while the calm water of the beach continued to calmly move on the sand."
     },
 
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "What the... fuck... am I a horse?... a pony? I don't know..."
+    },
+
+    {
+        "type": "action",
+        "message": "Vini try to calm down and I see around me what is happening and I see the phone and I try to move."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "I can't touch the phone because I don't have a FINGER!!! but I see there's something on my back, it's wings!!!!!!! WHAT'S HAPPENING HERE?!"
+    },
+
+    {
+        "type": "action",
+        "message": "So Vini try to use the wings to poke the phone screen. The phone turned on the screen and when the face detector felt the presence of Vini eyes, and all Vini saw was just the screen locked, and the phone was completely out of signal. No 4G, no Wi-Fi, no internet connection."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Oooh okay..."
+    },
+
+    {
+        "type": "action",
+        "message": "Vini was sad and hopeless. He didn't know what else could be done in that moment now. Suddenly Vini starts to hear the sound of footsteps approaching from the opposite direction to him, coming slowly."
+    },
+
 ]
