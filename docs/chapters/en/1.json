@@ -594,4 +594,26 @@
         "message": "Vini was very embarrassed to realize that he didn't know how to walk on four legs while answering."
     },
 
+    {
+        "type": "dialogue",
+        "character": "???",
+        "text": "Wait... can't you walk? V..Are you sure you're from here? What city do you come from? Just try to stay balanced and don't let your body weight make you lose balance."
+    },
+
+    {
+        "type": "action",
+        "message": "Mysterious pony was surprised by your words, he gradually helped you to get in a balanced pose so you could stay seated."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Heck bro, I'm trying to remember and I think I remembered I was eating something and blacked out, and I came here out of nowhere."
+    },
+
+    {
+        "type": "action",
+        "message": "Vini tried to balance himself between his paws as he responded."
+    },
+
 ]
