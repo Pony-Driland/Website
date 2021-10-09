@@ -616,4 +616,49 @@
         "message": "Vini tried to balance himself between his paws as he responded."
     },
 
+    {
+        "type": "dialogue",
+        "character": "???",
+        "text": "From... From nothing?! So I'm right! You are also a new visitor from another dimension!"
+    },
+
+    {
+        "type": "action",
+        "message": "Vini lost the balance of the pose of the paws and fell on the sand again."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "???",
+        "text": "Oh... yes, I think this is more than evidence... hihi... don't worry , I teach you to walk. My name is Kenny!"
+    },
+
+    {
+        "type": "action",
+        "message": "during the giggles of Kenny, Kenny starts to smile at Vini and prepare to help Vini stand up again. Vini felt even better about Kenny's kindness. He looked at Kenny still confused about what was happening, but he simply continued to accept the help."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Yeah hihi, thanks for the help Kenny...."
+    },
+
+    {
+        "type": "action",
+        "message": "Kenny felt happier wanting to keep helping Vini."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Kenny",
+        "text": "hihi... You're welcome. Just keep calm, and start walking very slowly, you need to keep balance and sync between all 4 legs. This way you'll soon learn to walk.The village is very close to here, you can rest in my house with my friend Raquel."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Kenny",
+        "text": "When we see your SmartMoby, we'll be able to help you better."
+    },
+
 ]
