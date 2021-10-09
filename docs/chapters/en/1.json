@@ -451,4 +451,10 @@
         "message": "and the signal was completely lost and the Discord connection dropped while Vini continued to be sucked deeper into the black hole"
     },
 
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Yasmin what did you do?! NOOO!"
+    },
+
 ]
