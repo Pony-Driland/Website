@@ -771,4 +771,72 @@
         "message": "Vini was worried about his phone battery. It looked like his phone was the last thing left of items from Earth. Vini's clothes had mysteriously disappeared too."
     },
 
+    {
+        "type": "dialogue",
+        "character": "Kenny",
+        "text": "Recharge a phone? hmm... Maybe James can help you if he's willing to walk with you. He is a friend of mine who loves adventures. I believe he will be returning home soon."
+    },
+
+    {
+        "type": "action",
+        "message": "Kenny spoke thoughtfully as he continued to help you walk."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Kenny",
+        "text": "Okay... Let's go... soon we'll be home!"
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "James? But I just met you! You're crazy?!"
+    },
+
+    {
+        "type": "action",
+        "message": "Kenny smiled and ran forward, revealing that Vini were starting to walk alone without help, but then you started to lose he balance for a few seconds when he realized that there was no one helping he."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Oh? no no no no no!"
+    },
+
+    {
+        "type": "action",
+        "message": "Vini tried not to completely lose his paws balance."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "think",
+        "text": "At least he seems to be very silly. I see no reason why he wants to kidnap me."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Uff... About earlier, you said something about Elite Color, what would it be exactly?"
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Kenny",
+        "text": "Elite Color? oh! The Elite Color! Sorry, I forgot to talk about the Elite Color. Elite Color is a mysterious organization that claims to protect this world. We don't really know what they are, but sometimes they do some cruel things. They live on top of the highest mountain in Pony Driland, which is our island you're on."
+    },
+
+    {
+        "type": "action",
+        "message": "Kenny then looked at Vini walking. He was surprised and very happy."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Kenny",
+        "text": "Oh? Look! By the way! You are starting to learn to walk on 4 legs! You're learning fast!"
+    },
+
 ]
