@@ -930,4 +930,15 @@
         "text": "Oh! Look! We are almost there! Right in time!"
     },
 
+    {
+        "type": "action",
+        "message": "Kenny smiled and started to move faster. Vini was surprised. He just looked around for a few seconds, looking for something randomly. So Vini tries to follow Kenny's speed."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Kenny",
+        "text": "H..Hey! Wait me!"
+    },
+
 ]
