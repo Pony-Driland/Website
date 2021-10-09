@@ -661,4 +661,21 @@
         "text": "When we see your SmartMoby, we'll be able to help you better."
     },
 
+    {
+        "type": "action",
+        "message": "Kenny smiles again and started to help Vini during the first steps to start to walk."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "message": "What? What is a SmartMoby? I have one?"
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Kenny",
+        "text": "Oh? Oh sorry! hihihi... Yeah! The SmartMoby is on your arm right now. This is part of you, we all have one. It's like a phone, but actually it's a device that carries your soul and keeps you alive here."
+    },
+
 ]
