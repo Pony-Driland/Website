@@ -169,7 +169,7 @@
 
     {
         "type": "action",
-        "text": "Vini was wanting to speed up and get back to his room soon before the delivery boy could hear jasmin laughing"
+        "text": "Vini was wanting to speed up and get back to his room soon before the delivery boy could hear Yasmin laughing"
     },
 
     {
@@ -259,7 +259,7 @@
     {
         "type": "dialogue",
         "character": "Vini",
-        "text": "Calm down jasmin, the guy said there's some stuff vibrating here and I'll show you on cam."
+        "text": "Calm down Yasmin, the guy said there's some stuff vibrating here and I'll show you on cam."
     },
 
     {
@@ -302,12 +302,6 @@
     },
 
     {
-        "type": "dialogue",
-        "character": "Vini",
-        "text": "Are you kidding me? What was this thing vibrating?"
-    },
-
-    {
         "type": "action",
         "message": "Vini was extremely confused. Trying to understand what was going on. Trying not to think about what he was thinking."
     },
@@ -319,8 +313,36 @@
     },
 
     {
+        "type": "dialogue",
+        "character": "Yasmin",
+        "text": "Prank? What?! Don't tell me you haven't figured out what the surprise is yet!"
+    },
+
+    {
         "type": "action",
-        "message": "Vini was extremely embarrassed as he answered."
+        "message": "Vini enters and goes to the kitchen to get a plate and goes back to the bedroom. The X-Tudo mysteriously started to vibrate a little on the table"
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "message": "Fuck, this fuck is alive..."
+    },
+
+    {
+        "type": "action",
+        "message": "Vini approaches X-Tudo and will analyze the burguer carefully."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Yasmin",
+        "text": "Live? Vini! What did you do with X-Tudo? Haven't you noticed the obvious yet?"
+    },
+
+    {
+        "type": "action",
+        "message": "when Vini tried to analyze X-Tudo, he felt a kind of blue light, but X-Tudo didn't want to be opened completely at all, it just vibrated more with each touch it received."
     },
 
 ]
