@@ -680,9 +680,18 @@
 
     {
         "type": "action",
+        "message": "Vini looked at his arm and was surprised. That device had now merged with his arm. It was just a screen on his arm and it was impossible to remove as it was now part of his arm."
+    },
+
+    {
+        "type": "action",
         "message": "Kenny kept helping Vini walk. The place was very calm. It looked completely deserted. Vini immediately thought it was something he had already seen somewhere. But he found it extremely strange that the ponies found were different from what he knew about ponies. Was it really the world he was thinking about or could it be just a coincidence?"
     },
 
-
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "message": "Hey man, let me get my phone, as I remember, it's a device similar to that in my world, but it has other important features, like listening to music or having many books in it."
+    },
 
 ]
