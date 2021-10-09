@@ -347,8 +347,77 @@
 
     {
         "type": "dialogue",
-        "character": "Yasmin",
-        "text": "Yasmin, there's some stuff coming out of X-Tudo bro."
+        "character": "Vini",
+        "text": "Yasmin, there's some stuff coming out of X-Tudo."
     },
+
+    {
+        "type": "action",
+        "message": "Vini looked at the X-Tudo and tried harder to open it."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Yasmin",
+        "text": "Coming out of X-Tudo? What are you talking about! I only ordered a double size!"
+    },
+
+    {
+        "type": "action",
+        "message": "The X-Tudo vibrated more and more, and the light started to get stronger, but Vini was starting to realize that he was making progress, and that he just needed to do a little more force, as he accidentally spilled some parts of the X-Tudo on the table because of the vibration."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "N..Noo! My house! Wait, I'm looking at what's inside the X-Tudo, everything and a little more, hold it there."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Yasmin",
+        "text": "Vini... You're scaring me. What's happening there?"
+    },
+
+    {
+        "type": "action",
+        "message": "Vini still keeps trying to force against the burguer, feeling extremely difficult to keep trying this again and again."
+    },
+
+    {
+        "type": "action",
+        "message": "While more Vini tried, but the light got stronger, and X-Tudo vibrated extremely hard, spilling all parts of X-Tudo all over the kitchen, making a loud noise on the table because of the vibration"
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "NO NO NOOO! MY HOUSE!"
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Yasmin",
+        "text": "V...Vini? Are you okay? It's for eating X-Tudo! It's not to mess up the X-Tudo! What are you doing?!"
+    },
+
+    {
+        "type": "action",
+        "message": "Yasmin started talking in a worried voice. Then Vini finally manages to open X-Tudo, making all the rest of X-Tudo fly all over the place, he soon realizes what he was pulling inside X-Tudo, in fact it was a kind of bracelet, which quickly attaches to the his arm, but in the middle of it all comes a very bright light that takes over the whole kitchen."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Yasmin",
+        "text": "W..What?! What is this Vini? Did the restaurant give you any SmartWatch as a gift?!"
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Vini",
+        "text": "Stop kidding! I need help! What is happening?! W...What fuck?! My house will explode!"
+    },
+
+
 
 ]
