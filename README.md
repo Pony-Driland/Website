@@ -19,6 +19,12 @@ You can check the progress of the project's development in this readme.
 
 <hr/>
 
+## Receive Update Notifications
+
+<a href="https://puddy.club/github/subscription?username=Pony-Driland&repository=Website" target="_blank">Receive Notifications</a>
+
+<hr/>
+
 ## Warning!
 Accessing the source code of this repository can make you see possible spoilers of the fanfic. If you are reading the fanfic, it is recommended that you access the website and source code updates later.
 
