@@ -33,7 +33,7 @@ Amy was no longer a depressed pony, feeling loved like the pet she is, she devel
 
 She knew that through the magical collar, she could be teleported, or ask for Rainbow Queen's help. And then her new lifestyle that made her feel better continued, making her forget about her sad past, but still sometimes she was a little worried about what happened to her family, as now she was extremely far away from home.
 
-<img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/amy/ref.png?raw=true" height="500">
+<img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/amy/ref.jpg?raw=true" height="500">
 
 <hr/>
 
