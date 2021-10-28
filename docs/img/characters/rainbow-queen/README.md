@@ -30,7 +30,7 @@ Her favorite activity is helping the souls of the ponies who have recently died 
 
 ### Personality (Incomplete)
 
-Her personality is naturally malignant, but that doesn't make her a villain. She also has a good heart and is concerned with taking care of the creatures and her family who live in her dimension.
+Her personality is naturally malignant and dominant, but that doesn't make her a villain. She also has a good heart and is concerned with taking care of the creatures and her family who live in her dimension.
 All her kind personality evolved with the help of her master.
 
 Her personality is currently very unstable. She want to save Pony Driland and her life that depends exclusively on this dimension.
