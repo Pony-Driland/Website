@@ -21,6 +21,8 @@ Amy is one of Rainbow Queen's pets. Her story is already in development, I'll ha
 
 This is an indestructible magic collar created by Rainbow Queen. All pets that belong to her have this collar. In addition to a simple collar, it allows Rainbow Queen's pets to always have direct contact with her to request things like instant teleport to save the pets from any kind of danger.
 
+<img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/amy/wip-collar.jpg?raw=true" height="500">
+
 <hr/>
 
 ## Credits
