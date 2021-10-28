@@ -29,7 +29,7 @@ Like all Rainbow Queen pets, Amy was gifted with the eternal life she could have
 
 Since then many years have passed and Amy no longer knows her true age, as she always kept her youthful appearance, but many recognized her when they found her as a pony who likes to buy clothes and accessories of various types for her silly fantasy. that she loves.
 
-
+Amy was no longer a depressed pony, feeling loved like the pet she is, she developed her new personality very sweet and cute.
 
 <img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/amy/wip.png?raw=true" height="500">
 
