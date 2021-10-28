@@ -47,6 +47,8 @@ She has high grade divine abilities. She was created to help keep order in Pony 
 
 She can freely create and produce whatever she wants. But she doesn't use her power in its entirety for she has an ethical conduct to keep the dimension in order with less interference from her possible actions. Her powers are limited to the dimension energy. Her abilities are also used to manipulate the amount of energy stored in the dimension, making her a guardian of Pony Driland's existence.
 
+Due to the fact that the Rainbow Queen has in its mix of races being a Sphinx Pony, she also has the ability to manipulate she size, being able to become giant or normal size at any time.
+
 <hr/>
 
 ## Items
