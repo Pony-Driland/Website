@@ -59,6 +59,12 @@ This weapon is the pure manifestation of her negative feelings. Divine creatures
 
 <hr/>
 
+## Pets
+
+<a href="https://github.com/Pony-Driland/Website/blob/main/docs/img/characters/amy/README.md" target="_blank">Amy</a>
+
+<hr/>
+
 ## Credits
 
 Character Development: JasminDreasond
