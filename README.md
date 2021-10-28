@@ -53,10 +53,15 @@ Under development.
 ### Chapter 1
 Beta Version - 100% Complete
 
-Final Version - 0% Complete
+Final Version - 20% Complete
 
 ### Chapter 2
-Beta Version - 36% Complete
+Beta Version - 100% Complete
+
+Final Version - 0% Complete
+
+### Chapter 3
+Beta Version - 15% Complete
 
 Final Version - 0% Complete
 
