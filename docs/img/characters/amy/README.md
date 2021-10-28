@@ -15,6 +15,14 @@ Amy is one of Rainbow Queen's pets. Her story is already in development, I'll ha
 
 <hr/>
 
+## Items
+
+### Collar
+
+This is an indestructible magic collar created by Rainbow Queen. All pets that belong to her have this collar. In addition to a simple collar, it allows Rainbow Queen's pets to always have direct contact with her to request things like instant teleport to save the pets from any kind of danger.
+
+<hr/>
+
 ## Credits
 
 Character Development: JasminDreasond
