@@ -941,4 +941,15 @@
         "text": "H..Hey! Wait me!"
     },
 
+    {
+        "type": "action",
+        "message": "Kenny arrived in Greendream Village, the village was a little busy, Vini saw some random ponies starting another new day as Kenny arrived at his door."
+    },
+
+    {
+        "type": "dialogue",
+        "character": "Kenny",
+        "text": "H..Hey! Wait me!"
+    },
+
 ]
