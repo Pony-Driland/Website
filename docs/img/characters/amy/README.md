@@ -6,10 +6,30 @@ Female / Pegasus
 
 ## This character's description may contain possible spoilers!
 
-Coming Soon...
-The information is temporarily only available in the DEV Repository.
+Amy is one of Rainbow Queen's pets. Her sweet personality was a result of past events of her accidentally going to Pony Driland.
+Her accident happened right during her childhood when she ran away from home, which made it impossible for her to grow like the other ponies, and she ended up spending the rest of her childhood struggling to survive on her own until she became an adult.
 
-Amy is one of Rainbow Queen's pets. Her story is already in development, I'll have more details soon.
+Amy has always tried to rediscover the things she lost as a child, which ended up making her more difficult to survive due to her depression. Amy then had a hard time socializing, getting a good job, which ended up making her feel more depressed.
+
+Due to her depression, she lost everything, and fled to the forest, looking to be alone, but she accidentally got lost in the forest and cannot return home. She was very hungry, and sad due to the fear of her possible end of life.
+
+When she was extremely sad and afraid to die, then she gave up on living, but during the last few seconds before she accepted her own death. Rainbow Queen appeared and interrupted her suicide attempt.
+
+Rainbow Queen already knew she was feeling extremely sad, and tried to make Amy feel better together in the forest. Amy started feeling scared of Rainbow Queen due to Rainbow Queen's natural nature to be malignant, but as she spent more time together with Rainbow Queen getting to know her true Rainbow Queen personality. After a while Amy felt calmer, and everything that seemed to be a monster, she found that being friends with a possible monster could make her feel more secure.
+
+Rainbow Queen despite having a dominant personality that is interested in being closer to her, Amy was very sad to have a second option, and agreed to be together with Rainbow Queen.
+
+When Rainbow Queen realized that Amy was not wanting to be alone, Rainbow Queen being a goddess she offered a pact with Amy. Rainbow Queen invited her to be her pet, in return, she could have a much better life together with Rainbow Queen. She would have freedom of choice, but always respecting Rainbow Queen's wishes and should call her master.
+
+Amy didn't think twice due to her sadness, and accepted her new fate. She was very scared of her choice.
+
+Rainbow Queen then put the magic collar around her neck and made her new pet. Rainbow Queen then hugged her to calm her down and make her feel better. Amy then cried a lot again, but she slowly calmed down as she felt that even though Rainbow Queen was dominant, Rainbow Queen wanted to take care of her and not let her take her own life.
+
+Like all Rainbow Queen pets, Amy was gifted with the eternal life she could have forever as a Rainbow Queen pet. 
+
+Since then many years have passed and Amy no longer knows her true age, as she always kept her youthful appearance, but many recognized her when they found her as a pony who likes to buy clothes and accessories of various types for her silly fantasy. that she loves.
+
+
 
 <img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/amy/wip.png?raw=true" height="500">
 
