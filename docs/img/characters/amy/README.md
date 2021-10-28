@@ -29,7 +29,9 @@ Like all Rainbow Queen pets, Amy was gifted with the eternal life she could have
 
 Since then many years have passed and Amy no longer knows her true age, as she always kept her youthful appearance, but many recognized her when they found her as a pony who likes to buy clothes and accessories of various types for her silly fantasy. that she loves.
 
-Amy was no longer a depressed pony, feeling loved like the pet she is, she developed her new personality very sweet and cute.
+Amy was no longer a depressed pony, feeling loved like the pet she is, she developed her new personality very sweet and cute. She came to be protected by Rainbow Queen through her magical collar. This made Amy develop a huge dependence on Rainbow Queen for her to feel safe while she maintained her shy personality.
+
+She knew that through the magical collar, she could be teleported, or ask for Rainbow Queen's help. And then her new lifestyle that made her feel better continued, making her forget about her sad past, but still sometimes she was a little worried about what happened to her family, as now she was extremely far away from home.
 
 <img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/amy/wip.png?raw=true" height="500">
 
