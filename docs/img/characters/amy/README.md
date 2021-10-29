@@ -25,7 +25,7 @@ Amy didn't think twice due to her sadness, and accepted her new fate. She was ve
 
 Rainbow Queen then put the magic collar around her neck and made her new pet. Rainbow Queen then hugged her to calm her down and make her feel better. Amy then cried a lot again, but she slowly calmed down as she felt that even though Rainbow Queen was dominant, Rainbow Queen wanted to take care of her and not let her take her own life.
 
-Like all Rainbow Queen pets, Amy was gifted with the eternal life she could have forever as a Rainbow Queen pet. 
+Like all Rainbow Queen pets, Amy was gifted with the eternal life she could be forever a Rainbow Queen pet. 
 
 Since then many years have passed and Amy no longer knows her true age, as she always kept her youthful appearance, but many recognized her when they found her as a pony who likes to buy clothes and accessories of various types for her silly fantasy. that she loves.
 
