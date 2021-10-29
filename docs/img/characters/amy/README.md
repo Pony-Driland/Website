@@ -43,6 +43,8 @@ She knew that through the magical collar, she could be teleported, or ask for Ra
 
 This is an indestructible magic collar created by Rainbow Queen. All pets that belong to her have this collar. In addition to a simple collar, it allows Rainbow Queen's pets to always have direct contact with her to request things like instant teleport to save the pets from any kind of danger.
 
+Due to the magic of the collar circling Amy's body, it makes her eyes no longer have the natural color, being replaced by colored ones.
+
 <img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/amy/wip-collar.jpg?raw=true" height="500">
 
 <hr/>
