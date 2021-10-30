@@ -25,8 +25,6 @@ Amy didn't think twice due to her sadness, and accepted her new fate. She was ve
 
 Rainbow Queen then put the magic collar around her neck and made her new pet. Rainbow Queen then hugged her to calm her down and make her feel better. Amy then cried a lot again, but she slowly calmed down as she felt that even though Rainbow Queen was dominant, Rainbow Queen wanted to take care of her and not let her take her own life.
 
-Like all Rainbow Queen pets, Amy was gifted with the eternal life she could be forever a Rainbow Queen pet. 
-
 Since then many years have passed and Amy no longer knows her true age, as she always kept her youthful appearance, but many recognized her when they found her as a pony who likes to buy clothes and accessories of various types for her silly fantasy. that she loves.
 
 Amy was no longer a depressed pony, feeling loved like the pet she is, she developed her new personality very sweet and cute. She came to be protected by Rainbow Queen through her magical collar. This made Amy develop a huge dependence on Rainbow Queen for her to feel safe while she maintained her shy personality.
@@ -42,6 +40,8 @@ She knew that through the magical collar, she could be teleported, or ask for Ra
 ### Collar
 
 This is an indestructible magic collar created by Rainbow Queen. All pets that belong to her have this collar. In addition to a simple collar, it allows Rainbow Queen's pets to always have direct contact with her to request things like instant teleport to save the pets from any kind of danger.
+
+All Rainbow Queens pets have the eternal life while the pet could be forever a Rainbow Queen pet. Ankh is represented in the collar symbol which is a mix of some Rainbow Queen symbols with the Ankh Symbol.
 
 Due to the magic of the collar circling Amy's body, it makes her eyes no longer have the natural color, being replaced by colored ones.
 
