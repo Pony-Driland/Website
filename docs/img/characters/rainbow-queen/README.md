@@ -66,6 +66,8 @@ This weapon is the pure manifestation of her negative feelings. Divine creatures
 
 <a href="https://github.com/Pony-Driland/Website/blob/main/docs/img/characters/amy/README.md" target="_blank">Amy</a>
 
+<a href="https://github.com/Pony-Driland/Website/blob/main/docs/img/characters/layla/README.md" target="_blank">Layla</a>
+
 <hr/>
 
 ## Credits
