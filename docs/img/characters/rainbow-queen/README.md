@@ -7,9 +7,9 @@
 <img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/rainbow-queen/ref-wip.gif?raw=true" height="500">
 <a href="https://derpibooru.org/images/2717471" target="_blank">Derpibooru Page</a>
 
-### Evil Version
+### Dark Version
 
-<!-- <img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/rainbow-queen/ref-evil.png?raw=true" height="500"> -->
+<img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/rainbow-queen/ref-dark.jpg?raw=true" height="500">
 
 <hr/>
 
