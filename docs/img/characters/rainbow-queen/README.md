@@ -9,7 +9,7 @@
 
 ### Dark Version
 
-<img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/rainbow-queen/ref-dark.jpg?raw=true" height="500">
+<img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/rainbow-queen/ref-dark.webp?raw=true" height="500">
 <a href="https://derpibooru.org/images/2743841" target="_blank">Derpibooru Page</a>
 
 <hr/>
