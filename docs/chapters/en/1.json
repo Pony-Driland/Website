@@ -1072,4 +1072,47 @@
         "character": "Kenny"
     },
 
+    {
+        "message": "Kenny spoke happily while looking at Vini.",
+        "type": "action"
+    },
+    {
+
+        "message": "Ah... Yes?",
+        "type": "dialogue",
+        "character": "Vini"
+    },
+
+    {
+        "message": "Yes? Yes... Hello Vini... Welcome.",
+        "type": "dialogue",
+        "character": "Raquel"
+    },
+    {
+        "message": "Raquel looked curiously at Vini for a few seconds before answering.",
+        "type": "action"
+    },
+
+    {
+        "message": "My name is Raquel, nice to meet you... It's the first time I've seen a newbie visit our house.",
+        "type": "dialogue",
+        "character": "Raquel"
+    },
+
+    {
+        "message": "Raquel spoke in a shy way before smiling back. Vini then tried not to scare Raquel too much and tried to respond kindly when he realized that this would be the best alternative to not being alone in the unknown world.",
+        "type": "action"
+    },
+
+    {
+        "message": "Pleasure, my name...well you already know. My name is Vini hihihihi. Kenny found me at the beach and brought me here, thank you very much for your consideration.",
+        "type": "dialogue",
+        "character": "Vini"
+    },
+
+    {
+        "message": "Vini smile a little more while looking around.",
+        "type": "action"
+    },
+
 ]
