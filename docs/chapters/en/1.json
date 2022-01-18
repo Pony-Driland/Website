@@ -962,8 +962,13 @@
     },
 
     {
+        "type": "setWhere",
+        "value": "Greendream Village"
+    },
+
+    {
         "type": "action",
-        "value": "Kenny arrived in Greendream Village, the village was a little busy, Vini saw some random ponies starting another new day as Kenny arrived at his door."
+        "value": "Kenny arrived in the village, the village was a little busy, Vini saw some random ponies starting another new day as Kenny arrived at his door."
     },
 
     {
