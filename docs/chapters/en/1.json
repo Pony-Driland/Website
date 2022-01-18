@@ -937,7 +937,7 @@
 
     {
         "type": "dialogue",
-        "character": "Kenny",
+        "character": "Vini",
         "text": "H..Hey! Wait me!"
     },
 
@@ -947,9 +947,19 @@
     },
 
     {
+        "message": "Kenny starts to smile and looks around looking for you",
+        "type": "action"
+    },
+
+    {
+        "message": ": Oh? Vini? Vini?! Oh Vini! You are there!",
         "type": "dialogue",
-        "character": "Kenny",
-        "text": "H..Hey! Wait me!"
+        "character": "Kenny"
+    },
+
+    {
+        "message": "Kenny smiled again and waved at Vini, happily inviting Vini to come faster.",
+        "type": "action"
     },
 
 ]
