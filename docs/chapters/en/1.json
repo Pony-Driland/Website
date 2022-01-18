@@ -962,4 +962,59 @@
         "type": "action"
     },
 
+    {
+        "message": "Vini looked smiling back with a pokeface.",
+        "type": "action"
+    },
+
+    {
+        "message": "I'll get there. A moment...",
+        "type": "dialogue",
+        "character": "Vini"
+    },
+
+    {
+        "message": "hihihi... You're doing great! Soon you will walk better on 4 legs!",
+        "type": "dialogue",
+        "character": "Kenny"
+    },
+
+    {
+        "message": "Kenny giggles a little before smiling again and kept waving at you, waiting for Vini to arrive.",
+        "type": "action"
+    },
+
+    {
+        "message": "Vini looked smiling back again with a second pokerface.",
+        "type": "action"
+    },
+
+    {
+        "message": "I'm coming... coming slowly...",
+        "type": "dialogue",
+        "character": "Vini"
+    },
+
+    {
+        "message": "Vini looked smiling back again with a second pokerface. Vini then tried a little harder, with great difficulty, but he finally arrived.",
+        "type": "action"
+    },
+
+    {
+        "message": "Hah! I arrived! Yes!",
+        "type": "dialogue",
+        "character": "Vini"
+    },
+
+    {
+        "message": "Vini then was very thoughtful, he looked all around and was surprised by the scenery that was being observed.",
+        "type": "action"
+    },
+
+    {
+        "message": "Wow There's a lot of ponies here and a lot of little houses here.",
+        "type": "dialogue",
+        "character": "Vini"
+    },
+
 ]
