@@ -1044,4 +1044,32 @@
         "character": "Vini"
     },
 
+    {
+        "message": "Ehe! It's the house where Raquel and I live. You can feel right at home now. Uou can stay here if you need some shelter.",
+        "type": "dialogue",
+        "character": "Kenny"
+    },
+
+    {
+        "message": "Kenny is a little nervous for a few seconds to answer, but then he continues with a smile while he look at the door being opened, so Vini saw Raquel.",
+        "type": "action"
+    },
+
+    {
+        "message": "Good morning Kenny! How's the... Oh? Um... a new guest?",
+        "type": "dialogue",
+        "character": "Rachel"
+    },
+
+    {
+        "message": "Rachel spoke in a frightened way for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "message": "hihihi... Calm down... it's Vini. I found him on the beach where newbies spawn when they teleport here sunddely. He is here to be received! Right Vini?",
+        "type": "dialogue",
+        "character": "Kenny"
+    },
+
 ]
