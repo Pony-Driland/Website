@@ -1017,4 +1017,31 @@
         "character": "Vini"
     },
 
+    {
+        "message": "Vini slowly felt that his walking skills were getting better and better. But he could still feel uncomfortable with the whole new environment. He looked very confused and at a loss as to how all this was possible. Why was he there, how did he get there. Everything was just amazing for Vini.",
+        "type": "action"
+    },
+
+    {
+        "message": "hihihi... Yes. You are in Greendream Village. Be very welcome new one!",
+        "type": "dialogue",
+        "character": "Kenny"
+    },
+
+    {
+        "message": "Kenny knock on the door happily.",
+        "type": "action"
+    },
+
+    {
+        "message": "Vini found Kenny's attitude strange, he watched and analyzed him for a few seconds curiously before asking the question.",
+        "type": "action"
+    },
+
+    {
+        "message": "Oh? Does this house belong to you?",
+        "type": "dialogue",
+        "character": "Vini"
+    },
+
 ]
