@@ -1140,4 +1140,60 @@
         "type": "action"
     },
 
+    {
+        "value": "Well...Make yourself at home...I...I made some pancakes for breakfast today...",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel continued with the shy happy face as she offered to enter. Vini then went back to listening to the conversation, surprised to hear about the meal.",
+        "type": "action"
+    },
+
+    {
+        "value": "Pancakes! Today is your lucky day Vini! Pancakes are the best morning meal we have here at home!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny said all excited in response. Raquel was a little surprised but then she laughed a little. Vini was still confused, trying to understand all that kindness. Then he would analyze the situation again and just respond. Vini was a little nervous trying to believe Kenny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ahn thank you very much, but why are you helping me? You don't know me or anything like that, for example, I'm a stranger to you, don't you think it's strange for a stranger to enter your house? Even weirder that he came from another world and doesn't even know how to walk right? Doesn't it seem a little strange to you?",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny got a little nervous and would just respond by laughing a little to relax.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Vini don't worry, I saw in your face that you were lost. We work hard to make guests feel welcome in the village and feel comfortable here. We don't want anyone to risk the life and end up going to the dark side of Pony Driland.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So please make yourself at home. We just want to do this for your own good.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny answered Vini and offered Vini to enter too. He proved to be positive in what he was doing. He wanted Vini to feel good. He just waited for Vini to enter the house.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay okay... I understand, so excuse me, what a beautiful house! *-*",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
 ]
