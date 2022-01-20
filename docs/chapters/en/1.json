@@ -1196,4 +1196,54 @@
         "type": "dialogue"
     },
 
+    {
+        "value": "Hihihi... Make yourself at home!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny smiled and rubbed he head at Raquel face. Raquel looks at Kenny for a few seconds before smile, so Raquel rubbed her face back while the two enter the house.",
+        "type": "action"
+    },
+
+    {
+        "type": "think",
+        "character": "Vini",
+        "value": "Hahaha... I think I get it. they are a couple. it is cute."
+    },
+
+    {
+        "value": "Vini soon saw that it was a house mixed with a medieval style with the technological things of a modern house. Vini saw a beautiful room rich in furniture, Vini just missed some things that are normally used for communication like television and telephone. And just ahead Vini could see the table where Raquel was preparing breakfast with pancakes. So Vini waits for kenny to say something, waiting at the entrance, making Kenny look at Vini.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Vini? You may come in! Remember you are welcome here!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny invited Vini to enter again as Kenny went with Raquel towards the breakfast table.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Okay. Thank you again for everything.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vini was a little more surprised to be invited in. Vini heading towards an empty chair at the table.",
+        "type": "action"
+    },
+
+    {
+        "value": "Did you talk about me meeting someone to know the right place? who was it?",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
 ]
