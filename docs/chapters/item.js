@@ -13,15 +13,23 @@ var plugValue = function(item) {
 // Prepare Data
 var storyData = {
 
+    // Info
+    title: storyCfg.title,
+    description: storyCfg.description,
+
     // Counter
     count: 0,
 
     // Main Lang
-    lang: 'en',
+    lang: {
+        active: storyCfg.defaultLang,
+        default: storyCfg.defaultLang,
+        list: storyCfg.lang
+    },
 
     // Chapters
     chapter: {
-        amount: 1,
+        amount: storyCfg.chapters,
         selected: null,
         bookmark: {},
     },
@@ -33,7 +41,7 @@ var storyData = {
     youtube: {
 
         // Volume
-        volume: 100,
+        volume: storyCfg.defaultYoutubeVolume,
         quality: null,
         state: null,
 
