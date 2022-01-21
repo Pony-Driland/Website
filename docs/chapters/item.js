@@ -73,6 +73,8 @@ var chapters = {
                 .fail(function(err) {
 
                     console.error(err);
+                    alert(err.status);
+                    alert(err.statusText);
                     alert(err.message);
                     $.LoadingOverlay("hide");
 
