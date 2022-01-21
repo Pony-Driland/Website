@@ -15,33 +15,35 @@ var chapters = {
 
     // Youtube Player
     youtube: {
+
         player: null,
         events: {
             onReady: null,
             onStateChange: null
+        },
+
+        // Start Youtube
+        play: function(videoID) {
+
+            // Youtube Player
+
+            // Prepare Video ID
+            chapters.youtube.videoID = videoID;
+
+            // New Player
+            if (!chapters.youtube.player) {
+
+                // 2. This code loads the IFrame Player API code asynchronously.
+                var tag = document.createElement('script');
+                tag.src = "https://www.youtube.com/iframe_api";
+                $('head').append(tag);
+
+            }
+
+            // Reuse Player
+            else { chapters.youtube.player.loadVideoById(videoID); }
+
         }
-    },
-
-    // Start Youtube
-    playYoutube: function(videoID) {
-
-        // Youtube Player
-
-        // Prepare Video ID
-        chapters.youtube.videoID = videoID;
-
-        // New Player
-        if (!chapters.youtube.player) {
-
-            // 2. This code loads the IFrame Player API code asynchronously.
-            var tag = document.createElement('script');
-            tag.src = "https://www.youtube.com/iframe_api";
-            $('head').append(tag);
-
-        }
-
-        // Reuse Player
-        else { chapters.youtube.player.loadVideoById(videoID); }
 
     },
 
