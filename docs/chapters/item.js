@@ -28,14 +28,23 @@ var chapters = {
             // Ready API
             onReady: function() {
 
+                // Get Data
                 chapters.youtube.volume = chapters.youtube.player.getVolume();
                 chapters.youtube.quality = chapters.youtube.player.getPlaybackQuality();
 
-                if (chapters.youtube.volume < 1) {
-                    chapters.youtube.volume = 100;
-                    chapters.youtube.player.setVolume(100);
+                // Storage Volume
+                const storageVolume = localStorage.getItem('storyVolume');
+                if (typeof storageVolume !== 'number') {
+                    if (chapters.youtube.volume < 1) {
+                        chapters.youtube.volume = 100;
+                        chapters.youtube.player.setVolume(100);
+                    }
+                } else {
+                    chapters.youtube.volume = storageVolume;
+                    chapters.youtube.player.setVolume(storageVolume);
                 }
 
+                // Play Video
                 chapters.youtube.player.setLoop(true);
                 chapters.youtube.player.playVideo();
 
@@ -85,6 +94,7 @@ var chapters = {
 
         // Volume
         setVolume: function(number) {
+            localStorage.setItem('storyVolume', number);
             chapters.youtube.volume = number;
             chapters.youtube.player.setVolume(number);
         },
@@ -116,44 +126,46 @@ var chapters = {
 
     // Start Load
     start: function(startApp) {
-        if (typeof startApp === 'function') {
+        if (localStorage) {
+            if (typeof startApp === 'function') {
 
-            // Load Data
-            $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
-            for (let i = 0; i < chapters.amount; i++) {
+                // Load Data
+                $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
+                for (let i = 0; i < chapters.amount; i++) {
 
-                // Data
-                const chapter = i + 1;
-                $.getJSON('./chapters/' + chapters.lang + '/' + chapter + '.json')
-
-                // Complete
-                .done(function(data) {
-
-                    // Insert Data
-                    chapters.data[chapter] = data;
+                    // Data
+                    const chapter = i + 1;
+                    $.getJSON('./chapters/' + chapters.lang + '/' + chapter + '.json')
 
                     // Complete
-                    chapters.count++;
-                    if (chapters.count === chapters.amount) {
-                        startApp(function() { $.LoadingOverlay("hide"); });
-                    }
+                    .done(function(data) {
 
-                })
+                        // Insert Data
+                        chapters.data[chapter] = data;
 
-                // Fail
-                .fail(function(err) {
+                        // Complete
+                        chapters.count++;
+                        if (chapters.count === chapters.amount) {
+                            startApp(function() { $.LoadingOverlay("hide"); });
+                        }
 
-                    console.error(err);
-                    alert(err.status);
-                    alert(err.statusText);
-                    alert(err.message);
-                    $.LoadingOverlay("hide");
+                    })
 
-                });
+                    // Fail
+                    .fail(function(err) {
+
+                        console.error(err);
+                        alert(err.status);
+                        alert(err.statusText);
+                        alert(err.message);
+                        $.LoadingOverlay("hide");
+
+                    });
+
+                }
 
             }
-
-        }
+        } else { alert('Local Storage API not found!'); }
     }
 
 };
