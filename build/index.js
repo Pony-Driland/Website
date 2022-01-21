@@ -8,4 +8,4 @@ app.use(express.static(path.join(__dirname, '../docs')));
 
 app.listen(port, () => {
     console.log(`Test app listening on port ${port}`);
-}) l
+});
