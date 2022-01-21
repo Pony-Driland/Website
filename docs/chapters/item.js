@@ -38,7 +38,8 @@ var chapters = {
                     if (chapters.youtube.volume < 1) {
                         chapters.youtube.volume = 100;
                         chapters.youtube.player.setVolume(100);
-                    }
+                        localStorage.setItem('storyVolume', 100);
+                    } else { localStorage.setItem('storyVolume', chapters.youtube.volume); }
                 } else {
                     chapters.youtube.volume = storageVolume;
                     chapters.youtube.player.setVolume(storageVolume);
