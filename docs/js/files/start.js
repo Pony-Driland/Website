@@ -14,6 +14,7 @@ $(function() {
 /* 
 
     Music
+    storyData.youtube.play('vwsRv0Rqncw')
     storyData.youtube.player.playVideo()
     storyData.youtube.player.pauseVideo()
     storyData.youtube.player.stopVideo()
