@@ -19,6 +19,7 @@
     "provider_name": "Pony Driland",
     "provider_url": "https://ponydriland.com",
     "title": "Homepage",
+    "description": "The mysterious world.",
     "type": "photo",
     "version": "1.0"
 }
