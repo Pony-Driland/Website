@@ -100,6 +100,7 @@ var chapters = {
             },
 
             onError: function(event) {
+                console.error(event);
                 if (typeof appData.youtube.onError === 'function') { appData.youtube.onError(event); }
             },
 
