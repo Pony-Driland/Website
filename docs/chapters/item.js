@@ -162,6 +162,7 @@ var storyData = {
             if (!storyData.youtube.player) {
 
                 // 2. This code loads the IFrame Player API code asynchronously.
+                console.log(`Starting Youtube API...`);
                 var tag = document.createElement('script');
                 tag.src = "https://www.youtube.com/iframe_api";
                 $('head').append(tag);
@@ -236,6 +237,7 @@ var storyData = {
 //    after the API code downloads.
 // https://developers.google.com/youtube/iframe_api_reference?hl=pt-br
 function onYouTubeIframeAPIReady() {
+    console.log(`Youtube API started!`);
     storyData.youtube.player = new YT.Player('youtubePlayer', {
         height: 'auto',
         width: 'auto',
