@@ -2,6 +2,8 @@
 var appData = { youtube: {} };
 
 // Start Document
+console.log(`${storyData.title} is being started!`);
+console.log(`App Info: ${storyData.description}`);
 $(function() {
     storyData.start(function(fn) {
 
