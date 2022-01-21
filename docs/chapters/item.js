@@ -25,11 +25,13 @@ var chapters = {
     // Start Youtube
     playYoutube: function(videoID) {
 
-        // New Player
-        if (!chapters.youtube) {
+        // Youtube Player
 
-            // Prepare Video ID
-            chapters.youtube.videoID = videoID;
+        // Prepare Video ID
+        chapters.youtube.videoID = videoID;
+
+        // New Player
+        if (!chapters.youtube.player) {
 
             // 2. This code loads the IFrame Player API code asynchronously.
             var tag = document.createElement('script');
@@ -39,7 +41,7 @@ var chapters = {
         }
 
         // Reuse Player
-        else { chapters.youtube.player.loadVideoById(); }
+        else { chapters.youtube.player.loadVideoById(videoID); }
 
     },
 
