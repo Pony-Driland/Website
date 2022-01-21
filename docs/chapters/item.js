@@ -177,6 +177,7 @@ var chapters = {
                         chapters.count++;
                         if (chapters.count === chapters.amount) {
                             delete chapters.count;
+                            delete chapters.start;
                             startApp(function() { $.LoadingOverlay("hide"); });
                         }
 
