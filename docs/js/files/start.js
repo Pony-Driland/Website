@@ -4,6 +4,13 @@ var appData = { youtube: {} };
 // Start Document
 console.log(`${storyData.title} is being started!`);
 console.log(`App Info: ${storyData.description}`);
+console.log(`Made by: ${storyData.creator}`);
+console.log(`Author Page: ${storyData.creator_url}`);
+console.log(`Age Rating: ${storyData.ageRating}`);
+console.log(`Github Repository: ${storyData.github_repository}`);
+console.log(`App Tags`, storyData.tags);
+console.log(`NSFW`, true);
+
 $(function() {
     storyData.start(function(fn) {
 

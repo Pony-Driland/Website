@@ -10,6 +10,7 @@ var storyCfg = {
     creator: 'Yasmin Seidel (JasminDreasond)',
     creator_url: 'https://unstoppabledomains.com/d/ponydriland.nft',
     github_repository: 'Pony-Driland/Website',
+    ageRating: 'teen',
     nsfw: true,
     tags: [
         "fanfic",
@@ -25,6 +26,10 @@ var storyCfg = {
         "animated blood",
         "horror",
         "pony driland"
-    ]
+    ],
+
+    theme: {
+
+    }
 
 };
