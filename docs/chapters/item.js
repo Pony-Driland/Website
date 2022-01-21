@@ -192,7 +192,7 @@ var storyData = {
 
                     // Data
                     const chapter = i + 1;
-                    $.getJSON('./chapters/' + storyData.lang + '/' + chapter + '.json')
+                    $.getJSON('./chapters/' + storyData.lang.active + '/' + chapter + '.json')
 
                     // Complete
                     .done(function(data) {
