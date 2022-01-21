@@ -1,6 +1,6 @@
 // Start Load
 $(function(fn) {
-    chapters.start(function() {
+    chapters.start(function(fn) {
 
         console.log(chapters);
         fn();

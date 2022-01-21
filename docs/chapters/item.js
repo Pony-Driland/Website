@@ -59,7 +59,7 @@ var chapters = {
                 .done(function(data) {
 
                     // Insert Data
-                    chapters[chapter] = data;
+                    chapters.data[chapter] = data;
 
                     // Complete
                     chapters.count++;
