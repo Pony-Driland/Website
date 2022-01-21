@@ -3,9 +3,9 @@ var appData = { youtube: {} };
 
 // Start Document
 $(function() {
-    chapters.start(function(fn) {
+    storyData.start(function(fn) {
 
-        console.log(chapters);
+        console.log(storyData);
         fn();
 
     });
@@ -14,15 +14,15 @@ $(function() {
 /* 
 
     Music
-    chapters.youtube.player.playVideo()
-    chapters.youtube.player.pauseVideo()
-    chapters.youtube.player.stopVideo()
+    storyData.youtube.player.playVideo()
+    storyData.youtube.player.pauseVideo()
+    storyData.youtube.player.stopVideo()
 
-    chapters.youtube.player.mute()
-    chapters.youtube.player.unMute()
-    chapters.youtube.player.isMuted()
+    storyData.youtube.player.mute()
+    storyData.youtube.player.unMute()
+    storyData.youtube.player.isMuted()
 
-    chapters.youtube.player.setVolume(100)
+    storyData.youtube.player.setVolume(100)
 
     player.getDuration()
     player.getVideoUrl()
