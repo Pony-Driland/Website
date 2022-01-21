@@ -31,6 +31,7 @@ var chapters = {
                 // Get Data
                 chapters.youtube.volume = chapters.youtube.player.getVolume();
                 chapters.youtube.quality = chapters.youtube.player.getPlaybackQuality();
+                chapters.youtube.qualityList = chapters.youtube.player.getAvailableQualityLevels();
 
                 // Storage Volume
                 const storageVolume = Number(localStorage.getItem('storyVolume'));
@@ -45,6 +46,15 @@ var chapters = {
                     chapters.youtube.player.setVolume(storageVolume);
                 }
 
+                // Storage Quality
+                const storageQuality = localStorage.getItem('storyQuality');
+                if (typeof storageQuality !== 'string' || storageQuality.length < 1) {
+                    localStorage.setItem('storyQuality', chapters.youtube.quality);
+                } else {
+                    chapters.youtube.quality = storageQuality;
+                    chapters.youtube.player.setPlaybackQuality(storageQuality);
+                }
+
                 // Play Video
                 chapters.youtube.player.setLoop(true);
                 chapters.youtube.player.playVideo();
@@ -53,7 +63,10 @@ var chapters = {
 
             // State Change
             onStateChange: function(event) {
-                if (event) { chapters.youtube.state = event.data; }
+                if (event) {
+                    chapters.youtube.state = event.data;
+                    chapters.youtube.qualityList = chapters.youtube.player.getAvailableQualityLevels();
+                }
                 /* 
                                 
                     chapters.youtube.player.getPlayerState()
@@ -76,13 +89,7 @@ var chapters = {
             // Quality
             onPlaybackQualityChange: function(event) {
                 if (event) { chapters.youtube.quality = event.data; }
-                /* 
-
-                    small, medium, large, hd720,hd1080,highres
-                    player.setPlaybackQuality('default')
-                    player.getAvailableQualityLevels()
-
-                 */
+                /* player.setPlaybackQuality('default') */
             },
 
             // Other
@@ -91,6 +98,16 @@ var chapters = {
             onError: null,
             onApiChange: null
 
+        },
+
+        // Quality
+        setQuality: function(value) {
+            if (chapters.youtube.qualityList.indexOf(value) > -1) {
+                localStorage.setItem('storyQuality', value);
+                chapters.youtube.quality = value;
+                chapters.youtube.player.setPlaybackQuality(value);
+                return true;
+            } else { return false; }
         },
 
         // Volume
