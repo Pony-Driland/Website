@@ -7,10 +7,12 @@ var storyData = {
     // Main Lang
     lang: 'en',
 
-    // Amount Chapters
-    amount: 1,
-    selected: null,
-    bookmark: null,
+    // Chapters
+    chapter: {
+        amount: 1,
+        selected: null,
+        bookmark: null,
+    },
 
     // Chapter Data
     data: {},
@@ -163,7 +165,7 @@ var storyData = {
 
                 // Load Data
                 $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
-                for (let i = 0; i < storyData.amount; i++) {
+                for (let i = 0; i < storyData.chapter.amount; i++) {
 
                     // Data
                     const chapter = i + 1;
@@ -177,7 +179,7 @@ var storyData = {
 
                         // Complete
                         storyData.count++;
-                        if (storyData.count === storyData.amount) {
+                        if (storyData.count === storyData.chapter.amount) {
                             delete storyData.count;
                             delete storyData.start;
                             startApp(function() { $.LoadingOverlay("hide"); });
