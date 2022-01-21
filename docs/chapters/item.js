@@ -89,6 +89,7 @@ var chapters = {
 
 // 1. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
+// https://developers.google.com/youtube/iframe_api_reference?hl=pt-br
 function onYouTubeIframeAPIReady() {
     chapters.youtube.player = new YT.Player('youtubePlayer', {
         height: 'auto',
