@@ -34,7 +34,7 @@ Accessing the source code of this repository can make you see possible spoilers 
 
 ### Age Rating (Age 16 and Above)
 
-<img src="https://github.com/Pony-Driland/Website/blob/main/docs/img/age-rating.jpg?raw=true" height="200" />
+<img src="https://github.com/Pony-Driland/Website/blob/main/docs/img/age-rating/teen.jpg?raw=true" height="200" />
 
 Adventure | Action | Drama | Comedy | Fantasy Violence | Intense Violence | Strong Language | Animated Blood | Horror (A little)
 
