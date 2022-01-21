@@ -1,5 +1,5 @@
 // Prepare Data
-var chapters = {
+var storyData = {
 
     // Counter
     count: 0,
@@ -9,6 +9,8 @@ var chapters = {
 
     // Amount Chapters
     amount: 1,
+    selected: null,
+    bookmark: null,
 
     // Chapter Data
     data: {},
@@ -29,26 +31,26 @@ var chapters = {
             onReady: function(event) {
 
                 // Get Data
-                chapters.youtube.volume = chapters.youtube.player.getVolume();
-                chapters.youtube.quality = chapters.youtube.player.getPlaybackQuality();
-                chapters.youtube.qualityList = chapters.youtube.player.getAvailableQualityLevels();
+                storyData.youtube.volume = storyData.youtube.player.getVolume();
+                storyData.youtube.quality = storyData.youtube.player.getPlaybackQuality();
+                storyData.youtube.qualityList = storyData.youtube.player.getAvailableQualityLevels();
 
                 // Storage Volume
                 const storageVolume = Number(localStorage.getItem('storyVolume'));
                 if (isNaN(storageVolume) || !isFinite(storageVolume) || storageVolume < 0 || storageVolume > 100) {
-                    if (chapters.youtube.volume < 1) {
-                        chapters.youtube.volume = 100;
-                        chapters.youtube.player.setVolume(100);
+                    if (storyData.youtube.volume < 1) {
+                        storyData.youtube.volume = 100;
+                        storyData.youtube.player.setVolume(100);
                         localStorage.setItem('storyVolume', 100);
-                    } else { localStorage.setItem('storyVolume', chapters.youtube.volume); }
+                    } else { localStorage.setItem('storyVolume', storyData.youtube.volume); }
                 } else {
-                    chapters.youtube.volume = storageVolume;
-                    chapters.youtube.player.setVolume(storageVolume);
+                    storyData.youtube.volume = storageVolume;
+                    storyData.youtube.player.setVolume(storageVolume);
                 }
 
                 // Play Video
-                chapters.youtube.player.setLoop(true);
-                chapters.youtube.player.playVideo();
+                storyData.youtube.player.setLoop(true);
+                storyData.youtube.player.playVideo();
 
                 // Send Data
                 if (typeof appData.youtube.onReady === 'function') { appData.youtube.onReady(event); }
@@ -60,8 +62,8 @@ var chapters = {
 
                 // Event
                 if (event) {
-                    chapters.youtube.state = event.data;
-                    chapters.youtube.qualityList = chapters.youtube.player.getAvailableQualityLevels();
+                    storyData.youtube.state = event.data;
+                    storyData.youtube.qualityList = storyData.youtube.player.getAvailableQualityLevels();
                 }
 
                 // Send Data
@@ -69,7 +71,7 @@ var chapters = {
 
                 /* 
                                 
-                    chapters.youtube.player.getPlayerState()
+                    storyData.youtube.player.getPlayerState()
                     -1 – não iniciado
                     0 – encerrado
                     1 – em reprodução
@@ -89,7 +91,7 @@ var chapters = {
 
             // Quality
             onPlaybackQualityChange: function(event) {
-                if (event) { chapters.youtube.quality = event.data; }
+                if (event) { storyData.youtube.quality = event.data; }
                 if (typeof appData.youtube.onPlaybackQualityChange === 'function') { appData.youtube.onPlaybackQualityChange(event); }
                 /* player.setPlaybackQuality('default') */
             },
@@ -112,9 +114,9 @@ var chapters = {
 
         // Quality
         setQuality: function(value) {
-            if (chapters.youtube.qualityList.indexOf(value) > -1 || value === 'default') {
-                chapters.youtube.quality = value;
-                chapters.youtube.player.setPlaybackQuality(value);
+            if (storyData.youtube.qualityList.indexOf(value) > -1 || value === 'default') {
+                storyData.youtube.quality = value;
+                storyData.youtube.player.setPlaybackQuality(value);
                 return true;
             } else { return false; }
         },
@@ -122,8 +124,8 @@ var chapters = {
         // Volume
         setVolume: function(number) {
             localStorage.setItem('storyVolume', number);
-            chapters.youtube.volume = number;
-            chapters.youtube.player.setVolume(number);
+            storyData.youtube.volume = number;
+            storyData.youtube.player.setVolume(number);
         },
 
         // Start Youtube
@@ -132,10 +134,10 @@ var chapters = {
             // Youtube Player
 
             // Prepare Video ID
-            chapters.youtube.videoID = videoID;
+            storyData.youtube.videoID = videoID;
 
             // New Player
-            if (!chapters.youtube.player) {
+            if (!storyData.youtube.player) {
 
                 // 2. This code loads the IFrame Player API code asynchronously.
                 var tag = document.createElement('script');
@@ -145,7 +147,7 @@ var chapters = {
             }
 
             // Reuse Player
-            else { chapters.youtube.player.loadVideoById(videoID); }
+            else { storyData.youtube.player.loadVideoById(videoID); }
 
         }
 
@@ -161,23 +163,23 @@ var chapters = {
 
                 // Load Data
                 $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
-                for (let i = 0; i < chapters.amount; i++) {
+                for (let i = 0; i < storyData.amount; i++) {
 
                     // Data
                     const chapter = i + 1;
-                    $.getJSON('./chapters/' + chapters.lang + '/' + chapter + '.json')
+                    $.getJSON('./chapters/' + storyData.lang + '/' + chapter + '.json')
 
                     // Complete
                     .done(function(data) {
 
                         // Insert Data
-                        chapters.data[chapter] = data;
+                        storyData.data[chapter] = data;
 
                         // Complete
-                        chapters.count++;
-                        if (chapters.count === chapters.amount) {
-                            delete chapters.count;
-                            delete chapters.start;
+                        storyData.count++;
+                        if (storyData.count === storyData.amount) {
+                            delete storyData.count;
+                            delete storyData.start;
                             startApp(function() { $.LoadingOverlay("hide"); });
                         }
 
@@ -203,10 +205,10 @@ var chapters = {
 //    after the API code downloads.
 // https://developers.google.com/youtube/iframe_api_reference?hl=pt-br
 function onYouTubeIframeAPIReady() {
-    chapters.youtube.player = new YT.Player('youtubePlayer', {
+    storyData.youtube.player = new YT.Player('youtubePlayer', {
         height: 'auto',
         width: 'auto',
-        videoId: chapters.youtube.videoID,
-        events: chapters.youtube.events
+        videoId: storyData.youtube.videoID,
+        events: storyData.youtube.events
     });
 };
