@@ -33,8 +33,8 @@ var chapters = {
                 chapters.youtube.quality = chapters.youtube.player.getPlaybackQuality();
 
                 // Storage Volume
-                const storageVolume = localStorage.getItem('storyVolume');
-                if (typeof storageVolume !== 'number') {
+                const storageVolume = Number(localStorage.getItem('storyVolume'));
+                if (isNaN(storageVolume) || !isFinite(storageVolume) || storageVolume < 0 || storageVolume > 100) {
                     if (chapters.youtube.volume < 1) {
                         chapters.youtube.volume = 100;
                         chapters.youtube.player.setVolume(100);
