@@ -46,15 +46,6 @@ var chapters = {
                     chapters.youtube.player.setVolume(storageVolume);
                 }
 
-                // Storage Quality
-                const storageQuality = localStorage.getItem('storyQuality');
-                if (typeof storageQuality !== 'string' || storageQuality.length < 1) {
-                    localStorage.setItem('storyQuality', chapters.youtube.quality);
-                } else {
-                    chapters.youtube.quality = storageQuality;
-                    chapters.youtube.player.setPlaybackQuality(storageQuality);
-                }
-
                 // Play Video
                 chapters.youtube.player.setLoop(true);
                 chapters.youtube.player.playVideo();
@@ -103,7 +94,6 @@ var chapters = {
         // Quality
         setQuality: function(value) {
             if (chapters.youtube.qualityList.indexOf(value) > -1) {
-                localStorage.setItem('storyQuality', value);
                 chapters.youtube.quality = value;
                 chapters.youtube.player.setPlaybackQuality(value);
                 return true;
