@@ -16,10 +16,77 @@ var chapters = {
     // Youtube Player
     youtube: {
 
+        // Volume
+        volume: 100,
+        quality: null,
+        state: null,
+
+        // Player
         player: null,
         events: {
-            onReady: null,
-            onStateChange: null
+
+            // Ready API
+            onReady: function() {
+
+                chapters.youtube.volume = chapters.youtube.player.getVolume();
+                chapters.youtube.quality = chapters.youtube.player.getPlaybackQuality();
+
+                if (chapters.youtube.volume < 1) {
+                    chapters.youtube.volume = 100;
+                    chapters.youtube.player.setVolume(100);
+                }
+
+                chapters.youtube.player.setLoop(true);
+                chapters.youtube.player.playVideo();
+
+            },
+
+            // State Change
+            onStateChange: function(event) {
+                if (event) { chapters.youtube.state = event.data; }
+                /* 
+                                
+                    chapters.youtube.player.getPlayerState()
+                    -1 – não iniciado
+                    0 – encerrado
+                    1 – em reprodução
+                    2 – em pausa
+                    3 – armazenando em buffer
+                    5 – vídeo indicado
+
+                    YT.PlayerState.ENDED
+                    YT.PlayerState.PLAYING
+                    YT.PlayerState.PAUSED
+                    YT.PlayerState.BUFFERING
+                    YT.PlayerState.CUED
+                
+                */
+            },
+
+            // Quality
+            onPlaybackQualityChange: function(event) {
+                if (event) { chapters.youtube.quality = event.data; }
+                /* 
+
+                    small, medium, large, hd720,hd1080,highres
+                    player.setPlaybackQuality('default')
+                    player.getAvailableQualityLevels()
+
+                 */
+            },
+
+            // Other
+            onPlaybackRateChange: null,
+
+            onError: null,
+            onApiChange: null
+
+        },
+
+        // Volume
+        setVolume: function(number) {
+            chapters.youtube.volume = number;
+            chapters.youtube.player.setVolume(number);
         },
 
         // Start Youtube
