@@ -1,4 +1,7 @@
 // Start Load
+var appData = { youtube: {} };
+
+// Start Document
 $(function() {
     chapters.start(function(fn) {
 

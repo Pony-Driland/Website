@@ -26,7 +26,7 @@ var chapters = {
         events: {
 
             // Ready API
-            onReady: function() {
+            onReady: function(event) {
 
                 // Get Data
                 chapters.youtube.volume = chapters.youtube.player.getVolume();
@@ -50,14 +50,23 @@ var chapters = {
                 chapters.youtube.player.setLoop(true);
                 chapters.youtube.player.playVideo();
 
+                // Send Data
+                if (typeof appData.youtube.onReady === 'function') { appData.youtube.onReady(event); }
+
             },
 
             // State Change
             onStateChange: function(event) {
+
+                // Event
                 if (event) {
                     chapters.youtube.state = event.data;
                     chapters.youtube.qualityList = chapters.youtube.player.getAvailableQualityLevels();
                 }
+
+                // Send Data
+                if (typeof appData.youtube.onStateChange === 'function') { appData.youtube.onStateChange(event); }
+
                 /* 
                                 
                     chapters.youtube.player.getPlayerState()
@@ -75,19 +84,28 @@ var chapters = {
                     YT.PlayerState.CUED
                 
                 */
+
             },
 
             // Quality
             onPlaybackQualityChange: function(event) {
                 if (event) { chapters.youtube.quality = event.data; }
+                if (typeof appData.youtube.onPlaybackQualityChange === 'function') { appData.youtube.onPlaybackQualityChange(event); }
                 /* player.setPlaybackQuality('default') */
             },
 
             // Other
-            onPlaybackRateChange: null,
+            onPlaybackRateChange: function(event) {
+                if (typeof appData.youtube.onPlaybackRateChange === 'function') { appData.youtube.onPlaybackRateChange(event); }
+            },
 
-            onError: null,
-            onApiChange: null
+            onError: function(event) {
+                if (typeof appData.youtube.onError === 'function') { appData.youtube.onError(event); }
+            },
+
+            onApiChange: function(event) {
+                if (typeof appData.youtube.onApiChange === 'function') { appData.youtube.onApiChange(event); }
+            }
 
         },
 
