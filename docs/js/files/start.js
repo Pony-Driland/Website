@@ -7,3 +7,21 @@ $(function() {
 
     });
 });
+
+/* 
+
+    Music
+    chapters.youtube.player.playVideo()
+    chapters.youtube.player.pauseVideo()
+    chapters.youtube.player.stopVideo()
+
+    chapters.youtube.player.mute()
+    chapters.youtube.player.unMute()
+    chapters.youtube.player.isMuted()
+
+    chapters.youtube.player.setVolume(100)
+
+    player.getDuration()
+    player.getVideoUrl()
+
+*/
