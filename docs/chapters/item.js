@@ -13,6 +13,36 @@ var chapters = {
     // Chapter Data
     data: {},
 
+    // Youtube Player
+    youtube: {
+        player: null,
+        events: {
+            onReady: null,
+            onStateChange: null
+        }
+    },
+
+    // Start Youtube
+    playYoutube: function(videoID) {
+
+        // New Player
+        if (!chapters.youtube) {
+
+            // Prepare Video ID
+            chapters.youtube.videoID = videoID;
+
+            // 2. This code loads the IFrame Player API code asynchronously.
+            var tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            $('head').append(tag);
+
+        }
+
+        // Reuse Player
+        else { chapters.youtube.player.loadVideoById(); }
+
+    },
+
     // Start Load
     start: function(startApp) {
         if (typeof startApp === 'function') {
@@ -53,4 +83,17 @@ var chapters = {
         }
     }
 
+};
+
+// Youtube
+
+// 1. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+function onYouTubeIframeAPIReady() {
+    chapters.youtube.player = new YT.Player('youtubePlayer', {
+        height: 'auto',
+        width: 'auto',
+        videoId: chapters.youtube.videoID,
+        events: chapters.youtube.events
+    });
 };
