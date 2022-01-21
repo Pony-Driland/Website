@@ -1,3 +1,15 @@
+// On Off Validator
+var plugValue = function(item) {
+    if (
+        (typeof item === 'string' && (item === 'true' || item === 'on' || item === '1')) ||
+        ((typeof item === 'boolean' || typeof item === 'number') && item)
+    ) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
 // Prepare Data
 var storyData = {
 
@@ -11,7 +23,7 @@ var storyData = {
     chapter: {
         amount: 1,
         selected: null,
-        bookmark: null,
+        bookmark: {},
     },
 
     // Chapter Data
@@ -163,6 +175,9 @@ var storyData = {
         if (localStorage) {
             if (typeof startApp === 'function') {
 
+                // Auto Bookmark
+                storyData.autoBookmark = plugValue(localStorage.getItem('autoBookMark'));
+
                 // Load Data
                 $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
                 for (let i = 0; i < storyData.chapter.amount; i++) {
@@ -176,6 +191,7 @@ var storyData = {
 
                         // Insert Data
                         storyData.data[chapter] = data;
+                        storyData.chapter.bookmark[chapter] = localStorage.getItem('bookmark' + chapter);
 
                         // Complete
                         storyData.count++;
