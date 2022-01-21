@@ -125,7 +125,10 @@ var chapters = {
     },
 
     // Start Load
-    start: function(startApp) {
+    start: function(startApp, failApp = function(err) {
+        console.error(err);
+        if (typeof err.message === 'string') { alert(err.message); }
+    }) {
         if (localStorage) {
             if (typeof startApp === 'function') {
 
@@ -153,19 +156,14 @@ var chapters = {
 
                     // Fail
                     .fail(function(err) {
-
-                        console.error(err);
-                        alert(err.status);
-                        alert(err.statusText);
-                        alert(err.message);
                         $.LoadingOverlay("hide");
-
+                        failApp(err);
                     });
 
                 }
 
-            }
-        } else { alert('Local Storage API not found!'); }
+            } else { failApp(new Error('Start App not found!')); }
+        } else { failApp(new Error('Local Storage API not found!')); }
     }
 
 };
