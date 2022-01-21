@@ -192,6 +192,7 @@ var storyData = {
 
                     // Data
                     const chapter = i + 1;
+                    console.log(`Loading Chapter ${chapter}...`);
                     $.getJSON('./chapters/' + storyData.lang.active + '/' + chapter + '.json')
 
                     // Complete
@@ -200,12 +201,15 @@ var storyData = {
                         // Insert Data
                         storyData.data[chapter] = data;
                         storyData.chapter.bookmark[chapter] = localStorage.getItem('bookmark' + chapter);
+                        console.log(`Chapter ${chapter} loaded!`);
 
                         // Complete
                         storyData.count++;
                         if (storyData.count === storyData.chapter.amount) {
                             delete storyData.count;
                             delete storyData.start;
+                            console.log('App Started!');
+                            console.log('Loading UI...');
                             startApp(function() { $.LoadingOverlay("hide"); });
                         }
 
@@ -213,6 +217,7 @@ var storyData = {
 
                     // Fail
                     .fail(function(err) {
+                        console.log(`Chapter ${chapter} failed during the load!`);
                         $.LoadingOverlay("hide");
                         failApp(err);
                     });

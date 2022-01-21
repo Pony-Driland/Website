@@ -2,16 +2,20 @@
 var appData = { youtube: {} };
 
 // Start Document
-console.log(`${storyData.title} is being started!`);
-console.log(`App Info: ${storyData.description}`);
-console.log(`Made by: ${storyData.creator}`);
-console.log(`Author Page: ${storyData.creator_url}`);
-console.log(`Age Rating: ${storyData.ageRating}`);
-console.log(`Github Repository: ${storyData.github_repository}`);
-console.log(`App Tags`, storyData.tags);
+console.group('App Information');
+console.log(`Name: ${storyCfg.title}`);
+console.log(`Description: ${storyCfg.description}`);
+console.log(`Author: ${storyCfg.creator}`);
+console.log(`Author Page: ${storyCfg.creator_url}`);
+console.log(`Age Rating: ${storyCfg.ageRating}`);
+console.log(`Github Repository: https://github.com/${storyCfg.github_repository}`);
+console.log(`Tags`, storyCfg.tags);
 console.log(`NSFW`, true);
+console.groupEnd();
 
+// Start App
 $(function() {
+    console.log('Starting App...');
     storyData.start(function(fn) {
 
         console.log(storyData);
