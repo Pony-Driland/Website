@@ -1,5 +1,6 @@
 {
     "dependencies": {
+        "@unstoppabledomains/resolution": "^7.1.2",
         "discord-markdown": "^2.5.1",
         "marked": "^4.0.10"
     }
