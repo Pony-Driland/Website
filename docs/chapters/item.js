@@ -112,7 +112,7 @@ var chapters = {
 
         // Quality
         setQuality: function(value) {
-            if (chapters.youtube.qualityList.indexOf(value) > -1) {
+            if (chapters.youtube.qualityList.indexOf(value) > -1 || value === 'default') {
                 chapters.youtube.quality = value;
                 chapters.youtube.player.setPlaybackQuality(value);
                 return true;
