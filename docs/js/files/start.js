@@ -254,6 +254,14 @@ $(function() {
                             urlUpdate();
                         }),
 
+                        // LICENSE
+                        $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('License').prepend(
+                            $('<i>', { class: 'fas fa-copyright mr-2' })
+                        ).click(function() {
+                            openMDFIle('/LICENSE');
+                            urlUpdate('/LICENSE', 'License');
+                        }),
+
                         // Read Fanfic
                         /* $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Read').prepend(
                             $('<i>', { class: 'fab fa-readme mr-2' })
