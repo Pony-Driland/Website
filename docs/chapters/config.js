@@ -6,6 +6,7 @@ var storyCfg = {
     lang: ['en'],
     chapters: 1,
     defaultYoutubeVolume: 100,
+    year: 2021,
 
     nftDomain: 'ponydriland.nft',
     creator: 'Yasmin Seidel (JasminDreasond)',
