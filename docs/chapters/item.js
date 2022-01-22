@@ -73,6 +73,7 @@ var storyData = {
 
                 // Play Video
                 storyData.youtube.player.setLoop(true);
+                storyData.youtube.player.setShuffle(true);
                 storyData.youtube.player.playVideo();
 
                 // Send Data
