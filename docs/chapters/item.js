@@ -159,6 +159,8 @@ var storyData = {
 
             // Prepare Video ID
             storyData.youtube.videoID = videoID;
+            storyData.youtube.currentTime = 0;
+            storyData.youtube.duration = 0;
 
             // New Player
             if (!storyData.youtube.player) {
@@ -173,6 +175,7 @@ var storyData = {
                 setInterval(function() {
                     if (YT && YT.PlayerState && storyData.youtube.player) {
                         if (storyData.youtube.state === YT.PlayerState.PLAYING) {
+                            storyData.youtube.duration = storyData.youtube.player.getDuration();
                             storyData.youtube.currentTime = storyData.youtube.player.getCurrentTime();
                         } else if (storyData.youtube.state === YT.PlayerState.ENDED) {
                             storyData.youtube.currentTime = storyData.youtube.player.getDuration();
