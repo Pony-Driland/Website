@@ -31,7 +31,7 @@ Amy was no longer a depressed pony, feeling loved like the pet she is, she devel
 
 She knew that through the magical collar, she could be teleported, or ask for Rainbow Queen's help. And then her new lifestyle that made her feel better continued, making her forget about her sad past, but still sometimes she was a little worried about what happened to her family, as now she was extremely far away from home.
 
-<img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/amy/ref.jpg?raw=true" height="500">
+<img src="https://github.com/Pony-Driland/Pony-Driland/blob/main/docs/img/characters/amy/ref.jpg?raw=true" height="500">
 <a href="https://derpibooru.org/images/2734116" target="_blank">Derpibooru Page</a>
 
 <hr/>
@@ -46,7 +46,7 @@ All Rainbow Queens pets have the eternal life while the pet could be forever a R
 
 Due to the magic of the collar circling Amy's body, it makes her eyes no longer have the natural color, being replaced by colored ones.
 
-<img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/amy/wip-collar.jpg?raw=true" height="500">
+<img src="https://github.com/Pony-Driland/Pony-Driland/blob/main/docs/img/characters/amy/wip-collar.jpg?raw=true" height="500">
 
 <hr/>
 
