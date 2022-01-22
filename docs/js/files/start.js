@@ -247,10 +247,17 @@ $(function() {
                     $('<div>', { class: 'navbar-nav' }).append(
 
                         // Homepage
-                        $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Homepage').click(function() {
+                        $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Homepage').prepend(
+                            $('<i>', { class: 'fas fa-home mr-2' })
+                        ).click(function() {
                             openMDFIle('/README.md');
                             urlUpdate();
-                        })
+                        }),
+
+                        // Read Fanfic
+                        /* $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Read').prepend(
+                            $('<i>', { class: 'fab fa-readme mr-2' })
+                        ).click(openChapterMenu) */
 
                     )
                 )
@@ -288,11 +295,15 @@ $(function() {
                             $('<ul>', { class: 'list-unstyled' }).append(
 
                                 $('<li>').append(
-                                    $('<a>', { target: '_blank', href: `https://opensea.io/collection/${storyCfg.opensea}` }).text('OpenSea')
+                                    $('<a>', { target: '_blank', href: `https://opensea.io/collection/${storyCfg.opensea}` }).text('OpenSea').prepend(
+                                        $('<i>', { class: 'fab fa-ethereum mr-2' })
+                                    )
                                 ),
 
                                 $('<li>').append(
-                                    $('<a>', { href: `https://${storyData.cid32}.ipfs.dweb.link/` }).text('IPFS ' + storyCfg.nftDomain.name)
+                                    $('<a>', { href: `https://${storyData.cid32}.ipfs.dweb.link/` }).text('IPFS ' + storyCfg.nftDomain.name).prepend(
+                                        $('<i>', { class: 'fas fa-wifi mr-2' })
+                                    )
                                 )
 
                             )
@@ -304,13 +315,19 @@ $(function() {
                             $('<ul>', { class: 'list-unstyled' }).append(
 
                                 $('<li>').append(
-                                    $('<a>', { target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.valueURL) }).text(storyCfg.nftDomain.name),
+                                    $('<a>', { target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.valueURL) }).text(storyCfg.nftDomain.name).prepend(
+                                        $('<i>', { class: 'fas fa-marker mr-2' })
+                                    ),
                                 ),
                                 $('<li>').append(
-                                    $('<a>', { target: '_blank', href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}` }).text('Github'),
+                                    $('<a>', { target: '_blank', href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}` }).text('Github').prepend(
+                                        $('<i>', { class: 'fab fa-github mr-2' })
+                                    ),
                                 ),
                                 $('<li>').append(
-                                    $('<a>', { target: '_blank', href: 'mailto:' + storyCfg.contact }).text('Contact')
+                                    $('<a>', { target: '_blank', href: 'mailto:' + storyCfg.contact }).text('Contact').prepend(
+                                        $('<i>', { class: 'fas fa-envelope mr-2' })
+                                    )
                                 )
 
                             )
