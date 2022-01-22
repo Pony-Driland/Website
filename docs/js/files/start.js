@@ -16,7 +16,16 @@ console.groupEnd();
 // Start App
 $(function() {
     console.log('Starting App...');
-    storyData.start(function(fn) {
+    storyData.start(function(fn, readme) {
+
+        // Convert Data
+        readme = marked.parse(readme);
+
+        // Insert Readme
+        $('#app').append(
+            $('<hr>', { class: 'my-5' }),
+            $('<div>', { id: 'readme', class: 'container' }).html(readme)
+        );
 
         console.log(storyData);
         fn();
