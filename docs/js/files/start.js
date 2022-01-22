@@ -19,7 +19,7 @@ var urlUpdate = function(url, title = 'Pony Driland') {
     document.title = title;
 
     if (typeof url === 'string' && url.length > 0) {
-        window.history.pushState({ "pageTitle": title }, "", '/?path=' + encodeURIComponent(url));
+        window.history.pushState({ "pageTitle": title }, "", '/?path=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(title));
     } else {
         window.history.pushState({ "pageTitle": title }, "", '/');
     }
@@ -121,7 +121,16 @@ $(function() {
         );
 
         // Start Readme
-        insertMarkdownFile(readme);
+        if (!params || typeof params.path !== 'string' || params.path.length < 1 || !params.path.startsWith('/')) {
+            insertMarkdownFile(readme);
+        } else {
+            openMDFIle(params.path);
+            if (typeof params.title !== 'string' || params.title.length < 1) {
+                urlUpdate(params.path, params.title);
+            } else {
+                urlUpdate(params.path);
+            }
+        }
 
         // Complete
         console.log(storyData);
