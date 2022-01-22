@@ -21,6 +21,14 @@ $(function() {
         // Convert Data
         readme = marked.parse(readme);
 
+        // Insert CID
+        $('#info-base').append(
+            $('<br/>'),
+            $('<small>').text('CID: ' + storyData.cid),
+            $('<br/>'),
+            $('<a>', { class: 'small', href: `https://${storyData.cid32}.ipfs.dweb.link/` }).text('CID32: ' + storyData.cid32)
+        )
+
         // Insert Readme
         $('#app').append(
             $('<hr>', { class: 'my-5' }),
