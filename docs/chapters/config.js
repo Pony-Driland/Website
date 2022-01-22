@@ -9,7 +9,14 @@ var storyCfg = {
     year: 2021,
 
     contact: 'tiny@ponydriland.com',
-    nftDomain: 'ponydriland.nft',
+
+    nftDomain: {
+        url: 'https://unstoppabledomains.com/d/{domain}',
+        value: 'ponydriland.nft',
+        valueURL: 'ponydriland.nft',
+        name: 'Unstoppable Domains'
+    },
+
     creator: 'Yasmin Seidel (JasminDreasond)',
     creator_url: 'https://unstoppabledomains.com/d/ponydriland.nft',
     opensea: 'ponydriland',

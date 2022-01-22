@@ -290,7 +290,7 @@ $(function() {
                                 ),
 
                                 $('<li>').append(
-                                    $('<a>', { href: `https://${storyData.cid32}.ipfs.dweb.link/` }).text('IPFS ' + storyCfg.nftDomain)
+                                    $('<a>', { href: `https://${storyData.cid32}.ipfs.dweb.link/` }).text('IPFS ' + storyCfg.nftDomain.name)
                                 )
 
                             )
@@ -301,6 +301,9 @@ $(function() {
                             $('<h5>').text('Links'),
                             $('<ul>', { class: 'list-unstyled' }).append(
 
+                                $('<li>').append(
+                                    $('<a>', { target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.valueURL) }).text(storyCfg.nftDomain.name),
+                                ),
                                 $('<li>').append(
                                     $('<a>', { target: '_blank', href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}` }).text('Github'),
                                 ),

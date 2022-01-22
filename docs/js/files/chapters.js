@@ -265,8 +265,8 @@ var storyData = {
 
                 // Start App
                 $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
-                if (typeof storyCfg.nftDomain === 'string' && storyCfg.nftDomain.length > 0) {
-                    resolution.ipfsHash(storyCfg.nftDomain).then((cid) => {
+                if (storyCfg.nftDomain && typeof storyCfg.nftDomain.value === 'string' && storyCfg.nftDomain.value.length > 0) {
+                    resolution.ipfsHash(storyCfg.nftDomain.value).then((cid) => {
                         storyData.cid = cid;
                         storyData.cid32 = CIDTool.base32(cid);
                         startTinyApp();
