@@ -189,7 +189,6 @@ var storyData = {
                 const startTinyApp = function() {
 
                     // Load Data
-                    $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
                     for (let i = 0; i < storyData.chapter.amount; i++) {
 
                         // Data
@@ -232,6 +231,7 @@ var storyData = {
                 storyData.autoBookmark = plugValue(localStorage.getItem('autoBookMark'));
 
                 // Start App
+                $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
                 if (typeof storyCfg.nftDomain === 'string' && storyCfg.nftDomain.length > 0) {
                     resolution.ipfsHash(storyCfg.nftDomain).then((cid) => {
                         storyData.cid = cid;
