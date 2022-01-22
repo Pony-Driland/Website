@@ -49,6 +49,7 @@ var storyData = {
         volume: storyCfg.defaultYoutubeVolume,
         quality: null,
         state: null,
+        embed: null,
 
         // Player
         player: null,
@@ -159,39 +160,52 @@ var storyData = {
         // Start Youtube
         play: function(videoID) {
 
-            // Youtube Player
+            // Read Data Base
+            $.ajax({
+                url: 'https://www.youtube.com/oembed?format=json&url=' + encodeURIComponent(`https://www.youtube.com/watch?v=` + videoID),
+                type: 'get',
+                dataType: 'json'
+            }).done(function(jsonVideo) {
 
-            // Prepare Video ID
-            storyData.youtube.videoID = videoID;
-            storyData.youtube.currentTime = 0;
-            storyData.youtube.duration = 0;
+                // Youtube Player
+                storyData.youtube.embed = jsonVideo;
 
-            // New Player
-            if (!storyData.youtube.player) {
+                // Prepare Video ID
+                storyData.youtube.videoID = videoID;
+                storyData.youtube.currentTime = 0;
+                storyData.youtube.duration = 0;
 
-                // 2. This code loads the IFrame Player API code asynchronously.
-                console.log(`Starting Youtube API...`);
-                var tag = document.createElement('script');
-                tag.src = "https://www.youtube.com/iframe_api";
-                $('head').append(tag);
+                // New Player
+                if (!storyData.youtube.player) {
 
-                // Current Time Detector
-                setInterval(function() {
-                    if (YT && YT.PlayerState && storyData.youtube.player) {
-                        if (storyData.youtube.state === YT.PlayerState.PLAYING) {
-                            storyData.youtube.duration = storyData.youtube.player.getDuration();
-                            storyData.youtube.currentTime = storyData.youtube.player.getCurrentTime();
-                            if (typeof appData.youtube.onPlaying === 'function') { appData.youtube.onPlaying(); }
-                        } else if (storyData.youtube.state === YT.PlayerState.ENDED) {
-                            storyData.youtube.currentTime = storyData.youtube.player.getDuration();
+                    // 2. This code loads the IFrame Player API code asynchronously.
+                    console.log(`Starting Youtube API...`);
+                    var tag = document.createElement('script');
+                    tag.src = "https://www.youtube.com/iframe_api";
+                    $('head').append(tag);
+
+                    // Current Time Detector
+                    setInterval(function() {
+                        if (YT && YT.PlayerState && storyData.youtube.player) {
+                            if (storyData.youtube.state === YT.PlayerState.PLAYING) {
+                                storyData.youtube.duration = storyData.youtube.player.getDuration();
+                                storyData.youtube.currentTime = storyData.youtube.player.getCurrentTime();
+                                if (typeof appData.youtube.onPlaying === 'function') { appData.youtube.onPlaying(); }
+                            } else if (storyData.youtube.state === YT.PlayerState.ENDED) {
+                                storyData.youtube.currentTime = storyData.youtube.player.getDuration();
+                            }
                         }
-                    }
-                }, 100);
+                    }, 100);
 
-            }
+                }
 
-            // Reuse Player
-            else { storyData.youtube.player.loadVideoById(videoID); }
+                // Reuse Player
+                else { storyData.youtube.player.loadVideoById(videoID); }
+
+            }).fail(err => {
+                console.error(err);
+                alert(err.message);
+            });
 
         }
 
@@ -292,6 +306,7 @@ function onYouTubeIframeAPIReady() {
     storyData.youtube.player = new YT.Player('youtubePlayer', {
         height: 'auto',
         width: 'auto',
+        playerVars: { controls: 0 },
         videoId: storyData.youtube.videoID,
         events: storyData.youtube.events
     });
