@@ -84,6 +84,7 @@ var storyData = {
             onStateChange: function(event) {
 
                 // Event
+                storyData.youtube.player.setLoop(true);
                 if (event) {
                     storyData.youtube.state = event.data;
                     storyData.youtube.qualityList = storyData.youtube.player.getAvailableQualityLevels();
@@ -114,6 +115,7 @@ var storyData = {
 
             // Quality
             onPlaybackQualityChange: function(event) {
+                storyData.youtube.player.setLoop(true);
                 if (event) { storyData.youtube.quality = event.data; }
                 if (typeof appData.youtube.onPlaybackQualityChange === 'function') { appData.youtube.onPlaybackQualityChange(event); }
                 /* player.setPlaybackQuality('default') */

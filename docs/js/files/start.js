@@ -2,7 +2,7 @@
 var appData = { youtube: {} };
 
 // Start Document
-console.group('App Information');
+console.groupCollapsed('App Information');
 console.log(`Name: ${storyCfg.title}`);
 console.log(`Description: ${storyCfg.description}`);
 console.log(`Author: ${storyCfg.creator}`);
