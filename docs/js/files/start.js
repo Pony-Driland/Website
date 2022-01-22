@@ -26,7 +26,10 @@ $(function() {
             $('<br/>'),
             $('<small>').text('CID: ' + storyData.cid),
             $('<br/>'),
-            $('<a>', { class: 'small', href: `https://${storyData.cid32}.ipfs.dweb.link/` }).text('CID32: ' + storyData.cid32)
+            $('<small>').append(
+                $('<span>').text('CID32: '),
+                $('<a>', { href: `https://${storyData.cid32}.ipfs.dweb.link/` }).text(storyData.cid32)
+            )
         )
 
         // Insert Readme
