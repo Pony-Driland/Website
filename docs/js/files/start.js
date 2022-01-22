@@ -287,6 +287,10 @@ $(function() {
 
                                 $('<li>').append(
                                     $('<a>', { target: '_blank', href: `https://opensea.io/collection/${storyCfg.opensea}` }).text('OpenSea')
+                                ),
+
+                                $('<li>').append(
+                                    $('<a>', { href: `https://${storyData.cid32}.ipfs.dweb.link/` }).text('IPFS ' + storyCfg.nftDomain)
                                 )
 
                             )
@@ -299,7 +303,8 @@ $(function() {
 
                                 $('<li>').append(
                                     $('<a>', { target: '_blank', href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}` }).text('Github'),
-                                    $('<br/>'),
+                                ),
+                                $('<li>').append(
                                     $('<a>', { target: '_blank', href: 'mailto:' + storyCfg.contact }).text('Contact')
                                 )
 
