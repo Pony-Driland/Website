@@ -15,7 +15,7 @@ $(() => {
     const allowedVore = localStorage.getItem('allowedVore');
     if (!allowedVore) {
 
-        $('#app').after(
+        /* $('#app').after(
             $('<div>', { id: 'vore-warning', class: 'container m-5 text-center border p-5' }).append(
 
                 // Warning
@@ -30,7 +30,7 @@ $(() => {
                 })
 
             )
-        );
+        ); */
 
     }
 
