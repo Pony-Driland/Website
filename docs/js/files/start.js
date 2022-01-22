@@ -275,7 +275,7 @@ $(function() {
                         // Logo
                         $('<div>', { class: 'col-md-6 mt-md-0 mt-3' }).append(
                             $('<center>').append(
-                                $('<img>', { class: 'img-fluid', src: '/img/logo.png?v=1' }),
+                                $('<img>', { class: 'img-fluid', src: '/img/logo.png' }),
                                 $('<br/>')
                             )
                         ),
