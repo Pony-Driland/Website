@@ -15,7 +15,7 @@ Many ponies are afraid of your presence. Some ponies have seen her doing mysteri
 
 The story of her life is also a mystery. Sometimes it seems like she tries to hide some dark past.
 
-<img src="https://github.com/JasminDreasond/Pony-Driland/blob/main/docs/img/characters/rayane/ref.png?raw=true" height="500">
+<img src="https://github.com/Pony-Driland/Pony-Driland/blob/main/docs/img/characters/rayane/ref.png?raw=true" height="500">
 <a href="https://derpibooru.org/images/2689494" target="_blank">Derpibooru Page</a>
 
 <hr/>
