@@ -154,9 +154,6 @@ $(function() {
             $('<div>', { id: 'markdown-read', class: 'container' })
         );
 
-
-
-
         // Insert Footer
         $('body').append(
             $('<footer>', { class: 'page-footer font-small pt-4 clearfix' }).append(
