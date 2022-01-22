@@ -286,7 +286,7 @@ $(function() {
                             $('<ul>', { class: 'list-unstyled' }).append(
 
                                 $('<li>').append(
-                                    $('<a>', { target: '_blank', href: '/' }).text('Test')
+                                    $('<a>', { target: '_blank', href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}` }).text('OpenSea')
                                 )
 
                             )
@@ -298,7 +298,9 @@ $(function() {
                             $('<ul>', { class: 'list-unstyled' }).append(
 
                                 $('<li>').append(
-                                    $('<a>', { target: '_blank', href: '/' }).text('Test')
+                                    $('<a>', { target: '_blank', href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}` }).text('Github'),
+                                    $('<br/>'),
+                                    $('<a>', { target: '_blank', href: 'mailto:' + storyCfg.contact }).text('Contact')
                                 )
 
                             )
@@ -308,7 +310,11 @@ $(function() {
                 ),
 
                 // Copyright
-                $('<div>', { id: 'footer2', class: 'footer-copyright text-center py-3 bg-secondary text-white' }).text(`© ${storyCfg.year} ${storyCfg.title}.`)
+                $('<div>', { id: 'footer2', class: 'footer-copyright text-center py-3 bg-secondary text-white' })
+                .text(`© ${storyCfg.year} ${storyCfg.title} | `).append(
+                    $('<a>', { target: '_blank', href: storyCfg.creator_url }).text(storyCfg.creator),
+                    '.'
+                )
 
             )
         );

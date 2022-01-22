@@ -8,9 +8,11 @@ var storyCfg = {
     defaultYoutubeVolume: 100,
     year: 2021,
 
+    contact: 'tiny@ponydriland.com',
     nftDomain: 'ponydriland.nft',
     creator: 'Yasmin Seidel (JasminDreasond)',
     creator_url: 'https://unstoppabledomains.com/d/ponydriland.nft',
+    opensea: 'ponydriland',
 
     github: {
         account: 'Pony-Driland',
