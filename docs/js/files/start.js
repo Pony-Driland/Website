@@ -37,7 +37,7 @@ var openNewAddress = function(data, isPopState = false) {
         insertMarkdownFile(storyData.readme);
     } else {
         openMDFIle(data.path);
-        if (typeof data.title !== 'string' || data.title.length < 1) {
+        if (typeof data.title === 'string' && data.title.length > 0) {
             urlUpdate(data.path, data.title, isPopState);
         } else {
             urlUpdate(data.path, null, isPopState);
@@ -150,7 +150,7 @@ $(function() {
         );
 
         // Start Readme
-        openNewAddress(params);
+        openNewAddress(params, true);
 
         // Complete
         console.log(storyData);
