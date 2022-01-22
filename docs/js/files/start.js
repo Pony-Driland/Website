@@ -154,6 +154,58 @@ $(function() {
             $('<div>', { id: 'markdown-read', class: 'container' })
         );
 
+
+
+
+        // Insert Footer
+        $('body').append(
+            $('<footer>', { class: 'page-footer font-small pt-4 clearfix' }).append(
+
+                // Base
+                $('<div>', { class: 'container-fluid text-center text-md-left' }).append(
+                    $('<div>', { class: 'row' }).append(
+
+                        // Logo
+                        $('<div>', { class: 'col-md-6 mt-md-0 mt-3' }).append(
+                            $('<center>').append(
+                                $('<img>', { class: 'img-fluid', src: '/img/logo.png?v=1' }),
+                                $('<br/>')
+                            )
+                        ),
+
+                        // Links 1
+                        $('<div>', { class: 'col-md-3 mb-md-0 mb-3' }).append(
+                            $('<h5>').text('Links'),
+                            $('<ul>', { class: 'list-unstyled' }).append(
+
+                                $('<li>').append(
+                                    $('<a>', { target: '_blank', href: '/' }).text('Test')
+                                )
+
+                            )
+                        ),
+
+                        // Links 2
+                        $('<div>', { class: 'col-md-3 mb-md-0 mb-3' }).append(
+                            $('<h5>').text('Links'),
+                            $('<ul>', { class: 'list-unstyled' }).append(
+
+                                $('<li>').append(
+                                    $('<a>', { target: '_blank', href: '/' }).text('Test')
+                                )
+
+                            )
+                        )
+
+                    )
+                ),
+
+                // Copyright
+                $('<div>', { class: 'footer-copyright text-center py-3 bg-secondary text-white' }).text(`© ${storyCfg.year} ${storyCfg.title}.`)
+
+            )
+        );
+
         // Start Readme
         openNewAddress(params, true);
 
