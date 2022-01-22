@@ -10,7 +10,12 @@ var storyCfg = {
     nftDomain: 'ponydriland.nft',
     creator: 'Yasmin Seidel (JasminDreasond)',
     creator_url: 'https://unstoppabledomains.com/d/ponydriland.nft',
-    github_repository: 'Pony-Driland/Website',
+
+    github: {
+        account: 'Pony-Driland',
+        repository: 'Website'
+    },
+
     ageRating: 'teen',
     nsfw: true,
     tags: [
