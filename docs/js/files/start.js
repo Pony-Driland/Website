@@ -33,7 +33,7 @@ var urlUpdate = function(url, title, isPopState = false) {
 
 var openNewAddress = function(data, isPopState = false) {
 
-    if (!data || typeof data.path !== 'string' || data.path.length < 1 || !data.path.startsWith('/')) {
+    if (!data || typeof data.path !== 'string' || data.path.length < 1 || !data.path.startsWith('/') || data.path.indexOf('http://') > -1 || data.path.indexOf('https://') > -1) {
         insertMarkdownFile(storyData.readme);
     } else {
         openMDFIle(data.path);
