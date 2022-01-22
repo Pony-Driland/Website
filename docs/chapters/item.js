@@ -169,6 +169,17 @@ var storyData = {
                 tag.src = "https://www.youtube.com/iframe_api";
                 $('head').append(tag);
 
+                // Current Time Detector
+                setInterval(function() {
+                    if (YT && YT.PlayerState && storyData.youtube.player) {
+                        if (storyData.youtube.state === YT.PlayerState.PLAYING) {
+                            storyData.youtube.currentTime = storyData.youtube.player.getCurrentTime();
+                        } else if (storyData.youtube.state === YT.PlayerState.ENDED) {
+                            storyData.youtube.currentTime = storyData.youtube.player.getDuration();
+                        }
+                    }
+                }, 100);
+
             }
 
             // Reuse Player
