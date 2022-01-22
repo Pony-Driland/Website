@@ -14,17 +14,42 @@ console.log(`NSFW`, true);
 console.groupEnd();
 
 // URL Update
-var urlUpdate = function(url, title = 'Pony Driland') {
+var urlUpdate = function(url, title, isPopState = false) {
 
+    // Page Title
+    if (typeof title !== 'string' || title.length < 1) { title = storyCfg.title; }
     document.title = title;
 
-    if (typeof url === 'string' && url.length > 0) {
-        window.history.pushState({ "pageTitle": title }, "", '/?path=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(title));
-    } else {
-        window.history.pushState({ "pageTitle": title }, "", '/');
+    // Pop State
+    if (isPopState) {
+        if (typeof url === 'string' && url.length > 0) {
+            window.history.pushState({ "pageTitle": title }, "", '/?path=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(title));
+        } else {
+            window.history.pushState({ "pageTitle": title }, "", '/');
+        }
     }
 
 };
+
+var openNewAddress = function(data, isPopState = false) {
+
+    if (!data || typeof data.path !== 'string' || data.path.length < 1 || !data.path.startsWith('/')) {
+        insertMarkdownFile(readme);
+    } else {
+        openMDFIle(data.path);
+        if (typeof data.title !== 'string' || data.title.length < 1) {
+            urlUpdate(data.path, data.title, isPopState);
+        } else {
+            urlUpdate(data.path, null, isPopState);
+        }
+    }
+
+};
+
+$(window).on('popstate', function() {
+    const urlSearchParams = new URLSearchParams(document.location.search);
+    openNewAddress(Object.fromEntries(urlSearchParams.entries()), true);
+});
 
 // Insert Maarkdown File
 var insertMarkdownFile = function(text) {
@@ -48,6 +73,7 @@ var insertMarkdownFile = function(text) {
 
 };
 
+// Open MD FIle
 var openMDFIle = function(url) {
 
     // Read Data Base
@@ -121,16 +147,7 @@ $(function() {
         );
 
         // Start Readme
-        if (!params || typeof params.path !== 'string' || params.path.length < 1 || !params.path.startsWith('/')) {
-            insertMarkdownFile(readme);
-        } else {
-            openMDFIle(params.path);
-            if (typeof params.title !== 'string' || params.title.length < 1) {
-                urlUpdate(params.path, params.title);
-            } else {
-                urlUpdate(params.path);
-            }
-        }
+        openNewAddress(params);
 
         // Complete
         console.log(storyData);
