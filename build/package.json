@@ -4,6 +4,7 @@
         "cid-tool": "^3.0.0",
         "discord-markdown": "^2.5.1",
         "express": "^4.17.2",
-        "marked": "^4.0.10"
+        "marked": "^4.0.10",
+        "node-fetch": "^3.2.0"
     }
 }
