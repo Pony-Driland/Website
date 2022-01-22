@@ -308,7 +308,7 @@ $(function() {
                 ),
 
                 // Copyright
-                $('<div>', { class: 'footer-copyright text-center py-3 bg-secondary text-white' }).text(`© ${storyCfg.year} ${storyCfg.title}.`)
+                $('<div>', { id: 'footer2', class: 'footer-copyright text-center py-3 bg-secondary text-white' }).text(`© ${storyCfg.year} ${storyCfg.title}.`)
 
             )
         );
