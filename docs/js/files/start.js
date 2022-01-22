@@ -87,7 +87,7 @@ var openMDFIle = function(url) {
     }).done(function(fileData) {
         console.log(`MD File opened successfully!`);
         insertMarkdownFile(fileData);
-        tinyLib.goToByScroll($('#md-navbar'));
+        tinyLib.goToByScrollTop(0);
         $.LoadingOverlay("hide");
     }).fail(err => {
         $.LoadingOverlay("hide");

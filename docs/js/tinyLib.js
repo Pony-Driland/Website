@@ -121,3 +121,9 @@ tinyLib.goToByScroll = function(id, speed = 'slow') {
         scrollTop: id.offset().top
     }, speed);
 };
+
+tinyLib.goToByScrollTop = function(speed = 'slow') {
+    $('html,body').animate({
+        scrollTop: 0
+    }, speed);
+};
