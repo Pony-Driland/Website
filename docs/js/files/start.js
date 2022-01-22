@@ -123,7 +123,7 @@ $(function() {
             $('<nav>', { class: 'navbar navbar-expand-lg navbar-dark bg-dark fixed-top', id: 'md-navbar' }).append(
 
                 // Title
-                $('<a>', { class: 'navbar-brand' }).text('Menu'),
+                $('<a>', { class: 'navbar-brand' }).text(storyCfg.name),
 
                 // Button
                 $('<button>', { class: 'navbar-toggler', type: 'button', 'data-toggle': 'collapse', 'data-target': '#mdMenu', 'aria-controls': '#mdMenu', 'aria-expanded': false }).append(
