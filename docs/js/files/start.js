@@ -41,4 +41,8 @@ $(function() {
     player.getDuration()
     player.getVideoUrl()
 
+    appData.youtube.onPlaying = function() {
+        console.log(storyData.youtube.currentTime);
+    };
+
 */
