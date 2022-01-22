@@ -36,7 +36,12 @@ var storyCfg = {
     ],
 
     theme: {
-
+        primary: '#a94811',
+        secondary: '#61442c',
+        color: '#fff',
+        color2: '#e0e0e0',
+        color3: 'rgba(255, 255, 255, 0.6)',
+        color4: '#5e5e5e'
     }
 
 };
