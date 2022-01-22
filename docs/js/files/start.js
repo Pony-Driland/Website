@@ -13,6 +13,19 @@ console.log(`Tags`, storyCfg.tags);
 console.log(`NSFW`, true);
 console.groupEnd();
 
+// URL Update
+var urlUpdate = function(url, title = 'Pony Driland') {
+
+    document.title = title;
+
+    if (typeof url === 'string' && url.length > 0) {
+        window.history.pushState({ "pageTitle": title }, "", '/?path=' + encodeURIComponent(url));
+    } else {
+        window.history.pushState({ "pageTitle": title }, "", '/');
+    }
+
+};
+
 // Insert Maarkdown File
 var insertMarkdownFile = function(text) {
 
@@ -30,6 +43,7 @@ var insertMarkdownFile = function(text) {
     // Convert File URLs
     $('[id="markdown-read"] a[file]').removeAttr('target').click(function() {
         openMDFIle($(this).attr('file'));
+        urlUpdate($(this).attr('file'), $(this).text().trim());
     });
 
 };
@@ -48,6 +62,7 @@ var openMDFIle = function(url) {
         console.log(`MD File opened successfully!`);
         insertMarkdownFile(fileData);
         tinyLib.goToByScroll($('#md-navbar'));
+        urlUpdate(url);
         $.LoadingOverlay("hide");
     }).fail(err => {
         $.LoadingOverlay("hide");
@@ -94,6 +109,7 @@ $(function() {
                         // Homepage
                         $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Homepage').click(function() {
                             openMDFIle('/README.md');
+                            urlUpdate();
                         })
 
                     )
