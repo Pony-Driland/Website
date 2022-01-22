@@ -286,7 +286,7 @@ $(function() {
                             $('<ul>', { class: 'list-unstyled' }).append(
 
                                 $('<li>').append(
-                                    $('<a>', { target: '_blank', href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}` }).text('OpenSea')
+                                    $('<a>', { target: '_blank', href: `https://opensea.io/collection/${storyCfg.opensea}` }).text('OpenSea')
                                 )
 
                             )
