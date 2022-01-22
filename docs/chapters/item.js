@@ -1,3 +1,7 @@
+// Params
+const urlSearchParams = new URLSearchParams(window.location.search);
+var params = Object.fromEntries(urlSearchParams.entries());
+
 // On Off Validator
 var resolution = new unstoppabledomains.Resolution();
 var plugValue = function(item) {
