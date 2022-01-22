@@ -29,23 +29,29 @@ var insertMarkdownFile = function(text) {
 
     // Convert File URLs
     $('[id="markdown-read"] a[file]').removeAttr('target').click(function() {
+        openMDFIle($(this).attr('file'));
+    });
 
-        // Read Data Base
-        console.log(`Opening MD file "${$(this).attr('file')}"...`);
-        $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
-        $.ajax({
-            url: $(this).attr('file'),
-            type: 'get',
-            dataType: 'text'
-        }).done(function(fileData) {
-            console.log(`MD File opened successfully!`);
-            insertMarkdownFile(fileData);
-            $.LoadingOverlay("hide");
-        }).fail(err => {
-            $.LoadingOverlay("hide");
-            console.error(err);
-            alert(err.message);
-        });
+};
+
+var openMDFIle = function(url) {
+
+    // Read Data Base
+    console.log(`Opening MD file "${url}"...`);
+    $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
+
+    $.ajax({
+        url: url,
+        type: 'get',
+        dataType: 'text'
+    }).done(function(fileData) {
+        console.log(`MD File opened successfully!`);
+        insertMarkdownFile(fileData);
+        $.LoadingOverlay("hide");
+    }).fail(err => {
+        $.LoadingOverlay("hide");
+        console.error(err);
+        alert(err.message);
     });
 
 };
@@ -68,7 +74,36 @@ $(function() {
 
         // Insert Readme
         $('#app').append(
+
+            // Space
             $('<hr>', { class: 'my-5' }),
+
+            // Navbar
+            $('<nav>', { class: 'navbar navbar-expand-lg navbar-dark bg-dark container mb-4' }).append(
+
+                // Title
+                $('<a>', { class: 'navbar-brand' }).text('Menu'),
+
+                // Button
+                $('<button>', { class: 'navbar-toggler', type: 'button', 'data-toggle': 'collapse', 'data-target': '#mdMenu', 'aria-controls': '#mdMenu', 'aria-expanded': false }).append(
+                    $('<span>', { 'class': 'navbar-toggler-icon' })
+                ),
+
+                // Collapse
+                $('<div>', { class: 'collapse navbar-collapse', id: 'mdMenu' }).append(
+                    $('<div>', { class: 'navbar-nav' }).append(
+
+                        // Homepage
+                        $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Homepage').click(function() {
+                            openMDFIle('/README.md');
+                        })
+
+                    )
+                )
+
+            ),
+
+            // Content
             $('<div>', { id: 'markdown-read', class: 'container' })
         );
 
