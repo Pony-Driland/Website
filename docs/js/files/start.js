@@ -29,7 +29,21 @@ var insertMarkdownFile = function(text) {
 
     // Convert File URLs
     $('[id="markdown-read"] a[file]').removeAttr('target').click(function() {
-        console.log($(this).attr('file'));
+
+        // Read Data Base
+        $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
+        $.ajax({
+            url: $(this).attr('file'),
+            type: 'get',
+            dataType: 'text'
+        }).done(function(fileData) {
+            insertMarkdownFile(fileData);
+            $.LoadingOverlay("hide");
+        }).fail(err => {
+            $.LoadingOverlay("hide");
+            console.error(err);
+            alert(err.message);
+        });
     });
 
 };
