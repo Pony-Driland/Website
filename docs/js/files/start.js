@@ -76,9 +76,6 @@ $(function() {
         // Insert Readme
         $('#app').append(
 
-            // Space
-            $('<hr>', { class: 'my-5' }),
-
             // Navbar
             $('<nav>', { class: 'navbar navbar-expand-lg navbar-dark bg-dark container mb-4', id: 'md-navbar' }).append(
 
@@ -113,6 +110,7 @@ $(function() {
 
         // Complete
         console.log(storyData);
+        $('#under-development').modal();
         fn();
 
     });
