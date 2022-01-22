@@ -21,7 +21,7 @@ var urlUpdate = function(url, title, isPopState = false) {
     document.title = title;
 
     // Pop State
-    if (isPopState) {
+    if (!isPopState) {
         if (typeof url === 'string' && url.length > 0) {
             window.history.pushState({ "pageTitle": title }, "", '/?path=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(title));
         } else {
@@ -34,7 +34,7 @@ var urlUpdate = function(url, title, isPopState = false) {
 var openNewAddress = function(data, isPopState = false) {
 
     if (!data || typeof data.path !== 'string' || data.path.length < 1 || !data.path.startsWith('/')) {
-        insertMarkdownFile(readme);
+        insertMarkdownFile(storyData.readme);
     } else {
         openMDFIle(data.path);
         if (typeof data.title !== 'string' || data.title.length < 1) {
@@ -101,6 +101,9 @@ var openMDFIle = function(url) {
 $(function() {
     console.log('Starting App...');
     storyData.start(function(fn, readme) {
+
+        // Readme
+        storyData.readme = readme;
 
         // Insert CID
         $('#info-base').append(
