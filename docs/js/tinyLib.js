@@ -114,3 +114,10 @@ alert = function(text, title = 'Browser Warning!') {
         dialog: 'modal-lg'
     });
 };
+
+// This is a functions that scrolls to #{blah}link
+tinyLib.goToByScroll = function(id, speed = 'slow') {
+    $('html,body').animate({
+        scrollTop: id.offset().top
+    }, speed);
+};

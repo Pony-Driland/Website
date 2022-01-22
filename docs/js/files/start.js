@@ -47,6 +47,7 @@ var openMDFIle = function(url) {
     }).done(function(fileData) {
         console.log(`MD File opened successfully!`);
         insertMarkdownFile(fileData);
+        tinyLib.goToByScroll($('#md-navbar'));
         $.LoadingOverlay("hide");
     }).fail(err => {
         $.LoadingOverlay("hide");
@@ -79,7 +80,7 @@ $(function() {
             $('<hr>', { class: 'my-5' }),
 
             // Navbar
-            $('<nav>', { class: 'navbar navbar-expand-lg navbar-dark bg-dark container mb-4' }).append(
+            $('<nav>', { class: 'navbar navbar-expand-lg navbar-dark bg-dark container mb-4', id: 'md-navbar' }).append(
 
                 // Title
                 $('<a>', { class: 'navbar-brand' }).text('Menu'),
