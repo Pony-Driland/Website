@@ -204,42 +204,55 @@ var storyData = {
                 // Start App
                 const startTinyApp = function() {
 
-                    // Load Data
-                    for (let i = 0; i < storyData.chapter.amount; i++) {
+                    // Read Data Base
+                    $.ajax({
+                        url: '/README.md',
+                        type: 'get',
+                        dataType: 'text'
+                    }).done(function(readme) {
 
-                        // Data
-                        const chapter = i + 1;
-                        console.log(`Loading Chapter ${chapter}...`);
-                        $.getJSON('./chapters/' + storyData.lang.active + '/' + chapter + '.json')
+                        // Load Data
+                        for (let i = 0; i < storyData.chapter.amount; i++) {
 
-                        // Complete
-                        .done(function(data) {
-
-                            // Insert Data
-                            storyData.data[chapter] = data;
-                            storyData.chapter.bookmark[chapter] = localStorage.getItem('bookmark' + chapter);
-                            console.log(`Chapter ${chapter} loaded!`);
+                            // Data
+                            const chapter = i + 1;
+                            console.log(`Loading Chapter ${chapter}...`);
+                            $.getJSON('./chapters/' + storyData.lang.active + '/' + chapter + '.json')
 
                             // Complete
-                            storyData.count++;
-                            if (storyData.count === storyData.chapter.amount) {
-                                delete storyData.count;
-                                delete storyData.start;
-                                console.log('App Started!');
-                                console.log('Loading UI...');
-                                startApp(function() { $.LoadingOverlay("hide"); });
-                            }
+                            .done(function(data) {
 
-                        })
+                                // Insert Data
+                                storyData.data[chapter] = data;
+                                storyData.chapter.bookmark[chapter] = localStorage.getItem('bookmark' + chapter);
+                                console.log(`Chapter ${chapter} loaded!`);
 
-                        // Fail
-                        .fail(function(err) {
-                            console.log(`Chapter ${chapter} failed during the load!`);
-                            $.LoadingOverlay("hide");
-                            failApp(err);
-                        });
+                                // Complete
+                                storyData.count++;
+                                if (storyData.count === storyData.chapter.amount) {
+                                    delete storyData.count;
+                                    delete storyData.start;
+                                    console.log('App Started!');
+                                    console.log('Loading UI...');
+                                    startApp(function() { $.LoadingOverlay("hide"); }, readme);
+                                }
 
-                    }
+                            })
+
+                            // Fail
+                            .fail(function(err) {
+                                console.log(`Chapter ${chapter} failed during the load!`);
+                                $.LoadingOverlay("hide");
+                                failApp(err);
+                            });
+
+                        }
+
+                    }).fail(err => {
+                        console.log(`README.md failed during the load!`);
+                        $.LoadingOverlay("hide");
+                        failApp(err);
+                    });
 
                 };
 
