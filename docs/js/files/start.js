@@ -116,11 +116,11 @@ $(function() {
             )
         );
 
-        // Insert Readme
-        $('#app').append(
+        // Insert Navbar
+        $('body').prepend(
 
             // Navbar
-            $('<nav>', { class: 'navbar navbar-expand-lg navbar-dark bg-dark container mb-4', id: 'md-navbar' }).append(
+            $('<nav>', { class: 'navbar navbar-expand-lg navbar-dark bg-dark fixed-top', id: 'md-navbar' }).append(
 
                 // Title
                 $('<a>', { class: 'navbar-brand' }).text('Menu'),
@@ -143,7 +143,12 @@ $(function() {
                     )
                 )
 
-            ),
+            )
+
+        );
+
+        // Insert Readme
+        $('#app').append(
 
             // Content
             $('<div>', { id: 'markdown-read', class: 'container' })
