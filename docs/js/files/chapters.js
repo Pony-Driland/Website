@@ -161,6 +161,7 @@ var storyData = {
         play: function(videoID) {
 
             // Read Data Base
+            console.log(`Loading youtube video embed...`);
             $.ajax({
                 url: 'https://www.youtube.com/oembed?format=json&url=' + encodeURIComponent(`https://www.youtube.com/watch?v=` + videoID),
                 type: 'get',
@@ -168,6 +169,7 @@ var storyData = {
             }).done(function(jsonVideo) {
 
                 // Youtube Player
+                console.log(`Youtube video embed loaded!`);
                 storyData.youtube.embed = jsonVideo;
 
                 // Prepare Video ID
