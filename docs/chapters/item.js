@@ -177,6 +177,7 @@ var storyData = {
                         if (storyData.youtube.state === YT.PlayerState.PLAYING) {
                             storyData.youtube.duration = storyData.youtube.player.getDuration();
                             storyData.youtube.currentTime = storyData.youtube.player.getCurrentTime();
+                            if (typeof appData.youtube.onPlaying === 'function') { appData.youtube.onPlaying(); }
                         } else if (storyData.youtube.state === YT.PlayerState.ENDED) {
                             storyData.youtube.currentTime = storyData.youtube.player.getDuration();
                         }
