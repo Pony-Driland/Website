@@ -1,4 +1,5 @@
 // On Off Validator
+var resolution = new unstoppabledomains.Resolution();
 var plugValue = function(item) {
     if (
         (typeof item === 'string' && (item === 'true' || item === 'on' || item === '1')) ||
@@ -184,46 +185,63 @@ var storyData = {
         if (localStorage) {
             if (typeof startApp === 'function') {
 
+                // Start App
+                const startTinyApp = function() {
+
+                    // Load Data
+                    $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
+                    for (let i = 0; i < storyData.chapter.amount; i++) {
+
+                        // Data
+                        const chapter = i + 1;
+                        console.log(`Loading Chapter ${chapter}...`);
+                        $.getJSON('./chapters/' + storyData.lang.active + '/' + chapter + '.json')
+
+                        // Complete
+                        .done(function(data) {
+
+                            // Insert Data
+                            storyData.data[chapter] = data;
+                            storyData.chapter.bookmark[chapter] = localStorage.getItem('bookmark' + chapter);
+                            console.log(`Chapter ${chapter} loaded!`);
+
+                            // Complete
+                            storyData.count++;
+                            if (storyData.count === storyData.chapter.amount) {
+                                delete storyData.count;
+                                delete storyData.start;
+                                console.log('App Started!');
+                                console.log('Loading UI...');
+                                startApp(function() { $.LoadingOverlay("hide"); });
+                            }
+
+                        })
+
+                        // Fail
+                        .fail(function(err) {
+                            console.log(`Chapter ${chapter} failed during the load!`);
+                            $.LoadingOverlay("hide");
+                            failApp(err);
+                        });
+
+                    }
+
+                };
+
                 // Auto Bookmark
                 storyData.autoBookmark = plugValue(localStorage.getItem('autoBookMark'));
 
-                // Load Data
-                $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
-                for (let i = 0; i < storyData.chapter.amount; i++) {
-
-                    // Data
-                    const chapter = i + 1;
-                    console.log(`Loading Chapter ${chapter}...`);
-                    $.getJSON('./chapters/' + storyData.lang.active + '/' + chapter + '.json')
-
-                    // Complete
-                    .done(function(data) {
-
-                        // Insert Data
-                        storyData.data[chapter] = data;
-                        storyData.chapter.bookmark[chapter] = localStorage.getItem('bookmark' + chapter);
-                        console.log(`Chapter ${chapter} loaded!`);
-
-                        // Complete
-                        storyData.count++;
-                        if (storyData.count === storyData.chapter.amount) {
-                            delete storyData.count;
-                            delete storyData.start;
-                            console.log('App Started!');
-                            console.log('Loading UI...');
-                            startApp(function() { $.LoadingOverlay("hide"); });
-                        }
-
-                    })
-
-                    // Fail
-                    .fail(function(err) {
-                        console.log(`Chapter ${chapter} failed during the load!`);
-                        $.LoadingOverlay("hide");
+                // Start App
+                if (typeof storyCfg.nftDomain === 'string' && storyCfg.nftDomain.length > 0) {
+                    resolution.ipfsHash(storyCfg.nftDomain).then((cid) => {
+                        storyData.cid = cid;
+                        storyData.cid32 = CIDTool.base32(cid);
+                        startTinyApp();
+                    }).catch((err) => {
                         failApp(err);
+                        startTinyApp();
                     });
-
-                }
+                } else { startTinyApp(); }
 
             } else { failApp(new Error('Start App not found!')); }
         } else { failApp(new Error('Local Storage API not found!')); }

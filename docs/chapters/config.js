@@ -7,6 +7,7 @@ var storyCfg = {
     chapters: 1,
     defaultYoutubeVolume: 100,
 
+    nftDomain: 'ponydriland.nft',
     creator: 'Yasmin Seidel (JasminDreasond)',
     creator_url: 'https://unstoppabledomains.com/d/ponydriland.nft',
     github_repository: 'Pony-Driland/Website',
