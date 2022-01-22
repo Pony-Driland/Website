@@ -31,12 +31,14 @@ var insertMarkdownFile = function(text) {
     $('[id="markdown-read"] a[file]').removeAttr('target').click(function() {
 
         // Read Data Base
+        console.log(`Opening MD file "${$(this).attr('file')}"...`);
         $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
         $.ajax({
             url: $(this).attr('file'),
             type: 'get',
             dataType: 'text'
         }).done(function(fileData) {
+            console.log(`MD File opened successfully!`);
             insertMarkdownFile(fileData);
             $.LoadingOverlay("hide");
         }).fail(err => {
