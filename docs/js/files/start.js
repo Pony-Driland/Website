@@ -102,6 +102,116 @@ $(function() {
     console.log('Starting App...');
     storyData.start(function(fn, readme) {
 
+        // Custom Colors
+        $('head').append(
+            $('<style>', { id: 'custom_color' }).text(`
+
+            .alert .close span{
+                color: ${storyCfg.theme.color4} !important;
+            }
+            
+            .alert .close, .alert .close:hover{
+                color: ${storyCfg.theme.color} !important;
+            }
+            
+            
+            .navbar-dark.bg-dark, #navTopPage {
+                background-color: ${storyCfg.theme.primary} !important;
+            }
+            
+            .navbar-dark .navbar-nav .nav-link {
+                color: ${storyCfg.theme.color} !important;
+            }
+            
+            .navbar-dark .navbar-nav .nav-link:hover {
+                color: ${storyCfg.theme.color2} !important;
+            }
+            
+            
+            #sidebar {
+                background: ${storyCfg.theme.secondary};
+                color: ${storyCfg.theme.color3};
+            }
+            
+            #sidebar .sidebar-header {
+                background: ${storyCfg.theme.primary};
+                color: ${storyCfg.theme.color};
+            }
+            
+            #sidebar ul p {
+                color: ${storyCfg.theme.color};
+            }
+            
+            #sidebar ul li a:hover {
+                color: ${storyCfg.theme.color};
+                background: ${storyCfg.theme.primary};
+            }
+            
+            #sidebar ul li.active > a, #sidebar a[aria-expanded="true"] {
+                color: ${storyCfg.theme.color};
+                background: ${storyCfg.theme.primary};
+            }
+            
+            
+            .tcat, #footer2{
+                color: ${storyCfg.theme.color} !important;
+                background-color: ${storyCfg.theme.secondary} !important;
+            }
+            
+            .tcat, #footer2 a:hover{
+                color: ${storyCfg.theme.color2} !important;
+            }
+            
+            
+            #footer, .modal.fade .modal-header, .thead, .page-footer, .comment-header{
+                color: ${storyCfg.theme.color} !important;
+                background-color: ${storyCfg.theme.primary} !important
+            }
+            
+            .page-footer a:hover, .page-footer a:hover, #sidebar a {
+                color: ${storyCfg.theme.color2} !important;
+            }
+            
+            .thead a{
+                color: ${storyCfg.theme.color} !important;
+            }
+            
+            .thead a:hover{
+                color: ${storyCfg.theme.color2} !important;
+            }
+            
+            
+            .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+                color: ${storyCfg.theme.color} !important;
+                background-color: ${storyCfg.theme.primary} !important;
+            }
+            
+            .nav-pills .show>.nav-link:hover {
+                color: ${storyCfg.theme.color2} !important;
+            }
+            
+            .page-footer a, #sidebar a {
+                color: ${storyCfg.theme.color} !important;
+            }
+            
+            
+            
+            
+            
+            .dropdown-item.active, .dropdown-item:active {
+                color: ${storyCfg.theme.color};
+                background-color: ${storyCfg.theme.secondary}; 
+            }
+            
+            .nav-pills .nav-link.active,
+            .nav-pills .show > .nav-link {
+                color: ${storyCfg.theme.color};
+                background-color: ${storyCfg.theme.secondary}; 
+            }
+            
+            `)
+        );
+
         // Readme
         storyData.readme = readme;
 
