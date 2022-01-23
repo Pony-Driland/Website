@@ -75,8 +75,13 @@ var insertMarkdownFile = function(text) {
 
     // Fix Image
     $('[id="markdown-read"] img').each(function() {
-        const newTinyPlace = $('<p>', { class: 'mt-4' });
-        newTinyPlace.insertAfter(this);
+
+        if ($(this).parents('a').length < 1) {
+            const newTinyPlace = $('<p>', { class: 'mt-4' });
+            newTinyPlace.insertAfter(this);
+            $(this).addClass('img-fluid').css('height', $(this).attr('height')).css('width', $(this).attr('width'));
+        }
+
     });
 
 };
