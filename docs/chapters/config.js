@@ -56,11 +56,32 @@ var storyCfg = {
     },
 
     custom_url: {
-        '/?path=%2Fimg%2Fcharacters%2Frainbow-queen%2FREADME.md&title=Rainbow%20Queen': '/characters/rainbow-queen.html',
-        '/?path=%2Fimg%2Fcharacters%2Frayane%2FREADME.md&title=Rayane': '/characters/rayane.html',
-        '/?path=%2Fimg%2Fcharacters%2Fprincess-ariella%2FREADME.md&title=Princess%20Ariella': '/characters/princess-ariella.html',
-        '/?path=%2Fimg%2Fcharacters%2Flayla%2FREADME.md&title=Layla': '/characters/layla.html',
-        '/?path=%2Fimg%2Fcharacters%2Famy%2FREADME.md&title=Amy': '/characters/amy.html'
+
+        '/?path=%2Fimg%2Fcharacters%2Frainbow-queen%2FREADME.md&title=Rainbow%20Queen': {
+            url: '/characters/rainbow-queen.html',
+            title: 'Rainbow Queen'
+        },
+
+        '/?path=%2Fimg%2Fcharacters%2Frayane%2FREADME.md&title=Rayane': {
+            url: '/characters/rayane.html',
+            title: 'Rayane'
+        },
+
+        '/?path=%2Fimg%2Fcharacters%2Fprincess-ariella%2FREADME.md&title=Princess%20Ariella': {
+            url: '/characters/princess-ariella.html',
+            title: 'Princess Ariella'
+        },
+
+        '/?path=%2Fimg%2Fcharacters%2Flayla%2FREADME.md&title=Layla': {
+            url: '/characters/layla.html',
+            title: 'Layla'
+        },
+
+        '/?path=%2Fimg%2Fcharacters%2Famy%2FREADME.md&title=Amy': {
+            url: '/characters/amy.html',
+            title: 'Amy'
+        }
+
     }
 
 };

@@ -26,7 +26,11 @@ var urlUpdate = function(url, title, isPopState = false) {
     // Pop State
     if (!isPopState) {
         if (typeof url === 'string' && url.length > 0) {
-            window.history.pushState({ "pageTitle": title }, "", '/?path=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(title));
+            if (!storyCfg.custom_url[url]) {
+                window.history.pushState({ "pageTitle": title }, "", '/?path=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(title));
+            } else {
+                window.history.pushState({ "pageTitle": title }, "", storyCfg.custom_url[url].url);
+            }
         } else {
             window.history.pushState({ "pageTitle": title }, "", '/');
         }
@@ -49,15 +53,39 @@ var openNewAddress = function(data, isPopState = false) {
 
 };
 
+// Pop State
 $(window).on('popstate', function() {
+
+    // Get Params
     const urlSearchParams = new URLSearchParams(document.location.search);
     const params = Object.fromEntries(urlSearchParams.entries());
-    if (storyData.urlPage !== params.path) {
-        storyData.urlPage = params.path;
-        if (params.path !== 'read-fic') {
-            openNewAddress(params, true);
-        } else { openChapterMenu(); }
+
+    // Load Page
+    const loadPage = function() {
+        if (storyData.urlPage !== params.path) {
+            storyData.urlPage = params.path;
+            if (params.path !== 'read-fic') {
+                openNewAddress(params, true);
+            } else { openChapterMenu(); }
+        }
+    };
+
+    // Default
+    if (document.location.pathname === '/') { loadPage(); }
+
+    // Custom
+    else {
+
+        // Get Data
+        const urlData = Object.keys(storyCfg.custom_url).find(item[1].url === document.location.pathname);
+        if (urlData) {
+            params.path = urlData[0];
+            params.title = urlData[1].title;
+            loadPage();
+        }
+
     }
+
 });
 
 // Insert Maarkdown File
