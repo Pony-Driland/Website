@@ -38,13 +38,13 @@ var urlUpdate = function(url, title, isPopState = false) {
 
 };
 
-var openNewAddress = function(data, isPopState = false) {
+var openNewAddress = function(data, isPopState = false, useCustom = false) {
 
     // File Path
     const filePath = data.path;
 
     // Prepare Custom URL
-    if (storyCfg.custom_url[data.path]) {
+    if (useCustom && storyCfg.custom_url[data.path]) {
         data.title = storyCfg.custom_url[data.path].title;
         data.path = storyCfg.custom_url[data.path].url;
     }
@@ -468,7 +468,7 @@ $(function() {
 
         // Start Readme
         if (params.path !== 'read-fic') {
-            openNewAddress(params, true);
+            openNewAddress(params, true, true);
         } else { openChapterMenu(); }
 
         // Complete
