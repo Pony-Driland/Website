@@ -7,11 +7,20 @@
         {
             "type": "pwa-node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Test Website",
             "skipFiles": [
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}\\build\\index.js"
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "Build Character Data",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\build\\characters\\index.js"
         }
     ]
 }
