@@ -104,9 +104,11 @@ fs.readdir(folderPath, (err, files) => {
             console.log('Done!');
 
             // Create Custom URL
-            customURLs['/img/characters/' + file.name + '/README.md'] = {
+            customURLs[file.name] = {
+                path: '/img/characters/' + file.name + '/README.md',
                 url: '/characters/' + file.name + '.html',
-                title: jsonFile.title
+                title: jsonFile.title,
+                description: jsonFile.description
             };
 
             // End Group
@@ -120,7 +122,16 @@ fs.readdir(folderPath, (err, files) => {
         // Custom List
         // Create HTML File
         console.log('Creating HTML...');
-        fs.writeFileSync(path.join(ficData.path, './chapters/characters.js'), `storyCfg.characters = ${JSON.stringify(customURLs, null, 2)};`);
+        fs.writeFileSync(path.join(ficData.path, './chapters/characters.js'), `
+if(!storyCfg.custom_url) { storyCfg.custom_url = {}; }
+storyCfg.characters = ${JSON.stringify(customURLs, null, 2)};
+for(const item in storyCfg.characters) {
+    storyCfg.custom_url[storyCfg.characters[item].path] = {
+        url: storyCfg.characters[item].url,
+        title: storyCfg.characters[item].title
+    };
+}
+`);
         console.log('Done!');
 
     } else {
