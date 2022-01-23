@@ -1,5 +1,6 @@
 var storyCfg = {
 
+    domain: 'ponydriland.com',
     title: 'Pony Driland',
     discordInvite: 'GegfAgNxRX',
     description: 'The mysterious world.',
