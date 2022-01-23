@@ -347,6 +347,11 @@ $(function() {
                             $('<i>', { class: 'fab fa-discord mr-2' })
                         ),
 
+                        // Discord SErver
+                        $('<a>', { class: 'nav-item nav-link', target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.domainWallet) }).text('Donations Wallet').prepend(
+                            $('<i>', { class: 'fas fa-wallet mr-2' })
+                        ),
+
                         // LICENSE
                         $('<a>', { class: 'nav-item nav-link', href: '/?path=%2FLICENSE.md&title=License' }).text('License').prepend(
                             $('<i>', { class: 'fas fa-copyright mr-2' })
