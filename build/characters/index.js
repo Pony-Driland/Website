@@ -2,6 +2,7 @@
 const path = require('path');
 const fs = require('fs');
 
+// Get Fic Data
 const ficData = require('../publicFolder')();
 console.log(ficData);
 
