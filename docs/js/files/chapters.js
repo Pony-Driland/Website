@@ -226,7 +226,7 @@ var storyData = {
 
                     // Read Data Base
                     $.ajax({
-                        url: '/README.md',
+                        url: '/README.md' + fileVersion,
                         type: 'get',
                         dataType: 'text'
                     }).done(function(readme) {
