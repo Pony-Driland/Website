@@ -40,10 +40,19 @@ var urlUpdate = function(url, title, isPopState = false) {
 
 var openNewAddress = function(data, isPopState = false) {
 
-    if (!data || typeof data.path !== 'string' || data.path.length < 1 || !data.path.startsWith('/') || data.path.indexOf('http://') > -1 || data.path.indexOf('https://') > -1) {
+    // File Path
+    const filePath = data.path;
+
+    // Prepare Custom URL
+    if (storyCfg.custom_url[data.path]) {
+        data.title = storyCfg.custom_url[data.path].title;
+        data.path = storyCfg.custom_url[data.path].url;
+    }
+
+    if (!data || typeof filePath !== 'string' || filePath.length < 1 || !filePath.startsWith('/') || filePath.indexOf('http://') > -1 || filePath.indexOf('https://') > -1) {
         insertMarkdownFile(storyData.readme);
     } else {
-        openMDFIle(data.path);
+        openMDFIle(filePath);
         if (typeof data.title === 'string' && data.title.length > 0) {
             urlUpdate(data.path, data.title, isPopState);
         } else {
@@ -459,16 +468,7 @@ $(function() {
 
         // Start Readme
         if (params.path !== 'read-fic') {
-
-            // Prepare Custom URL
-            if (storyCfg.custom_url[params.path]) {
-                params.title = storyCfg.custom_url[params.path].title;
-                params.path = storyCfg.custom_url[params.path].url;
-            }
-
-            // Read Page
             openNewAddress(params, true);
-
         } else { openChapterMenu(); }
 
         // Complete
