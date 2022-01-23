@@ -317,9 +317,10 @@ $(function() {
             $('<nav>', { class: 'navbar navbar-expand-lg navbar-dark bg-dark fixed-top', id: 'md-navbar' }).append(
 
                 // Title
-                $('<a>', { class: 'navbar-brand', href: 'javascript:void(0)' }).text(storyCfg.title).click(function() {
+                $('<a>', { class: 'navbar-brand', href: '/' }).text(storyCfg.title).click(function() {
                     openMDFIle('/README.md');
                     urlUpdate();
+                    return false;
                 }),
 
                 // Button
