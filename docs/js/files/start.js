@@ -298,6 +298,11 @@ $(function() {
                             urlUpdate();
                         }),
 
+                        // Discord SErver
+                        $('<a>', { class: 'nav-item nav-link', target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}` }).text('Discord Server').prepend(
+                            $('<i>', { class: 'fab fa-discord mr-2' })
+                        ),
+
                         // LICENSE
                         $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('License').prepend(
                             $('<i>', { class: 'fas fa-copyright mr-2' })
@@ -374,6 +379,11 @@ $(function() {
                                 $('<li>').append(
                                     $('<a>', { target: '_blank', href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}` }).text('Github').prepend(
                                         $('<i>', { class: 'fab fa-github mr-2' })
+                                    ),
+                                ),
+                                $('<li>').append(
+                                    $('<a>', { target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}` }).text('Discord Server').prepend(
+                                        $('<i>', { class: 'fab fa-discord mr-2' })
                                     ),
                                 ),
                                 $('<li>').append(

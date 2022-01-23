@@ -1,6 +1,7 @@
 var storyCfg = {
 
     title: 'Pony Driland',
+    discordInvite: 'GegfAgNxRX',
     description: 'The mysterious world.',
     urlPage: null,
     defaultLang: 'en',
