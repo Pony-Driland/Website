@@ -461,9 +461,9 @@ $(function() {
         if (params.path !== 'read-fic') {
 
             // Prepare Custom URL
-            if (document.location.pathname !== '/' && storyCfg.custom_url[url]) {
-                params.path = storyCfg.custom_url[url].url;
-                params.title = storyCfg.custom_url[url].title;
+            if (storyCfg.custom_url[params.path]) {
+                params.title = storyCfg.custom_url[params.path].title;
+                params.path = storyCfg.custom_url[params.path].url;
             }
 
             // Read Page
