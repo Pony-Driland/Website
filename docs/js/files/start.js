@@ -45,8 +45,7 @@ var openNewAddress = function(data, isPopState = false, useCustom = false) {
 
     // Prepare Custom URL
     if (useCustom && storyCfg.custom_url[data.path]) {
-        data.title = storyCfg.custom_url[data.path].title;
-        data.path = storyCfg.custom_url[data.path].url;
+        isPopState = false;
     }
 
     if (!data || typeof filePath !== 'string' || filePath.length < 1 || !filePath.startsWith('/') || filePath.indexOf('http://') > -1 || filePath.indexOf('https://') > -1) {
