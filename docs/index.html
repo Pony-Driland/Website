@@ -12,17 +12,17 @@
         <link href="/img/icon.png" rel="icon" type="image/x-icon"/>
         
         <!-- CSS -->
-        <link rel="preload" href="/css/bootstrap.min.css?v=6" as="style">
-        <link rel="stylesheet" href="/css/all.min.css?v=6">
-        <link rel="preload" href="/css/all.min.css?v=6" as="style">
-        <link rel="stylesheet" href="/css/bootstrap.min.css?v=6">
-        <link rel="stylesheet" href="/css/dark.css?v=6">
-        <link rel="stylesheet" href="/css/main.css?v=6">
-        <link rel="stylesheet" href="/css/photoswipe.css">
-        <link rel="stylesheet" href="/css/default-skin/default-skin.css">
+        <link rel="preload" href="/css/bootstrap.min.css?v=7" as="style">
+        <link rel="stylesheet" href="/css/all.min.css?v=7">
+        <link rel="preload" href="/css/all.min.css?v=7" as="style">
+        <link rel="stylesheet" href="/css/bootstrap.min.css?v=7">
+        <link rel="stylesheet" href="/css/dark.css?v=7">
+        <link rel="stylesheet" href="/css/main.css?v=7">
+        <link rel="stylesheet" href="/photoswipe/photoswipe.css">
+        <link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
 
         <!-- Manifest -->
-        <link rel="manifest" href="/manifest.json?v=6">
+        <link rel="manifest" href="/manifest.json?v=7">
 
         <!-- Page Info -->
         <meta content="Homepage" property="og:title">
@@ -34,14 +34,14 @@
         <meta content="The mysterious world." property="description">
         
         <!-- Embed -->
-        <link href="/oEmbed/index.json?v=6" rel="alternate" title="oEmbed JSON Profile" type="application/json+oembed">
+        <link href="/oEmbed/index.json?v=7" rel="alternate" title="oEmbed JSON Profile" type="application/json+oembed">
         <meta content="/oEmbed/index.png" property="og:image">
         <link href="https://ponydriland.com" rel="canonical">
         
         <!-- Theme -->
-        <meta name="theme-color" content="#000000">
-        <meta name="msapplication-navbutton-color" content="#000000">
-        <meta name="apple-mobile-web-app-status-bar-style" content="#000000">
+        <meta name="theme-color" content="#a91126">
+        <meta name="msapplication-navbutton-color" content="#a91126">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#a91126">
 
         <!-- Website -->
         <meta property="og:type" content="website">
@@ -50,21 +50,21 @@
         <meta property="twitter:site" content="Pony Driland">
         
         <!-- Script -->
-        <script src="/chapters/config.js?v=6"></script>
+        <script src="/chapters/config.js?v=7"></script>
 
         <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
-        <script src="/js/jquery.min.js?v=6"></script>
-        <script src="/js/bootstrap.bundle.min.js?v=6"></script>
-        <script src="/js/loadingoverlay.min.js?v=6"></script>
-        <script src="/js/unstoppabledomains.js?v=6"></script>
-        <script src="/js/discord-markdown.js?v=6"></script>
-        <script src="/js/marked.js?v=6"></script>
-        <script src="/js/cid-tool.js?v=6"></script>
-        <script src="/js/tinyLib.js?v=6"></script>
-        <script src="/js/files/chapters.js?v=6"></script>
-        <script src="/js/files/vore-warning.js?v=6"></script>
-        <script src="/js/files/start.js?v=6"></script>
-        <script src="/js/chapter_manager/index.js?v=6"></script>
+        <script src="/js/jquery.min.js?v=7"></script>
+        <script src="/js/bootstrap.bundle.min.js?v=7"></script>
+        <script src="/js/loadingoverlay.min.js?v=7"></script>
+        <script src="/js/unstoppabledomains.js?v=7"></script>
+        <script src="/js/discord-markdown.js?v=7"></script>
+        <script src="/js/marked.js?v=7"></script>
+        <script src="/js/cid-tool.js?v=7"></script>
+        <script src="/js/tinyLib.js?v=7"></script>
+        <script src="/js/files/chapters.js?v=7"></script>
+        <script src="/js/files/vore-warning.js?v=7"></script>
+        <script src="/js/files/start.js?v=7"></script>
+        <script src="/js/chapter_manager/index.js?v=7"></script>
         <script src="/js/photoswipe.min.js"></script>
         <script src="/js/photoswipe-ui-default.min.js"></script>
     
@@ -94,6 +94,16 @@
 
                     <div class="pswp__top-bar">
 
+                        <!--  Controls are self-explanatory. Order can be changed. -->
+
+                        <div class="pswp__counter"></div>
+
+                        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
                         <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
                         <!-- element will get class pswp__preloader--active when preloader is running -->
                         <div class="pswp__preloader">
@@ -103,12 +113,17 @@
                             </div>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
                         <div class="pswp__share-tooltip"></div> 
                     </div>
+
+                    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                    </button>
+
+                    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                    </button>
 
                     <div class="pswp__caption">
                         <div class="pswp__caption__center"></div>
