@@ -29,7 +29,7 @@ var urlUpdate = function(url, title, isPopState = false) {
             if (!storyCfg.custom_url[url]) {
                 window.history.pushState({ "pageTitle": title }, "", '/?path=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(title));
             } else {
-                window.history.pushState({ "pageTitle": title }, "", storyCfg.custom_url[url].url);
+                window.history.pushState({ "pageTitle": storyCfg.custom_url[url].title }, "", storyCfg.custom_url[url].url);
             }
         } else {
             window.history.pushState({ "pageTitle": title }, "", '/');
@@ -459,7 +459,16 @@ $(function() {
 
         // Start Readme
         if (params.path !== 'read-fic') {
+
+            // Prepare Custom URL
+            if (document.location.pathname !== '/' && storyCfg.custom_url[url]) {
+                params.path = storyCfg.custom_url[url].url;
+                params.title = storyCfg.custom_url[url].title;
+            }
+
+            // Read Page
             openNewAddress(params, true);
+
         } else { openChapterMenu(); }
 
         // Complete
