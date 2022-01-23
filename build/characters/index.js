@@ -22,7 +22,19 @@ fs.readdir(folderPath, (err, files) => {
             const jsonFile = require(path.join(folderPath, './' + file.name + '.json'));
             console.log(jsonFile);
 
-            console.log(path.join(ficData.path, './oEmbed/characters/' + file.name + '.json'));
+            // Create oEmbed File
+            fs.writeFileSync(path.join(ficData.path, './oEmbed/characters/' + file.name + '.json'), JSON.stringify({
+                author_name: 'Blujetink and JasminDreasond',
+                url: '/oEmbed/characters/' + file.base + '.',
+                cache_age: 7200,
+                tags: jsonFile.tags,
+                provider_name: ficData.config.title,
+                provider_url: 'https://' + ficData.config.domain,
+                title: jsonFile.title,
+                description: jsonFile.description,
+                type: 'photo',
+                version: '1.0'
+            }, null, 2));
 
             // End Group
             console.groupEnd();
