@@ -2,10 +2,8 @@
 const path = require('path');
 const fs = require('fs');
 
-// Read Fic Config
-const publicFolder = path.join(__dirname, '../../docs');
-eval(fs.readFileSync(path.join(publicFolder, './chapters/config.js'), 'utf8'));
-console.log(storyCfg);
+const ficData = require('../publicFolder')();
+console.log(ficData);
 
 // Read Data
 const folderPath = path.join(__dirname, './data');
