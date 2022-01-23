@@ -73,6 +73,12 @@ var insertMarkdownFile = function(text) {
         urlUpdate($(this).attr('file'), $(this).text().trim());
     });
 
+    // Fix Image
+    $('[id="markdown-read"] img').each(function() {
+        const newTinyPlace = $('<p>', { class: 'mt-4' });
+        newTinyPlace.insertAfter(this);
+    });
+
 };
 
 // Open MD FIle
