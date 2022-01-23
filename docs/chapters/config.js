@@ -7,7 +7,6 @@ var storyCfg = {
     urlPage: null,
     defaultLang: 'en',
     lang: ['en'],
-    chapters: 1,
     defaultYoutubeVolume: 100,
     year: 2021,
 

@@ -1,0 +1,1 @@
+storyCfg.chapters = 1;
