@@ -76,10 +76,52 @@ var insertMarkdownFile = function(text) {
     // Fix Image
     $('[id="markdown-read"] img').each(function() {
 
-        if ($(this).parents('a').length < 1) {
+        // New Image Item
+        const src = $(this).attr('src');
+        const newImage = $('<img>', { class: 'img-fluid' }).css('height', $(this).attr('height')).css('width', $(this).attr('width'));
+        $(this).replaceWith(newImage);
+
+        // Load Image FIle
+        var pswpElement = document.querySelectorAll('.pswp')[0];
+        newImage.css({
+            'cursor': 'pointer',
+            'opacity': '0%',
+            'pointer-events': ''
+        }).on('load', function() {
+
+            const newImg = new Image();
+            const tinyThis = $(this);
+
+            newImg.onload = function() {
+                var height = newImg.height;
+                var width = newImg.width;
+                tinyThis.data('image-size', { width: this.width, height: this.height });
+                tinyThis.css({ 'opacity': '100%', 'pointer-events': '' });
+            }
+
+            newImg.src = $(this).attr('src');
+
+        }).click(function() {
+            const imgSize = $(this).data('image-size');
+            var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, [{ src: $(this).attr('src'), h: imgSize.height, w: imgSize.width }], { index: 0 });
+            gallery.init();
+            $(this).fadeTo("fast", 0.7, function() {
+                $(this).fadeTo("fast", 1);
+            });
+            return false;
+        }).hover(function() {
+            $(this).fadeTo("fast", 0.8);
+        }, function() {
+            $(this).fadeTo("fast", 1);
+        });
+
+        // Load Image
+        newImage.attr('src', src);
+
+        // Insert P
+        if (newImage.parents('a').length < 1) {
             const newTinyPlace = $('<p>', { class: 'mt-4' });
-            newTinyPlace.insertAfter(this);
-            $(this).addClass('img-fluid').css('height', $(this).attr('height')).css('width', $(this).attr('width'));
+            newTinyPlace.insertAfter(newImage);
         }
 
     });
