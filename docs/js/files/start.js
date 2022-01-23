@@ -310,6 +310,12 @@ $(function() {
         // Readme
         storyData.readme = readme;
 
+        // Read Me Disable
+        let readButtonDisabled = '';
+        if (storyCfg.underDevelopment) {
+            readButtonDisabled = ' d-none';
+        }
+
         // Insert Navbar
         $('body').prepend(
 
@@ -368,11 +374,14 @@ $(function() {
                     $('<ul>', { class: 'nav navbar-nav navbar-right ml-3 small' }).append(
 
                         // Read Fanfic
-                        $('<a>', { class: 'nav-item nav-link', href: '/?path=read-fic&title=Pony%20Driland' }).text('Read').prepend(
+                        $('<a>', { class: 'nav-item nav-link' + readButtonDisabled, href: '/?path=read-fic&title=Pony%20Driland' }).text('Read').prepend(
                             $('<i>', { class: 'fab fa-readme mr-2' })
                         ).click(function() {
-                            openChapterMenu();
-                            urlUpdate('read-fic');
+                            if (!readButtonDisabled) {
+                                openChapterMenu();
+                                urlUpdate('read-fic');
+                            }
+                            return false;
                         })
 
                     )
@@ -477,8 +486,7 @@ $(function() {
         } else { openChapterMenu(params); }
 
         // Complete
-        console.log(storyData);
-        $('#under-development').modal();
+        if (storyCfg.underDevelopment) { $('#under-development').modal(); }
         fn();
 
     });
