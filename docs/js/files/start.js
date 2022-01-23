@@ -77,7 +77,7 @@ $(window).on('popstate', function() {
     else {
 
         // Get Data
-        const urlData = Object.keys(storyCfg.custom_url).find(item[1].url === document.location.pathname);
+        const urlData = Object.entries(storyCfg.custom_url).find(item => item[1].url === document.location.pathname);
         if (urlData) {
             params.path = urlData[0];
             params.title = urlData[1].title;
