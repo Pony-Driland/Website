@@ -3,3 +3,29 @@
     pointer-events: none;
     position: fixed;
 }
+
+#markdown-read>h1,
+#markdown-read>h2,
+#markdown-read>h3,
+#markdown-read>h4,
+#markdown-read>h5,
+#markdown-read>h6 {
+    margin-top: 24px !important;
+    margin-bottom: 16px !important;
+    font-weight: 600 !important;
+    line-height: 1.25 !important;
+}
+
+#markdown-read>h1,
+#markdown-read>h2 {
+    border-bottom: 1px solid #303030;
+    padding-bottom: 6px;
+}
+
+#markdown-read>hr {
+    height: 0.25em;
+    padding: 0;
+    margin: 24px 0;
+    background-color: #303030;
+    border: 0;
+}
