@@ -2,6 +2,10 @@
 const path = require('path');
 const fs = require('fs');
 
+// Read Fic Config
+eval(fs.readFileSync(path.join(__dirname, '../../docs/chapters/config.js'), 'utf8'));
+console.log(storyCfg);
+
 // Read Data
 const folderPath = path.join(__dirname, './data');
 fs.readdir(folderPath, (err, files) => {
