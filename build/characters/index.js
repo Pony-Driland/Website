@@ -12,12 +12,17 @@ fs.readdir(folderPath, (err, files) => {
     if (!err) {
         files.forEach(async file => {
 
+            // File Name
+            file = path.parse(file);
+
             // Start Group
-            console.group(file);
+            console.group(file.base);
 
             // Get JSON
-            const jsonFile = require(path.join(folderPath, './' + file));
+            const jsonFile = require(path.join(folderPath, './' + file.name + '.json'));
             console.log(jsonFile);
+
+            console.log(path.join(ficData.path, './oEmbed/characters/' + file.name + '.json'));
 
             // End Group
             console.groupEnd();
