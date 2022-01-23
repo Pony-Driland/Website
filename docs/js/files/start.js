@@ -272,17 +272,6 @@ $(function() {
         // Readme
         storyData.readme = readme;
 
-        // Insert CID
-        $('#info-base').append(
-            $('<br/>'),
-            $('<small>').text('CID: ' + storyData.cid),
-            $('<br/>'),
-            $('<small>').append(
-                $('<span>').text('CID32: '),
-                $('<a>', { href: `https://${storyData.cid32}.ipfs.dweb.link/` }).text(storyData.cid32)
-            )
-        );
-
         // Insert Navbar
         $('body').prepend(
 
