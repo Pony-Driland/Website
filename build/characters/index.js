@@ -10,6 +10,11 @@ console.log(ficData);
 const folderPath = path.join(__dirname, './data');
 fs.readdir(folderPath, (err, files) => {
     if (!err) {
+
+        // Prepare Custom URL
+        const customURLs = {};
+
+        // Read Files
         files.forEach(async file => {
 
             // File Name
@@ -20,9 +25,10 @@ fs.readdir(folderPath, (err, files) => {
 
             // Get JSON
             const jsonFile = require(path.join(folderPath, './' + file.name + '.json'));
-            console.log(jsonFile);
+            console.log('JSON File', jsonFile);
 
             // Create oEmbed File
+            console.log('Creating JSON oEmbed...');
             fs.writeFileSync(path.join(ficData.path, './oEmbed/characters/' + file.name + '.json'), JSON.stringify({
                 author_name: jsonFile.author_name,
                 url: '/oEmbed/characters/' + file.name + '.' + jsonFile.image,
@@ -35,8 +41,10 @@ fs.readdir(folderPath, (err, files) => {
                 type: 'photo',
                 version: '1.0'
             }, null, 2));
+            console.log('Done!');
 
             // Create HTML File
+            console.log('Creating HTML...');
             fs.writeFileSync(path.join(ficData.path, './characters/' + file.name + '.html'), `
 <html lang="en">
     <head>
@@ -93,6 +101,13 @@ fs.readdir(folderPath, (err, files) => {
 
 </html>
             `);
+            console.log('Done!');
+
+            // Create Custom URL
+            customURLs['/img/characters/' + file.name + '/README.md'] = {
+                url: '/characters/' + file.name + '.html',
+                title: jsonFile.title
+            };
 
             // End Group
             console.groupEnd();
@@ -101,6 +116,9 @@ fs.readdir(folderPath, (err, files) => {
             return;
 
         });
+
+
+
     } else {
         console.error(err);
     }
