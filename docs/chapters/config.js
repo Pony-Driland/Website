@@ -53,6 +53,14 @@ var storyCfg = {
         color2: '#e0e0e0',
         color3: 'rgba(255, 255, 255, 0.6)',
         color4: '#5e5e5e'
+    },
+
+    custom_url: {
+        '/?path=%2Fimg%2Fcharacters%2Frainbow-queen%2FREADME.md&title=Rainbow%20Queen': '/characters/rainbow-queen.html',
+        '/?path=%2Fimg%2Fcharacters%2Frayane%2FREADME.md&title=Rayane': '/characters/rayane.html',
+        '/?path=%2Fimg%2Fcharacters%2Fprincess-ariella%2FREADME.md&title=Princess%20Ariella': '/characters/princess-ariella.html',
+        '/?path=%2Fimg%2Fcharacters%2Flayla%2FREADME.md&title=Layla': '/characters/layla.html',
+        '/?path=%2Fimg%2Fcharacters%2Famy%2FREADME.md&title=Amy': '/characters/amy.html'
     }
 
 };
