@@ -74,7 +74,7 @@ $(window).on('popstate', function() {
             storyData.urlPage = params.path;
             if (params.path !== 'read-fic') {
                 openNewAddress(params, true);
-            } else { openChapterMenu(); }
+            } else { openChapterMenu(params); }
         }
     };
 
@@ -368,12 +368,12 @@ $(function() {
                     $('<ul>', { class: 'nav navbar-nav navbar-right ml-3 small' }).append(
 
                         // Read Fanfic
-                        /* $('<a>', { class: 'nav-item nav-link', href: '/?path=read-fic&title=Pony%20Driland' }).text('Read').prepend(
+                        $('<a>', { class: 'nav-item nav-link', href: '/?path=read-fic&title=Pony%20Driland' }).text('Read').prepend(
                             $('<i>', { class: 'fab fa-readme mr-2' })
                         ).click(function() {
                             openChapterMenu();
                             urlUpdate('read-fic');
-                        }) */
+                        })
 
                     )
 
@@ -474,7 +474,7 @@ $(function() {
         // Start Readme
         if (params.path !== 'read-fic') {
             openNewAddress(params, true, true);
-        } else { openChapterMenu(); }
+        } else { openChapterMenu(params); }
 
         // Complete
         console.log(storyData);
