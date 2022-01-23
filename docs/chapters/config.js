@@ -2,6 +2,7 @@ var storyCfg = {
 
     title: 'Pony Driland',
     description: 'The mysterious world.',
+    urlPage: null,
     defaultLang: 'en',
     lang: ['en'],
     chapters: 1,

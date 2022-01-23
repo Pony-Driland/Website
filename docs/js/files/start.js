@@ -21,6 +21,7 @@ var urlUpdate = function(url, title, isPopState = false) {
     // Page Title
     if (typeof title !== 'string' || title.length < 1) { title = storyCfg.title; }
     document.title = title;
+    storyData.urlPage = url;
 
     // Pop State
     if (!isPopState) {
@@ -50,7 +51,11 @@ var openNewAddress = function(data, isPopState = false) {
 
 $(window).on('popstate', function() {
     const urlSearchParams = new URLSearchParams(document.location.search);
-    openNewAddress(Object.fromEntries(urlSearchParams.entries()), true);
+    const params = Object.fromEntries(urlSearchParams.entries());
+    if (storyData.urlPage !== params.path) {
+        storyData.urlPage = params.path;
+        openNewAddress(params, true);
+    }
 });
 
 // Insert Maarkdown File
