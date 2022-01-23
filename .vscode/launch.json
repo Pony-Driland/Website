@@ -21,6 +21,15 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}\\build\\characters\\index.js"
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "Build Chapters Data",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\build\\chapter\\index.js"
         }
     ]
 }
