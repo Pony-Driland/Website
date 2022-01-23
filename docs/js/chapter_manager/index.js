@@ -1,4 +1,4 @@
-var openChapterMenu = function() {
+var openChapterMenu = function(params = {}) {
 
     $('#markdown-read').empty();
     console.log('Open Chapter');
