@@ -11,8 +11,18 @@ const folderPath = path.join(ficData.path, './chapters/' + ficData.config.defaul
 fs.readdir(folderPath, (err, files) => {
     if (!err) {
 
-        // File Name
-        file = path.parse(file);
+        // Data
+        const data = { count: 0 };
+
+        // Read Files
+        files.forEach(file => {
+            data.count++;
+        });
+
+        // Create JS File
+        console.log('Creating JS...');
+        fs.writeFileSync(path.join(ficData.path, './chapters/counter.js'), `storyCfg.chapters = ${String(data.count)};`);
+        console.log('Done!');
 
     } else {
         console.error(err);

@@ -120,8 +120,7 @@ fs.readdir(folderPath, (err, files) => {
         });
 
         // Custom List
-        // Create HTML File
-        console.log('Creating HTML...');
+        console.log('Creating JS...');
         fs.writeFileSync(path.join(ficData.path, './chapters/characters.js'), `
 if(!storyCfg.custom_url) { storyCfg.custom_url = {}; }
 storyCfg.characters = ${JSON.stringify(customURLs, null, 2)};
