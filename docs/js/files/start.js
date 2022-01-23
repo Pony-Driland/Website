@@ -54,7 +54,9 @@ $(window).on('popstate', function() {
     const params = Object.fromEntries(urlSearchParams.entries());
     if (storyData.urlPage !== params.path) {
         storyData.urlPage = params.path;
-        openNewAddress(params, true);
+        if (params.path !== 'read-fic') {
+            openNewAddress(params, true);
+        } else { openChapterMenu(); }
     }
 });
 
@@ -315,9 +317,12 @@ $(function() {
                         }),
 
                         // Read Fanfic
-                        /* $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Read').prepend(
+                        $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Read').prepend(
                             $('<i>', { class: 'fab fa-readme mr-2' })
-                        ).click(openChapterMenu) */
+                        ).click(function() {
+                            openChapterMenu();
+                            urlUpdate('read-fic');
+                        })
 
                     )
                 )
@@ -415,7 +420,9 @@ $(function() {
         );
 
         // Start Readme
-        openNewAddress(params, true);
+        if (params.path !== 'read-fic') {
+            openNewAddress(params, true);
+        } else { openChapterMenu(); }
 
         // Complete
         console.log(storyData);
