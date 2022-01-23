@@ -57,27 +57,27 @@ var storyCfg = {
 
     custom_url: {
 
-        '/?path=%2Fimg%2Fcharacters%2Frainbow-queen%2FREADME.md&title=Rainbow%20Queen': {
+        '/img/characters/rainbow-queen/README.md': {
             url: '/characters/rainbow-queen.html',
             title: 'Rainbow Queen'
         },
 
-        '/?path=%2Fimg%2Fcharacters%2Frayane%2FREADME.md&title=Rayane': {
+        '/img/characters/rayane/README.md': {
             url: '/characters/rayane.html',
             title: 'Rayane'
         },
 
-        '/?path=%2Fimg%2Fcharacters%2Fprincess-ariella%2FREADME.md&title=Princess%20Ariella': {
+        '/img/characters/princess-ariella/README.md': {
             url: '/characters/princess-ariella.html',
             title: 'Princess Ariella'
         },
 
-        '/?path=%2Fimg%2Fcharacters%2Flayla%2FREADME.md&title=Layla': {
+        '/img/characters/layla/README.md': {
             url: '/characters/layla.html',
             title: 'Layla'
         },
 
-        '/?path=%2Fimg%2Fcharacters%2Famy%2FREADME.md&title=Amy': {
+        '/img/characters/amy/README.md': {
             url: '/characters/amy.html',
             title: 'Amy'
         }
