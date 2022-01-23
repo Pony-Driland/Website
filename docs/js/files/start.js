@@ -279,7 +279,10 @@ $(function() {
             $('<nav>', { class: 'navbar navbar-expand-lg navbar-dark bg-dark fixed-top', id: 'md-navbar' }).append(
 
                 // Title
-                $('<a>', { class: 'navbar-brand' }).text(storyCfg.title),
+                $('<a>', { class: 'navbar-brand', href: 'javascript:void(0)' }).text(storyCfg.title).click(function() {
+                    openMDFIle('/README.md');
+                    urlUpdate();
+                }),
 
                 // Button
                 $('<button>', { class: 'navbar-toggler', type: 'button', 'data-toggle': 'collapse', 'data-target': '#mdMenu', 'aria-controls': '#mdMenu', 'aria-expanded': false }).append(
@@ -361,6 +364,12 @@ $(function() {
                                     $('<a>', { href: `https://${storyData.cid32}.ipfs.dweb.link/` }).text('IPFS ' + storyCfg.nftDomain.name).prepend(
                                         $('<i>', { class: 'fas fa-wifi mr-2' })
                                     )
+                                ),
+
+                                $('<li>').append(
+                                    $('<a>', { target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}` }).text('Discord Server').prepend(
+                                        $('<i>', { class: 'fab fa-discord mr-2' })
+                                    ),
                                 )
 
                             )
@@ -376,16 +385,13 @@ $(function() {
                                         $('<i>', { class: 'fas fa-marker mr-2' })
                                     ),
                                 ),
+
                                 $('<li>').append(
                                     $('<a>', { target: '_blank', href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}` }).text('Github').prepend(
                                         $('<i>', { class: 'fab fa-github mr-2' })
                                     ),
                                 ),
-                                $('<li>').append(
-                                    $('<a>', { target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}` }).text('Discord Server').prepend(
-                                        $('<i>', { class: 'fab fa-discord mr-2' })
-                                    ),
-                                ),
+
                                 $('<li>').append(
                                     $('<a>', { target: '_blank', href: 'mailto:' + storyCfg.contact }).text('Contact').prepend(
                                         $('<i>', { class: 'fas fa-envelope mr-2' })
