@@ -317,12 +317,12 @@ $(function() {
                         }),
 
                         // Read Fanfic
-                        $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Read').prepend(
+                        /* $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Read').prepend(
                             $('<i>', { class: 'fab fa-readme mr-2' })
                         ).click(function() {
                             openChapterMenu();
                             urlUpdate('read-fic');
-                        })
+                        }) */
 
                     )
                 )
