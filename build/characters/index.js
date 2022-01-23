@@ -24,8 +24,8 @@ fs.readdir(folderPath, (err, files) => {
 
             // Create oEmbed File
             fs.writeFileSync(path.join(ficData.path, './oEmbed/characters/' + file.name + '.json'), JSON.stringify({
-                author_name: 'Blujetink and JasminDreasond',
-                url: '/oEmbed/characters/' + file.base + '.',
+                author_name: jsonFile.author_name,
+                url: '/oEmbed/characters/' + file.name + '.' + jsonFile.image,
                 cache_age: 7200,
                 tags: jsonFile.tags,
                 provider_name: ficData.config.title,
