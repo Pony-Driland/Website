@@ -9,16 +9,20 @@
         
         <!-- Title -->
         <title>Pony Driland</title>
-        <link href="./img/icon.png" rel="icon" type="image/x-icon"/>
+        <link href="/img/icon.png" rel="icon" type="image/x-icon"/>
         
         <!-- CSS -->
-        <link rel="preload" href="./css/bootstrap.min.css?v=4" as="style">
-        <link rel="stylesheet" href="./css/all.min.css?v=4">
-        <link rel="preload" href="./css/all.min.css?v=4" as="style">
-        <link rel="stylesheet" href="./css/bootstrap.min.css?v=4">
-        <link rel="stylesheet" href="./css/dark.css?v=4">
-        <link rel="stylesheet" href="./css/main.css?v=4">
-        <link rel="manifest" href="./manifest.json?v=4">
+        <link rel="preload" href="/css/bootstrap.min.css?v=4" as="style">
+        <link rel="stylesheet" href="/css/all.min.css?v=4">
+        <link rel="preload" href="/css/all.min.css?v=4" as="style">
+        <link rel="stylesheet" href="/css/bootstrap.min.css?v=4">
+        <link rel="stylesheet" href="/css/dark.css?v=4">
+        <link rel="stylesheet" href="/css/main.css?v=4">
+        <link rel="stylesheet" href="/css/photoswipe.css">
+        <link rel="stylesheet" href="/css/default-skin/default-skin.css">
+
+        <!-- Manifest -->
+        <link rel="manifest" href="/manifest.json?v=4">
 
         <!-- Page Info -->
         <meta content="Homepage" property="og:title">
@@ -30,7 +34,7 @@
         <meta content="The mysterious world." property="description">
         
         <!-- Embed -->
-        <link href="./oEmbed/index.json?v=4" rel="alternate" title="oEmbed JSON Profile" type="application/json+oembed">
+        <link href="/oEmbed/index.json?v=4" rel="alternate" title="oEmbed JSON Profile" type="application/json+oembed">
         <meta content="/oEmbed/index.png" property="og:image">
         <link href="https://ponydriland.com" rel="canonical">
         
@@ -46,24 +50,93 @@
         <meta property="twitter:site" content="Pony Driland">
         
         <!-- Script -->
-        <script src="./chapters/config.js?v=4"></script>
+        <script src="/chapters/config.js?v=4"></script>
 
         <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
-        <script src="./js/jquery.min.js?v=4"></script>
-        <script src="./js/bootstrap.bundle.min.js?v=4"></script>
-        <script src="./js/loadingoverlay.min.js?v=4"></script>
-        <script src="./js/unstoppabledomains.js?v=4"></script>
-        <script src="./js/discord-markdown.js?v=4"></script>
-        <script src="./js/marked.js?v=4"></script>
-        <script src="./js/cid-tool.js?v=4"></script>
-        <script src="./js/tinyLib.js?v=4"></script>
-        <script src="./js/files/chapters.js?v=4"></script>
-        <script src="./js/files/vore-warning.js?v=4"></script>
-        <script src="./js/files/start.js?v=4"></script>
-        <script src="./js/chapter_manager/index.js?v=4"></script>
+        <script src="/js/jquery.min.js?v=4"></script>
+        <script src="/js/bootstrap.bundle.min.js?v=4"></script>
+        <script src="/js/loadingoverlay.min.js?v=4"></script>
+        <script src="/js/unstoppabledomains.js?v=4"></script>
+        <script src="/js/discord-markdown.js?v=4"></script>
+        <script src="/js/marked.js?v=4"></script>
+        <script src="/js/cid-tool.js?v=4"></script>
+        <script src="/js/tinyLib.js?v=4"></script>
+        <script src="/js/files/chapters.js?v=4"></script>
+        <script src="/js/files/vore-warning.js?v=4"></script>
+        <script src="/js/files/start.js?v=4"></script>
+        <script src="/js/chapter_manager/index.js?v=4"></script>
+        <script src="/js/photoswipe.min.js"></script>
+        <script src="/js/photoswipe-ui-default.min.js"></script>
     
     </head>
     <body>
+
+        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+            <!-- Background of PhotoSwipe. 
+                It's a separate element as animating opacity is faster than rgba(). -->
+            <div class="pswp__bg"></div>
+
+            <!-- Slides wrapper with overflow:hidden. -->
+            <div class="pswp__scroll-wrap">
+
+                <!-- Container that holds slides. 
+                    PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                    Don't modify these 3 pswp__item elements, data is added later on. -->
+                <div class="pswp__container">
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                </div>
+
+                <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+                <div class="pswp__ui pswp__ui--hidden">
+
+                    <div class="pswp__top-bar">
+
+                        <!--  Controls are self-explanatory. Order can be changed. -->
+
+                        <div class="pswp__counter"></div>
+
+                        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                        <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                        <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                        <!-- element will get class pswp__preloader--active when preloader is running -->
+                        <div class="pswp__preloader">
+                            <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                        <div class="pswp__share-tooltip"></div> 
+                    </div>
+
+                    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                    </button>
+
+                    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                    </button>
+
+                    <div class="pswp__caption">
+                        <div class="pswp__caption__center"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
         <div id="youtubePlayer"></div>
         <div style="padding-top: 58px;">
 
@@ -86,7 +159,7 @@
                     </div>
                     <div class="modal-body">
                         <center id="info-base">
-                            <div class="mb-2"><img src="./img/error.png" style="" class="img-fluid" alt="error"/></div>
+                            <div class="mb-2"><img src="/img/error.png" style="" class="img-fluid" alt="error"/></div>
                             This website is under development. 
                             For more information, visit the <a href="https://github.com/Pony-Driland/Website" target="_blank">Github repository</a> or <a href="https://discord.gg/GegfAgNxRX" target="_blank">Discord Server</a>.
                             <br/>
