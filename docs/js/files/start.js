@@ -93,8 +93,6 @@ var insertMarkdownFile = function(text) {
             const tinyThis = $(this);
 
             newImg.onload = function() {
-                var height = newImg.height;
-                var width = newImg.width;
                 tinyThis.data('image-size', { width: this.width, height: this.height });
                 tinyThis.css({ 'opacity': '100%', 'pointer-events': '' });
             }
