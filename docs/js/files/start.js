@@ -293,7 +293,9 @@ $(function() {
 
                 // Collapse
                 $('<div>', { class: 'collapse navbar-collapse', id: 'mdMenu' }).append(
-                    $('<div>', { class: 'navbar-nav' }).append(
+
+                    // Nav 1
+                    $('<div>', { class: 'navbar-nav mr-auto mt-2 mt-lg-0 small' }).append(
 
                         // Homepage
                         $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Homepage').prepend(
@@ -314,7 +316,12 @@ $(function() {
                         ).click(function() {
                             openMDFIle('/LICENSE.md');
                             urlUpdate('/LICENSE.md', 'License');
-                        }),
+                        })
+
+                    ),
+
+                    // Nav 2
+                    $('<ul>', { class: 'nav navbar-nav navbar-right ml-3 small' }).append(
 
                         // Read Fanfic
                         /* $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Read').prepend(
@@ -325,6 +332,7 @@ $(function() {
                         }) */
 
                     )
+
                 )
 
             )
