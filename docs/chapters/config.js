@@ -56,6 +56,10 @@ var storyCfg = {
         color2: '#e0e0e0',
         color3: 'rgba(255, 255, 255, 0.6)',
         color4: '#5e5e5e'
+    },
+
+    chapterName: {
+        1: 'This is not my world'
     }
 
 };
