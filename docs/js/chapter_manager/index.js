@@ -5,7 +5,10 @@ var storyDialogue = {
 
         items.push(
             $('<tr>').append(
-                $('<td>', { class: 'py-4' }).text(data.value)
+                $('<td>', { class: 'py-4' }).text(''),
+                $('<td>', { class: 'py-4' }).append(
+                    $('<strong>').text(data.value)
+                )
             )
         );
 
@@ -14,10 +17,28 @@ var storyDialogue = {
     // Dialogue
     dialogue: function(items, data) {
 
+        items.push(
+            $('<tr>').append(
+                $('<td>', { class: 'py-4', width: '20%' }).text(data.character),
+                $('<td>', { class: 'py-4' }).append(
+                    $('<span>').text(data.value)
+                )
+            )
+        );
+
     },
 
     // Think
     think: function(items, data) {
+
+        items.push(
+            $('<tr>').append(
+                $('<td>', { class: 'py-4', width: '20%' }).text(data.character),
+                $('<td>', { class: 'py-4' }).append(
+                    $('<small>').text(data.value)
+                )
+            )
+        );
 
     },
 
