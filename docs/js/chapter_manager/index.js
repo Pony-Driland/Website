@@ -11,6 +11,10 @@ var openChapterMenu = function(params = {}) {
         console.log(chapter, page, line);
         console.log(pagination);
 
+        /* 
+            Depois checar se existe bookmark, se tiver, vamos carregar direto para o checkpoint.
+        */
+
     };
 
     // Exist Chapter
@@ -40,11 +44,6 @@ var openChapterMenu = function(params = {}) {
     // Nope. Choose One
     else {
 
-        /* 
-            Primeiro escolher qual capitulo o usuário quer ler.
-            Depois checar se existe bookmark, se tiver, vamos carregar direto para o checkpoint.
-        */
-
         // Prepare Choose
         $('#markdown-read').append(
 
@@ -54,8 +53,30 @@ var openChapterMenu = function(params = {}) {
 
         );
 
-        // Test
-        newRead();
+        // Read More Data
+        for (let i = 0; i < storyData.chapter.amount; i++) {
+            const chapter = String(i + 1);
+            $('#markdown-read').append(
+
+                $('<div>', { class: 'card' }).append(
+                    $('<div>', { class: 'card-body' }).append(
+                        $('<h5>', { class: 'card-title' }).text('Chapter ' + chapter),
+                        $('<p>', { class: 'card-text' }).text(storyCfg.chapterName[chapter].title),
+                        $('<p>', { class: 'card-text small' }).text(storyCfg.chapterName[chapter].description),
+                        $('<a>', { class: 'btn btn-primary', href: `/?path=read-fic&title=Pony%20Driland?chapter=${chapter}`, chapter: chapter }).click(function() {
+
+                            // Start Chapter
+                            newRead($(this).attr('chapter'));
+
+                            // Complete
+                            return false;
+
+                        }).text('Read')
+                    )
+                )
+
+            );
+        }
 
     }
 
