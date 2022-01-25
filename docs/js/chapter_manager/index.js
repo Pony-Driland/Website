@@ -1,3 +1,32 @@
+var storyDialogue = {
+
+    // Action
+    action: function(items, data) {
+
+        items.push(
+            $('<tr>').append(
+                $('<td>', { class: 'py-4' }).text(data.value)
+            )
+        );
+
+    },
+
+    // Dialogue
+    dialogue: function(items, data) {
+
+    },
+
+    // Think
+    think: function(items, data) {
+
+    },
+
+    set: {
+
+    }
+
+};
+
 var openChapterMenu = function(params = {}) {
 
     // Prepare Data
@@ -22,11 +51,9 @@ var openChapterMenu = function(params = {}) {
 
         // Insert Items
         for (const item in pagination.data) {
-            items.push(
-                $('<tr>').append(
-                    $('<td>', { class: 'py-4' }).text(pagination.data[item].value)
-                )
-            );
+            if (typeof storyDialogue[pagination.data[item].type] === 'function') {
+                storyDialogue[pagination.data[item].type](items, pagination.data[item]);
+            }
         }
 
         // Table
