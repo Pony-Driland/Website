@@ -32,7 +32,7 @@ var openChapterMenu = function(params = {}) {
         // Table
         $('#markdown-read').append(
 
-            $('<h3>').text(`Chapter ${chapter}`).prepend($('<small>').text(storyCfg.chapterName[chapter])),
+            $('<h3>').text(`Chapter ${chapter}`).append($('<small>', { class: 'ml-3' }).text(storyCfg.chapterName[chapter])),
 
             // Table
             $('<table>').append(
