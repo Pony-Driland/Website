@@ -6,6 +6,9 @@ var openChapterMenu = function(params = {}) {
     // New Read
     const newRead = function(chapter = 1, page = 1, line = 1) {
 
+        // Prepare Data
+        $('#markdown-read').empty();
+
         // Prepare Pagination
         const pagination = paginateArray(storyData.data[chapter], page, storyCfg.itemsPerPage);
         console.log(chapter, page, line);
