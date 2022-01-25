@@ -1,15 +1,59 @@
 var openChapterMenu = function(params = {}) {
 
+    // Prepare Data
     $('#markdown-read').empty();
-    console.log(params);
-    /* paginateArray(storyData.data[1], page, storyCfg.itemsPerPage); */
+
+    // New Read
+    const newRead = function(chapter = 1, page = 1, line = 1) {
+
+        // Prepare Pagination
+        const pagination = paginateArray(storyData.data[chapter], page, storyCfg.itemsPerPage);
+        console.log(chapter, page, line);
+        console.log(pagination);
+
+    };
+
+    // Exist Chapter
+    if (typeof params.chapter === 'string' && params.chapter.length > 0) {
+
+        // Fix Page
+        if (params.page) {
+            params.page = Number(params.page);
+            if (typeof params.page !== 'number' || isNaN(params.page) || !isFinite(params.page) || params.page < 1) {
+                params.page = 1;
+            }
+        } else { params.page = 1; }
+
+        // Fix Line
+        if (params.line) {
+            params.line = Number(params.line);
+            if (typeof params.line !== 'number' || isNaN(params.line) || !isFinite(params.line) || params.line < 1) {
+                params.line = 1;
+            }
+        } else { params.line = 1; }
+
+        // Send Data
+        newRead(params.chapter, params.page, params.line, true);
+
+    }
+
+    // Nope. Choose One
+    else {
+
+        /* 
+            Primeiro escolher qual capitulo o usuário quer ler.
+            Depois checar se existe bookmark, se tiver, vamos carregar direto para o checkpoint.
+        */
+
+        // Test
+        newRead();
+
+    }
 
     /* 
     
-        Primeiro escolher qual capitulo o usuário quer ler.
-        Depois checar se existe bookmark, se tiver, vamos carregar direto para o checkpoint.
-        Botão de voltar para o menu.
 
+        Botão de voltar para o menu.
         Botão de navegar entre páginas.
         
         Usuário escolher se quer ver determinados tipos de cenas explicitas.
