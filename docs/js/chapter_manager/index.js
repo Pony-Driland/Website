@@ -45,6 +45,15 @@ var openChapterMenu = function(params = {}) {
             Depois checar se existe bookmark, se tiver, vamos carregar direto para o checkpoint.
         */
 
+        // Prepare Choose
+        $('#markdown-read').append(
+
+            $('<h2>').text(`Please choose a chapter to read.`).prepend(
+                $('<i>', { class: 'fas fa-book-open mr-3' })
+            )
+
+        );
+
         // Test
         newRead();
 
