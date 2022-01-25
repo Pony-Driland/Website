@@ -83,7 +83,7 @@ var openChapterMenu = function(params = {}) {
             $('<h3>').text(`Chapter ${chapter}`).append($('<small>', { class: 'ml-3' }).text(storyCfg.chapterName[chapter].title)),
 
             // Table
-            $('<table>').append(
+            $('<table>', { class: 'table' }).append(
                 $('<tbody>').append(items)
             )
 
