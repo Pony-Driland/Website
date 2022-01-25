@@ -81,7 +81,9 @@ var openChapterMenu = function(params = {}) {
         $('#markdown-read').append(
 
             // Info
-            $('<div>', { class: 'alert alert-info' }).text('Bold texts are action texts, small texts are thoughts of characters, common texts are dialogues.'),
+            $('<div>', { class: 'alert alert-info' }).text('Bold texts are action texts, small texts are thoughts of characters, common texts are dialogues.').prepend(
+                $('<i>', { class: 'fas fa-info-circle mr-3' })
+            ),
 
             // Title
             $('<h3>').text(`Chapter ${chapter}`).append($('<small>', { class: 'ml-3' }).text(storyCfg.chapterName[chapter].title)),
