@@ -74,7 +74,7 @@ var openChapterMenu = function(params = {}) {
                             // Complete
                             return false;
 
-                        }).text('Read')
+                        }).text('Load')
                     )
                 )
 
