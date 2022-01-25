@@ -59,7 +59,10 @@ var storyCfg = {
     },
 
     chapterName: {
-        1: 'This is not my world'
+        1: {
+            title: 'This is not my world',
+            description: 'The protagonist\'s early days in the world of Pony Driland. Something mysterious has happened and we need to discover the basics about this mysterious place.'
+        }
     }
 
 };
