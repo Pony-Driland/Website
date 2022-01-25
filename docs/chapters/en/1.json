@@ -1,21 +1,11 @@
 [
 
     {
-        "type": "setWhere",
-        "value": "Planet Earth"
-    },
-
-    {
-        "type": "setDayNightCycle",
-        "value": "Morning"
-    },
-
-    {
-        "type": "setDay",
-        "value": 1
-    },
-
-    {
+        "set": {
+            "where": "Planet Earth",
+            "dayNightCycle": "morning",
+            "day": 1
+        },
         "type": "action",
         "value": "It was just another normal day on Planet Earth. It was a beautiful normal day like any other, Vini was living his normal life, he still hadn't showered, and he was talking to his friend Yasmin through Discord. It was a simple super decisive conversation for her to finally pay the X-Tudo Vini wanted so much. Vini was very happy, as he had been waiting for this day for several months, so this was the decisive magic moment. Everything was extremely quiet. It was just a silly Discord conversation like any other day."
     },
@@ -478,11 +468,9 @@
     },
 
     {
-        "type": "setWhere",
-        "value": "Greendream Beach"
-    },
-
-    {
+        "set": {
+            "where": "Greendream Beach"
+        },
         "type": "action",
         "value": "After a long time, Vini was in another mysterious place, his phone was with him, it was a beautiful day, the morning was starting, another normal day on the place, everything was very calm, the beach was deserted as usual because of the schedule. And mysteriously Vini wakes up on the beach, lost not knowing why he was there."
     },
@@ -962,11 +950,9 @@
     },
 
     {
-        "type": "setWhere",
-        "value": "Greendream Village"
-    },
-
-    {
+        "set": {
+            "where": "Greendream Village"
+        },
         "type": "action",
         "value": "Kenny arrived in the village, the village was a little busy, Vini saw some random ponies starting another new day as Kenny arrived at his door."
     },
