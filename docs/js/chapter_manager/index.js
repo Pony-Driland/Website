@@ -6,6 +6,9 @@ var openChapterMenu = function(params = {}) {
     // New Read
     const newRead = function(chapter = 1, page = 1, line = 1) {
 
+        // Set Selected
+        storyData.chapter.selected = chapter;
+
         // Prepare Data
         $('#markdown-read').empty();
 
@@ -13,6 +16,30 @@ var openChapterMenu = function(params = {}) {
         const pagination = paginateArray(storyData.data[chapter], page, storyCfg.itemsPerPage);
         console.log(chapter, page, line);
         console.log(pagination);
+
+        // Items
+        const items = [];
+
+        // Insert Items
+        for (const item in pagination.data) {
+            items.push(
+                $('<tr>').append(
+                    $('<td>', { class: 'py-4' }).text(pagination.data[item].value)
+                )
+            );
+        }
+
+        // Table
+        $('#markdown-read').append(
+
+            $('<h3>').text(`Chapter ${chapter}`).prepend($('<small>').text(storyCfg.chapterName[chapter])),
+
+            // Table
+            $('<table>').append(
+                $('<tbody>').append(items)
+            )
+
+        );
 
         /* 
             Depois checar se existe bookmark, se tiver, vamos carregar direto para o checkpoint.
