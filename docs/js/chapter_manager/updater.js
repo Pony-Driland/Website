@@ -67,19 +67,46 @@ var chapterSet = {
 
     day: function(value, actionFromNow = false) {
         if (actionFromNow) {
+
+            // Add Item Base
+            if (!$('#fic-nav #day').length < 1) {
+                if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
+                storyData.chapter.nav.day = $('<a>', { class: 'nav-item nav-link', id: 'day' });
+                $('#fic-nav').prepend(storyData.chapter.nav.day);
+            }
+
             console.log(value);
+
         }
     },
 
     dayNightCycle: function(value, actionFromNow = false) {
         if (actionFromNow) {
+
+            // Add Item Base
+            if (!$('#fic-nav #dayNightCycle').length < 1) {
+                if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
+                storyData.chapter.nav.dayNightCycle = $('<a>', { class: 'nav-item nav-link', id: 'dayNightCycle' });
+                $('#fic-nav').prepend(storyData.chapter.nav.dayNightCycle);
+            }
+
             console.log(value);
+
         }
     },
 
     where: function(value, actionFromNow = false) {
         if (actionFromNow) {
+
+            // Add Item Base
+            if (!$('#fic-nav #where').length < 1) {
+                if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
+                storyData.chapter.nav.where = $('<a>', { class: 'nav-item nav-link', id: 'where' });
+                $('#fic-nav').prepend(storyData.chapter.nav.where);
+            }
+
             console.log(value);
+
         }
     }
 
