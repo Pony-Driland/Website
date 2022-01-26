@@ -63,15 +63,30 @@ var openChapterMenu = function(params = {}) {
         $('#markdown-read').empty();
         storyData.chapter.html = {};
 
-        // Prepare Pagination
-        let pagination = null;
-
         // Detect Bookmark
         if (typeof storyData.chapter.bookmark[storyData.chapter.selected] === 'number') {
 
             // Update Line
             if (line === null) {
-                line = storyData.chapter.bookmark[storyData.chapter.selected]
+                line = storyData.chapter.bookmark[storyData.chapter.selected];
+            }
+
+            // Read Data
+            page = 1;
+            let counter = 0;
+            for (let i = 0; i < line; i++) {
+                if (storyData.data[chapter][i]) {
+
+                    // Counter Update
+                    counter++;
+
+                    // Reset
+                    if (counter < storyCfg.itemsPerPage) {
+                        counter = 0;
+                        page++;
+                    }
+
+                }
             }
 
         }
@@ -80,9 +95,7 @@ var openChapterMenu = function(params = {}) {
         else { line = 1; }
 
         // Get Pagination
-        if (pagination === null) {
-            pagination = paginateArray(storyData.data[chapter], page, storyCfg.itemsPerPage);
-        }
+        const pagination = paginateArray(storyData.data[chapter], page, storyCfg.itemsPerPage);
 
         // Items
         const items = [];
