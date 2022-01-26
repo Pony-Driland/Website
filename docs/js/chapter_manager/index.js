@@ -54,8 +54,8 @@ $(window).scroll(function(event) {
     // Do something
 });
 
-var updateChapterCache = function() {
-
+var updateChapterCache = function(lastPage) {
+    console.log(lastPage);
 };
 
 var openChapterMenu = function(params = {}) {
@@ -79,11 +79,13 @@ var openChapterMenu = function(params = {}) {
         const items = [];
 
         // Insert Items
+        let lastNumber = 0;
         const numberPag = Number(pagination.perPage * Number(pagination.currentPage - 1));
         for (const item in pagination.data) {
+            lastNumber = Number(item) + numberPag + 1;
             if (typeof storyDialogue[pagination.data[item].type] === 'function') {
                 storyDialogue[pagination.data[item].type](
-                    Number(item) + numberPag + 1,
+                    lastNumber,
                     items,
                     pagination.data[item]
                 );
@@ -122,16 +124,21 @@ var openChapterMenu = function(params = {}) {
             const items = [];
 
             // Insert Items
+            let lastNumber = 0;
             const numberPag = Number(pagination.perPage * Number(pagination.currentPage - 1));
             for (const item in pagination.data) {
+                lastNumber = Number(item) + numberPag + 1;
                 if (typeof storyDialogue[pagination.data[item].type] === 'function') {
                     storyDialogue[pagination.data[item].type](
-                        Number(item) + numberPag + 1,
+                        lastNumber,
                         items,
                         pagination.data[item]
                     );
                 }
             }
+
+            // Update Data
+            updateChapterCache(numberPag + 1);
 
             // Insert
             table.append(items);
@@ -147,6 +154,9 @@ var openChapterMenu = function(params = {}) {
             tinyPag.bootstrapPaginator("show", page);
 
         });
+
+        // Update Data
+        updateChapterCache(numberPag + 1);
 
         // Items
         const table = $('<tbody>');
