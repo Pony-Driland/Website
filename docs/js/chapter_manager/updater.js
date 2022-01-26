@@ -64,6 +64,7 @@ var updateChapterCache = function(lastPage) {
     }
 };
 
+
 // Set Actions
 var chapterSet = {
 

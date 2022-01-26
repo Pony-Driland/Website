@@ -172,11 +172,7 @@ var insertMarkdownFile = function(text) {
 var openMDFIle = function(url) {
 
     // Remove Fic Data
-    $('#fic-nav > a').each(function() {
-        if ($(this).attr('id') !== 'fic-start' && $(this).attr('id') !== 'fic-chapter') {
-            $(this).remove();
-        }
-    });
+    $('#fic-nav > #status').each(function() { $(this).remove(); });
 
     $('#fic-chapter').empty();
 
