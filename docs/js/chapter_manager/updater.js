@@ -75,7 +75,7 @@ var chapterSet = {
                 $('#fic-nav').prepend(storyData.chapter.nav.day);
             }
 
-            console.log(value);
+            $('#fic-nav #day').text(`Day: ${value}`);
 
         }
     },
@@ -90,7 +90,7 @@ var chapterSet = {
                 $('#fic-nav').prepend(storyData.chapter.nav.dayNightCycle);
             }
 
-            console.log(value);
+            $('#fic-nav #dayNightCycle').text(`Night Cicle: ${value}`);
 
         }
     },
@@ -105,7 +105,7 @@ var chapterSet = {
                 $('#fic-nav').prepend(storyData.chapter.nav.where);
             }
 
-            console.log(value);
+            $('#fic-nav #where').text(`Location: ${value}`);
 
         }
     }
