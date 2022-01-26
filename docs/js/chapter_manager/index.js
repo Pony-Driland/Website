@@ -50,7 +50,7 @@ var storyDialogue = {
 
 $(window).scroll(function(event) {
     var scroll = $(window).scrollTop();
-    console.log(scroll);
+    //console.log(scroll);
     // Do something
 });
 
