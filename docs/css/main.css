@@ -29,3 +29,7 @@
     background-color: #303030;
     border: 0;
 }
+
+.page-item.active a {
+    font-weight: bold;
+}
