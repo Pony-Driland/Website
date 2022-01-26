@@ -128,6 +128,7 @@ tinyLib.goToByScrollTop = function(speed = 'slow') {
     }, speed);
 };
 
+// Visible Item
 $.fn.isInViewport = function() {
     var elementTop = $(this).offset().top;
     var elementBottom = elementTop + $(this).outerHeight();
@@ -136,4 +137,14 @@ $.fn.isInViewport = function() {
     var viewportBottom = viewportTop + $(window).height();
 
     return elementBottom > viewportTop && elementTop < viewportBottom;
+};
+
+$.fn.isScrolledIntoView = function() {
+    var docViewTop = $(window).scrollTop();
+    var docViewBottom = docViewTop + $(window).height();
+
+    var elemTop = $(this).offset().top;
+    var elemBottom = elemTop + $(this).height();
+
+    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
 };
