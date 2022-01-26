@@ -64,7 +64,7 @@ var openChapterMenu = function(params = {}) {
         storyData.chapter.html = {};
 
         // Detect Bookmark
-        if (typeof storyData.chapter.bookmark[storyData.chapter.selected] === 'number') {
+        if (typeof storyData.chapter.bookmark[storyData.chapter.selected] === 'number' && storyData.chapter.bookmark[storyData.chapter.selected] !== 1) {
 
             // Update Line
             if (line === null) {
