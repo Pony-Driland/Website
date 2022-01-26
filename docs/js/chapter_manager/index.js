@@ -205,10 +205,6 @@ var openChapterMenu = function(params = {}) {
 
         );
 
-        /* 
-            Depois checar se existe bookmark, se tiver, vamos carregar direto para o checkpoint.
-        */
-
         // Complete
         $(window).trigger('scroll');
         if (line !== null) { tinyLib.goToByScroll($('#markdown-read [line="' + line + '"]'), 0); }
@@ -280,9 +276,6 @@ var openChapterMenu = function(params = {}) {
 
     /* 
     
-
-        Botão de voltar para o menu.
-        
         Usuário escolher se quer ver determinados tipos de cenas explicitas.
         Se o nome do personagem bater com algum personagem com página, ele vai ser um link para acessar a página.
 
