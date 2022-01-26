@@ -69,7 +69,7 @@ var chapterSet = {
         if (actionFromNow) {
 
             // Add Item Base
-            if (!$('#fic-nav #day').length < 1) {
+            if ($('#fic-nav #day').length < 1) {
                 if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
                 storyData.chapter.nav.day = $('<a>', { class: 'nav-item nav-link', id: 'day' });
                 $('#fic-nav').prepend(storyData.chapter.nav.day);
@@ -84,7 +84,7 @@ var chapterSet = {
         if (actionFromNow) {
 
             // Add Item Base
-            if (!$('#fic-nav #dayNightCycle').length < 1) {
+            if ($('#fic-nav #dayNightCycle').length < 1) {
                 if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
                 storyData.chapter.nav.dayNightCycle = $('<a>', { class: 'nav-item nav-link', id: 'dayNightCycle' });
                 $('#fic-nav').prepend(storyData.chapter.nav.dayNightCycle);
@@ -99,7 +99,7 @@ var chapterSet = {
         if (actionFromNow) {
 
             // Add Item Base
-            if (!$('#fic-nav #where').length < 1) {
+            if ($('#fic-nav #where').length < 1) {
                 if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
                 storyData.chapter.nav.where = $('<a>', { class: 'nav-item nav-link', id: 'where' });
                 $('#fic-nav').prepend(storyData.chapter.nav.where);
