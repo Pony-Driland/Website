@@ -44,9 +44,8 @@ var updateChapterCache = function(lastPage) {
         for (const i in data) {
 
             // Get Data
-            if (data.set) {
+            if (data[i].set) {
                 for (const item in data[i].set) {
-                    console.log(item);
                     if (typeof chapterSet[item] === 'function') {
                         chapterSet[item](data[i].set[item], (i < lastPage));
                     }
@@ -61,15 +60,21 @@ var updateChapterCache = function(lastPage) {
 var chapterSet = {
 
     day: function(value, actionFromNow = false) {
-        console.log(value, actionFromNow);
+        if (actionFromNow) {
+            console.log(value);
+        }
     },
 
     dayNightCycle: function(value, actionFromNow = false) {
-        console.log(value, actionFromNow);
+        if (actionFromNow) {
+            console.log(value);
+        }
     },
 
     where: function(value, actionFromNow = false) {
-        console.log(value, actionFromNow);
+        if (actionFromNow) {
+            console.log(value);
+        }
     }
 
 };
