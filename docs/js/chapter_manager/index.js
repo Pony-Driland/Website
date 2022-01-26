@@ -80,8 +80,8 @@ var openChapterMenu = function(params = {}) {
         // Pagination
         let tinyPag = $('<nav>');
         tinyPag.bootstrapPaginator({
-            currentPage: 3,
-            totalPages: 10
+            currentPage: pagination.currentPage,
+            totalPages: pagination.totalPages
         });
 
         // Table
