@@ -235,7 +235,7 @@ var openChapterMenu = function(params = {}) {
         }
 
         // Send Data
-        newRead(Number(params.chapter), Number(params.page), Number(params.line), true);
+        newRead(Number(params.chapter), params.page, params.line, true);
 
     }
 
