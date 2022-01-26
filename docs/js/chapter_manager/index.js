@@ -53,7 +53,7 @@ var openChapterMenu = function(params = {}) {
     $('#markdown-read').empty();
 
     // New Read
-    const newRead = function(chapter = 1, page = 1, line = 1) {
+    const newRead = function(chapter = 1, page = 1, line = null) {
 
         // Set Selected
         $('#fic-chapter').text(`Chapter ${chapter}`);
@@ -64,7 +64,23 @@ var openChapterMenu = function(params = {}) {
         storyData.chapter.html = {};
 
         // Prepare Pagination
-        const pagination = paginateArray(storyData.data[chapter], page, storyCfg.itemsPerPage);
+        let pagination = null;
+
+        // Detect Bookmark
+        if (typeof storyData.chapter.bookmark[storyData.chapter.selected] === 'number') {
+
+            // Update Line
+            if (line === null) {
+                line = storyData.chapter.bookmark[storyData.chapter.selected]
+            }
+
+        }
+
+        // New
+        else {
+            line = 1;
+            pagination = paginateArray(storyData.data[chapter], page, storyCfg.itemsPerPage);
+        }
 
         // Items
         const items = [];
