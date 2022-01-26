@@ -92,15 +92,17 @@ var chapterSet = {
 
             // Types
             const types = {
-                morning: { icon: 'fas fa-sun', title: '' },
-                evening: { icon: 'cloud-sun', title: '' },
-                night: { icon: 'fas fa-moon', title: '' },
-                lateAtNigh: { icon: 'fas fa-bullseye', title: '' }
+                morning: { icon: 'fas fa-sun', title: 'Morning' },
+                evening: { icon: 'cloud-sun', title: 'Evening' },
+                night: { icon: 'fas fa-moon', title: 'Night' },
+                lateAtNigh: { icon: 'fas fa-bullseye', title: 'Late at Nigh' }
             };
 
-            $('#fic-nav #dayNightCycle').empty();
+            const obj = $('#fic-nav #dayNightCycle');
+            obj.empty();
             if (types[value]) {
-                $('#fic-nav #dayNightCycle').append($('<i>', { class: types[value].icon, title: types[value].title }));
+                obj.attr('title', types[value].title).append($('<i>', { class: types[value].icon }));
+                obj.tooltip();
             }
 
         }
@@ -118,15 +120,17 @@ var chapterSet = {
 
             // Types
             const types = {
-                rain: { icon: 'fas fa-cloud-rain', title: '' },
-                bolt: { icon: 'fas fa-bolt', title: '' },
-                heavyrain: { icon: 'fas fa-cloud-showers-heavy', title: '' },
-                snow: { icon: 'fas fa-snowflake', title: '' }
+                rain: { icon: 'fas fa-cloud-rain', title: 'Rain' },
+                bolt: { icon: 'fas fa-bolt', title: 'Thunderbolt' },
+                heavyrain: { icon: 'fas fa-cloud-showers-heavy', title: 'Heavy Rain' },
+                snow: { icon: 'fas fa-snowflake', title: 'Snow' }
             };
 
-            $('#fic-nav #weather').empty();
+            const obj = $('#fic-nav #weather');
+            obj.empty();
             if (types[value]) {
-                $('#fic-nav #weather').append($('<i>', { class: types[value].icon, title: types[value].title }));
+                obj.attr('title', types[value].title).append($('<i>', { class: types[value].icon }));
+                obj.tooltip();
             }
 
         }
