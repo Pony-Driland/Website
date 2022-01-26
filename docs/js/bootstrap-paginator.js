@@ -250,7 +250,7 @@
                 case "large":
                 case "small":
                 case "mini":
-                    this.$element.addClass($.fn.bootstrapPaginator.sizeArray[size.toLowerCase()]);
+                    listContainer.addClass($.fn.bootstrapPaginator.sizeArray[size.toLowerCase()]);
                     break;
                 default:
                     break;
@@ -258,10 +258,10 @@
 
             switch (alignment.toLowerCase()) {
                 case "center":
-                    this.$element.addClass("pagination-centered");
+                    listContainer.addClass("justify-content-center");
                     break;
                 case "right":
-                    this.$element.addClass("pagination-right");
+                    listContainer.addClass("justify-content-end");
                     break;
                 default:
                     break;
