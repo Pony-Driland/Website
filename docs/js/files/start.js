@@ -173,7 +173,7 @@ var openMDFIle = function(url) {
 
     // Remove Fic Data
     $('#fic-nav > a').each(function() {
-        if ($(this).attr('id') !== 'fic-start') {
+        if ($(this).attr('id') !== 'fic-start' && $(this).attr('id') !== 'fic-chapter') {
             $(this).remove();
         }
     });
@@ -379,6 +379,9 @@ $(function() {
 
                     // Nav 2
                     $('<div>', { class: 'nav navbar-nav navbar-right ml-3 small', id: 'fic-nav' }).append(
+
+                        // Chapter Name
+                        $('<a>', { id: 'fic-chapter', class: 'nav-item nav-link d-none' }),
 
                         // Read Fanfic
                         $('<a>', { id: 'fic-start', class: 'nav-item nav-link' + readButtonDisabled, href: '/?path=read-fic&title=Pony%20Driland' }).text('Read').prepend(
