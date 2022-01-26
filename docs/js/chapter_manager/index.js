@@ -86,8 +86,14 @@ var openChapterMenu = function(params = {}) {
             alignment: 'center'
         });
 
-        tinyPag.on('page-changed', function(event) {
-            console.log(event);
+        tinyPag.on('page-changed', function() {
+
+            // Get Page
+            const page = Number($(this).find('.active').text().trim());
+
+            // Test
+            console.log(page);
+
         });
 
         // Table
