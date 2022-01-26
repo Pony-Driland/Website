@@ -74,11 +74,12 @@ var updateChapterCache = function(lastPage) {
 
                 tinyLib.modal({
                     title: 'Bookmark',
-                    body: [
+                    body: $('<center>').append(
+                        $('<h5>').text(`Save this URL to your favorites to re-read the story on any device`),
                         $('<input>', { type: 'text', class: 'form-control text-center' }).prop('readonly', true).val(
                             `${location.protocol}//${location.host}/?path=read-fic&title=${encodeURIComponent(storyCfg.title)}&chapter=${storyData.chapter.selected}&line=${storyData.chapter.line}`
                         ).click(function() { $(this).select(); })
-                    ],
+                    ),
                     dialog: 'modal-lg'
                 });
 
