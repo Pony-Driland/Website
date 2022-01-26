@@ -81,7 +81,7 @@ var openChapterMenu = function(params = {}) {
                     counter++;
 
                     // Reset
-                    if (counter < storyCfg.itemsPerPage) {
+                    if (counter > storyCfg.itemsPerPage) {
                         counter = 0;
                         page++;
                     }
