@@ -128,6 +128,14 @@ tinyLib.goToByScrollTop = function(speed = 'slow') {
     }, speed);
 };
 
+tinyLib.isPageTop = function() {
+    return ($(window).scrollTop() + $(window).height() === $(document).height());
+};
+
+tinyLib.isPageBottom = function() {
+    return ((window.innerHeight + window.scrollY) >= document.body.offsetHeight);
+};
+
 // Visible Item
 $.fn.isInViewport = function() {
 

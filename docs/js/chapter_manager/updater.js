@@ -1,19 +1,28 @@
 // Read Data on Scroll
 $(window).on('resize scroll', function() {
 
+    // Is Bottom Page
+    if (tinyLib.isPageTop()) {
+        alert("Test!");
+    }
+
+    // Selected Item
     let selectedItem = 0;
 
+    // Detect Selected Item
     for (const item in storyData.chapter.html) {
 
         if (storyData.chapter.html[item].visibleOnWindow() === 'full') {
             selectedItem = Number(item);
+            break;
         }
 
     }
 
+    // Complete
     console.log(selectedItem);
-
     // updateChapterCache();
+
 });
 
 // Update Cache
