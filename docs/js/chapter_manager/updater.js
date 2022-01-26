@@ -87,6 +87,11 @@ var updateChapterCache = function(lastPage) {
 
         }
 
+        // Sortable
+        $('#fic-nav #status > a').sort(function(a, b) {
+            return Number($(a).attr('indexitem')) - Number($(b).attr('indexitem'));
+        }).appendTo($('#fic-nav #status'));
+
         // Update Title
         localStorage.setItem('bookmark' + storyData.chapter.selected, storyData.chapter.line);
         storyData.chapter.bookmark[storyData.chapter.selected] = storyData.chapter.line;
