@@ -237,8 +237,8 @@
                 size = this.options.size || "normal",
                 alignment = this.options.alignment || "left",
                 pages = this.getPages(),
-                listContainer = this.options.bootstrapMajorVersion === 2 ? $("<ul class=\"pagination\"></ul>") : this.$element,
-                listContainerClass = this.options.bootstrapMajorVersion === 2 ? this.getValueFromOption(this.options.listContainerClass, listContainer) : null,
+                listContainer = $("<ul class=\"pagination\"></ul>"),
+                listContainerClass = this.getValueFromOption(this.options.listContainerClass, listContainer),
                 first = null,
                 prev = null,
                 next = null,
@@ -250,23 +250,21 @@
                 case "large":
                 case "small":
                 case "mini":
-                    this.$element.addClass($.fn.bootstrapPaginator.sizeArray[this.options.bootstrapMajorVersion][size.toLowerCase()]);
+                    this.$element.addClass($.fn.bootstrapPaginator.sizeArray[size.toLowerCase()]);
                     break;
                 default:
                     break;
             }
 
-            if (this.options.bootstrapMajorVersion === 2) {
-                switch (alignment.toLowerCase()) {
-                    case "center":
-                        this.$element.addClass("pagination-centered");
-                        break;
-                    case "right":
-                        this.$element.addClass("pagination-right");
-                        break;
-                    default:
-                        break;
-                }
+            switch (alignment.toLowerCase()) {
+                case "center":
+                    this.$element.addClass("pagination-centered");
+                    break;
+                case "right":
+                    this.$element.addClass("pagination-right");
+                    break;
+                default:
+                    break;
             }
 
 
@@ -275,11 +273,8 @@
             //empty the outter most container then add the listContainer inside.
             this.$element.empty();
 
-            if (this.options.bootstrapMajorVersion === 2) {
-                this.$element.append(listContainer);
-
-                listContainer.addClass(listContainerClass);
-            }
+            this.$element.append(listContainer);
+            listContainer.addClass(listContainerClass);
 
             //update the page element reference
             this.pageRef = [];
@@ -525,25 +520,15 @@
     };
 
     $.fn.bootstrapPaginator.sizeArray = {
-
-        "2": {
-            "large": "pagination-large",
-            "small": "pagination-small",
-            "mini": "pagination-mini"
-        },
-        "3": {
-            "large": "pagination-lg",
-            "small": "pagination-sm",
-            "mini": ""
-        }
-
+        large: "pagination-lg",
+        small: "pagination-sm",
+        mini: ""
     };
 
     $.fn.bootstrapPaginator.defaults = {
         containerClass: "",
         size: "normal",
         alignment: "left",
-        bootstrapMajorVersion: 2,
         listContainerClass: "",
         itemContainerClass: function(type, page, current) {
             return (page === current) ? "active" : "";
