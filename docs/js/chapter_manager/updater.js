@@ -1,33 +1,38 @@
 // Read Data on Scroll
 $(window).on('resize scroll', function() {
 
-    // Selected Item
-    let selectedItem = 0;
+    // Validator
+    if (storyData.chapter.selected > 0) {
 
-    // Normal Mode
-    if (!tinyLib.isPageBottom()) {
+        // Selected Item
+        let selectedItem = 0;
 
-        // Detect Selected Item
-        for (const item in storyData.chapter.html) {
+        // Normal Mode
+        if (!tinyLib.isPageBottom()) {
 
-            if (storyData.chapter.html[item].visibleOnWindow() === 'full') {
-                selectedItem = Number(item);
-                break;
+            // Detect Selected Item
+            for (const item in storyData.chapter.html) {
+
+                if (storyData.chapter.html[item].visibleOnWindow() === 'full') {
+                    selectedItem = Number(item);
+                    break;
+                }
+
             }
 
         }
 
-    }
-
-    // Bottom Page
-    else {
-        for (const item in storyData.chapter.html) {
-            selectedItem = Number(item);
+        // Bottom Page
+        else {
+            for (const item in storyData.chapter.html) {
+                selectedItem = Number(item);
+            }
         }
-    }
 
-    // Complete
-    updateChapterCache(selectedItem);
+        // Complete
+        updateChapterCache(selectedItem);
+
+    }
 
 });
 
@@ -40,6 +45,7 @@ var updateChapterCache = function(lastPage) {
         // Get Data
         if (data.set) {
             for (const item in data[i].set) {
+                console.log(item);
                 if (typeof chapterSet[item] === 'function') {
                     chapterSet[item](data[i].set[item], (i < lastPage));
                 }
@@ -53,15 +59,15 @@ var updateChapterCache = function(lastPage) {
 var chapterSet = {
 
     day: function(value, actionFromNow = false) {
-        /* console.log(value, actionFromNow); */
+        console.log(value, actionFromNow);
     },
 
     dayNightCycle: function(value, actionFromNow = false) {
-        /* console.log(value, actionFromNow); */
+        console.log(value, actionFromNow);
     },
 
     where: function(value, actionFromNow = false) {
-        /* console.log(value, actionFromNow); */
+        console.log(value, actionFromNow);
     }
 
 };

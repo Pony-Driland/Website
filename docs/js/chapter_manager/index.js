@@ -132,6 +132,7 @@ var openChapterMenu = function(params = {}) {
             table.append(items);
             tinyLib.goToByScroll($('#app'), 0);
             tinyPag2.bootstrapPaginator("show", page);
+            $(window).trigger('scroll');
 
         });
 
@@ -175,6 +176,9 @@ var openChapterMenu = function(params = {}) {
         /* 
             Depois checar se existe bookmark, se tiver, vamos carregar direto para o checkpoint.
         */
+
+        // Complete
+        $(window).trigger('scroll');
 
     };
 
