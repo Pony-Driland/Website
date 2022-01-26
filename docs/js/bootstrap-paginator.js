@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+/* https://jacobmarshall-etc.github.io/bootstrap-paginator/ */
+
 (function($) {
 
     "use strict"; // jshint ;_;
