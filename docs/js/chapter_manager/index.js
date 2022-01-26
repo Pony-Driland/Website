@@ -91,9 +91,6 @@ var openChapterMenu = function(params = {}) {
 
         }
 
-        // New
-        else { line = 1; }
-
         // Get Pagination
         const pagination = paginateArray(storyData.data[chapter], page, storyCfg.itemsPerPage);
 
@@ -214,6 +211,7 @@ var openChapterMenu = function(params = {}) {
 
         // Complete
         $(window).trigger('scroll');
+        if (line !== null) { tinyLib.goToByScroll($('#markdown-read [line="' + line + '"]'), 0); }
 
     };
 
