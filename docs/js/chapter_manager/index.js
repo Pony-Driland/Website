@@ -77,9 +77,16 @@ var openChapterMenu = function(params = {}) {
         }
 
         // New
-        else {
-            line = 1;
+        else { line = 1; }
+
+        // Get Pagination
+        if (pagination === null) {
             pagination = paginateArray(storyData.data[chapter], page, storyCfg.itemsPerPage);
+        }
+
+        // Storage
+        else {
+
         }
 
         // Items
