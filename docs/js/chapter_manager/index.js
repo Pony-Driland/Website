@@ -245,7 +245,6 @@ var openChapterMenu = function(params = {}) {
     
 
         Botão de voltar para o menu.
-        Botão de navegar entre páginas.
         
         Usuário escolher se quer ver determinados tipos de cenas explicitas.
         Se o nome do personagem bater com algum personagem com página, ele vai ser um link para acessar a página.
