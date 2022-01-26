@@ -59,13 +59,30 @@ var updateChapterCache = function(lastPage) {
         // Add Bookmark
         if ($('#fic-nav > #status #bookmark').length < 1) {
 
+            // Insert
             if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
             storyData.chapter.nav.bookmark = $('<a>', { index: 0, class: 'nav-item nav-link', id: 'bookmark' });
             $('#fic-nav > #status').prepend(storyData.chapter.nav.bookmark);
 
-            storyData.chapter.nav.bookmark.css('font-size', '17pt');
+            // Icon
+            storyData.chapter.nav.bookmark.css({ 'font-size': '17pt', cursor: 'pointer' });
             storyData.chapter.nav.bookmark.attr('title', 'Bookmark').append($('<i>', { class: 'fas fa-bookmark' }));
             storyData.chapter.nav.bookmark.tooltip();
+
+            // Action
+            storyData.chapter.nav.bookmark.click(function() {
+
+                tinyLib.modal({
+                    title: 'Bookmark',
+                    body: [
+                        $('<input>', { type: 'text', class: 'form-control text-center' }).prop('readonly', true).val(
+                            `${location.protocol}//${location.host}/?path=read-fic&title=${encodeURIComponent(storyCfg.title)}&chapter=${storyData.chapter.selected}&line=${storyData.chapter.line}`
+                        ).click(function() { $(this).select(); })
+                    ],
+                    dialog: 'modal-lg'
+                });
+
+            });
 
         }
 
