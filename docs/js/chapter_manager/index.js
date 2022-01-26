@@ -115,6 +115,7 @@ var openChapterMenu = function(params = {}) {
 
             // Insert
             table.append(items);
+            tinyPag2.bootstrapPaginator("show", page);
 
         });
 
