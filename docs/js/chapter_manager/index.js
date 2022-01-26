@@ -3,42 +3,42 @@ var storyDialogue = {
     // Action
     action: function(item, items, data) {
 
-        chapterCache[item] = $('<tr>', { line: item }).append(
+        storyData.chapter.html[item] = $('<tr>', { line: item }).append(
             $('<td>', { class: 'py-4' }).text(''),
             $('<td>', { class: 'py-4' }).append(
                 $('<strong>').text(data.value)
             )
         );
 
-        items.push(chapterCache[item]);
+        items.push(storyData.chapter.html[item]);
 
     },
 
     // Dialogue
     dialogue: function(item, items, data) {
 
-        chapterCache[item] = $('<tr>', { line: item }).append(
+        storyData.chapter.html[item] = $('<tr>', { line: item }).append(
             $('<td>', { class: 'py-4', width: '20%' }).text(data.character),
             $('<td>', { class: 'py-4' }).append(
                 $('<span>').text(data.value)
             )
         );
 
-        items.push(chapterCache[item]);
+        items.push(storyData.chapter.html[item]);
 
     },
 
     // Think
     think: function(item, items, data) {
 
-        chapterCache[item] = $('<tr>', { line: item }).append(
+        storyData.chapter.html[item] = $('<tr>', { line: item }).append(
             $('<td>', { class: 'py-4', width: '20%' }).text(data.character),
             $('<td>', { class: 'py-4' }).append(
                 $('<small>').text(data.value)
             )
         );
 
-        items.push(chapterCache[item]);
+        items.push(storyData.chapter.html[item]);
 
     }
 
@@ -57,7 +57,7 @@ var openChapterMenu = function(params = {}) {
 
         // Prepare Data
         $('#markdown-read').empty();
-        chapterCache = {};
+        storyData.chapter.html = {};
 
         // Prepare Pagination
         const pagination = paginateArray(storyData.data[chapter], page, storyCfg.itemsPerPage);
@@ -105,7 +105,7 @@ var openChapterMenu = function(params = {}) {
             const pagination = paginateArray(storyData.data[chapter], page, storyCfg.itemsPerPage);
 
             // Reset Item
-            chapterCache = {};
+            storyData.chapter.html = {};
             table.empty();
 
             // Items
@@ -198,7 +198,7 @@ var openChapterMenu = function(params = {}) {
         } else { params.line = 1; }
 
         // Send Data
-        newRead(params.chapter, params.page, params.line, true);
+        newRead(Number(params.chapter), Number(params.page), Number(params.line), true);
 
     }
 
@@ -227,7 +227,7 @@ var openChapterMenu = function(params = {}) {
                         $('<a>', { class: 'btn btn-primary', href: `/?path=read-fic&title=Pony%20Driland?chapter=${chapter}`, chapter: chapter }).click(function() {
 
                             // Start Chapter
-                            newRead($(this).attr('chapter'));
+                            newRead(Number($(this).attr('chapter')));
 
                             // Complete
                             return false;
