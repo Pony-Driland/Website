@@ -39,6 +39,8 @@ $(window).on('resize scroll', function() {
 // Update Cache
 var updateChapterCache = function(lastPage) {
     if (storyData.chapter.selected > 0) {
+
+        // Update Data Cache        
         storyData.chapter.line = lastPage;
         const data = storyData.data[storyData.chapter.selected];
         for (const i in data) {
@@ -53,6 +55,10 @@ var updateChapterCache = function(lastPage) {
             }
 
         }
+
+        // Update Title
+        document.title = `${storyData.title} - Chapter ${storyData.chapter.selected} - Line ${storyData.chapter.line}`;
+
     }
 };
 
