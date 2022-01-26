@@ -2,7 +2,7 @@
  * bootstrap-paginator.js v0.6
  * --
  * Copyright 2013 Yun Lai <lyonlai1984@gmail.com>
- * Bootstrap 4 Version adapted by Yasmin Seidel (JasminDreasond)
+ * Copyright 2022 Bootstrap 4 Version adapted by Yasmin Seidel (JasminDreasond)
  * --
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
