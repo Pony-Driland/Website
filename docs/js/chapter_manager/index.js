@@ -64,8 +64,6 @@ var openChapterMenu = function(params = {}) {
 
         // Prepare Pagination
         const pagination = paginateArray(storyData.data[chapter], page, storyCfg.itemsPerPage);
-        console.log(chapter, page, line);
-        console.log(pagination);
 
         // Items
         const items = [];
@@ -91,10 +89,30 @@ var openChapterMenu = function(params = {}) {
             // Get Page
             const page = Number($(this).find('.active').text().trim());
 
-            // Test
-            console.log(page);
+            // Prepare Pagination
+            const pagination = paginateArray(storyData.data[chapter], page, storyCfg.itemsPerPage);
+
+            // Reset Item
+            table.empty();
+
+            // Items
+            const items = [];
+
+            // Insert Items
+            for (const item in pagination.data) {
+                if (typeof storyDialogue[pagination.data[item].type] === 'function') {
+                    storyDialogue[pagination.data[item].type](items, pagination.data[item]);
+                }
+            }
+
+            // Insert
+            table.append(items);
 
         });
+
+        // Items
+        const table = $('<tbody>');
+        table.append(items);
 
         // Table
         $('#markdown-read').append(
@@ -111,9 +129,7 @@ var openChapterMenu = function(params = {}) {
             tinyPag,
 
             // Table
-            $('<table>', { class: 'table' }).append(
-                $('<tbody>').append(items)
-            )
+            $('<table>', { class: 'table' }).append(table)
 
         );
 
