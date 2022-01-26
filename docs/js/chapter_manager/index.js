@@ -4,6 +4,7 @@ var storyDialogue = {
     action: function(item, items, data) {
 
         storyData.chapter.html[item] = $('<tr>', { line: item }).append(
+            $('<td>', { class: 'py-4 font-weight-bold' }).text(item),
             $('<td>', { class: 'py-4' }).text(''),
             $('<td>', { class: 'py-4' }).append(
                 $('<strong>').text(data.value)
@@ -18,7 +19,8 @@ var storyDialogue = {
     dialogue: function(item, items, data) {
 
         storyData.chapter.html[item] = $('<tr>', { line: item }).append(
-            $('<td>', { class: 'py-4', width: '20%' }).text(data.character),
+            $('<td>', { class: 'py-4 font-weight-bold' }).text(item),
+            $('<td>', { class: 'py-4', width: '10%' }).text(data.character),
             $('<td>', { class: 'py-4' }).append(
                 $('<span>').text(data.value)
             )
@@ -32,7 +34,8 @@ var storyDialogue = {
     think: function(item, items, data) {
 
         storyData.chapter.html[item] = $('<tr>', { line: item }).append(
-            $('<td>', { class: 'py-4', width: '20%' }).text(data.character),
+            $('<td>', { class: 'py-4 font-weight-bold' }).text(item),
+            $('<td>', { class: 'py-4', width: '10%' }).text(data.character),
             $('<td>', { class: 'py-4' }).append(
                 $('<small>').text(data.value)
             )
@@ -166,7 +169,7 @@ var openChapterMenu = function(params = {}) {
             tinyPag,
 
             // Table
-            $('<table>', { class: 'table' }).append(table),
+            $('<table>', { class: 'table table-bordered' }).append(table),
 
             // Pagination
             tinyPag2,
