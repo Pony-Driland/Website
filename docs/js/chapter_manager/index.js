@@ -241,6 +241,11 @@ var openChapterMenu = function(params = {}) {
         // Prepare Choose
         $('#markdown-read').append(
 
+            // Info
+            $('<div>', { class: 'alert alert-info' }).text('Every time you read a chapter, it will automatically save where you left off. This checkpoint is saved on your browser, if you want to transfer your checkpoint to other computers, save the URL of your checkpoint that will appear when you open a chapter.').prepend(
+                $('<i>', { class: 'fas fa-info-circle mr-3' })
+            ),
+
             $('<h2>').text(`Please choose a chapter to read.`).prepend(
                 $('<i>', { class: 'fas fa-book-open mr-3' })
             ).append(
