@@ -38,20 +38,22 @@ $(window).on('resize scroll', function() {
 
 // Update Cache
 var updateChapterCache = function(lastPage) {
-    storyData.chapter.line = lastPage;
-    const data = storyData.data[storyData.chapter.selected];
-    for (const i in data) {
+    if (storyData.chapter.selected > 0) {
+        storyData.chapter.line = lastPage;
+        const data = storyData.data[storyData.chapter.selected];
+        for (const i in data) {
 
-        // Get Data
-        if (data.set) {
-            for (const item in data[i].set) {
-                console.log(item);
-                if (typeof chapterSet[item] === 'function') {
-                    chapterSet[item](data[i].set[item], (i < lastPage));
+            // Get Data
+            if (data.set) {
+                for (const item in data[i].set) {
+                    console.log(item);
+                    if (typeof chapterSet[item] === 'function') {
+                        chapterSet[item](data[i].set[item], (i < lastPage));
+                    }
                 }
             }
-        }
 
+        }
     }
 };
 
