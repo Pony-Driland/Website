@@ -12,7 +12,6 @@ console.log(`NFT Domain: ${storyCfg.nftDomain.value}`);
 console.log(`NFT Domain Provider: ${storyCfg.nftDomain.name}`);
 console.log(`Github Repository: https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}`);
 console.log(`Tags`, storyCfg.tags);
-console.log(`NSFW`, true);
 console.groupEnd();
 
 // URL Update
