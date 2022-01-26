@@ -95,7 +95,7 @@ var updateChapterCache = function(lastPage) {
         // Update Title
         localStorage.setItem('bookmark' + storyData.chapter.selected, storyData.chapter.line);
         storyData.chapter.bookmark[storyData.chapter.selected] = storyData.chapter.line;
-        const infoInsert = `Chapter ${storyData.chapter.selected} - Line ${storyData.chapter.line}`;
+        const infoInsert = `Chapter ${storyData.chapter.selected} / Line ${storyData.chapter.line}`;
         $('#fic-chapter').text(infoInsert);
         document.title = `${storyData.title} - ${infoInsert}`;
 
