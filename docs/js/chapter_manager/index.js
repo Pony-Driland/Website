@@ -249,7 +249,18 @@ var openChapterMenu = function(params = {}) {
             $('<h2>').text(`Please choose a chapter to read.`).prepend(
                 $('<i>', { class: 'fas fa-book-open mr-3' })
             ).append(
-                $('<button>', { class: 'ml-3 btn btn-info btn-sm' }).text('Choose Optional NSFW Content')
+                $('<button>', { class: 'ml-3 btn btn-info btn-sm' }).text('Choose Optional NSFW Content').click(function() {
+
+                    tinyLib.modal({
+                        title: 'Bookmark',
+                        body: $('<center>').append(
+                            $('<h5>').text(`NSFW Settings`),
+
+                        ),
+                        dialog: 'modal-lg'
+                    });
+
+                })
             ),
 
         );
