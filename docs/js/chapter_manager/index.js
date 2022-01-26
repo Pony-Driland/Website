@@ -101,10 +101,7 @@ var openChapterMenu = function(params = {}) {
             // Table
             $('<table>', { class: 'table' }).append(
                 $('<tbody>').append(items)
-            ),
-
-            // Pagination
-            tinyPag.clone()
+            )
 
         );
 
