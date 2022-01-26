@@ -5,9 +5,13 @@ $(window).scroll(function(event) {
 });
 
 var updateChapterCache = function(lastPage) {
+
     console.log(lastPage);
+    console.log(chapterCache);
+
 };
 
+var chapterCache = {};
 var chapterSet = {
 
 };

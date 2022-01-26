@@ -3,42 +3,42 @@ var storyDialogue = {
     // Action
     action: function(item, items, data) {
 
-        items.push(
-            $('<tr>', { line: item }).append(
-                $('<td>', { class: 'py-4' }).text(''),
-                $('<td>', { class: 'py-4' }).append(
-                    $('<strong>').text(data.value)
-                )
+        chapterCache[item] = $('<tr>', { line: item }).append(
+            $('<td>', { class: 'py-4' }).text(''),
+            $('<td>', { class: 'py-4' }).append(
+                $('<strong>').text(data.value)
             )
         );
+
+        items.push(chapterCache[item]);
 
     },
 
     // Dialogue
     dialogue: function(item, items, data) {
 
-        items.push(
-            $('<tr>', { line: item }).append(
-                $('<td>', { class: 'py-4', width: '20%' }).text(data.character),
-                $('<td>', { class: 'py-4' }).append(
-                    $('<span>').text(data.value)
-                )
+        chapterCache[item] = $('<tr>', { line: item }).append(
+            $('<td>', { class: 'py-4', width: '20%' }).text(data.character),
+            $('<td>', { class: 'py-4' }).append(
+                $('<span>').text(data.value)
             )
         );
+
+        items.push(chapterCache[item]);
 
     },
 
     // Think
     think: function(item, items, data) {
 
-        items.push(
-            $('<tr>', { line: item }).append(
-                $('<td>', { class: 'py-4', width: '20%' }).text(data.character),
-                $('<td>', { class: 'py-4' }).append(
-                    $('<small>').text(data.value)
-                )
+        chapterCache[item] = $('<tr>', { line: item }).append(
+            $('<td>', { class: 'py-4', width: '20%' }).text(data.character),
+            $('<td>', { class: 'py-4' }).append(
+                $('<small>').text(data.value)
             )
         );
+
+        items.push(chapterCache[item]);
 
     }
 
@@ -57,6 +57,7 @@ var openChapterMenu = function(params = {}) {
 
         // Prepare Data
         $('#markdown-read').empty();
+        chapterCache = {};
 
         // Prepare Pagination
         const pagination = paginateArray(storyData.data[chapter], page, storyCfg.itemsPerPage);
@@ -104,6 +105,7 @@ var openChapterMenu = function(params = {}) {
             const pagination = paginateArray(storyData.data[chapter], page, storyCfg.itemsPerPage);
 
             // Reset Item
+            chapterCache = {};
             table.empty();
 
             // Items
