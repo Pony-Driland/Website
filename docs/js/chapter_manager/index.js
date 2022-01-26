@@ -122,9 +122,14 @@ var openChapterMenu = function(params = {}) {
             const items = [];
 
             // Insert Items
+            const numberPag = Number(pagination.perPage * Number(pagination.currentPage - 1));
             for (const item in pagination.data) {
                 if (typeof storyDialogue[pagination.data[item].type] === 'function') {
-                    storyDialogue[pagination.data[item].type](items, pagination.data[item]);
+                    storyDialogue[pagination.data[item].type](
+                        Number(item) + numberPag + 1,
+                        items,
+                        pagination.data[item]
+                    );
                 }
             }
 
