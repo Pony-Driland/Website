@@ -243,7 +243,9 @@ var openChapterMenu = function(params = {}) {
 
             $('<h2>').text(`Please choose a chapter to read.`).prepend(
                 $('<i>', { class: 'fas fa-book-open mr-3' })
-            )
+            ).append(
+                $('<button>', { class: 'ml-3 btn btn-info btn-sm' }).text('Choose Optional NSFW Content')
+            ),
 
         );
 
