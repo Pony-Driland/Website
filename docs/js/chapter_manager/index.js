@@ -224,7 +224,7 @@ var openChapterMenu = function(params = {}) {
             if (typeof params.page !== 'number' || isNaN(params.page) || !isFinite(params.page) || params.page < 1) {
                 params.page = 1;
             }
-        } else { params.page = 1; }
+        }
 
         // Fix Line
         if (params.line) {
@@ -232,7 +232,7 @@ var openChapterMenu = function(params = {}) {
             if (typeof params.line !== 'number' || isNaN(params.line) || !isFinite(params.line) || params.line < 1) {
                 params.line = 1;
             }
-        } else { params.line = 1; }
+        }
 
         // Send Data
         newRead(Number(params.chapter), Number(params.page), Number(params.line), true);
