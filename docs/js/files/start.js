@@ -171,6 +171,13 @@ var insertMarkdownFile = function(text) {
 // Open MD FIle
 var openMDFIle = function(url) {
 
+    // Remove Fic Data
+    $('#fic-nav').each(function() {
+        if ($(this).attr('id') !== 'fic-start') {
+            $(this).remove();
+        }
+    });
+
     // Read Data Base
     console.log(`Opening MD file "${url}"...`);
     $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
@@ -371,10 +378,10 @@ $(function() {
                     ),
 
                     // Nav 2
-                    $('<ul>', { class: 'nav navbar-nav navbar-right ml-3 small' }).append(
+                    $('<div>', { class: 'nav navbar-nav navbar-right ml-3 small', id: 'fic-nav' }).append(
 
                         // Read Fanfic
-                        $('<a>', { class: 'nav-item nav-link' + readButtonDisabled, href: '/?path=read-fic&title=Pony%20Driland' }).text('Read').prepend(
+                        $('<a>', { id: 'fic-start', class: 'nav-item nav-link' + readButtonDisabled, href: '/?path=read-fic&title=Pony%20Driland' }).text('Read').prepend(
                             $('<i>', { class: 'fab fa-readme mr-2' })
                         ).click(function() {
                             if (!readButtonDisabled) {
