@@ -57,7 +57,9 @@ var updateChapterCache = function(lastPage) {
         }
 
         // Update Title
-        document.title = `${storyData.title} - Chapter ${storyData.chapter.selected} - Line ${storyData.chapter.line}`;
+        const infoInsert = `Chapter ${storyData.chapter.selected} - Line ${storyData.chapter.line}`;
+        $('#fic-chapter').text(infoInsert);
+        document.title = `${storyData.title} - ${infoInsert}`;
 
     }
 };
