@@ -77,6 +77,13 @@ var openChapterMenu = function(params = {}) {
             }
         }
 
+        // Pagination
+        let tinyPag = $('<nav>');
+        tinyPag.bootstrapPaginator({
+            currentPage: 3,
+            totalPages: 10
+        });
+
         // Table
         $('#markdown-read').append(
 
@@ -88,10 +95,16 @@ var openChapterMenu = function(params = {}) {
             // Title
             $('<h3>').text(`Chapter ${chapter}`).append($('<small>', { class: 'ml-3' }).text(storyCfg.chapterName[chapter].title)),
 
+            // Pagination
+            tinyPag,
+
             // Table
             $('<table>', { class: 'table' }).append(
                 $('<tbody>').append(items)
-            )
+            ),
+
+            // Pagination
+            tinyPag.clone()
 
         );
 
