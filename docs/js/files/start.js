@@ -178,6 +178,8 @@ var openMDFIle = function(url) {
         }
     });
 
+    $('#fic-chapter').empty();
+
     // Read Data Base
     console.log(`Opening MD file "${url}"...`);
     $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
@@ -381,7 +383,7 @@ $(function() {
                     $('<div>', { class: 'nav navbar-nav navbar-right ml-3 small', id: 'fic-nav' }).append(
 
                         // Chapter Name
-                        $('<a>', { id: 'fic-chapter', class: 'nav-item nav-link d-none' }),
+                        $('<a>', { id: 'fic-chapter', class: 'nav-item nav-link' }),
 
                         // Read Fanfic
                         $('<a>', { id: 'fic-start', class: 'nav-item nav-link' + readButtonDisabled, href: '/?path=read-fic&title=Pony%20Driland' }).text('Read').prepend(
