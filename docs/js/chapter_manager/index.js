@@ -122,8 +122,7 @@ var openChapterMenu = function(params = {}) {
 
             // Get Page
             const page = Number($(this).find('.active').text().trim());
-            tinyPag.show(page);
-            console.log(page);
+            tinyPag.bootstrapPaginator("show", page);
 
         });
 
