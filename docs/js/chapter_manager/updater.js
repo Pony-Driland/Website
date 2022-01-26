@@ -90,7 +90,15 @@ var chapterSet = {
                 $('#fic-nav').prepend(storyData.chapter.nav.dayNightCycle);
             }
 
-            $('#fic-nav #dayNightCycle').text(`Night Cicle: ${value}`);
+            // Types
+            const types = {
+                morning: 'fas fa-sun',
+                evening: 'cloud-sun',
+                night: 'fas fa-moon',
+                lateAtNigh: 'fas fa-bullseye'
+            };
+
+            $('#fic-nav #dayNightCycle').empty().append($('<i>', { class: types[value] }));
 
         }
     },
@@ -105,7 +113,15 @@ var chapterSet = {
                 $('#fic-nav').prepend(storyData.chapter.nav.weather);
             }
 
-            $('#fic-nav #weather').text(`Weather: ${value}`);
+            // Types
+            const types = {
+                rain: 'fas fa-cloud-rain',
+                bolt: 'fas fa-bolt',
+                heavyrain: 'fas fa-cloud-showers-heavy',
+                snow: 'fas fa-snowflake'
+            };
+
+            $('#fic-nav #weather').empty().append($('<i>', { class: types[value] }));
 
         }
     },
