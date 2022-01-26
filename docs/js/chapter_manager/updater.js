@@ -95,6 +95,21 @@ var chapterSet = {
         }
     },
 
+    weather: function(value, actionFromNow = false) {
+        if (actionFromNow) {
+
+            // Add Item Base
+            if ($('#fic-nav #weather').length < 1) {
+                if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
+                storyData.chapter.nav.weather = $('<a>', { class: 'nav-item nav-link', id: 'weather' });
+                $('#fic-nav').prepend(storyData.chapter.nav.dayNightCycle);
+            }
+
+            $('#fic-nav #weather').text(`Weather: ${value}`);
+
+        }
+    },
+
     where: function(value, actionFromNow = false) {
         if (actionFromNow) {
 
