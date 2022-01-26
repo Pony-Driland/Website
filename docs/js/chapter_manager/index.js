@@ -81,7 +81,13 @@ var openChapterMenu = function(params = {}) {
         let tinyPag = $('<nav>');
         tinyPag.bootstrapPaginator({
             currentPage: pagination.currentPage,
-            totalPages: pagination.totalPages
+            totalPages: pagination.totalPages,
+            size: 'normal',
+            alignment: 'center'
+        });
+
+        tinyPag.on('page-changed', function(event) {
+            console.log(event);
         });
 
         // Table
