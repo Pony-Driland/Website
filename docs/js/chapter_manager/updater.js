@@ -92,13 +92,16 @@ var chapterSet = {
 
             // Types
             const types = {
-                morning: 'fas fa-sun',
-                evening: 'cloud-sun',
-                night: 'fas fa-moon',
-                lateAtNigh: 'fas fa-bullseye'
+                morning: { icon: 'fas fa-sun', title: '' },
+                evening: { icon: 'cloud-sun', title: '' },
+                night: { icon: 'fas fa-moon', title: '' },
+                lateAtNigh: { icon: 'fas fa-bullseye', title: '' }
             };
 
-            $('#fic-nav #dayNightCycle').empty().append($('<i>', { class: types[value] }));
+            $('#fic-nav #dayNightCycle').empty();
+            if (types[value]) {
+                $('#fic-nav #dayNightCycle').append($('<i>', { class: types[value].icon, title: types[value].title }));
+            }
 
         }
     },
@@ -115,13 +118,16 @@ var chapterSet = {
 
             // Types
             const types = {
-                rain: 'fas fa-cloud-rain',
-                bolt: 'fas fa-bolt',
-                heavyrain: 'fas fa-cloud-showers-heavy',
-                snow: 'fas fa-snowflake'
+                rain: { icon: 'fas fa-cloud-rain', title: '' },
+                bolt: { icon: 'fas fa-bolt', title: '' },
+                heavyrain: { icon: 'fas fa-cloud-showers-heavy', title: '' },
+                snow: { icon: 'fas fa-snowflake', title: '' }
             };
 
-            $('#fic-nav #weather').empty().append($('<i>', { class: types[value] }));
+            $('#fic-nav #weather').empty();
+            if (types[value]) {
+                $('#fic-nav #weather').append($('<i>', { class: types[value].icon, title: types[value].title }));
+            }
 
         }
     },
