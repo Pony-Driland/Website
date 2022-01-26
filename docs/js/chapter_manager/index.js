@@ -84,6 +84,14 @@ var openChapterMenu = function(params = {}) {
             alignment: 'center'
         });
 
+        let tinyPag2 = $('<nav>');
+        tinyPag2.bootstrapPaginator({
+            currentPage: pagination.currentPage,
+            totalPages: pagination.totalPages,
+            size: 'normal',
+            alignment: 'center'
+        });
+
         tinyPag.on('page-changed', function() {
 
             // Get Page
@@ -110,6 +118,14 @@ var openChapterMenu = function(params = {}) {
 
         });
 
+        tinyPag2.on('page-changed', function() {
+
+            // Get Page
+            const page = Number($(this).find('.active').text().trim());
+            tinyPag.show(page);
+
+        });
+
         // Items
         const table = $('<tbody>');
         table.append(items);
@@ -129,7 +145,10 @@ var openChapterMenu = function(params = {}) {
             tinyPag,
 
             // Table
-            $('<table>', { class: 'table' }).append(table)
+            $('<table>', { class: 'table' }).append(table),
+
+            // Pagination
+            tinyPag2,
 
         );
 
