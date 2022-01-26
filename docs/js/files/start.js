@@ -382,6 +382,9 @@ $(function() {
                     // Nav 2
                     $('<div>', { class: 'nav navbar-nav navbar-right ml-3 small', id: 'fic-nav' }).append(
 
+                        // Status Place
+                        $('<div>', { id: 'status' }).css('display', 'contents'),
+
                         // Chapter Name
                         $('<a>', { id: 'fic-chapter', class: 'nav-item nav-link' }),
 
