@@ -244,7 +244,15 @@ var storyData = {
 
                                 // Insert Data
                                 storyData.data[chapter] = data;
-                                storyData.chapter.bookmark[chapter] = localStorage.getItem('bookmark' + chapter);
+                                storyData.chapter.bookmark[chapter] = Number(localStorage.getItem('bookmark' + chapter));
+                                if (
+                                    isNaN(storyData.chapter.bookmark[chapter]) ||
+                                    !isFinite(storyData.chapter.bookmark[chapter]) ||
+                                    storyData.chapter.bookmark[chapter] < 1
+                                ) {
+                                    storyData.chapter.bookmark[chapter] = 1;
+                                }
+
                                 console.log(`Chapter ${chapter} loaded!`);
 
                                 // Complete
