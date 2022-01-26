@@ -98,7 +98,7 @@ var chapterSet = {
                 lateAtNigh: { icon: 'fas fa-bullseye', title: 'Late at Nigh' }
             };
 
-            const obj = $('#fic-nav #dayNightCycle');
+            const obj = $('#fic-nav #dayNightCycle').css('font-size', '17pt');
             obj.empty();
             if (types[value]) {
                 obj.attr('title', types[value].title).append($('<i>', { class: types[value].icon }));
@@ -126,7 +126,7 @@ var chapterSet = {
                 snow: { icon: 'fas fa-snowflake', title: 'Snow' }
             };
 
-            const obj = $('#fic-nav #weather');
+            const obj = $('#fic-nav #weather').css('font-size', '17pt');
             obj.empty();
             if (types[value]) {
                 obj.attr('title', types[value].title).append($('<i>', { class: types[value].icon }));
