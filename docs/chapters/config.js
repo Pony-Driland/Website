@@ -32,7 +32,6 @@ var storyCfg = {
     },
 
     ageRating: 'teen',
-    nsfw: true,
     tags: [
         "fanfic",
         "pony",
@@ -56,6 +55,21 @@ var storyCfg = {
         color2: '#e0e0e0',
         color3: 'rgba(255, 255, 255, 0.6)',
         color4: '#5e5e5e'
+    },
+
+    nsfw: {
+        vore: {
+            name: 'Vore',
+            description: 'Vore is additional content only in some specific scenes. Disabling it will not interfere with the main story. But maybe you\'ll skip some extra canonical info.'
+        },
+        questionable: {
+            name: 'Questionable',
+            description: 'The scale of this content is small, but it is present in some quick scenes. Disabling this option will make you skip optional scenes.'
+        },
+        extreme_violence: {
+            name: 'Extreme Violence',
+            description: 'Some battle scenes might be considered strong for some viewers. By disabling this option you will decrease the level of violence in the story.'
+        }
     },
 
     chapterName: {
