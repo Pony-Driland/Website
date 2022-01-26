@@ -1,10 +1,10 @@
 var storyDialogue = {
 
     // Action
-    action: function(items, data) {
+    action: function(item, items, data) {
 
         items.push(
-            $('<tr>').append(
+            $('<tr>', { line: item }).append(
                 $('<td>', { class: 'py-4' }).text(''),
                 $('<td>', { class: 'py-4' }).append(
                     $('<strong>').text(data.value)
@@ -15,10 +15,10 @@ var storyDialogue = {
     },
 
     // Dialogue
-    dialogue: function(items, data) {
+    dialogue: function(item, items, data) {
 
         items.push(
-            $('<tr>').append(
+            $('<tr>', { line: item }).append(
                 $('<td>', { class: 'py-4', width: '20%' }).text(data.character),
                 $('<td>', { class: 'py-4' }).append(
                     $('<span>').text(data.value)
@@ -29,10 +29,10 @@ var storyDialogue = {
     },
 
     // Think
-    think: function(items, data) {
+    think: function(item, items, data) {
 
         items.push(
-            $('<tr>').append(
+            $('<tr>', { line: item }).append(
                 $('<td>', { class: 'py-4', width: '20%' }).text(data.character),
                 $('<td>', { class: 'py-4' }).append(
                     $('<small>').text(data.value)
@@ -45,6 +45,16 @@ var storyDialogue = {
     set: {
 
     }
+
+};
+
+$(window).scroll(function(event) {
+    var scroll = $(window).scrollTop();
+    console.log(scroll);
+    // Do something
+});
+
+var updateChapterCache = function() {
 
 };
 
@@ -69,9 +79,14 @@ var openChapterMenu = function(params = {}) {
         const items = [];
 
         // Insert Items
+        const numberPag = Number(pagination.perPage * Number(pagination.currentPage - 1));
         for (const item in pagination.data) {
             if (typeof storyDialogue[pagination.data[item].type] === 'function') {
-                storyDialogue[pagination.data[item].type](items, pagination.data[item]);
+                storyDialogue[pagination.data[item].type](
+                    Number(item) + numberPag + 1,
+                    items,
+                    pagination.data[item]
+                );
             }
         }
 
