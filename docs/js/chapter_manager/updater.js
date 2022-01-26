@@ -71,13 +71,13 @@ var chapterSet = {
         if (actionFromNow) {
 
             // Add Item Base
-            if ($('#fic-nav #day').length < 1) {
+            if ($('#fic-nav > #status #day').length < 1) {
                 if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
-                storyData.chapter.nav.day = $('<a>', { class: 'nav-item nav-link', id: 'day' });
-                $('#fic-nav').prepend(storyData.chapter.nav.day);
+                storyData.chapter.nav.day = $('<a>', { index: 2, class: 'nav-item nav-link', id: 'day' });
+                $('#fic-nav > #status').prepend(storyData.chapter.nav.day);
             }
 
-            $('#fic-nav #day').text(`Day: ${value}`);
+            $('#fic-nav > #status #day').text(`Day: ${value}`);
 
         }
     },
@@ -86,10 +86,10 @@ var chapterSet = {
         if (actionFromNow) {
 
             // Add Item Base
-            if ($('#fic-nav #dayNightCycle').length < 1) {
+            if ($('#fic-nav > #status #dayNightCycle').length < 1) {
                 if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
-                storyData.chapter.nav.dayNightCycle = $('<a>', { class: 'nav-item nav-link', id: 'dayNightCycle' });
-                $('#fic-nav').prepend(storyData.chapter.nav.dayNightCycle);
+                storyData.chapter.nav.dayNightCycle = $('<a>', { indexItem: 1, class: 'nav-item nav-link', id: 'dayNightCycle' });
+                $('#fic-nav > #status').prepend(storyData.chapter.nav.dayNightCycle);
             }
 
             // Types
@@ -100,7 +100,7 @@ var chapterSet = {
                 lateAtNigh: { icon: 'fas fa-bullseye', title: 'Late at Nigh' }
             };
 
-            const obj = $('#fic-nav #dayNightCycle').css('font-size', '17pt');
+            const obj = $('#fic-nav > #status #dayNightCycle').css('font-size', '17pt');
             obj.empty();
             if (types[value]) {
                 obj.attr('title', types[value].title).append($('<i>', { class: types[value].icon }));
@@ -114,10 +114,10 @@ var chapterSet = {
         if (actionFromNow) {
 
             // Add Item Base
-            if ($('#fic-nav #weather').length < 1) {
+            if ($('#fic-nav > #status #weather').length < 1) {
                 if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
-                storyData.chapter.nav.weather = $('<a>', { class: 'nav-item nav-link', id: 'weather' });
-                $('#fic-nav').prepend(storyData.chapter.nav.weather);
+                storyData.chapter.nav.weather = $('<a>', { indexItem: 0, class: 'nav-item nav-link', id: 'weather' });
+                $('#fic-nav > #status').prepend(storyData.chapter.nav.weather);
             }
 
             // Types
@@ -128,7 +128,7 @@ var chapterSet = {
                 snow: { icon: 'fas fa-snowflake', title: 'Snow' }
             };
 
-            const obj = $('#fic-nav #weather').css('font-size', '17pt');
+            const obj = $('#fic-nav > #status #weather').css('font-size', '17pt');
             obj.empty();
             if (types[value]) {
                 obj.attr('title', types[value].title).append($('<i>', { class: types[value].icon }));
@@ -142,13 +142,13 @@ var chapterSet = {
         if (actionFromNow) {
 
             // Add Item Base
-            if ($('#fic-nav #where').length < 1) {
+            if ($('#fic-nav > #status #where').length < 1) {
                 if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
-                storyData.chapter.nav.where = $('<a>', { class: 'nav-item nav-link', id: 'where' });
-                $('#fic-nav').prepend(storyData.chapter.nav.where);
+                storyData.chapter.nav.where = $('<a>', { indexItem: 3, class: 'nav-item nav-link', id: 'where' });
+                $('#fic-nav > #status').prepend(storyData.chapter.nav.where);
             }
 
-            $('#fic-nav #where').text(`Location: ${value}`);
+            $('#fic-nav > #status #where').text(`Location: ${value}`);
 
         }
     }
