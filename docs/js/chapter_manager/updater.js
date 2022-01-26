@@ -7,11 +7,10 @@ $(window).scroll(function(event) {
 var updateChapterCache = function(lastPage) {
 
     console.log(lastPage);
-    console.log(chapterCache);
+    console.log(storyData);
 
 };
 
-var chapterCache = {};
 var chapterSet = {
 
 };
