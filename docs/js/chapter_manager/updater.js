@@ -5,6 +5,7 @@ $(window).scroll(function(event) {
 });
 
 var updateChapterCache = function(lastPage) {
+    storyData.chapter.line = lastPage;
     for (let i = 0; i < lastPage; i++) {
 
         // Get Data
