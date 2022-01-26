@@ -5,7 +5,7 @@ $(window).on('resize scroll', function() {
 
     for (const item in storyData.chapter.html) {
 
-        if (storyData.chapter.html[item].isScrolledIntoView()) {
+        if (storyData.chapter.html[item].visibleOnWindow() === 'full') {
             selectedItem = Number(item);
         }
 

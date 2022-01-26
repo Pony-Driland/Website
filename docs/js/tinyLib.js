@@ -130,21 +130,45 @@ tinyLib.goToByScrollTop = function(speed = 'slow') {
 
 // Visible Item
 $.fn.isInViewport = function() {
-    var elementTop = $(this).offset().top;
-    var elementBottom = elementTop + $(this).outerHeight();
 
-    var viewportTop = $(window).scrollTop();
-    var viewportBottom = viewportTop + $(window).height();
+    const elementTop = $(this).offset().top;
+    const elementBottom = elementTop + $(this).outerHeight();
+
+    const viewportTop = $(window).scrollTop();
+    const viewportBottom = viewportTop + $(window).height();
 
     return elementBottom > viewportTop && elementTop < viewportBottom;
+
 };
 
 $.fn.isScrolledIntoView = function() {
-    var docViewTop = $(window).scrollTop();
-    var docViewBottom = docViewTop + $(window).height();
 
-    var elemTop = $(this).offset().top;
-    var elemBottom = elemTop + $(this).height();
+    const docViewTop = $(window).scrollTop();
+    const docViewBottom = docViewTop + $(window).height();
+
+    const elemTop = $(this).offset().top;
+    const elemBottom = elemTop + $(this).height();
 
     return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+
+};
+
+$.fn.visibleOnWindow = function() {
+
+    var element = $(this)[0];
+    var position = element.getBoundingClientRect();
+
+    // checking whether fully visible
+    if (position.top >= 0 && position.bottom <= window.innerHeight) {
+        return 'full';
+    }
+
+    // checking for partial visibility
+    else if (position.top < window.innerHeight && position.bottom >= 0) {
+        return 'partial';
+    }
+
+    // Nothing
+    else { return null; }
+
 };
