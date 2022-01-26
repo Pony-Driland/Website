@@ -5,12 +5,34 @@ $(window).scroll(function(event) {
 });
 
 var updateChapterCache = function(lastPage) {
+    for (let i = 0; i < lastPage; i++) {
 
-    console.log(lastPage);
-    console.log(storyData);
+        // Get Data
+        const data = storyData.data[storyData.chapter.selected][i];
+        if (data.set) {
+            for (const item in data.set) {
+                if (typeof chapterSet[item] === 'function') {
+                    chapterSet[item](data.set[item]);
+                }
+            }
+        }
 
+    }
 };
 
+// Set Actions
 var chapterSet = {
+
+    day: function(value) {
+        console.log(value);
+    },
+
+    dayNightCycle: function(value) {
+        console.log(value);
+    },
+
+    where: function(value) {
+        console.log(value);
+    }
 
 };
