@@ -20,7 +20,7 @@ var storyDialogue = {
 
         storyData.chapter.html[item] = $('<tr>', { line: item }).append(
             $('<td>', { class: 'py-4 font-weight-bold' }).text(item),
-            $('<td>', { class: 'py-4', width: '10%' }).text(data.character),
+            $('<td>', { class: 'py-4', width: '15%' }).text(data.character),
             $('<td>', { class: 'py-4' }).append(
                 $('<span>').text(data.value)
             )
@@ -35,7 +35,7 @@ var storyDialogue = {
 
         storyData.chapter.html[item] = $('<tr>', { line: item }).append(
             $('<td>', { class: 'py-4 font-weight-bold' }).text(item),
-            $('<td>', { class: 'py-4', width: '10%' }).text(data.character),
+            $('<td>', { class: 'py-4', width: '15%' }).text(data.character),
             $('<td>', { class: 'py-4' }).append(
                 $('<small>').text(data.value)
             )
