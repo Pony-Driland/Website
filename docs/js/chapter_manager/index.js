@@ -84,11 +84,6 @@ var openChapterMenu = function(params = {}) {
             pagination = paginateArray(storyData.data[chapter], page, storyCfg.itemsPerPage);
         }
 
-        // Storage
-        else {
-
-        }
-
         // Items
         const items = [];
 
