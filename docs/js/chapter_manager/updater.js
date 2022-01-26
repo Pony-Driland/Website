@@ -61,7 +61,7 @@ var updateChapterCache = function(lastPage) {
 
             // Insert
             if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
-            storyData.chapter.nav.bookmark = $('<a>', { index: 0, class: 'nav-item nav-link', id: 'bookmark' });
+            storyData.chapter.nav.bookmark = $('<a>', { indexItem: 0, class: 'nav-item nav-link', id: 'bookmark' });
             $('#fic-nav > #status').prepend(storyData.chapter.nav.bookmark);
 
             // Icon
@@ -108,7 +108,7 @@ var chapterSet = {
             // Add Item Base
             if ($('#fic-nav > #status #day').length < 1) {
                 if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
-                storyData.chapter.nav.day = $('<a>', { index: 3, class: 'nav-item nav-link', id: 'day' });
+                storyData.chapter.nav.day = $('<a>', { indexItem: 3, class: 'nav-item nav-link', id: 'day' });
                 $('#fic-nav > #status').prepend(storyData.chapter.nav.day);
             }
 
