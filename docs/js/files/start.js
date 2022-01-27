@@ -356,7 +356,7 @@ $(function() {
                     $('<div>', { class: 'navbar-nav mr-auto mt-2 mt-lg-0 small' }).append(
 
                         // Homepage
-                        $('<a>', { class: 'nav-item nav-link', href: '/' }).text('Homepage').prepend(
+                        $('<a>', { class: 'nav-item nav-link', href: '/', id: 'homepage' }).text('Homepage').prepend(
                             $('<i>', { class: 'fas fa-home mr-2' })
                         ).click(function() {
                             openMDFIle('/README.md');
@@ -364,18 +364,18 @@ $(function() {
                             return false;
                         }),
 
-                        // Discord SErver
-                        $('<a>', { class: 'nav-item nav-link', target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}` }).text('Discord Server').prepend(
+                        // Discord Server
+                        $('<a>', { class: 'nav-item nav-link', target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}`, id: 'discord-server' }).text('Discord Server').prepend(
                             $('<i>', { class: 'fab fa-discord mr-2' })
                         ),
 
-                        // Discord SErver
-                        $('<a>', { class: 'nav-item nav-link', target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.domainWallet) }).text('Donations Wallet').prepend(
+                        // Crypto Wallet
+                        $('<a>', { class: 'nav-item nav-link', target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.domainWallet), id: 'crypto-wallet' }).text('Donations Wallet').prepend(
                             $('<i>', { class: 'fas fa-wallet mr-2' })
                         ),
 
                         // LICENSE
-                        $('<a>', { class: 'nav-item nav-link', href: '/?path=%2FLICENSE.md&title=License' }).text('License').prepend(
+                        $('<a>', { class: 'nav-item nav-link', href: '/?path=%2FLICENSE.md&title=License', id: 'license' }).text('License').prepend(
                             $('<i>', { class: 'fas fa-copyright mr-2' })
                         ).click(function() {
                             openMDFIle('/LICENSE.md');
