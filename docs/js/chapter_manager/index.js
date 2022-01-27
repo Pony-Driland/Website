@@ -251,14 +251,15 @@ var openChapterMenu = function(params = {}) {
             ).append(
                 $('<button>', { class: 'ml-3 btn btn-info btn-sm' }).text('Choose Optional NSFW Content').click(function() {
 
+                    // Nothing NSFW
+                    let nsfwContent = $('<center>', { class: 'm-3 small text-warning' }).text('No NSFW content was detected. It may be that soon some NSFW content will be added.');
 
                     // Modal
                     tinyLib.modal({
-                        title: 'Bookmark',
+                        title: [$('<i>', { class: 'fas fa-eye' }), 'NSFW Settings'],
                         body: $('<center>').append(
-                            $('<h5>').text(`NSFW Settings`),
-                            $('<p>').text('By activating these settings, you agree that you are responsible for the content you consume and that you are over 18 years old!'),
-
+                            $('<p>', { class: 'text-danger' }).text('By activating these settings, you agree that you are responsible for the content you consume and that you are over 18 years old!'),
+                            nsfwContent
                         ),
                         dialog: 'modal-lg'
                     });

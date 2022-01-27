@@ -73,7 +73,7 @@ tinyLib.modal = function(data) {
             $("<div>", { class: "modal-content" }).append(
 
                 $("<div>", { class: "modal-header" }).append(
-                    $("<h5>", { class: "modal-title" }).text(data.title),
+                    $("<h5>", { class: "modal-title" }).html(data.title),
                     $("<button>", { type: "button", class: "close", "data-dismiss": "modal" }).append(
                         $("<span>").text("×")
                     )
@@ -109,7 +109,7 @@ tinyLib.formatBytes = function(bytes, decimals = 2) {
 // Alert
 alert = function(text, title = 'Browser Warning!') {
     return tinyLib.modal({
-        title: title,
+        title: $('<span>').text(title),
         body: $('<div>', { class: 'text-break' }).css('white-space', 'pre-wrap').text(text),
         dialog: 'modal-lg'
     });
