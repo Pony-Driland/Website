@@ -289,9 +289,11 @@ var openChapterMenu = function(params = {}) {
                                             } else { nsfwValue = false; }
 
                                             // Set Button Text
+                                            let buttonClass = 'success';
                                             let allowButton = 'Enable';
                                             if (nsfwValue) {
-                                                allowButton = 'Disable'
+                                                allowButton = 'Disable';
+                                                buttonClass = 'danger';
                                             }
 
                                             nsfwContent.push(
@@ -300,20 +302,20 @@ var openChapterMenu = function(params = {}) {
                                                         $('<div>', { class: 'card-body' }).append(
                                                             $('<h5>', { class: 'card-title' }).text(storyCfg.nsfw[NSFWITEM].name),
                                                             $('<p>', { class: 'card-text small' }).text(storyCfg.nsfw[NSFWITEM].description),
-                                                            $('<button>', { class: 'btn btn-primary' }).click(function() {
+                                                            $('<button>', { class: 'btn btn-' + buttonClass }).click(function() {
 
                                                                 // Enable
                                                                 if (!nsfwValue) {
                                                                     localStorage.setItem('NSFW' + NSFWITEM, true);
                                                                     nsfwValue = true;
-                                                                    $(this).text('Disable');
+                                                                    $(this).removeClass('btn-success').addClass('btn-danger').text('Disable');
                                                                 }
 
                                                                 // Disable
                                                                 else {
                                                                     localStorage.setItem('NSFW' + NSFWITEM, false);
                                                                     nsfwValue = false;
-                                                                    $(this).text('Enable')
+                                                                    $(this).removeClass('btn-danger').addClass('btn-success').text('Enable')
                                                                 }
 
                                                             }).text(allowButton)
