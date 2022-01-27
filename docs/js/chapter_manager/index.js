@@ -256,7 +256,7 @@ var openChapterMenu = function(params = {}) {
 
                     // Modal
                     tinyLib.modal({
-                        title: [$('<i>', { class: 'fas fa-eye' }), 'NSFW Settings'],
+                        title: [$('<i>', { class: 'fas fa-eye mr-3' }), 'NSFW Settings'],
                         body: $('<center>').append(
                             $('<p>', { class: 'text-danger' }).text('By activating these settings, you agree that you are responsible for the content you consume and that you are over 18 years old!'),
                             nsfwContent
