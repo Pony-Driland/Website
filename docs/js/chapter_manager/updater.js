@@ -145,6 +145,7 @@ var chapterSet = {
             if (types[value]) {
                 obj.attr('title', types[value].title).append($('<i>', { class: types[value].icon }));
                 obj.tooltip();
+                obj.removeAttr('title');
             }
 
         }
@@ -173,6 +174,7 @@ var chapterSet = {
             if (types[value]) {
                 obj.attr('title', types[value].title).append($('<i>', { class: types[value].icon }));
                 obj.tooltip();
+                obj.removeAttr('title');
             }
 
         }
