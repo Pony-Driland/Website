@@ -170,6 +170,7 @@ var insertMarkdownFile = function(text) {
 // Remove Fic Data
 var clearFicData = function() {
 
+    $('body').removeClass('ficMode');
     $('#fic-nav > #status').empty();
     $('#fic-chapter').empty();
     storyData.chapter.html = {};

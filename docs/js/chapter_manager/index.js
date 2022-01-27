@@ -206,6 +206,9 @@ var openChapterMenu = function(params = {}) {
 
         );
 
+        // Fic Mode
+        $('body').addClass('ficMode');
+
         // Complete
         $(window).trigger('scroll');
         if (line !== null) { tinyLib.goToByScroll($('#markdown-read [line="' + line + '"]'), 0); }
