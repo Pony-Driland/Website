@@ -252,14 +252,74 @@ var openChapterMenu = function(params = {}) {
                 $('<button>', { class: 'ml-3 btn btn-info btn-sm' }).text('Choose Optional NSFW Content').click(function() {
 
                     // Nothing NSFW
+                    let existNSFW = false;
                     let nsfwContent = $('<center>', { class: 'm-3 small text-warning' }).text('No NSFW content was detected. It may be that soon some NSFW content will be added.');
+                    const nsfwList = [];
+
+                    // Detect Fic NSFW
+                    for (const fic in storyData.data) {
+                        for (const item in storyData.data[fic]) {
+                            if (storyData.data[fic][item].nsfw) {
+                                for (const nsfwItem in storyData.data[fic][item].nsfw) {
+                                    if (nsfwList.indexOf(storyData.data[fic][item].nsfw[nsfwItem]) < 0) {
+
+                                        // Add Item
+                                        const NSFWITEM = storyData.data[fic][item].nsfw[nsfwItem];
+                                        nsfwList.push(NSFWITEM);
+
+                                        // Convert NSFW Content
+                                        if (!existNSFW) {
+                                            nsfwContent = [];
+                                        }
+
+                                        // Exist Now
+                                        existNSFW = true;
+
+                                        // Add NSFW Item
+                                        if (storyCfg.nsfw[NSFWITEM]) {
+                                            nsfwContent.push(
+                                                $('<div>', { class: 'card' }).append(
+                                                    $('<div>', { class: 'card-body' }).append(
+                                                        $('<h5>', { class: 'card-title' }).text(storyCfg.nsfw[NSFWITEM].name),
+                                                        $('<p>', { class: 'card-text small' }).text(storyCfg.nsfw[NSFWITEM].description),
+                                                        $('<a>', { class: 'btn btn-primary' }).click(function() {
+
+                                                            // Start Chapter
+                                                            newRead(Number($(this).attr('chapter')));
+
+                                                            // Complete
+                                                            return false;
+
+                                                        }).text('Load')
+                                                    )
+                                                )
+                                            );
+                                        }
+
+                                        // Unknown
+                                        else {
+
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // NSFW Item
+                    const nsfwDIV = $('<div>');
+                    nsfwDIV.append(nsfwContent);
+                    if (existNSFW) {
+                        nsfwDIV.addClass('row');
+                    }
 
                     // Modal
                     tinyLib.modal({
                         title: [$('<i>', { class: 'fas fa-eye mr-3' }), 'NSFW Settings'],
                         body: $('<center>').append(
                             $('<p>', { class: 'text-danger' }).text('By activating these settings, you agree that you are responsible for the content you consume and that you are over 18 years old!'),
-                            nsfwContent
+                            nsfwDIV
                         ),
                         dialog: 'modal-lg'
                     });
