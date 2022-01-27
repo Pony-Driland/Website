@@ -167,16 +167,23 @@ var insertMarkdownFile = function(text) {
 
 };
 
-// Open MD FIle
-var openMDFIle = function(url) {
+// Remove Fic Data
+var clearFicData = function() {
 
-    // Remove Fic Data
     $('#fic-nav > #status').empty();
     $('#fic-chapter').empty();
     storyData.chapter.html = {};
     storyData.chapter.line = null;
     storyData.chapter.nav = {};
     storyData.chapter.selected = 0;
+
+};
+
+// Open MD FIle
+var openMDFIle = function(url) {
+
+    // Remove Fic Data
+    clearFicData();
 
     // Read Data Base
     console.log(`Opening MD file "${url}"...`);

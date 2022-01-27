@@ -50,6 +50,7 @@ var storyDialogue = {
 var openChapterMenu = function(params = {}) {
 
     // Prepare Data
+    clearFicData();
     $('#markdown-read').empty();
 
     // New Read
