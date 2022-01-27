@@ -251,10 +251,13 @@ var openChapterMenu = function(params = {}) {
             ).append(
                 $('<button>', { class: 'ml-3 btn btn-info btn-sm' }).text('Choose Optional NSFW Content').click(function() {
 
+
+                    // Modal
                     tinyLib.modal({
                         title: 'Bookmark',
                         body: $('<center>').append(
                             $('<h5>').text(`NSFW Settings`),
+                            $('<p>').text('By activating these settings, you agree that you are responsible for the content you consume and that you are over 18 years old!'),
 
                         ),
                         dialog: 'modal-lg'
