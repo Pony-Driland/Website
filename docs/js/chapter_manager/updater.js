@@ -73,7 +73,7 @@ var updateChapterCache = function(lastPage) {
             storyData.chapter.nav.bookmark.click(function() {
 
                 tinyLib.modal({
-                    title: 'Bookmark',
+                    title: $('<span>').text('Bookmark'),
                     body: $('<center>').append(
                         $('<h5>').text(`Save this URL to your favorites to re-read the story on any device`),
                         $('<input>', { type: 'text', class: 'form-control text-center' }).prop('readonly', true).val(
