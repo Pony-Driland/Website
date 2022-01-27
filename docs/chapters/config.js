@@ -1,6 +1,6 @@
 var storyCfg = {
 
-    underDevelopment: false,
+    underDevelopment: true,
     domain: 'ponydriland.com',
     itemsPerPage: 50,
     title: 'Pony Driland',
