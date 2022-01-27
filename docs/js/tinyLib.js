@@ -165,18 +165,21 @@ $.fn.visibleOnWindow = function() {
 
     var element = $(this)[0];
     var position = element.getBoundingClientRect();
+    if (position) {
 
-    // checking whether fully visible
-    if (position.top >= 0 && position.bottom <= window.innerHeight) {
-        return 'full';
-    }
+        // checking whether fully visible
+        if (position.top >= 0 && position.bottom <= window.innerHeight) {
+            return 'full';
+        }
 
-    // checking for partial visibility
-    else if (position.top < window.innerHeight && position.bottom >= 0) {
-        return 'partial';
-    }
+        // checking for partial visibility
+        else if (position.top < window.innerHeight && position.bottom >= 0) {
+            return 'partial';
+        }
 
-    // Nothing
-    else { return null; }
+        // Nothing
+        else { return null; }
+
+    } else { return null; }
 
 };
