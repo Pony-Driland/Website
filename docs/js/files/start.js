@@ -63,6 +63,9 @@ var openNewAddress = function(data, isPopState = false, useCustom = false) {
 // Pop State
 $(window).on('popstate', function() {
 
+    // Remove Fic Data
+    clearFicData();
+
     // Get Params
     const urlSearchParams = new URLSearchParams(document.location.search);
     const params = Object.fromEntries(urlSearchParams.entries());
