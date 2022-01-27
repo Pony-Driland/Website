@@ -163,23 +163,27 @@ $.fn.isScrolledIntoView = function() {
 
 $.fn.visibleOnWindow = function() {
 
-    var element = $(this)[0];
-    var position = element.getBoundingClientRect();
-    if (position) {
+    let element = $(this);
+    if (element) {
+        element = element[0];
+        if (element) {
+            let position = element.getBoundingClientRect();
+            if (position && typeof position.top === 'number' && typeof position.bottom === 'number' && typeof window.innerHeight === 'number') {
 
-        // checking whether fully visible
-        if (position.top >= 0 && position.bottom <= window.innerHeight) {
-            return 'full';
-        }
+                // checking whether fully visible
+                if (position.top >= 0 && position.bottom <= window.innerHeight) {
+                    return 'full';
+                }
 
-        // checking for partial visibility
-        else if (position.top < window.innerHeight && position.bottom >= 0) {
-            return 'partial';
-        }
+                // checking for partial visibility
+                else if (position.top < window.innerHeight && position.bottom >= 0) {
+                    return 'partial';
+                }
 
-        // Nothing
-        else { return null; }
-
-    } else { return null; }
+                // Nothing
+                else { return null; }
+            } else { return null; }
+        } else { return null; }
+    }
 
 };
