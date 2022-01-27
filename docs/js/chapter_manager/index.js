@@ -278,19 +278,21 @@ var openChapterMenu = function(params = {}) {
                                         // Add NSFW Item
                                         if (storyCfg.nsfw[NSFWITEM]) {
                                             nsfwContent.push(
-                                                $('<div>', { class: 'card' }).append(
-                                                    $('<div>', { class: 'card-body' }).append(
-                                                        $('<h5>', { class: 'card-title' }).text(storyCfg.nsfw[NSFWITEM].name),
-                                                        $('<p>', { class: 'card-text small' }).text(storyCfg.nsfw[NSFWITEM].description),
-                                                        $('<a>', { class: 'btn btn-primary' }).click(function() {
+                                                $('<div>', { class: 'col-sm-4' }).append(
+                                                    $('<div>', { class: 'card' }).append(
+                                                        $('<div>', { class: 'card-body' }).append(
+                                                            $('<h5>', { class: 'card-title' }).text(storyCfg.nsfw[NSFWITEM].name),
+                                                            $('<p>', { class: 'card-text small' }).text(storyCfg.nsfw[NSFWITEM].description),
+                                                            $('<a>', { class: 'btn btn-primary' }).click(function() {
 
-                                                            // Start Chapter
-                                                            newRead(Number($(this).attr('chapter')));
+                                                                // Start Chapter
+                                                                newRead(Number($(this).attr('chapter')));
 
-                                                            // Complete
-                                                            return false;
+                                                                // Complete
+                                                                return false;
 
-                                                        }).text('Load')
+                                                            }).text('Allow')
+                                                        )
                                                     )
                                                 )
                                             );
