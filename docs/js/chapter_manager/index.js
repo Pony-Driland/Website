@@ -19,7 +19,7 @@ var storyDialogue = {
     dialogue: function(item, items, data) {
 
         storyData.chapter.html[item] = $('<tr>', { line: item }).append(
-            $('<td>', { class: 'py-4 font-weight-bold' }).text(item),
+            $('<td>', { class: 'py-4 font-weight-bold d-md-none' }).text(item),
             $('<td>', { class: 'py-4', width: '15%' }).text(data.character),
             $('<td>', { class: 'py-4' }).append(
                 $('<span>').text(data.value)
