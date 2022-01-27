@@ -277,25 +277,51 @@ var openChapterMenu = function(params = {}) {
 
                                         // Add NSFW Item
                                         if (storyCfg.nsfw[NSFWITEM]) {
+
+                                            // Get Value
+                                            let nsfwValue = localStorage.getItem('NSFW' + NSFWITEM);
+                                            if (
+                                                typeof nsfwValue !== 'undefined' && (
+                                                    nsfwValue === 'true' || nsfwValue === '1' || nsfwValue === true || nsfwValue === 1 || nsfwValue === 'on'
+                                                )
+                                            ) {
+                                                nsfwValue = true;
+                                            } else { nsfwValue = false; }
+
+                                            // Set Button Text
+                                            let allowButton = 'Enable';
+                                            if (nsfwValue) {
+                                                allowButton = 'Disable'
+                                            }
+
                                             nsfwContent.push(
                                                 $('<div>', { class: 'col-sm-4' }).append(
                                                     $('<div>', { class: 'card' }).append(
                                                         $('<div>', { class: 'card-body' }).append(
                                                             $('<h5>', { class: 'card-title' }).text(storyCfg.nsfw[NSFWITEM].name),
                                                             $('<p>', { class: 'card-text small' }).text(storyCfg.nsfw[NSFWITEM].description),
-                                                            $('<a>', { class: 'btn btn-primary' }).click(function() {
+                                                            $('<button>', { class: 'btn btn-primary' }).click(function() {
 
-                                                                // Start Chapter
-                                                                newRead(Number($(this).attr('chapter')));
+                                                                // Enable
+                                                                if (!nsfwValue) {
+                                                                    localStorage.setItem('NSFW' + NSFWITEM, true);
+                                                                    nsfwValue = true;
+                                                                    $(this).text('Disable');
+                                                                }
 
-                                                                // Complete
-                                                                return false;
+                                                                // Disable
+                                                                else {
+                                                                    localStorage.setItem('NSFW' + NSFWITEM, false);
+                                                                    nsfwValue = false;
+                                                                    $(this).text('Enable')
+                                                                }
 
-                                                            }).text('Allow')
+                                                            }).text(allowButton)
                                                         )
                                                     )
                                                 )
                                             );
+
                                         }
 
                                         // Unknown
