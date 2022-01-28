@@ -40,7 +40,8 @@ $(window).on('resize scroll', function() {
 var updateChapterCache = function(lastPage) {
     if (storyData.chapter.selected > 0) {
 
-        // Update Data Cache        
+        // Update Data Cache
+        musicManager.startBase();
         storyData.chapter.line = lastPage;
         const data = storyData.data[storyData.chapter.selected];
         for (const i in data) {
@@ -61,7 +62,7 @@ var updateChapterCache = function(lastPage) {
 
             // Insert
             if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
-            storyData.chapter.nav.bookmark = $('<a>', { indexItem: 0, class: 'nav-item nav-link', id: 'bookmark' });
+            storyData.chapter.nav.bookmark = $('<a>', { indexItem: 1, class: 'nav-item nav-link', id: 'bookmark' });
             $('#fic-nav > #status').prepend(storyData.chapter.nav.bookmark);
 
             // Icon
@@ -102,10 +103,40 @@ var updateChapterCache = function(lastPage) {
     }
 };
 
+// Music Manager
+var musicManager = {
 
+    // Start Base
+    startBase: function() {
+
+        // Add Item Base
+        if ($('#fic-nav > #status #music').length < 1) {
+            if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
+            storyData.chapter.nav.music = $('<div>', { indexItem: 0, class: 'nav-item', id: 'music' }).append(
+                $('<div>', { class: 'border' })
+            );
+            $('#fic-nav > #status').prepend(storyData.chapter.nav.music);
+        }
+
+    },
+
+    // Play Music
+    play: function(value) {
+
+
+
+    }
+
+};
 
 // Set Actions
 var chapterSet = {
+
+    musicPlay: function(value, actionFromNow = false) {
+        if (actionFromNow) {
+            musicManager.play(value);
+        }
+    },
 
     day: function(value, actionFromNow = false) {
         if (actionFromNow) {
@@ -113,7 +144,7 @@ var chapterSet = {
             // Add Item Base
             if ($('#fic-nav > #status #day').length < 1) {
                 if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
-                storyData.chapter.nav.day = $('<a>', { indexItem: 3, class: 'nav-item nav-link', id: 'day' });
+                storyData.chapter.nav.day = $('<a>', { indexItem: 4, class: 'nav-item nav-link', id: 'day' });
                 $('#fic-nav > #status').prepend(storyData.chapter.nav.day);
             }
 
@@ -128,7 +159,7 @@ var chapterSet = {
             // Add Item Base
             if ($('#fic-nav > #status #dayNightCycle').length < 1) {
                 if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
-                storyData.chapter.nav.dayNightCycle = $('<a>', { indexItem: 2, class: 'nav-item nav-link', id: 'dayNightCycle' });
+                storyData.chapter.nav.dayNightCycle = $('<a>', { indexItem: 3, class: 'nav-item nav-link', id: 'dayNightCycle' });
                 $('#fic-nav > #status').prepend(storyData.chapter.nav.dayNightCycle);
             }
 
@@ -157,7 +188,7 @@ var chapterSet = {
             // Add Item Base
             if ($('#fic-nav > #status #weather').length < 1) {
                 if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
-                storyData.chapter.nav.weather = $('<a>', { indexItem: 1, class: 'nav-item nav-link', id: 'weather' });
+                storyData.chapter.nav.weather = $('<a>', { indexItem: 2, class: 'nav-item nav-link', id: 'weather' });
                 $('#fic-nav > #status').prepend(storyData.chapter.nav.weather);
             }
 
@@ -186,7 +217,7 @@ var chapterSet = {
             // Add Item Base
             if ($('#fic-nav > #status #where').length < 1) {
                 if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
-                storyData.chapter.nav.where = $('<a>', { indexItem: 4, class: 'nav-item nav-link', id: 'where' });
+                storyData.chapter.nav.where = $('<a>', { indexItem: 5, class: 'nav-item nav-link', id: 'where' });
                 $('#fic-nav > #status').prepend(storyData.chapter.nav.where);
             }
 
