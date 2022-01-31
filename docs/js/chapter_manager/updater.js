@@ -113,6 +113,12 @@ var musicManager = {
 
             $('#music-player').addClass('border').removeClass('d-none').addClass('mr-3');
 
+            if (storyData.music.buffering) {
+                $('#music-player > a').addClass('disabled');
+            } else {
+                $('#music-player > a').removeClass('disabled');
+            }
+
             if (storyData.music.playing) {
                 storyData.music.nav.play.addClass('fa-pause').removeClass('fa-play');
             } else if (storyData.music.paused || storyData.music.stoppabled) {
