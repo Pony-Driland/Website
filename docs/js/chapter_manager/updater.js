@@ -147,7 +147,10 @@ var musicManager = {
 
             }
 
-            // Time
+            // Tooltip
+            $('#music-player > a[title]').each(function() {
+                $(this).tooltip();
+            });
 
         }
 
@@ -173,7 +176,7 @@ var musicManager = {
 
             // Info
             storyData.music.nav.info = $('<i>', { class: 'fas fa-info-circle' }).click(function() {
-                console.log(storyData.youtube.player.getVideoUrl());
+                open(storyData.youtube.player.getVideoUrl(), '_blank')
             });
 
             // Play
@@ -196,9 +199,9 @@ var musicManager = {
             if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
             storyData.chapter.nav.music = $('<div>', { indexItem: 0, class: 'nav-item', id: 'music' }).append(
                 $('<div>', { id: 'music-player', class: 'd-none' }).append(
-                    $('<a>', { href: 'javascript:void(0)' }).append(storyData.music.nav.info),
-                    $('<a>', { href: 'javascript:void(0)' }).append(storyData.music.nav.play),
-                    $('<a>', { href: 'javascript:void(0)' }).append(storyData.music.nav.stop)
+                    $('<a>', { href: 'javascript:void(0)', title: 'Source' }).append(storyData.music.nav.info),
+                    $('<a>', { href: 'javascript:void(0)', title: 'Play/Pause' }).append(storyData.music.nav.play),
+                    $('<a>', { href: 'javascript:void(0)', title: 'Stop' }).append(storyData.music.nav.stop)
                 )
             );
 
