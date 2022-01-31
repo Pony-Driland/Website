@@ -129,6 +129,11 @@ var musicManager = {
                 $('#music-player > a').removeClass('disabled');
             }
 
+            // Title
+            if (typeof storyData.music.title === 'string' && storyData.music.title.length > 0) {
+                $('#music-player > a').has(storyData.music.nav.info).attr('data-original-title', storyData.music.title);
+            }
+
             // Playing
             if (storyData.music.playing) {
                 storyData.music.nav.play.addClass('fa-pause').removeClass('fa-play');
