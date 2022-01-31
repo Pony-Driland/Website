@@ -42,4 +42,5 @@
 
 #music-player>a {
     padding: 11px;
+    display: inline-block;
 }
