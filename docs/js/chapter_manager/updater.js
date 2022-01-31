@@ -114,9 +114,9 @@ var musicManager = {
             $('#music-player').addClass('border');
 
             if (storyData.music.playing) {
-                storyData.music.nav.play.addClass('fas fa-pause').removeClass('fas fa-play');
+                storyData.music.nav.play.addClass('fa-pause').removeClass('fa-play');
             } else if (storyData.music.paused || storyData.music.stoppabled) {
-                storyData.music.nav.play.addClass('fas fa-play').removeClass('fas fa-pause');
+                storyData.music.nav.play.addClass('fa-play').removeClass('fa-pause');
             }
 
         }
@@ -133,14 +133,14 @@ var musicManager = {
             if (!storyData.music.nav) { storyData.music.nav = {}; }
 
             // Play
-            storyData.music.nav.play = $('<i>').click(function() {
+            storyData.music.nav.play = $('<i>', { class: 'fas' }).click(function() {
 
 
 
             });
 
             // Stop
-            storyData.music.nav.stop = $('<i>').click(function() {
+            storyData.music.nav.stop = $('<i>', { class: 'fas fa-stop' }).click(function() {
 
 
 
