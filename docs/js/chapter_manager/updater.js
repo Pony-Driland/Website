@@ -134,23 +134,25 @@ var musicManager = {
 
             // Info
             storyData.music.nav.info = $('<i>', { class: 'fas fa-info-circle' }).click(function() {
-
-
-
+                console.log(storyData.youtube.player.getVideoUrl());
             });
 
             // Play
             storyData.music.nav.play = $('<i>', { class: 'fas fa-play' }).click(function() {
 
-
+                if (storyData.youtube.state === YT.PlayerState.PLAYING) {
+                    storyData.youtube.player.pauseVideo();
+                } else {
+                    storyData.youtube.player.playVideo();
+                }
 
             });
 
             // Stop
             storyData.music.nav.stop = $('<i>', { class: 'fas fa-stop' }).click(function() {
-
-
-
+                storyData.youtube.player.stopVideo();
+                storyData.music.nav.play.addClass('fa-play').removeClass('fa-pause');
+                storyData.music.stoppabled = true;
             });
 
             // Prepare
@@ -162,6 +164,11 @@ var musicManager = {
                     $('<a>', { href: 'javascript:void(0)' }).append(storyData.music.nav.stop)
                 )
             );
+
+            // Add Playing Detector
+            appData.youtube.onPlaying = function() {
+                //console.log(storyData.youtube.currentTime);
+            };
 
             // Insert
             $('#fic-nav > #status').prepend(storyData.chapter.nav.music);
