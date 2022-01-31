@@ -48,6 +48,7 @@ var storyData = {
         playing: false,
         paused: false,
         stoppabled: true,
+        buffering: false
 
     },
 
@@ -106,24 +107,6 @@ var storyData = {
 
                 // Send Data
                 if (typeof appData.youtube.onStateChange === 'function') { appData.youtube.onStateChange(event); }
-
-                /* 
-                                
-                    storyData.youtube.player.getPlayerState()
-                    -1 – não iniciado
-                    0 – encerrado
-                    1 – em reprodução
-                    2 – em pausa
-                    3 – armazenando em buffer
-                    5 – vídeo indicado
-
-                    YT.PlayerState.ENDED
-                    YT.PlayerState.PLAYING
-                    YT.PlayerState.PAUSED
-                    YT.PlayerState.BUFFERING
-                    YT.PlayerState.CUED
-                
-                */
 
             },
 
@@ -203,6 +186,7 @@ var storyData = {
                             storyData.music.playing = false;
                             storyData.music.paused = false;
                             storyData.music.stoppabled = false;
+                            storyData.music.buffering = false;
 
                             // Playing
                             if (storyData.youtube.state === YT.PlayerState.PLAYING) {
@@ -213,7 +197,7 @@ var storyData = {
                             }
 
                             // Ended
-                            else if (storyData.youtube.state === YT.PlayerState.ENDED) {
+                            else if (storyData.youtube.state === YT.PlayerState.ENDED || storyData.youtube.state === YT.PlayerState.CUED) {
                                 storyData.music.stoppabled = true;
                                 storyData.youtube.currentTime = storyData.youtube.player.getDuration();
                             }
@@ -221,6 +205,11 @@ var storyData = {
                             // Paused
                             else if (storyData.youtube.state === YT.PlayerState.PAUSED) {
                                 storyData.music.paused = true;
+                            }
+
+                            // Buff
+                            else if (storyData.youtube.state === YT.PlayerState.BUFFERING) {
+                                storyData.music.buffering = true;
                             }
 
                         }

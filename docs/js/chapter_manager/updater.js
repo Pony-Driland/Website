@@ -151,8 +151,6 @@ var musicManager = {
             // Stop
             storyData.music.nav.stop = $('<i>', { class: 'fas fa-stop' }).click(function() {
                 storyData.youtube.player.stopVideo();
-                storyData.music.nav.play.addClass('fa-play').removeClass('fa-pause');
-                storyData.music.stoppabled = true;
             });
 
             // Prepare
