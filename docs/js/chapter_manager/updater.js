@@ -111,7 +111,7 @@ var musicManager = {
 
         if (storyData.music.nav) {
 
-            $('#music-player').addClass('border');
+            $('#music-player').addClass('border').removeClass('d-none');
 
             if (storyData.music.playing) {
                 storyData.music.nav.play.addClass('fa-pause').removeClass('fa-play');
@@ -149,7 +149,7 @@ var musicManager = {
             // Prepare
             if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
             storyData.chapter.nav.music = $('<div>', { indexItem: 0, class: 'nav-item', id: 'music' }).append(
-                $('<div>', { id: 'music-player' }).append(
+                $('<div>', { id: 'music-player', class: 'd-none' }).append(
                     storyData.music.nav.play,
                     storyData.music.nav.stop
                 )

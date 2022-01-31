@@ -39,3 +39,7 @@
 .ficMode #mdMenu #license {
     display: none !important;
 }
+
+#music-player>i {
+    padding: 5px;
+}
