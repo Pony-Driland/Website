@@ -178,41 +178,46 @@ var musicManager = {
             if (!storyData.music.nav) { storyData.music.nav = {}; }
 
             // Info
-            storyData.music.nav.info = $('<i>', { class: 'fas fa-info-circle' }).click(function() {
-                open(storyData.youtube.player.getVideoUrl(), '_blank')
-            });
+            storyData.music.nav.info = $('<i>', { class: 'fas fa-info-circle' });
 
             // Play
-            storyData.music.nav.play = $('<i>', { class: 'fas fa-play' }).click(function() {
-
-                if (storyData.youtube.state === YT.PlayerState.PLAYING) {
-                    storyData.youtube.player.pauseVideo();
-                } else {
-                    storyData.youtube.player.playVideo();
-                }
-
-            });
+            storyData.music.nav.play = $('<i>', { class: 'fas fa-play' });
 
             // Volume
-            storyData.music.nav.volume = $('<i>', { class: 'fas fa-volume-mute' }).click(function() {
-
-
-
-            });
+            storyData.music.nav.volume = $('<i>', { class: 'fas fa-volume-mute' });
 
             // Stop
-            storyData.music.nav.stop = $('<i>', { class: 'fas fa-stop' }).click(function() {
-                storyData.youtube.player.stopVideo();
-            });
+            storyData.music.nav.stop = $('<i>', { class: 'fas fa-stop' });
 
             // Prepare
             if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
             storyData.chapter.nav.music = $('<div>', { indexItem: 0, class: 'nav-item', id: 'music' }).append(
                 $('<div>', { id: 'music-player', class: 'd-none' }).append(
-                    $('<a>', { href: 'javascript:void(0)', title: 'Source' }).append(storyData.music.nav.info),
-                    $('<a>', { href: 'javascript:void(0)', title: 'Play/Pause' }).append(storyData.music.nav.play),
-                    $('<a>', { href: 'javascript:void(0)', title: 'Stop' }).append(storyData.music.nav.stop),
-                    $('<a>', { href: 'javascript:void(0)', title: 'Volume' }).append(storyData.music.nav.volume)
+
+                    $('<a>', { href: 'javascript:void(0)', title: 'Source' }).click(function() {
+                        open(storyData.youtube.player.getVideoUrl(), '_blank')
+                    }).append(storyData.music.nav.info),
+
+                    $('<a>', { href: 'javascript:void(0)', title: 'Play/Pause' }).click(function() {
+
+                        if (storyData.youtube.state === YT.PlayerState.PLAYING) {
+                            storyData.youtube.player.pauseVideo();
+                        } else {
+                            storyData.youtube.player.playVideo();
+                        }
+
+                    }).append(storyData.music.nav.play),
+
+                    $('<a>', { href: 'javascript:void(0)', title: 'Stop' }).click(function() {
+                        storyData.youtube.player.stopVideo();
+                    }).append(storyData.music.nav.stop),
+
+                    $('<a>', { href: 'javascript:void(0)', title: 'Volume' }).click(function() {
+
+
+
+                    }).append(storyData.music.nav.volume)
+
                 )
             );
 
