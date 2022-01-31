@@ -143,10 +143,11 @@ var musicManager = {
             }
 
             // Volume
+            storyData.music.nav.volume.removeClass('fa-volume-mute').removeClass('fa-volume-up');
             if (typeof storyData.music.volume === 'number' && storyData.music.volume > 0) {
-
+                storyData.music.nav.volume.addClass('fa-volume-up');
             } else {
-
+                storyData.music.nav.volume.addClass('fas fa-volume-mute');
             }
 
             // Tooltip
@@ -234,9 +235,9 @@ var musicManager = {
 // Set Actions
 var chapterSet = {
 
-    musicPlay: function(value, actionFromNow = false) {
+    playlistPlay: function(value, actionFromNow = false) {
         if (actionFromNow) {
-            musicManager.play(value);
+            //musicManager.play(value);
         }
     },
 
