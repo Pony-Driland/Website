@@ -132,6 +132,13 @@ var musicManager = {
             // Navbar
             if (!storyData.music.nav) { storyData.music.nav = {}; }
 
+            // Info
+            storyData.music.nav.info = $('<i>', { class: 'fas fa-info-circle' }).click(function() {
+
+
+
+            });
+
             // Play
             storyData.music.nav.play = $('<i>', { class: 'fas fa-play' }).click(function() {
 
@@ -150,6 +157,7 @@ var musicManager = {
             if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
             storyData.chapter.nav.music = $('<div>', { indexItem: 0, class: 'nav-item', id: 'music' }).append(
                 $('<div>', { id: 'music-player', class: 'd-none' }).append(
+                    $('<a>', { href: 'javascript:void(0)' }).append(storyData.music.nav.info),
                     $('<a>', { href: 'javascript:void(0)' }).append(storyData.music.nav.play),
                     $('<a>', { href: 'javascript:void(0)' }).append(storyData.music.nav.stop)
                 )
