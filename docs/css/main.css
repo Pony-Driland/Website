@@ -44,3 +44,7 @@
     padding: 11px;
     display: inline-block;
 }
+
+#music-player>a.disabled {
+    opacity: 0.7 !important;
+}
