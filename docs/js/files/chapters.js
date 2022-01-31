@@ -42,6 +42,15 @@ var storyData = {
     // Chapter Data
     data: {},
 
+    // Music
+    music: {
+
+        playing: false,
+        paused: false,
+        stoppabled: true,
+
+    },
+
     // Youtube Player
     youtube: {
 
@@ -189,14 +198,33 @@ var storyData = {
                     // Current Time Detector
                     setInterval(function() {
                         if (YT && YT.PlayerState && storyData.youtube.player) {
+
+                            // Fix
+                            storyData.music.playing = false;
+                            storyData.music.paused = false;
+                            storyData.music.stoppabled = false;
+
+                            // Playing
                             if (storyData.youtube.state === YT.PlayerState.PLAYING) {
+                                storyData.music.playing = true;
                                 storyData.youtube.duration = storyData.youtube.player.getDuration();
                                 storyData.youtube.currentTime = storyData.youtube.player.getCurrentTime();
                                 if (typeof appData.youtube.onPlaying === 'function') { appData.youtube.onPlaying(); }
-                            } else if (storyData.youtube.state === YT.PlayerState.ENDED) {
+                            }
+
+                            // Ended
+                            else if (storyData.youtube.state === YT.PlayerState.ENDED) {
+                                storyData.music.stoppabled = true;
                                 storyData.youtube.currentTime = storyData.youtube.player.getDuration();
                             }
+
+                            // Paused
+                            else if (storyData.youtube.state === YT.PlayerState.PAUSED) {
+                                storyData.music.paused = true;
+                            }
+
                         }
+                        musicManager.updatePlayer();
                     }, 100);
 
                 }

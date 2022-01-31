@@ -106,16 +106,56 @@ var updateChapterCache = function(lastPage) {
 // Music Manager
 var musicManager = {
 
+    // Update Player
+    updatePlayer: function() {
+
+        if (storyData.music.nav) {
+
+            if (storyData.music.playing) {
+                storyData.music.nav.play.addClass('fas fa-pause').removeClass('fas fa-play');
+            } else if (storyData.music.paused || storyData.music.stoppabled) {
+                storyData.music.nav.play.addClass('fas fa-play').removeClass('fas fa-pause');
+            }
+
+        }
+
+    },
+
     // Start Base
     startBase: function() {
 
         // Add Item Base
         if ($('#fic-nav > #status #music').length < 1) {
+
+            // Navbar
+            if (!storyData.music.nav) { storyData.music.nav = {}; }
+
+            // Play
+            storyData.music.nav.play = $('<i>').click(function() {
+
+
+
+            });
+
+            // Stop
+            storyData.music.nav.stop = $('<i>').click(function() {
+
+
+
+            });
+
+            // Prepare
             if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
             storyData.chapter.nav.music = $('<div>', { indexItem: 0, class: 'nav-item', id: 'music' }).append(
-                $('<div>', { class: 'border' })
+                $('<div>', { class: 'border' }).append(
+                    storyData.music.nav.play,
+                    storyData.music.nav.stop
+                )
             );
+
+            // Insert
             $('#fic-nav > #status').prepend(storyData.chapter.nav.music);
+
         }
 
     },
