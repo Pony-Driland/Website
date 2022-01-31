@@ -106,6 +106,14 @@ var updateChapterCache = function(lastPage) {
 // Music Manager
 var musicManager = {
 
+    disable: function(react = true) {
+        if (react) {
+            $('#music-player').addClass('d-none');
+        } else {
+            $('#music-player').removeClass('d-none');
+        }
+    },
+
     // Update Player
     updatePlayer: function() {
 
