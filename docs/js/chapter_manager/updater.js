@@ -143,7 +143,9 @@ var musicManager = {
             }
 
             // Volume
-            if (typeof storyData.music.volume === 'number') {
+            if (typeof storyData.music.volume === 'number' && storyData.music.volume > 0) {
+
+            } else {
 
             }
 
@@ -190,6 +192,13 @@ var musicManager = {
 
             });
 
+            // Volume
+            storyData.music.nav.volume = $('<i>', { class: 'fas fa-volume-mute' }).click(function() {
+
+
+
+            });
+
             // Stop
             storyData.music.nav.stop = $('<i>', { class: 'fas fa-stop' }).click(function() {
                 storyData.youtube.player.stopVideo();
@@ -201,7 +210,8 @@ var musicManager = {
                 $('<div>', { id: 'music-player', class: 'd-none' }).append(
                     $('<a>', { href: 'javascript:void(0)', title: 'Source' }).append(storyData.music.nav.info),
                     $('<a>', { href: 'javascript:void(0)', title: 'Play/Pause' }).append(storyData.music.nav.play),
-                    $('<a>', { href: 'javascript:void(0)', title: 'Stop' }).append(storyData.music.nav.stop)
+                    $('<a>', { href: 'javascript:void(0)', title: 'Stop' }).append(storyData.music.nav.stop),
+                    $('<a>', { href: 'javascript:void(0)', title: 'Volume' }).append(storyData.music.nav.volume)
                 )
             );
 
