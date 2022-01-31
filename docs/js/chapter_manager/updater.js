@@ -177,16 +177,10 @@ var musicManager = {
             // Navbar
             if (!storyData.music.nav) { storyData.music.nav = {}; }
 
-            // Info
+            // Buttons
             storyData.music.nav.info = $('<i>', { class: 'fas fa-info-circle' });
-
-            // Play
             storyData.music.nav.play = $('<i>', { class: 'fas fa-play' });
-
-            // Volume
             storyData.music.nav.volume = $('<i>', { class: 'fas fa-volume-mute' });
-
-            // Stop
             storyData.music.nav.stop = $('<i>', { class: 'fas fa-stop' });
 
             // Prepare
@@ -194,10 +188,12 @@ var musicManager = {
             storyData.chapter.nav.music = $('<div>', { indexItem: 0, class: 'nav-item', id: 'music' }).append(
                 $('<div>', { id: 'music-player', class: 'd-none' }).append(
 
+                    // Info
                     $('<a>', { href: 'javascript:void(0)', title: 'Source' }).click(function() {
                         open(storyData.youtube.player.getVideoUrl(), '_blank')
                     }).append(storyData.music.nav.info),
 
+                    // Play
                     $('<a>', { href: 'javascript:void(0)', title: 'Play/Pause' }).click(function() {
 
                         if (storyData.youtube.state === YT.PlayerState.PLAYING) {
@@ -208,10 +204,12 @@ var musicManager = {
 
                     }).append(storyData.music.nav.play),
 
+                    // Stop
                     $('<a>', { href: 'javascript:void(0)', title: 'Stop' }).click(function() {
                         storyData.youtube.player.stopVideo();
                     }).append(storyData.music.nav.stop),
 
+                    // Volume
                     $('<a>', { href: 'javascript:void(0)', title: 'Volume' }).click(function() {
 
 
