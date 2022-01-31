@@ -40,6 +40,6 @@
     display: none !important;
 }
 
-#music-player>i {
+#music-player>a {
     padding: 11px;
 }
