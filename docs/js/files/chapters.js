@@ -173,12 +173,6 @@ var storyData = {
                 storyData.youtube.currentTime = 0;
                 storyData.youtube.duration = 0;
 
-                // Prepare Volume
-                if (typeof storyData.youtube.volume === 'number' && typeof storyData.music.volume === 'number' && storyData.youtube.volume !== storyData.music.volume) {
-                    storyData.youtube.player.setVolume(storyData.youtube.volume);
-                    storyData.music.volume = storyData.youtube.volume;
-                }
-
                 // New Player
                 if (!storyData.youtube.player) {
 
@@ -230,6 +224,12 @@ var storyData = {
 
                 // Reuse Player
                 else { storyData.youtube.player.loadVideoById(videoID); }
+
+                // Prepare Volume
+                if (typeof storyData.youtube.volume === 'number' && typeof storyData.music.volume === 'number' && storyData.youtube.volume !== storyData.music.volume) {
+                    storyData.youtube.player.setVolume(storyData.youtube.volume);
+                    storyData.music.volume = storyData.youtube.volume;
+                }
 
             }).fail(err => {
                 console.error(err);
