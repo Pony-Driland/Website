@@ -168,6 +168,13 @@ var storyData = {
                 console.log(`Youtube video embed loaded!`);
                 storyData.youtube.embed = jsonVideo;
 
+                // Info
+                storyData.music.author_name = jsonVideo.author_name;
+                storyData.music.author_url = jsonVideo.author_url;
+                storyData.music.provider_name = jsonVideo.provider_name;
+                storyData.music.thumbnail_url = jsonVideo.thumbnail_url;
+                storyData.music.title = jsonVideo.title;
+
                 // Prepare Video ID
                 storyData.youtube.videoID = videoID;
                 storyData.youtube.currentTime = 0;
