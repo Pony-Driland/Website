@@ -133,7 +133,7 @@ var musicManager = {
             if (!storyData.music.nav) { storyData.music.nav = {}; }
 
             // Play
-            storyData.music.nav.play = $('<i>', { class: 'fas' }).click(function() {
+            storyData.music.nav.play = $('<i>', { class: 'fas fa-play' }).click(function() {
 
 
 
@@ -150,8 +150,8 @@ var musicManager = {
             if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
             storyData.chapter.nav.music = $('<div>', { indexItem: 0, class: 'nav-item', id: 'music' }).append(
                 $('<div>', { id: 'music-player', class: 'd-none' }).append(
-                    storyData.music.nav.play,
-                    storyData.music.nav.stop
+                    $('<a>', { href: 'javascript:void(0)' }).append(storyData.music.nav.play),
+                    $('<a>', { href: 'javascript:void(0)' }).append(storyData.music.nav.stop)
                 )
             );
 
