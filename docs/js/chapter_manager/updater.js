@@ -111,7 +111,7 @@ var musicManager = {
 
         if (storyData.music.nav) {
 
-            $('#music-player').addClass('border').removeClass('d-none');
+            $('#music-player').addClass('border').removeClass('d-none').addClass('mr-3');
 
             if (storyData.music.playing) {
                 storyData.music.nav.play.addClass('fa-pause').removeClass('fa-play');
