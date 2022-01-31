@@ -48,7 +48,8 @@ var storyData = {
         playing: false,
         paused: false,
         stoppabled: true,
-        buffering: false
+        buffering: false,
+        volume: 0
 
     },
 
@@ -80,10 +81,12 @@ var storyData = {
                         storyData.youtube.volume = 100;
                         storyData.youtube.player.setVolume(100);
                         localStorage.setItem('storyVolume', 100);
+                        storyData.music.volume = 100;
                     } else { localStorage.setItem('storyVolume', storyData.youtube.volume); }
                 } else {
                     storyData.youtube.volume = storageVolume;
                     storyData.youtube.player.setVolume(storageVolume);
+                    storyData.music.volume = storageVolume;
                 }
 
                 // Play Video
@@ -147,6 +150,7 @@ var storyData = {
             localStorage.setItem('storyVolume', number);
             storyData.youtube.volume = number;
             storyData.youtube.player.setVolume(number);
+            storyData.music.volume = number;
         },
 
         // Start Youtube
