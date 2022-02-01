@@ -1,6 +1,8 @@
 // Base
 storyData.music = {
 
+    usingSystem: false,
+    disabled: true,
     playing: false,
     paused: false,
     stoppabled: true,
