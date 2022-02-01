@@ -49,7 +49,8 @@ var storyData = {
         paused: false,
         stoppabled: true,
         buffering: false,
-        volume: 0
+        volume: 0,
+        playlist: []
 
     },
 
