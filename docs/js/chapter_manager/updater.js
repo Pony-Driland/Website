@@ -108,6 +108,8 @@ var chapterSet = {
 
     playlistPlay: function(value, actionFromNow = false) {
         if (actionFromNow) {
+
+            // Set Playlist
             const playlist = storyCfg.playlist[value];
             if (Array.isArray(playlist)) {
                 musicManager.disable(false);
@@ -116,6 +118,17 @@ var chapterSet = {
                 storyData.music.playlist = [];
                 musicManager.disable(true);
             }
+
+            // Exist Playlist
+            if (!storyData.music.disabled && Array.isArray(storyData.music.playlist) && storyData.music.playlist.length > 0) {
+                musicManager.startPlaylist();
+            }
+
+            // Nope
+            else {
+                musicManager.stopPlaylist();
+            }
+
         }
     },
 
