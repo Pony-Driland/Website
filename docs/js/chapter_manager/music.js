@@ -377,12 +377,21 @@ musicManager.updatePlayer = function() {
 
 // Stop Playlist
 musicManager.stopPlaylist = function() {
-    storyData.music.usingSystem = false;
+    if (storyData.music.usingSystem) {
+
+        storyData.music.usingSystem = false;
+
+    }
 };
 
 // Start Playlist
 musicManager.startPlaylist = function() {
-    storyData.music.usingSystem = true;
-    //console.log(storyData.music.playlist);
-    // storyData.youtube.play('');
+    if (!storyData.music.usingSystem) {
+
+        storyData.music.usingSystem = true;
+        //console.log(storyData.music.playlist);
+
+        // storyData.youtube.play('');
+
+    }
 };
