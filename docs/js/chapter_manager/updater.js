@@ -57,6 +57,23 @@ var updateChapterCache = function(lastPage) {
 
         }
 
+        // Set Playlist
+        if (Array.isArray(storyData.music.playlist)) {
+            musicManager.disable(false);
+        } else {
+            storyData.music.playlist = [];
+        }
+
+        // Exist Playlist
+        if (!storyData.music.disabled && Array.isArray(storyData.music.playlist) && storyData.music.playlist.length > 0) {
+            musicManager.startPlaylist();
+        }
+
+        // Nope
+        else {
+            musicManager.stopPlaylist();
+        }
+
         // Add Bookmark
         if ($('#fic-nav > #status #bookmark').length < 1) {
 
@@ -112,21 +129,9 @@ var chapterSet = {
             // Set Playlist
             const playlist = storyCfg.playlist[value];
             if (Array.isArray(playlist)) {
-                musicManager.disable(false);
                 storyData.music.playlist = playlist;
             } else {
                 storyData.music.playlist = [];
-                musicManager.disable(true);
-            }
-
-            // Exist Playlist
-            if (!storyData.music.disabled && Array.isArray(storyData.music.playlist) && storyData.music.playlist.length > 0) {
-                musicManager.startPlaylist();
-            }
-
-            // Nope
-            else {
-                musicManager.stopPlaylist();
             }
 
         }
