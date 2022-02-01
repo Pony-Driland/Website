@@ -248,11 +248,14 @@ var chapterSet = {
 
     playlistPlay: function(value, actionFromNow = false) {
         if (actionFromNow) {
-            console.log(value);
             const playlist = storyCfg.playlist[value];
             if (Array.isArray(playlist)) {
+                musicManager.disable(false);
                 storyData.music.playlist = playlist;
-            } else { storyData.music.playlist = []; }
+            } else {
+                storyData.music.playlist = [];
+                musicManager.disable(true);
+            }
         }
     },
 

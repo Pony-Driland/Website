@@ -48,7 +48,10 @@
     {
         "type": "dialogue",
         "character": "Vini",
-        "value": "Wow, my address isn't right? Motoca is going to screw up my X-Tudo!"
+        "value": "Wow, my address isn't right? Motoca is going to screw up my X-Tudo!",
+        "set": {
+            "playlistPlay": "sad"
+        }
     },
 
     {
