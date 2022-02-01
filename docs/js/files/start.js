@@ -519,10 +519,3 @@ $(function() {
 
     });
 });
-
-/* 
-
-    Music
-    storyData.youtube.play('vwsRv0Rqncw')
-
-*/
