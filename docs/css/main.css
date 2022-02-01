@@ -49,3 +49,7 @@
     opacity: 0.7 !important;
     pointer-events: none !important;
 }
+
+.disabled-player {
+    display: none !important;
+}
