@@ -137,7 +137,10 @@
     {
         "type": "dialogue",
         "character": "Vini",
-        "value": "Okay okay! Let me go see the gate. YES!"
+        "value": "Okay okay! Let me go see the gate. YES!",
+        "set": {
+            "playlistPlay": null
+        }
     },
 
     {
