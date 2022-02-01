@@ -148,10 +148,10 @@ var storyData = {
 
         // Volume
         setVolume: function(number) {
-            localStorage.setItem('storyVolume', number);
-            storyData.youtube.volume = number;
-            storyData.youtube.player.setVolume(number);
-            storyData.music.volume = number;
+            localStorage.setItem('storyVolume', Number(number));
+            storyData.youtube.volume = Number(number);
+            storyData.youtube.player.setVolume(Number(number));
+            storyData.music.volume = Number(number);
         },
 
         // Start Youtube
@@ -238,7 +238,7 @@ var storyData = {
                 // Prepare Volume
                 if (typeof storyData.youtube.volume === 'number' && typeof storyData.music.volume === 'number' && storyData.youtube.volume !== storyData.music.volume) {
                     storyData.youtube.player.setVolume(storyData.youtube.volume);
-                    storyData.music.volume = storyData.youtube.volume;
+                    storyData.music.volume = Number(storyData.youtube.volume);
                 }
 
             }).fail(err => {
