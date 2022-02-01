@@ -1,5 +1,6 @@
 var storyCfg = {
 
+    // Info
     underDevelopment: false,
     domain: 'ponydriland.com',
     itemsPerPage: 50,
@@ -48,6 +49,7 @@ var storyCfg = {
         "pony driland"
     ],
 
+    // Theme
     theme: {
         primary: '#a91126',
         secondary: '#612c36',
@@ -57,6 +59,7 @@ var storyCfg = {
         color4: '#5e5e5e'
     },
 
+    // NSFW Config (You can freely add as many NSFW filters as you like.)
     nsfw: {
         vore: {
             name: 'Vore',
@@ -72,6 +75,7 @@ var storyCfg = {
         }
     },
 
+    // Chapters
     chapterName: {
         1: {
             title: 'This is not my world',
