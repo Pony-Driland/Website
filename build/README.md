@@ -7,7 +7,7 @@ Don't forget to give credits if you want to use my fanfic website building syste
 
 <hr/>
 
-## Folders that can be modified
+## Folders and files that can be modified
 
 /build/characters/data
 
