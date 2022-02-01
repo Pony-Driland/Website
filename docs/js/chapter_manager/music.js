@@ -220,56 +220,6 @@ var musicManager = {
         }
     },
 
-    // Update Player
-    updatePlayer: function() {
-
-        if (storyData.music.nav) {
-
-            // View
-            $('#music-player').addClass('border').removeClass('d-none').addClass('mr-3');
-
-            // Buff
-            if (storyData.music.buffering) {
-                $('#music-player > a').addClass('disabled');
-            } else {
-                $('#music-player > a').removeClass('disabled');
-            }
-
-            // Title
-            if (typeof storyData.music.title === 'string' && storyData.music.title.length > 0) {
-                $('#music-player > a').has(storyData.music.nav.info).attr('data-original-title', `Youtube - ${storyData.music.author_name} - ${storyData.music.title}`);
-            }
-
-            // Playing
-            if (storyData.music.playing) {
-                storyData.music.nav.play.addClass('fa-pause').removeClass('fa-play');
-            } else if (storyData.music.paused) {
-                storyData.music.nav.play.addClass('fa-play').removeClass('fa-pause');
-            } else if (
-                storyData.music.stoppabled ||
-                typeof storyData.music.currentTime !== 'number' || typeof storyData.music.duration !== 'number' ||
-                storyData.music.currentTime === storyData.music.duration
-            ) {
-                storyData.music.nav.play.addClass('fa-play').removeClass('fa-pause');
-            }
-
-            // Volume
-            storyData.music.nav.volume.removeClass('fa-volume-mute').removeClass('fa-volume-up');
-            if (typeof storyData.music.volume === 'number' && storyData.music.volume > 0) {
-                storyData.music.nav.volume.addClass('fa-volume-up');
-            } else {
-                storyData.music.nav.volume.addClass('fas fa-volume-mute');
-            }
-
-            // Tooltip
-            $('#music-player > a[title]').each(function() {
-                $(this).tooltip();
-            });
-
-        }
-
-    },
-
     // Start Base
     startBase: function() {
 
@@ -372,3 +322,53 @@ function onYouTubeIframeAPIReady() {
     storyData.youtube.play('vwsRv0Rqncw')
 
 */
+
+// Music Updater
+musicManager.updatePlayer = function() {
+
+    if (storyData.music.nav) {
+
+        // View
+        $('#music-player').addClass('border').removeClass('d-none').addClass('mr-3');
+
+        // Buff
+        if (storyData.music.buffering) {
+            $('#music-player > a').addClass('disabled');
+        } else {
+            $('#music-player > a').removeClass('disabled');
+        }
+
+        // Title
+        if (typeof storyData.music.title === 'string' && storyData.music.title.length > 0) {
+            $('#music-player > a').has(storyData.music.nav.info).attr('data-original-title', `Youtube - ${storyData.music.author_name} - ${storyData.music.title}`);
+        }
+
+        // Playing
+        if (storyData.music.playing) {
+            storyData.music.nav.play.addClass('fa-pause').removeClass('fa-play');
+        } else if (storyData.music.paused) {
+            storyData.music.nav.play.addClass('fa-play').removeClass('fa-pause');
+        } else if (
+            storyData.music.stoppabled ||
+            typeof storyData.music.currentTime !== 'number' || typeof storyData.music.duration !== 'number' ||
+            storyData.music.currentTime === storyData.music.duration
+        ) {
+            storyData.music.nav.play.addClass('fa-play').removeClass('fa-pause');
+        }
+
+        // Volume
+        storyData.music.nav.volume.removeClass('fa-volume-mute').removeClass('fa-volume-up');
+        if (typeof storyData.music.volume === 'number' && storyData.music.volume > 0) {
+            storyData.music.nav.volume.addClass('fa-volume-up');
+        } else {
+            storyData.music.nav.volume.addClass('fas fa-volume-mute');
+        }
+
+        // Tooltip
+        $('#music-player > a[title]').each(function() {
+            $(this).tooltip();
+        });
+
+    }
+
+};
