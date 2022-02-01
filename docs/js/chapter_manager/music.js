@@ -328,6 +328,16 @@ musicManager.updatePlayer = function() {
 
     if (storyData.music.nav) {
 
+        // Exist Playlist
+        if (!storyData.music.disabled && Array.isArray(storyData.music.playlist) && storyData.music.playlist.length > 0) {
+            musicManager.startPlaylist();
+        }
+
+        // Nope
+        else {
+            musicManager.stopPlaylist();
+        }
+
         // View
         $('#music-player').addClass('border').removeClass('d-none').addClass('mr-3');
 
@@ -371,4 +381,14 @@ musicManager.updatePlayer = function() {
 
     }
 
+};
+
+// Stop Playlist
+musicManager.stopPlaylist = function() {
+    storyData.music.usingSystem = false;
+};
+
+// Start Playlist
+musicManager.startPlaylist = function() {
+    storyData.music.usingSystem = true;
 };
