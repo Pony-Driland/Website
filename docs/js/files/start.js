@@ -524,6 +524,5 @@ $(function() {
 
     Music
     storyData.youtube.play('vwsRv0Rqncw')
-    storyData.youtube.player.setVolume(100)
 
 */

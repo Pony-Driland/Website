@@ -217,7 +217,17 @@ var musicManager = {
                     // Volume
                     $('<a>', { href: 'javascript:void(0)', title: 'Volume' }).click(function() {
 
-
+                        // Modal
+                        tinyLib.modal({
+                            title: [$('<i>', { class: 'fas fa-volume mr-3' }), 'Song Volume'],
+                            body: $('<center>').append(
+                                $('<p>').text('Change the page music volume'),
+                                $('<input>', { class: 'form-control range', type: 'range', min: 0, max: 100 }).change(function() {
+                                    storyData.youtube.setVolume($(this).val());
+                                }).val(storyData.music.volume)
+                            ),
+                            dialog: 'modal-lg'
+                        });
 
                     }).append(storyData.music.nav.volume)
 
