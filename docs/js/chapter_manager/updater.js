@@ -108,9 +108,11 @@ var musicManager = {
 
     disable: function(react = true) {
         if (react) {
-            $('#music-player').addClass('d-none');
+            storyData.music.disabled = true;
+            $('#music-player').addClass('disabled-player');
         } else {
-            $('#music-player').removeClass('d-none');
+            storyData.music.disabled = false;
+            $('#music-player').removeClass('disabled-player');
         }
     },
 
