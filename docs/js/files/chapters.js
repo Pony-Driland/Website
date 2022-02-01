@@ -230,7 +230,7 @@ var storyData = {
                 }
 
                 // Reuse Player
-                else { storyData.youtube.player.loadVideoById(videoID); }
+                else { storyData.youtube.player.loadVideoById({ videoId: videoID, startSeconds: 0 }); }
 
                 // Prepare Volume
                 if (typeof storyData.youtube.volume === 'number' && typeof storyData.music.volume === 'number' && storyData.youtube.volume !== storyData.music.volume) {
@@ -352,6 +352,7 @@ function onYouTubeIframeAPIReady() {
         width: 'auto',
         playerVars: { controls: 0 },
         videoId: storyData.youtube.videoID,
+        startSeconds: 0,
         events: storyData.youtube.events
     });
 };
