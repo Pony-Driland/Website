@@ -210,6 +210,7 @@ var storyData = {
 
                             // Ended
                             else if (storyData.youtube.state === YT.PlayerState.ENDED || storyData.youtube.state === YT.PlayerState.CUED) {
+                                storyData.youtube.player.seekTo(0);
                                 storyData.music.stoppabled = true;
                                 storyData.youtube.currentTime = storyData.youtube.player.getDuration();
                             }
