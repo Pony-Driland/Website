@@ -74,7 +74,19 @@ var openChapterMenu = function(params = {}) {
 
                             const newSound = await musicManager.loadAudio(url);
                             if (newSound) {
-                                storyData.sfx[item] = { file: newSound, playing: false, stopped: true, volume: null };
+
+                                storyData.sfx[item] = {
+
+                                    // File
+                                    file: newSound,
+
+                                    // Set Volume
+                                    setVolume: function(value) {
+                                        newSound.volume = value / 100;
+                                    }
+
+                                };
+
                             }
 
                         } catch (err) {
