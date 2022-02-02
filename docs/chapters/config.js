@@ -92,20 +92,34 @@ var storyCfg = {
     playlist: {
 
         'battle': [
-            { id: 'rjRn9lYguV0', type: 'youtube' }
+            { id: 'rjRn9lYguV0', type: 'youtube' },
+            { id: 'yb0-hwJAX3U', type: 'youtube' },
         ],
 
         'tense-battle': [
-            { id: 'b6WhRKOMUq0', type: 'youtube' }
+            { id: 'b6WhRKOMUq0', type: 'youtube' },
+        ],
+
+        'horror-battle': [
+            { id: 'b6WhRKOMUq0', type: 'youtube' },
+        ],
+
+        'revenge-battle': [
+            { id: 'Ies0Ynk5_SI', type: 'youtube' },
         ],
 
         'epic-battle': [
-            { id: '4tM--a1NLa8', type: 'youtube' }
+            { id: '4tM--a1NLa8', type: 'youtube' },
+            { id: 'ltmma6Abi3U', type: 'youtube' },
+            { id: 'f3Fi4q7Es2Q', type: 'youtube' },
+            { id: 'HRfiZbJ5kW0', type: 'youtube' },
         ],
 
         'drama-battle': [
             { id: '04_v0iVxCHo', type: 'youtube' },
             { id: '9HvVidW5N6w', type: 'youtube' },
+            { id: 'GRoIRQEI1W8', type: 'youtube' },
+            { id: '2SsRDysiIlk', type: 'youtube' },
         ],
 
         'happyness': [
