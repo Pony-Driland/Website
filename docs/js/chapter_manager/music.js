@@ -1,6 +1,8 @@
 // Base
 storyData.music = {
 
+    value: null,
+    now: { playlist: null, index: -1 },
     usingSystem: false,
     disabled: true,
     playing: false,
@@ -380,6 +382,9 @@ musicManager.stopPlaylist = function() {
     if (storyData.music.usingSystem) {
 
         storyData.music.usingSystem = false;
+        if (storyData.youtube.player) {
+            storyData.youtube.player.stopVideo();
+        }
 
     }
 };
@@ -388,10 +393,58 @@ musicManager.stopPlaylist = function() {
 musicManager.startPlaylist = function() {
     if (!storyData.music.usingSystem) {
 
+        // Check Status
+        if (Array.isArray(storyData.music.playlist) && storyData.music.playlist.length > 0) {
+
+            const playSong = function() {
+
+                // Play
+                const song = storyData.music.playlist[storyData.music.now.index];
+                if (song && typeof song.id === 'string' && song.id.length > 0 && typeof song.type === 'string' && song.type.length > 0) {
+
+                    // Youtube
+                    if (song.type === 'youtube') {
+                        storyData.youtube.play(song.id);
+                    }
+
+                }
+
+            };
+
+            // Exist
+            if (
+                storyData.music.now.playlist === null ||
+                storyData.music.now.index === -1 ||
+                storyData.music.now.playlist !== storyData.music.value
+            ) {
+
+                // Fix Index
+                if (storyData.music.now.index < 0) {
+                    storyData.music.now.index = 0;
+                }
+
+                // Now
+                storyData.music.now.playlist = storyData.music.value;
+
+                // Play
+                playSong();
+
+            }
+
+            // Resume
+            else {
+
+                if (storyData.music.stoppabled || storyData.music.paused) {
+                    playSong();
+                }
+
+            }
+
+        }
+
+        // Check Data
         storyData.music.usingSystem = true;
         //console.log(storyData.music.playlist);
-
-        // storyData.youtube.play('');
 
     }
 };

@@ -129,8 +129,10 @@ var chapterSet = {
             // Set Playlist
             const playlist = storyCfg.playlist[value];
             if (Array.isArray(playlist)) {
+                storyData.music.value = value;
                 storyData.music.playlist = playlist;
             } else {
+                storyData.music.value = null;
                 storyData.music.playlist = [];
             }
 
