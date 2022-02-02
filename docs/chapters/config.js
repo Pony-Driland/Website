@@ -136,6 +136,10 @@ var storyCfg = {
             { id: 'bGdD0YVh_kI', type: 'youtube' },
         ],
 
+        'fantasy-village': [
+            { id: 'K1vUA9NltVw', type: 'youtube' }
+        ],
+
         'calm': [
             { id: 'mxcu9L9j8ww', type: 'youtube' },
             { id: 'dZR7M7gDNSc', type: 'youtube' },
