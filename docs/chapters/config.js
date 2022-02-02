@@ -138,6 +138,7 @@ var storyCfg = {
             { id: '7Uyu5BrGMs4', type: 'youtube' },
             { id: 'ewBkq44wynk', type: 'youtube' },
             { id: 'TOEiLlspdhM', type: 'youtube' },
+            { id: 'zaxVBfdgR3E', type: 'youtube' },
         ],
 
         'tense-mystery': [
@@ -151,6 +152,11 @@ var storyCfg = {
 
         'bad-mystery': [
             { id: 'eeoEQZH-iwg', type: 'youtube' },
+            { id: '_x8gYuNUdNA', type: 'youtube' },
+        ],
+
+        'the-true': [
+            { id: 'XheH4qClv1Q', type: 'youtube' },
             { id: '_x8gYuNUdNA', type: 'youtube' },
         ],
 
