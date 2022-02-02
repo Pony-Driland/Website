@@ -242,6 +242,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "type": "dialogue",
         "character": "Vini",
         "value": "...Okay can i open it now before you leave?"
@@ -254,7 +255,6 @@
     },
 
     {
-        "set": { "playlistPlay": null },
         "type": "action",
         "value": "Yasmin kept laughing and trying to talk to Vini."
     },
@@ -289,12 +289,13 @@
     },
 
     {
-        "set": { "playlistPlay": "tech-problem" },
+        "set": { "playlistPlay": null },
         "type": "action",
         "value": "The Delivery Boy, without thinking twice, was already leaving."
     },
 
     {
+        "set": { "playlistPlay": "tech-problem" },
         "type": "dialogue",
         "character": "Vini",
         "value": "Are you kidding me? What was this thing vibrating?"
