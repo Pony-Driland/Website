@@ -272,6 +272,10 @@ var openChapterMenu = function(params = {}) {
                 $('<i>', { class: 'fas fa-info-circle mr-3' })
             ),
 
+            $('<div>', { class: 'alert alert-info' }).text('Disclaimer: All songs played on this page are played directly from Youtube. This means that many songs do not belong to me and are being used only to please the reading environment. I recognize that if an artist asks to remove a song, I will replace it with another song. And all the songs that are played are counted as views on the original author\'s youtube channel. The official music page link will also be available in the player info icon.').prepend(
+                $('<i>', { class: 'fas fa-info-circle mr-3' })
+            ),
+
             $('<h2>').text(`Please choose a chapter to read.`).prepend(
                 $('<i>', { class: 'fas fa-book-open mr-3' })
             ).append(
