@@ -5,7 +5,8 @@
             "where": "Planet Earth",
             "dayNightCycle": "morning",
             "day": 1,
-            "weather": "sun"
+            "weather": "sun",
+            "playlistPlay": null
         },
         "type": "action",
         "value": "It was just another normal day on Planet Earth. It was a beautiful normal day like any other, Vini was living his normal life, he still hadn't showered, and he was talking to his friend Yasmin through Discord. It was a simple super decisive conversation for her to finally pay the X-Tudo Vini wanted so much. Vini was very happy, as he had been waiting for this day for several months, so this was the decisive magic moment. Everything was extremely quiet. It was just a silly Discord conversation like any other day."
@@ -48,10 +49,7 @@
     {
         "type": "dialogue",
         "character": "Vini",
-        "value": "Wow, my address isn't right? Motoca is going to screw up my X-Tudo!",
-        "set": {
-            "playlistPlay": "sad"
-        }
+        "value": "Wow, my address isn't right? Motoca is going to screw up my X-Tudo!"
     },
 
     {
@@ -140,10 +138,7 @@
     {
         "type": "dialogue",
         "character": "Vini",
-        "value": "Okay okay! Let me go see the gate. YES!",
-        "set": {
-            "playlistPlay": null
-        }
+        "value": "Okay okay! Let me go see the gate. YES!"
     },
 
     {
