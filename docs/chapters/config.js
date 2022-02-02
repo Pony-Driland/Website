@@ -142,6 +142,11 @@ var storyCfg = {
             { id: 's2bGUY97o6E', type: 'youtube' },
         ],
 
+        'bad-mystery': [
+            { id: 'eeoEQZH-iwg', type: 'youtube' },
+            { id: '_x8gYuNUdNA', type: 'youtube' },
+        ],
+
         'sad': [
             { id: 'cU96ZIGKars', type: 'youtube' },
             { id: 'lIjHZy3aYDA', type: 'youtube' },
@@ -160,6 +165,7 @@ var storyCfg = {
             { id: '6oaXQ_JQY64', type: 'youtube' },
             { id: 'ZXNxF7kVW_8', type: 'youtube' },
             { id: 'UDhQ8DarZHQ', type: 'youtube' },
+            { id: 'yNACbXekBVQ', type: 'youtube' },
         ],
 
         'sad-plot twist': [
