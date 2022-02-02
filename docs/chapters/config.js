@@ -167,6 +167,7 @@ var storyCfg = {
             { id: '_x8gYuNUdNA', type: 'youtube' },
             { id: 'DJlgRlhaeME', type: 'youtube' },
             { id: 'VQ9230-OoBw', type: 'youtube' },
+            { id: '7dKxHERhaLE', type: 'youtube' },
         ],
 
         'the-true': [
@@ -207,6 +208,8 @@ var storyCfg = {
             { id: 'SzhjAqPF-gM', type: 'youtube' },
             { id: '0ZD3SfS9x8E', type: 'youtube' },
             { id: 'k79T3jVvPjw', type: 'youtube' },
+            { id: 'oxivFag3Reg', type: 'youtube' },
+            { id: 'ni-Q2RCoexg', type: 'youtube' },
         ],
 
         'bad-think': [
