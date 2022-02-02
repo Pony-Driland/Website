@@ -121,106 +121,110 @@ storyData.youtube = {
     play: function(videoID) {
 
         // Read Data Base
-        console.log(`Loading youtube video embed...`);
-        $.ajax({
-            url: 'https://www.youtube.com/oembed?format=json&url=' + encodeURIComponent(`https://www.youtube.com/watch?v=` + videoID),
-            type: 'get',
-            dataType: 'json'
-        }).done(function(jsonVideo) {
+        if (!storyData.youtube.loading) {
+            storyData.youtube.loading = true;
+            console.log(`Loading youtube video embed...`);
+            $.ajax({
+                url: 'https://www.youtube.com/oembed?format=json&url=' + encodeURIComponent(`https://www.youtube.com/watch?v=` + videoID),
+                type: 'get',
+                dataType: 'json'
+            }).done(function(jsonVideo) {
 
-            // Youtube Player
-            console.log(`Youtube video embed loaded!`);
-            storyData.youtube.embed = jsonVideo;
+                // Youtube Player
+                storyData.youtube.loading = false;
+                console.log(`Youtube video embed loaded!`);
+                storyData.youtube.embed = jsonVideo;
 
-            // Info
-            storyData.music.author_name = jsonVideo.author_name;
-            storyData.music.author_url = jsonVideo.author_url;
-            storyData.music.provider_name = jsonVideo.provider_name;
-            storyData.music.thumbnail_url = jsonVideo.thumbnail_url;
-            storyData.music.title = jsonVideo.title;
+                // Info
+                storyData.music.author_name = jsonVideo.author_name;
+                storyData.music.author_url = jsonVideo.author_url;
+                storyData.music.provider_name = jsonVideo.provider_name;
+                storyData.music.thumbnail_url = jsonVideo.thumbnail_url;
+                storyData.music.title = jsonVideo.title;
 
-            // Prepare Video ID
-            storyData.youtube.videoID = videoID;
-            storyData.youtube.currentTime = 0;
-            storyData.youtube.duration = 0;
+                // Prepare Video ID
+                storyData.youtube.videoID = videoID;
+                storyData.youtube.currentTime = 0;
+                storyData.youtube.duration = 0;
 
-            // New Player
-            if (!storyData.youtube.player) {
+                // New Player
+                if (!storyData.youtube.player) {
 
-                // 2. This code loads the IFrame Player API code asynchronously.
-                console.log(`Starting Youtube API...`);
-                var tag = document.createElement('script');
-                tag.src = "https://www.youtube.com/iframe_api";
-                $('head').append(tag);
+                    // 2. This code loads the IFrame Player API code asynchronously.
+                    console.log(`Starting Youtube API...`);
+                    var tag = document.createElement('script');
+                    tag.src = "https://www.youtube.com/iframe_api";
+                    $('head').append(tag);
 
-                // Current Time Detector
-                setInterval(function() {
-                    if (YT && YT.PlayerState && storyData.youtube.player) {
+                    // Current Time Detector
+                    setInterval(function() {
+                        if (YT && YT.PlayerState && storyData.youtube.player) {
 
-                        // Fix
-                        storyData.music.playing = false;
-                        storyData.music.paused = false;
-                        storyData.music.stoppabled = false;
-                        storyData.music.buffering = false;
+                            // Fix
+                            storyData.music.playing = false;
+                            storyData.music.paused = false;
+                            storyData.music.stoppabled = false;
+                            storyData.music.buffering = false;
 
-                        // Playing
-                        if (storyData.youtube.state === YT.PlayerState.PLAYING) {
-                            storyData.music.playing = true;
-                            storyData.youtube.duration = storyData.youtube.player.getDuration();
-                            storyData.youtube.currentTime = storyData.youtube.player.getCurrentTime();
-                            if (typeof appData.youtube.onPlaying === 'function') { appData.youtube.onPlaying(); }
-                        }
-
-                        // Ended
-                        else if (storyData.youtube.state === YT.PlayerState.ENDED || storyData.youtube.state === YT.PlayerState.CUED) {
-
-                            // Stopping
-                            if (storyData.music.isStopping) {
-                                storyData.youtube.player.seekTo(0);
-                                storyData.youtube.player.pauseVideo();
-                                storyData.music.isStopping = false;
+                            // Playing
+                            if (storyData.youtube.state === YT.PlayerState.PLAYING) {
+                                storyData.music.playing = true;
+                                storyData.youtube.duration = storyData.youtube.player.getDuration();
+                                storyData.youtube.currentTime = storyData.youtube.player.getCurrentTime();
+                                if (typeof appData.youtube.onPlaying === 'function') { appData.youtube.onPlaying(); }
                             }
 
-                            // Next
-                            else {
-                                musicManager.nextMusic();
+                            // Ended
+                            else if (storyData.youtube.state === YT.PlayerState.ENDED || storyData.youtube.state === YT.PlayerState.CUED) {
+
+                                // Stopping
+                                if (storyData.music.isStopping) {
+                                    storyData.youtube.player.seekTo(0);
+                                    storyData.youtube.player.pauseVideo();
+                                    storyData.music.isStopping = false;
+                                }
+
+                                // Next
+                                else {
+                                    musicManager.nextMusic();
+                                }
+
+                                // Progress
+                                storyData.music.stoppabled = true;
+                                storyData.youtube.currentTime = storyData.youtube.player.getDuration();
+
                             }
 
-                            // Progress
-                            storyData.music.stoppabled = true;
-                            storyData.youtube.currentTime = storyData.youtube.player.getDuration();
+                            // Paused
+                            else if (storyData.youtube.state === YT.PlayerState.PAUSED) {
+                                storyData.music.paused = true;
+                            }
+
+                            // Buff
+                            else if (storyData.youtube.state === YT.PlayerState.BUFFERING) {
+                                storyData.music.buffering = true;
+                            }
 
                         }
+                        musicManager.updatePlayer();
+                    }, 100);
 
-                        // Paused
-                        else if (storyData.youtube.state === YT.PlayerState.PAUSED) {
-                            storyData.music.paused = true;
-                        }
+                }
 
-                        // Buff
-                        else if (storyData.youtube.state === YT.PlayerState.BUFFERING) {
-                            storyData.music.buffering = true;
-                        }
+                // Reuse Player
+                else { storyData.youtube.player.loadVideoById({ videoId: videoID, startSeconds: 0 }); }
 
-                    }
-                    musicManager.updatePlayer();
-                }, 100);
+                // Prepare Volume
+                if (typeof storyData.youtube.volume === 'number' && typeof storyData.music.volume === 'number' && storyData.youtube.volume !== storyData.music.volume) {
+                    storyData.youtube.player.setVolume(storyData.youtube.volume);
+                    storyData.music.volume = Number(storyData.youtube.volume);
+                }
 
-            }
-
-            // Reuse Player
-            else { storyData.youtube.player.loadVideoById({ videoId: videoID, startSeconds: 0 }); }
-
-            // Prepare Volume
-            if (typeof storyData.youtube.volume === 'number' && typeof storyData.music.volume === 'number' && storyData.youtube.volume !== storyData.music.volume) {
-                storyData.youtube.player.setVolume(storyData.youtube.volume);
-                storyData.music.volume = Number(storyData.youtube.volume);
-            }
-
-        }).fail(err => {
-            console.error(err);
-            alert(err.message);
-        });
+            }).fail(err => {
+                console.error(err);
+                alert(err.message);
+            });
+        }
 
     }
 
