@@ -98,6 +98,7 @@ var storyCfg = {
 
         'tense-battle': [
             { id: 'b6WhRKOMUq0', type: 'youtube' },
+            { id: 'rAMJkRhK2cs', type: 'youtube' },
         ],
 
         'horror-battle': [
@@ -143,6 +144,8 @@ var storyCfg = {
             { id: '3VoGUhPwagI', type: 'youtube' },
             { id: 'uU4VgCWuAxE', type: 'youtube' },
             { id: 'dx0YwqEue_M', type: 'youtube' },
+            { id: 'vlQvh7IrRPk', type: 'youtube' },
+            { id: 'XYoTrKYkk1w', type: 'youtube' },
         ],
 
         'memories': [
@@ -203,6 +206,7 @@ var storyCfg = {
             { id: '6yPivtTKLno', type: 'youtube' },
             { id: 'SzhjAqPF-gM', type: 'youtube' },
             { id: '0ZD3SfS9x8E', type: 'youtube' },
+            { id: 'k79T3jVvPjw', type: 'youtube' },
         ],
 
         'bad-think': [
