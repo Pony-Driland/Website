@@ -115,6 +115,7 @@ var storyCfg = {
             { id: 'f3Fi4q7Es2Q', type: 'youtube' },
             { id: 'HRfiZbJ5kW0', type: 'youtube' },
             { id: '2waixMvzakE', type: 'youtube' },
+            { id: 'ACXW__UAC7w', type: 'youtube' },
         ],
 
         'drama-battle': [
@@ -146,6 +147,7 @@ var storyCfg = {
 
         'memories': [
             { id: 'Cste0PD-Xt4', type: 'youtube' },
+            { id: 'A7DE3BXdPsA', type: 'youtube' },
         ],
 
         'tense-mystery': [
@@ -199,11 +201,14 @@ var storyCfg = {
             { id: 'ncCnW7MKTCU', type: 'youtube' },
             { id: 'TMLnDTkUEgg', type: 'youtube' },
             { id: '6yPivtTKLno', type: 'youtube' },
+            { id: 'SzhjAqPF-gM', type: 'youtube' },
+            { id: '0ZD3SfS9x8E', type: 'youtube' },
         ],
 
         'bad-think': [
             { id: 'QD5OGfAJIus', type: 'youtube' },
             { id: 'eeeQcvtjV2k', type: 'youtube' },
+            { id: 'CAMmIyAA6CY', type: 'youtube' },
         ],
 
         'sad-plot-twist': [
