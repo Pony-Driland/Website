@@ -253,6 +253,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "type": "action",
         "value": "Yasmin kept laughing and trying to talk to Vini."
     },
@@ -281,7 +282,6 @@
     },
 
     {
-        "set": { "playlistPlay": null },
         "type": "dialogue",
         "character": "Delivery Boy",
         "value": "well... I have to leave now, don't forget to give me 5 stars, thanks."
