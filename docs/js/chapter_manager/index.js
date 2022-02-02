@@ -66,34 +66,7 @@ var openChapterMenu = function(params = {}) {
                 if (!storyData.sfx[item] && typeof storyCfg.sfx[item].type === 'string' && typeof storyCfg.sfx[item].value === 'string') {
 
                     if (storyCfg.sfx[item].type === 'ipfs' && storyCfg.ipfs && typeof storyCfg.ipfs.host === 'string') {
-
-                        try {
-
-                            const url = storyCfg.ipfs.host.replace('{cid}', storyCfg.sfx[item].value);
-                            console.log(`Loading Audio "${url}"...`);
-
-                            const newSound = await musicManager.loadAudio(url);
-                            if (newSound) {
-
-                                storyData.sfx[item] = {
-
-                                    // File
-                                    file: newSound,
-
-                                    // Set Volume
-                                    setVolume: function(value) {
-                                        newSound.volume = value / 100;
-                                    }
-
-                                };
-
-                            }
-
-                        } catch (err) {
-                            console.error(err);
-                            alert(err.message);
-                        }
-
+                        await musicManager.insertSFX(item);
                     }
 
                 }
