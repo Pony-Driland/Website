@@ -65,7 +65,7 @@ var openChapterMenu = function(params = {}) {
             for (const item in storyCfg.sfx) {
                 if (!storyData.sfx[item] && typeof storyCfg.sfx[item].type === 'string' && typeof storyCfg.sfx[item].value === 'string') {
 
-                    if (storyCfg.sfx[item].type === 'ipfs' && storyCfg.ipfs && typeof storyCfg.ipfs.host === 'string') {
+                    if (storyCfg.sfx[item].type === 'file' || (storyCfg.sfx[item].type === 'ipfs' && storyCfg.ipfs && typeof storyCfg.ipfs.host === 'string')) {
                         await musicManager.insertSFX(item);
                     }
 

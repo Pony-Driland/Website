@@ -491,179 +491,193 @@ musicManager.insertSFX = function(item) {
 
         try {
 
-            const url = storyCfg.ipfs.host.replace('{cid}', storyCfg.sfx[item].value);
-            console.log(`[${url}] Loading...`);
+            // File URL
+            let url = null;
 
-            const newSound = await musicManager.loadAudio(url);
-            if (newSound) {
-
-                storyData.sfx[item] = {
-
-                    // File
-                    file: newSound,
-
-                    // Values
-                    loop: true,
-                    hiding: false,
-                    playing: false,
-                    paused: false,
-                    volume: newSound.volume * 100,
-                    currentTime: 0,
-                    duration: newSound.duration,
-
-                    // Set Loop
-                    setLoop: function(value) {
-                        if (typeof value === 'boolean') {
-                            return new Promise(function(resolve) {
-                                storyData.sfx[item].loop = value;
-                                resolve();
-                            });
-                        }
-                    },
-
-                    // Play
-                    play: function(inTime = null, volume = null) {
-                        if (storyData.sfx[item].hiding) { newSound.pause(); }
-                        storyData.sfx[item].hiding = false;
-                        return new Promise(function(resolve, reject) {
-                            setTimeout(function() {
-                                try {
-
-                                    if (typeof volume === 'number') {
-                                        storyData.sfx[item].setVolume(volume);
-                                    } else { storyData.sfx[item].setVolume(storyData.sfx[item].volume); }
-
-                                    newSound.currentTime = 0;
-                                    storyData.sfx[item].playing = true;
-                                    storyData.sfx[item].paused = false;
-                                    storyData.sfx[item].currentTime = 0;
-
-                                    if (typeof inTime === 'number') {
-                                        storyData.sfx[item].currentTime = inTime;
-                                        newSound.currentTime = inTime;
-                                    }
-
-                                    newSound.play();
-                                    resolve();
-
-                                } catch (err) { reject(err); }
-                            }, 1);
-                        });
-                    },
-
-                    // Seek To
-                    seekTo: function(value) {
-                        return new Promise(function(resolve) {
-                            storyData.sfx[item].currentTime = value;
-                            newSound.currentTime = value;
-                            resolve();
-                        });
-                    },
-
-                    // Set Volume
-                    setVolume: function(value) {
-                        return new Promise(function(resolve) {
-                            if (typeof value === 'number' && value > -1) {
-                                newSound.volume = value / 100;
-                                storyData.sfx[item].volume = value;
-                            }
-                            resolve();
-                        });
-                    },
-
-                    // Stop
-                    stop: function() {
-                        if (storyData.sfx[item].hiding) { newSound.pause(); }
-                        storyData.sfx[item].hiding = false;
-                        return new Promise(function(resolve, reject) {
-                            setTimeout(function() {
-                                try {
-                                    storyData.sfx[item].playing = false;
-                                    storyData.sfx[item].paused = false;
-                                    newSound.pause();
-                                    newSound.currentTime = 0;
-                                    storyData.sfx[item].currentTime = 0;
-                                    resolve();
-                                } catch (err) { reject(err); }
-                            }, 1);
-                        });
-                    },
-
-                    // Pause
-                    pause: function() {
-                        if (storyData.sfx[item].hiding) { newSound.pause(); }
-                        storyData.sfx[item].hiding = false;
-                        return new Promise(function(resolve, reject) {
-                            setTimeout(function() {
-                                try {
-                                    storyData.sfx[item].playing = false;
-                                    storyData.sfx[item].paused = true;
-                                    newSound.pause();
-                                    resolve();
-                                } catch (err) { reject(err); }
-                            }, 1);
-                        });
-                    },
-
-                    // Resume
-                    resume: function() {
-                        if (storyData.sfx[item].hiding) { newSound.pause(); }
-                        storyData.sfx[item].hiding = false;
-                        return new Promise(function(resolve, reject) {
-                            setTimeout(function() {
-                                try {
-                                    storyData.sfx[item].playing = true;
-                                    storyData.sfx[item].paused = false;
-                                    storyData.sfx[item].setVolume(storyData.sfx[item].volume);
-                                    newSound.play();
-                                    resolve();
-                                } catch (err) { reject(err); }
-                            }, 1);
-                        });
-                    },
-
-                    // Hide
-                    hide: async function(hideTimeout = 50) {
-
-                        let volume = newSound.volume * 100;
-                        storyData.sfx[item].hiding = true;
-
-                        for (let i = 0; i < 100; i++) {
-                            if (storyData.sfx[item].hiding) {
-                                await new Promise(function(resolve) {
-                                    setTimeout(function() {
-                                        volume--;
-                                        storyData.sfx[item].setVolume(volume);
-                                        resolve();
-                                    }, hideTimeout);
-                                });
-                            }
-                        }
-
-                        if (storyData.sfx[item].hiding) {
-                            newSound.pause();
-                            storyData.sfx[item].playing = false;
-                            storyData.sfx[item].paused = false;
-                            storyData.sfx[item].hiding = false;
-                            storyData.sfx[item].currentTime = 0;
-                        }
-
-                    }
-
-                };
-
-                // Loop Action
-                newSound.addEventListener('ended', function() {
-                    if (storyData.sfx[item].loop) {
-                        this.currentTime = 0;
-                        this.play();
-                    } else { storyData.sfx[item].stop(); }
-                }, false);
-
+            // IPFS
+            if (storyCfg.sfx[item].type === 'ipfs') {
+                url = storyCfg.ipfs.host.replace('{cid}', storyCfg.sfx[item].value);
             }
 
-            console.log(`[${url}] Loaded!`);
-            resolve(newSound);
+            // Normal
+            else {
+                url = storyCfg.sfx[item].value;
+            }
+
+            if (url) {
+                console.log(`[${url}] Loading...`);
+                const newSound = await musicManager.loadAudio(url);
+                if (newSound) {
+
+                    storyData.sfx[item] = {
+
+                        // File
+                        file: newSound,
+
+                        // Values
+                        loop: true,
+                        hiding: false,
+                        playing: false,
+                        paused: false,
+                        volume: newSound.volume * 100,
+                        currentTime: 0,
+                        duration: newSound.duration,
+
+                        // Set Loop
+                        setLoop: function(value) {
+                            if (typeof value === 'boolean') {
+                                return new Promise(function(resolve) {
+                                    storyData.sfx[item].loop = value;
+                                    resolve();
+                                });
+                            }
+                        },
+
+                        // Play
+                        play: function(inTime = null, volume = null) {
+                            if (storyData.sfx[item].hiding) { newSound.pause(); }
+                            storyData.sfx[item].hiding = false;
+                            return new Promise(function(resolve, reject) {
+                                setTimeout(function() {
+                                    try {
+
+                                        if (typeof volume === 'number') {
+                                            storyData.sfx[item].setVolume(volume);
+                                        } else { storyData.sfx[item].setVolume(storyData.sfx[item].volume); }
+
+                                        newSound.currentTime = 0;
+                                        storyData.sfx[item].playing = true;
+                                        storyData.sfx[item].paused = false;
+                                        storyData.sfx[item].currentTime = 0;
+
+                                        if (typeof inTime === 'number') {
+                                            storyData.sfx[item].currentTime = inTime;
+                                            newSound.currentTime = inTime;
+                                        }
+
+                                        newSound.play();
+                                        resolve();
+
+                                    } catch (err) { reject(err); }
+                                }, 1);
+                            });
+                        },
+
+                        // Seek To
+                        seekTo: function(value) {
+                            return new Promise(function(resolve) {
+                                storyData.sfx[item].currentTime = value;
+                                newSound.currentTime = value;
+                                resolve();
+                            });
+                        },
+
+                        // Set Volume
+                        setVolume: function(value) {
+                            return new Promise(function(resolve) {
+                                if (typeof value === 'number' && value > -1) {
+                                    newSound.volume = value / 100;
+                                    storyData.sfx[item].volume = value;
+                                }
+                                resolve();
+                            });
+                        },
+
+                        // Stop
+                        stop: function() {
+                            if (storyData.sfx[item].hiding) { newSound.pause(); }
+                            storyData.sfx[item].hiding = false;
+                            return new Promise(function(resolve, reject) {
+                                setTimeout(function() {
+                                    try {
+                                        storyData.sfx[item].playing = false;
+                                        storyData.sfx[item].paused = false;
+                                        newSound.pause();
+                                        newSound.currentTime = 0;
+                                        storyData.sfx[item].currentTime = 0;
+                                        resolve();
+                                    } catch (err) { reject(err); }
+                                }, 1);
+                            });
+                        },
+
+                        // Pause
+                        pause: function() {
+                            if (storyData.sfx[item].hiding) { newSound.pause(); }
+                            storyData.sfx[item].hiding = false;
+                            return new Promise(function(resolve, reject) {
+                                setTimeout(function() {
+                                    try {
+                                        storyData.sfx[item].playing = false;
+                                        storyData.sfx[item].paused = true;
+                                        newSound.pause();
+                                        resolve();
+                                    } catch (err) { reject(err); }
+                                }, 1);
+                            });
+                        },
+
+                        // Resume
+                        resume: function() {
+                            if (storyData.sfx[item].hiding) { newSound.pause(); }
+                            storyData.sfx[item].hiding = false;
+                            return new Promise(function(resolve, reject) {
+                                setTimeout(function() {
+                                    try {
+                                        storyData.sfx[item].playing = true;
+                                        storyData.sfx[item].paused = false;
+                                        storyData.sfx[item].setVolume(storyData.sfx[item].volume);
+                                        newSound.play();
+                                        resolve();
+                                    } catch (err) { reject(err); }
+                                }, 1);
+                            });
+                        },
+
+                        // Hide
+                        hide: async function(hideTimeout = 50) {
+
+                            let volume = newSound.volume * 100;
+                            storyData.sfx[item].hiding = true;
+
+                            for (let i = 0; i < 100; i++) {
+                                if (storyData.sfx[item].hiding) {
+                                    await new Promise(function(resolve) {
+                                        setTimeout(function() {
+                                            volume--;
+                                            storyData.sfx[item].setVolume(volume);
+                                            resolve();
+                                        }, hideTimeout);
+                                    });
+                                }
+                            }
+
+                            if (storyData.sfx[item].hiding) {
+                                newSound.pause();
+                                storyData.sfx[item].playing = false;
+                                storyData.sfx[item].paused = false;
+                                storyData.sfx[item].hiding = false;
+                                storyData.sfx[item].currentTime = 0;
+                            }
+
+                        }
+
+                    };
+
+                    // Loop Action
+                    newSound.addEventListener('ended', function() {
+                        if (storyData.sfx[item].loop) {
+                            this.currentTime = 0;
+                            this.play();
+                        } else { storyData.sfx[item].stop(); }
+                    }, false);
+
+                }
+
+                console.log(`[${url}] Loaded!`);
+                resolve(newSound);
+
+            } else { reject(new Error('Invalid SFX File! ' + item)); }
 
         } catch (err) { reject(err); }
 
