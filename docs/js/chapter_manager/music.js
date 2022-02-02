@@ -491,8 +491,10 @@ musicManager.insertSFX = function(item) {
                     // File
                     file: newSound,
 
-                    // Hiding
+                    // Values
                     hiding: false,
+                    playing: false,
+                    paused: false,
 
                     // Play
                     play: function(volume = 100) {
@@ -504,6 +506,8 @@ musicManager.insertSFX = function(item) {
                                     storyData.sfx[item].setVolume(volume);
                                     newSound.currentTime = 0;
                                     newSound.play();
+                                    storyData.sfx[item].playing = true;
+                                    storyData.sfx[item].paused = false;
                                     resolve();
                                 } catch (err) { reject(err); }
                             }, 1);
@@ -521,18 +525,24 @@ musicManager.insertSFX = function(item) {
                     stop: async function() {
                         newSound.pause();
                         newSound.currentTime = 0;
+                        storyData.sfx[item].playing = false;
+                        storyData.sfx[item].paused = false;
                         return;
                     },
 
                     // Pause
                     pause: async function() {
                         newSound.pause();
+                        storyData.sfx[item].playing = false;
+                        storyData.sfx[item].paused = true;
                         return;
                     },
 
                     // Resume
                     resume: async function() {
                         newSound.play();
+                        storyData.sfx[item].playing = true;
+                        storyData.sfx[item].paused = false;
                         return;
                     },
 
@@ -556,6 +566,8 @@ musicManager.insertSFX = function(item) {
 
                         if (storyData.sfx[item].hiding) {
                             newSound.pause();
+                            storyData.sfx[item].playing = false;
+                            storyData.sfx[item].paused = false;
                             storyData.sfx[item].hiding = false;
                         }
 
