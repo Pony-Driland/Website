@@ -33,6 +33,7 @@ var storyData = {
     },
 
     // Chapters
+    readFic: false,
     chapter: {
         amount: storyCfg.chapters,
         selected: null,
