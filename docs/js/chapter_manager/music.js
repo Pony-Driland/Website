@@ -494,7 +494,7 @@ musicManager.insertSFX = function(item) {
                     // Play
                     play: function(volume = 100) {
                         storyData.sfx[item].setVolume(volume);
-                        audio.currentTime = 0;
+                        newSound.currentTime = 0;
                         newSound.play();
                     },
 
