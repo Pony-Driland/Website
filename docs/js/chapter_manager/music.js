@@ -561,7 +561,6 @@ musicManager.startPlaylist = function() {
 
         // Check Data
         storyData.music.usingSystem = true;
-        //console.log(storyData.music.playlist);
 
     }
 };
