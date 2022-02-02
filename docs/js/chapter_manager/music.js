@@ -495,15 +495,18 @@ musicManager.insertSFX = function(item) {
                     hiding: false,
                     playing: false,
                     paused: false,
+                    volume: newSound.volume * 100,
 
                     // Play
-                    play: function(volume = 100) {
+                    play: function(volume = null) {
                         if (storyData.sfx[item].hiding) { newSound.pause(); }
                         storyData.sfx[item].hiding = false;
                         return new Promise(function(resolve, reject) {
                             setTimeout(function() {
                                 try {
-                                    storyData.sfx[item].setVolume(volume);
+                                    if (typeof volume === 'number') {
+                                        storyData.sfx[item].setVolume(volume);
+                                    } else { storyData.sfx[item].setVolume(storyData.sfx[item].volume); }
                                     newSound.currentTime = 0;
                                     storyData.sfx[item].playing = true;
                                     storyData.sfx[item].paused = false;
@@ -518,6 +521,7 @@ musicManager.insertSFX = function(item) {
                     setVolume: function(value) {
                         if (typeof value === 'number' && value > -1) {
                             newSound.volume = value / 100;
+                            storyData.sfx[item].volume = value;
                         }
                     },
 
@@ -563,6 +567,7 @@ musicManager.insertSFX = function(item) {
                                 try {
                                     storyData.sfx[item].playing = true;
                                     storyData.sfx[item].paused = false;
+                                    storyData.sfx[item].setVolume(storyData.sfx[item].volume);
                                     newSound.play();
                                     resolve();
                                 } catch (err) { reject(err); }
