@@ -498,6 +498,7 @@ musicManager.insertSFX = function(item) {
                     paused: false,
                     volume: newSound.volume * 100,
                     currentTime: 0,
+                    duration: newSound.duration,
 
                     // Set Loop
                     setLoop: function(value) {
@@ -630,7 +631,6 @@ musicManager.insertSFX = function(item) {
 
                 newSound.addEventListener("playing", function() {
                     storyData.sfx[item].currentTime = this.currentTime;
-                    storyData.sfx[item].duration = this.duration;
                 }, false);
 
             }
