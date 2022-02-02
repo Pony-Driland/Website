@@ -517,6 +517,25 @@ musicManager.insertSFX = function(item) {
                         }
                     },
 
+                    // Stop
+                    stop: async function() {
+                        newSound.pause();
+                        newSound.currentTime = 0;
+                        return;
+                    },
+
+                    // Pause
+                    pause: async function() {
+                        newSound.pause();
+                        return;
+                    },
+
+                    // Resume
+                    resume: async function() {
+                        newSound.play();
+                        return;
+                    },
+
                     // Hide
                     hide: async function(hideTimeout = 50) {
 
