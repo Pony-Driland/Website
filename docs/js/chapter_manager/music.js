@@ -410,7 +410,7 @@ musicManager.updatePlayer = function() {
         $('#music-player').addClass('border').removeClass('d-none').addClass('mr-3');
 
         // Buff
-        if (storyData.music.buffering || storyData.music.loading) {
+        if (storyData.music.buffering || storyData.music.loading || !storyData.music.usingSystem) {
             $('#music-player > a').addClass('disabled');
         } else {
             $('#music-player > a').removeClass('disabled');
