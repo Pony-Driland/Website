@@ -128,9 +128,14 @@ var storyCfg = {
             { id: 'AVxQSpnR7g8', type: 'youtube' },
         ],
 
+        'tech-problem': [
+            { id: 'bGdD0YVh_kI', type: 'youtube' },
+        ],
+
         'calm': [
             { id: 'mxcu9L9j8ww', type: 'youtube' },
             { id: 'dZR7M7gDNSc', type: 'youtube' },
+            { id: '7Uyu5BrGMs4', type: 'youtube' },
         ],
 
         'tense-mystery': [
@@ -157,7 +162,8 @@ var storyCfg = {
             { id: 'JKgPqJZm1-I', type: 'youtube' },
             { id: 'FSkYYV62FEk', type: 'youtube' },
             { id: '4VFrTREyIig', type: 'youtube' },
-            { id: 'E5I667E4GXw', type: 'youtube' }
+            { id: 'E5I667E4GXw', type: 'youtube' },
+            { id: '24QJV6NnFHY', type: 'youtube' }
         ],
 
         'think': [
@@ -166,6 +172,9 @@ var storyCfg = {
             { id: 'ZXNxF7kVW_8', type: 'youtube' },
             { id: 'UDhQ8DarZHQ', type: 'youtube' },
             { id: 'yNACbXekBVQ', type: 'youtube' },
+            { id: 'yKwdd2Aja_k', type: 'youtube' },
+            { id: 'DVrsjXSpH9o', type: 'youtube' },
+            { id: 'BAB7dhJpqes', type: 'youtube' },
         ],
 
         'sad-plot twist': [
