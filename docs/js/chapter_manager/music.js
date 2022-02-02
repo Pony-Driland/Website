@@ -298,10 +298,10 @@ var musicManager = {
                         $(this).removeClass('');
                         if (storyData.music.useThis) {
                             storyData.music.useThis = false;
-                            storyData.music.nav.disable.removeClass('text-danger');
+                            storyData.music.nav.disable.addClass('text-danger');
                         } else {
                             storyData.music.useThis = true;
-                            storyData.music.nav.disable.addClass('text-danger');
+                            storyData.music.nav.disable.removeClass('text-danger');
                         }
                     }).append(storyData.music.nav.disable),
 
