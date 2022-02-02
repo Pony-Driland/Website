@@ -91,7 +91,43 @@ var storyCfg = {
     // Playlist
     playlist: {
 
+        'battle': [
+            { id: 'rjRn9lYguV0', type: 'youtube' }
+        ],
 
+        'happyness': [
+            { id: 'AVxQSpnR7g8', type: 'youtube' },
+        ],
+
+        'calm': [
+            { id: 'mxcu9L9j8ww', type: 'youtube' },
+            { id: 'dZR7M7gDNSc', type: 'youtube' },
+        ],
+
+        'tense-mystery': [
+            { id: '1nBatlpsVj0', type: 'youtube' },
+            { id: 'bE__iQGLxyc', type: 'youtube' }
+        ],
+
+        'sad': [
+            { id: 'cU96ZIGKars', type: 'youtube' },
+            { id: 'lIjHZy3aYDA', type: 'youtube' },
+            { id: 'eqV2_PDDVr4', type: 'youtube' },
+            { id: '5i0N9F--gPU', type: 'youtube' },
+            { id: 'bL5xpXvmGiM', type: 'youtube' },
+            { id: '2lj9kr1LmQ4', type: 'youtube' }
+        ],
+
+        'think': [
+            { id: 'Y36Rg14JcZE', type: 'youtube' },
+            { id: '6oaXQ_JQY64', type: 'youtube' },
+            { id: 'ZXNxF7kVW_8', type: 'youtube' },
+        ],
+
+        'new-thing': [
+            { id: 'PkIc6TMLfv0', type: 'youtube' },
+            { id: 'uV2eI9KBOFs', type: 'youtube' }
+        ]
 
     },
 
