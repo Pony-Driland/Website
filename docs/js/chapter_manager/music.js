@@ -496,9 +496,8 @@ musicManager.insertSFX = function(item) {
 
                     // Play
                     play: function(volume = 100) {
-                        const hiding = storyData.sfx[item].hiding;
+                        if (storyData.sfx[item].hiding) { newSound.pause(); }
                         storyData.sfx[item].hiding = false;
-                        if (hiding) { newSound.pause(); }
                         return new Promise(function(resolve, reject) {
                             setTimeout(function() {
                                 try {
