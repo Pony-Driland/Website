@@ -528,16 +528,24 @@ musicManager.insertSFX = function(item) {
                         return new Promise(function(resolve, reject) {
                             setTimeout(function() {
                                 try {
+
                                     if (typeof volume === 'number') {
                                         storyData.sfx[item].setVolume(volume);
                                     } else { storyData.sfx[item].setVolume(storyData.sfx[item].volume); }
+
                                     newSound.currentTime = 0;
                                     storyData.sfx[item].playing = true;
                                     storyData.sfx[item].paused = false;
                                     storyData.sfx[item].currentTime = 0;
-                                    if (typeof inTime === 'number') { newSound.currentTime = inTime; }
+
+                                    if (typeof inTime === 'number') {
+                                        storyData.sfx[item].currentTime = inTime;
+                                        newSound.currentTime = inTime;
+                                    }
+
                                     newSound.play();
                                     resolve();
+
                                 } catch (err) { reject(err); }
                             }, 1);
                         });
