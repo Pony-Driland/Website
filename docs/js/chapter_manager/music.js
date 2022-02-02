@@ -132,7 +132,10 @@ storyData.youtube = {
             }).done(function(jsonVideo) {
 
                 // Youtube Player
-                storyData.youtube.player.setVolume(storyData.music.volume);
+                if (storyData.youtube.player) {
+                    storyData.youtube.player.setVolume(storyData.music.volume);
+                }
+
                 storyData.music.loading = false;
                 storyData.youtube.loading = false;
                 console.log(`Youtube video embed loaded!`);
