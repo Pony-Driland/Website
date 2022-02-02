@@ -156,6 +156,7 @@ var storyCfg = {
         'tense-mystery': [
             { id: '1nBatlpsVj0', type: 'youtube' },
             { id: 'bE__iQGLxyc', type: 'youtube' },
+            { id: 'JuKONvqIT4M', type: 'youtube' },
         ],
 
         'horror-moment': [
@@ -216,6 +217,7 @@ var storyCfg = {
             { id: 'QD5OGfAJIus', type: 'youtube' },
             { id: 'eeeQcvtjV2k', type: 'youtube' },
             { id: 'CAMmIyAA6CY', type: 'youtube' },
+            { id: 'QNwjH5EKTTQ', type: 'youtube' },
         ],
 
         'sad-plot-twist': [
@@ -223,7 +225,8 @@ var storyCfg = {
         ],
 
         'home': [
-            { id: 'uFKo2LYu2Zg', type: 'youtube' }
+            { id: 'uFKo2LYu2Zg', type: 'youtube' },
+            { id: 'nJSQXalUq2o', type: 'youtube' },
         ],
 
         'new-thing': [
