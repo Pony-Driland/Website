@@ -497,6 +497,7 @@ musicManager.insertSFX = function(item) {
                     playing: false,
                     paused: false,
                     volume: newSound.volume * 100,
+                    currentTime: 0,
 
                     // Set Loop
                     setLoop: function(value) {
@@ -521,6 +522,7 @@ musicManager.insertSFX = function(item) {
                                     newSound.currentTime = 0;
                                     storyData.sfx[item].playing = true;
                                     storyData.sfx[item].paused = false;
+                                    storyData.sfx[item].currentTime = 0;
                                     if (typeof inTime === 'number') { newSound.currentTime = inTime; }
                                     newSound.play();
                                     resolve();
@@ -548,6 +550,7 @@ musicManager.insertSFX = function(item) {
                                     storyData.sfx[item].paused = false;
                                     newSound.pause();
                                     newSound.currentTime = 0;
+                                    storyData.sfx[item].currentTime = 0;
                                     resolve();
                                 } catch (err) { reject(err); }
                             }, 1);
@@ -610,6 +613,7 @@ musicManager.insertSFX = function(item) {
                             storyData.sfx[item].playing = false;
                             storyData.sfx[item].paused = false;
                             storyData.sfx[item].hiding = false;
+                            storyData.sfx[item].currentTime = 0;
                         }
 
                     }
@@ -622,6 +626,11 @@ musicManager.insertSFX = function(item) {
                         this.currentTime = 0;
                         this.play();
                     } else { storyData.sfx[item].stop(); }
+                }, false);
+
+                newSound.addEventListener("playing", function() {
+                    storyData.sfx[item].currentTime = this.currentTime;
+                    storyData.sfx[item].duration = this.duration;
                 }, false);
 
             }
