@@ -425,7 +425,6 @@ musicManager.startPlaylist = function() {
                         // Youtube
                         if (song.type === 'youtube') {
                             storyData.youtube.play(song.id);
-                            console.log(song);
                         }
 
                     }
