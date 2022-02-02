@@ -102,6 +102,7 @@ var storyCfg = {
 
         'horror-battle': [
             { id: 'b6WhRKOMUq0', type: 'youtube' },
+            { id: 'ViCGaoeCUqk', type: 'youtube' },
         ],
 
         'revenge-battle': [
@@ -113,6 +114,7 @@ var storyCfg = {
             { id: 'ltmma6Abi3U', type: 'youtube' },
             { id: 'f3Fi4q7Es2Q', type: 'youtube' },
             { id: 'HRfiZbJ5kW0', type: 'youtube' },
+            { id: '2waixMvzakE', type: 'youtube' },
         ],
 
         'drama-battle': [
@@ -136,13 +138,18 @@ var storyCfg = {
             { id: 'bE__iQGLxyc', type: 'youtube' }
         ],
 
+        'horror-moment': [
+            { id: 's2bGUY97o6E', type: 'youtube' },
+        ],
+
         'sad': [
             { id: 'cU96ZIGKars', type: 'youtube' },
             { id: 'lIjHZy3aYDA', type: 'youtube' },
             { id: 'eqV2_PDDVr4', type: 'youtube' },
             { id: '5i0N9F--gPU', type: 'youtube' },
             { id: 'bL5xpXvmGiM', type: 'youtube' },
-            { id: '2lj9kr1LmQ4', type: 'youtube' }
+            { id: '2lj9kr1LmQ4', type: 'youtube' },
+            { id: 'JKgPqJZm1-I', type: 'youtube' }
         ],
 
         'think': [
