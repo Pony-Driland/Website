@@ -473,6 +473,17 @@ musicManager.updatePlayer = function() {
 
 };
 
+// SFX Checker
+setInterval(function() {
+    if (storyData.sfx) {
+        for (const item in storyData.sfx) {
+            if (storyData.sfx[item].playing) {
+                storyData.sfx[item].currentTime = storyData.sfx[item].file.currentTime;
+            }
+        }
+    }
+}, 100);
+
 // Insert SFX
 musicManager.insertSFX = function(item) {
     return new Promise(async function(resolve, reject) {
@@ -627,10 +638,6 @@ musicManager.insertSFX = function(item) {
                         this.currentTime = 0;
                         this.play();
                     } else { storyData.sfx[item].stop(); }
-                }, false);
-
-                newSound.addEventListener("playing", function() {
-                    storyData.sfx[item].currentTime = this.currentTime;
                 }, false);
 
             }
