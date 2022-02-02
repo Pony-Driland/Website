@@ -281,12 +281,14 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "type": "dialogue",
         "character": "Delivery Boy",
         "value": "well... I have to leave now, don't forget to give me 5 stars, thanks."
     },
 
     {
+        "set": { "playlistPlay": "tech-problem" },
         "type": "action",
         "value": "The Delivery Boy, without thinking twice, was already leaving."
     },
@@ -465,13 +467,15 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "type": "action",
         "value": "Then suddenly everything went blank, and Vini's consciousness was temporarily lost for an unknown period of time."
     },
 
     {
         "set": {
-            "where": "Greendream Beach"
+            "where": "Greendream Beach",
+            "playlistPlay": "sad"
         },
         "type": "action",
         "value": "After a long time, Vini was in another mysterious place, his phone was with him, it was a beautiful day, the morning was starting, another normal day on the place, everything was very calm, the beach was deserted as usual because of the schedule. And mysteriously Vini wakes up on the beach, lost not knowing why he was there."
