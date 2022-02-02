@@ -149,7 +149,10 @@ var storyCfg = {
             { id: '5i0N9F--gPU', type: 'youtube' },
             { id: 'bL5xpXvmGiM', type: 'youtube' },
             { id: '2lj9kr1LmQ4', type: 'youtube' },
-            { id: 'JKgPqJZm1-I', type: 'youtube' }
+            { id: 'JKgPqJZm1-I', type: 'youtube' },
+            { id: 'FSkYYV62FEk', type: 'youtube' },
+            { id: '4VFrTREyIig', type: 'youtube' },
+            { id: 'E5I667E4GXw', type: 'youtube' }
         ],
 
         'think': [
