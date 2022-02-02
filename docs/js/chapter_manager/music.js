@@ -496,10 +496,19 @@ musicManager.insertSFX = function(item) {
 
                     // Play
                     play: function(volume = 100) {
+                        const hiding = storyData.sfx[item].hiding;
                         storyData.sfx[item].hiding = false;
-                        storyData.sfx[item].setVolume(volume);
-                        newSound.currentTime = 0;
-                        newSound.play();
+                        if (hiding) { newSound.pause(); }
+                        return new Promise(function(resolve, reject) {
+                            setTimeout(function() {
+                                try {
+                                    storyData.sfx[item].setVolume(volume);
+                                    newSound.currentTime = 0;
+                                    newSound.play();
+                                    resolve();
+                                } catch (err) { reject(err); }
+                            }, 1);
+                        });
                     },
 
                     // Set Volume
