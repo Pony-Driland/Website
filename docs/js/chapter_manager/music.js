@@ -132,6 +132,7 @@ storyData.youtube = {
             }).done(function(jsonVideo) {
 
                 // Youtube Player
+                storyData.youtube.player.setVolume(storyData.music.volume);
                 storyData.music.loading = false;
                 storyData.youtube.loading = false;
                 console.log(`Youtube video embed loaded!`);
@@ -218,7 +219,7 @@ storyData.youtube = {
 
                 // Prepare Volume
                 if (typeof storyData.youtube.volume === 'number' && typeof storyData.music.volume === 'number' && storyData.youtube.volume !== storyData.music.volume) {
-                    storyData.youtube.player.setVolume(storyData.youtube.volume);
+                    if (storyData.youtube.player) { storyData.youtube.player.setVolume(storyData.youtube.volume); }
                     storyData.music.volume = Number(storyData.youtube.volume);
                 }
 
@@ -448,19 +449,52 @@ musicManager.updatePlayer = function() {
 };
 
 // Stop Playlist
-musicManager.stopPlaylist = function() {
+musicManager.stopPlaylist = async function() {
     if (storyData.music.usingSystem) {
 
+        // Playing Used
         if (storyData.music.playing) {
             storyData.music.playingUsed = true;
         }
 
+
+
+        // Using System
         storyData.music.usingSystem = false;
-        if (storyData.youtube.player) {
-            storyData.youtube.player.stopVideo();
+
+        // Hide Progress
+        const hideTimeout = 200;
+        let volume = storyData.music.volume;
+        for (let i = 0; i < 100; i++) {
+            await new Promise(function(resolve) {
+                setTimeout(function() {
+                    if (!storyData.music.usingSystem) {
+
+                        // Volume
+                        volume--;
+
+                        // Youtube Player
+                        if (storyData.youtube.player) {
+                            storyData.youtube.player.setVolume(volume);
+                        }
+
+                        if (i === 100) {
+
+                            // Youtube Player
+                            if (storyData.youtube.player) {
+                                storyData.youtube.player.stopVideo();
+                            }
+
+                        }
+
+                    }
+                    resolve();
+                }, hideTimeout);
+            });
         }
 
     }
+    return;
 };
 
 // Start Playlist
