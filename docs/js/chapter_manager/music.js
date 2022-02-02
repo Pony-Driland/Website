@@ -551,12 +551,24 @@ musicManager.insertSFX = function(item) {
                         });
                     },
 
+                    // Seek To
+                    seekTo: function(value) {
+                        return new Promise(function(resolve) {
+                            storyData.sfx[item].currentTime = value;
+                            newSound.currentTime = value;
+                            resolve();
+                        });
+                    },
+
                     // Set Volume
                     setVolume: function(value) {
-                        if (typeof value === 'number' && value > -1) {
-                            newSound.volume = value / 100;
-                            storyData.sfx[item].volume = value;
-                        }
+                        return new Promise(function(resolve) {
+                            if (typeof value === 'number' && value > -1) {
+                                newSound.volume = value / 100;
+                                storyData.sfx[item].volume = value;
+                            }
+                            resolve();
+                        });
                     },
 
                     // Stop
