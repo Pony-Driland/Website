@@ -455,6 +455,7 @@ musicManager.startPlaylist = function() {
         if (Array.isArray(storyData.music.playlist) && storyData.music.playlist.length > 0) {
 
             // Play Song
+            tinyLib.shuffle(storyData.music.playlist);
             const playSong = function() {
                 if (typeof storyData.music.now.index === 'number' && !isNaN(storyData.music.now.index) && isFinite(storyData.music.now.index) && storyData.music.now.index > -1) {
 
