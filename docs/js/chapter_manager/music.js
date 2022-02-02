@@ -505,9 +505,9 @@ musicManager.insertSFX = function(item) {
                                 try {
                                     storyData.sfx[item].setVolume(volume);
                                     newSound.currentTime = 0;
-                                    newSound.play();
                                     storyData.sfx[item].playing = true;
                                     storyData.sfx[item].paused = false;
+                                    newSound.play();
                                     resolve();
                                 } catch (err) { reject(err); }
                             }, 1);
@@ -523,30 +523,51 @@ musicManager.insertSFX = function(item) {
 
                     // Stop
                     stop: async function() {
-                        storyData.sfx[item].playing = false;
-                        storyData.sfx[item].paused = false;
+                        if (storyData.sfx[item].hiding) { newSound.pause(); }
                         storyData.sfx[item].hiding = false;
-                        newSound.pause();
-                        newSound.currentTime = 0;
-                        return;
+                        return new Promise(function(resolve, reject) {
+                            setTimeout(function() {
+                                try {
+                                    storyData.sfx[item].playing = false;
+                                    storyData.sfx[item].paused = false;
+                                    newSound.pause();
+                                    newSound.currentTime = 0;
+                                    resolve();
+                                } catch (err) { reject(err); }
+                            }, 1);
+                        });
                     },
 
                     // Pause
                     pause: async function() {
-                        storyData.sfx[item].playing = false;
-                        storyData.sfx[item].paused = true;
+                        if (storyData.sfx[item].hiding) { newSound.pause(); }
                         storyData.sfx[item].hiding = false;
-                        newSound.pause();
-                        return;
+                        return new Promise(function(resolve, reject) {
+                            setTimeout(function() {
+                                try {
+                                    storyData.sfx[item].playing = false;
+                                    storyData.sfx[item].paused = true;
+                                    newSound.pause();
+                                    resolve();
+                                } catch (err) { reject(err); }
+                            }, 1);
+                        });
                     },
 
                     // Resume
                     resume: async function() {
-                        storyData.sfx[item].playing = true;
-                        storyData.sfx[item].paused = false;
+                        if (storyData.sfx[item].hiding) { newSound.pause(); }
                         storyData.sfx[item].hiding = false;
-                        newSound.play();
-                        return;
+                        return new Promise(function(resolve, reject) {
+                            setTimeout(function() {
+                                try {
+                                    storyData.sfx[item].playing = true;
+                                    storyData.sfx[item].paused = false;
+                                    newSound.play();
+                                    resolve();
+                                } catch (err) { reject(err); }
+                            }, 1);
+                        });
                     },
 
                     // Hide
