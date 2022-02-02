@@ -123,6 +123,12 @@ var updateChapterCache = function(lastPage) {
 // Set Actions
 var chapterSet = {
 
+    playEffect: function(value, actionFromNow = false) {
+        if (actionFromNow) {
+
+        }
+    },
+
     playlistPlay: function(value, actionFromNow = false) {
         if (actionFromNow) {
 
