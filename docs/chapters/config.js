@@ -136,6 +136,8 @@ var storyCfg = {
             { id: 'mxcu9L9j8ww', type: 'youtube' },
             { id: 'dZR7M7gDNSc', type: 'youtube' },
             { id: '7Uyu5BrGMs4', type: 'youtube' },
+            { id: 'ewBkq44wynk', type: 'youtube' },
+            { id: 'TOEiLlspdhM', type: 'youtube' },
         ],
 
         'tense-mystery': [
