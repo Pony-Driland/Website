@@ -1,6 +1,7 @@
 // Base
 storyData.music = {
 
+    useThis: true,
     value: null,
     now: { playlist: null, index: -1 },
     usingSystem: false,
@@ -408,7 +409,7 @@ musicManager.stopPlaylist = function() {
 
 // Start Playlist
 musicManager.startPlaylist = function() {
-    if (!storyData.music.usingSystem) {
+    if (!storyData.music.usingSystem && storyData.music.useThis) {
 
         // Check Status
         if (Array.isArray(storyData.music.playlist) && storyData.music.playlist.length > 0) {
