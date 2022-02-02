@@ -523,26 +523,29 @@ musicManager.insertSFX = function(item) {
 
                     // Stop
                     stop: async function() {
-                        newSound.pause();
-                        newSound.currentTime = 0;
                         storyData.sfx[item].playing = false;
                         storyData.sfx[item].paused = false;
+                        storyData.sfx[item].hiding = false;
+                        newSound.pause();
+                        newSound.currentTime = 0;
                         return;
                     },
 
                     // Pause
                     pause: async function() {
-                        newSound.pause();
                         storyData.sfx[item].playing = false;
                         storyData.sfx[item].paused = true;
+                        storyData.sfx[item].hiding = false;
+                        newSound.pause();
                         return;
                     },
 
                     // Resume
                     resume: async function() {
-                        newSound.play();
                         storyData.sfx[item].playing = true;
                         storyData.sfx[item].paused = false;
+                        storyData.sfx[item].hiding = false;
+                        newSound.play();
                         return;
                     },
 
