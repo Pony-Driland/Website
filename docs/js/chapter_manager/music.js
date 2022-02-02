@@ -738,7 +738,7 @@ musicManager.stopPlaylist = async function() {
 
 // Start Playlist
 musicManager.startPlaylist = function() {
-    if (!storyData.music.usingSystem && storyData.music.useThis && storyData.readFic) {
+    if (((!storyData.music.usingSystem && storyData.music.useThis) || storyData.music.now.playlist !== storyData.music.value) && storyData.readFic) {
 
         // Check Status
         if (Array.isArray(storyData.music.playlist) && storyData.music.playlist.length > 0) {
@@ -770,7 +770,7 @@ musicManager.startPlaylist = function() {
             ) {
 
                 // Fix Index
-                if (storyData.music.now.index < 0) {
+                if (storyData.music.now.index < 0 || storyData.music.now.playlist !== storyData.music.value) {
                     storyData.music.now.index = 0;
                 }
 
