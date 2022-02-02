@@ -561,8 +561,8 @@ musicManager.stopPlaylist = async function() {
         const hideTimeout = 50;
         let volume = storyData.music.volume;
         for (let i = 0; i < 100; i++) {
-            await new Promise(function(resolve) {
-                if (!storyData.music.usingSystem) {
+            if (!storyData.music.usingSystem) {
+                await new Promise(function(resolve) {
                     setTimeout(function() {
 
                         // Volume
@@ -584,8 +584,8 @@ musicManager.stopPlaylist = async function() {
 
                         resolve();
                     }, hideTimeout);
-                } else { resolve(); }
-            });
+                });
+            }
         }
 
     }
