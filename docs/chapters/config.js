@@ -97,7 +97,7 @@ var storyCfg = {
 
     // SFX
     sfx: {
-        'strong-wind': { type: 'ipfs', value: 'QmZTm6yGL3GLbraKaBvAjJsaP8yocTARr9YmA7NAw6kK2e' }
+
     }
 
 };
