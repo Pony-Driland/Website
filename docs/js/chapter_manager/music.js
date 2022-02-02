@@ -491,13 +491,30 @@ musicManager.insertSFX = function(item) {
                     // File
                     file: newSound,
 
+                    // Play
+                    play: function(volume = 100) {
+                        storyData.sfx[item].setVolume(volume);
+                        audio.currentTime = 0;
+                        newSound.play();
+                    },
+
                     // Set Volume
                     setVolume: function(value) {
                         newSound.volume = value / 100;
                     },
 
-                    disable: function(disable = true, speed = 100) {
-
+                    // Hide
+                    hide: async function(hideTimeout = 50) {
+                        for (let i = 0; i < 100; i++) {
+                            await new Promise(function(resolve) {
+                                setTimeout(function() {
+                                    volume--;
+                                    storyData.sfx[item].setVolume(volume);
+                                    resolve();
+                                }, hideTimeout);
+                            });
+                        }
+                        newSound.pause();
                     }
 
                 };
