@@ -522,7 +522,7 @@ musicManager.insertSFX = function(item) {
                     },
 
                     // Stop
-                    stop: async function() {
+                    stop: function() {
                         if (storyData.sfx[item].hiding) { newSound.pause(); }
                         storyData.sfx[item].hiding = false;
                         return new Promise(function(resolve, reject) {
@@ -539,7 +539,7 @@ musicManager.insertSFX = function(item) {
                     },
 
                     // Pause
-                    pause: async function() {
+                    pause: function() {
                         if (storyData.sfx[item].hiding) { newSound.pause(); }
                         storyData.sfx[item].hiding = false;
                         return new Promise(function(resolve, reject) {
@@ -555,7 +555,7 @@ musicManager.insertSFX = function(item) {
                     },
 
                     // Resume
-                    resume: async function() {
+                    resume: function() {
                         if (storyData.sfx[item].hiding) { newSound.pause(); }
                         storyData.sfx[item].hiding = false;
                         return new Promise(function(resolve, reject) {
