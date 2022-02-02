@@ -239,6 +239,28 @@ storyData.youtube = {
 // Music Manager
 var musicManager = {
 
+    // Load Sound
+    loadAudio: function(url) {
+        return new Promise(function(resolve, reject) {
+
+            let loaded = false;
+
+            const audio = new Audio();
+            audio.preload = "auto";
+            audio.onerror = reject;
+
+            audio.addEventListener('canplaythrough', function() {
+                if (!loaded) {
+                    loaded = true;
+                    resolve(audio);
+                }
+            }, false);
+
+            audio.src = url;
+
+        });
+    },
+
     // Next Song
     nextMusic: function() {
 

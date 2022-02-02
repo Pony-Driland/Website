@@ -54,7 +54,42 @@ var openChapterMenu = function(params = {}) {
     $('#markdown-read').empty();
 
     // New Read
-    const newRead = function(chapter = 1, page = 1, line = null) {
+    const newRead = async function(chapter = 1, page = 1, line = null) {
+
+        // Load Sounds
+        if (storyCfg.sfx) {
+            console.log(`Loading Audio Data...`);
+            $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
+
+            if (!storyData.sfx) { storyData.sfx = {}; }
+            for (const item in storyCfg.sfx) {
+                if (!storyData.sfx[item] && typeof storyCfg.sfx[item].type === 'string' && typeof storyCfg.sfx[item].value === 'string') {
+
+                    if (storyCfg.sfx[item].type === 'ipfs' && storyCfg.ipfs && typeof storyCfg.ipfs.host === 'string') {
+
+                        try {
+
+                            const url = storyCfg.ipfs.host.replace('{cid}', storyCfg.sfx[item].value);
+                            console.log(`Loading Audio "${url}"...`);
+
+                            const newSound = await musicManager.loadAudio(url);
+                            if (newSound) {
+                                storyData.sfx[item] = { file: newSound, playing: false, stopped: true, volume: null };
+                            }
+
+                        } catch (err) {
+                            console.error(err);
+                            alert(err.message);
+                        }
+
+                    }
+
+                }
+            }
+
+            $.LoadingOverlay("hide");
+            console.log(`Audio Data Loaded!`);
+        }
 
         // Set Selected
         storyData.readFic = true;
@@ -213,6 +248,7 @@ var openChapterMenu = function(params = {}) {
         // Complete
         $(window).trigger('scroll');
         if (line !== null) { tinyLib.goToByScroll($('#markdown-read [line="' + line + '"]'), 0); }
+        return;
 
     };
 
