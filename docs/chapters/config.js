@@ -139,11 +139,12 @@ var storyCfg = {
             { id: 'ewBkq44wynk', type: 'youtube' },
             { id: 'TOEiLlspdhM', type: 'youtube' },
             { id: 'zaxVBfdgR3E', type: 'youtube' },
+            { id: '3VoGUhPwagI', type: 'youtube' },
         ],
 
         'tense-mystery': [
             { id: '1nBatlpsVj0', type: 'youtube' },
-            { id: 'bE__iQGLxyc', type: 'youtube' }
+            { id: 'bE__iQGLxyc', type: 'youtube' },
         ],
 
         'horror-moment': [
@@ -153,6 +154,7 @@ var storyCfg = {
         'bad-mystery': [
             { id: 'eeoEQZH-iwg', type: 'youtube' },
             { id: '_x8gYuNUdNA', type: 'youtube' },
+            { id: 'DJlgRlhaeME', type: 'youtube' },
         ],
 
         'the-true': [
@@ -171,7 +173,7 @@ var storyCfg = {
             { id: 'FSkYYV62FEk', type: 'youtube' },
             { id: '4VFrTREyIig', type: 'youtube' },
             { id: 'E5I667E4GXw', type: 'youtube' },
-            { id: '24QJV6NnFHY', type: 'youtube' }
+            { id: '24QJV6NnFHY', type: 'youtube' },
         ],
 
         'think': [
@@ -183,6 +185,9 @@ var storyCfg = {
             { id: 'yKwdd2Aja_k', type: 'youtube' },
             { id: 'DVrsjXSpH9o', type: 'youtube' },
             { id: 'BAB7dhJpqes', type: 'youtube' },
+            { id: 'AfkEAnazGMo', type: 'youtube' },
+            { id: 'Li2v4Afy1H0', type: 'youtube' },
+            { id: '4c7Juty0RYI', type: 'youtube' },
         ],
 
         'sad-plot twist': [
@@ -195,7 +200,8 @@ var storyCfg = {
 
         'new-thing': [
             { id: 'PkIc6TMLfv0', type: 'youtube' },
-            { id: 'uV2eI9KBOFs', type: 'youtube' }
+            { id: 'uV2eI9KBOFs', type: 'youtube' },
+            { id: 'E0wknC_56vE', type: 'youtube' },
         ]
 
     },
