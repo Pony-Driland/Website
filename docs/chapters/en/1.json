@@ -142,17 +142,11 @@
     },
 
     {
-        "set": {
-            "playlistPlay": null
-        },
         "type": "action",
         "value": "Vini then got up from his computer. He was home alone. He then went to the gate to open it to receive the food. Meanwhile Yasmin kept laughing and answering."
     },
 
     {
-        "set": {
-            "playlistPlay": "calm"
-        },
         "type": "dialogue",
         "character": "Yasmin",
         "value": "Don't worry, the surprise will be all good like your X-Tudo."
