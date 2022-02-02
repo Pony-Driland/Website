@@ -176,6 +176,7 @@ var clearFicData = function() {
     $('body').removeClass('ficMode');
     $('#fic-nav > #status').empty();
     $('#fic-chapter').empty();
+    storyData.readFic = false;
     storyData.chapter.html = {};
     storyData.chapter.line = null;
     storyData.chapter.nav = {};

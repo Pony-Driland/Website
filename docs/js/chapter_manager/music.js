@@ -502,7 +502,7 @@ musicManager.stopPlaylist = async function() {
 
 // Start Playlist
 musicManager.startPlaylist = function() {
-    if (!storyData.music.usingSystem && storyData.music.useThis) {
+    if (!storyData.music.usingSystem && storyData.music.useThis && storyData.readFic) {
 
         // Check Status
         if (Array.isArray(storyData.music.playlist) && storyData.music.playlist.length > 0) {

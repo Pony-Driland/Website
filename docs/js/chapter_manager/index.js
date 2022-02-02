@@ -57,6 +57,7 @@ var openChapterMenu = function(params = {}) {
     const newRead = function(chapter = 1, page = 1, line = null) {
 
         // Set Selected
+        storyData.readFic = true;
         $('#fic-chapter').text(`Chapter ${chapter}`);
         storyData.chapter.selected = chapter;
 
