@@ -122,6 +122,7 @@ storyData.youtube = {
 
         // Read Data Base
         if (!storyData.youtube.loading) {
+            storyData.music.loading = true;
             storyData.youtube.loading = true;
             console.log(`Loading youtube video embed...`);
             $.ajax({
@@ -131,6 +132,7 @@ storyData.youtube = {
             }).done(function(jsonVideo) {
 
                 // Youtube Player
+                storyData.music.loading = false;
                 storyData.youtube.loading = false;
                 console.log(`Youtube video embed loaded!`);
                 storyData.youtube.embed = jsonVideo;
@@ -300,52 +302,62 @@ var musicManager = {
 
                     // Info
                     $('<a>', { href: 'javascript:void(0)', title: 'Source' }).click(function() {
-                        open(storyData.youtube.player.getVideoUrl(), '_blank');
+                        if (!storyData.music.loading) {
+                            open(storyData.youtube.player.getVideoUrl(), '_blank');
+                        }
                     }).append(storyData.music.nav.info),
 
                     // Play
                     $('<a>', { href: 'javascript:void(0)', title: 'Play/Pause' }).click(function() {
+                        if (!storyData.music.loading) {
 
-                        if (storyData.youtube.state === YT.PlayerState.PLAYING) {
-                            storyData.youtube.player.pauseVideo();
-                        } else {
-                            storyData.youtube.player.playVideo();
+                            if (storyData.youtube.state === YT.PlayerState.PLAYING) {
+                                storyData.youtube.player.pauseVideo();
+                            } else {
+                                storyData.youtube.player.playVideo();
+                            }
+
                         }
-
                     }).append(storyData.music.nav.play),
 
                     // Stop
                     $('<a>', { href: 'javascript:void(0)', title: 'Stop' }).click(function() {
-                        storyData.music.isStopping = true;
-                        storyData.youtube.player.stopVideo();
+                        if (!storyData.music.loading) {
+                            storyData.music.isStopping = true;
+                            storyData.youtube.player.stopVideo();
+                        }
                     }).append(storyData.music.nav.stop),
 
                     // Volume
                     $('<a>', { href: 'javascript:void(0)', title: 'Volume' }).click(function() {
+                        if (!storyData.music.loading) {
 
-                        // Modal
-                        tinyLib.modal({
-                            title: [$('<i>', { class: 'fas fa-volume mr-3' }), 'Song Volume'],
-                            body: $('<center>').append(
-                                $('<p>').text('Change the page music volume'),
-                                $('<input>', { class: 'form-control range', type: 'range', min: 0, max: 100 }).change(function() {
-                                    storyData.youtube.setVolume($(this).val());
-                                }).val(storyData.music.volume)
-                            ),
-                            dialog: 'modal-lg'
-                        });
+                            // Modal
+                            tinyLib.modal({
+                                title: [$('<i>', { class: 'fas fa-volume mr-3' }), 'Song Volume'],
+                                body: $('<center>').append(
+                                    $('<p>').text('Change the page music volume'),
+                                    $('<input>', { class: 'form-control range', type: 'range', min: 0, max: 100 }).change(function() {
+                                        storyData.youtube.setVolume($(this).val());
+                                    }).val(storyData.music.volume)
+                                ),
+                                dialog: 'modal-lg'
+                            });
 
+                        }
                     }).append(storyData.music.nav.volume),
 
                     // Disable
                     $('<a>', { href: 'javascript:void(0)', title: 'Disable' }).click(function() {
-                        $(this).removeClass('');
-                        if (storyData.music.useThis) {
-                            storyData.music.useThis = false;
-                            storyData.music.nav.disable.addClass('text-danger');
-                        } else {
-                            storyData.music.useThis = true;
-                            storyData.music.nav.disable.removeClass('text-danger');
+                        if (!storyData.music.loading) {
+                            $(this).removeClass('');
+                            if (storyData.music.useThis) {
+                                storyData.music.useThis = false;
+                                storyData.music.nav.disable.addClass('text-danger');
+                            } else {
+                                storyData.music.useThis = true;
+                                storyData.music.nav.disable.removeClass('text-danger');
+                            }
                         }
                     }).append(storyData.music.nav.disable),
 
@@ -394,7 +406,7 @@ musicManager.updatePlayer = function() {
         $('#music-player').addClass('border').removeClass('d-none').addClass('mr-3');
 
         // Buff
-        if (storyData.music.buffering) {
+        if (storyData.music.buffering || storyData.music.loading) {
             $('#music-player > a').addClass('disabled');
         } else {
             $('#music-player > a').removeClass('disabled');
