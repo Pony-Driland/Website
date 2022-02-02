@@ -95,6 +95,19 @@ var storyCfg = {
             { id: 'rjRn9lYguV0', type: 'youtube' }
         ],
 
+        'tense-battle': [
+            { id: 'b6WhRKOMUq0', type: 'youtube' }
+        ],
+
+        'epic-battle': [
+            { id: '4tM--a1NLa8', type: 'youtube' }
+        ],
+
+        'drama-battle': [
+            { id: '04_v0iVxCHo', type: 'youtube' },
+            { id: '9HvVidW5N6w', type: 'youtube' },
+        ],
+
         'happyness': [
             { id: 'AVxQSpnR7g8', type: 'youtube' },
         ],
