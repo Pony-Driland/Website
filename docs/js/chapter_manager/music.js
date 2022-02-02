@@ -305,14 +305,14 @@ var musicManager = {
                 $('<div>', { id: 'music-player', class: 'd-none' }).append(
 
                     // Info
-                    $('<a>', { href: 'javascript:void(0)', title: 'Source' }).click(function() {
+                    $('<a>', { href: 'javascript:void(0)', class: 'disabled', title: 'Source' }).click(function() {
                         if (!storyData.music.loading) {
                             open(storyData.youtube.player.getVideoUrl(), '_blank');
                         }
                     }).append(storyData.music.nav.info),
 
                     // Play
-                    $('<a>', { href: 'javascript:void(0)', title: 'Play/Pause' }).click(function() {
+                    $('<a>', { href: 'javascript:void(0)', class: 'disabled', title: 'Play/Pause' }).click(function() {
                         if (!storyData.music.loading) {
 
                             if (storyData.youtube.state === YT.PlayerState.PLAYING) {
@@ -325,7 +325,7 @@ var musicManager = {
                     }).append(storyData.music.nav.play),
 
                     // Stop
-                    $('<a>', { href: 'javascript:void(0)', title: 'Stop' }).click(function() {
+                    $('<a>', { href: 'javascript:void(0)', class: 'disabled', title: 'Stop' }).click(function() {
                         if (!storyData.music.loading) {
                             storyData.music.isStopping = true;
                             storyData.youtube.player.stopVideo();
@@ -333,7 +333,7 @@ var musicManager = {
                     }).append(storyData.music.nav.stop),
 
                     // Volume
-                    $('<a>', { href: 'javascript:void(0)', title: 'Volume' }).click(function() {
+                    $('<a>', { href: 'javascript:void(0)', class: 'disabled', title: 'Volume' }).click(function() {
                         if (!storyData.music.loading) {
 
                             // Modal
@@ -352,7 +352,7 @@ var musicManager = {
                     }).append(storyData.music.nav.volume),
 
                     // Disable
-                    $('<a>', { href: 'javascript:void(0)', title: 'Disable' }).click(function() {
+                    $('<a>', { href: 'javascript:void(0)', class: 'disabled', title: 'Disable' }).click(function() {
                         if (!storyData.music.loading) {
                             $(this).removeClass('');
                             if (storyData.music.useThis) {
