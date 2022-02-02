@@ -121,7 +121,7 @@ storyData.youtube = {
     play: function(videoID) {
 
         // Read Data Base
-        if (!storyData.youtube.loading) {
+        if (!storyData.youtube.loading && storyData.readFic) {
             storyData.music.loading = true;
             storyData.youtube.loading = true;
             console.log(`Loading youtube video embed...`);
@@ -242,7 +242,7 @@ var musicManager = {
     // Next Song
     nextMusic: function() {
 
-        if (typeof storyData.music.now.index === 'number' && !isNaN(storyData.music.now.index) && isFinite(storyData.music.now.index) && storyData.music.now.index > -1) {
+        if (typeof storyData.music.now.index === 'number' && !isNaN(storyData.music.now.index) && isFinite(storyData.music.now.index) && storyData.music.now.index > -1 && storyData.readFic) {
 
             storyData.music.now.index++;
             if (!storyData.music.playlist[storyData.music.now.index]) {
