@@ -247,6 +247,7 @@ var musicManager = {
             storyData.music.nav.play = $('<i>', { class: 'fas fa-play' });
             storyData.music.nav.volume = $('<i>', { class: 'fas fa-volume-mute' });
             storyData.music.nav.stop = $('<i>', { class: 'fas fa-stop' });
+            storyData.music.nav.disable = $('<i>', { class: 'fas fa-ban' });
 
             // Prepare
             if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
@@ -255,7 +256,7 @@ var musicManager = {
 
                     // Info
                     $('<a>', { href: 'javascript:void(0)', title: 'Source' }).click(function() {
-                        open(storyData.youtube.player.getVideoUrl(), '_blank')
+                        open(storyData.youtube.player.getVideoUrl(), '_blank');
                     }).append(storyData.music.nav.info),
 
                     // Play
@@ -289,7 +290,19 @@ var musicManager = {
                             dialog: 'modal-lg'
                         });
 
-                    }).append(storyData.music.nav.volume)
+                    }).append(storyData.music.nav.volume),
+
+                    // Disable
+                    $('<a>', { href: 'javascript:void(0)', title: 'Disable' }).click(function() {
+                        $(this).removeClass('');
+                        if (storyData.music.useThis) {
+                            storyData.music.useThis = false;
+                            storyData.music.nav.disable.removeClass('text-danger');
+                        } else {
+                            storyData.music.useThis = true;
+                            storyData.music.nav.disable.addClass('text-danger');
+                        }
+                    }).append(storyData.music.nav.disable),
 
                 )
             );
