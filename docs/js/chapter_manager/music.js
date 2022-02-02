@@ -492,10 +492,21 @@ musicManager.insertSFX = function(item) {
                     file: newSound,
 
                     // Values
+                    loop: true,
                     hiding: false,
                     playing: false,
                     paused: false,
                     volume: newSound.volume * 100,
+
+                    // Set Loop
+                    setLoop: function(value) {
+                        if (typeof value === 'boolean') {
+                            return new Promise(function(resolve) {
+                                storyData.sfx[item].loop = value;
+                                resolve();
+                            });
+                        }
+                    },
 
                     // Play
                     play: function(volume = null) {
@@ -603,6 +614,14 @@ musicManager.insertSFX = function(item) {
                     }
 
                 };
+
+                // Loop Action
+                newSound.addEventListener('ended', function() {
+                    if (storyData.sfx[item].loop) {
+                        this.currentTime = 0;
+                        this.play();
+                    } else { storyData.sfx[item].stop(); }
+                }, false);
 
             }
 
