@@ -178,11 +178,11 @@ storyData.youtube = {
                             if (storyData.music.isStopping) {
                                 storyData.youtube.player.seekTo(0);
                                 storyData.youtube.player.pauseVideo();
+                                storyData.music.isStopping = false;
                             }
 
                             // Next
                             else {
-                                storyData.music.isStopping = false;
                                 musicManager.nextMusic();
                             }
 
