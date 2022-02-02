@@ -491,8 +491,12 @@ musicManager.insertSFX = function(item) {
                     // File
                     file: newSound,
 
+                    // Hiding
+                    hiding: false,
+
                     // Play
                     play: function(volume = 100) {
+                        storyData.sfx[item].hiding = false;
                         storyData.sfx[item].setVolume(volume);
                         newSound.currentTime = 0;
                         newSound.play();
@@ -500,21 +504,28 @@ musicManager.insertSFX = function(item) {
 
                     // Set Volume
                     setVolume: function(value) {
-                        newSound.volume = value / 100;
+                        if (typeof value === 'number' && value > -1) {
+                            newSound.volume = value / 100;
+                        }
                     },
 
                     // Hide
                     hide: async function(hideTimeout = 50) {
+                        let volume = newSound.volume * 100;
+                        storyData.sfx[item].hiding = true;
                         for (let i = 0; i < 100; i++) {
-                            await new Promise(function(resolve) {
-                                setTimeout(function() {
-                                    volume--;
-                                    storyData.sfx[item].setVolume(volume);
-                                    resolve();
-                                }, hideTimeout);
-                            });
+                            if (storyData.sfx[item].hiding) {
+                                await new Promise(function(resolve) {
+                                    setTimeout(function() {
+                                        volume--;
+                                        storyData.sfx[item].setVolume(volume);
+                                        resolve();
+                                    }, hideTimeout);
+                                });
+                            }
                         }
                         newSound.pause();
+                        storyData.sfx[item].hiding = false;
                     }
 
                 };
@@ -551,8 +562,8 @@ musicManager.stopPlaylist = async function() {
         let volume = storyData.music.volume;
         for (let i = 0; i < 100; i++) {
             await new Promise(function(resolve) {
-                setTimeout(function() {
-                    if (!storyData.music.usingSystem) {
+                if (!storyData.music.usingSystem) {
+                    setTimeout(function() {
 
                         // Volume
                         volume--;
@@ -571,9 +582,9 @@ musicManager.stopPlaylist = async function() {
 
                         }
 
-                    }
-                    resolve();
-                }, hideTimeout);
+                        resolve();
+                    }, hideTimeout);
+                } else { resolve(); }
             });
         }
 
