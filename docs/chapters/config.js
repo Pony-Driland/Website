@@ -122,6 +122,15 @@ var storyCfg = {
             { id: 'Y36Rg14JcZE', type: 'youtube' },
             { id: '6oaXQ_JQY64', type: 'youtube' },
             { id: 'ZXNxF7kVW_8', type: 'youtube' },
+            { id: 'UDhQ8DarZHQ', type: 'youtube' },
+        ],
+
+        'sad-plot twist': [
+            { id: '44A0UTwoCsg', type: 'youtube' },
+        ],
+
+        'home': [
+            { id: 'uFKo2LYu2Zg', type: 'youtube' }
         ],
 
         'new-thing': [
