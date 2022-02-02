@@ -519,8 +519,10 @@ musicManager.insertSFX = function(item) {
 
                     // Hide
                     hide: async function(hideTimeout = 50) {
+
                         let volume = newSound.volume * 100;
                         storyData.sfx[item].hiding = true;
+
                         for (let i = 0; i < 100; i++) {
                             if (storyData.sfx[item].hiding) {
                                 await new Promise(function(resolve) {
@@ -532,8 +534,12 @@ musicManager.insertSFX = function(item) {
                                 });
                             }
                         }
-                        newSound.pause();
-                        storyData.sfx[item].hiding = false;
+
+                        if (storyData.sfx[item].hiding) {
+                            newSound.pause();
+                            storyData.sfx[item].hiding = false;
+                        }
+
                     }
 
                 };
