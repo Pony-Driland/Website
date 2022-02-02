@@ -229,8 +229,29 @@ storyData.youtube = {
 // Music Manager
 var musicManager = {
 
+    // Next Song
     nextMusic: function() {
-        console.log('Next Music');
+
+        if (typeof storyData.music.now.index === 'number' && !isNaN(storyData.music.now.index) && isFinite(storyData.music.now.index) && storyData.music.now.index > -1) {
+
+            storyData.music.now.index++;
+            if (!storyData.music.playlist[storyData.music.now.index]) {
+                storyData.music.now.index = 0;
+            }
+
+            // Play
+            const song = storyData.music.playlist[storyData.music.now.index];
+            if (song && typeof song.id === 'string' && song.id.length > 0 && typeof song.type === 'string' && song.type.length > 0) {
+
+                // Youtube
+                if (song.type === 'youtube') {
+                    storyData.youtube.play(song.id);
+                }
+
+            }
+
+        }
+
     },
 
     disable: function(react = true) {
