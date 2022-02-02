@@ -1,6 +1,7 @@
 // Base
 storyData.music = {
 
+    isStopping: false,
     useThis: true,
     value: null,
     now: { playlist: null, index: -1 },
@@ -172,10 +173,23 @@ storyData.youtube = {
 
                         // Ended
                         else if (storyData.youtube.state === YT.PlayerState.ENDED || storyData.youtube.state === YT.PlayerState.CUED) {
-                            storyData.youtube.player.seekTo(0);
-                            storyData.youtube.player.pauseVideo();
+
+                            // Stopping
+                            if (storyData.music.isStopping) {
+                                storyData.youtube.player.seekTo(0);
+                                storyData.youtube.player.pauseVideo();
+                            }
+
+                            // Next
+                            else {
+                                storyData.music.isStopping = false;
+                                musicManager.nextMusic();
+                            }
+
+                            // Progress
                             storyData.music.stoppabled = true;
                             storyData.youtube.currentTime = storyData.youtube.player.getDuration();
+
                         }
 
                         // Paused
@@ -214,6 +228,10 @@ storyData.youtube = {
 
 // Music Manager
 var musicManager = {
+
+    nextMusic: function() {
+        console.log('Next Music');
+    },
 
     disable: function(react = true) {
         if (react) {
@@ -273,6 +291,7 @@ var musicManager = {
 
                     // Stop
                     $('<a>', { href: 'javascript:void(0)', title: 'Stop' }).click(function() {
+                        storyData.music.isStopping = true;
                         storyData.youtube.player.stopVideo();
                     }).append(storyData.music.nav.stop),
 
