@@ -473,6 +473,48 @@ musicManager.updatePlayer = function() {
 
 };
 
+// Insert SFX
+musicManager.insertSFX = function(item) {
+    return new Promise(async function(resolve, reject) {
+
+
+        try {
+
+            const url = storyCfg.ipfs.host.replace('{cid}', storyCfg.sfx[item].value);
+            console.log(`[${url}] Loading...`);
+
+            const newSound = await musicManager.loadAudio(url);
+            if (newSound) {
+
+                storyData.sfx[item] = {
+
+                    // File
+                    file: newSound,
+
+                    // Set Volume
+                    setVolume: function(value) {
+                        newSound.volume = value / 100;
+                    },
+
+                    disable: function(disable = true, speed = 100) {
+
+                    }
+
+                };
+
+            }
+
+            console.log(`[${url}] Loaded!`);
+            resolve(newSound);
+
+        } catch (err) { reject(err); }
+
+        // Complete
+        return;
+
+    });
+}
+
 // Stop Playlist
 musicManager.stopPlaylist = async function() {
     if (storyData.music.usingSystem) {
