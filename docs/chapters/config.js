@@ -140,6 +140,7 @@ var storyCfg = {
             { id: 'TOEiLlspdhM', type: 'youtube' },
             { id: 'zaxVBfdgR3E', type: 'youtube' },
             { id: '3VoGUhPwagI', type: 'youtube' },
+            { id: 'uU4VgCWuAxE', type: 'youtube' },
         ],
 
         'tense-mystery': [
@@ -155,6 +156,7 @@ var storyCfg = {
             { id: 'eeoEQZH-iwg', type: 'youtube' },
             { id: '_x8gYuNUdNA', type: 'youtube' },
             { id: 'DJlgRlhaeME', type: 'youtube' },
+            { id: 'VQ9230-OoBw', type: 'youtube' },
         ],
 
         'the-true': [
@@ -189,9 +191,16 @@ var storyCfg = {
             { id: 'Li2v4Afy1H0', type: 'youtube' },
             { id: '4c7Juty0RYI', type: 'youtube' },
             { id: 'ncCnW7MKTCU', type: 'youtube' },
+            { id: 'TMLnDTkUEgg', type: 'youtube' },
+            { id: '6yPivtTKLno', type: 'youtube' },
         ],
 
-        'sad-plot twist': [
+        'bad-think': [
+            { id: 'QD5OGfAJIus', type: 'youtube' },
+            { id: 'eeeQcvtjV2k', type: 'youtube' },
+        ],
+
+        'sad-plot-twist': [
             { id: '44A0UTwoCsg', type: 'youtube' },
         ],
 
