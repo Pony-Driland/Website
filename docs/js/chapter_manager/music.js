@@ -509,7 +509,7 @@ musicManager.insertSFX = function(item) {
                     },
 
                     // Play
-                    play: function(volume = null) {
+                    play: function(inTime = null, volume = null) {
                         if (storyData.sfx[item].hiding) { newSound.pause(); }
                         storyData.sfx[item].hiding = false;
                         return new Promise(function(resolve, reject) {
@@ -521,6 +521,7 @@ musicManager.insertSFX = function(item) {
                                     newSound.currentTime = 0;
                                     storyData.sfx[item].playing = true;
                                     storyData.sfx[item].paused = false;
+                                    if (typeof inTime === 'number') { newSound.currentTime = inTime; }
                                     newSound.play();
                                     resolve();
                                 } catch (err) { reject(err); }
