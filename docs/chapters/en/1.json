@@ -1242,6 +1242,108 @@
         "value": "Did you talk about me meeting someone to know the right place? who was it?",
         "character": "Vini",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Oh? James? Yep! James... He's a great adventurer who understands a lot about everything.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James? Are you sure Kenny? He's kind of grumpy with new people. He always says he wants to do things all by himself. And Vini just arrived in our world. This is extremely dangerous for him.",
+        "character": "Rachel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel does a sad face, saying a little worried when she starts to think about the negative possibilities that could happen.",
+        "type": "action"
+    },
+
+    {
+        "value": "But... but Raquel. I'm sure James really needs an adventure partner. I get really worried if something happens to him along the way and there's no one to help him. He is very lucky that he is still alive.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny replied sadly back. Vini was worried trying to understand what was going on while watching the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh really? Where did I end up accidentally getting myself into?",
+        "character": "Vini",
+        "type": "think"
+    },
+
+    {
+        "value": "If Vini is a good adventurer, I'm sure they can do well!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "...",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Cool.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vini eats pancakes while doing a poker face in answering this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay! The pancakes are great!",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "C..Cool?",
+        "character": "Rachel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rachel get confused when she hears Vini reaction.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yep....That's...nice! It will be really fun! Vini will enjoy a good adventure!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny does a silly laugh.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes... I said cool in the sense of finding it a bit cool when kenny said \"He's very lucky he's still alive\" I thought it was a little cool and weird, but nothing that scared me.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vini continue eating pancake while doing a nervous giggles.",
+        "type": "action"
+    },
+
+    {
+        "value": "Kenny....are you sure?",
+        "character": "Raquel",
+        "type": "dialogue"
     }
 
 ]
