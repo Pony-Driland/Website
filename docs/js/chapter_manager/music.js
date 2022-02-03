@@ -323,7 +323,7 @@ var musicManager = {
             storyData.music.nav.disable = $('<i>', { class: 'fas fa-ban' });
 
             // Fix Youtube Player
-            storyData.music.nav.youtube.removeClass('hidden');
+            //storyData.music.nav.youtube.removeClass('hidden');
 
             // Prepare
             if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
@@ -401,7 +401,7 @@ var musicManager = {
                 storyData.chapter.nav.music,
 
                 // Youtube
-                $('<a>', { class: 'nav-item nav-link mx-3 p-0', indexitem: '0', id: 'youtube-thumb' }).append(storyData.music.nav.youtube),
+                //$('<a>', { class: 'nav-item nav-link mx-3 p-0', indexitem: '0', id: 'youtube-thumb' }).append(storyData.music.nav.youtube),
 
             ]);
 

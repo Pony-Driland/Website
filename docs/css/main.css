@@ -1,7 +1,7 @@
 #youtubePlayer {
     pointer-events: none;
-    height: 39px;
-    width: 39px;
+    /* height: 39px;
+    width: 39px; */
     background-color: #000 !important;
 }
 
