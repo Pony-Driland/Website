@@ -1081,11 +1081,11 @@
     {
         "value": "Good morning Kenny! How's the... Oh? New one?",
         "type": "dialogue",
-        "character": "Rachel"
+        "character": "Raquel"
     },
 
     {
-        "value": "Rachel spoke in a frightened way for a few seconds.",
+        "value": "Raquel spoke in a frightened way for a few seconds.",
         "type": "action"
     },
 
@@ -1252,7 +1252,7 @@
 
     {
         "value": "James? Are you sure Kenny? He's kind of grumpy with new people. He always says he wants to do things all by himself. And Vini just arrived in our world. This is extremely dangerous for him.",
-        "character": "Rachel",
+        "character": "Raquel",
         "type": "dialogue"
     },
 
@@ -1309,12 +1309,12 @@
 
     {
         "value": "C..Cool?",
-        "character": "Rachel",
+        "character": "Raquel",
         "type": "dialogue"
     },
 
     {
-        "value": "Rachel get confused when she hears Vini reaction.",
+        "value": "Raquel get confused when she hears Vini reaction.",
         "type": "action"
     },
 
