@@ -1937,6 +1937,51 @@
         "value": "W...wait! What are you doing?!",
         "character": "Kenny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "The unicorn uses the magic to silence Kenny. Kenny was a little scared by the unicorn's attitude. Everyone looked at the situation, but when everyone  realized who was there, everyone started to walk away, with slight fear, they went back to the normal routine.",
+        "type": "action"
+    },
+
+    {
+        "value": "Shhh... Everyone noticed and you should notice too. I'm talking to him~",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmm! HHHM HM!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny try to open his mouth for a few seconds. Vini was a little surprised, but then Vini tried to have a little attitude.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey, I think you can stop your magic, I know how to listen you.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The mysterious unicorn then laughed a little again and responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "Aww... Really know? Do you know how to defend yourself too~?",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What a beautiful first day. Crazy females showing up now.",
+        "character": "Vini",
+        "type": "think"
     }
 
 ]
