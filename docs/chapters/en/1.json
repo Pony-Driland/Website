@@ -1750,6 +1750,52 @@
         "value": "Jeez, how long has he been here?",
         "character": "Vini",
         "type": "dialogue"
+    },
+
+    {
+        "value": "I don't know for sure... but from the stories of the journeys he's taken... It seems like a long time ago. He has a lot of experience in what he does.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay... This doesn't look good. It's nothing good. Will I be stuck in this place forever?!",
+        "character": "Vini",
+        "type": "think"
+    },
+
+    {
+        "value": "Interesting, it seems that he only has you as an friend.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny laughed a little nervously.",
+        "type": "action"
+    },
+
+    {
+        "value": "James is kind of anti-social. A little...",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh, I see. Well, sorry to interrupt the conversation, but we will arrive the market?",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Market? We are.....AAH!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny bumps onto the door of the market shop by accident.",
+        "type": "action"
     }
 
 ]
