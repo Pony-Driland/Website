@@ -1839,6 +1839,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "Kenny put his paw on his head to try to get as dizzy as possible. When everyone noticed that Vini was fine, everyone went back to the routine.",
         "type": "action"
     },
@@ -1872,6 +1873,7 @@
     },
 
     {
+        "set": { "playlistPlay": "bad-think" },
         "value": "So Vini looked at a female unicorn doing a suspicious face while laughing at Vini.",
         "type": "action"
     },
