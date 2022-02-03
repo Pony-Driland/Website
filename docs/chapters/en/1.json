@@ -1452,6 +1452,54 @@
         "value": "Vini was a little embarrassed and thoughtful when thinking how to say about nudes without being explicit.",
         "value_alternative": "Vini tried to understand Raquel's reaction during some seconds.",
         "type": "action"
+    },
+
+    {
+        "value": "Well... Yes Kenny, you can do everything inside the phone, it's amazing, but unfortunately it's limited in terms of functioning where it only stays on until the battery or batteries run out.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "nsfw": ["questionable"],
+        "value": "......",
+        "value_alternative": "Okay? Maybe i understood.",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "nsfw": ["questionable"],
+        "value": "Raquel is still embarrassed, trying to understand what Vini was talking about.",
+        "value_alternative": "Raquel didn't know what to say and just continued watching the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait... run out of battery? And how do you recharge that battery? Did you bring anything to do this?",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny remains excited, wanting to understand more about the mysterious cell phone.",
+        "type": "action"
+    },
+    {
+        "value": "Wait... I didn't bring the charger! SHIT!",
+        "character": "Vini",
+        "type": "think"
+    },
+
+    {
+        "value": "Okay okay... Unfortunately I don't have the charger, because I wasn't with me on the beach and I don't have faith that it's here.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vini was very uncomfortable and very nervous trying to think about what to do if the cell phone just ran out of battery. He was very worried.",
+        "type": "action"
     }
 
 ]
