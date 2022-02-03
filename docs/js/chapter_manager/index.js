@@ -1,5 +1,19 @@
 var storyDialogue = {
 
+    nsfwChecker: function(data) {
+        if (Array.isArray(data.nsfw)) {
+
+            let nsfwValue = false;
+            for (const item in data.nsfw) {
+                nsfwValue = tinyLib.booleanCheck(localStorage.getItem('NSFW' + data.nsfw[item]));
+                if (nsfwValue) { break; }
+            }
+
+            if (nsfwValue) { return data.value; } else { return data.value_alternative; }
+
+        } else { return data.value; }
+    },
+
     // Action
     action: function(item, items, data) {
 
