@@ -1437,6 +1437,21 @@
     {
         "value": "Raquel was very confused when trying to understand what is happening.",
         "type": "action"
+    },
+
+    {
+        "nsfw": ["questionable"],
+        "value": "Yes, nudes. A way for you to pay the people you work for.",
+        "value_alternative": "Yes. This is the phone. Something wrong about it?",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "nsfw": ["questionable"],
+        "value": "Vini was a little embarrassed and thoughtful when thinking how to say about nudes without being explicit.",
+        "value_alternative": "Vini tried to understand Raquel's reaction during some seconds.",
+        "type": "action"
     }
 
 ]
