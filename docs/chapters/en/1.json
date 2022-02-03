@@ -1413,6 +1413,30 @@
         "value_alternative": "Oh really? Don't you have anything that looks like a cell phone? Cell phones are very common where I came from, they are very common everyone has them, we use them to communicate with other people, watch BoboFlix, play games, basically it was a very well done work.",
         "character": "Vini",
         "type": "dialogue"
+    },
+
+    {
+        "value": "C..communicate? Amazing! Communication is rare in Pony Driland! BoboFlix? My God! That name... is this some specialist agency?!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny's eyes dilated a little as he got excited about the cell phone.",
+        "type": "action"
+    },
+
+    {
+        "nsfw": ["questionable"],
+        "value": "Wait.... Nudes? WHAT?!",
+        "value_alternative": "W...what?",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel was very confused when trying to understand what is happening.",
+        "type": "action"
     }
 
 ]
