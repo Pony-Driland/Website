@@ -1722,8 +1722,34 @@
         "value": "And who helped us start our life here was James, we met him in the middle of the forest when we were trying to discover how to survive in this place. It's a long story, I'd found him in need of help, he'd been attacked by Elite Color. So as a thank you, he helped us build a house and a new life around here.",
         "character": "Kenny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny gave a nervous little laugh when he remembered more thing.",
+        "type": "action"
+    },
+
+    {
+        "value": "About your past... It reminds me a little the James's past... When he told me a little bit of his story, he said something similar.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What?!",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vini was a little surprised and worried to hear this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Jeez, how long has he been here?",
+        "character": "Vini",
+        "type": "dialogue"
     }
-
-
 
 ]
