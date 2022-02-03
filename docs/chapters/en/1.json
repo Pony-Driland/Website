@@ -1663,8 +1663,31 @@
 
     {
         "set": { "playlistPlay": "think" },
-        "value": "Vini watched Kenny use the saddle for a few seconds as he followed Kenny. Then the two ponies started walking through the village. Vini and Kenny were walking through the village towards the market, passing several and several ponies and houses, the village was very busy with several ponies living life, adults and children living their routine, and children playing happily on the street.",
+        "value": "Vini watched Kenny use the saddle for a few seconds as he followed Kenny. Then the two ponies started walking through the village. Vini and Kenny were walking through the village towards the market, passing several and several ponies and houses, the village was very busy with several ponies living life, adults and children living their routine, and children playing happily on the street. Then Kenny would look at Vini and ask kindly.",
         "type": "action"
+    },
+
+    {
+        "value": "Well. What would you like to talk about?",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Where do you and Raquel know each other from? very nice of you 2 to welcome me after I suddenly show up on the beach. In my world people aren't that kind.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny replied happily as he got up from the chair and put the bag saddle on he body. Then Kenny and Vini started walking towards the market.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... We met on the exact same beach you showed up on. We had a pure coincidence that we were teleported here at the same time, but we are from different dimensions. By instinct we decided to stay together to try to protect ourselves, and that ended up creating our friendship.",
+        "character": "Kenny",
+        "type": "dialogue"
     }
 
 ]
