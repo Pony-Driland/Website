@@ -2015,6 +2015,23 @@
         "value": "Enough of the jokes Rayane! What are you doing here?!",
         "character": "Kenny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Meet the newbies... you know this is my role here. Can you please let me continue what I started~?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wow! Are you ok Kenny? Who is this charming girl with a broadsword?",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vini speaking a little dumbfounded and not understanding.",
+        "type": "action"
     }
 
 ]
