@@ -21,7 +21,7 @@ var storyDialogue = {
             $('<td>', { class: 'py-4 font-weight-bold d-none d-md-table-cell' }).text(item),
             $('<td>', { class: 'py-4' }).text(''),
             $('<td>', { class: 'py-4' }).append(
-                $('<strong>').text(data.value)
+                $('<strong>').text(storyDialogue.nsfwChecker(data))
             )
         );
 
@@ -36,7 +36,7 @@ var storyDialogue = {
             $('<td>', { class: 'py-4 font-weight-bold d-none d-md-table-cell' }).text(item),
             $('<td>', { class: 'py-4', width: '15%' }).text(data.character),
             $('<td>', { class: 'py-4' }).append(
-                $('<span>').text(data.value)
+                $('<span>').text(storyDialogue.nsfwChecker(data))
             )
         );
 
@@ -51,7 +51,7 @@ var storyDialogue = {
             $('<td>', { class: 'py-4 font-weight-bold d-none d-md-table-cell' }).text(item),
             $('<td>', { class: 'py-4', width: '15%' }).text(data.character),
             $('<td>', { class: 'py-4' }).append(
-                $('<small>').text(data.value)
+                $('<small>').text(storyDialogue.nsfwChecker(data))
             )
         );
 
