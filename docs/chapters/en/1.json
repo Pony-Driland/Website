@@ -1982,6 +1982,28 @@
         "value": "What a beautiful first day. Crazy females showing up now.",
         "character": "Vini",
         "type": "think"
+    },
+
+    {
+        "value": "Her magic continued and a sword appeared being levitated by her that moves next to Vini mane while her hood comes off, revealing the rest of her face.",
+        "type": "action"
+    },
+
+    {
+        "value": "HHM HMM! AH! Noo! Please! Calm down!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny continue trying to move towards Vini while some ponies looked scared at the time.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hehehe... Don't be afraid, I won't hurt you. Everyone here in the village knows me very well, and everyone knows when I come to visit here, it's because I come to have \"fun\"~",
+        "character": "???",
+        "type": "dialogue"
     }
 
 ]
