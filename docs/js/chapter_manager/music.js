@@ -315,15 +315,19 @@ var musicManager = {
             if (!storyData.music.nav) { storyData.music.nav = {}; }
 
             // Buttons
+            storyData.music.nav.youtube = $('#youtubePlayer');
             storyData.music.nav.info = $('<i>', { class: 'fas fa-info-circle' });
             storyData.music.nav.play = $('<i>', { class: 'fas fa-play' });
             storyData.music.nav.volume = $('<i>', { class: 'fas fa-volume-mute' });
             storyData.music.nav.stop = $('<i>', { class: 'fas fa-stop' });
             storyData.music.nav.disable = $('<i>', { class: 'fas fa-ban' });
 
+            // Fix Youtube Player
+            storyData.music.nav.youtube.removeClass('hidden');
+
             // Prepare
             if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
-            storyData.chapter.nav.music = $('<div>', { indexItem: 0, class: 'nav-item', id: 'music' }).append(
+            storyData.chapter.nav.music = $('<div>', { indexItem: 1, class: 'nav-item', id: 'music' }).append(
                 $('<div>', { id: 'music-player', class: 'd-none' }).append(
 
                     // Info
@@ -391,7 +395,15 @@ var musicManager = {
             );
 
             // Insert
-            $('#fic-nav > #status').prepend(storyData.chapter.nav.music);
+            $('#fic-nav > #status').prepend([
+
+                // Music
+                storyData.chapter.nav.music,
+
+                // Youtube
+                $('<a>', { class: 'nav-item nav-link mx-3 p-0', indexitem: '0', id: 'youtube-thumb' }).append(storyData.music.nav.youtube),
+
+            ]);
 
         }
 

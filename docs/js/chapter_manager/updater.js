@@ -79,7 +79,7 @@ var updateChapterCache = function(lastPage) {
 
             // Insert
             if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
-            storyData.chapter.nav.bookmark = $('<a>', { indexItem: 1, class: 'nav-item nav-link', id: 'bookmark' });
+            storyData.chapter.nav.bookmark = $('<a>', { indexItem: 2, class: 'nav-item nav-link', id: 'bookmark' });
             $('#fic-nav > #status').prepend(storyData.chapter.nav.bookmark);
 
             // Icon
@@ -151,7 +151,7 @@ var chapterSet = {
             // Add Item Base
             if ($('#fic-nav > #status #day').length < 1) {
                 if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
-                storyData.chapter.nav.day = $('<a>', { indexItem: 4, class: 'nav-item nav-link', id: 'day' });
+                storyData.chapter.nav.day = $('<a>', { indexItem: 5, class: 'nav-item nav-link', id: 'day' });
                 $('#fic-nav > #status').prepend(storyData.chapter.nav.day);
             }
 
@@ -166,7 +166,7 @@ var chapterSet = {
             // Add Item Base
             if ($('#fic-nav > #status #dayNightCycle').length < 1) {
                 if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
-                storyData.chapter.nav.dayNightCycle = $('<a>', { indexItem: 3, class: 'nav-item nav-link', id: 'dayNightCycle' });
+                storyData.chapter.nav.dayNightCycle = $('<a>', { indexItem: 4, class: 'nav-item nav-link', id: 'dayNightCycle' });
                 $('#fic-nav > #status').prepend(storyData.chapter.nav.dayNightCycle);
             }
 
@@ -195,7 +195,7 @@ var chapterSet = {
             // Add Item Base
             if ($('#fic-nav > #status #weather').length < 1) {
                 if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
-                storyData.chapter.nav.weather = $('<a>', { indexItem: 2, class: 'nav-item nav-link', id: 'weather' });
+                storyData.chapter.nav.weather = $('<a>', { indexItem: 3, class: 'nav-item nav-link', id: 'weather' });
                 $('#fic-nav > #status').prepend(storyData.chapter.nav.weather);
             }
 
@@ -224,7 +224,7 @@ var chapterSet = {
             // Add Item Base
             if ($('#fic-nav > #status #where').length < 1) {
                 if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
-                storyData.chapter.nav.where = $('<a>', { indexItem: 5, class: 'nav-item nav-link', id: 'where' });
+                storyData.chapter.nav.where = $('<a>', { indexItem: 6, class: 'nav-item nav-link', id: 'where' });
                 $('#fic-nav > #status').prepend(storyData.chapter.nav.where);
             }
 
