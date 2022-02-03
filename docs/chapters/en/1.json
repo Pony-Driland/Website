@@ -2004,6 +2004,17 @@
         "value": "Hehehe... Don't be afraid, I won't hurt you. Everyone here in the village knows me very well, and everyone knows when I come to visit here, it's because I come to have \"fun\"~",
         "character": "???",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny fought the magic again until he could finally speak. So he spoke out loud.",
+        "type": "action"
+    },
+
+    {
+        "value": "Enough of the jokes Rayane! What are you doing here?!",
+        "character": "Kenny",
+        "type": "dialogue"
     }
 
 ]
