@@ -1858,6 +1858,83 @@
         "value": "Well, I came to buy food, but if you want, you can buy some important things for your daily life. Feel free. I can help you pay for things.",
         "character": "Kenny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vini starts to hear someone giggles around, making Vini looks towards the giggle. Vini laughed a little back.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? I think someone laughed about it, I think as I came from another world, there are 2 details, even if I had some money here, I think my kind of money wouldn't be used here.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vini looked at a female unicorn doing a suspicious face while laughing at Vini.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Another dimension? Interesting to know. I think we have a newbie here.",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The mysterious unicorn was giggling again at Vini and approached slowly to analyze him.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah yeah... if your world's money is just a sheet of paper like I've seen a few times... forget it. Wait, this voice? Oh no.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny looked a little surprised from the voice.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah...Hi.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vini turns to Kenny for a few seconds. Then he turned to look at the mysterious unicorn.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? You're rude...",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The unicorn giggles again and uses her magic, changing direction of Vini face for Vini to look at her. Vini saw her wearing a cape to protect her identity a bit, but she left her face visible to Vini.",
+        "type": "action"
+    },
+
+    {
+        "value": "Won't you even let me introduce myself? You are very impolite.",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The unicorn approaches you while giggling more suspiciously.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...wait! What are you doing?!",
+        "character": "Kenny",
+        "type": "dialogue"
     }
 
 ]
