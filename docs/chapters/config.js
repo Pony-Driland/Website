@@ -3,7 +3,7 @@ var storyCfg = {
     // Info
     underDevelopment: false,
     domain: 'ponydriland.com',
-    itemsPerPage: 50,
+    itemsPerPage: 100,
     title: 'Pony Driland',
     discordInvite: 'GegfAgNxRX',
     description: 'The mysterious world.',
