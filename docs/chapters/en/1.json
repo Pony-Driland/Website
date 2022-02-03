@@ -1375,7 +1375,18 @@
     },
 
     {
-        "value": "Raquel talks about a way to make Kenny calm down. Raquel was worried about Kenny's reaction to trying to help James.",
+        "value": "Raquel talks about a way to make Kenny calm down. Raquel was worried about Kenny's reaction to trying to help James. Meanwhile, Vini was watching the conversation and was slightly worried about Kenny. But he is slowly trusting more as he sees Raquel talking to Kenny, and notes that they are just normal villagers.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, I'm new here, so I don't see why not meet new things and new ponies too, of course if it's not too much trouble.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vini tried to remain calm and only responded with a slight nervousness.",
         "type": "action"
     }
 
