@@ -1680,6 +1680,29 @@
     },
 
     {
+        "value": "Kenny was a little surprised and responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "That's true? Is your species going extinct? This looks terrible.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "No, these are stupid things to be honest. But well, sorry to interrupt you, but you can continue.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Sorry, maybe one day everyone will understand better about this. Well then...",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
         "value": "Kenny got a little emotional remembering this information, but then he responded.",
         "type": "action"
     },
@@ -1688,6 +1711,19 @@
         "value": "Well... We met on the exact same beach you showed up on. We had a pure coincidence that we were teleported here at the same time, but we are from different dimensions. By instinct we decided to stay together to try to protect ourselves, and that ended up creating our friendship.",
         "character": "Kenny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny grew slightly more worried as the conversation continued.",
+        "type": "action"
+    },
+
+    {
+        "value": "And who helped us start our life here was James, we met him in the middle of the forest when we were trying to discover how to survive in this place. It's a long story, I'd found him in need of help, he'd been attacked by Elite Color. So as a thank you, he helped us build a house and a new life around here.",
+        "character": "Kenny",
+        "type": "dialogue"
     }
+
+
 
 ]
