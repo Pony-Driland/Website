@@ -1500,6 +1500,67 @@
     {
         "value": "Vini was very uncomfortable and very nervous trying to think about what to do if the cell phone just ran out of battery. He was very worried. So Vini looked at Raquel and saw her reaction again, so he decided to ask.",
         "type": "action"
-    }
+    },
+
+    {
+        "value": "Ah? Are you ok Raquel?",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vini speak calmly and surprised.",
+        "type": "action"
+    },
+
+    {
+        "value": "No...nothing...nothing. I hope I got it wrong. The breakfast was great, I'll take care of my gardening now. I will be right back.",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel makes a disguised smile of shocked reaction, and moves towards the door that leads to the garden of the house.",
+        "type": "action"
+    },
+
+    {
+        "value": "Raquel? Where are you going? Wait! Oh okay, too late.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kelly was looking a little confused as Raquel closes the door.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well Vini, sorry I didn't see anything on the sand when I found you. But maybe James can help you with that. I don't know anything about technology, only James knows better about it.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny makes a slight smile, trying to show a feeling of apology for what happened.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah, I'm going to save the remaining energy for something very useful. Don't worry, I forgive you.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vini sighs deeply.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... Kenny, can I help you with something? What do you do on the morning? Can I help you with something?",
+        "character": "Vini",
+        "type": "dialogue"
+    },
 
 ]
