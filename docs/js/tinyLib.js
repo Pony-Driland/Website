@@ -159,6 +159,27 @@ tinyLib.shuffle = function(array) {
 
 };
 
+// Boolean Checker
+tinyLib.booleanCheck = function(value) {
+
+    if (
+
+        typeof value !== 'undefined' &&
+
+        (
+            value === 'true' ||
+            value === '1' ||
+            value === true ||
+            value === 1 ||
+            value === 'on'
+        )
+
+    ) {
+        return true;
+    } else { return false; }
+
+};
+
 // Visible Item
 $.fn.isInViewport = function() {
 
