@@ -1796,6 +1796,68 @@
     {
         "value": "Kenny bumps onto the door of the market shop by accident.",
         "type": "action"
+    },
+
+    {
+        "value": "Y..Yes....we arrived. @.@",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeez, it looks like someone still doesn't know how to walk on all fours well yet.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vini speak ironically but friendly. So Vini help Kenny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Thank you. Don't worry. I am fine.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny moved to get up slowly while the market door swung for a few seconds because of the impact, and some ponies from the market looked a little surprised at the scene.",
+        "type": "action"
+    },
+
+    {
+        "value": "Kenny? Are you okay?",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Me? I'm great.. I've never been better... It was just a light tap on the door.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny put his paw on his head to try to get as dizzy as possible. When everyone noticed that Vini was fine, everyone went back to the routine.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. So, you came to buy what here at the market?",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny smiled and answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, I came to buy food, but if you want, you can buy some important things for your daily life. Feel free. I can help you pay for things.",
+        "character": "Kenny",
+        "type": "dialogue"
     }
 
 ]
