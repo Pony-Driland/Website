@@ -309,7 +309,7 @@ var openChapterMenu = function(params = {}) {
                                         if (storyCfg.nsfw[NSFWITEM]) {
 
                                             // Get Value
-                                            const nsfwValue = tinyLib.booleanCheck(localStorage.getItem('NSFW' + NSFWITEM));
+                                            let nsfwValue = tinyLib.booleanCheck(localStorage.getItem('NSFW' + NSFWITEM));
 
                                             // Set Button Text
                                             let buttonClass = 'success';
