@@ -1403,14 +1403,14 @@
     },
 
     {
-        "value": "Raquel reply, getting a little confused and surprised while holding a piece of the breakfast she is eating.",
+        "value": "Raquel reply, getting a little confused and surprised while holding a piece of the breakfast she is eating. Vini was curious and a little surprised before answering.",
         "type": "action"
     },
 
     {
         "nsfw": ["questionable"],
-        "value": "It's a cell phone, cell phones are very common where I came from, they are very common everyone has them, we use them to communicate with other people, watch BoboFlix, play games, send nudity to people, basically it was a very well done work.",
-        "value_alternative": "It's a cell phone, cell phones are very common where I came from, they are very common everyone has them, we use them to communicate with other people, watch BoboFlix, play games, basically it was a very well done work.",
+        "value": "Oh really? Don't you have anything that looks like a cell phone? Cell phones are very common where I came from, they are very common everyone has them, we use them to communicate with other people, watch BoboFlix, play games, send nudity to people, basically it was a very well done work.",
+        "value_alternative": "Oh really? Don't you have anything that looks like a cell phone? Cell phones are very common where I came from, they are very common everyone has them, we use them to communicate with other people, watch BoboFlix, play games, basically it was a very well done work.",
         "character": "Vini",
         "type": "dialogue"
     }
