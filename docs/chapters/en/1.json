@@ -1627,6 +1627,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "Now! I've already finished my breakfast schedule.",
         "character": "Kenny",
         "type": "dialogue"
@@ -1661,6 +1662,7 @@
     },
 
     {
+        "set": { "playlistPlay": "think" },
         "value": "Vini watched Kenny use the saddle for a few seconds as he followed Kenny. Then the two ponies started walking through the village. Vini and Kenny were walking through the village towards the market, passing several and several ponies and houses, the village was very busy with several ponies living life, adults and children living their routine, and children playing happily on the street.",
         "type": "action"
     }
