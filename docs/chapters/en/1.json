@@ -1635,6 +1635,34 @@
     {
         "value": "Kenny replied while finishing the rest of the food on his plate before leaving a small friendly giggles about Vini answer.",
         "type": "action"
+    },
+
+    {
+        "value": "Ok ok ok, if possible I can accompany you and we can talk on the way ok?",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Fine!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny replied happily as he got up from the chair and put the bag saddle on he body. Then Kenny and Vini started walking towards the market.",
+        "type": "action"
+    },
+
+    {
+        "value": "a saddle? Is that like a backpack? Interesting...",
+        "character": "Vini",
+        "type": "think"
+    },
+
+    {
+        "value": "Vini watched Kenny use the saddle for a few seconds as he followed Kenny. Then the two ponies started walking through the village. Vini and Kenny were walking through the village towards the market, passing several and several ponies and houses, the village was very busy with several ponies living life, adults and children living their routine, and children playing happily on the street.",
+        "type": "action"
     }
 
 ]
