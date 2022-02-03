@@ -1,7 +1,13 @@
 #youtubePlayer {
-    opacity: 0;
     pointer-events: none;
-    position: fixed;
+    height: 39px;
+    width: 39px;
+    background-color: #000 !important;
+}
+
+#youtubePlayer.hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
 
 #markdown-read>h1,
