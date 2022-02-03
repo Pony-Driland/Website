@@ -1344,6 +1344,39 @@
         "value": "Kenny....are you sure?",
         "character": "Raquel",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Well..........",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny laughed nervously as he thought about the consequences.",
+        "type": "action"
+    },
+
+    {
+        "value": "if Vini likes a good adventure.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny continue speaking awkwardly while continuing to eat breakfast.",
+        "type": "action"
+    },
+
+    {
+        "value": "Kenny... Please no. Don't be like that, James will be fine, maybe we'd better help him to have a life in the village...",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel talks about a way to make Kenny calm down. Raquel was worried about Kenny's reaction to trying to help James.",
+        "type": "action"
     }
 
 ]
