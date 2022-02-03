@@ -1561,6 +1561,80 @@
         "value": "Well... Kenny, can I help you with something? What do you do on the morning? Can I help you with something?",
         "character": "Vini",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Thank you... I'm going to the market to shop soon. If you want to accompany me, it would be a great help.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny giggles a little, trying to forget a little about the negative side of the previous conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah, wow, yes yes, we can walk and you will instruct me more about walking on 4 and even trying to use the wings if possible of course.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "No problem! It's going to be fun and fun and a lot of fun! Every step is progress!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny speaks confidently.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Maybe this is all a dream, maybe I hit my head while trying to eat my X-Tudo. Let's take it easy, the exit from this place shouldn't be too far. There must be someone superior who can send me home.",
+        "character": "Vini",
+        "type": "think"
+    },
+
+    {
+        "value": "And about the wings, well... Raquel and I are earth ponies, we don't know how to fly, you'll have to find another pegasus to learn how to use them.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny replied with a nervous smile trying to find an answer for you.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah, okay okay.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "ARGH! Fall for the obvious. Nice.",
+        "character": "Vini",
+        "type": "think"
+    },
+
+    {
+        "value": "What time are we going to the market?",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Now! I've already finished my breakfast schedule.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny replied while finishing the rest of the food on his plate before leaving a small friendly laugh about Vini answer.",
+        "type": "action"
     }
 
 ]
