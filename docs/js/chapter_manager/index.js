@@ -234,7 +234,7 @@ var openChapterMenu = function(params = {}) {
             tinyPag,
 
             // Table
-            $('<table>', { class: 'table table-bordered' }).css('background-color', 'rgb(44 44 44)').append(table),
+            $('<table>', { class: 'table table-bordered table-striped' }).css('background-color', 'rgb(44 44 44)').append(table),
 
             // Pagination
             tinyPag2,
