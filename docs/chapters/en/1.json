@@ -2133,6 +2133,55 @@
         "value": "Just stay very quiet where you came from and I can spare you any unpleasant encounters about my presence. Hehehe... And unfortunately I'm not open for help, me and my sword already know very well who I'm working with.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "So Rayane walked away from Vini slowly. Vini laughed a little nervously and just answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "OK then. Okay okay...",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The sword that was on her side suddenly flew, scraping another little part of Vini mane in surprise.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ham? Okay?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane looked at Vini face again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Be careful to listen to my words. I'll be watching you when I feel your presence.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane put the sword away again and walked through the village again, and so Kenny starts to feel better slowly.",
+        "type": "action"
+    },
+
+    {
+        "value": "At least she was lighter I think.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny laughed a little nervously. While Rayane was walking, everyone scared was making space for her to pass until she left completely.",
+        "type": "action"
     }
 
 ]
