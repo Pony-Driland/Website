@@ -2223,6 +2223,90 @@
     {
         "value": "Kenny talk a little without hope of knowing what exactly she is.",
         "type": "action"
+    },
+
+    {
+        "value": "Kenny?",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vini talks a little lost about the situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "I...I...oh? What?",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I think I played on Rayane.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Talking half looking all around.",
+        "type": "action"
+    },
+
+    {
+        "value": "WHAT?! Have you gone crazy?! She'll do you disappear at her first opportunity!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny feel very surprised by Vini words.",
+        "type": "action"
+    },
+
+    {
+        "value": "I have a certain problem with this kind of people.... ponies. Yes, ponies. But are we going to go back to what we were doing originally? You still want help shopping?",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny was very confused by the words he heard, so he responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "Person? Pony Person? What is it? Oh yes. I almost forgot about shopping, let's go to the market then.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny spoke with a clumsy face as he finished calming down.",
+        "type": "action"
+    },
+
+    {
+        "value": "Nice. Very nice. I'll have to adapt my vocabulary too.",
+        "character": "Vini",
+        "type": "think"
+    },
+
+    {
+        "value": "I was talking about people, but here I'm going to start talking about ponies, it sounds nicer.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vini talk a little worried about kenny.",
+        "type": "action"
+    },
+
+    {
+        "value": "You said not to traumatize the newbies \"again\" I don't understand, have you seen this happen?",
+        "character": "Vini",
+        "type": "dialogue"
     }
 
 ]
