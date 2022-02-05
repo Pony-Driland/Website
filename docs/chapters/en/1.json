@@ -2141,6 +2141,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "OK then. Okay okay...",
         "character": "Vini",
         "type": "dialogue"
@@ -2174,6 +2175,7 @@
     },
 
     {
+        "set": { "playlistPlay": "think" },
         "value": "At least she was lighter I think.",
         "character": "Kenny",
         "type": "dialogue"
@@ -2181,6 +2183,45 @@
 
     {
         "value": "Kenny laughed a little nervously. While Rayane was walking, everyone scared was making space for her to pass until she left completely.",
+        "type": "action"
+    },
+
+    {
+        "value": "Kenny? Are you ok?",
+        "character": "Vin",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I...I'm fine...NEVER BEEN BETTER! SHE SHUT ME UP!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny breaths firmly as he calms down. He was very anxious and worried about the situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay, sorry. But... Who is she?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vini asked very curiously while helping Kenny to compose himself.",
+        "type": "action"
+    },
+
+    {
+        "value": "Thank you. Nobody really knows about her... They say she's been found in the forests of Pony Driland doing something mysterious. Some say she hunts treasures or seeks to solve mysteries. She's kind of confused sometimes she is threatening, and other times she tries to help. We have no proof of who she really is. We should forget about that a little bit. She is very troublesome.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny talk a little without hope of knowing what exactly she is.",
         "type": "action"
     }
 
