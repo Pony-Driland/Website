@@ -2342,6 +2342,53 @@
     {
         "value": "Kenny talks desperately when he looks at the clock and enters the market. Vini felt better seeing Kenny worry less about problems.",
         "type": "action"
+    },
+
+    {
+        "value": "Let's go.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+    {
+        "value": "Vini follows Kenny.",
+        "type": "action"
+    },
+    {
+        "value": "Are grocery stores of your dimension is divided by sessions?",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+    {
+        "value": "Vini was a little surprised and responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes, some are giants and are divided by rows of huge streets, there's not much difference between my little world and this one.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Cool! it will be easy then! Follow the signs and they will guide you! I'll go see the food section! We meet at the cashier!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny smiled happily and was already moving towards the food session.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh ok. Hey! I'll take a little walk and if I find something I'll let you know, we'll meet at the cashier or somewhere! He was really excited.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vini analyzed the situation and became very thoughtful.",
+        "type": "action"
     }
 
 ]
