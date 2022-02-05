@@ -5,6 +5,7 @@
         "discord-markdown": "^2.5.1",
         "express": "^4.17.2",
         "marked": "^4.0.10",
+        "md5": "^2.3.0",
         "node-fetch": "^3.2.0",
         "paginate-array": "^2.1.0"
     }
