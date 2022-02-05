@@ -2321,9 +2321,24 @@
     },
 
     {
+        "set": {
+            "dayNightCycle": "evening"
+        },
         "value": "Oh okay okay, let's go shopping? Or do you need a little more time to compose yourself?",
         "character": "Vini",
         "type": "dialogue"
+    },
+
+
+    {
+        "value": "Shopping? Oh yes! Shopping! Shopping time! We can't be late! My God! It's almost evening! There's the first reason! Rayane made us late!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny talks desperately when he looks at the clock and enters the market. Vini felt better seeing Kenny worry less about problems.",
+        "type": "action"
     }
 
 ]
