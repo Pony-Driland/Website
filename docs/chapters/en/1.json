@@ -2032,6 +2032,79 @@
     {
         "value": "Vini speaking a little dumbfounded and not understanding.",
         "type": "action"
+    },
+
+    {
+        "value": "She's...",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane's magic shuts Kenny up again while Rayane made a little teasing laugh.",
+        "type": "action"
+    },
+
+    {
+        "value": "HHM!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes, me. I like to discover secrets, and one of the most fun secrets is knowing who the new beginners are~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane slowly approached Vini as she said this, without intimidating him too much.",
+        "type": "action"
+    },
+
+    {
+        "value": "Interesting.... it looks like it's your first day here, you haven't even decided where to start yet... if I were you, I'd be very careful where have you been. Heh, The new one is the easiest prey and the first to die around here~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane spoke in a delicate and provocative voice as she walked around Vini and rubbed her tail on Vini face, doing a small act of intimidation on Vini.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...what? What exactly do you do, charming Rayane?",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vini speak somewhat ironically while trying to resist the provocations. So the sword that was floating and suddenly stuck on the ground 2 centimeters from Vini face.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..OH! WOW!",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hehehe... Do you really want to know? It will take more than a simple question to know that~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane! Please do not! We just came to shop! Don't let newbies traumatized again!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane spoke in a delicate and provocative voice as she walked around Vini and rubbed her tail on Vini face, doing a small act of intimidation on Vini.",
+        "type": "action"
     }
 
 ]
