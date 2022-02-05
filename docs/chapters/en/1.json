@@ -2425,7 +2425,7 @@
     {
         "set": {
             "item": [{
-                "id": "surprise-tin",
+                "id": "basic-wound-spray",
                 "owner": "vini",
                 "amount": 1
             }]
@@ -2524,6 +2524,18 @@
         "value": "Oh, fine! I'll go there and then I'll come back.",
         "character": "Vini",
         "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "item": [{
+                "id": "basic-wound-spray",
+                "owner": "vini",
+                "amount": 1
+            }]
+        },
+        "value": "Vini then continued walking through the hallways, analyzing more and more items, then he just got 1 more basic spray.",
+        "type": "action"
     }
 
 ]
