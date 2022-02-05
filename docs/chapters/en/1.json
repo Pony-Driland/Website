@@ -2359,6 +2359,7 @@
         "type": "dialogue"
     },
     {
+        "set": { "playlistPlay": null },
         "value": "Vini was a little surprised and responded.",
         "type": "action"
     },
@@ -2387,6 +2388,7 @@
     },
 
     {
+        "set": { "playlistPlay": "fantasy-village" },
         "value": "So Vini analyzed the situation and became very thoughtful.",
         "type": "action"
     },
