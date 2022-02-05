@@ -173,7 +173,7 @@ var chapterSet = {
             // Types
             const types = {
                 morning: { icon: 'fas fa-sun', title: 'Morning' },
-                evening: { icon: 'cloud-sun', title: 'Evening' },
+                evening: { icon: 'fas fa-cloud-sun', title: 'Evening' },
                 night: { icon: 'fas fa-moon', title: 'Night' },
                 lateAtNigh: { icon: 'fas fa-bullseye', title: 'Late at Nigh' }
             };
@@ -181,8 +181,12 @@ var chapterSet = {
             const obj = $('#fic-nav > #status #dayNightCycle').css('font-size', '17pt');
             obj.empty();
             if (types[value]) {
-                obj.attr('title', types[value].title).append($('<i>', { class: types[value].icon }));
-                obj.tooltip();
+                if (!obj.attr('data-original-title')) {
+                    obj.attr('title', types[value].title).append($('<i>', { class: types[value].icon }));
+                    obj.tooltip();
+                } else {
+                    obj.attr('data-original-title', types[value].title);
+                }
                 obj.removeAttr('title');
             }
 
