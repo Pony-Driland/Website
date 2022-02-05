@@ -2395,7 +2395,7 @@
 
     {
         "set": {
-            "newItem": [{
+            "item": [{
                 "id": "surprise-tin",
                 "owner": "vini",
                 "amount": 1
@@ -2424,7 +2424,7 @@
 
     {
         "set": {
-            "newItem": [{
+            "item": [{
                 "id": "surprise-tin",
                 "owner": "vini",
                 "amount": 1
@@ -2442,7 +2442,7 @@
 
     {
         "set": {
-            "newItem": [{
+            "item": [{
                 "id": "beer",
                 "owner": "vini",
                 "amount": 2
@@ -2460,13 +2460,17 @@
 
     {
         "set": {
-            "newItem": [{
+            "item": [{
                 "id": "energy-drink",
                 "owner": "vini",
                 "amount": 1
+            }, {
+                "id": "water",
+                "owner": "vini",
+                "amount": 5
             }]
         },
-        "value": "Vini get 1 Energetic.",
+        "value": "Vini get 1 Energy Drink and take 5 waters.",
         "type": "action"
     }
 
