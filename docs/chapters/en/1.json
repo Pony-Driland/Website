@@ -2105,6 +2105,34 @@
     {
         "value": "Rayane spoke in a delicate and provocative voice as she walked around Vini and rubbed her tail on Vini face, doing a small act of intimidation on Vini.",
         "type": "action"
+    },
+
+    {
+        "value": "So Vini tried to keep calm and started to speak in a rhetorical way.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, I think I have things that interest you, by the way, you came to me, if you do something with me, you probably won't get answers. so I think we can help each other don't you think?",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Interest? Heh~ I would say not for now... If you don't do anything silly on Pony Driland, you can be sure nothing will happen to you.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane approached Vini well and stared into the Vini eyes to draw Vini attention fixedly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Just stay very quiet where you came from and I can spare you any unpleasant encounters about my presence. Hehehe... And unfortunately I'm not open for help, me and my sword already know very well who I'm working with.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
