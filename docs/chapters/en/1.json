@@ -2470,8 +2470,60 @@
                 "amount": 5
             }]
         },
-        "value": "Vini get 1 Energy Drink and take 5 waters.",
+        "value": "Vini get 1 Energy Drink and take 5 waters. So more and more time was spent, looking at everything that was in the market, after a while, Vini found a display case with a sword.",
         "type": "action"
+    },
+
+
+    {
+        "value": "Good afternoon sir! Are you interested in this wonderful sword that is being raffled off in our daily market?! Special artifacts for ponies who like to have special defense!",
+        "character": "Employee",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vini then was very surprised and soon watched the employee, then the sword, then the employee again, and responded with slight anxiety.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Good afternoon, yes I'm interested.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Employee then said with a very happy and inviting effect voice to have Vini's full attention with the fun moment.",
+        "type": "action"
+    },
+
+    {
+        "value": "So with only 3 coins, you will be able to spin our lucky roulette! Would you like to know how it works?",
+        "character": "Employee",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes! I want to know and participate.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay! All you need is to take a number from 90 to 100 between values of 100 numbers!",
+        "character": "Employee",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vini was very happy and excited to try the roulette, so he responded very happy, waiting for the right moment to return to the roulette.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh, fine! I'll go there and then I'll come back.",
+        "character": "Vini",
+        "type": "dialogue"
     }
 
 ]
