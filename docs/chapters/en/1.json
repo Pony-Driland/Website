@@ -2448,7 +2448,25 @@
                 "amount": 2
             }]
         },
-        "value": "Vini get 2 beers.",
+        "value": "Vini get 2 beers. So Vini started to feel more satisfied as he added more items to the saddle. He kept walking into the drinking session until he saw the energy drink session.",
+        "type": "action"
+    },
+
+    {
+        "value": "Energy drink? Oh! Now I'm feeling at home.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "newItem": [{
+                "id": "energy-drink",
+                "owner": "vini",
+                "amount": 1
+            }]
+        },
+        "value": "Vini get 1 Energetic.",
         "type": "action"
     }
 
