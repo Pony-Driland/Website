@@ -2307,6 +2307,23 @@
         "value": "You said not to traumatize the newbies \"again\" I don't understand, have you seen this happen?",
         "character": "Vini",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Okay... I think I get it. But please avoid contacting her. Some ponies she knew have already mysteriously disappeared. None of us know what happened.I already asked her what happened, and she always says she doesn't know what happened. This is your warn, please, avoid her. Just talk to her if you know what you're doing. She is very mysterious. I don't know what to say. I'm not saying she's bad, but I can't say for sure if she's good either.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny feel worried again while replying Vini, trying to calm down in. Vini laughed a little nervously, seemed to think it was all Kenny's paranoia. So he tries to respond in a calmer way.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh okay okay, let's go shopping? Or do you need a little more time to compose yourself?",
+        "character": "Vini",
+        "type": "dialogue"
     }
 
 ]
