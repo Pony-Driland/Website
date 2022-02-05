@@ -2432,6 +2432,24 @@
         },
         "value": "Vini then continued his shopping adventure and he was analyzing other products, so he get 1 basic wound spray. He visited the sensation of products related to wings, but he was disappointed with the price of the products, he saw that everything was too expensive, so he just left.",
         "type": "action"
+    },
+
+    {
+        "value": "Oh? Oh yes! Beer! I liked it! Good! Very good!",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "newItem": [{
+                "id": "beer",
+                "owner": "vini",
+                "amount": 2
+            }]
+        },
+        "value": "Vini get 2 beers.",
+        "type": "action"
     }
 
 ]
