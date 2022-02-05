@@ -182,12 +182,12 @@ var chapterSet = {
             obj.empty();
             if (types[value]) {
                 if (!obj.attr('data-original-title')) {
-                    obj.attr('title', types[value].title).append($('<i>', { class: types[value].icon }));
+                    obj.attr('title', types[value].title);
                     obj.tooltip();
                 } else {
                     obj.attr('data-original-title', types[value].title);
                 }
-                obj.removeAttr('title');
+                obj.removeAttr('title').append($('<i>', { class: types[value].icon }));
             }
 
         }
