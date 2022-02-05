@@ -211,13 +211,13 @@ var storyCfg = {
             { id: 'TMLnDTkUEgg', type: 'youtube' },
             { id: '6yPivtTKLno', type: 'youtube' },
             { id: 'SzhjAqPF-gM', type: 'youtube' },
-            { id: '0ZD3SfS9x8E', type: 'youtube' },
             { id: 'k79T3jVvPjw', type: 'youtube' },
             { id: 'oxivFag3Reg', type: 'youtube' },
             { id: 'ni-Q2RCoexg', type: 'youtube' },
         ],
 
         'bad-think': [
+            { id: '0ZD3SfS9x8E', type: 'youtube' },
             { id: 'AfkEAnazGMo', type: 'youtube' },
             { id: 'QD5OGfAJIus', type: 'youtube' },
             { id: 'eeeQcvtjV2k', type: 'youtube' },
