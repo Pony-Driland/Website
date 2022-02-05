@@ -2389,6 +2389,47 @@
     {
         "value": "So Vini analyzed the situation and became very thoughtful.",
         "type": "action"
+    },
+
+    {
+        "set": {
+            "newItem": [{
+                "id": "surprise-tin",
+                "owner": "vini",
+                "amount": 1
+            }]
+        },
+        "value": "Vini looked at each object so he started to think about what he could buy. So he was surprised to see a product called \"surprise tin\".",
+        "type": "action"
+    },
+
+    {
+        "value": "Really? I hope some good thing  comes out of this shit.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So a random pony looked at Vini talking alone and what you were holding, and he walked away very quickly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Hey! Sorry! Fineeee... Let it go then.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "newItem": [{
+                "id": "surprise-tin",
+                "owner": "vini",
+                "amount": 1
+            }]
+        },
+        "value": "Vini then continued his shopping adventure and he was analyzing other products, so he get 1 basic wound spray. He visited the sensation of products related to wings, but he was disappointed with the price of the products, he saw that everything was too expensive, so he just left.",
+        "type": "action"
     }
 
 ]
