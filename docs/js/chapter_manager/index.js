@@ -401,12 +401,27 @@ var openChapterMenu = function(params = {}) {
 
         // Read More Data
         for (let i = 0; i < storyData.chapter.amount; i++) {
+
+            // Chapter Number
             const chapter = String(i + 1);
+            const isNew = (!localStorage.getItem('chapter' + chapter + 'MD5'));
+            let isUpdate = false;
+            if (!isNew) {
+                isUpdate = (md5(JSON.stringify(storyData.data[chapter])) !== localStorage.getItem('chapter' + chapter + 'MD5'));
+            }
+            let isNewValue = '';
+            if (isNew) {
+                isNewValue = $('<span>', { class: 'badge badge-primary ml-3' }).text('NEW');
+            } else if (isUpdate) {
+                isNewValue = $('<span>', { class: 'badge badge-secondary ml-3' }).text('UPDATE');
+            }
+
+            // Add Chapter
             $('#markdown-read').append(
 
                 $('<div>', { class: 'card' }).append(
                     $('<div>', { class: 'card-body' }).append(
-                        $('<h5>', { class: 'card-title' }).text('Chapter ' + chapter),
+                        $('<h5>', { class: 'card-title' }).text('Chapter ' + chapter).append(isNewValue),
                         $('<p>', { class: 'card-text' }).text(storyCfg.chapterName[chapter].title),
                         $('<p>', { class: 'card-text small' }).text(storyCfg.chapterName[chapter].description),
                         $('<a>', { class: 'btn btn-primary', href: `/?path=read-fic&title=Pony%20Driland?chapter=${chapter}`, chapter: chapter }).click(function() {
@@ -422,6 +437,7 @@ var openChapterMenu = function(params = {}) {
                 )
 
             );
+
         }
 
     }
