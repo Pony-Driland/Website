@@ -127,6 +127,9 @@ var openChapterMenu = function(params = {}) {
 
         }
 
+        // Save MD5
+        localStorage.setItem('chapter' + chapter + 'MD5', md5(JSON.stringify(storyData.data[chapter])));
+
         // Get Pagination
         const pagination = paginateArray(storyData.data[chapter], page, storyCfg.itemsPerPage);
 
