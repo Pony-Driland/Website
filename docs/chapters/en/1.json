@@ -2536,6 +2536,138 @@
         },
         "value": "Vini then continued walking through the hallways, analyzing more and more items, then he just got 1 more basic spray. So after that, Vini decided to go see if Kenny was okay. Kenny was angry, walking towards the checkout line.",
         "type": "action"
+    },
+
+    {
+        "value": "WOW KENNY! Are you ok bro? What happened?",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny responded disgusted and disappointed with himself.",
+        "type": "action"
+    },
+
+    {
+        "value": "THE SWORD! I WANTED THE SWORD!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "My god? How many times did you play?",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny responds in a sad voice.",
+        "type": "action"
+    },
+
+    {
+        "value": "15 times.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "This doesn't sound like a good idea, but let's at least try. heh.",
+        "character": "Vini",
+        "type": "think"
+    },
+
+    {
+        "value": "Jeez, I can try 1 time, what do you think? Sometimes i'm lucky.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I don't even want to see. Good luck to you.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny responds in a sad voice. Kenny responds worried and sad, but he was just trying to have a little hope.",
+        "type": "action"
+    },
+
+    {
+        "value": "Good! Time to win or lose! Now it seems like a good opportunity.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vini prepared his determination and headed towards the employee again. The employee looked and recognized Vini. So he already started the cheerful personality to convince Vini to try.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow! More customers wanting our wonderful sword!",
+        "character": "Employee",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes I'm back, I'll try 1 time.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "How wonderful! Time to spin the dice! Wheel wheel wheel! Look at the happy spinning dice!",
+        "character": "Employee",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Employee prepare to roll the dice. Vini laughed a little and then answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "Kenny heard that the 2nd time is the right one?",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "...already. e__e",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "It's now bro, my last attempt, then we're leaving with a sword, TRUST!!!",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny was doing a poker face, with big theories that this isn't going to end well.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh my rainbow.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Send me THE BIG DICE!",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "YEA! Time for BIG DICE!",
+        "character": "Employee",
+        "type": "dialogue"
     }
 
 ]
