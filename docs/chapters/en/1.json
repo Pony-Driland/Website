@@ -2668,6 +2668,28 @@
         "value": "YEA! Time for BIG DICE!",
         "character": "Employee",
         "type": "dialogue"
+    },
+
+    {
+        "value": "The dice went round and round and round on the table. But the dice lands on number 2. Vini was completely disappointed and responded with a bit of anger.",
+        "type": "action"
+    },
+
+    {
+        "value": "I really didn't want this sword. Let's go.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny just summed up the sadness and started crying.",
+        "type": "action"
+    },
+
+    {
+        "value": "Aaaaaaaaaahhhh!",
+        "character": "Kenny",
+        "type": "dialogue"
     }
 
 ]
