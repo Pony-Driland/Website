@@ -2690,6 +2690,74 @@
         "value": "Aaaaaaaaaahhhh!",
         "character": "Kenny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "O god. Why did you want that sword?",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny would get a little embarrassed and then respond.",
+        "type": "action"
+    },
+
+    {
+        "value": "I wanted a sword to hang on my painting on the living room wall. It would look nice on the basement side.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Fine... I took some necessary things, but among them I took an energy drink, I saw that you really wanted the sword, so I'm willing to leave this energy drink and give you 2 more chances to get the sword.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..what? Are you serious?",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny made a curious face, wanting to understand what you're talking about.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm going to return this energy drink and the less money will give us 2 more chances to get that sword for you.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Are you sure? I wish you good luck.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny would get a little more worried. Vini would then smile and just indicate that he was determined to try again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vini would then smile and just indicate that he was determined to try again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay! IT'S TIME FOR BIG DICE AGAIN!",
+        "character": "Employee",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "BIG DICE! BIG DICE! DIIIIIIICE!",
+        "character": "Employee",
+        "type": "dialogue"
     }
 
 ]
