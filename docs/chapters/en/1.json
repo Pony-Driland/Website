@@ -2758,6 +2758,38 @@
         "value": "BIG DICE! BIG DICE! DIIIIIIICE!",
         "character": "Employee",
         "type": "dialogue"
+    },
+
+    {
+        "value": "You are really a clown! Let's play 2 more.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah! It's for now!",
+        "character": "Employee",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "item": [{
+                "id": "beer",
+                "owner": "vini",
+                "amount": -2
+            }, {
+                "id": "energy-drink",
+                "owner": "vini",
+                "amount": -1
+            }, {
+                "id": "water",
+                "owner": "vini",
+                "amount": -5
+            }]
+        },
+        "value": "Kenny was crying, just watching the scene trying to have some hope of some good result. Vini then tried the first, second, third, several other attempts with all failures. Vini lost the beers, the energy drinks.",
+        "type": "action"
     }
 
 ]
