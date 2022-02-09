@@ -2788,8 +2788,42 @@
                 "amount": -5
             }]
         },
-        "value": "Kenny was crying, just watching the scene trying to have some hope of some good result. Vini then tried the first, second, third, several other attempts with all failures. Vini lost the beers, the energy drinks.",
+        "value": "Kenny was crying, just watching the scene trying to have some hope of some good result. Vini then tried the first, second, third, several other attempts with all failures. Vini lost the beers, the energy drinks. Vini was getting very angry with the situation, losing his temper more and more.",
         "type": "action"
+    },
+
+    {
+        "value": "Enough! It seems that our world is controlled by a sadistic person who is too pissed off to do this bad luck with us.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny wasrolling on the floor and crying. Again. So Vini holds Kenny and helps him to compose himself. Then Vini responds sadly.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm sorry.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny was beginning to regret the lost money more and more.",
+        "type": "action"
+    },
+
+    {
+        "value": "Please, cashier now.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ok ok, let's go.",
+        "character": "Vini",
+        "type": "dialogue"
     }
 
 ]
