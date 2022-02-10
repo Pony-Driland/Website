@@ -91,6 +91,10 @@ var storyCfg = {
     // Playlist
     playlist: {
 
+        'silly': [
+            { id: 'ljTfHitG0eA', type: 'youtube' }
+        ],
+
         'battle': [
             { id: 'rjRn9lYguV0', type: 'youtube' },
             { id: 'yb0-hwJAX3U', type: 'youtube' },
