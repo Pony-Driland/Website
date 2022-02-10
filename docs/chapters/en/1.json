@@ -2902,6 +2902,69 @@
     {
         "value": "Kenny reply with determination.",
         "type": "action"
+    },
+
+    {
+        "value": "That!!! Now let's go through your things with determination at the cashier because it's already late!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes! This is the time!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny put his wallet on the cashier's desk, feeling determination during the payment. The cashier made a little nervous smile trying to understand what was happening. But then she answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "I see you're happy again.",
+        "character": "Cashier",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Are you going to move my things separately?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah! All together. Do not worry.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny spoke happily while preparing the purchases.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Feel free.",
+        "character": "Cashier",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yay! Here we go!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny uses the cashier sensor.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh! Alright.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
