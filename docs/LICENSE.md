@@ -9,7 +9,7 @@ I will only allow art commercial use if your work is requested by the user who w
 
 You can also use the characters commercially for advertising your works as long as you give credit for Pony Driland Project. (Example: You want to use the characters only as a way to attract publicity for your drawing projects.)
 
-You are just not allowed to use Pony Driland for your own financial benefit. If you are looking to open something commercial related to Pony Driland, please contact me first.
+If you are developing an independent project to sell products that include content by Pony Driland, you must include the disclaimer that your content is unofficial.
 
 <hr/>
 
