@@ -9,7 +9,7 @@
             "playlistPlay": null
         },
         "type": "action",
-        "value": "It was just another normal day on Planet Earth. It was a beautiful normal day like any other, Vini was living his normal life, he still hadn't showered, and he was talking to his friend Yasmin through Discord. It was a simple super decisive conversation for her to finally pay the X-Tudo Vini wanted so much. Vini was very happy, as he had been waiting for this day for several months, so this was the decisive magic moment. Everything was extremely quiet. It was just a silly Discord conversation like any other day."
+        "value": "It was just another normal day on Planet Earth. It was a beautiful normal day like any other, Vinny was living his normal life, he still hadn't showered, and he was talking to his friend Yasmin through Discord. It was a simple super decisive conversation for her to finally pay the X-Tudo Vinny wanted so much. Vinny was very happy, as he had been waiting for this day for several months, so this was the decisive magic moment. Everything was extremely quiet. It was just a silly Discord conversation like any other day."
     },
 
     {
@@ -26,7 +26,7 @@
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Yes! Yeees Yasmin!!!"
     },
 
@@ -49,41 +49,41 @@
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Wow, my address isn't right? Motoca is going to screw up my X-Tudo!"
     },
 
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Ah Vini! Nope nope! You sent the address! You're going to receive your X-Tudo!"
+        "value": "Ah Vinny! Nope nope! You sent the address! You're going to receive your X-Tudo!"
     },
 
     {
         "type": "action",
-        "value": "Right now Vini's phone started beeping Food App Notifications."
+        "value": "Right now Vinny's phone started beeping Food App Notifications."
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Oh yes, man!"
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Heh! Let me see my phone beeped here."
     },
 
     {
         "type": "action",
-        "value": "Vini anxiously raises his hand and takes the phone, after unlocking it with his finger he looks at the notifications"
+        "value": "Vinny anxiously raises his hand and takes the phone, after unlocking it with his finger he looks at the notifications"
     },
 
     {
         "type": "action",
-        "value": "Vini saw the notification that the delivery boy was about to arrive, his cell phone already asking him to go to the door of his house to wait for the delivery boy"
+        "value": "Vinny saw the notification that the delivery boy was about to arrive, his cell phone already asking him to go to the door of his house to wait for the delivery boy"
     },
 
     {
@@ -105,18 +105,18 @@
 
     {
         "type": "action",
-        "value": "Surprised Vini speaks in a curious way."
+        "value": "Surprised Vinny speaks in a curious way."
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "What the hell? What would that be?"
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Okay, let me enter the call on my cell, HOLD IT!!!!!!!!!!"
     },
 
@@ -128,23 +128,23 @@
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Siily Vini... Relax. You'll find out. Please, just don't screw it all up. Mainly the phone!"
+        "value": "Siily Vinny... Relax. You'll find out. Please, just don't screw it all up. Mainly the phone!"
     },
 
     {
         "type": "action",
-        "value": "Meanwhile, Vini began to hear the noise of the motorcycle."
+        "value": "Meanwhile, Vinny began to hear the noise of the motorcycle."
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Okay okay! Let me go see the gate. YES!"
     },
 
     {
         "type": "action",
-        "value": "Vini then got up from his computer. He was home alone. He then went to the gate to open it to receive the food. Meanwhile Yasmin kept laughing and answering."
+        "value": "Vinny then got up from his computer. He was home alone. He then went to the gate to open it to receive the food. Meanwhile Yasmin kept laughing and answering."
     },
 
     {
@@ -155,7 +155,7 @@
 
     {
         "type": "action",
-        "value": "Vini then met with the delivery boy, already looking a bit confused about what Yasmin was talking about."
+        "value": "Vinny then met with the delivery boy, already looking a bit confused about what Yasmin was talking about."
     },
 
     {
@@ -177,12 +177,12 @@
 
     {
         "type": "action",
-        "value": "Vini was wanting to speed up and get back to his room soon before the delivery boy could hear Yasmin laughing"
+        "value": "Vinny was wanting to speed up and get back to his room soon before the delivery boy could hear Yasmin laughing"
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Oops good afternoon, it's me yes, is it the snack?"
     },
 
@@ -194,7 +194,7 @@
 
     {
         "type": "action",
-        "value": "Delivery Boy tried to react naturally when he noticed a kind of anxiety in Vini."
+        "value": "Delivery Boy tried to react naturally when he noticed a kind of anxiety in Vinny."
     },
 
     {
@@ -216,18 +216,18 @@
 
     {
         "type": "action",
-        "value": "Yasmin continued the silly giggles, happy to see Vini's reaction."
+        "value": "Yasmin continued the silly giggles, happy to see Vinny's reaction."
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "it's a joke, right? prank right? What is this vibration?"
     },
 
     {
         "type": "action",
-        "value": "Vini reply with a surprised face and mischievousness."
+        "value": "Vinny reply with a surprised face and mischievousness."
     },
 
     {
@@ -244,7 +244,7 @@
     {
         "set": { "playlistPlay": null },
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Okay can i open it now before you leave?"
     },
 
@@ -256,7 +256,7 @@
 
     {
         "type": "action",
-        "value": "Yasmin kept laughing and trying to talk to Vini."
+        "value": "Yasmin kept laughing and trying to talk to Vinny."
     },
 
     {
@@ -267,13 +267,13 @@
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Calm down Yasmin, the guy said there's some stuff vibrating here and I'll show you on cam."
     },
 
     {
         "type": "action",
-        "value": "Vini opens the box slowly. Afraid about what was inside the box. Vini see an X-Tudo, very big, just the way he wanted, twice the size that was in the photo."
+        "value": "Vinny opens the box slowly. Afraid about what was inside the box. Vinny see an X-Tudo, very big, just the way he wanted, twice the size that was in the photo."
     },
 
     {
@@ -297,29 +297,29 @@
     {
         "set": { "playlistPlay": "tech-problem" },
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Are you kidding me? What was this thing vibrating?"
     },
 
     {
         "type": "action",
-        "value": "Yasmin then kept laughing until she heard Vini talking."
+        "value": "Yasmin then kept laughing until she heard Vinny talking."
     },
 
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Vibrating? What?! Oh silly Vini! Don't make up jokes! Haven't you noticed the surprise yet?"
+        "value": "Vibrating? What?! Oh silly Vinny! Don't make up jokes! Haven't you noticed the surprise yet?"
     },
 
     {
         "type": "action",
-        "value": "Vini was extremely confused. Trying to understand what was going on. Trying not to think about what he was thinking."
+        "value": "Vinny was extremely confused. Trying to understand what was going on. Trying not to think about what he was thinking."
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Yasmin, did you tell the delivery boy to do this prank on me? WHY?!"
     },
 
@@ -331,40 +331,40 @@
 
     {
         "type": "action",
-        "value": "Vini enters and goes to the kitchen to get a plate and goes back to the bedroom. The X-Tudo mysteriously started to vibrate a little on the table"
+        "value": "Vinny enters and goes to the kitchen to get a plate and goes back to the bedroom. The X-Tudo mysteriously started to vibrate a little on the table"
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Ah! Fuck, this fuck is alive."
     },
 
     {
         "type": "action",
-        "value": "Vini approaches X-Tudo and will analyze the burguer carefully."
+        "value": "Vinny approaches X-Tudo and will analyze the burguer carefully."
     },
 
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Live? Vini! What did you do with X-Tudo? Haven't you noticed the obvious yet?"
+        "value": "Live? Vinny! What did you do with X-Tudo? Haven't you noticed the obvious yet?"
     },
 
     {
         "type": "action",
-        "value": "When Vini tried to analyze X-Tudo, he felt a kind of blue light, but X-Tudo didn't want to be opened completely at all, it just vibrated more with each touch it received."
+        "value": "When Vinny tried to analyze X-Tudo, he felt a kind of blue light, but X-Tudo didn't want to be opened completely at all, it just vibrated more with each touch it received."
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Yasmin, there's some stuff coming out of X-Tudo."
     },
 
     {
         "type": "action",
-        "value": "Vini looked at the X-Tudo and tried harder to open it."
+        "value": "Vinny looked at the X-Tudo and tried harder to open it."
     },
 
     {
@@ -375,68 +375,68 @@
 
     {
         "type": "action",
-        "value": "The X-Tudo vibrated more and more, and the light started to get stronger, but Vini was starting to realize that he was making progress, and that he just needed to do a little more force, as he accidentally spilled some parts of the X-Tudo on the table because of the vibration."
+        "value": "The X-Tudo vibrated more and more, and the light started to get stronger, but Vinny was starting to realize that he was making progress, and that he just needed to do a little more force, as he accidentally spilled some parts of the X-Tudo on the table because of the vibration."
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "N..Noo! My house! Wait, I'm looking at what's inside the X-Tudo, everything and a little more, hold it there."
     },
 
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Vini... You're scaring me. What's happening there?"
+        "value": "Vinny... You're scaring me. What's happening there?"
     },
 
     {
         "type": "action",
-        "value": "Vini still keeps trying to force against the burguer, feeling extremely difficult to keep trying this again and again."
+        "value": "Vinny still keeps trying to force against the burguer, feeling extremely difficult to keep trying this again and again."
     },
 
     {
         "type": "action",
-        "value": "While more Vini tried, but the light got stronger, and X-Tudo vibrated extremely hard, spilling all parts of X-Tudo all over the kitchen, making a loud noise on the table because of the vibration"
+        "value": "While more Vinny tried, but the light got stronger, and X-Tudo vibrated extremely hard, spilling all parts of X-Tudo all over the kitchen, making a loud noise on the table because of the vibration"
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "NO NO NOOO! MY HOUSE!"
     },
 
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "V...Vini? Are you okay? It's for eating X-Tudo! It's not to mess up the X-Tudo! What are you doing?!"
+        "value": "V...Vinny? Are you okay? It's for eating X-Tudo! It's not to mess up the X-Tudo! What are you doing?!"
     },
 
     {
         "type": "action",
-        "value": "Yasmin started talking in a worried voice. Then Vini finally manages to open X-Tudo, making all the rest of X-Tudo fly all over the place, he soon realizes what he was pulling inside X-Tudo, in fact it was a kind of bracelet, which quickly attaches to the his arm, but in the middle of it all comes a very bright light that takes over the whole kitchen."
+        "value": "Yasmin started talking in a worried voice. Then Vinny finally manages to open X-Tudo, making all the rest of X-Tudo fly all over the place, he soon realizes what he was pulling inside X-Tudo, in fact it was a kind of bracelet, which quickly attaches to the his arm, but in the middle of it all comes a very bright light that takes over the whole kitchen."
     },
 
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "W..What?! What is this Vini? Did the restaurant give you any SmartWatch as a gift?!"
+        "value": "W..What?! What is this Vinny? Did the restaurant give you any SmartWatch as a gift?!"
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Stop kidding! I need help! What is happening?! W...What fuck?! My house will explode!"
     },
 
     {
         "type": "action",
-        "value": "The glow then started to behave like a black hole, trying to pull Vini into it."
+        "value": "The glow then started to behave like a black hole, trying to pull Vinny into it."
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "No, no! NO! This is IMPOSSIBLE! Damn Jasmin it happened, I don't know, your X-Tudo blew up and it's sucking me, this shit stuck on my arm, I'm going to turn the Men 10!!!!"
     },
 
@@ -449,29 +449,29 @@
 
     {
         "type": "action",
-        "value": "Vini was in the last seconds of his presence before the black hole sucked him in completely, and suddenly he disappeared along with his phone, which was increasingly losing signal as he went deeper into the mysterious black hole."
+        "value": "Vinny was in the last seconds of his presence before the black hole sucked him in completely, and suddenly he disappeared along with his phone, which was increasingly losing signal as he went deeper into the mysterious black hole."
     },
 
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Vini?! C.......of.........you....O... ...What's happening?! V...Vini! The sign! Signal is horrible! N...Nooo! Came back here! V....Viiiiini!"
+        "value": "Vinny?! C.......of.........you....O... ...What's happening?! V...Vinny! The sign! Signal is horrible! N...Nooo! Came back here! V....Viiiiini!"
     },
 
     {
         "type": "action",
-        "value": "and the signal was completely lost and the Discord connection dropped while Vini continued to be sucked deeper into the black hole"
+        "value": "and the signal was completely lost and the Discord connection dropped while Vinny continued to be sucked deeper into the black hole"
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Yasmin what did you do?! NOOO!"
     },
 
     {
         "type": "action",
-        "value": "Then suddenly everything went blank, and Vini's consciousness was temporarily lost for an unknown period of time."
+        "value": "Then suddenly everything went blank, and Vinny's consciousness was temporarily lost for an unknown period of time."
     },
 
     {
@@ -480,67 +480,67 @@
             "playlistPlay": "sad"
         },
         "type": "action",
-        "value": "After a long time, Vini was in another mysterious place, his phone was with him, it was a beautiful day, the morning was starting, another normal day on the place, everything was very calm, the beach was deserted as usual because of the schedule. And mysteriously Vini wakes up on the beach, lost not knowing why he was there."
+        "value": "After a long time, Vinny was in another mysterious place, his phone was with him, it was a beautiful day, the morning was starting, another normal day on the place, everything was very calm, the beach was deserted as usual because of the schedule. And mysteriously Vinny wakes up on the beach, lost not knowing why he was there."
     },
 
     {
         "type": "think",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Damn man, what happened? I was talking to Yasmin and suddenly... X-TUUUUUUUDO!!! What the fuck happened..."
     },
 
     {
         "type": "action",
-        "value": "Vini look at he arm curiously. Soon Vini noticed that everything was very different with his body when he felt the shape of his body. Instead of him seeing hands, he saw pony paws, while the calm water of the beach continued to calmly move on the sand."
+        "value": "Vinny look at he arm curiously. Soon Vinny noticed that everything was very different with his body when he felt the shape of his body. Instead of him seeing hands, he saw pony paws, while the calm water of the beach continued to calmly move on the sand."
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "What the...fuck... What? Am I a horse? ...a pony? I don't know."
     },
 
     {
         "type": "action",
-        "value": "Vini try to calm down and I see around me what is happening and I see the phone and I try to move."
+        "value": "Vinny try to calm down and I see around me what is happening and I see the phone and I try to move."
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "I can't touch the phone because I don't have a FINGER!!! but I see there's something on my back, it's wings!!!!!!! WHAT'S HAPPENING HERE?!"
     },
 
     {
         "type": "action",
-        "value": "So Vini try to use the wings to poke the phone screen. The phone turned on the screen and when the face detector felt the presence of Vini eyes, and all Vini saw was just the screen locked, and the phone was completely out of signal. No 4G, no Wi-Fi, no internet connection."
+        "value": "So Vinny try to use the wings to poke the phone screen. The phone turned on the screen and when the face detector felt the presence of Vinny eyes, and all Vinny saw was just the screen locked, and the phone was completely out of signal. No 4G, no Wi-Fi, no internet connection."
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Oooh okay."
     },
 
     {
         "type": "action",
-        "value": "Vini was sad and hopeless. He didn't know what else could be done in that moment now. Suddenly Vini starts to hear the sound of footsteps approaching from the opposite direction to him, coming slowly, making him look back curiously."
+        "value": "Vinny was sad and hopeless. He didn't know what else could be done in that moment now. Suddenly Vinny starts to hear the sound of footsteps approaching from the opposite direction to him, coming slowly, making him look back curiously."
     },
 
     {
         "type": "action",
-        "value": "Vini see a silhouette of another pony slowly approaching, thinking to do contact with you, and it gets closer and closer."
+        "value": "Vinny see a silhouette of another pony slowly approaching, thinking to do contact with you, and it gets closer and closer."
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "W...what? O..Oh no.... Oh, okay then I'll wait."
     },
 
     {
         "type": "action",
-        "value": "Vini was scared, but he just accepted the fate of waiting for the mysterious earth pony to approach him."
+        "value": "Vinny was scared, but he just accepted the fate of waiting for the mysterious earth pony to approach him."
     },
 
     {
@@ -556,13 +556,13 @@
 
     {
         "type": "dialogue",
-        "character": "Vini",
-        "value": "Aah hi, my name is Vini, are you guys okay? they look worried."
+        "character": "Vinny",
+        "value": "Aah hi, my name is Vinny, are you guys okay? they look worried."
     },
 
     {
         "type": "action",
-        "value": "Vini tried to stay calm, talking calmly and trying to be calm."
+        "value": "Vinny tried to stay calm, talking calmly and trying to be calm."
     },
 
     {
@@ -573,7 +573,7 @@
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Oh, I kind of don't remember but I ended up waking up just now, not sure what happened to me last night."
     },
 
@@ -591,24 +591,24 @@
     {
         "set": { "playlistPlay": null },
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "E..Elite color? I really don't remember, and I accept the help, thank you very much."
     },
 
     {
         "type": "action",
-        "value": "Vini tried to remain calm, but slowly felt better as he realized the gentleness of the mysterious pony. But he was still confused and scared about what was happening. He tried to get up but failed."
+        "value": "Vinny tried to remain calm, but slowly felt better as he realized the gentleness of the mysterious pony. But he was still confused and scared about what was happening. He tried to get up but failed."
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "I think I'll need more than help, I kind of can't walk."
     },
 
     {
         "type": "action",
-        "value": "Vini was very embarrassed to realize that he didn't know how to walk on four legs while answering."
+        "value": "Vinny was very embarrassed to realize that he didn't know how to walk on four legs while answering."
     },
 
     {
@@ -625,13 +625,13 @@
     {
         "set": { "playlistPlay": "calm" },
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Heck bro, I'm trying to remember and I think I remembered I was eating something and blacked out, and I came here out of nowhere."
     },
 
     {
         "type": "action",
-        "value": "Vini tried to balance himself between his paws as he responded."
+        "value": "Vinny tried to balance himself between his paws as he responded."
     },
 
     {
@@ -642,7 +642,7 @@
 
     {
         "type": "action",
-        "value": "Vini lost the balance of the pose of the paws and fell on the sand again."
+        "value": "Vinny lost the balance of the pose of the paws and fell on the sand again."
     },
 
     {
@@ -653,18 +653,18 @@
 
     {
         "type": "action",
-        "value": "during the giggles of Kenny, Kenny starts to smile at Vini and prepare to help Vini stand up again. Vini felt even better about Kenny's kindness. He looked at Kenny still confused about what was happening, but he simply continued to accept the help."
+        "value": "during the giggles of Kenny, Kenny starts to smile at Vinny and prepare to help Vinny stand up again. Vinny felt even better about Kenny's kindness. He looked at Kenny still confused about what was happening, but he simply continued to accept the help."
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Yeah hihi, thanks for the help Kenny."
     },
 
     {
         "type": "action",
-        "value": "Kenny felt happier wanting to keep helping Vini."
+        "value": "Kenny felt happier wanting to keep helping Vinny."
     },
 
     {
@@ -681,12 +681,12 @@
 
     {
         "type": "action",
-        "value": "Kenny smiles again and started to help Vini during the first steps to start to walk."
+        "value": "Kenny smiles again and started to help Vinny during the first steps to start to walk."
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "What? What is a SmartMoby? I have one?"
     },
 
@@ -698,23 +698,23 @@
 
     {
         "type": "action",
-        "value": "Vini looked at his arm and was surprised. That device had now merged with his arm. It was just a screen on his arm and it was impossible to remove as it was now part of his arm."
+        "value": "Vinny looked at his arm and was surprised. That device had now merged with his arm. It was just a screen on his arm and it was impossible to remove as it was now part of his arm."
     },
 
     {
         "type": "action",
-        "value": "Kenny kept helping Vini walk. The place was very calm. It looked completely deserted. Vini immediately thought it was something he had already seen somewhere. But he found it extremely strange that the ponies found were different from what he knew about ponies. Was it really the world he was thinking about or could it be just a coincidence?"
+        "value": "Kenny kept helping Vinny walk. The place was very calm. It looked completely deserted. Vinny immediately thought it was something he had already seen somewhere. But he found it extremely strange that the ponies found were different from what he knew about ponies. Was it really the world he was thinking about or could it be just a coincidence?"
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Hey man, let me get my phone, as I remember, it's a device similar to that in my world, but it has other important features, like listening to music or having many books in it."
     },
 
     {
         "type": "action",
-        "value": "Vini looks for the phone to store the phone in somewhere."
+        "value": "Vinny looks for the phone to store the phone in somewhere."
     },
 
     {
@@ -736,57 +736,57 @@
 
     {
         "type": "action",
-        "value": "Kenny smiled and let Vini go so Vini could try to balance yourself between the 4 legs while he went to get your phone in the sand."
+        "value": "Kenny smiled and let Vinny go so Vinny could try to balance yourself between the 4 legs while he went to get your phone in the sand."
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Okay... Fine."
     },
 
     {
         "type": "think",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "This is much stranger than I imagined. Will I be stuck here forever? How are my friends and my parents doing?"
     },
 
     {
         "type": "action",
-        "value": "Right after Kenny give the phone, Vini hold the phone."
+        "value": "Right after Kenny give the phone, Vinny hold the phone."
     },
 
     {
         "type": "think",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "I remember the battery and I DIDN'T TAKE THE SHIT CHARGER! WHY?!"
     },
 
     {
         "type": "action",
-        "value": "Vini got mentally pissed off. and as soon as I see that there was no signal, Vini try to turn the phone off."
+        "value": "Vinny got mentally pissed off. and as soon as I see that there was no signal, Vinny try to turn the phone off."
     },
 
     {
         "type": "dialogue",
         "character": "Kenny",
-        "value": "Oh? Vini? Are you okay? Is something wrong with your phone?"
+        "value": "Oh? Vinny? Are you okay? Is something wrong with your phone?"
     },
 
     {
         "type": "action",
-        "value": "Kenny said with a curious face, looked at Vini and he reactions while trying to help he keep up again. Then the two started walking towards the village."
+        "value": "Kenny said with a curious face, looked at Vinny and he reactions while trying to help he keep up again. Then the two started walking towards the village."
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "O..oh? Oh yeah, kind of the energy that makes it stay on runs out quickly so I'll only use it in cases of need because I need another part to recharge it. but yes he is normal, thanks for helping me get phone back."
     },
 
     {
         "type": "action",
-        "value": "Vini was worried about his phone battery. It looked like his phone was the last thing left of items from Earth. Vini's clothes had mysteriously disappeared too."
+        "value": "Vinny was worried about his phone battery. It looked like his phone was the last thing left of items from Earth. Vinny's clothes had mysteriously disappeared too."
     },
 
     {
@@ -808,24 +808,24 @@
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "James? But I just met you! You're crazy?!"
     },
 
     {
         "type": "action",
-        "value": "Kenny smiled and ran forward, revealing that Vini were starting to walk alone without help, but then you started to lose he balance for a few seconds when he realized that there was no one helping he."
+        "value": "Kenny smiled and ran forward, revealing that Vinny were starting to walk alone without help, but then you started to lose he balance for a few seconds when he realized that there was no one helping he."
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Oh? no no no no no!"
     },
 
     {
         "type": "action",
-        "value": "Vini tried not to completely lose his paws balance."
+        "value": "Vinny tried not to completely lose his paws balance."
     },
 
     {
@@ -836,7 +836,7 @@
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Uff... About earlier, you said something about Elite Color, what would it be exactly?"
     },
 
@@ -848,7 +848,7 @@
 
     {
         "type": "action",
-        "value": "Kenny then looked at Vini walking. He was surprised and very happy."
+        "value": "Kenny then looked at Vinny walking. He was surprised and very happy."
     },
 
     {
@@ -859,12 +859,12 @@
 
     {
         "type": "action",
-        "value": "Vini giggles a little before answering. trying to be a little friendlier"
+        "value": "Vinny giggles a little before answering. trying to be a little friendlier"
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "You also said at the beginning, or comment in a strange way, the way you entered me and said \"you also came from another dimension\" are there others besides me?"
     },
 
@@ -881,7 +881,7 @@
 
     {
         "type": "think",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Oh shit... Here comes the bad news."
     },
 
@@ -904,13 +904,13 @@
 
     {
         "type": "think",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "HOLY SHIT! NO! FOREVER?! Is everyone here alien?! That's what i understood?! WHY?!"
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Ah..."
     },
 
@@ -922,7 +922,7 @@
 
     {
         "type": "action",
-        "value": "Kenny was thoughtful, trying to calm Vini down, so he responded."
+        "value": "Kenny was thoughtful, trying to calm Vinny down, so he responded."
     },
 
     {
@@ -934,7 +934,7 @@
     {
         "set": { "playlistPlay": null },
         "type": "think",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "James... Who is James? Why everyone is a alien in a pony body?! Look where I accidentally got myself into an X-Tudo! Someone save me from this nightmare. Please!"
     },
 
@@ -951,12 +951,12 @@
 
     {
         "type": "action",
-        "value": "Kenny smiled and started to move faster. Vini was surprised. He just looked around for a few seconds, looking for something randomly. So Vini tries to follow Kenny's speed."
+        "value": "Kenny smiled and started to move faster. Vinny was surprised. He just looked around for a few seconds, looking for something randomly. So Vinny tries to follow Kenny's speed."
     },
 
     {
         "type": "dialogue",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "H..Hey! Wait me!"
     },
 
@@ -966,7 +966,7 @@
             "where": "Greendream Village"
         },
         "type": "action",
-        "value": "Kenny arrived in the village, the village was a little busy, Vini saw some random ponies starting another new day as Kenny arrived at his door."
+        "value": "Kenny arrived in the village, the village was a little busy, Vinny saw some random ponies starting another new day as Kenny arrived at his door."
     },
 
     {
@@ -975,25 +975,25 @@
     },
 
     {
-        "value": "Oh? Vini? Vini?! Oh Vini! You are there!",
+        "value": "Oh? Vinny? Vinny?! Oh Vinny! You are there!",
         "type": "dialogue",
         "character": "Kenny"
     },
 
     {
-        "value": "Kenny smiled again and waved at Vini, happily inviting Vini to come faster.",
+        "value": "Kenny smiled again and waved at Vinny, happily inviting Vinny to come faster.",
         "type": "action"
     },
 
     {
-        "value": "Vini looked smiling back with a pokeface.",
+        "value": "Vinny looked smiling back with a pokeface.",
         "type": "action"
     },
 
     {
         "value": "I'll get there. A moment...",
         "type": "dialogue",
-        "character": "Vini"
+        "character": "Vinny"
     },
 
     {
@@ -1003,45 +1003,45 @@
     },
 
     {
-        "value": "Kenny giggles a little before smiling again and kept waving at you, waiting for Vini to arrive.",
+        "value": "Kenny giggles a little before smiling again and kept waving at you, waiting for Vinny to arrive.",
         "type": "action"
     },
 
     {
-        "value": "Vini looked smiling back again with a second pokerface.",
+        "value": "Vinny looked smiling back again with a second pokerface.",
         "type": "action"
     },
 
     {
         "value": "I'm coming... coming slowly.",
         "type": "dialogue",
-        "character": "Vini"
+        "character": "Vinny"
     },
 
     {
-        "value": "Vini looked smiling back again with a second pokerface. Vini then tried a little harder, with great difficulty, but he finally arrived.",
+        "value": "Vinny looked smiling back again with a second pokerface. Vinny then tried a little harder, with great difficulty, but he finally arrived.",
         "type": "action"
     },
 
     {
         "value": "Hah! I arrived! Yes!",
         "type": "dialogue",
-        "character": "Vini"
+        "character": "Vinny"
     },
 
     {
-        "value": "Vini then was very thoughtful, he looked all around and was surprised by the scenery that was being observed.",
+        "value": "Vinny then was very thoughtful, he looked all around and was surprised by the scenery that was being observed.",
         "type": "action"
     },
 
     {
         "value": "Wow There's a lot of ponies here and a lot of little houses here.",
         "type": "dialogue",
-        "character": "Vini"
+        "character": "Vinny"
     },
 
     {
-        "value": "Vini slowly felt that his walking skills were getting better and better. But he could still feel uncomfortable with the whole new environment. He looked very confused and at a loss as to how all this was possible. Why was he there, how did he get there. Everything was just amazing for Vini.",
+        "value": "Vinny slowly felt that his walking skills were getting better and better. But he could still feel uncomfortable with the whole new environment. He looked very confused and at a loss as to how all this was possible. Why was he there, how did he get there. Everything was just amazing for Vinny.",
         "type": "action"
     },
 
@@ -1057,14 +1057,14 @@
     },
 
     {
-        "value": "Vini found Kenny's attitude strange, he watched and analyzed him for a few seconds curiously before asking the question.",
+        "value": "Vinny found Kenny's attitude strange, he watched and analyzed him for a few seconds curiously before asking the question.",
         "type": "action"
     },
 
     {
         "value": "Oh? Does this house belong to you?",
         "type": "dialogue",
-        "character": "Vini"
+        "character": "Vinny"
     },
 
     {
@@ -1074,7 +1074,7 @@
     },
 
     {
-        "value": "Kenny is a little nervous for a few seconds to answer, but then he continues with a smile while he look at the door being opened, so Vini saw Raquel.",
+        "value": "Kenny is a little nervous for a few seconds to answer, but then he continues with a smile while he look at the door being opened, so Vinny saw Raquel.",
         "type": "action"
     },
 
@@ -1090,29 +1090,29 @@
     },
 
     {
-        "value": "Calm down... it's Vini. I found him on the beach where newbies spawn when they teleport here sunddely. He is here to be received! Right Vini?",
+        "value": "Calm down... it's Vinny. I found him on the beach where newbies spawn when they teleport here sunddely. He is here to be received! Right Vinny?",
         "type": "dialogue",
         "character": "Kenny"
     },
 
     {
-        "value": "Kenny spoke happily while looking at Vini.",
+        "value": "Kenny spoke happily while looking at Vinny.",
         "type": "action"
     },
     {
 
         "value": "Ah... Yes?",
         "type": "dialogue",
-        "character": "Vini"
+        "character": "Vinny"
     },
 
     {
-        "value": "Yes? Yes... Hello Vini. Welcome.",
+        "value": "Yes? Yes... Hello Vinny. Welcome.",
         "type": "dialogue",
         "character": "Raquel"
     },
     {
-        "value": "Raquel looked curiously at Vini for a few seconds before answering.",
+        "value": "Raquel looked curiously at Vinny for a few seconds before answering.",
         "type": "action"
     },
 
@@ -1123,18 +1123,18 @@
     },
 
     {
-        "value": "Raquel spoke in a shy way before smiling back. Vini then tried not to scare Raquel too much and tried to respond kindly when he realized that this would be the best alternative to not being alone in the unknown world.",
+        "value": "Raquel spoke in a shy way before smiling back. Vinny then tried not to scare Raquel too much and tried to respond kindly when he realized that this would be the best alternative to not being alone in the unknown world.",
         "type": "action"
     },
 
     {
-        "value": "Pleasure, my name...well you already know. My name is Vini hihihihi. Kenny found me at the beach and brought me here, thank you very much for your consideration.",
+        "value": "Pleasure, my name...well you already know. My name is Vinny hihihihi. Kenny found me at the beach and brought me here, thank you very much for your consideration.",
         "type": "dialogue",
-        "character": "Vini"
+        "character": "Vinny"
     },
 
     {
-        "value": "Vini smile a little more while looking around. Vini saw houses and more ponies around having their daily routine, around Vini also saw some trees around the village, and under these trees there were sticks and some pieces of leaf, stones, it was a very rich place in nature mixed with the village , and later on, there were other places like the street vendors' square and some buildings owned by those who manage the village.",
+        "value": "Vinny smile a little more while looking around. Vinny saw houses and more ponies around having their daily routine, around Vinny also saw some trees around the village, and under these trees there were sticks and some pieces of leaf, stones, it was a very rich place in nature mixed with the village , and later on, there were other places like the street vendors' square and some buildings owned by those who manage the village.",
         "type": "action"
     },
 
@@ -1145,24 +1145,24 @@
     },
 
     {
-        "value": "Raquel continued with the shy happy face as she offered to enter. Vini then went back to listening to the conversation, surprised to hear about the meal.",
+        "value": "Raquel continued with the shy happy face as she offered to enter. Vinny then went back to listening to the conversation, surprised to hear about the meal.",
         "type": "action"
     },
 
     {
-        "value": "Pancakes! Today is your lucky day Vini! Pancakes are the best morning meal we have here at home!",
+        "value": "Pancakes! Today is your lucky day Vinny! Pancakes are the best morning meal we have here at home!",
         "character": "Kenny",
         "type": "dialogue"
     },
 
     {
-        "value": "Kenny said all excited in response. Raquel was a little surprised but then she laughed a little. Vini was still confused, trying to understand all that kindness. Then he would analyze the situation again and just respond. Vini was a little nervous trying to believe Kenny.",
+        "value": "Kenny said all excited in response. Raquel was a little surprised but then she laughed a little. Vinny was still confused, trying to understand all that kindness. Then he would analyze the situation again and just respond. Vinny was a little nervous trying to believe Kenny.",
         "type": "action"
     },
 
     {
         "value": "Ahn thank you very much, but why are you helping me? You don't know me or anything like that, for example, I'm a stranger to you, don't you think it's strange for a stranger to enter your house? Even weirder that he came from another world and doesn't even know how to walk right? Doesn't it seem a little strange to you?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -1172,7 +1172,7 @@
     },
 
     {
-        "value": "Oh? Vini don't worry, I saw in your face that you were lost. We work hard to make guests feel welcome in the village and feel comfortable here. We don't want anyone to risk the life and end up going to the dark side of Pony Driland.",
+        "value": "Oh? Vinny don't worry, I saw in your face that you were lost. We work hard to make guests feel welcome in the village and feel comfortable here. We don't want anyone to risk the life and end up going to the dark side of Pony Driland.",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -1184,13 +1184,13 @@
     },
 
     {
-        "value": "Kenny answered Vini and offered Vini to enter too. He proved to be positive in what he was doing. He wanted Vini to feel good. He just waited for Vini to enter the house.",
+        "value": "Kenny answered Vinny and offered Vinny to enter too. He proved to be positive in what he was doing. He wanted Vinny to feel good. He just waited for Vinny to enter the house.",
         "type": "action"
     },
 
     {
         "value": "Okay okay... I understand, so excuse me, what a beautiful house! *-*",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -1207,40 +1207,40 @@
 
     {
         "type": "think",
-        "character": "Vini",
+        "character": "Vinny",
         "value": "Hahaha... I think I get it. they are a couple. it is cute."
     },
 
     {
-        "value": "Vini soon saw that it was a house mixed with a medieval style with the technological things of a modern house. Vini saw a beautiful room rich in furniture, Vini just missed some things that are normally used for communication like television and telephone. And just ahead Vini could see the table where Raquel was preparing breakfast with pancakes. So Vini waits for kenny to say something, waiting at the entrance, making Kenny look at Vini.",
+        "value": "Vinny soon saw that it was a house mixed with a medieval style with the technological things of a modern house. Vinny saw a beautiful room rich in furniture, Vinny just missed some things that are normally used for communication like television and telephone. And just ahead Vinny could see the table where Raquel was preparing breakfast with pancakes. So Vinny waits for kenny to say something, waiting at the entrance, making Kenny look at Vinny.",
         "type": "action"
     },
 
     {
-        "value": "Oh? Vini? You may come in! Remember you are welcome here!",
+        "value": "Oh? Vinny? You may come in! Remember you are welcome here!",
         "character": "Kenny",
         "type": "dialogue"
     },
 
     {
-        "value": "Kenny invited Vini to enter again as Kenny went with Raquel towards the breakfast table.",
+        "value": "Kenny invited Vinny to enter again as Kenny went with Raquel towards the breakfast table.",
         "type": "action"
     },
 
     {
         "value": "Oh? Okay. Thank you again for everything.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vini was a little more surprised to be invited in. Vini heading towards an empty chair at the table.",
+        "value": "Vinny was a little more surprised to be invited in. Vinny heading towards an empty chair at the table.",
         "type": "action"
     },
 
     {
         "value": "Did you talk about me meeting someone to know the right place? who was it?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -1251,7 +1251,7 @@
     },
 
     {
-        "value": "James? Are you sure Kenny? He's kind of grumpy with new people. He always says he wants to do things all by himself. And Vini just arrived in our world. This is extremely dangerous for him.",
+        "value": "James? Are you sure Kenny? He's kind of grumpy with new people. He always says he wants to do things all by himself. And Vinny just arrived in our world. This is extremely dangerous for him.",
         "character": "Raquel",
         "type": "dialogue"
     },
@@ -1268,42 +1268,42 @@
     },
 
     {
-        "value": "Kenny replied sadly back. Vini was worried trying to understand what was going on while watching the conversation.",
+        "value": "Kenny replied sadly back. Vinny was worried trying to understand what was going on while watching the conversation.",
         "type": "action"
     },
 
     {
         "value": "Oh really? Where did I end up accidentally getting myself into?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "think"
     },
 
     {
-        "value": "If Vini is a good adventurer, I'm sure they can do well!",
+        "value": "If Vinny is a good adventurer, I'm sure they can do well!",
         "character": "Kenny",
         "type": "dialogue"
     },
 
     {
         "value": "...",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
         "value": "Cool.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vini eats pancakes while doing a poker face in answering this.",
+        "value": "Vinny eats pancakes while doing a poker face in answering this.",
         "type": "action"
     },
 
     {
         "value": "Okay! The pancakes are great!",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -1314,12 +1314,12 @@
     },
 
     {
-        "value": "Raquel get confused when she hears Vini reaction.",
+        "value": "Raquel get confused when she hears Vinny reaction.",
         "type": "action"
     },
 
     {
-        "value": "Yep....That's nice! It will be really fun! Vini will enjoy a good adventure!",
+        "value": "Yep....That's nice! It will be really fun! Vinny will enjoy a good adventure!",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -1331,12 +1331,12 @@
 
     {
         "value": "Yes... I said cool in the sense of finding it a bit cool when kenny said \"He's very lucky he's still alive\" I thought it was a little cool and weird, but nothing that scared me.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vini continue eating pancake while doing a nervous giggles.",
+        "value": "Vinny continue eating pancake while doing a nervous giggles.",
         "type": "action"
     },
 
@@ -1358,7 +1358,7 @@
     },
 
     {
-        "value": "if Vini likes a good adventure.",
+        "value": "if Vinny likes a good adventure.",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -1375,18 +1375,18 @@
     },
 
     {
-        "value": "Raquel talks about a way to make Kenny calm down. Raquel was worried about Kenny's reaction to trying to help James. Meanwhile, Vini was watching the conversation and was slightly worried about Kenny. But he is slowly trusting more as he sees Raquel talking to Kenny, and notes that they are just normal villagers.",
+        "value": "Raquel talks about a way to make Kenny calm down. Raquel was worried about Kenny's reaction to trying to help James. Meanwhile, Vinny was watching the conversation and was slightly worried about Kenny. But he is slowly trusting more as he sees Raquel talking to Kenny, and notes that they are just normal villagers.",
         "type": "action"
     },
 
     {
         "value": "Well, I'm new here, so I don't see why not meet new things and new ponies too, of course if it's not too much trouble.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vini tried to remain calm and only responded with a slight nervousness. Kenny would then start trying to be more positive, trying to get some hope.",
+        "value": "Vinny tried to remain calm and only responded with a slight nervousness. Kenny would then start trying to be more positive, trying to get some hope.",
         "type": "action"
     },
 
@@ -1403,7 +1403,7 @@
     },
 
     {
-        "value": "Raquel reply, getting a little confused and surprised while holding a piece of the breakfast she is eating. Vini was curious and a little surprised before answering.",
+        "value": "Raquel reply, getting a little confused and surprised while holding a piece of the breakfast she is eating. Vinny was curious and a little surprised before answering.",
         "type": "action"
     },
 
@@ -1411,7 +1411,7 @@
         "nsfw": ["questionable"],
         "value": "Oh really? Don't you have anything that looks like a cell phone? Cell phones are very common where I came from, they are very common everyone has them, we use them to communicate with other people, watch BoboFlix, play games, send nudity to people, basically it was a very well done work.",
         "value_alternative": "Oh really? Don't you have anything that looks like a cell phone? Cell phones are very common where I came from, they are very common everyone has them, we use them to communicate with other people, watch BoboFlix, play games, basically it was a very well done work.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -1443,20 +1443,20 @@
         "nsfw": ["questionable"],
         "value": "Yes, nudes. A way for you to pay the people you work for.",
         "value_alternative": "Yes. This is the phone. Something wrong about it?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
         "nsfw": ["questionable"],
-        "value": "Vini was a little embarrassed and thoughtful when thinking how to say about nudes without being explicit.",
-        "value_alternative": "Vini tried to understand Raquel's reaction during some seconds.",
+        "value": "Vinny was a little embarrassed and thoughtful when thinking how to say about nudes without being explicit.",
+        "value_alternative": "Vinny tried to understand Raquel's reaction during some seconds.",
         "type": "action"
     },
 
     {
         "value": "Well... Yes Kenny, you can do everything inside the phone, it's amazing, but unfortunately it's limited in terms of functioning where it only stays on until the battery or batteries run out.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -1470,7 +1470,7 @@
 
     {
         "nsfw": ["questionable"],
-        "value": "Raquel is still embarrassed, trying to understand what Vini was talking about.",
+        "value": "Raquel is still embarrassed, trying to understand what Vinny was talking about.",
         "value_alternative": "Raquel didn't know what to say and just continued watching the conversation.",
         "type": "action"
     },
@@ -1487,29 +1487,29 @@
     },
     {
         "value": "Wait... I didn't bring the charger! SHIT!",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "think"
     },
 
     {
         "value": "Okay okay... Unfortunately I don't have the charger, because I wasn't with me on the beach and I don't have faith that it's here.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vini was very uncomfortable and very nervous trying to think about what to do if the cell phone just ran out of battery. He was very worried. So Vini looked at Raquel and saw her reaction again, so he decided to ask.",
+        "value": "Vinny was very uncomfortable and very nervous trying to think about what to do if the cell phone just ran out of battery. He was very worried. So Vinny looked at Raquel and saw her reaction again, so he decided to ask.",
         "type": "action"
     },
 
     {
         "value": "Ah? Are you ok Raquel?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vini speak calmly and surprised.",
+        "value": "Vinny speak calmly and surprised.",
         "type": "action"
     },
 
@@ -1536,7 +1536,7 @@
     },
 
     {
-        "value": "Well Vini, sorry I didn't see anything on the sand when I found you. But maybe James can help you with that. I don't know anything about technology, only James knows better about it.",
+        "value": "Well Vinny, sorry I didn't see anything on the sand when I found you. But maybe James can help you with that. I don't know anything about technology, only James knows better about it.",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -1548,18 +1548,18 @@
 
     {
         "value": "Yeah, I'm going to save the remaining energy for something very useful. Don't worry, I forgive you.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vini sighs deeply.",
+        "value": "Vinny sighs deeply.",
         "type": "action"
     },
 
     {
         "value": "Well... Kenny, can I help you with something? What do you do on the morning? Can I help you with something?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -1576,7 +1576,7 @@
 
     {
         "value": "Ah, wow, yes yes, we can walk and you will instruct me more about walking on 4 and even trying to use the wings if possible of course.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -1593,7 +1593,7 @@
 
     {
         "value": "Okay. Maybe this is all a dream, maybe I hit my head while trying to eat my X-Tudo. Let's take it easy, the exit from this place shouldn't be too far. There must be someone superior who can send me home.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "think"
     },
 
@@ -1610,19 +1610,19 @@
 
     {
         "value": "Ah, okay okay.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
         "value": "ARGH! Fall for the obvious. Nice.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "think"
     },
 
     {
         "value": "What time are we going to the market?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -1634,13 +1634,13 @@
     },
 
     {
-        "value": "Kenny replied while finishing the rest of the food on his plate before leaving a small friendly giggles about Vini answer.",
+        "value": "Kenny replied while finishing the rest of the food on his plate before leaving a small friendly giggles about Vinny answer.",
         "type": "action"
     },
 
     {
         "value": "Ok ok ok, if possible I can accompany you and we can talk on the way ok?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -1651,19 +1651,19 @@
     },
 
     {
-        "value": "Kenny replied happily as he got up from the chair and put the bag saddle on he body. Then Kenny and Vini started walking towards the market.",
+        "value": "Kenny replied happily as he got up from the chair and put the bag saddle on he body. Then Kenny and Vinny started walking towards the market.",
         "type": "action"
     },
 
     {
         "value": "a saddle? Is that like a backpack? Interesting...",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "think"
     },
 
     {
         "set": { "playlistPlay": "think" },
-        "value": "Vini watched Kenny use the saddle for a few seconds as he followed Kenny. Then the two ponies started walking through the village. Vini and Kenny were walking through the village towards the market, passing several and several ponies and houses, the village was very busy with several ponies living life, adults and children living their routine, and children playing happily on the street. Then Kenny would look at Vini and ask kindly.",
+        "value": "Vinny watched Kenny use the saddle for a few seconds as he followed Kenny. Then the two ponies started walking through the village. Vinny and Kenny were walking through the village towards the market, passing several and several ponies and houses, the village was very busy with several ponies living life, adults and children living their routine, and children playing happily on the street. Then Kenny would look at Vinny and ask kindly.",
         "type": "action"
     },
 
@@ -1675,7 +1675,7 @@
 
     {
         "value": "Where do you and Raquel know each other from? very nice of you 2 to welcome me after I suddenly show up on the beach. In my world people aren't that kind.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -1692,7 +1692,7 @@
 
     {
         "value": "No, these are stupid things to be honest. Oh many nations in wars, deadly viruses and deadly diseases spread around the world, but I had a normal life. I woke up every day, I ate, I did my housework since I didn't have a job and I slept in peace, but it was a little life bad for people, people were very selfish and only thought about them, so it was a little bad. but I could live without any problems. But well, sorry to interrupt you, but you can continue.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -1737,18 +1737,18 @@
 
     {
         "value": "What?!",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vini was a little surprised and worried to hear this.",
+        "value": "Vinny was a little surprised and worried to hear this.",
         "type": "action"
     },
 
     {
         "value": "Jeez, how long has he been here?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -1760,13 +1760,13 @@
 
     {
         "value": "Okay... This doesn't look good. It's nothing good. Will I be stuck in this place forever?!",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "think"
     },
 
     {
         "value": "Interesting, it seems that he only has you as an friend.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -1783,7 +1783,7 @@
 
     {
         "value": "Oh, I see. Well, sorry to interrupt the conversation, but we will arrive the market?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -1806,12 +1806,12 @@
 
     {
         "value": "Jeez, it looks like someone still doesn't know how to walk on all fours well yet.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vini speak ironically but friendly. So Vini help Kenny.",
+        "value": "Vinny speak ironically but friendly. So Vinny help Kenny.",
         "type": "action"
     },
 
@@ -1828,7 +1828,7 @@
 
     {
         "value": "Kenny? Are you okay?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -1840,13 +1840,13 @@
 
     {
         "set": { "playlistPlay": null },
-        "value": "Kenny put his paw on his head to try to get as dizzy as possible. When everyone noticed that Vini was fine, everyone went back to the routine.",
+        "value": "Kenny put his paw on his head to try to get as dizzy as possible. When everyone noticed that Vinny was fine, everyone went back to the routine.",
         "type": "action"
     },
 
     {
         "value": "Okay. So, you came to buy what here at the market?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -1862,19 +1862,19 @@
     },
 
     {
-        "value": "Vini starts to hear someone giggles around, making Vini looks towards the giggle. Vini laughed a little back.",
+        "value": "Vinny starts to hear someone giggles around, making Vinny looks towards the giggle. Vinny laughed a little back.",
         "type": "action"
     },
 
     {
         "value": "Ah? I think someone laughed about it, I think as I came from another world, there are 2 details, even if I had some money here, I think my kind of money wouldn't be used here.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
         "set": { "playlistPlay": "bad-think" },
-        "value": "So Vini looked at a female unicorn doing a suspicious face while laughing at Vini.",
+        "value": "So Vinny looked at a female unicorn doing a suspicious face while laughing at Vinny.",
         "type": "action"
     },
 
@@ -1885,7 +1885,7 @@
     },
 
     {
-        "value": "The mysterious unicorn was giggling again at Vini and approached slowly to analyze him.",
+        "value": "The mysterious unicorn was giggling again at Vinny and approached slowly to analyze him.",
         "type": "action"
     },
 
@@ -1902,12 +1902,12 @@
 
     {
         "value": "Ah...Hi.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vini turns to Kenny for a few seconds. Then he turned to look at the mysterious unicorn.",
+        "value": "Vinny turns to Kenny for a few seconds. Then he turned to look at the mysterious unicorn.",
         "type": "action"
     },
 
@@ -1918,7 +1918,7 @@
     },
 
     {
-        "value": "The unicorn giggles again and uses her magic, changing direction of Vini face for Vini to look at her. Vini saw her wearing a cape to protect her identity a bit.",
+        "value": "The unicorn giggles again and uses her magic, changing direction of Vinny face for Vinny to look at her. Vinny saw her wearing a cape to protect her identity a bit.",
         "type": "action"
     },
 
@@ -1957,13 +1957,13 @@
     },
 
     {
-        "value": "Kenny try to open his mouth for a few seconds. Vini was a little surprised, but then Vini tried to have a little attitude.",
+        "value": "Kenny try to open his mouth for a few seconds. Vinny was a little surprised, but then Vinny tried to have a little attitude.",
         "type": "action"
     },
 
     {
         "value": "Hey, I think you can stop your magic, I know how to listen you.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -1980,12 +1980,12 @@
 
     {
         "value": "What a beautiful first day. Crazy females showing up now.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "think"
     },
 
     {
-        "value": "Her magic continued and a sword appeared being levitated by her that moves next to Vini mane while her hood comes off, revealing the rest of her face.",
+        "value": "Her magic continued and a sword appeared being levitated by her that moves next to Vinny mane while her hood comes off, revealing the rest of her face.",
         "type": "action"
     },
 
@@ -1996,7 +1996,7 @@
     },
 
     {
-        "value": "Kenny continue trying to move towards Vini while some ponies looked scared at the time.",
+        "value": "Kenny continue trying to move towards Vinny while some ponies looked scared at the time.",
         "type": "action"
     },
 
@@ -2025,12 +2025,12 @@
 
     {
         "value": "Wow! Are you ok Kenny? Who is this charming girl with a broadsword?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vini speaking a little dumbfounded and not understanding.",
+        "value": "Vinny speaking a little dumbfounded and not understanding.",
         "type": "action"
     },
 
@@ -2058,7 +2058,7 @@
     },
 
     {
-        "value": "Rayane slowly approached Vini as she said this, without intimidating him too much.",
+        "value": "Rayane slowly approached Vinny as she said this, without intimidating him too much.",
         "type": "action"
     },
 
@@ -2069,24 +2069,24 @@
     },
 
     {
-        "value": "Rayane spoke in a delicate and provocative voice as she walked around Vini and rubbed her tail on Vini face, doing a small act of intimidation on Vini.",
+        "value": "Rayane spoke in a delicate and provocative voice as she walked around Vinny and rubbed her tail on Vinny face, doing a small act of intimidation on Vinny.",
         "type": "action"
     },
 
     {
         "value": "W...what? What exactly do you do, charming Rayane?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vini speak somewhat ironically while trying to resist the provocations. So the sword that was floating and suddenly stuck on the ground 2 centimeters from Vini face.",
+        "value": "Vinny speak somewhat ironically while trying to resist the provocations. So the sword that was floating and suddenly stuck on the ground 2 centimeters from Vinny face.",
         "type": "action"
     },
 
     {
         "value": "O..OH! WOW!",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2103,18 +2103,18 @@
     },
 
     {
-        "value": "Rayane spoke in a delicate and provocative voice as she walked around Vini and rubbed her tail on Vini face, doing a small act of intimidation on Vini.",
+        "value": "Rayane spoke in a delicate and provocative voice as she walked around Vinny and rubbed her tail on Vinny face, doing a small act of intimidation on Vinny.",
         "type": "action"
     },
 
     {
-        "value": "So Vini tried to keep calm and started to speak in a rhetorical way.",
+        "value": "So Vinny tried to keep calm and started to speak in a rhetorical way.",
         "type": "action"
     },
 
     {
         "value": "Well, I think I have things that interest you, by the way, you came to me, if you do something with me, you probably won't get answers. so I think we can help each other don't you think?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2125,7 +2125,7 @@
     },
 
     {
-        "value": "Rayane approached Vini well and stared into the Vini eyes to draw Vini attention fixedly.",
+        "value": "Rayane approached Vinny well and stared into the Vinny eyes to draw Vinny attention fixedly.",
         "type": "action"
     },
 
@@ -2136,19 +2136,19 @@
     },
 
     {
-        "value": "So Rayane walked away from Vini slowly. Vini laughed a little nervously and just answered.",
+        "value": "So Rayane walked away from Vinny slowly. Vinny laughed a little nervously and just answered.",
         "type": "action"
     },
 
     {
         "set": { "playlistPlay": null },
         "value": "OK then. Okay okay...",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "The sword that was on her side suddenly flew, scraping another little part of Vini mane in surprise.",
+        "value": "The sword that was on her side suddenly flew, scraping another little part of Vinny mane in surprise.",
         "type": "action"
     },
 
@@ -2159,7 +2159,7 @@
     },
 
     {
-        "value": "Rayane looked at Vini face again.",
+        "value": "Rayane looked at Vinny face again.",
         "type": "action"
     },
 
@@ -2188,7 +2188,7 @@
 
     {
         "value": "Kenny? Are you ok?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2205,12 +2205,12 @@
 
     {
         "value": "Okay, sorry. But... Who is she?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vini asked very curiously while helping Kenny to compose himself.",
+        "value": "Vinny asked very curiously while helping Kenny to compose himself.",
         "type": "action"
     },
 
@@ -2227,12 +2227,12 @@
 
     {
         "value": "Kenny?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vini talks a little lost about the situation.",
+        "value": "Vinny talks a little lost about the situation.",
         "type": "action"
     },
 
@@ -2244,7 +2244,7 @@
 
     {
         "value": "I think I played on Rayane.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2260,13 +2260,13 @@
     },
 
     {
-        "value": "Kenny feel very surprised by Vini words.",
+        "value": "Kenny feel very surprised by Vinny words.",
         "type": "action"
     },
 
     {
         "value": "I have a certain problem with this kind of people.... ponies. Yes, ponies. But are we going to go back to what we were doing originally? You still want help shopping?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2288,24 +2288,24 @@
 
     {
         "value": "Nice. Very nice. I'll have to adapt my vocabulary too.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "think"
     },
 
     {
         "value": "I was talking about people, but here I'm going to start talking about ponies, it sounds nicer.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vini talk a little worried about Kenny.",
+        "value": "Vinny talk a little worried about Kenny.",
         "type": "action"
     },
 
     {
         "value": "You said not to traumatize the newbies \"again\" I don't understand, have you seen this happen?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2319,7 +2319,7 @@
         "set": {
             "dayNightCycle": "morning"
         },
-        "value": "Kenny feel worried again while replying Vini, trying to calm down in. Vini laughed a little nervously, seemed to think it was all Kenny's paranoia. So he tries to respond in a calmer way.",
+        "value": "Kenny feel worried again while replying Vinny, trying to calm down in. Vinny laughed a little nervously, seemed to think it was all Kenny's paranoia. So he tries to respond in a calmer way.",
         "type": "action"
     },
 
@@ -2328,7 +2328,7 @@
             "dayNightCycle": "evening"
         },
         "value": "Oh okay okay, let's go shopping? Or do you need a little more time to compose yourself?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2340,17 +2340,17 @@
     },
 
     {
-        "value": "Kenny talks desperately when he looks at the clock and enters the market. Vini felt better seeing Kenny worry less about problems.",
+        "value": "Kenny talks desperately when he looks at the clock and enters the market. Vinny felt better seeing Kenny worry less about problems.",
         "type": "action"
     },
 
     {
         "value": "Let's go.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
     {
-        "value": "Vini follows Kenny.",
+        "value": "Vinny follows Kenny.",
         "type": "action"
     },
     {
@@ -2360,13 +2360,13 @@
     },
     {
         "set": { "playlistPlay": null },
-        "value": "Vini was a little surprised and responded.",
+        "value": "Vinny was a little surprised and responded.",
         "type": "action"
     },
 
     {
         "value": "Yes, some are giants and are divided by rows of huge streets, there's not much difference between my little world and this one.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2383,13 +2383,13 @@
 
     {
         "value": "Oh ok. Hey! I'll take a little walk and if I find something I'll let you know, we'll meet at the cashier or somewhere! He was really excited.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
         "set": { "playlistPlay": "fantasy-village" },
-        "value": "So Vini analyzed the situation and became very thoughtful.",
+        "value": "So Vinny analyzed the situation and became very thoughtful.",
         "type": "action"
     },
 
@@ -2397,28 +2397,28 @@
         "set": {
             "item": [{
                 "id": "surprise-tin",
-                "owner": "vini",
+                "owner": "vinny",
                 "amount": 1
             }]
         },
-        "value": "Vini looked at each object so he started to think about what he could buy. So he was surprised to see a product called \"surprise tin\".",
+        "value": "Vinny looked at each object so he started to think about what he could buy. So he was surprised to see a product called \"surprise tin\".",
         "type": "action"
     },
 
     {
         "value": "Really? I hope some good thing  comes out of this shit.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "So a random pony looked at Vini talking alone and what you were holding, and he walked away very quickly.",
+        "value": "So a random pony looked at Vinny talking alone and what you were holding, and he walked away very quickly.",
         "type": "action"
     },
 
     {
         "value": "Ah? Hey! Sorry! Fineeee... Let it go then.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2426,17 +2426,17 @@
         "set": {
             "item": [{
                 "id": "basic-wound-spray",
-                "owner": "vini",
+                "owner": "vinny",
                 "amount": 1
             }]
         },
-        "value": "Vini then continued his shopping adventure and he was analyzing other products, so he get 1 basic wound spray. He visited the sensation of products related to wings, but he was disappointed with the price of the products, he saw that everything was too expensive, so he just left.",
+        "value": "Vinny then continued his shopping adventure and he was analyzing other products, so he get 1 basic wound spray. He visited the sensation of products related to wings, but he was disappointed with the price of the products, he saw that everything was too expensive, so he just left.",
         "type": "action"
     },
 
     {
         "value": "Oh? Oh yes! Beer! I liked it! Good! Very good!",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2444,17 +2444,17 @@
         "set": {
             "item": [{
                 "id": "beer",
-                "owner": "vini",
+                "owner": "vinny",
                 "amount": 2
             }]
         },
-        "value": "Vini get 2 beers. So Vini started to feel more satisfied as he added more items to the saddle. He kept walking into the drinking session until he saw the energy drink session.",
+        "value": "Vinny get 2 beers. So Vinny started to feel more satisfied as he added more items to the saddle. He kept walking into the drinking session until he saw the energy drink session.",
         "type": "action"
     },
 
     {
         "value": "Energy drink? Oh! Now I'm feeling at home.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2462,15 +2462,15 @@
         "set": {
             "item": [{
                 "id": "energy-drink",
-                "owner": "vini",
+                "owner": "vinny",
                 "amount": 1
             }, {
                 "id": "water",
-                "owner": "vini",
+                "owner": "vinny",
                 "amount": 5
             }]
         },
-        "value": "Vini get 1 Energy Drink and take 5 waters. So more and more time was spent, looking at everything that was in the market, after a while, Vini found a display case with a sword.",
+        "value": "Vinny get 1 Energy Drink and take 5 waters. So more and more time was spent, looking at everything that was in the market, after a while, Vinny found a display case with a sword.",
         "type": "action"
     },
 
@@ -2482,18 +2482,18 @@
     },
 
     {
-        "value": "Vini then was very surprised and soon watched the employee, then the sword, then the employee again, and responded with slight anxiety.",
+        "value": "Vinny then was very surprised and soon watched the employee, then the sword, then the employee again, and responded with slight anxiety.",
         "type": "action"
     },
 
     {
         "value": "What? Good afternoon, yes I'm interested.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Employee then said with a very happy and inviting effect voice to have Vini's full attention with the fun moment.",
+        "value": "Employee then said with a very happy and inviting effect voice to have Vinny's full attention with the fun moment.",
         "type": "action"
     },
 
@@ -2505,7 +2505,7 @@
 
     {
         "value": "Yes! I want to know and participate.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2516,13 +2516,13 @@
     },
 
     {
-        "value": "Vini was very happy and excited to try the roulette, so he responded very happy, waiting for the right moment to return to the roulette.",
+        "value": "Vinny was very happy and excited to try the roulette, so he responded very happy, waiting for the right moment to return to the roulette.",
         "type": "action"
     },
 
     {
         "value": "Oh, fine! I'll go there and then I'll come back.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2530,17 +2530,17 @@
         "set": {
             "item": [{
                 "id": "basic-wound-spray",
-                "owner": "vini",
+                "owner": "vinny",
                 "amount": 1
             }]
         },
-        "value": "Vini then continued walking through the hallways, analyzing more and more items, then he just got 1 more basic spray. So after that, Vini decided to go see if Kenny was okay. Kenny was angry, walking towards the checkout line.",
+        "value": "Vinny then continued walking through the hallways, analyzing more and more items, then he just got 1 more basic spray. So after that, Vinny decided to go see if Kenny was okay. Kenny was angry, walking towards the checkout line.",
         "type": "action"
     },
 
     {
         "value": "WOW KENNY! Are you ok bro? What happened?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2557,7 +2557,7 @@
 
     {
         "value": "My god? How many times did you play?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2574,13 +2574,13 @@
 
     {
         "value": "This doesn't sound like a good idea, but let's at least try. heh.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "think"
     },
 
     {
         "value": "Jeez, I can try 1 time, what do you think? Sometimes i'm lucky.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2597,12 +2597,12 @@
 
     {
         "value": "Good! Time to win or lose! Now it seems like a good opportunity.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vini prepared his determination and headed towards the employee again. The employee looked and recognized Vini. So he already started the cheerful personality to convince Vini to try.",
+        "value": "Vinny prepared his determination and headed towards the employee again. The employee looked and recognized Vinny. So he already started the cheerful personality to convince Vinny to try.",
         "type": "action"
     },
 
@@ -2614,7 +2614,7 @@
 
     {
         "value": "Yes I'm back, I'll try 1 time.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2625,13 +2625,13 @@
     },
 
     {
-        "value": "Employee prepare to roll the dice. Vini laughed a little and then answered.",
+        "value": "Employee prepare to roll the dice. Vinny laughed a little and then answered.",
         "type": "action"
     },
 
     {
         "value": "Kenny heard that the 2nd time is the right one?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2643,7 +2643,7 @@
 
     {
         "value": "It's now bro, my last attempt, then we're leaving with a sword, TRUST!!!",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2660,7 +2660,7 @@
 
     {
         "value": "Send me THE BIG DICE!",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2671,13 +2671,13 @@
     },
 
     {
-        "value": "The dice went round and round and round on the table. But the dice lands on number 2. Vini was completely disappointed and responded with a bit of anger.",
+        "value": "The dice went round and round and round on the table. But the dice lands on number 2. Vinny was completely disappointed and responded with a bit of anger.",
         "type": "action"
     },
 
     {
         "value": "I really didn't want this sword. Let's go.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2694,7 +2694,7 @@
 
     {
         "value": "O god. Why did you want that sword?",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2711,7 +2711,7 @@
 
     {
         "value": "Fine... I took some necessary things, but among them I took an energy drink, I saw that you really wanted the sword, so I'm willing to leave this energy drink and give you 2 more chances to get the sword.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2728,7 +2728,7 @@
 
     {
         "value": "I'm going to return this energy drink and the less money will give us 2 more chances to get that sword for you.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2739,12 +2739,12 @@
     },
 
     {
-        "value": "Kenny would get a little more worried. Vini would then smile and just indicate that he was determined to try again.",
+        "value": "Kenny would get a little more worried. Vinny would then smile and just indicate that he was determined to try again.",
         "type": "action"
     },
 
     {
-        "value": "Vini would then smile and just indicate that he was determined to try again.",
+        "value": "Vinny would then smile and just indicate that he was determined to try again.",
         "type": "action"
     },
 
@@ -2762,7 +2762,7 @@
 
     {
         "value": "You are really a clown! Let's play 2 more.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2776,36 +2776,36 @@
         "set": {
             "item": [{
                 "id": "beer",
-                "owner": "vini",
+                "owner": "vinny",
                 "amount": -2
             }, {
                 "id": "energy-drink",
-                "owner": "vini",
+                "owner": "vinny",
                 "amount": -1
             }, {
                 "id": "water",
-                "owner": "vini",
+                "owner": "vinny",
                 "amount": -5
             }]
         },
-        "value": "Kenny was crying, just watching the scene trying to have some hope of some good result. Vini then tried the first, second, third, several other attempts with all failures. Vini lost the beers, the energy drinks. Vini was getting very angry with the situation, losing his temper more and more.",
+        "value": "Kenny was crying, just watching the scene trying to have some hope of some good result. Vinny then tried the first, second, third, several other attempts with all failures. Vinny lost the beers, the energy drinks. Vinny was getting very angry with the situation, losing his temper more and more.",
         "type": "action"
     },
 
     {
         "value": "Enough! It seems that our world is controlled by a sadistic person who is too pissed off to do this bad luck with us.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Kenny wasrolling on the floor and crying. Again. So Vini holds Kenny and helps him to compose himself. Then Vini responds sadly.",
+        "value": "Kenny wasrolling on the floor and crying. Again. So Vinny holds Kenny and helps him to compose himself. Then Vinny responds sadly.",
         "type": "action"
     },
 
     {
         "value": "I'm sorry.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2822,7 +2822,7 @@
 
     {
         "value": "Ok ok, let's go.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2838,7 +2838,7 @@
     },
 
     {
-        "value": "The female unicorn looked at Kenny and Vini, a little worried by their sad expressions.",
+        "value": "The female unicorn looked at Kenny and Vinny, a little worried by their sad expressions.",
         "type": "action"
     },
 
@@ -2849,13 +2849,13 @@
     },
 
     {
-        "value": "Vini tried to ignore Kenny's reaction and just responded.",
+        "value": "Vinny tried to ignore Kenny's reaction and just responded.",
         "type": "action"
     },
 
     {
         "value": "We had a mishap with the sword.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2866,13 +2866,13 @@
     },
 
     {
-        "value": "The cashier tried to respond kindly while laughing a little nervously. Vini looked at the cashier, after looked at Kenny, watched him crying, then tries to do Kenny feel better.",
+        "value": "The cashier tried to respond kindly while laughing a little nervously. Vinny looked at the cashier, after looked at Kenny, watched him crying, then tries to do Kenny feel better.",
         "type": "action"
     },
 
     {
         "value": "Ok ok. Next time you take it. Come on Kenny. It's just a silly sword.",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
@@ -2889,7 +2889,7 @@
 
     {
         "value": "Don't trust, but you will win, trust yourself!",
-        "character": "Vini",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
