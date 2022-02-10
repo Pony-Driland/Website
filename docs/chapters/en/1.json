@@ -2388,7 +2388,7 @@
     },
 
     {
-        "set": { "playlistPlay": "fantasy-village" },
+        "set": { "playlistPlay": "silly" },
         "value": "So Vinny analyzed the situation and became very thoughtful.",
         "type": "action"
     },
