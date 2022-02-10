@@ -2824,6 +2824,84 @@
         "value": "Ok ok, let's go.",
         "character": "Vini",
         "type": "dialogue"
+    },
+
+    {
+        "value": "The two then walked towards the cashier. The two were disappointed by the end result, going towards the cashier.",
+        "type": "action"
+    },
+
+    {
+        "value": "Good afternoon! What can I help? Oh? What sad faces are these?",
+        "character": "Cashier",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The female unicorn looked at Kenny and Vini, a little worried by their sad expressions.",
+        "type": "action"
+    },
+
+    {
+        "value": "Aaaaah!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vini tried to ignore Kenny's reaction and just responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "We had a mishap with the sword.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Lucky Dices? Oh no. Sorry for what happened. Everything can get a second chance sometime. But be more careful.",
+        "character": "Cashier",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The cashier tried to respond kindly while laughing a little nervously. Vini looked at the cashier, after looked at Kenny, watched him crying, then tries to do Kenny feel better.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ok ok. Next time you take it. Come on Kenny. It's just a silly sword.",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny was trying to be a little positive as he responded. But he was still disappointed.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ok. I will trust the fate of the lucky dices.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Don't trust, but you will win, trust yourself!",
+        "character": "Vini",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "On myself? You're right! I need to trust myself more!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny reply with determination.",
+        "type": "action"
     }
 
 ]
