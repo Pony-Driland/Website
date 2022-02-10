@@ -2965,6 +2965,73 @@
         "value": "Heh! Alright.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "The purchase price was then 151 coins. Kenny was just disappointed, but then he paid the full amount. Vinny was surprised and scared by the price.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow. Your wife won't fight, right? For the expense of trying to get the sword?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah... I... I'll manage.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny said laughing nervously as he paid the cashier.",
+        "type": "action"
+    },
+
+    {
+        "value": "Thank you very much! Have a nice day sir!",
+        "character": "Cashier",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny said laughing nervously as he paid the cashier. Vinny laugh a little as he looked at Kenny, trying to keep him happy.",
+        "type": "action"
+    },
+
+    {
+        "value": "You're welcome. Well, let's go, I'll help load the stuff.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay. Thank you.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny tried to be positive when he saw Vinny's reaction, so the two prepared to go home. Vinny then smiled and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "You can go ahead, I'll follow.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "All right.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny keep happy and leave the market.",
+        "type": "action"
     }
 
 ]
