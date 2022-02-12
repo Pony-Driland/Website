@@ -3051,6 +3051,40 @@
         "value": "Smoke? Ah. I have no idea... It could be some campsite. It could also have been some confusion that resulted in a fight. I don't want to go there.",
         "character": "Kenny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "vinny laughs a little nervously before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... I don't want to go there either.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah. You have to be careful. If you find any Elite Color operation, it will be a big problem for you. ",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny said a little nervous when he started to think about the things that must be happening there. Vini was surprised, but soon responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait... The Elite Color always come here?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I'm not sure. They always operate discreetly in peaceful places. It is said that they sometimes watch Pony Driland's newbies for something that interests them. It was things James said to me in the past.",
+        "character": "Kenny",
+        "type": "dialogue"
     }
 
 ]
