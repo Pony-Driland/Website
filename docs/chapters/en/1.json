@@ -3107,6 +3107,57 @@
         "value": "James said he was going to arrive by the deadline that ends today to get some rest from his adventure. James could be anywhere. I hope he's okay. He always makes me worried about traveling alone.",
         "character": "Kenny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmm. Ok Ok.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny kept seeing the mysterious smoke that slowly got weaker, it seemed to be something that happened some time ago. Vinny saw a little bit of Rayane watching he. She was sitting next to a grocery store, and she was doing a teasing look like \"Yes, I've got my eye on you\".",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Did something happen? Hello?",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Nothing.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at Rayane while walking forward, trying to understand the reason for the Rayane action.",
+        "type": "action"
+    },
+
+    {
+        "value": "V..Vinny?",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Nothing, I thought I saw Rayane looking at our ass.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny speaks with irony more speaking playfully. Kenny was getting a little nervous and worried again.",
+        "type": "action"
+    },
+
+    {
+        "value": "R..Rayane? What does she want from you?! I don't want to participate in another sword game of hers. She likes to be silly when she's swinging her sword.",
+        "character": "Kenny",
+        "type": "dialogue"
     }
 
 ]
