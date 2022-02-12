@@ -3082,7 +3082,29 @@
     },
 
     {
-        "value": "I'm not sure. They always operate discreetly in peaceful places. It is said that they sometimes watch Pony Driland's newbies for something that interests them. It was things James said to me in the past.",
+        "value": "Kenny then responded a little more worriedly than usual.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm not sure. They always operate discreetly in peaceful places. It is said that they sometimes watch Pony Driland's newbies for something that interests them. It was things James said to me in the past. Yes, this is motive I am so worried about James. I'm afraid of him being captured by Elite Color.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay, I see, and where is James?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny was surprised by the answer, so Kenny was very happy to hear it. But Kenny was still worried, trying to have hope for James. Kenny tried to calm himself. ",
+        "type": "action"
+    },
+
+    {
+        "value": "James said he was going to arrive by the deadline that ends today to get some rest from his adventure. James could be anywhere. I hope he's okay. He always makes me worried about traveling alone.",
         "character": "Kenny",
         "type": "dialogue"
     }
