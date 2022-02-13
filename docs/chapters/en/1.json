@@ -3929,6 +3929,63 @@
         "value": "But you can't fool. She's pretty bad, she should keep thinking the same way you thought, just knowing or imagining why she is, how something happened for her to turn into that. No one is born bad talking I want to make fun of others, we are all manipulated by someone, some idea, an ideal, or something. BUT WHARAVER! What are we going to do now?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny just responded worriedly, he didn't seem as playful as he was sometime ago.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... But right now I'm really confused. I'm really curious. Well, I'll check on Raquel. And it's already getting dark, the village will soon give a curfew because it's dangerous to walk at night. I'm just really worried about James. It has been several hours and he has never returned home.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "Unfortunately it's very complicated to understand, it took me years to understand. Do you want my help to see Raquel and go see James?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny was a little surprised and then responded. Kenny speaks sadly and worried by James situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? No no no... Don't worry. Raquel is fine, she was just a little surprised by your actions... Culture shock always happens at some point. But about James, I don't know how anyone could help. You needs a lot of courage to go looking for him at this time of night. If you really want to try to help him. I recommend you have at least some self defense.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ahm... I can go out at night, yes, I just need a hoody like Rayane's, that covers my whole body so no one can see me in the dark, and I turn around from there, I think I'll go first in that smoke. Can you get my hoody?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny smiled with great happiness and hope as he listened to Vinny's attitude and courage.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hoody? Hm... I have a raincoat that also works for walking in the rain. I'm Glad to hear you will help us!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Viny makes an innocent and ironic face.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh! Thank you. Do you have any perfume? Do you think there was something in that smoke?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
