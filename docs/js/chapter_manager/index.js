@@ -448,12 +448,6 @@ var openChapterMenu = function(params = {}) {
     
         Se o nome do personagem bater com algum personagem com página, ele vai ser um link para acessar a página.
 
-        Adicionar sistema de música e efeitos sonoros.
-        Quando um som desaparece, ele tem que ir saindo de forma suave.
-
-        Usuário pode mexer no volume mestre que controla todos os outros volumes.
-        Cada som vai ter um volume base pra ficar ambientado com a página.
-    
     */
 
 };
