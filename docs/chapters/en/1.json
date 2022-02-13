@@ -3316,6 +3316,111 @@
         "value": "Well... I have a good intuition, you remind me of an old friend of mine, I liked you a lot because you really look like her, I have a strong intuition that I should trust you, usually when others are like this to me it's because there's something else going on and I'm willing to see.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Like me? It's the first time I've heard this from everyone who was afraid of me. You're really being brave~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane's magic released Vinny's wing. Rayane swung the sword menacingly at his side, returning to the equipment saddle.",
+        "type": "action"
+    },
+
+    {
+        "value": "If you really want to date me, you're going to need more courage to find me outside your comfort zone in this humble little village~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny showed a slight nervousness and answered with a smile face, looking to be kind to Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "I didn't mean a date... but if you want that's fine. Where can I find you? Or do you always go close to me?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane made a malicious and provocative face before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm everywhere~ But if you really want to find me, your first step is to have the courage to be out of this comfort zone. And when I realize that, you'll know my answer~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane made a malicious and provocative face before answering. Vinny tried to show courage and determination with the answer while trying to keep being positive.",
+        "type": "action"
+    },
+
+    {
+        "value": "Look, you don't have to be an expert pony to see that you keep everyone around you away, I'm not going to lie, I've been like that, I vaguely remember my past, looking at the sparkle in your eyes I slowly understand why you are So, maybe we can understand each other more than you imagine.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Interesting. I liked your answer, you really are showing something more. I'm trusting that you really are that pony you say so much~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane replied with the same provocative grin again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Hope you don't disappoint me~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane gave Vinny a little boop while saying the words, and Vinny soon realize that she is getting ready to leave.",
+        "type": "action"
+    },
+
+    {
+        "value": "See you later, hope to see you soon.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny responded with a slight smile, trying to understand what was really happening during the moment. Vinny turns around slowly looking at Rayane a little while walking towards Kenny's house.",
+        "type": "action"
+    },
+
+    {
+        "value": "Bye~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane continued the same grin while the horn began to glow until she disappeared when using teleportation magic. Vinny was surprised by the magic and then responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny turns around and goes to meet Kenny again. Vinny find Kenny hiding under the dining table scared from Rayane presence.",
+        "type": "action"
     }
 
 ]
