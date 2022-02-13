@@ -423,6 +423,8 @@ var openChapterMenu = function(params = {}) {
                     $('<div>', { class: 'card-body' }).append(
                         $('<h5>', { class: 'card-title' }).text('Chapter ' + chapter).append(isNewValue),
                         $('<p>', { class: 'card-text' }).text(storyCfg.chapterName[chapter].title),
+                        $('<p>', { class: 'card-text small' }).text(`${storyData.data[chapter].length} Messages`),
+                        $('<p>', { class: 'card-text small' }).text(`${storyData.wordsCount[chapter]} Words`),
                         $('<p>', { class: 'card-text small' }).text(storyCfg.chapterName[chapter].description),
                         $('<a>', { class: 'btn btn-primary', href: `/?path=read-fic&title=Pony%20Driland?chapter=${chapter}`, chapter: chapter }).click(function() {
 
