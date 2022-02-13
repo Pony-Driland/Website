@@ -3195,6 +3195,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "So during the conversation, the two finally arrive at Kenny's house again.",
         "type": "action"
     },
