@@ -3218,6 +3218,7 @@
     },
 
     {
+        "set": { "playlistPlay": "bad-think" },
         "value": "Like this...",
         "character": "???",
         "type": "dialogue"
