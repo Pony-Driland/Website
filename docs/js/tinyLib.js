@@ -117,9 +117,12 @@ alert = function(text, title = 'Browser Warning!') {
 
 // This is a functions that scrolls to #{blah}link
 tinyLib.goToByScroll = function(id, speed = 'slow') {
-    $('html,body').animate({
-        scrollTop: id.offset().top
-    }, speed);
+    const offset = id.offset();
+    if (offset) {
+        $('html,body').animate({
+            scrollTop: offset.top
+        }, speed);
+    }
 };
 
 tinyLib.goToByScrollTop = function(speed = 'slow') {
