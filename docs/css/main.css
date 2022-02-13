@@ -1,3 +1,8 @@
+.text-break {
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+}
+
 #youtubePlayer {
     pointer-events: none;
     /* height: 39px;
