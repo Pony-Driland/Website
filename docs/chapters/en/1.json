@@ -3215,6 +3215,77 @@
         "value": "I pull wings? What are you talking about?",
         "character": "Kenny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Like this...",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny feel something pulling the wings very lightly.",
+        "type": "action"
+    },
+
+    {
+        "value": "WHAT? What the fuck is that?!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was completely scared and surprised.",
+        "type": "action"
+    },
+
+    {
+        "value": "Pika boo~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane pulled Vinny wings again, using levitation magic.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAAH! CRAZY SWORD GIRL AGAIN!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny runs desperately into the house with the groceries.",
+        "type": "action"
+    },
+
+    {
+        "value": "When Vinny realized it was just Rayane, he just got confused and asked.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? You again? Hi... Are you ok?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane made a slight malicious laugh and replied.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm great. So someone is trying to wiggle the wings~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane made a silly provocative grin face.",
+        "type": "action"
     }
 
 ]
