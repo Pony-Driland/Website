@@ -3570,6 +3570,101 @@
         "value": "Nothing. Kenny, you need to talk about how we almost got that sword you wanted, I even left a few things of mine for us to try more times.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Sword? The beautiful sword! What a coincidence right?",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny spoke extremely nervous with a little nervous smile.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait, sword? Oh no, Kenny! Don't tell me you went to play that silly little Lucky Dice Game again!",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel was irritated to hear about this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, I think. Hmm, I'll organize my saddle stuff.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny spoke innocently, just curiously watching Kenny's reaction.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh yes yes. Things, I'll help Vinny with the...",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny tried to answer extremely nervous until he was interrupted by Raquel.",
+        "type": "action"
+    },
+
+    {
+        "value": "KENNY! LUCKY DATES! I ALREADY TOLD YOU THAT!",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "No! No! Raquel! Sorry! Please do not! NOOOOO! It was lucky dice for a good sword! No! AAAH! PLEASE NO!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "AND WHAT WOULD WE DO WITH A SWORD?!",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was surprised and scared by the situation, and just kept watching.",
+        "type": "action"
+    },
+
+    {
+        "value": "No Raquel! It was lucky dice! Luck! AAAAHH!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel was pulling Kenny's ear to the bedroom to have a private conversation with him.",
+        "type": "action"
+    },
+
+    {
+        "value": "Let's see if these lucky dices will also bring you luck in our private conversation!",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel closes the bedroom door. Vinny kept calm and felt safe with the very calm moment. Vinny just took the things out of the saddle and wait the time, while Vinny poke the wings, trying to at least find a way to do them move or open.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmm. Okay, I think I'm getting something.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
