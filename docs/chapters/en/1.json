@@ -3490,6 +3490,23 @@
     {
         "value": "Kenny was completely surprised not understanding what was happening. He was extremely confused.",
         "type": "action"
+    },
+
+    {
+        "value": "I'll explain later, first let's get back to normal, let's put the shopping here and talk about your wife too, where is she?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny, you're scaring me. What did you say to Rayane? Well, yes yes. Rhe shopping...",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny made a nervous face when he heard the Vinny's words.",
+        "type": "action"
     }
 
 ]
