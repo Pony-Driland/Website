@@ -3421,6 +3421,75 @@
     {
         "value": "Vinny turns around and goes to meet Kenny again. Vinny find Kenny hiding under the dining table scared from Rayane presence.",
         "type": "action"
+    },
+
+    {
+        "value": "Are you okay there bro? She's already gone.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What?! She's already gone?! What she wanted?! There was no sword game?!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny talks desperately while still scared under the table.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey Kenny, calm down, it's okay, Rayane just came to talk to me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wait... What? Talk? How can you talk?! This is the first time I've heard this from a new one!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny comes out from under the table with a very surprised face, wanting to know what's happening now.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane just wanted to scare me and you a little, I think.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was trying to respond in a kind and a little worried way.",
+        "type": "action"
+    },
+
+    {
+        "value": "Scare me?! What does she want this time! I never did anything to her! I just want her to leave me alone!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I talked to her and she's going to leave us alone for a while. Don't worry. Is there perfume in there?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "Ah, whew, good, thank you. I already feel much better. But, WAIT! PERFUME?! WHAT ARE YOU TALKING ABOUT?!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny was completely surprised not understanding what was happening. He was extremely confused.",
+        "type": "action"
     }
 
 ]
