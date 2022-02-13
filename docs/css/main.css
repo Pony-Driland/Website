@@ -6,6 +6,7 @@
 }
 
 #youtubePlayer.hidden {
+    position: fixed !important;
     opacity: 0 !important;
     pointer-events: none !important;
 }
