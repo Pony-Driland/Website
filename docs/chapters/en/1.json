@@ -3285,8 +3285,37 @@
     },
 
     {
-        "value": "Rayane made a silly provocative grin face.",
+        "value": "Rayane made a silly provocative grin face. Vinny a little scared, then started to think of some opportunity to use that moment for something.",
         "type": "action"
+    },
+
+    {
+        "value": "You know, we could hang out a little to talk, here's my invitation for you to help me understand things a little. Sometimes we have information to exchange, what do you think?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Information? Are you inviting me? Is that what I heard?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laughed again in a more provocative way.",
+        "type": "action"
+    },
+
+    {
+        "value": "You're really trusting me too much even knowing that I'm mysteriously stalking you. You look too innocent~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well... I have a good intuition, you remind me of an old friend of mine, I liked you a lot because you really look like her, I have a strong intuition that I should trust you, usually when others are like this to me it's because there's something else going on and I'm willing to see.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
