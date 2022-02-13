@@ -42,6 +42,7 @@ var storyData = {
 
     // Chapter Data
     data: {},
+    wordsCount: {},
 
     // Start Load
     start: function(startApp, failApp = function(err) {
@@ -72,8 +73,15 @@ var storyData = {
                             // Complete
                             .done(function(data) {
 
+                                // Insert Words Count
+                                let words = 0;
+                                for (const item in data) {
+                                    words += data[item].value.trim().replace(/(\r\n|\n|\r)/gm, "").replace(/ /gm, "").length;
+                                }
+
                                 // Insert Data
                                 storyData.data[chapter] = data;
+                                storyData.wordsCount[chapter] = words;
                                 storyData.chapter.bookmark[chapter] = Number(localStorage.getItem('bookmark' + chapter));
                                 if (
                                     isNaN(storyData.chapter.bookmark[chapter]) ||
