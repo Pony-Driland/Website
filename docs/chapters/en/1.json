@@ -3158,6 +3158,62 @@
         "value": "R..Rayane? What does she want from you?! I don't want to participate in another sword game of hers. She likes to be silly when she's swinging her sword.",
         "character": "Kenny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "And... I need to learn how to use these wings... can't I learn by myself?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "But but... Rayane. Okay, well. You'll just have to accept that you're going to fall flat on your face sometimes.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny made a slight nervous smile while replying Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, I think if I'm going to stay with you for a while or a few hours, I think in the meantime at least I can learn to move them, right?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny is confused to hear these questions being directed at him.",
+        "type": "action"
+    },
+
+    {
+        "value": "I don't know anything about wings. I have no idea how to do that.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So during the conversation, the two finally arrive at Kenny's house again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Bro! You pull my wing there, where I feel pain, and where I have to move the wing stuff, but first let's unload the groceries.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny get a little confused and a little embarrassed.",
+        "type": "action"
+    },
+
+    {
+        "value": "I pull wings? What are you talking about?",
+        "character": "Kenny",
+        "type": "dialogue"
     }
 
 ]
