@@ -3845,6 +3845,32 @@
     {
         "value": "Kenny made a silly nervous smile in response.",
         "type": "action"
+    },
+
+    {
+        "value": "I don't know, I attract that kind of attention, but in my world I was very charismatic, I even had a friend who just said to me....\"HELLO\" she was laughing more and more during my words so I think so I think so I'm very sociable.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny didn't know how to react, so he just responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow. Those powers look fantastic. Can you show me some of them later?",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "dayNightCycle": "night",
+            "playlistPlay": null
+        },
+        "value": "During the conversation of the two ponies, the day began to slowly darken. It felt like night was coming. Vinny then looked out the window and thought for a while before continuing the conversation.",
+        "type": "action"
     }
 
 ]
