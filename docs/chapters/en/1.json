@@ -3493,6 +3493,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "I'll explain later, first let's get back to normal, let's put the shopping here and talk about your wife too, where is she?",
         "character": "Vinny",
         "type": "dialogue"
@@ -3507,6 +3508,68 @@
     {
         "value": "Kenny made a nervous face when he heard the Vinny's words.",
         "type": "action"
+    },
+
+    {
+        "value": "Raquel opened the door that went from the house to the garden and entered slowly.",
+        "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": "silly" },
+        "value": "Vinny? Kenny? Hi! What beautiful flowers! Oh so glad you're there! I'd heard visitor sound, so I brought some flowers to greet our visitor!",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel spoke happily and innocently. Vinny spoke in a very silly way.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. I'm the visit. How are you?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel giggles a little before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "How silly. Hope the visitor likes flowers!",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh yeah. Visit, nice visit. I... I'm very glad for the visit. Too bad she's gone.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny spoke with more nervousness as he took a step back.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Kenny? What got into him? Did the visit scare him?",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then tried to change the subject of the conversation and spoke in a silly way.",
+        "type": "action"
+    },
+
+    {
+        "value": "Nothing. Kenny, you need to talk about how we almost got that sword you wanted, I even left a few things of mine for us to try more times.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
