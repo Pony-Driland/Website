@@ -20,8 +20,8 @@ var storyDialogue = {
         storyData.chapter.html[item] = $('<tr>', { line: item }).append(
             $('<td>', { class: 'py-4 font-weight-bold d-none d-md-table-cell' }).text(item),
             $('<td>', { class: 'py-4' }).text(''),
-            $('<td>', { class: 'py-4' }).append(
-                $('<strong>').text(storyDialogue.nsfwChecker(data))
+            $('<td>', { class: 'py-4 text-break' }).append(
+                $('<strong>', { class: 'text-break' }).text(storyDialogue.nsfwChecker(data))
             )
         );
 
@@ -35,8 +35,8 @@ var storyDialogue = {
         storyData.chapter.html[item] = $('<tr>', { line: item }).append(
             $('<td>', { class: 'py-4 font-weight-bold d-none d-md-table-cell' }).text(item),
             $('<td>', { class: 'py-4', width: '15%' }).text(data.character),
-            $('<td>', { class: 'py-4' }).append(
-                $('<span>').text(storyDialogue.nsfwChecker(data))
+            $('<td>', { class: 'py-4 text-break' }).append(
+                $('<span>', { class: 'text-break' }).text(storyDialogue.nsfwChecker(data))
             )
         );
 
@@ -50,8 +50,8 @@ var storyDialogue = {
         storyData.chapter.html[item] = $('<tr>', { line: item }).append(
             $('<td>', { class: 'py-4 font-weight-bold d-none d-md-table-cell' }).text(item),
             $('<td>', { class: 'py-4', width: '15%' }).text(data.character),
-            $('<td>', { class: 'py-4' }).append(
-                $('<small>').text(storyDialogue.nsfwChecker(data))
+            $('<td>', { class: 'py-4 text-break' }).append(
+                $('<small>', { class: 'text-break' }).text(storyDialogue.nsfwChecker(data))
             )
         );
 
