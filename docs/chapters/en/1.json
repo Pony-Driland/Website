@@ -3871,6 +3871,64 @@
         },
         "value": "During the conversation of the two ponies, the day began to slowly darken. It felt like night was coming. Vinny then looked out the window and thought for a while before continuing the conversation.",
         "type": "action"
+    },
+
+    {
+        "value": "Weeeeeeell... This isn't magic. I think it's just the way of talking, I liked to talk in a way that made people act in my way, a way of talking rhetorical, I liked and respected people a lot in my world that through conversation could change the world, but next to them, I'm a nobody. But at least I can speak well and even understand people. I think the name of this is empathy, I have a lot of empathy",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "People? Ah, I think these are creatures of your dimension. Well. So... Do you have empathy for Rayane? I never thought of it this way.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny looked surprised and very thoughtful. Vinny was then surprised and a little worried.",
+        "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": "think" },
+        "value": "What? Why not?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "It's her way. Mystery, legends, little information. It all makes us very scared.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "You know, it's okay to be afraid, but fear sometimes leaves you speechless or blind, many times you can't do something and miss a good opportunity because of fear. For example understanding a person. Person nope! Pony. For example understanding a pony is the first step to know why a pony acts that way, you can see the color of my eyes but not what i've seen with them, i can see hurt in you. But I don't know the pain you felt, just knowing that something is there.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny kept feeling regret, but he tried to hide it and then responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "I... I don't know what to say. now I feel fault for being ignorant to her. I just wanted to know if she's a good pony. I... I do not know.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then analyzed Kenny's reaction and responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "But you can't fool. She's pretty bad, she should keep thinking the same way you thought, just knowing or imagining why she is, how something happened for her to turn into that. No one is born bad talking I want to make fun of others, we are all manipulated by someone, some idea, an ideal, or something. BUT WHARAVER! What are we going to do now?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
