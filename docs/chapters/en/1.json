@@ -3783,6 +3783,68 @@
         "value": "It's... it's forgiven.",
         "character": "Raquel",
         "type": "dialogue"
+    },
+
+    {
+        "value": "You better go back to your garden.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rachel calmed down and then Raquel go back to the garden, with a confused face, trying to understand what happened. Vinny was still embarrassed, he only then responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm sorry Kenny, I didn't know that doing the wings open was something... unusual, in my world I didn't have wings but I always wanted to have them.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny responded with a slight nervous laugh.",
+        "type": "action"
+    },
+
+    {
+        "value": "I get it, I get it. Something happened between you and Rayane. Just be careful, remember that you are the first to get to know her better.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? Okay... I hope Rayane hasn't seen my wings.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "We talked and at some point I'll have a date to get to know her better. Until then I think she'll leave you alone, but I think she must be watching us from afar.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Date?!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny was very confused and responding very nervously.",
+        "type": "action"
+    },
+
+    {
+        "value": "What's going on here?! We're still on your first day and you've already reached this point with Rayane! Do you have any special social skills?! But... On second thought. I really liked the idea of her leaving me alone.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny made a silly nervous smile in response.",
+        "type": "action"
     }
 
 ]
