@@ -3665,6 +3665,124 @@
         "value": "Hmmm. Okay, I think I'm getting something.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "This is VERY HARD! ARGH!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "IS THE TWO ONES BEING SO FIGHTING STILL????",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny bite the wing to try to feel pain. Vinny start to feel a little pain.",
+        "type": "action"
+    },
+
+    {
+        "value": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOH MY WINGS BRO! *-*",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets the wings fully open while saying alone. So Kenny and Raquel leave the room from the sounds. Raquel was pleased with Kenny's punishment.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmm!",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ouch. You know it hurt.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes! Oh? What?",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel looked surprised when seeing Vinny with open wings.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? What happened? Oh? Oh...",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny get surprised too.",
+        "type": "action"
+    },
+
+    {
+        "value": "V..Vinny? You...you really look happy.",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel is a little more surprised and a little blushed.",
+        "type": "action"
+    },
+
+    {
+        "value": "I can move my wings!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny talks excited, not realizing what was really happening.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes yes. We are happy for that... Just be careful not to show them off so much. Wide open wings mean something else.",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel speaks nervously while feeling ashamed. Kenny then reacts with jealousy and speaks.",
+        "type": "action"
+    },
+
+    {
+        "value": "Raquel!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny covers Raquel eyes. When Vinny finally realizes the accident that happened, he is embarrassed and stops what he was doing, trying to close the wings.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ooooh shit. Sorry. Soooorry. I didn't know.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "It's... it's forgiven.",
+        "character": "Raquel",
+        "type": "dialogue"
     }
 
 ]
