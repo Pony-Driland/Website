@@ -91,13 +91,13 @@ var storyData = {
 
                                         // Filter
                                         textSplit[item2] = textSplit[item2].replace(/[^a-zA-Z]+/g, '').toLowerCase();
-                                        if (textSplit[item2].length > 0) {
+                                        if (isNaN(Number(textSplit[item2])) && textSplit[item2].length > 0) {
 
                                             // Count Data
                                             if (typeof storyData.words[textSplit[item2]] !== 'number') { storyData.words[textSplit[item2]] = 0; }
                                             storyData.words[textSplit[item2]]++;
 
-                                            if (isNaN(Number(textSplit[item2])) && wordCache.indexOf(textSplit[item2]) < 0) {
+                                            if (wordCache.indexOf(textSplit[item2]) < 0) {
                                                 wordCache.push(textSplit[item2]);
                                                 words++;
                                             }
