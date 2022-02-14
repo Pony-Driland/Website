@@ -82,15 +82,18 @@ var storyData = {
                                 let words = 0;
                                 for (const item in data) {
 
+                                    // Character Counter
                                     if (typeof data[item].character === 'string' && data[item].character.length > 0) {
 
                                         const character = data[item].character.toLowerCase();
 
-                                        if (!storyData.characters[chapter]) { storyData.characters[chapter] = {}; }
+                                        let newData = storyData.characters.data.find(char => char.value === character);
+                                        if (!newData) {
+                                            newData = { value: character, id: character.replace(/ /g, '-'), count: 0 };
+                                            storyData.characters.data.push(newData);
+                                        }
 
-                                        if (typeof storyData.characters[chapter][character] !== 'number') { storyData.characters[chapter][character] = 0; }
-
-                                        storyData.characters[chapter][character]++;
+                                        newData.count++;
                                         storyData.characters.total++;
 
                                     }
