@@ -88,6 +88,18 @@ var storyCfg = {
         host: 'https://ipfs.io/ipfs/{cid}'
     },
 
+    // Word Blacklist
+    wordCountBlacklick: [
+        'the',
+        'to',
+        'a',
+        'of',
+        'it',
+        'was',
+        'but',
+        'with'
+    ],
+
     // Playlist
     playlist: {
 
