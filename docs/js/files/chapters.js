@@ -86,8 +86,8 @@ var storyData = {
                                         const character = data[item].character;
                                         if (!storyData.charactersCount[chapter]) { storyData.charactersCount[chapter] = {}; }
                                         if (!storyData.charactersCount.total) { storyData.charactersCount[chapter] = {}; }
-                                        if (typeof storyData.charactersCount[chapter][character] !== 'number') { storyData.charactersCount[chapter] = 0; }
-                                        if (typeof storyData.charactersCount.total[character] !== 'number') { storyData.charactersCount[chapter] = 0; }
+                                        if (typeof storyData.charactersCount[chapter][character] !== 'number') { storyData.charactersCount[chapter][character] = 0; }
+                                        if (typeof storyData.charactersCount.total[character] !== 'number') { storyData.charactersCount.total[character] = 0; }
                                         storyData.charactersCount[chapter][character]++;
                                         storyData.charactersCount.total[character]++;
                                     }
