@@ -42,7 +42,7 @@ var storyData = {
 
     // Chapter Data
     data: {},
-    wordsCount: {},
+    lettersCount: {},
 
     // Start Load
     start: function(startApp, failApp = function(err) {
@@ -81,7 +81,7 @@ var storyData = {
 
                                 // Insert Data
                                 storyData.data[chapter] = data;
-                                storyData.wordsCount[chapter] = words;
+                                storyData.lettersCount[chapter] = words;
                                 storyData.chapter.bookmark[chapter] = Number(localStorage.getItem('bookmark' + chapter));
                                 if (
                                     isNaN(storyData.chapter.bookmark[chapter]) ||
