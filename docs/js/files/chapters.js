@@ -45,7 +45,7 @@ var storyData = {
     lettersCount: { total: 0 },
     wordsCount: { total: 0 },
     charactersCount: { total: 0 },
-    words: {},
+    words: [],
 
     // Start Load
     start: function(startApp, failApp = function(err) {
@@ -94,8 +94,13 @@ var storyData = {
                                         if (isNaN(Number(textSplit[item2])) && textSplit[item2].length > 0) {
 
                                             // Count Data
-                                            if (typeof storyData.words[textSplit[item2]] !== 'number') { storyData.words[textSplit[item2]] = 0; }
-                                            storyData.words[textSplit[item2]]++;
+                                            let wordData = storyData.words.find(word => word.value === textSplit[item2]);
+                                            if (!wordData) {
+                                                wordData = { count: 0, value: textSplit[item2] };
+                                                storyData.words.push(wordData);
+                                            }
+
+                                            wordData.count++;
 
                                             if (wordCache.indexOf(textSplit[item2]) < 0) {
                                                 wordCache.push(textSplit[item2]);
