@@ -82,6 +82,16 @@ var storyData = {
                                 let words = 0;
                                 for (const item in data) {
 
+                                    if (typeof data[item].character === 'string' && data[item].character.length > 0) {
+                                        const character = data[item].character;
+                                        if (!storyData.charactersCount[chapter]) { storyData.charactersCount[chapter] = {}; }
+                                        if (!storyData.charactersCount.total) { storyData.charactersCount[chapter] = {}; }
+                                        if (typeof storyData.charactersCount[chapter][character] !== 'number') { storyData.charactersCount[chapter] = 0; }
+                                        if (typeof storyData.charactersCount.total[character] !== 'number') { storyData.charactersCount[chapter] = 0; }
+                                        storyData.charactersCount[chapter][character]++;
+                                        storyData.charactersCount.total[character]++;
+                                    }
+
                                     // Get Text
                                     const text = data[item].value.replace(/(\r\n|\n|\r)/gm, "").trim();
                                     const textSplit = text.split(' ');
