@@ -42,8 +42,10 @@ var storyData = {
 
     // Chapter Data
     data: {},
-    lettersCount: {},
-    wordsCount: {},
+    lettersCount: { total: 0 },
+    wordsCount: { total: 0 },
+    charactersCount: { total: 0 },
+    words: {},
 
     // Start Load
     start: function(startApp, failApp = function(err) {
@@ -80,14 +82,28 @@ var storyData = {
                                 let words = 0;
                                 for (const item in data) {
 
+                                    // Get Text
                                     const text = data[item].value.replace(/(\r\n|\n|\r)/gm, "").trim();
                                     const textSplit = text.split(' ');
 
+                                    // Check Text
                                     for (const item2 in textSplit) {
-                                        if (wordCache.indexOf(textSplit[item2]) < 0) {
-                                            wordCache.push(textSplit[item2]);
-                                            words++;
+
+                                        // Filter
+                                        textSplit[item2] = textSplit[item2].replace(/[^a-zA-Z]+/g, '').toLowerCase();
+                                        if (textSplit[item2].length > 0) {
+
+                                            // Count Data
+                                            if (typeof storyData.words[textSplit[item2]] !== 'number') { storyData.words[textSplit[item2]] = 0; }
+                                            storyData.words[textSplit[item2]]++;
+
+                                            if (isNaN(Number(textSplit[item2])) && wordCache.indexOf(textSplit[item2]) < 0) {
+                                                wordCache.push(textSplit[item2]);
+                                                words++;
+                                            }
+
                                         }
+
                                     }
 
                                     letters += text.replace(/ /gm, "").length;
@@ -97,7 +113,9 @@ var storyData = {
                                 // Insert Data
                                 storyData.data[chapter] = data;
                                 storyData.lettersCount[chapter] = letters;
+                                storyData.lettersCount.total += letters;
                                 storyData.wordsCount[chapter] = words;
+                                storyData.wordsCount.total += words;
                                 storyData.chapter.bookmark[chapter] = Number(localStorage.getItem('bookmark' + chapter));
                                 if (
                                     isNaN(storyData.chapter.bookmark[chapter]) ||
