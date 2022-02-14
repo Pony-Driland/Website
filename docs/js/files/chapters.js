@@ -94,13 +94,14 @@ var storyData = {
                                         if (isNaN(Number(textSplit[item2])) && textSplit[item2].length > 0) {
 
                                             // Count Data
-                                            let wordData = storyData.words.find(word => word.value === textSplit[item2]);
-                                            if (!wordData) {
-                                                wordData = { count: 0, value: textSplit[item2] };
-                                                storyData.words.push(wordData);
+                                            if (storyCfg.wordCountBlacklick && storyCfg.wordCountBlacklick.indexOf(textSplit[item2]) < 0) {
+                                                let wordData = storyData.words.find(word => word.value === textSplit[item2]);
+                                                if (!wordData) {
+                                                    wordData = { count: 0, value: textSplit[item2] };
+                                                    storyData.words.push(wordData);
+                                                }
+                                                wordData.count++;
                                             }
-
-                                            wordData.count++;
 
                                             if (wordCache.indexOf(textSplit[item2]) < 0) {
                                                 wordCache.push(textSplit[item2]);
