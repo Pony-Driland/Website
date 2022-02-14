@@ -89,9 +89,12 @@ var storyData = {
 
                                         let newData = storyData.characters.data.find(char => char.value === character);
                                         if (!newData) {
-                                            newData = { value: character, id: character.replace(/ /g, '-'), count: 0 };
+                                            newData = { value: character, id: character.replace(/ /g, '-'), count: 0, chapter: {} };
                                             storyData.characters.data.push(newData);
                                         }
+
+                                        if (typeof newData.chapter[chapter] !== 'number') { newData.chapter[chapter] = 0; }
+                                        newData.chapter[chapter]++;
 
                                         newData.count++;
                                         storyData.characters.total++;
