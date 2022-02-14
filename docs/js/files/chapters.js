@@ -114,7 +114,9 @@ var storyData = {
 
                                             // Count Data
                                             if (!Array.isArray(storyCfg.wordCountBlacklick)) { storyCfg.wordCountBlacklick = []; }
-                                            if (storyCfg.wordCountBlacklick.indexOf(textSplit[item2]) < 0 && typeof storyData.characters.data) {
+                                            if (!storyData.characters.data.find(charData => charData.value === textSplit[item2]) &&
+                                                storyCfg.wordCountBlacklick.indexOf(textSplit[item2]) < 0
+                                            ) {
                                                 let wordData = storyData.words.find(word => word.value === textSplit[item2]);
                                                 if (!wordData) {
                                                     wordData = { count: 0, value: textSplit[item2] };
