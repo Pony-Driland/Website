@@ -44,7 +44,7 @@ var storyData = {
     data: {},
     lettersCount: { total: 0 },
     wordsCount: { total: 0 },
-    charactersCount: { total: 0 },
+    characters: { data: [], total: 0 },
     words: [],
 
     // Start Load
@@ -84,16 +84,14 @@ var storyData = {
 
                                     if (typeof data[item].character === 'string' && data[item].character.length > 0) {
 
-                                        const character = data[item].character;
+                                        const character = data[item].character.toLowerCase();
 
-                                        if (!storyData.charactersCount[chapter]) { storyData.charactersCount[chapter] = {}; }
-                                        if (!storyData.charactersCount.total) { storyData.charactersCount.total = {}; }
+                                        if (!storyData.characters[chapter]) { storyData.characters[chapter] = {}; }
 
-                                        if (typeof storyData.charactersCount[chapter][character] !== 'number') { storyData.charactersCount[chapter][character] = 0; }
-                                        if (typeof storyData.charactersCount.total[character] !== 'number') { storyData.charactersCount.total[character] = 0; }
+                                        if (typeof storyData.characters[chapter][character] !== 'number') { storyData.characters[chapter][character] = 0; }
 
-                                        storyData.charactersCount[chapter][character]++;
-                                        storyData.charactersCount.total[character]++;
+                                        storyData.characters[chapter][character]++;
+                                        storyData.characters.total++;
 
                                     }
 
@@ -109,7 +107,8 @@ var storyData = {
                                         if (isNaN(Number(textSplit[item2])) && textSplit[item2].length > 0) {
 
                                             // Count Data
-                                            if (storyCfg.wordCountBlacklick && storyCfg.wordCountBlacklick.indexOf(textSplit[item2]) < 0) {
+                                            if (!Array.isArray(storyCfg.wordCountBlacklick)) { storyCfg.wordCountBlacklick = []; }
+                                            if (storyCfg.wordCountBlacklick.indexOf(textSplit[item2]) < 0 && typeof storyData.characters.data) {
                                                 let wordData = storyData.words.find(word => word.value === textSplit[item2]);
                                                 if (!wordData) {
                                                     wordData = { count: 0, value: textSplit[item2] };
