@@ -829,8 +829,8 @@
     },
 
     {
-        "type": "dialogue",
-        "character": "think",
+        "type": "think",
+        "character": "Vinny",
         "value": "At least he seems to be very silly. I see no reason why he wants to kidnap me."
     },
 

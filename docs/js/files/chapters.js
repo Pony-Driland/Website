@@ -143,6 +143,10 @@ var storyData = {
                                     return b.count - a.count;
                                 });
 
+                                storyData.characters.data.sort(function(a, b) {
+                                    return b.count - a.count;
+                                });
+
                                 // Insert Data
                                 storyData.data[chapter] = data;
                                 storyData.lettersCount[chapter] = letters;

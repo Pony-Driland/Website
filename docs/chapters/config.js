@@ -89,16 +89,7 @@ var storyCfg = {
     },
 
     // Word Blacklist
-    wordCountBlacklick: [
-        'the',
-        'to',
-        'a',
-        'of',
-        'it',
-        'was',
-        'but',
-        'with'
-    ],
+    wordCountBlacklick: [],
 
     // Playlist
     playlist: {
