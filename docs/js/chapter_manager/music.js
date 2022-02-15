@@ -498,10 +498,11 @@ setInterval(function() {
         for (const item in storyData.sfx) {
             if (storyData.sfx[item].playing) {
                 storyData.sfx[item].currentTime = storyData.sfx[item].file.currentTime;
+                storyData.sfx[item].leftTime = storyData.sfx[item].duration - storyData.sfx[item].currentTime;
             }
         }
     }
-}, 100);
+}, 1);
 
 // Insert SFX
 musicManager.insertSFX = function(item) {
@@ -571,6 +572,7 @@ musicManager.insertSFX = function(item) {
                                         storyData.sfx[item].playing = true;
                                         storyData.sfx[item].paused = false;
                                         storyData.sfx[item].currentTime = 0;
+                                        storyData.sfx[item].leftTime = storyData.sfx[item].duration;
 
                                         if (typeof inTime === 'number') {
                                             storyData.sfx[item].currentTime = inTime;
@@ -640,6 +642,7 @@ musicManager.insertSFX = function(item) {
                                         newSound.pause();
                                         newSound.currentTime = 0;
                                         storyData.sfx[item].currentTime = 0;
+                                        storyData.sfx[item].leftTime = storyData.sfx[item].duration;
                                         resolve();
                                     } catch (err) { reject(err); }
                                 }, 1);
@@ -710,6 +713,7 @@ musicManager.insertSFX = function(item) {
                                 storyData.sfx[item].hiding = false;
                                 storyData.sfx[item].showing = false;
                                 storyData.sfx[item].currentTime = 0;
+                                storyData.sfx[item].leftTime = storyData.sfx[item].duration;
                             }
 
                         },
@@ -728,6 +732,7 @@ musicManager.insertSFX = function(item) {
                             const soundVolume = storyData.sfx[item].volume;
                             newSound.currentTime = 0;
                             storyData.sfx[item].currentTime = 0;
+                            storyData.sfx[item].leftTime = storyData.sfx[item].duration;
                             let volume = 0;
                             newSound.volume = 0;
                             storyData.sfx[item].showing = true;
