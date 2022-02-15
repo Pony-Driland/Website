@@ -719,7 +719,6 @@ musicManager.insertSFX = function(item) {
                             storyData.sfx[item].paused = false;
                             storyData.sfx[item].hiding = false;
                             storyData.sfx[item].showing = false;
-                            storyData.sfx[item].setVolume(0, true);
 
                             const soundVolume = storyData.sfx[item].volume;
                             newSound.currentTime = 0;
@@ -728,6 +727,7 @@ musicManager.insertSFX = function(item) {
                             newSound.volume = 0;
                             storyData.sfx[item].showing = true;
                             storyData.sfx[item].hiding = false;
+                            storyData.sfx[item].setVolume(0, true);
                             newSound.play();
 
                             for (let i = 0; i < 100; i++) {
