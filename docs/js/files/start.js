@@ -173,7 +173,13 @@ var insertMarkdownFile = function(text) {
 // Remove Fic Data
 var clearFicData = function() {
 
-    $('body').removeClass('ficMode');
+    $('body')
+        .removeClass('ficMode')
+        .removeClass(`fic-daycicle-morning`)
+        .removeClass(`fic-daycicle-evening`)
+        .removeClass(`fic-daycicle-night`)
+        .removeClass(`fic-daycicle-lateAtNigh`);
+
     $('#fic-nav > #status').empty();
     $('#fic-chapter').empty();
     storyData.readFic = false;

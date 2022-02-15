@@ -163,6 +163,13 @@ var chapterSet = {
     dayNightCycle: function(value, actionFromNow = false) {
         if (actionFromNow) {
 
+            $('body')
+                .removeClass(`fic-daycicle-morning`)
+                .removeClass(`fic-daycicle-evening`)
+                .removeClass(`fic-daycicle-night`)
+                .removeClass(`fic-daycicle-lateAtNigh`)
+                .addClass(`fic-daycicle-${value}`);
+
             // Add Item Base
             if ($('#fic-nav > #status #dayNightCycle').length < 1) {
                 if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
