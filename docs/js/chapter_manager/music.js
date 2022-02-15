@@ -492,21 +492,6 @@ musicManager.updatePlayer = function() {
 
 };
 
-// SFX Checker
-setInterval(function() {
-    if (storyData.sfx) {
-        for (const item in storyData.sfx) {
-            if (storyData.sfx[item].playing) {
-                storyData.sfx[item].currentTime = storyData.sfx[item].file.currentTime;
-                storyData.sfx[item].leftTime = storyData.sfx[item].duration - storyData.sfx[item].currentTime;
-                if (storyData.sfx[item].loop && storyData.sfx[item].leftTime < 0.01) {
-                    storyData.sfx[item].seekTo(0);
-                }
-            }
-        }
-    }
-}, 1);
-
 // Insert SFX
 musicManager.insertSFX = function(item) {
     return new Promise(async function(resolve, reject) {
@@ -772,11 +757,25 @@ musicManager.insertSFX = function(item) {
 
                     // Loop Action
                     newSound.addEventListener('ended', function() {
-                        if (storyData.sfx[item].loop) {
-                            this.currentTime = 0;
-                            this.play();
-                        } else { storyData.sfx[item].stop(); }
+                        if (!storyData.sfx[item].loop) { storyData.sfx[item].stop(); }
                     }, false);
+
+                    newSound.addEventListener('timeupdate', function() {
+
+                        if (storyData.sfx[item].playing) {
+                            storyData.sfx[item].currentTime = storyData.sfx[item].file.currentTime;
+                            storyData.sfx[item].leftTime = storyData.sfx[item].duration - storyData.sfx[item].currentTime;
+                        }
+
+                        if (storyData.sfx[item].loop) {
+                            const buffer = .44
+                            if (this.currentTime > this.duration - buffer) {
+                                this.currentTime = 0
+                                this.play()
+                            }
+                        }
+
+                    });
 
                 }
 
