@@ -202,7 +202,7 @@ storyData.youtube = {
                                 }
 
                                 // Next
-                                else {
+                                else if (!storyData.youtube.loading) {
                                     musicManager.nextMusic();
                                 }
 
