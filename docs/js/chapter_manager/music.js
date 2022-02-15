@@ -135,112 +135,122 @@ storyData.youtube = {
         if (!storyData.youtube.loading && storyData.readFic) {
             storyData.music.loading = true;
             storyData.youtube.loading = true;
+            delete storyData.youtube.embed;
             console.log(`Loading youtube video embed...`, videoID);
-            $.ajax({
-                url: 'https://www.youtube.com/oembed?format=json&url=' + encodeURIComponent(`https://www.youtube.com/watch?v=` + videoID),
-                type: 'get',
-                dataType: 'json'
-            }).done(function(jsonVideo) {
 
-                // Youtube Player
-                if (storyData.youtube.player) {
-                    storyData.youtube.player.setVolume(storyData.music.volume);
-                }
+            // Youtube Player
+            if (storyData.youtube.player) {
+                storyData.youtube.player.setVolume(storyData.music.volume);
+            }
 
-                storyData.music.loading = false;
-                storyData.youtube.loading = false;
-                console.log(`Youtube video embed loaded!`, videoID);
-                storyData.youtube.embed = jsonVideo;
+            storyData.music.loading = false;
+            storyData.youtube.loading = false;
 
-                // Info
-                storyData.music.author_name = jsonVideo.author_name;
-                storyData.music.author_url = jsonVideo.author_url;
-                storyData.music.provider_name = jsonVideo.provider_name;
-                storyData.music.thumbnail_url = jsonVideo.thumbnail_url;
-                storyData.music.title = jsonVideo.title;
+            // Prepare Video ID
+            storyData.youtube.videoID = videoID;
+            storyData.youtube.currentTime = 0;
+            storyData.youtube.duration = 0;
 
-                // Prepare Video ID
-                storyData.youtube.videoID = videoID;
-                storyData.youtube.currentTime = 0;
-                storyData.youtube.duration = 0;
+            // New Player
+            if (!storyData.youtube.player) {
 
-                // New Player
-                if (!storyData.youtube.player) {
+                // 2. This code loads the IFrame Player API code asynchronously.
+                console.log(`Starting Youtube API...`, videoID);
+                var tag = document.createElement('script');
+                tag.src = "https://www.youtube.com/iframe_api";
+                $('head').append(tag);
 
-                    // 2. This code loads the IFrame Player API code asynchronously.
-                    console.log(`Starting Youtube API...`, videoID);
-                    var tag = document.createElement('script');
-                    tag.src = "https://www.youtube.com/iframe_api";
-                    $('head').append(tag);
+                // Current Time Detector
+                setInterval(function() {
+                    if (YT && YT.PlayerState && storyData.youtube.player) {
 
-                    // Current Time Detector
-                    setInterval(function() {
-                        if (YT && YT.PlayerState && storyData.youtube.player) {
+                        // Fix
+                        storyData.music.playing = false;
+                        storyData.music.paused = false;
+                        storyData.music.stoppabled = false;
+                        storyData.music.buffering = false;
 
-                            // Fix
-                            storyData.music.playing = false;
-                            storyData.music.paused = false;
-                            storyData.music.stoppabled = false;
-                            storyData.music.buffering = false;
+                        // Playing
+                        if (storyData.youtube.state === YT.PlayerState.PLAYING) {
 
-                            // Playing
-                            if (storyData.youtube.state === YT.PlayerState.PLAYING) {
-                                storyData.music.playing = true;
-                                storyData.youtube.duration = storyData.youtube.player.getDuration();
-                                storyData.youtube.currentTime = storyData.youtube.player.getCurrentTime();
-                                if (typeof appData.youtube.onPlaying === 'function') { appData.youtube.onPlaying(); }
+                            // Set Embed
+                            if (!storyData.youtube.embed || storyData.youtube.videoID !== videoID) {
+                                storyData.youtube.embed = {};
+                                $.ajax({
+                                    url: 'https://www.youtube.com/oembed?format=json&url=' + encodeURIComponent(`https://www.youtube.com/watch?v=` + storyData.youtube.videoID),
+                                    type: 'get',
+                                    dataType: 'json'
+                                }).done(function(jsonVideo) {
+
+                                    console.log(`Youtube video embed loaded!`, storyData.youtube.videoID);
+                                    storyData.youtube.embed = jsonVideo;
+
+                                    // Info
+                                    storyData.music.author_name = jsonVideo.author_name;
+                                    storyData.music.author_url = jsonVideo.author_url;
+                                    storyData.music.provider_name = jsonVideo.provider_name;
+                                    storyData.music.thumbnail_url = jsonVideo.thumbnail_url;
+                                    storyData.music.title = jsonVideo.title;
+
+                                }).fail(err => {
+                                    console.error(err);
+                                    alert(err.message);
+                                });
                             }
 
-                            // Ended
-                            else if (storyData.youtube.state === YT.PlayerState.ENDED || storyData.youtube.state === YT.PlayerState.CUED) {
-
-                                // Stopping
-                                if (storyData.music.isStopping) {
-                                    storyData.youtube.player.seekTo(0);
-                                    storyData.youtube.player.pauseVideo();
-                                    storyData.music.isStopping = false;
-                                }
-
-                                // Next
-                                else if (!storyData.youtube.loading && storyData.readFic) {
-                                    musicManager.nextMusic();
-                                }
-
-                                // Progress
-                                storyData.music.stoppabled = true;
-                                storyData.youtube.currentTime = storyData.youtube.player.getDuration();
-
-                            }
-
-                            // Paused
-                            else if (storyData.youtube.state === YT.PlayerState.PAUSED) {
-                                storyData.music.paused = true;
-                            }
-
-                            // Buff
-                            else if (storyData.youtube.state === YT.PlayerState.BUFFERING) {
-                                storyData.music.buffering = true;
-                            }
+                            storyData.music.playing = true;
+                            storyData.youtube.duration = storyData.youtube.player.getDuration();
+                            storyData.youtube.currentTime = storyData.youtube.player.getCurrentTime();
+                            if (typeof appData.youtube.onPlaying === 'function') { appData.youtube.onPlaying(); }
 
                         }
-                        musicManager.updatePlayer();
-                    }, 100);
 
-                }
+                        // Ended
+                        else if (storyData.youtube.state === YT.PlayerState.ENDED || storyData.youtube.state === YT.PlayerState.CUED) {
 
-                // Reuse Player
-                else { storyData.youtube.player.loadVideoById({ videoId: videoID, startSeconds: 0 }); }
+                            // Stopping
+                            if (storyData.music.isStopping) {
+                                storyData.youtube.player.seekTo(0);
+                                storyData.youtube.player.pauseVideo();
+                                storyData.music.isStopping = false;
+                            }
 
-                // Prepare Volume
-                if (typeof storyData.youtube.volume === 'number' && typeof storyData.music.volume === 'number' && storyData.youtube.volume !== storyData.music.volume) {
-                    if (storyData.youtube.player) { storyData.youtube.player.setVolume(storyData.youtube.volume); }
-                    storyData.music.volume = Number(storyData.youtube.volume);
-                }
+                            // Next
+                            else if (!storyData.youtube.loading && storyData.readFic) {
+                                musicManager.nextMusic();
+                            }
 
-            }).fail(err => {
-                console.error(err);
-                alert(err.message);
-            });
+                            // Progress
+                            storyData.music.stoppabled = true;
+                            storyData.youtube.currentTime = storyData.youtube.player.getDuration();
+
+                        }
+
+                        // Paused
+                        else if (storyData.youtube.state === YT.PlayerState.PAUSED) {
+                            storyData.music.paused = true;
+                        }
+
+                        // Buff
+                        else if (storyData.youtube.state === YT.PlayerState.BUFFERING) {
+                            storyData.music.buffering = true;
+                        }
+
+                    }
+                    musicManager.updatePlayer();
+                }, 100);
+
+            }
+
+            // Reuse Player
+            else { storyData.youtube.player.loadVideoById({ videoId: videoID, startSeconds: 0 }); }
+
+            // Prepare Volume
+            if (typeof storyData.youtube.volume === 'number' && typeof storyData.music.volume === 'number' && storyData.youtube.volume !== storyData.music.volume) {
+                if (storyData.youtube.player) { storyData.youtube.player.setVolume(storyData.youtube.volume); }
+                storyData.music.volume = Number(storyData.youtube.volume);
+            }
+
         }
 
     }
