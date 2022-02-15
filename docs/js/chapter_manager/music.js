@@ -542,6 +542,7 @@ musicManager.insertSFX = function(item) {
                         play: function(inTime = null, volume = null) {
                             if (storyData.sfx[item].hiding) { newSound.pause(); }
                             storyData.sfx[item].hiding = false;
+                            storyData.sfx[item].showing = false;
                             return new Promise(function(resolve, reject) {
                                 setTimeout(function() {
                                     try {
@@ -592,6 +593,7 @@ musicManager.insertSFX = function(item) {
                         stop: function() {
                             if (storyData.sfx[item].hiding) { newSound.pause(); }
                             storyData.sfx[item].hiding = false;
+                            storyData.sfx[item].showing = false;
                             return new Promise(function(resolve, reject) {
                                 setTimeout(function() {
                                     try {
@@ -610,6 +612,7 @@ musicManager.insertSFX = function(item) {
                         pause: function() {
                             if (storyData.sfx[item].hiding) { newSound.pause(); }
                             storyData.sfx[item].hiding = false;
+                            storyData.sfx[item].showing = false;
                             return new Promise(function(resolve, reject) {
                                 setTimeout(function() {
                                     try {
@@ -626,6 +629,7 @@ musicManager.insertSFX = function(item) {
                         resume: function() {
                             if (storyData.sfx[item].hiding) { newSound.pause(); }
                             storyData.sfx[item].hiding = false;
+                            storyData.sfx[item].showing = false;
                             return new Promise(function(resolve, reject) {
                                 setTimeout(function() {
                                     try {
@@ -644,6 +648,7 @@ musicManager.insertSFX = function(item) {
 
                             let volume = newSound.volume * 100;
                             storyData.sfx[item].hiding = true;
+                            storyData.sfx[item].showing = false;
 
                             for (let i = 0; i < 100; i++) {
                                 if (storyData.sfx[item].hiding) {
@@ -662,6 +667,7 @@ musicManager.insertSFX = function(item) {
                                 storyData.sfx[item].playing = false;
                                 storyData.sfx[item].paused = false;
                                 storyData.sfx[item].hiding = false;
+                                storyData.sfx[item].showing = false;
                                 storyData.sfx[item].currentTime = 0;
                             }
 
@@ -676,10 +682,11 @@ musicManager.insertSFX = function(item) {
                             storyData.sfx[item].currentTime = 0;
                             let volume = 0;
                             newSound.volume = 0;
-                            storyData.sfx[item].hiding = true;
+                            storyData.sfx[item].showing = true;
+                            storyData.sfx[item].hiding = false;
 
                             for (let i = 0; i < 100; i++) {
-                                if (storyData.sfx[item].hiding) {
+                                if (storyData.sfx[item].showing) {
                                     await new Promise(function(resolve) {
                                         setTimeout(function() {
                                             if (volume < soundVolume) {
@@ -694,10 +701,10 @@ musicManager.insertSFX = function(item) {
                                 }
                             }
 
-                            if (storyData.sfx[item].hiding) {
+                            if (storyData.sfx[item].showing) {
                                 storyData.sfx[item].playing = true;
                                 storyData.sfx[item].paused = false;
-                                storyData.sfx[item].hiding = false;
+                                storyData.sfx[item].showing = false;
                             }
 
                         }
