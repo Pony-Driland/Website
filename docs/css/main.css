@@ -1,7 +1,12 @@
+/* Break Word */
+
 .text-break {
     overflow-wrap: break-word !important;
     word-break: break-word !important;
 }
+
+
+/* Youtube */
 
 #youtubePlayer {
     pointer-events: none;
@@ -15,6 +20,9 @@
     opacity: 0 !important;
     pointer-events: none !important;
 }
+
+
+/* Markdown */
 
 #markdown-read>h1,
 #markdown-read>h2,
@@ -42,15 +50,24 @@
     border: 0;
 }
 
+
+/* Page Item */
+
 .page-item.active a {
     font-weight: bold;
 }
+
+
+/* Fic Mod */
 
 .ficMode #mdMenu #crypto-wallet,
 .ficMode #mdMenu #discord-server,
 .ficMode #mdMenu #license {
     display: none !important;
 }
+
+
+/* Music Player */
 
 #music-player>a {
     padding: 11px;
@@ -69,6 +86,9 @@
 
 /* Cicle Day Night */
 
+
+/* Transition */
+
 body.ficMode {
     transition: background-color 1s;
 }
@@ -78,9 +98,15 @@ body.ficMode #md-navbar {
     transition: filter 1s;
 }
 
+
+/* Morning */
+
 body.fic-daycicle-morning {
     background-color: #202020;
 }
+
+
+/* Evening */
 
 body.fic-daycicle-evening {
     background-color: #2c2a26;
