@@ -598,7 +598,7 @@ musicManager.insertSFX = function(item) {
 
                                 let tinyValue = value;
                                 if (typeof tinyValue !== 'number') {
-                                    tinyValue = newSound.volume * 100;
+                                    tinyValue = storyData.sfx[item].volume;
                                 }
 
                                 if (tinyValue > 100) {
@@ -612,7 +612,7 @@ musicManager.insertSFX = function(item) {
                                 if (newVolume < 0) { newVolume = 0; }
                                 newSound.volume = newVolume / 100;
                                 if (!notEdit) {
-                                    storyData.sfx[item].volume = newVolume;
+                                    storyData.sfx[item].volume = tinyValue;
                                 }
 
                                 resolve();
