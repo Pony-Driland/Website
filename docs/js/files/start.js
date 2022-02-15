@@ -178,7 +178,7 @@ var clearFicData = function() {
         .removeClass(`fic-daycicle-morning`)
         .removeClass(`fic-daycicle-evening`)
         .removeClass(`fic-daycicle-night`)
-        .removeClass(`fic-daycicle-lateAtNigh`);
+        .removeClass(`fic-daycicle-lateAtNight`);
 
     $('#fic-nav > #status').empty();
     $('#fic-chapter').empty();

@@ -167,7 +167,7 @@ var chapterSet = {
                 .removeClass(`fic-daycicle-morning`)
                 .removeClass(`fic-daycicle-evening`)
                 .removeClass(`fic-daycicle-night`)
-                .removeClass(`fic-daycicle-lateAtNigh`)
+                .removeClass(`fic-daycicle-lateAtNight`)
                 .addClass(`fic-daycicle-${value}`);
 
             // Add Item Base
@@ -182,7 +182,7 @@ var chapterSet = {
                 morning: { icon: 'fas fa-sun', title: 'Morning' },
                 evening: { icon: 'fas fa-cloud-sun', title: 'Evening' },
                 night: { icon: 'fas fa-moon', title: 'Night' },
-                lateAtNigh: { icon: 'fas fa-bullseye', title: 'Late at Nigh' }
+                lateAtNight: { icon: 'fas fa-bullseye', title: 'Late at Nigh' }
             };
 
             const obj = $('#fic-nav > #status #dayNightCycle').css('font-size', '17pt');
