@@ -12,7 +12,17 @@ storyData.music = {
     stoppabled: true,
     buffering: false,
     volume: 0,
-    playlist: []
+    playlist: [],
+
+    songVolumeUpdate: function() {
+        setTimeout(function() {
+            for (const item in storyData.sfx) {
+                if (typeof storyData.sfx[item].volume === 'number') {
+                    storyData.sfx[item].setVolume(storyData.sfx[item].volume);
+                }
+            }
+        }, 100);
+    }
 
 };
 
@@ -115,13 +125,14 @@ storyData.youtube = {
         storyData.youtube.volume = Number(number);
         storyData.youtube.player.setVolume(Number(number));
         storyData.music.volume = Number(number);
-        for (const item in storyData.sfx) {
-            storyData.sfx[item].setVolume(storyData.sfx[item].volume);
-        }
+        storyData.music.songVolumeUpdate();
     },
 
     // Start Youtube
     play: function(videoID) {
+
+        // Update
+        storyData.music.songVolumeUpdate();
 
         // Read Data Base
         if (!storyData.youtube.loading && storyData.readFic) {
@@ -228,6 +239,8 @@ storyData.youtube = {
                     if (storyData.youtube.player) { storyData.youtube.player.setVolume(storyData.youtube.volume); }
                     storyData.music.volume = Number(storyData.youtube.volume);
                 }
+
+                storyData.music.songVolumeUpdate();
 
             }).fail(err => {
                 console.error(err);
@@ -589,7 +602,9 @@ musicManager.insertSFX = function(item) {
                                     if (newVolume > 100) { newVolume = 100; }
                                     if (newVolume < 0) { newVolume = 0; }
                                     newSound.volume = newVolume / 100;
-                                    if (!notEdit) { storyData.sfx[item].volume = newVolume; }
+                                    if (!notEdit) {
+                                        storyData.sfx[item].volume = newVolume;
+                                    }
                                 }
                                 resolve();
                             });
