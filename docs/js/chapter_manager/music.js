@@ -586,7 +586,6 @@ musicManager.insertSFX = function(item) {
                             return new Promise(function(resolve) {
                                 if (typeof value === 'number' && value > -1) {
                                     let newVolume = tinyLib.rule3(value, 100, storyData.music.volume);
-                                    console.log(newVolume);
                                     if (newVolume > 100) { newVolume = 100; }
                                     if (newVolume < 0) { newVolume = 0; }
                                     newSound.volume = newVolume / 100;
