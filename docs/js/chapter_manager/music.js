@@ -528,6 +528,7 @@ musicManager.insertSFX = function(item) {
                 const newSound = await musicManager.loadAudio(url);
                 if (newSound) {
 
+                    newSound.loop = true;
                     storyData.sfx[item] = {
 
                         // File
@@ -546,6 +547,7 @@ musicManager.insertSFX = function(item) {
                         setLoop: function(value) {
                             if (typeof value === 'boolean') {
                                 return new Promise(function(resolve) {
+                                    newSound.loop = value;
                                     storyData.sfx[item].loop = value;
                                     resolve();
                                 });
