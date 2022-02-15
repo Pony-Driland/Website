@@ -293,12 +293,29 @@ var openChapterMenu = function(params = {}) {
                 // Character Statistics
                 $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Character Statistics').click(function() {
 
+                    // Prepare Content
+                    const newDiv = $('<div>', { class: 'row' });
+                    const content = [];
+                    for (const item in storyData.characters.data) {
+
+                        // Prepare Data
+                        const charData = storyData.characters.data[item];
+                        const dataBase = $('<div>', { class: 'card-body' }).append(
+                            $('<h5>', { class: 'card-title' }).text(tinyLib.toTitleCase(charData.value)),
+                            $('<p>', { class: 'card-text small' }).text(`Performed ${charData.count} dialogues`)
+                        );
+
+                        // Insert Data
+                        content.push($('<div>', { class: 'col-sm-4' }).append(
+                            $('<div>', { class: 'card' }).append(dataBase)
+                        ));
+
+                    }
+
                     // Modal
                     tinyLib.modal({
                         title: [$('<i>', { class: 'fa-solid fa-user mr-3' }), 'Character Statistics'],
-                        body: $('<span>').append(
-
-                        ),
+                        body: $('<span>').append(newDiv.append(content)),
                         dialog: 'modal-lg'
                     });
 

@@ -162,6 +162,16 @@ tinyLib.shuffle = function(array) {
 
 };
 
+// Title Case
+tinyLib.toTitleCase = function(str) {
+    return str.replace(
+        /\w\S*/g,
+        function(txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        }
+    );
+}
+
 // Boolean Checker
 tinyLib.booleanCheck = function(value) {
 
