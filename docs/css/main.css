@@ -87,6 +87,8 @@ body.fic-daycicle-morning {}
 
 body.fic-daycicle-evening {}
 
-body.fic-daycicle-night {}
+body.fic-daycicle-night {
+    background-color: #10131a;
+}
 
 body.fic-daycicle-lateAtNigh {}
