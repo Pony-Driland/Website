@@ -719,6 +719,7 @@ musicManager.insertSFX = function(item) {
                             storyData.sfx[item].paused = false;
                             storyData.sfx[item].hiding = false;
                             storyData.sfx[item].showing = false;
+                            storyData.sfx[item].setVolume(0, true);
 
                             const soundVolume = storyData.sfx[item].volume;
                             newSound.currentTime = 0;
