@@ -768,10 +768,9 @@ musicManager.insertSFX = function(item) {
                         }
 
                         if (storyData.sfx[item].loop) {
-                            const buffer = .44
+                            const buffer = .1
                             if (this.currentTime > this.duration - buffer) {
-                                this.currentTime = 0
-                                this.play()
+                                this.currentTime = 0;
                             }
                         }
 
