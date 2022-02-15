@@ -295,7 +295,7 @@ var openChapterMenu = function(params = {}) {
 
                     // Modal
                     tinyLib.modal({
-                        title: [$('<i>', { class: 'fas fa-eye mr-3' }), 'Character Statistics'],
+                        title: [$('<i>', { class: 'fa-solid fa-user mr-3' }), 'Character Statistics'],
                         body: $('<span>').append(
 
                         ),
