@@ -284,13 +284,30 @@ var openChapterMenu = function(params = {}) {
         // Prepare Choose
         $('#markdown-read').append(
 
-            // Info
-            $('<div>', { class: 'alert alert-info' }).text('Every time you read a chapter, it will automatically save where you left off. This checkpoint is saved on your browser, if you want to transfer your checkpoint to other computers, save the URL of your checkpoint that will appear when you open a chapter.').prepend(
-                $('<i>', { class: 'fas fa-info-circle mr-3' })
+            // Nav
+            $('<nav>', { class: 'nav nav-pills nav-fill' }).append(
+
+                $('<a>', { class: 'nav-item nav-link', href: '#warnings', 'data-toggle': 'collapse', role: 'button', 'aria-expanded': false, 'aria-controls': 'warnings' }).text('Important Warnings'),
+                $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Character Statistics'),
+                $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Word Statistics')
+
             ),
 
-            $('<div>', { class: 'alert alert-info' }).text('Disclaimer: All songs played on this page are played directly from Youtube. This means that many songs do not belong to me and are being used only to please the reading environment. I recognize that if an artist asks to remove a song, I will replace it with another song. And all the songs that are played are counted as views on the original author\'s youtube channel. The official music page link will also be available in the player info icon.').prepend(
-                $('<i>', { class: 'fas fa-info-circle mr-3' })
+            // Info
+            $('<div>', { class: 'collapse', id: 'warnings' }).append(
+
+                $('<div>', { class: 'alert alert-info' }).text('Every time you read a chapter, it will automatically save where you left off. This checkpoint is saved on your browser, if you want to transfer your checkpoint to other computers, save the URL of your checkpoint that will appear when you open a chapter.').prepend(
+                    $('<i>', { class: 'fas fa-info-circle mr-3' })
+                ),
+
+                $('<div>', { class: 'alert alert-info' }).text('Disclaimer: All songs played on this page are played directly from Youtube. This means that many songs do not belong to me and are being used only to please the reading environment. I recognize that if an artist asks to remove a song, I will replace it with another song. And all the songs that are played are counted as views on the original author\'s youtube channel. The official music page link will also be available in the player info icon.').prepend(
+                    $('<i>', { class: 'fas fa-info-circle mr-3' })
+                ),
+
+                $('<div>', { class: 'alert alert-info' }).text('Our site does not have access to your access information, but some third-party applications installed on this page can collect your navigation data. YouTube, Google, Cloudflare.').prepend(
+                    $('<i>', { class: 'fas fa-info-circle mr-3' })
+                )
+
             ),
 
             $('<h2>').text(`Please choose a chapter to read.`).prepend(
