@@ -247,7 +247,9 @@ var storyCfg = {
 
     // SFX
     sfx: {
-
+        'heavy-rain-little-thunder': { type: 'file', value: '/audio/rain/heavy-rain-little-thunder.mp4' },
+        'heavy-rain': { type: 'file', value: '/audio/rain/heavy-rain.mp4' },
+        'ambulance-alarm': { type: 'file', value: '/audio/alarm/ambulance.wav' }
     }
 
 };
