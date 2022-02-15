@@ -84,54 +84,6 @@
 }
 
 
-/* Cicle Day Night */
-
-
-/* Transition */
-
-body.ficMode {
-    transition: background-color 1s;
-}
-
-body.ficMode .page-footer,
-body.ficMode #md-navbar {
-    transition: filter 1s;
-}
-
-
-/* Morning */
-
-body.fic-daycicle-morning {
-    background-color: #202020;
-}
-
-
-/* Evening */
-
-body.fic-daycicle-evening {
-    background-color: #2c2a26;
-}
-
-
-/* Night */
-
-body.fic-daycicle-night {
-    background-color: #0d1322;
-}
-
-.fic-daycicle-night .page-footer,
-.fic-daycicle-night #md-navbar {
-    filter: brightness(60%);
-}
-
-
-/* Late At Night */
-
-body.fic-daycicle-lateAtNight {
-    background-color: #0c0e1a;
-}
-
-
 /* ============================================================================================== 
 SED Innovations
 https://sed.am
@@ -224,12 +176,12 @@ https://mkrtchyan.ga
 }
 
 .stars {
-    background: transparent url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+    background: #000 url("/img/bg/sky-starsstars.png") repeat top center;
     z-index: -3;
 }
 
 .twinkling {
-    background: transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+    background: transparent url("/img/bg/sky-starstwinkling.png") repeat top center;
     z-index: -2;
     -moz-animation: move-twink-back 200s linear infinite;
     -ms-animation: move-twink-back 200s linear infinite;
@@ -239,11 +191,59 @@ https://mkrtchyan.ga
 }
 
 .clouds {
-    background: transparent url(http://www.script-tutorials.com/demos/360/images/clouds3.png) repeat top center;
+    background: transparent url("/img/bg/sky-starsclouds3.png") repeat top center;
     z-index: -1;
     -moz-animation: move-clouds-back 200s linear infinite;
     -ms-animation: move-clouds-back 200s linear infinite;
     -o-animation: move-clouds-back 200s linear infinite;
     -webkit-animation: move-clouds-back 200s linear infinite;
     animation: move-clouds-back 200s linear infinite;
+}
+
+
+/* Cicle Day Night */
+
+
+/* Transition */
+
+body.ficMode .stars {
+    transition: background-color 1s;
+}
+
+body.ficMode .page-footer,
+body.ficMode #md-navbar {
+    transition: filter 1s;
+}
+
+
+/* Morning */
+
+body.fic-daycicle-morning .stars {
+    background-color: #202020;
+}
+
+
+/* Evening */
+
+body.fic-daycicle-evening .stars {
+    background-color: #2c2a26;
+}
+
+
+/* Night */
+
+body.fic-daycicle-night .stars {
+    background-color: #0d1322;
+}
+
+.fic-daycicle-night .page-footer,
+.fic-daycicle-night #md-navbar {
+    filter: brightness(60%);
+}
+
+
+/* Late At Night */
+
+body.fic-daycicle-lateAtNight .stars {
+    background-color: #0c0e1a;
 }
