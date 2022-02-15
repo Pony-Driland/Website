@@ -582,8 +582,9 @@ musicManager.insertSFX = function(item) {
                         setVolume: function(value, notEdit = false) {
                             return new Promise(function(resolve) {
                                 if (typeof value === 'number' && value > -1) {
-                                    newSound.volume = value / 100;
-                                    if (!notEdit) { storyData.sfx[item].volume = value; }
+                                    const newVolume = Number(100 * value) / storyData.music.volume;
+                                    newSound.volume = newVolume / 100;
+                                    if (!notEdit) { storyData.sfx[item].volume = newVolume; }
                                 }
                                 resolve();
                             });
