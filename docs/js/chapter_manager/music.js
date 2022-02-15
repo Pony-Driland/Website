@@ -135,7 +135,7 @@ storyData.youtube = {
         if (!storyData.youtube.loading && storyData.readFic) {
             storyData.music.loading = true;
             storyData.youtube.loading = true;
-            console.log(`Loading youtube video embed...`);
+            console.log(`Loading youtube video embed...`, videoID);
             $.ajax({
                 url: 'https://www.youtube.com/oembed?format=json&url=' + encodeURIComponent(`https://www.youtube.com/watch?v=` + videoID),
                 type: 'get',
@@ -149,7 +149,7 @@ storyData.youtube = {
 
                 storyData.music.loading = false;
                 storyData.youtube.loading = false;
-                console.log(`Youtube video embed loaded!`);
+                console.log(`Youtube video embed loaded!`, videoID);
                 storyData.youtube.embed = jsonVideo;
 
                 // Info
@@ -168,7 +168,7 @@ storyData.youtube = {
                 if (!storyData.youtube.player) {
 
                     // 2. This code loads the IFrame Player API code asynchronously.
-                    console.log(`Starting Youtube API...`);
+                    console.log(`Starting Youtube API...`, videoID);
                     var tag = document.createElement('script');
                     tag.src = "https://www.youtube.com/iframe_api";
                     $('head').append(tag);
