@@ -647,6 +647,9 @@ musicManager.insertSFX = function(item) {
                         hide: async function(hideTimeout = 50) {
 
                             let volume = newSound.volume * 100;
+
+                            storyData.sfx[item].playing = true;
+                            storyData.sfx[item].paused = false;
                             storyData.sfx[item].hiding = true;
                             storyData.sfx[item].showing = false;
 
@@ -678,6 +681,12 @@ musicManager.insertSFX = function(item) {
                         show: async function(hideTimeout = 50) {
 
                             newSound.pause();
+
+                            storyData.sfx[item].playing = false;
+                            storyData.sfx[item].paused = false;
+                            storyData.sfx[item].hiding = false;
+                            storyData.sfx[item].showing = false;
+
                             const soundVolume = storyData.sfx[item].volume;
                             newSound.currentTime = 0;
                             storyData.sfx[item].currentTime = 0;
@@ -706,6 +715,7 @@ musicManager.insertSFX = function(item) {
                             if (storyData.sfx[item].showing) {
                                 storyData.sfx[item].playing = true;
                                 storyData.sfx[item].paused = false;
+                                storyData.sfx[item].hiding = false;
                                 storyData.sfx[item].showing = false;
                             }
 
