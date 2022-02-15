@@ -131,9 +131,6 @@ storyData.youtube = {
     // Start Youtube
     play: function(videoID) {
 
-        // Update
-        storyData.music.songVolumeUpdate();
-
         // Read Data Base
         if (!storyData.youtube.loading && storyData.readFic) {
             storyData.music.loading = true;
@@ -240,8 +237,6 @@ storyData.youtube = {
                     storyData.music.volume = Number(storyData.youtube.volume);
                 }
 
-                storyData.music.songVolumeUpdate();
-
             }).fail(err => {
                 console.error(err);
                 alert(err.message);
@@ -326,6 +321,9 @@ var musicManager = {
 
         // Add Item Base
         if ($('#fic-nav > #status #music').length < 1) {
+
+            // Update
+            storyData.music.songVolumeUpdate();
 
             // Navbar
             if (!storyData.music.nav) { storyData.music.nav = {}; }
