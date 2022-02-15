@@ -293,7 +293,14 @@ var openChapterMenu = function(params = {}) {
                 // Character Statistics
                 $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Character Statistics').click(function() {
 
+                    // Modal
+                    tinyLib.modal({
+                        title: [$('<i>', { class: 'fas fa-eye mr-3' }), 'Character Statistics'],
+                        body: $('<span>').append(
 
+                        ),
+                        dialog: 'modal-lg'
+                    });
 
                     // Complete
                     return false;
@@ -302,6 +309,15 @@ var openChapterMenu = function(params = {}) {
 
                 // Word Statistics
                 $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Word Statistics').click(function() {
+
+                    // Modal
+                    tinyLib.modal({
+                        title: [$('<i>', { class: 'fa-solid fa-a mr-3' }), 'Word Statistics'],
+                        body: $('<span>').append(
+
+                        ),
+                        dialog: 'modal-lg'
+                    });
 
                     // Complete
                     return false;
