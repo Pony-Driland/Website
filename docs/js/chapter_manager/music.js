@@ -612,6 +612,11 @@ musicManager.insertSFX = function(item) {
                                 let newVolume = tinyLib.rule3(tinyValue, 100, storyData.music.volume);
                                 if (newVolume > 100) { newVolume = 100; }
                                 if (newVolume < 0) { newVolume = 0; }
+
+                                if (notEdit && newVolume > tinyValue) {
+                                    newVolume = tinyValue;
+                                }
+
                                 newSound.volume = newVolume / 100;
                                 if (!notEdit) {
                                     storyData.sfx[item].volume = tinyValue;
