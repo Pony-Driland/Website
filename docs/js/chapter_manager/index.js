@@ -24,10 +24,22 @@ const rainConfig = {};
 })();
 
 // Start Rain
-var startRain = function() {
-    $('.rain').empty();
-    $('.rain.front-row').append(rainConfig.drops);
-    $('.rain.back-row').append(rainConfig.backDrops);
+var rainMode = {
+
+    start: function() {
+        $('.rain').empty();
+        $('.rain.front-row').append(rainConfig.drops);
+        $('.rain.back-row').append(rainConfig.backDrops);
+    },
+
+    on: function() {
+        $('body').addClass('raining-sky');
+    },
+
+    off: function() {
+        $('body').addClass('raining-sky');
+    }
+
 };
 
 var storyDialogue = {
@@ -291,7 +303,7 @@ var openChapterMenu = function(params = {}) {
         // Complete
         $(window).trigger('scroll');
         if (line !== null) { tinyLib.goToByScroll($('#markdown-read [line="' + line + '"]'), 0); }
-        startRain();
+        rainMode.start();
         return;
 
     };
