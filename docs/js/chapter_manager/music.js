@@ -499,6 +499,9 @@ setInterval(function() {
             if (storyData.sfx[item].playing) {
                 storyData.sfx[item].currentTime = storyData.sfx[item].file.currentTime;
                 storyData.sfx[item].leftTime = storyData.sfx[item].duration - storyData.sfx[item].currentTime;
+                if (storyData.sfx[item].loop && storyData.sfx[item].leftTime < 0.01) {
+                    storyData.sfx[item].seekTo(0);
+                }
             }
         }
     }
