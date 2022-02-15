@@ -254,20 +254,28 @@ var musicManager = {
     loadAudio: function(url) {
         return new Promise(function(resolve, reject) {
 
-            let loaded = false;
+            fetch(url, { method: 'GET' })
+                .then(response => response.blob())
+                .then(blob => {
 
-            const audio = new Audio();
-            audio.preload = "auto";
-            audio.onerror = reject;
+                    const url = window.URL.createObjectURL(blob);
 
-            audio.addEventListener('canplaythrough', function() {
-                if (!loaded) {
-                    loaded = true;
-                    resolve(audio);
-                }
-            }, false);
+                    let loaded = false;
 
-            audio.src = url;
+                    const audio = new Audio();
+                    audio.preload = "auto";
+                    audio.onerror = reject;
+
+                    audio.addEventListener('canplaythrough', function() {
+                        if (!loaded) {
+                            loaded = true;
+                            resolve(audio);
+                        }
+                    }, false);
+
+                    audio.src = url;
+
+                }).catch(reject);
 
         });
     },
