@@ -356,7 +356,7 @@ var openChapterMenu = function(params = {}) {
                             const dataBase = $('<div>', { class: 'card-body' });
 
                             dataBase.append(
-                                $('<h5>', { class: 'card-title' }).text(`Words from the Chapter ${item}`),
+                                $('<h5>', { class: 'card-title' }).text(`Chapter ${item}`),
                                 $('<p>', { class: 'card-text small' }).text(charData)
                             );
 
