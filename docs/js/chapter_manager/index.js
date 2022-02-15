@@ -305,8 +305,15 @@ var openChapterMenu = function(params = {}) {
                             $('<p>', { class: 'card-text small' }).text(`Performed ${charData.count} dialogues`)
                         );
 
+                        // Chapter Read
+                        for (const item2 in charData.chapter) {
+                            dataBase.append(
+                                $('<p>', { class: 'card-text small' }).text(`${charData.chapter[item2]} dialogues in Chapter ${item2}`)
+                            )
+                        }
+
                         // Insert Data
-                        content.push($('<div>', { class: 'col-sm-4' }).append(
+                        content.push($('<div>', { class: 'col-sm-6' }).append(
                             $('<div>', { class: 'card' }).append(dataBase)
                         ));
 
