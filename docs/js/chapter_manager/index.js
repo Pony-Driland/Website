@@ -334,12 +334,44 @@ var openChapterMenu = function(params = {}) {
                 // Word Statistics
                 $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Word Statistics').click(function() {
 
+
+                    // Prepare Content
+                    const newDiv = $('<div>', { class: 'row' });
+                    const content = [];
+
+                    // Insert Data
+                    content.push($('<div>', { class: 'col-sm-6' }).append(
+                        $('<div>', { class: 'card' }).append($('<div>', { class: 'card-body' }).append(
+                            $('<h5>', { class: 'card-title' }).text(`Total Words`),
+                            $('<p>', { class: 'card-text small' }).text(storyData.lettersCount.total)
+                        ))
+                    ));
+
+                    // Insert Chapter Data
+                    for (const item in storyData.lettersCount) {
+                        if (item !== 'total') {
+
+                            // Prepare Data
+                            const charData = storyData.lettersCount[item];
+                            const dataBase = $('<div>', { class: 'card-body' });
+
+                            dataBase.append(
+                                $('<h5>', { class: 'card-title' }).text(`Words from the Chapter ${item}`),
+                                $('<p>', { class: 'card-text small' }).text(charData)
+                            );
+
+                            // Insert Data
+                            content.push($('<div>', { class: 'col-sm-6' }).append(
+                                $('<div>', { class: 'card' }).append(dataBase)
+                            ));
+
+                        }
+                    }
+
                     // Modal
                     tinyLib.modal({
                         title: [$('<i>', { class: 'fa-solid fa-a mr-3' }), 'Word Statistics'],
-                        body: $('<span>').append(
-
-                        ),
+                        body: $('<span>').append(newDiv.append(content)),
                         dialog: 'modal-lg'
                     });
 
