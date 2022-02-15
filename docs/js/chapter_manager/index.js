@@ -1,9 +1,10 @@
 /*  Rain made by Aaron Rickle */
+const rainConfig = {};
 (function() {
 
     var increment = 0;
-    var drops = "";
-    var backDrops = "";
+    rainConfig.drops = "";
+    rainConfig.backDrops = "";
 
     while (increment < 100) {
         //couple random numbers to use for various randomizations
@@ -14,8 +15,8 @@
         //increment
         increment += randoFiver;
         //add in a new raindrop with various randomizations to certain CSS properties
-        drops += '<div class="drop" style="left: ' + increment + '%; bottom: ' + (randoFiver + randoFiver - 1 + 100) + '%; animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"><div class="stem" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div><div class="splat" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div></div>';
-        backDrops += '<div class="drop" style="right: ' + increment + '%; bottom: ' + (randoFiver + randoFiver - 1 + 100) + '%; animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"><div class="stem" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div><div class="splat" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div></div>';
+        rainConfig.drops += '<div class="drop" style="left: ' + increment + '%; bottom: ' + (randoFiver + randoFiver - 1 + 100) + '%; animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"><div class="stem" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div><div class="splat" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div></div>';
+        rainConfig.backDrops += '<div class="drop" style="right: ' + increment + '%; bottom: ' + (randoFiver + randoFiver - 1 + 100) + '%; animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"><div class="stem" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div><div class="splat" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div></div>';
     }
 
     return;
@@ -25,8 +26,8 @@
 // Start Rain
 var startRain = function() {
     $('.rain').empty();
-    $('.rain.front-row').append(drops);
-    $('.rain.back-row').append(backDrops);
+    $('.rain.front-row').append(rainConfig.drops);
+    $('.rain.back-row').append(rainConfig.backDrops);
 };
 
 var storyDialogue = {
