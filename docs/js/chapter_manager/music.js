@@ -217,6 +217,7 @@ storyData.youtube = {
 
                             // Next
                             else if (!storyData.youtube.loading && storyData.readFic && storyData.youtube.embed) {
+                                delete storyData.youtube.embed;
                                 musicManager.nextMusic();
                             }
 
