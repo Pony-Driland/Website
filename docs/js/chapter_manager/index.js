@@ -242,6 +242,13 @@ var openChapterMenu = function(params = {}) {
             // Pagination
             tinyPag2,
 
+            // Night Effects
+            $('<div>', { id: 'bg-sky' }).append(
+                $('<div>', { class: 'stars' }),
+                $('<div>', { class: 'twinkling' }),
+                $('<div>', { class: 'clouds' })
+            )
+
         );
 
         // Fic Mode
