@@ -579,11 +579,11 @@ musicManager.insertSFX = function(item) {
                         },
 
                         // Set Volume
-                        setVolume: function(value) {
+                        setVolume: function(value, notEdit = false) {
                             return new Promise(function(resolve) {
                                 if (typeof value === 'number' && value > -1) {
                                     newSound.volume = value / 100;
-                                    storyData.sfx[item].volume = value;
+                                    if (!notEdit) { storyData.sfx[item].volume = value; }
                                 }
                                 resolve();
                             });
@@ -658,7 +658,7 @@ musicManager.insertSFX = function(item) {
                                     await new Promise(function(resolve) {
                                         setTimeout(function() {
                                             volume--;
-                                            storyData.sfx[item].setVolume(volume);
+                                            storyData.sfx[item].setVolume(volume, true);
                                             resolve();
                                         }, hideTimeout);
                                     });
@@ -702,9 +702,9 @@ musicManager.insertSFX = function(item) {
                                         setTimeout(function() {
                                             if (volume < soundVolume) {
                                                 volume++;
-                                                storyData.sfx[item].setVolume(volume);
+                                                storyData.sfx[item].setVolume(volume, true);
                                             } else {
-                                                storyData.sfx[item].setVolume(soundVolume);
+                                                storyData.sfx[item].setVolume(soundVolume, true);
                                             }
                                             resolve();
                                         }, hideTimeout);
