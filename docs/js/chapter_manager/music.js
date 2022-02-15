@@ -296,7 +296,7 @@ var musicManager = {
 
                 // Youtube
                 if (song.type === 'youtube') {
-                    storyData.youtube.play(song.id);
+                    setTimeout(function() { storyData.youtube.play(song.id); }, 1000);
                 }
 
             }
@@ -867,7 +867,7 @@ musicManager.startPlaylist = function() {
 
                             // Youtube
                             if (song.type === 'youtube') {
-                                storyData.youtube.play(song.id);
+                                setTimeout(function() { storyData.youtube.play(song.id); }, 100);
                             }
 
                         }
