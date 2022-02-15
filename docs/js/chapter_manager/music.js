@@ -115,6 +115,9 @@ storyData.youtube = {
         storyData.youtube.volume = Number(number);
         storyData.youtube.player.setVolume(Number(number));
         storyData.music.volume = Number(number);
+        for (const item in storyData.sfx) {
+            storyData.music.volume[item].setVolume(storyData.music.volume[item].volume);
+        }
     },
 
     // Start Youtube
