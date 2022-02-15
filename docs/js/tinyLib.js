@@ -162,6 +162,15 @@ tinyLib.shuffle = function(array) {
 
 };
 
+// Rule 3
+tinyLib.rule3 = function(val1, val2, val3, inverse) {
+    if (inverse == true) {
+        return Number(val1 * val2) / val3;
+    } else {
+        return Number(val3 * val2) / val1;
+    }
+};
+
 // Title Case
 tinyLib.toTitleCase = function(str) {
     return str.replace(
