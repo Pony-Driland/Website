@@ -69,18 +69,8 @@
 
 /* Cicle Day Night */
 
-
-/* @keyframes backgroundCicle {
-    from {
-        background-color: red;
-    }
-    to {
-        background-color: blue;
-    }
-} */
-
 body.ficMode {
-    /*     animation: backgroundCicle 5s infinite; */
+    transition: background-color 1s;
 }
 
 body.fic-daycicle-morning {}
