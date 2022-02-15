@@ -215,6 +215,11 @@ body.ficMode .stars {
 
 body.fic-daycicle-morning .stars {
     background-color: #202020;
+    background-image: none !important;
+}
+
+body.fic-daycicle-morning .twinkling {
+    opacity: 0;
 }
 
 
@@ -222,6 +227,11 @@ body.fic-daycicle-morning .stars {
 
 body.fic-daycicle-evening .stars {
     background-color: #2c2a26;
+    background-image: none !important;
+}
+
+body.fic-daycicle-night .twinkling {
+    opacity: 0;
 }
 
 
@@ -240,4 +250,8 @@ body.fic-daycicle-night .twinkling {
 
 body.fic-daycicle-lateAtNight .stars {
     background-color: #0c0e1a;
+}
+
+body.fic-daycicle-lateAtNight .twinkling {
+    filter: hue-rotate(194deg) brightness(0.2);
 }
