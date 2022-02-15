@@ -18,7 +18,7 @@ storyData.music = {
         setTimeout(function() {
             for (const item in storyData.sfx) {
                 if (typeof storyData.sfx[item].volume === 'number') {
-                    storyData.sfx[item].setVolume(storyData.sfx[item].volume);
+                    storyData.sfx[item].setVolume();
                 }
             }
         }, 100);
@@ -595,16 +595,28 @@ musicManager.insertSFX = function(item) {
                         // Set Volume
                         setVolume: function(value, notEdit = false) {
                             return new Promise(function(resolve) {
-                                if (typeof value === 'number' && value > -1) {
-                                    let newVolume = tinyLib.rule3(value, 100, storyData.music.volume);
-                                    if (newVolume > 100) { newVolume = 100; }
-                                    if (newVolume < 0) { newVolume = 0; }
-                                    newSound.volume = newVolume / 100;
-                                    if (!notEdit) {
-                                        storyData.sfx[item].volume = newVolume;
-                                    }
+
+                                let tinyValue = value;
+                                if (typeof tinyValue !== 'number') {
+                                    tinyValue = newSound.volume * 100;
                                 }
+
+                                if (tinyValue > 100) {
+                                    tinyValue = 100;
+                                } else if (tinyValue < 0) {
+                                    tinyValue = 0;
+                                }
+
+                                let newVolume = tinyLib.rule3(tinyValue, 100, storyData.music.volume);
+                                if (newVolume > 100) { newVolume = 100; }
+                                if (newVolume < 0) { newVolume = 0; }
+                                newSound.volume = newVolume / 100;
+                                if (!notEdit) {
+                                    storyData.sfx[item].volume = newVolume;
+                                }
+
                                 resolve();
+
                             });
                         },
 
