@@ -665,6 +665,41 @@ musicManager.insertSFX = function(item) {
                                 storyData.sfx[item].currentTime = 0;
                             }
 
+                        },
+
+
+                        // Show
+                        show: async function(hideTimeout = 50) {
+
+                            const soundVolume = storyData.sfx[item].volume;
+                            newSound.currentTime = 0;
+                            storyData.sfx[item].currentTime = 0;
+                            let volume = 0;
+                            newSound.volume = 0;
+                            storyData.sfx[item].hiding = true;
+
+                            for (let i = 0; i < 100; i++) {
+                                if (storyData.sfx[item].hiding) {
+                                    await new Promise(function(resolve) {
+                                        setTimeout(function() {
+                                            if (volume < soundVolume) {
+                                                volume++;
+                                                storyData.sfx[item].setVolume(volume);
+                                            } else {
+                                                storyData.sfx[item].setVolume(soundVolume);
+                                            }
+                                            resolve();
+                                        }, hideTimeout);
+                                    });
+                                }
+                            }
+
+                            if (storyData.sfx[item].hiding) {
+                                storyData.sfx[item].playing = true;
+                                storyData.sfx[item].paused = false;
+                                storyData.sfx[item].hiding = false;
+                            }
+
                         }
 
                     };
