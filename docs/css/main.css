@@ -65,3 +65,28 @@
 .disabled-player {
     display: none !important;
 }
+
+
+/* Cicle Day Night */
+
+
+/* @keyframes backgroundCicle {
+    from {
+        background-color: red;
+    }
+    to {
+        background-color: blue;
+    }
+} */
+
+body.ficMode {
+    /*     animation: backgroundCicle 5s infinite; */
+}
+
+body.fic-daycicle-morning {}
+
+body.fic-daycicle-evening {}
+
+body.fic-daycicle-night {}
+
+body.fic-daycicle-lateAtNigh {}
