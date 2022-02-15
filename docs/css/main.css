@@ -203,6 +203,10 @@ https://mkrtchyan.ga
 
 /* Cicle Day Night */
 
+body:not(.ficMode) #bg-sky {
+    display: none !important;
+}
+
 
 /* Transition */
 
