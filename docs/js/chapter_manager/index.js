@@ -284,6 +284,9 @@ var openChapterMenu = function(params = {}) {
         // Prepare Choose
         $('#markdown-read').append(
 
+            // Banner
+            $('<img>', { class: 'img-fluid mb-2', src: '/img/external/banner1.jpg' }),
+
             // Nav
             $('<nav>', { class: 'nav nav-pills nav-fill' }).append(
 
