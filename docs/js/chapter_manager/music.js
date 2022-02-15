@@ -677,6 +677,7 @@ musicManager.insertSFX = function(item) {
                         // Show
                         show: async function(hideTimeout = 50) {
 
+                            newSound.pause();
                             const soundVolume = storyData.sfx[item].volume;
                             newSound.currentTime = 0;
                             storyData.sfx[item].currentTime = 0;
@@ -684,6 +685,7 @@ musicManager.insertSFX = function(item) {
                             newSound.volume = 0;
                             storyData.sfx[item].showing = true;
                             storyData.sfx[item].hiding = false;
+                            newSound.play();
 
                             for (let i = 0; i < 100; i++) {
                                 if (storyData.sfx[item].showing) {
