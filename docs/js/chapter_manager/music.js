@@ -174,7 +174,7 @@ storyData.youtube = {
                         if (storyData.youtube.state === YT.PlayerState.PLAYING) {
 
                             // Set Embed
-                            if (!storyData.youtube.embed || storyData.youtube.videoID !== videoID) {
+                            if (!storyData.youtube.embed) {
                                 storyData.youtube.embed = {};
                                 $.ajax({
                                     url: 'https://www.youtube.com/oembed?format=json&url=' + encodeURIComponent(`https://www.youtube.com/watch?v=` + storyData.youtube.videoID),
