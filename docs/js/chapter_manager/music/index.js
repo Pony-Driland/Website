@@ -568,7 +568,7 @@ musicManager.insertSFX = function(item, loop = true) {
                     storyData.sfx[item].file = file;
 
                     // Start Pizzicato
-                    const startPizzicato = function(forcePic) {
+                    const startPizzicato = function(forcePic = false) {
                         return musicManager.start.pizzicato(item, loop, resolve, url, forcePic);
                     };
 
