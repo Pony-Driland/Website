@@ -561,15 +561,26 @@ musicManager.insertSFX = function(item) {
                         // Values
                         loop: true,
                         hiding: false,
-                        playing: false,
-                        paused: false,
                         volume: newSound._volume * 100,
-                        currentTime: 0,
-                        duration: file.duration,
+
+                        // Stop
+                        stop: function() {
+                            if (!storyData.sfx[item].stop) {
+                                storyData.sfx[item].stop = true;
+                                newSound.stop();
+                            }
+                        },
+
+                        start: function() {
+                            if (storyData.sfx[item].stop) {
+                                storyData.sfx[item].stop = false;
+                                newSound.start(item);
+                            }
+                        },
 
                         // Play
                         play: function(volume = null) {
-                            if (storyData.sfx[item].hiding) { newSound.stop(); }
+                            if (storyData.sfx[item].hiding) { storyData.sfx[item].stop(); }
                             storyData.sfx[item].hiding = false;
                             storyData.sfx[item].showing = false;
                             return new Promise(function(resolve, reject) {
@@ -580,11 +591,9 @@ musicManager.insertSFX = function(item) {
                                             storyData.sfx[item].setVolume(volume);
                                         } else { storyData.sfx[item].setVolume(storyData.sfx[item].volume); }
 
-                                        storyData.sfx[item].playing = true;
-                                        storyData.sfx[item].paused = false;
                                         storyData.sfx[item].leftTime = storyData.sfx[item].duration;
 
-                                        newSound.start(item);
+                                        storyData.sfx[item].start();
                                         resolve();
 
                                     } catch (err) { reject(err); }
@@ -627,15 +636,13 @@ musicManager.insertSFX = function(item) {
 
                         // Stop
                         stop: function() {
-                            if (storyData.sfx[item].hiding) { newSound.stop(); }
+                            if (storyData.sfx[item].hiding) { storyData.sfx[item].stop(); }
                             storyData.sfx[item].hiding = false;
                             storyData.sfx[item].showing = false;
                             return new Promise(function(resolve, reject) {
                                 setTimeout(function() {
                                     try {
-                                        storyData.sfx[item].playing = false;
-                                        storyData.sfx[item].paused = false;
-                                        newSound.stop();
+                                        storyData.sfx[item].stop();
                                         storyData.sfx[item].leftTime = storyData.sfx[item].duration;
                                         resolve();
                                     } catch (err) { reject(err); }
@@ -648,8 +655,6 @@ musicManager.insertSFX = function(item) {
 
                             let volume = newSound._volume * 100;
 
-                            storyData.sfx[item].playing = true;
-                            storyData.sfx[item].paused = false;
                             storyData.sfx[item].hiding = true;
                             storyData.sfx[item].showing = false;
 
@@ -666,9 +671,7 @@ musicManager.insertSFX = function(item) {
                             }
 
                             if (storyData.sfx[item].hiding) {
-                                newSound.stop();
-                                storyData.sfx[item].playing = false;
-                                storyData.sfx[item].paused = false;
+                                storyData.sfx[item].stop();
                                 storyData.sfx[item].hiding = false;
                                 storyData.sfx[item].showing = false;
                                 storyData.sfx[item].leftTime = storyData.sfx[item].duration;
@@ -680,10 +683,8 @@ musicManager.insertSFX = function(item) {
                         // Show
                         show: async function(hideTimeout = 50) {
 
-                            newSound.stop();
+                            storyData.sfx[item].stop();
 
-                            storyData.sfx[item].playing = false;
-                            storyData.sfx[item].paused = false;
                             storyData.sfx[item].hiding = false;
                             storyData.sfx[item].showing = false;
 
@@ -694,7 +695,7 @@ musicManager.insertSFX = function(item) {
                             storyData.sfx[item].showing = true;
                             storyData.sfx[item].hiding = false;
                             storyData.sfx[item].setVolume(0, true);
-                            newSound.start(item);
+                            storyData.sfx[item].start();
 
                             for (let i = 0; i < 100; i++) {
                                 if (storyData.sfx[item].showing) {
@@ -713,8 +714,6 @@ musicManager.insertSFX = function(item) {
                             }
 
                             if (storyData.sfx[item].showing) {
-                                storyData.sfx[item].playing = true;
-                                storyData.sfx[item].paused = false;
                                 storyData.sfx[item].hiding = false;
                                 storyData.sfx[item].showing = false;
                             }
