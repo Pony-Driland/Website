@@ -573,6 +573,7 @@ musicManager.insertSFX = function(item, loop = true) {
 
                     // Loop Audio
                     if (loop) {
+
                         const newSound = new SeamlessLoop();
                         newSound.addUri(url, file.duration * 1000, item);
                         newSound.callback(function() {
@@ -728,6 +729,7 @@ musicManager.insertSFX = function(item, loop = true) {
                             });
 
                         });
+
                     }
 
                     // Nope
