@@ -145,9 +145,9 @@ musicManager.start.vanilla = function(item, newSound) {
         storyData.sfx[item].hiding = true;
         storyData.sfx[item].showing = false;
 
-        for (let i = 0; i < 100; i++) {
-            if (storyData.sfx[item].hiding) {
-                if (typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0) {
+        if (typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0) {
+            for (let i = 0; i < 100; i++) {
+                if (storyData.sfx[item].hiding) {
                     await new Promise(function(resolve) {
                         setTimeout(function() {
 
@@ -197,9 +197,9 @@ musicManager.start.vanilla = function(item, newSound) {
         storyData.sfx[item].setVolume(0, true);
         newSound.play();
 
-        for (let i = 0; i < 100; i++) {
-            if (storyData.sfx[item].showing) {
-                if (typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0) {
+        if (typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0) {
+            for (let i = 0; i < 100; i++) {
+                if (storyData.sfx[item].showing) {
                     await new Promise(function(resolve) {
                         setTimeout(function() {
 

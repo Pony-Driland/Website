@@ -99,9 +99,9 @@ musicManager.start.pizzicato = function(item, loop, resolve, url) {
         storyData.sfx[item].pizzicato.hiding = true;
         storyData.sfx[item].pizzicato.showing = false;
 
-        for (let i = 0; i < 100; i++) {
-            if (storyData.sfx[item].pizzicato.hiding) {
-                if (typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0) {
+        if (typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0) {
+            for (let i = 0; i < 100; i++) {
+                if (storyData.sfx[item].pizzicato.hiding) {
                     await new Promise(function(resolve) {
                         setTimeout(function() {
 
@@ -142,9 +142,9 @@ musicManager.start.pizzicato = function(item, loop, resolve, url) {
         newSound.volume = 0;
         storyData.sfx[item].pizzicato.start();
 
-        for (let i = 0; i < 100; i++) {
-            if (storyData.sfx[item].pizzicato.showing) {
-                if (typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0) {
+        if (typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0) {
+            for (let i = 0; i < 100; i++) {
+                if (storyData.sfx[item].pizzicato.showing) {
                     await new Promise(function(resolve) {
                         setTimeout(function() {
 
