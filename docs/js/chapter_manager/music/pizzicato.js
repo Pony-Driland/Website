@@ -147,13 +147,18 @@ musicManager.start.pizzicato = function(item, loop, resolve, url) {
                 if (typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0) {
                     await new Promise(function(resolve) {
                         setTimeout(function() {
-                            if (volume < soundVolume) {
-                                volume++;
-                                storyData.sfx[item].pizzicato.setVolume(volume, true);
-                            } else {
-                                storyData.sfx[item].pizzicato.setVolume(soundVolume, true);
+
+                            if (storyData.sfx[item].pizzicato.showing) {
+                                if (volume < soundVolume) {
+                                    volume++;
+                                    storyData.sfx[item].pizzicato.setVolume(volume, true);
+                                } else {
+                                    storyData.sfx[item].pizzicato.setVolume(soundVolume, true);
+                                }
                             }
+
                             resolve();
+
                         }, hideTimeout);
                     });
                 }
