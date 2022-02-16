@@ -128,7 +128,10 @@ musicManager.start.seamlessloop = function(item, newSound) {
         storyData.sfx[item].hiding = false;
         storyData.sfx[item].setVolume(0, true);
 
-        newSound.volume(0);
+        if (storyData.sfx[item].playing) {
+            newSound.volume(0);
+        }
+
         storyData.sfx[item].start();
 
         if (typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0) {
