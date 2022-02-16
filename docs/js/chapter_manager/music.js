@@ -528,6 +528,7 @@ musicManager.updatePlayer = function() {
 
 // Insert SFX
 musicManager.insertSFX = function(item, loop = true) {
+    if (typeof loop !== 'boolean') { loop = true; }
     return new Promise(async function(resolve, reject) {
 
         if (!storyData.sfx[item]) {
@@ -565,7 +566,7 @@ musicManager.insertSFX = function(item, loop = true) {
                     // File
                     const pizzicatoCfg = {
                         source: 'file',
-                        options: { path: url }
+                        options: { path: url, loop: loop }
                     };
 
                     const file = await musicManager.loadAudio(url);
