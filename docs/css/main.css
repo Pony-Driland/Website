@@ -266,7 +266,7 @@ body.fic-daycicle-lateAtNight .twinkling {
 /* Rain made by Aaron Rickle */
 
 #bg-sky .rain {
-    opacity: 0;
+    display: none !important;
     position: fixed;
     top: 56px;
     left: 0;
@@ -362,5 +362,5 @@ body.fic-daycicle-lateAtNight .twinkling {
 
 body.raining-sky #bg-sky .rain,
 body.raining-sky #bg-sky .rain.back-row {
-    opacity: 1 !important;
+    display: block !important;
 }
