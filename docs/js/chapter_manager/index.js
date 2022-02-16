@@ -291,7 +291,7 @@ var openChapterMenu = function(params = {}) {
                 $('<div>', { class: 'rain back-row' }),
                 $('<div>', { class: 'stars' }),
                 $('<div>', { class: 'twinkling' }),
-                //$('<div>', { class: 'clouds' })
+                $('<div>', { class: 'clouds' })
             )
 
         );
