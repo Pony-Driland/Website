@@ -595,8 +595,6 @@ musicManager.insertSFX = function(item, loop = true) {
                                                 storyData.sfx[item].setVolume(volume);
                                             } else { storyData.sfx[item].setVolume(storyData.sfx[item].volume); }
 
-                                            storyData.sfx[item].leftTime = storyData.sfx[item].duration;
-
                                             storyData.sfx[item].start();
                                             resolve();
 
@@ -665,7 +663,6 @@ musicManager.insertSFX = function(item, loop = true) {
                                     storyData.sfx[item].stop();
                                     storyData.sfx[item].hiding = false;
                                     storyData.sfx[item].showing = false;
-                                    storyData.sfx[item].leftTime = storyData.sfx[item].duration;
                                 }
 
                             },
@@ -680,7 +677,6 @@ musicManager.insertSFX = function(item, loop = true) {
                                 storyData.sfx[item].showing = false;
 
                                 const soundVolume = storyData.sfx[item].volume;
-                                storyData.sfx[item].leftTime = storyData.sfx[item].duration;
                                 let volume = 0;
                                 storyData.sfx[item].showing = true;
                                 storyData.sfx[item].hiding = false;
