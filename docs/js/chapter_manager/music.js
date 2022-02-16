@@ -624,7 +624,10 @@ musicManager.insertSFX = function(item) {
                                     newVolume = tinyValue;
                                 }
 
-                                newSound.volume(newVolume / 100);
+                                if (!storyData.sfx[item].stop) {
+                                    newSound.volume(newVolume / 100);
+                                }
+
                                 if (!notEdit) {
                                     storyData.sfx[item].volume = tinyValue;
                                 }
@@ -691,7 +694,6 @@ musicManager.insertSFX = function(item) {
                             const soundVolume = storyData.sfx[item].volume;
                             storyData.sfx[item].leftTime = storyData.sfx[item].duration;
                             let volume = 0;
-                            newSound.volume(0);
                             storyData.sfx[item].showing = true;
                             storyData.sfx[item].hiding = false;
                             storyData.sfx[item].setVolume(0, true);
