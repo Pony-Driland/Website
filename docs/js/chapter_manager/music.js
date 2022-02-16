@@ -739,17 +739,6 @@ musicManager.insertSFX = function(item, loop = true) {
                         storyData.sfx[item].currentTime = 0;
                         storyData.sfx[item].duration = newSound.duration;
 
-                        // Set Loop
-                        storyData.sfx[item].setLoop = function(value) {
-                            if (typeof value === 'boolean') {
-                                return new Promise(function(resolve) {
-                                    newSound.loop = value;
-                                    storyData.sfx[item].loop = value;
-                                    resolve();
-                                });
-                            }
-                        };
-
                         // Play
                         storyData.sfx[item].play = function(inTime = null, volume = null) {
                             if (storyData.sfx[item].hiding) { newSound.pause(); }
@@ -960,9 +949,9 @@ musicManager.insertSFX = function(item, loop = true) {
 
                         };
 
-                        // Loop Action
+                        // Audio Action
                         newSound.addEventListener('ended', function() {
-                            if (!storyData.sfx[item].loop) { storyData.sfx[item].stop(); }
+                            storyData.sfx[item].stop();
                         }, false);
 
                         newSound.addEventListener('timeupdate', function() {
@@ -970,13 +959,6 @@ musicManager.insertSFX = function(item, loop = true) {
                             if (storyData.sfx[item].playing) {
                                 storyData.sfx[item].currentTime = storyData.sfx[item].file.currentTime;
                                 storyData.sfx[item].leftTime = storyData.sfx[item].duration - storyData.sfx[item].currentTime;
-                            }
-
-                            if (storyData.sfx[item].loop) {
-                                const buffer = .1
-                                if (this.currentTime > this.duration - buffer) {
-                                    this.currentTime = 0;
-                                }
                             }
 
                         }, false);
