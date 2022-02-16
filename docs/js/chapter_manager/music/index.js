@@ -528,7 +528,7 @@ musicManager.updatePlayer = function() {
 
 // Insert SFX
 musicManager.start = {};
-musicManager.insertSFX = function(item, loop = true) {
+musicManager.insertSFX = function(item, loop = true, type = 'all') {
     if (typeof loop !== 'boolean') { loop = true; }
     return new Promise(async function(resolve, reject) {
 
@@ -576,21 +576,47 @@ musicManager.insertSFX = function(item, loop = true) {
                     // Loop Audio
                     if (loop) {
 
-                        const newSound = new SeamlessLoop();
-                        newSound.addUri(url, file.duration * 1000, item);
-                        newSound.callback(function() {
-                            musicManager.start.seamlessloop(item, newSound);
-                            startPizzicato();
-                        });
+                        // All Modules
+                        if (type === 'all') {
+
+                            const newSound = new SeamlessLoop();
+                            newSound.addUri(url, file.duration * 1000, item);
+                            newSound.callback(function() {
+                                musicManager.start.seamlessloop(item, newSound);
+                                startPizzicato();
+                            });
+
+                        } else if (type === 'pizzicato') {
+                            startPizzicato(true);
+                        } else if (type === 'main') {
+
+                            const newSound = new SeamlessLoop();
+                            newSound.addUri(url, file.duration * 1000, item);
+                            newSound.callback(function() {
+                                musicManager.start.seamlessloop(item, newSound);
+                                resolve();
+                            });
+
+                        }
 
                     }
 
                     // Nope
                     else {
 
-                        // Start
-                        musicManager.start.vanilla(item, newSound);
-                        startPizzicato();
+                        // All Modules
+                        if (type === 'all') {
+
+                            // Start
+                            musicManager.start.vanilla(item, newSound);
+                            startPizzicato();
+
+                        } else if (type === 'pizzicato') {
+                            startPizzicato(true);
+                        } else if (type === 'main') {
+                            musicManager.start.vanilla(item, newSound);
+                            resolve();
+                        }
 
                     }
 
