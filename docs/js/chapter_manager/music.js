@@ -565,15 +565,15 @@ musicManager.insertSFX = function(item) {
 
                         // Stop
                         stop: function() {
-                            if (!storyData.sfx[item].stop) {
-                                storyData.sfx[item].stop = true;
+                            if (!storyData.sfx[item].playing) {
+                                storyData.sfx[item].playing = true;
                                 newSound.stop();
                             }
                         },
 
                         start: function() {
-                            if (storyData.sfx[item].stop) {
-                                storyData.sfx[item].stop = false;
+                            if (storyData.sfx[item].playing) {
+                                storyData.sfx[item].playing = false;
                                 newSound.start(item);
                             }
                         },
@@ -624,7 +624,7 @@ musicManager.insertSFX = function(item) {
                                     newVolume = tinyValue;
                                 }
 
-                                if (!storyData.sfx[item].stop) {
+                                if (!storyData.sfx[item].playing) {
                                     newSound.volume(newVolume / 100);
                                 }
 
