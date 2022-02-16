@@ -262,13 +262,13 @@ storyData.youtube = {
 var musicManager = {
 
     // Sound Cache
-    cache: {},
+    cache: { blob: {}, buffer: {} },
 
     // Load Sound
     loadAudio: function(url) {
         return new Promise(function(resolve, reject) {
 
-            if (!musicManager.cache[url]) {
+            if (!musicManager.cache.blob[url]) {
                 fetch(url, { method: 'GET' })
                     .then(response => response.blob())
                     .then(blob => {
@@ -284,7 +284,7 @@ var musicManager = {
                         audio.addEventListener('canplaythrough', function() {
                             if (!loaded) {
                                 loaded = true;
-                                musicManager.cache[url] = audio;
+                                musicManager.cache.blob[url] = audio;
                                 resolve(audio);
                             }
                         }, false);
@@ -292,7 +292,7 @@ var musicManager = {
                         audio.src = url;
 
                     }).catch(reject);
-            } else { resolve(musicManager.cache[url]); }
+            } else { resolve(musicManager.cache.blob[url]); }
 
         });
     },
@@ -300,14 +300,17 @@ var musicManager = {
     loadAudioBuffer: function(url) {
         return new Promise(function(resolve, reject) {
 
-            fetch(url, { method: 'GET' })
-                .then(response => response.arrayBuffer())
-                .then(buffer => {
+            if (!musicManager.cache.buffer[url]) {
+                fetch(url, { method: 'GET' })
+                    .then(response => response.arrayBuffer())
+                    .then(buffer => {
 
-                    var buffAudio = new BuffAudio(new AudioContext(), new Uint8Array(buffer));
-                    resolve(buffAudio);
+                        var buffAudio = new BuffAudio(new AudioContext(), new Uint8Array(buffer));
+                        musicManager.cache.buffer[url] = buffAudio;
+                        resolve(buffAudio);
 
-                }).catch(reject);
+                    }).catch(reject);
+            } else { resolve(musicManager.cache.buffer[url]); }
 
         });
     },
