@@ -556,8 +556,8 @@ musicManager.insertSFX = function(item, loop = true) {
 
                     // Values
                     storyData.sfx[item].playing = false;
-                    storyData.sfx[item].loop = true;
                     storyData.sfx[item].hiding = false;
+                    storyData.sfx[item].loop = loop;
 
                     // Log
                     console.log(`[${url}] Loading...`);
@@ -732,7 +732,9 @@ musicManager.insertSFX = function(item, loop = true) {
 
                     // Nope
                     else {
-                        resolve(null);
+
+                        resolve();
+
                     }
 
                 } else { reject(new Error('Invalid SFX File! ' + item)); }
