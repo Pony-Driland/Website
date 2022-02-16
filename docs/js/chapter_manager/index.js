@@ -287,6 +287,7 @@ var openChapterMenu = function(params = {}) {
 
             // Night Effects
             $('<div>', { id: 'bg-sky' }).append(
+                $('<div>', { class: 'flash' }),
                 $('<div>', { class: 'rain front-row' }),
                 $('<div>', { class: 'rain back-row' }),
                 $('<div>', { class: 'stars' }),

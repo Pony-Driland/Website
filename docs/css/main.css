@@ -265,7 +265,7 @@ body.fic-daycicle-lateAtNight .twinkling {
 
 /* Rain made by Aaron Rickle */
 
-#bg-sky .rain {
+body.raining-sky #bg-sky .rain {
     display: none !important;
     position: fixed;
     top: 56px;
@@ -278,7 +278,7 @@ body.fic-daycicle-lateAtNight .twinkling {
     z-index: -1 !important;
 }
 
-#bg-sky .rain.back-row {
+body.raining-sky #bg-sky .rain.back-row {
     opacity: 0;
     display: none;
     z-index: 1;
@@ -286,7 +286,7 @@ body.fic-daycicle-lateAtNight .twinkling {
     opacity: 0.5;
 }
 
-#bg-sky .drop {
+body.raining-sky #bg-sky .drop {
     position: absolute;
     bottom: 100%;
     width: 15px;
@@ -307,7 +307,7 @@ body.fic-daycicle-lateAtNight .twinkling {
     }
 }
 
-#bg-sky .stem {
+body.raining-sky #bg-sky .stem {
     width: 1px;
     height: 60%;
     margin-left: 7px;
@@ -330,7 +330,7 @@ body.fic-daycicle-lateAtNight .twinkling {
     }
 }
 
-#bg-sky .splat {
+body.raining-sky #bg-sky .splat {
     width: 15px;
     height: 10px;
     border-top: 2px dotted rgba(255, 255, 255, 0.5);
@@ -363,4 +363,62 @@ body.fic-daycicle-lateAtNight .twinkling {
 body.raining-sky #bg-sky .rain,
 body.raining-sky #bg-sky .rain.back-row {
     display: block !important;
+}
+
+
+/* Flash */
+
+@-webkit-keyframes flash {
+    0% {
+        opacity: 1;
+    }
+    2% {
+        opacity: 0;
+    }
+    3% {
+        opacity: 0.6;
+    }
+    4% {
+        opacity: 0.2;
+    }
+    6% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes flash {
+    0% {
+        opacity: 1;
+    }
+    2% {
+        opacity: 0;
+    }
+    3% {
+        opacity: 0.6;
+    }
+    4% {
+        opacity: 0.2;
+    }
+    6% {
+        opacity: .9;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+body.thunder-effect #bg-sky .flash {
+    animation: flash 12s linear infinite;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
