@@ -637,22 +637,6 @@ musicManager.insertSFX = function(item) {
                             });
                         },
 
-                        // Stop
-                        stop: function() {
-                            if (storyData.sfx[item].hiding) { storyData.sfx[item].stop(); }
-                            storyData.sfx[item].hiding = false;
-                            storyData.sfx[item].showing = false;
-                            return new Promise(function(resolve, reject) {
-                                setTimeout(function() {
-                                    try {
-                                        storyData.sfx[item].stop();
-                                        storyData.sfx[item].leftTime = storyData.sfx[item].duration;
-                                        resolve();
-                                    } catch (err) { reject(err); }
-                                }, 1);
-                            });
-                        },
-
                         // Hide
                         hide: async function(hideTimeout = 50) {
 
