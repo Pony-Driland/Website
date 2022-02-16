@@ -1,4 +1,4 @@
-musicManager.start.seamlessloop = function() {
+musicManager.start.seamlessloop = function(item, newSound) {
 
     // Data
     storyData.sfx[item].data = newSound;
