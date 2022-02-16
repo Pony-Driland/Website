@@ -552,8 +552,17 @@ musicManager.insertSFX = function(item) {
                 const loop = new SeamlessLoop();
                 loop.addUri(url, file.duration, item);
                 loop.callback(function() {
+
+                    storyData.sfx[item] = {
+
+                        // File
+                        file: loop,
+
+                    };
+
                     console.log(`[${url}] Loaded!`);
                     resolve(loop);
+
                 });
 
             } else { reject(new Error('Invalid SFX File! ' + item)); }
