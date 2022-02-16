@@ -608,13 +608,13 @@ musicManager.insertSFX = function(item, loop = true, type = 'all') {
                         if (type === 'all') {
 
                             // Start
-                            musicManager.start.vanilla(item, newSound);
+                            musicManager.start.vanilla(item, file);
                             startPizzicato();
 
                         } else if (type === 'pizzicato') {
                             startPizzicato(true);
                         } else if (type === 'main') {
-                            musicManager.start.vanilla(item, newSound);
+                            musicManager.start.vanilla(item, file);
                             resolve();
                         }
 
