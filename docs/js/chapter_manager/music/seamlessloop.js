@@ -131,17 +131,19 @@ musicManager.start.seamlessloop = function(item, newSound) {
 
         for (let i = 0; i < 100; i++) {
             if (storyData.sfx[item].showing) {
-                await new Promise(function(resolve) {
-                    setTimeout(function() {
-                        if (volume < soundVolume) {
-                            volume++;
-                            storyData.sfx[item].setVolume(volume, true);
-                        } else {
-                            storyData.sfx[item].setVolume(soundVolume, true);
-                        }
-                        resolve();
-                    }, hideTimeout);
-                });
+                if (typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0) {
+                    await new Promise(function(resolve) {
+                        setTimeout(function() {
+                            if (volume < soundVolume) {
+                                volume++;
+                                storyData.sfx[item].setVolume(volume, true);
+                            } else {
+                                storyData.sfx[item].setVolume(soundVolume, true);
+                            }
+                            resolve();
+                        }, hideTimeout);
+                    });
+                }
             }
         }
 

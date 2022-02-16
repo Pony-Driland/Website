@@ -144,17 +144,19 @@ musicManager.start.pizzicato = function(item, loop, resolve, url) {
 
         for (let i = 0; i < 100; i++) {
             if (storyData.sfx[item].pizzicato.showing) {
-                await new Promise(function(resolve) {
-                    setTimeout(function() {
-                        if (volume < soundVolume) {
-                            volume++;
-                            storyData.sfx[item].pizzicato.setVolume(volume, true);
-                        } else {
-                            storyData.sfx[item].pizzicato.setVolume(soundVolume, true);
-                        }
-                        resolve();
-                    }, hideTimeout);
-                });
+                if (typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0) {
+                    await new Promise(function(resolve) {
+                        setTimeout(function() {
+                            if (volume < soundVolume) {
+                                volume++;
+                                storyData.sfx[item].pizzicato.setVolume(volume, true);
+                            } else {
+                                storyData.sfx[item].pizzicato.setVolume(soundVolume, true);
+                            }
+                            resolve();
+                        }, hideTimeout);
+                    });
+                }
             }
         }
 
