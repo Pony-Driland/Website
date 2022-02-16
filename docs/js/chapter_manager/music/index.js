@@ -606,7 +606,7 @@ musicManager.insertSFX = function(item, loop = true, type = 'all') {
                                 resolve();
                             });
 
-                        }
+                        } else { reject(new Error('Invalid Module Type!')); }
 
                     }
 
@@ -625,7 +625,7 @@ musicManager.insertSFX = function(item, loop = true, type = 'all') {
                         } else if (type === 'main') {
                             musicManager.start.vanilla(item, file);
                             resolve();
-                        }
+                        } else { reject(new Error('Invalid Module Type!')); }
 
                     }
 
