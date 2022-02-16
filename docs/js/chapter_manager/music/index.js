@@ -576,14 +576,12 @@ musicManager.insertSFX = function(item, loop = true) {
                     // Loop Audio
                     if (loop) {
 
-                        /* const newSound = new SeamlessLoop();
+                        const newSound = new SeamlessLoop();
                         newSound.addUri(url, file.duration * 1000, item);
                         newSound.callback(function() {
-                            return musicManager.start.seamlessloop(item, newSound);
-                        }); */
-
-                        // Start
-                        startPizzicato(true);
+                            musicManager.start.seamlessloop(item, newSound);
+                            startPizzicato();
+                        });
 
                     }
 
@@ -591,8 +589,8 @@ musicManager.insertSFX = function(item, loop = true) {
                     else {
 
                         // Start
-                        /* musicManager.start.vanilla(item, newSound); */
-                        startPizzicato(true);
+                        musicManager.start.vanilla(item, newSound);
+                        startPizzicato();
 
                     }
 
