@@ -176,4 +176,9 @@ musicManager.start.pizzicato = function(item, loop, resolve, url) {
 
     };
 
+    // End Sound
+    newSound.on('end', function() {
+        storyData.sfx[item].pizzicato.hide(0);
+    });
+
 };
