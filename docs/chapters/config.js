@@ -247,9 +247,9 @@ var storyCfg = {
 
     // SFX
     sfx: {
-        'heavy-rain-little-thunder': { type: 'file', value: '/audio/jasmindreasond/rain/heavy-rain-little-thunder.mp4' },
-        'heavy-rain': { type: 'file', value: '/audio/jasmindreasond/rain/heavy-rain.mp4' },
-        'ambulance-alarm': { type: 'file', value: '/audio/jasmindreasond/alarm/ambulance.wav' }
+        'heavy-rain-little-thunder': { type: 'file', module: 'main', value: '/audio/jasmindreasond/rain/heavy-rain-little-thunder.mp4' },
+        'heavy-rain': { type: 'file', module: 'main', value: '/audio/jasmindreasond/rain/heavy-rain.mp4' },
+        'ambulance-alarm': { type: 'file', module: 'main', value: '/audio/jasmindreasond/alarm/ambulance.wav' }
     }
 
 };
