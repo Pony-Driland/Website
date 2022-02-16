@@ -1,0 +1,3 @@
+musicManager.start.pizzicato = function() {
+
+};

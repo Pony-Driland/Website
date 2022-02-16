@@ -527,6 +527,7 @@ musicManager.updatePlayer = function() {
 };
 
 // Insert SFX
+musicManager.start = {};
 musicManager.insertSFX = function(item, loop = true) {
     if (typeof loop !== 'boolean') { loop = true; }
     return new Promise(async function(resolve, reject) {

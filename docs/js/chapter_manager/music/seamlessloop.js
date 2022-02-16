@@ -1,0 +1,3 @@
+musicManager.start.seamlessloop = function() {
+
+};

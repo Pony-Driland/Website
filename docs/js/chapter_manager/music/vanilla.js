@@ -1,0 +1,3 @@
+musicManager.start.vanilla = function() {
+
+};
