@@ -570,6 +570,8 @@ musicManager.insertSFX = function(item, loop = true) {
                     const startPizzicato = function() {
 
                         // Pizzicato File
+                        storyData.sfx[item].pizzicato.playing = false;
+                        storyData.sfx[item].pizzicato.hiding = false;
                         storyData.sfx[item].pizzicato = {};
 
                         const newSound = new Pizzicato.Sound({
