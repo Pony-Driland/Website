@@ -123,7 +123,10 @@ var openChapterMenu = function(params = {}) {
                 if (!storyData.sfx[item] && typeof storyCfg.sfx[item].type === 'string' && typeof storyCfg.sfx[item].value === 'string') {
 
                     if (storyCfg.sfx[item].type === 'file' || (storyCfg.sfx[item].type === 'ipfs' && storyCfg.ipfs && typeof storyCfg.ipfs.host === 'string')) {
-                        await musicManager.insertSFX(item);
+                        await musicManager.insertSFX(item).catch(err => {
+                            console.error(err);
+                            alert(err.message);
+                        });
                     }
 
                 }
