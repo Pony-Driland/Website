@@ -1,9 +1,11 @@
-musicManager.start.pizzicato = function(item, loop, resolve, url) {
+musicManager.start.pizzicato = function(item, loop, resolve, url, forcePic = false) {
+
+    // Pizzicato Space
+    const pizzicato = {};
 
     // Pizzicato File
-    storyData.sfx[item].pizzicato = {};
-    storyData.sfx[item].pizzicato.playing = false;
-    storyData.sfx[item].pizzicato.hiding = false;
+    pizzicato.playing = false;
+    pizzicato.hiding = false;
 
     const newSound = new Pizzicato.Sound({
         source: 'file',
@@ -13,41 +15,41 @@ musicManager.start.pizzicato = function(item, loop, resolve, url) {
         resolve();
     });
 
-    storyData.sfx[item].pizzicato.file = newSound;
+    pizzicato.file = newSound;
 
     // Data
-    storyData.sfx[item].pizzicato.volume = newSound.volume * 100;
+    pizzicato.volume = newSound.volume * 100;
 
     // Stop
-    storyData.sfx[item].pizzicato.stop = function() {
-        if (storyData.sfx[item].pizzicato.playing) {
-            storyData.sfx[item].pizzicato.playing = false;
+    pizzicato.stop = function() {
+        if (pizzicato.playing) {
+            pizzicato.playing = false;
             newSound.stop();
         }
     };
 
     // Start
-    storyData.sfx[item].pizzicato.start = function() {
-        if (!storyData.sfx[item].pizzicato.playing) {
-            storyData.sfx[item].pizzicato.playing = true;
+    pizzicato.start = function() {
+        if (!pizzicato.playing) {
+            pizzicato.playing = true;
             newSound.play();
         }
     };
 
     // Play
-    storyData.sfx[item].pizzicato.play = function(volume = null) {
-        if (storyData.sfx[item].pizzicato.hiding) { storyData.sfx[item].pizzicato.stop(); }
-        storyData.sfx[item].pizzicato.hiding = false;
-        storyData.sfx[item].pizzicato.showing = false;
+    pizzicato.play = function(volume = null) {
+        if (pizzicato.hiding) { pizzicato.stop(); }
+        pizzicato.hiding = false;
+        pizzicato.showing = false;
         return new Promise(function(resolve, reject) {
             setTimeout(function() {
                 try {
 
                     if (typeof volume === 'number') {
-                        storyData.sfx[item].pizzicato.setVolume(volume);
-                    } else { storyData.sfx[item].pizzicato.setVolume(storyData.sfx[item].pizzicato.volume); }
+                        pizzicato.setVolume(volume);
+                    } else { pizzicato.setVolume(pizzicato.volume); }
 
-                    storyData.sfx[item].pizzicato.start();
+                    pizzicato.start();
                     resolve();
 
                 } catch (err) { reject(err); }
@@ -56,12 +58,12 @@ musicManager.start.pizzicato = function(item, loop, resolve, url) {
     };
 
     // Set Volume
-    storyData.sfx[item].pizzicato.setVolume = function(value, notEdit = false) {
+    pizzicato.setVolume = function(value, notEdit = false) {
         return new Promise(function(resolve) {
 
             let tinyValue = value;
             if (typeof tinyValue !== 'number') {
-                tinyValue = storyData.sfx[item].pizzicato.volume;
+                tinyValue = pizzicato.volume;
             }
 
             if (tinyValue > 100) {
@@ -78,12 +80,12 @@ musicManager.start.pizzicato = function(item, loop, resolve, url) {
                 newVolume = tinyValue;
             }
 
-            if (storyData.sfx[item].pizzicato.playing) {
+            if (pizzicato.playing) {
                 newSound.volume = newVolume / 100;
             }
 
             if (!notEdit) {
-                storyData.sfx[item].pizzicato.volume = tinyValue;
+                pizzicato.volume = tinyValue;
             }
 
             resolve();
@@ -92,22 +94,22 @@ musicManager.start.pizzicato = function(item, loop, resolve, url) {
     };
 
     // Hide
-    storyData.sfx[item].pizzicato.hide = async function(hideTimeout = 50) {
+    pizzicato.hide = async function(hideTimeout = 50) {
 
         let volume = newSound.volume * 100;
 
-        storyData.sfx[item].pizzicato.hiding = true;
-        storyData.sfx[item].pizzicato.showing = false;
+        pizzicato.hiding = true;
+        pizzicato.showing = false;
 
         if (typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0) {
             for (let i = 0; i < 100; i++) {
-                if (storyData.sfx[item].pizzicato.hiding) {
+                if (pizzicato.hiding) {
                     await new Promise(function(resolve) {
                         setTimeout(function() {
 
-                            if (storyData.sfx[item].pizzicato.hiding) {
+                            if (pizzicato.hiding) {
                                 volume--;
-                                storyData.sfx[item].pizzicato.setVolume(volume, true);
+                                pizzicato.setVolume(volume, true);
                             }
 
                             resolve();
@@ -116,46 +118,46 @@ musicManager.start.pizzicato = function(item, loop, resolve, url) {
                 }
             }
         } else {
-            storyData.sfx[item].pizzicato.setVolume(0, true);
+            pizzicato.setVolume(0, true);
         }
 
-        if (storyData.sfx[item].pizzicato.hiding) {
-            storyData.sfx[item].pizzicato.stop();
-            storyData.sfx[item].pizzicato.hiding = false;
-            storyData.sfx[item].pizzicato.showing = false;
+        if (pizzicato.hiding) {
+            pizzicato.stop();
+            pizzicato.hiding = false;
+            pizzicato.showing = false;
         }
 
     };
 
     // Show
-    storyData.sfx[item].pizzicato.show = async function(hideTimeout = 50) {
+    pizzicato.show = async function(hideTimeout = 50) {
 
-        storyData.sfx[item].pizzicato.stop();
+        pizzicato.stop();
 
-        storyData.sfx[item].pizzicato.hiding = false;
-        storyData.sfx[item].pizzicato.showing = false;
+        pizzicato.hiding = false;
+        pizzicato.showing = false;
 
-        const soundVolume = storyData.sfx[item].pizzicato.volume;
+        const soundVolume = pizzicato.volume;
         let volume = 0;
-        storyData.sfx[item].pizzicato.showing = true;
-        storyData.sfx[item].pizzicato.hiding = false;
-        storyData.sfx[item].pizzicato.setVolume(0, true);
+        pizzicato.showing = true;
+        pizzicato.hiding = false;
+        pizzicato.setVolume(0, true);
 
         newSound.volume = 0;
-        storyData.sfx[item].pizzicato.start();
+        pizzicato.start();
 
         if (typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0) {
             for (let i = 0; i < 100; i++) {
-                if (storyData.sfx[item].pizzicato.showing) {
+                if (pizzicato.showing) {
                     await new Promise(function(resolve) {
                         setTimeout(function() {
 
-                            if (storyData.sfx[item].pizzicato.showing) {
+                            if (pizzicato.showing) {
                                 if (volume < soundVolume) {
                                     volume++;
-                                    storyData.sfx[item].pizzicato.setVolume(volume, true);
+                                    pizzicato.setVolume(volume, true);
                                 } else {
-                                    storyData.sfx[item].pizzicato.setVolume(soundVolume, true);
+                                    pizzicato.setVolume(soundVolume, true);
                                 }
                             }
 
@@ -166,12 +168,12 @@ musicManager.start.pizzicato = function(item, loop, resolve, url) {
                 }
             }
         } else {
-            storyData.sfx[item].pizzicato.setVolume(soundVolume, true);
+            pizzicato.setVolume(soundVolume, true);
         }
 
-        if (storyData.sfx[item].pizzicato.showing) {
-            storyData.sfx[item].pizzicato.hiding = false;
-            storyData.sfx[item].pizzicato.showing = false;
+        if (pizzicato.showing) {
+            pizzicato.hiding = false;
+            pizzicato.showing = false;
         }
 
     };
@@ -179,8 +181,17 @@ musicManager.start.pizzicato = function(item, loop, resolve, url) {
     // End Sound
     newSound.on('end', function() {
         if (!loop) {
-            storyData.sfx[item].pizzicato.hide(0);
+            pizzicato.hide(0);
         }
     });
+
+    // Force Pic
+    if (!forcePic) {
+        storyData.sfx[item].pizzicato = pizzicato;
+    } else {
+        for (const item2 in pizzicato) {
+            storyData.sfx[item][item2] = pizzicato[item2];
+        }
+    }
 
 };

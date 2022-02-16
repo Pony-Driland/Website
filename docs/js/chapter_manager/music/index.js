@@ -568,22 +568,22 @@ musicManager.insertSFX = function(item, loop = true) {
                     storyData.sfx[item].file = file;
 
                     // Start Pizzicato
-                    const startPizzicato = function() {
-                        return musicManager.start.pizzicato(item, loop, resolve, url);
+                    const startPizzicato = function(forcePic) {
+                        return musicManager.start.pizzicato(item, loop, resolve, url, forcePic);
                     };
 
 
                     // Loop Audio
                     if (loop) {
 
-                        const newSound = new SeamlessLoop();
+                        /* const newSound = new SeamlessLoop();
                         newSound.addUri(url, file.duration * 1000, item);
                         newSound.callback(function() {
                             return musicManager.start.seamlessloop(item, newSound);
-                        });
+                        }); */
 
                         // Start
-                        startPizzicato();
+                        startPizzicato(true);
 
                     }
 
@@ -591,8 +591,8 @@ musicManager.insertSFX = function(item, loop = true) {
                     else {
 
                         // Start
-                        musicManager.start.vanilla(item, newSound);
-                        startPizzicato();
+                        /* musicManager.start.vanilla(item, newSound); */
+                        startPizzicato(true);
 
                     }
 
