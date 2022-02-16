@@ -1,4 +1,4 @@
-musicManager.start.vanilla = function() {
+musicManager.start.vanilla = function(item, newSound) {
 
     // Values
     storyData.sfx[item].paused = false;
