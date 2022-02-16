@@ -1,4 +1,4 @@
-musicManager.start.pizzicato = function(item, loop, newSound, resolve) {
+musicManager.start.pizzicato = function(item, loop, resolve) {
 
     // Pizzicato File
     storyData.sfx[item].pizzicato = {};
