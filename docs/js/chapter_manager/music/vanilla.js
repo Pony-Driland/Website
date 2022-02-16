@@ -162,6 +162,8 @@ musicManager.start.vanilla = function(item, newSound) {
                     });
                 }
             }
+        } else {
+            storyData.sfx[item].setVolume(0, true);
         }
 
         if (storyData.sfx[item].hiding) {
