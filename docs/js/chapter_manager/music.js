@@ -728,7 +728,7 @@ musicManager.insertSFX = function(item) {
                     };
 
                     console.log(`[${url}] Loaded!`);
-                    resolve(loop);
+                    resolve(newSound);
 
                 });
 
