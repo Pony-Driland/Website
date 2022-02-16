@@ -87,13 +87,20 @@ musicManager.start.seamlessloop = function(item, newSound) {
 
         for (let i = 0; i < 100; i++) {
             if (storyData.sfx[item].hiding) {
-                await new Promise(function(resolve) {
-                    setTimeout(function() {
-                        volume--;
-                        storyData.sfx[item].setVolume(volume, true);
-                        resolve();
-                    }, hideTimeout);
-                });
+                if (typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0) {
+                    await new Promise(function(resolve) {
+                        setTimeout(function() {
+
+                            if (storyData.sfx[item].hiding) {
+                                volume--;
+                                storyData.sfx[item].setVolume(volume, true);
+                            }
+
+                            resolve();
+
+                        }, hideTimeout);
+                    });
+                }
             }
         }
 
