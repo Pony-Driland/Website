@@ -701,6 +701,8 @@ musicManager.insertSFX = function(item, loop = true) {
                             storyData.sfx[item].pizzicato.showing = true;
                             storyData.sfx[item].pizzicato.hiding = false;
                             storyData.sfx[item].pizzicato.setVolume(0, true);
+
+                            newSound.volume = 0;
                             storyData.sfx[item].pizzicato.start();
 
                             for (let i = 0; i < 100; i++) {
@@ -854,6 +856,8 @@ musicManager.insertSFX = function(item, loop = true) {
                                 storyData.sfx[item].showing = true;
                                 storyData.sfx[item].hiding = false;
                                 storyData.sfx[item].setVolume(0, true);
+
+                                newSound.volume(0);
                                 storyData.sfx[item].start();
 
                                 for (let i = 0; i < 100; i++) {
