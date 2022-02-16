@@ -572,7 +572,7 @@ musicManager.insertSFX = function(item, loop = true) {
                         // Pizzicato File
                         storyData.sfx[item].pizzicato = {};
 
-                        const file = new Pizzicato.Sound({
+                        const newSound = new Pizzicato.Sound({
                             source: 'file',
                             options: { path: url, loop: loop }
                         }, function() {
@@ -580,10 +580,10 @@ musicManager.insertSFX = function(item, loop = true) {
                             resolve();
                         });
 
-                        storyData.sfx[item].pizzicato.file = file;
+                        storyData.sfx[item].pizzicato.file = newSound;
 
                         // Data
-                        storyData.sfx[item].pizzicato.volume = newSound._volume * 100;
+                        storyData.sfx[item].pizzicato.volume = newSound.volume * 100;
 
                         // Stop
                         storyData.sfx[item].pizzicato.stop = function() {
@@ -597,7 +597,7 @@ musicManager.insertSFX = function(item, loop = true) {
                         storyData.sfx[item].pizzicato.start = function() {
                             if (!storyData.sfx[item].pizzicato.playing) {
                                 storyData.sfx[item].pizzicato.playing = true;
-                                newSound.start(item);
+                                newSound.play();
                             }
                         };
 
@@ -646,7 +646,7 @@ musicManager.insertSFX = function(item, loop = true) {
                                 }
 
                                 if (storyData.sfx[item].pizzicato.playing) {
-                                    newSound.volume(newVolume / 100);
+                                    newSound.volume = newVolume;
                                 }
 
                                 if (!notEdit) {
@@ -661,7 +661,7 @@ musicManager.insertSFX = function(item, loop = true) {
                         // Hide
                         storyData.sfx[item].pizzicato.hide = async function(hideTimeout = 50) {
 
-                            let volume = newSound._volume * 100;
+                            let volume = newSound.volume * 100;
 
                             storyData.sfx[item].pizzicato.hiding = true;
                             storyData.sfx[item].pizzicato.showing = false;
