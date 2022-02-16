@@ -563,14 +563,22 @@ musicManager.insertSFX = function(item, loop = true) {
                     // Log
                     console.log(`[${url}] Loading...`);
 
-                    // File
-                    const pizzicatoCfg = {
-                        source: 'file',
-                        options: { path: url, loop: loop }
-                    };
-
                     const file = await musicManager.loadAudio(url);
                     storyData.sfx[item].file = file;
+
+                    // Start Pizzicato
+                    const startPizzicato = function() {
+
+                        // Pizzicato
+                        storyData.sfx[item].pizzicato = new Pizzicato.Sound({
+                            source: 'file',
+                            options: { path: url, loop: loop }
+                        }, function() {
+                            console.log(`[${url}] Loaded!`);
+                            resolve();
+                        });
+
+                    };
 
                     // Loop Audio
                     if (loop) {
@@ -723,13 +731,10 @@ musicManager.insertSFX = function(item, loop = true) {
 
                             };
 
-                            // Pizzicato
-                            storyData.sfx[item].pizzicato = new Pizzicato.Sound(pizzicatoCfg, function() {
-                                console.log(`[${url}] Loaded!`);
-                                resolve();
-                            });
-
                         });
+
+                        // Start
+                        startPizzicato();
 
                     }
 
@@ -966,11 +971,8 @@ musicManager.insertSFX = function(item, loop = true) {
 
                         }, false);
 
-                        // Pizzicato
-                        storyData.sfx[item].pizzicato = new Pizzicato.Sound(pizzicatoCfg, function() {
-                            console.log(`[${url}] Loaded!`);
-                            resolve();
-                        });
+                        // Start
+                        startPizzicato();
 
                     }
 
