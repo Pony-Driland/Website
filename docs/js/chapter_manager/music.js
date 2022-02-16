@@ -648,7 +648,7 @@ musicManager.insertSFX = function(item, loop = true) {
                                 }
 
                                 if (storyData.sfx[item].pizzicato.playing) {
-                                    newSound.volume = newVolume;
+                                    newSound.volume = newVolume / 100;
                                 }
 
                                 if (!notEdit) {
