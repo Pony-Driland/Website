@@ -165,6 +165,8 @@ musicManager.start.pizzicato = function(item, loop, resolve, url) {
                     });
                 }
             }
+        } else {
+            storyData.sfx[item].pizzicato.setVolume(soundVolume, true);
         }
 
         if (storyData.sfx[item].pizzicato.showing) {
