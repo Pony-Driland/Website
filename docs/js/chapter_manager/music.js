@@ -559,21 +559,22 @@ musicManager.insertSFX = function(item) {
                         file: newSound,
 
                         // Values
+                        playing: false,
                         loop: true,
                         hiding: false,
                         volume: newSound._volume * 100,
 
                         // Stop
                         stop: function() {
-                            if (!storyData.sfx[item].playing) {
-                                storyData.sfx[item].playing = true;
+                            if (storyData.sfx[item].playing) {
+                                storyData.sfx[item].playing = false;
                                 newSound.stop();
                             }
                         },
 
                         start: function() {
-                            if (storyData.sfx[item].playing) {
-                                storyData.sfx[item].playing = false;
+                            if (!storyData.sfx[item].playing) {
+                                storyData.sfx[item].playing = true;
                                 newSound.start(item);
                             }
                         },
@@ -624,7 +625,7 @@ musicManager.insertSFX = function(item) {
                                     newVolume = tinyValue;
                                 }
 
-                                if (!storyData.sfx[item].playing) {
+                                if (storyData.sfx[item].playing) {
                                     newSound.volume(newVolume / 100);
                                 }
 
