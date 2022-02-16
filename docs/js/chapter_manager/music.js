@@ -708,8 +708,13 @@ musicManager.insertSFX = function(item, loop = true) {
 
                         };
 
-                        console.log(`[${url}] Loaded!`);
-                        resolve(newSound);
+                        storyData.sfx[item].pizzicato = new Pizzicato.Sound({
+                            source: 'file',
+                            options: { path: url }
+                        }, function() {
+                            console.log(`[${url}] Loaded!`);
+                            resolve(newSound);
+                        });
 
                     });
                 }
