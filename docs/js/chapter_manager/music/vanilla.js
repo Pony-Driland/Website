@@ -202,13 +202,18 @@ musicManager.start.vanilla = function(item, newSound) {
                 if (typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0) {
                     await new Promise(function(resolve) {
                         setTimeout(function() {
-                            if (volume < soundVolume) {
-                                volume++;
-                                storyData.sfx[item].setVolume(volume, true);
-                            } else {
-                                storyData.sfx[item].setVolume(soundVolume, true);
+
+                            if (storyData.sfx[item].showing) {
+                                if (volume < soundVolume) {
+                                    volume++;
+                                    storyData.sfx[item].setVolume(volume, true);
+                                } else {
+                                    storyData.sfx[item].setVolume(soundVolume, true);
+                                }
                             }
+
                             resolve();
+
                         }, hideTimeout);
                     });
                 }
