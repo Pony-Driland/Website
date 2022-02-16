@@ -564,6 +564,12 @@ musicManager.insertSFX = function(item, loop = true) {
 
                     // File
                     storyData.sfx[item].file = file;
+
+                    const pizzicatoCfg = {
+                        source: 'file',
+                        options: { path: url }
+                    };
+
                     const file = await musicManager.loadAudio(url);
 
                     // Loop Audio
@@ -717,10 +723,7 @@ musicManager.insertSFX = function(item, loop = true) {
                             };
 
                             // Pizzicato
-                            storyData.sfx[item].pizzicato = new Pizzicato.Sound({
-                                source: 'file',
-                                options: { path: url }
-                            }, function() {
+                            storyData.sfx[item].pizzicato = new Pizzicato.Sound(pizzicatoCfg, function() {
                                 console.log(`[${url}] Loaded!`);
                                 resolve();
                             });
