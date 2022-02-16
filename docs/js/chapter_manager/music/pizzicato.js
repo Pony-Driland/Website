@@ -15,7 +15,7 @@ musicManager.start.pizzicato = function(item, loop, resolve, url, forcePic = fal
         resolve();
     });
 
-    pizzicato.file = newSound;
+    pizzicato.data = newSound;
 
     // Data
     pizzicato.volume = newSound.volume * 100;
