@@ -563,14 +563,13 @@ musicManager.insertSFX = function(item, loop = true) {
                     console.log(`[${url}] Loading...`);
 
                     // File
-                    storyData.sfx[item].file = file;
-
                     const pizzicatoCfg = {
                         source: 'file',
                         options: { path: url }
                     };
 
                     const file = await musicManager.loadAudio(url);
+                    storyData.sfx[item].file = file;
 
                     // Loop Audio
                     if (loop) {
