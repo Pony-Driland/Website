@@ -963,7 +963,11 @@ musicManager.insertSFX = function(item, loop = true) {
 
                         }, false);
 
-                        resolve();
+                        // Pizzicato
+                        storyData.sfx[item].pizzicato = new Pizzicato.Sound(pizzicatoCfg, function() {
+                            console.log(`[${url}] Loaded!`);
+                            resolve();
+                        });
 
                     }
 
