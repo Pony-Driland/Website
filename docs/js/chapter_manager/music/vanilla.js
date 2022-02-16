@@ -220,6 +220,8 @@ musicManager.start.vanilla = function(item, newSound) {
                     });
                 }
             }
+        } else {
+            storyData.sfx[item].setVolume(soundVolume, true);
         }
 
         if (storyData.sfx[item].showing) {
