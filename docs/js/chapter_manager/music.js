@@ -291,6 +291,21 @@ var musicManager = {
         });
     },
 
+    loadAudioBuffer: function(url) {
+        return new Promise(function(resolve, reject) {
+
+            fetch(url, { method: 'GET' })
+                .then(response => response.arrayBuffer())
+                .then(buffer => {
+
+                    var buffAudio = new BuffAudio(new AudioContext(), new Uint8Array(buffer));
+                    resolve(buffAudio);
+
+                }).catch(reject);
+
+        });
+    },
+
     // Next Song
     nextMusic: function() {
 
