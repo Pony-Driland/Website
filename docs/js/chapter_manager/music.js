@@ -551,9 +551,19 @@ musicManager.insertSFX = function(item, loop = true) {
                     url = storyCfg.sfx[item].value;
                 }
 
+                // Exist URL
                 if (url) {
 
+                    // Values
+                    storyData.sfx[item].playing = false;
+                    storyData.sfx[item].loop = true;
+                    storyData.sfx[item].hiding = false;
+
+                    // Log
                     console.log(`[${url}] Loading...`);
+
+                    // File
+                    storyData.sfx[item].file = file;
                     const file = await musicManager.loadAudio(url);
 
                     // Loop Audio
@@ -562,14 +572,8 @@ musicManager.insertSFX = function(item, loop = true) {
                         newSound.addUri(url, file.duration * 1000, item);
                         newSound.callback(function() {
 
-                            // File
+                            // Data
                             storyData.sfx[item].data = newSound;
-                            storyData.sfx[item].file = file;
-
-                            // Values
-                            storyData.sfx[item].playing = false;
-                            storyData.sfx[item].loop = true;
-                            storyData.sfx[item].hiding = false;
                             storyData.sfx[item].volume = newSound._volume * 100;
 
                             // Stop
@@ -580,6 +584,7 @@ musicManager.insertSFX = function(item, loop = true) {
                                 }
                             };
 
+                            // Start
                             storyData.sfx[item].start = function() {
                                 if (!storyData.sfx[item].playing) {
                                     storyData.sfx[item].playing = true;
@@ -711,7 +716,7 @@ musicManager.insertSFX = function(item, loop = true) {
 
                             };
 
-
+                            // Pizzicato
                             storyData.sfx[item].pizzicato = new Pizzicato.Sound({
                                 source: 'file',
                                 options: { path: url }
