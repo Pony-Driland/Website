@@ -261,32 +261,38 @@ storyData.youtube = {
 // Music Manager
 var musicManager = {
 
+    // Sound Cache
+    cache: {},
+
     // Load Sound
     loadAudio: function(url) {
         return new Promise(function(resolve, reject) {
 
-            fetch(url, { method: 'GET' })
-                .then(response => response.blob())
-                .then(blob => {
+            if (!musicManager.cache[url]) {
+                fetch(url, { method: 'GET' })
+                    .then(response => response.blob())
+                    .then(blob => {
 
-                    const url = window.URL.createObjectURL(blob);
+                        const url = window.URL.createObjectURL(blob);
 
-                    let loaded = false;
+                        let loaded = false;
 
-                    const audio = new Audio();
-                    audio.preload = "auto";
-                    audio.onerror = reject;
+                        const audio = new Audio();
+                        audio.preload = "auto";
+                        audio.onerror = reject;
 
-                    audio.addEventListener('canplaythrough', function() {
-                        if (!loaded) {
-                            loaded = true;
-                            resolve(audio);
-                        }
-                    }, false);
+                        audio.addEventListener('canplaythrough', function() {
+                            if (!loaded) {
+                                loaded = true;
+                                musicManager.cache[url] = audio;
+                                resolve(audio);
+                            }
+                        }, false);
 
-                    audio.src = url;
+                        audio.src = url;
 
-                }).catch(reject);
+                    }).catch(reject);
+            } else { resolve(musicManager.cache[url]); }
 
         });
     },
