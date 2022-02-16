@@ -585,7 +585,7 @@ musicManager.insertSFX = function(item) {
                                         storyData.sfx[item].currentTime = 0;
                                         storyData.sfx[item].leftTime = storyData.sfx[item].duration;
 
-                                        newSound.play();
+                                        newSound.start(item);
                                         resolve();
 
                                     } catch (err) { reject(err); }
@@ -616,7 +616,7 @@ musicManager.insertSFX = function(item) {
                                     newVolume = tinyValue;
                                 }
 
-                                newSound._volume = newVolume / 100;
+                                newSound.volume(newVolume / 100);
                                 if (!notEdit) {
                                     storyData.sfx[item].volume = tinyValue;
                                 }
@@ -694,11 +694,11 @@ musicManager.insertSFX = function(item) {
                             storyData.sfx[item].currentTime = 0;
                             storyData.sfx[item].leftTime = storyData.sfx[item].duration;
                             let volume = 0;
-                            newSound._volume = 0;
+                            newSound.volume(0);
                             storyData.sfx[item].showing = true;
                             storyData.sfx[item].hiding = false;
                             storyData.sfx[item].setVolume(0, true);
-                            newSound.play();
+                            newSound.start(item);
 
                             for (let i = 0; i < 100; i++) {
                                 if (storyData.sfx[item].showing) {
