@@ -569,7 +569,7 @@ musicManager.insertSFX = function(item, loop = true) {
 
                     // Start Pizzicato
                     const startPizzicato = function() {
-                        return musicManager.start.pizzicato();
+                        return musicManager.start.pizzicato(item, loop, resolve, url);
                     };
 
 
@@ -579,7 +579,7 @@ musicManager.insertSFX = function(item, loop = true) {
                         const newSound = new SeamlessLoop();
                         newSound.addUri(url, file.duration * 1000, item);
                         newSound.callback(function() {
-                            return musicManager.start.seamlessloop();
+                            return musicManager.start.seamlessloop(item, newSound);
                         });
 
                         // Start
@@ -591,7 +591,7 @@ musicManager.insertSFX = function(item, loop = true) {
                     else {
 
                         // Start
-                        musicManager.start.vanilla();
+                        musicManager.start.vanilla(item, newSound);
                         startPizzicato();
 
                     }
