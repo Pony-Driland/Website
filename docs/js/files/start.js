@@ -174,6 +174,18 @@ var insertMarkdownFile = function(text) {
 // Remove Fic Data
 var clearFicData = function() {
 
+    for (const item in storyData.sfx) {
+
+        if (typeof storyData.sfx[item].hide === 'function') {
+            storyData.sfx[item].hide(0);
+        }
+
+        if (storyData.sfx[item].pizzicato && typeof storyData.sfx[item].pizzicato.hide === 'function') {
+            storyData.sfx[item].pizzicato.hide(0);
+        }
+
+    }
+
     $('body')
         .removeClass('ficMode')
         .removeClass(`fic-daycicle-morning`)
