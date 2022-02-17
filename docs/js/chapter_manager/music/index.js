@@ -567,6 +567,12 @@ musicManager.insertSFX = function(item, loop = true, type = 'all') {
                 // Exist URL
                 if (url) {
 
+                    // Resolve
+                    const tinyResolve = function(data) {
+                        console.log(`[${url}] Loaded!`);
+                        resolve(data);
+                    };
+
                     // Values
                     storyData.sfx[item].playing = false;
                     storyData.sfx[item].hiding = false;
@@ -580,7 +586,7 @@ musicManager.insertSFX = function(item, loop = true, type = 'all') {
 
                     // Start Pizzicato
                     const startPizzicato = function(forcePic = false) {
-                        return musicManager.start.pizzicato(item, loop, resolve, file.currentSrc, forcePic);
+                        return musicManager.start.pizzicato(item, loop, tinyResolve, file.currentSrc, forcePic);
                     };
 
 
@@ -605,7 +611,7 @@ musicManager.insertSFX = function(item, loop = true, type = 'all') {
                             newSound.addUri(file.currentSrc, file.duration * 1000, item);
                             newSound.callback(function() {
                                 musicManager.start.seamlessloop(item, newSound);
-                                resolve();
+                                tinyResolve();
                             });
 
                         } else { reject(new Error('Invalid Module Type!')); }
@@ -626,7 +632,7 @@ musicManager.insertSFX = function(item, loop = true, type = 'all') {
                             startPizzicato(true);
                         } else if (type === 'main') {
                             musicManager.start.vanilla(item, file);
-                            resolve();
+                            tinyResolve();
                         } else { reject(new Error('Invalid Module Type!')); }
 
                     }
@@ -641,7 +647,7 @@ musicManager.insertSFX = function(item, loop = true, type = 'all') {
                 reject(err);
             }
 
-        }
+        } else { resolve(); }
 
         // Complete
         return;
