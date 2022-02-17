@@ -2387,9 +2387,6 @@
     },
 
     {
-        "set": {
-            "dayNightCycle": "morning"
-        },
         "value": "Kenny feel worried again while replying Vinny, trying to calm down in. Vinny laughed a little nervously, seemed to think it was all Kenny's paranoia. So he tries to respond in a calmer way.",
         "type": "action"
     },
