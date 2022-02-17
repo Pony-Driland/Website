@@ -268,7 +268,8 @@ var musicManager = {
     loadAudio: function(url) {
         return new Promise(function(resolve, reject) {
 
-            if (!musicManager.cache.blob[url]) {
+            const vanillaURL = url;
+            if (!musicManager.cache.blob[vanillaURL]) {
                 fetch(url, { method: 'GET' })
                     .then(response => response.blob())
                     .then(blob => {
@@ -284,7 +285,7 @@ var musicManager = {
                         audio.addEventListener('canplaythrough', function() {
                             if (!loaded) {
                                 loaded = true;
-                                musicManager.cache.blob[url] = audio;
+                                musicManager.cache.blob[vanillaURL] = audio;
                                 resolve(audio);
                             }
                         }, false);
@@ -292,7 +293,7 @@ var musicManager = {
                         audio.src = url;
 
                     }).catch(reject);
-            } else { resolve(musicManager.cache.blob[url]); }
+            } else { resolve(musicManager.cache.blob[vanillaURL]); }
 
         });
     },
@@ -300,17 +301,18 @@ var musicManager = {
     loadAudioBuffer: function(url) {
         return new Promise(function(resolve, reject) {
 
-            if (!musicManager.cache.buffer[url]) {
+            const vanillaURL = url;
+            if (!musicManager.cache.buffer[vanillaURL]) {
                 fetch(url, { method: 'GET' })
                     .then(response => response.arrayBuffer())
                     .then(buffer => {
 
                         var buffAudio = new BuffAudio(new AudioContext(), new Uint8Array(buffer));
-                        musicManager.cache.buffer[url] = buffAudio;
+                        musicManager.cache.buffer[vanillaURL] = buffAudio;
                         resolve(buffAudio);
 
                     }).catch(reject);
-            } else { resolve(musicManager.cache.buffer[url]); }
+            } else { resolve(musicManager.cache.buffer[vanillaURL]); }
 
         });
     },
