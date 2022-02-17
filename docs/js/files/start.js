@@ -3,6 +3,7 @@ var appData = { youtube: {} };
 
 // Start Document
 console.groupCollapsed('App Information');
+console.log(`Fanfic Engine Creator: Yasmin Seidel (JasminDreasond) https://github.com/JasminDreasond`);
 console.log(`Name: ${storyCfg.title}`);
 console.log(`Description: ${storyCfg.description}`);
 console.log(`Author: ${storyCfg.creator}`);
