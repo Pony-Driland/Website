@@ -171,7 +171,10 @@ var storyData = {
                                     delete storyData.start;
                                     console.log('App Started!');
                                     console.log('Loading UI...');
-                                    startApp(function() { $.LoadingOverlay("hide"); }, readme);
+                                    startApp(function() {
+                                        $.LoadingOverlay("hide");
+                                        console.log('UI loaded!');
+                                    }, readme);
                                 }
 
                             })
