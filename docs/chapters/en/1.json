@@ -86,7 +86,7 @@
 
     {
         "type": "action",
-        "value": "Vinny saw the notification that the delivery boy was about to arrive, his cell phone already asking him to go to the door of his house to wait for the delivery boy"
+        "value": "Vinny saw the notification that the delivery boy was about to arrive, his cell phone already asking him to go to the door of his house to wait for the delivery boy."
     },
 
     {
@@ -3780,6 +3780,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "close-door-hard", "type": "show" }
+            ]
+        },
         "value": "Raquel closes the bedroom door. Vinny kept calm and felt safe with the very calm moment. Vinny just took the things out of the saddle and wait the time, while Vinny poke the wings, trying to at least find a way to do them move or open.",
         "type": "action"
     },
@@ -3814,6 +3819,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "open-door", "type": "show" }
+            ]
+        },
         "value": "Vinny gets the wings fully open while saying alone. So Kenny and Raquel leave the room from the sounds. Raquel was pleased with Kenny's punishment.",
         "type": "action"
     },
