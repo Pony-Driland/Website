@@ -2408,6 +2408,12 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "village-place", "type": "hide" },
+                { "value": "market-place", "type": "show" }
+            ]
+        },
         "value": "Kenny talks desperately when he looks at the clock and enters the market. Vinny felt better seeing Kenny worry less about problems.",
         "type": "action"
     },
@@ -2733,12 +2739,22 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "prepare-dice", "type": "show" }
+            ]
+        },
         "value": "YEA! Time for BIG DICE!",
         "character": "Employee",
         "type": "dialogue"
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "roll-dice", "type": "show" }
+            ]
+        },
         "value": "The dice went round and round and round on the table. But the dice lands on number 2. Vinny was completely disappointed and responded with a bit of anger.",
         "type": "action"
     },
@@ -2817,13 +2833,12 @@
     },
 
     {
-        "value": "Okay! IT'S TIME FOR BIG DICE AGAIN!",
-        "character": "Employee",
-        "type": "dialogue"
-    },
-
-    {
-        "value": "BIG DICE! BIG DICE! DIIIIIIICE!",
+        "set": {
+            "sfx": [
+                { "value": "prepare-dice", "type": "show" }
+            ]
+        },
+        "value": "Okay! IT'S TIME FOR BIG DICE AGAIN! BIG DICE! BIG DICE! DIIIIIIICE!",
         "character": "Employee",
         "type": "dialogue"
     },
