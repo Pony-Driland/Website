@@ -580,7 +580,7 @@ musicManager.insertSFX = function(item, loop = true, type = 'all') {
 
                     // Start Pizzicato
                     const startPizzicato = function(forcePic = false) {
-                        return musicManager.start.pizzicato(item, loop, resolve, url, forcePic);
+                        return musicManager.start.pizzicato(item, loop, resolve, file.currentSrc, forcePic);
                     };
 
 
@@ -591,7 +591,7 @@ musicManager.insertSFX = function(item, loop = true, type = 'all') {
                         if (type === 'all') {
 
                             const newSound = new SeamlessLoop();
-                            newSound.addUri(url, file.duration * 1000, item);
+                            newSound.addUri(file.currentSrc, file.duration * 1000, item);
                             newSound.callback(function() {
                                 musicManager.start.seamlessloop(item, newSound);
                                 startPizzicato();
@@ -602,7 +602,7 @@ musicManager.insertSFX = function(item, loop = true, type = 'all') {
                         } else if (type === 'main') {
 
                             const newSound = new SeamlessLoop();
-                            newSound.addUri(url, file.duration * 1000, item);
+                            newSound.addUri(file.currentSrc, file.duration * 1000, item);
                             newSound.callback(function() {
                                 musicManager.start.seamlessloop(item, newSound);
                                 resolve();
