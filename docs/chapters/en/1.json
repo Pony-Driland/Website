@@ -2,6 +2,9 @@
 
     {
         "set": {
+            "sfx": [
+                { "value": "bird-and-nature", "type": "show", "volume": 100 }
+            ],
             "where": "Planet Earth",
             "dayNightCycle": "morning",
             "day": 1,
@@ -368,6 +371,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "bird-and-nature", "type": "hide" }
+            ]
+        },
         "type": "dialogue",
         "character": "Yasmin",
         "value": "Coming out of X-Tudo? What are you talking about! I only ordered a double size!"
