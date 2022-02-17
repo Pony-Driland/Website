@@ -11,7 +11,6 @@ musicManager.start.pizzicato = function(item, loop, resolve, url, forcePic = fal
         source: 'file',
         options: { path: url, loop: loop }
     }, function() {
-        console.log(`[${url}] Loaded!`);
         resolve();
     });
 
