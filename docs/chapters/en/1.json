@@ -2137,7 +2137,7 @@
     {
         "set": {
             "sfx": [
-                { "value": "sowrd-hard-move", "type": "show" }
+                { "value": "sword-hard-move", "type": "show" }
             ]
         },
         "value": "Vinny speak somewhat ironically while trying to resist the provocations. So the sword that was floating and suddenly stuck on the ground 2 centimeters from Vinny face.",
@@ -3349,6 +3349,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "levitation-magic", "type": "show" }
+            ]
+        },
         "value": "Rayane pulled Vinny wings again, using levitation magic.",
         "type": "action"
     },
@@ -3427,6 +3432,12 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "levitation-magic", "type": "hide" },
+                { "value": "sword-leave", "type": "show" }
+            ]
+        },
         "value": "Rayane's magic released Vinny's wing. Rayane swung the sword menacingly at his side, returning to the equipment saddle.",
         "type": "action"
     },
@@ -3510,6 +3521,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "teleport-magic", "type": "show" }
+            ]
+        },
         "value": "Rayane continued the same grin while the horn began to glow until she disappeared when using teleportation magic. Vinny was surprised by the magic and then responded.",
         "type": "action"
     },
@@ -3521,6 +3537,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "village-place", "type": "hide" }
+            ]
+        },
         "value": "Vinny turns around and goes to meet Kenny again. Vinny find Kenny hiding under the dining table scared from Rayane presence.",
         "type": "action"
     },
