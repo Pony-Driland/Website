@@ -2857,6 +2857,9 @@
 
     {
         "set": {
+            "sfx": [
+                { "value": "dice-roll", "type": "show" }
+            ],
             "item": [{
                 "id": "beer",
                 "owner": "vinny",
@@ -3040,6 +3043,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "cashier-sensor", "type": "show" }
+            ]
+        },
         "value": "Kenny uses the cashier sensor.",
         "type": "action"
     },
@@ -3068,6 +3076,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "cashie-payment", "type": "show" }
+            ]
+        },
         "value": "Kenny said laughing nervously as he paid the cashier.",
         "type": "action"
     },
@@ -3114,7 +3127,13 @@
     },
 
     {
-        "set": { "playlistPlay": "think" },
+        "set": {
+            "sfx": [
+                { "value": "village-place", "type": "show" },
+                { "value": "market-place", "type": "hide" }
+            ],
+            "playlistPlay": "think"
+        },
         "value": "Kenny keep happy and leave the market. it looked like not much had changed. But Vinny seems to have seen some smoke coming out of the middle of the forest that was close to the village.",
         "type": "action"
     },
