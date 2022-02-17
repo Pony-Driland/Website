@@ -3,7 +3,7 @@
     {
         "set": {
             "sfx": [
-                { "value": "bird-and-nature", "type": "show", "volume": 100 }
+                { "value": "bird-and-nature", "type": "show" }
             ],
             "where": "Planet Earth",
             "dayNightCycle": "morning",
@@ -382,6 +382,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "tech-vibration", "type": "show" }
+            ]
+        },
         "type": "action",
         "value": "The X-Tudo vibrated more and more, and the light started to get stronger, but Vinny was starting to realize that he was making progress, and that he just needed to do a little more force, as he accidentally spilled some parts of the X-Tudo on the table because of the vibration."
     },
@@ -404,6 +409,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "tech-explosion", "type": "show" }
+            ]
+        },
         "type": "action",
         "value": "While more Vinny tried, but the light got stronger, and X-Tudo vibrated extremely hard, spilling all parts of X-Tudo all over the kitchen, making a loud noise on the table because of the vibration"
     },
@@ -421,6 +431,12 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "tech-black-hole-explosion", "type": "show" },
+                { "value": "tech-black-hole", "type": "show" }
+            ]
+        },
         "type": "action",
         "value": "Yasmin started talking in a worried voice. Then Vinny finally manages to open X-Tudo, making all the rest of X-Tudo fly all over the place, he soon realizes what he was pulling inside X-Tudo, in fact it was a kind of bracelet, which quickly attaches to the his arm, but in the middle of it all comes a very bright light that takes over the whole kitchen."
     },
@@ -478,12 +494,20 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "tech-black-hole", "type": "hide" }
+            ]
+        },
         "type": "action",
         "value": "Then suddenly everything went blank, and Vinny's consciousness was temporarily lost for an unknown period of time."
     },
 
     {
         "set": {
+            "sfx": [
+                { "value": "beach-place", "type": "show" }
+            ],
             "where": "Greendream Beach",
             "playlistPlay": "sad"
         },
@@ -947,6 +971,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "beach-place", "type": "hide" }
+            ]
+        },
         "type": "action",
         "value": "Kenny kept walking and he saw the village soon the front."
     },
@@ -970,6 +999,9 @@
 
     {
         "set": {
+            "sfx": [
+                { "value": "village-place", "type": "show" }
+            ],
             "playlistPlay": "fantasy-village",
             "where": "Greendream Village"
         },
@@ -1209,6 +1241,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "village-place", "type": "hide" }
+            ]
+        },
         "value": "Kenny smiled and rubbed he head at Raquel face. Raquel looks at Kenny for a few seconds before smile, so Raquel rubbed her face back while the two enter the house.",
         "type": "action"
     },
@@ -1659,6 +1696,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "village-place", "type": "show" }
+            ]
+        },
         "value": "Kenny replied happily as he got up from the chair and put the bag saddle on he body. Then Kenny and Vinny started walking towards the market.",
         "type": "action"
     },
@@ -1993,6 +2035,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "levitation-magic", "type": "show" }
+            ]
+        },
         "value": "Her magic continued and a sword appeared being levitated by her that moves next to Vinny mane while her hood comes off, revealing the rest of her face.",
         "type": "action"
     },
@@ -2088,6 +2135,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "sowrd-hard-move", "type": "show" }
+            ]
+        },
         "value": "Vinny speak somewhat ironically while trying to resist the provocations. So the sword that was floating and suddenly stuck on the ground 2 centimeters from Vinny face.",
         "type": "action"
     },
@@ -2156,6 +2208,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "sword-move", "type": "show" }
+            ]
+        },
         "value": "The sword that was on her side suddenly flew, scraping another little part of Vinny mane in surprise.",
         "type": "action"
     },
@@ -2178,6 +2235,12 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "sword-leave", "type": "show" },
+                { "value": "levitation-magic", "type": "hide" }
+            ]
+        },
         "value": "Rayane put the sword away again and walked through the village again, and so Kenny starts to feel better slowly.",
         "type": "action"
     },
