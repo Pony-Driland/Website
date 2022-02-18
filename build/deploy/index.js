@@ -1,3 +1,17 @@
+/* 
+
+  <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
+  const nodeId = 'ipfs-' + Math.random()
+  const status = node.isOnline() ? 'online' : 'offline'
+  const node = await Ipfs.create({ repo: nodeId })
+  const results = await node.add('=^.^= meow meow')
+  const cid = results[0].hash
+  console.log('CID created via ipfs.add:', cid)
+  const data = await node.cat(cid)
+  console.log('Data read back via ipfs.cat:', new TextDecoder().decode(data))
+
+*/
+
 // Module
 const { exec } = require("child_process");
 const copydir = require('copy-dir');
