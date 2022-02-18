@@ -4119,6 +4119,91 @@
         "value": "Heh! Thank you. Do you have any perfume? Do you think there was something in that smoke?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Perfume? Ah.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny was doing a poker face while not knowing how to answer the question for a few seconds. He was confused, but he still spoke.",
+        "type": "action"
+    },
+
+    {
+        "value": "Smoke? The smoke from earlier today. I have no idea. It's too much of a coincidence that the smoke showed up just today. Sorry.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes, about the perfume, one that you don't like, or that you don't use, my plans for this perfume are other than making me smelly.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? Is this serious? Okay okay. One that I don't like or don't use.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny was even more confused then and was starting to think of something.",
+        "type": "action"
+    },
+
+    {
+        "value": "Kenny does a nervous poker face.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes, if you don't have any perfume, no problem. But it can be anything, I don't want to waste something you like.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny. The problem isn't me... it's Raquel. Can you understand this? Raquel! She's going to go crazy!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I don't understand. Aaaaaah.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny replies  a little scared and surprised. But then he tried to respond calmly.",
+        "type": "action"
+    },
+
+    {
+        "value": "So leave the idea aside, I need sand then. Sand is more than enough.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? Sand?",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny is completely confused and not understanding anything, trying to find a logic to it all.",
+        "type": "action"
+    },
+
+    {
+        "value": "Do you know where I can get it? It's a long story, then I'll tell you on the way back.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
