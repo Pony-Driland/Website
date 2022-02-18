@@ -1,3 +1,6 @@
+// Prepare Cache
+var cacheChapterUpdater = {};
+
 // Read Data on Scroll
 $(window).on('resize scroll', function() {
 
@@ -30,14 +33,35 @@ $(window).on('resize scroll', function() {
         }
 
         // Complete
-        updateChapterCache(selectedItem);
+        cacheChapterUpdater.data(selectedItem);
 
     }
 
 });
 
+cacheChapterUpdater.scrollData = function() {
+
+    // Set Playlist
+    if (Array.isArray(storyData.music.playlist)) {
+        musicManager.disable(false);
+    } else {
+        storyData.music.playlist = [];
+    }
+
+    // Exist Playlist
+    if (!storyData.music.disabled && Array.isArray(storyData.music.playlist) && storyData.music.playlist.length > 0) {
+        musicManager.startPlaylist();
+    }
+
+    // Nope
+    else {
+        musicManager.stopPlaylist();
+    }
+
+};
+
 // Update Cache
-var updateChapterCache = function(lastPage) {
+cacheChapterUpdater.data = function(lastPage) {
     if (storyData.chapter.selected > 0) {
 
         // Update Data Cache
@@ -55,23 +79,6 @@ var updateChapterCache = function(lastPage) {
                 }
             }
 
-        }
-
-        // Set Playlist
-        if (Array.isArray(storyData.music.playlist)) {
-            musicManager.disable(false);
-        } else {
-            storyData.music.playlist = [];
-        }
-
-        // Exist Playlist
-        if (!storyData.music.disabled && Array.isArray(storyData.music.playlist) && storyData.music.playlist.length > 0) {
-            musicManager.startPlaylist();
-        }
-
-        // Nope
-        else {
-            musicManager.stopPlaylist();
         }
 
         // Add Bookmark

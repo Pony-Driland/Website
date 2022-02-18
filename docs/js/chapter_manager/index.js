@@ -245,7 +245,7 @@ var openChapterMenu = function(params = {}) {
             }
 
             // Update Data
-            updateChapterCache(numberPag + 1);
+            cacheChapterUpdater.data(numberPag + 1);
 
             // Insert
             table.append(items);
@@ -264,7 +264,7 @@ var openChapterMenu = function(params = {}) {
         });
 
         // Update Data
-        updateChapterCache(numberPag + 1);
+        cacheChapterUpdater.data(numberPag + 1);
 
         // Items
         const table = $('<tbody>');
