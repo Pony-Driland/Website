@@ -30,7 +30,7 @@ storyData.music = {
 storyData.youtube = {
 
     // Check Youtube Values
-    checkYT: function() { return (YT && YT.PlayerState) },
+    checkYT: function() { return (typeof YT !== 'undefined' && YT.PlayerState) },
 
     // Volume
     volume: storyCfg.defaultYoutubeVolume,
