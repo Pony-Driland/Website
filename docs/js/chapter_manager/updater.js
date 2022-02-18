@@ -81,6 +81,16 @@ cacheChapterUpdater.data = function(lastPage) {
 
         }
 
+        // Update Checker Data
+        if (typeof cacheChapterUpdater.timeoutChecker !== 'undefined') {
+            clearTimeout(cacheChapterUpdater.timeoutChecker);
+            delete cacheChapterUpdater.timeoutChecker;
+        }
+
+        cacheChapterUpdater.timeoutChecker = setTimeout(function() {
+            cacheChapterUpdater.scrollData();
+        }, 1000);
+
         // Add Bookmark
         if ($('#fic-nav > #status #bookmark').length < 1) {
 
