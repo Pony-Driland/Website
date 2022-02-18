@@ -507,9 +507,7 @@ musicManager.updatePlayer = function() {
             storyData.music.buffering ||
             storyData.music.loading ||
             !storyData.music.usingSystem ||
-            (
-                storyData.youtube.checkYT() && YT.PlayerState.PLAYING && !storyData.music.buffering
-            )
+            !storyData.youtube.checkYT()
         ) {
             $('#music-player > a').addClass('disabled');
         } else {
