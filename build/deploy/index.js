@@ -39,7 +39,7 @@ copydir(websitePath, destPath, {
         console.log('starting child 1');
 
         // Git Push
-        const exec1 = exec("git push -u origin --all", { cwd: rootPath });
+        const exec1 = exec("git add -A | git push -u origin --all", { cwd: rootPath });
 
         exec1.stdout.on('data', function(data) {
             console.log('stdout: ' + data.toString());
@@ -56,7 +56,7 @@ copydir(websitePath, destPath, {
             console.log('starting child 2');
 
             // Git Push 2
-            const exec2 = exec("git push -u origin --all", { cwd: destPath });
+            const exec2 = exec("git add -A | git push -u origin --all", { cwd: destPath });
 
             exec2.stdout.on('data', function(data) {
                 console.log('stdout: ' + data.toString());
