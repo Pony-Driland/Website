@@ -201,7 +201,7 @@ var clearFicData = function() {
     storyData.chapter.nav = {};
     storyData.chapter.selected = 0;
 
-    if (storyData.youtube.player && storyData.youtube.state === YT.PlayerState.PLAYING) {
+    if (storyData.youtube.player && storyData.youtube.checkYT() && storyData.youtube.state === YT.PlayerState.PLAYING) {
         storyData.youtube.player.stopVideo();
     }
 
