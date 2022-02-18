@@ -693,7 +693,7 @@ musicManager.stopPlaylist = async function() {
                         volume--;
 
                         // Youtube Player
-                        if (storyData.youtube.player) {
+                        if (storyData.youtube.player && typeof storyData.youtube.player.setVolume === 'function') {
                             storyData.youtube.player.setVolume(volume);
                         }
 
