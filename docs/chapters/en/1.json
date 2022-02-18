@@ -4168,24 +4168,18 @@
     },
 
     {
-        "value": "I don't understand. Aaaaaah.",
-        "character": "Vinny",
-        "type": "dialogue"
-    },
-
-    {
-        "value": "Vinny replies  a little scared and surprised. But then he tried to respond calmly.",
+        "value": "Vinny replies a little scared and surprised. But then he tried to respond calmly.",
         "type": "action"
     },
 
     {
-        "value": "So leave the idea aside, I need sand then. Sand is more than enough.",
+        "value": "I don't understand. Aaaaaah, okay. So leave the idea aside, I need sand then. Sand is more than enough.",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "What? Sand?",
+        "value": "What? S..Sand?",
         "character": "Kenny",
         "type": "dialogue"
     },
