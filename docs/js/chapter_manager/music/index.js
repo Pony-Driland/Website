@@ -29,6 +29,9 @@ storyData.music = {
 // Youtube Player
 storyData.youtube = {
 
+    // Check Youtube Values
+    checkYT: function() { return (YT && YT.PlayerState) },
+
     // Volume
     volume: storyCfg.defaultYoutubeVolume,
     quality: null,
@@ -162,7 +165,7 @@ storyData.youtube = {
 
                 // Current Time Detector
                 setInterval(function() {
-                    if (YT && YT.PlayerState && storyData.youtube.player) {
+                    if (storyData.youtube.checkYT() && storyData.youtube.player) {
 
                         // Fix
                         storyData.music.playing = false;
@@ -170,71 +173,75 @@ storyData.youtube = {
                         storyData.music.stoppabled = false;
                         storyData.music.buffering = false;
 
-                        // Playing
-                        if (storyData.youtube.state === YT.PlayerState.PLAYING) {
+                        if (storyData.youtube.checkYT()) {
 
-                            // Set Embed
-                            if (!storyData.youtube.embed) {
-                                storyData.youtube.embed = {};
-                                $.ajax({
-                                    url: 'https://www.youtube.com/oembed?format=json&url=' + encodeURIComponent(`https://www.youtube.com/watch?v=` + storyData.youtube.videoID),
-                                    type: 'get',
-                                    dataType: 'json'
-                                }).done(function(jsonVideo) {
+                            // Playing
+                            if (storyData.youtube.state === YT.PlayerState.PLAYING) {
 
-                                    console.log(`Youtube video embed loaded!`, storyData.youtube.videoID);
-                                    storyData.youtube.embed = jsonVideo;
+                                // Set Embed
+                                if (!storyData.youtube.embed) {
+                                    storyData.youtube.embed = {};
+                                    $.ajax({
+                                        url: 'https://www.youtube.com/oembed?format=json&url=' + encodeURIComponent(`https://www.youtube.com/watch?v=` + storyData.youtube.videoID),
+                                        type: 'get',
+                                        dataType: 'json'
+                                    }).done(function(jsonVideo) {
 
-                                    // Info
-                                    storyData.music.author_name = jsonVideo.author_name;
-                                    storyData.music.author_url = jsonVideo.author_url;
-                                    storyData.music.provider_name = jsonVideo.provider_name;
-                                    storyData.music.thumbnail_url = jsonVideo.thumbnail_url;
-                                    storyData.music.title = jsonVideo.title;
+                                        console.log(`Youtube video embed loaded!`, storyData.youtube.videoID);
+                                        storyData.youtube.embed = jsonVideo;
 
-                                }).fail(err => {
-                                    console.error(err);
-                                    alert(err.message);
-                                });
+                                        // Info
+                                        storyData.music.author_name = jsonVideo.author_name;
+                                        storyData.music.author_url = jsonVideo.author_url;
+                                        storyData.music.provider_name = jsonVideo.provider_name;
+                                        storyData.music.thumbnail_url = jsonVideo.thumbnail_url;
+                                        storyData.music.title = jsonVideo.title;
+
+                                    }).fail(err => {
+                                        console.error(err);
+                                        alert(err.message);
+                                    });
+                                }
+
+                                storyData.music.playing = true;
+                                storyData.youtube.duration = storyData.youtube.player.getDuration();
+                                storyData.youtube.currentTime = storyData.youtube.player.getCurrentTime();
+                                if (typeof appData.youtube.onPlaying === 'function') { appData.youtube.onPlaying(); }
+
                             }
 
-                            storyData.music.playing = true;
-                            storyData.youtube.duration = storyData.youtube.player.getDuration();
-                            storyData.youtube.currentTime = storyData.youtube.player.getCurrentTime();
-                            if (typeof appData.youtube.onPlaying === 'function') { appData.youtube.onPlaying(); }
+                            // Ended
+                            else if (storyData.youtube.state === YT.PlayerState.ENDED || storyData.youtube.state === YT.PlayerState.CUED) {
 
-                        }
+                                // Stopping
+                                if (storyData.music.isStopping) {
+                                    storyData.youtube.player.seekTo(0);
+                                    storyData.youtube.player.pauseVideo();
+                                    storyData.music.isStopping = false;
+                                }
 
-                        // Ended
-                        else if (storyData.youtube.state === YT.PlayerState.ENDED || storyData.youtube.state === YT.PlayerState.CUED) {
+                                // Next
+                                else if (!storyData.youtube.loading && storyData.readFic && storyData.youtube.embed) {
+                                    delete storyData.youtube.embed;
+                                    musicManager.nextMusic();
+                                }
 
-                            // Stopping
-                            if (storyData.music.isStopping) {
-                                storyData.youtube.player.seekTo(0);
-                                storyData.youtube.player.pauseVideo();
-                                storyData.music.isStopping = false;
+                                // Progress
+                                storyData.music.stoppabled = true;
+                                storyData.youtube.currentTime = storyData.youtube.player.getDuration();
+
                             }
 
-                            // Next
-                            else if (!storyData.youtube.loading && storyData.readFic && storyData.youtube.embed) {
-                                delete storyData.youtube.embed;
-                                musicManager.nextMusic();
+                            // Paused
+                            else if (storyData.youtube.state === YT.PlayerState.PAUSED) {
+                                storyData.music.paused = true;
                             }
 
-                            // Progress
-                            storyData.music.stoppabled = true;
-                            storyData.youtube.currentTime = storyData.youtube.player.getDuration();
+                            // Buff
+                            else if (storyData.youtube.state === YT.PlayerState.BUFFERING) {
+                                storyData.music.buffering = true;
+                            }
 
-                        }
-
-                        // Paused
-                        else if (storyData.youtube.state === YT.PlayerState.PAUSED) {
-                            storyData.music.paused = true;
-                        }
-
-                        // Buff
-                        else if (storyData.youtube.state === YT.PlayerState.BUFFERING) {
-                            storyData.music.buffering = true;
                         }
 
                     }
@@ -496,7 +503,14 @@ musicManager.updatePlayer = function() {
         $('#music-player').addClass('border').removeClass('d-none').addClass('mr-3');
 
         // Buff
-        if (storyData.music.buffering || storyData.music.loading || !storyData.music.usingSystem) {
+        if (
+            storyData.music.buffering ||
+            storyData.music.loading ||
+            !storyData.music.usingSystem ||
+            (
+                storyData.youtube.checkYT() && YT.PlayerState.PLAYING && !storyData.music.buffering
+            )
+        ) {
             $('#music-player > a').addClass('disabled');
         } else {
             $('#music-player > a').removeClass('disabled');
