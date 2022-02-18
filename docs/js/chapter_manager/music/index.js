@@ -718,65 +718,67 @@ musicManager.stopPlaylist = async function() {
 
 // Start Playlist
 musicManager.startPlaylist = function() {
-    if (!storyData.music.usingSystem && storyData.music.useThis && storyData.readFic) {
+    setTimeout(function() {
+        if (!storyData.music.usingSystem && storyData.music.useThis && storyData.readFic && typeof cacheChapterUpdater.timeoutChecker === 'undefined') {
 
-        // Check Status
-        if (Array.isArray(storyData.music.playlist) && storyData.music.playlist.length > 0) {
+            // Check Status
+            if (Array.isArray(storyData.music.playlist) && storyData.music.playlist.length > 0) {
 
-            // Play Song
-            tinyLib.shuffle(storyData.music.playlist);
-            const playSong = function() {
-                if (typeof storyData.music.now.index === 'number' && !isNaN(storyData.music.now.index) && isFinite(storyData.music.now.index) && storyData.music.now.index > -1) {
+                // Play Song
+                tinyLib.shuffle(storyData.music.playlist);
+                const playSong = function() {
+                    if (typeof storyData.music.now.index === 'number' && !isNaN(storyData.music.now.index) && isFinite(storyData.music.now.index) && storyData.music.now.index > -1) {
 
-                    // Play
-                    const song = storyData.music.playlist[storyData.music.now.index];
-                    if (song && typeof song.id === 'string' && song.id.length > 0 && typeof song.type === 'string' && song.type.length > 0) {
+                        // Play
+                        const song = storyData.music.playlist[storyData.music.now.index];
+                        if (song && typeof song.id === 'string' && song.id.length > 0 && typeof song.type === 'string' && song.type.length > 0) {
 
-                        // Youtube
-                        if (song.type === 'youtube') {
-                            setTimeout(function() { storyData.youtube.play(song.id); }, 100);
+                            // Youtube
+                            if (song.type === 'youtube') {
+                                setTimeout(function() { storyData.youtube.play(song.id); }, 100);
+                            }
+
                         }
 
                     }
+                };
 
-                }
-            };
+                // Exist
+                if (
+                    storyData.music.now.playlist === null ||
+                    storyData.music.now.index === -1 ||
+                    storyData.music.now.playlist !== storyData.music.value
+                ) {
 
-            // Exist
-            if (
-                storyData.music.now.playlist === null ||
-                storyData.music.now.index === -1 ||
-                storyData.music.now.playlist !== storyData.music.value
-            ) {
+                    // Fix Index
+                    if (storyData.music.now.index < 0 || storyData.music.now.playlist !== storyData.music.value) {
+                        storyData.music.now.index = 0;
+                    }
 
-                // Fix Index
-                if (storyData.music.now.index < 0 || storyData.music.now.playlist !== storyData.music.value) {
-                    storyData.music.now.index = 0;
-                }
+                    // Now
+                    storyData.music.now.playlist = storyData.music.value;
 
-                // Now
-                storyData.music.now.playlist = storyData.music.value;
-
-                // Play
-                playSong();
-
-            }
-
-            // Resume
-            else if (storyData.music.playingUsed) {
-
-                if (storyData.music.playingUsed) {
+                    // Play
                     playSong();
+
                 }
 
-                storyData.music.playingUsed = false;
+                // Resume
+                else if (storyData.music.playingUsed) {
+
+                    if (storyData.music.playingUsed) {
+                        playSong();
+                    }
+
+                    storyData.music.playingUsed = false;
+
+                }
 
             }
+
+            // Check Data
+            storyData.music.usingSystem = true;
 
         }
-
-        // Check Data
-        storyData.music.usingSystem = true;
-
-    }
+    }, 300);
 };
