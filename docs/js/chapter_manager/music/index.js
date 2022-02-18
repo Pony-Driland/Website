@@ -13,6 +13,7 @@ storyData.music = {
     buffering: false,
     volume: 0,
     playlist: [],
+    playlistPlaying: [null],
 
     songVolumeUpdate: function() {
         setTimeout(function() {
@@ -718,13 +719,14 @@ musicManager.stopPlaylist = async function() {
 
 // Start Playlist
 musicManager.startPlaylist = function() {
-    if (storyData.readFic) {
+    if (storyData.readFic && md5(storyData.music.playlist) !== md5(storyData.music.playlistPlaying)) {
 
         // Check Status
         if (Array.isArray(storyData.music.playlist) && storyData.music.playlist.length > 0) {
 
             // Play Song
             tinyLib.shuffle(storyData.music.playlist);
+            storyData.music.playlistPlaying = storyData.music.playlist;
             const playSong = function() {
                 if (typeof storyData.music.now.index === 'number' && !isNaN(storyData.music.now.index) && isFinite(storyData.music.now.index) && storyData.music.now.index > -1) {
 
