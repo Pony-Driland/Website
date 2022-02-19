@@ -5302,6 +5302,61 @@
     {
         "value": "Vinny was slightly worried, but then he tried to keep up his courage and responded.",
         "type": "action"
+    },
+
+    {
+        "value": "Well, I needed help, since you didn't help me I sought help from this nice pony. And you seem to like being in very... exotic places and times, right? Could have helped us before with the crazy Elite Color pony.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny responded a little disappointed, but also a little worried.",
+        "type": "action"
+    },
+
+    {
+        "value": "Exotic places. I think you're starting to understand me~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was laughing maliciously again and then she did the malicious grin face again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Seems like just the nice pony who doesn't like exotic places. Sorry, I can't interfere in combat, how curious that you like my presence. I also need to protect my identity. I would say you did very well, I'm sure I can expect a lot more from you in the future. A little bit of everything and then some~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James' mouth was slowly being released again during the progress.",
+        "type": "action"
+    },
+
+    {
+        "value": "AH! Let me go now! She is completely crazy! She's a spy! Haven't you noticed that yet?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny just ignored what James was saying, and tried to concentrate on the conversation with Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, where I came from I had a slightly different life, as I said earlier, if I'm right I can see myself in your eyes, so you know what to expect from me. But when can we get to know each other more?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tries to talk more cheerful at the end. James was worried about the situation to see that Vinny was giving himself to Rayane little by little more and more.",
+        "type": "action"
     }
 
 ]
