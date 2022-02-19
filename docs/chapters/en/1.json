@@ -4935,6 +4935,50 @@
         "value": "Phew...",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "James just turned on the magic aura to see inside the cave.",
+        "type": "action"
+    },
+
+    {
+        "value": "We're finally safe. Much better now.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James breathed a sigh of relief, and began to process the information of everything that happened.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was slightly anxious about trying to say something to James, so joined close to James.",
+        "type": "action"
+    },
+
+    {
+        "value": "James looked at you curiously for a few seconds before starting to analyze things again. Then little by little he became more and more worried.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, I think everything is here. My stuff is all here. Wait... Where's my tablet? My tablet!? MY TABLET?! NOO! MY TABLET!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wait, did you come from the same world as me? your tablet was the one that broke in the middle of the mess there.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
