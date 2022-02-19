@@ -4928,6 +4928,13 @@
     {
         "value": "Vinny ended up falling into a cave, stopping in a smooth place inside the cave.",
         "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": null },
+        "value": "Phew...",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
