@@ -176,6 +176,7 @@ var storyCfg = {
         ],
 
         'tense-mystery': [
+            { id: '7dKxHERhaLE', type: 'youtube' },
             { id: 'QNwjH5EKTTQ', type: 'youtube' },
             { id: '1nBatlpsVj0', type: 'youtube' },
             { id: 'bE__iQGLxyc', type: 'youtube' },
@@ -198,7 +199,6 @@ var storyCfg = {
             { id: '_x8gYuNUdNA', type: 'youtube' },
             { id: 'DJlgRlhaeME', type: 'youtube' },
             { id: 'VQ9230-OoBw', type: 'youtube' },
-            { id: '7dKxHERhaLE', type: 'youtube' },
             { id: 'vlQvh7IrRPk', type: 'youtube' },
         ],
 
