@@ -726,9 +726,12 @@ musicManager.startPlaylist = function() {
 
             // Play Song
             tinyLib.shuffle(storyData.music.playlist);
-            storyData.music.playlistPlaying = storyData.music.playlist;
+
             const playSong = function() {
                 if (typeof storyData.music.now.index === 'number' && !isNaN(storyData.music.now.index) && isFinite(storyData.music.now.index) && storyData.music.now.index > -1) {
+
+                    // Update Cache
+                    storyData.music.playlistPlaying = storyData.music.playlist;
 
                     // Play
                     const song = storyData.music.playlist[storyData.music.now.index];
