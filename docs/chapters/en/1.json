@@ -4193,6 +4193,118 @@
         "value": "Do you know where I can get it? It's a long story, then I'll tell you on the way back.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Well... There's sand if you go back to the beach where you appeared.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny keep answering while feeling super confused.",
+        "type": "action"
+    },
+
+    {
+        "value": "Didn't Raquel have flowers? Don't you have a jar or a pot with soil? I think it's something very simple earth, right?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well... It's in her garden. Everything she has planted is just there.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Kenny gave up trying to understand the conversation, and just tried to accept listening to what was being said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ok I'll take your cape that you humbly gave me. All right? Ah... I'll take the phone too.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was then ready as he answered Kenny confidently.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ok. And take care. Forests at night are extremely dangerous.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny smiled a little hopefully and waved at Vinny as Kenny said goodbye. Kenny maintains that Vinny was safe with the raincoat.",
+        "type": "action"
+    },
+
+    {
+        "value": "Please, feel free to get the dirt.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny does a confused little smile.",
+        "type": "action"
+    },
+
+    {
+        "value": "Will you accompany me to look for the dirt? From there I'm going",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Alright!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny smiled and opened the garden door for Vinny to enter.",
+        "type": "action"
+    },
+
+    {
+        "value": "Just be very careful with the garden. Raquel is very attached to the flowers.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I think Raquel better help me, could you call her?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh. okay! No problem.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny walked quietly to Raquel's room to call her. Vinny was patiently waiting for Raquel",
+        "type": "action"
+    },
+
+    {
+        "value": "He's actually being a lot kinder than I thought.",
+        "character": "Kenny",
+        "type": "think"
+    },
+
+    {
+        "value": "Raquel then arrived at the scene, confused, trying to understand the situation.",
+        "type": "action"
     }
 
 ]
