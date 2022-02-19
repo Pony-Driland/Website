@@ -5241,6 +5241,67 @@
     {
         "value": "Vinny replies, trying to break grin's moment a little.",
         "type": "action"
+    },
+
+    {
+        "value": "Intimate? You should be careful with your words~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane continued doing the silly malicious grin face before giving Vinny a silly boop, walking away again while improving the lighting of the horn magic back and freeing James' mouth.",
+        "type": "action"
+    },
+
+    {
+        "value": "WHAT A JOKE THIS IS! WHAT FUCK?! RAYANE HERE?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was startled by James' reaction and was a little worried before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey hey! Calm down! I just wanted to meet Rayane earlier. I see you 2 already know each other.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Of course I know her! She lives stalking travelers and always shows up at suspicious times! But I've never seen her get that close!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was startled by James' reaction and was a little worried before answering. Rayane only made a slight malicious laugh before answering. She was content with the timing of the situation, perfect for her to act as she pleased.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. I just want you to be quiet again~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane uses magic to silence James again, to make him angry again. Rayane laughed a little more before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "And you Vinny... What are you doing in this very specific place with this mad scientist?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was slightly worried, but then he tried to keep up his courage and responded.",
+        "type": "action"
     }
 
 ]
