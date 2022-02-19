@@ -105,6 +105,8 @@ var storyCfg = {
         'battle': [
             { id: 'rjRn9lYguV0', type: 'youtube' },
             { id: 'yb0-hwJAX3U', type: 'youtube' },
+            { id: 'XD72-Y5aB9Q', type: 'youtube' },
+            { id: '0uK3yU2JQN4', type: 'youtube' },
         ],
 
         'tense-battle': [
@@ -177,6 +179,10 @@ var storyCfg = {
 
         'tense-mystery-2': [
             { id: 'JuKONvqIT4M', type: 'youtube' }
+        ],
+
+        'judgement-battle-divine': [
+            { id: '1xkvsu72i60', type: 'youtube' }
         ],
 
         'horror-moment': [
