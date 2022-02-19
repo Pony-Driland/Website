@@ -5214,6 +5214,33 @@
         "value": "Rayane... I thought you had abandoned me, let me see your beautiful face one more time, enough drama.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "The footsteps got closer and closer, until a horn shone again, this time it was a green aura, slowly revealing Vinny face right next to Rayane's face. And she did the silly grinning face again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Boo~ I don't think so~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile, James was with his mouth shut by Rayane's magic, James was trying to say something desperately. Vinny felt a slight anxiety and a little fear, but then he felt for courage and determination and responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay okay. I didn't want to say it so you don't worry, but the last time I was in the dark with another woman we got a little intimate. Is that your intention too?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny replies, trying to break grin's moment a little.",
+        "type": "action"
     }
 
 ]
