@@ -4987,6 +4987,123 @@
         "value": "Wait, did you come from the same world as me? your tablet was the one that broke in the middle of the mess there.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Same world as you? This is completely impossible, there is no probability for that. Wait... w...What?! MY TABLET BROKEN?! NOOO! WHAT HAPPENED TO HIM?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was totally scared thinking about the tablet. Vinny was scared and tried to calm him down.",
+        "type": "action"
+    },
+
+    {
+        "value": "S...sorry. Oh, and that tablet's are common in my world, including you have my phone which is a mini tablet. I used your tablet to defend you and me from crazy pony, and his head broke his tablet. I am really sorry.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh his head.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was mildly annoyed, but tried to be positive by remembering the noble cause, trying to calm down for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay okay. I'll try to swallow this problem just because you saved my life. I forgive you. But, wait? Did you say mini tablet? Have you brought a tech gadget from your world by accident?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was starting to get surprised, showing a surprised reaction.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..Yes? Wasn't it all right for everyone here to have one of these? I came here unintentionally, and I ended up coming with my phone... Why? Need something in it?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    {
+        "value": "Wow! A device with hardware without technological limitations from Pony Driland... NO! I'am dreaming! Makes many! It's been years since I've seen something of this level up close! THAT'S A DIAMOND IN THIS WORLD!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "sfx": [
+                { "value": "levitation-magic", "type": "show" }
+            ]
+        },
+        "value": "James continued with the expression of being extremely surprised when he used magic to levitate his Vinny's phone. Vinny was a little worried and surprised to see his cell phone being levitated.",
+        "type": "action"
+    },
+
+    {
+        "value": "W... what exactly are you thinking about my phone?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? How do you not know? Pony Driland's technology is limited because it cannot be modified! The only ponies that can create new technology is Elite Color!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James continued to look at Vinny cell phone, impressed, analyzing detail by detail before talking to Vinny again.",
+        "type": "action"
+    },
+
+    {
+        "value": "I hope you didn't leave any signal emission on in that. Elite Color is very good at tracking the wave frequency of these devices.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well, it was turned off 90% of my time here, besides, I think that the smoke was getting more attention than a signal. Well, I don't know, my opinion only.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was thoughtful about the smoke, and was suspicious before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Did you refer to my force field that I created? The cracks in the floor were the impact of Elite Color's attacks. That was my last exit, I used all my energy to get stuck in it, otherwise I would die.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was even more surprised and tried to think of his next words. So James' GPS started beeping during the conversation. ",
+        "type": "action"
+    },
+
+    {
+        "value": "Fiiiine? Oh god. Jeez, are you all right there?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes I am!",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
