@@ -4878,6 +4878,56 @@
         "value": "I'm James! Now don't look back! Focus on the escape!",
         "character": "James",
         "type": "dialogue"
+    },
+
+
+    {
+        "value": "The blue fire magic was activated again and was thrown upwards, falling in various parts of the path randomly, further disturbing the Èlite Color unicorn.",
+        "type": "action"
+    },
+
+    {
+        "value": "HOLY SHIT! Are you really James? Kenny sent me to look for you!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James then looked at a bush and he recognized this for something of his escape plan. Then he would answer.",
+        "type": "action"
+    },
+
+    {
+        "value": "What?! You know me?! Kenny?! But what the hell is going on here?! Look! Trust in me! Just jump into that bush! Through it is a secret hiding place that I was trying to hide a few hours ago!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James used magic to make a magic aura around the bush that was pointing at you before jumping towards this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay okay, talk later and more escape. I will follow you!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny follows James, suddenly Vinny fell into a very deep hole, rolling inside the hole during some seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "What the fuck is this world?! HELP!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny ended up falling into a cave, stopping in a smooth place inside the cave.",
+        "type": "action"
     }
 
 ]
