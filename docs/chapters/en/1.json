@@ -4745,6 +4745,39 @@
         "value": "Oh no. More trouble? Oh! Come on!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny  take the tablet and run, smashing the tablet on the unicorn's head to make him unconscious temporarily.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAHHH! I WILL DISINTEGATE YOU AND BREAK YOU INTO A THOUSAND PIECES!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks pleased for a few seconds, until he is surprised to hear a second voice.",
+        "type": "action"
+    },
+
+    {
+        "value": "W.. What?! No! My stuff! What's going on here?!",
+        "character": "??? 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The other unicorn that was frozen started to wake up and got up, and his horn started to glow a blue fire magic that seemed cold instead of hot.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Hey hey! Calm down! This pony was trying to kidnap you!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
