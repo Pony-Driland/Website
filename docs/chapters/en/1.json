@@ -5173,6 +5173,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "sword-hard-move", "type": "show" }
+            ]
+        },
         "value": "James kept looking around for a few seconds, trying to find someone until a sword appeared in front of him.",
         "type": "action"
     },
