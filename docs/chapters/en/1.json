@@ -4681,6 +4681,7 @@
 
     {
         "set": {
+            "playlistPlay": null,
             "sfx": [
                 { "value": "levitation-magic", "type": "show" }
             ]
@@ -4713,6 +4714,7 @@
     },
 
     {
+        "set": { "playlistPlay": "battle" },
         "value": "Vinny take the earth and throw it in unicorn eyes in order to temporarily blind the unicorn.",
         "type": "action"
     },
