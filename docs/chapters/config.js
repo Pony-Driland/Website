@@ -173,7 +173,10 @@ var storyCfg = {
             { id: 'QNwjH5EKTTQ', type: 'youtube' },
             { id: '1nBatlpsVj0', type: 'youtube' },
             { id: 'bE__iQGLxyc', type: 'youtube' },
-            { id: 'JuKONvqIT4M', type: 'youtube' },
+        ],
+
+        'tense-mystery-2': [
+            { id: 'JuKONvqIT4M', type: 'youtube' }
         ],
 
         'horror-moment': [
