@@ -176,7 +176,7 @@ var openChapterMenu = function(params = {}) {
         }
 
         // Save MD5
-        localStorage.setItem('chapter' + chapter + 'MD5', md5(JSON.stringify(storyData.data[chapter])));
+        localStorage.setItem('chapter' + chapter + 'MD5', objHash(storyData.data[chapter]));
 
         // Get Pagination
         const pagination = paginateArray(storyData.data[chapter], page, storyCfg.itemsPerPage);
@@ -575,7 +575,7 @@ var openChapterMenu = function(params = {}) {
             const isNew = (!localStorage.getItem('chapter' + chapter + 'MD5'));
             let isUpdate = false;
             if (!isNew) {
-                isUpdate = (md5(JSON.stringify(storyData.data[chapter])) !== localStorage.getItem('chapter' + chapter + 'MD5'));
+                isUpdate = (objHash(storyData.data[chapter]) !== localStorage.getItem('chapter' + chapter + 'MD5'));
             }
             let isNewValue = '';
             if (isNew) {
