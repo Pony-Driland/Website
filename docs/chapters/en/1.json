@@ -4305,6 +4305,112 @@
     {
         "value": "Raquel then arrived at the scene, confused, trying to understand the situation.",
         "type": "action"
+    },
+
+    {
+        "value": "Hi Vinny! I'm here. Are you in need of something in the garden then?",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hello, yes, I need some soil, that's all. could you give me some? Enough to fill a small pot.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel thought about Vinny question for a few seconds, trying understand something.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh yes. All well.",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "item": [{
+            "id": "pot-of-soil",
+            "owner": "vinny",
+            "amount": 1
+        }],
+        "value": "Raquel smiled and went to the garden to get the soil for Vinny, and after 1 minute she came back with her pot of soil.",
+        "type": "action"
+    },
+
+    {
+        "value": "Thank you Thank you! Maybe this soil will make me stay alive!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny replies happily",
+        "type": "action"
+    },
+
+    {
+        "value": "Alive? Silly.",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel giggles a little before continuing to answer.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, put it to good use. If you find a nice flower on the way, I'll be happy to welcome it to my garden.",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel smiles happily thinking about the flowers. Thinking it would be some kind of rare plant hunt.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ok ok I think I have everything, wish me luck and see you soon.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiles nervously, talking while turning his back going to the door of the house.",
+        "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": null },
+        "value": "And bring beautiful flowers! I love flowers! Lovely flowers!",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel's eyes sparkle and dilate with happiness. Vinny then made only a slight nervous smile and waved at Raquel as he walked toward the door. First Vinny turn on the cell phone and put everything that is energy saving and airplane mode, leaving only the screen with low lighting. Vinny open the compass and analyze around also looking for Rayane, analyzing around. The village was more deserted than during the afternoon. There were few ponies that were getting ready to stay indoors. The smoke that was in the forest was gone. And the sun keeps entering the horizon. Vinny couldn't see any sign of Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "She can't be too far away. I think she must still be spying on me. Heheh.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny take the hood off he's head and go to the same place of the 1st meeting with Rayane near the door and wait a little. As Viny walked to the market door, Vinny analyzed looking for an object that could help in a fight.",
+        "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": "calm" },
+        "value": "Viny just felt the night wind approaching, the market was very deserted, and only Vinny found the sign written \"Closed\". Vinny wait a little bit, leaning against some wall like a boss. But nothing interesting happened. Vinny just felt the night breeze slowly getting stronger.",
+        "type": "action"
     }
 
 ]
