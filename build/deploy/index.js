@@ -53,7 +53,7 @@ copydir(websitePath, destPath, {
 
             // Complete
             console.log('child 1 process exited with code ' + code.toString());
-            console.log('starting child 2');
+            /* console.log('starting child 2');
 
             // Git Push 2
             const exec2 = exec("git add . | git commit -a -m \"GITHUB UPDATE\" | git push origin main", { cwd: destPath });
@@ -72,7 +72,7 @@ copydir(websitePath, destPath, {
                 console.log('child 2 process exited with code ' + code.toString());
                 console.log('Complete!');
 
-            });
+            }); */
 
         });
 
