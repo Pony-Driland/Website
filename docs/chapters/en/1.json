@@ -4748,6 +4748,13 @@
     },
 
     {
+        "set": {
+            "item": [{
+                "id": "tablet",
+                "owner": "vinny",
+                "amount": -1
+            }]
+        },
         "value": "Vinny  take the tablet and run, smashing the tablet on the unicorn's head to make him unconscious temporarily.",
         "type": "action"
     },
@@ -4960,6 +4967,7 @@
     },
 
     {
+        "set": { "playlistPlay": "think" },
         "value": "Vinny was slightly anxious about trying to say something to James, so joined close to James.",
         "type": "action"
     },
