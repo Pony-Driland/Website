@@ -4597,6 +4597,12 @@
         },
         "value": "Vinny take the map and the tablet and run to some bush nearby to see who was coming. When Vinny try to leave the place. Vinny is interrupted by a rainbow ray that almost hit he right.",
         "type": "action"
-    }
+    },
+
+    {
+        "value": "WOOW! What the fuck is this!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
 
 ]
