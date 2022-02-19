@@ -4605,4 +4605,55 @@
         "type": "dialogue"
     },
 
+    {
+        "value": "Then Vinny saw another pony with the face covered with an expression of few friends. He is a unicorn and his entire body was covered by a special black cape to hide his identity.",
+        "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": "battle" },
+        "value": "Stop right there! You're not going anywhere! We've waited a long time to catch this worm!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "HEEY! Hey hey! Calm down, I'm not going to do anything, I just need a time here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was pretty scared, but then he remembered the pot. Vinny covertly try to get the pot of earth.",
+        "type": "action"
+    },
+
+    {
+        "value": "DO NOT MOVE!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The magic aura of unicorn started to come out, threatening to do something to Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Just hand me that worm and no one will get hurt!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tried to stay calm while talking in a way that he didn't get too nervous.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oops, no problem, no problem, I don't know him, I ended up here by mistake, you can take him.",
+        "character": "Vinny",
+        "type": "dialogue"
+    }
+
 ]
