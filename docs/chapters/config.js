@@ -189,7 +189,7 @@ var storyCfg = {
             { id: '1xkvsu72i60', type: 'youtube' }
         ],
 
-        'horror-moment': [
+        'rainbow-queen-moment': [
             { id: 's2bGUY97o6E', type: 'youtube' },
         ],
 
