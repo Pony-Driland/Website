@@ -5104,6 +5104,94 @@
         "value": "Yes I am! Wait, my Radar is beeping?",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "sfx": [
+                { "value": "levitation-magic", "type": "hide" }
+            ]
+        },
+        "value": "James looked at the radar, and analyzed the radar information. The radar detected some pony using teleport. Radar continued to beep for a few seconds before stopping. So James stopped levitating Vinny's cell phone and gave it back to him.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh no.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James reduces the intensity of the magic glow and looked around quietly. Vinny was extremely curious and soon asked a little worried.",
+        "type": "action"
+    },
+
+    {
+        "value": "But what happened?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was disgusted and spoke in a low voice.",
+        "type": "action"
+    },
+
+    {
+        "value": "SSSH! Shut up! Don't let your guard down! You have wings! You can use some skill with them to scare away intruders! And you still haven't told me your name.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little embarrassed by James' reaction. Vinny heard the sound of approaching footsteps, a very familiar movement.",
+        "type": "action"
+    },
+
+    {
+        "value": "It's getting closer.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey, I don't know how to use my wings very well, I talking with a beautiful pony earlier today on a date but she gave me a \"cake\". And now I was alone in a forest and almost died.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny speaks sarcastically with the intention of whoever was close to hear. James got even more disgusted and asked Vinny to keep his voice down.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sssh! Beautiful pony? Who are you talking about? How do you not know how to fly? You're telling me you can't fly and you're supposed to know a pony that already knows how to teleport? You're kidding right?! This magic is as rare as your phone!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James kept looking around for a few seconds, trying to find someone until a sword appeared in front of him.",
+        "type": "action"
+    },
+
+    {
+        "value": "WHAT?! N...No! N...Noooo! SORRY! AAAH! VINNY! HELP ME!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James disappears into the darkness and his magic goes out. And soon the noise approached Vinny slowly. James got even more disgusted and asked Vinny to keep his voice down.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane... I thought you had abandoned me, let me see your beautiful face one more time, enough drama.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
