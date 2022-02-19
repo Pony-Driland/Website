@@ -4563,6 +4563,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "W..What? Oh no no no. Whoever it is, go away!",
         "character": "Vinny",
         "type": "dialogue"
