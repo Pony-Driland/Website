@@ -4654,6 +4654,95 @@
         "value": "Oops, no problem, no problem, I don't know him, I ended up here by mistake, you can take him.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny disguise it by getting he things in the saddle, taking the the pot of earth and waiting for the unicorn. The unicorn approached slowly while the aura of magic was getting stronger.",
+        "type": "action"
+    },
+
+    {
+        "value": "Do'nt know? Are you hiding something from me? If you do anything, I will disintegrate you! You're new here, you still have a chance to escape your first encounter with an Elite Color member!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah yeah, I'm new here, don't worry, I message my life, as I said, I don't have to do anything...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hm, very funny, let's try to trust you then.",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "sfx": [
+                { "value": "levitation-magic", "type": "show" }
+            ]
+        },
+        "value": "The unicorn made a mischievous smile and his magic aura reacted and quickly levite Vinny up. Vinny then got even more nervous when he tried to touch the ground and responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What? Hey what are you doing?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Do you think I didn't see that you took some of his belongings? I'll take it too.",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Unicorn magic released Vinny, doing VInny fell to the ground while almost everything you were trying to catch was floating in the air by the magic.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..HEY! Ok ok you can take it here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny take the earth and throw it in unicorn eyes in order to temporarily blind the unicorn.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...AH?! HEY! NO! YOU FOOL! MY EYES! S..SHIT!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "haha! I wasn't that helpless.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "sfx": [
+                { "value": "levitation-magic", "type": "hide" }
+            ]
+        },
+        "value": "The unicorn moved trying to use the magic to get some tree leaf to clean his eyes. As the unicorn tried to wipe his face, his magic released the other objects he had stolen from Vinny, and all items fell to the ground again. And in the middle of it Vinny hear the sound of something trying to get up off the ground.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh no. More trouble? Oh! Come on!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
