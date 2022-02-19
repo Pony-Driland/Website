@@ -4778,6 +4778,106 @@
         "value": "Oh? Hey hey! Calm down! This pony was trying to kidnap you! I was just looking for a pony, I'm not from here I'm from another world!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny speak loudly with some fear.",
+        "type": "action"
+    },
+
+    {
+        "value": "We are all of different dimensions! We'll talk later!",
+        "character": "??? 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The mystery unicorn 2 horn's magic became stronger and he raised his paws, preparing to use some magic skill.",
+        "type": "action"
+    },
+
+    {
+        "value": "AH!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny drops to the floor and cover the face. The blue fire magic was frantically strong on unicorn 2 hooves, and when he slammed his hooves on the ground, a blast of cold fire moved quickly against the Elite Color unicorn, making a strong blast of cold, causing the mysterious Elite Color unicorn to be injured and be thrown to another place of the forest.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes! We need to get out of here! Do you have any healing items?! I need to recover me urgently!",
+        "character": "??? 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny made a small nervous smile and then answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "I have 2 single spray here is it ok?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes! Perfect!",
+        "character": "??? 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Unicorn 2 desperately grabbed the spray and used it on the wounds while moaning in pain from the wounds. Vinny would get worried and say.",
+        "type": "action"
+    },
+
+    {
+        "value": "Are you sure you're okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Shut up! Ah that's great! Let's get out of here now!",
+        "character": "??? 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The unicorn 2 made a face of satisfaction with the result. He used the levitation magic and pulled all the belongings back into the backpack and got up already preparing another magic as he started to run. Vinny was very surprised, Trying to run together.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..hey! Wait! Aah, could you explain to me what is happening? Who are you and what is this?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Vinny was surprised again to hear the voice of the Elite Color unicorn screaming.",
+        "type": "action"
+    },
+
+    {
+        "value": "OH! COME BACK HERE! I'VE NOT FINISHED YET!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The unicorn tried to get up against the pieces of ice on the body and some parts of the body on blue fire.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm James! Now don't look back! Focus on the escape!",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
