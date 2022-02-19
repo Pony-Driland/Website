@@ -5139,6 +5139,7 @@
     },
 
     {
+        "set": { "playlistPlay": "bad-mystery" },
         "value": "James reduces the intensity of the magic glow and looked around quietly. Vinny was extremely curious and soon asked a little worried.",
         "type": "action"
     },
