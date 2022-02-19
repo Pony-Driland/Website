@@ -4933,6 +4933,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "cave-ambient", "type": "show" }
+            ]
+        },
         "value": "Vinny ended up falling into a cave, stopping in a smooth place inside the cave. Then everything slowly calmed down, and James started to feel a lot calmer seeing Vinny's presence.",
         "type": "action"
     },
