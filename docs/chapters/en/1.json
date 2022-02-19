@@ -4611,7 +4611,7 @@
     },
 
     {
-        "set": { "playlistPlay": "battle" },
+        "set": { "playlistPlay": "tense-mystery" },
         "value": "Stop right there! You're not going anywhere! We've waited a long time to catch this worm!",
         "character": "???",
         "type": "dialogue"
