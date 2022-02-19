@@ -4409,7 +4409,7 @@
 
     {
         "set": {
-            "playlistPlay": "calm",
+            "playlistPlay": "dark-ambient-melodies",
             "sfx": [
                 { "value": "night-ambient", "type": "show" }
             ]

@@ -94,6 +94,10 @@ var storyCfg = {
     // Playlist
     playlist: {
 
+        'dark-ambient-melodies': [
+            { id: 'LptTKfrHSi4', type: 'youtube' }
+        ],
+
         'silly': [
             { id: 'ljTfHitG0eA', type: 'youtube' }
         ],
