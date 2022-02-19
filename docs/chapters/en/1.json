@@ -4416,6 +4416,145 @@
         },
         "value": "Viny just felt the night wind approaching, the market was very deserted, and only Vinny found the sign written \"Closed\". Vinny wait a little bit, leaning against some wall like a boss. But nothing interesting happened. Vinny just felt the night breeze slowly getting stronger.",
         "type": "action"
+    },
+
+
+    {
+        "value": "Ok ok, Fuck! RAYANE!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was looking at nothing during some seconds, walking towards the forest where the smoke was, during the beginning of the route one, Vinny look at the compass and then I turn off the cell phone. The trees that took care of the environment were blocking the moonlight, darkening the place even more, and the place was slowly getting cooler with some bursts of weak luminous dust that circulated around. ",
+        "type": "action"
+    },
+
+    {
+        "value": "This one likes hide and seek. Oh fuck. Wait, what is this?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Carefully Vinny walk towards where he thought I saw the smoke. Vinny were slowly seeing some small tracks on the floor indicating that something was happening there. It seems to be something that happened a few hours ago. Vinny talks very quietly, almost without sound coming out of he mouth, and Vinny go towards the path.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah! I'm just fucking me with this shit.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The marks were slowly getting clearer. Vinny would find some traces of burns, but the traces looked like freezing instead of burning on some plants that were around.",
+        "type": "action"
+    },
+
+    {
+        "value": "Where's Rayane? This is getting a little scary.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Nothing interesting happened, Vinny just heard the sounds of freezing fire trails and little by little things got a little colder and icy as Vinny got closer to the place.",
+        "type": "action"
+    },
+
+    {
+        "value": "But what the fuck happened here? Cold Fire? What the fuck is that?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "After an analysis by Vinny, slowly Vinny felt a slight glow of blue magic while slowly the forest climate got a little colder. Vinny was feeling more fear, but he thought for a few seconds, trying to get some determination, then he moved closer.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wooow. Is that some meteor? What a weird thing. Is there a way to open this thing?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny soon saw the origin of the glow, it seemed to be a force field, but it seemed very frozen and kept emitting an aura of magic. And around it Vinny could see a very big impact mark that something tried to hit this mysterious object.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow! It really is a meteor!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny try to touch the object. When Vinny touched it, it was as if Vinny were going to touch ice, but a very cold ice that almost burns he paw.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ouch! COLD! Is space really that cold?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny look for something around during some seconds. Vinny just found some pieces of metal thrown around and a broken sword on the ground.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait? Oh! A sword! Maybe this will help me a little.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny take the sword, trying to poke the object. The object cracked very slightly, it seems that it was starting to weaken because of time. And as Vinny took the sword, Vinny saw traces of leftover ammunition from some firearm. Vinny was surprised and worried to find the ammunition. I need to leave this place,",
+        "type": "action"
+    },
+
+    {
+        "value": "Ammunition? A...Are there firearms here? D..Did not like. No no no... ",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny keep poking the object, the object cracked more and more, and slowly began to open, leaving a small cold ember from inside while Vinny heard the sound of some body coming out of it.",
+        "type": "action"
+    },
+
+    {
+        "value": "My God! Now it's an alien within a dimension of other aliens!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny try to look inside the crack and poke more. The object had a size for a pony to fit inside it. And while the object cracked more and more. There would come a point where it would split in half, and VInny would see a mysterious unicorn inside it. Vinny didn't know if the unicorn were dead or passed out. Along with him was some equipment of unknown technology.",
+        "type": "action"
+    },
+
+    {
+        "value": "What! Okay, that's cool. Oh yeah.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny drop the sword and poke the unicorn and ask.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey? Are you ok?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
