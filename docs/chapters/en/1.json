@@ -4555,6 +4555,47 @@
         "value": "Hey? Are you ok?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "when Vinny looked closer, it looked like the body was breathing very weakly, but the unicorn was still passed out. During the silence, Vinny began to hear some weird sounds of leaves being shaken.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What? Oh no no no. Whoever it is, go away!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny quickly looked at what was on the floor., one item looked like a map, others looked like some kind of notebook or tablet, others looked like some kind of GPS, and variety of other devices you couldn't figure out what it was. The leaves began to sway more.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah! Come on! Leave me in peace! Please!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "sfx": [
+                { "value": "rainbow-ray", "type": "show" }
+            ],
+            "item": [{
+                "id": "tablet",
+                "owner": "vinny",
+                "amount": 1
+            }, {
+                "id": "map",
+                "owner": "vinny",
+                "amount": 1
+            }]
+        },
+        "value": "Vinny take the map and the tablet and run to some bush nearby to see who was coming. When Vinny try to leave the place. Vinny is interrupted by a rainbow ray that almost hit he right.",
+        "type": "action"
     }
 
 ]
