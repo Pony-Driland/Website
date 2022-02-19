@@ -5095,7 +5095,12 @@
     },
 
     {
-        "value": "Vinny was even more surprised and tried to think of his next words. So James' GPS started beeping during the conversation. ",
+        "set": {
+            "sfx": [
+                { "value": "radar-beep", "type": "show" }
+            ]
+        },
+        "value": "Vinny was even more surprised and tried to think of his next words. So James' Radar started beeping during the conversation. ",
         "type": "action"
     },
 
@@ -5106,6 +5111,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "Yes I am! Wait, my Radar is beeping?",
         "character": "James",
         "type": "dialogue"
@@ -5122,6 +5128,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "radar-beep", "type": "hide" }
+            ]
+        },
         "value": "Oh no.",
         "character": "James",
         "type": "dialogue"
