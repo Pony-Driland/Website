@@ -4967,7 +4967,7 @@
     },
 
     {
-        "set": { "playlistPlay": "think" },
+        "set": { "playlistPlay": "bad-think" },
         "value": "Vinny was slightly anxious about trying to say something to James, so joined close to James.",
         "type": "action"
     },
