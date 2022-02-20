@@ -193,9 +193,9 @@ storyData.youtube = {
 
                                         if (gtag) {
                                             gtag('event', 'chapter', {
-                                                event_label: `Chapter ${storyData.chapter.selected}`,
+                                                event_chapter: `Chapter ${storyData.chapter.selected}`,
                                                 event_category: 'song_playing',
-                                                value: `${jsonVideo.provider_name} - ${jsonVideo.author_url} - ${jsonVideo.title}`
+                                                song: `${jsonVideo.provider_name} - ${jsonVideo.author_name} - ${jsonVideo.title}`
                                             });
                                         }
 
