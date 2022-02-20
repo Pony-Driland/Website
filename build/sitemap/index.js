@@ -21,7 +21,7 @@ fs.readdir(folderPath, (err, files) => {
         files.forEach(file => {
 
             data.count++;
-            smChapter.write({ url: '/chapter.html?v=' + data.count, changefreq: 'daily', priority: 0.3 });
+            smChapter.write({ url: '/chapter/' + data.count + '.html', changefreq: 'daily', priority: 0.3 });
 
         });
 
