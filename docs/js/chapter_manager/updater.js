@@ -59,7 +59,7 @@ cacheChapterUpdater.scrollData = function() {
     }
 
     // Google
-    if (gtag) {
+    if (typeof storyCfg.gtag === 'string' && gtag) {
         gtag('event', 'chapter', {
             event_chapter: `Chapter ${storyData.chapter.selected}`,
             event_category: 'line',

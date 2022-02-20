@@ -191,7 +191,7 @@ storyData.youtube = {
                                         console.log(`Youtube video embed loaded!`, storyData.youtube.videoID);
                                         storyData.youtube.embed = jsonVideo;
 
-                                        if (gtag) {
+                                        if (typeof storyCfg.gtag === 'string' && gtag) {
                                             gtag('event', 'chapter', {
                                                 event_chapter: `Chapter ${storyData.chapter.selected}`,
                                                 event_category: 'song_playing',
