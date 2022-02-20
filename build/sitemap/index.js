@@ -4,9 +4,8 @@ const fs = require('fs');
 const { SitemapStream } = require('sitemap');
 
 // Get Fic Data
-const fileName = 'sitemap.xml';
 const ficData = require('../publicFolder')();
-const smStream = new SitemapStream({ hostname: 'https://' + ficData.domain + '/' });
+const chapterMap = fs.createWriteStream(path.join(ficData.path, './sitemap/chapter.xml'));
 console.log(ficData);
 
 // Read Data
@@ -16,17 +15,19 @@ fs.readdir(folderPath, (err, files) => {
 
         // Data
         const data = { count: 0 };
+        const smChapter = new SitemapStream({ hostname: 'https://' + ficData.config.domain + '/' });
 
         // Read Files
         files.forEach(file => {
 
             data.count++;
-            smStream.write({ url: '/chapter.html?v=' + data.count, changefreq: 'daily', priority: 0.3 });
+            smChapter.write({ url: '/chapter.html?v=' + data.count, changefreq: 'daily', priority: 0.3 });
 
         });
 
-        smStream.end();
-        console.log(smStream);
+        // Complete
+        smChapter.pipe(chapterMap);
+        smChapter.end();
 
     } else {
         console.error(err);
