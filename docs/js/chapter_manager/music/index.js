@@ -54,7 +54,7 @@ storyData.youtube = {
             // Storage Volume
             const storageVolume = Number(localStorage.getItem('storyVolume'));
             if (isNaN(storageVolume) || !isFinite(storageVolume) || storageVolume < 0 || storageVolume > 100) {
-                if (storyData.youtube.volume < 1) {
+                if (typeof storyData.youtube.volume !== 'number' || isNaN(storyData.youtube.volume) || !isFinite(storyData.youtube.volume)) {
                     storyData.youtube.volume = 100;
                     storyData.youtube.player.setVolume(100);
                     localStorage.setItem('storyVolume', 100);
