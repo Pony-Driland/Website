@@ -26,9 +26,9 @@ var urlUpdate = function(url, title, isPopState = false) {
     // Google
     if (gtag) {
         gtag('event', 'url', {
-            event_label: title,
+            event_title: title,
             event_category: 'open_url',
-            value: url
+            url: url
         });
     }
 
