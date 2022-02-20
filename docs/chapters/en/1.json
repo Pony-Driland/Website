@@ -5211,7 +5211,7 @@
     },
 
     {
-        "value": "Rayane... I thought you had abandoned me, let me see your beautiful face one more time, enough drama.",
+        "value": "Rayane. I thought you had abandoned me, let me see your beautiful face one more time, enough drama.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -5356,6 +5356,110 @@
 
     {
         "value": "Vinny tries to talk more cheerful at the end. James was worried about the situation to see that Vinny was giving himself to Rayane little by little more and more.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes, my eyes, pay close attention to them and they can say a lot about me more than words~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny! No! Rayane! What are you doing?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I'm trying to be nice to someone. And you? You spent years just working on your silly research. Not getting anywhere. Are you going to stay there complaining about life? ",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laughed a little maliciously and provocative. James would get very uncomfortable and then just say it.",
+        "type": "action"
+    },
+
+    {
+        "value": "I've got my eye on you. Stop manipulating others.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ok~ Feel free. You silly scientist~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "set": { "playlistPlay": null },
+        "value": "Rayane reduced the magic light, leaving James in the dark while she prepared the magic to spawn an item.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? What? Hey!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hello James.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Idiot!",
+        "character": "James",
+        "type": "think"
+    },
+
+    {
+        "value": "James was disgusted looking at Vinny's reaction and responded.",
+        "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": "think" },
+        "value": "Hi. I can't believe you're doing this.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Calm down James, everything will be fine.. What are you doing Rayane?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    {
+        "value": "Heh. Getting something for our evening meal. I imagine you won't want to go hungry tonight.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Meal? A... Are you serious?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James speaks completely confused, trying to understand what is happening.",
+        "type": "action"
+    },
+
+    {
+        "value": "Uh. So we're finally going to have some time together? it wasn't in the dark that I was imagining this.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny speaks with a hopeful face. James was slowly starting to give up on the situation and was completely annoyed.",
         "type": "action"
     }
 
