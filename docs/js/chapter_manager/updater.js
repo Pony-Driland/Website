@@ -60,13 +60,11 @@ cacheChapterUpdater.scrollData = function() {
 
     // Google
     if (gtag) {
-
         gtag('event', 'chapter', {
             event_label: `Chapter ${storyData.chapter.selected}`,
             event_category: 'line',
             value: storyData.chapter.line
         });
-
     }
 
 };
