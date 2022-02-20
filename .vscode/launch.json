@@ -34,15 +34,6 @@
         {
             "type": "pwa-node",
             "request": "launch",
-            "name": "Build Google Analytics",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "program": "${workspaceFolder}\\build\\google-analytics\\index.js"
-        },
-        {
-            "type": "pwa-node",
-            "request": "launch",
             "name": "Deploy",
             "skipFiles": [
                 "<node_internals>/**"
