@@ -4972,7 +4972,7 @@
     },
 
     {
-        "set": { "playlistPlay": "bad-think" },
+        "set": { "playlistPlay": "bad-mystery" },
         "value": "Vinny was slightly anxious about trying to say something to James, so joined close to James.",
         "type": "action"
     },
@@ -5050,7 +5050,7 @@
                 { "value": "levitation-magic", "type": "show" }
             ]
         },
-        "value": "James continued with the expression of being extremely surprised when he used magic to levitate his Vinny's phone. Vinny was a little worried and surprised to see his cell phone being levitated.",
+        "value": "James continued with the expression of being extremely surprised when he used magic to levitate the Vinny's phone. Vinny was a little worried and surprised to see his cell phone being levitated.",
         "type": "action"
     },
 
@@ -5111,7 +5111,6 @@
     },
 
     {
-        "set": { "playlistPlay": null },
         "value": "Yes I am! Wait, my Radar is beeping?",
         "character": "James",
         "type": "dialogue"
@@ -5139,7 +5138,6 @@
     },
 
     {
-        "set": { "playlistPlay": "bad-mystery" },
         "value": "James reduces the intensity of the magic glow and looked around quietly. Vinny was extremely curious and soon asked a little worried.",
         "type": "action"
     },
