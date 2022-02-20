@@ -595,7 +595,7 @@ var openChapterMenu = function(params = {}) {
                         $('<span>', { class: 'card-text small ml-1' }).text(`${storyData.lettersCount[chapter]} Letters`),
                         $('<span>', { class: 'card-text small ml-1' }).text(`${storyData.wordsCount[chapter]} Words`),
                         $('<p>', { class: 'card-text small' }).text(storyCfg.chapterName[chapter].description),
-                        $('<a>', { class: 'btn btn-primary', href: `/?path=read-fic&title=Pony%20Driland?chapter=${chapter}`, chapter: chapter }).click(function() {
+                        $('<a>', { class: 'btn btn-primary', href: `/chapter/${chapter}.html`, chapter: chapter }).click(function() {
 
                             // Start Chapter
                             newRead(Number($(this).attr('chapter')));
