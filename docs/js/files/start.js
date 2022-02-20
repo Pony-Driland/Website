@@ -23,6 +23,15 @@ var urlUpdate = function(url, title, isPopState = false) {
     document.title = title;
     storyData.urlPage = url;
 
+    // Google
+    if (gtag) {
+        gtag('event', 'url', {
+            event_label: title,
+            event_category: 'open_url',
+            value: url
+        });
+    }
+
     // Pop State
     if (!isPopState) {
         if (typeof url === 'string' && url.length > 0) {
