@@ -28,8 +28,6 @@ fs.readdir(folderPath, (err, files) => {
         smStream.end();
         console.log(smStream);
 
-        console.log(data);
-
     } else {
         console.error(err);
     }
