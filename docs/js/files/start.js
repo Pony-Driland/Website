@@ -24,7 +24,7 @@ var urlUpdate = function(url, title, isPopState = false) {
     storyData.urlPage = url;
 
     // Google
-    if (gtag) {
+    if (typeof storyCfg.gtag === 'string' && gtag) {
         gtag('event', 'url', {
             event_title: title,
             event_category: 'open_url',
