@@ -79,6 +79,7 @@ var storyCfg = {
     // Chapters
     chapterName: {
         1: {
+            color: '#000',
             title: 'This is not my world',
             description: 'The protagonist\'s early days in the world of Pony Driland. Something mysterious has happened and we need to discover the basics about this mysterious place.'
         }
