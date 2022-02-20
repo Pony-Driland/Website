@@ -191,6 +191,14 @@ storyData.youtube = {
                                         console.log(`Youtube video embed loaded!`, storyData.youtube.videoID);
                                         storyData.youtube.embed = jsonVideo;
 
+                                        if (gtag) {
+                                            gtag('event', 'chapter', {
+                                                event_label: `Chapter ${storyData.chapter.selected}`,
+                                                event_category: 'song_playing',
+                                                value: `${jsonVideo.provider_name} - ${jsonVideo.author_url} - ${jsonVideo.title}`
+                                            });
+                                        }
+
                                         // Info
                                         storyData.music.author_name = jsonVideo.author_name;
                                         storyData.music.author_url = jsonVideo.author_url;
