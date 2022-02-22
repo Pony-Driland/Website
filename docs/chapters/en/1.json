@@ -5459,6 +5459,102 @@
     {
         "value": "Vinny speaks with a hopeful face. James was slowly starting to give up on the situation and was completely annoyed.",
         "type": "action"
+    },
+
+    {
+        "value": "Yes~ Today I'm going to share my night's sleep so I'm not alone today~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was doing other silly grin before finishing spawning a picnic box. James was completely taken aback and had no words to describe the moment. He was extremely suspicious of the situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "I... I have no words to describe it. What the fuck is this?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Long story James... if you want you can also come here to share the moment too, by the way how did you meet Kenny and how did you stop in that place before turning into a fireball of ice?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A picnic cloth had already appeared for the picnic box. Soon after, other objects appeared, such as a very spacious tent for 3 ponies and a bonfire.",
+        "type": "action"
+    },
+
+    {
+        "value": "No! nono! This must be a joke. Are you really going camping with us because of Vinny?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ Yes James. You have your time to choose between trusting me or being alone in the cave. The choice is all yours. Vinny has already made his choice~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane poke James' nose gently to tease him. James was a little paralyzed not knowing what to answer and what to do, confused, trying to think of an answer.",
+        "type": "action"
+    },
+
+    {
+        "value": "But...but.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was extremely suspicious, so he responded, threatening Rayane a bit.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ok ok. I accept the invitation. But if I feel any cheating, I will attack you.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Sssh~ Stop being a curmudgeon, say something about yourself to all of us.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane lay on the floor while using levitation magic to start roasting some marshmallows on the fire. James still had the feeling of being suspicious, so he started with a little care to talk a little about himself.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... About my story, I've been here in Pony Driland for many years. I have a lot of experience with this place due to several factors. Quick little summary, Kenny saved me during a problem I was solving with Elite Color. He was just a novice traveler at that time.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well, when you woke up, you were passed out. What were you doing before you passed out? Were you running away or did you do something for Elite Color?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes, I was being chased. And for some mysterious reason, Rayane is also chasing me!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane made a little laugh, trying to make the environment funnier while doing a little grin face. Vinny ignored James' situation and laughed a little too and just replied.",
+        "type": "action"
     }
 
 ]
