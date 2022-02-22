@@ -5553,8 +5553,36 @@
     },
 
     {
-        "value": "Rayane made a little laugh, trying to make the environment funnier while doing a little grin face. Vinny ignored James' situation and laughed a little too and just replied.",
+        "value": "Rayane made a little laugh, trying to make the environment funnier while doing a little grin face. Vinny ignored James' situation and laughed a little too and just replied. Vinny was trying to make sense of the explanation as he remembered what had happened several hours ago. But he felt a little nervous during the conversation.",
         "type": "action"
+    },
+
+    {
+        "value": "My story I think it's okay to tell since we're alone, I kind of remember it very well, I was in my world talking to a friend and she sent me a very big snack. Weeeeell, but in this snack I had a bracelet. Then the bracelet exploded and now I'm here. Maybe here is a huge snack I don't know.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James made a slight poker face, and just accepted the explanation and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Everyone has a similar story related to something routine, and suddenly one of the objects pulls you into Pony Driland's dimension. But wait. Did you say a snack? A snack? How inconvenient to be teleported here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James then went back to talking more seriously and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, I was just bringing home the results of my research and my inventions. I'm an independent scientist. And you may have already noticed that for this reason I draw a lot of attention from danger. You should go to Kenny's House.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
