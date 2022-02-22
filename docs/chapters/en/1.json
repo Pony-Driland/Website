@@ -5570,6 +5570,17 @@
 
     {
         "value": "Everyone has a similar story related to something routine, and suddenly one of the objects pulls you into Pony Driland's dimension. But wait. Did you say a snack? A snack? How inconvenient to be teleported here.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little and answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "I kind of lived eating at any moment.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -5580,8 +5591,8 @@
     },
 
     {
-        "value": "Well, I was just bringing home the results of my research and my inventions. I'm an independent scientist. And you may have already noticed that for this reason I draw a lot of attention from danger. You should go to Kenny's House.",
-        "character": "Vinny",
+        "value": "Okay okay. Silly you. Well, I was just bringing home the results of my research and my inventions. I'm an independent scientist. And you may have already noticed that for this reason I draw a lot of attention from danger. You should go to Kenny's House.",
+        "character": "James",
         "type": "dialogue"
     }
 
