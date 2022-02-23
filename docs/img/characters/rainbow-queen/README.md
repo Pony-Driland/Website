@@ -4,7 +4,7 @@
 
 ### Normal Version (WIP)
 
-<img src="https://github.com/Pony-Driland/Website/blob/main/docs/img/characters/rainbow-queen/ref-wip.gif?raw=true" height="500">
+<img src="https://github.com/Pony-Driland/Website/blob/main/docs/img/characters/rainbow-queen/wip/ref-1.gif?raw=true" height="500">
 <a href="https://derpibooru.org/images/2717471" target="_blank">Derpibooru Page</a>
 
 ### Dark Version
