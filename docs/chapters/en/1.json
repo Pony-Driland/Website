@@ -5896,6 +5896,28 @@
         "value": "Well, okay.",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then finished eating her marshmallow and said a little more friendly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny, I can help you with the photography~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wait. You taking a picture?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James think about what she's going to do this time now.",
+        "type": "action"
     }
 
 ]
