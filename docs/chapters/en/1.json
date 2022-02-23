@@ -5393,7 +5393,6 @@
     },
 
     {
-        "set": { "playlistPlay": null },
         "value": "Rayane reduced the magic light, leaving James in the dark while she prepared the magic to spawn an item.",
         "type": "action"
     },
@@ -5422,7 +5421,6 @@
     },
 
     {
-        "set": { "playlistPlay": "think" },
         "value": "Hi. I can't believe you're doing this.",
         "character": "James",
         "type": "dialogue"
