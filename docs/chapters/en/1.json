@@ -5685,9 +5685,20 @@
     },
 
     {
-        "value": "Nah. Vinny, you don't have to worry too much about your friends. If the day comes when you can return home, you will be returned to exactly the exact moment you were sucked in. It's like it was all just a dream. This is because this dimension has an extremely slower time arrow compared to the other common dimensions, but we don't realize this because we are living within it.",
+        "value": "Nah. Vinny, you don't have to worry too much about your friends. If the day comes when you can return home, you will be returned to exactly the exact moment you were sucked in. It's like it was all just a dream. This is because this dimension has an extremely slower time arrow compared to the other common dimensions, but we don't realize this because we are living within it. It's much easier for you to miss your friends than they miss you for this reason.",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little scared to hear James' words. While Vinny was scared, he was also confused about the fate. This factor leaves Vinny emotionally uneasy.",
+        "type": "action"
+    },
+
+    {
+        "value": "Is this true? T..the true? My God.",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
