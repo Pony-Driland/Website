@@ -5794,6 +5794,108 @@
         "value": "Heh, okay sir scientist. So, are everyone okay there? I was thinking deeply about.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "I'm fine... Just some memories. I haven't thought about my past in many years. But don't worry, I'll be fine.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Slowly Rayane made some light expression of trying to show that she's feeling good while using the magic to hold the third marshmallow, getting ready to eat. Vinny looked at Rayane, starting to think about what she could be hiding.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. James, I'll borrow the phone, you can feel free, but be aware that the battery or energy runs out, and in this world there is no cable to recharge. No need to be ashamed, there's nothing you already have I haven't seen it. But it can be very bizarre things since our worlds are different.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then felt excited and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "And I'm sorry Rayane for making you remember things, I had friends who were just like you.We had a lot of good times but because of some details they became trauma and they don't even want to remember, even the good times we had.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Aww~ Don't worry, I already told you I'm fine.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then tried to have determination in his feelings and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "HEEEY! This moment requires a selfie. They are very famous in my world. Let's register this first moment.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny Pick up the cell phone.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait, there was an update, it will take time to turn on.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little as he waited for his cell phone. James and Rayane watched him, and were a little confused about the word \"Selfie\".",
+        "type": "action"
+    },
+
+    {
+        "value": "What? What will he do this time?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "And don't worry, I think. All tablet cell phones had a mode called airplane mode that doesn't let any signal go out of the cell.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay? Well, don't worry so much about the battery. When I find out how his energy works, I can create a charger for him.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James looked at Rayane again, but this time he noticed something different, Rayane was showing a different feeling, she seemed to feel a little lonely.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Rayane?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Sshh. Private matters. But I'm liking the idea of this selfie thing.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well, okay.",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
