@@ -5671,6 +5671,23 @@
     {
         "value": "Vinny looks at Rayane again, but Rayane reacted with a slight smirk when she noticed Vinny's looks, and just gave a teasing look back. Vinny realizing this, he just went back to looking at the bonfire.",
         "type": "action"
+    },
+
+    {
+        "value": "Well, and your tablet James? Was there something important in it? if you want later I'll help you make another one I'll analyze my phone which is like a tablet, if it's like my world.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was analyzing Vinny's words, so when James noticed that Vinny was getting sad, James was trying to say a fact to make him feel calmer.",
+        "type": "action"
+    },
+
+    {
+        "value": "Nah. Vinny, you don't have to worry too much about your friends. If the day comes when you can return home, you will be returned to exactly the exact moment you were sucked in. It's like it was all just a dream. This is because this dimension has an extremely slower time arrow compared to the other common dimensions, but we don't realize this because we are living within it.",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
