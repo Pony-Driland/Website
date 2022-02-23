@@ -5738,7 +5738,18 @@
     },
 
     {
-        "value": "Pixels? Why pixels? I've never seen a world made up of pixels. This is too bizarre, am I a pony mixed with machine? What happened to my real body? It doesn't make sense for me to simply be transformed, that doesn't exist. Or are the rules of this dimension different from my original dimension? ",
+        "value": "Pixels? Why pixels? I've never seen a world made up of pixels. This is too bizarre, am I a pony mixed with machine? What happened to my real body? It doesn't make sense for me to simply be transformed, that doesn't exist. Or are the rules of this dimension different from my original dimension?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny then poked his own body, trying to see if something different happened.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes, this really is my body. Is my real body lost somewhere like a Matrix? Maybe everyone here is in the same situation as me. There must be some very specific reason we are all in this world. I am not liking this. I need to find out the source of why I'm here to get home.",
         "character": "Vinny",
         "type": "think"
     }
