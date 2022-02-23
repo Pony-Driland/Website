@@ -5780,7 +5780,7 @@
 
     {
         "set": { "playlistPlay": "think" },
-        "value": "Erase stuff? No thanks. I don't want to see what these things in the other pony's dimension can be.",
+        "value": "Erase stuff? No thanks. I don't want to see what these things in the other pony's dimension can be. But don't worry, I learn interdimensional language fast. I'm trained in it.",
         "character": "James",
         "type": "dialogue"
     },
@@ -5791,7 +5791,7 @@
     },
 
     {
-        "value": "Heh, okay. So, are everyone okay there? I was thinking deeply about.",
+        "value": "Heh, okay sir scientist. So, are everyone okay there? I was thinking deeply about.",
         "character": "Vinny",
         "type": "dialogue"
     }
