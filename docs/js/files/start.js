@@ -431,7 +431,7 @@ $(function() {
                         $('<a>', { id: 'fic-chapter', class: 'nav-item nav-link' }),
 
                         // Read Fanfic
-                        $('<a>', { id: 'fic-start', class: 'nav-item nav-link' + readButtonDisabled, href: '/?path=read-fic&title=Pony%20Driland' }).text('Read').prepend(
+                        $('<a>', { id: 'fic-start', class: 'nav-item nav-link font-weight-bold' + readButtonDisabled, href: '/?path=read-fic&title=Pony%20Driland' }).text('Read Fic').prepend(
                             $('<i>', { class: 'fab fa-readme mr-2' })
                         ).click(function() {
                             if (!readButtonDisabled) {
