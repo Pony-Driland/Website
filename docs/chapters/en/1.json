@@ -5904,6 +5904,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "Vinny, I can help you with the photography~",
         "character": "Rayane",
         "type": "dialogue"
