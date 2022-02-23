@@ -5594,6 +5594,39 @@
         "value": "Okay okay. Silly you. Well, I was just bringing home the results of my research and my inventions. I'm an independent scientist. And you may have already noticed that for this reason I draw a lot of attention from danger. You should go to Kenny's House.",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little worried, but he tried to keep the conversation going in a positive way.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, slowly I'm forgetting a lot more about my past, although what's left keeps gnawing at me inside, but I'm looking at myself here as a 2nd chance to start over maybe.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James continued to show disapproval of Vinny's attitude. Vinny would does a small nervous smile, then look at Rayane and answer.",
+        "type": "action"
+    },
+
+    {
+        "value": "And you Rayane? Is the marshmallow good there? Where I lived there was a DJ or a very famous singer named Marshmallows. And what was your story like how did you end up here? it sure can't be worse than a snack eating you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little to try to keep the atmosphere amusing while looking at Rayane. James was still suspicious of the situation, not really enjoying the atmosphere of free conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Were you sucked into a snack? This for a story that came out of someone's joke... I've heard of several different objects, but not a snack.",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
