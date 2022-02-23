@@ -5608,6 +5608,12 @@
     },
 
     {
+        "value": "Second chance, you made a good choice. No one here is sure if they're leaving here one day. Hope you are aware of this.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
         "value": "James continued to show disapproval of Vinny's attitude. Vinny would does a small nervous smile, then look at Rayane and answer.",
         "type": "action"
     },
@@ -5624,9 +5630,47 @@
     },
 
     {
-        "value": "Were you sucked into a snack? This for a story that came out of someone's joke... I've heard of several different objects, but not a snack.",
-        "character": "James",
+        "value": "Heh~ Great marshmallows. Your nose is also as cute as a marshmallow when I boop~",
+        "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was getting ready to answer the question, so Rayane spoke with a tone of voice trying to hide her feelings a little, trying not to talk too much about it.",
+        "type": "action"
+    },
+
+    {
+        "value": "I've always been very fond of the art of using swords. It was a night when I was alone in the basement where my grandparents kept their swords from old times. One of those boxes, that's what sucked me in.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was curious to hear this, to see the progress of the dialogues, he began to say.",
+        "type": "action"
+    },
+
+    {
+        "value": "I see, I still haven't decided if I like this dimension or not, I don't have an opinion, and yes James, a snack ate me, my life was pretty much like that.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles lightly before continuing to answer. So Vinny showed a slight feeling of sadness as he continued saying.",
+        "type": "action"
+    },
+
+    {
+        "value": "Just messes and random things happening, but now I'm worried. What must my friends be thinking? I miss a lot but as I said, go ahead and let's live. It seems that you two were the best alternative I had to not feel alone.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at Rayane again, but Rayane reacted with a slight smirk when she noticed Vinny's looks, and just gave a teasing look back. Vinny realizing this, he just went back to looking at the bonfire. ",
+        "type": "action"
     }
 
 ]
