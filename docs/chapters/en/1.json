@@ -5730,6 +5730,23 @@
         "value": "Nothing. I'm fine. Sorry my way. Heh~ We can go back to our marshmallow moment.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Is this true? T..the true? My God.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny looked back at the SmartMoby, trying to understand the motive about this is a screen built into his arm. Vinny then noticed small pixels on his body, they seems to be some sort of leftover wounds from Elite Color's Pony.",
+        "type": "action"
+    },
+
+    {
+        "value": "Pixels? Why pixels? I've never seen a world made up of pixels. This is too bizarre, am I a pony mixed with machine? What happened to my real body? It doesn't make sense for me to simply be transformed, that doesn't exist. Or are the rules of this dimension different from my original dimension? ",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
