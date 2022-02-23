@@ -5699,6 +5699,39 @@
         "value": "Is this true? T..the true? My God.",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "So James realized he had accidentally made Vinny's feelings worse, so he tried to change the subject.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, about the phone... Yes the phone! I was wanting to borrow your phone! This device is much more important than you might think.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny kept quiet, not knowing what to say for a few seconds, then James looked at Rayane, and was a little surprised to see that Rayane was slightly surprised by the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Rayane? What happened? I've never seen you with that face. You always laugh when something fails me!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then returned to show a more serious behavior and just responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "Nothing. I'm fine. Sorry my way. Heh~ We can go back to our marshmallow moment.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
