@@ -5749,9 +5749,51 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "Yes, this really is my body. Is my real body lost somewhere like a Matrix? Maybe everyone here is in the same situation as me. There must be some very specific reason we are all in this world. I am not liking this. I need to find out the source of why I'm here to get home.",
         "character": "Vinny",
         "type": "think"
+    },
+
+
+    {
+        "value": "Rayane used magic to serve the Marshmallows for Vinny and James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Marshmallows here, they're very warm and cute like Vinny's nose~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Marshmallow! Well, James, don't worry, I can borrow my phone, but you wouldn't know how to use it, and you'd have to erase a few things recorded on it.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little uncomfortable thinking about the cell phone stuff.",
+        "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": "think" },
+        "value": "Erase stuff? No thanks. I don't want to see what these things in the other pony's dimension can be.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled a little and happily picked up a marshmallow.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh, okay. So, are everyone okay there? I was thinking deeply about.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
