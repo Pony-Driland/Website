@@ -6020,6 +6020,45 @@
         "value": "Good!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Let's see how the photo now.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was laughing a little at James, so during this moment Vinny took his cell phone back.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh, It was good James.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was outraged at Rayane's silly prank.",
+        "type": "action"
+    },
+
+    {
+        "value": "Shut up!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ it's perfect~ Don't forget to clean your face afterwards.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little and applauded Rayane.",
+        "type": "action"
     }
 
 ]
