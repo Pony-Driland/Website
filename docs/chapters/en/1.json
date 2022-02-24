@@ -6109,6 +6109,73 @@
     {
         "value": "James just disapproved of Vinny's words, making Vinny feel disappointed by James' reaction. ",
         "type": "action"
+    },
+
+    {
+        "value": "Okay, how many hours are there in your dimension?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James got a little confused when he looked at the time marker on Vinny's cell phone screen. Vinny would be amazed and then respond.",
+        "type": "action"
+    },
+
+    {
+        "value": "WHAT? As well? There is only 1 hour. 8 pm, 4 am, 2 pm. Are you ok?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I've never seen that time marker. That doesn't exist on my planet and much less here. You will have to change that. Or you'll have to stare at the sun cycle clock.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well, summing it all up and then some. My clock takes 24h for my planet to do a complete \"turn\", doing in 24h to be day, night, and day again.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah, at least it doesn't have a time zone system. It is extremely annoying to find planets with a time zone system and keep changing the clock all the time.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gave James the cell phone and answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "Weeeeeeeeeeeeeeell. Okay. James, Take a look, I'll see where I'm going to sleep too if I go. Good luck there. ( ͡° ͜ʖ ͡°)",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny just left James alone, and went into the tent to go see Rayane. James was slightly surprised as he answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "What?! Okay, silly. Well, wait, airplane mode? Are you telling me this phone flies? Is that a drone? Vinny? Vinny?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James looked for Vinny for a few seconds before seeing that Vinny had already entered the tent.",
+        "type": "action"
+    },
+    {
+        "value": "Fine...",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
