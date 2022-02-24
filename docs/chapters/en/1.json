@@ -5928,6 +5928,7 @@
     },
 
     {
+        "set": { "playlistPlay": "happyness" },
         "value": "Vinny let Rayane levitate the cell phone with the front camera activated. Rayane was looking very curiously at Vinny cell phone, she was analyzing every detail of the cell phone for a few seconds. Then she would do a little smirk face and get ready for the photo.",
         "type": "action"
     },
@@ -6000,7 +6001,7 @@
     },
 
     {
-        "value": "when James is distracted, Rayane takes the marshmallow on his face, and James comes out in the picture with a face dirty with marshmallow.",
+        "value": "When James is distracted, Rayane takes the marshmallow on his face, and James comes out in the picture with a face dirty with marshmallow.",
         "type": "action"
     },
 
