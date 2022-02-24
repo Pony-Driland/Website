@@ -5917,8 +5917,108 @@
     },
 
     {
-        "value": "James think about what she's going to do this time now.",
+        "value": "James think about what Rayane's going to do this time now. Vinny giggles a little and just said.",
         "type": "action"
+    },
+
+    {
+        "value": "Let's go, be careful not to accidentally record a video.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny let Rayane levitate the cell phone with the front camera activated. Rayane was looking very curiously at Vinny cell phone, she was analyzing every detail of the cell phone for a few seconds. Then she would do a little smirk face and get ready for the photo.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmm. interesting~ This is a nice mirror.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little worried, so he said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. I see this!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane continued the smirk face, and levitated the marshmallow gently around James' face, teasing him in the process. James felt uncomfortable and kept staring at the marshmallow very suspiciously.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane, stop.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laughed a little teasingly and then Vinny said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes! I'm ready for the photo, you need just press the button on the screen there, that circle. Everyone! Say cheese!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh, Alright~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane makes a silly mischievous face and gets ready to take the picture.",
+        "type": "action"
+    },
+
+    {
+        "value": "Cheese~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James just showed his feeling of distrust and spoke in an angry way.",
+        "type": "action"
+    },
+
+    {
+        "value": "Cheese...",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "when James is distracted, Rayane takes the marshmallow on his face, and James comes out in the picture with a face dirty with marshmallow.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAAH! RAYANE!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny said happily.",
+        "type": "action"
+    },
+
+    {
+        "value": "Good!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
