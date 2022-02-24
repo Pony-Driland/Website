@@ -148,7 +148,6 @@ var storyCfg = {
         'happyness': [
             { id: 'AVxQSpnR7g8', type: 'youtube' },
             { id: 'uFKo2LYu2Zg', type: 'youtube' },
-            { id: 'nJSQXalUq2o', type: 'youtube' },
         ],
 
         'tech-problem': [
