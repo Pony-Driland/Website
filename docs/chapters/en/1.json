@@ -6059,6 +6059,56 @@
     {
         "value": "Vinny laughed a little and applauded Rayane.",
         "type": "action"
+    },
+
+    {
+        "value": "Very good very good! Well, if you have any questions about my phone, the time is now. I'm going to turn it off to save the phone energy.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ Don't worry, I'm very satisfied with the result. I'll be in the tent making my bed~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane would give Vinny and James a teasing look, then Rayane wag her tail a little and entered the tent.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny was a little surprised as he watched the scene. James felt slightly uncomfortable with the scene as James was trying touse the picnic cloth to wipe his face.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh god.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "This! Get on her wave! Soon you will be captured by her!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was unconcerned as he answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh, I know you want this too.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James just disapproved of Vinny's words, making Vinny feel disappointed by James' reaction. ",
+        "type": "action"
     }
 
 ]
