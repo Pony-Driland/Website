@@ -6177,6 +6177,124 @@
         "value": "Fine...",
         "character": "James",
         "type": "dialogue"
+    },
+
+
+    {
+        "value": "Vinny was inside the tent, looking at what Rayane was doing, and Rayane was lying on the mattress while finishing organizing her belongings. Vinny saw some items just disappearing during Rayane's magic, Vinny was very confused, trying to understand where the items were going.",
+        "type": "action"
+    },
+
+    {
+        "value": "B...but... but what the fuck is this?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Next to Rayane mattress was the sword, and on the side of her mattress was Vinny mattress with the place for Vinny to store the things, and on the other side next to Vinny mattress was James' mattress. Of all the mattresses, Vinny mattress was in the center between the two mattresses. When Rayane realized that Vinny was distracting by analyzing the place, Rayane approach very silently, doing a silly grin face and try, levitate Vinny's face gently to get very close to Vinny face.",
+        "type": "action"
+    },
+
+    {
+        "value": "Boo~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "When Vinny realized Rayane's sillyness, he was surprised. So Rayane booped Vinny before the magic released Vinny face.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..what?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh, silly you~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane continued the silly malicious face.",
+        "type": "action"
+    },
+
+    {
+        "value": "I didn't mean to scare yourself.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny speaks sarcastically.",
+        "type": "action"
+    },
+
+    {
+        "value": "But hey? Why me on the middle?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Do you really want to know the answer?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane continued doing the silly malicious face. Vinny was confused, trying to understand what was really happening.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah huh? Is there anything suspicious about it?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh, not at all suspicious. I just think you better always be on the middle when I'm going to sleep~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little when he understood Rayane's sillyness.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, really me being the center must be good. You know me a few hours and James there much less, why do you trust me so much?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks out of the tent to see if the cell phone was whole. Then he would look at Rayane again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Why are you asking me this? I was the one who initiated this question today. I'm actually the one who's so surprised you trust me~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane made a malicious little silly laugh in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "It wasn't in my plans for James to suddenly appear. So I decided to trust you about James. But it seems that with your help, now I can somehow trust him too.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
