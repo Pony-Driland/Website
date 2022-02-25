@@ -47,7 +47,7 @@
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Uff... Okay. I sent your order just the way you asked. The delivery man of food app is already on his way to your house. I recommend you keep an eye on the GPS, or the delivery boy will pass right by."
+        "value": "Uff. Okay. I sent your order just the way you asked. The delivery man of food app is already on his way to your house. I recommend you keep an eye on the GPS, or the delivery boy will pass right by."
     },
 
     {
@@ -131,7 +131,7 @@
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Siily Vinny... Relax. You'll find out. Please, just don't screw it all up. Mainly the phone!"
+        "value": "Siily Vinny. Relax. You'll find out. Please, just don't screw it all up. Mainly the phone!"
     },
 
     {
@@ -192,7 +192,7 @@
     {
         "type": "dialogue",
         "character": "Delivery Boy",
-        "value": "Oops... Yes, your lunch... An X-Tudo. Everything and a little more."
+        "value": "Oops. Yes, your lunch. An X-Tudo. Everything and a little more."
     },
 
     {
@@ -241,7 +241,7 @@
     {
         "type": "dialogue",
         "character": "Delivery Boy",
-        "value": "Yes.... I saw vibrating. Sorry for the expression, it was a quick word. Ah! Please! Just get it soon! It could be anything, maybe something inside the burguer, you'll need to check it out to see what it is."
+        "value": "Yes. I saw vibrating. Sorry for the expression, it was a quick word. Ah! Please! Just get it soon! It could be anything, maybe something inside the burguer, you'll need to check it out to see what it is."
     },
 
     {
@@ -282,13 +282,13 @@
     {
         "type": "dialogue",
         "character": "Delivery Boy",
-        "value": "Everything seems normal to me...Ah! It must have been a mistake, maybe it was the bike that was vibrating and I didn't notice. Sorry there bro!"
+        "value": "Everything seems normal to me. Ah! It must have been a mistake, maybe it was the bike that was vibrating and I didn't notice. Sorry there bro!"
     },
 
     {
         "type": "dialogue",
         "character": "Delivery Boy",
-        "value": "Well... I have to leave now, don't forget to give me 5 stars, thanks."
+        "value": "Well. I have to leave now, don't forget to give me 5 stars, thanks."
     },
 
     {
@@ -400,7 +400,7 @@
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Vinny... You're scaring me. What's happening there?"
+        "value": "Vinny, you're scaring me. What's happening there?"
     },
 
     {
@@ -518,7 +518,7 @@
     {
         "type": "think",
         "character": "Vinny",
-        "value": "Damn man, what happened? I was talking to Yasmin and suddenly... X-TUUUUUUUDO!!! What the fuck happened..."
+        "value": "Damn man, what happened? I was talking to Yasmin and suddenly... X-TUUUUUUUDO!!! What the fuck happened."
     },
 
     {
@@ -567,7 +567,7 @@
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "W...what? O..Oh no.... Oh, okay then I'll wait."
+        "value": "W...what? O..Oh no. Oh, okay then I'll wait."
     },
 
     {
@@ -578,7 +578,7 @@
     {
         "type": "dialogue",
         "character": "???",
-        "value": "Oh...it's not possible. It's...Is that what I'm really seeing? Did another new pony appear? Are you new around here?"
+        "value": "Oh. it's not possible. It's that what I'm really seeing? Did another new pony appear? Are you new around here?"
     },
 
     {
@@ -646,7 +646,7 @@
     {
         "type": "dialogue",
         "character": "???",
-        "value": "Wait... Can't you walk? Are you sure you're from here? What city do you come from? Just try to stay balanced and don't let your body weight make you lose balance."
+        "value": "Wait. Can't you walk? Are you sure you're from here? What city do you come from? Just try to stay balanced and don't let your body weight make you lose balance."
     },
 
     {
@@ -669,7 +669,7 @@
     {
         "type": "dialogue",
         "character": "???",
-        "value": "From... From nothing?! So I'm right! You are also a new visitor from another dimension!"
+        "value": "From. From nothing?! So I'm right! You are also a new visitor from another dimension!"
     },
 
     {
@@ -680,7 +680,7 @@
     {
         "type": "dialogue",
         "character": "???",
-        "value": "Oh yes, I think this is more than evidence. Hihi... Don't worry , I teach you to walk. My name is Kenny!"
+        "value": "Oh yes, I think this is more than evidence. Hihi. Don't worry , I teach you to walk. My name is Kenny!"
     },
 
     {
@@ -774,7 +774,7 @@
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "Okay... Fine."
+        "value": "Okay. Fine."
     },
 
     {
@@ -824,7 +824,7 @@
     {
         "type": "dialogue",
         "character": "Kenny",
-        "value": "Recharge a phone? Hmm... Maybe James can help you if he's willing to walk with you. He is a friend of mine who loves adventures. I believe he will be returning home soon."
+        "value": "Recharge a phone? Hmm. Maybe James can help you if he's willing to walk with you. He is a friend of mine who loves adventures. I believe he will be returning home soon."
     },
 
     {
@@ -835,7 +835,7 @@
     {
         "type": "dialogue",
         "character": "Kenny",
-        "value": "Okay... Let's go. Soon we'll be home!"
+        "value": "Okay. Let's go. Soon we'll be home!"
     },
 
     {
@@ -869,7 +869,7 @@
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "Uff... About earlier, you said something about Elite Color, what would it be exactly?"
+        "value": "Uff. About earlier, you said something about Elite Color, what would it be exactly?"
     },
 
     {
@@ -908,13 +908,13 @@
     {
         "type": "dialogue",
         "character": "Kenny",
-        "value": "Oh yes... The others."
+        "value": "Oh yes. The others."
     },
 
     {
         "type": "think",
         "character": "Vinny",
-        "value": "Oh shit... Here comes the bad news."
+        "value": "Oh shit. Here comes the bad news."
     },
 
     {
@@ -943,7 +943,7 @@
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "Ah..."
+        "value": "Ah."
     },
 
     {
@@ -960,14 +960,14 @@
     {
         "type": "dialogue",
         "character": "Kenny",
-        "value": "It's what we can do for Pony Driland newcomers. I'm sure you'll like your new life. Unfortunately I can't hold back your curiosities. So...if you really want to find out more about this place. You'll have to try to be friends with James."
+        "value": "It's what we can do for Pony Driland newcomers. I'm sure you'll like your new life. Unfortunately I can't hold back your curiosities. So if you really want to find out more about this place. You'll have to try to be friends with James."
     },
 
     {
         "set": { "playlistPlay": null },
         "type": "think",
         "character": "Vinny",
-        "value": "James... Who is James? Why everyone is a alien in a pony body?! Look where I accidentally got myself into an X-Tudo! Someone save me from this nightmare. Please!"
+        "value": "James? Who is James? Why everyone is a alien in a pony body?! Look where I accidentally got myself into an X-Tudo! Someone save me from this nightmare. Please!"
     },
 
     {
@@ -1031,7 +1031,7 @@
     },
 
     {
-        "value": "I'll get there. A moment...",
+        "value": "I'll get there. A moment.",
         "type": "dialogue",
         "character": "Vinny"
     },
@@ -1053,7 +1053,7 @@
     },
 
     {
-        "value": "I'm coming... coming slowly.",
+        "value": "I'm coming. coming slowly.",
         "type": "dialogue",
         "character": "Vinny"
     },
@@ -1130,7 +1130,7 @@
     },
 
     {
-        "value": "Calm down... it's Vinny. I found him on the beach where newbies spawn when they teleport here sunddely. He is here to be received! Right Vinny?",
+        "value": "Calm down. it's Vinny. I found him on the beach where newbies spawn when they teleport here sunddely. He is here to be received! Right Vinny?",
         "type": "dialogue",
         "character": "Kenny"
     },
@@ -1141,13 +1141,13 @@
     },
     {
 
-        "value": "Ah... Yes?",
+        "value": "Ah. Yes?",
         "type": "dialogue",
         "character": "Vinny"
     },
 
     {
-        "value": "Yes? Yes... Hello Vinny. Welcome.",
+        "value": "Yes? Yes. Hello Vinny. Welcome.",
         "type": "dialogue",
         "character": "Raquel"
     },
@@ -1168,7 +1168,7 @@
     },
 
     {
-        "value": "Pleasure, my name...well you already know. My name is Vinny hihihihi. Kenny found me at the beach and brought me here, thank you very much for your consideration.",
+        "value": "Pleasure, my name, well, you already know. My name is Vinny hihihihi. Kenny found me at the beach and brought me here, thank you very much for your consideration.",
         "type": "dialogue",
         "character": "Vinny"
     },
@@ -1179,7 +1179,7 @@
     },
 
     {
-        "value": "Well... Make yourself at home...I...I made some pancakes for breakfast today.",
+        "value": "Well, make yourself at home. I...I made some pancakes for breakfast today.",
         "character": "Raquel",
         "type": "dialogue"
     },
@@ -1229,7 +1229,7 @@
     },
 
     {
-        "value": "Okay okay... I understand, so excuse me, what a beautiful house! *-*",
+        "value": "Okay okay. I understand, so excuse me, what a beautiful house! *-*",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -1253,7 +1253,7 @@
     {
         "type": "think",
         "character": "Vinny",
-        "value": "Hahaha... I think I get it. they are a couple. it is cute."
+        "value": "Hahaha. I think I get it. they are a couple. it is cute."
     },
 
     {
@@ -1290,7 +1290,7 @@
     },
 
     {
-        "value": "Oh? James? Yep! James... He's a great adventurer who understands a lot about everything.",
+        "value": "Oh? James? Yep! James. He's a great adventurer who understands a lot about everything.",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -1364,7 +1364,7 @@
     },
 
     {
-        "value": "Yep....That's nice! It will be really fun! Vinny will enjoy a good adventure!",
+        "value": "Yep. That's nice! It will be really fun! Vinny will enjoy a good adventure!",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -1375,7 +1375,7 @@
     },
 
     {
-        "value": "Yes... I said cool in the sense of finding it a bit cool when kenny said \"He's very lucky he's still alive\" I thought it was a little cool and weird, but nothing that scared me.",
+        "value": "Yes. I said cool in the sense of finding it a bit cool when kenny said \"He's very lucky he's still alive\" I thought it was a little cool and weird, but nothing that scared me.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -1386,7 +1386,7 @@
     },
 
     {
-        "value": "Kenny... Are you sure?",
+        "value": "Kenny, are you sure?",
         "character": "Raquel",
         "type": "dialogue"
     },
@@ -1414,7 +1414,7 @@
     },
 
     {
-        "value": "Kenny... Please no. Don't be like that, James will be fine, maybe we'd better help him to have a life in the village.",
+        "value": "Kenny, please no. Don't be like that, James will be fine, maybe we'd better help him to have a life in the village.",
         "character": "Raquel",
         "type": "dialogue"
     },
@@ -1436,7 +1436,7 @@
     },
 
     {
-        "value": "But but... You have a cell phone that does amazing things like you said.",
+        "value": "But but, you have a cell phone that does amazing things like you said.",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -1461,7 +1461,7 @@
     },
 
     {
-        "value": "C..communicate? Amazing! Communication is rare in Pony Driland! BoboFlix? My God! That name... is this some specialist agency?!",
+        "value": "C..communicate? Amazing! Communication is rare in Pony Driland! BoboFlix? My God! That name is some specialist agency?!",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -1473,7 +1473,7 @@
 
     {
         "nsfw": ["questionable"],
-        "value": "Wait.... Nudes? WHAT?!",
+        "value": "Wait. Nudes? WHAT?!",
         "value_alternative": "W...what?",
         "character": "Raquel",
         "type": "dialogue"
@@ -1500,7 +1500,7 @@
     },
 
     {
-        "value": "Well... Yes Kenny, you can do everything inside the phone, it's amazing, but unfortunately it's limited in terms of functioning where it only stays on until the battery or batteries run out.",
+        "value": "Well, yes Kenny, you can do everything inside the phone, it's amazing, but unfortunately it's limited in terms of functioning where it only stays on until the battery or batteries run out.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -1521,7 +1521,7 @@
     },
 
     {
-        "value": "Wait... run out of battery? And how do you recharge that battery? Did you bring anything to do this?",
+        "value": "Wait, run out of battery? And how do you recharge that battery? Did you bring anything to do this?",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -1531,13 +1531,13 @@
         "type": "action"
     },
     {
-        "value": "Wait... I didn't bring the charger! SHIT!",
+        "value": "Wait, I didn't bring the charger! SHIT!",
         "character": "Vinny",
         "type": "think"
     },
 
     {
-        "value": "Okay okay... Unfortunately I don't have the charger, because I wasn't with me on the beach and I don't have faith that it's here.",
+        "value": "Okay okay. Unfortunately I don't have the charger, because I wasn't with me on the beach and I don't have faith that it's here.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -1603,13 +1603,13 @@
     },
 
     {
-        "value": "Well... Kenny, can I help you with something? What do you do on the morning? Can I help you with something?",
+        "value": "Well, Kenny, can I help you with something? What do you do on the morning? Can I help you with something?",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Thank you... I'm going to the market to shop soon. If you want to accompany me, it would be a great help.",
+        "value": "Thank you. I'm going to the market to shop soon. If you want to accompany me, it would be a great help.",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -1643,7 +1643,7 @@
     },
 
     {
-        "value": "And about the wings, well... Raquel and I are earth ponies, we don't know how to fly, you'll have to find another pegasus to learn how to use them.",
+        "value": "And about the wings, well, Raquel and I are earth ponies, we don't know how to fly, you'll have to find another pegasus to learn how to use them.",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -1706,7 +1706,7 @@
     },
 
     {
-        "value": "a saddle? Is that like a backpack? Interesting...",
+        "value": "a saddle? Is that like a backpack? Interesting.",
         "character": "Vinny",
         "type": "think"
     },
@@ -1747,7 +1747,7 @@
     },
 
     {
-        "value": "Nations at war? virus? Were you in the middle of an apocalypse? That's terrible. Well, I forgive you, maybe one day everyone will understand better about this. Well then...",
+        "value": "Nations at war? virus? Were you in the middle of an apocalypse? That's terrible. Well, I forgive you, maybe one day everyone will understand better about this. Well then.",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -1758,7 +1758,7 @@
     },
 
     {
-        "value": "Well... We met on the exact same beach you showed up on. We had a pure coincidence that we were teleported here at the same time, but we are from different dimensions. By instinct we decided to stay together to try to protect ourselves, and that ended up creating our friendship.",
+        "value": "Well, We met on the exact same beach you showed up on. We had a pure coincidence that we were teleported here at the same time, but we are from different dimensions. By instinct we decided to stay together to try to protect ourselves, and that ended up creating our friendship.",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -1826,7 +1826,7 @@
     },
 
     {
-        "value": "James is kind of anti-social. A little...",
+        "value": "James is kind of anti-social. A little.",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -1962,7 +1962,7 @@
     },
 
     {
-        "value": "Oh? You're rude...",
+        "value": "Oh? You're rude.",
         "character": "???",
         "type": "dialogue"
     },
@@ -2202,7 +2202,7 @@
 
     {
         "set": { "playlistPlay": null },
-        "value": "OK then. Okay okay...",
+        "value": "OK then. Okay okay.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -3161,7 +3161,7 @@
     },
 
     {
-        "value": "Well... I don't want to go there either.",
+        "value": "Well, I don't want to go there either.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -3178,7 +3178,7 @@
     },
 
     {
-        "value": "Wait... The Elite Color always come here?",
+        "value": "Wait, The Elite Color always come here?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -3420,7 +3420,7 @@
     },
 
     {
-        "value": "Well... I have a good intuition, you remind me of an old friend of mine, I liked you a lot because you really look like her, I have a strong intuition that I should trust you, usually when others are like this to me it's because there's something else going on and I'm willing to see.",
+        "value": "Well, I have a good intuition, you remind me of an old friend of mine, I liked you a lot because you really look like her, I have a strong intuition that I should trust you, usually when others are like this to me it's because there's something else going on and I'm willing to see.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -3570,7 +3570,7 @@
     },
 
     {
-        "value": "Wait... What? Talk? How can you talk?! This is the first time I've heard this from a new one!",
+        "value": "Wait, What? Talk? How can you talk?! This is the first time I've heard this from a new one!",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -3623,7 +3623,7 @@
     },
 
     {
-        "value": "Vinny, you're scaring me. What did you say to Rayane? Well, yes yes. Rhe shopping...",
+        "value": "Vinny, you're scaring me. What did you say to Rayane? Well, yes yes. The shopping.",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -4070,7 +4070,7 @@
     },
 
     {
-        "value": "Well... But right now I'm really confused. I'm really curious. Well, I'll check on Raquel. And it's already getting dark, the village will soon give a curfew because it's dangerous to walk at night. I'm just really worried about James. It has been several hours and he has never returned home.",
+        "value": "Well, But right now I'm really confused. I'm really curious. Well, I'll check on Raquel. And it's already getting dark, the village will soon give a curfew because it's dangerous to walk at night. I'm just really worried about James. It has been several hours and he has never returned home.",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -4196,7 +4196,7 @@
     },
 
     {
-        "value": "Well... There's sand if you go back to the beach where you appeared.",
+        "value": "Well, There's sand if you go back to the beach where you appeared.",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -4213,7 +4213,7 @@
     },
 
     {
-        "value": "Well... It's in her garden. Everything she has planted is just there.",
+        "value": "Well, It's in her garden. Everything she has planted is just there.",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -4668,7 +4668,7 @@
     },
 
     {
-        "value": "Yeah yeah, I'm new here, don't worry, I message my life, as I said, I don't have to do anything...",
+        "value": "Yeah yeah, I'm new here, don't worry, I message my life, as I said, I don't have to do anything.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -4983,7 +4983,7 @@
     },
 
     {
-        "value": "Well, I think everything is here. My stuff is all here. Wait... Where's my tablet? My tablet!? MY TABLET?! NOO! MY TABLET!",
+        "value": "Well, I think everything is here. My stuff is all here. Wait, Where's my tablet? My tablet!? MY TABLET?! NOO! MY TABLET!",
         "character": "James",
         "type": "dialogue"
     },
@@ -4995,7 +4995,7 @@
     },
 
     {
-        "value": "Same world as you? This is completely impossible, there is no probability for that. Wait... w...What?! MY TABLET BROKEN?! NOOO! WHAT HAPPENED TO HIM?!",
+        "value": "Same world as you? This is completely impossible, there is no probability for that. Wait, w...What?! MY TABLET BROKEN?! NOOO! WHAT HAPPENED TO HIM?!",
         "character": "James",
         "type": "dialogue"
     },
@@ -5533,7 +5533,7 @@
     },
 
     {
-        "value": "Argh, okay. Well... About my story, I've been here in Pony Driland for many years. I have a lot of experience with this place due to several factors. Quick little summary, Kenny saved me during a problem I was solving with Elite Color. He was just a novice traveler at that time.",
+        "value": "Argh, okay. Well, About my story, I've been here in Pony Driland for many years. I have a lot of experience with this place due to several factors. Quick little summary, Kenny saved me during a problem I was solving with Elite Color. He was just a novice traveler at that time.",
         "character": "James",
         "type": "dialogue"
     },
