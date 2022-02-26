@@ -6330,6 +6330,28 @@
         "value": "Shhhh~ Don't worry about him~ I'm here~ You have my word, I'm glad to hear your words from the small village. I never heard that from anyone. My greatest wish is that you keep your word. Okay~?",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised, so he responded happily. He showed interest in the words he was going to say.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh, Okay. Well, let James have fun with my phone, since we're alone, I'd like to ask you something about you, I noticed that when we talked about our past, you seemed a little out of your mind and that there was something very dark inside you. Would you like to talk about or would you like to hear from me first? Maybe my case is similar to yours.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little curious to feel that the subject of the conversation was getting a little out of the plans.",
+        "type": "action"
+    },
+
+    {
+        "value": "My past? Ah yes. Sorry, my dark past is much longer than you might think.  Lots of things related to my family and friends. My place where I lived was extremely different from the things I liked to do. But what are you looking for about my past?",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
