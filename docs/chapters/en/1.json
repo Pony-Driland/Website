@@ -6295,6 +6295,41 @@
         "value": "It wasn't in my plans for James to suddenly appear. So I decided to trust you about James. But it seems that with your help, now I can somehow trust him too.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at James again during some seconds, then Vinny returns with a nervous smile.",
+        "type": "action"
+    },
+
+    {
+        "value": "Weeeeell. I have a nice intuition, the intuition rarely let me down. I've already reached a point in my life that I prefer to do what I think is right without worrying about simple things, so even if you do something wrong I believe it is for the greater good. And still trusted you because I must imagine or I must have an empathy for everything you've lived, or a little.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "set": { "playlistPlay": null },
+        "value": "Vinny looks at James again and again during some seconds. Vinny was confused to see James doing analysis on the phone. Vinny was suspicious and then came back to answer Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Why? James looks like he stuck my phone in the cubucu!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane used magic for Vinny face to focus on her face. Rayane then made a slight grin and replied delicately.",
+        "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": "think" },
+        "value": "Shhhh~ Don't worry about him~ I'm here~ You have my word, I'm glad to hear your words from the small village. I never heard that from anyone. My greatest wish is that you keep your word. Okay~?",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
