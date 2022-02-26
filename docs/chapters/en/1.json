@@ -6352,6 +6352,45 @@
         "value": "My past? Ah yes. Sorry, my dark past is much longer than you might think.  Lots of things related to my family and friends. My place where I lived was extremely different from the things I liked to do. But what are you looking for about my past?",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Well, I like listening to the ponies, but since the first time I saw you, and I heard some rumors about you. I have empathize by you, and it's not a pick-up no, Miss Charming Rayane.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little before continuing the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "About me, well, in a very summarized way because it's pretty long too, I was very happy, I had friends everywhere, they liked me and still do, but in the old days I had nothing socially and I was an asshole and just fucked up.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "All my regrets are in the past, and I live in it for some factors, like a feeling, some friend of mine who died and wasn't there, or banal things like breaking something I liked a lot for sillyness.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny spoke while sitting on the cold floor with his hot ass. Vinny was uncomfortable with the low temperature of the night.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane laughed a little. Rayane expression seemed to show regret for something in the past. But then Rayane showed a feeling a little sadder, and then responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "Thank you Vinny. I appreciate your concern. Ah the rumours, yes, I know a lot about them. Those rumors always existed. Living in the shadows is something difficult for me, and even more difficult when many people try to guess who you really are.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
