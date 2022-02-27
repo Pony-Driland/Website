@@ -6614,6 +6614,34 @@
     {
         "value": "Vinny covertly look at the apps in 2 plane to see the dirty tricks.",
         "type": "action"
+    },
+
+    {
+        "value": "Phew. Changing the subject, I would really like to talk to you, but I think that really after all, after almost dying, I think we'd better start going to the tent, luckily you'll have as much time as you want with my phone, I need some time alone to think about a lot of things at the bonfire too.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James then thought for a few seconds, thinking about the attitudes he had today. and answered, taking a deep breath.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah, I still haven't finished resting after the previous battle, this must be giving me a lot of headache. Thanks so much for remembering that. Maybe Kenny is right, I need to take a break from research every now.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James closes the notebook screen and rubbed the paw on his head before going inside the tent. Vinny laughed a little and answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oki doki, be careful not to wake up Rayane, otherwise she'll wake you up in a blast. Give me a moment I'll keep using with my phone for a while.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
