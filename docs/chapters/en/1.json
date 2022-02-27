@@ -6326,7 +6326,7 @@
     },
 
     {
-        "set": { "playlistPlay": "think" },
+        "set": { "playlistPlay": "bad-think" },
         "value": "Shhhh~ Don't worry about him~ I'm here~ You have my word, I'm glad to hear your words from the small village. I never heard that from anyone. My greatest wish is that you keep your word. Okay~?",
         "character": "Rayane",
         "type": "dialogue"
@@ -6378,7 +6378,6 @@
     },
 
     {
-        "set": { "playlistPlay": null },
         "value": "Vinny spoke while sitting on the cold floor with his hot ass. Vinny was uncomfortable with the low temperature of the night. Rayane laughed a little. Rayane expression seemed to show regret for something in the past. But then Rayane showed a feeling a little sadder, and then responded.",
         "type": "action"
     },
@@ -6390,7 +6389,6 @@
     },
 
     {
-        "set": { "playlistPlay": "bad-think" },
         "value": "Rayane is taking a deep breath slowly, showing curiosity about the reason for Vinny's dialogues, then continue the conversation.",
         "type": "action"
     },
@@ -6479,6 +6477,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "So Vinny goes to the tent door and screams loudly.",
         "type": "action"
     },
@@ -6501,6 +6500,7 @@
     },
 
     {
+        "set": { "playlistPlay": "think" },
         "value": "Vinny replied while doing an innocent face.",
         "type": "action"
     },
