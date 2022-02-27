@@ -6487,6 +6487,133 @@
         "value": "JAMES!!!! WHERE ARE YOU?!, YOUR TETA ANIMAL!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny find James using a notebook with a cable plugged into Vinny cell phone. James gets a little scared.",
+        "type": "action"
+    },
+
+    {
+        "value": "H...HEY! I was tired of hearing strange sounds from this phone! Makes less noise!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny replied while doing an innocent face.",
+        "type": "action"
+    },
+
+    {
+        "value": "What kind? Can you show me?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh no. That little face doesn't fool me. I'm tired of \"RING RING PHONE\"!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Uh, I've never heard of it, I should have been there for nothing. Didn't there have one with the number 4?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James replied a little annoyed and and ashamed.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay! Go back to your tent! Rayane must be waiting for you at the tent! I just need to know how this device works, I don't need to know anything else.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James tries to hide the embarrassed face.",
+        "type": "action"
+    },
+    {
+        "value": "Ah! But you're a real bighead, just tell me if you heard the audio, because it's a virus where it activates all the signals, that's bad for the battery and as you said, Elite Color can track it, there's no constraint on that. it's just an audio that someone put on my phone.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James tries to hide the angry blushed face.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny! Tent now!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay, okay, sorry, let me see what you did with my phone so, I need to see if you didn't do anything wrong, I'll also help you to communicate between the both, I need to know how my phone is, does your notebook emit any signal? Wi-FI, Bluetooth?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny extends his paw to receive the cell phone. So James took a deep breath, slowly calming down. James was disappointed in himself",
+        "type": "action"
+    },
+
+    {
+        "value": "No. I didn't do anything to him. I just used my scanner device to analyze the phone and try to figure out how to make replicas of phone components to try and create something different. And no, my notebook has low frequency emission protection. He's only dangerous when I need to look for a sign in Pony Driland. For now my technology is limited, but with the help of your phone, maybe I have some hope of creating something new. I really need this new technology. But well, okay, your phone is here.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James gives Vinny back the cell phone. Vinny was a little worried and surprised, so he responded, laughing kindly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey, calm down, it's okay, there's no reason to be angry, it's almost like you've never seen anything worse.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at the phone during some seconds. The cell phone was normal with 100% battery",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow! But when you put the cable on the phone and notebook does something happen on my phone? if the screen is off and it lights up, it is already a sign of charging the battery power, and it has a lock or a protection where for the devices to analyze well, I need to activate a debug and allow your notebook to communicate.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little surprised and responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "Debug? So was I right? Does the phone have a protection key blocking internal access? Well, I only had access to files and components, now not internal access. The only thing that scared me at first is that the phone started using power from my notebook, but I ignored it when I saw that the amount was small.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes, the phone is charged through this input where you put the cable. Heh, thank you! But yes, I will activate the debug to see if it helps.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny covertly look at the apps in 2 plane to see the dirty tricks.",
+        "type": "action"
     }
 
 ]
