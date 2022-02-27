@@ -6424,6 +6424,22 @@
         "value": "When I want something, I get it. but it seems that this subject is difficult, the cool thing is that we are creating a friendship. if something happens to you I will worry a lot and try to help you as much as possible. Sooooo, do you have any questions for me?",
         "character": "Vinny",
         "type": "dialogue"
-    }
+    },
+
+    {
+        "value": "Rayane tried to hide her insecurity, showing a little more seriousness in her words.",
+        "type": "action"
+    },
+
+    {
+        "value": "Nah, My unpopularity in Pony Driland only, my friend who trained me doesn't like to talk to me anymore, my uncertainties about my future if I try to change my life. My life is also in danger depending on my choices. So please be very careful when talking about me.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane used the magic to cover her face slowly, getting ready to go to sleep. Vinny was a little surprised by Rayane serious look, so he would smile a little again and respond.",
+        "type": "action"
+    },
 
 ]
