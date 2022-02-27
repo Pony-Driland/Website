@@ -6378,12 +6378,7 @@
     },
 
     {
-        "value": "Vinny spoke while sitting on the cold floor with his hot ass. Vinny was uncomfortable with the low temperature of the night.",
-        "type": "action"
-    },
-
-    {
-        "value": "Rayane laughed a little. Rayane expression seemed to show regret for something in the past. But then Rayane showed a feeling a little sadder, and then responded.",
+        "value": "Vinny spoke while sitting on the cold floor with his hot ass. Vinny was uncomfortable with the low temperature of the night. Rayane laughed a little. Rayane expression seemed to show regret for something in the past. But then Rayane showed a feeling a little sadder, and then responded.",
         "type": "action"
     },
 
@@ -6446,6 +6441,11 @@
         "value": "Look, I can try to help you in the future with something, that's what friends are for. We can help both of us even in a life or death situation. I don't know about James, but during the time we can, by the way talking to you was very comfortable and I think for you too. Is there anything you want to say? Or do I think we can prepare to sleep now?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little more surprised and confused, but she kept her face hidden behind the blanket.",
+        "type": "action"
     },
 
 ]
