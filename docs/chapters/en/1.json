@@ -6378,6 +6378,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "Vinny spoke while sitting on the cold floor with his hot ass. Vinny was uncomfortable with the low temperature of the night. Rayane laughed a little. Rayane expression seemed to show regret for something in the past. But then Rayane showed a feeling a little sadder, and then responded.",
         "type": "action"
     },
@@ -6389,6 +6390,7 @@
     },
 
     {
+        "set": { "playlistPlay": "bad-think" },
         "value": "Rayane is taking a deep breath slowly, showing curiosity about the reason for Vinny's dialogues, then continue the conversation.",
         "type": "action"
     },
@@ -6447,5 +6449,16 @@
         "value": "Rayane was a little more surprised and confused, but she kept her face hidden behind the blanket.",
         "type": "action"
     },
+
+    {
+        "value": "What? Help me? Do you want to save me? Well, thanks. But please promise me one more thing, if you really want to help me, don't forget, train your skills, I don't want to see you get seriously hurt because of me. Don't worry about James, he never hurt anyone. He's just a little hot headed.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little sadder and said.",
+        "type": "action"
+    }
 
 ]
