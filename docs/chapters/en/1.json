@@ -6391,6 +6391,39 @@
         "value": "Thank you Vinny. I appreciate your concern. Ah the rumours, yes, I know a lot about them. Those rumors always existed. Living in the shadows is something difficult for me, and even more difficult when many people try to guess who you really are.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane is taking a deep breath slowly, showing curiosity about the reason for Vinny's dialogues, then continue the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, unfortunately I was the only one in my family who is more similar to my grandparents' interest in swords and knowing the true sword meaning. My parents and friends didn't take it very well. This was something that was unfortunately lost in my grandparents' past. I wasn't as lucky as you to find someone who looked like Kenny when I arrived in this dimension.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laid her face on the pillow. Vinny would then get confused and thoughtful, so he would respond worriedly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, what's stopping you from changing? Start a new life? I know people who are very unlucky in life and the peoples didn't have anyone until the people met me, many even wanted to and did everything to get away from me, but I'm pretty boring.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little. So Vinny smiled kindly",
+        "type": "action"
+    },
+
+    {
+        "value": "When I want something, I get it. but it seems that this subject is difficult, the cool thing is that we are creating a friendship. if something happens to you I will worry a lot and try to help you as much as possible. Sooooo, do you have any questions for me?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
