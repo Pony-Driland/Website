@@ -6457,8 +6457,36 @@
     },
 
     {
-        "value": "Rayane was a little sadder and said.",
+        "value": "Rayane was a little sadder and said, trying to smile a little.",
         "type": "action"
+    },
+
+    {
+        "value": "Heh~ I probably won't be here when you wake up, but we'll meet again anytime. Meanwhile we'll have this beautiful night's sleep.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "When Vinny noticed Rayane's tone of voice, he smiled a little and replied in a joking tone.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. One good night, I'll be right back, I'll call the head of tabacu... I want to see what he saw on my cell phone.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny goes to the tent door and screams loudly.",
+        "type": "action"
+    },
+
+    {
+        "value": "JAMES!!!! WHERE ARE YOU?!, YOUR TETA ANIMAL!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
