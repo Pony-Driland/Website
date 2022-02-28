@@ -6642,6 +6642,136 @@
         "value": "Oki doki, be careful not to wake up Rayane, otherwise she'll wake you up in a blast. Give me a moment I'll keep using with my phone for a while.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at the phone for a few seconds before James could enter fully. So Vinny asks.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey, what are we going to do next? Wake up and go where? Go to Kenny's House?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little surprised, so he replied a little worried.",
+        "type": "action"
+    },
+
+    {
+        "value": "Kenny? Yeeeeea. We still need to talk to him to at least say we're safe. You and Kenny don't know. But I will continue my journey and my research. What I can extract from your phone for my research will be very useful to me.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James then took a deep breath, preparing to speak his next words, he looked uncomfortable and a little worried about himself.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, I've never asked anyone this. But, Since I've seen that you understand a bit of technology, I think maybe you can join me if you have a good knowledge of electronics. That's if you accept the invitation. Kenny will be annoyed with me because I've always worked alone my whole life. If you had the courage to come here, I think this is the best choice for him not to be putting others' lives at risk because of me.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was surprised by James' answer, so Vinny said.",
+        "type": "action"
+    },
+
+    {
+        "value": "I would like to, but I have a condition that I don't think will be a problem.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny talks doing a lenny face. So James got suspicious as he started trying to guess what Vinny was talking about.",
+        "type": "action"
+    },
+
+    {
+        "value": "Problem? What problem? ",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh, the condition is inside the tent. of course if she wants to accompany us.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "W....What?! Are you sure?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Are you uncomfortable with a female? Even better, let me talk, you with your way will unwind everything, I'm going there.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "B...But but Vinny!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was extremely worried, so he tried to find some acceptance. James didn't know what to say for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay! But remember that if anything happens! It will be your fault!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh, It will be my best fault.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "This pony has problems!",
+        "character": "James",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny giggles a little during some seconds, so James would just walk into the tent and ignore what Vinny was doing. Vinny stopped everything and looked around and kept fiddling with the phone for a few moments. Vinny didn't see anything, everything was very quiet and peaceful and just another normal night with a little moonlight appearing in a very distant hole that was the entrance to the cave.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow, but what a beautiful night, it reminds me a lot of my planet's moon, what a coincidence.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would put some very low music close to his ears and listen for about 30 minutes.",
+        "type": "action"
+    },
+
+    {
+        "value": "Are my friends okay? But what a mess I've gotten myself into, I hope it's all a dream like tonight.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then showed a little sadness and loneliness, then entered the tent again.",
+        "type": "action"
     }
 
 ]
