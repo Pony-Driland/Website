@@ -242,6 +242,10 @@ var storyCfg = {
             { id: 'ni-Q2RCoexg', type: 'youtube' },
         ],
 
+        'good-think': [
+            { id: '5Im8S1l3UK0', type: 'youtube' },
+        ],
+
         'bad-think': [
             { id: '0ZD3SfS9x8E', type: 'youtube' },
             { id: 'AfkEAnazGMo', type: 'youtube' },
