@@ -4426,6 +4426,7 @@
     },
 
     {
+        "set": { "where": "Greendream Village - Forest" },
         "value": "Vinny was looking at nothing during some seconds, walking towards the forest where the smoke was, during the beginning of the route one, Vinny look at the compass and then I turn off the cell phone. The trees that took care of the environment were blocking the moonlight, darkening the place even more, and the place was slowly getting cooler with some bursts of weak luminous dust that circulated around. ",
         "type": "action"
     },
@@ -4934,6 +4935,7 @@
 
     {
         "set": {
+            "where": "Mysterious Cave",
             "sfx": [
                 { "value": "cave-ambient", "type": "show" }
             ]
@@ -6815,6 +6817,15 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "night-ambient", "type": "hide" },
+                { "value": "bird-and-nature", "type": "show" }
+            ],
+            "dayNightCycle": "morning",
+            "day": 2,
+            "weather": "sun"
+        },
         "value": "So, several hours of sleep have passed. Vinny had a great night's sleep. Vinny wake up very satisfied with his night's sleep slowly. This is a new day now in the morning, Vinny could hear the sound of nature and the sound of some remaining raindrops dripping from the rain that happened during the previous dawn.",
         "type": "action"
     },
