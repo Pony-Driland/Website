@@ -6786,12 +6786,18 @@
     },
 
     {
+        "value": "Heh, and in the end it looks like everyone decided to stay here. Looks like something I got here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
         "value": "So Vinny lie down and cover himself, and stay a little longer fiddling with the phone, but after about 10 minutes, Vinny just turn off the screen and put the phone next to he and prepare to sleep.",
         "type": "action"
     },
 
     {
-        "value": "Okay, fine, good night to me.",
+        "value": "Ah, okay, fine. There's nothing more interesting here. Well, good night to me.",
         "character": "Vinny",
         "type": "dialogue"
     },
