@@ -6770,7 +6770,68 @@
     },
 
     {
-        "value": "Vinny then showed a little sadness and loneliness, then entered the tent again.",
+        "value": "Vinny then showed a little sadness and loneliness, then entered the tent again. Vinny speaks very quietly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hello? Anyone awake?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Everything seemed extremely quiet, Vinny could only hear the sounds of the night and the sounds of Rayane and James trying to sleep. Vinny could see that James had fallen asleep very quickly due to his tiredness from the things that had happened. And Rayane had her eyes closed, breathing calmly, trying to start sleeping.",
+        "type": "action"
+    },
+
+    {
+        "value": "So Vinny lie down and cover himself, and stay a little longer fiddling with the phone, but after about 10 minutes, Vinny just turn off the screen and put the phone next to he and prepare to sleep.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay, fine, good night to me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny started to slowly close his eyes. Vinny gets a little sadder, showing nostalgia as he remembers all his friends on Planet Earth.",
+        "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": null },
+        "value": "I hope everyone is doing well. Good night to you all too.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "So, several hours of sleep have passed. Vinny had a great night's sleep. Vinny wake up very satisfied with his night's sleep slowly. This is a new day now in the morning, Vinny could hear the sound of nature and the sound of some remaining raindrops dripping from the rain that happened during the previous dawn.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh god.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny start to stretching, and looked around slowly, as he waited for his vision to clear up.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeaaaah. Good morning everyone.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks around again for a few seconds.",
         "type": "action"
     }
 
