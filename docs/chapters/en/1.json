@@ -6853,10 +6853,54 @@
     },
 
     {
-        "set": { "playlistPlay": "calm" },
+        "set": { "playlistPlay": "silly" },
         "value": "Everyone? Hello?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "James still hadn't gotten up. He was still sleeping in a heavy sleep. When Vinny got up, Vinny soon realized that he were using two blankets instead of one. Rayane had already gotten up, and the place looked like she had already packed up and left the tent.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh. Are you serious? Rayane left?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Okay okay! James! Wake up!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gently shook James.",
+        "type": "action"
+    },
+
+    {
+        "value": "No no, just 5 more minutes.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James pulled the blanket to cover heself more while he continued to sleep. Vinny was a little outraged at James' laziness, so he thought of something.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Fine. Come on! Run! The banana poneys want to eat you! Run away! Free me!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny speaks sarcastically and desperately.",
+        "type": "action"
     }
 
 ]
