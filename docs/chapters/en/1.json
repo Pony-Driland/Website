@@ -6922,7 +6922,7 @@
     },
 
     {
-        "value": "James pulled Vinny snout, trying to find the power button of Notebook",
+        "value": "James put the hoof in Vinny's mouth, trying to find the power button of Notebook.",
         "type": "action"
     },
 
@@ -7004,6 +7004,34 @@
         "value": "What fuck is this? Sometime you'll have to explain this banana to me, no one hides a mystery from me that easily!",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "So tell me you! You tabacu head! You who dreamed and had this dirty paw of ass in my mouth!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ass? VINNY! And your wings?! You needs to open your wings!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny made a poker face, and tried to change the subject.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay okay okay. Enough of that. All I know is that doing them open is something peculiar. In my world I didn't have wings. Well, but where is my cell phone?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny moves the wings randomly.",
+        "type": "action"
     }
 
 ]
