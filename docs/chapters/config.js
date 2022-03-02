@@ -162,7 +162,6 @@ var storyCfg = {
             { id: 'mxcu9L9j8ww', type: 'youtube' },
             { id: 'dZR7M7gDNSc', type: 'youtube' },
             { id: '7Uyu5BrGMs4', type: 'youtube' },
-            { id: 'ewBkq44wynk', type: 'youtube' },
             { id: 'TOEiLlspdhM', type: 'youtube' },
             { id: 'zaxVBfdgR3E', type: 'youtube' },
             { id: '3VoGUhPwagI', type: 'youtube' },
@@ -221,6 +220,7 @@ var storyCfg = {
             { id: 'E5I667E4GXw', type: 'youtube' },
             { id: '24QJV6NnFHY', type: 'youtube' },
             { id: 'YhXWzeFJtqM', type: 'youtube' },
+            { id: 'ewBkq44wynk', type: 'youtube' },
         ],
 
         'think': [
