@@ -6888,7 +6888,7 @@
     },
 
     {
-        "value": "James pulled the blanket to cover heself more while he continued to sleep. Vinny was a little outraged at James' laziness, so he thought of something.",
+        "value": "James pulled the blanket to cover heself more while he continued to sleep. Vinny was a little outraged at James' laziness, so he thought of something. So Vinny speaks sarcastically and desperately.",
         "type": "action"
     },
 
@@ -6899,8 +6899,87 @@
     },
 
     {
-        "value": "Vinny speaks sarcastically and desperately.",
+        "value": "What? B...banana? ZzzZzZz... N..No! Alien bananas trying to invade my planet! I WILL CALL THE PLANETARY GENERAL! DON'T LET THEM IN! I WILL CALL FOR REINFORCEMENT!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James moved desperately trying to look for the notebook, and poked Vinny's face, trying to find something that looked like the Notebook. Vinny laugh a little, realizing what a silly accident he was making happen. Vinny speak very loud.",
         "type": "action"
+    },
+
+    {
+        "value": "HEY! THAT'S NOT MY MOUTH ON YOUR NOTEBOOK! RAYANE WHERE ARE YOU?!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "IT'S NOT YOUR MOUTH! IT'S MY NOTEBOOK! GIVE ME NOW!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James pulled Vinny snout, trying to find the power button of Notebook",
+        "type": "action"
+    },
+
+    {
+        "value": "AAH! Rayane where are you?! Help me! James is wanting to be ate by me!!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh shit! he's even crazier when he's sleeping!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny kick James, trying to escape James' unexpected movements.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAAAAAHH!",
+        "character": "James",
+        "type": "dialogue"
+    },
+    {
+        "value": "James flipped over on the mattress again, trying to get up.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...What? I...did I die? @.@",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Phew. Are you ok James? You dreamed that bananas were eating you?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was then outraged to realize what was happening. James rubbed the hoof on the head.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...what? Bananas? What bananas? What is a banana? WHAT DID YOU DO?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Me? Nothing! You crazy! You have the dream of something banana and I woke up with your paw in my mouth!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
