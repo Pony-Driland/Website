@@ -6980,6 +6980,30 @@
         "value": "Me? Nothing! You crazy! You are having a dream of something banana and I woke up with your paw in my mouth!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+
+    {
+        "value": "Bananas? What is a banana?! I won't be quiet until you tell me what a banana is!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? No! You need to tell me! You who dreamed, you crazy!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets up. James was even more outraged and curious.",
+        "type": "action"
+    },
+
+    {
+        "value": "What fuck is this? Sometime you'll have to explain this banana to me, no one hides a mystery from me that easily!",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
