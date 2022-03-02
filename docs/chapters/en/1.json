@@ -6850,6 +6850,13 @@
     {
         "value": "Vinny looks around again for a few seconds.",
         "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": "calm" },
+        "value": "Everyone? Hello?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
