@@ -7062,7 +7062,9 @@
     },
 
     {
+        "nsfw": ["questionable"],
         "value": "Well, yes. Raquel saw me with erect wings.",
+        "value_alternative": "Well, yes. Raquel saw me doing thins with my wings.",
         "character": "Vinny",
         "type": "dialogue"
     },
