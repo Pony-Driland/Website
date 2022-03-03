@@ -7032,6 +7032,107 @@
     {
         "value": "Vinny moves the wings randomly.",
         "type": "action"
+    },
+
+    {
+        "value": "James would be a little traumatized and would respond.",
+        "type": "action"
+    },
+
+    {
+        "value": "Your wings? Oh no, so you discovered this on the wrong way. Well, your phone is by your side.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James uses magic to pick up the things and prepare to get up. Vinny was a little embarrassed and made a poker face.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny waited a few seconds and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, yes. Raquel saw me with erect wings.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So James is confused and very surprised.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wh...WHAT?! WHAT FUCK?! You better shut up and help me look for Rayane! She looks like she got up earlier than us!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was still embarrassed and just kept talking.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't tell me did. How did you find this out? Wow you are a really smart pony, congratulations!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Argh! I don't want any more marshmallows on my face!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Weeeeell, I think she was afraid of you calling General Banana to hit us, so she left, I knew she wasn't here at the time of your chilike, I think even Kenny heard you screaming at General Banana.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny pick up his cell phone and he looked at the size of the tent, impressed wanting to know what he was going to do with the tent.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh my god, this tent is gigantic. How is it possible for something this size to be assembled so quickly?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "VINNY! WHAT IS A BANANA?! I WANT TO KNOW WHAT THIS BANANA IS! TELL ME!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would be completely scared and would respond.",
+        "type": "action"
+    },
+
+    {
+        "value": "HEEY! FUCK! I'M GOING TO KNOW, IT MUST BE THE NAME OF A FRIEND OF YOURS OR MILITARY! WAKE UP YOU'RE STILL SLEEPING!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "THEN I WILL WAKE UP NOW!",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
