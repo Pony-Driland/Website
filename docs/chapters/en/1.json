@@ -7190,6 +7190,68 @@
         "value": "Vinny. You're not HELPING me!",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looked at James disappointingly. Then Vinny took a deep breath and said.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "Oh my god. Ok, I'm going to look for any clues about Rayane while you make do with that tent or something. Do you need help?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James lost his temper, and used the freezing fire magic on Vinny face, making his mane stand on the sides and half frozen.",
+        "type": "action"
+    },
+
+    {
+        "value": "No!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "WHAT FUCK?! Oh my god!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was desperate for a few seconds, surprised, he responded disappointedly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay, okay Sir James. I wake up with your paw in my mouth, you calling for a banana general, and still freezes my face during this cold. What a beautiful shit friend you are. Congratulations you are the best, I hope Kenny pulls yours ear.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James would be mildly regretful, but then he would return to the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wow, what a dynamic team you form with me, I didn't even touch you at any time, your titty animal, stay there alone with the tent, ask Rayane for help to find this general banana guy! I'll take a look around and see if I can find any clues or tickets.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny goes to the bonfire to try to warm up and then walk around looking for a clue from Rayane.",
+        "type": "action"
     }
 
 ]
