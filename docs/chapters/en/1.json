@@ -7135,6 +7135,61 @@
         "value": "THEN I WILL WAKE UP NOW!",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "James' horn magic activated as he got up from the mattress. The temperature in the tent was starting to get colder due to James' strong aura of blue fire magic.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey hey hey! Calm down there! LOOK LOOK HERE there's something here on the phone!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny show the cell phone, waiting for James to get closer. ",
+        "type": "action"
+    },
+
+    {
+        "value": "WHAT?! HAVE WHAT?! Oh? What is it?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Suddenly all of James' cold aura calmed down, making the temperature of the tent return to normal.",
+        "type": "action"
+    },
+
+    {
+        "value": "What is this?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James looked at Vinny cell phone curiously, hoping to be something useful. James looked like he was still suspicious about what was going on.",
+        "type": "action"
+    },
+
+    {
+        "value": "Calm down, I think now you'll do it, let's start again with good morning. Good morning James!! DID YOU SLEEP WELL?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny screams ironically.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny. You're not HELPING me!",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
