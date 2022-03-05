@@ -7256,6 +7256,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "Vinny made a hoof face as he watched James' reaction. Vinny goes to the bonfire to try to warm up, but the bonfire was off because of the cold of the rain of the previous night. Then Vinny walks around looking for a clue from Rayane. If a few seconds passed, then James arrived a little regretful of what he'd just done.",
         "type": "action"
     },
