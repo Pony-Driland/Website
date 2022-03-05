@@ -7250,8 +7250,43 @@
     },
 
     {
-        "value": "Vinny goes to the bonfire to try to warm up and then walk around looking for a clue from Rayane.",
+        "value": "General banana? You still haven't told me what that banana is! And if anything happens to us because of Rayane, it will be your fault!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny made a hoof face as he watched James' reaction. Vinny goes to the bonfire to try to warm up, but the bonfire was off because of the cold of the rain of the previous night. Then Vinny walks around looking for a clue from Rayane. If a few seconds passed, then James arrived a little regretful of what he'd just done.",
         "type": "action"
+    },
+
+
+    {
+        "value": "Okay, fiiiine, sorry. I'm not adapted to Rayane refuting me with her sword. Okay?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James made a sad face, trying to forget the things that happened. Vinny then looked at James and smiled a little sad and replied.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ok, you tabacu head, Rayane didn't even leave a cafe or anything here, she just abandoned us. Well, she'll show up again. Until then we'll be on our way, is there somewhere we're going now?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tried to be positive and continued the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, I'll be following you. During the way we'll talk about some pegasus that can help me use the wings.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
