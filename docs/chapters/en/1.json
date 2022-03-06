@@ -7406,6 +7406,28 @@
     {
         "value": "James started to open his food box while waiting for Vinny to read the letter.",
         "type": "action"
+    },
+
+    {
+        "value": "Okay, the way you are grumpy, could burn your tongue with the hot breakfast then I would want to freeze the face of the breakfast too.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny takes the letter and ANALYZE the letter. James took a deep breath and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay, sooooorry.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled a little at James' reaction, then started reading the letter.",
+        "type": "action"
     }
 
 ]
