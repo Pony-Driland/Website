@@ -7339,7 +7339,28 @@
         "value": "Of course she'll want the tent back! This tent is one of the most expensive models! She has to be rich to just drop that tent at random!",
         "character": "James",
         "type": "dialogue"
-    }
+    },
 
+    {
+        "value": "Surely she has a well paid, very formal job, maybe she gets paid to teach ponies to fly. Maybe she got this job from someone who doesn't need this anymore, I don't know. She doesn't seem like the type to work with other ponies. WAIT! THERE'S BREAKFAST IN THERE?!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little surprised, but then a little disappointed at the silliness and replied. James avoided the conversation a little as he realized that Vinny was starting to theorize a lot about Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeeeees. I found this next to my things with a mysterious letter written by Rayane. Haven't you packed your things yet?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny didn't think twice and quickly went to see breakfast. Vinny was happy to realize this and then said.",
+        "type": "action"
+    }
 
 ]
