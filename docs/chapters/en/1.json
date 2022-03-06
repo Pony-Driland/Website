@@ -7452,6 +7452,23 @@
         "value": "Rayane~",
         "character": "Signed",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was surprised and thoughtful.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh god! Is this serious? Seems like everything is going right!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Fuck! Rayane where am I going to put this tent? On my ass?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
