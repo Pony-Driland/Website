@@ -173,8 +173,11 @@ var storyCfg = {
             { id: 'A7DE3BXdPsA', type: 'youtube' },
         ],
 
-        'tense-mystery': [
+        'kanashi': [
             { id: 'zaxVBfdgR3E', type: 'youtube' },
+        ],
+
+        'tense-mystery': [
             { id: '7dKxHERhaLE', type: 'youtube' },
             { id: 'QNwjH5EKTTQ', type: 'youtube' },
             { id: '1nBatlpsVj0', type: 'youtube' },
