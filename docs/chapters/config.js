@@ -121,7 +121,6 @@ var storyCfg = {
         ],
 
         'horror-battle': [
-            { id: 'b6WhRKOMUq0', type: 'youtube' },
             { id: 'ViCGaoeCUqk', type: 'youtube' },
         ],
 
