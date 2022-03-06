@@ -162,7 +162,6 @@ var storyCfg = {
             { id: 'dZR7M7gDNSc', type: 'youtube' },
             { id: '7Uyu5BrGMs4', type: 'youtube' },
             { id: 'TOEiLlspdhM', type: 'youtube' },
-            { id: 'zaxVBfdgR3E', type: 'youtube' },
             { id: '3VoGUhPwagI', type: 'youtube' },
             { id: 'uU4VgCWuAxE', type: 'youtube' },
             { id: 'dx0YwqEue_M', type: 'youtube' },
@@ -175,6 +174,7 @@ var storyCfg = {
         ],
 
         'tense-mystery': [
+            { id: 'zaxVBfdgR3E', type: 'youtube' },
             { id: '7dKxHERhaLE', type: 'youtube' },
             { id: 'QNwjH5EKTTQ', type: 'youtube' },
             { id: '1nBatlpsVj0', type: 'youtube' },
