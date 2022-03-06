@@ -13,6 +13,7 @@
 */
 
 // Module
+const fs = require('fs');
 const { exec } = require("child_process");
 const copydir = require('copy-dir');
 const path = require('path');
