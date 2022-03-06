@@ -7428,6 +7428,30 @@
     {
         "value": "Vinny smiled a little at James' reaction, then started reading the letter.",
         "type": "action"
+    },
+
+    {
+        "value": "Dear Vinny. Good morning.",
+        "character": "Letter",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Sorry for leaving suddenly, I needed to get back to my tasks. But don't worry, I promise I will always come back every night. I hope you enjoy the breakfast I prepared for you both before I left. Don't tell James, but his breakfast has a \"special twist\" of marshmallow. Heh And about your breakfast, I hope you especially like the cookies.",
+        "character": "Letter",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "About the tent, don't worry, you can keep this with you. Consider the tent a special gift for all of us to always have a good place to sleep.",
+        "character": "Letter",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane~",
+        "character": "Signed",
+        "type": "dialogue"
     }
 
 ]
