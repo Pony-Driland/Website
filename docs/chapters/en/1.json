@@ -7378,6 +7378,34 @@
         "value": "Weeeeeell, I had I gave you, and as a thank you you freeze my face. You tabacu head!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Yes! Sorry! I'll buy some new ones for you! Okay, let's see what we have here.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James used the magic to levitate the food box while looking excitedly at the food box.",
+        "type": "action"
+    },
+
+    {
+        "value": "I wouldn't be surprised if you disappoint by something, let me see the letter.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Shut up! Just read the letter!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James started to open his food box while waiting for Vinny to read the letter.",
+        "type": "action"
     }
 
 ]
