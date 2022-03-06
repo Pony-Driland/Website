@@ -7289,6 +7289,57 @@
         "value": "Well, I'll be following you. During the way we'll talk about some pegasus that can help me use the wings.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks around looking for something for a few seconds. So Vinny giggles and say.",
+        "type": "action"
+    },
+
+    {
+        "value": "This ice will come back, I won't let you be unharmed about having frozen my face. Then you'll want rayane to have played a prank on you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "When James noticed Vinny's sillyness, he reverted to his normal personality.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh! Come on! Ah? Wait, where's Rayane? We have to give back the tent.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane left the tent here, if you come back to us or she goes back to this cave, the tent will be assembled, I think anyway she won't want the tent back otherwise she wouldn't leave this here. Well, have you packed your things? Do you have something to eat now or are we going to eat later?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was extremely curious and looked in all directions, looking for Rayane, but he couldn't find her.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Is she gone? She left a breakfast and left?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was even more confused, trying to understand what was happening now.",
+        "type": "action"
+    },
+
+    {
+        "value": "Of course she'll want the tent back! This tent is one of the most expensive models! She has to be rich to just drop that tent at random!",
+        "character": "James",
+        "type": "dialogue"
     }
+
 
 ]
