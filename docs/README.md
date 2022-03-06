@@ -67,16 +67,26 @@ Final Version - 0% Complete
 
 <hr/>
 
+## Characters
+
+<a href="https://github.com/Pony-Driland/Website/blob/main/docs/img/characters/rayane/README.md" target="_blank">Rayane</a>
+
+<hr/>
+
 ## Characters (Spoilers)
 
 <a href="https://github.com/Pony-Driland/Website/blob/main/docs/img/characters/princess-ariella/README.md" target="_blank">Princess Ariella</a>
 
-<a href="https://github.com/Pony-Driland/Website/blob/main/docs/img/characters/rayane/README.md" target="_blank">Rayane</a>
-
 <a href="https://github.com/Pony-Driland/Website/blob/main/docs/img/characters/rainbow-queen/README.md" target="_blank">Rainbow Queen</a>
-
-<a href="https://github.com/Pony-Driland/Website/blob/main/docs/img/characters/blue-screen/README.md" target="_blank">Blue Screen</a>
 
 <a href="https://github.com/Pony-Driland/Website/blob/main/docs/img/characters/amy/README.md" target="_blank">Amy</a>
 
 <a href="https://github.com/Pony-Driland/Website/blob/main/docs/img/characters/layla/README.md" target="_blank">Layla</a>
+
+<hr/>
+
+## Characters WIP (Spoilers)
+
+<a href="https://github.com/Pony-Driland/Website/blob/main/docs/img/characters/blue-screen/README.md" target="_blank">Blue Screen</a>
+
+<a href="https://github.com/Pony-Driland/Website/blob/main/docs/img/characters/whistler/README.md" target="_blank">Whistler</a>
