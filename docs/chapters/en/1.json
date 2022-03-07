@@ -7589,6 +7589,13 @@
     },
 
     {
+        "set": {
+            "item": [{
+                "id": "surprise-tin",
+                "owner": "vinny",
+                "amount": -1
+            }]
+        },
         "value": "Vinny then opened the surprise tin, the tin exploded with several bits in a total of 970 bits.",
         "type": "action"
     },
