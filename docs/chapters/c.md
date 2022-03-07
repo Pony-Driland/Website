@@ -2,7 +2,8 @@ night-ambient
 
 "set": {
     "sfx": [
-        { "value": "cave-ambient", "type": "show" }
+        { "value": "forest-place", "type": "show" },
+        { "value": "lake-place", "type": "show" }
     ]
 },
 
