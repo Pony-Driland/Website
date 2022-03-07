@@ -7619,6 +7619,33 @@
         "value": "W...what?! Is this serious? How did everything get inside this cube?! Well, time to go see James!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "sfx": [
+                { "value": "cave-ambient", "type": "hide" },
+                { "value": "forest-place", "type": "show" }
+            ]
+        },
+        "value": "Vinny take everything and try to find James. This was still morning, and the weather had not yet finished drying the forest. And Vinny just saw James' footprints towards a lake just ahead.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh crap. JAMES!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "sfx": [
+                { "value": "lake-place", "type": "show" }
+            ]
+        },
+        "value": "Vinny desperately ran towards the place, then he found James desperately drinking the lake water to freshen his mouth.",
+        "type": "action"
     }
 
 ]
