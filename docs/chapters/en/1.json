@@ -7840,6 +7840,46 @@
         "value": "Ah. That was many years ago. When I arrived in Pony Driland, Rayane was already well known. And just like the other traveling ponies, she was always around me. She only started with her jokes as she discovered more about what I was working on. But for some reason, she always preferred to just watch me. I was scared when you said that she had done something different with you. You two suddenly appear so personally, and you've just met her for 1 day.",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath and then continued the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "This all left me extremely intrigued, it's the first time in my life that I've seen someone so close to Rayane, and I didn't expect that I was going to get in the middle of this situation.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little and said.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "You're welcome.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was extremely confused listening to Vinny's words.",
+        "type": "action"
+    },
+
+    {
+        "value": "You're welcome? What?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh, I think you would be surprised and I would be even more surprised if we find out more about where Rayane works or who she works for. Who knows.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
