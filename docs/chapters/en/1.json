@@ -7760,6 +7760,79 @@
         "value": "Okay, I can't stop your decisions, but please, unfortunately the markets that really start to show up for good equipment are in other villages.",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "What? Are the markets opposite direction? Anyway we have to go see Kenny.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little more worried about Vinny's thoughts.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, Just don't go straight path. If you try to climb Whicocesert Mountain, you'll end up going to the main base where Elite Color lives. So be very careful with that mountain, I still think you better stay home with Kenny.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised, but then he tried to be positive and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow. Well, at some point we're going to have to go up there. Let's go to kenny. Kenny must be extremely worried about us.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James get completely surprised and scared.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...What? Are you serious? I've been trying to climb this mountain for years!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Nah, trust me, an adventure never hurt anyone.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was still worried, but realizing he wasn't going to be able to convince Vinny to change his mind, he then continued with the conversation.",
+        "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": null },
+        "value": "If you insist so much, at least learn to protect yourself.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took things and put the all things inside a backpack. This seemed smaller than your saddle, but somehow the backpack fit more inside this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh! Well, can you tell me the story of how you met Rayane? Was she always known this way you knew her? we have a lot of walking time.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then start walking through the woods, looking to follow the trail back home while James followed and helped guide Vinny.",
+        "type": "action"
     }
 
 ]
