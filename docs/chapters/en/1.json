@@ -7469,6 +7469,112 @@
         "value": "Fuck! Rayane where am I going to put this tent? On my ass?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny was very curious and very surprised to remember that James was going to eat breakfast.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh no. Should I warn him? Okay, I think I should let him know.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey! Is your breakfast ok, James?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny was extremely surprised to hear James' reaction. James starts to run desperately, looking for water.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAH! MARSHMALLOW PEPPER! FIRE FIIIIIRE! FIIIIIRE!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey! Heeey! Look for the little pond there! Look for the pond! I think it rained a lot, look outside before your tongue falls out of your mouth!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then worried about eating breakfast while watching James.",
+        "type": "action"
+    },
+
+    {
+        "value": "LITTLE POND?! RAIN?! RAIN! AAAAAAH!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James runs out of the cave desperately. Meanwhile, Vinny was finishing his breakfast.",
+        "type": "action"
+    },
+
+    {
+        "value": "But what a delicious breakfast! I hope James learned something today.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Hey? James? How do you disarm this tent?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny walks in circles around the tent, trying to find some way to disarm her. Until Vinny finally found a touch screen that was inside the tent. This screen was on the exit side of the tent. Vinny was completely surprised to see the touch screen.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Aha! I've never seen a tent with a touch screen, James really was right.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny analyze the small screen. Vinny was a little lost, trying to find the right buttons. Then Vinny found a button that said \"Zip Tent\".",
+        "type": "action"
+    },
+
+    {
+        "value": "Alarm Clock? In and Out History? Wow! Air Conditioning too! hm. Maybe the history tells me something about Rayane.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny touch the button \"In and Out History\". A number appears showing the time when Rayane left the tent, but Vinny didn't understand anything because Vinny  didn't know how Pony Driland's watch works.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah! Come on! I should have remembered that this world's calendar must be a tabacu! Fiiiine...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was extremely thoughtful, looking around, then he remembered the surprise tin.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? I'm already lost in a forest with a grumpy scientist, maybe opening this will serve some purpose/",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
