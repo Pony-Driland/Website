@@ -7833,6 +7833,13 @@
     {
         "value": "Vinny would then start walking through the woods, looking to follow the trail back home while James followed and helped guide Vinny.",
         "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": "sad" },
+        "value": "Ah. That was many years ago. When I arrived in Pony Driland, Rayane was already well known. And just like the other traveling ponies, she was always around me. She only started with her jokes as she discovered more about what I was working on.",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
