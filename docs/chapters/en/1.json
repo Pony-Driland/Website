@@ -7651,8 +7651,115 @@
                 { "value": "lake-place", "type": "show" }
             ]
         },
-        "value": "Vinny desperately ran towards the place, then he found James desperately drinking the lake water to freshen his mouth.",
+        "value": "Vinny desperately ran towards the place, then he found James desperately drinking the lake water to freshen his mouth. Vinny without a second thought, he was going to help James up.",
         "type": "action"
+    },
+
+    {
+        "value": "Hey! Are you okay? Do you need any more help?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James put the last sip of water in his mouth before flipping to the ground and calming down slowly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Aaahh. Pheeeeeeeew. @.@",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James? Hello? Are you ok? Was the pepper so strong?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James coughed a lot and responded in disgust.",
+        "type": "action"
+    },
+
+    {
+        "value": "Argh! Yes! As strong as all the marshmallows Rayane makes!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little and was relieved to see James feeling better.",
+        "type": "action"
+    },
+
+    {
+        "value": "I see, I see. I'll wait for you to recover, then let's move on, I have to go to the market first.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "wait, market? Will you buy more food?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James coughed some more until his mouth felt better again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Keep calm, the panic is over. Well, I'm going to see some armor or some accessories for my wing, I got some money in a surprise tin, if you want some water I'll buy water for you too.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was surprised, and then he responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Surprise Tin? This is dangerous! That tin could suck your money!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny get a little scared, when James saw Vinny's reaction, James just kept talking.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, thanks, but first I need to remind you of something. The Greendream Village market has basic items for being a more peaceful place. It's rare to have any really good weapons for sale there. Are you sure you don't want to stay home with Kenny?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "No, I bought a surprise Tin when I was with Kenny so I opened this now looking for a drink for you. But money came. Hah! Wait, is there another market? I specifically need to go close to Kenny, I need to win a sword from a raffle.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey! Calm down! That was just luck!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James does a poker face. James was a little worried about Vinny's reaction.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay, I can't stop your decisions, but please, unfortunately the markets that really start to show up for good equipment are in other villages.",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
