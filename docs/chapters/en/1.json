@@ -7575,6 +7575,50 @@
         "value": "Oh? I'm already lost in a forest with a grumpy scientist, maybe opening this will serve some purpose.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was smiling and was excited to find out what the mysterious tin could do. the box exploded with several bits in a total of 970 bits",
+        "type": "action"
+    },
+
+    {
+        "value": "It's just a silly tin, let's see what's inside.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then opened the surprise tin, the tin exploded with several bits in a total of 970 bits.",
+        "type": "action"
+    },
+
+    {
+        "value": "HEY! WOOOW! COOL!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny's eyes dilated with happiness, and he opened the saddle to let the bits all fall into the saddle.",
+        "type": "action"
+    },
+
+    {
+        "value": "Great! I am no longer poor in this mysterious world! Hahaha! Okay, That name \"Zip Tent\" is pretty weird, so I think I'll press on and see what happens outside.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very happy and satisfied with the result, he tried to keep quiet so as not to attract too much attention, so he just press the \"Zip Tent\" button and run outside. The panel indicated that the tent was waiting for everyone to leave, but Vinny didn't even see this and only heard the little noise of the tent preparing to close. the tent then compacted completely into a small box that could easily be stowed inside the saddle. Vinny was completely surprised and scared to watch the scene. He then said with many questions.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...what?! Is this serious? How did everything get inside this cube?!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
