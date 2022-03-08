@@ -7858,7 +7858,6 @@
         "type": "action"
     },
 
-
     {
         "value": "You're welcome.",
         "character": "Vinny",
@@ -7878,6 +7877,84 @@
 
     {
         "value": "Heh, I think you would be surprised and I would be even more surprised if we find out more about where Rayane works or who she works for. Who knows.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath, and said everything very sincerely.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny, there are many types of organizations in Pony Driland. There are ponies that like to hunt for treasure for money, ponies that seek knowledge, ponies that just want to have a more peaceful life. That's motive I'm saying this is dangerous. ",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looked at James, and said it sincerely too.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Where do you fit in? You don't want to have a passive life, do you? Is this safer not get caught or getting involved in a ball of ice around?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little emotionally uncomfortable, and just responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well. Vinny, I shouldn't even be in this dimension like you are now. I didn't enter this dimension the same way you did. My goals are very different from everyone else here. I need to find out the motive for this dimension has become what this is now.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little sadder, and prepared to say the next words.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sorry to inform you, but it is completely impossible to get out of this dimension. You are completely trapped here forever.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was extremely surprised and scared, trying to process the information to answer James.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...What?! No! No no no!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "J..James. if you were born here, why aren't you from here? I did not understand.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "No. Vinny, I wasn't born here, but I saw this dimension born in front of my eyes. But I never found out who was responsible for all this to exist. This dimension only makes sense if someone had the idea of earth forming this place. That means there is someone with the powers of a god here. And for some mysterious reason I never found out who this pony was. You must be thinking by now that this could be someone from Elite Color, but as strange as it sounds, that doesn't make any sense to me. if this really was, this dimension would have already radically changed compared to what this dimension is now.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James finished answering in a very worried way. Vinny would be completely thoughtful, trying to think of some theory, but he would smile and answer.",
+        "type": "action"
+    },
+
+    {
+        "value": "So this misterious pony is a god in your concept. This is interesting.",
         "character": "Vinny",
         "type": "dialogue"
     }
