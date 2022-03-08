@@ -7956,7 +7956,7 @@
     },
 
     {
-        "value": "W...What? So this misterious pony is a god in your concept. This is interesting.",
+        "value": "W...What? So this mysterious pony is a god in your concept. This is interesting.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -7965,6 +7965,11 @@
         "value": "Well, I'd have to tell you one way or another. I don't understand motive you're so interested in joining me, but I need you to understand this talk. This dimension was born empty, nothing existed here. The only things that existed were the void and the laws that give logic to the elements of this dimension. Pony Driland is an artificial dimension, that is, it needs other creatures beings from other dimensions to be populated and sustain the dimension existence.",
         "character": "James",
         "type": "dialogue"
-    }
+    },
+
+    {
+        "value": "James again showed more emotional concern as he continued talking.",
+        "type": "action"
+    },
 
 ]
