@@ -72,6 +72,9 @@ fs.readdir(folderPath, (err, files) => {
         <meta content="website" property="og:type">
         <meta content="${ficData.config.chapterName[data.count].description}" property="og:description">
         <meta content="${ficData.config.chapterName[data.count].description}" property="description">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@${ficData.config.twitter.username}">
+        <meta name="twitter:creator" content="@${ficData.config.twitter.username}">
 
         <!-- Embed -->
         <link href="/oEmbed/chapter/${data.count}.json" rel="alternate" title="oEmbed JSON Profile" type="application/json+oembed">

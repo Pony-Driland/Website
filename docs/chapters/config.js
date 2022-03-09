@@ -1,5 +1,10 @@
 var storyCfg = {
 
+    // Twitter
+    twitter: {
+        username: 'JasminDreasond'
+    },
+
     // Info
     gtag: 'G-PS1R5G3G50',
     underDevelopment: false,

@@ -89,8 +89,12 @@ fs.readdir(folderPath, (err, files) => {
         <meta property="og:type" content="website">
         <meta property="og:site_name" content="${ficData.config.title}">
         <meta property="og:site" content="${ficData.config.title}">
-        <meta property="twitter:site" content="${ficData.config.title}">
         <meta http-equiv="refresh" content="0; URL='https://${ficData.config.domain}/?path=%2Fimg%2Fcharacters%2F${file.name}%2FREADME.md&title=${encodeURIComponent(jsonFile.title)}'"/>
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@${ficData.config.twitter.username}">
+        <meta name="twitter:creator" content="@${ficData.config.twitter.username}">
+        <meta name="twitter:image" content="/oEmbed/characters/${file.name}.${jsonFile.image}">
 
         <!-- Script -->
         <script src="/js/jquery.min.js"></script>
