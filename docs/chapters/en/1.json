@@ -8060,6 +8060,11 @@
         "value": "But to my surprise, after a long time traveling in space, I decided to go to this dimension to insulate myself from everything that existed. But when I went here via my teleportation remote of my remote control, this place was completely transformed! I discovered that some other creature had arrived here long before me. I was extremely scared, especially when I found out that I had become a pony, I was extremely confused and just wanted to leave this dimension to look at my computer. But I got an unpleasant surprise, my remote on my SmartMoby didn't work. Someone had manipulated the output and input system. I discovered that I was now trapped inside my own project in a reality created by a mysterious creature!",
         "character": "James",
         "type": "dialogue"
-    }
+    },
+
+    {
+        "value": "James was angry and depressed, but he took a deep breath, and tried to feel calmer.",
+        "type": "action"
+    },
 
 ]
