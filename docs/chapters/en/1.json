@@ -8032,6 +8032,23 @@
         "value": "B..but unfortunately our last spaceship only had room for one. Only one creature could use this little spaceship! He just pushed me and sent my spaceship into interstellar space!",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very surprised, speechless to describe James' sad situation. Vinny tried to get closer to James and stopped walking for a while to calm him down.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..hey, James, I'm sorry, so you were here when this entire dimmension started.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Not exactly. I didn't know what was going on this dimension. In my mind this place had nothing until some creature became the first creature in this dimension and took possession of Master SmartMoby. I traveled the universe looking for a new home, thinking that this dimension was safe with no possibility of having any intruders. I tried looking for friends from other planets, but the war had already destroyed many worlds. This was a terrible war for a technological empire.",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
