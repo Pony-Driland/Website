@@ -7998,6 +7998,40 @@
         "value": "Vinny, sorry, but this dimension was the last thing I had left. Sorry, I didn't mean to have to talk about this.",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "But I was the developer of project of this dimension along with my brother, my brother was the head of the whole project, we were creating this dimension to try to escape and live in a place totally away from the wars. But unfortunately, the imperial war that took place in my galactic in order to conquer the technologies of my planet ended up annihilating my entire solar system.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny is extremely surprised and extremely scared to hear this. James was slowly getting more depressed during the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "B..But what the fuck is this? Is it now an intergalactic war?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "I have nowhere else to live in the universe. My specie, my planet, my home, everything went extinct. My brother didn't want to miss out on the artificial dimension project, so he activated the force for the new dimension to be founded during the destruction of our planet. My brother idea was to teleport our dimension out of our universe as quickly as possible. We knew that after the dimension foundation process, we would just need to use the remote control to enter the dimension.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James began to cry as the conversation continued.",
+        "type": "action"
+    },
+
+    {
+        "value": "B..but unfortunately our last spaceship only had room for one. Only one creature could use this little spaceship! He just pushed me and sent my spaceship into interstellar space!",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
