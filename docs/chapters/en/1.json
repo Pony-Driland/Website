@@ -8084,4 +8084,48 @@
         "type": "dialogue"
     },
 
+    {
+        "value": "Vinny was feeling a lot of empathy for James, so Vinny just smiled and placed a paw on his shoulder gently.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes James, memories follow us wherever we go, but each new problem, a new solution is born to solve too. We will solve this mystery.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James smiled back a little as he sensed Vinny's determination to want to help.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah, thank you, if I replicate the components of your phone, this will be the first step for me to finally discover the origins of Pony Driland and try to fix this mysterious dimension glitch.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh, I understand, we need to be silent about this. What do you think of us trying to finish this subject a little and think about other things? Well, are we close to the grocery store?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Thanks Vinny. Well, no one else knows this information., I didn't tell to no one because my fear was that everyone had an existential crisis knowing about this dimension origins. This insecurity could make everyone accidentally tell other villagers and that would be very dangerous.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James thought about Rayane for a few seconds. He was getting a presentiment of Rayane's presence",
+        "type": "action"
+    },
+    {
+        "value": "Well. I've never told Rayane too, this is the first time she's really gotten closer to me. But I don't have questions if she's been watching us. Rayane must have heard the entire conversation.",
+        "character": "James",
+        "type": "dialogue"
+    }
+
 ]
