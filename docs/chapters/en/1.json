@@ -7630,6 +7630,7 @@
 
     {
         "set": {
+            "where": "Forest",
             "sfx": [
                 { "value": "cave-ambient", "type": "hide" },
                 { "value": "forest-place", "type": "show" }
@@ -8143,6 +8144,7 @@
         "set": {
             "playlistPlay": null,
             "set": {
+                "where": "Greendream Village",
                 "sfx": [
                     { "value": "village-place", "type": "show" }
                 ]
