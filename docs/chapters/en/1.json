@@ -7831,6 +7831,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "lake-place", "type": "hide" }
+            ]
+        },
         "value": "Vinny would then start walking through the woods, looking to follow the trail back home while James followed and helped guide Vinny.",
         "type": "action"
     },
@@ -8119,6 +8124,11 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "forest-place", "type": "show" }
+            ]
+        },
         "value": "James thought about Rayane for a few seconds. He was getting a presentiment of Rayane's presence. But then James tried to follow the same confidence strategy as Vinny, and tried to ignore the concerns about Rayane.",
         "type": "action"
     },
@@ -8126,6 +8136,51 @@
     {
         "value": "Well. I've never told Rayane too, this is the first time she's really gotten closer to me. But I don't have questions if she's been watching us. Rayane must have heard the entire conversation.",
         "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null,
+            "set": {
+                "sfx": [
+                    { "value": "village-place", "type": "show" }
+                ]
+            }
+        },
+        "value": "James looked at the village entrance for a few seconds. Then James continued to enter the village normally. Vinny was very focused on the conversation, finding the story very interesting, so he was confused when James stopped talking.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? James?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well, we'll be reaching the market in a few minutes. Okay?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh? Yes yes! I need to talk to Raquel urgently! I have a concern!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny talks loudly and silly to all sides.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "silly"
+        },
+        "value": "Aaaah! Sorry. I have ticks from time to time.",
+        "character": "Vinny",
         "type": "dialogue"
     }
 

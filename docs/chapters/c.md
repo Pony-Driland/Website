@@ -1,10 +1,9 @@
 night-ambient
 
-"set": {
-    "sfx": [
-        { "value": "forest-place", "type": "show" },
-        { "value": "lake-place", "type": "show" }
-    ]
-},
+        "set": {
+            "sfx": [
+                { "value": "village-place", "type": "show" }
+            ]
+        },
 
 { "value": "bird-and-nature", "type": "show" }
