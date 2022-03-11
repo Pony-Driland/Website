@@ -8148,7 +8148,7 @@
                 ]
             }
         },
-        "value": "James looked at the village entrance for a few seconds. Then James continued to enter the village normally. Vinny was very focused on the conversation, finding the story very interesting, so he was confused when James stopped talking.",
+        "value": "Then more time passed, and the two had a long way to walk to get back to the village. The two were a little tired from the walk. James looked at the village entrance for a few seconds. Then James continued to enter the village normally.",
         "type": "action"
     },
 
@@ -8181,6 +8181,46 @@
         },
         "value": "Aaaah! Sorry. I have ticks from time to time.",
         "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little annoyed by Vinny's silliness, but he still smiled a little and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, we'll be reaching the market in a few minutes. Okay?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "Are we going to visit the market? Heh, I want the sword there. With you close, the surprise tin was lucky!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James would facehoof and look at Vinny. Vinny was happy and hoping for luck, James was just trying to understand the motive of Vinny is doing this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Viiiinny. Calm down Vinny, we're in the village, if Rayane's following us, she should be in the crowd to camouflage herself. She is not used to being too exposed.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was then disappointed to remember the sword again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, Are you going to try to play the lucky dice again? Are you sure you're going to do this? That dices is no joke. Alright?",
+        "character": "James",
         "type": "dialogue"
     }
 
