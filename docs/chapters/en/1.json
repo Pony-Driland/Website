@@ -8216,12 +8216,91 @@
     },
 
     {
-        "value": "James was then disappointed to remember the sword again.",
+        "value": "James was then disappointed to remember the sword again. James was a little worried about the possibilities of spending money that Vinny can make.",
         "type": "action"
     },
 
     {
         "value": "Well, Are you going to try to play the lucky dice again? Are you sure you're going to do this? That dices is no joke. Alright?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? You are my lucky charm!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny talks on James ear delicately.",
+        "type": "action"
+    },
+
+    {
+        "value": "Aaaaaaaaaaaand... I have almost 1000 bits that I found inside the surprise tin.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W....WHAT?! Me?! What the hell is that?! A..Lucky charm!?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Lucky for me to have won the prize inside the surprise tin! Hah!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James then did a facehoof and rubbed his paw over his face angrily as he replied.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fiiiiiine... I'll take that as a compliment.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James just got more confused while Vinny and James were almost at the grocery store. So Vinny finally saw the entrance to the market.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey, be careful for the doo.r",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Shut up! I'm not Kenny! Okay?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little and then let James have a moment of peace as the two finally entered the market.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh, Come on. Kenny accidentally headbutted the door when we came here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes yes, Kenny, always careless when he talks too much.",
         "character": "James",
         "type": "dialogue"
     }
