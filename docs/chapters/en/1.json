@@ -8143,12 +8143,10 @@
     {
         "set": {
             "playlistPlay": null,
-            "set": {
-                "where": "Greendream Village",
-                "sfx": [
-                    { "value": "village-place", "type": "show" }
-                ]
-            }
+            "where": "Greendream Village",
+            "sfx": [
+                { "value": "village-place", "type": "show" }
+            ]
         },
         "value": "Then more time passed, and the two had a long way to walk to get back to the village. The two were a little tired from the walk. James looked at the village entrance for a few seconds. Then James continued to enter the village normally.",
         "type": "action"
@@ -8289,6 +8287,12 @@
     },
 
     {
+        "set": {
+            "sfx": [
+                { "value": "village-place", "type": "hide" },
+                { "value": "market-place", "type": "show" }
+            ]
+        },
         "value": "Vinny giggles a little and then let James have a moment of peace as the two finally entered the market.",
         "type": "action"
     },

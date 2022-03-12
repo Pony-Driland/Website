@@ -2,7 +2,8 @@ night-ambient
 
         "set": {
             "sfx": [
-                { "value": "village-place", "type": "show" }
+                { "value": "village-place", "type": "show" },
+                { "value": "market-place", "type": "hide" }
             ]
         },
 
