@@ -8404,4 +8404,33 @@
         "type": "action"
     },
 
+    {
+        "set": {
+            "item": [{
+                "id": "bits",
+                "owner": "vinny",
+                "amount": -3
+            }]
+        },
+        "value": "Yeeaaaaaaah! Dice Time! Let's go to the first round!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then the dice would spin, and spin extremely dramatically. Vinny was extremely anxious to see the result. The die had a lot of numbers, and it kept spinning while James was desperate.",
+        "type": "action"
+    },
+
+    {
+        "value": "No Vinny! Please! Tell me this will be your first and last attempt!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then the die continued to spin crazily for a few seconds until it finally stopped spinning.",
+        "type": "action"
+    },
+
 ]
