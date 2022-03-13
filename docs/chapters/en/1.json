@@ -8320,4 +8320,81 @@
         "type": "dialogue"
     },
 
+    {
+        "value": "Then Vinny and James entered the market. James was looking to organize some important healing items and scraps items for future projects. Vinny was more interested in looking for some item that would be useful for his adventure, some equipment, some clothing, or cape. But he was having a hard time choosing something. But then during this period, Vinny finds a flight assistance accessory for wings.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes! My God! That's it! This is what I was needing! Yabacu head will need to teach me how to use that thing!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny's eyes dilate in happiness at the thought of the usefulness of learning to fly, so Vinny pick up flight assistance accessory.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes! Let's go!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then remembered the sword, Vinny was extremely thoughtful if he really did it or not. He looked at the amount of money he had, and then at the sword.",
+        "type": "action"
+    },
+
+    {
+        "value": "heh, yeah. My big time has come.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then go to the employee next to the sword. Vinny was pretty confident with his luck. ",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Ho ho! Look who's back! ",
+        "character": "Employee",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes, I'm here with 1000 coins ready for fun!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The employee was a little suspicious due to Vinny's trust, but then the employee smiled and became more inviting for Vinny to approach the dices.",
+        "type": "action"
+    },
+
+    {
+        "value": "More fun? So time for fun! Big Dice Time!",
+        "character": "Employee",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "By pure coincidence, James was passing by and overheard the conversation. At this point, James was extremely worried and ran towards Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? What? No! NO NO NO NO! VINNY! STOOOOOP! STOOOOOOOOOOOOOOOOOOOOOP!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Everyone in the market was startled by James' reaction, but James ignored it and just focused on running towards Vinny, but it was too late.",
+        "type": "action"
+    },
+
 ]
