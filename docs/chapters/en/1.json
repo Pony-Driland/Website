@@ -8393,6 +8393,9 @@
     },
 
     {
+        "sfx": [
+            { "value": "dice-roll", "type": "show" }
+        ],
         "value": "Everyone in the market was startled by James' reaction, but James ignored it and just focused on running towards Vinny, but it was too late.",
         "type": "action"
     },
