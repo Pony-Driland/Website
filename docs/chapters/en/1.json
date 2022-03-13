@@ -8433,4 +8433,22 @@
         "type": "action"
     },
 
+    {
+        "value": "YES! YEEEES!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "NOOOO! SILLY VINNY!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I want to see more attempts! More attempts! Please!",
+        "character": "Employee",
+        "type": "dialogue"
+    },
+
 ]
