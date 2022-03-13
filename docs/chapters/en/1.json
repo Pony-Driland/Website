@@ -8485,4 +8485,15 @@
         "type": "dialogue"
     },
 
+    {
+        "value": "Hah hah! That's right and I'm accompanied with my lucky charm!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny hugged James in an extremely happy way. Celebrating the moment.",
+        "type": "action"
+    },
+
 ]
