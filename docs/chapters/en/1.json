@@ -8446,8 +8446,36 @@
     },
 
     {
-        "value": "I want to see more attempts! More attempts! Please!",
+        "value": "I want to see more attempts! More attempts! Please! Let's see the result!",
         "character": "Employee",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So when the employee went to see the data, he was extremely surprised.",
+        "type": "action"
+    },
+
+    {
+        "value": "No way! This is impossible!",
+        "character": "Employee",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The dice had landed precisely on the number 100.",
+        "type": "action"
+    },
+
+    {
+        "value": "YEEEEEEEEEEEEEEEEES!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...what? W...what? But what the fuck was that?",
+        "character": "James",
         "type": "dialogue"
     },
 
