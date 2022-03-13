@@ -8304,9 +8304,20 @@
     },
 
     {
-        "value": "Yes yes, Kenny, always careless when he talks too much.",
+        "value": "Yes yes, Kenny, always careless when he talks too much. But please, let's be quick.",
         "character": "James",
         "type": "dialogue"
-    }
+    },
+
+    {
+        "value": "Vinny smiled and replied",
+        "type": "action"
+    },
+
+    {
+        "value": "Alright!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
 
 ]
