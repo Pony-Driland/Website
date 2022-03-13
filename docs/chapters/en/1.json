@@ -8418,6 +8418,12 @@
     },
 
     {
+        "value": "Do you want the dice? Let's go dice! Go go go dice! Spin the dice and let's go!",
+        "character": "Employee",
+        "type": "dialogue"
+    },
+
+    {
         "value": "Then the dice would spin, and spin extremely dramatically. Vinny was extremely anxious to see the result. The die had a lot of numbers, and it kept spinning while James was desperate.",
         "type": "action"
     },
@@ -8468,7 +8474,7 @@
     },
 
     {
-        "value": "YEEEEEEEEEEEEEEEEES!",
+        "value": "YEEEEEEEEEEEEEEEEES! YEEEEES! FUCK YEAH!",
         "character": "Vinny",
         "type": "dialogue"
     },
