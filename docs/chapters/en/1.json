@@ -8496,4 +8496,16 @@
         "type": "action"
     },
 
+    {
+        "value": "James was on an extreme poker face, and then he said.",
+        "type": "action"
+    },
+
+    {
+        "value": "I... lucky charm? Vinny, seriously, don't ever do that again. This was extremely pure luck.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+
 ]
