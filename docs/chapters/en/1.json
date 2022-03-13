@@ -8336,7 +8336,20 @@
     },
 
     {
-        "value": "Vinny's eyes dilate in happiness at the thought of the usefulness of learning to fly, so Vinny pick up flight assistance accessory.",
+        "set": {
+            "item": [{
+                    "id": "flight-assistance-accessory",
+                    "owner": "vinny",
+                    "amount": 1
+                },
+                {
+                    "id": "raincoat",
+                    "owner": "vinny",
+                    "amount": 1
+                }
+            ]
+        },
+        "value": "Vinny's eyes dilate in happiness at the thought of the usefulness of learning to fly, so Vinny pick up flight assistance accessory and a raincoat.",
         "type": "action"
     },
 
