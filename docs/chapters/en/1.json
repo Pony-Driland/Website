@@ -8521,5 +8521,32 @@
     },
 
 
+    {
+        "value": "YEAAAAH! It was nice doing business with you, tomorrow I'll be back to see the next prize!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The employee was sad and disappointed in Vinny's luck, So the employee would smile happily upon hearing this, but James would interrupt all the time.",
+        "type": "action"
+    },
+
+    {
+        "value": "No Vinny! No more gambling! Shut up! STOP! STOOOP NOW!!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would get a little annoyed with James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine!! FINE! Good you curmudgeon! Well, Where do I wrap the gift?",
+        "character": "Vinny",
+        "type": "dialogue"
+    }
 
 ]
