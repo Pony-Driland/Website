@@ -8634,6 +8634,56 @@
     {
         "value": "James would get a little sad and just follow Vinny.",
         "type": "action"
+    },
+
+    {
+        "value": "Vinny then just smiled. Arriving at the cashier, the cashier was a unicorn that was sleeping on the price machine.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Hello?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh no.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The cashier was in a deep sleep, it looked like she was talking in her sleep.",
+        "type": "action"
+    },
+
+    {
+        "value": "Two for one and you take the third...ZzzZzzZZzz.",
+        "character": "Cashier",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then laughed a little and prepared to ask a silly question.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hihi. Did James think this girl was pretty? I think she looks crazy about you, just don't let her see you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...what? Vinny! No!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was scared, afraid of having some misunderstanding problem.",
+        "type": "action"
     }
 
 ]
