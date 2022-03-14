@@ -8589,6 +8589,51 @@
         "value": "Haha! Yes! Thank you!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "James looked at the sword, a little more regretful than usual, so he said.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "Okay, sorry again for my behavior. I was here buying your sprays that you needed back.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was then surprised by James' words and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hm? Do you have money there?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah, I have money. Kenny always helps me sell some of my inventions that I develop for civilians. Don't think I'm traveling the world without financial alternatives.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh! Good! So let's pay and go to Kenny's soon.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay. Let's go home sir 4 leaf clover.",
+        "character": "James",
+        "type": "dialogue"
+    },
+    {
+        "value": "James would get a little sad and just follow Vinny.",
+        "type": "action"
     }
 
 ]
