@@ -8759,7 +8759,96 @@
     },
 
     {
-        "value": "James let out a nervous little laugh and used magic to take the items to another cashier",
+        "value": "James let out a nervous little laugh and used magic to take the items to another cashier.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Hey! I'm going with you, since you took the things.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then made a small nervous smile and followed James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey James, do you have sunglasses? Get me a pair of sunglasses, the 50-bit ones.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny made another nervous smile, and in a bit of a hurry. James would get very confused and say.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Sunglasses? Why do you want sunglasses? We're going on a risky mission!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey! Next purchase!",
+        "character": "Cashier",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was surprised to hear the cashier, so he prepared the purchases to be processed.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh yes yes! I am going!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James used magic and put the glasses on the shopping list that was being passed.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. Well James, please put shopping here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ok. You got lucky again, I have my backpack packed to carry this sword.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little uncomfortable due to Vinny's laziness, but he just ignored it.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. Ah? Hey girl! Do you have a loyalty card or points card?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The cashier just ignored Vinny and put the sword inside the James's backpack. Vinny was surprised that even though the backpack was very small, the sword was a bigger size and went completely inside the backpack.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay, the price is 963 bits. You will have to make your card in our card assistance.",
+        "character": "Cashier",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was embarrassed by the situation and just made the payment.",
         "type": "action"
     }
 
