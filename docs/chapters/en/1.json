@@ -8850,6 +8850,40 @@
     {
         "value": "Vinny was embarrassed by the situation and just made the payment.",
         "type": "action"
+    },
+
+    {
+        "value": "An. Thank you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay, have a good day sir.",
+        "character": "Cashier",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I think we arrived too soon here.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was confused by the cashiers' behavior, but then he just accepted the situation and put his backpack back on his back.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, it's all right now.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then smiled, satisfied that he was finally going back to Kenny's house. Vinny laughed a little and said.",
+        "type": "action"
     }
 
 ]
