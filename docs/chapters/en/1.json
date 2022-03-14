@@ -8684,6 +8684,78 @@
     {
         "value": "James was scared, afraid of having some misunderstanding problem. During this moment, the cashier's eyes opened slowly and very sleepily.",
         "type": "action"
+    },
+
+    {
+        "value": "Huh? Who said that? Is it break time?",
+        "character": "Cashier",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh! Hello! Is the cashier open?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The cashier struggled to keep its eyes open and then said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Open? Very open. I'm open to receive... purchases.",
+        "character": "Cashier",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The cashier used magic sleepily, and the Vinny purchases trembled in the air, passing through the payment machine. James got a little worried and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny? I think she needs help.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would do a poker face and then try to talk to the cashier.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, let me help you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny offered to help the cashier, but she was extremely sleepy.",
+        "type": "action"
+    },
+
+    {
+        "value": "3 per room and go...",
+        "character": "Cashier",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Cashier falls face down on the floor and goes back to sleep. Vinny and James looked at her worriedly. Vinny talks a little silly.",
+        "type": "action"
+    },
+
+    {
+        "value": "James, call the manager or find another cashier please.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James let out a nervous little laugh and used magic to take the items to another cashier",
+        "type": "action"
     }
 
 ]
