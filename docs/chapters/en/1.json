@@ -8572,6 +8572,11 @@
     },
 
     {
+        "item": [{
+            "id": "mysterious-sword",
+            "owner": "vinny",
+            "amount": 1
+        }],
         "value": "The employee was disappointed, but he still smiled a little and answered. Employee uses the key to open the door of the prize. Then the employee would package the sword in a gift box and give this to Vinny.",
         "type": "action"
     },
