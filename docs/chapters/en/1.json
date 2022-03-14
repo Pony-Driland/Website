@@ -8549,6 +8549,46 @@
         "value": "Fine!! FINE! Good you curmudgeon!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "James made a poker face. Vinny then took a deep breath and calm down before Vinny respond happily.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, Where do i make this sword become a gift?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A...ah? What?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The employee was disappointed, but he still smiled a little and answered. Employee uses the key to open the door of the prize. Then the employee would package the sword in a gift box and give this to Vinny.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "calm"
+        },
+        "value": "Well, Just go to cashier 7. Have a good day.",
+        "character": "Employee",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Haha! Yes! Thank you!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
