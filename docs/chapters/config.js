@@ -12,7 +12,7 @@ var storyCfg = {
     itemsPerPage: 100,
     title: 'Pony Driland',
     discordInvite: 'GegfAgNxRX',
-    description: 'The mysterious world.',
+    description: 'The dimension of lost creatures and the home of hope.',
     urlPage: null,
     defaultLang: 'en',
     lang: ['en'],
