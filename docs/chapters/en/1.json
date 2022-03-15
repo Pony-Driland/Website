@@ -8860,12 +8860,6 @@
     },
 
     {
-        "value": "I think we arrived too soon here.",
-        "character": "James",
-        "type": "dialogue"
-    },
-
-    {
         "value": "James was confused by the cashiers' behavior, but then he just accepted the situation and put his backpack back on his back.",
         "type": "action"
     },
@@ -8878,6 +8872,145 @@
 
     {
         "value": "Vinny then smiled, satisfied that he was finally going back to Kenny's house. Vinny laughed a little and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine! Let's go to Kenny's house, before Rayane comes again.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was already walking to leave the market, and James just followed him. James was then a little surprised to hear about Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Rayane? Oh! Rayane! This time I won't fall for the marshmallow trick again!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James said a little nervous when he remembered the pepper, and quickly follows Vinny faster.",
+        "type": "action"
+    },
+
+    {
+        "value": "Come on, Kenny will want to see you! Heh, already give me my glasses, I want to test them.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? Glasses? I still don't understand the motive for the glasses.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "item": [{
+                "id": "sunglasses",
+                "owner": "vinny",
+                "amount": 1
+            }]
+        },
+        "value": "James made a facehoof and used magic to give Vinny the glasses sunglasses.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh! This is my style! am i stylish?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny puts the sunglasses on the face.",
+        "type": "action"
+    },
+
+    {
+        "value": "James made another facehoof.",
+        "type": "action"
+    },
+
+    {
+        "value": "It's wonderful!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "When James and Vinny left the market, the two ponies was already in the middle of the village crowd walking towards Kenny's house, everything was normal and very busy as every morning. James was avoiding talking to Vinny to try to calm down.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey James, you can go ahead I want to see Kenny reaction!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny keeps walking behind James. James was a little annoyed at being in the middle of that situation, but he tried to remain calm and gentle.",
+        "type": "action"
+    },
+
+    {
+        "value": "What are you going to do? Did you do something? The first thing I learned is that you and Rayane are a figure like two silly ponies.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James continued walking towards Kenny's house.",
+        "type": "action"
+    },
+
+    {
+        "value": "No, you tabacu head, I went looking for you and I found you, Kenny knows and likes you more than I do, you has my word that I won't do anything.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James tried to remain calm and responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, Kenny is silly too, but I'd say you're getting over him, and Rayane managed to move from the risk zone to the silly zone because of you. I have my eye on you two!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little while James approached the door of Kenny's house. James looked at Vinny for a few seconds before James took a deep breath when he felt relieved to have finally arrived home.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ok. Here we are.",
+        "character": "James",
+        "type": "dialogue"
+    },
+    {
+        "value": "Yeah! Let's go.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "...Fine.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James touch the Kenny's doorbell, and started waiting for Kenny to answer.",
         "type": "action"
     }
 
