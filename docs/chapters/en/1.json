@@ -8993,10 +8993,14 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Ok. Here we are.",
         "character": "James",
         "type": "dialogue"
     },
+
     {
         "value": "Yeah! Let's go.",
         "character": "Vinny",
@@ -9010,8 +9014,39 @@
     },
 
     {
-        "value": "James touch the Kenny's House doorbell, and started waiting for Kenny to answer.",
+        "value": "James touch the Kenny's House doorbell, and started waiting for Kenny to answer. Kenny was sitting on the couch resting, worried about James, so when he heard the doorbell ring, he was extremely surprised.",
         "type": "action"
+    },
+
+    {
+        "value": "Huh? W...what? Visits?",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny would get up from the couch, a little depressed and hopeless, with negative thoughts about something happening to Vinny or James. Kenny used the peephole and looked for a few seconds before opening the door. When he realized that the two ponies were there. James was extremely happy and opened the door instantly.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "sad"
+        },
+        "value": "J..James? OH MY RAINBOW! JAAAAMES! You are here! Vinny! I do not believe! I thought you were dead!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny hugged James and Vinny extremely dramatically and very happy to finally be able to see them both alive. James was very surprised and hugged Kenny back.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh! Wow! Calm down Kenny, we are alive. We are here now.",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
