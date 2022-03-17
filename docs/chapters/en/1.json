@@ -9047,6 +9047,11 @@
         "value": "Oh! Wow! Calm down Kenny, we are alive. We are here now.",
         "character": "James",
         "type": "dialogue"
-    }
+    },
+
+    {
+        "value": "Vinny laughed a little and hugged Kenny back, happy to see everyone together again. After a few seconds of very happiness, Kenny ended the hug. Kenny gets very surprised to see another pony visit behind James and Vinny.",
+        "type": "action"
+    },
 
 ]
