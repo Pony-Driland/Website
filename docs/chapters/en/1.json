@@ -9187,6 +9187,23 @@
     {
         "value": "Kenny does a nervous laugh at James' funny situation. Kenny got a little nervous for the first time that Rayane comes as a visit.",
         "type": "action"
+    },
+
+    {
+        "value": "Fiiiiine. Wait a moment.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was still a little annoyed, but he tried to keep calm and opened his backpack. Kenny does a nervous laugh at James' funny situation. Kenny got a little nervous for the first time that Rayane comes as a visit. Vinny laughed again when he saw the situation and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't be embarrassed, Rayane and I understand each other a little, and I think she wants James.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
