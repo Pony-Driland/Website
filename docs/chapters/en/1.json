@@ -9052,6 +9052,141 @@
     {
         "value": "Vinny laughed a little and hugged Kenny back, happy to see everyone together again. After a few seconds of very happiness, Kenny ended the hug. Kenny gets very surprised to see another pony visit behind James and Vinny.",
         "type": "action"
+    },
+
+    {
+        "value": "Huh? W...what? Is Rayane also visiting?",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Rayane? Wait, don't tell me that...",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James turned to the side. At the same moment, Rayane's marshmallow hit James' face.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAAHH! RAYANE!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ boo~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "FUCK!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very surprised and happy to see Rayane. But James was annoyed and not enjoying the moment. Rayane made a silly little laugh during some seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hi James, this looks like you're right~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "HOW MANY MARSHMALLOWS DO YOU HAVE?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh? do you really want to know?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was embarrassed to even try to answer the question.",
+        "type": "action"
+    },
+
+    {
+        "value": "No.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James enters the house, looking for the face washcloth.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heheh. Don't forget to wash your tongue after breakfast~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny was extremely nervous, wondering what kind of decision to choose. Every few seconds, Rayane kept looking at Kenny's face, doing a malicious smirk. But then Kenny would do a nervous little smile and say. Vinny was still surprised too as he watched the scene.",
+        "type": "action"
+    },
+
+    {
+        "value": "Is Rayane also our visitor? Well, make yourself at home then. Everyone can enter",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then smiled again as he remembered the gift he had kept with James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes, but Kenny, I have a present for you on this adventure of mine to save James. I got you a souvenir!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny entered the house along with Rayane. Rayane was very quiet and silent, just looking around the place, doing Kenny feel very confused due to Rayane's behavior.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? S..Surprise for me? Oh really?",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tried to look where James was going for a few seconds. James went and got the washcloth from the bathroom and sat on the couch to wipe his face.",
+        "type": "action"
+    },
+
+    {
+        "value": "You are there! Where's the present?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh James!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny does a nervous laugh at James' funny situation.",
+        "type": "action"
     }
 
 ]
