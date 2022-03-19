@@ -9196,13 +9196,57 @@
     },
 
     {
-        "value": "James was still a little annoyed, but he tried to keep calm and opened his backpack. Kenny does a nervous laugh at James' funny situation. Kenny got a little nervous for the first time that Rayane comes as a visit. Vinny laughed again when he saw the situation and said.",
+        "value": "James was still a little annoyed, but he tried to keep calm and opened his backpack. Kenny does a nervous laugh at James' funny situation. Kenny got a little nervous for the first time that Rayane comes as a visit. Rayane let out other silly and malicious laugh.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey James, don't get mad. You know there's still a lot more where this one came from~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "WHAT?! Okay, yes, I can wait for them all. here is the present!",
+        "character": "James",
+        "type": "dialogue"
+    },
+    {
+        "value": "James used magic to open the backpack and levitated the gift box where the sword was kept. Vinny laughed again when he saw the situation and said.",
         "type": "action"
     },
 
     {
         "value": "Don't be embarrassed. Rayane and I understand each other a little, and I think she wants James.",
         "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...what? A box? What is it?",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny was completely confused about what he was listening to. Kenny was very curious to find out what was inside the present. Meanwhile, James just stopped talking to Rayane for a while, and was curious to watch the scene between Vinny and Kenny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh, this is surprise. Well, where is Raquel?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny gave a small nervous smile and responded nervously.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah, Raquel said that she is finishing preparing breakfast, she wanted everything ready, for all possible meal times in case you arrived at any of the times. But she will be very surprised when she finds out that We have an extra visit today.",
+        "character": "Kenny",
         "type": "dialogue"
     }
 
