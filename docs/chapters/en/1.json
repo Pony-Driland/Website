@@ -9315,6 +9315,34 @@
         "value": "What?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "I...I... Well. Hey! Hello Rayane! You're the new special guest, right? Don't worry both of you, and...me.",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane gave Raquel the malicious look again, Raquel felt more nervous and kept smiling nervously. James remained worried as he watched the scene.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh god.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh yes! Yes! I'll bring you breakfast! Good thing I'm so smart! I made extra food for a possible extra guest! How silly I am! I'll go get the food now!",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel smiled nervously a little more, trying to process what was happening and went back to the kitchen to get breakfast.",
+        "type": "action"
     }
 
 ]
