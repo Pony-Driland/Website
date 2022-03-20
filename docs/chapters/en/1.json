@@ -9276,6 +9276,45 @@
         "value": "Ah? Hi Raquel.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny was much more curious to realize that Vinny was interrupted",
+        "type": "action"
+    },
+
+    {
+        "value": "N..no! Wait! What is the gift?! What is this? I'm curious!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hi Vinny!",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel talked happily until Raquel notices Rayane's presence.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait, Vinny?! R..Rayane here?!",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was curious to see Raquel's reaction.",
+        "type": "action"
+    },
+
+    {
+        "value": "What?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
