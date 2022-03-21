@@ -9411,6 +9411,11 @@
         "value": "Heh~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny kept opening the present. His eyes began to dilate as he realized the contents that were inside the box.",
+        "type": "action"
     }
 
 ]
