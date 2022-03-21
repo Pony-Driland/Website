@@ -9371,6 +9371,40 @@
         "value": "Hey! Please! Open the gift!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "G...gift? The gift! I'm very curious! What did you buy me? It's the first gift you give me!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny jumps happily several times, going to open the gift. Vinny looks at Kenny, waiting for the Kenny to open the gift.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmm...",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James kept an eye on Rayane's possible nonsense. Rayane was just taking care of her things just to provoke James silly anger.",
+        "type": "action"
+    },
+
+    {
+        "value": "Argh!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
