@@ -9341,8 +9341,36 @@
     },
 
     {
-        "value": "Raquel smiled nervously a little more, trying to process what was happening and went back to the kitchen to get breakfast.",
+        "value": "Raquel smiled nervously a little more, trying to process what was happening and went back to the kitchen to get breakfast. Kenny remembered Vinny's words when Kenny was trying to face the fear of something happening, so he just said nervously.",
         "type": "action"
+    },
+
+    {
+        "value": "W...well, Raquel still couldn't believe this when I explained a little about Rayane. Sorry for her bad manners. Come in.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane would look around, analyze the whole place, then she do the same facial expression and say.",
+        "type": "action"
+    },
+
+    {
+        "value": "Awww, don't worry. Breakfast always brings everyone together. I'll just stay here waiting for her. Thanks you~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane came in and sat on the breakfast table chair gently. Meanwhile, Vinny was very anxious waiting for Kenny to open the present.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey! Please! Open the gift!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
