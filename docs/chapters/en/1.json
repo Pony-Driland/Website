@@ -9430,7 +9430,7 @@
     },
 
     {
-        "value": "Heh! That's right, I got it the first time!",
+        "value": "Heh! That's right, I got during the first attempt!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -9445,6 +9445,7 @@
         "character": "James",
         "type": "dialogue"
     }
+
 
 
 ]
