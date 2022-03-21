@@ -9494,6 +9494,56 @@
         "value": "What you want?",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Speak up my adventure companion! How was the acquisition of this beautiful sword?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James did another facehoof and spoke a little annoyed.",
+        "type": "action"
+    },
+
+    {
+        "value": "It was the most mega pure luck!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny laughed a little and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey! Calm down you two.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would smile again and then say.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah! It was really luck, I wanted to thank you for the way you welcomed me on the beach.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny says worryingly at the end.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sooooo, I hope you like this, you liked the sword right?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
