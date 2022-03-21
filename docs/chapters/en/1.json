@@ -9416,6 +9416,23 @@
     {
         "value": "Kenny kept opening the present. His eyes began to dilate as he realized the contents that were inside the box.",
         "type": "action"
+    },
+
+    {
+        "value": "Wait, no! it's not possible! IT'S NOT POSSIBLE! You really did it!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny's eyes sparkled when he saw the sword's shine. James stopped watching Rayane and was surprised by Kenny's reaction.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh! That's right, I got it the first time!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
