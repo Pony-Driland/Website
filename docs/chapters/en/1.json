@@ -9444,8 +9444,56 @@
         "value": "God!",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny was extremely surprised to hear this.",
+        "type": "action"
+    },
+
+    {
+        "value": "First attempt?! Are you serious?!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny responded in a very cheerful and smiling way.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah! Ask for James! James, come here!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny pokes James ironically.",
+        "type": "action"
+    },
+
+    {
+        "value": "No way!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little disappointed in James and said a little annoyed.",
+        "type": "action"
+    },
+
+    {
+        "value": "James? Hello?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What you want?",
+        "character": "James",
+        "type": "dialogue"
     }
-
-
 
 ]
