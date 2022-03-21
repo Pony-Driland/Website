@@ -9380,6 +9380,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Kenny jumps happily several times, going to open the gift. Vinny looks at Kenny, waiting for the Kenny to open the gift.",
         "type": "action"
     },
@@ -9402,6 +9405,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "happyness"
+        },
         "value": "Heh~",
         "character": "Rayane",
         "type": "dialogue"
