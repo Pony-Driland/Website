@@ -53,7 +53,7 @@ Under development.
 ### Chapter 1
 Beta Version - 100% Complete
 
-Final Version - 20% Complete
+Final Version - 70% Complete
 
 ### Chapter 2
 Beta Version - 100% Complete
@@ -61,7 +61,7 @@ Beta Version - 100% Complete
 Final Version - 0% Complete
 
 ### Chapter 3
-Beta Version - 25% Complete
+Beta Version - 90% Complete
 
 Final Version - 0% Complete
 
