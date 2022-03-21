@@ -9433,6 +9433,18 @@
         "value": "Heh! That's right, I got it the first time!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny moves the glasses like a boss. At this same moment James was performing a facehoof.",
+        "type": "action"
+    },
+
+    {
+        "value": "God!",
+        "character": "James",
+        "type": "dialogue"
     }
+
 
 ]
