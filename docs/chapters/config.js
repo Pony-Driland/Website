@@ -106,7 +106,12 @@ var storyCfg = {
         ],
 
         'silly': [
-            { id: 'ljTfHitG0eA', type: 'youtube' }
+            { id: 'ljTfHitG0eA', type: 'youtube' },
+            { id: '5Im8S1l3UK0', type: 'youtube' }
+        ],
+
+        'relaxing-rpg-song': [
+            { id: 'l6veMGLpol0', type: 'youtube' },
         ],
 
         'escape': [
