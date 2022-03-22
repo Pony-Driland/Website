@@ -33,11 +33,13 @@ Her favorite activity is helping the souls of the ponies who have recently died 
 ### Personality (Incomplete)
 
 Her personality is naturally malignant and dominant, but that doesn't make her a villain. She also has a good heart and is concerned with taking care of the creatures and her family who live in her dimension.
-All her kind personality evolved with the help of her master.
+All her kind personality evolved with the help the mysterious pony she calls master.
+
+Rainbow Queen has a personal affection for her pets. She likes to play with her pets' fantasy a lot to feel calmer through her evil personality, especially when she's in giant sphinx form.
 
 Her personality is currently very unstable. She want to save Pony Driland and her life that depends exclusively on this dimension.
 
-As she grew angrier, and her heart filled with hate and fear, it manifested in her appearance, making her more and more somber. If an extremely large reality shock occurs along this path, she can literally lose control of her powers and end up destroying herself due to the large concentration of energy released by her feelings out of control due to her emotional instability.
+As she grew angrier, and her heart filled with hate and fear, it manifested in her powers, making her more and more somber. If an extremely large reality shock occurs along this path, she can literally lose control of her powers and end up destroying herself due to the large concentration of energy released by her feelings out of control due to her emotional instability.
 
 Divine powers are naturally increased through determination, fury, hatred, or love.
 When she feel sad, as her feelings become unstable, her powers also become unstable.
