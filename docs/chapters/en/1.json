@@ -9541,9 +9541,36 @@
     },
 
     {
-        "value": "Sooooo, I hope you like this, you liked the sword right?",
+        "value": "Sooooo, I hope you like this, you liked the sword right? ",
         "character": "Vinny",
         "type": "dialogue"
-    }
+    },
+
+    {
+        "value": "Kenny laughed a little and responded in happiness.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah! You're welcome! Don't worry Vinny, I'm glad to meet you. I'm very happy by the sword. I've always dreamed of someday owning one and learning a little about swords!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane gave Kenny a smirk look and analyzed him.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmmm~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny made a little nervous look when he looked at Rayane and continued the conversation.",
+        "type": "action"
+    },
 
 ]
