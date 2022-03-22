@@ -9573,4 +9573,32 @@
         "type": "action"
     },
 
+    {
+        "value": "Well, I'm surprised that in addition to meeting James, you also met Rayane in a completely unexpected way. But... what do you want to do now?",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was surprised and very thoughtful to hear this question. Then Vinny remembered about the last conversations with James and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah, after LITERALLY saving James' life, he just made my life hard, used my sprays, threw me in a cave, and still in the morning froze my face.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...WHAT?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little at James' reaction, and continued the conversation playfully.",
+        "type": "action"
+    }
+
 ]
