@@ -9599,6 +9599,34 @@
     {
         "value": "Vinny laughed a little at James' reaction, and continued the conversation playfully.",
         "type": "action"
+    },
+
+    {
+        "value": "Naaaah, I'm glad I saved James. Heh.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was completely confused, trying to understand Vinny's silly behavior.",
+        "type": "action"
+    },
+
+    {
+        "value": "Awwww... Don't play the angry scientist now~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane uses her magic to pull James cheeks from side to side while laughing a little at James' angry face.",
+        "type": "action"
+    },
+
+    {
+        "value": "...",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
