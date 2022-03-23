@@ -9768,6 +9768,39 @@
         "value": "W..what?",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Hehe, Alright. Marshmallows can always wait during some seconds~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was talking, doing a silly smirk face again before starting to prepare the photo. Rayane gently levitated Vinny's cell phone during the process.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yay! This really will be a photo!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny smiled, getting ready to pose for a photo.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Photo? Wait! I don't want to come out ugly!",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel prepare her hair and put one of the flowers behind her mane as an ornament, getting ready for the photo as quickly as possible.",
+        "type": "action"
     }
 
 ]
