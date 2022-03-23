@@ -9717,6 +9717,52 @@
         "value": "That's James, glad you like this too. Let's celebrate that we're all here together for the first time!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Hm...",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was avoiding being part of the moment, especially when Rayane laughed a little and tried to poke his face. So Kenny arrives bringing Raquel.",
+        "type": "action"
+    },
+
+    {
+        "value": "But Kenny, I don't know what a selfie. How does it work?",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well, looks like a photo. We have to enjoy this moment because I haven't seen photographers for a long time!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh, yes! My phone can take pictures of us and store them inside. You will like! I promise!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little worried to see James' behavior, so Vinny tried to be faster.",
+        "type": "action"
+    },
+
+    {
+        "value": "Let's go Rayane! No jokes with the marshmallow. Makes James happy in this one.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..what?",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
