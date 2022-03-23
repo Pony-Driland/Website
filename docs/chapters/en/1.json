@@ -9957,6 +9957,28 @@
     {
         "value": "James was a little worried looking at Vinny without any armor, but James let the conversation continue. Vinny not noticing James' reaction, just looked at Rayane for a few seconds.",
         "type": "action"
+    },
+
+    {
+        "value": "Sooooooo... What James and Rayane going to do now? For me, we rest a little, it's not every day that a ice ball photo appears and smoke comes out everywhere. This gives time for James to use my phone, time for me to learn how to use this thing on my wings.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little before continuing to talk.",
+        "type": "action"
+    },
+
+    {
+        "value": "Time for Rayane to decide also what she wants to do.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was slightly surprised, trying to understand the situation, but then she just kept quiet.",
+        "type": "action"
     }
 
 ]
