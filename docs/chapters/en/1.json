@@ -9867,6 +9867,23 @@
     {
         "value": "Vinny does a Like a Boss pose with the glasses. Rayane giggles again and pressed the button to take the picture, and the camera made the flashing noise.",
         "type": "action"
+    },
+
+    {
+        "value": "Heh! Let's see how the photo!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a gesture for everyone to stay close to each other. Everyone was curious and approached Vinny while Rayane levitated her cell phone towards Vinny. James was worried about the pose in the photo. Raquel was just shy of the moment.",
+        "type": "action"
+    },
+
+    {
+        "value": "Did everyone like the photo?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
