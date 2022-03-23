@@ -9749,7 +9749,7 @@
     },
 
     {
-        "value": "Vinny was a little worried to see James' behavior, so Vinny tried to be faster.",
+        "value": "Vinny was a little worried to see James' behavior, so Vinny tried to be faster. Vinny speaks with little irony.",
         "type": "action"
     },
 
@@ -9757,6 +9757,11 @@
         "value": "Let's go Rayane! No jokes with the marshmallow. Makes James happy in this one.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "James was curious, and suspicious about what Vinny was doing.",
+        "type": "action"
     },
 
     {
