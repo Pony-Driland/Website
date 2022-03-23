@@ -9884,6 +9884,39 @@
         "value": "Did everyone like the photo?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane pulled the camera closer to everyone while everyone looked curiously at the photo. Raquel spoke, doing a shy and blushing face.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh! My mane! At least the little flower is cute.",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny was extremely happy with the result of the photograph.",
+        "type": "action"
+    },
+
+    {
+        "value": "It was great for me! I want to keep one of these in our picture frame!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane looked at the photograph and was extremely thoughtful about what was happening. But then she said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh, this will be a great memory. James is doing well with the smiles~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
