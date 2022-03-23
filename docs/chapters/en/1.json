@@ -9917,6 +9917,46 @@
         "value": "Oh, this will be a great memory. James is doing well with the smiles~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "James was embarrassed by the smile as he said.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "Oh god, I still need to learn to smile.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James! Good James!!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would suddenly change the subject, and it left James extremely confused.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well Kenny, about what I want to do here in Pony Driland, I want to stay here for a while. At the moment it's just living and I don't want to die so soon, but I want a good adventure. I'm already thinking about it since I got here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little worried looking at Vinny without any armor, but James let the conversation continue. Vinny not noticing James' reaction, just looked at Rayane for a few seconds.",
+        "type": "action"
     }
 
 ]
