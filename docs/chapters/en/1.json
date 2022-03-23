@@ -9650,6 +9650,23 @@
     {
         "value": "Vinny looked thoughtful, and then he had an happy idea.",
         "type": "action"
+    },
+
+    {
+        "value": "HEEEY! Let's take a selfie! A perfect moment like this calls for a record!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny was a little surprised and then said.",
+        "type": "action"
+    },
+
+    {
+        "value": "P..portrait? Selfie? Do you have a photography camera? Oh yes! Please wait a bit! I will call Raquel!",
+        "character": "Kenny",
+        "type": "dialogue"
     }
 
 ]
