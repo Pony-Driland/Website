@@ -9667,6 +9667,56 @@
         "value": "P..portrait? Selfie? Do you have a photography camera? Oh yes! Please wait a bit! I will call Raquel!",
         "character": "Kenny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny goes to the kitchen to call Raquel. James was surprised and a little embarrassed to realize that he would have a photo again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh no.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little at James' reaction, and then looked at Rayane happily.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah! What do you think Rayane? Enjoying the moment? I need to talk to you",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was curious about Vinny's behavior, but then she does a smirk face and says.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm loving it~ James is too. Right James?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "No!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was still embarrassed and was looking in the other direction. Vinny giggles a little again in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "That's James, glad you like this too. Let's celebrate that we're all here together for the first time!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
