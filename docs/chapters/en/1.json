@@ -9801,6 +9801,44 @@
     {
         "value": "Raquel prepare her hair and put one of the flowers behind her mane as an ornament, getting ready for the photo as quickly as possible.",
         "type": "action"
+    },
+
+    {
+        "value": "Heh! Everyone ready? When everyone are ready just say cheese that Rayane will take the picture for us!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Cheese~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane made her usual silly smirk again during the photo.",
+        "type": "action"
+    },
+
+    {
+        "value": "James looked around during some seconds, desperate to do a pose for the photo, then James does a normal pose while still looking at the camera.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..okay! C..Cheese!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James improvised a little smile.",
+        "type": "action"
     }
 
 ]
