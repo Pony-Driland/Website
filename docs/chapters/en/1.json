@@ -9834,6 +9834,39 @@
     {
         "value": "James improvised a little smile.",
         "type": "action"
+    },
+
+    {
+        "value": "Yay! Cheese!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny smiles happily during the photo moment.",
+        "type": "action"
+    },
+
+    {
+        "value": "...C..Cheese?",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel made a shy smile.",
+        "type": "action"
+    },
+
+    {
+        "value": "Come On! Cheese!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a Like a Boss pose with the glasses. Rayane giggles again and pressed the button to take the picture, and the camera made the flashing noise.",
+        "type": "action"
     }
 
 ]
