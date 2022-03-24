@@ -10018,6 +10018,57 @@
         "value": "Well, I have to get my stuff ready to get back on my journey. I'll just spend time in my lab. Okay?",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "You going to your secret lab? interesting~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James got a little irritated and just ignored the situation. Then he walked to his room.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Wait... What is Rayane doing?",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Good question Raquel, Rayane is booping me, she looked like a friend of mine in my other world.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..world? Friend? Is there boop in your world? Curious. I think this is the first time Rayane has visited a house.",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then was a little more surprised by Raquel's behavior, Rayane kept quiet, but very thoughtful about what was happening.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh! Yeah! Well, James? Jaaaames? Aaaah! Wait James! You tabacu head! Stay with us here for a while, even you can now use my phone. Weeeeell, I just don't feel comfortable with him away from me. Do you have something important to do in the lab?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James stopped walking and then James would get curious and then look at Vinny curiously. James got a little anxious hearing about Vinny's cell phone.",
+        "type": "action"
+    },
+
+    {
+        "value": "What?",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
