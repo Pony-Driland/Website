@@ -9979,6 +9979,45 @@
     {
         "value": "Rayane was slightly surprised, trying to understand the situation, but then she just kept quiet.",
         "type": "action"
+    },
+
+    {
+        "value": "Me? Heh~ I have a lot of things to do during my day when my free time is up.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was still suspicious of Rayane's behavior, but he still tried to keep Rayane in peace. Meanwhile Raquel was analyzing the photo on Vinny cell phone and was confused.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey, how do you make this photo become a portrait?",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was getting ready to talk to Rayane, until he felt interrupted by Raquel's question. Vinny would stop all happiness and make a poker face and say.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah. I have no idea.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath at the whole situation and then said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, I have to get my stuff ready to get back on my journey. I'll just spend time in my lab. Okay?",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
