@@ -10120,6 +10120,34 @@
         "value": "Hey Rayane can I talk to you outside alone? It will be quick.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "James then looked at Vinny and Rayane in an extremely thoughtful way. So James responded a little suspiciously.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine, don't forget there is a book in my room to open a door.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Funny you, then you take some stuff in your face and want to freeze my face. Heh.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James just ignored Vinny's conversation and then James walked and went to the lab. Rayane was a little curious to see that James was allowing her in the lab. But then Rayane looked curiously at Vinny again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? What will this conversation be?",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
