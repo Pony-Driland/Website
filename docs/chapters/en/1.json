@@ -10195,6 +10195,23 @@
         "value": "Yes? I...I really miss that feeling. It's a feeling I haven't felt in years. I never thought that one day I could trust others again. I... I don't know what to say about it.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "I understand, it seems that your place of work is not very reliable, my opinion of course, there are moments when you keep an eye on me, moments when you appear like now and we are talking about feelings and there are moments when you disappear as well as earlier in the tent. i feel i can trust you so i should ask if you are working for some organization like... The Elite Color.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny speaks very low when the talk ends. Rayane was a little worried and a little sad to hear this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sorry Vinny. I can't say much about who I work for. There are ponies close to me that also work at this place. The ponies just stopped talking to me because of my questions. I don't want to put the ponies lives at risk because of me.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
