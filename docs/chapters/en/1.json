@@ -10069,6 +10069,57 @@
         "value": "What?",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Hey! Sorry to interrupt the conversation, but I'll bring the meal! The meal is self service, alright?",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel smiles before going to the kitchen to bring the food. Everyone looked hungry when listening to Raquel's words. James took advantage of the moment of distraction and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay Vinny, I'll stay, but it will be until I finish my report in my lab. In my lab I can do a much better analysis on your phone, but that's not the only thing I'm going to do now.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Lab?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane gave a smirks look, very interested in knowing about the laboratory. James was a little scared and responded a little annoyed.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes! My lab! And no marshmallows in my lab!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "At the moment when Rayane was going to try to follow James, Vinny interrupted her and said a little low.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey Rayane can I talk to you outside alone? It will be quick.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
