@@ -10212,6 +10212,23 @@
         "value": "Sorry Vinny. I can't say much about who I work for. There are ponies close to me that also work at this place. The ponies just stopped talking to me because of my questions. I don't want to put the ponies lives at risk because of me.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "I understand, and I'm super cool about it, I needed to know, you can shoot me, you can break my paw, but I'd still be on your side, I just wouldn't be on your side if you lie to me and that would result in something very dangerous for others, that's motive I came to talk to you, you're not alone, all those ponies are seeing what you really are. Because of some things you prefer to be isolated and that's normal, you worry about the ponies. But if you want my help, help from James or any pony, I want you to know that we are with you. I'm sorry for asking this, it's a funeral atmosphere now between us.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane showed a little more sadness and stopped walking when she realized she was in an abandoned place in the village. Then Rayane looked at Vinny, showing a little more sadness than usual. Rayane seemed to be very thoughtful about something very private in the past.",
+        "type": "action"
+    },
+
+    {
+        "value": "No Vinny. I would never want to hurt you. Hurting innocents was never my goal. My questions have always been related to this. I'm very careful with my promises.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
