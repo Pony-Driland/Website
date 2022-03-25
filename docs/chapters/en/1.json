@@ -10117,6 +10117,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "Hey Rayane can I talk to you outside alone? It will be quick.",
         "character": "Vinny",
         "type": "dialogue"
@@ -10146,6 +10147,52 @@
 
     {
         "value": "Oh? What will this conversation be?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "set": { "playlistPlay": "sad" },
+        "value": "Let's talk about a private talk, we can walk a little while everyone here are budy, it will be quick.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then leave the house, and offer Rayane to follow him. Rayane followed Vinny while still curious about what that question would be.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..what? Private talk?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes, let's go for a walk to relax while we talk. But tell me, did you like how it all went? This feeling of coming home and seeing everyone surprised that you arrived, everyone happy, laughing?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then took out his cell phone again and showed the photos again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Here! Look at the last photo, don't you miss this feeling of being wanted in the center of attention?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane gave a small smile while touching the photo screen for a few seconds. Rayane seemed to be a little emotional, showing a feeling of nostalgia for the past.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes? I...I really miss that feeling. It's a feeling I haven't felt in years. I never thought that one day I could trust others again. I... I don't know what to say about it.",
         "character": "Rayane",
         "type": "dialogue"
     }
