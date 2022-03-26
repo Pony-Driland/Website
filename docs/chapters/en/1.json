@@ -10337,6 +10337,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "Rayane made a small confident smile before starting to follow Vinny. Vinny laughed a little and said.",
         "type": "action"
     },
@@ -10344,6 +10345,58 @@
     {
         "value": "Well, I think everyone must already be eating without us.",
         "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. I'll give you a little help for us then~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane's horn started to glow, preparing some magic.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...what? ",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was surprised to see Rayane's horn glowing. Rayane teleported Vinny and her into Kenny's house, in front of Kenny.",
+        "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": "think" },
+        "value": "W...WHAT?!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "OH FUCK!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What magic is this?! OH MY RAINBOW!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little while doing a smirks face.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oops, it was too close~",
+        "character": "Rayane",
         "type": "dialogue"
     }
 
