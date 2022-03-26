@@ -10403,6 +10403,29 @@
     {
         "value": "Vinny was laughing nervously as he realized where he was.",
         "type": "action"
+    },
+
+    {
+        "value": "S...sorry. Are we late?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh? No no no! It's okay, we've been waiting for you.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Fine. Soooo, where is James? I'll give him my phone, so he can play with my phone.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny was very curious to hear the question.",
+        "type": "action"
     }
 
 ]
