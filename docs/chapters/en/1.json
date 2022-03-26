@@ -10398,6 +10398,11 @@
         "value": "Oops, it was too close~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was laughing nervously as he realized where he was.",
+        "type": "action"
     }
 
 ]
