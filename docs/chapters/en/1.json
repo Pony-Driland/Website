@@ -10426,6 +10426,73 @@
     {
         "value": "Kenny was very curious to hear the question.",
         "type": "action"
+    },
+
+    {
+        "value": "James? Sorry, but I didn't see him.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laughed a little, doing other smirks face when she heard about James and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't worry. James is in his lab having fun. Waiting for us to arrive for everything to be more fun~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little annoyed to hear that.",
+        "type": "action"
+    },
+
+    {
+        "value": "Huh? James is gone? Really?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh, James went right when he finished answering you.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny was very confused and then answered, laughing a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Are you going to look for James? Everything is fine. I'll help Raquel in the kitchen. Make yourself comfortable!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was disappointed in James and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, James could have waited. James is a teta animal. I still have a lot of time to learn how to use the learn-to-fly machine. But James took my machine!!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane would does a little laugh and answer.",
+        "type": "action"
+    },
+
+    {
+        "value": "James must be having a lot of fun in his lab. I'll write this down for his marshmallow punishments~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
