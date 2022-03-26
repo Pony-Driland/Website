@@ -10337,8 +10337,14 @@
     },
 
     {
-        "value": "Rayane made a small confident smile before starting to follow Vinny.",
+        "value": "Rayane made a small confident smile before starting to follow Vinny. Vinny laughed a little and said.",
         "type": "action"
+    },
+
+    {
+        "value": "Well, I think everyone must already be eating without us.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
