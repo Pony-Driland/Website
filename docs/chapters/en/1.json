@@ -10295,6 +10295,50 @@
         "value": "Oh? No. But my friends stopped believing me. I'm sure that I can have hope if I discover how to convince my friends again.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled gently as he placed his paw on Rayane's shoulder.",
+        "type": "action"
+    },
+
+    {
+        "value": "I see, I'm sure everything will end well. Well, what do you think about us going back to Kenny's House? Kenny must be worried about us.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh, yes. Let's go back.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane wiped her face a little before slowly getting back feeling better.",
+        "type": "action"
+    },
+
+    {
+        "value": "Welcome to group! Let's go home!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny happily walked towards Kenny's house.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. I'm also very happy about it.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane made a small confident smile before starting to follow Vinny.",
+        "type": "action"
     }
 
 ]
