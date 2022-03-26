@@ -10240,6 +10240,61 @@
         "value": "I... I'm not the only one who needs help, I have two more friends who also need my help. But for me try to convince the two friends is harder. Finding you was my first light to see that exist ponies who trust me. That's motive I'm grateful for all of this and I've become a little more kind and friendly.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised to see Rayane's feelings.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes, you can have my help with anything, no one needs to know that we had this conversation.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles gently and spoke.",
+        "type": "action"
+    },
+
+    {
+        "value": "If some question appears, say that we talk about you spending more time with us.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little more surprised to see Vinny's confidence. Then Rayane smiled a little in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Thank you Vinny. I hope that one day my two friends be all together too.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny was a little surprised and curious before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? are your friends stuck somewhere?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane dialogue a little sad while looking in one direction for a few seconds before looking back at Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? No. But my friends stopped believing me. I'm sure that I can have hope if I discover how to convince my friends again.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
