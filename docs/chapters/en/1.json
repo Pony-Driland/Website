@@ -10604,6 +10604,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "Rayane said while doing a silly, malicious face. Vinny would blush a little but then laugh a little before Vinny pull the book.",
         "type": "action"
     },
