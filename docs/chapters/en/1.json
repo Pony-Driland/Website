@@ -10624,6 +10624,18 @@
         "value": "Fine, the book is a doorknob to open the door and find other door. Good! Shame!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little surprised and laughed a little before answering.",
+        "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": "think" },
+        "value": " Ooooh~ James seems to be very dedicated to the lab.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
