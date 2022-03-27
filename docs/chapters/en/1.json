@@ -10573,6 +10573,22 @@
     {
         "value": "Vinny then walked towards James' room. Rayane was giggling quietly as she realized where she was going, then calmly followed Vinny. Vinny and Rayane arrive at James' room, everything was well organized. James laptop desk is clean, bed well organized. It was a very simple room with just a wardrobe, a table next to the bed, and a bookcase.",
         "type": "action"
+    },
+
+    {
+        "value": "Good! 1 red book! Easy!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    {
+        "value": "Vinny was very happy and tried to interact with red book. Meanwhile, Rayane was still quiet, she was curious, analyzing James' room, but Vinny didn't notice it. The red book seemed to move like a lever when Vinny tried to pull it. So Rayane stopped analyzing the room when she heard the sound of the lever and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "How interesting~ James really likes to keep everything in order.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
