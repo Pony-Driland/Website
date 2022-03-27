@@ -10589,6 +10589,40 @@
         "value": "How interesting~ James really likes to keep everything in order.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Heh! Then we'll jump on James bed if we want!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. Silly, If James bed can handle two ponies same time~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane said while doing a silly, malicious face. Vinny would blush a little but then laugh a little before Vinny pull the book.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay, the time is now!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The bookcase would suddenly start to open like a secret passage, and soon Vinny would see another door with a panel for entering password or voice recognition. Vinny does a face hoof and say.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine, the book is a doorknob to open the door and find other door. Good! Shame!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
