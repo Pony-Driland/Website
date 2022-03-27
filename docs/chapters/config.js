@@ -101,8 +101,25 @@ var storyCfg = {
     // Playlist
     playlist: {
 
+        'haunted-coal-mines': [
+            { id: 'VCpg4CbgY1U', type: 'youtube' },
+        ],
+
+        'cryptozoologist': [
+            { id: 'cKY5PVuopWs', type: 'youtube' },
+        ],
+
+        'tobbogan-ride': [
+            { id: 'pRE2EjzmeI0', type: 'youtube' },
+        ],
+
+        'forest': [
+            { id: '3yxG4k9uni4', type: 'youtube' },
+            { id: 'pI_JSnJMnY4', type: 'youtube' },
+        ],
+
         'dark-ambient-melodies': [
-            { id: 'LptTKfrHSi4', type: 'youtube' }
+            { id: 'LptTKfrHSi4', type: 'youtube' },
         ],
 
         'silly': [
@@ -164,7 +181,8 @@ var storyCfg = {
         ],
 
         'fantasy-village': [
-            { id: 'K1vUA9NltVw', type: 'youtube' }
+            { id: 'kKObUC_3NDY', type: 'youtube' },
+            { id: 'K1vUA9NltVw', type: 'youtube' },
         ],
 
         'calm': [
