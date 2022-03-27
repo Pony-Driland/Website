@@ -8,3 +8,5 @@ night-ambient
         },
 
 { "value": "bird-and-nature", "type": "show" }
+
+"set": { "playlistPlay": "spooky-mysterious" },
