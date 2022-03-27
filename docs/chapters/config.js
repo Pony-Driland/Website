@@ -187,6 +187,16 @@ var storyCfg = {
             { id: 'zaxVBfdgR3E', type: 'youtube' },
         ],
 
+        'dark-and-mysterious-ambient': [
+            { id: 'yEYxnJB4jZs', type: 'youtube' },
+        ],
+
+        'spooky-mysterious': [
+            { id: 'm6e_Uz6vlJw', type: 'youtube' },
+            { id: 'XUUM0cKcRW0', type: 'youtube' },
+            { id: 'eaEbST63kk0', type: 'youtube' },
+        ],
+
         'tense-mystery': [
             { id: '7dKxHERhaLE', type: 'youtube' },
             { id: 'QNwjH5EKTTQ', type: 'youtube' },
