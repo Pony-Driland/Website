@@ -10493,6 +10493,86 @@
         "value": "James must be having a lot of fun in his lab. I'll write this down for his marshmallow punishments~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "dayNightCycle": "evening"
+        },
+        "value": "Kenny was a little more surprised to see Rayane's knowledge of James' personality.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well. Don't worry, the afternoon just arrived, we'll can wait for James.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny observed that Raquel was surprised by Rayane's presence. Kenny laughs a little nervously and then helps Raquel feel calmer. Raquel was startled, doing a small nervous smile.",
+        "type": "action"
+    },
+
+    {
+        "value": "A..Ah? No no no... I'm fine....",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a small nervous laugh.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah, sorry about the scare. I'm sorry.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    {
+        "value": "Heh~ Do not worry. I will not bite you.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel does another nervous smile and answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "I... I'm fine. Thank you.",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hah! Don't worry, this time I'll help you with the kitchen. Alright?",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A..ah? Yes yes! Thank you Kenny.",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny smiled in a more sincere way to try to forget about the silly moment, and then walked with Raquel to the kitchen. Vinny was a little confused by Raquel and Kenny's reaction, Vinny looked at his cell phone and thought for a few seconds before speaking.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, I'll give James my phone to have fun.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then walked towards James' room. Rayane was giggling quietly as she realized where she was going, then calmly followed Vinny. Vinny and Rayane arrive at James' room, everything was well organized. James laptop desk is clean, bed well organized. It was a very simple room with just a wardrobe, a table next to the bed, and a bookcase.",
+        "type": "action"
     }
 
 ]
