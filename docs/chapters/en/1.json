@@ -10925,6 +10925,79 @@
         "value": "Well, Don't worry. This is just my oldest research ever. There is something in this dimension that is always draining energy. It took a few years before I was finally able to monitor this. I never understood what this is. The only thing I know is that this mysterious object is consuming this dimension, but this seems to be half asleep.",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little more worried and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "C..consuming? And where is this all going?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Great Pyramid! Which is right on top of Whicocesert Mountain. Interesting no? Right at the highest, coldest place in all of Pony Driland.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was more worried when she heard that name, but gradually tried to calm down as I turned to the side.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh. Great Pyramid. Alright, thanks.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was worried about Rayane and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fiiine... Did it get any faster at any point? ",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little confused when answering, but he answered sincerely.",
+        "type": "action"
+    },
+
+    {
+        "value": "Weeeell, when I turned on this tracker, that signal was much stronger. The higher the wave, the stronger the signal. But what surprised me was that the direction of the wave always is changed. Sometimes the object was walking randomly, the object also managed to change the position sometimes as if the object were some teleportation. I could never find the source of these waves. But we have nothing to worry about, the object is now asleep somewhere in the Great Pyramid.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wow, coldest place in all of Pony Driland. What madness!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile, Rayane was still worried, analyzing her SmartMoby during the talk. When Vinny noticed this, he got curious and worried.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Rayane? Are you okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. I am fine. I'm just worried about her again. One pony.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
