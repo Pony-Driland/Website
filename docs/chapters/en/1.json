@@ -10853,6 +10853,67 @@
     {
         "value": "James stared at Vinny to make sure he would agree. Rayane continued to look around, very curious about what the computer was monitoring, but what made her curiosity bigger was what was on the monitoring screen. Then James was curious about Rayane's behavior.",
         "type": "action"
+    },
+
+    {
+        "value": "Hey, fine! Ah? Rayane? Are you okay? Rayane looks impressed, and hello thanks for the welcome.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was still focused on the screen, Rayane seemed a little worried about something.",
+        "type": "action"
+    },
+
+    {
+        "value": "You're welcome. Ah? What is Rayane looking at? Hey! Rayane!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James walked towards Rayane, worried about her behavior.",
+        "type": "action"
+    },
+
+    {
+        "value": "M..Me? I'm fine, I'm just trying to understand what's happening on this screen.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane kept very curious about the waves that were appearing on the screen, went up and down every second. Vinny would get very scared and say.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What?! By chance this is not my heart rate right?!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James spoke very loudly to end Vinny's panic as quickly as possible.",
+        "type": "action"
+    },
+
+    {
+        "value": "NO!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a poker face.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..okay okay. Sorry.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
