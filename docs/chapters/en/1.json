@@ -10995,6 +10995,11 @@
     },
 
     {
+        "value": "Rayane looked very worried, with an expression of a little fear.",
+        "type": "action"
+    },
+
+    {
         "value": "Yes. I am fine. I'm just worried about her again. One pony.",
         "character": "Rayane",
         "type": "dialogue"
