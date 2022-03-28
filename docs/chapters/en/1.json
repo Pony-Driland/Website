@@ -10808,6 +10808,51 @@
     {
         "value": "Rayane looks around curiously as she entered James' laboratory. Rayane was very curious about James' lab, she looked a little surprised.",
         "type": "action"
+    },
+
+    {
+        "value": "Yes, it must have been a lot of work. Looooong work.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny and Rayane walks on a long hallway until at the bottom. So Vinny saw the light of a computer that James was working.",
+        "type": "action"
+    },
+
+    {
+        "value": "Cool!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ I think I'm seeing James over there.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny could see that on the screen was monitoring some kind of wave while James was using the keyboard. Vinny was surprised to find James, so Vinny said.",
+        "type": "action"
+    },
+
+    {
+        "value": "James? Hello?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny? Oh! hello Vinny! Welcome! Make yourself comfortable. Just be careful not to touch any buttons. Fiiiiine?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James stared at Vinny to make sure he would agree. Rayane continued to look around, very curious about what the computer was monitoring, but what made her curiosity bigger was what was on the monitoring screen.",
+        "type": "action"
     }
 
 ]
