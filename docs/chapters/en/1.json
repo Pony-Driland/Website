@@ -10914,6 +10914,17 @@
         "value": "O..okay okay. Sorry.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, Don't worry. This is just my oldest research ever. There is something in this dimension that is always draining energy. It took a few years before I was finally able to monitor this. I never understood what this is. The only thing I know is that this mysterious object is consuming this dimension, but this seems to be half asleep.",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
