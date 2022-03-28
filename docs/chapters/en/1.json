@@ -10750,7 +10750,7 @@
     },
 
     {
-        "set": { "playlistPlay": "spooky-mysterious" },
+        "set": { "playlistPlay": "dark-ambient-melodies" },
         "value": "Rayane entered the elevator. The elevator only had the option of going up and down.",
         "type": "action"
     },
