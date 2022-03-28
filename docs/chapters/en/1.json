@@ -10747,6 +10747,67 @@
         "value": "Heh~ Don't be so surprised. James is been in this dimension for many years.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "set": { "playlistPlay": "spooky-mysterious" },
+        "value": "Rayane entered the elevator. The elevator only had the option of going up and down.",
+        "type": "action"
+    },
+    {
+        "value": "What? Up or down? if we go up will we go to heaven?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Silly~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane presses the down button and the elevator door closes.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...what? Hey!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little while does a smirks look..",
+        "type": "action"
+    },
+
+    {
+        "value": "Silly you~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a poker face, so the elevator took a few minutes to go down, the place seemed to be very deep, after a while the elevator finally reached the floor below and opened the door slowly.",
+        "type": "action"
+    },
+
+    {
+        "value": "But how long.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Awww, I won't deny that he was smart to make a laboratory underground.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane looks around curiously as she entered James' laboratory. Rayane was very curious about James' lab, she looked a little surprised.",
+        "type": "action"
     }
 
 ]
