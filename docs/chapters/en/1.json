@@ -10627,15 +10627,20 @@
     },
 
     {
-        "value": "Rayane was a little surprised and laughed a little before answering.",
+        "value": "Rayane was a little surprised and laughed a little before answering when a screen appeared in front of the door, waiting for something, or do a call.",
         "type": "action"
     },
 
     {
-
+        "set": { "playlistPlay": "spooky-mysterious" },
         "value": " Ooooh~ James seems to be very dedicated to the lab.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would do a poker face and then say.",
+        "type": "action"
     }
 
 ]
