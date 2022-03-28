@@ -10712,6 +10712,41 @@
     {
         "value": "James authorized the entrance of the door. Then the door was opened, revealing it to be an elevator. So Vinny speaks in a surreptitious manner.",
         "type": "action"
+    },
+
+    {
+        "value": "Look! your bed was already broken when I jumped on it.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny, please, just come in.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "set": { "playlistPlay": null },
+        "value": "James does a poker face and turned off the video call. After that, Vinny responded in a very impressed way.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fuck! There is an elevator inside the house! That only here has more technology than my whole world!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny goes to the elevator.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ Don't be so surprised. James is been in this dimension for many years.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
