@@ -10604,7 +10604,6 @@
     },
 
     {
-        "set": { "playlistPlay": null },
         "value": "Rayane said while doing a silly, malicious face. Vinny would blush a little but then laugh a little before Vinny pull the book.",
         "type": "action"
     },
@@ -10632,7 +10631,6 @@
     },
 
     {
-        "set": { "playlistPlay": "spooky-mysterious" },
         "value": " Ooooh~ James seems to be very dedicated to the lab.",
         "character": "Rayane",
         "type": "dialogue"
@@ -10640,6 +10638,79 @@
 
     {
         "value": "Vinny would do a poker face and then say.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wew! Let's try to call, if nothing happens we'll scream loudly saying it's going to mess up his room.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looked at the screen and pressed the start call button. So the panel started to make the connection inside the laboratory.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hello?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Tthe screen changes to a video call and Vinny saw James looking at the screen.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hello?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hello?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James made a hoof face and continued the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah... it's Vinny. Hello.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah! I came to bring you my phone. I think...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little embarrassed and made a poker face. Rayane laughed a little and responded with a malicious face.",
+        "type": "action"
+    },
+
+    {
+        "value": "And I came to bring your marshmallow delivery~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "w..what?! Get in soon! Don't try to mess up my room!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James authorized the entrance of the door. Then the door was opened, revealing it to be an elevator.",
         "type": "action"
     }
 
