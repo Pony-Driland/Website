@@ -11223,8 +11223,31 @@
     },
 
     {
-        "value": "Vinny sat on the floor while he thought, trying to understand Raynae's words.",
+        "value": "Vinny sat on the floor while he thought, trying to understand Raynae's words. Rayane then looked at Vinny, a little worried about Vinny and said.",
         "type": "action"
+    },
+
+    {
+        "value": "This mountain is very high. There are only two ways. Climb the montain discreetly, or use a train. But if you use the train, you'll have to go through Elite Color's maximum security.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane got a little annoyed when remembered the Elite Color part.",
+        "type": "action"
+    },
+
+    {
+        "value": "You and James will have to prepare a lot before making sure you go up there. Alright?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "How many Guards? we need to make a plan, but for what purpose? what is the ultimate goal.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
