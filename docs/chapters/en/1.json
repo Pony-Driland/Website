@@ -11003,6 +11003,101 @@
         "value": "Yes. I am fine. I'm just worried about her again. One pony.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "James was surprised and curious.",
+        "type": "action"
+    },
+
+    {
+        "value": "Her? Hey! Who she? What's happening? I've never seen you like this!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "One of my friends. Lost friends, that's all.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was scared by Rayane answer.",
+        "type": "action"
+    },
+
+    {
+        "value": "WHAAAAAAT?! In Great Pyramid?! Are you kidding me?! We are talking about a place that is very difficult to access! How did she get there?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James, look. I don't have many explanations right now. But for now I have urgent situations to resolve.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane took a deep breath, remembering the photo that Vinny took, Rayane looked depressed for some reason.",
+        "type": "action"
+    },
+
+    {
+        "value": "I really need to keep an eye on this radar. I really need this radar.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ryane finished looking at SmartMoby while trying to calm down. Vinny was watching the conversation and getting worried.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey hey! What do you want to do Rayane? We are here to help you!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane would do a small smile, sad for a few seconds, but then do a small smile again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't worry. I need to watch these waves only. To make sure she's okay. And I also need to figure out how to get to the Great Pyramid.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was then a little disgusted with Rayane's decision.",
+        "type": "action"
+    },
+
+    {
+        "value": "But Rayane! Nope! This place is extremely cold! We'll become one ice block before we even get 10% of the way! Now that you're with us, you won't leave without us! I can try to make a portable version of this equipment.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little worried again to hear this.",
+        "type": "action"
+    },
+
+    {
+        "value": "But it is possible to get there if we wear a winter coat adapted to this cold.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Possible? Yes Rayane, but the problem is that this winter coat you are mentioning is made of an extremely rare material!",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
