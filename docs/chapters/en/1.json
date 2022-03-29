@@ -11098,6 +11098,55 @@
         "value": "Possible? Yes Rayane, but the problem is that this winter coat you are mentioning is made of an extremely rare material!",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was worried and confused not knowing what to say, so he tried to join the conversation again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well James, I particularly came here to ask for back my learning-to-fly stuff that was in your bag. But I don't think now is a good time to learn how to fly.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James got a little annoyed, but he calmed down by taking a few deep breaths.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay Vinny, ooookay. Sorry,I forgot.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James opened the backpack. The backpack spawned the Flight Assistance Accessory.",
+        "type": "action"
+    },
+
+    {
+        "value": "And Rayane, please, keep calm. I still need to finish updating my tech with the help of the Vinny's cell phone replicas. We will be able to find a solution to your problem as soon as possible. Alright? Anyway, I'm also curious to know what these waves are about.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane seemed regretful of her behavior. Rayane was feeling emotional and sad to know that James was really trying to help her.",
+        "type": "action"
+    },
+
+    {
+        "value": "Alright. T..Thanks for agreeing to help me.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled a little when he saw that Rayane was changing her behavior.",
+        "type": "action"
     }
 
 ]
