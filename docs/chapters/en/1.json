@@ -11245,8 +11245,14 @@
     },
 
     {
-        "value": "How many Guards? we need to make a plan, but for what purpose? what is the ultimate goal.",
+        "value": "Wow. How many Guards? We need to make a plan, but for what purpose? What is the ultimate goal?",
         "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny! NO! You are completely crazy! This is your first day at Pony Driland!",
+        "character": "James",
         "type": "dialogue"
     }
 
