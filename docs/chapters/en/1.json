@@ -11147,6 +11147,84 @@
     {
         "value": "Vinny smiled a little when he saw that Rayane was changing her behavior.",
         "type": "action"
+    },
+
+    {
+        "value": "Heh! Well I have an idea, of course if everyone agrees, Rayane and I are going to prepare to take a trip to Great Pyramid, we will get some things like clothing and also for security some things to defend ourselves, in the meantime you can keep my cell phone James, and also take a look at how to use my wing accessory. Fine?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James does a facehoof and then say.",
+        "type": "action"
+    },
+
+    {
+        "value": "No! Vinny! This coat is made of a very rare material found only in the deepest caves of Pony Driland. It's going to take a long time to find enough material to make this coat for 3 travelers. Don't think we'll find this easily in a random market.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath to calm himself again, and then said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, thank you for the phone, luckily for you, my first step will be very quick and will help us to take the initiative.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was preparing the device where the cell phone will be placed. Vinny and Rayane were looking very curiously at the machine.",
+        "type": "action"
+    },
+
+    {
+        "value": "Maybe... If my friend is ok and understands you, I'm sure she will be happy to help you. She's just very different.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane does a look of feeling a little hope. Vinny was a little surprised and worried before answering.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "I don't understand Rayane, could you explain better?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was thoughtful for a few seconds before thinking about answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "My friend also knows a lot about Pony Driland. She would be very happy to know about James.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was starting to get a little suspicious about the conversation, but he just kept listening.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well then, can we go see your friend? Is she far from here?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny sat on the floor while he thought, trying to understand Raynae's words.",
+        "type": "action"
     }
 
 ]
