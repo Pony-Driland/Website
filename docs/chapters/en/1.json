@@ -11319,8 +11319,14 @@
     },
 
     {
-        "value": "James does a facehoof. James returns to the preparations of the machine that was almost finished.",
+        "value": "James does a facehoof. James returns to the preparations of the machine that was almost finished. Vinny seriously looks into James' eyes during the progress.",
         "type": "action"
+    },
+
+    {
+        "value": "Heh, okay. Looks like you two are hiding something from me. There's a special reason the Elite Color is chasing James.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
