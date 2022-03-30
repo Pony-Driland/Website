@@ -11327,6 +11327,57 @@
         "value": "Heh, okay. Looks like you two are hiding something from me. There's a special reason the Elite Color is chasing James.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "What? I'm not hiding anything! Rayane is always chasing me.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? I don't understand, what you mean James?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh, James is curious about the true motive about Elite Color is attracted to him. But after I saw your conversation about Pony Driland's dimension, the reasons started to make a lot of sense.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was surprised to hear this. But then he calmed down.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..what?! Ah, I forgot, you really spied on us.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then finished the analysis and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Weeeell, do you have any plans?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't be worried. I just need to put your  phone on my device so I can start preparing the replica components. I just need a few minutes to finish so I can tell you what our travel plan is going to be. Alright?",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
