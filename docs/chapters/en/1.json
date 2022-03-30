@@ -11254,6 +11254,73 @@
         "value": "Vinny! NO! You are completely crazy! This is your first day in Pony Driland!",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little to feel calmer.",
+        "type": "action"
+    },
+
+    {
+        "value": "James is right. This mountain is the base of the Elite Color. It is very rare for anyone to escape from there. You need to be very careful not to get caught.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then looked at James a little more seriously and said worriedly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Especially James.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "M..Me? This is obvious!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey, calm down. If the Elite Color would give the life for a phone like mine, imagine what the Elite Color wouldn't give to get all that technology in James room.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Stop!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was starting to feel better about Vinny's sillyness, so she responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh, one day James will need more marshmallow~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh god.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James does a facehoof. James returns to the preparations of the machine that was almost finished.",
+        "type": "action"
     }
 
 ]
