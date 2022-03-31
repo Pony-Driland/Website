@@ -11585,6 +11585,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "Yes. Don't worry. the machine controller is on your paw.",
         "character": "Rayane",
         "type": "dialogue"
@@ -11602,6 +11603,7 @@
     },
 
     {
+        "set": { "playlistPlay": "sad" },
         "value": "James took the backpack with a thoughtful look at the past, James looked like he was taking some kind of amulet from inside the backpack while he was waiting for the machine to process. Vinny would get a little worried and say.",
         "type": "action"
     },
