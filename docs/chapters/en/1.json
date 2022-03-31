@@ -11476,6 +11476,39 @@
         "value": "Don't try to question my words~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane approached Vinny face while continuing the silly and malicious face.",
+        "type": "action"
+    },
+
+    {
+        "value": "And don't question me too. Heh. I can use my wings until my wings fall on purpose.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks deep into Rayane's eyes.",
+        "type": "action"
+    },
+
+    {
+        "value": "YPi want to help me with this machine? like i don't know if i'll be able to touch myself. Maybe i need someone to help me put the machine on me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmmm~ Don't worry. I'll do it right for you.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayame approached a little more her smirk face before booping Vinny while answering.",
+        "type": "action"
     }
 
 ]
