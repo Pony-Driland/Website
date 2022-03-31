@@ -11378,6 +11378,104 @@
         "value": "Don't be worried. I just need to put your  phone on my device so I can start preparing the replica components. I just need a few minutes to finish so I can tell you what our travel plan is going to be. Alright?",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looked at James, thinking for many seconds, and then finally decided.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "All right, here's the phone.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James takes the phone.",
+        "type": "action"
+    },
+
+    {
+        "value": "I was just a little worried because besides me and Rayane, sometimes doing something for the 3 of us can save us, and that worries me. But i trust you. What you do our lives can be on your hands! Ops...PAWS!!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little confused about Vinny words and just continued the conversation while James put the Vinny's cell phone in the machine and press the button to start the machine. The computer terminal lights up and starts showing the progress log.",
+        "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": null },
+        "value": "I didn't understand what you said. But it's alright.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well, heh, never mind.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles nervously.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane, do you know how long it will take me to learn to fly with this stuff here?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was using the SmartMoby for a few seconds before she heard Vinny voice and looked at Vinny curiously.",
+        "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": "think" },
+        "value": "Huh? What would that be?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little sad to hear Rayane's answer.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah, sorry. It's an accessory that according to James would help me fly without the need for a pegasus to teach me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh? This accessory? It will be pulling your wings to show you how to move them. Heh~ Be careful not to use this for too long or your wings will be sore during the process from pushing so hard. Or you'll end up needing some massage~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane does a smirk face as she completed the words. Vinny was a little surprised, but he giggles a little and smirk back.",
+        "type": "action"
+    },
+
+    {
+        "value": "And you would do this massage? I have no experience with wings.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Don't try to question my words~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
