@@ -11532,6 +11532,22 @@
         "value": "Yes, I think this is a laboratory inside a room. Ah? Stop thinking nonsense you two! OXIIIIIIIII!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Me?! I want to know why you two are talking about this in my lab!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ Vinny words ended up changing the \"path of the tracks\"~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+    {
+        "value": "Rayane was putting the accessory on Vinny wings gently until the process is complete.",
+        "type": "action"
     }
 
 ]
