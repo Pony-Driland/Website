@@ -11549,6 +11549,28 @@
     {
         "value": "Rayane was putting the accessory on Vinny wings gently until the process is complete.",
         "type": "action"
+    },
+
+    {
+        "value": "Heh, It was Rayane who started the talk. Calm down, one day you'll find a beautiful pony and maybe she thinks you're beautiful too. if you don't find a pony, I'll help you find a girl to stay by your side.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little, looking at James a little ironic.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...what?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little embarrassed as he seemed to remember something from many years ago.",
+        "type": "action"
     }
 
 ]
