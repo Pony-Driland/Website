@@ -11507,8 +11507,31 @@
     },
 
     {
-        "value": "Rayame approached a little more her smirk face before booping Vinny while answering.",
+        "value": "Rayame approached a little more her smirk face before booping Vinny while answering. Vinny was a little surprised, but then kept smirking back.",
         "type": "action"
+    },
+
+    {
+        "value": "If I lift my wings too much let me know. I don't want another pony calling me a pervert again. We can go to James' room to put the machine.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James Room? We're in the lab. What story is this?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane continued the smirks face while using the magic to levitate the wing device. Meanwhile, James was in the background with an embarrassed face, trying to understand the conversation. When Vinny realized the context the conversation was becoming, he was a little startled and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes, I think this is a laboratory inside a room. Ah? Stop thinking nonsense you two! OXIIIIIIIII!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
