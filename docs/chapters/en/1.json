@@ -11640,18 +11640,13 @@
     },
 
     {
-        "value": "Ah. T...yes. Fine.",
+        "value": "Ah. Y...yes. Fine.",
         "character": "James",
         "type": "dialogue"
     },
 
     {
-        "value": "James was a little embarrassed and a little sad. But he kept trying to hide it.",
-        "type": "action"
-    },
-
-    {
-        "value": "Rayame was analyzing James' reaction, and was very curious about it.",
+        "value": "James was a little embarrassed and a little sad. But he kept trying to hide it. Rayame was analyzing James' reaction, and was very curious about it.",
         "type": "action"
     },
 
