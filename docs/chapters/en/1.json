@@ -11571,6 +11571,23 @@
     {
         "value": "James was a little embarrassed as he seemed to remember something from many years ago.",
         "type": "action"
+    },
+
+    {
+        "value": "Heh. Well, how does this fly machine work? I think it's better to activate this machine when we are out of the house. Don't you? My instincts are telling me that my luck would be like a dice, and I'm unlucky today. Let's go outside Rayane?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. Don't worry. the machine controller is on your paw.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
