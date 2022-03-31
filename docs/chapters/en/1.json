@@ -11588,6 +11588,82 @@
         "value": "Yes. Don't worry. the machine controller is on your paw.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "James then got a little curious to hear this. He was trying to hide the emotions he was feeling a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What? So you two go outside? Please let Kenny know that I'm going to be a while.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took the backpack with a thoughtful look at the past, James looked like he was taking some kind of amulet from inside the backpack while he was waiting for the machine to process. Vinny would get a little worried and say.",
+        "type": "action"
+    },
+    {
+        "value": "James? Are you really okay? Do you need anything else?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane finished prepare the things and looked at Vinny and James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Huh? Did something happen?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Me? Don't worry. I...I'm fine. I just remembered someone I never saw again.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James tried to stay calm while answering the question.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay, I understand, if you want to talk about this, you can talk with me. Okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah. T...yes. Fine.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little embarrassed and a little sad. But he kept trying to hide it.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayame was analyzing James' reaction, and was very curious about it.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. No need to be ashamed. We can help you with that too. Alright?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane uses the magic to press the elevator button during the talk.",
+        "type": "action"
     }
 
 ]
