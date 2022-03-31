@@ -11659,6 +11659,46 @@
     {
         "value": "Rayane uses the magic to press the elevator button during the talk.",
         "type": "action"
+    },
+
+    {
+        "value": "Yes. don't spend too much time alone.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny goes to the elevator. James tried to be more positive to hide his negative feelings a little.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "Hey, Don't worry. I'll call you as soon as possible.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ Alright. Let's trust you. Well Vinny, let's go. The elevator awaits us~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane entered the elevator that was opening the door.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah. let's go.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny entered the elevator, a little worried about James, trying to figure out what the amulet was hiding. Vinny presses the button to go up. James was still looking at the amulet that appeared to contain someone's picture. But then the elevator door closed.",
+        "type": "action"
     }
 
 ]
