@@ -11782,7 +11782,7 @@
     },
 
     {
-        "set": { "playlistPlay": "calm" },
+        "set": { "playlistPlay": "relaxing-rpg-song" },
         "value": "Silly you~ I don't have the knowledge for that. Only ponies that know how to modify SmartMoby can do that. Who could better answer your little question would be James.",
         "character": "Rayane",
         "type": "dialogue"
@@ -11807,6 +11807,39 @@
     {
         "value": "You are being more silly than I imagined.",
         "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes! I'm silly! Kenny!?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny says a little loud looking for Kenny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ Ok Vinny excited.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane booped Vinny while Rayane giggles a little at Vinny reaction. Vinny was a little surprised and blushed from the surprised boop.",
+        "type": "action"
+    },
+    {
+        "value": "Heh~ Calm down silly you. Kenny must be in the living room or the kitchen.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "F...Fine.",
+        "character": "Vinny",
         "type": "dialogue"
     }
 
