@@ -11737,6 +11737,17 @@
     },
 
     {
+        "value": "Rayane took a deep breath",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny also seems to want to be a warrior. Heh, but how funny for someone like him to think about it. But I should try to give him a chance, he simply used dirt to protect himself. I hope he knows what he's doing.",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
         "value": "Then after a few minutes, the elevator arrived and opened the door. Vinny was very curious to see Rayane still looking at SmartMoby.",
         "type": "action"
     },
