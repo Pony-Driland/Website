@@ -11759,7 +11759,53 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "Do not forget, never let a stranger mess with your SmartMoby. This is extremely dangerous and can erase your memory.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane leaves the elevator while the bookcase opened again, freeing the way for Vinny and Rayane to leave. Vinny was extremely surprised and worried, but in a silly way in joke when he listened to Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "AH?! HAVE YOU EVER DONE THAT WITH MY MEMORIES!? Don't mind!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": "calm" },
+        "value": "Silly you~ I don't have the knowledge for that. Only ponies that know how to modify SmartMoby can do that. Who could better answer your little question would be James.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would get a little curious and say. Then Vinny says excitedly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, let's let Kenny know that James will be late. and let's test this beauty on my wings!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little again before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "You are being more silly than I imagined.",
         "character": "Rayane",
         "type": "dialogue"
     }
