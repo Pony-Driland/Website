@@ -11916,8 +11916,30 @@
     },
 
     {
-        "value": "Y..yes yes. I understood perfectly, completely perfectly understood.",
+        "value": "Y..yes yes. I understood perfectly, completely perfectly understood. T..The food is already on the table.",
         "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was extremely scared and white by the fear as he looked at Rayane, then at Kenny, then at Rayane again, then at Kenny again, then Vinny said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Jesus! James! Damn bro! James asked me to let you know that he said he will be late. Oh god, thanks Rayane.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane kept the sword and used magic to put Kenny's sword in a low guard position so he wouldn't accidentally do another stupid thing again. Rayane giggles a little silly and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ You're welcome. And Kenny, when you're not using your sword, put your sword away.",
+        "character": "Rayane",
         "type": "dialogue"
     }
 
