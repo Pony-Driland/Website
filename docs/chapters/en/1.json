@@ -11844,7 +11844,7 @@
     },
 
     {
-        "value": "Heh~ Calm down silly you. Kenny must be in the living room or the kitchen.",
+        "value": "Heh~ Calm down, silly you. Kenny must be in the living room or the kitchen.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -11852,6 +11852,72 @@
     {
         "value": "A...Ah? A..alright.",
         "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny continued walking around the house for a few seconds until Vinny found Kenny learning to use the sword. Vinny was surprised to see Kenny trying to use his mouth to control the sword. Vinny then giggles a little and talked.",
+        "type": "action"
+    },
+
+    {
+        "value": "OOhhh! Heh. Watch out for that sword, you ninja.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny was a little surprised to see Vinny so he replied.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Vinny? Vinny!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny looked at Vinny curiously, Kenny's movement causes the sword to accidentally move towards Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "K..KENNY?! NO! STOOOOP!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "But at the time Rayane invokes her sword, blocking the Kenny Sword movement, avoiding the accident.",
+        "type": "action"
+    },
+
+    {
+        "value": "AH! No no no no! SOORRY! SORRY! I'M SORRY! Rayane! Please do not kill me! ",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little and smirk before responding in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ If you're a newbie, never use the sword around someone.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny smiled nervously as he answered",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..yes yes. I understood perfectly, completely perfectly understood. ",
+        "character": "Kenny",
         "type": "dialogue"
     }
 
