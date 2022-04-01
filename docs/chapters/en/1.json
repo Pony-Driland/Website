@@ -11701,6 +11701,67 @@
     {
         "value": "Vinny entered the elevator, a little worried about James, trying to figure out what the amulet was hiding. Vinny presses the button to go up. James was still looking at the amulet that appeared to contain someone's picture. But then the elevator door closed.",
         "type": "action"
+    },
+
+    {
+        "value": "Rayane then sat down, turning off the SmartMoby screen while waiting for the elevator progress. Vinny was very thoughtful, not knowing what to say as the elevator continued up.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny is very different from the others. I can't continue what I'm doing. Maybe I should have a better plan for Vinny. My friend won't be happy to hear about this.",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "Rayane was a little more worried in her thoughts.",
+        "type": "action"
+    },
+
+    {
+        "value": "Maybe it's too dangerous for Vinny to approach her. She is extremely dangerous psychologically. I'm going to have to be very careful, and maybe change my plans.",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "Rayane was a little sad, but she didn't let Vinny watch it.",
+        "type": "action"
+    },
+
+    {
+        "value": "Now it makes sense motive the organization want James. I should think better of what I've become. Maybe I should change my life, I don't know if I'm ready for this. I've lost everything, I can't lose my new hope. I hope Vinny isn't scared by the brutality of this world.",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "Then after a few minutes, the elevator arrived and opened the door. Vinny was very curious to see Rayane still looking at SmartMoby.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Rayane? Why do you look at your SmartMoby so much?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny exited the elevator as he said this. Rayane was a little curious about Vinny's reaction, but then she said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Huh? Oh sorry. You do not know? heh~ The SmartMoby is much more than just a screen on your arm.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Do not forget, never let a stranger mess with your SmartMoby. This is extremely dangerous and can erase your memory.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
