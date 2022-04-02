@@ -12129,6 +12129,67 @@
         "value": "W..what?! Do the machine have LEDs? Oh I liked it!!!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "I'm going to spread my wings. Can you turn to the side?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles again before doing the silly malicious face.",
+        "type": "action"
+    },
+
+    {
+        "value": "You still haven't learned to spread your wings properly without exaggerating? It's not that hard~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would do a poker face for a few seconds, then start to spread his wings.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ok. I spread my wings. How does this thing work? Do I have to flap my wings and run away?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny feel a slight tug of the device synchronizing the movement of your wings to prepare your wings for you to start the flight.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..hey! Okay okay. Let's go.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny move the wing up and down. The machine made another pull, putting the movement of the wings in sync for Vinny to start flying.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hoh hoh! Yes!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ Don't push too hard. Just follow your machine's movements.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiles and tries to move the wings synchronizing with the machine. The machine understood that Vinny were just wanting to start to fly, so soon Vinny started to feel your paws leaving the ground.",
+        "type": "action"
     }
 
 ]
