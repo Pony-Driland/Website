@@ -12328,7 +12328,7 @@
     },
 
     {
-        "value": "Rayane made a very mischievous look while spawning a marshmallow, getting ready to throw it at Vinny",
+        "value": "Rayane made a very mischievous look while spawning a marshmallow, getting ready to throw this toward Vinny.",
         "type": "action"
     },
 
@@ -12338,7 +12338,53 @@
     },
 
     {
+        "set": { "playlistPlay": "an-antagonistic-battle" },
         "value": "Don't worry, I promise it will be a lot of fun~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was still surprised, but then he giggle a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "GO RAYANE!! If you can hit me I'll buy you a snack.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane aimed the Marshmallow at Vinny, preparing to shoot. She would smirk for a few before tossing the marshmallow towards Vinny. The Marshmallow hits Vinny face very fast, doing Vinny face all dirty while Rayane laughed a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAAAAHWN! That was cheating!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny licks the marshmallow, trying to wipe the marshmallow off his face.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oops~ Was I too fast?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Wait one moment!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ Second round? Okay~",
         "character": "Rayane",
         "type": "dialogue"
     }
