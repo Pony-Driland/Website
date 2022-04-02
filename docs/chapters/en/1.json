@@ -11996,7 +11996,6 @@
     },
 
     {
-        "set": { "playlistPlay": null },
         "value": "Rayane horn began to glow a little stronger during the talk.",
         "type": "action"
     },
@@ -12025,6 +12024,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "Rayane and Rayane disappear before Kenny completes the words because the magic was about to be triggered.",
         "type": "action"
     },
@@ -12041,7 +12041,6 @@
     },
 
     {
-        "set": { "playlistPlay": "new-thing" },
         "value": "We're here~",
         "character": "Rayane",
         "type": "dialogue"
