@@ -12234,6 +12234,67 @@
     {
         "value": "Vinny tries to flap the wings harder on the next sync.",
         "type": "action"
+    },
+
+    {
+        "value": "Rayane giggles a little more while continuing to watch Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't go in such a hurry. If you don't you will fail at the turn.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh! Don't worry!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was smiling very happily as he realized he was actually flying.",
+        "type": "action"
+    },
+
+    {
+        "value": "ALALALALA! I'm flying!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little and stayed for a few minutes watching Vinny happily fly. Seeing every second of Vinny trying out every different flying technique.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeaaah!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Vinny tries to decline and stop slowly to see Rayane on the floor slowly. Vinny was slowly descending while the wind that hit Vinny tried to change the direction during the process.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...Ah? No no no no...Nooo!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tries to stabilize and still descending. Rayane continued watching, doing a smirk face.",
+        "type": "action"
+    },
+
+    {
+        "value": "Silly, be careful~ ",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
