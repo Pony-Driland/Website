@@ -12190,6 +12190,50 @@
     {
         "value": "Vinny smiles and tries to move the wings synchronizing with the machine. The machine understood that Vinny were just wanting to start to fly, so soon Vinny started to feel your paws leaving the ground.",
         "type": "action"
+    },
+
+    {
+        "value": "Rayane giggles while watching Vinny flying.",
+        "type": "action"
+    },
+
+    {
+        "value": "Be careful not to lose control of your flight.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? Hey! Why are you laughing????",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tried to follow the rhythm of the machine. But trying to follow a other path. Vinny  were going up higher and higher.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ I thought you were trying to take off like a plane, but you ended up going up like a helicopter.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Are you challenging me?!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tries to flap the wings harder on the next sync.",
+        "type": "action"
     }
 
 ]
