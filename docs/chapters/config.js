@@ -101,6 +101,10 @@ var storyCfg = {
     // Playlist
     playlist: {
 
+        'an-antagonistic-battle': [
+            { id: 'AhpvfGJ81n4', type: 'youtube' },
+        ],
+
         'dbs-ost-dramatic-versions-extended-mix': [
             { id: 'T-uG8gx8nfw', type: 'youtube' },
         ],
