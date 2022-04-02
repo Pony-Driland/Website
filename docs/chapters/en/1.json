@@ -12293,7 +12293,53 @@
 
     {
         "value": "Silly, be careful~ ",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "Vinny were starting to undestand the basic moves of slow flying while the wind kept trying to troll Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny~? How's your helicopter mode going?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny screams.",
+        "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": null },
+        "value": "GOOD! VERY GOOD! BUT RAYANE! PLEASE! TRY TO THROW A SMALL THING AT ME!! Without fear and without losing friendship! PLEASE!",
         "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? Something small. Hmmmmm~ It's getting interesting~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane made a very mischievous look while spawning a marshmallow, getting ready to throw it at Vinny",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny was looking closely at Rayane. He was a little surprised by Rayane's reaction.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't worry, I promise it will be a lot of fun~",
+        "character": "Rayane",
         "type": "dialogue"
     }
 
