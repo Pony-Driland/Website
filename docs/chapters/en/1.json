@@ -11941,6 +11941,97 @@
         "value": "Heh~ You're welcome. And Kenny, when you're not using your sword, put your sword away.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Y...yes Rayane.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "When Vinny felt calmer, he would smile a little and say.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "Well, thanks, let's eat soon, we're going outside quickly to see how this machine works. Alright?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was still smiling a little, walking towards the door. When Kenny looked at the machine and then at Vinny, Kenny was surprised and responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "You're welcome. Ah? This machine? Is this a flight assistance accessory? You will need a place that is wide open.",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Awwww. Don't worry. I already have the perfect place for it~ Right Vinny?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane does a mischievous face, preparing the horn magic while following Vinny. Vinny was even more surprised to see Raynae's magic.",
+        "type": "action"
+    },
+
+    {
+        "value": "A..Ah? Hey! You can teleport us there! can't you?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. Yes~ My teleportation energy is measured by the distance and the amount of ponies and objects. It's like creating an imaginary tunnel and moving through it. The distance we are going to travel is good to use.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane horn began to glow a little stronger during the talk.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What? T...teleportation? I've never seen any unicorns use teleport!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny didn't seem to know how to react he was so impressed. Vinny was curious about Kenny's reaction for a few seconds, but then Vinny smiled and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. that's what you saw when I got here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "This teleportation is......",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane and Rayane disappear before Kenny completes the words because the magic was about to be triggered.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay, fineeeeee. Never mind.",
+        "character": "Kenny",
+        "type": "dialogue"
     }
 
 ]
