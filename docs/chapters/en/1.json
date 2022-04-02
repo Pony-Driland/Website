@@ -12387,6 +12387,61 @@
         "value": "Heh~ Second round? Okay~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane does a smirk face again as she spawned the other marshmallow, and threw the marshmallow towards Vinny again. Vinny was surprised again and desperately prepared to dodge.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh shit! AAH!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The marshmallow moves very next to Vinny when he dodge. But due to Vinny speed, Vinny loses the balance and crash into the branches of a tree in the process.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay okay. Fine. Again!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny try to get back up. Vinny run over a few more branches until Vinny accidentally hold onto a thicker branch.",
+        "type": "action"
+    },
+
+    {
+        "value": "Come on! Come ooooon!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane looked a little worried for a few seconds, going to see if Vinny is okay. But when she sees that Vinny just got stuck, she laughs a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Silly~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well! The bet was for you to hit me, and you didn't hit me, who hit me was this tree here!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laughed some more while using her magic to help Vinny get out of the branches.",
+        "type": "action"
     }
 
 ]
