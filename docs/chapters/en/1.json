@@ -12442,6 +12442,12 @@
     {
         "value": "Rayane laughed some more while using her magic to help Vinny get out of the branches.",
         "type": "action"
+    },
+
+    {
+        "value": "Silly~ Be careful not to throw yourself against the trees again. I'm waiting for you to return to the position.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
