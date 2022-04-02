@@ -12041,10 +12041,94 @@
     },
 
     {
+        "set": { "playlistPlay": "new-thing" },
         "value": "We're here~",
         "character": "Rayane",
         "type": "dialogue"
-    }
+    },
 
+    {
+        "value": "Vinny giggles a little nervously. He looked around curiously, and breathed the clean air deeply.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "Oh, poor Kenny. Well, is it safe here? Let's see how these buttons work here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny analyzed each button for a few seconds. Vinny saw two buttons: Manual mode and automatic mode.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ Sorry, but I couldn't hold the magic any longer. Don't worry, it's super safe here.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny says a little worried.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh, no need to apologize, I appreciate the help. Which is better? Manual or automatic? I'm afraid of breaking the bageza here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Bageza? You really like coming up with weird names.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane point to the panel.",
+        "type": "action"
+    },
+
+    {
+        "value": "This is simples. Automatic you will make the device itself choose what action your wings will do.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmmm. Fine! Let's go automatic.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny presses the automatic button.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh, good luck~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane got a little closer when she saw the wings LED turning on, indicating that the machine was initializing and calibrating Vinny wings, getting ready. Vinny was surprised and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..what?! Do the machine have LEDs? Oh I liked it!!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    }
 
 ]
