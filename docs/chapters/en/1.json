@@ -11996,6 +11996,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "Rayane horn began to glow a little stronger during the talk.",
         "type": "action"
     },
@@ -12032,6 +12033,19 @@
         "value": "Okay, fineeeeee. Never mind.",
         "character": "Kenny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny does a poker face. Then Vinny and Rayane appeared on an lawn outside the village, and near the forest.",
+        "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": "new-thing" },
+        "value": "We're here~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
+
 
 ]

@@ -101,6 +101,10 @@ var storyCfg = {
     // Playlist
     playlist: {
 
+        'dbs-ost-dramatic-versions-extended-mix': [
+            { id: 'T-uG8gx8nfw', type: 'youtube' },
+        ],
+
         'haunted-coal-mines': [
             { id: 'VCpg4CbgY1U', type: 'youtube' },
         ],
@@ -116,6 +120,7 @@ var storyCfg = {
         'forest': [
             { id: '3yxG4k9uni4', type: 'youtube' },
             { id: 'pI_JSnJMnY4', type: 'youtube' },
+            { id: 'gvbvkqpM9C8', type: 'youtube' },
         ],
 
         'dark-ambient-melodies': [
@@ -182,6 +187,7 @@ var storyCfg = {
 
         'fantasy-village': [
             { id: 'kKObUC_3NDY', type: 'youtube' },
+            { id: 'HFoGnJ_w4pQ', type: 'youtube' },
             { id: 'K1vUA9NltVw', type: 'youtube' },
         ],
 
