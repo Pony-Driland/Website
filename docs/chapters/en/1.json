@@ -12607,6 +12607,29 @@
         "value": "Oops?~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "set": { "playlistPlay": null },
+        "value": "Vinny then placed his paw on his head and accepted defeat. ",
+        "type": "action"
+    },
+
+    {
+        "value": "Fiiiiine. You won. But let's see which one of this manual.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny cleans the face and activating the manual mode again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Silly you~ Be careful or you will end up hurting your wings this way.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
