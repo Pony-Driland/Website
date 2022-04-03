@@ -12558,6 +12558,54 @@
         "value": "And here we go~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane threw the 3 marshmallows towards Vinny. One marshmallow moved in a straight line towards Vinny face, the other was more directed to go up and the third one seemed to be turning to the right. Vinny turn off auto mode by controller to drop down.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmm~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane continued watching while still doing the silly, malicious face. The marshmallow that was in a straight line was deflected. The one to the right didn't even come close to Vinny. But what was going up, it kept going up without Vinny noticing.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hah! I win!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": " TThe marshmallow then drops down quickly, hitting Vinny head.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAAAH! NO!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    {
+        "value": "Vinny turn on automatic mode before fall down onto the floor.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny wings does a huge tug to try to move Vinny up to do Vinny land safely. Rayane giggles a little, so Rayane would see if Vinny is okay. ",
+        "type": "action"
+    },
+
+    {
+        "value": "Oops?~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
