@@ -12448,6 +12448,116 @@
         "value": "Silly~ Be careful not to throw yourself against the trees again. I'm waiting for you to return to the position.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smile nervously, trying to synchronize the wings moves to fly up again, breaking more branches. So Vinny come back to the sky, covered in tree branches and marshmallows.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane laughed a little again. Vinny does a poker face during the moment.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. I'm ready, send me one more.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane prepared the other marshmallow delicately.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Rayane threw the new marshmallow towards Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny dodge to the right side using 50% of the speed.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ congratulations~ Your first dodge~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hehe, did you see that? Go try one more! Without losing friendship!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets ready for another.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hhhm~ Okay.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane does a silly mischievous smile while spawning 2 marshmallows this time, getting ready to throw towards Vinny again.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...what?! it's already going to start cheating again!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets ready to turn off auto mode to dodge the 2 marshmallows in order to fall down.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah sorry~ You're right, we have to do it without cheating then~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smirks harder as she spawned the third marshmallow. Vinny does another poker face and laughs nervously.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh no. Save me Celestia, free me and guide me Luna!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny prepares to do a lunge to dodge.",
+        "type": "action"
+    },
+
+    {
+        "value": "And here we go~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
