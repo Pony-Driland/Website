@@ -12616,13 +12616,30 @@
     },
 
     {
-        "value": "Fiiiiine. You won. But let's see which one of this manual.",
+        "value": "Fiiiiine. You won.",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vinny cleans the face and activating the manual mode again.",
+        "value": "I won? Can you repeat again?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. You won. You woon. But let's see which one of this manual.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny cleans the face and activating the manual mode again. Rayane looked like she was having fun with Vinny's sillyness, so she said.",
         "type": "action"
     },
 
