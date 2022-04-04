@@ -12646,6 +12646,82 @@
         "value": "Silly you~ Be careful or you will end up hurting your wings this way.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+
+        "value": "Heh, Don't worry.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tries to imitate the flapping of wings from before, so Vinny starts to get off the ground slowly.",
+        "type": "action"
+    },
+
+    {
+
+        "value": "Yes! Yes!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny reached a reasonable speed to start a fast flying move. Rayane just kept watching.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tested his speed a few more times, Vinny was happy with the quick learning he was getting with the help of the machine.",
+        "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": "an-antagonistic-battle" },
+        "value": "Go Rayane! Try something now!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets ready to deflect. Rayane giggles a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ Learning the basics really seems like it's been easy for you. Okay. But this time it's an object for you to pick up~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane spawned Vinny sunglasses that Vinny had accidentally lost during training while she does a smirk face. Meanwhile Vinny does a super poker face in response.",
+        "type": "action"
+    },
+
+    {
+
+        "value": "Oh really?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Are you ready?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane put on the sunglasses to try on for a few seconds while she prepared to launch the sunglasses.",
+        "type": "action"
     }
 
 ]
