@@ -12903,7 +12903,7 @@
     },
 
     {
-        "set": { "playlistPlay": "good-think" },
+        "set": { "playlistPlay": "silly" },
         "value": "Ho ho! Yes! This is true!",
         "character": "Vinny",
         "type": "dialogue"
@@ -12966,9 +12966,91 @@
     },
 
     {
+        "value": "Vinny laughed nervously for a few seconds.",
+        "type": "action"
+    },
+
+    {
         "value": "I hope I didn't dig into my phone too much.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "if James finds something wrong there. Then let's go, How do you want to go? Walking? Teleporting?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    {
+        "value": "Vinny was very curious to think about these possibilities. Rayane giggles a little before smirking and reply.",
+        "type": "action"
+    },
+
+    {
+        "value": "Awwww~ James doesn't have to want it. He's curious and ends up finding it by accident. We can teleport if you want us to get there quickly.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y...Yes! Yes! I'm ready! Let's go!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heheh~ Okay.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane's horn glowed, preparing for the teleportation. It took a few seconds for her to activate the teleport. So Rayane and Vinny were teleported into Kenny's house again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh! House again! Ah? There's something wrong here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks forward uncomfortably wondering what was behind. vINNY realized that the presence was Raquel scared by Vinny presence coming randomly in front of her.",
+        "type": "action"
+    },
+
+    {
+        "value": "V...Vinny?! WHAT?!",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little in the background for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes, we're here~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little nervously in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane! You did it on purpose, right Rayane? Oh? Sorry. Hi Raquel!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tries to smile so as not to be surprised.",
+        "type": "action"
     }
 
 ]
