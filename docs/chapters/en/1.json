@@ -8804,7 +8804,7 @@
     },
 
     {
-        "value": "James used magic and put the glasses on the shopping list that was being passed.",
+        "value": "James used magic and put the sunglasses on the shopping list that was being passed.",
         "type": "action"
     },
 
@@ -8898,13 +8898,13 @@
     },
 
     {
-        "value": "Come on, Kenny will want to see you! Heh, already give me my glasses, I want to test them.",
+        "value": "Come on, Kenny will want to see you! Heh, already give me my sunglasses, I want to test them.",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "What? Glasses? I still don't understand the motive for the glasses.",
+        "value": "What? Sunglasses? I still don't understand the motive for the sunglasses.",
         "character": "James",
         "type": "dialogue"
     },
@@ -8917,7 +8917,7 @@
                 "amount": 1
             }]
         },
-        "value": "James made a facehoof and used magic to give Vinny the glasses sunglasses.",
+        "value": "James made a facehoof and used magic to give Vinny the sunglasses.",
         "type": "action"
     },
 
@@ -9436,7 +9436,7 @@
     },
 
     {
-        "value": "Vinny moves the glasses like a boss. At this same moment James was performing a facehoof.",
+        "value": "Vinny moves the sunglasses like a boss. At this same moment James was performing a facehoof.",
         "type": "action"
     },
 
@@ -9636,7 +9636,7 @@
 
 
     {
-        "value": "Yeah, I'm surprised that you managed to make two very unexpected friends on the first day. And got these glasses.",
+        "value": "Yeah, I'm surprised that you managed to make two very unexpected friends on the first day. And got these sunglasses.",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -9865,7 +9865,7 @@
     },
 
     {
-        "value": "Vinny does a Like a Boss pose with the glasses. Rayane giggles again and pressed the button to take the picture, and the camera made the flashing noise.",
+        "value": "Vinny does a Like a Boss pose with the sunglasses. Rayane giggles again and pressed the button to take the picture, and the camera made the flashing noise.",
         "type": "action"
     },
 
@@ -12638,7 +12638,7 @@
     },
 
     {
-        "value": "Vinny cleans the face and activating the manual mode again, Vinny didn't notice that his glasses had accidentally fallen off his face. Rayane looked like she was having fun with Vinny's sillyness, so she said.",
+        "value": "Vinny cleans the face and activating the manual mode again, Vinny didn't notice that his sunglasses had accidentally fallen off his face. Rayane looked like she was having fun with Vinny's sillyness, so she said.",
         "type": "action"
     },
 
