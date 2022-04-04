@@ -61,7 +61,12 @@ Beta Version - 100% Complete
 Final Version - 0% Complete
 
 ### Chapter 3
-Beta Version - 90% Complete
+Beta Version - 100% Complete
+
+Final Version - 0% Complete
+
+### Chapter 4
+Beta Version - 1% Complete
 
 Final Version - 0% Complete
 
