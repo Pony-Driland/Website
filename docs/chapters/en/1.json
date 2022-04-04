@@ -12828,6 +12828,95 @@
         "value": "Ready?~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "R...ready.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled nervously, focusing on Rayane's marshmallow.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ Don't worry. This fire doesn't burn. But you can't get the marshmallow before you put out the fire.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny keeps focusing nervously, getting ready to try to put out the fire.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smirks and threw the marshmallow towards Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny was getting ready to start to use the wind of wings against fire. The Marshmallow approached Vinny more and more.",
+        "type": "action"
+    },
+
+    {
+        "value": "Come on!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was decreasing the intensity to try to hold the marshmallow during the process.",
+        "type": "action"
+    },
+
+    {
+        "set": { "playlistPlay": null },
+        "value": "The fire was going out slightly until the marshmallow reached a speed that when hitting Vinny paws, the marshmallow soiled Vinny hooves in the process.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah! M..My paws! Rayane, is this stuff edible?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at the paws nervously for a few seconds, thinking twice for a few seconds again, so Vinny gave a very nice lick on the paws.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ho ho! Yes! This is true!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ Yeah~ It's the same marshmallows you ate at camp~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
