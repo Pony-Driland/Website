@@ -12722,6 +12722,84 @@
     {
         "value": "Rayane put on the sunglasses to try on for a few seconds while she prepared to launch the sunglasses.",
         "type": "action"
+    },
+
+    {
+        "value": "Heh. Are you feeling Like A Boss?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+
+        "value": "Vinny gets ready to pick up the sunglasses.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hm. what would that term be?~ Well, time for your challenge. Here we go~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane already positioned and threw the sunglasses towards the clouds. Vinny was surprised and worried about the sunglasses, so he moved at a medium amount of speed so he wouldn't feel tired fast. Vinny go towards the sunglasses flying up getting ready to pick them up.",
+        "type": "action"
+    },
+
+    {
+        "value": "Come on! Come oooon!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny starts to see the speed of the sunglasses and Vinny feel that he would need to increase the speed to reach the sunglasses.",
+        "type": "action"
+    },
+
+    {
+        "value": "Come oooooooooon!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny increase more speed towards the sunglasses. Then Vinny finally reached for the sunglasses and managed to hold the sunglasses.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeeeeeees! I did!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny go down, putting the sunglasses on he eyes and saying calmly. Rayane was a little surprised while Vinny giggles a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey baby? Are you free today? so I can buy you that snack, but first I need to try without the machine now.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laughed a little while watching Vinny. Smirking at Vinny in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine~ This is your final challenge.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then lifted his wings a little for the machine to get off his back and prepared to try to fly on its own.",
+        "type": "action"
     }
 
 ]
