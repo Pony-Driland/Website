@@ -12918,6 +12918,57 @@
         "value": "Heh, Yeah~ It's the same marshmallows you ate at camp~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny is satisfied with the meal and then drops to the floor. while taking off the sunglasses. But then Vinny stared at Rayane, trying to understand her silliness.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes yes, very good and once again thank you for the help! Heh, when you want the snack just let me know. Alright?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ you're welcome, silly~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles again before smirks again while looking at Vinny,giving Vinny a silly boop in response. Vinny was a little embarrassed for a few seconds before answering. ",
+        "type": "action"
+    },
+
+    {
+        "value": "A..Ah? Hey! Thanks for the boop. and now?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well... We should go back to James' lab to see how James is doing with the experiments. He's having fun with your phone~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised to remember his cell phone.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh god!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "I hope I didn't dig into my phone too much.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
