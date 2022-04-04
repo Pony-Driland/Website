@@ -12800,6 +12800,34 @@
     {
         "value": "Vinny then lifted his wings a little for the machine to get off his back and prepared to try to fly on its own.",
         "type": "action"
+    },
+
+    {
+        "value": "Vinny felt that the wings are no longer being pulled. Vinny go down a little faster for a few seconds, until Vinny started going up without any problem. He was trying to maintain the same movements he was feeling before.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay! No help! Now hit me again!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smirks again and spawned 1 marshmallow and this one was different. The marshmallow had an aura of magic imitating fire, but did not burn the marshmallow. Vinny was surprised for a few seconds, but then he tried to keep determined.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...what?!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ready?~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
