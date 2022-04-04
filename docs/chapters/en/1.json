@@ -12903,6 +12903,7 @@
     },
 
     {
+        "set": { "playlistPlay": "good-think" },
         "value": "Ho ho! Yes! This is true!",
         "character": "Vinny",
         "type": "dialogue"
