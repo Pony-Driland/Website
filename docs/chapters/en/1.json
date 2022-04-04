@@ -12583,7 +12583,7 @@
     },
 
     {
-        "value": " TThe marshmallow then drops down quickly, hitting Vinny head.",
+        "value": " The marshmallow then drops down quickly, hitting Vinny head.",
         "type": "action"
     },
 
@@ -12610,7 +12610,6 @@
     },
 
     {
-        "set": { "playlistPlay": null },
         "value": "Vinny then placed his paw on his head and accepted defeat. ",
         "type": "action"
     },
@@ -12639,7 +12638,7 @@
     },
 
     {
-        "value": "Vinny cleans the face and activating the manual mode again. Rayane looked like she was having fun with Vinny's sillyness, so she said.",
+        "value": "Vinny cleans the face and activating the manual mode again, Vinny didn't notice that his glasses had accidentally fallen off his face. Rayane looked like she was having fun with Vinny's sillyness, so she said.",
         "type": "action"
     },
 
