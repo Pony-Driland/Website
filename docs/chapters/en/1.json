@@ -13227,8 +13227,35 @@
     },
 
     {
-        "value": "Vinny smiles a little and puts his paw on Rayane shoulder.",
+        "value": "Vinny smiles a little and puts his paw on Rayane shoulder. Rayane was very worried, but when she felt Vinny's paw, she calmed down and smiled a little back.",
         "type": "action"
+    },
+
+    {
+        "value": "Thanks Vinny. I'm sure she'll be happy to meet you.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane does a hopeful face. During the conversation the elevator finally arrived at the laboratory and open the door.",
+        "type": "action"
+    },
+    {
+        "value": "Heh! Yes! It's showtime!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny puts the sunglasses on his face. Rayane giggles quietly and then just followed Vinny when the elevator door opened while James was finishing developing some device.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? James? Hey, what's up?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
