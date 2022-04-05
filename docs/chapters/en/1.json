@@ -13149,6 +13149,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Vinny goes to James's room.",
         "type": "action"
     },
@@ -13168,6 +13171,25 @@
         "value": "Yeah.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "bad-think"
+        },
+        "value": "Vinny pull the red book again, revealing the elevator door that was also slowly opening the doors for Vinny and Rayane to enter.",
+        "type": "action"
+    },
+
+    {
+        "value": "Interesting~ Looks like someone already trusts us.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised to hear that, but he kept quiet. Vinny and Rayane enter the elevator and Vinny press the button to go down. Everything was very quiet, Rayane stopped the silly jokes, and Vinny stayed quiet waiting for the elevator progress. Rayane was a little thoughtful as she remembered the things that were discussed at the first lab meeting.",
+        "type": "action"
     }
 
 ]
