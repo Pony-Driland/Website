@@ -13398,7 +13398,40 @@
     },
 
     {
-        "value": "James looked excited as he started to get hopeful about his project.",
+        "value": "James looked excited as he started to get hopeful about his project. Vinny was curious and a little scared as he reply.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..Well, What about this thing, won't it draw the attention of Elite Color?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at the radar, looks at Rayane and then at James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah! That's the boring part. Obviously go. That's motive we'll only track at specific times, the tracker map will be saved inside radar memory so we don't have to keep doing it all the time.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little more worried and continued the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "This looks like my theory was right. If the Master SmartMoby wielder died. That means there is no one else managing who goes in and out of this dimension. And for some reason, only the door input of dimension is open.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was still curious, looking around for a few seconds before she heard a little more of the conversation.",
         "type": "action"
     }
 
