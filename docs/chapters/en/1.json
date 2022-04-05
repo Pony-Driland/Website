@@ -13317,6 +13317,89 @@
         "value": "The next steps is this. The help of replicas of your phone components will give me more freedom to develop my algorithms without reverse engineering limitations. And with that I finally managed to develop the first step which is the Master SmartMoby lost parts tracker! The other steps I still don't have much to explain. But you can be sure that one of them will be to update my radar to try to discover the exact origin of these mysterious waves.",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was quite surprised to hear that. So Vinny was very curious and said.",
+        "type": "action"
+    },
+    {
+        "value": "I see. You didn't see anything obscene on my phone, right?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "...oh? Vinny!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little embarrassed. Vinny smiled nervously and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "James, I feel like you see my insides, but seriously, if you see something strange, let me know.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny! Forget it! The subject is serious now!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "F...Fine fine. I'm sorry.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath and said a little more worried than usual.",
+        "type": "action"
+    },
+
+    {
+        "value": "But well. That will be our main objective. During my last journey, I found the first lost Master SmartMoby piece. That's exactly what Elite Color wanted to steal from me. I am surprised by this finding. This indicates that the Master SmartMoby ported has died. But I still don't know the motive because this happened. The Master SmartMoby wielder is immortal. This pony must have done something purposeful for this to have happened.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath, a little sad and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "But fine. With the help of the first piece...",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James pressed a button and a capsule opened, revealing the first piece of Master SmartMoby, using magic to place this inside the radar device. The first piece of the Master SmartMoby was a piece of the screen, however it was possible to see some metallic elements on the back.",
+        "type": "action"
+    },
+
+    {
+        "value": "J.e.s.u.s.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes, we'll finally try to find the other pieces with a lot less work now. Something that would take decades can finally be reduced to weeks or months!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James looked excited as he started to get hopeful about his project.",
+        "type": "action"
     }
 
 ]
