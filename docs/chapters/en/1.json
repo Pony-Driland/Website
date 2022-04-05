@@ -13190,6 +13190,45 @@
     {
         "value": "Vinny was a little surprised to hear that, but he kept quiet. Vinny and Rayane enter the elevator and Vinny press the button to go down. Everything was very quiet, Rayane stopped the silly jokes, and Vinny stayed quiet waiting for the elevator progress. Rayane was a little thoughtful as she remembered the things that were discussed at the first lab meeting.",
         "type": "action"
+    },
+
+    {
+        "value": "Hey Rayane. Before you get to the bottom, is there something that bothered you the first time you saw those images and waves, is there anything you want to tell me?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "...O..oh? Waves?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was focused on her thoughts, so she was a little surprised by Vinny question.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sorry Vinny. I don't know how to explain this now. But my friend really needs a lot of help. If something happens to her, not only is her life in danger, but also all of us.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane seemed to be feeling scared due to the different tone of voice. Vinny was curious and tried to remain calm as he answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, my intuition is very sharp, I'm not going to force you to say or do anything you don't want to, but trust me to help you and help her. Alright?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiles a little and puts his paw on Rayane shoulder.",
+        "type": "action"
     }
 
 ]
