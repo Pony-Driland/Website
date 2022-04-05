@@ -13051,6 +13051,123 @@
     {
         "value": "Vinny tries to smile so as not to be surprised.",
         "type": "action"
+    },
+
+    {
+        "value": "Rayane laughed a little for a few seconds before replying.",
+        "type": "action"
+    },
+
+    {
+        "value": "Surprise is never too much~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel giggles nervously as she walked backwards, taking dessert to the dinner table.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..oh? Yes! This is true! Hi Vinny. It's good to see you again.",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles nervously, looking for a funny conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "No no! Sorry again! Sorry for the scare, again. we're back from the mini wing training and I'm doing well.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..what? Wings?",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel was embarrassed in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh! Yes! Your wings! How wonderful! I'm happy for you! Today we are going to have a beautiful ice cream dessert! Hope you like it when the time comes. Alright?",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel goes back to preparing things on the table again. Vinny does a poker face, giggling nervously. Rayane was curious about the subject of the conversation, so she just did a little smirk, pretending she wasn't listening to the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. Thanks. Rayane, lucky you didn't see. By the way James hasn't left the room yet? What do you think about us visiting him lab again?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Lucky? Hmmmmm~ Silly~ James is definitely still in the lab. Okay.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "F..fine.",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny goes to Kenny's room during the talk. Rayane follows Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Anyway. What are we going to do in Kenny's room?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was surprised, so he laughed a little nervously and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "I missed the door, I'm a little tired from using the wings so much. Did I learn something by accident?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny goes to James's room.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ You still have a lot to learn if you really want to be a good pegasus.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was thoughtful about Rayane's words for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
