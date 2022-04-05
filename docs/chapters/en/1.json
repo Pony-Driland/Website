@@ -13256,6 +13256,67 @@
         "value": "Ah? James? Hey, what's up?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Vinny! Rayane! Welcome back.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James looked at Vinny's sunglasses and did a facehoof and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny, watch out... someday those sunglasses will betray you.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James used magic to take the sunglasses off Vinny face.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..hey! This is my cool sunglasses!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James ignored Vinny's reaction, and just give the sunglasses back and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "And yes. Finally I managed to finish developing one of the first steps.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile, Rayane was looking at James' computer, still a little worried, trying to see something about the mysterious waves.",
+        "type": "action"
+    },
+
+    {
+        "value": "Aaaaaaand what will be the next steps?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James seemed happy to hear that question, so he answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "The next steps is this. The help of replicas of your phone components will give me more freedom to develop my algorithms without reverse engineering limitations. And with that I finally managed to develop the first step which is the Master SmartMoby lost parts tracker! The other steps I still don't have much to explain. But you can be sure that one of them will be to update my radar to try to discover the exact origin of these mysterious waves.",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
