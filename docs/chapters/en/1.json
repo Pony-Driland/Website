@@ -13431,7 +13431,131 @@
     },
 
     {
-        "value": "Rayane was still curious, looking around for a few seconds before she heard a little more of the conversation.",
+        "value": "Rayane was still curious, looking around for a few seconds before she heard a little more of the conversation. Rayane was then a little more surprised than usual and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait... Did you say Master SmartMoby?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was also a little more surprised to see Rayane's reaction.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Yes, Master SmortMoby. Why?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah! I haven't heard that name in several years.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was very confused and surprised, trying to understand what was happening.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane? I've never seen you surprised like that.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah. I'm also curious, do you have any tips or something to say about this? What do you mean by \"several years\"?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane would get a little nervous, getting ready to answer, so she would say. Rayane was a little embarrassed while answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "Before my friend gave up on my help. She always told me that she knew the Master SmartMoby wielder. You could talk about this with her.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was still surprised as he thought about it.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...What? Your friend? Well, that seems to make sense from what you explained to me about the waves.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very thoughtful, trying to find some logic to all this. When Rayane realized this, she got a little more nervous.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, that sounds pretty enlightening, and do you know where your friend is?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Sorry. I don't know the answer to that question now. But I'm sure she must be in the Great Pyramid.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was suspicious of something, Vinny seemed to be certain about something too obvious.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmmm...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane, don't be like that. I'm already starting to understand a little. If your friend had contact with the Master SmartMoby wielder, she may have learned some divine skill before the Master SmartMoby wielder's death.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A..Ah? What?! Skill?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I'm pretty sure of that because for some mysterious reason. I realized that you also have a Master SmartMoby skills, and yes, Master SmartMoby skills can be passed on to regular users if the wielder wants it. I've always been curious how you manage to do items in your inventory mysteriously appear or disappear. It seems that now this makes sense. In a way, I trust you for this reason.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was extremely surprised to hear James' words.",
+        "type": "action"
+    },
+
+    {
+        "value": "Really, there's nowhere to get so much marshmallow from inside. I also wonder where you get so much marshmallow.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then took a deep breath, and tried to calm her nervousness as she realized what the conversation was becoming, then she slowly calmed down getting ready to reply.",
         "type": "action"
     }
 
