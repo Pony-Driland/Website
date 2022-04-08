@@ -13549,13 +13549,180 @@
     },
 
     {
-        "value": "Really, there's nowhere to get so much marshmallow from inside. I also wonder where you get so much marshmallow.",
+        "value": "Really! There's nowhere to get so much marshmallow from inside. I also wonder where you get so much marshmallow.",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
         "value": "Rayane then took a deep breath, and tried to calm her nervousness as she realized what the conversation was becoming, then she slowly calmed down getting ready to reply.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah. My inventory works a little differently. I never really care who notices it or not. But yes, this skill was my friend who taught me. But about the Marshmallows. I make them myself.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wow! Okay, sorry, I see. Well, what are James' plans?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looked at James in a serious way. James was curious about Vinny's reaction and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? I'll prepare to activate the radar now.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James pressed the button, and the radar started to load the data of the first piece of the Master SmartMoby slowly. Rayane watched the radar energy, very curious about what was happening.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane, please be careful. I don't know how much divine aura has mixed with your soul. But depending on the amount, your negative emotions can manifest through this aura in an extremely worse way than the other ponies, converting into uncontrolled powers, you will know this when it affects your appearance. Be very careful, alright?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was surprised by James' concern, trying to understand what James was talking about.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay, thank you James. Don't worry, this never happened, at least not until now.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane gradually calmed down during the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey! We can take a picture of the map with my phone. Life hack! Heh.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Photography? Don't worry. I've done something similar. But thanks for the help.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane finished touching something on her SmartMoby during the talk. Vinny then approached Rayane and spoke gently, supporting the paw on Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane. if you're worrying about something inside you, don't worry, you're stronger than you imagine.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little scared.",
+        "type": "action"
+    },
+
+    {
+        "value": "A..ah? Ah....thanks Vinny.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane made a small smile of hope as she finished closing the screen of a photo. Vinny was then curious about what would happen. He looked at James and Rayane, trying to understand how he was going to join the journey. Vinny is then interrupted by the beep of the radar. James interrupt the sound of the radar. The radar was starting to beep, getting ready to show the tracking data.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...what? That was too fast!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh really?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James looked curiously at the radar.",
+        "type": "action"
+    },
+
+    {
+        "value": "The tracking has ended! We have the location of all of Master SmartMoby Pieces!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was surprised and looked at the radar screen. James saw some indicators in the West and East region of Pony Driland. Vinny and Rayane were looking very curiously at the radar screen.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey James. Can I repeat a question?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Aah? What?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looked a little worriedly at James.",
+        "type": "action"
+    },
+
+    {
+        "value": "My phone? What are you going to do with my phone now?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Phone? Ah sorry! Here's your phone. Thanks for your phone.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was very satisfied to remember the phone, so he handed the phone back to Vinny. Meanwhile, Rayane was very curious, looking at the radar, surprised and very curious.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey Rayane! Are you surprised?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    {
+        "value": "Vinny says in a tone of irony to break the funeral mood.",
         "type": "action"
     }
 
