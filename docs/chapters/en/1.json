@@ -13721,8 +13721,110 @@
         "character": "Vinny",
         "type": "dialogue"
     },
+
     {
-        "value": "Vinny says in a tone of irony to break the funeral mood.",
+        "value": "Vinny says in a tone of irony to break the funeral mood. Rayane then tried to smile a little, even showing concern.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Nothing. I'm just surprised about this Master SmartMoby. I didn't know this SmartMoby really existed.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well. Let's start with one that is in the least dangerous environment possible. And you Vinny, I need to ask you a favor, but it's not mandatory, but it would be extremely important to help us understand what's going on. Alright?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? Favor? ",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very curious and surprised to hear this. James was looking at Rayane, watching her reaction, James was looking seriously, Rayane was still confused and surprised. So James just ignored it and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "I need your help trying to build a time machine. Now that I no longer have limitations of reverse engineering, this will be something I can do now.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was even more surprised to hear this word.",
+        "type": "action"
+    },
+
+    {
+        "value": "T...time machine? But other ponies have told me that this is completely impossible to exist in this dimension.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "F..fine? You are very ambitious.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey! Hey! I'm not saying that it will be now! We need to get out of this village first. When you get to the first route that separates between going right or left, we'll define where we want to start.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath as he looked at the amulet again for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "I know very well how to manipulate this dimension, I just need the tools that allow me to do that. Unfortunately, we cannot travel to the past because this travel is impossible. The way this dimension works doesn't allow that to happen. That's motive the right thing is for us to travel to the future. It's less dangerous because when we go back to the present, the new timeline is completely erased and we just continue the original timeline.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ok ok, I understand everything. You're crazy! Tabacu head! I understood everything, yes, everything I needed to understand I understood and heard from you. Right Rayane?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane kept quiet, just watching the conversation. She nodded slowly in agreement. James does a facehoof and says.",
+        "type": "action"
+    },
+
+    {
+        "value": "We talk about the time machine later at another time. Alright?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes! Okay, looks like James did a lot of homework, well I hope everything goes well, so when do we start?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well, I'll get my things ready, we'll have a long journey ahead. I haven't analyzed the entire radar map yet. But I'll do that when we get to the path where we'll choose between the two paths.",
+        "character": "James",
+        "type": "dialogue"
+    },
+    {
+        "value": "Rayane kept looking at James still a little worried while she waited for him to finish talking.",
         "type": "action"
     }
 
