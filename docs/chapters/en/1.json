@@ -13863,6 +13863,59 @@
         },
         "value": "James enter the elevator and presses the up button. Vinny then looked at James in surprise, and agreed with his decision, and watched the elevator door close. When the elevator left, Vinny then looked at Rayane.",
         "type": "action"
+    },
+
+    {
+        "value": "Well... we're alone Rayane. James is gone.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Want to do something interesting?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny says ironically.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane was focused on her thoughts. Thinking about Master SmartMoby for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Rayane?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Uh? Ah? I? Heh. Something interesting?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane she calmed down during the progress.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "calm"
+        },
+        "value": "Oops. what do you think about... Hmmmm. You and I take it and mess up James' room to see his reaction?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
