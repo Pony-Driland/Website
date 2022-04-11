@@ -14165,6 +14165,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "This photo is something important for you. You look very happy about it. A picture with all of us even though we met 1 day ago.",
         "character": "Vinny",
         "type": "dialogue"
@@ -14182,9 +14185,50 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "sad"
+        },
         "value": "Sorry Vinny. I've never had much personal contact with other travelers. Mainly because all ones were always afraid of me. My other photos are of my friends who gave up being close to me.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tried to be positive while trying to express himself.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well. I already had a dark past. Really dark, I lost a lot of friends because of silly things, a lot of silly things, like for not paying attention to me, I say a single word but I can't apologize because this friends is no longer here. Not here, in the other place, other live. You can achieve things by willpower. You can overcome but not correct some things, time doesn't heal but with the time you start to accept and forget bad things. But for that you have to want something.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny starting to walk towards the elevator, hoping that Rayane would follow. Rayane was very curious and said sadly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Dark past? Yes, acceptance, acceptance is one of the hardest things for my friends. Someone in her situation needs a lot of acceptance and to understand that there is still hope..",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then tried to calm down, smiled a little and entered the elevator next to Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? If you can't, why do you think I can? change your friend's mind?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny press the button to go up.",
+        "type": "action"
     }
 
 ]
