@@ -14129,6 +14129,28 @@
         "value": "Heh. I know that expression on your face well. Are you feeling nostalgic?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "N...nostalgia?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was slightly surprised by the word before smiling a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. This photo will be well kept along with all my other memories.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane showed affection for the album as she finished closing the album delicately, doing the album disappear again.",
+        "type": "action"
     }
 
 ]
