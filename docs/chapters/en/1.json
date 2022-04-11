@@ -13916,6 +13916,62 @@
         "value": "Oops. What do you think about... Hmmmm. You and I take it and mess up James' room to see his reaction?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Mess up? Hmmmmmmm. Heh~ What kind of mess?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smirks hard.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey! Hey! I'm kidding! James would have a heart attack if something happens here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little and continued the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "I just wanted to see some shame reaction. Heh. Let's go? Or do you have something to say first down here?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "You're very silly, and I like your sillyness~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane booped Vinny kindly, doing Vinny blush a little and be surprised.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well Vinny...",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane took a deep breath, and prepared to say something. Rayane was a little more sentimental and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "I somehow wanted to have a copy of our first date photo. I was wanting to keep this as a souvenir. Both as a souvenir, and also trying to somehow bring back good memories for my friend.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
