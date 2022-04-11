@@ -14039,6 +14039,67 @@
         "value": "Heh. Yes, my best place to store pictures~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane? But how? How is something inside a phone that is not physical going to come out of screen and go on this album?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ This photo album was created by one of my friends. This a special gift. My magic can easily transmit the light from your phone screen to be sealed inside the album.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane's horn started to glow a different color when she started looking at Vinny phone screen.",
+        "type": "action"
+    },
+
+    {
+        "value": "You can now show me our photo.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very impressed, trying to understand this possibility. Then he would hear Rayane's words and say.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oops, I can! Yes!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny picked up and opened the photo galley app of phone quickly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane giggles a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Just show me the picture and I will use my magic. Alright?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was still very confused, but he just did what Rayane asked and showed him the pictures.",
+        "type": "action"
+    },
+
+    {
+        "value": "Here we go then~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
