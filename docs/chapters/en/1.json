@@ -13827,6 +13827,42 @@
     {
         "value": "Rayane kept looking at James still a little worried while she waited for him to finish talking.",
         "type": "action"
+    },
+
+    {
+        "value": "Okay! But Kenny and Raquel? Can't you make some device that if something happens to them here because of us they can let us know?? I worry about having all this technology and now this map all coming from here and they are still safe.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath, very thoughtfully, , then finally said it, talking a little pessimistically.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. We can, but it's dangerous for Elite Color to intercept the signal and find out where we are and where Kenny and Raquel are. Unfortunately, we will need time to work with signals. But don't worry, if something goes wrong, my computer alone will send a signal directly to our location letting you know that something has gone wrong. I know it's dangerous, but it's the best way for us to at least have a chance to save Kenny and Raquel.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little startled as he watched the radar, looking at the locations of the Master SmartMoby parts for a few seconds before continuing to talk.",
+        "type": "action"
+    },
+
+    {
+        "value": "But well, we better not be late for a meal. As soon as I'm done, I'll just come back here to get my stuff and then we can leave. We'll see you up there! I'll be waiting for you and Rayane. Alright?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "James enter the elevator and presses the up button. Vinny then looked at James in surprise, and agreed with his decision, and watched the elevator door close. When the elevator left, Vinny then looked at Rayane.",
+        "type": "action"
     }
 
 ]
