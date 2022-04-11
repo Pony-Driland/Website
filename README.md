@@ -11,7 +11,7 @@
 
 ## Welcome!
 
-Pony Driland is a fanfic project under development. This repository stores all files related to the canonical story of Pony Driland.
+Pony Driland is a fanfic project involving science fiction, mystery, and drama, and some other topics that you can find out about through the website. This repository stores all files related to the canonical story of Pony Driland.
 The project development is being worked on in a private repository. This repository is used to share the final version of parts of the project and website.
 
 Feel free to use this repository to talk about the project. 
@@ -66,7 +66,7 @@ Beta Version - 100% Complete
 Final Version - 0% Complete
 
 ### Chapter 4
-Beta Version - 1% Complete
+Beta Version - 4% Complete
 
 Final Version - 0% Complete
 
