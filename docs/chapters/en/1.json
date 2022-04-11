@@ -13964,12 +13964,79 @@
     },
 
     {
-        "value": "Rayane took a deep breath, and prepared to say something. Rayane was a little more sentimental and said.",
+        "value": "Rayane took a deep breath, and prepared to say something shyly. Rayane was a little more sentimental and said.",
         "type": "action"
     },
 
     {
         "value": "I somehow wanted to have a copy of our first date photo. I was wanting to keep this as a souvenir. Both as a souvenir, and also trying to somehow bring back good memories for my friend.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Calm down, we'll talk to James to find out how we can put our picture in a frame, okay? Is that what you want?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Rayane was excited to do what she wanted.",
+        "type": "action"
+    },
+
+    {
+        "value": "Frame? Heh~ Wait a minute.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The Rayane horn started to glow and Rayane started looking for an item to spawn.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmmmmm~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A..ah? Okay.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very curious to know what Rayane was going to do. So Vinny just watched.",
+        "type": "action"
+    },
+
+    {
+        "value": "I... I...",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane slowly calmed down from the moment of shyness when she finally remembered what she was looking for. Suddenly a photo album was spawned, this book seemed to be quite old, but it was well maintained.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...what?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very surprised to see the photo album. Trying to know where Rayane got it from.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. Yes, my best place to store pictures~",
         "character": "Rayane",
         "type": "dialogue"
     }
