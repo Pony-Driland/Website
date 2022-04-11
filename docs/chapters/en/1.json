@@ -14100,6 +14100,35 @@
         "value": "Here we go then~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "The horn magic began to take the form of a rainbow in an enchanting way. Vinny was very surprised to see that the magic was so different from Rayane's natural magic. The magic circled around the light of Vinny cell phone screen. For a few seconds the light from Vinny cell phone screen was being absorbed into the colored magic aura and then the image light was moving into the album, inserting the photograph into the album. The cell phone screen would soon return to normal after progress. Vinny was extremely very surprised, not knowing what to say. So he just said.",
+        "type": "action"
+    },
+
+    {
+
+        "value": "That rainbow... This rainbow reminds me of the magic of a pony I saw. Did it work?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ Yes. This worked. James' face full of marshmallow is now something eternal in my memory~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little more when she looked at James' face in the picture.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. I know that expression on your face well. Are you feeling nostalgic?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
