@@ -14151,6 +14151,40 @@
     {
         "value": "Rayane showed affection for the album as she finished closing the album delicately, doing the album disappear again.",
         "type": "action"
+    },
+
+    {
+        "value": "And do you have other travelers? Like me for example, other ponies you met or chased.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny talks in little fun way.",
+        "type": "action"
+    },
+
+    {
+        "value": "This photo is something important for you. You look very happy about it. A picture with all of us even though we met 1 day ago.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "O..other travelers?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little surprised by the question. Rayane then responded, showing nostalgia and sadness.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sorry Vinny. I've never had much personal contact with other travelers. Mainly because all ones were always afraid of me. My other photos are of my friends who gave up being close to me.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
