@@ -14445,6 +14445,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Rayane smiled a little and made the album disappear again. When feeling better, then Rayane followed Vinny and James.",
         "type": "action"
     }
