@@ -14425,6 +14425,28 @@
     {
         "value": "James and Vinny goes to the living room. Rayane was still quiet, thinking about the divine aura.",
         "type": "action"
+    },
+
+    {
+        "value": "Could this be possible? Could she really have done this before she left me? I hope she's okay.",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "Rayane was crying lightly as she looked at the album and hugged him again for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..well, I also need to try to be strong.",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "Rayane smiled a little and made the album disappear again. When feeling better, then Rayane followed Vinny and James.",
+        "type": "action"
     }
 
 ]
