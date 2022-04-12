@@ -14186,7 +14186,7 @@
 
     {
         "set": {
-            "playlistPlay": "sad"
+            "playlistPlay": "bad-mystery"
         },
         "value": "Sorry Vinny. I've never had much personal contact with other travelers. Mainly because all ones were always afraid of me. My other photos are of my friends who gave up being close to me.",
         "character": "Rayane",
@@ -14221,13 +14221,209 @@
     },
 
     {
-        "value": "Ah? If you can't, why do you think I can? change your friend's mind?",
+        "value": "Ah? If you can't, why do you think I can change your friend's mind?",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vinny press the button to go up.",
+        "value": "Vinny press the button to go up. Rayane was discouraged and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Because she won't trust me. She was too furious before leaving me alone. She said that if I was really right, I wouldn't be a lonely lonely pony.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane's eyes had tears as she spawned the album again. Rayane hugged the album sadly in response. Vinny was surprised and approached Rayane slowly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey, calm down, it's okay, deep down your friends... your friends still like you. You need to calm down, we are all here. I promise everything will be fine.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny hugged Rayane very well.",
+        "type": "action"
+    },
+
+    {
+        "value": "T...thank you Vinny.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "During the hug, Vinny felt a very light strange energy. Rayane's eyes would get slightly dark and the pupil would change slightly by some random color when she expressed more feelings of sadness. Vinny then discreetly looked at Rayane's face, being surprised and worried, but focused on just continuing to hug Rayane gently.",
+        "type": "action"
+    },
+
+    {
+        "value": "O...oh god. Please don't feel this way.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Rayane hugged back, letting all the sadness out, doing her eyes gently return to normal. Meanwhile the elevator gave the signal that it was about to open the door.",
+        "type": "action"
+    },
+
+    {
+        "value": "T...thank you again.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "When the hug ended and Vinny noticed that Rayane was feeling better, Vinny asked a little more worried. Vinny says quietly on her ear.",
+        "type": "action"
+    },
+
+    {
+        "value": "R...Rayane? Are you ok? I felt a strange thing coming from you. Your eyes were different.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "M..my eyes? Yes, I'm fine Vinny. Maybe I cried too much. I never thought that one day I could get a hug again.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smiled kindly and as she finished feeling better. Rayane seemed to wish that hug wouldn't end. The elevator door opened, and James was on the other side of the door. When James watched the scene, he was scared, and tried not to disturb the moment.",
+        "type": "action"
+    },
+
+    {
+        "value": "V...Vinny? R...Rayane? W....what?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smirks a little and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah, Rayane is mine. Go look for your pony!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A....ah?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James finished chewing and swallowed his food.",
+        "type": "action"
+    },
+    {
+        "value": "I... I didn't come because of that! I came here because my radar beeped dark energy coming from my elevator! I have a princess lost in space! Don't create stories!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then turned her attention back to reality, and was confused by listening to James' words. Rayane was blushing in surprise that James saw everything by accident.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny goes very very very fast close to James, looking at James curiously.",
+        "type": "action"
+    },
+
+    {
+        "value": "Really? What was she like?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "N..No! Vinny! Stop! She is the princess of a particular planet in my dimension!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James Get more embarrassed, feeling sad, trying to avoid the subject. Rayane then became even more curious as she watched the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "What?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey! Got it. you danadim... What did you say about dark energy?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Very fun! Well, dark divine energy only. Hope you're not doing weird things!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..yeaaaah. Elevators are always strange places. Can you explain this to me, being divine?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny! We've already talked about this. The Master SmartMoby wielder is a divine creature that has all the pure divine aura in its soul. But the bearer can share some of that aura for other ponies to use some certain skill, so the other pony can also have that aura.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey James, calm down. You're getting paranoid. Where are Kenny and Raquel?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath, and tried to calm down.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay, sorry. Sorry again. Raquel and Kenny are waiting at the dinner table. Everyone is waiting for you.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Fine! Fine! I'm going now.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James and Vinny goes to the living room. Rayane was still quiet, thinking about the divine aura.",
         "type": "action"
     }
 
