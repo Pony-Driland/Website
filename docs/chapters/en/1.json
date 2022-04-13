@@ -14450,6 +14450,73 @@
         },
         "value": "Rayane smiled a little and made the album disappear again. When feeling better, then Rayane followed Vinny and James.",
         "type": "action"
+    },
+
+    {
+        "value": "Wait James! we need to talk something.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Maybe Kenny needs to know, at least have the a knowledge of what happened. if you want, I'll explain in a nice way. Alright?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Huh? Talk?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little surprised. When Rayane observes the scene, she feels the need to say something, so she said.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "sad"
+        },
+        "value": "Yes, let's stay together. But remember that I can't be with you all the time. The safest time for me is during the night. If someone find out that I'm hanging out with you now, I'm in big trouble.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was worried, and Vinny could feel it when he saw Rayane's eyes, so he responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey Rayane and James, everyone need to know this but please, did you see Kenny? Raquel? Did you see how happy everyone were to see us, Kenny for getting the sword he wanted so badly? Kenny and Raquel don't need to know and have no idea, Kenny and Raquel were born to live normal, look how happy two ones are because of us. Kenny and Raquel are not like us. Two ones deserve a calm life, but you already understand where do I want to go? When less talk about it and less ponies know.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+
+        "value": "What? What are you and James talking about?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then smile and say.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sorry Rayane. We were talking about the dark energy of the elevator and the new adventure.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes, for a few seconds I thought that someone had appeared in my elevator or that something had happened to Rayane. That's motive I was so scared.",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
