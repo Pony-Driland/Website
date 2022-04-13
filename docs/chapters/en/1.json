@@ -14517,6 +14517,73 @@
         "value": "Yes, for a few seconds I thought that someone had appeared in my elevator or that something had happened to Rayane. That's motive I was so scared.",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny and Raquel are fine. Don't worry, my intention was always to keep Kenny and Raquel safe. I've always seen Kenny as family. He just wanted to learn self defense when he got this sword.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was curious, trying to understand the conversation while watching.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes, the only one who could do something is Rayane. But we will have a long... long journey ahead, we will explain and get to know each other more, not everyone is comfortable talking about themselves. Rayane talking about her, and you talking about your princess. Let's go by parts, but let's go to the lunch time? Do you join us Rayane?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was very surprised by the question, Rayane was a little embarrassed, waiting for the right moment to answer. So she get courage and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "What could it be me? I just... hugged Vinny.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath before saying calmly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane, we don't know, but remember what I told you. Be careful about your negative feelings. I'm not saying you can't be sad. I'm saying that if you get extremely sad or angry, bad things can happen to you. Only that. We've decided that you can join us.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was sentimental as he remembered the day before.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, Vinny is right. Let's go slow. We still have a lot to learn. I'll be at the lunch table waiting for you two.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James walked towards the table. Rayane was worried and embarrassed and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y...yes. I will join. But remember Vinny what I told you. I can't be with you all the time.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "You really don't know what happened to yourself?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
