@@ -14581,9 +14581,53 @@
     },
 
     {
-        "value": "You really don't know what happened to yourself?",
+        "value": "Rayane? Are you okay? You really don't know what happened to yourself?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was curious to see Rayane's worried look.",
+        "type": "action"
+    },
+
+    {
+        "value": "No. I just felt a strong sadness in remembering my friend's words.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well, you have something very strong inside you. Heh, be careful not to end up swallowing me in the process. What time will it come out?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little scared and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..what? No Vinny! I would never hurt someone like you.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was worried for a few seconds while calming down slowly.",
+        "type": "action"
+    },
+
+    {
+        "value": "I won't let that happen. I promise. I'll leave as soon as we finish our meal. But I won't be far from you.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled a little when he saw Rayane's sincerity.",
+        "type": "action"
     }
 
 ]
