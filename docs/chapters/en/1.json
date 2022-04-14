@@ -14740,12 +14740,7 @@
         "type": "dialogue"
     },
     {
-        "value": "James was ashamed from the surprise, trying to use the magic of the horn.",
-        "type": "action"
-    },
-
-    {
-        "value": "Rayane giggles a little again while using magic to fix her chair.",
+        "value": "James was ashamed from the surprise, trying to use the magic of the horn. Rayane giggles a little again while using magic to fix her chair.",
         "type": "action"
     },
 
