@@ -14020,7 +14020,7 @@
     },
 
     {
-        "value": "Rayane slowly calmed down from the moment of shyness when she finally remembered what she was looking for. Suddenly a photo album was spawned, this book seemed to be quite old, but it was well maintained.",
+        "value": "Rayane slowly calmed down from the moment of shyness when she finally remembered what she was looking for. Suddenly a photo album was spawned, this album seemed to be quite old, but it was well maintained.",
         "type": "action"
     },
 
@@ -14628,6 +14628,169 @@
     {
         "value": "Vinny smiled a little when he saw Rayane's sincerity.",
         "type": "action"
+    },
+
+    {
+        "value": "Hey Rayane, calm down.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny spoke calmly.",
+        "type": "action"
+    },
+
+    {
+        "value": "I believe in you, you would never hurt me, I know, but in anger, sadness, your sub conscious can manifest something and you do something and not even realize it, like a personality takes care of you and you stay unconscious while the the other side of you acts for you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then smiled a little, feeling better hearing Vinny's words and responded.",
+        "type": "action"
+    },
+    {
+        "value": "Thank you. I'll do my best to control my emotions.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled a little more at Rayane's reaction, then the two walked towards the table. Vinny saw a table filled with omelet, pancakes, creamy soup to complement. Yogurt pie and cookies were available as a dessert.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow! Hey Kenny, Raquel! How are you?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "When Kenny saw Vinny and Rayane, he would happily wave back.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny! Rayane! Come! Arrived just in time! We were waiting for you two!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes! I hope you and Rayane like my pie a lot! Make yourself at home!",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny and Raquel looked very happy to see Rayane and Vinny. Rayane was a little surprised and giggles a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ Thank you so much for the meal. I'm glad for the family reunion.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane sat on the chair middle between James' chair and Vinny chair.",
+        "type": "action"
+    },
+
+    {
+        "value": "Jaaaames~ Don't forget your marshmallow.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James does a poker face, looking at Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Uh... Here it comes.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James turned on the horn's aura, preparing for Rayane's prank.",
+        "type": "action"
+    },
+
+    {
+        "value": "Awwww. Can't use magic at mealtime~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane made the silly, malicious face and the marshmallow that had been spawned is placed on James' horn to block the use of his magic.",
+        "type": "action"
+    },
+
+    {
+        "value": "A..ah? ...HEY! My horn!",
+        "character": "James",
+        "type": "dialogue"
+    },
+    {
+        "value": "James was ashamed from the surprise, trying to use the magic of the horn.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane giggles a little again while using magic to fix her chair.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh, dont be silly. There are ponies that like that~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little again while using magic to fix her chair. Rayane seemed to be feeling more comfortable during lunch. She was trying to avoid negative thoughts. Everyone at the table giggles a little in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane levitates the meal plates and helped to distribute the food to everyone. Raquel was surprised, but then she smiled and said.",
+        "type": "action"
+    },
+    {
+        "value": "I'm happy to know that now we don't have to be afraid of Rayane anymore. I never knew she's such a nice pony. Rayane, I'm sorry about everything. We are really happy to have you here now.",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "And I will finally fulfill my dream of being able to protect our home from any intruders with the help of this wonderful sword! Thank you very much Vinny! You and Rayane deserve this special meal today!",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was cleaning his horn, but he was listening to the conversation. He seemed surprised to hear that everyone was accepting Rayane presence. Rayane then got a little emotional again, happy to hear those words.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm glad to hear this. I hope to hear this from many more other ponies in the future.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh! and I thank you for helping me on the beach, just be careful, you won't get hurt with that sword. Alright?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
