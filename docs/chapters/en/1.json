@@ -14782,6 +14782,83 @@
         "value": "Heh! and I thank you for helping me on the beach, just be careful, you won't get hurt with that sword. Alright?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny replied happily, feeling good for Vinny words. ",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay! Helping others is always good. Don't worry, I will train more safely next time. ",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh! So let's go inside, James! Well inside!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...what?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane and Raquel giggles at James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Then the conversation ended and everyone concentrated on the meal. Rayane just kept messing with James. Then finally the meal was over and everyone was satisfied. James was watching the last piece of the yogurt pie he really wanted to get. But Rayane used magic and ate before James had a chance to get the yogurt pie.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...What fuck?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was surprised by Rayane action.",
+        "type": "action"
+    },
+
+    {
+        "value": "Did you look? You danced~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smirks.",
+        "type": "action"
+    },
+
+    {
+        "value": "RAYANE!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles at the situation for a few seconds.",
+        "type": "action"
+    },
+    {
+        "value": "Silly~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hihi.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
