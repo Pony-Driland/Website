@@ -14803,17 +14803,12 @@
 
     {
         "value": "W...what?",
-        "character": "Vinny",
+        "character": "James",
         "type": "dialogue"
     },
 
     {
-        "value": "Rayane and Raquel giggles at James.",
-        "type": "action"
-    },
-
-    {
-        "value": "Then the conversation ended and everyone concentrated on the meal. Rayane just kept messing with James. Then finally the meal was over and everyone was satisfied. James was watching the last piece of the yogurt pie he really wanted to get. But Rayane used magic and ate before James had a chance to get the yogurt pie.",
+        "value": "Rayane and Raquel giggles at James. Then the conversation ended and everyone concentrated on the meal. Rayane just kept messing with James. Then finally the meal was over and everyone was satisfied. James was watching the last piece of the yogurt pie he really wanted to get. But Rayane used magic and ate before James had a chance to get the yogurt pie.",
         "type": "action"
     },
 
