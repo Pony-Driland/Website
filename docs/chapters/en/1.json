@@ -15036,6 +15036,91 @@
         "value": "Heh~ Well, looks like we'll wait for James then.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked at Rayane, and realized that she was still sentimental, so Vinny looked around, seeing that everything was calm. So Vinny said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey, how are you now?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little surprised about the question.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What? Me? Yes. I'm much better... I think I managed to get some of my sentimental weight off my back.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny showed a little concern, but then he smiled a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Got it, well, what do you think this is about you? Just repressed feelings or is there something else? For example something that can have a conscience? Like you fight with your old \"ME\" because both are different.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane took a deep breath and said calmly and a little sadly.",
+        "type": "action"
+    },
+
+    {
+        "value": "I wouldn't say I have an old me. I would say I miss when my two friends and I were together as a family. And now I'm even more curious after I discovered this story of this Master SmartMoby and divine aura.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then became very thoughtful, looking at a very high mountain and very far away and continued the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "I..I feel that there is something being hidden from me.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane replied with a slightly sad voice when she thought about her words.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, if you want my advice, looking at everything you've said about you and your work. Maybe some ponies have the answers but if you come asking they might be watching you too, what an irony they might be watching you when you were watching me in the beginning. Heheh. I think it's better that I don't even know details. But of course, that's up to you, I can help without problems! But you need to cheer up, slowly we'll get what you want, in the end everything will work.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    {
+        "value": "Vinny smiles and gives a hug on Rayane. Rayane then smiled a little, blushing a little, feeling comfortable for the hug, then hugged back.",
+        "type": "action"
+    },
+    {
+        "value": "Maybe I have a chance if I can make one my friends come to me somehow.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+    {
+        "value": "Rayane continued a little sad while answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "But I'll do my best for all my friends.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
