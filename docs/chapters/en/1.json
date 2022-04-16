@@ -14854,6 +14854,188 @@
         "value": "Hihi. Well! It seems the time is now.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "James' arms crossed, accepting the situation",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James' arms crossed, accepting the situation. Raquel then smiled and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "I see you really enjoyed your meal. I'm glad we had the time as a family here. Hope to see you again.",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wonderful...ZzzZzZzZzZzZ...",
+        "character": "Kenny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kenny was sleeping very happily in the chair from eating so much.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...Ah? Kenny also really liked the meal.",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel was a little surprised, but Rayane giggles a little and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. your meal was wonderful. Thank you again.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh! Yes, the food was perfect, thank you very much for the food.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel then smiled, feeling happy for the thanks.",
+        "type": "action"
+    },
+
+    {
+        "value": "You're welcome! And it looks like someone is going to sleep on the chair again.",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James does a facehoof, but then say the words neutrally.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well thank you Raquel. Really thanks for everything. I will go to the laboratory to prepare my bag. You can wait right up here.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James smiled a little. James was still suspicious of Rayane, but he tried to keep the conversation going to do Raquel and Rayane feel good. James then rose from his chair and walked to the lab.",
+        "type": "action"
+    },
+
+    {
+        "value": "He's very brave. I'm sure you'll enjoy being with him. I'm glad to know that everyone is well. Vinny, Rayane, please, come back whenever you want to visit us again. And if you need our help. We are here too. Alright?",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel spoke happily, but a little worried. But she showed confidence in Vinny and Rayane. Then she got up from her chair. Vinny felt Raquel's concern and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..hey Raquel, don't worry. I promise everything will be fine. I'll wait here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked at Rayane. Vinny was very curious about what Rayane was thinking at that moment.",
+        "type": "action"
+    },
+
+    {
+        "value": "And you Rayane? How long will you stay with us?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little surprised then. Rayane wasn't very interested in getting away from Vinny, so she said.",
+        "type": "action"
+    },
+
+    {
+        "value": "M..Me? We're going to say goodbye at the door. But don't be worried. Remember that I will always come back the same day~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+    {
+        "value": "Rayane smirks at Vinny while answering and got up from the chair before giving a boop in response. Vinny then giggles a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ Okay. I'll be waiting for you both at the door.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was walking to the door to wait for Vinny and James. But Rayane hid a secret expression of not wanting to leave Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay, I'm going to the door with you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "V..Vinny? Rayane? Take care! I'm happy for your new friendship.",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Raquel waved goodbye to Vinny and Rayane. Raquel was emotional during the moment. But she seemed a lot less worried about knowing that James wouldn't be alone now. Vinny would then smile again and wave back.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh! Bye Raquel! And tell Kenny we sent him a bye too.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny walked to the door toward Rayane while smiling at Raquel.",
+        "type": "action"
+    },
+
+    {
+        "value": "You're welcome. And take good care of James. I'm sure he's happy for you too.",
+        "character": "Raquel",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane and Vinny finished saying goodbye and then Rayane sat on the backyard of the house, relaxing and enjoying the fresh air.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ Well, looks like we'll wait for James then.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
