@@ -15103,15 +15103,18 @@
         "character": "Vinny",
         "type": "dialogue"
     },
+
     {
         "value": "Vinny smiles and gives a hug on Rayane. Rayane then smiled a little, blushing a little, feeling comfortable for the hug, then hugged back.",
         "type": "action"
     },
+
     {
         "value": "Maybe I have a chance if I can make one my friends come to me somehow.",
         "character": "Rayane",
         "type": "dialogue"
     },
+
     {
         "value": "Rayane continued a little sad while answering.",
         "type": "action"
