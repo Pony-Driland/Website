@@ -15124,6 +15124,115 @@
         "value": "But I'll do my best for all my friends.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny empathized with Rayane during the talk. Vinny then tried to speak very calmly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey, calm down. I said everything will be fine. Like me, you are more skilled, besides yourself, there must be some superior. Why do you observe me? Have you thought about this fate? Someone is interested in something from me, or something that every traveler has. No one would be interested in something they don't want something.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. I have issues about my superiors a lot. I don't know how long I can hide my dissatisfaction. This hierarchy was very unfair to me....",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was disappointed in some past memories as Rayane ended the hug. Vinny smiled and answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah, life seems to be very unfair, but just like a coin, it has a good and a bad side, you can just be on the bad side, just change the coin side and this completely changes the face and the bad things go away.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then started to get a little impatient about James being late.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh come on! I think James is looking for something broken.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little, trying to feel better.",
+        "type": "action"
+    },
+
+    {
+        "value": "Maybe you're right. Maybe I can have better results in my life.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane lifted her face a little while thinking a little hopeful about the words.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh! Just be smart about it, anything, give me a sign, anything I'll know there's bullshit... and big! Then I'll know when I should be more ready for balacubaco.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looked back to the side, looking for James during some seconds.",
+        "type": "action"
+    },
+    {
+        "value": "Balacubaco? Heh, silly~ Maybe James can create a special little warning button.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smirks a little while fiddling the SmartMoby a little, checking if everything was right. Meanwhile, James was leaving the house and Vinny could hear his footsteps. Vinny then looked towards the footsteps, and was glad for that. Then Vinny would laugh a little and answer.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "Hey! No button needed. Maybe a wink will help me understand.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wink? Interesting your choices~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+    {
+        "value": "Rayane smirks more while giggles a little back.",
+        "type": "action"
+    },
+
+    {
+        "value": "James was coming and he seemed very happy for something that happened. He soon arrives and finishes closing the door after having finished saying goodbye to everyone.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "calm"
+        },
+        "value": "James? Did you win the lottery?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
