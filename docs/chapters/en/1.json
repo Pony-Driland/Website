@@ -15233,6 +15233,254 @@
         "value": "James? Did you win the lottery?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "What? Lottery? What is lottery?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was very confused now.",
+        "type": "action"
+    },
+
+    {
+        "value": "Aaaaahh. Won the lottery, it would be you buy something, get something and in it you win a SUPER prize.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh! Very good! So you won the lottery.",
+        "character": "James",
+        "type": "dialogue"
+    },
+    {
+        "value": "James was thoughtful sarcastically. James got a little irritated when he remembered how lucky Vinny was.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'll be thoughtful when I use that word. But the answer is no. BUT..... I discovered something fantastic! Rayane's tents can also store objects inside this. This is just fantastic! I managed to make a mini portable lab with the second tent!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was very happy as he finished speaking the news.",
+        "type": "action"
+    },
+
+    {
+        "value": "And don't forget that you'll have to bring me at least some good quality marshmallows as our deal~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane does a silly, malicious face in response. James got a little startled when he heard Rayane words.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey! I know that! You don't have to keep reminding me all the time! Fine?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was surprised and just watched the scene.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. I want good quality marshmallows. Alright?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I get it!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey hey! What deal is this? Have you been talking without me?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "VInny looks ironically angry at Rayane and James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Awwwww~ Don't worry. James just wanted a tent for his little lab.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was embarrassed about Rayane words.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "R..RAYANE! SHUT UP!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmmm~ Did you really think you were going to let it go when you were going to ask me for a little favor for the first time? Remember that we are among friends.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane does a silly, malicious face again. James does a facehoof, very embarrassed.",
+        "type": "action"
+    },
+
+    {
+        "value": "I wasn't ready yet.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little and responded kindly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh, shame? Don't worry about this, as Rayane said, we are among friends, I would not do anything.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I would just be surprised and would ask but now I know, there is no reason to be ashamed. Alright?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes~ Vinny is right.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little and responded kindly. James was still embarrassed, but he was slowly feeling better, just feeling a silly discomfort.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fineeee. Thanks everyone.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. Well, by the way, James, I've already used the device a lot to learn how to use the wings, do you know of anyone who wants to buy or a place for sale?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James looked at Vinny curiously.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. It's going to take a long time for that to happen here. But if you find the right village, you might be able to sell it pretty fast. You can also buy used things, but be careful not to accidentally buy bad things.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah. Thank you again.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled, but then was curious to see that James was going to say more.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. So everything is ready. We need to go back to the forest to go towards the route we are going to decide which other village we will go to first.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was then surprised and very happy to hear this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ James, if you want I can help us get out of this village faster.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..what? What is Rayane going to do?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James would be surprised and very curious, but then Vinny would happily respond.",
+        "type": "action"
+    },
+
+    {
+        "value": "I don't know. Heh, ask her.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a lttile.",
+        "type": "action"
+    },
+
+    {
+        "value": "But...but... Okay, Rayane?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "But James's a really silly scientist. Did you forget that I have teleport?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "T..teleport?! Oh the teleport!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James replied, laughing nervously for not having remembered that.",
+        "type": "action"
     }
 
 ]
