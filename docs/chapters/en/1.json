@@ -15739,6 +15739,46 @@
     {
         "value": "Vinny laughed a little and then the 3 ponies started walking. James walks toward the way, Rayane followed James, Vinny followed Rayane.",
         "type": "action"
+    },
+
+    {
+        "value": "Where is everyone's shame?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ And it hasn't even started to get dark.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "As everyone walked into the forest, the shadows of the trees started to do everything a little darker slowly. James then tried to ignore the silly conversation and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "HAHA! Very funny!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay Sir Grumpy. Let's be quiet during the walk then~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James just tried to ignore the situation a little and continued walking. Then time passed and everyone were walking a good few minutes or hours. And the forest was starting to get darker. Vinny looked like he was getting tired. Vinny could see only trees, some fruits and mushrooms in the middle of the way. And the sound of some forest creatures. And the huge highest mountain in Pony Driland was now much larger due to the distance.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wooooow. Isn't that that mountain that Rayane or James talked about earlier?",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
