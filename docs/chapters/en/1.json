@@ -15584,6 +15584,34 @@
         "value": "Heh~ Really silly.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Your mouth is there, the reflection of the magic made me a little dazzled by my eyes. How scary, I thought your mouth had dropped.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "V...VINNY! Don't scare me like that again!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little. Then Rayane looked at the forest ahead and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, here we all are again. We're back to where it all started. This a strange feeling, this is like a deja-vu~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
