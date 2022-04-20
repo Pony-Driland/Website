@@ -15612,6 +15612,133 @@
         "value": "Well, here we all are again. We're back to where it all started. This a strange feeling, this is like a deja-vu~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah, it was somewhere here that James froze my face in the cold.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles in a silly way.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, what are we going to do now?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James does a facehoof and say.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. Good memories.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James looks at Vinny and Rayane for a few seconds before looking at the forest around.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ Alright, the future that awaits us now~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laugh a little. James was a little annoyed, but he ignored the fun moment. James looks at the sun, analyzing where the sun was in the sky.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well! First let's go into the forest. We can still try to at least walk the path a little before the day starts to get dark.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. Okay. Rayane, how long are you going with us?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then stopped laughing and got a little worried and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Even the path divider. Wwe're just going to take a straight path there. It gets dark before we get there. I probably won't have time to leave. So it will have to be a full day together~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James then became very suspicious and looked at Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "HMMMMMMM! A good excuse!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. That's what happens when you're late in your lab. Alright~?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smirks in response. So James got a little irritated again in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "An extremely good excuse!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny speaks ironically at Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay okay okay. Heh. I can see that your desire to separate from us is very good.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Awwww. Our time may expand a few more days~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+    {
+        "value": "Rayane does a silly and malicious tone of voice while laughing in response. James does a facehoof.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. She brought more marshmallow.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little and then the 3 ponies started walking. James walks toward the way, Rayane followed James, Vinny followed Rayane.",
+        "type": "action"
     }
 
 ]
