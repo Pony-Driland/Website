@@ -15519,6 +15519,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Rayane smirks before finishing preparing the teleport.",
         "type": "action"
     },
@@ -15532,6 +15535,54 @@
     {
         "value": "Rayane smirks more during the teleport progress. Rayane, Vinny, and James is teleported outside the village, near the entrance to the forest.",
         "type": "action"
+    },
+
+    {
+        "value": "What?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "forest"
+        },
+        "value": "James was extremely confused due to the teleportation experience. James was very impressed, it seems that James has never experienced teleportation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a scared face during some seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane? Where is James' mouth?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...What? My mouth?! WHAT?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was very worried, trying to find the mouth but everything was completely normal. Rayane laughed at James' silly reaction in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ Really silly.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
