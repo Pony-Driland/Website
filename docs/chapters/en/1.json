@@ -15818,6 +15818,78 @@
     {
         "value": "Rayane giggles a little in response. Vinny said a little disappointed.",
         "type": "action"
+    },
+
+    {
+        "value": "AH! Why James? You put your paw in my mouth and kept talking about a banana salad! You have to tell me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Alright! Alright! I messed up my math! And no bananas!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The forest was getting darker and a little colder because of the cloudy weather. James looked up at the sky, and was worried. Vinny then approached James, looking up at the sky and saying to James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, I think I'll go fly up and see if I see anything new or unusual.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets ready to fly without the help of the machine.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait. That's it! You should have taken that machine away!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "HEY! Where am I going to punch this machine? In the cubucu?!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    {
+        "value": "Vinny takes off the machine for a moment to start to fly.",
+        "type": "action"
+    },
+
+    {
+        "value": "I have my own backpack to hold this!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smirks and just kindly help the fly machine, using the magic to help put the machine in James' backpack.",
+        "type": "action"
+    },
+
+    {
+        "value": "James, no stress. Let's wait here. Alright?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fiiiiine.",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
