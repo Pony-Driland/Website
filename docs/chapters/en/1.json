@@ -15445,13 +15445,13 @@
     },
 
     {
-        "value": "I don't know. Heh, ask her.",
+        "value": "I don't know. Ask her.",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vinny giggles a lttile.",
+        "value": "Vinny giggles a little.",
         "type": "action"
     },
 
@@ -15462,7 +15462,7 @@
     },
 
     {
-        "value": "But James's a really silly scientist. Did you forget that I have teleport?~",
+        "value": "James's a really silly scientist. Did you forget that I have teleport?~",
         "character": "Rayane",
         "type": "dialogue"
     },
