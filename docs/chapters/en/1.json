@@ -15779,6 +15779,45 @@
         "value": "Wooooow. Isn't that that mountain that Rayane or James talked about earlier?",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "James? What are we waiting for? Could you tell me more details now? Find a path, a tree, a banana. what are we waiting for?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was completely confused.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Bananas? You still haven't told me what a banana is.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath, a little disappointed.",
+        "type": "action"
+    },
+
+    {
+        "value": "Looks like my distance calculations didn't work out. We were supposed to have arrived a long time ago. I'm going to need my plan B.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Awwwww. I warned you that the way was too long. You can't use exact value if you're going to get tired~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little in response.",
+        "type": "action"
     }
 
 ]
