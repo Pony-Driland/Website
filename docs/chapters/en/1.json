@@ -15476,6 +15476,62 @@
     {
         "value": "James replied, laughing nervously for not having remembered that.",
         "type": "action"
+    },
+
+    {
+        "value": "Heh~ Okay everypony. I'm already preparing the teleport~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane's horn began to glow, preparing the teleportation magic slowly. Vinny would get a little worried and say.",
+        "type": "action"
+    },
+
+    {
+        "value": "Good Rayane heavens! if this machine on my wings is destroyed I will be sad.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Nothing will happen to your wings machine. The teleport magic is basically an invisible energy formed around us that pushes everything towards the final destination.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little surprised to hear that.",
+        "type": "action"
+    },
+
+    {
+        "value": "You learned the concept well.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ Dont be silly. I can be smart too.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smirks before finishing preparing the teleport.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...what?! Hey!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smirks more during the teleport progress. Rayane, Vinny, and James is teleported outside the village, near the entrance to the forest.",
+        "type": "action"
     }
 
 ]
