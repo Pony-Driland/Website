@@ -15890,6 +15890,25 @@
         "value": "Fiiiiine.",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "dayNightCycle": "night"
+        },
+        "value": "When Vinny flew above the trees. Vinny saw that the sun was starting to disappear on the horizon. Tthe mountain that was right in front of Vinny that divided the two paths seemed to have a lot of snow on top of it. The cloudy clouds were coming straight from the mountain.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...What hell? What is happening on this mountain? Okay okay.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny go down quietly toward James and Rayane.",
+        "type": "action"
     }
 
 ]
