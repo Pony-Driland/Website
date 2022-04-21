@@ -15909,6 +15909,153 @@
     {
         "value": "Vinny go down quietly toward James and Rayane.",
         "type": "action"
+    },
+
+    {
+        "value": "Did you see anything interesting?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well... I saw the sun was almost setting, it took a while to reach the mountain and there was a lot of snow and cloudy clouds coming from this. Is this information useful?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James looked suspicious of something, but he just said it.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Don't worry so much about the clouds. The clouds are usually harmless. Unless the clouds bring more storm than usual or some blizzard.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W....what?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny was more curious about the mountain. Rayane stared at the mountain, staring at this for a few seconds before looking down.",
+        "type": "action"
+    },
+
+    {
+        "value": "If we're going to spend the night here. We need a well-hidden place. It's not very safe to stay near Whicocesert Mountain at night.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "D..do you speak from experience? Is the night dangerous?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looked a lot more surprised and a lot more curious to hear about it.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. Elite Color watches this mountain a lot. At night the Elite Color double the watch region. We can't take the risk of having an unpleasant surprise.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little surprised.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait... So that's motive? Elite Color found me so fast when I was on my way back here.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "As sure as everypone are, there's another way, maybe Rayane knows a way to get some better equipment for us. When James was frozen, we didn't even check the body of the other poney there. A risky but beneficial thing. We can easily use this to infiltrate other Elite Color members.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "No! Bad idea! The Elite Color equipment evaporates when some Elite Color member die or pass out. The Elite Color know a lot about this probability!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So James and Vinny were scared by Rayane's reaction.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...what?! You'll get on the wanted list if you do!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane! Calm down Rayane.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey Rayane. Calm down. Forget my plan. Sorry. Are you okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..Yes. I'm fine. Sorry for my scare. But getting on the wanted list means the Elite Color will try to eliminate you at all costs for trying to gain inside information.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane took a deep breath to calm down slowly.",
+        "type": "action"
+    },
+
+    {
+        "value": "And James? Didn't you enter? He turned into a ice ball and was looking for one banana.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    {
+        "value": "Vinny looks at James. James does a facehoof and says.",
+        "type": "action"
+    },
+
+    {
+        "value": "I didn't go anywhere. If I had gone in, the first thing I would have would have been a more detailed map of what goes on up there. I never knew what Elite Color want from me. I just think Elite Color members are after me because of my technology. Elite Color do not accept other ponies with access to superior technology.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay. What do you think Rayane. if anyone sees James, you and me, will the Elite Color want to kill one of us?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little worried. Rayane thought for a while and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. Maybe...",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
