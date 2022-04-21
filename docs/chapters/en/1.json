@@ -15894,7 +15894,8 @@
 
     {
         "set": {
-            "dayNightCycle": "night"
+            "dayNightCycle": "night",
+            "playlistPlay": null
         },
         "value": "When Vinny flew above the trees. Vinny saw that the sun was starting to disappear on the horizon. The mountain that was right in front of Vinny seemed to have a lot of snow on top of this. The cloudy clouds were coming straight from the mountain.",
         "type": "action"
@@ -15918,6 +15919,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "spooky-mysterious"
+        },
         "value": "Well... I saw the sun was almost setting, it took a while to reach the mountain and there was a lot of snow and cloudy clouds coming from this. Is this information useful?",
         "character": "Vinny",
         "type": "dialogue"
