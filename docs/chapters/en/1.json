@@ -16060,6 +16060,201 @@
         "value": "Yes. Maybe...",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Ah! I should have bought some sunglasses for James. Well... What are we going to do? Stay here and spend the night or walk more?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was scowling over Vinny's joke.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hah! Good Joke!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. Well, about the night...",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "Rayane looked at the dark sky, getting very worried.",
+        "type": "action"
+    },
+
+    {
+        "value": "Let's look for a shelter. We still have time to find a cave.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane looked at SmartMoby during some seconds, looking for information. James was a little startled by Rayane's concern.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "bad-mystery"
+        },
+        "value": "R...Rayane? Are you sure you're okay?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey James, you never taught me how to handle this SmartMoby. Can i play a game on this?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "W...What?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was confused by Vinny's question.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh SmartMoby. This device connects your soul to your body in this world. Only that. Don't keep trying to install weird stuff on your SmartMoby or you'll die accidentally!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "I still don't understand what Rayane is doing on her SmartMoby related to finding a cave.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would get a little scared and say.",
+        "type": "action"
+    },
+
+    {
+        "value": "Show me here, Rayane seems a little distant so I think it's time for you to show me some things.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Distant? Oh come on. Okay. First you need to unlock the SmartMoby screen. It's simple, but few know of this possibility. You just have to think about your SmartMoby mentally and it will happen.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would get a little curious and look at SmartMoby.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..Okay. I'll try.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny closes the eyes, focusing thoughts on SmartMoby.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey! No need to close your eyes. You will end up using a lot of your body's energy.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Suddenly the Vinny's SmartMoby Screen turned on. Vinny was a little surprised, opening the eyes. But Vinny was still very confused not understanding the motive of SmartMoby existence.",
+        "type": "action"
+    },
+
+    {
+        "value": "I don't now. If I accidentally think about something wrong?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny! Forget about it for a while. We have more important things now.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay okay! Sorry! Tabacu head!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at the SmartMoby Screen during few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "I've never used my brain that much.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James does a facehoof. James then looked into Vinny's SmartMoby. James was a little surprised to look at the data on Vinny specie.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fineee. How funny, your species is very familiar to me. It must be some neighboring galaxy.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was surprised and very curious to hear this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Huh? Are you serious?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile, a sound of magic was gradually getting louder",
+        "type": "action"
+    },
+    {
+        "value": "Huh? Rayane?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    {
+        "value": "Vinny looked on the direction where the sound of magic was coming from. Suddenly Vinny and James were teleported to a dark place.",
+        "type": "action"
     }
 
 ]
