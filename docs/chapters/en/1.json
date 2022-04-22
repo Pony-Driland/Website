@@ -16341,6 +16341,45 @@
         "value": "Peek a boo~ You two silly ones. Can't be distracted in the middle of the forest at night. It could be someone kidnapping you right now. But instead you were kidnapped by my marshmallows that were waiting for you~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "RAAAAAAAYANE!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does an astonished face. Watching the scene.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..okay.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ Don't be like that. It's part of the evening meal that captured you two. Now it's your turn to capture the meal. And we have a long night tonight~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laugh a little more before smirking, levitating the marshmallow that was fresh to eat.",
+        "type": "action"
+    },
+
+    {
+        "value": "OH GOD!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James hides his face behind his paws, embarrassed.",
+        "type": "action"
     }
 
 ]
