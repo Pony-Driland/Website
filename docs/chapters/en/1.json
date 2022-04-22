@@ -14813,7 +14813,7 @@
     },
 
     {
-        "value": "W...What fuck?!",
+        "value": "W...What the fuck?!",
         "character": "James",
         "type": "dialogue"
     },
@@ -16246,12 +16246,17 @@
         "value": "Meanwhile, a sound of magic was gradually getting louder",
         "type": "action"
     },
+
     {
         "value": "Huh? Rayane?",
         "character": "Vinny",
         "type": "dialogue"
     },
+
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Vinny looked on the direction where the sound of magic was coming from. Suddenly Vinny and James were teleported to a dark place.",
         "type": "action"
     }
