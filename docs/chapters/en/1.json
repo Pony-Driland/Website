@@ -16259,6 +16259,88 @@
         },
         "value": "Vinny looked on the direction where the sound of magic was coming from. Suddenly Vinny and James were teleported to a dark place.",
         "type": "action"
+    },
+
+    {
+        "value": "WHAT?! WHAT FUCK?! OH NO! WHO WAS!? I CAN'T BELIEVE I WAS DISTRACTED BY SILENCE!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was extremely desperate, trying to understand what had happened.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fuck! James! What happened?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "AND I'M GOING TO KNOW?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Suddenly something pokes Vinny and James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Awwww. Pokes harder, rare girl! Go!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny says embarrassingly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny... What the fuck is your problem?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny and James see two different white eyes looking the two.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait... WHAT?! A MONSTER! VINNY!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Fuck! James! Turn on a light bro! Stop moaning! Do something fast!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Moan?! YOU STUPID! I'm scared!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James used the magic of the horn to increase the lighting of the place. Suddenly everything was brighter. And the two white eyes were two marshmallows that had white lighting around them. While Rayane laughed in the background.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "think"
+        },
+        "value": "Peek a boo~ You two silly ones. Can't be distracted in the middle of the forest at night. It could be someone kidnapping you right now. But instead you were kidnapped by my marshmallows that were waiting for you~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
