@@ -16838,6 +16838,32 @@
         "value": "B..but I don't want to die. I know what I did was wrong, but I helped track down a radar that discovered the parts of Master SmartMoby.",
         "character": "Ruby",
         "type": "dialogue"
+    },
+
+    {
+        "nsfw": ["extreme_violence"],
+        "value": "Then suddenly Rainbow Queen's scythe slashed through Ruby very quickly. No time for Ruby to think about what was going to happen. She couldn't bring herself to scream in pain and just dropped pixels to the floor of her body as she tried to breathe more slowly to stay alive. Ruby looked at the scythe that went through her chest, crying, but trying to accept her fate.",
+        "value_alternative": "Then suddenly Rainbow Queen's scythe slashed through Ruby very quickly. No time for Ruby to think about what was going to happen. She couldn't bring herself to scream in pain. Ruby looked at the scythe that went through her chest, crying, but trying to accept her fate.",
+        "type": "action"
+    },
+
+    {
+        "value": "B..but but. I......I... n...noo... I.",
+        "character": "Ruby",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Sorry Ruby. I...I'm sorry.",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "The mysterious unicorn cried more as she watched Ruby. So at this moment Rainbow Queen was slowly approaching.",
+        "type": "action"
     }
+
 
 ]
