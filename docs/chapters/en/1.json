@@ -6823,8 +6823,7 @@
                 { "value": "bird-and-nature", "type": "show" }
             ],
             "dayNightCycle": "morning",
-            "day": 2,
-            "weather": "sun"
+            "day": 2
         },
         "value": "So, several hours of sleep have passed. Vinny had a great night's sleep. Vinny wake up very satisfied with his night's sleep slowly. This is a new day now in the morning, Vinny could hear the sound of nature and the sound of some remaining raindrops dripping from the rain that happened during the previous dawn.",
         "type": "action"
@@ -16461,6 +16460,9 @@
     },
 
     {
+        "set": {
+            "weather": "bolt"
+        },
         "value": "Slowly a rain storm started and some lightning started to appear.",
         "type": "action"
     }
