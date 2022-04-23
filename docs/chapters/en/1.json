@@ -16696,13 +16696,13 @@
     },
 
     {
-        "value": "S...Sorry Vinny. But I need some rest mentally.",
+        "value": "S...Sorry Vinny. But I need some rest now. Okay?",
         "character": "Rayane",
         "type": "dialogue"
     },
 
     {
-        "value": "Hey! Don't worry Rayane. I'll just stay out here. If you want to talk. We'll be able to do this another time. Okay?",
+        "value": "Hey. Don't worry Rayane. I'll just stay out here. If you want to talk. We'll be able to do this another time. Okay?",
         "character": "Vinny",
         "type": "dialogue"
     },
