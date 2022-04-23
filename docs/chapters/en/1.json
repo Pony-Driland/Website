@@ -16905,7 +16905,7 @@
 
     {
         "set": {
-            "playlistPlay": null
+            "playlistPlay": "rainbow-queen-moment"
         },
         "nsfw": ["extreme_violence"],
         "value": "Ruby was coughing pixels and was slowly getting weaker, trying to keep her eyes open.",
@@ -16926,9 +16926,6 @@
     },
 
     {
-        "set": {
-            "playlistPlay": "rainbow-queen-moment"
-        },
         "value": "Rainbow Queen then gently touched Ruby's injured chest as she opened her mouth. Ruby was scared but tried to remain calm as she tried to respond.",
         "type": "action"
     },
