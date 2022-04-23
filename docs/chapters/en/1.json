@@ -16713,7 +16713,7 @@
     },
 
     {
-        "value": "Okay. Don't go too far. Remember what I said about Elite Color.",
+        "value": "Okay. Don't go too far. Remember what I said about Elite Color. Be very careful.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -16728,12 +16728,7 @@
         "set": {
             "playlistPlay": null
         },
-        "value": "Vinny Watched the rain and the forest deep inside the cave door still inside the cave",
-        "type": "action"
-    },
-
-    {
-        "value": "Vinny was watching the lightning and the wind hitting Vinny harder, doing Vinny mane and tail swing. Vinny saw the sky getting very dark. And as each flash came on, Vinny saw all the trees. And maybe something that could is very far up the mountain.",
+        "value": "Vinny watched the rain and the forest deep via the cave entrance. Vinny was watching the lightning and the wind hitting Vinny harder, doing Vinny mane and tail swing. Vinny saw the sky getting very dark. And as each flash came on, Vinny saw all the trees. And maybe something that could is very far up the mountain.",
         "type": "action"
     },
 
