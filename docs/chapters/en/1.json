@@ -16543,6 +16543,204 @@
         "value": "But as you said. Everything always has a new beginning. This words is inspiring me.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. Well. Can you wait here for a few minutes?  I'll take a look at James, I'll be back all right?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiles a little while getting ready to go to James.",
+        "type": "action"
+    },
+
+    {
+        "value": "It's ok.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane tried to laugh a little, but she still showed a little sadness. Rayane used her magic to fix Vinny sunglasses kindly, that were almost falling off Vinny face.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'll be here waiting for you~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane yawned a little while lying on the floor and watched the rain and the night sky from the cave. Vinny smiled back. Vinny was happy to see that Rayane was much more peaceful. Then Vinny walked over to James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey? James? How's it going there?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at the tent. But he was surprised to see a second tent that is James' portable laboratory.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..what? James? What is that?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh? Vinny! Sorry. This is my portable lab. I am very happy that Rayane really presented me with this portable laboratory!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James then became very thoughtful as he looked at the new sleeping tent where everyone would sleep together again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah... I was just going to ask where you left the other sleeping tent. Because this tent is another Rayane tent. ",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? Where did i leave this?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets very confused.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Yes! You who compacted the tent and put this in your saddle bag.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmmm. Okay, look here, I think we put this in here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gives the saddle to James. James would does a poker face and then he used magic to look for the tent during few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah. We'll do these things slowly. I'll take a little walk around the cave, think a little and come back soon.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James then stopped everything he was doing and told Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Hey! But be very careful when leaving the cave. Alright? If you decide to leave the cave. Take at least a radar to try to know what's going on. You can put this anywhere as an accessory.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James then opened his backpack and took out a radar. Then James would levitate the radar to Vinny's paw.",
+        "type": "action"
+    },
+
+    {
+        "value": "Just be careful not to break the radar like my tablet!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled a little nervously and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ok ok. thank you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny took the radar and went toward Rayane. The night was already much darker and full of darkness.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. Let's see how the night goes.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny goes to the cave entrance but not leaving the cave. The sky was starting to get a lot more dark clouds and the storm slowly intensified as the wind started stronger. Meanwhile Rayane was looking at the Whicocesert Mountain for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "S...Sorry Vinny. But I need some rest mentally.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey! Don't worry Rayane. I'll just stay out here. If you want to talk. We'll be able to do this another time. Okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smiled a little and said while going deeper into the cave.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Don't go too far. Remember what I said about Elite Color.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh! Alright.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "Vinny Watched the rain and the forest deep inside the cave door still inside the cave",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny was watching the lightning and the wind hitting Vinny harder, doing Vinny mane and tail swing. Vinny saw the sky getting very dark. And as each flash came on, Vinny saw all the trees. And maybe something that could is very far up the mountain.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..what? But what the fuck is this? Is anyone else here?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
