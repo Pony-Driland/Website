@@ -17001,6 +17001,48 @@
         "value": "This is also your life lesson. You also need to change your life. Heh~ This storm must have scared off all the ponies in Pony Driland. Let's just go to a more hidden place because I miss enjoying a dramatic lightning storm~ We still need to finish our conversation.",
         "character": "Rainbow Queen",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen took a deep breath, looking like she was angry about something.",
+        "type": "action"
+    },
+
+    {
+        "value": "A very important conversation about something very important your friend said.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "V...very important conversation?",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The mysterious unicorn then stopped crying and was worried about the Rainbow Queen's reaction. Rainbow Queen would get a lot more serious and say.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. Come on.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen then looked at the forest and analyzed everything around while preparing a teleport spell.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "Y..yes.",
+        "character": "???",
+        "type": "dialogue"
     }
 
 ]
