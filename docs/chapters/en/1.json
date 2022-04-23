@@ -16861,6 +16861,9 @@
 
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "The mysterious unicorn cried more as she watched Ruby. So at this moment Rainbow Queen was slowly approaching.",
         "type": "action"
     }
