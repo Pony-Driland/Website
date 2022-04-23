@@ -229,6 +229,12 @@ var chapterSet = {
     weather: function(value, actionFromNow = false) {
         if (actionFromNow) {
 
+            // Remove All Weather
+            const removeAllWeather = function() {
+                storyData.sfx['heavy-rain'].hide();
+                storyData.sfx['heavy-rain-little-thunder'].hide();
+            };
+
             // Add Item Base
             if ($('#fic-nav > #status #weather').length < 1) {
                 if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
@@ -244,13 +250,32 @@ var chapterSet = {
                 snow: { icon: 'fas fa-snowflake', title: 'Snow' }
             };
 
+            // Set Weather
+            const oldWeather = storyData.chapter.weather;
+            storyData.chapter.weather = value;
+
             const obj = $('#fic-nav > #status #weather').css('font-size', '17pt');
             obj.empty();
             if (types[value]) {
+
+                // Change Sound
+                if (oldWeather !== storyData.chapter.weather) {
+
+                    removeAllWeather();
+
+                    if (value === 'heavyrain') {
+                        storyData.sfx['heavy-rain'].show();
+                    } else if (value === 'bolt') {
+                        storyData.sfx['heavy-rain-little-thunder'].show();
+                    }
+
+                }
+
                 obj.attr('title', types[value].title).append($('<i>', { class: types[value].icon }));
                 obj.tooltip();
                 obj.removeAttr('title');
-            }
+
+            } else if (oldWeather !== storyData.chapter.weather) { removeAllWeather(); }
 
         }
     },
