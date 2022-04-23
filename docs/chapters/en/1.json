@@ -16463,8 +16463,86 @@
         "set": {
             "weather": "bolt"
         },
-        "value": "Slowly a rain storm started and some lightning started to appear.",
+        "value": "Slowly a rain storm started and some lightning started to appear. Vinny then looked at the exit of the cave, and became very thoughtful when he noticed the sound of the rain.",
         "type": "action"
+    },
+
+    {
+        "value": "Night... It reminds me of many things. The sound of the rain, this atmosphere with this ambiance.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets a little discouraged. Rayane then looked at Vinny, and was a little curious. ",
+        "type": "action"
+    },
+
+    {
+        "value": "Many things? You want to vent something?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane approached Vinny to talk better. James just continued eating the marshmallow, quietly watching the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Nothing, if I had any regrets I would say it to pass the time.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then took a deep breath. Thinking about the past.",
+        "type": "action"
+    },
+
+    {
+        "value": "Aww~ Don't be like that. You still have your marshmallow~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane used magic to bring Vinny's marshmallow closer to Vinny. Meanwhile Rayane just left her tent on the ground to be set up automatically.. And the sound of rain and lightning grew stronger by the second.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "Thanks Rayane, just good times, nothing that an good moment makes a difference what good things are.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiles and took the marshmallow, eating the marshmallow calmly.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "sad"
+        },
+        "value": "Yes. Good times. Good times that may never come back.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little sad while looking at the rainstorm.",
+        "type": "action"
+    },
+
+    {
+        "value": "But as you said. Everything always has a new beginning. This sentence is inspiring.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
