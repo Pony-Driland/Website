@@ -16959,6 +16959,51 @@
     {
         "value": "Rainbow Queen's body slowly fluctuated colored energy delicately as she finished draining the bad stuff from Ruby's soul. Ruby was feeling much calmer. Ruby slowly closed her eyes completely and Ruby body began to disintegrate. Rainbow Queen would smirk and use her magic to gently levitate Ruby's soul while Rainbow Queen stroked Ruby's soul.",
         "type": "action"
+    },
+
+    {
+        "value": "R..Ruby? I..Is Ruby okay?",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The mysterious unicorn cried some more, but slowly calmed down to see the Rainbow Queen finishing making Ruby's soul teleport.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. Yes, it's over. You have nothing else to worry about. I'm satisfied with everything that happened tonight~",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen gave a slight evil laugh as she licked her lips.",
+        "type": "action"
+    },
+
+    {
+        "value": "As I promised, your friend will be safe in our special room in my house~",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y...yes. Thanks. Thank you for forgiving her. Thank you for everything!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The mysterious unicorn cried more as she hugged Rainbow Queen. The Rainbow Queen then smirks again when looking at the mysterious unicorn.",
+        "type": "action"
+    },
+
+    {
+        "value": "This is also your life lesson. You also need to change your life. Heh~ This storm must have scared off all the ponies in Pony Driland. Let's just go to a more hidden place because I miss enjoying a dramatic lightning storm~ We still need to finish our conversation.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
     }
 
 ]
