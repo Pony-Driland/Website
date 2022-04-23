@@ -16728,13 +16728,115 @@
         "set": {
             "playlistPlay": null
         },
-        "value": "Vinny watched the rain and the forest deep via the cave entrance. Vinny was watching the lightning and the wind hitting Vinny harder, doing Vinny mane and tail swing. Vinny saw the sky getting very dark. And as each flash came on, Vinny saw all the trees. And maybe something that could is very far up the mountain.",
+        "value": "Vinny watched the rain and the forest deep via the cave entrance. Vinny was watching the lightning and the wind hitting Vinny harder, doing Vinny mane and tail swing. Vinny saw the sky getting very dark. And as each flash came on, Vinny saw all the trees. And maybe something that could is very far up on the mountain.",
         "type": "action"
     },
 
     {
         "value": "W..what? But what the fuck is this? Is anyone else here?",
         "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "madoka-magica-magia【Metal/Male Cover】"
+        },
+        "value": "Meanwhile, on the mountain edges of Whicocesert Mountain it looked like some battle was going on. Then a unicorn female pony fell weak on the ground but was struggling hard to resist what was happening.",
+        "type": "action"
+    },
+
+    {
+        "value": "Please! Rainbow Queen! N..Noo! Give me a second chance! I can still try to find your precious item!",
+        "character": "Female Unicorn",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "An alicorn then slowly approached. Her body was covered by the darkness of the night and only glowing lights of her body could be seen.",
+        "type": "action"
+    },
+
+    {
+        "value": "R...Rainbow Queen?",
+        "character": "Female Unicorn",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The unicorn was in extreme fear. Trying to move backwards. But then she was paralyzed when she sees Rainbow Queen's colored scythe levitating. The unicorn then began to cry when she saw that she could no longer escape.",
+        "type": "action"
+    },
+
+    {
+        "value": "N..No Rainbow Queen! Stop! Just stop!",
+        "character": "Female Unicorn",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then the unicorn's aura of magic shot up several magic missiles to try to intimidate the Rainbow Queen. Rainbow Queen made a sinister laugh when looking at the missiles and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "You know fighting me is useless. I promised you that your death would be quick and painless, but you deceived me again.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "B..but but!",
+        "character": "Female Unicorn",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen then looked at the missiles as she felt the presence of the missiles approaching. Rainbow Queen's scythe then destroys the missiles.",
+        "type": "action"
+    },
+
+    {
+        "value": "The unicorn was scared, but still tried to have hope and kept using magic to guide more missiles that were behind Rainbow Queen flying towards her very faster.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rainbow Queen kept her face serious. Rainbow Queen's ears twitched a little as she listened to the other missiles. Then the Rainbow Queen's wings were spread, flickering a glow of magic and her gusts of her wings hurl a mighty gale to the ground. The magic of Rainbow Queen's wings would then touch the magic missiles, causing them to fly upwards again.",
+        "type": "action"
+    },
+
+    {
+        "value": "N..No! Impossible! How did you do that?!",
+        "character": "Female Unicorn",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The unicorn tried to run away, but the wind from the Rainbow Queen hit her, causing her to fall to the ground again. Then the Rainbow Queen smirks an evil look as several missiles collided with each other, making a huge fog.",
+        "type": "action"
+    },
+
+    {
+        "value": "N..no! I do not want! I do not want!",
+        "character": "Female Unicorn",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The unicorn then cried more, she tried to drag herself on the floor when she saw the damaged SmartMoby screen. But then another female unicorn interrupted her escape attempt. The mysterious unicorn was wearing a hood to protect her identity. The mysterious unicorn cried a little and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sorry Ruby. I know you did a lot for us. But she doesn't like broken deals. Please, I just want you to stop hurting.",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "B..but I don't want to die. I know what I did was wrong, but I helped track down a radar that discovered the parts of Master SmartMoby.",
+        "character": "Ruby",
         "type": "dialogue"
     }
 

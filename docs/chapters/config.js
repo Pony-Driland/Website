@@ -101,6 +101,14 @@ var storyCfg = {
     // Playlist
     playlist: {
 
+        'madoka-magica-magia【Metal/Male Cover】': [
+            { id: 'FhhbYF8JANg', type: 'youtube' },
+        ],
+
+        'and-in-darkness-may-she-reign': [
+            { id: '3KONnESTUxs', type: 'youtube' },
+        ],
+
         'an-antagonistic-battle': [
             { id: 'AhpvfGJ81n4', type: 'youtube' },
         ],
