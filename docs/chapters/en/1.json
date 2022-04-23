@@ -16380,6 +16380,89 @@
     {
         "value": "James hides his face behind his paws, embarrassed.",
         "type": "action"
+    },
+
+    {
+        "value": "Heey. Your marshmallow is waiting for you~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane continued smirking more as she placed the other marshmallow on James' horn to hang like a marshmallow frying stick.",
+        "type": "action"
+    },
+
+    {
+        "value": "F..fine.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny made a slight nervous smile and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane! I know you wouldn't do anything, but what if James and I end up taking it too seriously, for example in the dark no one sees anyone and I had flown up to the first figure that appeared when I heard light, I could have hit you or hurt myself.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laughed a little more.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm not that silly~ I could be anywhere.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..yeah. Well, how are you James?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was busy chewing some of the marshmallow that was on the horn.",
+        "type": "action"
+    },
+
+    {
+        "value": "Nom nom....oh? W..what? I'm fine",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James swallowed the marshmallow and was surprised to hear his name.",
+        "type": "action"
+    },
+
+    {
+        "value": " I'm fine!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smirks again in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ Everyone is fine~ This cave will be a good temporary shelter for our night's sleep.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Slowly a rain storm started and some lightning started to appear.",
+        "type": "action"
     }
 
 ]
