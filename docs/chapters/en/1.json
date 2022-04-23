@@ -16873,7 +16873,76 @@
         "value": "Shhhhhhh~ Calm down. The worst moment is over. I have no more ponies to punish today.",
         "character": "Rainbow Queen",
         "type": "dialogue"
-    }
+    },
 
+    {
+        "value": "S..Sorry Rainbow Queen. Sorry I broke the deal. P..please, sorry. Contracts and Agreements. An deal should never be broken. I'm sorry.",
+        "character": "Ruby",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ruby then lowered her head to cry more as she saw that her SmartMoby was starting to fail. Rainbow Queen smirks a little, doing an evil little laugh and saying.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ So you learned your lesson the hard way. Your eyes show me all your regret. You deceived me for your personal reasons. And this pain is my way of helping you to redeem for your mistakes. ",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen smirks a little more as the scythe began to glow, making Ruby's chest glow gently.",
+        "type": "action"
+    },
+
+    {
+        "value": "Have you already forgotten? I promised your soul would rest in peace. I promised your soul a special place at the request of your friend~",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "nsfw": ["extreme_violence"],
+        "value": "Ruby was coughing pixels and was slowly getting weaker, trying to keep her eyes open.",
+        "value_alternative": "Ruby was slowly getting weaker, trying to keep her eyes open.",
+        "type": "action"
+    },
+
+    {
+        "value": "S..Special Place? And... will I be okay?",
+        "character": "Ruby",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. You've suffered a lot. It is your time of your eternal rest. Your eternal rest with your family~",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "rainbow-queen-moment"
+        },
+        "value": "Rainbow Queen then gently touched Ruby's injured chest as she opened her mouth. Ruby was scared but tried to remain calm as she tried to respond.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...What will you do?",
+        "character": "Ruby",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Shhhhh~ I promise everything will be fast.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    }
 
 ]
