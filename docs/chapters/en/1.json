@@ -16859,13 +16859,18 @@
         "type": "dialogue"
     },
 
-
     {
         "set": {
             "playlistPlay": null
         },
         "value": "The mysterious unicorn cried more as she watched Ruby. So at this moment Rainbow Queen was slowly approaching.",
         "type": "action"
+    },
+
+    {
+        "value": "Shhhhhhh~ Calm down. The worst moment is over. I have no more ponies to punish today.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
     }
 
 
