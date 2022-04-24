@@ -17084,6 +17084,141 @@
     {
         "value": "After Vinny Vinny taking a rain shower, Vinny went back to the cave and got the things and went back to the group. Meanwhile, Rayane continued the hobby and James had finished preparing the tents. Rayane was calmly eating a marshmallow, enjoying the meal. The place was brighter now due to the bonfire.",
         "type": "action"
+    },
+
+    {
+        "value": "Hmmm. Hey! James!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny goes to James.",
+        "type": "action"
+    },
+
+    {
+        "value": "AH!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James got a little scared by the surprise.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny? What happened?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Come here to see this.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny shows the cell phone that was recording the Whicocesert Mountain.",
+        "type": "action"
+    },
+
+    {
+        "value": "THIS!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Huh? V..Vinny? This glow. Those colors. I am not liking this.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little startled to see the size of the glow that was filmed.",
+        "type": "action"
+    },
+
+    {
+        "value": "Look at this from here. I recorded everything.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny pause the recording and start playing the video from beginning to end.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny. The radar? Did the radar beep something? I'm getting scared.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny took a deep breath and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, take the radar here, what is this radar for?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "G..Give me this!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James desperately grabbed the radar, looking at the screen very curiously.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...What is it? I heard a little bit of the radar in the video. There was something increasing in intensity. You're scaring me!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "It's not the radar. it's that pony on the... Wait???",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a poker face.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay, let's go to Rayane, running to warn that there's something close to us, maybe just someone wanting to observe closely but we can't let it pass. just let's go!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "F..Fine!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James and Vinny goes to Rayane quickly.",
+        "type": "action"
     }
 
 ]
