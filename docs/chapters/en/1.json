@@ -17043,6 +17043,11 @@
         "value": "Y...yes.",
         "character": "???",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile. Vinny was scared trying to zoom in on his phone. He still couldn't see clearly what was happening on the mountain.",
+        "type": "action"
     }
 
 ]
