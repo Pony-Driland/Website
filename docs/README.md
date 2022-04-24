@@ -36,12 +36,24 @@ Accessing the source code of this repository can make you see possible spoilers 
 
 <img src="https://github.com/Pony-Driland/Website/blob/main/docs/img/age-rating/teen.jpg?raw=true" height="200" />
 
-Adventure | Action | Drama | Comedy | Fantasy Violence | Intense Violence | Strong Language | Animated Blood | Horror (A little)
+Adventure | Action | Drama | Comedy | Fantasy Violence | Intense Violence | Strong Language | Animated Blood | Horror
 
 <hr/>
 
 ## Where are the cutie marks?
 Don't worry about it. Cutie Marks do not exist in this fanfic.
+<hr/>
+
+## Inspirations
+Undertale
+
+Glitchtale Season 2
+
+Fallout Equestria
+
+Madoka Magica
+
+Dragon Ball Super
 
 <hr/>
 
@@ -53,7 +65,7 @@ Under development.
 ### Chapter 1
 Beta Version - 100% Complete
 
-Final Version - 70% Complete
+Final Version - 90% Complete
 
 ### Chapter 2
 Beta Version - 100% Complete
