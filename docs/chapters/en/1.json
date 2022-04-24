@@ -17048,6 +17048,42 @@
     {
         "value": "Meanwhile. Vinny was scared trying to zoom in on his phone. He still couldn't see clearly what was happening on the mountain.",
         "type": "action"
+    },
+
+    {
+        "value": "M...My God. What's going on here?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The radar is beeping a little bit. Vinny was curious for a few seconds as he listened to the sound of the radar.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh no. What the fuck is this now?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would get a little nervous and think for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "dark-and-mysterious-ambient"
+        },
+        "value": "Fuck this!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "After Vinny getting some rain Vinny went back to the cave and got the things and went back to the group. Meanwhile, Rayane continued the hobby and James had finished preparing the tents. Rayane was calmly eating a marshmallow, enjoying the meal. The place was brighter now due to the bonfire.",
+        "type": "action"
     }
 
 ]
