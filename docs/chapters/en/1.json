@@ -17217,7 +17217,179 @@
     },
 
     {
-        "value": "James and Vinny goes to Rayane quickly.",
+        "value": "James and Vinny goes to Rayane quickly. Meanwhile, Rayane was finishing eating the last marshmallow.",
+        "type": "action"
+    },
+
+    {
+        "value": "Huh? Vinny? James? You look very worried. What happened?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was very curious. She looked into James and Vinny's eyes. And she wasn't enjoying seeing the feeling of worry.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane, I went outside and saw some things and the James's radar showed that at some point something happened, probably something very close and is watching us.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked around, and became more worried and said nervously.",
+        "type": "action"
+    },
+
+    {
+        "value": "Before I saw a pony on top of the mountain, and various colors and colorful flashes. Did you understand everything?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "U..Uh? Colorful flash colors? A shiny pony? Was this pony really watching us?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little scared, trying not to believe in the Vinny words.",
+        "type": "action"
+    },
+
+    {
+        "value": "That's right. When we're more sure I'll show you. What could it be? Well the moment i left the cave for about 10 seconds when the radar showed something, could it be someone watching us?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James get extremely angry and nervous.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...WHAT?! VINNY! You should have looked at the radar! Radar can detect anything!!! OH FUCK GOD!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey! Hey! Calm down everypony!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then used magic to do Vinny and James stop. Then she took a deep breath and said a little worried.",
+        "type": "action"
+    },
+
+    {
+        "value": "I don't know what this is. But this presence is very familiar. if you still don't recognize this presence, don't be too panicky for now.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well... I'm calm, I'm just warning you that at any moment something can happen. We can investigate or just wait. James, don't you have a history on this radar? Can't you see the latest warning?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was then surprised to remember the history and levitated the radar that was at the entrance of the cave in a desperate way.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh yes! The history! HISTORY!",
+        "character": "James",
+        "type": "dialogue"
+    },
+    {
+        "value": "James then began analyzing the radar history. Extremely worried about what he was seeing. Meanwhile, Rayane remained very worried and thoughtful.",
+        "type": "action"
+    },
+
+    {
+        "value": "I still can't be sure. I need more details.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane, looks at this video, I'll be looking around while you look at the video.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gives the cell phone to Rayane, the phone screen shows the video.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. I'll analyze.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane started watching the video while trying to keep calm. Then Rayane was slowly starting to get as worried as James was.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..oh no.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile, Vinny felt a slight impression that Vinny had heard something coming from the forest. The sound seemed to be some magic, and at that same moment another lightning flash occurred.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...what? Rayane? James?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was extremely quiet and scared when he realized this.",
+        "type": "action"
+    },
+
+    {
+        "value": "V...Vinny. Vinny... We need to get out of this cave now! All I can do is try to decrease the energy emitted by our SmartMobies!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..What? What do you mean by that?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was even more worried and scared. James was extremely scared looking at the radar. He couldn't get a word out as he analyzed the radar data.",
+        "type": "action"
+    },
+
+    {
+        "value": " H..hey James? Did you find something? James?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny spoke a little worried.",
         "type": "action"
     }
 
