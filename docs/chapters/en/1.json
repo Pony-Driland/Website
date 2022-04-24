@@ -17350,6 +17350,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Meanwhile, Vinny felt a slight impression that Vinny had heard something coming from the forest. The sound seemed to be some magic, and at that same moment another lightning flash occurred.",
         "type": "action"
     },
@@ -17366,6 +17369,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "tense-mystery"
+        },
         "value": "V...Vinny. Vinny... We need to get out of this cave now! All I can do is try to decrease the energy emitted by our SmartMobies!",
         "character": "Rayane",
         "type": "dialogue"
