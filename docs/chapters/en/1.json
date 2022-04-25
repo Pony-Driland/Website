@@ -17397,6 +17397,90 @@
     {
         "value": "Vinny spoke a little worried.",
         "type": "action"
+    },
+
+    {
+        "value": "Vinny... Just relax your body. I will use my magic to weaken our SmartMobies energy.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane slightly tried to calm down, making her mane start to swinging during the magic spell.",
+        "type": "action"
+    },
+
+    {
+        "value": " B..But Rayane, and if...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Shhhhh~ I promise we'll be fine.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked curiously into Rayane's eyes. Vinny felt that Rayane was feeling safe in what she was doing. So Vinny just accepted to do what Rayane asked calmly. James was confused and surprised when James feel Rayane's magic in his body. So James stopped fiddling with the radar.",
+        "type": "action"
+    },
+
+    {
+        "value": "A..ah? What's happening? Rayane?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was confused and surprised when James feel Rayane's magic in his body. So James stopped fiddling with the radar.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane said we'll be safe. Rayane will decrease the energy that exudes from the SmartMoby.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled a little as Vinny slowly allowed Rayane's magic to weaken his body.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..You're crazy! What are you planning?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane put her paw on James' mouth.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sssssh~ Calm Down~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "B..but...b..but....",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James also slowly became weak and closed his eyes a little to relax his body during the process. Rayane smirks a little while still a little nervous. Vinny, and James, and Rayane could still move, but both couldn't do things like try to run for a long time.",
+        "type": "action"
+    },
+
+    {
+        "value": "Thank you Vinny. No pranks this time. But well, let's go as carefully as possible. This way the mysterious pony will not feel the presence of the energy of our SmartMobies.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
