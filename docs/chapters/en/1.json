@@ -17476,6 +17476,168 @@
         "value": "Thank you Vinny. No pranks this time. But well, let's go as carefully as possible. This way the mysterious pony will not feel the presence of the energy of our SmartMobies.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane breathed a little more relieved, while using magic to make the fire go out. Due to another previous spell, Rayane was kind of tired after performing this spell.",
+        "type": "action"
+    },
+    {
+        "value": "Lets go. We just need to dismantle the tents.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane said a little tired while Rayane walked towards the tents. James was worried as he looked at Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey James! Come on, let's get your portable tent. I'll help you walk there.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A..ah? F..fine.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Everyone was helping each other to activate the tents' cube mode. Rayane was already moving, trying to analyze the bottom of the cave while looking at the entrance of the cave. And slightly scared a little when the lightning came, seeming to have seen something very far away.",
+        "type": "action"
+    },
+
+    {
+        "value": "N..no. Please no.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ok ok. Come on, is everypone ready?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    {
+        "value": "Vinny walks towards Rayane, looking at the bottom of the cave.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Yes, I am ready. We better hurry. I have a bad feeling that maybe our presence must have been felt a few minutes ago before we used this magic.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane, calm Down. Anything we can touch each other here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiles a little at Rayane. Rayane smiles a little back and took a deep breath, regaining a little more of the strength she had lost before, and started walking. As James walked, following Rayane and Vinny, the radar started to beep louder.",
+        "type": "action"
+    },
+
+    {
+        "value": "Huh? Is that the noise of the radar?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane got confused for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Huh? No! Not again!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James desperately try to use magic to turn off the radar. And after approximately 1 second the radar is turned off.",
+        "type": "action"
+    },
+
+    {
+        "value": "Good! Tabacu head!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny complained quietly. Rayane was a little scared when she realized it was the radar. She then had the idea of trying to use another magic again, teleporting Vinny and her to James' side. Everyone was on the side of a rock next to James. Everyone is hiding there.",
+        "type": "action"
+    },
+
+    {
+        "value": "A..Ah?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James got a slight fright while putting the radar in silent mode.",
+        "type": "action"
+    },
+
+    {
+        "value": "Shhhh!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile, Vinny continued to hear something, it looked like some magic sound, but it came from somewhere outside the cave.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Maybe we can't escape. But at least we can see who's coming.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny pulls the 2 forward taking them somewhere deep in the cave, behind another rock. Rayane then felt a presence and was scared again, speaking quietly.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..wait! I think i heard something coming from the forest.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "O..oh god. We should stop with all this drama.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James does a poker face, talking nervously.",
+        "type": "action"
+    },
+
+    {
+        "value": "...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile, Vinny, James, Rayane, started to hear footsteps and some shadows started to appear during the thunderbolt.",
+        "type": "action"
     }
 
 ]
