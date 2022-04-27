@@ -17638,6 +17638,44 @@
     {
         "value": "Meanwhile, Vinny, James, Rayane, started to hear footsteps and some shadows started to appear during the thunderbolt.",
         "type": "action"
+    },
+
+    {
+        "value": "Shhhhhhh...",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+
+    {
+        "set": {
+            "playlistPlay": "rainbow-queen-moment"
+        },
+        "value": "Then the two shadows slowly started to approach the place.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...Why are we here?",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Shhhh... That's weird. There were 3 souls that were close to death and just disappeared here.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen was looking very serious, suspecting something.",
+        "type": "action"
+    },
+
+    {
+        "value": "Maybe the bodies must have been pulled somewhere.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
     }
 
 ]
