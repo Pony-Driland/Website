@@ -17839,12 +17839,12 @@
     },
 
     {
-        "value": "The mysterious unicorn was sad while walking away with a little fear. Then the Rainbow Queen slowly calmed down as she realized the mysterious unicorn's feelings.",
+        "value": "The mysterious unicorn was sad while walking away with a little fear. Then Rainbow Queen slowly calmed down as she realized the mysterious unicorn's feelings.",
         "type": "action"
     },
 
     {
-        "value": "Oh? Okay, sorry.",
+        "value": "Okay, sorry.",
         "character": "Rainbow Queen",
         "type": "dialogue"
     },
