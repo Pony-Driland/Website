@@ -17983,6 +17983,55 @@
     {
         "value": "James was completely white, lying on the floor, trying not to faint from the panic he was holding.",
         "type": "action"
+    },
+
+    {
+        "value": "I..I'm good. Personal thinks only.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was super relieved and lay on the floor taking a deep breath to finish calming down.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh FUCK! This adventure! Rayane? The 2 ponies were your friends?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh...ah?!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "bad-mystery"
+        },
+        "value": "Rayane was nervously startled by the question, not knowing what to answer.",
+        "type": "action"
+    },
+
+    {
+        "value": "I...I need water... @-@",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+
+        "value": "Vinny giggles a little and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well! First let's help James. We're all weak and tense.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
