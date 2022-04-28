@@ -17646,7 +17646,6 @@
         "type": "dialogue"
     },
 
-
     {
         "set": {
             "playlistPlay": "rainbow-queen-moment"
@@ -17881,6 +17880,114 @@
         "value": "W..What? It's impossible. Your magic always feels any SmartMoby.",
         "character": "???",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Then Rainbow Queen looked towards the direction where the pebble sound.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmmm. Heh~",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen then did a little smirks.",
+        "type": "action"
+    },
+
+    {
+        "value": "Huh? A...Are you okay?",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Nothing. But I think it's very strange that we don't feel any SmartMoby, but something like a simple pebble having fallen on the ground. This is so familiar~",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen then did a little smirks. The mysterious unicorn then became very confused and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Are you sure? You may have confused this again with some little animal from the forest.",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen's magic wavered very calmly and slowly as she tried to feel something for a few seconds. Rainbow Queen smirks again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Alright. Let's get out of this place. This storm I created will still take all night to end. But first... To be sure.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen then smirks more as she looks back towards Rayane, making Rayane feel extremely scared. Rainbow QUeen horn shone extremely, creating a lot of energy. Then suddenly several other stones appeared and blocked the exit of the cave completely, making everyone extremely surprised by the scene. ",
+        "type": "action"
+    },
+
+    {
+        "value": "H..HEEEY! What are you doing?! Oh god. Don't scare me like that. Let me know you're using divine magic next time.",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The mysterious unicorn then took a deep breath to calm down.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ I'm ready now. I'm not in the mood to look for possible fugitives who must have run to the bottom of the cave.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow QUeen was satisfied when she saw the path completely blocked.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..what? A...Alright.",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I like special visits. But unfortunately this visitor doesn't like my presence~",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "The two voices were getting muffled slowly, and soon everypone couldn't hear anything else Rainbow Queen and the mysterious unicorn were saying. Everyone was scared. Vinny then took a deep breath, feeling relieved and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Everypone okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was completely white, lying on the floor, trying not to faint from the panic he was holding.",
+        "type": "action"
     }
 
 ]
