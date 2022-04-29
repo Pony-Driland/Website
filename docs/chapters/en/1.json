@@ -18005,7 +18005,7 @@
 
     {
         "set": {
-            "playlistPlay": "bad-mystery"
+            "playlistPlay": "sad"
         },
         "value": "Rayane was nervously startled by the question, not knowing what to answer.",
         "type": "action"
@@ -18027,6 +18027,139 @@
         "value": "Well! First let's help James. We're all feeling weak and tense.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then helped James calm down while waiting for Rayane's response.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...Alright. I'll turn this spell off when I'm sure the two ponies are far away.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little nervous, but she was slowly trying to calm down. Rayame spawned a pot of fresh water, and used magic, trying to help James to drink the water.",
+        "type": "action"
+    },
+
+    {
+        "value": "T..thank you Rayane.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James drank the water while looking for the radar. James then held the radar and breathed slowly as he felt better. ",
+        "type": "action"
+    },
+
+    {
+        "value": "Goood. We need to rest a little.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile. Rayane was analyzing the stones, she was worried to see that it was impossible to see on the other side of the stones.",
+        "type": "action"
+    },
+
+    {
+        "value": "N..No! She didn't leave any gaps between the stones. I can't use teleport if I don't have at least one hole for my magic to pull us to the other side.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..What? Are you serious?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at the bottom of the cave. Vinny was a little worried and thoughtful. Vinny speaks in a tone of irony.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. I vote to go to the bottom of the cave, is anyone against this?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...What? The cave exit is blocked?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "No..no! Maybe if I sharpen my sword, I can cut!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane try to force the magic, but she was still under the effect of the previous magic.",
+        "type": "action"
+    },
+
+    {
+        "value": "No! I need to go back! GO BACK!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James and Vinny looked worriedly at Rayane for a few seconds. So Vinny said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey, Rayane, calm down.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The Rayane Magic failed again and again and again. Rayane was a little disappointed. James looked at everyone, then looked at Vinny and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey Vinny. Don't be in the darkness.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a lantern hat and put this on Vinny head. ",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow! Thank you James!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked back at Rayane, still feeling worried.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane... Why don't we rest?  Maybe we can talk better during this time and explore the cave.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was still disappointed, but Rayane was slowly accepting the situation when Rayane tried to find something positive in this situation.",
+        "type": "action"
     }
 
 ]
