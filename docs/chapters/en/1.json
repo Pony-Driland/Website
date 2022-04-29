@@ -18052,7 +18052,7 @@
     },
 
     {
-        "value": "James drank the water while looking for the radar. James then held the radar and breathed slowly as he felt better. ",
+        "value": "James drank the water while looking for the radar. James then held the radar and breathed slowly as he felt better. James was confused to see that Rayane hadn't responded.",
         "type": "action"
     },
 
@@ -18068,7 +18068,7 @@
     },
 
     {
-        "value": "N..No! She didn't leave any gaps between the stones. I can't use teleport if I don't have at least one hole for my magic to pull us to the other side.",
+        "value": "N..No! She didn't leave any gaps between the stones. I can't use teleport if I don't have at least one hole for my magic to pull us to the other side!",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -18125,7 +18125,7 @@
     },
 
     {
-        "value": "The Rayane Magic failed again and again and again. Rayane was a little disappointed. James looked at everyone, then looked at Vinny and said.",
+        "value": "The Rayane Magic failed again and again and again. Rayane was disappointed. James looked at everyone, then looked at Vinny and said.",
         "type": "action"
     },
 
@@ -18136,7 +18136,7 @@
     },
 
     {
-        "value": "James took a lantern hat and put this on Vinny head. ",
+        "value": "James took a lantern hat and put this on Vinny head.",
         "type": "action"
     },
 
@@ -18159,6 +18159,17 @@
 
     {
         "value": "Rayane was still disappointed, but Rayane was slowly accepting the situation when Rayane tried to find something positive in this situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..okay Vinny. I'm sorry. I really need to rest.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane looked depressed as she took a deep breath to calm herself.",
         "type": "action"
     }
 
