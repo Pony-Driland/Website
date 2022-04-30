@@ -18169,8 +18169,34 @@
     },
 
     {
-        "value": "Rayane looked depressed as she took a deep breath to calm herself.",
+        "value": "Rayane looked depressed as she took a deep breath to calm herself. James tried to keep quiet, but very curious about Rayane. Vinny smiled a little and said.",
         "type": "action"
+    },
+
+    {
+        "value": "Okay. Just get some rest. We get to know each other better over time. For me, we are to go deep into the cave while you prepare the magic to make us return to normal as time passes. Alright?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "Don't worry Vinny. Please, I just need some time alone.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane would walk away and start packing up the camp again to try to feel better. Vinny was worried, but he tried to give Rayane some freedom to calm down alone.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... James? You never went through a situation like this?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
