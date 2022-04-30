@@ -18197,6 +18197,77 @@
         "value": "Well... James? You never went through a situation like this?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "bad-think"
+        },
+        "value": "Vinny! I don't understand! HOW ARE YOU NOT SURPRISED?! Didn't you see that?! One of the ponies is an alicorn! That means she can be any kind of deity! Even a demigoddess! Alicorns in Pony Driland are godly ponies! Do you understand now why I almost had a heart attack?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was amazed at James' reaction. Then Vinny giggles a little and say.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "W..what? Damn! if I told her I would give her a really good kiss and then tell everypone to run away. I think you'll want to faint now.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...WHAT?! But what the fuck is this?! Are you okay?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny talks in funny way at the end.",
+        "type": "action"
+    },
+
+    {
+        "value": "Huh? Maybe if I give her a kiss, I become a semi-god? Hmmmmmm...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James does a super face hoof.",
+        "type": "action"
+    },
+
+    {
+        "value": "You do not exist!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh! Anyway, I think Rayane can help us understand this better. Most likely it was something artificial, I don't think someone that powerful would be walking around for nothing. She would definitely be looking for something important and not going into a cave to say something and leave.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "WHAT?! Vinny! Don't get too excited! We need very extreme care! She's after Master SmartMoby and you heard that very well! If she finds out about our plan, I'll turn into a COSMIC DUST! I won't even have a chance to defend myself against a god!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James says desperately, trying to breathe to calm down.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane looked at Vinny and James talking. Rayane seemed even more concerned about the subject of the conversation.",
+        "type": "action"
     }
 
 ]
