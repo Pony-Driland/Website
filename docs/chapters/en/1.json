@@ -18263,6 +18263,146 @@
     {
         "value": "James says desperately, trying to breathe to calm down. Rayane looked at Vinny and James talking. Rayane seemed even more concerned about the subject of the conversation.",
         "type": "action"
+    },
+
+    {
+        "value": "Well... If she saw me behind the stone, what would she want me to do? The only way to surprise her is surprising her too! Anything goes! I've never kissed a pony.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "You're the craziest pony I've ever seen in my life.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little before continuing to say.",
+        "type": "action"
+    },
+
+    {
+        "value": "But anyway, until we recover, and get ready, I'm going to open a surprise can!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Good luck! You will need a lot of luck for your kiss and your surprise can!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James threw the surprise can at Vinny, and went to set up the lab tent again. Vinny giggles a little again. Rayane had finished activating the main tent while James started to pack up the lab tent.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey! That's not a bad idea! I thought that for you, run away. You didn't have a better idea to surprise her and leave them without understanding anything.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah! you won! Crazy pony!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James then entered the lab tent and closed the door.",
+        "type": "action"
+    },
+
+    {
+        "value": "Tabacu head! Huh? What?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was distracted in thoughts, trying to think of something else.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey! Are you ok Rayane?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A..ah? AH!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was slightly startled for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "N...nothing. I just thought your idea was very exotic.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane says awkwardly while trying to change the subject.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah you're scared and hurt.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny says awkwardly on purpose.",
+        "type": "action"
+    },
+
+    {
+        "value": "Your idea...I....I need to get us a new fire. Our old one ended up on the other side of the stones.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was embarrassed and blushed for a few seconds before thinking of something. So Rayane spawn a new bonfire.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh. I see. While James is in the tent, can you only confirm if you knew those ponies?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked at Rayane and spoke in a kind and concerned way.",
+        "type": "action"
+    },
+
+    {
+        "value": "From what you told me, your friend wasn't the same, she was angry with you and everything, and a pony was angry with everything and everyone, even with stones on the ground saying that she was also angry with a friend or poney.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane felt a little uncomfortable for a few seconds before breathe deeply to try to form an answer. Rayane replied in a worried voice.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sorry Vinny. I'm not ready to say what's really going on here. I have to be careful with my words. But this was all very strange. I've never seen that kind of behavior between the two ponies.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
