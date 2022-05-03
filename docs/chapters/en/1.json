@@ -18389,7 +18389,7 @@
     },
 
     {
-        "value": "From what you told me, your friend wasn't the same, she was angry with you and everything, and a pony was angry with everything and everyone, even with stones on the ground saying that she was also angry with a friend or poney.",
+        "value": "From what you told me, your friend wasn't the same, she was angry with you and everything, and a pony was angry with everything and everyone and stones on the ground saying that she was also angry with a friend or poney.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -18402,6 +18402,40 @@
     {
         "value": "Sorry Vinny. I'm not ready to say what's really going on here. I have to be careful with my words. But this was all very strange. I've never seen that kind of behavior between the two ponies.",
         "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okaaaay. At least you know both of the ponies. At least knowing this I can take the possibility of sometime making some plan where you can kill one, I thought about that before the kiss.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..WHAT?! kill?! No Vinny! The two ponies are not what you think! M...maybe she has some special reason to feel that way.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was desperate, but she slowly calmed down again. When Vinny analyzed Rayane's behavior, then he said this thoughtfully.",
+        "type": "action"
+    },
+
+    {
+        "value": "So you worry about the two ponies. Do you have a friendships with your friends.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "the despair was so much that made James leave the lab tent curiously.",
+        "type": "action"
+    },
+
+    {
+        "value": "What the fuck is going on here?!",
+        "character": "James",
         "type": "dialogue"
     }
 
