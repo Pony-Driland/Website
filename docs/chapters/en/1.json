@@ -18434,9 +18434,14 @@
     },
 
     {
-        "value": "What the fuck is going on here?!",
+        "value": "What the fuck is going on here?! R...Rayane?!",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little startled to see Rayane's eyes, so James slowly walked back to the lab without saying nothing. Rayane then became worried and cried lightly for a few seconds before answering.",
+        "type": "action"
     },
 
     {
@@ -18446,7 +18451,7 @@
     },
 
     {
-        "value": "Rayane tried to calm down even more, lying on the floor next to bonfire. Rayane's eyes then slowly returned to normal.",
+        "value": "Rayane tried to calm down even more, lying on the floor next to bonfire. Rayane's eyes then slowly returned to normal. Vinny was surprised, but still tried to keep close to Rayane kindly.",
         "type": "action"
     }
 
