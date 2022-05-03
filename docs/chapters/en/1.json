@@ -18437,6 +18437,17 @@
         "value": "What the fuck is going on here?!",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "S...sorry for my panic. It was just a scare. I will try to calm down. I promise I will try to calm down.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane tried to calm down even more, lying on the floor next to bonfire. Rayane's eyes then slowly returned to normal.",
+        "type": "action"
     }
 
 ]
