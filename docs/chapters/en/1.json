@@ -18451,8 +18451,86 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Rayane tried to calm down even more, lying on the floor next to bonfire. Rayane's eyes then slowly returned to normal. Vinny was surprised, but still tried to keep close to Rayane kindly.",
         "type": "action"
+    },
+
+    {
+        "value": "Heh! Rayane, I have an idea for you to feel better. Let's open this little surprise tin together, maybe something useful will come along and help us all.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiles, getting ready to open the surprise tin. Rayane then looked at Vinny curiously.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "think"
+        },
+        "value": "Yes! Even if I saw something bad, at least I can distract myself with something nice instead of something tense!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then laughed a little, feeling a little better about Vinny's sillyness.",
+        "type": "action"
+    },
+
+    {
+        "value": "Thanks for the fun time. Okay, let's see what happens.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled a little more and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Come on, leans on me to pass energy to luck time!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets ready to open the surprise tin. Rayane laughed a little and got a little closer to Vinny to see what will happen.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh! Hold on to me! Just can't be ashamed!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny waits for Rayane happily.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh, okay sir lucky~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane lifts a little to rest her hooves on Vinny mane in response while laughing a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "So let's go~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
