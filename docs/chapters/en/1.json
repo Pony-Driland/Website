@@ -18538,6 +18538,101 @@
         "value": "So let's go~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "the surprise tin simply disappears, making Vinny do a mega poker face while looking at the empty hoof. Rayane laughs more.",
+        "type": "action"
+    },
+
+    {
+        "value": "So what do we get? Wind?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. Oxygen and wind. Next time we can do it when James has to be close.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks sideways looking for James during some seconds. Rayane laughed some more before smirks.",
+        "type": "action"
+    },
+
+    {
+        "value": "Aright~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..well. HEEEY! JAMES!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laughed some more as she lay down next to the bonfire again.",
+        "type": "action"
+    },
+
+    {
+        "value": "James is in his portable lab doing his scientist stuff~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah. Heh! Let's hurry him up. Otherwise he'll take a while.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little and then walked towards James' tent.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay~ I'll stay here waiting for you. He must still be paranoid about his findings. I need to rest my head a little.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane began to meditate to rest her head a little. Vinny smiled a little and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Heh! Next time don't be embarrassed if I kiss someone to save us.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane blushed with a little embarrassment for a few seconds while doing a scrunched up face.",
+        "type": "action"
+    },
+
+    {
+        "value": "You won't let this kiss get robbed~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hehe.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was happy to see Rayane feeling good and meditating. Vinny walked to James' Lab tent. Vinny find James on his computer, making all notes and analysis. James seemed very anxious about his task. When Vinny walked into James' tent, James was so distracted in research that he didn't even pay attention to Vinny.",
+        "type": "action"
     }
 
 ]
