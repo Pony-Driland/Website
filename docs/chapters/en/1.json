@@ -18633,6 +18633,68 @@
     {
         "value": "Vinny was happy to see Rayane feeling good and meditating. Vinny walked to James' Lab tent. Vinny find James on his computer, making all notes and analysis. James seemed very anxious about his task. When Vinny walked into James' tent, James was so distracted in research that he didn't even pay attention to Vinny.",
         "type": "action"
+    },
+
+    {
+        "value": "What a beautiful view! Your backside looks like 2 cheese balls!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny walks towards James.",
+        "type": "action"
+    },
+
+    {
+        "value": "What?! What the fuck are you saying?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "Hey James! Is the scare over? Have you ever seen anything like this? From so many adventures, nothing?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was irritated and embarrassed by Vinny's words.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "bad-think"
+        },
+        "value": "No! I've never literally seen a Pony Driland deity right next to me wanting to rip my head off! That was the double combo of two things I've never seen.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey. How do you know this was you?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath then responded as he felt calmer.",
+        "type": "action"
+    },
+
+    {
+        "value": "Because she said she felt a sign of something finding parts of the Master SmartMoby. And look how fun! The only pony that did that was definitely me!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was being very ironic while he was still feeling irritated.",
+        "type": "action"
     }
 
 ]
