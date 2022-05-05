@@ -2472,7 +2472,7 @@
             "item": [{
                 "id": "surprise-tin",
                 "owner": "vinny",
-                "amount": 1
+                "amount": 2
             }]
         },
         "value": "Vinny looked at each object so he started to think about what he could buy. So he was surprised to see a product called \"surprise tin\".",
@@ -2480,7 +2480,7 @@
     },
 
     {
-        "value": "Really? I hope some good thing  comes out of this shit.",
+        "value": "Really? I hope some good thing comes out of this shit.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -18523,7 +18523,14 @@
     },
 
     {
-        "value": "Rayane lifts a little to rest her hooves on Vinny mane in response while laughing a little.",
+        "set": {
+            "item": [{
+                "id": "surprise-tin",
+                "owner": "vinny",
+                "amount": -1
+            }]
+        },
+        "value": "Rayane lifts a little to rest her hooves on Vinny mane in response while laughing a little. Rayane then watched Vinny open the surprise tin.",
         "type": "action"
     },
 
