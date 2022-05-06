@@ -18773,6 +18773,73 @@
         "value": "Okay okay. If Rayane's divine aura has already had some kind of development, there really is this possible risk. So you have to be careful with her, because she is not an alicorn. Her body was not made to withstand a huge amount of energy wanting to be emitted anyway.",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Well... if the kiss doesn't work? My future would be bright with an alicorn! Good life! Heh! Don't you tell me you'd leave this life to live your dream life? Be rich with someone by your side?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny! This is no time to be silly!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James went back to finishing the analysis on the computer and transferring the data to a pen driver. Vinny does a poker face when he realizes that James didn't like the final joke. Vinny was a little saddened by James' reaction.",
+        "type": "action"
+    },
+
+    {
+        "value": "Will it take long? We still have to get back to normal, I'm sleepy.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath and was a little sorry to see Vinny sad. James looks at the radar again during some seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "I..I'm sorry. Let me see. Yeah. Everyone's gone. All sign of the presence of the powerful energies disappeared.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled a little and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... Then hurry up, something tells me we're going to have some nice news soon in this cave.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then exited James' tent happily.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm waiting for you here! After you have the tent set up, poke me there!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? Nice news? what are you talking about?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was curious, trying to understand Vinny's words.",
+        "type": "action"
     }
 
 ]
