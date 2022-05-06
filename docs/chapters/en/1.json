@@ -18695,6 +18695,84 @@
     {
         "value": "James was being very ironic while he was still feeling irritated.",
         "type": "action"
+    },
+
+    {
+        "value": "Okay. We need to be careful. Did you see in the history the first warning before the radar. And the 2 warning what was it?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath and responded worryingly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... The first warning was more than obvious. Immense...IMMENSE... amount of divine aura concentrated in the alicorn. This pony certainly had a strong connection with the Master SmartMoby wielder.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James then slowly got a little scared and continued the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "But the second sign... Her divine aura seemed to be much more corrupted than usual. And I have no idea what that is. Her looks showed a lot of hatred for something. She badly needs to be calmed down, or we'll be in extremely serious trouble if she loses consciousness of her actions.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was thoughtful but worried to hear this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Something tells me that she and Rayane are... or were very close, as partners in some work and due to conflicts Rayane and she separated. You saw the same energy in your elevator. During the time Rayane will feel better among us. In the worst case, Rayane can release \"her monster\" and help us in some situations of extreme need. Of course, this has to come from her, I don't want to provoke the monster inside her.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Monster? Oh god! You really like danger!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little during some seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "And... I don't want to have a bad time with the divine alicorn either. Something tells me that something we already have, and Rayane has it or is it this part, we just need to move forward.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was then surprised and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait... Did you analyze Rayane and see that her dark reactions are similar to the alicorn?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was scared and surprised suddenly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay okay. If Rayane's divine aura has already had some kind of development, there really is this possible risk. So you have to be careful with her, because she is not an alicorn. Her body was not made to withstand a huge amount of energy wanting to be emitted anyway.",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
