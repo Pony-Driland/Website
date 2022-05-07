@@ -18821,6 +18821,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Vinny then exited James' tent happily.",
         "type": "action"
     },
@@ -18838,8 +18841,83 @@
     },
 
     {
-        "value": "James was curious, trying to understand Vinny's words.",
+        "value": "James was curious, trying to understand Vinny's words. Vinny just laughed and continued on his way. Vinny then walked back to Rayane. Rayane was feeling much calmer.",
         "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "calm"
+        },
+        "value": "Hey? Rayane? Heh. James is already finishing the things. And you? How does you feel to have your strength reduced?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "I can make pranks that you won't be able to react.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny walks close to Rayane. Vinny then laid his face on Rayane's paws while making a sad expression.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm tired! I want to sleep.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little surprised, so she laughed and smirk a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Silly~ I trained myself to know how to use this magic on myself to hide in moments like this. Heh. Looks like I'll have to take you to bed~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane does a silly, mischievous face while answering in a joking tone.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..what?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets bugeyed by Rayane reply. But then he laughed a little and looked into Rayane's eyes.",
+        "type": "action"
+    },
+
+    {
+        "value": "Bed? Me and you? But you didn't even buy me dinner. aa... and I still wanted to kiss a pony. You're a nice pony!! I like you a lot, thanks.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little during some seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "You know I'm kidding right? I'm just a little sleepy.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
