@@ -18954,7 +18954,79 @@
     },
 
     {
-        "value": "Rayane would then levitate the blanket and place it over Vinny gently in response.",
+        "value": "Rayane would then levitate the blanket and place it over Vinny gently in response. Vinny then giggles a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah, I'll try to relax a little, will try to rush James too. You are too kind.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiles while Rayane laughed a little before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "With a little help from marshmallow, all things is possible~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smiled a little, feeling much better.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well. I can already lessen the magic effect on you a little too.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane used her magic to slightly recover a little more of original strength. Vinny feel like now at least he can move the wings a little better. Vinny was happier to feel his strength being regained.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh! I'm feeling my wings!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes~ Take care of your wings~ Your wings will be much more useful for you. I'm glad for you.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane kept smiling as she looked at Vinny with a little hope. She was worried about the two ponies, but tried to be positive as she looked back at Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. Yeah... Good night Rayane. And tell James be careful with general banana. If you can, please talk to him.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was yawning hard as he slowly closed his eyes.",
+        "type": "action"
+    },
+
+    {
+        "value": "It's all in control of my marshmallows. Good dreams for you~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "After a few seconds, Rayane used her magic to turn off the tent light, and everything was very dark. Vinny then just listened to the sound of Rayane finishing preparing the James mattress gently. Vinny smiles a little more during some seconds and turn off the cell phone, going to sleep quietly.",
         "type": "action"
     }
 
