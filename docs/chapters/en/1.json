@@ -18918,6 +18918,44 @@
         "value": "You know I'm kidding right? I'm just a little sleepy.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles for a few seconds before smirks again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sleepy? Heh. This always starts as a joke~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane slightly decreasing the effect of the weakness magic. So Rayane use the levitation magic to put Vinny on her back then entered the main tent and placed Vinny on the mattress gently. Vinny was then a little surprised and blushing. Vinny starts to smile.",
+        "type": "action"
+    },
+
+    {
+        "value": "Thank you! Be careful that James doesn't see us, he'll think otherwise.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little. Rayane continued smirking in a silly way and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. You're welcome. I think he saw too much when we were in his lab. No need to worry too much~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane would then levitate the blanket and place it over Vinny gently in response.",
+        "type": "action"
     }
 
 ]
