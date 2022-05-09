@@ -231,7 +231,7 @@ var chapterSet = {
                 morning: { icon: 'fas fa-sun', title: 'Morning' },
                 evening: { icon: 'fas fa-cloud-sun', title: 'Evening' },
                 night: { icon: 'fas fa-moon', title: 'Night' },
-                lateAtNight: { icon: 'fas fa-bullseye', title: 'Late at Nigh' }
+                lateAtNight: { icon: 'fas fa-bullseye', title: 'Late at Night' }
             };
 
             const obj = $('#fic-nav > #status #dayNightCycle').css('font-size', '17pt');
