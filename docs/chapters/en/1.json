@@ -19015,6 +19015,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Vinny was yawning hard as he slowly closed his eyes.",
         "type": "action"
     },
@@ -19026,7 +19029,19 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "bad-mystery"
+        },
         "value": "After a few seconds, Rayane used her magic to turn off the tent light, and everything was very dark. Vinny then just listened to the sound of Rayane finishing preparing the James mattress gently. Vinny smiles a little more during some seconds and turn off the cell phone, going to sleep quietly.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "dayNightCycle": "lateAtNight",
+            "day": 3
+        },
+        "value": "Then several hours passed. Vinny was sleeping, but he wanted to wake up late at night. Vinny's anxiety then bothers him so much that he accidentally wakes up late at night.",
         "type": "action"
     }
 
