@@ -19043,6 +19043,50 @@
         },
         "value": "Then several hours passed. Vinny was sleeping, but he wanted to wake up late at night. Vinny's anxiety then bothers him so much that he accidentally wakes up late at night.",
         "type": "action"
+    },
+
+    {
+        "value": "Jasmin?! That was a dream?!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little scared. But then he calmed down to see that James and Rayane were sleeping peacefully.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fuck! It seems that this dream is going hard to wake up.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little sad for a few seconds, but then he looked at Rayane and James again. Then Vinny would smile a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. At least my new friends are fine.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked around very curiously. it was a peaceful night's sleep, everything seemed normal. James was sleeping peacefully. The cave was still the same calm sounds, Vinny just heard a little bit of the sound like cave bats. Rayane was sleeping hugging her pillow, she looked like she was having some kind of nightmare while sleeping.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane? Oh...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little sad about Rayane, but then he got up silently out of the tent to see how the environment was.",
+        "type": "action"
     }
 
 ]
