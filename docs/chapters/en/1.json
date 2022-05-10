@@ -19030,7 +19030,7 @@
 
     {
         "set": {
-            "playlistPlay": "bad-mystery"
+            "playlistPlay": "dark-ambient-melodies"
         },
         "value": "After a few seconds, Rayane used her magic to turn off the tent light, and everything was very dark. Vinny then just listened to the sound of Rayane finishing preparing the James mattress gently. Vinny smiles a little more during some seconds and turn off the cell phone, going to sleep quietly.",
         "type": "action"
@@ -19085,7 +19085,106 @@
     },
 
     {
-        "value": "Vinny was a little sad about Rayane, but then he got up silently out of the tent to see how the environment was.",
+        "value": "Vinny was a little sad about Rayane, but then he got up silently out of the tent to see how the environment was. The cave was all very dark. Vinny remember the lantern. So Vinny turn on the flashlight and walk around the cave, not too close not too far to get lost.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fineeee. So it is. Looks like pony life isn't as easy as I thought.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny heard the sound of bugs on the ceiling that flew away due to Vinny presence. And all Vinny saw was stone and more stone. And some places Vinny could find traces of presence of someone who mined in the place a long time ago.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh no. Has anyone been here? I'm not enjoying this. What am I going to tell Jasmin when I get back home?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "So Vinny analyze more, BUT without getting lost from the camp, going deeper. Vinny ended up getting a little into the hole where the mining took place. Vinny could only find a few remnants of gold in very small amounts on the walls of the place. Slowly Vinny heard a little sound of things moving around.",
+        "type": "action"
+    },
+
+    {
+        "value": "What the hell is that?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny was curious and anxious and analyzed the sound before touching the gold.",
+        "type": "action"
+    },
+
+    {
+        "value": "HEY! Hello?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny keep looking for things and don't go too far to get lost.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah yeah. Very funny. Very very fuuuunny. Ah? What?!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny found a pickaxe, but without the wooden support to hold this, next to tiny pieces of gold. And along with that Vinny start to hear the sound of something disintegrating.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hello? W..What the hell is that?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was even more anxious, stepping back a little and getting ready for something. So Vinny accidentally bumped onto something on the floor.",
+        "type": "action"
+    },
+
+    {
+        "value": "WHAT?! FUCK! Okay! Your shit!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny kept looking for something strange. Vinny bump onto some more things that seemed to be metal.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...Where is everybody?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny look down. Vinny saw pieces of something that was decomposing on the floor of the cave, its disintegration occurred as pixels leaving and disappearing. And soon VInny realize, it seems to be pieces of some SmartMoby that didn't work anymore from some unknown pony.",
+        "type": "action"
+    },
+
+    {
+        "value": "SHIIIIT! FUCK! OH MY GOD!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny was extremely surprised and worried. So Vinny tried to catch the object. Vinny held the object calmly, due to the small size of the piece and it is already very empty, it was much lighter than normal. Vinny just find a tiny trail of extremely small light particles coming out of the SmartMoby chunk, it seemed to be something that normally stays inside SmartMobies. And along with that Vinny just find a saddle that looks like it's been looted.",
         "type": "action"
     }
 
