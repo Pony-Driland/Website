@@ -19186,6 +19186,12 @@
     {
         "value": "Vinny was extremely surprised and worried. So Vinny tried to catch the object. Vinny held the object calmly, due to the small size of the piece and it is already very empty, it was much lighter than normal. Vinny just find a tiny trail of extremely small light particles coming out of the SmartMoby chunk, it seemed to be something that normally stays inside SmartMobies. And along with that Vinny just find a saddle that looks like it's been looted.",
         "type": "action"
+    },
+
+    {
+        "value": "I...I better get back to camp. What the fuck.",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
