@@ -19277,4 +19277,61 @@
         "type": "action"
     },
 
+    {
+        "value": "You were dreaming Rayane. James is still sleeping next to you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Or rather, you was having a nightmare.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A..ah? Nightmare...Ah yes. A nightmare. I'm sorry.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane replied with a little tears on her eyes as her hugged Vinny to try to calm down.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm glad it was just a nightmare.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised and then he smiled a little and hugged Rayane tightly back.",
+        "type": "action"
+    },
+
+    {
+        "value": "It's okay, it's over, I'm here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..Yes. I ended up thinking too much about what happened last night before I went to sleep.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane wiped her face a little while calming down from the hug.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Thinking about what?",
+        "character": "Vinny",
+        "type": "dialogue"
+    }
+
 ]
