@@ -19256,7 +19256,7 @@
     },
 
     {
-        "value": "N..no.....v..you're going to kill...both of us......v..you...H...Ah?!",
+        "value": "N..no...v..you're going to kill...both of us......v..you...H...Ah?!",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -19270,6 +19270,11 @@
         "value": "V...Vinny?",
         "character": "Rayane",
         "type": "dialogue"
-    }
+    },
+
+    {
+        "value": "Vinny was worried about Rayane. He looked a little sad and said.",
+        "type": "action"
+    },
 
 ]
