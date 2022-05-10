@@ -19278,13 +19278,7 @@
     },
 
     {
-        "value": "You were dreaming Rayane. James is still sleeping next to you.",
-        "character": "Vinny",
-        "type": "dialogue"
-    },
-
-    {
-        "value": "Or rather, you was having a nightmare.",
+        "value": "Rayane, you were dreaming. James is still sleeping next to you. Or rather, you was having a nightmare.",
         "character": "Vinny",
         "type": "dialogue"
     },
