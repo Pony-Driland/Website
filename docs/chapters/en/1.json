@@ -19192,6 +19192,84 @@
         "value": "I...I better get back to camp. What the fuck.",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "set": {
+            "item": [{
+                "id": "iron-pickaxe-part",
+                "owner": "vinny",
+                "amount": 1
+            }, {
+                "id": "mysterious-broken-smartmoby",
+                "owner": "vinny",
+                "amount": 1
+            }]
+        },
+        "value": "Vinny was feeling very uncomfortable. So he just picked up the pickaxe part, preparing to return to the camp. Vinny looks at the SmartMoby pieces during some seconds. So Vinny take the SmartMoby broken pieces too. Vinny took a deep breath and then Vinny go back to the tent.",
+        "type": "action"
+    },
+
+    {
+        "value": "Weeeell... What a fucking cave.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny arrived at the tent, everyone was still sleeping. Rayane was still having nightmares, and James was sleeping like a little angel.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Rayane? Are you okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was going to silently poke Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane... Wake up... wake up.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "N..no....stop it...... R..Rain no......",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rain? What? Rayane wake up please.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny pokes harder.",
+        "type": "action"
+    },
+
+    {
+        "value": "N..no.....v..you're going to kill...both of us......v..you...H...Ah?!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane woke up in a desperate way and looked around for a few seconds until Rayane saw Vinny. Rayane then felt much better and looked at Vinny curiously.",
+        "type": "action"
+    },
+
+    {
+        "value": "V...Vinny?",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
