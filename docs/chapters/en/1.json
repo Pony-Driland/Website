@@ -19326,6 +19326,107 @@
         "value": "Ah? Thinking about what?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "The surprise encounter. If I hadn't used the magic to temporarily decrease our energy. I think the two ponies wouldn't have come to our cave and I wouldn't even be this scared now.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was worried and regretful. Rayane cried a little, trying to keep calm.",
+        "type": "action"
+    },
+
+    {
+        "value": "No no no... This is not your fault. Let's forget about all this. Now everything that needed to happen has happened. Alright?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny took a deep breath getting ready to continue the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... When I woke up, I found some very strange things, I came back and saw that you were worse and ended up coming to help you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled a little and ended the hug kindly. Rayane was wiping her tears a little and trying to smile back a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Thanks Vinny. I will try to control myself. It's really nice to be able to vent so many things now.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny could see that the dark \"tattoos\" around Rayane's face had appeared again quietly, but the \"tattoos\" were slowly fading away again.",
+        "type": "action"
+    },
+
+    {
+        "value": "R..Rayane?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "I just need to stop being so worried about my problems.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A...All right. Well, do you have a pen or lipstick or something?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was very confused and thoughtful, so she answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "Pen? Lipstick? No, why?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "N...Nothing. Maybe something would make you happy.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked towards James for a few seconds and then went back to talking. James was still sleeping, he was sleeping peacefully.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, we're awake, what do you want to do now? Do you want to do something fun? Maybe get some rest while we talk?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. Maybe rest a little. If it's daytime, maybe preparing breakfast will make me a little more happy and forget about what happened yesterday.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane tried to smile a little more slowly.",
+        "type": "action"
     }
 
 ]
