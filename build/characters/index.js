@@ -46,6 +46,7 @@ fs.readdir(folderPath, (err, files) => {
             // Create HTML File
             console.log('Creating HTML...');
             fs.writeFileSync(path.join(ficData.path, './characters/' + file.name + '.html'), `
+<!doctype html>
 <html lang="en">
     <head>
         
