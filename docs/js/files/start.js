@@ -442,13 +442,18 @@ $(function() {
                         ),
 
                         // Kofi
-                        $('<a>', { class: 'nav-item nav-link', target: '_blank', href: `https://ko-fi.com/${storyCfg.kofi}`, id: 'patreon-url' }).text('Ko-Fi').prepend(
+                        $('<a>', { class: 'nav-item nav-link', target: '_blank', href: `https://ko-fi.com/${storyCfg.kofi}`, id: 'kofi-url' }).text('Ko-Fi').prepend(
                             $('<i>', { class: 'fa-solid fa-mug-hot mr-2' })
                         ),
 
                         // Crypto Wallet
                         $('<a>', { class: 'nav-item nav-link', target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.domainWallet), id: 'crypto-wallet' }).text('Donations Wallet').prepend(
                             $('<i>', { class: 'fas fa-wallet mr-2' })
+                        ),
+
+                        // Crypto Wallet
+                        $('<a>', { class: 'nav-item nav-link', target: '_blank', href: 'https://derpibooru.org/tags/' + storyCfg.derpibooru_tag, id: 'derpibooru-page' }).text('Derpibooru').prepend(
+                            $('<i>', { class: 'fa-solid fa-paintbrush-fine mr-2' })
                         ),
 
                         // LICENSE

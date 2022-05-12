@@ -12,6 +12,7 @@ var storyCfg = {
     itemsPerPage: 100,
     title: 'Pony Driland',
     patreon: 'JasminDreasond',
+    derpibooru_tag: 'pony+driland',
     kofi: 'JasminDreasond',
     discordInvite: 'GegfAgNxRX',
     description: 'The dimension of lost creatures and the home of hope.',
