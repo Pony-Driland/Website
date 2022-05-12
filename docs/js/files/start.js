@@ -410,6 +410,11 @@ $(function() {
                             $('<i>', { class: 'fab fa-discord mr-2' })
                         ),
 
+                        // Patreon
+                        $('<a>', { class: 'nav-item nav-link', target: '_blank', href: `https://patreon.com/JasminDreasond/${storyCfg.patreon}`, id: 'patreon-url' }).text('Patreon').prepend(
+                            $('<i>', { class: 'fa-brands fa-patreon mr-2' })
+                        ),
+
                         // Crypto Wallet
                         $('<a>', { class: 'nav-item nav-link', target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.domainWallet), id: 'crypto-wallet' }).text('Donations Wallet').prepend(
                             $('<i>', { class: 'fas fa-wallet mr-2' })

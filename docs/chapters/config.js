@@ -11,6 +11,7 @@ var storyCfg = {
     domain: 'ponydriland.com',
     itemsPerPage: 100,
     title: 'Pony Driland',
+    patreon: 'JasminDreasond',
     discordInvite: 'GegfAgNxRX',
     description: 'The dimension of lost creatures and the home of hope.',
     urlPage: null,
