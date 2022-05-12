@@ -411,8 +411,13 @@ $(function() {
                         ),
 
                         // Patreon
-                        $('<a>', { class: 'nav-item nav-link', target: '_blank', href: `https://patreon.com/JasminDreasond/${storyCfg.patreon}`, id: 'patreon-url' }).text('Patreon').prepend(
+                        $('<a>', { class: 'nav-item nav-link', target: '_blank', href: `https://patreon.com/${storyCfg.patreon}`, id: 'patreon-url' }).text('Patreon').prepend(
                             $('<i>', { class: 'fa-brands fa-patreon mr-2' })
+                        ),
+
+                        // Kofi
+                        $('<a>', { class: 'nav-item nav-link', target: '_blank', href: `https://ko-fi.com/${storyCfg.kofi}`, id: 'patreon-url' }).text('Ko-Fi').prepend(
+                            $('<i>', { class: 'fa-solid fa-mug-hot mr-2' })
                         ),
 
                         // Crypto Wallet
