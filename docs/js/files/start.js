@@ -226,25 +226,29 @@ var openMDFIle = function(url, isMain = false) {
 
     // Remove Fic Data
     clearFicData();
+    if (url !== 'MAIN') {
 
-    // Read Data Base
-    console.log(`Opening MD file "${url}"...`);
-    $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
+        // Read Data Base
+        console.log(`Opening MD file "${url}"...`);
+        $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
 
-    $.ajax({
-        url: url + fileVersion,
-        type: 'get',
-        dataType: 'text'
-    }).done(function(fileData) {
-        console.log(`MD File opened successfully!`);
-        insertMarkdownFile(fileData, isMain);
-        tinyLib.goToByScrollTop(0);
-        $.LoadingOverlay("hide");
-    }).fail(err => {
-        $.LoadingOverlay("hide");
-        console.error(err);
-        alert(err.message);
-    });
+        $.ajax({
+            url: url + fileVersion,
+            type: 'get',
+            dataType: 'text'
+        }).done(function(fileData) {
+            console.log(`MD File opened successfully!`);
+            insertMarkdownFile(fileData, isMain);
+            tinyLib.goToByScrollTop(0);
+            $.LoadingOverlay("hide");
+        }).fail(err => {
+            $.LoadingOverlay("hide");
+            console.error(err);
+            alert(err.message);
+        });
+    } else {
+        insertMarkdownFile(storyData.readme, isMain);
+    }
 
 };
 
@@ -380,7 +384,7 @@ $(function() {
 
                 // Title
                 $('<a>', { class: 'navbar-brand', href: '/' }).text(storyCfg.title).click(function() {
-                    openMDFIle('/README.md', true);
+                    openMDFIle('MAIN', true);
                     urlUpdate();
                     return false;
                 }),
@@ -400,7 +404,7 @@ $(function() {
                         $('<a>', { class: 'nav-item nav-link', href: '/', id: 'homepage' }).text('Homepage').prepend(
                             $('<i>', { class: 'fas fa-home mr-2' })
                         ).click(function() {
-                            openMDFIle('/README.md', true);
+                            openMDFIle('MAIN', true);
                             urlUpdate();
                             return false;
                         }),
@@ -450,6 +454,7 @@ $(function() {
                             $('<i>', { class: 'fab fa-readme mr-2' })
                         ).click(function() {
                             if (!readButtonDisabled) {
+                                $('#top_page').addClass('d-none');
                                 openChapterMenu();
                                 urlUpdate('read-fic');
                             }
