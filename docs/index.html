@@ -1,4 +1,7 @@
+<!doctype html>
 <html lang="en">
+    
+    <!-- Head -->
     <head>
         
         <!-- Config -->
@@ -97,8 +100,11 @@
         </script>
     
     </head>
+
+    <!-- Body -->
     <body>
 
+        <!-- Image Viewer -->
         <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
             <!-- Background of PhotoSwipe. 
@@ -163,9 +169,13 @@
 
         </div>
 
+        <!-- Youtube Player -->
         <div id="youtubePlayer" class="hidden"></div>
+        
+        <!-- Base -->
         <div style="padding-top: 58px;">
 
+            <!-- No Script -->
             <noscript>
                 <div class="container my-3">
                     <div class="alert alert-danger">
@@ -174,6 +184,7 @@
                 </div>
             </noscript>
 
+            <!-- Under Development Warning -->
             <div class="modal fade" id="under-development" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
@@ -197,11 +208,50 @@
                 </div>
             </div>
 
+            <!-- Carousel -->
             <div id="top_page" class="d-none">
 
+                <div id="carouselHomepage" class="carousel slide" data-ride="carousel">
+                    
+                    <ol class="carousel-indicators">
+                        
+                        <li data-target="#carouselHomepage" data-slide-to="{{carouselNumber}}" class="active"></li>
+                        
+                    </ol>
+
+                    <div class="carousel-inner">
+
+                        <div class="carousel-item active">
+
+                            <div class="img" style="background-image: url('')"></div>
+                        
+                            <div class="carousel-caption">
+                                <h5 class="px-5"></h5>
+                                <p class="px-5"></p>
+                            </div>
+
+                        </div>
+                    
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-target="#carouselHomepage" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-target="#carouselHomepage" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </button>
+                    
+                </div>
+
             </div>
+
+            <!-- App -->
             <div id="app" class="my-5"></div>
 
         </div>
+
     </body>
+
 </html>
