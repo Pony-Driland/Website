@@ -60,7 +60,7 @@ var storyData = {
 
                     // Read Data Base
                     $.ajax({
-                        url: '/README.md' + fileVersion,
+                        url: '/README.html' + fileVersion,
                         type: 'get',
                         dataType: 'text'
                     }).done(function(readme) {
