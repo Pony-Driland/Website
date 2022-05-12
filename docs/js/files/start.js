@@ -58,7 +58,7 @@ var openNewAddress = function(data, isPopState = false, useCustom = false) {
     }
 
     if (!data || typeof filePath !== 'string' || filePath.length < 1 || !filePath.startsWith('/') || filePath.indexOf('http://') > -1 || filePath.indexOf('https://') > -1) {
-        insertMarkdownFile(storyData.readme);
+        insertMarkdownFile(storyData.readme, true);
     } else {
         openMDFIle(filePath);
         if (typeof data.title === 'string' && data.title.length > 0) {
@@ -109,7 +109,7 @@ $(window).on('popstate', function() {
 });
 
 // Insert Maarkdown File
-var insertMarkdownFile = function(text) {
+var insertMarkdownFile = function(text, isMainPage = false) {
 
     // Prepare Convert Base
     const convertBase = `https\\:\\/\\/github.com\\/${storyCfg.github.account}\\/${storyCfg.github.repository}\\/blob\\/main\\/`;
@@ -121,6 +121,11 @@ var insertMarkdownFile = function(text) {
 
     // Insert Data
     $('#markdown-read').empty().html(data);
+    if (isMainPage) {
+        $('#top_page').removeClass('d-none');
+    } else {
+        $('#top_page').addClass('d-none');
+    }
 
     // Convert File URLs
     $('[id="markdown-read"] a[file]').removeAttr('target').click(function() {
@@ -217,7 +222,7 @@ var clearFicData = function() {
 };
 
 // Open MD FIle
-var openMDFIle = function(url) {
+var openMDFIle = function(url, isMain = false) {
 
     // Remove Fic Data
     clearFicData();
@@ -232,7 +237,7 @@ var openMDFIle = function(url) {
         dataType: 'text'
     }).done(function(fileData) {
         console.log(`MD File opened successfully!`);
-        insertMarkdownFile(fileData);
+        insertMarkdownFile(fileData, isMain);
         tinyLib.goToByScrollTop(0);
         $.LoadingOverlay("hide");
     }).fail(err => {
@@ -375,7 +380,7 @@ $(function() {
 
                 // Title
                 $('<a>', { class: 'navbar-brand', href: '/' }).text(storyCfg.title).click(function() {
-                    openMDFIle('/README.md');
+                    openMDFIle('/README.md', true);
                     urlUpdate();
                     return false;
                 }),
@@ -395,7 +400,7 @@ $(function() {
                         $('<a>', { class: 'nav-item nav-link', href: '/', id: 'homepage' }).text('Homepage').prepend(
                             $('<i>', { class: 'fas fa-home mr-2' })
                         ).click(function() {
-                            openMDFIle('/README.md');
+                            openMDFIle('/README.md', true);
                             urlUpdate();
                             return false;
                         }),
