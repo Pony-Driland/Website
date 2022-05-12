@@ -19428,6 +19428,95 @@
     {
         "value": "Rayane tried to smile a little more slowly.",
         "type": "action"
+    },
+
+    {
+        "value": "Hmmm...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little to help Rayane feel better.",
+        "type": "action"
+    },
+
+    {
+        "value": "If you want, we can draw a mustache on James, have a competition to see who can draw something on him without waking up. Buuut, I have to tell you 2 things about my adventure and other little things.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane made a low and light laugh for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Alright.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Rayane was curious, thinking about the two possible things.",
+        "type": "action"
+    },
+
+    {
+        "value": "T...Two little things? What did you do?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "While you two were resting, I walked around a bit, discovered some things. T...Things a little obscure.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would be a little worried for a few seconds, but then Vinny would show the piece of pickaxe and the parts of the broken SmartMoby.",
+        "type": "action"
+    },
+
+    {
+        "value": "Where I found this, there were signs of gunshots on the floor, wall, and it seems that someone was mining something and ended up fighting with someone and died. By the way, the other thing is that you sleep talking.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little scared when she saw the piece of SmartMoby. It looked like Rayane had remembered something.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes, someone really died. Usually first the body that disappears, and then the SmartMoby. Be careful, maybe there's someone else in that cave.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane remembered the detail of talking in her sleep, but then slowly she calmed down again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sleeping and talking? Oh sorry. This always happens when I'm feeling very anxious while I sleep.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes, it seems that later you said that you wanted to hug me to make James jealous then hugged the pillow.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little nervously from Vinny silliness before answering.",
+        "type": "action"
     }
 
 ]
