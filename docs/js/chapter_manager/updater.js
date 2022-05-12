@@ -1,5 +1,5 @@
 // Prepare Cache
-var cacheChapterUpdater = {};
+var cacheChapterUpdater = { iconSize: '14pt' };
 
 // Read Data on Scroll
 $(window).on('resize scroll', function() {
@@ -132,7 +132,7 @@ cacheChapterUpdater.data = function(lastPage) {
             $('#fic-nav > #status').prepend(storyData.chapter.nav.bookmark);
 
             // Icon
-            storyData.chapter.nav.bookmark.css({ 'font-size': '17pt', cursor: 'pointer' });
+            storyData.chapter.nav.bookmark.css({ 'font-size': cacheChapterUpdater.iconSize, cursor: 'pointer' });
             storyData.chapter.nav.bookmark.attr('title', 'Bookmark').append($('<i>', { class: 'fas fa-bookmark' }));
             storyData.chapter.nav.bookmark.tooltip();
 
@@ -234,7 +234,7 @@ var chapterSet = {
                 lateAtNight: { icon: 'fas fa-bullseye', title: 'Late at Night' }
             };
 
-            const obj = $('#fic-nav > #status #dayNightCycle').css('font-size', '17pt');
+            const obj = $('#fic-nav > #status #dayNightCycle').css('font-size', cacheChapterUpdater.iconSize);
             obj.empty();
             if (types[value]) {
                 if (!obj.attr('data-original-title')) {
@@ -268,7 +268,7 @@ var chapterSet = {
             };
 
             storyData.chapter.nextWeather = value;
-            const obj = $('#fic-nav > #status #weather').css('font-size', '17pt');
+            const obj = $('#fic-nav > #status #weather').css('font-size', cacheChapterUpdater.iconSize);
             obj.empty();
             if (types[value]) {
 
