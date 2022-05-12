@@ -19517,6 +19517,45 @@
     {
         "value": "Rayane giggles a little, trying to feel better from Vinny silliness before answering.",
         "type": "action"
+    },
+
+    {
+        "value": "Heh. It seems that a part of that dream came true after I woke up~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. I'm kidding, but anyway, someone is watching us, a small light was coming out of SmartMoby when I picked this up, I started to hear SmartMoby doing something, but let's forget about this problem. Let's eat!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then ended the conversation with a better smile for Rayane to feel better. Rayane laughed a little and finished calming down completely. I replied a little sadly for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't worry about that. The light must be particles from Smartmoby when the soul left the pony body. But unfortunately we can't see it.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane took a deep breath to get back to cheering up again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ A marshmallow to start the day. I need to finish forgetting about the things that happened yesterday.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
