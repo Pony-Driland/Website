@@ -19038,6 +19038,7 @@
 
     {
         "set": {
+            "weather": "sun",
             "dayNightCycle": "lateAtNight",
             "day": 3
         },
