@@ -19548,6 +19548,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Rayane took a deep breath to get back to cheering up again.",
         "type": "action"
     },
