@@ -398,7 +398,7 @@ $(function() {
             $('<nav>', { class: 'navbar navbar-expand-lg navbar-dark bg-dark fixed-top', id: 'md-navbar' }).append(
 
                 // Title
-                $('<a>', { class: 'navbar-brand', href: '/' }).text(storyCfg.title).click(function() {
+                $('<a>', { class: 'navbar-brand d-block d-lg-none', href: '/' }).text(storyCfg.title).click(function() {
                     openMDFIle('MAIN', true);
                     urlUpdate();
                     return false;
@@ -411,6 +411,13 @@ $(function() {
 
                 // Collapse
                 $('<div>', { class: 'collapse navbar-collapse', id: 'mdMenu' }).append(
+
+                    // Title
+                    $('<a>', { class: 'navbar-brand d-none d-lg-block', href: '/' }).text(storyCfg.title).click(function() {
+                        openMDFIle('MAIN', true);
+                        urlUpdate();
+                        return false;
+                    }),
 
                     // Nav 1
                     $('<div>', { class: 'navbar-nav mr-auto mt-2 mt-lg-0 small' }).append(
