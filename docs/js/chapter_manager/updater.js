@@ -1,5 +1,5 @@
 // Prepare Cache
-var cacheChapterUpdater = { iconSize: '14pt' };
+var cacheChapterUpdater = { iconSize: '12pt' };
 
 // Read Data on Scroll
 $(window).on('resize scroll', function() {
