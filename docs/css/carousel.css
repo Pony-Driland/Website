@@ -1,0 +1,62 @@
+#carouselHomepage .carousel-item .carousel-caption {
+    background-color: rgba(0, 0, 0, 0.8);
+    position: sticky;
+}
+
+#carouselHomepage .carousel-item .img {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#carouselHomepage,
+#carouselHomepage .carousel-item,
+#carouselHomepage .carousel-item .img {
+    max-height: 300px;
+    height: 300px;
+}
+
+@media (min-width: 576px) {
+    #carouselHomepage,
+    #carouselHomepage .carousel-item,
+    #carouselHomepage .carousel-item .img {
+        max-height: 400px;
+        height: 400px;
+    }
+}
+
+@media (min-width: 768px) {
+    #carouselHomepage,
+    #carouselHomepage .carousel-item,
+    #carouselHomepage .carousel-item .img {
+        max-height: 420px;
+        height: 420px;
+    }
+}
+
+@media (min-width: 992px) {
+    #carouselHomepage,
+    #carouselHomepage .carousel-item,
+    #carouselHomepage .carousel-item .img {
+        max-height: 430px;
+        height: 430px;
+    }
+}
+
+@media (min-width: 1200px) {
+    #carouselHomepage,
+    #carouselHomepage .carousel-item,
+    #carouselHomepage .carousel-item .img {
+        max-height: 500px;
+        height: 500px;
+    }
+}
+
+@media (min-width: 1600px) {
+    #carouselHomepage,
+    #carouselHomepage .carousel-item,
+    #carouselHomepage .carousel-item .img {
+        max-height: 700px;
+        height: 700px;
+    }
+}
