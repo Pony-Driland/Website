@@ -453,7 +453,7 @@ $(function() {
 
                         // Crypto Wallet
                         $('<a>', { class: 'nav-item nav-link', target: '_blank', href: 'https://derpibooru.org/tags/' + storyCfg.derpibooru_tag, id: 'derpibooru-page' }).text('Derpibooru').prepend(
-                            $('<i>', { class: 'fa-solid fa-paintbrush-fine mr-2' })
+                            $('<i>', { class: 'fa-solid fa-paintbrush mr-2' })
                         ),
 
                         // LICENSE
