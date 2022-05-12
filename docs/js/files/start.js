@@ -58,7 +58,7 @@ var openNewAddress = function(data, isPopState = false, useCustom = false) {
     }
 
     if (!data || typeof filePath !== 'string' || filePath.length < 1 || !filePath.startsWith('/') || filePath.indexOf('http://') > -1 || filePath.indexOf('https://') > -1) {
-        insertMarkdownFile(storyData.readme, true);
+        insertMarkdownFile(storyData.readme, true, true);
     } else {
         openMDFIle(filePath);
         if (typeof data.title === 'string' && data.title.length > 0) {
@@ -109,14 +109,21 @@ $(window).on('popstate', function() {
 });
 
 // Insert Maarkdown File
-var insertMarkdownFile = function(text, isMainPage = false) {
+var insertMarkdownFile = function(text, isMainPage = false, isHTML = false) {
 
     // Prepare Convert Base
     const convertBase = `https\\:\\/\\/github.com\\/${storyCfg.github.account}\\/${storyCfg.github.repository}\\/blob\\/main\\/`;
 
     // Convert Data
-    const data = marked.parse(text)
-        .replace(new RegExp(`href\=\"${convertBase}docs\\/`, 'g'), 'href="javascript:void(0)" file="/')
+    let data;
+
+    if (!isHTML) {
+        data == marked.parse(text)
+    } else {
+        data = text;
+    }
+
+    data = data.replace(new RegExp(`href\=\"${convertBase}docs\\/`, 'g'), 'href="javascript:void(0)" file="/')
         .replace(new RegExp(`src\=\"${convertBase}docs\\/`, 'g'), 'src="/');
 
     // Insert Data
@@ -237,17 +244,25 @@ var openMDFIle = function(url, isMain = false) {
             type: 'get',
             dataType: 'text'
         }).done(function(fileData) {
-            console.log(`MD File opened successfully!`);
-            insertMarkdownFile(fileData, isMain);
+
+            if (url.endsWith('.md')) {
+                console.log(`MD File opened successfully!`);
+                insertMarkdownFile(fileData, isMain, false);
+            } else {
+                console.log(`HTML File opened successfully!`);
+                insertMarkdownFile(fileData, isMain, true);
+            }
+
             tinyLib.goToByScrollTop(0);
             $.LoadingOverlay("hide");
+
         }).fail(err => {
             $.LoadingOverlay("hide");
             console.error(err);
             alert(err.message);
         });
     } else {
-        insertMarkdownFile(storyData.readme, isMain);
+        insertMarkdownFile(storyData.readme, isMain, true);
     }
 
 };
