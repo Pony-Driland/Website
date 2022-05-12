@@ -118,7 +118,7 @@ var insertMarkdownFile = function(text, isMainPage = false, isHTML = false) {
     let data;
 
     if (!isHTML) {
-        data == marked.parse(text)
+        data = marked.parse(text);
     } else {
         data = text;
     }
