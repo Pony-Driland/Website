@@ -70,7 +70,8 @@
 
 .ficMode #mdMenu #crypto-wallet,
 .ficMode #mdMenu #discord-server,
-.ficMode #mdMenu #license {
+.ficMode #mdMenu #license,
+.ficMode #mdMenu #derpibooru-page {
     display: none !important;
 }
 
