@@ -19559,6 +19559,43 @@
         "value": "Heh~ A marshmallow to start the day. I need to finish forgetting about the things that happened yesterday.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little seeing Rayane's reaction. Then Vinny would smile a little and say.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "Weeeell, I'll help you with breakfast.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmmm. Okay, silly~",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "think"
+        },
+        "value": "Rayane was using magic to levitate the boxes that contained the meal recipe. So Rayane spawned a kitchen table, a microwave, and an electric stove before starting the cook.",
+        "type": "action"
+    },
+
+    {
+        "value": "Woow. Heh!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny approaching to help Rayane kindly.",
+        "type": "action"
     }
 
 ]
