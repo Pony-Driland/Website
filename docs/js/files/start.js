@@ -393,10 +393,13 @@ $(function() {
 
         // Read Updater
         let isNewValue = '';
+        storyData.globalIsNew = 0;
         for (const chapter in storyData.isNew) {
-            if (storyData.isNew[chapter] === 1) {
+            if (storyData.isNew[chapter] === 2 && storyData.isNew[chapter] > storyData.globalIsNew) {
+                storyData.globalIsNew = 2;
                 isNewValue = $('<span>', { class: 'badge badge-primary ml-2' }).text('NEW');
-            } else if (storyData.isNew[chapter] === 2) {
+            } else if (storyData.isNew[chapter] === 1 && storyData.isNew[chapter] > storyData.globalIsNew) {
+                storyData.globalIsNew = 1;
                 isNewValue = $('<span>', { class: 'badge badge-secondary ml-2' }).text('UPDATE');
             }
         }

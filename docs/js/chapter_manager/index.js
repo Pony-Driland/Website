@@ -578,9 +578,9 @@ var openChapterMenu = function(params = {}) {
             // Chapter Number
             const chapter = String(i + 1);
             let isNewValue = '';
-            if (storyData.isNew[chapter] === 1) {
+            if (storyData.isNew[chapter] === 2) {
                 isNewValue = $('<span>', { class: 'badge badge-primary ml-3' }).text('NEW');
-            } else if (storyData.isNew[chapter] === 2) {
+            } else if (storyData.isNew[chapter] === 1) {
                 isNewValue = $('<span>', { class: 'badge badge-secondary ml-3' }).text('UPDATE');
             }
 
