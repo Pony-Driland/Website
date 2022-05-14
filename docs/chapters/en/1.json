@@ -19596,6 +19596,219 @@
     {
         "value": "Vinny approaching to help Rayane kindly.",
         "type": "action"
+    },
+
+
+    {
+        "value": "Do you have anything special to say about the shy pony?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little surprised, but then calmed down and responded in a sad way.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..what? The shy one? She's not shy. She was just sad. Don't be fooled by that.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Rayane went back to cooking breakfast.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, comparing the shy pony to the alicorn...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. And you need to compare your breakfast~ It's very dangerous to cook outside. For this reason we will keep here.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then put a special white cream to heat in the microwave.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hope you like creamy breads~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little and answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "Alright.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane spawned 3 breads and put them on the kitchen table, already preparing to use the grill.",
+        "type": "action"
+    },
+
+    {
+        "value": "wow! What is that?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "This is secret~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane used magic and put special seasonings on bread. And after that used the magic to put the bread and a mysterious cheese inside the Gril.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ready. Now we just have to wait, and our scientist needs wake up~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised to remember James",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh yes! Yes yes! What do you want to do while he sleeps?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was extremely thoughtful, she then felt calmer and responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmm... I have no idea. Usually I just stay quiet thinking about life or training a little.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmm. Okay! We can do 2 things if you want. We can train together, or you can wake up James. I need to ask about the banana soldier, and if you're lucky he puts his paw in your mouth also looking for him.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laughed a little for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Siiiiiilly~ I won't take any chances with his silly accidents~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane pokes Vinny's nose in a silly way while smirks a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Are you sure you're really interested in training with me~? What are you using as combat equipment?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was then extremely surprised and worried to remember that he didn't have any combat equipment.",
+        "type": "action"
+    },
+
+    {
+        "value": "Shit...",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Combat equipment? I think it's just my voice and intuition.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny ggigles in concern way as he patted his head.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. Yes~ Your wings need to be well equipped.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smirks a little more.",
+        "type": "action"
+    },
+
+    {
+        "value": "You're going to need something of a ranged attack if you really want to hit me without getting hit with it~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would do an extreme poker face and say.",
+        "type": "action"
+    },
+
+    {
+        "value": "Look... The last time I used my wings, this didn't work out very well. What do you really mean by distance?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little before smirking again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Silly~ Anything that might be a wing gun or something that looks like a gun. You can also choose blades, or maybe some equipment that uses the movement of your wings to shoot shockwaves. You choose what you think is best.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmmmm. What do I think is better? Doesn't look cheap hehe, isn't there something we can do now? ( ͡° ͜ʖ ͡°)",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane put her paw on Vinny's snout",
+        "type": "action"
     }
 
 ]
