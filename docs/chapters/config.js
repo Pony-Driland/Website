@@ -159,6 +159,7 @@ var storyCfg = {
         ],
 
         'dark-ambient-melodies': [
+            { id: '6r3xpB6Td40', type: 'youtube' },
             { id: 'lAarDAnoXk0', type: 'youtube' },
             { id: 'LptTKfrHSi4', type: 'youtube' },
         ],
