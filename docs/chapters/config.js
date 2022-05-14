@@ -177,11 +177,13 @@ var storyCfg = {
         ],
 
         'escape': [
+            { id: '3jw04mIF3fs', type: 'youtube' },
             { id: '_j8jUUzGqDo', type: 'youtube' },
             { id: 'FaKRXOgasXA', type: 'youtube' },
         ],
 
         'battle': [
+            { id: 'VMziMXYkVS0', type: 'youtube' },
             { id: 'rjRn9lYguV0', type: 'youtube' },
             { id: 'yb0-hwJAX3U', type: 'youtube' },
             { id: 'XD72-Y5aB9Q', type: 'youtube' },
