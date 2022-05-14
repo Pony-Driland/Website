@@ -572,15 +572,10 @@ var openChapterMenu = function(params = {}) {
 
             // Chapter Number
             const chapter = String(i + 1);
-            const isNew = (!localStorage.getItem('chapter' + chapter + 'MD5'));
-            let isUpdate = false;
-            if (!isNew) {
-                isUpdate = (objHash(storyData.data[chapter]) !== localStorage.getItem('chapter' + chapter + 'MD5'));
-            }
             let isNewValue = '';
-            if (isNew) {
+            if (storyData.isNew[chapter] === 1) {
                 isNewValue = $('<span>', { class: 'badge badge-primary ml-3' }).text('NEW');
-            } else if (isUpdate) {
+            } else if (storyData.isNew[chapter] === 2) {
                 isNewValue = $('<span>', { class: 'badge badge-secondary ml-3' }).text('UPDATE');
             }
 
