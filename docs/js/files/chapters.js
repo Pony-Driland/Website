@@ -66,6 +66,7 @@ var storyData = {
                     }).done(function(readme) {
 
                         // Load Data
+                        storyData.isNew = {};
                         for (let i = 0; i < storyData.chapter.amount; i++) {
 
                             // Data
@@ -160,6 +161,20 @@ var storyData = {
                                     storyData.chapter.bookmark[chapter] < 1
                                 ) {
                                     storyData.chapter.bookmark[chapter] = 1;
+                                }
+
+                                const isNew = (!localStorage.getItem('chapter' + chapter + 'MD5'));
+                                let isUpdate = false;
+                                if (!isNew) {
+                                    isUpdate = (objHash(storyData.data[chapter]) !== localStorage.getItem('chapter' + chapter + 'MD5'));
+                                }
+
+                                if (isNew) {
+                                    storyData.isNew[chapter] = 1;
+                                } else if (isUpdate) {
+                                    storyData.isNew[chapter] = 2;
+                                } else {
+                                    storyData.isNew[chapter] = 0;
                                 }
 
                                 console.log(`Chapter ${chapter} loaded!`);
