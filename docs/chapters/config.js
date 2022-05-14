@@ -22,6 +22,11 @@ var storyCfg = {
     defaultYoutubeVolume: 100,
     year: 2021,
 
+    news: {
+        rss: 'https://api.puddy.club/v1/blog/discord?guild=881322783538298891&channel=885198567034191882&rss=rss',
+        url: 'https://api.puddy.club/v1/blog/discord?guild=881322783538298891&channel=885198567034191882',
+    },
+
     contact: 'tiny@ponydriland.com',
 
     nftDomain: {
