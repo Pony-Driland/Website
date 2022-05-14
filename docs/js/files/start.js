@@ -391,6 +391,16 @@ $(function() {
             readButtonDisabled = ' d-none';
         }
 
+        // Read Updater
+        let isNewValue = '';
+        for (const chapter in storyData.isNew) {
+            if (storyData.isNew[chapter] === 1) {
+                isNewValue = $('<span>', { class: 'badge badge-primary ml-2' }).text('NEW');
+            } else if (storyData.isNew[chapter] === 2) {
+                isNewValue = $('<span>', { class: 'badge badge-secondary ml-2' }).text('UPDATE');
+            }
+        }
+
         // Insert Navbar
         $('body').prepend(
 
@@ -477,7 +487,7 @@ $(function() {
                         $('<a>', { id: 'fic-chapter', class: 'nav-item nav-link' }),
 
                         // Read Fanfic
-                        $('<a>', { id: 'fic-start', class: 'nav-item nav-link font-weight-bold' + readButtonDisabled, href: '/?path=read-fic&title=Pony%20Driland' }).text('Read Fic').prepend(
+                        $('<a>', { id: 'fic-start', class: 'nav-item nav-link font-weight-bold' + readButtonDisabled, href: '/?path=read-fic&title=Pony%20Driland' }).text('Read Fic').append(isNewValue).prepend(
                             $('<i>', { class: 'fab fa-readme mr-2' })
                         ).click(function() {
                             if (!readButtonDisabled) {

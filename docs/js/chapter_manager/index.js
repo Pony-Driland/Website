@@ -113,6 +113,11 @@ var openChapterMenu = function(params = {}) {
     // New Read
     const newRead = async function(chapter = 1, page = 1, line = null) {
 
+        // Clear Update Warn
+        $('#fic-start').text('Read Fic').prepend(
+            $('<i>', { class: 'fab fa-readme mr-2' })
+        );
+
         // Load Sounds
         if (storyCfg.sfx) {
             console.log(`Loading Audio Data...`);
