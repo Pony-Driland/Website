@@ -386,7 +386,7 @@ $(function() {
         storyData.readme = readme;
 
         // Get News
-        if (storyCfg && storyCfg.news && storyCfg.news.url) {
+        /* if (storyCfg && storyCfg.news && storyCfg.news.url) {
             fetch(storyCfg.news.url, { method: 'GET' })
                 .then(response => response.json())
                 .then(data => {
@@ -394,7 +394,7 @@ $(function() {
                     console.log(data);
 
                 });
-        }
+        } */
 
 
         /* 
