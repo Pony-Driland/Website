@@ -385,6 +385,28 @@ $(function() {
         // Readme
         storyData.readme = readme;
 
+        // Get News
+        if (storyCfg && storyCfg.news && storyCfg.news.url) {
+            fetch(storyCfg.news.url, { method: 'GET' })
+                .then(response => response.json())
+                .then(data => {
+
+                    console.log(data);
+
+                });
+        }
+
+
+        /* 
+        
+dsMK.toHTML(data[item].content, {
+    escapeHTML: true,
+    embed: false,
+    discordOnly: false,
+});
+        
+        */
+
         // Read Me Disable
         let readButtonDisabled = '';
         if (storyCfg.underDevelopment) {
