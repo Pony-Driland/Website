@@ -19888,6 +19888,81 @@
         "value": "Heh! Ok doki, let's go outside.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny walked out of the tent during the talk.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't forget something to not let me see you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay~ Sir Vinny~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane keep smirking while she spawned a black blindfold and placed this on her paw while followed Vinny. Rayane turns on the tent's external lighting, expanding the cave's field of vision.",
+        "type": "action"
+    },
+
+    {
+        "value": "Are you ready? Can I put?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was looking at the black blindfold curiously, trying to understand what was going on. Then he would laugh a little and say.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine. I'm afraid to ask where and why you have a black blindfold.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laughed a little before smirking again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Awwwww. I think now the one who thought about malicious things was you~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "Rayane used magic to put the blindfold on Vinny face quietly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Dont worry. You just need to trust~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sorry sorry. So let's start.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
