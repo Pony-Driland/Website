@@ -19807,8 +19807,31 @@
     },
 
     {
-        "value": "Rayane put her paw on Vinny's snout",
+        "value": "Rayane put her paw on Vinny's snout.",
         "type": "action"
+    },
+
+    {
+        "value": "Heh. Siiiiilly~ Choose the one you are most talented at using. You know where this silly prank ends~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smirks more. So Vinny laughed a little and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm talking about training. Why do you only think about other things? What can we do now training?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ We are very limited to this cave. Even more so for a pegasus that needs a lot of space to move around.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
