@@ -170,9 +170,9 @@ var storyData = {
                                 }
 
                                 if (isNew) {
-                                    storyData.isNew[chapter] = 1;
-                                } else if (isUpdate) {
                                     storyData.isNew[chapter] = 2;
+                                } else if (isUpdate) {
+                                    storyData.isNew[chapter] = 1;
                                 } else {
                                     storyData.isNew[chapter] = 0;
                                 }
