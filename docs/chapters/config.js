@@ -127,6 +127,7 @@ var storyCfg = {
 
         'dramatic ': [
             { id: 'i1IUSdcauC8', type: 'youtube' },
+            { id: '1XmMTRD_zys', type: 'youtube' },
         ],
 
         'haunted-coal-mines': [
@@ -148,7 +149,12 @@ var storyCfg = {
         ],
 
         'dark-ambient-melodies': [
+            { id: 'lAarDAnoXk0', type: 'youtube' },
             { id: 'LptTKfrHSi4', type: 'youtube' },
+        ],
+
+        'encouraging-emotional': [
+            { id: 'CfCkb8VWNPI', type: 'youtube' },
         ],
 
         'silly': [
@@ -247,6 +253,7 @@ var storyCfg = {
         ],
 
         'tense-mystery': [
+            { id: 'Nziqug75Gn4', type: 'youtube' },
             { id: '7dKxHERhaLE', type: 'youtube' },
             { id: 'QNwjH5EKTTQ', type: 'youtube' },
             { id: '1nBatlpsVj0', type: 'youtube' },
