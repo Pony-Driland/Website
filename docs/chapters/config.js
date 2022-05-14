@@ -135,6 +135,11 @@ var storyCfg = {
             { id: 'gIjSCwPVcU4', type: 'youtube' },
         ],
 
+        'suspenseful-ambient': [
+            { id: '6_Na6QaG0c4', type: 'youtube' },
+            { id: 'fFJHAbeQ0g4', type: 'youtube' },
+        ],
+
         'haunted-coal-mines': [
             { id: 'VCpg4CbgY1U', type: 'youtube' },
         ],
@@ -228,6 +233,7 @@ var storyCfg = {
         ],
 
         'calm': [
+            { id: '6wmRYL5ZdlM', type: 'youtube' },
             { id: 'mxcu9L9j8ww', type: 'youtube' },
             { id: 'dZR7M7gDNSc', type: 'youtube' },
             { id: '7Uyu5BrGMs4', type: 'youtube' },
@@ -259,11 +265,13 @@ var storyCfg = {
         ],
 
         'tense-mystery': [
+            { id: 'YLrJPBbAQoY', type: 'youtube' },
             { id: 'gzQzViNj5go', type: 'youtube' },
             { id: 'Nziqug75Gn4', type: 'youtube' },
             { id: '7dKxHERhaLE', type: 'youtube' },
             { id: 'QNwjH5EKTTQ', type: 'youtube' },
             { id: '1nBatlpsVj0', type: 'youtube' },
+            { id: 'g7x-VUGjnc8', type: 'youtube' },
             { id: 'bE__iQGLxyc', type: 'youtube' },
         ],
 
