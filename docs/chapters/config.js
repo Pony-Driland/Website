@@ -253,6 +253,7 @@ var storyCfg = {
         ],
 
         'tense-mystery': [
+            { id: 'gzQzViNj5go', type: 'youtube' },
             { id: 'Nziqug75Gn4', type: 'youtube' },
             { id: '7dKxHERhaLE', type: 'youtube' },
             { id: 'QNwjH5EKTTQ', type: 'youtube' },
