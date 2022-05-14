@@ -19960,6 +19960,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Sorry sorry. So let's start.",
         "character": "Vinny",
         "type": "dialogue"

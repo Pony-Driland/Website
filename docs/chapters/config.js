@@ -125,6 +125,10 @@ var storyCfg = {
             { id: 'T-uG8gx8nfw', type: 'youtube' },
         ],
 
+        'dramatic ': [
+            { id: 'i1IUSdcauC8', type: 'youtube' },
+        ],
+
         'haunted-coal-mines': [
             { id: 'VCpg4CbgY1U', type: 'youtube' },
         ],
@@ -157,7 +161,8 @@ var storyCfg = {
         ],
 
         'escape': [
-            { id: '_j8jUUzGqDo', type: 'youtube' }
+            { id: '_j8jUUzGqDo', type: 'youtube' },
+            { id: 'FaKRXOgasXA', type: 'youtube' },
         ],
 
         'battle': [
@@ -329,7 +334,11 @@ var storyCfg = {
             { id: 'PkIc6TMLfv0', type: 'youtube' },
             { id: 'uV2eI9KBOFs', type: 'youtube' },
             { id: 'E0wknC_56vE', type: 'youtube' },
-        ]
+        ],
+
+        'troubles': [
+            { id: 'gWNsV8L1DB8', type: 'youtube' },
+        ],
 
     },
 
