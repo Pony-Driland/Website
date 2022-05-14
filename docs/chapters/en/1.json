@@ -19832,6 +19832,62 @@
         "value": "Heh~ We are very limited to this cave. Even more so for a pegasus that needs a lot of space to move around.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Well, I need to listen more carefully, taking advantage of this now, we can practice this, you close my eyes and make some noises and try to approach me in some direction and I try to guess and know. What do you think?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laughed a little as she started to think about some things.",
+        "type": "action"
+    },
+
+    {
+        "value": "I think we'll end up waking up James during our little prank~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was curious and a little surprised as he answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "I didn't mean in here, out there. But this moment is to close my eyes to train. Not to think maliciously and do other little things.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little during some seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "If you think about this I'll understand because you blush, what do you think?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmmmm... Heh~ I'll think about your case~ But it's ok let's go~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane made the silly, malicious smirk face in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh! Ok doki, let's go outside.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
