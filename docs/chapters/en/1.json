@@ -19966,6 +19966,29 @@
         "value": "Sorry sorry. So let's start.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+
+    {
+        "value": "Vinny would stop moving and start focusing on the noises.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ let's start with something very simple. Don't be afraid~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny started to hear the sound of Rayane's magic spawning something sharp slowly. Vinny does a light poker face.",
+        "type": "action"
+    },
+
+    {
+        "value": "...fuck.",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
