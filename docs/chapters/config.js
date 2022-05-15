@@ -365,6 +365,10 @@ var storyCfg = {
             { id: 'gWNsV8L1DB8', type: 'youtube' },
         ],
 
+        'first-vs-rayane': [
+            { id: 'WspwWDFr4IM', type: 'youtube' },
+        ],
+
     },
 
     // SFX
