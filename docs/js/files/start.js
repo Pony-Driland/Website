@@ -426,6 +426,15 @@ dsMK.toHTML(data[item].content, {
             }
         }
 
+        // Year
+        const yearNow = moment().year();
+        let copyrightText = null;
+        if (yearNow === storyCfg.year) {
+            copyrightText = `© ${storyCfg.year} ${storyCfg.title} | `;
+        } else {
+            copyrightText = `© ${storyCfg.year} - ${yearNow} ${storyCfg.title} | `;
+        }
+
         // Insert Navbar
         $('body').prepend(
 
@@ -611,7 +620,7 @@ dsMK.toHTML(data[item].content, {
 
                 // Copyright
                 $('<div>', { id: 'footer2', class: 'footer-copyright text-center py-3 bg-secondary text-white' })
-                .text(`© ${storyCfg.year} ${storyCfg.title} | `).append(
+                .text(copyrightText).append(
                     $('<a>', { target: '_blank', href: storyCfg.creator_url }).text(storyCfg.creator),
                     '.'
                 )
