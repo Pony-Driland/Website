@@ -19989,6 +19989,56 @@
         "value": "...fuck.",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "P..Please. Just won't turn me into sushi.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was sweating a little nervously, looking all around, trying to focus on the sounds. At the exact moment Vinny did that, Vinny felt a huge an uncomfortable feeling of something sharp flying close to his side.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh god.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny does a extreme poker face. Rayane laughed a little after doing the action.",
+        "type": "action"
+    },
+
+    {
+        "value": "Nope nope~ Don't move your face fast for nothing. This action messes up your hearing. You're a beginner who is still learning to differentiate sounds. This could have been a perfect hit with no escape.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed nervously during some seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "F..Fine. Just don't cut my head off. James is a good scientist but i don't think even he would know how to glue my head back.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laughed a little more in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Silly you~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
