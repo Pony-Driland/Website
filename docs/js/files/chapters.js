@@ -110,24 +110,22 @@ var storyData = {
                                     for (const item2 in textSplit) {
 
                                         // Filter
-                                        textSplit[item2] = textSplit[item2].replace(/[^a-zA-Z]+/g, '').toLowerCase();
-                                        if (isNaN(Number(textSplit[item2])) && textSplit[item2].length > 0) {
+                                        const text = tinyLib.toTitleCase(textSplit[item2].replace(/[^a-zA-Z]+/g, '').toLowerCase());
+                                        if (isNaN(Number(text)) && text.length > 0) {
 
                                             // Count Data
                                             if (!Array.isArray(storyCfg.wordCountBlacklick)) { storyCfg.wordCountBlacklick = []; }
-                                            if (!storyData.characters.data.find(charData => charData.value === textSplit[item2]) &&
-                                                storyCfg.wordCountBlacklick.indexOf(textSplit[item2]) < 0
-                                            ) {
-                                                let wordData = storyData.words.find(word => word.value === textSplit[item2]);
+                                            if (storyCfg.wordCountBlacklick.indexOf(text) < 0) {
+                                                let wordData = storyData.words.find(word => word.value === text);
                                                 if (!wordData) {
-                                                    wordData = { count: 0, value: textSplit[item2] };
+                                                    wordData = { count: 0, value: text };
                                                     storyData.words.push(wordData);
                                                 }
                                                 wordData.count++;
                                             }
 
-                                            if (wordCache.indexOf(textSplit[item2]) < 0) {
-                                                wordCache.push(textSplit[item2]);
+                                            if (wordCache.indexOf(text) < 0) {
+                                                wordCache.push(text);
                                                 words++;
                                             }
 
