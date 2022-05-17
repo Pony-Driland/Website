@@ -86,11 +86,12 @@ var storyData = {
                                     // Character Counter
                                     if (typeof data[item].character === 'string' && data[item].character.length > 0) {
 
-                                        const character = data[item].character.toLowerCase();
+                                        const character = tinyLib.toTitleCase(data[item].character);
+                                        const characterLower = data[item].character.toLowerCase();
 
                                         let newData = storyData.characters.data.find(char => char.value === character);
                                         if (!newData) {
-                                            newData = { value: character, id: character.replace(/ /g, '-'), count: 0, chapter: {} };
+                                            newData = { value: character, id: characterLower.replace(/ /g, '-'), count: 0, chapter: {} };
                                             storyData.characters.data.push(newData);
                                         }
 
@@ -110,7 +111,7 @@ var storyData = {
                                     for (const item2 in textSplit) {
 
                                         // Filter
-                                        const text = tinyLib.toTitleCase(textSplit[item2].replace(/[^a-zA-Z]+/g, '').toLowerCase());
+                                        const text = tinyLib.toTitleCase(textSplit[item2].replace(/[^a-zA-Z]+/g, ''));
                                         if (isNaN(Number(text)) && text.length > 0) {
 
                                             // Count Data
