@@ -20039,6 +20039,66 @@
         "value": "Okay. Silly you~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny heard the sword sound coming again at high speed. The sword was making a rotational sound, and moving towards his left.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What?!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny would then crouch, trying to stay focused. Vinny felt the noise from the left passing over him, then sword sound went away and went up. Then Vinny heard the sound of something else coming straight towards him face.",
+        "type": "action"
+    },
+
+    {
+        "value": "My God! What is she doing?!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny tries to dodge by rolling to the left. Vinny managed to dodge the mysterious object that wanted to hit his face. but the sword that was flying returns again towards Vinny and hit him with no chance of escaping.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..WHAT?! RAYANE!",
+        "character": "Vinny",
+        "type": "dialgoue"
+    },
+
+    {
+        "value": "Vinny then felt the extremely sharp presence of the sword hitting him, but when the sword hit Vinny, him just felt a bump. The sword hadn't cut Vinny, but Vinny was aggressively pushed, causing him to roll very far on the floor.",
+        "type": "action"
+    },
+
+    {
+        "value": "F....fuck.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny stops rolling, trying to keep focusing.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane laughed a little for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey~ Don't forget you have wings. Your wings can also help protect youself.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
