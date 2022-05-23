@@ -20152,6 +20152,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Rayane giggles again as she used magic to help Vinny, bring his back to her presence, while taking off his blindfold.",
         "type": "action"
     },
@@ -20168,6 +20171,7 @@
     },
 
     {
+        "set": { "playlistPlay": "calm" },
         "value": "H..heh. Yes.",
         "character": "Vinny",
         "type": "dialogue"
