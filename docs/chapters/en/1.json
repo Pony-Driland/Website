@@ -20094,6 +20094,138 @@
         "value": "Hey~ Don't forget you have wings. Your wings can also help protect youself.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny heard the sound of approaching footsteps, the sound came in a straight line, while the sound of the sword was turning now moved away.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. It seems the best time is now.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny quickly lift the wings and quickly fly towards Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "HEEEEEY!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was flying at high speed, but at the same moment Vinny didn't know that Rayane was just levitating the sword away from her. The sword was in position to strike back. The sword then counterattacked at a very fast speed with no chance of escape.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAAAAAHHH!! FUCK!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "This time the sword hits Vinny's face, using the Vinny's speed to throw his against the cave wall.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. Silly you~ You let your guard down again. You came like a baseball this time~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little more for a few seconds. Vinny groaned a little in pain, trying to get up.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..ouch. Charming Rayane... You missed a nice chance to take advantage of the situation of me going towards you blindfolded.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles again as she used magic to help Vinny, bring his back to her presence, while taking off his blindfold.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sssssh~ Stop being silly~ You'll end up hurting yourself too much.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then slowly open his eyes and laugh slowly while groaning a little in pain.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..heh. Yes.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then wiped his face a little slowly. Vinny saw that the mysterious object he had dodged was just a marshmallow.",
+        "type": "action"
+    },
+
+    {
+        "value": "...Ah.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny also noticed that Rayane was using magic on her sword, but the effect ended. It seemed to be something to protect Vinny from not getting cut during the battle.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ At least you dodged the first attack. But you still need to let your guard down less. Now, be very quiet. I promise this will be fast~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...what?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very curious and looked at Rayane. Rayane's horn started to glow again on a rainbow aura as she focused on Vinny wound kindly. Vinny was moaning again in pain for a few seconds, but slowly he was feeling better. Rayane was using healing magic. A few seconds passed, then Vinny finally felt much better. ",
+        "type": "action"
+    },
+
+    {
+        "value": "T..thank you. Charming Rayane.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane made a malicious smirk for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. You're welcome~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles lightly during some seconds as he stared at James' tent for a few seconds. Then Vinny looks back into Rayane's face.",
+        "type": "action"
     }
 
 ]
