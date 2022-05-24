@@ -20248,6 +20248,123 @@
         "value": "Fuck this! I enjoyed that!",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "Vinny giggles lightly during some seconds as he stared at James' tent for a few seconds. Then Vinny looks at Rayane's face again.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "W..well. Yes. Is James still sleeping after all this noise?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hm?~ Yes. James is a sleepyhead. James is a heavy sleeper~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane's horn seemed to make a slight glow of various colors different from the traditional color of her magic. Vinny slowly felt extremely much better during the process. Vinny felt much calmer",
+        "type": "action"
+    },
+
+    {
+        "value": "F..fantastic magic...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ssssh~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane touch on Vinny snout, helping Vinny to calm down even more during the process. After a few seconds Vinny, so Rayane stopped using magic when Vinny's body was fully regenerated.",
+        "type": "action"
+    },
+
+    {
+        "value": "Are you okay now?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then smiled at Rayane and answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes! Thank you very much!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane booped Vinny kindly as she answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ You're welcome again. Breakfast should be completely ready by now. Marshmallows are waiting for you.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane walked back inside the tent, wating for Vinny. Vinny was still smiling and followed Rayane feeling even happier that he was going to eat the breakfast.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh! I think I'll wake James up with his banana, I'll scream if he puts something else in my mouth this time.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Tabacu head and the tabacu hooves!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Rayane laughed a little and kept quiet watching",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine~ Good luck. Don't be silly this time.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny makes a poker face for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. Let's go.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny walked towards James' mattress slowly.",
+        "type": "action"
     }
 
 ]
