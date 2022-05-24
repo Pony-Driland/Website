@@ -20251,10 +20251,9 @@
     },
 
     {
-        "value": "Vinny giggles lightly during some seconds as he stared at James' tent for a few seconds. Then Vinny looks at Rayane's face again.",
+        "value": "Vinny giggles lightly during some seconds as he stared at the tent for a few seconds. Then Vinny looks at Rayane's face again.",
         "type": "action"
     },
-
 
     {
         "value": "W..well. Yes. Is James still sleeping after all this noise?",
@@ -20318,6 +20317,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "Heh~ You're welcome again. Breakfast should be completely ready by now. Marshmallows are waiting for you.",
         "character": "Rayane",
         "type": "dialogue"
@@ -20329,6 +20329,7 @@
     },
 
     {
+        "set": { "playlistPlay": "silly" },
         "value": "Heh! I think I'll wake James up with his banana, I'll scream if he puts something else in my mouth this time.",
         "character": "Vinny",
         "type": "dialogue"
