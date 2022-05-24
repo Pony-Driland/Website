@@ -20172,13 +20172,13 @@
 
     {
         "set": { "playlistPlay": "calm" },
-        "value": "H..heh. Yes.",
+        "value": "H..heh. Yes. ",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vinny then wiped his face a little slowly. Vinny saw that the mysterious object he had dodged was just a marshmallow.",
+        "value": "Vinny then wiped his face a little slowly. Vinny saw that the mysterious object he had dodged was just a marshmallow. Vinny does a poker face, trying to understand what was happening.",
         "type": "action"
     },
 
@@ -20194,7 +20194,13 @@
     },
 
     {
-        "value": "Heh~ At least you dodged the first attack. But you still need to let your guard down less. Now, be very quiet. I promise this will be fast~",
+        "value": "W..what? So that's the motive I didn't die.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Heh~ At least you dodged the first attack. But you still need a better strategy. Now, be very quiet. I promise this will be fast~",
         "character": "Rayane",
         "type": "dialogue"
     },
