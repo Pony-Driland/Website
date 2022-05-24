@@ -20234,8 +20234,20 @@
     },
 
     {
-        "value": "Vinny giggles lightly during some seconds as he stared at James' tent for a few seconds. Then Vinny looks back into Rayane's face.",
+        "value": "My God. This pony is very violent. Should I be more careful? ",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny giggles lightly during some seconds as he stared at James' tent for a few seconds. Then Vinny looks at Rayane's face again.",
         "type": "action"
+    },
+
+    {
+        "value": "Fuck this! I enjoyed that!",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
