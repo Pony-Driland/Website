@@ -20361,6 +20361,134 @@
     {
         "value": "Vinny walked towards James' mattress slowly. Rayane kept quiet and lay on the floor to just watch every second of the moment. James was still sleeping, as if nothing had happened, in his usual deep sleep.",
         "type": "action"
+    },
+
+    {
+        "value": "HM! Okay! Let's go sir banana!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny pokes James and shakes James, trying to do James wake up.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey James! Your banana is ready! Let's eat go wake up now!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was still sleeping and just turned to the other side of the mattress to keep sleeping.",
+        "type": "action"
+    },
+
+    {
+        "value": "No no. Please, just...just 5 more minutes.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was outraged at the moment.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh my god.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny slowly gets ready to scream.",
+        "type": "action"
+    },
+
+    {
+        "value": "JAMES!!!! WAKE UP!!! THE BANANA SOLDIER IS BACK!! RUUUUN! HE IS BEHIND YOUR BANANA!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny shook James even more over and over and over.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAAAHH! HEEY! WHAT?! S...banana soldier?! MY GOD! THE BANANA AGAIN NOT! WHERE IS THE BANANA SOLDIER?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James desperately got up and the James's horn accidentally hit Vinny mouth this time as James looked around desperately.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...WHAT FUUUUUUCK?! JAMES! OH FUCK!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "HUH? VINI?! VIIIINNY! WHAT THE FUCK IS THAT?! WHAT STUPIDITY IS THAT! GET YOUR MOUTH OUT NOW!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James tries to push Vinny mouth out of the horn desperately. Meanwhile, Rayane was failing in her attempts not to laugh.",
+        "type": "action"
+    },
+
+    {
+        "value": "FUCK! GET THAT HORN OUT OF MY MOUTH! YOUR TETA ANIMAL!! AAAAAAAAHH!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny walked away, falling on his butt during the progress.",
+        "type": "action"
+    },
+
+    {
+        "value": "James?! Are you crazy bro?! I wake you up and you put your horn in my mouth! SHIT! What will be the next??",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "WHAT?! Am I crazy?! Why wake me up like this?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James throws the pillow away in a very stressed way.",
+        "type": "action"
+    },
+
+    {
+        "value": "H...HEY!! NO! You don't wake up on a normal way sometimes! I try to wake you up, but you always talk in your sleep and you don't wake up!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wake me up without screaming! You still haven't told me what this banana story is! If you take too long to tell me, I'll discover this banana myself!!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile, Rayane was laughing a lot, thinking about how to save this special scene for some future time.",
+        "type": "action"
     }
 
 ]
