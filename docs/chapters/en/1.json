@@ -20330,7 +20330,7 @@
 
     {
         "set": { "playlistPlay": "silly" },
-        "value": "Heh! I think I'll wake James up with his banana, I'll scream if he puts something else in my mouth this time.",
+        "value": "Heh! Sooooo... I think I'll wake James up with his banana, I'll scream if he puts something else in my mouth this time.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -20342,29 +20342,24 @@
     },
 
     {
-        "value": "Rayane laughed a little and kept quiet watching",
-        "type": "action"
-    },
-
-    {
-        "value": "Fine~ Good luck. Don't be silly this time.",
+        "value": "Hmmmmmm... Fine~ Good luck. Don't be silly this time.",
         "character": "Rayane",
         "type": "dialogue"
     },
 
     {
-        "value": "Vinny makes a poker face for a few seconds.",
+        "value": "Rayane laughed a little and kept quiet watching. Vinny makes a poker face for a few seconds.",
         "type": "action"
     },
 
     {
-        "value": "Yes. Let's go.",
+        "value": "Yes. I will try again.",
         "character": "Vinny",
-        "type": "think"
+        "type": "dialogue"
     },
 
     {
-        "value": "Vinny walked towards James' mattress slowly.",
+        "value": "Vinny walked towards James' mattress slowly. Rayane kept quiet and lay on the floor to just watch every second of the moment.",
         "type": "action"
     }
 
