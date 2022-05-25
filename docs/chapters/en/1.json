@@ -20487,8 +20487,48 @@
     },
 
     {
-        "value": "Meanwhile, Rayane was laughing a lot, thinking about how to save this special scene for some future time.",
+        "value": "Meanwhile, Rayane was laughing a lot, thinking about how to save this special scene for some future time. When Vinny and James noticed Rayane's reactio, the two slowly stopped the silly moment and does a super poker face.",
         "type": "action"
+    },
+
+    {
+        "value": "W...well... Next time Rayane film this.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny rubs his paw on the face nervously. Rayane continued to laugh for a few more seconds before calming down again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Shut up!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. I think the malice came back against Vinny again~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "No! No! and No! Nobody is helping me! And good morning to you both!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James got up from the mattress and leave the tent in response. Meanwhile, Rayane laughed a little more about the situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Silly~ Two silly ponies~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
