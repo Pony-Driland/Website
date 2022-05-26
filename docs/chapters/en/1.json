@@ -20529,6 +20529,117 @@
         "value": "Silly~ Two silly ponies~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah. This is a cool experience. if I were to do a master's degree in exotic things that james has already done with me... OH MY GOD!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets up during the talk while Rayane laughed a little more in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey silly ponies. The food is ready~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane goes to see how the bread result. James was still a little angry, thinking about the situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine...",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh! Well, move on! Charming Rayane said that the food is on the table.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny happily followed Rayane while James stared at the situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine fineeeeeee...",
+        "character": "James",
+        "type": "think"
+    },
+
+    {
+        "value": "So James followed Rayane and Vinny. Rayane finished preparing the bread. Rayane then levitated the 3 breads and walked towards Vinny and James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmmm~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane looks curiously at Vinny hungry reaction.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. I see you're really hungry~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed and spoke in a playful way.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes yes! I could eat someone! The taste of James' horn seems to have made me hungrier.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks around, smiling nervously, putting his hand on his head.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmmm. Eat a horn? What's the silly thing this time?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane does a silly, mischievous face while using magic to levitate the breakfast toward Vinny and James.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What?! What the fuck is this conversation?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. Vinny, your breakfast is already on the table. Let me take James' plate now~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little while Rayane put the plate on Vinny's hoof.",
+        "type": "action"
     }
 
 ]
