@@ -20805,6 +20805,41 @@
         "value": "Heh. Hey James! You can't be jealous! You can also enter my little heart.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "F..Fine!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little annoyed, embarrassed, and blushing from Vinny's words. Vinny giggles a little and looked at everyone.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "Is everyone ready? Did i forget something?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes~ I'm ready. We'll have a long way to go.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wow. Yeah.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny picked up the glasses again and put the sunglasses over his head.",
+        "type": "action"
     }
 
 ]
