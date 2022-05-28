@@ -20640,6 +20640,124 @@
     {
         "value": "James does a poker face. Vinny laughed a little while Rayane put the plate on Vinny's hoof.",
         "type": "action"
+    },
+
+    {
+        "value": "Rayane, you needs to see if James is ok or is he still weird.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiles, getting ready to eat the breakfast. James was still doing the same poker face, not knowing what to say.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh god.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. Don't worry~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane walks toward James slowly. Meanwhile Vinny was concentrating on trying to keep the plate on his paw, afraid the plate would fall to the floor.",
+        "type": "action"
+    },
+
+    {
+        "value": "R...Really?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked at the wings for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh! It looks like it works like a hand!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny then balanced the plate on top of the wings. Vinny walked over to the table and sat down to eat the breakfast.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh yeah!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Meanwhile Vinny saw Rayane and James arriving. James was feeling calmer, finishing the breakfast, and Rayane had already finished eating her bread.",
+        "type": "action"
+    },
+
+    {
+        "value": "HOW?! It's wonderful! NOM! NOM! NOM!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James eats the breakfast as much as possible. Rayane laughed a little and Vinny was curious.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow! Tabacu head has now changed mood?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny continued to eat during the conversation until Vinny finish eating the breakfast.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "HEY! Don't judge something wonderful like that!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laughed a little while watching James finish his breakfast.",
+        "type": "action"
+    },
+
+    {
+        "value": "James really liked the marshmallows this time~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmmmmm... Interesting. What did you say to James to do him in a good mood? You needs to teach me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "One day I teach you. My secret recipe never fails~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
