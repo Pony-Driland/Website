@@ -19562,7 +19562,7 @@
     },
 
     {
-        "value": "Vinny giggles a little seeing Rayane's reaction. Then Vinny would smile a little and say.",
+        "value": "Vinny giggles a little seeing Rayane's reaction. Then Vinny would smile a little and say while stowing the sunglasses inside the saddle..",
         "type": "action"
     },
 
@@ -20760,6 +20760,17 @@
         "value": "One day I teach you. My secret recipe never fails~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "One day? Hmm. Okay.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little as he calmly waited for everyone to finish what they were doing. Rayane was starting to use magic to organize her belongings. Rayane used her mysterious magic to make her items disappear again.",
+        "type": "action"
     }
 
 ]
