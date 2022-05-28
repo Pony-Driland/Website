@@ -20643,7 +20643,8 @@
     },
 
     {
-        "value": "Rayane, you needs to see if James is ok or is he still weird.",
+        "set": { "playlistPlay": null },
+        "value": "Rayane, you needs to see if James is okay or is he still weird.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -20666,6 +20667,7 @@
     },
 
     {
+        "set": { "playlistPlay": "think" },
         "value": "Rayane walks toward James slowly. Meanwhile Vinny was concentrating on trying to keep the plate on his paw, afraid the plate would fall to the floor.",
         "type": "action"
     },
