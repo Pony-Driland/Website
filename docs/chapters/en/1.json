@@ -20769,14 +20769,42 @@
     },
 
     {
-        "value": "Vinny laughed a little as he calmly waited for everyone finish the tent things. Rayane was starting to use magic to organize her belongings. Rayane used her mysterious magic to make her items disappear again.",
+        "value": "Vinny laughed a little as he calmly waited for everyone finish the tent things. Rayane was starting to use magic to organize her belongings. Rayane used her mysterious magic to make her items disappear again. So Vinny spoke a little ironically while giggles a little.",
         "type": "action"
     },
 
     {
-        "value": "Hey Rayane. I don't know, do you have my little heart too? I'm kind of bummed by the charming poney that you're giving food to me and po James",
+        "value": "Hey Rayane. I don't know, do you have my little heart too? I'm kind of bummed by the charming pony that you're giving food to me and James.",
         "character": "Vinny",
         "type": "dialogue"
     },
+
+    {
+        "value": "Wh...what?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James almost drops the items when hears the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. Don't question the possibilities. You're silly too~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane boops Vinny gently while finishing the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. Hey James! You can't be jealous! You can also enter my little heart.",
+        "character": "Vinny",
+        "type": "dialogue"
+    }
 
 ]
