@@ -98,3 +98,7 @@ body {
     border: 0;
     margin: 4px;
 }
+
+.tmblr-iframe--follow-teaser {
+    display: none !important;
+}
