@@ -52,10 +52,21 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: #cccccc;
-    text-align: left;
     background-color: rgb(29, 29, 29);
 }
 
 .post-wrapper {
     background-color: rgba(0, 0, 0, 0.6);
+}
+
+.pop-menu {
+    background-color: rgb(11, 11, 11);
+}
+
+.pop-menu ul li a {
+    color: #fff;
+}
+
+.pop-menu ul li a:hover {
+    color: #000;
 }
