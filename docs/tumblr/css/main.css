@@ -62,10 +62,6 @@ body {
     display: none !important;
 }
 
-#posts .main .row>div>article {
-    padding: 0px;
-}
-
 #posts .main {
     display: block;
     min-width: 100%;
