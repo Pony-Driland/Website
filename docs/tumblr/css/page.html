@@ -6397,18 +6397,18 @@
                                                                             <div class="pop-menu share-menu south" id="share_{PostID}">
                                                                                 <ul>
                                                                                     <li class="open-in-app"><a href="#" class="share-item open-in-app" data-post="{PostID}">{lang:Open in app}</a></li>
-                                                                                    <li><a href="https://facebook.com/sharer.php?u={URLEncodedPermalink}&amp;t={URLEncodedTitle}" class="share-item facebook" target="_blank">{lang:Facebook}</a></li>
-                                                                                    <li><a href="https://twitter.com/intent/tweet?text={URLEncodedTweetSummary}" class="share-item twitter" target="_blank">{lang:Tweet}</a></li>
+                                                                                    <li><a href="https://facebook.com/sharer.php?u={URLEncodedPermalink}&amp;t={URLEncodedTitle}" class="share-item facebook" target="_blank"><i class="fa-brands fa-facebook"></i> {lang:Facebook}</a></li>
+                                                                                    <li><a href="https://twitter.com/intent/tweet?text={URLEncodedTweetSummary}" class="share-item twitter" target="_blank"><i class="fa-brands fa-twitter"></i> {lang:Tweet}</a></li>
                                                                                     {block:Photo}
-                                                                                        <li><a href="//www.pinterest.com/pin/create/button/?url={URLEncodedPermalink}&amp;media={PhotoURL-500}" class="share-item pinterest" target="_blank">{lang:Pinterest}</a></li>
+                                                                                        <li><a href="//www.pinterest.com/pin/create/button/?url={URLEncodedPermalink}&amp;media={PhotoURL-500}" class="share-item pinterest" target="_blank"><i class="fa-brands fa-pinterest"></i> {lang:Pinterest}</a></li>
                                                                                     {/block:Photo}
                                                                                     {block:Video}{block:VideoThumbnail}
-                                                                                        <li><a href="//www.pinterest.com/pin/create/button/?url={URLEncodedPermalink}&amp;media={VideoThumbnailURL}&amp;is_video=true" class="share-item pinterest" target="_blank">{lang:Pinterest}</a></li>
+                                                                                        <li><a href="//www.pinterest.com/pin/create/button/?url={URLEncodedPermalink}&amp;media={VideoThumbnailURL}&amp;is_video=true" class="share-item pinterest" target="_blank"><i class="fa-brands fa-pinterest"></i> {lang:Pinterest}</a></li>
                                                                                     {/block:VideoThumbnail}{/block:Video}
-                                                                                    <li><a href="https://reddit.com/submit?url={URLEncodedPermalink}" class="share-item reddit" target="_blank">{lang:Reddit}</a></li>
-                                                                                    <li><a href="mailto:?subject={URLEncodedShareString}&amp;body={URLEncodedMailSummary}" class="share-item mail">{lang:Mail}</a></li>
-                                                                                    <li><a href="{EmbedUrl}" class="share-item permalink">{lang:Embed}</a></li>
-                                                                                    <li><a href="{Permalink}" class="share-item permalink">{lang:Permalink} <i class="arrow"></i></a></li>
+                                                                                    <li><a href="https://reddit.com/submit?url={URLEncodedPermalink}" class="share-item reddit" target="_blank"><i class="fa-brands fa-reddit-alien"></i> {lang:Reddit}</a></li>
+                                                                                    <li><a href="mailto:?subject={URLEncodedShareString}&amp;body={URLEncodedMailSummary}" class="share-item mail"><i class="fa-solid fa-at"></i> {lang:Mail}</a></li>
+                                                                                    <li><a href="{EmbedUrl}" class="share-item permalink"><i class="fa-solid fa-paperclip"></i> {lang:Embed}</a></li>
+                                                                                    <li><a href="{Permalink}" class="share-item permalink"><i class="fa-solid fa-link"></i> {lang:Permalink} <i class="arrow"></i></a></li>
                                                                                 </ul>
                                                                             </div>
                                                                         </nav>
