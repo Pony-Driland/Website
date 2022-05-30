@@ -45,6 +45,9 @@
             <script src="https://static.tumblr.com/hriofhd/Qj0m8pn7q/html5shiv.js"></script>
         <![endif]-->
 
+        <script>
+            var page_url = new URL(location.href);
+        </script>
         <style>
             /* Colors */
             body {
@@ -7816,8 +7819,6 @@
         </script>
         {/block:IfSyntaxHighlighting}
         <script>
-            var page_url = new URL(location.href);
-            console.log(page_url);
             if(page_url.pathname.startsWith('/ask')) {
                 $('#page_menu_2').remove();
                 $('#page_menu_1').removeClass('col-sm-3').addClass('col-sm-12');
