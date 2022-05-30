@@ -154,7 +154,8 @@
 
             }
 
-            body {
+            body {    
+                overflow-x: hidden;
                 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
                 color: #cccccc;
                 background-color: rgb(29, 29, 29);
@@ -4326,6 +4327,29 @@
         <link rel="stylesheet" href="https://ponydriland.com/photoswipe/default-skin/default-skin.css">
         <script src="https://ponydriland.com/js/photoswipe.min.js?v=171"></script>
         <script src="https://ponydriland.com/js/photoswipe-ui-default.min.js?v=171"></script>
+        <script>
+            $(() => {
+
+                $('.u-photo').each(function() {
+                    $(this).click(function() {
+                        
+                        var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, [{ 
+                            src: $(this).attr('src'), 
+                            h: $(this).attr('height'), w: $(this).attr('width') 
+                        }], { index: 0 });
+
+                        gallery.init();
+                        $(this).fadeTo("fast", 0.7, function() {
+                            $(this).fadeTo("fast", 1);
+                        });
+
+                        return false;
+
+                    });
+                });
+
+            });
+        </script>
     </head>
     <body data-urlencoded-name="{URLEncodedName}" class="{select:Layout}{block:IndexPage} index-page{/block:IndexPage}{block:PermalinkPage} permalink{/block:PermalinkPage}{block:LikesPage} likes-page{/block:LikesPage}{block:FollowingPage} following-page{/block:FollowingPage}{block:SearchPage} search-page{block:NoSearchResults} no-results{/block:NoSearchResults}{block:NoLikes} no-likes{/block:NoLikes}{block:NoPosts} no-posts{/block:NoPosts}{block:NoFollowing} no-following{/block:NoFollowing}{/block:SearchPage}{block:HideHeaderImage} no-header-image{/block:HideHeaderImage}{block:NoStretchHeaderImage} contain-header-image{/block:NoStretchHeaderImage}{block:IfRelatedPosts} display-related-posts{/block:IfRelatedPosts}{block:ShowAdsOnThisPage} show-ads{/block:ShowAdsOnThisPage}">
 
@@ -4572,7 +4596,7 @@
 
                 <div class="container">
 
-                    <div class="main main mb-sm-0 mb-5">
+                    <div class="main mb-sm-0 mb-5">
 
                         <div class="row">
 
