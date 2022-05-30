@@ -103,7 +103,12 @@ body {
     margin: 4px;
 }
 
-.tmblr-iframe--follow-teaser,
+
+/* .tmblr-iframe--follow-teaser,
+.tmblr-iframe--unified-controls {
+    display: none !important;
+} */
+
 .tmblr-iframe--unified-controls {
     display: none !important;
 }
