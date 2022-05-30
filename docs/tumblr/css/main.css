@@ -85,6 +85,10 @@ body {
     padding-bottom: 11px;
 }
 
+.nav-wrapper.nav-fixed {
+    top: 0;
+}
+
 .nav-wrapper.nav-responsive .inline-nav::after {
     width: 0 !important;
 }
