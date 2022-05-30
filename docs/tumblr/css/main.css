@@ -85,7 +85,7 @@ body {
     padding-bottom: 11px;
 }
 
-.nav-wrapper.nav-fixed {
+.nav-wrapper .nav-fixed {
     top: 0;
 }
 
