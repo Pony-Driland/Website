@@ -48,3 +48,14 @@
         max-width: 1140px;
     }
 }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: #cccccc;
+    text-align: left;
+    background-color: rgb(29, 29, 29);
+}
+
+.post-wrapper {
+    background-color: rgba(0, 0, 0, 0.6);
+}
