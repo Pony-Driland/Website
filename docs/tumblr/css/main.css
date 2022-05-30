@@ -7,6 +7,8 @@ body {
 .post-wrapper,
 .post-wrapper-2 {
     background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 6px;
+    overflow: hidden;
 }
 
 .pop-menu {
