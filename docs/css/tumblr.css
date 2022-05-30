@@ -93,3 +93,8 @@ body {
 .nav-wrapper .nav-item .label {
     color: #fff;
 }
+
+#header .avatar-wrapper .user-avatar {
+    border: 0;
+    margin: 4px;
+}
