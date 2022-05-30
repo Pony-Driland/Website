@@ -4,7 +4,8 @@ body {
     background-color: rgb(29, 29, 29);
 }
 
-.post-wrapper {
+.post-wrapper,
+.post-wrapper-2 {
     background-color: rgba(0, 0, 0, 0.6);
 }
 
