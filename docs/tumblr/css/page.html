@@ -5827,46 +5827,46 @@
                     <nav class="nav-menu">
                         <ul class="inline-nav">
                             <li class="nav-item nav-item--posts">
-                                <a href="/" class="label {block:HomePage}current-page{/block:HomePage}">{lang:Posts}</a>
+                                <a href="/" class="label {block:HomePage}current-page{/block:HomePage}"><i class="fa-solid fa-house"></i> {lang:Posts}</a>
                             </li>
                             {block:Likes}
                                 <li class="nav-item nav-item--likes">
-                                    <a href="/likes" class="label {block:LikesPage}current-page{/block:LikesPage}">{lang:Likes}</a>
+                                    <a href="/likes" class="label {block:LikesPage}current-page{/block:LikesPage}"><i class="fa-solid fa-heart"></i> {lang:Likes}</a>
                                 </li>
                             {/block:Likes}
                             {block:ShareFollowing}
                                 <li class="nav-item nav-item--following">
-                                    <a href="/following" class="label {block:FollowingPage}current-page{/block:FollowingPage}">{lang:Following}</a>
+                                    <a href="/following" class="label {block:FollowingPage}current-page{/block:FollowingPage}"><i class="fa-solid fa-bell"></i> {lang:Following}</a>
                                 </li>
                             {/block:ShareFollowing}
                             {block:AskEnabled}
                                 <li class="nav-item nav-item--ask">
-                                    <a href="/ask" class="label {block:AskPage}current-page{/block:AskPage}">{AskLabel}</a>
+                                    <a href="/ask" class="label {block:AskPage}current-page{/block:AskPage}"><i class="fa-solid fa-clipboard-question"></i> {AskLabel}</a>
                                 </li>
                             {/block:AskEnabled}
                             {block:SubmissionsEnabled}
                                 <li class="nav-item nav-item--submit">
-                                    <a href="/submit" class="label {block:SubmitPage}current-page{/block:SubmitPage}">{SubmitLabel}</a>
+                                    <a href="/submit" class="label {block:SubmitPage}current-page{/block:SubmitPage}"><i class="fa-solid fa-pager"></i> {SubmitLabel}</a>
                                 </li>
                             {/block:SubmissionsEnabled}
                             {block:HasPages}
                                 {block:Pages}
                                 <li class="nav-item nav-item--page">
-                                    <a href="{URL}" class="label {CurrentState} {ExternalState}">{Label}</a>
+                                    <a href="{URL}" class="label {CurrentState} {ExternalState}"><i class="fa-solid fa-link"></i> {Label}</a>
                                 </li>
                                 {/block:Pages}
                             {/block:HasPages}
                             <li class="nav-item nav-item--page">
-                                <a href="/rss" target="_blank" class="label external-page">RSS</a>
+                                <a href="/rss" target="_blank" class="label external-page"><i class="fa-solid fa-rss"></i> RSS</a>
                             </li>
                             <li class="nav-item nav-item--page">
-                                <a href="/random" class="label external-page">{lang:Random}</a>
+                                <a href="/random" class="label external-page"><i class="fa-solid fa-shuffle"></i> {lang:Random}</a>
                             </li>
                             <li class="nav-item nav-item--page">
-                                <a href="/mobile" class="label external-page">{lang:Mobile}</a>
+                                <a href="/mobile" class="label external-page"><i class="fa-solid fa-mobile"></i> {lang:Mobile}</a>
                             </li>
                             <li class="nav-item nav-item--archive">
-                                <a href="/archive" class="label external-page">{lang:Archive}</a>
+                                <a href="/archive" class="label external-page"><i class="fa-solid fa-box-archive"></i> {lang:Archive}</a>
                             </li>
                         </ul>
                     </nav>
