@@ -70,3 +70,26 @@ body {
 .pop-menu ul li a:hover {
     color: #000;
 }
+
+.link-wrapper .link {
+    color: #2b2b2b;
+}
+
+.nav-menu {
+    color: #fff;
+    background-color: #a91126;
+}
+
+.nav-menu {
+    padding-top: 1px;
+    padding-bottom: 11px;
+}
+
+.nav-wrapper.nav-responsive .inline-nav::after {
+    width: 0 !important;
+}
+
+#pagination a,
+.nav-wrapper .nav-item .label {
+    color: #fff;
+}
