@@ -20837,6 +20837,7 @@
     },
 
     {
+        "set": { "playlistPlay": "dark-ambient-melodies" },
         "value": "Vinny picked up the glasses again and put the sunglasses over his head.",
         "type": "action"
     }
