@@ -13,6 +13,7 @@ var storyCfg = {
     title: 'Pony Driland',
     patreon: 'JasminDreasond',
     derpibooru_tag: 'pony+driland',
+    blog_url: 'https://blog.ponydriland.com/',
     kofi: 'JasminDreasond',
     discordInvite: 'GegfAgNxRX',
     description: 'The dimension of lost creatures and the home of hope.',
