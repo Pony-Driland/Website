@@ -21013,6 +21013,12 @@
     },
 
     {
+        "value": "Heh! Well...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
         "value": "Vinny looked at the SmartMoby for a few seconds and looked back at everyone. Vinny took a deep breath and says.",
         "type": "action"
     },
