@@ -20840,6 +20840,170 @@
         "set": { "playlistPlay": "dark-ambient-melodies" },
         "value": "Vinny picked up the glasses again and put the sunglasses over his head.",
         "type": "action"
+    },
+
+    {
+        "value": "Well... James, I don't know if Rayane said this information, but while you two were sleeping I walked around a bit. I found half a pickaxe and a SmartMoby destroyed. Looks like I found on ground shooting debris, and some looted bags.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James is surprised and a little scared.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...What? Are you serious?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah yeah. Let's be careful, if you manage to make this broken pickaxe useful, there were some little gold pipes on the wall.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "You should have told me that sooner!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James would facehoof and get worried and a little disgusted. Vinny does a poker face and continues the conversation, trying to keep the matter serious.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah. Our first sleep date didn't go very well, but whoever was here isn't here anymore, otherwise something from us would have been stolen or gone or I would have been kidnapped at that moment alone in the dark.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was doing a malicious laugh.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmmmmm. Don't trust your luck too much. Remember that our tents are resistant and only open from the inside.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh god! Fuck god! At least choose a less dangerous path for us!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey! Calm down tabacu head! In my world, whoever wants to steal, does everything, for sure if there really was someone here, they would find a way.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little at James.",
+        "type": "action"
+    },
+
+    {
+        "value": "James. Where I saw all this, there's only one way to go. Fine?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "One way? But we have the exit...",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James does a facehoof as he looked at the blocked exit.",
+        "type": "action"
+    },
+
+    {
+        "value": "FINE! Okay! Got it! Let's go!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ James, don't worry. The alternative exit shouldn't be that far. Maybe we'll take a shortcut. Just be careful. We may be being spied on.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath and reflected a little, calming down and accepting the fate he had to follow.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Sorry everypone. Rayane, I...I will trust you. I will try trust you.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh! My middle name is Vinny attention baby! if someone gets close to me I'll slap them and say they're all mine.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "No! No! No! You go quiet and silent without doing anything stupid!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little scared for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey! Tabacu head! Calm down!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James finished getting everything he needed to put in his backpack while Rayane laughed a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny~ Don't forget that we need to train more. Alright? I don't want to see you get beaten up like the first training. I want to see you manage to knock me to the ground at least once~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane did the silly mischievous look before boop Vinny and give Vinny the tent cube. Vinny was a little surprised and responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "When I take you down... Naah, better not even think about what will happen. James is getting embarrassed.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looked at the SmartMoby for a few seconds and looked back at everyone. Vinny took a deep breath and says.",
+        "type": "action"
     }
 
 ]
