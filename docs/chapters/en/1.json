@@ -20951,19 +20951,30 @@
     },
 
     {
-        "value": "Heh! My middle name is Vinny attention baby! if someone gets close to me I'll slap them and say they're all mine.",
+        "value": "This is a great opportunity for you to stop being afraid of me. I won't bite you~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was embarrassed, but still suspicious, and just continued what he was doing.",
+        "type": "action"
+    },
+
+    {
+        "value": "James! Calm down! My middle name is Vinny attention baby! if someone gets close to me I'll slap them and say they're all mine.",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "No! No! No! You go quiet and silent without doing anything stupid!",
+        "value": "W..what?! No! No! No! You go quiet and silent without doing anything stupid!",
         "character": "James",
         "type": "dialogue"
     },
 
     {
-        "value": "Vinny was a little scared for a few seconds.",
+        "value": "James slapped Vinny on the head.",
         "type": "action"
     },
 
