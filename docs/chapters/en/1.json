@@ -21052,7 +21052,7 @@
     },
 
     {
-        "value": "Rayane looked at Vinny SmartMoby curiously for a few seconds.",
+        "value": "Rayane looked at Vinny SmartMoby curiously for a few seconds. Vinny was curious about Rayane's attitude.",
         "type": "action"
     },
 
@@ -21069,18 +21069,7 @@
     },
 
     {
-        "value": "Oh! You can keep calm, yours I won't even come close.",
-        "character": "Vinny",
-        "type": "dialogue"
-    },
-
-    {
-        "value": "Vinny smiles, looking at the bottom of the cave.",
-        "type": "action"
-    },
-
-    {
-        "value": "Well... Let's go?",
+        "value": "F..fine. Well, let's go?",
         "character": "Vinny",
         "type": "dialogue"
     },
