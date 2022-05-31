@@ -21099,6 +21099,73 @@
     {
         "value": "Rayane and James started walking while Vinny followed the two with great determination.",
         "type": "action"
+    },
+
+    {
+        "value": "Rayane and James then started using magic to light up the place while Vinny used his helmet light to do the same thing. Without the tents, there were no longer any objects emitting light.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... Plan B if something happens to my flashlight?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? Plan b? This is the only one I have because I rarely use flashlights.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little suspicious that Vinny is a little scared.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine. Fine. Got it, let's go, this cave is already stressing me out.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled a little and continued walking.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny... I hope you still have the SmartMoby. Maybe we can find out something about its origin.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Naaah. Don't worry. It's all safe with me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was very focused on every sound and every thing she saw around her. Rayane didn't seem to be paying attention to the conversation anymore.",
+        "type": "action"
+    },
+
+    {
+        "value": "But please keep it a secret. This item is a corpse.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little scared for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...alright.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
