@@ -21004,6 +21004,101 @@
     {
         "value": "Vinny looked at the SmartMoby for a few seconds and looked back at everyone. Vinny took a deep breath and says.",
         "type": "action"
+    },
+
+    {
+        "value": "Well. I know everyone here is trying to survive, I know very well how to take care of myself. The problems and that with you two around, I need to take certain precautions, but you can relax. Alright?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little.  James was getting bored, just waiting for the conversation to end.",
+        "type": "action"
+    },
+
+    {
+        "value": "Seriously?~ Never let your guard down in these situations. This will be your biggest mistake. Silly one~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little embarrassed during some seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..Yeah.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane looked at Vinny SmartMoby curiously for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. Sorry. Just be careful with your choices. I don't want you to accidentally end up making the same mistakes I did.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh! You can keep calm, yours I won't even come close.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiles, looking at the bottom of the cave.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... Let's go?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane does a slightly dramatic smile.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..yes. Let's go.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane does a slightly dramatic smile. James looked at Rayane's reaction very curiously. And he was very curious to see her behavior.",
+        "type": "action"
+    },
+
+    {
+        "value": "What is really going on here?",
+        "character": "James",
+        "type": "think"
+    },
+
+    {
+        "value": "Yeah! Come on!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane and James started walking while Vinny followed the two with great determination.",
+        "type": "action"
     }
 
 ]
