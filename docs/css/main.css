@@ -71,7 +71,8 @@
 .ficMode #mdMenu #crypto-wallet,
 .ficMode #mdMenu #discord-server,
 .ficMode #mdMenu #license,
-.ficMode #mdMenu #derpibooru-page {
+.ficMode #mdMenu #derpibooru-page,
+.ficMode #mdMenu #blog-url {
     display: none !important;
 }
 

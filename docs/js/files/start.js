@@ -495,9 +495,14 @@ dsMK.toHTML(data[item].content, {
                             $('<i>', { class: 'fas fa-wallet mr-2' })
                         ),
 
-                        // Crypto Wallet
+                        // Derpibooru
                         $('<a>', { class: 'nav-item nav-link', target: '_blank', href: 'https://derpibooru.org/tags/' + storyCfg.derpibooru_tag, id: 'derpibooru-page' }).text('Derpibooru').prepend(
                             $('<i>', { class: 'fa-solid fa-paintbrush mr-2' })
+                        ),
+
+                        // Blog
+                        $('<a>', { class: 'nav-item nav-link', target: '_blank', href: storyCfg.blog_url, id: 'blog-url' }).text('Blog').prepend(
+                            $('<i>', { class: 'fa-solid fa-rss mr-2' })
                         ),
 
                         // LICENSE
