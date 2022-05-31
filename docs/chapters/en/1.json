@@ -21166,6 +21166,68 @@
         "value": "A...alright.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Time kept moving forward. The walk seemed very long and tedious. Everything was very silent. The environment was a little scary. Vinny began to see familiar things on the floor of what he had found a few hours ago.",
+        "type": "action"
+    },
+
+    {
+        "value": "More gunfire? Wow. Maybe there are more bodies here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny... Don't mess with anything. The less we interact with dead ponies here, the better.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah... Sorry.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little disappointed and looked at the floor during some seconds. Meanwhile James was analyzing the mysterious marks on the floor for a few seconds during the travel.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait... That doesn't look like a gunshot. It appears to be sword mark.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little more disappointed in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Awww. I was already thinking that if we were by surprise we could steal some weapon.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile, Rayane finds 3 cave passages. She stopped walking and looked at the 3 paths curiously.",
+        "type": "action"
+    },
+
+    {
+        "value": "Shhhh~ I found 3 ways. We will have to choose one of them.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
