@@ -21357,6 +21357,11 @@
     },
 
     {
+        "value": "Vinny was still nervous, very thoughtful. But he tried to be brave enough to answer.",
+        "type": "action"
+    },
+
+    {
         "value": "W..well. I would go in the first one to try to take advantage of something like if we really run into some conflict, we can try to take something and get out of there. But I prefer to go the 2nd or 3rd way. I want to go to the 1st but I'm far from preferring and wanting something safe.",
         "character": "Vinny",
         "type": "dialogue"
@@ -21364,7 +21369,7 @@
 
 
     {
-        "value": "If you two knows how to follow me, we can take the first way. My plan is very simple. My teleportation can help us cross any possible obstacle as quietly as possible. Let's find the ponies before the ponies find us. If we find all ones, we can take advantage of the blind spots and cross to the other side.",
+        "value": "Hmmm. Heh. If you two knows how to follow me, we can take the first way. My plan is very simple. My teleportation can help us cross any possible obstacle as quietly as possible. Let's find the ponies before the ponies find us. If we find all ones, we can take advantage of the blind spots and cross to the other side.",
         "character": "Rayane",
         "type": "dialogue"
     }
