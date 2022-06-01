@@ -21229,6 +21229,149 @@
         "value": "Ah?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Shhhhhhhh~ And I'm also hearing strange noises.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny and James were a little worried and extremely quiet. Vinny would start to hear some strange noise coming from the back of the cave.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... That sound. this one seems to be...",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "hJames is interrupted by another sound, this time the sound was much stronger, this seemed to be from some explosion, coming from the first way. Rayane by extinct, activated a force field barrier in front.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wh... what?! Rayane?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wow! Hey everypony!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little scared and walked a little backwards.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane tried not to react too much so as not to try to lose focus.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. The sound was stronger this time.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...Well, in theory, here is a cave, there's gold on the wall and some broken pickaxes, there's some kind of exploration going on, but there was some dead pony here. Is someone there blowing up something to maybe get gold. A..Alright?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "No. If the explosion happened in the cave, the cave would have shaken. This sound must be coming from outside somewhere. We can be close to some war.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane looked a little more worried as she looked at the first path.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...war? War now?! Maybe we were lucky to find a quick exit. So we're extremely close to a way out, but I don't want to die in a war.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would start to feel nervous for a few seconds and then say.",
+        "type": "action"
+    },
+
+    {
+        "value": "Seriously? So we have war in this world too?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey hey Vinny! It's not always wars. it can be small confrontations. But yes, maybe we'll find a war of rivals between the West and East villages of Pony Driland for resources.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "O...oh fuck.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was even more nervous to hear this. Meanwhile, Rayane was approaching the first way a little, to try to hear better the noise coming from there.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. The explosion noises are quieter. We'll need to be very careful now.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Are you crazy?! Are you really going there?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. Two alternatives. We follow this path or we will be persecuted in here and die.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James got a little scared. James was extremely thoughtful. But then he remembered deeply that he had promised to trust Rayane. James is taking a deep breath and saying.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine fine.... And you, Vinny? Will you agree to this?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..well. I would go in the first one to try to take advantage of something like if we really run into some conflict, we can try to take something and get out of there. But I prefer to go the 2nd or 3rd way. I want to go to the 1st but I'm far from preferring and wanting something safe.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "If you two knows how to follow me, we can take the first way. My plan is very simple. My teleportation can help us cross any possible obstacle as quietly as possible. Let's find the ponies before the ponies find us. If we find all ones, we can take advantage of the blind spots and cross to the other side.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
