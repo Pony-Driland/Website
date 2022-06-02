@@ -21490,6 +21490,62 @@
         "value": "L..light? Sun light! Finally!",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "Suddenly, another explosion sound happened much louder than the last one.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAH! BUT WHAT THE FUCK IS THIS NOW?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was more worried.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ssssssh. This one was much louder, it means we are close the war this time.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes James, it's going to be okay. You just relax and enjoy the view of my big boy there, don't look at him too much or you'll be embarrassed.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wh...what?! What is your problem?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then suddenly a marshmallow spawned in James' mouth for him to stop talking.",
+        "type": "action"
+    },
+
+    {
+        "value": "Siiiiilly~ Ssssh~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath and was still a little disgusted.",
+        "type": "action"
+    },
+
+    {
+        "value": "H...hmmm.",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
