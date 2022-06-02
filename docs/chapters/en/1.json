@@ -21456,6 +21456,40 @@
     {
         "value": "James then started following Vinny and Rayane, trying to calm down from the bad feeling. So there was James in the back, Vinny in the middle, and Rayane in the front following a straight line. Everything looked very calm. All that could be found was just small traces of gold. Meanwhile, Rayane was the one who was keeping the focus of concentration on what was happening around her.",
         "type": "action"
+    },
+
+    {
+        "value": "Hey everypony. Don't be scared if another explosion happens.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Explosion? Heh. Silly you~ Explosion is nothing for me~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little while walking quietly. James was surprised and a little irritated.",
+        "type": "action"
+    },
+
+    {
+        "value": "Amazing... Amazing how you two can be braver than me.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then time passed. It was a lot of concentration, a lot of analysis, all of which made a short time seem long. Suddenly, it seemed that a small sunlight was finally visible at the end of the cave.",
+        "type": "action"
+    },
+
+    {
+        "value": "L..light? Sun light! Finally!",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
