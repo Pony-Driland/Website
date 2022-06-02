@@ -21372,6 +21372,90 @@
         "value": "Hmmm. Heh. If you two knows how to follow me, we can take the first way. My plan is very simple. My teleportation can help us cross any possible obstacle as quietly as possible. Let's find the ponies before the ponies find us. If we find all ones, we can take advantage of the blind spots and cross to the other side.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very thoughtful for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Okay... Let's go in the first one, but if things get out of control, we'll go back and try to block the passage. Can be this plan? Everyone in agreement?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was confused and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Block the passage? What are we going to use to block the passage?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? None of you have any magic for that?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James does a facehoof.",
+        "type": "action"
+    },
+
+    {
+        "value": "We don't have magic to create objects from the beyond like that alicorn that almost killed my heart!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay okay. Forget the part about going back, let's just go then, if we find an explosive in the middle of the way, we'll agree between us.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny would just start walking towards the 1st path.",
+        "type": "action"
+    },
+
+    {
+        "value": "Explosives? But Vinny! Are you putting this on all or nothing?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Are you coming?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little at James' reaction before following Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. Let's go~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh god! Fine!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James then started following Vinny and Rayane.",
+        "type": "action"
     }
 
 ]
