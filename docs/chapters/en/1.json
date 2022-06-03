@@ -21546,6 +21546,39 @@
         "value": "Fiiiine.",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile, Vinny, Rayane, James began to see a camp with many abandoned tents. The place looked like it had been recently abandoned. Vinny was a little worried and everyone was quiet looking at the scene.",
+        "type": "action"
+    },
+
+    {
+        "value": "Weeeeell.. Let's keep our voices down now.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tried to speak even a little lower and looked at James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Alright James?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laughed softly in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "F.i.n.e.",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
