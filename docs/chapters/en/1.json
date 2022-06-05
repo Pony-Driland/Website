@@ -21579,6 +21579,231 @@
         "value": "F.i.n.e.",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "James, you need to keep calm. It's seems that your biggest weakness is your own anxiety. You'll need to control youself better~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little disappointed in himself to hear this. So James took a deep breath and just nodded and was quiet.",
+        "type": "action"
+    },
+
+    {
+        "value": "O...Okay. Sorry.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Alright. Let's go.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked around, trying to see anything unusual. Everything was very quiet and there were many stones for possible hiding places, Vinny couldn't hear any suspicious sounds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmm...",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane very slowly held some magic, thinking of some point to teleport while talking quietly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Maybe it's a good time for us to choose where we can teleport to.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Teleport? Into some abandoned tent? This look a good idea.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well... Anywhere we can hide is fine.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Anywhere... So let's choose the tent.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane prepared to execute the teleportation magic slowly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Aaaaah... Everypony? I have a bad feeling about the outcome of this.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ssssssh. Bad things are already happening. We need to be quick.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James felt uncomfortable and became even quieter. Rayane then quickly teleports everyone to the second abandoned tent.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh god. Why?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James and Vinny looks around after teleportation for a few seconds. Vinny and Jamesheard a sound of some pony having his voice muffled by something.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...what?????",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ssssh!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was quiet and embarrassed for a few seconds. Vinny turns off the flashlight and looks around again for a few seconds. So Vinny and James saw that Rayane was using her hoof to cover the mouth of a mysterious pony that was trying to call for help. And she was levitating the sword near the pony to keep the pony quiet. James and Vinny was extremely surprised and tried to speak as quietly as possible.",
+        "type": "action"
+    },
+
+    {
+        "value": "Uh... shit. Rayane! you scare me! I didn't even see you capturing him.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...What are you going to do Rayane?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. I was sure of the shadow I saw in the tent when everyone was just walking. I will negotiate and ask some questions~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile the pony that was intimidated, tried to keep calm while still showing fear about what was happening. Rayane looked at the mysterious pony again for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmm. If he's too scared, it's because he's probably alone here.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..Yeah.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks around curiously for a few seconds. Vinny could see that the tent was completely messed up. The pony was just alone and scared, seeming to show no danger.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh, James~ Use your magic. You are the one who can do this most safely now.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little surprised to realize what mission he was going to do at the moment.",
+        "type": "action"
+    },
+
+    {
+        "value": "M...me? Alright! Alright. Magic and levitation. Sorry to be nervous. I didn't think we would need to do this.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James tried to stay calm. James used magic to remove all belongings from the pony, leaving him completely helpless to try to react. James left all the objects next to a chest of the tent.",
+        "type": "action"
+    },
+
+    {
+        "value": "Does he have any dangerous items?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked at the pony's face very curiously. And the pony was even more frightened.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ Don't worry. He was probably looted.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah...",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James got bored as he shook the mysterious pony's saddle and just dropped the rest of broken tools.",
+        "type": "action"
+    },
+
+    {
+        "value": "We won't have to do anything.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was still analyzing the pony, so Vinny saw that the pony is just an earth pony, he was very scared and intimate with the situation, trying to get the courage to say something.",
+        "type": "action"
+    },
+
+    {
+        "value": "I...Is happy? I have nothing important. I just want to leave and go home. P..Please!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The pony spoke with great fear of Rayane's sword, wanting not to say too many details due to fear.",
+        "type": "action"
     }
 
 ]
