@@ -22086,6 +22086,75 @@
         "value": "Vinny! OH FUCK GOD! He's still seriously injured psychologically!",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "James... You're emotional for Jeff, and more anxious for the explosion, you're acting on pure impulse.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny looked at Rayane and was a little surprised to look at Rayane reaction.",
+        "type": "action"
+    },
+
+    {
+        "value": "And you? You looks worried.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..what? W..worried? Sorry. I'm very thoughtful about it all.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was getting ready to leave the cave. But then she looked at Jeff to see that he was wanting to say something.",
+        "type": "action"
+    },
+
+    {
+        "value": "H...hey Vinny. S..Sorry, but maybe I'm wrong. This blue pony is mysterious Rayane that some ponies talk so much about?",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...Who?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looked surprised at Rayane during some seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah. Nobody said Rayane here. Alright?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A...re you sure? I remember very well seeing a pony similar to her wearing some armor. But this has been a long time ago.",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "Jeff spoke curiously and a little worried.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, why don't you ask her instead of me?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
