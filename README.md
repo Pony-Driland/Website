@@ -65,14 +65,6 @@ Dragon Ball Super
 
 ## Progress
 
-### Website
-Under development.
-
-### Chapter 1
-Beta Version - 100% Complete
-
-Final Version - 90% Complete
-
 ### Chapter 2
 Beta Version - 100% Complete
 
@@ -84,7 +76,7 @@ Beta Version - 100% Complete
 Final Version - 0% Complete
 
 ### Chapter 4
-Beta Version - 4% Complete
+Beta Version - 12% Complete
 
 Final Version - 0% Complete
 
