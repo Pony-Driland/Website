@@ -22040,6 +22040,7 @@
     },
 
     {
+        "set": { "playlistPlay": null },
         "value": "James looked completely irritated as he started to remember something, he looked like he was thinking about some pony.",
         "type": "action"
     },
@@ -22063,6 +22064,7 @@
     },
 
     {
+        "set": { "playlistPlay": "tense-mystery" },
         "value": "Jeff tried to hide under a broken upholstery. Jeff was completely scared, very scared, and very depressed.",
         "type": "action"
     }
