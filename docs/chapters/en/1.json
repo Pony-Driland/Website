@@ -22140,21 +22140,42 @@
     },
 
     {
-        "value": "A...re you sure? I remember very well seeing a pony similar to her wearing some armor. But this has been a long time ago.",
-        "character": "Jeff",
-        "type": "dialogue"
-    },
-
-
-    {
         "value": "Jeff spoke curiously and a little worried.",
         "type": "action"
     },
 
     {
-        "value": "Well, why don't you ask her instead of me?",
+        "value": "A...re you sure? I remember very well seeing a pony similar to her wearing some armor. But this has been a long time ago. I...I...w..what?",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane approached Jeff very slowly. Trying not to scare Jeff too much. When Jeff looked into Rayane's eyes, he slightly felt a little afraid again.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..hey!",
         "character": "Vinny",
         "type": "dialogue"
-    }
+    },
+
+    {
+        "value": "That look.....yes I recognize that look very well too.... Is that you?",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. So you say you remember me. If you think that, why are you afraid? I spared your life when we found you here today. I have no reason to hurt you. Alright?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looked a little worried as he watched Jeff and Rayane talking.",
+        "type": "action"
+    },
 
 ]
