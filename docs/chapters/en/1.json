@@ -22009,6 +22009,62 @@
     {
         "value": "James was then completely surprised when he finished thinking about the conversation.",
         "type": "action"
+    },
+
+    {
+        "value": "Wait... Fuck! if we're on the war side and Jeff said West. So we ended up accidentally taking a route to the West Region of Pony Driland! ",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile, Rayane was very thoughtful about the conversation. Rayane looked very quiet, but it seemed like no one was noticing.",
+        "type": "action"
+    },
+
+    {
+        "value": "Jeff, nobody else wanted to mistreat you? You said the invaders already already taken everything from you. Then someone came stole your stuff and left you here alone and alive?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff let a few more tears fall from his eyes. It looked like he was trying to forget about past events.",
+        "type": "action"
+    },
+
+    {
+        "value": "N..no. I escaped from them while they were looting my belongings. But I don't know if my coworkers was as lucky.",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James looked completely irritated as he started to remember something, he looked like he was thinking about some pony.",
+        "type": "action"
+    },
+
+    {
+        "value": "And we also need to try to stop this war! We can't let this get out of control! This is a complete risk to entire Pony Driland!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile, Rayane was still reflecting a lot, she seemed to have a bad feeling about something. But suddenly. Another explosion happened much stronger.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "N...NOOO! MY HOME! They are destroying my village!!!",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff tried to hide under a broken upholstery. Jeff was completely scared, very scared, and very depressed.",
+        "type": "action"
     }
 
 ]
