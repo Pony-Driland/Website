@@ -22067,6 +22067,25 @@
         "set": { "playlistPlay": "tense-mystery" },
         "value": "Jeff tried to hide under a broken upholstery. Jeff was completely scared, very scared, and very depressed. ",
         "type": "action"
+    },
+
+    {
+        "value": "VINNY! COME ON! I can't stand to sit here listening to these explosions!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "James! calm down! We need to do something but think first! Jeff, I promise that everything will be fine, but I need to confirm something, okay? Did you not see anyone at all?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny! OH FUCK GOD!",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
