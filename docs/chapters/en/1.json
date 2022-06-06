@@ -21796,13 +21796,163 @@
     },
 
     {
-        "value": "Are you happy? I have nothing important. I just want to leave and go home. P..Please!",
+        "value": "Are you happy? I have nothing important. I just want to leave! I..I want to go home! P..Please!",
         "character": "???",
         "type": "dialogue"
     },
 
     {
         "value": "The pony spoke with great fear of Rayane's sword, wanting not to say too many details due to fear.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmm. Rayane, are you closer to him, is there anything more suspicious or strange about him?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Nope. He doesn't have anything else. We've already taken everything he had on the bag.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...What do you want from me?",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The pony was very scared and almost crying in response. Vinny was a little empathetic with the pony and took a deep breath.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey... Calm down. it's okay, we're not going to do anything with you. We're just looking to see if you really are who you say you are. It's going to be okay, I won't do anything.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny stared at the mysterious earth pony and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... What is your name? Let's try to understand what is happening here. Can you talk?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at Rayane, using paws to make a sign to do the pony a little more comfortable. Rayane then just nodded and slowly lowered her sword.",
+        "type": "action"
+    },
+
+    {
+        "value": "M..my name? V..Are you west pony then? M...My name is Jeff. That's all.",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff then continued trying not to cry, tears starting to come out of his eyes. Rayane made the sword levitate slowly back to her side and let Jeff have a little more freedom to move in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...aah? Wait? Will you two really let me go?",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff was a little surprised. When Rayane walked away from Jeff, Vinny could see that Jeff is just an adult Earth pony. He had some injuries from something that happened earlier. Vinny was a little surprised and worried. But then he took a deep breath and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "You need to remain calm. If you want to leave alone in the middle of these explosions, you can go, but first let's understand what happened here. My name is Vinny, and what happened to you? Are you alone? Was there anyone else with you? Feel free to say, no one will hurt you here. Alright?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny felt a little uncomfortable looking at Jeff's bruises.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...Where did you do that?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff wiped away his tears a little and responded a little dramatically.",
+        "type": "action"
+    },
+
+    {
+        "value": "So you're promising to help me. I won't forget this.",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff took a deep breath, calmed down some more, and finally started talking again.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..how do you not know what happened? The east ponies are invading our territory in a much more aggressive way than usual. The ponies are surrounding the caves to make sure that no one will interfere during the invasion.",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff tried not to cry again as he answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "I...I was here with my coworker. But they all disappeared during the invasion. I was trying to hide here. Now I don't even have money to help my friends anymore who live with me.",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff then lay on the floor and put his paws in front of his face, starting to cry. Rayane was surprised and slightly got away from him a little more.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? A more violent invasion? This is very strange. That was not the deal between the two sides.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah. This looks very much like some kind of disagreement. The regional deal is being broken!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was surprised and suspicious about the problems I was hearing. Rayane was still very thoughtful, trying to interpret the possibilities.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay okay. Where are your friends?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff slightly lifted his head and looked at Vinny, trying to have some hope while wiping his face slowly.",
         "type": "action"
     }
 
