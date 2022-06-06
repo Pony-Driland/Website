@@ -21954,6 +21954,61 @@
     {
         "value": "Jeff slightly lifted his head and looked at Vinny, trying to have some hope while wiping his face slowly.",
         "type": "action"
+    },
+
+    {
+        "value": "M..my friends are all in the village where I live. It's the next village you'll come to. I'm sure it must be being invaded too.",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would get a little nervous and look at James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh god. James explains this regional deal better, do you know more details?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James looked at Vinny and took a deep breath to start explaining.",
+        "type": "action"
+    },
+
+    {
+        "value": "It will be a quick explanation. We have huge problems! The eastern and western regions of Pony Driland were once fertile lands. But due to the time the dimension is slowly losing the energy. These regions are getting drier and harder to harvest. But now the magic item is in the West region. This magic item has the power to regenerate lands. The regional deal is basically a deal that says... Whoever has this magic item is obliged to sell a part of the harvest so the rival region can buy this. In other words... Whoever has this item controls the sale of food.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was even more worried to hear this. Then he would be thoughtful for a few seconds and look at Jeff again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey Jeff. Where did you get hurt?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff was a little surprised by the question.",
+        "type": "action"
+    },
+
+    {
+        "value": "I...It was during my escape into the cave. I had to run as far down the cave as possible and then try to get back here to see if everyone was okay.",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was then completely surprised when he finished thinking about the conversation.",
+        "type": "action"
     }
 
 ]
