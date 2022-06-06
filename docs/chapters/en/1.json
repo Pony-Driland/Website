@@ -22065,7 +22065,7 @@
 
     {
         "set": { "playlistPlay": "tense-mystery" },
-        "value": "Jeff tried to hide under a broken upholstery. Jeff was completely scared, very scared, and very depressed. ",
+        "value": "Jeff tried to hide under a broken upholstery. Jeff was completely scared, and very depressed. ",
         "type": "action"
     },
 
@@ -22077,7 +22077,7 @@
 
 
     {
-        "value": "James! calm down! We need to do something but think first! Jeff, I promise that everything will be fine, but I need to confirm something, okay? Did you not see anyone at all?",
+        "value": "James! Calm down! We need to do something but think first! Jeff, I promise that everything will be fine, but I need to confirm something, okay? Did you not see anyone at all?",
         "character": "Vinny",
         "type": "dialogue"
     },
