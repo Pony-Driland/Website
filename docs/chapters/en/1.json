@@ -22052,7 +22052,7 @@
     },
 
     {
-        "value": "Meanwhile, Rayane was still reflecting a lot, she seemed to have a bad feeling about something. But suddenly. Another explosion happened much stronger.",
+        "value": "Meanwhile, Rayane was still reflecting a lot, she seemed to have a bad feeling about something. But suddenly. Another explosion happened much stronger. Everyone was completely scared and Rayane got up at the same time.",
         "type": "action"
     },
 
@@ -22065,7 +22065,7 @@
 
     {
         "set": { "playlistPlay": "tense-mystery" },
-        "value": "Jeff tried to hide under a broken upholstery. Jeff was completely scared, very scared, and very depressed.",
+        "value": "Jeff tried to hide under a broken upholstery. Jeff was completely scared, very scared, and very depressed. ",
         "type": "action"
     }
 
