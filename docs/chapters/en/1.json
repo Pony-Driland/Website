@@ -22562,6 +22562,28 @@
         "value": "Woow. Hiroshi... Hope you have a good explanation for all this that is happening now. What problem did you get into this time?",
         "character": "Rayane",
         "type": "think"
+    },
+
+    {
+        "value": "Vinny realized that Rayane seemed to be concentrating some kind of magical energy in her horn. She was using some magic Vinny couldn't even know what exactly she was doing.",
+        "type": "action"
+    },
+
+    {
+        "value": "R..Rayane? What are you doing?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane's mane shook a little when she was using the mysterious magic during some seconds. Rayane was showing a little nervousness and a lot of concern.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Everypony are concentrated near the village. It was exactly as I imagined. I hope my theory is incorrect.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
