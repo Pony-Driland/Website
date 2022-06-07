@@ -22465,6 +22465,103 @@
         "value": "Hmmmmm... I alone in a cave. What could Go Wrong?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles again before doing a smirk face.",
+        "type": "action"
+    },
+
+    {
+        "value": "Nothing. Just you and me in a cave~ ",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laughed some more as she started to leave the cave.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny giggles a little and started following Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. Slowly I'm starting to understand you more, each discovery I imagine your past were closer and closer to me. do not you think?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then stopped laughing and showed concern when listening to Vinny's words.",
+        "type": "action"
+    },
+
+    {
+        "value": "M...My past is very dangerous for you. I'm always very thoughtful about it.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would get more curious and then say.",
+        "type": "action"
+    },
+
+    {
+        "value": "I see. Well, you can go ahead. Alright? if you know about my past, you'll think I'm a very bad pony and you'll let go of me at any moment. I can say and affirm that my past shone like a diamond, but I ended up making a big mistake with someone.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was confused and thoughtful looking at Vinny for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Are you bad? Since I met you, you never seemed like a bad pony.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh. I see... Sorry.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "weather": "sun"
+        },
+        "value": "Vinny was still curious for a few more seconds. But then suddenly he felt the glow of the light getting stronger and stronger, slowly starting to transform into a landscape. The place is an open field with forests all around. Just ahead Vinny could see a village that wasn't far away, but the village looked like this was surrounded by smoke of destruction both inside and outside.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow! What a beautiful view! Flowers around us surrounded by smoke and destruction. This place reminds me of some old memories, what's the plan?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane took a deep breath and looked at the whole landscape as she seemed to remember some memories.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah. We're going to have to use the forest a lot before going out into the village. The open field will make us very visible to any kind of spy.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Woow. Hiroshi. Hope you have a good explanation for all this that is happening now. What problem did you get into this time?",
+        "character": "Rayane",
+        "type": "think"
     }
 
 ]
