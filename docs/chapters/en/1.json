@@ -22341,6 +22341,124 @@
     {
         "value": "Rayane and Vinny then finished deciding the final choice and looked at James.",
         "type": "action"
+    },
+
+    {
+        "value": "Okay. I'm going with Rayane. James, you can go with Jeff to look for his friend. If things get out of control, will you know what to do?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at Rayane and James. Vinny looked worried as he asked this question.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. I'm fine. B...But what's that worried face?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Shhhhh... Don't worry Vinny. James also knows how to fight. If something goes wrong, he'll know what to do.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Sorry everypony, but what are you guys talking about so private?",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff was very curious about the topic of the conversation, trying to understand what was going on.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Oh! Sorry. We were talking about our friend James going with you to look for your friend, apparently you know your superior and our charming pony here also knows. We'll try to meet you again somewhere with your superior. Alright?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "O..oh! Okay! Nice to meet you, James!",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff was glad again to hear that.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y...yeah. Nice to meet you.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little shy, but also worried, trying to understand the motive about Vinny chose to go with Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well! My superior is responsible for the entire West region. Wait... Are we just going to village?",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh! Rayane decides, as she is the most experienced here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little surprised to see Vinny's confidence.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh. Heh~ if everything is safe, we'll all meet again in the village next to the Jeff superior. But if anything happens, we can go back to this cave.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay! Everyone understood?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at everyone. So everyone agreed",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah! Okay James! Let's go down to the cave then!",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff tried to pull James' paw happily to make him follow.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..hey! Calm down! Take your time!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was surprised, I tried to follow along with Jeff.",
+        "type": "action"
     }
 
 ]
