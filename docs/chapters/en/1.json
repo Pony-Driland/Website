@@ -22459,6 +22459,12 @@
     {
         "value": "James was surprised, I tried to follow along with Jeff. Vinny laughed a little and then looks at Rayane.",
         "type": "action"
+    },
+
+    {
+        "value": "Hmmmmm... I alone in a cave. What could Go Wrong?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
