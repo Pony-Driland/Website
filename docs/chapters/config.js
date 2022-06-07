@@ -92,11 +92,19 @@ var storyCfg = {
 
     // Chapters
     chapterName: {
+
         1: {
             color: '#000',
             title: 'This is not my world',
             description: 'The protagonist\'s early days in the world of Pony Driland. Something mysterious has happened and we need to discover the basics about this mysterious place.'
+        },
+
+        2: {
+            color: '#000',
+            title: 'She hates war',
+            description: 'We have just discovered a mysterious war with some mysterious objective. Maybe she\'s not feeling comfortable about it.'
         }
+
     },
 
     // IPFS
