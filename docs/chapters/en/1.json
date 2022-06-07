@@ -22584,6 +22584,28 @@
         "value": "Okay. Everypony are concentrated near the village. It was exactly as I imagined. I hope my theory is incorrect.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very curious and a little surprised to see Rayane behaving a little differently.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? What does that mean?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "That means we can at least walk a straight line towards the place through the forest. But I will have to re-analyze it from time to time. Alright? Let's go!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane pointed to the forest that Vinny and she were going to enter.",
+        "type": "action"
     }
 
 ]
