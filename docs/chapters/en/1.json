@@ -22151,7 +22151,7 @@
     },
 
     {
-        "value": "Rayane approached Jeff very slowly. Trying not to scare Jeff too much. When Jeff looked into Rayane's eyes, he slightly felt a little afraid again.",
+        "value": "Rayane approached Jeff very slowly, trying not to scare Jeff too much. When Jeff looked into Rayane's eyes, he slightly felt a little afraid again.",
         "type": "action"
     },
 
@@ -22175,6 +22175,171 @@
 
     {
         "value": "Vinny looked a little worried as he watched Jeff and Rayane talking.",
+        "type": "action"
+    },
+
+    {
+        "value": "M...Me? Maybe I'm talking to the wrong pony. But that mysterious look has always haunted me.",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey. What happened between the two of you? have you spoken before?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "If we already talked? N..no. Rayane seems to know my boss very well. Nothing else.",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ssssssh~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane approached Jeff while using her magic to lift Jeff head and look into his eyes slowly.",
+        "type": "action"
+    },
+
+    {
+        "value": "If you have any bad memories of something. All I'm going to ask you is to keep calm. Everything can be very different from what you're thinking. Alright?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "But he slowly calmed down and felt better listening to Rayane's words. Vinny was thoughtful and worried that something would happen to Jeff.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..well. Maybe I'll need to separate these two temporarily. This idea will have to work.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "We can split into two groups. Where one group goes with Jeff to look for his partner, while the other group goes outside the cave trying to get some information or something that can help us. But of course, I'm far from knowing the real situation here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James stopped analyzing the data and was a little surprised. James replied sarcastically and a little angry.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Okay! Let me guess... I'm going with Jeff and you with Rayane. Got it right?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah. I'm scared of Rayane alone with Jeff. if everyone agrees with that, you decide who goes with who. But I'd rather go with you James.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What?! This decision is confusing and meaningless!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes yes. Do you want look for a way out of here and look for Jeff friend?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay okay! Fine! But please! Don't make me extremely worried!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "when you said that, you interrupted Rayane's conversation with Jeff",
+        "type": "action"
+    },
+
+    {
+        "value": "Jeff became calmer and began to feel more hopeful about the decision. Rayane was analyzing Vinny's behavior for a few seconds, so she laughed a little and just continued watching.",
+        "type": "action"
+    },
+
+    {
+        "value": "T...thank you! Thanks Vinny! Alright! I'll follow James then!",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. What do you think Rayane? Want to look for Jeff friend? Or do you want to look for a way out and see the situation outside?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmm... How silly you are~ You are really being very brave to be alone in my presence.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "By chance do you want to go alone or do you want to go with someone?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I wanted to go with you. But if you have a better idea, no problem~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny came close to Rayane and spoke softly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane, I don't think an adult would cry and do this drama. But if you know who Jeff is, You know Jeff isn't going to make James walk into a trap.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little more.",
+        "type": "action"
+    },
+
+    {
+        "value": "Jeff was very lonely before he met you. He can't really mature his social life.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane sighed a little before speaking again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't worry so much about Jeff. For me he's very innocent.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane and Vinny then finished deciding the final choice and looked at James.",
         "type": "action"
     }
 
