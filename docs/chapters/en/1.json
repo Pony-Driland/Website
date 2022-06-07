@@ -22535,7 +22535,7 @@
 
     {
         "set": {
-            "weather": "sun"
+            "dayNightCycle": "morning"
         },
         "value": "Vinny was still curious for a few more seconds. But then suddenly he felt the glow of the light getting stronger and stronger, slowly starting to transform into a landscape. The place is an open field with forests all around. Just ahead Vinny could see a village that wasn't far away, but the village looked like this was surrounded by smoke of destruction both inside and outside.",
         "type": "action"
