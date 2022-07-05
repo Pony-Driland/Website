@@ -4,7 +4,7 @@ You can freely produce fan art, animations, any kind of artistic content as long
 
 Remember I'm not watching what people produce content about the community. I am not responsible for alternative content produced by the community. 
 
-I am free to like and support any alternative work on Pony Driland. But for a unofficial content to become official it will only happen if I inform the artist that the content is official and has been approved by the original artist.
+I am free to like and support any alternative work about Pony Driland. But for a unofficial content to become official it will only happen if I inform the artist that the content is official and has been approved by the original artist.
 
 I (Yasmin Seidel) can also produce non-canonical work on Pony Driland Project. So this rule is also included in works made by me.
 
@@ -12,7 +12,7 @@ I (Yasmin Seidel) can also produce non-canonical work on Pony Driland Project. S
 
 
 ### Commercial Use
-To maintain the freedom of community development, I am allowing commercial use of any character and element of this project. My only special request is requesting credits and informing everyone that the content is unofficial. The credits must be visible so that everyone can know the original author.
+To maintain the freedom of community development, I am allowing commercial use of any character and element of this project. My only special request is requesting credits and informing everyone that the content is unofficial. The credits must be visible for everyone.
 
 <hr/>
 
