@@ -11,20 +11,23 @@
             "weather": "sun",
             "playlistPlay": null
         },
+        "info": {
+            "X-Tudo": "A Brazillian snack that's usually one bit of everything from the fast food place, burger, fries, you name it. "
+        },
         "type": "action",
-        "value": "Qualquer coisinha bobaIt was just another normal day on Planet Earth. It was a beautiful normal day like any other, Vinny was living his normal life, he still hadn't showered, and he was talking to his friend Yasmin through Discord. It was a simple super decisive conversation for her to finally pay the X-Tudo Vinny wanted so much. Vinny was very happy, as he had been waiting for this day for several months, so this was the decisive magic moment. Everything was extremely quiet. It was just a silly Discord conversation like any other day."
+        "value": "It was just another beautiful normal day on Planet Earth, like any other. Inside a house, a boy named Vinicius, Vinny for short chatted away with his friend Yasmin, nicknamed Jasmin over on Discord. It was a very important conversation for him since Yasmin promised she'd finally pay for his beloved X-Tudo*. Vinny was very happy, as he had been waiting for this day for several months, so this was a decisive, dare he think magic moment. Everything in the room was quiet save for the boy and girl talking on a call. It was just a silly Discord conversation like any other day."
     },
 
     {
         "set": { "playlistPlay": "happyness" },
         "type": "action",
-        "value": "Yasmin then looked at the monitor impatiently, and just wanted to get this story over with, so he wouldn't need to talk about X-Tudo anymore."
+        "value": "Yasmin then looked at the monitor impatiently, and just wanted to get this story over with, so Vinny wouldn't need to talk about the X-Tudo anymore."
     },
 
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "ah! Ready! I finally got my credit card working! I'm going to buy your X-Tudo now! Now it's time to stop this silly nonsense time!"
+        "value": "Ah! There! I finally got my credit card working! I'm going to buy your X-Tudo now!"
     },
 
     {
@@ -47,36 +50,36 @@
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Uff. Okay. I sent your order just the way you asked. The delivery man of food app is already on his way to your house. I recommend you keep an eye on the GPS, or the delivery boy will pass right by."
+        "value": "Phew. Okay. I sent your order just the way you asked. The delivery man of the food app is already on his way to your house. I recommend you keep an eye on the GPS, or he'll delivery boy will pass right by."
     },
 
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "Wow, my address isn't right? Motoca is going to screw up my X-Tudo!"
+        "value": "Did you put my right address? Or else the motorcycles will screw up my X-Tudo!"
     },
 
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Ah Vinny! Nope nope! You sent the address! You're going to receive your X-Tudo!"
+        "value": "Ah Vinny! Nope nope! No worries! You sent me the address! You're going to receive your X-Tudo!"
     },
 
     {
         "type": "action",
-        "value": "Right now Vinny's phone started beeping Food App Notifications."
+        "value": "Right then Vinny's phone started beeping, signalizing the notifications from the food app."
     },
 
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "Oh yes, man!"
+        "value": "Oh heck yes!"
     },
 
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "Heh! Let me see my phone beeped here."
+        "value": "Hey! My phone beeped here. Let's see..."
     },
 
     {
@@ -86,13 +89,13 @@
 
     {
         "type": "action",
-        "value": "Vinny saw the notification that the delivery boy was about to arrive, his cell phone already asking him to go to the door of his house to wait for the delivery boy."
+        "value": "Vinny saw the notification that the delivery boy was about to arrive, his cell phone already asking him to go to the door of his house to wait for his meal."
     },
 
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "so? He is coming?"
+        "value": "So? Is he coming?"
     },
 
     {
@@ -103,12 +106,12 @@
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "I want you to take the phone with you, I left a reminder in App Food about a little surprise for you when the order arrives."
+        "value": "I want you to take the phone with you, I left a reminder on the food app about a little surprise for you when the order arrives."
     },
 
     {
         "type": "action",
-        "value": "Surprised Vinny speaks in a curious way."
+        "value": "Surprised by what his friend said, Vinny speaks in a curious way."
     },
 
     {
@@ -120,7 +123,7 @@
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "Okay, let me enter the call on my cell, HOLD IT!!!!!!!!!!"
+        "value": "Okay, let me start the call on my cellphone, HOLD IT!!!!!!!!!!"
     },
 
     {
@@ -131,7 +134,7 @@
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Siily Vinny. Relax. You'll find out. Please, just don't screw it all up. Mainly the phone!"
+        "value": "Silly Vinny. Relax. You'll find out. Please, just don't screw it all up. Mainly the phone!"
     },
 
     {
@@ -142,12 +145,12 @@
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "Okay okay! Let me go see the gate. YES!"
+        "value": "Okay okay! Let me go see the gate. OH BOY!"
     },
 
     {
         "type": "action",
-        "value": "Vinny then got up from his computer. He was home alone. He then went to the gate to open it to receive the food. Meanwhile Yasmin kept laughing and answering."
+        "value": "Vinny then got up from his computer. He was home alone. He then went to the gate to open it to receive the his awaited meal. Meanwhile Yasmin kept laughing and answering."
     },
 
     {
@@ -170,45 +173,45 @@
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Look there! Go mess up the delivery boy again!"
+        "value": "Look, there! Don't mess up the delivery again!"
     },
 
     {
         "type": "action",
-        "value": "Yasmin reply with a silly giggle."
+        "value": "Yasmin replied with a silly giggle."
     },
 
     {
         "type": "action",
-        "value": "Vinny was wanting to speed up and get back to his room soon before the delivery boy could hear Yasmin laughing"
+        "value": "Vinny wanted to speed things up and get back to his room soon before the delivery boy could hear Yasmin laughing"
     },
 
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "Oops good afternoon, it's me yes, is it the snack?"
+        "value": "Whoops good afternoon, yes it's me, did you bring my snack?"
     },
 
     {
         "type": "dialogue",
         "character": "Delivery Boy",
-        "value": "Oops. Yes, your lunch. An X-Tudo. Everything and a little more."
+        "value": "Yes, your X-Tudo is here, that and a little more."
     },
 
     {
         "type": "action",
-        "value": "Delivery Boy tried to react naturally when he noticed a kind of anxiety in Vinny."
+        "value": "The Delivery Boy tried to react naturally when he noticed some kind of anxiety in Vinny."
     },
 
     {
         "type": "dialogue",
         "character": "Delivery Boy",
-        "value": "This burger was vibrating inside my motocycle, so please, if there's something wrong with your lunch, let me know that we'll exchange your lunch for a new one."
+        "value": "This burger was vibrating inside my motocycle, so please, if there's something wrong with it, let me know that we'll exchange it for a new one."
     },
 
     {
         "type": "action",
-        "value": "Delivery Boy delivered the X-Tudo box kindly to you."
+        "value": "The Delivery Boy delivered the box containing the sacred food of X-Tudo to Vinny's hands. The boy felt it vibrating slightly."
     },
 
     {
@@ -219,42 +222,42 @@
 
     {
         "type": "action",
-        "value": "Yasmin continued the silly giggles, happy to see Vinny's reaction."
+        "value": "Yasmin continued the silly giggles, eager to see Vinny's reaction to what she planned."
     },
 
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "it's a joke, right? prank right? What is this vibration?"
+        "value": "This is a joke, right? A prank? What is this vibration?"
     },
 
     {
         "type": "action",
-        "value": "Vinny reply with a surprised face and mischievousness."
+        "value": "Vinny said with a surprised face."
     },
 
     {
         "type": "action",
-        "value": "Delivery Boy looked a little awkwardly, not knowing what to say."
+        "value": "Delivery Boy looked a little awkward, not knowing what to say."
     },
 
     {
         "type": "dialogue",
         "character": "Delivery Boy",
-        "value": "Yes. I saw vibrating. Sorry for the expression, it was a quick word. Ah! Please! Just get it soon! It could be anything, maybe something inside the burguer, you'll need to check it out to see what it is."
+        "value": "Yes. I said vibrating. Ah! Please! Just get it already! It could be anything, maybe something inside the burger, you'll need to check it out to see what it is."
     },
 
     {
         "set": { "playlistPlay": null },
         "type": "dialogue",
         "character": "Vinny",
-        "value": "Okay can i open it now before you leave?"
+        "value": "Okay. Can I open it now before you leave?"
     },
 
     {
         "type": "dialogue",
         "character": "Delivery Boy",
-        "value": "feel free, just don't delay please. I'm getting late."
+        "value": "Feel free, just please don't take too long. I'm running late for my next deliveries."
     },
 
     {
@@ -265,7 +268,7 @@
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Then? Where's X-Tudo? We need to see the surprise together to be more fun!"
+        "value": "And? Where's X-Tudo? We need to see the surprise together to be more fun!"
     },
 
     {
@@ -276,13 +279,13 @@
 
     {
         "type": "action",
-        "value": "Vinny opens the box slowly. Afraid about what was inside the box. Vinny see an X-Tudo, very big, just the way he wanted, twice the size that was in the photo."
+        "value": "Vinny opens the box slowly. Afraid about what was inside the box. In it, Vinny saw an X-Tudo, very big, just the way he wanted, twice the size that was in the photo."
     },
 
     {
         "type": "dialogue",
         "character": "Delivery Boy",
-        "value": "Everything seems normal to me. Ah! It must have been a mistake, maybe it was the bike that was vibrating and I didn't notice. Sorry there bro!"
+        "value": "Everything seems normal to me. Ah! It must have been a mistake, maybe it was the bike that was vibrating and I didn't notice. Sorry bro!"
     },
 
     {
@@ -294,7 +297,7 @@
     {
         "set": { "playlistPlay": null },
         "type": "action",
-        "value": "The Delivery Boy, without thinking twice, was already leaving."
+        "value": "The Delivery Boy, without thinking twice, was already leaving before Vinny could say anything else."
     },
 
     {
@@ -334,7 +337,7 @@
 
     {
         "type": "action",
-        "value": "Vinny enters and goes to the kitchen to get a plate and goes back to the bedroom. The X-Tudo mysteriously started to vibrate a little on the table"
+        "value": "Vinny enters his house and goes to the kitchen to get a plate before going back to his bedroom. The X-Tudo mysteriously started to vibrate a little on the table"
     },
 
     {
@@ -345,29 +348,29 @@
 
     {
         "type": "action",
-        "value": "Vinny approaches X-Tudo and will analyze the burguer carefully."
+        "value": "Vinny approaches X-Tudo and analyzes the burger carefully."
     },
 
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Live? Vinny! What did you do with X-Tudo? Haven't you noticed the obvious yet?"
+        "value": "Alive? Vinny! What did you do with X-Tudo? Haven't you noticed the obvious yet?"
     },
 
     {
         "type": "action",
-        "value": "When Vinny tried to analyze X-Tudo, he felt a kind of blue light, but X-Tudo didn't want to be opened completely at all, it just vibrated more with each touch it received."
+        "value": "When Vinny tried to analyze the X-Tudo, he saw some kind of blue light, the X-Tudo seemingly didn't want to be opened completely, it just vibrated more with each touch it received."
     },
 
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "Jasmin, there's some stuff coming out of X-Tudo."
+        "value": "Jasmin, there's some stuff coming out of the X-Tudo."
     },
 
     {
         "type": "action",
-        "value": "Vinny looked at the X-Tudo and tried harder to open it."
+        "value": "Vinny looked at the his live snack and tried harder to open it."
     },
 
     {
@@ -378,7 +381,7 @@
         },
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Coming out of X-Tudo? What are you talking about! I only ordered a double size!"
+        "value": "Coming out of the X-Tudo? What are you talking about! I only ordered a double size for you!"
     },
 
     {
@@ -388,13 +391,13 @@
             ]
         },
         "type": "action",
-        "value": "The X-Tudo vibrated more and more, and the light started to get stronger, but Vinny was starting to realize that he was making progress, and that he just needed to do a little more force, as he accidentally spilled some parts of the X-Tudo on the table because of the vibration."
+        "value": "The X-Tudo vibrated more and more, and the light started to get brighter, but Vinny was starting to realize that he was making progress, and that he just needed to do a little more force, as he accidentally spilled some parts of the X-Tudo on the table because of the vibration."
     },
 
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "N..Noo! My house! Wait, I'm looking at what's inside the X-Tudo, everything and a little more, hold it there."
+        "value": "N...Noo! My house! What's in this crap?"
     },
 
     {
@@ -405,7 +408,7 @@
 
     {
         "type": "action",
-        "value": "Vinny still keeps trying to force against the burguer, feeling extremely difficult to keep trying this again and again."
+        "value": "Vinny still keeps trying to force against the burger's package, it was extremely difficult to keep trying this again and again."
     },
 
     {
@@ -415,7 +418,7 @@
             ]
         },
         "type": "action",
-        "value": "While more Vinny tried, but the light got stronger, and X-Tudo vibrated extremely hard, spilling all parts of X-Tudo all over the kitchen, making a loud noise on the table because of the vibration"
+        "value": "While Vinny tried his, the light got even stronger, and the X-Tudo vibrated extremely hard, spilling all parts of it all over the kitchen, making a loud noise on the table because of the vibration."
     },
 
     {
@@ -427,7 +430,7 @@
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "V...Vinny? Are you okay? It's for eating X-Tudo! It's not to mess up the X-Tudo! What are you doing?!"
+        "value": "V...Vinny? Are you okay? The X-Tudo is for eating! Not to mess up! What are you doing?!"
     },
 
     {
@@ -438,19 +441,19 @@
             ]
         },
         "type": "action",
-        "value": "Yasmin started talking in a worried voice. Then Vinny finally manages to open X-Tudo, making all the rest of X-Tudo fly all over the place, he soon realizes what he was pulling inside X-Tudo, in fact it was a kind of bracelet, which quickly attaches to the his arm, but in the middle of it all comes a very bright light that takes over the whole kitchen."
+        "value": "Yasmin started talking in a worried voice. Then Vinny finally manages to open the X-Tudo, making all the rest of it fly all over the place, he soon realizes what he was pulling inside his snack, in fact it was some kind of bracelet, which quickly attaches to his arm, but before he could try and figure out what was it doing there in the first place, a very bright light that takes over the whole kitchen."
     },
 
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "W..What?! What is this Vinny? Did the restaurant give you any SmartWatch as a gift?!"
+        "value": "W...What?! What is this Vinny? Did the restaurant give you some kind of SmartWatch as a gift?!"
     },
 
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "Stop kidding! I need help! What is happening?! W...What fuck?! My house will explode!"
+        "value": "Stop joking around! I need help! What is happening?! W...What the fuck?! My house will explode!"
     },
 
     {
@@ -461,7 +464,7 @@
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "No, no! NO! This is IMPOSSIBLE! Damn Jasmin it happened, I don't know, your X-Tudo blew up and it's sucking me, this shit stuck on my arm, I'm going to turn the Men 10!!!!"
+        "value": "No, no! NO! This is IMPOSSIBLE! Damn it. Jasmin, I don't know, your X-Tudo blew up and it's sucking me in, this shit is stuck on my arm, I'm going to turn into Men 10!!!!"
     },
 
     {
@@ -473,13 +476,13 @@
 
     {
         "type": "action",
-        "value": "Vinny was in the last seconds of his presence before the black hole sucked him in completely, and suddenly he disappeared along with his phone, which was increasingly losing signal as he went deeper into the mysterious black hole."
+        "value": "Vinny noticed that he wasn't the only one being dragged into the black hole, some of his furniture and kitchen appliances were also taken, he dodged out of the way of a fork and a knife before losing his balance and being completely sucked into the black hole. He lost track of his surroundings as he saw only darkness around him, his only light source being his phone phone, which was increasingly losing service as he went deeper into the mysterious black hole."
     },
 
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Vinny?! C.......of.........you....O... ...What's happening?! V...Vinny! The sign! Signal is horrible! N...Nooo! Came back here! V....Viiiiini!"
+        "value": "Vinny?!.......of.........you....O... ...What's happening?! V...Vinny! The signal! The service is horrible! N...Nooo! Came back here! V....Viiiiini!"
     },
 
     {
@@ -512,18 +515,18 @@
             "playlistPlay": "sad"
         },
         "type": "action",
-        "value": "After a long time, Vinny was in another mysterious place, his phone was with him, it was a beautiful day, the morning was starting, another normal day on the place, everything was very calm, the beach was deserted as usual because of the schedule. And mysteriously Vinny wakes up on the beach, lost not knowing why he was there."
+        "value": "After a long time, Vinny ended up in a mysterious place, the location was a deserted beach, it was a beautiful day, everything was very calm. Soon Vinny woke up on the shore, lost and not knowing why he was there."
     },
 
     {
         "type": "think",
         "character": "Vinny",
-        "value": "Damn man, what happened? I was talking to Jasmin and suddenly... X-TUUUUUUUDO!!! What the fuck happened."
+        "value": "Damn man, what happened? I was talking to Jasmin and suddenly... X-TUUUUUUUDO!!! What the fuck happened?!"
     },
 
     {
         "type": "action",
-        "value": "Vinny look at he arm curiously. Soon Vinny noticed that everything was very different with his body when he felt the shape of his body. Instead of him seeing hands, he saw pony paws, while the calm water of the beach continued to calmly move on the sand."
+        "value": "Vinny stood up and soon fell down. Weirded out, he looked at his arm. Soon he noticed that everything was totally different with his body. Instead of seeing hands, he saw pony paws, and on his back were wings."
     },
 
     {
@@ -534,18 +537,18 @@
 
     {
         "type": "action",
-        "value": "Vinny try to calm down and I see around me what is happening and I see the phone and I try to move."
+        "value": "Vinny tried to calm down and see around him what was happening. Noticing a familiar sight, his phone, he rushed at it before falling straight down at the sand, not used to his new form."
     },
 
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "I can't touch the phone because I don't have a FINGER!!! but I see there's something on my back, it's wings!!!!!!! WHAT'S HAPPENING HERE?!"
+        "value": "Blech. Sand in my mouth. C'mon phone...what?! I can't touch the phone because I don't have FINGERS ANYMORE!!! WHAT'S THE HELL IS GOING ON HERE?!"
     },
 
     {
         "type": "action",
-        "value": "So Vinny try to use the wings to poke the phone screen. The phone turned on the screen and when the face detector felt the presence of Vinny eyes, and all Vinny saw was just the screen locked, and the phone was completely out of signal. No 4G, no Wi-Fi, no internet connection."
+        "value": "Vinny tried to use the wings to poke the phone screen. Thankfully for him, the phone's screen was turned on, but when the face detector tried to scan his face, it wasn't succesfull, and all Vinny saw was just the screen locked, not to mention the phone was completely out of service. No 4G, no Wi-Fi, no internet connection."
     },
 
     {
@@ -556,12 +559,12 @@
 
     {
         "type": "action",
-        "value": "Vinny was sad and hopeless. He didn't know what else could be done in that moment now. Suddenly Vinny starts to hear the sound of footsteps approaching from the opposite direction to him, coming slowly, making him look back curiously."
+        "value": "Vinny was sad, confused and hopeless. He didn't know what else could be done in that moment now. Suddenly he starts to hear the sound of footsteps approaching from the opposite direction to him, coming slowly, making him look back curiously."
     },
 
     {
         "type": "action",
-        "value": "Vinny see a silhouette of another pony slowly approaching, thinking to do contact with you, and it gets closer and closer."
+        "value": "Vinny sees a silhouette of another pony slowly approaching, thinking to do contact with him, and it gets closer and closer."
     },
 
     {
@@ -578,35 +581,35 @@
     {
         "type": "dialogue",
         "character": "???",
-        "value": "Oh. it's not possible. It's that what I'm really seeing? Did another new pony appear? Are you new around here?"
+        "value": "Oh. it's not possible. Am I really seeing this? Did another new pony appear? Are you new around here?"
     },
 
     {
         "type": "action",
-        "value": "The mysterious pony looked a little scared, trying to understand who you are."
+        "value": "The mysterious pony looked a little scared, trying to understand who Vinny was."
     },
 
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "Aah hi, my name is Vinny, are you guys okay? they look worried."
+        "value": "Aah hi, my name is Vinny, are you okay? You look worried."
     },
 
     {
         "type": "action",
-        "value": "Vinny tried to stay calm, talking calmly and trying to be calm."
+        "value": "Vinny tried to stay calm, talking without sounding desperate."
     },
 
     {
         "type": "dialogue",
         "character": "???",
-        "value": "Good? this should be my question. Are you sure you're alright? You look kind of scared. How long have you been here?"
+        "value": "Okay? This should be my question. Are you sure you're alright? You look kind of dazed. How long have you been here?"
     },
 
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "Oh, I kind of don't remember but I ended up waking up just now, not sure what happened to me last night."
+        "value": "Oh, I don't understand it all. I just ended up waking up just now, not sure what happened to me last night."
     },
 
     {
@@ -617,7 +620,7 @@
 
     {
         "type": "action",
-        "value": "Mysterious pony comes closer to you, offering to help you"
+        "value": "The mysterious pony comes closer to Vinny, offering to help."
     },
 
     {
@@ -629,13 +632,13 @@
 
     {
         "type": "action",
-        "value": "Vinny tried to remain calm, but slowly felt better as he realized the gentleness of the mysterious pony. But he was still confused and scared about what was happening. He tried to get up but failed."
+        "value": "Vinny tried to remain calm, he slowly felt better as he realized the gentleness of the mysterious talking pony in front of him. But he was still confused and scared about what was happening. He tried to get up but failed."
     },
 
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "I think I'll need more than help, I kind of can't walk."
+        "value": "I think I'll need more than help, I... kind of can't walk."
     },
 
     {
@@ -646,19 +649,19 @@
     {
         "type": "dialogue",
         "character": "???",
-        "value": "Wait. Can't you walk? Are you sure you're from here? What city do you come from? Just try to stay balanced and don't let your body weight make you lose balance."
+        "value": "Wait. You can't walk? Are you sure you're from here? What city do you come from? Just try to stay balanced and don't let your body weight make you lose balance."
     },
 
     {
         "type": "action",
-        "value": "Mysterious pony was surprised by your words, he gradually helped you to get in a balanced pose so you could stay seated."
+        "value": "The mysterious pony was surprised by Vinny's words, he gradually helped him to get in a balanced pose so you could stay seated."
     },
 
     {
         "set": { "playlistPlay": "calm" },
         "type": "dialogue",
         "character": "Vinny",
-        "value": "Heck bro, I'm trying to remember and I think I remembered I was eating something and blacked out, and I came here out of nowhere."
+        "value": "Heck bro, I'm trying to remember and I think I was eating something and blacked out, and I came here out of nowhere."
     },
 
     {
@@ -669,7 +672,7 @@
     {
         "type": "dialogue",
         "character": "???",
-        "value": "From. From nothing?! So I'm right! You are also a new visitor from another dimension!"
+        "value": "From... from nothing?! So I was right! You are also a new visitor from another dimension!"
     },
 
     {
@@ -680,12 +683,12 @@
     {
         "type": "dialogue",
         "character": "???",
-        "value": "Oh yes, I think this is more than evidence. Hihi. Don't worry , I teach you to walk. My name is Kenny!"
+        "value": "Oh yes, I think this is more than enough evidence. Hee. Don't worry , I'll teach you to walk. My name is Kenny!"
     },
 
     {
         "type": "action",
-        "value": "during the giggles of Kenny, Kenny starts to smile at Vinny and prepare to help Vinny stand up again. Vinny felt even better about Kenny's kindness. He looked at Kenny still confused about what was happening, but he simply continued to accept the help."
+        "value": "While he giggled, Kenny starts approaching Vinny and helps him stand up again. Vinny felt better about Kenny's kindness. He looked at his fellow pony still confused about what was happening, but he simply continued to accept the help."
     },
 
     {
@@ -702,7 +705,7 @@
     {
         "type": "dialogue",
         "character": "Kenny",
-        "value": "You're welcome. Just keep calm, and start walking very slowly, you need to keep balance and sync between all 4 legs. This way you'll soon learn to walk.The village is very close to here, you can rest in my house with my friend Raquel."
+        "value": "You're welcome. Just keep calm, and start walking very slowly, you need to keep balance and sync between all four legs. This way you'll soon learn to walk. The village is very close to here, you can rest in my house with my friend Raquel."
     },
 
     {
