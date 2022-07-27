@@ -1,0 +1,15 @@
+[
+
+    {
+        "set": {
+            "where": "Forest",
+            "dayNightCycle": "morning",
+            "day": 3,
+            "weather": "sun",
+            "playlistPlay": null
+        },
+        "type": "action",
+        "value": ""
+    }
+
+]
