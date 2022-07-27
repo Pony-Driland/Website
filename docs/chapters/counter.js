@@ -1,1 +1,1 @@
-storyCfg.chapters = 1;
+storyCfg.chapters = 2;
