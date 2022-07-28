@@ -10,6 +10,23 @@
         },
         "type": "action",
         "value": ""
+    },
+
+    {
+        "value": "Ok, wherever you go, I'll go too",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "still following rayane",
+        "type": "action"
+    },
+
+    {
+        "value": "If you go to hell I will too",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
