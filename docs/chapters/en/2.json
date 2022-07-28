@@ -9,24 +9,18 @@
             "playlistPlay": null
         },
         "type": "action",
-        "value": ""
+        "value": "So Rayane and Vinny were getting ready to leave the cave. The path is a long way across an open field surrounded by forests all around. A tremendous smoke could be seen in a long distance coming from a village a little far away. Some forests around were on fire, and smoke from explosions could be seen all around. Vinny was very surprised by everything he was seeing."
     },
 
     {
-        "value": "Ok, wherever you go, I'll go too",
+        "value": "Wooow... O..okay, wherever you go, I'll go too. If you go to hell I will too!",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "still following rayane",
+        "value": "Vinny then started following Rayane. During the progress Vinny tried to fight his worry.",
         "type": "action"
-    },
-
-    {
-        "value": "If you go to hell I will too",
-        "character": "Vinny",
-        "type": "dialogue"
     }
 
 ]
