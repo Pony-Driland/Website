@@ -99,6 +99,34 @@
     {
         "value": "Vinny smiled and hugged Rayane gently in response when he felt safer by the armor.",
         "type": "action"
+    },
+
+    {
+        "value": "All right then! I am going to follow you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smiled a little more while hugging back. Rayane was feeling better and more comfortable seeing Vinny feel safe.",
+        "type": "action"
+    },
+
+    {
+        "value": "Take good care of the armor~ When we find a store, we'll buy a backpack similar to James's backpack. Then you will have less problems with weight on your back.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh! Yes charming Rayane.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane does a little giggles then slowly resumed walking to give Vinny time to get back into the rhythm of the adventure.",
+        "type": "action"
     }
 
 ]
