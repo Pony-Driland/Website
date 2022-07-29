@@ -19,7 +19,85 @@
     },
 
     {
-        "value": "Vinny then started following Rayane. During the progress Vinny tried to fight his worry.",
+        "value": "Vinny then started following Rayane. During the progress Vinny tried to fight his worry. When Rayane noticed Vinny's behavior, Rayane looked a little worried at Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny... Remember that this is not training. If someone attacks you, nobody won't pity you the way I did. Alright? We just need to check out the village.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane starts to enter the forest slowly, following the trail of smoke. Vinny tried to remain confident.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..yes. This time I don't have my little pot with sand or dirt, but I have my wings and I know how to fly. You can be calm about me. I know how to take care of myself in more delicate situations like this.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane gets a little more worried when she thought about Vinny's actions.",
+        "type": "action"
+    },
+
+    {
+        "value": "Everyone here can have one sword or firearms. Please, be really careful.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane gets a little more worried while using magic to wear herself the protective armor. Vinny was a little surprised to see Rayane's armor. But then Rayane looked into Vinny's eyes, feeling a little guilty.",
+        "type": "action"
+    },
+
+    {
+        "value": "N..no no... He really won't just follow me around if I try to take the safest path. If I try to change his trajectory, he'll find out.",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "V..Vinny. I...I can't see you like this. You really need armor. But I only have one unicorn armor left. You won't be able to use your wings when you're wearing them.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was curious about Rayane's change in behavior.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Won't that bother you? Do you think it's safer for me to wear unicorn armor?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Shhh, don't worry. It's my old armor that I wore before I got my current armor as a gift. Please take good care of this armor and stay safe. I don't want to see you being ripped in half.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets a little scared, but Rayane felt calmer when she used magic to start spawning the ancient armor on Vinny's Body kindly.",
+        "type": "action"
+    },
+
+    {
+        "value": "O...oh wow. Thanks Rayane.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled and hugged Rayane gently in response when he felt safer by the armor.",
         "type": "action"
     }
 
