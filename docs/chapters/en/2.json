@@ -188,6 +188,36 @@
         "value": "We don't need to kill many ponies to get souls to sustain this dimension. And a war was the worst choice you all ever made.",
         "character": "Rainbow Queen",
         "type": "dialogue"
+    },
+
+    {
+
+        "value": "The mysterious unicorn slowly gets a little more intimidated as she saw the Rainbow Queen's sinister gaze from the hatred.",
+        "type": "action"
+    },
+
+    {
+        "value": "S...sorry. I know you have empathy for souls. I'm sorry!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "When this war is over, I'm going to want to have a very private conversation with Hiroshi and Marlon. I hope Marlon doesn't get scared when he sees a divinity for the first time.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+
+        "value": "The mysterious unicorn gets very surprised for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..Really? Are you really going to do this? You've always said that it's dangerous for normal ponies to discover the identity of gods.",
+        "character": "???",
+        "type": "dialogue"
     }
 
 ]
