@@ -230,6 +230,12 @@
         "value": "Shhhh~ Do you really think everyone in this world will believe that someone has seen a goddess? This world still needs more maturity to understand the existence of gods. We don't want the same mistakes to happen again.",
         "character": "Rainbow Queen",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Y..Yes. This is true. T...The true.",
+        "character": "???",
+        "type": "dialogue"
     }
 
 ]
