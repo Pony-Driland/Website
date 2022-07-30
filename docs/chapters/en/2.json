@@ -179,7 +179,13 @@
     },
 
     {
-        "value": "",
+
+        "value": "Rainbow Queen took a deep breath and responded disappointedly. Rainbow Queen looked a little angry as she started to respond. The mysterious unicorn then walks backwards when realizing Rainbow Queen's anger.",
+        "type": "action"
+    },
+
+    {
+        "value": "We don't need to kill many ponies to get souls to sustain this dimension. And a war was the worst choice you all ever made.",
         "character": "Rainbow Queen",
         "type": "dialogue"
     }
