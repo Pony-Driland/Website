@@ -113,6 +113,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Take good care of the armor~ When we find a store, we'll buy a backpack similar to James's backpack. Then you will have less problems with weight on your back.",
         "character": "Rayane",
         "type": "dialogue"
@@ -125,8 +128,60 @@
     },
 
     {
-        "value": "Rayane does a little giggles then slowly resumed walking to give Vinny time to get back into the rhythm of the adventure.",
+
+        "value": "Rayane does a little giggles then slowly resumed walking to give Vinny time to get back into the rhythm of the adventure. Meanwhile, high above the clouds was Rainbow Queen and the mysterious unicorn. The mysterious unicorn was wearing a special boot for her paws to stay on top of the clouds. Rainbow Queen seemed to be watching all the conflict that was going on in the mysterious village. Rainbow Queen's gaze was very serious, she didn't seem to be satisfied with what was happening.",
         "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "rainbow-queen-moment"
+        },
+        "value": "War never changes. War is such a ridiculous thing. Are you seeing this? Two ponies trying to be heroes, such a ridiculous and absurd fantasy. Hiroshi will not have the mental balance for this war.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+
+        "value": "The mysterious unicorn would get a little scared.",
+        "type": "action"
+    },
+
+    {
+        "value": "B...But he said this time he was going to try something better. And the Elite Color was going to try to control the balance of the war.",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+
+        "value": "Rainbow Queen then looked at the mysterious unicorn and made a sinister laugh.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Elite Color? Do you still trust the Elite Color?",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+
+        "value": "Rainbow Queen then looked at the mysterious unicorn and made a sinister laugh. The mysterious unicorn then became a little more insecure and tried to respond in a more determined way.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..Yes. Elite Color has always been something very important to all of us! This dimension urgently needs to expand the energy! Our dimension will become a real strong dimension! Isn't that what you want?",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
     }
 
 ]
