@@ -236,6 +236,12 @@
         "value": "Y..Yes. This is true. T...The true.",
         "character": "???",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Good~ Very good~ Then you are free again. You can go back to your \"fun\". Just don't forget. You still have a chance to do something better.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
     }
 
 ]
