@@ -218,6 +218,18 @@
         "value": "Y..Really? Are you really going to do this? You've always said that it's dangerous for normal ponies to discover the identity of gods.",
         "character": "???",
         "type": "dialogue"
+    },
+
+    {
+
+        "value": "Rainbow Queen did a sinister little smirk before replying while the scythe poked the mysterious unicorn's neck gently for a few seconds. The mysterious unicorn then \"froze\", just shyly looking into the Rainbow Queen's eyes.",
+        "type": "action"
+    },
+
+    {
+        "value": "Shhhh~ Do you really think everyone in this world will believe that someone has seen a goddess? This world still needs more maturity to understand the existence of gods. We don't want the same mistakes to happen again.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
     }
 
 ]
