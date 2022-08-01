@@ -239,7 +239,19 @@
     },
 
     {
-        "value": "Good~ Very good~ Then you are free again. You can go back to your \"fun\". Just don't forget. You still have a chance to do something better.",
+        "value": "Good~ Very good~ Then you are free again. You can go back to your \"fun\".",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+
+        "value": "Rainbow Queen then looked at the village again for a few seconds. Rainbow Queen looked very thoughtful about what was really going on.",
+        "type": "action"
+    },
+
+    {
+        "value": " Just don't forget. You still have a chance to do something better.",
         "character": "Rainbow Queen",
         "type": "dialogue"
     }
