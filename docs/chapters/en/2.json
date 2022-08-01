@@ -270,6 +270,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "tense-mystery"
+        },
         "value": "Okay. I need to trust you that no one will show up while I use my magic again just like other time when we left the cave. Okay?",
         "character": "Rayane",
         "type": "dialogue"
