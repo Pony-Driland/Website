@@ -254,6 +254,36 @@
         "value": " Just don't forget. You still have a chance to do something better.",
         "character": "Rainbow Queen",
         "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "Rainbow Queen then looked at the village again for a few seconds. Rainbow Queen looked very thoughtful about what was really going on.",
+        "type": "action"
+    },
+
+    {
+        "value": "Meanwhile, Rayane and Vinny is walking through the forest. So Rayane would stop for a while to look carefully around if there was no one around.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. I need to trust you that no one will show up while I use my magic again just like other time when we left the cave. Okay?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised to remember the moment where Rayane was using this ability.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...what? Do you want me to keep looking around?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
