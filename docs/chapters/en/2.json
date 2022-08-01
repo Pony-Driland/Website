@@ -287,6 +287,62 @@
         "value": "W...what? Do you want me to keep looking around?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. I'm vulnerable when I'm using this spell, will you help me look around. If something happens, let me know and I'll react.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane came back into concentration to perform the mysterious magic again. Then Rayane's mane would slightly start to swing during the progress.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..okay.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny worried, but he worked hard to stay focused. Rayane was very focused on Vinny's reactions as a warning reference. But Vinny didn't realize that. So Vinny heard the noise of hooves moving around. Vinny and Rayane liten to the very small sound of someone groaning in pain. Vinny start to talk very quietly so as not to distract Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah. I can hear someone groaning in pain.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was still concentrating on magic and was slowly finishing magic progress when she heard Vinny's voice. Vinny could just see a leaf finishing doing some movement that maybe could be suspicious.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh no. This is not good.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Shhhh... Looks like there are some ponies around. But I don't know if ponies are allies or enemies.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane gets a little worried as she concentrated on looking around.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..yeah. I had a slight feeling that someone is here. Maybe this is a trap.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
