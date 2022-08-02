@@ -360,6 +360,34 @@
         "value": "Oh shit.",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "Fine.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was feeling nervous, but watched around waiting for something. Vinny and Rayane didn't see anything. Just hear the sound of some body being left on the ground. Rayane looked a little intimidating to try to show that she was focused on the danger.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..okay. I felt someone moving there.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny points toward the place where he had the sensation of someone moving. It was a place with a lot of tree leaf, making it difficult to see the place. Rayane laughed a little while her horn glowed a little stronger, making her sword go up in flames as she prepares the attack.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. But this is not the only place. But good tip for us to start the fun~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
