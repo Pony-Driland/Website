@@ -374,6 +374,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "O..okay. I felt someone moving there.",
         "character": "Vinny",
         "type": "dialogue"
