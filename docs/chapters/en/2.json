@@ -539,6 +539,51 @@
         "value": "AAH!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny followed Rayane, trying hard to keep the same speed as Rayane. Suddenly a unicorn sniper pony that was behind a tree tried to shoot Vinny, the shot passed grazing Vinny a lot, and at the same time Rayane used the sword and cut the sniper barrel, surprising the sniper. Vinny was a little scared, but he tried to laugh at the danger to calm himself down.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...WOOOW!! IIIHAAAAAAA! YOU NEED TO IMPROVE THAT SIGHT YOU BLIND!!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...WHAT?! RAYANE?! AH! FUUUCK!",
+        "character": "Sniper",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The sniper fall to the ground and end up. The pony stayed behind and disappeared over the horizon.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. Your head was nearly blown off. Are we going to hide or enter the village by force?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Let's hide! if we go through this, James and Jeff will too, let's hide somewhere and make a better plan than going out screaming!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little curious and laughed a little and answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. I'll have to do this on the hard way. Get on my back and hold on tight!",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
