@@ -197,7 +197,6 @@ var storyCfg = {
             { id: 'rjRn9lYguV0', type: 'youtube' },
             { id: 'yb0-hwJAX3U', type: 'youtube' },
             { id: 'XD72-Y5aB9Q', type: 'youtube' },
-            { id: '0uK3yU2JQN4', type: 'youtube' },
         ],
 
         'tense-battle': [
