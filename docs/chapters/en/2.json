@@ -492,8 +492,53 @@
     },
 
     {
-        "value": "Vinny flies up getting ready to fly forward in order to follow the plan to surprise the ponies that were in the front.",
+        "value": "Vinny flies up getting ready to fly forward in order to follow the plan to surprise the ponies that were in the front. Vinny could escape the situation. And everyone hardly noticed his attempt to escape. Then at the same time Vinny landed, Rayane appeared next to Vinny, helping Vinny put the armor back on.",
         "type": "action"
+    },
+
+    {
+        "value": "Wow! It really worked!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane feels satisfied with the result, did not think twice and made the sword go up in flames again, preparing to do the first action that comes to mind.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah! Block the way with your sword! You can make a fire barrier!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Barrier? Heh, good idea~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane used the fire sword to rip the earth floor, making all the trees that were close start to catch fire.",
+        "type": "action"
+    },
+
+    {
+        "value": "Let's get out of here Vinny! We'll have time to run away now!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane quickly started to run very fast in a straight line.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAH!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
