@@ -455,6 +455,45 @@
         "value": "Yeah! You're doing well! We need to have a plan to react now!",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Let's take advantage of them moving away. I'll fly up and you prepare a teleport in my direction.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at the armor during some seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "I won't need the armor for now. Everypony here probably have firearms.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "V..Vinny? Be careful! You are an easy target while flying up.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little worried and then stopped spinning her sword. Rayane was very focused, starting to charge the teleport. Vinny waited for the fire to disappear before start to fly up.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't worry. I trust you!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny flies up getting ready to fly forward in order to follow the plan to surprise the ponies that were in the front.",
+        "type": "action"
     }
 
 ]
