@@ -584,6 +584,123 @@
         "value": "Okay. I'll have to do this on the hard way. Get on my back and hold on tight!",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at Rayane for a few seconds, laughing a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny climbs on Rayane's back.",
+        "type": "action"
+    },
+
+    {
+        "value": "That's not how I wanted to climb on you for the first time but I trust you!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. Be careful not to fall~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane increased her speed in a much more extreme way and used the trees as platforms to parkur on the trees.",
+        "type": "action"
+    },
+
+    {
+        "value": "WOOOW!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "When Rayane got to the top of the trees, Vinny accidentally fell off her, so Vinny had some chance of trying to hold on to the tree slacks during the progress",
+        "type": "action"
+    },
+
+    {
+        "value": "RAAAYANE!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny holds the branch, doing a POKER FACE. Vinny soon felt a magic levitating his up, Rayane was balancing on the top of the tree, trying to bring Vinny back towards her.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sorry Vinny. Let's get out of here!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Aah... Don't worry, it's dangerous for us to stop here. I'll fly to the village. You can try to find me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny stepped onto the top of the tree and got off Rayane's back slowly. Rayane gets worried during the talk.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fly? Don't fly too high or everyone will see you. If something happens, shout it out loud. Okay?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "It's going to be okay, charming Rayane.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane just smiles a little, trying to trust Vinny. So Rayane went back to parkur between the trees towards the village.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny smiles and flies up. Vinny flew at high speed, trying to keep a good distance away from being noticed. Vinny started to see some other pegasu flying in the sky towards the village, it looked like the pegasus was holding something medium sized black on his back. Vinny tried not to get too close to the pegasus, Vinny just stared at the pegasus for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "W...What? Is this another bomb?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny could see the smoke from the previous confusion. Then Vinny would hear a sound of ponies entering the forest. And at the same time Vinny also hear the sound of something falling from the sky. It looked like the mysterious pegasus had hurled the mysterious black object. Vinny tried to get a better look at what it was. So Vinny realized that yes, the item is a bomb.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "OH MY GOD! NOW IT'S FUCKED! NOO!",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
