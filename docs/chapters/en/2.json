@@ -701,6 +701,25 @@
         "value": "OH MY GOD! OH FUCK! OOH FUCK! NOO!",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "Vinny came down from the tree but being careful to the ground and tried to look more at the crowd. Vinny saw several ponies that were running desperately. Vinny saw a few more soldier ponies familiar with the ones Vinny saw during the trap, but the soldiers weren't even caring about Vinny anymore. Vinny saw something that looked like Rayane towards the wall.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "escape"
+        },
+        "value": "OH NO NO NO! RAYANE!!! SHIT! RAYANE NEED YOU!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny flies toward Rayane desperately.",
+        "type": "action"
     }
 
 ]
