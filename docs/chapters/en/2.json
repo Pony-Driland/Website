@@ -863,6 +863,11 @@
     },
 
     {
+        "value": "Rayane took a deep breath, trying to keep calm, and just gave a slight serious look.",
+        "type": "action"
+    },
+
+    {
         "value": "Please Vinny. This is no time to be sorry. Pray for everything to be on time. I'm trying to make your plan work.",
         "character": "Rayane",
         "type": "dialogue"
