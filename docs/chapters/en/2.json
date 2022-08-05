@@ -718,8 +718,65 @@
     },
 
     {
-        "value": "Vinny flies toward Rayane desperately.",
+        "value": "Vinny flies toward Rayane desperately, but Vinny felt a magic pulling his quickly to the side of the wall.",
         "type": "action"
+    },
+
+    {
+        "value": "Vinny! This is good see you again! What is happening?! I heard ponies screaming that the village is going to be completely destroyed!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane looks scared by the situation, trying to understand what is happening. Vinny gets nervous as he began to respond.",
+        "type": "action"
+    },
+
+    {
+        "value": "M...Maybe the black bomb I saw falling from the sky is something? I saw black bomb falling in the middle of the city. Please, look for a military or someone you think is involved in the invasion. We'll force this pony to talk about the bomb.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Bomb?! Are you crazy?! My teleport takes seconds to charge! This is madness! You don't know the destructive power of this bomb!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Calm down! Calm down! Rayane, I can fly to the bomb and look myself. I'll be fine.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "How do you say that if you haven't finished your first training?! VINNY! NOOOOO!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny flies over the wall. Vinny kept a high speed to try to reach the bomb as fast as possible. Vinny saw the bomb entering the center of the village. Vinny realized that all the destruction was more focused on the center of the village than all the rest of the village. Vinny was getting tired very fast from flying so fast, but Vinny was very dedicated to trying to use as few seconds as possible.",
+        "type": "action"
+    },
+
+    {
+        "value": "Come on! It's going to be easy! Imagine that we are playing CS! Come on Vinny!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny were feeling more and more tired. The center of the village was very much destroyed with a huge crater in the ground. The bomb was about to land in the center of the crater. Vinny then saw the bomb. The place was extremely insulated due to evacuation.",
+        "type": "action"
+    },
+
+    {
+        "value": "WOW! OK I understand. This explains a lot of the noises I heard in the cave.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
