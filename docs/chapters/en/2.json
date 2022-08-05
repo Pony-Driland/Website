@@ -874,8 +874,20 @@
     },
 
     {
-        "value": "Rayane was very anxious to use the teleport. Rayane was very dedicated to keeping her focus on magic as much as possible. ",
+        "value": "Y...Yes...yes. S...sorry Rayane.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very worried and kept quiet. Vinny tried to keep all his hopes on Rayane. Rayane was very dedicated to keeping her focus on magic as much as possible during the progress.",
         "type": "action"
+    },
+
+    {
+        "value": "Sssssh~ ",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
