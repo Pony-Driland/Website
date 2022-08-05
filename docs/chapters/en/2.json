@@ -799,6 +799,78 @@
         "value": "FUCK FUCK! FUUUUCK! I'm FUCKED! AH!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny flies up and start screaming loudly for help.",
+        "type": "action"
+    },
+
+    {
+        "value": "IS ANYONE HERE?!?! THIS PLACE IS GOING TO EXPLODE!! I CAN TAKE YOU OUT OF HERE!!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny accidentally finds Rayane running in the middle of the village, looking for something. Vinny saw lots of pony bodies lying on the ground and some gun remains lying around, but Vinny couldn't be sure if the guns could be working or not. Vinny was scared and worried for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..oh god. This looks a lot worse than I imagined. R..Rayane? Holy crap! Rayane!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was flying towards Rayane in an extremely desperate way.",
+        "type": "action"
+    },
+
+    {
+        "value": "RAAAYANE! The time is almost zero! if you have something it's now! The bomb already started digging down! if you have any plans it's now or never!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "NO! Calm down! I had a plan ready! Let's use the plan now!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane showed a a mysterious military pegasus. The pegasus was desperate and tired.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow! You are really quick at your task.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane invaded a basement door of a random house and entered this quickly. Vinny without a second thought, helped carry the mysterious pegasus while following Rayane. Vinny was extremely scared and regretful",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane! You can use your teleport. S..sorry. No matter what happens, it's my fault. I brought you here. Do your best!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Please Vinny. This is no time to be sorry. Pray for everything to be on time. I'm trying to make your plan work.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was very anxious to use the teleport. Rayane was very dedicated to keeping her focus on magic as much as possible. ",
+        "type": "action"
     }
 
 ]
