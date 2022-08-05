@@ -777,6 +777,28 @@
         "value": "WOW! OK I understand. This explains a lot of the noises I heard in the cave.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny landed next to the bomb and try to analyze the stuff. The bomb was starting to pierce the ground. Vinny was desperate to see that the bomb was starting to disappear into the ground.",
+        "type": "action"
+    },
+
+    {
+        "value": "What the fuck is that?! No! COME BACK HERE!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tried in various ways to stop the bomb process. As the bomb sank deeper and deeper into the ground, Vinny thought about using the pickaxe piece, but couldn't find time to come up with a plan.",
+        "type": "action"
+    },
+
+    {
+        "value": "FUCK FUCK! FUUUUCK! I'm FUCKED! AH!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
