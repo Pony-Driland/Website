@@ -888,6 +888,39 @@
         "value": "Sssssh~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "AH! AAAAH!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then suddenly all the sound around was interrupted by an extremely deafening explosion sound. Everything around was extremely bright, Vinny was trying to maintain consciousness while Rayane tried to protect him, but Vinny passed out in the process.",
+        "type": "action"
+    },
+
+    {
+        "value": "R...Rayane? H...hello? R..Rayane?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny's ears were ringing very loudly. It looked like Vinny's hearing was finally starting to recover the ringing as he woke up. The flash was calming down, Vinny was on the ground next to many burnt objects around.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hello? R..Rayane? Somebody?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very scared, worried, trying to look for Rayane and the pegasus.",
+        "type": "action"
     }
 
 ]
