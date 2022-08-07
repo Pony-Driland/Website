@@ -186,6 +186,10 @@ var storyCfg = {
             { id: 'l6veMGLpol0', type: 'youtube' },
         ],
 
+        'nuclear-sound': [
+            { id: '1ulfXmwvKhI', type: 'youtube', once: true },
+        ],
+
         'escape': [
             { id: '3jw04mIF3fs', type: 'youtube' },
             { id: '_j8jUUzGqDo', type: 'youtube' },
