@@ -999,6 +999,28 @@
         "value": "B..But how did I survive it? What really happened here?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Then Vinny would go back to the basement of the house. Vinny take the spray and use this on Rayane horn slowly. Vinny was still worried about Rayane. But Vinny tried to keep hopeful.",
+        "type": "action"
+    },
+
+    {
+        "value": "R..Rayane. It's gonna be okay. I promise.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny got up slowly and looked around again, trying to find some new shelter. Vinny would only find many houses without roofs or with half roofs. So Vinny starts to see a extremely deeper new crater on the village center.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..what? It's the same crater. Was this all an excavation?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
