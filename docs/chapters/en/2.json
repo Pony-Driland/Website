@@ -933,6 +933,66 @@
     {
         "value": "Vinny was very scared, worried, trying to look for Rayane and the pegasus.",
         "type": "action"
+    },
+
+    {
+        "value": "A few minutes passed, but Vinny finally found Rayane, she was alive, but extremely weak.",
+        "type": "action"
+    },
+
+    {
+        "value": "N...Nooo! R..Rayane? RAYANE!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny realized that she tried to combine teleport magic at the last minute along with the force field. Rayane's horn was very damaged from the process. Next to Rayane was the mysterious pegasus that was still alive, but also passed out. Vinny vision was returning back more and more.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey, Rayane? Rayane, are you okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny hugged Rayane gently, trying to wake her up. Vinny was very worried that Rayane was slowly losing more energy and Rayane's SmartMoby was starting to fail. But Vinny smiled when he saw that Rayane's eyes were moving.",
+        "type": "action"
+    },
+
+    {
+        "value": "V..Vinny? I... I'm fine. It's great to see you doing well.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane starts to cought, trying not to breathe too much smoke from the explosion.",
+        "type": "action"
+    },
+
+    {
+        "value": "I... I had to use a lot of magic. I just need to rest.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane tries to keep eyes open due to extreme tiredness while hugging Vinny back slowly. Vinny then helped Rayane to slowly close her eyes.",
+        "type": "action"
+    },
+
+    {
+        "value": "R..Rayane. Don't worry, you can rest here, I'll take care of you and the other one here. Stay here while I go check out what happened. Okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smiled a little and just accepted to keep her eyes closed and fainted again slowly. Vinny put Rayane on the bed delicately. So Vinny looked around trying to know where he was.",
+        "type": "action"
     }
 
 ]
