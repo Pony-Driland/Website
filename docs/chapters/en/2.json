@@ -874,6 +874,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Y...Yes...yes. S...sorry Rayane.",
         "character": "Vinny",
         "type": "dialogue"
@@ -885,6 +888,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "nuclear-sound"
+        },
         "value": "Sssssh~",
         "character": "Rayane",
         "type": "dialogue"
@@ -902,6 +908,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "R...Rayane? H...hello? R..Rayane?",
         "character": "Vinny",
         "type": "dialogue"
@@ -913,6 +922,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "suspenseful-ambient"
+        },
         "value": "Hello? R..Rayane? Somebody?",
         "character": "Vinny",
         "type": "dialogue"
