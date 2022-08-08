@@ -1016,6 +1016,61 @@
         "value": "W..what? It's the same crater. Was this all an excavation?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny went back to the basement and look for some rags, clothes, or anything to hold the mysterious pegasus. Then Vinny smiled as he looked at an abandoned wardrobe, then he opened the wardrobe.",
+        "type": "action"
+    },
+
+    {
+        "value": "That was good luck.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny could only find cloths of possible clothes and some pieces of some firearm.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hoho!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny picked up all the rags possible and the rest of the weapon, but focused on the rags. Then Vinny would go back to where the mysterious pegasus was. The mysterious pegasus was still unconscious. Vinny ties up the pegasus to make sure it doesn't escape.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. I think that's enough for him not to hurt Rayane.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny walked over metal pieces, wood scraps, and other burnt materials on the floor. Vinny finally came back to the surface again and looked up at the sky. Now the sky was a little more visible, and Vinny could see that there were still some fireballs that had flown into the sky, falling over some parts closer to the center of the village.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh god...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny walked a little further through the destroyed village area. Vinny watched the dead bodies on the floor, trying to find any usable items. During each walk, Vinny felt uncomfortable seeing each dead body. Many of these bodies were slowly disintegrating. Vinny saw that instead of blood, the bodies had pixels coming out of the bodies.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow! If this was supposed to be some censorship, it's just getting more bizarre.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
