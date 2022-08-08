@@ -1071,6 +1071,33 @@
         "value": "Wow! If this was supposed to be some censorship, it's just getting more bizarre.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "After a few minutes, Vinny was in a place where there were few houses, as many houses were completely destroyed by the explosion. Vinny picked up as many clothes as possible from the corpses and made sure there wasn't any melee weapon nearby like a knife or a spear.",
+        "type": "action"
+    },
+
+    {
+        "value": "This place is very depressing. Where are all the survivors?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then decided to go back to the basement where Rayane was, and during the progress, Vinny saw some mysterious shadow of a possible pegasus in the place, but the mysterious new pony was head down and sad. Vinny was completely surprised and curious. And he slowly watched the situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "O...Oh fuck!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny then walked slowly towards the shadow, Vinny heard a female voice crying and lamenting a lot. This voice seemed to be sad, but very full of hatred for something.",
+        "type": "action"
     }
 
 ]
