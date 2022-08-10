@@ -1215,6 +1215,17 @@
         "value": "Hmm... So you claim to be her friend? And you still want to dare me to believe you? You have a lot of courage. Challange me will be the worst thing you'll ever do in your life. Simple words won't be enough to convince someone like me.",
         "character": "Rainbow Queen",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very surprised to see Rainbow Queen's body filled with brightly colored elements, her egyptian looks, her accessories. But what I most made Vinny's surprised is that Rainbow Queen didn't have a SmartMoby on her arm.",
+        "type": "action"
+    },
+
+    {
+        "value": "Doesn't she have this weird thing on her arm? What does that mean?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
