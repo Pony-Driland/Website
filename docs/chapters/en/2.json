@@ -1098,6 +1098,123 @@
     {
         "value": "Vinny then walked slowly towards the shadow, Vinny heard a female voice crying and lamenting a lot. This voice seemed to be sad, but very full of hatred for something.",
         "type": "action"
+    },
+
+    {
+        "value": "N..no...it's not possible. These two ponies are annoying! They just make wars!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wait. This voice. That voice is very familiar.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny had a slight strange sensation of feeling a small cold wind coming from the directions of the dead bodies on the ground. It seemed to be some energy, but unfortunately Vinny could only feel this, Vinny couldn't see this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? T...That feeling. This is getting a little scary. But I think I'm getting what's going on here.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny was a little scared, and just kept walking towards the voice. Vinny tries to see if Rayane was okay during the progress. Vinny walked carefully, very curious when he started to feel a light coming from the basement.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..oh no.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny left clothes and knives outside before entering the basement slowly. Vinny could see a little more of the shadow forming in an alicorn shape. The shadow was very familiar. Then Vinny realizes it's Rainbow Queen. Rainbow Queen was trying to do something with Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...what?! You again! Who are you?!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Shhhhhhh~ Calm down Rayane. I didn't expect to find you here. I promise to take revenge on whoever did all this to you.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen seemed to be crying a little and at the same time doing an extremely strong dark aura in the place.",
+        "type": "action"
+    },
+
+    {
+        "value": "N...No! Wait! Rayane and I were trying to defuse the bomb!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny walks backwards slowly without making any suspicious moves.",
+        "type": "action"
+    },
+
+    {
+        "value": "What?",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen looked very serious and looked back, trying to preserve her identity through the glow of her body. But when Rainbow Queen recognized Vinny voice a little, she tried to make some contact.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y...yeah! I was with Rayane during the whole time. Rayane is very tired because she tried to protect me during the explosion.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen looked towards him slowly, looking into Vinny eyes. Vinny see two rainbow glow eyes. Rainbow Queen was starting to suspect something.",
+        "type": "action"
+    },
+
+    {
+        "value": "You? The energy of your SmartMoby is familiar. What are you doing here?",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny saw that the Rainbow Queen face started to form tattoos on her face during the progress.",
+        "type": "action"
+    },
+
+    {
+        "value": "A..Ah. We were here protecting ourselves from the explosion. We caught someone involved in this attack, he's passed out. I don't want to do anything with you, I wanted to stay close to Rayane until she wakes up. I've been with Rayane for a long time and I've never done her any harm, you have to believe me. We can talk about it if you want. What can I do to make you believe in me?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen was staring at Vinny, looking like she was analyzing something during some seconds. Rainbow Queen was even more suspicious of Vinny's presence. ",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmm... So you claim to be her friend? And you still want to dare me to believe you? You have a lot of courage. Challange me might be the worst thing you'll ever do in your life. Simple words won't be enough to convince someone like me.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
     }
 
 ]
