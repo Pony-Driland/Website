@@ -1229,6 +1229,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "I...I can prove this! I have pictures of her smiling with me. It never crossed my mind to challenge you, I don't even want to think about it.",
         "character": "Vinny",
         "type": "dialogue"
@@ -1246,6 +1249,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "rainbow-queen-moment"
+        },
         "value": "Rainbow Queen showed an expression of more suspicion before making a small sinister laugh.",
         "type": "action"
     },
