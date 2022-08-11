@@ -1226,6 +1226,123 @@
         "value": "Doesn't she have this weird thing on her arm? What does that mean?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "I...I can prove this! I have pictures of her smiling with me. It never crossed my mind to challenge you, I don't even want to think about it.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little worried for a few seconds, but he didn't give up trying to stay determined.",
+        "type": "action"
+    },
+
+    {
+        "value": "I...I just want her to be okay, I can show you the pictures of us or you can wait for her to wake up.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen showed an expression of more suspicion before making a small sinister laugh.",
+        "type": "action"
+    },
+
+    {
+        "value": "Photographs? You are so innocent. This means that you have privileged technology in this dimension. Photographs are not common in this dimension.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen looked very deeply into Vinny eyes, wanting to watch Vinny senses to try to see if Vinny were telling the truth in a very intimidating way.",
+        "type": "action"
+    },
+
+    {
+        "value": "It seems that you are hiding something from me. How am I supposed to trust that you have not manipulated these images?",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was surprised and anxious during the conversation. Vinny tried to calm down a bit before continuing the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "If you don't believe in me, that's fine, Rayane has this picture in an album. She seems to have a lot of love and extreme affection in her photo album.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny calmed down a little more, breathing deeply to try to continue talking more calmly.",
+        "type": "action"
+    },
+
+    {
+        "value": "See I don't want to do any harm. You and me want the same thing now. I want try to help Rayane. Rayane is having nightmares now that she can't wake up. She didn't say anything about her past. Something tells me that you like Rayane a lot.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen made a slight smile a little evil when listening to Vinny's words.",
+        "type": "action"
+    },
+
+    {
+        "value": "How interesting. Is Rayane trying to make some kind of new friendship? I think this guy is going to need a special ritual for me to show him who he's dealing with. He seems to be more innocent than a dangerous pony.",
+        "character": "Rainbow Queen",
+        "type": "think"
+    },
+
+    {
+        "value": "Hmmmm. I appreciate your courage in your words. You will have your little chance to see me walk away without anything bad happening to you. You were too cowardly to just throw a little stone next to me.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised to hear that. But he tried to keep quiet to continue listening to the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Really very interesting. I'm understanding what's really going on here. This pony is really very silly. It's going to be fun tormenting this guy's life until he learns a lesson.",
+        "character": "Rainbow Queen",
+        "type": "think"
+    },
+
+    {
+        "value": "Heh~ If you really want to have my trust, then I'll wait for Rayane to say that to me. Now if you make a wrong move...",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen gave a sinister little laugh as she ended the words in a sinister and seductive way.",
+        "type": "action"
+    },
+
+    {
+        "value": "You're going to have some serious problems with me~",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Rainbow Queen used horn magic and levitated a long shiny scythe, and then used the scythe to finish levitating something around her, but you just couldn't see it. Vinny was much more surprised, watching the scythe, trying to understand what kind of pony Rainbow Queen is.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...What?! But what the fuck is this?!",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
