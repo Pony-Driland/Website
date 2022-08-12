@@ -1394,6 +1394,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "dark-and-mysterious-ambient"
+        },
         "value": "When the silence finally returned. Vinny noticed that now Rayane's horn was no longer damaged as it was a few minutes ago. But Rayane was still fainting and resting.",
         "type": "action"
     },
