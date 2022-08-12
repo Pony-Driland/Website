@@ -1380,6 +1380,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Rainbow Queen simply made a huge glow and disappeared through a teleportation spell. Vinny was still surprised and confused. But he was slowly calming down again.",
         "type": "action"
     },
