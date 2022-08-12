@@ -1349,6 +1349,67 @@
         "value": "W...What?! But what the fuck is this?!",
         "character": "Vinny",
         "type": "think"
+    },
+    
+    {
+        "value": "Weeeell... About the cave. This was Rayane who diminished the strength of my SmartMoby. I understand you don't believe me right away, it's okay. But Rayane is in great need of help now. I can stay here until she wakes up.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen looked a little more serious and does a movement with the scythe, bring Vinny's face closer.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ssssh... Don't try to take advantage of my emotional weakness. Many souls needs me now~",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "When the Rainbow Queen's scythe disappeared, Vinny accidentally lost his balance and fell to the ground.",
+        "type": "action"
+    },
+
+    {
+        "value": "And stay well out from PROBLEMS.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen simply made a huge glow and disappeared through a teleportation spell. Vinny was still surprised and confused. But he was slowly calming down again.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...what? Does she also know how to disappear?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "When the silence finally returned. Vinny noticed that now Rayane's horn was no longer damaged as it was a few minutes ago. But Rayane was still fainting and resting.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...Wow?! Rayane?!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very curious trying to understand what was going on. When Vinny noticed that Rayane was feeling better, Vinny tried to look where the mysterious pegasus was. Pegasus was still passed out on the ground.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ohh... the pegasus is here too!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
