@@ -1416,6 +1416,176 @@
         "value": "Ohh... the pegasus is here too.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "Vinny looked worriedly at Rayane, going to analyze if Rayane was well.",
+        "type": "action"
+    },
+
+    {
+        "value": "R..Rayane?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was surprised and feeling better to feel that Rayane was breathing better than before. Vinny rearranged the blanket to keep Rayane warm gently.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled for a few seconds before going to see if the pegasus was still passed out.",
+        "type": "action"
+    },
+
+    {
+        "value": "Time to see this suspect.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was thinking about getting the cloth and knife right away. The wind that was occurring, making Vinny feel a little cooler.",
+        "type": "action"
+    },
+
+    {
+        "value": "Why? Well that crazy pony could have stayed here.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny took all the rags and the knife, reinforcing the bindings on the paws, wings. Vinny finished the last progress covering the mysterious pegasus's eyes.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmmm. Good.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "The pegasus was still unconscious. The smoke and dust that was getting lower slowly. Vinny was starting to get worried as he noticed that the environment was getting cleaner to see.",
+        "type": "action"
+    },
+
+    {
+        "value": "Good. Good. This will have to be done very quickly.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Meanwhile, Rayane's horn was slightly finishing regenerating as her body started to breathe normally again, but she was still passed out. Vinny looked at Rayane again, doing Vinny feel much better and calmer.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Maybe a little time.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value":"Vinny would place the pegasus's body next to the wall and then go back to Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey... My little baby? Wake up.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny pokes Rayane very lightly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Can you hear me? Is everything okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was shaking Rayane's body very gently. Rayane starts to touch a little, trying to wake up. Rayane was slightly trying to open her eyes.",
+        "type": "action"
+    },
+
+    {
+        "value": "",
+        "type": "action"
+    },
+
+    {
+        "value": "H..huh? Rain? Is it you again?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was very confused because I still hadn't fully regained consciousness. Vinny would get curious and then just continue the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Calm down. Calm down... I'm here, it's okay.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny hugs Rayane very tightly. Trying to do her feel really comfortable.",
+        "type": "action"
+    },
+
+    {
+        "value": "R..Rain? You really came back...? I...i...",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane slightly opened her eyes and finally realized Vinny presence.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...Aaah? V...Vinny?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was very surprised for a few seconds. Rayane blushed a little with embarrassment, but then continued the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..you're alive. I thought my force field had failed.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane cries while hugging Vinny back. Rayane was very relieved to see that Vinny was okay. The hug was very comforting. Vinny smiled a little and just continued the hug.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes, I'm fine. You were VERY bad... How are you feeling now?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
