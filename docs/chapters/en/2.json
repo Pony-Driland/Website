@@ -1523,11 +1523,6 @@
     },
 
     {
-        "value": "",
-        "type": "action"
-    },
-
-    {
         "value": "H..huh? Rain? Is it you again?",
         "character": "Rayane",
         "type": "dialogue"
