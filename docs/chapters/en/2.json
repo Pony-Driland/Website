@@ -1586,6 +1586,17 @@
         "value": "Yes, I'm fine. I never leave your side, I've been here all along. You were VERY bad... How are you feeling now?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "I...I'm feeling so much better, I'm surprised I'm alive too. Meeting you was one of the best decisions I ever made. I...I was very exhausted. I thought I was going to die. My magic felt like it was almost gone. Wh...what did you do to save my life?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane ended the hug while continuing to smile gently. Vinny was very thoughtful about whether to choose to tell the truth or not at this point.",
+        "type": "action"
     }
 
 ]
