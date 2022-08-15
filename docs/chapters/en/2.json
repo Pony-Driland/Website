@@ -1646,6 +1646,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "I'm going to act on the pegasus.",
         "character": "Vinny",
         "type": "dialogue"
@@ -1668,6 +1671,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "tense-mystery"
+        },
         "value": "H...huh?! WHAT?! Where am I?! And...didn't I die?!",
         "character": "???",
         "type": "dialogue"
