@@ -1592,6 +1592,159 @@
     {
         "value": "Rayane ended the hug while continuing to smile gently. Vinny was very thoughtful about whether to choose to tell the truth or not at this point.",
         "type": "action"
+    },
+
+    {
+        "value": "I... I used my spray and stayed by your side the whole time. But first we have to settle something, then I need to talk to you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? A spray? Are you sure it was just a spray? Didn't you use any special healing items? I... I was almost dying from lack of magic in my body.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was surprised for a few seconds, thinking it was something important, but then she calmed down to see Vinny pointing to the hostage.",
+        "type": "action"
+    },
+
+    {
+        "value": "What do you want to do? Do you want to try something first or not?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "T...The hostage? I'm still tired. I need to finish resting. But if you're feeling well. Try to find out who's responsible for all this.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane coughed again as she lay back on the bed again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... Just promise not to be scared?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane gets very curious to hear this",
+        "type": "action"
+    },
+
+    {
+        "value": "Scared? What are you talking about?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I'm going to act on the pegasus.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny turns his back and walked to the pegasus on the floor. Rayane just remained curious, trying to understand what would happen.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey wake up. Waaaaake up!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny starts to shake the pegasus head. The pegasus gets startled and desperately tried to move.",
+        "type": "action"
+    },
+
+    {
+        "value": "H...huh?! WHAT?! Where am I?! And...didn't I die?!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Calm down! You didn't die and you won't die if it depends on you. I just need you to say a few things. You need to explain what happened and why this one dropped a bomb.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The pegasus gets more confused when his realized that his was not seeing anything.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wh... what? E..Elite Color?! N...No! Please! Don't turn off my SmartMoby! I don't want to have this end! And..I swear it was just a blast bomb!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The pegasus was even more desperate trying to move and trying to get away. Vinny spoke close to the pegasus ear, pulling this up.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey! Don't lie to me motherfucker!! Say what else and I release you!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "O..oh god.",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "CALM DOWN! I don't know anything else! I just oriented the coordinates! The only thing I knew was to be more careful with the last bomb! I just want to go home! I swear the explosion couldn't have been too strong!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The pegasus moved more desperately, trying to move in the opposite direction in response. Vinny then started talking a little lower in a very threatening way.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Tell me something I don't know. Where is your house, do you have family? I've been out there and seen some things. if you say something that doesn't lead with what I saw out there I'll cut your wings into little slices until you say more.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny pulls the pegasus ear harder during the progress.",
+        "type": "action"
+    },
+
+    {
+        "value": "Nobody wants to stay here boy, tell us what you want and I'll disappear and you'll be released. Nobody needs to know that we had this conversation.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "M..my wings?! You are crazy?! My life depends on them! YES! I have family! Everyone is waiting for me to come home! I'm just a coordinate helper! We were just trying to open a secret passage! Just that! We didn't want to hurt anyone!! STOP!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah. A lot of people died here with this bomb! Who do you work for?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
