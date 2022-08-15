@@ -31,7 +31,7 @@ var storyCfg = {
     contact: 'tiny@ponydriland.com',
 
     nftDomain: {
-        url: 'https://unstoppabledomains.com/d/{domain}',
+        url: 'https://ud.me/d/{domain}',
         value: 'ponydriland.nft',
         domainWallet: 'jasmindreasond.wallet',
         valueURL: 'ponydriland.nft',
@@ -39,7 +39,7 @@ var storyCfg = {
     },
 
     creator: 'Yasmin Seidel (JasminDreasond)',
-    creator_url: 'https://unstoppabledomains.com/d/ponydriland.nft',
+    creator_url: 'https://ud.me/ponydriland.nft',
     opensea: 'ponydriland',
 
     github: {
