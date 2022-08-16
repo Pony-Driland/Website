@@ -1751,6 +1751,11 @@
         "value": "Yeah. A lot of ponies died here with this bomb! Who do you work for?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "The mysterious pegasus was very surprised, not understanding very well what was happening.",
+        "type": "action"
     }
 
 ]
