@@ -1845,6 +1845,50 @@
     {
         "value": "The mysterious pony began to wail, asking for much mercy during the conversation. During this process, Vinny looks for an item on his body looking for anything suspicious. Vinny only find a small device used to guide the bomb's trajectory and a wing helper device hidden behind his wing clothes.",
         "type": "action"
+    },
+
+    {
+        "value": "Hey... Come on, if you don't speak your name now I'll cut off a piece of your wing and put it in your mouth!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny press the knife harder against the wings only to provoke the mysterious pegasus.",
+        "type": "action"
+    },
+
+    {
+        "value": "N..NOOOOOO! Stop stop!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The mysterious pegasus was trying to get away during some seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "M..My name is Wagner! WAGNER!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was feeling better to hear Wagner's name. So Vinny continued to focus on the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay Wagner. who are the ponies that went to the crater? The bomb exploded there. No other pony has come here to see the crater yet.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny slowly withdrew the knife and give the pegasus more freedom.",
+        "type": "action"
     }
 
 ]
