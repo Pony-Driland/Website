@@ -1756,6 +1756,96 @@
     {
         "value": "The mysterious pegasus was very surprised, not understanding very well what was happening.",
         "type": "action"
+    },
+
+    
+    {
+        "value": "P..Ponies?! But the bomb wasn't even that strong! I...Impossible!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The mysterious pegasus was extremely scared to hear this.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm just a military man from the East region. I just follow orders from my superiors. Just that! Our leader just wants to have the magic relic back! This is just my job!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little surprised to hear this answer.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? What's your leader's name? and why did he want to explode this bomb?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...we just wanted to open the secret passage! The secret underground passage that must be near you now. Wait... Don't you know my leader's name? Everyone knows his name.",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was curious to see the mysterious pegasus very confused to have heard this question.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine... Say his name and yours. I want to hear from you, if you lie on something I will clip your wings. I want to see if I can trust you. I know exactly what your boss is, I want to know if you're really going to tell the truth.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The mysterious pegasus was very worried and tried to respond as quickly as possible.",
+        "type": "action"
+    },
+
+    {
+        "value": "No..no! His name is Marlon! Only that! MARLON! No secrets here! I just want to leave!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "AAnd your name? Your name! Speaks your name too!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    {
+        "value": "I already told! Marlon! Everyone at Pony Driland knows it's Marlon! P...Please stop!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon is the fuck! YOUR NAME! I want to know your name! If it takes time we will leave you here without wings and with the elite color coming here!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny puts the tip of the knife on the upper part of the wings but without piercing.",
+        "type": "action"
+    },
+
+    {
+        "value": "N...NO NO NOOO! STOP! I speak! I speak! Just please stop! I just want to be a little calmer!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The mysterious pony began to wail, asking for much mercy during the conversation. During this process, Vinny looks for an item on his body looking for anything suspicious.",
+        "type": "action"
     }
 
 ]
