@@ -1887,7 +1887,155 @@
     },
 
     {
-        "value": "Vinny slowly withdrew the knife and give the pegasus more freedom.",
+        "value": "Vinny slowly withdrew the knife and give the pegasus more freedom. The mysterious pegasus slowly calmed down a bit more and continued to respond.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "W..What. T... The pony is Marlon and his army. Marlon just came to take the relic. Only that. Marlon don't want to hurt anyone else!",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon? Marlon is a unicorn?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..Yeah. My only obvious certainty is that Marlon is obviously the unicorn of the group.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Group? Hm. I don't think that's quite what's happening right now. There are no souls alive around here now.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny picks up Wagner items and then went to Rayane slowly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Please. Just be quiet.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane just agreed, keeping as quiet as possible so her voice wouldn't be heard while she was surprised by the conversation with Wagner.",
+        "type": "action"
+    },
+
+    {
+        "value": "What are you talking about? And what do you mean no living soul? T...This is wrong! It was a midsize bomb! IMPOSSIBLE!",
+        "character": "Wagmer",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner Gets scared, trying not to believe the possibilities of what happened. Vinny then returned to Rayane for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... Do you think it's suspicious?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny shows the items that the mysterious pegasus had. Rayane was very curious and thoughtful when observing the items. Rayane analyzes the items for a few seconds before responding.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Wagner probably won't talk about everything he's doing.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah. Please, you need to analyze a little. Outside I saw some pegasus going to the crater before the explosion.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Pegasus? Are we still in the blast zone? Hmmmm. All right.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny delivered the items to Rayane. Then Vinny walked towards the pegasus again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay Wagner. Why did you want to do this work?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..Work? Well...",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner was a little scared during the progress.",
+        "type": "action"
+    },
+
+    {
+        "value": "I...I just work to protect the east region. But I also like to enjoy and my adventure. It's all I can do for my life.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Do you like to protect by dropping bulldozer bombs on villages with innocent ponies in this? A village that had many families and in addition to having a confrontation? I'm believing in you. I just want you to help me understand why your group really blew up this bomb. No one goes around blowing up villages and killing ponies for magic items for nothing.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner showed nervousness as he was trying to understand Vinny's words. Wagner looked a little confused as to what was being talked about.",
+        "type": "action"
+    },
+
+    {
+        "value": "So please. Tell me if you know what your friends' next step is.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "B..but everypony was going to wait for the village to be evacuated! Someone promised me that they would do their best to evacuate the village as soon as possible! You talking like that sounds like it was a giant explosion! We just wanted to access the center of the village! Marlon just wanted to open the secret tunnel!",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Tears started to come out from Wagner eyes when his started to lose the emotional balance of the situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "So tell me about your family, do you live with your family? what do you tell me about your family? it was really a very strong bomb! There were many bodies scattered on the floor! Or what was left of the ponies body. How is your family? Why did you say that I could erase your smartmoby?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner was even more surprised and began to understand that the dialogue didn't sound much like an Elite Color conversation. But still Wagner was scared, Wagner was too scared to know what really happened.",
         "type": "action"
     }
 
