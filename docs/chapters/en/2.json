@@ -2029,7 +2029,7 @@
     },
 
     {
-        "value": "So tell me about your family, do you live with your family? what do you tell me about your family? it was really a very strong bomb! There were many bodies scattered on the floor! Or what was left of the ponies body. How is your family? Why did you say that I could erase your smartmoby?",
+        "value": "So tell me about your family, do you live with your family? what do you tell me about your family? it was really a very strong bomb! There were many bodies scattered on the floor! Or what was left of the ponies body. How is your family? Why did you say that I could erase your Smartmoby?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -2037,6 +2037,51 @@
     {
         "value": "Wagner was even more surprised and began to understand that the dialogue didn't sound much like an Elite Color conversation. But still Wagner was scared, Wagner was too scared to know what really happened.",
         "type": "action"
+    },
+
+    {
+        "value": "B...But how can I trust you about my family's life? This is not true! Stop talking nonsense! I wouldn't let a military team drop a very destructive bomb!",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Wagner was confused for a few seconds. Wagner kept trying to understand if Vinny is really an Elite Color member or not. Wagner was still very emotional and stuttered as he tried to understand what was really going on.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What? Do you then do not know how to turn off a SmartMoby?",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "You won't say anything? Okay...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny held Wagner by the wings and pulled Wagner as Vinny walked up the stairs, they took the blindfold off their eyes.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey! But what the fuck is this?! Help!!",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny took the blindfold off Wagner eyes slowly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay Wagner. This doesn't look like a child's firecracker.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
