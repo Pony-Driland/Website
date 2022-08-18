@@ -2,6 +2,7 @@
     "dependencies": {
         "@unstoppabledomains/resolution": "^7.1.2",
         "@walletconnect/client": "^1.8.0",
+        "@walletconnect/qrcode-modal": "^1.8.0",
         "cid-tool": "^3.0.0",
         "discord-markdown": "^2.5.1",
         "express": "^4.17.2",
