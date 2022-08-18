@@ -2063,6 +2063,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Vinny held Wagner by the wings and pulled Wagner as Vinny walked up the stairs, they took the blindfold off their eyes.",
         "type": "action"
     },
@@ -2079,6 +2082,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "and-in-darkness-may-she-reign"
+        },
         "value": "Okay Wagner. This doesn't look like a child's firecracker.",
         "character": "Vinny",
         "type": "dialogue"
