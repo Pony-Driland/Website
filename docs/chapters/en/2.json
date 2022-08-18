@@ -2088,6 +2088,112 @@
         "value": "Okay Wagner. This doesn't look like a child's firecracker.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Let me go!! Let me... O...oh....WHAT?! WHAT HAPPENED HERE?!",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner was extremely scared and impressed. Wagner was beginning to feel extremely nervous, trying not to believe what he was seeing.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeaah. This is what your firecracker did. Look at the rest of bodies on the floor. Can you give me one good reason why I shouldn't leave you here? You can really say something you know and I don't, or you can just end up like them. The pony you work for did this! If you're alive or not, it would be good until you're dead for them to keep anyone from knowing about it!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny took a few deep breaths then Vinny looked at the crater for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Did you enjoy participating in a slaughter? Could be your family in these bodies.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner was starting to feel sick when he saw the whole situation. He was trying not to pass out due to extreme nervousness about understanding what was going on.",
+        "type": "action"
+    },
+
+    {
+        "value": "No..no! This...this can't be true! I never knew we had a bomb like this! H..How does Marlon do something like this?! He's never done anything like this! W...What monster is this?!",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner was extremely terrified, trying to control himself emotionally, he seemed much more scared than usual.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wagner, let's try again, no threats, no blindfolds. why would Marlon do that? Did someone cheat on him? You know something and you don't want to tell me? Just remembering that I came to stop the bomb with my hooves, but I couldn't. I came face to face with the bomb. Why would anyone want this city destroyed?? Do you have anything else? Revenge? Something of greater value in the underground?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner was slowly starting to feel weak during the conversation due to extreme nervousness.",
+        "type": "action"
+    },
+
+    {
+        "value": "I don't know anything. Marlon was just talking to me a lot about a prophecy! We needed to help the East region at all costs! Our only goal has always the magical relic as we have done for generations!",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner was getting more and more traumatized and very shaken by the situation. Vinny was a little surprised and confused, and asked the question.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Tell me about this prefect, what is this?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The prophecy of the great drought of the eastern region. O...Our world is slowly dying. This magical relic is our only hope for us to live for a few more generations. B..But the West region....c...built... a bunker.....u..a bunker for....for.......p...protect the relic.....",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner? WAGNER! No! it's ok, you don't have to try, I'll put that blindfold over your eyes again, don't worry, nothing will happen to you. I just need you to trust me enough for you not to see anything.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "N...no.........the....the explosion........the....the prophecy........of.. .....R....Rainbow.........R...Raaaaainbow....",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner lost the balance and passed out on the floor. Wagner no longer showed any reaction and his body remained on the ground. But Wagner's SmartMoby kept showing that he was still alive.",
+        "type": "action"
+    },
+
+    {
+        "value": "OH MY LUNA!! Because every adult is a child here!! FUCK!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then put Wagner back in the basement of the house. The blindfold was placed over Wagner's eyes again. Wagner was kept away from Rayane for security reasons.",
+        "type": "action"
     }
 
 ]
