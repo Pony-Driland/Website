@@ -2192,6 +2192,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Vinny would then put Wagner back in the basement of the house. The blindfold was placed over Wagner's eyes again. Wagner was kept away from Rayane for security reasons. Then Vinny looked at Rayane and nudged her gently.",
         "type": "action"
     },
@@ -2220,6 +2223,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "bad-think"
+        },
         "value": "M..Me? I've heard many parts from the talk. I'm really worried about what happened out there. All I've seen so far is just this basement.",
         "character": "Rayane",
         "type": "dialogue"
