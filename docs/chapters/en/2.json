@@ -2211,6 +2211,34 @@
         "value": "Huh? Vinny? Talk about what?",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Did you hear our conversation?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "M..Me? I've heard many parts from the talk. I'm really worried about what happened out there. All I've seen so far is just this basement.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane seemed to show a more worried look than usual.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmm... How many alicorns do you know? The weather outside is sad, bodies scattered, houses and more houses destroyed. But do you know anything about alicorns?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was confused and even more surprised to hear this.",
+        "type": "action"
     }
 
 ]
