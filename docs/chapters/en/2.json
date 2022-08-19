@@ -2245,6 +2245,136 @@
     {
         "value": "Rayane was confused and even more surprised to hear this.",
         "type": "action"
+    },
+    
+    {
+        "value": "A..Alicorn? The forest still exists?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah, your friend in the cave seemed angry or irritated, I'm starting to put the puzzles together. Do you only know her?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane tried to control her nervousness as she answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "M..my friend?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little more insecure of the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny. There is only one alicorn in Pony Driland.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay. Who was in the cave wasn't an alicorn?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. The unicorn was wearing a black outfit.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "And you only know her right?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "N..no. There is only one alicorn.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny took a deep breath and then said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay okay. I thought there were several like in my world, where people had MANY different gods. But going back to the beginning of the conversation I actually used a spray on you, and you got better right away. Don't you think it's weird a simple spray to do this?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was slowly beginning to understand what was happening, and it made her feel more insecure.",
+        "type": "action"
+    },
+
+    {
+        "value": "B..but that was my question. I thought you knew the answer to answer me.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmm... I just used the spray.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at Wagner for a few seconds. Wagner was on the floor passed out without doing any movement.",
+        "type": "action"
+    },
+
+    {
+        "value": "I had a little surprise when you was almost dying. Heh! Look on the good side, this time it didn't even cross my mind to kiss an alicorn again. This alicorn knew everything about you and almost even how many kisses you've already given in life.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wh... what?! I...Impossible! A...Are you serious?! We've had a lot of disagreements lately!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was very surprised, trying to understand what was happening.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah. She didn't get well with my presence and with me saying that you were very close to me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny sits on the floor, doing a facehoof.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well she had magic just like yours, but instead of a sword, it was a scythe and when she got really upset to see you in critical condition, some black stuff started to come out too. This one really seemed to care a lot about you. It just doesn't seem to care about me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then became quiet and tears began to come out of her eyes. She prepared to continue the conversation.",
+        "type": "action"
     }
 
 ]
