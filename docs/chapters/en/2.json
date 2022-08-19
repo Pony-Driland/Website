@@ -2194,6 +2194,23 @@
     {
         "value": "Vinny would then put Wagner back in the basement of the house. The blindfold was placed over Wagner's eyes again. Wagner was kept away from Rayane for security reasons. Then Vinny looked at Rayane and nudged her gently.",
         "type": "action"
+    },
+    
+    {
+        "value": "Rayane? Rayane. Please wake up. I need to have a conversation with you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane seemed to be concentrating on some thought. So she was a little surprised to hear Vinny's voice, but she tried to stay calm as much as possible.",
+        "type": "action"
+    },
+
+    {
+        "value": "Huh? Vinny? Talk about what?",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
