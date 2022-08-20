@@ -2485,15 +2485,14 @@
         "value": "Rayane tries to find some acceptance of what was happening. Rayane slowly began to calm down.",
         "type": "action"
     },
-
     {
-        "value": "Let's be more positive. I think we'd better talk about it later. Alright?",
+        "value": "Don't worry. We'll find an alternative. I've had many friends, and the kind of concern by your horn was a true friendship. Everything will be ok. How are you feeling? Can you walk? Do you want to go outside with me so you can see how you are?",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vinny took a deep breath and hugged Rayane for a few seconds until she calmed down. Then after the dramatic moment had ended, Vinny would stop the hug and ask.",
+        "value": "Vinny took a deep breath and hugged Rayane for a few seconds until she calmed down. Then after the dramatic moment had ended.",
         "type": "action"
     },
 
@@ -2501,6 +2500,23 @@
         "value": "Well... What are we going to do with our supposedly innocent hostage?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. I should have a little more hope that there is still the old Rain I knew.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rain? Does she have a nickname? Interesting.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Rayane lifted his head a little, trying to have some optimism while wiping her eyes.",
+        "type": "action"
     }
 
 ]
