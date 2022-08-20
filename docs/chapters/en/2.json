@@ -2367,6 +2367,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Well she had magic just like yours, but instead of a sword, it was a scythe and when she got really upset to see you in critical condition, some black stuff started to come out too. This one really seemed to care a lot about you. It just doesn't seem to care about me.",
         "character": "Vinny",
         "type": "dialogue"
@@ -2374,6 +2377,49 @@
 
     {
         "value": "Rayane then became quiet and tears began to come out of her eyes. She prepared to continue the conversation.",
+        "type": "action"
+    },
+    
+    {    
+        "set": {
+            "playlistPlay": "sad"
+        },
+        "value": "M...Nagic like me? Did you say scythe? I've never seen magic scythes. I knew about her magic getting dark. But I've never seen this mysterious scythe.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Why the concern? She said that my energy is strange. She said that she had many souls waiting for her. What do you want to do now? We can't forget about James and Jeff.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "She...she's getting weirder with each passing day by this dark energy. Don't worry about souls. This sounds strange, but she really loves take care of souls. She likes to take care of dead ponies.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was curious and at the same time surprised to hear Rayane's words.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay... and that alicorn didn't have a SmartMobi.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "SmartMoby? Y..yes. She never had a SmartMoby. This is a great curiosity for me.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane tried to hold back a little more tears as I thought about what could be happening.",
         "type": "action"
     }
 
