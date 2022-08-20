@@ -2497,12 +2497,6 @@
     },
 
     {
-        "value": "Well... What are we going to do with our supposedly innocent hostage?",
-        "character": "Vinny",
-        "type": "dialogue"
-    },
-
-    {
         "value": "Yes. I should have a little more hope that there is still the old Rain I knew.",
         "character": "Rayane",
         "type": "dialogue"
@@ -2517,6 +2511,30 @@
     {
         "value": "Rayane lifted his head a little, trying to have some optimism while wiping her eyes.",
         "type": "action"
+    },
+
+
+    {
+        "value": "I'm feeling better. My legs still hurt a little. I just need a rest. But I can walk until we meet the others.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well... if exist deities in this world, are there other deities too? Or souls, or spirits, angels, demons, gods or something?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was curious about Vinny's words.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..Yes. The Master SmartMoby is the highest deity in this world. But it's been a long time since te Master SmartMoby disappeared. I never knew who used this by the last time.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
