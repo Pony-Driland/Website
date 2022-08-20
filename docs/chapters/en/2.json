@@ -2470,6 +2470,23 @@
     },
 
     {
+        "value": "What exactly do you want to do with her?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I want to try to help her find some much less brutal alternative to saving Pony Driland. That's all. She just wants to save Pony Driland. But she is increasingly losing her mind trying to do this.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane tries to find some acceptance of what was happening. Rayane slowly began to calm down.",
+        "type": "action"
+    },
+
+    {
         "value": "Let's be more positive. I think we'd better talk about it later. Alright?",
         "character": "Vinny",
         "type": "dialogue"
