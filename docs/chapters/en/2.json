@@ -2464,6 +2464,12 @@
     },
 
     {
+        "value": "She always liked taking care of the dead. I never imagined that she would forgive my life after so many things had happened. But I have no hope that she will ever want my help again. She always gets very angry when I try do something to make her feel better.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
         "value": "Vinny took a deep breath and hugged Rayane for a few seconds until she calmed down. Then after the dramatic moment had subsided, Vinny would stop the hug and ask.",
         "type": "action"
     },
