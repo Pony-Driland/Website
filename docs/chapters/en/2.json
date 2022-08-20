@@ -2470,6 +2470,11 @@
     },
 
     {
+        "value": "Vinny was a little more surprised and even more curious to find out what was going on.",
+        "type": "action"
+    },
+
+    {
         "value": "What exactly do you want to do with her?",
         "character": "Vinny",
         "type": "dialogue"
