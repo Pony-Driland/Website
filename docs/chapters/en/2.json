@@ -2487,18 +2487,14 @@
     },
 
     {
-        "value": "Rayane tries to find some acceptance of what was happening. Rayane slowly began to calm down.",
+        "value": "Rayane tries to find some acceptance of what was happening. Rayane slowly began to calm down. Vinny took a deep breath and hugged Rayane for a few seconds until she calmed down.",
         "type": "action"
     },
+
     {
         "value": "Don't worry. We'll find an alternative. I've had many friends, and the kind of concern by your horn was a true friendship. Everything will be ok. How are you feeling? Can you walk? Do you want to go outside with me so you can see how you are?",
         "character": "Vinny",
         "type": "dialogue"
-    },
-
-    {
-        "value": "Vinny took a deep breath and hugged Rayane for a few seconds until she calmed down. Then after the dramatic moment had ended.",
-        "type": "action"
     },
 
     {
