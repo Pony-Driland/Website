@@ -2421,6 +2421,57 @@
     {
         "value": "Rayane tried to hold back a little more tears as I thought about what could be happening.",
         "type": "action"
+    },
+    
+    {
+        "value": "Yeah. it seems that everyone, when so close to me, the past comes to haunt",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "H..haunt? What do you mean by that?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane stopped crying a little and looked at Vinny curiously.",
+        "type": "action"
+    },
+
+    {
+        "value": "I mean that the past comes back to settle the bills.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "B...but she's going crazy! She is increasingly losing her mind! I tried to help her in many ways! But she is much more paranoid about the past than I am!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane tried to hide her face a little while crying again. Vinny analyzed Rayane's behavior and was even more surprised before continuing the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey... calm down. Caring for the dying ponies, every moment really must be depressing. But calm down, we'll fix this, she still likes you, that's a good thing.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny took a deep breath and hugged Rayane for a few seconds until she calmed down. Then after the dramatic moment had subsided, Vinny would stop the hug and ask.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... What are we going to do with our supposedly innocent hostage?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
