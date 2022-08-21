@@ -2653,6 +2653,11 @@
         "value": "He won't wake up so early in the same way. He just passed out from a panic attack. It will take time for his body to calm down and he can wake up again.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny felt extremely confused, thinking about something for a few seconds.",
+        "type": "action"
     }
 
 ]
