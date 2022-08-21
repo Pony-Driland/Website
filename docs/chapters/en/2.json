@@ -2658,6 +2658,84 @@
     {
         "value": "Vinny felt extremely confused, thinking about something for a few seconds.",
         "type": "action"
+    },
+    
+    {
+        "value": "GOD! Why are males like children and females are more... \"brute\"? All the females I've met are crazy. Kenny's wife was even crazier.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "While talking, Vinny placed Wagner on the mattress gently.",
+        "type": "action"
+    },
+
+    {
+        "value": "And his items... I don't feel like taking what's his, is there anything useful you can take us? Maybe James can't touch that remote control device to know if there's another one like this pegasus.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laughed a little before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "This must be a coincidence. We just left the south region where normally everyone is much more peaceful.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane analyzed Wagner items for a few seconds during the progress.",
+        "type": "action"
+    },
+
+    {
+        "value": "We'll have to take his items whether we like it or not. If we don't, other ponies will possibly steal from him.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised and agreed.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay, I hope so. Will you go back to James or do you want to go to the crater?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. We can find him later.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The Rayane horn's magic glowed for a few seconds, focusing on Wagner's SmartMoby. Then Rayane would make a small smile of satisfaction before returning to talk to Vinny. Vinny was still surprised, but he still smiled and started to thank Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Well... We are where the bomb exploded, by the way, thank you very much! The whole plan went wrong and you still went there and almost died to protect me. Thank you very much!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ You're welcome. So let's go. The mysterious crater awaits us.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane feel better for the thanks, she smiled a little and just prepared to continue the adventure.",
+        "type": "action"
     }
 
 ]
