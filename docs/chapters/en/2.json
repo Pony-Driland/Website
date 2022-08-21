@@ -2535,6 +2535,124 @@
         "value": "Y..Yes. The Master SmartMoby is the highest deity in this world. But it's been a long time since te Master SmartMoby disappeared. I never knew who used this by the last time.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. Alicorns and I have an interesting chemistry. I need to turn into a alicorn, maybe we won't get more intimate. I'm laughing so I don't cry in a figurative logical way.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    
+    {
+        "value": "Rayane laughed a little because of Vinny's silliness. Rayane responded with a little nervousness.",
+        "type": "action"
+    },
+
+    {
+        "value": "You won't like having her around if you see someone breaking a promise with her.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Rayane found a piece of broken mirror on the floor and used the magic to see how her face was. Rayane gets a little startled when she saw the mysterious dark tattoos on her face, but the tattos were already disappearing again because she felt calmer again.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...What?!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah, your friend also had the same tattoos on her face.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "O..Okay okay. I also saw the tattoos when we were in the cave. But... but what is this?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was surprised to hear that. So Vinny responded calmly.",
+        "type": "action"
+    },
+
+    {
+        "value": "I thought you really knew.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "No.... I have no idea what's happening now. We need to get out of here before someone unknown appears. I'm getting worried if something happened to James.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane starts to try to get up to start walking again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well.... What are we going to do with our supposedly innocent hostage?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane looked curiously at Wagner for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Leave him somewhere safe. He has already suffered a lot while being questioned.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little tired, but she kept walking towards the basement exit.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Safe place? Where?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane stopped and looked around for a few seconds until she saw her abandoned mattress on the floor. Then Rayane uses magic to store the new items on her inventory.",
+        "type": "action"
+    },
+
+    {
+        "value": "Use my bed. I'm sure he will feel better.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Are you sure? Don't you want to try to wake him up?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane gets a little sad for a few seconds before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "He won't wake up so early in the same way. He just passed out from a panic attack. It will take time for his body to calm down and he can wake up again.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
