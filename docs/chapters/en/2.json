@@ -2805,6 +2805,96 @@
         "value": "M...my god... N....No! This is not true!",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Well... we need to leave here, I think in this world there must be something like Radiation too. You want to use your magic to know if there was a pony around?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..What? Radiation? What's this?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane kept looking around, trying to find someone for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Maybe we can find a way out. But first I need to analyze the crater.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was starting to feel sad due to the completely destroyed place. Rayane didn't know what she could say to Jeff. So Rayane closed her eyes and began to concentrate the magic to look for some pony presence.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was curious to look at Rayane. Vinny tries to see if anyone was around. But Vinny only found more dead bodies, no life.",
+        "type": "action"
+    },
+
+    {
+        "value": "T..this a macabre place.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Okay. It looks like the survivors are on the other side of the destroyed wall. The forest is probably alive. But it's very strange that I have a feeling presence of ponies in the center of the village.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane became a little more serious and worried, watching the center of the village.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes, Wagner said someone wanted to get a magic item here. I guess there was some betrayal and some organization must now be going to get the item.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was surprised to hear Vinny words, so Rayane understood what was really happening.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? The magic item? N..no! The magic item!! The magic relic! This is going to become a huge war problem!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane tried to force herself to run, but she got tired and one of her legs made her lose her balance.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAAH!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey hey! Calm down! Calm down! Why this hustle of nowhere?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
