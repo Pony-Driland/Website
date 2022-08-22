@@ -2895,6 +2895,47 @@
         "value": "Hey hey! Calm down! Calm down! Why this hustle of nowhere?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    
+    {
+        "value": "if this item is stolen by someone mysterious. Both the east and west region will be destroyed!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane tries to force herself up, trying not to get too distracted by the hurts.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane... Calm down. And the prophecy?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The prophecy? R..Rain created this prophecy just as a warning. She knows that a discord between the two regions will be total destruction.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wow...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a poker face.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... I had an idea.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
