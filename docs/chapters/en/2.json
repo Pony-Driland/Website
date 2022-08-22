@@ -2759,5 +2759,52 @@
         "value": "Silly you~ I just used a spell on his SmartMoby so I could locate him later. But don't forget, this magic is temporary.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "Heh. Well... are you ready to see what's left of the small village?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny slowly gets more serious during the talk. Rayane was then worried and very curious to hear about it.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...what? What do you mean about it?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well, it's a small village, a bomb dropped, I thought you were thinking that the damage was not small, by the way you saw the poor pegasus fainting.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The... the village? The village we were in?!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "nuclear-winter"
+        },
+        "value": "Rayane left the door. Rayane is extremely surprised to see the village completely destroyed.",
+        "type": "action"
+    },
+
+    {
+        "value": "M...my god... N....No! This is not true!",
+        "character": "Rayane",
+        "type": "dialogue"
     }
+
 ]
