@@ -2734,8 +2734,30 @@
     },
 
     {
-        "value": "Rayane feel better for the thanks, she smiled a little and just prepared to continue the adventure.",
+        "value": "Rayane feel better for the thanks, she smiled a little and just prepared to continue the adventure. But then Vinny suddenly boops Rayane. Rayane gets a little surprised by the boop, blushing a little.",
         "type": "action"
-    }
+    },
 
+    {
+        "value": "H..huh?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wow. How cute, you blushed, are you ashamed that I booped you? What is this magic you used on Wagner?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane gave a light laugh before doing a smirk back, booping Vinny back.",
+        "type": "action"
+    },
+    
+    {
+        "value": "Silly you~ I just used a spell on his SmartMoby so I could locate him later. But don't forget, this magic is temporary.",
+        "character": "Rayane",
+        "type": "dialogue"
+    }
 ]
