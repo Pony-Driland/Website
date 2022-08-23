@@ -2993,6 +2993,11 @@
     },
 
     {
+        "value": "Rayane was curious about Vinny's behavior.",
+        "type": "action"
+    },
+
+    {
         "value": "Unfortunately not. My only way to locate someone is through the magic.",
         "character": "Rayane",
         "type": "dialogue"
