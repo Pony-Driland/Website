@@ -2939,6 +2939,114 @@
         "value": "Well... I had an idea.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "I will try in my gallant way to borrow the magic item there, and you go get James and Jeff. Jeff must have more influence here. What do you think? I'll be fine alone.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "N...No. no no. I'm not sure if I'll be able to use the teleport spell now.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane sits on the floor, trying to get some rest again. Vinny was curious to see Rayane's determination.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay... My idea was a bad idea. Do you have a better idea? We have 2 options, go after the magic item, or go get James. You have influence here too.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was extremely thoughtful and spoke with a bit of nervousness.",
+        "type": "action"
+    },
+
+    {
+        "value": "Weeeeeell... Can your grim reaper friend help us?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane took a deep breath and responded calmly and a little depressed.",
+        "type": "action"
+    },
+
+    {
+        "value": "First, we need to have her trust. But this is going to be an extremely hard task. I've been trying to do this for a long time. We don't have much time now. Now that it's all destroyed, we'll probably find James here again.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay. So you don't have his location? ",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Unfortunately not. My only way to locate someone is through the magic.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay. So I can try to fly up and see if I see someone walking towards us.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane seemed to like the idea, so she smiled a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fly up? Seems like a good idea.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ok, I'll go up a bit. You can try to wake Wagner, we'll need Wagner if his friends are here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane gets confused by Vinny's ideas.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny... Wagner just passed out. You forgot?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny made a nervous smile and just answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...aaaahh... Don't worry, if he doesn't wake up, you can try to throw some water on him or something. It's okay for him not to wake up. We just have to try.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What?",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
