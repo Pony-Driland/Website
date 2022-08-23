@@ -3047,6 +3047,50 @@
         "value": "What?",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny just tried to forget about the awkward moment and started flying upwards.",
+        "type": "action"
+    },
+
+    {
+        "value": "FUCK! I'm a real idiot!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny starts to look for someone during some seconds. Vinny went through the smoke of the explosion. Above the smoke, the environment was cleaner, Vinny could finally see the forest and another village far away. Vinny could see that the whole place around his was normal, but Vinny were surrounded by many curious ponies wanting to know what had happened. Around the sky there were more pegasus patrolling the place. The village army was heavily reinforced. It looked like ponies had come from several other places to reinforce security.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wooow. Looks like James will take a while to get here.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny tries to look for James or Jeff during some seconds. Everything was so far away, Vinny couldn't really see who was who. Vinny could only see a little of the ponies' colors. Vinny could see two ponies accompanied by some guards.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fineeee... There's really nothing here.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny tries to look at the crater. The crater is an entrance to an underground tunnel now.",
+        "type": "action"
+    },
+
+    {
+        "value": "Tunnel? It's the tunnel Wagner mentioned!",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
