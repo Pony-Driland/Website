@@ -676,6 +676,9 @@
     },
 
     {
+        "set": {
+            "where": "Village ???"
+        },
         "value": "Vinny smiles and flies up. Vinny flew at high speed, trying to keep a good distance away from being noticed. Vinny started to see some other pegasu flying in the sky towards the village, it looked like the pegasus was holding something medium sized black on his back. Vinny tried not to get too close to the pegasus, Vinny just stared at the pegasus for a few seconds.",
         "type": "action"
     },
