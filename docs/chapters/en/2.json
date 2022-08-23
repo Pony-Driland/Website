@@ -3091,6 +3091,83 @@
         "value": "Tunnel? It's the tunnel Wagner mentioned!",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "Vinny then went back to where Rayane was.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane is trying to use some scent liquid to try to make Wagner wake up.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..what? Wagner made something?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "No. It seems that his consciousness is slowly coming back. This scent will help his body finish calming down to wake up.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay, I see. I saw that the whole place around here is normal, but I was surrounded by many curious ponies wanting to know what had happened. But we are being extremely patrolled. I probably saw James and Jeff with some guards coming here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then demonstrates to have some idea.",
+        "type": "action"
+    },
+
+    {
+        "value": "Guards? Got it. I have an idea.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane's horn started to glow, getting ready to do something during the progress.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets curious and looked at Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane's horn focused on the color of her magic. But she made a little more effort trying to manipulate the color of her magic until the color changed to a blue color. At this moment she throws up the spell's energy towards the sky.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow! Are you going to be okay with all this?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane took a deep breath to keep calm and made a small smile.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. I'll be fine. I can be sure some help will get here soon. Help me keep Wagner's identity. He'll be fine if no one knows who he is.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
