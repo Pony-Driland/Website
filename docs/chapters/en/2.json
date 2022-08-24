@@ -3163,6 +3163,61 @@
         "value": "Yes. I'll be fine. I can be sure some help will get here soon. Help me keep Wagner's identity. He'll be fine if no one knows who he is.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "So Rayane and Vinny started to hear the sound of footsteps approaching.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets surprised and Rayane looks toward the sound. Vinny and Rayane saw some shadows approaching, it looked like 4 different ponies.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..what? Did you see Rayane?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets ready for any attack during the progress, but Rayane would put her hoof in front of Vinny for him to let his guard down.",
+        "type": "action"
+    },
+
+    {
+        "value": "No no. Calm down. It's him. He's alive...",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? He who?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny saw a very tall unicorn, the unicorn looked like he's in his old age. The unicorn is bearded, and he was accompanied by 3 guards who protected him.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..wow?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The mysterious unicorn then stared at Vinny",
+        "type": "action"
     }
 
 ]
