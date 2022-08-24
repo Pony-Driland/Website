@@ -3271,6 +3271,11 @@
     },
 
     {
+        "value": "Vinny felt a little nervous. Vinny was very curious as to what could be really going on right now.",
+        "type": "action"
+    },
+
+    {
         "value": "God! Looks like things are really going to get serious here.",
         "character": "Vinny",
         "type": "think"
