@@ -3218,6 +3218,62 @@
     {
         "value": "The mysterious unicorn then stared at Vinny.",
         "type": "action"
+    },
+    
+    {
+        "value": "Who are you? What are you doing here? This place is very dangerous for survivors.",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised, but then Vinny got the courage and responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hi, my name is Vinny. We are here since the beginning of this mess. By a miracle I am here alive.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at Rayane very curiously for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "H...hey. Who is he?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane looked curiously at Vinny and answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "He's Hiroshi. He's the leader of the West region. This place.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi was curious to see that Rayane knew Vinny. Hiroshi then took a deep breath and spoke calmly and peacefully.",
+        "type": "action"
+    },
+
+    {
+        "value": "So Rayane knows you? This makes me a little surprised. Your sincerity in not knowing me shows me that you're new here. I'm sorry your first visit was at a very tragic time.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Is he the leader?! Looks like things are really going to get serious here.",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
