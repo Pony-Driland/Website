@@ -3368,6 +3368,40 @@
         "value": "Friend of ours? I don't understand, our friend? Are you by any chance talking about James? A unicorn with a brown mane?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "Yes. He was found along with Jeff in an abandoned mine. He is extremely desperate wanting to know if you are all right. I will then authorize the messager. Okay?",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "O...okay.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi does a sign, then Hiroshi's pegasus opened he's wings and started flying towards the forest.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... My final question is the friendship between you and Rayane. I've never seen her accompanied. She seemed much more serious and discreet since the last time we spoke.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane, who was quiet, trying to remain silent as much as possible during the conversation to analyze what was happening, was interrupted when Hiroshi mentioned her name.",
+        "type": "action"
+    },
+
+    {
+        "value": "What?",
+        "character": "Rayane",
+        "type": "think"
     }
 
 ]
