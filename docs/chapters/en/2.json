@@ -3279,6 +3279,95 @@
         "value": "God! Looks like things are really going to get serious here.",
         "character": "Vinny",
         "type": "think"
+    },
+  
+    {
+        "value": "The other 3 ponies let their guard down at Hiroshi's request. 2 ponies were unicorns and 1 pony is a pegasus.",
+        "type": "action"
+    },
+
+    {
+        "value": "I... I apologize for not recognizing you. Yes, Rayane and I were here when the explosion happened. I stayed on top of the bomb but unfortunately I didn't get time to stop the disater. We ended up having to flee. But luckily we managed to survive.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi showed a bit of a feeling of surprise, so he replied calmly.",
+        "type": "action"
+    },
+
+    {
+        "value": "So you are brave? You two could have died instantly from all this. If you come with me, I can offer a shelter. We'll just check you before continuing. We need this place clean to continue the search for survivors and find out what happened here.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was curious and then just accepted.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sure, here are my items.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny allowed the guards to check each item during the progress.",
+        "type": "action"
+    },
+
+    {
+        "value": "Unfortunately I didn't find anyone surviving while looking for someone or something that would help in the current situation.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi was even more curious, trying to understand the attitudes that Vinny was choosing. Hiroshi was a little more curious to see Wagner passed out.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. I understand.. But first I need to ask you a question. Who is this other pegasus that is with you?",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was surprised, but still tried to remain determined to continue responding calmly.",
+        "type": "action"
+    },
+
+    {
+        "value": "I found a single survivor before the explosion, according to him his name is Wagner, but after the explosion, he got a little crazy, started talking about his family and fainted when he saw the situation outside. However, I don't know anything about him, that's motive he's wearing those rags.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi took a deep breath slowly when thinking about Wagner's life for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... I hope you don't mind. But I'm going to send my messenger to warn a friend of yours that we ended up accidentally meeting you two.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },    
+    
+    {
+        "value": "Vinny gets a little surprised to hear this.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "Friend of ours? I don't understand, our friend? Are you by any chance talking about James? A unicorn with a brown mane?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
