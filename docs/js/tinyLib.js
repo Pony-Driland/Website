@@ -240,3 +240,166 @@ $.fn.selectRange = function (start, end) {
     }
 
 };
+
+// https://stackoverflow.com/questions/15900485/correct-way-to-convert-size-in-bytes-to-kb-mb-gb-in-javascript
+tinyLib.formatBytes = function(bytes, decimals = 2) {
+
+    if (bytes === 0) return '0 Bytes';
+
+    const k = 1024;
+    const dm = decimals < 0 ? 0 : decimals;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+
+};
+
+// Alert
+alert = function(text, title = 'Browser Warning!') {
+    return tinyLib.modal({
+        title: $('<span>').text(title),
+        body: $('<div>', { class: 'text-break' }).css('white-space', 'pre-wrap').text(text),
+        dialog: 'modal-lg'
+    });
+};
+
+// This is a functions that scrolls to #{blah}link
+tinyLib.goToByScroll = function(id, speed = 'slow') {
+    const offset = id.offset();
+    if (offset) {
+        $('html,body').animate({
+            scrollTop: offset.top
+        }, speed);
+    }
+};
+
+tinyLib.goToByScrollTop = function(speed = 'slow') {
+    $('html,body').animate({
+        scrollTop: 0
+    }, speed);
+};
+
+tinyLib.isPageTop = function() {
+    return ($(window).scrollTop() + $(window).height() === $(document).height());
+};
+
+tinyLib.isPageBottom = function() {
+    return ((window.innerHeight + window.scrollY) >= document.body.offsetHeight);
+};
+
+// https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+tinyLib.shuffle = function(array) {
+
+    let currentIndex = array.length,
+        randomIndex;
+
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]
+        ];
+    }
+
+    return array;
+
+};
+
+// Rule 3
+tinyLib.rule3 = function(val1, val2, val3, inverse) {
+    if (inverse == true) {
+        return Number(val1 * val2) / val3;
+    } else {
+        return Number(val3 * val2) / val1;
+    }
+};
+
+// Title Case
+tinyLib.toTitleCase = function(str) {
+    return str.replace(
+        /\w\S*/g,
+        function(txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        }
+    );
+}
+
+// Boolean Checker
+tinyLib.booleanCheck = function(value) {
+
+    if (
+
+        typeof value !== 'undefined' &&
+
+        (
+            value === 'true' ||
+            value === '1' ||
+            value === true ||
+            value === 1 ||
+            value === 'on'
+        )
+
+    ) {
+        return true;
+    } else { return false; }
+
+};
+
+// Visible Item
+$.fn.isInViewport = function() {
+
+    const elementTop = $(this).offset().top;
+    const elementBottom = elementTop + $(this).outerHeight();
+
+    const viewportTop = $(window).scrollTop();
+    const viewportBottom = viewportTop + $(window).height();
+
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+
+};
+
+$.fn.isScrolledIntoView = function() {
+
+    const docViewTop = $(window).scrollTop();
+    const docViewBottom = docViewTop + $(window).height();
+
+    const elemTop = $(this).offset().top;
+    const elemBottom = elemTop + $(this).height();
+
+    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+
+};
+
+$.fn.visibleOnWindow = function() {
+
+    let element = $(this);
+    if (element) {
+        element = element[0];
+        if (element) {
+            let position = element.getBoundingClientRect();
+            if (position && typeof position.top === 'number' && typeof position.bottom === 'number' && typeof window.innerHeight === 'number') {
+
+                // checking whether fully visible
+                if (position.top >= 0 && position.bottom <= window.innerHeight) {
+                    return 'full';
+                }
+
+                // checking for partial visibility
+                else if (position.top < window.innerHeight && position.bottom >= 0) {
+                    return 'partial';
+                }
+
+                // Nothing
+                else { return null; }
+            } else { return null; }
+        } else { return null; }
+    }
+
+};
