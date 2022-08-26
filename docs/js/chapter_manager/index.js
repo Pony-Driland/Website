@@ -355,7 +355,7 @@ var openChapterMenu = function(params = {}) {
             $('<nav>', { class: 'nav nav-pills nav-fill' }).append(
 
                 // Warnings
-                $('<a>', { class: 'nav-item nav-link', href: '#warnings', 'data-toggle': 'collapse', role: 'button', 'aria-expanded': false, 'aria-controls': 'warnings' }).text('Important Warnings'),
+                $('<a>', { class: 'nav-item nav-link', href: '#warnings', 'data-bs-toggle': 'collapse', role: 'button', 'aria-expanded': false, 'aria-controls': 'warnings' }).text('Important Warnings'),
 
                 // Character Statistics
                 $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Character Statistics').click(function() {

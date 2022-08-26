@@ -449,7 +449,7 @@ dsMK.toHTML(data[item].content, {
                 }),
 
                 // Button
-                $('<button>', { class: 'navbar-toggler', type: 'button', 'data-toggle': 'collapse', 'data-target': '#mdMenu', 'aria-controls': '#mdMenu', 'aria-expanded': false }).append(
+                $('<button>', { class: 'navbar-toggler', type: 'button', 'data-bs-toggle': 'collapse', 'data-bs-target': '#mdMenu', 'aria-controls': '#mdMenu', 'aria-expanded': false }).append(
                     $('<span>', { 'class': 'navbar-toggler-icon' })
                 ),
 

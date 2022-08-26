@@ -237,11 +237,11 @@ var chapterSet = {
             const obj = $('#fic-nav > #status #dayNightCycle').css('font-size', cacheChapterUpdater.iconSize);
             obj.empty();
             if (types[value]) {
-                if (!obj.attr('data-original-title')) {
+                if (!obj.attr('data-bs-original-title')) {
                     obj.attr('title', types[value].title);
                     obj.tooltip();
                 } else {
-                    obj.attr('data-original-title', types[value].title);
+                    obj.attr('data-bs-original-title', types[value].title);
                 }
                 obj.removeAttr('title').append($('<i>', { class: types[value].icon }));
             }
