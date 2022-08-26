@@ -525,7 +525,7 @@ musicManager.updatePlayer = function() {
 
         // Title
         if (typeof storyData.music.title === 'string' && storyData.music.title.length > 0) {
-            $('#music-player > a').has(storyData.music.nav.info).attr('data-original-title', `Youtube - ${storyData.music.author_name} - ${storyData.music.title}`);
+            $('#music-player > a').has(storyData.music.nav.info).attr('data-bs-original-title', `Youtube - ${storyData.music.author_name} - ${storyData.music.title}`);
         }
 
         // Playing
