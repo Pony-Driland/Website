@@ -501,9 +501,9 @@ dsMK.toHTML(data[item].content, {
                         ),
 
                         // Blog
-                        $('<a>', { class: 'nav-item nav-link', target: '_blank', href: storyCfg.blog_url, id: 'blog-url' }).text('Blog').prepend(
+                        /* $('<a>', { class: 'nav-item nav-link', target: '_blank', href: storyCfg.blog_url, id: 'blog-url' }).text('Blog').prepend(
                             $('<i>', { class: 'fa-solid fa-rss me-2' })
-                        ),
+                        ), */
 
                         // LICENSE
                         $('<a>', { class: 'nav-item nav-link', href: '/?path=%2FLICENSE.md&title=License', id: 'license' }).text('License').prepend(
