@@ -3438,13 +3438,14 @@
     },
 
     {
-        "value": "Hiroshi was showing a little nostalgia before thinking about the subject of the conversation again.",
+        "value": "Hiroshi was showing a little nostalgia before thinking about the subject of the conversation again. Vinny just looked at Rayane again. Vinny was very curious, trying to understand what was going on. Rayane was very surprised by what she heard, but then she tried to keep quiet.",
         "type": "action"
     },
 
     {
-        "value": "Vinny just looked at Rayane again. Vinny was very curious, trying to understand what was going on. Rayane was very surprised by what she heard, but then she tried to keep quiet.",
-        "type": "action"
+        "value": "Whaaat?",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
