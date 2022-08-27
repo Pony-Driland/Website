@@ -29,6 +29,8 @@
   --danger: #FF304F;
   --light: #e8e8e8;
   --dark: #000000;
+}
+
 *,
 *::before,
 *::after {
