@@ -943,11 +943,15 @@ select.form-control:focus::-ms-value {
 
 .page-link {
   color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.6); }
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  background-color: #413333; 
+}
 
   .page-link:hover {
     color: #fff;
-    border-color: rgba(0, 0, 0, 0.6); }
+    border-color: rgba(0, 0, 0, 0.6);
+    background-color: #441515;
+   }
   .page-link:focus {
     box-shadow: 0 0 0 0.2rem rgba(255, 85, 11, 0.25); }
 
