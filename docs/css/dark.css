@@ -951,6 +951,7 @@ select.form-control:focus::-ms-value {
     color: #fff;
     border-color: rgba(0, 0, 0, 0.6);
     background-color: #441515;
+    cursor: pointer;
    }
   .page-link:focus {
     box-shadow: 0 0 0 0.2rem rgba(255, 85, 11, 0.25); }
