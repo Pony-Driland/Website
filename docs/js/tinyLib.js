@@ -138,7 +138,7 @@ tinyLib.modal = function (data) {
             $("<div>", { class: "modal-content" }).append(
 
                 $("<div>", { class: "modal-header" }).append(
-                    $("<h5>", { class: "modal-title" }).text(data.title),
+                    $("<h5>", { class: "modal-title" }).append(data.title),
                     $("<button>", { type: "button", class: "btn-close", "data-bs-dismiss": "modal" })
                 ),
 
@@ -173,7 +173,7 @@ tinyLib.formGroup = function (data) {
         const newValue = $('<label>', { id: data.id + '_help', class: 'form-text text-muted small' }).text(data.help);
         if (data.checkbox && data.checkbox.enabled) {
             newValue.prepend(
-                $('<input>', { class: 'mr-2', id: data.id + '_enabled', name: data.id + '_enabled', type: 'checkbox' }).attr('checked', data.checkbox.value)
+                $('<input>', { class: 'me-2', id: data.id + '_enabled', name: data.id + '_enabled', type: 'checkbox' }).attr('checked', data.checkbox.value)
             );
         }
         result.append(newValue);
