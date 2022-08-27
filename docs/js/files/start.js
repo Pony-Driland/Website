@@ -491,7 +491,7 @@ dsMK.toHTML(data[item].content, {
                         ),
 
                         // Crypto Wallet
-                        $('<a>', { class: 'nav-item nav-link', target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.domainWallet), id: 'crypto-wallet' }).text('Donations Wallet').prepend(
+                        $('<a>', { class: 'nav-item nav-link', target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.domainWallet), id: 'crypto-wallet' }).text('Crypto Donations').prepend(
                             $('<i>', { class: 'fas fa-wallet me-2' })
                         ),
 
