@@ -525,7 +525,14 @@ musicManager.updatePlayer = function() {
 
         // Title
         if (typeof storyData.music.title === 'string' && storyData.music.title.length > 0) {
-            $('#music-player > a').has(storyData.music.nav.info).data('bs-tooltip').setContent({ '.tooltip-inner': `Youtube - ${storyData.music.author_name} - ${storyData.music.title}` });
+            
+            const newTitle = `Youtube - ${storyData.music.author_name} - ${storyData.music.title}`;
+            const divBase = $('#music-player > a').has(storyData.music.nav.info);
+            
+            if(divBase.data('bs-tooltip-data') !== newTitle) {
+                divBase.data('bs-tooltip-data', newTitle).data('bs-tooltip').setContent({ '.tooltip-inner': newTitle });
+            }
+
         }
 
         // Playing
