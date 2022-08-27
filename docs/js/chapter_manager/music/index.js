@@ -406,14 +406,14 @@ var musicManager = {
                 $('<div>', { id: 'music-player', class: 'd-none' }).append(
 
                     // Info
-                    $('<a>', { href: 'javascript:void(0)', class: 'disabled', title: 'Source' }).click(function() {
+                    $('<a>', { href: 'javascript:void(0)', class: 'disabled text-white', title: 'Source' }).click(function() {
                         if (!storyData.music.loading) {
                             open(storyData.youtube.player.getVideoUrl(), '_blank');
                         }
                     }).append(storyData.music.nav.info),
 
                     // Play
-                    $('<a>', { href: 'javascript:void(0)', class: 'disabled', title: 'Play/Pause' }).click(function() {
+                    $('<a>', { href: 'javascript:void(0)', class: 'disabled text-white', title: 'Play/Pause' }).click(function() {
                         if (!storyData.music.loading) {
 
                             if (storyData.youtube.state === YT.PlayerState.PLAYING) {
@@ -426,7 +426,7 @@ var musicManager = {
                     }).append(storyData.music.nav.play),
 
                     // Stop
-                    $('<a>', { href: 'javascript:void(0)', class: 'disabled', title: 'Stop' }).click(function() {
+                    $('<a>', { href: 'javascript:void(0)', class: 'disabled text-white', title: 'Stop' }).click(function() {
                         if (!storyData.music.loading) {
                             storyData.music.isStopping = true;
                             storyData.youtube.player.stopVideo();
@@ -434,7 +434,7 @@ var musicManager = {
                     }).append(storyData.music.nav.stop),
 
                     // Volume
-                    $('<a>', { href: 'javascript:void(0)', class: 'disabled', title: 'Volume' }).click(function() {
+                    $('<a>', { href: 'javascript:void(0)', class: 'disabled text-white', title: 'Volume' }).click(function() {
                         if (!storyData.music.loading) {
 
                             // Modal
@@ -453,7 +453,7 @@ var musicManager = {
                     }).append(storyData.music.nav.volume),
 
                     // Disable
-                    $('<a>', { href: 'javascript:void(0)', class: 'disabled', title: 'Disable' }).click(function() {
+                    $('<a>', { href: 'javascript:void(0)', class: 'disabled text-white', title: 'Disable' }).click(function() {
                         if (!storyData.music.loading) {
                             $(this).removeClass('');
                             if (storyData.music.useThis) {
@@ -525,7 +525,7 @@ musicManager.updatePlayer = function() {
 
         // Title
         if (typeof storyData.music.title === 'string' && storyData.music.title.length > 0) {
-            $('#music-player > a').has(storyData.music.nav.info).attr('data-bs-original-title', `Youtube - ${storyData.music.author_name} - ${storyData.music.title}`);
+            $('#music-player > a').has(storyData.music.nav.info).data('bs-tooltip').setContent({ '.tooltip-inner': `Youtube - ${storyData.music.author_name} - ${storyData.music.title}` });
         }
 
         // Playing
