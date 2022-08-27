@@ -958,6 +958,7 @@ select.form-control:focus::-ms-value {
 
 .page-item.active .page-link {
   color: #fff;
+  background-color: #aa1313;
   border-color: rgba(0, 0, 0, 0.6); }
 
 .page-item.disabled .page-link {
