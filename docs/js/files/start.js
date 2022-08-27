@@ -419,10 +419,10 @@ dsMK.toHTML(data[item].content, {
         for (const chapter in storyData.isNew) {
             if (storyData.isNew[chapter] === 2 && storyData.isNew[chapter] > storyData.globalIsNew) {
                 storyData.globalIsNew = 2;
-                isNewValue = $('<span>', { class: 'badge badge-primary ml-2' }).text('NEW');
+                isNewValue = $('<span>', { class: 'badge badge-primary ms-2' }).text('NEW');
             } else if (storyData.isNew[chapter] === 1 && storyData.isNew[chapter] > storyData.globalIsNew) {
                 storyData.globalIsNew = 1;
-                isNewValue = $('<span>', { class: 'badge badge-secondary ml-2' }).text('UPDATE');
+                isNewValue = $('<span>', { class: 'badge badge-secondary ms-2' }).text('UPDATE');
             }
         }
 
@@ -464,11 +464,11 @@ dsMK.toHTML(data[item].content, {
                     }),
 
                     // Nav 1
-                    $('<div>', { class: 'navbar-nav mr-auto mt-2 mt-lg-0 small' }).append(
+                    $('<div>', { class: 'navbar-nav me-auto mt-2 mt-lg-0 small' }).append(
 
                         // Homepage
                         $('<a>', { class: 'nav-item nav-link', href: '/', id: 'homepage' }).text('Homepage').prepend(
-                            $('<i>', { class: 'fas fa-home mr-2' })
+                            $('<i>', { class: 'fas fa-home me-2' })
                         ).click(function() {
                             openMDFIle('MAIN', true);
                             urlUpdate();
@@ -477,37 +477,37 @@ dsMK.toHTML(data[item].content, {
 
                         // Discord Server
                         $('<a>', { class: 'nav-item nav-link', target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}`, id: 'discord-server' }).text('Discord Server').prepend(
-                            $('<i>', { class: 'fab fa-discord mr-2' })
+                            $('<i>', { class: 'fab fa-discord me-2' })
                         ),
 
                         // Patreon
                         $('<a>', { class: 'nav-item nav-link', target: '_blank', href: `https://patreon.com/${storyCfg.patreon}`, id: 'patreon-url' }).text('Patreon').prepend(
-                            $('<i>', { class: 'fa-brands fa-patreon mr-2' })
+                            $('<i>', { class: 'fa-brands fa-patreon me-2' })
                         ),
 
                         // Kofi
                         $('<a>', { class: 'nav-item nav-link', target: '_blank', href: `https://ko-fi.com/${storyCfg.kofi}`, id: 'kofi-url' }).text('Ko-Fi').prepend(
-                            $('<i>', { class: 'fa-solid fa-mug-hot mr-2' })
+                            $('<i>', { class: 'fa-solid fa-mug-hot me-2' })
                         ),
 
                         // Crypto Wallet
                         $('<a>', { class: 'nav-item nav-link', target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.domainWallet), id: 'crypto-wallet' }).text('Donations Wallet').prepend(
-                            $('<i>', { class: 'fas fa-wallet mr-2' })
+                            $('<i>', { class: 'fas fa-wallet me-2' })
                         ),
 
                         // Derpibooru
                         $('<a>', { class: 'nav-item nav-link', target: '_blank', href: 'https://derpibooru.org/tags/' + storyCfg.derpibooru_tag, id: 'derpibooru-page' }).text('Derpibooru').prepend(
-                            $('<i>', { class: 'fa-solid fa-paintbrush mr-2' })
+                            $('<i>', { class: 'fa-solid fa-paintbrush me-2' })
                         ),
 
                         // Blog
                         $('<a>', { class: 'nav-item nav-link', target: '_blank', href: storyCfg.blog_url, id: 'blog-url' }).text('Blog').prepend(
-                            $('<i>', { class: 'fa-solid fa-rss mr-2' })
+                            $('<i>', { class: 'fa-solid fa-rss me-2' })
                         ),
 
                         // LICENSE
                         $('<a>', { class: 'nav-item nav-link', href: '/?path=%2FLICENSE.md&title=License', id: 'license' }).text('License').prepend(
-                            $('<i>', { class: 'fas fa-copyright mr-2' })
+                            $('<i>', { class: 'fas fa-copyright me-2' })
                         ).click(function() {
                             openMDFIle('/LICENSE.md');
                             urlUpdate('/LICENSE.md', 'License');
@@ -527,7 +527,7 @@ dsMK.toHTML(data[item].content, {
 
                         // Read Fanfic
                         $('<a>', { id: 'fic-start', class: 'nav-item nav-link font-weight-bold' + readButtonDisabled, href: '/?path=read-fic&title=Pony%20Driland' }).text('Read Fic').append(isNewValue).prepend(
-                            $('<i>', { class: 'fab fa-readme mr-2' })
+                            $('<i>', { class: 'fab fa-readme me-2' })
                         ).click(function() {
                             if (!readButtonDisabled) {
                                 $('#top_page').addClass('d-none');
@@ -575,19 +575,19 @@ dsMK.toHTML(data[item].content, {
 
                                 $('<li>').append(
                                     $('<a>', { target: '_blank', href: `https://opensea.io/collection/${storyCfg.opensea}` }).text('OpenSea').prepend(
-                                        $('<i>', { class: 'fab fa-ethereum mr-2' })
+                                        $('<i>', { class: 'fab fa-ethereum me-2' })
                                     )
                                 ),
 
                                 $('<li>').append(
                                     $('<a>', { href: `https://${storyData.cid32}.ipfs.dweb.link/` }).text('IPFS ' + storyCfg.nftDomain.name).prepend(
-                                        $('<i>', { class: 'fas fa-wifi mr-2' })
+                                        $('<i>', { class: 'fas fa-wifi me-2' })
                                     )
                                 ),
 
                                 $('<li>').append(
                                     $('<a>', { target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}` }).text('Discord Server').prepend(
-                                        $('<i>', { class: 'fab fa-discord mr-2' })
+                                        $('<i>', { class: 'fab fa-discord me-2' })
                                     ),
                                 )
 
@@ -601,19 +601,19 @@ dsMK.toHTML(data[item].content, {
 
                                 $('<li>').append(
                                     $('<a>', { target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.valueURL) }).text(storyCfg.nftDomain.name).prepend(
-                                        $('<i>', { class: 'fas fa-marker mr-2' })
+                                        $('<i>', { class: 'fas fa-marker me-2' })
                                     ),
                                 ),
 
                                 $('<li>').append(
                                     $('<a>', { target: '_blank', href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}` }).text('Github').prepend(
-                                        $('<i>', { class: 'fab fa-github mr-2' })
+                                        $('<i>', { class: 'fab fa-github me-2' })
                                     ),
                                 ),
 
                                 $('<li>').append(
                                     $('<a>', { target: '_blank', href: 'mailto:' + storyCfg.contact }).text('Contact').prepend(
-                                        $('<i>', { class: 'fas fa-envelope mr-2' })
+                                        $('<i>', { class: 'fas fa-envelope me-2' })
                                     )
                                 )
 

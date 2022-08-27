@@ -439,7 +439,7 @@ var musicManager = {
 
                             // Modal
                             tinyLib.modal({
-                                title: [$('<i>', { class: 'fas fa-volume mr-3' }), 'Song Volume'],
+                                title: [$('<i>', { class: 'fas fa-volume me-3' }), 'Song Volume'],
                                 body: $('<center>').append(
                                     $('<p>').text('Change the page music volume'),
                                     $('<input>', { class: 'form-control range', type: 'range', min: 0, max: 100 }).change(function() {
@@ -509,7 +509,7 @@ musicManager.updatePlayer = function() {
     if (storyData.music.nav) {
 
         // View
-        $('#music-player').addClass('border').removeClass('d-none').addClass('mr-3');
+        $('#music-player').addClass('border').removeClass('d-none').addClass('me-3');
 
         // Buff
         if (

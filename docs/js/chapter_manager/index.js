@@ -115,7 +115,7 @@ var openChapterMenu = function(params = {}) {
 
         // Clear Update Warn
         $('#fic-start').text('Read Fic').prepend(
-            $('<i>', { class: 'fab fa-readme mr-2' })
+            $('<i>', { class: 'fab fa-readme me-2' })
         );
 
         // Load Sounds
@@ -280,11 +280,11 @@ var openChapterMenu = function(params = {}) {
 
             // Info
             $('<div>', { class: 'alert alert-info' }).text('Bold texts are action texts, small texts are thoughts of characters, common texts are dialogues.').prepend(
-                $('<i>', { class: 'fas fa-info-circle mr-3' })
+                $('<i>', { class: 'fas fa-info-circle me-3' })
             ),
 
             // Title
-            $('<h3>').text(`Chapter ${chapter}`).append($('<small>', { class: 'ml-3' }).text(storyCfg.chapterName[chapter].title)),
+            $('<h3>').text(`Chapter ${chapter}`).append($('<small>', { class: 'ms-3' }).text(storyCfg.chapterName[chapter].title)),
 
             // Pagination
             tinyPag,
@@ -388,7 +388,7 @@ var openChapterMenu = function(params = {}) {
 
                     // Modal
                     tinyLib.modal({
-                        title: [$('<i>', { class: 'fa-solid fa-user mr-3' }), 'Character Statistics'],
+                        title: [$('<i>', { class: 'fa-solid fa-user me-3' }), 'Character Statistics'],
                         body: $('<span>').append(newDiv.append(content)),
                         dialog: 'modal-lg'
                     });
@@ -437,7 +437,7 @@ var openChapterMenu = function(params = {}) {
 
                     // Modal
                     tinyLib.modal({
-                        title: [$('<i>', { class: 'fa-solid fa-a mr-3' }), 'Word Statistics'],
+                        title: [$('<i>', { class: 'fa-solid fa-a me-3' }), 'Word Statistics'],
                         body: $('<span>').append(newDiv.append(content)),
                         dialog: 'modal-lg'
                     });
@@ -453,23 +453,23 @@ var openChapterMenu = function(params = {}) {
             $('<div>', { class: 'collapse', id: 'warnings' }).append(
 
                 $('<div>', { class: 'alert alert-info' }).text('Every time you read a chapter, it will automatically save where you left off. This checkpoint is saved on your browser, if you want to transfer your checkpoint to other computers, save the URL of your checkpoint that will appear when you open a chapter.').prepend(
-                    $('<i>', { class: 'fas fa-info-circle mr-3' })
+                    $('<i>', { class: 'fas fa-info-circle me-3' })
                 ),
 
                 $('<div>', { class: 'alert alert-info' }).text('Disclaimer: All songs played on this page are played directly from Youtube. This means that many songs do not belong to me and are being used only to please the reading environment. I recognize that if an artist asks to remove a song, I will replace it with another song. And all the songs that are played are counted as views on the original author\'s youtube channel. The official music page link will also be available in the player info icon.').prepend(
-                    $('<i>', { class: 'fas fa-info-circle mr-3' })
+                    $('<i>', { class: 'fas fa-info-circle me-3' })
                 ),
 
                 $('<div>', { class: 'alert alert-info' }).text('Our site does not have access to your access information, but some third-party applications installed on this page can collect your navigation data. YouTube, Google, Cloudflare.').prepend(
-                    $('<i>', { class: 'fas fa-info-circle mr-3' })
+                    $('<i>', { class: 'fas fa-info-circle me-3' })
                 )
 
             ),
 
             $('<h2>').text(`Please choose a chapter to read.`).prepend(
-                $('<i>', { class: 'fas fa-book-open mr-3' })
+                $('<i>', { class: 'fas fa-book-open me-3' })
             ).append(
-                $('<button>', { class: 'ml-3 btn btn-info btn-sm' }).text('Choose Optional NSFW Content').click(function() {
+                $('<button>', { class: 'ms-3 btn btn-info btn-sm' }).text('Choose Optional NSFW Content').click(function() {
 
                     // Nothing NSFW
                     let existNSFW = false;
@@ -559,7 +559,7 @@ var openChapterMenu = function(params = {}) {
 
                     // Modal
                     tinyLib.modal({
-                        title: [$('<i>', { class: 'fas fa-eye mr-3' }), 'NSFW Settings'],
+                        title: [$('<i>', { class: 'fas fa-eye me-3' }), 'NSFW Settings'],
                         body: $('<center>').append(
                             $('<p>', { class: 'text-danger' }).text('By activating these settings, you agree that you are responsible for the content you consume and that you are over 18 years old!'),
                             nsfwDIV
@@ -579,9 +579,9 @@ var openChapterMenu = function(params = {}) {
             const chapter = String(i + 1);
             let isNewValue = '';
             if (storyData.isNew[chapter] === 2) {
-                isNewValue = $('<span>', { class: 'badge badge-primary ml-3' }).text('NEW');
+                isNewValue = $('<span>', { class: 'badge badge-primary ms-3' }).text('NEW');
             } else if (storyData.isNew[chapter] === 1) {
-                isNewValue = $('<span>', { class: 'badge badge-secondary ml-3' }).text('UPDATE');
+                isNewValue = $('<span>', { class: 'badge badge-secondary ms-3' }).text('UPDATE');
             }
 
             // Add Chapter
@@ -591,9 +591,9 @@ var openChapterMenu = function(params = {}) {
                     $('<div>', { class: 'card-body' }).append(
                         $('<h5>', { class: 'card-title' }).text('Chapter ' + chapter).append(isNewValue),
                         $('<p>', { class: 'card-text' }).text(storyCfg.chapterName[chapter].title),
-                        $('<span>', { class: 'card-text small mr-1' }).text(`${storyData.data[chapter].length} Lines`),
-                        $('<span>', { class: 'card-text small ml-1' }).text(`${storyData.lettersCount[chapter]} Letters`),
-                        $('<span>', { class: 'card-text small ml-1' }).text(`${storyData.wordsCount[chapter]} Words`),
+                        $('<span>', { class: 'card-text small me-1' }).text(`${storyData.data[chapter].length} Lines`),
+                        $('<span>', { class: 'card-text small ms-1' }).text(`${storyData.lettersCount[chapter]} Letters`),
+                        $('<span>', { class: 'card-text small ms-1' }).text(`${storyData.wordsCount[chapter]} Words`),
                         $('<p>', { class: 'card-text small' }).text(storyCfg.chapterName[chapter].description),
                         $('<a>', { class: 'btn btn-primary', href: `/chapter/${chapter}.html`, chapter: chapter }).click(function() {
 
