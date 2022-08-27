@@ -3402,6 +3402,49 @@
         "value": "What?",
         "character": "Rayane",
         "type": "think"
+    },
+    
+    {
+        "value": "Vinny continued the dialogue in a very curious way.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... I'm new here. I've been seeing that everyone knows Rayane. But It's the first time I've seen her. Do you believe this? I don't know how she was before and how she is different. I think it would be the attitude of any pony. Does not agree?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny sat down. Vinny took a deep breath, feeling relieved to know that James is okay. Rayane slowly opened her eyes a little wider. Rayane looked like she was meditating to try to recover her energy faster. Hiroshi was very curious and a little surprised to hear all this. So Hiroshi was a little thoughtful before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "This is something very unexpected. This is not the same Rayane I met. But I'm glad to hear that she tried to open up to a new pony like you. This is a good hope. The hope that Ariella's spirit still exists in this world.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi took a deep breath and smiled a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "The generation of Ariella that unfortunately disappeared and started all this chaos.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi was showing a little nostalgia before thinking about the subject of the conversation again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny just looked at Rayane again. Vinny was very curious, trying to understand what was going on. Rayane was very surprised by what she heard, but then she tried to keep quiet.",
+        "type": "action"
     }
 
 ]
