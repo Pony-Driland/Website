@@ -517,7 +517,7 @@ dsMK.toHTML(data[item].content, {
                     ),
 
                     // Nav 2
-                    $('<div>', { class: 'nav navbar-nav navbar-right ml-3 small', id: 'fic-nav' }).append(
+                    $('<div>', { class: 'nav navbar-nav ms-auto mb-2 mb-lg-0 small', id: 'fic-nav' }).append(
 
                         // Status Place
                         $('<div>', { id: 'status' }).css('display', 'contents'),
