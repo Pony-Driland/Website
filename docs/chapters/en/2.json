@@ -3489,14 +3489,14 @@
     },
 
     {
-        "value": "Vinny was surprised to hear this name. Vinny was extremely thoughtful for a few seconds. Rayane was uncomfortable hearing this name. But she tried to keep calm.",
-        "type": "action"
-    },
-
-    {
         "value": "R..Rainbow Queen?! Wait... Rain? Rainbow? Rainbow Queen? What?!",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "Vinny was surprised to hear this name. Vinny was extremely thoughtful for a few seconds. Rayane was uncomfortable hearing this name. But she tried to keep calm.",
+        "type": "action"
     },
 
     {
