@@ -3446,6 +3446,175 @@
         "value": "Whaaat?",
         "character": "Vinny",
         "type": "think"
+    },
+    
+    {
+        "value": "G...Generations? I didn't know generations had names.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. I'm much older than you two can think. There are few who are interested in my stories. I will be happy if you two allow me to talk more about this in the future.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi took a deep breath, trying to have determination and courage to prepare to continue what he was doing.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well. I need to get back to my work now. Sorry.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..Yeah. Alright, anything if you need me, I'll still be here, I'll stay here in case the pegasus wakes up. The pegasus probably lost his family. I think it would be more relaxing for a friendly face to be the first face he sees. T...Thank you. Thank you so much for everything. This is nice to meet you, Hiroshi.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi looked curiously at Vinny for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "You seem to be showing a pure behavior. If I'm right about your purity, I'm sure our goddess Rainbow Queen will light your way. She would really enjoy meeting you if she came back after many years since she mysteriously disappeared.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was surprised to hear this name. Vinny was extremely thoughtful for a few seconds. Rayane was uncomfortable hearing this name. But she tried to keep calm.",
+        "type": "action"
+    },
+
+    {
+        "value": "R..Rainbow Queen?! Wait... Rain? Rainbow? Rainbow Queen? What?!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Have a nice day for you two. Stay safe.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi bowed for a few seconds. The two guards then prepared to follow Hiroshi while returning the items to Vinny. Then Hiroshi starts to walk toward the crater with the two guards. Vinny was still very curious about Hiroshi's education.",
+        "type": "action"
+    },
+
+    {
+        "value": ".....Ah. What?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at Rayane's face, showing feeling of fear.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Rayane? Are you okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was surprised thinking about many things for a few seconds before paying attention to Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..what? Me? I'm fine now.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny breathed a very relieved way.",
+        "type": "action"
+    },
+
+    {
+        "value": "My beloved Celestia! This was almost in. Did you hear the whole conversation?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A..ah? Yes yes. I listened to every detail while I was recovering my energy.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "My heart almost came out of my mouth. But anyway, this pony is more one to the list of ponies that know Rayane. Seriously I think it's easier to ask who doesn't know you. I wish I had the this fame.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then felt a little calmer and laughed a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Not all ponies know me more personally. I'm usually just an urban legend.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little before continuing the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Tell me a pony that doesn't know you that we had some contact? if you remember one, I take my hat off for you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane made the silly, malicious smirk face while booping Vinny in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Nope. The sniper only recognized my face. But he never talked with me~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. Okay. Do you want to try to wake up the little pegasus?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane stopped the fun moment and looked curiously at the pegasus.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmm. Okay. Wagner must be feeling much better to wake up now.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
