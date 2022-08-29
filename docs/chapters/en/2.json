@@ -3609,6 +3609,185 @@
         "value": "Hmmmmm. Okay. Wagner must be feeling much better to wake up now.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Weeell, I hope that at some point we can talk more about your past. I would sincerely like to hear from the original source of the facts. But everything has its hour, Charming Rayane!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles for a few seconds before getting a little curious about Vinny's behavior.",
+        "type": "action"
+    },
+
+    {
+        "value": "M..my past?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah! Well... Today is the Wagner lucky day. Let's go.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny took a deep breath for a few seconds, and prepared to wake Wagner. Vinny pokes Wagner curiously during the progress.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey? Are you okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked at Wagner again for a few seconds before poke him again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heeey?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner started coughing a little while trying to open his eyes very slowly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ The smell really helped.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "H...huh? W...What?",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner? Hey! You're ok now. Calm down, help arrived and it's ok now.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny hugs Wagner kindly. Wagner was very confused by Vinny decision.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...What happened here?",
+        "character": "Wagner",
+        "type": "think"
+    },
+
+    {
+        "value": "Help? Wait... This is...is you again?",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner was extremely confused as he calmed down during the hug.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. Do you want me to let you go? You can't just run away.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gave Wagner freedom to move slowly.",
+        "type": "action"
+    },
+
+    {
+        "value": "I didn't know you were sensitive to certain things to the point of passing out.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner gets very surprised, trying to understand again what was going on.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..yes. It was very scary for me to find out that this all was my fault.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner slowly looked around, and began to try not to cry. Rayane then looked at Wagner, and was already planning what could be done. Wagner was a little more scared to see that Rayane was there. But Wagner slowly calmed down to see Rayane approaching peacefully.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sssshh~ Don't worry your head about this. You can still redeem yourself.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes, calm down. We need to talk about a few things, do you want to take some time to breathe or do you want to talk now?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "T..things?",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner gets a little scared during the talk.",
+        "type": "action"
+    },
+
+    {
+        "value": "No no no. It's nothing serious. We just need to know if you want to help us find the culprit of whoever did this. We know and trust you when you said you didn't know anything else, but maybe with your help we can make progress on this mission.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then give Wagner some seconds to understand what was happening, and then continue the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "So... want to help us?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner slowly thought about what he was going to say. Wagner looked very nervous, he was getting ready to say something. Wagner realized he had no choice left, he chose to continue the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..okay okay. The pony responsible for the bomb? It was Marlon. Marlon asked me a lot to guide this last bomb. B..But be careful. Please... Be very very careful. Marlon knows that invaders can come after him.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner begins to show concern. Wagner didn't want to look like some traitor.",
+        "type": "action"
     }
 
 ]
