@@ -3788,6 +3788,185 @@
     {
         "value": "Wagner begins to show concern. Wagner didn't want to look like some traitor.",
         "type": "action"
+    },
+    
+    {
+        "value": "Calm down, no one is going to capture anyone. You can feel better about this, unlike Marlon you can choose if you want to help us or not.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny took a light deep breath for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Just saying that here was full of guards, they would arrest you, but I helped you. You are free to choose what you want to do now. If you choose to stay with us, you will not always stay, you will be able to do your thing, see your family. When we need you we will let you know so you don't get confused. Okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner felt even more afraid when he thought about Hiroshi's guards for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..okay. I'm surprised about your decision. If you promise me to keep your word, I'll keep mine. But there is one condition. I don't want to do all this and then go back to the misery that the East region is becoming. You're going to have to promise me to do something to bring some hope back to my home.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then became very thoughtful for a few seconds. Then Vinny would smile sympathetically before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmmmmmmmmmmm... I'm not a god. But I promise to do my best to give you all comfort.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Vinny looked at Rayane nervously.",
+        "type": "action"
+    },
+
+    {
+        "value": "Can you get his wing accessory back? Will you want your bomb guide item? I think it's dangerous for you to walk around with that.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I...",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane and Vinny were interrupted by listening to Wagner talking to himself. Wagner looks without much hope.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh god. That's funny. if this prophecy pony were here. She could really do something if she's as important as Marlon said. I don't understand why he believes these so much legends.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay... Wagner, we will return some items that belong to you.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "M..my items? Oh yes! My itens!",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner is very happy about that.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. I kept everything in my inventory.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane spawned Wagner's wing equipment. Wagner was curious and surprised to see Rayane's magic.",
+        "type": "action"
+    },
+
+    {
+        "value": "Thank you very much! Thank you!",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles and give back a few more items before looking back at Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ Vinny, don't worry about it. This radar can be useful later on and we know someone who knows how to use it very well.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y...Yes. Yes yes.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was curious and looked at Rayane curiously for a few seconds before look at Wagner again..",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey Wagner. So you agreed to do all this to help you with money?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner was surprised to hear this and tried to respond as quickly as possible.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What? No! Our crops are dying more and more! And we are getting less and less money to buy food from the West region.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I see.... By the way, do you know what or who is Rainbow Queen?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little surprised and at the same time Wagner was confused.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rainbow Queen? I've never seen this pony. But I always see Marlon and Hiroshi talking about her. But it seems that the one who talks about her the most is Hiroshi himself. He talks so much about his past. I think he's more than an old man who lived longer than usual.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised and then looked curiously at Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What? Rayane, is he that old?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was also very curious to hear this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? I never knew Hiroshi true age. But if he says he lived an old generation, that seems like a long time ago.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
