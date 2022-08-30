@@ -3858,6 +3858,11 @@
     },
 
     {
+        "value": "Rayane was a little thoughtful for a few seconds before answering.",
+        "type": "action"
+    },
+
+    {
         "value": "Okay... Wagner, we will return some items that belong to you.",
         "character": "Rayane",
         "type": "dialogue"
