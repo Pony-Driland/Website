@@ -8067,6 +8067,7 @@ var utils_1 = require("./utils");
 var Eip1993Factories_1 = require("./utils/Eip1993Factories");
 var Networking_1 = __importDefault(require("./utils/Networking"));
 var prepareAndValidate_1 = require("./utils/prepareAndValidate");
+var namehash_1 = require("./utils/namehash");
 /**
  * Blockchain domain Resolution library - Resolution.
  * @example
@@ -8686,7 +8687,9 @@ var Resolution = /** @class */ (function () {
             var name;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.serviceMap[service].getDomainFromTokenId(hash)];
+                    case 0:
+                        hash = namehash_1.fromDecStringToHex(hash);
+                        return [4 /*yield*/, this.serviceMap[service].getDomainFromTokenId(hash)];
                     case 1:
                         name = _a.sent();
                         if (this.namehash(name) !== hash) {
@@ -8802,7 +8805,7 @@ function isApi(obj) {
     return obj && obj.api;
 }
 
-},{"./UdApi":57,"./Uns":58,"./Zns":60,"./errors/resolutionError":67,"./types/publicTypes":70,"./utils":75,"./utils/DnsUtils":71,"./utils/Eip1993Factories":72,"./utils/Networking":73,"./utils/prepareAndValidate":77,"bn.js":80}],57:[function(require,module,exports){
+},{"./UdApi":57,"./Uns":58,"./Zns":60,"./errors/resolutionError":67,"./types/publicTypes":70,"./utils":75,"./utils/DnsUtils":71,"./utils/Eip1993Factories":72,"./utils/Networking":73,"./utils/namehash":76,"./utils/prepareAndValidate":77,"bn.js":80}],57:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -9006,8 +9009,53 @@ var Udapi = /** @class */ (function (_super) {
         });
     };
     Udapi.prototype.getDomainFromTokenId = function (tokenId) {
-        throw new resolutionError_1.ResolutionError(resolutionError_1.ResolutionErrorCode.UnsupportedMethod, {
-            methodName: 'isSupportedDomain',
+        return __awaiter(this, void 0, void 0, function () {
+            var metadata;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        tokenId = namehash_1.fromDecStringToHex(tokenId);
+                        return [4 /*yield*/, this.getMetadata(tokenId)];
+                    case 1:
+                        metadata = _a.sent();
+                        return [2 /*return*/, metadata.meta.domain];
+                }
+            });
+        });
+    };
+    Udapi.prototype.getMetadata = function (tokenId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var tokenUri, resp, metadata;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        tokenUri = this.url + "/" + tokenId;
+                        return [4 /*yield*/, Networking_1.default.fetch(tokenUri, {}).catch(function (err) {
+                                throw new resolutionError_1.ResolutionError(resolutionError_1.ResolutionErrorCode.MetadataEndpointError, {
+                                    tokenUri: tokenUri || 'undefined',
+                                    errorMessage: err.message,
+                                });
+                            })];
+                    case 1:
+                        resp = _a.sent();
+                        return [4 /*yield*/, resp.json()];
+                    case 2:
+                        metadata = _a.sent();
+                        if (!metadata.meta || !metadata.meta.domain) {
+                            throw new resolutionError_1.ResolutionError(resolutionError_1.ResolutionErrorCode.UnregisteredDomain, {
+                                domain: "with tokenId " + tokenId,
+                            });
+                        }
+                        if (this.namehash(metadata.meta.domain) !== tokenId) {
+                            throw new resolutionError_1.ResolutionError(resolutionError_1.ResolutionErrorCode.ServiceProviderError, {
+                                methodName: 'unhash',
+                                domain: metadata.meta.domain,
+                                providerMessage: 'Service provider returned an invalid domain name',
+                            });
+                        }
+                        return [2 /*return*/, metadata];
+                }
+            });
         });
     };
     Udapi.prototype.resolve = function (domain) {
@@ -14371,6 +14419,7 @@ var NamingServiceName;
 exports.UnclaimedDomainResponse = {
     addresses: {},
     meta: {
+        domain: '',
         namehash: '',
         resolver: '',
         owner: null,
@@ -14984,6 +15033,14 @@ function fromHexStringToDecimals(value) {
     return value;
 }
 exports.fromHexStringToDecimals = fromHexStringToDecimals;
+function fromDecStringToHex(value) {
+    if (!value.startsWith('0x')) {
+        var bn = new bn_js_1.default(value, 10);
+        return "0x" + bn.toString(16);
+    }
+    return value;
+}
+exports.fromDecStringToHex = fromDecStringToHex;
 
 },{"bn.js":80,"buffer":3,"js-sha256":113,"js-sha3":114}],77:[function(require,module,exports){
 "use strict";
