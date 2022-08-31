@@ -491,6 +491,40 @@ dsMK.toHTML(data[item].content, {
                             )
                         ),
 
+                        // Donations Button
+                        $('<li>', { class: 'nav-item dropdown' }).prepend(
+
+                            $('<a>', { class: 'nav-link dropdown-toggle', href: '#', role: 'button', 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false' }).text('Donations').append(
+                                $('<span>', { class: 'navbar-toggler-icon' })
+                            ),
+
+                            $('<ul>', { class: 'dropdown-menu' }).append(
+
+                                // Patreon
+                                $('<li>').prepend(
+                                    $('<a>', { class: 'dropdown-item', target: '_blank', href: `https://patreon.com/${storyCfg.patreon}`, id: 'patreon-url' }).text('Patreon').append(
+                                        $('<i>', { class: 'fa-brands fa-patreon me-2' })
+                                    )
+                                ),
+
+                                // Kofi
+                                $('<li>').prepend(
+                                    $('<a>', { class: 'dropdown-item', target: '_blank', href: `https://ko-fi.com/${storyCfg.kofi}`, id: 'kofi-url' }).text('Ko-Fi').append(
+                                        $('<i>', { class: 'fa-solid fa-mug-hot me-2' })
+                                    )
+                                ),
+
+                                // Crypto Wallet
+                                $('<li>').prepend(
+                                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.domainWallet), id: 'crypto-wallet' }).text('Crypto Donations').append(
+                                        $('<i>', { class: 'fas fa-wallet me-2' })
+                                    )
+                                ),
+
+                            )
+
+                        ),
+
                         // Blog
                         /* $('<li>', { class: 'nav-item nav-link', target: '_blank', href: storyCfg.blog_url, id: 'blog-url' }).text('Blog').prepend(
                             $('<i>', { class: 'fa-solid fa-rss me-2' })
