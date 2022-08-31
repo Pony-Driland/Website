@@ -3972,6 +3972,11 @@
         "value": "Ah? I never knew Hiroshi true age. But if he says he lived an old generation, that seems like a long time ago.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked at Wagner with a slightly worried look.",
+        "type": "action"
     }
 
 ]
