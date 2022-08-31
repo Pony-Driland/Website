@@ -4084,6 +4084,51 @@
         "value": "Yes Yes. We survived. How are you?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "Please, don't do this crazy thing! I had my heart in my hand just now!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was still very emotional, trying to calm down from the situation. Jeff then arrived a little late and tired from the rush while trying to breathe.",
+        "type": "action"
+    },
+
+    {
+        "value": "Uff......Y...yeah....he was really in a hurry...And...I almost couldn't keep up with him.... AAH.",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff lay on the floor, feeling very tired. Meanwhile, Wagner was looking at all. Jeff was feeling relieved, trying to show some feeling that everything was fine. When Vinny noticed Jeff's presence, Vinny would start talking to Jeff.",
+        "type": "action"
+    },
+
+    {
+        "value": "Jeff? Hey! How was it in the cave? Are you two really ok?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Uuufff.. Yes. We are fine. But unfortunately we didn't find anything. I was heartbroken to see the village destroyed, but I wanted to hope that you were alive.",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Vinny realized that Jeff was depressed too.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..yeah.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
