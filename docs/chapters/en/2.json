@@ -3977,6 +3977,113 @@
     {
         "value": "Vinny then looked at Wagner with a slightly worried look.",
         "type": "action"
+    },
+    
+    {
+        "value": "Okay... Wagner, you need a new identity. I think it's not good for you to go around talking about what you really did. Try to think a random stuff. I said that you had passed out and got a little dizzy from the bomb.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner looked at Vinny and responded nervously.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..what? Y..yes! I'll try to think on something. I...I will try the better.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner gets a little scared. Wagner sat on the floor to think about something. The dust from the explosion was much lower and now the sky was becoming much more visible to observe. Vinny and Rayane began to analyze this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmm... Wagner? Tell me, why the wing accessory? Do you not know how to fly well?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A...Accessory? Ah! My accessory! This is a special planning equipment. It helps me fly longer distances. It's so curious to imagine what life would be like if this were giant mechanical wings to make a giant object fly.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner took a deep breath, feeling depressed.",
+        "type": "action"
+    },
+
+    {
+        "value": "I think we could do something really fantastic.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised to hear this, but then he was interrupted when he heard a little James' voice trying to scream his name and Rayane's name. Rayane was very curious and a little surprised to realize this too.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well.... Ah? J..James?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. James is here.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at James. Vinny was very happy to see James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey JAMES!!! JAAAMES!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "VIIIIIIIINNY! It's yourself!! OH GOD! I never thought I would feel so happy to see you and Rayane so suddenly like this one day!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James arrived and hugged Vinny and Rayane very strong and comfortable. James was extremely worried and was starting to cry a little, very happy to see everyone alive.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...wow. James.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane and Vinny was a little surprised by the hug before contributing the hug back.",
+        "type": "action"
+    },
+
+    {
+        "value": "Awwwww. Sssssh~ Calm down silly scientist. We're all fine.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes Yes. We survived. How are you?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
