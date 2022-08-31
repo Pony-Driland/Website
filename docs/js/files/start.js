@@ -545,8 +545,8 @@ dsMK.toHTML(data[item].content, {
                         $('<li>', { id: 'fic-chapter', class: 'nav-item nav-link' }),
 
                         // Read Fanfic
-                        $('<li>', { id: 'fic-start', class: 'nav-item font-weight-bold' + readButtonDisabled }).append(isNewValue).prepend(
-                            $('<a>', { class: 'nav-link', href: '/?path=read-fic&title=Pony%20Driland' }).text('Read Fic').prepend(
+                        $('<li>', { class: 'nav-item font-weight-bold' + readButtonDisabled }).append(isNewValue).prepend(
+                            $('<a>', { id: 'fic-start', class: 'nav-link', href: '/?path=read-fic&title=Pony%20Driland' }).text('Read Fic').prepend(
                                 $('<i>', { class: 'fab fa-readme me-2' })
                             )
                         ).click(function () {
