@@ -566,6 +566,11 @@ dsMK.toHTML(data[item].content, {
                     return false;
                 }),
 
+                // Button
+                $('<button>', { class: 'navbar-toggler me-sm-4', type: 'button', 'data-bs-toggle': 'collapse', 'data-bs-target': '#mdMenu', 'aria-controls': '#mdMenu', 'aria-expanded': false }).append(
+                    $('<span>', { 'class': 'navbar-toggler-icon' })
+                ),
+
                 // Collapse
                 $('<div>', { class: 'collapse navbar-collapse', id: 'mdMenu' }).append(navbarItems()),
 
