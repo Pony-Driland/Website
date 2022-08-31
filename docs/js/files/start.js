@@ -468,7 +468,7 @@ dsMK.toHTML(data[item].content, {
 
                         // Homepage
                         $('<li>', { class: 'nav-item' }).prepend(
-                            $('<a>', { class: 'nav-link', href: '/', id: 'homepage' }).text('Homepage').append(
+                            $('<a>', { class: 'nav-link', href: '/', id: 'homepage' }).text('Homepage').prepend(
                                 $('<i>', { class: 'fas fa-home me-2' })
                             )
                         ).click(function () {
@@ -479,7 +479,7 @@ dsMK.toHTML(data[item].content, {
 
                         // Discord Server
                         $('<li>', { class: 'nav-item' }).prepend(
-                            $('<a>', { class: 'nav-link', target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}`, id: 'discord-server' }).text('Discord Server').append(
+                            $('<a>', { class: 'nav-link', target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}`, id: 'discord-server' }).text('Discord Server').prepend(
                                 $('<i>', { class: 'fab fa-discord me-2' })
                             )
                         ),
@@ -512,7 +512,7 @@ dsMK.toHTML(data[item].content, {
 
                         // Derpibooru
                         $('<li>', { class: 'nav-item' }).prepend(
-                            $('<a>', { target: '_blank', class: 'nav-link', href: 'https://derpibooru.org/tags/' + storyCfg.derpibooru_tag, id: 'derpibooru-page' }).text('Derpibooru').append(
+                            $('<a>', { target: '_blank', class: 'nav-link', href: 'https://derpibooru.org/tags/' + storyCfg.derpibooru_tag, id: 'derpibooru-page' }).text('Derpibooru').prepend(
                                 $('<i>', { class: 'fa-solid fa-paintbrush me-2' })
                             )
                         ),
@@ -524,7 +524,7 @@ dsMK.toHTML(data[item].content, {
 
                         // LICENSE
                         $('<li>', { class: 'nav-item ' }).prepend(
-                            $('<a>', { class: 'nav-link' }).text('License').append(
+                            $('<a>', { class: 'nav-link', href: '/?path=%2FLICENSE.md&title=License' }).text('License').prepend(
                                 $('<i>', { class: 'fas fa-copyright me-2', href: '/?path=%2FLICENSE.md&title=License', id: 'license' })
                             )
                         ).click(function () {
@@ -546,7 +546,7 @@ dsMK.toHTML(data[item].content, {
 
                         // Read Fanfic
                         $('<li>', { id: 'fic-start', class: 'nav-item font-weight-bold' + readButtonDisabled }).append(isNewValue).prepend(
-                            $('<a>', { class: 'nav-link', href: '/?path=read-fic&title=Pony%20Driland' }).text('Read Fic').append(
+                            $('<a>', { class: 'nav-link', href: '/?path=read-fic&title=Pony%20Driland' }).text('Read Fic').prepend(
                                 $('<i>', { class: 'fab fa-readme me-2' })
                             )
                         ).click(function () {
