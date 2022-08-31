@@ -4150,8 +4150,14 @@
     },
 
     {
-        "value": "James and Wagner were slowly calming down. Then the hug moment finally ended and everyone went back to talking normally.",
+        "value": "James and Wagner were slowly calming down. Then the hug moment finally ended and everyone went back to talking normally. Wagner was showing even more depressing feelings to see that he wasn't participating in the conversation.",
         "type": "action"
+    },
+
+    {
+        "value": "Y...Yeah",
+        "character": "Wagner",
+        "type": "dialogue"
     }
 
 ]
