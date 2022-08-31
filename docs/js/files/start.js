@@ -16,7 +16,7 @@ console.log(`Tags`, storyCfg.tags);
 console.groupEnd();
 
 // URL Update
-var urlUpdate = function(url, title, isPopState = false) {
+var urlUpdate = function (url, title, isPopState = false) {
 
     // Page Title
     if (typeof title !== 'string' || title.length < 1) { title = storyCfg.title; }
@@ -47,7 +47,7 @@ var urlUpdate = function(url, title, isPopState = false) {
 
 };
 
-var openNewAddress = function(data, isPopState = false, useCustom = false) {
+var openNewAddress = function (data, isPopState = false, useCustom = false) {
 
     // File Path
     const filePath = data.path;
@@ -71,7 +71,7 @@ var openNewAddress = function(data, isPopState = false, useCustom = false) {
 };
 
 // Pop State
-$(window).on('popstate', function() {
+$(window).on('popstate', function () {
 
     // Remove Fic Data
     clearFicData();
@@ -81,7 +81,7 @@ $(window).on('popstate', function() {
     const params = Object.fromEntries(urlSearchParams.entries());
 
     // Load Page
-    const loadPage = function() {
+    const loadPage = function () {
         if (storyData.urlPage !== params.path) {
             storyData.urlPage = params.path;
             if (params.path !== 'read-fic') {
@@ -109,7 +109,7 @@ $(window).on('popstate', function() {
 });
 
 // Insert Maarkdown File
-var insertMarkdownFile = function(text, isMainPage = false, isHTML = false) {
+var insertMarkdownFile = function (text, isMainPage = false, isHTML = false) {
 
     // Prepare Convert Base
     const convertBase = `https\\:\\/\\/github.com\\/${storyCfg.github.account}\\/${storyCfg.github.repository}\\/blob\\/main\\/`;
@@ -135,13 +135,13 @@ var insertMarkdownFile = function(text, isMainPage = false, isHTML = false) {
     }
 
     // Convert File URLs
-    $('[id="markdown-read"] a[file]').removeAttr('target').click(function() {
+    $('[id="markdown-read"] a[file]').removeAttr('target').click(function () {
         openMDFIle($(this).attr('file'));
         urlUpdate($(this).attr('file'), $(this).text().trim());
     });
 
     // Fix Image
-    $('[id="markdown-read"] img').each(function() {
+    $('[id="markdown-read"] img').each(function () {
         if ($(this).parents('a').length < 1) {
 
             // New Image Item
@@ -155,29 +155,29 @@ var insertMarkdownFile = function(text, isMainPage = false, isHTML = false) {
                 'cursor': 'pointer',
                 'opacity': '0%',
                 'pointer-events': ''
-            }).on('load', function() {
+            }).on('load', function () {
 
                 const newImg = new Image();
                 const tinyThis = $(this);
 
-                newImg.onload = function() {
+                newImg.onload = function () {
                     tinyThis.data('image-size', { width: this.width, height: this.height });
                     tinyThis.css({ 'opacity': '100%', 'pointer-events': '' });
                 }
 
                 newImg.src = $(this).attr('src');
 
-            }).click(function() {
+            }).click(function () {
                 const imgSize = $(this).data('image-size');
                 var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, [{ src: $(this).attr('src'), h: imgSize.height, w: imgSize.width }], { index: 0 });
                 gallery.init();
-                $(this).fadeTo("fast", 0.7, function() {
+                $(this).fadeTo("fast", 0.7, function () {
                     $(this).fadeTo("fast", 1);
                 });
                 return false;
-            }).hover(function() {
+            }).hover(function () {
                 $(this).fadeTo("fast", 0.8);
-            }, function() {
+            }, function () {
                 $(this).fadeTo("fast", 1);
             });
 
@@ -193,7 +193,7 @@ var insertMarkdownFile = function(text, isMainPage = false, isHTML = false) {
 };
 
 // Remove Fic Data
-var clearFicData = function() {
+var clearFicData = function () {
 
     for (const item in storyData.sfx) {
 
@@ -229,7 +229,7 @@ var clearFicData = function() {
 };
 
 // Open MD FIle
-var openMDFIle = function(url, isMain = false) {
+var openMDFIle = function (url, isMain = false) {
 
     // Remove Fic Data
     clearFicData();
@@ -243,7 +243,7 @@ var openMDFIle = function(url, isMain = false) {
             url: url + fileVersion,
             type: 'get',
             dataType: 'text'
-        }).done(function(fileData) {
+        }).done(function (fileData) {
 
             if (url.endsWith('.md')) {
                 console.log(`MD File opened successfully!`);
@@ -268,9 +268,9 @@ var openMDFIle = function(url, isMain = false) {
 };
 
 // Start App
-$(function() {
+$(function () {
     console.log('Starting App...');
-    storyData.start(function(fn, readme) {
+    storyData.start(function (fn, readme) {
 
         // Custom Colors
         $('head').append(
@@ -442,7 +442,7 @@ dsMK.toHTML(data[item].content, {
             $('<nav>', { class: 'navbar navbar-expand-lg navbar-dark bg-dark fixed-top', id: 'md-navbar' }).append(
 
                 // Title
-                $('<a>', { class: 'navbar-brand d-block d-lg-none', href: '/' }).text(storyCfg.title).click(function() {
+                $('<a>', { class: 'navbar-brand d-block d-lg-none', href: '/' }).text(storyCfg.title).click(function () {
                     openMDFIle('MAIN', true);
                     urlUpdate();
                     return false;
@@ -457,7 +457,7 @@ dsMK.toHTML(data[item].content, {
                 $('<div>', { class: 'collapse navbar-collapse', id: 'mdMenu' }).append(
 
                     // Title
-                    $('<a>', { class: 'navbar-brand d-none d-lg-block', href: '/' }).text(storyCfg.title).click(function() {
+                    $('<a>', { class: 'navbar-brand d-none d-lg-block', href: '/' }).text(storyCfg.title).click(function () {
                         openMDFIle('MAIN', true);
                         urlUpdate();
                         return false;
@@ -471,7 +471,7 @@ dsMK.toHTML(data[item].content, {
                             $('<a>', { class: 'nav-link', href: '/', id: 'homepage' }).text('Homepage').append(
                                 $('<i>', { class: 'fas fa-home me-2' })
                             )
-                        ).click(function() {
+                        ).click(function () {
                             openMDFIle('MAIN', true);
                             urlUpdate();
                             return false;
@@ -479,7 +479,7 @@ dsMK.toHTML(data[item].content, {
 
                         // Discord Server
                         $('<li>', { class: 'nav-item' }).prepend(
-                            $('<a>', {class: 'nav-link', target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}`, id: 'discord-server'}).text('Discord Server').append(
+                            $('<a>', { class: 'nav-link', target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}`, id: 'discord-server' }).text('Discord Server').append(
                                 $('<i>', { class: 'fab fa-discord me-2' })
                             )
                         ),
@@ -512,7 +512,7 @@ dsMK.toHTML(data[item].content, {
 
                         // Derpibooru
                         $('<li>', { class: 'nav-item' }).prepend(
-                            $('<a>',{ target: '_blank', class: 'nav-link', href: 'https://derpibooru.org/tags/' + storyCfg.derpibooru_tag, id: 'derpibooru-page'}).text('Derpibooru').append(
+                            $('<a>', { target: '_blank', class: 'nav-link', href: 'https://derpibooru.org/tags/' + storyCfg.derpibooru_tag, id: 'derpibooru-page' }).text('Derpibooru').append(
                                 $('<i>', { class: 'fa-solid fa-paintbrush me-2' })
                             )
                         ),
@@ -524,10 +524,10 @@ dsMK.toHTML(data[item].content, {
 
                         // LICENSE
                         $('<li>', { class: 'nav-item ' }).prepend(
-                            $('<a>', {class: 'nav-link'}).text('License').append(
+                            $('<a>', { class: 'nav-link' }).text('License').append(
                                 $('<i>', { class: 'fas fa-copyright me-2', href: '/?path=%2FLICENSE.md&title=License', id: 'license' })
                             )
-                        ).click(function() {
+                        ).click(function () {
                             openMDFIle('/LICENSE.md');
                             urlUpdate('/LICENSE.md', 'License');
                             return false;
@@ -545,11 +545,11 @@ dsMK.toHTML(data[item].content, {
                         $('<li>', { id: 'fic-chapter', class: 'nav-item nav-link' }),
 
                         // Read Fanfic
-                        $('<li>', { id: 'fic-start', class: 'nav-item font-weight-bold' + readButtonDisabled}).append(isNewValue).prepend(
-                            $('<a>', { class:'nav-link', href: '/?path=read-fic&title=Pony%20Driland' }).text('Read Fic').append(
+                        $('<li>', { id: 'fic-start', class: 'nav-item font-weight-bold' + readButtonDisabled }).append(isNewValue).prepend(
+                            $('<a>', { class: 'nav-link', href: '/?path=read-fic&title=Pony%20Driland' }).text('Read Fic').append(
                                 $('<i>', { class: 'fab fa-readme me-2' })
                             )
-                        ).click(function() {
+                        ).click(function () {
                             if (!readButtonDisabled) {
                                 $('#top_page').addClass('d-none');
                                 openChapterMenu();
@@ -646,10 +646,10 @@ dsMK.toHTML(data[item].content, {
 
                 // Copyright
                 $('<div>', { id: 'footer2', class: 'footer-copyright text-center py-3 bg-secondary text-white' })
-                .text(copyrightText).append(
-                    $('<a>', { target: '_blank', href: storyCfg.creator_url }).text(storyCfg.creator),
-                    '.'
-                )
+                    .text(copyrightText).append(
+                        $('<a>', { target: '_blank', href: storyCfg.creator_url }).text(storyCfg.creator),
+                        '.'
+                    )
 
             )
         );
