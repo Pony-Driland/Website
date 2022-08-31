@@ -479,8 +479,8 @@ dsMK.toHTML(data[item].content, {
 
                         // Discord Server
                         $('<li>', { class: 'nav-item' }).prepend(
-                            $('<a>', {class: 'nav-link'}).text('Discord Server').append(
-                                $('<i>', { class: 'fab fa-discord me-2', target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}`, id: 'discord-server' })
+                            $('<a>', {class: 'nav-link', target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}`, id: 'discord-server'}).text('Discord Server').append(
+                                $('<i>', { class: 'fab fa-discord me-2' })
                             )
                         ),
 
