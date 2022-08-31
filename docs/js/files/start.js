@@ -435,7 +435,7 @@ dsMK.toHTML(data[item].content, {
             copyrightText = `© ${storyCfg.year} - ${yearNow} ${storyCfg.title} | `;
         }
 
-        const navbarItems = function() {
+        const navbarItems = function () {
             return [
 
                 // Title
@@ -444,10 +444,10 @@ dsMK.toHTML(data[item].content, {
                     urlUpdate();
                     return false;
                 }),
-    
+
                 // Nav 1
                 $('<ul>', { class: 'navbar-nav me-auto mt-2 mt-lg-0 small' }).append(
-    
+
                     // Homepage
                     $('<li>', { class: 'nav-item' }).prepend(
                         $('<a>', { class: 'nav-link', href: '/', id: 'homepage' }).text('Homepage').prepend(
@@ -458,60 +458,60 @@ dsMK.toHTML(data[item].content, {
                         urlUpdate();
                         return false;
                     }),
-    
+
                     // Discord Server
                     $('<li>', { class: 'nav-item' }).prepend(
                         $('<a>', { class: 'nav-link', target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}`, id: 'discord-server' }).text('Discord Server').prepend(
                             $('<i>', { class: 'fab fa-discord me-2' })
                         )
                     ),
-    
+
                     // Derpibooru
                     $('<li>', { class: 'nav-item' }).prepend(
                         $('<a>', { target: '_blank', class: 'nav-link', href: 'https://derpibooru.org/tags/' + storyCfg.derpibooru_tag, id: 'derpibooru-page' }).text('Derpibooru').prepend(
                             $('<i>', { class: 'fa-solid fa-paintbrush me-2' })
                         )
                     ),
-    
+
                     // Donations Button
                     $('<li>', { class: 'nav-item dropdown' }).prepend(
-    
+
                         $('<a>', { class: 'nav-link dropdown-toggle', href: '#', role: 'button', 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false' }).text('Donations').append(
                             $('<span>', { class: 'navbar-toggler-icon' })
                         ),
-    
+
                         $('<ul>', { class: 'dropdown-menu' }).append(
-    
+
                             // Patreon
                             $('<li>').prepend(
                                 $('<a>', { class: 'dropdown-item', target: '_blank', href: `https://patreon.com/${storyCfg.patreon}`, id: 'patreon-url' }).text('Patreon').prepend(
                                     $('<i>', { class: 'fa-brands fa-patreon me-2' })
                                 )
                             ),
-    
+
                             // Kofi
                             $('<li>').prepend(
                                 $('<a>', { class: 'dropdown-item', target: '_blank', href: `https://ko-fi.com/${storyCfg.kofi}`, id: 'kofi-url' }).text('Ko-Fi').prepend(
                                     $('<i>', { class: 'fa-solid fa-mug-hot me-2' })
                                 )
                             ),
-    
+
                             // Crypto Wallet
                             $('<li>').prepend(
                                 $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.domainWallet), id: 'crypto-wallet' }).text('Crypto Donations').prepend(
                                     $('<i>', { class: 'fas fa-wallet me-2' })
                                 )
                             ),
-    
+
                         )
-    
+
                     ),
-    
+
                     // Blog
                     /* $('<li>', { class: 'nav-item nav-link', target: '_blank', href: storyCfg.blog_url, id: 'blog-url' }).text('Blog').prepend(
                         $('<i>', { class: 'fa-solid fa-rss me-2' })
                     ), */
-    
+
                     // LICENSE
                     $('<li>', { class: 'nav-item ' }).prepend(
                         $('<a>', { class: 'nav-link', href: '/?path=%2FLICENSE.md&title=License' }).text('License').prepend(
@@ -522,18 +522,18 @@ dsMK.toHTML(data[item].content, {
                         urlUpdate('/LICENSE.md', 'License');
                         return false;
                     })
-    
+
                 ),
-    
+
                 // Nav 2
                 $('<ul>', { class: 'nav navbar-nav ms-auto mb-2 mb-lg-0 small', id: 'fic-nav' }).append(
-    
+
                     // Status Place
                     $('<li>', { id: 'status' }).css('display', 'contents'),
-    
+
                     // Chapter Name
                     $('<li>', { id: 'fic-chapter', class: 'nav-item nav-link' }),
-    
+
                     // Read Fanfic
                     $('<li>', { class: 'nav-item font-weight-bold' + readButtonDisabled }).prepend(
                         $('<a>', { id: 'fic-start', class: 'nav-link', href: '/?path=read-fic&title=Pony%20Driland' }).text('Read Fic').append(isNewValue).prepend(
@@ -547,9 +547,9 @@ dsMK.toHTML(data[item].content, {
                         }
                         return false;
                     })
-    
+
                 )
-    
+
             ];
         };
 
@@ -566,13 +566,20 @@ dsMK.toHTML(data[item].content, {
                     return false;
                 }),
 
-                // Button
-                $('<button>', { class: 'navbar-toggler me-sm-4', type: 'button', 'data-bs-toggle': 'collapse', 'data-bs-target': '#mdMenu', 'aria-controls': '#mdMenu', 'aria-expanded': false }).append(
-                    $('<span>', { 'class': 'navbar-toggler-icon' })
-                ),
-
                 // Collapse
-                $('<div>', { class: 'collapse navbar-collapse', id: 'mdMenu' }).append(navbarItems())
+                $('<div>', { class: 'collapse navbar-collapse', id: 'mdMenu' }).append(navbarItems()),
+
+                // OffCanvas
+                $('<div>', { class: 'offcanvas offcanvas-end', tabindex: -1, id: 'offcanvasNavbar', 'aria-labelledby': 'offcanvasNavbarLabel' }).append(
+
+                    $('<div>', { class: 'offcanvas-header' }).append(
+
+                        $('<h5>', {class: 'offcanvas-title', id: 'offcanvasNavbarLabel'}).text(storyCfg.title),
+                        $('<button>', { class: 'btn-close', type: 'button', 'data-bs-dismiss': 'offcanvas'}),
+
+                    )
+
+                )
 
             )
 
