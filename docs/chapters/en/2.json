@@ -4158,6 +4158,68 @@
         "value": "Y...Yeah.",
         "character": "Wagner",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "Jeff. I'm sorry about your house, a good thing is that before I came here, I saw a lot of ponies running away, maybe you'll find who you're looking for. I had the brilliant idea to come face to face with this bomb. But unfortunately I arrived too late so we didn't have time to do anything.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James gets outraged and started shaking Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "BUT WHAT THE FUCK IS THIS?! YOU'RE CRAZY?! VINNY! You could have evaporated during the explosin!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "AAAAAHH!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Everyone was surprised by James' reaction for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...Well. Maybe you're right. I'll try to wait a bit for everyone to meet again.",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff took a deep breath, and was very thoughtful for a few seconds. Then Jeff would look at Wagner and feel a great curiosity about his presence.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..what? Who is this pony?",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James and Vinny stopped the mess and they both looked curiously at Jeff as they listened to the question. At the same moment Vinny was making a poker face, thinking of some quick plan.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Who?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "...Fuck.",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
