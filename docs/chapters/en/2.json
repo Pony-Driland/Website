@@ -3969,6 +3969,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Ah? I never knew Hiroshi true age. But if he says he lived an old generation, that seems like a long time ago.",
         "character": "Rayane",
         "type": "dialogue"
@@ -3986,6 +3989,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Wagner looked at Vinny and responded nervously.",
         "type": "action"
     },
@@ -4002,6 +4008,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "sad"
+        },
         "value": "Hmmm... Wagner? Tell me, why the wing accessory? Do you not know how to fly well?",
         "character": "Vinny",
         "type": "dialogue"
