@@ -442,14 +442,14 @@ dsMK.toHTML(data[item].content, {
             $('<nav>', { class: 'navbar navbar-expand-lg navbar-dark bg-dark fixed-top', id: 'md-navbar' }).append(
 
                 // Title
-                $('<a>', { class: 'navbar-brand d-block d-lg-none', href: '/' }).text(storyCfg.title).click(function () {
+                $('<a>', { class: 'navbar-brand d-block d-lg-none ms-sm-4', href: '/' }).text(storyCfg.title).click(function () {
                     openMDFIle('MAIN', true);
                     urlUpdate();
                     return false;
                 }),
 
                 // Button
-                $('<button>', { class: 'navbar-toggler', type: 'button', 'data-bs-toggle': 'collapse', 'data-bs-target': '#mdMenu', 'aria-controls': '#mdMenu', 'aria-expanded': false }).append(
+                $('<button>', { class: 'navbar-toggler me-sm-4', type: 'button', 'data-bs-toggle': 'collapse', 'data-bs-target': '#mdMenu', 'aria-controls': '#mdMenu', 'aria-expanded': false }).append(
                     $('<span>', { 'class': 'navbar-toggler-icon' })
                 ),
 
