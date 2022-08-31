@@ -4121,7 +4121,7 @@
     },
 
     {
-        "value": "Then Vinny realized that Jeff was depressed too.",
+        "value": "Then Vinny realized that Jeff was depressed too. So Vinny helps Jeff join to hug time.",
         "type": "action"
     },
 
@@ -4129,6 +4129,29 @@
         "value": "Y..yeah.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Don't feel that way. The worst has gone~ Let's all calm down now.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..Yes. I already feel so much better to see that you and Rayane are okay. I didn't know what else I would have done if I had lost all of you.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James and Wagner were slowly calming down. And little by little the hug ended, leaving space for you and Rayane again",
+        "type": "action"
     }
 
 ]
