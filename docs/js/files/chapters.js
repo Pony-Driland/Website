@@ -72,6 +72,7 @@ var storyData = {
                             // Data
                             const chapter = i + 1;
                             console.log(`Loading Chapter ${chapter}...`);
+                            console.log('./chapters/' + storyData.lang.active + '/' + chapter + '.json' + fileVersion);
                             $.getJSON('./chapters/' + storyData.lang.active + '/' + chapter + '.json' + fileVersion)
 
                             // Complete
