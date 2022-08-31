@@ -570,7 +570,7 @@ dsMK.toHTML(data[item].content, {
                 $('<div>', { class: 'collapse navbar-collapse', id: 'mdMenu' }).append(navbarItems()),
 
                 // OffCanvas
-                $('<div>', { class: 'offcanvas offcanvas-end', tabindex: -1, id: 'offcanvasNavbar', 'aria-labelledby': 'offcanvasNavbarLabel' }).append(
+                $('<div>', { class: 'offcanvas offcanvas-end d-lg-none', tabindex: -1, id: 'offcanvasNavbar', 'aria-labelledby': 'offcanvasNavbarLabel' }).append(
 
                     $('<div>', { class: 'offcanvas-header' }).append(
 
