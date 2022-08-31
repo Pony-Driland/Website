@@ -474,7 +474,7 @@ dsMK.toHTML(data[item].content, {
                     ),
 
                     // Donations Button
-                    $('<li>', { class: 'nav-item dropdown' }).prepend(
+                    $('<li>', { class: 'nav-item dropdown', id: 'donations-menu' }).prepend(
 
                         $('<a>', { class: 'nav-link dropdown-toggle', href: '#', role: 'button', 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false' }).text('Donations').append(
                             $('<span>', { class: 'navbar-toggler-icon' })
