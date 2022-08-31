@@ -214,7 +214,7 @@ var clearFicData = function () {
         .removeClass(`fic-daycicle-night`)
         .removeClass(`fic-daycicle-lateAtNight`);
 
-    $('[id="fic-nav"] > #status').empty();
+    $('#fic-nav > #status').empty();
     $('#fic-chapter').empty();
     storyData.readFic = false;
     storyData.chapter.html = {};

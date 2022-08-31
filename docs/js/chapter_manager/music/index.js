@@ -381,7 +381,7 @@ var musicManager = {
         }
 
         // Add Item Base
-        if ($('[id="fic-nav"] > #status #music').length < 1) {
+        if ($('#fic-nav > #status #music').length < 1) {
 
             // Update
             storyData.music.songVolumeUpdate();
@@ -470,7 +470,7 @@ var musicManager = {
             );
 
             // Insert
-            $('[id="fic-nav"] > #status').prepend([
+            $('#fic-nav > #status').prepend([
 
                 // Music
                 storyData.chapter.nav.music,
