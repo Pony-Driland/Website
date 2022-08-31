@@ -484,32 +484,6 @@ dsMK.toHTML(data[item].content, {
                             )
                         ),
 
-                        // Donations Button
-                        /* $('<li>', { class: 'nav-link dropdown-toggle', href: '#', role: 'button', 'data-bs-toggle': 'dropdown', 'data-bs-target': '#tiny-donations', 'aria-expanded': false, 'aria-control': 'tiny-donations' }).text('Donations').prepend(
-                            $('<a>').append(
-                                $('<span>', { class: 'navbar-toggler-icon' })
-                            )
-                        ),
-
-                        $('<div>', {class: 'collapse navbar-collapse', id: 'tiny-donations'}).append(
-
-                            // Patreon
-                            $('<a>', { class: 'nav-item nav-link', target: '_blank', href: `https://patreon.com/${storyCfg.patreon}`, id: 'patreon-url' }).text('Patreon').prepend(
-                                $('<i>', { class: 'fa-brands fa-patreon me-2' })
-                            ),
-
-                            // Kofi
-                            $('<a>', { class: 'nav-item nav-link', target: '_blank', href: `https://ko-fi.com/${storyCfg.kofi}`, id: 'kofi-url' }).text('Ko-Fi').prepend(
-                                $('<i>', { class: 'fa-solid fa-mug-hot me-2' })
-                            ),
-
-                            // Crypto Wallet
-                            $('<a>', { class: 'nav-item nav-link', target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.domainWallet), id: 'crypto-wallet' }).text('Crypto Donations').prepend(
-                                $('<i>', { class: 'fas fa-wallet me-2' })
-                            ),
-
-                        ), */
-
                         // Derpibooru
                         $('<li>', { class: 'nav-item' }).prepend(
                             $('<a>', { target: '_blank', class: 'nav-link', href: 'https://derpibooru.org/tags/' + storyCfg.derpibooru_tag, id: 'derpibooru-page' }).text('Derpibooru').prepend(
@@ -545,8 +519,8 @@ dsMK.toHTML(data[item].content, {
                         $('<li>', { id: 'fic-chapter', class: 'nav-item nav-link' }),
 
                         // Read Fanfic
-                        $('<li>', { class: 'nav-item font-weight-bold' + readButtonDisabled }).append(isNewValue).prepend(
-                            $('<a>', { id: 'fic-start', class: 'nav-link', href: '/?path=read-fic&title=Pony%20Driland' }).text('Read Fic').prepend(
+                        $('<li>', { class: 'nav-item font-weight-bold' + readButtonDisabled }).prepend(
+                            $('<a>', { id: 'fic-start', class: 'nav-link', href: '/?path=read-fic&title=Pony%20Driland' }).text('Read Fic').append(isNewValue).prepend(
                                 $('<i>', { class: 'fab fa-readme me-2' })
                             )
                         ).click(function () {
