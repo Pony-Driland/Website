@@ -154,10 +154,12 @@ cacheChapterUpdater.data = function(lastPage) {
 
         }
 
-        // Sortable
-        $('[id="fic-nav"] #status > a').sort(function(a, b) {
-            return Number($(a).attr('indexitem')) - Number($(b).attr('indexitem'));
-        }).appendTo($('[id="fic-nav"] #status'));
+        // Sortable  #status
+        $('[id="fic-nav"]').each(function() {
+            $(this).find('#status > a').sort(function(a, b) {
+                return Number($(a).attr('indexitem')) - Number($(b).attr('indexitem'));
+            }).appendTo($(this).find('#status'));
+        });
 
         // Update Title
         localStorage.setItem('bookmark' + storyData.chapter.selected, storyData.chapter.line);
