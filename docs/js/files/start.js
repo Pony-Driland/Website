@@ -577,6 +577,8 @@ dsMK.toHTML(data[item].content, {
                         $('<h5>', {class: 'offcanvas-title', id: 'offcanvasNavbarLabel'}).text(storyCfg.title),
                         $('<button>', { class: 'btn-close', type: 'button', 'data-bs-dismiss': 'offcanvas'}),
 
+                        $('<div>', {class: 'offcanvas-body'}).append(navbarItems())
+
                     )
 
                 )
