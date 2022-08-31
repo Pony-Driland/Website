@@ -502,21 +502,21 @@ dsMK.toHTML(data[item].content, {
 
                                 // Patreon
                                 $('<li>').prepend(
-                                    $('<a>', { class: 'dropdown-item', target: '_blank', href: `https://patreon.com/${storyCfg.patreon}`, id: 'patreon-url' }).text('Patreon').append(
+                                    $('<a>', { class: 'dropdown-item', target: '_blank', href: `https://patreon.com/${storyCfg.patreon}`, id: 'patreon-url' }).text('Patreon').prepend(
                                         $('<i>', { class: 'fa-brands fa-patreon me-2' })
                                     )
                                 ),
 
                                 // Kofi
                                 $('<li>').prepend(
-                                    $('<a>', { class: 'dropdown-item', target: '_blank', href: `https://ko-fi.com/${storyCfg.kofi}`, id: 'kofi-url' }).text('Ko-Fi').append(
+                                    $('<a>', { class: 'dropdown-item', target: '_blank', href: `https://ko-fi.com/${storyCfg.kofi}`, id: 'kofi-url' }).text('Ko-Fi').prepend(
                                         $('<i>', { class: 'fa-solid fa-mug-hot me-2' })
                                     )
                                 ),
 
                                 // Crypto Wallet
                                 $('<li>').prepend(
-                                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.domainWallet), id: 'crypto-wallet' }).text('Crypto Donations').append(
+                                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.domainWallet), id: 'crypto-wallet' }).text('Crypto Donations').prepend(
                                         $('<i>', { class: 'fas fa-wallet me-2' })
                                     )
                                 ),
