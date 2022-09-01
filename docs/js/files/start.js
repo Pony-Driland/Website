@@ -613,8 +613,29 @@ dsMK.toHTML(data[item].content, {
                             $('<i>', { class: 'fa-solid fa-right-to-bracket me-2' })
                         )
                     ).click(function () {
+
+                        tinyLib.modal({
+                    
+                            id: 'crypto_connection',
+                            title: 'Login Protocol',
+                            body: $('<center>').append(
+        
+                                $('<button>', {class: 'btn btn-info m-4'}).text('Metamask').click(function() {
+                                    
+                                    $('#crypto_connection').modal('hide');
+                                    puddyWeb3.alertIsEnabled();
+                                    if(puddyWeb3.isEnabled()) {
+                                        puddyWeb3.sign();
+                                    }
+        
+                                })
+                            
+                            )
+        
+                        });
                         
                         return false;
+
                     }),
 
                     // Read Fanfic
