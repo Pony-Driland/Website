@@ -521,7 +521,7 @@ dsMK.toHTML(data[item].content, {
                 donationsItems.push($('<li>').prepend(
                     $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.polygon.explorer + storyCfg.polygon.address, id: 'polygon-wallet' }).text('Polygon').prepend(
                         $('<i>', { class: 'cf cf-matic me-2' })
-                    ).click(baseCryptoModal('polygon', 'MATIC'))
+                    ).click(baseCryptoModal('polygon', 'Polygon'))
                 ));
             }
 
