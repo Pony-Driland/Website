@@ -481,7 +481,7 @@ dsMK.toHTML(data[item].content, {
             if (storyCfg.polygon && storyCfg.polygon.address) {
                 donationsItems.push($('<li>').prepend(
                     $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.polygon.address, id: 'polygon-wallet' }).text('Polygon').prepend(
-                        $('<i>', { class: 'fas fa-wallet me-2' })
+                        $('<i>', { class: 'cf cf-matic me-2' })
                     )
                 ));
             }
@@ -490,7 +490,7 @@ dsMK.toHTML(data[item].content, {
             if (storyCfg.bnb && storyCfg.bnb.address) {
                 donationsItems.push($('<li>').prepend(
                     $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.bnb.address, id: 'bnb-wallet' }).text('BNB').prepend(
-                        $('<i>', { class: 'fas fa-wallet me-2' })
+                        $('<i>', { class: 'cf cf-bnb me-2' })
                     )
                 ));
             }
