@@ -544,7 +544,10 @@ dsMK.toHTML(data[item].content, {
             }
 
             const metaLogin = { base: $('<li>', { class: 'nav-item font-weight-bold' }), title: 'Login' };
-            
+            if (puddyWeb3.existAccounts()) {
+                metaLogin.title = puddyWeb3.getAddress();
+            }
+
             metaLogin.button = $('<a>', { id: 'login', class: 'nav-link', href: '#' }).attr('title', metaLogin.title).prepend(
                 $('<i>', { class: 'fa-brands fa-ethereum me-2' })
             );
