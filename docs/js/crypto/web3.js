@@ -79,6 +79,7 @@ var PuddyWeb3 = class {
         // Address
         this.address = await this.provider.getSigner().getAddress();
         this.address = this.address.toLowerCase();
+        localStorage.setItem('web3_address', this.address);
 
         console.log('Web3 Connected', this.address, data);
         return;
@@ -90,6 +91,7 @@ var PuddyWeb3 = class {
 
         // Network
         this.networkId = networkId;
+        localStorage.setItem('web3_network_id', this.networkId);
 
         console.log('Web3 Network Connected', networkId);
         return;
