@@ -103,6 +103,7 @@ var PuddyWeb3 = class {
 
     // Connection Detected
     connectionUpdate() {
+        $('#crypto_connection').modal('hide');
         console.log('Web3 Account', this.address);
         return;
     }
