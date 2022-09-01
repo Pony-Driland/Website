@@ -11,18 +11,22 @@ var storyCfg = {
 
     bitcoin: {
         address: 'bc1qhs82du0cklclz2fvtz40hky4f2c3qys09erel3',
+        explorer: 'https://www.blockchain.com/btc/address/'
     },
 
     ethereum: {
-        address: '0x9d8e88c7dd99b64c1cd3ca26b710ecca6854125d', 
+        address: '0x9d8e88c7dd99b64c1cd3ca26b710ecca6854125d',
+        explorer: 'https://etherscan.io/address/'
     },
 
     bnb: {
         address: '0x9d8e88c7dd99b64c1cd3ca26b710ecca6854125d',
+        explorer: 'https://bscscan.com/address/'
     },
 
     polygon: {
         address: '0x9d8e88c7dd99b64c1cd3ca26b710ecca6854125d',
+        explorer: 'https://polygonscan.com/address/'
     },
 
     // NFT Domain
