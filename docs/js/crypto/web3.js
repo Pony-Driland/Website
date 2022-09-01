@@ -101,6 +101,12 @@ var PuddyWeb3 = class {
 
     }
 
+    // Connection Detected
+    connectionUpdate() {
+        console.log('Web3 Account', this.address);
+        return;
+    }
+
     // Wallet Connect
     async startWalletConnect() {
 
@@ -313,6 +319,8 @@ var PuddyWeb3 = class {
         // Address
         this.address = await this.provider.getSigner().getAddress();
         this.address = this.address.toLowerCase();
+        this.connectionUpdate();
+
         return this.address;
 
     }
@@ -326,6 +334,8 @@ var PuddyWeb3 = class {
         // Address
         this.address = await this.provider.getSigner().getAddress();
         this.address = this.address.toLowerCase();
+        this.connectionUpdate();
+
         return this.address;
 
     }
