@@ -253,7 +253,7 @@ var PuddyWeb3 = class {
                 let data;
                 try {
 
-                    message.data.address = await tinyThis.requestAccounts();
+                    await tinyThis.requestAccounts();
                     const msg = ethers.utils.toUtf8Bytes(storyCfg.web3.welcome);
                     const signature = await tinyThis.provider.send('personal_sign', [ethers.utils.hexlify(msg), message.data.address]);
                     console.log(signature);
