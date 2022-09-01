@@ -92,7 +92,6 @@ var PuddyWeb3 = class {
         // Network
         this.networkId = networkId;
         localStorage.setItem('web3_network_id', this.networkId);
-
         console.log('Web3 Network Connected', networkId);
         return;
 
