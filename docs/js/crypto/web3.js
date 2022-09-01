@@ -9,6 +9,7 @@ var PuddyWeb3 = class {
         const tinyThis = this;
 
         // Networks
+        this.connected = false;
         this.networks = {
 
             matic: {
@@ -103,8 +104,12 @@ var PuddyWeb3 = class {
 
     // Connection Detected
     connectionUpdate() {
+
         $('#crypto_connection').modal('hide');
+        $('body').addClass('web3-connected');
+        this.connected = true;
         console.log('Web3 Account', this.address);
+
         return;
     }
 
@@ -151,6 +156,7 @@ var PuddyWeb3 = class {
     isEnabled() { return this.enabled; }
     getProvider() { return this.provider; }
     getAddress() { return this.address; }
+    isConnected() { return this.connected; }
 
     // Test Data
     async testMessage() {
