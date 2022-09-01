@@ -459,6 +459,42 @@ dsMK.toHTML(data[item].content, {
                 ));
             }
 
+            // Bitcoin
+            if (storyCfg.bitcoin && storyCfg.bitcoin.address) {
+                donationsItems.push($('<li>').prepend(
+                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.bitcoin.address, id: 'bitcoin-wallet' }).text('Bitcoin').prepend(
+                        $('<i>', { class: 'fas fa-wallet me-2' })
+                    )
+                ));
+            }
+
+            // Ethereum Donation
+            if (storyCfg.ethereum && storyCfg.ethereum.address) {
+                donationsItems.push($('<li>').prepend(
+                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.ethereum.address, id: 'ethereum-wallet' }).text('Ethereum').prepend(
+                        $('<i>', { class: 'fas fa-wallet me-2' })
+                    )
+                ));
+            }
+
+            // Polygon Donation
+            if (storyCfg.polygon && storyCfg.polygon.address) {
+                donationsItems.push($('<li>').prepend(
+                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.polygon.address, id: 'polygon-wallet' }).text('Polygon').prepend(
+                        $('<i>', { class: 'fas fa-wallet me-2' })
+                    )
+                ));
+            }
+
+            // BNB Donation
+            if (storyCfg.bnb && storyCfg.bnb.address) {
+                donationsItems.push($('<li>').prepend(
+                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.bnb.address, id: 'bnb-wallet' }).text('BNB').prepend(
+                        $('<i>', { class: 'fas fa-wallet me-2' })
+                    )
+                ));
+            }
+
             // Crypto Wallet
             if (storyCfg.nftDomain && storyCfg.nftDomain.url) {
                 donationsItems.push($('<li>').prepend(
