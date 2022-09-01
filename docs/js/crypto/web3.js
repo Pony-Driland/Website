@@ -57,7 +57,7 @@ var PuddyWeb3 = class {
                 });
                   
                 window.ethereum.on('networkChanged', function (networkId) {
-                    tinyThis.networkId(networkId);
+                    tinyThis.networkChanged(networkId);
                 });
 
                 this.enabled = true;
@@ -86,12 +86,12 @@ var PuddyWeb3 = class {
     }
 
     // Account Changed
-    async accountsChanged(networkId) {
+    networkChanged(networkId) {
 
         // Network
         this.networkId = networkId;
 
-        console.log('Web3 Connected', this.address, data);
+        console.log('Web3 Network Connected', networkId);
         return;
 
     }
