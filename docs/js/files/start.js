@@ -573,9 +573,7 @@ dsMK.toHTML(data[item].content, {
 
             });
 
-            metaLogin.tooltip();
-
-            return [
+            const newItem = [
 
                 // Title
                 $('<a>', { class: 'navbar-brand d-none d-lg-block', href: '/' }).text(storyCfg.title).click(function () {
@@ -659,6 +657,9 @@ dsMK.toHTML(data[item].content, {
                 )
 
             ];
+
+            metaLogin.tooltip();
+            return newItem;
 
         };
 
