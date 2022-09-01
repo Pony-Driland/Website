@@ -117,11 +117,10 @@ var PuddyWeb3 = class {
                 // Update CSS and remove modal
                 $('#crypto_connection').modal('hide');
                 $('body').addClass('web3-connected');
-                
-                $('#login').data('bs-tooltip-data', address).data('bs-tooltip').setContent({ '.tooltip-inner': address });
 
                 // Change Title
-            
+                $('#login').data('bs-tooltip-data', address).data('bs-tooltip').setContent({ '.tooltip-inner': address });
+
             };
 
             // Finish
