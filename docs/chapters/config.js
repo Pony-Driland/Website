@@ -5,16 +5,27 @@ var storyCfg = {
         username: 'JasminDreasond'
     },
 
+    // Donation
+    patreon: 'JasminDreasond',
+    kofi: 'JasminDreasond',
+
+    // NFT Domain
+    nftDomain: {
+        url: 'https://ud.me/d/{domain}',
+        value: 'ponydriland.nft',
+        domainWallet: 'jasmindreasond.wallet',
+        valueURL: 'ponydriland.nft',
+        name: 'Unstoppable Domains'
+    },
+
     // Info
     gtag: 'G-PS1R5G3G50',
     underDevelopment: false,
     domain: 'ponydriland.com',
     itemsPerPage: 100,
     title: 'Pony Driland',
-    patreon: 'JasminDreasond',
     derpibooru_tag: 'pony+driland',
     blog_url: 'https://blog.ponydriland.com/',
-    kofi: 'JasminDreasond',
     discordInvite: 'GegfAgNxRX',
     description: 'The dimension of lost creatures and the home of hope.',
     urlPage: null,
@@ -29,14 +40,6 @@ var storyCfg = {
     },
 
     contact: 'tiny@ponydriland.com',
-
-    nftDomain: {
-        url: 'https://ud.me/d/{domain}',
-        value: 'ponydriland.nft',
-        domainWallet: 'jasmindreasond.wallet',
-        valueURL: 'ponydriland.nft',
-        name: 'Unstoppable Domains'
-    },
 
     creator: 'Yasmin Seidel (JasminDreasond)',
     creator_url: 'https://ud.me/ponydriland.nft',
