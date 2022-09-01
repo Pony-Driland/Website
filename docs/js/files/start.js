@@ -449,7 +449,7 @@ dsMK.toHTML(data[item].content, {
                             // Prepare Text
                             tinyLib.modal({
 
-                                title: title + ' Donation',
+                                title: title + ' Network Donation',
 
                                 id: 'busd_request',
                                 dialog: 'modal-lg',
