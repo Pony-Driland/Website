@@ -607,6 +607,16 @@ dsMK.toHTML(data[item].content, {
                     // Chapter Name
                     $('<li>', { id: 'fic-chapter', class: 'nav-item nav-link' }),
 
+                    // Login
+                    $('<li>', { class: 'nav-item font-weight-bold' }).prepend(
+                        $('<a>', { id: 'login', class: 'nav-link', href: '#' }).text('Login').prepend(
+                            $('<i>', { class: 'fa-solid fa-right-to-bracket me-2' })
+                        )
+                    ).click(function () {
+                        
+                        return false;
+                    }),
+
                     // Read Fanfic
                     $('<li>', { class: 'nav-item font-weight-bold' + readButtonDisabled }).prepend(
                         $('<a>', { id: 'fic-start', class: 'nav-link', href: '/?path=read-fic&title=Pony%20Driland' }).text('Read Fic').append(isNewValue).prepend(
