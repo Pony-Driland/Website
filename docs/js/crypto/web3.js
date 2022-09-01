@@ -49,6 +49,8 @@ var PuddyWeb3 = class {
                 this.provider.on('accountsChanged', (accounts) => {
                     tinyThis.accountsChanged(accounts);
                 });
+                
+                this.requestAccounts();
 
             } else if (window.ethereum) {
 
@@ -62,6 +64,7 @@ var PuddyWeb3 = class {
 
                 this.enabled = true;
                 this.provider = new ethers.providers.Web3Provider(window.ethereum);
+                this.requestAccounts();
             
             } else {
                 this.enabled = false;
@@ -120,6 +123,7 @@ var PuddyWeb3 = class {
             tinyThis.accountsChanged(data);
         });
 
+        await this.requestAccounts();
         return this.wallet_connect;
 
     }
