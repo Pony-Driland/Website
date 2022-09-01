@@ -547,7 +547,9 @@ dsMK.toHTML(data[item].content, {
                 $('<a>', { id: 'login', class: 'nav-link', href: '#' }).attr('title', 'Login').prepend(
                     $('<i>', { class: 'fa-brands fa-ethereum me-2' })
                 )
-            ).click(function () {
+            );
+            
+            metaLogin.click(function () {
 
                 tinyLib.modal({
             
