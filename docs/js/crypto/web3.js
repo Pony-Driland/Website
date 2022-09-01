@@ -61,7 +61,7 @@ var PuddyWeb3 = class {
                 this.enabled = true;
                 this.provider = new ethers.providers.Web3Provider(provider);
 
-                this.provider.on('accountsChanged', async (data) => {
+                this.provider.on('accountsChanged', (data) => {
                     tinyThis.accountsChanged(data);
                 });
 
@@ -70,7 +70,7 @@ var PuddyWeb3 = class {
                 this.enabled = true;
                 this.provider = new ethers.providers.Web3Provider(window.ethereum);
 
-                this.provider.on('accountsChanged', async (data) => {
+                this.provider.on('accountsChanged', (data) => {
                     tinyThis.accountsChanged(data);
                 });
             
@@ -85,8 +85,15 @@ var PuddyWeb3 = class {
     }
 
     // Account Changed
-    accountsChanged(data) {
-        console.log(data);
+    async accountsChanged(data) {
+
+        // Address
+        this.address = await this.provider.getSigner().getAddress();
+        this.address = this.address.toLowerCase();
+
+        console.log('Web3 Connected', this.address, data);
+        return;
+
     }
 
     // Wallet Connect
