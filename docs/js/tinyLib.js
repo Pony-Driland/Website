@@ -18,7 +18,7 @@ const enableQuery = function() {
 
             const modal = $(this).data('bs-modal');
     
-            if (typeof type === 'string') {
+            if (typeof type === 'string' && typeof modal[type] === 'function') {
                 modal[type];
             } else {
                 modal.show();
