@@ -14,14 +14,14 @@ const enableQuery = function() {
                     $(this).data('bs-modal', new bootstrap.Modal(this));
                 }
     
-                const modal = $(this).data('bs-modal');
+            }
+
+            const modal = $(this).data('bs-modal');
     
-                if (typeof type === 'string') {
-                    modal[type];
-                } else {
-                    modal.show();
-                }
-    
+            if (typeof type === 'string') {
+                modal[type];
+            } else {
+                modal.show();
             }
     
         });
