@@ -438,6 +438,13 @@ dsMK.toHTML(data[item].content, {
         // Insert Navbars
         const navbarItems = function () {
 
+            // Base Crypto Modal
+            const baseCryptoModal = function() {
+                return function() {
+
+                };
+            };
+
             // Base
             const donationsItems = [];
 
@@ -464,7 +471,7 @@ dsMK.toHTML(data[item].content, {
                 donationsItems.push($('<li>').prepend(
                     $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.bitcoin.explorer + storyCfg.bitcoin.address, id: 'bitcoin-wallet' }).text('Bitcoin').prepend(
                         $('<i>', { class: 'fa-brands fa-bitcoin me-2' })
-                    )
+                    ).click(baseCryptoModal('bitcoin'))
                 ));
             }
 
@@ -473,7 +480,7 @@ dsMK.toHTML(data[item].content, {
                 donationsItems.push($('<li>').prepend(
                     $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.ethereum.explorer + storyCfg.ethereum.address, id: 'ethereum-wallet' }).text('Ethereum').prepend(
                         $('<i>', { class: 'fa-brands fa-ethereum me-2' })
-                    )
+                    ).click(baseCryptoModal('ethereum'))
                 ));
             }
 
@@ -482,7 +489,7 @@ dsMK.toHTML(data[item].content, {
                 donationsItems.push($('<li>').prepend(
                     $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.polygon.explorer + storyCfg.polygon.address, id: 'polygon-wallet' }).text('Polygon').prepend(
                         $('<i>', { class: 'cf cf-matic me-2' })
-                    )
+                    ).click(baseCryptoModal('polygon'))
                 ));
             }
 
@@ -491,7 +498,7 @@ dsMK.toHTML(data[item].content, {
                 donationsItems.push($('<li>').prepend(
                     $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.bnb.explorer + storyCfg.bnb.address, id: 'bnb-wallet' }).text('BNB').prepend(
                         $('<i>', { class: 'cf cf-bnb me-2' })
-                    )
+                    ).click(baseCryptoModal('bnb'))
                 ));
             }
 
