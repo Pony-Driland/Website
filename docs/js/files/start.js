@@ -543,6 +543,38 @@ dsMK.toHTML(data[item].content, {
                 ));
             }
 
+            const metaLogin = $('<li>', { class: 'nav-item font-weight-bold' }).prepend(
+                $('<a>', { id: 'login', class: 'nav-link', href: '#' }).attr('title', 'Login').prepend(
+                    $('<i>', { class: 'fa-brands fa-ethereum me-2' })
+                )
+            ).click(function () {
+
+                tinyLib.modal({
+            
+                    id: 'crypto_connection',
+                    title: 'Login Protocol',
+                    body: $('<center>').append(
+
+                        $('<button>', {class: 'btn btn-info m-4'}).text('Metamask').click(function() {
+                            
+                            $('#crypto_connection').modal('hide');
+                            puddyWeb3.alertIsEnabled();
+                            if(puddyWeb3.isEnabled()) {
+                                puddyWeb3.sign();
+                            }
+
+                        })
+                    
+                    )
+
+                });
+                
+                return false;
+
+            });
+
+            metaLogin.tooltip();
+
             return [
 
                 // Title
@@ -608,35 +640,7 @@ dsMK.toHTML(data[item].content, {
                     $('<li>', { id: 'fic-chapter', class: 'nav-item nav-link' }),
 
                     // Login
-                    $('<li>', { class: 'nav-item font-weight-bold' }).prepend(
-                        $('<a>', { id: 'login', class: 'nav-link', href: '#' }).text('Login').prepend(
-                            $('<i>', { class: 'fa-brands fa-ethereum me-2' })
-                        )
-                    ).click(function () {
-
-                        tinyLib.modal({
-                    
-                            id: 'crypto_connection',
-                            title: 'Login Protocol',
-                            body: $('<center>').append(
-        
-                                $('<button>', {class: 'btn btn-info m-4'}).text('Metamask').click(function() {
-                                    
-                                    $('#crypto_connection').modal('hide');
-                                    puddyWeb3.alertIsEnabled();
-                                    if(puddyWeb3.isEnabled()) {
-                                        puddyWeb3.sign();
-                                    }
-        
-                                })
-                            
-                            )
-        
-                        });
-                        
-                        return false;
-
-                    }),
+                    metaLogin,
 
                     // Read Fanfic
                     $('<li>', { class: 'nav-item font-weight-bold' + readButtonDisabled }).prepend(
