@@ -1,5 +1,5 @@
 // Playlist
-storyCfg.playlist= {
+storyCfg.playlist = {
 
     'madoka-magica-magia【Metal/Male Cover】': [
         { id: 'FhhbYF8JANg', type: 'youtube' },
