@@ -342,17 +342,19 @@ var PuddyWeb3 = class {
 
     // Request Account
     async checkConnection() {
+        if (this.enabled) {
 
-        // Request
-        await this.provider.send("eth_accounts", []);
+            // Request
+            await this.provider.send("eth_accounts", []);
 
-        // Address
-        this.address = await this.provider.getSigner().getAddress();
-        this.address = this.address.toLowerCase();
-        this.connectionUpdate();
+            // Address
+            this.address = await this.provider.getSigner().getAddress();
+            this.address = this.address.toLowerCase();
+            this.connectionUpdate();
 
-        return this.address;
+            return this.address;
 
+        } else { return null; }
     }
 
 };
