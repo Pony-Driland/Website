@@ -462,7 +462,7 @@ dsMK.toHTML(data[item].content, {
             // Bitcoin
             if (storyCfg.bitcoin && storyCfg.bitcoin.address && storyCfg.bitcoin.explorer) {
                 donationsItems.push($('<li>').prepend(
-                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.bitcoin.address, id: 'bitcoin-wallet' }).text('Bitcoin').prepend(
+                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.bitcoin.explorer + storyCfg.bitcoin.address, id: 'bitcoin-wallet' }).text('Bitcoin').prepend(
                         $('<i>', { class: 'fa-brands fa-bitcoin me-2' })
                     )
                 ));
@@ -471,7 +471,7 @@ dsMK.toHTML(data[item].content, {
             // Ethereum
             if (storyCfg.ethereum && storyCfg.ethereum.address && storyCfg.ethereum.explorer) {
                 donationsItems.push($('<li>').prepend(
-                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.ethereum.address, id: 'ethereum-wallet' }).text('Ethereum').prepend(
+                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.ethereum.explorer + storyCfg.ethereum.address, id: 'ethereum-wallet' }).text('Ethereum').prepend(
                         $('<i>', { class: 'fa-brands fa-ethereum me-2' })
                     )
                 ));
@@ -480,7 +480,7 @@ dsMK.toHTML(data[item].content, {
             // Polygon
             if (storyCfg.polygon && storyCfg.polygon.address && storyCfg.polygon.explorer) {
                 donationsItems.push($('<li>').prepend(
-                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.polygon.address, id: 'polygon-wallet' }).text('Polygon').prepend(
+                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.polygon.explorer + storyCfg.polygon.address, id: 'polygon-wallet' }).text('Polygon').prepend(
                         $('<i>', { class: 'cf cf-matic me-2' })
                     )
                 ));
@@ -489,7 +489,7 @@ dsMK.toHTML(data[item].content, {
             // BNB
             if (storyCfg.bnb && storyCfg.bnb.address && storyCfg.bnb.explorer) {
                 donationsItems.push($('<li>').prepend(
-                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.bnb.address, id: 'bnb-wallet' }).text('BNB').prepend(
+                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.bnb.explorer + storyCfg.bnb.address, id: 'bnb-wallet' }).text('BNB').prepend(
                         $('<i>', { class: 'cf cf-bnb me-2' })
                     )
                 ));
