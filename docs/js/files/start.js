@@ -439,8 +439,38 @@ dsMK.toHTML(data[item].content, {
         const navbarItems = function () {
 
             // Base Crypto Modal
-            const baseCryptoModal = function() {
+            const baseCryptoModal = function(crypto_value) {
                 return function() {
+
+                    const qrcodeCanvas = $('<canvas>');
+                    qrcode.toCanvas(qrcodeCanvas[0], selected_wallet, function(error) {
+                        if (error) { alert(error) } else {
+
+                        // Prepare Text
+                        tinyLib.modal({
+                            
+                            title: 'Crypto Donation',
+
+                            id: 'busd_request',
+                            dialog: 'modal-lg',
+                            
+                            body: $('<center>').append(
+
+                                /* $('<h4>', {class: 'mb-5'}).text('Please enter the address correctly! Any type issue will be permanent loss of your funds!'),
+                                $('<span>').text(selected_wallet),
+                                $('<div>', {class: 'mt-3'}).append(qrcodeCanvas) */
+
+                            ),
+
+                            footer: []
+
+                        });
+
+                        }
+                    });
+
+                    // Complete
+                    return false;
 
                 };
             };
