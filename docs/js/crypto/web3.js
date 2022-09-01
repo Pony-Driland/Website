@@ -253,9 +253,9 @@ var PuddyWeb3 = class {
                 let data;
                 try {
 
-                    await tinyThis.requestAccounts();
+                    const address = await tinyThis.requestAccounts();
                     const msg = ethers.utils.toUtf8Bytes(storyCfg.web3.welcome);
-                    const signature = await tinyThis.provider.send('personal_sign', [ethers.utils.hexlify(msg), message.data.address]);
+                    const signature = await tinyThis.provider.send('personal_sign', [ethers.utils.hexlify(msg), address]);
                     console.log(signature);
 
                     $.LoadingOverlay("hide");
