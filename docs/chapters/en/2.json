@@ -4281,7 +4281,10 @@
         "type": "action"
     },
 
-    {
+    {          
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Okay Wagner. Everypony here is my friend. You don't have to force anything, you can feel free to talk whenever you want.",
         "character": "Vinny",
         "type": "dialogue"
@@ -4311,6 +4314,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "bad-mystery"
+        },
         "value": "Wagner was trying hard not to break down emotionally. But Wagner started to cry a lot and run away. Wagner was extremely afraid of accidentally hurting the emotions of more ponies.",
         "type": "action"
     },
