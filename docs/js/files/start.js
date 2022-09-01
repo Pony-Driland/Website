@@ -543,34 +543,34 @@ dsMK.toHTML(data[item].content, {
                 ));
             }
 
-            const metaLogin = $('<li>', { class: 'nav-item font-weight-bold' }).prepend(
-                $('<a>', { id: 'login', class: 'nav-link', href: '#' }).attr('title', 'Login').prepend(
-                    $('<i>', { class: 'fa-brands fa-ethereum me-2' })
-                )
+            const metaLogin = { base: $('<li>', { class: 'nav-item font-weight-bold' }) };
+            metaLogin.button = $('<a>', { id: 'login', class: 'nav-link', href: '#' }).attr('title', 'Login').prepend(
+                $('<i>', { class: 'fa-brands fa-ethereum me-2' })
             );
-            
-            metaLogin.click(function () {
+
+            metaLogin.base.prepend(metaLogin.button);
+            metaLogin.button.click(function () {
 
                 tinyLib.modal({
-            
+
                     id: 'crypto_connection',
                     title: 'Login Protocol',
                     body: $('<center>').append(
 
-                        $('<button>', {class: 'btn btn-info m-4'}).text('Metamask').click(function() {
-                            
+                        $('<button>', { class: 'btn btn-info m-4' }).text('Metamask').click(function () {
+
                             $('#crypto_connection').modal('hide');
                             puddyWeb3.alertIsEnabled();
-                            if(puddyWeb3.isEnabled()) {
+                            if (puddyWeb3.isEnabled()) {
                                 puddyWeb3.sign();
                             }
 
                         })
-                    
+
                     )
 
                 });
-                
+
                 return false;
 
             });
@@ -640,7 +640,7 @@ dsMK.toHTML(data[item].content, {
                     $('<li>', { id: 'fic-chapter', class: 'nav-item nav-link' }),
 
                     // Login
-                    metaLogin,
+                    metaLogin.base,
 
                     // Read Fanfic
                     $('<li>', { class: 'nav-item font-weight-bold' + readButtonDisabled }).prepend(
@@ -660,7 +660,7 @@ dsMK.toHTML(data[item].content, {
 
             ];
 
-            metaLogin.tooltip();
+            metaLogin.button.tooltip();
             return newItem;
 
         };
