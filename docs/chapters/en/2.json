@@ -4330,6 +4330,12 @@
         "value": "W..What?!",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Oh no... I should have predicted this would happen.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
