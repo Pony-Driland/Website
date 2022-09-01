@@ -463,21 +463,21 @@ dsMK.toHTML(data[item].content, {
             if (storyCfg.bitcoin && storyCfg.bitcoin.address) {
                 donationsItems.push($('<li>').prepend(
                     $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.bitcoin.address, id: 'bitcoin-wallet' }).text('Bitcoin').prepend(
-                        $('<i>', { class: 'fas fa-wallet me-2' })
+                        $('<i>', { class: 'fa-brands fa-bitcoin me-2' })
                     )
                 ));
             }
 
-            // Ethereum Donation
+            // Ethereum
             if (storyCfg.ethereum && storyCfg.ethereum.address) {
                 donationsItems.push($('<li>').prepend(
                     $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.ethereum.address, id: 'ethereum-wallet' }).text('Ethereum').prepend(
-                        $('<i>', { class: 'fas fa-wallet me-2' })
+                        $('<i>', { class: 'fa-brands fa-ethereum me-2' })
                     )
                 ));
             }
 
-            // Polygon Donation
+            // Polygon
             if (storyCfg.polygon && storyCfg.polygon.address) {
                 donationsItems.push($('<li>').prepend(
                     $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.polygon.address, id: 'polygon-wallet' }).text('Polygon').prepend(
@@ -486,7 +486,7 @@ dsMK.toHTML(data[item].content, {
                 ));
             }
 
-            // BNB Donation
+            // BNB
             if (storyCfg.bnb && storyCfg.bnb.address) {
                 donationsItems.push($('<li>').prepend(
                     $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.bnb.address, id: 'bnb-wallet' }).text('BNB').prepend(
