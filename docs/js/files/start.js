@@ -436,6 +436,37 @@ dsMK.toHTML(data[item].content, {
         }
 
         const navbarItems = function () {
+
+            // Base
+            const donationsItems = [];
+
+            // Patreon
+            if (storyCfg.patreon) {
+                donationsItems.push($('<li>').prepend(
+                    $('<a>', { class: 'dropdown-item', target: '_blank', href: `https://patreon.com/${storyCfg.patreon}`, id: 'patreon-url' }).text('Patreon').prepend(
+                        $('<i>', { class: 'fa-brands fa-patreon me-2' })
+                    )
+                ));
+            }
+
+            // Kofi
+            if (storyCfg.kofi) {
+                donationsItems.push($('<li>').prepend(
+                    $('<a>', { class: 'dropdown-item', target: '_blank', href: `https://ko-fi.com/${storyCfg.kofi}`, id: 'kofi-url' }).text('Ko-Fi').prepend(
+                        $('<i>', { class: 'fa-solid fa-mug-hot me-2' })
+                    )
+                ));
+            }
+
+            // Crypto Wallet
+            if (storyCfg.nftDomain && storyCfg.nftDomain.url) {
+                donationsItems.push($('<li>').prepend(
+                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.domainWallet), id: 'crypto-wallet' }).text('Unstoppable Domains').prepend(
+                        $('<i>', { class: 'fas fa-wallet me-2' })
+                    )
+                ));
+            }
+
             return [
 
                 // Title
@@ -480,30 +511,7 @@ dsMK.toHTML(data[item].content, {
                             $('<span>', { class: 'navbar-toggler-icon' })
                         ),
 
-                        $('<ul>', { class: 'dropdown-menu' }).append(
-
-                            // Patreon
-                            $('<li>').prepend(
-                                $('<a>', { class: 'dropdown-item', target: '_blank', href: `https://patreon.com/${storyCfg.patreon}`, id: 'patreon-url' }).text('Patreon').prepend(
-                                    $('<i>', { class: 'fa-brands fa-patreon me-2' })
-                                )
-                            ),
-
-                            // Kofi
-                            $('<li>').prepend(
-                                $('<a>', { class: 'dropdown-item', target: '_blank', href: `https://ko-fi.com/${storyCfg.kofi}`, id: 'kofi-url' }).text('Ko-Fi').prepend(
-                                    $('<i>', { class: 'fa-solid fa-mug-hot me-2' })
-                                )
-                            ),
-
-                            // Crypto Wallet
-                            $('<li>').prepend(
-                                $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.domainWallet), id: 'crypto-wallet' }).text('Crypto Donations').prepend(
-                                    $('<i>', { class: 'fas fa-wallet me-2' })
-                                )
-                            ),
-
-                        )
+                        $('<ul>', { class: 'dropdown-menu' }).append(donationsItems)
 
                     ),
 
@@ -540,6 +548,7 @@ dsMK.toHTML(data[item].content, {
                 )
 
             ];
+
         };
 
         // Insert Navbar
@@ -568,10 +577,10 @@ dsMK.toHTML(data[item].content, {
 
                     $('<div>', { class: 'offcanvas-header' }).append(
 
-                        $('<h5>', {class: 'offcanvas-title', id: 'offcanvasNavbarLabel'}).text(storyCfg.title),
-                        $('<button>', { class: 'btn-close', type: 'button', 'data-bs-dismiss': 'offcanvas'}),
+                        $('<h5>', { class: 'offcanvas-title', id: 'offcanvasNavbarLabel' }).text(storyCfg.title),
+                        $('<button>', { class: 'btn-close', type: 'button', 'data-bs-dismiss': 'offcanvas' }),
 
-                        $('<div>', {class: 'offcanvas-body'})/* .append(navbarItems()) */
+                        $('<div>', { class: 'offcanvas-body' })/* .append(navbarItems()) */
 
                     )
 
