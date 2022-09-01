@@ -9,6 +9,22 @@ var storyCfg = {
     patreon: 'JasminDreasond',
     kofi: 'JasminDreasond',
 
+    bitcoin: {
+        address: 'bc1qhs82du0cklclz2fvtz40hky4f2c3qys09erel3',
+    },
+
+    ethereum: {
+        address: '0x9d8e88c7dd99b64c1cd3ca26b710ecca6854125d', 
+    },
+
+    bnb: {
+        address: '0x9d8e88c7dd99b64c1cd3ca26b710ecca6854125d',
+    },
+
+    polygon: {
+        address: '0x9d8e88c7dd99b64c1cd3ca26b710ecca6854125d',
+    },
+
     // NFT Domain
     nftDomain: {
         url: 'https://ud.me/d/{domain}',
