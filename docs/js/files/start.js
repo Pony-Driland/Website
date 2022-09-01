@@ -512,17 +512,6 @@ dsMK.toHTML(data[item].content, {
                         $('<i>', { class: 'fa-solid fa-rss me-2' })
                     ), */
 
-                    // LICENSE
-                    $('<li>', { class: 'nav-item ' }).prepend(
-                        $('<a>', { class: 'nav-link', href: '/?path=%2FLICENSE.md&title=License' }).text('License').prepend(
-                            $('<i>', { class: 'fas fa-copyright me-2', href: '/?path=%2FLICENSE.md&title=License', id: 'license' })
-                        )
-                    ).click(function () {
-                        openMDFIle('/LICENSE.md');
-                        urlUpdate('/LICENSE.md', 'License');
-                        return false;
-                    })
-
                 ),
 
                 // Nav 2
@@ -662,7 +651,17 @@ dsMK.toHTML(data[item].content, {
                                     $('<a>', { target: '_blank', href: 'mailto:' + storyCfg.contact }).text('Contact').prepend(
                                         $('<i>', { class: 'fas fa-envelope me-2' })
                                     )
-                                )
+                                ),
+
+                                $('<li>').prepend(
+                                    $('<a>', { href: '/?path=%2FLICENSE.md&title=License', href: '/?path=%2FLICENSE.md&title=License', id: 'license' }).text('License').prepend(
+                                        $('<i>', { class: 'fas fa-copyright me-2' })
+                                    )
+                                ).click(function () {
+                                    openMDFIle('/LICENSE.md');
+                                    urlUpdate('/LICENSE.md', 'License');
+                                    return false;
+                                })
 
                             )
                         )
