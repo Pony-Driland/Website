@@ -554,7 +554,7 @@ dsMK.toHTML(data[item].content, {
                 tinyLib.modal({
 
                     id: 'crypto_connection',
-                    title: 'Login Protocol',
+                    title: 'Login Protocol (Features under development)',
                     body: $('<center>').append(
 
                         $('<button>', { class: 'btn btn-info m-4' }).text('Metamask').click(function () {
