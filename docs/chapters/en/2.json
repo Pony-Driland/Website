@@ -4229,6 +4229,107 @@
         "value": "...Fuck.",
         "character": "Vinny",
         "type": "think"
+    },
+    
+    {
+        "value": "Wagner... His name is Wagner. Rayane and I found him before the explosion.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at Wagner, waiting for him to say something nervously. Wagner was very anxious and trembling trying to think of something to say. This made Jeff very strange to Wagner and a little worried about him.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..what? Are you two okay?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I ask the same. Did he lose anyone during the explosion?",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looked at Rayane for a few seconds. Rayane was concentrated just watching the conversation. Vinny then looked back at Wagner.",
+        "type": "action"
+    },
+
+    {
+        "value": "I...I don't know, he seems to be very sensitive, when I showed him the condition out here, he fainted. I think asking him very sensitive questions still won't do him feel good.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles nervously. So Vinny goes to Wagner.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..Okay?",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny smiled before he started talking.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay Wagner. Everypony here is my friend. You don't have to force anything, you can feel free to talk whenever you want.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "N..no!",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Everyone was surprised by Wagner's behavior.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wagner?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "No! No! That's not right!",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner was trying hard not to break down emotionally. But Wagner started to cry a lot and run away. Wagner was extremely afraid of accidentally hurting the emotions of more ponies.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..Wagner? NO! H..HEY! WAIT!",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff tries to follow Wagner worriedly while James was a little scared in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What?!",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
