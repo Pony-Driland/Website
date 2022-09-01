@@ -49,23 +49,28 @@ var PuddyWeb3 = class {
                 this.provider.on('accountsChanged', (accounts) => {
                     tinyThis.accountsChanged(accounts);
                 });
-                
-                this.requestAccounts();
+
+                if (localStorage.getItem('web3_sign')) {
+                    this.requestAccounts();
+                }
 
             } else if (window.ethereum) {
 
                 window.ethereum.on('accountsChanged', function (accounts) {
                     tinyThis.accountsChanged(accounts);
                 });
-                  
+
                 window.ethereum.on('networkChanged', function (networkId) {
                     tinyThis.networkChanged(networkId);
                 });
 
                 this.enabled = true;
                 this.provider = new ethers.providers.Web3Provider(window.ethereum);
-                this.requestAccounts();
-            
+
+                if (localStorage.getItem('web3_sign')) {
+                    this.requestAccounts();
+                }
+
             } else {
                 this.enabled = false;
             }
@@ -123,7 +128,10 @@ var PuddyWeb3 = class {
             tinyThis.accountsChanged(data);
         });
 
-        await this.requestAccounts();
+        if (localStorage.getItem('web3_sign')) {
+            await this.requestAccounts();
+        }
+
         return this.wallet_connect;
 
     }
