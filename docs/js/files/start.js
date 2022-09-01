@@ -439,32 +439,34 @@ dsMK.toHTML(data[item].content, {
         const navbarItems = function () {
 
             // Base Crypto Modal
-            const baseCryptoModal = function(crypto_value) {
-                return function() {
+            const baseCryptoModal = function (crypto_value, title) {
+                return function () {
 
                     const qrcodeCanvas = $('<canvas>');
-                    qrcode.toCanvas(qrcodeCanvas[0], selected_wallet, function(error) {
+                    qrcode.toCanvas(qrcodeCanvas[0], storyCfg[crypto_value].address, function (error) {
                         if (error) { alert(error) } else {
 
-                        // Prepare Text
-                        tinyLib.modal({
-                            
-                            title: 'Crypto Donation',
+                            // Prepare Text
+                            tinyLib.modal({
 
-                            id: 'busd_request',
-                            dialog: 'modal-lg',
-                            
-                            body: $('<center>').append(
+                                title: title + ' Donation',
 
-                                /* $('<h4>', {class: 'mb-5'}).text('Please enter the address correctly! Any type issue will be permanent loss of your funds!'),
-                                $('<span>').text(selected_wallet),
-                                $('<div>', {class: 'mt-3'}).append(qrcodeCanvas) */
+                                id: 'busd_request',
+                                dialog: 'modal-lg',
 
-                            ),
+                                body: $('<center>').append(
 
-                            footer: []
+                                    $('<h4>', { class: 'mb-5' }).text('Please enter the address correctly! Any type issue will be permanent loss of your funds!'),
+                                    $('<a>', { target: '_blank', href: storyCfg[crypto_value].explorer + storyCfg[crypto_value].address }).text('Blockchain Explorer'),
+                                    $('<br>'),
+                                    $('<span>').text(storyCfg[crypto_value].address),
+                                    $('<div>', { class: 'mt-3' }).append(qrcodeCanvas)
 
-                        });
+                                ),
+
+                                footer: []
+
+                            });
 
                         }
                     });
@@ -501,7 +503,7 @@ dsMK.toHTML(data[item].content, {
                 donationsItems.push($('<li>').prepend(
                     $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.bitcoin.explorer + storyCfg.bitcoin.address, id: 'bitcoin-wallet' }).text('Bitcoin').prepend(
                         $('<i>', { class: 'fa-brands fa-bitcoin me-2' })
-                    ).click(baseCryptoModal('bitcoin'))
+                    ).click(baseCryptoModal('bitcoin', 'Bitcoin'))
                 ));
             }
 
@@ -510,7 +512,7 @@ dsMK.toHTML(data[item].content, {
                 donationsItems.push($('<li>').prepend(
                     $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.ethereum.explorer + storyCfg.ethereum.address, id: 'ethereum-wallet' }).text('Ethereum').prepend(
                         $('<i>', { class: 'fa-brands fa-ethereum me-2' })
-                    ).click(baseCryptoModal('ethereum'))
+                    ).click(baseCryptoModal('ethereum', 'Ethereum'))
                 ));
             }
 
@@ -519,7 +521,7 @@ dsMK.toHTML(data[item].content, {
                 donationsItems.push($('<li>').prepend(
                     $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.polygon.explorer + storyCfg.polygon.address, id: 'polygon-wallet' }).text('Polygon').prepend(
                         $('<i>', { class: 'cf cf-matic me-2' })
-                    ).click(baseCryptoModal('polygon'))
+                    ).click(baseCryptoModal('polygon', 'MATIC'))
                 ));
             }
 
@@ -528,7 +530,7 @@ dsMK.toHTML(data[item].content, {
                 donationsItems.push($('<li>').prepend(
                     $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.bnb.explorer + storyCfg.bnb.address, id: 'bnb-wallet' }).text('BNB').prepend(
                         $('<i>', { class: 'cf cf-bnb me-2' })
-                    ).click(baseCryptoModal('bnb'))
+                    ).click(baseCryptoModal('bnb', 'BNB'))
                 ));
             }
 
