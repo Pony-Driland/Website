@@ -344,15 +344,21 @@ var PuddyWeb3 = class {
     async checkConnection() {
         if (this.enabled) {
 
-            // Request
-            await this.provider.send("eth_accounts", []);
+            // Get Signer
+            const signer = this.provider.getSigner();
+            if (signer) {
 
-            // Address
-            this.address = await this.provider.getSigner().getAddress();
-            this.address = this.address.toLowerCase();
-            this.connectionUpdate();
+                // Request
+                await this.provider.send("eth_accounts", []);
 
-            return this.address;
+                // Address
+                this.address = await this.provider.getSigner().getAddress();
+                this.address = this.address.toLowerCase();
+                this.connectionUpdate();
+
+                return this.address;
+
+            } else { return null; }
 
         } else { return null; }
     }
