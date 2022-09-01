@@ -165,6 +165,7 @@ var PuddyWeb3 = class {
     getProvider() { return this.provider; }
     getAddress() { return this.address; }
     isConnected() { return this.connected; }
+    existAccounts() { return (Array.isArray(this.accounts) && this.accounts.length > 0) }
 
     // Test Data
     async testMessage() {
@@ -344,21 +345,19 @@ var PuddyWeb3 = class {
     async checkConnection() {
         if (this.enabled) {
 
-            // Get Signer
-            const signer = this.provider.getSigner();
-            if (signer) {
+            // Request
+            this.accounts = await this.provider.send("eth_accounts", []);
 
-                // Request
-                await this.provider.send("eth_accounts", []);
-
-                // Address
+            // Address
+            if (this.existAccounts()) {
+                
                 this.address = await this.provider.getSigner().getAddress();
                 this.address = this.address.toLowerCase();
                 this.connectionUpdate();
 
                 return this.address;
 
-            } else { return null; }
+            } else { return false; }
 
         } else { return null; }
     }
