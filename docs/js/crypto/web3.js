@@ -50,9 +50,7 @@ var PuddyWeb3 = class {
                     tinyThis.accountsChanged(accounts);
                 });
 
-                if (localStorage.getItem('web3_sign')) {
-                    this.requestAccounts();
-                }
+                this.checkConnection();
 
             } else if (window.ethereum) {
 
@@ -67,9 +65,7 @@ var PuddyWeb3 = class {
                 this.enabled = true;
                 this.provider = new ethers.providers.Web3Provider(window.ethereum);
 
-                if (localStorage.getItem('web3_sign')) {
-                    this.requestAccounts();
-                }
+                this.checkConnection();
 
             } else {
                 this.enabled = false;
@@ -128,10 +124,7 @@ var PuddyWeb3 = class {
             tinyThis.accountsChanged(data);
         });
 
-        if (localStorage.getItem('web3_sign')) {
-            await this.requestAccounts();
-        }
-
+        await this.checkConnection();
         return this.wallet_connect;
 
     }
@@ -316,6 +309,19 @@ var PuddyWeb3 = class {
 
         // Request
         await this.provider.send("eth_requestAccounts", []);
+
+        // Address
+        this.address = await this.provider.getSigner().getAddress();
+        this.address = this.address.toLowerCase();
+        return this.address;
+
+    }
+
+    // Request Account
+    async checkConnection() {
+
+        // Request
+        await this.provider.send("eth_accounts", []);
 
         // Address
         this.address = await this.provider.getSigner().getAddress();
