@@ -610,7 +610,7 @@ dsMK.toHTML(data[item].content, {
                     // Login
                     $('<li>', { class: 'nav-item font-weight-bold' }).prepend(
                         $('<a>', { id: 'login', class: 'nav-link', href: '#' }).text('Login').prepend(
-                            $('<i>', { class: 'fa-solid fa-right-to-bracket me-2' })
+                            $('<i>', { class: 'fa-brands fa-ethereum me-2' })
                         )
                     ).click(function () {
 

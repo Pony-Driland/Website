@@ -104,19 +104,21 @@ var PuddyWeb3 = class {
 
     // Connection Detected
     connectionUpdate() {
+        if (this.address) {
 
-        this.connected = true;
-        console.log('Web3 Account', this.address);
+            this.connected = true;
+            console.log('Web3 Account', this.address);
 
-        const completeData = function () {
-            $('#crypto_connection').modal('hide');
-            $('body').addClass('web3-connected');
-        };
+            const completeData = function () {
+                $('#crypto_connection').modal('hide');
+                $('body').addClass('web3-connected');
+            };
 
-        $(() => { completeData(); });
-        completeData();
+            $(() => { completeData(); });
+            completeData();
+            return true;
 
-        return;
+        } else { return false; }
     }
 
     // Wallet Connect
