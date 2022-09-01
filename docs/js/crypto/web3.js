@@ -105,10 +105,16 @@ var PuddyWeb3 = class {
     // Connection Detected
     connectionUpdate() {
 
-        $('#crypto_connection').modal('hide');
-        $('body').addClass('web3-connected');
         this.connected = true;
         console.log('Web3 Account', this.address);
+
+        const completeData = function () {
+            $('#crypto_connection').modal('hide');
+            $('body').addClass('web3-connected');
+        };
+
+        $(() => { completeData(); });
+        completeData();
 
         return;
     }
