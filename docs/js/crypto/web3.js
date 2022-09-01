@@ -5,6 +5,9 @@ var PuddyWeb3 = class {
     // Constructor Base
     constructor(network, provider) {
 
+        // Base
+        const tinyThis = this;
+
         // Networks
         this.networks = {
 
@@ -54,11 +57,23 @@ var PuddyWeb3 = class {
         // Get Provider
         if (provider !== null) {
             if (provider) {
+
                 this.enabled = true;
                 this.provider = new ethers.providers.Web3Provider(provider);
+
+                this.provider.on('accountsChanged', async (data) => {
+                    tinyThis.accountsChanged(data);
+                });
+
             } else if (window.ethereum) {
+
                 this.enabled = true;
                 this.provider = new ethers.providers.Web3Provider(window.ethereum);
+
+                this.provider.on('accountsChanged', async (data) => {
+                    tinyThis.accountsChanged(data);
+                });
+            
             } else {
                 this.enabled = false;
             }
@@ -67,6 +82,11 @@ var PuddyWeb3 = class {
         // Complete
         return this;
 
+    }
+
+    // Account Changed
+    accountsChanged(data) {
+        console.log(data);
     }
 
     // Wallet Connect
@@ -87,6 +107,10 @@ var PuddyWeb3 = class {
 
         this.enabled = true;
         this.provider = new ethers.providers.Web3Provider(this.wallet_connect);
+
+        this.provider.on('accountsChanged', async (data) => {
+            tinyThis.accountsChanged(data);
+        });
 
         return this.wallet_connect;
 
