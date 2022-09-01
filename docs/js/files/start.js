@@ -543,8 +543,9 @@ dsMK.toHTML(data[item].content, {
                 ));
             }
 
-            const metaLogin = { base: $('<li>', { class: 'nav-item font-weight-bold' }) };
-            metaLogin.button = $('<a>', { id: 'login', class: 'nav-link', href: '#' }).attr('title', 'Login').prepend(
+            const metaLogin = { base: $('<li>', { class: 'nav-item font-weight-bold' }), title: 'Login' };
+            
+            metaLogin.button = $('<a>', { id: 'login', class: 'nav-link', href: '#' }).attr('title', metaLogin.title).prepend(
                 $('<i>', { class: 'fa-brands fa-ethereum me-2' })
             );
 

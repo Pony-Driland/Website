@@ -106,14 +106,25 @@ var PuddyWeb3 = class {
     connectionUpdate() {
         if (this.address) {
 
+            // Verified
             this.connected = true;
             console.log('Web3 Account', this.address);
 
+            // Complete
+            const address = this.address;
             const completeData = function () {
+
+                // Update CSS and remove modal
                 $('#crypto_connection').modal('hide');
                 $('body').addClass('web3-connected');
+                
+                $('#login').data('bs-tooltip-data', address).data('bs-tooltip').setContent({ '.tooltip-inner': address });
+
+                // Change Title
+            
             };
 
+            // Finish
             $(() => { completeData(); });
             completeData();
             return true;
@@ -350,7 +361,7 @@ var PuddyWeb3 = class {
 
             // Address
             if (this.existAccounts()) {
-                
+
                 this.address = await this.provider.getSigner().getAddress();
                 this.address = this.address.toLowerCase();
                 this.connectionUpdate();
