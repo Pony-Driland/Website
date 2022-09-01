@@ -37,21 +37,6 @@ var PuddyWeb3 = class {
 
         };
 
-        // Tokens
-        this.tokens = {
-
-            puddy_coin: {
-                type: 'ERC20',
-                options: {
-                    address: '0xa164f294c0e329a6261c932b40ba2b90b37be4b0',
-                    symbol: 'PUDDY',
-                    decimals: 18,
-                    image: 'https://puddy.club/img/icon/main/32.png',
-                },
-            }
-
-        };
-
         if (typeof network === 'string') { this.network = network; }
 
         // Get Provider
@@ -61,18 +46,22 @@ var PuddyWeb3 = class {
                 this.enabled = true;
                 this.provider = new ethers.providers.Web3Provider(provider);
 
-                this.provider.on('accountsChanged', (data) => {
-                    tinyThis.accountsChanged(data);
+                this.provider.on('accountsChanged', (accounts) => {
+                    tinyThis.accountsChanged(accounts);
                 });
 
             } else if (window.ethereum) {
 
+                window.ethereum.on('accountsChanged', function (accounts) {
+                    tinyThis.accountsChanged(accounts);
+                });
+                  
+                window.ethereum.on('networkChanged', function (networkId) {
+                    tinyThis.networkId(networkId);
+                });
+
                 this.enabled = true;
                 this.provider = new ethers.providers.Web3Provider(window.ethereum);
-
-                this.provider.on('accountsChanged', (data) => {
-                    tinyThis.accountsChanged(data);
-                });
             
             } else {
                 this.enabled = false;
@@ -90,6 +79,17 @@ var PuddyWeb3 = class {
         // Address
         this.address = await this.provider.getSigner().getAddress();
         this.address = this.address.toLowerCase();
+
+        console.log('Web3 Connected', this.address, data);
+        return;
+
+    }
+
+    // Account Changed
+    async accountsChanged(networkId) {
+
+        // Network
+        this.networkId = networkId;
 
         console.log('Web3 Connected', this.address, data);
         return;
@@ -138,21 +138,6 @@ var PuddyWeb3 = class {
     isEnabled() { return this.enabled; }
     getProvider() { return this.provider; }
     getAddress() { return this.address; }
-
-    // Add Token
-    addToken(token) {
-        const tinyThis = this;
-        return new Promise(function (resolve, reject) {
-
-            // Custom Network
-            if (typeof token === 'string' && tinyThis.tokens[token]) {
-                tinyThis.provider.send("wallet_watchAsset", [tinyThis.tokens[token]]).then(resolve).catch(reject);
-            } else {
-                return reject(new Error('Token not found.'));
-            }
-
-        });
-    }
 
     // Test Data
     async testMessage() {
