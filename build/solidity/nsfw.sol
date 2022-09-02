@@ -4,7 +4,7 @@ pragma solidity 0.8.16;
 contract PonyDrilandNSFWFilter {
 
     address payable public owner;
-    mapping (address => mapping (string => uint)) public filters;
+    mapping (address => mapping (string => int)) public filters;
 
     // Constructor
     constructor() {
