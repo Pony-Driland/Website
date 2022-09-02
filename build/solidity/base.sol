@@ -30,6 +30,8 @@ contract PonyDrilandBase {
     event NsfwFilter(address indexed from, string filter, uint256 value);
     event Bookmark(address indexed from, uint256 chapter, uint256 value);
 
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+
     // Constructor
     constructor() {
 
@@ -58,10 +60,18 @@ contract PonyDrilandBase {
 
     }
 
+    function transferOwnership(address newOwner) public {
+        require(address(msg.sender) == address(owner), "You are not allowed to do this.");
+        require(newOwner != address(0), "New owner is the zero address");
+        emit OwnershipTransferred(owner, newOwner);
+        owner = payable(newOwner);
+    }
+
     // Mint Tokens
     function mint(address _to, uint256 _value) public returns (bool success) {
 
         // Validator
+        require(address(msg.sender) == address(owner), "You are not allowed to do this.");
         require(_to != address(0), "Mint to the zero address.");
         require(_value >= 0, "Invalid amount!");
 
