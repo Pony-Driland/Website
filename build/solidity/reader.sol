@@ -39,13 +39,29 @@ contract PonyDrilandReader1 {
         return nsfw_filter[account][name];
     }
 
-    function insertNsfwFilter(string memory name, uint256 value) public returns (bool success) {
+    function changeNsfwFilter(string memory name, uint256 value) public returns (bool success) {
         
         // Complete
         require(value >= 0, "Invalid Value. This is 1 or 0");
         require(value <= 1, "Invalid Value. This is 1 or 0");
 
         nsfw_filter[address(msg.sender)][name] = value;
+        return true;
+
+    }
+
+    // Volume
+    function getVolume(address account) external view returns (uint256) {
+        return volume[account];
+    }
+
+    function setVolume(uint256 value) public returns (bool success) {
+        
+        // Complete
+        require(value >= 0, "Invalid Volume. 0 - 100");
+        require(value <= 100, "Invalid Volume. 0 - 100");
+
+        volume[address(msg.sender)] = value;
         return true;
 
     }
