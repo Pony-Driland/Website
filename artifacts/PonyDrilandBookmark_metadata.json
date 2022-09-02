@@ -18,17 +18,17 @@
 						"type": "address"
 					},
 					{
-						"internalType": "int256",
+						"internalType": "uint256",
 						"name": "",
-						"type": "int256"
+						"type": "uint256"
 					}
 				],
 				"name": "bookmark",
 				"outputs": [
 					{
-						"internalType": "int256",
+						"internalType": "uint256",
 						"name": "",
-						"type": "int256"
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -89,11 +89,11 @@
 	},
 	"sources": {
 		"build\\solidity\\bookmark.sol": {
-			"keccak256": "0xe7594704399046bfe70dc83afb97b9b66511e457f5e71139bc14e21fc767decc",
+			"keccak256": "0x628c596899b31d2763399e0e18da22b5fff199ce3622a20c3130c525305b496a",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://f8fce32a034803ec696460b8b532e61aada6de8a480639029c3ae4d0ab73c1c4",
-				"dweb:/ipfs/QmWiEJCME6q8Dfsxo7pdffohEyCek4Nia1Egqb7LoZFyZd"
+				"bzz-raw://6301db13e9de5a4761bd7af857b42965eab4ccb550ef240d6154ed9c71e2aca5",
+				"dweb:/ipfs/QmRfKwVcpBJnmp2P3cUWmZevECuZUt7so5vfeq4TEezt4w"
 			]
 		}
 	},
