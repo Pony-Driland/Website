@@ -89,6 +89,10 @@ contract PonyDrilandBase {
 
     }
 
+    function getPerm(address _account, string memory _perm) external view returns (uint256) {
+        return perm[_account][_perm];
+    }
+
     // Mint Tokens
     function mint(address _to, uint256 _value) public returns (bool success) {
 
@@ -107,6 +111,7 @@ contract PonyDrilandBase {
 
     }
 
+    // Burn Token
     function burn(uint256 _value) public returns (bool success) {
 
         // Validator
