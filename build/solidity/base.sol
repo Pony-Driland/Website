@@ -75,6 +75,7 @@ contract PonyDrilandBase {
     function enable() public returns (bool success) {
 
         // Update Wallet
+        require(balances[address(msg.sender)] <= 0, "This account is already activated.");
         balances[address(msg.sender)] = balances[address(msg.sender)] + 1;
         totalSupply = totalSupply + 1;
 
@@ -97,6 +98,7 @@ contract PonyDrilandBase {
     function insertBookmark(uint256 _chapter, uint256 _value) public returns (bool success) {
         
         // Complete
+        require(balances[address(msg.sender)] >= 1, "You need to activate your account.");
         require(_chapter >= 1, "Invalid Chapter.");
         require(_value >= 0, "Invalid Value.");
         
@@ -115,6 +117,7 @@ contract PonyDrilandBase {
     function changeNsfwFilter(string memory _name, uint256 _value) public returns (bool success) {
         
         // Complete
+        require(balances[address(msg.sender)] >= 1, "You need to activate your account.");
         require(_value >= 0, "Invalid Value. This is 1 or 0");
         require(_value <= 1, "Invalid Value. This is 1 or 0");
 
@@ -133,6 +136,7 @@ contract PonyDrilandBase {
     function setVolume(uint256 _value) public returns (bool success) {
         
         // Complete
+        require(balances[address(msg.sender)] >= 1, "You need to activate your account.");
         require(_value >= 0, "Invalid Volume. 0 - 100");
         require(_value <= 100, "Invalid Volume. 0 - 100");
 
