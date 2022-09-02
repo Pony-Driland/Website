@@ -7,6 +7,7 @@ contract PonyDrilandBase {
     address payable public owner;
 
     mapping (address => uint256) public balances;
+    mapping (address => uint256) public donations;
     mapping (address => uint256) public interactions;
 
     mapping (address => mapping (uint256 => uint256)) public bookmark;
