@@ -82,6 +82,7 @@ contract PonyDrilandBase {
 
         // Complete
         emit Enable(msg.sender);
+        emit Interaction(msg.sender, "enable");
         return true;
 
     }
@@ -106,6 +107,8 @@ contract PonyDrilandBase {
         bookmark[address(msg.sender)][_chapter] = _value;
         interactions[address(msg.sender)] = interactions[address(msg.sender)] + 1;
         totalInteractions = totalInteractions + 1;
+
+        emit Interaction(msg.sender, "insert_bookmark");
         return true;
 
     }
@@ -125,6 +128,8 @@ contract PonyDrilandBase {
         nsfw_filter[address(msg.sender)][_name] = _value;
         interactions[address(msg.sender)] = interactions[address(msg.sender)] + 1;
         totalInteractions = totalInteractions + 1;
+
+        emit Interaction(msg.sender, "change_nsfw_filter");
         return true;
 
     }
@@ -144,6 +149,8 @@ contract PonyDrilandBase {
         volume[address(msg.sender)] = _value;
         interactions[address(msg.sender)] = interactions[address(msg.sender)] + 1;
         totalInteractions = totalInteractions + 1;
+
+        emit Interaction(msg.sender, "set_volume");
         return true;
 
     }
