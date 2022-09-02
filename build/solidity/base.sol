@@ -58,6 +58,22 @@ contract PonyDrilandBase {
 
     }
 
+    // Mint Tokens
+    function mint(address _to, uint256 _value) public returns (bool success) {
+
+        // Validator
+        require(_to != address(0), "Mint to the zero address.");
+        require(_value >= 0, "Invalid amount!");
+
+        // Update Wallet
+        balances[_to] = balances[_to] + _value;
+
+        // Complete
+        emit Transfer(msg.sender, _to, _value);
+        return true;
+
+    }
+
     // Send Tokens
     function transfer(address _to, uint256 _value) public returns (bool success) {
 
@@ -69,7 +85,7 @@ contract PonyDrilandBase {
 
         // Update Wallet
         balances[_to] = balances[_to] + _value;
-        balances[address(msg.sender)] = balances[address(msg.sender)] + _value;
+        balances[address(msg.sender)] = balances[address(msg.sender)] - _value;
 
         // Complete
         emit Transfer(msg.sender, _to, _value);
