@@ -4342,6 +4342,106 @@
         "value": "Oh no... I should have predicted this would happen.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "DAMMIT! I think he also feels guilty for what happened!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny flies at Wagner, trying to do him stop. Vinny used all his speed as well.",
+        "type": "action"
+    },
+
+    {
+        "value": "WAGNER!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner keeps trying to run away more and more.",
+        "type": "action"
+    },
+
+    {
+        "value": "No! NOO! Leave me alone! This is going to be the worst punishment!!",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner opened his wings and began to fly to try to escape.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wagner! CALM DOWN!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny grabs Wagner hoof so he doesn't take flight. Then the two pegasus accidentally fell to the ground and rolled on the ground against each other for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "WAGNER! STOP! Why is that?! Calm down! let's talk. You need to trust me. You promised and I promised. It's going to be okay, listen to me, you didn't mean to do anything, you were tricked, that's okay.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tried to keep holding Wagner's hoof as best he could.",
+        "type": "action"
+    },
+
+    {
+        "value": "No! Let me go! PLEASE! N...no!! Look what I've gotten myself into! I'm feeling in purgatory and I don't even want to die! How am I going to redeem myself from so many things at the same time?!",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "Wagner was extremely desperate and depressed about the situation, trying to find some way not to lose emotional control even more.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wagner... Stop. Please stop. You're thinking a lot. Calm down and listen to me! It's not your fault, you saw us all in there, you can join us, be a family, you don't have to blame yourself for something you didn't do! If you want I can help you explain it to them. But we need you, you need to recover! We can help you!! Trust me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner slowly calmed down and started crying again during the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...what will everyone think about me when they find out the truth? Do you think everyone will stay by my side?! No one is going to care about me! Hiroshi is going to want to rip my head off!",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wahner cries a lot, trying to do everything possible to try to escape his mental issues.",
+        "type": "action"
+    },
+
+    {
+        "value": "But you didn't know. if you help us, you can have your free pass. Nobody is born knowing things, it's not written in the heads of all ponies who is good and bad. I just don't want you to do anything stupid. Calm down, let's try to calm down. Think about your family, if something happens to you and your family? Try to calm down you are not to blame for anything. Okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner slowly tries to calm down again. Wagner continued to cry, but slowly became less aggressive, just continuing to cry. Vinny watched Wagner empathetically, thinking about what to do next.",
+        "type": "action"
     }
 
 ]
