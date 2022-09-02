@@ -23,6 +23,7 @@ contract PonyDrilandBase {
 
     // Event
     event Transfer(address indexed from, address indexed to, uint256 value);
+    event Interaction(address indexed from, string value);
     event Enable(address indexed value);
 
     // Constructor
