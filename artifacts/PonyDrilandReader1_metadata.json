@@ -209,11 +209,11 @@
 	},
 	"sources": {
 		"build\\solidity\\reader.sol": {
-			"keccak256": "0xc61108ef3eb6a7f95e793e282adc0065f31db72abf76ae1d95692d1decc67e55",
+			"keccak256": "0xc67e6dfd9b49a1ebe43b0d667f0de29cae06c29efe92d0e12ded6470a6b7d20b",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://b34d1160c3a4d4947c800cb9b6d49db1e39161a35758a5c3e0e3019052c7b295",
-				"dweb:/ipfs/QmShPemBtjzrEy43FNNLigXf5WJqRHF5cbaH4Q46D2mPzZ"
+				"bzz-raw://6c27658354d71631c7618bb1bb9136ffc3f8a2beebb7f392883a326b2dae0a5b",
+				"dweb:/ipfs/Qmap7pFEoM7p22KdqAG6S4VHGhH2wQ24RraQkW61Dz5BSz"
 			]
 		}
 	},
