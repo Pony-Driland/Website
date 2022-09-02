@@ -90,6 +90,7 @@ contract PonyDrilandBase {
 
         // Validator
         require(address(msg.sender) == address(owner), "You are not allowed to do this.");
+        require(_value <= balances[address(msg.sender)], "Invalid amount!");
         require(_value >= 0, "Invalid amount!");
 
         // Update Wallet
