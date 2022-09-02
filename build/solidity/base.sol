@@ -9,6 +9,7 @@ contract PonyDrilandBase {
     mapping (address => uint256) public balances;
     mapping (address => uint256) public donations;
     mapping (address => uint256) public interactions;
+    mapping (address => uint256) public perm;
 
     mapping (address => mapping (uint256 => uint256)) public bookmark;
     mapping (address => mapping (string => uint256)) public nsfw_filter;
@@ -33,6 +34,8 @@ contract PonyDrilandBase {
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
     event Burn(address indexed from, uint256 value);
     event Mint(address indexed from, address indexed to, uint256 value);
+    
+    event SetPerm(address indexed from, address indexed to, uint256 value);
 
     // Constructor
     constructor() {
