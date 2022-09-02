@@ -44,7 +44,7 @@ contract PonyDrilandBase {
 
         // Send BNB to Developer
         donations[msg.sender] = donations[msg.sender] + msg.value;
-        payable(owner).transfer(msg.value);
+        owner.transfer(msg.value);
         return true;
 
     }
