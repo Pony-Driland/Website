@@ -25,6 +25,10 @@ contract PonyDrilandBase {
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Interaction(address indexed from, string value);
     event Enable(address indexed value);
+    
+    event Volume(address indexed from, string value);
+    event NsfwFilter(address indexed from, string filter, uint256 value);
+    event Bookmark(address indexed from, uint256 chapter, uint256 value);
 
     // Constructor
     constructor() {
