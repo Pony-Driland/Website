@@ -67,6 +67,7 @@ contract PonyDrilandBase {
 
         // Update Wallet
         balances[_to] = balances[_to] + _value;
+        totalSupply = totalSupply + _value;
 
         // Complete
         emit Transfer(msg.sender, _to, _value);
