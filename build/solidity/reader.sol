@@ -34,10 +34,10 @@ contract PonyDrilandReader1 {
 
     }
 
-    function insertBookmark(string memory name, uint256 chapter) public returns (bool success) {
+    function insertBookmark(uint256 chapter, uint256 value) public returns (bool success) {
         
         // Complete
-        bookmark[address(msg.sender)][chapter] = _value;
+        bookmark[address(msg.sender)][chapter] = value;
         return true;
 
     }
