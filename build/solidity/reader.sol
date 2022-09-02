@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity 0.8.16;
 
-contract PonyDrilandNSFWFilter {
+contract PonyDrilandReader1 {
 
     address payable public owner;
-    mapping (address => mapping (string => int)) public filters;
+    mapping (address => mapping (uint256 => uint256)) public bookmark;
+    mapping (address => mapping (string => uint256)) public filters;
 
     // Constructor
     constructor() {
@@ -13,6 +14,10 @@ contract PonyDrilandNSFWFilter {
 
     // Info
     function getOwner() public view returns (address) {
+        return owner;
+    }
+
+    function getBookMark() public view returns (address) {
         return owner;
     }
     
