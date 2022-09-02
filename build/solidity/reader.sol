@@ -24,5 +24,22 @@ contract PonyDrilandReader1 {
     function getNsfwFilter(address account, string memory name) external view returns (uint256) {
         return nsfw_filter[account][name];
     }
+
+    // Register Data
+    function insertNsfwFilter(string memory name, uint256 value) public returns (bool success) {
+        
+        // Complete
+        nsfw_filter[address(msg.sender)][name] = value;
+        return true;
+
+    }
+
+    function insertBookmark(string memory name, uint256 chapter) public returns (bool success) {
+        
+        // Complete
+        bookmark[address(msg.sender)][chapter] = _value;
+        return true;
+
+    }
     
 }
