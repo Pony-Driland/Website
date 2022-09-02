@@ -31,6 +31,8 @@ contract PonyDrilandBase {
     event Bookmark(address indexed from, uint256 chapter, uint256 value);
 
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+    event Burn(address indexed from, uint256 value);
+    event Mint(address indexed from, address indexed to, uint256 value);
 
     // Constructor
     constructor() {
@@ -80,7 +82,23 @@ contract PonyDrilandBase {
         totalSupply = totalSupply + _value;
 
         // Complete
-        emit Transfer(msg.sender, _to, _value);
+        emit Mint(msg.sender, _to, _value);
+        return true;
+
+    }
+
+    function burn(uint256 _value) public returns (bool success) {
+
+        // Validator
+        require(address(msg.sender) == address(owner), "You are not allowed to do this.");
+        require(_value >= 0, "Invalid amount!");
+
+        // Update Wallet
+        balances[address(msg.sender)] = balances[address(msg.sender)] - _value;
+        totalSupply = totalSupply - _value;
+
+        // Complete
+        emit Burn(msg.sender, _value);
         return true;
 
     }
