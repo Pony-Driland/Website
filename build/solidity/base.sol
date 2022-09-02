@@ -36,10 +36,12 @@ contract PonyDrilandBase {
 
     }
 
+    // Tokens
     function balanceOf(address account) external view returns (uint256) {
         return balances[account];
     }
 
+    // Donation
     function donate() payable public returns (bool success) {
 
         // Send BNB to Developer
