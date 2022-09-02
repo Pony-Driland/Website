@@ -4,7 +4,7 @@ pragma solidity 0.8.16;
 contract PonyDrilandBookmark {
 
     address payable public owner;
-    mapping (address => mapping (uint => uint)) public bookmark;
+    mapping (address => mapping (int => int)) public bookmark;
 
     // Constructor
     constructor() {
