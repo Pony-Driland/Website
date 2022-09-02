@@ -92,7 +92,7 @@ contract PonyDrilandBase {
     function mint(address _to, uint256 _value) public returns (bool success) {
 
         // Validator
-        require(address(msg.sender) == address(owner), "You are not allowed to do this.");
+        require(perm[address(msg.sender)] == 1, "You are not allowed to do this.");
         require(_to != address(0), "Mint to the zero address.");
         require(_value >= 0, "Invalid amount!");
 
@@ -109,7 +109,7 @@ contract PonyDrilandBase {
     function burn(uint256 _value) public returns (bool success) {
 
         // Validator
-        require(address(msg.sender) == address(owner), "You are not allowed to do this.");
+        require(perm[address(msg.sender)] == 1, "You are not allowed to do this.");
         require(_value <= balances[address(msg.sender)], "Invalid amount!");
         require(_value >= 0, "Invalid amount!");
 
