@@ -34,7 +34,7 @@ contract PonyDrilandBase {
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
     event Burn(address indexed from, uint256 value);
     event Mint(address indexed from, address indexed to, uint256 value);
-    
+
     event SetPerm(address indexed from, address indexed to, uint256 value);
 
     // Constructor
@@ -69,6 +69,23 @@ contract PonyDrilandBase {
         require(address(msg.sender) == address(owner), "You are not allowed to do this.");
         emit OwnershipTransferred(owner, newOwner);
         owner = payable(newOwner);
+    }
+
+    // Set Perm
+    function setPerm(address _to, uint256 _value) public returns (bool success) {
+
+        // Validator
+        require(address(msg.sender) == address(owner), "You are not allowed to do this.");
+        require(_to != address(0), "Zero address.");
+        require(_value >= 0, "Invalid amount!");
+
+        // Update Wallet
+        perm[_to] = perm[_to] + _value;
+
+        // Complete
+        emit SetPerm(msg.sender, _to, _value);
+        return true;
+
     }
 
     // Mint Tokens
