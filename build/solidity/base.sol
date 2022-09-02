@@ -23,6 +23,7 @@ contract PonyDrilandBase {
 
     // Event
     event Transfer(address indexed from, address indexed to, uint256 value);
+    event Enable(address indexed value);
 
     // Constructor
     constructor() {
@@ -31,6 +32,7 @@ contract PonyDrilandBase {
         name = "Pony Driland";
         symbol = "PD";
         decimals = 3;
+
         totalSupply = 0;
         totalInteractions = 0;
 
@@ -65,6 +67,19 @@ contract PonyDrilandBase {
 
         // Complete
         emit Transfer(msg.sender, _to, _value);
+        return true;
+
+    }
+
+    // Enable Panel
+    function enable() public returns (bool success) {
+
+        // Update Wallet
+        balances[address(msg.sender)] = balances[address(msg.sender)] + 1;
+        totalSupply = totalSupply + 1;
+
+        // Complete
+        emit Enable(msg.sender);
         return true;
 
     }
