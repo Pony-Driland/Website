@@ -6,7 +6,7 @@ contract PonyDrilandReader1 {
     address payable public owner;
     mapping (address => mapping (uint256 => uint256)) public bookmark;
     mapping (address => mapping (string => uint256)) public nsfw_filter;
-    mapping (address => mapping (uint256)) public volume;
+    mapping (address => uint256) public volume;
 
     // Constructor
     constructor() {
