@@ -17,8 +17,12 @@ contract PonyDrilandReader1 {
         return owner;
     }
 
-    function getBookMark(address account, uint256 chapter) external view returns (uint256) {
+    function getBookmark(address account, uint256 chapter) external view returns (uint256) {
         return bookmark[account][chapter];
+    }
+
+    function getNsfwFilter(address account, string memory name) external view returns (uint256) {
+        return nsfw_filter[account][name];
     }
     
 }
