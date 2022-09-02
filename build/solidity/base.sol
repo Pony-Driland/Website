@@ -37,8 +37,8 @@ contract PonyDrilandBase {
     }
 
     // Tokens
-    function balanceOf(address account) external view returns (uint256) {
-        return balances[account];
+    function balanceOf(address _account) external view returns (uint256) {
+        return balances[_account];
     }
 
     // Donation
@@ -75,17 +75,17 @@ contract PonyDrilandBase {
     }
 
     // Bookemark
-    function getBookmark(address account, uint256 chapter) external view returns (uint256) {
-        return bookmark[account][chapter];
+    function getBookmark(address _account, uint256 _chapter) external view returns (uint256) {
+        return bookmark[_account][_chapter];
     }
 
-    function insertBookmark(uint256 chapter, uint256 value) public returns (bool success) {
+    function insertBookmark(uint256 _chapter, uint256 _value) public returns (bool success) {
         
         // Complete
-        require(chapter >= 1, "Invalid Chapter.");
-        require(value >= 0, "Invalid Value.");
+        require(_chapter >= 1, "Invalid Chapter.");
+        require(_value >= 0, "Invalid Value.");
         
-        bookmark[address(msg.sender)][chapter] = value;
+        bookmark[address(msg.sender)][_chapter] = _value;
         interactions[address(msg.sender)] = interactions[address(msg.sender)] + 1;
         totalInteractions = totalInteractions + 1;
         return true;
@@ -93,17 +93,17 @@ contract PonyDrilandBase {
     }
 
     // NSFW Filter
-    function getNsfwFilter(address account, string memory name) external view returns (uint256) {
-        return nsfw_filter[account][name];
+    function getNsfwFilter(address _account, string memory _name) external view returns (uint256) {
+        return nsfw_filter[_account][_name];
     }
 
-    function changeNsfwFilter(string memory name, uint256 value) public returns (bool success) {
+    function changeNsfwFilter(string memory _name, uint256 _value) public returns (bool success) {
         
         // Complete
-        require(value >= 0, "Invalid Value. This is 1 or 0");
-        require(value <= 1, "Invalid Value. This is 1 or 0");
+        require(_value >= 0, "Invalid Value. This is 1 or 0");
+        require(_value <= 1, "Invalid Value. This is 1 or 0");
 
-        nsfw_filter[address(msg.sender)][name] = value;
+        nsfw_filter[address(msg.sender)][_name] = _value;
         interactions[address(msg.sender)] = interactions[address(msg.sender)] + 1;
         totalInteractions = totalInteractions + 1;
         return true;
@@ -111,17 +111,17 @@ contract PonyDrilandBase {
     }
 
     // Volume
-    function getVolume(address account) external view returns (uint256) {
-        return volume[account];
+    function getVolume(address _account) external view returns (uint256) {
+        return volume[_account];
     }
 
-    function setVolume(uint256 value) public returns (bool success) {
+    function setVolume(uint256 _value) public returns (bool success) {
         
         // Complete
-        require(value >= 0, "Invalid Volume. 0 - 100");
-        require(value <= 100, "Invalid Volume. 0 - 100");
+        require(_value >= 0, "Invalid Volume. 0 - 100");
+        require(_value <= 100, "Invalid Volume. 0 - 100");
 
-        volume[address(msg.sender)] = value;
+        volume[address(msg.sender)] = _value;
         interactions[address(msg.sender)] = interactions[address(msg.sender)] + 1;
         totalInteractions = totalInteractions + 1;
         return true;
