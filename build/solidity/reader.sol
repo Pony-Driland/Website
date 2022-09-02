@@ -39,7 +39,6 @@ contract PonyDrilandReader1 {
         return nsfw_filter[account][name];
     }
 
-    // Register Data
     function insertNsfwFilter(string memory name, uint256 value) public returns (bool success) {
         
         // Complete
