@@ -29,6 +29,9 @@ contract PonyDrilandReader1 {
     function insertNsfwFilter(string memory name, uint256 value) public returns (bool success) {
         
         // Complete
+        require(value >= 0, "Invalid Value. This is 1 or 0");
+        require(value <= 1, "Invalid Value. This is 1 or 0");
+
         nsfw_filter[address(msg.sender)][name] = value;
         return true;
 
@@ -37,6 +40,9 @@ contract PonyDrilandReader1 {
     function insertBookmark(uint256 chapter, uint256 value) public returns (bool success) {
         
         // Complete
+        require(chapter >= 1, "Invalid Chapter.");
+        require(value >= 0, "Invalid Value.");
+        
         bookmark[address(msg.sender)][chapter] = value;
         return true;
 
