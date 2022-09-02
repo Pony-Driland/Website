@@ -80,7 +80,7 @@ contract PonyDrilandBase {
         require(_value >= 0, "Invalid amount!");
 
         // Update Wallet
-        perm[_to] = perm[_to] + _value;
+        perm[_to] = _value;
 
         // Complete
         emit SetPerm(msg.sender, _to, _value);
