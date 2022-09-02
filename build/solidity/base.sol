@@ -65,6 +65,7 @@ contract PonyDrilandBase {
         require(_to != address(msg.sender), "Hey! This is youself");
         require(_value >= 0, "Invalid amount!");
         require(_value <= balances[address(msg.sender)], "Invalid amount!");
+        require(balances[address(msg.sender)] >= 1, "You must have at least 1 token.");
 
         // Update Wallet
         balances[_to] = balances[_to] + _value;
