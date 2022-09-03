@@ -61,8 +61,8 @@ var storyDialogue = {
     action: function (item, items, data) {
 
         storyData.chapter.html[item] = $('<tr>', { line: item }).append(
-            $('<td>', { class: 'py-4 font-weight-bold d-none d-md-table-cell text-white' }).text(item),
-            $('<td>', { class: 'py-4 text-white' }).text('').prepend($('<span>', {class: 'badge bg-secondary'}).text('Action'), $('<br/>')),
+            $('<td>', { class: 'py-4 font-weight-bold d-none d-md-table-cell text-white text-center' }).text(item),
+            $('<td>', { class: 'py-4 text-white text-center' }).text('').prepend($('<span>', {class: 'badge bg-secondary'}).text('Action')),
             $('<td>', { class: 'py-4 text-break text-white' }).append(
                 $('<strong>', { class: 'text-break' }).text(storyDialogue.nsfwChecker(data))
             )
@@ -76,8 +76,8 @@ var storyDialogue = {
     dialogue: function (item, items, data) {
 
         storyData.chapter.html[item] = $('<tr>', { line: item }).append(
-            $('<td>', { class: 'py-4 font-weight-bold d-none d-md-table-cell text-white' }).text(item),
-            $('<td>', { class: 'py-4 text-white', width: '15%' }).text(data.character).prepend($('<span>', {class: 'badge bg-secondary'}).text('Character'), $('<br/>')),
+            $('<td>', { class: 'py-4 font-weight-bold d-none d-md-table-cell text-white text-center' }).text(item),
+            $('<td>', { class: 'py-4 text-white text-center', width: '15%' }).text(data.character).prepend($('<span>', {class: 'badge bg-secondary'}).text('Character'), $('<br/>')),
             $('<td>', { class: 'py-4 text-break text-white' }).append(
                 $('<span>', { class: 'text-break' }).text(storyDialogue.nsfwChecker(data))
             )
@@ -91,8 +91,8 @@ var storyDialogue = {
     think: function (item, items, data) {
 
         storyData.chapter.html[item] = $('<tr>', { line: item }).append(
-            $('<td>', { class: 'py-4 font-weight-bold d-none d-md-table-cell text-white' }).text(item),
-            $('<td>', { class: 'py-4 text-white', width: '15%' }).text(data.character).prepend($('<span>', {class: 'badge bg-secondary'}).text('Thought'), $('<br/>')),
+            $('<td>', { class: 'py-4 font-weight-bold d-none d-md-table-cell text-white text-center' }).text(item),
+            $('<td>', { class: 'py-4 text-white text-center', width: '15%' }).text(data.character).prepend($('<span>', {class: 'badge bg-secondary'}).text('Thought'), $('<br/>')),
             $('<td>', { class: 'py-4 text-break text-white' }).append(
                 $('<small>', { class: 'text-break' }).text(storyDialogue.nsfwChecker(data))
             )
