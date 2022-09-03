@@ -69,11 +69,24 @@ contract PonyDrilandBase {
         
     }
 
+    function getDonation(address _account) external view returns (uint256) {
+        return donations[_account];
+    }
+
     // Transfer Owership
     function transferOwnership(address newOwner) public {
         require(address(msg.sender) == address(owner), "You are not allowed to do this.");
         emit OwnershipTransferred(owner, newOwner);
         owner = payable(newOwner);
+    }
+
+    // Owner
+    function getOwner() public view returns (address) {
+        return owner;
+    }
+
+    function getOwnerBalance() public view returns(uint256){
+        return owner.balance;
     }
 
     // Set Perm
@@ -163,11 +176,6 @@ contract PonyDrilandBase {
         emit Interaction(msg.sender, "enable");
         return true;
 
-    }
-
-    // Info
-    function getOwner() public view returns (address) {
-        return owner;
     }
 
     // Bookemark
