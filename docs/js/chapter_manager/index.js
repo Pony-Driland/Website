@@ -291,7 +291,15 @@ var openChapterMenu = function(params = {}) {
 
             // Table
             $('<table>', { class: 'table table-bordered table-striped text-white small' })
-                .css('background-color', 'rgb(44 44 44)').append(table),
+                .css('background-color', 'rgb(44 44 44)').append([
+                    $('<thead>').append(
+                        $('<tr>').append(
+                            $('<th>', {scope: 'col'}).text('Line'),
+                            $('<th>', {scope: 'col'}).text('Type'),
+                            $('<th>', {scope: 'col'}).text('Content')
+                        )
+                    ), table
+                ]),
 
             // Pagination
             tinyPag2,
