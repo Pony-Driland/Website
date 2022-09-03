@@ -536,19 +536,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "getUserBalance",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -880,11 +867,11 @@
 	},
 	"sources": {
 		"build\\solidity\\base.sol": {
-			"keccak256": "0xd9e041a2ce4f3c1988affe41151eb044f0bf5874cf900998ef6d75be2f040174",
+			"keccak256": "0x2f8bb6c1fe19e80bdf4e6e390ef73a93652f4015a4955367f6689f86a1e14455",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://aa4a74c55895353b0eaef3c1e54227fa832408ec23f3dfc5c06a0279f8810194",
-				"dweb:/ipfs/QmPKyTP29Bsm5qUexFQnSYVf2nL7xopUJCaq1LATaVg2RQ"
+				"bzz-raw://a46882df4fb4b4d34f982fca1e277a8b74fbb3e1ce7922f41714dd81d0da8876",
+				"dweb:/ipfs/QmVBnvQKhikyCQK2oBa1o1wcaUeBY7rHCTrV3FwHxtPk61"
 			]
 		}
 	},
