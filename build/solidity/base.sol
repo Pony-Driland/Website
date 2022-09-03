@@ -26,6 +26,8 @@ contract PonyDrilandBase {
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Interaction(address indexed from, string value);
     event Enable(address indexed value);
+
+    event Donation(address indexed from, uint256 value);
     
     event Volume(address indexed from, string value);
     event NsfwFilter(address indexed from, string filter, uint256 value);
@@ -58,9 +60,13 @@ contract PonyDrilandBase {
 
     // Donation
     function donate(uint256 _value) payable public returns (bool success) {
+        
         donations[msg.sender] = donations[msg.sender] + _value;
         owner.transfer(_value);
+
+        emit Donation(msg.sender, _value);
         return true;
+        
     }
 
     // Transfer Owership
