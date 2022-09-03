@@ -374,13 +374,7 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_value",
-						"type": "uint256"
-					}
-				],
+				"inputs": [],
 				"name": "donate",
 				"outputs": [
 					{
@@ -873,11 +867,11 @@
 	},
 	"sources": {
 		"build\\solidity\\base.sol": {
-			"keccak256": "0xed3dc3832ddc6a3709e563986e8f9d3625f33f0266c69a40c891e91e98d28be3",
+			"keccak256": "0xced3fc31b0d32d72f188a2e67193d42e0a0c97b3206f420b5c9a8124429a5fb1",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://d59dd8f705f3aa4987c0bc5f92f7f190e9e133d499a69aed81c23cfcf0c14336",
-				"dweb:/ipfs/QmVjdnnXzEpqVbzCfToU4TwwiyHGypX9kXAJ8yjzrJreot"
+				"bzz-raw://59d249b06bece4b973f5bcea0b93a766deeb33039dcfb6e8dcc383eecc721320",
+				"dweb:/ipfs/QmdGCyhnLsnCH72P3fWjCmXyhrR1jyoUiMfTsDCuar2kgs"
 			]
 		}
 	},
