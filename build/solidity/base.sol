@@ -65,8 +65,9 @@ contract PonyDrilandBase {
         require(_value >= 0, "Invalid amount!");
         require(_value <= msg.sender.balance, "Invalid amount!");
         donations[msg.sender] = donations[msg.sender] + _value;
-        owner.transfer(_value);
+        bool _sent = owner.send(_value);
 
+        require(_sent, "Send failed!");
         emit Donation(msg.sender, _value);
         return true;
         

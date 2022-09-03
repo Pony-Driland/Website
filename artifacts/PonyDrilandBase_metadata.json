@@ -867,11 +867,11 @@
 	},
 	"sources": {
 		"build\\solidity\\base.sol": {
-			"keccak256": "0x2f8bb6c1fe19e80bdf4e6e390ef73a93652f4015a4955367f6689f86a1e14455",
+			"keccak256": "0xb0788ba6688839510e35b268db29fd80aca32054f8192cf959b5cb9e904ce6e6",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://a46882df4fb4b4d34f982fca1e277a8b74fbb3e1ce7922f41714dd81d0da8876",
-				"dweb:/ipfs/QmVBnvQKhikyCQK2oBa1o1wcaUeBY7rHCTrV3FwHxtPk61"
+				"bzz-raw://c8197569633b2ec5d25d452425b34b62c82afb735f3c0c6fe53b752057218bff",
+				"dweb:/ipfs/QmcBaDEbVyVjktAgHSmttEDhdmeS9hADu8yyBpMYs841WK"
 			]
 		}
 	},
