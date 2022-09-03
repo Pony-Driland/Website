@@ -1,6 +1,6 @@
 /*  Rain made by Aaron Rickle */
 const rainConfig = {};
-(function() {
+(function () {
 
     var increment = 0;
     rainConfig.drops = '';
@@ -25,17 +25,17 @@ const rainConfig = {};
 // Start Rain
 var rainMode = {
 
-    start: function() {
+    start: function () {
         $('.rain').empty();
         $('.rain.front-row').append(rainConfig.drops);
         $('.rain.back-row').append(rainConfig.backDrops);
     },
 
-    on: function() {
+    on: function () {
         $('body').addClass('raining-sky');
     },
 
-    off: function() {
+    off: function () {
         $('body').addClass('raining-sky');
     }
 
@@ -43,7 +43,7 @@ var rainMode = {
 
 var storyDialogue = {
 
-    nsfwChecker: function(data) {
+    nsfwChecker: function (data) {
         if (Array.isArray(data.nsfw)) {
 
             let nsfwValue = false;
@@ -58,11 +58,11 @@ var storyDialogue = {
     },
 
     // Action
-    action: function(item, items, data) {
+    action: function (item, items, data) {
 
         storyData.chapter.html[item] = $('<tr>', { line: item }).append(
             $('<td>', { class: 'py-4 font-weight-bold d-none d-md-table-cell text-white' }).text(item),
-            $('<td>', { class: 'py-4 text-white' }).text(''),
+            $('<td>', { class: 'py-4 text-white' }).text('').append($('<span>', {class: 'badge bg-secondary ms-2'}).text('Action')),
             $('<td>', { class: 'py-4 text-break text-white' }).append(
                 $('<strong>', { class: 'text-break' }).text(storyDialogue.nsfwChecker(data))
             )
@@ -73,11 +73,11 @@ var storyDialogue = {
     },
 
     // Dialogue
-    dialogue: function(item, items, data) {
+    dialogue: function (item, items, data) {
 
         storyData.chapter.html[item] = $('<tr>', { line: item }).append(
             $('<td>', { class: 'py-4 font-weight-bold d-none d-md-table-cell text-white' }).text(item),
-            $('<td>', { class: 'py-4 text-white', width: '15%' }).text(data.character),
+            $('<td>', { class: 'py-4 text-white', width: '15%' }).text(data.character).append($('<span>', {class: 'badge bg-secondary ms-2'}).text('Character')),
             $('<td>', { class: 'py-4 text-break text-white' }).append(
                 $('<span>', { class: 'text-break' }).text(storyDialogue.nsfwChecker(data))
             )
@@ -88,11 +88,11 @@ var storyDialogue = {
     },
 
     // Think
-    think: function(item, items, data) {
+    think: function (item, items, data) {
 
         storyData.chapter.html[item] = $('<tr>', { line: item }).append(
             $('<td>', { class: 'py-4 font-weight-bold d-none d-md-table-cell text-white' }).text(item),
-            $('<td>', { class: 'py-4 text-white', width: '15%' }).text(data.character),
+            $('<td>', { class: 'py-4 text-white', width: '15%' }).text(data.character).append($('<span>', {class: 'badge bg-secondary ms-2'}).text('Thought')),
             $('<td>', { class: 'py-4 text-break text-white' }).append(
                 $('<small>', { class: 'text-break' }).text(storyDialogue.nsfwChecker(data))
             )
@@ -104,14 +104,14 @@ var storyDialogue = {
 
 };
 
-var openChapterMenu = function(params = {}) {
+var openChapterMenu = function (params = {}) {
 
     // Prepare Data
     clearFicData();
     $('#markdown-read').empty();
 
     // New Read
-    const newRead = async function(chapter = 1, page = 1, line = null) {
+    const newRead = async function (chapter = 1, page = 1, line = null) {
 
         // Clear Update Warn
         $('#fic-start').text('Read Fic').prepend(
@@ -220,7 +220,7 @@ var openChapterMenu = function(params = {}) {
             alignment: 'center'
         });
 
-        tinyPag.on('page-changed', function() {
+        tinyPag.on('page-changed', function () {
 
             // Get Page
             const page = Number($(this).find('.active').text().trim());
@@ -260,7 +260,7 @@ var openChapterMenu = function(params = {}) {
 
         });
 
-        tinyPag2.on('page-changed', function() {
+        tinyPag2.on('page-changed', function () {
 
             // Get Page
             const page = Number($(this).find('.active').text().trim());
@@ -294,9 +294,9 @@ var openChapterMenu = function(params = {}) {
                 .css('background-color', 'rgb(44 44 44)').append([
                     $('<thead>').append(
                         $('<tr>').append(
-                            $('<th>', {scope: 'col'}).text('Line'),
-                            $('<th>', {scope: 'col'}).text('Type'),
-                            $('<th>', {scope: 'col'}).text('Content')
+                            $('<th>', { scope: 'col' }).text('Line'),
+                            $('<th>', { scope: 'col' }).text('Type'),
+                            $('<th>', { scope: 'col' }).text('Content')
                         )
                     ), table
                 ]),
@@ -367,7 +367,7 @@ var openChapterMenu = function(params = {}) {
                 $('<a>', { class: 'nav-item nav-link', href: '#warnings', 'data-bs-toggle': 'collapse', role: 'button', 'aria-expanded': false, 'aria-controls': 'warnings' }).text('Important Warnings'),
 
                 // Character Statistics
-                $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Character Statistics').click(function() {
+                $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Character Statistics').click(function () {
 
                     // Prepare Content
                     const newDiv = $('<div>', { class: 'row' });
@@ -408,7 +408,7 @@ var openChapterMenu = function(params = {}) {
                 }),
 
                 // Word Statistics
-                $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Word Statistics').click(function() {
+                $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Word Statistics').click(function () {
 
 
                     // Prepare Content
@@ -478,7 +478,7 @@ var openChapterMenu = function(params = {}) {
             $('<h2>').text(`Please choose a chapter to read.`).prepend(
                 $('<i>', { class: 'fas fa-book-open me-3' })
             ).append(
-                $('<button>', { class: 'ms-3 btn btn-info btn-sm' }).text('Choose Optional NSFW Content').click(function() {
+                $('<button>', { class: 'ms-3 btn btn-info btn-sm' }).text('Choose Optional NSFW Content').click(function () {
 
                     // Nothing NSFW
                     let existNSFW = false;
@@ -524,7 +524,7 @@ var openChapterMenu = function(params = {}) {
                                                         $('<div>', { class: 'card-body' }).append(
                                                             $('<h5>', { class: 'card-title' }).text(storyCfg.nsfw[NSFWITEM].name),
                                                             $('<p>', { class: 'card-text small' }).text(storyCfg.nsfw[NSFWITEM].description),
-                                                            $('<button>', { class: 'btn btn-' + buttonClass }).click(function() {
+                                                            $('<button>', { class: 'btn btn-' + buttonClass }).click(function () {
 
                                                                 // Enable
                                                                 if (!nsfwValue) {
@@ -604,7 +604,7 @@ var openChapterMenu = function(params = {}) {
                         $('<span>', { class: 'card-text small ms-1' }).text(`${storyData.lettersCount[chapter]} Letters`),
                         $('<span>', { class: 'card-text small ms-1' }).text(`${storyData.wordsCount[chapter]} Words`),
                         $('<p>', { class: 'card-text small' }).text(storyCfg.chapterName[chapter].description),
-                        $('<a>', { class: 'btn btn-primary', href: `/chapter/${chapter}.html`, chapter: chapter }).click(function() {
+                        $('<a>', { class: 'btn btn-primary', href: `/chapter/${chapter}.html`, chapter: chapter }).click(function () {
 
                             // Start Chapter
                             newRead(Number($(this).attr('chapter')));
