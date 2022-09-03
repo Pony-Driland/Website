@@ -4532,6 +4532,40 @@
         "value": "Okay okay. I will join you. You are right. I can't be here alone.",
         "character": "Wagner",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "Heh! Got it, don't be sad. Let's go back then.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then helped Wanger walk towards everyone. All the ponies were back in the same shelter. Everyone was sitting and talking randomly. Rayane was at the entrance to the shelter, waiting for Vinny to come back. Rayane was surprised and happy to see that Vinny and Wagner were doing well.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmmm. Look who's back~ Everyone here was waiting for you.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little before responding emotionally.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. Time for us to bring everyone together now.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Go ahead~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
