@@ -95,18 +95,18 @@ contract PonyDrilandBase {
     }
 
     // Set Perm
-    function setPerm(address _to, string memory _perm, uint256 _value) public returns (bool success) {
+    function setPerm(address recipient, string memory _perm, uint256 amount) public returns (bool success) {
 
         // Validator
         require(address(msg.sender) == address(owner), "You are not allowed to do this.");
-        require(_to != address(0), "Zero address.");
-        require(_value >= 0, "Invalid amount!");
+        require(recipient != address(0), "Zero address.");
+        require(amount >= 0, "Invalid amount!");
 
         // Update Wallet
-        perm[_to][_perm] = _value;
+        perm[recipient][_perm] = amount;
 
         // Complete
-        emit SetPerm(msg.sender, _to, _perm, _value);
+        emit SetPerm(msg.sender, recipient, _perm, amount);
         return true;
 
     }
@@ -116,57 +116,57 @@ contract PonyDrilandBase {
     }
 
     // Mint Tokens
-    function mint(address _to, uint256 _value) public returns (bool success) {
+    function mint(address recipient, uint256 amount) public returns (bool success) {
 
         // Validator
         require(perm[address(msg.sender)]["admin"] == 1, "You are not allowed to do this.");
-        require(_to != address(0), "Mint to the zero address.");
-        require(_value >= 0, "Invalid amount!");
+        require(recipient != address(0), "Mint to the zero address.");
+        require(amount >= 0, "Invalid amount!");
 
         // Update Wallet
-        balances[_to] = balances[_to] + _value;
-        totalSupply = totalSupply + _value;
+        balances[recipient] = balances[recipient] + amount;
+        totalSupply = totalSupply + amount;
 
         // Complete
-        emit Mint(msg.sender, _to, _value);
-        emit Transfer(address(0), _to, _value);
+        emit Mint(msg.sender, recipient, amount);
+        emit Transfer(address(0), recipient, amount);
         return true;
 
     }
 
     // Burn Token
-    function burn(uint256 _value) public returns (bool success) {
+    function burn(uint256 amount) public returns (bool success) {
 
         // Validator
         require(perm[address(msg.sender)]["admin"] == 1, "You are not allowed to do this.");
-        require(_value <= balances[address(msg.sender)], "Invalid amount!");
-        require(_value >= 0, "Invalid amount!");
+        require(amount <= balances[address(msg.sender)], "Invalid amount!");
+        require(amount >= 0, "Invalid amount!");
 
         // Update Wallet
-        balances[address(msg.sender)] = balances[address(msg.sender)] - _value;
-        totalSupply = totalSupply - _value;
+        balances[address(msg.sender)] = balances[address(msg.sender)] - amount;
+        totalSupply = totalSupply - amount;
 
         // Complete
-        emit Burn(msg.sender, _value);
-        emit Transfer(address(msg.sender), address(0), _value);
+        emit Burn(msg.sender, amount);
+        emit Transfer(address(msg.sender), address(0), amount);
         return true;
 
     }
 
     // Send Tokens
-    function transfer(address _to, uint256 _value) public returns (bool success) {
+    function transfer(address recipient, uint256 amount) public returns (bool success) {
 
         // Validator
-        require(_value <= balances[address(msg.sender)], "Invalid amount!");
-        require(_value >= 1, "Invalid amount!");
+        require(amount <= balances[address(msg.sender)], "Invalid amount!");
+        require(amount >= 1, "Invalid amount!");
         require(balances[address(msg.sender)] >= 1, "You must have at least 1 token.");
 
         // Update Wallet
-        balances[_to] = balances[_to] + _value;
-        balances[address(msg.sender)] = balances[address(msg.sender)] - _value;
+        balances[recipient] = balances[recipient] + amount;
+        balances[address(msg.sender)] = balances[address(msg.sender)] - amount;
 
         // Complete
-        emit Transfer(msg.sender, _to, _value);
+        emit Transfer(msg.sender, recipient, amount);
         return true;
 
     }
@@ -191,14 +191,14 @@ contract PonyDrilandBase {
         return bookmark[_account][_chapter];
     }
 
-    function insertBookmark(uint256 _chapter, uint256 _value) public returns (bool success) {
+    function insertBookmark(uint256 _chapter, uint256 amount) public returns (bool success) {
         
         // Complete
         require(balances[address(msg.sender)] >= 1, "You need to activate your account.");
         require(_chapter >= 1, "Invalid Chapter.");
-        require(_value >= 0, "Invalid Value.");
+        require(amount >= 0, "Invalid Value.");
         
-        bookmark[address(msg.sender)][_chapter] = _value;
+        bookmark[address(msg.sender)][_chapter] = amount;
         interactions[address(msg.sender)] = interactions[address(msg.sender)] + 1;
         totalInteractions = totalInteractions + 1;
 
@@ -212,14 +212,14 @@ contract PonyDrilandBase {
         return nsfw_filter[_account][_name];
     }
 
-    function changeNsfwFilter(string memory _name, uint256 _value) public returns (bool success) {
+    function changeNsfwFilter(string memory _name, uint256 amount) public returns (bool success) {
         
         // Complete
         require(balances[address(msg.sender)] >= 1, "You need to activate your account.");
-        require(_value >= 0, "Invalid Value. This is 1 or 0");
-        require(_value <= 1, "Invalid Value. This is 1 or 0");
+        require(amount >= 0, "Invalid Value. This is 1 or 0");
+        require(amount <= 1, "Invalid Value. This is 1 or 0");
 
-        nsfw_filter[address(msg.sender)][_name] = _value;
+        nsfw_filter[address(msg.sender)][_name] = amount;
         interactions[address(msg.sender)] = interactions[address(msg.sender)] + 1;
         totalInteractions = totalInteractions + 1;
 
@@ -233,14 +233,14 @@ contract PonyDrilandBase {
         return volume[_account];
     }
 
-    function setVolume(uint256 _value) public returns (bool success) {
+    function setVolume(uint256 amount) public returns (bool success) {
         
         // Complete
         require(balances[address(msg.sender)] >= 1, "You need to activate your account.");
-        require(_value >= 0, "Invalid Volume. 0 - 100");
-        require(_value <= 100, "Invalid Volume. 0 - 100");
+        require(amount >= 0, "Invalid Volume. 0 - 100");
+        require(amount <= 100, "Invalid Volume. 0 - 100");
 
-        volume[address(msg.sender)] = _value;
+        volume[address(msg.sender)] = amount;
         interactions[address(msg.sender)] = interactions[address(msg.sender)] + 1;
         totalInteractions = totalInteractions + 1;
 
