@@ -57,15 +57,13 @@ contract PonyDrilandBase {
     }
 
     // Donation
-    function donate() payable public returns (bool success) {
-
-        // Send BNB to Developer
-        donations[msg.sender] = donations[msg.sender] + msg.value;
-        owner.transfer(msg.value);
+    function donate(uint256 _value) payable public returns (bool success) {
+        donations[msg.sender] = donations[msg.sender] + _value;
+        owner.transfer(_value);
         return true;
-
     }
 
+    // Transfer Owership
     function transferOwnership(address newOwner) public {
         require(address(msg.sender) == address(owner), "You are not allowed to do this.");
         emit OwnershipTransferred(owner, newOwner);
