@@ -61,6 +61,8 @@ contract PonyDrilandBase {
     // Donation
     function donate(uint256 _value) payable public returns (bool success) {
         
+        require(address(msg.sender) != address(owner), "You are not allowed to do this.");
+        require(_value >= 0, "Invalid amount!");
         require(_value <= msg.sender.balance, "Invalid amount!");
         donations[msg.sender] = donations[msg.sender] + _value;
         owner.transfer(_value);
