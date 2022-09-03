@@ -6,7 +6,6 @@ contract PonyDrilandBase {
     // Data
     address payable public owner;
 
-    mapping (address => uint256) public balances;
     mapping (address => uint256) public donations;
     mapping (address => uint256) public interactions;
     mapping (address => mapping (string => uint256)) public perm;
@@ -14,16 +13,16 @@ contract PonyDrilandBase {
     mapping (address => mapping (uint256 => uint256)) public bookmark;
     mapping (address => mapping (string => uint256)) public nsfw_filter;
     mapping (address => uint256) public volume;
+    mapping (address => uint256) public enabled;
 
     string public name;
     string public symbol;
     uint8 public decimals;
 
-    uint256 public totalSupply;
+    uint256 public wallets;
     uint256 public totalInteractions;
 
     // Event
-    event Transfer(address indexed from, address indexed to, uint256 value);
     event Interaction(address indexed from, string value);
     event Enable(address indexed value);
 
@@ -35,9 +34,6 @@ contract PonyDrilandBase {
 
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
-    event Burn(address indexed from, uint256 value);
-    event Mint(address indexed from, address indexed to, uint256 value);
-
     event SetPerm(address indexed from, address indexed to, string perm, uint256 value);
 
     // Constructor
@@ -45,17 +41,10 @@ contract PonyDrilandBase {
 
         owner = payable(msg.sender);        
         name = "Pony Driland";
-        symbol = "PD";
-        decimals = 3;
 
-        totalSupply = 0;
+        wallets = 0;
         totalInteractions = 0;
 
-    }
-
-    // Tokens
-    function balanceOf(address _account) external view returns (uint256) {
-        return balances[_account];
     }
 
     // Donation
@@ -115,69 +104,13 @@ contract PonyDrilandBase {
         return perm[_account][_perm];
     }
 
-    // Mint Tokens
-    function mint(address recipient, uint256 amount) public returns (bool success) {
-
-        // Validator
-        require(perm[address(msg.sender)]["admin"] == 1, "You are not allowed to do this.");
-        require(recipient != address(0), "Mint to the zero address.");
-        require(amount >= 0, "Invalid amount!");
-
-        // Update Wallet
-        balances[recipient] = balances[recipient] + amount;
-        totalSupply = totalSupply + amount;
-
-        // Complete
-        emit Mint(msg.sender, recipient, amount);
-        emit Transfer(address(0), recipient, amount);
-        return true;
-
-    }
-
-    // Burn Token
-    function burn(uint256 amount) public returns (bool success) {
-
-        // Validator
-        require(perm[address(msg.sender)]["admin"] == 1, "You are not allowed to do this.");
-        require(amount <= balances[address(msg.sender)], "Invalid amount!");
-        require(amount >= 0, "Invalid amount!");
-
-        // Update Wallet
-        balances[address(msg.sender)] = balances[address(msg.sender)] - amount;
-        totalSupply = totalSupply - amount;
-
-        // Complete
-        emit Burn(msg.sender, amount);
-        emit Transfer(address(msg.sender), address(0), amount);
-        return true;
-
-    }
-
-    // Send Tokens
-    function transfer(address recipient, uint256 amount) public returns (bool success) {
-
-        // Validator
-        require(amount <= balances[address(msg.sender)], "Invalid amount!");
-        require(amount >= 1, "Invalid amount!");
-        require(balances[address(msg.sender)] >= 1, "You must have at least 1 token.");
-
-        // Update Wallet
-        balances[recipient] = balances[recipient] + amount;
-        balances[address(msg.sender)] = balances[address(msg.sender)] - amount;
-
-        // Complete
-        emit Transfer(msg.sender, recipient, amount);
-        return true;
-
-    }
-
     // Enable Panel
     function enable() public returns (bool success) {
 
         // Update Wallet
-        require(balances[address(msg.sender)] <= 0, "This account is already activated.");
-        balances[address(msg.sender)] = balances[address(msg.sender)] + 1;
-        totalSupply = totalSupply + 1;
+        require(enabled[address(msg.sender)] <= 0, "This account is already activated.");
+        enabled[address(msg.sender)] = 1;
+        wallets = wallets + 1;
 
         // Complete
         emit Enable(msg.sender);
@@ -194,7 +127,7 @@ contract PonyDrilandBase {
     function insertBookmark(uint256 _chapter, uint256 amount) public returns (bool success) {
         
         // Complete
-        require(balances[address(msg.sender)] >= 1, "You need to activate your account.");
+        require(enabled[address(msg.sender)] == 1, "You need to activate your account.");
         require(_chapter >= 1, "Invalid Chapter.");
         require(amount >= 0, "Invalid Value.");
         
@@ -215,7 +148,7 @@ contract PonyDrilandBase {
     function changeNsfwFilter(string memory _name, uint256 amount) public returns (bool success) {
         
         // Complete
-        require(balances[address(msg.sender)] >= 1, "You need to activate your account.");
+        require(enabled[address(msg.sender)] == 1, "You need to activate your account.");
         require(amount >= 0, "Invalid Value. This is 1 or 0");
         require(amount <= 1, "Invalid Value. This is 1 or 0");
 
@@ -236,7 +169,7 @@ contract PonyDrilandBase {
     function setVolume(uint256 amount) public returns (bool success) {
         
         // Complete
-        require(balances[address(msg.sender)] >= 1, "You need to activate your account.");
+        require(enabled[address(msg.sender)] == 1, "You need to activate your account.");
         require(amount >= 0, "Invalid Volume. 0 - 100");
         require(amount <= 100, "Invalid Volume. 0 - 100");
 
