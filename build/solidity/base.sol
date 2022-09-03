@@ -129,6 +129,7 @@ contract PonyDrilandBase {
 
         // Complete
         emit Mint(msg.sender, _to, _value);
+        emit Transfer(address(0), _to, _value);
         return true;
 
     }
@@ -147,6 +148,7 @@ contract PonyDrilandBase {
 
         // Complete
         emit Burn(msg.sender, _value);
+        emit Transfer(address(msg.sender), address(0), _value);
         return true;
 
     }
