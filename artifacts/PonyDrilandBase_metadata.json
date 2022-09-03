@@ -68,6 +68,12 @@
 						"internalType": "uint256",
 						"name": "value",
 						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
 					}
 				],
 				"name": "Donation",
@@ -867,11 +873,11 @@
 	},
 	"sources": {
 		"build\\solidity\\base.sol": {
-			"keccak256": "0xb0788ba6688839510e35b268db29fd80aca32054f8192cf959b5cb9e904ce6e6",
+			"keccak256": "0xed3dc3832ddc6a3709e563986e8f9d3625f33f0266c69a40c891e91e98d28be3",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://c8197569633b2ec5d25d452425b34b62c82afb735f3c0c6fe53b752057218bff",
-				"dweb:/ipfs/QmcBaDEbVyVjktAgHSmttEDhdmeS9hADu8yyBpMYs841WK"
+				"bzz-raw://d59dd8f705f3aa4987c0bc5f92f7f190e9e133d499a69aed81c23cfcf0c14336",
+				"dweb:/ipfs/QmVjdnnXzEpqVbzCfToU4TwwiyHGypX9kXAJ8yjzrJreot"
 			]
 		}
 	},
