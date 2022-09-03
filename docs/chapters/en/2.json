@@ -4482,6 +4482,56 @@
         "value": "Heh. Let's go back. Everyone is scared, tired, we need to rest a little. I'll do my best to make sure everyone understands what really happened to you.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "I...I'll try to trust you. But please. Take it easy. I'm not ready for that yet.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner looks towards the explosion for a few seconds. Wagner then looks for acceptance as he faced all the destruction around him.",
+        "type": "action"
+    },
+
+    {
+        "value": "I know. Don't worry, I'll talk to you in private. What do you want to do now?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner then took a deep breath slwoly, feeling much better.",
+        "type": "action"
+    },
+
+    {
+        "value": "I just need a little space to recover me.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner slowly started to get up while closing his wings. Vinny then got curious and asked in a hopeful way.",
+        "type": "action"
+    },
+
+    {
+        "value": "I understand, are you going to join us or are you going your own way?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner looked into Vinny's eyes, and was very thoughtful for a few seconds before finally doing a decision.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay okay. I will join you. You are right. I can't be here alone.",
+        "character": "Wagner",
+        "type": "dialogue"
     }
 
 ]
