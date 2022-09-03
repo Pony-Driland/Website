@@ -27,7 +27,7 @@ contract PonyDrilandBase {
     event Interaction(address indexed from, string value);
     event Enable(address indexed value);
 
-    event Donation(address indexed from, uint256 value);
+    event Donation(address indexed from, uint256 value, bytes data);
     
     event Volume(address indexed from, string value);
     event NsfwFilter(address indexed from, string filter, uint256 value);
@@ -64,11 +64,12 @@ contract PonyDrilandBase {
         require(address(msg.sender) != address(owner), "You are not allowed to do this.");
         require(_value >= 0, "Invalid amount!");
         require(_value <= msg.sender.balance, "Invalid amount!");
-        donations[msg.sender] = donations[msg.sender] + _value;
-        bool _sent = owner.send(_value);
+        
+        (bool _sent, bytes memory _data) = owner.call{value: _value}("");
+        require(_sent, "Failed to send Ether");
 
-        require(_sent, "Send failed!");
-        emit Donation(msg.sender, _value);
+        donations[msg.sender] = donations[msg.sender] + _value;
+        emit Donation(msg.sender, _value, _data);
         return true;
         
     }
