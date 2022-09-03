@@ -154,6 +154,7 @@ contract PonyDrilandBase {
 
         // Validator
         require(_value <= balances[address(msg.sender)], "Invalid amount!");
+        require(_value >= 1, "Invalid amount!");
         require(balances[address(msg.sender)] >= 1, "You must have at least 1 token.");
 
         // Update Wallet
