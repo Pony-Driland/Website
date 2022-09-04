@@ -15,7 +15,6 @@ contract PonyDrilandBase {
     mapping (address => uint256) public enabled;
 
     string public name;
-    string public symbol;
     uint256 public wallets;
     uint256 public totalInteractions;
 
