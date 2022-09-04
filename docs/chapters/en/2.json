@@ -4740,6 +4740,34 @@
         "value": "Yeah yeah.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked at everyone before starting to speak again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay everypony! Come eat!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmm~ Silly. Don't think you'll get out of this without an answer later. Okay?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little at Rayane's answer. But Vinny was a little surprised to see that Jeff was helping Wagner socialize while the two ate the meal.",
+        "type": "action"
+    },
+
+    {
+        "value": "A..ah.",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
