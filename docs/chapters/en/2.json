@@ -4768,6 +4768,33 @@
         "value": "A..ah.",
         "character": "Vinny",
         "type": "think"
+    },
+    
+    {
+        "value": "Vinny giggles a little before nudging James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Jaaames. I need you to analyze the energy of my SmartMoby.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets ready to eat the meal during the talk.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Specify this better! You are not helping me! Are you wanting to modify your smawrtmoby? I still don't have the skill to do that.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny felt very nervous, not knowing exactly what to say as he looked at James. James was very confused, trying to understand what was happening.",
+        "type": "action"
     }
 
 ]
