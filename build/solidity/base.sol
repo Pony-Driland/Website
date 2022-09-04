@@ -8,7 +8,6 @@ contract PonyDrilandBase {
 
     mapping (address => uint256) public donations;
     mapping (address => uint256) public interactions;
-    mapping (address => mapping (string => uint256)) public perm;
 
     mapping (address => mapping (uint256 => uint256)) public bookmark;
     mapping (address => mapping (string => uint256)) public nsfw_filter;
@@ -33,8 +32,6 @@ contract PonyDrilandBase {
     event Bookmark(address indexed from, uint256 chapter, uint256 value);
 
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
-
-    event SetPerm(address indexed from, address indexed to, string perm, uint256 value);
 
     // Constructor
     constructor() {
@@ -81,27 +78,6 @@ contract PonyDrilandBase {
 
     function getOwnerBalance() public view returns(uint256){
         return owner.balance;
-    }
-
-    // Set Perm
-    function setPerm(address recipient, string memory _perm, uint256 amount) public returns (bool success) {
-
-        // Validator
-        require(address(msg.sender) == address(owner), "You are not allowed to do this.");
-        require(recipient != address(0), "Zero address.");
-        require(amount >= 0, "Invalid amount!");
-
-        // Update Wallet
-        perm[recipient][_perm] = amount;
-
-        // Complete
-        emit SetPerm(msg.sender, recipient, _perm, amount);
-        return true;
-
-    }
-
-    function getPerm(address _account, string memory _perm) external view returns (uint256) {
-        return perm[_account][_perm];
     }
 
     // Enable Panel
