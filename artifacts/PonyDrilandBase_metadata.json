@@ -205,19 +205,6 @@
 			},
 			{
 				"inputs": [],
-				"name": "decimals",
-				"outputs": [
-					{
-						"internalType": "uint8",
-						"name": "",
-						"type": "uint8"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "donate",
 				"outputs": [
 					{
@@ -532,19 +519,6 @@
 			},
 			{
 				"inputs": [],
-				"name": "symbol",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "",
-						"type": "string"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "totalInteractions",
 				"outputs": [
 					{
@@ -630,11 +604,11 @@
 	},
 	"sources": {
 		"build\\solidity\\base.sol": {
-			"keccak256": "0x3715d2045581a342725e75381450febde0dcdcb074e8a05e11da70cba86f1719",
+			"keccak256": "0x5654b9d5a3416b338b3cd778ed10cea8d5c6a70f79f532f26b75bc672ec6d650",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://0e3c7ffef0f6448f7ef2ef02d94f4bed5895747287bb50dfc4bdbe06c4e1ecea",
-				"dweb:/ipfs/Qmc74ng3VW6rze7xgwKMzjduUzutnC4iC36oQ8xQbCBpQP"
+				"bzz-raw://a64739714d1ee102b457e6cbdc0047d217e9190b1b629ff71d5133f82cf99e0d",
+				"dweb:/ipfs/QmdaoS4YUHpy773WRNwNjqVEeop9v2gjS9VKyyPGVanwHw"
 			]
 		}
 	},
