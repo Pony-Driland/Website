@@ -4749,12 +4749,18 @@
     },
 
     {
+        "value": "Dammit!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
         "value": "Vinny then looked at everyone before starting to speak again.",
         "type": "action"
     },
 
     {
-        "value": "Okay everypony! Come eat!",
+        "value": "Okay okay! Okay everypony! Come eat!",
         "character": "Vinny",
         "type": "dialogue"
     },
