@@ -324,6 +324,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "getInteractions",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -394,7 +407,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "getWallet",
+				"name": "getWallets",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -617,11 +630,11 @@
 	},
 	"sources": {
 		"build\\solidity\\base.sol": {
-			"keccak256": "0x51ecdf7585cd94cfd98d632965e40b011cf00e5449e1e28f7c2e0fc3969309aa",
+			"keccak256": "0x3715d2045581a342725e75381450febde0dcdcb074e8a05e11da70cba86f1719",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://7025b376c5d0fe629613c3d14f0d70e15c9e70958fb8c458cac7014691b1717b",
-				"dweb:/ipfs/QmWqSBY6e1CsvJXEHDD9ueFzLEggbrABJQ4sy4uPKEo8Ye"
+				"bzz-raw://0e3c7ffef0f6448f7ef2ef02d94f4bed5895747287bb50dfc4bdbe06c4e1ecea",
+				"dweb:/ipfs/Qmc74ng3VW6rze7xgwKMzjduUzutnC4iC36oQ8xQbCBpQP"
 			]
 		}
 	},

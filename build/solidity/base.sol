@@ -16,8 +16,6 @@ contract PonyDrilandBase {
 
     string public name;
     string public symbol;
-    uint8 public decimals;
-
     uint256 public wallets;
     uint256 public totalInteractions;
 
