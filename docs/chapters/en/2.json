@@ -4566,6 +4566,151 @@
         "value": "Go ahead~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Then Vinny and Wagner entered the shelter slowly. Vinny could see that the improvised place was more organized and everyone was having lunch and talking time.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow. Okay. Hey Guys, we are very tired and scared by everything that happened, do you want to do something? I was thinking of going somewhere or right here for everyone to sleep or rest to calm down a little.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff would then look at Vinny and smile. Wagner was shy and just kept quiet during the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny? Vinny! He really came back!",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. I said he'd come back. I always feel everyone's presence.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was curious to hear Rayane's words. James thought for a few seconds before asking the question.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane? What is this magic about sensing the presence of other ponies?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then interrupted James in a fun way.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ssssh~ Focus on your meal. We have more important things to solve now.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What?",
+        "character": "James",
+        "type": "think"
+    },
+
+    {
+        "value": "James was still curious and just kept quiet. Rayane used magic and offered some lunch to Vinny and Wagner kindly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Here. Lunch time~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner looked at the snack and smiled a little before taking the snack and starting to eat.",
+        "type": "action"
+    },
+
+    {
+        "value": "T...thank you.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "You're welcome~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled as he watched the scene for a few seconds, until Vinny was interrupted by Jeff.",
+        "type": "action"
+    },
+
+    {
+        "value": "I don't understand. What happened here? Are you ok?",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff lookes very worried during the talk. Vinny made a nervous smile and looked at Rayane in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Are you sure it wasn't my scent that gave me away? I usually have a smell that only females usually notice.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny made a slight nervous smile.",
+        "type": "action"
+    },
+
+    {
+        "value": "Silly~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a poker face and then looks at Jeff again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..Yes! We're great, we're just not adepted to having to deal with situations like this.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff got even more curious, but then Vinny looked at James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay?",
+        "character": "Jeff",
+        "type": "think"
+    },
+
+    {
+        "value": "Hey James. I need to talk to you about my smartmoby. I will need your analysis skills.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
