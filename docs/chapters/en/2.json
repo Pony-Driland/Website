@@ -4697,13 +4697,19 @@
     },
 
     {
-        "value": "Jeff got even more curious, but then Vinny looked at James. Jeff just continued to socialize with Wagner in response.",
+        "value": "Okay?",
+        "character": "Jeff",
+        "type": "think"
+    },
+
+    {
+        "value": "Jeff got even more curious, but Jeff just continued to socialize with Wagner in response. Vinny looked around. Vinny looked very confused. Vinny looked very worried about what to do at this moment. Then Vinny took a deep breath and looked at James.",
         "type": "action"
     },
 
     {
-        "value": "Okay?",
-        "character": "Jeff",
+        "value": "Fine! We have a crater, a mystery of magic items. Okay! First James will have to help me with something.",
+        "character": "Vinny",
         "type": "think"
     },
 
