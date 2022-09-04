@@ -86,6 +86,7 @@ contract PonyDrilandBase {
         // Update Wallet
         require(enabled[address(msg.sender)] <= 0, "This account is already activated.");
         enabled[address(msg.sender)] = 1;
+        totalInteractions = totalInteractions + 1;
         wallets = wallets + 1;
 
         // Complete
@@ -93,6 +94,14 @@ contract PonyDrilandBase {
         emit Interaction(msg.sender, "enable");
         return true;
 
+    }
+
+    function getWallets() external view returns (uint256) {
+        return wallets;
+    }
+
+    function getInteractions() external view returns (uint256) {
+        return totalInteractions;
     }
 
     // Bookemark
