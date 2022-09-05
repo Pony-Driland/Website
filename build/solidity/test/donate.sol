@@ -13,6 +13,14 @@ contract PonyDrilandDonate {
         owner = payable(msg.sender); 
     }
 
+    // Owner
+    function getOwner() public view returns (address) {
+        return owner;
+    }
+    function getOwnerBalance() public view returns(uint256){
+        return owner.balance;
+    }
+
     // Donation
     function donate(uint256 _amount) payable public returns (bool success) {
         
