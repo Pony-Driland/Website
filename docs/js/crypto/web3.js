@@ -119,7 +119,16 @@ var PuddyWeb3 = class {
                 $('body').addClass('web3-connected');
 
                 // Change Title
-                $('#login').data('bs-tooltip-data', address).data('bs-tooltip').setContent({ '.tooltip-inner': address });
+                if (address) {
+                    
+                    $('#login').data('bs-tooltip-data', address);
+                    
+                    const tooltip = $('#login').data('bs-tooltip');
+                    if (tooltip) {
+                        tooltip.setContent({ '.tooltip-inner': address });
+                    }
+
+                }
 
             };
 
