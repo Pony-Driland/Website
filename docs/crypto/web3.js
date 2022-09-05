@@ -271,22 +271,16 @@ var PuddyWeb3 = class {
     }
 
     // Send Payment
-    sendTransaction(send_token_amount, contract_address = null, to_address = '{{WALLETADDRESS}}') {
+    sendTransaction(send_token_amount, to_address = '{{WALLETADDRESS}}', contract_address = null) {
         const tinyThis = this;
         return new Promise(async function (resolve, reject) {
             if (tinyThis.enabled) {
 
                 // Result
                 let transaction;
+                $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
 
                 try {
-
-                    // Loading
-                    $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
-                    to_address = to_address.toLowerCase();
-                    const send_account = await tinyThis.requestAccounts();
-                    const nonce = await tinyThis.provider.getTransactionCount(send_account, "latest");
-                    const currentGasPrice = await tinyThis.getGasPrice();
 
                     // Token Mode
                     if (contract_address) {
@@ -340,6 +334,11 @@ var PuddyWeb3 = class {
 
                     // Normal Mode
                     else {
+
+                        to_address = to_address.toLowerCase();
+                        const send_account = await tinyThis.requestAccounts();
+                        const nonce = await tinyThis.provider.getTransactionCount(send_account, "latest");
+                        const currentGasPrice = await tinyThis.getGasPrice();
 
                         // TX
                         const tx = {
