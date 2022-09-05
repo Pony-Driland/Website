@@ -94,8 +94,6 @@ var PuddyWeb3 = class {
         this.address = this.address.toLowerCase();
         localStorage.setItem('web3_address', this.address);
 
-        console.log('Web3 Connected', this.address, data);
-
         for (const item in this.callbacks.accountsChanged) {
             await this.callbacks.accountsChanged[item](data);
         }
@@ -110,7 +108,6 @@ var PuddyWeb3 = class {
         // Network
         this.networkId = networkId;
         localStorage.setItem('web3_network_id', this.networkId);
-        console.log('Web3 Network Connected', networkId);
 
         for (const item in this.callbacks.networkChanged) {
             await this.callbacks.networkChanged[item](networkId);
