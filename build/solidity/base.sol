@@ -6,7 +6,6 @@ contract PonyDrilandBase {
     // Data
     address payable public owner;
 
-    mapping (address => uint256) public donations;
     mapping (address => uint256) public interactions;
 
     mapping (address => mapping (uint256 => uint256)) public bookmark;
@@ -21,8 +20,6 @@ contract PonyDrilandBase {
     // Event
     event Interaction(address indexed from, string value);
     event Enable(address indexed value);
-
-    event Donation(address indexed from, uint256 value, bytes data);
     
     event Volume(address indexed from, string value);
     event NsfwFilter(address indexed from, string filter, uint256 value);
@@ -39,26 +36,6 @@ contract PonyDrilandBase {
         wallets = 0;
         totalInteractions = 0;
 
-    }
-
-    // Donation
-    function donate(uint256 _amount) payable public returns (bool success) {
-        
-        require(address(msg.sender) != address(owner), "You are not allowed to do this.");
-        require(_amount >= 0, "Invalid amount!");
-        require(_amount <= msg.sender.balance, "Invalid amount!");
-        
-        (bool _sent, bytes memory _data) = owner.call{value: _amount}("");
-        require(_sent, "Failed to send Ether");
-
-        donations[msg.sender] = donations[msg.sender] + _amount;
-        emit Donation(msg.sender, _amount, _data);
-        return true;
-        
-    }
-
-    function getDonation(address _account) external view returns (uint256) {
-        return donations[_account];
     }
 
     // Transfer Owership
