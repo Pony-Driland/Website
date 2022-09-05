@@ -1,13 +1,21 @@
+// Start Web3
 var puddyWeb3 = new PuddyWeb3('matic');
 
-puddyWeb3.on('accountsChanged', function () {
+// Accounts Changed
+puddyWeb3.on('accountsChanged', function (data) {
+
+    // Get Address
+    const address = puddyWeb3.getAddress();
+    console.log('Web3 Connected', address, data);
 
 });
 
-puddyWeb3.on('networkChanged', function () {
-
+// Network Changed
+puddyWeb3.on('networkChanged', function (networkId) {
+    console.log('Web3 Network Connected', networkId);
 });
 
+// Connection Update
 puddyWeb3.on('connectionUpdate', function () {
 
     // Get Address
