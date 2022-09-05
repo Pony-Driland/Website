@@ -230,6 +230,46 @@ var PuddyWeb3 = class {
 
     }
 
+    executeContract(contract_address, abi, data, HexZero, gasLimit = 100000) {
+        const tinyThis = this;
+        return new Promise(async function (resolve, reject) {
+            if (tinyThis.enabled) {
+
+                // Result
+                let transaction;
+
+                try {
+
+                    // Loading
+                    const send_account = await tinyThis.requestAccounts();
+                    const nonce = await tinyThis.provider.getTransactionCount(send_account, "latest");
+                    const currentGasPrice = await tinyThis.getGasPrice();
+
+                    // Hex Value
+                    if(!HexZero) {
+                        HexZero = ethers.constants.HexZero;
+                    }
+
+                    // construct the transaction data
+                    const tx = {
+                        nonce: nonce,
+                        gasLimit: ethers.utils.hexlify(gasLimit),
+                        gasPrice: ethers.utils.hexlify(parseInt(currentGasPrice)),
+                        to: contract_address,
+                        value: HexZero,
+                        data: tinyThis.createRaw(abi, data),
+                    };
+
+                    // Transaction
+                    transaction = await tinyThis.provider.getSigner().sendTransaction(tx);
+
+                } catch (err) { return reject(err); }
+                return resolve(transaction);
+
+            } else { resolve(null); }
+        });
+    }
+
     // Send Payment
     sendTransaction(send_token_amount, contract_address = null, to_address = '{{WALLETADDRESS}}') {
         const tinyThis = this;
