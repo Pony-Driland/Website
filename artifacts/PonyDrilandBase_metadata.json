@@ -285,19 +285,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "getOwnerBalance",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -528,11 +515,11 @@
 	},
 	"sources": {
 		"build\\solidity\\base.sol": {
-			"keccak256": "0x61501b66ea198fc38799958b68552c902b554ee34b30658b36e5757d235c237e",
+			"keccak256": "0xfc8165487ee1383fd765a8ee09a934782cd13e4014260fe41d639cdcc0309130",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://ada71e8534525a9f08a82953406365f12119bff2d1e665d8ae21c6613a12bb64",
-				"dweb:/ipfs/QmVQ5wB49MUNvzsKs4Pz7pR1V1fgAkDCvS237cv8LmkM9X"
+				"bzz-raw://67dc2a87a3e72d5b38fee545c0a54cce2525807ffc22da5fadddba484ed7633c",
+				"dweb:/ipfs/QmTaZtWYCtK4dWuCSmhdri88ASFSTGBjWdzMFGQ3T62MQw"
 			]
 		}
 	},
