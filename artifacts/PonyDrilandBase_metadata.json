@@ -500,7 +500,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"build\\solidity\\base.sol": "PonyDrilandBase"
+			"base_flat.sol": "PonyDrilandBase"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -508,18 +508,17 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"build\\solidity\\base.sol": {
-			"keccak256": "0xfc8165487ee1383fd765a8ee09a934782cd13e4014260fe41d639cdcc0309130",
-			"license": "GPL-3.0",
+		"base_flat.sol": {
+			"keccak256": "0x2f9b34fee58a65bb798daa9f89b3cc7c9305ce524c941b30d61d4c7b9186deec",
 			"urls": [
-				"bzz-raw://67dc2a87a3e72d5b38fee545c0a54cce2525807ffc22da5fadddba484ed7633c",
-				"dweb:/ipfs/QmTaZtWYCtK4dWuCSmhdri88ASFSTGBjWdzMFGQ3T62MQw"
+				"bzz-raw://7cb2f3efca1b76beff2f49691459f77b7aa9ac7f655ddc261581c40d796fe8b6",
+				"dweb:/ipfs/QmbsZjPjKSksXA4kTcFpTduHdGdF1nGj2KhVfAVb373dDt"
 			]
 		}
 	},
