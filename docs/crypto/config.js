@@ -11,6 +11,7 @@ storyCfg.web3.abi.base = [
         "inputs": [],
         "stateMutability": "nonpayable", "type": "constructor"
     },
+    
     {
         "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "from", "type": "address" },
         { "indexed": false, "internalType": "uint256", "name": "chapter", "type": "uint256" },
