@@ -41,3 +41,5 @@ puddyWeb3.on('connectionUpdate', function () {
     }
 
 });
+
+// puddyWeb3.executeContract();
