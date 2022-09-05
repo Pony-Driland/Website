@@ -128,27 +128,8 @@ var PuddyWeb3 = class {
             this.connected = true;
             console.log('Web3 Account', this.address);
 
-            // Complete
-            const address = this.address;
-
             // Finish
             $(async () => {
-
-                // Update CSS and remove modal
-                $('#crypto_connection').modal('hide');
-                $('body').addClass('web3-connected');
-
-                // Change Title
-                if (address) {
-
-                    $('#login').data('bs-tooltip-data', address);
-
-                    const tooltip = $('#login').data('bs-tooltip');
-                    if (tooltip) {
-                        tooltip.setContent({ '.tooltip-inner': address });
-                    }
-
-                }
 
                 for (const item in this.callbacks.connectionUpdate) {
                     await this.callbacks.connectionUpdate[item]();
