@@ -4818,6 +4818,204 @@
     {
         "value": "James took a deep breath before answering.",
         "type": "action"
+    },
+    
+    {
+        "value": "Vinny... I know how to modify a SmartMoby, but that's too dangerous. If I make a big mistake and it shuts down, you will die.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets scared to hear about it. Vinny then became extremely thoughtful for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "SHIT! Fineeee... Plan B.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "R..Really? Is there a way to hack this? Okay. Can you hack Rayane's heart?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny spoke ironically while laughing a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well, when you want to just let me know. I just need to make sure if there's something different in the energy of my SmartMoby. I also need to talk to you privately at some moment.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then start eating his meal. James was still very curious.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane looked like she was listening to the conversation again, she just giggled a little before breaking into the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Silly ones. Don't give me ideas~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James looked a little suspiciously at Rayane for a few seconds before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "I need to know first what you want to do in your SmartMoby.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "N..No! You didn't understand, I mean if you can analyze my SmartMoby, just analyze, looking to know if it has something unusual or rare or different from yours, from others.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmmm. The only pony here that seems to really enjoy analyzing smartMobies here is Rayane.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Huh?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane gets a little curious.",
+        "type": "action"
+    },
+
+    {
+        "value": "Am I that mysterious to you? I think you ate too many marshmallows~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James does a facehoof. Trying to understand why Rayane was being silly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... There is nothing special about your SmartMoby unless you upgrade this.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wow! We see the upgrades if you want, but explain to me what would these upgrades be? Does it have anything to do with weird dreams I had about Rayane dancing?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..What? What fuck?! Vinny? Are you okay?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James... Dreams are weird. But I want to see my smartmoby just to make sure it was just a dream.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James does a facehoof.",
+        "type": "action"
+    },
+
+    {
+        "value": "Do you want to come to a conclusion through a dream? I should have analyzed your sanity!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "You can also analyze this! If you want to analyze my little body too.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James tried to control himself in the face of Vinny's silliness. Meanwhile, Vinny happily finished eating the food.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh god! Let's just keep your smartMoby which is better.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. When do you want to see this?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James prepared to explain as best he could.",
+        "type": "action"
+    },
+
+    {
+        "value": "I just plug a usb cable into you. Yes. I know this is very strange.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very surprised and scared for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Alright. You know. I thought my first time that someone would plug something into me would be something conscientious, but if it comes from you that's fine.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James found Vinny's words very strange and kept staring at him for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? It's just a usb cable on your smartMoby. I have a modified entry to connect it to my computer. What did you think was going to happen?",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
