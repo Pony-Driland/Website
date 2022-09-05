@@ -297,38 +297,25 @@ var PuddyWeb3 = class {
                         const valueToTransfer = base.pow(contract_address.decimals)
                             .times(String(send_token_amount));
 
-                        // construct the transaction data
-                        const tx = {
-
-                            nonce: nonce,
-                            gasLimit: ethers.utils.hexlify(100000),
-                            gasPrice: ethers.utils.hexlify(parseInt(currentGasPrice)),
-                            to: contract_address.value,
-                            value: ethers.constants.HexZero,
-
-                            data: tinyThis.createRaw({
-                                type: "function",
-                                name: "transfer",
-                                stateMutability: "nonpayable",
-                                payable: false,
-                                constant: false,
-                                outputs: [{ type: 'uint8' }],
-                                inputs: [{
-                                    name: "_to",
-                                    type: "address"
-                                }, {
-                                    name: "_value",
-                                    type: "uint256"
-                                }]
-                            }, [
-                                { type: 'string', value: to_address },
-                                { type: 'uint256', value: valueToTransfer.toString() }
-                            ]),
-
-                        };
-
                         // Transaction
-                        transaction = await tinyThis.provider.getSigner().sendTransaction(tx);
+                        transaction = await tinyThis.executeContract(contract_address.value, {
+                            type: "function",
+                            name: "transfer",
+                            stateMutability: "nonpayable",
+                            payable: false,
+                            constant: false,
+                            outputs: [{ type: 'uint8' }],
+                            inputs: [{
+                                name: "_to",
+                                type: "address"
+                            }, {
+                                name: "_value",
+                                type: "uint256"
+                            }]
+                        }, [
+                            { type: 'string', value: to_address },
+                            { type: 'uint256', value: valueToTransfer.toString() }
+                        ]);
 
                     }
 
