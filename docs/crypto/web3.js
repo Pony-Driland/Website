@@ -126,7 +126,6 @@ var PuddyWeb3 = class {
 
             // Verified
             this.connected = true;
-            console.log('Web3 Account', this.address);
 
             // Finish
             $(async () => {

@@ -10,12 +10,15 @@ puddyWeb3.on('networkChanged', function () {
 
 puddyWeb3.on('connectionUpdate', function () {
 
+    // Get Address
+    const address = puddyWeb3.getAddress();
+
+    // Console
+    console.log('Web3 Account', this.address);
+
     // Update CSS and remove modal
     $('#crypto_connection').modal('hide');
     $('body').addClass('web3-connected');
-
-    // Complete
-    const address = puddyWeb3.getAddress();
 
     // Change Title
     if (address) {
