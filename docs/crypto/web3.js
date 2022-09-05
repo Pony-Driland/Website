@@ -120,9 +120,9 @@ var PuddyWeb3 = class {
 
                 // Change Title
                 if (address) {
-                    
+
                     $('#login').data('bs-tooltip-data', address);
-                    
+
                     const tooltip = $('#login').data('bs-tooltip');
                     if (tooltip) {
                         tooltip.setContent({ '.tooltip-inner': address });
@@ -207,6 +207,29 @@ var PuddyWeb3 = class {
         } else { return null; }
     }
 
+    /* Create token transfer ABI encoded data
+    * `transfer()` method signature at https://eips.ethereum.org/EIPS/eip-20
+    * ABI encoding ruleset at https://solidity.readthedocs.io/en/develop/abi-spec.html
+    */
+    createRaw(abi, data) {
+
+        const iface = new ethers.utils.AbiCoder([abi]);
+
+        const prepareData = {
+            type: [],
+            data: []
+        };
+
+        for (const item in data) {
+            prepareData.type.push(data[item].type);
+            prepareData.data.push(data[item].value);
+        }
+
+        const rawData = iface.encode(prepareData.type, prepareData.data);
+        return rawData;
+
+    }
+
     // Send Payment
     sendTransaction(send_token_amount, contract_address = null, to_address = '{{WALLETADDRESS}}') {
         const tinyThis = this;
@@ -240,37 +263,34 @@ var PuddyWeb3 = class {
                         const valueToTransfer = base.pow(contract_address.decimals)
                             .times(String(send_token_amount));
 
-                        /* Create token transfer ABI encoded data
-                         * `transfer()` method signature at https://eips.ethereum.org/EIPS/eip-20
-                         * ABI encoding ruleset at https://solidity.readthedocs.io/en/develop/abi-spec.html
-                         */
-                        const abi = [{
-                            type: "function",
-                            name: "transfer",
-                            stateMutability: "nonpayable",
-                            payable: false,
-                            constant: false,
-                            outputs: [{ type: 'uint8' }],
-                            inputs: [{
-                                name: "_to",
-                                type: "address"
-                            }, {
-                                name: "_value",
-                                type: "uint256"
-                            }]
-                        }];
-
-                        const iface = new ethers.utils.AbiCoder(abi);
-                        const rawData = iface.encode(['string', 'uint256'], [to_address, valueToTransfer.toString()]);
-
                         // construct the transaction data
                         const tx = {
+
                             nonce: nonce,
                             gasLimit: ethers.utils.hexlify(100000),
                             gasPrice: ethers.utils.hexlify(parseInt(currentGasPrice)),
                             to: contract_address.value,
                             value: ethers.constants.HexZero,
-                            data: rawData,
+
+                            data: tinyThis.createRaw({
+                                type: "function",
+                                name: "transfer",
+                                stateMutability: "nonpayable",
+                                payable: false,
+                                constant: false,
+                                outputs: [{ type: 'uint8' }],
+                                inputs: [{
+                                    name: "_to",
+                                    type: "address"
+                                }, {
+                                    name: "_value",
+                                    type: "uint256"
+                                }]
+                            }, [
+                                { type: 'string', value: to_address },
+                                { type: 'uint256', value: valueToTransfer.toString() }
+                            ]),
+
                         };
 
                         // Transaction
