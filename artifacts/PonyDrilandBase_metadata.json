@@ -41,31 +41,6 @@
 					{
 						"indexed": true,
 						"internalType": "address",
-						"name": "from",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "value",
-						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "bytes",
-						"name": "data",
-						"type": "bytes"
-					}
-				],
-				"name": "Donation",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
 						"name": "value",
 						"type": "address"
 					}
@@ -205,38 +180,6 @@
 			},
 			{
 				"inputs": [],
-				"name": "donate",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "success",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"name": "donations",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "enable",
 				"outputs": [
 					{
@@ -281,25 +224,6 @@
 					}
 				],
 				"name": "getBookmark",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_account",
-						"type": "address"
-					}
-				],
-				"name": "getDonation",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -604,11 +528,11 @@
 	},
 	"sources": {
 		"build\\solidity\\base.sol": {
-			"keccak256": "0x5654b9d5a3416b338b3cd778ed10cea8d5c6a70f79f532f26b75bc672ec6d650",
+			"keccak256": "0x61501b66ea198fc38799958b68552c902b554ee34b30658b36e5757d235c237e",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://a64739714d1ee102b457e6cbdc0047d217e9190b1b629ff71d5133f82cf99e0d",
-				"dweb:/ipfs/QmdaoS4YUHpy773WRNwNjqVEeop9v2gjS9VKyyPGVanwHw"
+				"bzz-raw://ada71e8534525a9f08a82953406365f12119bff2d1e665d8ae21c6613a12bb64",
+				"dweb:/ipfs/QmVQ5wB49MUNvzsKs4Pz7pR1V1fgAkDCvS237cv8LmkM9X"
 			]
 		}
 	},

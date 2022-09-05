@@ -50,10 +50,6 @@ contract PonyDrilandBase {
         return owner;
     }
 
-    function getOwnerBalance() public view returns(uint256){
-        return owner.balance;
-    }
-
     // Enable Panel
     function enable() public returns (bool success) {
 
