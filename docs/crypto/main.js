@@ -22,7 +22,7 @@ puddyWeb3.on('connectionUpdate', function () {
     const address = puddyWeb3.getAddress();
 
     // Console
-    console.log('Web3 Account', this.address);
+    console.log('Web3 Account', address);
 
     // Update CSS and remove modal
     $('#crypto_connection').modal('hide');
