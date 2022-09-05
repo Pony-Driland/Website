@@ -81,7 +81,7 @@ var PuddyWeb3 = class {
     }
 
     on(where, callback) {
-        if (Array.isArray(this.callbacks[where])) {
+        if (typeof callback === 'function' && Array.isArray(this.callbacks[where])) {
             this.callbacks[where].push(callback);
         }
     }
@@ -95,17 +95,27 @@ var PuddyWeb3 = class {
         localStorage.setItem('web3_address', this.address);
 
         console.log('Web3 Connected', this.address, data);
+
+        for (const item in this.callbacks.accountsChanged) {
+            await this.callbacks.accountsChanged[item](data);
+        }
+
         return;
 
     }
 
     // Account Changed
-    networkChanged(networkId) {
+    async networkChanged(networkId) {
 
         // Network
         this.networkId = networkId;
         localStorage.setItem('web3_network_id', this.networkId);
         console.log('Web3 Network Connected', networkId);
+
+        for (const item in this.callbacks.networkChanged) {
+            await this.callbacks.networkChanged[item](networkId);
+        }
+
         return;
 
     }
@@ -120,7 +130,9 @@ var PuddyWeb3 = class {
 
             // Complete
             const address = this.address;
-            const completeData = function () {
+
+            // Finish
+            $(async () => {
 
                 // Update CSS and remove modal
                 $('#crypto_connection').modal('hide');
@@ -138,11 +150,14 @@ var PuddyWeb3 = class {
 
                 }
 
-            };
+                for (const item in this.callbacks.connectionUpdate) {
+                    await this.callbacks.connectionUpdate[item]();
+                }
 
-            // Finish
-            $(() => { completeData(); });
-            completeData();
+                return;
+
+            });
+
             return true;
 
         } else { return false; }
