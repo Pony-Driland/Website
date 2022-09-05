@@ -4807,6 +4807,17 @@
     {
         "value": "Vinny felt very nervous, not knowing exactly what to say as he looked at James. James was very confused, trying to understand what was happening.",
         "type": "action"
+    },
+
+    {
+        "value": "A...Are you not very skilled at modifying or analyzing and comparing?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath before answering.",
+        "type": "action"
     }
 
 ]
