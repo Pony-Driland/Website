@@ -9,6 +9,8 @@ var PuddyWeb3 = class {
         const tinyThis = this;
 
         // Networks
+        this.callbacks = { accountsChanged: [], networkChanged: [], connectionUpdate: [] };
+
         this.connected = false;
         this.networks = {
 
@@ -76,6 +78,12 @@ var PuddyWeb3 = class {
         // Complete
         return this;
 
+    }
+
+    on(where, callback) {
+        if (Array.isArray(this.callbacks[where])) {
+            this.callbacks[where].push(callback);
+        }
     }
 
     // Account Changed
@@ -246,7 +254,7 @@ var PuddyWeb3 = class {
                     const currentGasPrice = await tinyThis.getGasPrice();
 
                     // Hex Value
-                    if(!HexZero) {
+                    if (!HexZero) {
                         HexZero = ethers.constants.HexZero;
                     }
 
