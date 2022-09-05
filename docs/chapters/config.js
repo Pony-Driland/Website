@@ -9,12 +9,6 @@ var storyCfg = {
     patreon: 'JasminDreasond',
     kofi: 'JasminDreasond',
 
-    web3: {
-        blockchain: 'polygon',
-        contract: '0x5816b6e25d5224c0afe33b22f28b611a98ca0985',
-        welcome: `Hello crypto pony, welcome to the Pony Driland Dapp! The dimension of lost creatures and the home of hope.`
-    },
-
     bitcoin: {
         address: 'bc1qhs82du0cklclz2fvtz40hky4f2c3qys09erel3',
         explorer: 'https://www.blockchain.com/btc/address/'
