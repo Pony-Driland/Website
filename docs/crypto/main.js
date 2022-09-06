@@ -99,6 +99,7 @@ storyCfg.web3.login = function () {
 
             id: 'crypto_connection',
             title: 'Blockchain Storage',
+            dialog: 'modal-lg',
             body: $('<center>').append(
 
                 $('<div>').text('This is your cloud storage. Choose what you want to do. All your data is saved within the blockchain publicly. Any other user will be able to see your data saved.'),
@@ -111,6 +112,7 @@ storyCfg.web3.login = function () {
 
                         id: 'crypto_connection2',
                         title: 'Blockchain Storage',
+                        dialog: 'modal-lg',
                         body: $('<center>').append(
                             $('<div>').text(modalTitle).append(modalWarn),
                             items
@@ -128,6 +130,7 @@ storyCfg.web3.login = function () {
 
                         id: 'crypto_connection2',
                         title: 'Blockchain Storage',
+                        dialog: 'modal-lg',
                         body: $('<center>').append(
                             $('<div>').text(modalTitle).append(modalWarn),
                             items
