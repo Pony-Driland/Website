@@ -1,4 +1,8 @@
 /* Web3 */
+#login {
+    transition: color 1s;
+}
+
 .web3-connected #login {
     color: #3ad63a  !important;
 }
