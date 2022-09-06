@@ -4,6 +4,7 @@ storyCfg.web3 = {
     welcome: `Hello crypto pony, welcome to the Pony Driland Dapp! The dimension of lost creatures and the home of hope.`
 };
 
+// ABI
 storyCfg.web3.abi = {};
 storyCfg.web3.abi.base = [
 
