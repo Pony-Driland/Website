@@ -101,7 +101,7 @@ storyCfg.web3.login = function () {
             title: 'Blockchain Storage',
             body: $('<center>').append(
 
-                $('<div>').text('This is your cloud storage. Choose what you want to do. All your data is saved within the blockchain publicly. Any other user will be able to see your data saved. '),
+                $('<div>').text('This is your cloud storage. Choose what you want to do. All your data is saved within the blockchain publicly. Any other user will be able to see your data saved.'),
 
                 // Load
                 $('<button>', { class: 'btn btn-secondary m-4' }).text('Load').click(function () {
