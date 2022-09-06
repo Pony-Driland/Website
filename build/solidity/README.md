@@ -6,4 +6,4 @@ By default I use the Polygon Blockchain due to the extremely low fees of the blo
 
 Right now as I'm typing this, usually the gas fee is $0,00. Maybe the gas price may be different depending on which year you are viewing this repository.
 
-After you deploy the contract, connect this through the file "/doc/crypto/config.js"
+After you deploy the contract, connect this through the file "/doc/crypto/config.js".
