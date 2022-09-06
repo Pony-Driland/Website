@@ -45,6 +45,7 @@ puddyWeb3.on('connectionUpdate', function () {
 // Login
 storyCfg.web3.login = function () {
 
+    // Login Mode
     if (!puddyWeb3.existAccounts()) {
         tinyLib.modal({
 
@@ -65,6 +66,35 @@ storyCfg.web3.login = function () {
             )
 
         });
+    }
+
+    // Panel
+    else {
+
+        tinyLib.modal({
+
+            id: 'crypto_connection',
+            title: 'Blockchain Storage',
+            body: $('<center>').append(
+
+                $('<div>').text('This is your cloud storage. Choose what you want to do. All your data is saved within the blockchain publicly. Any other user will be able to see your data saved.'),
+
+                $('<button>', { class: 'btn btn-secondary m-4' }).text('Load').click(function () {
+
+                    
+
+                }),
+
+                $('<button>', { class: 'btn btn-primary m-4' }).text('Save').click(function () {
+
+                    
+
+                })
+
+            )
+
+        });
+
     }
 
     return false;
