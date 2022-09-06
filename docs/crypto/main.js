@@ -87,7 +87,7 @@ storyCfg.web3.login = function () {
         if (storyData.chapter.selected > 0) {
 
             // Bookmark
-            itemsData.bookmark = $('<button>', { class: 'btn btn-secondary m-4' }).text('Bookmark');
+            itemsData.bookmark = $('<button>', { class: 'btn btn-secondary m-4' }).text('Bookmark - Chapter ' + storyData.chapter.selected);
             items.push(itemsData.bookmark);
 
         }
