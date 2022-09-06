@@ -5154,8 +5154,14 @@
     },
 
     {
-        "value": "Vinny felt another shock, this time a little longer. Vinny made a few faces to try to hide the pain, but soon it was all over and Vinny took a deep breath to feel calm.",
+        "value": "Vinny felt another shock, this time a little longer. This was a little unbearable pain, but Rayane was there to help Vinny feel better. Vinny made a few faces to try to hide the pain, but soon it was all over and Vinny took a deep breath to feel calm.",
         "type": "action"
+    },
+
+    {
+        "value": "Shhhh~",
+        "character": "Rayane",
+        "type": "dialogue"
     },
 
     {
@@ -5176,7 +5182,7 @@
     },
 
     {
-        "value": "NOTHING! There's nothing special here. You were making unnecessary drama.",
+        "value": "NOTHING! There's nothing special here. You were making unnecessary drama. At least now it will be easier to connect your smartmoby next time.",
         "character": "James",
         "type": "dialogue"
     },
