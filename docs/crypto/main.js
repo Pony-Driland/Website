@@ -72,7 +72,8 @@ storyCfg.web3.login = function () {
     else {
 
         // Prepare Items
-        const modalTitle = 'Choose what kind of data you want to interact within the blockchain. Please make sure you are in the correct domain. We only work on the domain ' + storyCfg.domain + '!';
+        const modalTitle = 'Choose what kind of data you want to interact within the blockchain. Please make sure you are in the correct domain.';
+        const modalWarn = $('<strong>').text('We only work on the domain ' + storyCfg.domain + '!');
         const items = [];
         const itemsData = {};
 
@@ -100,7 +101,7 @@ storyCfg.web3.login = function () {
             title: 'Blockchain Storage',
             body: $('<center>').append(
 
-                $('<div>').text('This is your cloud storage. Choose what you want to do. All your data is saved within the blockchain publicly. Any other user will be able to see your data saved.'),
+                $('<div>').text('This is your cloud storage. Choose what you want to do. All your data is saved within the blockchain publicly. Any other user will be able to see your data saved. '),
 
                 // Load
                 $('<button>', { class: 'btn btn-secondary m-4' }).text('Load').click(function () {
@@ -111,7 +112,7 @@ storyCfg.web3.login = function () {
                         id: 'crypto_connection2',
                         title: 'Blockchain Storage',
                         body: $('<center>').append(
-                            $('<div>').text(modalTitle),
+                            $('<div>').text(modalTitle).append(modalWarn),
                             items
                         )
 
@@ -128,7 +129,7 @@ storyCfg.web3.login = function () {
                         id: 'crypto_connection2',
                         title: 'Blockchain Storage',
                         body: $('<center>').append(
-                            $('<div>').text(modalTitle),
+                            $('<div>').text(modalTitle).append(modalWarn),
                             items
                         )
 
