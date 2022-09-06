@@ -81,13 +81,13 @@ storyCfg.web3.login = function () {
 
                 $('<button>', { class: 'btn btn-secondary m-4' }).text('Load').click(function () {
 
-                    
+                    $('#crypto_connection').modal('hide');
 
                 }),
 
                 $('<button>', { class: 'btn btn-primary m-4' }).text('Save').click(function () {
 
-                    
+                    $('#crypto_connection').modal('hide');
 
                 })
 
