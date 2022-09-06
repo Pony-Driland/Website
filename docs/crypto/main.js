@@ -76,6 +76,7 @@ storyCfg.web3.login = function () {
         const modalWarn = $('<strong>', {class: 'ms-1'}).text('We only work on the domain ' + storyCfg.domain + '!');
         const items = [];
         const itemsData = {};
+        let clickType = null;
 
         // NSFW Filter
         itemsData.nsfwFilter = $('<button>', { class: 'btn btn-secondary m-2' }).text('NSFW Filters');
@@ -107,6 +108,7 @@ storyCfg.web3.login = function () {
                 // Load
                 $('<button>', { class: 'btn btn-secondary m-4' }).text('Load').click(function () {
 
+                    clickType = 'load';
                     $('#crypto_connection').modal('hide');
                     tinyLib.modal({
 
@@ -125,6 +127,7 @@ storyCfg.web3.login = function () {
                 // Save
                 $('<button>', { class: 'btn btn-primary m-4' }).text('Save').click(function () {
 
+                    clickType = 'save';
                     $('#crypto_connection').modal('hide');
                     tinyLib.modal({
 
