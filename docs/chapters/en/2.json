@@ -5016,6 +5016,257 @@
         "value": "What? It's just a usb cable on your smartMoby. I have a modified entry to connect it to my computer. What did you think was going to happen?",
         "character": "James",
         "type": "dialogue"
+    },
+ 
+    {
+        "value": "Vinny makes a poker face and looks at his butt for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "I didn't think anything. But it's ok. When do you want to do this?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles in the background during the talk. James was a little disgusted and just went back to answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... We just need to sit down in a comfortable place for me to connect everything.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little too for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Do you want this now?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I want to know what you're planning to do. I can't guess the reason for all this!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? James... I said it like 5 times, I want to see if my SmartMoby is \"original\" or the same as everyone else's. I'm looking for something unusual about this. I'm looking for upgrades too.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh GOD! Ok! Please, just don't try to scream.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James shows the USB cable. Vinny looked a little worriedly at the USB cable before smiling again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Let's go...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James uses his magic to levitate the cable toward the Vinny's smartmoby while Vinny put his arm next to James. James opened his backpack and took out his notebook to prepare the analysis progress.",
+        "type": "action"
+    },
+
+    {
+        "value": "Now the cable will drill your smartmoby a little bit. Please be quiet.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny made a nervous look while Rayane giggles a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmm... Good luck for you two.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane hugs Vinny's arm kindly to try to make Vinny feel a little safer.",
+        "type": "action"
+    },
+
+    {
+        "value": "N..Nah. it looks like my arm is going to fall off. Don't worry.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah. Don't say me I didn't warn you.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then felt a shock inside his body that circulated in all directions. Vinny felt uncomfortable for a few seconds. The pain then ended when the puncture finally entered the smartmoby.",
+        "type": "action"
+    },
+
+    {
+        "value": "FUCK! Good James, you blew a hole in me, so what happens now?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little annoyed, but still he kept doing everything as calmly as possible.",
+        "type": "action"
+    },
+
+    {
+        "value": "Time to do the analysis.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Sillies~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "O..okay.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny felt another shock, this time a little longer. Vinny made a few faces to try to hide the pain, but soon it was all over and Vinny took a deep breath to feel calm.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay! Now This is working.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was satisfied to see that the most boring part was over, so he just started looking at the results on the computer. Rayane just giggles for a few more seconds at the situation. Vinny was a little embarrassed, but he just ignored it and looked at James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey, what are you seeing? Doctor!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "NOTHING! There's nothing special here. You were making unnecessary drama.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a poker face again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Are you sure? What about the upgrades?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. Your upgrades will be later. You will need to really think about what you are going to do. Don't be in such a hurry!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..Well, can you give me examples about upgrades?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "You can have a map inside your smartmoby. This will allow you to feel the places you are without needing to see the map.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then got a little curious to hear this, but she kept quiet.",
+        "type": "action"
+    },
+
+    {
+        "value": "What?",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "Got it! Well, is there anything else you want to see on my smartmoby? I'm still curious, if it only serves to carry like a \"soul\". Don't you have ponies that can already make more complex upgrades? Like the alicorn from the cave.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was curious about Vinny's words. Then James looked curiously at Vinny before replying.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah. The soul is what powers the smartmoby. If your soul stops feeding the smartmoby, you die. if your smartmoby has power distribution issues due to lack of some synchronization of the your body like magic, you also die.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little worried as he said the last reply.",
+        "type": "action"
+    },
+
+    {
+        "value": "If your arm is amputated, the smartmoby will still try to keep you alive for a while as long as your arm isn't too far away from you.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James then calmed down and was slowly surprised again by remembering Rainbow Queen visit in the cave.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait... I don't even remember seeing a smartmoby on that alicorn. She must have hidden it very well.",
+        "character": "James",
+        "type": "dialogue"
+    },
+    {
+        "value": "Meanwhile, Rayane was quiet, just listening to the conversation, trying not to participate too much in the talk.",
+        "type": "action"
     }
 
 ]
