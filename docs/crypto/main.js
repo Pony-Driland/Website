@@ -70,7 +70,7 @@ storyCfg.web3.login = function () {
 
     // Panel
     else {
-
+/* 
         tinyLib.modal({
 
             id: 'crypto_connection',
@@ -114,7 +114,7 @@ storyCfg.web3.login = function () {
             )
 
         });
-
+ */
     }
 
     return false;
