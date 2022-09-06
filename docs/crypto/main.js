@@ -70,7 +70,29 @@ storyCfg.web3.login = function () {
 
     // Panel
     else {
-/* 
+
+        // Prepare Items
+        const items = [];
+        const itemsData = {};
+
+        // NSFW Filter
+        itemsData.nsfwFilter = $('<button>', { class: 'btn btn-secondary m-4' }).text('NSFW Filters');
+        items.push(itemsData.nsfwFilter);
+
+        // Volume
+        itemsData.volume = $('<button>', { class: 'btn btn-secondary m-4' }).text('Volume');
+        items.push(itemsData.volume);
+
+        // Chapter Selected
+        if (storyData.chapter.selected > 0) {
+
+            // Bookmark
+            itemsData.bookmark = $('<button>', { class: 'btn btn-secondary m-4' }).text('Bookmark');
+            items.push(itemsData.bookmark);
+
+        }
+
+        // The Modal
         tinyLib.modal({
 
             id: 'crypto_connection',
@@ -88,9 +110,9 @@ storyCfg.web3.login = function () {
                         id: 'crypto_connection2',
                         title: 'Blockchain Storage',
                         body: $('<center>').append(
-            
+
                         )
-            
+
                     });
 
                 }),
@@ -104,9 +126,9 @@ storyCfg.web3.login = function () {
                         id: 'crypto_connection2',
                         title: 'Blockchain Storage',
                         body: $('<center>').append(
-            
+
                         )
-            
+
                     });
 
                 })
@@ -114,7 +136,7 @@ storyCfg.web3.login = function () {
             )
 
         });
- */
+
     }
 
     return false;
