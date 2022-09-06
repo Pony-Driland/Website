@@ -42,4 +42,33 @@ puddyWeb3.on('connectionUpdate', function () {
 
 });
 
+// Login
+storyCfg.web3.login = function () {
+
+    if (!puddyWeb3.existAccounts()) {
+        tinyLib.modal({
+
+            id: 'crypto_connection',
+            title: 'Login Protocol (Features under development)',
+            body: $('<center>').append(
+
+                $('<button>', { class: 'btn btn-info m-4' }).text('Metamask').click(function () {
+
+                    $('#crypto_connection').modal('hide');
+                    puddyWeb3.alertIsEnabled();
+                    if (puddyWeb3.isEnabled()) {
+                        puddyWeb3.sign();
+                    }
+
+                })
+
+            )
+
+        });
+    }
+
+    return false;
+
+};
+
 // puddyWeb3.executeContract();
