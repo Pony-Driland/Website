@@ -79,15 +79,35 @@ storyCfg.web3.login = function () {
 
                 $('<div>').text('This is your cloud storage. Choose what you want to do. All your data is saved within the blockchain publicly. Any other user will be able to see your data saved.'),
 
+                // Load
                 $('<button>', { class: 'btn btn-secondary m-4' }).text('Load').click(function () {
 
                     $('#crypto_connection').modal('hide');
+                    tinyLib.modal({
+
+                        id: 'crypto_connection2',
+                        title: 'Blockchain Storage',
+                        body: $('<center>').append(
+            
+                        )
+            
+                    });
 
                 }),
 
+                // Save
                 $('<button>', { class: 'btn btn-primary m-4' }).text('Save').click(function () {
 
                     $('#crypto_connection').modal('hide');
+                    tinyLib.modal({
+
+                        id: 'crypto_connection2',
+                        title: 'Blockchain Storage',
+                        body: $('<center>').append(
+            
+                        )
+            
+                    });
 
                 })
 
