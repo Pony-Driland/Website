@@ -110,7 +110,7 @@ storyCfg.web3.login = function () {
                         id: 'crypto_connection2',
                         title: 'Blockchain Storage',
                         body: $('<center>').append(
-
+                            items
                         )
 
                     });
@@ -126,7 +126,7 @@ storyCfg.web3.login = function () {
                         id: 'crypto_connection2',
                         title: 'Blockchain Storage',
                         body: $('<center>').append(
-
+                            items
                         )
 
                     });
