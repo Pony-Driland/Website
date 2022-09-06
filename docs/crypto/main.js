@@ -73,24 +73,39 @@ storyCfg.web3.login = function () {
 
         // Prepare Items
         const modalTitle = 'Choose what kind of data you want to interact within the blockchain. Please make sure you are in the correct domain.';
-        const modalWarn = $('<strong>', {class: 'ms-1'}).text('We only work on the domain ' + storyCfg.domain + '!');
+        const modalWarn = $('<strong>', { class: 'ms-1' }).text('We only work on the domain ' + storyCfg.domain + '!');
         const items = [];
         const itemsData = {};
         let clickType = null;
 
         // NSFW Filter
-        itemsData.nsfwFilter = $('<button>', { class: 'btn btn-secondary m-2' }).text('NSFW Filters');
+        itemsData.nsfwFilter = $('<button>', { class: 'btn btn-secondary m-2' }).text('NSFW Filters').click(function () {
+
+            $('#crypto_connection2').modal('hide');
+
+        });
+
         items.push(itemsData.nsfwFilter);
 
         // Volume
-        itemsData.volume = $('<button>', { class: 'btn btn-secondary m-2' }).text('Volume');
+        itemsData.volume = $('<button>', { class: 'btn btn-secondary m-2' }).text('Volume').click(function () {
+
+            $('#crypto_connection2').modal('hide');
+
+        });
+
         items.push(itemsData.volume);
 
         // Chapter Selected
         if (storyData.chapter.selected > 0) {
 
             // Bookmark
-            itemsData.bookmark = $('<button>', { class: 'btn btn-secondary m-2' }).text('Bookmark - Chapter ' + storyData.chapter.selected);
+            itemsData.bookmark = $('<button>', { class: 'btn btn-secondary m-2' }).text('Bookmark - Chapter ' + storyData.chapter.selected).click(function () {
+
+                $('#crypto_connection2').modal('hide');
+
+            });
+
             items.push(itemsData.bookmark);
 
         }
