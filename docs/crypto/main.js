@@ -73,7 +73,7 @@ storyCfg.web3.login = function () {
 
         // Prepare Items
         const modalTitle = 'Choose what kind of data you want to interact within the blockchain. Please make sure you are in the correct domain.';
-        const modalWarn = $('<strong>').text('We only work on the domain ' + storyCfg.domain + '!');
+        const modalWarn = $('<strong>', {class: 'ms-1'}).text('We only work on the domain ' + storyCfg.domain + '!');
         const items = [];
         const itemsData = {};
 
