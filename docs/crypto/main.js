@@ -78,18 +78,18 @@ storyCfg.web3.login = function () {
         const itemsData = {};
 
         // NSFW Filter
-        itemsData.nsfwFilter = $('<button>', { class: 'btn btn-secondary m-4' }).text('NSFW Filters');
+        itemsData.nsfwFilter = $('<button>', { class: 'btn btn-secondary m-2' }).text('NSFW Filters');
         items.push(itemsData.nsfwFilter);
 
         // Volume
-        itemsData.volume = $('<button>', { class: 'btn btn-secondary m-4' }).text('Volume');
+        itemsData.volume = $('<button>', { class: 'btn btn-secondary m-2' }).text('Volume');
         items.push(itemsData.volume);
 
         // Chapter Selected
         if (storyData.chapter.selected > 0) {
 
             // Bookmark
-            itemsData.bookmark = $('<button>', { class: 'btn btn-secondary m-4' }).text('Bookmark - Chapter ' + storyData.chapter.selected);
+            itemsData.bookmark = $('<button>', { class: 'btn btn-secondary m-2' }).text('Bookmark - Chapter ' + storyData.chapter.selected);
             items.push(itemsData.bookmark);
 
         }
