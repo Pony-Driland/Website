@@ -72,6 +72,7 @@ storyCfg.web3.login = function () {
     else {
 
         // Prepare Items
+        const modalTitle = 'Choose what kind of data you want to interact within the blockchain. Please make sure you are in the correct domain. We only work on the domain ' + storyCfg.domain + '!';
         const items = [];
         const itemsData = {};
 
@@ -110,6 +111,7 @@ storyCfg.web3.login = function () {
                         id: 'crypto_connection2',
                         title: 'Blockchain Storage',
                         body: $('<center>').append(
+                            $('<div>').text(modalTitle),
                             items
                         )
 
@@ -126,6 +128,7 @@ storyCfg.web3.login = function () {
                         id: 'crypto_connection2',
                         title: 'Blockchain Storage',
                         body: $('<center>').append(
+                            $('<div>').text(modalTitle),
                             items
                         )
 
