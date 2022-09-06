@@ -116,8 +116,7 @@ storyCfg.web3.login = function () {
                         title: 'Blockchain Storage',
                         dialog: 'modal-lg',
                         body: $('<center>').append(
-                            $('<div>').text(modalTitle).append(modalWarn),
-                            items
+                            $('<div>').text(modalTitle).append(modalWarn), items
                         )
 
                     });
@@ -135,8 +134,7 @@ storyCfg.web3.login = function () {
                         title: 'Blockchain Storage',
                         dialog: 'modal-lg',
                         body: $('<center>').append(
-                            $('<div>').text(modalTitle).append(modalWarn),
-                            items
+                            $('<div>').text(modalTitle).append(modalWarn), items
                         )
 
                     });
