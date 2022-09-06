@@ -128,7 +128,7 @@ storyCfg.web3.login = function () {
                     tinyLib.modal({
 
                         id: 'crypto_connection2',
-                        title: 'Blockchain Storage',
+                        title: 'Blockchain Storage - Load',
                         dialog: 'modal-lg',
                         body: $('<center>').append(
                             $('<div>').text(modalTitle).append(modalWarn), items
@@ -146,7 +146,7 @@ storyCfg.web3.login = function () {
                     tinyLib.modal({
 
                         id: 'crypto_connection2',
-                        title: 'Blockchain Storage',
+                        title: 'Blockchain Storage - Save',
                         dialog: 'modal-lg',
                         body: $('<center>').append(
                             $('<div>').text(modalTitle).append(modalWarn), items
