@@ -77,11 +77,31 @@ storyCfg.web3.login = function () {
         const items = [];
         const itemsData = {};
         let clickType = null;
+        let clickType2 = null;
 
         // NSFW Filter
         itemsData.nsfwFilter = $('<button>', { class: 'btn btn-secondary m-2' }).text('NSFW Filters').click(function () {
 
+            const filters = [];
+            for(const item in storyCfg.nsfw) {
+                filters.push($('<button>', { class: 'btn btn-secondary m-2' }).data('nsfw_crypto_data', storyCfg.nsfw[item]).text(storyCfg.nsfw[item].name).click(function () {
+
+                    $('#crypto_connection3').modal('hide');
+    
+                }));
+            }
+
             $('#crypto_connection2').modal('hide');
+            tinyLib.modal({
+
+                id: 'crypto_connection3',
+                title: 'Blockchain Storage - ' + clickType2,
+                dialog: 'modal-lg',
+                body: $('<center>').append(
+                    $('<div>').text('Choose which filter you want to interact with.'), filters
+                )
+
+            });
 
         });
 
@@ -124,11 +144,12 @@ storyCfg.web3.login = function () {
                 $('<button>', { class: 'btn btn-secondary m-4' }).text('Load').click(function () {
 
                     clickType = 'load';
+                    clickType2 = 'Load';
                     $('#crypto_connection').modal('hide');
                     tinyLib.modal({
 
                         id: 'crypto_connection2',
-                        title: 'Blockchain Storage - Load',
+                        title: 'Blockchain Storage - ' + clickType2,
                         dialog: 'modal-lg',
                         body: $('<center>').append(
                             $('<div>').text(modalTitle).append(modalWarn), items
@@ -142,11 +163,12 @@ storyCfg.web3.login = function () {
                 $('<button>', { class: 'btn btn-primary m-4' }).text('Save').click(function () {
 
                     clickType = 'save';
+                    clickType2 = 'Save';
                     $('#crypto_connection').modal('hide');
                     tinyLib.modal({
 
                         id: 'crypto_connection2',
-                        title: 'Blockchain Storage - Save',
+                        title: 'Blockchain Storage - ' + clickType2,
                         dialog: 'modal-lg',
                         body: $('<center>').append(
                             $('<div>').text(modalTitle).append(modalWarn), items
