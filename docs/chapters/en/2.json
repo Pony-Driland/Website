@@ -5270,8 +5270,87 @@
         "character": "James",
         "type": "dialogue"
     },
+
     {
         "value": "Meanwhile, Rayane was quiet, just listening to the conversation, trying not to participate too much in the talk.",
+        "type": "action"
+    },
+    
+    {
+        "value": "So is my smartmoby safe? No virus? No spell? Is there a place where ponies are modifying each others smartmoby?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny... This is fate that somewhere there is some secret laboratory of experiments. Let's just end the conversation here. You're safe now. There's nothing wrong with your SmartMoby.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was thoughtful for a few seconds while he was curious and with a slight feeling of fear.",
+        "type": "action"
+    },
+    
+    {
+        "value": "O..okay. Rayane, next time I'll say that the goddess of death was mad at me and found the energy of my smartmoby a little strange.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James does a facehoof. So James was going to do something else. So Vinny shakes his head slowly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane looked at James and ignored the situation. Rayane just wanted to continue the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "G...Goddess of death?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+    
+    {
+        "value": "Yes, she said that my energy was strange. I came from another world, I was sucked into a snack!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmm. Heh. But we all come from other dimensions. This is no surprise for us.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised to hear this as he remembered Kenny's words saying something similar.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y...Yeah.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised to hear this as he remembered Kenny's words saying something similar.",
         "type": "action"
     }
 
