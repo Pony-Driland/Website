@@ -5525,6 +5525,12 @@
         "character": "James",
         "type": "dialogue"
     },
+
+    {
+        "value": "Ah?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
     
     {
         "value": "Then Rayane entered the shelter again. Rayane looks like she's completely ready, and everyone in the shelter seems to have left already.",
