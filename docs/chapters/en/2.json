@@ -5347,6 +5347,238 @@
         "value": "Y...Yeah.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "So James came back eating a marshmallow. Rayane looked at James, so she laughed a little. Rayane made the silly, malicious face in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh! I knew I couldn't resist~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "NAH! This is no time for this!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James sat down and took the notebook. Vinny laughed a little and looked at James too.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey, how's the Marshmallow?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Shut up!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath as he calmed down as he listened to the two of them laughing.",
+        "type": "action"
+    },
+
+    {
+        "value": "And sorry. i don't have much to do. We need another pony or something that has what i need to install some new feature on your smartmoby.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets a little surprised and then responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What? Okay. All right. I'm already relieved that my smartnoby is normal.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ Now everyone is satisfied. It seems that this is the time to end the fun moment. We have important things to resolve now.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Important things? Oh yes! Rayane is right, let's go to another subject.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I'm already preparing my stuff~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then started to pack the items. Vinny approached James to speak more quietly. James was finding Vinny's behavior odd, but he just waited for him to speak.",
+        "type": "action"
+    },
+
+    {
+        "value": "Let's talk discreetly, did you like Wagner? Do you think he is trustworthy?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "W..Wagner?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James gets a little confused for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "You look like you know something about him. Nobody runs away like that.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Weeeeell... Before the bomb exploded, I asked Rayane to get a soldier who was involved, she brought him and we talked. I found out that he is involved with the explosion, but going deeper, according to him, he and his family are poor and out of necessity. He seems to be depending on working with his boss. I just hope you think before you try anything with him. You were so sensitive to jeff when you saw him for the first time. I don't know if you'll have the same reaction for Wagner.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W.....wait. Wagner... is who guided the bomb?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James gets very surprised for a few seconds. James then kept quiet, trying to remain calm.",
+        "type": "action"
+    },
+
+    {
+        "value": "And is Marlon really involved in this? Vinny, this is going to be very... veeeeeery bad if it's true.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets worried to hear this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? W..Why?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "This will trigger a serious diplomatic crisis. We urgently need to stop this! This is not the time for us to have fun! We need to take action now!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Calm down James! No one wakes up wanting to throw bombs around. I understand that Marlon is a boss from a place and it's a poor place where they don't have money or food or similar, they would even understand the reason to keep bombing the neighbor if the neighbor has been a bad neighbor. Don't you agree?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I need to prepare a project to solve this problem. And you and Rayane, please. Don't blow yourself up again!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James looked very concerned about the situation. Vinny was more concerned about James' behavior.",
+        "type": "action"
+    },
+
+    {
+        "value": "James... We don't know anything about both sides, just what the 2 want something in common is that 1 side is extremely poor and one side is rich. We don't know what's really happening, the real reason for the bombs, and everything else, the Elite Color may be using the region as a scapegoat.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a little deep breath trying to keep calm.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah. Most likely the Elite Color know I'm here too.",
+        "character": "James",
+        "type": "dialogue"
+    },
+    
+    {
+        "value": "Then Rayane entered the shelter again. Rayane looks like she's completely ready, and everyone in the shelter seems to have left already.",
+        "type": "action"
+    },
+    
+    {
+        "value": "Heeey. Everyone is already outside just waiting for you two~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny and James does a poker face to see that the place was already completely empty.",
+        "type": "action"
+    },
+
+    {
+        "value": "A....",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at James and giggles a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sorry! It was just boring. I'll try to lower the level. Okay? If I get really boring you can talk. Well... Where is Wagner? Where are we going?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James looked at Vinny and just kept quiet.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James then finished packing his stuff into his backpack.",
+        "type": "action"
+    },
+
+    {
+        "value": "Shhh... Don't worry. Jeff is trying to keep Wagner calm. I have a great impression that Haroshi entered the Bunker that was blown up by the bomb.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
