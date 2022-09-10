@@ -5560,6 +5560,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Sorry! It was just boring. I'll try to lower the level. Okay? If I get really boring you can talk. Well... Where is Wagner? Where are we going?",
         "character": "Vinny",
         "type": "dialogue"
@@ -5582,9 +5585,94 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "tense-mystery"
+        },
         "value": "Shhh... Don't worry. Jeff is trying to keep Wagner calm. I have a great impression that Haroshi entered the Bunker that was blown up by the bomb.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane looked a little worried, so she just grabbed the rest of her stuff and walked out of the shelter.",
+        "type": "action"
+    },
+    
+    {
+        "value": "W..What? Both Marlon and Hiroshi are suspects!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny followed Rayane while James was just quiet listening to the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hiroshi blowing up the bunker? That doesn't make the most sense. Hiroshi is the leader here.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "AAAH! Politics! In where I came from, my leader was stabbed before becoming our leader! Some say it was fake, others say it was real. it make me crazy!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tried to calm down as he thought about the situation. James was curious and a little surprised for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? What kind of crazy scenario is this you were living in? Well.",
+        "character": "James",
+        "type": "dialogue"
+    },
+    {
+        "value": "Heh~ For someone who trying to touch a bomb, he must have come from a crazy world.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny kept quiet and tried to avoid the topic of conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y...yeah. A pretty crazy world.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then the 3 ponies started walking towards a mysterious path. As everyone walked, Rayane took a deep breath for a few seconds. Rayane spoke very quietly, preventing everyone from hearing.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah... I really wanted to talk to Hiroshi. I hope I still have a chance to talk to him before it's too late.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane looks worried as she arrived at Jeff and Wagner. So Jeff and Wagner looked back and were happy to be reunited.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey Wagner! Look! Everypony is here now!",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff happily waved to everyone. But Wagner still seemed very shy during the conversation, but a little better than he was feeling a few moments ago.",
+        "type": "action"
     }
 
 ]
