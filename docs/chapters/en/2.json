@@ -5678,6 +5678,146 @@
     {
         "value": "Jeff happily waved to everyone. But Wagner still seemed very shy during the conversation, but a little better than he was feeling a few moments ago.",
         "type": "action"
+    },
+    
+    {
+        "value": "H...hello.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then smiled with a little hope to see everyone well.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey Jeff! How are you?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff was smiling a little sympathetic, but answering a little worriedly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wagner is still depressed and scared. I don't understand why he's scared, but he's at least trying to calm down.",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looked worriedly at Wagner for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeeh. Thank you Jeff. Hmmm. Wagner, are you okay? Sorry but you didn't get to talk to me or the everypony here I think how is where you live how is your family now. if you don't feel comfortable saying it's ok, here everyone is family.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tried to smile a little at Wagner, but nothing interesting happened.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay okay. Sorry Wagner. So... I need to talk to you on sometime, okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I...I still need more time to recover me.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner looked even more depressed. So Vinny tried to get away from Wagner a little so he wouldn't accidentally make things worse.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny? What do you mean by that?",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff gets a little surprised. Vinny took a deep breath before making a small dramatic smile.",
+        "type": "action"
+    },
+
+    {
+        "value": "James, Jeff, come here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James and Jeff were curious.",
+        "type": "action"
+    },
+
+    {
+        "value": "What?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeaaaah...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then the 3 ponies walked away from the group. Rayane was curious about Vinny's behavior. So Rayane kept Wagner close so he wouldn't feel alone.",
+        "type": "action"
+    },
+
+    {
+        "value": "James, you need to try to cheer Wagner up. And Jeff... How was it in the cave? Did you find your friend? Sorry to ask now, a lot happened, even with Wagner. Did you like him?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff was mildly depressed, but he tried to be positive.",
+        "type": "action"
+    },
+
+    {
+        "value": "C...Calm Wagner down? How?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Calm down James. Maybe I have a plan. So...No... we didn't find anything. The cave was emptier than I imagined. I've already lost hope of finding someone. About Wagner, I'm trying my best for my emptiness with him. Let's try to be together here. Maybe making new friends will make us feel better. I don't even know where I'm going to sleep tonight. My house has been completely destroyed.",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff tried not to cry as he answered Vinny. Vinny would then be thoughtful and empathetic with Jeff for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Please wait here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh? All right.",
+        "character": "Jeff",
+        "type": "dialogue"
     }
 
 ]
