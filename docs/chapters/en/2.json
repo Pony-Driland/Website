@@ -5818,6 +5818,198 @@
         "value": "Oh? All right.",
         "character": "Jeff",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "So Vinny would go to Rayane again. Vinny looked worriedly at Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane? Are you okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Huh? Ah... Hello Vinny. I'm just worried about what must be happening in the hole. We should hurry to get into this hole.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked at James, Jeff, Wagner for a few seconds before looking back at Rayne.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ooh. Do you want to go with me? Or do you want to call others? I think it's better just us and anything the others can run out of here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. I was thinking about that. Jeff and Wagner are extremely tired and depressed. And James is the one who can help them.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny thought some more for a few seconds before agreeing with Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ok, if you can, please prepare my armor. I'm going to let everyone know that we're leaving now.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane took a deep breath and became very thoughtful again. Then Vinny would go back to James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey James! Rayane and I are going to investigate the hole. If you find anything strange, go as far away as possible. You will take care of Jeff and Wagner now.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James gets very scared and worried to hear this.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...WHAT?! Are you and Rayane going to get involved in yet another danger again? Are you two crazy?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Calm down James. The worst has already happened. We'll just need some device to keep contact.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a few deep breaths before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny, look at me. Please! Are you sure you're going to do this? You have to promise me for today you won't almost die in explosions like it was today!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny got very nervous looking at James' worried look.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't worry. You have my word. If not, I'll pull your paw while you're sleeping. Do you have some trackers?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Your word? Are you SURE?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets even more worried, and just agreed with James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y...yes. I'm sure. I will do my best.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took a deep breath as he realized he couldn't possibly change Vinny's mind.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay, okay. You already have one of my best trackers. But you don't have my most powerful tracker that I use to try and track parts of Master SmartMoby. But please be careful. This device emits a lot of wave signals.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James took the Master Radar out of his bag. James was very thoughtful looking at the Master Radar.",
+        "type": "action"
+    },
+
+    {
+        "value": "I don't know how deep underground you go. But this radar is all I have for you to ask for my help.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "item": [{
+                "id": "master-radar",
+                "owner": "vinny",
+                "amount": 1
+            }]
+        },
+        "value": "James hands the Master Radar to Vinny. Vinny was very surprised to look at the radar. The radar appeared to be made of a much stronger material.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..Yeah. I see. T..thank you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I'm trusting you. If we ever need to get out of here. We're going back to the cave. Be very careful.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was still worried, trying not to get too emotional. James then just tried to walk away, without looking back.",
+        "type": "action"
+    },
+
+    {
+        "value": "B..bye Vinny and Rayane. G...Good luck.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "B..bye James.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The two waved at each other. So James was finally leaving with Jeff and Wagner. Vinny just watched the scene for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Good luck for you too.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
