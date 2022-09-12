@@ -6002,6 +6002,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "The two waved at each other. So James was finally leaving with Jeff and Wagner. Vinny just watched the scene for a few seconds.",
         "type": "action"
     },
