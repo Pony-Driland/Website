@@ -6058,7 +6058,46 @@
         "set": {
             "playlistPlay": "tense-mystery"
         },
-        "value": "Then Rayane spawned the armor again on Vinny's body.",
+        "value": "Then Rayane spawned the armor again on Vinny's body. Vinny then looked at Rayane again, very curious, wanting to know something.",
+        "type": "action"
+    },
+    
+    {
+        "value": "So... You know something right? Is something really good in there? You are acting as if a part of the Master Smart Moby is there.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane gets a little surprised.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? No. But I'm surprised you think so too. I can't be sure. This Master SmartMoby story is something new for me.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmmm. Fine. Let's show these assholes how it's done!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then started walking towards the explosion crater. Rayane kept quiet, giggling a little at Vinny's reaction.",
+        "type": "action"
+    },
+
+    {
+        "value": "Silly. It's good you have your combat skills up to date~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Rayane followed Vinny. The sky was much clearer, but still a little cloudy. The strong wind still continued due to the much cleaner place after the explosion. A few surviving ponies were found along the way being helped by the village guards. The place was very depressing, but Vinny and Rayane continued walking very quietly. It seems that the morning time has already ended, now it is the afternoon time.",
         "type": "action"
     }
 
