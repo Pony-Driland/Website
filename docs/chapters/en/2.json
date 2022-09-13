@@ -6097,6 +6097,9 @@
     },
 
     {
+        "set": {
+            "dayNightCycle": "afternoon"
+        },
         "value": "So Rayane followed Vinny. The sky was much clearer, but still a little cloudy. The strong wind still continued due to the much cleaner place after the explosion. A few surviving ponies were found along the way being helped by the village guards. The place was very depressing, but Vinny and Rayane continued walking very quietly. It seems that the morning time has already ended, now it is the afternoon time.",
         "type": "action"
     }
