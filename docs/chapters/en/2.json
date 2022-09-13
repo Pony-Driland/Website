@@ -6102,6 +6102,91 @@
         },
         "value": "So Rayane followed Vinny. The sky was much clearer, but still a little cloudy. The strong wind still continued due to the much cleaner place after the explosion. A few surviving ponies were found along the way being helped by the village guards. The place was very depressing, but Vinny and Rayane continued walking very quietly. It seems that the morning time has already ended, now it is the evening time.",
         "type": "action"
+    },
+    
+    {
+        "value": "Rayane? What's your plan? Have you ever thought if you find someone from the Elite Color here? or enemies?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Shhhhh~ If we find any organization, we have to be extremely careful.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny and Rayane then finally got close to the crater. The place was surrounded by guards patrolling the place.",
+        "type": "action"
+    },
+
+    {
+        "value": "O...okay. What will we do now?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little before asking Vinny the question.",
+        "type": "action"
+    },
+
+    {
+        "value": "Do you want to do it the hard way or the easy way?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..What? Tell me what are the hard way and the easy way?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ The easy way is for us to use teleportation to get past them. But then if they discover us as intruders, we'll have little problems. The hard way is to convince them that we're going to have to go there for some good cause involving Hiroshi.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very thoughtful. Vinny wasn't too interested in making more trouble by remembering his promise to James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmm... Heh! You silly evil. Let's go hard way. I'm good with my words, and you have popularity.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I'm evil?~ Guess I'm not the only evil. You really think I forgot who wanted to rip someone's wings?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smirks at Vinny, making Vinny do a poker face, feeling regretful for a few seconds. Rayane giggles for a few seconds before continuing with the dialogue.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..Yeah.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then okay. I'll help you~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Rayane smirks again. Rayane maintained a very respectful posture and walked gently towards the guards.",
+        "type": "action"
     }
 
 ]
