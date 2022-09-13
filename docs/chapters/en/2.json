@@ -6032,12 +6032,34 @@
     },
 
     {
-        "set": {
-            "playlistPlay": "tense-mystery"
-        },
         "value": "Oh. Heh~ I'm ready. So it looks like the big time is now.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "Oh hey! Your armor... will you borrow it again?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little before smirking a little while trying to feel calmer.",
+        "type": "action"
+    },
+
+    {
+        "value": "I thought you would forget~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "tense-mystery"
+        },
+        "value": "Then Rayane spawned the armor again on Vinny's body.",
+        "type": "action"
     }
 
 ]
