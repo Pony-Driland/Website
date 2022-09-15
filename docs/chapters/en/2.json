@@ -6185,7 +6185,102 @@
     },
 
     {
-        "value": "Then Rayane smirks again. Rayane maintained a very respectful posture and walked gently towards the guards.",
+        "value": "Then Rayane smirks again. Rayane maintained a very respectful posture and walked gently towards the guards. Some guards were unicorns and others were earth ponies. The guards were a little surprised and curious due to Rayane's presence. When Vinny tried to approach the guards, some guards pointed spears to block Vinny's path.",
+        "type": "action"
+    },
+    
+    {
+        "value": "W...wow! Hey! Calm down there friends. We came to talk to Hiroshi about the bomb.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "One of the guards then looked curiously at Vinny for a few seconds. Rayane then became curious, trying to understand what Vinny was doing.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hiroshi? And do you have any written mandate from him to respond to that?",
+        "character": "Guard",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was then slightly nervous when he realized what he had done.",
+        "type": "action"
+    },
+
+    {
+        "value": "L...Look, you're delaying me and Rayane, every second that passes we're all in danger.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? Hiroshi already gone on his mission. How can I trust your words if I don't even know you?",
+        "character": "Guard",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then took a deep breath and poked her paw on the ground to get the guards' attention.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Rayane? R..Rayane! What kind of joke is this? Hiroshi never informed me that she would be accompanied by someone.",
+        "character": "Guard",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The guard then became curious, trying to understand what was happening.",
+        "type": "action"
+    },
+
+    {
+        "value": "Welll... What's your name?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The guard then became serious again before replying.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey! Nice attempt. We don't reveal our names. You are very innocent, we are working now. Only Rayane can convince me that she is with you. I'll have to invite you to leave here.",
+        "character": "Guard",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "The guard was very suspicious of the situation, but then Rayane interrupted the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey! Okay. Enough of the silly talk. I'm with him~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The guards were then extremely confused and surprised.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait... what?!",
+        "character": "Guard",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then calm down and just respond.",
         "type": "action"
     }
 
