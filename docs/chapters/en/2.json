@@ -6280,8 +6280,94 @@
     },
 
     {
-        "value": "Vinny would then calm down and just respond.",
+        "value": "The guard was extremely thoughtful and worried about which decision to choose.",
         "type": "action"
+    },
+
+    
+    {
+        "value": "I...I don't know what you are planning and why Rayane is with you.But... I'll let you in accompanied.",
+        "character": "Guard",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ It's fine. Maybe a little extra help could be good.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..Yeah. Let's go soon. You can come with us.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The guard remained curious for a few seconds, and then looked at the other guards for a few seconds. Then some other guard soon agreed with each other.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Go ahead. They're going with you. But remember we've got our eyes on you.",
+        "character": "Guard",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then everyone paved the way. Allowing Vinny and Rayane to walk towards the entrance to the crater. Vinny then was happy to see this and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay, be careful out there. keep an eye on the sky.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Shhhh~ Silly.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then started walking towards the crater and Vinny was a little quiet, following Rayane. Vinny was very curious about something he thought",
+        "type": "action"
+    },
+
+    {
+        "value": "O..Okay. What do you think Rayane? Will we find Hiroshi in time?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "We'll have to take a shortcut if we really want to get there.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "We all go?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked curiously at the two guards who were approaching to accompany Vinny and Rayane. The two mysterious guards just nodded and kept quiet. Vinny found the behavior of these two guards a little strange.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okaaaay? Let's go then.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
