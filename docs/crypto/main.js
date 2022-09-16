@@ -83,12 +83,32 @@ storyCfg.web3.login = function () {
         itemsData.nsfwFilter = $('<button>', { class: 'btn btn-secondary m-2' }).text('NSFW Filters').click(function () {
 
             const filters = [];
-            for (const item in storyCfg.nsfw) {
-                filters.push($('<button>', { class: 'btn btn-secondary m-2' }).data('nsfw_crypto_data', storyCfg.nsfw[item]).text(storyCfg.nsfw[item].name).click(function () {
+            const nsfwList = [];
+            for (const fic in storyData.data) {
+                for (const item in storyData.data[fic]) {
+                    if (storyData.data[fic][item].nsfw) {
+                        for (const nsfwItem in storyData.data[fic][item].nsfw) {
+                            if (nsfwList.indexOf(storyData.data[fic][item].nsfw[nsfwItem]) < 0) {
 
-                    $('#crypto_connection3').modal('hide');
+                                // Add Item
+                                const NSFWITEM = storyData.data[fic][item].nsfw[nsfwItem];
+                                nsfwList.push(NSFWITEM);
 
-                }));
+                                // Add NSFW Item
+                                if (storyCfg.nsfw[NSFWITEM]) {
+
+                                    filters.push($('<button>', { class: 'btn btn-secondary m-2' }).data('nsfw_crypto_data', storyCfg.nsfw[NSFWITEM]).text(storyCfg.nsfw[NSFWITEM].name).click(function () {
+
+                                        $('#crypto_connection3').modal('hide');
+
+                                    }));
+
+                                }
+
+                            }
+                        }
+                    }
+                }
             }
 
             $('#crypto_connection2').modal('hide');
