@@ -6368,6 +6368,57 @@
         "value": "Okaaaay? Everyone is very quiet here. Let's go then.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "Heh. Let's go~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Vinny and Rayane and the two guards went down the crater, everyone approached the entrance and began to enter the tunnel. The place is very typical of a very advanced banker. Vinny were impressed. Meanwhile, the two guards continued to analyze Vinny's behavior curiously.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah, this was really as I imagined. This is a bunker. It seems that all this destruction was a desperate attempt.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..well. Guards? Don't you know anything about Hiroshi?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The guards then looked curiously at each other very thoughtfully. so they decide to say something.",
+        "type": "action"
+    },
+
+    {
+        "value": "We're just watching the place. We're not allowed to say anything about this. But if you know where he is. Go ahead.",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? I never said I knew where he was.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little confused for a few seconds. But then Vinny was a little more surprised to see the details of the place. Vinny could see that many lights were damaged and sparking or flashing. Soon everypony would see signs that there was some conflict inside the corridor of the bunker. The guards were slowly starting to get worried as they saw the trails of destruction around. Rayane and Vinny discreetly analyzed the guards' behavior during the progress.",
+        "type": "action"
+    },
+
+    {
+        "value": "This is very strange. These guards don't seem to know what's really going on with Hiroshi.",
+        "character": "Rayane",
+        "type": "think"
     }
 
 ]
