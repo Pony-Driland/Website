@@ -6388,7 +6388,12 @@
     },
 
     {
-        "value": "W..well. Guards? Don't you know anything about Hiroshi?",
+        "value": "Vinny was slightly nervous trying to think of a good answer.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. S..so Guards? Don't you know anything about Hiroshi?",
         "character": "Vinny",
         "type": "dialogue"
     },
