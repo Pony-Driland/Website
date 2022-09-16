@@ -70,7 +70,7 @@ storyCfg.web3.login = function () {
 
     // Panel
     else {
-/* 
+
         // Prepare Items
         const modalTitle = 'Choose what kind of data you want to interact within the blockchain. Please make sure you are in the correct domain.';
         const modalWarn = $('<strong>', { class: 'ms-1' }).text('We only work on the domain ' + storyCfg.domain + '!');
@@ -83,11 +83,11 @@ storyCfg.web3.login = function () {
         itemsData.nsfwFilter = $('<button>', { class: 'btn btn-secondary m-2' }).text('NSFW Filters').click(function () {
 
             const filters = [];
-            for(const item in storyCfg.nsfw) {
+            for (const item in storyCfg.nsfw) {
                 filters.push($('<button>', { class: 'btn btn-secondary m-2' }).data('nsfw_crypto_data', storyCfg.nsfw[item]).text(storyCfg.nsfw[item].name).click(function () {
 
                     $('#crypto_connection3').modal('hide');
-    
+
                 }));
             }
 
@@ -181,7 +181,7 @@ storyCfg.web3.login = function () {
             )
 
         });
- */
+
     }
 
     return false;
