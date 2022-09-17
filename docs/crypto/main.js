@@ -97,8 +97,10 @@ storyCfg.web3.login = function () {
                                 // Add NSFW Item
                                 if (storyCfg.nsfw[NSFWITEM]) {
 
+                                    // Action
                                     filters.push($('<button>', { class: 'btn btn-secondary m-2' }).data('nsfw_crypto_data', storyCfg.nsfw[NSFWITEM]).text(storyCfg.nsfw[NSFWITEM].name).click(function () {
 
+                                        console.log(clickType);
                                         $('#crypto_connection3').modal('hide');
 
                                     }));
@@ -130,6 +132,7 @@ storyCfg.web3.login = function () {
         // Volume
         itemsData.volume = $('<button>', { class: 'btn btn-secondary m-2' }).text('Volume').click(function () {
 
+            console.log(clickType);
             $('#crypto_connection2').modal('hide');
 
         });
@@ -142,6 +145,7 @@ storyCfg.web3.login = function () {
             // Bookmark
             itemsData.bookmark = $('<button>', { class: 'btn btn-secondary m-2' }).text('Bookmark - Chapter ' + storyData.chapter.selected).click(function () {
 
+                console.log(clickType);
                 $('#crypto_connection2').modal('hide');
 
             });
