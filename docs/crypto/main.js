@@ -131,6 +131,8 @@ storyCfg.web3.login = function () {
 
                                         } else if (clickType === 'load') {
 
+                                            const nsfwID = $(this).data('nsfw_crypto_data').id;
+
                                             puddyWeb3.readContract(
                                                 storyCfg.web3.contract,
                                                 storyCfg.web3.abi.base,
