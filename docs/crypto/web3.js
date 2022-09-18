@@ -9,7 +9,7 @@ var PuddyWeb3 = class {
         const tinyThis = this;
 
         // Networks
-        this.callbacks = { accountsChanged: [], networkChanged: [], connectionUpdate: [], network: [] };
+        this.callbacks = { accountsChanged: [], networkChanged: [], connectionUpdate: [], network: [], readyProvider: [] };
 
         this.connected = false;
         this.networks = {
@@ -73,6 +73,7 @@ var PuddyWeb3 = class {
                 });
 
                 this.checkConnection();
+                this.readyProvider();
 
             } else {
                 this.enabled = false;
@@ -88,6 +89,17 @@ var PuddyWeb3 = class {
         if (typeof callback === 'function' && Array.isArray(this.callbacks[where])) {
             this.callbacks[where].push(callback);
         }
+    }
+
+    // Account Changed
+    async readyProvider() {
+
+        for (const item in this.callbacks.readyProvider) {
+            await this.callbacks.readyProvider[item]();
+        }
+
+        return;
+
     }
 
     // Account Changed
@@ -182,6 +194,7 @@ var PuddyWeb3 = class {
         });
 
         await this.checkConnection();
+        await this.readyProvider();
         return this.wallet_connect;
 
     }
