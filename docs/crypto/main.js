@@ -16,7 +16,7 @@ puddyWeb3.on('networkChanged', function (networkId) {
 });
 
 puddyWeb3.on('network', function (newNetwork, oldNetwork) {
-    console.log('Web3 Network Connected', newNetwork);
+    console.log('Web3 Network Connected', newNetwork, oldNetwork);
 });
 
 // Connection Update
