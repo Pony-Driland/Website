@@ -103,20 +103,22 @@ storyCfg.web3.login = function () {
                                         if (clickType === 'save') {
 
                                             let setValue = 0;
-                                            const value = localStorage.getItem('NSFW' + $(this).data('nsfw_crypto_data').id);
-                                            if (value === 'true') {
-                                                setValue = 1;
-                                            }
+                                            const nsfwID = $(this).data('nsfw_crypto_data').id;
+                                            if (typeof nsfwID === 'string' && nsfwID.length > 0) {
 
-                                            puddyWeb3.executeContract(
-                                                storyCfg.web3.contract,
-                                                storyCfg.web3.abi.base,
-                                                'changeNsfwFilter(string,uint256)',
-                                                [
-                                                    $(this).data('nsfw_crypto_data').id,
-                                                    setValue
-                                                ]
-                                            );
+                                                const value = localStorage.getItem('NSFW' + nsfwID);
+                                                if (value === 'true') {
+                                                    setValue = 1;
+                                                }
+
+                                                puddyWeb3.executeContract(
+                                                    storyCfg.web3.contract,
+                                                    storyCfg.web3.abi.base,
+                                                    'changeNsfwFilter(string,uint256)',
+                                                    [nsfwID, setValue]
+                                                );
+
+                                            }
 
                                         } else if (clickType === 'load') {
 
@@ -154,14 +156,18 @@ storyCfg.web3.login = function () {
         itemsData.volume = $('<button>', { class: 'btn btn-secondary m-2' }).text('Volume').click(function () {
 
             if (clickType === 'save') {
-                puddyWeb3.executeContract(
-                    storyCfg.web3.contract,
-                    storyCfg.web3.abi.base,
-                    'setVolume(uint256)',
-                    [
-                        setValue
-                    ]
-                );
+
+                const volume = Number(localStorage.getItem('storyVolume'));
+
+                if (typeof volume === 'number' && !isNaN(volume) && isFinite(volume) && volume >= 0 && volume <= 100) {
+                    puddyWeb3.executeContract(
+                        storyCfg.web3.contract,
+                        storyCfg.web3.abi.base,
+                        'setVolume(uint256)',
+                        [volume]
+                    );
+                }
+
             } else if (clickType === 'load') {
 
             }
@@ -179,15 +185,14 @@ storyCfg.web3.login = function () {
             itemsData.bookmark = $('<button>', { class: 'btn btn-secondary m-2' }).text('Bookmark - Chapter ' + storyData.chapter.selected).click(function () {
 
                 if (clickType === 'save') {
+
                     puddyWeb3.executeContract(
                         storyCfg.web3.contract,
                         storyCfg.web3.abi.base,
                         'insertBookmark(uint256,uint256)',
-                        [
-                            storyData.chapter.selected,
-                            setValue
-                        ]
+                        [storyData.chapter.selected, setValue]
                     );
+
                 } else if (clickType === 'load') {
 
                 }
