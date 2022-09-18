@@ -131,7 +131,8 @@ var PuddyWeb3 = class {
     async accountsChanged(data) {
 
         // Address
-        this.address = await this.provider.getSigner().getAddress();
+        this.signer = this.provider.getSigner();
+        this.address = await this.signer.getAddress();
         this.address = this.address.toLowerCase();
         localStorage.setItem('web3_address', this.address);
 
@@ -347,7 +348,8 @@ var PuddyWeb3 = class {
                     };
 
                     // Transaction
-                    transaction = await tinyThis.provider.getSigner().sendTransaction(tx);
+                    tinyThis.signer = tinyThis.provider.getSigner();
+                    transaction = await tinyThis.signer.sendTransaction(tx);
 
                 } catch (err) { return reject(err); }
                 return resolve(transaction);
@@ -448,7 +450,8 @@ var PuddyWeb3 = class {
                         };
 
                         // Transaction
-                        transaction = await tinyThis.provider.getSigner().sendTransaction(tx);
+                        tinyThis.signer = tinyThis.provider.getSigner();
+                        transaction = await tinyThis.signer.sendTransaction(tx);
 
                     }
 
@@ -528,7 +531,8 @@ var PuddyWeb3 = class {
             // Address
             if (this.existAccounts()) {
 
-                this.address = await this.provider.getSigner().getAddress();
+                this.signer = this.provider.getSigner();
+                this.address = await this.signer.getAddress();
                 this.address = this.address.toLowerCase();
                 this.connectionUpdate();
 
