@@ -11,6 +11,7 @@ var PuddyWeb3 = class {
         // Networks
         this.callbacks = { accountsChanged: [], networkChanged: [], connectionUpdate: [], network: [], readyProvider: [] };
 
+        this.providerConnected = false;
         this.connected = false;
         this.networks = {
 
@@ -94,12 +95,32 @@ var PuddyWeb3 = class {
     // Ready Provider
     async readyProvider() {
 
+        this.providerConnected = true;
         for (const item in this.callbacks.readyProvider) {
             await this.callbacks.readyProvider[item]();
         }
 
         return;
 
+    }
+
+    async isReadyProvider() {
+        const tinyThis = this;
+        return new Promise(async function (resolve, reject) {
+
+            try {
+
+                if (tinyThis.providerConnected) {
+                    resolve(true);
+                } else {
+                    setTimeout(function () { tinyThis.isReadyProvider().then((data) => { resolve(data); }).catch(reject); }, 500);
+                }
+
+            } catch (err) { reject(err); }
+
+            return;
+
+        });
     }
 
     // Account Changed
