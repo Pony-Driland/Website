@@ -91,7 +91,7 @@ var PuddyWeb3 = class {
         }
     }
 
-    // Account Changed
+    // Ready Provider
     async readyProvider() {
 
         for (const item in this.callbacks.readyProvider) {
