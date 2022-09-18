@@ -511,16 +511,13 @@ var PuddyWeb3 = class {
     async requestAccounts() {
 
         // Custom Network
-        console.log('yay',this.networks[this.network].chainIdInt, this.provider.network)
         if ( 
 
             typeof this.network === 'string' && this.networks[this.network] &&
-
-            (
-                !this.provider.network || this.provider.network.chainId !== this.networks[this.network].chainIdInt
-            )
+            this.provider.network || Number(this.provider.network.chainId) !== Number(this.networks[this.network].chainIdInt)
 
         ) {
+            console.log('Changing network...');
             await this.provider.send("wallet_addEthereumChain", [this.networks[this.network]]);
         }
 
