@@ -124,7 +124,7 @@ var PuddyWeb3 = class {
     async setNetwork(newNetwork, oldNetwork) {
 
         // Network
-        this.networkId = newNetwork;
+        this.networkId = newNetwork.chainId;
         localStorage.setItem('web3_network_id', this.networkId);
 
         for (const item in this.callbacks.network) {
