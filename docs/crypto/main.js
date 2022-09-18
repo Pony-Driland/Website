@@ -20,13 +20,13 @@ puddyWeb3.on('network', function (newNetwork, oldNetwork) {
 });
 
 // Connection Update
-puddyWeb3.on('connectionUpdate', function () {
+puddyWeb3.on('connectionUpdate', function (trigger) {
 
     // Get Address
     const address = puddyWeb3.getAddress();
 
     // Console
-    console.log('Web3 Account', address);
+    console.log('Web3 Account (' + trigger + ')', address);
 
     // Update CSS and remove modal
     $('#crypto_connection').modal('hide');
