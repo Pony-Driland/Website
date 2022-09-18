@@ -9,7 +9,7 @@ var PuddyWeb3 = class {
         const tinyThis = this;
 
         // Networks
-        this.callbacks = { accountsChanged: [], networkChanged: [], connectionUpdate: [] };
+        this.callbacks = { accountsChanged: [], networkChanged: [], connectionUpdate: [], network: [] };
 
         this.connected = false;
         this.networks = {
@@ -68,6 +68,10 @@ var PuddyWeb3 = class {
                 this.enabled = true;
                 this.provider = new ethers.providers.Web3Provider(window.ethereum);
 
+                this.provider.on("network", (newNetwork, oldNetwork) => {
+                    tinyThis.network(newNetwork, oldNetwork);
+                });
+
                 this.checkConnection();
 
             } else {
@@ -111,6 +115,20 @@ var PuddyWeb3 = class {
 
         for (const item in this.callbacks.networkChanged) {
             await this.callbacks.networkChanged[item](networkId);
+        }
+
+        return;
+
+    }
+    
+    async network(newNetwork, oldNetwork) {
+
+        // Network
+        this.networkId = newNetwork;
+        localStorage.setItem('web3_network_id', this.networkId);
+
+        for (const item in this.callbacks.network) {
+            await this.callbacks.network[item](newNetwork, oldNetwork);
         }
 
         return;
