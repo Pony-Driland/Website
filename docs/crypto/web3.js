@@ -104,7 +104,7 @@ var PuddyWeb3 = class {
 
     }
 
-    async isReadyProvider() {
+    async waitReadyProvider() {
         const tinyThis = this;
         return new Promise(async function (resolve, reject) {
 
