@@ -26,8 +26,8 @@ for (const item in storyCfg.web3.abi.base) {
 }
 
 // Connection Update
-puddyWeb3.on('connectionUpdate', function () {
+puddyWeb3.waitReadyProvider().then(() => {
 
-    
+    console.log('yay! :3');
 
 });
