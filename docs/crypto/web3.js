@@ -236,7 +236,7 @@ var PuddyWeb3 = class {
     }
 
     // Connection Detected
-    connectionUpdate() {
+    connectionUpdate(trigger) {
         if (this.address) {
 
             // Verified
@@ -246,7 +246,7 @@ var PuddyWeb3 = class {
             $(async () => {
 
                 for (const item in this.callbacks.connectionUpdate) {
-                    await this.callbacks.connectionUpdate[item]();
+                    await this.callbacks.connectionUpdate[item](trigger);
                 }
 
                 return;
@@ -511,6 +511,7 @@ var PuddyWeb3 = class {
     async requestAccounts() {
 
         // Custom Network
+        console.log('yay',this.networks[this.network].chainIdInt, this.provider.network)
         if ( 
 
             typeof this.network === 'string' && this.networks[this.network] &&
@@ -518,7 +519,7 @@ var PuddyWeb3 = class {
             (
                 !this.provider.network || this.provider.network.chainId !== this.networks[this.network].chainIdInt
             )
-            
+
         ) {
             await this.provider.send("wallet_addEthereumChain", [this.networks[this.network]]);
         }
@@ -532,7 +533,7 @@ var PuddyWeb3 = class {
 
         this.address = await this.signer.getAddress();
         this.address = this.address.toLowerCase();
-        this.connectionUpdate();
+        this.connectionUpdate('requestAccounts');
 
         return this.signer;
 
@@ -551,7 +552,7 @@ var PuddyWeb3 = class {
                 await this.requestAccounts();
                 this.address = await this.signer.getAddress();
                 this.address = this.address.toLowerCase();
-                this.connectionUpdate();
+                this.connectionUpdate('checkConnection');
 
                 return this.address;
 
