@@ -63,6 +63,7 @@ storyCfg.web3.login = function () {
                     puddyWeb3.alertIsEnabled();
                     if (puddyWeb3.isEnabled()) {
                         puddyWeb3.sign().then(() => {
+                            $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
                             window.location.reload();
                         }).catch(err => { alert(err.message); console.error(err); });
                     }
