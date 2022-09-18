@@ -119,7 +119,7 @@ storyCfg.web3.login = function () {
                                                 }
 
                                                 puddyWeb3.executeContract(
-                                                    storyCfg.web3.contract,
+                                                    storyCfg.web3.contractAddress,
                                                     storyCfg.web3.abi.base,
                                                     'changeNsfwFilter(string,uint256)',
                                                     [nsfwID, setValue]
@@ -134,7 +134,7 @@ storyCfg.web3.login = function () {
                                             const nsfwID = $(this).data('nsfw_crypto_data').id;
 
                                             puddyWeb3.readContract(
-                                                storyCfg.web3.contract,
+                                                storyCfg.web3.contractAddress,
                                                 storyCfg.web3.abi.base,
                                                 'getNsfwFilter(address,string)',
                                                 [puddyWeb3.getAddress(), nsfwID]
@@ -182,7 +182,7 @@ storyCfg.web3.login = function () {
                 if (typeof volume === 'number' && !isNaN(volume) && isFinite(volume) && volume >= 0 && volume <= 100) {
                     
                     puddyWeb3.executeContract(
-                        storyCfg.web3.contract,
+                        storyCfg.web3.contractAddress,
                         storyCfg.web3.abi.base,
                         'setVolume(uint256)',
                         [volume]
@@ -225,7 +225,7 @@ storyCfg.web3.login = function () {
                     ) {
 
                         puddyWeb3.executeContract(
-                            storyCfg.web3.contract,
+                            storyCfg.web3.contractAddress,
                             storyCfg.web3.abi.base,
                             'insertBookmark(uint256,uint256)',
                             [storyData.chapter.selected, setValue]
