@@ -62,7 +62,9 @@ storyCfg.web3.login = function () {
                     $('#crypto_connection').modal('hide');
                     puddyWeb3.alertIsEnabled();
                     if (puddyWeb3.isEnabled()) {
-                        puddyWeb3.sign();
+                        puddyWeb3.sign().then(data => {
+                            console.log(data);
+                        }).catch(err => { alert(err.message); console.error(err); });
                     }
 
                 })
