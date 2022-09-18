@@ -16,20 +16,7 @@ puddyWeb3.on('networkChanged', function (networkId) {
 });
 
 puddyWeb3.on('network', function (newNetwork, oldNetwork) {
-
     console.log('Web3 Network Connected', newNetwork);
-    // When a Provider makes its initial connection, it emits a "network"
-    // event with a null oldNetwork along with the newNetwork. So, if the
-    // oldNetwork exists, it represents a changing network
-    /* if (oldNetwork) {
-        window.location.reload();
-    } else if(storyCfg.web3.chainId !== newNetwork.chainId) {
-        puddyWeb3.requestAccounts();
-        console.error('Invalid Web3 Network!');
-    } */
-
-
-
 });
 
 // Connection Update
