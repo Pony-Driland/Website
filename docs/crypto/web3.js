@@ -192,6 +192,25 @@ var PuddyWeb3 = class {
         });
     }
 
+    async waitSigner() {
+        const tinyThis = this;
+        return new Promise(async function (resolve, reject) {
+
+            try {
+
+                if (tinyThis.signer) {
+                    resolve(tinyThis.signer);
+                } else {
+                    setTimeout(function () { tinyThis.waitSigner().then((data) => { resolve(data); }).catch(reject); }, 500);
+                }
+
+            } catch (err) { reject(err); }
+
+            return;
+
+        });
+    }
+
     // Connection Detected
     connectionUpdate() {
         if (this.address) {
@@ -259,6 +278,7 @@ var PuddyWeb3 = class {
     isEnabled() { return this.enabled; }
     getProvider() { return this.provider; }
     getAddress() { return this.address; }
+    getSigner() { return this.signer; }
     isConnected() { return this.connected; }
     existAccounts() { return (Array.isArray(this.accounts) && this.accounts.length > 0) }
 
@@ -267,7 +287,9 @@ var PuddyWeb3 = class {
         if (this.enabled) {
 
             console.log('[web3] [log] Request Account...');
-            const address = await this.requestAccounts();
+
+            await this.requestAccounts();
+            const address = this.getAddress();
             console.log('[web3] [address]', address);
 
             const message = ethers.utils.toUtf8Bytes('This is a tiny Pudding Web3 Test! :3' + '\n\nNonce: 0');
@@ -303,7 +325,9 @@ var PuddyWeb3 = class {
                 try {
 
                     // Loading
-                    const send_account = await tinyThis.requestAccounts();
+                    await tinyThis.requestAccounts();
+
+                    const send_account = tinyThis.getAddress();
                     const nonce = await tinyThis.provider.getTransactionCount(send_account, "latest");
                     const currentGasPrice = await tinyThis.getGasPrice();
 
@@ -407,7 +431,9 @@ var PuddyWeb3 = class {
                     else {
 
                         to_address = to_address.toLowerCase();
-                        const send_account = await tinyThis.requestAccounts();
+                        await tinyThis.requestAccounts();
+
+                        const send_account = tinyThis.getAddress();
                         const nonce = await tinyThis.provider.getTransactionCount(send_account, "latest");
                         const currentGasPrice = await tinyThis.getGasPrice();
 
@@ -470,7 +496,7 @@ var PuddyWeb3 = class {
     }
 
     // Request Account
-    async requestAccounts(network) {
+    async requestAccounts() {
 
         // Custom Network
         if (typeof network === 'string' && this.networks[network]) {
@@ -483,11 +509,12 @@ var PuddyWeb3 = class {
         await this.provider.send("eth_requestAccounts", []);
 
         // Address
-        this.address = await this.provider.getSigner().getAddress();
+        this.signer = this.provider.getSigner();
+        this.address = await this.signer.getAddress();
         this.address = this.address.toLowerCase();
         this.connectionUpdate();
 
-        return this.address;
+        return this.signer;
 
     }
 
