@@ -123,7 +123,9 @@ storyCfg.web3.login = function () {
                                                     storyCfg.web3.abi.base,
                                                     'changeNsfwFilter(string,uint256)',
                                                     [nsfwID, setValue]
-                                                );
+                                                ).then((data) => {
+                                                    console.log(data);
+                                                }).catch(err => { alert(err.message); console.error(err); });
 
                                             }
 
@@ -167,12 +169,16 @@ storyCfg.web3.login = function () {
                 const volume = Number(localStorage.getItem('storyVolume'));
 
                 if (typeof volume === 'number' && !isNaN(volume) && isFinite(volume) && volume >= 0 && volume <= 100) {
+                    
                     puddyWeb3.executeContract(
                         storyCfg.web3.contract,
                         storyCfg.web3.abi.base,
                         'setVolume(uint256)',
                         [volume]
-                    );
+                    ).then((data) => {
+                        console.log(data);
+                    }).catch(err => { alert(err.message); console.error(err); });
+
                 }
 
             } else if (clickType === 'load') {
@@ -206,12 +212,16 @@ storyCfg.web3.login = function () {
                         setValue >= 0
 
                     ) {
+
                         puddyWeb3.executeContract(
                             storyCfg.web3.contract,
                             storyCfg.web3.abi.base,
                             'insertBookmark(uint256,uint256)',
                             [storyData.chapter.selected, setValue]
-                        );
+                        ).then((data) => {
+                            console.log(data);
+                        }).catch(err => { alert(err.message); console.error(err); });
+
                     }
 
                 } else if (clickType === 'load') {
@@ -283,5 +293,3 @@ storyCfg.web3.login = function () {
     return false;
 
 };
-
-// puddyWeb3.executeContract();
