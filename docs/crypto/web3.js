@@ -366,10 +366,6 @@ var PuddyWeb3 = class {
                         data: tinyThis.createRaw(abi, functionName, data),
                     };
 
-                    // Transaction
-                    tinyThis.signer = tinyThis.provider.getSigner();
-                    await tinyThis.signerUpdated();
-
                     transaction = await tinyThis.signer.sendTransaction(tx);
 
                 } catch (err) { return reject(err); }
@@ -409,7 +405,7 @@ var PuddyWeb3 = class {
 
                 // Result
                 let transaction;
-                $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
+                await tinyThis.requestAccounts();
 
                 try {
 
@@ -454,8 +450,6 @@ var PuddyWeb3 = class {
                     else {
 
                         to_address = to_address.toLowerCase();
-                        await tinyThis.requestAccounts();
-
                         const send_account = tinyThis.getAddress();
                         const nonce = await tinyThis.provider.getTransactionCount(send_account, "latest");
                         const currentGasPrice = await tinyThis.getGasPrice();
@@ -470,19 +464,11 @@ var PuddyWeb3 = class {
                             gasPrice: ethers.utils.hexlify(parseInt(currentGasPrice)),
                         };
 
-                        // Transaction
-                        tinyThis.signer = tinyThis.provider.getSigner();
-                        await tinyThis.signerUpdated();
-
                         transaction = await tinyThis.signer.sendTransaction(tx);
 
                     }
 
-                    // Complete
-                    $.LoadingOverlay("hide");
-                    console.log(transaction);
-
-                } catch (err) { $.LoadingOverlay("hide"); return reject(err); }
+                } catch (err) { return reject(err); }
                 return resolve(transaction);
 
             } else { resolve(null); }
@@ -504,9 +490,7 @@ var PuddyWeb3 = class {
                     localStorage.setItem('web3_sign', signature);
                     data = signature;
 
-                    $.LoadingOverlay("hide");
-
-                } catch (err) { $.LoadingOverlay("hide"); return reject(err); }
+                } catch (err) {  return reject(err); }
                 return resolve(data);
 
             } else { return resolve(null); }
@@ -555,9 +539,6 @@ var PuddyWeb3 = class {
 
             // Address
             if (this.existAccounts()) {
-
-                this.signer = this.provider.getSigner();
-                await this.signerUpdated();
 
                 this.address = await this.signer.getAddress();
                 this.address = this.address.toLowerCase();
