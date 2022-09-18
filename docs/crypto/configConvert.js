@@ -8,3 +8,7 @@ puddyWeb3.on('signerUpdated', function (signer) {
     );
 
 });
+
+puddyWeb3.waitAddress().then(() => {
+    puddyWeb3.requestAccounts(false);
+});
