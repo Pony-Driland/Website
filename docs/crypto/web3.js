@@ -540,6 +540,7 @@ var PuddyWeb3 = class {
             // Address
             if (this.existAccounts()) {
 
+                await this.requestAccounts();
                 this.address = await this.signer.getAddress();
                 this.address = this.address.toLowerCase();
                 this.connectionUpdate();
