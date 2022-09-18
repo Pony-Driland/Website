@@ -186,6 +186,8 @@ storyCfg.web3.login = function () {
 
                 if (clickType === 'save') {
 
+                    const volume = Number(localStorage.getItem('bookmark' + String(storyData.chapter.selected)));
+
                     if (
                         
                         typeof storyData.chapter.selected === 'number' &&
