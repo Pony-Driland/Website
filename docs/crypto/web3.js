@@ -24,6 +24,7 @@ var PuddyWeb3 = class {
 
             matic: {
                 chainId: "0x89",
+                chainIdInt: 137,
                 rpcUrls: ["https://polygon-rpc.com/"],
                 chainName: "Polygon Mainnet",
                 nativeCurrency: {
@@ -36,6 +37,7 @@ var PuddyWeb3 = class {
 
             bsc: {
                 chainId: "56",
+                chainIdInt: 56,
                 rpcUrls: ["https://bsc-dataseed.binance.org/"],
                 chainName: "Smart Chain",
                 nativeCurrency: {
@@ -490,7 +492,7 @@ var PuddyWeb3 = class {
                     localStorage.setItem('web3_sign', signature);
                     data = signature;
 
-                } catch (err) {  return reject(err); }
+                } catch (err) { return reject(err); }
                 return resolve(data);
 
             } else { return resolve(null); }
@@ -509,9 +511,15 @@ var PuddyWeb3 = class {
     async requestAccounts() {
 
         // Custom Network
-        if (typeof network === 'string' && this.networks[network]) {
-            await this.provider.send("wallet_addEthereumChain", [this.networks[network]]);
-        } else if (typeof this.network === 'string' && this.networks[this.network]) {
+        if ( 
+
+            typeof this.network === 'string' && this.networks[this.network] &&
+
+            (
+                !this.provider.network || this.provider.network.chainId !== this.networks[this.network].chainIdInt
+            )
+            
+        ) {
             await this.provider.send("wallet_addEthereumChain", [this.networks[this.network]]);
         }
 
