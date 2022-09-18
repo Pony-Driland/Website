@@ -23,10 +23,14 @@ for (const item in storyCfg.web3.abi.base) {
                 if (args) { args += ','; }
 
                 if(storyCfg.web3.abi.base[item].inputs[item2].type === 'string') {
-                    extra = ' memory';
+                    extra += ' memory';
                 }
 
-                args += `${storyCfg.web3.abi.base[item].inputs[item2].type}${extra} ${storyCfg.web3.abi.base[item].inputs[item2].name}`;
+                if(storyCfg.web3.abi.base[item].inputs[item2].name){
+                    extra += ' ';
+                }
+
+                args += `${storyCfg.web3.abi.base[item].inputs[item2].type}${extra}${storyCfg.web3.abi.base[item].inputs[item2].name}`;
 
             }
 
