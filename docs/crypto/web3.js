@@ -286,7 +286,7 @@ var PuddyWeb3 = class {
                 try {
 
                     const contract = new ethers.Contract(contract_address, abi, tinyThis.provider);
-                    transaction = await contract[functionName](data);
+                    transaction = await contract[functionName].apply(contract, data);
 
                 } catch (err) { return reject(err); }
                 return resolve(transaction);
