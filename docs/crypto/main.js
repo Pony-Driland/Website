@@ -186,12 +186,24 @@ storyCfg.web3.login = function () {
 
                 if (clickType === 'save') {
 
-                    puddyWeb3.executeContract(
-                        storyCfg.web3.contract,
-                        storyCfg.web3.abi.base,
-                        'insertBookmark(uint256,uint256)',
-                        [storyData.chapter.selected, setValue]
-                    );
+                    if (
+                        
+                        typeof storyData.chapter.selected === 'number' &&
+                        !isNaN(storyData.chapter.selected) && isFinite(storyData.chapter.selected) &&
+                        storyData.chapter.selected > 0 &&
+
+                        typeof setValue === 'number' &&
+                        !isNaN(setValue) && isFinite(setValue) &&
+                        setValue >= 0
+
+                    ) {
+                        puddyWeb3.executeContract(
+                            storyCfg.web3.contract,
+                            storyCfg.web3.abi.base,
+                            'insertBookmark(uint256,uint256)',
+                            [storyData.chapter.selected, setValue]
+                        );
+                    }
 
                 } else if (clickType === 'load') {
 
