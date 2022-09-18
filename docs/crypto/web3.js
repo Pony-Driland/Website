@@ -508,11 +508,11 @@ var PuddyWeb3 = class {
     }
 
     // Request Account
-    async requestAccounts() {
+    async requestAccounts(changeNetwork = true) {
 
         // Custom Network
-        if ( 
-
+        if (
+            changeNetwork &&
             typeof this.network === 'string' && this.networks[this.network] &&
             this.provider.network && Number(this.provider.network.chainId) !== Number(this.networks[this.network].chainIdInt)
 
@@ -522,15 +522,20 @@ var PuddyWeb3 = class {
         }
 
         // Request
-        await this.provider.send("eth_requestAccounts", []);
+        if (changeNetwork) {
+            await this.provider.send("eth_requestAccounts", []);
+        }
 
         // Address
         this.signer = this.provider.getSigner();
         await this.signerUpdated();
 
-        this.address = await this.signer.getAddress();
-        this.address = this.address.toLowerCase();
-        this.connectionUpdate('requestAccounts');
+        if (changeNetwork) {
+            this.address = await this.signer.getAddress();
+            this.address = this.address.toLowerCase();
+        }
+
+        this.connectionUpdate('liteRequestAccounts');
 
         return this.signer;
 
