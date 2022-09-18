@@ -271,6 +271,7 @@ var PuddyWeb3 = class {
                 return resolve(transaction);
 
             } else { resolve(null); }
+            return;
         });
     }
 
