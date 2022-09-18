@@ -68,8 +68,8 @@ var PuddyWeb3 = class {
                 this.enabled = true;
                 this.provider = new ethers.providers.Web3Provider(window.ethereum);
 
-                this.provider.on("network", (newNetwork, oldNetwork) => {
-                    tinyThis.network(newNetwork, oldNetwork);
+                this.provider.on('network', (newNetwork, oldNetwork) => {
+                    tinyThis.setNetwork(newNetwork, oldNetwork);
                 });
 
                 this.checkConnection();
@@ -121,7 +121,7 @@ var PuddyWeb3 = class {
 
     }
     
-    async network(newNetwork, oldNetwork) {
+    async setNetwork(newNetwork, oldNetwork) {
 
         // Network
         this.networkId = newNetwork;
