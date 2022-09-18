@@ -514,7 +514,7 @@ var PuddyWeb3 = class {
         if ( 
 
             typeof this.network === 'string' && this.networks[this.network] &&
-            this.provider.network || Number(this.provider.network.chainId) !== Number(this.networks[this.network].chainIdInt)
+            this.provider.network && Number(this.provider.network.chainId) !== Number(this.networks[this.network].chainIdInt)
 
         ) {
             console.log('Changing network...');
