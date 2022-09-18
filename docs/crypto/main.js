@@ -118,12 +118,7 @@ storyCfg.web3.login = function () {
                                                     setValue = 1;
                                                 }
 
-                                                puddyWeb3.executeContract(
-                                                    storyCfg.web3.contractAddress,
-                                                    storyCfg.web3.abi.base,
-                                                    'changeNsfwFilter(string,uint256)',
-                                                    [nsfwID, setValue]
-                                                ).then((data) => {
+                                                storyCfg.web3.contract.changeNsfwFilter(nsfwID, setValue).then((data) => {
                                                     alert(`Blockchain Storage (BETA) - You set the NSFW Filter ${nsfwID} to ${setValue}!\n\nHash: ${data.hash}`);
                                                 }).catch(err => { alert(err.message); console.error(err); });
 
@@ -181,12 +176,7 @@ storyCfg.web3.login = function () {
 
                 if (typeof volume === 'number' && !isNaN(volume) && isFinite(volume) && volume >= 0 && volume <= 100) {
                     
-                    puddyWeb3.executeContract(
-                        storyCfg.web3.contractAddress,
-                        storyCfg.web3.abi.base,
-                        'setVolume(uint256)',
-                        [volume]
-                    ).then((data) => {
+                    storyCfg.web3.contract.setVolume(volume).then((data) => {
                         alert(`Blockchain Storage (BETA) - You set the volume to ${volume}!\n\nHash: ${data.hash}`);
                     }).catch(err => { alert(err.message); console.error(err); });
 
@@ -224,14 +214,11 @@ storyCfg.web3.login = function () {
 
                     ) {
 
-                        puddyWeb3.executeContract(
-                            storyCfg.web3.contractAddress,
-                            storyCfg.web3.abi.base,
-                            'insertBookmark(uint256,uint256)',
-                            [storyData.chapter.selected, setValue]
+                        storyCfg.web3.contract.insertBookmark(
+                            storyData.chapter.selected, setValue
                         ).then((data) => {
                             alert(`Blockchain Storage (BETA) - You set the Bookmark from chapter ${storyData.chapter.selected} to ${setValue}!\n\nHash: ${data.hash}`);
-                        }).catch(err => { alert(err.message); console.error(err); });
+                        }).catch(err => { alert(err.message); console.error(err); });;
 
                     }
 
