@@ -15,10 +15,19 @@ puddyWeb3.on('networkChanged', function (networkId) {
     console.log('Web3 Network Connected', networkId);
 });
 
-// Network Changed
 puddyWeb3.on('network', function (newNetwork, oldNetwork) {
 
     console.log('Web3 Network Connected', newNetwork);
+    // When a Provider makes its initial connection, it emits a "network"
+    // event with a null oldNetwork along with the newNetwork. So, if the
+    // oldNetwork exists, it represents a changing network
+    if (oldNetwork) {
+        window.location.reload();
+    } else if(storyCfg.web3.chainId !== newNetwork.chainId) {
+        console.error('Invalid Web3 Network!');
+    }
+
+
 
 });
 
@@ -196,7 +205,7 @@ storyCfg.web3.login = function () {
                     const setValue = Number(localStorage.getItem('bookmark' + String(storyData.chapter.selected)));
 
                     if (
-                        
+
                         typeof storyData.chapter.selected === 'number' &&
                         !isNaN(storyData.chapter.selected) && isFinite(storyData.chapter.selected) &&
                         storyData.chapter.selected > 0 &&
@@ -277,7 +286,7 @@ storyCfg.web3.login = function () {
             )
 
         });
- 
+
     }
 
     return false;
