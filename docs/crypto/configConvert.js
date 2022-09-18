@@ -44,14 +44,17 @@ for (const item in storyCfg.web3.abi.base) {
 
 // Connection Update
 puddyWeb3.waitReadyProvider().then(() => {
-    puddyWeb3.waitAddress().then(() => {
+    puddyWeb3.waitAddress().then(async () => {
         
+        await puddyWeb3.requestAccounts();
         storyCfg.web3.contract = new ethers.Contract(
             storyCfg.web3.contractAddress, 
             /* storyCfg.web3.abi.functionsString,  */
             storyCfg.web3.abi.base,
-            puddyWeb3.getProvider().getSigner()
+            puddyWeb3.getSigner()
         );
+        
+        return;
 
     });
 });
