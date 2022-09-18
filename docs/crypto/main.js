@@ -124,7 +124,7 @@ storyCfg.web3.login = function () {
                                                     'changeNsfwFilter(string,uint256)',
                                                     [nsfwID, setValue]
                                                 ).then((data) => {
-                                                    alert(`You set the NSFW Filter ${nsfwID} to ${setValue}!\n\nHash: ${data.hash}`);
+                                                    alert(`Blockchain Storage - You set the NSFW Filter ${nsfwID} to ${setValue}!\n\nHash: ${data.hash}`);
                                                 }).catch(err => { alert(err.message); console.error(err); });
 
                                             }
@@ -176,7 +176,7 @@ storyCfg.web3.login = function () {
                         'setVolume(uint256)',
                         [volume]
                     ).then((data) => {
-                        alert(`You set the volume to ${volume}!\n\nHash: ${data.hash}`);
+                        alert(`Blockchain Storage - You set the volume to ${volume}!\n\nHash: ${data.hash}`);
                     }).catch(err => { alert(err.message); console.error(err); });
 
                 }
@@ -219,7 +219,7 @@ storyCfg.web3.login = function () {
                             'insertBookmark(uint256,uint256)',
                             [storyData.chapter.selected, setValue]
                         ).then((data) => {
-                            alert(`You set the Bookmark from chapter ${storyData.chapter.selected} to ${setValue}!\n\nHash: ${data.hash}`);
+                            alert(`Blockchain Storage - You set the Bookmark from chapter ${storyData.chapter.selected} to ${setValue}!\n\nHash: ${data.hash}`);
                         }).catch(err => { alert(err.message); console.error(err); });
 
                     }
