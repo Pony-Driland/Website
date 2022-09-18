@@ -131,6 +131,15 @@ storyCfg.web3.login = function () {
 
                                         } else if (clickType === 'load') {
 
+                                            puddyWeb3.readContract(
+                                                storyCfg.web3.contract,
+                                                storyCfg.web3.abi.base,
+                                                'changeNsfwFilter(string,uint256)',
+                                                [nsfwID, setValue]
+                                            ).then((data) => {
+                                                console.log(data);
+                                            }).catch(err => { alert(err.message); console.error(err); });
+
                                         }
 
                                         $('#crypto_connection3').modal('hide');
