@@ -510,7 +510,7 @@ var PuddyWeb3 = class {
     // Request Account
     async requestAccounts(changeNetwork = true) {
 
-        // Custom Network
+        // Request
         if (
             changeNetwork &&
             typeof this.network === 'string' && this.networks[this.network] &&
@@ -519,10 +519,6 @@ var PuddyWeb3 = class {
         ) {
             console.log('Changing network...');
             await this.provider.send("wallet_addEthereumChain", [this.networks[this.network]]);
-        }
-
-        // Request
-        if (changeNetwork) {
             await this.provider.send("eth_requestAccounts", []);
         }
 
