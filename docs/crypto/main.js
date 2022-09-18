@@ -154,7 +154,14 @@ storyCfg.web3.login = function () {
         itemsData.volume = $('<button>', { class: 'btn btn-secondary m-2' }).text('Volume').click(function () {
 
             if (clickType === 'save') {
-
+                puddyWeb3.executeContract(
+                    storyCfg.web3.contract,
+                    storyCfg.web3.abi.base,
+                    'setVolume(uint256)',
+                    [
+                        setValue
+                    ]
+                );
             } else if (clickType === 'load') {
 
             }
@@ -172,7 +179,15 @@ storyCfg.web3.login = function () {
             itemsData.bookmark = $('<button>', { class: 'btn btn-secondary m-2' }).text('Bookmark - Chapter ' + storyData.chapter.selected).click(function () {
 
                 if (clickType === 'save') {
-
+                    puddyWeb3.executeContract(
+                        storyCfg.web3.contract,
+                        storyCfg.web3.abi.base,
+                        'insertBookmark(uint256,uint256)',
+                        [
+                            storyData.chapter.selected,
+                            setValue
+                        ]
+                    );
                 } else if (clickType === 'load') {
 
                 }
