@@ -120,7 +120,7 @@ var PuddyWeb3 = class {
         return;
 
     }
-    
+
     async setNetwork(newNetwork, oldNetwork) {
 
         // Network
@@ -266,6 +266,27 @@ var PuddyWeb3 = class {
 
                     // Transaction
                     transaction = await tinyThis.provider.getSigner().sendTransaction(tx);
+
+                } catch (err) { return reject(err); }
+                return resolve(transaction);
+
+            } else { resolve(null); }
+            return;
+        });
+    }
+
+    readContract(contract_address, abi, functionName, data) {
+        const tinyThis = this;
+        return new Promise(async function (resolve, reject) {
+            if (tinyThis.enabled) {
+
+                // Result
+                let transaction;
+
+                try {
+
+                    const contract = new ethers.Contract(contract_address, abi, tinyThis.provider);
+                    transaction = await contract[functionName]();
 
                 } catch (err) { return reject(err); }
                 return resolve(transaction);
