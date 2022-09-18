@@ -269,12 +269,14 @@ var openMDFIle = function (url, isMain = false) {
 
 // Start App
 $(function () {
-    console.log('Starting App...');
-    storyData.start(function (fn, readme) {
 
-        // Custom Colors
-        $('head').append(
-            $('<style>', { id: 'custom_color' }).text(`
+    const startApp = function () {
+        console.log('Starting App...');
+        storyData.start(function (fn, readme) {
+
+            // Custom Colors
+            $('head').append(
+                $('<style>', { id: 'custom_color' }).text(`
 
             .alert .close span{
                 color: ${storyCfg.theme.color4} !important;
@@ -380,416 +382,420 @@ $(function () {
             }
             
             `)
-        );
-
-        // Readme
-        storyData.readme = readme;
-
-        // Get News
-        /* if (storyCfg && storyCfg.news && storyCfg.news.url) {
-            fetch(storyCfg.news.url, { method: 'GET' })
-                .then(response => response.json())
-                .then(data => {
-
-                    console.log(data);
-
-                });
-        } */
-
-
-        /* 
-        
-dsMK.toHTML(data[item].content, {
-    escapeHTML: true,
-    embed: false,
-    discordOnly: false,
-});
-        
-        */
-
-        // Read Me Disable
-        let readButtonDisabled = '';
-        if (storyCfg.underDevelopment) {
-            readButtonDisabled = ' d-none';
-        }
-
-        // Read Updater
-        let isNewValue = '';
-        storyData.globalIsNew = 0;
-        for (const chapter in storyData.isNew) {
-            if (storyData.isNew[chapter] === 2 && storyData.isNew[chapter] > storyData.globalIsNew) {
-                storyData.globalIsNew = 2;
-                isNewValue = $('<span>', { class: 'badge badge-primary ms-2' }).text('NEW');
-            } else if (storyData.isNew[chapter] === 1 && storyData.isNew[chapter] > storyData.globalIsNew) {
-                storyData.globalIsNew = 1;
-                isNewValue = $('<span>', { class: 'badge badge-secondary ms-2' }).text('UPDATE');
-            }
-        }
-
-        // Year
-        const yearNow = moment().year();
-        let copyrightText = null;
-        if (yearNow === storyCfg.year) {
-            copyrightText = `© ${storyCfg.year} ${storyCfg.title} | `;
-        } else {
-            copyrightText = `© ${storyCfg.year} - ${yearNow} ${storyCfg.title} | `;
-        }
-
-        // Insert Navbars
-        const navbarItems = function () {
-
-            // Base Crypto Modal
-            const baseCryptoModal = function (crypto_value, title) {
-                return function () {
-
-                    const qrcodeCanvas = $('<canvas>');
-                    qrcode.toCanvas(qrcodeCanvas[0], storyCfg[crypto_value].address, function (error) {
-                        if (error) { alert(error) } else {
-
-                            // Prepare Text
-                            tinyLib.modal({
-
-                                title: title + ' Network Donation',
-
-                                id: 'busd_request',
-                                dialog: 'modal-lg',
-
-                                body: $('<center>').append(
-
-                                    $('<h4>', { class: 'mb-5' }).text('Please enter the address correctly! Any type issue will be permanent loss of your funds!'),
-                                    $('<a>', { target: '_blank', href: storyCfg[crypto_value].explorer + storyCfg[crypto_value].address }).text('Blockchain Explorer'),
-                                    $('<br>'),
-                                    $('<span>').text(storyCfg[crypto_value].address),
-                                    $('<div>', { class: 'mt-3' }).append(qrcodeCanvas)
-
-                                ),
-
-                                footer: []
-
-                            });
-
-                        }
-                    });
-
-                    // Complete
-                    return false;
-
-                };
-            };
-
-            // Base
-            const donationsItems = [];
-
-            // Patreon
-            if (storyCfg.patreon) {
-                donationsItems.push($('<li>').prepend(
-                    $('<a>', { class: 'dropdown-item', target: '_blank', href: `https://patreon.com/${storyCfg.patreon}`, id: 'patreon-url' }).text('Patreon').prepend(
-                        $('<i>', { class: 'fa-brands fa-patreon me-2' })
-                    )
-                ));
-            }
-
-            // Kofi
-            if (storyCfg.kofi) {
-                donationsItems.push($('<li>').prepend(
-                    $('<a>', { class: 'dropdown-item', target: '_blank', href: `https://ko-fi.com/${storyCfg.kofi}`, id: 'kofi-url' }).text('Ko-Fi').prepend(
-                        $('<i>', { class: 'fa-solid fa-mug-hot me-2' })
-                    )
-                ));
-            }
-
-            // Bitcoin
-            if (storyCfg.bitcoin && storyCfg.bitcoin.address && storyCfg.bitcoin.explorer) {
-                donationsItems.push($('<li>').prepend(
-                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.bitcoin.explorer + storyCfg.bitcoin.address, id: 'bitcoin-wallet' }).text('Bitcoin').prepend(
-                        $('<i>', { class: 'fa-brands fa-bitcoin me-2' })
-                    ).click(baseCryptoModal('bitcoin', 'Bitcoin'))
-                ));
-            }
-
-            // Ethereum
-            if (storyCfg.ethereum && storyCfg.ethereum.address && storyCfg.ethereum.explorer) {
-                donationsItems.push($('<li>').prepend(
-                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.ethereum.explorer + storyCfg.ethereum.address, id: 'ethereum-wallet' }).text('Ethereum').prepend(
-                        $('<i>', { class: 'fa-brands fa-ethereum me-2' })
-                    ).click(baseCryptoModal('ethereum', 'Ethereum'))
-                ));
-            }
-
-            // Polygon
-            if (storyCfg.polygon && storyCfg.polygon.address && storyCfg.polygon.explorer) {
-                donationsItems.push($('<li>').prepend(
-                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.polygon.explorer + storyCfg.polygon.address, id: 'polygon-wallet' }).text('Polygon').prepend(
-                        $('<i>', { class: 'cf cf-matic me-2' })
-                    ).click(baseCryptoModal('polygon', 'Polygon'))
-                ));
-            }
-
-            // BNB
-            if (storyCfg.bnb && storyCfg.bnb.address && storyCfg.bnb.explorer) {
-                donationsItems.push($('<li>').prepend(
-                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.bnb.explorer + storyCfg.bnb.address, id: 'bnb-wallet' }).text('BNB').prepend(
-                        $('<i>', { class: 'cf cf-bnb me-2' })
-                    ).click(baseCryptoModal('bnb', 'BNB'))
-                ));
-            }
-
-            // Crypto Wallet
-            if (storyCfg.nftDomain && storyCfg.nftDomain.url) {
-                donationsItems.push($('<li>').prepend(
-                    $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.domainWallet), id: 'crypto-wallet' }).text('Unstoppable Domains').prepend(
-                        $('<i>', { class: 'fas fa-wallet me-2' })
-                    )
-                ));
-            }
-
-            const metaLogin = { base: $('<li>', { class: 'nav-item font-weight-bold' }), title: 'Login' };
-            if (puddyWeb3.existAccounts()) {
-                metaLogin.title = puddyWeb3.getAddress();
-            }
-
-            metaLogin.button = $('<a>', { id: 'login', class: 'nav-link', href: '#' }).attr('title', metaLogin.title).prepend(
-                $('<i>', { class: 'fa-brands fa-ethereum me-2' })
             );
 
-            metaLogin.base.prepend(metaLogin.button);
-            metaLogin.button.click(storyCfg.web3.login);
+            // Readme
+            storyData.readme = readme;
 
-            const newItem = [
+            // Get News
+            /* if (storyCfg && storyCfg.news && storyCfg.news.url) {
+                fetch(storyCfg.news.url, { method: 'GET' })
+                    .then(response => response.json())
+                    .then(data => {
+    
+                        console.log(data);
+    
+                    });
+            } */
 
-                // Title
-                $('<a>', { class: 'navbar-brand d-none d-lg-block', href: '/' }).text(storyCfg.title).click(function () {
-                    openMDFIle('MAIN', true);
-                    urlUpdate();
-                    return false;
-                }),
 
-                // Nav 1
-                $('<ul>', { class: 'navbar-nav me-auto mt-2 mt-lg-0 small' }).append(
+            /* 
+            
+    dsMK.toHTML(data[item].content, {
+        escapeHTML: true,
+        embed: false,
+        discordOnly: false,
+    });
+            
+            */
 
-                    // Homepage
-                    $('<li>', { class: 'nav-item' }).prepend(
-                        $('<a>', { class: 'nav-link', href: '/', id: 'homepage' }).text('Homepage').prepend(
-                            $('<i>', { class: 'fas fa-home me-2' })
+            // Read Me Disable
+            let readButtonDisabled = '';
+            if (storyCfg.underDevelopment) {
+                readButtonDisabled = ' d-none';
+            }
+
+            // Read Updater
+            let isNewValue = '';
+            storyData.globalIsNew = 0;
+            for (const chapter in storyData.isNew) {
+                if (storyData.isNew[chapter] === 2 && storyData.isNew[chapter] > storyData.globalIsNew) {
+                    storyData.globalIsNew = 2;
+                    isNewValue = $('<span>', { class: 'badge badge-primary ms-2' }).text('NEW');
+                } else if (storyData.isNew[chapter] === 1 && storyData.isNew[chapter] > storyData.globalIsNew) {
+                    storyData.globalIsNew = 1;
+                    isNewValue = $('<span>', { class: 'badge badge-secondary ms-2' }).text('UPDATE');
+                }
+            }
+
+            // Year
+            const yearNow = moment().year();
+            let copyrightText = null;
+            if (yearNow === storyCfg.year) {
+                copyrightText = `© ${storyCfg.year} ${storyCfg.title} | `;
+            } else {
+                copyrightText = `© ${storyCfg.year} - ${yearNow} ${storyCfg.title} | `;
+            }
+
+            // Insert Navbars
+            const navbarItems = function () {
+
+                // Base Crypto Modal
+                const baseCryptoModal = function (crypto_value, title) {
+                    return function () {
+
+                        const qrcodeCanvas = $('<canvas>');
+                        qrcode.toCanvas(qrcodeCanvas[0], storyCfg[crypto_value].address, function (error) {
+                            if (error) { alert(error) } else {
+
+                                // Prepare Text
+                                tinyLib.modal({
+
+                                    title: title + ' Network Donation',
+
+                                    id: 'busd_request',
+                                    dialog: 'modal-lg',
+
+                                    body: $('<center>').append(
+
+                                        $('<h4>', { class: 'mb-5' }).text('Please enter the address correctly! Any type issue will be permanent loss of your funds!'),
+                                        $('<a>', { target: '_blank', href: storyCfg[crypto_value].explorer + storyCfg[crypto_value].address }).text('Blockchain Explorer'),
+                                        $('<br>'),
+                                        $('<span>').text(storyCfg[crypto_value].address),
+                                        $('<div>', { class: 'mt-3' }).append(qrcodeCanvas)
+
+                                    ),
+
+                                    footer: []
+
+                                });
+
+                            }
+                        });
+
+                        // Complete
+                        return false;
+
+                    };
+                };
+
+                // Base
+                const donationsItems = [];
+
+                // Patreon
+                if (storyCfg.patreon) {
+                    donationsItems.push($('<li>').prepend(
+                        $('<a>', { class: 'dropdown-item', target: '_blank', href: `https://patreon.com/${storyCfg.patreon}`, id: 'patreon-url' }).text('Patreon').prepend(
+                            $('<i>', { class: 'fa-brands fa-patreon me-2' })
                         )
-                    ).click(function () {
+                    ));
+                }
+
+                // Kofi
+                if (storyCfg.kofi) {
+                    donationsItems.push($('<li>').prepend(
+                        $('<a>', { class: 'dropdown-item', target: '_blank', href: `https://ko-fi.com/${storyCfg.kofi}`, id: 'kofi-url' }).text('Ko-Fi').prepend(
+                            $('<i>', { class: 'fa-solid fa-mug-hot me-2' })
+                        )
+                    ));
+                }
+
+                // Bitcoin
+                if (storyCfg.bitcoin && storyCfg.bitcoin.address && storyCfg.bitcoin.explorer) {
+                    donationsItems.push($('<li>').prepend(
+                        $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.bitcoin.explorer + storyCfg.bitcoin.address, id: 'bitcoin-wallet' }).text('Bitcoin').prepend(
+                            $('<i>', { class: 'fa-brands fa-bitcoin me-2' })
+                        ).click(baseCryptoModal('bitcoin', 'Bitcoin'))
+                    ));
+                }
+
+                // Ethereum
+                if (storyCfg.ethereum && storyCfg.ethereum.address && storyCfg.ethereum.explorer) {
+                    donationsItems.push($('<li>').prepend(
+                        $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.ethereum.explorer + storyCfg.ethereum.address, id: 'ethereum-wallet' }).text('Ethereum').prepend(
+                            $('<i>', { class: 'fa-brands fa-ethereum me-2' })
+                        ).click(baseCryptoModal('ethereum', 'Ethereum'))
+                    ));
+                }
+
+                // Polygon
+                if (storyCfg.polygon && storyCfg.polygon.address && storyCfg.polygon.explorer) {
+                    donationsItems.push($('<li>').prepend(
+                        $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.polygon.explorer + storyCfg.polygon.address, id: 'polygon-wallet' }).text('Polygon').prepend(
+                            $('<i>', { class: 'cf cf-matic me-2' })
+                        ).click(baseCryptoModal('polygon', 'Polygon'))
+                    ));
+                }
+
+                // BNB
+                if (storyCfg.bnb && storyCfg.bnb.address && storyCfg.bnb.explorer) {
+                    donationsItems.push($('<li>').prepend(
+                        $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.bnb.explorer + storyCfg.bnb.address, id: 'bnb-wallet' }).text('BNB').prepend(
+                            $('<i>', { class: 'cf cf-bnb me-2' })
+                        ).click(baseCryptoModal('bnb', 'BNB'))
+                    ));
+                }
+
+                // Crypto Wallet
+                if (storyCfg.nftDomain && storyCfg.nftDomain.url) {
+                    donationsItems.push($('<li>').prepend(
+                        $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.domainWallet), id: 'crypto-wallet' }).text('Unstoppable Domains').prepend(
+                            $('<i>', { class: 'fas fa-wallet me-2' })
+                        )
+                    ));
+                }
+
+                const metaLogin = { base: $('<li>', { class: 'nav-item font-weight-bold' }), title: 'Login' };
+                if (puddyWeb3.existAccounts()) {
+                    metaLogin.title = puddyWeb3.getAddress();
+                }
+
+                metaLogin.button = $('<a>', { id: 'login', class: 'nav-link', href: '#' }).attr('title', metaLogin.title).prepend(
+                    $('<i>', { class: 'fa-brands fa-ethereum me-2' })
+                );
+
+                metaLogin.base.prepend(metaLogin.button);
+                metaLogin.button.click(storyCfg.web3.login);
+
+                const newItem = [
+
+                    // Title
+                    $('<a>', { class: 'navbar-brand d-none d-lg-block', href: '/' }).text(storyCfg.title).click(function () {
                         openMDFIle('MAIN', true);
                         urlUpdate();
                         return false;
                     }),
 
-                    // Discord Server
-                    $('<li>', { class: 'nav-item' }).prepend(
-                        $('<a>', { class: 'nav-link', target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}`, id: 'discord-server' }).text('Discord Server').prepend(
-                            $('<i>', { class: 'fab fa-discord me-2' })
-                        )
-                    ),
+                    // Nav 1
+                    $('<ul>', { class: 'navbar-nav me-auto mt-2 mt-lg-0 small' }).append(
 
-                    // Derpibooru
-                    $('<li>', { class: 'nav-item' }).prepend(
-                        $('<a>', { target: '_blank', class: 'nav-link', href: 'https://derpibooru.org/tags/' + storyCfg.derpibooru_tag, id: 'derpibooru-page' }).text('Derpibooru').prepend(
-                            $('<i>', { class: 'fa-solid fa-paintbrush me-2' })
-                        )
-                    ),
+                        // Homepage
+                        $('<li>', { class: 'nav-item' }).prepend(
+                            $('<a>', { class: 'nav-link', href: '/', id: 'homepage' }).text('Homepage').prepend(
+                                $('<i>', { class: 'fas fa-home me-2' })
+                            )
+                        ).click(function () {
+                            openMDFIle('MAIN', true);
+                            urlUpdate();
+                            return false;
+                        }),
 
-                    // Donations Button
-                    $('<li>', { class: 'nav-item dropdown', id: 'donations-menu' }).prepend(
-
-                        $('<a>', { class: 'nav-link dropdown-toggle', href: '#', role: 'button', 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false' }).text('Donations').append(
-                            $('<span>', { class: 'navbar-toggler-icon' })
+                        // Discord Server
+                        $('<li>', { class: 'nav-item' }).prepend(
+                            $('<a>', { class: 'nav-link', target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}`, id: 'discord-server' }).text('Discord Server').prepend(
+                                $('<i>', { class: 'fab fa-discord me-2' })
+                            )
                         ),
 
-                        $('<ul>', { class: 'dropdown-menu' }).append(donationsItems)
+                        // Derpibooru
+                        $('<li>', { class: 'nav-item' }).prepend(
+                            $('<a>', { target: '_blank', class: 'nav-link', href: 'https://derpibooru.org/tags/' + storyCfg.derpibooru_tag, id: 'derpibooru-page' }).text('Derpibooru').prepend(
+                                $('<i>', { class: 'fa-solid fa-paintbrush me-2' })
+                            )
+                        ),
+
+                        // Donations Button
+                        $('<li>', { class: 'nav-item dropdown', id: 'donations-menu' }).prepend(
+
+                            $('<a>', { class: 'nav-link dropdown-toggle', href: '#', role: 'button', 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false' }).text('Donations').append(
+                                $('<span>', { class: 'navbar-toggler-icon' })
+                            ),
+
+                            $('<ul>', { class: 'dropdown-menu' }).append(donationsItems)
+
+                        ),
+
+                        // Blog
+                        /* $('<li>', { class: 'nav-item nav-link', target: '_blank', href: storyCfg.blog_url, id: 'blog-url' }).text('Blog').prepend(
+                            $('<i>', { class: 'fa-solid fa-rss me-2' })
+                        ), */
 
                     ),
 
-                    // Blog
-                    /* $('<li>', { class: 'nav-item nav-link', target: '_blank', href: storyCfg.blog_url, id: 'blog-url' }).text('Blog').prepend(
-                        $('<i>', { class: 'fa-solid fa-rss me-2' })
-                    ), */
+                    // Nav 2
+                    $('<ul>', { class: 'nav navbar-nav ms-auto mb-2 mb-lg-0 small', id: 'fic-nav' }).append(
 
-                ),
+                        // Status Place
+                        $('<li>', { id: 'status' }).css('display', 'contents'),
 
-                // Nav 2
-                $('<ul>', { class: 'nav navbar-nav ms-auto mb-2 mb-lg-0 small', id: 'fic-nav' }).append(
+                        // Chapter Name
+                        $('<li>', { id: 'fic-chapter', class: 'nav-item nav-link' }),
 
-                    // Status Place
-                    $('<li>', { id: 'status' }).css('display', 'contents'),
+                        // Login
+                        metaLogin.base,
 
-                    // Chapter Name
-                    $('<li>', { id: 'fic-chapter', class: 'nav-item nav-link' }),
+                        // Read Fanfic
+                        $('<li>', { class: 'nav-item font-weight-bold' + readButtonDisabled }).prepend(
+                            $('<a>', { id: 'fic-start', class: 'nav-link', href: '/?path=read-fic&title=Pony%20Driland' }).text('Read Fic').append(isNewValue).prepend(
+                                $('<i>', { class: 'fab fa-readme me-2' })
+                            )
+                        ).click(function () {
+                            if (!readButtonDisabled) {
+                                $('#top_page').addClass('d-none');
+                                openChapterMenu();
+                                urlUpdate('read-fic');
+                            }
+                            return false;
+                        })
 
-                    // Login
-                    metaLogin.base,
+                    )
 
-                    // Read Fanfic
-                    $('<li>', { class: 'nav-item font-weight-bold' + readButtonDisabled }).prepend(
-                        $('<a>', { id: 'fic-start', class: 'nav-link', href: '/?path=read-fic&title=Pony%20Driland' }).text('Read Fic').append(isNewValue).prepend(
-                            $('<i>', { class: 'fab fa-readme me-2' })
-                        )
-                    ).click(function () {
-                        if (!readButtonDisabled) {
-                            $('#top_page').addClass('d-none');
-                            openChapterMenu();
-                            urlUpdate('read-fic');
-                        }
+                ];
+
+                metaLogin.button.tooltip();
+                return newItem;
+
+            };
+
+            // Insert Navbar
+            $('body').prepend(
+
+                // Navbar
+                $('<nav>', { class: 'navbar navbar-expand-lg navbar-dark bg-dark fixed-top', id: 'md-navbar' }).append(
+
+                    // Title
+                    $('<a>', { class: 'navbar-brand d-block d-lg-none ms-sm-4', href: '/' }).text(storyCfg.title).click(function () {
+                        openMDFIle('MAIN', true);
+                        urlUpdate();
                         return false;
-                    })
+                    }),
 
-                )
+                    // Button
+                    $('<button>', { class: 'navbar-toggler me-sm-4', type: 'button', 'data-bs-toggle': 'collapse', 'data-bs-target': '#mdMenu', 'aria-controls': '#mdMenu', 'aria-expanded': false }).append(
+                        $('<span>', { 'class': 'navbar-toggler-icon' })
+                    ),
 
-            ];
+                    // Collapse
+                    $('<div>', { class: 'collapse navbar-collapse', id: 'mdMenu' }).append(navbarItems()),
 
-            metaLogin.button.tooltip();
-            return newItem;
+                    // OffCanvas
+                    $('<div>', { class: 'offcanvas offcanvas-end d-lg-none', tabindex: -1, id: 'offcanvasNavbar', 'aria-labelledby': 'offcanvasNavbarLabel' }).append(
 
-        };
+                        $('<div>', { class: 'offcanvas-header' }).append(
 
-        // Insert Navbar
-        $('body').prepend(
+                            $('<h5>', { class: 'offcanvas-title', id: 'offcanvasNavbarLabel' }).text(storyCfg.title),
+                            $('<button>', { class: 'btn-close', type: 'button', 'data-bs-dismiss': 'offcanvas' }),
 
-            // Navbar
-            $('<nav>', { class: 'navbar navbar-expand-lg navbar-dark bg-dark fixed-top', id: 'md-navbar' }).append(
+                            $('<div>', { class: 'offcanvas-body' })/* .append(navbarItems()) */
 
-                // Title
-                $('<a>', { class: 'navbar-brand d-block d-lg-none ms-sm-4', href: '/' }).text(storyCfg.title).click(function () {
-                    openMDFIle('MAIN', true);
-                    urlUpdate();
-                    return false;
-                }),
-
-                // Button
-                $('<button>', { class: 'navbar-toggler me-sm-4', type: 'button', 'data-bs-toggle': 'collapse', 'data-bs-target': '#mdMenu', 'aria-controls': '#mdMenu', 'aria-expanded': false }).append(
-                    $('<span>', { 'class': 'navbar-toggler-icon' })
-                ),
-
-                // Collapse
-                $('<div>', { class: 'collapse navbar-collapse', id: 'mdMenu' }).append(navbarItems()),
-
-                // OffCanvas
-                $('<div>', { class: 'offcanvas offcanvas-end d-lg-none', tabindex: -1, id: 'offcanvasNavbar', 'aria-labelledby': 'offcanvasNavbarLabel' }).append(
-
-                    $('<div>', { class: 'offcanvas-header' }).append(
-
-                        $('<h5>', { class: 'offcanvas-title', id: 'offcanvasNavbarLabel' }).text(storyCfg.title),
-                        $('<button>', { class: 'btn-close', type: 'button', 'data-bs-dismiss': 'offcanvas' }),
-
-                        $('<div>', { class: 'offcanvas-body' })/* .append(navbarItems()) */
-
-                    )
-
-                )
-
-            )
-
-        );
-
-        // Insert Readme
-        $('#app').append(
-
-            // Content
-            $('<div>', { id: 'markdown-read', class: 'container' })
-        );
-
-        // Insert Footer
-        $('body').append(
-            $('<footer>', { class: 'page-footer font-small pt-4 clearfix' }).append(
-
-                // Base
-                $('<div>', { class: 'container-fluid text-center text-md-left' }).append(
-                    $('<div>', { class: 'row' }).append(
-
-                        // Logo
-                        $('<div>', { class: 'col-md-6 mt-md-0 mt-3' }).append(
-                            $('<center>').append(
-                                $('<img>', { class: 'img-fluid', src: '/img/logo.png' }),
-                                $('<br/>')
-                            )
-                        ),
-
-                        // Links 1
-                        $('<div>', { class: 'col-md-3 mb-md-0 mb-3' }).append(
-                            $('<h5>').text('Links'),
-                            $('<ul>', { class: 'list-unstyled' }).append(
-
-                                $('<li>').append(
-                                    $('<a>', { target: '_blank', href: `https://opensea.io/collection/${storyCfg.opensea}` }).text('OpenSea').prepend(
-                                        $('<i>', { class: 'fab fa-ethereum me-2' })
-                                    )
-                                ),
-
-                                $('<li>').append(
-                                    $('<a>', { href: `https://${storyData.cid32}.ipfs.dweb.link/` }).text('IPFS ' + storyCfg.nftDomain.name).prepend(
-                                        $('<i>', { class: 'fas fa-wifi me-2' })
-                                    )
-                                ),
-
-                                $('<li>').append(
-                                    $('<a>', { target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}` }).text('Discord Server').prepend(
-                                        $('<i>', { class: 'fab fa-discord me-2' })
-                                    ),
-                                )
-
-                            )
-                        ),
-
-                        // Links 2
-                        $('<div>', { class: 'col-md-3 mb-md-0 mb-3' }).append(
-                            $('<h5>').text('Links'),
-                            $('<ul>', { class: 'list-unstyled' }).append(
-
-                                $('<li>').append(
-                                    $('<a>', { target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.valueURL) }).text(storyCfg.nftDomain.name).prepend(
-                                        $('<i>', { class: 'fas fa-marker me-2' })
-                                    ),
-                                ),
-
-                                $('<li>').append(
-                                    $('<a>', { target: '_blank', href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}` }).text('Github').prepend(
-                                        $('<i>', { class: 'fab fa-github me-2' })
-                                    ),
-                                ),
-
-                                $('<li>').append(
-                                    $('<a>', { target: '_blank', href: 'mailto:' + storyCfg.contact }).text('Contact').prepend(
-                                        $('<i>', { class: 'fas fa-envelope me-2' })
-                                    )
-                                ),
-
-                                $('<li>').prepend(
-                                    $('<a>', { href: '/?path=%2FLICENSE.md&title=License', href: '/?path=%2FLICENSE.md&title=License', id: 'license' }).text('License').prepend(
-                                        $('<i>', { class: 'fas fa-copyright me-2' })
-                                    )
-                                ).click(function () {
-                                    openMDFIle('/LICENSE.md');
-                                    urlUpdate('/LICENSE.md', 'License');
-                                    return false;
-                                })
-
-                            )
                         )
 
                     )
-                ),
 
-                // Copyright
-                $('<div>', { id: 'footer2', class: 'footer-copyright text-center py-3 bg-secondary text-white' })
-                    .text(copyrightText).append(
-                        $('<a>', { target: '_blank', href: storyCfg.creator_url }).text(storyCfg.creator),
-                        '.'
-                    )
+                )
 
-            )
-        );
+            );
 
-        // Start Readme
-        if (params.path !== 'read-fic') {
-            openNewAddress(params, true, true);
-        } else { openChapterMenu(params); }
+            // Insert Readme
+            $('#app').append(
 
-        // Complete
-        if (storyCfg.underDevelopment) { $('#under-development').modal(); }
-        fn();
+                // Content
+                $('<div>', { id: 'markdown-read', class: 'container' })
+            );
 
-    });
+            // Insert Footer
+            $('body').append(
+                $('<footer>', { class: 'page-footer font-small pt-4 clearfix' }).append(
+
+                    // Base
+                    $('<div>', { class: 'container-fluid text-center text-md-left' }).append(
+                        $('<div>', { class: 'row' }).append(
+
+                            // Logo
+                            $('<div>', { class: 'col-md-6 mt-md-0 mt-3' }).append(
+                                $('<center>').append(
+                                    $('<img>', { class: 'img-fluid', src: '/img/logo.png' }),
+                                    $('<br/>')
+                                )
+                            ),
+
+                            // Links 1
+                            $('<div>', { class: 'col-md-3 mb-md-0 mb-3' }).append(
+                                $('<h5>').text('Links'),
+                                $('<ul>', { class: 'list-unstyled' }).append(
+
+                                    $('<li>').append(
+                                        $('<a>', { target: '_blank', href: `https://opensea.io/collection/${storyCfg.opensea}` }).text('OpenSea').prepend(
+                                            $('<i>', { class: 'fab fa-ethereum me-2' })
+                                        )
+                                    ),
+
+                                    $('<li>').append(
+                                        $('<a>', { href: `https://${storyData.cid32}.ipfs.dweb.link/` }).text('IPFS ' + storyCfg.nftDomain.name).prepend(
+                                            $('<i>', { class: 'fas fa-wifi me-2' })
+                                        )
+                                    ),
+
+                                    $('<li>').append(
+                                        $('<a>', { target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}` }).text('Discord Server').prepend(
+                                            $('<i>', { class: 'fab fa-discord me-2' })
+                                        ),
+                                    )
+
+                                )
+                            ),
+
+                            // Links 2
+                            $('<div>', { class: 'col-md-3 mb-md-0 mb-3' }).append(
+                                $('<h5>').text('Links'),
+                                $('<ul>', { class: 'list-unstyled' }).append(
+
+                                    $('<li>').append(
+                                        $('<a>', { target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.valueURL) }).text(storyCfg.nftDomain.name).prepend(
+                                            $('<i>', { class: 'fas fa-marker me-2' })
+                                        ),
+                                    ),
+
+                                    $('<li>').append(
+                                        $('<a>', { target: '_blank', href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}` }).text('Github').prepend(
+                                            $('<i>', { class: 'fab fa-github me-2' })
+                                        ),
+                                    ),
+
+                                    $('<li>').append(
+                                        $('<a>', { target: '_blank', href: 'mailto:' + storyCfg.contact }).text('Contact').prepend(
+                                            $('<i>', { class: 'fas fa-envelope me-2' })
+                                        )
+                                    ),
+
+                                    $('<li>').prepend(
+                                        $('<a>', { href: '/?path=%2FLICENSE.md&title=License', href: '/?path=%2FLICENSE.md&title=License', id: 'license' }).text('License').prepend(
+                                            $('<i>', { class: 'fas fa-copyright me-2' })
+                                        )
+                                    ).click(function () {
+                                        openMDFIle('/LICENSE.md');
+                                        urlUpdate('/LICENSE.md', 'License');
+                                        return false;
+                                    })
+
+                                )
+                            )
+
+                        )
+                    ),
+
+                    // Copyright
+                    $('<div>', { id: 'footer2', class: 'footer-copyright text-center py-3 bg-secondary text-white' })
+                        .text(copyrightText).append(
+                            $('<a>', { target: '_blank', href: storyCfg.creator_url }).text(storyCfg.creator),
+                            '.'
+                        )
+
+                )
+            );
+
+            // Start Readme
+            if (params.path !== 'read-fic') {
+                openNewAddress(params, true, true);
+            } else { openChapterMenu(params); }
+
+            // Complete
+            if (storyCfg.underDevelopment) { $('#under-development').modal(); }
+            fn();
+
+        });
+    };
+
+    puddyWeb3.waitReadyProvider().then(startApp).catch(startApp);
+    
 });
