@@ -9,10 +9,10 @@ for (const item in storyCfg.web3.abi.base) {
         if (storyCfg.web3.abi.base[item].stateMutability === 'view') {
 
             let values = '';
-            for (const item2 in storyCfg.web3.abi.base[item].inputs) {
+            for (const item2 in storyCfg.web3.abi.base[item].outputs) {
 
                 if (values) { values += ','; }
-                values += storyCfg.web3.abi.base[item].inputs[item2].type;
+                values += storyCfg.web3.abi.base[item].outputs[item2].type;
 
             }
 
