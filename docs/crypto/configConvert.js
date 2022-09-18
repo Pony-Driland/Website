@@ -27,7 +27,12 @@ for (const item in storyCfg.web3.abi.base) {
 // Connection Update
 puddyWeb3.waitReadyProvider().then(() => {
     puddyWeb3.waitAddress().then((address) => {
-        console.log(address);
-        storyCfg.web3.abi.functions = new ethers.Contract(puddyWeb3.getAddress(), storyCfg.web3.abi.base, signer);
+        
+        storyCfg.web3.abi.contract = new ethers.Contract(
+            address, 
+            storyCfg.web3.abi.base, 
+            puddyWeb3.getProvider().getSigner()
+        );
+
     });
 });
