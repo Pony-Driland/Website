@@ -30,7 +30,7 @@ for (const item in storyCfg.web3.abi.base) {
 
             }
 
-            storyCfg.web3.abi.functionsString.push('function ' + storyCfg.web3.abi.base[item].name + '() public view returns (' + values + ')');
+            storyCfg.web3.abi.functionsString.push('function ' + storyCfg.web3.abi.base[item].name + '(' + args + ') public view returns (' + values + ')');
 
         }
 
