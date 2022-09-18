@@ -157,8 +157,8 @@ var PuddyWeb3 = class {
     async signerUpdated() {
 
         // Send Request
-        for (const item in this.callbacks.networkChanged) {
-            await this.callbacks.networkChanged[item](this.signer);
+        for (const item in this.callbacks.signerUpdated) {
+            await this.callbacks.signerUpdated[item](this.signer);
         }
 
         return;
