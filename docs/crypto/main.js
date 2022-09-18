@@ -124,7 +124,7 @@ storyCfg.web3.login = function () {
                                                     'changeNsfwFilter(string,uint256)',
                                                     [nsfwID, setValue]
                                                 ).then((data) => {
-                                                    alert(`Blockchain Storage - You set the NSFW Filter ${nsfwID} to ${setValue}!\n\nHash: ${data.hash}`);
+                                                    alert(`Blockchain Storage (BETA) - You set the NSFW Filter ${nsfwID} to ${setValue}!\n\nHash: ${data.hash}`);
                                                 }).catch(err => { alert(err.message); console.error(err); });
 
                                             }
@@ -149,7 +149,7 @@ storyCfg.web3.login = function () {
             tinyLib.modal({
 
                 id: 'crypto_connection3',
-                title: 'Blockchain Storage - ' + clickType2,
+                title: 'Blockchain Storage (BETA) - ' + clickType2,
                 dialog: 'modal-lg',
                 body: $('<center>').append(
                     $('<div>').text('Choose which filter you want to interact with.'), filters
@@ -176,7 +176,7 @@ storyCfg.web3.login = function () {
                         'setVolume(uint256)',
                         [volume]
                     ).then((data) => {
-                        alert(`Blockchain Storage - You set the volume to ${volume}!\n\nHash: ${data.hash}`);
+                        alert(`Blockchain Storage (BETA) - You set the volume to ${volume}!\n\nHash: ${data.hash}`);
                     }).catch(err => { alert(err.message); console.error(err); });
 
                 }
@@ -219,7 +219,7 @@ storyCfg.web3.login = function () {
                             'insertBookmark(uint256,uint256)',
                             [storyData.chapter.selected, setValue]
                         ).then((data) => {
-                            alert(`Blockchain Storage - You set the Bookmark from chapter ${storyData.chapter.selected} to ${setValue}!\n\nHash: ${data.hash}`);
+                            alert(`Blockchain Storage (BETA) - You set the Bookmark from chapter ${storyData.chapter.selected} to ${setValue}!\n\nHash: ${data.hash}`);
                         }).catch(err => { alert(err.message); console.error(err); });
 
                     }
@@ -240,7 +240,7 @@ storyCfg.web3.login = function () {
         tinyLib.modal({
 
             id: 'crypto_connection',
-            title: 'Blockchain Storage',
+            title: 'Blockchain Storage (BETA)',
             dialog: 'modal-lg',
             body: $('<center>').append(
 
@@ -255,7 +255,7 @@ storyCfg.web3.login = function () {
                     tinyLib.modal({
 
                         id: 'crypto_connection2',
-                        title: 'Blockchain Storage - ' + clickType2,
+                        title: 'Blockchain Storage (BETA) - ' + clickType2,
                         dialog: 'modal-lg',
                         body: $('<center>').append(
                             $('<div>').text(modalTitle).append(modalWarn), items
@@ -274,7 +274,7 @@ storyCfg.web3.login = function () {
                     tinyLib.modal({
 
                         id: 'crypto_connection2',
-                        title: 'Blockchain Storage - ' + clickType2,
+                        title: 'Blockchain Storage (BETA) - ' + clickType2,
                         dialog: 'modal-lg',
                         body: $('<center>').append(
                             $('<div>').text(modalTitle).append(modalWarn), items
