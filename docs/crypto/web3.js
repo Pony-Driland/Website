@@ -143,7 +143,7 @@ var PuddyWeb3 = class {
 
     }
 
-    // Account Changed
+    // Network Changed
     async networkChanged(networkId) {
 
         // Network
@@ -170,6 +170,26 @@ var PuddyWeb3 = class {
 
         return;
 
+    }
+
+    // Exist Address
+    async waitAddress() {
+        const tinyThis = this;
+        return new Promise(async function (resolve, reject) {
+
+            try {
+
+                if (tinyThis.address) {
+                    resolve(tinyThis.address);
+                } else {
+                    setTimeout(function () { tinyThis.waitAddress().then((data) => { resolve(data); }).catch(reject); }, 500);
+                }
+
+            } catch (err) { reject(err); }
+
+            return;
+
+        });
     }
 
     // Connection Detected

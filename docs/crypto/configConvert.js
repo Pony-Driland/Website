@@ -1,5 +1,4 @@
 // Prepare Functions
-storyCfg.web3.abi.functions = [];
 storyCfg.web3.abi.functionsString = [];
 for (const item in storyCfg.web3.abi.base) {
 
@@ -27,7 +26,5 @@ for (const item in storyCfg.web3.abi.base) {
 
 // Connection Update
 puddyWeb3.waitReadyProvider().then(() => {
-
-    console.log('yay! :3');
-
+    storyCfg.web3.abi.functions = new ethers.Contract(puddyWeb3.getAddress(), storyCfg.web3.abi.base, signer);
 });
