@@ -16,8 +16,8 @@ var PuddyWeb3 = class {
 
             matic: {
                 chainId: "0x89",
-                rpcUrls: ["https://rpc-mainnet.matic.network/"],
-                chainName: "Matic Mainnet",
+                rpcUrls: ["https://polygon-rpc.com/"],
+                chainName: "Polygon Mainnet",
                 nativeCurrency: {
                     name: "MATIC",
                     symbol: "MATIC",
@@ -211,26 +211,12 @@ var PuddyWeb3 = class {
     * `transfer()` method signature at https://eips.ethereum.org/EIPS/eip-20
     * ABI encoding ruleset at https://solidity.readthedocs.io/en/develop/abi-spec.html
     */
-    createRaw(abi, data) {
-
-        const iface = new ethers.utils.AbiCoder([abi]);
-
-        const prepareData = {
-            type: [],
-            data: []
-        };
-
-        for (const item in data) {
-            prepareData.type.push(data[item].type);
-            prepareData.data.push(data[item].value);
-        }
-
-        const rawData = iface.encode(prepareData.type, prepareData.data);
-        return rawData;
-
+    createRaw(abi, functionName, data) {
+        const iface = new ethers.utils.Interface(abi);
+        return iface.encodeFunctionData(functionName, data);
     }
 
-    executeContract(contract_address, abi, data, HexZero, gasLimit = 100000) {
+    executeContract(contract_address, abi, functionName, data, HexZero, gasLimit = 100000) {
         const tinyThis = this;
         return new Promise(async function (resolve, reject) {
             if (tinyThis.enabled) {
@@ -257,7 +243,7 @@ var PuddyWeb3 = class {
                         gasPrice: ethers.utils.hexlify(parseInt(currentGasPrice)),
                         to: contract_address,
                         value: HexZero,
-                        data: tinyThis.createRaw(abi, data),
+                        data: tinyThis.createRaw(abi, functionName, data),
                     };
 
                     // Transaction
