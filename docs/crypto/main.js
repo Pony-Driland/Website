@@ -134,8 +134,8 @@ storyCfg.web3.login = function () {
                                             puddyWeb3.readContract(
                                                 storyCfg.web3.contract,
                                                 storyCfg.web3.abi.base,
-                                                'changeNsfwFilter(string,uint256)',
-                                                [nsfwID, setValue]
+                                                'getNsfwFilter(address,string)',
+                                                [puddyWeb3.getAddress(), nsfwID]
                                             ).then((data) => {
                                                 console.log(data);
                                             }).catch(err => { alert(err.message); console.error(err); });
