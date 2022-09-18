@@ -370,6 +370,7 @@ var PuddyWeb3 = class {
                     const msg = ethers.utils.toUtf8Bytes(storyCfg.web3.welcome);
                     const signature = await tinyThis.provider.send('personal_sign', [ethers.utils.hexlify(msg), address]);
                     localStorage.setItem('web3_sign', signature);
+                    data = signature;
 
                     $.LoadingOverlay("hide");
 
