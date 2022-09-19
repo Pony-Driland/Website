@@ -54,7 +54,7 @@ storyCfg.web3.login = function () {
         tinyLib.modal({
 
             id: 'crypto_connection',
-            title: 'Login Protocol (Features under development)',
+            title: 'Login Protocol',
             body: $('<center>').append(
 
                 $('<button>', { class: 'btn btn-info m-4' }).text('Metamask').click(function () {
