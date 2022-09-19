@@ -144,7 +144,7 @@ storyCfg.web3.login = function () {
                                                     }
 
                                                     if(storyData.readFic) {
-                                                        $('#fic-start').trigger();
+                                                        $('#fic-start').trigger('click');
                                                     }
 
                                                 }
@@ -209,7 +209,7 @@ storyCfg.web3.login = function () {
 
                         localStorage.setItem('storyVolume', data);
                         if(storyData.readFic) {
-                            $('#fic-start').trigger();
+                            $('#fic-start').trigger('click');
                         }
 
                     }
@@ -268,7 +268,7 @@ storyCfg.web3.login = function () {
 
                                 localStorage.setItem('bookmark' + storyData.chapter.selected, data);
                                 if(storyData.readFic) {
-                                    $('#fic-start').trigger();
+                                    $('#fic-start').trigger('click');
                                 }
 
                             }
