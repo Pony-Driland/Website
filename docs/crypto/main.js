@@ -110,7 +110,6 @@ storyCfg.web3.login = function () {
                                         $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
                                         await puddyWeb3.requestAccounts();
                                         $.LoadingOverlay("hide");
-
                                         if (clickType === 'save') {
 
                                             let setValue = 0;
@@ -176,15 +175,14 @@ storyCfg.web3.login = function () {
         // Volume
         itemsData.volume = $('<button>', { class: 'btn btn-secondary m-2' }).text('Volume').click(async function () {
 
+            $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
+            await puddyWeb3.requestAccounts();
+            $.LoadingOverlay("hide");
             if (clickType === 'save') {
 
                 const volume = Number(localStorage.getItem('storyVolume'));
 
                 if (typeof volume === 'number' && !isNaN(volume) && isFinite(volume) && volume >= 0 && volume <= 100) {
-
-                    $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
-                    await puddyWeb3.requestAccounts();
-                    $.LoadingOverlay("hide");
 
                     storyCfg.web3.contract.setVolume(volume).then((data) => {
                         alert(`Blockchain Storage (BETA) - You set the volume to ${volume}!\n\nHash: ${data.hash}`);
@@ -209,6 +207,9 @@ storyCfg.web3.login = function () {
             // Bookmark
             itemsData.bookmark = $('<button>', { class: 'btn btn-secondary m-2' }).text('Bookmark - Chapter ' + storyData.chapter.selected).click(async function () {
 
+                $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
+                await puddyWeb3.requestAccounts();
+                $.LoadingOverlay("hide");
                 if (clickType === 'save') {
 
                     const setValue = Number(localStorage.getItem('bookmark' + String(storyData.chapter.selected)));
@@ -224,10 +225,6 @@ storyCfg.web3.login = function () {
                         setValue >= 0
 
                     ) {
-
-                        $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
-                        await puddyWeb3.requestAccounts();
-                        $.LoadingOverlay("hide");
 
                         storyCfg.web3.contract.insertBookmark(
                             storyData.chapter.selected, setValue
