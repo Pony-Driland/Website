@@ -101,6 +101,11 @@ var PuddyWeb3 = class {
         }
     }
 
+    // Parse to Simple INT
+    parseToSimpleInt(value) {
+        return Number(value.toString());
+    }
+
     // Ready Provider
     async readyProvider() {
 
