@@ -307,7 +307,12 @@ storyCfg.web3.login = function () {
             dialog: 'modal-lg',
             body: $('<center>').append(
 
-                $('<div>').text('This is your cloud storage. Choose what you want to do. All your data is saved within the blockchain publicly. Any other user will be able to see your data saved.'),
+                $('<div>').append(
+                    $('<p>').text('This is your cloud storage. Choose what you want to do. All your data is saved within the blockchain publicly. Any other user will be able to see your data saved.'),
+                    $('<small>').append(
+                        $('<a>', { href: `${puddyWeb3.getBlockchain().blockExplorerUrls}address/${storyCfg.web3.contractAddress}`, target: '_blank' }).text(storyCfg.web3.contractAddress)
+                    ),
+                ),
 
                 // Load
                 $('<button>', { class: 'btn btn-secondary m-4' }).text('Load').click(function () {
