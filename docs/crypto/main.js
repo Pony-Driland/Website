@@ -143,11 +143,11 @@ storyCfg.web3.login = function () {
                                                         localStorage.setItem('NSFW' + nsfwID, false);
                                                     }
 
+                                                    alert('The NSFW ' + nsfwID + ' setting was downloaded from the blockchain successfully.\nValue: ' + String(data));
+
                                                     if (storyData.readFic) {
                                                         $('#fic-start').trigger('click');
                                                     }
-
-                                                    alert('The NSFW ' + nsfwID + ' setting was downloaded from the blockchain successfully.\nValue: ' + String(data));
 
                                                 }
 
@@ -272,11 +272,12 @@ storyCfg.web3.login = function () {
 
                                 localStorage.setItem('bookmark' + storyData.chapter.selected, data);
                                 storyData.chapter.bookmark[storyData.chapter.selected] = data;
+
+                                alert('The Bookmark Chapter ' + storyData.chapter.selected + ' setting was downloaded from the blockchain successfully.\nValue: ' + String(data));
+
                                 if (storyData.readFic) {
                                     $('#fic-start').trigger('click');
                                 }
-
-                                alert('The Bookmark Chapter ' + storyData.chapter.selected + ' setting was downloaded from the blockchain successfully.\nValue: ' + String(data));
 
                             }
 
