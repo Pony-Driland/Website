@@ -211,6 +211,10 @@ storyData.youtube = {
                                         storyData.music.thumbnail_url = jsonVideo.thumbnail_url;
                                         storyData.music.title = jsonVideo.title;
 
+                                        if (storyData.youtube.volume < 1) {
+                                            storyData.youtube.player.pauseVideo();
+                                        }
+
                                     }).fail(err => {
                                         console.error(err);
                                         alert(err.message);
