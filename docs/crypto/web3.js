@@ -491,7 +491,9 @@ var PuddyWeb3 = class {
                 let data;
                 try {
 
-                    const address = await tinyThis.requestAccounts();
+                    await tinyThis.requestAccounts();
+                    tinyThis.address = await tinyThis.signer.getAddress();
+                    const address = tinyThis.address;
                     const msg = ethers.utils.toUtf8Bytes(storyCfg.web3.welcome);
                     const signature = await tinyThis.provider.send('personal_sign', [ethers.utils.hexlify(msg), address]);
                     localStorage.setItem('web3_sign', signature);
