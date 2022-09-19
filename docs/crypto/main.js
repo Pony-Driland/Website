@@ -267,6 +267,7 @@ storyCfg.web3.login = function () {
                             if (typeof data === 'number' && !isNaN(data) && isFinite(data) && data > -1) {
 
                                 localStorage.setItem('bookmark' + storyData.chapter.selected, data);
+                                storyData.chapter.bookmark[storyData.chapter.selected] = data;
                                 if (storyData.readFic) {
                                     $('#fic-start').trigger('click');
                                 }
