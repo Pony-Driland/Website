@@ -208,8 +208,8 @@ storyCfg.web3.login = function () {
                     if (typeof data === 'number' && !isNaN(data) && isFinite(data) && data > -1) {
 
                         localStorage.setItem('storyVolume', data);
-                        if (storyData.readFic) {
-                            $('#fic-start').trigger('click');
+                        if (storyData.readFic && storyData && storyData.youtube && typeof storyData.youtube.setVolume === 'function') {
+                            storyData.youtube.setVolume(data);
                         }
 
                     }
