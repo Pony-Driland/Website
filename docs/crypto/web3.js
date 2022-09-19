@@ -304,6 +304,7 @@ var PuddyWeb3 = class {
     }
 
     // Data
+    getBlockchain() { return clone(this.networks[this.network]); }
     isEnabled() { return this.enabled; }
     getProvider() { return this.provider; }
     getAddress() { return this.address; }
