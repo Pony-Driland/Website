@@ -67,7 +67,7 @@ storyCfg.web3.login = function () {
                             $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
                             await puddyWeb3.requestAccounts();
                             window.location.reload();
-                            
+
                         }).catch(err => { alert(err.message); console.error(err); });
                     }
 
@@ -126,7 +126,7 @@ storyCfg.web3.login = function () {
 
 
                                                 storyCfg.web3.contract.changeNsfwFilter(nsfwID, setValue).then((data) => {
-                                                    alert(`Blockchain Storage (BETA) - You set the NSFW Filter ${nsfwID} to ${setValue}!\n\nHash: ${data.hash}`);
+                                                    alert(`Blockchain Storage (BETA) (${puddyWeb3.getBlockchain().chainName}) - You set the NSFW Filter ${nsfwID} to ${setValue}!\n\nHash: ${data.hash}`);
                                                 }).catch(err => { alert(err.message); console.error(err); });
 
                                             }
