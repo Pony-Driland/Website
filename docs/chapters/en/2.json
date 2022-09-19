@@ -6427,6 +6427,185 @@
         "value": "This is very strange. These guards don't seem to know what's really going on with Hiroshi.",
         "character": "Rayane",
         "type": "think"
+    },
+
+    
+    {
+        "value": "Vinny and Rayane started to see doors of some rooms around. Some doors were badly damaged and looted. Meanwhile, Rayane was very thoughtful, looking at the administration door quietly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wasn't the administration room attacked? I'm not liking this. Someone must be spying on us.",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "Hey guards! Careful, there might be something on the floor, can you use your magic to see if it's safe to walk here?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 1 was quiet, looking at Vinny for a few seconds in response. Vinny did a poker face."
+    },
+
+    {
+        "value": "S...Sir?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 1 took a deep breath before responding."
+    },
+
+    {
+        "value": "Well. We've already searched this entire place. We'll let you know when you enter an unknown area. After this journey, we cannot guarantee if you will still be able to continue walking here.",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "during the conversation, Rayane was still very quiet. Rayane enter the administration room slowly, looking around.",
+        "type": "action"
+    },
+
+    {
+        "value": "Guard 2 was then surprised to see Rayane entering the room.",
+        "type": "action"
+    },
+
+    {
+        "value": "Huh? R..Rayane? What are you doing?",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Sssh~ Everyone better be quiet.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane answered in a serious way and entered the place, looking for something delicately. Rayane look at some drawers for a few seconds before looking at a monitor screen. Then Vinny and Guard 1 were interrupted by hearing the sound of Rayane's presence.",
+        "type": "action"
+    },
+
+    {
+        "value": "What?",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah. She told everyone to be quiet.",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane? What? Did you find something?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I found documents and some photo records. There's nothing interesting in this room.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane looks at the monitor and press the power button. Then a login screen appears. Guard 1 was very curious, trying to understand Rayane's behavior nervously.",
+        "type": "action"
+    },
+
+    {
+        "value": "R..Rayane... This is confidential. Are you sure you know what you're doing? If you miss the password 3 times, all alarms will be triggered.",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? How do you know? You've never been here and you don't know anything.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 1 got a little more nervous, but Guard 2 continued the conversation for Guard 1 to calm down.",
+        "type": "action"
+    },
+
+    {
+        "value": "Because this is the Bunker's protocols against invasion. Everyone should know the bunker's protocols.",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..Yes. It's very dangerous for you to end up getting the password wrong 3 times. It's going to get everyone's attention here.",
+        "character": "Guard",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then stopped the conversation when he saw that the guards were calming down again. Vinny was starting to suspect something about the guards.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Rayane?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was analyzing and seeing what she could do with the computer keys, but then she looked at Vinny in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A..ah. No no! Sorry.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tried to look for something inside the drawers, but he only find some tablets with some bunker logs. Everything seemed to be just technological gadgets.",
+        "type": "action"
+    },
+
+    {
+        "value": "My God. There is no paper here?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "It's time to try to discover something interesting on this computer.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wait... What? The...the computer? You will end up activating the alarms.",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 1 looked a little worried again, while Guard 2 tried to help keep Guard 1 calm again.",
+        "type": "action"
     }
 
 ]
