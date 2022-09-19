@@ -6468,12 +6468,7 @@
     },
 
     {
-        "value": "During the conversation, Rayane was still very quiet. Rayane enter the administration room slowly, looking around.",
-        "type": "action"
-    },
-
-    {
-        "value": "Guard 2 was then surprised to see Rayane entering the room.",
+        "value": "During the conversation, Rayane was still very quiet. Rayane enter the administration room slowly, looking around. Guard 2 gets surprised to see Rayane entering the room in response.",
         "type": "action"
     },
 
