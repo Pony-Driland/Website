@@ -105,7 +105,11 @@ storyCfg.web3.login = function () {
                                 if (storyCfg.nsfw[NSFWITEM]) {
 
                                     // Action
-                                    filters.push($('<button>', { class: 'btn btn-secondary m-2' }).data('nsfw_crypto_data', { id: NSFWITEM, data: storyCfg.nsfw[NSFWITEM] }).text(storyCfg.nsfw[NSFWITEM].name).click(function () {
+                                    filters.push($('<button>', { class: 'btn btn-secondary m-2' }).data('nsfw_crypto_data', { id: NSFWITEM, data: storyCfg.nsfw[NSFWITEM] }).text(storyCfg.nsfw[NSFWITEM].name).click(async function () {
+
+                                        $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
+                                        await puddyWeb3.requestAccounts();
+                                        $.LoadingOverlay("hide");
 
                                         if (clickType === 'save') {
 
@@ -117,6 +121,7 @@ storyCfg.web3.login = function () {
                                                 if (value === 'true') {
                                                     setValue = 1;
                                                 }
+
 
                                                 storyCfg.web3.contract.changeNsfwFilter(nsfwID, setValue).then((data) => {
                                                     alert(`Blockchain Storage (BETA) - You set the NSFW Filter ${nsfwID} to ${setValue}!\n\nHash: ${data.hash}`);
@@ -140,6 +145,7 @@ storyCfg.web3.login = function () {
                                         }
 
                                         $('#crypto_connection3').modal('hide');
+                                        return;
 
                                     }));
 
@@ -168,14 +174,18 @@ storyCfg.web3.login = function () {
         items.push(itemsData.nsfwFilter);
 
         // Volume
-        itemsData.volume = $('<button>', { class: 'btn btn-secondary m-2' }).text('Volume').click(function () {
+        itemsData.volume = $('<button>', { class: 'btn btn-secondary m-2' }).text('Volume').click(async function () {
 
             if (clickType === 'save') {
 
                 const volume = Number(localStorage.getItem('storyVolume'));
 
                 if (typeof volume === 'number' && !isNaN(volume) && isFinite(volume) && volume >= 0 && volume <= 100) {
-                    
+
+                    $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
+                    await puddyWeb3.requestAccounts();
+                    $.LoadingOverlay("hide");
+
                     storyCfg.web3.contract.setVolume(volume).then((data) => {
                         alert(`Blockchain Storage (BETA) - You set the volume to ${volume}!\n\nHash: ${data.hash}`);
                     }).catch(err => { alert(err.message); console.error(err); });
@@ -187,6 +197,7 @@ storyCfg.web3.login = function () {
             }
 
             $('#crypto_connection2').modal('hide');
+            return;
 
         });
 
@@ -196,7 +207,7 @@ storyCfg.web3.login = function () {
         if (storyData.chapter.selected > 0) {
 
             // Bookmark
-            itemsData.bookmark = $('<button>', { class: 'btn btn-secondary m-2' }).text('Bookmark - Chapter ' + storyData.chapter.selected).click(function () {
+            itemsData.bookmark = $('<button>', { class: 'btn btn-secondary m-2' }).text('Bookmark - Chapter ' + storyData.chapter.selected).click(async function () {
 
                 if (clickType === 'save') {
 
@@ -214,6 +225,10 @@ storyCfg.web3.login = function () {
 
                     ) {
 
+                        $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
+                        await puddyWeb3.requestAccounts();
+                        $.LoadingOverlay("hide");
+
                         storyCfg.web3.contract.insertBookmark(
                             storyData.chapter.selected, setValue
                         ).then((data) => {
@@ -227,6 +242,7 @@ storyCfg.web3.login = function () {
                 }
 
                 $('#crypto_connection2').modal('hide');
+                return;
 
             });
 
