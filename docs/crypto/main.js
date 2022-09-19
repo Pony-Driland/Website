@@ -133,7 +133,7 @@ storyCfg.web3.login = function () {
                                             const nsfwID = $(this).data('nsfw_crypto_data').id;
 
                                             storyCfg.web3.contract.getNsfwFilter(puddyWeb3.getAddress(), nsfwID).then((data) => {
-                                                console.log(data);
+                                                console.log(parseInt(data.toString(), 16));
                                             }).catch(err => { alert(err.message); console.error(err); });
 
                                         }
@@ -188,7 +188,7 @@ storyCfg.web3.login = function () {
             } else if (clickType === 'load') {
 
                 storyCfg.web3.contract.getVolume(puddyWeb3.getAddress()).then((data) => {
-                    console.log(data);
+                    console.log(parseInt(data.toString(), 16));
                 }).catch(err => { alert(err.message); console.error(err); });
 
             }
@@ -236,8 +236,8 @@ storyCfg.web3.login = function () {
 
                     } else if (clickType === 'load') {
 
-                        storyCfg.web3.contract.getBookmark(puddyWeb3.getAddress(),).then((data) => {
-                            console.log(data);
+                        storyCfg.web3.contract.getBookmark(puddyWeb3.getAddress(), storyData.chapter.selected).then((data) => {
+                            console.log(parseInt(data.toString(), 16));
                         }).catch(err => { alert(err.message); console.error(err); });
 
                     }
