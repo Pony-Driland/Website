@@ -133,8 +133,17 @@ storyCfg.web3.login = function () {
                                             const nsfwID = $(this).data('nsfw_crypto_data').id;
 
                                             storyCfg.web3.contract.getNsfwFilter(puddyWeb3.getAddress(), nsfwID).then((data) => {
-                                                
+
                                                 data = puddyWeb3.parseToSimpleInt(data);
+                                                if (typeof data === 'number' && !isNaN(data) && isFinite(data) && data > -1) {
+
+                                                    if (data) {
+                                                        localStorage.setItem('NSFW' + nsfwID, true);
+                                                    } else {
+                                                        localStorage.setItem('NSFW' + nsfwID, false);
+                                                    }
+
+                                                }
 
                                             }).catch(err => { alert(err.message); console.error(err); });
 
@@ -190,8 +199,13 @@ storyCfg.web3.login = function () {
             } else if (clickType === 'load') {
 
                 storyCfg.web3.contract.getVolume(puddyWeb3.getAddress()).then((data) => {
-                    
+
                     data = puddyWeb3.parseToSimpleInt(data);
+                    if (typeof data === 'number' && !isNaN(data) && isFinite(data) && data > -1) {
+
+                        localStorage.setItem('storyVolume', data);
+
+                    }
 
                 }).catch(err => { alert(err.message); console.error(err); });
 
@@ -241,9 +255,14 @@ storyCfg.web3.login = function () {
                     } else if (clickType === 'load') {
 
                         storyCfg.web3.contract.getBookmark(puddyWeb3.getAddress(), storyData.chapter.selected).then((data) => {
-                            
+
                             data = puddyWeb3.parseToSimpleInt(data);
-                            
+                            if (typeof data === 'number' && !isNaN(data) && isFinite(data) && data > -1) {
+
+                                localStorage.setItem('bookmark' + storyData.chapter.selected, data);
+
+                            }
+
                         }).catch(err => { alert(err.message); console.error(err); });
 
                     }
