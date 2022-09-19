@@ -6558,42 +6558,42 @@
     },
 
     {
-        "value": "Okay. Rayane?",
+        "value": "Okay.",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Rayane was analyzing and seeing what she could do with the computer password, but then she looked at Vinny in response.",
+        "value": "Rayane was analyzing and seeing what she could do with the computer password.",
         "type": "action"
     },
 
     {
-        "value": "Yes?",
+        "value": "Hmmmmm...",
         "character": "Rayane",
-        "type": "dialogue"
+        "type": "think"
     },
 
     {
-        "value": "A..ah. No no! Sorry.",
-        "character": "Vinny",
-        "type": "dialogue"
-    },
-
-    {
-        "value": "Vinny tried to look for something inside the drawers, but he only find some tablets with some bunker logs. Everything seemed to be just technological gadgets.",
+        "value": "Vinny was slightly nervous, not wanting to interrupt Rayane. So Vinny tried to look for something inside the drawers, but he only find some tablets with some bunker logs. Everything seemed to be just technological gadgets.",
         "type": "action"
     },
 
     {
-        "value": "My God. There is no paper here?",
+        "value": "Fuck! There is no paper here?",
         "character": "Vinny",
         "type": "think"
     },
 
     {
-        "value": "It's time to try to discover something interesting on this computer.",
+        "value": "Okay. It's time to try to discover something interesting on this computer.",
         "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Rayane?",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
