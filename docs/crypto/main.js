@@ -132,12 +132,7 @@ storyCfg.web3.login = function () {
 
                                             const nsfwID = $(this).data('nsfw_crypto_data').id;
 
-                                            puddyWeb3.readContract(
-                                                storyCfg.web3.contractAddress,
-                                                storyCfg.web3.abi.base,
-                                                'getNsfwFilter(address,string)',
-                                                [puddyWeb3.getAddress(), nsfwID]
-                                            ).then((data) => {
+                                            storyCfg.web3.contract.getNsfwFilter(puddyWeb3.getAddress(), nsfwID).then((data) => {
                                                 console.log(data);
                                             }).catch(err => { alert(err.message); console.error(err); });
 
@@ -192,6 +187,10 @@ storyCfg.web3.login = function () {
 
             } else if (clickType === 'load') {
 
+                storyCfg.web3.contract.getVolume(puddyWeb3.getAddress()).then((data) => {
+                    console.log(data);
+                }).catch(err => { alert(err.message); console.error(err); });
+
             }
 
             $('#crypto_connection2').modal('hide');
@@ -210,31 +209,38 @@ storyCfg.web3.login = function () {
                 $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
                 await puddyWeb3.requestAccounts();
                 $.LoadingOverlay("hide");
-                if (clickType === 'save') {
 
-                    const setValue = Number(localStorage.getItem('bookmark' + String(storyData.chapter.selected)));
 
-                    if (
+                if (
+                    typeof storyData.chapter.selected === 'number' &&
+                    !isNaN(storyData.chapter.selected) && isFinite(storyData.chapter.selected) &&
+                    storyData.chapter.selected > 0
+                ) {
 
-                        typeof storyData.chapter.selected === 'number' &&
-                        !isNaN(storyData.chapter.selected) && isFinite(storyData.chapter.selected) &&
-                        storyData.chapter.selected > 0 &&
+                    if (clickType === 'save') {
 
-                        typeof setValue === 'number' &&
-                        !isNaN(setValue) && isFinite(setValue) &&
-                        setValue >= 0
+                        const setValue = Number(localStorage.getItem('bookmark' + String(storyData.chapter.selected)));
+                        if (
+                            typeof setValue === 'number' &&
+                            !isNaN(setValue) && isFinite(setValue) &&
+                            setValue >= 0
+                        ) {
 
-                    ) {
+                            storyCfg.web3.contract.insertBookmark(
+                                storyData.chapter.selected, setValue
+                            ).then((data) => {
+                                alert(`Blockchain Storage (BETA) - You set the Bookmark from chapter ${storyData.chapter.selected} to ${setValue}!\n\nHash: ${data.hash}`);
+                            }).catch(err => { alert(err.message); console.error(err); });
 
-                        storyCfg.web3.contract.insertBookmark(
-                            storyData.chapter.selected, setValue
-                        ).then((data) => {
-                            alert(`Blockchain Storage (BETA) - You set the Bookmark from chapter ${storyData.chapter.selected} to ${setValue}!\n\nHash: ${data.hash}`);
-                        }).catch(err => { alert(err.message); console.error(err); });;
+                        }
+
+                    } else if (clickType === 'load') {
+
+                        storyCfg.web3.contract.getBookmark(puddyWeb3.getAddress(),).then((data) => {
+                            console.log(data);
+                        }).catch(err => { alert(err.message); console.error(err); });
 
                     }
-
-                } else if (clickType === 'load') {
 
                 }
 
