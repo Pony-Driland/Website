@@ -126,7 +126,7 @@ storyCfg.web3.login = function () {
 
 
                                                 storyCfg.web3.contract.changeNsfwFilter(nsfwID, setValue).then((data) => {
-                                                    alert(`Blockchain Storage (BETA) (${puddyWeb3.getBlockchain().chainName}) - You set the NSFW Filter ${nsfwID} to ${setValue}!\n\nHash: ${data.hash}`);
+                                                    alert(`Blockchain Storage (BETA) ${puddyWeb3.getBlockchain().chainName} - You set the NSFW Filter ${nsfwID} to ${setValue}!\n\nHash: ${data.hash}`);
                                                 }).catch(err => { alert(err.message); console.error(err); });
 
                                             }
@@ -175,7 +175,7 @@ storyCfg.web3.login = function () {
             tinyLib.modal({
 
                 id: 'crypto_connection3',
-                title: 'Blockchain Storage (BETA) (' + puddyWeb3.getBlockchain().chainName + ') - ' + clickType2,
+                title: 'Blockchain Storage (BETA) ' + puddyWeb3.getBlockchain().chainName + ' - ' + clickType2,
                 dialog: 'modal-lg',
                 body: $('<center>').append(
                     $('<div>').text('Choose which filter you want to interact with.'), filters
@@ -200,7 +200,7 @@ storyCfg.web3.login = function () {
                 if (typeof volume === 'number' && !isNaN(volume) && isFinite(volume) && volume >= 0 && volume <= 100) {
 
                     storyCfg.web3.contract.setVolume(volume).then((data) => {
-                        alert(`Blockchain Storage (BETA) (${puddyWeb3.getBlockchain().chainName}) - You set the volume to ${volume}!\n\nHash: ${data.hash}`);
+                        alert(`Blockchain Storage (BETA) ${puddyWeb3.getBlockchain().chainName} - You set the volume to ${volume}!\n\nHash: ${data.hash}`);
                     }).catch(err => { alert(err.message); console.error(err); });
 
                 }
@@ -261,7 +261,7 @@ storyCfg.web3.login = function () {
                             storyCfg.web3.contract.insertBookmark(
                                 storyData.chapter.selected, setValue
                             ).then((data) => {
-                                alert(`Blockchain Storage (BETA) (${puddyWeb3.getBlockchain().chainName}) - You set the Bookmark from chapter ${storyData.chapter.selected} to ${setValue}!\n\nHash: ${data.hash}`);
+                                alert(`Blockchain Storage (BETA) ${puddyWeb3.getBlockchain().chainName} - You set the Bookmark from chapter ${storyData.chapter.selected} to ${setValue}!\n\nHash: ${data.hash}`);
                             }).catch(err => { alert(err.message); console.error(err); });
 
                         }
@@ -318,7 +318,7 @@ storyCfg.web3.login = function () {
                     tinyLib.modal({
 
                         id: 'crypto_connection2',
-                        title: 'Blockchain Storage (BETA) (' + puddyWeb3.getBlockchain().chainName + ') - ' + clickType2,
+                        title: 'Blockchain Storage (BETA) ' + puddyWeb3.getBlockchain().chainName + ' - ' + clickType2,
                         dialog: 'modal-lg',
                         body: $('<center>').append(
                             $('<div>').text(modalTitle).append(modalWarn), items
@@ -337,7 +337,7 @@ storyCfg.web3.login = function () {
                     tinyLib.modal({
 
                         id: 'crypto_connection2',
-                        title: 'Blockchain Storage (BETA) (' + puddyWeb3.getBlockchain().chainName + ') - ' + clickType2,
+                        title: 'Blockchain Storage (BETA) ' + puddyWeb3.getBlockchain().chainName + ' - ' + clickType2,
                         dialog: 'modal-lg',
                         body: $('<center>').append(
                             $('<div>').text(modalTitle).append(modalWarn), items
