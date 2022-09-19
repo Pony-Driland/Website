@@ -147,6 +147,8 @@ storyCfg.web3.login = function () {
                                                         $('#fic-start').trigger('click');
                                                     }
 
+                                                    alert('The NSFW ' + nsfwID + ' setting was downloaded from the blockchain successfully.');
+
                                                 }
 
                                             }).catch(err => { alert(err.message); console.error(err); });
@@ -212,6 +214,8 @@ storyCfg.web3.login = function () {
                             storyData.youtube.setVolume(data);
                         }
 
+                        alert('The volume setting was downloaded from the blockchain successfully.');
+
                     }
 
                 }).catch(err => { alert(err.message); console.error(err); });
@@ -271,6 +275,8 @@ storyCfg.web3.login = function () {
                                 if (storyData.readFic) {
                                     $('#fic-start').trigger('click');
                                 }
+
+                                alert('The Bookmark Chapter ' + storyData.chapter.selected + ' setting was downloaded from the blockchain successfully.');
 
                             }
 
