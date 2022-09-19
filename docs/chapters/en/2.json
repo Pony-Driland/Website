@@ -6525,6 +6525,11 @@
     },
 
     {
+        "value": "Vinny then looks at Guard 1 curiously.",
+        "type": "action"
+    },
+
+    {
         "value": "Ah? How do you know? You've never been here and you don't know anything.",
         "character": "Vinny",
         "type": "dialogue"
