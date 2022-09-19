@@ -143,7 +143,7 @@ storyCfg.web3.login = function () {
                                                         localStorage.setItem('NSFW' + nsfwID, false);
                                                     }
 
-                                                    if(storyData.readFic) {
+                                                    if (storyData.readFic) {
                                                         $('#fic-start').trigger('click');
                                                     }
 
@@ -208,7 +208,7 @@ storyCfg.web3.login = function () {
                     if (typeof data === 'number' && !isNaN(data) && isFinite(data) && data > -1) {
 
                         localStorage.setItem('storyVolume', data);
-                        if(storyData.readFic) {
+                        if (storyData.readFic) {
                             $('#fic-start').trigger('click');
                         }
 
@@ -267,7 +267,7 @@ storyCfg.web3.login = function () {
                             if (typeof data === 'number' && !isNaN(data) && isFinite(data) && data > -1) {
 
                                 localStorage.setItem('bookmark' + storyData.chapter.selected, data);
-                                if(storyData.readFic) {
+                                if (storyData.readFic) {
                                     $('#fic-start').trigger('click');
                                 }
 
