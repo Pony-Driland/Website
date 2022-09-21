@@ -6365,6 +6365,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Okaaaay? Everyone is very quiet here. Let's go then.",
         "character": "Vinny",
         "type": "dialogue"
@@ -6378,6 +6381,7 @@
 
     {
         "set": {
+            "playlistPlay": "dark-ambient-melodies",
             "where": "Banker ???"
         },
         "value": "Then Vinny and Rayane and the two guards went down the crater, everyone approached the entrance and began to enter the tunnel. The place is very typical of a very advanced banker. Vinny were impressed. Meanwhile, the two guards continued to analyze Vinny's behavior curiously.",
