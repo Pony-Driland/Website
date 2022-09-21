@@ -6651,6 +6651,57 @@
     {
         "value": "Vinny does a poker face and tried to calm the conversation.",
         "type": "action"
+    },
+
+    {
+        "value": "W...Weeeell, my first adventure here I was face to face with a Elite Color's member. I had to save James from trouble with Elite Color. I agree with you. I just want to confirm if I have fallen to the ground due to some injury, you will help me. if you fall I will help you. This is partnership. You are free to decide here what you want to do.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? But what is this story?",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The guard 1 was curious, but still suspicious, trying to understand the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah. And now after all this, someone very powerful exploded a bomb here. We now need to try to work together to find out what's going on here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then took a deep breath in a sad way.",
+        "type": "action"
+    },
+
+    {
+        "value": "I tried to deactivate the bomb too. But I failed on this mission.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...What?! Disable the bomb? Are you crazy? You would be dead now!",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The Guard 2 laughs a little in response. Guard 1 was a little thoughtful as he sensed Vinny's sincerity.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmm... If you don't put us in danger, it's our task to help you. But even so, be careful what you're getting yourself into. If you really like danger tasks so much, you could talk to Hiroshi about getting you some work.",
+        "character": "Guard",
+        "type": "dialogue"
     }
 
 ]
