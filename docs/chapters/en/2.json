@@ -6631,13 +6631,13 @@
     },
 
     {
-        "value": "Hey. Who has access to technologies like this around here? James is a smart unicorn friend that can help us at some moment.",
+        "value": "Hey. Who has access to technologies like this around here? James is a smart unicorn that can help us at some moment.",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "The guards then became curious as they looked curiously at Vinny. Guard 1 was starting to get a little suspicious and looked at Vinny.",
+        "value": "The guards then became curious as they looked curiously at Vinny. Guard 1 was starting to get a little suspicious at Vinny.",
         "type": "action"
     },
 
