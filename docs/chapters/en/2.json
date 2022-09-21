@@ -6654,13 +6654,13 @@
     },
 
     {
-        "value": "W...Weeeell, my first adventure here I was face to face with a Elite Color's member. I had to save James from trouble with Elite Color. I agree with you. I just want to confirm if I have fallen to the ground due to some injury, you will help me. if you fall I will help you. This is partnership. You are free to decide here what you want to do.",
+        "value": "W...Weeeell, my first adventure here I was face to face with a Elite Color's member. I had to save James from trouble with Elite Color. I agree with you. I just want to confirm if i need your help, you will help me. if you fall I will help you. This is partnership. You are free to decide here what you want to do.",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Ah? But what is this story?",
+        "value": "H...help me? But what is this story?",
         "character": "Guard 1",
         "type": "dialogue"
     },
@@ -6694,14 +6694,19 @@
     },
 
     {
-        "value": "The Guard 2 laughs a little in response. Guard 1 was a little thoughtful as he sensed Vinny's sincerity.",
+        "value": "The Guard 2 laughs a little in response. But Guard 1 was a little thoughtful as he sensed Vinny's sincerity.",
         "type": "action"
     },
 
     {
-        "value": "Hmmm... If you don't put us in danger, it's our task to help you. But even so, be careful what you're getting yourself into. If you really like danger tasks so much, you could talk to Hiroshi about getting you some work.",
+        "value": "Hmmm... Okay. If you don't put us in danger, it's our task to help you. But even so, be careful what you're getting yourself into. If you really like danger tasks so much, you could talk to Hiroshi about getting you some work.",
         "character": "Guard",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 1 was slowly showing less defensive behavior, trying to understand a little bit how Vinny would react. Meanwhile, Rayane was still working on the computer, but no one was watching her.",
+        "type": "action"
     }
 
 ]
