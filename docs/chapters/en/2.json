@@ -6604,7 +6604,48 @@
     },
 
     {
-        "value": "Guard 1 looked a little worried again, while Guard 2 tried to help keep Guard 1 calm again.",
+        "value": "Guard 1 looked a little worried again, while Guard 2 tried to help keep Guard 1 calm again. Vinny then laughed a little, just to keep the atmosphere more friendly.",
+        "type": "action"
+    },
+    
+    {
+        "value": "Are you doubting Legendary Rayane's ability? I'm surprised anyone not worried about me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "item": [{
+                "id": "mysterious-tablet",
+                "owner": "vinny",
+                "amount": 3
+            }]
+        },
+        "value": "While Rayane was making the guards pay attention to the password, Vinny took 3 tablets and put the tablets in the saddle.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey. Who has access to technologies like this around here? James is a smart unicorn friend that can help us at some moment.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The guards then became curious as they looked curiously at Vinny. Guard 1 was starting to get a little suspicious and looked at Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "James? Is he a scientist? We do have scientists here and you need to be careful. If you do something stupid, we will be punished.",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "Vinny does a poker face and tried to calm the conversation.",
         "type": "action"
     }
 
