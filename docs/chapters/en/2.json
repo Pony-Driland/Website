@@ -6707,6 +6707,134 @@
     {
         "value": "Guard 1 was slowly showing less defensive behavior, trying to understand a little bit how Vinny would react. Meanwhile, Rayane was still working on the computer, but no one was watching her.",
         "type": "action"
+    },
+
+    {
+        "value": "Hah! I think you're too worried. Marlon wasn't going to send this pegasus along with Rayane.",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was then very curious to hear the word \"Marlon\".",
+        "type": "action"
+    },
+
+    {
+        "value": "Marlon? Who is Marlon?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "But then everyone was interrupted by the sound of Rayane finishing doing something on the computer.",
+        "type": "action"
+    },
+
+    {
+        "value": "Marlon is...A..Ah?! What?!",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 2 was completely surprised to see the computer monitor. Guard 1 tried to remain calm while trying to understand the possibilities.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..how?",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Sssssh~ The drama is over. I already solved the problem on the computer.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was curious about the guards' reaction, but then Vinny was also surprised to see Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah. You are dangerous on the keyboard.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine! What's going on here? Everypony! Get out of my way!",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 1 would then push Vinny and Guard 2 away, walking towards Rayne.",
+        "type": "action"
+    },
+
+    {
+        "value": "H...Hey! take it easy!",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 2 gets a little scared. Then everyone finally looked at the monitor screen. Then everyone was surprised again to realize that they were looking at the bunker's map.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. Silly ones~ This is the bunker map. I extracted the map data and now I know perfectly where to go. We are close to the metro. Let's keep walking straight to get to the train. From the train we will go towards the magic item place.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "B..but...but... How did you do that! You don't even know the password!",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 1 was extremely surprised.",
+        "type": "action"
+    },
+
+    {
+        "value": "Looks like you're not the only pony here who has Hiroshi's trust. Let's go~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 1 was extremely surprised, not knowing what to say.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow! She's a badass girl! Trust her!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then laughed a little, to try to calm the tense atmosphere of Guard 1. Guard 2 who was watching, just giggles nervously in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..Okay. Let's go.",
+        "character": "Guard 2",
+        "type": "dialogue"
     }
 
 ]
