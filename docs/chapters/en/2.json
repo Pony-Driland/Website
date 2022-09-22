@@ -6782,13 +6782,13 @@
     },
 
     {
-        "value": "H...Hey! take it easy!",
+        "value": "H...Hey! Take it easy!",
         "character": "Guard 2",
         "type": "dialogue"
     },
 
     {
-        "value": "Guard 2 gets a little scared. Then everyone finally looked at the monitor screen. Then everyone was surprised again to realize that they were looking at the bunker's map.",
+        "value": "Guard 2 gets a little scared. Then everyone finally looked at the monitor screen. Then everyone was surprised again to realize the bunker's map on the monitor screen.",
         "type": "action"
     },
 
