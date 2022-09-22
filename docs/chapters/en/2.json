@@ -6732,13 +6732,13 @@
     },
 
     {
-        "value": "Marlon is...A..Ah?! What?!",
+        "value": "Marlon. Hmmmmm... What?!",
         "character": "Guard 2",
         "type": "dialogue"
     },
 
     {
-        "value": "Guard 2 was completely surprised to see the computer monitor. Guard 1 tried to remain calm while trying to understand the possibilities.",
+        "value": "Guard 2 gets completely surprised to see the computer monitor. Guard 1 tried to remain calm while trying to understand the possibilities.",
         "type": "action"
     },
 
