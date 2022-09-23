@@ -240,12 +240,12 @@ var chapterSet = {
             obj.css('font-size', cacheChapterUpdater.iconSize)
             obj.empty();
             if (types[value]) {
-                if (!obj.attr('data-bs-original-title')) {
-                    obj.attr('title', types[value].title);
+                const newTitle = types[value].title;
+                if (!obj.data('bs-tooltip-data')) {
+                    obj.attr('title', newTitle);
+                    obj.data('bs-tooltip-data', newTitle)
                     obj.tooltip();
                 } else {
-                    const newTitle = types[value].title;
-                    obj.attr('data-bs-original-title', newTitle);
                     obj.data('bs-tooltip-data', newTitle).data('bs-tooltip').setContent({ '.tooltip-inner': newTitle });
                 }
                 obj.removeAttr('title').append($('<i>', { class: types[value].icon }));
