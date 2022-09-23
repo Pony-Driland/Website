@@ -81,6 +81,28 @@ storyCfg.web3.login = function () {
     // Panel
     else {
 
+        const checkPanelActive = function () {
+            return new Promise(function (resolve, reject) {
+                storyCfg.web3.contract.enabled(puddyWeb3.getAddress()).then((isEnabled) => {
+
+                    // Get Value
+                    isEnabled = puddyWeb3.parseToSimpleInt(isEnabled);
+
+                    // Enabled
+                    if (isEnabled) { resolve(true); }
+
+                    // Nope
+                    else {
+                        storyCfg.web3.contract.enable().then((data) => {
+                            alert(`Blockchain Storage (BETA) ${puddyWeb3.getBlockchain().chainName} - Your fanfic account is being activated! Wait a while for the blockchain to finish processing your order. \n\nHash: ${data.hash}`);
+                            resolve(true);
+                        }).catch(err => { alert(err.message); console.error(err); });
+                    }
+
+                }).catch(reject);
+            });
+        };
+
         // Prepare Items
         const modalTitle = 'Choose what kind of data you want to interact within the blockchain. Please make sure you are in the correct domain.';
         const modalWarn = $('<strong>', { class: 'ms-1' }).text('We only work on the domain ' + storyCfg.domain + '!');
@@ -114,23 +136,24 @@ storyCfg.web3.login = function () {
                                         await puddyWeb3.requestAccounts();
                                         $.LoadingOverlay("hide");
                                         if (clickType === 'save') {
+                                            checkPanelActive().then(() => {
 
-                                            let setValue = 0;
-                                            const nsfwID = $(this).data('nsfw_crypto_data').id;
-                                            if (typeof nsfwID === 'string' && nsfwID.length > 0) {
+                                                let setValue = 0;
+                                                const nsfwID = $(this).data('nsfw_crypto_data').id;
+                                                if (typeof nsfwID === 'string' && nsfwID.length > 0) {
 
-                                                const value = localStorage.getItem('NSFW' + nsfwID);
-                                                if (value === 'true') {
-                                                    setValue = 1;
+                                                    const value = localStorage.getItem('NSFW' + nsfwID);
+                                                    if (value === 'true') {
+                                                        setValue = 1;
+                                                    }
+
+                                                    storyCfg.web3.contract.changeNsfwFilter(nsfwID, setValue).then((data) => {
+                                                        alert(`Blockchain Storage (BETA) ${puddyWeb3.getBlockchain().chainName} - You set the NSFW Filter ${nsfwID} to ${setValue}!\n\nHash: ${data.hash}`);
+                                                    }).catch(err => { alert(err.message); console.error(err); });
+
                                                 }
 
-
-                                                storyCfg.web3.contract.changeNsfwFilter(nsfwID, setValue).then((data) => {
-                                                    alert(`Blockchain Storage (BETA) ${puddyWeb3.getBlockchain().chainName} - You set the NSFW Filter ${nsfwID} to ${setValue}!\n\nHash: ${data.hash}`);
-                                                }).catch(err => { alert(err.message); console.error(err); });
-
-                                            }
-
+                                            }).catch(err => { alert(err.message); console.error(err); });
                                         } else if (clickType === 'load') {
 
                                             const nsfwID = $(this).data('nsfw_crypto_data').id;
@@ -194,17 +217,19 @@ storyCfg.web3.login = function () {
             await puddyWeb3.requestAccounts();
             $.LoadingOverlay("hide");
             if (clickType === 'save') {
+                checkPanelActive().then(() => {
 
-                const volume = Number(localStorage.getItem('storyVolume'));
+                    const volume = Number(localStorage.getItem('storyVolume'));
 
-                if (typeof volume === 'number' && !isNaN(volume) && isFinite(volume) && volume >= 0 && volume <= 100) {
+                    if (typeof volume === 'number' && !isNaN(volume) && isFinite(volume) && volume >= 0 && volume <= 100) {
 
-                    storyCfg.web3.contract.setVolume(volume).then((data) => {
-                        alert(`Blockchain Storage (BETA) ${puddyWeb3.getBlockchain().chainName} - You set the volume to ${volume}!\n\nHash: ${data.hash}`);
-                    }).catch(err => { alert(err.message); console.error(err); });
+                        storyCfg.web3.contract.setVolume(volume).then((data) => {
+                            alert(`Blockchain Storage (BETA) ${puddyWeb3.getBlockchain().chainName} - You set the volume to ${volume}!\n\nHash: ${data.hash}`);
+                        }).catch(err => { alert(err.message); console.error(err); });
 
-                }
+                    }
 
+                }).catch(err => { alert(err.message); console.error(err); });
             } else if (clickType === 'load') {
 
                 storyCfg.web3.contract.getVolume(puddyWeb3.getAddress()).then((data) => {
@@ -250,22 +275,24 @@ storyCfg.web3.login = function () {
                 ) {
 
                     if (clickType === 'save') {
+                        checkPanelActive().then(() => {
 
-                        const setValue = Number(localStorage.getItem('bookmark' + String(storyData.chapter.selected)));
-                        if (
-                            typeof setValue === 'number' &&
-                            !isNaN(setValue) && isFinite(setValue) &&
-                            setValue >= 0
-                        ) {
+                            const setValue = Number(localStorage.getItem('bookmark' + String(storyData.chapter.selected)));
+                            if (
+                                typeof setValue === 'number' &&
+                                !isNaN(setValue) && isFinite(setValue) &&
+                                setValue >= 0
+                            ) {
 
-                            storyCfg.web3.contract.insertBookmark(
-                                storyData.chapter.selected, setValue
-                            ).then((data) => {
-                                alert(`Blockchain Storage (BETA) ${puddyWeb3.getBlockchain().chainName} - You set the Bookmark from chapter ${storyData.chapter.selected} to ${setValue}!\n\nHash: ${data.hash}`);
-                            }).catch(err => { alert(err.message); console.error(err); });
+                                storyCfg.web3.contract.insertBookmark(
+                                    storyData.chapter.selected, setValue
+                                ).then((data) => {
+                                    alert(`Blockchain Storage (BETA) ${puddyWeb3.getBlockchain().chainName} - You set the Bookmark from chapter ${storyData.chapter.selected} to ${setValue}!\n\nHash: ${data.hash}`);
+                                }).catch(err => { alert(err.message); console.error(err); });
 
-                        }
+                            }
 
+                        }).catch(err => { alert(err.message); console.error(err); });
                     } else if (clickType === 'load') {
 
                         storyCfg.web3.contract.getBookmark(puddyWeb3.getAddress(), storyData.chapter.selected).then((data) => {
