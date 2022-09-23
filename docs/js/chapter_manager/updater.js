@@ -236,14 +236,17 @@ var chapterSet = {
                 lateAtNight: { icon: 'fas fa-bullseye', title: 'Late at Night' }
             };
 
-            const obj = $('#fic-nav > #status #dayNightCycle').css('font-size', cacheChapterUpdater.iconSize);
+            const obj = $('#fic-nav > #status #dayNightCycle');
+            obj.css('font-size', cacheChapterUpdater.iconSize)
             obj.empty();
             if (types[value]) {
                 if (!obj.attr('data-bs-original-title')) {
                     obj.attr('title', types[value].title);
                     obj.tooltip();
                 } else {
-                    obj.attr('data-bs-original-title', types[value].title);
+                    const newTitle = types[value].title;
+                    obj.attr('data-bs-original-title', newTitle);
+                    obj.data('bs-tooltip-data', newTitle).data('bs-tooltip').setContent({ '.tooltip-inner': newTitle });
                 }
                 obj.removeAttr('title').append($('<i>', { class: types[value].icon }));
             }
