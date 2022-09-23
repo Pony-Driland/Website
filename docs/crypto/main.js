@@ -94,8 +94,7 @@ storyCfg.web3.login = function () {
                     // Nope
                     else {
                         storyCfg.web3.contract.enable().then((data) => {
-                            alert(`Blockchain Storage (BETA) ${puddyWeb3.getBlockchain().chainName} - Your fanfic account is being activated! Wait a while for the blockchain to finish processing your order. \n\nHash: ${data.hash}`);
-                            resolve(true);
+                            reject(new Error(`Blockchain Storage (BETA) ${puddyWeb3.getBlockchain().chainName} - Your fanfic account is being activated! Wait a while for the blockchain to finish processing your order. \n\nHash: ${data.hash}`));
                         }).catch(err => { alert(err.message); console.error(err); });
                     }
 
