@@ -6835,6 +6835,131 @@
         "value": "O..Okay. Let's go.",
         "character": "Guard 2",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "Heh~ So let's go to the elevator. we have a long way to go.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then stops poking the smartmoby and leaves the room, walking towards the door at the end of the hall.",
+        "type": "action"
+    },
+
+    {
+        "value": "Weeeell... Let's go.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little ironically and followed Rayane. The two guards looked at each other, wondering what to do. So the two finally agreed to follow Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "I hope this is all being a good idea.",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Don't worry. It's Rayane. Hiroshi always trusted Rayane. We just need to be careful with the crazy pony.",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then everyone finally arrived at the elevator door which was damaged. Rayane analyzed the situation of the door a little, then she used magic to forcefully open the elevator door.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow. But what trust is this?",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Calm down, there's no superior here among us.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looked around as he waited for Rayane to get into the elevator to make the elevator work.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey! I'm the superior here. And if I fail, Hiroshi will punish me! That's motive I want you to listen to me when I say that we've reached the limit!",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Shhhhh~ Sillies. Don't worry, we won't do anything wrong.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 1 tried to remain calm when listening to Rayane's words. Then Guard 1 took a deep breath. Rayane began to focus energy on the horn slowly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine.",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wait. How are we going to get through this damaged door?",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 2 was curious to see that the elevator door could not be closed. Rayane then used her magic energy sphere and blew up the rest of the elevator door, making all the remains of the door flies around.",
+        "type": "action"
+    },
+
+    {
+        "value": "What the hell is that?!",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "FUCK!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "WOOOOW!",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ Problem solved. Let's go~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "R...Rayane? Don't you want a megaphone to let everyone know we're here?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny rubbed his paw on his head after the scare.",
+        "type": "action"
     }
 
 ]
