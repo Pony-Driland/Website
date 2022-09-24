@@ -6844,12 +6844,12 @@
     },
 
     {
-        "value": "Rayane then stops poking the smartmoby and leaves the room, walking towards the door at the end of the hall.",
+        "value": "Rayane then stops poking her smartmoby and leaves the room, walking towards the door at the end of the hall.",
         "type": "action"
     },
 
     {
-        "value": "Weeeell... Let's go.",
+        "value": "Weeeell... Yes.",
         "character": "Vinny",
         "type": "dialogue"
     },
