@@ -6960,6 +6960,124 @@
     {
         "value": "Vinny rubbed his paw on his head after the scare.",
         "type": "action"
+    },
+
+    {
+        "value": "Well... About your superior, we know that you are responsible, but don't you think that being punished is not something you have to review? do you like this life?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "He spoke while following rayane",
+        "type": "action"
+    },
+
+    {
+        "value": "the guards were a little surprised and just kept following the scene",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane giggles a little before doing a silly, malicious face. Ignoring the guards' startled reaction.",
+        "type": "action"
+    },
+
+    {
+        "value": "Would you want to remove the door piece by piece then?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a poker face, looking at the situation not knowing what to say. Then Vinny would smile a little, trying to respond in a calm and fun way.",
+        "type": "action"
+    },
+
+    {
+        "value": "Aaah... Fine. I let the next doors for you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ Thank you.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane entered the elevator and invited everyone to enter. Then everyone got in the elevator while Rayane analyzed the whole situation. The Guard 1 took a deep breath.",
+        "type": "action"
+    },
+
+    {
+        "value": "If I'm going to die on this mission, I want us to at least save some innocent lives. This has been my main purpose since I found out about this place. You must have your life goals too.",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was then curious to hear this.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Ah! I have my ideas, but I'd rather stay alive without goal. if I die who will continue where I left off?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh? What kind of conversation is this?",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah. A good thought for you if you want to continue here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..Yes.",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The guard was curious about Vinny's strange behavior. Guard 2 just kept quiet, trying to understand the situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay! What do you think, Rayane? The ponies that used the elevator, were they angry?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Shhhh~ We'll find that out in the next room.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay. We'd better wait for something bad, if Hiroshi hasn't come back and he has rough signs of fights, we need to prepare ourselves then.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmmm... It looks like you're already starting to understand the odds of this place. I'm glad for that~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The two guards were starting to get worried as they understood Rayane and Vinny's thoughts.",
+        "type": "action"
     }
 
 ]
