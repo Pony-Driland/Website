@@ -7503,6 +7503,28 @@
         "value": "YES! I did!",
         "character": "Rayane",
         "type": "think"
+    },
+    
+    {
+        "value": "Guard 2 was very surprised while Guard 1 was choosing another weapon during this time. Guard 2 then used the moment to try to hit the second mysterious pony that was scared that his lost the bazooka. Then all 3 mysterious ponies became unfocused due to surprise.",
+        "type": "action"
+    },
+    
+    {
+        "value": "R..Rayane! You rock!",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 1 then decided to throw a grenade towards the pony that was using the machine gun. Then all the shots stopped instantly when everyone noticed the presence of the grenade.",
+        "type": "action"
+    },
+
+    {
+        "value": "F..FUUUUUCK! GRENADE COMING!",
+        "character": "???",
+        "type": "dialogue"
     }
 
 ]
