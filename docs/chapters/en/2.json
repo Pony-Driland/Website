@@ -7459,6 +7459,12 @@
         "value": "N...not this one! I'll have to go with plan B!",
         "character": "Rayane",
         "type": "think"
+    },
+
+    {
+        "value": "Rayane took advantage of the quiet moment to get time to use a spell, not to mention what she was going to do. Meanwhile the guards are positioning their weapons to try to have more balance when shooting.",
+        "type": "action"
     }
+
 
 ]
