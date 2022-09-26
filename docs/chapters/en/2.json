@@ -7368,6 +7368,12 @@
     {
         "value": "Rayane remains focused as she went to hide behind another pillar. Vinny was feeling nervous and positioned the sniper again. Vinny focused on the glowing gun barrels that were just barely visible behind some pillars next to the subway roulette.",
         "type": "action"
+    },
+
+    {
+        "value": "Crap! I'm going to lose my head today.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
