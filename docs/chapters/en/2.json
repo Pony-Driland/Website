@@ -7321,6 +7321,30 @@
     {
         "value": "Vinny was surprised to see Rayane defending him. Rayane had a very serious and concentrated look.",
         "type": "action"
+    },
+
+    
+    {
+        "value": "Vinny! Don't lose focus! We now need to look for a hiding place before taking the firearms!",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "S..sorry.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane would then summon a force field to help the guards move towards the subway pillars.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ I saved your life again. Time is precious now. ",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
