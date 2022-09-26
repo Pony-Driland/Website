@@ -7158,7 +7158,7 @@
     },
 
     {
-        "value": "What?",
+        "value": "W...What?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -7167,6 +7167,17 @@
         "value": "Heh~ We're already much further from home than you might think. You need to get ready too.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looked a little nervous, but then he tried to accept the situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "F..fine. I'm not enjoying this.",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
