@@ -7403,6 +7403,62 @@
         "value": "Holy shit! But what boring ponies!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "Vinny then realized that a third shooter was getting ready to shoot him again. The other two shooters were distracted by the guards.",
+        "type": "action"
+    },
+
+    {
+        "value": "FUCK! YOU ARE REALLY A BITCH! I WILL KILL YOU!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane and the guards were a little worried to hear Vinny's unexpected intimidation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Whaaaaat?!",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "All the shooters then looked at Vinny, feeling irritated to hear the taunts. So at this moment Vinny heard something that sounded like a pony was switching weapons to some different mysterious weapon.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh fuck.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny does a poker face and then look at Rayane and the guards.Vinny makes a sign for everyone to be careful. Vinny heard that the second pony was also changing weapons. And the first one still wasn't doing anything, but Vinny would start to see that the pony had a heavy weapon.",
+        "type": "action"
+    },
+
+    {
+        "value": "What did Vinny do this time!",
+        "character": "Guard 1",
+        "type": "think"
+    },
+
+    {
+        "value": "Ooooooooooooh fuck.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "N...not this one! I'll have to go with plan B!",
+        "character": "Rayane",
+        "type": "think"
     }
 
 ]
