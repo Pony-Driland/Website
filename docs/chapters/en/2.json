@@ -7283,14 +7283,14 @@
     },
 
     {
-        "set": {
-            "playlistPlay": "troubles"
-        },
         "value": "Meanwhile, Rayane was looking at her smartMoby. When she realized that everyone was finally more focused, she prepared to open the door.",
         "type": "action"
     },
 
     {
+        "set": {
+            "playlistPlay": "troubles"
+        },
         "value": "Okay then. Let's go.",
         "character": "Rayane",
         "type": "dialogue"
@@ -7298,6 +7298,22 @@
 
     {
         "value": "Rayane uses her magic to slowly open the door. When the door opened, it was visible to see the subway entrance ahead. Everything was very quiet. It was possible to see a train with the door open. The guards are ready for any surprise melee attack. The guards protected Rayane as she started to spawn her sword.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmm... This doesn't seem to be that difficult.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    
+    {
+        "value": "Vinny used his wings to hold the gun's trigger and stayed in position, looking for any threat.",
+        "type": "action"
+    },
+
+    {
+        "value": "At the time Vinny were positioning the sniper, someone shot in Vinny direction, but Rayane quickly used her sword to block the shot.",
         "type": "action"
     }
 
