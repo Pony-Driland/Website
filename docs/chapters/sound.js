@@ -262,6 +262,7 @@ storyCfg.playlist = {
     'troubles': [
         { id: 'gWNsV8L1DB8', type: 'youtube' },
         { id: 'ACXW__UAC7w', type: 'youtube' },
+        { id: 'VMziMXYkVS0', type: 'youtube' },
     ],
 
     'first-vs-rayane': [
