@@ -105,7 +105,6 @@ storyCfg.playlist = {
         { id: 'f3Fi4q7Es2Q', type: 'youtube' },
         { id: 'HRfiZbJ5kW0', type: 'youtube' },
         { id: '2waixMvzakE', type: 'youtube' },
-        { id: 'ACXW__UAC7w', type: 'youtube' },
     ],
 
     'drama-battle': [
@@ -262,6 +261,7 @@ storyCfg.playlist = {
 
     'troubles': [
         { id: 'gWNsV8L1DB8', type: 'youtube' },
+        { id: 'ACXW__UAC7w', type: 'youtube' },
     ],
 
     'first-vs-rayane': [
