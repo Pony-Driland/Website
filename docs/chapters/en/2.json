@@ -7523,6 +7523,12 @@
     },
 
     {
+        "value": "Fine! Everyone distracted. This is the best time for it.",
+        "character": "Guard 1",
+        "type": "think"
+    },
+
+    {
         "value": "Guard 1 then decided to throw a grenade towards the pony that was using the machine gun. Then all the shots stopped instantly when everyone noticed the presence of the grenade.",
         "type": "action"
     },
