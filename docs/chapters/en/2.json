@@ -7048,6 +7048,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Shhhh~ We'll find that out in the next room.",
         "character": "Rayane",
         "type": "dialogue"
@@ -7066,8 +7069,107 @@
     },
 
     {
-        "value": "The two guards were starting to get worried as they understood Rayane and Vinny's thoughts.",
+        "set": {
+            "playlistPlay": "bad-mystery"
+        },
+        "value": "Then Rayane would press the button for the elevator to start going down. Everything was very quiet. The two guards were starting to get worried as they understood Rayane and Vinny's thoughts. Then Vinny would stare at Guard 1. Guard 1 would be curious and try to keep a straight face.",
         "type": "action"
+    },
+    
+    {
+        "value": "So... If the pony you love the most in life do something wrong and you have to kill them? Would you do what they ask you to do? Or would you try to help everyone? Examples? Your family. I don't know anything about you but I'm sure at some point you already had a family. If you have any quetions about me, feel free to ask.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 2 was quiet and a little surprised. Meanwhile Guard 1 just took a deep breath and responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "This is much more personal than you might think. I can't answer this kind of question.",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..Yeah. Your conversation is getting too serious.",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane just kept quiet while she reflected on the situation while calmly listening to the sound of the elevator coming down.",
+        "type": "action"
+    },
+
+    {
+        "value": "Everyone seems lost not knowing what is really going on here. Or they must be hiding something very covidiential. What are Hiroshi and Marlon doing this time? I've never seen these two ponies create a war of this level. This story must go much deeper than a simple war. I'm sure there's something very wrong going on here.",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "Okay sir guard. It's ok, I respect your privacy.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Vinny looked at Guard 2.",
+        "type": "action"
+    },
+
+    {
+        "value": "And you? How did you end up as a guard?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "M...Me? You're too curious!",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The Guard 2 gets a little uncomfortable during the question.",
+        "type": "action"
+    },
+
+    {
+        "value": "Are you really not going to say anything? Rayane is here with us.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The two guards looked at each other, just keeping silent.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then the elevator finally arrived at the destination. The elevator then shook a little, getting ready to open the door. The two guards started to prepare their spears during the progress.",
+        "type": "action"
+    },
+
+    {
+        "value": "What?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ We're already much further from home than you might think. You need to get ready too.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
