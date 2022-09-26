@@ -7150,9 +7150,6 @@
     },
 
     {
-        "set": {
-            "playlistPlay": null
-        },
         "value": "Then the elevator finally arrived at the destination. The elevator then shook a little, getting ready to open the door. The two guards started to prepare their spears during the progress.",
         "type": "action"
     },
@@ -7175,9 +7172,6 @@
     },
 
     {
-        "set": {
-            "playlistPlay": "troubles"
-        },
         "value": "F..fine. I'm not enjoying this.",
         "character": "Vinny",
         "type": "think"
@@ -7268,6 +7262,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "A...ah?! Where did you get that? Come on! Are you seriously going to trust me as a sniper while you're left with a sharp stick in the front?",
         "character": "Vinny",
         "type": "dialogue"
@@ -7286,6 +7283,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "troubles"
+        },
         "value": "Meanwhile, Rayane was looking at her smartMoby while listening to the conversation. When she realized that everyone was finally more focused, she prepared to open the door.",
         "type": "action"
     }
