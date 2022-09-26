@@ -140,6 +140,7 @@ storyCfg.playlist = {
         { id: 'dx0YwqEue_M', type: 'youtube' },
         { id: 'XYoTrKYkk1w', type: 'youtube' },
         { id: 'nl4zbChDJsM', type: 'youtube' },
+        { id: 'roABNwbjZf4', type: 'youtube' },
     ],
 
     'memories': [
