@@ -7345,6 +7345,29 @@
         "value": "Heh~ I saved your life again. Time is precious now. ",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    
+    {
+        "value": "Heh. Thanks again.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then tried to look for any possible pony that tried to shoot him while following Rayane to take cover behind some pillar. Rayane kept using her sword to block the shots as the sword started to go up in flames. The shots then stopped due to the flaming sword's intimidation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Just go ahead! I can't take my eyes off where the shots are coming from!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane remains focused as she went to hide behind another pillar. Vinny was feeling nervous and positioned the sniper again. Vinny focused on the glowing gun barrels that were just barely visible behind some pillars next to the subway roulette.",
+        "type": "action"
     }
 
 ]
