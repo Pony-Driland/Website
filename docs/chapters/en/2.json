@@ -7310,6 +7310,17 @@
     {
         "value": "Vinny used his wings to hold the gun's trigger and stayed in position, looking for any threat. At the time Vinny were positioning the sniper, someone shot in Vinny direction, but Rayane quickly used her sword to block the shot.",
         "type": "action"
+    },
+
+    {
+        "value": "AAAHH!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was surprised to see Rayane defending him. Rayane had a very serious and concentrated look.",
+        "type": "action"
     }
 
 ]
