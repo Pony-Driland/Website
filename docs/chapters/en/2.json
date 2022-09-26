@@ -7181,6 +7181,113 @@
         "value": "F..fine. I'm not enjoying this.",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "Vinny was a little surprised to begin to realize what he was really doing.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh fuck. Okay! I'll prepare myself with my... my.. hooves? Does anyone have a weapon or something to help me?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The two guards were then confused.",
+        "type": "action"
+    },
+
+    {
+        "value": "What?! I thought you specialized in brute force around here! You're an earth pony.",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then made a super poker face when he saw that the wings were hidden behind the armor.",
+        "type": "action"
+    },
+
+    {
+        "value": "Weeeeeeell... I'm new here. Any kind of weapon will be enough for me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "New one? How did you face a bomb?!",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "SHUT UP you two! We need to open the elevator door!",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A..ah?",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ops?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little when she saw the 3 talking.",
+        "type": "action"
+    },
+
+    {
+        "value": "It's not the best way to build a friendship, but it's at least working.",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "Guard 1 opened the magic backpack and gives Vinny a sniper.",
+        "type": "action"
+    },
+
+    {
+        "value": "Look here sir explosive! This will be my first test of confidence! If you claim to be so innocent and that you beat an Elite Color member. So you'll have to survive here too!",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets completely surprised to look at the sniper.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...ah?! Where did you get that? Come on! Are you seriously going to trust me as a sniper while you're left with a sharp stick in the front?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "We don't have time for discussion!",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "F..fine.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile, Rayane was looking at her smartMoby while listening to the conversation. When she realized that everyone was finally more focused, she prepared to open the door.",
+        "type": "action"
     }
 
 ]
