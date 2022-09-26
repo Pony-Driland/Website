@@ -7464,7 +7464,45 @@
     {
         "value": "Rayane took advantage of the quiet moment to get time to use a spell, not to mention what she was going to do. Meanwhile the guards are positioning their weapons to try to have more balance when shooting.",
         "type": "action"
-    }
+    },
 
+    {
+        "value": "Okay. Maybe I can hit that mystery weapon.",
+        "character": "Vinny",
+        "type": "think"
+    },
+    
+    {
+        "value": "Vinny then aimed at the mysterious heavy weapon. But the second pony on the left pillar appeared, revealing his had a machine gun and started shooting at Vinny nonstop.",
+        "type": "action"
+    },
+
+    {
+        "value": "FUUUUCK! WHY ME?!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    
+    {
+        "value": "Vinny desperately tried to hide behind the pillar that was starting to fall apart very fast due to the shots. When Rayane hears the sound of the machine gun fire, she gets extremely worried about whether or not she would teleport Vinny out of there, but she decided that she would go back with the original plan after a very hard decision.",
+        "type": "action"
+    },
+
+    {
+        "value": "V..Vinny! N..No! Okay. This will definitely get their attention!",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "So Rayane used teleportation spell to steal the supposed heavy weapon from the third pony. So now Rayane had a barzooka.",
+        "type": "action"
+    },
+    
+    {
+        "value": "YES! I did!",
+        "character": "Rayane",
+        "type": "think"
+    }
 
 ]
