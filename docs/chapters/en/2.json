@@ -7606,6 +7606,39 @@
         },
         "value": "Rayane hugged Vinny to help protect him during the explosion while the two guards hide behind the pilasters to protect themselves.",
         "type": "action"
+    },
+    
+    {
+        "value": "Then when everything finally calmed down. Vinny opened his eyes and analyzed if Rayane was okay. Rayane was fine. But Rayane was fine and she just took a deep breath in relief that everything had ended well. At this moment everything was extremely quiet. Only the sound of injured ponies could be heard, but no sound could be heard of any survivors returning to the rescue.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..hey? Is everypony okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane made a little smile in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Good~ I'm glad you survived here.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane ended the hug and her mane slowly started to float as she started to use the presence detection magic in a very calm and peaceful way.",
+        "type": "action"
+    },
+    
+    {
+        "value": "Yeah! You're welcome.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
