@@ -7631,6 +7631,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "sad"
+        },
         "value": "Rayane ended the hug and her mane slowly started to float as she started to use the presence detection magic in a very calm and peaceful way.",
         "type": "action"
     },
