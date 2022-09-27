@@ -7537,6 +7537,20 @@
         "value": "F..FUUUUUCK! GRENADE COMING!",
         "character": "???",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Aha! The time is now!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    
+    {
+        "nsfw": ["extreme_violence"],
+        "value": "Vinny reload the weapon and shoot against the scared pony head that lost the bazooka. Mysterious pony was hit with no chance of escape. The pony then simply dropped to the ground, without much reaction to the well-aimed shot. The pony made few moves, gasping in pain. He didn't look like he was going to stay alive for long.",
+        "value_alternative": "Vinny reload the weapon and shoot against the scared pony that lost the bazooka. Mysterious pony was hit with no chance of escape.  The pony then simply dropped to the ground, without much reaction to the well-aimed shot. He didn't look like he was going to stay alive for long.",
+        "type": "action"
     }
 
 ]
