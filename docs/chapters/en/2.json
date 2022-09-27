@@ -7601,6 +7601,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Rayane hugged Vinny to help protect him during the explosion while the two guards hide behind the pilasters to protect themselves.",
         "type": "action"
     }
