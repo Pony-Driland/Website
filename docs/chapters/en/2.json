@@ -7642,6 +7642,57 @@
         "value": "Yeah! You're welcome.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "The other two guards then slowly moved out of their positions as they realized that all possible survivors were no longer there.",
+        "type": "action"
+    },
+
+    {
+        "value": "Pheeeeew... We really did it.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes.I think I underestimated Vinny too much. Anyway I'm sorry. I thought you would die here, but it looks like you did better than I imagined.",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "aaaaand... I can't believe Rayane managed to steal a bazooka!",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ Silly ones, I just needed time to recharge my teleport but everything ended well.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little at the situation to try to make himself feel better. But then Vinny spoke a little worriedly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah. But... let's see if there's any live pony to ask about Hiroshi. This story is not cool. If Hiroshi entered here, and here is the only place that has an entrance, I wanted to know better what happened here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 1 was breathing deeply, trying to get some rest during the conversation as well.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny is right. It's not time for us to celebrate yet.",
+        "character": "Guard 1",
+        "type": "dialogue"
     }
 
 ]
