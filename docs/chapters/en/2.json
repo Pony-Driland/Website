@@ -7568,6 +7568,24 @@
         "value": "W..what? Did I kill anyone?",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "The machine gun pony was extremely terrified when he saw the grenade falling on his side. He looked at the grenade and at the same time dropped the machine gun, trying everything to crawl on the ground to try to escape.",
+        "type": "action"
+    },
+
+    {
+        "value": "NOOO! FUCK! FUCK! FUUUUUUUUUCK!",
+        "character": "??? 2",
+        "type": "dialogue"
+    },
+
+    {
+        "nsfw": ["extreme_violence"],
+        "value": "The mysterious pony strayed a good distance away, but unfortunately the explosion still hurt him a lot. The mysterious pony fell to the ground with his body completely damaged and with some parts amputated from the impact.",
+        "value_alternative": "The mysterious pony strayed a good distance away, but unfortunately the explosion still hurt him a lot. The mysterious pony fell to the ground with his body completely damaged.",
+        "type": "action"
     }
 
 ]
