@@ -7586,6 +7586,23 @@
         "value": "The mysterious pony strayed a good distance away, but unfortunately the explosion still hurt him a lot. The mysterious pony fell to the ground. The pony body completely damaged and with some parts amputated from the impact.",
         "value_alternative": "The mysterious pony strayed a good distance away, but unfortunately the explosion still hurt him a lot. The mysterious pony fell to the ground. The pony body completely damaged.",
         "type": "action"
+    },
+
+    {
+        "value": "Wow!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane hugged Vinny to help protect him during the explosion while the two guards hide behind the pilasters to protect themselves.",
+        "type": "action"
     }
 
 ]
