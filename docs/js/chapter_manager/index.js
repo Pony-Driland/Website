@@ -601,6 +601,7 @@ var openChapterMenu = function (params = {}) {
                         $('<h5>', { class: 'card-title' }).text('Chapter ' + chapter).append(isNewValue),
                         $('<p>', { class: 'card-text' }).text(storyCfg.chapterName[chapter].title),
                         $('<span>', { class: 'card-text small me-1' }).text(`${storyData.data[chapter].length} Lines`),
+                        $('<span>', { class: 'card-text small me-2' }).text(`${Math.ceil(storyData.data[chapter].length / storyCfg.itemsPerPage)} Pages`),
                         $('<span>', { class: 'card-text small ms-1' }).text(`${storyData.lettersCount[chapter]} Letters`),
                         $('<span>', { class: 'card-text small ms-1' }).text(`${storyData.wordsCount[chapter]} Words`),
                         $('<p>', { class: 'card-text small' }).text(storyCfg.chapterName[chapter].description),
