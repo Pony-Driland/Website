@@ -7651,12 +7651,12 @@
 
     {
         "value": "Pheeeeew... We really did it.",
-        "character": "Rayane",
+        "character": "Guard 2",
         "type": "dialogue"
     },
 
     {
-        "value": "Yes.I think I underestimated Vinny too much. Anyway I'm sorry. I thought you would die here, but it looks like you did better than I imagined.",
+        "value": "Yes. I think I underestimated Vinny too much. Anyway I'm sorry. I thought you would die here, but it looks like you did better than I imagined.",
         "character": "Guard 1",
         "type": "dialogue"
     },
