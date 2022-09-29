@@ -7693,6 +7693,30 @@
         "value": "Vinny is right. It's not time for us to celebrate yet.",
         "character": "Guard 1",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "My concern is whether he has been captured. This place wouldn't be being guarded by opponents.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was surprised and nervous as he remembered the ponies that had been injured during the conflict.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..yeah.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "nsfw": ["extreme_violence"],
+        "value": "Vinny then walked over to the pony that was lying on the ground. The pony was still breathing, but he was exhausting. The other one was already very disintegrated, was crawling on the ground, trying to reach the his backpack. This pony smartMoby was crashing a lot, making a lot of weird noises due to crashes.",
+        "value_alternative": "Vinny then walked over to the pony that was lying on the ground. The pony was still breathing, but he was exhausting. The other one was already very tired, was crawling on the ground, trying to reach the his backpack. This pony smartMoby was crashing a lot, making a lot of weird noises due to crashes.",
+        "type": "action"
     }
 
 ]
