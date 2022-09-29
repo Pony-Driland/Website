@@ -7761,6 +7761,79 @@
     {
         "value": "Vinny was even more sorry, showing a little empathy. Rayane leaned her hoof on Vinny shoulder, talking calmly.",
         "type": "action"
+    },
+    
+    {
+        "value": "Vinny, all you can do now is just let them have their dignity during these last few life minutes. They don't have to suffer anymore for what happened.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..yeah. It will really help me feel better.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled a little and delivered the familiar items to the blown pony's paw along with the backpack.",
+        "type": "action"
+    },
+
+    {
+        "value": "We're going to stop this now. Who told you to stand guard here? Do you have any last wishes?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The unicorn started to cry while hugging the items.",
+        "type": "action"
+    },
+
+    {
+        "value": "M...Marlon... wants to..s...save....the...the East region.....at all costs. M...arlon is our hero.",
+        "character": "Unicorn Soldier",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The unicorn started coughing a lot, and during each cough he disintegrated a little more.",
+        "type": "action"
+    },
+
+    {
+        "value": "P..Please...s..save the east region. My family....along with...the entire east region. Don't leave us die alone.",
+        "character": "Unicorn Soldier",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The unicorn tried harder and harder for conscience as their eyes closed more.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y...Yeah. Don't worry, you can be at peace now. We will help your family and the east region. We'll find out what's really going on here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I'm trusting....y...you...and....I.....can already....feel.. ...the...the end.....Rainbow Queen.....is waiting...for....m...my soul...the..soul...m...my good soul. Y..yes...m..my soul.",
+        "character": "Unicorn Soldier",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The unicorn was almost passing out completely. Smiling a little as he slowly accepted the death that was coming.",
+        "type": "action"
+    },
+
+    {
+        "value": "We'll be here by your side until the end.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
