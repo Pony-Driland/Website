@@ -7904,7 +7904,7 @@
     },
 
     {
-        "value": "Guard 2 replied a little sorry for what he said. Then Vinny looked at Rayane again.",
+        "value": "Guard 2 replied a little sorry for what he said.",
         "type": "action"
     },
 
@@ -7912,6 +7912,11 @@
         "value": "Rainbow Queen? W...What does all this mean?",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "Then Vinny looked at Rayane again.",
+        "type": "action"
     },
 
     {
