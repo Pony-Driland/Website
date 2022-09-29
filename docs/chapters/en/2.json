@@ -7717,6 +7717,50 @@
         "value": "Vinny then walked over to the pony that was lying on the ground. The pony was still breathing, but he was exhausting. The other one was already very disintegrated, was crawling on the ground, trying to reach the his backpack. This blown pony smartmoby was crashing a lot, making a lot of weird noises due to crashes.",
         "value_alternative": "Vinny then walked over to the pony that was lying on the ground. The pony was still breathing, but he was exhausting. The other one was already very tired, was crawling on the ground, trying to reach the his backpack. This blown pony smartmoby was crashing a lot, making a lot of weird noises due to crashes.",
         "type": "action"
+    },
+    
+    {
+        "value": "Hey? Calm down you two. I'm here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny showed a regret look as he saw the blown pony struggling to get his backpack. So Vinny took the backpack.",
+        "type": "action"
+    },
+
+    {
+        "value": "I...I'm sorry it ended like this. I hope you understand that this was all a consequence of your choices.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny could see a little bit that the blown pony is a unicorn, but his horn was already extremely damaged. The unicorn was no longer in any condition to present any threat to Vinny. His still kept trying to touch the backpack as if this was the last thing he could do.",
+        "type": "action"
+    },
+
+    {
+        "value": "N....no.........the.....the region...East....can't end.....p...please no.",
+        "character": "Unicorn Soldier",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny watched the unicorn's tears for a few seconds before looking at what was inside the bag. Vinny only saw a few items that seemed to be family memories, some damaged electronic devices. It was very difficult to identify what the rest of the other items were, as they were very destroyed.",
+        "type": "action"
+    },
+
+    {
+        "value": "R...Really. I'm so sorry about all this.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was even more sorry, showing a little empathy. Rayane leaned her hoof on Vinny shoulder, talking calmly.",
+        "type": "action"
     }
 
 ]
