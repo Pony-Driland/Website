@@ -7834,6 +7834,22 @@
         "value": "We'll be here by your side until the end.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would place his paw on unicorn head, waiting for something to happen gently.",
+        "type": "action"
+    },
+
+    {
+        "value": "T...thanks....you...and........and Rayane....R..Ra...",
+        "character": "Soldier",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The unicorn would then finally pass out and stop reacting completely. Then this pony's smartmoby simply stopped working permanently while the body continued to slowly disintegrate. Vinny had a feeling that the pony's soul wasn't there anymore now. Then Vinny closed his eyes and breathed deeply for a few seconds before looking at Rayane.",
+        "type": "action"
     }
 
 ]
