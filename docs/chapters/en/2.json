@@ -7889,6 +7889,91 @@
     {
         "value": "Vinny and Rayane were a little surprised and just kept quiet watching the conversation.",
         "type": "action"
+    },
+    
+    {
+        "value": "Yes. Hiroshi is the last pony who claims to have seen Rainbow Queen in person for the last time. This is our mission to try not to let this legend die. You know how dangerous it is for a story to be erased from existence and no one else to know the origins themselves?",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y...You're always repeating this to me. But yes, in a way you are right.",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 2 replied a little sorry for what he said. Then Vinny looked at Rayane again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey? How many times have you been in a situation like this?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "M...me?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little surprised to hear this, replying sadly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Many times. Enough to learn to respect the end of every lost life.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little more surprised and responded.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm sorry for what you saw and heard at times like this. I know what you're thinking, calm down.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny hugged Rayane and Rayane hugged back. Rayane was very thoughtful about her past during the hug time. Then a few seconds passed and Vinny took a deep breath and looked at the Guard 1.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, do you want the sniper back? You will need this at some point.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. But this is my reserve sniper in case I lose mine. You can keep the sniper for now.",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..What? Are you sure?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was surprised to see Guard 1's trusting him.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. I trust you this time. Right now we need to be together now.",
+        "character": "Guard 1",
+        "type": "dialogue"
     }
 
 ]
