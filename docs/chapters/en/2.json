@@ -7909,6 +7909,12 @@
     },
 
     {
+        "value": "Rainbow Queen? W...What does all this mean?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
         "value": "Hey? How many times have you been in a situation like this?",
         "character": "Vinny",
         "type": "dialogue"
