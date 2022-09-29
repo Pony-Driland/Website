@@ -7850,6 +7850,45 @@
     {
         "value": "The unicorn would then finally pass out and stop reacting completely. Then this pony's smartmoby simply stopped working permanently while the body continued to slowly disintegrate. Vinny had a feeling that the pony's soul wasn't there anymore now. Then Vinny closed his eyes and breathed deeply for a few seconds before looking at Rayane.",
         "type": "action"
+    },
+    
+    {
+        "value": "It's the life, he knew you. Do you know who is?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane took an empathic breath before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "No. I'm just popular as an urban legend.  Nothing more.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey Vinny. Please finish what needs to be done. We decided that we are going to take the train. We have to follow Hiroshi's advice now. Let the soul go where the soul needs to go.",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 2 was crying a little before responding.",
+        "type": "action"
+    },
+
+    {
+        "value": "Why have we never seen Rainbow Queen? Why did she never show up again?! I always wanted to meet Rainbow Queen! It's really annoying to have only faith that something exists without being sure if it really exists. I get confused if Hiroshi is right or wrong about Rainbow Queen existence.",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny and Rayane were a little surprised and just kept quiet watching the conversation.",
+        "type": "action"
     }
 
 ]
