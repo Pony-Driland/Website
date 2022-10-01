@@ -8137,8 +8137,25 @@
         "set": {
             "playlistPlay": null
         },
-        "value": "Then Guard 1 followed Guard 2 towards the train cabin.",
+        "value": "Then Guard 1 followed Guard 2 towards the train cabin. Vinny then looked at Rayane for a few seconds.",
         "type": "action"
+    },
+
+    {
+        "value": "So it's you and me inside a train journey.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then took a deep breath. Rayane was feeling fine, but she was still a little worried about Hiroshi.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. Yes. A long journey. Me and you only~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
