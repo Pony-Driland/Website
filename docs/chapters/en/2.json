@@ -8153,15 +8153,15 @@
     },
 
     {
-        "set": {
-            "playlistPlay": "bad-mystery"
-        },
         "value": "Heh. Yes. A long journey. Me and you only~",
         "character": "Rayane",
         "type": "dialogue"
     },
 
     {
+        "set": {
+            "playlistPlay": "spooky-mysterious"
+        },
         "value": "Vinny giggles a little in response as he waited for the train door to close. The train slowly started to move. Vinny would then look out the train window and watch the bodies of the dead ponies on the ground. Vinny took a deep breath, reflecting on the situation, feeling the same cold wind he was feeling at first.",
         "type": "action"
     },
@@ -8170,6 +8170,34 @@
         "value": "Sorry ponies. I hope someone helps you find the peace you want.",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "Vinny was still watching the dead ponies on the ground. But at this very moment he felt as if he had seen the shadow of a pony far away watching him. This shadow belonged to a very familiar alicorn.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? She again? I...Is it really her again?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Then Vinny was interrupted by Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny? What are you doing?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Hi charming Rayane! Sorry. I got too distracted by the window.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
