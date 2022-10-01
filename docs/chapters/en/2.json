@@ -8153,6 +8153,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "null"
+        },
         "value": "Heh. Yes. A long journey. Me and you only~",
         "character": "Rayane",
         "type": "dialogue"
