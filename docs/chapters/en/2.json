@@ -8198,6 +8198,83 @@
         "value": "Ah? Hi charming Rayane! Sorry. I got too distracted by the window.",
         "character": "Vinny",
         "type": "dialogue"
+    }, 
+    {
+        "value": "Silly you~ This took you long enough to make me want to boop you.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+    
+    {
+        "value": "A..ah? Ah! I had a weird feeling, we just killed some ponies, don't you think this might get a certain someone's attention?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was even more worried as he watched the mysterious shadow watching him. So Vinny just closed the train curtain and sat next to Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Anyone? Who would this someone be?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little surprised, trying to look through Vinny's behavior to try to understand who he was talking about. So Rayane came to a conclusion and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "You do not need to be afraid. She knows how to recognize the causes of each pony's death. What she really doesn't like is selfish death.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then tried to remain calm during the conversation, and Rayane slowly began to understand what was really going on.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah. I don't know if she'll like to see me. You killing ponies around. By the way, I think if I die, a lot of bad things will happen to me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then laughed very nervously in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "We didn't get along well at first time.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane would get a little worried, but then Rayane would try to distract Vinny's worry a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "If she doesn't like you, she must be watching you~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Rayane slowly started talking more seriously to try not to scare Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "I don't worry too much about this. She knows me more than you can imagine. She knows the reasons I'm here. She is in a very bad mood only, maybe things will get better at some moment.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
