@@ -8002,6 +8002,140 @@
         "value": "Y..yes. Okay.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Then everyone got up and started walking towards the train.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... Rayane is really trying to be a better pony. We could start a campaign to try to improve Rayane's mysterious reputation. Instead of a mysterious dangerous pony, we can change that to a mysterious friendly pony.",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane wiped away her tears a little and was a little surprised to hear that.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..what?",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "Hmmmm... Better let everything as this is, she can go back to being the mysterious at any time if she wants to. Who has to decide that is only her.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I know there will be a lot of ponies who will still question this, but we need to start this somewhere. We have no reason to exaggerate so much about Rayane. That's all we can try to do for her.",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was more anxious to want to say something, so she finally decided to say something.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait! Maake me less dangerous in everyone's eyes? Of course I accept!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane started to cry emotionally upon hearing this as everyone started to get on the train.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Wow! Heh! I'm very close to Hiroshi. It will be easy to convince him to create this campaign. You will remain mysterious, but at least everyone will be less afraid of you. When I find Hiroshi, I'll talk to him about this. Okay?",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Thank you very much! Thank you! That's a great start!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smiled excitedly as she answered and wiped her face. Vinny and Guard 2 were very surprised to see Rayane's sincere happiness.",
+        "type": "action"
+    },
+
+    {
+        "value": "If that's what you want, I will support you. I see it's something special for you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled a little at Rayane in response as everyone finished getting on the train.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. It's something very special for me. I still have to be careful with my popularity, but it will be great to know that not everyone will want to run away from me.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane slowly calmed down and kept a look of hope.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes! Glad everyone is feeling happy again. The train is already waiting for someone to drive it.",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 2 giggles a little while getting ready to go to the train cabin.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah. And... what are the plans?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "This is the train that connects all stations in the bunker. Let's use this to go directly to where the magic relic is and finally find Hiroshi.",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then finished feeling calm and went back to spying on the subject of the conversation when she heard the name \"Hiroshi\".",
+        "type": "action"
+    },
+
+    {
+        "value": "H..Hiroshi? Will Hiroshi be there? There's something really weird, did he go through those ponies without killing?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi probably passed through here by force. And these ponies were just here to prevent the station from receiving reinforcements. So it's important that we find him alive.",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Guard 1 followed Guard 2 towards the train cabin.",
+        "type": "action"
     }
 
 ]
