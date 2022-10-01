@@ -7999,7 +7999,7 @@
     },
 
     {
-        "value": "Y..yes. Okay.",
+        "value": "Yes. Okay.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -8204,7 +8204,7 @@
         "character": "Rayane",
         "type": "dialogue"
     },
-    
+
     {
         "value": "A..ah? Ah! I had a weird feeling, we just killed some ponies, don't you think this might get a certain someone's attention?",
         "character": "Vinny",
