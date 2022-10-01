@@ -8134,6 +8134,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Then Guard 1 followed Guard 2 towards the train cabin.",
         "type": "action"
     }
