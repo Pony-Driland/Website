@@ -8078,7 +8078,7 @@
     },
 
     {
-        "value": "Vinny smiled a little at Rayane in response as everyone finished getting on the train.",
+        "value": "Vinny smiles a little at Rayane in response as everyone finished getting into the train.",
         "type": "action"
     },
 
@@ -8094,7 +8094,7 @@
     },
 
     {
-        "value": "Yes! Glad everyone is feeling happy again. The train is already waiting for someone to drive it.",
+        "value": "Yes! Glad everyone is feeling happy again. So... the train is already waiting for someone to drive it.",
         "character": "Guard 2",
         "type": "dialogue"
     },
@@ -8105,7 +8105,7 @@
     },
 
     {
-        "value": "Yeah. And... what are the plans?",
+        "value": "Yeah. But... Guard 1? What are your plans?",
         "character": "Vinny",
         "type": "dialogue"
     },
