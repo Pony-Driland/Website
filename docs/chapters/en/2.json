@@ -8128,8 +8128,19 @@
     },
 
     {
-        "value": "Hiroshi probably passed through here by force. And these ponies were just here to prevent the station from receiving reinforcements. So it's important that we find Hiroshi alive.",
+        "value": "Hiroshi probably passed through here by force. And these ponies were just here to prevent the station from receiving reinforcements. So it's important that we find Hiroshi alive. I wish you two a good travel. I'm going now.",
         "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was curious, but didn't know what to say. So he just made a simple answer.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Thank you.",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
