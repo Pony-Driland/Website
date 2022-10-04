@@ -8397,7 +8397,13 @@
         "value": "Rayane was curious to hear these two names, but she simply ignored everything and continued the conversation.",
         "type": "action"
     },
-    
+
+    {
+        "value": "What?",
+        "character": "Rayane",
+        "type": "think"
+    },
+
     {
         "value": "You just need to be careful. She knows how to be a predator. She won't give you any chance of escape.",
         "character": "Rayane",
