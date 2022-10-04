@@ -8286,6 +8286,184 @@
         "value": "I don't worry too much about this. She knows me more than you can imagine. She knows the reasons I'm here. She is in a very bad mood only, maybe things will get better at some special moment.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then get curious and a little worried before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "You need to protect me if she try to attack me. She was really mad at me and very suspicious. But you can save me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles nervously for a few seconds before he thought of something.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait... Is she watching me? W...what is this? What does that mean? Is this some friendship ritual?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little sadly, before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "Shhhhhh~ Silly, don't confuse her anger with her natural evil side. Who do you think I learned to play my malicious pranks on?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane gets a little worried during the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Just be careful with your decisions, she analyzes the behavior of those who talk to her a lot.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was then even more curious to hear about this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmmmm... Rayane? Anger and the evil side aren't they the same thing? Well, I told her that we are friends then I mentioned your photo album, which had a photo of us there. Does she have access to this?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane took a few deep breaths before responding in a friendly and a little emotional way.",
+        "type": "action"
+    },
+
+    {
+        "value": "Anger is a feeling, evil side is a personality. She's a little crazy. I don't want you to go crazy because of her personality.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Rayane remembered the mention of the photograph, doing her scared.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...What? What did you do? Photographs are restricted technologies! She will think you are someone who has had some privileged information without permission.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was then startled by Rayane's reaction and tried to respond more calmly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey! Calm down! That was just a photograph. What could go wrong?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "if she thought you were an spy, she wouldn't think twice about punishing you in some way. I hope you didn't unintentionally give her a bad impression.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a poker face of pure nervousness, rubbing his head nervously.",
+        "type": "action"
+    },
+
+    {
+        "value": "C..can you save me? I don't want to die. FUCK! I'm going to die 2 times. Celestia! Luna! Save me!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was curious to hear these two names, but she simply ignored everything and continued the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Is that some creature from his world?",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "You just need to be careful. She knows how to be a predator. She won't give you any chance of escape.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was still nervous, but tried to respond more calmly.",
+        "type": "action"
+    },
+
+    {
+        "value": "A..ah? But she seems to like you a lot. Can't you tell her I'm not a bad pony?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane breathed deeply for a few seconds. Rayane showed depressive behavior, but tried to hide this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. But don't forget. Her empathy won't work the way you'd expect.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets confused and a little worried.",
+        "type": "action"
+    },
+
+    {
+        "value": "What do you mean about it?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Don't you remember? She wants to save Pony Driland. But I don't want her to be too brutal in doing so.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "...AH.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny goes white with fear when he hears this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
