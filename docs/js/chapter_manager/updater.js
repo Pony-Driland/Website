@@ -184,7 +184,7 @@ var chapterSet = {
             if (value.enabled && !cacheChapterUpdater.soundCache[value.enabled].playing) {
                 cacheChapterUpdater.soundCache[value.enabled].playing = true;
                 storyData.sfx[value.file].show();
-            } else {
+            } else if (cacheChapterUpdater.soundCache[value.enabled].playing) {
                 cacheChapterUpdater.soundCache[value.enabled].playing = false;
                 storyData.sfx[value.file].hide();
             }
