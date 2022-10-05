@@ -175,7 +175,7 @@ cacheChapterUpdater.data = function (lastPage) {
 var chapterSet = {
 
     playEffect: function (value, actionFromNow = false) {
-        if (actionFromNow) {
+        if (actionFromNow && value && value.file && storyData.sfx[value.file]) {
 
             if (!cacheChapterUpdater.soundCache[value.file]) {
                 cacheChapterUpdater.soundCache[value.file] = { playing: false };
