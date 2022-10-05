@@ -177,6 +177,12 @@ var chapterSet = {
     playEffect: function(value, actionFromNow = false) {
         if (actionFromNow) {
 
+            if (value.enabled) {
+                storyData.sfx[value.file].show();
+            } else {
+                storyData.sfx[value.file].hide();
+            }
+            
         }
     },
 
