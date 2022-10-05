@@ -182,9 +182,11 @@ var chapterSet = {
             }
 
             if (value.enabled && !cacheChapterUpdater.soundCache[value.file].playing) {
+                console.log(`[${value.file}] Playing...`);
                 cacheChapterUpdater.soundCache[value.file].playing = true;
                 storyData.sfx[value.file].show();
-            } else if (cacheChapterUpdater.soundCache[value.file].playing) {
+            } else if (!value.enabled && cacheChapterUpdater.soundCache[value.file].playing) {
+                console.log(`[${value.file}] Stopping...`);
                 cacheChapterUpdater.soundCache[value.file].playing = false;
                 storyData.sfx[value.file].hide();
             }
