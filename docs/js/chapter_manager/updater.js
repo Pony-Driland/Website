@@ -177,15 +177,15 @@ var chapterSet = {
     playEffect: function (value, actionFromNow = false) {
         if (actionFromNow) {
 
-            if (!cacheChapterUpdater.soundCache[value.enabled]) {
-                cacheChapterUpdater.soundCache[value.enabled] = { playing: false };
+            if (!cacheChapterUpdater.soundCache[value.file]) {
+                cacheChapterUpdater.soundCache[value.file] = { playing: false };
             }
 
-            if (value.enabled && !cacheChapterUpdater.soundCache[value.enabled].playing) {
-                cacheChapterUpdater.soundCache[value.enabled].playing = true;
+            if (value.enabled && !cacheChapterUpdater.soundCache[value.file].playing) {
+                cacheChapterUpdater.soundCache[value.file].playing = true;
                 storyData.sfx[value.file].show();
-            } else if (cacheChapterUpdater.soundCache[value.enabled].playing) {
-                cacheChapterUpdater.soundCache[value.enabled].playing = false;
+            } else if (cacheChapterUpdater.soundCache[value.file].playing) {
+                cacheChapterUpdater.soundCache[value.file].playing = false;
                 storyData.sfx[value.file].hide();
             }
 
