@@ -1,8 +1,8 @@
 // Prepare Cache
-var cacheChapterUpdater = { iconSize: '12pt' };
+var cacheChapterUpdater = { iconSize: '12pt', soundCache: {} };
 
 // Read Data on Scroll
-$(window).on('resize scroll', function() {
+$(window).on('resize scroll', function () {
 
     // Validator
     if (storyData.chapter.selected > 0) {
@@ -39,7 +39,7 @@ $(window).on('resize scroll', function() {
 
 });
 
-cacheChapterUpdater.scrollData = function() {
+cacheChapterUpdater.scrollData = function () {
 
     // Set Playlist
     if (Array.isArray(storyData.music.playlist)) {
@@ -68,7 +68,7 @@ cacheChapterUpdater.scrollData = function() {
     }
 
     // Remove All Weather
-    const removeAllWeather = function() {
+    const removeAllWeather = function () {
         storyData.sfx['heavy-rain'].hide();
         storyData.sfx['heavy-rain-little-thunder'].hide();
     };
@@ -93,7 +93,7 @@ cacheChapterUpdater.scrollData = function() {
 };
 
 // Update Cache
-cacheChapterUpdater.data = function(lastPage) {
+cacheChapterUpdater.data = function (lastPage) {
     if (storyData.chapter.selected > 0) {
 
         // Update Data Cache
@@ -119,7 +119,7 @@ cacheChapterUpdater.data = function(lastPage) {
             delete cacheChapterUpdater.timeoutChecker;
         }
 
-        cacheChapterUpdater.timeoutChecker = setTimeout(function() {
+        cacheChapterUpdater.timeoutChecker = setTimeout(function () {
             cacheChapterUpdater.scrollData();
         }, 1000);
 
@@ -137,7 +137,7 @@ cacheChapterUpdater.data = function(lastPage) {
             storyData.chapter.nav.bookmark.tooltip();
 
             // Action
-            storyData.chapter.nav.bookmark.click(function() {
+            storyData.chapter.nav.bookmark.click(function () {
 
                 tinyLib.modal({
                     title: $('<span>').text('Bookmark'),
@@ -145,7 +145,7 @@ cacheChapterUpdater.data = function(lastPage) {
                         $('<h5>').text(`Save this URL to your favorites to re-read the story on any device`),
                         $('<input>', { type: 'text', class: 'form-control text-center' }).prop('readonly', true).val(
                             `${location.protocol}//${location.host}/?path=read-fic&title=${encodeURIComponent(storyCfg.title)}&chapter=${storyData.chapter.selected}&line=${storyData.chapter.line}`
-                        ).click(function() { $(this).select(); })
+                        ).click(function () { $(this).select(); })
                     ),
                     dialog: 'modal-lg'
                 });
@@ -155,8 +155,8 @@ cacheChapterUpdater.data = function(lastPage) {
         }
 
         // Sortable  #status
-        $('#fic-nav').each(function() {
-            $(this).find('#status > a').sort(function(a, b) {
+        $('#fic-nav').each(function () {
+            $(this).find('#status > a').sort(function (a, b) {
                 return Number($(a).attr('indexitem')) - Number($(b).attr('indexitem'));
             }).appendTo($(this).find('#status'));
         });
@@ -174,19 +174,25 @@ cacheChapterUpdater.data = function(lastPage) {
 // Set Actions
 var chapterSet = {
 
-    playEffect: function(value, actionFromNow = false) {
+    playEffect: function (value, actionFromNow = false) {
         if (actionFromNow) {
 
-            if (value.enabled) {
+            if (!cacheChapterUpdater.soundCache[value.enabled]) {
+                cacheChapterUpdater.soundCache[value.enabled] = { playing: false };
+            }
+
+            if (value.enabled && !cacheChapterUpdater.soundCache[value.enabled].playing) {
+                cacheChapterUpdater.soundCache[value.enabled].playing = true;
                 storyData.sfx[value.file].show();
             } else {
+                cacheChapterUpdater.soundCache[value.enabled].playing = false;
                 storyData.sfx[value.file].hide();
             }
-            
+
         }
     },
 
-    playlistPlay: function(value, actionFromNow = false) {
+    playlistPlay: function (value, actionFromNow = false) {
         if (actionFromNow) {
 
             // Set Playlist
@@ -202,7 +208,7 @@ var chapterSet = {
         }
     },
 
-    day: function(value, actionFromNow = false) {
+    day: function (value, actionFromNow = false) {
         if (actionFromNow) {
 
             // Add Item Base
@@ -217,7 +223,7 @@ var chapterSet = {
         }
     },
 
-    dayNightCycle: function(value, actionFromNow = false) {
+    dayNightCycle: function (value, actionFromNow = false) {
         if (actionFromNow) {
 
             $('body')
@@ -260,7 +266,7 @@ var chapterSet = {
         }
     },
 
-    weather: function(value, actionFromNow = false) {
+    weather: function (value, actionFromNow = false) {
         if (actionFromNow) {
 
             // Add Item Base
@@ -292,7 +298,7 @@ var chapterSet = {
         }
     },
 
-    where: function(value, actionFromNow = false) {
+    where: function (value, actionFromNow = false) {
         if (actionFromNow) {
 
             // Add Item Base
