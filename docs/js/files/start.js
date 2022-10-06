@@ -274,6 +274,18 @@ $(function () {
         console.log('Starting App...');
         storyData.start(function (fn, readme) {
 
+            // Crypto Allow Detector
+            if(
+                storyData.ipRegistry && 
+                storyData.ipRegistry.location && 
+                storyData.ipRegistry.location.country && 
+                typeof storyData.ipRegistry.location.country.code === 'string'
+            ) {
+
+                storyData.allowCrypto = true;
+
+            }
+
             // Custom Colors
             $('head').append(
                 $('<style>', { id: 'custom_color' }).text(`
