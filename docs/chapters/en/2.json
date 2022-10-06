@@ -8164,10 +8164,6 @@
     },
 
     {
-        "set": {
-            "playlistPlay": "dark-and-mysterious-ambient",
-            "playEffect": { "file": "train-1", "enabled": false }
-        },
         "value": "Heh. Yes. A long journey. Me and you only~",
         "character": "Rayane",
         "type": "dialogue"
