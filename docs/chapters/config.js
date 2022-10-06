@@ -3,6 +3,36 @@ var storyCfg = {
     // Crypto Block
     cryptoBlock: [
         
+        'CN', 'CHN',
+
+        'DE', 'DEU',
+        'AT', 'AUT',
+        'BE', 'BEL',
+        'BG', 'BGR',
+        'CY / CYP',
+        'HR / HRV',
+        'DK / DNK',
+        'SK / SVK',
+        'SI / SVN',
+        'ES / ESP',
+        'EE / EST',
+        'FI / FIN',
+        'FR / FRA',
+        'GR / GRC',
+        'NL / NLD',
+        'HU / HUN',
+        'IE / IRL',
+        'IT / ITA',
+        'LV / LVA',
+        'LT / LTU',
+        'LU / LUX',
+        'MT / MLT',
+        'PL / POL',
+        'PT / PRT',
+        'CZ / CZE',
+        'RO / ROU',
+        'SE / SWE',
+
     ],
 
     // Twitter
