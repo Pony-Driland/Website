@@ -283,6 +283,14 @@ $(function () {
             ) {
 
                 storyData.allowCrypto = true;
+                if(Array.isArray(storyCfg.cryptoBlock)) {
+                    for(const item in storyCfg.cryptoBlock) {
+                        if(storyData.ipRegistry.location.country.code === storyCfg.cryptoBlock[item]) {
+                            storyData.allowCrypto = false;
+                            break;
+                        }
+                    }
+                }
 
             }
 
