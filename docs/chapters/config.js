@@ -1,5 +1,10 @@
 var storyCfg = {
 
+    // Crypto Block
+    cryptoBlock: [
+        
+    ],
+
     // Twitter
     twitter: {
         username: 'JasminDreasond'

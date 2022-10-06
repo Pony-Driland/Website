@@ -21,6 +21,7 @@ var storyData = {
     // Info
     title: storyCfg.title,
     description: storyCfg.description,
+    allowCrypto: false,
 
     // Counter
     count: 0,
