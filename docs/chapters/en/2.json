@@ -8460,6 +8460,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Vinny goes white with fear when he hears this.",
         "type": "action"
     },
@@ -8468,6 +8471,14 @@
         "value": "Fine.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+    
+    {
+        "set": {
+            "playEffect": { "file": "train-1", "enabled": false }
+        },
+        "value": "Then suddenly the train tried to stop, causing Vinny and Rayane to be thrown to the ground accidentally.",
+        "type": "action"
     }
 
 ]
