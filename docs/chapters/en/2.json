@@ -892,7 +892,7 @@
 
     {
         "set": {
-            "playlistPlay": "nuclear-sound"
+            "playEffect": { "file": "nuke-1", "enabled": true }
         },
         "value": "Sssssh~",
         "character": "Rayane",
