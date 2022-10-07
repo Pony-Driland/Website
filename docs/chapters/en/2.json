@@ -892,7 +892,7 @@
 
     {
         "set": {
-            "playEffect": { "file": "nuke-1", "enabled": true }
+            "playEffect": { "file": "nuke-1", "enabled": true, "once": true }
         },
         "value": "Sssssh~",
         "character": "Rayane",
@@ -911,8 +911,10 @@
     },
 
     {
+        
         "set": {
-            "playlistPlay": null
+            "playlistPlay": null,
+            "playEffect": { "file": "nuke-1", "enabled": false }
         },
         "value": "R...Rayane? H...hello? R..Rayane?",
         "character": "Vinny",
