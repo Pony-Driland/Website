@@ -877,9 +877,6 @@
     },
 
     {
-        "set": {
-            "playlistPlay": null
-        },
         "value": "Y...Yes...yes. S...sorry Rayane.",
         "character": "Vinny",
         "type": "dialogue"
