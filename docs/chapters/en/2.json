@@ -8491,12 +8491,12 @@
     },
     
     {
-        "value": "Rayane positioned herself to fall backwards against the train wall by instinct due to surpris. But Vinny wasn't so lucky and just tried to get up during the process.",
+        "value": "Rayane positioned herself to fall backwards against the train wall by instinct due to surprise. But Vinny wasn't so lucky and just tried to get up during the process.",
         "type": "action"
     },
 
     {
-        "value": "FUCK! A moment I'm seeing the texture of the floor up close!",
+        "value": "FUCK! A moment I'm seeing the floor texture up close!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -8509,6 +8509,17 @@
 
     {
         "value": "The train then stops braking definitively, finally maintaining a calmer environment.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...Ah? Let's calm down. It seems that despair is over.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Vinny looked towards the Guard 2 voice that began to be heard in the distance.",
         "type": "action"
     },
 
