@@ -8479,6 +8479,182 @@
         },
         "value": "Then suddenly the train tried to stop, causing Vinny and Rayane to be thrown to the ground accidentally.",
         "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "tense-mystery"
+        },
+        "value": "AAAH!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+    
+    {
+        "value": "Rayane positioned herself to fall backwards against the train wall by instinct due to surpris. But Vinny wasn't so lucky and just tried to get up during the process.",
+        "type": "action"
+    },
+
+    {
+        "value": "FUCK! A moment I'm seeing the texture of the floor up close!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "This is not texture time! What hell was this?!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The train then stops braking definitively, finally maintaining a calmer environment.",
+        "type": "action"
+    },
+
+    {
+        "value": "HEY! Everyone is okay?!",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked up and saw Guard 2 next to the cabin door making a worried look.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, except that my face hit the floor, yes. What happened here?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "S..sorry! We found something blocking the way. We almost crashed the train. Hope no one got hurt.",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Blocking the way? This sucks. Maybe we'll find more surprises.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane gets a little worried as she got up determined to find out what this is. Vinny was surprised and not sure how to react.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny looks around analyzing everything.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay? Any plans?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes! Someone's going to have to go outside and see what's going on. We can't stand here for long. This could be time for some intruder to get on the train.",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny makes a poker face and noticed that the outside was very dark, could not see any station presence.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay okay. I have a hat with a flashlight. This hat will help me, but this will attract attention. Who will go with me to see what is happening?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then looked worriedly at Vinny and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Nope~ I won't leave silly Vinny alone. I'll go with you. I can use my teleport skill to make us appear somewhere random.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane without thinking twice, started to prepare the teleportation magic.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What? That's a risky and quick decision! I'll be watching the train cars while my friend guards our cabin.",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane without thinking twice, started to prepare the teleportation magic. Vinny then looked at the Guard 2 a little worried, but realizing he had no other choice and decisions needed to be quick, Vinny accepted the situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Be very careful you two! Not wanting to take advantage of the moment but you two will be alone and in the dark. Maybe no one will see what you two are doing together in!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a Lenny Face.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...Ah?",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 2 was embarrassed for a few seconds until Vinny was interrupted by Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Shhhhh~ Vinny, now it's time for us to work. Are you ready for our dark place too?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane does a silly, smirk face while her horn showed that the teleportation magic was ready. Vinny would get a little embarrassed too, but then quickly get back into focus too.",
+        "type": "action"
+    },
+
+    {
+        "value": "I...I was born ready! Let's go.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny put the flashlight hat on his head while Rayane giggles a little in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "It's ok. Let's go~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
