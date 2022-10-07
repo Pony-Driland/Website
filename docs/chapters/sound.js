@@ -69,10 +69,6 @@ storyCfg.playlist = {
         { id: 'l6veMGLpol0', type: 'youtube' },
     ],
 
-    'nuclear-sound': [
-        { id: '1ulfXmwvKhI', type: 'youtube', once: true },
-    ],
-
     'escape': [
         { id: '3jw04mIF3fs', type: 'youtube' },
         { id: '_j8jUUzGqDo', type: 'youtube' },
@@ -278,5 +274,5 @@ storyCfg.sfx = {
     'heavy-rain': { type: 'file', module: 'main', value: '/audio/jasmindreasond/rain/heavy-rain.mp4' },
     'ambulance-alarm': { type: 'file', module: 'main', value: '/audio/jasmindreasond/alarm/ambulance.wav' },
     'train-1': { type: 'file', module: 'main', value: '/audio/jasmindreasond/train/1.mp3' },
-    'nuke-1': { type: 'file', module: 'main', value: '/audio/jasmindreasond/explosion/nuke.mp3' }
+    'nuke-1': { type: 'file', module: 'main', value: '/audio/jasmindreasond/explosion/nuke.mp3', loop: false }
 };
