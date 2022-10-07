@@ -816,13 +816,15 @@ $(function () {
         });
     };
 
-    fetch('https://api.ipregistry.co/?key=tryout').then(function (response) { return response.json(); }).then(function (payload) {
+    /* fetch('https://api.ipregistry.co/?key=tryout').then(function (response) { return response.json(); }).then(function (payload) {
         storyData.ipRegistry = payload;
         puddyWeb3.waitReadyProvider().then(startApp).catch(startApp);
     }).catch(err => {
         console.error(err);
         alert(err.message);
         puddyWeb3.waitReadyProvider().then(startApp).catch(startApp);
-    });
+    }); */
+
+    puddyWeb3.waitReadyProvider().then(startApp).catch(startApp);
 
 });
