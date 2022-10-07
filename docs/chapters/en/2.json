@@ -892,7 +892,7 @@
 
     {
         "set": {
-            "playEffect": { "file": "nuke-1", "enabled": true }
+            "playEffect": { "file": "nuke-1", "enabled": true, "instant": true }
         },
         "value": "Sssssh~",
         "character": "Rayane",

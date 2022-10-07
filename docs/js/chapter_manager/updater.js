@@ -103,16 +103,30 @@ cacheChapterUpdater.scrollData = function () {
 
             // Play
             if (value.enabled && !cacheChapterUpdater.soundCache[value.file].playing) {
+
                 console.log(`[${value.file}] Playing...`);
                 cacheChapterUpdater.soundCache[value.file].playing = true;
-                storyData.sfx[value.file].show();
+
+                if (!value.instant) {
+                    storyData.sfx[value.file].show();
+                } else {
+                    storyData.sfx[value.file].play();
+                }
+
             }
 
             // Stop
             else if (!value.enabled && cacheChapterUpdater.soundCache[value.file].playing) {
+
                 console.log(`[${value.file}] Stopping...`);
                 cacheChapterUpdater.soundCache[value.file].playing = false;
-                storyData.sfx[value.file].hide();
+
+                if (!value.instant) {
+                    storyData.sfx[value.file].hide();
+                } else {
+                    storyData.sfx[value.file].stop();
+                }
+
             }
 
         }
