@@ -908,9 +908,7 @@
     },
 
     {
-        
         "set": {
-            "playlistPlay": null,
             "playEffect": { "file": "nuke-1", "enabled": false }
         },
         "value": "R...Rayane? H...hello? R..Rayane?",
@@ -1004,6 +1002,9 @@
     },
 
     {
+        "set": {
+            "playEffect": { "file": "nuke-1", "enabled": false }
+        },
         "value": "R..Rayane. It's gonna be okay. I promise.",
         "character": "Vinny",
         "type": "dialogue"
