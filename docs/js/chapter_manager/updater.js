@@ -92,21 +92,22 @@ cacheChapterUpdater.scrollData = function () {
 
     // Manager Other Sounds
     for (const file in cacheChapterUpdater.soundCache) {
+
+        // Value Data
+        const value = cacheChapterUpdater.soundCache[file].value;
+
         if (cacheChapterUpdater.soundCache[value.file].waiting) {
 
             // Progress
             cacheChapterUpdater.soundCache[value.file].waiting = false;
-
-            // Value Data
-            const value = cacheChapterUpdater.soundCache[file].value;
 
             // Play
             if (value.enabled && !cacheChapterUpdater.soundCache[value.file].playing) {
                 console.log(`[${value.file}] Playing...`);
                 cacheChapterUpdater.soundCache[value.file].playing = true;
                 storyData.sfx[value.file].show();
-            } 
-            
+            }
+
             // Stop
             else if (!value.enabled && cacheChapterUpdater.soundCache[value.file].playing) {
                 console.log(`[${value.file}] Stopping...`);
@@ -115,6 +116,7 @@ cacheChapterUpdater.scrollData = function () {
             }
 
         }
+
     }
 
 };
