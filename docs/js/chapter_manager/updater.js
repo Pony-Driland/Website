@@ -90,6 +90,33 @@ cacheChapterUpdater.scrollData = function () {
 
     }
 
+    // Manager Other Sounds
+    for (const file in cacheChapterUpdater.soundCache) {
+        if (cacheChapterUpdater.soundCache[value.file].waiting) {
+
+            // Progress
+            cacheChapterUpdater.soundCache[value.file].waiting = false;
+
+            // Value Data
+            const value = cacheChapterUpdater.soundCache[file].value;
+
+            // Play
+            if (value.enabled && !cacheChapterUpdater.soundCache[value.file].playing) {
+                console.log(`[${value.file}] Playing...`);
+                cacheChapterUpdater.soundCache[value.file].playing = true;
+                storyData.sfx[value.file].show();
+            } 
+            
+            // Stop
+            else if (!value.enabled && cacheChapterUpdater.soundCache[value.file].playing) {
+                console.log(`[${value.file}] Stopping...`);
+                cacheChapterUpdater.soundCache[value.file].playing = false;
+                storyData.sfx[value.file].hide();
+            }
+
+        }
+    }
+
 };
 
 // Update Cache
@@ -181,15 +208,8 @@ var chapterSet = {
                 cacheChapterUpdater.soundCache[value.file] = { playing: false };
             }
 
-            if (value.enabled && !cacheChapterUpdater.soundCache[value.file].playing) {
-                console.log(`[${value.file}] Playing...`);
-                cacheChapterUpdater.soundCache[value.file].playing = true;
-                storyData.sfx[value.file].show();
-            } else if (!value.enabled && cacheChapterUpdater.soundCache[value.file].playing) {
-                console.log(`[${value.file}] Stopping...`);
-                cacheChapterUpdater.soundCache[value.file].playing = false;
-                storyData.sfx[value.file].hide();
-            }
+            cacheChapterUpdater.soundCache[value.file].waiting = true;
+            cacheChapterUpdater.soundCache[value.file].value = value;
 
         }
     },
