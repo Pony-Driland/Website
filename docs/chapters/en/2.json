@@ -8697,7 +8697,7 @@
     },
 
     {
-        "value": "Yeah. This is very suspicious. And it's still not a good idea for me to use my magic to try to discover the presence of whoever is here.",
+        "value": "Yeah. This is very suspicious. it's still not a good idea for me to use my magic to try to discover the presence of whoever is here.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -8722,6 +8722,11 @@
         "value": "Hmmm.. Want to go to the abandoned train car?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane gets a little surprised and worried.",
+        "type": "action"
     },
 
     {
@@ -8764,19 +8769,19 @@
     },
 
     {
-        "value": "What? There's a faint magic sound coming from the train car.",
+        "value": "There's a faint magic sound coming from the train car.",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vinny, be extremely careful. And don't make any sudden movements. This could be a trap.",
+        "value": "Hey. Vinny, be extremely careful. Don't make any sudden movements. This could be a trap.",
         "character": "Rayane",
         "type": "dialogue"
     },
 
     {
-        "value": "Fuck!",
+        "value": "Fuck...",
         "character": "Vinny",
         "type": "think"
     },
@@ -8788,7 +8793,7 @@
     },
 
     {
-        "value": "Vinny would get very nervous and look directly at the abandoned train car, starting to try to get even closer.",
+        "value": "Vinny would get very nervous and look directly at the abandoned train car, starting to try to get even closer slowly in response.",
         "type": "action"
     }
 
