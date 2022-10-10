@@ -144,14 +144,22 @@ var PuddyWeb3 = class {
     // Get Address
     async signerGetAddress() {
 
-        // Prepare
-        let address;
+        // Check
+        if (this.signer.isSigner) {
 
-        // Get Data
-        address = await this.signer.getAddress();
+            // Prepare
+            let address;
 
-        // Complete
-        return address;
+            // Get Data
+            address = await this.signer.getAddress();
+
+            // Complete
+            return address;
+
+        }
+
+        // Fail
+        else { return null; }
 
     }
 
@@ -163,11 +171,14 @@ var PuddyWeb3 = class {
         await this.signerUpdated();
 
         this.address = await this.signerGetAddress();
-        this.address = this.address.toLowerCase();
-        localStorage.setItem('web3_address', this.address);
 
-        for (const item in this.callbacks.accountsChanged) {
-            await this.callbacks.accountsChanged[item](data);
+        if (this.address) {
+            this.address = this.address.toLowerCase();
+            localStorage.setItem('web3_address', this.address);
+
+            for (const item in this.callbacks.accountsChanged) {
+                await this.callbacks.accountsChanged[item](data);
+            }
         }
 
         return;
@@ -508,11 +519,14 @@ var PuddyWeb3 = class {
 
                     await tinyThis.requestAccounts();
                     tinyThis.address = await tinyThis.signerGetAddress();
-                    const address = tinyThis.address;
-                    const msg = ethers.utils.toUtf8Bytes(storyCfg.web3.welcome);
-                    const signature = await tinyThis.provider.send('personal_sign', [ethers.utils.hexlify(msg), address]);
-                    localStorage.setItem('web3_sign', signature);
-                    data = signature;
+
+                    if (tinyThis.address) {
+                        const address = tinyThis.address;
+                        const msg = ethers.utils.toUtf8Bytes(storyCfg.web3.welcome);
+                        const signature = await tinyThis.provider.send('personal_sign', [ethers.utils.hexlify(msg), address]);
+                        localStorage.setItem('web3_sign', signature);
+                        data = signature;
+                    }
 
                 } catch (err) { return reject(err); }
                 return resolve(data);
@@ -550,11 +564,10 @@ var PuddyWeb3 = class {
 
         if (changeNetwork) {
 
-            try {
-                this.address = await this.signerGetAddress();
+            this.address = await this.signerGetAddress();
+
+            if (this.address) {
                 this.address = this.address.toLowerCase();
-            } catch (err) {
-                console.error(err);
             }
 
         }
@@ -577,7 +590,11 @@ var PuddyWeb3 = class {
 
                 await this.requestAccounts();
                 this.address = await this.signerGetAddress();
-                this.address = this.address.toLowerCase();
+
+                if (this.address) {
+                    this.address = this.address.toLowerCase();
+                }
+
                 this.connectionUpdate('checkConnection');
 
                 return this.address;
