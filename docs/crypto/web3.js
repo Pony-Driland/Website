@@ -141,6 +141,20 @@ var PuddyWeb3 = class {
         });
     }
 
+    // Get Address
+    async signerGetAddress() {
+
+        // Prepare
+        let address;
+
+        // Get Data
+        address = await this.signer.getAddress();
+
+        // Complete
+        return address;
+
+    }
+
     // Account Changed
     async accountsChanged(data) {
 
@@ -148,7 +162,7 @@ var PuddyWeb3 = class {
         this.signer = this.provider.getSigner();
         await this.signerUpdated();
 
-        this.address = await this.signer.getAddress();
+        this.address = await this.signerGetAddress();
         this.address = this.address.toLowerCase();
         localStorage.setItem('web3_address', this.address);
 
@@ -493,7 +507,7 @@ var PuddyWeb3 = class {
                 try {
 
                     await tinyThis.requestAccounts();
-                    tinyThis.address = await tinyThis.signer.getAddress();
+                    tinyThis.address = await tinyThis.signerGetAddress();
                     const address = tinyThis.address;
                     const msg = ethers.utils.toUtf8Bytes(storyCfg.web3.welcome);
                     const signature = await tinyThis.provider.send('personal_sign', [ethers.utils.hexlify(msg), address]);
@@ -537,7 +551,7 @@ var PuddyWeb3 = class {
         if (changeNetwork) {
 
             try {
-                this.address = await this.signer.getAddress();
+                this.address = await this.signerGetAddress();
                 this.address = this.address.toLowerCase();
             } catch (err) {
                 console.error(err);
@@ -562,7 +576,7 @@ var PuddyWeb3 = class {
             if (this.existAccounts()) {
 
                 await this.requestAccounts();
-                this.address = await this.signer.getAddress();
+                this.address = await this.signerGetAddress();
                 this.address = this.address.toLowerCase();
                 this.connectionUpdate('checkConnection');
 
