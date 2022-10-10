@@ -145,7 +145,7 @@ var PuddyWeb3 = class {
     async signerGetAddress() {
 
         // Check
-        if (this.signer.isSigner) {
+        if (this.signer) {
 
             // Prepare
             let address;
