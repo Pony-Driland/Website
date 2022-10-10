@@ -151,7 +151,19 @@ var PuddyWeb3 = class {
             let address;
 
             // Get Data
-            address = await this.signer.getAddress();
+            try {
+                address = await this.signer.getAddress();
+            } catch (err) {
+
+                console.error(err);
+
+                address = await this.provider.send("eth_requestAccounts", []);
+                if (Array.isArray(address) && address.length > 0 && typeof address[0] === 'string') {
+                    address = address[0];
+                }
+
+            }
+
 
             // Complete
             return address;
