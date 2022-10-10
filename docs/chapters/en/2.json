@@ -8666,6 +8666,130 @@
         "value": "It's ok. Let's go~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "So Rayane finally used teleportation magic to teleport her and Vinny to the top of the train car. Vinny was a little surprised for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "A..ah? This really was very random.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ Now let's keep silent.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Vinny and Rayane was quiet and looked around for a few seconds until then Vinny located a other train car in the middle of the darkness. This train car was abandoned and was getting in the way of the train.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey, Another train car here?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah. This is very suspicious. And it's still not a good idea for me to use my magic to try to discover the presence of whoever is here.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then spawns her sword, getting ready for any danger situation. Vinny was a little curious about this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny prepared the sniper and went carefully to investigate the place. Vinny moved slowly to keep still on top of the train car. Everything was very quiet, and all Vinny could see was the abandoned train car. This abandoned train car did not have any lighting.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmm.. Want to go to the abandoned train car?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I will stay here to keep you safe. You can go ahead.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane focused her magic even more on the sword and at the same time a second magic, but this made her go much slower than usual. Vinny was worried when he noticed Rayane's effort.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..hey. Calm your magic. Do not worry about me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Shhh~ Don't worry about me. It'll just slow me down while I'm doing it.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then just kept quiet and looked around again. Vinny would then jump to the ground and turn on his hat's flashlight.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... What do we have here then?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then started to get very curious when he started to hear a strange sound of magic coming from inside the abandoned train car. Vinny was surprised, but still very curious, wanting to find out what was going on.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? There's a faint magic sound coming from the train car.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny, be extremely careful. And don't make any sudden movements. This could be a trap.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Fuck!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Hmmm. Okay okay. Let's try.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would get very nervous and look directly at the abandoned train car, starting to try to get even closer.",
+        "type": "action"
     }
 
 ]
