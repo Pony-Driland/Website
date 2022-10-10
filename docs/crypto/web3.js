@@ -535,8 +535,14 @@ var PuddyWeb3 = class {
         await this.signerUpdated();
 
         if (changeNetwork) {
-            this.address = await this.signer.getAddress();
-            this.address = this.address.toLowerCase();
+
+            try {
+                this.address = await this.signer.getAddress();
+                this.address = this.address.toLowerCase();
+            } catch (err) {
+                console.error(err);
+            }
+
         }
 
         this.connectionUpdate('liteRequestAccounts');
