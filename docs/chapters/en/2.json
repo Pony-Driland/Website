@@ -8801,6 +8801,130 @@
     {
         "value": "Vinny would get very nervous and look directly at the abandoned train car, starting to try to get even closer slowly in response.",
         "type": "action"
+    },
+
+    
+    {
+        "value": "H...Hey? Anyone there? If no one moves. I'm going to throw a grenade in there!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then pointed the sniper towards the train car while waiting for some reaction, but nothing interesting happened. Everything was pretty quiet, making Vinny feel disappointed.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hm?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then pick up a rock from the floor and throw it into the train car. But nothing happened, only the same relaxing sound of weak magic continued to be heard. Vinny was slowly starting to feel calmer, not knowing what was going on.",
+        "type": "action"
+    },
+
+    {
+        "value": "Really? Will it be the hard way?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Okay! I'll go ahead now.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was slowly approaching the window of the train car while holding the sniper, watching if there was anything. Rayane was starting to show concern to see Vinny's action.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny? Come back here! Be careful what you hear.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny ignored Rayane's warnings and kept looking inside the train car. The place looked pretty abandoned a long time ago. But Vinny could still see the body of a large unicorn lying on the ground. Vinny couldn't see if he was alive or not. The relaxing sound of magic continued, but this time it got a little louder, making Vinny understand that maybe it could be some magic leak.",
+        "type": "action"
+    },
+
+    {
+        "value": "R...Rayane? This sound is very strange. And it's also very relaxing. What can this be? Are you feeling something?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then began to suspect something and became more worried.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What? O..Oh no.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "Rayane tried to keep quieter, worried about a possible trap. Vinny tried to move, but Vinny's movements were much more relaxed than usual, making his movements very slow.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...What? F..fuck! Teleport us to the guards!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny's voice was also weaker, making it difficult for him to speak. So Vinny would start to lie down inside the train car, trying to find some good alternative to moving.",
+        "type": "action"
+    },
+
+    {
+        "value": "But what the fuck did I get myself into!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny was trying to keep moving, but Vinny was starting to feel very sleepy. The sound of Vinny's body laying on the floor then seemed to be causing some reaction inside the train car.",
+        "type": "action"
+    },
+
+    {
+        "value": "R..Rayane? Remember when you made my smartmoby weak? H...help me...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane remained quiet, maintaining a defensive stance, very worried about what could happen to Vinny. But still, Rayane kept her focus.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...why?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny seeing that he had no other choice, he tried to look at the mysterious unicorn's body to lighten the place. Vinny saw the big unicorn shadow. He seemed to be responsible for that. But he still didn't do anything to Vinny, it looked like he was analyzing what was happening.",
+        "type": "action"
+    },
+
+    {
+        "value": "Holy crap.",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
