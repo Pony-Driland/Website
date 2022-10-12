@@ -8775,6 +8775,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Hey. Vinny, be extremely careful. Don't make any sudden movements. This could be a trap.",
         "character": "Rayane",
         "type": "dialogue"
@@ -8787,6 +8790,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "dark-and-mysterious-ambient"
+        },
         "value": "Hmmm. Okay okay. Let's try.",
         "character": "Vinny",
         "type": "dialogue"
