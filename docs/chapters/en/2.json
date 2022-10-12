@@ -8799,7 +8799,7 @@
     },
 
     {
-        "value": "Vinny would get very nervous and look directly at the abandoned train car, starting to try to get even closer slowly in response.",
+        "value": "Vinny would get very nervous and look directly at the abandoned train car, starting to try to get even closer slowly.",
         "type": "action"
     },
 
@@ -8822,7 +8822,7 @@
     },
 
     {
-        "value": "Vinny would then pick up a rock from the floor and throw it into the train car. But nothing happened, only the same relaxing sound of weak magic continued to be heard. Vinny was slowly starting to feel calmer, not knowing what was going on.",
+        "value": "Vinny would then pick up a rock from the floor and throw it into the train car. But nothing happened, only the relaxing sound of weak magic continued to be heard. Vinny was slowly starting to feel calmer, not knowing what was going on.",
         "type": "action"
     },
 
@@ -8911,7 +8911,7 @@
     },
 
     {
-        "value": "W...why?",
+        "value": "W...why me?",
         "character": "Vinny",
         "type": "think"
     },
