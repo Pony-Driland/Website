@@ -8925,6 +8925,56 @@
         "value": "Holy crap.",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "Vinny tried to use the sniper, but only managed to make a random shot that scared the unicorn a little. At this same moment, Rayane suddenly used teleportation magic to bring Vinny to her. At the same time this shot also caught the attention of the guards, they got out of the main train car as quickly as possible.",
+        "type": "action"
+    },
+
+    {
+        "value": "That was close!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane hugged Vinny, trying not to let Vinny's sleepy body fall. Rayane then looked at Vinny's body, giggling a little before returning to the mission's focus.",
+        "type": "action"
+    },
+
+    {
+        "value": "You're safe now.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane hugged Vinny, trying not to let Vinny's sleepy body fall. Rayane then looked at Vinny's body, giggling a little before returning to the mission's focus.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes! the shot came from here!",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Don't get on the train! Just point the guns!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The guards who were already arriving at the place. They pointed combat weapons towards the train car.",
+        "type": "action"
+    },
+
+    {
+        "value": "Drop everything on the floor now and just get off the train car!",
+        "character": "Guard 1",
+        "type": "dialogue"
     }
 
 ]
