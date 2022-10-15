@@ -9011,18 +9011,7 @@
     },
 
     {
-        "value": "Kiss?~ Don't talk as soon as the day arrives~",
-        "character": "Rayane",
-        "type": "dialogue"
-    },
-
-    {
-        "value": "Rayane smirks while helping Vinny finish getting up. Then Rayane used teleportation magic to teleport her and Vinny back to the ground.",
-        "type": "action"
-    },
-
-    {
-        "value": "You were just under the effect of sound drugs emitted by unicorn magic. This magic is not common.",
+        "value": "Kiss?~ Don't talk as soon as the day arrives~ You were just under the effect of sound drugs emitted by unicorn magic. This magic is not common.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -9031,7 +9020,7 @@
         "set": {
             "playlistPlay": null
         },
-        "value": "The guards then bring in the mysterious unicorn. The mysterious unicorn was quiet, but then when the unicorn started to be illuminated by the light, its face and body started to become visible.",
+        "value": "Rayane smirks while helping Vinny finish getting up. Then Rayane used teleportation magic to teleport her and Vinny back to the ground. The guards then bring in the mysterious unicorn. The mysterious unicorn was quiet, but then when the unicorn started to be illuminated by the light, its face and body started to become visible.",
         "type": "action"
     },
 
