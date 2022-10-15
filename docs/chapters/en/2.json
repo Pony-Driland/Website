@@ -8970,6 +8970,11 @@
         "character": "Guard 1",
         "type": "dialogue"
     },
+
+    {
+        "value": "When Vinny saw the situation, he soon got a little angry and said.",
+        "type": "action"
+    },
     
     {
         "value": "The motherfucker is behind the train car, a big unicorn! BIG UNICORN!",
