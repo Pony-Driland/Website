@@ -9060,6 +9060,12 @@
         "value": "H...Hiroshi? What's going on here?",
         "character": "Rayane",
         "type": "dialogue"
+    },  
+
+    {
+        "value": "WHAT?!",
+        "character": "Vinny",
+        "type": "dialogue"
     },
     
     {
