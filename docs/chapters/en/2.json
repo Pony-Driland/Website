@@ -8961,12 +8961,6 @@
     },
 
     {
-        "value": "Sillies! Don't get on the train! Just point the guns!",
-        "character": "Rayane",
-        "type": "dialogue"
-    },
-
-    {
         "value": "The guards who were already arriving at the place. They pointed combat weapons towards the train car.",
         "type": "action"
     },
