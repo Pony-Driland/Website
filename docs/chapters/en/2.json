@@ -9043,6 +9043,12 @@
     },
 
     {
+        "value": "...Ah.",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
         "set": {
             "playlistPlay": "tense-mystery"
         },
