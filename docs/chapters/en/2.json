@@ -9027,8 +9027,11 @@
         "character": "Rayane",
         "type": "dialogue"
     },
-    
+
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "The guards then bring in the mysterious unicorn. The mysterious unicorn was quiet, but then when the unicorn started to be illuminated by the light, its face and body started to become visible.",
         "type": "action"
     },
@@ -9040,6 +9043,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "tense-mystery"
+        },
         "value": "Guard 1 is completely scared by the situation.",
         "type": "action"
     }
