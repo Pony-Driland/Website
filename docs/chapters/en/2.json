@@ -9026,6 +9026,22 @@
         "value": "You were just under the effect of sound drugs emitted by unicorn magic. This magic is not common.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "The guards then bring in the mysterious unicorn. The mysterious unicorn was quiet, but then when the unicorn started to be illuminated by the light, its face and body started to become visible.",
+        "type": "action"
+    },
+
+    {
+        "value": "So it's... it's... W...WHAT FUCK?! it's Hiroshi?!",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 1 is completely scared by the situation.",
+        "type": "action"
     }
 
 ]
