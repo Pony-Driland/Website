@@ -8975,6 +8975,57 @@
         "value": "Hey you! Drop everything on the floor now and just get off the train car!",
         "character": "Guard 1",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "The motherfucker is behind the train car, a big unicorn! BIG UNICORN!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ssssh~ time for Vinny's body to be active again~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane stayed hidden on top of her train car while helping Vinny recover.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't touch anything! Stay right there!",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "During the process, the guards finished capturing the mysterious unicorn. Vinny then took a deep breath, feeling better. Vinny giggles a little before replying.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah. I feel better. I could even kiss, but the situation is complicated.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kiss?~ Don't talk as soon as the day arrives~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smirks while helping Vinny finish getting up. Then Rayane used teleportation magic to teleport her and Vinny back to the ground.",
+        "type": "action"
+    },
+
+    {
+        "value": "You were just under the effect of sound drugs emitted by unicorn magic. This magic is not common.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
