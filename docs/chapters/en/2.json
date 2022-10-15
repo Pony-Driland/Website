@@ -9052,7 +9052,42 @@
         "set": {
             "playlistPlay": "tense-mystery"
         },
-        "value": "Guard 1 is completely scared by the situation.",
+        "value": "Guard 1 is completely scared by the situation. At the same moment, Rayane was also surprised.",
+        "type": "action"
+    },
+
+    {
+        "value": "H...Hiroshi? What's going on here?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+    
+    {
+        "value": "Hey everypony. I..I'm sorry for all. I was just trying to protect myself for fear of being captured for some enemy. I couldn't stay alone weak inside the train car at the risk of dying there.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi looked sad about some past event. His expression was one of disappointment with himself.",
+        "type": "action"
+    },
+
+    {
+        "value": "But.....but! Sir! Leader Hiroshi! I'm sorry for my bad manners! We didn't know it was you!",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "Yeah my friend. it's not what you wanted.",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 2 giggles nervously in response. ",
         "type": "action"
     }
 
