@@ -1,0 +1,22 @@
+{
+    "name": "",
+    "description": "",
+    "properties": {
+
+    },
+    "external_url": "",
+    "image": "",
+    "image_url": "",
+    "attributes": [
+        {
+            "trait_type": "Ending",
+            "value": "blockchain"
+        },
+        {
+            "trait_type": "Level",
+            "value": 2
+        }
+    ],
+    "image_data": "data:image/svg+xml;base64,",
+    "background_color": "FFFFFF"
+}
