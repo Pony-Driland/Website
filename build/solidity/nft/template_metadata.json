@@ -1,16 +1,16 @@
 {
-    "name": "",
-    "description": "",
+    "name": "Test",
+    "description": "This is a tiny test NFT.",
     "properties": {
-
+        "test_value": true
     },
-    "external_url": "",
-    "image": "",
-    "image_url": "",
+    "external_url": "https://",
+    "image": "ipfs://",
+    "image_url": "ipfs://",
     "attributes": [
         {
-            "trait_type": "Ending",
-            "value": "blockchain"
+            "trait_type": "Tiny Data",
+            "value": "Test"
         },
         {
             "trait_type": "Level",
