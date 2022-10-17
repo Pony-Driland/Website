@@ -1,0 +1,42 @@
+{
+    "name": "Rayane - Avatar",
+    "description": "Official Rayane avatar used on various websites and services. Marshmallow!",
+    "properties": {
+        "test_value": true
+    },
+    "external_url": "https://",
+    "image": "ipfs://",
+    "image_url": "ipfs://",
+    "attributes": [
+        {
+            "trait_type": "Character",
+            "value": "Rayane"
+        },
+        {
+            "trait_type": "Cute",
+            "value": "Yes"
+        },
+        {
+            "trait_type": "Fanfic",
+            "value": "Pony Driland"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Race",
+            "value": "Ùnicorn"
+        },
+        {
+            "trait_type": "Specie",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Size",
+            "value": "Normal"
+        }
+    ],
+    "image_data": "data:image/svg+xml;base64,",
+    "background_color": "FFFFFF"
+}
