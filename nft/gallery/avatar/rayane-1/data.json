@@ -1,9 +1,6 @@
 {
     "name": "Rayane - Avatar",
     "description": "Official Rayane avatar used on various websites and services. Marshmallow!",
-    "properties": {
-        "test_value": true
-    },
     "external_url": "https://",
     "image": "ipfs://",
     "image_url": "ipfs://",
