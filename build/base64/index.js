@@ -13,7 +13,7 @@ fs.readdirSync(folder).forEach(file => {
 
         // Get Content
         const content = fs.readFileSync(filePath, { encoding: 'base64' });
-        fs.writeFileSync(path.parse(filePath).name, content);
+        fs.writeFileSync(path.join(folder, `./${path.parse(filePath).name}.txt`), content);
 
     }
 });
