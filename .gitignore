@@ -10,6 +10,7 @@ lerna-debug.log*
 /build/base64/*.gif
 /build/base64/*.webp
 /build/base64/*.webm
+/build/base64/*.txt
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
