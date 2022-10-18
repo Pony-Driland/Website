@@ -9089,6 +9089,84 @@
     {
         "value": "Guard 2 giggles nervously in response. Vinny was confused, and just backed away, startled by what he was seeing.",
         "type": "action"
+    },
+    
+    {
+        "value": "F..Fine. I'll see where we're going.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then tried to calm down, but was interrupted by Hiroshi.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...Wait! Vinny! What are you and Rayane doing here? K..Kai? Rowan? Are you also here with them? What's going on here? I've been here for a long time trying to hope to be rescued.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi then tried to breathe to calm down. At this same time the two guards were surprised to realize that their names were revealed.",
+        "type": "action"
+    },
+
+    {
+        "value": "H...Hiroshi?",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yea. They know me. I forgot to tell you some details about the bomb and we solved it. I came here looking for you, but we didn't expect to find you here. what exactly happened? Where are all your other guards? How did you get here if we had some problems before with some ponies?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi then took a deep breath. Hiroshi looked a little depressed. So Hiroshi does a gomen pose, asking for forgiveness for everyone.",
+        "type": "action"
+    },
+
+    {
+        "value": "First... I'm sorry about everything. I was completely defenseless and I needed to be very cautious of any kind of invasion. I was just wanting you to be safe with Rayane.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "D...Don't worry Hiroshi. Everything is fine. We are here to help you now.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was still very curious. Meanwhile Hiroshi slowly lifted his head and looked at everyone again.",
+        "type": "action"
+    },
+
+    {
+        "value": "So Kai already trusts you? I'm surprised that in a short time you already have an intimacy.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 1 then prepared to respond, revealing that he is Kai. Guard 2 is Rowan.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sir... We accept your apologies. I understand that you were in a moment of vulnerability. We are glad that you had the humility to cooperate with our protocol so that nothing bad happens to you.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai then began to feel calmer during the conversation.",
+        "type": "action"
     }
 
 ]
