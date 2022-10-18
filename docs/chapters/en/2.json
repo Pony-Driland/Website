@@ -9203,18 +9203,7 @@
     },
 
     {
-        "value": "But unfortunately during the conflict, someone accidentally let the train car chain be broken. So I was lost here for a while afraid that some other pony would appear wanting to kill me.",
-        "character": "Hiroshi",
-        "type": "dialogue"
-    },
-
-    {
-        "value": "Hiroshi slowly became more worried as he continued the conversation.",
-        "type": "action"
-    },
-
-    {
-        "value": "Well... My sleep magic was the last alternative I had to protect myself here.",
+        "value": "But unfortunately during the conflict, someone accidentally let the train car chain be broken. So I was lost here for a while afraid that some other pony would appear wanting to kill me. Well... My sleep magic was the last alternative I had to protect myself here.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
