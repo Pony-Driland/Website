@@ -9109,7 +9109,7 @@
     },
 
     {
-        "value": "Hiroshi then tried to breathe to calm down. At this same time the two guards were surprised to realize that their names were revealed.",
+        "value": "Hiroshi then tries to calm down. At this same time the two guards were surprised to realize that their names were revealed.",
         "type": "action"
     },
 
@@ -9120,7 +9120,7 @@
     },
 
     {
-        "value": "Yea. They know me. I forgot to tell you some details about the bomb and we solved it. I came here looking for you, but we didn't expect to find you here. what exactly happened? Where are all your other guards? How did you get here if we had some problems before with some ponies?",
+        "value": "Yea. They know me. I forgot to tell you some details about the bomb and we solved it. I came here looking for you, but we didn't expect to find you here. What exactly happened? Where are all your other guards? How did you get here if we had some problems before with more ponies?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -9137,7 +9137,7 @@
     },
 
     {
-        "value": "D...Don't worry Hiroshi. Everything is fine. We are here to help you now.",
+        "value": "Calm down Hiroshi. Don't worry about me and Vinny.",
         "character": "Rayane",
         "type": "dialogue"
     },
