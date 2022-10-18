@@ -9167,6 +9167,123 @@
     {
         "value": "Kai then began to feel calmer during the conversation.",
         "type": "action"
+    },
+    
+    {
+        "value": "This story is getting confusing!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rowan was worried and curious in response. Kai was a little surprised and just kept quiet. Then Rayane put her paw in Rowan's mouth for him to stop talking.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sssh~ Let Hiroshi talk. He needs to feel calmer.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi took his last deep breath and started talking.",
+        "type": "action"
+    },
+
+    {
+        "value": "Thank you Rayane. Let's go into details. I was trying to survive on this train when Marlon was using the train to try to escape. Me and my guards had a big confrontation inside the train and I'm still injured after things that happened.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi took off the rest of his clothes slowly, moaning a little in pain, but feeling relieved to have his body freer again. At this moment Kai and Rowan began to help Hiroshi to get up again.",
+        "type": "action"
+    },
+
+    {
+        "value": "But unfortunately during the war, someone accidentally let the train car chain be broken. So I was lost here for a while afraid that some other pony would appear wanting to kill me.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi slowly became more worried as he continued the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... My sleep magic was the last alternative I had to protect myself here.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile, Rayane was thoughtful, analyzing the place while listening to the conversation. Vinny still surprised, decided to continue the conversation sadly.",
+        "type": "action"
+    },
+
+    {
+        "value": "I see, it's okay, it's okay to put life first, you can't do anything after you're dead. Did you and Marlon have a confrontation then? I'm sorry I intruded on your mission. I'm just a pony that has good social skills.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai and Rowan then looked at each other. Seeing the progress of the conversation, the two decided to get on the train to start preparing things.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't worry. I'm glad you understood.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi then smiled a little as he realized Vinny's sincerity.",
+        "type": "action"
+    },
+
+    {
+        "value": "Unfortunately I couldn't stop Marlon. He was very paranoid about wanting to save the east region. Marlon is very angry with me right now and I lost my guards, so it looks like I'll have to join you.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "M..Marlon? What?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then the conversation was interrupted. Kai and Rowan came back, and helped Hiroshi up to get on the train.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't worry my leader. We'll help you heal. We'll just put you on our new train. Okay for you? Our priority is to keep you safe now.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. We can help you with your injuries so you can rest during the travel. Please, try to get more rest for now. You can continue the conversation inside the train.",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi gets a little surprised, but he smile again.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm glad for all of your help.",
+        "character": "Hiroshi",
+        "type": "dialogue"
     }
 
 ]
