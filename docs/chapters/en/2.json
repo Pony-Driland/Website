@@ -9063,9 +9063,15 @@
     },
 
     {
-        "value": "Hiroshi looked sad about some past event. His expression was one of disappointment with himself.",
+        "value": "Hiroshi looked sad about some past event. His expression was one of disappointment with himself. Rayane showed a feeling of surprise, but still she remained quiet, trying to understand what Hiroshi was doing.",
         "type": "action"
     },
+
+    {
+        "value": "Why is he here? Was this all some desperate attempt to do something?",
+        "character": "Rayane",
+        "type": "think"
+    }, 
 
     {
         "value": "But.....but! Sir! Leader Hiroshi! I'm sorry for my bad manners! We didn't know it was you!",
