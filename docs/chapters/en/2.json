@@ -9273,6 +9273,62 @@
         "value": "I'm glad for you all here. Okay, let's go.",
         "character": "Hiroshi",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "Then Hiroshi would start coughing a few pixels for a few seconds. Rowan and Kai showed concern and started to help Hiroshi to sit in a seat on the train. Rayane showed concern before starting to speak as she got on the train with Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hiroshi? Maybe my healing magic can help you. But I can't guarantee that it will heal all your wounds. I will do my best.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..You heal me? You never told me you had healing powers. I'm surprised you've been learning new techniques.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi replied calmly during the progress. Vinny who was watching the conversation, trying not to participate too much in the personal moment, finally decided to say something.",
+        "type": "action"
+    },
+
+    {
+        "value": "If you need any help from me. I'm here too. I wanted to talk to you a little.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi then looked at Vinny for a few seconds, but Kai interrupted the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Me and Kai are going to help Hiroshi. We need your help to get the other train car out of the way.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "AH! Come on!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Rayane then looked at everyone and said.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ it seems like now it's just you and me again in the dark of the subway~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
