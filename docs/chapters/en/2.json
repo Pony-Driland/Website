@@ -9276,7 +9276,7 @@
     },
     
     {
-        "value": "Then Hiroshi would start coughing a few pixels for a few seconds. Rowan and Kai showed concern and started to help Hiroshi to sit in a seat on the train. Rayane showed concern before starting to speak as she got on the train with Vinny.",
+        "value": "Then Hiroshi would start coughing a few pixels for a few seconds. Rowan and Kai showed concern and started to help Hiroshi to sit in a seat on the train. Rayane showed concern before starting to speak as she got on the train. Vinny simply followed Rayane in response.",
         "type": "action"
     },
 
@@ -9309,6 +9309,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Me and Kai are going to help Hiroshi. We need your help to get the other train car out of the way.",
         "character": "Kai",
         "type": "dialogue"
@@ -9321,7 +9324,10 @@
     },
 
     {
-        "value": "Rayane then looked at everyone and said.",
+        "set": {
+            "playlistPlay": "dark-ambient-melodies"
+        },
+        "value": "Rayane then looked at everyone in response.",
         "type": "action"
     },
 
@@ -9329,6 +9335,28 @@
         "value": "Heh~ it seems like now it's just you and me again in the darkness of the subway~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smirks and Vinny smiles nervously.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. You're not helping me. You know I'm someone else in the dark. Right? How are we going to get this train car out of here?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I'm not helping you?~ I think you still don't understand. We're going to take a train car off these tracks.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane walked towards the abandoned train car while preparing a spell. Vinny would get curious and then decide to ask a question along the way.",
+        "type": "action"
     }
 
 ]
