@@ -9607,6 +9607,118 @@
     {
         "value": "Vinny just helped to remove some more objects and followed Rayane out of the old train car.",
         "type": "action"
+    },
+    
+    {
+        "value": "Yeah. But now... It's time to continue our objective.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Rayane invoked her sword, and at the same time she concentrated a magic on the sword, making the sword start to shine with much more intensity than usual.",
+        "type": "action"
+    },
+
+    {
+        "value": "WOOW! Will you need help now or after using that sword? Remember your friend won't be here to help you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Silly~ I'm not using the same amount of energy I used to protect you. Don't worry.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was thoughtful and still surprised, but after a few seconds Vinny agreed.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. I will trust you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. Just watch me now~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane's sword shone even brighter, getting much sharper than usual. At this same time Vinny realized that she could no longer temporarily move while using this spell. Then Rayane sword easily split the train car in half, making the two sides of the train car fall to both sides, opening a short path. Vinny was surprised, trying to think of what words to use.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...AAH! Lucky we're friends. This magic is cool!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. it's not over yet~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The Rayane sword then moved again and finished cutting the rest of the other parts of the train car that now turned into just several pieces shredded like grated cheese.",
+        "type": "action"
+    },
+
+    {
+        "value": "Holy fuck.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny still surprised, just looked straight ahead to make sure he didn't have any enemies ahead. But everything was fine. So Vinny was relieved.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Our work ended here. Let's go back to our train~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane finished the magic and made her sword disappear while she breathed a little tired, but she was feeling very well. So Rayane just got ready to get back on the train. Vinny then looked at Rayane, a little worried to see her feeling a little tired.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "Rayane? Come on, are you okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little again in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm fine. That was like lifting weights. Don't worry about me. Okay?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane just took a deep breath and walked back inside the main train. Vinny was still worried, but he followed Rayane and joined her into the train.",
+        "type": "action"
     }
 
 ]
