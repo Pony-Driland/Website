@@ -9357,6 +9357,118 @@
     {
         "value": "Rayane walked towards the abandoned train car while preparing a spell. Vinny would get curious and then decide to ask a question along the way.",
         "type": "action"
+    },
+    
+    {
+        "value": "Wait! I need to ask, do you really trust Hiroshi? Unfortunately so far he hasn't given me confidence.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane paused the magic a little and was a little surprised and curious to hear this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh H...Hiroshi? I trust him. But I'm more and more worried about him the more we question his existence. He is an elder of many years. Nobody knows what Hiroshi's true age is. Many ponies say that Hiroshi needs to retire as he is getting paranoid.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane took a deep breath before continuing the conversation. Rayane seemed to have some feeling of great concern about Hiroshi.",
+        "type": "action"
+    },
+
+    {
+        "value": "I think it's very weird that he's still alive. But we can try to benefit from that and try to ask some questions about his past. Maybe the stories he loves to tell can help us with something.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised and couldn't resist asking the next question.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? So you're telling me that Hiroshi is older than Marlon?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. Marlon is starting to enter old age. In other words, Marlon life cycle is still starting to come to an end.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then tried to stop the tense conversation a little and asked a silly question while giggles a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "And you? Are you a young pony or not? You know that everyone has preferences in younger ones, older ones one day, maybe you won't discover my preference.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. Silly~ I'm a young adult. Maybe the only pony that seems to have infinite longevity is Rain.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Rayane was a little surprised to remember that she was still holding the magic in the horn.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah yes! The train car! Well... I guess we'll have to blow up the old train car. But before we blow it up, wouldn't you like to see if there's anything in there?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised to hear that.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What? O..Okay! Let's see if there's something inside. Heh! Take it easy with that bomb.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Don't worry~ I can stay out here and make sure nothing goes wrong.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny started walking towards the abandoned train car.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ You'll have to be careful with the lullabies soon. The best way to stop their side effect is to make some louder noise.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a poker face as he remembers the moment he almost fell asleep at the moment of danger.Vinny arrived at the door of the abandoned train car, and all Vinny saw was a very messy scene, with just a few books thrown on the floor.",
+        "type": "action"
     }
 
 ]
