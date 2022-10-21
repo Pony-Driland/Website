@@ -9491,6 +9491,44 @@
         "value": "Ok, back to the plan.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "Vinny just found some Pony Driland story books lying on the floor. It seemed that the last train car was reserved for anyone who wanted to study something about Pony Driland's past during the travel.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow! This old pony really seems fanatical about the past.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Did you find something?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "nsfw": ["questionable"],
+        "value": "I... I found some Playpony. Just it.",
+        "value_alternative": "I... I found some random books. Just it.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "nsfw": ["questionable"],
+        "value": "Silly. What kind of story would a PlayPony be?~",
+        "value_alternative": "Hmmm. So you look like you're lost in a library. I'll need to go to make the books more interesting~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smirks while wait for Vinny.",
+        "type": "action"
     }
 
 ]
