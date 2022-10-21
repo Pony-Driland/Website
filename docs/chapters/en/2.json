@@ -9583,6 +9583,11 @@
     },
 
     {
+        "value": "Vinny was a little surprised and very curious.",
+        "type": "action"
+    },
+
+    {
         "value": "Ariella? Okay.",
         "character": "Vinny",
         "type": "dialogue"
