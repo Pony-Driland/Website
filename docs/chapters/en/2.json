@@ -9476,25 +9476,9 @@
         "character": "Vinny",
         "type": "dialogue"
     },
-
-    {
-        "value": "Vinny does a poker face as he remembers the moment he almost fell asleep at the moment of danger.Vinny arrived at the door of the abandoned train car, and all Vinny saw was a very messy scene, with just a few books thrown on the floor.",
-        "type": "action"
-    },
-
-    {
-        "value": "Vinny oicked up books and looked around looking for something interesting.",
-        "type": "action"
-    },
-
-    {
-        "value": "Ok, back to the plan.",
-        "character": "Vinny",
-        "type": "dialogue"
-    },
     
     {
-        "value": "Vinny just found some Pony Driland story books lying on the floor. It seemed that the last train car was reserved for anyone who wanted to study something about Pony Driland's past during the travel.",
+        "value": "Vinny picked up books and looked around looking for something interesting for a few seconds. Vinny just found some Pony Driland story books lying on the floor. It seemed that the last train car was reserved for anyone who wanted to study something about Pony Driland's past during the travel.",
         "type": "action"
     },
 
