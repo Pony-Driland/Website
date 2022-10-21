@@ -9469,6 +9469,28 @@
     {
         "value": "Vinny does a poker face as he remembers the moment he almost fell asleep at the moment of danger.Vinny arrived at the door of the abandoned train car, and all Vinny saw was a very messy scene, with just a few books thrown on the floor.",
         "type": "action"
+    },
+
+    {
+        "value": "What? Books? Why books?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a poker face as he remembers the moment he almost fell asleep at the moment of danger.Vinny arrived at the door of the abandoned train car, and all Vinny saw was a very messy scene, with just a few books thrown on the floor.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny oicked up books and looked around looking for something interesting.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ok, back to the plan.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
