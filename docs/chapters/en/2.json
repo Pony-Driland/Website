@@ -9563,6 +9563,33 @@
     {
         "value": "Rayane then still holding the magic, walked towards the abandoned train car.",
         "type": "action"
+    },
+    
+    {
+        "value": "While Vinny was exploring items around, Rayane used her levitation magic and took a large amount of books out of the abandoned train car and threw the items randomly into the Hiroshi train car.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..Hey! WOW!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane along the way, found something interesting, but without thinking twice, she simply made the item disappear into her inventory. Rayane took a deep breath and then Rayane used her magic to remove the rest of the other small objects in large quantities to make the train car as empty as possible.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wow wow! Rayane! Did you find something interesting?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was surprised to see that Rayane used the large amount of energy to levitate many items at once.",
+        "type": "action"
     }
 
 ]
