@@ -9605,6 +9605,12 @@
     },
 
     {
+        "value": "Ah? You really are in much more of a hurry than I thought.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
         "value": "So Rayane invoked her sword, and at the same time she concentrated a magic on the sword, making the sword start to shine with much more intensity than usual.",
         "type": "action"
     },
