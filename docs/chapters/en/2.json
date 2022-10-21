@@ -9527,7 +9527,41 @@
     },
 
     {
-        "value": "Rayane smirks while wait for Vinny.",
+        "value": "Rayane smirks while wait for Vinny. Vinny giggles a little and continued the conversation.",
+        "type": "action"
+    },
+    
+    {
+        "value": "Heh. Okay okay. Let's forget about that for a bit. Are bazookas common here? I feel that this bazooka can help us at some critical moment.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmm~ I still think this bazooka could have a future better use for us. Let's have a better plan.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very thoughtful for a few seconds as he looked at everything inside the old train car.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... Do you want to start taking the train car stuff now? Chair, books, what can you take?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Good idea~ After that I'll just split this train car in half so we can finish the job.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then still holding the magic, walked towards the abandoned train car.",
         "type": "action"
     }
 
