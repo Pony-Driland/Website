@@ -9588,7 +9588,24 @@
     },
 
     {
-        "value": "Vinny was surprised to see that Rayane used the large amount of energy to levitate many items at once.",
+        "value": "Vinny was surprised to see that Rayane used the large amount of energy to levitate many items at once. Rayane looked curious and a little worried.",
+        "type": "action"
+    },
+    
+    {
+        "value": "I found a book talking a little about the Ariella generation that Hiroshi talked about so much. I can have some private time to read this later.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ariella? Okay.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny just helped to remove some more objects and followed Rayane out of the old train car.",
         "type": "action"
     }
 
