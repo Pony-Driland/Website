@@ -9742,7 +9742,7 @@
     },
 
     {
-        "value": "Hiroshi was very thoughtful about some his life. Hiroshi seemed a little depressed for conversation, but hearing Vinny's voice, he smiled a little.",
+        "value": "Hiroshi was very thoughtful about his life. Hiroshi seemed a little depressed for conversation, but hearing Vinny's voice, he smiled a little.",
         "type": "action"
     },
 
@@ -9764,7 +9764,7 @@
     },
 
     {
-        "value": "I'm feeling better, just worried about having failed my mission. I'm still surprised. Seeing you with Rayane is something very fantastic. I've never seen her like this. But why are you caring so much about our lives? You just suddenly appeared. I never thought to find someone like you so suddenly.",
+        "value": "Y..Yes. I'm just worried about having failed my mission. I'm still surprised seeing you with Rayane here. I've never seen her like this. But why are you caring so much about our lives? You just suddenly appeared. I never thought to find someone like you so suddenly.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -9775,7 +9775,7 @@
     },
 
     {
-        "value": "Ah... Rayane? Well. I wanted to ask you a little about Rayane. Has Rayane been different in the past? She always seems to hide something.",
+        "value": "Ah... Rayane? Yes... yes. I wanted to ask you a little about Rayane. You understand me, right? It's our first journey. Has Rayane been different in the past? She always seems to hide something.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -9786,7 +9786,7 @@
     },
 
     {
-        "value": "Rayane... Rayane was a person of cold feelings. I always had a slight impression that she was being an informant. Or that she was trying to discover some secret on her own. Rayane is a mysterious unicorn that appeared in this world after the Ariella generation ended. The Ariella generation unfortunately also disappeared along with the Royal Color. A time I miss a lot.",
+        "value": "Yes. I understand. Rayane was a person of cold feelings. I always had a slight impression that she was being an informant. Or that she was trying to discover some secret on her own. Rayane is a mysterious unicorn that appeared in this world after the Ariella generation ended. The Ariella generation unfortunately also disappeared along with the Royal Color. A time I miss a lot.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
