@@ -9722,6 +9722,89 @@
         },
         "value": "Rayane just took a deep breath and walked back inside the main train. Vinny was still worried, but he followed Rayane and joined her into the train. So Rayane pressed the button to close the train door. At the same moment, the train was finally starting to move again. Rowan and Kai were already in the train cabin, controlling the course of the journey. Vinny then looked at Hiroshi curiously and saw that Hiroshi was on a special bench more comfortable like a bed.",
         "type": "action"
+    },
+
+    {
+        "value": "Okay.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    
+    {
+        "value": "Vinny took a deep breath sadly, looking around before looking at Hiroshi again. When Vinny realized that Rayane was sitting down to rest her mind, then Vinny decided to stay by Hiroshi's side for conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey? Hiroshi? How are you?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi was very thoughtful about some his life. Hiroshi seemed a little depressed for conversation, but hearing Vinny's voice, he smiled a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Hello Vinny. How nice to see you again. Well... I didn't expect us to meet again. I thought you would stay in the village safely together with your others friends.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah. I would love to say that I want to be safe, but something bigger always tells me to do something. We really worked hard to get here. Rayane did everything really well, I just started and she finished.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi only coughed a few pixels, but he recovered and resumed the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm feeling better, just worried about having failed my mission. I'm still surprised. Seeing you with Rayane is something very fantastic. I've never seen her like this. But why are you caring so much about our lives? You just suddenly appeared. I never thought to find someone like you so suddenly.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny got a little nervous looking at Rayane resting. So Vinny felt determined to continue the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah... Rayane? Well. I wanted to ask you a little about Rayane. Has Rayane been different in the past? She always seems to hide something.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi tried to keep the smile on his face, but he was starting to feel a little sad as he continued the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane... Rayane was a person of cold feelings. I always had a slight impression that she was being an informant. Or that she was trying to discover some secret on her own. Rayane is a mysterious unicorn that appeared in this world after the Ariella generation ended. The Ariella generation unfortunately also disappeared along with the Royal Color. A time I miss a lot.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was then surprised and curious about Hiroshi's conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Royal Color? I'm sorry I'm not really from here. Who would be Royal Color? Elite Color type?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi smiled sadly a little and continued the conversation.",
+        "type": "action"
     }
 
 ]
