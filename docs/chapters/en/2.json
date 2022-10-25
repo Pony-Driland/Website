@@ -9700,7 +9700,11 @@
         "type": "dialogue"
     },
 
-    {
+    {        
+        "set": {
+            "playEffect": { "file": "train-1", "enabled": false },
+            "playlistPlay": null
+        },
         "value": "Rayane giggles a little again in response.",
         "type": "action"
     },
@@ -9712,7 +9716,11 @@
     },
 
     {
-        "value": "Rayane just took a deep breath and walked back inside the main train. Vinny was still worried, but he followed Rayane and joined her into the train.",
+        "set": {
+            "playEffect": { "file": "train-1", "enabled": true },
+            "playlistPlay": "sad"
+        },
+        "value": "Rayane just took a deep breath and walked back inside the main train. Vinny was still worried, but he followed Rayane and joined her into the train. So Rayane pressed the button to close the train door. At the same moment, the train was finally starting to move again. Rowan and Kai were already in the train cabin, controlling the course of the journey. Vinny then looked at Hiroshi curiously and saw that Hiroshi was on a special bench more comfortable like a bed.",
         "type": "action"
     }
 
