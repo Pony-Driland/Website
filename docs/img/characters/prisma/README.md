@@ -4,7 +4,7 @@
 
 Female / Unicorn
 
-## This character's description may contain possible spoilers! (BETA) ()
+## This character's description may contain possible spoilers! (BETA)
 
 One of the oldest unicorns in all of Pony Driland. She's story has a direct involvement with the Royal Color. She belongs to the closest hierarchy to the Rainbow Queen.
 
