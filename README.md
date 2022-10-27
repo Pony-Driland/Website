@@ -98,6 +98,8 @@ Final Version - 0% Complete
 
 <a href="https://github.com/Pony-Driland/Website/blob/main/docs/img/characters/layla/README.md" target="_blank">Layla</a>
 
+<a href="https://github.com/Pony-Driland/Website/blob/main/docs/img/characters/prisma/README.md" target="_blank">Prisma</a>
+
 <hr/>
 
 ## Characters WIP (Spoilers)
