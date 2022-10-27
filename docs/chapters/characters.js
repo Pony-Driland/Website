@@ -19,6 +19,12 @@ storyCfg.characters = {
     "title": "Princess Ariella",
     "description": "Ariella was the first princess of her kingdom founded by her. she has a pure heart and loves all of her creation and her kingdom very much. For her, the lives of everyone in her kingdom matters a lot. Her determination to make the kingdom a better place is extremely high. She could sacrifice herself if necessary just to save her kingdom life."
   },
+  "prisma": {
+    "path": "/img/characters/prisma/README.md",
+    "url": "/characters/prisma.html",
+    "title": "Prisma",
+    "description": "One of the oldest unicorns in all of Pony Driland. She's story has a direct involvement with the Royal Color. She belongs to the closest hierarchy to the Rainbow Queen."
+  },
   "rainbow-queen": {
     "path": "/img/characters/rainbow-queen/README.md",
     "url": "/characters/rainbow-queen.html",
