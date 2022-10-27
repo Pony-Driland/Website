@@ -19,4 +19,4 @@ Character Development: JasminDreasond
 
 Character Design: stable diffusion
 
-Prompt Made by: SuperBolinha2 (Image Base: Rayane Base)
+Prompt Made by: SuperBolinha2 (Image Base: Rayane Ref)
