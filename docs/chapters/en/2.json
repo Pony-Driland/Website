@@ -9853,9 +9853,113 @@
         "set": {
             "playlistPlay": "bad-mystery"
         },
-        "value": "Whicocesert Mountain. The coldest mountain in Pony Driland, the home to all of Royal Color. I never knew what really happened that day, but it was a very tense day. Pony Driland about to come to an end. Everything was disintegrating towards a complete lifeless void. No one knew the real reason for everything that was happening. Everyone was desperate.",
+        "value": "Whicocesert Mountain. The coldest mountain in Pony Driland, the home to all Royal Color. I never knew what really happened that day, but it was a very tense day. Pony Driland about to come to an end. Everything was disintegrating towards a complete lifeless void. No one knew the real reason for everything that was happening. Everyone was desperate.",
         "character": "Hiroshi",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi was starting to feel emptier as the conversation progressed. But he tried to stay positive.",
+        "type": "action"
+    },
+
+    {
+        "value": "I was just trying to protect myself inside my house along with my wife. We just wanted to accept a quick death and that everything would end well during all the chaos. But then came the unexpected...",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi showed an expression of sadness, anger, a pony that was really wanting to find out what happened.",
+        "type": "action"
+    },
+
+    {
+        "value": "A gigantic amount of energy was concentrated at the top of Whicocesert Mountain. This energy was accumulating more and more until suddenly, everything exploded! The sky had turned completely black, and all we could see was an immense amount of light energy of various colors being released in all directions. But for some mysterious reason, this energy stabilized the dimension back to normal.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The color of Hiroshi's eyes seemed to be getting weaker as he talked. Vinny was worried but trying not to interrupt the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "I immediately got scared and surprised to leave the house and see that everything was fine. I tried to invoke my telepathic request with Royal Color, but I received no response. Royal Color never returned. There were many pony legends claiming to have seen a member of the Royal Color. But with each new decade, new ponies arriving at Pony Driland began to stop believing in the Royal Color existence. The original Pony Driland story started to get lost, giving way to weird theories. Many conspiracies that were destroying our true story.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi then took a deep breath slowly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Many strange things began to happen in Pony Driland. Many new conspiratorial groups began to emerge. New theories were being created, distorting our true story to the ponies who never lived my generation. And one of the weirdest things I saw coming up was the new Elite Color. These ponies were said to be the new justice of this world. A new hope and a new generation. Things got even weirder when I started to see that these ponies had some very different spells from the other ponies in this world.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi's eyes were faintly colored, Hiroshi looked depressed during the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "And the more Elite Color expanded into Pony Driland, the more weird things happened. Our technology was increasingly limited. We were increasingly having difficulty producing new technologies. As this was happening, new groups of ponies began to emerge that seemed to have some exclusive access to some types of technologies. What's happening? Is some pony trying to limit us?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi would then blink his eyes to try to regain his original eye color.",
+        "type": "action"
+    },
+
+    {
+        "value": "I... I don't know how much time we have left. All these weird things started happening 100 years ago.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi coughed a little, trying not to move too. Hiroshi then breathed slowly, trying to dedicate himself more to resting his body.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'll never know what happened to Royal Color. But I still have hope that Rainbow Queen is still alive. I've always seen signs of her possible presence. Rainbow Queen is my last hope in my life that Royal Color hasn't disappeared. Everyone always calls me crazy pony for that. But I will never lose that hope.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi then looked at Vinny with a small, sad look of hope.",
+        "type": "action"
+    },
+
+    {
+        "value": "Maybe you're questioning me what Rayane has to do with all this. And the answer is simple. Rayane's abilities and her mysterious knowledge of Elite Color. Rayane seems to know something she doesn't want to tell me. She thinks her feelings can hide something from me. All this mystery make me always have a special care of hope for Rayane, no matter how strange she can be at times.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi then wiped the few tears from his eyes as he prepared to rest more.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane is a mysterious story of hope that I cannot let disappear into this chaos of this world.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "When Vinny realized that Hiroshi was tired of talking, he became even more worried and decided to stop the conversation for a while.",
+        "type": "action"
     }
 
 ]
