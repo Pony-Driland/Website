@@ -9718,7 +9718,7 @@
     {
         "set": {
             "playEffect": { "file": "train-1", "enabled": true },
-            "playlistPlay": "sad"
+            "playlistPlay": "memories"
         },
         "value": "Rayane just took a deep breath and walked back inside the main train. Vinny was still worried, but he followed Rayane and joined her into the train. So Rayane pressed the button to close the train door. At the same moment, the train was finally starting to move again. Rowan and Kai were already in the train cabin, controlling the course of the journey. Vinny then looked at Hiroshi curiously and saw that Hiroshi was on a special bench more comfortable like a bed.",
         "type": "action"
@@ -9819,24 +9819,27 @@
     },
 
     {
-        "value": "Rainbow Queen has always had a love for taking care of this dimension. This was an inheritance of Princess Ariella's personality. Even though Rainbow Queen was evil, she still had a pure heart part cultivated by Princess Ariella.",
+        "value": "Rainbow Queen has always felt love for taking care of this dimension. This was an inheritance of Princess Ariella's personality. Even though Rainbow Queen was evil, she still had a pure heart part cultivated by Princess Ariella.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
 
     {
-        "value": "Then Hiroshi looked at Vinny again and took a deep breath.",
+        "value": "Then Hiroshi looked at Vinny again and took a deep breath. Hiroshi showed a very strong feeling of nostalgia. Vinny seemed to have a strange feeling that this was some very distant past.",
         "type": "action"
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "But something very strange happened on a very mysterious day.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
 
     {
-        "value": "Vinny was very curious and a little scared due to the mystery.",
+        "value": "Vinny got very curious and a little scared due to the mystery.",
         "type": "action"
     },
 
@@ -9847,7 +9850,10 @@
     },
 
     {
-        "value": "Whicocesert Mountain. The coldest mountain in Pony Driland where it was home to all of Royal Color. I never knew what really happened that day, but it was a very tense day. Pony Driland about to come to an end. Everything was disintegrating towards a complete lifeless void. No one knew the real reason for everything that was happening. Everyone was desperate.",
+        "set": {
+            "playlistPlay": "bad-mystery"
+        },
+        "value": "Whicocesert Mountain. The coldest mountain in Pony Driland, the home to all of Royal Color. I never knew what really happened that day, but it was a very tense day. Pony Driland about to come to an end. Everything was disintegrating towards a complete lifeless void. No one knew the real reason for everything that was happening. Everyone was desperate.",
         "character": "Hiroshi",
         "type": "dialogue"
     }
