@@ -9960,6 +9960,102 @@
     {
         "value": "When Vinny realized that Hiroshi was tired from the talk, Vinny became even more worried and decided to stop the conversation for a while.",
         "type": "action"
+    },
+
+    {
+        "value": "H...Hiroshi, calm down, you're still very tired. I'll try to find out more about Rayane. Rayane just looks a little traumatized after we survived a conflict that killed many ponies. Thank you so much for everything you said, but you need to rest now.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "N..no...it's not my time to rest. I... need to stop Marlon! Marlon has a lot of crazy plans! He's paranoid!",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi started coughing again from the effort he was trying to speak louder. So Hiroshi tried to speak more calmly. Vinny was just trying to help Hiroshi keep resting.",
+        "type": "action"
+    },
+
+    {
+        "value": "S...Sorry again... V..Vinny. My time is getting shorter and shorter. I need help...from any possible healing or medical item.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I don't think Marlon is on this train. You just need to get some rest now.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny took a light breath to try to calm down a bit before asking the next question.",
+        "type": "action"
+    },
+
+    {
+        "value": "So Marlon wants to use the magic item to help the East region get out of poverty?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi showed concern again as he answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "Marlon doesn't just want to help the East region. He is extremely more aggressive than usual. Marlon's soul is very corrupted.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets a little scared, not knowing how to respond. So Hiroshi then tried to make a small effort to levitate a saddle that was hidden behind him. So Vinny was very curious to see this saddle. Hiroshi then started looking for some regeneration item.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hm? Hiroshi?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes?",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I just think you should be calmer, if you don't rest now, you will make the situation worse for you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny felt sorry to see Hiroshi trying to find some way to recover faster.",
+        "type": "action"
+    },
+
+    {
+        "value": "No. Trust me, a lot depends on me right now.  I can't miss my one chance to have a living pony who believes in Pony Driland's origins. If you die, all my efforts will have been in vain.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was quiet, thoughtful, trying to understand what was really going on.",
+        "type": "action"
+    },
+
+    {
+        "value": "This pony looks like it's going to do something crazy too. Fuck! It's too much determination in an elder.",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
