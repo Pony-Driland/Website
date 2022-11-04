@@ -10095,6 +10095,29 @@
         "value": "H..Hiroshi? What do you mean by \"too late for me\"? Will something happen to you?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "Don't worry about me. I'll be fine. I didn't want to need to scare you like this. But for someone my age, sometimes I have to accept my inevitable fate on this mission. So please don't try to avoid what I need to finish.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "H..Hiroshi... Calm down, you have all your years of experiences, I'm much younger than you, but I have my experiences too. I learned in the other world of mine is that no one can make your fate, only you, not even death. no one chooses your fate but you, and when you accept that, anything goes.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi took a deep breath as he looked at Vinny without much hope.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny, my fate is completely set. I know what will happen today. Just don't tell anyone that. I promise you that I will say goodbye to everyone.",
+        "character": "Hiroshi",
+        "type": "dialogue"
     }
 
 ]
