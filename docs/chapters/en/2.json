@@ -10056,6 +10056,45 @@
         "value": "This pony looks like it's going to do something crazy too. Fuck! It's too much determination in an elder.",
         "character": "Vinny",
         "type": "think"
+    },
+    
+    {
+        "value": "Hiroshi, if you're not lucid, you may not get anything. if you don't want to sleep, breathe a little.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked at Rayane, giggles a little to see her napping.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmm. Rayane is sleeping. You can even paint her face for us. Can this make you less worried?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi sighed a little in response. Hiroshi was extremely thoughtful to see Vinny's reaction, so Hiroshi decided to stare at Vinny then respond in a serious and sad way.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sorry Vinny. But I need to finish my mission before it's too late for me. I greatly appreciate your willingness for me to rest, but I will have better times to rest.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was then surprised to hear this. Vinny was very curious and worried.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..Hiroshi? What do you mean by \"too late for me\"? Will something happen to you?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
