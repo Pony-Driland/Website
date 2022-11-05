@@ -10224,7 +10224,7 @@
     },
 
     {
-        "value": "Y..Yes sir. And the other ponies that died? Aren't we going to save the bodies? We need to justify the death of each of them. And if these intruders come here to attack us, our machine is in danger of exploding.",
+        "value": "Y..Yes sir. B...but the other ponies that died? Aren't we going to save the bodies? We need to justify the death of each of them. And if these intruders come here to attack us, our machine is in danger of exploding.",
         "character": "Random Female Pony",
         "type": "dialogue"
     },
@@ -10235,7 +10235,7 @@
     },
 
     {
-        "value": "I already said I'll take care of it later. Our priority now is to destroy this machine. And if we can't do this peacefully, I'll try to use this future fight to our advantage.",
+        "value": "I already said I'll take care of it later. Our priority now is to destroy this machine. And if we can't do this peacefully, I'll try to use this future fight to our advantage. This is our last alternative before we leave here.",
         "character": "Marlon",
         "type": "dialogue"
     },
@@ -10280,7 +10280,7 @@
     },
 
     {
-        "value": "Okay sir. But please, just be careful with her. You knew she wouldn't dare to perform this bomb task.",
+        "value": "B..but...but Okay sir. But please, just be careful with her. You knew she wouldn't dare to perform this bomb task.",
         "character": "Random Female Pony",
         "type": "dialogue"
     },
@@ -10294,6 +10294,22 @@
         "value": "Don't worry about her, I already promised that today will be her last day of work. I'm getting tired of training a needy pony. Okay?",
         "character": "Marlon",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon just turned to the side, very thoughtful about something. Then a few seconds passed and Marlon returned to observe the machine's monitor. The pony just tried to have a little hope and then went back to the work station.",
+        "type": "action"
+    },
+
+    {
+        "value": "I just hope this all ends well.",
+        "character": "Random Female Pony",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The pony cried a little as she walked. Marlon tried to ignore the crying sounds, but he just breathed deeply and tried to keep his concentration.",
+        "type": "action"
     }
 
 ]
