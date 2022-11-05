@@ -10160,17 +10160,139 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Vinny then looked at Hiroshi's smile. Vinny was scared about what Hiroshi planned to do to himself, but still just agreed.",
         "type": "action"
     },
 
     {        
         "set": {
-            "playlistPlay": null,
             "playEffect": { "file": "train-1", "enabled": false }
         },
         "value": "O...Okay.",
         "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So as the train journey continued, in a place not too far away, more strange things were happening. It was a very weird underground room, and it had a giant machine with lots of ponies working around it.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "tense-mystery"
+        },
+        "value": "Mr Marlon! I came back with reports about the security cameras! We have new intruders.",
+        "character": "Random Female Pony",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Marlon stopped using his horn magic and looked at the pony curiously.",
+        "type": "action"
+    },
+
+    {
+        "value": "More intruders? How long will it take them to get here? Disabling this machine seems to be taking a lot more work than I thought.",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "They get on a train that you left parked. Your soldiers are dead! We tried to bring Hiroshi here, but it looks like he managed to escape.",
+        "character": "Random Female Pony",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon was a little surprised and disgusted to hear this.",
+        "type": "action"
+    },
+
+    {
+        "value": "But what the fuck is this?! Now he wants to kill my soldiers too?! Is he going to try to kill me too?!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The pony was a little scared due to Marlon's anger, but tried to keep calm during the dialogue.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..Yes sir. And the other ponies that died? Aren't we going to save the bodies? We need to justify the death of each of them. And if these intruders come here to attack us, our machine is in danger of exploding.",
+        "character": "Random Female Pony",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon took a deep breath and then Marlon then looked at the machine curiously for a few seconds before looking back at the pony.",
+        "type": "action"
+    },
+
+    {
+        "value": "I already said I'll take care of it later. Our priority now is to destroy this machine. And if we can't do this peacefully, I'll try to use this future fight to our advantage.",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A..Are you sure? This relic is very powerful. We're all going to die during the explosion! I forgot to mention that one of these ponies that is coming here is Rayane!",
+        "character": "Random Female Pony",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon then got curious and looked at the pony's scared face, trying to understand what was happening.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane? Are you serious? I thought this pony was neutral. So is Hiroshi finally managing to influence this mysterious pony? While I get special bombs, is this bastard Hiroshi also bringing special ponies to use against me?",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I...I don't know. I just think this is getting too dangerous. This place will fall apart if we have a fight with too many strong ponies.",
+        "character": "Random Female Pony",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi was starting to get angry during the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't worry. Just continue your monitoring work. I would like more reports. Turn on all possible security systems. And keep looking for Wagner. He's already late. The pony he switched places doesn't have the same skills to manage these machines.",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The random female pony then made a sad look when remembering the pony that switched places with Wagner.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay sir. But please, just be careful with her. You knew she wouldn't dare to perform this bomb task.",
+        "character": "Random Female Pony",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon then took a deep breath before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't worry about her, I already promised that today will be her last day of work. I'm getting tired of training a needy pony. Okay?",
+        "character": "Marlon",
         "type": "dialogue"
     }
 
