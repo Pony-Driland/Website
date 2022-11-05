@@ -10118,6 +10118,39 @@
         "value": "Vinny, my fate is completely set. I know what will happen today. Just don't tell anyone that. I promise you that I will say goodbye to everyone.",
         "character": "Hiroshi",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "Vinny was starting to get confused and scared. But then Vinny calmed down to see that Rayane was still napping, so he looked at Hiroshi again.",
+        "type": "action"
+    },
+
+    {
+        "value": "I see. If you go to war thinking you won't come back, it's already something that's not good. And your two most faithful guards here? They're a little silly, but they do it all for you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi smiles a little while putting his paw on Vinny's shoulder.",
+        "type": "action"
+    },
+
+    {
+        "value": "I've already prepared everyone's new future. Look, this isn't all going to be that bad. My wife must be very excited to see me again. I have faith that I can at least see Rainbow Queen again before I meet my wife again. But anyway, thanks a lot for the conversation.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny kept looking at Hiroshi worriedly, trying to understand what Hiroshi was really wanting to do.",
+        "type": "action"
+    },
+
+    {
+        "value": "It's okay, we're all going to help you get what you want. it's going to be ok.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
