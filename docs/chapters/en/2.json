@@ -9980,7 +9980,7 @@
     },
 
     {
-        "value": "S...Sorry again... Vinny. My time is getting shorter and shorter. I need help...from any possible healing or medical item.",
+        "value": "S...Sorry again... Vinny. Every hour my time gets shorter. I need help...from any possible healing or medical item.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -10042,7 +10042,7 @@
     },
 
     {
-        "value": "No. Trust me, a lot depends on me right now.  I can't miss my one chance to have a living pony who believes in Pony Driland's origins. If you die, all my efforts will have been in vain.",
+        "value": "No. Trust me, a lot depends on me right now. I can't miss my one chance to have a living pony who believes in Pony Driland's origins. If you die, all my efforts will have been in vain.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -10104,7 +10104,7 @@
     },
 
     {
-        "value": "H..Hiroshi... Calm down, you have all your years of experiences, I'm much younger than you, but I have my experiences too. I learned in the other world of mine is that no one can make your fate, only you, not even death. no one chooses your fate but you, and when you accept that, anything goes.",
+        "value": "H..Hiroshi, you have all your years of experiences, I'm much younger than you, but I have my experiences too. I learned in the other world of mine is that no one can make your fate, only you, not even death. No one chooses your fate, and when you accept that, anything goes.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -10149,6 +10149,23 @@
 
     {
         "value": "It's okay, we're all going to help you get what you want. it's going to be ok.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. Everything will be all right. And I really appreciate your help. Let's just rest. We have a lot of work to do when this train arrives at its final destination.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked at Hiroshi's smile. Vinny was scared about what Hiroshi planned to do to himself, but still just agreed.",
+        "type": "action"
+    },
+
+    {
+        "value": "O...Okay.",
         "character": "Vinny",
         "type": "dialogue"
     }
