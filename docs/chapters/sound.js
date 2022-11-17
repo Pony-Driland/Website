@@ -148,6 +148,18 @@ storyCfg.playlist = {
         { id: 'zaxVBfdgR3E', type: 'youtube' },
     ],
 
+    'songs-for-dark-gods': [
+        { id: '3-pZbPNpLhI', type: 'youtube' },
+    ],
+
+    'songs-for-an-empty-world': [
+        { id: 'f1tYe3TkhTc', type: 'youtube' },
+    ],
+
+    'songs-for-an-dying-world': [
+        { id: 'f1tYe3TkhTc', type: 'youtube' },
+    ],
+
     'dark-and-mysterious-ambient': [
         { id: 'yEYxnJB4jZs', type: 'youtube' },
     ],

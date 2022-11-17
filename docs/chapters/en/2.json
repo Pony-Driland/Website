@@ -10290,7 +10290,10 @@
         "type": "action"
     },
 
-    {
+    {        
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Don't worry about her, I already promised that today will be her last day of work. I'm getting tired of training a needy pony. Okay?",
         "character": "Marlon",
         "type": "dialogue"
@@ -10308,7 +10311,90 @@
     },
 
     {
+
         "value": "The pony cried a little as she walked. Marlon tried to ignore the crying sounds, but he just breathed deeply and tried to keep his concentration.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "songs-for-an-dying-world"
+        },
+        "value": "Then a few more minutes passed. Vinny's journey continued. Hiroshi was finally resting while Vinny was just watching the train window. The train then finished braking, making a good noise of smoke. Hiroshi then took a deep breath and was disappointed by his own thoughts.",
+        "type": "action"
+    },
+
+    {
+        "value": "This place really is more abandoned than I imagined. I should have made a best utility for underground. This silence scares me.",
+        "character": "Hiroshi",
+        "type": "think"
+    },
+
+    {
+
+        "value": "Then Hiroshi was interrupted when he heard the sound of Rayane waking up.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yaaawwn... Good nap~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+
+        "value": "Vinny then looked at Rayane, asking a kind and silly question.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Are you okay, bunny?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    
+    {
+        "value": "Bunny? What do you mean by that?~ Seems like you're been awake all this time.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little before smirking in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Silly you~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little before smirking in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Nothing. You didn't even realize that now you have a bunny mustache.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a bit back before he was interrupted by Rayane's boop.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmmm... You need to know that one day I'm going to find out what that is. Looks like you're trying to call me something cute~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane would then get up from the train seat and start getting ready to walk.",
         "type": "action"
     }
 
