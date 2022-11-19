@@ -10394,7 +10394,120 @@
     },
 
     {
-        "value": "Rayane would then get up from the train seat and start getting ready to walk.",
+        "value": "Rayane would then get up from the train seat and start getting ready to walk. So Vinny sat on the floor and passed his paw on his head upset and then went back to Rayane.",
+        "type": "action"
+    },
+    
+    {
+        "value": "Ah... You were so sleepy that I drew a mustache on you. I'm sad that I don't know what a rabbit is. You'll like it, one day I'll show you a picture of one.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Silly~ You must have a picture of a rabbit on your phone and you don't want to tell me.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a bit before continuing the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Really I can take a picture of you with that mustache drawing on your cheeks.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane boops Vinny's nose as she finished packing up.",
+        "type": "action"
+    },
+
+    {
+        "value": "Shhhhh~ You'll need to let me bite the picture.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny blushes a little before giggles again.",
+        "type": "action"
+    },
+
+    {
+        "value": "You can't believe there's a mustache on you, right? Ok, let's go to war. Sometimes our enemies might laugh instead of shooting.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmmmm... And what do I get if no enemy finds my face strange?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smirks at Vinny in response. Sometimes our enemies might laugh instead of shooting.",
+        "type": "action"
+    },
+
+    {
+        "value": "You get a kiss. if I win, you call that other pony that I almost kissed earlier by accident. Do you really want it?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Siiiilly~ I know that if you forget this promise, I'll make sure you remember it at the most unexpected moment.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. You don't need a bet to win a kiss.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "While Vinny and Rayane continued the silly conversation, Hiroshi just prepared things. Hiroshi seemed to have some kind of very nostalgic and lonely look.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane really is much more different than I imagined. It feels like I'm watching the past of my life.",
+        "character": "Hiroshi",
+        "type": "think"
+    },
+
+    {
+        "value": "Oh? This is very suspicious~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile, the train cabin door opened as the guards finished analyzing the train situation. Then Rayane and Vinny were interrupted and looked curiously at the guards.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey? Are you okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rowan would then wave at Vinny, but Kai would interrupt the animated conversation. Kai replied a little worried.",
         "type": "action"
     }
 
