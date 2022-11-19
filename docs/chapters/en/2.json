@@ -10355,18 +10355,13 @@
     },
     
     {
-        "value": "Bunny? What do you mean by that?~ Seems like you're been awake all this time.",
-        "character": "Rayane",
-        "type": "dialogue"
-    },
 
-    {
-        "value": "Rayane giggles a little before smirking in response.",
+        "value": "Rayane then became curious to hear those words.",
         "type": "action"
     },
 
     {
-        "value": "Silly you~",
+        "value": "Bunny? What do you mean by that?~ Seems like you're been awake all this time.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -10399,7 +10394,7 @@
     },
     
     {
-        "value": "Ah... You were so sleepy that I drew a mustache on you. I'm sad that I don't know what a rabbit is. You'll like it, one day I'll show you a picture of one.",
+        "value": "Ah... You were so sleepy that I drew a mustache on you. I'm sad that you don't know what a rabbit is. You'll like it, one day I'll show you a rabbit picture.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -10450,7 +10445,7 @@
     },
 
     {
-        "value": "Rayane smirks at Vinny in response. Sometimes our enemies might laugh instead of shooting.",
+        "value": "Rayane smirks at Vinny in response. Vinny would then get very thoughtful for a few seconds before coming up with a silly answer.",
         "type": "action"
     },
 
@@ -10461,7 +10456,7 @@
     },
 
     {
-        "value": "Siiiilly~ I know that if you forget this promise, I'll make sure you remember it at the most unexpected moment.",
+        "value": "Other pony? Siiiilly~ I know that if you forget this promise, I'll make sure you remember it at the most unexpected moment.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -10473,12 +10468,18 @@
     },
 
     {
+        "value": "Heh~ Really?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
         "value": "While Vinny and Rayane continued the silly conversation, Hiroshi just prepared things. Hiroshi seemed to have some kind of very nostalgic and lonely look.",
         "type": "action"
     },
 
     {
-        "value": "Rayane really is much more different than I imagined. It feels like I'm watching the past of my life.",
+        "value": "Rayane really is much more different than I imagined. It feels like I'm watching the past of my life. I think I'm starting to get really crazy.",
         "character": "Hiroshi",
         "type": "think"
     },
