@@ -10510,6 +10510,130 @@
     {
         "value": "Rowan would then wave at Vinny, but Kai interrupt the animated conversation. Kai replied a little worried.",
         "type": "action"
+    },
+    
+    {
+        "value": "Hello everypony. We were analyzing the station. It's all very quiet. We didn't find any of our soldiers or enemy soldiers. So please let's be careful here. Okay?",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y...yeah.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looks at Hiroshi for a few seconds before looking back at Kai.",
+        "type": "action"
+    },
+
+    {
+        "value": "Just take better care of Hiroshi. I don't want anyone dead here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi then just gave Vinny a neutral and curious look, trying to understand what was going on. But Kai was a little confused during the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Careful? What do you mean about it?",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah! We're close to the magic relic room. If Marlon really is there, he probably won't be there alone. We can't just open the door and go in. There's a huge probability of us falling into a trap!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little confused to see the subject evolving into something else.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..well. Hiroshi is not very motivated, I think you should help a little about his motivation.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai was a bit surprised and curious to hear that. So Kai was worried during the talk.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Are you sure? He was full of energy before saying goodbye to us. He is the most determined pony in our group.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai, you need to calm down. Don't you remember? Hiroshi always misses his wife. He always gets depressed about his past when things get really bad. We can't forget to take care of Hiroshi's feelings.",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai was even more worried about the situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "We're almost to the magic item room! This is a bad time to show weakness! Hiroshi life is in danger and he sure knows it too! I know Hiroshi is our leader, but we can't allow him to go on a suicide mission. I continue to have my concerns about this particular mission.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai then took a deep breath, trying to remain calm.",
+        "type": "action"
+    },
+
+    {
+        "value": "We also need to look for the other guards who disappeared. This is our protocol, so we need Hiroshi prepared for his mission. Remember that we now have Vinny and Rayane. They can help Hiroshi if we don't find the other guards lost inside the relic room.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then be a little surprised during the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "S...Suicide mission? Do you know this?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Huh? We know what?",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai gets a little confuse in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "You kai, you said suicide mission.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. His mission now seems to be suicidal because of his psychological and physical state. We don't have time to heal him. We also don't have time to help Hiroshi's psychological state.",
+        "character": "Kai",
+        "type": "dialogue"
     }
 
 ]
