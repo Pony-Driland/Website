@@ -10620,19 +10620,99 @@
     },
 
     {
-        "value": "Kai gets a little confuse in response.",
+        "value": "Kai showed not knowing what Vinny was wanting to know.",
         "type": "action"
     },
 
     {
-        "value": "You Kai, you said suicide mission.",
+        "value": "You Kai. You said suicide mission.",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Yes. His mission now seems to be suicidal because of his psychological and physical state. We don't have time to heal him. We also don't have time to help Hiroshi's psychological state.",
+        "value": "Yes. Hiroshi mission now seems to be suicidal because of his psychological and physical state. We don't have time to heal him. We also don't have time to help Hiroshi's psychological state.",
         "character": "Kai",
+        "type": "dialogue"
+    },
+    
+    {
+        "value": "What? You are unicorns! Can't you do anything? Send a message to other ponies? Nothing, nothing?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai took a deep breath before continuing to answer.",
+        "type": "action"
+    },
+
+    {
+        "value": "You have no idea how far from home we are now. We are far below the earth. It's impossible for us to try to do something to come back. We don't have time to panic now.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..Yeah. We must have crossed more than one village during this train travel.",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very surprised to hear this information.",
+        "type": "action"
+    },
+
+    {
+        "value": "What the fuck is this?! Am I stuck in this place forever? I need to find some way to get Hiroshi out of here!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "O..okay. How many meters tall?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "We're not sure... But we're sooooo deep. For someone to track us here, they need to have a powerful radar. That's motive Hiroshi chose to hide the magic relic here.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was starting to get worried not knowing what to say. Then Vinny looked at Rayane. Rayane was very quiet just silently analyzing the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane? What do you know about this place? Are there other ways out of this dark place?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Huh? Hmmmmm... I've never been to this place. Sorry Vinny.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then looked at Hiroshi curiously, trying to understand why he was depressed.",
+        "type": "action"
+    },
+
+    {
+        "value": "Something happened here while I was sleeping. But what strangest feeling is this?",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "So where are other exits and entrances?",
+        "character": "Vinny",
         "type": "dialogue"
     }
 
