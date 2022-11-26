@@ -10705,9 +10705,14 @@
     },
 
     {
-        "value": "Something happened here while I was sleeping. But what strangest feeling is this?",
+        "value": "Something happened here while I was sleeping. But what strangest feeling is this? Everyone is very nervous. Some privileged information is hiding in this conversation.",
         "character": "Rayane",
         "type": "think"
+    },
+
+    {
+        "value": "Rayane would then look back at Vinny, trying to analyze any strange new behavior.",
+        "type": "action"
     },
 
     {
