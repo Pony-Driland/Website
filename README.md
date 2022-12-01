@@ -9,7 +9,7 @@
 [![Github](https://img.shields.io/badge/-Github-000?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/Pony-Driland)
 [![Twitter](https://img.shields.io/badge/-Twitter-1da1f2?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/JasminDreasond/)
 [![Wallet](https://img.shields.io/badge/-Wallet_Donation-ecf0f1?style=for-the-badge&logo=Ethereum&logoColor=black)](https://unstoppabledomains.com/d/jasmindreasond.wallet)
-[![Bitcoin](https://img.shields.io/badge/-Bitcoin_Donation-0d579b?style=for-the-badge&logo=Bitcoin&logoColor=black)](https://www.blockchain.com/pt/btc/address/bc1qhs82du0cklclz2fvtz40hky4f2c3qys09erel3)
+[![Bitcoin](https://img.shields.io/badge/-Bitcoin_Donation-0d579b?style=for-the-badge&logo=Bitcoin&logoColor=black)](https://www.blockchain.com/pt/btc/address/bc1qnk7upe44xrsll2tjhy5msg32zpnqxvyysyje2g)
 
 </div>
 
