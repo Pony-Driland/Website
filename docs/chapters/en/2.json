@@ -10719,6 +10719,107 @@
         "value": "So where are other exits and entrances?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "W..well... There's an emergency exit that leads to another train station. This secret exit is in the relic room. We can use this exit to escape.",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai was a little surprised to hear that.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. I was almost forgetting about this secret exit. The probability of Merlon knowing about place is extremely low.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Cool! Do you think we're going to need reinforcements?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai was annoyed with himself listening to Vinny's words.",
+        "type": "action"
+    },
+
+    {
+        "value": "Unfortunately we will not have reinforcements. It's impossible to call in reinforcements. Everything depends on you now.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gulp a little scared before continuing the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Calm down, I have 2 plans, a balacubacu plan where everything and everyone enters by force. Rayane can you tell if there are many ponies there? The only balacubaco problem is that it will attract a lot of attention. Elite Color can go after us too. The calmer plan is calmer, but the chance of us 4 and Hiroshi getting along is acceptable.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was curious to hear that, and she stared at Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... I have a little question. Why are we here without Hiroshi? Hiroshi is also participating with us.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny made a poker face, nervously not knowing what to say, Rayane was even more curious, but tried to keep quiet.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hiroshi is tired and discouraged, do you want to talk with him? We can go to him.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh? Fine. We can talk. But remember that we don't have much time. Be careful what you say.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai! 10 minutes doesn't kill anyone! Don't worry.",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rowan giggles a little in response. Kai took a deep breath before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So it's ok~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Então todos caminhavam em direção a Hiroshi, se preparando para dialogar com ele.",
+        "type": "action"
     }
 
 ]
