@@ -10820,6 +10820,207 @@
     {
         "value": "Then everyone walked towards Hiroshi, preparing to dialogue with him. Hiroshi was quiet thinking about the past. But then Hiroshi was interrupted listening to Vinny.",
         "type": "action"
+    },
+    
+    {
+        "value": "Hey! Hiroshi! We have bad news.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? What?",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Unfortunately I have to say that your guards haven't showered in quite some time. You need to tell them to smell good.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W... what?! VINNY!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W... what?! VINNY!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "T..take a shower?",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi was a little confused while Vinny laughed a little to try and make everyone feel less sad. Rayane continued to analyze Vinny's behavior in a very curious way.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmmm... This whole nonsense must have a very profound explanation. I have a bad feeling that something much deeper has yet to be revealed here.",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "Heh! Well, we came to include you in the conversation, we were talking about how we are going to enter in the relic room.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny rubs his head nervously in response. Hiroshi then made a light weak laugh, trying to feel better hearing Vinny's words.",
+        "type": "action"
+    },
+
+    {
+        "value": "Alright. I'm glad to know that everyone here cares a lot about me. Unfortunately we only have one door to enter that room. We'll have to quick to get into it. I hope everyone is ready for what's going to happen today.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then analyzed Hiroshi's behavior, analyzing Hiroshi's determination. Rayane was worried listening to Hiroshi's words, seeing Hiroshi is still hurt.",
+        "type": "action"
+    },
+
+    {
+        "value": "Is he really going to do this? Even knowing I'm here?",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "Hmmm... Rayane remember the James's radar? We can send him a signal, but he'll need more than a signal to convince him to bring all the guards here with medical supplies and help.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "R..Radar? Are you sure? We will draw a lot of attention from everyone who tracks us.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai looked at the conversation situation, being very surprised to hear this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Do you guys have such a powerful radar? This is impossible!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "We need to know if it's just a signal or we can see if we can send a message. You guards and Hiroshi do you have any code to talk when something is really wrong?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rowan took a deep breath as he answered a little disappointed.",
+        "type": "action"
+    },
+
+    {
+        "value": "If we had at least a gigantic amount of other frequency signals coming from all sides, something like an entire society using similar things like radars, we could go unnoticed in sending a signal made to arrive just a point.",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rowan? You know it will never exist. But well, we can try to send an emergency signal no matter how dangerous it is. If you say that this radar is very powerful, then everyone on the surface will listen to us.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi would then finish analyzing the plan discussed in the conversation before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes, if I use my smartmoby's energy, my smartmoby can send a kind of signature. Everypony will know I'm asking for help.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then smiled a little hopefully, approving the Hiroshi's idea. Rayane then took a deep breath, preparing herself to finally say something relevant.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ but before you guys think about talking about this. I still haven't finished talking about what I wanted to talk about.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Can you tell me what's your idea?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "It's my most reserved magic to use with ponies I trust. So Hiroshi, please. I want to know more about the past. Anything about Rainbow Queen that you know more about. In exchange, I can help you. Can you promise me about this?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Everypony was surprised to hear Rayane's words. No pony was expecting a question like that.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...Aaaah?!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "R..Rainbow Queen?!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "R..Rainbow Queen?!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wait... Are those your true words? Do you want to ask me questions about Rainbow Queen? And still ask me for a promise about it?",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. I promise you won't regret it. I'm sure you'll feel better.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Rayane extended her paw to help Hiroshi get up, demonstrating faithfulness to the promise.",
+        "type": "action"
+    },
+
+    {
+        "value": "I...I never thought that you would really want to care about me for the first time. O..okay. I accept your promise. The same way you have my guards' trust, I trust you too.",
+        "character": "Hiroshi",
+        "type": "dialogue"
     }
 
 ]
