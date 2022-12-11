@@ -10915,14 +10915,14 @@
     },
 
     {
-        "value": "Do you guys have such a powerful radar? This is impossible!",
-        "character": "Kai",
+        "value": "We need to know if it's just a signal or we can see if we can send a message. You guards and Hiroshi do you have any code to talk when something is really wrong?",
+        "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "We need to know if it's just a signal or we can see if we can send a message. You guards and Hiroshi do you have any code to talk when something is really wrong?",
-        "character": "Vinny",
+        "value": "Do you guys have such a powerful radar? This is impossible!",
+        "character": "Kai",
         "type": "dialogue"
     },
 
@@ -10932,7 +10932,7 @@
     },
 
     {
-        "value": "If we had at least a gigantic amount of other frequency signals coming from all sides, something like an entire society using similar things like radars, we could go unnoticed in sending a signal made to arrive just a point.",
+        "value": "Wow! Okay. If we had at least a gigantic amount of other frequency signals coming from all sides, something like an entire society using similar things like radars, we could go unnoticed in sending a signal made to arrive just a point.",
         "character": "Rowan",
         "type": "dialogue"
     },
