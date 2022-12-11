@@ -10961,6 +10961,12 @@
     },
 
     {
+        "value": "Heh! Very good!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
         "value": "Rayane then smiled a little hopefully, approving the Hiroshi's idea. Rayane then took a deep breath, preparing herself to finally say something relevant.",
         "type": "action"
     },
