@@ -11083,6 +11083,51 @@
         "value": "Hmmm... I don't now. What kind of secrets do you have?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "Rayane's horn then started to glow colorful due to the regeneration magic that started to be used on Hiroshi. Everyone was very surprised to see this, trying to understand what was going on.",
+        "type": "action"
+    },
+
+    {
+        "value": "It's going to be okay...",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..What? This is...is...What is this magic?",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Calm down Hiroshi. It's going to be all right. Trust me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I...I remember this magic! I remember this spell very well. This is impossible!",
+        "character": "Hiroshi",
+        "type": "think"
+    },
+
+    {
+        "value": "Hiroshi began to calm down slowly by the effect of the magic while he slowly felt that his body was slowly regenerating more and more during the progress.",
+        "type": "action"
+    },
+
+    {
+        "value": "R...Rayane? This is the same magic... Rainbow Queen has used this spell on me over 100 years ago. A...Are you hiding something very special?",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi was very emotional as Rayane slowly finished the job. A little bit of tears came out of Hiroshi's eyes as he remembered seeing this same magic in the very distant past.",
+        "type": "action"
     }
 
 ]
