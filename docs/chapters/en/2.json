@@ -11033,6 +11033,56 @@
         "value": "I...I never thought that you would really want to care about me for the first time. O..okay. I accept your promise. The same way you have my guards' trust, I trust you too.",
         "character": "Hiroshi",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "Rayane just smirks a bit before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ssssssh~ Just relax your body. I promise it will be real quick~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The magic aura from the Rayane's horn started to glow and then Rayane lightly placed her paw on Hiroshi's chest.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...Ah? Rayane?",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi was a little nervous, but he tried to keep calm during the progress. Rowan and Kai was surprised by this.",
+        "type": "action"
+    },
+
+    {
+        "value": "V..Vinny? What is Rayane going to do? Will this help Hiroshi?",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Maybe some special magic we've never seen before?",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny replies ironically in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmm... I don't now. What kind of secrets do you have?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
