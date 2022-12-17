@@ -10961,6 +10961,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Heh! Very good!",
         "character": "Vinny",
         "type": "dialogue"
@@ -10990,6 +10993,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "sad"
+        },
         "value": "Everypony was surprised to hear Rayane's words. No pony was expecting a question like that.",
         "type": "action"
     },
