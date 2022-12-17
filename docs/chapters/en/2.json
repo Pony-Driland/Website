@@ -11134,6 +11134,90 @@
     {
         "value": "Hiroshi was very emotional as Rayane slowly finished the job. A little bit of tears came out of Hiroshi's eyes as he remembered seeing this same magic in the very distant past.",
         "type": "action"
+    },
+
+    {
+        "value": "Oh? The same magic? 1...100 years ago?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane showed a feeling of surprise, but she continued Hiroshi's body's regeneration progress.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes! We've never seen regeneration magic in our entire lives!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was still surprised and finished the job. Hiroshi, still emotional, looked at Rayane's face before continuing to response.",
+        "type": "action"
+    },
+
+    {
+        "value": "So... I was right. Royal Color may still exist. Rayane is a lost heritage of the Royal Color. This brings me a little hope.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai then interrupted the conversation, showing concern when seeing Hiroshi's reaction.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sir... Wait... You mean Rainbow really must exist? You're crying. Are you sure you're okay? We've never seen you like this.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..Yes... I'm great. I am very happy to see that my past still exists in this world. My soul can finally feel calmer. My soul is sure it can rest in peace one day. I have all my hopes on you all.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi slightly got up, feeling much better from his injuries. Rayane showed a feeling of surprise and determination as she answered Hiroshi.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hiroshi. I never understood what this Royal Color would be. But you can have my word that I will try to find out more about it.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah yeah. Not only that, but helping everyone.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny walked towards Rayane slowly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Me and you on this adventure what do you think?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ Yes. It seems much deeper than I imagined, and all this started with a simple meeting in a market. Okay. I accept.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
