@@ -11328,6 +11328,99 @@
         "value": "I...it looks like a regular radar. But I can feel a more than usual amount of energy coming from it. What did you put on this radar?",
         "character": "Hiroshi",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "W..What?! Energy? You mean to tell me that they also have access to some very advanced technology?",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hihi... I see no reason for us to be afraid. We're all in this together here.",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah! Let's go to the balacubaco. Let's activate and do our best! Rayane how do you activate this radar? Do you want to do the honors?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hhmmm~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little and levitated the radar and analyzed it carefully.",
+        "type": "action"
+    },
+
+    {
+        "value": "This radar is different. It looks like it needs magic to use. I hope you remember what James said about this radar.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wait... So I have to activate it using my magic?",
+        "character": "Hiroshi",
+        "type": "think"
+    },
+
+    {
+        "value": "That everyone will know where we are?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ not everyone. Only those who have some technology to detect the signal from where we are.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So the idea of teleportation being used at the right time is very important. Don't forget about that too.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..Yeah. We just need notice when to use teleport.",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Don't worry... I'll show Rayane where the secret exit is. Maybe on this emergency exit we'll have more time to prepare the teleport.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ok! Okay okay. Heh! I'm with everypony here, as everyone wanted. Let's pop the \"balloon's mouth\".",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny give Hiroshi the radar while Hiroshi finished opening the door.",
+        "type": "action"
+    },
+
+    {
+        "value": "T..This radar... This energy is not normal. This energy is very familiar. Am I crazy?",
+        "character": "Hiroshi",
+        "type": "think"
+    },
+
+    {
+        "value": "Hiroshi levitated the radar, and looked at the radar with great curiosity, Hiroshi seemed to be delighted and surprised by the amount of energy he felt on the radar. But soon he got serious again, and tried to stay very focused on the plan.",
+        "type": "action"
     }
 
 ]
