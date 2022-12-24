@@ -11243,6 +11243,74 @@
         "value": "Heh! Yeah. That crazy and dangerous look of yours made me lose my way. But what's inside the door? Are everypony waiting for us? If the magic item was there, shouldn't it be leaving already?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "Hiroshi then looked at the hallway door. This was the only door in the place and it was closed and abandoned. Meanwhile Kai was already moving the train's dashboard to unlock the train doors.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm pretty sure they're waiting for us. They know I stayed behind, and they know I would try to go back. They're probably using our lab to do something.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was curious looking at the door, using the presence analysis magic. Meanwhile Vinny was surprised at the topic of conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Laboratory? What exactly is in there? A well-opened or well-closed place?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. The relic place also has a laboratory. A simple place to manage all the energy. They must probably be extracting some of the energy. But we don't need to worry about that.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi then walked out of the train towards the mysterious door.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hm... In the last case, Rayane can launch a bazooka on the machine where everything collapses.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Bazooka?",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi then poked at the door curiously as he watched the other ponies walking towards him.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. Silly Vinny~ We have to use this bazooka at the right time. Or we might end up blowing ourselves up together.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey! What about that radar you guys talked so much about? Still intend to use?",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Radar? Oh yes! If everyone agrees, we can also use the radar. Anyway I think it's worth letting everypony know that Hiroshi is here.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
