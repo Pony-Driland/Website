@@ -11484,7 +11484,18 @@
     },
 
     {
-        "value": "Vinny would then start to walk into the next room curiously, looking around at what was there.",
+        "value": "Vinny would then start to walk into the next room curiously, looking around at what was there. It was a very long and destroyed corridor. Everything was very quiet. Vinny had a bad feeling that things were looking too easy.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm not liking this at all. I hope this place doesn't have any pitfalls.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny makes a poker face, trying to understand if the place is really safe or not.",
         "type": "action"
     }
 
