@@ -11302,13 +11302,19 @@
     },
 
     {
+        "value": "Heh! I trust charming Rayane for all these kinds of cases.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
         "value": "Hey! What about that radar you guys talked so much about? Still intend to use?",
         "character": "Rowan",
         "type": "dialogue"
     },
 
     {
-        "value": "Radar? Oh yes! If everyone agrees, we can also use the radar. Anyway I think it's worth letting everypony know that Hiroshi is here.",
+        "value": "Ah? Radar? Oh yes! If everyone agrees, we can also use the radar. Anyway I think it's worth letting everypony know that Hiroshi is here.",
         "character": "Vinny",
         "type": "dialogue"
     },
