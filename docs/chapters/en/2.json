@@ -11311,6 +11311,23 @@
         "value": "Radar? Oh yes! If everyone agrees, we can also use the radar. Anyway I think it's worth letting everypony know that Hiroshi is here.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then show everyone the radar. At this very moment, Hiroshi was surprised to feel some of the radar energy, looking at the radar very curiously.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... The sooner the better. But we'll have to hurry. Everyone from Pony Driland will get a signal that we're here. We have to locate the emergency exit and at the same time prepare for the worst. Let's at least try to do something looks like a force field.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+    
+    {
+        "value": "I...it looks like a regular radar. But I can feel a more than usual amount of energy coming from it. What did you put on this radar?",
+        "character": "Hiroshi",
+        "type": "dialogue"
     }
 
 ]
