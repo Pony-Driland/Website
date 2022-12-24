@@ -11218,6 +11218,31 @@
         "value": "Heh~ Yes. It seems much deeper than I imagined, and all this started with a simple meeting in a market. Hmmmm... Okay. I accept this mission.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+    
+    {
+        
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "Hiroshi makes a small emotional smile before slowly returning to the serious posture.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm glad to see that everyone is agreeing with me on something. Well, then we need to get back to our plan now. We need to stop Marlon at all costs.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        
+        "set": {
+            "playlistPlay": "tense-mystery"
+        },
+        "value": "Heh! Yeah. That crazy and dangerous look of yours made me lose my way. But what's inside the door? Are everypony waiting for us? If the magic item was there, shouldn't it be leaving already?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
