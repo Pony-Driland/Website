@@ -11414,12 +11414,29 @@
     },
 
     {
-        "value": "Vinny give Hiroshi the radar while Hiroshi finished opening the door.",
+        "value": "So Rayane give Hiroshi the radar while Hiroshi finished opening the door.",
         "type": "action"
     },
 
     {
-        "value": "T..This radar... This energy is not normal. This energy is very familiar. Am I crazy?",
+        "value": "Here~ Good luck.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Thank you.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi then stared at the radar while thinking about it.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? T..This radar... This energy is not normal. This energy is very familiar. Am I crazy?",
         "character": "Hiroshi",
         "type": "think"
     },
