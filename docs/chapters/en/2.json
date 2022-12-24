@@ -11421,6 +11421,71 @@
     {
         "value": "Hiroshi levitated the radar, and looked at the radar with great curiosity, Hiroshi seemed to be delighted and surprised by the amount of energy he felt on the radar. But soon he got serious again, and tried to stay very focused on the plan.",
         "type": "action"
+    },
+    
+    {
+        "value": "Okay. I'm ready. The door is open. It's time for us to start moving forward!",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay! Let's go!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi touched the radar screen and began to delicately prepare the signal.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. I've already prepared the emergency protocol. I think it's strange that this radar has some very different extra features. But I'll focus as much as possible on sending only what's necessary.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi then concentrated all the magic on the radar, and the radar started to slightly beep a little while Hiroshi was about to emit the signal.",
+        "type": "action"
+    },
+
+    {
+        "value": "Extra features? Vinny! You really must have someone very smart involved with you.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai showed a feeling of surprise and a little scared.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah. I agree with that.",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Shhhh~ This is just a silly smart scientist. Time for us to enter the room.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "Heh! Yes. I agree with the charming Rayane.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then start to walk into the next room curiously, looking around at what was there.",
+        "type": "action"
     }
 
 ]
