@@ -68,7 +68,7 @@ Dragon Ball Super
 ### Chapter 2
 Beta Version - 100% Complete
 
-Final Version - 21% Complete
+Final Version - 90% Complete
 
 ### Chapter 3
 Beta Version - 100% Complete
@@ -76,7 +76,7 @@ Beta Version - 100% Complete
 Final Version - 0% Complete
 
 ### Chapter 4
-Beta Version - 23% Complete
+Beta Version - 63% Complete
 
 Final Version - 0% Complete
 
