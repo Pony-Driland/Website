@@ -524,7 +524,7 @@ $(function () {
                 if (storyCfg.bitcoin && storyCfg.bitcoin.address && storyCfg.bitcoin.explorer) {
                     donationsItems.push($('<li>').prepend(
                         $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.bitcoin.explorer + storyCfg.bitcoin.address, id: 'bitcoin-wallet' }).text('Bitcoin').prepend(
-                            $('<i>', { class: 'fa-brands fa-bitcoin me-2' })
+                            $('<i>', { class: 'cf cf-doge me-2' })
                         ).click(baseCryptoModal('bitcoin', 'Bitcoin'))
                     ));
                 }
