@@ -44,6 +44,11 @@ var storyCfg = {
     patreon: 'JasminDreasond',
     kofi: 'JasminDreasond',
 
+    dogecoin: {
+        address: 'DJn9GGPYsQSGTi6bHDhfgtUpmivBEnDiMK',
+        explorer: 'https://dogechain.info/address/'
+    },
+
     bitcoin: {
         address: 'bc1qnk7upe44xrsll2tjhy5msg32zpnqxvyysyje2g',
         explorer: 'https://www.blockchain.com/btc/address/'
