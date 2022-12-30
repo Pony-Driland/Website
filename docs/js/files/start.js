@@ -529,6 +529,15 @@ $(function () {
                     ));
                 }
 
+                // Dogecoin
+                if (storyCfg.dogecoin && storyCfg.dogecoin.address && storyCfg.dogecoin.explorer) {
+                    donationsItems.push($('<li>').prepend(
+                        $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.dogecoin.explorer + storyCfg.dogecoin.address, id: 'dogecoin-wallet' }).text('Dogecoin').prepend(
+                            $('<i>', { class: 'fa-brands fa-dogecoin me-2' })
+                        ).click(baseCryptoModal('dogecoin', 'Dogecoin'))
+                    ));
+                }
+
                 // Ethereum
                 if (storyCfg.ethereum && storyCfg.ethereum.address && storyCfg.ethereum.explorer) {
                     donationsItems.push($('<li>').prepend(
