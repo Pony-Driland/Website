@@ -524,7 +524,7 @@ $(function () {
                 if (storyCfg.bitcoin && storyCfg.bitcoin.address && storyCfg.bitcoin.explorer) {
                     donationsItems.push($('<li>').prepend(
                         $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.bitcoin.explorer + storyCfg.bitcoin.address, id: 'bitcoin-wallet' }).text('Bitcoin').prepend(
-                            $('<i>', { class: 'cf cf-doge me-2' })
+                            $('<i>', { class: 'fa-brands fa-bitcoin me-2' })
                         ).click(baseCryptoModal('bitcoin', 'Bitcoin'))
                     ));
                 }
@@ -533,7 +533,7 @@ $(function () {
                 if (storyCfg.dogecoin && storyCfg.dogecoin.address && storyCfg.dogecoin.explorer) {
                     donationsItems.push($('<li>').prepend(
                         $('<a>', { class: 'dropdown-item', target: '_blank', href: storyCfg.dogecoin.explorer + storyCfg.dogecoin.address, id: 'dogecoin-wallet' }).text('Dogecoin').prepend(
-                            $('<i>', { class: 'fa-brands fa-dogecoin me-2' })
+                            $('<i>', { class: 'cf cf-doge me-2' })
                         ).click(baseCryptoModal('dogecoin', 'Dogecoin'))
                     ));
                 }
