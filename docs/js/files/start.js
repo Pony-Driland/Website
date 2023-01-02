@@ -749,11 +749,11 @@ $(function () {
                                         )
                                     ),
 
-                                    $('<li>').append(
+                                    /* $('<li>').append(
                                         $('<a>', { href: `https://${storyData.cid32}.ipfs.dweb.link/` }).text('IPFS ' + storyCfg.nftDomain.name).prepend(
                                             $('<i>', { class: 'fas fa-wifi me-2' })
                                         )
-                                    ),
+                                    ), */
 
                                     $('<li>').append(
                                         $('<a>', { target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}` }).text('Discord Server').prepend(
