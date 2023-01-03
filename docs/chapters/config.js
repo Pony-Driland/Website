@@ -76,7 +76,7 @@ var storyCfg = {
         url: 'https://ud.me/d/{domain}',
         /* value: 'ponydriland.nft', */
         domainWallet: 'jasmindreasond.wallet',
-        /* valueURL: 'ponydriland.nft', */
+        valueURL: 'ponydriland.nft',
         name: 'Unstoppable Domains'
     },
 
