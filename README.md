@@ -4,7 +4,7 @@
 <center>
 <img src="https://github.com/Pony-Driland/Website/blob/main/docs/img/external/banner1.jpg?raw=true">
 </center>
-<br/>
+<br/><br/>
 <p>
     <a href="https://discord.gg/GegfAgNxRX"><img src="https://img.shields.io/discord/881322783538298891?color=7289da&logo=discord&logoColor=white" alt="Discord server" /></a>
     <a href="https://www.patreon.com/JasminDreasond"><img src="https://img.shields.io/badge/donate-patreon-F96854.svg?logo=patreon" alt="Patreon" /></a>
