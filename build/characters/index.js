@@ -111,7 +111,7 @@ fs.readdir(folderPath, (err, files) => {
 
             // Create Custom URL
             customURLs[file.name] = {
-                path: '/img/characters/' + file.name + '/README.md',
+                path: '/data/characters/' + file.name + '/README.md',
                 url: '/characters/' + file.name + '.html',
                 title: jsonFile.title,
                 description: jsonFile.description
