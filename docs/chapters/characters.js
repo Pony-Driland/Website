@@ -23,7 +23,7 @@ storyCfg.characters = {
     "path": "/data/characters/prisma/README.md",
     "url": "/characters/prisma.html",
     "title": "Prisma",
-    "description": "One of the oldest unicorns in all of Pony Driland. She's story has a direct involvement with the Royal Color. She belongs to the closest hierarchy to the Rainbow Queen."
+    "description": "One of the oldest unicorns in all Pony Driland. She's story has a direct involvement with the Royal Color. She is one of the closest ponies to the Rainbow Queen within the Royal Color family."
   },
   "rainbow-queen": {
     "path": "/data/characters/rainbow-queen/README.md",
