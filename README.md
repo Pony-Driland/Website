@@ -17,93 +17,10 @@
 
 ## Welcome!
 
-Pony Driland is a fanfic project involving science fiction, mystery, and drama, and some other topics that you can find out about through the website. This repository stores all files related to the canonical story of Pony Driland.
-The project development is being worked on in a private repository. This repository is used to share the final version of parts of the project and website.
+This is the official Pony Driland repository. All visible website content is hosted in the doc folder. Within this repository you can find both the website content and the tools used to deploy the website content.
 
-Feel free to use this repository to talk about the project. 
-You can check the progress of the project's development in this readme.
+If you're curious about copyright ownership of images and files, everything is described in detail in the license within this repository.
 
-<hr/>
+The purpose of this repository is to preserve all the content of the fanfic, and also to preserve the open source code for any other developer is free to reuse the website script for any project.
 
-## Receive Update Notifications
-
-<a href="https://puddy.club/github/subscription?username=Pony-Driland&repository=Website" target="_blank">Receive Notifications</a>
-
-<hr/>
-
-## Warning!
-Accessing the source code of this repository can make you see possible spoilers of the fanfic. If you are reading the fanfic, it is recommended that you access the website and source code updates later.
-
-<hr/>
-
-## A little about the Project Theme
-
-### Age Rating (Age 16 and Above)
-
-<img src="https://github.com/Pony-Driland/Website/blob/main/docs/img/age-rating/teen.jpg?raw=true" height="200" />
-
-Adventure | Action | Drama | Comedy | Fantasy Violence | Intense Violence | Strong Language | Animated Blood | Horror
-
-<hr/>
-
-## Where are the cutie marks?
-Don't worry about it. Cutie Marks do not exist in this fanfic.
-<hr/>
-
-## Inspirations
-Undertale
-
-Glitchtale Season 2
-
-Fallout Equestria
-
-Madoka Magica
-
-Dragon Ball Super
-
-<hr/>
-
-## Progress
-
-### Chapter 2
-Beta Version - 100% Complete
-
-Final Version - 90% Complete
-
-### Chapter 3
-Beta Version - 100% Complete
-
-Final Version - 0% Complete
-
-### Chapter 4
-Beta Version - 63% Complete
-
-Final Version - 0% Complete
-
-<hr/>
-
-## Characters
-
-<a href="https://github.com/Pony-Driland/Website/blob/main/docs/data/characters/rayane/README.md" target="_blank">Rayane</a>
-
-<a href="https://github.com/Pony-Driland/Website/blob/main/docs/data/characters/rainbow-queen/README.md" target="_blank">Rainbow Queen</a>
-
-<hr/>
-
-## Characters (Spoilers)
-
-<a href="https://github.com/Pony-Driland/Website/blob/main/docs/data/characters/princess-ariella/README.md" target="_blank">Princess Ariella</a>
-
-<a href="https://github.com/Pony-Driland/Website/blob/main/docs/data/characters/amy/README.md" target="_blank">Amy</a>
-
-<a href="https://github.com/Pony-Driland/Website/blob/main/docs/data/characters/layla/README.md" target="_blank">Layla</a>
-
-<a href="https://github.com/Pony-Driland/Website/blob/main/docs/data/characters/prisma/README.md" target="_blank">Prisma</a>
-
-<hr/>
-
-## Characters WIP (Spoilers)
-
-<a href="https://github.com/Pony-Driland/Website/blob/main/docs/data/characters/blue-screen/README.md" target="_blank">Blue Screen</a>
-
-<a href="https://github.com/Pony-Driland/Website/blob/main/docs/data/characters/whistler/README.md" target="_blank">Whistler</a>
+Some specific folders may have instructions on how to use them. Then feel free to browse the files.
