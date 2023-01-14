@@ -11592,6 +11592,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Hm? Hiroshi? Of course! He's asking for help again. I hope he knows what he's doing. It's just not going to be help he's really going to get.",
         "character": "Rainbow Queen",
         "type": "dialogue"
