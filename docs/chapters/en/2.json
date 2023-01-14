@@ -11744,6 +11744,29 @@
         "value": "Too late.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. Looks like this is the radar to track the Master SmartMoby parts.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "WELL! This is too much information for my head! Help!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "HEEEEEEEY! Everyone calm down! The plan hasn't changed, we managed to send the help signal. And now there's no more mystery. We already know that there is a part of Master Smartmoby here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi tried to calm down, but he was still very surprised as he tried to believe what was happening.",
+        "type": "action"
     }
 
 ]
