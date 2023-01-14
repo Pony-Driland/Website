@@ -11551,6 +11551,28 @@
         "value": "At least now I know what these powerful energies are. I can't wait for at least my world to have alternate timelines again to make it easier to continue my work on the main timeline.",
         "character": "Rainbow Queen",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen would then make a little sinister laugh.",
+        "type": "action"
+    },
+
+    {
+        "value": "This mysterious Vinny has a lot of determination, I'm going to need to be more careful with this pony. His power to change my timeline is only increasing and I cannot allow that.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen then took a deep breath in anger.",
+        "type": "action"
+    },
+
+    {
+        "value": "But it won't be an easy task, because Rayane is by his side. It won't be easy to convince a headstrong pony about the risks of her actions.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
     }
 
 ]
