@@ -11518,8 +11518,17 @@
     },
 
     {
-        "value": "Vinny makes a poker face, trying to understand if the place is really safe or not.",
+        "value": "Vinny makes a poker face, trying to understand if the place is really safe or not. Meanwhile, not far away, it seemed that something was still watching Vinny, Rayane, Hiroshi, Kai and Rown. None of them realized what was really happening, but Rainbow Queen was there just watching the situation.",
         "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "rainbow-queen-moment"
+        },
+        "value": "",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
     }
 
 ]
