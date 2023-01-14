@@ -11601,7 +11601,7 @@
     },
     
     {
-        "value": "So we went back to the scene where Hiroshi was. Hiroshi was focusing his magic on the radar. Then the radar began to glow the screen, and began to prepare to emit the signal. At the same time the radar started beeping more and more, it looked like it was starting to detect some sign of something else as the radar prepared to do what was going to be done.",
+        "value": "So we went back to the scene where Hiroshi was. Hiroshi was focusing his magic on the radar. Then the radar began to glow the screen, and began to prepare to emit the signal. At the same time the radar started beeping more and more, it looked like it was starting to detect some sign of something else.",
         "type": "action"
     },
 
@@ -11632,7 +11632,7 @@
     },
 
     {
-        "value": "Hey? What are you two talking about? Is this a good thing or a bad thing? This...this energy... It reminds me a lot of the energy of our magic relic!",
+        "value": "Hey? What are you two talking about? Is this a good thing or a bad thing? Wait... ah? This...this energy... It reminds me a lot of the energy of our magic relic!",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -11662,7 +11662,7 @@
     },
     
     {
-        "value": "Hiroshi was very surprised and the Radar made more and more beep sounds from the energy coming out, making a big light effect. The radar released a lot of energy signal waves for a few seconds. So the light effects ended. The radar starts making a red alert beep, tracking some extremely serious item.",
+        "value": "Hiroshi was very surprised and the Radar made more and more beep sounds from the energy coming out. The amount of energy released was gigantic, making a huge flash of light. The radar released a lot of energy signal waves for a few seconds. The lighting was slowly dimming as the power signal slowly ended. So the radar starts making a red alert beep, tracking some extremely serious item.",
         "type": "action"
     },
 
@@ -11821,7 +11821,6 @@
     },
 
     {
-        
         "set": {
             "playlistPlay": null
         },
