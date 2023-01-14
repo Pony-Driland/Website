@@ -11598,6 +11598,46 @@
         "value": "Hm? Hiroshi? Of course. He's asking for help again. I hope he knows what he's doing. It's just not going to be help he's really going to get.",
         "character": "Rainbow Queen",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "So we went back to the scene where Hiroshi was. Hiroshi was focusing his magic on the radar. Then the radar began to glow the screen, and began to prepare to emit the signal. At the same time the radar started beeping more and more, it looked like it was starting to detect some sign of something else as the radar prepared to do what was going to be done.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait? Vinny? Are you sure you turned off all extra radar functions?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane looked a little worried as she started to feel the radar energy as well.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey! I didn't touch anything.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Exactly. You didn't move anything. This brings me an extreme bad feeling about something I just remembered.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey? What are you two talking about? Is this a good thing or a bad thing? This...and...this energy... It reminds me a lot of the energy of our magic relic!",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What?! Our relic? You mean there's more than one magical relic?!",
+        "character": "Kai",
+        "type": "dialogue"
     }
 
 ]
