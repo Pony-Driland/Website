@@ -11764,7 +11764,7 @@
     },
     
     {
-        "value": "How is possible? Vinny? How do you know about the existence of the Master SmartMoby? This is rare knowledge.",
+        "value": "How is possible? Vinny? How do you know about the existence of the Master Smartmoby? This is rare knowledge.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -11776,7 +11776,7 @@
     },
 
     {
-        "value": "Y..Yes. Yes. Kai is right. It's a lot of questions for a short time. We will.",
+        "value": "Y..Yes. Yes. Kai is right. It's a lot of questions for a short time.",
         "character": "Rowan",
         "type": "dialogue"
     },
@@ -11787,13 +11787,13 @@
     },
 
     {
-        "value": "Many questions. Really many questions. I hope I have time to answer all these questions.",
+        "value": "Many questions. Really many questions. Yes. I hope I have time to answer all these questions.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
 
     {
-        "value": "Vinny then looked worriedly at Hiroshi for a few seconds as he remembered the previous conversation about Hiroshi's life.",
+        "value": "Vinny then looked worriedly at Hiroshi for a few seconds as he remembered the previous conversation about Hiroshi's life. Vinny would look sad for a few seconds.",
         "type": "action"
     },
 
