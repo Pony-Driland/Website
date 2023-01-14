@@ -11606,18 +11606,21 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "tense-mystery"
+        },
         "value": "Wait? Vinny? Are you sure you turned off all extra radar functions?",
         "character": "Rayane",
         "type": "dialogue"
     },
 
     {
-        "value": "Rayane looked a little worried as she started to feel the radar energy as well.",
+        "value": "Rayane looks a little worried as she started to feel the radar energy as well.",
         "type": "action"
     },
 
     {
-        "value": "Hey! I didn't touch anything.",
+        "value": "Hey! I didn't touch anything!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -11638,6 +11641,29 @@
         "value": "What?! Our relic? You mean there's more than one magical relic?!",
         "character": "Kai",
         "type": "dialogue"
+    },
+
+    {
+        "value": "W...well... T..this is...",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? Have you gone crazy?!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "OH FUUUCK!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    
+    {
+        "value": "Hiroshi was very surprised and the Radar made more and more beep sounds from the energy coming out, making a big light effect. The radar released a lot of energy signal waves for a few seconds. So the light effects ended. The radar starts making a red alert beep, tracking some extremely serious item.",
+        "type": "action"
     }
 
 ]
