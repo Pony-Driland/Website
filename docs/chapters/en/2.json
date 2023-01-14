@@ -11702,6 +11702,12 @@
     },
 
     {
+        "value": "No! Rayane! Wait!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
         "value": "Rayane would then be quiet for a few seconds. Hiroshi was just lying on the floor, very confused by what happened, and he was just looking at the screen very curiously.",
         "type": "action"
     },
@@ -11726,6 +11732,17 @@
     {
         "value": "M...Master Smartmoby? No... No no... I'm going crazy. So all that bullshit from the legendary Master Smartmoby that you keep telling us was true?!",
         "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane took a deep breath before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "Too late.",
+        "character": "Rayane",
         "type": "dialogue"
     }
 
