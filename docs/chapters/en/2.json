@@ -11529,6 +11529,28 @@
         "value": "What does Hiroshi think he's doing? I thought I could just feel super powerful energy. But now there are two energies.",
         "character": "Rainbow Queen",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen took a deep breath as she looked seriously at the souls she captured earlier.",
+        "type": "action"
+    },
+
+    {
+        "value": "My world is starting to discover the truth. I don't know how long I could keep myself a secret. This timeline is no longer the same. Since this mysterious Vinny arrived, a lot has changed.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen would then teleport the souls and make an sinister smirk as she continued talking alone.",
+        "type": "action"
+    },
+
+    {
+        "value": "At least now I know what these powerful energies are. I can't wait for at least my world to have alternate timelines again to make it easier to continue my work on the main timeline.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
     }
 
 ]
