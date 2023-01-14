@@ -11664,6 +11664,46 @@
     {
         "value": "Hiroshi was very surprised and the Radar made more and more beep sounds from the energy coming out, making a big light effect. The radar released a lot of energy signal waves for a few seconds. So the light effects ended. The radar starts making a red alert beep, tracking some extremely serious item.",
         "type": "action"
+    },
+
+    {
+        "value": "H...huh? What happened? Is everyone okay?",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi took his paw out of his face slowly in response. Kai and Rowan were hugging each other trying to protect themselves from the situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..Yeah. I...I died?",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..Yes. The drama is over now. Finally.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "ARGH! AAH! I'm okay! Oh fuck god! Rayene! What had James said about this radar?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "V..Vinny. Don't you remember? This radar was made to find the...",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane would then be quiet for a few seconds. Hiroshi was just lying on the floor, very confused by what happened, and he was just looking at the screen very curiously.",
+        "type": "action"
     }
 
 ]
