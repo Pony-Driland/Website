@@ -11807,6 +11807,22 @@
         "value": "I...I also really hope you do.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "Vinny? Are you okay? We need to hurry now.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane looked worriedly at Vinny as she followed Kai.",
+        "type": "action"
+    },
+    {
+        "value": "M..Me? Ah! Nothing! Nothing! Let's go!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
