@@ -11819,7 +11819,12 @@
         "value": "Rayane looked worriedly at Vinny as she followed Kai.",
         "type": "action"
     },
+
     {
+        
+        "set": {
+            "playlistPlay": null
+        },
         "value": "M..Me? Ah! Nothing! Nothing! Let's go!",
         "character": "Vinny",
         "type": "dialogue"
