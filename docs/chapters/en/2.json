@@ -11767,6 +11767,46 @@
     {
         "value": "Hiroshi tried to calm down, but he was still very surprised as he tried to believe what was happening.",
         "type": "action"
+    },
+    
+    {
+        "value": "How is possible? Vinny? How do you know about the existence of the Master SmartMoby? This is rare knowledge.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Everypony. We don't have time now. The timer just started! We'll talk about Master Smartmoby later!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..Yes. Yes. Kai is right. It's a lot of questions for a short time. We will.",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi seemed like he was very lost in his thoughts for a few seconds, but then he decided to go along with Kai and Rowan.",
+        "type": "action"
+    },
+
+    {
+        "value": "Many questions. Really many questions. I hope I have time to answer all these questions.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked worriedly at Hiroshi for a few seconds as he remembered the previous conversation about Hiroshi's life.",
+        "type": "action"
+    },
+
+    {
+        "value": "I...I also really hope you do.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
