@@ -11741,13 +11741,7 @@
     },
 
     {
-        "value": "Too late.",
-        "character": "Rayane",
-        "type": "dialogue"
-    },
-
-    {
-        "value": "Yes. Looks like this is the radar to track the Master SmartMoby parts.",
+        "value": "Too late. Yes. Looks like this is the radar to track the Master SmartMoby parts.",
         "character": "Rayane",
         "type": "dialogue"
     },
