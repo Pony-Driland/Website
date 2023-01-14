@@ -11584,6 +11584,17 @@
         "value": "Hmmmm... The first step is to stop this determination from growing. This process can be something fun. Heh. I'm really interested in having a little fun~",
         "character": "Rainbow Queen",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen then looked towards the hall door when she felt a wavering power signal. Rainbow Queen was serious, suspecting something.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hm? Hiroshi? Of course! He's asking for help again. I hope he knows what he's doing. It's just not going to be help he's really going to get.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
     }
 
 ]
