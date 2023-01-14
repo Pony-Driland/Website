@@ -11573,6 +11573,17 @@
         "value": "But it won't be an easy task, because Rayane is by his side. It won't be easy to convince a headstrong pony about the risks of her actions. I'm going to have to do this in a very different way.",
         "character": "Rainbow Queen",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen slowly calmed down as she thought about the whole situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmmm... The first step is to stop this determination from growing. This process can be something fun. Heh. I'm really interested in having a little fun~",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
     }
 
 ]
