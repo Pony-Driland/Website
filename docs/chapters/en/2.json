@@ -11816,9 +11816,6 @@
     },
 
     {
-        "set": {
-            "playlistPlay": null
-        },
         "value": "M..Me? Ah! Nothing! Nothing! Let's go!",
         "character": "Vinny",
         "type": "dialogue"
@@ -11837,11 +11834,41 @@
 
     {
         "set": {
-            "playlistPlay": "troubles"
+            "playlistPlay": null
         },
         "value": "S...security system? No no no! You're kidding! How did they manage to do that?!",
         "character": "Kai",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rowan would start to giggle nervously during the talk.",
+        "type": "action"
+    },
+
+    {
+        "value": "H...ha..hahaha... Isn't that cool Kai? And it was the annoying programmers who made these devices.",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane opened her eyes wider and looked around very attentively when she heard that.",
+        "type": "action"
+    },
+    
+    {
+        "value": "W...What? Explain what is this? Can't you show where Rayane can teleport us to?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "troubles"
+        },
+        "value": "The alarm would then start going off extremely loudly, making everyone feel startled.",
+        "type": "action"
     }
 
 ]
