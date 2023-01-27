@@ -11804,9 +11804,7 @@
     },
     
     {
-        "set": {
-            "playlistPlay": null
-        },
+
         "value": "Vinny? Are you okay? We need to hurry now.",
         "character": "Rayane",
         "type": "dialogue"
@@ -11819,7 +11817,7 @@
 
     {
         "set": {
-            "playlistPlay": "troubles"
+            "playlistPlay": null
         },
         "value": "M..Me? Ah! Nothing! Nothing! Let's go!",
         "character": "Vinny",
@@ -11838,6 +11836,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "troubles"
+        },
         "value": "S...security system? No no no! You're kidding! How did they manage to do that?!",
         "character": "Kai",
         "type": "dialogue"
