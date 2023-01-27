@@ -11804,6 +11804,9 @@
     },
     
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Vinny? Are you okay? We need to hurry now.",
         "character": "Rayane",
         "type": "dialogue"
@@ -11816,10 +11819,27 @@
 
     {
         "set": {
-            "playlistPlay": null
+            "playlistPlay": "troubles"
         },
         "value": "M..Me? Ah! Nothing! Nothing! Let's go!",
         "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi was analyzing every trace of destruction around very carefully as he walked with everyone.",
+        "type": "action"
+    },
+
+    {
+        "value": "They....They really walked this place brutally. But it looks like they didn't mind destroying the security system.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "S...security system? No no no! You're kidding! How did they manage to do that?!",
+        "character": "Kai",
         "type": "dialogue"
     }
 
