@@ -11869,6 +11869,121 @@
         },
         "value": "The alarm would then start going off extremely loudly, making everyone feel startled.",
         "type": "action"
+    },
+
+    {
+        "value": "Ah...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    
+    {
+        "value": "OH COME ON!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey! Maybe it's not that hard...",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rowan tried to walk a little ahead, but Rayane got in front using a force field magic. A laser was then triggered and was reflected by Rayane's force field.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rowan got scared and walked backwards. Hiroshi then concentrated the magic to help Rayane not use too much energy to maintain the force field while the laisers tried to attack.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't waste too much time with the conversation, we won't be able to use this ability forever!",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little surprised by Hiroshi's help, so she just smiled more confidently and continued using her magic.",
+        "type": "action"
+    },
+
+    {
+        "value": "F...fuck.",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Shut up Rowan! Help me here! Don't you have any plan B like Vinny said about Rayane?!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I...I..",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I could really teleport us. But we need to have the door open so I can point the teleport destination to the other way.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Aaaah... Okay. We can shoot where the lasers come out, or pass with all the unicorns like a shield.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then took the sniper and was positioned towards the laisers. But Kai would interrupt Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "No no! You'll get shot in the face when the sensor sees your sniper pointed at them!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey! We can open the door by force or we can try to throw objects at the password panel.",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Password panel? does anyone know the password? Just levitate something with tip and put the password.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Password? What a ridiculous idea! We can just blow up the password panel!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Calm down. I know the password, it will be extremely more secure if we use the password to turn off the entire security system.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was very thoughtful during some seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmm... heh~ Okay. I'll stay here and help take care of the lasers. My sword will be a big help.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
