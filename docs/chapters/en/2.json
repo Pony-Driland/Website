@@ -12237,6 +12237,40 @@
         "value": "No no! Don't lose focus everypony! Vinny needs to keep typing the password!",
         "character": "Hiroshi",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "Vinny! Please! Type faster! We can't go on at this rate watching Kai get hurt!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny got even more nervous as he pressed number 8 and then number 3.",
+        "type": "action"
+    },
+
+    {
+        "value": "Number 2... Number 4... O..oh god...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny missed the 2 accidentally during the process.",
+        "type": "action"
+    },
+
+    {
+        "value": "OH COME ON!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "24! 5827!",
+        "character": "Hiroshi",
+        "type": "dialogue"
     }
 
 ]
