@@ -12381,6 +12381,45 @@
         },
         "value": "So Vinny finally finished entering the correct password. At this very moment all the alarms suddenly stopped and all the lasers were completely turned off.",
         "type": "action"
+    },
+    
+    {
+        "value": "Phewwwww... FINALLY! Finally... Okay okay. Ready princess, not even these laisers will be able to melt that hot pony that you are!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane breathed deeply in relief as she lay down on the floor realizing that everything was finally calm again.",
+        "type": "action"
+    },
+
+    {
+        "value": "H...heh. Thank you Vinny. we finally did it... We did it. Finaaally. The princess now needs some rest~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed nervously as he looked around.",
+        "type": "action"
+    },
+
+    {
+        "value": "S...sorry the delay. Okay everpony?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Vinny looked at Rowan, Kai and Hiroshi.",
+        "type": "action"
+    },
+
+    {
+        "value": "Are you all okay?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
