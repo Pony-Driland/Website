@@ -12013,6 +12013,12 @@
         "character": "Rayane",
         "type": "dialogue"
     },
+
+    {
+        "value": "M..My wings? Are we going to fly to the door? Oh yes! That's a great idea!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
     
     {
         "value": "Vinny continued to look silly for a few seconds before finally trying to fly. VInny's body was adapting to Rayane's weight for a few seconds until he finally started to fly. The laisers then stopped focusing only on Hiroshi and started shooting towards Rayane and Vinny, but at the same time Rayane used her sword to deflect the direction of the laser.",
@@ -12033,6 +12039,40 @@
     {
         "value": "Focus! We now need to continue what we are doing. Follow me Rowan!",
         "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah! Full focus! Without looking at my ass you two!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rowan makes a poker face at the unnecessary comment for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rowan! Come here!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..what? A...ah! Y..Yes yes Kai!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny started to fly towards the door consistently, trying not to interfere too much with Rayane's magic that was reflecting the lasers.",
+        "type": "action"
+    },
+
+    {
+        "value": "Silly ones~",
+        "character": "Rayane",
         "type": "dialogue"
     }
 
