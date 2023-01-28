@@ -12079,6 +12079,22 @@
     {
         "value": "Rayane then increased the sword's aggressiveness when she saw the next lasers being fired, making it a little harder for Vinny to keep flying. So Rayane got the first opportunity to use the sword to reflect the first laisers against the laiser weapons themselves.",
         "type": "action"
+    },
+    
+    {
+        "value": "Meanwhile Rowan was using his magic to help Hiroshi's force field. Rowan was increasing the intensity of magic to draw more attention from possible laisers who want to try to shoot Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't lose focus! The room can raise the defense system at any time!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai already saw that the room started some extra sirens on the ground, and he was already taking a spear. Kai was buffing his spear through magic to make it stronger, trying to destroy all the micro weapons that appeared on the ground.",
+        "type": "action"
     }
 
 ]
