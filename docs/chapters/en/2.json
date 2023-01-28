@@ -12077,6 +12077,12 @@
     },
 
     {
+        "value": "Oh come on!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
         "value": "YES!",
         "character": "Kai",
         "type": "dialogue"
@@ -12090,12 +12096,6 @@
     {
         "value": "NOPE!",
         "character": "Kai",
-        "type": "dialogue"
-    },
-
-    {
-        "value": "Oh come on!",
-        "character": "Rowan",
         "type": "dialogue"
     },
 
