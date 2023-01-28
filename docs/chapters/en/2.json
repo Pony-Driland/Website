@@ -12271,6 +12271,39 @@
         "value": "24! 5827!",
         "character": "Hiroshi",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "Rowan, who had been distracted to worry about Kai, ended up having difficulty continuing to keep helping Hiroshi, causing Hiroshi to unintentionally let a shot escape. But Rayane seeing the situation, she hit the shot.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rowan! Keep focus!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane accidentally gets shot during the progress, making her almost fall off her back, making several shots almost hit Vinny, but soon she was back to focus to continue protecting Vinny. Rayane was having a little difficulty using the sword by now due to arm injury.",
+        "type": "action"
+    },
+
+    {
+        "value": "AARH! V..VINNY!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane seeing that she was a little at a disadvantage, she increased the power of the sword, and the sword caught fire, she began to rebut the shots in a more violent way. Vinny was scared to feel the light and temperature of the flames. Vinny was trying to calm down when he saw Rayane destroying some more laisers.",
+        "type": "action"
+    },
+
+    {
+        "value": "Calm. Keep Calm. No panic and we'll finish this shit.",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
