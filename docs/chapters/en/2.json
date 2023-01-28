@@ -11970,9 +11970,15 @@
     },
 
     {
-        "value": "Calm down. I know the password, it will be extremely safer if we use the password to turn off the entire security system.",
+        "value": "Calm down. I know the password, it will be extremely safer if we use the password to turn off the entire security system. This password is saved in my smartmoby.",
         "character": "Hiroshi",
         "type": "dialogue"
+    },
+
+    {
+        "value": "What fuck? Why does my smartmoby not have these cool features?",
+        "character": "Vinny",
+        "type": "think"
     },
 
     {
