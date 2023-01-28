@@ -11987,14 +11987,30 @@
     },
 
     {
-        "value": "Hmmm... heh~ Okay. I'll stay here and help take care of the lasers. My sword will be a big help.",
+        "value": "Hmmm... heh~ Okay. I'll stay here and help take care of the lasers. My sword will be a big help. As I spin my sword, I'm going to have to climb onto Vinny's back.",
         "character": "Rayane",
         "type": "dialogue"
     },
 
     {
-        "value": "Okay! No more talking! We need to help Hiroshi and Rayane!",
-        "character": "Kai",
+        "value": "Vinny was surprised and a little blushed in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...Aaaahhh?? Okay okay. Go Rayane. But next time I choose how I'm going to ride you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane would then begin decreasing the energy distributed to the force field until the horn's magic was turned off. Rayane laughs a little and climbs on Vinny's back delicately while slowly spawning the sword so as not to draw too much attention.",
+        "type": "action"
+    },
+
+    {
+        "value": "Prepare your wings~ We're going to need them too.",
+        "character": "Rayane",
         "type": "dialogue"
     }
 
