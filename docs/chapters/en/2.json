@@ -11901,6 +11901,12 @@
     },
 
     {
+        "value": "OH OH!! What the fuck is this?!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
         "value": "Don't waste too much time, we won't be able to use this ability forever!",
         "character": "Hiroshi",
         "type": "dialogue"
