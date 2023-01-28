@@ -12390,6 +12390,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "tense-mystery"
+        },
         "value": "Rayane breathed deeply in relief as she lay down on the floor realizing that everything was finally calm again.",
         "type": "action"
     },
