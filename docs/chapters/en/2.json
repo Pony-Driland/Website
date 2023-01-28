@@ -12157,8 +12157,14 @@
     },
 
     {
-        "value": "Rayane kept reflecting the lasers that started desperately trying to shoot against Vinny.",
+        "value": "Rayane kept reflecting the lasers that started desperately trying to shoot against Vinny in response.",
         "type": "action"
+    },
+
+    {
+        "value": "VINNY LOOK OUT!",
+        "character": "Rayane",
+        "type": "dialogue"
     },
 
     {
