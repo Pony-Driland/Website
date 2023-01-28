@@ -12093,8 +12093,60 @@
     },
 
     {
-        "value": "Kai already saw that the room started some extra sirens on the ground, and he was already taking a spear. Kai was buffing his spear through magic to make it stronger, trying to destroy all the micro weapons that appeared on the ground.",
+        "value": "Kai already saw that the room started some extra sirens on the ground, and he was already taking a spear. Kai was buffing his spear through magic to make it stronger, trying to destroy all the micro weapons that appeared on the ground. So one of the lasers that Rayane was reflecting then started to go back inside the wall to reappear on another wall.",
         "type": "action"
+    },
+
+    {
+        "value": "Careful! Laisers are raising the difficulty!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Huh?! Oh no!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little surprised, but at the same time Kai saw where the laser was appearing again, and used the spear to stop the laiser from shooting.",
+        "type": "action"
+    },
+
+    {
+        "value": "NOPE!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh come on!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "O..oh fuck.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Do not give up! We need to keep all this until the password is entered!",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "At this moment Vinny and Rayane was now close to the door password panel.",
+        "type": "action"
+    },
+
+    {
+        "value": "V..Vinny! We need to enter the password as soon as possible now!",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
