@@ -11895,6 +11895,12 @@
     },
 
     {
+        "value": "F...fuck!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
         "value": "Don't waste too much time, we won't be able to use this ability forever!",
         "character": "Hiroshi",
         "type": "dialogue"
@@ -11903,12 +11909,6 @@
     {
         "value": "Rayane was a little surprised by Hiroshi's help, so she just smiled more confidently and continued using her magic.",
         "type": "action"
-    },
-
-    {
-        "value": "F...fuck.",
-        "character": "Rowan",
-        "type": "dialogue"
     },
 
     {
