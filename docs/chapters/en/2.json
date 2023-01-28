@@ -12304,6 +12304,80 @@
         "value": "Calm. Keep Calm. No panic and we'll finish this shit.",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "Vinny! 24! 5827! Go!",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+ 
+    {
+        "value": "Hiroshi ended up getting distracted and got a laser shot too, making him accidentally fall on the ground. Rowan was surprised to feel all the energy in the force field begin to focus on him alone. So Rowan started to use more energy to not lose the force field.",
+        "type": "action"
+    },
+
+    {
+        "value": "AARGH! LET'S GO!",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "H...HIROSHI! NO NO NO! Hold on!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rowan tried to stay in front of Hiroshi to defend him and Kai during the progress.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny! Please! FASTER!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was extremely nervous, trying again and again to type in the rest of the password without getting it wrong.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAAAAHHHH! 24!! 24!! NOO NO! 24! 5827!! AAAAAAAHHH!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "WE WILL DIE! I CAN'T MAINTAIN THIS FORCEFIELD ALONE!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "CALM DOWN ROWAN!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "SHUT UP EVERYPONY SHUT UUUUUUP!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "27!! AAAAAAAHHH!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny finally finished entering the correct password. At this very moment all the alarms suddenly stopped and all the lasers were completely turned off.",
+        "type": "action"
     }
 
 ]
