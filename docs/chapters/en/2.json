@@ -12204,6 +12204,39 @@
         "value": "For Rainbow's sake! You have reversed roles!",
         "character": "Rowan",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "Kai kept using the spear against the laisers, but accidentally one of the laisers hits his leg.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAAAH! FUCK!!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "In the same moment of pain and suffering Kai concentrated all his energy and used the spear to reflect the second laser shot to destroy the laiser gun.",
+        "type": "action"
+    },
+
+    {
+        "value": "K..KAAAI! N..NOO!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rowan was having difficulty helping Hiroshi's force field, trying to bring Kai closer to him.",
+        "type": "action"
+    },
+
+    {
+        "value": "No no! Don't lose focus everypony! Vinny needs to keep typing the password!",
+        "character": "Hiroshi",
+        "type": "dialogue"
     }
 
 ]
