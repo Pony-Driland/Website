@@ -12423,6 +12423,57 @@
         "value": "Are you all okay?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "V..Vinny. Don't worry. it was just a few shots. I'll be fine.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai tried to get up carefully while putting his paws on the wounds. Hiroshi moaned in pain as he tried to get into a favorable position to feel better.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y...Yes. This pain is nothing compared to everything I've been through.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rowan looked sad but was slowly calming down and feeling better.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..Yeah. I... I'm fine too. Sorry for my despair. I thought we were all going to die here.",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. Shhhhhhh~ Don't worry. I can help everypony here. But remember that the more I use this regeneration magic, the more tired I get. Okay? I need to save my magic to make it to the next room.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "O..okay okay. Let's get some rest. We've already tried too hard. I'm just worried. ",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny breathed deeply for a few seconds. Vinny kept staring at the door, looking intently at it wondering what could be behind that door at this very moment. It was a deep silence of a lot of nervousness.",
+        "type": "action"
+    },
+
+    {
+        "value": "I really can't believe we actually got here. Will we finally find this mysterious Marlon? This motherfucker must be laughing at us. I want to find that idiot soon!",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
