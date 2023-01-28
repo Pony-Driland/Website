@@ -12074,6 +12074,11 @@
         "value": "Silly ones~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then increased the sword's aggressiveness when she saw the next lasers being fired, making it a little harder for Vinny to keep flying. So Rayane got the first opportunity to use the sword to reflect the first laisers against the laiser weapons themselves.",
+        "type": "action"
     }
 
 ]
