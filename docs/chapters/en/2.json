@@ -12376,6 +12376,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "So Vinny finally finished entering the correct password. At this very moment all the alarms suddenly stopped and all the lasers were completely turned off.",
         "type": "action"
     }
