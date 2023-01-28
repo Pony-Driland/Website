@@ -12170,6 +12170,40 @@
         "value": "O..okay okay. There we go enter the password.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "So Vinny press the number 8 and then the number 1.",
+        "type": "action"
+    },
+
+    {
+        "value": "Number 8... Number 1...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane kept reflecting the laisers that started desperately trying to shoot against Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Number FUUUUUCK! OH SHIT!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "83! Go!",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "For Rainbow's sake! You have reversed roles!",
+        "character": "Rowan",
+        "type": "dialogue"
     }
 
 ]
