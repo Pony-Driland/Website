@@ -12147,6 +12147,29 @@
         "value": "V..Vinny! We need to enter the password as soon as possible now!",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a poker face as he looked at the password panel.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..Yeah. What's the password?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The password is 8183245827! 8183245827!",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "O..okay okay. There we go enter the password.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
