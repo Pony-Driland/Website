@@ -11990,6 +11990,12 @@
         "value": "Hmmm... heh~ Okay. I'll stay here and help take care of the lasers. My sword will be a big help.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Okay! No more talking! We need to help Hiroshi and Rayane!",
+        "character": "Kai",
+        "type": "dialogue"
     }
 
 ]
