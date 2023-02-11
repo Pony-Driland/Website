@@ -12600,6 +12600,57 @@
     {
         "value": "When Rayane finished helping everyone, she curiously listened to the conversation and approached.",
         "type": "action"
+    },
+    
+    {
+        "value": "Wait... What are you talking about?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So at that very moment Hiroshi would stop whatever he was doing when he heard the subject of the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey! Maybe I know what you're talking about.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A..Ah! Hiroshi? Are you sure you're okay? I am noticing that you are very different.",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi then looked at the armor's mechanisms very curiously and was a little surprised, but soon after he took a serious look at the situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "I...I'm fine. It's very interesting that Vinny have armor like this.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey hey! Calm down! What's so special here? Rayane is the owner of the armor!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then got a little embarrassed and surprised, not knowing much what to say, so she tried to respond nervously.",
+        "type": "action"
+    },
+
+    {
+        "value": "I... I don't know. I just got this armor as a gift. A gift from an very old friend.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
