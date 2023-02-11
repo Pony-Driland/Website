@@ -12631,7 +12631,7 @@
     },
 
     {
-        "value": "I...I'm fine. Don't worry about me. It's very interesting that Vinny have armor like this.",
+        "value": "I...I'm fine. Don't worry about me. It's very interesting that Vinny have armor like this one.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -12682,7 +12682,7 @@
     },
 
     {
-        "value": "Rayane will be able to answer you about this later.",
+        "value": "Don't worry... Rayane will be able to answer you about this later. I just want to help you now.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
