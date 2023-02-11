@@ -12549,6 +12549,57 @@
         "value": "Huh? Y..Yes. But why?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "This is very important. Okay okay... You need to be quiet now. Let's look at this armor.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ooooookay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai analyzed the body part of the armor, looking delicately at every detail, looking for something very specific.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh yes. I should have suspected from the start. This armor is special.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai looked surprised when he had discovered something very interesting, making Vinny feel even more confused by the situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "S...Special? How?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. This is one special mechanism. This mechanism can only be activated by a unicorn. This is very weird because I can't make the mechanism open.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? You're just making me confused. You knew?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "When Rayane finished helping everyone, she curiously listened to the conversation and approached.",
+        "type": "action"
     }
 
 ]
