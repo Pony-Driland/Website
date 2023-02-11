@@ -12601,7 +12601,7 @@
         "value": "When Rayane finished helping everyone, she curiously listened to the conversation and approached.",
         "type": "action"
     },
-    
+
     {
         "value": "Wait... What are you talking about?",
         "character": "Rayane",
@@ -12651,6 +12651,56 @@
         "value": "I... I don't know. I just got this armor as a gift. A gift from an very old friend.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmmm... Okay Rayane. You don't need to talk about it. I'm already understanding what's really going on here. Thank you.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi took a deep breath, giving the armor a small look of nostalgia. But then he'd go back to focusing on what needed to be done.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny? Can you take off the armor please? If you have this armor, you would have to know how to manipulate your magic in order to activate the mechanism.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...what?? Who did you get it from?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny take off the armor very curiously during the progress while Rayane was a little uncomfortable trying to know what to say.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane will be able to answer you about this later.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Hiroshi levitated the armor and looked at it closely and used his magic to activate the secret mechanism slowly. Hiroshi then made a small hidden smile as he realized what was happening was really what he wanted to happen. Vinny would hear the sound of gears turning and soon Vinny would see that two wing outputs were released in the armor.",
+        "type": "action"
+    },
+
+    {
+        "value": "W... what?! What the fuck is this?! That's an alicorn armor! OH MY RAINBOW!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "While Rowan was extremely scared, Kai was surprised, trying to find the right words to describe the situation. Rayane tried to hide her nervous expression during the process.",
+        "type": "action"
     }
 
 ]
