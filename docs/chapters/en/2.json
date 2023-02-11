@@ -12490,30 +12490,30 @@
     },
 
     {
-        "value": "T...Take a deep breath Hiroshi. Now is the time for you to honor your family. You need to honor Royal Color. This is your ultimate goal. You have only one task left to do before time runs out. I know I can do it! I can!",
+        "value": "T...Take a deep breath Hiroshi. Now is the time for you to honor your family. You need to honor the Royal Color. This is your ultimate goal. You have only one task left to do before time runs out. I know I can do it! I can!",
         "character": "Hiroshi",
         "type": "think"
     },
 
     {
-        "value": "Kai just kept helping himself to resist the pain while waiting for Rayane to finish the job. Rowan was listening to the conversation. Then Rowan looked at Hiroshi, noticing the Hiroshi's determination, making Rowan feel a little worried as he tried to understand what was going on.",
+        "value": "Kai just kept helping himself to resist the pain while waiting for Rayane to finish the heal. Rowan was listening to the conversation. Then Rowan looked at Hiroshi, noticing the Hiroshi's determination, making Rowan feel a little worried as he tried to understand what was going on.",
         "type": "action"
     },
 
     {
-        "value": "H..huh?",
+        "value": "H..huh? Hiroshi?",
         "character": "Rowan",
         "type": "dialogue"
     },
     
     {
-        "value": "W..wait! Since when is Vinny a pegasus?!",
+        "value": "W..wait! Vinny! Since when is Vinny a pegasus?!",
         "character": "Kai",
         "type": "dialogue"
     },
 
     {
-        "value": "Kai was surprised to have realized all this just now.",
+        "value": "Kai was surprised to have realized all this just now, causing Rowan to be accidentally interrupted.",
         "type": "action"
     },
 
