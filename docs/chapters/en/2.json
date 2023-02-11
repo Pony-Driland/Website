@@ -12771,6 +12771,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Okay! I still don't understand what it does. But let's go!",
         "character": "Vinny",
         "type": "think"
