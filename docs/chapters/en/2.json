@@ -12569,7 +12569,7 @@
     },
 
     {
-        "value": "Oh yes. I should have suspected from the start. This armor is special.",
+        "value": "W...what? Whatś this? Oh yes! I should have suspected from the start. This armor is special.",
         "character": "Kai",
         "type": "dialogue"
     },
@@ -12580,13 +12580,13 @@
     },
 
     {
-        "value": "S...Special? How?",
+        "value": "S...Special? How? Are you sure?",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Yes. This is one special mechanism. This mechanism can only be activated by a unicorn. This is very weird because I can't make the mechanism open.",
+        "value": "Yes. This is one special mechanism. This mechanism can only be activated by a unicorn. This is very weird because I can't make the mechanism open. Does it need a specific spell?",
         "character": "Kai",
         "type": "dialogue"
     },
@@ -12609,7 +12609,7 @@
     },
 
     {
-        "value": "So at that very moment Hiroshi would stop whatever he was doing when he heard the subject of the conversation.",
+        "value": "So Hiroshi would stop whatever he was doing when he heard the subject of the conversation, doing everyone surprised by his reaction.",
         "type": "action"
     },
 
@@ -12620,7 +12620,7 @@
     },
 
     {
-        "value": "A..Ah! Hiroshi? Are you sure you're okay? I am noticing that you are very different.",
+        "value": "A..Ah! H...Hiroshi? Wait! Are you sure you're okay? I am noticing that you are very different.",
         "character": "Rowan",
         "type": "dialogue"
     },
@@ -12631,7 +12631,7 @@
     },
 
     {
-        "value": "I...I'm fine. It's very interesting that Vinny have armor like this.",
+        "value": "I...I'm fine. Don't worry about me. It's very interesting that Vinny have armor like this.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
