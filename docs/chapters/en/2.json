@@ -12370,7 +12370,7 @@
 
     {
         "set": {
-            "playlistPlay": "tense-mystery"
+            "playlistPlay": "bad-mystery"
         },
         "value": "Rayane breathed deeply in relief as she lay down on the floor realizing that everything was finally calm again. The room then returned to normal, with only the smoke remaining from all the damage the room suffered from the lasers' shots.",
         "type": "action"
@@ -12462,7 +12462,7 @@
 
 
     {
-        "value": "So... can Rayane borrow the armor back please? Heh. This armor must still smell like you.",
+        "value": "R..Rayane? Can you borrow the armor back please? Heh. This armor must still smell like you.",
         "character": "Vinny",
         "type": "dialogue"
     },
