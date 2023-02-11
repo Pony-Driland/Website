@@ -12757,6 +12757,23 @@
     {
         "value": "Rowan makes a smile of nervousness and fear of the unknown as everyone prepares to head towards the door.",
         "type": "action"
+    },
+
+    {
+        "value": "Hmmmmmm...",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny moves the wings slowly to see the difference, he felt more freedom to move the wings along with the armor. Vinny also felt a mysterious mysterious energy in his wings, but the energy was so weak that he just ignored it.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay! I still don't understand what it does. But let's go!",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
