@@ -12701,6 +12701,62 @@
     {
         "value": "While Rowan was extremely scared, Kai was surprised, trying to find the right words to describe the situation. Rayane tried to hide her nervous expression during the process.",
         "type": "action"
+    },
+
+    {
+        "value": "N...No.. no no no no. This is impossible. Rayane has to have met someone from Royal Color to have received this armor. There's no other explanation. Ponies with artificial wings also never would wear armor like that.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I said Rayane will explain about it later. Now we have more important things to finish.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai, Rowan and Vinny looked curiously at Rayane during the talk.",
+        "type": "action"
+    },
+
+    {
+        "value": "M..Me? A...Ah? I... I can do my explanations after the mission. I promise this okay? We need to hurry now.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Rayane just used her magic to help Vinny put the armor back on, this time Vinny can finally use his wings along with the armor. Then Kai and Rowan looked at Vinny curiously. Vinny just giggles and answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane has entrusted her to me for now. Okay guys? We can continue?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles nervously in response, trying to calm down from the uncomfortable situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. Hiroshi is right. We don't have time to talk about it. Let's go.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y...Yeah! These Hiroshi stories get weirder as it becomes true.",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rowan makes a smile of nervousness and fear of the unknown as everyone prepares to head towards the door.",
+        "type": "action"
     }
 
 ]
