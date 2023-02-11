@@ -12453,6 +12453,102 @@
         "value": "I really can't believe we actually got here. Will we finally find this mysterious Marlon? This motherfucker must be laughing at us. I want to find that idiot soon!",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "After a few seconds of reflection, Vinny looked at Rayane curiously when noticing her worried look.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "So... can Rayane borrow the armor back please? Heh. This armor must still smell like you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "But Vinny. What do you mean by feeling worried?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane spawned the armor back to Vinny slowly before going back to helping others ponies.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...well... If the same thing can happen to us that happened to the other ponies ahead.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile, Hiroshi just got a little thoughtful and serious while looking at the door.",
+        "type": "action"
+    },
+
+    {
+        "value": "T...Take a deep breath Hiroshi. Now is the time for you to honor your family. You need to honor Royal Color. This is your ultimate goal. You have only one task left to do before time runs out. I know I can do it! I can!",
+        "character": "Hiroshi",
+        "type": "think"
+    },
+
+    {
+        "value": "Kai just kept helping himself to resist the pain while waiting for Rayane to finish the job. Rowan was listening to the conversation. Then Rowan looked at Hiroshi, noticing the Hiroshi's determination, making Rowan feel a little worried as he tried to understand what was going on.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..huh?",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+    
+    {
+        "value": "W..wait! Since when is Vinny a pegasus?!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai was surprised to have realized all this just now.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Wew! Since I know myself. Rayane was helping me to protect myself through this unicorn armor.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah...",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai slowly calmed down of the feeling of surprise as he realized that Rayane had finally finished healing him.",
+        "type": "action"
+    },
+
+    {
+        "value": "This is a improvised armor? Can I analyze this armor? I promise to be quick. We can't waste too much time here.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then was very curious and surprised, trying to understand Kai's eager look at analyzing the armor.",
+        "type": "action"
+    },
+
+    {
+        "value": "Huh? Y..Yes. But why?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
