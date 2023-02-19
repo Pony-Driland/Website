@@ -12864,6 +12864,23 @@
         "value": "O...oh my Rainbow... S...s..she won't survive if something terrible happens here! What do I do?! She has no psychological preparation for this!",
         "character": "Random Female Pony",
         "type": "think"
+    },
+
+    {
+        "value": "S...sorry sir... Too late for you to say that. It seems that the last powerful energy that we detected here underground had the capacity to reach the surface. Everyone should now know where we are.",
+        "character": "Guard 951",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon was surprised and very suspicious to hear this.",
+        "type": "action"
+    },
+
+    {
+        "value": "T...the same powerful energy? How is this possible? Is this energy as powerful as our relic?",
+        "character": "Marlon",
+        "type": "dialogue"
     }
 
 ]
