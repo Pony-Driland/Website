@@ -172,6 +172,10 @@ storyCfg.playlist = {
         { id: 'fv_7EurNAss', type: 'youtube' },
     ],
 
+    'Ambush! | D&D/TTRPG Battle/Combat/Fight Music | 1 Hour': [
+        { id: '8Q7cioftmKs', type: 'youtube' },
+    ],
+
     'spooky-mysterious': [
         { id: 'm6e_Uz6vlJw', type: 'youtube' },
         { id: 'XUUM0cKcRW0', type: 'youtube' },
