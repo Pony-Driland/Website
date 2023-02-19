@@ -176,6 +176,10 @@ storyCfg.playlist = {
         { id: '8Q7cioftmKs', type: 'youtube' },
     ],
 
+    'INFINITY - Epic Futuristic Music Mix | Atmospheric Sci-Fi Music': [
+        { id: '4F7sdy2rZws', type: 'youtube' },
+    ],
+
     'spooky-mysterious': [
         { id: 'm6e_Uz6vlJw', type: 'youtube' },
         { id: 'XUUM0cKcRW0', type: 'youtube' },
