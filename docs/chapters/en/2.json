@@ -12830,6 +12830,23 @@
         "value": "Hiroshi got his strength back! Hiroshi is coming with Rayane! You have to prepare quickly! We won't be able to hold two such powerful ponies at the same time! Kai, Rowan, and another mysterious pony named Vinny are also almost here!",
         "character": "Guard 951",
         "type": "dialogue"
+    },
+
+    {
+        "value": "At the same moment Marlon was surprised, not understanding very well what was happening.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What? What the fuck is this?! Do something stupid creature! We are almost done with our work! I can't freak out right now because of this!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "But the security systems are down! We don't know the password to turn everything back on!",
+        "character": "Guard 951",
+        "type": "dialogue"
     }
 
 ]
