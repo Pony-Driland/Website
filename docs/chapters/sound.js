@@ -164,6 +164,14 @@ storyCfg.playlist = {
         { id: 'yEYxnJB4jZs', type: 'youtube' },
     ],
 
+    'Heist | D&D/TTRPG Music | 1 Hour': [
+        { id: 'WW4bdFhcZgw', type: 'youtube' },
+    ],
+
+    'Tense Path | D&D/TTRPG Music | 1 Hour': [
+        { id: 'fv_7EurNAss', type: 'youtube' },
+    ],
+
     'spooky-mysterious': [
         { id: 'm6e_Uz6vlJw', type: 'youtube' },
         { id: 'XUUM0cKcRW0', type: 'youtube' },
