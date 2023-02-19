@@ -12782,6 +12782,26 @@
     {
         "value": "Then in a place not far from there, was Marlon. It was a very large room with a huge device on the ceiling. The giant device was connected to the bottom part of Pony Driland, this machine was delivering all the energy the ground needed to the surface. In this same place there were many ponies working on the machine. Looks like these ponies were trying to break some encryption to safely disarm the device.",
         "type": "action"
+    },
+
+    {
+        "value": "Why is this encryption so annoying?! Why is everything in this world encrypted?!",
+        "character": "Marlon",
+        "type": "think"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "null"
+        },
+        "value": "One of the ponies responsible for the defense system suddenly appears very worried in front of Marlon.",
+        "type": "action"
+    },
+
+    {
+        "value": "HEY SIR! SIIIIIR! HEEEEY!",
+        "character": "Guard",
+        "type": "think"
     }
 
 ]
