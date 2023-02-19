@@ -12787,7 +12787,7 @@
     {
         "value": "Why is this encryption so annoying?! Why is everything in this world encrypted?!",
         "character": "Marlon",
-        "type": "think"
+        "type": "dialogue"
     },
 
     {
@@ -12801,7 +12801,35 @@
     {
         "value": "HEY SIR! SIIIIIR! HEEEEY!",
         "character": "Guard",
-        "type": "think"
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon then looked very suspiciously at the guard, suspicious of any possibility of risk.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Guard 951? What problem is happening now?",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "H...Hiroshi! Hiroshi is almost here! The Hiroshi's group managed to disable the entire security system in the last corridor!",
+        "character": "Guard 951",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The Guard took several breaths to try to calm down.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hiroshi got his strength back! Hiroshi is coming with Rayane! You have to prepare quickly! We won't be able to hold two such powerful ponies at the same time! Kai, Rowan, and another mysterious pony named Vinny are also almost here!",
+        "character": "Guard 951",
+        "type": "dialogue"
     }
 
 ]
