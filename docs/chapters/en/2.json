@@ -12847,6 +12847,23 @@
         "value": "But the security systems are down! We don't know the password to turn everything back on!",
         "character": "Guard 951",
         "type": "dialogue"
+    },
+
+    {
+        "value": "NO NO NO! Many lives have already been killed because of Hiroshi's selfishness! I can't let Elite Color discover this place or we are all lost! The Elite Color is also looking to steal our fucking relic too! I don't know what's going on here anymore!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "At the same time, the Guard 951 made a nervous smile, and the same mysterious female pony was scared to hear Marlon's anger. The mysterious female pony would then start spy on the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "O...oh my Rainbow... S...s..she won't survive if something terrible happens here! What do I do?!",
+        "character": "Random Female Pony",
+        "type": "think"
     }
 
 ]
