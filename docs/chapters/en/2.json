@@ -12904,6 +12904,28 @@
         "value": "O..Okay sir!",
         "character": "Guard 951",
         "type": "dialogue"
+    },
+
+    {
+        "value": "The mysterious pony then got even more scared and ran towards the pony she was really wanting to help.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..Oh! Oh no! IVY! I need to warn her NOW!",
+        "character": "Random Female Pony",
+        "type": "think"
+    },
+
+    {
+        "value": "Marlon then looked towards the voice of the mysterious pony when he heard her scream.",
+        "type": "action"
+    },
+
+    {
+        "value": "AH?! YOU! NO! CAME BACK HERE NOW!",
+        "character": "Marlon",
+        "type": "dialogue"
     }
 
 ]
