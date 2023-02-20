@@ -12972,6 +12972,25 @@
         "value": "Vinny! It's your turn now!",
         "character": "Rayane",
         "type": "dialogue"
+    }, 
+    
+    {
+        "value": "FINE!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny flapped his wings with the intention of spreading the fire even more. The flames started to spread faster, making several researchers get desperate and start running. The mysterious pony was very scared, but seeing that everything was out of control around her, she took advantage of this moment to go towards Ivy. Ivy was lying on a improvised bed behind the computer desk the mysterious pony was using a moment ago.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..Oh my Rainbow! Ivy! Wake up! WAKE UP! We have to get out of here now! Don't listen to Marlon! You need to quit that job NOW! I HELP YOU FIND A NEW JOB ANOTHER DAY!",
+        "character": "Random Female Pony",
+        "type": "dialogue"
     }
+
+
 
 ]
