@@ -12901,6 +12901,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "O..Okay sir!",
         "character": "Guard 951",
         "type": "dialogue"
@@ -12914,7 +12917,7 @@
     {
         "value": "O..Oh! Oh no! IVY! I need to warn her NOW!",
         "character": "Random Female Pony",
-        "type": "think"
+        "type": "dialogue"
     },
 
     {
@@ -12925,6 +12928,12 @@
     {
         "value": "AH?! YOU! NO! CAME BACK HERE NOW!",
         "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "AH?! NO! LEAVE ME ALONE! YOUR MONSTER!",
+        "character": "Random Female Pony",
         "type": "dialogue"
     }
 
