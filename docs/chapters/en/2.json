@@ -12989,8 +12989,41 @@
         "value": "O..Oh my Rainbow! Ivy! Wake up! WAKE UP! We have to get out of here now! Don't listen to Marlon! You need to quit that job NOW! I HELP YOU FIND A NEW JOB ANOTHER DAY!",
         "character": "Random Female Pony",
         "type": "dialogue"
-    }
+    },
 
+    {
+        "value": "Ivy then started to wake up, extremely scared of the situation. Ivy would then start to cry.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...Ah? W....Whatś happening here?!",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Follow me! NOW!",
+        "character": "Random Female Pony",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "At the same moment, one of the weapons exploded and blocked the path of the mysterious pony.",
+        "type": "action"
+    },
+
+    {
+        "value": "OH NOOOO! HELP! HELP ME!",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "AAAHH IVY!!!!",
+        "character": "Random Female Pony",
+        "type": "dialogue"
+    }
 
 
 ]
