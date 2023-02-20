@@ -12878,8 +12878,31 @@
     },
 
     {
-        "value": "T...the same powerful energy? How is this possible? Is this energy as powerful as our relic?",
+        "value": "T...the same powerful energy? How is this possible? Is this energy as powerful as our relic? Hmmmm...",
         "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What are you trying to say? Are here two relics?",
+        "character": "Guard 951",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "No. I know Hiroshi very well, if we had two relics, our war would already be over. I... I have a bad feeling that we're going to discover something new in the worst way. Evacuate all soldiers! Only me and my research team will be staying here.",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Guard 951 finds Marlon's words strange, making the guard feel a little scared.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..Okay sir!",
+        "character": "Guard 951",
         "type": "dialogue"
     }
 
