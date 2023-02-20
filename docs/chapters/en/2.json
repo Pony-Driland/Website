@@ -12935,6 +12935,40 @@
         "value": "AH?! NO! LEAVE ME ALONE! YOUR MONSTER!",
         "character": "Random Female Pony",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Then suddenly Hiroshi cut the entrance door to Marlon's room in two. After that Marlon used his own paws to punch the doors and throw them against the ground to scare everyone who was there.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...AH?! HIROSHI?!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "YES! ME!",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then the research ponies activated the counterattack weapons, but at the same time Rayane appeared and penetrated the burning sword against the ground, making the flames spread quickly towards the emergency weapons to damage the equipment.",
+        "type": "action"
+    },
+
+    {
+        "value": "OH FUCK! RAYANE!",
+        "character": "Marlon",
+        "type": "dialogue"
+    }, 
+    
+    {
+        "value": "Vinny! It's you now!",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
