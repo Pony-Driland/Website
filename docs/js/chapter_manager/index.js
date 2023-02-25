@@ -624,8 +624,9 @@ var openChapterMenu = function (params = {}) {
     }
 
     /* 
-    
+
         Se o nome do personagem bater com algum personagem com página, ele vai ser um link para acessar a página.
+        If the character's name matches a character with a page, it will be a link to access the page.
 
     */
 
