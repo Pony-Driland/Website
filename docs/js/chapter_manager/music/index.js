@@ -379,7 +379,6 @@ var musicManager = {
 
     // Start Base
     startBase: function () {
-
         // Add Youtube Playing Detector
         if (appData.youtube && !appData.youtube.onPlaying) {
             appData.youtube.onPlaying = function () {
@@ -809,3 +808,4 @@ musicManager.startPlaylist = function () {
 
     }
 };
+

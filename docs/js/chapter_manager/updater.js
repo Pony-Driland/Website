@@ -1,17 +1,58 @@
 // Prepare Cache
 var cacheChapterUpdater = { iconSize: '12pt', soundCache: {} };
 
+cacheChapterUpdater.setActiveItem = function(item, scrollIntoView = false) {
+    if (cacheChapterUpdater.locked) {
+        return;
+    }
+
+    // Validator
+    if (storyData.chapter.selected > 0) {
+        let selectedItem = Number(item);
+
+        if (storyData.chapter.line == selectedItem) {
+            return;
+        }
+
+        let element = document.querySelector(`tr[line="${selectedItem}"]`);
+        if (element == null) {
+            // Todo: handle correctly
+            document.querySelector('a[title="Go to next page"]').click();
+            return;
+        }
+
+        if (scrollIntoView) {
+            cacheChapterUpdater.locked = true;
+            tinyLib.doAfterScroll(function() {
+                cacheChapterUpdater.locked = false;
+            });    
+
+            // todo: fix header scrolling with scroll-margin-top or something
+            let scrollTarget = document.querySelector(`tr[line="${selectedItem - 1}"]`);
+            if (scrollTarget == null) {
+                scrollTarget = document.getElementById("markdown-read");
+            }
+            scrollTarget.scrollIntoView();
+        }
+        
+        // Complete
+        cacheChapterUpdater.data(selectedItem);
+    }
+}
+
 // Read Data on Scroll
 $(window).on('resize scroll', function () {
-
+    if (cacheChapterUpdater.locked) {
+        return;
+    }
     // Validator
     if (storyData.chapter.selected > 0) {
 
         // Selected Item
         let selectedItem = 0;
 
-        // Normal Mode
-        if (!tinyLib.isPageBottom()) {
+        // // Normal Mode
+        // if (!tinyLib.isPageBottom()) {
 
             // Detect Selected Item
             for (const item in storyData.chapter.html) {
@@ -23,18 +64,16 @@ $(window).on('resize scroll', function () {
 
             }
 
-        }
+        // }
 
-        // Bottom Page
-        else {
-            for (const item in storyData.chapter.html) {
-                selectedItem = Number(item);
-            }
-        }
+        // // Bottom Page
+        // else {
+        //     for (const item in storyData.chapter.html) {
+        //         selectedItem = Number(item);
+        //     }
+        // }
 
-        // Complete
-        cacheChapterUpdater.data(selectedItem);
-
+        cacheChapterUpdater.setActiveItem(selectedItem);
     }
 
 });
@@ -138,6 +177,7 @@ cacheChapterUpdater.scrollData = function () {
 // Update Cache
 cacheChapterUpdater.data = function (lastPage) {
     if (storyData.chapter.selected > 0) {
+        ttsManager.readLine(lastPage);
 
         // Update Data Cache
         musicManager.startBase();

@@ -446,3 +446,8 @@ body.thunder-effect #bg-sky .flash {
     left: 0;
     right: 0;
 }
+
+/* Table row scrolling */
+td {
+    scroll-margin-top: 105px;
+}

@@ -403,3 +403,21 @@ $.fn.visibleOnWindow = function() {
     }
 
 };
+
+tinyLib.lastScrollTime = 0;
+window.addEventListener("scroll", function() {
+    tinyLib.lastScrollTime = new Date().getTime();
+});
+tinyLib.afterScrollQueue = [];
+(tinyLib.afterScrollCheck = function() {
+    requestAnimationFrame(tinyLib.afterScrollCheck);
+    if (new Date().getTime() - tinyLib.lastScrollTime > 100) {
+        while (tinyLib.afterScrollQueue.length) {
+            tinyLib.afterScrollQueue.pop()();
+        }
+    }
+})();
+tinyLib.doAfterScroll = function(f) {
+    tinyLib.lastScrollTime = new Date().getTime();
+    tinyLib.afterScrollQueue.push(f);
+}
