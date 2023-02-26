@@ -72,10 +72,6 @@ var ttsManager = {
             ttsManager.readLineInternal(line);
         }, 500);
     },
-
-    cumulativeData: {
-        info: {},
-    },
     queue: [],
     nextUtterance() {
         if (ttsManager.queue.length == 0) {
@@ -91,20 +87,17 @@ var ttsManager = {
     },
     readLineInternal(line) {
         let data = storyData.data[storyData.chapter.selected][line - 1];
-        let cumulativeData = ttsManager.cumulativeData;
         ttsManager.queue = [];
         if (data.info) {
             for (let key of Object.keys(data.info)) {
                 if (typeof cumulativeData.info[key] === 'undefined') {
                     ttsManager.queue.push("Info " + key + ": " + data.info[key]);
                 }
-                cumulativeData.info[key] = data.info[key];
             }
         }
-        // Todo: set information
 
         let actionString = data.type;
-        if (data.type == "dialogue") {
+        if (data.character) {
             actionString += ": " + data.character;
         }
         ttsManager.queue.push(actionString);

@@ -9,15 +9,20 @@ cacheChapterUpdater.setActiveItem = function(item, scrollIntoView = false) {
     // Validator
     if (storyData.chapter.selected > 0) {
         let selectedItem = Number(item);
+        let currentLine = storyData.chapter.line;
 
-        if (storyData.chapter.line == selectedItem) {
+        if (currentLine == selectedItem) {
             return;
         }
 
         let element = document.querySelector(`tr[line="${selectedItem}"]`);
         if (element == null) {
             // Todo: handle correctly
-            document.querySelector('a[title="Go to next page"]').click();
+            if (selectedItem > currentLine) {
+                document.querySelector('a[title="Go to next page"]').click();
+            } else if (selectedItem < currentLine) {
+                document.querySelector('a[title="Go to previous page"]').click();
+            }
             return;
         }
 
@@ -27,7 +32,6 @@ cacheChapterUpdater.setActiveItem = function(item, scrollIntoView = false) {
                 cacheChapterUpdater.locked = false;
             });    
 
-            // todo: fix header scrolling with scroll-margin-top or something
             let scrollTarget = document.querySelector(`tr[line="${selectedItem - 1}"]`);
             if (scrollTarget == null) {
                 scrollTarget = document.getElementById("markdown-read");
