@@ -574,6 +574,19 @@ musicManager.updatePlayer = function () {
 
 };
 
+// TTS Updater
+ttsManager.updatePlayer = function() {
+    if (storyData.tts.nav) {
+        // View
+        $('#tts-player').addClass('border').removeClass('d-none').addClass('me-3');
+
+        // Tooltip
+        $('#tts-player > a[title]').each(function () {
+            $(this).tooltip();
+        });
+    }
+}
+
 // Insert SFX
 musicManager.start = {};
 musicManager.insertSFX = function (item, loop = true, type = 'all') {
@@ -809,3 +822,4 @@ musicManager.startPlaylist = function () {
 
     }
 };
+

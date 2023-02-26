@@ -378,6 +378,12 @@ $.fn.isScrolledIntoView = function() {
 };
 
 $.fn.visibleOnWindow = function() {
+    // Don't include behind the header
+    const header = $("#md-navbar");
+    let headerOffset = 0;
+    if (header) {
+        headerOffset = header.outerHeight();
+    }
 
     let element = $(this);
     if (element) {
@@ -387,12 +393,12 @@ $.fn.visibleOnWindow = function() {
             if (position && typeof position.top === 'number' && typeof position.bottom === 'number' && typeof window.innerHeight === 'number') {
 
                 // checking whether fully visible
-                if (position.top >= 0 && position.bottom <= window.innerHeight) {
+                if (position.top >= headerOffset && position.bottom <= window.innerHeight) {
                     return 'full';
                 }
 
                 // checking for partial visibility
-                else if (position.top < window.innerHeight && position.bottom >= 0) {
+                else if (position.top < window.innerHeight && position.bottom >= headerOffset) {
                     return 'partial';
                 }
 
@@ -403,3 +409,21 @@ $.fn.visibleOnWindow = function() {
     }
 
 };
+
+tinyLib.lastScrollTime = 0;
+window.addEventListener("scroll", function() {
+    tinyLib.lastScrollTime = new Date().getTime();
+});
+tinyLib.afterScrollQueue = [];
+(tinyLib.afterScrollCheck = function() {
+    requestAnimationFrame(tinyLib.afterScrollCheck);
+    if (new Date().getTime() - tinyLib.lastScrollTime > 100) {
+        while (tinyLib.afterScrollQueue.length) {
+            tinyLib.afterScrollQueue.pop()();
+        }
+    }
+})();
+tinyLib.doAfterScroll = function(f) {
+    tinyLib.lastScrollTime = new Date().getTime();
+    tinyLib.afterScrollQueue.push(f);
+}

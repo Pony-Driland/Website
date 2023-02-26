@@ -1,9 +1,54 @@
 // Prepare Cache
 var cacheChapterUpdater = { iconSize: '12pt', soundCache: {} };
 
+cacheChapterUpdater.setActiveItem = function(item, scrollIntoView = false) {
+    if (cacheChapterUpdater.locked) {
+        return;
+    }
+
+    // Validator
+    if (storyData.chapter.selected > 0) {
+        let selectedItem = Number(item);
+        let currentLine = storyData.chapter.line;
+
+        if (currentLine == selectedItem) {
+            return;
+        }
+
+        let element = document.querySelector(`tr[line="${selectedItem}"]`);
+        if (element == null) {
+            // Todo: handle correctly
+            if (selectedItem > currentLine) {
+                document.querySelector('a[title="Go to next page"]').click();
+            } else if (selectedItem < currentLine) {
+                document.querySelector('a[title="Go to previous page"]').click();
+            }
+            return;
+        }
+
+        if (scrollIntoView) {
+            cacheChapterUpdater.locked = true;
+            tinyLib.doAfterScroll(function() {
+                cacheChapterUpdater.locked = false;
+            });    
+
+            let scrollTarget = document.querySelector(`tr[line="${selectedItem - 1}"]`);
+            if (scrollTarget == null) {
+                scrollTarget = document.getElementById("markdown-read");
+            }
+            scrollTarget.scrollIntoView();
+        }
+        
+        // Complete
+        cacheChapterUpdater.data(selectedItem);
+    }
+}
+
 // Read Data on Scroll
 $(window).on('resize scroll', function () {
-
+    if (ttsManager.enabled) {
+        return;
+    }
     // Validator
     if (storyData.chapter.selected > 0) {
 
@@ -33,8 +78,7 @@ $(window).on('resize scroll', function () {
         }
 
         // Complete
-        cacheChapterUpdater.data(selectedItem);
-
+        cacheChapterUpdater.setActiveItem(selectedItem);
     }
 
 });
@@ -138,6 +182,16 @@ cacheChapterUpdater.scrollData = function () {
 // Update Cache
 cacheChapterUpdater.data = function (lastPage) {
     if (storyData.chapter.selected > 0) {
+        $(".selected-tr").removeClass("selected-tr");
+
+        let element = document.querySelector(`tr[line="${lastPage}"]`);
+        if (element) {
+            element.classList.add("selected-tr");
+        }
+
+        // Call text to speech manager - only reads if it's been enabled
+        ttsManager.startBase();
+        ttsManager.readLine(lastPage);
 
         // Update Data Cache
         musicManager.startBase();

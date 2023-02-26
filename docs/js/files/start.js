@@ -643,7 +643,7 @@ $(function () {
 
                     // Nav 2
                     $('<ul>', { class: 'nav navbar-nav ms-auto mb-2 mb-lg-0 small', id: 'fic-nav' }).append(
-
+                        
                         // Status Place
                         $('<li>', { id: 'status' }).css('display', 'contents'),
 
