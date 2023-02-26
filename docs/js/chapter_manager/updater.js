@@ -77,6 +77,7 @@ $(window).on('resize scroll', function () {
             }
         }
 
+        // Complete
         cacheChapterUpdater.setActiveItem(selectedItem);
     }
 
