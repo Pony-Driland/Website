@@ -107,6 +107,22 @@
     display: none !important;
 }
 
+/* TTS Player */
+
+#tts-player>a {
+    margin: 0px 3px;
+    padding: 8px;
+    display: inline-block;
+}
+
+#tts-player>a.disabled {
+    opacity: 0.7 !important;
+    pointer-events: none !important;
+}
+
+.tts-player {
+    display: none !important;
+}
 
 /* ============================================================================================== 
 SED Innovations
@@ -445,4 +461,9 @@ body.thunder-effect #bg-sky .flash {
     bottom: 0;
     left: 0;
     right: 0;
+}
+
+/* Selected table row */
+.selected-tr {
+    outline: 1px solid red;
 }

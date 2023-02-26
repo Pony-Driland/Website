@@ -643,14 +643,7 @@ $(function () {
 
                     // Nav 2
                     $('<ul>', { class: 'nav navbar-nav ms-auto mb-2 mb-lg-0 small', id: 'fic-nav' }).append(
-
-                        // Jimm test
-                        $('<li>', { id: 'jimm-test' }).css('display', 'contents')
-                            .prepend(`<button onclick='ttsManager.enable();'>Start TTS</button>`),
-
-                        $('<li>', { id: 'jimm-test2' }).css('display', 'contents')
-                            .prepend(`<button onclick='ttsManager.disable();'>Stop TTS</button>`),
-
+                        
                         // Status Place
                         $('<li>', { id: 'status' }).css('display', 'contents'),
 

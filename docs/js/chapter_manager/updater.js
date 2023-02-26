@@ -182,6 +182,15 @@ cacheChapterUpdater.scrollData = function () {
 // Update Cache
 cacheChapterUpdater.data = function (lastPage) {
     if (storyData.chapter.selected > 0) {
+        $(".selected-tr").removeClass("selected-tr");
+
+        let element = document.querySelector(`tr[line="${lastPage}"]`);
+        if (element) {
+            element.classList.add("selected-tr");
+        }
+
+        // Call text to speech manager - only reads if it's been enabled
+        ttsManager.startBase();
         ttsManager.readLine(lastPage);
 
         // Update Data Cache

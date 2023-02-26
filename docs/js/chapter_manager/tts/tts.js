@@ -1,4 +1,41 @@
+// Base
+storyData.tts = {};
+
 var ttsManager = {
+    startBase: function() {
+        if ($('#fic-nav > #status #tts').length < 1) {
+            // Buttons
+            if (!storyData.tts.nav) { storyData.tts.nav = {}; }
+            storyData.tts.nav.play = $('<i>', { class: 'fas fa-play' });
+            storyData.tts.nav.stop = $('<i>', { class: 'fas fa-stop' });
+
+            // Prepare
+            if (!storyData.chapter.nav) { storyData.chapter.nav = {}; }
+            storyData.chapter.nav.tts = $('<div>', { indexItem: 1, class: 'nav-item', id: 'tts' }).append(
+                $('<div>', { id: 'tts-player' }).append(
+                    // Play
+                    $('<a>', { href: 'javascript:void(0)', class: 'text-white', title: 'Start TTS' }).click(function () {
+                        ttsManager.enable();
+                    }).append(storyData.tts.nav.play),
+                    // Stop
+                    $('<a>', { href: 'javascript:void(0)', class: 'text-white', title: 'Stop TTS' }).click(function () {
+                        ttsManager.disable();
+                    }).append(storyData.tts.nav.stop)
+                )
+            );
+            
+            // Insert
+            $('#fic-nav > #status').prepend([
+                // TTS
+                storyData.chapter.nav.tts,
+            ]);
+        }
+        if (ttsManager.updatePlayer) {
+            ttsManager.updatePlayer();            
+        }
+        setInterval(ttsManager.updatePlayer, 100);
+    },
+
     enabled: false,
     voicePreferenceList: [
         "Zira - English",
