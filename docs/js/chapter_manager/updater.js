@@ -42,7 +42,7 @@ cacheChapterUpdater.setActiveItem = function(item, scrollIntoView = false) {
 
 // Read Data on Scroll
 $(window).on('resize scroll', function () {
-    if (cacheChapterUpdater.locked) {
+    if (ttsManager.enabled) {
         return;
     }
     // Validator
@@ -51,8 +51,8 @@ $(window).on('resize scroll', function () {
         // Selected Item
         let selectedItem = 0;
 
-        // // Normal Mode
-        // if (!tinyLib.isPageBottom()) {
+        // Normal Mode
+        if (!tinyLib.isPageBottom()) {
 
             // Detect Selected Item
             for (const item in storyData.chapter.html) {
@@ -64,14 +64,14 @@ $(window).on('resize scroll', function () {
 
             }
 
-        // }
+        }
 
-        // // Bottom Page
-        // else {
-        //     for (const item in storyData.chapter.html) {
-        //         selectedItem = Number(item);
-        //     }
-        // }
+        // Bottom Page
+        else {
+            for (const item in storyData.chapter.html) {
+                selectedItem = Number(item);
+            }
+        }
 
         cacheChapterUpdater.setActiveItem(selectedItem);
     }
