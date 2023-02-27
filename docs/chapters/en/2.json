@@ -13192,6 +13192,17 @@
         "value": "Marlon! Give up! Don't just stand there! This place is doomed to destruction! I just came to take what belongs to me!",
         "character": "Hiroshi",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon would then start to chuckle randomly at Hiroshi's words.",
+        "type": "action"
+    },
+
+    {
+        "value": "So come. I will make a point of taking you to your death with me.",
+        "character": "Marlon",
+        "type": "dialogue"
     }
 
 ]
