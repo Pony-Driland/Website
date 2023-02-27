@@ -13141,6 +13141,34 @@
         "value": "Really? Wasn't this place supposed to have more guards or soldiers?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then took his Sniper as he and tried to fly towards the top of the mysterious machine. But Vinny was interrupted by Marlon's Katana. The Katana appeared and cut Vinny's sniper in two, Vinny just saw the sniper barrel flying to the other side of the room. Marlon's Katana accidentally damaged the glass that was protecting the mysterious relic a little more during the progress.",
+        "type": "action"
+    },
+
+    {
+        "value": "AH! COME ON! MY SNIPER! MARLON!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Shut fuck up! DON'T TRY TO FINISH MY PLAN BEFORE ME!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "VINNY!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane used her sword fire and threw more fire around, to block the way of the other ponies that were trying to attack.",
+        "type": "action"
     }
 
 ]
