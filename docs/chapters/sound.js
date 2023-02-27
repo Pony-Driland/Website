@@ -186,6 +186,12 @@ storyCfg.playlist = {
         { id: 'eaEbST63kk0', type: 'youtube' },
     ],
 
+    'marlon-battle-1': [
+        { id: '4BV4oWmhAyI', type: 'youtube' },
+        { id: 'QwPiELmMFXs', type: 'youtube' },
+        { id: 'qlamVb0VMmU', type: 'youtube' },
+    ],
+
     'tense-mystery': [
         { id: 'YLrJPBbAQoY', type: 'youtube' },
         { id: 'gzQzViNj5go', type: 'youtube' },
