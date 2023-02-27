@@ -13169,6 +13169,23 @@
     {
         "value": "Rayane used her sword fire and threw more fire around, to block the way of the other ponies that were trying to attack. So during the process Marlon levitated the sword back to protect himself from Rayane's fire.",
         "type": "action"
+    },
+
+    {
+        "value": "GRRR! But what an unexpected situation. Did I have to make a change of plans just now?",
+        "character": "Marlon",
+        "type": "think"
+    },
+
+    {
+        "value": "Marlon breathed deeply when he realized he was surrounded by Rayane and Hiroshi.",
+        "type": "action"
+    },
+
+    {
+        "value": "I think I have no other choice. I can't let these idiots unite this relic with this other mysterious object. I'll need to follow my plan B which might end up being a little suicidal.",
+        "character": "Marlon",
+        "type": "think"
     }
 
 ]
