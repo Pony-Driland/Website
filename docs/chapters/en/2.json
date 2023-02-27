@@ -13186,6 +13186,12 @@
         "value": "I think I have no other choice. I can't let these idiots unite this relic with this other mysterious object. I'll need to follow my plan B which might end up being a little suicidal.",
         "character": "Marlon",
         "type": "think"
+    },
+
+    {
+        "value": "Marlon! Give up! Don't just stand there! This place is doomed to destruction! I just came to take what belongs to me!",
+        "character": "Hiroshi",
+        "type": "dialogue"
     }
 
 ]
