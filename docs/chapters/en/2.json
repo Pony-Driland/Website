@@ -12939,7 +12939,7 @@
 
     {
         "set": {
-            "playlistPlay": "Ambush! | D&D/TTRPG Battle/Combat/Fight Music | 1 Hour"
+            "playlistPlay": "marlon-battle-1"
         },
         "value": "Then suddenly Hiroshi uses him katana to cut the entrance door in two. After Hiroshi used his own paws to punch the doors and throw them against the ground to scare everyone who was there.",
         "type": "action"
@@ -13032,7 +13032,7 @@
     },
 
     {
-        "value": "You IDIOT! YOU DAMN!",
+        "value": "You IDIOT! YOU DAMN! Why just now?!",
         "character": "Marlon",
         "type": "dialogue"
     },
@@ -13040,7 +13040,107 @@
     {
         "value": "Marlon was trying to get up in the middle of the confusion, but at the same time Rayane focused energy on the horn and shot a psychic laser to open the path. But at the same time Marlon used his katana to reflect Rayane's giant laser against the wall.",
         "type": "action"
-    }
+    },
 
+    {
+        "value": "W...What? Is Rayane attacking me? WHY?!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "But at the same time Marlon used his katana to reflect Rayane's giant laser against the wall.",
+        "type": "action"
+    },
+
+    {
+        "value": "OH FUCK! Now everyone learned how to be a badass?!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny! Get behind me. Remember that Kai and Rowan will take care of the monitoring room.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y...yeah.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny saw the giant machine on the ceiling. Vinny did a better analysis, and then realized that the machine was a little damaged.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...What's this?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Hiroshi then became worried when looking at the damaged place where the relic was. Hiroshi then tried to advance towards Marlon, but two unicorns appeared in front of him trying to stop him. The two ponies were using spears to threaten Hiroshi to stop running.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmm...",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi avoided speaking words and just used the Katana between the two spears to make the two spears be forced to hit the ground.",
+        "type": "action"
+    },
+
+    {
+        "value": "OH NO!",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "He's a crazy old man!",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "At the same time, Rayane looked at the situation and joined the fire sword with Hiroshi's katana. Rayane then used the sword's fire to scare the two unicorns, making them stop using the spear. When Hiroshi saw the two ponies off guard, Hiroshi used the Katana to damage the horn of one of the unicorns.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAAH!",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The unicorn screamed in pain and this scared the second unicorn, making him stop fighting to go help the first unicorn.",
+        "type": "action"
+    },
+
+    {
+        "value": "C...Calm down! I...I will help you!",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Hiroshi and Rayane looked at each other to confirm that it was time to continue chasing Marlon, so the two continued to go forward. When VInny realized that the place was seriously lacking in soldiers, he began to find it all extremely strange.",
+        "type": "action"
+    },
+
+    {
+        "value": "Really? Wasn't this place supposed to have more guards or soldiers?",
+        "character": "Vinny",
+        "type": "dialogue"
+    }
 
 ]
