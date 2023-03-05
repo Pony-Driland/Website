@@ -13203,6 +13203,28 @@
         "value": "So come. I will make a point of taking you to your death with me.",
         "character": "Marlon",
         "type": "dialogue"
+    },
+
+    {
+        "value": "When Vinny heard this, he was a little scared remembering Hiroshi's words from the last private conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..oh no. I... I need to be faster.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny tried to look again at the location of the magical object. Vinny could see that the magic item was inside some very cracked glass, but the glass is looking much stronger than usual.",
+        "type": "action"
+    },
+
+    {
+        "value": "Very good! I'm going to need that crazy unicorn's help again!",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
