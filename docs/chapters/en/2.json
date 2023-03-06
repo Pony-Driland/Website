@@ -13318,6 +13318,46 @@
     {
         "value": "Hiroshi would then suddenly appear with his Katana to try and attack Marlon directly at the first opportunity. But then Marlon made a quick energy with the horn to throw a new force field against the two, making Marlon a little tired due to the speed of using the magic.",
         "type": "action"
+    },
+
+    {
+        "value": "ARGH! At least I have more energy usage now that Rayane destroyed my helmet.",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon was surprised to hear Hiroshi approaching, as he remembers that only Rayane was knocked down.",
+        "type": "action"
+    },
+
+    {
+        "value": "SHIT!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "MARLOOOON!!",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon quickly levitated the Katana back and the two katanas began to compete forces, releasing a lot of spark, while Hiroshi's katana concentrated a kind of strong energy of wind force, making Marlon find it difficult to look at Hiroshi.",
+        "type": "action"
+    },
+
+    {
+        "value": "YOU! AND YOUR STUPID WIND SKILL!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "MARLOOOON!! Marlon! Stop this! Or we'll end up killing each other! STOP NOW!",
+        "character": "Hiroshi",
+        "type": "dialogue"
     }
 
 ]
