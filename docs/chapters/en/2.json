@@ -13206,12 +13206,12 @@
     },
 
     {
-        "value": "When Vinny heard this, he was a little scared remembering Hiroshi's words from the last private conversation.",
+        "value": "Meanwhile, Vinny heard the Marlon words,, making Vinny feel was a little scared remembering Hiroshi's words from the last private conversation.",
         "type": "action"
     },
 
     {
-        "value": "O..oh no. I... I need to be faster.",
+        "value": "O..okay! Okay! I think I figured out who's going to kill Hiroshi. I need to be faster! ",
         "character": "Vinny",
         "type": "think"
     },
@@ -13225,6 +13225,99 @@
         "value": "Very good! I'm going to need that crazy unicorn's help again!",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "Vinny took a little space and flew hard to head against the glass, but before Vinny finished the task, Marlon started to levitate Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "GO AWAY NOW!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Fuck! Not now!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "At the same time, Rayane's sword hit Marlon's helmet, making it split in two. Marlon then conducted quickly the Katana against the Rayane's sword.",
+        "type": "action"
+    },
+
+    {
+        "value": "You traitorous bitch!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "SHUT UP! Don't touch VINNY!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi tries to hit the his katana on the Marlon chest, but at the same time Marlon pushed Rayane's sword against Hiroshi's Katana to knock both of them down at the same time. But Rayane didn't miss the opportunity and threw another psychic laser in Marlon's direction.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmm...",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon tried to go towards Hiroshi, but he made an angry look when he saw Rayane's laser coming towards him. So Marlon purposely used the Katana to reflect the laser against the broken glass of the machine.",
+        "type": "action"
+    },
+
+    {
+        "value": "VINNY! THE MACHINE!",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A..Ah? F..Fine! Fine!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon threatened to go towards Hiroshi again, but Rayane again got up and used her sword against Hiroshi's katana. ",
+        "type": "action"
+    },
+
+    {
+        "value": "The two were silent without opening a conversation, then Rayane lowered the resistance magic on the sword to focus on the horn, making Marlon able to continue the attack. Everything was going well until Marlon realized that Rayane was going to counter attack using the horn as a sword.",
+        "type": "action"
+    },
+
+    {
+        "value": "What?",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon then put the helmet on the front, causing Rayane to destroy the rest of the Marlon's helmet as the two started a clash of horns.",
+        "type": "action"
+    },
+
+    {
+        "value": "Marlon then put the helmet on the front, causing Rayane to destroy the rest of the Marlon's helmet as the two started a clash of horns. Marlon sweated a little while trying to use magic to levitate the Katana again, but Rayane threatened to use the psychic laser when she felt Marlon's horn activating the magic.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hiroshi would then suddenly appear with his Katana to try and attack Marlon directly at the first opportunity. But then Marlon made a quick energy with the horn to throw a new force field against the two, making Marlon a little tired due to the speed of using the magic.",
+        "type": "action"
     }
 
 ]
