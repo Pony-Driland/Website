@@ -13358,6 +13358,40 @@
         "value": "MARLOOOON!! Marlon! Stop this! Or we'll end up killing each other! STOP NOW!",
         "character": "Hiroshi",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Psychological tricks in a moment of panic not now! FINE?!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon then listened around, and heard the sound of the ponies in panic giving up on continuing to help him.",
+        "type": "action"
+    },
+
+    {
+        "value": "NO NO!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon would then bend down during the gust of wind to be pushed easier, then Marlon use one of his paws to control the direction of the gust push. Hiroshi realized Marlon's trick, making Hiroshi stop the gust. Marlon threatened to counterattack, making Hiroshi put the katana back on his front. When Marlon saw Hiroshi's defensive pose, Marlon then prepared a dark energy to make a surprise attack on Hiroshi.",
+        "type": "action"
+    },
+
+    {
+        "value": "M...Marlon? This... this is a suicide attack!",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah... And it will be fun.",
+        "character": "Marlon",
+        "type": "dialogue"
     }
 
 ]
