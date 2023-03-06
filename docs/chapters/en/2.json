@@ -13317,13 +13317,31 @@
     },
 
     {
-        "value": "Marlon then put the helmet on the front, causing Rayane to destroy the rest of the Marlon's helmet as the two started a clash of horns.",
+        "value": "Marlon then put the helmet on the front, causing Rayane to destroy the rest of the Marlon's helmet.",
         "type": "action"
     },
 
     {
-        "value": "Marlon then put the helmet on the front, causing Rayane to destroy the rest of the Marlon's helmet as the two started a clash of horns. Marlon sweated a little while trying to use magic to levitate the Katana again, but Rayane threatened to use the psychic laser when she felt Marlon's horn activating the magic.",
+        "value": "M..MY HELMET!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon is surprised and angry, without thinking twice the two pnoies started a clash of horns. Marlon sweated a little while trying to use magic to levitate the Katana again, but Rayane threatened to use the psychic laser when she felt Marlon's horn activating the magic.",
         "type": "action"
+    },
+
+    {
+        "value": "ARGH!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "AAAAHHH!!",
+        "character": "Rayane",
+        "type": "dialogue"
     },
 
     {
