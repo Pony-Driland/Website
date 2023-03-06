@@ -13278,6 +13278,17 @@
     },
 
     {
+        "value": "OH GOOOD! YOU DESTROYERS!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was scared to see the explosion, and at the same time grateful for Rayane's help. But then Hiroshi would interrupt him.",
+        "type": "action"
+    },
+
+    {
         "value": "VINNY! THE MACHINE!",
         "character": "Hiroshi",
         "type": "dialogue"
