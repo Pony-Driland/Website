@@ -13633,6 +13633,29 @@
         "value": "O..oh no. I am not liking this.",
         "character": "Hiroshi",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Wh...WHAT'S GOING ON?! WHAT FUCK IS THIS?!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "SHUT UP MARLON! Look here!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "N..No! VINNY! YOU IDIOT! The radar is doing something with the magic relic! I can't allow this!!! STOP!! STOP NOW YOUR IDIOTS!!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon started to cough due to all the dust and smoke, definitively stopping using the attack. It also made Rayane temporarily stop attacking the walls to come up with a quick plan.",
+        "type": "action"
     }
 
 ]
