@@ -13596,13 +13596,19 @@
     },
 
     {
+        "value": "I...I don't know!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
         "value": "W..What?! What stupidity is that again?! This energy is extremely familiar!",
         "character": "Marlon",
         "type": "dialogue"
     },
 
     {
-        "value": "Ah? Maybe this works.",
+        "value": "Hmmm... Maybe this works.",
         "character": "Rayane",
         "type": "think"
     },
