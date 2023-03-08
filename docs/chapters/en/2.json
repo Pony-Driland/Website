@@ -13515,6 +13515,39 @@
         "value": "Y..yeah...yeah. Okay. I...I will try. I can't let myself be that useless.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then turn on the radar, and have the radar prepare to emit a new signal while Vinny crawled on the floor towards Rayane slowly.",
+        "type": "action"
+    },
+
+    {
+        "value": "You guys are so rude!! They could have at least introduced themselves!!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi was trying not to cry during the process as he saw all the chaos going on around him.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane is not using her full power. Marlon is getting weak too. Rayane knows this room will collapse if she destroys Marlon. M...Maybe I can help everyone for the last time.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hirsohi slowly started to get up and walked a little faster towards Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "V...Vinny...P..Please...came back here.",
+        "character": "Hiroshi",
+        "type": "dialogue"
     }
 
 ]
