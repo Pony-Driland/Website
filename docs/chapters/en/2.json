@@ -13421,6 +13421,66 @@
         "value": "Heh heh. Yeah... And it will be fun.",
         "character": "Marlon",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon greatly increased the intensity of his magic to try to survive the explosion. Hiroshi made a look of mercy asking him to stop what he was doing.",
+        "type": "action"
+    },
+
+    {
+        "value": "...AAAAAHHH!!!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Marlon performed his dark energy skill. Energy exploded in Hiroshi and Marlon. Marlon was beginning to tire much faster than usual. Hiroshi's Katana was falling apart due to the build up of energy. Hiroshi lost consciousness as his body was moved toward the machine due to the dark energy pushing him towards it.",
+        "type": "action"
+    },
+
+    {
+        "value": "N..No! Hiroshi!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was scared of the possible death of Hiroshi. So Rayane would get up and use her psychic ray to try to disrupt Marlon's energy path.",
+        "type": "action"
+    },
+
+    {
+        "value": "NO WAY!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon was a little surprised and Hiroshi's body started to slip out of Marlon's dark energy.",
+        "type": "action"
+    },
+
+    {
+        "value": "N...NO NO!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then get very scared to see the energy approaching him.",
+        "type": "action"
+    },
+
+    {
+        "value": "N..no no no no...WHY ME?!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was trying to hold Hiroshi to lessen the impact of his body, but during the process the dark energy also hit very close to him, causing the two to be thrown towards the ground. Parts of the machine began to come apart, releasing many violent sparks of energy all around. Parts of the ceiling were beginning to collapse, and the wall was beginning to have difficulty maintaining itself.",
+        "type": "action"
     }
 
 ]
