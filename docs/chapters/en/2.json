@@ -13481,6 +13481,40 @@
     {
         "value": "Vinny was trying to hold Hiroshi to lessen the impact of his body, but during the process the dark energy also hit very close to him, causing the two to be thrown towards the ground. Parts of the machine began to come apart, releasing many violent sparks of energy all around. Parts of the ceiling were beginning to collapse, and the wall was beginning to have difficulty maintaining itself.",
         "type": "action"
+    },
+
+    {
+        "value": "F...fuck... I am alive? Am I really alive?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny started to come back to consciousness and saw that Hiroshi was looking at him. During this time many ponies were already abandoning the place. A red alert started to beep extremely loudly throughout the room.",
+        "type": "action"
+    },
+
+    {
+        "value": "V...Vinny...P..Please. Use your radar. do something with this radar to protect us. This radar has the power of Master Smart Moby. Please do something.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "R..Radar?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "As Vinny looked around, he saw the radar lying beside him. So Vinny was hugging the radar, thinking about what to do. Then Vinny looked around and realized that Rayane and Marlon were rivaling the energy rays against each other. This violent process was causing parts of this energy to be accidentally flung sideways against the walls and the machine.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..yeah...yeah. Okay. I...I will try. I can't let myself be that useless.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
