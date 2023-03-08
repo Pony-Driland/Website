@@ -13582,6 +13582,23 @@
         "value": "W...What's your plan?",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. Can this radar interact with the supposed magic item?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon was surprised to begin to feel radar energy. Marlon would start to feel scared and slowly start to deplete the energy of the attack.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What?! What stupidity is that again?! This energy is extremely familiar!",
+        "character": "Marlon",
+        "type": "dialogue"
     }
 
 ]
