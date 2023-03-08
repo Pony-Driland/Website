@@ -13545,8 +13545,42 @@
     },
 
     {
-        "value": "V...Vinny...P..Please...came back here.",
+        "value": "V...Vinny...P..Please...came back here. W..wait. Ah?",
         "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi was surprised to see the radar on. The radar had been set to full power, making the radar beep more and more.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..yes! The radar! I need the radar energy!",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny? I am busy! We can't let Hiroshi die here! You should be running away from this place!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "No! I'm not going to let the charming Rayane die without kissing me for the first time.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane blushed a little not knowing what to say to Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...What's your plan?",
+        "character": "Rayane",
         "type": "dialogue"
     }
 
