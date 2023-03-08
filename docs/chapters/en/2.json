@@ -13616,6 +13616,23 @@
     {
         "value": "When Rayane started to feel Marlon's energy weakening, she started to change the direction of her attack delicately, making more things explode around to try to disturb Marlon's vision.",
         "type": "action"
+    },
+
+    {
+        "value": "V...Vinny! Rayane! Look at me please!",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Hiroshi was surprised and scared to see the magic item was starting to shine a lot too, making the machine get even more damaged during the process more and more.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..oh no. I am not liking this.",
+        "character": "Hiroshi",
+        "type": "dialogue"
     }
 
 ]
