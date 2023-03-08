@@ -13656,6 +13656,35 @@
     {
         "value": "Marlon started to cough due to all the dust and smoke, definitively stopping using the attack. It also made Rayane temporarily stop attacking the walls to come up with a quick plan.",
         "type": "action"
+    },
+
+    {
+        "value": "Vinny! It worked! You helped make the machine destroy itself faster! I think we can all get out of here alive! Is Hiroshi here?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane without thinking twice started to concentrate the teleportation magic. Vinny then felt a little regretful about leaving Hiroshi alone.",
+        "type": "action"
+    },
+
+    {
+        "value": "He was passed out on the floor. I'll try to bring him here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "VINNY!! TURN OFF THE RADAR! PLEASE!",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? HEY HIROSHI! Huh? Why is he also asking to turn off the radar.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
