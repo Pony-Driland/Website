@@ -13545,13 +13545,13 @@
     },
 
     {
-        "value": "V...Vinny...P..Please...came back here. W..wait. Ah?",
+        "value": "V...Vinny? What's this beeps again? P..Please...came back here. Ah?",
         "character": "Hiroshi",
         "type": "dialogue"
     },
 
     {
-        "value": "Hiroshi was surprised to see the radar on. Then the radar started getting ready to emit the signal and at the same moment it slowly started to beep a lot.",
+        "value": "Hiroshi was surprised to see the radar on. Then the radar started getting ready to emit the signal and at the same moment it slowly started to beep extremely hard.",
         "type": "action"
     },
 
