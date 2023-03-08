@@ -13599,6 +13599,17 @@
         "value": "W..What?! What stupidity is that again?! This energy is extremely familiar!",
         "character": "Marlon",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Maybe this works.",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "When Rayane started to feel Marlon's energy weakening, she started to change the direction of her attack delicately, making more things explode around to try to disturb Marlon's vision.",
+        "type": "action"
     }
 
 ]
