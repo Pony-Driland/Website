@@ -13648,6 +13648,12 @@
     },
 
     {
+        "value": "A..ah? T..this is a radar?",
+        "character": "Marlon",
+        "type": "think"
+    },
+
+    {
         "value": "N..No! VINNY! YOU IDIOT! The radar is doing something with the magic relic! I can't allow this!!! STOP!! STOP NOW YOUR IDIOTS!!",
         "character": "Marlon",
         "type": "dialogue"
