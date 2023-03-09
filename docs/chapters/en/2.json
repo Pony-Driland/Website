@@ -13720,6 +13720,28 @@
         "value": "Vinny! Calm down! The teleport is almost ready!",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Then the radar emits an immense flash and at the same time the magic item that was stored began to collapse the machine due to the extreme force that was being emitted because of the radar. Then the machine definitely blew the ceiling, and began to collapse.",
+        "type": "action"
+    },
+
+    {
+        "value": "NOOOOO! NO! WE WILL DIE!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon crawled on the floor, desperately trying to reach Vinny, Rayane, and Hiroshi while trying to prepare an emergency force field spell.",
+        "type": "action"
+    },
+
+    {
+        "value": "EVERYONE! PLEASE! Just trust me!!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
