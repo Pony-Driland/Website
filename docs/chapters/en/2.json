@@ -13479,6 +13479,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Vinny was trying to hold Hiroshi to lessen the impact of his body, but during the process the dark energy also hit very close to him, causing the two to be thrown towards the ground. Parts of the machine began to come apart, releasing many violent sparks of energy all around. Parts of the ceiling were beginning to collapse, and the wall was beginning to have difficulty maintaining itself.",
         "type": "action"
     },
@@ -13490,12 +13493,15 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "INFINITY - Epic Futuristic Music Mix | Atmospheric Sci-Fi Music"
+        },
         "value": "Vinny started to come back to consciousness and saw that Hiroshi was looking at him. During this time many ponies were already abandoning the place. A red alert started to beep extremely loudly throughout the room.",
         "type": "action"
     },
 
     {
-        "value": "V...Vinny...P..Please. Use your radar. Do something with this radar to protect us. This radar has the power of Master Smart Moby. Please do something.",
+        "value": "V...Vinny...P..Please. Use your radar. Do something with this radar to protect us. This radar has the power of the Master Smart Moby. Please do something...",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -13690,6 +13696,29 @@
     {
         "value": "What? HEY HIROSHI! Huh? Why is he also asking to turn off the radar?",
         "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "THE RADAR!",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "STOP THIS STUPID RADAR NOW!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very nervous looking at the two ponies at the same time asking to turn off the radar.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny! Calm down! The teleport is almost ready!",
+        "character": "Rayane",
         "type": "dialogue"
     }
 
