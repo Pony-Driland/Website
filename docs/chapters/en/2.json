@@ -13843,6 +13843,20 @@
         "value": "SORRY RAYANE!!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "H..ham?! what's happening?!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "Then suddenly Rayane's eyes glowed in an extremely colorful way until they were completely white, making everyone feel that the teleportation was much more different than normal. Then suddenly Rayane's eyes glowed in an extremely colorful way until the Rayane's eyes were completely white. Everything ended in a huge flash for a huge silence that made all the sounds of explosions and destruction around disappear during the process.",
+        "type": "action"
     }
 
 
