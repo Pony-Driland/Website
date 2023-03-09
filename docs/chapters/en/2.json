@@ -13823,8 +13823,26 @@
     },
 
     {
-        "value": "and the flash and the huge sound of energy that was coming from the ceiling, and just trying to keep preparing the teleportation, she was trying much more energy than usual to be able to recharge it ASAP. When the radar touched Rayane, something strange would start to happen and it looked like something was conflicting with Rayane's teleportation magic",
+        "value": "W...why is the relic interacting with me too?",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then the flash and the huge sound of energy that was coming from the ceiling. Vinny thought it strange that the radar was being pulled towards Rayane for no reason, so Vinny just hugged Rayane's legs. During this process the sparks of energy from the radar began to enter Rayane's horn much stronger than normal, something strange would start to happen and it looked like something was conflicting with Rayane's teleportation magic.",
         "type": "action"
+    },
+
+    {
+        "value": "O..Oh no! M..My magic! N..NOO!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "SORRY RAYANE!!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 
