@@ -13494,7 +13494,7 @@
 
     {
         "set": {
-            "playlistPlay": "INFINITY - Epic Futuristic Music Mix | Atmospheric Sci-Fi Music"
+            "playlistPlay": "drama-battle"
         },
         "value": "Vinny started to come back to consciousness and saw that Hiroshi was looking at him. During this time many ponies were already abandoning the place. A red alert started to beep extremely loudly throughout the room.",
         "type": "action"
@@ -13602,19 +13602,19 @@
     },
 
     {
-        "value": "I...I don't know!",
+        "value": "I...I don't know. S..Sorry!",
         "character": "Rayane",
         "type": "dialogue"
     },
 
     {
-        "value": "W..What?! What stupidity is that again?!",
+        "value": "W..wait. ah? W..What?! What stupidity is that again?!",
         "character": "Marlon",
         "type": "dialogue"
     },
 
     {
-        "value": "Hmmm... Maybe this works.",
+        "value": "Hmmm... Marlon seems to be behaving a little strangely. Maybe this plan will work.",
         "character": "Rayane",
         "type": "think"
     },
