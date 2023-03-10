@@ -13857,7 +13857,98 @@
         },
         "value": "Then suddenly Rayane's eyes glowed in an extremely colorful way until they were completely white, making everyone feel that the teleportation was much more different than normal. Then suddenly Rayane's eyes glowed in an extremely colorful way until the Rayane's eyes were completely white. Everything ended in a huge flash for a huge silence that made all the sounds of explosions and destruction around disappear during the process.",
         "type": "action"
-    }
+    },
 
+    {
+        "value": "Everything was in complete silence. It seems like a long period of time has passed, but no one knows how much time has actually passed. Vinny would then slowly begin to open his eyes.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "nuclear-winter"
+        },
+        "value": "A...ah.. Rayane? Where am I? Rayane? Rayane! RAAAAYNE! How are you?!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny only heard the sound of some rocks falling to the ground. Vinny was desperately looking for any sign of life, until finally Vinny found Hiroshi and Rayane passed out under some rocks, everyone was hurt, and Hiroshi's magic horn was failing to work. When Vinny's vision was clearing more and more, Vinny soon saw that there were many more teleported rocks around.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane! Hiroshi! No!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then run over to Rayane and Hiroshi and try to wake them both up.",
+        "type": "action"
+    },
+
+    {
+        "value": "Please! Wake up! Wake uuuuup!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Rayane would start coughing as she woke up slowly during the progress. But Hiroshi unfortunately didn't react.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hiroshi? Rayane? Ah? RAYANE!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny hugged Rayane tightly when he saw that she was alive, helping to get the rocks off of her and off of Hiroshi. Vinny was very emotional and started talking to Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Calm down, I'm here, everything went well, we made it. Okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane coughed a little more before opening her eye slightly and looking at Vinny before smiling a little in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "V...Vinny... Y..yes. I'm fine...and...I'm just...so tired. I don't know what happened. I completely lost control of my teleportation. I don't know how many ponies I teleported.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Calm down, everything will be fine, it seems that your teleport range was very strong.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "S...strong? T...this is impossible... So where are we?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Calm down... Let me turn on the hat flashlight.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then takes the flashlight helmet and turns on slowly during the talk while lightly hugging the radar to keep it safe.",
+        "type": "action"
+    }
 
 ]
