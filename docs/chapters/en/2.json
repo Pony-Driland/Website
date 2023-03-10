@@ -13985,8 +13985,31 @@
     },
 
     {
-        "value": "Rayane! I did! The magic relic is here!",
+        "value": "Heh! Rayane, we are at a train station.",
         "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The...the same station? So... can we leave this terrible place?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. it's all right. I found what we came for... come on, I'll help you up.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny continued to help Rayane during the conversation. Rayane tried to keep breathing calmly until Rayane got scared when she saw Hiroshi's body on the floor.",
+        "type": "action"
+    },
+
+    {
+        "value": "H...Hiroshi!",
+        "character": "Rayane",
         "type": "dialogue"
     }
 
