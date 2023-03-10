@@ -13949,6 +13949,45 @@
     {
         "value": "Vinny then takes the flashlight helmet and turns on slowly during the talk while lightly hugging the radar to keep it safe.",
         "type": "action"
+    },
+
+    {
+        "value": "Hmmmm...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny could tell he was in an underground train station, but everything was completely destroyed and the railway was blocked by rocks. Vinny could also see bodies of ponies passed out, some looked like they were dead. But VInny could still see a small glow that was slowly fading from the rocks, this glow seemed to be from the magic item.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y...YES! I DID!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny was going to check the supposed shine, Vinny found the magic relic. The magic item was completely intact and just finishing giving off the glow.",
+        "type": "action"
+    },
+
+    {
+        "value": "YES!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny pick up and kept the magic relic and then went to help Rayane to get up happily.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane! I did! The magic relic is here!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
