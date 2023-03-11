@@ -14011,6 +14011,67 @@
         "value": "H...Hiroshi?",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny placed his paw on Rayane's shoulder gently.",
+        "type": "action"
+    },
+
+    {
+        "value": "You need try to relax a little, this season looks very different. Looks like we're going to have a long walk of conversations and silly jokes still ahead.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles nevously at Vinny words, while trying to keep calm about the situation. Vinny was looking around curiously for some. But Vinny didn't find any train. Vinny just found bodies and more bodies on the floor.  And in the middle of all the bodies Vinny saw something that looked like Marlon's paw.",
+        "type": "action"
+    },
+
+    {
+        "value": "And... and the others? Kai? Rowan?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was worried hearing this, and tried to remain calm during the dialogue.",
+        "type": "action"
+    },
+
+    {
+        "value": "N...no no no... I didn't see them, just from what looks like the paw of the Marlon buried there. let's ground him for now.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "M..Marlon? Are you sure? What if he causes trouble again?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What do you want to do? Cut his paw? He is already buried, if we get him out of there we will help him.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was confused about Vinny's actions, and just kept worrying if Hiroshi was alive or not. So Rayane just breathed deeply and tried not to cry as she answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "O...Okay. I...I... I will trust you.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was confused about Vinny's actions, and just kept worrying if Hiroshi was alive or not. So Rayane just breathed deeply and tried not to cry as she answered.",
+        "type": "action"
     }
 
 ]
