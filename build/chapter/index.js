@@ -56,14 +56,14 @@ fs.readdir(folderPath, (err, files) => {
         
         <!-- Title -->
         <title>Chapter ${data.count} - ${ficData.config.chapterName[data.count].title}</title>
-        <link href="/img/icon/icon.png" rel="icon" type="image/x-icon"/>
+        <link href="../img/icon/icon.png" rel="icon" type="image/x-icon"/>
         
         <!-- CSS -->
-        <link rel="preload" href="/css/bootstrap.min.css" as="style">
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/css/dark.css">
-        <link rel="stylesheet" href="/css/main.css">
-        <link rel="manifest" href="/manifest.json">
+        <link rel="preload" href="./css/bootstrap.min.css" as="style">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/dark.css">
+        <link rel="stylesheet" href="../css/main.css">
+        <link rel="manifest" href="../manifest.json">
 
         <!-- Page Info -->
         <meta content="Chapter ${data.count} - ${ficData.config.chapterName[data.count].title}" property="og:title">
@@ -78,7 +78,7 @@ fs.readdir(folderPath, (err, files) => {
         <meta name="twitter:creator" content="@${ficData.config.twitter.username}">
 
         <!-- Embed -->
-        <link href="/oEmbed/chapter/${data.count}.json" rel="alternate" title="oEmbed JSON Profile" type="application/json+oembed">
+        <link href="../oEmbed/chapter/${data.count}.json" rel="alternate" title="oEmbed JSON Profile" type="application/json+oembed">
         <link href="https://${ficData.config.domain}/chapter/${data.count}.html" rel="canonical">
         
         <!-- Theme -->
@@ -94,9 +94,9 @@ fs.readdir(folderPath, (err, files) => {
         <meta http-equiv="refresh" content="0; URL='https://${ficData.config.domain}/?path=read-fic&chapter=${data.count}'"/>
 
         <!-- Script -->
-        <script src="./js/jquery.min.js"></script>
-        <script src="./js/loadingoverlay.min.js"></script>
-        <script src="./js/files/redirect.js"></script>
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/loadingoverlay.min.js"></script>
+        <script src="../js/files/redirect.js"></script>
     
     </head>
     <body><div id="newURL" href="/?path=read-fic&chapter=${data.count}"></div></body>
