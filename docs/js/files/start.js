@@ -123,8 +123,8 @@ var insertMarkdownFile = function (text, isMainPage = false, isHTML = false) {
         data = text;
     }
 
-    data = data.replace(new RegExp(`href\=\"${convertBase}docs\\/`, 'g'), 'href="javascript:void(0)" file="/')
-        .replace(new RegExp(`src\=\"${convertBase}docs\\/`, 'g'), 'src="/');
+    data = data.replace(new RegExp(`href\=\"${convertBase}docs\\/`, 'g'), 'href="javascript:void(0)" file="../')
+        .replace(new RegExp(`src\=\"${convertBase}docs\\/`, 'g'), 'src="../');
 
     // Insert Data
     $('#markdown-read').empty().html(data);
