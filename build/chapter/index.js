@@ -94,9 +94,9 @@ fs.readdir(folderPath, (err, files) => {
         <meta http-equiv="refresh" content="0; URL='https://${ficData.config.domain}/?path=read-fic&chapter=${data.count}'"/>
 
         <!-- Script -->
-        <script src="/js/jquery.min.js"></script>
-        <script src="/js/loadingoverlay.min.js"></script>
-        <script src="/js/files/redirect.js"></script>
+        <script src="./js/jquery.min.js"></script>
+        <script src="./js/loadingoverlay.min.js"></script>
+        <script src="./js/files/redirect.js"></script>
     
     </head>
     <body><div id="newURL" href="/?path=read-fic&chapter=${data.count}"></div></body>
