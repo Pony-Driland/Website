@@ -14133,6 +14133,40 @@
     {
         "value": "Vinny and Rayane then were even more surprised not knowing what to say.",
         "type": "action"
+    },
+
+    {
+        "value": "H...Hiroshi. I still have so many questions to ask. I just need to get some rest. But I would really like to hear more about you.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then tidied up the destroyed place a little to make it more comfortable to lie down. Hiroshi laughed a little emotionally as he answered. Hiroshi then just put his paw on Rayane's head for her to close her eyes a little to rest.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. I understand. We can do that after you're feeling better. We all almost died. Let's calm down a bit.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi coughed a little more and kept opening his eyes a little more, but still having a little difficulty breathing. When Hiroshi looked at Vinny's face, Vinny looked worried about Hiroshi's health situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "V...Vinny. I just want to ask you a simple question. Did you get the...the...magic relic? A...and where is Marlon?",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well... We have a strange situation, we are in a totally different place, Marlon is buried with his paw out.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
