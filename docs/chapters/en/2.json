@@ -14067,6 +14067,72 @@
         "value": "O...Okay. I...I... I will trust you.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Suddenly Hiroshi coughed a little, he tried hard to keep breathing.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hiroshi!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane felt relieved and looked at Hiroshi while Vinny was surprised, making him look at Hiroshi too. Vinny then smiled too when he saw Hiroshi alive.",
+        "type": "action"
+    },
+
+    {
+        "value": "H...Hiroshi? Hey! Wake up Hiroshi, we're fine, we made it!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi made a small smile when he saw Rayane and Vinny alive.",
+        "type": "action"
+    },
+
+    {
+        "value": "H...Hello V..Vinny. H..hello Rayane.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi would then start coughing more during the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "This...this is all really weird. All this time this radar seemed to be showing the Master Smartmoby. I don't understand... Our magic relic is a part of the Master SmartMoby?",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Rayane was surprised to hear that. Rayane began to suspect when she heard Hiroshi's tone of voice.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait... so you also know the story of the Master Smartmoby?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes... the Master Smartmoby... it belonged to Princess Ariella. I can't hope that she is alive anymore if we found the Master SmartMoby destroyed. I thought she was immortal.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny and Rayane then were even more surprised not knowing what to say.",
+        "type": "action"
     }
 
 ]
