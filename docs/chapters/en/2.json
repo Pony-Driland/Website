@@ -14070,7 +14070,7 @@
     },
 
     {
-        "value": "Suddenly Hiroshi coughed a little, he tried hard to keep breathing.",
+        "value": "Suddenly Hiroshi coughed a little, he tried hard to keep breathing during the progress.",
         "type": "action"
     },
 
@@ -14081,7 +14081,7 @@
     },
 
     {
-        "value": "Rayane felt relieved and looked at Hiroshi while Vinny was surprised, making him look at Hiroshi too. Vinny then smiled too when he saw Hiroshi alive.",
+        "value": "Rayane felt relieved and tried to hug Hiroshi like a grandfather. Vinny was surprised, making Vinny look at Hiroshi too. Vinny then smiled too when he saw Hiroshi alive.",
         "type": "action"
     },
 
@@ -14158,9 +14158,14 @@
     },
 
     {
-        "value": "V...Vinny. I just want to ask you a simple question. Did you get the...the...magic relic? A...and where is Marlon?",
+        "value": "V...Vinny. I just want to ask you a simple question. Did you get the...magic relic? A...and where is Marlon?",
         "character": "Hiroshi",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was slowly getting more worried, thinking about trying to keep Hiroshi resting.",
+        "type": "action"
     },
 
     {
