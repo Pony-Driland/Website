@@ -14172,6 +14172,39 @@
         "value": "Well... We have a strange situation, we are in a totally different place, Marlon is buried with his paw out.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi would then be startled into a feeling of great urgency upon hearing this.",
+        "type": "action"
+    },
+
+    {
+        "value": "M..Marlon? is alive? I...I...I need to talk to him. I really need to talk to him. This is the best time for me to talk to him,",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi tries to make an effort to try to make some movement during the process. When Vinny realized this, Vinny tried to help Hiroshi to walk, but tried to make him not try too hard.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hiroshi, look... First you need to try to recover youself. You two tried to kill each other. I still need to look for Kai and Rowan.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "B...but...but...and..I need to...",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi started coughing again due to difficulty in breathing while lying on the floor again.",
+        "type": "action"
     }
 
 ]
