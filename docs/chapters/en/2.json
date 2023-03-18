@@ -14203,8 +14203,36 @@
     },
 
     {
-        "value": "Hiroshi started coughing again due to difficulty in breathing while lying on the floor again.",
+        "value": "Hiroshi started coughing again due to difficulty in breathing while lying on the floor again. Vinny took a deep breath, willing Hiroshi to stay where he was.",
         "type": "action"
+    },
+
+    {
+        "value": "Please Hiroshi, just rest. I will take care of everything for you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny started walking, trying to ignore Hiroshi so he wouldn't follow.",
+        "type": "action"
+    },
+
+    {
+        "value": "KAI! ROWAN! where are you?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny didn't hear anyone else's voice. everything was so still and silent for a few seconds until Vinny heard something mysterious. Vinny heard the sound of something moving between the rocks on the ground in the direction that Marlon was.",
+        "type": "action"
+    },
+
+    {
+        "value": "A..Ah? What's this now?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
