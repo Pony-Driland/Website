@@ -14225,13 +14225,57 @@
     },
 
     {
-        "value": "Vinny didn't hear anyone else's voice. everything was so still and silent for a few seconds until Vinny heard something mysterious. Vinny heard the sound of something moving between the rocks on the ground in the direction that Marlon was.",
+        "value": "Vinny didn't hear anyone else's voice. Everything was so still and silent for a few seconds until Vinny heard something mysterious. Vinny heard the sound of something moving between the rocks on the ground in the direction that Marlon was.",
         "type": "action"
     },
 
     {
         "value": "A..Ah? What's this now?",
         "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked towards where Marlon was. Trying to see if there was anything else around or some part of the sniper that was destroyed. Then Marlon's paw would start to move slowly and very weakly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh. He is alive.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny did a facehoof before going to where Marlon was.",
+        "type": "action"
+    },
+
+    {
+        "value": "Do you want help getting out? if yes move the paw 2 times.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon just showed a feeling of impatience, but that he wanted at least to be helped. Then he moved his paw twice.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh! Let's go buddy.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little and helped Marlon out from under the rocks. Marlon was very injured, but he still tried his best to keep moving and dragging himself on the ground, while he was very suspicious at Vinny face.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..you? What do you think...what are you going to do with me this time?",
+        "character": "Marlon",
         "type": "dialogue"
     }
 
