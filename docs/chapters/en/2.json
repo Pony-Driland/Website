@@ -14405,6 +14405,56 @@
         "value": "You wanted me to do what? Do you throw flowers? I asked my guards to try to evacuate his own population! But still everyone insisted on that!",
         "character": "Marlon",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile, Hiroshi was in his place, he was much more depressed than usual.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Is that old pony depressed now in a few seconds? What's his problem?",
+        "character": "Marlon",
+        "type": "think"
+    },
+
+    {
+        "value": "I know it's extremely difficult to see what your population are doing. But violence doesn't lead to anything, if you really wanted the relic because you didn't want to know the real reason he didn't give it to you? No one denies magic items out of nowhere while the neighbor is in need. you didn't do anything?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then suddenly Marlon and Vinny were startled by Hiroshi's voice coming suddenly.",
+        "type": "action"
+    },
+
+    {
+        "value": "ENOUGH! Please... That's enough. Please stop. I don't want to see everyone fighting anymore after everything that happened.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "When everyone looked at Hiroshi, they noticed that Hiroshi was very depressed.",
+        "type": "action"
+    },
+
+    {
+        "value": "HEY! Do not yell at me! I will still kill you for all this! Okay?",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "SHUT THE FUCK UP! You two look like 2 children. Hiroshi is true all this? You didn't want to buy the deal and took the relic just for you and left the Marlon region impoverished?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi just kept quiet and took a deep breath before starting to speak.",
+        "type": "action"
     }
     
 
