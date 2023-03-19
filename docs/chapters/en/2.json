@@ -14941,6 +14941,76 @@
         "value": "Wait... That's it! Vinny even has this mysterious radar!",
         "character": "Marlon",
         "type": "think"
+    },
+
+    {
+        "value": "I just know what I'm told, I don't know anything about it. If I can... can I ask you something?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen continued to suspect something and at the same time not liking having to accept doing this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Question? Please don't delay, I already need to leave this place.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay. In a specific place I saw a picture of you. a long time ago. Your appearance was clearer. what was there? I'm sorry if my question is out of formality.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "RRainbow Queen was a little surprised, but instantly became angrier.",
+        "type": "action"
+    },
+
+    {
+        "value": "I TOLD YOU DON'T STAND IN MY WAY!",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen body became more consumed by darkness, and her tattoos glowed intensely, making her scythe extremely bright. Marlon was extremely scared and dragged himself on the ground trying to get away as much as possible.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAAHH! STUPID VINNY! FUCK! CALM DOWN EVERYPONY!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny made a nervous smile and continued the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..wew. Sorry... I won't stand in your way anymore.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I have too many souls to take care of right now! You have your obligation to get both regions back in order! And I hope you don't forget... Soon I'll personally take back the last parts of the Master Smartmoby from you myself!",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "when Rainbow Queen finished answering, her body glowed again until she completely disappears from the place, making all the subway lighting stop being a place covered in darkness again.",
+        "type": "action"
     }
 
 ]
