@@ -14729,7 +14729,38 @@
         "value": "H..Hiroshi? N..no no! I accept your apologies! W...what is this? W...Who's here? I...I've never seen that kind of magic!",
         "character": "Marlon",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon started to cry a lot while trying to do something to see Hiroshi move again. Meanwhile, a very colorful lighting began to illuminate around the three ponies",
+        "type": "action"
+    },
+
+    {
+        "value": "Calm down, you managed to apologize to him in time. I just don't know if you'll be able to apologize to a pony.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "looked around",
+        "type": "action"
+    },
+
+    {
+        "value": "O..other pony? What are you talking about? Wait... What is it?",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon got scared when he noticed the mysterious strong lighting around him, so he immediately looked in the same direction as Vinny. ",
+        "type": "action"
+    },
+
+    {
+        "value": "So Marlon put his paw in front of his face, waiting for the light to get weaker, until the two realized that whoever was there is Rainbow Queen, and her scythe was shining the same color that was seen on Hiroshi's chest, she was looking very serious at Marlon and Vinny.",
+        "type": "action"
     }
-    
 
 ]
