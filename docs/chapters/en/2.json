@@ -14277,6 +14277,78 @@
         "value": "Y..you? What do you think...what are you going to do with me this time?",
         "character": "Marlon",
         "type": "dialogue"
+    },
+
+    {
+        "value": "I'm helping you. if you don't want my help I can put the stones back as they were at the beginning. Relax! We're not enemies, maybe it's Hiroshi and Rayane. I need to talk to you before anything else.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon was suspicious when he heard Vinny's words.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..you are very funny. Very funny you. You still play with me...even though I hate you so much. You are much stranger than I imagined.",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon coughed, trying to stand up during some seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..huh?",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Marlon was scared to see that Hiroshi was still alive.",
+        "type": "action"
+    },
+
+    {
+        "value": "N...no...NO NO! THIS IS IMPOSSIBLE! He's alive! N..No!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon would then start dragging himself on the floor.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey! Calm down man!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny took Marlon and put he back to the same place as before, but lying down.",
+        "type": "action"
+    },
+
+    {
+        "value": "Look at me. This is your chance to explain your side of the story. I'm helping him because he came first, I'm aware of how the situation is in your region. Let's talk, you don't have to hate me. I have nothing against you, as far as I know you're doing this for a noble cause. So come on, explain to me what Hiroshi didn't say about you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon was a little confused and surprised to hear that.",
+        "type": "action"
+    },
+
+    {
+        "value": "M...my side of the story?",
+        "character": "Marlon",
+        "type": "dialogue"
     }
 
 ]
