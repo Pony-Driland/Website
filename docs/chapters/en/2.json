@@ -14678,13 +14678,13 @@
         "set": {
             "playlistPlay": null
         },
-        "value": "Sorry. My time is up. She is here.. I won't even be able to say goodbye to everyone like I promised....V...You all are now in charge of sending my farewell....",
+        "value": "Sorry. My time is up. She is here.. I won't even be able to say goodbye to everyone like I promised....V...You all are now in charge of sending my farewell.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
 
     {
-        "value": "slowly placed the amulet on the floor",
+        "value": "Hiroshi slowly placed the amulet on the floor as Hiroshi's last tears dripped onto the floor.",
         "type": "action"
     }
     
