@@ -14709,8 +14709,14 @@
         "set": {
             "playlistPlay": "rainbow-queen-moment"
         },
-        "value": "A light that appeared in the center of Hiroshi mysteriously reacted, the light became even stronger, Vinny and Marlon could see that the light went through Hiroshi's chest and at the same time Hiroshi stopped responding and his gaze became paralyzed as he slowly fell into the floor.",
+        "value": "A light that appeared in the center of Hiroshi mysteriously reacted, the light became even stronger, Vinny and Marlon could see that the light went through Hiroshi's chest and at the same time Hiroshi stopped responding and his gaze became paralyzed as he slowly fell into the floor. Marlon was very scared to see the mysterious magic take Hiroshi's life.",
         "type": "action"
+    },
+
+    {
+        "value": "V...Vinny? W...what is this? W...Who's here? I...I've never seen that kind of magic.",
+        "character": "Marlon",
+        "type": "dialogue"
     }
     
 
