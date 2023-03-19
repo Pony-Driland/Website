@@ -14547,6 +14547,26 @@
         "value": "I was wanting to take Hiroshi out of power to try to reunite the East and West region. That's all. But everyone in the West region was afraid of me because my magic element is dark. But if you're sorry, this might be different. Maybe we could try to do something different?",
         "character": "Marlon",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon, please forget about all this. I'm already feeling happy just hearing your side.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {        
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "Then Hiroshi would start to look very empty and hopeless. Hiroshi had a much deeper feeling than simple depression. Vinny and Marlon were a bit scared and worried about the whole situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Remember this Vinny? My time is running out. I'll soon have to leave.",
+        "character": "Hiroshi",
+        "type": "dialogue"
     }
     
 
