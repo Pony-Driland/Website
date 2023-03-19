@@ -14618,8 +14618,19 @@
     },
 
     {
-        "value": "H..Hiroshi? What do you mean pact? Does it exist in this world?",
+        "value": "H..Hiroshi? What do you mean pact? Does it exist in this world? Who is this pony you made the pact with?",
         "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {        
+        "value": "Hiroshi then prepared to say his last words as he try to look for acceptance of what was about to happen.",
+        "type": "action"
+    },
+
+    {
+        "value": "You two never understand how I've lived for over 100 years? I have passed through more than a generation of Pony Driland. I had an eternal life pact with Rainbow Queen herself. B..But in return. I was supposed to be the guardian of the original story of Pony Driland. She told me I shouldn't start any wars. I shouldn't put the lives of innocent ponies in danger.",
+        "character": "Hiroshi",
         "type": "dialogue"
     }
     
