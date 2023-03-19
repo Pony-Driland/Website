@@ -15009,8 +15009,42 @@
         "set": {
             "playlistPlay": null
         },
-        "value": "when Rainbow Queen finished answering, her body glowed again until she completely disappears from the place. Then everywhere was covered in darkness again, only the light from Vinny's helmet remained.",
+        "value": "when Rainbow Queen finished answering, her body glowed again until she completely disappears from the place. Then everywhere was covered in darkness again, only the light from Vinny's helmet remained. So Vinny was annoyed to look at Marlon again.",
         "type": "action"
+    },
+
+
+    {
+        "value": "Well well well, Marlon... You who go around throwing bombs, wanting to go around cutting everyone using you katana and I have to keep the regions in order.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "bad-think"
+        },
+        "value": "M...Me? A..ah yes yes. OKAY! SORRY! I can as soon as possible start helping our peace declaration process. But no one will believe that this was all because of a goddess! And Marlon is dead!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then rub his mane a little, trying to relax during the talk.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah. I would say that the relic was with me and if you deserved it I would give it to you. I just don't understand the motive for Rainbow said \"you two\" and was only interested in me. I love my zikas of my life.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "V..Vinny... L..Look on the good side. I think this is more than enough that the whole Hiroshi theory was more than certain that it's real.",
+        "character": "Marlon",
+        "type": "dialogue"
     }
+
 
 ]
