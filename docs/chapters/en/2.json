@@ -14743,11 +14743,6 @@
     },
 
     {
-        "value": "looked around",
-        "type": "action"
-    },
-
-    {
         "value": "O..other pony? What are you talking about? Wait... What is it?",
         "character": "Marlon",
         "type": "dialogue"
@@ -14759,7 +14754,152 @@
     },
 
     {
-        "value": "",
+        "value": "H..hello? I'm sorry about our first time. I had no idea what a deity you were. I'm new here in this world.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny lowered his head as a form of regret.",
+        "type": "action"
+    },
+
+    {
+        "value": "N..No. It's not possible! Is she really the Rainbow Queen from Hiroshi's weird stories?",
+        "character": "Marlon",
+        "type": "think"
+    },
+
+    {
+        "value": "Marlon was shaking by the fear and just bowed to Rainbow Queen too.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..Yes. I'm sorry.",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then the Rainbow Queen levitated Hiroshi's soul out of his body, protecting Hiroshi's soul during the progress.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny... This same pony is still here and it seems that his time interference energy got even bigger. And Marlon's soul seems to have changed very suddenly in a short time.",
+        "character": "Rainbow Queen",
+        "type": "think"
+    },
+
+    {
+        "value": "Then Rainbow Queen would stop analyzing the situation and stare at Marlon and Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "I have no reason to condemn Hiroshi's soul. Not all ponies are ready for the consequences of the eternal life. But still you two have something that belongs to me.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen looked extremely serious into Vinny's eyes while lightly positioning the scythe towards him.",
+        "type": "action"
+    },
+
+    {
+        "value": "A..ah?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny made a slight gulp, but still tried to keep facing the situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Could it be the magic relic?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen does a small evil smile at Vinny in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "How smart you are~ It seems you already know very well what we're talking about. Not bad for whoever sent a powerful signal guiding me here. Even more twice in a short time.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon was even more scared and got a little closer to Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "But what the fuck is this?! So my theory was really right?! What kind of dark pony is this?!",
+        "character": "Marlon",
+        "type": "think"
+    },
+
+    {
+        "value": "I'm sorry but I think there was a mistake, the signal was to call for help. We were in a critical situation where it totally got out of control. I'm really sorry if the energy caught your eye and brought you here, but that really wasn't the intention.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen made a little evil laugh before she placed the scythe, the scythe quickly went against Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...WHAT?! VINNY!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "But when it looked like the scythe was going to hit Vinny, it went through Vinny and Marlon. Then the mysterious magic relic that Vinny had captured appeared being held by the scythe.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm sorry too~ But I think it was also the mistake that you had this precious item on your hooves. But I'll have to take it. I have more important things to do with this piece of the Master Smartmoby than you might think.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...Wait! Wait! T...The relic! Master Smartmoby?! We need this!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon was very scared. But the Rainbow Queen does another evil laugh in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Relic? Master Smartmoby? Awwwww~ I also thought it was a relic. But don't worry. You won't miss it. I'll take care of this relic better than you.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "B..But but! ARGH!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon didn't know how to react to the situation, he just closed his eyes trying to remain calm in the face of the frustration he was feeling.",
         "type": "action"
     }
 
