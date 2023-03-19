@@ -14675,9 +14675,6 @@
     },
 
     {
-        "set": {
-            "playlistPlay": null
-        },
         "value": "Sorry. My time is up. She is here.. I won't even be able to say goodbye to everyone like I promised....V...You all are now in charge of sending my farewell.",
         "character": "Hiroshi",
         "type": "dialogue"
@@ -14685,6 +14682,34 @@
 
     {
         "value": "Hiroshi slowly placed the amulet on the floor as Hiroshi's last tears dripped onto the floor.",
+        "type": "action"
+    },
+
+    {
+        "value": "You...ccan talk to her. Rainbow Queen is here just waiting my last seconds. Vinny tell Kai that he now...is...is... my new successor.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "Vinny and Marlon started to feel a wind forming around Hiroshi. The environment was slowly starting to get colder during the process. Marlon and Vinny then got a little more scared.",
+        "type": "action"
+    },
+
+    {
+        "value": "Thank you so much for everything. I'm happy for you all. My friends... goodbye.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "rainbow-queen-moment"
+        },
+        "value": "A light that appeared in the center of Hiroshi mysteriously reacted, the light became even stronger, Vinny and Marlon could see that the light went through Hiroshi's chest and at the same time Hiroshi stopped responding and his gaze became paralyzed as he slowly fell into the floor.",
         "type": "action"
     }
     
