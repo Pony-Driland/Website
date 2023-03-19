@@ -14632,6 +14632,25 @@
         "value": "You two never understand how I've lived for over 100 years? I have passed through more than a generation of Pony Driland. I had an eternal life pact with Rainbow Queen herself. B..But in return. I was supposed to be the guardian of the original story of Pony Driland. She told me I shouldn't start any wars. I shouldn't put the lives of innocent ponies in danger.",
         "character": "Hiroshi",
         "type": "dialogue"
+    },
+
+    {        
+        "value": "Hiroshi then made a small, very sad farewell smile.",
+        "type": "action"
+    },
+
+    {
+        "value": "It seems that our goodbye is coming. After more than 200 years of life. It seems that my final judgment will come. My final judgment where I can at least finally rest in peace. I managed to at least do something very important in my last hours of life. Thank you Vinny and Marlon.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "HIroshi lamented a lot while holding the amulet that had the photo of his family, along with other ponies, and one of them Vinny could recognize Rainbow Queen, but she had a much whiter skin and less obscure appearance.",
+        "type": "action"
     }
     
 
