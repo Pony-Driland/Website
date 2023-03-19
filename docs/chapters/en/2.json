@@ -14646,10 +14646,45 @@
     },
 
     {
+        "value": "Hiroshi lamented a lot while holding the amulet that had the photo of his family, along with other ponies, and one of them Vinny could recognize Rainbow Queen, but she had a much whiter skin and less obscure appearance.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "H...Hiroshi. Please calm down. We are here. Everything will end well.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny went towards Hiroshi's side so he wouldn't feel alone.",
+        "type": "action"
+    },
+
+    {
+        "value": "You can't leave everything as it is now, let's fix everything first, let's unite everyone so you can leave in peace. Will Rainbow Queen pick you up in person?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y...yes! What will happen to everyone without you? You could have at least told me your age for all of us. I have never seen this Rainbow Queen. H...How will I know who she is?",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
         "set": {
             "playlistPlay": null
         },
-        "value": "HIroshi lamented a lot while holding the amulet that had the photo of his family, along with other ponies, and one of them Vinny could recognize Rainbow Queen, but she had a much whiter skin and less obscure appearance.",
+        "value": "Sorry. My time is up. She is here.. I won't even be able to say goodbye to everyone like I promised....V...You all are now in charge of sending my farewell....",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "slowly placed the amulet on the floor",
         "type": "action"
     }
     
