@@ -14550,22 +14550,76 @@
     },
 
     {
-        "value": "Marlon, please forget about all this. I'm already feeling happy just hearing your side.",
+        "value": "But Marlon... Where did you get the powerful bomb?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon took a deep breath before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "The bomb was the creation of a mysterious energy source that one of my military found. They never told me what this source was in more detail. But they said they managed to extract enough of the energy to make the bomb.",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "Marlon, please forget about all this. I don't want to hear about bombs and wars anymore. I'm already feeling happy just hearing your side.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
 
     {        
-        "set": {
-            "playlistPlay": null
-        },
         "value": "Then Hiroshi would start to look very empty and hopeless. Hiroshi had a much deeper feeling than simple depression. Vinny and Marlon were a bit scared and worried about the whole situation.",
         "type": "action"
     },
 
     {
+        "set": {
+            "playlistPlay": "sad-plot-twist"
+        },
         "value": "Remember this Vinny? My time is running out. I'll soon have to leave.",
         "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {        
+        "value": "Vinny would then turn completely white upon hearing this in fear upon remembering these words spoken by Hiroshi earlier.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...What? Are you sure? You are free to choose. What do you mean by all this? You survived everything that happened here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I have my pact... My pact is now completely broken. I can't do anything else from now on.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {        
+        "value": "Vinny would then start laughing nervously as he listened to this, trying to understand what was going on.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait... What?!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "H..Hiroshi? What do you mean pact? Does it exist in this world?",
+        "character": "Vinny",
         "type": "dialogue"
     }
     
