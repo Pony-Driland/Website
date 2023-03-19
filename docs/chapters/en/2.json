@@ -14706,14 +14706,26 @@
     },
 
     {
-        "set": {
-            "playlistPlay": "rainbow-queen-moment"
-        },
-        "value": "A light that appeared in the center of Hiroshi mysteriously reacted, the light became even stronger, Vinny and Marlon could see that the light went through Hiroshi's chest and at the same time Hiroshi stopped responding and his gaze became paralyzed as he slowly fell into the floor. Marlon was very scared to see the mysterious magic take Hiroshi's life.",
+
+        "value": "A light that appeared in the center of Hiroshi mysteriously reacted, the light became even stronger, Vinny and Marlon could see that the light went through Hiroshi's chest and at the same time Hiroshi stopped responding and his gaze became paralyzed as he slowly fell onto the floor, But Vinny held Hiroshi so he wouldn't fall to the ground completely. Marlon was very scared to see the mysterious magic take Hiroshi's life.",
         "type": "action"
     },
 
     {
+        "value": "Goodbye... New old friend.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny place the Hiroshi body carefully on the floor.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "rainbow-queen-moment"
+        },
         "value": "V...Vinny? W...what is this? W...Who's here? I...I've never seen that kind of magic.",
         "character": "Marlon",
         "type": "dialogue"
