@@ -14507,6 +14507,46 @@
         "value": "But... I was wrong. I started to lose popularity, everyone started to believe me less and less and called me crazy for trying to do that. And my attempt to lessen the hatred between the two sides only made it worse. You got even angrier at me. My populace was getting mad at me. And the beginning of our war was the biggest consequence that happened. All this could have been avoided. If I had tried from the beginning to dialogue with you. We could have made a better friendship to try to do some collaborative work.",
         "character": "Hiroshi",
         "type": "dialogue"
+    },
+
+
+    {
+        "value": "Then more tears started to fall from Hiroshi's eyes. And Marlon was surprised and sorry for everything that happened.",
+        "type": "action"
+    },
+
+    {
+        "value": "I really am a big idiot. Many lives could have been spared if I really had done my part from the beginning.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon was then still surprised at each progress of the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..Wait! Wait! Have you then done all this even for me? How can you not tell me something as important as this?",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah... sorry but from the beginning I always thought it was suspicious that you had the relic and made all those traps. In fact, Hiroshi didn't trust anyone, not even me, even my shadow already tripped me and ponies I loved. Marlon, explain to me you wanted to be the dictator? As everything is lost I think it's no use lying now, what did you want to do?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon wasn't angry anymore, and he was just regretting the things he did before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "I was wanting to take Hiroshi out of power to try to reunite the East and West region. That's all. But everyone in the West region was afraid of me because my magic element is dark. But if you're sorry, this might be different. Maybe we could try to do something different?",
+        "character": "Marlon",
+        "type": "dialogue"
     }
     
 
