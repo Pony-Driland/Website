@@ -14447,6 +14447,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "SHUT THE FUCK UP! You two look like 2 children. Hiroshi is true all this? You didn't want to buy the deal and took the relic just for you and left the Marlon region impoverished?",
         "character": "Vinny",
         "type": "dialogue"
@@ -14455,6 +14458,29 @@
     {
         "value": "Hiroshi just kept quiet and took a deep breath before starting to speak.",
         "type": "action"
+    },
+
+    {
+        "value": "Okay. Let's start the conversation a lot more calmly. I'll try to tell you everything that really happened.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hiroshi then made a regretful look and prepared to continue the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...Ah? Are you ok?",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I...I already understand that it's no use hiding my biggest sin from all of Pony Driland. I was just afraid of your violent behavior that was getting out of control. You were starting to getting angrier with every passing moment. I was afraid you would become a dictator.",
+        "character": "Hiroshi",
+        "type": "dialogue"
     }
     
 
