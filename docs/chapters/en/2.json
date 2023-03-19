@@ -14901,6 +14901,46 @@
     {
         "value": "Marlon didn't know how to react to the situation, he just closed his eyes trying to remain calm in the face of the frustration he was feeling.",
         "type": "action"
+    },
+
+    {
+        "value": "I understand, but what did you mean by \"That won't be missed by you\"? Wasn't it this item that was bringing more life and productivity to everyone?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "More life?",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rainbow Queen then looked very seriously at Vinny, suspecting something.",
+        "type": "action"
+    },
+
+    {
+        "value": "Is this pony studying my world? This pegasus is way crazier than I imagined.",
+        "character": "Rainbow Queen",
+        "type": "think"
+    },
+
+    {
+        "value": "Rainbow Queen poked the scythe on Vinny neck to make a slightly more menacing look in Vinny's direction.",
+        "type": "action"
+    },
+
+    {
+        "value": "After all. If you really want to play nice. Don't think I don't know that you also have one of these magic items with you to help this dimension. So... get out of my way while you can.",
+        "character": "Rainbow Queen",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wait... That's it! Vinny even has this mysterious radar!",
+        "character": "Marlon",
+        "type": "think"
     }
 
 ]
