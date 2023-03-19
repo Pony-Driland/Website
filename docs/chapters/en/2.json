@@ -14478,7 +14478,33 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "the-true"
+        },
         "value": "I...I already understand that it's no use hiding my biggest sin from all of Pony Driland. I was just afraid of your violent behavior that was getting out of control. You were starting to getting angrier with every passing moment. I was afraid you would become a dictator.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "You always told me that you wanted to dominate the West region, this all just reinforced me to be more and more rigid in protecting the West region. The energy of this world is starting to get more and more limited. It was no longer possible to reserve our magical relic between our regions. And I knew very well that your region was running out of money. You didn't have more money to buy our stuff every time we spent more time with the relic selling our products. So I made the worst choice of mine.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Hiroshi took a deep breath.",
+        "type": "action"
+    },
+
+    {
+        "value": "I didn't just build the bunker. But I tried to tax my own population to try to raise money to donate to the East region.",
+        "character": "Hiroshi",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "But... I was wrong. I started to lose popularity, everyone started to believe me less and less and called me crazy for trying to do that. And my attempt to lessen the hatred between the two sides only made it worse. You got even angrier at me. My populace was getting mad at me. And the beginning of our war was the biggest consequence that happened. All this could have been avoided. If I had tried from the beginning to dialogue with you. We could have made a better friendship to try to do some collaborative work.",
         "character": "Hiroshi",
         "type": "dialogue"
     }
