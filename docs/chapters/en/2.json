@@ -14349,6 +14349,63 @@
         "value": "M...my side of the story?",
         "character": "Marlon",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon looked at the ponies that were dead on the ground around him, making him start to get tears from his eyes and at the same time feeling very angry about it all.",
+        "type": "action"
+    },
+
+    {
+        "value": "THEN LOOK AT THIS! Look how many lives were lost because of a idiot! Hiroshi!! All he had to do was just give me the fuck damn magic relic! BUT NOT! HE BUILDS A POWERFUL FUCK BUNKER! FORCES ME TO USE AN EXTREMELY POWERFUL BOMB! And you still tell me you're on the side of this imbecile who keeps playing me like a STUPID?!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little scared by Marlon's reactions and just tried to calm him down.",
+        "type": "action"
+    },
+
+    {
+        "value": "Calm down, relax, I'm aware that the relic was with him, I want to understand why you guys didn't get along, why he didn't give it to you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "You're kidding me, right? I missed the chance to save my nation! I FAILED AS A LEADER OF THE EAST REGION! Do you have any idea that now the whole weight of the consequences is on my shoulders?!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon tried to get up again while continuing the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "He doesn't deserve to take care of the West region anymore! I WOULD KILL HIM AS SOON AS I FIND HIM AGAIN! He doesn't deserve to be alive anymore after all this has happened!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon... Calm down. Please calm down. he was wrong, yes he was wrong, but you threw a bomb killing many innocent ponies, I was right there on top of the bomb trying to avoid that. But... where did you get that bomb? We don't know how the relic is, it can be in the same place, or under you now.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon took a deep breath, showing a feeling of disgust for what he was hearing.",
+        "type": "action"
+    },
+
+    {
+        "value": "You wanted me to do what? Do you throw flowers? I asked my guards to try to evacuate his own population! But still everyone insisted on that!",
+        "character": "Marlon",
+        "type": "dialogue"
     }
+    
 
 ]
