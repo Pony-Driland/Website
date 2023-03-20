@@ -75,6 +75,13 @@ storyCfg.playlist = {
         { id: 'FaKRXOgasXA', type: 'youtube' },
     ],
 
+    'escape-2': [
+        { id: 'PUJUFXtbLqU', type: 'youtube' },
+        { id: '3D5W66u-XgI', type: 'youtube' },
+        { id: '7CxQ01mGymo', type: 'youtube' },
+        { id: 'jfqzvLsPsk8', type: 'youtube' },
+    ],
+
     'battle': [
         { id: 'VMziMXYkVS0', type: 'youtube' },
         { id: 'rjRn9lYguV0', type: 'youtube' },
@@ -85,6 +92,22 @@ storyCfg.playlist = {
     'tense-battle': [
         { id: 'b6WhRKOMUq0', type: 'youtube' },
         { id: 'rAMJkRhK2cs', type: 'youtube' },
+    ],
+
+    'Chase | D&D/TTRPG Battle/Combat/Fight Music | 1 Hour': [
+        { id: 'fq8OSrIUST4', type: 'youtube' },
+    ],
+
+    'Lost Temple Ruins | D&D/TTRPG Music | 1 Hour': [
+        { id: 'cr7MHs7DyXA', type: 'youtube' },
+    ],
+
+    'Tense Negotiations | D&D/TTRPG Music | 1 Hour': [
+        { id: 'RPkHu8M_U4c', type: 'youtube' },
+    ],
+
+    'The Dungeon of the Dark Pyramid': [
+        { id: 'cmedlfRszXU', type: 'youtube' },
     ],
 
     'horror-battle': [
