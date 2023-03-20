@@ -15643,6 +15643,17 @@
         "value": "Her body needs time to she come back to consciousness. I'm sure at some point she'll open her eyes.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little worried when he saw that he was going to have to tell Rayane the truth, but at least he was feeling calmer when he saw the mysterious pony being helped.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..yeah.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
