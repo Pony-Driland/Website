@@ -15454,8 +15454,14 @@
     },
 
     {
-        "value": "H..heh. Once again, it's not that moment, maybe next time. why always in these moments?",
+        "value": "H..heh. Once again, it's not that moment, maybe next time. Why always in these moments?",
         "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I just looked at my wish~ You should know by now this isn't the first time this has happened.",
+        "character": "Rayane",
         "type": "dialogue"
     },
 
@@ -15465,14 +15471,167 @@
     },
 
     {
-        "value": "Hmmmm? Silly you~",
+        "value": "Y..Yeah.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. Silly you~",
         "character": "Rayane",
         "type": "dialogue"
     },
 
     {
-        "value": "Vinny would does a small nervous smile and try to start being a little more serious.",
+        "value": "Vinny would does a small nervous smile and try to start being a little more serious and a little sadly.",
         "type": "action"
+    },
+
+
+    {
+        "value": "I...I need you to see a pony one last time no matter how hard it is.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then got a little confused and curious to hear that.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait... a pony? Is Hiroshi hurt? I can heal you again.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...Well.. T...This is not Hiroshi. That's far from your abilities, Hiroshi had a deal with your dark friend. C...Come on, I'll take you, let's go along, if you need a shoulder I'll be with you there. Hiroshi had his last wishes granted in the last moments which was to apologize to Marlon and see his friend. Marlon is alive and he wants no harm. just don't get too upset all right?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "M...Marlon? W..What?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was even more confused and nervous, trying to understand what was going on. Vinny then helped Rayane walk among the dead ponies. Many smartmobies were broken on the ground, there was no working subway, but Vinny finally arrived at the paw of the another buried pony.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... All that's left is for Marlon to be buried again.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny takes the first stones off the mysterious pony. Vinny immediately saw that the pony is a pegasus, the flight equipment was completely broken, and a small communication equipment was also totally destroyed. But the pony was still alive, just badly bruised from the impact.",
+        "type": "action"
+    },
+
+    {
+        "value": "R...Rayane... So can you help me?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was curiously looking for Hiroshi, but then she looked at Vinny again.",
+        "type": "action"
+    },
+
+    {
+        "value": "A..Ah? Y..Yes yes. Sorry.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was worried about Hiroshi, but she tried to calm down when she saw that she had a pony that needed help. Then Rayane was gently using magic to remove the rest of the other stones. Vinny would then try to look at the mysterious pony's face during the process.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey? Hello? Can you see me?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The body started to react a little bit, but the pony body still couldn't wake up.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey... we're here to help you. We need you. Please wake up...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then helped to make the place more comfortable using her magic for the body of the mysterious pony to be able to lie down again. Vinny and Rayane realized that the body is a female pegasus. Her eyes were trembling a little. Rayane and Vinny were a little surprised to see the survivor.",
+        "type": "action"
+    },
+
+    {
+        "value": "S...she is alive. She needs a better place to rest.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. I just need some water. Do you have water please?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Huh? Okay. I have water here.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane spawns a bottle of water and levitated it towards the mysterious pegasus.",
+        "type": "action"
+    },
+
+    {
+        "value": "Thank you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then took a deep breath and started talking to the mysterious pegasus slowly while looking at some pieces of the mysterious pony's equipment.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heeey? Calm down, it's okay. We're here to help you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "When Vinny looked at Rayane again, he asked a question calmly and a little sadly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Looks like she has the same equipment as Wagner, she is probably together with Marlon.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. She seems to be an informant. The equipment is much more harmless than other ponies.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
