@@ -15044,6 +15044,307 @@
         "value": "V..Vinny... L..Look on the good side. I think this is more than enough that the whole Hiroshi theory was more than certain that it's real.",
         "character": "Marlon",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Yeaaaaah... And the excuses are already being prepared, if you really want to be part of the union of the regions you have to be alive and at full steam. Kai is the successor, I won't hide it, but we have to convince him that you're cool now spitting flowers.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon was uncomfortable with Vinny's tone of voice.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... Rainbow Queen said you have another relic. I hope you know how to make it bloom all over the region. If you managed to have a radar as powerful as this, I'm sure you must have someone who knows how to make this.",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then took a deep breath as he started looking for any other live ponies.",
+        "type": "action"
+    },
+
+    {
+        "value": "Marlon, forget the relic for now, maybe each one has something specific, you're the leader. why not combine all the regions into one?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..What?! Forget the relic? We need the relic! Didn't you realize that we're all going to die together now that we've lost the only relic we had! And how are we going to bring all the regions together if now they are all doomed to death! Neither of us, and even less Kai will be leader if everyone knows that everything is lost!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was breathing deeply irritated, trying to remain calm.",
+        "type": "action"
+    },
+
+    {
+        "value": "If you think that's bad. Go complain about it to the dark pony. I'm trying to help.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then ignored Marlon who was still too weak to react. In the middle of the dead bodies, Vinny was then curious to find an extremely injured pony body, but it was still breathing.",
+        "type": "action"
+    },
+
+    {
+        "value": "I...I found a survivor!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "ARGH! Let's start from the beginning. Do you have the relic or not? Rainbow Queen wasn't going to lie to me to her face that you also have a relic.",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. I have one, you heard her say, it's not relics, the magic items are parts of something much bigger. And at least one of those parts is now with the reaper.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was passing him paw over head due to stress.",
+        "type": "action"
+    },
+
+    {
+        "value": "Say me... What do you want? Use this relic?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon was tired of being stressed with the conversation, so he just answered in a very annoyed way.",
+        "type": "action"
+    },
+
+    {
+        "value": "It's fine, it's fine! Enough of this fight. Do what you want. But this time the responsibility is not mine. I need to rest.",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon then tried to get ready to walk when he realized that his horn's magic was still weak. Vinny then got a little curious to see Marlon's eyes getting a little dark while the tears were still visible.",
+        "type": "action"
+    },
+
+    {
+        "value": "Look, listen to me. If I really wanted something more than that I would have eliminated you by now.",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "How is it? look how you talk! I'm also pissed about the relic and I'm thinking of a way to bring it back! If you eliminate me now it's just because I saved you while you were in the middle of the stones. Did your friend's death teach you nothing? You are still responsible for the bomb, no one will let you get away with it, one way or another you will be held responsible for your actions, having a good or bad ending... let's calm down and try to relax. no one wants to see the friend next door starving, suffering and all.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked at all the other dead bodies around for a few seconds before looking back at Marlon.",
+        "type": "action"
+    },
+
+    {
+        "value": "Try to wake everyone up, we're already late. your military didn't find the bomb material thrown in the wild. Your military took something so potent from someone pretty big i guess i would keep an eye on the strength you give the military! They can fool you and take power and everything get worse!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon's eyes were still dark when he felt a little depressed, but they soon returned to normal.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't put Hiroshi in the middle of the conversation! What I'm trying to tell you is that I'm already more than tired of so many losses!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon looked around, trying to hold back the anger and sadness at the same time.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Maybe you're right, many will hate me. Many will want to kill me. It can be extremely dangerous for me to continue ruling as a leader. Fine?!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon, look, I'll help you about the ponies wanting to kill you and about your military. First I need a favor and an honest answer can you?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looked at Rayane for a few seconds before look at Marlon again. Rayane was still sleeping, slowly recovering all the energy in her body.",
+        "type": "action"
+    },
+
+    {
+        "value": "What do you know about Rayane? What do they say about her and what has she done that you've seen?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon was then confused when hearing this type of question.",
+        "type": "action"
+    },
+
+    {
+        "value": "Are you sure? Do you have any idea how dangerous this can be? Although it looks like you've already gotten yourself into something even more dangerous after I saw Rainbow Queen mad at you.",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon then took a deep breath.",
+        "type": "action"
+    },
+
+    {
+        "value": "Why am I talking to you? You're getting weirder than I ever imagined. Look, I don't know much, I just watched Rayane's special missions looking for a certain pony or some item. I found it very strange to see you all working together. I thought you two was starting some kind of revolution. So I had to use my power a little stronger than usual.",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmmm... It sounds like you know things, you gave a little bit of everything \"chewed\". What else do you know about her?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon tried to keep calming down during the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "I don't have that much information about her. The only thing I remember is that she was last time looking for a possible scientist who she claimed to know special stuff. But she never spoke to me about it again. Maybe she's already finished the secret mission.",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was even more curious during Marlon's conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Scientist?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looked curiously at Rayane sleeping for a few seconds before looking at Marlon again.",
+        "type": "action"
+    },
+
+    {
+        "value": "I think I know who this pony is or at least I know a scientist who is with us. The scientist is the pony who made this radar.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon then began to find Vinny's conversation strange.",
+        "type": "action"
+    },
+
+    {
+        "value": "A scientist who made this radar? Wait? Are you trying to tell me that this scientist might be a member of the Elite Color?",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Aaaah... Maybe? You can to do something that will help us or stay close to Hiroshi while I go with Rayane. Really, if Rayane wakes up with you next to her body, she'll want to kill you right away. try looking for some live ponies. Or maybe some way for us to get out of here?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked sadly at Hiroshi for a few seconds before continuing to speak.",
+        "type": "action"
+    },
+
+    {
+        "value": "Weeeeeell, There is also another alternative. You can spend your last moments with Hiroshi. I'm going to stay by Rayane's side for a while before she wake up. I just wanted to know a little about her past, since she doesn't talk about it.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little sadly during the conversation. But then Vinny would do a little smile to try and make himself feel better.",
+        "type": "action"
+    },
+
+    {
+        "value": "I seem to be a magnet for crazy ponies and ponies with scythes.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked again at the body of the mysterious pony passed out who was seriously injured, for a few seconds before going to Rayane again.",
+        "type": "action"
+    },
+
+    {
+        "value": "My Rainbow from heaven. That Vinny has a problem. Is Vinny all right?",
+        "character": "Marlon",
+        "type": "think"
+    },
+
+    {
+        "value": "Marlon then looked at his own reflection in a puddle of dirty water on the floor. So Marlon found it a little strange that his eyes were a little darker than usual for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "This is a lot more depressing than I can think. I have no idea how many unexpected things have happened now. B..but it's ok. Maybe a little rest will help me calm down.",
+        "character": "Marlon",
+        "type": "think"
+    },
+
+    {
+        "value": "Marlon placed his paw on Hiroshi's body temporarily.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny... Be careful where you get yourself.Drawing too much attention won't be very nice for ponies like you. I hope you know what you're doing. You're a lot weirder than I imagined meeting so many unexpected ponies.",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Marlon then finished saying goodbye to Hiroshi's body and just got up, walking towards one of the subway doors and disappeared into the darkness. Vinny just finished watching the scene, and waited for Marlon to leave to start doing what he was planning to do.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..yeah Marlon. Be careful...",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 
