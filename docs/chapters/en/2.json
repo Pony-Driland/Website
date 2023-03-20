@@ -15632,6 +15632,17 @@
         "value": "Yes. She seems to be an informant. The equipment is much more harmless than other ponies.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane let some water fall on the face of the mysterious pegasus gently during the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Her body needs time to she come back to consciousness. I'm sure at some point she'll open her eyes.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
