@@ -15858,14 +15858,54 @@
     },
 
     {
-        "value": "Rayane was a little surprised, but she couldn't feel panic due to sadness.",
+        "value": "Rayane was a little surprised, but she couldn't feel panic due to sadness. Rayane tried to keep breathing due to the great anxiety she was feeling.",
         "type": "action"
     },
 
     {
-        "value": "W..well... I still don't understand what happened to Marlon and Kai. I... I need to finish calming down first. We can talk better about this later. I'm not feeling well enough to worry about Rain right now.",
+        "value": "W..well... I still don't understand what happened to Marlon and Kai. I... I need to finish calming down first. We can talk better about this later. I'm not feeling well enough to worry about Rain right now. R..Rain..a...and the Master Smartmoby...",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane would slowly lift her head and look at Vinny. Vinny could see that Rayane's face was back with the same weird Rainbow Queen tattoos that had formed. Rayane was crying due to her feelings of fear and sadness. But Rayane didn't know.",
+        "type": "action"
+    },
+
+    {
+        "value": "But... Did you try to talk to Rain again? She is very closed! Her heart is completely closed! It won't be that easy to touch her true feelings. That's motive I need a lot your help. I really wanted to see her again.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane would slowly lift her head and look at Vinny. Vinny could see that Rayane's face was back with the same weird Rainbow Queen tattoos that had formed. Rayane was crying due to her feelings of fear and sadness. But Rayane didn't know.",
+        "type": "action"
+    },
+
+    {
+        "value": "R...Rayane? Ok ok... Calm down, you are getting the same tattoos as your friend. You have the same tattoos as hers, the part of the Master Smartmoby interacts with you too.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then looked at a puddle of water and noticed the tattoos. Rayane was a little scared and tried to stay calm so that everything could go back to normal.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What is this?!",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "Hey Rayane... You have secrets that no one knows. If you know. Anyway... this will not happen again. I have a suggestion on how to recover the Master Smartmoby, but I'll need you and James. By the way, when did you meet James?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
+
 
 ]
