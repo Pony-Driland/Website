@@ -14967,13 +14967,13 @@
     },
 
     {
-        "value": "Okay. In a specific place I saw a picture of you. a long time ago. Your appearance was clearer. what was there? I'm sorry if my question is out of formality.",
+        "value": "Yes. But okay okay. My question is... In a specific place I saw a picture of you. a long time ago. Your appearance was clearer. what was there? I'm sorry if my question is out of formality.",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "RRainbow Queen was a little surprised, but instantly became angrier.",
+        "value": "Rainbow Queen was a little surprised, but instantly became angrier.",
         "type": "action"
     },
 
@@ -15015,7 +15015,7 @@
         "set": {
             "playlistPlay": null
         },
-        "value": "when Rainbow Queen finished answering, her body glowed again until she completely disappears from the place. Then everywhere was covered in darkness again, only the light from Vinny's helmet remained. So Vinny was annoyed to look at Marlon again.",
+        "value": "When Rainbow Queen finished answering, her body glowed again until she completely disappears from the place. Then everywhere was covered in darkness again, only the light from Vinny's helmet remained. So Vinny was annoyed to look at Marlon again.",
         "type": "action"
     },
 
