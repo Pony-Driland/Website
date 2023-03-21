@@ -15896,7 +15896,7 @@
     },
 
     {
-        "value": "W..What is this?!",
+        "value": "W..What is this?! T...The divine aura power again?!",
         "character": "Rayane",
         "type": "think"
     },
@@ -15905,7 +15905,75 @@
         "value": "Hey Rayane... You have secrets that no one knows. If you know. Anyway... this will not happen again. I have a suggestion on how to recover the Master Smartmoby, but I'll need you and James. By the way, when did you meet James?",
         "character": "Vinny",
         "type": "dialogue"
-    }
+    },
 
+    {
+        "value": "When Rayane was finally able to calm down, she looked curiously at Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "James? Ah James. I... I've known him for a long time. But it was only a few days that I had the chance to get to know him better.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmmm... Yes, and this scientist is needed here, maybe Jamees didn't arrive because someone arrived earlier and is disturbing them. In the meantime can you promise me something?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then became curious about the course of the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "A..Ah? Yes! But please... But you must promise to never leave me alone.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh... Yes. Don't let me die too. I feel like if I die in this world. I will find your friend of the scythe, and she will kill me even though I'm dead.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little during the conversation.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "It's ok to die here, to die like a charming pony, but to die after the death by her... you can lose the position of crazy girl in my heart.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane made a light laugh of a very weak happiness, but at least Rayane was starting to feel better.",
+        "type": "action"
+    },
+
+    {
+        "value": "Then... You need to promise me that if I die you'll try to bring me back.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled at Rayane when he finished speaking. Rayane does a little giggle, feeling a very better.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "Silly you. Yes. I'll do my best. I won't let Rain take my wish away without my permission~",
+        "character": "Rayane",
+        "type": "dialogue"
+    }
 
 ]
