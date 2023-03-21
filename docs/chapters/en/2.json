@@ -15382,7 +15382,7 @@
     },
 
     {
-        "value": "Rayane was quiet, sleeping, and her eyes were slowly starting to open, but her vision hadn't started to see Vinny yet. And her paw moved, nudging Vinny at random as she tried to figure out who's there.",
+        "value": "Rayane was quiet, sleeping, and her eyes were slowly starting to open, but her vision hadn't started to see Vinny yet. And her paw moved, poking Vinny at random as she tried to figure out who's there.",
         "type": "action"
     },
 
@@ -15443,7 +15443,7 @@
     },
 
     {
-        "value": "Yaaaaaaaaaaaaaaaaaaaaaaaaay, who am I? what's your wish? tell me go.",
+        "value": "Yaaaaaaaaaaaaaaaaaaaaaaaaay, who am I? What's your wish? tell me go.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -15495,7 +15495,7 @@
 
 
     {
-        "value": "I...I need you to see a pony one last time no matter how hard it is.",
+        "value": "S..Sorry Rayane. But I...I need you to see a pony one last time no matter how hard it is.",
         "character": "Vinny",
         "type": "dialogue"
     },
