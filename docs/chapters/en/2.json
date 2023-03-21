@@ -16027,7 +16027,18 @@
     },    
     
     {
-        "value": "It's ok....",
+        "value": "It's ok.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then smiled a little more when she saw that the mysterious pony started to moan in a lot of pain. But she couldn't move properly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmmm~ It looks like someone is really alive. Shhhhhh~ Calm down, your water is still here.",
         "character": "Rayane",
         "type": "dialogue"
     }
