@@ -14280,7 +14280,7 @@
     },
 
     {
-        "value": "I'm helping you. if you don't want my help I can put the stones back as they were at the beginning. Relax! We're not enemies, maybe it's Hiroshi and Rayane. I need to talk to you before anything else.",
+        "value": "I'm helping you. if you don't want my help I can put the stones back as all stones were at the beginning. Relax! We're not enemies, maybe it's Hiroshi and Rayane. I need to talk to you before anything else.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -14291,7 +14291,7 @@
     },
 
     {
-        "value": "Y..you are very funny. Very funny you. You still play with me...even though I hate you so much. You are much stranger than I imagined.",
+        "value": "Y..you are very funny. Very funny you. You still play with me... even though I hate you so much. You are much stranger than I imagined.",
         "character": "Marlon",
         "type": "dialogue"
     },
@@ -14374,7 +14374,7 @@
     },
 
     {
-        "value": "You're kidding me, right? I missed the chance to save my nation! I FAILED AS A LEADER OF THE EAST REGION! Do you have any idea that now the whole weight of the consequences is on my shoulders?!",
+        "value": "Really? You're kidding me, right? I missed the chance to save my nation! I FAILED AS A LEADER OF THE EAST REGION! Do you have any idea that now the whole weight of the consequences is on my shoulders?!",
         "character": "Marlon",
         "type": "dialogue"
     },
@@ -14391,7 +14391,7 @@
     },
 
     {
-        "value": "Marlon... Calm down. Please calm down. he was wrong, yes he was wrong, but you threw a bomb killing many innocent ponies, I was right there on top of the bomb trying to avoid that. But... where did you get that bomb? We don't know how the relic is, it can be in the same place, or under you now.",
+        "value": "Marlon... Calm down. Please calm down. Hiroshi was wrong, yes he was wrong, but you threw a bomb killing many innocent ponies, I was right there on top of the bomb trying to avoid that. But... where did you get that bomb? We don't know how the relic is, it can be in the same place, or under you now.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -14413,7 +14413,7 @@
     },
 
     {
-        "value": "What? Is that old pony depressed now in a few seconds? What's his problem?",
+        "value": "And Hiroshi was...! Ah? What? Is that old pony depressed now in a few seconds? What's his problem?",
         "character": "Marlon",
         "type": "think"
     },
@@ -14461,7 +14461,7 @@
     },
 
     {
-        "value": "Okay. Let's start the conversation a lot more calmly. I'll try to tell you everything that really happened.",
+        "value": "Okay. Okaaaaay. Let's start the conversation a lot more calmly. I'll try to tell you everything that really happened.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -14472,7 +14472,7 @@
     },
 
     {
-        "value": "A...Ah? Are you ok?",
+        "value": "Okay! SORRY! B..but... A...Ah? Are you ok?",
         "character": "Marlon",
         "type": "dialogue"
     },
@@ -14487,7 +14487,7 @@
     },
 
     {
-        "value": "You always told me that you wanted to dominate the West region, this all just reinforced me to be more and more rigid in protecting the West region. The energy of this world is starting to get more and more limited. It was no longer possible to reserve our magical relic between our regions. And I knew very well that your region was running out of money. You didn't have more money to buy our stuff every time we spent more time with the relic selling our products. So I made the worst choice of mine.",
+        "value": "You always told me that you wanted to dominate the West region, this all just reinforced me to be more and more rigid in protecting the West region. The energy of this world is starting to get more and more limited. It was no longer possible to reserve our magical relic between our regions. And I knew very well that your region was running out of money. You didn't have more money to buy our stuff every time we spent more time with the relic selling our products. So... I made the worst choice of mine.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -14533,7 +14533,7 @@
     },
 
     {
-        "value": "Yeah... sorry but from the beginning I always thought it was suspicious that you had the relic and made all those traps. In fact, Hiroshi didn't trust anyone, not even me, even my shadow already tripped me and ponies I loved. Marlon, explain to me you wanted to be the dictator? As everything is lost I think it's no use lying now, what did you want to do?",
+        "value": "Yeah... and I always thought it was suspicious that you had the relic and made all those traps. In fact, Hiroshi didn't trust anyone, not even me, even my shadow already tripped me and ponies I loved. Marlon, explain to me you wanted to be the dictator? As everything is lost I think it's no use lying now, what did you want to do?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -14544,7 +14544,7 @@
     },
 
     {
-        "value": "I was wanting to take Hiroshi out of power to try to reunite the East and West region. That's all. But everyone in the West region was afraid of me because my magic element is dark. But if you're sorry, this might be different. Maybe we could try to do something different?",
+        "value": "I was wanting to take Hiroshi out of power to try to reunite the East and West region. That's all. But everyone in the West region was afraid of me because my magic element is dark. But if Hiroshi is sorry, this might be different. Maybe we could try to do something different?",
         "character": "Marlon",
         "type": "dialogue"
     },
@@ -14556,12 +14556,12 @@
     },
 
     {
-        "value": "Marlon took a deep breath before answering.",
+        "value": "Marlon took a deep breath before answering. Marlon was confused and trying to remember about this information.",
         "type": "action"
     },
 
     {
-        "value": "The bomb was the creation of a mysterious energy source that one of my military found. They never told me what this source was in more detail. But they said they managed to extract enough of the energy to make the bomb.",
+        "value": "T..the bomb? The bomb was the creation of a mysterious energy source that one of my military found. They never told me what this source was in more detail. But they said they managed to extract enough of the energy to make the bomb.",
         "character": "Marlon",
         "type": "dialogue"
     },
