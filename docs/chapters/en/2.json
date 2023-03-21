@@ -16037,9 +16037,9 @@
 
     {
         "set": {
-            "playlistPlay": "dramatic"
+            "playlistPlay": "memories"
         },
-        "value": "Rayane then smiled a little more when she saw that the mysterious pony started to moan in a lot of pain. But she couldn't move properly.",
+        "value": "Rayane then smiled a little more when she saw that the mysterious adult pony started to moan in a lot of pain. But she couldn't move properly.",
         "type": "action"
     },
 
@@ -16053,6 +16053,212 @@
         "value": "W...What? The pegasus?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised and looked at the mysterious pegasus too. Rayane levitated the water to her mouth to help her drink delicately.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..Oh no. She must have broken some bone in her body. Let's wait for her to drink the water.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little emotional to see that the mysterious pony's body was very unstable. Rayane replied on a little sad voice of empathy.",
+        "type": "action"
+    },
+
+    {
+        "value": "S...Sorry Vinny. But my regeneration can only heal wounds. Unfortunately I won't be able to rebuild her body. We need a doctor.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The pegasus took the water with great desire while trying to keep calm against the pain she was feeling, and slightly opened her eyes more, trying to see who was there.",
+        "type": "action"
+    },
+
+    {
+        "value": "T..the voice... This voice is familiar. B...But who is the other voice?",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Calm down, calm down, first where is it hurting?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The mysterious pony tried to move, but cried out in pain and immediately stopped her movements.",
+        "type": "action"
+    },
+
+    {
+        "value": "M..my wings... my back... I just want to go home. I don't want to participate in this madness anymore! P..Please... if you're from the West... just leave me alone! Qnd... and ask Marlon to stop all this madness!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The pegasus started to cry a lot in pain, wanting some medical help. Vinny and Rayane were a little surprised by the mysterious pony's despair.",
+        "type": "action"
+    },
+
+    {
+        "value": "Calm down, we are here to help you. Everything is already being resolved, Marlon has already stopped everything. We want to help you, are your wings hurting?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A..Ah? So Marlon was arrested? Y..Yes... every bone in my back and in my wings... I don't feel my body right anymore.",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The pegasus started to cry even more in pain as she tried to get into some comfortable position.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey... Don't move too much... or it will make your situation worse. Lie down a little. Okay?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane sympathetic to the situation and just spawned one of the tent mattresses so she could have a comfortable place to lie down.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..Yes. I brought you here. Now everything will end well.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked at what was inside her magic saddle, the magic saddle still worked, but it looked like some items inside it might be broken. Her wings were only with the flight equipment that it was not yet known what it was for, but it was also very destroyed.",
+        "type": "action"
+    },
+
+    {
+        "value": "E....everyone ran.. and abandoned me here. I... I lost the only pony that was trying to help me escape. Nobody came back to rescue me!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The pegasus cried extremely more. Feeling extremely sad about abandonment.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey... Please. We haven't abandoned you now, everything will be fine, do you remember if you had a doctor with you?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The...the doctors ran away. They were very afraid of the collapse...but wait.... Why are these voices so familiar?",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The mysterious pony tried to open her eyes again and slowly she felt much less dizzy, and she started to see Vinny and Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wh... what? Y...You! The mysterious Rayane?! Where am I?!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The pegasus was extremely scared and tried to get away, but when she tried, she lay on the mattress again, moaning in pain and crying again, making her fail to try to escape.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ssssh~ Do not run away. You are safe on my mattress now. Do not you remember? We saved you.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "We're helping, if you really want us to leave you here alone, that's fine, but we don't want to, we have to unite to get us all out of here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then took a deep breath and looked very gently at pegasus and Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane, I'll stay close to this pegasus for a while. anything I look for you or you look for me okay? This pony might be a good hope for all of us.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The kept crying as she continued drinking water to calm down more of the situation. But she was still very confused.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..How did all this happen? The war is over? And... should I really be here? Why are these things happening to me?",
+        "character": "???",
+        "type": "think"
+    },
+
+    {
+        "value": "Are you sure you'll be okay there alone? What if someone with bad intentions appears?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "No nope. I with my charm and mouth defeat him. Everyone is finished here. Either way I scream for you or you scream for me. Try to look for other ponies, maybe you find Kai or Rowan or any doctor too.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "looking at the pegasus",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmm... Charm?~ Be careful with your silly side. Someone will end up taking it from you~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane pokes Vinny's nose gently during the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Be very careful... Anything can happen after that radar sends a lot of signal in all directions. But if I'm starting to get too far away, I'll make sure to get back here as soon as possible.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane levitated the water pot to Vinny's side while getting ready to walk again.",
+        "type": "action"
     }
 
 ]
