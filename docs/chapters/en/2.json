@@ -15613,7 +15613,7 @@
     },
 
     {
-        "value": "Vinny then took a deep breath and started talking to the mysterious pegasus slowly while looking at some pieces of the mysterious pony's equipment.",
+        "value": "Vinny then took a deep breath and started give water to the mysterious pegasus slowly while looking at some pieces of the mysterious pony's equipment.",
         "type": "action"
     },
 
@@ -15624,7 +15624,7 @@
     },
 
     {
-        "value": "When Vinny looked at Rayane again, he asked a question calmly and a little sadly.",
+        "value": "When Vinny looked at Rayane again, Vinny says calmly and a little sadly.",
         "type": "action"
     },
 
@@ -15671,7 +15671,7 @@
     },
 
     {
-        "value": "Sorry for the question Vinny. But where is Hiroshi? Where did he go?",
+        "value": "Sorry for the question Vinny. But where is Hiroshi? Where did he go? I'm still worried about him.",
         "character": "Rayane",
         "type": "dialogue"
     },
