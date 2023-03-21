@@ -16084,7 +16084,7 @@
     },
 
     {
-        "value": "The pegasus took the water with great desire while trying to keep calm against the pain she was feeling, and slightly opened her eyes more, trying to see who was there.",
+        "value": "The pegasus took the water on a great desire while trying to keep calm against the pain she was feeling, and slightly opened her eyes more, trying to see who was there.",
         "type": "action"
     },
 
@@ -16095,7 +16095,7 @@
     },
 
     {
-        "value": "Calm down, calm down, first where is it hurting?",
+        "value": "Calm down... Where is it hurting?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -16117,7 +16117,7 @@
     },
 
     {
-        "value": "Calm down, we are here to help you. Everything is already being resolved, Marlon has already stopped everything. We want to help you, are your wings hurting?",
+        "value": "We are here to help you. Everything is already being resolved, Marlon has already stopped everything. We want to help you, are your wings hurting?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -16167,7 +16167,7 @@
     },
 
     {
-        "value": "Hey... Please. We haven't abandoned you now, everything will be fine, do you remember if you had a doctor with you?",
+        "value": "Don't worry... We haven't abandoned you now, everything will be fine, do you remember if you had a doctor with you?",
         "character": "Vinny",
         "type": "dialogue"
     },
