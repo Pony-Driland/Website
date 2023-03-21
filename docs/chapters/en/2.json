@@ -15437,7 +15437,7 @@
     },
 
     {
-        "value": "Yayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy, who am I? what's your wish? tell me go.",
+        "value": "Yaaaaaaaaaaaaaaaaaaaaaaaaay, who am I? what's your wish? tell me go.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -15653,6 +15653,218 @@
     {
         "value": "Y..yeah.",
         "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "So Rayane tried to be more silent while continuing the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sorry for the question Vinny. But where is Hiroshi? Where did he go?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny took a deep breath, trying to prepare himself for the moment.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "sad"
+        },
+        "value": "I'll bring Hiroshi here. But please remember what I told you about. Keep Calm. Let's go slowly.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then open a path on the floor to gently push Hiroshi's body towards Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "I think you would want to see him and say goodbye.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was completely unresponsive when she saw what was happening, and just concentrated on bringing Hiroshi's body closer.",
+        "type": "action"
+    },
+
+    {
+        "value": "H...Hiroshi? N..No no... That's not right.....No! This is not right. H...Hiroshi??????",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane tried to control herself while many tears began to come out of her eyes while she was angry about the situation trying to seek some acceptance.",
+        "type": "action"
+    },
+
+    {
+        "value": "HIROSHI!!!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane just hugged one of Hiroshi's hooves trying to have some hope, even though Rayane knew nothing was going to happen. Vinny then just hugged Rayane's paw gently to comfort her.",
+        "type": "action"
+    },
+
+    {
+        "value": "I know... it's not right at all. I...I'm sorry. He had an agreement to eternal life. Hiroshi had a pact with Rainbow Queen where he had to keep the peace between the regions and keep the original Pony Driland story alive. Hiroshi... was very important to you?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "E...Eternal Life Pact? I...I didn't know she used this ability in pacts. Yeah... Of course... Rain never told me anything about this.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane started to cry a lot while hugging Hiroshi's body who was slowly depixeling more body parts.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hiroshi was like a third grandfather that I didn't pay much attention to. But I felt like he wanted to say something to me. That's motive I really wish I could talk to him about the past.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Past? Yes... The train earlier he talked about his family and Royal Color. Hiroshi was very lonely because of eternal life. He talked about how everyone thought he was crazy and didn't know what happened to Royal color. Hiroshi trusted us with his life because you're different.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then wiped her tears a little and tried to stop crying while looking curiously at Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "R..Royal Color?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Royal Color.... T..This name... My friend Rain never really liked to talk about this subject. She has a lot of anger and depression talking about the Royal Color. So I always found that strange. But I had my questions whether or not I believed Hiroshi on this matter because of my behavior in the past.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane tried not to cry a lot during the process, but she still kept talking.",
+        "type": "action"
+    },
+
+    {
+        "value": "I...I've been wanting to talk to him about it now.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Sorry Rayane. Unfortunately we don't know what tomorrow will be, if possible, do everything now. but i'm here no need to worry. Okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny hugged Rayane even closer to make her feel better.",
+        "type": "action"
+    },
+
+    {
+        "value": "Everything will be fine. In his last moments he spoke and apologized to Marlon, he unintentionally left the poor region even without his will. In the end I think he liked you a lot but he had reasons not to talk. Hiroshi has also said who will be his successor. It will be Kai.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y...Yes. Kai. Kai has always been very close to him.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane lightly hugged Vinny back as she lamented and looked at the floor, and saw that the amulet that Hiroshi carried was still on the floor.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? W... what is this?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was surprised to see Hiroshi's amulet on the floor.",
+        "type": "action"
+    },
+
+    {
+        "value": "if Hiroshi is resting in peace. I won't let him disappear forever. A part of him will always be close to me.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane levitated the amulet and hugged it together gently while still feeling sad. But then Rayane got a little curious about the Rainbow Queen picture on the amulet.",
+        "type": "action"
+    },
+
+    {
+        "value": "R...Rain? T..This is you?",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "When Vinny noticed Rayane looking at the amulet, Vinny would then respond sadly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah. Well... I also think I made your friend of the scythe angrier too. I don't understand, slowly I'm feeling angry. I say good morning she gets mad at me. I asked her about her picture on this amulet being different she got mad and left. I really wanted her to really go see you. Maybe she see you on your dream and talk with you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looked around a little worried and depressed.",
+        "type": "action"
+    },
+
+    {
+        "value": "But even more strange things happened. She got the Master Smartmoby part. I..I'm sorry.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little surprised, but she couldn't feel panic due to sadness.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..well... I still don't understand what happened to Marlon and Kai. I... I need to finish calming down first. We can talk better about this later. I'm not feeling well enough to worry about Rain right now.",
+        "character": "Rayane",
         "type": "dialogue"
     }
 
