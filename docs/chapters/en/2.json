@@ -14675,7 +14675,7 @@
     },
 
     {
-        "value": "Sorry. My time is up. She is here.. I won't even be able to say goodbye to everyone like I promised....V...You all are now in charge of sending my farewell.",
+        "value": "Sorry. My time is up. She is here... I won't even be able to say goodbye to everyone like I promised....V...You all are now in charge of sending my farewell.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -14686,7 +14686,7 @@
     },
 
     {
-        "value": "You...ccan talk to her. Rainbow Queen is here just waiting my last seconds. Vinny tell Kai that he now...is...is... my new successor.",
+        "value": "You...can talk to her. Rainbow Queen is here just waiting my last seconds. Vinny, tell Kai that he now...is...is... my new successor.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -14732,12 +14732,12 @@
     },
 
     {
-        "value": "Marlon started to cry a lot while trying to do something to see Hiroshi move again. Meanwhile, a very colorful lighting began to illuminate around the three ponies",
+        "value": "Marlon started to cry a lot while trying to do something to see Hiroshi move again. Meanwhile, a very colorful lighting began to illuminate around the three ponies.",
         "type": "action"
     },
 
     {
-        "value": "Calm down, you managed to apologize to him in time. I just don't know if you'll be able to apologize to a pony.",
+        "value": "Calm down, you managed to apologize to him in time. I just don't know if you'll be able to apologize to a second pony.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -14754,7 +14754,7 @@
     },
 
     {
-        "value": "H..hello? I'm sorry about our first time. I had no idea what a deity you were. I'm new here in this world.",
+        "value": "H..hello. I'm sorry about our first time. I had no idea what a deity you were. I'm new here in this world.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -14765,7 +14765,7 @@
     },
 
     {
-        "value": "N..No. It's not possible! Is she really the Rainbow Queen from Hiroshi's weird stories?",
+        "value": "N..No. It's not possible! Is she really the Rainbow Queen from Hiroshi's weird stories?!",
         "character": "Marlon",
         "type": "think"
     },
@@ -14782,12 +14782,12 @@
     },
 
     {
-        "value": "Then the Rainbow Queen levitated Hiroshi's soul out of his body, protecting Hiroshi's soul during the progress.",
+        "value": "Then Rainbow Queen levitated Hiroshi's soul out of his body, protecting Hiroshi's soul during the progress.",
         "type": "action"
     },
 
     {
-        "value": "Vinny... This same pony is still here and it seems that his time interference energy got even bigger. And Marlon's soul seems to have changed very suddenly in a short time.",
+        "value": "Vinny here? This same pony is still here and it seems that his time interference energy got even bigger. And Marlon's soul seems to have changed very suddenly in a short time.",
         "character": "Rainbow Queen",
         "type": "think"
     },
