@@ -16019,6 +16019,17 @@
         "value": "Hmmm... Marlon must be looking for some pony or some way out. We have to find Kai mainly.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then smiled and let some more fresh water drip over the face of the mysterious pony gently to see if she reacted.",
+        "type": "action"
+    },    
+    
+    {
+        "value": "It's ok....",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
