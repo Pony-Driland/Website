@@ -14848,7 +14848,7 @@
     },
 
     {
-        "value": "I'm sorry but I think there was a mistake, the signal was to call for help. We were in a critical situation where it totally got out of control. I'm really sorry if the energy caught your eye and brought you here, but that really wasn't the intention.",
+        "value": "I'm sorry, but I think there was a mistake, the signal was to call for help. We were in a critical situation where it totally got out of control. I'm really sorry if the energy caught your eye and brought you here, but that really wasn't the intention.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -14870,13 +14870,19 @@
     },
 
     {
+        "value": "W..WHAT? I..I'm alive?!",
+        "character": "Marlon",
+        "type": "dialogue"
+    },
+
+    {
         "value": "I'm sorry too~ But I think it was also the mistake that you had this precious item on your hooves. But I'll have to take it. I have more important things to do with this piece of the Master Smartmoby than you might think.",
         "character": "Rainbow Queen",
         "type": "dialogue"
     },
 
     {
-        "value": "W...Wait! Wait! T...The relic! Master Smartmoby?! We need this!",
+        "value": "W...Wait! Wait! T...The relic is the Master Smartmoby?! We need this!",
         "character": "Marlon",
         "type": "dialogue"
     },
@@ -14904,7 +14910,7 @@
     },
 
     {
-        "value": "I understand, but what did you mean by \"That won't be missed by you\"? Wasn't it this item that was bringing more life and productivity to everyone?",
+        "value": "Y..Yeah. I understand, but what did you mean by \"That won't be missed by you\"? Wasn't it this item that was bringing more life and productivity to everyone?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -14921,7 +14927,7 @@
     },
 
     {
-        "value": "Is this pony studying my world? This pegasus is way crazier than I imagined.",
+        "value": "Is this pony studying my world?",
         "character": "Rainbow Queen",
         "type": "think"
     },
@@ -14932,19 +14938,19 @@
     },
 
     {
-        "value": "After all. If you really want to play nice. Don't think I don't know that you also have one of these magic items with you to help this dimension. So... get out of my way while you can.",
+        "value": "After all. If you really want to play nice. Don't think I don't know that you also have one of these magic items with you to help this dimension. So... get out of my way while you can!",
         "character": "Rainbow Queen",
         "type": "dialogue"
     },
 
     {
-        "value": "Wait... That's it! Vinny even has this mysterious radar!",
+        "value": "Aaah... That's it! Vinny even has this mysterious radar!",
         "character": "Marlon",
         "type": "think"
     },
 
     {
-        "value": "I just know what I'm told, I don't know anything about it. If I can... can I ask you something?",
+        "value": "I just know what I'm told, I don't know anything about it. But... If I can... can I ask you something?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -14955,7 +14961,7 @@
     },
 
     {
-        "value": "Question? Please don't delay, I already need to leave this place.",
+        "value": "Questions? Do you have the nerve to ask me a question? Please don't delay, I already need to leave this place.",
         "character": "Rainbow Queen",
         "type": "dialogue"
     },
