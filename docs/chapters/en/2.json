@@ -15974,6 +15974,51 @@
         "value": "Silly you. Yes. I'll do my best. I won't let Rain take my wish away without my permission~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Heh! Well, Hiroshi wanted you to help us in the regions... that wasn't on my list, but now it has to be like that, any idea what to do? wake everyone up first? Is there a train running here? For those who were devouring desire, it seems that I would last a long time with you eating me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was confused and laughed a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "Devouring? Silly, I don't think you ever really got nibbled~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then looked at the passed out pony who was still resting during the conversation. So Rayane was a little confused when looking around the place.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well.. I have no idea where we are. My teleport was completely out of control when we ended up here.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little disappointed by herself as she looked at the mysterious pony again.",
+        "type": "action"
+    },
+
+    {
+        "value": "I remember I used magic on Wagner to locate him later... But I have no idea how long we stayed here. Because if we took too long, the magic might be over. But we also have the other problem that we're too far away from him to locate him again.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmm... Marlon must be looking for some pony or some way out. We have to find Kai mainly.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
