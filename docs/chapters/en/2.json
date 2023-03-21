@@ -16010,6 +16010,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "I remember I used magic on Wagner to locate him later... But I have no idea how long we stayed here. Because if we took too long, the magic might be over. But we also have the other problem that we're too far away from him to locate him again.",
         "character": "Rayane",
         "type": "dialogue"
@@ -16033,6 +16036,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "dramatic"
+        },
         "value": "Rayane then smiled a little more when she saw that the mysterious pony started to moan in a lot of pain. But she couldn't move properly.",
         "type": "action"
     },
@@ -16040,6 +16046,12 @@
     {
         "value": "Hmmmm~ It looks like someone is really alive. Shhhhhh~ Calm down, your water is still here.",
         "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...What? The pegasus?",
+        "character": "Vinny",
         "type": "dialogue"
     }
 
