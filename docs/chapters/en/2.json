@@ -16045,7 +16045,7 @@
         "set": {
             "playlistPlay": "memories"
         },
-        "value": "Rayane then smiled a little more when she saw that the mysterious adult pony started to moan in a lot of pain. But she couldn't move properly.",
+        "value": "Rayane then smiled a little more when she saw that the mysterious pony started to moan in a lot of pain. But she couldn't move properly. Her face slowly revealed itself. Then there came a certain moment when Ivy's face was revealed.",
         "type": "action"
     },
 
@@ -16056,7 +16056,7 @@
     },
 
     {
-        "value": "W...What? The pegasus?",
+        "value": "W...What? An pegasus?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -16090,7 +16090,7 @@
 
     {
         "value": "T..the voice... This voice is familiar. B...But who is the other voice?",
-        "character": "???",
+        "character": "Ivy",
         "type": "dialogue"
     },
 
@@ -16107,7 +16107,7 @@
 
     {
         "value": "M..my wings... my back... I just want to go home. I don't want to participate in this madness anymore! P..Please... if you're from the West... just leave me alone! Qnd... and ask Marlon to stop all this madness!",
-        "character": "???",
+        "character": "Ivy",
         "type": "dialogue"
     },
 
@@ -16124,7 +16124,7 @@
 
     {
         "value": "A..Ah? So Marlon was arrested? Y..Yes... every bone in my back and in my wings... I don't feel my body right anymore.",
-        "character": "???",
+        "character": "Ivy",
         "type": "dialogue"
     },
 
@@ -16157,7 +16157,7 @@
 
     {
         "value": "E....everyone ran.. and abandoned me here. I... I lost the only pony that was trying to help me escape. Nobody came back to rescue me!",
-        "character": "???",
+        "character": "Ivy",
         "type": "dialogue"
     },
 
@@ -16174,7 +16174,7 @@
 
     {
         "value": "The...the doctors ran away. They were very afraid of the collapse...but wait.... Why are these voices so familiar?",
-        "character": "???",
+        "character": "Ivy",
         "type": "dialogue"
     },
 
@@ -16185,7 +16185,7 @@
 
     {
         "value": "Wh... what? Y...You! The mysterious Rayane?! Where am I?!",
-        "character": "???",
+        "character": "Ivy",
         "type": "dialogue"
     },
 
@@ -16224,7 +16224,7 @@
 
     {
         "value": "H..How did all this happen? The war is over? And... should I really be here? Why are these things happening to me?",
-        "character": "???",
+        "character": "Ivy",
         "type": "think"
     },
 
