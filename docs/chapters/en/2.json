@@ -16363,7 +16363,18 @@
     },
 
     {
-        "value": "W...wow. Weeeell... Come on, what world did you come from? You still haven't said who gave you these wing equipment.",
+        "value": "W...wow. No problem, everyone cries on some moment. You can cry if you want, better outside than inside like a being in my world used to say.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then thought of some more new questions for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Come on, what world did you come from? You still haven't said who gave you these wing equipment.",
         "character": "Vinny",
         "type": "dialogue"
     }
