@@ -16377,6 +16377,34 @@
         "value": "Come on, what world did you come from? You still haven't said who gave you these wing equipment.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "My world? My world is just another random planet. My world is not that special anymore after I found out that there are so many other worlds in the universe.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy was starting to feel sadder looking at the broken equipment.",
+        "type": "action"
+    },
+
+    {
+        "value": "These equipment belonged to Wagner. He realized that I was too scared to carry the powerful bomb. So he asked Marlon to change my role to informer. Wagner was my hero. He got into bomb role. T...thank you Vinny. I... I could say that you are my third hero today. It's good to be able to meet you and Rayane on the same day.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy smiles a little, stopping the cry during the conversation. So Vinny felt better seeing Ivy's smile.",
+        "type": "action"
+    },
+
+    {
+        "value": "No problem!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
