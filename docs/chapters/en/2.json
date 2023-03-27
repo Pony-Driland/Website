@@ -16258,8 +16258,20 @@
     },
 
     {
-        "value": "Rayane levitated the water pot to Vinny's side while getting ready to walk again. When Rayane walked further away, then Vinny looked at the mysterious pegasus who was still scared, trying to stay calm as she eyed Vinny very curiously.",
+        "value": "Rayane levitated the water pot to Vinny's side while getting ready to walk again. Rayane walked further away, then Vinny smiles a little during some seconds before look at the mysterious pegasus who was still scared, trying to stay calm as she looks at Vinny very curiously.",
         "type": "action"
+    },
+
+    {
+        "value": "Hey. Everything is fine now. Do you want to continue our conversation? What is your name? Looks like you already know mine.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "M..My name? My name is Ivy.",
+        "character": "Ivy",
+        "type": "dialogue"
     }
 
 ]
