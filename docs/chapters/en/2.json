@@ -16405,6 +16405,51 @@
         "value": "No problem!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked back to the ground, only seeing more destroyed pieces of weapons. More pieces of destroyed smartmobies on the ground. Vinny then felt uncomfortable seeing all of this and just went back to the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...what? Wagner? An yellow pegasus with blue eyes? Blue mane?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oh? You know him? He is alive?!",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy had a hopeful smile on her face, very anxious to know the answer. Vinny was a little surprised and giggles a little before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes, he's fine, he's on the surface waiting for all of us right now on some place or coming here to help us.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yay! I would be very happy to meet him again. He looked like a very gentle pegasus as much as you.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles for a few seconds, then stopped smiling and made a curious look.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... Can I ask a favor? Is your magic bag all right? Can you keep some weapons scraps and a few things to return to me later when we get out of here?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
