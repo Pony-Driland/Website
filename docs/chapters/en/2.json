@@ -16333,6 +16333,39 @@
         "value": "W...Well... Let's walk, you're not in any condition to walk right now. Climbs on my back and we go in the same direction the mysterious Rayane went. Alright?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy was very confused hearing about Rayane as she thought about how she was going to get on Vinny's back.",
+        "type": "action"
+    },
+
+    {
+        "value": "T...The mysterious Rayane? R..Rayane is a good pony now? I never understood who she really is. Everyone always scared me when telling stories about her. B...but..b..but... I'll try.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy starts to climb the Vinny back, moaning in a lot of pain, but still she struggled until she managed to climb completely on Vinny back. Ivy would start to cry again, trying to calm down in the process.",
+        "type": "action"
+    },
+
+    {
+        "value": "O...Ouch! O...oouch... A..Ah. Y...yes. I...I did... Yes. Sorry if I'm too childish and a complete crybaby. But before I came here... I was a kid. So I spent the rest of my childhood in this dimension until I became an adult. Marlon said I needed to learn to grow up. So he put me in this crazy job. My pony dream ended up showing I'm a failure even at this.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised, just trying to help Ivy feel better.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...wow. Weeeell... Come on, what world did you come from? You still haven't said who gave you these wing equipment.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
