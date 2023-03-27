@@ -16472,6 +16472,101 @@
     {
         "value": "Vinny took everything carefully and put it in Ivy's magic saddle before resume walking toward Rayane's place.",
         "type": "action"
+    },
+
+    {
+        "value": "What was your life like? I haven't had a chance to visit your region yet.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Ivy laughed a little nervously as she struggled to bear the pain he was feeling.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah.... my life. I was always very lonely because everyone thought I was too childish. No one ever gave me the chance to try to live a social life.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? But who do you live with, how were your days before the bomb, like 2 days ago how are you?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy then hugged Vinny's back a little more to escape the feeling of loneliness.",
+        "type": "action"
+    },
+
+    {
+        "value": "I... I live alone. Nothing special. I just collect my toys and study what I need to know for work. And when I have nothing to do, I walk around the village looking for someone to socialize with. But I don't really like walking around the village, I'm afraid of being kidnapped. It's just personal fears.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny found the subject of kidnapping a little strange, but just continued the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "I understand, isn't your region experiencing difficulties? You never felt the need to move to a quieter region?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then light up some parts of the machine that was destroyed, and collect them for later use. Then Ivy's eyes started to shine with a lot of hope when she heard Vinny's words.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wah! Heh! What prevents you from changing?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then found a metal door that was open. This door show a new corridor where it was possible to see some of Rayane's footprints. Ivy does a small sad look when answering this question.",
+        "type": "action"
+    },
+
+    {
+        "value": "M..my money. If I had more coins... I could have moved a long time ago. When I arrived in the new village. I was more willing to live in here than invade this wonderful place.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "Vinny does an empathetic smile as he prepares to enter the corridor.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah... Well, maybe now you can't live here. if you try you can find a good pony and try to get a job that gives you money and so you can live well and then live alone.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy had an innocent look of great curiosity upon hearing this.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..one good small work? Better than Marlon's crazy jobs?",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then start walking slowly as he entered the hall. Everything was abandoned, it looked like a huge evacuation had taken place. Buy Vinny hear the sound of computers beeping some red alert on the place.",
+        "type": "action"
     }
 
 ]
