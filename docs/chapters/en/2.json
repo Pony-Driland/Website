@@ -16258,6 +16258,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Rayane levitated the water pot to Vinny's side while getting ready to walk again. Rayane walked further away, then Vinny smiles a little during some seconds before look at the mysterious pegasus who was still scared, trying to stay calm as she looks at Vinny very curiously.",
         "type": "action"
     },
@@ -16271,6 +16274,64 @@
     {
         "value": "M..My name? My name is Ivy.",
         "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiles again before holding Ivy paw in response.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "sad"
+        },
+        "value": "You need to relax your body a bit. Tell me your side. How did you end up here and where did all this wing equipment you're using come from?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy would get nervous and cry a little before she continued talking.",
+        "type": "action"
+    },
+
+    {
+        "value": "I...I.. I just came here to try to guide the ridiculous Marlon invasion. I can't stand to see death anymore. I warned him that we could do anything in a peaceful way. And... He's completely insane! I'm afraid of him!",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy hugged Vinny's paw tighter, trying to find peace and rest in her thoughts. Vinny was a little worried, but then he could think of something new.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmmm... Answer me quickly, have you played horseback? Can you climb on my back?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy made a small smile of loneliness when listening to Vinny's question.",
+        "type": "action"
+    },
+
+    {
+        "value": "H...Horseback? Y...You sound like my father talking. I miss him so much. It's been several years since I ran away from my home. I never thought running away from home would bring me to another dimension. T..This dimension where it seems my fantasy world has become my reality, but not in the way I had hoped.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy started to get more depressed from the memories she remembered, but slowly she tried to calm down again.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...Well... Let's walk, you're not in any condition to walk right now. Climbs on my back and we go in the same direction the mysterious Rayane went. Alright?",
+        "character": "Vinny",
         "type": "dialogue"
     }
 
