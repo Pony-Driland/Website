@@ -16447,13 +16447,13 @@
     },
 
     {
-        "value": "Well... Can I ask a favor? Is your magic bag all right? Can you keep some weapons scraps and a few things to return to me later when we get out of here?",
+        "value": "Heh! Well... Can I ask a favor? Is your magic bag all right? Can you keep some weapons scraps and a few things to return to me later when we get out of here?",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "M...My bag? Y...Yes! My magic saddle was the best thing I've ever been given as a gift. I've never seen something small be able to hold so many things. You are also a gentle pegasus. I will let you put whatever you want in the saddle.",
+        "value": "M...My bag? Y...Yes! My magic saddle was the best thing I've ever been given as a gift. Feel free.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -16464,7 +16464,7 @@
     },
 
     {
-        "value": "It's ok, when we go out remind me this. Otherwise I'll forget.",
+        "value": "Heheh. It's ok, when we go out remind me this. Otherwise I'll forget.",
         "character": "Vinny",
         "type": "dialogue"
     },
