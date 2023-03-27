@@ -16567,6 +16567,23 @@
     {
         "value": "Vinny would then start walking slowly as he entered the hall. Everything was abandoned, it looked like a huge evacuation had taken place. Buy Vinny hear the sound of computers beeping some red alert on the place.",
         "type": "action"
+    },
+
+    {
+        "value": "W...what? Rayane? You are here?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Y....Yeah.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was curious and a little worried trying to understand what was going on, while he slowly approached the door of the warning noise room.",
+        "type": "action"
     }
 
 ]
