@@ -16520,12 +16520,12 @@
     },
 
     {
-        "value": "Vinny would then light up some parts of the machine that was destroyed, and collect them for later use. Then Ivy's eyes started to shine with a lot of hope when she heard Vinny's words.",
+        "value": "Vinny would then light up some parts of the machine that was destroyed, and collect the item pieces for later use. Then Ivy's eyes started to shine with a lot of hope when she heard Vinny's words.",
         "type": "action"
     },
 
     {
-        "value": "Wah! Heh! What prevents you from changing?",
+        "value": "A..Ah? What prevents you from changing?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -16548,7 +16548,7 @@
     },
 
     {
-        "value": "Yeah... Well, maybe now you can't live here. if you try you can find a good pony and try to get a job that gives you money and so you can live well and then live alone.",
+        "value": "Yeah... On the surface, everything is really beautiful and wonderful. But maybe now you can't live here. If you try you can find a good pony and try to get a job that gives you money and so you can live well and then live alone.",
         "character": "Vinny",
         "type": "dialogue"
     },
