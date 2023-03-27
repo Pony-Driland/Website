@@ -16450,6 +16450,28 @@
         "value": "Well... Can I ask a favor? Is your magic bag all right? Can you keep some weapons scraps and a few things to return to me later when we get out of here?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "M...My bag? Y...Yes! My magic saddle was the best thing I've ever been given as a gift. I've never seen something small be able to hold so many things. You are also a gentle pegasus. I will let you put whatever you want in the saddle.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy makes a very innocent smile of thanks in response. Vinny just smiled back a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "It's ok, when we go out remind me this. Otherwise I'll forget.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny took everything carefully and put it in Ivy's magic saddle before resume walking toward Rayane's place.",
+        "type": "action"
     }
 
 ]
