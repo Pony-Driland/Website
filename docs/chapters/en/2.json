@@ -16554,6 +16554,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Ivy had an innocent look of great curiosity upon hearing this.",
         "type": "action"
     },
@@ -16570,12 +16573,9 @@
     },
 
     {
-        "value": "W...what? Rayane? You are here?",
-        "character": "Vinny",
-        "type": "think"
-    },
-
-    {
+        "set": {
+            "playlistPlay": "nuclear-winter"
+        },
         "value": "Y....Yeah.",
         "character": "Vinny",
         "type": "dialogue"
