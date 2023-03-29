@@ -1,0 +1,33 @@
+{
+    "name": "Aniya",
+    "description": "This is the first version of Aniya. This character is already developed to participate in the Pony Driland story. But its final design is yet to be defined. This is the closest version of how the character will be represented.",
+    "image": "ipfs://QmZNcuT8ZKZLeAyxKbp7zMCTFSTEoHu6mcDcJ3h2zMCUyf",
+    "image_url": "ipfs://QmZNcuT8ZKZLeAyxKbp7zMCTFSTEoHu6mcDcJ3h2zMCUyf",
+    "attributes": [
+        {
+            "trait_type": "Character",
+            "value": "Aniya"
+        },
+        {
+            "trait_type": "Cute",
+            "value": "Yes"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Race",
+            "value": "Ùnicorn"
+        },
+        {
+            "trait_type": "Specie",
+            "value": "Pony"
+        },
+        {
+            "trait_type": "Size",
+            "value": "Normal"
+        }
+    ],
+    "background_color": "FFFFFF"
+}
