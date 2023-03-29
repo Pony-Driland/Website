@@ -1,0 +1,33 @@
+{
+    "name": "Character 2",
+    "description": "",
+    "image": "ipfs://",
+    "image_url": "ipfs://",
+    "attributes": [
+        {
+            "trait_type": "Character",
+            "value": "Character 2"
+        },
+        {
+            "trait_type": "Cute",
+            "value": "Yes"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Race",
+            "value": "Earth Pony (TEMP)"
+        },
+        {
+            "trait_type": "Specie",
+            "value": "Pony"
+        },
+        {
+            "trait_type": "Size",
+            "value": "Normal"
+        }
+    ],
+    "background_color": "FFFFFF"
+}
