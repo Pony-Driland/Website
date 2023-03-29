@@ -1,0 +1,33 @@
+{
+    "name": "Character 3",
+    "description": "I'm looking for some important role for this character. There are chances that the final version of this character will have another different race. My first ideas are that this character could be the leader of some organization that is not yet revealed in the story at the moment that I am publishing this art.",
+    "image": "ipfs://",
+    "image_url": "ipfs://",
+    "attributes": [
+        {
+            "trait_type": "Character",
+            "value": "Character 3"
+        },
+        {
+            "trait_type": "Cute",
+            "value": "Yes"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Race",
+            "value": "Earth Pony (TEMP)"
+        },
+        {
+            "trait_type": "Specie",
+            "value": "Pony"
+        },
+        {
+            "trait_type": "Size",
+            "value": "Normal"
+        }
+    ],
+    "background_color": "FFFFFF"
+}
