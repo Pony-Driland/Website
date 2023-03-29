@@ -1,0 +1,33 @@
+{
+    "name": "Lomina",
+    "description": "Lomina is a Soul Pony who has mastered the ability to manipulate the length of her mane to her advantage, and her special ability was responsible for helping her reach her final Soul Pony form. Her mysterious story involves mysteries related to her great paranoia for manes and fashion design. She usually hides next to beauty salons and her biggest victims are usually ponies who take very good care of their own appearance.",
+    "image": "ipfs://",
+    "image_url": "ipfs://",
+    "attributes": [
+        {
+            "trait_type": "Character",
+            "value": "Lomina"
+        },
+        {
+            "trait_type": "Cute",
+            "value": "Yes"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Race",
+            "value": "Earth Pony"
+        },
+        {
+            "trait_type": "Specie",
+            "value": "Soul Pony"
+        },
+        {
+            "trait_type": "Size",
+            "value": "Normal"
+        }
+    ],
+    "background_color": "FFFFFF"
+}
