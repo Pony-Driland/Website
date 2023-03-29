@@ -1,0 +1,33 @@
+{
+    "name": "Soul Pony - 3",
+    "description": "This is a special kind of guardian for the Soul Ponies. I haven't fully developed this character yet. But the design idea is represented here.",
+    "image": "ipfs://QmZNcuT8ZKZLeAyxKbp7zMCTFSTEoHu6mcDcJ3h2zMCUyf",
+    "image_url": "ipfs://QmZNcuT8ZKZLeAyxKbp7zMCTFSTEoHu6mcDcJ3h2zMCUyf",
+    "attributes": [
+        {
+            "trait_type": "Character",
+            "value": "???"
+        },
+        {
+            "trait_type": "Cute",
+            "value": "Yes"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Race",
+            "value": "Alicorn"
+        },
+        {
+            "trait_type": "Specie",
+            "value": "Soul Pony"
+        },
+        {
+            "trait_type": "Size",
+            "value": "Normal"
+        }
+    ],
+    "background_color": "FFFFFF"
+}

@@ -1,0 +1,33 @@
+{
+    "name": "Soul Pony - 2",
+    "description": "Soul Ponies are ponies that have died but have not been able to accept their own death. When these ponies spend a long time roaming the world, they begin to recreate their physical bodies.",
+    "image": "ipfs://",
+    "image_url": "ipfs://",
+    "attributes": [
+        {
+            "trait_type": "Character",
+            "value": "???"
+        },
+        {
+            "trait_type": "Cute",
+            "value": "Yes"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Race",
+            "value": "Unicorn"
+        },
+        {
+            "trait_type": "Specie",
+            "value": "Soul Pony"
+        },
+        {
+            "trait_type": "Size",
+            "value": "Normal"
+        }
+    ],
+    "background_color": "FFFFFF"
+}
