@@ -1,2 +1,4 @@
 6
 ipfs://QmQuMbaGPWYGVZpsLV2BKaKvFwbQe1bLjcVg2oi8HnTw21
+
+Lomina = Mane + Long
