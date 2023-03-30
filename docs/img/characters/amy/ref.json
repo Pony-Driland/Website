@@ -1,12 +1,12 @@
 {
-    "name": "Amy",
+    "name": "Amy - Ref",
     "external_url": "https://ponydriland.com/characters/.html",
     "image": "ipfs://",
     "image_url": "ipfs://",
     "attributes": [
         {
             "trait_type": "Character",
-            "value": "Rayane"
+            "value": "Amy"
         },
         {
             "trait_type": "Cute",
@@ -18,7 +18,7 @@
         },
         {
             "trait_type": "Race",
-            "value": "Unicorn"
+            "value": "Pegasus"
         },
         {
             "trait_type": "Specie",
@@ -27,6 +27,18 @@
         {
             "trait_type": "Size",
             "value": "Normal"
+        },
+        {
+            "trait_type": "Designer",
+            "value": "João the John"
+        },
+        {
+            "trait_type": "Author",
+            "value": "JasminDreasond"
+        },
+        {
+            "trait_type": "Image",
+            "value": "Reference"
         }
     ],
     "background_color": "FFFFFF"

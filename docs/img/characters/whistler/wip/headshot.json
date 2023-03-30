@@ -27,6 +27,18 @@
         {
             "trait_type": "Size",
             "value": "Normal"
+        },
+        {
+            "trait_type": "Designer",
+            "value": "JasminDreasond"
+        },
+        {
+            "trait_type": "Author",
+            "value": "Atrimy RedClouds"
+        },
+        {
+            "trait_type": "Image",
+            "value": "Reference"
         }
     ],
     "background_color": "FFFFFF"
