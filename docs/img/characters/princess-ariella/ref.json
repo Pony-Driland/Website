@@ -1,11 +1,11 @@
 {
-    "name": "",
+    "name": "Princess Ariella - Ref",
     "image": "ipfs://",
     "image_url": "ipfs://",
     "attributes": [
         {
             "trait_type": "Character",
-            "value": "Rayane"
+            "value": "Princess Ariella"
         },
         {
             "trait_type": "Cute",
@@ -17,7 +17,7 @@
         },
         {
             "trait_type": "Race",
-            "value": "Unicorn"
+            "value": "Alicorn"
         },
         {
             "trait_type": "Specie",

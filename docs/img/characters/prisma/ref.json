@@ -1,5 +1,5 @@
 {
-    "name": "",
+    "name": "Prisma",
     "image": "ipfs://",
     "image_url": "ipfs://",
     "attributes": [
@@ -29,7 +29,7 @@
         },
         {
             "trait_type": "Designer",
-            "value": ""
+            "value": "AI"
         },
         {
             "trait_type": "Author",
@@ -37,7 +37,7 @@
         },
         {
             "trait_type": "Image",
-            "value": "Reference"
+            "value": "Full Body"
         }
     ],
     "background_color": "FFFFFF"

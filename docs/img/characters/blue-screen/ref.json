@@ -1,11 +1,11 @@
 {
-    "name": "",
+    "name": "Blue Screen - Ref",
     "image": "ipfs://",
     "image_url": "ipfs://",
     "attributes": [
         {
             "trait_type": "Character",
-            "value": "Rayane"
+            "value": "Blue Screen"
         },
         {
             "trait_type": "Cute",
@@ -17,7 +17,7 @@
         },
         {
             "trait_type": "Race",
-            "value": "Unicorn"
+            "value": "Screen"
         },
         {
             "trait_type": "Specie",
