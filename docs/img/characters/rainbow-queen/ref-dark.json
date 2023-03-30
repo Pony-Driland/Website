@@ -1,15 +1,15 @@
 {
-    "name": "",
+    "name": "Rainbow Queen - Ref",
     "image": "ipfs://",
     "image_url": "ipfs://",
     "attributes": [
         {
             "trait_type": "Character",
-            "value": "Rayane"
+            "value": "Rainbow Queen"
         },
         {
             "trait_type": "Cute",
-            "value": "Yes"
+            "value": "Maybe"
         },
         {
             "trait_type": "Gender",
@@ -17,7 +17,7 @@
         },
         {
             "trait_type": "Race",
-            "value": "Unicorn"
+            "value": "Alicorn (???)"
         },
         {
             "trait_type": "Specie",
@@ -29,7 +29,7 @@
         },
         {
             "trait_type": "Designer",
-            "value": ""
+            "value": "Blujetink"
         },
         {
             "trait_type": "Author",

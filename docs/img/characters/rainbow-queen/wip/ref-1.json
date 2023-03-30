@@ -1,11 +1,11 @@
 {
-    "name": "",
+    "name": "Rainbow Queen - Light Version (WIP)",
     "image": "ipfs://",
     "image_url": "ipfs://",
     "attributes": [
         {
             "trait_type": "Character",
-            "value": "Rayane"
+            "value": "Rainbow Queen"
         },
         {
             "trait_type": "Cute",
@@ -17,7 +17,7 @@
         },
         {
             "trait_type": "Race",
-            "value": "Unicorn"
+            "value": "Alicorn (???)"
         },
         {
             "trait_type": "Specie",
@@ -29,7 +29,7 @@
         },
         {
             "trait_type": "Designer",
-            "value": ""
+            "value": "Blujetink"
         },
         {
             "trait_type": "Author",
@@ -37,7 +37,7 @@
         },
         {
             "trait_type": "Image",
-            "value": "Reference"
+            "value": "Reference (WIP)"
         }
     ],
     "background_color": "FFFFFF"

@@ -1,5 +1,5 @@
 {
-    "name": "",
+    "name": "Rayane - Full Body 1",
     "image": "ipfs://",
     "image_url": "ipfs://",
     "attributes": [
@@ -37,7 +37,7 @@
         },
         {
             "trait_type": "Image",
-            "value": "Reference"
+            "value": "Full Body"
         }
     ],
     "background_color": "FFFFFF"

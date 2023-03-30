@@ -1,11 +1,11 @@
 {
-    "name": "",
+    "name": "Layla - Ref",
     "image": "ipfs://",
     "image_url": "ipfs://",
     "attributes": [
         {
             "trait_type": "Character",
-            "value": "Rayane"
+            "value": "Layla"
         },
         {
             "trait_type": "Cute",
@@ -17,7 +17,7 @@
         },
         {
             "trait_type": "Race",
-            "value": "Unicorn"
+            "value": "Pegasus"
         },
         {
             "trait_type": "Specie",
