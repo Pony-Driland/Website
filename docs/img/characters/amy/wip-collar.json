@@ -28,6 +28,18 @@
         {
             "trait_type": "Size",
             "value": "Normal"
+        },
+        {
+            "trait_type": "Designer",
+            "value": "João the John"
+        },
+        {
+            "trait_type": "Author",
+            "value": "JasminDreasond"
+        },
+        {
+            "trait_type": "Image",
+            "value": "Reference"
         }
     ],
     "background_color": "FFFFFF"
