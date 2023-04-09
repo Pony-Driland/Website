@@ -16638,12 +16638,12 @@
     },
 
     {
-        "value": "Vinny tries to look for a place where Rayane had gone but before Vinny did an investigation looking for a weapon or something that could be used as a weapon.",
+        "value": "Vinny smiles for a few seconds. Vinny tries to look for a place where Rayane had gone but before Vinny did an investigation looking for a weapon or something that could be used as a weapon.",
         "type": "action"
     },
 
     {
-        "value": "Come on! Please!",
+        "value": "Oh! Come on! Please!",
         "character": "Vinny",
         "type": "think"
     },
@@ -16676,19 +16676,18 @@
     },
 
     {
-        "value": "I have ropes stored in my saddle for climbing mountains. Maybe the ropes will finally be useful for now.",
+        "value": "I... I have ropes stored in my saddle for climbing mountains. Maybe the ropes will finally be useful for now.",
         "character": "Ivy",
         "type": "dialogue"
     },
 
     {
-        "value": "Hmmm... Fine.",
-        "character": "Vinny",
-        "type": "dialogue"
+        "value": "Vinny thought it all a little strange. But then Vinny just nodded as he realized this was the single safest method.",
+        "type": "action"
     },
 
     {
-        "value": "I'll tie you up when we're ready. All right?",
+        "value": "Hmmm... Fine. I'll tie you up when we're ready. All right?",
         "character": "Vinny",
         "type": "dialogue"
     }
