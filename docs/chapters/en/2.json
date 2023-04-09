@@ -16584,6 +16584,113 @@
     {
         "value": "Vinny was curious and a little worried trying to understand what was going on, while he slowly approached the door of the warning noise room.",
         "type": "action"
+    },
+
+    {
+        "value": "Do you have any idea about this alert?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I...it must be the surface monitoring computers. Marlon also has a room like that.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy was a little scared as she held herself not to moan in pain. She slowly tried not to cry as some tears came out of her eyes until Vinny arrives in the room.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ooh, sorry, if you want I can try to put your wing back.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny found computers beeping strange behavior that happened on the surface some time ago. Many of the screens were beeping some earthquake warnings. And other alerts seemed to indicate some paranormal behavior of energy concentration that focused on a single point.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fuck! How wonderful!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny then tried to remain calm so as not to scare Ivy during the process.",
+        "type": "action"
+    },
+
+    {
+        "value": "But it's a bad idea heh. Weeeeell, be prepared for anything. I'm here for you. Okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "O..Okay... Mister Vinny.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tries to look for a place where Rayane had gone but before Vinny did an investigation looking for a weapon or something that could be used as a weapon.",
+        "type": "action"
+    },
+
+    {
+        "value": "Come on! Please!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Ivy would get a little worried and start talking sadly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Can't you tie me to your back? I... I don't want to risk accidentally falling during an escape and being left behind.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "During the conversation Vinny only found ammunition stored in the drawers that had been left behind. Vinny grabbed some of the ammo before going back to talking to Ivy.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? Are you sure? Me tie you? Seems like a good idea, but calm down. We have no way to tie you. if you find something to tie, it helps.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy then smiled a little when remembering something important.",
+        "type": "action"
+    },
+
+    {
+        "value": "I have ropes stored in my saddle for climbing mountains. Maybe the ropes will finally be useful for now.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmm... Fine.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I'll tie you up when we're ready. All right?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
