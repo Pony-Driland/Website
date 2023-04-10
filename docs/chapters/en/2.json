@@ -16690,6 +16690,83 @@
         "value": "Hmmm... Fine. I'll tie you up when we're ready. All right?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy was a little worried watching Vinny prepare the rope that would be used to tie.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..Yes. But please go carefully. I know I'm going to be in pain but I don't want to be in too much pain.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah. It will only hurt a little bit. It's gonna be alright, anything can squeeze my hoof.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy spoke in a depressive way while crying a little while looking at Vinny's kindness wanting to help her.",
+        "type": "action"
+    },
+
+    {
+        "value": "B..But please. If I'm hindering you more than helping you, please let me know. I also don't want to disturb you and the mysterious Rayane. I saw on the computer that it looks like there were some earthquakes in Pony Driland.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy was starting to cry harder, starting to feel more and more insignificant looking at herself.",
+        "type": "action"
+    },
+
+    {
+        "value": "I... I don't want my existence to end up with any of your plans. You know? I don't know what I can do with my life anymore. I just wish I had at least one new friend like Wagner.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised and scared, but he tried to show a neutral feeling when he answered Ivy.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, it could be the bomb that was exploded, it could be our reinforcements, or the Elite Color. I'll let you hope which one you want to get to us first. Don't worry. I'll take you to your boyfriend.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little when he finished talking and then he just continued his journey towards Rayane. Ivy then stopped being dramatic and embarrassed during the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "B...boyfriend? And...he's not my boyfriend.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy blushed, and didn't know what to say for a few seconds. Meanwhile Vinny kept hearing the sound of other computers beeping, and him heard the sound of someone who was inside one of the rooms that had the door closed",
+        "type": "action"
+    },
+
+    {
+        "value": "Hehe! Poor Ivy. I... I... A...ah? Someone here?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny slowly moved closer to the door during the process.",
+        "type": "action"
     }
 
 ]
