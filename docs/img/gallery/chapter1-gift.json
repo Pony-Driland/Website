@@ -1,0 +1,44 @@
+{
+    "name": "Rainbow Queen - The Death Soul's adorable gaze",
+    "image": "ipfs://",
+    "image_url": "ipfs://",
+    "attributes": [
+        {
+            "trait_type": "Character",
+            "value": "Rainbow Queen"
+        },
+        {
+            "trait_type": "Cute",
+            "value": "Yes"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Race",
+            "value": "Alicorn (???)"
+        },
+        {
+            "trait_type": "Specie",
+            "value": "Pony"
+        },
+        {
+            "trait_type": "Size",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Designer",
+            "value": "João the John"
+        },
+        {
+            "trait_type": "Author",
+            "value": "JasminDreasond"
+        },
+        {
+            "trait_type": "Image",
+            "value": "Chapter 1 - Gift Art"
+        }
+    ],
+    "background_color": "000000"
+}
