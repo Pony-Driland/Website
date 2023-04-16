@@ -16759,7 +16759,7 @@
     },
 
     {
-        "value": "Hehe! Poor Ivy. I... I... A...ah? Someone here?",
+        "value": "Hehe! Poor Ivy. I... I... A...ah? What?",
         "character": "Vinny",
         "type": "think"
     },
@@ -16767,6 +16767,153 @@
     {
         "value": "Vinny slowly moved closer to the door during the process.",
         "type": "action"
+    },
+
+    {
+        "value": "Ivy? Are you listening to this?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..yes! Is it the mysterious Rayane? You two seem like a good couple.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy giggles innocently during the talk.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. Who knows, one day we'll do it. First the world, then the good moment. She's not the type to make noise. Want to go check?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy is very curious to hear this, wanting to know better what Vinny was talking about.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...ah? But she is so kind and is always with you. I...I'm confused. Why is everyone so afraid of someone with such empathy? This isn't fair...",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy would then start to have bad memories and start to cry a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "...in the same way that the life isn't fair to me. I...I always need someone's help to survive...and...I just get in the way of other people's lives because of it.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "and....",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy tried more and more to control her negative feelings. Ivy started to feel a pain in her heart, Ivy's eyes started to turn gray for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "B..But I promise to try to be of use to you in something. Even if it's something very dangerous and I don't have a choice. Maybe Marlon is right.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was worried and didn't understand the motive from Ivy's eyes were turning gray.",
+        "type": "action"
+    },
+
+    {
+        "value": "I...Ivy?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y...Yes... Marlon is right... I have to stop being a crying baby and try to take my first steps to try to find my destiny. W...Well... Let's check.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy kept crying with difficulty breathing, but then Vinny untied Ivy to hold her hoof, to try to calm her down.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...Whoa! Ivy... calm down, you don't need to change, be who you don't want. It's okay to be you, by the way, if you take the lead and get shot and die? am I going to tell your boyfriend there? He doesn't even know you're alive. Anyway, be you. You're used to being you, don't be a stranger to yourself.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy's eyes slowly returned to the normal colors. Ivy was slowly breathing normally again, making Vinny feel calm again from the situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "How strange. Do eye colors in this world have any meaning?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "H...he doesn't know if I'm alive. That's the thing. It won't make any difference if I accidentally sacrifice myself.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy's eyes fluctuate back from gray to normal colors, but Vinny is still trying to help Ivy feel better. Ivy's blank stare scared Vinny a little, but Vinny wiped away Ivy's tears.",
+        "type": "action"
+    },
+
+    {
+        "value": "No one will miss me. After all... He doesn't even know me well... I was fooled by my fantasies that a colorful world of unicorns could at least make me feel better about finding my happiness, even if it was all an accident. But even that didn't make me happy.... What more fantasies coming true could help me after this?",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I..Ivy? P..Please stop. I'm here with you, don't you remember?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "N...Now I'm just a coordinated pegasus... At least die like the magical creature of my dreams. H..hah! I'm... nothing.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "F...Fuck! IVY NO!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny remembered Rayane's water pot, so he started giving water to Ivy to try to do Ivy calm down again. When Vinny screamed, something caught the attention of whoever was inside the room, and then the something approached the door of the mysterious room and prepared to do something.",
+        "type": "action"
+    },
+
+    {
+        "value": "I...Ivy! Calm down! Please don't die! You'll get out of here alive and well! Wagner is feeling that you are fine. Just trust me!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
