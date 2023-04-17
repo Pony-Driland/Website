@@ -16959,7 +16959,6 @@
         "type": "think"
     },
 
-
     {
         "value": "Vinny looks at the subway camera. Vinny could see that some stations had problems with landslides, preventing the metro from working properly. On another screen Vinny see a mysterious train roaming the subway looking for something. And when Vinny tries to rewind the main camera in time, Vinny would see a shadow using magic.",
         "type": "action"
@@ -16972,12 +16971,7 @@
     },
 
     {
-        "value": "Vinny then became curious why Ivy had been quiet, so Vinny turns around slowly.",
-        "type": "action"
-    },
-
-    {
-        "value": "The Vinny snout eventually pokes with Rayane's snout, she uses her hoof to squish the Vinny snout in response.",
+        "value": "Vinny then became curious why Ivy had been quiet, so Vinny turns around slowly. The Vinny snout eventually pokes with Rayane's snout, she uses her hoof to squish the Vinny snout in response.",
         "type": "action"
     },
 
@@ -16993,7 +16987,7 @@
     },
 
     {
-        "value": "Hihi! I said that one hour I was going to steal a kiss from you. I was just waiting for a moment in the dark.",
+        "value": "Hihi! I said that one hour I was going to steal a kiss from you. I was just waiting for a moment in the darkness.",
         "character": "Vinny",
         "type": "dialogue"
     },
