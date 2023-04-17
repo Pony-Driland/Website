@@ -17058,6 +17058,39 @@
         "value": "Ivy is traumatized and very depressed. We need to take care of her. Ivy soul could collapse in depression if she continues to be depressed. It will kill her.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets a little surprised to hear this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y...Yes. It's ok. Hmmmmmmm... Ivy? I think Wagner is very hurt for having helped with the bomb. I have a suggestion for you. Your kiss would help Wagner, his reaction will be the same as Rayane's, see?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little, making Ivy blush a little, but her tears finally stopped again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y...Yes. I...I...I'll remember that. Looks like he needs my help little help.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy starts to feel a little calmer during the conversation, making Ivy's eyes finally return to the natural color.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..wow! This is working! The eyes really seem to say things through the colors.",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
