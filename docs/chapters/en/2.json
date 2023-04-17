@@ -16908,6 +16908,116 @@
         "value": "I...Ivy! Calm down! Please don't die! You'll get out of here alive and well! Wagner is feeling that you are fine. Just trust me!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Then the closed door opened, causing Vinny to look back as Vinny gently tried to get Ivy to drink more water in the process.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...What? O..Ok, that's not cool. But it's the only alternative!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then enter the room and press the button to close the door while placing Ivy's body gently on the floor under the table.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ivy. Take a deep breath. You are safe now. Please don't die.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was making his last efforts to try and make Ivy feel better, then all of a sudden Ivy's eyes slowly started to go back to normal.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ivy?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny couldn't hear anything else, everything was very quiet. The room was completely empty. Vinny saw something extremely similar to what you saw on James' computer showing a bunch of random seismic energy signals that had come down from the west region. At the same time, also  the mysterious concentration of energy that was having on top of Pony Driland's highest mountain was now moving at random points inside the Pony Driland.",
+        "type": "action"
+    },
+
+    {
+        "value": "The data explained that the energy had descended the mountain of Pony Driland, soon after it teleported to some random point in the East region and then returned to the West region. The tracker realized that this mysterious point had gone underground in the West region where it could be somewhere inside the Bunker, but this point soon disappeared from the tracker completely and now only a very weak energy point could be seen coming from the West region.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? This energy then is who I'm thinking of?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+
+    {
+        "value": "Vinny looks at the subway camera. Vinny could see that some stations had problems with landslides, preventing the metro from working properly. On another screen Vinny see a mysterious train roaming the subway looking for something. And when Vinny tries to rewind the main camera in time, Vinny would see a shadow using magic.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Sweetie?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then became curious why Ivy had been quiet, so Vinny turns around slowly.",
+        "type": "action"
+    },
+
+    {
+        "value": "The Vinny snout eventually pokes with Rayane's snout, she uses her hoof to squish the Vinny snout in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmmm... Look who decided to come to me~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then giggles a little and give Rayane a little kiss in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hihi! I said that one hour I was going to steal a kiss from you. I was just waiting for a moment in the dark.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane get a little red, not knowing what to say for a few seconds. Ivy then started to feel better, giggling a little at the situation. Rayane was a little shy for a few seconds before answering again.",
+        "type": "action"
+    },
+
+    {
+        "value": "I... I...Hmmm. Okay~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "M..Mysterious Rayane! What are you and the mysterious Rayane doing?",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy coughed a little as she caught her breath a little better.",
+        "type": "action"
     }
 
 ]
