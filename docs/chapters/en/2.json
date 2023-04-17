@@ -17032,7 +17032,7 @@
     },
 
     {
-        "value": "Me? No! No no... Heh! At least Ivy is feeling better now. Well... did you find any useful information? or some weapon?",
+        "value": "Me? No! No no... Heh! At least Ivy is feeling better now. Well... did you find any useful information? Or some weapon?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -17049,7 +17049,7 @@
     },
 
     {
-        "value": "Ivy is traumatized and very depressed. We need to take care of her. Ivy soul could collapse in depression if she continues to be depressed. It will kill her.",
+        "value": "And Ivy is traumatized and very depressed. We need to take care of her. Ivy soul could collapse in depression if she continues to be depressed. It will kill her.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -17071,7 +17071,7 @@
     },
 
     {
-        "value": "Y...Yes. I...I...I'll remember that. Looks like he needs my help little help.",
+        "value": "M...my little kiss? Y...Yes. I...I...I'll remember that. Looks like he needs my help little help.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -17082,7 +17082,7 @@
     },
 
     {
-        "value": "W..wow! This is working! The eyes really seem to say things through the colors.",
+        "value": "W..wow! Yes! This is working! The eyes really seem to say things through the colors.",
         "character": "Vinny",
         "type": "think"
     }
