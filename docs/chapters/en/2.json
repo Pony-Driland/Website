@@ -17018,6 +17018,46 @@
     {
         "value": "Ivy coughed a little as she her breath a little better during the talk. Vinny was relieved to see Ivy feeling better so he smiled as he looked at Rayane.",
         "type": "action"
+    },
+
+    {
+        "value": "Yes. Ivy is right. Why are you so embarrassed? It even seems that a charming pony like you never received or was stolen a kiss.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then looked at Ivy, also feeling relieved to see Ivy's eyes back to normal. Then Rayane would smirk at Vinny before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "You silly one. I'm the one who steals things around here. Are you trying to take my role?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Me? No! No no... At least Ivy is feeling better now. Well... did you find any useful information? or some weapon?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ Nope. I didn't find any weapons. The only thing I know is that we need to find some station that has another elevator so we can get back to the surface.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then looked a little worried at Ivy. At the same time, Vinny curiously looks at Ivy as well.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ivy is traumatized and very depressed. We need to take care of her. Ivy soul could collapse in depression if she continues to be depressed. It will kill her.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
