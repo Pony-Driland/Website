@@ -124,7 +124,8 @@ var insertMarkdownFile = function (text, isMainPage = false, isHTML = false) {
     }
 
     data = data.replace(new RegExp(`href\=\"${convertBase}docs\\/`, 'g'), 'href="javascript:void(0)" file="../')
-        .replace(new RegExp(`src\=\"${convertBase}docs\\/`, 'g'), 'src="../');
+        .replace(new RegExp(`src\=\"${convertBase}docs\\/`, 'g'), 'src="../')
+        .replace(new RegExp(`src\=\"https\:\/\/ipfs\.io\/ipfs\/`, 'g'), 'src="https://ipfs.io/ipfs/');
 
     // Insert Data
     $('#markdown-read').empty().html(data);
