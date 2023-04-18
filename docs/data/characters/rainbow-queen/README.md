@@ -4,12 +4,12 @@
 
 ### Normal Version (WIP)
 
-<img src="https://ipfs.io/ipfs/characters/rainbow-queen/wip/ref-1.gif?raw=true" height="500">
+<img src="https://ipfs.io/ipfs/QmabThYBUUfz4BAaMiZfUDUnzBA1Jm47tDrZ3v4An1ZQRN" height="500">
 <a href="https://derpibooru.org/images/2717471" target="_blank">Derpibooru Page</a>
 
 ### Dark Version
 
-<img src="https://ipfs.io/ipfs/characters/rainbow-queen/ref-dark.webp?raw=true" height="500">
+<img src="https://ipfs.io/ipfs/QmV6oanUtZPd292AoktjQCNEK3NSZkyJzMjnoVnGk5CFzU" height="500">
 <a href="https://derpibooru.org/images/2743841" target="_blank">Derpibooru Page</a>
 
 <hr/>
@@ -61,7 +61,7 @@ Due to the fact that the Rainbow Queen has in its mix of races being a Sphinx Po
 
 This weapon is the pure manifestation of her negative feelings. Divine creatures with negative feelings are extremely dangerous as their negative feelings can overload the amount of power evolved by anger, this scythe is invoked to try to drain the negative feelings and focus all the anger on a weapon where the negative energy can try to get controlled. But when this weapon is used, it can cause a great level of destruction due to the negative energies accumulated within it.
 
-<img src="https://ipfs.io/ipfs/characters/rainbow-queen/scythe.gif?raw=true" height="500">
+<img src="https://ipfs.io/ipfs/Qmf5q39xgFnieBR3YkZACC1Sk4LPzdLPJXjYHZWcn3D3XS" height="500">
 
 <hr/>
 
