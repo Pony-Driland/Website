@@ -13,7 +13,7 @@ She's a mechanic working on anykind of heavy machinery (mostly steam trains).
 She's a train mechanic, meaning she works on, maintain and drive steam engines. 
 While being sometimes hot headed, she does always try to do good.
 
-<img src="https://ipfs.io/ipfs/characters/whistler/wip/headshot.png?raw=true" height="500">
+<img src="https://ipfs.io/ipfs/QmQ4uTm2uqo4t2twFRYoYAvZgpUCcSacSMb7BQnQTE78sp" height="500">
 
 <hr/>
 
