@@ -55,6 +55,16 @@ Due to the fact that the Rainbow Queen has in its mix of races being a Sphinx Po
 
 <hr/>
 
+<img src="https://ipfs.io/ipfs/QmdNiKoMYBg1n4e82zZo9fZMsVyNCC16D64YSPWcivkLXu" height="500">
+
+Character Lineart: <a href="https://derpibooru.org/tags/artist-colon-joaothejohn" target="_blank">João the John</a>
+
+Scythe Lineart: JasminDreasond
+
+Final Artwork: JasminDreasond
+
+<hr/>
+
 ## Items
 
 ### Scythe
