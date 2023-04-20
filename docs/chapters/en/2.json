@@ -17085,6 +17085,85 @@
         "value": "W..wow! Yes! This is working! The eyes really seem to say things through the colors.",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "Yeah! Look how beautiful the world is. Ivy and Wagner are lovers. They are friends, he switched roles with her at the bomb moment. Ivy, don't worry. He's fine, he's just upset because just like you, he didn't want to participate in it.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little at you before answering with a silly and malicious face.",
+        "type": "action"
+    },
+
+    {
+        "value": "A little couple here?~ I don't think we have just a couple here.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little during the conversation, but was interrupted by Ivy.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y...you and the mysterious Rayane are funny. Even though I don't understand what's going on.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy smiled a little more as she coughed a little due to her body issues.",
+        "type": "action"
+    },
+
+    {
+        "value": "Unfortunately yes. I had no other alternative on how to get money to support my house on my own.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy smiles a slightly depressed when thinking about it. When Vinny noticed this, he quickly reacted to continue the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... Rayane, do you know where there is an elevator? I don't think the train that's coming can be friendly. Especially with Ivy in this state.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane would then agree with Vinny's decision and respond Vinny during the talk.",
+        "type": "action"
+    },
+
+    {
+        "value": "We need a new train first. I already looked at the maps of this place. The elevator is at the next station.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very curious to hear that.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What? One train here? Are you sure? Why are we without light? Well, a train is coming here. I don't know what will come out of it.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "Yes. This bunker is slowly running out of electricity. We destroyed the main power source that not only kept this region green, but also fed all the energy in this place. We'll have to somehow way to stop the new disaster that will be if this region starts a drought too.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
