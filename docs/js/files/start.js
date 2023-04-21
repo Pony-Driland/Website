@@ -654,7 +654,7 @@ $(function () {
                         // Login
                         metaLogin.base,
 
-                        // Read Fanfic
+                        // Read Fic
                         $('<li>', { class: 'nav-item font-weight-bold' + readButtonDisabled }).prepend(
                             $('<a>', { id: 'fic-start', class: 'nav-link', href: '/?path=read-fic&title=Pony%20Driland' }).text('Read Fic').append(isNewValue).prepend(
                                 $('<i>', { class: 'fab fa-readme me-2' })

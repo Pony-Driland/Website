@@ -115,6 +115,7 @@ var storyCfg = {
     ageRating: 'teen',
     tags: [
         "fanfic",
+        "fic",
         "pony",
         "driland",
         "adventure",

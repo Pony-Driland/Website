@@ -93,9 +93,9 @@ storyCfg.web3.login = function () {
 
                     // Nope
                     else {
-                        alert(`Your fanfic account is not active on the blockchain. This transaction will activate your account.`);
+                        alert(`Your website account is not active on the blockchain. This transaction will activate your account.`);
                         storyCfg.web3.contract.enable().then((data) => {
-                            reject(new Error(`Blockchain Storage (BETA) ${puddyWeb3.getBlockchain().chainName} - Your fanfic account is being activated! Wait a while for the blockchain to finish processing your order. \n\nHash: ${data.hash}`));
+                            reject(new Error(`Blockchain Storage (BETA) ${puddyWeb3.getBlockchain().chainName} - Your website account is being activated! Wait a while for the blockchain to finish processing your order. \n\nHash: ${data.hash}`));
                         }).catch(err => { alert(err.message); console.error(err); });
                     }
 
