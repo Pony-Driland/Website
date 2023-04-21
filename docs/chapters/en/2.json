@@ -16776,6 +16776,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Y..yes! Is it the mysterious Rayane? You two seem like a good couple.",
         "character": "Ivy",
         "type": "dialogue"
@@ -16793,6 +16796,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "bad-mystery"
+        },
         "value": "Ivy is very curious to hear this, wanting to know better what Vinny was talking about.",
         "type": "action"
     },
@@ -17138,6 +17144,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Rayane would then agree with Vinny's decision and respond Vinny during the talk.",
         "type": "action"
     },
@@ -17154,6 +17163,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "Tense Path | D&D/TTRPG Music | 1 Hour"
+        },
         "value": "W..What? One train here? Are you sure? Why are we without light? Well, a train is coming here. I don't know what will come out of it.",
         "character": "Vinny",
         "type": "dialogue"
@@ -17163,6 +17175,73 @@
     {
         "value": "Yes. This bunker is slowly running out of electricity. We destroyed the main power source that not only kept this region green, but also fed all the energy in this place. We'll have to somehow way to stop the new disaster that will be if this region starts a drought too.",
         "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would give Ivy a worried look for a few seconds before answering Rayane. Vinny starts to rub his hoof on his head scratching a little nervously.",
+        "type": "action"
+    },
+
+    {
+        "value": "You'll have to help me convince her in words to return it, otherwise I'll ask James to kill me for a few seconds so I can try something worse.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane is confused for a few seconds, until Rayane finally understands what Vinny is talking about.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What? Kill you? N..No Vinny! How can we be sure if Rain can or if she will resurrect you?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy was starting to get very curious and a little scared about what the conversation was about, and she would shyly ask a question.",
+        "type": "action"
+    },
+
+    {
+        "value": "S..sorry to intrude on the private conversation between you and the mysterious Rayane. B...but who are you two talking about? Who is Rain and who is James?",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A..Ah? AH! Sorry! James is a friend of ours. This is simple! James won't kill me in an irreversible way. For example, he kills me for 1 minute or for a short time and then revives me, I don't know how long in this body I can stay without breathing and dead. But anyway, let's think of a plan, what are we going to do here? Wait for someone? See other rooms?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "When Rayane realized that Vinny's idea was too risky, she immediately stopped the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "V...Vinny! No! if your body starts to disintegrate, it's over. Your body would have to be rebuilt again somehow. And you know Rain might as well take your soul away if she doesn't like you.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy was completely confused, but very shy of trying to ask the same question again during the talk.",
+        "type": "action"
+    },
+
+    {
+        "value": "S...Souls? Rain? W...what?",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh! You know she's almost liking me, I think 2 sickles in me she starts to like me, that's how it was with you. You met me only threatened me and kept an eye on me. Anything I give her a peck, try to steal the item and run until James revives me. Of course! I'm kidding in that last sentence. Okay? Relax, let's concentrate first and how to get out of here first.",
+        "character": "Vinny",
         "type": "dialogue"
     }
 
