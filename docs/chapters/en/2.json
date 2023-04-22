@@ -17164,7 +17164,7 @@
 
     {
         "set": {
-            "playlistPlay": "Tense Path | D&D/TTRPG Music | 1 Hour"
+            "playlistPlay": "dark-and-mysterious-ambient"
         },
         "value": "W..What? One train here? Are you sure? Why are we without light? Well, a train is coming here. I don't know what will come out of it.",
         "character": "Vinny",
@@ -17275,7 +17275,7 @@
     },
 
     {
-        "value": "Hmmm. If I don't get the relic, at least some skill, something that can help me, at most I make some pact some bargain. Offering something very tempting so that even if I win or lose the deal, she wins. ARGH! Okay. This is in the last case, I have to explain to James how we got here and even explain that we fought a battle with Marlon and then you exploded taking all of us to a random place. Marlon cried seeing Hirosahi apologizing. But relax. let this for later Rayane. First let's get out of here.",
+        "value": "Hmmm. If I don't get the relic, at least some skill, something that can help me, at most I make some pact some bargain. Offering something very tempting so that even if I win or lose the deal, she wins. ARGH! Okay. This is in the last case, I have to explain to James how we got here and even explain that we fought a battle with Marlon and then you exploded taking all of us to a random place. Marlon cried seeing Hirosahi apologizing. But relax. I will let this for later. First let's get out of here.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -17303,7 +17303,7 @@
     },
 
     {
-        "value": "Heh! I get it. Don't worry, I won't die so easily. But we will die if we stay here doing nothing.",
+        "value": "Hmmm... Heh! I get it. Don't worry, I won't die so easily. But we will die if we stay here doing nothing.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -17314,7 +17314,7 @@
     },
 
     {
-        "value": "Ah? Ivy? You have nothing to talk about? Sorry for the conversation, we were talking about a personification of death and I've irritated her 2 times in a row and I want to steal her love. You said that Marlon offered you money and everything. Wasn't all this planned? You don't know anything about how to get out of here?",
+        "value": "Ah? Ivy? And you? You have nothing to talk about? Sorry for the conversation, we were talking about a personification of death and I've irritated her 2 times in a row and I want to steal her love. You said that Marlon offered you money and everything. Wasn't all this planned? You don't know anything about how to get out of here?",
         "character": "Vinny",
         "type": "dialogue"
     },
