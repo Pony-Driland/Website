@@ -81,6 +81,11 @@ var storyCfg = {
     },
 
     // Info
+    mastodon: {
+        domain: "equestria.social",
+        username: "JasminDreasond"
+    },
+
     gtag: 'G-PS1R5G3G50',
     underDevelopment: false,
     domain: 'ponydriland.com',

@@ -276,17 +276,17 @@ $(function () {
         storyData.start(function (fn, readme) {
 
             // Crypto Allow Detector
-            if(
-                storyData.ipRegistry && 
-                storyData.ipRegistry.location && 
-                storyData.ipRegistry.location.country && 
+            if (
+                storyData.ipRegistry &&
+                storyData.ipRegistry.location &&
+                storyData.ipRegistry.location.country &&
                 typeof storyData.ipRegistry.location.country.code === 'string'
             ) {
 
                 storyData.allowCrypto = true;
-                if(Array.isArray(storyCfg.cryptoBlock)) {
-                    for(const item in storyCfg.cryptoBlock) {
-                        if(storyData.ipRegistry.location.country.code === storyCfg.cryptoBlock[item]) {
+                if (Array.isArray(storyCfg.cryptoBlock)) {
+                    for (const item in storyCfg.cryptoBlock) {
+                        if (storyData.ipRegistry.location.country.code === storyCfg.cryptoBlock[item]) {
                             storyData.allowCrypto = false;
                             break;
                         }
@@ -644,7 +644,7 @@ $(function () {
 
                     // Nav 2
                     $('<ul>', { class: 'nav navbar-nav ms-auto mb-2 mb-lg-0 small', id: 'fic-nav' }).append(
-                        
+
                         // Status Place
                         $('<li>', { id: 'status' }).css('display', 'contents'),
 
@@ -755,6 +755,13 @@ $(function () {
                                             $('<i>', { class: 'fas fa-wifi me-2' })
                                         )
                                     ), */
+
+                                    // Mastodon
+                                    $('<li>').prepend(
+                                        $('<a>', { rel: 'me', target: '_blank', href: `https://${storyCfg.mastodon.domain}/@${storyCfg.mastodon.username}` }).text('Mastodon').prepend(
+                                            $('<i>', { class: 'fa-brands fa-mastodon me-2' })
+                                        )
+                                    ),
 
                                     $('<li>').append(
                                         $('<a>', { target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}` }).text('Discord Server').prepend(
