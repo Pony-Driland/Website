@@ -21,7 +21,7 @@
 .mastodon-tag-copy {
     pointer-events: none;
     position: fixed;
-    top: -100000;
+    top: -50px;
     left: 0
 }
 
