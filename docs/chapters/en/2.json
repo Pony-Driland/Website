@@ -17243,6 +17243,91 @@
         "value": "Heh! You know she's almost liking me, I think 2 sickles in me she starts to like me, that's how it was with you. You met me only threatened me and kept an eye on me. Anything I give her a peck, try to steal the item and run until James revives me. Of course! I'm kidding in that last sentence. Okay? Relax, let's concentrate first and how to get out of here first.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane answered worriedly while trying to understand what Vinny was talking about.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "I was being silly with you. I like to provoke others ponies. Rain is way above me and she plays like me only among friends, she has decision-making power over the life from others ponies. Even if she doesn't kill you, she can do serious punishment on you.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmmmmm... Okay. For example?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little more worried and continued her answer.",
+        "type": "action"
+    },
+
+    {
+        "value": "S...She can seal you. She can remove your strength. And if you're just a soul, she can even erase your memory. It's what she does when she wants some pony to reincarnate.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmm. If I don't get the relic, at least some skill, something that can help me, at most I make some pact some bargain. Offering something very tempting so that even if I win or lose the deal, she wins. ARGH! Okay. This is in the last case, I have to explain to James how we got here and even explain that we fought a battle with Marlon and then you exploded taking all of us to a random place. Marlon cried seeing Hirosahi apologizing. But relax. let this for later Rayane. First let's get out of here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane looked a little more worried than usual, but she was still trying to remain calm.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...Well... We have a part of the Master SmartMoby. So we could try to use it to try to benefit both regions. Y..Yes! We have to avoid trying to make pacts as much as possible! Remember one thing. If you lose, the pact is literally you selling your soul to Rain. You will literally be submissive to her will whether you like it or not.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane takes a deep breath, trying to stay calm during the talk.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm not sure James will have anything to resurrect you. I've never seen any other pony around here manage to resurrect another pony. The only pony I know of that has the ability to raise the dead is Rain.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh! I get it. Don't worry, I won't die so easily. But we will die if we stay here doing nothing.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little confidently before looking at Ivy.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Ivy? You have nothing to talk about? Sorry for the conversation, we were talking about a personification of death and I've irritated her 2 times in a row and I want to steal her love. You said that Marlon offered you money and everything. Wasn't all this planned? You don't know anything about how to get out of here?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy was very scared and confused by the subject of the conversation as she tried to keep quiet.",
+        "type": "action"
+    },
+
+    {
+        "value": "I... I don't know what to say. What is this deal and life or death story? It seems that you are talking about some deity or something paranormal. I'm not enjoying this conversation at all, is there something much more than what I need know about this world? And...And what happened to Hiroshi?",
+        "character": "Ivy",
+        "type": "dialogue"
     }
 
 ]
