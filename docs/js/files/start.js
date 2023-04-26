@@ -723,6 +723,76 @@ $(function () {
                 $('<div>', { id: 'markdown-read', class: 'container' })
             );
 
+            // Footer Base
+            const tinyFooter = { 1: [], 2: [] };
+
+            // Footer 1
+
+            // OpenSea
+            if (storyCfg.opensea) {
+                tinyFooter[1].push($('<li>').append(
+                    $('<a>', { target: '_blank', href: `https://opensea.io/collection/${storyCfg.opensea}` }).text('OpenSea').prepend(
+                        $('<i>', { class: 'fab fa-ethereum me-2' })
+                    )
+                ));
+            }
+
+            // CID32
+            if (storyData.cid32) {
+                tinyFooter[1].push($('<li>').append(
+                    $('<a>', { href: `https://${storyData.cid32}.ipfs.dweb.link/` }).text('IPFS ' + storyCfg.nftDomain.name).prepend(
+                        $('<i>', { class: 'fas fa-wifi me-2' })
+                    )
+                ));
+            }
+
+            // Mastodon
+            if (storyCfg.mastodon) {
+                tinyFooter[1].push($('<li>').prepend(
+                    $('<a>', { rel: 'me', target: '_blank', href: `https://${storyCfg.mastodon.domain}/@${storyCfg.mastodon.username}` }).text('Mastodon').prepend(
+                        $('<i>', { class: 'fa-brands fa-mastodon me-2' })
+                    )
+                ));
+            }
+
+            // Discord Invite
+            if (storyCfg.discordInvite) {
+                tinyFooter[1].push($('<li>').append(
+                    $('<a>', { target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}` }).text('Discord Server').prepend(
+                        $('<i>', { class: 'fab fa-discord me-2' })
+                    ),
+                ));
+            }
+
+            // Footer 2
+            tinyFooter[2].push($('<li>').append(
+                $('<a>', { target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.valueURL) }).text(storyCfg.nftDomain.name).prepend(
+                    $('<i>', { class: 'fas fa-marker me-2' })
+                ),
+            ));
+
+            tinyFooter[2].push($('<li>').append(
+                $('<a>', { target: '_blank', href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}` }).text('Github').prepend(
+                    $('<i>', { class: 'fab fa-github me-2' })
+                ),
+            ));
+
+            tinyFooter[2].push($('<li>').append(
+                $('<a>', { target: '_blank', href: 'mailto:' + storyCfg.contact }).text('Contact').prepend(
+                    $('<i>', { class: 'fas fa-envelope me-2' })
+                )
+            ));
+
+            tinyFooter[2].push($('<li>').prepend(
+                $('<a>', { href: '/?path=%2FLICENSE.md&title=License', href: '/?path=%2FLICENSE.md&title=License', id: 'license' }).text('License').prepend(
+                    $('<i>', { class: 'fas fa-copyright me-2' })
+                )
+            ).click(function () {
+                openMDFIle('/LICENSE.md');
+                urlUpdate('/LICENSE.md', 'License');
+                return false;
+            }));
+
             // Insert Footer
             $('body').append(
                 $('<footer>', { class: 'page-footer font-small pt-4 clearfix' }).append(
@@ -742,70 +812,13 @@ $(function () {
                             // Links 1
                             $('<div>', { class: 'col-md-3 mb-md-0 mb-3' }).append(
                                 $('<h5>').text('Links'),
-                                $('<ul>', { class: 'list-unstyled' }).append(
-
-                                    $('<li>').append(
-                                        $('<a>', { target: '_blank', href: `https://opensea.io/collection/${storyCfg.opensea}` }).text('OpenSea').prepend(
-                                            $('<i>', { class: 'fab fa-ethereum me-2' })
-                                        )
-                                    ),
-
-                                    /* $('<li>').append(
-                                        $('<a>', { href: `https://${storyData.cid32}.ipfs.dweb.link/` }).text('IPFS ' + storyCfg.nftDomain.name).prepend(
-                                            $('<i>', { class: 'fas fa-wifi me-2' })
-                                        )
-                                    ), */
-
-                                    // Mastodon
-                                    $('<li>').prepend(
-                                        $('<a>', { rel: 'me', target: '_blank', href: `https://${storyCfg.mastodon.domain}/@${storyCfg.mastodon.username}` }).text('Mastodon').prepend(
-                                            $('<i>', { class: 'fa-brands fa-mastodon me-2' })
-                                        )
-                                    ),
-
-                                    $('<li>').append(
-                                        $('<a>', { target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}` }).text('Discord Server').prepend(
-                                            $('<i>', { class: 'fab fa-discord me-2' })
-                                        ),
-                                    )
-
-                                )
+                                $('<ul>', { class: 'list-unstyled' }).append(tinyFooter[1])
                             ),
 
                             // Links 2
                             $('<div>', { class: 'col-md-3 mb-md-0 mb-3' }).append(
                                 $('<h5>').text('Links'),
-                                $('<ul>', { class: 'list-unstyled' }).append(
-
-                                    $('<li>').append(
-                                        $('<a>', { target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.valueURL) }).text(storyCfg.nftDomain.name).prepend(
-                                            $('<i>', { class: 'fas fa-marker me-2' })
-                                        ),
-                                    ),
-
-                                    $('<li>').append(
-                                        $('<a>', { target: '_blank', href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}` }).text('Github').prepend(
-                                            $('<i>', { class: 'fab fa-github me-2' })
-                                        ),
-                                    ),
-
-                                    $('<li>').append(
-                                        $('<a>', { target: '_blank', href: 'mailto:' + storyCfg.contact }).text('Contact').prepend(
-                                            $('<i>', { class: 'fas fa-envelope me-2' })
-                                        )
-                                    ),
-
-                                    $('<li>').prepend(
-                                        $('<a>', { href: '/?path=%2FLICENSE.md&title=License', href: '/?path=%2FLICENSE.md&title=License', id: 'license' }).text('License').prepend(
-                                            $('<i>', { class: 'fas fa-copyright me-2' })
-                                        )
-                                    ).click(function () {
-                                        openMDFIle('/LICENSE.md');
-                                        urlUpdate('/LICENSE.md', 'License');
-                                        return false;
-                                    })
-
-                                )
+                                $('<ul>', { class: 'list-unstyled' }).append(tinyFooter[2])
                             )
 
                         )
