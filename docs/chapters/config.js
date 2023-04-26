@@ -2,7 +2,7 @@ var storyCfg = {
 
     // Crypto Block
     cryptoBlock: [
-        
+
         'CN', 'CHN',
 
         'DE', 'DEU',
@@ -86,6 +86,11 @@ var storyCfg = {
         username: "JasminDreasond"
     },
 
+    // Info
+    mirror: [
+        'https://ponydriland.jimm.horse/'
+    ],
+
     gtag: 'G-PS1R5G3G50',
     underDevelopment: false,
     domain: 'ponydriland.com',
@@ -110,7 +115,6 @@ var storyCfg = {
 
     creator: 'Yasmin Seidel (JasminDreasond)',
     creator_url: 'https://ud.me/ponydriland.nft',
-    opensea: 'ponydriland',
 
     github: {
         account: 'Pony-Driland',
