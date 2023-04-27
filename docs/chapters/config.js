@@ -88,7 +88,7 @@ var storyCfg = {
 
     // Info
     mirror: [
-        'https://ponydriland.jimm.horse/'
+        'ponydriland.jimm.horse'
     ],
 
     gtag: 'G-PS1R5G3G50',
