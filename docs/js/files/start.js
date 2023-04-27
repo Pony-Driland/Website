@@ -778,16 +778,16 @@ $(function () {
             }
 
             // Mirror
-            if (!Array.isArray(storyCfg.mirror) || storyCfg.mirror.length < 1 || storyCfg.mirror.indexOf(location.host) > -1) {
+            if (!Array.isArray(storyCfg.mirror) || storyCfg.mirror.indexOf(location.host) < 0) {
                 tinyFooter[1].push($('<li>').append(
                     $('<a>', { target: '_blank', href: `https://${storyCfg.domain}` }).text('Website').prepend(
-                        $('<i>', { class: 'fab fa-discord me-2' })
+                        $('<i>', { class: 'fa-solid fa-pager me-2' })
                     ),
                 ));
             } else {
                 tinyFooter[1].push($('<li>').append(
-                    $('<a>', { target: '_blank', href: `https://${storyCfg.mirror[dice.roll() - 1]}` }).text('Website').prepend(
-                        $('<i>', { class: 'fab fa-discord me-2' })
+                    $('<a>', { target: '_blank', href: `https://${storyCfg.mirror[dice.roll() - 1]}` }).text('Mirror').prepend(
+                        $('<i>', { class: 'fa-solid fa-pager me-2' })
                     ),
                 ));
             }
