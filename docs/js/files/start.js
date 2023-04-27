@@ -15,6 +15,19 @@ console.log(`Github Repository: https://github.com/${storyCfg.github.account}/${
 console.log(`Tags`, storyCfg.tags);
 console.groupEnd();
 
+var dice = {
+    roll: function () {
+        var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+        return randomNumber;
+    }
+};
+
+if (Array.isArray(storyCfg.mirror) || storyCfg.mirror.length > 0) {
+    dice.sides = storyCfg.mirror.length;
+} else {
+    dice.sides = 0;
+}
+
 // URL Update
 var urlUpdate = function (url, title, isPopState = false) {
 
@@ -759,6 +772,21 @@ $(function () {
             if (storyCfg.discordInvite) {
                 tinyFooter[1].push($('<li>').append(
                     $('<a>', { target: '_blank', href: `https://discord.gg/${storyCfg.discordInvite}` }).text('Discord Server').prepend(
+                        $('<i>', { class: 'fab fa-discord me-2' })
+                    ),
+                ));
+            }
+
+            // Mirror
+            if (!Array.isArray(storyCfg.mirror) || storyCfg.mirror.length < 1 || storyCfg.mirror.indexOf(location.host) > -1) {
+                tinyFooter[1].push($('<li>').append(
+                    $('<a>', { target: '_blank', href: `https://${storyCfg.domain}` }).text('Website').prepend(
+                        $('<i>', { class: 'fab fa-discord me-2' })
+                    ),
+                ));
+            } else {
+                tinyFooter[1].push($('<li>').append(
+                    $('<a>', { target: '_blank', href: `https://${storyCfg.mirror[dice.roll() - 1]}` }).text('Website').prepend(
                         $('<i>', { class: 'fab fa-discord me-2' })
                     ),
                 ));
