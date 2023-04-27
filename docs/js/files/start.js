@@ -765,17 +765,21 @@ $(function () {
             }
 
             // Footer 2
-            tinyFooter[2].push($('<li>').append(
-                $('<a>', { target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.valueURL) }).text(storyCfg.nftDomain.name).prepend(
-                    $('<i>', { class: 'fas fa-marker me-2' })
-                ),
-            ));
+            if (storyCfg.nftDomain) {
+                tinyFooter[2].push($('<li>').append(
+                    $('<a>', { target: '_blank', href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.valueURL) }).text(storyCfg.nftDomain.name).prepend(
+                        $('<i>', { class: 'fas fa-marker me-2' })
+                    ),
+                ));
+            }
 
-            tinyFooter[2].push($('<li>').append(
-                $('<a>', { target: '_blank', href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}` }).text('Github').prepend(
-                    $('<i>', { class: 'fab fa-github me-2' })
-                ),
-            ));
+            if (storyCfg.github) {
+                tinyFooter[2].push($('<li>').append(
+                    $('<a>', { target: '_blank', href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}` }).text('Github').prepend(
+                        $('<i>', { class: 'fab fa-github me-2' })
+                    ),
+                ));
+            }
 
             tinyFooter[2].push($('<li>').append(
                 $('<a>', { target: '_blank', href: 'mailto:' + storyCfg.contact }).text('Contact').prepend(
