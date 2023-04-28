@@ -17328,6 +17328,72 @@
         "value": "I... I don't know what to say. What is this deal and life or death story? It seems that you are talking about some deity or something paranormal. I'm not enjoying this conversation at all, is there something much more than what I need know about this world? And...And what happened to Hiroshi?",
         "character": "Ivy",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little sorry he'd scared Ivy accidentally.",
+        "type": "action"
+    },
+
+    {
+        "value": "C...Calm down Ivy. James is a friend of ours, he is together with Wagner. You can forget this talk of death, and adult stuff too.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then look at Rayane, then at Ivy, then at Rayane again. Vinny was not sure what to do.",
+        "type": "action"
+    },
+
+    {
+        "value": "I really don't know what to do Rayane. Are we stuck here until someone came to us?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy would start to cry a little, trying not to lose hope. Rayane would then look at the two for a few seconds before talking to Ivy.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ivy? Ssssh~ Calm down. it'll be ok. I'm sure when you have Wagner around, he'll teach you how to be a very strong pegasus. as strong as I am~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane pats Ivy's head gently to make her slowly calm down. Ivy slowly stopped crying while thinking a little about Rayane's words.",
+        "type": "action"
+    },
+
+    {
+        "value": "R...really? And... can I trust the mysterious Rayane? I...It feels like I'm living in a second fantasy world....",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ Yes. It's never too late to grow up. The crazy Marlon just tried to do it the wrong way. You can be sure that his time will come soon.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy then does a small shy smile, feeling better at Rayane's words.",
+        "type": "action"
+    },
+
+    {
+        "value": "O...Okay. Mysterious Rayane.",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was happy to see Ivy feeling better, so Rayne finished the pat time on Ivy's head in response. Then Vinny looked surprised at Rayane, and giggles a little while waiting for Rayane's answer.",
+        "type": "action"
     }
 
 ]
