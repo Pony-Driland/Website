@@ -17375,6 +17375,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Heh~ Yes. It's never too late to grow up. The crazy Marlon just tried to do it the wrong way. You can be sure that his time will come soon.",
         "character": "Rayane",
         "type": "dialogue"
@@ -17392,7 +17395,66 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "bad-think"
+        },
         "value": "Rayane was happy to see Ivy feeling better, so Rayne finished the pat time on Ivy's head in response. Then Vinny looked surprised at Rayane, and giggles a little while waiting for Rayane's answer.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh. Okay silly one~ I remember seeing a train on one of the monitors, but I'm not sure if this train is going to be a good thing or a bad thing. The train is almost arrived at our station.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little pensive listening to this, trying to think what these passengers might be. Vinny was confused if this could be help or trouble.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmm... I can't say, you don't know who's coming, right?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Unfortunately I don't know who's coming. It could be Kai's reinforcements. It could be someone unknown. Or at worst, someone hunting the radar energy signal.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Alright... Let's watch the cameras. Sometimes we get an angle to see who is coming.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny took a deep breath worriedly as he watched Ivy resting, then Vinny decided to look at the monitors.",
+        "type": "action"
+    },
+
+    {
+        "value": "It's ok. Good idea to have remembered that.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane also looked at Ivy, and smiled again as Rayane spawned some pillows on the floor so everyone could rest if necessary. Ivy just hugged one of the pillows and began to rest deeply, Ivy seemed to be feeling much safer for finally getting a moment of peace.",
+        "type": "action"
+    },
+
+    {
+        "value": "I have a feeling that it's already night on the surface. We can't stay stuck in this place for too long or we'll end up losing the notion of day or night. ",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny saw that the train was now passing by another camera that indicated a place that was very close to the station where Vinny and Rayane were. Vinny was a little surprised to see that the train was actually preparing to stop at the station.",
         "type": "action"
     }
 
