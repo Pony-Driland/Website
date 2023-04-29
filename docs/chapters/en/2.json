@@ -17456,6 +17456,184 @@
     {
         "value": "Vinny saw that the train was now passing by another camera that indicated a place that was very close to the station where Vinny and Rayane were. Vinny was a little surprised to see that the train was actually preparing to stop at the station.",
         "type": "action"
+    },
+
+    {
+        "value": "Ivy just stayed very quiet and shy, wanting not to participate in the conversation, she made some little groans of pain as she was placed, but she tried hard not to make too much noise, so she just positioned herself in a comfortable position to try to continue sleeping.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..oh yes. Thank you sir Vinny and Mysterious Rayane. And...I don't know what I would have done if you weren't here. Maybe things will get better when I wake up...",
+        "character": "Ivy",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy hugs the pillow and tried to close her eyes to try to relax and get some sleep in response. Vinny and Rayane curiously looked at Ivy for a few seconds upon hearing this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Good night Ivy.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles gently as he stood beside Rayane again. Then Vinny spoke ironically.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane... Have you ever thought about having children?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then used her magic to place a blanket over Ivy gently to make her feel safer. When Ivy felt the blanket, she started to sleep very calmly. She just wanted to rest and be at peace.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ She's sleeping like a little angel.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little surprised by Vinny question and was a little embarrassed.",
+        "type": "action"
+    },
+
+    {
+        "value": "C..children? No. It never crossed my mind, I never had time in my life to think about that kind of thing.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heheh. I know, unfortunately so far I have no desire to have one. Put yourself in the place where you are Ivy's mother. How much she suffered and all her life she was living alone. Until you get here. You find your daughter all broken. You would want to go out breaking everything you see ahead, right.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was thoughtful, but soon after she giggles a little before answering. Rayane slowly turned off the light in the camera room to make it darker for Ivy to sleep.",
+        "type": "action"
+    },
+
+    {
+        "value": "Silly~ That's a coincidence. I've always had this more affectionate side. Ivy just has a more childish behavior that may have ended up making this context different.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny lay down leaning on Rayane and on the computer table.",
+        "type": "action"
+    },
+
+    {
+        "value": "I know, I'm just giving her as an example, since she has a more childish behavior. Is daughter and son. You never thought you know me for a few days, if something if I die you will be at least sad right. Imagine someone who came from you and spend their life always by your side. I don't have children, but I have a lot of friends who need help.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little sad as she prepared herself to respond to Vinny's words. Then Rayane took a deep breath before starting to answer.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sorry Vinny. I never wanted to create a family. My lifestyle unfortunately never allowed me to do that. But at the very least, I wanted to get back my old family back. The same family as me now I know Hiroshi was also part of.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane made a slight sad look at Hiroshi's amulet that appeared again on her hoof for a few seconds. Vinny was beginning to understand a little of what was going on inside this mystery, but there was still more to be discovered. Rayane stopped looking at the amulet when she heard the noise of the computer.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "What?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane would then turn on just one of the monitors so the room wouldn't be too bright. The computer indicated that the train was starting to enter the station zone.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Are we going there? Or will they come to us?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was very thoughtful about something. Rayane then got up from the mattress and looked at Ivy for a few seconds before slowly starting to use magic.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Yes. Let's go, but I don't want Ivy to be in danger. I will weaken her SmartMoby. So she will hardly be woken up, and no one will detect that she is here.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane used the magic to weaken  the Ivy's smartmoby. Rayane used the magic very carefully so as not to make Ivy's body too weak due to her condition. Seeing that her body was very relaxed and passed out, Rayane stopped using the magic and just covered her body a little more to be very comfortable and hidden among the other items thrown around the room. Rayane made a small smile of satisfaction with the result and looked back at Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "She will be safe in this room. I'll take care of the digital key.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh! Okay, I'm with you! You can go ahead. I'm naked with weapons. Anything we improvise.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiled when he saw Rayane's determination. Rayane giggles a little but then returned to a more serious look as she approached the door.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Let's go. But if something happens then... Please run away with Ivy.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Relax! Don't think like that, by the way, you made me promise that I would stay by your side. This is your fault.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smirks a little depressed as she kept Hiroshi's amulet.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't worry. I won't be left behind. I just want you to run so we have time to run away together. Okay?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then took the digital key and set the door to be opened only from the inside. Rayane opened the room door and went towards the station door.",
+        "type": "action"
     }
 
 ]
