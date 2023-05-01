@@ -31,7 +31,7 @@ fs.readdir(folderPath, (err, files) => {
             console.log('Creating JSON oEmbed...');
             fs.writeFileSync(path.join(ficData.path, './oEmbed/characters/' + file.name + '.json'), JSON.stringify({
                 author_name: jsonFile.author_name,
-                url: '/oEmbed/characters/' + file.name + '.' + jsonFile.image,
+                url: ficData.config.ipfs.host.replace('{cid}', jsonFile.image),
                 cache_age: 7200,
                 tags: jsonFile.tags,
                 provider_name: ficData.config.title,
@@ -78,7 +78,7 @@ fs.readdir(folderPath, (err, files) => {
 
         <!-- Embed -->
         <link href="../oEmbed/characters/${file.name}.json" rel="alternate" title="oEmbed JSON Profile" type="application/json+oembed">
-        <meta content="../oEmbed/characters/${file.name}.${jsonFile.image}" property="og:image">
+        <meta content="${ficData.config.ipfs.host.replace('{cid}', jsonFile.image)}" property="og:image">
         <link href="https://${ficData.config.domain}/characters/${file.name}.html" rel="canonical">
         
         <!-- Theme -->
@@ -95,7 +95,7 @@ fs.readdir(folderPath, (err, files) => {
         <meta name="twitter:card" content="summary">
         <meta name="twitter:site" content="@${ficData.config.twitter.username}">
         <meta name="twitter:creator" content="@${ficData.config.twitter.username}">
-        <meta name="twitter:image" content="/oEmbed/characters/${file.name}.${jsonFile.image}">
+        <meta name="twitter:image" content="${ficData.config.ipfs.host.replace('{cid}', jsonFile.image)}">
 
         <!-- Script -->
         <script src="../js/jquery.min.js"></script>
