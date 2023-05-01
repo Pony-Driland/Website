@@ -1,0 +1,33 @@
+{
+    "name": "James",
+    "description": "This is the first version of the James character. This character is already present in the story, but this is the first time that an official character design is presented. The character may still have more some new future changes.",
+    "image": "ipfs://QmUiHfESJs5JfqFBrivovYEptGR8s3c8HzToM6qCUGAqsM",
+    "image_url": "ipfs://QmUiHfESJs5JfqFBrivovYEptGR8s3c8HzToM6qCUGAqsM",
+    "attributes": [
+        {
+            "trait_type": "Character",
+            "value": "James"
+        },
+        {
+            "trait_type": "Cute",
+            "value": "Yes"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Male"
+        },
+        {
+            "trait_type": "Race",
+            "value": "Unicorn"
+        },
+        {
+            "trait_type": "Specie",
+            "value": "Pony"
+        },
+        {
+            "trait_type": "Size",
+            "value": "Normal"
+        }
+    ],
+    "background_color": "FFFFFF"
+}
