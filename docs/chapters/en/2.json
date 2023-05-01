@@ -17632,6 +17632,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Rayane then took the digital key and set the door to be opened only from the inside. Rayane opened the room door and went towards the station door.",
         "type": "action"
     }
