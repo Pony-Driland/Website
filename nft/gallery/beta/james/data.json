@@ -27,6 +27,10 @@
         {
             "trait_type": "Size",
             "value": "Normal"
+        },
+        {
+            "trait_type": "AI Author",
+            "value": "SuperBolinha2"
         }
     ],
     "background_color": "FFFFFF"
