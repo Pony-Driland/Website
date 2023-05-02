@@ -17635,8 +17635,129 @@
         "set": {
             "playlistPlay": null
         },
-        "value": "Rayane then took the digital key and set the door to be opened only from the inside. Rayane opened the room door and went towards the station door.",
+        "value": "Rayane then took one digital key in her smartmoby and set the door to be opened only from the inside. Rayane opened the room door and went towards the station door. Vinny would be a little surprised and then ask.",
         "type": "action"
+    },
+
+    {
+        "value": "Wait... Do you think it's safe to leave Ivy alone here?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "This door can only be opened from the inside. And I'm the one with the master key to the underground.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane showed the digital key again, showing that it is the digital key that belongs to Hiroshi. Vinny was a little surprised again and smiles in response.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "nuclear-winter"
+        },
+        "value": "Well! So let's just go!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "Vinny then followed Rayane and the room door closed definitely. Rayane just turned off the digital key screen on the smartmoby and continued the adventure.",
+        "type": "action"
+    },
+
+    {
+        "value": "Let's go~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Vinny and Rayane arrived back at the subway station. Everything was very quiet, but Vinny could already hear the sound of the mysterious train arriving.",
+        "type": "action"
+    },
+
+    {
+        "value": "Aaaaaah... Hey plans?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a poker face and prepares to hide.",
+        "type": "action"
+    },
+
+    {
+        "value": "First we need to hide preferably among the other bodies. This is the only way for us to raise less suspicion.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny felt uncomfortable looking at the bodies around him.",
+        "type": "action"
+    },
+
+    {
+        "value": "If it's our backup and see our bodies dead, that won't help, but if it's James... I'll like it, good idea let's do this are we going to be together or apart?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Silly~ if it's James... we'll give him a little scare so he can get smart. Let's stay each in a different place. Together it will be very obvious that we are planning something.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would laugh a little at the situation, but then he would start following the plan, a little worried about what the outcome would be.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ok ok.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gets in a corner not very far away but a little covered by something on the floor like a dead pony with his hooves covering his eyes a little. Rayane had a somewhat similar idea, burying herself among some rubble on the ceiling.",
+        "type": "action"
+    },
+
+    {
+        "value": "And there we go!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "At the same time Vinny and rayane started to hear the sound of a train arriving, and it started to brake at the station.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmm... This seems to be another one of the trains that we found in the first one.",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "The wagon door opened slowly. Vinny and Rayane saw some ponies covered in hoods getting out of the train one by one, looking around what had happened.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..oh no. I know these hoods. I don't believe she is here!",
+        "character": "Rayane",
+        "type": "think"
     }
 
 ]
