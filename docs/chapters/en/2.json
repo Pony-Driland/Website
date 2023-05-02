@@ -17705,13 +17705,13 @@
     },
 
     {
-        "value": "If it's our backup and see our bodies dead, that won't help, but if it's James... I'll like it, good idea let's do this are we going to be together or apart?",
+        "value": "If it's our backup and see our bodies dead, that won't help, but if it's James... I'll like it, good idea! We going to be together or apart?",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Silly~ if it's James... we'll give him a little scare so he can get smart. Let's stay each in a different place. Together it will be very obvious that we are planning something.",
+        "value": "Heh. Silly~ If it's James... we'll give him a little scare so he can get smart. Let's stay each in a different place. Together it will be very obvious that we are planning something.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -17722,7 +17722,7 @@
     },
 
     {
-        "value": "Ok ok.",
+        "value": "Ok okay.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -17739,18 +17739,21 @@
     },
 
     {
-        "value": "At the same time Vinny and rayane started to hear the sound of a train arriving, and it started to brake at the station.",
+        "value": "At the same time Vinny and Rayane started to hear the sound of a train arriving, and it started to brake at the station.",
         "type": "action"
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Hmm... This seems to be another one of the trains that we found in the first one.",
         "character": "Rayane",
         "type": "think"
     },
 
     {
-        "value": "The wagon door opened slowly. Vinny and Rayane saw some ponies covered in hoods getting out of the train one by one, looking around what had happened.",
+        "value": "The wagon door opened slowly. Vinny and Rayane see some ponies covered in hoods getting out of the train one by one, looking around what had happened.",
         "type": "action"
     },
 
