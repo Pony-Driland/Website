@@ -203,6 +203,17 @@ storyCfg.playlist = {
         { id: '4F7sdy2rZws', type: 'youtube' },
     ],
 
+    '1 Hour of H.P. Lovecraft Music: Orchestral Ambient Creepy Horror Music for Role-Playing and Gaming': [
+        { id: 'oxvDnaWe5XE', type: 'youtube' },
+    ],
+
+    'tense-find-subway-c2': [
+        { id: 'bGdD0YVh_kI', type: 'youtube' },
+        { id: 'VQ9230-OoBw', type: 'youtube' },
+        { id: 'fFJHAbeQ0g4', type: 'youtube' },
+        { id: 'tg7IqHcnVbg', type: 'youtube' },
+    ],
+
     'spooky-mysterious': [
         { id: 'm6e_Uz6vlJw', type: 'youtube' },
         { id: 'XUUM0cKcRW0', type: 'youtube' },
