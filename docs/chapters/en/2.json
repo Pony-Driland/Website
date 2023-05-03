@@ -17758,7 +17758,140 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "tense-find-subway-c2"
+        },
         "value": "O..oh no. I know these hoods. I don't believe she is here!",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "All ponies were unicorns. And one unicorn in particular had light skin, she had armor and her mane was a mixture of cyan and blue colors. The other unicorns would go and start scanning the place around.",
+        "type": "action"
+    },
+
+    {
+        "value": "P...Prisma!",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "This is strange. I swore that this was where one of them was. That's what they told me. It seems they know how to hide very well.",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "All the other unicorns kept looking around, and one of them started to approach Vinny. The random unicorn was feeling uncomfortable seeing so many innocent bodies lying on the floor. But she tried to keep her posture. The unicorns looked very quiet, not saying any kind of word.",
+        "type": "action"
+    },
+
+    {
+        "value": "Really? I can't stand this place anymore. So many dead bodies thrown around. I need vacation! I can't stand to see dead bodies anymore! Today is the day to hate being commander of Elite Color! Let's go ponies! Go ahead! We can't stay long on this subway! It's already dark outside! Or we'll have to work overtime at night!",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised and just didn't do anything until one of the unicorns got close to his face. The unicorn was starting to feel a little suspicious when he felt a little bit of something breathing between the bodies.",
+        "type": "action"
+    },
+
+    {
+        "value": "It's gonna be this shit. Okay.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "The unicorn would then just touch Vinny's smartmoby slowly, and start to find it strange that the smartmoby was working.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey commander. I think I found a passed out body. Should we take him?",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Prisma then looked curiously at the guard 1, a little surprised to hear this. Vinny tried to close his eyes even more to try to maintain the disguise while he felt a little nervous hearing that.",
+        "type": "action"
+    },
+
+    {
+        "value": "FUCK! COME ON!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "What? Are you sure? You know that any stranger we take will have to be eliminated. And you'll be responsible for all of that. We are doing secret service.",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "...Ah.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "A..Ah? No...no no! I think it's better not. I will continue my mission. The mysterious responsible item must be here.",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The guard gets intimidated and went back to looking in other places around Vinny.  Prisma stared at the guard for a few seconds, showing that she was in a bad mood, then she just continued the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Then there are survivors. This is impossible. How does one survive an explosion of this magnitude? I am not liking this. Are those two idiots Hiroshi and Marlon still going to leave gifts to hide from me?",
+        "character": "Prisma",
+        "type": "think"
+    },
+
+    {
+        "value": "Hmmmm... Fine! Fine fine. Looks like they're doing it the hard way. So we'll have to do everything the hard way too.",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a little gulp nervously as he continued to do nothing.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmm....",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Prisma looks very seriously to all sides for a few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ok... So these two idiots will only show up with the help of a hostage. Excellent.",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "H...hostage?!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "H...hostage?!",
         "character": "Rayane",
         "type": "think"
     }
