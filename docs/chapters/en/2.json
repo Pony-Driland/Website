@@ -17784,7 +17784,7 @@
     },
 
     {
-        "value": "All the other unicorns kept looking around, and one of them started to approach Vinny. The random unicorn was feeling uncomfortable seeing so many innocent bodies lying on the floor. But she tried to keep her posture. The unicorns looked very quiet, not saying any kind of word.",
+        "value": "All the other unicorns kept looking around, and one of them started to approach Vinny. The random unicorn was feeling uncomfortable seeing so many innocent bodies lying on the floor. But the unicorn tried to keep her posture. The unicorns looked very quiet, not saying any kind of word.",
         "type": "action"
     },
 
@@ -17811,7 +17811,7 @@
     },
 
     {
-        "value": "Hey commander. I think I found a passed out body. Should we take him?",
+        "value": "What? Hey commander. I think I found a passed out body. Should we take him?",
         "character": "Guard 1",
         "type": "dialogue"
     },
@@ -17879,7 +17879,7 @@
     },
 
     {
-        "value": "Ok... So these two idiots will only show up with the help of a hostage. Excellent.",
+        "value": "Ok... So these two idiots will only show up with the help of a hostage. Excellent. GUARDS!",
         "character": "Prisma",
         "type": "dialogue"
     },
@@ -17891,6 +17891,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "H...hostage?!",
         "character": "Rayane",
         "type": "think"
