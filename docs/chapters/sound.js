@@ -1,7 +1,7 @@
 // Playlist
 storyCfg.playlist = {
 
-    'Subway battle - c1': [
+    'Subway battle - c2': [
         { id: 'dfFqx0XVSno', type: 'youtube' },
     ],
 
