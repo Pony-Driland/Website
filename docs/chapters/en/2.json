@@ -18001,7 +18001,7 @@
 
     {
         "set": {
-            "playlistPlay": "Subway battle - c2"
+            "playlistPlay": "Tense Negotiations | D&D/TTRPG Music | 1 Hour"
         },
         "value": "W...WHAT?!",
         "character": "Guard 2",
@@ -18009,8 +18009,70 @@
     },
 
     {
-        "value": "The Guard 1 was desperate and started to fight back, trying to do something. At the same time, everyone went on alert and looked at Vinny",
+        "value": "The Guard 1 was desperate and started to fight back, trying to do something. At the same time, everyone went on alert and looked at Vinny.",
         "type": "action"
+    },
+
+    {
+        "value": "W...WHAT...WHO ARE YOU?!",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The other guard who was holding Rowan, held him even tighter so he wouldn't escape.",
+        "type": "action"
+    },
+
+    {
+        "value": "V...VINNY! YEAH! It's YOU!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was very worried and surprised and at the same time started to prepare the horn magic to do something while looking at everyone paying attention to Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine... Very fine. Take it easy, it's going to be easy.",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "EVERYONE CALM DOWN! I just want to go home, I have a hostage, you have another, I have some information and you have some information. We can all leave here happy if everyone cooperates. First of all why are you here? If you try anything I will stab your friend in a very fatal part.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Prisma gets a little surprised but in a few seconds she calmed down and answered while looking at Vinny, doing a serious look while answering calmly.",
+        "type": "action"
+    },
+
+    {
+        "value": "What kind of information are you looking for? Would you really have the courage to do a cruelty of this level? After all, he also has a life just like you.",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Everything is in your hooves. I was going to the bomb, everyone ran away and I started to run away but I saw 2 ponies with the same clothes as you talking about having one informant among them. But when there was an explosion and I ended up here. I woke up among the bodies. Did you see? We all have something in common, first I want to know who you are and who is this hostage. He doesn't seem to be your friend.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The Vinny hostage began to struggle more, and somehow tried to aim the magic at him. Vinny had a little trouble squeezing him when Vinny feel the unicorn armor under his clothes.",
+        "type": "action"
+    },
+
+    {
+        "value": "HAH! Do you want to play super hero on me? Why don't you just surrender and we'll all leave you alone?",
+        "character": "Prisma",
+        "type": "dialogue"
     }
 
 ]
