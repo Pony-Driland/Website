@@ -17891,12 +17891,126 @@
     },
 
     {
-        "set": {
-            "playlistPlay": null
-        },
         "value": "H...hostage?!",
         "character": "Rayane",
         "type": "think"
+    },
+
+    {
+        "value": "One guard came out of the train and removed Rowan who was tied up and his horn was covered by a weird armor that didn't let his horn be used.",
+        "type": "action"
+    },
+
+    {
+        "value": "R...ROWAN!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "HEY! COME ON! I know you are there. I feel your energy! LEAVE NOW!",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rowan was desperate, trying to move in different ways while looking around.",
+        "type": "action"
+    },
+
+    {
+        "value": "N...No! Please! Do nothing! It's a trap! TRAAAP!!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The guard slapped Rowan for him to stop talking.",
+        "type": "action"
+    },
+
+    {
+        "value": "SHUT FUCK UP! JUST SAY WHERE EVERYONE IS!",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane started to get worried about the situation, but she tried to keep very quiet, trying to think of a plan. When Vinny heard the voice screaming, he began to mumble very softly.",
+        "type": "action"
+    },
+
+    {
+        "value": "N...No no... please... Daddy don't leave me out here. Please... I Don't want to be found. Someone... Someone help me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? I think I heard something new. Is it the body?",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? HEY! Be careful!",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The guard who was looking for something interesting around Vinny, suspected his voice, he slowly approached Vinny, levitating a stick to poke him.",
+        "type": "action"
+    },
+
+    {
+        "value": "Sister... brother... stop me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The Guard was even more suspicious and poked the stick on Vinny shoulder to turn his body to face the guard.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "But what joke is this?",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then use his wings to throw concrete dust into the guards' eyes.",
+        "type": "action"
+    },
+
+    {
+        "value": "MY EEEEEEYES!!!",
+        "character": "Guard 1",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then uses his wings to cover guard 1's face in reponse.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "Subway battle - c2"
+        },
+        "value": "W...WHAT?!",
+        "character": "Guard 2",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The Guard 1 was desperate and started to fight back, trying to do something. At the same time, everyone went on alert and looked at Vinny",
+        "type": "action"
     }
 
 ]
