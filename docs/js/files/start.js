@@ -778,7 +778,7 @@ $(function () {
             }
 
             // Mirror
-            if (!Array.isArray(storyCfg.mirror) || storyCfg.mirror.indexOf(location.host) < 0) {
+            if ((Array.isArray(storyCfg.mirror) && storyCfg.mirror.indexOf(location.host) > -1) || (!Array.isArray(storyCfg.mirror) || storyCfg.mirror.length < 1)) {
                 tinyFooter[1].push($('<li>').append(
                     $('<a>', { target: '_blank', href: `https://${storyCfg.domain}` }).text('Website').prepend(
                         $('<i>', { class: 'fa-solid fa-pager me-2' })
