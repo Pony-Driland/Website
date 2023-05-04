@@ -18025,7 +18025,7 @@
     },
 
     {
-        "value": "V...VINNY! YEAH! It's YOU!",
+        "value": "H...HEY! FINALLY! It's YOU!",
         "character": "Rowan",
         "type": "dialogue"
     },
@@ -18073,6 +18073,88 @@
         "value": "HAH! Do you want to play super hero on me? Why don't you just surrender and we'll all leave you alone?",
         "character": "Prisma",
         "type": "dialogue"
+    },
+
+
+    {
+        "value": "Prisma just approached Vinny very slowly, keeping a safe distance so as not to draw Vinny attention too much.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Was it you? I want to see your faces. What trust is this, your soldier is with the thin thread of life almost breaking and you care more about you? Let's do it like this, I tell you how this informant looked like between you, and you show your face.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tried to suffocate his hostage more even though it is difficult to do this, but Prisma didn't seem to care much about the situation, and just kept approaching slowly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... Have you seen some pony bomb? Everyone wins, you report to your superiors, you get some promotion and I left myself here. No one saw anyone.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Our faces? You are a real joke!",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Prisma laugh a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "How silly you are. We won't take off our special anonymity suits even if you force us to. So ok. Go ahead, as soon as you kill him, we'll kill you also. I'm not afraid to avenge the death of my soldiers.",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was starting to feel nervous as he tried to keep the conversation going.",
+        "type": "action"
+    },
+
+    {
+        "value": "H...Hey! If it was one of you how would you feel? Let your soldiers speak for themselves. Nobody wants that friend of yours to die. You already know right? I have a bomb on my body! Would you be ready to sacrifice your soldiers? Let them choose what they want. Do you want to do it the easy way where everyone pretends nothing happened here and we all leave or your hard way? We are all tired of it all. I just want to go home and see my family. Only that.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Prisma does sarcastic smile and looks at Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. Let's say you actually have a bomb. You're going to die with our soldier. So what? What will you gain from this besides your own tragic end? I don't think you would like to die in vain either.",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Prisma's horn started to glow as her green blue eyes started to glow.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "I think this is a checkmate. Mr. Vinny.",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What the fuck is this? Does she know my name?!",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
