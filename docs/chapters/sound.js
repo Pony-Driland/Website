@@ -2,7 +2,8 @@
 storyCfg.playlist = {
 
     'Subway battle - c2': [
-        { id: 'dfFqx0XVSno', type: 'youtube' },
+        { id: 'EMeOm0-4Ptk', type: 'youtube' },
+        { id: 'eQWzZBn0u7U', type: 'youtube' },
     ],
 
     'madoka-magica-magia【Metal/Male Cover】': [
