@@ -18132,6 +18132,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Okay. Let's say you actually have a bomb. You're going to die with our soldier. So what? What will you gain from this besides your own tragic end? I don't think you would like to die in vain either.",
         "character": "Prisma",
         "type": "dialogue"
@@ -18144,7 +18147,7 @@
 
     {
         "set": {
-            "playlistPlay": null
+            "playlistPlay": "Subway battle - c2"
         },
         "value": "I think this is a checkmate. Mr. Vinny.",
         "character": "Prisma",
