@@ -18169,6 +18169,51 @@
         "value": "H..hey! If you know my name, it must be my intimates, right? THINK FAST!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny pushed the hostage making him falls against Prisma, pushing Prisma back to the train door. The guards who were inside the train moved away when they saw Prisma on the ground, worried about any possible reaction coming from Prisma. But Vinny didn't care and jumped on top of the two again to try to continue the attack.",
+        "type": "action"
+    },
+
+    {
+        "value": "What?! Vinny!!",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "W...WHAT?!",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Prisma was very angry and she used the horn to hurt Vinny's face and make him back up a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAAH! MY FACE!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Prisma hooves touch the ground again and again more parts of the place started to turn black and white, but at the same time something started to spawn from the ground, which made Vinny curious and a little surprised. The guards were surprised. One of the guards would pick up the hostage, and other guards would move away from the presence of the black and white colors of the floor.",
+        "type": "action"
+    },
+
+    {
+        "value": "V...VINNY! DO NOT TOUCH THE BLACK AND WHITE FLOOR!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was extremely surprised by the Vinny surprise, she was preparing the teleport for Vinny, but she thought fast, using the teleport to teleport Rowan to her side, looking to get into defensive posture.",
+        "type": "action"
     }
+
 
 ]
