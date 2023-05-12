@@ -18213,6 +18213,12 @@
     {
         "value": "Rayane was surprised by the Vinny surprise, she was preparing the teleport for Vinny, but she thought fast, using the teleport to teleport Rowan to her side, looking to get into defensive posture.",
         "type": "action"
+    },
+
+    {
+        "value": "R..Rayane! Thank you! But the crazy commander is going to drain all Vinny's energy!",
+        "character": "Rowan",
+        "type": "dialogue"
     }
 
 ]
