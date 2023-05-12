@@ -18155,6 +18155,17 @@
         "value": "What the fuck is this? Does she know my name?!",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "Prisma's horn glowed harmlessly so as not to scare Vinny too much, making her hooves start to reflect various colored colors until the hooves started to turn black and white, making something strange start to happen on the ground slowly",
+        "type": "action"
+    },
+
+    {
+        "value": "H..hey! If you know my name, it must be my intimates, right? THINK FAST!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
