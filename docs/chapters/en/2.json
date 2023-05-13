@@ -18347,6 +18347,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "AAAAHHH!! HELP!!",
         "character": "Vinny",
         "type": "dialogue"
@@ -18354,7 +18357,61 @@
 
     {
         "value": "I told you I wasn't done with you yet! You are a great danger to this world!!",
-        "character": "???",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "At this same time when everything seemed lost, something nudged Prisma.",
+        "type": "action"
+    },
+
+    {
+        "value": "H...huh? What?",
+        "character": "Prisma",
+        "type": "think"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "Subway battle 2 - c2"
+        },
+        "value": "Rayane punched Prisma face, making her fall to the ground. Prisma was extremely surprised. Rayane used her levitation magic on Vinny, and placed him safely on top of the train car.",
+        "type": "action"
+    },
+
+    {
+        "value": "GET YOUR FILTHY HOODS OFF HIM!!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...What fuck?! R...Rayane?!",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "YES! ME!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "OH FUCK GOD! I almost died twice in one day!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny runs to the last train car, trying to see what him had with care so no one would notice, but Vinny had difficulty in use him legs. Vinny managed to force himself to go towards the last train car, as Vinny moved, him heard a lot of explosions and sword sounds from the immense combat happening between the other train cars that Prisma and Rayane were fighting. Then suddenly one of the train cars exploded the ceiling during a blast of psychic laser.",
+        "type": "action"
+    },
+
+    {
+        "value": "MY GOD! OH COME ON! Am I going to die or am I not going to die?!",
+        "character": "Vinny",
         "type": "dialogue"
     }
 
