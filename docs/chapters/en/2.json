@@ -18472,9 +18472,35 @@
     },
 
     {
-        "value": "Wait! Are you crazy?!",
+        "value": "Wait! Are you crazy?! James said he was coming on another train! If you jump, the other train will run over you!",
         "character": "Kai",
         "type": "dialogue"
+    },
+
+
+    {
+        "value": "WHAT? James here?! AH! Okay! Okay okay! Fine! I need a bachelor party. Dude, so let's help Rayane who is fighting with the Elite Color captain in the other car. We can attack by surprise jumping on her making her stay on the ground or something. I just don't think it's cool for us to stay up here!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai was even more surprised to hear all this.",
+        "type": "action"
+    },
+
+    {
+        "value": "B...bachelor party? A..are you doing? Wait! R...Rayane here too?! You are very hurt! You will have to be very careful!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playEffect": { "file": "train-horn-1", "enabled": true, "instant": true }
+        },
+        "value": "Vinny and Kai hear the whistle of another train coming, trying to keep up with the same speed as the train you are on. Soon you could see that it was James trying very hard to keep the train under control due to the speed that was getting more and more out of normal",
+        "type": "action"
     }
 
 ]
