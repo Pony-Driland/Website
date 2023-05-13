@@ -18315,6 +18315,17 @@
         "value": "Now I want to see you escape this! I was going to do it the easy way, but you chose the hard way!",
         "character": "Prisma",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny injured body was outside the train, and the train was moving faster and faster toward Vinny. And it could at any time run him over during the process if he doesn't react.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...Will she try to kill me? R..Really?",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
