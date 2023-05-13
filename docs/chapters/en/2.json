@@ -18499,8 +18499,125 @@
         "set": {
             "playEffect": { "file": "train-horn-1", "enabled": true, "instant": true }
         },
-        "value": "Vinny and Kai hear the whistle of another train coming, trying to keep up with the same speed as the train you are on. Soon you could see that it was James trying very hard to keep the train under control due to the speed that was getting more and more out of normal",
+        "value": "Vinny and Kai hear the whistle of another train coming, trying to keep up with the same speed as the train Vinny and Kai are on. Soon Vinny could see that it is James trying very hard to keep the train under control due to the speed that was getting more and more out of normal.",
         "type": "action"
+    },
+
+    {
+        "value": "...Vinny?! BUT WHAT A JOKE IS THIS HERE?! We are extremely fast! Who's the insane pony controlling the other train?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "JAMES! NO NO! GET OUT YOU DON'T KNOW HOW TO DRIVE IT!! WE NEED TO HELP RAYANE WHO IS AT THE END IN THE FIRST WAGON. WHO IS WITH YOU?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "SHUT FUCK UP! I COME TO SAVE YOU!! And it was a good female machinist pony that helped me turn this thing on! And... wait? RAYANE?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James got even more worried and spent 2 seconds thinking about what to do. The trains began to have difficulty staying on the tracks, causing them to slowly start to shake.",
+        "type": "action"
+    },
+
+    {
+        "value": "O..OH FUCK! Vinny! Kai! Don't just stopped there! We are going to die!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Well...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": " At the same time James, Vinny, and Kai hear the sound of more other wagons exploding due to Rayane's fights.",
+        "type": "action"
+    },
+
+    {
+        "value": "M...my god.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "OH COME ON! I BREAKED CONTROL OF THIS TRAIN, THEY ARE FULL OF ELITE COLOR MEMBERS!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y...YOU DID WHAT?! ARE YOU RETARDED?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "GUYS!! NO TALKS! Let's go Vinny!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A..Ah? YES YES! Let's go!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai run between the wagons, trying to reach one of the damaged wagons. Kai used magic to help Vinny get around during the process.",
+        "type": "action"
+    },
+
+    {
+        "value": "What plan? Do you have any weapons? Any distractions?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "We first need to make Rayane and the Elite Color commander stay in separate wagons. After that we have to separate the wagons. This is the only way to save Rayane.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playEffect": { "file": "train-horn-1", "enabled": false }
+        },
+        "value": "Hmmm... Rayane has a bazooka. I do whatever, tell me that even if I get hurt, I can handle it.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Bazooka? YES! The bazooka! If Rayane summons the bazooka, I can use my magic to pull this to us! I'll help Rayane in the fight so she has time to summon the bazooka. And you can use the bazooka to blow up the commander's wagon!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah! FINE! I'll stay here, explain the plan to Rayane!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playEffect": { "file": "train-horn-1", "enabled": true, "instant": true }
+        },
+        "value": "Ok! It's now or never!",
+        "character": "Kai",
+        "type": "dialogue"
     }
 
 ]
