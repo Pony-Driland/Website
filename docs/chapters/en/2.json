@@ -18710,6 +18710,9 @@
     },
 
     {
+        "set": {
+            "playEffect": { "file": "train-horn-1", "enabled": true, "instant": true }
+        },
         "value": "The speed of the train getting much more extreme than normal, making the train shake extremely more, having trouble staying on the tracks, at this time Rayane and Prisma lose balance and the two roll on the ground trying to get back into position. Vinny was also starting to have a bit of trouble holding onto the train during the process.",
         "type": "action"
     },
@@ -18761,6 +18764,9 @@
     },
 
     {
+        "set": {
+            "playEffect": { "file": "train-horn-1", "enabled": false }
+        },
         "value": "Rayane was surprised by Vinny presence, so without thinking twice, Rayane invokes the bazooka.",
         "type": "action"
     },
