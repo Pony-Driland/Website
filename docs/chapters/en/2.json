@@ -18413,6 +18413,68 @@
         "value": "MY GOD! OH COME ON! Am I going to die or am I not going to die?!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "When Vinny opened the train wagon, him found Kai hiding between the the boxes, he was paying close attention to the noises of the fighting that was happening among Rayane and Prisma.",
+        "type": "action"
+    },
+
+    {
+        "value": "Kai? K..Kai! KAI! Get up here! Comes!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tries to hold on between the top door and extend the hoof for Kai to climb.",
+        "type": "action"
+    },
+
+    {
+        "value": "T..This voice... Wait? V..Vinny?! What are you doing here?! You are very hurt! O...Okay!!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai used him magic to levitate the boxes in order of stairs before climb up them to Vinny to reach the top of the train.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah. Is there anyone else? If you don't have it get ready to jump.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny starts to get ready to jump but waits for Kai's answer.",
+        "type": "action"
+    },
+
+    {
+        "value": "J..jumping? B..But what about Rowan?! I came to rescue him! I'm not leaving here without Rowan!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "We're with Rowan, he must be at the last station waiting for us! Letś go! Jump fast!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "When Vinny made his wildly insane attempt to jump off a moving train, Kai uses him magic to prevent Vinny from jumping.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait! Are you crazy?!",
+        "character": "Kai",
+        "type": "dialogue"
     }
 
 ]
