@@ -18618,6 +18618,95 @@
         "value": "Ok! It's now or never!",
         "character": "Kai",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Kai continued advancing between the wagons, and arrived in one of the wagons that had the ceiling completely destroyed. This train car was having a little more trouble keeping on track than usual. Kai was a little worried that any wagon would break, but he remained determined.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. This is going to be more dangerous than I thought.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai entered the wagon, and looked around for a few seconds until Kai get surprised, dodging one of the Prisma's spear attacks. Kai then watched, and saw a spear shining different colors of the rainbow being levitated by Prisma.",
+        "type": "action"
+    },
+
+    {
+        "value": "T...that spear. This spear cannot touch me. This spear drains energy. Remember what Hiroshi said, this spear has an ability identical to the mysterious goddess of Hiroshi's legend.",
+        "character": "Kai",
+        "type": "think"
+    },
+
+    {
+        "value": "WHY ARE YOU DOING THIS?! DON'T TELL ME YOU'VE BETRAYED ME!!",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Prisma was making a lot of effort for Rayane's sword not to surpass her spear.",
+        "type": "action"
+    },
+
+    {
+        "value": "YOU WHO LET YOURSELF BE CARRIED OUT BY EVERYTHING YOU HEAR! SHUT YOUR FUCK MOUTH YOU BITCH!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane made even more force, slowly starting to suffocate the commander a little against the wagon car. Kai was scared watching the scene.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...Will Rayane kill her?",
+        "character": "Kai",
+        "type": "think"
+    },
+
+    {
+        "value": "Vinny was paying a lot of attention waiting for Kai's signal, watching the scene too.",
+        "type": "action"
+    },
+
+    {
+        "value": "What's really going on here?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Now it's over! This is YOUR END!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane's body started to get a lot more tattoos than usual. Rayane's eyes started to get dark as Rayane's sword started to be covered by a colored aura. Prisma was a little scared to see this.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh... R..Raynae?! CALM DOWN!",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Prisma was losing control of the spear due to the fear she was feeling from Rayane's expression.",
+        "type": "action"
+    },
+
+    {
+        "value": "R...Rayane! M..My Rainbow! Rayane will kill her!!",
+        "character": "Kai",
+        "type": "dialogue"
     }
 
 ]
