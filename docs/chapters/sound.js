@@ -3,7 +3,7 @@ storyCfg.playlist = {
 
     'Subway battle - c2': [
         { id: 'EMeOm0-4Ptk', type: 'youtube' },
-        { id: 'eQWzZBn0u7U', type: 'youtube' },
+        { id: 'w0XK0cuaK3A', type: 'youtube' },
     ],
 
     'madoka-magica-magia【Metal/Male Cover】': [
@@ -281,6 +281,8 @@ storyCfg.playlist = {
         { id: '24QJV6NnFHY', type: 'youtube' },
         { id: 'YhXWzeFJtqM', type: 'youtube' },
         { id: 'ewBkq44wynk', type: 'youtube' },
+        { id: 'lmWFVe7e1ko', type: 'youtube' },
+        { id: '2tTPzDZWdho', type: 'youtube' },
     ],
 
     'think': [
@@ -300,6 +302,7 @@ storyCfg.playlist = {
         { id: 'k79T3jVvPjw', type: 'youtube' },
         { id: 'oxivFag3Reg', type: 'youtube' },
         { id: 'ni-Q2RCoexg', type: 'youtube' },
+        { id: 'wT0lWL_TU7w', type: 'youtube' },
     ],
 
     'good-think': [
