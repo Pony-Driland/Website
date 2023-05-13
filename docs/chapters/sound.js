@@ -356,6 +356,10 @@ storyCfg.sfx = {
         type: 'file', module: 'main', value: '/audio/guitarguy1985/civildefense.mp3' 
     },
 
+    'train-horn-1': {
+        type: 'file', module: 'main', value: '/audio/jasmindreasond/train/horn-1.mp3', loop: false 
+    },
+
     'heavy-rain-little-thunder': { 
         type: 'file', module: 'main', value: '/audio/jasmindreasond/rain/heavy-rain-little-thunder.mp4' 
     },
