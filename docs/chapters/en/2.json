@@ -18219,6 +18219,102 @@
         "value": "R..Rayane! Thank you! But the crazy commander is going to drain all Vinny's energy!",
         "character": "Rowan",
         "type": "dialogue"
+    },
+
+    {
+        "value": "... I know.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "The guards prepare to attack Rayane. But Rayane was determined and her sword started to go up in flames.",
+        "type": "action"
+    },
+
+    {
+        "value": "Come on!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was desperate thinking about how to get on the train without risking confronting Prisma and the black and white floor. Vinny threw the cold cape on Prisma face and run to the train control cabin.",
+        "type": "action"
+    },
+
+    {
+        "value": "VINNY! YOU ARE CRAZY! Don't think you will escape your punishments!!",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny see the 2 machinists ponies, Vinny react running as fast as possible without them understanding what is happening. Vinny punched the first machinist pony against the train panel, causing him to hit his head against the train window and fall to the ground. The train panel is destroyed, making the train randomly start moving forward.",
+        "type": "action"
+    },
+
+    {
+        "value": "GO! DO SOMETHING OLD CAN! This train needs to go!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The first machinist pony was scared and didn't know what to do.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y...YOU GOT CRAZY?!",
+        "character": "Machinist Pony",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "When Vinny tries to escape using the train window, Vinny feel a magic holding the hoof, pulling Vinny back inside the train towards Prisma.",
+        "type": "action"
+    },
+
+    {
+        "value": "COME BACK HERE! I'VE NOT FINISHED YET!",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "FUUUUCK!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "At this same time Vinny also started to hear the train start to move. The machinist pony was trying to find a solution to the train problem, but he couldn't do anything.",
+        "type": "action"
+    },
+
+    {
+        "value": "T...This is not very good.",
+        "character": "Machinist Pony",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Meanwhile Vinny took advantage of the Prisma magic pulling, Vinny tries to kick Prisma, but Prisma smirks when she saw Vinny preparing the kick attack towards her, then one of the guards magic placed the cold cape in front of Prisma, using the inertia of the Vinny cold cape to throw Vinny faster against the glass of the train cabin, causing Vinny to get hurt all over.",
+        "type": "action"
+    },
+
+    {
+        "value": "OH FUUUUUUUUUUUCK!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Now I want to see you escape this! I was going to do it the easy way, but you chose the hard way!",
+        "character": "Prisma",
+        "type": "dialogue"
     }
 
 ]
