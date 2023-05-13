@@ -746,6 +746,9 @@
     },
 
     {
+        "set": {
+            "playEffect": { "file": "civildefense", "enabled": false }
+        },
         "value": "Calm down! Calm down! Rayane, I can fly to the bomb and look myself. I'll be fine.",
         "character": "Vinny",
         "type": "dialogue"
