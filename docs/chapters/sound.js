@@ -346,9 +346,29 @@ storyCfg.playlist = {
 
 // SFX
 storyCfg.sfx = {
-    'heavy-rain-little-thunder': { type: 'file', module: 'main', value: '/audio/jasmindreasond/rain/heavy-rain-little-thunder.mp4' },
-    'heavy-rain': { type: 'file', module: 'main', value: '/audio/jasmindreasond/rain/heavy-rain.mp4' },
-    'ambulance-alarm': { type: 'file', module: 'main', value: '/audio/jasmindreasond/alarm/ambulance.wav' },
-    'train-1': { type: 'file', module: 'main', value: '/audio/jasmindreasond/train/1.mp3' },
-    'nuke-1': { type: 'file', module: 'main', value: '/audio/jasmindreasond/explosion/nuke.mp3', loop: false }
+
+    'civildefense': {
+        type: 'file', module: 'main', value: '/audio/guitarguy1985/civildefense.mp3' 
+    },
+
+    'heavy-rain-little-thunder': { 
+        type: 'file', module: 'main', value: '/audio/jasmindreasond/rain/heavy-rain-little-thunder.mp4' 
+    },
+
+    'heavy-rain': { 
+        type: 'file', module: 'main', value: '/audio/jasmindreasond/rain/heavy-rain.mp4' 
+    },
+
+    'ambulance-alarm': { 
+        type: 'file', module: 'main', value: '/audio/jasmindreasond/alarm/ambulance.wav' 
+    },
+
+    'train-1': { 
+        type: 'file', module: 'main', value: '/audio/jasmindreasond/train/1.mp3' 
+    },
+
+    'nuke-1': { 
+        type: 'file', module: 'main', value: '/audio/jasmindreasond/explosion/nuke.mp3', loop: false 
+    }
+
 };
