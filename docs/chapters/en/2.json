@@ -684,9 +684,6 @@
     },
 
     {
-        "set": {
-            "playlistPlay": null
-        },
         "value": "W...What? Is this another bomb?",
         "character": "Vinny",
         "type": "think"
@@ -715,7 +712,7 @@
         "set": {
             "playlistPlay": "escape"
         },
-        "value": "OH NO NO NO! RAYANE!!! SHIT! RAYANE NEED YOU!",
+        "value": "OH NO NO NO! RAYANE!!! SHIT! RAYANE!! I NEED YOU!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -761,6 +758,9 @@
     },
 
     {
+        "set": {
+            "playEffect": { "file": "civildefense", "enabled": true }
+        },
         "value": "Vinny flies over the wall. Vinny kept a high speed to try to reach the bomb as fast as possible. Vinny saw the bomb entering the center of the village. Vinny realized that all the destruction was more focused on the center of the village than all the rest of the village. Vinny was getting tired very fast from flying so fast, but Vinny was very dedicated to trying to use as few seconds as possible.",
         "type": "action"
     },
@@ -816,7 +816,7 @@
     },
 
     {
-        "value": "Vinny accidentally finds Rayane running in the middle of the village, looking for something. Vinny saw lots of pony bodies lying on the ground and some gun remains lying around, but Vinny couldn't be sure if the guns could be working or not. Vinny was scared and worried for a few seconds.",
+        "value": "Vinny accidentally finds Rayane running in the middle of the village, looking for something. Vinny see lots of pony bodies lying on the ground and some gun remains lying around, but Vinny couldn't be sure if the guns could be working or not. Vinny was scared and worried for a few seconds.",
         "type": "action"
     },
 
@@ -883,6 +883,10 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null,
+            "playEffect": { "file": "civildefense", "enabled": false }
+        },
         "value": "Vinny was very worried and kept quiet. Vinny tried to keep all his hopes on Rayane. Rayane was very dedicated to keeping her focus on magic as much as possible during the progress.",
         "type": "action"
     },
@@ -908,9 +912,6 @@
     },
 
     {
-        "set": {
-            "playEffect": { "file": "nuke-1", "enabled": false }
-        },
         "value": "R...Rayane? H...hello? R..Rayane?",
         "character": "Vinny",
         "type": "dialogue"
