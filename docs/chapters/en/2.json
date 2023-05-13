@@ -18574,7 +18574,7 @@
     },
 
     {
-        "value": "Kai run between the wagons, trying to reach one of the damaged wagons. Kai used magic to help Vinny get around during the process.",
+        "value": "Kai run between the wagons, trying to reach one of the damaged wagons. Kai used magic to help Vinny get around during the process. Kai was a little surprised to see some Elite Color guards being thrown out of the train, many being seriously injured.",
         "type": "action"
     },
 
@@ -18660,7 +18660,7 @@
     },
 
     {
-        "value": "Rayane made even more force, slowly starting to suffocate the commander a little against the wagon car. Kai was scared watching the scene.",
+        "value": "Rayane made even more force, slowly starting to suffocate Prisma a little against the wagon car. Kai was scared watching the scene.",
         "type": "action"
     },
 
@@ -18707,6 +18707,201 @@
         "value": "R...Rayane! M..My Rainbow! Rayane will kill her!!",
         "character": "Kai",
         "type": "dialogue"
+    },
+    
+    {
+        "value": "The speed of the train getting much more extreme than normal, making the train shake extremely more, having trouble staying on the tracks, at this time Rayane and Prisma lose balance and the two roll on the ground trying to get back into position. Vinny was also starting to have a bit of trouble holding onto the train during the process.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAAAH!!",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "AAAAAAAAH!! COME BACK HERE!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "ARGH!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai held on tight so as not to fall, and took the opportunity to try to take control of the fight against Prisma.",
+        "type": "action"
+    },
+
+    {
+        "value": "Now it's me turn!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "RAYANE YOU AND KAI GET OUT OF THIS WAGON AND GIVE ME THE BAZOOKA!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was calming down when the awareness of the situation returned, making all the tattoos disappear.",
+        "type": "action"
+    },
+
+    {
+        "value": "H...huh? V..Vinny? V...Vinny!! Oh no! What did I do?!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was surprised by Vinny presence, so without thinking twice, Rayane invokes the bazooka.",
+        "type": "action"
+    },
+
+    {
+        "value": "P..please! Tell me you'll do what I'm thinking!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane started to levitate the bazooka towards Vinny, but at the same time a rainbow shock wave hit Rayane against the wagon wall. Prisma levitated the spear, threatening to use the spear to pierce Rayane. The bazooka came rolling on the floor during the progress.",
+        "type": "action"
+    },
+
+    {
+        "value": "What was that?! You almost killed me! You need more than brainwashing to calm that exploding head of yours!",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai was lying on the ground. Kai's face was bruised, but he got up and looked at the bazooka.",
+        "type": "action"
+    },
+
+    {
+        "value": "T...The Bazooka!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai struggled to levitate the bazooka to Vinny. Rayane without thinking twice used her psychic laser magic against Prisma to protect herself from Prisma's spear. But Prisma used her spear to reflect the laser against the subway walls, making the train car shake even more. This made all the other train cars start to have sync problems, but Rayane tried not to use too much force in her attack.",
+        "type": "action"
+    },
+
+    {
+        "value": "V...VINNY!!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai lost his balance and held on the chairs to not be thrown out. Vinny would then use the swinging wagon moment, catching the bazooka in the air. Meanwhile, Prisma fights Rayane's psychic laiser to make sure the wagon doesn't accidentally get thrown off the tracks.",
+        "type": "action"
+    },
+
+    {
+        "value": "RAYANE?! ARE YOU CRAZY?! You now want to kill both of us?!",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "YEAAAH! Got it!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    
+    {
+        "value": "WHAT?!",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "NO!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane used the sword to try to tear Prisma's clothes, making Prisma worried about protecting her identity. The two were having a hard time continuing to attack each other. Meanwhile, Vinny got closer to get a better view of the situation. Vinny aimed the bazooka at Prisma waiting for something like a teleport from Rayane or something similar to shoot without hurting Rayane and Kai.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAAARGH! This wagon is very hard!!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai was then able to return back to the wagon. Kai took advantage of the Prisma's weak moment, and summoned a spear. At the same time the Prisma heard Kai's voice, she used her spear and defended herself from Kai's spear. But Kai's spear started to crack very fast when the Prisma's spear magic started to use more magic.",
+        "type": "action"
+    },
+
+    {
+        "value": "B...but what power is that?! A..Ah! I forgot! Rayane's sword is magic too!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai was worried about the spear that was about to break.",
+        "type": "action"
+    },
+
+    {
+        "value": "KAI?! ARE YOU KAI?! YOU IDIOT! EVERYONE WILL BE PUNISHED WHEN THE TIME COMES!!",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane tried to stay quiet, even though she was very scared, so she took advantage of this moment and started to prepare the teleportation.",
+        "type": "action"
+    },
+
+    {
+        "value": "K..Kai! Well done Kai, you are really brave too.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little anxious about the situation, but she tried hard to stay calm. when the Kai spear was about to be broken, Rayane quickly touched Kai's hoof, for the teleportation magic to teleport him along with her to Vinny's side.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...WHAT?! NO! TELETRANSPORT NO!",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Prisma would lose balance and go rolling on the ground when the spear no longer had a target to hit. Kai's spear unfortunately also falls broken to the ground. Vinny uses the bazooka on the wagon near Prisma but without the intention of killing her.",
+        "type": "action"
+    },
+
+    {
+        "value": "No! NO NO NO NOOO! STOOOOOP! CAME BACK HERE!! RAAAAAAYANE!",
+        "character": "Prisma",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Prisma got up, and when she saw the bazooka shot approaching, it was too late. She was trying to use magic to try to interfere with the missile, but she couldn't make it in time. Then the train car instantly exploded, the explosion made Prisma go inside the second train car, and the train car pins instantly break. The train car that was Vinny, Rayane, and Kai started to slow down while the other runaway train continued its journey without course.",
+        "type": "action"
     }
 
 ]
