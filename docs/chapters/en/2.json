@@ -18301,6 +18301,9 @@
     },
 
     {
+        "set": {
+            "playEffect": { "file": "train-1", "enabled": false }
+        },
         "value": "Meanwhile Vinny took advantage of the Prisma magic pulling, Vinny tries to kick Prisma, but Prisma smirks when she see Vinny preparing the kick attack towards her, then one of the guards magic placed the cold cape in front of Prisma, using the inertia of the Vinny cold cape to throw Vinny faster against the glass of the train cabin, causing Vinny to get hurt all over.",
         "type": "action"
     },
@@ -18318,6 +18321,9 @@
     },
 
     {
+        "set": {
+            "playEffect": { "file": "train-1", "enabled": true }
+        },
         "value": "Vinny injured body was outside the train, and the train was moving faster and faster toward Vinny. And it could at any time run him over during the process if he doesn't react.",
         "type": "action"
     },
