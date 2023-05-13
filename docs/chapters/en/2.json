@@ -18326,6 +18326,23 @@
         "value": "W...Will she try to kill me? R..Really?",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "Vinny tries to maintain concentration and go to the side of the train, doing the train pass straight, while leaning on the wall at the far end. But Prisma used her magic again, holding the Vinny hoof again, starting to drag Vinny along the subway wall , hurting him even more.",
+        "type": "action"
+    },
+
+    {
+        "value": "AAAAHHH!! HELP!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I told you I wasn't done with you yet! You are a great danger to this world!!",
+        "character": "???",
+        "type": "dialogue"
     }
 
 ]
