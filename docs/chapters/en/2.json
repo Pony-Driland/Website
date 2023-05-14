@@ -19108,6 +19108,12 @@
     },
 
     {
+        "value": "What? Okay Vinny. In the meantime, we're getting ready for everyone to leave. We have to go back for Rowan.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
         "value": "So Vinny and Rayane finally arrived in a very private train car. Rayane was looking for the place with the softest chair so Vinny wouldn't groan in pain from the broken glass.",
         "type": "action"
     },
