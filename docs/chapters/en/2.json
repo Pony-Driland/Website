@@ -19178,6 +19178,101 @@
     {
         "value": "Rayane slowly started to calm down, making her face slowly start to return to normal.",
         "type": "action"
+    },
+
+    {
+        "value": "But how does she know who I am? Why would she kill me? Strangely she knew Kai too.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "She knows everyone from the hierarchy of the regions. But how does she know who you are, I still can't have that answer.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane wipe her eyes and slowly calm down a little more, making her face slowly return to normal completely.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, it's going to be okay, we didn't come out perfect but we didn't end up in the worst imaginable situation. I'm glad nothing worse happened. Will you be okay? You seem to be holding on to a lot of the past.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "H..heh. I have a little hope too. It's really hard to talk about my past.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "That's all? Are you sure? You seem to be sad about something else. Is there anything that is bothering you?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny. I'm sad about many things. Hiroshi's death, and now this. I just wanted to get back everything I lost. The more I try to help my old friends and my family, the more they get mad at me. I just wanted them all together again. And now there's this whole Master Smartmoby story and lots of other things I didn't know, to complicate my life even more!",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane starts to cry a lot more than usual during the talk. Vinny would smile and giggles a little during the conversation to try to make Rayane feel better.",
+        "type": "action"
+    },
+
+    {
+        "value": "Calm down, we'll get everyone together. Everyone you like will at some point be by your side again. Look on the bright side, because of all this mess I'm here. We met and I promised to stay by your side and help your scythe friend. As much as she wants my head... I have a way with the crazy ones.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny hugs Rayane kindly to help her calm down more quickly during the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "I will always be here. You don't have to worry about me until we get to Rowan, we can rest if you want.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little before hugging back while she used some of her recovered energy to remove some pieces of glass on Vinny's body so that Vinny could lie down better next to her.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. James sure knows the way back. I just want to rest my mind... and my soul right now.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane cleaned her face a little more while slowly closing her eyes to try to relax and feel emotionally safe next to Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh! All right, I'm here. You can rest now.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny stroked Rayane's mane as the new train journey began.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane feel better and just hugged Vinny a little more than usual to feel very comfortable emotionally during the travel, calming down more and more from the situation. Then time passed, it was a long journey. But soon the train finally arrived back at the previous station. Rayane was already sleeping after the long journey back",
+        "type": "action"
     }
 
 ]
