@@ -19167,6 +19167,17 @@
         "value": "Calm down, calm down... What do you feel for her, most likely she feels for you. She chose that and you chose to be with us now. Unfortunately bad things happen but you have to look at the now. We are all fine and you managed to save everyone too. If we hadn't done anything, most likely they would leave with Rowan and kill him. You have to look for the good things, there's always the good side of the \"coin\".",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Y..Yes. But I almost lost she again. She was going to do anything to kill you. If I hadn't arrived in time, she would have killed you one way or another. But yes. at least everyone managed to help each other in the end.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane slowly started to calm down, making her face slowly start to return to normal.",
+        "type": "action"
     }
 
 ]
