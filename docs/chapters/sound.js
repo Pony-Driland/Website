@@ -352,6 +352,10 @@ storyCfg.playlist = {
 // SFX
 storyCfg.sfx = {
 
+    'onderwish-emergency': {
+        type: 'file', module: 'main', value: '/audio/alert/470504__onderwish__emergency-siren.mp3' 
+    },
+
     'civildefense': {
         type: 'file', module: 'main', value: '/audio/guitarguy1985/civildefense.mp3' 
     },
