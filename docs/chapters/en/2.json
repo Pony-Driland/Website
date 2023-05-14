@@ -19280,17 +19280,10 @@
     },
 
     {
-        "value": "Vinny then began to open his eyes, feeling his body a little better to move again.",
-        "type": "action"
-    },
-
-    {
-        "value": "I was waiting for something to happen",
-        "type": "action"
-    },
-
-    {
-        "value": "the train slowly braked more and more, until it completely arrived at the station. Then you hear the sound of smoke when the train finally stops braking at the station",
+        "set": {
+            "playlistPlay": "think"
+        },
+        "value": "Vinny then began to open his eyes, feeling his body a little better to move again. The train slowly braked more and more, until it completely arrived at the station. Then Vinny hear the sound of smoke when the train finally stops braking at the station.",
         "type": "action"
     },
 
@@ -19309,6 +19302,170 @@
         "value": "Yeah... Finally some peace for everyone.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny find Kai and James finishing off the train. Vinny then got a little curious to find the two.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "Ah... Kai, it wasn't as bad as I thought. Thanks for helping me get the train back on.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "No problem! But wait... Vinny? Did something happen? Where is Rayane?",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James and Kai looks at Vinny curiously.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane was sleeping with me, now she's on the bench. Can I talk to you for a moment alone? It'll be quick, when it's over, you'll find me in the wagon next to Rayane.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai was a little surprised before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "Alright. Let's go. But... I still need to find Hiroshi. I haven't seen him at all until now. I wanted to know if he is ok.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James gets curious but at the same time tried to maintain a respectful posture when listening to the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh yes! Hiroshi! Vinny! I didn't get a chance to see him again! So are you guys going to talk privately? I'll stay here waiting for you to come back. I'll be happy to greet Hiroshi after a long time without talking to him.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would get a little nervous, then start backing up again into a train car next to Rayane's train car.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...well. Okay. Kai, please follow me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? V..Vinny?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? Fine.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny just ignored James, leaving James feeling even more curious. Vinny sit to talk to Kai.",
+        "type": "action"
+    },
+
+    {
+        "value": "Fine... This is here. How are you? Better sit down I need to say something a little delicate to you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai then looked at Vinny, feeling anxious, trying to understand what was going on. Kai was a little worried as he finished putting some bandages on the face where he had been injured during combat.",
+        "type": "action"
+    },
+
+    {
+        "value": "Delicate? What do you mean by that? Did something very serious happen while you were fighting Elite Color?",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "It's about Hiroshi. Were you guys very close? After our mismatch, things happened with the 4 of us, Rayane, Hiroshi Ivy and me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..yes. He always considered me his right-hand man in decisions. He always trained me to be a possible successor. But what do you mean by all this? He is fine? And who is Ivy?",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ivy is the pegasus that is with us. The injured pegasus I mentioned to James. Did you manage to learn well to be his successor?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "What? Is Ivy a civilian pegasus? I don't remember letting anyone else into the bunker.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai was a little confused, but then he returned to answer, still worried about the matter.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. I've always been preparing for this day because he always told me that his time would one day run out. I was sent to walk with you in case I meet him halfway. The other guards wanted to make sure he was okay, and they put all their trust in me for that.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai... S...Sorry. But this is hard to say to you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny took a deep breath, preparing to answer Kai.",
+        "type": "action"
+    },
+
+    {
+        "value": "Unfortunately Hiroshi is no longer with us. He made an agreement, a pact with an entity for him to live longer and unfortunately it ended. I was on his side at the time and he told me his last wishes and his last words.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny hugs Kai as a form of comfort. Kai was very scared for a few seconds, but then he tried to keep calm and posture while answering. There were a few tears coming out of his eyes, but he was trying hard to stay serious as he tried to calm down during the hug.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..Hiroshi is died? Pact? So you're saying he was right? This all stuff about the Hiroshi past? N..No! I can't believe it! This Rainbow Queen story! It's not possible! Does Rainbow Queen really exist?",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai was trying to keep calm in his thoughts, trying to understand his own past opinions for himself.",
+        "type": "action"
     }
 
 ]
