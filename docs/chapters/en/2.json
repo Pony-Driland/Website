@@ -18857,7 +18857,7 @@
     },
 
     {
-        "value": "Kai was then able to return back to the wagon. Kai took advantage of the Prisma's weak moment, and summoned a spear. At the same time the Prisma heard Kai's voice, she used her spear and defended herself from Kai's spear. But Kai's spear started to crack very fast when the Prisma's spear magic started to use more magic.",
+        "value": "Then Kai back to the wagon. Kai took advantage of the Prisma's weak moment, and summoned a spear. At the same time the Prisma heard Kai's voice, she used her spear and defended herself from Kai's spear. The Kai's spear started to crack very fast when the Prisma's spear magic started to use more magic.",
         "type": "action"
     },
 
@@ -18879,18 +18879,18 @@
     },
 
     {
-        "value": "Rayane tried to stay quiet, even though she was very scared, so she took advantage of this moment and started to prepare the teleportation.",
+        "value": "Rayane tries to stay quiet, even though she was very scared, so she took advantage of this moment and started to prepare the teleportation.",
         "type": "action"
     },
 
     {
-        "value": "K..Kai! Well done Kai, you are really brave too.",
+        "value": "A..ARGH! Well done Kai, you are really brave too.",
         "character": "Rayane",
         "type": "dialogue"
     },
 
     {
-        "value": "Rayane was a little anxious about the situation, but she tried hard to stay calm. when the Kai spear was about to be broken, Rayane quickly touched Kai's hoof, for the teleportation magic to teleport him along with her to Vinny's side.",
+        "value": "Rayane was a little anxious about the situation, but she tried hard to stay calm. When the Kai spear was about to be broken, Rayane quickly touched Kai's hoof, for the teleportation magic to teleport him along with her to Vinny's side.",
         "type": "action"
     },
 
@@ -18901,7 +18901,7 @@
     },
 
     {
-        "value": "Prisma would lose balance and go rolling on the ground when the spear no longer had a target to hit. Kai's spear unfortunately also falls broken to the ground. Vinny uses the bazooka on the wagon near Prisma but without the intention of killing her.",
+        "value": "Prisma would lose balance and go rolling on the ground when the spear no longer had a target to hit. Kai's spear piece unfortunately also falls broken to the ground. Vinny uses the bazooka on the wagon near Prisma but without the intention of killing her.",
         "type": "action"
     },
 
@@ -18927,9 +18927,6 @@
     },
     
     {
-        "set": {
-            "playlistPlay": "sad"
-        },
         "value": "Vinny sit next to Rayane and Kai. Everyone was very tired, in need of a rest after everything that had happened.",
         "type": "action"
     },
@@ -18963,6 +18960,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "sad"
+        },
         "value": "Rayane slowly calmed down and tried to hold back the emotional not to start crying while watching the runaway train leaving.",
         "type": "action"
     },
