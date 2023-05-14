@@ -19128,6 +19128,45 @@
         "value": "Thank you. But Rayane, are you really ok?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "I'm fine. I think... It's just very personal things. I'm sorry.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane keep trying to control the crying, her face was getting darker and darker from the tattoos again, but this time with a lot of sadness. Meanwhile Vinny just listened to the train getting ready to leave when James was helping Kai. But then Vinny would look back at Rayane again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane, please. I'm sorry I put you through all this. That commander, she's alive, I didn't throw the missel at her directly, you see. Most likely she is still alive and will report to her superiors what happened.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then feels extremely sad and cries more again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes... I didn't want to meet Elite Color because I didn't want to need to fight her again.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little more curious and surprised to hear that.",
+        "type": "action"
+    },
+
+    {
+        "value": "Calm down, calm down... What do you feel for her, most likely she feels for you. She chose that and you chose to be with us now. Unfortunately bad things happen but you have to look at the now. We are all fine and you managed to save everyone too. If we hadn't done anything, most likely they would leave with Rowan and kill him. You have to look for the good things, there's always the good side of the \"coin\".",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
