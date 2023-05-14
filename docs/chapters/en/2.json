@@ -19494,6 +19494,112 @@
         "value": "F..Fine. I understand. I understand perfectly. All I can do is to honor Hiroshi role from now on.",
         "character": "Kai",
         "type": "dialogue"
+    },
+
+    {
+        "value": "You are the first to know, besides me, Marlon and Rayane. Coming soon everyone here will know too. I'm sorry for your loss.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. I will need to be very careful with my words. We have a lot of sensitive matters to deal with at the same time. I never thought that my first day would be one of the hardest of my life. But if Hiroshi trusted me, then it's my duty to make his choice come true.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai looked for determination in his words to feel better.",
+        "type": "action"
+    },
+
+    {
+        "value": "But well... one thing at a time, first we need to get back to the surface. First we urgently need to rest. Tomorrow I will have better conditions to understand what I should do.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai looked at the spear that had accidentally broken during the last fight, he made a brief smile and put the spear in his inventory again.",
+        "type": "action"
+    },
+
+    {
+        "value": "My memories will always keep Hiroshi eternal.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would then stop the hug and look curiously at Kai.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Are you ready? If you don't have ponies who can you count on?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny got up and went to Rayane but turned his attention to Kai again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh! You and Rowan seem very close. if you need help, don't be shy and ask for help from the pony closest to you. Okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai was a bit surprised and shy.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes, I'm prepared. W..what? Yes. Rowan will always be with me in difficult times. I have the trust of my friends and my army. Everyone will help me to have morals. I'm sure.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai breathe deeply finally accepting everything that was happening.",
+        "type": "action"
+    },
+
+    {
+        "value": "Especially when we put everything in order with the return of the magic relic. Maybe James can help me with something to make this relic work for both the East and West.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would do another nervous look before continuing to answer Kai.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rainbow Queen stole the relic from me. We'll be able to turn it around, as strange as it may seem. She appeared in a physical form for Marlon and I... anyway, let's hurry.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+
+    {
+        "value": "Kai was confused and very surprised, trying to understand the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...wait... What did you say? Rainbow Queen? And...Did she really do that?",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny walks to the next train car and sit next to Rayane, trying to wake her up in a very gentle and delicate way.",
+        "type": "action"
     }
 
 ]
