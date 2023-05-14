@@ -18411,7 +18411,7 @@
 
     {
         "set": {
-            "playEffect": { "file": "onderwish-emergency", "enabled": false }
+            "playEffect": { "file": "onderwish-emergency", "enabled": true }
         },
         "value": "MY GOD! OH COME ON! Am I going to die or am I not going to die?!",
         "character": "Vinny",
@@ -18708,7 +18708,7 @@
 
     {
         "set": {
-            "playEffect": { "file": "onderwish-emergency", "enabled": true }
+            "playEffect": { "file": "onderwish-emergency", "enabled": false }
         },
         "value": "R...Rayane! M..My Rainbow! Rayane will kill her!!",
         "character": "Kai",
