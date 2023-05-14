@@ -18938,6 +18938,39 @@
         "value": "Ah? Hey everyone? After that we need to go out somewhere to eat, we need a moment off. How are you two?",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Kai was breathing deeply, trying to calm himself during the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "I agree. I'm really happy that everyone is okay. I'm really really... but really happy. I'm just a little bruised. I'm fine...",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai let him body lie on the floor to rest a little. Rayane also looked fine, but she seemed to be doing a remorseful look.",
+        "type": "action"
+    },
+
+    {
+        "value": "I... I'm fine too. I'm just really very exhausted.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane slowly calmed down and tried to hold back the emotional not to start crying while watching the runaway train leaving.",
+        "type": "action"
+    },
+
+    {
+        "value": "S..sorry Prisma. I didn't want to make you start using your powers. I feel like you were trying to avoid a confrontation with me.",
+        "character": "Rayane",
+        "type": "think"
     }
 
 ]
