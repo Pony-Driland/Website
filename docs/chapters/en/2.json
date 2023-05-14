@@ -18971,6 +18971,96 @@
         "value": "S..sorry Prisma. I didn't want to make you start using your powers. I feel like you were trying to avoid a confrontation with me.",
         "character": "Rayane",
         "type": "think"
+    },
+
+    {
+        "value": "At the same time, James' train began to safely approach the wagon, gently pulling over to the Vinny's wagon, and was slowly decreasing its speed back to a safe speed. James was a little thrilled to hear that everyone was ok after everything that had happened.",
+        "type": "action"
+    },
+
+    {
+        "value": "VINNY! RAYANE! Y...You did it! You really made it!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny smiles a little as he looked at James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes, we did it. Sorry for everything that happened. But... where is Wagner? I let you take care of him.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner? Oh yes! Wagner! Wagner is resting at a campsite. it's already dark outside.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was slowly decreasing the speed of the train more and more, until the train came to a complete stop, being safe again to step on the ground. James ran towards everyone to help them.",
+        "type": "action"
+    },
+
+    {
+        "value": "I promised him that I would come back. Marlon suddenly showed up and warned us to come here urgently. I thought it was all very weird, Marlon sent a female pony who knew how to work with trains to help me start moving this train. Her name is Whistler.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Whistler? A..ah?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was very curious about the name, but he was more worried about Ivy when he remembered her again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Okay. I'm glad you're okay, and everyone is. We have a lot to deal with... Do you bring medicines? In the background there is an extremely injured pegasus. She can't move much.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Medicines? Of course I brought it! ",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James see the situation of the everyone body and injuries. So James would start picking up some basic medications to try and help everyone.",
+        "type": "action"
+    },
+
+    {
+        "value": "I just need everyone to get on the train.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny noticed that Rayane was crying more and more for some mysterious reason, she hadn't been able to hold her emotional.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Rayane? Wait... What did you do with the Elite Color soldiers? Are stuck with Rowan?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The...the Elite Color? They disappeared. Always when they are defeated they disappear and never come back. I left Rowan to take care of the station when I saw that he was in good health. He is hiding along with Ivy.",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
