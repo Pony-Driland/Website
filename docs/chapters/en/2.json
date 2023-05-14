@@ -19271,6 +19271,44 @@
         },
         "value": "Vinny stroked Rayane's mane as the new train journey began. Rayane feel better and just hugged Vinny a little more than usual to feel very comfortable emotionally during the travel, calming down more and more from the situation. Then time passed, it was a long journey. After a long time, the train finally arrived back at the previous station. Rayane was already sleeping after the long journey.",
         "type": "action"
+    },
+
+    {
+        "value": "Ah?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then began to open his eyes, feeling his body a little better to move again.",
+        "type": "action"
+    },
+
+    {
+        "value": "I was waiting for something to happen",
+        "type": "action"
+    },
+
+    {
+        "value": "the train slowly braked more and more, until it completely arrived at the station. Then you hear the sound of smoke when the train finally stops braking at the station",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh... Okay. We're here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looks at Rayane and see if she was in a deep sleep, but Rayane was still sleeping peacefully, Vinny could just feel the breath of her deep sleep. Then Vinny arranged her in a comfortable way on the bench. Vinny just smiled when he looked at Rayane and went to the next car to talk to Kai or James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah... Finally some peace for everyone.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
