@@ -19585,13 +19585,15 @@
         "type": "dialogue"
     },
 
-
     {
         "value": "Kai was confused and very surprised, trying to understand the conversation.",
         "type": "action"
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "W...wait... What did you say? Rainbow Queen? And...Did she really do that?",
         "character": "Kai",
         "type": "dialogue"
