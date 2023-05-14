@@ -19125,6 +19125,11 @@
     },
 
     {
+        "value": "Vinny was happy for Rayane's attitude, but still gave her a worried look.",
+        "type": "action"
+    },
+
+    {
         "value": "Thank you. But Rayane, are you really ok?",
         "character": "Vinny",
         "type": "dialogue"
