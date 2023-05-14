@@ -18410,6 +18410,9 @@
     },
 
     {
+        "set": {
+            "playEffect": { "file": "onderwish-emergency", "enabled": false }
+        },
         "value": "MY GOD! OH COME ON! Am I going to die or am I not going to die?!",
         "character": "Vinny",
         "type": "dialogue"
@@ -18903,9 +18906,6 @@
     },
 
     {
-        "set": {
-            "playEffect": { "file": "onderwish-emergency", "enabled": false }
-        },
         "value": "No! NO NO NO NOOO! STOOOOOP! CAME BACK HERE!! RAAAAAAYANE!",
         "character": "Prisma",
         "type": "dialogue"
