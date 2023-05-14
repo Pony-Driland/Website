@@ -18513,7 +18513,7 @@
     },
 
     {
-        "value": "JAMES! NO NO! GET OUT YOU DON'T KNOW HOW TO DRIVE IT!! WE NEED TO HELP RAYANE WHO IS AT THE END IN THE FIRST WAGON. WHO IS WITH YOU?",
+        "value": "JAMES! NO NO! GET OUT YOU DON'T KNOW HOW TO DRIVE IT!! WE NEED TO HELP RAYANE WHO IS AT THE END IN THE FIRST WAGON. WHO IS WITH YOU?!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -18663,7 +18663,7 @@
     },
 
     {
-        "value": "Rayane made even more force, slowly starting to suffocate Prisma a little against the wagon car. Kai was scared watching the scene.",
+        "value": "Rayane made even more force, slowly starting to suffocate Prisma a little against the wagon. Kai was scared watching the scene.",
         "type": "action"
     },
 
@@ -18753,7 +18753,7 @@
     },
 
     {
-        "value": "RAYANE YOU AND KAI GET OUT OF THIS WAGON AND GIVE ME THE BAZOOKA!",
+        "value": "RAYANE AND KAI GET OUT OF THIS WAGON AND GIVE ME THE BAZOOKA!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -18778,7 +18778,7 @@
     },
 
     {
-        "value": "P..please! Tell me you'll do what I'm thinking!",
+        "value": "Please! Tell me you'll do what I'm thinking!",
         "character": "Rayane",
         "type": "dialogue"
     },
