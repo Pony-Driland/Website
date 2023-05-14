@@ -19281,7 +19281,7 @@
 
     {
         "set": {
-            "playlistPlay": "think"
+            "playlistPlay": "bad-think"
         },
         "value": "Vinny then began to open his eyes, feeling his body a little better to move again. The train slowly braked more and more, until it completely arrived at the station. Then Vinny hear the sound of smoke when the train finally stops braking at the station.",
         "type": "action"
@@ -19466,6 +19466,34 @@
     {
         "value": "Kai was trying to keep calm in his thoughts, trying to understand his own past opinions for himself.",
         "type": "action"
+    },
+
+    {
+        "value": "Calm down, everything will be fine, their last words were apologizing to Marlon, Marlon was crying a lot at the moment, and Hiroshi asked me to pass the torch to you, you are his successor now.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai was at a loss for words to describe the situation, he just kept hugging Vinny to try to stay calm.",
+        "type": "action"
+    },
+
+    {
+        "value": "Marlon? That's motive Marlon was so weird before he disappeared. I could feel in his eyes that he wasn't feeling very well for someone who had just ordered an invasion of this level. He just brought James to me and took us to one of the trains he had used to invade the Bunker. Now it all makes sense.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai tried not to get too depressed as he wiped his eyes during the talk. Kai replied while letting a little more tears fall a little, he was very thoughtful about the future that awaited him from now.",
+        "type": "action"
+    },
+
+    {
+        "value": "F..Fine. I understand. I understand perfectly. All I can do is to honor Hiroshi role from now on.",
+        "character": "Kai",
+        "type": "dialogue"
     }
 
 ]
