@@ -18918,6 +18918,26 @@
         },
         "value": "Prisma got up, and when she saw the bazooka shot approaching, it was too late. She was trying to use magic to try to interfere with the missile, but she couldn't make it in time. Then the train car instantly exploded, the explosion made Prisma go inside the second train car, and the train car pins instantly break. The train car that was Vinny, Rayane, and Kai started to slow down while the other runaway train continued its journey without course.",
         "type": "action"
+    },
+
+    {
+        "value": "AAHH! COME ON! FINALLY! This is over! Oh god! Oh.....oh god.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    
+    {
+        "set": {
+            "playlistPlay": "sad"
+        },
+        "value": "Vinny sit next to Rayane and Kai. Everyone was very tired, in need of a rest after everything that had happened.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Hey everyone? After that we need to go out somewhere to eat, we need a moment off. How are you two?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
