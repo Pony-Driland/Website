@@ -19061,6 +19061,67 @@
         "value": "The...the Elite Color? They disappeared. Always when they are defeated they disappear and never come back. I left Rowan to take care of the station when I saw that he was in good health. He is hiding along with Ivy.",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny would go close to Rayane, giving her a hug and ask if everything was ok and why the crying expression.",
+        "type": "action"
+    },
+
+    {
+        "value": "Do you want to talk to me in another train car?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane would then slowly lift her head and look at Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "A..Ah? This is about what?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane keep crying, trying to calm down, she hugged back to try to feel better. Even completely injured, Vinny slowly tried to walk with Rayane to the train, but Rayane stop the progress.",
+        "type": "action"
+    },
+
+    {
+        "value": "No... Look at all those pieces of glass on you. Let me help you to the train. All right?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny got a little curious and smiled at Rayane when she started to levitate him.",
+        "type": "action"
+    },
+
+    {
+        "value": "Everyone! Wait a minute, I need to talk to Rayane. We'll be right back.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So Vinny and Rayane finally arrived in a very private train car. Rayane was looking for the place with the softest chair so Vinny wouldn't groan in pain from the broken glass.",
+        "type": "action"
+    },
+
+    {
+        "value": "T..This is here. Please rest here. I don't want to see you suffer again.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Thank you. But Rayane, are you really ok?",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
