@@ -19845,7 +19845,68 @@
     },
 
     {
-        "value": "James suspected something, but still played in a joking tone to see that Rayane was just doing a silly smirk to tease him. Then Rayane was approaching the door too, and used her smartmoby to finally open the door.",
+        "value": "James suspected something, but still played in a joking tone to see that Rayane was just doing a silly smirk to tease him.",
+        "type": "action"
+    },
+
+    {
+        "value": "I hope you guys found something related to the big energy. Because all that energy scared me when I detected it!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Later~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Rayane was approaching the door too, and used her smartmoby to finally open the door.",
+        "type": "action"
+    },
+
+    {
+        "value": "Kai was quiet, just reflecting on the things that happened while following everyone. So everypony would find Rowan sleeping on the right side of the room, and Ivy sleeping on the left side of the room separately.",
+        "type": "action"
+    },
+
+    {
+        "value": "R...Rowan! oh my Rainbow! Are you alive!",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai then run and hugged Rowan happily. Rowan woke up due to the surprise of the hug.",
+        "type": "action"
+    },
+
+    {
+        "value": "K...Kai? K..Kai!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. This is all very good. See all united back.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane breathed deeply, missing something, but tried to keep the smile on her face.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. But... Who's that pegasus over there?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was very curious when he looked at Ivy.",
         "type": "action"
     }
 
