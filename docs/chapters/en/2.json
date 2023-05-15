@@ -19605,8 +19605,45 @@
     },
 
     {
-        "value": "Vinny walks to the next train car and sit next to Rayane, trying to wake her up in a very gentle and delicate way.",
+        "value": "Vinny walks to the next train car and sit next to Rayane, trying to wake her up in a very gentle and delicate way. Kai then thought about the radar for a few seconds.",
         "type": "action"
+    },
+
+    {
+        "value": "Well... maybe the energy from his radar can help us. I remember feeling something very powerful coming from inside him. I will have to talk to James about it.",
+        "character": "Kai",
+        "type": "think"
+    },
+
+    {
+        "value": "Hey? We're here, it's time to go without biting your dream this time.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "think"
+        },
+        "value": "Rayane was sleeping very calmly, it seemed that she was finally calmer after everything she's been through, so she slowly opened her eyes, and tried to look at Vinny while yawning.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? My dream?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little for a few seconds before continuing the talk.",
+        "type": "action"
+    },
+
+    {
+        "value": "Not even if it's lightly?~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
