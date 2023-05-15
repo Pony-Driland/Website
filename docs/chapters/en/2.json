@@ -19906,8 +19906,110 @@
     },
 
     {
-        "value": "James was very curious when he looked at Ivy.",
+        "value": "James was very curious when he looked at Ivy. Vinny then smiled a little before answering.",
         "type": "action"
+    },
+
+    {
+        "value": "The pegasus? it's Ivy. She's Wagner's friend. Ivy is the one I said that her whole body is bruised.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was very surprised to approach Ivy and analyze her smartmoby. James took a small mysterious device to use the screen to analyze the state of the Ivy body.",
+        "type": "action"
+    },
+
+    {
+        "value": "Vinny! But this is a complete miracle! How did you rescue her? She is seriously injured. She would already be dead now. I will only be able to try to help her on the surface. My medical tools here are now very limited.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was very curious to hear this, trying to look for some answer in her thoughts, but then just smiled and answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "It's really good to know that things will calm down a bit for now.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh! Ivy was riding me this whole time, I found her in the middle of some rubble. I can remove it off my list of things to do before i die. But I need to give a female a kiss while having another one mounted on me... you need to try James!!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little as James was completely confused by Vinny's words.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wh...what? Are you fine Vinny?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny laughed a little as James was completely confused by Vinny's words. Vinny just laughed a little more before finally looking at Rowan and Kai.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heheh! Well... Kai? How are you?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai and Rowan were finally feeling better for meeting, but then they looked curiously at Vinny. Rowan was a little flushed to see that everyone was there the moment they were hugging each other.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? Oh yeah! I'm fine.",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rowan was starting to answer a little scared.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm still a little traumatized by the kidnapping. I thought they would take me away to Whicocesert and I would never come back. This place is scary! Usually no one ever comes back from there!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..what? Whico... cocoser? Whicocesert? What is it?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny... Calm down. I told you. it's the name of the village that is on top of the highest mountain in Pony Driland. Even where the base of Elite Color is. That's motive I was afraid of you disappearing. Once they take you there, you never come back.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y..yes! This is true!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Calm down Rowan, it's all over. Now all we need is to get back to the surface. Alright?",
+        "character": "Kai",
+        "type": "dialogue"
     }
 
 ]
