@@ -20010,6 +20010,34 @@
         "value": "Calm down Rowan, it's all over. Now all we need is to get back to the surface. Alright?",
         "character": "Kai",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Everyone started preparing things while Rayane was quiet just helping Ivy.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes, the commander knew about you too Kai. There's a lot we don't know yet, but we need to recover ourselves and leave now. I'm glad everyone is here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The commander knowing about me is nothing new. Our hierarchy is public knowledge. Don't worry about it.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was a little depressed. But she kindly levitates the Ivy body to her back, looking at her face, trying to feel a little better with the feeling of hope.",
+        "type": "action"
+    },
+
+    {
+        "value": "I don't know what means Vinny to have found you. But we need to save something in the midst of this disaster. I promise you will be fine.",
+        "character": "Rayane",
+        "type": "think"
     }
 
 ]
