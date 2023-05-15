@@ -20077,6 +20077,12 @@
     {
         "value": "Vinny tries to hide the sad face a little. Rayane invoked a special coat to help cover Ivy's body and at the same time hide the body, this coat was very familiar to Vinny, This was the same coat that Rayane used when she first met Vinny. Rayane took advantage of the hood of her coat to hide the Ivy sad face a little while wiping the Ivy eyes.",
         "type": "action"
+    },
+
+    {
+        "value": "Yes. Ivy is really safe. It's really time for us to leave this place.",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
