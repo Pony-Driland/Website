@@ -19833,7 +19833,7 @@
     },
 
     {
-        "value": "Heh~ I know a lot more than you might think, you silly scientist~",
+        "value": "Heh. I know a lot more than you might think, you silly scientist~",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -19862,12 +19862,7 @@
     },
 
     {
-        "value": "Then Rayane was approaching the door too, and used her smartmoby to finally open the door.",
-        "type": "action"
-    },
-
-    {
-        "value": "Kai was quiet, just reflecting on the things that happened while following everyone. So everypony would find Rowan sleeping on the right side of the room, and Ivy sleeping on the left side of the room separately.",
+        "value": "Then Rayane was approaching the door too, and used her smartmoby to finally open the door. Kai was quiet, just reflecting on the things that happened while following everyone. So everypony would find Rowan sleeping on the right side of the room, and Ivy sleeping on the left side of the room separately.",
         "type": "action"
     },
 
