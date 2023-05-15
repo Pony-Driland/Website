@@ -18381,7 +18381,7 @@
     },
 
     {
-        "value": "GET YOUR FILTHY HOODS OFF HIM!!",
+        "value": "GET YOUR FILTHY HOOVES OFF HIM!!",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -20038,6 +20038,45 @@
         "value": "I don't know what means Vinny to have found you. But we need to save something in the midst of this disaster. I promise you will be fine.",
         "character": "Rayane",
         "type": "think"
+    },
+    
+    {
+        "value": "Hey Rayane. How is Ivy doing?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then looks at Vinny sad face curiously when she heard the Vinny voice. Then Rayane responded a little depressingly as she used magic to spawn a special saddle bed to keep Ivy's body tied up and safe without risk of falling off Rayane.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh? What happened? What is this sad face? A..Ah. She's still under my special magic. She won't make reactions without my help to be released from my magic because of her condition. She will still continue to sleep during this time.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Do you know the motive for me look like this?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a sad face looking at James and Rowan who didn't know about Hiroshi. Rayane was then a little worried to hear this, but she didn't answer anything.",
+        "type": "action"
+    },
+
+    {
+        "value": "I see.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tries to hide the sad face a little. Rayane invoked a special coat to help cover Ivy's body and at the same time hide the body, this coat was very familiar to Vinny, This was the same coat that Rayane used when she first met Vinny. Rayane took advantage of the hood of her coat to hide the Ivy sad face a little while wiping the Ivy eyes.",
+        "type": "action"
     }
 
 ]
