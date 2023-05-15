@@ -19928,7 +19928,7 @@
     },
 
     {
-        "value": "Heh! Ivy was riding me this whole time, I found her in the middle of some rubble. I can remove it off my list of things to do before i die. But I need to give a female a kiss while having another one mounted on me... you need to try James!!",
+        "value": "Ivy was riding me this whole time, I found her in the middle of some rubble. I can remove it off my list of things to do before i die. But I need to give a female a kiss while having another one mounted on me... you need to try James!!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -20036,18 +20036,18 @@
     },
 
     {
-        "value": "Rayane then looks at Vinny sad face curiously when she heard the Vinny voice. Then Rayane responded a little depressingly as she used magic to spawn a special saddle bed to keep Ivy's body tied up and safe without risk of falling off Rayane.",
+        "value": "Rayane then looks at Vinny sad face curiously when she heard the Vinny voice. Then Rayane responded a little depressingly as she used magic to spawn a special saddle bed to keep Ivy's body tied up and safe.",
         "type": "action"
     },
 
     {
-        "value": "Oh? What happened? What is this sad face? A..Ah. She's still under my special magic. She won't make reactions without my help to be released from my magic because of her condition. She will still continue to sleep during this time.",
+        "value": "Oh? But what is this sad face? A..Ah. She's still under my special magic. She won't make reactions without my help to be released from my magic because of her condition. She will still continue to sleep during this time.",
         "character": "Rayane",
         "type": "dialogue"
     },
 
     {
-        "value": "Do you know the motive for me look like this?",
+        "value": "Do you know the motive for me look like this? Alright?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -20058,7 +20058,7 @@
     },
 
     {
-        "value": "I see.",
+        "value": "Yes... Yes. I see.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -20069,7 +20069,7 @@
     },
 
     {
-        "value": "Yes. Ivy is really safe. It's really time for us to leave this place.",
+        "value": "Well... Ivy is really safe. It's really time for us to leave this place.",
         "character": "Vinny",
         "type": "think"
     }
