@@ -19644,6 +19644,209 @@
         "value": "Not even if it's lightly?~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Heh! You can this later. First we need to get out of here. I hope you stay awake enough not to mistake me for a little food.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little again as she got up still slightly tired.",
+        "type": "action"
+    },
+
+    {
+        "value": "Food?~ I think you're being too silly. I was just nibbling on my dream~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai smiles, feeling good to see that Rayane is feeling good, so he goes to James to ask him to open the train door. Vinny replies in a joking tone before booping Rayane in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well, we had to prepare now. I told Kai about Hiroshi, and only for him. Kai had to know first about Hiroshi's request about him being the successor. Anyway back to reality, can we proceed? I miss the charming Rayane.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane took advantage of the boop, and does a silly little nibble on the Vinny hoof in response while smirking on Vinny, laughing a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "A...Ah!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Oops~ I think I nibbled on my dream again~ Thank you for being by my side. You are helping me a lot not to fall apart inside my emotions.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane does a small smile of thanks in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't worry. I'll carry Ivy this time. You still need to recover from your injuries.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heheh. And when are you going to take me on a piggyback ride? I'm a kid sometimes too.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Silly you~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny is happy to see Rayane's smile, then the train door opened, and James arrived with Kai, getting ready to leave the train.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah! ...Ah? Well let's see how everyone is.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Rayane and Vinny leave the train and follow Kai and James. Vinny without thinking twice, him would see if Rowan was fine. Vinny couldn't find Rowan, but Vinny could have a slight feeling that he was in the camera room.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah yes! Ivy!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little scared by the situation, seeing the whole station destroyed.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... This Rayane teleportation really was more powerful than I imagined.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. The energy of this radar is really much more powerful than you think.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Shhhhh~ Don't be afraid. At least everything is good. I had all the work of restoring the areas infected by the black and white magic.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane's horn started to glow, emitting a colorful aura that makes Rayane's hooves shine in different colors, so she stepped into the rest of the black and white environment, and at this moment the place was returning to normal colors again. James was then even more curious and confused by watching the scene.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What? I didn't know you could do that.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes I Can. I didn't even know I still had energy left to do that.Usually I need help to get this type of energy.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai was thoughtful watching all this.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...What? What does this mean all? It's a lot of new things going on at the same time.",
+        "character": "Kai",
+        "type": "think"
+    },
+
+    {
+        "value": "At least everything went really fast. Come on, we have to go to Rowan. James said the output of the underground is not far from here.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then stopped the walk beside the camera room door.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? What's wrong with leaving things black and white?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then stopped the walk beside the camera room door. Rayane was a little curious, and when hearing this question, she feel the need to explain everything.",
+        "type": "action"
+    },
+
+    {
+        "value": "Black and White? Ah yes. The colors are the energy representation of the life in this world. The more black and white you get, it indicates that your existence is getting weaker. This can even make your soul separate from your body and not be able to go back.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was then a little scared to remember to see the moment Ivy's eyes had been gray.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..Yes! It makes sense now.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...What?! Did you actually know this information before I even explained it to you??",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ I know a lot more than you might think, you silly scientist~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes! I see!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James suspected something, but still played in a joking tone to see that Rayane was just doing a silly smirk to tease him. Then Rayane was approaching the door too, and used her smartmoby to finally open the door.",
+        "type": "action"
     }
 
 ]
