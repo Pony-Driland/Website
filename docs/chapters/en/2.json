@@ -20101,9 +20101,48 @@
 
     {
         "set": {
-            "playlistPlay": "sad"
+            "playlistPlay": "rainbow-queen-moment"
         },
         "value": "Well... Vinny. Can you tell me where Hiroshi is? We haven't found him yet.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James... I... ahn... I wanted to talk about Hiroshi. Yes. He really isn't here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little surprised to hear about Hiroshi.",
+        "type": "action"
+    },
+
+    {
+        "value": "But... Didn't Hiroshi help Marlon in anything? That's what I thought when I found Marlon on the surface.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai and Rayane only kept quiet. Vinny breathed deeply as Rowan began to spend wordlessness to what him was hearing.",
+        "type": "action"
+    },
+
+    {
+        "value": "No. Unfortunately this is not true. Hiroshi was with me at the time of the collapse. Hiroshi had an eternal life pact with a divine entity. But he failed in this pact. Yes ... In a nutshell he is now resting in peace.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was speechless, very lost in his emotions, not knowing much to say.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...wait... Did you say pact? Divine entity? W... What?! Vinny!! You're scaring me a lot! Who have you been talking to these last few hours?!",
         "character": "James",
         "type": "dialogue"
     }
