@@ -20072,6 +20072,40 @@
         "value": "Well... Ivy is really safe. It's really time for us to leave this place.",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "Then everyone all finally walked out of the cameras room. Rayane just finished the service of closing the door definitely.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "Everypony! Let's go. Just follow the corridor, one of the doors will take us to the elevator that will return to the surface.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yeah. I can't wait for us to leave this place right away. I can no longer breathe the air of this hell.",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then breathed deeply as everyone finally started walking on the hall.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "sad"
+        },
+        "value": "Well... Vinny. Can you tell me where Hiroshi is? We haven't found him yet.",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
