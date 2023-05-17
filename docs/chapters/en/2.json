@@ -20201,6 +20201,12 @@
     },
 
     {
+        "value": "Rainbow Queen has a scythe. Things are just getting worse. I don't believe my worst theory of all is more realistic than I imagined. I don't know how I will calm something like Rainbow Queen!",
+        "character": "James",
+        "type": "think"
+    },
+
+    {
         "value": "Oh fuck god... We are in danger. A very serious danger. About the machine... Please give them to me. Maybe I can figure out how to make a new version of it that can benefit both regions. We have extremely serious problems. We failed to recover what could save both regions. We need a plan B.",
         "character": "James",
         "type": "dialogue"
@@ -20212,8 +20218,22 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Here, James. But... Can we talk alone?",
         "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was then very curious about Vinny's question. James feel a little hope of having more information he need.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? What?",
+        "character": "James",
         "type": "dialogue"
     }
 
