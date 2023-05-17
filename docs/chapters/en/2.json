@@ -20235,6 +20235,40 @@
         "value": "Ah? What?",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Before I want everyone to know that nobody is to blame for everything that happened here, I talked to Marlon, he is responsible, but in the last moments Hiroshi explained the whole truth and apologized to Marlon. Hiroshi was partly to blame for make the neighboring region poorer. Anyway  Marlon has to own up to his mistakes, but he's already redeemed himself, Hiroshi wouldn't want anything bad to happen to him.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Everyone all kept quiet and only agreed out of respect for Hiroshi.Only Kai was a little more curious trying to understand what was going on. James then breathed deeply and looked at Rayane for a few seconds. James thought it was strange to see that Rayane was looking to be more distant from the group during the walk.",
+        "type": "action"
+    },
+
+    {
+        "value": "Alright, just hold on a moment, Vinny.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little confused when looking back and seeing Rayane, so Vinny just was quiet and watched. James approached Rayane slowly when he saw that she was making a depressed look.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rayane?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "H...huh? What? James?",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
