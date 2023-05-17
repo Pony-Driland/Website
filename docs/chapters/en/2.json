@@ -20182,7 +20182,7 @@
         "character": "James",
         "type": "think"
     },
-    
+
     {
         "value": "James? Hello? JAAAAMES! Calm down James, we'll get along with each other over time.",
         "character": "Vinny",
@@ -20192,6 +20192,28 @@
     {
         "value": "A...Ah? Me? S...Sorry! But the name is Rainbow Queen? This name is very familiar. I heard a lot of ponies like Marlon and Hiroshi talking about her.",
         "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James tried to keep calm, while trying to hold back his tears when talking about Hiroshi, but then he tried to go back to maintaining the conversational posture.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh fuck god... We are in danger. A very serious danger. About the machine... Please give them to me. Maybe I can figure out how to make a new version of it that can benefit both regions. We have extremely serious problems. We failed to recover what could save both regions. We need a plan B.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then made a worried look at James while delivered the piece of the machine to James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Here, James. But... Can we talk alone?",
+        "character": "Vinny",
         "type": "dialogue"
     }
 
