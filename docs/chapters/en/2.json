@@ -20347,6 +20347,101 @@
     {
         "value": "Rowan and Kai followed Rayane out of the room towards the exit that now Rayane knew where it was. Vinny just expected everyone to enter the elevator. When this finally happens, then James and Vinny looked curiously at each other.",
         "type": "action"
+    },
+
+    {
+        "value": "Okay. I think we can talk better alone now. And thanks for sharing the piece of machine.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a look of regret for James and answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "I'm sorry I spoke to you from the first time on the train, adrenaline pumping. Anyway, I just want you to know that even though I was far from you I didn't forget about you and I remembered you at times.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny took out the 2 tablets and gave them to James.",
+        "type": "action"
+    },
+
+    {
+        "value": "Look here. I found these 2 tablets earlier in a little room, sort of returning your tablet that I broke over the pony's head on our first time. You can take it, they are common tablets, but before you do something, it would be good to look at what data is on it, you may have more truths about Hiroshi and the relics. I took them along with Rayane, Kai and Rowan, they are yours now.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James looked at the tablets curiously, with a look of hope to hear what Vinny said.",
+        "type": "action"
+    },
+
+    {
+        "value": "T...Thank you. Don't worry Vinny. I always have my moments of reflection. It's at these times that I realize where I went wrong. I'm glad to know that you remembered me. Because I really had a few life crises when I tracked your Master Radar and found you were very far from me. Heh... Don't worry so much about that tablet. After everything that's happened, I have no reason to be mad at you for a tablet I can just build a new one.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James analyzed the tablets for a few seconds before answering, getting slightly surprised.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh... these are not ordinary tablets. They are tablets that store documents. Maybe we'll find out something even about this machine that I'm going to build besides the data on Hiroshi.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heheh! Well, they're yours, now you owe me a tablet.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny gives James a big hug in response. James was a little surprised by the hug, but he smiled a little in response before James give a hug back.",
+        "type": "action"
+    },
+
+    {
+        "value": "It's good to have you back by my side! But hey let's go? How are we going to leave? Do you think we can use the radar to help in the region?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes, if I find out more about this Hiroshi device, maybe I can create a new energy distributor. We can even use it to recharge the Master Radar without having to have the Master Smartmoby piece.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. Come on, I have a lot to talk about with you, male to male subjects!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. I say the same. Maybe we want to talk about the same subject.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Even worried, James tried to keep his smile on his face as James and Vinny entered the elevator that had already returned to the underground.",
+        "type": "action"
     }
 
 ]
