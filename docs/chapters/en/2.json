@@ -20181,6 +20181,18 @@
         "value": "R..Rainbow Queen? The mysterious goddess of Hiroshi legend? A powerful entity with uncontrolled mood? This entity can drain so much energy at the same time?! N..No! There's something very wrong with that! This is impossible!",
         "character": "James",
         "type": "think"
+    },
+    
+    {
+        "value": "James? Hello? JAAAAMES! Calm down James, we'll get along with each other over time.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A...Ah? Me? S...Sorry! But the name is Rainbow Queen? This name is very familiar. I heard a lot of ponies like Marlon and Hiroshi talking about her.",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
