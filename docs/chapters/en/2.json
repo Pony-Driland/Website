@@ -20115,7 +20115,13 @@
     },
 
     {
-        "value": "James was a little surprised to hear about Hiroshi.",
+        "value": "W...wait... You mean that....w...that's it? Kai is the new leader? Is the era of Hiroshi over as he said so much?",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James and Rowan was a little surprised to hear about Hiroshi.",
         "type": "action"
     },
 
