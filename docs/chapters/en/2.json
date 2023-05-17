@@ -20275,6 +20275,78 @@
         "value": "H...huh? What? James?",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was curious, but James wasted no time and gently connected a cable to Rayane's Smartmoby.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wh...what?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane wiped her eyes a little while looking at the cable.",
+        "type": "action"
+    },
+
+    {
+        "value": "You should have told me that your Smartmoby has a mod to have installed a map. I realized that just when you used that magic on Wagner. So please... take the others back to the surface while I talk to Vinny. I know you will be able to find Wagner alone for this reason.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "The cable started transmitting information to Rayane's Smartmoby, and she was a little surprised while waiting for the cable to finish the service.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y...yes. It's ok James, I'll be waiting for you two.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane lowered her head, crying a little more before offering for Kai and Rowan to accompany her. Kai was curious about the scene, but accepted the situation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Did we really travel that far? I didn't expect this to be the nearest village.",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "Don't worry Vinny. We'll see Marlon again soon. If he's sorry, he's probably wandering around the region alone. I just need to know where to find him. In a way, this is not a good time for us to decide who the real culprit is. I wanted to talk to Marlon better about it.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai looks at Rowan gently during the talk. Rowan was feeling sad, but was a little surprised to look at Kai's determination.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rowan! It's now. Come on... We have to go back now.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Y...Yes Kai. It's ok.",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rowan and Kai followed Rayane out of the room towards the exit that now Rayane knew where it was. Vinny just expected everyone to enter the elevator. When this finally happens, then James and Vinny looked curiously at each other.",
+        "type": "action"
     }
 
 ]
