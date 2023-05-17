@@ -20442,6 +20442,34 @@
     {
         "value": "Even worried, James tried to keep his smile on his face as James and Vinny entered the elevator that had already returned to the underground.",
         "type": "action"
+    },
+
+    {
+        "value": "Same subject? Is it something about charming and beautiful and single ponies? If it's not about that, what's it about?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah?...wait? What? N..No! Okay. Maybe your unexpected subject leads me to what I'm trying to talk about, but that's not what it's about.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James made an embarrassed facehoof.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmm... Well, we're alone and it looks like we're going to be alone in the elevator, you can count on me for anything and everything? Is it about Rayane?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James press the button to close the elevator door. Then the elevator finally started to go up.",
+        "type": "action"
     }
 
 ]
