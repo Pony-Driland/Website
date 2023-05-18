@@ -20712,6 +20712,34 @@
         "value": "HEY! HEY HEY! Calm down there! I can do Rainbow Queen talk with you, now you want to give her something of yourself? You don't know her intention. If she stole a part of Master Smartmoby and maybe she's working for Elite Color? Why would you want to make a pact? Rainbow Queen is a goddess, she has everything, do you have something she wants? Really if she wants to screw me and Rayane she can use you. You can be you James, it will work out in the end, trust me.",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "James was completely surprised to hear Vinny's words.",
+        "type": "action"
+    },
+
+    {
+        "value": "Y..Yes. She's a goddess. If she wants to... she can erase this entire dimension in a few seconds and create a new one. If we're still alive, it's because she has a special reason for all this. Maybe I have something she wants. This can be the knowledge of how this dimension works. If Rayane has any involvement with this, maybe that's what she was going to do to me and she didn't.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "My world also had gods. Don't believe everything, she has the power to destroy the world why didn't she? Even if I pissed her off, I'm aware of my situation. If Rainbow Queen is involved with the Elite Color, the Elite Color wants to triumph, and won't triumph destroying the world, relax.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny breathed deeply before continuing the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Even gods have their limits, for example, she should have killed me 3 times. Mayabe she guides the dead somewhere, like a reaper, shinigame or death personified. You're just aiming at the bad things, look at all the good things you did, you saved me with Rayane. You saved an innocent pegasus, who has spent her entire life alone in her parents' absence. Ivy is a adult who acts like a child, she and Wagner met before the attack, I even gave her a \"push\" to get to Wagner. Ivy really likes Wagner, if all goes well, you not only saved us, but also solved the Wagner and Ivy's problem, making maybe a future couple. The two ones can live in peace helping each other now thanks to you. You need to forgive yourself! No pacts with gods! If you need a pact talk to me!",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
