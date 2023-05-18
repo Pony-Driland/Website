@@ -20651,6 +20651,7 @@
 
     {
         "set": {
+            "playlistPlay": "dark-ambient-melodies",
             "where": "???",
             "playEffect": { "file": "heavy-rain", "enabled": true }
         },
@@ -20667,6 +20668,50 @@
     {
         "value": "James looked at him amulet. The same amulet that he had looked at in the laboratory. Then James started to cry.",
         "type": "action"
+    },
+
+    {
+        "value": "I lost a friend that I loved so much that now I don't even know what part of the universe she is in. And now I'm going to lose all my creation along with my life and friends!!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James tried to calm down while cleaning his face a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "J..James? Calm down, we all make mistakes. I'm here. Rayane, and Kenny is here too. I'm actually worried about him. But don't worry. We'll really manage, if we're going to stay alive we'll stay, if we're going to die... Well... It's not really a motivating stage but we're going to do everything to delay this or never happen.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little to try to cheer James, so Vinny hugged him in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "James lifted his face a little and looked at Vinny. James was doing a depressed look, but he kept answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "Kenny? Kenny is fine. I never let him leave the first village because it's the safest place in this world. I'd rather have a little hope that we'll stay alive. But if I die... I want to at least talk to this goddess. I know this is crazy. But my last alternative might be make some pact with Rainbow Queen. For the good of all of you.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was then completely surprised to hear this, and then interrupted James.",
+        "type": "action"
+    },
+
+    {
+        "value": "HEY! HEY HEY! Calm down there! I can do Rainbow Queen talk with you, now you want to give her something of yourself? You don't know her intention. If she stole a part of Master Smartmoby and maybe she's working for Elite Color? Why would you want to make a pact? Rainbow Queen is a goddess, she has everything, do you have something she wants? Really if she wants to screw me and Rayane she can use you. You can be you James, it will work out in the end, trust me.",
+        "character": "Vinny",
+        "type": "dialogue"
     }
 
 ]
