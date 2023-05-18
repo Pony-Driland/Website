@@ -20651,7 +20651,7 @@
 
     {
         "set": {
-            "where": "Forest",
+            "where": "???",
             "playEffect": { "file": "heavy-rain", "enabled": true }
         },
         "value": "Vinny and James started to hear the sound of very strong rain when the elevator was very close to finally reaching its final destination. Then Vinny and James looked at each other and stared at before James continued the conversation. James was very quiet, in a very lonely look, Vinny just watched, worried about James.",
