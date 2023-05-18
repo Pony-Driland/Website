@@ -20462,14 +20462,143 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Hmmm... Well, we're alone and it looks like we're going to be alone in the elevator, you can count on me for anything and everything? Is it about Rayane?",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "James press the button to close the elevator door. Then the elevator finally started to go up.",
+        "value": "James press the button to close the elevator door. Then the elevator finally started to go up. Then James looked curiously at Vinny after hearing the question.",
         "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "bad-mystery"
+        },
+        "value": "Rayane? No. I'm referring to the mysterious entity. Rainbow Queen... I still know very little about this mysterious alicorn.",
+        "character": "James",
+        "type": "dialogue"
+    },
+    
+    {
+        "value": "Vinny then made a curiosity look, trying to understand the reason for James's concern.",
+        "type": "action"
+    },
+
+
+    {
+        "value": "Well, as far as I know. Rayane knows her more. She and Rayane were already some kind of partners. I really think that Rayane and this goddess have some involvement with Elite Color. I don't know how it is for Rayane, but I think she doesn't touch on this subject and doesn't even like to comment as I ask something related. Rayane hides things from me but I think some things she doesn't even know, like she has something missing from her memory. I had 3 opportunities to talk to this goddess, and at 3 she got mad at me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little confusing for a few seconds, speechless to describe what was happening. But then he finally tried to say something.",
+        "type": "action"
+    },
+
+    {
+        "value": "P...partners? I'm surprised about it all. But what kind of involvement? Are you referring to some sort of agreement between the two sides? Where did you get this conclusion about Rayane is also in this story? Ah yes... stories... Maybe she lost someone very important to Elite Color and she doesn't want to show this side of some possible friendships of hers.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James gets very curious and thoughtful about the subject for a seconds. But James was still very uncomfortable and afraid to talk about Rainbow Queen.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... About the goddess... Rainbow Queen was angry. It's a divine entity. She has a scythe. My theory that is forming is not good. Do you know anything else to tell me about it?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes it was in the cave, Rainbow Queen knew we were there, she doesn't even want to get close to Rayane. But Rayane wants me to make her look \"good\". Everyone knows Rayane, everyone from the Elite Color talks to her. I heard Rayane talking to the commander that Rayane betrayed her, and that the commander was not to let her head.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny scratched his head and returned to the subject.",
+        "type": "action"
+    },
+
+    {
+        "value": "It's hard for me to point out that Rayane was part of the Elite Color, or still is. Ivy also said the last thing she listened to about Rayane was that she was through a scientist. Did she ever tell you to stop your research?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was very surprised, with difficulty answering Vinny's words.",
+        "type": "action"
+    },
+
+    {
+        "value": "R..Rayane meet the commander?! Okay! Hmmmm... If Rayane knows this goddess... So it makes a lot of sense for Rayane to have a little divine aura in her body. Alicorns can transfer some of their divine auras to other common ponies. It's like planting a seed to later bloom.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was very surprised, with difficulty answering Vinny's words.",
+        "type": "action"
+    },
+
+    {
+        "value": "Weeeeell... No. Rayane never said anything related to that to me. She just seemed to keep an eye on me and liked to tease me as if she wanted to try to find out more about me. But in the end she suddenly changed. She dropped all this mystery and started treating me more like a friend through her silly jokes with you.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was then a little more curious before she continued the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "About divine aura, when some very deep feeling happens, like anger, sadness, some black marks come out of the body and eyes. After calming the body goes back to normal. This moment happened in your elevator, and it happened to Rainbow Queen. I really wouldn't like it but in the end, something very bad will happen.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James then started to get scared and responded in a tone of voice of fear.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmm... T...tattoos? Divine aura? No! It really all makes sense and it really is something much more dangerous than you might think. Our lives really could be very much in danger, not only ours... But the entire dimension!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was very worried and started to get very anxious and feel a little sick.",
+        "type": "action"
+    },
+
+    {
+        "value": "Divine powers! They can't get out of control! N..No no! When a divine creature becomes angry or sad, it reflects in the way it uses the powers! But when it starts to get too much out of an alicorn's control, then it gains possession of the magic scythe! Yes! The scythe! This scythe is a way to drain an alicorn's hatred so it doesn't go completely insane. This scythe has a lot of power energy precisely because of negative feelings. But here comes another problem.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James breathed deeply.",
+        "type": "action"
+    },
+
+    {
+        "value": "If this scythe can't be enough to hold an alicorn's rage, it ends up becoming another weapon for that alicorn, and when it's mastered, it becomes extremely even more dangerous.",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
