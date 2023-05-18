@@ -20599,6 +20599,51 @@
         "value": "If this scythe can't be enough to hold an alicorn's rage, it ends up becoming another weapon for that alicorn, and when it's mastered, it becomes extremely even more dangerous.",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then made a small gulp before continuing the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh fuck...",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Okay! Okay okay. Good to know that. Rayane has great power. Rayane just needs to be careful using it. But since we are in this conversation about power... I really need something, some weapon, some power. I can't go all or nothing. I'm fighting for my life using my life, I really need something. How long will it take?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked around, suspicious of something randomly, then looked back at James.",
+        "type": "action"
+    },
+
+    {
+        "value": "You know James, unfortunately in certain situations I can be a bit of a bad influence. For example Rayane almost killed the commander herself. If anyone thinks it came from me? Or even from you?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W..What? N..No Vinny! Rayane likes you. She's with us because of you. You would never be a bad influence on her. Remember it's not your fault she did this. She has her reasons for being like this. Rayane's true power is still hidden. But we need to at least help her to evolve it in a healthy way, she needs to have a healthy life for that. We can't let her have the same fate as Rainbow Queen.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James tries to get up a little to calm down while he was very thoughtful about the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't worry. I've been working on your possibles weapons for you for hours. I was very worried about it, that's motive it was one of my priorities.",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
