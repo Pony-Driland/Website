@@ -20636,6 +20636,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "James tries to get up a little to calm down while he was very thoughtful about the conversation.",
         "type": "action"
     },
@@ -20644,6 +20647,26 @@
         "value": "Don't worry. I've been working on your possibles weapons for you for hours. I was very worried about it, that's motive it was one of my priorities.",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "set": {
+            "where": "Forest",
+            "playEffect": { "file": "heavy-rain", "enabled": true }
+        },
+        "value": "Vinny and James started to hear the sound of very strong rain when the elevator was very close to finally reaching its final destination. Then Vinny and James looked at each other and stared at before James continued the conversation. James was very quiet, in a very lonely look, Vinny just watched, worried about James.",
+        "type": "action"
+    },
+
+    {
+        "value": "In the end it seems I just created more trouble by inventing the technology of artificial dimensions. and...I lost my planet.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James looked at him amulet. The same amulet that he had looked at in the laboratory. Then James started to cry.",
+        "type": "action"
     }
 
 ]
