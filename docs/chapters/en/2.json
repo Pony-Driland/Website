@@ -20862,7 +20862,7 @@
     },
 
     {
-        "value": "Vinny was trying to return the rain cover to James.",
+        "value": "Vinny was trying to return the raincoat to James.",
         "type": "action"
     },
 
@@ -20873,7 +20873,7 @@
     },
 
     {
-        "value": "James puts the rain cover back on Vinny.",
+        "value": "James puts the raincoat back on Vinny.",
         "type": "action"
     },
 
@@ -21013,7 +21013,10 @@
     },
 
     {
-        "value": "James runs towards the camp happily",
+        "set": {
+            "playlistPlay": null
+        },
+        "value": "James runs towards the camp happily.",
         "type": "action"
     },
 
@@ -21031,6 +21034,92 @@
 
     {
         "value": "James keep running until he reached the camp. James then stopped the walk and smiled when he saw the lights of the camp.",
+        "type": "action"
+    },
+
+    {
+        "set": {
+            "playlistPlay": "bad-think"
+        },
+        "value": "Then Vinny laughed a little for a few seconds before him started looking around. Vinny only see trees and more trees, but in the middle of them, Vinny see a mysterious pony that was watching him, a mysterious pegasus was scared and seemed to have something shiny on her chest, but at the same time she left when she see Vinny looking at her.",
+        "type": "action"
+    },
+
+    {
+        "value": "A..Ah? What?! Who is this girl?!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "She wings were very wet and she was wearing a raincoat. It looked like she was wearing some sort of collar with something shiny in the middle of it. Then Vinny was a little scared and then tried to run toward the pony. But she keep running away.",
+        "type": "action"
+    },
+
+    {
+        "value": "Go away!! I won't be around monsters!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "No! Calm down! Don't mean no harm, why were you watching me and watching me?! Wait me!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "She started to cry when she heard the Vinny voice louder. Vinny just noticed a little of her long mane, but due to the dark, Vinny had difficulty seeing the colors of her body.",
+        "type": "action"
+    },
+
+    {
+        "value": "Noooo! He's gonna get me! HELP! M..Master! G... Get me out of here! I regret coming here by accident!!",
+        "character": "???",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Master??",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "At the same time Vinny noticed that her collar emitted a colored light and then she disappeared from a teleportation progress. Vinny then does a poker face, trying to think about what to do.",
+        "type": "action"
+    },
+
+    {
+        "value": "Aaah cool. Very Cool! Yes... more mystery problems.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then breathed deeply and went to where the mysterious Pegasus was. Vinny didn't find anything interesting for a few seconds, but after a while Vinny just found a magic binoculars abandoned on the floor. The binoculars is white and had some flowers paint around.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmm... Okay.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny pick up the binoculars. Vinny just feeel a little bit of the magic of the binoculars, it seemed to have a very different energy.",
+        "type": "action"
+    },
+
+    {
+        "value": "What... This seems a bit the energy of Rayane's weapons. That's weird.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then store the binoculars in the saddle before returning to the camp. When Vinny arrived at the place, Vinny find the Rayane tent, it was closed and only had the bell button.",
         "type": "action"
     }
 
