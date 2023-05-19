@@ -20842,6 +20842,79 @@
         "value": "Ah? W...what? Did you lose your raincoat?",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Your wing cover will only help protect your wings from getting wet. Ah... Take mine then. Look at you, you're all bruised up, and I just drove the train. You need a lot more than me.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James uses him magic and took off the raincoat, and put it on Vinny in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? H..hey! Relax! I have this armor that even Rayane lent me and it's an armor for alicorn. By the way, it's good that it washes my wounds, you'll get a cold if you don't use it, I'll be fine with this helmet you gave me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was trying to return the rain cover to James.",
+        "type": "action"
+    },
+
+    {
+        "value": "But you still have bruises exposed. They'll all burn in the rain. So you better go with the cape.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James puts the rain cover back on Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "But you? Will it get all wet?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Don't worry about me. just follow me.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James levitated a key card, this card looked like Marlon's card. James then used it to open the locked Bunker door. So Vinny pokes James in a friendly way.",
+        "type": "action"
+    },
+
+    {
+        "value": "James, look at me. If you catch a cold or think you can cry in the rain that no one notices. Uou'll get a marshmallow from me in",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "W...What? Marshmallow?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little confused before laughing a little.",
+        "type": "action"
+    },
+
+    {
+        "value": "You really spent too much time with Rayane. I can't promise that, a lot of tragic things happened today. Maybe tomorrow we can feel better. Alright?",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
