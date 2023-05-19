@@ -21102,6 +21102,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Hmmm... Okay.",
         "character": "Vinny",
         "type": "dialogue"
@@ -21119,6 +21122,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "calm"
+        },
         "value": "Vinny then store the binoculars in the saddle before returning to the camp. When Vinny arrived at the place, Vinny find the Rayane tent, it was closed and only had the bell button.",
         "type": "action"
     }
