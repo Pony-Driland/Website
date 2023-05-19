@@ -20787,8 +20787,24 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null,
+            "playEffect": { "file": "heavy-rain", "enabled": false }
+        },
         "value": "So James decides to forget the problems for now to press the button to open the elevator door, and all Vinny and James see is a small very dark room with another door, and behind this door everyone could hear all the sound of the rain storm that was happening outside.",
         "type": "action"
+    },
+
+    {
+        "value": "Heh! It's not your fault that this dimension exist. Relax... if you were the creator you would be a god or something, where would the others go?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Nah... I am not a god, but I am the developer of this reality. If I had been the first to enter this dimension, I would have been the one using the Master Smartmoby. But as I said earlier... for some mysterious reason, another creature got in here before me, and created this whole reality that was never what I planned. The life here has developed a lot, it would be wrong for me to try to intervene.",
+        "character": "James",
+        "type": "dialogue"
     }
 
 ]
