@@ -20740,6 +20740,55 @@
         "value": "Even gods have their limits, for example, she should have killed me 3 times. Mayabe she guides the dead somewhere, like a reaper, shinigame or death personified. You're just aiming at the bad things, look at all the good things you did, you saved me with Rayane. You saved an innocent pegasus, who has spent her entire life alone in her parents' absence. Ivy is a adult who acts like a child, she and Wagner met before the attack, I even gave her a \"push\" to get to Wagner. Ivy really likes Wagner, if all goes well, you not only saved us, but also solved the Wagner and Ivy's problem, making maybe a future couple. The two ones can live in peace helping each other now thanks to you. You need to forgive yourself! No pacts with gods! If you need a pact talk to me!",
         "character": "Vinny",
         "type": "dialogue"
+    },
+
+    {
+        "value": "James still surprised, thought a little for a few seconds before answering. James replied on a sad tone of voice.",
+        "type": "action"
+    },
+
+    {
+        "value": "Guide the dead? I...This I wouldn't have imagined would come from her. This explains a lot of how I could rarely detect lost souls in this dimension sometimes. W..Well... My knowledge goes far beyond knowing this dimension, I also know how to manipulate it if I have the right tools. My only limit is parts of the project my brother worked on without my help.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James lightly cried a little more fora few seconds.",
+        "type": "action"
+    },
+
+    {
+        "value": "No. I'm just wishing I had one last alternative. I don't want you all to die because of me. Remember, it was because of me that this dimension came into being without any warning for both me and you. I put the lives of several creatures of different dimensions at risk. Do you realize how huge this weight is for someone who was just wanting to be at peace in the universe?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James breathed deeply, trying to feel better in his feelings.",
+        "type": "action"
+    },
+
+    {
+        "value": "But yes. Sometimes I forget that negative things can have their positive sides..",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James giggles lightly in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "You really like being a goof and that's what makes us happy. But I still find it curious how your original dimension looks like mine. Sometimes I think I've seen your planet somewhere.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So James decides to forget the problems for now to press the button to open the elevator door, and all Vinny and James see is a small very dark room with another door, and behind this door everyone could hear all the sound of the rain storm that was happening outside.",
+        "type": "action"
     }
 
 ]
