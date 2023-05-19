@@ -20915,6 +20915,123 @@
         "value": "You really spent too much time with Rayane. I can't promise that, a lot of tragic things happened today. Maybe tomorrow we can feel better. Alright?",
         "character": "James",
         "type": "dialogue"
+    },
+
+    {
+        "value": "James and Vinny get out of the bunker, and start walking in the rain towards the camp, it looks like a vast forest, but the location of the forest. The view of the Whicocesert Mountain was now much further away from everyone on there.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...Wow! We really are far from Kenny house.",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Heh heh!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So James took the moment of opportunity to ask a very curious question.",
+        "type": "action"
+    },
+
+    {
+        "value": "But Vinny... What did you do to get the Rainbow Queen's attention anyway? I've never seen her in my entire life.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? A...Ah! I have a magnet of problems and crazy females, look at Rayane for example. Rainbow Queen will always show up if I'm around someone who has made a deal with her before or someone is dying in front of me. Anything you kill me in a safe way and resurrect me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James giggles a little before answering in a somewhat ironic way, but without offending you.",
+        "type": "action"
+    },
+
+    {
+        "value": "For someone like you I think it's going to be more than normal for this to happen. It's no surprise to me to see you in these situations. But I never resuscitated anyone.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "AH! You also didn't know how to drive a train. BUT! This killing me is a last alternative, I know there will be a queue for those who will want to do this. So opportunity I have, let's just leave this as a last alternative.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James then stopped walking a little and made a facehoof.",
+        "type": "action"
+    },
+
+    {
+        "value": "This idea of yours is just as crazy as mine of the pact. We don't know f I can bring you back to life.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "During the walk, Vinny noticed the presence of the camp lights that were nearby.",
+        "type": "action"
+    },
+
+    {
+        "value": "T...The camp! Yeah! By the way, you're a unicorn. Couldn't you levitate, make a shield over your head and body so the rain doesn't fall on you?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James then does a facehoof.",
+        "type": "action"
+    },
+
+    {
+        "value": "Don't think it's easy to do this kind of thing and walk at the same time. But wait... you said camp?",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James then stopped the walk and smiled when he saw the lights of the camp.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh! There it is! We're here!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James runs towards the camp happily",
+        "type": "action"
+    },
+
+    {
+        "value": "H..Hey! You can go ahead! I will be watching the landscape.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ok! But don't delay!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James keep running until he reached the camp. James then stopped the walk and smiled when he saw the lights of the camp.",
+        "type": "action"
     }
 
 ]
