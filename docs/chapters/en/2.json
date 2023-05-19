@@ -20802,7 +20802,44 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "forest",
+            "playEffect": { "file": "heavy-rain-little-thunder", "enabled": true }
+        },
         "value": "Nah... I am not a god, but I am the developer of this reality. If I had been the first to enter this dimension, I would have been the one using the Master Smartmoby. But as I said earlier... for some mysterious reason, another creature got in here before me, and created this whole reality that was never what I planned. The life here has developed a lot, it would be wrong for me to try to intervene.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James looked at the door where the sound of the rain came from while turning on the light in the room, thinking about many things.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well... The camp isn't far away. But you better get your raincoat.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James looks at the backpack and started to equip him raincoat. When Vinny remembered that he had used his rain cover against Prisma, Vinny smiled nervously.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah... the raincoat. I think it left with the commander on the train on fire. I only have the wing cape. This works? If I have wings covering, will I help?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was a little surprised to hear that.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? W...what? Did you lose your raincoat?",
         "character": "James",
         "type": "dialogue"
     }
