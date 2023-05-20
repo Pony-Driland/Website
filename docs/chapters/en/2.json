@@ -21118,7 +21118,7 @@
     {
         "value": "What... This seems a bit the energy of Rayane's weapons. That's weird.",
         "character": "Vinny",
-        "type": "dialogue"
+        "type": "think"
     },
 
     {
@@ -21127,6 +21127,12 @@
         },
         "value": "Vinny then store the binoculars in the saddle before returning to the camp. When Vinny arrived at the place, Vinny find the Rayane tent, it was closed and only had the bell button.",
         "type": "action"
+    },
+
+    {
+        "value": "What am I going to say to everyone? How wonderful!",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
