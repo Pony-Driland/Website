@@ -21492,6 +21492,58 @@
     {
         "value": "Rayane boops Vinny again while smrking at him. Then Rayane closed the tent door.",
         "type": "action"
+    },
+
+    {
+        "value": "If you want it the easy way... I'll give the binoculars back to her, but then you won't have a chance to talk to her because she'll continue to be afraid of you~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A...ah? Are you hiding something? Can you give it back to her but without me?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "If you want to have the Rain's Pet trust... Then you should be the one to approach her~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "But why did you change the subject? Well, never mind, I know you have your secrets. But can you at least tell me where I can return the binoculars to her? I don't really want to get involved with her. If Rainbow thinks I'm stealing from her, she starts to be enchanted by my charm and starts to question Rainbow. Rainbow will turn me into a toothpick.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Silly~ I didn't change the subject. I'm just saying that my presence won't make you any less scary for someone as sensitive as her. But really, Rain can try turn you into a toothpick.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does another poker face.",
+        "type": "action"
+    },
+
+    {
+        "value": "And I want more trouble with Rain? You're not helping me too, I'll help you but don't tell me how not to let her want to kill me. Okay, let's enter the pony circle over there. I honestly don't care about myself, but about others at times like this.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane then laughed a little more while watching Vinny going to the pony circle.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ At least I think he understood a little of the danger. I hope Vinny is careful.",
+        "character": "Rayane",
+        "type": "think"
     }
 
 ]
