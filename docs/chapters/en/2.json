@@ -21544,6 +21544,84 @@
         "value": "Heh~ At least I think he understood a little of the danger. I hope Vinny is careful.",
         "character": "Rayane",
         "type": "think"
+    },
+
+    {
+        "value": "Hey Guys!! Why so gossiping about me??",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James found the question strange and then answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "Gossiping? What are YOU gossiping about with Rayane! That's the real question.",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rowan laughed a little at James while Kai just stayed calm, trying to be neutral in the conversation, but he was in a good mood. The rest were just looking at Vinny curiously, trying to understand what was going on. Vinny then spoke a little funnyly.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hey James, do you really want to know? If one day Rayane and I get married you will be our best man! Already prepare a nice gift.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James was surprised while Rowan laughed a little more.",
+        "type": "action"
+    },
+
+    {
+        "value": "W...marry?! We met a few days ago and you're already talking about marriage?!",
+        "character": "James",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh! But back to reality, I'm glad we're all alive and here.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. On the bright side, everything turned out well. I'm sure tomorrow things will be even better.",
+        "character": "Kai",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Kai keep calm and disciplined, watching the talk.",
+        "type": "action"
+    },
+
+    {
+        "value": "And we had a lot of fun that night!",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Jeff giggles a little while continuing to drink a cider.",
+        "type": "action"
+    },
+
+    {
+        "value": "That's it!",
+        "character": "Rowan",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rowan took another cider one and made a toast with Jeff. Meanwhile, Wagner was quiet in his place, but he was feeling better compared to what he was feeling a while ago.",
+        "type": "action"
     }
 
 ]
