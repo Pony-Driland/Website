@@ -21205,6 +21205,45 @@
     {
         "value": "Vinny then feel even happier to know that.",
         "type": "action"
+    },
+
+    {
+        "value": "Good, by the way... I have a question. There was a pony watching us, I like a good pony I saw her and went to see her up close, she had a collar with a sparkle in the middle, and she was really scared and said \"monster!\". But then it looks like she called a master and after her collar was colored she disappeared, leaving a binoculars with an energy similar to yours.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+    
+    {
+        "value": "Rayane then feels surprised, thinking of some things.",
+        "type": "action"
+    },
+
+    {
+        "value": "C..Collar? Wait... this is...",
+        "character": "Rayane",
+        "type": "think"
+    },
+
+    {
+        "value": "Rayane giggles in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Bright and colorful collar pony? Hmmm... She won't do you any harm. It was just one of Rain's pets. They all have this collar. They are completely harmless, she was more afraid of you than you were of her. Just make sure her pet wasn't gossiping about you~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does a face poker, not understanding what was really happening.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Pets? What is this goddess doing this time?",
+        "character": "Vinny",
+        "type": "think"
     }
 
 ]
