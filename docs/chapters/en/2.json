@@ -21244,6 +21244,254 @@
         "value": "Ah? Pets? What is this goddess doing this time?",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "Don't spread the word about it to others. I don't think you'll like to see Rain angrier at you than she already is~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "M..Me? N..no no no! Rain can stay with her pets!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "But wait... did you say binoculars?",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane is a little concerned to understand what happened.",
+        "type": "action"
+    },
+
+    {
+        "value": "Oh no.... We'll have to give this back to her. She's going to feel really sad about losing these binoculars.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was then thoughtful for a few seconds, thinking of something, so just answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait ... Can I have a positive result for this?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "So are we going to return it now?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh~ If she was teleported. We will hardly find her again.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then just laughed a little, saying ironically.",
+        "type": "action"
+    },
+
+    {
+        "value": "If you want you can put a collar on me so I can be your pet and just be yours.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was then a little surprised to realize a Vinny's innocence. Rayane giggles a little more than usual.",
+        "type": "action"
+    },
+
+    {
+        "value": "You are much sillier than I imagined. I don't think you even know what a pet really is for Rain. Be careful with your words~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny is a little confusing and curious to hear that.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..What? Well, you never say much detail, so I have to speak blindly. Anyway I have no intention of keeping her binoculars, when you know a way to return it to her let me know. I talked some sensitive stuff with James on the way over here. And someone must be saying I'm a monster.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then giggles while answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "Anyway! Later you explain this pet business better.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny enters the tent. Rayane laughed a little more before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "Rain just feels a little too alone. The ponies that accept to be her pets are usually extremely depressed ponies who made that choice in a pact. So she has a special way of making these ponies happy with her silly fantasies.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny does another poker face, trying to understand what is happening. Rayane was a little thoughtful before continuing talking.",
+        "type": "action"
+    },
+
+    {
+        "value": "What? What does this all mean?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "I thought you didn't want me to finish explaining pets~ Heh. The first stage will be the hardest... We needs to find Rain's Pet again. But we'll probably find her in some village. But if she decides to go toward you, I think you will easily see her.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane smirks at Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "But... Only if you're a silly little monster~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then giggles at nervousness and answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "Believe me... If Rainbow Queen spreads that I'm a bad influence, if she tells 1 pony that I'm a bad influence, that pony will tell 1 more, and this 1 will tell another pony, until I get known. But what is this Rain exchange for being a pet?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laughed a little more.",
+        "type": "action"
+    },
+
+    {
+        "value": "In exchange for them being Rain's pets, nothing special other than having a better life. They may even decide to stop being. But they will hardly want to give up this lifestyle.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little more curious and continued the questions.",
+        "type": "action"
+    },
+
+    {
+        "value": "What's so special about being a pet?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmmmmm... Heh. It's a very personal way for Rain to feel less alone. She also needs to have intimacy with someone.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A...Ah? Didn't she have intimacy with you? Weren't you guys friends?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane laughed a little again. Rayane then gave up on Vinny's innocence.",
+        "type": "action"
+    },
+
+    {
+        "value": "Siiiiilly~ I'm not talking about that kind of intimacy. ",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then makes a super poker face, trying to understand what is happening again, blushing a little in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Will Rainbow Queen decide to destroy the world if I do something wrong?",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "Oh...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Okay. I prefer Rain less stressed than it is for now. But wait... This can be a good way to convince that crazy goddess on me!",
+        "character": "Vinny",
+        "type": "think"
+    },
+
+    {
+        "value": "WELL! Anyway I don't think Rain's Pet was curious about me, and came to see in person, but I want to change this pony's opinion at least about me.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. You're much more silly than I thought with your answers. Maybe Rain's Pet will come to you herself if she finds out you took the binoculars.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then giggles just before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "I hope I don't steal another kiss. Do you think it's better to stay with me or with you?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Another kiss?~ So another bite?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane boops Vinny again while smrking at him. Then Rayane closed the tent door.",
+        "type": "action"
     }
 
 ]
