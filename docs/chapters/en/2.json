@@ -21133,6 +21133,78 @@
         "value": "What am I going to say to everyone? How wonderful!",
         "character": "Vinny",
         "type": "think"
+    },
+
+    {
+        "value": "Vinny then decided to play the tentbell, and cough preparing to do something silly. Then Rayane was slowly approaching the door to ask the question.",
+        "type": "action"
+    },
+
+    {
+        "value": "Who is?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hello! Do you have a minute of your time to listen to the word of the goddess Rainbow Queen?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hmmmm... Coming from this voice from my dream?~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane open the tent door, smirking at Vinny before booping Vinny in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "I have all the time in the world~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised by the boop.",
+        "type": "action"
+    },
+
+    {
+        "value": "O...Oops! Don't talk like that, otherwise you can be embarrassed in front of everyone and make everyone ashamed!",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny is very happy to see Rayane's face. Then Vinny hugs her, giggling in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hi, how long, how are you? And how are you here?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "This time Rayane was a little surprised, and giggles back while hugging back.",
+        "type": "action"
+    },
+
+    {
+        "value": "Shame?~ Too bad... I'm an expert on this~ We're all fine. We're chatting. Ivy is sleeping on her mattress. She's still been sleeping since that time.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then feel even happier to know that.",
+        "type": "action"
     }
 
 ]
