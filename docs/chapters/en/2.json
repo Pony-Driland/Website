@@ -21781,6 +21781,89 @@
         "value": "Wait... Are you trying to tell me that...that she's alive?",
         "character": "Wagner",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised by Wagner's reaction, so she just answered.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..Well... I have my words, I have no idea how she is now, but at least she must be alive and thinking of a way to thank you for everything I think. By the way you helped her at a critical moment.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was trying to look at everyone, but him was interrupted by Wagner.",
+        "type": "action"
+    },
+
+    {
+        "value": "N..no! If you've seen her and you're here... I have high hopes that she's alive!",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Everyone looked very curiously at Vinny and Wagner while Rayane was quiet.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..Hey! Calm down, I don't know if we're talking about the same pegasus, you don't even know her name, but I know, my intuition is never wrong. I...I know you will find she or she will find you.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny looked at Wagner, and only hugged him a little for him to feel calmer.",
+        "type": "action"
+    },
+
+    {
+        "value": "Everything will be fine, everything in its time. We will all support you. Alright?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner just went to cry slowly, and hugged back.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yes. I hope everything will be okay. I..I'm okay.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Jeff slowly approached Wagner and put the hoof on his shoulder.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wagner... I think we'd all go to bed now. It's getting too late. I'm sure that tomorrow we'll be able to start talking about her better.",
+        "character": "Jeff",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes, you're also right. This rain... this storm, it could be that it's letting me down too.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes, tomorrow will be a new day, and we will have new air.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then smiled when him saw Wagner was going with Jeff back to the group, for finally everyone prepares to go to sleep.",
+        "type": "action"
     }
 
 ]
