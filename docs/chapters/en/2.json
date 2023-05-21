@@ -21862,6 +21862,12 @@
     },
 
     {
+        "value": "Y...yes. Good night to all of you.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
         "value": "Vinny then smiled when him saw Wagner was going with Jeff back to the group, for finally everyone prepares to go to sleep.",
         "type": "action"
     }
