@@ -21592,6 +21592,9 @@
     },
 
     {
+        "set": {
+            "playlistPlay": null
+        },
         "value": "Yes. On the bright side, everything turned out well. I'm sure tomorrow things will be even better.",
         "character": "Kai",
         "type": "dialogue"
@@ -21620,8 +21623,164 @@
     },
 
     {
+        "set": {
+            "playlistPlay": "sad"
+        },
         "value": "Rowan took another cider one and made a toast with Jeff. Meanwhile, Wagner was quiet in his place, but he was feeling better compared to what he was feeling a while ago.",
         "type": "action"
+    },
+
+    {
+        "value": "Heheh! It was to break the \"ice\". But who knows in the future.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then looked at Rayane, Rayane was curious for a few seconds, but then Vinny does a smirk and then walked toward Wagner.",
+        "type": "action"
+    },
+
+    {
+        "value": "Silly~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Hey Wagner! How are you!?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner is surprised to hear Vinny's words, so he looked curiously at Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..huh? Vinny? I'm fine. Why?",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "I was worried about you! Are you feeling better than before?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "M..Me? Yeah. Jeff talked to me and made me feel better about everything that happened. He promised he would never hate me, so that made me start to calm down. But I'm still worried about other things.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny already suspecting who Wagner was talking, then asked.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ah? Worried? Who are you worried about?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner feels a little nervousness before continuing the conversation.",
+        "type": "action"
+    },
+
+    {
+        "value": "It's this mysterious pony that Rayane brought here. I still don't understand who she is. But something tells me she's a little familiar.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "A...Aaahh? You don't know her?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner looked at Vinny sadly before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "Yeah. The blanket doesn't let me look at she completely. But I don't want to hurt her accidentally because of my curiosity. Maybe I'm confusing her with another pony.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "But... Which pony are you confused with? Do you have someone special?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner breathed deeply.",
+        "type": "action"
+    },
+
+    {
+        "value": "A pegasus... I was feeling very sorry for her when Marlon was asking her to carry one of the bombs. I didn't want to see Marlon taking all his anger out on that pegasus.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "So you switched roles with her?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Yes. She was almost trying to kill herself due to the task she had to do.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprised and then the conversation continued.",
+        "type": "action"
+    },
+
+    {
+        "value": "Calm down, I know she must be safe and sound somewhere now, if you saw her what would you do? By the way you're talking, it even gives the impression that you liked her.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner giggles a little embarrassed.",
+        "type": "action"
+    },
+
+    {
+        "value": "She seemed very lonely and told me that she lived alone. I had never seen such an empty look of hope. I was wondering where she lived so I could visit her one day and we could talk better. Put some color in her life.",
+        "character": "Wagner",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh! Calm down Wagner. I'm sure she'll soon look for you to thank you for everything you've done for her. Okay?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Wagner was a little confused to hear that and then look at Vinny.",
+        "type": "action"
+    },
+
+    {
+        "value": "Wait... Are you trying to tell me that...that she's alive?",
+        "character": "Wagner",
+        "type": "dialogue"
     }
 
 ]
