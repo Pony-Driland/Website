@@ -21949,6 +21949,44 @@
         "value": "Silly~",
         "character": "Rayane",
         "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane keep looking at the shadow of the storm while thinking about something. Then Rayane seemed to have remembered something.",
+        "type": "action"
+    },
+
+    {
+        "value": "I almost forgot to warn you.... Rain also has the power to control the weather. Storms don't usually last that long. She always summons this storm when she wants everyone to stop everything they're doing without even realizing it. It's a little tip useful to you in the future.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was getting ready to close her eyes slowly. Vinny was then a little curious about the information.",
+        "type": "action"
+    },
+
+    {
+        "value": "W..wow! Nice to know. Well that's. See you later. Be careful not to dream about me again and keep talking in your sleep, everyone will hear you talking while you sleep.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny giggles a little as he closed his eyes.",
+        "type": "action"
+    },
+
+    {
+        "value": "Heh~ You're already a dream~ Good night Vinny.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane does a little emotional smile as she levitated the Hiroshi amulet next to her chest to feel safer with the memories of the past as she close her eyes. Vinny just smiled and handed the hoof to Rayane as the two finally started sleeping.",
+        "type": "action"
     }
 
 ]
