@@ -20873,7 +20873,7 @@
     },
 
     {
-        "value": "But you? Will it get all wet?",
+        "value": "But you? Will you get all wet?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -20890,7 +20890,7 @@
     },
 
     {
-        "value": "James, look at me. If you catch a cold or think you can cry in the rain that no one notices. Uou'll get a marshmallow from me in",
+        "value": "James, look at me. If you catch a cold or think you can cry in the rain that no one notices. You'll get a marshmallow from me in",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -20913,7 +20913,7 @@
     },
 
     {
-        "value": "James and Vinny get out of the bunker, and start walking in the rain towards the camp, it looks like a vast forest, but the location of the forest. The view of the Whicocesert Mountain was now much further away from everyone on there.",
+        "value": "James and Vinny get out of the bunker, and start walking in the rain towards the camp, it looks like a vast forest. But the view of the Whicocesert Mountain was now much further away from everyone on there.",
         "type": "action"
     },
 
@@ -20969,7 +20969,7 @@
     },
 
     {
-        "value": "This idea of yours is just as crazy as mine of the pact. We don't know f I can bring you back to life.",
+        "value": "This idea of yours is just as crazy as mine of the pact. We don't know if I can bring you back to life.",
         "character": "James",
         "type": "dialogue"
     },
@@ -20991,7 +20991,7 @@
     },
 
     {
-        "value": "Don't think it's easy to do this kind of thing and walk at the same time. But wait... you said camp?",
+        "value": "Don't think it's easy to do this kind of thing and walk at the same time. But wait... camp?",
         "character": "James",
         "type": "dialogue"
     },
@@ -21022,7 +21022,7 @@
     },
 
     {
-        "value": "Ok! But don't delay!",
+        "value": "Okay! But don't delay youself!",
         "character": "James",
         "type": "dialogue"
     },
@@ -21036,7 +21036,7 @@
         "set": {
             "playlistPlay": "bad-think"
         },
-        "value": "Then Vinny laughed a little for a few seconds before him started looking around. Vinny only see trees and more trees, but in the middle of them, Vinny see a mysterious pony that was watching him, a mysterious pegasus was scared and seemed to have something shiny on her chest, but at the same time she left when she see Vinny looking at her.",
+        "value": "Then Vinny laughed a little for a few seconds before him started looking around. Vinny only see trees and more trees, but in the middle of them, Vinny see a mysterious pony that was watching him, a mysterious pegasus. She was scared and seemed to have something shiny on her chest, but at the same time she left when she see Vinny looking at her.",
         "type": "action"
     },
 
@@ -21047,12 +21047,12 @@
     },
 
     {
-        "value": "She wings were very wet and she was wearing a raincoat. It looked like she was wearing some sort of collar with something shiny in the middle of it. Then Vinny was a little scared and then tried to run toward the pony. But she keep running away.",
+        "value": "She wings were very wet and she was wearing a raincoat. It looked like she was wearing a collar with something shiny in the middle of it. Then Vinny was a little scared and then tried to run toward the pony. But she keep running away.",
         "type": "action"
     },
 
     {
-        "value": "Go away!! I won't be around monsters!",
+        "value": "Go away!! You monster!",
         "character": "???",
         "type": "dialogue"
     },
@@ -21092,7 +21092,7 @@
     },
 
     {
-        "value": "Vinny then breathed deeply and went to where the mysterious Pegasus was. Vinny didn't find anything interesting for a few seconds, but after a while Vinny just found a magic binoculars abandoned on the floor. The binoculars is white and had some flowers paint around.",
+        "value": "Vinny then breathed deeply and went to where the mysterious Pegasus was. Vinny didn't find anything interesting for a few seconds until Vinny find something. Vinny just found a magic binoculars abandoned on the floor. The binoculars is white and had some flowers paint around.",
         "type": "action"
     },
 
@@ -21106,7 +21106,7 @@
     },
 
     {
-        "value": "Vinny pick up the binoculars. Vinny just feeel a little bit of the magic of the binoculars, it seemed to have a very different energy.",
+        "value": "Vinny pick up the binoculars. Vinny just feel a little bit of the magic of the binoculars, it seemed to have a very different energy.",
         "type": "action"
     },
 
