@@ -21868,8 +21868,87 @@
     },
 
     {
-        "value": "Vinny then smiled when him saw Wagner was going with Jeff back to the group, for finally everyone prepares to go to sleep.",
+        "value": "Vinny then smiled when him saw Wagner was going with Jeff back to the group, for finally everyone prepares to go to sleep. Vinny was then a little surprised to see that his mattress was on the side of Rayane's mattress. Rayane laughed a little before answering Vinny.",
         "type": "action"
+    },
+
+    {
+        "value": "What a coincidence. I had already asked you to put your mattress next to mine in case you wanted to say something to me before we fell asleep~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh! Will I be in the middle again? James and Rayane and me in the middle of everyone?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Shhhhh~ Ivy is quiet on the mattress next to James so in case she wakes up, she doesn't feel insecure about being surrounded by ponies. Let's be we three together next to Ivy.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was still a little surprised before answering.",
+        "type": "action"
+    },
+
+    {
+        "value": "But...But... I was going to throw a mattress at James. Ah! Wake me up before he does? Okay.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny then gets a little sad before him continued to answer.",
+        "type": "action"
+    },
+
+    {
+        "value": "Well is there anything you want to talk to me before bed?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Ah? Well... I always wake up early. But I'll have to wake you up my way~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane started to prepare the mattress stuff to sleep while she answered and lay on this.",
+        "type": "action"
+    },
+
+    {
+        "value": "I thought you wanted to say something more to me after our conversation at the entrance to the tent. But if you're happy with the information, that's fine. I'm already more than exhausted after this very turbulent night. We were from start to end just solving problems today.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane was then covered in the blanket.",
+        "type": "action"
+    },
+
+    {
+        "value": "H..Heh! it's much better to wake up with Rayane doing pranks than waking up with my mouth on a horn again.",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "James does a facehoof and only covered himself in the blanket to try to sleep at peace. Rayane laughed softly in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "Silly~",
+        "character": "Rayane",
+        "type": "dialogue"
     }
 
 ]
