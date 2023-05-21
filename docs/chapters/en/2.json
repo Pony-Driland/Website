@@ -20086,7 +20086,7 @@
         "set": {
             "playlistPlay": null
         },
-        "value": "Everypony! Let's go. Just follow the corridor, one of the doors will take us to the elevator that will return to the surface.",
+        "value": "Everypony! Let's go. Just follow the corridor, one of the doors will guide us to the elevator that will return to the surface.",
         "character": "James",
         "type": "dialogue"
     },
@@ -20118,7 +20118,7 @@
     },
 
     {
-        "value": "W...wait... You mean that....w...that's it? Kai is the new leader? Is the era of Hiroshi over as he said so much?",
+        "value": "W...wait... W...What? You are telling me that Kai is the new leader? Is the era of Hiroshi over as he said so much?",
         "character": "Rowan",
         "type": "dialogue"
     },
@@ -20175,7 +20175,7 @@
     },
 
     {
-        "value": "W..well... So far only with Kai, Rowan, Rayane, you, Ivy, an Elite Color commander, and the entity with a scythe that doesn't like me that much and just. That entity that took Hiroshi and \"stole\" the relic was Rainbow Queen. However she was different, she was a heavier and darker mood compared to a photo I saw of her. We don't know anything about it as far as I know, but, I have my suspicions, I managed to recover a piece of the machine that was attached to the relic.",
+        "value": "W..well... Kai, Rowan, Rayane, you, Ivy, an Elite Color commander, and the entity with a scythe that doesn't like me that much and just. That entity that took Hiroshi and \"stole\" the relic was Rainbow Queen. However she was different, she was a heavier and darker mood compared to a photo I saw of her. We don't know anything about it as far as I know, but, I have my suspicions, I managed to recover a piece of the machine that was attached to the relic.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -20250,7 +20250,7 @@
         "set": {
             "playlistPlay": "sad"
         },
-        "value": "Everyone all kept quiet and only agreed out of respect for Hiroshi.Only Kai was a little more curious trying to understand what was going on. James then breathed deeply and looked at Rayane for a few seconds. James thought it was strange to see that Rayane was looking to be more distant from the group during the walk.",
+        "value": "Everyone all kept quiet and only agreed out of respect for Hiroshi. Only Kai was a little more curious trying to understand what was going on. James then breathed deeply and looked at Rayane for a few seconds. James thought it was strange to see that Rayane was looking to be more distant from the group during the walk.",
         "type": "action"
     },
 
@@ -20261,7 +20261,7 @@
     },
 
     {
-        "value": "Vinny was a little confused when looking back and seeing Rayane, so Vinny just was quiet and watched. James approached Rayane slowly when he saw that she was making a depressed look.",
+        "value": "Vinny was a little confused when looking back and seeing Rayane, so Vinny just was quiet and watched. James approached Rayane slowly when he saw that she was doing a depressed look.",
         "type": "action"
     },
 
