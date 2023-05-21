@@ -20361,7 +20361,7 @@
     },
 
     {
-        "value": "I'm sorry I spoke to you from the first time on the train, adrenaline pumping. Anyway, I just want you to know that even though I was far from you I didn't forget about you and I remembered you at times.",
+        "value": "I'm sorry I spoke to you from the first time on the train, adrenaline pumping. Anyway, I just want you to know that even though I was far from you I didn't forget about you. I remembered you at times.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -20372,13 +20372,13 @@
     },
 
     {
-        "value": "Look here. I found these 2 tablets earlier in a little room, sort of returning your tablet that I broke over the pony's head on our first time. You can take it, they are common tablets, but before you do something, it would be good to look at what data is on it, you may have more truths about Hiroshi and the relics. I took them along with Rayane, Kai and Rowan, they are yours now.",
+        "value": "And look here... I found these 2 tablets earlier in a little room, sort of returning your tablet that I broke over the pony's head on our first time. You can take it, they are common tablets, but before you do something, it would be good to look at what data is on it, you may have more truths about Hiroshi and the relics. I took them along with Rayane, Kai and Rowan, they are yours now.",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "James looked at the tablets curiously, with a look of hope to hear what Vinny said.",
+        "value": "James looked at the tablets curiously, with a look of hope.",
         "type": "action"
     },
 
@@ -20394,24 +20394,24 @@
     },
 
     {
-        "value": "Oh... these are not ordinary tablets. They are tablets that store documents. Maybe we'll find out something even about this machine that I'm going to build besides the data on Hiroshi.",
+        "value": "Oh... these are not ordinary tablets. They are tablets that store documents. Maybe we'll find out something even about this machine that I'm going to build.",
         "character": "James",
         "type": "dialogue"
     },
 
     {
-        "value": "Heheh! Well, they're yours, now you owe me a tablet.",
+        "value": "Heheh! Well, the tablets are yours, now you owe me a tablet.",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vinny gives James a big hug in response. James was a little surprised by the hug, but he smiled a little in response before James give a hug back.",
+        "value": "Vinny gives James a big hug in response. James was a little surprised by the hug, but he smiled a little before giving a hug back.",
         "type": "action"
     },
 
     {
-        "value": "It's good to have you back by my side! But hey let's go? How are we going to leave? Do you think we can use the radar to help in the region?",
+        "value": "It's good to have you back by my side! But hey! Let's go? How are we going to leave? Do you think we can use the radar to help in the region?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -20451,14 +20451,14 @@
     },
 
     {
-        "value": "Ah?...wait? What? N..No! Okay. Maybe your unexpected subject leads me to what I'm trying to talk about, but that's not what it's about.",
-        "character": "James",
-        "type": "dialogue"
+        "value": "James does an embarrassed facehoof.",
+        "type": "action"
     },
 
     {
-        "value": "James made an embarrassed facehoof.",
-        "type": "action"
+        "value": "Ah?...wait? What? N..No! Okay. Maybe your unexpected subject leads me to what I'm trying to talk about, but that's not what it's about.",
+        "character": "James",
+        "type": "dialogue"
     },
 
     {
