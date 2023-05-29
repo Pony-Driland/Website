@@ -178,6 +178,12 @@ var storyCfg = {
             color: '#000',
             title: 'She hates war',
             description: 'We have just discovered a mysterious war with some mysterious objective. Maybe she\'s not feeling comfortable about it.'
+        },
+
+        3: {
+            color: '#000',
+            title: 'They need help',
+            description: 'These ponies need your help. But at the cost of what consequences?'
         }
 
     },
