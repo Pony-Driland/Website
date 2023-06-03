@@ -1,5 +1,4 @@
 [
-
     {
         "set": {
             "where": "Forest",
@@ -9,34 +8,122 @@
         },
         "value": "Then the night passed. Several hours passed after a long night's sleep. Vinny just wakes up feeling someone poking him.",
         "type": "action"
-      }, 
-    
-      {
+    },
+
+    {
         "value": "N..Nooo, no, I still don't want to ride you, you... you... you promised me... you'd let me...",
         "character": "Vinny",
         "type": "dialogue"
-      }, 
-    
-      {
+    },
+
+    {
         "value": "Vinny was trying to move on the mattress, but he was starting to feel more pokes, poking him face and the nose.",
         "type": "action"
-      }, 
+    },
 
-      {
+    {
         "value": "N..No no...A..ah.",
         "character": "Vinny",
         "type": "dialogue"
-      }, 
-    
-      {
+    },
+
+    {
         "value": "Vinny was starting to open him eyes slowly, woking up during the progress.",
         "type": "action"
-      },
+    },
 
-      {
+    {
         "value": "W..What? Is that you? My... my sweetheart?",
         "character": "Vinny",
         "type": "dialogue"
-      }
+    },
 
+    {
+        "value": "Vinny start to smell something delicious. He was a little confusing about it.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hmmmm...",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was beginning to get up from the mattress toward the smell, but when Vinny tried to do that, Vinny came face to face with Rayane's face, accidentally touching her nose while she was levitating the Vinny breakfast.",
+        "type": "action"
+    },
+
+    {
+        "value": "Pika boo~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane touch her nose against Vinny nose while making a silly, mischievous face.",
+        "type": "action"
+    },
+
+    {
+        "value": "Hello~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was a little surprise before giggling in response.",
+        "type": "action"
+    },
+
+    {
+        "value": "A..Ah? Heh. Hiii charming Rayane. What did I miss?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny tried to look at another direction, but Rayane used her magic and changed the direction of Vinny's face to her face again.",
+        "type": "action"
+    },
+
+    {
+        "value": "Shhhhhhh... Silly. You almost missed your breakfast~",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Vinny was slightly blushed by Rayane's action.",
+        "type": "action"
+    },
+
+    {
+        "value": "Ooohwn....",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Then Vinny looks into Rayane's eyes.",
+        "type": "action"
+    },
+
+    {
+        "value": "Did I mention that you have beautiful eyes?",
+        "character": "Vinny",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Heh. Beautiful eyes to look at my dream~ I woke you up as I promised you.",
+        "character": "Rayane",
+        "type": "dialogue"
+    },
+
+    {
+        "value": "Rayane giggles a little and pokes Vinny nose. Then Rayane put the breakfast next to Vinny.",
+        "type": "action"
+    }
+    
 ]
