@@ -1,5 +1,42 @@
 [
 
+    {
+        "set": {
+            "where": "Forest",
+            "dayNightCycle": "morning",
+            "day": 4,
+            "weather": "sun"
+        },
+        "value": "Then the night passed. Several hours passed after a long night's sleep. Vinny just wakes up feeling someone poking him.",
+        "type": "action"
+      }, 
+    
+      {
+        "value": "N..Nooo, no, I still don't want to ride you, you... you... you promised me... you'd let me...",
+        "character": "Vinny",
+        "type": "dialogue"
+      }, 
+    
+      {
+        "value": "Vinny was trying to move on the mattress, but he was starting to feel more pokes, poking him face and the nose.",
+        "type": "action"
+      }, 
 
+      {
+        "value": "N..No no...A..ah.",
+        "character": "Vinny",
+        "type": "dialogue"
+      }, 
+    
+      {
+        "value": "Vinny was starting to open him eyes slowly, woking up during the progress.",
+        "type": "action"
+      },
+
+      {
+        "value": "W..What? Is that you? My... my sweetheart?",
+        "character": "Vinny",
+        "type": "dialogue"
+      }
 
 ]
