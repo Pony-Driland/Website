@@ -125,6 +125,76 @@
         "value": "Heh. Beautiful eyes to look at my dream~ I woke you up as I promised you.",
         "character": "Rayane",
         "type": "dialogue"
-    }
+    },
+
+  {
+    "value": "Oh... Maybe my breakfast might be something else one day.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a malice look at Rayane but then shook his head to wake up.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh... Please! You can forget what I said! Good morning! Did you sleep well? How is everyone?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Hmmmmmmmm... Something else?~ Heheh.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smirks at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Don't think I forgot everything you said in the last few days. Silly you~ But yes, this was a good night's sleep. Almost everyone is still sleeping. Kai was the only one who got out of bed besides me.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little curious to hear this.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y..Yeah! He must be under a lot of pressure.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then Vinny was starting to eat breakfast as he answered Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It's understood, he'll have to explain to everyone what happened with the bomb, Hiroshi, about him. And still make a plan to make everyone happy. I hope he gets him among all the guards he was the most different.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+        "playlistPlay": null
+    },
+    "value": "Vinny looks at James and when he saw James sleeping, Vinny does a trollface before came back to Rayane",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hehe boy. But before I need to have a little fun.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }
 
 ]
