@@ -86,6 +86,8 @@ var storyCfg = {
         username: "JasminDreasond"
     },
 
+    lenster: 'jasmindreasond',
+
     // Info
     mirror: [
         'ponydriland.jimm.horse'
