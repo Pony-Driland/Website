@@ -768,6 +768,15 @@ $(function () {
                 ));
             }
 
+            // Lenster
+            if (storyCfg.lenster) {
+                tinyFooter[1].push($('<li>').prepend(
+                    $('<a>', { target: '_blank', href: `https://lenster.xyz/u/${storyCfg.lenster}` }).text('Lenster').prepend(
+                        $('<i>', { class: 'fa-solid fa-share-nodes me-2' })
+                    )
+                ));
+            }
+
             // Discord Invite
             if (storyCfg.discordInvite) {
                 tinyFooter[1].push($('<li>').append(
