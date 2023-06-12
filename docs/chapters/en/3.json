@@ -184,16 +184,92 @@
   }, 
 
   {
-    "set": {
-        "playlistPlay": null
-    },
-    "value": "Vinny looks at James and when he saw James sleeping, Vinny does a trollface before came back to Rayane",
+    "value": "Vinny looks at James and when he saw James sleeping, Vinny does a trollface before came back to Rayane.",
     "type": "action"
   }, 
 
   {
     "value": "Hehe boy. But before I need to have a little fun.",
     "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Hmm... Kai's meditating, and looking at the forest. Well... What is the silly boy planning?~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+        "playlistPlay": null
+    },
+    "value": "Vinny was then a little surprised to hear Rayane's question.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "M..Me? Naaaah... I'm worried about James. He wants to solve some issues with Rainbow Queen. James is a little crazy. It's making a deal or a crazy pact. Anyway, I'll make him change his mind and if he doesn't want to. At least he tell me when he's going to do that.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane then got a small feeling of worried, trying to understand what was going on.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "think"
+  },
+    "value": "W...What? Pact? What is happening to James?",
+    "character": "Rayane",
+    "type": "think"
+  },
+
+  {
+    "value": "Huh? Pacts with Rain? So you completely told him everything about her?",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Well... I told James everything I know. Not the whole truth.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny looks at James, worried about his actions in the future.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...aaah... As James is part of this family. Heh! Here! Take this.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny turns on the cell phone, then Vinny gives the cell phone to Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "The phone is filming, recording this moment in real time. Heh! You need to record me waking up James in a delicate way, just point at us with the cell phone down. Alright?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane was still curious and worried about hearing all this, but tried to stay calm to see what Vinny was doing.",
+    "type": "action"
+  },
+
+  {
+    "value": "Vinny, please... James needs to be very careful. Rain is very smart when it comes to pacts. She specializes a lot in that.",
+    "character": "Rayane",
     "type": "dialogue"
   }
 
