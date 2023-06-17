@@ -351,6 +351,100 @@
     "value": "Hey hey! Calm down, I'm not Ariella, you're very euphoric. James! Everything will be fine. Just relax and let life go on, you need to calm down and start liking Vinny and Rayane more. They like you a lot.",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny does a face poker, trying to move away from James during the process. James stopped trying to touch Vinny when he heard the Vinny dialogue.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wh..what? Are you not Ariella? Who are you?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James slightly tried to open his eyes during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Viiish... Turn around Rayane!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny got up and threw himself on the mattress he was sleeping. Vinny then tried to pretend him was sleeping.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...What? H..huh? And..wait... No! What fuck is this?!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James woke up and keep trying to touch some hoof desperately, dragging himself on the floor, and looked around completely confused.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wh...what? AH? R...Rayane?!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane laughed at Vinny and James as she continued filming the scene.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Look who woke up~ Silly scientist.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "What?",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "James keep thinking about the dream for a few seconds.",
+    "type": "action"
+  },
+
+  {
+    "value": "VINNY!",
+    "character": "James",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Vinny still pretending to be asleep.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Interesting! Very interesting you two! The cutest unassuming couple I've ever seen!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was approaching Vinny, wanting to get some satisfaction. While the whole silly moment continued, even though Rayane demonstrating is laughing at the situation, she was still thoughtful.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "This is very curious. Where Vinny wants to come with all this? Is this part of his plan about Rain? Should I be more careful if he is really thinking about doing what I'm thinking?",
+    "character": "Rayane",
+    "type": "think"
   }
 
 ]
