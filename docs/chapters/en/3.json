@@ -271,6 +271,86 @@
     "value": "Vinny, please... James needs to be very careful. Rain is very smart when it comes to pacts. She specializes a lot in that.",
     "character": "Rayane",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Hehe. Nah... This time no scare. This is just a caress. This is Affection.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny lay down next to James almost face to face, and spoke very gently caressing him.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hey James... How strong you are? Can you carry me? You're very strong! Carry me my love.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? Affection? Vinny... You're being really silly. What's going to come out of this?",
+    "character": "Rayane",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Rayane giggles a little, trying to hide the concern a little.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "C...Carry you...zZzZzZz?...W..What?..Is that really you? ZzZzZzz....N..Never spoke..to me like that....ZzZzZz...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was sleeping, but he was confused, and he was trying to hug Vinny while he was sleeping. Meanwhile, Rayane was trying to hold back so she wouldn't laugh too much while filming.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Silly~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah... Ah? No! No! James... You've done a lot so far, you and your friends have done and saved a lot of lives. Everyone is trusting you. Me never talked to you that way? But do you know who i am?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Bu...but how? Y...you...ZzZz... aren't you Ariella? H..hey wait...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James tries to touch Vinny again and again while still sleeping. Rayane was still laughing, but she was curious about what she was hearing.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...What? Ariella? Did he really say this name? What's going on here?",
+    "character": "Rayane",
+    "type": "think"
+  },
+
+  {
+    "value": "Heh. Silly you will have to escape now~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hey hey! Calm down, I'm not Ariella, you're very euphoric. James! Everything will be fine. Just relax and let life go on, you need to calm down and start liking Vinny and Rayane more. They like you a lot.",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
