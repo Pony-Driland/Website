@@ -431,6 +431,9 @@
   }, 
 
   {
+    "set": {
+      "playlistPlay": null
+  },
     "value": "Interesting! Very interesting you two! The cutest unassuming couple I've ever seen!",
     "character": "James",
     "type": "dialogue"
@@ -442,9 +445,64 @@
   }, 
 
   {
+
     "value": "This is very curious. Where Vinny wants to come with all this? Is this part of his plan about Rain? Should I be more careful if he is really thinking about doing what I'm thinking?",
     "character": "Rayane",
     "type": "think"
+  },
+
+  {
+    "set": {
+      "playlistPlay": "silly"
+    },
+    "value": "Vinny kept pretending she was sleeping, but James levitated Vinny, and looked at him face, waiting for Vinny to open the eyes.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hey silly joke. Wake up!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "H..hey hey! Calm down! Rayane come here and give me a hug! Because the James eyes are beautiful!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "He spoke all tangled up pretending to be sleeping still trying to hug the wind",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What?! Are you problem?! Rayane will have a very special marshmallow for you now! Wake up!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James began to shake Vinny in every way possible. Meanwhile, Rayane continued laughing.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "If you two don't stop, I'll have to stop you both my way~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "AAAAAAAAH! James!! Stop shaking me!! WHAT THE HELL! Why are you shaking me and Rayane taking a picture?! This is some kind of prank?! Let me go bro!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "So explain that fucking you are doing here!",
+    "character": "James",
+    "type": "dialogue"
   }
 
 ]
