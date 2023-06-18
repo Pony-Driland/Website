@@ -639,6 +639,42 @@
   {
     "value": "Vinny giggles a little more nervously.",
     "type": "action"
+  },
+
+  {
+    "value": "I'm sorry to wake you. B..But... My plan was blown away. Good morning everyone! James, I can hug you more times later.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Everyone remained confused, but still tried to answer.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y...Yeah? Good morning!",
+    "character": "Jeff",
+    "type": "dialogue"
+  }, 
+
+
+  {
+    "value": "I see... G..Good morning.",
+    "character": "Wagner",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? Hug me? Hug me... Oh! hug me! What do you think you were doing?! Okay! Stop!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh. Vinny and James~ Don't forget to finish eating breakfast. We have a walk until the next village.",
+    "character": "Rayane",
+    "type": "dialogue"
   }
 
 ]
