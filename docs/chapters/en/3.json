@@ -744,14 +744,31 @@
   },
 
   {
-    "value": "Rayane breathed deeply in a very thoughtful way.",
+    "value": "Rayane breathed deeply in a very thoughtful way. Then Rayane decides to use magic to help to put the Ivy mattress on the outside of the tent. Rayane could see that the place is a beautiful day outside. The atmosphere was much happier and sunny. Just the sound of nature, and without the storm, Rayane could see that there was already another village close to the camp.",
     "type": "action"
   },
 
   {
-    "value": "I have to be very careful. Rain's pets should be curious about who is this pegasus. Vinny is also very curious about Rain's pets. Vinny must be trying to approach Rain in some way. I will try my best to make us focus on Ivy. This situation cannot go out of control.",
+    "value": "Oh. The next village is here. Okay. I have to be very careful. Rain's pets should be curious about who is this pegasus. Vinny is also very curious about Rain's pets. Vinny must be trying to approach Rain in some way. I will try my best to make us focus on Ivy. This situation cannot go out of control.",
     "character": "Rayane",
     "type": "think"
+  },
+
+  {
+    "value": "Rayane? How is Ivy doing?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then stopped what she was doing and looked curiously at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...Ah? Vinny? Oh yes! She's still sleeping. I was surprised she still hasn't woken up to all this noise. But at least her Smartmoby is working.",
+    "character": "Rayane",
+    "type": "dialogue"
   }
 
 ]
