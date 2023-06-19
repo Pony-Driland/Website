@@ -705,6 +705,53 @@
     "value": "Okay! Good morning!",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny then continued to eat breakfast again. Everyone looked at the breakfast made by Rayane. And everyone started eating, trying to pretend nothing happened.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh. I hope everyone is enjoying breakfast~ I'll be outside waiting for my dream to finish waking up.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "set": {
+      "playlistPlay": "think"
+    },
+    "value": "Rayane then began to levitate Ivy's mattress, preparing to analyze if Ivy was fine. Wagner was still curious about Ivy, but tried to disguise this feeling a little.",
+    "type": "action"
+  },
+
+  {
+    "value": "W...well... When everyone leaves the tent, I... I... okay. Another time I talk better about it.",
+    "character": "Wagner",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane looked curiously at Wagner, but Wagner looked very shy, he just came back what he was doing.",
+    "type": "action"
+  },
+
+  {
+    "value": "Excellent. I  did. I made everyone calm down faster. I can't lose much time. I still need to finish what I started. This pegasus needs to survive.",
+    "character": "Rayane",
+    "type": "think"
+  },
+
+  {
+    "value": "Rayane breathed deeply in a very thoughtful way.",
+    "type": "action"
+  },
+
+  {
+    "value": "I have to be very careful. Rain's pets should be curious about who is this pegasus. Vinny is also very curious about Rain's pets. Vinny must be trying to approach Rain in some way. I will try my best to make us focus on Ivy. This situation cannot go out of control.",
+    "character": "Rayane",
+    "type": "think"
   }
 
 ]
