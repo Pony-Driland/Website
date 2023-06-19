@@ -658,7 +658,6 @@
     "type": "dialogue"
   }, 
 
-
   {
     "value": "I see... G..Good morning.",
     "character": "Wagner",
@@ -674,6 +673,37 @@
   {
     "value": "Heh. Vinny and James~ Don't forget to finish eating breakfast. We have a walk until the next village.",
     "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "B...But! I want to see the replay! I can?",
+    "character": "Rowan",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rowan smiles during the question.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "There's no replay!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Vinny does a poker face, turning off the cell phone.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Okay! Good morning!",
+    "character": "Vinny",
     "type": "dialogue"
   }
 
