@@ -769,6 +769,102 @@
     "value": "A...Ah? Vinny? Oh yes! She's still sleeping. I was surprised she still hasn't woken up to all this noise. But at least her Smartmoby is working.",
     "character": "Rayane",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Should we wake her up to give her breakfast?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane is a little thoughtful for a few seconds before answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmmmm... Heh~ If she doesn't wake up, I'll have to use plan b to feed her.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? Well! She was conscious with me, she really must be very tired or weak. What did you guys do to her while James and I were arriving?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane gets a little surprised and worried, but she tried not to make this feeling much.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Silly~ I just put her to sleep. If James can't help her, we'll have to go to the doctor.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A....",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks at Rayane suspiciously for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You should have thought about that before making us almost kiss, right. She's alive, she must be very exhausted, she was talking, you saw it yourself. What could have happened? Do you have any idea?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Shhhhhh~ Silly one.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane breathed a little deep when looking at Ivy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Okay... I don't know how to say it. I don't understand much about health. Maybe she's too weak to wake up. We can't waste much time here now.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well, anyway, just opening her eyes helps someone feed her. I'm going to ask James if he knows what's going on. Anyway... I'm going to look for Kai, it's dangerous for him to be alone, someone can kidnap him.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane does a little sad look at Ivy as she responded.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes. This is fine. Don't forget... We're close to the Blackburn Village. We can get some medical care there.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little surprised to realize that Rayane knew the name of the next village.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..Ah. Okay.",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
