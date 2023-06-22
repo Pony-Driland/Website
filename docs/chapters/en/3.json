@@ -952,8 +952,37 @@
   }, 
 
   {
-    "value": "James was a little thoughtful for a few seconds.",
+    "value": "Vinny is surprised, so him responded with a lot of curiosity on the subject.",
     "type": "action"
+  },
+
+  {
+    "value": "This is interesting... Can you explain more?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "R...Really? Okay. There is a haunted village next to Blackburn. It is an abandoned village that was supposed to be another common village in this region, but it seems that its founder ended up being cursed and disappeared. So sometimes strange things happen coming from this village towards Blackburn.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James looked curiously at Vinny, suspecting something.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "This mysterious village is a huge cemetery. if you don't take care of yourself right, you could be unlucky for something to happen to you. Do not try to let the ghosts of this village have a lot of contact with you!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmmmm... Anyway we need to go to Blackburn to take care of Ivy, priorities first, then we hunt ghosts. Heh! Thanks for the help again. I'll try to find Kai and talk to him. Kai is Hiroshi's successor, he must be very anxious now.",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
