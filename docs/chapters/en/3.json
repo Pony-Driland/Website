@@ -983,6 +983,45 @@
     "value": "Hmmmmm... Anyway we need to go to Blackburn to take care of Ivy, priorities first, then we hunt ghosts. Heh! Thanks for the help again. I'll try to find Kai and talk to him. Kai is Hiroshi's successor, he must be very anxious now.",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "James then levitated the backpack, ready to put in the back again. James was a little thoughtful as he answered.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes. You're welcome. W...Well...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Don't forget the tablet!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny spoke a little softly for only James to hear.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "This taiblet may be something that will help us. Alright?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then Vinny put his sunglasses when he finished speaking while James was a little surprised.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..ah... the tablet. Yes! I kept it in my backpack.",
+    "character": "James",
+    "type": "dialogue"
   }
 
 ]
