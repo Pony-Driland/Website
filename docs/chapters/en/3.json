@@ -1008,6 +1008,9 @@
   }, 
 
   {
+    "set": {
+      "playlistPlay": null
+    },
     "value": "This taiblet may be something that will help us. Alright?",
     "character": "Vinny",
     "type": "dialogue"
