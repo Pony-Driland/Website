@@ -865,6 +865,95 @@
     "value": "A..Ah. Okay.",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny was thoughtful for a few seconds before finally decided to go to James.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hey James! Sorry for the way I woke you up... How are you?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "James then finished tidying things up and walked toward Vinny.",
+    "type": "action"
+  },
+
+  {
+    "value": "Me? Ah... Good.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James breathed deeply, trying not to talk much about it. Then James was starting to leave the tent toward Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... How is Ivy?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was a little surprised to hear the question, but then the conversation continued.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Same state... lots of broken bones, difficulty breathing... But she's alive. I was very confident in trying to help her, but I got really scared when I saw that her body was so much more damaged than I imagined. I don't have enough training to do this kind of thing.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James breathed deeply before continuing the conversation sadly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'm sorry I can't be useful for you now.",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+
+  {
+    "value": "Oh no no no. Do not need to be sad! Her being alive already helps and a lot. I'm here to thank you for helping her. Anyway, Rayane said we're close to Blackburn. We can get some assistance there. As much as I think it will cost money.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James raised his head, trying to be positive during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh? Blackburn? Well, yes, it's a good place. But remember that we can't stay long in this village with Ivy. This village is sometimes a little haunted at night.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was a little thoughtful for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But well. At least these haunts do not even let the bad ponies try to invade the houses.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was a little thoughtful for a few seconds.",
+    "type": "action"
   }
 
 ]
