@@ -1031,6 +1031,87 @@
     "value": "A..ah... the tablet. Yes! I kept it in my backpack.",
     "character": "James",
     "type": "dialogue"
+  },
+
+  {
+    "set": {
+      "playlistPlay": "bad-think"
+    },
+    "value": "Meanwhile, Rayane was getting ready to put Ivy back on her back. Rayane was looking a little emotional at Ivy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "So you are ready Ivy. Let's take you to the hospital. I know the perfect way for us to run there without being at risk of hurting you.",
+    "character": "Rayane",
+    "type": "think"
+  },
+
+  {
+    "value": "Ah? Rayane? Are you doing? When are you going to take me to the places on my horse?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh? V..Vinny? Heh~ Silly you. What is the little fool thinking?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then put a cover to almost completely cover Ivy's body, so she was safe during the travel. Vinny was then curious wanting to know what Rayane was doing, but he first asked a silly question.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You carrying me to a mountain of money on your back. Me and you on a galloping travel. Heh heh! What will you do? Will you want to look for help now?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Mountain of money? Silly you. There's something much better than money~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little as she prepared a magic on Ivy's body slowly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But yes, we need to go now. I need to help everyone to be oriented to go to the village as I take Ivy to the hospital.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little surprised and curious during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "So let's go. But wait... Something better than money? Would it be another time you and me alone? Hmmm... You can't stop thinking about it. Hihi! One question for you! Why does it seem that every time you look at ivy you seem to get emotional?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was then a little thoughtful for a few seconds before breathing deeply and sadly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "This is special moments. I feel sorry for her. So lonely to just die this way. She reminds me of some things from my past, for me it would be unfair for her to just leave this way without having enjoyed something good in her life.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane continued to concentrate magic in the horn, almost finishing preparing what she wanted to do.",
+    "type": "action"
   }
 
 ]
