@@ -1112,6 +1112,107 @@
   {
     "value": "Rayane continued to concentrate magic in the horn, almost finishing preparing what she wanted to do.",
     "type": "action"
+  },
+
+  {
+    "value": "Vinny... I promise I'll see you again when she's safe in the hospital.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? No no! I'll go with you!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was then a little surprised by Vinny's determination.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Are you sure? And you weren't going to talk to Kai?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I...I.... Well! Anything him just came to me! You know!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny... Don't worry about me.",
+    "character": "Kai",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Kai then approached, surprising a little Vinny and Rayane. Kai was there listening to the entire conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "K..Kai?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Huh!? How did you get here?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I wasn't far from here. I was just meditating. It's still morning. Anyway, we'll still have time to talk. The first thing we need is a temporary home, and that's what I'll do when we get to that village.",
+    "character": "Kai",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh yes, I had forgotten that you are allowed to do that.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "But remember that this house is not for us. Jeff and Wagner needs a new house, but at least we will have a quieter place, protected from the haunts of the night. You two... Go and do what needs to be done.",
+    "character": "Kai",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Kai smiles slightly during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "You have something much more important to do now.",
+    "character": "Kai",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane and Vinny then smile back in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Alright! Good luck with the ponies there!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh. So let's go. It's time for us to run to Blackburn!",
+    "character": "Rayane",
+    "type": "dialogue"
   }
 
 ]
