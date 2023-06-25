@@ -1037,7 +1037,7 @@
     "set": {
       "playlistPlay": "bad-think"
     },
-    "value": "Meanwhile, Rayane was getting ready to put Ivy back on her back. Rayane was looking a little emotional at Ivy.",
+    "value": "Meanwhile, Rayane was getting ready to put Ivy on her back. Rayane was looking a little emotional at Ivy.",
     "type": "action"
   }, 
 
@@ -1048,13 +1048,13 @@
   },
 
   {
-    "value": "Ah? Rayane? Are you doing? When are you going to take me to the places on my horse?",
+    "value": "Ah? Rayane? Are you doing? When are you going to take me to the places on your back?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
 
   {
-    "value": "Oh? V..Vinny? Heh~ Silly you. What is the little fool thinking?",
+    "value": "Oh? V..Vinny? Heh~ Silly you. Are you thinking about?~",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -1077,12 +1077,12 @@
   }, 
 
   {
-    "value": "Rayane giggles a little as she prepared a magic on Ivy's body slowly.",
+    "value": "Rayane giggles a little sadly as she prepared a magic on Ivy's body slowly.",
     "type": "action"
   }, 
 
   {
-    "value": "But yes, we need to go now. I need to help everyone to be oriented to go to the village as I take Ivy to the hospital.",
+    "value": "But yes, we need to go now. You need to help everyone to be oriented to go to the village as I take Ivy to the hospital.",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -1204,13 +1204,13 @@
   }, 
 
   {
-    "value": "Alright! Good luck with the ponies there!",
+    "value": "Alright! Good luck to you too!",
     "character": "Vinny",
     "type": "dialogue"
   }, 
 
   {
-    "value": "Heh. So let's go. It's time for us to run to Blackburn!",
+    "value": "Heh~ So let's go. It's time for us to run to Blackburn!",
     "character": "Rayane",
     "type": "dialogue"
   }
