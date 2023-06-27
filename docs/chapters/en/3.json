@@ -1204,7 +1204,7 @@
   }, 
 
   {
-    "value": "Alright! Good luck to you too!",
+    "value": "Alright! Good luck to you too Kai!",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -1213,6 +1213,33 @@
     "value": "Heh~ So let's go. It's time for us to run to Blackburn!",
     "character": "Rayane",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny does a small smile of worry as him waved to Kai while Rayane's horn then began to shine while she was preparing to run.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... Good luck, Kai. I...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then suddenly Rayane was starting to run at high speed, leaving a rainbow trail. Vinny then was surprised to see this.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W..What? OH FUCK! CHARMING RAYANE! WAIT ME!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then started trying to follow Rayane.",
+    "type": "action"
   }
 
 ]
