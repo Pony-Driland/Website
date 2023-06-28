@@ -1216,7 +1216,7 @@
   },
 
   {
-    "value": "Vinny does a small smile of worry as him waved to Kai while Rayane's horn then began to shine while she was preparing to run.",
+    "value": "Vinny does a small worry smile as him waved to Kai while Rayane's horn then began to shine while she was preparing to run.",
     "type": "action"
   }, 
 
@@ -1246,13 +1246,13 @@
   },
 
   {
-    "value": "Yes... Good luck to you both too.",
+    "value": "W...wow? Heh. Yes... Good luck to you both too.",
     "character": "Kai",
     "type": "dialogue"
   }, 
 
   {
-    "value": "Vinny was surprised by Rayane's speed, trying not to lose sight of.",
+    "value": "Vinny was surprised by Rayane's speed, trying not to lose her presence.",
     "type": "action"
   }, 
 
@@ -1268,7 +1268,7 @@
   }, 
 
   {
-    "value": "Hey! COME ON! it's going to break Ivy more!",
+    "value": "Hey! COME ON! it's going to break Ivy body more!",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -1280,7 +1280,7 @@
   }, 
 
   {
-    "value": "Rayane increased her speed even more and at the same time made a big push on her hooves to jump very high and start running over the trees, doing parkur to have even more speed in her movements.",
+    "value": "Rayane increased her speed even more, doing big push on her hooves to jump very high and start running over the trees, doing parkur to have even more speed in her movements.",
     "type": "action"
   }, 
 
@@ -1338,12 +1338,15 @@
     "set": {
       "playlistPlay": null
     },
-    "value": "Heh~ It doesn't even look like the same littl Vinny that I trained the flight a while ago~",
+    "value": "Heh~ It doesn't even look like the same little Vinny that I trained the flight a while ago~",
     "character": "Rayane",
     "type": "dialogue"
   }, 
 
   {
+    "set": {
+      "where": "Blackburn Village"
+  },
     "value": "Rayane does a huge jump towards the top of the village wall then stayed the rest of the way on top of the wall, finishing braking the movements until she came face to face with a guard extremely scared of Rayane's movements.",
     "type": "action"
   },
@@ -1360,7 +1363,7 @@
   }, 
 
   {
-    "value": "Shhhhhhh~ Good morning. Don't worry. The next day I remember.",
+    "value": "Shhhhhhh~ Good morning. Don't worry. The next day I remember. Silly one~",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -1369,7 +1372,7 @@
     "set": {
       "playlistPlay": "tense-mystery"
     },
-    "value": "Rayane breathed deeply to recover her breath and began to down the steps of the village wall slowly, walked toward Vinny that was on the floor waiting for her.",
+    "value": "Rayane breathed deeply to recover her breath and began to go down the steps of the village wall slowly, walked toward Vinny that was on the floor waiting for her.",
     "type": "action"
   }, 
 
@@ -1380,18 +1383,18 @@
   }, 
 
   {
-    "value": "Vinny was curious, thinking about guard, rubbing him hoof over head.",
+    "value": "Vinny was curious, thinking about guard. Vinny rubs him hoof over the head.",
     "type": "action"
   }, 
 
   {
-    "value": "R..Rayane? When will I be known too?",
+    "value": "R..Rayane? When will I be known too? Hm?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
 
   {
-    "value": "Heh heh~ Excellent. Vinny was very distracted by the race. Now I just need to arrive at the hospital to save try to save Ivy life. I hope no one has felt the energy of this magic. This was more than necessary to use.",
+    "value": "Heh heh~ Excellent. Vinny was very distracted by the race. Now I just need to arrive at the hospital to try to save Ivy life. I hope no one has felt the energy of this magic. This was more than necessary to use.",
     "character": "Rayane",
     "type": "think"
   }
