@@ -1324,9 +1324,6 @@
   }, 
 
   {
-    "set": {
-      "playlistPlay": null
-    },
     "value": "YEAH! Dropped his victory!",
     "character": "Vinny",
     "type": "dialogue"
@@ -1338,6 +1335,9 @@
   }, 
 
   {
+    "set": {
+      "playlistPlay": null
+    },
     "value": "Heh~ It doesn't even look like the same littl Vinny that I trained the flight a while ago~",
     "character": "Rayane",
     "type": "dialogue"
