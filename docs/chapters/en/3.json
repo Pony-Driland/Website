@@ -1190,9 +1190,6 @@
   }, 
 
   {
-    "set": {
-      "playlistPlay": null
-    },
     "value": "You have something much more important to do now.",
     "character": "Kai",
     "type": "dialogue"
@@ -1210,6 +1207,9 @@
   }, 
 
   {
+    "set": {
+      "playlistPlay": null
+    },
     "value": "Heh~ So let's go. It's time for us to run to Blackburn!",
     "character": "Rayane",
     "type": "dialogue"
@@ -1226,7 +1226,10 @@
     "type": "dialogue"
   }, 
 
-  {
+  {    
+    "set": {
+      "playlistPlay": "troubles"
+    },
     "value": "Then suddenly Rayane was starting to run at high speed, leaving a rainbow trail. Vinny then was surprised to see this.",
     "type": "action"
   }, 
@@ -1239,6 +1242,109 @@
 
   {
     "value": "Vinny then started trying to follow Rayane.",
+    "type": "action"
+  },
+
+  {
+    "value": "Yes... Good luck to you both too.",
+    "character": "Kai",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was surprised by Rayane's speed, trying not to lose sight of.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh~ I'll win.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane starts to run faster during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hey! COME ON! it's going to break Ivy more!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh... He didn't understand my magic, but that's fine.",
+    "character": "Rayane",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Rayane increased her speed even more and at the same time made a big push on her hooves to jump very high and start running over the trees, doing parkur to have even more speed in her movements.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "WOW! Rayane! This is very fast to me!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny spoke loudly before starting to fly up, following Rayane. That way it was easier Vinny to locate the direction where Rayane was going, so Vinny could see the village mentioned by Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yours wasn't the first!~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was still surprised and kept trying to use him pegasus advantage to try to follow the speed of Rayane's movements. Rayane then smirks at Vinny for a few seconds as she let Vinny get a little closer as her horn shone a little more.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You dropped it!!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes~",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny put all him strength into flying during the progress. Vinny was not strange, but everything was going faster than usual for a few seconds. At this very moment Rayane then finished the use of magic, making Rayane and Vinny arrive at the village instantly. Rayane very tired due to the accumulation of magic energy to use the spell, it made Vinny get first than her at the end.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "YEAH! Dropped his victory!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was a little impressed, but then she giggles for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh~ It doesn't even look like the same littl Vinny that I trained the flight a while ago~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane does a huge jump towards the top of the village wall then stayed the rest of the way on top of the wall, finishing braking the movements until she came face to face with a guard extremely scared of Rayane's movements.",
     "type": "action"
   }
 
