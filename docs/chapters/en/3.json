@@ -1346,6 +1346,54 @@
   {
     "value": "Rayane does a huge jump towards the top of the village wall then stayed the rest of the way on top of the wall, finishing braking the movements until she came face to face with a guard extremely scared of Rayane's movements.",
     "type": "action"
+  },
+
+  {
+    "value": "G...good morning Rayane... You didn't forget that we have a gate, right?",
+    "character": "Guard",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The guard was trying to understand what had just happened and how Vinny and Rayane arrived so fast.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Shhhhhhh~ Good morning. Don't worry. The next day I remember.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "tense-mystery"
+    },
+    "value": "Rayane breathed deeply to recover her breath and began to down the steps of the village wall slowly, walked toward Vinny that was on the floor waiting for her.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "We're here~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was curious, thinking about guard, rubbing him hoof over head.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "R..Rayane? When will I be known too?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh heh~ Excellent. Vinny was very distracted by the race. Now I just need to arrive at the hospital to save try to save Ivy life. I hope no one has felt the energy of this magic. This was more than necessary to use.",
+    "character": "Rayane",
+    "type": "think"
   }
 
 ]
