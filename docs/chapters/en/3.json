@@ -1397,6 +1397,125 @@
     "value": "Heh heh~ Excellent. Vinny was very distracted by the race. Now I just need to arrive at the hospital to try to save Ivy life. I hope no one has felt the energy of this magic. This was more than necessary to use.",
     "character": "Rayane",
     "type": "think"
+  },
+
+  {
+    "value": "Good morning guard",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh~ Everything in its own time. Silly Vinny~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmmm. Yeah! Okay! And Good morning guard.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The guard was even more confused and scare to realize that he had not seen Vinny too.",
+    "type": "action"
+  },
+
+  {
+    "value": "Wh... what? And another guest? Good morning... Please go down the wall before someone comes along to scold me because I'm leaving civilians up here.",
+    "character": "Guard",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh~ sorry, we needed to take a shortcut to an emergency.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Meanwhile, Vinny could see that in the center of the village there were many ponies in one place.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah? What's going on???",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then tried to follow Rayane. Rayane was tired, but she continued to follow her way to the hospital.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Don't worry, the center of the village is a big market. Do not miss the focus of our goal.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aaaah... Okay okay! Don't talk! Let's go!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane kept walking inside the village, some ponies were surprised, trying to understand the reason about Rayane was in a hurry, Vinny just continued to follow Rayane as if nothing had happened, trying not to pay much attention.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Come here. We are almost there!",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Y..yeah!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then finally came close to the hospital door, and entered as quickly as possible.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Pheew! Finally! We arrived.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was panting, and Vinny was a little worried, so Vinny just looked at Rayane curiously.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "R..Rayane? And now?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Follow me...",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then walked between the ponies, making all the possible effort until finally arrived at the attendant.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh yes... Everypony... just down the hall... Doctor is wating for you and and... W..What?! R...Rayane?!",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
   }
 
 ]
