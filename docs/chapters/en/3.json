@@ -1400,7 +1400,7 @@
   },
 
   {
-    "value": "Good morning guard",
+    "value": "Good morning guard.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -1423,7 +1423,7 @@
   },
 
   {
-    "value": "Wh... what? And another guest? Good morning... Please go down the wall before someone comes along to scold me because I'm leaving civilians up here.",
+    "value": "Wh... what? And another guest?! Good morning... Please go down the wall before someone comes along to scold me because I'm leaving civilians up here.",
     "character": "Guard",
     "type": "dialogue"
   }, 
@@ -1440,7 +1440,7 @@
   }, 
 
   {
-    "value": "Ah? What's going on???",
+    "value": "Yes... but... Ah? What's going on?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -1463,7 +1463,7 @@
   }, 
 
   {
-    "value": "Rayane kept walking inside the village, some ponies were surprised, trying to understand the reason about Rayane was in a hurry, Vinny just continued to follow Rayane as if nothing had happened, trying not to pay much attention.",
+    "value": "Rayane keep walking inside the village, some ponies were surprised, trying to understand the reason about Rayane was in a hurry, Vinny just continued to follow Rayane as if nothing had happened, trying not to pay much attention.",
     "type": "action"
   }, 
 
@@ -1474,7 +1474,7 @@
   }, 
 
   {
-    "value": "Y..yeah!",
+    "value": "Yeah!",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -1485,7 +1485,7 @@
   }, 
 
   {
-    "value": "Pheew! Finally! We arrived.",
+    "value": "Pheew! Finally! Ah yes! Finaaally! We arrived.",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -1502,18 +1502,18 @@
   }, 
 
   {
-    "value": "Follow me...",
+    "value": "Follow me again...",
     "character": "Rayane",
     "type": "dialogue"
   }, 
 
   {
-    "value": "Rayane then walked between the ponies, making all the possible effort until finally arrived at the attendant.",
+    "value": "Rayane then walked between ponies, making all the possible effort until finally arrived at the attendant.",
     "type": "action"
   }, 
 
   {
-    "value": "Oh yes... Everypony... just down the hall... Doctor is wating for you and and... W..What?! R...Rayane?!",
+    "value": "Oh yes... Everypony... just down the hall... Doctor is wating for you and... W..What?! R...Rayane?!",
     "character": "Hospital Attendant",
     "type": "dialogue"
   }
