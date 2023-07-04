@@ -1516,6 +1516,85 @@
     "value": "Oh yes... Everypony... just down the hall... Doctor is wating for you and... W..What?! R...Rayane?!",
     "character": "Hospital Attendant",
     "type": "dialogue"
+  },
+
+  {
+    "value": "No talking! This is an emergency!",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hospital attendant looked very curiously at Rayane, trying to understand what was really happening.",
+    "type": "action"
+  },
+
+  {
+    "value": "W..What? B..but...but what emergency? And... I'm not seeing anyone hurt.",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane took off the clothes that were covering Ivy's body and started to levitate her.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "She needs a stretcher now!",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh! M..my Rainbow! Okay okay...I'm bring a stretcher now!",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The hospital attendant then began to contact the hospital emergency team. Viny only see ponies waiting for service, and everyone was very surprised by the scene that was happening, trying to understand what was happening.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...Well! Everyone here seems more surprised than me.",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "OKAY! Everypony getting out of the way NOW! This is more than an emergency! Now!",
+    "character": "Doctor",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "W...Wow!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny see some earth ponies arriving with the stretcher. Rayane put Ivy on the stretcher without thinking twice during the progress. Then the doctors send Ivy to the hall. Everyone was still surprised, but Rayane ignored everyone's reaction and just breathed deeply on relief.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Phew! I... I did it. Y..Yes. I did. F..finaaaally.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then realized that the hospital attendant was looking at her very curiously.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "R...Rayane? This is a surprise to see here! I never seen you on a hospital or bring some patient to a hospital. Our hospital network has no information about you. We will generate your password for you to be allowed to enter soon. Alright? But.... W..What happened for you came here?",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
   }
 
 ]
