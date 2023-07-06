@@ -1595,6 +1595,153 @@
     "value": "R...Rayane? This is a surprise to see here! I never seen you on a hospital or bring some patient to a hospital. Our hospital network has no information about you. We will generate your password for you to be allowed to enter soon. Alright? But.... W..What happened for you came here?",
     "character": "Hospital Attendant",
     "type": "dialogue"
+  },
+
+  {
+    "value": "This is personal. And please register his name too. He's with me.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then Rayane introduced Vinny during the talk. The attendant was a little more surprised to see Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "O..Oh! W..Well... Okay. Hello! What's your name?",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hospital Attendant smiled nervously in response. Vinny thought it was a little strange, but only responded normally.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny, my name is Vinny.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A..ah yes. And what are you? What is your marital status?",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmm... Just being friends. But in the future maybe married. Heh! I think this charming pony is very beautiful for someone like me.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The attendant was a little blushed, not understanding what was happening, she seemed embarrassed and very confused.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "R..Really?",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny... Silly you~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Okay okay! Here is the password for the registration of the two of you. The doctor will come to call you two soon.",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The attendant then showed the scannement table, and Rayane progressed to let the Smartmoby be scanned.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh! Thank you very much!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny smiles during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I say the same~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Then the attendant was still smiling nervously, and waved them both before returning to work.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes...yes. I'm happy for this. Sorry for my attitude. I need to keep my posture.",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hihi! All right.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny pretended that everything was normal and just walked with Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "sad"
+    },
+    "value": "Rayane? Really? Why doesn't anyone come up to me and say... Vinny? Why only Rayane? What do I need to do to be known like you?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Shhhhh~ Long story. I've done a lot in this world. Some moment will come your time too, I'm sure about this.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane breathed deeply before continuing the conversation sadly.",
+    "type": "action"
+  },
+
+  {
+    "value": "And I hope you can do it all the right way.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane sit on one of the benches and started to wait while she was very thoughtful about Ivy.",
+    "type": "action"
+  },
+
+  {
+    "value": "It looks like things are going well. Nothing came out of my plan. Now I just need to be patient. I'm sure the time we'll stay here will be more than enough for Kai to help others find the house for all of us to stay.",
+    "character": "Rayane",
+    "type": "think"
   }
 
 ]
