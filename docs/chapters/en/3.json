@@ -1742,6 +1742,176 @@
     "value": "It looks like things are going well. Nothing came out of my plan. Now I just need to be patient. I'm sure the time we'll stay here will be more than enough for Kai to help others find the house for all of us to stay.",
     "character": "Rayane",
     "type": "think"
+  },
+
+  {
+    "value": "Hey Rayane. I understand, I just hope I don't get known in the first moments in this world like a Rayane's helper partner. Hihi! I like getting somewhere everyone says... \"Look! Rayane and her help partner...\". I even accept a \"Look\", and \"Rayane and Vinny\", or \"Look! This is Vinny and Rayane...\".",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then giggles a little about the conversation, trying to make Rayane feel better.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But! What are we going to do now?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh. Silly you. Don't worry. I'll give you a little help to promote your title~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little, trying to maintain a positive talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But we'll have to wait some doctor come here for now. Will you want to talk more about something?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little thoughtful for a few seconds before answering.",
+    "type": "action"
+  },
+
+  {
+    "value": "Okay. A good talk... What do you know about Ivy's condition? You suddenly wanted to run non-stop at full speed and before you didn't care. Did she get worse? Do you know something?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then looked at the floor like a mirror, thinking about the past for a few seconds before looking at Vinny again.",
+    "type": "action"
+  },
+
+  {
+    "value": "Just worries... Maybe I'm very anxious to see that she hasn't even opened an eye yet.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Really? Promise are you telling the truth?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was then a little curious about Vinny's curiosity, Rayane just made a little sad smile.",
+    "type": "action"
+  },
+
+  {
+    "value": "Yes. I promise. My despair was happening when I felt her smartmoby getting weak even more. I didn't want to see her energy like this. Hiroshi's death makes me feel that this pony needs to be my little hope for a better future in my feelings.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then smiled a little as he heard Rayane's answer.",
+    "type": "action"
+  },
+
+  {
+    "value": "Hm... What does that mean? Was Ivy getting weaker?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes. The weaker her soul gets... the closer to death she is. This energy inside her soul cannot end.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane slowly became a little more worried, but tried to accept the situation that was happening, she just closed her eyes and kept talking.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I myself almost ended up using all my soul energy accidentally during my magic spells.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny was then thoughtful, trying to understand Rayane's words, then replied.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh... Is there something inside her that is bad? Something like a internal bleeding?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Are you saying about something like a body blood? No. That doesn't exist in this world. Our body has a different composition.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little confused, and tried to understand what he remembered about what James said about Pony Driland's dimension.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "D..Different composition? Ah! I see. Well! Let's wait then. Do you want to talk about something more?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "No. Thank you Vinny... But I want just wait now. We can talk better about it later.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was then curious, trying to understand Rayane's behavior change.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Are you sure?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes. But it's easier for us to talk about Ivy after hearing the doctor's words for now.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hm! A good thing will not be. Before waiting, how does it work? We need to pay to use hospital in this world?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes. But don't worry about it. I'll pay for everything myself. Maybe the hospital is the only different place I know that has a little more freedom technology.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Freedom technology? I...I... Okay! Let's wait.",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
