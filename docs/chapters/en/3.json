@@ -1912,6 +1912,176 @@
     "value": "Freedom technology? I...I... Okay! Let's wait.",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "So a few hours passed, Vinny and Rayane were already tired, but they were still sitting waiting for something to happen. Rayane was a little depressed when thinking about Ivy, but then she stopped being thoughtful when she heard the presence of a female unicorn coming.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny? Rayane? I need to talk to you two...",
+    "character": "Doctor",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny would then open his eyes a little and look curiously at Raynae.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... Rayane?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "H..huh? Ah yes. Hello doctor.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then got a little anxious, and looked at the doctor.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hello. So please... follow me. We have good news and bad news.",
+    "character": "Doctor",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W..What?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was worried to hear that, so Vinny and Rayane got up and started to follow the doctor.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hm? Did something happen?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Yes. We did several tests. As much as she is alive, we still have a very serious problem to deal with...",
+    "character": "Doctor",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then everyone finally arrived in Ivy's room, and started to enter the room slowly.",
+    "type": "action"
+  },
+
+  {
+    "value": "W...Well... Doctor? What's the problem?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was starting to feel worried looking at Rayane. Rayane seemed to really want that moment to end.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "bad-mystery"
+    },
+    "value": "Well...",
+    "character": "Doctor",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Doctor closes the door for everything to be silent. Everyone then finally could see Ivy lying on the bed. Ivy was still asleep, but her body felt weak and dry. All that could be seen was a power cable connected to Ivy's smartmoby.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Looks like your friend is in a coma. That means her body has definitely stopped responding. Her entire body is very damaged, preventing her from regaining her energies.",
+    "character": "Doctor",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Doctor looked at Vinny and Rayane's astonished reaction, so the doctor tried to speak more calmly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "We are in an extremely risky moment, and she has few days to live. We can't risk trying to restore her body without having some risk of accidentally killing her in the process. Trying to recover her body is a minefield for us, anything we accidentally damage will be instant death.",
+    "character": "Doctor",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "B..but but...",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "This way... the only way to get her back is some miracle that fixes her whole body, but unfortunately we can't do that. But what we can do is keep her in treatment in case you have any ideas or know someone who knows more than us how to solve this.",
+    "character": "Doctor",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "O...Okay! But... that's the bad news. And the good news?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then took a deep breath, preparing to continue the conversation, feeling disappointed and sad.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "The good news is that we can keep her alive using our special hospital device. But we have no guarantee on how long she will be alive in this room. We've already identified who the pegasus is. Her name is Ivy, but unfortunately we couldn't find any other pony close to her.",
+    "character": "Doctor",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes. I understand Doctor... if I may ask, when you talk about someone who knows more than us, what exactly do you mean? Someone who understands body anatomies? I really don't understand, a little while ago she was even conscious, talking, she just didn't move. how could this have happened?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Doctor then took a deep breath before answering sadly.",
+    "type": "action"
+  }, 
+  
+  {
+    "value": "I mean some magical creature. There are rare stories of patients who were cured by special methods. But we never discovered its origins. So unfortunately that's all we can offer at the moment.",
+    "character": "Doctor",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W..What? magical creature? R...Rain? This is you?",
+    "character": "Rayane",
+    "type": "think"
+  }, 
+
+  {
+    "value": "The Ivy's body had natural energy to keep active. But after she slept, unfortunately her body can't have enough energy to wake up again.",
+    "character": "Doctor",
+    "type": "dialogue"
   }
 
 ]
