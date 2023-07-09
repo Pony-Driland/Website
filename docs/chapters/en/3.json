@@ -2021,7 +2021,7 @@
   }, 
 
   {
-    "value": "We are in an extremely risky moment, and she has few days to live. We can't risk trying to restore her body without having some risk of accidentally killing her in the process. Trying to recover her body is a minefield for us, anything we accidentally damage will be instant death.",
+    "value": "We are in an extremely risky moment, and she has few days to live. We can't risk trying to restore her body without having some risk of accidentally killing her in the process. Trying to recover her body is a \"minefield\" for us, anything we accidentally damage will be instant death.",
     "character": "Doctor",
     "type": "dialogue"
   }, 
@@ -2045,7 +2045,7 @@
   }, 
 
   {
-    "value": "Vinny then took a deep breath, preparing to continue the conversation, feeling disappointed and sad.",
+    "value": "The doctor then took a deep breath, preparing to continue the conversation, feeling disappointed and sad.",
     "type": "action"
   }, 
 
