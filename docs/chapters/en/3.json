@@ -2082,6 +2082,147 @@
     "value": "The Ivy's body had natural energy to keep active. But after she slept, unfortunately her body can't have enough energy to wake up again.",
     "character": "Doctor",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane was a little afraid for a few seconds when she heard the doctor's words.",
+    "type": "action"
+  }, 
+  
+  {
+    "value": "T..The sleep? N..No! My magic!",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane tried to hide the tears a little during the conversation.",
+    "type": "action"
+  }, 
+
+
+  {
+    "value": "I see... Rayane, do you want to say something? Or ask something?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Me? N...nothing. Just nothing. All my final alternatives are completely almost impossible.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well... Doctor? Can we be alone for a while?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Doctor was curious for a few seconds, impressed to see Rayane's feelings.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "All right. Feel free. If you need anything, talk to reception to call me back. But before. Keep it...",
+    "character": "Doctor",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Doctor delivered a communicator to Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "This is our communicator with the hospital, use it only when you want to talk to me again. The only restriction is the ban on reverse engineering. So be careful.",
+    "character": "Doctor",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Doctor leaned on Rayane's shoulder while trying to speak positively.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "R..Rayane? Listen me please. We are here to help you. No matter who you are. Our job in the end is to help everyone. So please remember this.",
+    "character": "Doctor",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes... T..Thank you doctor. Thank you very much.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Doctor smiles a little and just left the room. So it was just Vinny, Ivy and Rayane alone in the room now.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Okay... Rayane? Look at me now. Please. I'm here for you. Calm down... everything will be fine with Ivy. Everything will be okay. Trust me please.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny sat next to Rayane, trying to help her feel better.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "B...But! She cannot die! What can I do now? I don't know any pony that knows how to do this miracle. Is this some trick by Rain? I'm lost!!",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane started to cry a lot during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...Ah? Do what exactly? What's going on?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rain also has regeneration magic like me. It was Rain who taught me this skill. But the Rain's regeneration magic is extremely stronger than mine. Do you think it's going to be easy for me to just walk up to her and ask that? Of course not. She won't do that because she has her crazy rules that she can't play god!",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane began to cry even more.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Calm down, calm down, I know we're going to help, nothing was in vain. We'll help Ivy get through this one. Doctor said something like special stuff. In plural. And this village is feared for having ghosts.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny hugs Rayane tightly while smiling sadly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Something strange is happening and we can try to take advantage of it to help Ivy.",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
