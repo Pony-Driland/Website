@@ -155,7 +155,6 @@ storyCfg.playlist = {
     'fantasy-village': [
         { id: 'kKObUC_3NDY', type: 'youtube' },
         { id: 'HFoGnJ_w4pQ', type: 'youtube' },
-        { id: 'K1vUA9NltVw', type: 'youtube' },
     ],
 
     'calm': [
