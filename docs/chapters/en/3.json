@@ -2223,6 +2223,133 @@
     "value": "Something strange is happening and we can try to take advantage of it to help Ivy.",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane hugs Vinny back and cries a little more, trying to calm down.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "G...ghosts? And... and what can ghosts do? They are lost souls who couldn't accept death... that's all. Do you know something I don't?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmm... Okay. I don't know. I've never asked some ways to save a pegasus friend from a dead person, I just asked the doctor, for sure there are other ways, we're just not looking at it yet.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I hope we find this way. I don't want to lose any more ponies! I'm not ready to see more ponies next to me just die. No more deaths!",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane continued crying, but slowly she calmed down more and more during the progress.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y..Yes. No more deaths... No more...",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny then waited for Rayane to finish calming down before continuing the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Rayane... You do not remember? You used your magic to make Ivy smartmoby weak. You use magic to make her go back to normal can't help?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "No. I already did that a long time ago... And even if I forget... that spell would be nullified by itself during the night sleep.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was disappointed with himself listening to Rayane's answers. Vinny would then look at the hospital's communicator for a few seconds before looking back at Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... There are many other ways. We just don't know yet. You said that your scythe's friend doesn't want to play god, but she can help us. Look at this way... this is \"business\". But... And this radio? What the hell is this?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane took a deep breath before replying sadly. Wiping a little tears from her eyes.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It's a hospital communicator. Hospitals are rare exceptions in this world that can have a communicator. But you heard what the doctor said... We can't change it. But that doesn't matter, James already has more than enough through the phone.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny would then become curious, suspecting something.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W..What? That's weird, can't you guys hear us? Why are hospitals an exception?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "It's a secret of the health system itself. But I'm sure you can trust it for now. But anyway. We can go now. I don't want our conversation to disturb Ivy's rest.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny still found it very strange, but then he felt a little delinquent about making noise in the room.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y..Yeah. Okay. Come on... let's save her.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane looks at Ivy, levitating the her spy outfit to protect Ivy's body delicately. The outfit felt like it was hugging Ivy gently. Rayane then smiled a little at Ivy before starting to get up and prepare to leave the room. Vinny felt good seeing Rayane helping Ivy, so he responded.",
+    "type": "action"
+  }, 
+
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Okay. Does this communicator stay with us or do we leave it at the reception?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "This communicator stays with us. If the hospital wants to talk to us, they will use this communicator.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then Rayane and Vinny left the room and closed the door slowly. Then the two started walking towards the reception.",
+    "type": "action"
   }
 
 ]
