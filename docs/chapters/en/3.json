@@ -2414,6 +2414,57 @@
     "value": "Ham? No! That's even more hard. I don't want to give reasons to take another pony's life. We can find a better alternative.",
     "character": "Rayane",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Then Rayane looks for a few seconds at the attendant who was busy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well, we can still go to a good place if we want to cheer up a little.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smiled a little, dedicating herself to feeling better during the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh! Alright! Let's go to the good place to see what caught my attention. How are we going to find our group again?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Hm~ Kai said he was going to get us a house. So don't worry. I know where they're going now.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then Rayane left the hospital, Vinny just followed her during the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "fantasy-village"
+    },
+    "value": "Okay. We can get information about ghosts and any miracles here. Or try to participate in any sweepstakes or any stuff.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Siiiiilly~",
+    "character": "Rayane",
+    "type": "dialogue"
   }
 
 ]
