@@ -2465,6 +2465,146 @@
     "value": "Siiiiilly... Silly you~ You really want to play with your luck talking about dice. Hmm... Ghost information? Well, normally it's in specific places in this village. It's a very discreet place.",
     "character": "Rayane",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny smiles nervously for a few seconds before looking around, trying to find anyone was looking at him.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y..Yeah! And... what's in this street fair?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks very curiously at the street fair as he started to approach the entrance.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny could only find equipment places, food places, clothing places and many other stuff. And in the middle of the street fair something caught Vinny attention. Someone very familiar buying something at a clothing shop that was catching the attention of some ponies around.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmm... What?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny began to suspect this mysterious pony when he recognized the collar that was on her neck.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "HMMM!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh? Vinny? Where are you going?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then slowly approached the place. Vinny see a pegasus with slightly white fur and different shades of pink mane. She had a long mane with a red bow on her head. When she bent down to pick a small bit off the ground, Vinny realized it is the same pegasus of the binoculars again. She was all happy to buy some new clothes and the sellers were very excited about the amount of money she wanted to spend.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AHA!! YES!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny went back to Rayane without arousing suspicion.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Rayane... it's her! The pegasus! The binoculars!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was a little surprised and very curious, trying to understand what was going on.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah? She who? Binoculars? Wait? Did you find Rain's pet again?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah! It's her! I don't know, it looks like my ass has honey, it attracts all kinds of trouble. Want to do something or do we leave it aside for now?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+  
+  {
+    "value": "Ooooh...",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane looks at the mysterious pegasus, and looked at her face curiously. Rayane then giggles a little before answering Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "How silly you are~ You found Amy. She's just buying her silly clothes that she likes to collect. You'll end up getting everyone's attention if you do something wrong.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was surprised and anxious, trying to think about some strategy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wrong? No no no! Don't tell me \"Sherlokyane\"! AH! Do you want to leave her alone for now? At least we know where she always goes. But... wait! Do you know her?!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little more before answering Vinny in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I can't say for sure that she always comes here. But yes, she loves going to this street fair. You were lucky. Yes, I know them all. Rain already had these pets before I met her.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "AH! Okay... Let's leave it for another time, we shouldn't talk too many details in public. Someone can hear this. Well what do you think? Don't you want to talk to her first? Some stuff like \"Hiiii! How are you? How long is it and your boyfriends?\"?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Silly~ You'll need to find some more private time with her if she doesn't run away from you again. But she also can't just ask Rain to teleport her in public. You just have to be smarter than her.",
+    "character": "Rayane",
+    "type": "dialogue"
   }
 
 ]
