@@ -2331,7 +2331,6 @@
     "type": "action"
   }, 
 
-
   {
     "set": {
       "playlistPlay": null
@@ -2348,8 +2347,73 @@
   }, 
 
   {
-    "value": "Then Rayane and Vinny left the room and closed the door slowly. Then the two started walking towards the reception.",
+    "value": "Then Rayane and Vinny left the room and closed the door slowly. Then the two started walking towards the reception. Vinny tries to reply Rayane sadly but a little not wanting to say the next words.",
     "type": "action"
+  },
+
+  {
+    "set": {
+      "playlistPlay": "think"
+    },
+    "value": "Well... We can't let Wagner know about Ivy now. In the worst case he... he won't know that she was with us.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny would then look at Rayane for a few seconds.",
+    "type": "action"
+  },
+
+  {
+    "value": "Wait... The Doctor said had few cases of miracle. Rare but there have been miracles. If it's Rainbow Queen... she's already played god. Hm! You just need to have the good reason with her.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then got a little curious trying to understand why Vinny was talking about the Rainbow Queen again. Rayane breathed deeply for a few seconds before replying sadly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes. You got it right. Good reasons... And you can already imagine that she will want an extremely specific reason for that. You will need a lot of luck to find something that interests her.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "HMM! You know... I thought something, but I think it's dangerous, for everyone, especially for you. It's very sensitive to talk about it but I think you can really help Ivy. Just need to be careful. And James gave me a good idea! We just need a more private place.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was a little worried, but still trying to understand what was happening to Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hm? A..about what? A...Alright.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was just getting ready to finish the conversation as he arrived at reception.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "We'll talk around James or when there's no one around. Until then, what do you think can work? Someone give up their lives too. 1 life for another life, or body.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ham? No! That's even more hard. I don't want to give reasons to take another pony's life. We can find a better alternative.",
+    "character": "Rayane",
+    "type": "dialogue"
   }
 
 ]
