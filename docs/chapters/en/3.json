@@ -2892,6 +2892,40 @@
     "value": "Oh? Hello! Can I help you two?",
     "character": "Seller",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Amy was already going to another accessories stall, wanting to buy even more stuff while the other sellers tried to convince her to go to their stall shop.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hihihi! Don't worry you sillies... I'll choose the best stall myself.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy smiles a little more as she looked at the other stalls shop and chose which one she would go to.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "N...No! No no no no... came back here!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Hello?",
+    "character": "Seller",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A..Ah? S..Sorry! Good morning my dear. I'm looking for some clothes that attract attention but not too blue and cute for my wife.",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
