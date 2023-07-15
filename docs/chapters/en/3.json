@@ -2602,7 +2602,97 @@
   }, 
 
   {
-    "value": "Silly~ You'll need to find some more private time with her if she doesn't run away from you again. But she also can't just ask Rain to teleport her in public. You just have to be smarter than her.",
+    "value": "Silly~ You'll need to find some more private time with her if she doesn't run away from you again. But she also can't ask Rain to teleport her in public. You just have to be smarter than her.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was curious, trying to understand what was going on.",
+    "type": "action"
+  },
+
+  {
+    "value": "Well! She's wasting a lot of money. Somehow this can get the attention of pony with bad intentions. We can be lucky that someone wants to steal her. Imagine that! We save her. This might be a good way for her to trust us.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny would then get more thoughtful before making a poker face.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Or we'll end up waiting for her forever. Either way we can pretend to be a couple and watch the ponies around her to see if any of them want to steal she or will steal from her in public without her noticing.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmm... They've tried this several times. But Rain knows how to be discreet when helping her. Remember that Rain is protecting her, and all Amy needs to do is use her silly collar to make a wish for Rain~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W..What?! If someone takes off the collar?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane laughed a little during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "They've tried... the collar is extremely resistant. Not even Amy can take it off. The only one who can remove it is Rain herself~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does another poker face in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Fine... So let's forget about her?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Forget?~ Now that you've got the binoculars, this binoculars will also attract her towards you. It seems my dream ended up getting into a nightmare~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a mega poker face, trying to think of some new plan.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "FUCK!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "You're not helping me. Are we going to keep an eye on her or not? I liked the idea of pretending to be a couple, I already have my life plan, just married. I want to have children, you don't, I like your parents and yours hate me.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles in reponse during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Couple is what everyone talks about us all the time~ So what will be the rest of your plan?",
     "character": "Rayane",
     "type": "dialogue"
   }
