@@ -2695,6 +2695,203 @@
     "value": "Couple is what everyone talks about us all the time~ So what will be the rest of your plan?",
     "character": "Rayane",
     "type": "dialogue"
+  },
+
+  {
+    "value": "We stay close to her looking for nice clothes for my wife. Also, we don't know if you're pregnant or not. We found this region very beautiful and came to spend our honeymoon here.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmm?~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Shhhh... This is like playing spy. Let's try to look for some information from her. We need tourist clothes, ponies that are not from here but in a very discreet way. What for? Ah... We stay close to her to see if we discover anything, when she leaves we try to talk to the owner of the tent if she always comes. and buy with them and bla bla... Or we can keep walking around.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smirks at Vinny while poking his nose in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmmmmmmm... How cute are you~ Is this some kind of roleplay between you and me in the middle of this town?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smirks a little more before continuing talking.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It's ok~ But remember that she is already leaving the market stall as we talk about this.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried looking for Amy for a few seconds before returning to the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..Ah? AH! We need to get dressed up! I need to take off that suspicious armor and wear something looser. Don't you have something?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Silly you. I only have my clothes. It seems that in the end, you're the one who needs to buy clothes.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then looked for one of the clothes stalls that had a place to change clothes",
+    "type": "action"
+  },
+  
+  {
+    "value": "Follow me~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Meanwhile, Vinny noticed that Amy was keeping the items she bought in her magic saddle, she was very satisfied with the clothes she bought. She had bought maid costumes, socks, skirts of various types, and a few more variety clothes to make her look cute.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W..What? She actually looks a lot more harmless than I imagined.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "So are we going to see clothes for me and our future daughter maybe? I make up an excuse like we're on our honeymoon, and for fantasies I wore this armor and lost my clothes shall we? W..Well! Don't forget that you don't want children because your career plan a child will give you a lot of problems.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I don't want to? What if I want?~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? AH! Find me dressed in elegant or normal clothes. What makes you feel better.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh. Vinny really is being a lot sillier than I imagined today.",
+    "character": "Rayane",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Rayane would giggles a little and just follow Vinny. So Vinny would go to the clothing stall where Amy was.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "So there she is! The pony that belongs to the crazy goddess of the scythe. I just need to be careful.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Amy finished putting away the rest of her cute clothes. So she started putting a lot of bits on the table while the salespony was very happy about what he saw.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wow! But where does all that money come from?!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny keep looking at the clothes at a certain distance from Amy without suspicion. But Vinny only found the same kind of clothes that Amy had found, most of them were adult women's clothes, and you found other things like cute head accessories.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Thank you so much! You are too kind! These outfits will be perfect for my lovely hobby.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy gives a very cute look at the salespony while her eyes was dilating in happiness. The seller gives a sincere look of happiness for the amount of money received before responding.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You're welcome good one. Remember that the next session will arrive soon. I'm really glad you're helping me to support my family. Hope you all are well.",
+    "character": "Seller",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Meanwhile there were other sellers interested in her spending money, and other ponies were curious about her collar that always reflected colorful colors when the sunlight hit it.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What? This pony is not greedy. What's going on here?",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny keep looking at the clothes, looking for some clothes and waiting for Rayane and a salespony to answer. But Vinny just found more clothes related to cute stuff and silly costumes.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... Come on...",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Rayane is laughing when she watch the Vinny \"adventures\".",
+    "type": "action"
+  }, 
+
+  {
+    "value": "How silly~ It seems that our daughter is already quite grown up seeing these styles of clothes that seem to be more to adult pony.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeaaaah...",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny does a poker face, but then the salespony finished serving Amy, he was already looking curiously at Vinny and Rayane while smiling in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh? Hello! Can I help you two?",
+    "character": "Seller",
+    "type": "dialogue"
   }
 
 ]
