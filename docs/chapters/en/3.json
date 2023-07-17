@@ -2840,7 +2840,7 @@
 
   {
     "value": "You're welcome good one. Remember that the next session will arrive soon. I'm really glad you're helping me to support my family. Hope you all are well.",
-    "character": "Seller",
+    "character": "Salespony",
     "type": "dialogue"
   }, 
 
@@ -2890,7 +2890,7 @@
 
   {
     "value": "Oh? Hello! Can I help you two?",
-    "character": "Seller",
+    "character": "Salespony",
     "type": "dialogue"
   },
 
@@ -2918,12 +2918,124 @@
 
   {
     "value": "Hello?",
-    "character": "Seller",
+    "character": "Salespony",
     "type": "dialogue"
   }, 
 
   {
     "value": "A..Ah? S..Sorry! Good morning my dear. I'm looking for some clothes that attract attention but not too blue and cute for my wife.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny looks at Rayane and laughed as he hugged her, turneing his attention to the salespony again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It's a beautiful village we've never been here it's our first time.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wait...what?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane blushes a little because of the hug being seen in public. Salespony was a little surprised to see the scene.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wife? Is Rayane your wife? I never found out about the wedding. But how cute! It looks like you two are already having fun.",
+    "character": "Salespony",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Salespony giggles a little during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...ah? Who? Rayane?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Maybe we could start with a little bow. Be very welcome!",
+    "character": "Salespony",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny felt nervous when he realized that the salespony also knows who Rayane is.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y..Yeah! Baby... I swear I don't know who this Rayane is. I don't know what it is I swear.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny turned to Rayane and made a sign for her to be angry or thinking that she was betrayed by another pony.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W..what?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wasn't it part of the script for me to be myself?",
+    "character": "Rayane",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Rayane didn't know what to do when she saw that the improvised idea was getting out of control while she was still blushed when she looked at the bows.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I don't have much time to stay here.",
+    "character": "Rayane",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Why not? This face... these colors... She is just like Rayane... Are you playing some silly fantasy? I can see more clothes, although it will be difficult to find this kind of clothes for her, but nothing is impossible.",
+    "character": "Salespony",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a poker face and responds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I think you ended my marriage.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then does a nervous smile, preparing to say goodbye.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I don't think you have what we're looking for. Thank you attention.",
     "character": "Vinny",
     "type": "dialogue"
   }
