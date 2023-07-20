@@ -3149,6 +3149,50 @@
     "value": "Heh~ Yes. Time for my christmas dream to feel better now~",
     "character": "Rayane",
     "type": "dialogue"
+  },
+
+  {
+    "value": "When everyone realized that nothing interesting was going to happen, everyone returned to their normal routine.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wow. It seems like everyone here knows you more than usual... Have you done something for this place? Ooh... The bow... will stay on me until you take it off.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a small laugh at the end, trying to get back to being positive.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Until I take it off? Are you going to tell me this can stay there forever?~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smirks again. But Vinny could see that the whole mess had gotten Amy's attention too. Amy was laughing a little at the situation, but when she realized that Vinny had seen her, she was already trying to disappear into the crowd and go back to doing what she was doing.",
+    "type": "action"
+  },
+  
+  {
+    "value": "N..NO! WAIT! Ah!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny does a facehoof.",
+    "type": "action"
+  },
+
+  {
+    "value": "Yeah. My foolproof spy 2.0 turbo plan failed. Anyway what do you want to do?",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
