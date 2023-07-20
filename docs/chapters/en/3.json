@@ -3038,6 +3038,117 @@
     "value": "I don't think you have what we're looking for. Thank you attention.",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Wait! But she looks like she's really embarrassed about something. I'm sorry if I got too straight to the \"dot\".",
+    "character": "Salespony",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Salespony was more confused and a little regretful. Meanwhile, whoever was passing by Rayane was trying to understand what was happening. Rayane tries to get her posture back when she saw that things were now getting calmer.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmm... was this your plan? Buy me silly costumes?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny hangs his head shamefully.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'm sorry... and thanks.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then looked at Rayane again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It wasn't exactly that. Come on I'm embarrassed here.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then looked at Rayane again. Rayane then smirks and speaks in a low voice to Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Alright... That's not what I was planning too. But the little fool will have to be punished~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then levitated the little red bow.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I didn't mean to... Okay okay! I better stop talking.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little while putting the little red bow on Vinny head. Vinny would then hide his face for a few seconds not knowing what to say.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Better to laugh than not cry~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The Salespony giggles for a few seconds before answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Will you take it?",
+    "character": "Salespony",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes. I'll pay~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane paid the salespony during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "OH! Thank you very much! Anyway, cheer up... Embarrassments always happen.",
+    "character": "Salespony",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Salespony smiles in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh~ Yes. Time for my christmas dream to feel better now~",
+    "character": "Rayane",
+    "type": "dialogue"
   }
 
 ]
