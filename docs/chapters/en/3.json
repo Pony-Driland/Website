@@ -3193,6 +3193,103 @@
     "value": "Yeah. My foolproof spy 2.0 turbo plan failed. Anyway what do you want to do?",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Shhhhhh~ This is okay. You made Ivy laugh a little from your sillyness. That's already progress for her to be a little less afraid of you than before.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes, but surely everyone is gossiping that the mysterious Rayane married with a pony with a bow must not be good for her reputation. I don't care about mine. Hihi. But as you're in the middle I worry what it takes you... Anyway, what do you want to do?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh~ I don't care about that. If I'm seen more neutrally than this is more than enough for me. If you want me to take you to our temporary home, I will, that might be a good excuse for you to try following Amy for a few more minutes before we change routes.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A..Ah? What about Ivy? Let's say what to the ponies...? I think we should at least ask James for help then the 3 of us split up and looking for some way out where Ivy gets out alive.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane is a little surprised and more serious.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes. But first, I'd like you to tell me your mysterious plan about it.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane started walking during the talk, making Vinny follow her.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "My plan? Yes, I don't think it's a bit safe to talk about here. Just trust me! Before I need to confirm something very serious.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was curious to hear Vinny words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Huh? confirm what?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Just trust me. Anyway you'll find out sooner or later with James. If you don't trust me, trust the little bow you put on me.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny laughed a little during the conversation, but Rayane continued to behave a little more seriously.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What do you mean by that?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah... well...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was starting to feel a little discomfort being watched. So Vinny tried to look around, trying to understand what was going on.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh no... My ass full of honey again.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Well... It's complicated, James needs to confirm some things in this world.",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
