@@ -3316,7 +3316,243 @@
   }, 
 
   {
-    "value": "Vinny reply Rayane, saying on her ear very low.",
+    "value": "Vinny replies Rayane, saying on her ear very low.",
+    "type": "action"
+  },
+
+  {
+    "value": "Rayane... I didn't trust the hospital and this radio. I'm not going to reverse engineer it or anything like that. But there are things that you can see and feel that show that someone is listening to us all the time. Anyway, we're going to need to meet with James to talk about you and your powers... until then, we'll try not to bring it up for anyone to hear. Well... your \"niece\" is following us or was.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then Vinny would go back to talking normally. Vinny does a poker face during the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And this little bow... do you have a special reason to put it on me? Like marking territory? I'm just yours for example, or did you just improvise after everyone noticed my little shit moment?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh. Don't be silly~ I know them very well. But wait... my powers? What kind of power?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane started to get a little confused during the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmmm... The bow is just a silly punishment for my silly dream for putting me through a silly situation~ But in the end it did serve to distract everyone.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "AH! But I can kiss James. This does you feel embarrassed don't you? Imagine if one day everything we do would end up in a story. Like the story of the ponies that saved everything and everyone! Would you be happy with everything you've done here so far? I'm happy and even more to have you by my side.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Silly you~ I was the one who made you kiss James. It was just a joke. Why would I be embarrassed?~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And knowing that all this started because of a silly store on the Greendream Village.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny could see that Amy was trying to follow him again, she was kind of disappointed not to have heard something, but when she saw Vinny's face, she immediately got scared, and tried to change the walk direction. Vinny would then do another poker face during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well, I can leave her binoculars here on the floor for her to come pick up, I can try to go to her with the binoculars on my hooves, or we can leave too with the chance that she follows us. But I find it difficult. What do you think? Should we forget and go home?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmm~ If you leave it on the floor in the middle of this crowd... she'll go crazy wanting to get it before another pony does. You'll end up letting her know where we're going to live temporarily too~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "AH! Why me me me me? Meeeeee?? Okay. She's the one following us. Well you know, anyway I'm following you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles and smirks in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... you you and you and more you. You who picked up her binoculars from the floor~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane pokes Vinny nose in response while smirking at him.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You should be happy that at least she won't want to hurt you.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a super poker face.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You just said that if one thing stays on the ground another pony can take it... anyway you save me if Rain wants to punish me. I don't know... say we're waiting for a fake son so she won't kill me and the son grow up rebellious without a father? and atheist?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a pity face during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh~ So you already understand where I'm going. We'll have to give it back to her without having to put her life in danger. And she will know where we live because of that or you'll end up scaring her, making you end up going down a dead end.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "You're not really helping... I'm going to borrow money from James and buy a little sign and hang it on you that says 'Rayane helper pro'.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "That's if he doesn't laugh at you when he sees this giant bow that looks cute on your head~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "AH! I explain that we are expecting a child and to disguise it you bought it for me. Heh.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smirks in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Silly~ Oh what are you going to say to James when he sees that Rain's pet is attracting us?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny could see that him and Rayane were arriving in the residential area which was much quieter.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does another poker face when he sees that Amy was flying between the roofs of the houses, just spying on him and Rayane. But she was startled again to see Vinny watching her.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah... Okay okay. James doesn't need to know that Amy is her. I say that Amy bumped onto me, got scared and ran away, and dropped the binoculars. But at some point I will need to talk about this. I don't like the idea of hiding things. Sometimes someone has the solution but for someone else to hide something everything ends up going wrong. Anyway, do you think it's better than waving at her with her binucolos?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Shhhh... She is very shy. If she is too far away from you... she will hardly want to go to you, especially if there are more ponies around.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane looks at the houses around, and the horn started to glow, Vinny noticed Rayane's mane swinging, indicating that she was using magic to try to know where James was.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... yes. I hope he's not in a nightclub. Hihi!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then finished using the magic and was already looking exactly at the house where James is. Rayane giggles a little before replying Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Nightclub?~ I don't think James would do that... He has a possible lost girlfriend according to his behavior.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah... But after our kiss you did. Will know if you didn't mess with the poor thing.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a facehoof. And Rayane laughed a little in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It won't be a silly kiss that will make him change his mind all of a sudden. Unlike someone who managed to change my mind in a few days~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane press Vinny's nose gently before walking towards the house James was staying at.",
     "type": "action"
   }
 
