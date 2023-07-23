@@ -3290,6 +3290,34 @@
     "value": "Well... It's complicated, James needs to confirm some things in this world.",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny then realized that Amy was following him, very discreetly. She looked like she was afraid of Vinny noticing she was there.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AH! More honey on my ass!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Confirm? So James has something else to tell us about our reality?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? Reality? Y..Yeah! Yes yes!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny reply Rayane, saying on her ear very low.",
+    "type": "action"
   }
 
 ]
