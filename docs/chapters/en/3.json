@@ -3631,6 +3631,9 @@
   }, 
 
   {
+    "set": {
+      "playlistPlay": null
+    },
     "value": "Heh. It's okay... good luck for you and your visitor~",
     "character": "Rayane",
     "type": "dialogue"
