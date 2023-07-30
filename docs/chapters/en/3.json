@@ -3552,8 +3552,99 @@
   }, 
 
   {
-    "value": "Rayane press Vinny's nose gently before walking towards the house James was staying at.",
+    "value": "Rayane press Vinny's nose gently before walking towards the house James was staying at. Vinny then giggles innocently as he answered Rayane.",
     "type": "action"
+  },
+
+  {
+    "value": "I have a \"gift\" for changing everyone. Heh! So our kiss didn't change anything about you? Good to know... Maybe next time I need a little more emotion.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tries to boop Rayane, but Rayane nibbled him hoof in a silly way in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..Ah?!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh~ Nope nope. Only I can boop you. Especially after this subject~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "AH! Okay... I will wait for you to be sleeping. Hihi! When you least expect it.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "That's if I don't wake up before you again~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried to hide his embarrassed face a bit while Rayane smirks in response. Then Vinny looks around looking for something unusual during the progress.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Okay... Are we close?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little as she approached the house door.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Silly you. We're already on the side of the house~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny could only see Amy's two hidden eyes, very scared, looking at him. She was right on top of the roof terrace of the James's house.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh no.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Well! I guess I'll try to return the binoculars to our visitor. Come in and call James all right?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh. It's okay... good luck for you and your visitor~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then pressed the bell button. Meanwhile, Vinny could see that Amy had already left the roof, and she was on the ground, trying to get away without being noticed. She was starting to get close to the residential zone exit in response. Vinny does a poker face and then starts to get ready to try and do something.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh come on...",
+    "character": "Vinny",
+    "type": "think"
   }
 
 ]
