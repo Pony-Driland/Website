@@ -3687,7 +3687,217 @@
   }, 
 
   {
-    "value": "Amy was extremely scared when she looked at the binoculars, and tried to keep more distance from Vinny in response.",
+    "value": "Amy was extremely scared when she looked at the binoculars, trying to keep more distance from Vinny in response.",
+    "type": "action"
+  },
+
+
+  {
+    "value": "No no no... Please... I don't want to do you any harm on you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then tried to remain calm and keep distance during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Alright, it's just between us. I'm sorry if I spoke out loud the first time with you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was a little curious, trying to hide her shy look.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah? This little thing is getting really weird. Between you and Rayane. H...How can I be sure I trust you?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy looks around, trying to find some way to escape, starting to cry while trying to hide behind the shadow of one of the houses, but her collar reflected some sunlight, making her stop walking.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...Well... I don't know what's going on. You don't have to trust me if you don't want to. You are free to trust or not. I just wanted to understand the reason for you called me a monster. Look here... Are you want the binoculars? Can I give you this?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy is a little more scared to hear the Vinny words. But she tries to tone down the crying during the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "M...my master just asked me to keep my distance from you.  P... Please... just give the binoculars back... nothing more than that. And... I just want to go back to my safe place. That is all.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried every way he could to appear less intimidating before answering as Vinny slowly tried to give Amy the binoculars back.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It's ok, calm down... It's ok, I'll get your binoculars. You saw how Rayane and I are, we are not monsters. We are trying to save a friend of ours. My friend is dying and we can't do anything.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny took a deep breath before answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Here. Do you want me to leave your binoculars here and go away? Or can I give it to you?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy cries a little more again. But then Amy slowly tried to be braver and tried to get closer to Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I... I can pick this up from the floor.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Okay. Look here. I will leave it on the floor.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny showed a feeling of sadness during the conversation, trying not to cry during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'm sorry to make you... make you run out of your binoculars, I'm just desperate to save my friend who looks just like you, sweetie, very sweet. She had a hard life with no one around her. I was her first friend and I managed to save her from the accident she had. I'm sorry... I'll just leave it here. Okay?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny would cry a little and put the binoculars down in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Please, I didn't do any harm and I never did anyone. I just really want my friend Ivy to be able to recover. I have nothing. Just our friendship where she believed she was saved by me. Sorry... I just wanted to vent to someone.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny walks away from the binoculars while looking into Amy's eyes, wiping him eyes.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'm sorry to make you waste your time with my personal life. If you want to help me... I would be very, very grateful. I'm sorry, I couldn't have left your binoculars on the floor. I always thought about giving it back to you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then walked towards Rayane's house in a slightly depressing way. Vinny simply walked into the house, leaving Amy alone again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Amy looked with a hopeful look at the binoculars. Amy approached the binoculars in relief, but then she gave Vinny a regretful look, thinking about what she'd heard about Ivy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "F... friend? L... like me? I... Is her name Ivy? What?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was very curious and very surprised, trying to understand what was really happening at that moment. So Amy approached the house very timidly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "B...But why are you asking me for help? I can't do anything... And... I don't have anything special for you. I just live my silly little life where I'm always at peace... nothing else... And... me...I...",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy then just hugged the binoculars as she looked at Vinny, waiting for some response. When Vinny heard Amy's words. Vinny finally looked back at Amy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "If you want to visit her just go to the hospital and look for a pegasus Ivy. Well... Amy... Thanks for listening to me.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then just finished walking back into the house and got ready to close the door. Amy is quiet and very thoughtful. She just keep looking at the window of the house, looking at Vinny, hiding her face shyly behind her wings.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It's been over 100 years since I've visited the hospital. If I have the courage, maybe I will...",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny would then be a little surprised to see Amy's face in the window, so he stop closing the door for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It's ok. Thanks for your attention Amy.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny smiles at Amy, crying a little and then go back inside the house. Vinny just see the Amy's innocent look was looking at him, but after a few seconds Vinny see Amy using the collar for something, then Amy disappeared again in the same teleport which resulted in a colorful glow around her.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...Wow. Amy said... 100 years? Why did she care about Ivy like this? I think she's the second pony I've seen using teleportation. Well... At least I hope she says something nice about me to the scythe goddess.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny showing a feeling of surprise then just looked back into the house. The house was empty, but Vinny could hear the sound of conversation coming from the other rooms in the house.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah... Looks like this is the place. My new temporary home. Finally a place for me to say it's my home again.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny wiped him face and returned to thew normal mood. Vinny was very thoughtful and looked towards the doors he heard the sound of conversation, until he made the decision to enter one of them.",
     "type": "action"
   }
 
