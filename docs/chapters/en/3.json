@@ -3648,6 +3648,47 @@
     "value": "Oh come on...",
     "character": "Vinny",
     "type": "think"
+  },  
+  
+  {
+    "value": "Vinny breathed deeply for a few seconds, thinking about what to say to Amy.",
+    "type": "action"
+  }, 
+  
+  {
+    "set": {
+      "playlistPlay": "bad-think"
+    },
+    "value": "Oooookay... Let's go.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny breathed deeply for a few seconds, thinking about what to say to Amy. Vinny then walked slowly towards Amy.",
+    "type": "action"
+  }, 
+  
+  {
+    "value": "Hey... Amy? I need to return your binoculars. Please... wait a minute.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Amy would then get a little scared hearing this and try to keep her distance from Vinny slowly during the process.",
+    "type": "action"
+  },
+
+  {
+    "value": "A..ah? N..No! No no! Please! Keep your distance! I... I don't want trouble with anyone! Leave me alone!",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was extremely scared when she looked at the binoculars, and tried to keep more distance from Vinny in response.",
+    "type": "action"
   }
 
 ]
