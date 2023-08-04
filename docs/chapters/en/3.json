@@ -3897,8 +3897,61 @@
   }, 
 
   {
-    "value": "Vinny wiped him face and returned to thew normal mood. Vinny was very thoughtful and looked towards the doors he heard the sound of conversation, until he made the decision to enter one of them.",
+    "value": "Vinny wiped him face and returned to thew normal mood. Vinny was very thoughtful and looked towards the doors he heard the sound of conversation, until he made the decision to try enter some door.",
     "type": "action"
+  },
+
+  {
+    "value": "What?",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny heard that everyone in the kitchen was talking about food, but in the room of one of the bedrooms, Vinny heard a little Rayane's voice talking to herself while she looked at the bedroom window.",
+    "type": "action"
+  },
+
+  {
+    "value": "Rayane!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny secretly tries to pay attention to what Rayane was saying. Rayane seemed to be surprised by what she saw.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "How strange... Vinny and Amy talking like this? What is he planning this time?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was standing still doing as little noise as possible during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Did Vinny change something about his mysterious plan? Maybe I should ask him that later. Amy was trusting him a lot.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Rayane then left the window and closed the curtain. So Rayane kept making the bed where she would sleep in the future. Rayane then took a deep breath, a little worried.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "If this involves Rain, I hope Vinny is being careful. But... wait... What's this sound? Hmmmm~",
+    "character": "Rayane",
+    "type": "think"
   }
 
 ]
