@@ -3952,6 +3952,212 @@
     "value": "If this involves Rain, I hope Vinny is being careful. But... wait... What's this sound? Hmmmm~",
     "character": "Rayane",
     "type": "think"
+  },
+
+  {
+    "value": "as Vinny watched, suddenly Vinny felt Rayane's magic aura around him, pulling him towards her.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "think"
+    },
+    "value": "Oops~ I think I found a silly dream~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny would be a little surprised and then look at Rayane in response.",
+    "type": "action"
+  },
+
+  {
+    "value": "A...AH! Where is James? Didn't you call him? Did you know that you look beautiful on your back? Your ass is so... cute. Hihi!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smirks and boops Vinny in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmmm~ The sound of your footsteps and your red bow doesn't fool me. James is trying to find somewhere to set up his portable lab. He must be in one of the rooms going around in circles without having any conclusions.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aaaah... Okay. Well! Hihi. Any questions? I'm going to talk to James and soon after we put the plan B or A I already did with Amy. I talked to her. I appealed emotionally, cried, told her about Ivy. I left her very emotional and sad. And told Amy to go see Ivy to see that I'm not lying.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then scratched his head, feeling a little confused.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But... Strangely she said that she hasn't been to the hospital for about 100 years. W..What's going here?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh. Yes~ But wait... plan A with Amy? I was going to ask what you were talking with Amy now. But...",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was trying to hide her feelings of surprise a little when she heard that Vinny had more than one plan, so she continued the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... Rain doesn't want her pets to age. Rain always freezes the age of all her pets as long as all ponies are her pets. This is no surprise to me, but I didn't know that Amy's age It was over 100 years old.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A...Age freeze? Again?!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Okay okay... Yeah. At best Amy comes back to us and gives us a solution or a tip, and at worst nothing happens. Anyway she already knows everything that happened with Ivy. Do you have any questions?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then felt a good opportunity hearing this question from Vinny, so Rayane decides to say what she was ready to say.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Did you do all this to try to send this message to Rain?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a nervous expression, but then tries to remain calm.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..Ah! Y..Yeah. Yeah... yes and no. if I wanted to pass this message on to Rain, it would be from me, a supposed pony monster, now if Amy asks something, if she wants to do something, Rain will ask and... going until she gets to us. Anyway this is plan A, get help from Amy or Rain. The plan B is the one I'm going to talk to James now, but I need you to keep the radio here.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny places the hospital communicator on Rayane's hooves in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Here! If someone talks about Ivy, you can call me running. Just trust I'll go there with James... Any questions? Anyway, the bedroom is wonderful in.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane seemed to be behaving a little differently. She was a little more worried than usual instead of playing some silly words on Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What... what are you guys going to talk about? I'm getting worried about you. But... yes. It's been a long time since I slept in a room. I've always been a nomad.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Ah? Whoa, whoa! So... tell me more! Are you a nomad? As well?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane took a deep breath before continuing the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... My job never allowed me to have a home. That's the motive I have so much survival technology. It's the way I have at least a \"portable home\".",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little surprised, but at the same time even more curious.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...Well... the good side is that you learned to survive. If everything goes right in the end... you will have your house, your little room. you will have everything you want. We just need to wait for time... wait for time, what a funny way of saying that everything has its time.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then does a very weak giggles, giggling a little at the last words that Vinny said at the end.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Remember that you will also have a little room. But please be careful with your decisions of your plans. Remember that Rain is full of tricks when it comes to agreements. Alright?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then felt a little nervous, smiling nervously, but tried to stay determined during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'm good at chatting. Heh! Well, if the radio plays with the doctor saying something you can call me.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane showed a little more concern in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes. It's ok.. But don't forget about it... Rain doesn't have any ability to create souls. So sorry to warn you again.. But be very careful... you and we all have something very special that always catches her attention.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny is a little surprised and worried, but he tries to hide it for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Y..Yes! Yes, just trust us. We won't do anything critical without telling you, in fact we won't leave you out of a mess.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny just started to walk towards James nervously in response.",
+    "type": "action"
   }
 
 ]
