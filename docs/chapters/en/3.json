@@ -2448,6 +2448,9 @@
   }, 
 
   {
+    "set": {
+      "dayNightCycle": "evening"
+  },
     "value": "Then Rayane left the hospital, Vinny just followed her during the conversation.",
     "type": "action"
   }, 
@@ -4158,6 +4161,178 @@
   {
     "value": "Vinny just started to walk towards James nervously in response.",
     "type": "action"
+  }, 
+
+  {
+    "value": "Oh come on!",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "As Vinny walked, he heard sounds coming from the terrace of the house.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "think"
+    },
+    "value": "What? Don't tell me he took captain banana to the terrace of the house!",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny then found a staircase, him looked at the stairs and walked towards the terrace of the house.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "HEEY! JAMES!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Then Vinny see that James had chosen to set up his portable laboratory right there. The entire part of the terrace was being used for James' portable lab.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah? James? It's not discreet here. Do you know right? JAMES!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James then left the laboratory tent, and looked surprised at Vinny in response",
+    "type": "action"
+  }, 
+
+  {
+    "value": "V..Vinny?! VINNY! OH FUCK GOD! I looked for you everywhere!!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was surprised by James' reaction, so he looked at him and said.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "O..okay okay. Sorry! I'm here! B..But... Did Rayane talk to you?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes! You went to help Ivy... but you were literally outside the house all morning!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? Didn't she tell you about Ivy's health?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James then took a deep breath before answering.",
+    "type": "action"
+  },
+
+  {
+    "value": "Yes. But she said you were only in there for a few minutes or hours. What did you do after you left? All this confusion made me crazy because you and Rayane did all this without telling me nothing!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny felt a little surprised again, and tried to remain calm so James would speak more quietly.",
+    "type": "action"
+  },
+
+  {
+    "value": "James... Calm down. I'm sorry to leave you out, but it was last minutes for me. And... Yeah. A lot has happened and I want to talk to you and ask you a few things, maybe you are interested in knowing a little more about my world and if they are similar. We have a small time to save Ivy.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James looked a little surprised and curious to have heard all of this.",
+    "type": "action"
+  },
+
+  {
+    "value": "Okay...? But... your world? Your world and my world? I'm very confused.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah. It's a long conversation, first are you busy? Want some help?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? No no... Not at the moment. I was just setting up my lab to get back to work on my inventions later. I still want to have a lunch time.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then felt more comfortable continuing the conversation and started to be more serious.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ok. First I will explain the motive about... I run away with Rayane and Ivy. Well, you already know her health status is not well, this is critical. We ran desperate to the hospital. Me flying and Rayane doing her parkour running. Rayane had noticed that Ivy was not doing well. That's motive I didn't have time to warn you. Arriving there the doctor gave me a radio. Do you know how the radios of this world work?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was worried about Ivy, not knowing much what to say, but then James was curious to hear it over the hospital communicator.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It's just radios... if you don't turn them on it's ok. And well... Yes, they are very easy signals to trace. But I can't hear the signals because they are always encrypted. Why are you worried about that? They only work when you press the button to use them, otherwise I would have accidentally tracked you.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? Don't you think it's strange that technology in this world is banned but not for hospitals? Is there radiation in this world? Something like electromagnetic waves? Or particles that propagate at a velocity containing energy? Like the wind you can't see it but it has.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes Vinny. You're right about the technology of this world. But from everything I researched about hospitals I didn't find anything suspicious. But I also didn't find any explanation about this. But yes, I'm not the only one.. Many clan ponies when they want to access this technology, usually they try to steal it from hospitals. But make no mistake! The hospitals know this.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "O...Okaaaay. Then... I left the radio with Rayane, I really feel that for the hospital to be able to use technology, it's bullshit. There can always be someone listening to us. That's motive I left the radio with Rayane and if you say that there is radiation in this world, you can do a test without modifying the radio, you won't even need to touch it to see if I'm right.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was a little curious to notice Vinny trying to talk about radiation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Radiation? Waves? If that's what I'm thinking, maybe we're thinking the same. But why do you want to know all this so much? You'll end up coming to the same conclusion I did. Elite Color again. That's the only theory I have too, but I've never found any relationship between the two ones. I've never seen anything related to it.",
+    "character": "James",
+    "type": "dialogue"
   }
 
 ]
