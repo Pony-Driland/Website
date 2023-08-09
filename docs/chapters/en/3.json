@@ -4333,6 +4333,85 @@
     "value": "Radiation? Waves? If that's what I'm thinking, maybe we're thinking the same. But why do you want to know all this so much? You'll end up coming to the same conclusion I did. Elite Color again. That's the only theory I have too, but I've never found any relationship between the two ones. I've never seen anything related to it.",
     "character": "James",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Yeah... But... If a radio communicates with another then there are these waves. However there is a way to cause interference in these devices. When they are being used they send a signal, a wave, anything to another place. If I take my cell phone, turn it on, make it emit a random signal and approach it close to the radio, and this makes interference noises... I'll be right. The radio is broadcasting all around at the moment. This will take time anyway, we need to go somewhere far away and safe. We need to train with Rayane to control her powers. Maybe her healing power can help Ivy, if she can control her power... we need to discuss it with her, but without the radio. Or after seeing if it's safe with the radio.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James took a deep breath before answering Vinny during the conversation.",
+    "type": "action"
+  },
+
+  {
+    "value": "Vinny... I already did this experiment. Why do you want to do it again?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little embarrassed, but still James tried to continue the conversation in a natural way, because James was still curious about some things.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmm... Did Rayane control her healing powers? Okay... but upgrading a skill takes time to hone it on a large scale to the level you're looking for. Are you sure this is a good idea?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Okay. Sorry! But... If we don't make it Ivy's going to die anyway, if we try and it works it will be the only thing. Do you have another opinion on how to save Ivy? My plan A, B and now C. My plan C would be to try to see the town ghosts. If Rainbow Queen guides dead ponies after life, and ghosts are ghosts that don't accept death, maybe you can find a game of interest, where I solve this ghost problem, everyone in town is happy and Rainbow is less pissed off at me and help Ivy.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James looked a little surprised and worried to hear all of this.",
+    "type": "action"
+  },
+
+  {
+    "value": "How are we going to perfect Rayane in such a short time? Ivy's only salvation would be some magic that could recompose her body somehow. But Ghosts? Your idea is interesting but at the same time dangerous. These ghosts have a special reason to be ghosts. Don't think that they will simply want to help you. You will create even more problems for us to solve.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah! James! Come on! I can handle myself, if you want to help that's fine. But I manage alone. You're not thinking how hard it was to save Ivy, get her out of a pile of rocks, carry her. What do you feel? We went to get the relic and it went wrong. Hiroshi tried to stop Marlon and partially succeeded but he died, we manage to save a pegasus but in the end she dies. Is everything we did wrong? 1 out of 200 things go right. This is a consolation! Have you ever thought that everything we did was to get in the way? I really don't want to lose Ivy! I gave 2 alternatives, try to help Rayane control her emotional, try to do something with the ghosts... James! HELP ME!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny would then lower his head sadly, trying to hold back his emotions. James was a little scared and worried when he saw the scene.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "P..Please... help me James.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...Well... Vinny, I understand your side. But everything you've said are... We'll need more time to get something in return. Rayane will need to train her magic... The ghosts will create problems for us solve. We want to save a life and we don't know how much time is left.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was then thoughtful for a few seconds as he looked at Vinny depressed.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I was trying to build some machine to help her, but even that I can't think of and I'm not even sure I'd have enough time to build it. We're literally playing against luck.",
+    "character": "James",
+    "type": "dialogue"
   }
 
 ]
