@@ -4412,6 +4412,40 @@
     "value": "I was trying to build some machine to help her, but even that I can't think of and I'm not even sure I'd have enough time to build it. We're literally playing against the luck. Are you sure those are the only two alternatives? You couldn't think of anything else?",
     "character": "James",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Well, there's the Rainbow Queen. You appeal to emotional. It's just between us, me, you and Rayane.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was then thoughtful for a few seconds as he looked at Vinny's depressed face.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "R..Rainbow Queen? Wait... Now I understand... This name is very familiar. I had heard about her... but I never met her until after the cave day.",
+    "character": "James",
+    "type": "dialogue"
+  },
+  
+  {
+    "value": "Yeah. Yes... but there are other ponies closer to Rainbow Queen, as if it were family, common ponies. but they live different. Earlier today I talked to one who was afraid of me, I cried, I made a little scene for her to try something too.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was then a bit scared and surprised at the same time.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wait... Family? What are you talking about? Are we talking about distant family members? What was your grandiose plan to try to convince her? What will you give her in return?",
+    "character": "James",
+    "type": "dialogue"
   }
 
 ]
