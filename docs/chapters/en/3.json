@@ -4347,6 +4347,9 @@
   },
 
   {
+    "set": {
+      "playlistPlay": null
+    },
     "value": "Vinny... I already did this experiment. Why do you want to do it again?",
     "character": "James",
     "type": "dialogue"
@@ -4358,6 +4361,9 @@
   }, 
 
   {
+    "set": {
+      "playlistPlay": "sad"
+    },
     "value": "Hmm... Did Rayane control her healing powers? Okay... but upgrading a skill takes time to hone it on a large scale to the level you're looking for. Are you sure this is a good idea?",
     "character": "James",
     "type": "dialogue"
@@ -4426,7 +4432,7 @@
   }, 
 
   {
-    "value": "R..Rainbow Queen? Wait... Now I understand... This name is very familiar. I had heard about her... but I never met her until after the cave day.",
+    "value": "R..Rainbow Queen?! Wait... Now I understand... This name is very familiar. I had heard about her... but I never met her until after the cave day.",
     "character": "James",
     "type": "dialogue"
   },
@@ -4446,6 +4452,158 @@
     "value": "Wait... Family? What are you talking about? Are we talking about distant family members? What was your grandiose plan to try to convince her? What will you give her in return?",
     "character": "James",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Ah... Well! Okay! Compare these ghosts that are ghosts are dangerous and full of problems... now involve a reaper poney goddess whose already got angry several times, and stole the relic... the relic on the radar doesn't have that power?? If the relic we lost had the power to help the region. What power of the one you put on the radar?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James took a deep breath before answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Fine... Calm down. But it's not that simple just to have a relic. We also need to know how to manipulate it correctly or it will go completely out of control just like the moment Rayane literally teleported all of us to completely random places. You don't want to take the risk of overloading Rayane's or Ivy's body and ending up killing one of them by accident.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny didn't know what to say for a few seconds, feeling a little regretful, he started to answer.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Got it! I already gave 4 ideas. About Rainbow Queen... These ponies are almost a family. I think as if they were daughters. I didn't even understand. But most likely she can't die so living all this time alone is just so... just... so Rainbow Queen must have some ponies that she considers family or daughters and sons.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James tried to understand what Vinny was talking about, James seemed to be still confused on the subject.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Daughters? Are you telling me Rainbow Queen adopts ponies? That's how curious, but it makes a little sense. I've never tried to live eternal life because it's one of the most painful things there is.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James tried to think of something else before continuing the conversation. So James was back to feeling worried, thinking about the possibilities if something went wrong.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "R...Rainbow Queen family?! That doesn't seem like a good idea. Why is Vinny trying to intrude on an unknown family? And what family is this?!",
+    "character": "James",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Maybe we have a small expectation of success. Buuuuuut! Y...Yes... we still have the main problem, pleasing a goddess. You said yourself that Rainbow Queen doesn't like you and she'll want to rip my head off at the first opportunity with you.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was shaking a little by the fear as he continued talking.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I...I never thought I'd say this... but for now it's just the craziest idea of all. Don't do nonsense!!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little surprised and happy to hear that.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah? Tell me what idea?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "We're going to have to follow two ideas... ghosts and the Rainbow Queen. Maybe this is a good time for me to read those tablets you gave me. Let's at least use what we have to avoid the chances of accidentally dying.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "But... What plan? What do you expect to find on the tablets?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "If Hiroshi said so much about Rainbow Queen... maybe I'll find something about her on these tablets... But in the meantime... we'll need to wait the night arrives. If you really want to look for these ghosts... we need finding the right ghost.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmm... Fine! I'll be wandering around the village, call Rayane, last time she got a password from a computer where those tablets were. Do your magic with them and if they ask for a password, try to remember Rayane. Heh heh! I'll wander around trying to find something abnormal or go out asking where there are female and single ghosts.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James did a facehoof as he listened to Vinny's last words, but at least James felt less worried as he understood the possibility of Vinny being too silly. James looks at the red bow on Vinny's head, trying to understand what was going on.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Okay. No problem... I guess with that giant red bow on your head you won't get very far. I was holding back until now to ask you where the hell you got that from.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "R..Red bow? AH! A long story... but summing it all up. This bow was Rayane who bought it for me after we accidentally got married and I wanted to have kids and she didn't. But then she changed her mind and wanted to have children. We went to a clothing store to see clothes for our future baby girl and Rayane accidentally got it all wrong and we were teased. And in the end I got this in my head! I need something to cover like a cape or something. My cape was... ah fuck.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a facehoof in response. James not too surprised by Rayane's silliness, just does a poker face and continued the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... yes. You'll surely find places very easy to buy a new cape here.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny would then make a nervous smile before continuing talking.",
+    "type": "action"
+  },
+
+  {
+    "value": "Good! Never mind, I'm broke and out of money... you have to give me a little money, don't you?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...What?! Money? Well... I can lend you money to buy a cape. But please... remember that you will have to find some way to make money. I usually sell some of my creations. Do not forget my words. Here it is.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James delivered 100 bits to Vinny during the talk.",
+    "type": "action"
   }
 
 ]
