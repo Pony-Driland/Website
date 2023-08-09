@@ -15,16 +15,8 @@ storyCfg.playlist = {
         { id: 'FhhbYF8JANg', type: 'youtube' },
     ],
 
-    'and-in-darkness-may-she-reign': [
-        { id: '3KONnESTUxs', type: 'youtube' },
-    ],
-
     'an-antagonistic-battle': [
         { id: 'AhpvfGJ81n4', type: 'youtube' },
-    ],
-
-    'dbs-ost-dramatic-versions-extended-mix': [
-        { id: 'T-uG8gx8nfw', type: 'youtube' },
     ],
 
     'dramatic': [
@@ -32,26 +24,9 @@ storyCfg.playlist = {
         { id: '1XmMTRD_zys', type: 'youtube' },
     ],
 
-    'dramatic-epic': [
-        { id: 'iVtDQhGRo1Q', type: 'youtube' },
-        { id: 'gIjSCwPVcU4', type: 'youtube' },
-    ],
-
     'suspenseful-ambient': [
         { id: '6_Na6QaG0c4', type: 'youtube' },
         { id: 'fFJHAbeQ0g4', type: 'youtube' },
-    ],
-
-    'haunted-coal-mines': [
-        { id: 'VCpg4CbgY1U', type: 'youtube' },
-    ],
-
-    'cryptozoologist': [
-        { id: 'cKY5PVuopWs', type: 'youtube' },
-    ],
-
-    'tobbogan-ride': [
-        { id: 'pRE2EjzmeI0', type: 'youtube' },
     ],
 
     'forest': [
@@ -64,10 +39,6 @@ storyCfg.playlist = {
         { id: '6r3xpB6Td40', type: 'youtube' },
         { id: 'lAarDAnoXk0', type: 'youtube' },
         { id: 'LptTKfrHSi4', type: 'youtube' },
-    ],
-
-    'encouraging-emotional': [
-        { id: 'CfCkb8VWNPI', type: 'youtube' },
     ],
 
     'silly': [
@@ -85,13 +56,6 @@ storyCfg.playlist = {
         { id: 'FaKRXOgasXA', type: 'youtube' },
     ],
 
-    'escape-2': [
-        { id: 'PUJUFXtbLqU', type: 'youtube' },
-        { id: '3D5W66u-XgI', type: 'youtube' },
-        { id: '7CxQ01mGymo', type: 'youtube' },
-        { id: 'jfqzvLsPsk8', type: 'youtube' },
-    ],
-
     'battle': [
         { id: 'VMziMXYkVS0', type: 'youtube' },
         { id: 'rjRn9lYguV0', type: 'youtube' },
@@ -99,43 +63,10 @@ storyCfg.playlist = {
         { id: 'XD72-Y5aB9Q', type: 'youtube' },
     ],
 
-    'tense-battle': [
-        { id: 'b6WhRKOMUq0', type: 'youtube' },
-        { id: 'rAMJkRhK2cs', type: 'youtube' },
-    ],
-
-    'Chase | D&D/TTRPG Battle/Combat/Fight Music | 1 Hour': [
-        { id: 'fq8OSrIUST4', type: 'youtube' },
-    ],
-
-    'Lost Temple Ruins | D&D/TTRPG Music | 1 Hour': [
-        { id: 'cr7MHs7DyXA', type: 'youtube' },
-    ],
-
     'Tense Negotiations | D&D/TTRPG Music | 1 Hour': [
         { id: 'RPkHu8M_U4c', type: 'youtube' },
     ],
-
-    'The Dungeon of the Dark Pyramid': [
-        { id: 'cmedlfRszXU', type: 'youtube' },
-    ],
-
-    'horror-battle': [
-        { id: 'ViCGaoeCUqk', type: 'youtube' },
-    ],
-
-    'revenge-battle': [
-        { id: 'Ies0Ynk5_SI', type: 'youtube' },
-    ],
-
-    'epic-battle': [
-        { id: '4tM--a1NLa8', type: 'youtube' },
-        { id: 'ltmma6Abi3U', type: 'youtube' },
-        { id: 'f3Fi4q7Es2Q', type: 'youtube' },
-        { id: 'HRfiZbJ5kW0', type: 'youtube' },
-        { id: '2waixMvzakE', type: 'youtube' },
-    ],
-
+    
     'drama-battle': [
         { id: '04_v0iVxCHo', type: 'youtube' },
         { id: '9HvVidW5N6w', type: 'youtube' },
@@ -177,18 +108,6 @@ storyCfg.playlist = {
         { id: 'A7DE3BXdPsA', type: 'youtube' },
     ],
 
-    'kanashi': [
-        { id: 'zaxVBfdgR3E', type: 'youtube' },
-    ],
-
-    'songs-for-dark-gods': [
-        { id: '3-pZbPNpLhI', type: 'youtube' },
-    ],
-
-    'songs-for-an-empty-world': [
-        { id: 'f1tYe3TkhTc', type: 'youtube' },
-    ],
-
     'songs-for-an-dying-world': [
         { id: 'f1tYe3TkhTc', type: 'youtube' },
     ],
@@ -197,24 +116,8 @@ storyCfg.playlist = {
         { id: 'yEYxnJB4jZs', type: 'youtube' },
     ],
 
-    'Heist | D&D/TTRPG Music | 1 Hour': [
-        { id: 'WW4bdFhcZgw', type: 'youtube' },
-    ],
-
-    'Tense Path | D&D/TTRPG Music | 1 Hour': [
-        { id: 'fv_7EurNAss', type: 'youtube' },
-    ],
-
-    'Ambush! | D&D/TTRPG Battle/Combat/Fight Music | 1 Hour': [
-        { id: '8Q7cioftmKs', type: 'youtube' },
-    ],
-
     'INFINITY - Epic Futuristic Music Mix | Atmospheric Sci-Fi Music': [
         { id: '4F7sdy2rZws', type: 'youtube' },
-    ],
-
-    '1 Hour of H.P. Lovecraft Music: Orchestral Ambient Creepy Horror Music for Role-Playing and Gaming': [
-        { id: 'oxvDnaWe5XE', type: 'youtube' },
     ],
 
     'tense-find-subway-c2': [
@@ -222,12 +125,6 @@ storyCfg.playlist = {
         { id: 'VQ9230-OoBw', type: 'youtube' },
         { id: 'fFJHAbeQ0g4', type: 'youtube' },
         { id: 'tg7IqHcnVbg', type: 'youtube' },
-    ],
-
-    'spooky-mysterious': [
-        { id: 'm6e_Uz6vlJw', type: 'youtube' },
-        { id: 'XUUM0cKcRW0', type: 'youtube' },
-        { id: 'eaEbST63kk0', type: 'youtube' },
     ],
 
     'marlon-battle-1': [
@@ -245,14 +142,6 @@ storyCfg.playlist = {
         { id: '1nBatlpsVj0', type: 'youtube' },
         { id: 'g7x-VUGjnc8', type: 'youtube' },
         { id: 'bE__iQGLxyc', type: 'youtube' },
-    ],
-
-    'tense-mystery-2': [
-        { id: 'JuKONvqIT4M', type: 'youtube' }
-    ],
-
-    'judgement-battle-divine': [
-        { id: '1xkvsu72i60', type: 'youtube' }
     ],
 
     'rainbow-queen-moment': [
