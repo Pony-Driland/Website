@@ -4602,8 +4602,310 @@
   }, 
 
   {
-    "value": "James delivered 100 bits to Vinny during the talk.",
+    "value": "James delivered 100 bits to Vinny during the talk. Vinny does a poker face while taking the bits.",
     "type": "action"
+  },
+
+  {
+    "value": "C...Calm down. Sorry. I'll do something for you. I will give you the greatest honor. I appreciate the 100 bits, but I can survive. Alright?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "And your cape????",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny took a deep breath before answering James.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah... I'll just be suspicious... here take it here.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny removed the bow and put it on James head and denied the bits.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wh... what?!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "This bow is our proof of friendship! Should never be left out of use. I entrusted it to you, if you take it away I will feel it and I will be sad.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+  
+  {
+    "value": "Wh...hat stupidity is that?!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was completely embarrassed trying to understand what was going on. Vinny giggles a bit before continuing the answer.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Anyway. If you're going out, cover it or pass it to another pony. Well! Remember that I talked about Rayane maybe knowing the password if you have locked the tablets. And be careful in.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then prepared to leave the place.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "T...this... This is so embarrassing! This is... is.... for.... ARGH! F..Fine. Rayane must have told you what this little red bow is about!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "James then prepared to close the lab door.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Huh?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny stops and go back to James, interrupting James' attempt to close the door.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Is this a red bow for pets?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "bad-mystery"
+    },
+    "value": "James then got a little scared listening to Vinny's words.",
+    "type": "action"
+  },
+
+  {
+    "value": "WHAT?! VINNY! What are you and Rayane up to?! That's not funny!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh come on James! Tell me what pets are... seriously, they're just here.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...What? Here?",
+    "character": "James",
+    "type": "think"
+  }, 
+
+  {
+    "value": "James was embarrassed, and at the same time very worried, trying to think of some way to respond to Vinny.",
+    "type": "action"
+  },
+
+  {
+    "value": "I'm surprised that someone like you of your mentality doesn't know what this is... N.. no no! Vinny! Please! Stop being an asshole with my face!!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James... You forgot that I was in this world a little while ago. This pet thing is new to me. Maybe this helps me understand about the pony.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was very surprised by Vinny words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..ah? Pony? What pony? What fuck is this?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a poker face in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Your ass... My god! The scythe pony! I mentioned a little while ago was buying clothes in the same store as this red bow. James?? What's your problem?! Pets are ponies like... are slaves? This?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "R...Rainbow Queen pony? N...No no no! REALLY?! T... The goddess? Are you serious?!?!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was extremely surprised, totally at a loss for words to say to Vinny for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "R...REAAAALLY?! I....I..... OH CRAP!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a facehoof, waiting for James to finish calming down during the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Okay... okay... I will try to speak as best as possible. This depends on who the pony is responsible for... This is something unusual but yes, it exists. Some do it for a good cause... Others might do it in a negative way... You'll only find out if you see it.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James then took a deep breath during the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... I won't go into too much detail.... But I'll summarize the basics. If the pony was shopping for clothes and had a good freedom... I don't see cause for concern. But understand... For a pony to be a pony's pet, the pet needs to be very dependent on the master. You will always see the pet with some fragile personality in something. The logic is simple... If they feel more independent, they are more likely to give up being pets. So be very careful what you're getting into.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James looked very seriously at Vinny during the conversation.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Very very very careful! This is serious stuff that can completely change your lifestyle for better or worse. And then to change a ex pet mindset back to normal is a complete nightmare. The warning is already given!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked at James, a little surprised, trying to understand the motive for James was so serious.",
+    "type": "action"
+  },
+
+  {
+    "value": "Well... anyway, we'll find a way. Just promise me that if you're going to come up with a crazy idea on your own, I won't stop you, but let me know before. Anything, even if you're going to give your ass or shoot me... well. I trust you on the little red bow. Anything you can call Rayane. Alright?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James does a facehoof, trying to calm down from the situation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh my fuck god... Okay! Fine... Where did you get that red bow idea?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmmmm... long story. Let's say it's an energy you don't know yet. Now you're giving the red bow a energy. Later you will see... do you have any other questions?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Fineee...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "My god... what is this story becoming now?",
+    "character": "James",
+    "type": "think"
+  }, 
+
+  {
+    "value": "At least eat something in the village... I'm already late for my lunch... good luck.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James would just walk back into the lab and close the door without a second thought, trying to be less worried after all the conversation that had taken place.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "WHY VINNY?! I'm not getting my night's sleep now!",
+    "character": "James",
+    "type": "think"
+  }, 
+
+  {
+    "value": "James closed his eyes, trying to think of positive things as he continued to worry.",
+    "type": "action"
+  },
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "... is there lunch here?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Markets... restaurants... are everywhere...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "No! Here here... with us here. in this place space time.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James didn't say anything else in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "James? JAAAAMES!! AAAH! But it's a tabacu head!",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
