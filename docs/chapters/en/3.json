@@ -4906,6 +4906,76 @@
     "value": "James? JAAAAMES!! AAAH! But it's a tabacu head!",
     "character": "Vinny",
     "type": "dialogue"
+  }, 
+
+  {
+    "value": "Fuck! And there we go! Look for something to eat!",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "set": {
+      "playlistPlay": "fantasy-village"
+    },
+    "value": "Vinny would then return to the village center, and there was all the same movement. But now the movement was much lower because Amy was no longer there.",
+    "type": "action"
+  },
+  
+  {
+    "value": "Yeah. Looks like things are back to normal here.",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny went to the same seller from the previous moment. The seller was packing things up for lunch time while he finished organizing all the bits he had obtained. He was very happy with the sales results.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hey? Hello again, do you have a little time to chat or are you busy?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The salesman looked curiously at Vinny, confused about his return.",
+    "type": "action"
+  },
+
+  {
+    "value": "Hum? You again? Welcome! But sorry... I will have lunch soon. Are you looking for something in particular?",
+    "character": "Salespony",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "P...Particular? No no... I just wanted to apologize for the confusion earlier it was a joke between Rayane and me and she ended up winning... But that's not the motive, I'm curious because Rayane is known here. In other places it is not so. Could you explain me? Of course if you have time I don't want to disturb your lunch time.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Seller laughs a little in response. But then he looked back at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It was the first time I saw her accompanied with someone like you. Sorry, I don't know much. But from what I know, it seems that she is some bounty hunter. Maybe some spy... but everyone is afraid of being alone with her. That's reason we are not so scared to see her around in crowds, but we always keep an eye out if she's not keeping her eye on someone.",
+    "character": "Salespony",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a poker face for a few but then laughs a bit for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah. I attract a little trouble... at first she kept an eye on me and threatened me and all. But now she has even saved me, she gave her life to save me. In some recent events I helped her. Is she very famous? Everyone is surprised and calls her by name! She seems to be good at something to get so much attention right? What is your opinion? Like what do you think instead of listening to what they say?",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
