@@ -4976,6 +4976,73 @@
     "value": "Yeah. I attract a little trouble... at first she kept an eye on me and threatened me and all. But now she has even saved me, she gave her life to save me. In some recent events I helped her. Is she very famous? Everyone is surprised and calls her by name! She seems to be good at something to get so much attention right? What is your opinion? Like what do you think instead of listening to what they say?",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "The seller was a little surprised to hear Vinny's words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Rayane saving you? T... this is all very new to me. I've never heard anyone tell this kind of story. Yes... She knows Pony Driland all over. She always seems to have some privileged contact with some important pony.",
+    "character": "Salespony",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah... yeah, her buying a red bow and putting it on me didn't surprise you too? The red bow is still in good hooves. Hihi! I left a friend of mine using it.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny giggles a little more but then got serious again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... I don't want to disturb you and your lunch time, my last question is if some of the rumors I've seen about some ghosts are true and if it interferes with your sales on something.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The salespony would then get curious and laugh a little in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Don't be shy, everyone has some secret. But yes. We have ghosts... But they usually appear at night. I only saw a single ghost during the day, but it seemed that this ghost never showed itself. This is very curious. I never knew the ghost identity.",
+    "character": "Salespony",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was surprised and a little curious during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...Whaaat?? Where can I find someone who can answer me about it?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Maybe some spiritist can answer you about this. But why all this question?",
+    "character": "Salespony",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny would then be much more surprised than usual during the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AH! Yeah yeah. I'm in a very delicate situation. A friend of mine is dying and I think I can find help in this way. It's like one hoof washes the other. But... really?? Spiritist!? Is there a spirit here?? Where do I find them? Do you know where I can find it?",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
