@@ -5043,6 +5043,63 @@
     "value": "AH! Yeah yeah. I'm in a very delicate situation. A friend of mine is dying and I think I can find help in this way. It's like one hoof washes the other. But... really?? Spiritist!? Is there a spirit here?? Where do I find them? Do you know where I can find it?",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "The Salespony was a little confused and curious to hear this.",
+    "type": "action"
+  }, 
+ 
+  {
+    "value": "A..friend? And you want to look for help from spirits? This is dangerous. Be careful with it. Well... There is an alley in this village that hides a small part of the village. You can enjoy lunch time and find some gypsy who is returning there.",
+    "character": "Salespony",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "G...Gypsy?! Oh! come on!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Okay. I see... what's your name by the way? My name is Vinny. nice to meet you",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "You are welcome Vinny! My name is Nico.",
+    "character": "Salespony",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh! Nice to meet you. Thank you so much Nico, see you later!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny smiles a little during the end of the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Bye!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "You're welcome again! Bye!",
+    "character": "Nico",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Nico giggles a little and smiled back as he waved.",
+    "type": "action"
   }
 
 ]
