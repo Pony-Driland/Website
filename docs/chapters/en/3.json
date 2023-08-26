@@ -5235,7 +5235,7 @@
 
   {
     "set": {
-      "playlistPlay": "cryptozoologist"
+      "playlistPlay": "spooky-mysterious"
     },
     "value": "When Vinny got very close, a female gypsy came out from under the table and pointed her hoof at Vinny.",
     "type": "action"
@@ -5298,13 +5298,13 @@
   }, 
 
   {
-    "value": "Don't fool me! But... Welcome!",
+    "value": "Don't fool me! YOU CRAZY ONE! But... Welcome!",
     "character": "Gypsy",
     "type": "dialogue"
   }, 
 
   {
-    "value": "The gypsy smiles and sits on the other chair during the talk.",
+    "value": "The gypsy smiles and sits on the other chair during the talk. Vinny does a poker face in response.",
     "type": "action"
   }, 
 
@@ -5317,6 +5317,193 @@
   {
     "value": "Vinny looks around to see if there was anything suspicious.",
     "type": "action"
+  },
+
+  {
+    "value": "NO NO NO!! SHHHHH! Your future doesn't fool me! That smells like a grand future. I've never felt that energy type in my living room! Do you really think you can go on like this entering my cabin without giving any explanation about the what are you up to?!",
+    "character": "Gypsy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Gypsy was very suspicious of Vinny while looking at him seriously. Vinny just saw more and more hut items, there was nothing special other than the magical materials she uses in the hut and some emblems Vinny didn't recognize very well",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...what the fuck is going on here?",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "I'm just curious to know this side of life and ask something about ghosts... but if I'm not welcome I'm sorry I left if you want.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked around once more looking for something suspicious that was strange and then returned the Gypsy's attention.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "O...oh god.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Ghosts? Hahah! HAH! Why so much curiosity about the spirit world? Are you wanting to help some spirit?",
+    "character": "Gypsy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "She used magic and pointed Vinny face to her eyes.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You won't try to get away from the subject, smartass!",
+    "character": "Gypsy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A...Aah! Wait a minute. Am I looking for something or do you want something with me? Calm down... I'm a common pony. I want to help myself first to understand you... are you ok?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "HAHAHA! SORRY! I'm great!",
+    "character": "Gypsy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "She starts to laugh again during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I've never been better! What are you planning? Will you change this world? Something tells me you intend to do something very big. Have you been talking to any important pony?",
+    "character": "Gypsy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Gypsy looks at Vinny, doing a very curious smile in response. Vinny was a little surprised, but he was trying to remain calm.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...Well... Well well... I'm talking to you now. I'm just in a delicate situation. What is this crystal ball?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Talking to me? Am I important to you? Alright! This is getting pretty interesting.",
+    "character": "Gypsy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "She laughed a little more randomly when answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It seems that your looks tell me that you are going through a very difficult time. Which is? My crystal ball! It brings you energy of feelings about what might happen in the future!",
+    "character": "Gypsy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "AH! Really?!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "AH? That's it? So ok! Come back anytime! Bye!",
+    "character": "Gypsy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "She gets up from the chair.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "OH! WAIT! NOOO! Wait a minute! I just need to know about the ghosts! Came back here!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "She stopped and looked at Vinny again before laughing again and smiling in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Huh? Heheh... and why does someone like you want to know so much suffer from ghosts?",
+    "character": "Gypsy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Okay! Sorry... but I believe in karma, if I do something nice, something nice will happen to me, and I'm in need of nice things happening to me right now.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks around, suspecting of something being stolen. But nothing was being stolen, everything seemed calm, Vinny were just very uncomfortable about the Gypsy personality.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "FUCK!",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Something nice? Haha! As I suspected. So you're having a hard time... Something tells me you're in a lot...a lot of trouble.",
+    "character": "Gypsy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...Well, I don't want to take up your time. You looks like a very busy pony. But... If I can, can I know your name?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Gypsy was curious and a little surprised to hear the question.",
+    "type": "action"
+  },
+
+  {
+    "value": "Busy? W...Whaaaat? Looks like you'll want to come back here. Then fine! Buuuut! Tell me more about yourself... something tells me that you hide something very special. Heh! My name is Aniya.",
+    "character": "Gypsy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya smiles a little more than usual, curious about Vinny words. Vinny found everything very strange, just trying to feel comfortable to continue the conversation.",
+    "type": "action"
+  },
+
+  {
+    "value": "Well... At least she seems to be very sincere in her words.",
+    "character": "Vinny",
+    "type": "think"
   }
 
 ]

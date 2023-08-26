@@ -94,10 +94,8 @@ storyCfg.playlist = {
         { id: 'oxvDnaWe5XE', type: 'youtube' },
     ],
 
-    'spooky-mysterious': [
-        { id: 'm6e_Uz6vlJw', type: 'youtube' },
-        { id: 'XUUM0cKcRW0', type: 'youtube' },
-        { id: 'eaEbST63kk0', type: 'youtube' },
+    'cryptozoologist': [
+        { id: 'cKY5PVuopWs', type: 'youtube' },
     ],
 
     'tense-mystery-2': [
