@@ -35,8 +35,10 @@ storyCfg.playlist = {
         { id: 'gvbvkqpM9C8', type: 'youtube' },
     ],
 
-    'cryptozoologist': [
-        { id: 'cKY5PVuopWs', type: 'youtube' },
+    'spooky-mysterious': [
+        { id: 'm6e_Uz6vlJw', type: 'youtube' },
+        { id: 'XUUM0cKcRW0', type: 'youtube' },
+        { id: 'eaEbST63kk0', type: 'youtube' },
     ],
 
     'dark-ambient-melodies': [
