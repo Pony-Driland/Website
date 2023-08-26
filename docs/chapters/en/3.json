@@ -5195,6 +5195,128 @@
     "value": "Hello?",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "The place was very quiet. Vinny just saw several items of spiritism around him. The shelves were very well organized. And right in the center of the room Vinny could see a table that was nicely decorated with a cloth and a crystal ball in the middle.",
+    "type": "action"
+  },
+
+  {
+    "value": "Oh? It really... it really is like medieval fantasies.",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Everything was still very quiet, too quiet, and Vinny just saw the crystal ball starting to gently shine him presence.",
+    "type": "action"
+  },
+
+  {
+    "value": "I'm not going to die here. Right?",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny approach the ball very slowly in response.",
+    "type": "action"
+  },
+
+  {
+    "value": "H...Hello?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "set": {
+      "playlistPlay": "cryptozoologist"
+    },
+    "value": "When Vinny got very close, a female gypsy came out from under the table and pointed her hoof at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "YOU!",
+    "character": "Gypsy",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "W...WAH?! IT WAS NOT ME!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was startled, and looked back at the gypsy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "YOU!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny pointed back to the gypsy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "YES! YEEEEEEEES! YOU! YOURSELF!",
+    "character": "Gypsy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Gypsy revealed the horn behind the hood, and levitated the chair that was behind Vinny, and made Vinny sit in the chair by force.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "WOOW! HEY HEY! Calm down, I need all this, my lady... do not need this formality.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hahahahahaha! YOU!",
+    "character": "Gypsy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "She pointed at Vinny again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Don't fool me! But... Welcome!",
+    "character": "Gypsy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The gypsy smiles and sits on the other chair during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..Ah? Cheating? I'm not wrong about what?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks around to see if there was anything suspicious.",
+    "type": "action"
   }
 
 ]
