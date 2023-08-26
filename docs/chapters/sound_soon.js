@@ -18,10 +18,6 @@ storyCfg.playlist = {
         { id: 'VCpg4CbgY1U', type: 'youtube' },
     ],
 
-    'cryptozoologist': [
-        { id: 'cKY5PVuopWs', type: 'youtube' },
-    ],
-
     'tobbogan-ride': [
         { id: 'pRE2EjzmeI0', type: 'youtube' },
     ],
