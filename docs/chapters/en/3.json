@@ -5092,14 +5092,109 @@
   }, 
 
   {
-    "value": "You're welcome again! Bye!",
+    "value": "You're welcome again! Bye! Good luck!",
     "character": "Nico",
     "type": "dialogue"
   }, 
 
   {
-    "value": "Nico giggles a little and smiled back as he waved.",
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Nico giggles a little and smiled back as he waved. Vinny would then smile back and wave before starting to walk away.",
     "type": "action"
+  }, 
+
+  {
+    "value": "Thanks.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Okay. And here we go.",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "set": {
+      "playlistPlay": "dark-ambient-melodies"
+    },
+    "value": "Vinny spent a long time looking for something. Time passed, but Vinny found in the middle of the way a weird path with different houses, and Vinny saw that all the ponies avoided entering that place.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W..What? Ah? Hey! Excuse me, if possible can you tell me what is the gypsy place?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was trying to interrupt the first random pony he saw.",
+    "type": "action"
+  },
+
+  {
+    "value": "O..Oh?! What fuck are you doing!? Are you sure you're going in there? Those crazy spirits will fill your head with paranoia! Don't go there!",
+    "character": "Pony",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The pony was scared, and already got away from Vinny, trying to keep away from the place. Vinny does a poker face in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ooh. Thanks. I guess...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny smiles nervously and entered the alley looking for something but paying attention to anything suspicious.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Why all this unnecessary panic?",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny could see that the place was poorly lit. Potion smell could be smelled, making Vinny start to find the place strange. And there were some unicorns around doing random conversations and some seemed to be saying silly things about him.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Cool, am I the only pegasus here? Let's just keep it natural.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny looks around, looking for a store that attracted more attention than usual. Vinny could only find potion shops, and other diversities of magic items. Some stores specifically target unicorns. And a gypsy hut.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AHA! GYPSY HUT! How funny, it's the same in medieval fantasy stories.",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny analyzed the cabin and who was outside and inside very slowly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hello?",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
