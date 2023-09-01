@@ -7,6 +7,12 @@ storyCfg.characters = {
     "title": "Amy",
     "description": "Amy is one of Rainbow Queen's pets. Her sweet personality was a result of past events of her accidentally going to Pony Driland. Her accident happened right during her childhood when she ran away from home, which made it impossible for her to grow like the other ponies, and she ended up spending the rest of her childhood struggling to survive on her own until she became an adult."
   },
+  "aniya": {
+    "path": "/data/characters/aniya/README.md",
+    "url": "/characters/aniya.html",
+    "title": "Aniya",
+    "description": ""
+  },
   "james": {
     "path": "/data/characters/james/README.md",
     "url": "/characters/james.html",
