@@ -11,7 +11,7 @@ storyCfg.characters = {
     "path": "/data/characters/aniya/README.md",
     "url": "/characters/aniya.html",
     "title": "Aniya",
-    "description": ""
+    "description": "The mysterious gypsy pony of Blackburn Village."
   },
   "james": {
     "path": "/data/characters/james/README.md",
