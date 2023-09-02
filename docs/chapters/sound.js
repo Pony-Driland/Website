@@ -242,6 +242,14 @@ storyCfg.playlist = {
         { id: 'WspwWDFr4IM', type: 'youtube' },
     ],
 
+    'aniya-first-time': [
+        { id: 'lqXY335eg_U', type: 'youtube' },
+        { id: 's2bGUY97o6E', type: 'youtube' },
+        { id: 'uV2eI9KBOFs', type: 'youtube' },
+        { id: 'qcA0BwRBbKI', type: 'youtube' },
+        { id: 'bGdD0YVh_kI', type: 'youtube' },
+    ],
+
 };
 
 // SFX

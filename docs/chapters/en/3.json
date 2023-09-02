@@ -5504,6 +5504,416 @@
     "value": "Well... At least she seems to be very sincere in her words.",
     "character": "Vinny",
     "type": "think"
+  },
+
+  {
+    "value": "If you want, hide something? No. But... nice to meet you, my name is Miles Tails. You can just call me Tails. Well, nothing too special. After a big mess I managed to save a pegasus but she is now dying. And for the trip not to have been all bad things. I wanted her by my side alive living her normal life. Any question?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya laugh a little while analyzing every Vinny word about the name him had just said.",
+    "type": "action"
+  },
+
+  {
+    "value": "Hmmmmm! Miles Tails... Can I trust your words then? Mr Tails? You're caring too much about a pegasus life. This is really weird. Just living the normal life? Are you sure it's just that?",
+    "character": "Aniya",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Vinny tried to maintain as neutral a behavior as possible during the conversation.",
+    "type": "action"
+  },
+
+  {
+    "value": "S...Strange? You don't care about anyone then?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I worry... But why just a normal life? What a weird little way to say it... it sounds like you're hiding something about her from me. How can I trust you myself if you don't trust me?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya does a slight smile, showing that she understands that Vinny are hiding something. Vinny was a little surprised secretly in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "FUCK!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Okay. Don't get me wrong, it's not personal, we just met. I don't know anything about you and you don't know anything about me. I'm really looking for help for a pegasus that I managed to pull out of the dead. But... you want to trust me for what exactly?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Good question... Your future is very attractive. Your energy tells me that something great is going to happen because of you. Have you been talking to a very special pony? Don't be silly... don't hide it from me. I feel like you have a lot more to say to me. Heh! About your pegasus, tell me more about her personality.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya continued doing the same smile, trying to make Vinny speak the truth during the progress. Vinny then took a deep breath for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Fine... all right. I will be the most sincere and true. But first I just need to have some sign of confidence. For example do you know my name?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Nope~ I'm sure it's not Tails... If you don't want to tell me what's really going on, why would you tell your own real name?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya smirks in response during the dialogue while touch the crystal ball.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah... Okay. Vinny, my name is Vinny.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heheh! Okay sir Vinny! Now answer me... What's so special about this pegasus? Did something about her catch your attention? Does her personality interest you in something? Is there something much more besides that?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya would slowly levitate the crystal ball during the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny looks nervously around, seeing if something was being stolen again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "No, just a pegasus with a younger personality. I just liked her personality and thought she deserves better than just a life of suffering and loneliness until her moment.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya laughed a little while answering while continuing to power up the crystal ball.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Younger personality? Sweetest personality? Insecure? How interesting... I've heard this story repeated a few times.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah... Well, I'm sorry to ask, but do you know or need me to tell the story?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya laughed again, having fun with the topic of conversation while answering.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "I have my theories! You can have a very pure heart and are planning a better future for her, but with ulterior motives with someone important. You just want to save her from a fate of no return. Is this pony too depressed?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Y..Yes... A little bit of everything. but how do you save from a fate of no return? Well... I want to give her a better life. As I said at the beginning of our conversation. I believe in karma, where everything I do comes back to me, if I do good things, good things will come back. If she is depressed? I don't know I never asked but it must be, living life alone without a father and mother and no one around must be very sad.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "aniya-first-time"
+    },
+    "value": "Vinny does a sad face, but soon after he returned to normal. Aniya was starting to find the conversation a little suspicious, but still she tried to keep her posture and smirk at Vinny again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "An familiar energy of a destiny that I've felt coming from another pony. My ancestors told me so much about her past life of over 100 years... But it seems like her depression ended up making her give up on living... but before she surrendered to suicide, she met a goddess who offered her a better life and much less loneliness in exchange for being an innocent pet.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little surprised and unresponsive, trying to understand if that was what he was thinking.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...What?!",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Aniya laughed again before continuing to answer.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I never thought I'd hear something about this fate approaching to happen to another pony after a very very long time... You really do seem to have the perfect \"gift\" of trying to change others' fates. But I can feel in your eyes that you will fail at this. This look of yours is very curious, it seems that you know very well who one of these ponies is.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "AH! FINE! Fine fine! Wait... Are you telling me that your ancestors said what she is?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "My ancestors told me about a lonely young pony who was looking for help over 100 years ago. But she didn't find what she was looking for... It looks like she ended up going into the forest to accept her suicide. But that's what I said... she was stopped by the goddess.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Anita then stared at Vinny while using the magic on the crystal ball more and more.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "This story of yours gives me a feeling that it will repeat itself, but in different ways. Your new friend seems like there will be no turning back. You will lose her to a goddess who won't more let you touch a hoof if you want to it... You need a lot of determination even to make this future change.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little more surprised than usual, feeling uncomfortable and worried due to story.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "O...Oh no... This 100-year-old one is at peace. But wait. Is there anything I can do? Anything at all.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was sadder as he put his hooves over his head.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hihi! Of course she is at peace... As much as her destiny has been changed forever and molded to the will of this goddess. The goddess was very smart... The goddess knows a lot well use her fantasies to make a happy pet.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya would then get a little more serious and look at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You should be careful so your friend doesn't end up being influenced. This goddess knows how to be a good predator to have new pets. If you want to avoid this fate if it happens... maybe you will have to negotiate something. Although I don't think this is a good idea.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ha? For example? As I said, I'm willing to do whatever it takes.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya then found Vinny's determination strange, but then she smirk again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Some trade... some very special trade for something. Do you know what a goddess might want to trade with a mortal?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "So Aniya would get a little worried when remembering something.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wait... You didn't make any of those pets talk to your friend. Right? This can also have some influence on your friend's fate.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A......aaaahh... Yes I did... is that a good thing or a bad thing?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya would be a little surprised for a few seconds, but then she would respond again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I can't say what will happen, I can just feel the energy of the power of future events. But what my crystal ball shows is that it could result in some big decision... Have you ever thought about any probability of your friend being influenced by this pet to become a pet too?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then remembered exactly that he had invited Amy to talk to Ivy, so Vinny was completely surprised and not knowing what to say for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "FUCK! FUUUUCK! I'M AN IDIOT! IS THAT GODDESS STILL NOT SATISFIED?!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Fine... fine fine! Please continue... If this pet can influence someone then she can talk to her?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya could see Vinny's anxious look expressing his desperate thoughts. So Aniya could better understand what she was talking about it's true.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny... Don't underestimate the power of these pets. This goddess can always help them if everything is agreed between the goddess and a pet. This goddess cares a lot about pets, increasing even more the of temporal energy waves much stronger to this pets than what I'm feeling from you.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then took a deep breath, trying to remain calm during the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What do you suggest I do? But... I need to ask something about you a little weird.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmmm... Your problem won't be to stop a pet... Your real problem will be if you hurt a pet feelings. If you wanted to know about karma... I think you already know how they can come back from the worst form against you if you hurt the feelings of a pet of this goddess.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "But then Aniya looked at you curiously about the second question.",
+    "type": "action"
+  },  
+  
+  {
+    "value": "Hahaha! I fucked up! But I didn't completely fuck up! I will find some solution!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "But Okay... Go ask! Your hidden power of temporal change amazes me! Your questions are very precious!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A..Ah? Oh sorry! Hm! I liked you! Fine! When I leave I'll never see you again, because you're a ghost right? Then I find out you're a ghost and then I look like a hoooo... do I hurt? Naaah! I speak with style. I know how to measure my words right. Well. Anyway, it never crossed my mind about the pets... I also have zika so bad things happen too.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was very confused, trying to understand the reason for this question.",
+    "type": "action"
+  },
+
+  {
+    "value": "Am I a ghost?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya giggles in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Of course not... ghosts don't walk around this place during the day. But there is a specific mysterious haunting that always haunts this village sometimes during the day. If you find this haunting... maybe you'll get something interesting.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya turned off the crystal ball, satisfied with the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'm glad to hear that you'll be back. Your sessions will be extremely more interesting than I imagined. You'll be my vip client. Bring your friends.... Maybe we'll get better. A little more this energy of temporal change for me is better!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya giggles a little during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And this zika? If you say... luck is on your side. But beware of overconfidence... everything that goes up... comes down~",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was then surprised and very curious to hear all this.",
+    "type": "action"
+  },
+
+  {
+    "value": "Y...Yes...! Do you know where I can find this friendly ghost? If it really is a ghost?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh! Dark places abandoned in this village. Maybe somewhere that has power. Maybe somewhere near Darkanger Ghost Town. They're your best alternatives.",
+    "character": "Aniya",
+    "type": "dialogue"
   }
 
 ]
