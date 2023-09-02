@@ -1,6 +1,6 @@
 {
-  "author_name": "João the John and JasminDreasond",
-  "url": "https://ipfs.io/ipfs/",
+  "author_name": "JasminDreasond",
+  "url": "https://ipfs.io/ipfs/QmZNcuT8ZKZLeAyxKbp7zMCTFSTEoHu6mcDcJ3h2zMCUyf",
   "cache_age": 7200,
   "tags": [
     "unicorn",
@@ -12,7 +12,7 @@
   "provider_name": "Pony Driland",
   "provider_url": "https://ponydriland.com",
   "title": "Aniya",
-  "description": "",
+  "description": "The mysterious gypsy pony of Blackburn Village.",
   "type": "photo",
   "version": "1.0"
 }
