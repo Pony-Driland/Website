@@ -5911,8 +5911,110 @@
   }, 
 
   {
-    "value": "Heh! Dark places abandoned in this village. Maybe somewhere that has power. Maybe somewhere near Darkanger Ghost Town. They're your best alternatives.",
+    "value": "Heh! Dark places abandoned in this village. Maybe somewhere that has power. Maybe somewhere near Darkanger Ghost Town. They're your best alternatives. BUUUUT! Be very careful with your electronics or robots! This haunting is an expert in this type of manipulation.",
     "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "G...Got it. Well! Aniya... is there anything I can do for you? How to thank you for the help?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hahah! Hmmm... Bring me more clients and I'm already more than satisfied. Don't worry... You already paid your 7 bits for the session. I gave you a special price exception for be my new vip customer~",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny would then be surprised and look at the bits for a few seconds.",
+    "type": "action"
+  },
+
+  {
+    "value": "Hmm?? as well?!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "All Vinny remaining 7 bits are gone.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What??",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Do you really think I work for free to give you such precious information? I should have charged you 1000 bits which is the original price. Thank you so much for using my service. Come back often~",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried to stay a little neutral, just continuing the conversation normally.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y..yeah. Thank you very much for your help. At least it was the little bits. Hihi! I can imagine if it was the heart that had been taken by you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny got up from his chair laughing and then returned his attention.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well. If it's true, I'll meet you again later I'll bring some friends of mine with 1000 bits.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hah!~ I'm full of pranks... Don't try to trick me.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Aniya laughed a little before showing a feeling of satisfaction.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'll be waiting... Bye~",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Bye...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "think"
+    },
+    "value": "Vinny waved back to Aniya and left the cabin slowly in response. The place was still pretty lonely with some unicorns walking around. There was nothing interesting happening around.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeaaaaah... It looks like today is really going to be a long day.",
+    "character": "Vinny",
     "type": "dialogue"
   }
 
