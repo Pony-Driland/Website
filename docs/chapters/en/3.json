@@ -5985,9 +5985,6 @@
   }, 
 
   {
-    "set": {
-      "playlistPlay": null
-    },
     "value": "Aniya laughed a little before showing a feeling of satisfaction.",
     "type": "action"
   }, 
@@ -6006,7 +6003,7 @@
 
   {
     "set": {
-      "playlistPlay": "think"
+      "playlistPlay": null
     },
     "value": "Vinny waved back to Aniya and left the cabin slowly in response. The place was still pretty lonely with some unicorns walking around. There was nothing interesting happening around.",
     "type": "action"
@@ -6015,6 +6012,184 @@
   {
     "value": "Yeaaaaah... It looks like today is really going to be a long day.",
     "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny looks at the cabin again for a few seconds, so Vinny decided to fly. After a few minutes of travel, Vinny locate James' lab tent on top of the house's roof terrace again.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "think"
+    },
+    "value": "Good!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then landed next to the lab door. The tent door was locked, but Vinny could hear that James was inside. Vinny then decided to poke at the door, hoping that James would listen.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "James!! It's me! Vinny!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James opened the door, the James's face was burned from some experiment gone wrong, but the bow was still whole on his face. Vinny then laughed a little for a few seconds in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Shut up!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "But it's cute!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "...Oh how cute... I want to blow myself up!",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "James only offered the way for Vinny to enter.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hey hey! Calm down! How are you? Here! Take back your master radar back.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James then looked curiously at Vinny for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah? I'm fine. Oh yes. The Master Radar.... Where is this?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Here",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny gives the master radar to James during the talk. James was relieved and held the radar and put it away.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Thank you very much!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah yeah... and... Did you talk to Rayane about the plans we talked about?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? Rayane decided to get some rest. She was too busy with her life of just solving problems all day.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Good... Fine! But... I spoke to a gypsy... Do you know where Darkanger Ghost Town is?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was then a little more surprised than usual.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "G...Gypsy? What?! D..Darkanger?! And how did you manage to pay her??? Have you gone crazy? This is where Pony Driland's most dangerous spirits reside!!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Calm down! Again! The gypsy was impressed by my hidden power to go wrong. If she wasn't lying, it sucked me talking to a pet. I told Amy to go visit Ivy but she can convince Ivy to become a pet too.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "...wait...WHAT?!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was even more surprised than he was a few seconds ago.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You are full of surprises... it's nothing new for me!!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James tried to control his own sanity, laughing nervously for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmm? Wrong? And...wait...what?!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was extremely scared.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah... I think the gypsy must have stolen something from me, not that I don't trust her. but she managed to get my 7 bits. I... I'm going to eat some stuff... but... I'm going to bring the food here. I want to keep talking, okay?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny! No no! You crazy one! You surprise me more and more! The gypsy is interested in something from you for leaving you such a cheap session almost for free! And this pet? Oh my fuck god! Now you have to somehow find that pet!",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "James hid his face behind his hooves, trying not to believe the words he had just heard.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "N..no no... This is impossible... This is not happening...",
+    "character": "James",
     "type": "dialogue"
   }
 
