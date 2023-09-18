@@ -6191,6 +6191,322 @@
     "value": "N..no no... This is impossible... This is not happening...",
     "character": "James",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Came on... I don't have a crystal ball that tells me the future... or maybe I have two ones... Alright! Tell me where Darkanger Ghost Town is, I'm going to the hospital to see Ivy then go to Darkanger Ghost Town. The gypsy said I can find someone interesting there.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James took a deep breath for a few seconds, trying to calm down.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... If you run toward Rayane on the way, let her know about Ivy too. Darkanger Ghost Town is just towards the north when you leave this village. But please take someone along with you at least. It's extremely dangerous to walk there alone!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Relax, I'll leave all electronics stuff with you for now.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny gave him phone all the electronics to to James during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The supposed ghost doesn't like technology... Do you need some help from me before I go see Ivy?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "What?? This ghost? Don't like technology?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James got confused.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Fine fine... Vinny please... I just ask that you hurry up. I'm not liking where this whole story is heading.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The ghost doesn't like technology at all. I'll go there then!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny would then suddenly interrupt the conversation when he saw James' reaction, and he was ready to fly. James looked curiously at some extra radars Vinny had brought in the past.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Alright....What are these other radars?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "A radar is to know where Wagner is! See you later!!!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...what?!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "bad-mystery"
+    },
+    "value": "Vinny flies to the hospital quickly, looking around trying to find Darkanger Ghost or something suspicious nearby. So Vinny could see the mysterious village. This village was a little far away, but it was possible to see its presence.",
+    "type": "action"
+  },
+  
+  {
+    "value": "Yeah... Ghosts, divine pets, crazy goddesses, today is going to be a long day.",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny would then arrive at the hospital door and enter. The hospital was all having the same movement, and Vinny recognized that it was the same attendant at the reception.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then walked up to the attendant. ",
+    "type": "action"
+  }, 
+
+  {
+    "value": "The Attendant looked at Vinny and was surprised by him presence.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...ah?",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hello! Good afternoon! I came earlier with Rayane, do you remember? Can I go see my friend in her room? And did anyone else come to see her?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "V..Vinny? Oh yes. I just need your password. Somebody else? Yes, a pegasus got special permission to enter without a password. Remember there can only be two in the same room.",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Fuck!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "How?? Without the password? I did not understand. How can it be possible?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Sorry Vinny. Her documentation was clear... and... I couldn't just say no. It's hospital rules.",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little surprised by the answer.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Is this pet playing with me? Right?!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "I...I understand! Can you call Amy to talk to me down here? If possible say that it is urgent and that I am Vinny. If the password can not enter the room?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then the attendant made a nervous smile, preparing to speak the next words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmm... Yes..yes... But... Can you answer me a question? How did her last visit happen over a century ago? This pegasus is scaring me... Our data cannot be modified this way.",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hospital Attendant pressed a button to try to contact superiors, but Vinny interrupts her, getting a little close to the attendant and spoke a little softly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hey hey! Calm down... I'm sorry but I really need to get in the room or talk to this pegasus. She's super sweet and cuddly, but it might not be the right time for her to be in the room. I need to see Amy or Ivy. Can't you help me at all??",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny breathed deeply, trying to calm down, and the attendant felt Vinny's despair.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I really don't know much. But I think it must be something more superior. unfortunately it's beyond something I know... but where is the doctor? Can't he release me?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Superior? S..superior? O..Okay okay... Sorry!",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hospital Attendant was more scared by Vinny words before answering the phone.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "H..hello? Yes doctor... I have Vinny here, he has no password and needs special permission to enter because of an urgent matter.",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A few seconds would pass, and then the attendant, still in a scared tone, would respond.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y...Yeah... he said he knows Amy... Ask Amy if she can use her special authorization to let Vinny in. Hm? Alright then. Thanks.",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hospital Attendant hangs up the phone.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Did it work?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The attendant smiled a little nervously in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "The doctor said that Amy can't answer... she seems to be busy using some kind of telepathic contact. I don't know what that is. But the doctor can't interrupt her.",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was starting to get a little more worried than usual.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...What? Well, I know Amy, we were talking a little while ago. Are the doctor and she really in the room? Then Amy releases my access! I know what she is doing. She's trying to talk to Ivy, I don't know if it's helping or making it worse!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+  
+  {
+    "value": "Hospital Attendant was scared during the talk, but she tried to calm down.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "B...but but Vinny! I can't let you in like that all of a sudden... The doctor entered the room and saw that she was busy... that's all. There is nothing I can do now. It's dangerous for you to go inside without permission.",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Fuck! Okay okay... I understand. So can you tell the doctor I came here? If it takes too long, instead of him coming here, he'll turn on the radio for Rayane came here. Rayane has the password. Tell the doctor to send a message over that radio to Rayane saying it's urgent and that Amy is here!  Can you do that? Because it is dangerous? Isn't this a hospital?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well... I...I... Turn on the radio? Oh yes the radio! Good idea!",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hospital Attendant turned the phone back on again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Doctor? Yes, it's me again... Please call Rayane on the radio, and tell her it's an urgent case. Okay, thank you!",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hospital Attendant disconnected the call very satisfied with the result.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ok... everything will be fine. Rayane will be notified for you.",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
   }
 
 ]
