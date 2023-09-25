@@ -6507,6 +6507,226 @@
     "value": "Ok... everything will be fine. Rayane will be notified for you.",
     "character": "Hospital Attendant",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Well... Again... You told me it's dangerous, what exactly is dangerous?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The attendant, still a little scared, looked curiously at Vinny. The hospital attendant smiles nervously.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "O...oh? Sorry Vinny. The hospital security does not accept ponies entering without permission. Only that. Now please excuse me... I need to serve the other customers.",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny understood the pony's nervousness a little, so he just smiled back a little.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Alright, thanks a lot for the help.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Then Vinny started to wait for Rayane, but he was surprised by the sound of teleportation coming from inside the hospital.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then walked out of the hospital, looking for Rayane, but Vinny came face to face with Rayane, she had her mouth a little food from the snack she was eating previously. Vinny would then become curious and a little surprised. Rayane seemed a little more surprised than usual.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "tense-mystery"
+    },
+    "value": "V..Vinny? What happened?!",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...well... Amy is in Ivy's room, we need the password to see what she's up to. I spent earlier in a gypsy woman who told Amy's story... If it's really her story... do you have the password there?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A...Ah?? I thought her finding Ivy was part of her plan.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was confused about it.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Alright. I have the password saved here.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Gypsy told me something that I'm not taking too seriously, but it makes sense... Amy might want to help, but her help would be to make Ivy a Pet too. Anyway... I talk on the way. We will? Did I disturb your lunch?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a Lenny face, but he was interrupted by Rayane's surprise.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W.. what?? Nope. If this is really true, all you need to do is not let Ivy put the collar on. Just that... Let's go!",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Y..yeah.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny and Rayane runs into the hospital back. Rayane already arrived at the attendant with the password, scaring everyone around.",
+    "type": "action"
+  },
+
+  {
+    "value": "I'm here! We will!",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A..ah? Ah!",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hospital attendant was surprised by Rayane's presence. Hospital attendant took the password and prepared to release access while answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "O..oh yes yes... Rayane and Vinny... how fast... How did she arrive so fast?",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hih! One day I'll tell you the little secret... but I think it's my charm. All right? We can go?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The attendant keep smiling nervously again, trying to understand what Vinny words meant.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ok..o..okay... you're cleared.. you can go to your room. Please don't do anything paranormal. You two and Amy are scaring me right now.",
+    "character": "Hospital Attendant",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh. Fine~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny and Rayane entered the hospital corridor door in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmmmm... Are you sure that I can't allow Ivy put the collar on? Can I confirm?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane and Vinny are next to the door of Ivy's room now while Rayane is answering very worried.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... once the collar is on... The only one who can take it off is Rain herself. And Ivy's eyes will be the same color as Amy's eyes. Remember that I told you.. it's an indestructible magical collar.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Fine...",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny open the door, looking at Ivy and to see if Amy was putting something on Ivy without thinking too much. Vinny could see that Ivy was still lying in her bed. She wasn't having any reaction. She was still in a coma and was exactly the same as before. Amy was also in the room, but she was sitting on a bench while her eyes was closed.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...What the fuck is going on here?",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny could see that Amy was very focused on some kind of magic, and Vinny could feel that sensation when him saw an aura of strange colored magic concentrated on Amy's collar.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "T..this... oh no... Calm down, I know how we're going to get into this. Trust me Vinny, I don't have time to say what's going to happen now.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I was surprised and worried as I started to prepare a spell",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I trust...WHAT? GET IN?",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
