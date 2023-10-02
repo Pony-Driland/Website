@@ -6719,7 +6719,7 @@
   }, 
 
   {
-    "value": "I was surprised and worried as I started to prepare a spell",
+    "value": "Rayane was surprised and worried as she started to prepare a spell.",
     "type": "action"
   }, 
 
@@ -6727,6 +6727,45 @@
     "value": "I trust...WHAT? GET IN?",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Rayane laughed a little before smirking at Vinny, holding Amy hoof while the horn shone brighter.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Just trust me~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I...I trust you. Fine! Just let's go!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane used her magic against Amy's collar magic, so the aura of colored magic started to circulate around Vinny and Rayane. Vinny slowly started to feel that him were losing consciousness more and more while Rayane was already with her eyes closed, ready for what was going to happen.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "dark-ambient-melodies"
+    },
+    "value": "W..w.hat? What is that?",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny then eventually had him eyes closed, it looked like Vinny had passed out in a deep sleep, but when him opened the eyes, Vinny saw that Rayane was by him side, but Vinny were in a very different place very empty and dark.",
+    "type": "action"
   }
 
 ]
