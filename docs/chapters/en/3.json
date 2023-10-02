@@ -6764,7 +6764,130 @@
   }, 
 
   {
-    "value": "Vinny then eventually had him eyes closed, it looked like Vinny had passed out in a deep sleep, but when him opened the eyes, Vinny saw that Rayane was by him side, but Vinny were in a very different place very empty and dark.",
+    "value": "Vinny then eventually had him eyes closed, it looked like Vinny had passed out in a deep sleep, but when him opened the eyes, Vinny saw that Rayane was by him side, but Vinny were in a very different place very empty and dark. Rayane then blinked her eyes for a few seconds and looked around.",
+    "type": "action"
+  },
+
+  {
+    "value": "Oh? Ah.. we're here.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Where are we?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little in response. Then the two began to walk in the middle of the darkness. Vinny just followed in Rayane's footsteps.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Our consciousness was teleported into Ivy's mind. That was the only way for Amy to talk to her. Rain must have used this magic on Amy for her to get in here. All I did was pull some of this magic so we could get in too.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little surprised and just responded.",
+    "type": "action"
+  },
+
+  {
+    "value": "Well! The gypsy said something that could be Amy's past, that 100 years ago she tried to kill herself in a forest. But then what happened, she became who she is. Where are we going?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was also a little surprised to hear Vinny's words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh yes... So Amy was easy prey for Rain. Ponies that are about to kill themselves are the easiest to make accept being pets. She was extremely weak psychologically and easy to be guided by anyone.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane breathed deeply as she began to answer about Amy. Responding in a sad tone.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But please be careful about Amy. It's been over 100 years... her mind has changed so much that now she really likes her lifestyle. Our only mission now is to protect Ivy.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Relax, see the good and bad side of this all. The bad side is that I have a chance to see Rain. Now the good side is that you can see Rain. Seriously... I bet you a kiss that if she sees me here, she'll say something like \"you again!\" or \"I told you to get out of my way!\". If she says that will you give me a kiss? If I lose you can ask whatever you want. Hihi! But yes. It's something serious. Anyway Amy is afraid of you, and less of me. Let's just talk to her gently, making her feel comfortable.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles at Vinny in responde during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You silly one~ We're not in our physical body. If Rain gets really mad at you, she'll make a point of ripping your head off without thinking twice just to see you disappear from here and wake up back in the hospital.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane continued walking, looking for some light. But everything was still very dark. Vinny does a poker face in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... that's nice to know. Well, you don't have to worry about me anyway. If I'm going to die alone here... Then it's cool. Do you have any ideas? Can I fly up and see some light?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Shhhh~ Don't worry... you may even feel pain. But you won't die. It will be like waking up from a nightmare. I've done a lot of training in these types of places to have a realistic experience of life or death. Feel free to fly up.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Y..Yeah. Yes... feeling pain. Well! Okay!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "At this moment Vinny began to fly, seeing a small light very far away during the progress. Vinny was then a little surprised and pointed to a very distant light. Vinny was confused whether to continue the conversation or head towards the light.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "There!! By the way, the gypsy also talked about a unique ghost that wanders around, not just at night, who hates technology too. I was supposed to meet the ghost too. Hmm... Okay okay! Sorry. Let's go?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was a little curious about the ghost, but tried to ignore the conversation to follow priorities.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ghost... Hate technology? Are you sure you heard right? Okay. Let's go.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "So Vinny and Rayane walked even faster towards the light.",
     "type": "action"
   }
 
