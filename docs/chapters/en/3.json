@@ -7290,8 +7290,43 @@
   }, 
 
   {
+    "set": {
+      "playlistPlay": null
+    },
     "value": "Vinny and Rayane were still watching the situation, trying not to get too involved in the family crisis that was happening between Amy and Ivy.",
     "type": "action"
+  },
+
+  {
+    "value": "Rayane?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Y...yes. Sorry. I'm just having a bad feeling.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Yeah...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "sad"
+    },
+    "value": "Vinny looked again at Ivy and Amy, and was sad about the situation. Vinny went and hugged Amy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ivy is right Amy. You can be whoever you want, Ivy will be your sister and she will love you! Please calm down, everything will be ok. You can still see your sister, you can visit. Why are you still like this?",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
