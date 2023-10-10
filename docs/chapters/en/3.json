@@ -6889,6 +6889,174 @@
   {
     "value": "So Vinny and Rayane walked even faster towards the light.",
     "type": "action"
+  },
+
+  {
+    "value": "When Vinny and Rayane started to approach, Vinny started to hear two voices that were getting louder and louder. The two voices were quite familiar.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I...Ivy? Amy? OH NO!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy was crying, feeling very emotional while answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "B...but why are you being so nice to me? I'm surprised you tried so hard to get here just because of me while I'm here alone not knowing what's going on.",
+    "character": "Ivy",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane? Are we going to show everything or slowly?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was worried to hear the conversation during the progress.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "V..Vinny. You have to go ahead... Amy trusts you more.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "F...Fine!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny ran to Amy and Ivy faster.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "sad"
+    },
+    "value": "Don't worry Ivy. I... I promise everything will be all right. I... oh?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy does a small shy smile, but she is interrupted by Vinny voice.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ivyyyy! Amyyyyyy! HEEEEY! OVER HERE!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "V...Vinny? You here?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was very surprised, trying to understand how Vinny got there.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Amy!! Hello... Calm down... I'm a little tired of running here.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny came close a little exhausted from the rush and spoke.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y...Yeah... calm down everyone... Hello to you two... How long have you been here?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Mr...V...Vinny? Y..You here?",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy started to cry by the emotion, while hugging Vinny well. She was so emotionally happy that it was the first time she could do this to Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Mr. Vinny! I missed you so much! I thought I had lost you and the mysterious Rayane forever!!",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was more surprised, and she started looking at this while trying to hold back not to cry by the situation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "B...but....but...",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then smiled again and looked at Amy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Did you come too Amy? Want to be part of the hug?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny invited Amy to join in the hug time.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I came a long way to see how you two were doing.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The...hug?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was much more shy, trying to think of what to do, she approached Vinny very slowly. She had a very sad look on her face because everything she was doing was being interrupted.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Amy? It's okay... I'm not a monster or anything. Ivy tells Amy how we met, you remember right?",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
