@@ -6982,7 +6982,7 @@
   }, 
 
   {
-    "value": "Vinny came close a little exhausted from the rush and spoke.",
+    "value": "Vinny came close a little exhausted from the rush.",
     "type": "action"
   }, 
 
@@ -7004,7 +7004,7 @@
   }, 
 
   {
-    "value": "Mr. Vinny! I missed you so much! I thought I had lost you and the mysterious Rayane forever!!",
+    "value": "Mr. Vinny! I missed you so much! I thought I had lost you and mysterious Rayane forever!!",
     "character": "Ivy",
     "type": "dialogue"
   }, 
@@ -7057,6 +7057,241 @@
     "value": "Amy? It's okay... I'm not a monster or anything. Ivy tells Amy how we met, you remember right?",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny and the mysterious Rayane saved me from dying buried. Remember the subway? We were here talking about it... But? Why are you so sad?",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy started to cry more and more while holding a new collar. Vinny was then surprised that his suspicions were starting to be confirmed.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "T...the collar!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "...So...if...if you're already going to have a happy future...W...Won't you want to join me? J...Join me? And... will I lose you again?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well... Do you already know each other? I'm sorry if I interrupted something. How to join? I didn't come here to make you sad... Amy, I know you don't trust me very much, but I'm here to listen to you. You can vent if you want. What are you feeling?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "memories"
+    },
+    "value": "I...I wanted...the...Ivy back by my side...and...I...I almost forgot about Ivy after these 100+ years. She...she is my... lost sister.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...WHAAAAT?!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "I never saw her again when she ran away from home. If she turn into a little pet with me... we could be together forever with my master. B...But..... if she already has friends... W...who am I now to make her accept this decision?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "N... no no no... What's going on here?!",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Amy started to cry a lot in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wait? S...Sister? A... Amy? So you are?",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy was extremely surprised.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "H...Huh? Are you Ivy's sister? How?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane slowly approached more, while Rayane tried to keep calm as she understood what was happening.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Sorry to interrupt you... But maybe James already told you that... but I'll say it again. In this dimension the time goes by much faster. Every minute in your original dimension can be many years inside this dimension.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...wow! Okay okay... Calm down, it doesn't have to be like that. I came here to see how you girls were, I really don't want to get in the way or anything. I really think it's more than fair that Ivy decides, but please Amy... don't think I'm a monster. Come here with us. This can be the last time I can see you two. I don't know how it works, but I believe you Amy can walk around the places. For example how we met. Did you already know about Ivy?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy responded in a very sad tone.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y..Yes. My magic binoculars were the ones who helped me find the presence of Ivy's soul. I was scared to know if I could even save her last few seconds of her life for her to join to me.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy looked into Amy's eyes and held her hoof gently to answer her.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Amy... my sister... please don't cry, haven't you found me? It's very sweet of you to want me by your side. I didn't expect to see what you would become. Vinny is right. We can be together like old times one way or another. Am I not here alive with you? We can always meet whenever you want.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy then hugged Amy gently as Amy cried and vented her feelings of sadness.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "N...no... my little sister Ivy has a better life. You always thought you was the weakest.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy tried not to cry, but couldn't.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "B...but actually it was me. I was unprotected when I tried to find you in my world when you ran away from home without telling me, I tried to run attracted to you because I didn't want to be without you. But I accidentally fall into this world after a mysterious meteor shower. I found a mysterious item... It looked like a watch or a bracelet. This item brought me into this world... a little world of fantasies that ended up coming true.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy then wiped the tears from her eyes a little during the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I was lost for years looking for you, I couldn't get a job, I couldn't live alone in this world, everything went wrong during my childhood to my adult life. I got extremely depressed because I didn't know how to take care of myself. I tried to kill myself because I didn't want all this suffering anymore, even more without you taking care of me. My little sister Ivy who always took care of me when Mom and Dad left the house.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy would then hug Ivy tighter to feel Ivy's presence as much as possible during the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But I almost forgot your existence after more than 100 years of not seeing you after I met my master. I needed time to remember you again. Now it looks like I'm not your younger sister anymore because I've aged so much faster than you. I'm many years older than you, b...but look at me and you...",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy looked at sympathy for Amy's sadness. Ivy smiles at Amy during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Amy... please... It's not because you're so different that you need to stay away from me. I haven't forgotten about you. Stop saying those things. You also managed to find your happiness.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy hugs Amy more in response. Amy looked at the new collar that would be for Ivy, and started to get extremely depressed in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "B..But Ivy... now I know that you really are stronger than me, your friends came to get you, you won't accept my proposal. You'll want to live next to your friends... and... I'm a disgrace to you.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy started to cry a lot while trying to get away from Ivy. She would drop the collar, and ignore it on the floor, in an attempt to forget what herself just did.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "N..no! AMY! Please come back! I don't want to lose you again!! I'm sorry if I hurt your feelings! Come back here!",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy started to cry and tried to hug Amy back, but failed, so Ivy picked up the collar on the floor, trying to return the collar to Amy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "N..No! I can't abandon my master and my other friend. My master also loves me a lot along with my friend, it would be very unfair of me to simply abandon the one who took care of me with so much affection. She always gives me all the love she has for me. She's a giant evil Sphinx who has a way of taking care of me, our silly fantasies. is what makes me feel less afraid of the monstrosities of this world.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy tried to calm herself during every word of the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I don't feel comfortable being by your side, seeing that I was never someone of your level.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy then tried to stay close to Amy when she saw that Amy was tired of trying to escape.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "N..no! Amy! Please! It doesn't matter what you are! We are a family! You can't forget about it!",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny and Rayane were still watching the situation, trying not to get too involved in the family crisis that was happening between Amy and Ivy.",
+    "type": "action"
   }
 
 ]
