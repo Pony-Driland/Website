@@ -7489,6 +7489,67 @@
     "value": "A..ah? Hospital? And nobody knows how to help me?",
     "character": "Ivy",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane was slowly calming down again from the moment while she was slightly sad, hugged Ivy gently, trying to keep Ivy as calm as possible.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "We don't have much to do for you. I'm sorry Ivy... I'm worried that this might be our last moment if we don't figure out what to do for you now.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+  
+  {
+    "value": "Amy then showed a little anxiety when wanting to say something. Amy replied slightly sad, and trying to think of some new alternative.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But...b...but... My master said it would be a fair decision to help my little sister if she becomes a pet.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Y...Yeah. But Ivy... the decision is still yours. Do you remember how you got here? Maybe knowing how you got here, remembering something that will help you something.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+  
+  {
+    "value": "Ivy breathed deeply, thinking about the next words she was going to say. Ivy replied slightly emotional while keeping a hug with Amy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "This is my mind, my imagination. I could always come here. I wanted to know how you got here. It's like this is all a dream.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "So Rayane just hugged Amy and Ivy, trying to maintain the deepest moment of union possible.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It was Amy... Rain used magic to enter your mind. I just used my magic to interfere on her magic.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane tries to hold back not to cry while trying to keep the two hugged. But Vinny began to faintly hear the sound of footsteps coming from far away.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..Ah? Is anyone else here?",
+    "character": "Vinny",
+    "type": "think"
   }
 
 ]
