@@ -7700,6 +7700,35 @@
   {
     "value": "Rainbow Queen then took a deep breath and does a small evil laugh. Rainbow Queen then put the scythe away as she continued her conversation, observing every detail of Vinny's sad look.",
     "type": "action"
+  },
+
+  {
+    "value": "Hmmmm... How funny... it seems like we have something in common for the first time. I never expected this to happen one day. We've got a little life at stake and I don't want to see my little Amy sad~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "P..Please... So help Ivy. Ivy had a perfect life ahead of her. She had found a pony that had switched places with her before the disaster that happened a short time ago. They could have a normal life where they would stay together! Amy could visit her whenever she wants, no one would do anything to Amy because her custody is yours. Help me, I'm willing to do anything. You and I want 1 unusual thing, to leave here without anyone sad and hurt. You with Amy and I with everyone happy. Well... I said I'm willing to do anything...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen does a short evil laugh, walking around Vinny very slowly, looking at Vinny's sad eyes.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmmmmmmm... Do you want my help? So you're telling me I'm in charge now? Can I ask you for literally anything?~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes... You can do whatever you want with me in exchange for Ivy's life back where she can live normally.",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
