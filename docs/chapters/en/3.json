@@ -7386,13 +7386,108 @@
   }, 
 
   {
-    "value": "Ivy smiles and wiped Amy eyes a little before hugging too. Amy continued to get emotional, and she made a very cute smile while crying some more and trying to calm down slowly.",
+    "value": "Ivy smiles and wiped Amy eyes a little before hugging too. Amy continued to get emotional, and she made a very cute smile while crying some more and trying to calm down slowly. Rayane caressed Amy head in response.",
     "type": "action"
   },
 
   {
-    "value": "Oh... T...thanks everypony...",
+    "value": "Oh... T...thanks everypony.",
     "character": "Amy",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Ivy... Look at me... I'm a pony that was sucked by a snack and ended up here with the mysterious Rayane. Hihi! It's easier for someone to treat us strangers than you. All will be alright.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny ended the hug after a while and sat on the floor and tried to take a deep breath.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "This moment reminds me the last moments with Hiroshi. But this time it's working... for the first time everyone is happy and cool with everything.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "And you don't have to be afraid of me. It's not because Rain and I fight that I'm going to be angry at you~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was a little emotional remembering Hiroshi.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I... I hope you had a better time with Rain than I did.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy laughed cutely in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y...you and Vinny have funny stories. If my master stops restricting visits to her pyramid, maybe I invite everypony to visit me.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny and Ivy were surprised to hear this. Rayane was also surprised, but not as surprised as Vinny and Ivy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W..What?",
+    "character": "Rayane",
+    "type": "think"
+  }, 
+
+  {
+    "value": "P...Pyramid? Oh yes. I promise it will be a lot of fun if this day ever comes.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy smiles, finishing the hug time while sitting on the floor. But then Ivy would does a small emotional smile, showing a little sadness.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But first... I need to know... How am I going to wake up from my coma? I still haven't forgotten that my little body is all broken up.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny showed a little concern before continuing the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah... you're in a hospital. You're there to recover youself but with you here and not there, your body thinks you're not there. I can't say. W...Well... Maybe Rayane or Amy has an alternative.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy was then a little surprised to hear all this.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..ah? Hospital? And nobody knows how to help me?",
+    "character": "Ivy",
     "type": "dialogue"
   }
 
