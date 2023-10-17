@@ -7550,6 +7550,75 @@
     "value": "A..Ah? Is anyone else here?",
     "character": "Vinny",
     "type": "think"
+  },
+
+  {
+    "value": "Huh? Did you know this from the beginning?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked where the sound was coming from.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I tried my best to hope that we could find some solution to save Ivy. I was confident Vinny would get an answer when trying to talk to Amy.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then observed a shadow waiting for him far away from where he was.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Well... Rayane... Ivy... Amy... Please give me a little time. I need some time to think okay? Give me a moment. Alright? I promise to come back okay?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? Where are you going? It's impossible to have anyone else here besides us.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...wait... No... that's not possible.",
+    "character": "Rayane",
+    "type": "think"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "vinny-rainbow-queen-ivy"
+    },
+    "value": "Rayane was a little worried when thinking about the possibility of what is happening. Vinny hugged Ivy, Amy, and Rayane tightly while doing a worried face. Then Vinny get away from everyone and go see the shadow covertly in response. Ivy and Amy looked at Vinny curious about the situation.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Mr. Vinny? P..Please proceed carefully...",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Y...yes.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah...",
+    "character": "Vinny",
+    "type": "think"
   }
 
 ]
