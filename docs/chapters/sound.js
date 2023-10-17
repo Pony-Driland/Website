@@ -152,6 +152,8 @@ storyCfg.playlist = {
 
     'vinny-rainbow-queen-ivy': [
         { id: 's2bGUY97o6E', type: 'youtube' },
+        { id: 'i5oAc0hHX7M', type: 'youtube' },
+        { id: 'vz35kFJErW4', type: 'youtube' },
     ],
 
     'rainbow-queen-moment': [
