@@ -7619,7 +7619,8 @@
     "value": "Yeah...",
     "character": "Vinny",
     "type": "think"
-  }
+  },
+
   {
     "value": "Vinny started to recognize the shadow the closer Vinny got to it, it looked like someone very familiar. And the closer Vinny got, the more Vinny recognized it by the look that glowed different colors in the dark. The look seemed to be very serious when she saw Vinny.",
     "type": "action"
@@ -7728,6 +7729,97 @@
   {
     "value": "Yes... You can do whatever you want with me in exchange for Ivy's life back where she can live normally.",
     "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen smirks at Vinny while speaking slowly in a slightly menacing way as she continued walking around Vinny slowly.",
+    "type": "action"
+  },
+
+  {
+    "value": "Heh~ That's good to hear.... Did you know that if Ivy doesn't agree to be my new pet... you will now owe me a new pet?~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah... Like I said, I'll do anything... so do we have a deal? I look for a new pet, and Ivy leaves here alive as if nothing happened and everyone leaves happy? No prank?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes. But... if you don't find a new pet... what will happen?~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny felt a little nervous when he heard this question.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...What? Oh yes. Now the trick that Rayane said happens.",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "What do you want? I manage to find your pet. I attract ponies who are always in need of a change of life. I said this... I do what you want, and if I can't, you can do what you want.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Anything I want... How I like that word~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh. Vinny is a silly and innocent pegasus~",
+    "character": "Rainbow Queen",
+    "type": "think"
+  },
+
+  {
+    "value": "Rainbow Queen's eyes looks at Vinny smartmoby for a few seconds, doing a little evil giggle in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... I found what I needed. It will be much better than I imagined. It's the best way for me to stay happy and at the same time make this stupid pony learn a lesson.",
+    "character": "Rainbow Queen",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Your planet called Earth seems very interesting for me to make my better decisions~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny would then be surprised and more nervous when he heard this, trying to understand how this was possible.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...What? What the fuck is she trying to do?",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Rainbow Queen spoke very quietly to Vinny while staring into Vinny eyes in a more menacing way. Rainbow Queen he was planning something very specific to use against Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Maybe I can get my new pet through other means... I hope you don't mind my very peculiar choices. Hmmmm~ Good to know that just as Amy was concerned to Ivy... this possible pony future life is also someone who is worried about you.",
+    "character": "Rainbow Queen",
     "type": "dialogue"
   }
 
