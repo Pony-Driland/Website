@@ -7897,9 +7897,14 @@
   }, 
   
   {
-    "value": "Perfect. Now I just need to let the nature work for me~",
+    "value": "Perfect. Now I just need to let the nature work for me. This pony really likes gambling. So much determination determined in such fragile choices. This soul will weaken more easily than I imagined. I'll have my new little gift soon~",
     "character": "Rainbow Queen",
     "type": "think"
+  }, 
+
+  {
+    "value": "Rainbow Queen just smirked at Vinny again, ending on a light evil laugh in response.",
+    "type": "action"
   }
 
 ]
