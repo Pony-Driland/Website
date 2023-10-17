@@ -7324,8 +7324,75 @@
   }, 
 
   {
-    "value": "Ivy is right Amy. You can be whoever you want, Ivy will be your sister and she will love you! Please calm down, everything will be ok. You can still see your sister, you can visit. Why are you still like this?",
+    "value": "Amy... Ivy is right. You can be whoever you want, Ivy will be your sister and she will love you! Please calm down, everything will be ok. You can still see your sister, you can visit. Why are you still like this?",
     "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny hugged Amy and leaned her head and started crying together and completed the sentence.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You two were strong, in the end you found each other. Let's calm down everything is going to accept Amy and Ivy.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Are you sure? M...me being me? W... will anyone feel ashamed of my presence or judge me?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The Amy eyes were very wet by the tears as she tried to look at Vinny. Vinny was a little surprised to hear Amy's words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "No! No one will be ashamed of a sweet pony like you! You're welcome and you can see Ivy, you can see us whenever you want. You can be you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny hugged Amy once more, this time inviting Ivy and Rayane to join the hug. Rayane was surprised by the scene, then Rayane hugged Amy too during the progress.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ssssh~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh...",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy was surprised by the scene, and put the collar on the floor so Ivy could join the hug too.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You may be the oldest now, but to me you will always be my little sister.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy smiles and wiped Amy eyes a little before hugging too. Amy continued to get emotional, and she made a very cute smile while crying some more and trying to calm down slowly.",
+    "type": "action"
+  },
+
+  {
+    "value": "Oh... T...thanks everypony...",
+    "character": "Amy",
     "type": "dialogue"
   }
 
