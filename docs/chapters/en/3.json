@@ -7785,7 +7785,7 @@
   },
 
   {
-    "value": "Rainbow Queen's eyes looks at Vinny smartmoby for a few seconds, doing a little evil giggle in response.",
+    "value": "Rainbow Queen's eyes looks at Vinny smartmoby for a few seconds, doing a little evil giggle in response. Vinny was curious, suspicious of something when he saw Rainbow Queen doing this.",
     "type": "action"
   }, 
 
@@ -7813,7 +7813,7 @@
   }, 
 
   {
-    "value": "Rainbow Queen spoke very quietly to Vinny while staring into Vinny eyes in a more menacing way. Rainbow Queen he was planning something very specific to use against Vinny.",
+    "value": "Rainbow Queen spoke very quietly to Vinny while staring into Vinny eyes in a more menacing way. Rainbow Queen was planning something very specific to use against Vinny.",
     "type": "action"
   }, 
 
@@ -7821,6 +7821,85 @@
     "value": "Maybe I can get my new pet through other means... I hope you don't mind my very peculiar choices. Hmmmm~ Good to know that just as Amy was concerned to Ivy... this possible pony future life is also someone who is worried about you.",
     "character": "Rainbow Queen",
     "type": "dialogue"
+  },
+
+  {
+    "value": "A...Ah? For me, it's ok. I only have one request... I don't want to be in the hospital room when everything goes back to normal, I'll dedicate 100% for you to have this pet. I won't keep in contact with anyone about this subject until I get a new pet for you. Alright?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny became even more thoughtful, nervous about trying to imagine what this mysterious future pony could be.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... Do we have an agreement or a pact? I give you a pet that is already aware of everything and freely and spontaneously is your pet. I will trade this for Ivy waking up in that office alive and fully healed with Rayane and Amy without me being there. But... in case I fail to find a pet, you do what you want something from me or the someone in Earth. Is this our deal?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny extended his hoof to Rainbow Rainbow Queen. Rainbow Queen does a short evil laugh and used the scythe to poke Vinny's nose.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Remember this is between you and your new friend Rayane~ So I'll teleport you to some random place in your last village. If this plan leaks... I'll have every right to do anything else myself thing. Even eliminate you forever if I want to...",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen gently rubbed the scythe on Vinny neck as she finished speaking.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heheh~ Yeah... we have a great deal. Don't be worried.... if you fail... I'll know well take care of your little earth friend. Not even she can know about my plan, because you already know where I'm going.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was very nervous when he understood what was really happening, but he felt like he couldn't go back to it anymore.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "F...FUCK! No! FUUUUCK! Son of a bitch! This is impossible! It was the magic on my smartmoby! She knows about Jasmin now!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "F...Fine. Do you want to come with me? Or will you wait for me here?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I'm in no hurry... I'll wait here. But then, is this our deal? Right?~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen does a evil smirk as she extended her hoof to Vinny back. Vinny then does a little gulp and trusts that the plan could work, so he decides to agree to all of this.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes. We have this agreement exactly as I mentioned and you agreed.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+  
+  {
+    "value": "Perfect. Now I just need to let the nature work for me~",
+    "character": "Rainbow Queen",
+    "type": "think"
   }
 
 ]
