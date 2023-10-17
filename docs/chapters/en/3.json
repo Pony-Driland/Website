@@ -7620,5 +7620,86 @@
     "character": "Vinny",
     "type": "think"
   }
+  {
+    "value": "Vinny started to recognize the shadow the closer Vinny got to it, it looked like someone very familiar. And the closer Vinny got, the more Vinny recognized it by the look that glowed different colors in the dark. The look seemed to be very serious when she saw Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny approached and tried to speak in a slightly hurt way.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What did I do wrong?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen came out of the shadows and looked at VInny, analyzing him behavior, Rainbow Queen was still very serious and not happy by Vinny presence.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... You. Are you still asking me what you did wrong? You again... Once again you again... I told you to stay out of my way. You're so lucky that it would be disrespectful for me to hurt you in front of Amy.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen's scythe glowed a little brighter, sending flames of colorful aura around, symbolizing how much hatred Rainbow Queen was feeling at that moment. Vinny was a little scared, but he maintained his feelings of sadness at seeing all that.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I...I'm sorry if my presence doesn't please you, but I'm here for Ivy. I did it all just for her. and even then I carry a \"bucket of cold water\". All of our meets have been for someone I care about some problem I'm trying to work it out. Because everyone here didn't have to go through the things I went through today.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked back at the little group and back to Rainbow. Vinny tried to hold back his feelings of anger while trying not to cry.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "So you don't have to see me...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen then, even though she was angry, was curious about Vinny's words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Don't you need to see me? How did you expect not to see me if you're always getting into big trouble? Why don't you just go live a normal life and let me solve all the problems? I was about to help my sweet Amy get together with an sister... Then you once again appear and interrupt my plans...",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen then used the flaming scythe to make Vinny's look intently at Rainbow Queen's angry gaze.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And now if my plan goes wrong... Amy is going to be extremely sad... BECAUSE OF YOU!!",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen then took a deep breath and does a small evil laugh. Rainbow Queen then put the scythe away as she continued her conversation, observing every detail of Vinny's sad look.",
+    "type": "action"
+  }
 
 ]
