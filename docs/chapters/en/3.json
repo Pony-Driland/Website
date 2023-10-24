@@ -8260,12 +8260,152 @@
   }, 
 
   {
-    "value": "Rainbow Queen finished talking and slowly pushed Vinny away while she ended up laughing evily again.",
+    "value": "Rainbow Queen finished talking and slowly pushed Vinny away while she ended up laughing evilly again.",
     "type": "action"
   }, 
 
   {
     "value": "AH!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "But wait... Hmmmm... Lunch?",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen looks at Vinny, showing a disapproving look. Rainbow Queen was very thoughtful for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What an abused guy... Hmmm... Okay, this will leave him even more surrounded by difficult decisions~",
+    "character": "Rainbow Queen",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Okay... lunch... A very special little surprise awaits you so if you eat this~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen does another evil giggle as she started to create another item, this item was covered by a colorful aura and it had the shape of a pie.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Only you can eat... Am I clear?~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen spoke quietly on Vinny's ear in a very serene way, trying to focus all his attention on her words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh. I've got my eye on you....after all, know that you can make things easier for me too. Think about it~ Instead of doing the hardest ways for yourself... Give me your earthling friend~ You'll save time... you'll have your happy ending. Amy will enjoy having a new friend~ Everything is so simple to solve...",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny felt a little nervous, but then he started talking again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Fuck...",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Would that be a super pie that when I eat it I'm strong and happy? Or just an ordinary pie?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I can't say little surprises... the choice is completely yours. Don't forget my last words~ After all... look at Rayane's face.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen keep talking very softly on Vinny's ear while using magic to direct Vinny face to look at Rayane's worried face, she was very anxious and depressed waiting for Vinny, wanting everything to end well.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Look at these blank stares~ Hopeless stares... Is this what you want for her? The acceptance of you giving me your friend from your world could make things so easy for both of you~ You can go back to your normal life without having to owe me anything anymore~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny continued to try to maintain control over Rainbow Queen's manipulative words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W..Well... It's really tempting, but I understand everything you said about the pie, the magic item. The pie only I can eat, and the potion only Rayane can take without knowing the origin of it, on condition that she opens up to me and tell the truth of her past correct? Isn't it easier for you to talk about her past?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked at the ground, trying to protect himself from the Rainbow Queen's attempts at manipulation.",
+    "type": "action"
+  },
+
+  {
+    "value": "Rayane must have suffered so much already, she must have been forced to do even more horrible things. In my world, I only need to look into the eyes of those who approach me to know what that eye witnessed. Your eyes as beautiful as they are I still don't have an opinion. I'm ready if you agree. Don't worry. You can keep an eye on me if you don't trust me, when I say I'm going to do something, I follow the letter and do it. I'll give you a pet, you can be safe.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen giggles evilly at Vinny words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "So you trust me more than Rayane? Is that what you want to tell me?~ Will you want to hurt her feelings to know that you needed me to know that?~ I expected more from you...",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "W...What?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Rainbow Queen does a little evil giggle and then her eyes sparkled and began to reflect various colors as she looked at Vinny. The Rainbow Queen's scythe began to rotate during the process.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Awwww... Sorry... Are my eyes beautiful?~ Our agreements are already waiting for you. Rayane's agreement and our pet agreement~ If you think my eyes are so beautiful, why don't you like them to carry out my request to give me your little friend from the earth so we can finish your first deal?~ These eyes will be so happy and you will be able to see me smile for the first time~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Vinny closed his eyes a little nervously, but then looked back at the Rainbow Queen.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I already know a little about Rayane from her. But it's her side, it's always good to hear the other side of the bit. You said and promised you would get revenge on whoever did that to her, I care a lot about her. As much as she hides things from me, we all hide, whether out of shame, regret. Anyway, I know a little about Rayane's side and would love to hear your side of her, of course if you're willing to speak of your own free will. Otherwise I think we have nothing more to do here inside Ivy's mind. About your beautiful eyes there will still be many reasons for you to have more sparkle because of me.",
     "character": "Vinny",
     "type": "dialogue"
   }
