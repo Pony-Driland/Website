@@ -8408,6 +8408,209 @@
     "value": "I already know a little about Rayane from her. But it's her side, it's always good to hear the other side of the bit. You said and promised you would get revenge on whoever did that to her, I care a lot about her. As much as she hides things from me, we all hide, whether out of shame, regret. Anyway, I know a little about Rayane's side and would love to hear your side of her, of course if you're willing to speak of your own free will. Otherwise I think we have nothing more to do here inside Ivy's mind. About your beautiful eyes there will still be many reasons for you to have more sparkle because of me.",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Rainbow Queen does a little evil laugh as she returned to respond very gently to Vinny, trying to make Vinny keep calm by her words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "My side?~ So let's increase your bet even more~ Give me your little friend from the earth... and then I'll also be able to tell you a little about my friendship with Rayane... What do you think?~ In addition to brightening my eyes~ You'll have more time to talk to me~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then felt a little surprised to hear this, trying to understand why Rainbow Queen was so interested.",
+    "type": "action"
+  },
+
+  {
+    "value": "T...Time with you? Are you talking like it's a date? We go out for a little something, we look at the beautiful day that is around us, we laugh and in the end we separate? I sincerely care about my friend on earth.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh~ It's like a \"date\"~ A few minutes with you inside my house~ I'll give you a very temporary little truce~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W..What? Wow! Is she serious?!",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Rainbow queen replied very delicately while doing more evil giggles and keeping the same look to keep all Vinny focus on the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Don't worry.... I'll take good care of your earth friend. You can have my word that I'll take good care of her~ She'll look so cute wearing the same bow tie as Amy~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen does a second short laugh before replying again. Vinny tried to remain calm during Rainbow Queen's provocative speeches, so he tried to have a little more control of the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W..well... okay. I didn't want to interrupt the conversation, but now I'm thinking. If you can pull my friend here, then you who pulled me here?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hm?~ Hmmmm... Usually these portals are random, but yes, sometimes I like to be specific in making my own random choices. I'd say you might have been lucky to come here~ My sincerest words to you are that I have no relation to your appearance here.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh came on! Not even the goddess of this world knows how to answer that?!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Let's do it like this, we're not going to agree on anything now about your house, but in the future we can go back to negotiating, by the way, do you know the future? How do you know I will get a pet? Do you have a crystal ball that predicts the future? I really have my convictions. You're a beautiful goddess who has your interests and I'm some common pony who dropped by parachute. Well! Anyway I'm ready to go, I think we've spent too much time here and I have an official service in the name of a goddess to do.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heheh. You'll like it~ My house has a nice view... You'll be surprised~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen smirks at Vinny during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I have nothing to say about the future. I'll only give you Ivy's life back if our agreement is all agreed~ No one can know the exact future of this world. But yes, there are abilities to try to predict the future. I should be more suspicious of you for telling me this.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The scythe rubbed a little on Vinny's mane as she finished putting the scythe back beside her.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "So your final decision is now if you don't want me to change my mind about something. I don't want you to let me down~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then looked at Rayane again, observing her look of fear. Vinny took a deep breath and closed his eyes, looking for acceptance in the words she was about to say.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Fine... Okay okay... Come on, I'm ready. The pie and it must be divine. Another time I try your pie with more hunger and desire. We are left with only the first agreement. Let's just make the first deal.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a ironic look in disguise.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But who knows, maybe one day I won't be able to taste your pie. Heh!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen smirks even more at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Only with the first deal? So is this really it? Alright~ I made this pie with so much affection... I offered you to come to my house. A little dialogue between the two of us to help your friend Rayane. And you refuse my opportunities... what a waste of time you had with yourself.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen does a evil giggles as she delicately disintegrated the entire pie in front of Vinny piece by piece.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmm... I've learned enough how a part of your word games works, it was a lot of fun. Too bad you ended up choosing the harder path... but no problem... If you did, who am I to judge your choices?~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The Rainbow Queen horn glowed and the scythe lightly began to glow even more.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "As you said in your own words......\"I give you a pet that is already aware of everything and free and spontaneous is your pet\". Don't forget Vinny... I wish you good luck... Remember that you can give up at any time, after all, I still have another very special preference for your little earth friend~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes, a deal is a deal. The pet will know all this. no pranks or tricks.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen pointed the scythe up.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'll be watching you~ And as promised.... here is the beginning of our deal~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen's horn glowed even more intensely so a very bright sphere began to appear, reflecting various colors. As Vinny looked at the light, Vinny had a great sense of restorative energy focused on a light sphere. Then the sphere soon approached close to Vinny hoof.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...wow! It's brighter than Rayane's skill!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Y...you could have saved Ivy the whole time, anyway I appreciate the new life you're giving Ivy.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh. This is my regeneration energy made especially for Ivy's body. Go ahead silly one~ Just hand it over to her, and everything will be done.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "All of this... all of this for my happy ending. So this will finally be it. But I need to be careful, I know Rain isn't being that gentle for nothing.",
+    "character": "Vinny",
+    "type": "think"
   }
 
 ]
