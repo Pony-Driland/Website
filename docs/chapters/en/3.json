@@ -8138,6 +8138,9 @@
   }, 
 
   {
+    "set": {
+      "playlistPlay": null
+    },
     "value": "Vinny was getting ready to walk back to Rainbow Queen. Rayane was very worried as she looked into Vinny eyes after the boop, and a little tears came out from Rayane eyes.",
     "type": "action"
   }, 
@@ -8145,6 +8148,125 @@
   {
     "value": "G..good luck...",
     "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rainbow Queen was slightly busy using some magic to prepare something, but when she heard the Vinny's footsteps, she would interrupt and look at Vinny, doing a slight smirks face. Waiting for Vinny to say something.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "vinny-rainbow-queen-ivy"
+    },
+    "value": "How interesting... Look who's back again~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well... I'm here. I am Miss.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks at Rayane. Rayane was looking very worried and depressed about the situation. She was trying to have some hope that nothing bad happened from Vinny decision.",
+    "type": "action"
+  },
+
+  {
+    "value": "W...well... Before we leave here, I think there's time for me to ask you 2 things, of course you can ignore them. But I think it's in your interest and mine. Do you have any preferences? Any pony you want to be a pet, or don't have anything?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen then does an evil little smirk at Vinny. Rainbow Queen then revealed the scythe holding some magic in it.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Preference? Of course I do~ Do you really think I would choose anyone?~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then tried to show confidence as if everything was normal.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well, you didn't specify the deal, but as you and I are in a game of interest, I decided to ask. I need to ask Rayane's security, and I think you'll agree too. Rayane always came close to death to protect me countless times, I need to do something for that not to happen. If you can help me with this I would be very grateful.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny rubbed his hoof over his head and gave a small, relaxed giggle.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And my 2nd order... It's my lunch. Heheh! I think you'll have no problem getting lunch or dinner. I came running to save Ivy, and with a satisfied stomach I can perform the work better. Anyway, the deal will win you, if I succeed in the deal you get a pet, if I fail you still win my friend from my world. What is it to help me feed before performing a service for a goddess like you? Uou have everything you need, I don't even have money.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen start a little evil giggles at Vinny words for a few seconds before answering. Rainbow Queen then does a small, menacing evil smile.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "How smart you are... so you want to prolong Rayane's life? So let's have another second deal along with the first~ I'm going to grant you a very special item that can only be used once. But it will only work for two conditions... Rayane can't know this, and most importantly, you'll have to convince her to tell you the truth, otherwise this item will simply evaporate forever when you try to use it.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The Rainbow Queen horn glowed different colors while the mane started to glow a little stronger, starting to create some kind of magic potion.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "This item can't revive her, but you might as well use it to restore her health completely.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen started another slight evil giggle before continuing talking as she walked around Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "How easy things seem because of me... Am I right?~ You want to depend on a goddess. You really want to make good use of it. Go ahead... enjoy my benefits... Just remember one thing~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen put her scythe on Vinny neck and focused her gaze on Vinny face as she made a slight mesmerizing look at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I don't do everything for free~ Everything in life has its price... You really like to gamble, and that's something I at least like. But you should be careful with your decisions. I feel sorry for ponies like you, but I'll do what you want about Rayane... I enjoyed getting to know a little about your board game... We could play this \"betting game\" more~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen finished talking and slowly pushed Vinny away while she ended up laughing evily again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AH!",
+    "character": "Vinny",
     "type": "dialogue"
   }
 
