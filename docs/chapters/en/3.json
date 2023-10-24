@@ -7903,8 +7903,249 @@
   }, 
 
   {
-    "value": "Rainbow Queen just smirked at Vinny again, ending on a light evil laugh in response.",
+    "value": "Rainbow Queen just smirked at Vinny again, ending on a light evil laugh in response. Vinny was a little thoughtful during these seconds and then finally made the decision.",
     "type": "action"
+  },
+
+  {
+    "value": "D...Do you wait for me here? I'm not going to say anything about our conversation here. That would make everyone confused. I promised I would go back here. Why don't you go see Rayane... at no time did you want to approach her. It might be a good chance for Amy to see your friendship with her.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "What?",
+    "character": "Rainbow Queen",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Rainbow Queen stared at Vinny during him words, answering Vinny with disapproval",
+    "type": "action"
+  }, 
+
+  {
+    "value": "No. I refuse to talk to her. Rayane needs to prove herself worthy to speak to me again. Why does she hide her true past? This is completely disrespectful to me.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little surprised and confused at the same time",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... she hides it from me too. I'll go there. I hope our wake up right.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen smirks evilly in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh... I hope you know very well who this friend of yours is~ You won't be able to come back again to ask me to change my mind. See you later~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "N..no no... I know I made a good choice. Everything will end well. I just need to find a new pet for Rainbow Queen and the crazy goddess will leave me and Jasmin alone again. And maybe I'll change her mind a little. I have to be more careful with this smartmoby thing. I should have listened better to James' tobacco head!",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny was just trying to stay calm during Rainbow Queen's taunts. Vinny then went back to where Rayane was. Rayane was quiet, caressing Ivy and Amy, the two were very quiet and calm resting while hugging each other.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "dark-ambient-melodies"
+    },
+    "value": "Awwww~ They really are two sisters very close together.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little curious but then he smiled again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'm sorry. I thought too much, how are you?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny surreptitiously looking close to Ivy where she dropped the collar last.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Remember our bet when we got here Rayane?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane laughed a little before smirk in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh. Ivy and Amy resting~ The two ones wanted to stay together until the last second of Ivy's life. This little family is so adorable~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The collar was still there on the floor, Ivy had forgotten to get the collar back.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "But wait... Bet?",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "No. Earlier when we got here remember? The kiss.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny hugged everyone gently in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Kiss?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was a little surprised in response. But then Rayane smirks at Vinny again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What do you mean by that?~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah... Don't you remember? In case someone happens to talk to you again or get out of my way, you don't remember that we bet that when we came in here.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was still hugging Ivy and Amy. The two were still close together and hugging, resting calmly. Vinny gently kissed Rayane to help her stay calm during the conversation. Vinny smiled a little. Rayane then blushed a little in surprise for a few seconds and then smirked back.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmmmm... So you're telling me I won?~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A..Ah? Na na ni na no. I was right, she said not only 1 sentence but 2 sentences. Heheh! Looks like I won 2 times.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny took advantage of the moment and picked up the collar that was on the floor.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Sorry Rayane... I need to do something. Do not worry about me. I need to do a little thing first, I'll try to be quick, but as I promised in the end I'll make you and Rain get together again. Take good care of Ivy and Amy. Alright? This is not a goodbye. Hihi! I...I will see you later. The new life is waiting for Ivy...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then felt surprised when she started trying to understand what was happening.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh...oh? And..is Rain here? What do you mean by that?",
+    "character": "Rayane",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Rayane was very worried by Vinny words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes, but there's no reason for you to be worried, even if Rain wants to take advantage of me I have my ways to escape, when all this is over I'll meet you again. Look at me... This is something on Darkanger Ghost Town, but no I will stay on there a long time. Well, I need to go, I need to have lunch and go do something, I promise I'll explain everything that happens, okay?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "E..escape? W... what do you think you're going to do? Escape from Rain isn't as simple as you think. She's going to set something up against you. Vinny... promise me you'll come back today. I can't lose you to Rain!",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny breathed deeply as he felt empathy for Rayane's feelings. Vinny then decided to give Rayane a little boop.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I promise, the same way I changed you, I have to start somewhere. Good bye...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane tried to remain calm and just went back to protecting Ivy and Amy, giving Vinny a worried look. Rayane knew she couldn't do much to try to interfere with that.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "B..but Vinny... I...I... okay. Y..Yes. I'll trust you...",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was getting ready to walk back to Rainbow Queen. Rayane was very worried as she looked into Vinny eyes after the boop, and a little tears came out from Rayane eyes.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "G..good luck...",
+    "character": "Rayane",
+    "type": "dialogue"
   }
 
 ]
