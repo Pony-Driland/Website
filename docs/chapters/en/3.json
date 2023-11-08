@@ -8669,9 +8669,26 @@
   }, 
 
   {
-    "value": "I punished her for trying so hard to get in the way of my plans about this world. And she hides things about us from you.",
+    "value": "I punished Rayane for trying so hard to get in the way of my plans about this world! And she hides things about us from you. How can I trust her like this? I'm just giving her a chance to redeem herself, but if she doesn't do anything about it herself, forget it. She needs to finish what she started.",
     "character": "Rainbow Queen",
     "type": "dialogue"
+  },
+
+  {
+    "value": "I...I can try to get Rayane to talk about you, first with me, then with you. If you accept... Anyway, let's give Ivy a new life, I'll go with you in front, all right? About the Rayane's secrets... I'll convince her to open up in time.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried to hide his nervousness, looking at Rayane and then at Rainbow Queen for a few seconds.",
+    "type": "action"
+  },
+  
+  {
+    "value": "Fuck! The situation really is worse than I imagined.",
+    "character": "Vinny",
+    "type": "think"
   }
 
 ]
