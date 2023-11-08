@@ -8602,7 +8602,7 @@
   }, 
 
   {
-    "value": "Heh. This is my regeneration energy made especially for Ivy's body. Go ahead silly one~ Just hand it over to her, and everything will be done.",
+    "value": "Heh. This is my regeneration energy made especially for Ivy's body. Go ahead silly one~ Just give it to her, and everything will be done.",
     "character": "Rainbow Queen",
     "type": "dialogue"
   }, 
@@ -8611,6 +8611,67 @@
     "value": "All of this... all of this for my happy ending. So this will finally be it. But I need to be careful, I know Rain isn't being that gentle for nothing.",
     "character": "Vinny",
     "type": "think"
+  }, 
+
+  {
+    "value": "Vinny breathed deeply as he thought about his next words to say. He was feeling nervous, but he was still very confident.",
+    "type": "action"
+  },
+
+  {
+    "value": "Fine! Interesting. The deal was for you to give life to Ivy and me to give a pet to you. Is it because Rayane is there? I can go with you if you want, you don't have to say anything to Rayane.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny rubbed his own head for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But seeing her crying a lot because of the situation we left her in is a bad feeling that falls on us isn't it? Luckily when she sees this sphere on the Ivy, she will get better, but for a moment you will see and feel what I will most likely feel when I give you a pet. A pony that is willing to give up everything to live by your side as a pet.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked halfway waiting for an answer. But Rainbow Queen looked at Vinny very seriously.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Why do you want me to talk to Rayane so badly? So do you really want to feel how scared she is from me?",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "N..no. Deep down, she wants you by her side, she likes you a lot. You two have a strong bond, where on Rayane's side she really wants to go back to what she was before. But you can't show it, I'm not asking you to talk to her, just go and give the Ivy's life as agreed.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked around for a few seonds, wanting to leave the place.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well! If you want I'll give the Ivy's life if you don't want to get close. But analyzing it right, Rayane hugging Amy who no longer thinks Rayane is a monster, who is hugging Ivy who is resting thinking that this is her last moment. I don't think Rayane would do something, in order to still let the 2 rest.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen kept showing a look of disapproval, doing Vinny look amazed at Rainbow Queen.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I punished her for trying so hard to get in the way of my plans about this world. And she hides things about us from you.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
   }
 
 ]

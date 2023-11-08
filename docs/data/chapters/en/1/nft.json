@@ -1,0 +1,13 @@
+{
+    "name": "Chapter 1 - This is not my world",
+    "description": "The protagonist's early days in the world of Pony Driland. Something mysterious has happened and we need to discover the basics about this mysterious place.",
+    "image": "ipfs://",
+    "image_url": "ipfs://",
+    "attributes": [
+        {
+            "trait_type": "File",
+            "value": "ipfs://"
+        }
+    ],
+    "background_color": "FFFFFF"
+}
