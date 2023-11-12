@@ -8726,10 +8726,7 @@
   }, 
 
   {
-    "set": {
-      "playlistPlay": null
-    },
-    "value": "Vinny tried to remain calm, and Rainbow Queen found it interesting to feel Vinny's reactions trying to be as natural as possible. Rainbow Queen's eyes slightly reflected more colors as she did a little smirks and brought the scythe back to her. And at this moment the sphere of energy that was with Vinny began to levitate.",
+    "value": "Vinny tried to remain calm, and Rainbow Queen found it interesting to feel Vinny's reactions trying to be as natural as possible.",
     "type": "action"
   }, 
 
@@ -8737,6 +8734,47 @@
     "value": "Hmmm... Boop you? Boop your neck? Heh~ You'll soon see what I'm going to do with you later~",
     "character": "Rainbow Queen",
     "type": "dialogue"
+  },
+
+  {
+
+    "value": "The scythe rubs delicately on Vinny neck. Rainbow Queen's eyes slightly reflected more colors as she did a little smirks and brought the scythe back to her side. And at this moment the sphere of energy that was with Vinny began to levitate.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Don't be silly~ Amy will want to befriend my possible new pet~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rainbow Queen then looked at Rayane for a few seconds and does another smile at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "So okay... I'll go with you~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+  {
+    "value": "Y..yeah! All right! You can go ahead.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then got out of Rainbow Queen's way and followed her.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Rainbow Queen's scythe started to scare away all the darkness from the place, making Vinny and Rainbow Queen become fully visible to Rayane.",
+    "type": "action"
   }
 
 ]
