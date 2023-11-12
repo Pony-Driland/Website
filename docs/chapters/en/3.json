@@ -8675,7 +8675,7 @@
   },
 
   {
-    "value": "I...I can try to get Rayane to talk about you, first with me, then with you. If you accept... Anyway, let's give Ivy a new life, I'll go with you in front, all right? About the Rayane's secrets... I'll convince her to open up in time.",
+    "value": "I...I can try to get Rayane to talk about you, first with me, then with you. If you accept... Anyway, let's give Ivy a new life, I'll go with you in front, all right? About the Rayane's secrets... I'll convince her to \"open up\" in time.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -8689,6 +8689,54 @@
     "value": "Fuck! The situation really is worse than I imagined.",
     "character": "Vinny",
     "type": "think"
+  },
+
+  {
+    "value": "Y..Yeah! You can understand that all this is as if Rayane were a younger sister who gets into various problems and wants to do whatever she wants while you are the oldest and most responsible here.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen thought about Vinny's words, getting into a conclusion on her own. Then Rainbow Queen does a little evil laugh as she answered, poking the scythe on Vinny's neck.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And it looks like this little sister learned from a certain someone to be stubborn when it comes to not letting me work alone.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen smirks at Vinny during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I don't need to know anything about the truth. I already know the whole truth. Don't think I'm being too nice for you... Remember that we have a very important matter to deal with after all this Don't think you're above of the consequences~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Y..yeah... and... even you booping me is the same way... the only difference is that Rayane boop my nose, and you're booping me using your... scythe on my neck. W...Well! Come on? About our agreement you can be sure that agreed is agreed. Either way, you're going to win, whether I win or lose. We can go? Who goes first?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Vinny tried to remain calm, and Rainbow Queen found it interesting to feel Vinny's reactions trying to be as natural as possible. Rainbow Queen's eyes slightly reflected more colors as she did a little smirks and brought the scythe back to her. And at this moment the sphere of energy that was with Vinny began to levitate.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmm... Boop you? Boop your neck? Heh~ You'll soon see what I'm going to do with you later~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
   }
 
 ]
