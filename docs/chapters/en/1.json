@@ -526,7 +526,7 @@
 
     {
         "type": "action",
-        "value": "Vinny stood up and soon fell down. Weirded out, he looked at his arm. Soon he noticed that everything was totally different with his body. Instead of seeing hands, he saw pony paws, and on his back were wings."
+        "value": "Vinny stood up and soon fell down. Weirded out, he looked at his arm. Soon he noticed that everything was totally different with his body. Instead of seeing hands, he saw pony hooves, and on his back were wings."
     },
 
     {
@@ -654,7 +654,7 @@
 
     {
         "type": "action",
-        "value": "The mysterious pony was surprised by Vinny's words, he gradually helped him to get in a balanced pose so you could stay seated."
+        "value": "The mysterious pony was surprised by Vinny's words, he gradually helped him to get in a balanced pose so Vinny could stay seated."
     },
 
     {
@@ -666,7 +666,7 @@
 
     {
         "type": "action",
-        "value": "Vinny tried to balance himself between his paws as he responded."
+        "value": "Vinny tried to balance himself between his hooves as he responded."
     },
 
     {
@@ -677,13 +677,13 @@
 
     {
         "type": "action",
-        "value": "Vinny lost the balance of the pose of the paws and fell on the sand again."
+        "value": "Vinny lost the balance of the pose of the hooves and fell on the sand again."
     },
 
     {
         "type": "dialogue",
         "character": "???",
-        "value": "Oh yes, I think this is more than enough evidence. Hee. Don't worry , I'll teach you to walk. My name is Kenny!"
+        "value": "Oh yes, I think this is more than enough evidence. He. Don't worry , I'll teach you to walk. My name is Kenny!"
     },
 
     {
@@ -788,7 +788,7 @@
 
     {
         "type": "action",
-        "value": "Right after Kenny give the phone, Vinny hold the phone."
+        "value": "Kenny give the phone to Vinny, then Vinny hold the phone."
     },
 
     {
@@ -810,7 +810,7 @@
 
     {
         "type": "action",
-        "value": "Kenny said with a curious face, looked at Vinny and he reactions while trying to help he keep up again. Then the two started walking towards the village."
+        "value": "Kenny does a curious face, looking at Vinny and he reactions while trying to help he keep up again. Then the two started walking towards the village."
     },
 
     {
@@ -860,7 +860,7 @@
 
     {
         "type": "action",
-        "value": "Vinny tried not to completely lose his paws balance."
+        "value": "Vinny tried not to completely lose his hooves balance."
     },
 
     {
@@ -1893,7 +1893,7 @@
 
     {
         "set": { "playlistPlay": null },
-        "value": "Kenny put his paw on his head to try to get as dizzy as possible. When everyone noticed that Vinny was fine, everyone went back to the routine.",
+        "value": "Kenny put his hoof on his head to try to get as dizzy as possible. When everyone noticed that Vinny was fine, everyone went back to the routine.",
         "type": "action"
     },
 
@@ -4496,7 +4496,7 @@
     },
 
     {
-        "value": "Vinny try to touch the object. When Vinny touched it, it was as if Vinny were going to touch ice, but a very cold ice that almost burns he paw.",
+        "value": "Vinny try to touch the object. When Vinny touched it, it was as if Vinny were going to touch ice, but a very cold ice that almost burns he hoof.",
         "type": "action"
     },
 
@@ -4803,7 +4803,7 @@
     },
 
     {
-        "value": "The mystery unicorn 2 horn's magic became stronger and he raised his paws, preparing to use some magic skill.",
+        "value": "The mystery unicorn 2 horn's magic became stronger and he raised his hooves, preparing to use some magic skill.",
         "type": "action"
     },
 
@@ -6567,7 +6567,7 @@
     },
 
     {
-        "value": "Vinny extends his paw to receive the cell phone. So James took a deep breath, slowly calming down. James was disappointed in himself",
+        "value": "Vinny extends his hoof to receive the cell phone. So James took a deep breath, slowly calming down. James was disappointed in himself",
         "type": "action"
     },
 
@@ -6639,7 +6639,7 @@
     },
 
     {
-        "value": "James closes the notebook screen and rubbed the paw on his head before going inside the tent. Vinny laughed a little and answered.",
+        "value": "James closes the notebook screen and rubbed the hoof on his head before going inside the tent. Vinny laughed a little and answered.",
         "type": "action"
     },
 
@@ -6979,7 +6979,7 @@
     },
 
     {
-        "value": "Me? Nothing! You crazy! You are having a dream of something banana and I woke up with your paw in my mouth!",
+        "value": "Me? Nothing! You crazy! You are having a dream of something banana and I woke up with your hoof in my mouth!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -7009,7 +7009,7 @@
     },
 
     {
-        "value": "So tell me you! You tabacu head! You who dreamed and had this dirty paw of ass in my mouth!",
+        "value": "So tell me you! You tabacu head! You who dreamed and had this dirty hoof of ass in my mouth!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -7229,7 +7229,7 @@
     },
 
     {
-        "value": "Okay, okay Sir James. I wake up with your paw in my mouth, you calling for a banana general, and still freezes my face during this cold. What a beautiful shit friend you are. Congratulations you are the best, I hope Kenny pulls yours ear.",
+        "value": "Okay, okay Sir James. I wake up with your hoof in my mouth, you calling for a banana general, and still freezes my face during this cold. What a beautiful shit friend you are. Congratulations you are the best, I hope Kenny pulls yours ear.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -8097,7 +8097,7 @@
     },
 
     {
-        "value": "Vinny was feeling a lot of empathy for James, so Vinny just smiled and placed a paw on his shoulder gently.",
+        "value": "Vinny was feeling a lot of empathy for James, so Vinny just smiled and placed a hoof on his shoulder gently.",
         "type": "action"
     },
 
@@ -8265,7 +8265,7 @@
     },
 
     {
-        "value": "James then did a facehoof and rubbed his paw over his face angrily as he replied.",
+        "value": "James then did a facehoof and rubbed his hoof over his face angrily as he replied.",
         "type": "action"
     },
 
@@ -10217,7 +10217,7 @@
     },
 
     {
-        "value": "I understand, and I'm super cool about it, I needed to know, you can shoot me, you can break my paw, but I'd still be on your side, I just wouldn't be on your side if you lie to me and that would result in something very dangerous for others, that's reason I came to talk to you, you're not alone, all your new friends are seeing what you really are. Because of some things you prefer to be isolated and that's normal, you worry about your friends. But if you want my help, help from James or any pony, I want you to know that we are with you. I'm sorry for asking this, it's a funeral atmosphere now between us.",
+        "value": "I understand, and I'm super cool about it, I needed to know, you can shoot me, you can break my hoof, but I'd still be on your side, I just wouldn't be on your side if you lie to me and that would result in something very dangerous for others, that's reason I came to talk to you, you're not alone, all your new friends are seeing what you really are. Because of some things you prefer to be isolated and that's normal, you worry about your friends. But if you want my help, help from James or any pony, I want you to know that we are with you. I'm sorry for asking this, it's a funeral atmosphere now between us.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -10300,7 +10300,7 @@
     },
 
     {
-        "value": "Vinny smiled gently as he placed his paw on Rayane's shoulder.",
+        "value": "Vinny smiled gently as he placed his hoof on Rayane's shoulder.",
         "type": "action"
     },
 
@@ -11400,7 +11400,7 @@
     },
 
     {
-        "value": "I was just a little worried because besides me and Rayane, sometimes doing something for the 3 of us can save us, and that worries me. But i trust you. What you do our lives can be on your hands! Ops...PAWS!!!",
+        "value": "I was just a little worried because besides me and Rayane, sometimes doing something for the 3 of us can save us, and that worries me. But i trust you. What you do our lives can be on your hands! Ops...HOOVES!!!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -11588,7 +11588,7 @@
 
     {
         "set": { "playlistPlay": null },
-        "value": "Yes. Don't worry. the machine controller is on your paw.",
+        "value": "Yes. Don't worry. the machine controller is on your hoof.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -12190,7 +12190,7 @@
     },
 
     {
-        "value": "Vinny smiles and tries to move the wings synchronizing with the machine. The machine understood that Vinny were just wanting to start to fly, so soon Vinny started to feel your paws leaving the ground.",
+        "value": "Vinny smiles and tries to move the wings synchronizing with the machine. The machine understood that Vinny were just wanting to start to fly, so soon Vinny started to feel your hooves leaving the ground.",
         "type": "action"
     },
 
@@ -12612,7 +12612,7 @@
     },
 
     {
-        "value": "Vinny then placed his paw on his head and accepted defeat. ",
+        "value": "Vinny then placed his hoof on his head and accepted defeat. ",
         "type": "action"
     },
 
@@ -12889,18 +12889,18 @@
 
     {
         "set": { "playlistPlay": null },
-        "value": "The fire was going out slightly until the marshmallow reached a speed that when hitting Vinny paws, the marshmallow soiled Vinny hooves in the process.",
+        "value": "The fire was going out slightly until the marshmallow reached a speed that when hitting Vinny hooves, the marshmallow soiled Vinny hooves in the process.",
         "type": "action"
     },
 
     {
-        "value": "Ah! M..My paws! Rayane, is this stuff edible?",
+        "value": "Ah! M..My hooves! Rayane, is this stuff edible?",
         "character": "Vinny",
         "type": "dialogue"
     },
 
     {
-        "value": "Vinny looks at the paws nervously for a few seconds, thinking twice for a few seconds again, so Vinny gave a very nice lick on the paws.",
+        "value": "Vinny looks at the hooves nervously for a few seconds, thinking twice for a few seconds again, so Vinny gave a very nice lick on the hooves.",
         "type": "action"
     },
 
@@ -13229,7 +13229,7 @@
     },
 
     {
-        "value": "Vinny smiles a little and puts his paw on Rayane shoulder. Rayane was very worried, but when she felt Vinny's paw, she calmed down and smiled a little back.",
+        "value": "Vinny smiles a little and puts his hoof on Rayane shoulder. Rayane was very worried, but when she felt Vinny's hoof, she calmed down and smiled a little back.",
         "type": "action"
     },
 
@@ -13624,7 +13624,7 @@
     },
 
     {
-        "value": "Rayane finished touching something on her SmartMoby during the talk. Vinny then approached Rayane and spoke gently, supporting the paw on Rayane.",
+        "value": "Rayane finished touching something on her SmartMoby during the talk. Vinny then approached Rayane and spoke gently, supporting the hoof on Rayane.",
         "type": "action"
     },
 
@@ -15823,7 +15823,7 @@
     },
 
     {
-        "value": "AH! Why James? You put your paw in my mouth and kept talking about a banana salad! You have to tell me.",
+        "value": "AH! Why James? You put your hoof in my mouth and kept talking about a banana salad! You have to tell me.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -16380,7 +16380,7 @@
     },
 
     {
-        "value": "James hides his face behind his paws, embarrassed.",
+        "value": "James hides his face behind his hooves, embarrassed.",
         "type": "action"
     },
 
@@ -16661,7 +16661,7 @@
     },
 
     {
-        "value": "James then opened his backpack and took out a radar. Then James would levitate the radar to Vinny's paw.",
+        "value": "James then opened his backpack and took out a radar. Then James would levitate the radar to Vinny's hoof.",
         "type": "action"
     },
 
@@ -17454,7 +17454,7 @@
     },
 
     {
-        "value": "Rayane put her paw on James' mouth gently.",
+        "value": "Rayane put her hoof on James' mouth gently.",
         "type": "action"
     },
 
@@ -18869,7 +18869,7 @@
     },
 
     {
-        "value": "Vinny walks close to Rayane. Vinny then laid his face on Rayane's paws while making a sad expression.",
+        "value": "Vinny walks close to Rayane. Vinny then laid his face on Rayane's hooves while making a sad expression.",
         "type": "action"
     },
 
@@ -19715,7 +19715,7 @@
     },
 
     {
-        "value": "Hmmm. Okay! We can do 2 things if you want. We can train together, or you can wake up James. I need to ask about the banana soldier, and if you're lucky he puts his paw in your mouth also looking for him.",
+        "value": "Hmmm. Okay! We can do 2 things if you want. We can train together, or you can wake up James. I need to ask about the banana soldier, and if you're lucky he puts his hoof in your mouth also looking for him.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -19810,7 +19810,7 @@
     },
 
     {
-        "value": "Rayane put her paw on Vinny's snout.",
+        "value": "Rayane put her hoof on Vinny's snout.",
         "type": "action"
     },
 
@@ -19911,7 +19911,7 @@
     },
 
     {
-        "value": "Rayane keep smirking while she spawned a black blindfold and placed this on her paw while followed Vinny. Rayane turns on the tent's external lighting, expanding the cave's field of vision.",
+        "value": "Rayane keep smirking while she spawned a black blindfold and placed this on her hoof while followed Vinny. Rayane turns on the tent's external lighting, expanding the cave's field of vision.",
         "type": "action"
     },
 
@@ -20501,7 +20501,7 @@
     },
 
     {
-        "value": "Vinny rubs his paw on the face nervously. Rayane continued to laugh for a few more seconds before calming down again.",
+        "value": "Vinny rubs his hoof on the face nervously. Rayane continued to laugh for a few more seconds before calming down again.",
         "type": "action"
     },
 
@@ -20669,7 +20669,7 @@
     },
 
     {
-        "value": "Rayane walks toward James slowly. Meanwhile Vinny was concentrating on trying to keep the plate on his paw, afraid the plate would fall to the floor.",
+        "value": "Rayane walks toward James slowly. Meanwhile Vinny was concentrating on trying to keep the plate on his hoof, afraid the plate would fall to the floor.",
         "type": "action"
     },
 
@@ -21850,7 +21850,7 @@
     },
 
     {
-        "value": "Vinny looks at Rayane, using paws to make a sign to do the pony a little more comfortable. Rayane then just nodded and slowly lowered her sword.",
+        "value": "Vinny looks at Rayane, using hooves to make a sign to do the pony a little more comfortable. Rayane then just nodded and slowly lowered her sword.",
         "type": "action"
     },
 
@@ -21927,7 +21927,7 @@
     },
 
     {
-        "value": "Jeff then lay on the floor and put his paws in front of his face, starting to cry. Rayane was surprised and slightly got away from him a little more.",
+        "value": "Jeff then lay on the floor and put his hooves in front of his face, starting to cry. Rayane was surprised and slightly got away from him a little more.",
         "type": "action"
     },
 
@@ -22449,7 +22449,7 @@
     },
 
     {
-        "value": "Jeff tried to pull James' paw happily to make him follow.",
+        "value": "Jeff tried to pull James' hoof happily to make him follow.",
         "type": "action"
     },
 
