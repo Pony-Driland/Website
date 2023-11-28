@@ -8773,7 +8773,151 @@
   }, 
 
   {
+    "set": {
+      "playlistPlay": "bad-think"
+    },
     "value": "Rainbow Queen's scythe started to scare away all the darkness from the place, making Vinny and Rainbow Queen become fully visible to Rayane.",
+    "type": "action"
+  },
+
+  {
+    "value": "Ah...wait...Wh...what?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was extremely scared, and tried to keep calm when she saw Rainbow Queen starting to approach. Rainbow Queen just smirks when she saw Rayane's very scared expression. Rainbow Queen keep walking towards the place. Vinny followed Rainbow Queen while smiling.",
+    "type": "action"
+  },
+
+  {
+    "value": "V...Vinny?",
+    "character": "Rayane",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny show that everything was fine and then returned to the Rainbow queen's side, looking serious and asked.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Do you even have power in Ivy's mind?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane feel surprised when looking at Vinny and the regeneration energy sphere, trying to understand what was happening.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "O..oh no... Vinny really did something.",
+    "character": "Rayane",
+    "type": "think"
+  },
+
+  {
+    "value": "Shhhhhh~ I see your little friend Rayane really missed me. Don't worry... I have the power anywhere within the dimension... even inside your dreams~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen does a little evil laugh, smirking at Rayane for a few seconds. Rainbow Queen then approaches the Amy and Ivy's place.",
+    "type": "action"
+  },
+  {
+    "value": "So let's start our ritual~ Can you excuse me Rayanny?~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen pokes the scythe gently on Rayame neck. Just to do Rayane feel more intimidated, Rayane was feeling very nervous for a few seconds, but would slowly calm down as she realized Rainbow Queen was being kind.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...ah? Ritual?",
+    "character": "Rayane",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Rayane was paralyzed with too much fear to react when she looked into Rainbow Queen's eyes that were gently shining, bringing some sense of some past memory of Rayane, while tears kept coming out of Rayane's eyes.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y...yes...yes Rain...",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane held back her feelings and just kept a certain distance so Rainbow Queen could walk towards Ivy and Amy slowly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Great~ Very well Rayanny... now let's start our ritual~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "While the sphere energy was ready to start what would happen, Vinny step aside a little and speak to Rayane in a calm and low way.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Rayane... It's going to be okay, don't worry.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I... I hope you know what you're doing. Please... all I ask is that you know who you're dealing with...",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane tries to keep calm while crying a little more about the situation, then Rayane and Vinny looked at the glowing sphere that delicately began to approach the body of Ivy who was sleeping with Amy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "B..but what is this? What are you going to do?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Trust me, I said I was going to help Ivy and I am. No need to be scared, as I promised everything will be fine.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Vinny smiles calmly during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..are you sure? O..Okay. Sorry Vinny. I... I... will trust you.  I want to trust you... that now everything will finally work.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "More tears came out of Rayane's eyes. Rainbow Queen's energy sphere then floated over Ivy's body. She was sleeping peacefully on the spot, not knowing what was going on.",
     "type": "action"
   }
 
