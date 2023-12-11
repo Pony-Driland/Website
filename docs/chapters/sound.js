@@ -1,6 +1,11 @@
 // Playlist
 storyCfg.playlist = {
 
+    'ivy-resurrection': [
+        { id: 'ZY1kKMUWgh4', type: 'youtube' },
+        { id: '44A0UTwoCsg', type: 'youtube' },
+    ],
+
     'Subway battle - c2': [
         { id: 'EMeOm0-4Ptk', type: 'youtube' },
         { id: 'w0XK0cuaK3A', type: 'youtube' },

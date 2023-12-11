@@ -8919,6 +8919,157 @@
   {
     "value": "More tears came out of Rayane's eyes. Rainbow Queen's energy sphere then floated over Ivy's body. She was sleeping peacefully on the spot, not knowing what was going on.",
     "type": "action"
+  }, 
+
+  {
+    "value": "It's over... Yes, it's really over. Vinny made his choice. I can't intervene in this. All I can do is accept it and not let things get out of control.",
+    "character": "Rayane",
+    "type": "think"
+  },
+
+  {
+    "set": {
+      "playlistPlay": "ivy-resurrection"
+    },
+    "value": "Rainbow Queen just closed her eyes and started to levitate the energy sphere gently to Ivy's body. Then the sphere would begin to enter Ivy's body, as if it were consuming her body. And Ivy's body slowly started to glow and several regeneration particles came out around the Ivy's mind place. Ivy's mind seemed to be starting to come alive during the process.",
+    "type": "action"
+  },
+
+  {
+    "value": "W... what? What is happening now? This all... this is all really beautiful.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A....Aah?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane and Vinny was surprised by what the two ones was seeing, and moved away a little, seeing everything happening, so as not to disturb the process. Rainbow Queen's horn shone brighter and her whole body emitted a bigger rainbow aura of colored energy around it. Then where Ivy was sleeping the floor started to glow, leaving even more particles of light around the place.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "V..Vinny? What's happening? T... This all... seems like a dream.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The light on the ground began to expand more and more every second. then the lights emitted more and more colored particles around and they expanded to all the horizons of the place that before was completely taken by darkness. The whole environment suddenly became completely bright and hopeful, and many trees and plants began to sprout everywhere.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...wow! Rain! ",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "The place was extremely peaceful and much more alive, everyone was in an imaginary forest in Ivy's mind, the place was now covered in nature. Rainbow Queen, Amy, Ivy, Rayane, Ivy were now all in a field of flowers that replaced the dark, empty ground. And around it was all the nature that had been invoked after the progress.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y...Yes. Rain really did it...",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was surprised to see everything that had happened. Rainbow Queen then opened her eyes and kept her serious gaze and looked at Vinny and Rayane while smirks at the two.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh... My two silly ones~ I finished my promise part. Ivy's body is now healed in the hospital. As you can see, her mind has started working again and is no longer a lifeless void, she is already free to wake up from coma.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was surprised to see everything that had happened. Rainbow Queen then opened her eyes and kept her serious gaze. Rainbow Queen then looked around, admiring all the beauty of the place while making a small evil laugh while smirks at Vinny and Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Rayane just needs to get the two of you out of here, and you'll wake up as if this was all just a nightmare.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was a little worried about what Vinny would have asked for all this, but she ends up getting more emotional than usual with everything that happened, and just hugged Ivy very tightly while Ivy was still sleeping with Amy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I...I...I...thank you both. Thank you for doing all this.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane cries a lot by the emotion, trying to stay calm in positive thoughts.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Rayane... you need to save a piece of marshemellow for me when you get back. Hihi! This will be quick.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wait... what?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks at Rainbow Queen.",
+    "type": "action"
+  },
+
+  {
+    "value": "Well, shall we then?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "V..Vinny! Are you doing??",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "See you later in, anything tells James to still keep the bow on him. Heh!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane looked at Vinny, surprised, and a little more worried than usual. Rayane tried to think of something, but when she saw Rainbow Queen's look, she just accepted the situation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh? Marshmallow? Y..yes... I'll be waiting for you Vinny. B..But..but... please. Stay safe. I'll make sure he keeps that little bow until the last second. I...see you later.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Rayane concentrated the magic of the horn and used it once against Amy's collar, to activate her collar magic again for the Rayane, Ivy, and Amy to be teleported out of there. At this exact moment Vinny just saw the bodies of the 3 ones glow for a few seconds until they completely disappeared from the place. It's Vinny you and Rainbow Queen now.",
+    "type": "action"
   }
 
 ]
