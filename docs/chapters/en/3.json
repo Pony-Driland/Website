@@ -9065,11 +9065,130 @@
   }, 
 
   {
+    "value": "Rayane concentrated the magic of the horn and used it once against Amy's collar, to activate her collar magic again for the Rayane, Ivy, and Amy to be teleported out of there. At this exact moment Vinny just saw the bodies of the 3 ones glow for a few seconds until they completely disappeared from the place. It's Vinny you and Rainbow Queen now.",
+    "type": "action"
+  },
+  
+  {
     "set": {
       "playlistPlay": null
     },
-    "value": "Rayane concentrated the magic of the horn and used it once against Amy's collar, to activate her collar magic again for the Rayane, Ivy, and Amy to be teleported out of there. At this exact moment Vinny just saw the bodies of the 3 ones glow for a few seconds until they completely disappeared from the place. It's Vinny you and Rainbow Queen now.",
+    "value": "Rainbow Queen then showed satisfaction by the results. Rainbow Queen just levitated the scythe again during the progress.",
     "type": "action"
+  },
+
+  {
+    "value": "Heh~ Let's go. Now it is your turn.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well... Yeah... I really don't know.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny smiles a little scared during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "vinny-rainbow-queen-ivy"
+    },
+    "value": "Well, sorry to ask that. But is there a forest where ponies that feel suicidal go there? If no. Takes me anywhere not far from the hospital. It seems that you were satisfied with all this.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen does a little evil giggle before smirking at Vinny as she looked at Vinny's scared face, looking right into Vinny's scared look as she poked the scythe in Vinny's neck to tilt him look towards her face.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Unfortunately nope~ Forests are just one of the possible places for them to go. Very good your attempt to take a shortcut. But it seems that this time it was not your attempt to protect your little friend from the earth from its own consequences. Creatures like your earth friend are my favorite type of prey. Did you know that?~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "What?? What did Rain mean by that? Jasmin doesn't have any depression. What the fuck is Rain planning now?",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "First... before we go to your destination.... let's go for a little location~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen's horn started to glow again, it looked like Rainbow Queen was choosing something specific to do with her teleportation magic. Then Vinny replies in a joking tone.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmmm... Okay! To your house? Heh!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "So Vinny continued the conversation normally.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well it could be anywhere. I turn around as long as it's not too far.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "My house?~ Awww... This is sad. It's a sad you refused my invitation to my house... It was only if you agreed to give me your little friend from the earth and we could go straight there~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Fuck!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Then suddenly an aura of colored magic formed around Vinny and Rainbow Queen.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Let's go somewhere else...",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...What?! Where???",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Then the teleportation took place and suddenly Vinny appeared in a completely different new place, but this new place was completely empty, it was all very dark and gloomy, all directions again didn't seem to have anything else around.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AH! Ah? Where am I now?",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
