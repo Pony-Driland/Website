@@ -9189,6 +9189,335 @@
     "value": "AH! Ah? Where am I now?",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny was very curious, looking around, trying to understand what was going on.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "bad-mystery"
+    },
+    "value": "Where are we? Rainbow?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen does a little evil giggle, but a little longer than usual.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Of course... We are now in my mind. After all, Ivy's mind now deserves some peace and harmony from our presence.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was feeling a bad feeling, getting ready for something.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What... What are you trying to do?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny started walking around, ",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh~ I was already doing very well while you were talking to Rayane after we closed our deal... Mr. Vinny.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I don't understand. Could you clarify this further?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen does some short evil laughs while answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'll be very clear... Capturing your little friend into this dimension was much easier than I imagined.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "How I like to use this little trick of \"special deliveries\" for my prey... She fell right... But what a pity... she still doesn't know how to fly, she's still learning to use her hooves. And I made sure she didn't show up at Greendream Beach as usual.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was completely surprised, and did a poker face.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AH!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "W...what?! This is cheating!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "So I don't need to get another pet for you anymore?? Since you burned our deal? And what do you mean she?! How do you already know her like this?!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Did I burn our deal? Awwww... Are you then giving up?~ I would be very happy if the answer is yes. I just teleported her to this dimension, she is lost in the forest. After all, it wouldn't be funny to see you lose and she's still not here to see your future defeat.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen does a evil smirk face, looking directly into Vinny's eyes. Rainbow Queen used magic to pull Vinny's face a little closer to hers, trying to intimidate him.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...Are you doing?? I understand! I see! Anything else you want to tell me?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny prepares for the worst to come again during the reply.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You'll just have to find her and show your new identity to her. Hope you don't mind I'll be keeping an eye on you two until the end of the deal~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Rainbow Queen came close to Vinny and used magic to show a shadow of a pegasus lost in the forest during the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "She's a pegasus like you. I thought I could play to make her have a body like a character from her imagination that she likes a lot, but it wouldn't be much fun for me. So I decided for her to have a more exclusive look for her way~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen smirks at Vinny. Then slowly the hallucinations of the pegasus shadow lost in the forest stopped. Rainbow Queen's scythe flew delicately close to Vinny's neck in a menacing way.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I don't want her dead. So it's good that she's alive if you don't want something to happen to you~ She'll be in the woods near your village.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "D...Dead?? and if I refuse?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried to prepare some movement to get away from the scythe while still feeling nervous about the situation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I might just want to go back to the original deal. If you started, you could bring her here. Why do you need me?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen giggles evily even harder at Vinny's words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Refuse? We're still in the original agreement. I don't remember saying anything that I couldn't bring your friend to this dimension in advance.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Exactly. Our agreement.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "If you refuse to look for her... no problem... You keep Ivy alive, I cancel the rest of the deal, and I'll lure her myself to capture her as my new pet. And you won't have any more headaches with me for now.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Vinny began to show a little more indignation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Okay okay! If I remember correctly, I can turn whoever I want into a pet, I just need to tell you the facts about who you are, what's going to happen and everything else... I already knew you were going to do something more. I prepared myself to this.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny walked away a little, but prepared looking around waiting for something from the scythe.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Argh! Do you trust me with this power? Can you choose who I want as a pet?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh~ Don't be bothered if I want to keep you busy so much.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Quee does a little evil face at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It's not that simple to get a pet. You need to convince the pet... Talk to pet, play with pet feelings so the future pet can feel comfortable for the new destiny. A pet needs to meet the master. I'm an expert at doing this. Can you do this when it's your first try?~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "T...This goddess is crazy. Look what I'm getting into!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Well... Do you want to bet?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a serious face and approached Rain's face.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "My world is a place that even you couldn't live, a lot of wars and destruction, manipulation and poverty, where everyone just needs to believe in something to be manipulated. I have my plans and I have experience in this area. Just don't mess with me too much, otherwise I can make a really bad pet for you. About my first attempt... It won't be the first time I've done this with someone. What are you willing to bet? It won't be cheap to bring this side of me.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny sit down for a while.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "If I was willing to do whatever I wanted to get Ivy back. I would be willing to do it all over again.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Heheh... Really bad?",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen laugh a lot at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "That's not a problem... hypnosis spells were never a problem for me either~ I didn't even need to use hypnosis on Rayane, and look how she became very obedient to me just for the way I interacted with her.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "drama-battle"
+    },
+    "value": "Rainbow Queen's horn started to glow much more than usual, and her body started to wave an aura of colored magic around as she got closer to Vinny.",
+    "type": "action"
+  },
+
+  {
+    "value": "Yes. I can feel it getting stronger but it is still fragile. He's an idiot, but I must recognize the temporal energy of interfering with timelines that this pony has. I can't allow that.",
+    "character": "Rainbow Queen",
+    "type": "think"
+  },
+
+  {
+    "value": "Heheh... How irritating your determination is. I think you still don't quite understand who I am.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Rainbow Queen broke the Vinny's glasses. Vinny took a little jump back and flew up as fast as possible.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "H..hey! Calm down! Oh... look at this! This is going to hurt a little.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "But during the jump, Rainbow Queen's scythe pinned Vinny to the ground, and the sharp tip of the scythe began to slowly strangle Vinny's neck.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A little? I promise it will be very fast~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then Rainbow Queen would laugh at Vinny even more, and Vinny would start to notice that slowly Rainbow Queen was getting bigger and bigger as she got closer to you. Vinny was starting to feel more nervous, trying to understand what was happening.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...What?? O..oh no... Can I say my last words first?",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
