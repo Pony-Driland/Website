@@ -9228,7 +9228,7 @@
   }, 
 
   {
-    "value": "Vinny started walking around, ",
+    "value": "Vinny started walking around slowly.",
     "type": "action"
   }, 
 
@@ -9256,6 +9256,12 @@
   }, 
 
   {
+    "value": "WHAT?! T...This is cheating!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
     "value": "How I like to use this little trick of \"special deliveries\" for my prey... She fell right... But what a pity... she still doesn't know how to fly, she's still learning to use her hooves. And I made sure she didn't show up at Greendream Beach as usual.",
     "character": "Rainbow Queen",
     "type": "dialogue"
@@ -9271,12 +9277,6 @@
     "character": "Vinny",
     "type": "dialogue"
   },
-
-  {
-    "value": "W...what?! This is cheating!",
-    "character": "Vinny",
-    "type": "think"
-  }, 
 
   {
     "value": "So I don't need to get another pet for you anymore?? Since you burned our deal? And what do you mean she?! How do you already know her like this?!",
@@ -9369,7 +9369,7 @@
   },
 
   {
-    "value": "If you refuse to look for her... no problem... You keep Ivy alive, I cancel the rest of the deal, and I'll lure her myself to capture her as my new pet. And you won't have any more headaches with me for now.",
+    "value": "If you refuse to look for her... no problem... You keep Ivy alive, I cancel the rest of the deal, and I'll lure your friend myself to capture her as my new pet. And you won't have any more headaches with me for now.",
     "character": "Rainbow Queen",
     "type": "dialogue"
   },  
@@ -9386,7 +9386,7 @@
   }, 
 
   {
-    "value": "Vinny walked away a little, but prepared looking around waiting for something from the scythe.",
+    "value": "Vinny walked away a little, but looking around waiting for something from the scythe.",
     "type": "action"
   }, 
 
@@ -9403,7 +9403,7 @@
   }, 
 
   {
-    "value": "Rainbow Quee does a little evil face at Vinny.",
+    "value": "Rainbow Queen smirks at Vinny again.",
     "type": "action"
   }, 
 
@@ -9426,7 +9426,7 @@
   }, 
 
   {
-    "value": "Vinny does a serious face and approached Rain's face.",
+    "value": "Vinny does a serious face and approached Rainbow Queen's face.",
     "type": "action"
   }, 
 
@@ -9510,7 +9510,7 @@
   }, 
 
   {
-    "value": "Then Rainbow Queen would laugh at Vinny even more, and Vinny would start to notice that slowly Rainbow Queen was getting bigger and bigger as she got closer to you. Vinny was starting to feel more nervous, trying to understand what was happening.",
+    "value": "Then Rainbow Queen would laugh at Vinny even more, and Vinny would start to notice that slowly Rainbow Queen was getting bigger and bigger as she got closer to him. Vinny was starting to feel more nervous, trying to understand what was happening.",
     "type": "action"
   }, 
 
@@ -9521,7 +9521,7 @@
   },
 
   {
-    "value": "Rainbow Queen keep approaching Vinny while her size was already much larger than normal, so she used her magic to completely paralyze Vinny body with no chance of you being able to escape her magic.",
+    "value": "Rainbow Queen keep approaching Vinny while her size was already much larger than normal, so she used her magic to completely paralyze Vinny body with no chance of Vinny being able to escape her magic.",
     "type": "action"
   }, 
 
@@ -9532,7 +9532,7 @@
   }, 
 
   {
-    "value": "Rainbow Queen laughed even harder in Vinny face as her intimidating giant eyes stared at you.",
+    "value": "Rainbow Queen laughed even harder in Vinny face as her intimidating giant eyes stared at Vinny.",
     "type": "action"
   }, 
 
@@ -9571,7 +9571,7 @@
   }, 
 
   {
-    "value": "Awww...Your death? Your death will be very beautiful.",
+    "value": "Awww... Your death? Your death will be very beautiful.",
     "character": "Rainbow Queen",
     "type": "dialogue"
   }, 
@@ -9595,8 +9595,8 @@
 
   {
     "nsfw": ["extreme_violence"],
-    "value": "Then the scythe penetrated Vinny, making several pixels of him body spurt to the ground. The scythe moved delicately to make sure Vinny would suffer a little more during the process. Rainbow Queen had a look that was trying to make him feel the pain of the consequences of everything he did in the past. Vinny were in extreme pain, but him still didn't lose your consciousness.",
-    "value_alternative": "Then the scythe penetrated Vinny. Vinny were in extreme pain, but him still didn't lose your consciousness.",
+    "value": "Then the scythe penetrated Vinny, making several pixels of him body spurt to the ground. The scythe moved delicately to make sure Vinny would suffer a little more during the process. Rainbow Queen had a look that was trying to make him feel the pain of the consequences of everything he did in the past. Vinny were in extreme pain, but him still didn't lose the consciousness.",
+    "value_alternative": "Then the scythe penetrated Vinny. Rainbow Queen had a look that was trying to make him feel the pain of the consequences of everything he did in the past. Vinny were in extreme pain, but him still didn't lose the consciousness.",
     "type": "action"
   }, 
 
