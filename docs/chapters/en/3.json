@@ -9518,6 +9518,176 @@
     "value": "W...What?? O..oh no... Can I say my last words first?",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Rainbow Queen keep approaching Vinny while her size was already much larger than normal, so she used her magic to completely paralyze Vinny body with no chance of you being able to escape her magic.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Too bad~ Little Vinny forgot that in addition to me being a goddess... I'm also a sphinx who can manipulate in size as much as I want. Didn't Rayane warn you about this?~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen laughed even harder in Vinny face as her intimidating giant eyes stared at you.",
+    "type": "action"
+  }, 
+
+  {
+    "value": " Be brief in your words. If you offend me... I'll make sure to punish you in the worst way possible~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "AH! W...well!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a poker face.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Never mind, no no no! Ok, I just need to say one thing, since I can't offend you, I have to ask you something very serious.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny took a deep breath and let it out.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Do you think I'm beautiful?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Awww...Your death? Your death will be very beautiful.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen continued laughing at Vinny's face, showing the huge sharp teeth while the menacing eyes stared at him. Vinny looked at Rainbow Queen's teeth, feeling very nervous as he began to understand what was about to happen.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh... fuck... I don't like this.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "You are TOO BEAUTIFUL TO DIE!",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "nsfw": ["extreme_violence"],
+    "value": "Then the scythe penetrated Vinny, making several pixels of him body spurt to the ground. The scythe moved delicately to make sure Vinny would suffer a little more during the process. Rainbow Queen had a look that was trying to make him feel the pain of the consequences of everything he did in the past. Vinny were in extreme pain, but him still didn't lose your consciousness.",
+    "value_alternative": "Then the scythe penetrated Vinny. Vinny were in extreme pain, but him still didn't lose your consciousness.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...AAAAHHH!! R...RAIN! A...AAAAHHH!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "See you later... See you again in our real world~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W... what a pity... I think your eyes are beautiful... H..heh... We are evolving our friendship! I make a joke you laugh and kill me.... I...I...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen smirks a little more as her face got closer to Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "If you want to make my eyes happy... then give me your little earth friend to be my new pet~ But don't worry... Until you do that... You can make me happy in other ways~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Y...Yeah...I...",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rainbow Queen opened her mouth, it seemed that Vinny terrible end was already set.",
+    "type": "action"
+  },
+
+  {
+    "value": "Oh no...",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rainbow Queen then used her own teeth to bite Vinny hard and finish off the rest of him body once and for all. ",
+    "type": "action"
+  },
+  
+  {
+    "value": "AAAAAHHHH!!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "The moment Vinny felt like he was going to die, him woke up in some random place, Vinny still couldn't identify where him is.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AAAAAAAAAAAAAAA...!! A....aaah? What? What the fuck was that?! At least Rain could have brushed those teeth...",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny then looked around, and realized that the same magical pet collar was next to him.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "dark-ambient-melodies"
+    },
+    "value": "Well... It really wasn't a dream. I think I better see where I am.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny then kept the magical pet collar inside his saddle.",
+    "type": "action"
   }
 
 ]
