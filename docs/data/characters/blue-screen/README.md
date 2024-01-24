@@ -9,7 +9,7 @@ Female / ???
 Coming Soon...
 The information is temporarily only available in the DEV Repository.
 
-<img src="https://ipfs.io/ipfs/QmXZzk3E2kvqnseUFQG4krGh5jQoS6HUP9sEG4q4XeMuUx" height="500">
+<img src="https://cloudflare-ipfs.com/ipfs/QmXZzk3E2kvqnseUFQG4krGh5jQoS6HUP9sEG4q4XeMuUx" height="500">
 
 <hr/>
 
