@@ -192,7 +192,7 @@ var storyCfg = {
 
     // IPFS
     ipfs: {
-        host: 'https://ipfs.io/ipfs/{cid}'
+        host: 'https://cloudflare-ipfs.com/ipfs/{cid}'
     },
 
     // Word Blacklist
