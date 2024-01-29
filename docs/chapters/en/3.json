@@ -9678,9 +9678,10 @@
 
   {
     "set": {
-      "playlistPlay": "dark-ambient-melodies"
+      "playlistPlay": "bad-think",
+      "dayNightCycle": "night"
     },
-    "value": "What a crazy thing this world is. Holy crap. It really wasn't a dream. I think I better see where I am.",
+    "value": "What a crazy thing this world is... Holy crap! It really wasn't a dream! I think I better see where I am.",
     "character": "Vinny",
     "type": "dialogue"
   },
@@ -9688,6 +9689,367 @@
   {
     "value": "Vinny then kept the magical pet collar inside his saddle.",
     "type": "action"
+  }, 
+
+  {
+    "value": "Well...",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny tries to stay calm and flew up trying to locate himself. Vinny were in a lonely alley next to the exit of the village. The place was already pretty empty and very dark with stars in the sky. The few ponies in the place were already heading home.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah... Rain wants to fuck with me.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny then went to the village gates and found two earth pony guards who were calmly guarding the gate.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hey! Excuse me, has one of you seen Rayane?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane? We didn't see her leave the village at any time. But what specific. Why do you want to know about her?",
+    "character": "Guard",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Yeah... you weren't here when she and I came running over the walls.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The guards remained confused, but Vinny took a deep breath before continuing to speaking a bit ironically.",
+    "type": "action"
+  },
+
+  {
+    "value": "Oh... yeah, I'm sorry, I'm still kind of confused. AH! These adventures make me headless, can you believe I haven't even eaten yet? I asked a friend for a pie but she disappeared with the stuff and left me alone.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then looked a little more serious.",
+    "type": "action"
+  },
+
+  {
+    "value": "But yes, I forgot something in here, I'll be back later, thanks for your attention.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Headless adventures? But you were in the village alley. Are you sure you didn't accidentally drink one?",
+    "character": "Guard",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "No no. He is drunk. Leave the poor guy alone.",
+    "character": "Guard 2",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a facehoof and then went to the house's roof terrace but taking care not to be seen by Rayane. Vinny could see that James' lab tent had the lights on, he was inside working.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Good!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny would then land next to the door and knock on the door.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "James! Hello??",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "It took a few seconds, but James reached the door and opened it. James was still wearing the red ribbon.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny? VINNY!! My God! Where were you?!",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Oh yeah... I was in a \"bar\"... quickly I need some help, do you know where there is a place like an orphanage where there are pony children without parents? Or in the last cases where there are beggars??",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was completely confused, trying to understand the situation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Bar? Orphanage? Beggars? What? What the fuck?! Are you okay? Went to the bar and didn't eat anything... You look hungry! Don't lie to me, where have you gotten yourself??",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried to respond, but he seemed a little anxious, but he tried to continue saying the necessary words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "James... Okay okay... Calm down, do you want to come with me first? Or are you busy? Rayane can't know I was here. I really need your help, I walked a lot with Rayane. Do you want to come with me for a while? We already eat something and I'll explain everything on the way... I promise.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Go where? At the bar? What are you up to? I don't drink you know? You are scaring me!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James... forget the bar, I have to find a pet now! NOW! NOOOOW! I don't have time to explain to you... are you busy? Have you made any progress with your research? Any weapons or something?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James couldn't believe what he was hearing during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Find a pet? AH??? Look Vinny, there's no need to worry about it. Amy is here at home. She came along with Ivy. The hospital reported that a miracle happened and Ivy was suddenly completely recovered. I still don't understand exactly what happened. But...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James breathed deeply, trying to remain calm as he tried to think about what was happening.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Don't worry Vinny... We'll talk about research later... You need to get some rest now.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James... No no... JAMES! Listen me! The omnipotent, omniscient being brought a friend of mine from my world to here! OH FUCK! FUCK! If I don't find a pet... who knows what she's going to do to my friend. I'm fine, I just need to eat something, do you want to help me??",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James feel a little scared, and moved away from Vinny's panicked looks for a moment before trying to respond a little more calmly.",
+    "type": "action"
+  },
+
+  {
+    "value": "O...Omnipotent? Your friend from your world? You're making me confused and at the same time very worried... I can help you yes, but please don't get too crazy by the effect of the drink you had.",
+    "character": "James",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Vinny shook James hardly in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "JAAAAMES! Look at me! WAKE UP! WAKE UUUUUP!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "AAAAAAAAHHHH! @.@",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Yes! Look at me now! I'll be honest without jokes or anything, I made a deal with Rainbow Queen, where I need to find some pony to be a pet... just that, where you don't understand big head? Do you want to help me?!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes! yea! Now I get it! I understood! B...but what does that have to do with your friend from your world? S..sorry!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was dizzy during the talk progress.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A....aaah...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well... Okay... If I fail... Rainbow queen will take my friend and do whatever she wants... It's just like me, but instead of Kenny meeting me on the beach, it's going to be a crazy goddess. On the way I'll explain, okay ready for an adventure? Without Rayane?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "On the beach? Is your friend in Greendream Beach? Vinny! We're a long way from Greendream Beach, it's going to take a few days for us to get there!!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Within seconds, James stopped feeling dizzy and became scared.",
+    "type": "action"
+  },
+
+  {
+    "value": "W... what? Rainbow Queen? V..Vinny? Oh my god... VINNY! You need wake up too!! How did I not see any explosions or anything like that... where did you go? That doesn't make the most sense... Why would Rainbow Queen want your friend from your planet all of a sudden? And...Wait? She managed to bring someone out of your world completely selectively???",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was very confused, trying to believe if all this was true or not.",
+    "type": "action"
+  },
+
+  {
+    "value": "Okay... okay! Fine! Are you sure that's all it is? This story is very bizarre.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well, if I get a pet, I automatically save my friend. So let's hope someone like Kenny finds her. Will we find someone willing to give in to this?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "V..Vinny? Oh my fuck god... What did you get up to? Your friend is in our dimension and does Rainbow Queen want to do something with your friend if you can't find a new pet? This... this is very poorly explained. This smells like a gigantic problem.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James looked at the ground, put his hooves on his head, showing concern, and then looked at Vinny again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... I detected something very strange today. A very rare event... My lab detected someone being teleported from another dimension. I usually detect it in Greendream Beach, but for some reason, it looks like this time it came from somewhere in the woods nearby. Could this be related to something you said? Your story might make more sense if that's true.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny is a little surprised and worried to hear this.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y...Yes... this forest. Anyway I don't believe anything that goddess said, she plays very dirty. Do you want to go see this forest with me? Or want to look for a new pet? Well... and your bow tie? How are you?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James just reacted uncomfortably and ignored the red ribbon around his head.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "L..little bow? Oh the bow... I almost managed to pass it on to Rayane, but then Amy thought it was cute and convinced me to keep using it.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James breathed deeply, ignoring the feelings of hatred and shame for the red ribbon.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... we can go to the forest without any problems... I marked on the map where your friend appeared, but that doesn't guarantee that she is still there. We need to be quick so she doesn't stray too far from the point of origin.",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Fine. But... Give the little bow to me! I'll use it for you to avoid embarrassment, don't worry, this friend of mine doesn't even know how to walk. It's a pegasus... can we go now? We can buy something to eat on the way.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James then looked very suspicious of something about what Vinny said.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "HEEEY! WAIT! Wait... so did Rainbow Queen say what she already is? Vinny... You bet something.",
+    "character": "James",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Weeeell...",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "James breathed deeply when he saw Vinny's nervousness.",
+    "type": "action"
+  },
+
+  {
+    "value": "Okay... It will be a lot less embarrassing for me... Thank you.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James used magic to place the red ribbon on Vinny's head.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes, we can go now. But if you're in such a hurry, buy your food fast.",
+    "character": "James",
+    "type": "dialogue"
   }
 
 ]
