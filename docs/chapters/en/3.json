@@ -10047,9 +10047,160 @@
   }, 
 
   {
-    "value": "Yes, we can go now. But if you're in such a hurry, buy your food fast.",
+    "value": "We can go now. But if you're in such a hurry, buy your food fast.",
     "character": "James",
     "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then laughed nervously for a few seconds.",
+    "type": "action"
+  },
+
+  {
+    "value": "Rainbow Queen is a mo... never mind. Well... yes! Damn! I said I need to get her a pet otherwise she'll get my friend. Nothing more. I had no choice. I needed to save Ivy's life. FUCK! I just wanted to save some life!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Pick up your friend?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried to stay calm through his anger and nervousness.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But Yeah... I appealed to Rainbow queen. But she wants a pet.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "But... but... Rainbow Queen saved Ivy? What? Oh god.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James tried to accept the situation worriedly that was happening, trying to remain calm.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny? What's wrong with saying everything? You're scaring me. No need to be afraid. I'm here to help you, no matter how embarrassing it may be. What bet was that anyway? You made a life-or-death bet... What's this all about?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James then started to prepare the stuff while answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'll help you... But what do you mean someone wanting to be a pet? How did you get into this pet thing?? What's going on here?!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was breathing deeply, and trying to respond in a somewhat depressed way.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y..Yeah. I made a deal where Rainbow Queen gave life back to Ivy. But I need to get her a pet, and if I fail... she stays with my friend from my planet... in short, she lets me convince anyone at any cost. A pony that is already in contact, a pony that wants to kill itself. In the right conversation I can. But... this pony don't want to have a new life  for being a pet of a goddess.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked at the floor, a little regretful, and then looked back at James.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What are we going to do now?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James then looked at Vinny, still not believing what he was hearing, but trying to avoid being nervous.",
+    "type": "action"
+  },
+
+  {
+    "value": "Okay... and what do you mean with your friend from your planet? Will Rainbow Queen kidnap her? Will Rainbow Queen steal her soul? Explain this to me better... AH! You know that depressed ponies are usually very well hidden, right? They isolate themselves from society to run away and then do what they want and...!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James then gave up finishing the talk and took a deep breath.",
+    "type": "action"
+  },
+
+  {
+    "value": "Okay! Enough! We can go to the forest now. But we don't have time for food. Your long talk didn't help that.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "S...Sorry. Yeah. What are we going to do? If there is no alternative, we go to a hospital and see who wants to be a new pet one. And...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "VINNY! SHUT UP! Hospital? We no longer have a permission to enter the hospital after Ivy was discharged! Let's go to forest! But please tell me you have a happy ending plan at the end. You literally pushed your bad ending to another new pony.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked nervous and worried as he got ready to go with James. James started to turn off the laboratory lights and took the backpack and put it on his back.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "B...Bad?? I saved Ivy! But... I need find a another pet, I saw what that goddess saw in my friend... I did one good thing. What is to save the girl, did you want her dead?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny! Wake up! This was your happy ending... But out of this happy ending you created another possible bad ending! Rainbow Queen is trying to interfere in your personal life! She wants to destroy you from the inside! Forget Ivy. Think that now you or your friend are in danger!",
+    "character": "James",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "James locked the lab door and was ready to go. Vinny continued to try to reduce his nervousness during the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah... that gift. Well... anyway... I follow you I don't know where it is. But I'll eat food if I meet it halfway.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Whatever! Let's go!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James used magic to pull Vinny's hoof as he walked down the stairs towards the front house door.",
+    "type": "action"
   }
 
 ]
