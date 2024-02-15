@@ -1,0 +1,22 @@
+{
+    "name": "Pony Driland Chapter 1 - This is not my world (V1.0)",
+    "description": "The protagonist's early days in the world of Pony Driland. Something mysterious has happened and we need to discover the basics about this mysterious place.\nChapter 1 IPFS data file. Data accessed via JSON only.",
+    "external_url": "https://ponydriland.com/chapter/1.html",
+    "image": "ipfs://QmX4JEnFdK4xg2ZcazMf4cfRMmQQB4G6qwTQSdGqqpVRqc",
+    "image_url": "ipfs://QmX4JEnFdK4xg2ZcazMf4cfRMmQQB4G6qwTQSdGqqpVRqc",
+    "attributes": [
+        {
+            "trait_type": "Chapter",
+            "value": "1"
+        },
+        {
+            "trait_type": "Fanfic",
+            "value": "Pony Driland"
+        },
+        {
+            "trait_type": "File",
+            "value": "ipfs://QmPj3awuqhvW8iy3AH35qUUwCiXDvrTiQAAzZLtzjMc1qM"
+        }
+    ],
+    "background_color": "FFFFFF"
+}
