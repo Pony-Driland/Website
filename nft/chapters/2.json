@@ -1,0 +1,22 @@
+{
+    "name": "Pony Driland Chapter 2 - She hates war (V1.0)",
+    "description": "We have just discovered a mysterious war with some mysterious objective. Maybe she's not feeling comfortable about it.\nChapter 2 IPFS data file. Data accessed via JSON only.",
+    "external_url": "https://ponydriland.com/chapter/2.html",
+    "image": "ipfs://QmaJPwgxqSEJ3RvH6HD223mwTXxEijJrJ5v5MSfdvvhCiW",
+    "image_url": "ipfs://QmaJPwgxqSEJ3RvH6HD223mwTXxEijJrJ5v5MSfdvvhCiW",
+    "attributes": [
+        {
+            "trait_type": "Chapter",
+            "value": "2"
+        },
+        {
+            "trait_type": "Fanfic",
+            "value": "Pony Driland"
+        },
+        {
+            "trait_type": "File",
+            "value": "ipfs://QmdwG29yMEJBQi5rj7GbTzK9QVpuEXzxiw7W9Zck1TAWcf"
+        }
+    ],
+    "background_color": "FFFFFF"
+}
