@@ -10199,7 +10199,112 @@
   }, 
 
   {
-    "value": "James used magic to pull Vinny's hoof as he walked down the stairs towards the front house door.",
+    "value": "James used magic to pull Vinny's hoof as himself walked down the stairs towards the front house door.",
+    "type": "action"
+  },
+
+  {
+    "value": "AH!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh yes. I almost forgot. Take this. I found this leftover pie in the fridge.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James handed Vinny a small box with a piece of pie inside.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Haaaaaamm... wait...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny analyzed the pie while James opened the door to leave the house.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well let's eat, do you want to eat too?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W.. what? Oh come on Vinny! I already ate today. Something wrong? ",
+    "character": "James",
+    "type": "dialogue"
+  },  
+
+  {
+    "set": {
+        "playlistPlay": null
+    },
+    "value": "Rain offered me a pie for a strange pulsating rainbow... anyway... thanks for the pie.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny accepted the pie and started eating it while following James.",
+    "type": "action"
+  }, 
+
+  {
+
+    "value": "Rainbow pie? ...Okay? I wish I had seen this. Well then, let's go.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "suspenseful-ambient"
+    },
+    "value": "James and Vinny then walked towards the exit of the village. Everything was very quiet. Vinny felt a little uncomfortable due to the strange cold feeling that the village had now.",
+    "type": "action"
+  }, 
+
+  {
+
+    "value": "But how weird. I remember this place is haunted. But where are the ghosts?",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny looked at smartmoby and looked for something different while following James. Vinny only saw the icon of his home planet on the smartmoby screen.",
+    "type": "action"
+  }, 
+
+  {
+
+    "value": "Yeah. So it is. The crazy goddess really knows how to use that bizarre thing on my arm.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "James, look at my smartmoby, I just remembered that Rainbow moved it.... what did she do?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Huh?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James looks at the Vinny's Smartmoby curiously.",
     "type": "action"
   }
 
