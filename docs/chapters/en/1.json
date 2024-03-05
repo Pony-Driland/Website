@@ -6360,7 +6360,7 @@
     },
 
     {
-        "value": "Well, I like listening to the ponies, but since the first time I saw you, and I heard some rumors about you. I have empathize by you, and it's not a pick-up no, Miss Charming Rayane.",
+        "value": "Well, I like listening to the ponies, but since the first time I saw you, and I heard some rumors about you. I have empathize for you, and it's not a pick-up, Miss Charming Rayane.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -6639,7 +6639,7 @@
     },
 
     {
-        "value": "James closes the notebook screen and rubbed the hoof on his head before going inside the tent. Vinny laughed a little and answered.",
+        "value": "James closes the notebook screen and rubbed the hoof on his head before going into the tent. Vinny laughed a little and answered.",
         "type": "action"
     },
 
@@ -7021,7 +7021,7 @@
     },
 
     {
-        "value": "Vinny made a poker face, and tried to change the subject.",
+        "value": "Vinny does a poker face, and tried to change the subject.",
         "type": "action"
     },
 
@@ -7048,7 +7048,7 @@
     },
 
     {
-        "value": "James uses magic to pick up the things and prepare to get up. Vinny was a little embarrassed and made a poker face.",
+        "value": "James uses magic to pick up the things and prepare to get up. Vinny was a little embarrassed and does a poker face.",
         "type": "action"
     },
 
@@ -7271,7 +7271,7 @@
     },
 
     {
-        "value": "James made a sad face, trying to forget the things that happened. Vinny then looked at James and smiled a little sad and replied.",
+        "value": "James does a sad face, trying to forget the things that happened. Vinny then looked at James and smiled a little sad and replied.",
         "type": "action"
     },
 
@@ -7299,7 +7299,7 @@
     },
 
     {
-        "value": "This ice will come back, I won't let you be unharmed about having frozen my face. Then you'll want rayane to have played a prank on you.",
+        "value": "This ice will come back, I won't let you be unharmed about having frozen my face. Then you'll want Rayane to have played a prank on you.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -7361,7 +7361,7 @@
     },
 
     {
-        "value": "Vinny didn't think twice and quickly went to see breakfast. Vinny was happy to realize this and then said. So Vinny find a food box well tied with a bow on the side of the food box, the box looked like this was specially decorated for you, the box was very warm because of the breakfast inside this. And beside the box was the little letter.",
+        "value": "Vinny didn't think twice and quickly went to see breakfast. Vinny was happy to realize this and then said. So Vinny find a food box well tied with a bow on the side of the food box, the box looked like this was specially decorated to Vinny, the box was very warm because of the breakfast inside this. And beside the box was the little letter.",
         "type": "action"
     },
 
@@ -8557,7 +8557,7 @@
         "set": {
             "playlistPlay": null
         },
-        "value": "James made a poker face. Vinny then took a deep breath and calm down before Vinny respond happily.",
+        "value": "James does a poker face. Vinny then took a deep breath and calm down before Vinny respond happily.",
         "type": "action"
     },
 
@@ -10695,7 +10695,7 @@
     },
 
     {
-        "value": "Vinny was a little embarrassed and made a poker face. Rayane giggles a little and responded with a malicious face.",
+        "value": "Vinny was a little embarrassed and does a poker face. Rayane giggles a little and responded with a malicious face.",
         "type": "action"
     },
 
@@ -19964,7 +19964,7 @@
 
     {
         "set": {
-            "playlistPlay": "first-vs-rayane"
+            "playlistPlay": "first-vs-Rayane"
         },
         "value": "Sorry sorry. So let's start.",
         "character": "Vinny",
