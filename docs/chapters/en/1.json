@@ -2026,7 +2026,7 @@
     },
 
     {
-        "value": "Aww... Really know? Do you know how to defend yourself too~?",
+        "value": "Aww... Really know? Do you know how to defend yourself too?~",
         "character": "???",
         "type": "dialogue"
     },
@@ -2076,7 +2076,7 @@
     },
 
     {
-        "value": "Meet the newbies... you know this is my role here. Can you please let me continue what I started~?",
+        "value": "Meet the newbies... you know this is my role here. Can you please let me continue what I started?~",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -6332,7 +6332,7 @@
 
     {
         "set": { "playlistPlay": "bad-think" },
-        "value": "Shhhh~ Don't worry about him~ I'm here~ You have my word, I'm glad to hear your words from the small village. I never heard that from anyone. My greatest wish is that you keep your word. Okay~?",
+        "value": "Shhhh~ Don't worry about him~ I'm here~ You have my word, I'm glad to hear your words from the small village. I never heard that from anyone. My greatest wish is that you keep your word. Okay?~",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -7832,7 +7832,7 @@
     },
 
     {
-        "value": "Heh! Well, can you tell me the story of how you met Rayane? Was she always known this way you knew her? we have a lot of walking time.",
+        "value": "Heh! Well, can you tell me the story of how you met Rayane? Was she always known this way you knew her? We have a lot of walking time.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -7950,7 +7950,7 @@
     },
 
     {
-        "value": "J..James. if you were born here, why aren't you from here? I did not understand.",
+        "value": "J..James... if you were born here, why aren't you from here? I did not understand.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -12306,7 +12306,7 @@
     },
 
     {
-        "value": "Vinny~? How's your helicopter mode going?~",
+        "value": "Vinny?~ How's your helicopter mode going?~",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -15695,7 +15695,7 @@
     },
 
     {
-        "value": "Heh. That's what happens when you're late in your lab. Alright~?",
+        "value": "Heh. That's what happens when you're late in your lab. Alright?~",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -19737,7 +19737,7 @@
     },
 
     {
-        "value": "Are you sure you're really interested in training with me~? What are you using as combat equipment?",
+        "value": "Are you sure you're really interested in training with me?~ What are you using as combat equipment?",
         "character": "Rayane",
         "type": "dialogue"
     },
