@@ -10561,6 +10561,9 @@
   }, 
 
   {
+    "set": {
+      "playlistPlay": null
+    },
     "value": "Oh come on... I think it must be my little red bow... it attracts a lot of attention. I think it must be my eyes looking at the wrong ponies.",
     "character": "Vinny",
     "type": "dialogue"
@@ -10578,6 +10581,9 @@
   }, 
 
   {
+    "set": {
+      "playlistPlay": "sad"
+    },
     "value": "A...Aah? T...This is you? Jasmin?",
     "character": "Vinny",
     "type": "dialogue"
@@ -10631,6 +10637,173 @@
     "value": "We'll need to get her out of here now!",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "W...Well...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James looked at the radar, and the radar was in trouble again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Shit!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James looked at the radar, and the radar was in trouble again. James ignored the radar and looked at the mysterious pony's smartmoby to analyze the dimension and planet of origin.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "N..No... no way... It can't be true. Yes... Rainbow Queen really has this ability from master smartmoby.",
+    "character": "James",
+    "type": "think"
+  }, 
+
+  {
+    "value": "James! Look! Who told me about that thing about causing interference, was that gypsy... do you think we should investigate?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Gypsy? What?! You paid a gypsy?! Don't play seriously!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was completely scared.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny then tried to lift the body, the body seemed to be breathing normally in a deep sleep due to fainting.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "James! I told you I went to a gypsy girl... you're going to start freaking out now, right?! Let's get Jasmin out of here. Or do you want to try to wake her up??",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "It was asking gypsy about spirits! Not playing predicting the future!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James took a deep breath and responded.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Enough talk. Let's go home. I don't want to see your friend suffering here on the floor.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny just placed her on his own back, James just helped make the process go faster. Vinny felt that he had seen some form of something invisible, but it seemed that everything had just been an impression, it was nothing that presented danger.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...Ah? What? I don't think I'm crazy. Is there someone here.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny... Your contacts are getting as weird as Rayane's contacts... I think you spent too much time with her.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny just felt a light wind around, but everything kept very quiet and silent. James was trying not to lose patience with the situation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...what? What's happening?!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny. Let's go! I think it's too early to have ghosts here. It's just dark and the haunted village is a little far from here.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James already had his things ready to start walking back home.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Okay! Sorry! Tabacu head!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny began to hear someone coughing.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny felt a little scared and curious, looking at where the cough was coming from.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I don't think your equipment will work, not even here it's working properly,",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then started following James.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Those ghosts never interfered with my electronics. Now are you going to tell me it's that electronics ghost? Maybe it's just me having a bad day. Sometimes I'm a little unlucky. Alright?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "James kept poking at the radar, trying to get it to call again and again and again while walking towards the same path he used earlier.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny heard the coughing again, and this time Vinny was more attentive, and realized that it was the mysterious pegasus was coughing, she was starting to delicately try to move.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "bad-think"
+    },
+    "value": "J...Jasmin?!",
+    "character": "Vinny",
+    "type": "think"
   }
 
 ]
