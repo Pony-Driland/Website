@@ -8473,7 +8473,7 @@
   }, 
 
   {
-    "value": "Oh came on! Not even the goddess of this world knows how to answer that?!",
+    "value": "Oh come on! Not even the goddess of this world knows how to answer that?!",
     "character": "Vinny",
     "type": "think"
   }, 
@@ -10266,7 +10266,7 @@
 
   {
     "set": {
-      "playlistPlay": "suspenseful-ambient"
+      "playlistPlay": "songs-for-an-dying-world"
     },
     "value": "James and Vinny then walked towards the exit of the village. Everything was very quiet. Vinny felt a little uncomfortable due to the strange cold feeling that the village had now.",
     "type": "action"
@@ -10304,8 +10304,333 @@
   }, 
 
   {
-    "value": "James looks at the Vinny's Smartmoby curiously.",
+    "value": "James looks at the Vinny's Smartmoby curiously. Then James is scared to understand what really happened.",
     "type": "action"
+  },
+
+  {
+    "value": "Oh my god Vinny! She must have analyzed the data from your home planet!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A...ah? Just that? Can you see this better?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James does a facehoof, feeling worried.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Only from my computer... But what I can say is that she now knows more about you.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny and James arrived at the village exit gate. When one of the guards realized what was happening, he quickly intervened worriedly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hey hey! Calm down! Really? Are you going out at this time of night? It's dangerous out there, especially with the hauntings that are running free at this time.",
+    "character": "Guard",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? AH! We need to go out to solve a little thing, anyway, I'm single, if I see a beautiful haunting I'll go there. Heh!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wh... what?",
+    "character": "Guard",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James does a facehoof in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It must be something otherworldly to have a relationship with a ghost.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny!! Okay. Sorry guards. Well... But we still have time, it takes a while for some of them to leave the haunted village to get here.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James continued walking while looking at the radar indicator to where he had to go. James just used magic and pulled Vinny, leaving the guards not knowing what to do.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "H...Hey! hey! Well... Okay. Anyway, thanks for coming, I think we're finally going to do something together, I was always on Rayane's side, and she was always in danger... I can't even tell you how embarrassed we were by pretending to be married to get to one certain pony before. Heheh!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks at the radar curiously for a few seconds while following James.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I thought you guys were secretly dating without me knowing.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was a little surprised to hear about a certain pony.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What?...certain pony?",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Naaah, even though we've already kissed, I think it's more to tease each other, yes, Ivy, almost became a pet in the end, why do you think I have to give the goddess a pet? Ivy was going to turn there I managed to reverse it, but I need to give a pet now... After all, do you know Amy?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wh...what??",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James felt a little embarrassed hearing all this. James then breathed deeply, feeling worried about the situation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wait...so this is all because you saved Ivy? Y..yes, Rayane introduced me to her. At first I was a little scared, but when I saw that she was so harmless and innocent, I felt better. But I still don't understand how these magic collars work.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Don't you have any suspicion of what Ivy is? With those little bows and everything.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "She's just a pegasus... The only thing I could detect differently about her was an aura of magic coming out of her collar, and it seems that it was that aura of magic that changed the color of her eyes. Her eyes aren't that color. But it's a very harmless aura, it's like some kind of shield around her. I couldn't quite understand what all that meant. Anyway she doesn't represent any danger.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmmm... Fine... anyway, I wanted to hang out with you a little, do things with you, Rayane was trying too hard, and we almost died a few times there on the subway. Let's see if you can not die. Heh! But how's your search going? Found something on the tablets?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was surprised to hear Vinny talking about Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... I saw that clearly when I saw how injured you two were.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was a little scared to hear about the tablet.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... I'm going to need to ask you some questions later about that.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a poker face and says.",
+    "type": "action"
+  }, 
+  
+  {
+    "value": "Why don't you ask now? I need to look for a pet because I took Ivy's pet life and I have to give another pet. And now? A pony with red bows appeared... nothing suspicious?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked around, trying to make sure he wasn't being spied on. James then responded worriedly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "We'll waste a lot of time if I ask now... We have to save your friend. I'm feeling like you've gotten yourself into a hell with all this pet thing. As silly as this all seems, we should at least remember who we are dealing with.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Y...Yeah. Yes...y..yes...Ah?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny began to see something in the distance, it seemed to be a body lying on the ground",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh! Is this someone's body?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny pointed and then walked faster toward the body.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Body? Hey! Wait me!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was surprised and looked on the radar. James then realized that the radar pointed to the same location where Vinny was going.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh yes! It looks like that body!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James followed Vinny in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "James is a little surprised when he feels the radar giving a small short circuit problem and then starting working again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W....What?! FUCK! But I fixed that today!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James kept following Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wow! Hey hey! Get ready, there was a ghost that was causing interference in electronics... should we proceed?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny stopped and looked at James.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh come on... I think it must be my little red bow... it attracts a lot of attention. I think it must be my eyes looking at the wrong ponies.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Electronics ghost? Who told you this? A....AH?!",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "James was surprised to find Vinny investigating a pony lying on the ground. Vinny found a pegasus with a long mane, she was passed out on the floor, it looked like she had been there for a while. As Vinny looked at the ground, Vinny had a brief feeling that she had been looted.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...Aah? T...This is you? Jasmin?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny pokes her, with a lot of concern trying to be sure of his thoughts. But the body did not react, it was simply passed out.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "J...Jasmin? Wait... is that her name?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Come on! Come on! FUCK! Could it be that she was stolen?",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny looks at James.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "JAMES! Help me here! Her name is Yasmin, but I call her Jasmin.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked at the body, seeing that nothing was happening, Vinny went back to James.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "COME ON! JASMIN!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny analyzed around, preparing to pick up the body.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "We'll need to get her out of here now!",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
