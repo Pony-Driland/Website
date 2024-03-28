@@ -11064,6 +11064,9 @@
   }, 
 
   {
+    "set": {
+      "playlistPlay": null
+    },
     "value": "Yes... Finally. It's Vinny... End of mystery and suspense.",
     "character": "James",
     "type": "dialogue"
@@ -11081,6 +11084,9 @@
   }, 
 
   {
+    "set": {
+      "playlistPlay": "think"
+    },
     "value": "Yeah... do you believe me now? Stop feeling scared. We're friends, we're not going to kidnap you. Hmmmm... But if you want to stay here in the middle of nowhere in the dark with no one and not even knowing how to walk, then it's your choice but I don't think you'll want to.",
     "character": "Vinny",
     "type": "dialogue"
@@ -11118,6 +11124,772 @@
     "value": "W...what? Vinny? O...oh my god. No no no... This must all be a crazy dream... and...I...I...",
     "character": "Yasmin",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Yasmin was very confused and looked around, trying to calm down during the whole situation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Can't we just go home? Or at least wake me up? I'm not enjoying this joke as much as I like ponies.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was traumatized by what was happening while trying to keep calm to get up. Vinny took a deep breath and responded.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah. It's not a joke. You will only be able to walk on four hooves for now. What's your last memory? Was it by chance that you received a gift and ended up here?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W..well... I was just waiting for my webcam to arrive. But it looks like the webcam button turned out to be a black hole like in your house. This is all extremely bizarre.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin kept lamenting, trying to accept what happened.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah... your X-Tudo brought me here. Your snack, I was eaten for a snack... can you stand on your own?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "X-Tudo? But I just bought a regular lunch! Is anyone responsible for this?? Please tell me there's a way to go home! How long have I been passed out here??",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin started crying for a few seconds, but then she started to calm down when she realized that Vinny had the red bow on the head.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And... why are you wearing this little red bow?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a poker face in response. James just sits there, looking disappointed on the whole situation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "She cannot stay in this world for long. Fuck! Now I have to take care of myself and her!",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "This is a long story. Look, try to stay calm. Alright?. Yes there is something behind it. But this is all very complicated... I'll release you in 3 seconds and you try to walk, okay? It's not that difficult to learn to walk.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wait... What? on 3? Do what even in 3?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "1...2...3!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny let go of Yasmin's body so she could try to walk by herself.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...AHH!",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "She waved her hooves trying to balance herself, but accidentally fell to the ground again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah... This is going to be worse than I imagined.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "W...well... That's right, you learn by falling. I'm going to release you, but I'm going to keep my hooves close to you... alright?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried to help her again while giving James a nervous smile.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Is the view good there James?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "...yes.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James does other facehoof. Yasmin was embarrassed for not being able to walk.",
+    "type": "action"
+  },
+
+  {
+    "value": "Vinny, forget it. We can take her to our house. We have to leave this forest.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "H...Home? B...but how are we going to get back to home?? I'm just worried about that. We can even go back to this world, the idea seems cool. But how do we get home?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James looked worriedly at Yasmin before responding.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Sorry... But unfortunately you are stuck here like all of us.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Y..Yeah! Anyway, do you know what wings open to the maximum mean?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...What?! V..Vinny.. you're scaring me. What do you mean trapped? I have my things to do at home, our friends, our normal life.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Yasmin seemed very anxious, trying to respond as calmly as possible.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "B..But...w...what? Do I have wings?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was surprised to look at the wings, and held them, analyzing with great curiosity.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And... who is that pony?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin pointed to James curiously.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "That one is a pony... concentrate and try to stand on your own, you don't want kidnappers kidnap you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried to keep Yasmin up on all fours at all costs.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "FUCK! Let's go! Learn at once! There's a crazy goddess hunting you!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "H...hey! AAH!",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...Well! James, why don't you introduce yourself first?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James does a poker face, looking at what Vinny was doing.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "If you stop forcing your friend to walk, this will be easier for me.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James? That sounds like a name from our world. How long have you known each other? A..ah.. my name is Yasmin.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin replied with a nervous smile.",
+    "type": "action"
+  },
+
+  {
+    "value": "Yeah! We've known each other for a long time. He's a guy. A nice pony, come on! I'll let you go again if you don't concentrate.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried to make Yasmin walk again, but this time James used magic to prevent her from falling to the ground.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny... Enough. I know you are very nervous.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "...Fine! Bighead.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin looked around and remained quiet to try to make them both calm down.",
+    "type": "action"
+  },
+
+  {
+    "value": "A long time? How about a long time? How did I go so long without eating passed out here on the floor?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was curious to look at Yasmin's nervous face, but then he made a small smile, to make her feel less shy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Nice to meet you. Vinny is a goof. Don't worry... Everyone here will try to help you.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeaaaah.... Anyway, I've been here for a long time, it seems I only disappeared for a few minutes for you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin just looked curiously at the two for a few minutes and then said.",
+    "type": "action"
+  },
+
+  {
+    "value": "Yes... it was a few minutes. How do you meet someone new like that in a few minutes?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Temporal distortion between dimensions.... Time in here passes much faster than usual. At least you didn't have the same bad luck as Ivy who literally spent more than 100 years without seeing each other.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was completely surprised to hear this",
+    "type": "action"
+  },
+
+  {
+    "value": "1...100 years?! WHAT????? I don't want to go back to a world after 100 years!",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was even more scared.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah... I'm here in this world I think for a few days, but it only stayed a few minutes. Well... let's get out of here before something bad happens. Alright? Do you want me to carry you just to make sure Jasmin?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "H...carry me?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was very embarrassed to hear this. Meanwhile James laughed a little.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "If she's like that with you, imagine with Rayane.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hahaha! Your attempt to imitate me is great!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny spoke very sarcastically. James didn't know what to say about Vinny's hint. Yasmin just continued to be embarrassed, not wanting to get involved in the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... Let's go.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh come on! There's nothing wrong with me carrying Jasmin. Do you want to walk alone or do you want help?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin does a small nervous smile.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "First option we go then?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then bent down to let Yasmin climb on him",
+    "type": "action"
+  }, 
+
+  {
+    "value": "In the meantime you can train your wings, try to move them. I have a device that will help you too.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "T...train my wings? ah yes... If the falls aren't too painful, I'll try.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "As Yasmin climbed onto Vinny's back, Vinny looked around for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmmm...",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "And... looks like you were robbed earlier, didn't you come with anything? Cell phone. Anything? Your webcam?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was then scared when she realized this.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What? I...I... AAAH?! My phone!! I had my cell phone on my hand!",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "C...Cell phone? Another cell phone here?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was surprised to hear the word.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Forget it. Another time we'll see who the bad guy is. It must have been a ghost or something, I saw something earlier. But anyway, try to flap your wings.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "But...but... So there is internet signal here? ghost? You mean there are ghosts too? Oh...okay.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was afraid of the unknown, not really knowing how to react to all of this. Vinny started walking while looking at James.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... James, do you want to tell me about the tablets? Is there something very serious about them?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes... Let's get back home as soon as possible. It's getting too late here. It's better if we talk about this very privately. These are very serious questions.",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Yasmin was curious, and moved the wings slightly, trying to understand how they work. Then she would poke the wings and analyze, looking at the wing feathers.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Maybe this can be used as a hand if I do it right.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin smiles at the idea she suddenly had. James just looked curiously at Yasmin when he noticed some of her intelligence.",
+    "type": "action"
+  },  
+
+  {
+    "value": "A..ah? How curious. She seems to be smarter than Vinny. I will remember this in the future.",
+    "character": "James",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny was a little worried to hear James talking.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Fine...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny seemed a little paranoid, always looking around as he walked.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "How's your radar? You can make an audible warning when you have some ghost interference right?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny could only see some leaves moving strangely, but he couldn't find anything suspicious, everything was too quiet. Vinny didn't hear any voices and not even the sound of footsteps, it was a very strange feeling.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Don't worry about it. I've already located where we have to go to get home.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "This is weird James... it's all quiet... we didn't hear anything... don't you suspect anything?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "My radar just detected a strange energy but it just disappeared. But it's not ghost. If it was ghost my radar would detect ghost... So don't panic.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "All at once... Hmm...",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was very curious, and moved a wing with all her strength, accidentally bumping onto Vinny head.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ooh...! Hey!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "AH! Oops! Excuse me!",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was surprised by the accident.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny wings slaps James's head.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Go James! Give someone a slap! Are we far away?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "W..WHAT?! VINNY! I don't even have wings!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James, trust me... Jasmin pays attention.... holds on tight to me so she doesn't fall.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...what?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Yasmin curiously held on tight to Vinny, so Vinny just spread his wings and started flying as fast as he could. soon after a slight analysis Vinny returned to James.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AAHH! A FLYING CAR!",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "OH! VINNY! AND ME HERE!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was disappointed after realizing there was nothing interesting around.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... did you like the tour?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I love it. @.@",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks around if everything was ok, then calmed down again, Breathing deeply.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Are you crazy?!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Okay okay. Let's go. I still have to look for a pony... Let's go without distraction now.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried to walk a little faster, but being careful so Yasmin didn't fall off his back. James was a little surprised and followed Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hey! Who? Rayane?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Don't worry Yasmin... you'll enjoy meeting everyone.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James does a poker face for a few seconds while answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Especially Rayane...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah...yes.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was very curious about what she was waiting for.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I...I see.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then time passed, Vinny, James, and Yasmin was quiet to save time and energy to be able to go home faster, the trip was very smooth, the gates were open, the guards were just doing their job. Then everyone arrived at the side of the house door. Vinny saw that the house lights were on, indicating that everyone was awake doing something inside the house.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Okay... okay! Take a deep breath Vinny. The worst is perhaps over. We are at home, everyone is together again. No ghosts, crazy goddesses, Elite Color, or anything strange in this world. I just need to keep Jasmin safe with everyone in here until I find a way to resolve this whole mess.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny was looking at the door very thoughtfully.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I've already saved a lot of ponies, I'm sure she'll like staying here while I solve my fucking problems. Yes, that's it. The more friends Yasmin has around here, it will make things more difficult for the crazy goddess to kidnap her. This idea is fantastic! This way it will be easier for me to finish all this.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Hello? Vinny? Are you okay? ",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny? The door! What happened now?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A..Ah? Nothing! Nothing... Don't try to make despirocation on me now Jasmin. This goes for you too, tabacu head!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James does a facehoof in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Okay.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny must be planning something. I hope he at least let me know first.",
+    "character": "James",
+    "type": "think"
   }
 
 ]
