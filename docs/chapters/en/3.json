@@ -10801,9 +10801,323 @@
     "set": {
       "playlistPlay": "bad-think"
     },
-    "value": "J...Jasmin?!",
+    "value": "J...Jasmin?! Oh god! Bighead! Look here now!",
     "character": "Vinny",
     "type": "think"
+  },
+
+  {
+    "value": "Vinny points towards pegasus desperately.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "P...Pony coughing?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James looks in the direction curiously.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..ah! She's moving!",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "H..huh? H...Home visits?",
+    "character": "???",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh...N...Nice! Yes! Nice to meet you! But... don't I understand, home?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "H..huh? Wait... this is not my house.",
+    "character": "???",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "She looks at Vinny's face and was completely scared.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..AH?! PONIES?! What?! What place is this?! What happened with me?! I'am dreaming?! I'm being kidnapped!",
+    "character": "???",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "She was completely terrified and accidentally fell off Vinny back, and tried to crawl on the ground to get away from Vinny and James.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny! She will run away!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...What? Hey wait! Jasmin??",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny and James could see that her mane was a brown color, and the eyes were dark blue.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...What?! Do you know my nickname?! Oh my God! I think I hit my head too hard!",
+    "character": "???",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "O...oh no. It's really her. What did I do.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "She was even more scared, and tried to get up from the ground to run, thinking I could stand on two legs, but fell to the ground again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What did I do... Now she's stuck in this world with me. FUCK!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny was a little regretful in his own thoughts for a few seconds before he said something.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Fine! Calm down, calm down... It's me... the big Calena! You remember me, calm down... you won't be able to walk... you... you... you'll need to stay on 4 hooves and train your 4 hooves to walk.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "What? C...Calena? I don't remember Calena changing so much... Oh my god. But what is this?! Someone tells me that this is all a dream.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "She was extremely scared, trying to understand what was happening.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "She gave up trying to walk and was even more scared when looking at the hooves.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...What happened to me?! E...Everything feels so real. I...I... I'm having a lucid dream?!",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Calena? What the fuck is this Vinny? Who is this pony? You're scaring her even more.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James does a facehoof.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Okay! Sorry bighead! Calm down Jasmin, you were transported to this world of ponies. W...Well...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny took a deep breath and tried to think of some way to calm the situation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Unfortunately it's not a dream but it's me, we talked a lot do you remember.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was amazed to hear these words, still very confused trying to understand what was really happening.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wait... us? How teleported? I...I lost a friend a few minutes ago and now all of a sudden I hear this conversation from us? W...Who are you?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "She tried to keep calm not to cry during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh my god... Okay. How do I know you won't believe me... James! Is my phone still with you? Put that song there that you like.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "S...Song? Oh? Are you serious?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James took the Vinny's cell phone out of his backpack. The cell phone was levitated to Vinny, it was turned off.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "James? W...What? I don't remember any James... You're going to kidnap me!",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "She tried to crawl on the floor again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh no no no! Come back here! Calm down, you'll know who I am when you hear this.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny turn on the cell phone and put on a special song.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Special song? S..Song? W...WHAT?! IT'S A NIGHTMARE! IT'S A NIGHTMARE! NO!",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "She was desperate trying to drag herself far away.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh my fuck god! Stop this! Just say your real fucking name!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "It's me Jasmin, Calena, I can tell you everything about you, it's hard. But yes you are no longer in our old world, me, Tiorafa, Vinicius, Beroy, your head banging on the stove... calm down. This song you hated so much... you have to believe in me.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny turned off the cell phone in response. James does a facehoof in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Why...",
+    "character": "James",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Calena wouldn't put this abomination in the form of song! I only know one person who would do that! I...I...Wait... Are you telling me that? No... that's impossible. I must have been passed out for hours.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was shaking with fear, still trying to believe what was happening.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... Finally. It's Vinny... End of mystery and suspense.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wh...WHAT?!",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was extremely surprised.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah... do you believe me now? Stop feeling scared. We're friends, we're not going to kidnap you. Hmmmm... But if you want to stay here in the middle of nowhere in the dark with no one and not even knowing how to walk, then it's your choice but I don't think you'll want to.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...What?! No! No no! Don't leave me here!",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin crawled towards him on the ground.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny rubbed his hoof against his head, trying to think of what to do next. Vinny, in a desperate attempt, tried to help Yasmin stand on four hooves.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AAAAH! Come on bighead! How I wish Kenny was here now! I don't know how to teach anyone to walk!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...what? Vinny? O...oh my god. No no no... This must all be a crazy dream... and...I...I...",
+    "character": "Yasmin",
+    "type": "dialogue"
   }
 
 ]
