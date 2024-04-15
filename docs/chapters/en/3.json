@@ -11890,6 +11890,116 @@
     "value": "Vinny must be planning something. I hope he at least let me know first.",
     "character": "James",
     "type": "think"
+  },
+
+  {
+    "value": "Then Vinny would start to open the door.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh... what a beautiful house...",
+    "character": "Yasmin",
+    "type": "think"
+  },
+
+  {
+    "set": {
+      "playlistPlay": "calm"
+    },
+    "value": "Jasmin, welcome to the temporary home with your new friends!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+  {
+    "value": "Wagner was having dinner with Ivy, Jeff was helping Wagner socialize with Ivy. Amy was happily eating the dinner that Rayane was bringing her. Kai was just sitting meditating in a isolated place of the house. Yasmin was a little surprised in response when she saw everyone.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah? What? Friends? H...How many friends did you make in a few minutes?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Much more than you can imagine.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah. Days and days... so let's go! Heh heh!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin does a small shy smile in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y..yep. How many ponies. I still think I'm dreaming and must be passed out in front of the computer.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was even more shy, not knowing where to start, mainly because she still doesn't know how to walk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "O..oh... you really have a lot of friends in a few days. Vi..Vinny! You know I know how to have lucid dreams, right?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah. And you gave me a gift of zika. I think you can get down right?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "G..Gift of zikas? You are an expert on zikas. W..well... I think this lucid dream deserves more time. This is very realistic.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then helped Yasmin back to the ground, and prepared to make an announcement shout.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah? Vinny? Are you doing??",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "HEY GUYS!!! I arrived from the bar with James and my friend!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...What?! VINNY! No no no! Stop this!!",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was embarrassed and didn't know what to do when everyone looked at her.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "O..Oh my god! Vinny you crazy one!",
+    "character": "Yasmin",
+    "type": "think"
   }
 
 ]
