@@ -15,6 +15,17 @@ console.log(`Github Repository: https://github.com/${storyCfg.github.account}/${
 console.log(`Tags`, storyCfg.tags);
 console.groupEnd();
 
+// Roleplay format
+const renderRoleplayFormat = (chapter) => {
+    let data = '';
+    for (const item in storyData.data[chapter]) {
+        if (storyData.data[chapter][item].type === 'action') data += `*${storyData.data[chapter][item].value}*`;
+        if (storyData.data[chapter][item].type === 'think') data += `\n${storyData.data[chapter][item].character}'s thinks: ${storyData.data[chapter][item].value}`;
+        if (storyData.data[chapter][item].type === 'dialogue') data += `\n${storyData.data[chapter][item].character}: ${storyData.data[chapter][item].value}`;
+    }
+    console.log(data);
+}
+
 var dice = {
     roll: function () {
         var randomNumber = Math.floor(Math.random() * this.sides) + 1;
