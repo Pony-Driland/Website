@@ -12000,6 +12000,297 @@
     "value": "O..Oh my god! Vinny you crazy one!",
     "character": "Yasmin",
     "type": "think"
+  },
+
+  {
+    "value": "Oh? Hey you! Welcome!",
+    "character": "Jeff",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hello! I hope you feel at home!",
+    "character": "Wagner",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Jeff waved happily while Wagner and Jeff laughed a little when they saw Vinny with a red bow on the head, but then the two one waved at Yasmin back. Vinny does a poker face in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... The red bow on my head. Wait... Amy is here too.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Other... other pony?",
+    "character": "Rayane",
+    "type": "think"
+  },  
+
+  {
+    "value": "Rayane was a little surprised and looked at Yasmin curiously.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh? Friend?",
+    "character": "Rayane",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Rayane tried to remain calm until she smirks at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It looks like my dream have visitors~ Welcome to your friend.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin does a small nervous smile as she slowly tries to feel comfortable in everyone's presence.",
+    "type": "action"
+  },
+
+  {
+    "value": "This... this blue pony is a little bigger.",
+    "character": "Yasmin",
+    "type": "think"
+  },  
+
+  {
+    "value": "Oh hey... Hello everyone. V..Vinny? This blue one called you a dream?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Amy looked at Yasmin, Amy was very shy by the new visit.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..friend? Vinny has more friends?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? Who is speaking shyly?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin looks curiously at Amy in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...Ah? Aww! And that cutie over there?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin feel delighted by Amy's cute look.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah! Come on!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny took a deep breath and continued the conversation.",
+    "type": "action"
+  },
+
+  {
+    "value": "Well! This blue pony is Rayane, she was my fake wife but then we got divorced and I decided to stay with the kids after she made me feel ashamed by buying this little red bow.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Fake wife? Vinny? You already have a girlfriend?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was a little surprised to hear this.",
+    "type": "action"
+  },
+
+  {
+    "value": "Y..Yeah! and...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked at Amy's innocent eyes, thinking about what to say a little nervously. Then Vinny would make a small smile to do Amy feel comfortable during the conversation.",
+    "type": "action"
+  },
+
+  {
+    "value": "That's Amy! Yes! Amy! Heheh. What did you think about her? Isn't she a sweet pony? I told you Amy that no one was going to exclude you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "T..Thank you Sir Vinny...",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin laughed a little, trying to interpret things as Vinny's joke.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It seems a bit confusing this thing James said about spacetime... But I think I'm starting to understand better. But... I was wondering now why you had this little red bow. Is this some silly joke too?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh~ Vinny is my little dream like he said. His silly bow is a very special conversation~ Feel free to join us.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane approached Vinny and Yasmin kindly. Yasmin looked at Rayane a little surprised but she accepts Rayane's greetings.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y..Yes! Thanks Rayane... and... My name is Yasmin.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Very nice to meet you, Yasmin~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin began to feel comfortable when she realized that everyone was being kind during the conversation. Then Yasmin giggles a little at Rayane's reactions and responded.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And you? Amy? Is that cute little pony Amy? Look at this bow and these accessories. She is adorable!",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin couldn't hide her feeling of cuteness due to Amy's shyness. Yasmin then tried to convince Amy to get closer to everyone. But Amy blushed feeling embarrassed when she heard the words and does a very shy smile.",
+    "type": "action"
+  },
+
+  {
+    "value": "O..oh? Hi... nice to meet you.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin hugs Amy gently while responding happily.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'm enjoying your friends. Everyone here is adorable! I think my feeling of shyness has passed, don't you want to lose your shyness too?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was surprised, she was expressing a feeling that she hadn't yet received any hug like now in the house.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "O..oh yes. Thank you. Thanks for the hug.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy blushed due to embarrassment for a few seconds before smiling back as she felt happy about the hug, then hugged Yasmin back kindly. Rayane giggles a little, thinking it was cute that Amy liked receiving the first hug.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Awww~ Vinny... Looks like your friend really liked Amy~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James looked at the situation a little surprised and just laughed a little to try not to ruin the moment.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... Vinny and Rayane, I think I already know what we're going to talk about.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+  
+  {
+    "value": "James replied trying not to show concern during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y...yeah! James is right. Hey Rayane! I need to talk to you and James alone ok? Can it be Now?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "You silly ones~ Alright... let's go.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked at James' face and tried to match James's facial expression in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y...Yes. Hey! Jasmin! I'm going to talk to my two friends, I'll be back all right? Don't worry Amy... Jasmin is super cool!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then does an fun smile for a few seconds before turning his attention back to James and Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Shall we?",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
