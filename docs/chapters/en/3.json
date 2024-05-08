@@ -12283,6 +12283,12 @@
   }, 
 
   {
+    "value": "Oh? Alright! I feel much better now.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
     "value": "Vinny then does an fun smile for a few seconds before turning his attention back to James and Rayane.",
     "type": "action"
   }, 
@@ -12290,6 +12296,273 @@
   {
     "value": "Shall we?",
     "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "set": {
+      "playlistPlay": null
+  },
+    "value": "Vinny then walked outside the house, waiting for Rayane and James to follow.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "T...Thanks Vinny for bringing someone who likes me.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy replied with a slight shy smile in response. Rayane laughed a little more again",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "bad-mystery"
+    },
+    "value": "Vinny, that's interesting. You were quick with your new friendships today~ So let's go.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well... yes.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James does a slight nervous smile as he followed Vinny and Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Huh?~ Why this nervous face? And what do you want to talk about?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then scratched his head a little and prepared to respond.",
+    "type": "action"
+  },
+
+  {
+    "value": "Well... I'll go straight to Rayane's point. After our disagreement in Ivy's head, I had a few moments with your friend Rain, you're even very afraid of her. We reached an agreement, so Ivy is alive. I need to find a new pet for this goddess that is no problem, the problem is you hide things from us. Will you die if you talk about it? Anyway, you need to open up to me more often.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Rayane was surprised to hear Vinny's words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "T...The agreement? Y...Yes. I was exactly afraid of your agreements with Rain. And... I wanted to know what you and Rain were talking about. But... Wait... what?! A new pet?!",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane was totally surprised, but tried to keep silent before answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What are you talking about Vinny? I'm getting confused and a little scared. I never thought that Rain would be looking for new pets right now. It makes no sense!",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+
+  {
+    "value": "Vinny then looked at Rayane, then at James, and then took a deep breath, preparing to respond.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah... Amy was innocently going to turn Ivy into a pet, I didn't want to, and I convinced Rain to give her a life in exchange for me giving Rain a pet. But I don't know why, Rain brought a friend of mine from my world to here. She was willing to do anything for me to give Yasmin to her. Rain offered me food, she even invited me to visit her house with a truce of something, and now I'm more interested than before wanting to help you and her, but I need to know the reasons. But I don't think you're going to let it all out now, but in time, really now I really need you to tell little by little. You can start wherever you want, every step I take, the more I step down... Then Rain teleported us into her mind and she killed me and ate me.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a facehoof and breathes deeply.",
+    "type": "action"
+  },
+
+  {
+    "value": "Well! And now... I have a collar. Whoever puts this collar on will become a Rain's pet.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was surprised, but tried to keep calm to answer.",
+    "type": "action"
+  },
+
+  {
+    "value": "Wait... so Ivy was supposed to have died to become a pet and we interrupted that? Are you trying to tell me that our guest is a friend of yours from your world?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+   
+  {
+    "value": "Rayane was even more surprised during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "There's something strange about this story. Rain would never do that to you without having some very specific reason against you. You know? There are so many ponies in this world that she could choose from. Trust me, this whole pet thing really is weird, but Rain has a motive against you for it.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was slightly sad to hear the continuation of the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Why does she want me to talk about it so badly?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was thoughtful, she seemed to be feeling guilty about something. Rayane starts to respond worriedly, and uncomfortable with the subject of the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny... Rain really likes to play with the psychology of others when she wants to get what she wants. Are you sure you're really going to continue with all this?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then Rayane looked curiously at the collar.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... Don't worry about the collar, the collar's magic is activated only when it is put on.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny would look thoughtful and then look at Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmm... Have you tried to apologize to Rain? I know and remember what you asked me. But first... first one of the sides has to give way. I will continue on this \"pet adventures\". I can't stop because I'm on another level compared to hers. She is powerful, but determination I have more. One of her deals was for me to make you talk about your past with me. I am aware of how the collar works. But... I need to ask you something. Don't you have any involvement in I am in this world? Rainbow hates me, she wouldn't want me here. I don't see anyone else who needed me besides you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks into Rayane's eyes.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Did you bring me into this world? Or has no involvement?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was slightly sadder with the subject of the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "No... I have no involvement. Rain hates you for the same reason she hates me. She doesn't want anyone to get in the way of her plans. She... just wants to work alone. She doesn't want any interference from any other pony. We met by luck. I didn't even expect what our friendship would become one day.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "and... was Hiroshi involved with the Elite Color?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "No. Hiroshi was never involved with Elite Color. And do you remember anything about this deal? Rain plays with her words a lot... You can be falling into a trap for her to win you one way or another.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Rayane was slightly sadder with the subject of the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "If she wants Yasmin... It means she wants to destroy your determination. I feel deeply that this is the real reason she is doing all this to you.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny would stay quiet for a few seconds, thinking about everything he heard.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...Well! Rainbow is involved with the Elite Color, and Rainbow was with Hiroshi from the beginning, she even gave him a new life in the form of an agreement. I'm aware of everything going to the extreme I don't want to, and I'm wanting to let her go. But I have ponies that trust me. I can't just let someone come and abuse them as they please... If it gets extreme, I have my plans B, C, and D!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then looked at Amy. Amy was teaching Yasmin to use her wings gently. So Vinny just took a deep breath and said.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Anyway, Rayane. Rainbow is very very pissed off with you still. But that's when everyone starts to get weak... you telling me the truth about everything that happened between you 2 will help me not only understand beginning, middle and end, but I can also use it against her. I can use social engineering to trick someone into pet stuff using it. Be a sick pony who is going to die soon, a beggar pony who wants a new life, a new depressed pony who is going to commit suicide. There are many ways to convince someone to do something I want. If I don't find a pet... I don't know what will Rainbow do, I didn't even know she had the power to bring ponies here and even more take authority over their lives like that out of nowhere.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks at the forest, and then turned his attention to Rayane back.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well! If you has nothing to say, I think I've got it, you can say what you wanted to say.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane tried to keep calm during the conversation, trying not to be sadder than she already was.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "S...Sorry Vinny... But Rain really tries to be good sometimes, I just think she's selfish when it comes to deciding how to take care of things. And all she wants is to just help Amy. Are you sure you want to know the truth? And we have to be very careful who we choose to be a pet... Whoever this pony is, this pony also has a personal life.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane took a deep breath and responded sadly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "She's going to attract you or capture Yasmin. She probably already knows how she's going to do all this. Yes, Rain has the power to bring ponies to this dimension, she has access to some spells from master smartmoby, and she used you to have the authority to bring Yasmin into this world. Rain used your permission so the blame isn't directly hers.",
+    "character": "Rayane",
     "type": "dialogue"
   }
 
