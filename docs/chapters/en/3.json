@@ -12733,6 +12733,210 @@
   {
     "value": "Rayane does a slight smile and waved before going back to see how Amy and Yasmin were doing. Rayane closed the door slowly to make sure Vinny and James would have privacy. James took a deep breath and prepared to answer.",
     "type": "action"
+  },
+
+  {
+    "value": "Vinny... I'm glad you made Rayane feel better, but it's a lot more serious than you might think. I just need the answer to one question to prove my theory... Do you remember what Rainbow Queen's smartmoby looked like?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "First of all. Rainbow said she'd be keeping an eye on me. Do you want to continue this conversation here and now? Somehow she can be listening to us, either through this collar. I don't know...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Wait... what?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was slightly scared in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Are we being watched too?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James does a facehoof in response.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "vinny-rainbow-queen-ivy"
+    },
+    "value": "Fine! Maybe it doesn't matter so much that she knows I'm going to say it. Now the bullshit must have been done by the time I opened my mouth.",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Yeah... and Rainbow didn't wear any smartmoby, she just had bracelets and a very elegant Egyptian outfit that shines like Amy's collar sometimes.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was even more surprised, but he tried to remain calm as much as possible to answer Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...WHAT?! Holy shit!",
+    "character": "James",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Ok... so that's it. This... Oh fuck... Fuck! This is extremely more serious than I imagined. Oh my fuck god... This is a problem that I don't think we'll ever have a solution for...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? Damn James, what happened this time? You're getting weirder and weirder these days. What the fuck happened this time? You're starting to scare me.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Rainbow Queen... she... she is... Oh no...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James took a deep breath, trying to keep calm to answer. James looked like he was about to lose his sanity trying to answer that.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Rainbow Queen is... Damn... how did this shit happen... Alright! I'll try to explain it in a way without scaring you. She's not a pony that came from another dimension like us... She's a pony that was created inside this world. She is a pony native to this world. This is extremely serious, this now explains everything why this dimension is being drained faster than usual. FUCK! For this dimension to maintain its existence, Rainbow Queen existence consumes a lot of energy! It's like an artificial intelligence running on a computer with the ability to behave like a normal creature.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James then tried to be more patient with himself during the conversation.",
+    "type": "action"
+  },
+
+  {
+    "value": "Yes! Yes! Artificial intelligence! I discovered this when I managed to decipher what was written on one of the tablets talking a little about her past. This is very serious because creating artificial creatures has always been a testing experiment. I never finished this project when I found out how troublesome it would be!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was coughing a little due to the huge anxiety he was feeling, but he tried to keep talking.",
+    "type": "action"
+  },
+
+  {
+    "value": "Not even the trees and plants of this world are really alive. They all have a pattern to make them look like they are living beings. Rainbow Queen is an artificial intelligence with the powers of a goddess managing this world!!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little scared when he saw James' reactions, but he tried to help him stay calm.",
+    "type": "action"
+  },
+
+  {
+    "value": "James?? James! Calm down! Okay! That explains a few things. But... who created Rainbow Queen? Is it possible to create or modify us too to be like her?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Only those who have the master smartmoby can create native life in this dimension, as much as this is forbidden, it could still be done. FUCK! I'm an idiot! A fucking idiot scientist!! Why didn't I predict that someone could get this master smartmoby shit before me?! Whoever had the fucking master smartmoby most likely didn't know this information before creating Rainbow Queen!!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hey! JAMES! Relax! You big head! You will end up having a panic attack like this!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "James tried to breathe as deeply as possible to try and maintain his own sanity.",
+    "type": "action"
+  },
+
+  {
+    "value": "S..Sorry... Okay. I'm sorry again... Well... That means that Rainbow Queen is the only pony that can't leave this world. Because she doesn't have a body outside this dimension like we do. She must be fighting for her survival. If this dimension runs out, she will also die along with the entire dimension. Rainbow Queen is directly linked to this dimension.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James slowly calmed down even more during the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "We can't create new creatures as nature itself does. The main rule of nature, nothing is lost, nothing is created, everything is transformed. We cannot create souls! I don't know what the power limit of Rainbow Queen is, but whoever created her looked like they wanted a someone to help manage this world.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James then looked at Vinny a little scared.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It seems that she prefers to have a secret life without attracting too much attention and not interfering too much in this world. This is also very weird.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked just as scared as James, but impressed to hear all of this.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y...Yeah! Remember our first encounter in the cave? When Rainbow was together with that other pony. I have my slight impression that once again leads to Elite Color... What is it like to become a Elite Color member? Are ponies born there? Or anyone can join? Anyway this information was inside the tablet? So Hiroshi knew all this? Was there anything else on the tablets??",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Sorry Vinny... I don't have any information about Elite Color for now. But I found stuff about Royal Color. I thought that was weird too. How have I never heard of this name? But yes... Rainbow Queen was part of Royal Color according to the tablet itself. Hiroshi didn't tell you anything about this Royal Color?",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny was then very surprised to remember that Hiroshi had told him information about Royal Color in the past.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AH...!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I... it can't be... Hiroshi! The words he said about me and Rayane! Now... now I understand a little the trust.",
+    "character": "Vinny",
+    "type": "think"
   }
 
 ]
