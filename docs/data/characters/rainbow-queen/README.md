@@ -83,6 +83,16 @@ This weapon is the pure manifestation of her negative feelings. Divine creatures
 
 <hr/>
 
+## Fun silly fact (SPOILERS!!)
+
+When Pony Driland was in the first chapter, the first characters drawing made were Rainbow Queen and Rayane.
+
+Rayane's design was made by a human artist, but her design was inspired by an AI drawing.
+
+Rainbow Queen is canonically an AI, but Rainbow Queen's entire design creation never had any AI involvement.
+
+<hr/>
+
 ## Credits
 
 Character Development: JasminDreasond
