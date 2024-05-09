@@ -12534,6 +12534,9 @@
   }, 
 
   {
+    "set": {
+      "playlistPlay": null
+    },
     "value": "Vinny looks at the forest, and then turned his attention to Rayane back.",
     "type": "action"
   }, 
@@ -12550,6 +12553,9 @@
   }, 
 
   {
+    "set": {
+      "playlistPlay": "sad"
+    },
     "value": "S...Sorry Vinny... But Rain really tries to be good sometimes, I just think she's selfish when it comes to deciding how to take care of things. And all she wants is to just help Amy. Are you sure you want to know the truth? And we have to be very careful who we choose to be a pet... Whoever this pony is, this pony also has a personal life.",
     "character": "Rayane",
     "type": "dialogue"
@@ -12564,6 +12570,169 @@
     "value": "She's going to attract you or capture Yasmin. She probably already knows how she's going to do all this. Yes, Rain has the power to bring ponies to this dimension, she has access to some spells from master smartmoby, and she used you to have the authority to bring Yasmin into this world. Rain used your permission so the blame isn't directly hers.",
     "character": "Rayane",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny looked worried, trying to think of something to answer, but then James interrupted him. James was empathizing with Rayane, and was just respond as calmly as possible.",
+    "type": "action"
+  },
+
+  {
+    "value": "Vinny... Sorry, but Rayane already looks very sad... I don't want to unintentionally weaken her emotional even more. It would be better if we talk about this between the 2 of us.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny just looked at the floor for a few seconds and then answered James sadly.",
+    "type": "action"
+  },
+
+  {
+    "value": "Okay... okay. I'm sorry... I'm just euphoric, but yeah, we have to start somewhere, I was very dry so let's put it aside, but yeah, one thing I've learned is that you don't have to be upset about something wrong you did in the past, everything you did, brought you here, if you did something bad, or something good, the result was us here now. And now you can choose which will give another result in the future, everything has its good and bad side of the bit, believe me. I believe you have your reasons and I believe even more that you can overcome more than me.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny puts his hoof on Rayane's shoulder to comfort her.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It's ok Vinny. I forgive you. Just please, be more careful with Rain... we have a very serious matter to resolve. You just did what she wanted most... You got into her little agreement game.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny still looked worried, but Rayane hugged Vinny's hoof to try to calm down. Then Vinny looked at Rayane and smiled a little in satisfaction for a few seconds, upon seeing all that, Vinny then spoke to James.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Are you sure James?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was slightly scared before answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y...yes. Absolutely. Don't worry, it's nothing about Yasmin, it's other very important matters.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Don't worry, I only did it for Ivy, I had no other option, this will be the last one, the agreement was exactly that. I get Rainbow a pet and Rainbow give Ivy a new life.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "This... this is going to be a lot more work than you think. Few in this world believe in Rain's existence. And not everyone is interested in knowing about her existence. I hope you are ready for this.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny breathed deeply, thinking about the consequences, feeling a little regretful, but he still had the determination to try to do something.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "No... no! It can't end like this. I... I still have more plans to not make my situation worse! I won't leave this world without Jasmin!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Well...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks at James during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Do you want to talk alone?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Huh? What are you and James going to talk about exactly?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A..Ah? AH! We'll tell you later. Don't worry, I promise one of us will tell you later. Well! Vinny, yes. Let's be alone.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Okay. I trust you two.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane slowly calmed down more until she was slightly surprised when she remembered something.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh! I almost forgot... Vinny! Ivy told me she wanted to give you a gift. She told you to go talk to her when you wanted to receive the gift.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny felt a little surprised, not expecting to hear something like that.",
+    "type": "action"
+  },
+
+  {
+    "value": "Ivy? Ooh, ok... I'll go for it after here ok? Thank you so much for listening to me Rayane.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny smiles and started walking with James.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ivy? Ooh, ok... I'll go for it after here ok? Thank you so much for listening to me Rayane.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "We'll be back soon!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Alright.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane does a slight smile and waved before going back to see how Amy and Yasmin were doing. Rayane closed the door slowly to make sure Vinny and James would have privacy. James took a deep breath and prepared to answer.",
+    "type": "action"
   }
 
 ]
