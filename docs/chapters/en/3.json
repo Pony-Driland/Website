@@ -12937,6 +12937,288 @@
     "value": "I... it can't be... Hiroshi! The words he said about me and Rayane! Now... now I understand a little the trust.",
     "character": "Vinny",
     "type": "think"
+  },
+
+  {
+    "value": "Y...Yeah! He spoke but I forgot... he was very old, living his normal life and still lived another 100 years. What do you think about Royal color? Why does everything have color in the name?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Did you forget?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James does a facehoof.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... This world is made up of pixel particles... Color particles that can be manipulated by those who have the skills to control these particles. But these skills are only shared by the owner of the master smartmoby. Rainbow Queen is a goddess, theoretically she should be able to do almost everything a master smartmoby can do.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James would then look at his own smartmoby for a few seconds and then look at Vinny again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But one thing I remember very well... the first meeting we had with Rainbow Queen... I remember very well that she was angry looking for someone... someone she called master. But this pony not the same kind of master that Amy likes to say. She is referring to her creator. I think she's trying to get something back that she lost in the past.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmm... Can't you create something like master smartmoby?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James took a deep breath and responded.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "No... unfortunately that's impossible. Only the master smartmoby has the core that gives full power to this dimension. Vinny, think about it, this is all a digital dimension. The master smartmoby is a root user.",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "I understand. We find a way, you can rest easy. In the end, I can even try to help Rainbow, I don't know. Even though she wants to eat me again.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "W...What??",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "James was confused, but Vinny interrupted him again by looking at the collar for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What about the collar that turns whoever wears it into a pet? Can't you extract some energy from it? In the same way that I've seen some members of the Elite Color extract the colors from something, Rayane extract the color from a photo of my cell phone.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "James felt a bad feeling about trying to do something with the collar.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... I...this is too dangerous for me. I don't know what that collar does. What if she decides to move on her own? We don't know what the Rainbow Queen can do through it. I don't want to risk touching it and doing something unintentionally while I extract energy.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmm... Fine. I said that after Rainbow gave life to Ivy, she took the scythe, lifted me up in the sky and stuck the scythe in me, and then I asked if it was beautiful, she replied with \"You are TOO BEAUTIFUL TO DIE!\" and grabbed me. Did I also say that this crazy goddess can change her size? Let's go anyway? Do you have anything else to say? We have 2 things to do, actually I have 2 things, you can stay here if you want. But your help with me would be nice. 1st would be to find a pet, 2nd would be to see the lost cell phone and the possible ghosts.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was a little scared and confused listening to the conversation, but he continued to pay attention.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W... what? Can she get bigger? Is that what you want to tell me? Can she become a titan or something?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Yeah... well! Oh man! I was going to sell that equipment of wing training, but I think Yasmin will need it now.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "think"
+    },
+    "value": "Alright! Fine! Vinny... let's go back inside now. I've said enough for today. I don't know anything about pets. But maybe Rayane will help you. Rayane seems to know Amy much more than I do. About the cell phone, you said that your friend Yasmin is from the same dimension as you, right? Maybe I can try to recreate the broadcast signals for you to try to call this other cell. But please, let's go home now. I still don't know how no spirit hasn't attacked us here yet.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little curious when he heard this, and just nodded.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... But... and the equipment? You didn't sell it, did you?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W..well...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James does a slight nervous smile. Vinny does a facehoof in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Good... No problem, we find another way to solve it.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well.... then it's ok. Here's your money....",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James delivered 600 bits to Vinny as he prepared to open the home's door again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Calm down, I don't need to, with that money can you make any progress with your research?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "No way. You know you need this money more than I do right now. And don't worry, if I want your financial help, I can charge you later.",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Not really, so far I'm broke and I'm fine, I'm giving it to you. With that money can you make any progress in your research? What about that piece of tin that was a part of the relic? Did you manage to track something?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny gave James back the 600 bits.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Okay okay! Fine! But please don't be poor! Keep at least 100 bits in case you need to buy something.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James gave Vinny back the 100 bits.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I haven't been able to track anything, but Kai is helping me build a new machine to replace the old one that this time helps both regions. I'm going to try to do something that distributes the master smartmoby piece energy more fairly.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh! All right. Do you want to come with me? Or do I ask Rayane? If you're busy it's ok.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny! Come on! I need to get back to my lab... I'm worried my radar has mysteriously failed. I need to do some maintenance on it so we don't get lost again. Rayane has a map on her smartmoby, she will definitely know how to help you better.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Okay, honestly I still think there was some ghost there and this ghost was doing some interference. Well, let's go inside then all right?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah! If there's a ghost... I'll punch this ghost... don't worry.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James opened the door, preparing to enter the house. Vinny was a little surprised, but then he tried to relax a little.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh heh. Okay, honestly I still think there was some ghost there and this ghost was doing some interference. Well, let's go inside then all right? Before, do you know any place or someone possibly a future pet? Someone depressed, someone sick?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James breathed deeply, and just looked at Vinny's worried look of anxiety.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Sorry... But I don't know anyone. You'll have to be very lucky to find a depressed pony in the woods. If you don't accidentally find a ghost thinking it's a depressed pony. We can all try to do something better in the morning.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+  
+  {
+    "value": "Y..Yeah... Thank you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny entered the house during the talk. James just looked at Vinny for a few seconds before entering the house and closing the door. When Vinny and James entered the house, Vinny saw that almost everyone had already gone to their rooms. Yasmin and Amy were having fun when Rayane introduced the house. Rayane was really enjoying entertaining the two together.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Well... if you can, stay a little closer to Yasmin and explain what happened to us since I arrived.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James then looked at Rayane having fun and got a little worried and agreed.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y..yeah. It's ok. I'll talk to her. Don't worry.",
+    "character": "James",
+    "type": "dialogue"
   }
 
 ]
