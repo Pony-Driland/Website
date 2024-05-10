@@ -13219,6 +13219,20 @@
     "value": "Y..yeah. It's ok. I'll talk to her. Don't worry.",
     "character": "James",
     "type": "dialogue"
+  },
+
+  {    
+    "set": {
+      "playlistPlay": "sad"
+    },
+    "value": "Vinny was a little surprised that Yasmin had already learned to walk with the help of Amy and Rayane. So he decided to go towards Yasmin.",
+    "type": "action"
+  },
+
+  {
+    "value": "A..Ah? Has Jasmin already learned to walk? I think I took too long in my conversation with James.",
+    "character": "Vinny",
+    "type": "think"
   }
 
 ]
