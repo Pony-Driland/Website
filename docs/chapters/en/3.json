@@ -13233,6 +13233,215 @@
     "value": "A..Ah? Has Jasmin already learned to walk? I think I took too long in my conversation with James.",
     "character": "Vinny",
     "type": "think"
+  },
+
+  {
+    "value": "O..oh? Oooh! Yasmin is walking! Then I want to see you dance now! hihi! ",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin then felt confused to hear this, and looked at Vinny curiously.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wh...what? To dance?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah! But before...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then looked directly at Amy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Does Amy know where Ivy is?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was surprised and embarrassed for a few seconds, but Amy giggles a little, doing a little shy smile in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..ah.. My little sister is in the second guest room with Wagner and Jeff.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ooh. ok. Wait here a minute I'll be back, okay? I'm glad you're all happy together.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried to open a small smile before being interrupted by Yasmin.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "How to resist this cute little thing? We should pay more attention to her!",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin smiles and hugs Amy and thanks for helping learn to walk. Amy was surprised by the hug and smiled shyly in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y...Yes, it was a lot of fun teaching her to walk. I thought I was going to be alone when my little sister got busier with Wagner, but you helped me a lot by introducing Yasmin.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little surprised to hear that, but he was trying to disguise it.",
+    "type": "action"
+  },
+
+  {
+    "value": "W...what??",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Alone? None of that... Me and Rayane are here for you!",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin responded happily, Amy does another small smile of thanks in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "T..Thanks... Thank you two. next time I'll bring Layla here to come with me to teach Yasmin to fly. Layla will like to know we have a new friend.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "F...Fly? I will fly??",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was surprised by hear this.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wow! thank you Amy! That sounds very interesting! It's something that would be impossible in my world!",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin's eyes dilated happily in response. Rayane does a little giggles listening to all this. Vinny was even more surprised to hear that.",
+    "type": "action"
+  },
+
+  {
+    "value": "L...Layla? Oh? D..does... Does that mean that the crazy goddess has more pets??",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "My little dream is going to see Ivy then?~ Hope you like her gift~ Ivy was really sad and worried about going back home. But it looks like Amy helped her to be less depressed.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A..Ah? Yeah! I hope it's a picture of you alone holding something really... nice.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Something really nice? A special marshmallow~?",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Yeah... Best marshmallow!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny imitated Rayane's smirk face in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'll go there, Rayane, then I need your help if you're free, okay?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Rayane then interrupted Vinny's imitation when she pokes his snout.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Feel free to ask me anything~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmmm? Anything??",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Any little thing. Do not try to abuse this opportunity~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wait for me to come with everything then...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a little laugh, trying to do everyone laugh a little to help keep the 3 together in the conversation between friends.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Everypony stay there!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then Vinny went to the door of the room where Ivy was, and opened slowly.",
+    "type": "action"
   }
 
 ]
