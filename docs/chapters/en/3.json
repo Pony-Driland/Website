@@ -13536,6 +13536,278 @@
     "value": "H..hihi! I'm very happy that you are happy. I wanted to talk something with you. What do you intend to do from now on?",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Wagner and I are going to sell our old houses and buy a new house for the two of us. We're going to start a new life, and with the money left over we're going to open a little shop so we don't have to do military service anymore.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was surprised to hear all this.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oooh... Oh! That's exelent! I'm glad you decided that, that's what I wanted to talk to you about, after everything that's happened, I thought you would want a peaceful life together for a long, long time. But I see you already decided that. Really you are very dear to me and I wouldn't want to see you in the midst of so much terror and confusion. You have to think about your future, having a normal life is something I really want for you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "We had no condition, so we joined together to make everything easier.",
+    "character": "Wagner",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wagner demonstrated that he was satisfied through his reply.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes. I still haven't decided what the little shop will be. But I really want you to be one of my customers! I will be happy to offer discounts to Mr Vinny! You also deserve a break after going through everything you've been through. I'm so grateful that you helped both of us.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy replied very happily in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes yes. Hihi! If you need any financial help you can ask me and I can try to help.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny smiles during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah, the two of you together, living together and working together is going to take a huge leap forward. It really never crossed my mind that you 2 decided this alone.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh... feel free to visit us! We're going to be Jeff's neighbors. So it'll be easy to find us.",
+    "character": "Wagner",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "We does a point of choosing the cutest little house close to him.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh! And... Rayane said that you had something for me. Ivy? This is true?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A..Ah? Something for you? Oh yes! It's a souvenir. James helped me with this gift... Here it is!",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy opens the wardrobe and brought a large gift box.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...WOOW! No need Ivy... No need... What is it?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was surprised and embarrassed by the size of kindness.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You'll like it! The same way you helped me... Now it's my turn to help Mr. Vinny too.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy replies happily in response. Wagner giggles a little during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes, we're sure this gift will be very useful for you, Ivy chose the gift... you can open it.",
+    "character": "Wagner",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah! Thank you all so much for remembering me!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny felt very happy about the contribution and then decided to open the present.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You're welcome... Put it to good use in your adventures!",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "When Vinny opened the gift, he started to recognize the item. It was the same item Ivy had been wearing when Vinny had found her. But now the item was completely fixed and modified. They were wing gliders that served as a shield up and at their tips they could be used as two swords.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "OOOOOOOH! Fuck! That's very good!!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny hugged Ivy and Wagner happily in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Thank you very much for the gift, I really liked it!!!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy and Wagner were a little surprised by Vinny's reaction, but then laughed a little and happily hugged him back.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You're welcome... James modified and fixed it. We don't need these things anymore, so our conclusion is that you're going to need them more than we do. We want you to be okay.",
+    "character": "Wagner",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah! I will be better now. Hihi! Thank you very much.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "You have all our hopes that you will achieve your ultimate goal... No matter what happens to Mr. Vinny.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh. Yes.",
+    "character": "Wagner",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny cried a bit in emotion and happiness for a few seconds before cleaning his face and looking at Jeff.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah... And Jeff? Is he very tired?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh Jeff? He ended up getting excited about the party. He needs a long rest. He ended up getting very drunk.",
+    "character": "Wagner",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wganer laugh a little.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hihih! Well, do you have a date for all that you said? Living together and everything.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes. In just a few days... When James finishes the project to help the two regions, it will be easier for us to sell the houses. Then let's put all our plan into practice.",
+    "character": "Wagner",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "If you need me, you can call me, I can be far away, but I'm here to help you, okay? Heh! Once again thank you very much!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "So the hug moment was finally over and Vinny was equipping the new wing stuff.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "This will definitely help in times of need. Don't forget to invite me to your wedding! Heh! Well, I'm going now, I need to go out with Rayane.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hihi! Let's always be here! Mr. Vinny!",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "We wish you well.",
+    "character": "Wagner",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Ivy waved to Vinny happily. But Wagner were embarrassed about the wedding. Ivy just laughs a little bit, finding fun the blushing face of Wagner.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'll call yes... hihihi!",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh... we wish you both good luck.",
+    "character": "Wagner",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "think"
+    },
+    "value": "So Vinny finally decided to leave the room and close the door. So Vinny went where Yasmin and Amy were. Yasmin and Amy were talking while Rayane was just resting and watching the talk.",
+    "type": "action"
   }
 
 ]
