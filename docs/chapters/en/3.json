@@ -13808,6 +13808,282 @@
     },
     "value": "So Vinny finally decided to leave the room and close the door. So Vinny went where Yasmin and Amy were. Yasmin and Amy were talking while Rayane was just resting and watching the talk.",
     "type": "action"
+  },
+
+  {
+    "value": "Hehe! The FATHER IS ON!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny put the sunglasses and open the wings in a totally badass way.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little when she saw the scene.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Look who's coming~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little when she saw the scene. Yasmin was a little surprised that Vinny had a sunglasses.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "V..Vinny? Are you okay? Oh! His wing is different.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was surprised, and hid a little behind Yasmin due to the scare by the noise of the wings.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "V..Vinny?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh! Sorry.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny returned to normal.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Sorry Amy, I didn't know I was going to scare you. I got this nice gift from Ivy and everyone who participated.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh? Gift?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy giggles cutely a little when she looked at the bow on Vinny head.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin started to laugh too.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You're not helping yourself with that silly little red bow.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A...Ah? AH!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a poker face when remembering the red bow.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh~ Sounds like you're taking this very seriously.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Y..Yeah! It's time for my request. Hihi! Rayane? Are you ready?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a silly face.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wait... Request? What's going on here?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy giggles a little.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Sometimes I think Vinny and Rayane are a couple.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smirks at Vinny while poking his snout in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Shhhhh~ Amy... Don't worry. It's all under control. What is my silly dream planning?~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hihi! I'm going to pass my bow to Miss Charming Mysterious Rayane. Good luck keeping it until you can pass it on to the next one!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny took off the red bow and gave it to Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "This is my request, you have to wear this red bow and you can't take it off until you pass it on to someone, this is my request.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W..what?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane blushes a little in response. But that does Amy giggle adorably in response.",
+    "type": "action"
+  },
+
+  {
+    "value": "You and Rayane look cute with this red bow.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was confused trying to understand what was happening.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...aaah? Are you two competing in something special?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smirks in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmmm... Okay. I accept your silly challenge for now~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "You can hide it by a cover, do whatever you want, the only rule is you use it. if you want to pass it on to someone, that's also valid.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Don't play bets with me like that~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Heh. Well Jasmin, I need to leave ok? You can sleep if you want.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? O..Okay. But... where are you going? Isn't it too late for that?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeaaah... That's really true.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "sad"
+    },
+    "value": "Vinny scratched his head a little and turned his attention to Amy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmm... Amy can I request a little something?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A..ah? A little something for me? Why?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was surprised by the question. Vinny then looked at Yasmin and Amy for a few seconds, and breathed deeply to see the whole situation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Take good care of Jasmin, okay? I need to ask something, do you know of anyone who wants to become a pet? Yasmin is totally out of this question.",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
