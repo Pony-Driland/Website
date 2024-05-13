@@ -12149,7 +12149,7 @@
   }, 
 
   {
-    "value": "T..Thank you Sir Vinny...",
+    "value": "T..Thank you Mr Vinny...",
     "character": "Amy",
     "type": "dialogue"
   }, 
@@ -14083,6 +14083,226 @@
   {
     "value": "Take good care of Jasmin, okay? I need to ask something, do you know of anyone who wants to become a pet? Yasmin is totally out of this question.",
     "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Amy and Yasmin then was surprised to hear Vinny's words. But Amy seemed more surprised with a lot of difficulty showing off her own reactions due to mixing questions in a single time. Amy seemed anxious when she tried to answer. Amy was embarrassed and blushed in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...What? I... I take care? D..Do you trust me? I... I... A...Ah? Someone who wants to become a pet? Are you looking for a new friend for me?",
+    "character": "Amy",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Amy hugs Yasmin kindly. Yasmin was still a little surprised, giggling a little from the situation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It's ok... We'll keep having fun. But please don't go too far, I don't want to see you disappearing again. I'm trusting you're on the side of the house. But...",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was completely confused and embarrassed hearing the \"pet\" name mentioned, trying to understand what was going on.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wait... pet? What are you talking about? Is it some joke that I'm still not aware of?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Well...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "N...No Mr Vinny... I don't need new friends, you've helped me a lot for today.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was a little worried watching Amy's look that showed the feeling of someone who didn't want to feel alone again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh no. He was very straight to the point.",
+    "character": "Rayane",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny?~ 'll be waiting for you outside~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane leave the house and stay outside waiting for Vinny. Meanwhile Vinny kept feeling a little nervous about how to continue the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... I could, but this time it's not a new friend for you. This is a pet. Well you don't know anyone?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "What do you mean it's not for me? Is there anyone else besides my master looking for new pets? No... I don't know anyone.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was feeling a little depremised, and not interested in the subject, Vinny then became a little more concerned, and Yasmin was confused.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hey? Is this some fancy dress party? Is that reason she wears that collar? 1 party day has no problem for me.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "P...Party day? No no! I was thinking about some things and I was in doubt, that's all. Amy said earlier that she had a pegasus friend who was going to help you learn to fly, after everything that happened I was confused. Hihi!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Are you talking about Layla? M..Mr Vinny... She is also my master's pet. It's just me and her. But Layla is not social with me.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little sad, but he tried not to show that much and then looked at Yasmin.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Okay! Jasmin! Look at me! Pay close attention! Imagine that this world is a Fallout Equestria. Look at your hoof! You see that on your arm? You have a smartmoby. Well... It's like a Fallout, h..heh.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Fallout Equestria? B...But Vinny, I've never played any Fallout in my life. Okay. I already played the Fallout 4, but it was a very short period of time.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin does a small smile of nervousness trying to understand the situation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah! I think Amy can try to explain what this smartmoby would be too, but first of all, do you already know where you're going to sleep tonight?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well... Rayane has already shown me where I'm going to sleep. don't worry.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin then thought about Rayane and laughed a little while caring about Amy's head so she could feel better.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I think I understand what's going on. Is that Rayane? Right? If you want to have such an intimate moment, at least don't delay. I was already very worried about you today after what happened to you a few hours ago... which for you seems like a few days.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin then slowly began to feel depression when she remembered that he would no longer go home.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "On second thought... you're right, I really need to ask Amy questions. I just don't want to lose my sanity and believe that all this is just a dream.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A..Ah? What? Do you think Rayane and I are going to go out and have fun?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny felt a bit of concern seeing Yasmin's reaction and responded.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Nah! Rayane is very pretty for someone like me. Hihi! One day you will also find someone important in your life. Don't worry Jasmin, I can talk to you whenever I want. And you Amy? Will you stay with us tonight? Or go home?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A..Ah... All right then.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Yasmin did a face poker, and just ignored the rest of the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh... unfortunately not. Sorry Mr Vinny... But I always like to sleep at home with my master. But don't worry... I can always come back here the next day. I... I think I'll stay a while longer. I want to stay longer with Yasmin.",
+    "character": "Amy",
+    "type": "dialogue"
+  },   
+
+  {
+    "value": "Amy looked happily at Yasmin, wanting to do her depression weaken. So Yasmin felt a little more comfortable seeing Amy's inviting look.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh... Okay... I... I'll see if there's something I can play for Halloween or some kind of costume party. It's not fair just Amy's wearing fantasies.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy giggles a little while responding happily.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Don't worry Yasmin... I'll clear your questions. But... fantasy? So I had an idea of what we can do in this house while we wait for Mr Vinny.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh? Really? I'll be happy to know!",
+    "character": "Yasmin",
     "type": "dialogue"
   }
 
