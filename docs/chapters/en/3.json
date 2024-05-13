@@ -13442,6 +13442,100 @@
   {
     "value": "Then Vinny went to the door of the room where Ivy was, and opened slowly.",
     "type": "action"
+  },
+  
+  {
+    "value": "Ivy and Wagner were laughing at some silly conversation while Jeff was already sleeping on his mattress.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Huh? Oh! Mr. Vinny! You here! How good it is to see you safe! Thank you so much for everything you've done!",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy smiled and hugged Vinny very happily in response. Vinny then was a little surprised, but at the same time pleased to feel the gratitude of Ivy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh... Hello Vinny. Where have you been all this time?",
+    "character": "Wagner",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wagner seemed to be much happier than the other times Vinny had met him.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh! Wagner! Yeah! I'm good. How are the 2 Love Angels doing?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy and Wagner felt blushed a little in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..ah? Y..yes... we are good too.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wagner giggles nervously in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "We were just... just talking... We're feeling a lot better.",
+    "character": "Wagner",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hihi! Yes. I see the shame on that boy face! But yeah. I'm serious now I wanted to see how you and Ivy are.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wagner does a little giggles in embarrassment.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y..Yeah! Me and Ivy spent a lot of time talking after we reminisced about having met before. It was very wonderful to know that we met again. It's the only good thing that happened in our life in the last few days.",
+    "character": "Wagner",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wagner was feeling emotional when hugging Ivy in response. Ivy smiled and hugged Wagner back with great happiness.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "He's a little angel. I didn't know he was such a nice little pony.",
+    "character": "Ivy",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Vinny would be a little emotioned too, but not just for Wagner and Ivy, but for feeling what he would have to face in the coming days.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "H..hihi! I'm very happy that you are happy. I wanted to talk something with you. What do you intend to do from now on?",
+    "character": "Vinny",
+    "type": "dialogue"
   }
 
 ]
