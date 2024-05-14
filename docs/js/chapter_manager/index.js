@@ -408,6 +408,54 @@ var openChapterMenu = function (params = {}) {
                 }),
 
                 // Word Statistics
+                $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Letter Statistics').click(function () {
+
+
+                    // Prepare Content
+                    const newDiv = $('<div>', { class: 'row' });
+                    const content = [];
+
+                    // Insert Data
+                    content.push($('<div>', { class: 'col-sm-6' }).append(
+                        $('<div>', { class: 'card' }).append($('<div>', { class: 'card-body' }).append(
+                            $('<h5>', { class: 'card-title' }).text(`Total Letters`),
+                            $('<p>', { class: 'card-text small' }).text(storyData.lettersCount.total)
+                        ))
+                    ));
+
+                    // Insert Chapter Data
+                    for (const item in storyData.lettersCount) {
+                        if (item !== 'total') {
+
+                            // Prepare Data
+                            const charData = storyData.lettersCount[item];
+                            const dataBase = $('<div>', { class: 'card-body' });
+
+                            dataBase.append(
+                                $('<h5>', { class: 'card-title' }).text(`Chapter ${item}`),
+                                $('<p>', { class: 'card-text small' }).text(charData)
+                            );
+
+                            // Insert Data
+                            content.push($('<div>', { class: 'col-sm-6' }).append(
+                                $('<div>', { class: 'card' }).append(dataBase)
+                            ));
+
+                        }
+                    }
+
+                    // Modal
+                    tinyLib.modal({
+                        title: [$('<i>', { class: 'fa-solid fa-a me-3' }), 'Letter Statistics'],
+                        body: $('<span>').append(newDiv.append(content)),
+                        dialog: 'modal-lg'
+                    });
+
+                    // Complete
+                    return false;
+
+                }),
+
                 $('<a>', { class: 'nav-item nav-link', href: 'javascript:void(0)' }).text('Word Statistics').click(function () {
 
 
@@ -419,16 +467,16 @@ var openChapterMenu = function (params = {}) {
                     content.push($('<div>', { class: 'col-sm-6' }).append(
                         $('<div>', { class: 'card' }).append($('<div>', { class: 'card-body' }).append(
                             $('<h5>', { class: 'card-title' }).text(`Total Words`),
-                            $('<p>', { class: 'card-text small' }).text(storyData.lettersCount.total)
+                            $('<p>', { class: 'card-text small' }).text(storyData.wordsCount.total)
                         ))
                     ));
 
                     // Insert Chapter Data
-                    for (const item in storyData.lettersCount) {
+                    for (const item in storyData.wordsCount) {
                         if (item !== 'total') {
 
                             // Prepare Data
-                            const charData = storyData.lettersCount[item];
+                            const charData = storyData.wordsCount[item];
                             const dataBase = $('<div>', { class: 'card-body' });
 
                             dataBase.append(
