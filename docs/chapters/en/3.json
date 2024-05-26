@@ -14304,6 +14304,320 @@
     "value": "Oh? Really? I'll be happy to know!",
     "character": "Yasmin",
     "type": "dialogue"
+  },
+  
+  {
+    "value": "Yes, yes. I hope to see you soon to talk more with more bows! H..heh heh... ",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny opened the door slowly during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Rayane! Look here! Yasmin said we're going to go out and do silly things!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny pointed to Yasmin in a joking tone.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I told her that you are too beautiful for me. And we're just friends aren't we? Tell them with your super discreet bow. Hihi!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yay...",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy smiles at Vinny while Yasmin laughs a little.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Even in this world everyone you meet is kind of silly.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh? But Vinny, she's not wrong that you've tried a few times~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smirks while poking Vinny's snout. Yasmin and Amy giggles a little in response.",
+    "type": "action"
+  },
+
+  {
+    "value": "Have fun then, I hope you have a good night.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "H..Hey Yasmin. Come on... Let's enjoy the last few hours I have.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy replied happily as she went to the hall of the house.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+  },
+    "value": "Oh? Yes Amy!",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was curious before smiling. Yasmin followed her in response. Rayane giggles lightly while slowly getting a little nervous when answering.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "bad-mystery"
+    },
+    "value": "I think you said more than you should by accident.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "I noticed you got weird when I brought it up. But I needed to do 2 things. Let Amy know that I was looking for a pet, and that she has a chance to say something to Rain, I didn't say anything special and after you left I disguised it and changed the subject, Yasmin will still be curious but I made her curious about other things. so for now it's safe, about her asking what a pet is... what's so special about Amy knowing things?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane breathing deeply while watching Vinny feel confused.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It's not safe... you said it in a very weird way. You left Amy and Yasmin confused. This... this has everything to go wrong. Yasmin is curious about the subject. Amy is now thinking that you want to encourage her to do something with Yasmin. And in the end you told Amy to take care of her.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was a little thoughtful for a few seconds before continuing the conversation. Rayane felt sad while she answered.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Sorry Vinny... but I have a bad feeling that your whole plan is going terribly wrong.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah... Ah, is that the problem? Amy turning Yasmin into a pet?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes, this is the new problem. And we also have another new problem as well. Amy and Yasmin are very close together. If Amy tries to come home and Yasmin wants to go with her? From there it's over. we'll lose her and we'll only have an answer when she come back.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then looked toward the window of Ivy's room.",
+    "type": "action"
+  },
+
+  {
+    "value": "Ivy is now spending more time with Wagner, so Amy thought her friend Yasmin would be a good new alternative, which is reason Amy was very confident in wanting to meet her because of the friendship between you and Yasmin.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane started to cry a little while answering. Rayane's face appeared small tattoos again due to the effects of her feelings, and Vinny was already beginning to get worried.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And... and in the end all of this seems to be partly my fault... I could have taken her somewhere else, but I didn't want to make Amy sad.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "N..No! No no... that's not such a bad thing, I thought about that hypothesis, ok but I'm going to go inside and tell Amy to turn Yasmin into a pet then, to make sure everything is ok? I thought it was something more serious that it didn't go beyond two ones. I'll be right back I'll talk to two ones before Amy leaves, okay? Wait for me here it will be quick.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W..What? Alright Vinny.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then went to the hallway of the house, looking for Amy, looking delicately from door to door.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "God damn it! What I do!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "The house was already darker, Vinny could just see the lights of the rooms that were being used. And one of the doors Vinny started to recognize the voices.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah? Amy?",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Vinny then decides to open the door, but the door was locked, and at this very moment Vinny started to hear footsteps approaching him.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...Ah? What? Jasmin? Amy? Hello?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "vinny-rainbow-queen-ivy"
+    },
+    "value": "Vinny felt something poking him shoulder, it seemed to be a paw.",
+    "type": "action"
+  },
+
+  {
+    "value": "Huh?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was startled and turned around.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "When Vinny turned around, you came face to face with Rainbow Queen, she was staring at him with a little evil smile.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..AH! You...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hello. Did you miss me?~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Y..You. Yeah... You! Did you come to ask for money? How will the payment method be? Do you have a bank account? Bitcoin?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny pick up the phone and turn it on. Rainbow Queen let out a low evil laugh.",
+    "type": "action"
+  },  
+
+  {
+    "value": "How interesting~ I'll send you a payment... using this humble little cell phone too~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen started to levitate a cell phone and turned it on too, and Vinny recognized it as Yasmin's cell phone.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Son of a bitch! I will reveal you to everyone now.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny picked up the cell phone and set a very loud alarm for the next minute.",
+    "type": "action"
+  },
+
+  {
+    "value": "Hm? Tell me why nobody answers here? Are everypony all sleeping?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny knocked on the door, trying to make louder noise.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hahah!",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen started to laugh a lot at Vinny attempts to knock on the door.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What a pity Mr. Vinny... did you really think I was going to walk into this house without protecting our privacy?",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen horn started to glow, revealing barriers around him.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Bitch! BITCH! YOU BITCH!!",
+    "character": "Vinny",
+    "type": "think"
   }
 
 ]
