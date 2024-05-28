@@ -14604,7 +14604,7 @@
   }, 
 
   {
-    "value": "What a pity Mr. Vinny... did you really think I was going to walk into this house without protecting our privacy?",
+    "value": "What a pity Mr. Vinny... did you really think I was going to walk into this house without protecting our privacy?~",
     "character": "Rainbow Queen",
     "type": "dialogue"
   }, 
@@ -14618,6 +14618,85 @@
     "value": "Bitch! BITCH! YOU BITCH!!",
     "character": "Vinny",
     "type": "think"
+  },
+
+  {
+    "value": "Rainbow Queen poked the scythe on Vinny's snout while looking at him.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh~ I've insulated all the noise from this place we're in. It's a shame you're failing your plans more and more~ I didn't know things could be easier than I imagined.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Give me the Yasmin phone...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny put his cell phone to record his voice covertly. And then jump up and try to grab Yasmin's cell phone but accidentally drop the cell phone on the floor when he is interrupted by Rainbow Queen's scythe.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What? what do you think you're doing?~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Give me this! Why do you want Yasmin so much?!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen laughs more at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Is this some prank game?~ Doesn't it seem obvious? All I'm asking you is so simple. Just go back to your mission with Rayane. Your mission is just to get a pet.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The mission?! You're not even caring about Amy now!!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": " What? I don't care about her?",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen's face slowly came out of provocations and moved to a feeling of anger. Rainbow Queen seemed much more serious than usual and press her scythe against Vinny neck.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You idiot. Listen very well... I care about Amy more than you can imagine. You're the one who got in the way of putting Ivy and Amy together again! REMOVE YOUR WORDS!",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A...AH! FUCK! Calm down!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny tried not to move too much due to pain, to try not to have the neck cut by the scythe.",
+    "type": "action"
   }
 
 ]
