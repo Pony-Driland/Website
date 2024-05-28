@@ -19,11 +19,29 @@ console.groupEnd();
 const renderRoleplayFormat = (chapter) => {
     let data = '';
     for (const item in storyData.data[chapter]) {
-        if (storyData.data[chapter][item].type === 'action') data += `*${storyData.data[chapter][item].value}*`;
+        if (storyData.data[chapter][item].type === 'action') data += `\n*${storyData.data[chapter][item].value}*`;
         if (storyData.data[chapter][item].type === 'think') data += `\n${storyData.data[chapter][item].character}'s thinks: ${storyData.data[chapter][item].value}`;
         if (storyData.data[chapter][item].type === 'dialogue') data += `\n${storyData.data[chapter][item].character}: ${storyData.data[chapter][item].value}`;
     }
-    console.log(data);
+    return data;
+}
+
+const saveRoleplayFormat = (chapter) => {
+    let file = '';
+
+    if(typeof chapter !== 'number') {
+        for(let i = 0; i < storyData.chapter.amount; i++) {
+            const item = i + 1;
+            file += `\n\n---------- Chapter ${item} ----------`;
+            file += renderRoleplayFormat(item);
+            file += `\n\n---------- The end chapter ${item} ----------`;
+        }
+        file = file.substring(2, file.length);
+    } else {
+        file = renderRoleplayFormat(chapter);
+    }
+
+    console.log(file);
 }
 
 var dice = {
