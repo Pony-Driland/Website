@@ -624,7 +624,11 @@ var openChapterMenu = function (params = {}) {
                         dialog: 'modal-lg'
                     });
 
-                })
+                }),
+
+                $('<button>', { class: 'ms-3 btn btn-info btn-sm' }).text('Save As all chapters').click(function () {
+                    saveRoleplayFormat();
+                }),
             ),
 
         );
@@ -653,7 +657,7 @@ var openChapterMenu = function (params = {}) {
                         $('<span>', { class: 'card-text small ms-1' }).text(`${storyData.lettersCount[chapter]} Letters`),
                         $('<span>', { class: 'card-text small ms-1' }).text(`${storyData.wordsCount[chapter]} Words`),
                         $('<p>', { class: 'card-text small' }).text(storyCfg.chapterName[chapter].description),
-                        $('<a>', { class: 'btn btn-primary', href: `/chapter/${chapter}.html`, chapter: chapter }).click(function () {
+                        $('<a>', { class: 'btn btn-primary m-2 ms-0', href: `/chapter/${chapter}.html`, chapter: chapter }).click(function () {
 
                             // Start Chapter
                             newRead(Number($(this).attr('chapter')));
@@ -661,7 +665,16 @@ var openChapterMenu = function (params = {}) {
                             // Complete
                             return false;
 
-                        }).text('Load')
+                        }).text('Load'),
+                        $('<a>', { class: 'btn btn-primary m-2 me-0', href: `/chapter/${chapter}.html`, chapter: chapter }).click(function () {
+
+                            // Save Chapter
+                            saveRoleplayFormat(Number($(this).attr('chapter')));
+
+                            // Complete
+                            return false;
+
+                        }).text('Save as')
                     )
                 )
 

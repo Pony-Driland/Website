@@ -29,19 +29,55 @@ const renderRoleplayFormat = (chapter) => {
 const saveRoleplayFormat = (chapter) => {
     let file = '';
 
+    const insertChapter = (cpId) => {
+        file += `\n\n---------- Chapter ${cpId} ----------`;
+        file += renderRoleplayFormat(cpId);
+        file += `\n\n---------- The end chapter ${cpId} ----------`;
+    };
+
     if(typeof chapter !== 'number') {
         for(let i = 0; i < storyData.chapter.amount; i++) {
             const item = i + 1;
-            file += `\n\n---------- Chapter ${item} ----------`;
-            file += renderRoleplayFormat(item);
-            file += `\n\n---------- The end chapter ${item} ----------`;
+            insertChapter(item);
         }
-        file = file.substring(2, file.length);
     } else {
-        file = renderRoleplayFormat(chapter);
+        insertChapter(chapter);
     }
 
-    saveAs(new Blob([file], {type: 'text/plain'}), `Pony Driland${!chapter ? '' : ` - Chapter ${chapter}`}.txt`);
+    file = file.substring(2, file.length);
+
+    let info = `Title: ${storyData.title}\nDescription: ${storyData.description}\nAuthor: ${storyCfg.creator}\nAuthor Page: ${storyCfg.creator_url}`;
+    if(
+        (storyCfg.bitcoin && storyCfg.bitcoin.address) ||
+        (storyCfg.dogecoin && storyCfg.dogecoin.address) ||
+        (storyCfg.ethereum && storyCfg.ethereum.address) ||
+        (storyCfg.polygon && storyCfg.polygon.address) ||
+        (storyCfg.bnb && storyCfg.bnb.address)
+    ) {
+        info += `\n`;
+    }
+    
+    if(storyCfg.bitcoin && storyCfg.bitcoin.address) {
+        info += `\nBitcoin Donations: ${storyCfg.bitcoin.address}`;
+    }
+
+    if(storyCfg.dogecoin && storyCfg.dogecoin.address) {
+        info += `\nDogecoin Donations: ${storyCfg.dogecoin.address}`;
+    }
+
+    if(storyCfg.ethereum && storyCfg.ethereum.address) {
+        info += `\nEthereum Donations: ${storyCfg.ethereum.address}`;
+    }
+
+    if(storyCfg.polygon && storyCfg.polygon.address) {
+        info += `\nPolygon Donations: ${storyCfg.polygon.address}`;
+    }
+
+    if(storyCfg.bnb && storyCfg.bnb.address) {
+        info += `\nBNB Donations: ${storyCfg.bnb.address}`;
+    }
+    
+    saveAs(new Blob([`${info}\n\n${file}`], {type: 'text/plain'}), `Pony Driland${!chapter ? '' : ` - Chapter ${chapter}`}.txt`);
 }
 
 var dice = {
