@@ -75,7 +75,7 @@ var storyCfg = {
         blockchain: 'polygon',
         url: 'https://ud.me/d/{domain}',
         /* value: 'ponydriland.nft', */
-        domainWallet: 'jasmindreasond.wallet',
+        domainWallet: 'jasmindreasond.x',
         valueURL: 'ponydriland.nft',
         name: 'Unstoppable Domains'
     },
@@ -116,7 +116,7 @@ var storyCfg = {
     contact: 'tiny@ponydriland.com',
 
     creator: 'Yasmin Seidel (JasminDreasond)',
-    creator_url: 'https://ud.me/ponydriland.nft',
+    creator_url: 'https://jasmindreasond.pony.house',
 
     github: {
         account: 'Pony-Driland',
