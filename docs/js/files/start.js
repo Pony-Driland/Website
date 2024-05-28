@@ -41,7 +41,7 @@ const saveRoleplayFormat = (chapter) => {
         file = renderRoleplayFormat(chapter);
     }
 
-    console.log(file);
+    saveAs(new Blob([file], {type: 'text/plain'}), `Pony Driland${!chapter ? '' : ` - Chapter ${chapter}`}.txt`);
 }
 
 var dice = {
