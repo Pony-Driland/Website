@@ -14697,6 +14697,136 @@
   {
     "value": "Vinny tried not to move too much due to pain, to try not to have the neck cut by the scythe.",
     "type": "action"
-  }
+  },
 
+  {
+    "value": "O..Okay! okay! S..sorry!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rainbow Queen then tried to calm down and took a deep breath as she gently pulled the scythe away from Vinny. But Rainbow Queen look very serious at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Amy's being honest in her decisions. Why not let this new friendship blossom while you're busy on your quest?",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...What? No no no... No way! Why is the crazy goddess looking so sincere?!",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny then responded a little sad to hear all this.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "If you love her why do you want more pets?? The same way you love someone, I love all my friends in this world. If you love her why do you want another pet? I had this opportunity to ask her this earlier, but I didn't want to ruin our friendship between Amy and me, and between her and you. You put me in this world!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then suddenly began to cry while responding in fear.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What can I do to make you like me? I try my better, but it seems like everything I do makes you angry. Look around you! Everyone was laughing, smiling, joking and happy, only you here is mad at me. Why do I make you angry!?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen continued her serious look at Vinny, it looked like she was analyzing Vinny during the conversation without him realizing.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "This greedy pony really doesn't give up.",
+    "character": "Rainbow Queen",
+    "type": "think"
+  },
+
+  {
+    "value": "I just tried to do good, and look what I did, a bomb went off, Hiroshi is gone, I'm in a fuck war with a goddess for whatever!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny sit on the floor and wipes the tears.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "He's really not gonna be quiet, his soul is starting to get unstable. Why does he keep insisting so much on trying to do something for me? Heh~ I have to put him in his right place.",
+    "character": "Rainbow Queen",
+    "type": "think"
+  },
+
+  {
+    "value": "Rayane... she's afraid to tell her past, she promised to tell me but why is she afraid? Why does she have nightmares? It's not my fault I'm here in this Rainbow world, I just am. What else could you do but do what's right for everyone and still go wrong?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen stared at Vinny's feeling of sadness and does a little evil giggle as she replied.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Amy just wants a new friend... after all, my old third pet is no longer with us. My old pet simply abandoned us when she went to a new gypsy life. How ungrateful she was in just don't even talk to me again.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen seemed to show a lot of emotional discomfort when mentioning this pony, and Vinny was curious to notice it.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...wait. What??",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "And now who's here getting in my way... Hah! You... you again! Stop trying to use the other ponies to justify me not punishing you. I warned you several times about all this. I'm saving this world. Now I decided to have a little time to save Amy's feelings.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "B..But! You put me in this world!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Heh!~ I didn't put you in this world... You fell into this world by accident, and accidents like you should be punished the way they deserve. You have your mistakes too... I've met a little bit of you too. Bet your earth friend's life to save another pony's life thinking I would just keep quiet for that very reason. How greedy you are, very typical for me to play with you. Do you think your friend will be happy to know that this is all YOUR FAULT? Hahahaha!",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen pressed the scythe again against Vinny while answering with a lot of disgust about him.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "If you want me to like you... then get out of my way! Go live your life with Rayane! And now you will have to live your life accepting that soon your friend will now belong to me! Don't you already have your beautiful happy ending? Go live your beautiful happy ending and leave me alone! You are already doing good for everyone!",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }
+  
 ]
