@@ -15,7 +15,7 @@ Due to his suffering past, James has a personality of someone angry with his own
 But none of that stops him from getting his hopes up that any possible survivors are still looking for him somewhere. James doesn't want to believe that everything he loves most has simply vanished from existence.
 
 #### Beta Image
-<img src="https://cloudflare-ipfs.com/ipfs/QmUiHfESJs5JfqFBrivovYEptGR8s3c8HzToM6qCUGAqsM" height="500">
+<img src="https://ar-io.dev/3ReqC2QPg6RpVM508FVjWEBBgxI3hrfkG8YMHUypWGY" height="500">
 
 <hr/>
 

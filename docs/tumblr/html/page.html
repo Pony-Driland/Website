@@ -49,9 +49,13 @@
             var page_url = new URL(location.href);
         </script>
         <style id="default_css">
+            @import url('https://fonts.cdnfonts.com/css/gg-sans-2');
             /* Colors */
             body {
                 background: {BackgroundColor};
+            }
+            .text-decoration-none-complete {
+            text-decoration: none !important;   
             }
 
             .blog-title {
@@ -162,6 +166,33 @@
         <style id="custom_css">
             /* Custom CSS */
             {CustomCSS}
+        </style>
+        
+        <style id="default_css_2">
+            body {
+                font-family: 'gg sans';
+                font-size: 12pt;
+            }
+            
+            #page_menu_2 {
+               font-size: 11pt; 
+            }
+            
+            .nav-wrapper .inline-nav .nav-item a {
+                font-size: 8.4pt;
+                font-weight: normal;
+            }
+            
+            .nav-wrapper .inline-nav .nav-item a:hover,
+            .nav-wrapper .inline-nav .nav-item a:active,
+            a.text-decoration-none-complete:hover,
+            a.text-decoration-none-complete:active {
+                text-decoration: underline !important;  
+            }
+            
+            .npf-link-block.no-poster .title {
+                font-size: 14pt;
+            }
         </style>
 
         <link rel="stylesheet" href="https://ponydriland.com/photoswipe/photoswipe.css">
@@ -331,7 +362,7 @@
                             {block:ifShowTwitterLink}
                             {block:Twitter}
                             <div id="twitter">
-                                <h3><a rel="me" href="https://twitter.com/{TwitterUsername}">@{TwitterUsername}</a></h3>
+                                <h3><a rel="me" href="https://twitter.com/{TwitterUsername}" class="text-decoration-none-complete">@{TwitterUsername}</a></h3>
                             </div>
                             {/block:Twitter}
                             {/block:ifShowTwitterLink}
@@ -1574,25 +1605,22 @@
                                 <div class="post-wrapper-2 p-3" align="center">
                                     
                                     <h3>
-                                        <i class="fa-brands fa-github-alt"></i> <a href="https://github.com/Pony-Driland/Website " target="_blank">Github</a>
+                                        <i class="fa-brands fa-github-alt"></i> <a href="https://github.com/Pony-Driland/Website" class="text-decoration-none-complete" target="_blank">Github</a>
                                     </h3>
                                     <h3>
-                                        <i class="fa-brands fa-discord"></i> <a href="https://discord.gg/GegfAgNxRX" target="_blank">Discord</a>
+                                        <i class="fa-brands fa-discord"></i> <a href="https://discord.gg/GegfAgNxRX" class="text-decoration-none-complete" target="_blank">Discord</a>
                                     </h3>
                                     <h3>
-                                        <i class="fa-brands fa-patreon"></i> <a href="https://patreon.com/JasminDreasond" target="_blank">Patreon</a>
+                                        <i class="fa-brands fa-patreon"></i> <a href="https://patreon.com/JasminDreasond" class="text-decoration-none-complete" target="_blank">Patreon</a>
                                     </h3>
                                     <h3>
-                                        <i class="fa-brands fa-bitcoin"></i> <a href="https://unstoppabledomains.com/d/jasmindreasond.wallet" target="_blank">Crypto Donations</a>
+                                        <i class="fa-brands fa-bitcoin"></i> <a href="https://ud.me/jasmindreasond.x" class="text-decoration-none-complete" target="_blank">Crypto Donations</a>
                                     </h3>
                                     <h3>
-                                        <i class="fa-brands fa-ethereum"></i> <a href="https://opensea.io/collection/ponydriland" target="_blank">OpenSea</a>
+                                        <i class="fa-solid fa-paintbrush"></i> <a href="https://derpibooru.org/tags/pony+driland" class="text-decoration-none-complete" target="_blank">Derpibooru</a>
                                     </h3>
                                     <h3>
-                                        <i class="fa-solid fa-paintbrush"></i> <a href="https://derpibooru.org/tags/pony+driland" target="_blank">Derpibooru</a>
-                                    </h3>
-                                    <h3>
-                                        <i class="fa-solid fa-mug-hot"></i> <a href="https://ko-fi.com/JasminDreasond" target="_blank">Kofi</a>
+                                        <i class="fa-solid fa-mug-hot"></i> <a href="https://ko-fi.com/JasminDreasond" class="text-decoration-none-complete" target="_blank">Kofi</a>
                                     </h3>
                                     
                                     <hr/>

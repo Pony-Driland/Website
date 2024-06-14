@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\build\\index.js"
+            "program": "${workspaceFolder}/build/index.js"
         },
         {
             "type": "pwa-node",
@@ -20,7 +20,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\build\\base64\\index.js"
+            "program": "${workspaceFolder}/build/base64/index.js"
         },
         {
             "type": "pwa-node",
@@ -29,7 +29,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\build\\characters\\index.js"
+            "program": "${workspaceFolder}/build/characters/index.js"
         },
         {
             "type": "pwa-node",
@@ -38,7 +38,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\build\\chapter\\index.js"
+            "program": "${workspaceFolder}/build/chapter/index.js"
         },
         {
             "type": "pwa-node",
@@ -47,7 +47,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\build\\sitemap\\index.js"
+            "program": "${workspaceFolder}/build/sitemap/index.js"
         },
         {
             "type": "pwa-node",
@@ -56,7 +56,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\build\\deploy\\index.js"
+            "program": "${workspaceFolder}/build/deploy/index.js"
         }
     ]
 }
