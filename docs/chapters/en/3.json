@@ -15019,8 +15019,377 @@
     "set": {
       "playlistPlay": "think"
     },
-    "value": "Vinny stayed on the floor waiting for someone while turning to face up.",
+    "value": "Vinny stayed on the floor waiting for someone while turning to face up. But everyone started opening doors, trying to understand what happened, everyone was scared",
     "type": "action"
+  },
+
+  {
+    "value": "What?! But what was that?!",
+    "character": "Kai",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh my god... Vinny! What was there?",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "What?! What was that scream?! Someone explain to me who screams those words!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James looks at Vinny on the floor.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... you again.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane arrived desperate at the place.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "H...huh? What happened here?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Everyone then looked at Rayane, trying the context of what had happened.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... Another normal day.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James does a facehoof in response. Amy was hiding behind her door, she was embarrassed behind the door, trying to understand what happened while holding an outfit on one of the wings.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "M...Mr Vinny?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah... Fine... Fine! Hey guys... I kind of had a slightly unpleasant date but it's gone, she's gone.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh... for God's sake... I thought I had drunk my face. I was wrong.",
+    "character": "Jeff",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Jeff went back to the bedroom to sleep. Many were sleepy and decided to go back to the rooms.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh Vinny! Please! Go sleep!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James closed the door in response. Ivy was embarrassed behind her bedroom door and answered.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W..Well... I hope you're not seeing things.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy closed her door too in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Mr Vinny? A...Are you okay?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was still red by embarrassment at the scene. Vinny was deeply breathing and looking at Amy's innocent gaze, disappointed with everything that happened.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Amy come here and give me a hug. Your master RAINBOW QUEEN came here to congratulate Ivy on the new life but we had a bit of a difficult time.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny spoke \"Rainbow Queen\" louder for everyone in the house to hear. Rayane seemed surprised to hear all this.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "R...Rain? Here?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well... you don't have to come hug me, just know what really happened.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was a little surprised, so she looked at Vinny curiously.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "M...my master? Here? R...Really? I wasn't waiting for her here. And..I was talking to Yasmin... My master can't wait a few more minutes?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was very embarrassed and became even blushed by the shame.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... Amy? What happened to Vinny? He's... Oh...",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin does a poker face while looking at Vinny lying on the floor with his sunglasses.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Okay.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy laughed a little in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I have no idea what happened here.",
+    "character": "Amy",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny picked up the phone and watched the audio.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes! Yes... Yeah, she likes you a lot Amy, and likes me a little less, we already had some funny stories. Hihi... But calm down. She left after that scare.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried to relax through the laughs of nervousness. Amy put her ears on the phone to try to hear the sound.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "B...but I didn't hear anything... W..What did she say about me?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was again very ashamed and blushed again, thinking about the possibilities.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What does that mean?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was very confused about the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny put the audio of Rainbow Queen talking on loop and gives the phone to Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Fine! Alright Rayane... listen to yourself. ",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny? I know what happened?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+
+  {
+    "value": "Vinny then corrects the position of the sunglasses on the face during the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Amy, we were talking about our friendship. And it turned out that Rainbow said she loved you very much. She said that. You can ask her later if you want.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A..ah? Yes, she really loves me a lot. I'm surprised you and my master talked about me.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was very confused and even more embarrassed, hiding inside the room again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I... I am not understanding the logic of all this. Are you all right?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Amy put her embarrassed face out the door again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I thought my master was still here.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Almost... can I come here? Quickly...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy sits, doing a sad face trying to understand what was happening.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "B..but I was helping Yasmin to... Alright.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was still embarrassed and finished putting on the clothes she was wearing. So she left the room with a maid outfit, she was too ashamed to be like that in front of Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And... so? W... what do you want to talk about?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "It was exactly how I imagined the reason for her shame feel.",
+    "character": "Rayane",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Rayane just kept quiet watching, slightly surprised by the scene.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...What? Maid outfit?? Fine... fine... It's just Amy. Goddamn it, that'll be harder than I thought.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "W...Well... I'm sorry to put you through this scare.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny was deeply breathing when he saw Amy's innocence and just caressed her head a little worriedly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But I need to ask 2 things, the first one is about Yasmin, I know you two are great friends and everything. But she is very young in this world. Did you ever think about asking if she wanted to be a pet?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was still red with embarrassment, but was slowly calming down by the affection.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "New girl? Yes, I know that. That's why I wanted to get close to her so much. Or other ponies could make her find things... more interesting than me.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was slightly sadder when answering this.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And... I ask?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was very embarrassed, not knowing what kind of answer to say due to surprise. Vinny was a little worried about leaving Amy sad.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But... But she's here on your side. hihi! I know her, she won't give up on you, I just ask that you don't let her become a pet, okay? Let her decide that herself. But it's something that even she doesn't know what it is. No need to be ashamed we are friends.",
+    "character": "Vinny",
+    "type": "dialogue"
   }
   
 ]
