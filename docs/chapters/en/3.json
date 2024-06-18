@@ -15390,6 +15390,249 @@
     "value": "But... But she's here on your side. hihi! I know her, she won't give up on you, I just ask that you don't let her become a pet, okay? Let her decide that herself. But it's something that even she doesn't know what it is. No need to be ashamed we are friends.",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny scratched his head and started talking again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "The 2nd thing you might not accept, that's ok, the 2nd request would be to ask your master if your master thought my eyes were pretty too. hihi! No big deal, ask her to tell the story that she and I were alone and she ate me, I think you'll laugh a lot too.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah...? A..Are you trying to get closer to my master? But...",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny started to laugh a little. Amy replied sadly, feeling confused about the situation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But why? Why are you so worried by pets? You're talking about this more than I do myself. You seem so undecided if I should do this or not.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was even more confused about the subject of the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny? Amy? But what conversation is this? Are you two talking about this again? Look at Amy, she's sad again.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin left the room  worriedly and hugged Amy to try to help her calm down. Amy feel slightly calmer by the hug, trying to continue the hug as much as possible.",
+    "type": "action"
+  },
+
+  {
+    "value": "Vinny? Are you okay? Why are you so weird lately? You can't stop talking about pets, and now all of a sudden you're talking about it again. Are you sure you're okay? I'm thinking you're going to be paranoid.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Yasmin replied worried about Vinny, touching her hoof on Vinny to try to make Vinny feel better.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Paranoid??",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked at Rayane with the red bow. Vinny does a poker face before replying Yasmin.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "sad"
+    },
+    "value": "A little. Nothing too serious, well, about being a pet, it's something you might not want.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Me being a pet? You say all this as if you're hiding something from me. Vinny! Please tell me everything that's going on. I'm getting tired of seeing you suffering like this for some mysterious reason! What did you do?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny saw the expression of Yasmin's concern and Amy's sadness look.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W..Well! I don't know. You've just been brought into this world, it's up to you to decide, but take it easy, you're still going to lose a lot of me in this world.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was doing a worried look, it looked like she was understanding what was going on.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... I need to go out with Rayane. Good night you two... and I'm sorry for anything and scare all right? Do you still like me Amy?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy started to cry a little in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Mr Vinny... promise me you'll calm down if we avoid talking about this topic today. I just want to spend some more time with Yasmin before I back to my home. If she decides something, I'll leave you a note.",
+    "character": "Amy",
+    "type": "dialogue"
+  },
+  {
+    "value": "I... I'm calm, unfortunately fate puts me in a delicate situation. But yes, you have my support no matter what and Jasmin also have my support, in the morning at breakfast we talk about everything ok? You will come more times, right Amy?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin then touch the Vinny's hoof to talk about something else.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Just don't disappear again like a few hours ago. Ah... I know that this is confusing, so you must have been days. If you want my help with something... I'm here too. I have no reason to think you're crazy, remember that.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin smile a little to try to calm Vinny down, and hug Vinny with Amy to try to make him feel better.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... you helped my little sister, so I promise I will do the same for your friend. I'll do my best.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy does a small shy smile, and hugged Vinny too, rubbing her face on Vinny happily.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Rayane saw the friendly situation of all, approached and hugged everyone in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh. At least let's promise that everything will end well~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane saw the friendly situation of all, approached and hugged everyone in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Shhhhhh~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "All were a few seconds of silence to enjoy group hug and feel better emotionally.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah. I know that Yasmin will choose the best for her. Anyway, at least come back alive and say that an X-Tudo brought me here, and a chinese webcam brought Yasmin. The life here is nice, but ours in our world ends up being something more humble.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin then looked curiously at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You look very confident. I want to believe you know how to get home.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy replies happily in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yasmin best choice will be for her to stay here with all of us while we're together.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was slightly surprised before laughing a little at Amy's kindness.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Then the hug moment was over. Vinny and Rayane went to the door preparing to leave. Rayane and Vinny looked back and waved to Amy and Yasmin in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'll put my trust that you and Rayane know what you're doing.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane just smiled a little bit to see that the situation was a little better, and then Rayane looked at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny... You were very good this time. I'm glad you managed that. And I brought Amy to our side.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah... thanks to Rain, anyway, let's go. The plans have changed but we can still talk in the middle of the way about everything ok? We just won extra time. Everything can happen yet.",
+    "character": "Vinny",
+    "type": "dialogue"
   }
   
 ]
