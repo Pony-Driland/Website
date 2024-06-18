@@ -150,7 +150,7 @@
 
     {
         "type": "action",
-        "value": "Vinny then got up from his computer. He was home alone. He then went to the gate to open it to receive the his awaited meal. Meanwhile Yasmin kept laughing and answering."
+        "value": "Vinny then gets up from his computer. He was home alone. He then went to the gate to open it to receive the his awaited meal. Meanwhile Yasmin kept laughing and answering."
     },
 
     {
@@ -788,7 +788,7 @@
 
     {
         "type": "action",
-        "value": "Kenny give the phone to Vinny, then Vinny hold the phone."
+        "value": "Kenny gives the phone to Vinny, then Vinny holds the phone."
     },
 
     {
@@ -991,7 +991,7 @@
 
     {
         "type": "action",
-        "value": "Kenny smiled and started to move faster. Vinny was surprised. He just looked around for a few seconds, looking for something randomly. So Vinny tries to follow Kenny's speed."
+        "value": "Kenny smiled and started to move faster. So Vinny tries to keep up with Kenny. Vinny looked around, surprised, searching for something."
     },
 
     {
@@ -1232,7 +1232,7 @@
     },
 
     {
-        "value": "Okay okay. I understand, so excuse me, what a beautiful house! *-*",
+        "value": "Okay okay. I understand. So excuse me, what a beautiful house! *-*",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -8946,7 +8946,7 @@
     },
 
     {
-        "value": "When James and Vinny left the market, the two ponies was already in the middle of the village crowd walking towards Kenny's house, everything was normal and very busy as every morning. James was avoiding talking to Vinny to try to calm down.",
+        "value": "When James and Vinny left the market, the two ponies were already in the middle of the village crowd walking towards Kenny's house, everything was normal and very busy as every morning. James was avoiding talking to Vinny to try to calm down.",
         "type": "action"
     },
 
