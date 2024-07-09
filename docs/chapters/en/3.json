@@ -16150,6 +16150,9 @@
   }, 
 
   {
+    "set": {
+      "playlistPlay": null
+    },
     "value": "Well! Let's go then. I remember it was in a very suspicious alley.",
     "character": "Vinny",
     "type": "dialogue"
@@ -16163,6 +16166,832 @@
   {
     "value": "You silly~ So let's go.",
     "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "set": {
+      "playlistPlay": "aniya-first-time"
+    },
+    "value": "So Rayane and Vinny finally went to the place where Vinny had met Aniya the first time.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You know that if she really knows things, she can talk about her past too right?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane laughed a little as she approached the Aniya's cabin.",
+    "type": "action"
+  },
+
+  {
+    "value": "She doesn't know about our lives... She can only predict the future. The name of this skill is temporal energy. This is the secret of her skills. Maybe that exists in your world too. But she will never know what exactly will happen. I have no reason to be worried.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "M...my world? I see, well, then I'll do my past for you. I like to share this on nights with the moon over my head, who goes first?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Your past?~ Heh. Your past will soon have new presets~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smirks and giggles a little while booping Vinny's nose in response. Then Rayane and Vinny enters the Aniya's cabin. Vinny then began to suspect something about Rayane's behavior.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah? You want something with her.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The place was empty, but the crystal ball was standing there with only a slight aura of magic surrounding it, everything was very quiet.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh~ Don't worry. After all... where is she?~ Crystal balls don't shine on their own.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny remembered the last time when he approached the crystal ball.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Aaaaaah... If you approach the ball, I think the same thing will happen to me when I came here.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Shhhhhh... Just look~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane approaches the table slightly, then she smirks and levitated the table. So Aniya was there behind the table.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Pika boo~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "AAH! HAUNT! FREAKS! NO! YOU FOUND ME!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya fall to the ground and crawl out on the ground. Vinny does a poker face in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... Can you be more natural?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked at the red bow on Rayane head.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Forget it... Aniya! You remember me?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was completely scared for a few seconds before looking at Vinny and Rayane",
+    "type": "action"
+  },
+
+  {
+    "value": "NO! I...I... I can't! What is Rayane doing here?! I did nothing! Which means all that scary feeling?! V...Vinny?! Rayane?!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya looks at the red bow and started to laugh nervously.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Did I miss something here?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was a little embarrassed for a few seconds then smirks at Aniya again as Rayane put the table back on the floor.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Let's come for a new session~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "New session? W...What? With Rayane? Is it really serious? Vinny and Rayane?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Huh? didn't wait for us? Was the fortune teller's show canceled due to an unforeseen event? I've heard this joke before, but I've never seen it.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny giggles a little.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But yes it's me, it's ok, with me at least.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A...ah?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya tried to get back to the posture as fast as possible. Aniya replied indignantly with what happened.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "No..no! The show is not over and must go on! Don't scare me like that! That's a lot of temporal energy concentrated in one place!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "So let's continue the little show.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "C...continue the show? Oh! So you really want the session! But how interesting... Why at such a late night time?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya smirks as she went back to the chair and started to shine the crystal ball.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... I was sleepless.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah... interesting.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? But I feel sleepy for a very interesting reason, do you speak or do I speak Rayane?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was disappointed by Vinny's words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Anyway... sorry for my scare. Your temporal energy is very strong. I've never felt something like this. Why exactly did Rayane decide to come talk to me?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya smirks at Vinny and Rayane, trying to challenge both to talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Let's talk about some special matters... After all, matters much more important than you can imagine~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smirks at Aniya.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Tell me... I'll just help you~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "What?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya kept looking at Rayane with the suspicion of something, trying to understand what the conversation is about.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I got sleepy because her \"old master\" came to pay me a visit, and after talking a lot she made me yell at the whole house that she had pretty eyes.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny giggles a little at Aniya.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But I think you can help us help you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Haha! Old master...Good joke... Wait... what?!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was extremely surprised by hear this.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "No no! What a bullshit this is! No! Let's change the subject now!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya levitated some cups of tea and served them both.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "We have a long time to talk about more interesting things~",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "You were a very bad pet running away from her, why always the customers talking? Let's talk, listen to your side, then my side and if Rayane wants to talk about her side.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...What??",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Aniya was even more surprised and fell out of her chair, trying to keep her distance.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "H...How do you know that? Y..You have no right to spread this information!!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh~ Well... The simple conversation... no jokes... no tricks... Let's get straight to the point and all this is between us.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah. We have no intention of spreading it, you said that we have a lot of temporal energy concentrated here, but see, we're only here because of you. Let's take it easy, I'll let Rayane talk first, she's your customer, I'm just a charming pony accompanying a beautiful pony in the night.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny used some irony in his last words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "H...HEY! It's a powerful energy to talk about my past! It took me years and years alone to change the course of my life! Don't think I'm going to give up because of you!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little while using the magic to help Aniya get back to the chair gently.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Calm down mad girl~ We just want to help Mr Vinny after all. He's been wanting your help with this pet matter~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was very curious and confused, trying to understand where this conversation would end. Aniya tried to keep calm while slowly trying to get back to the posture.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ok... and what do you want to know about all this?",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "I totally understand how you feel, we are not here to destroy your conquest, we are here for my conquests not to be destroyed, I'm glad you share the same fear, and now I can lose all.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked around a little discouraged but regained his composure.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I need to get Rain a pet. She ended up bringing a friend of mine from my world into this one, and she's going to make her a pet if I don't give a pet.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "N...New pet? Your world? But how weird... Why would she do that? Oh my god.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks at Aniya.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "To help and save our time I'll start with a question, you can answer it and continue on if you want.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wait... I thought I had helped you with your future that I had predicted about pets! You were no longer talking about this issue! That's impossible! That wasn't to end like this! I was really helping you!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was even more confused, she seemed too lost without understanding what was really happening. Vinny breathes deeply preparing to speak.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... why didn't you want to be a pet anymore?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was surprised in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "M...me?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was embarrassed, not knowing what to say, trying to think of something to answer.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I... I just wanted to have a different life when I started to know new things in my life, this happened when I started to be more interested in my work. But where are you going with all this?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then Rayane listened to the conversation and stopped drinking tea to pay a little more attention.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What would your choice be if one of the few good things that happened to you was taken away? This was something simple, I told Rain that I was willing to do anything and everything she wants, luckily we made an agreement that I just needed to give her a pet, if I failed she was going to make this friend of mine a pet, if I win she gets a pet. I did all this to resuscitate a pegasus who was almost dying.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya made does face hoof in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh my god... Oh my fuck god! You didn't do that. Please tell me you paid attention to every word Rain spoke.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I did. At the end I insisted on giving the final voice to the agreement, I said the agreement and after we agreed to everything, what is valid is what I said, that she give a new life to pegasus in exchange for me getting a pet for her , this is valid. She offered other things like go to where she lives and spend time with her, give me food, give me a potion in case Rayane got hurt too much. But I refused and just wanted to keep my deal.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya looked at Vinny with a suspicious face.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny... Look at my eyes... Are you sure it was just that? Didn't she say any rules? She is very smart with her rules. It's her rules that will checkmate you.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny felt a little uncomfortable before continuing to respond.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Why do you always say she's going to say something?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then had a quick flashback about the conversation with Rainbow Queen.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "If this plan leaks... I'll have every right to do anything else myself thing. Even eliminate you forever if I want to...",
+    "character": "Rainbow Queen (Flashback)",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "IF THIS PLAN LEAKS... LEAAAKS...",
+    "character": "Rainbow Queen (Flashback)",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The flashback ended and Vinny was much more scared and anxious than normal. Vinny remembered the amount of times he talked about the plan. Vinny remembered the mystery of Rainbow Queen seemed to have chased him to his house.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "O..Oh no... Holy shit! H.O.L.Y S.H.I.T! YOU BITCH! I'M A FUCKING IDIOT!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "N..NO! NO!! NOOO!!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oops...? What happened? Did your brain explode from something I said?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was surprised and worried to see Vinny's reaction. Rayane was even more concerned than normal, and she was trying to help Vinny not pass out of anxiety.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "V...Vinny? Vinny! Wake up!",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "That's not the time to die!",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Vinny then opened his eyes and saw that he was lying on Rayane's shoulders, Vinny then breathed to try to continue the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I... I remembered something that Rainbow said at the last moment... that I couldn't tell anyone about my plan.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "bad-think"
+    },
+    "value": "Vinny was trying to hold all his sense of hatred mixed with sadness, his eyes get a little tear for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah.... I said my plan to James, let's continue our conversation, that's all and with this additional thing that I couldn't have said anything.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried to get back to normal after the scare. Rayane was completely scared , but Rayane helped Vinny try to stand up during the process.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...w..what?!",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Y...you failed? That's right? Wait... so she's been fooling you all this time?!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny lowered his head and got upset during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I didn't really remember that.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny... calm down! Please! We're here, we can try to do something to help you... maybe we'll find something to help you.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane hugged Vinny nicely, trying to calm him down as possible.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wait... we?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was surprised by Rayane's words. Vinny was just waiting for someone to say something, looking at Rayane and Aniya. Rayane and Aniya looked at each other and then saw that they had no choice. Rayane then spoke emotionally when she realized the size of the problem that Vinny is now.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... you... If anything happens to Yasmin, you're the only one who can help us with it.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was surprised and then replied.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hey! Oops! I don't work for free! I also have to support myself to live!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I understand, I understand, but how much is it to support?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya then looked at Rayane and Vinny with expressions of defeat. Aniya began to have an indirect feeling of guilt for all this. Then Aniya breathes deeply before answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I said that each session is 1000 bits. But... if you and Rayane help me with something else, then I can think about the case of sometimes giving discounts. That'll be between us.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? And why would you help us? We just met you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well... I don't know what you and Rayane are planning to do... but the temporal energy of you two is very scary. Do you really think I'm going to let something of this level go unnoticed? What if my life is in danger because of this?",
+    "character": "Aniya",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Aniya felt disappointed with herself during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well, what do you have in mind?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Nothing for now... This Vinny's future part is already written. You already have a preview of it. If you want to know something, come back here another time or another day. That's if you come back. I wish you both good luck.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane looked at Aniya, not liking her attitude.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "So if you really want to help us... Why don't you come with us too?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "M...me?! No, no! I won't look at Rain face again!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya... Please... help us to help you, if that's all I'm thinking, your master wouldn't have done all this if you hadn't run away, she brought my friend into this world to fill the space you left.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny took a little tears from his eyes.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "She's looking for someone who likes Amy. Were you and Amy close?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya tried to keep calm and looked at Vinny face again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ok! Okay! Some of the blame may even be mine! Me and Amy don't talk anymore, we know each other and sometimes she visits me, but we don't have the same friendship anymore. Amy's very gritty in her pet life. We don't have as much in common as in the past for now. I hope you understand. We have completely different lifestyles.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "You're the only one that can really help me, the problem is the money? I can get. But I'll let you and Rayane talk a little.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was breathing deeply, slowly feeling a little calmer.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I can get half of the 1000 bits and then I'll get you another 500 bits. But are you sure? Will a consultation help? We want some help, not knowing what may or may not happen.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Not just money. Predicting the future takes a lot of magic. This power is Rain's inheritance. And... and also a memory before me stopped being a pet. I can also try to guide you on how to help your friend Yasmin, but don't think it will be something overnight. Depending on her emotional shock, your first challenge will be getting close to her again.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya looked at herself, and responded with a feeling of depression.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "So think about what you're going to ask me. Rain also has the future prediction magic. I think you must be very aware of that now. Be very careful.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "If you're that scared about Rain, it's because you did something wrong. I understood everything when I understood your magic of temporal energy.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "H...Hey! Calm down! I am also sad about all this!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then ignored a little Rayane and Aniya, and left the two chatting alone.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'm fucked.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny saw were the decorations of the room, and then behind Aniya was just a door to a special room.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmm... Yeah.",
+    "character": "Vinny",
     "type": "dialogue"
   }
   
