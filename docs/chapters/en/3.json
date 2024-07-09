@@ -14632,7 +14632,7 @@
   }, 
 
   {
-    "value": "Give me the Yasmin phone...",
+    "value": "Give me the Jasmin phone...",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -15624,13 +15624,443 @@
   }, 
 
   {
-    "value": "Vinny... You were very good this time. I'm glad you managed that. And I brought Amy to our side.",
+    "value": "Vinny... You were very good this time. I'm glad for you. You brought Amy to our side.",
     "character": "Rayane",
     "type": "dialogue"
   }, 
 
   {
     "value": "Yeah... thanks to Rain, anyway, let's go. The plans have changed but we can still talk in the middle of the way about everything ok? We just won extra time. Everything can happen yet.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny breathed deeply, looking to feel comfortable about Rayane's words. Rayane was curious to hear Vinny's words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wait... Thanks to Rain? You silly~ But well, how come your plans have changed?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Come on... we have a lot to talk about, the night awaits us Miss Rayane with the beautiful eyes. Hihi!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny picked up the cell phone again, put it on silent and turned it off. So Vinny looked at Amy and waved in the way of saying goodbye.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Amy... Don't forget to ask your master if she thinks my eyes are pretty alright? Thanks for the company. Heh! See you later.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy was feeling a little embarrassed in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...ask about pretty eyes? O...Okay.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny! You're making me curious about who this pony is.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "So Vinny just closed the door, delivering a mystery and suspense, and looked at Rayane. Rayane does the silly, malicious face in response while she poke Vinny's mouth.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Heh. Pretty eyes?~ What is my dream doing this time?",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+  
+  {
+    "value": "Heh!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny took Rayane's hoof gently and continued the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "think"
+    },
+    "value": "When James and I were rescuing Jasmin who had fallen on the floor, she came with a cell phone just like mine, but she didn't have it, soon after we started having some problems with James' radars, and I remembered that gypsy said that I needed to find a ghost that was causing interference in some electronic devices... that gypsy... she...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny took a deep breath, preparing to continue the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "That's reason she knew a lot about me, and even more about Amy and Rainbow. She was a pet that ran away, escaped, didn't want to be a pet anymore and now she's a gypsy.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane then expressed herself a little surprised to hear that.",
+    "type": "action"
+  },
+
+  {
+    "value": "You don't know how to track this cell phone? And... whaaat? Gypsy? The gyspy is an ex pet? Are you sure she knows a lot about you? She is a gypsy... It could have been some coincidence.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Hmmm... Yeah. And it seems that fate wants me to meet Rainbow, she already ate me, what will it be now? Crush me into a ball?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane was very surprised by Vinny's words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... Meet Rain again? How did she eat you? Did she use any size-shifting magic?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane seemed very uncomfortable to hear about Rainbow Queen, it seemed that Rayane knew something about this conversation subject. Vinny only looked curiously at Rayane and only continued the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah... she grew in size, made a joke just like mine, like, after I asked if I was handsome, she replied with \"Beautiful to die!\" and ate me. It was so wet and... stinky. But I woke up safe in the village.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The look of discomfort on the subject of the conversation made it increasingly evident that Rayane knew about what Vinny was talking about.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y...yes.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "What?",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny then followed the conversation normally trying to ignore Rayane's reactions. Vinny was serious and returned to talking a little determined.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... We were going to see Jasmin's cell phone, which was supposedly stolen by someone nearby or a ghost, but her cell phone is with Rainbow.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rain... stole her phone?",
+    "character": "Rayane",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny then breathed deeply before continuing the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "God damn it... so we can see these ghosts or come home and sleep, or we can enjoy the beautiful night for a while and then come home and think of something about how to react to certain things.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny heard the sound that some houses were already having windows locked by some kind of glowing magic window. All these windows slightly illuminated the village streets, but still everything was very dark.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W..What? The windows of this place are strange.",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny smirks, trying to get Rayane back into the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh. You look like you've dominated the night for a long time, if you don't have any problems, you can call me. Hihi! Will know when we can have a moment like this again.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane seemed too worried to try to react to Vinny, Vinny was a little sad to realize is.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Did you... managed to provoke Rain enough to do that? Vinny... Rain just wants to show power and dominance. She doesn't accept that other ponies trying to be superior to her. She likes to always be in control even when she's trying to be fun. It's her way of being. And she can use it against you in a way.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "I... I know, I've always made it clear that I'm an ordinary pony and she's a goddess, I have no reason to think I'm something more important than her.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then scratched her head worried about remembering Yasmin's phone.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But wait... did Rain steal Yasmin phone? I have a bad feeling about this.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane tried to keep calm during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... yes... a beautiful night with a full moon~ In a very calm and peaceful forest. I'm the \"ghost of the night\"~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane put her's hoof on Vinny's mouth gently while answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Don't worry~ I don't know how much time we have left to solve your problem with Rain, but maybe we can find out something important with this gypsy.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny looked a little blushed at Rayane's hoof and just gently pulled before continuing the conversation seriously.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well! Just the fact that Rain made a bad joke, and ate me, made me scream at the house all that and then leave laughing, I think I'm starting to do to her what I did to you. Hihi!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was a little surprised to notice this possible fact, Vinny just continued the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Look, are you the night? You know that the night is what I like the most, so you already know.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny started to get a little depressed during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'm not doing anything for myself, since I came to this world, everything I did for myself was not successful, just things for other ponies and look at it.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked at the mobile itself, seeing that all the message history did not receive more update, especially the conversation of the lost Discord audio call that was having with Yasmin in the past.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then looked at the last pony photographs recorded on the mobile phone. Vinny breathing deeply in the way of sadness before continuing the conversation and turned off the phone again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Anyway, I'll continue to do what I do best, thanks, it was you who made me go back inside the house at that time, without you, I wouldn't even have found Rainbow.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+  
+  {
+    "value": "Vinny then looked at the last pony photographs recorded on the mobile phone. Vinny breathing deeply in the way of sadness before continuing the conversation and turned off the phone again. Rayane felt empathy for Vinny and put her hoof on Vinny's shoulder.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What do you mean it wasn't successful? You got a gift from Ivy, you got new friends, you got me. We're all here on your side.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny and Rayane could see that everything was much quieter than usual, the two ones only hear the sound of the wind blowing throughout the village.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh... And how curious... I didn't even know Rain had her eye on you so much~ Didn't you have anything planned in mind for all this?",
+    "character": "Rayane",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "I was honestly just going to get some pony as a pet, but I noticed in our conversation that all this more complex than just a pet.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny started walking forward aimlessly and talking.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It seems that Amy is alone there with Rain, that's reason she comes here, and now she's been with us for a long time, she doesn't have much attention, and Rain wants a pet, that's reason Amy want Jasmin from the beginning, from the beginning the 2 were made for each other, anyway I won't mess with Rain anymore, because this is about Amy. I'll find a pet that is cool with Amy equals Jasmin.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+  
+  {
+    "value": "Rayane replied slightly worried about the subject. Rayane then then levites the red bow, looking at it for a few seconds, thinking about Amy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Rain is very busy... especially because of her omnipresence during the day. She usually pays more attention to Amy at night. Do you understand? At night almost everyone is sleeping, it makes everything easier. That's reason Amy needs to come home at a certain time of the night.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny looks at the bow waiting for some decision.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Omnipresence? Y...Yeah! By the way, whoever finds you cute and fluffy with that little bow, is a good pony to be a pet, like that. But I'm tired of choosing... tonight I'm all yours, whatever you say I'll obey and do, if you want to go see the gypsy, let's see the gypsy, if you want to look for a pet, let's see the pet, if you just want to go for a walk and if you're lucky we found a ghost let's go for a walk.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmmm... All mine?~ What do you mean by that? Where do you think of looking for a pet?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aaaah... Maybe a child in an orphanage?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane put the red bow back on her head and answered in a worried way.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...what? The Orphanage? No... Vinny... Rain's collars don't work on childrens. Didn't you look at the size of this collar? This collar is for adult ponies. The magic will only work with adult ponies.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "AH... Doesn't work with children? Because of the size? That's not enough, if that's it, everything I do and say has meaning my dear Rayane.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny laughs at nervousness.",
+    "type": "action"
+  },
+
+  {
+    "value": "But yes, whatever you choose we will do. The gypsy can help with everything but it won't be free.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane tries to remain kind even in the delicate situation and see Vinny's difficulty.",
+    "type": "action"
+  },
+
+  {
+    "value": "And apparently my dream also likes to see me wearing this bow~ What are you planning with the gypsy?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny seemed a little depressive again to see that things were not going as he planned.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... the gypsy wanted to meet you and James. Apparently she knows all of us.",
     "character": "Vinny",
     "type": "dialogue"
   }
