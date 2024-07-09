@@ -16027,7 +16027,7 @@
   }, 
 
   {
-    "value": "AH... Doesn't work with children? Because of the size? That's not enough, if that's it, everything I do and say has meaning my dear Rayane.",
+    "value": "AH... Doesn't work with children? Because of the size? Isn't Amy a child? W...Whaat? That's not enough, if that's it, everything I do and say has meaning my dear Rayane.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -16062,6 +16062,107 @@
   {
     "value": "Well... the gypsy wanted to meet you and James. Apparently she knows all of us.",
     "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane then was thoughtful to look at Vinny's sadness, so Rayane tried to smile a little bit to cheer Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmm... I wanted to know what a gypsy this is. We can go there then... I'll find a way~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was trying to smirk, but then she was a little confused by realizing that Vinny mentioned James too.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wait... How is it possible for her to know James?",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Well, gypsies are known in my world for having some special gift of knowing, predicting future, and also for being fraudulent, there are gypsies who are fake, say anything and just take the money, I don't think she is since she knew about us, but there might be something of ours near where Rain lives and stays, so she knew of some story, or legend or...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "If gypsies is something impossible both in the world of Vinny, especially in this dimension, then that means that... How?",
+    "character": "Rayane",
+    "type": "think"
+  },
+
+  {
+    "value": "Rayane seemed a little surprised about something.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "...and that's it. Hey? Hey! Do you want to go to the gypsy? If we're really going to go on it, and she really knows we're going on it.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "This is very strange... If the gypsy is an ex pet... Then it was probably very easy for her to predict this. I know almost exactly what is happening here. Let's talk to her better. I'll make sure everything comes out free.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Rayane then found the good opportunity for smirk again.",
+    "type": "action"
+  },
+
+  {
+    "value": "Heh~ She's probably sleeping... we'll have to pay a special visit to wake her up.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then feel a little hope that Rayane would know some solution to his problems with Rainbow Queen. Then Vinny adjusted his dark glasses and looked at Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah! I can't see anything with these sunglasses for god's sake of Celestia and Luna together!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "What? Who is Celestia and Luna? Are they from the world of Vinny?",
+    "character": "Rayane",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny took off his glasses but left them on top of his head.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well! Let's go then. I remember it was in a very suspicious alley.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You silly~ So let's go.",
+    "character": "Rayane",
     "type": "dialogue"
   }
   
