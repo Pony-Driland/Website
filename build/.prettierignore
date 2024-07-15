@@ -1,0 +1,11 @@
+dist
+node_modules
+.flatpak
+vendor
+release
+dist
+dist-electron
+package.json
+package-lock.json
+LICENSE
+README.md
