@@ -155,15 +155,15 @@ var storyCfg = {
     nsfw: {
         vore: {
             name: 'Vore',
-            description: 'Vore is additional content only in some specific scenes. Disabling it will not interfere with the main story. But maybe you\'ll skip some extra canonical info.'
+            description: 'Vore is a optional content only in some specific scenes. The part of the vore is more related to the characters that usually have supernatural features and has a personality compatible with this type of content. By use the vore option, you are responsible that you will accept seeing possible sinister or uncomfortable scenes for some specific audiences. Disabling it will not interfere with the main story. The censored version will just skip these parts, warning what happened, focusing only on the useful information for the reader to understand the story. But maybe you\'ll skip some extra canonical info that is interest only to this audience type.'
         },
         questionable: {
             name: 'Questionable',
-            description: 'The scale of this content is small, but it is present in some quick scenes. Disabling this option will make you skip optional scenes.'
+            description: 'The scale of this content is small, there\'s nothing sexually explicit inside story, but the questionable content is present in some quick scenes. Disabling this option will make you skip optional scenes or see some censored dialogues.'
         },
         extreme_violence: {
             name: 'Extreme Violence',
-            description: 'Some battle scenes might be considered strong for some viewers. By disabling this option you will decrease the level of violence in the story.'
+            description: 'The details of some battle scenes can be uncomfortable or can cause nausea in some readers. By disabling this option you will decrease the level of violence in the story. Activate at your own risk, I will not be responsible for your decisions.'
         }
     },
 
