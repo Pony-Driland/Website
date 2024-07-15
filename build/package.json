@@ -1,4 +1,15 @@
 {
+    "engines": {
+        "node": ">=20.0.0"
+    },
+    "scripts": {
+        "fix:prettier": "prettier --write ../docs/js/chapter_manager/* && prettier --write ../docs/js/files/*"
+    },
+    "author": {
+        "name": "JasminDreasond (Yasmin Seidel)",
+        "email": "tiny@puddy.club",
+        "url": "https://github.com/JasminDreasond"
+    },
     "dependencies": {
         "@unstoppabledomains/resolution": "^7.1.4",
         "@walletconnect/client": "^1.8.0",
@@ -19,6 +30,7 @@
     "devDependencies": {
         "babel-preset-es2015": "^6.24.1",
         "browser-resolve": "^2.0.0",
+        "prettier": "3.3.2",
         "esmify": "^2.1.1"
     }
 }
