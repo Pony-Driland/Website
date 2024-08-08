@@ -16993,6 +16993,425 @@
     "value": "Hmm... Yeah.",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Aniya... You said you'd like to bring me here. Anyway... I'm willing to do anything to reverse it, if you want money I'll get it. That's it?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hm...",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny looks at Aniya and Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You still haven't said exactly why you ran away from being a pet, like I said, I'm asking for your help, any help, with or without magic or money, you can help me. What's so bad about being a pet?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "N...no! That is a secret!",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+  
+  {
+    "value": "Secret?",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Aniya replied with a slight nervous smile.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "There's nothing wrong. I just wanted my freedom back. Only that.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "But you who chose to be a pet? No?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes... I chose it myself, and I chose not to be anymore... Why the curiosity?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya replied with a suspicious face about his questions.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You wanted to, then you didn't, this is highly contradictory, it's like I came here to ask for your help, but in the end I didn't want your help... you want to help, but you don't trust me, on our first meeting you said that I needed to trust you, I trusted you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny took a deep breath and looked into Aniya's eyes.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But you don't trust me, it seems like you think I'm going to go around shitting everything I see ahead of me, I didn't choose to come to this world, nor to have done all this, to have gone through everything that happened. The greatest good, I risked my life and Rayane's many times, for in the end I came to your master and end my will...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny ending speaking a little muffled.",
+    "type": "action"
+  },
+  
+  {
+    "value": "...you at least either hate her or like her.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "W...W...well...",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was uncomfortable hearing the word \"master\", but tried to keep calm.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Look... we can talk about this later. Well later.... What do you think? I need to take my time now.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well, that's fine, it's fine by me.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks at Rayane while looking at the special room. Rayane was disappointed with Aniya's attitude.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Maybe some answer is inside this room.",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Okay... anyway I'm sorry about the sad moment.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya took a deep breath during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'll try my best as far as I can... And why are you looking at my office door?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I don't know, I'm just looking why? Is it a special door or something?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "It's just my personal souvenir room and my storage room. Nothing special for you.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I'm just looking, that's all.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny smiles nervously.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ok.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya kept looking at Vinny while using magic to lock the door. Vinny does a poker face in response. Rayane seemed curious, but she just kept quiet during the talk. Rayane then looked worried and said.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... did you tell Amy to take care of Yasmin?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Y..Yeah! This doesn't smell good, I told Amy to ask Rain if I had pretty eyes... this was all before I knew I shit everything, but I don't know... I feel like now, after all, Rain she's closer to me, she even came out chuckling, not evil, seeing the joke she made me go through.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Huh? What do you think might be happening? Maybe she's just playing with your emotions, it's something she likes to do.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane does a little nervous smile while laughing a little.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... her sense of humor... is sometimes a little dark. She sometimes has a very confusing moral behavior.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes. Her mood is very unique.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya did a poker face to remember some things from the past. Vinny walked out of Aniya's cabin slowly during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "When Amy says my question to Rainbow, I don't know if she's going to want to come see me in person and make out with me. And we're here with Aniya, well that's ok for me, whatever everypony have to deal with, hide or talk about, I'll be standing outside the door looking like this tonight.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane does a emotional smile and hugged Vinny gently.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Don't worry Vinny.... We'll try to fix all this somehow. At least I know that Yasmin won't die at the end of that. Our concern now is Yasmin's future.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Don't forget I'm here if you need anything.",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Yeah... I...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny felt uncomfortable with the sound of the village streets along with the sound of the night wind. And at this moment Vinny feel a small fruit that looked like an apple falling on him head accidentally and then falling to the ground.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ouch! Huh?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks at the apple that fell to the ground and looked up to see if there was something where it had come from. Vinny just saw a normal apple tree.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya seemed confused also about the situation.",
+    "type": "action"
+  },
+
+  {
+    "value": "An apple?",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Heh. Some haunting must be watching you~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little, trying to cheer Vinny up.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... Aniya, we have to go now. I don't know how long Rain will hold this truce. Shall we go home? It's getting too late.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya does a slight look of concern.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... Just be careful with the fog.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah, I hope the next thing thrown at my head isn't a silly thing. hihi.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried to laugh a little bit to feel better. Vinny eats the apple while accompanying Rayane. Rayane pokes Vinny's muzzle before starting to walk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "For now what will be thrown at you will be my boops and my marshmallows~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then Vinny and Rayane start walking around the corner towards home, and every moment the fog was getting stronger.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...Wow... They're really two crazy ponies. They could have stayed in my house instead of walking on that haunted street.",
+    "character": "Aniya",
+    "type": "think"
+  },
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Aniya just closed the door gently, leaving the two at peace. When the two heard the sound of the door closing, a new conversation began.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well, I gave James some money in the morning, he can \"give it away\" or borrow it again, it's enough to pay half that gypsy girl over there.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W..What? Are you sure? You just won that money. Can I help you pay?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "bad-mystery"
+    },
+    "value": "Rayane was surprised. Meanwhile the fog was getting stronger with each step.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Is your money infinite by any chance?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "No... But I still have a lot of money from my last things I did.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },  
+  
+  {
+    "value": "Ah... Well... this fog is smelling like bullshit to me. Do not you think? Well, i'll ask James to charge my cell phone later.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny turned on the cell phone and paid attention if there was anything strange.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Fogs? Must be some spook. I'm not afraid of them. Heh~ I always manage to scare them away and... oh?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane began to find it strange that the whole place was much more covered in fog than usual",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh? But this one is different.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Holy shit. What's happening now?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny cell phone was normal, nothing strange was happening to it. Vinny turn on the cell phone flash and point to places.",
+    "type": "action"
   }
   
 ]
