@@ -17868,7 +17868,7 @@
   }, 
 
   {
-    "value": "I won't want to be without my reward, after all I still really want to punish you. I see that maybe you can be useful to something else. My existence is confidential, so it's only fair that I invite you to find all the parts of Master SmartMoby for me and give it to me. By doing this, I will spare your life. What do you think?~",
+    "value": "I won't want to be without my reward, after all I still really want to punish you. I see that maybe you can be useful to something else. My existence is confidential, so it's only fair that I invite you to find all the parts of the master smartmoby for me and give it to me. By doing this, I will spare your life. What do you think?~",
     "character": "Rainbow Queen",
     "type": "dialogue"
   }, 
@@ -18132,7 +18132,7 @@
   }, 
 
   {
-    "value": "Hmmm~ So you want me to go to her for you instead? Or would you can have the courage to go talk to her? I'm giving you a chance to seek forgiveness in something... Tell her the truth, don't hide what you've done. Don't let your friends down on you! Just make her choose this decision. It's all so easy for you now. You have everything you need to get her to agree.",
+    "value": "Hmmm~ So you want me to go to her for you instead? Or would you can have the courage to go talk to her? I'm giving you a chance to seek forgiveness in something. Tell her the truth, don't hide what you've done. Don't let your friends down on you! Just make her choose this decision. It's all so easy for you now. You have everything you need to get her to agree.",
     "character": "Rainbow Queen",
     "type": "dialogue"
   },  
@@ -18229,6 +18229,11 @@
     "value": "W...Well... I'm going to talk to you alone. Just that.",
     "character": "Vinny",
     "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen becomes curious, seriously showing that she was paying attention in every detail.",
+    "type": "action"
   }, 
 
   {
