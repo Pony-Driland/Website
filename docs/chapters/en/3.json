@@ -17357,7 +17357,7 @@
 
   {
     "set": {
-      "playlistPlay": "bad-mystery"
+      "playlistPlay": "dark-ambient-melodies"
     },
     "value": "Rayane was surprised. Meanwhile the fog was getting stronger with each step.",
     "type": "action"
@@ -17412,6 +17412,829 @@
   {
     "value": "Vinny cell phone was normal, nothing strange was happening to it. Vinny turn on the cell phone flash and point to places.",
     "type": "action"
+  },
+
+  {
+    "value": "Well, I think we'll have other issues to resolve before finishing others, that's cool.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Calm down... It's just fog... Try using your wings to push them away.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The cell phone could not illuminate what was behind the fog. Everything was very strange, it seemed that things were increasingly disappearing around.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Fuck... Fine! Get ready for something.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny got pissed off at the situation. Vinny used the wings to start trying to beat as hard as possible a little above the ground to push the fog forward. When the fog was leaving, Vinny and Rayane started to see that the houses that were there were no longer present. Rayane was surprised and tried to be very attentive.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh no... This wasn't supposed to be happening... That is some magic of illusion.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Illusion? What kind?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny flies up and try again and again. But no matter how strong Vinny produced the wind, the result was the same.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AAAH! Come on!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "So Vinny and Rayane realized that the fog slowly began to reveal something. Vinny and Rayane were in a very empty place, the whole village had mysteriously disappeared.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... I hope it's not that apple I ate, this is sounding like Rain's mind.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rain's mind? How it is?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "bad-mystery"
+    },
+    "value": "Rayane is feeling surprised. Then everyone began to hear steps.",
+    "type": "action"
+  },
+
+  {
+    "value": "Ah? Oh no...",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh no?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny then suddenly came face to face with Rainbow Queen who was just watching him and Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Peek a boo~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rain!",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh no...",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Scared, Rayane acted on instinct to try to protect Vinny, but Rainbow Queen's scythe blocked Rayane's attack.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Leave him alone!",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "R..Rayane! Calm down, everything will be fine. Trust me.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Awwwww... Sorry. How nice to see you two together this time~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen does a evil laugh while looking at Rayane's scared face.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...aaah... Hi, how long have you been laughing at me like you did at the house? Where I shouted to everyone that you have beautiful eyes?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen then laugh a little more at Vinny while she approached Vinny slowly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Laugh at you?~ I had been laughing at you for a long time when you found out the truth. It was fun playing with you while it lasted~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen does another short evil laugh while the horn started to glow, then Vinny started to levitate from the ground, Vinny's movements were now much slower than normal.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "O..Oh? Hey? Hey hey! What are you going to do to me?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hahah! So you already understand the reason we are here, for you to meet your terrible end. How long have I waited for this moment! Your little visit in my world will finally have a usefulness for my existence.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "N..No! Stop! Are you doing?!",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Shhhhh... My little Rayane, don't worry, I have a very special place for Vinny's soul~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen rubbed the scythe gently on Vinny's neck while looking into him eyes, staring at Vinny with an intimidating look.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..ah?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "N..No! Vinny!",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane started to cry, wanting to get closer, but Rainbow Queen used her magic to paralyze the movements of both Vinny and Rayane at the same time.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Rain! Please! Stop Don't do it! I... I beg you!",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...Wait! Rayane didn't do anything. The deal was between you and me.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes... The deal is between you and me~ That's reason I won't let her interfere.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "And... what do you intend to do with me?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "No..no! Rain! We can still have more time! We still haven't gotten home! We can still do something more for you! But please! Give Vinny some second chance!",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane answered crying a lot while trying to fight against Rainbow Queen's magic. Rainbow Queen laughed more at the situation in response. Rainbow Queen smirks and looks at Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What else can you offer me?~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "I...I!",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Naaah... I will seal Vinny's soul for eternity! A nice prison for him... Or I could have fun with him in other ways... No, I don't think it would be a good idea~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen laughed a little more as he continued to rub the scythe on Vinny's neck and brought him closer.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny... I think you could now say your last words~ After that I'll just have fun with your little friend you'll leave behind~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah... So that's it. It's over for me. It was good how long it lasted.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Rayane was desperate, but then she remembered something about Aniya.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Rain! STOP! If Vinny has something positive for your future? Anything... we don't know, but something can exist.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "What?",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Rainbow Queen showed a disapproval reaction, but she decided to think about Rayane's advice.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "My future? I can't believe you did that. Okay. Did that gypsy say something to you about me?",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen stopped looking at Vinny and moved the scythe to stare at Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "N..No! Rayane, that's enough, it's over for me, another pony will always appear that will need your help, I ended up here, I have no more reason to stay here.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "No! I promised you would be fine!",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane replied crying even more. Rainbow Queen does a evil giggle as her horn started to glow more intensely in response.",
+    "type": "action"
+  },
+
+  {
+    "value": "How curious, you two learned something new about me during this time. I've had my eyes on Mr Vinny's temporal energy for a long time. Let's see what Rayane has to show me~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen then concentrated more magic on Rayane in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wh...what? Rain? Are you doing?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane looked at Rainbow Queen, very curious about what she was doing.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "R...Rayane!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "I can't move... Sorry Vinny.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane replied very sad, still crying from the situation. ",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Huh?",
+    "character": "Rainbow Queen",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Then Rainbow Queen feels indignified when she felt something weird about Rayane temporal energy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Now you too? I came too late! What did you do this time Rayane?",
+    "character": "Rainbow Queen",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny... Rayane didn't have this temporal energy before.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen looked distressed at Vinny, thinking of something to do. So Rainbow Queen came to a conclusion and does a little evil laugh in response.",
+    "type": "action"
+  },
+
+  {
+    "value": "How lucky you two are~ I have a question for Mr. Vinny.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked suspiciously at Rainbow Queen in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What?",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I know very well that you're looking for the Master SmartMoby parts. Correct?",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen smirks and used the scythe to bring Vinny's face closer to her intimidating face.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AH....well...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks a little indignant.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It's on my to-do list, yes.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well... how I won our deal. All I'm going to ask for a super simple stuff.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen showed satisfaction for Vinny's reaction and kept talking.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I won't want to be without my reward, after all I still really want to punish you. I see that maybe you can be useful to something else. My existence is confidential, so it's only fair that I invite you to find all the parts of Master SmartMoby for me and give it to me. By doing this, I will spare your life. What do you think?~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Me? Helping you?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen giggles evily in response before smirks at Vinny again.",
+    "type": "action"
+  },
+
+  {
+    "value": "Yes~ But for you to take on this new agreement, I will invite you to do the honors of having to deliver me now your friend Yasmin. This is the best way to make you start to feel the consequences of your actions. Otherwise, our new deal is cancelled, and I go back to my original plan of sealing your soul and going after it myself~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Vinny was breathing deep before answering.",
+    "type": "action"
+  },
+
+  {
+    "value": "You said I thought you were a monster, and I denied that, I always had confidence and positivity when I saw you, I believed in you being a cool pony, I always put myself in my place as a random pony and you were a goddess, the ponies judge by what they see.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked at Rayane feeling depressed by the situation. So Vinny looked again at Rainbow Queen.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Agreement is agreement, I'm tired of playing in this world, I just want to stop dreaming, I don't take back anything I said, no regrets, when I said your eyes were beautiful and I didn't lie, and I don't think you're a monster.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was trying to look in Rainbow Queen's eyes to try to show more sincerity.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Once I offered I would do anything for you, but until those opportunities run out, I was really willing to do anything for you, and you screwed me up, in the end I found out that the pet was supposed to be closer to the Amy, that's reason I made sure not to take any pony, I wanted someone special for Amy. Anyway... we're here again, after you also didn't answer my question that i asked Amy to ask you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen was a little thoughtful for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmmmm... Just don't choose the same path as Rayane.  We are all trapped in this eternal \"dream\" that is now your new reality~ I don't need anyone else's help to work. Feel honored that I gave you a task you wanted so much. I'm giving you a chance to me try trust you. Heh~ And you'll have to trust me about your friend from the planet earth.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen smirks and poked the scythe on Vinny's snout.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "My eyes are beautiful and mesmerizing... Remember that very well~ They will always look at you in the dark when you are alone without hope. And your lack of hope has made you met my favorite pet~ But don't feel sad. Look on the bright side... Your defeat is not a complete failure, Amy will be happy for it.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen does a little evil giggles before smirks at Vinny.",
+    "type": "action"
+  },
+
+  {
+    "value": "But anyway Amy hasn't come home yet. She must be busy with someone I really hope to meet tonight~ Don't worry, when she comes home, I'll tell her that I have a very special little gift for her before I come home again.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried to be positive by analyzing Rainbow Queen's words and her sincerity. Vinny tried to feel a little hope for all this.",
+    "type": "action"
+  },
+
+  {
+    "value": "Yeah... I start to see what they were before all this, everything you saw with them and what happened with them. This isn't about me, about you, it's about everyone, Amy, Rayane, everyone around us, I'm a simple pony, why would a goddess ask such an important task to a simple pony? What is the difference between the parts of themaster smartMoby with you and with others? You could have asked for this before but you didn't.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh~ Everyone always asks me why. I send mortals to do the things I want. The answer is simple. If I do things, I will get everyone's attention and everyone is not ready for it. The revelation of my existence is the most impactful thing of this dimension. You seem to belong to a world where your God is doing something like me. So you should feel honored that now you're here.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny tried to be positive by analyzing Rainbow Queen's words and her sincerity. Vinny tried to feel a little hope for all this.",
+    "type": "action"
+  },
+
+  {
+    "value": "You must not interfere, but everything I do I am directly linked to you, you are a goddess, a kind of entity worshiped by many ponies, this is something superior, people in my world pray, give life, they take lives for something they've never seen or felt, just stories told. You are here, being able to do what you want with them and all.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rainbow Queen smirks in response.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Hmm... They take lives? Creatures being sacrificed? I think this is not the true god you are looking for.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks a little sad during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... And all my friends they believe in me, they believe in Rayane. You can imagine youself, a goddess who has been here for a long time. There is no one above you. I believe in you, not as much as before putting me and my friend here, as I said I didn't choose to come here, nor did my friend.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Silly~ I didn't bring you into this world. And you're the one who agreed to my possibility to bring your friend here. I asked you something and you just accepted. It's your fault. I don't know how you got here, but it was your greed that made your friend end here~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen only moved away Vinny and left him paralyzed alongside Rayane gently.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Your conversation time is over. I have already been very generous in letting you express your humble emotions. Don't think you'll escape your punishment. Just do what I asked you about your friend. I'll just keep my word that nothing wrong will happen to her. This is my promise~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen laughs teasingly in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Remember one thing, don't ask me to change the natural cycle of things. You already know very well the consequences of this and what will be my opinion on this.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "F..Fine.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks at Rayane in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'm really sorry to have to put you through this again. I'm really tired and out of breath and hope for nothing.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was extremely sad not knowing what to say. So Vinny looked again at Rainbow Queen.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah... Well, it doesn't matter what I do, we always meet, I was wanting to see you happy, at least once when you made me scream at the whole house.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Shhhhh~ My smile is here. Everyone will have a happy ending. But your sad ending will be compensated in other ways~ It's getting boring to keep seeing you suffer like this.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen gently used the scythe to wipe away the tears.",
+    "type": "action"
+  },
+
+
+  {
+    "value": "Why don't we go to the next step?~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I accept with 1 condition, my friend has to willingly accept or not be part of this world.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh. Don't make it hard. I don't need to force your friend. I just need to convince her. And that's something I know how to do very well. I have my particular ways~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen giggles evily during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And you'll help me because that's our deal. I'll make sure to tell her everything about your choices. And if she refuses... then you already know that this will be your end. I'd like to know a little more about your determination.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little confused about determination.",
+    "type": "action"
+  },
+
+  {
+    "value": "Ah? What? My determination?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes. Your determination that you've shown very strong in helping your friends. So let's go... Use your determination to make me smile more times~ I'm just waiting for your final words so I can send you back to your village together with Rayane.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks like a sad face in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I have no power to decide anyone's life here. The goddess is you, not me. If so, the deal is done here and now.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmm~ So you want me to go to her for you instead? Or would you can have the courage to go talk to her? I'm giving you a chance to seek forgiveness in something... Tell her the truth, don't hide what you've done. Don't let your friends down on you! Just make her choose this decision. It's all so easy for you now. You have everything you need to get her to agree.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Rainbow Queen looked deep in Vinny's eyes not to allow him to hide his eyes.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "After I do that and she becomes my new pet, I'll free you to your second new deal. Rayane no longer wants to see you suffering. She already knows that you have no escape. She just wants the best for you.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny breathes deeply, seeking some comfort in accepting defeat, extending the hoof to Rainbow Queen.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "All right, I'll talk to Yasmin so she can become a pet, then I'll take care of the master smartmoby parts for you. Since I have no way out.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+  {
+    "value": "Yes... Talk to her and make her become one~ I'll want all of master smartmoby's parts one by one on my paws~ You can't fail, or you already know what happens.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen smiles a little, looking at Vinny hoof. Rayane already had her eyes closed, avoiding paying attention to the conversation, trying to keep calm.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Of course, I'll force Yasmin to want to become a pet, and I'll take care of the smart smartmoby for you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny in denial with himself just let Rainbow Queen finish sealing the deal.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Great~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then Vinny and Rayane started to slowly come back down to the ground.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Before we can go back, can I talk to you alone? Without Rayane?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wh...what?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was surprised when she heard his words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "With me alone?",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen stared at Vinny, then levitated Vinny back up.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What are you going to talk about?",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...Well... I'm going to talk to you alone. Just that.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I hope it's very important. We've talked more than enough.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
   }
   
 ]
