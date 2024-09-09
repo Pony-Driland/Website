@@ -18237,8 +18237,191 @@
   }, 
 
   {
-    "value": "I hope it's very important. We've talked more than enough.",
+    "value": "It's very important? We've talked more than enough.",
     "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Vinny winks to Rayane secretly and waves him hooves in a goodbye way.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...What?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane demonstrated concern, trying to understand what Vinny was planning. So Vinny changed direction with Rainbow Queen in response.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "bad-think"
+    },
+    "value": "Don't think you'll try to talk about our deal. You already know what should be done.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "It's about Amy... Teleport me towards her, nothing important. I ended up forgetting already, as agreed I will force Yasmin to become a Pet for you, my dear goddess, and keep your desired items cute.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny says a little more animatedly. Rainbow Queen finds Vinny's behavior change very strange, but she smirks in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Amy? No hurry~ You can talk at some other time.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen then stared at Vinny for a few seconds, giggling in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But dear goddess?~ Do you still have the courage to play with me?~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen does a short evil laugh.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "If you continues like this... It's you who will end up seeing me giving you more nightmares~ I'll torment you until you say \"enough!\".",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen pokes the scythe on Vinny's snout while continuing to smirking, levitating Vinny to the ground again. Vinny does a small giggles of nervousness and answers.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... sorry, but in my dreams only another pony enters. I know I have pretty eyes but you don't want to admit it, maybe one day, right? Agreement is agreement I will force Yasmin to want to become a pet, and I will take good care of the smart smartmoby for you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen does a little evil laugh while smirks at Vinny again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Another pony? Very well... My key is universal. Don't worry~ But... the pretty eyes? Looks like someone likes to play with danger~ After you get back to the village... I'll teleport you, Rayane, Yasmin when I see everyone's ready to talk to me.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah... But you're invited to come visit me in my dreams. I don't think you will regret it. You can bring Amy to this family moment too.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh... You're too silly and crazy~ You like to play with your own death.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen smirks in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I've already made my decision about Amy's little surprise. She's very busy today~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aaaaaah, she'll like it a lot, I bet 1 bit. But...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks surprised about Rainbow Queen words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Kill me? I was expecting something more casual, like a walk or a moment alone, that's fine. Well...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "1 bit? Hmmm... Do you think I need money?~ Don't be ridiculous.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen laughs at Vinny's words. Rainbow Queen positioned the sickle to prepare to teleport Vinny and Rayane in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "There's no fun in a nightmare without ending with a terrible fact. Remember that! I prepared Amy's little surprise for tonight before her bedtime.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Y..yeah...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen does a little evil laugh. Rainbow Queen then hit the scythe on the floor, so the whole place was distorted, and Rainbow Queen disappeared along with the place, and Vinny all appeared next to the door of the main house.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was deeply breathing when he looked at the house, seeing that he was without other alternatives.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Well... I've had worse hangovers in the past.",
+    "character": "Vinny",
     "type": "dialogue"
   }
   
