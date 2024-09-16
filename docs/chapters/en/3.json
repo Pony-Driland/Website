@@ -18384,7 +18384,7 @@
   }, 
 
   {
-    "value": "Rainbow Queen laughs at Vinny's words. Rainbow Queen positioned the sickle to prepare to teleport Vinny and Rayane in response.",
+    "value": "Rainbow Queen laughs at Vinny's words. Rainbow Queen positioned the scythe to prepare to teleport Vinny and Rayane in response.",
     "type": "action"
   }, 
 
@@ -19581,9 +19581,6 @@
   }, 
 
   {
-    "set": {
-      "playlistPlay": null
-    },
     "value": "Yasmin cries a little more, trying to accept what was about to happen. Vinny then looked for the door key for a few seconds and looked at Yasmin, asking a silly question to try to make her cheer up a bit.",
     "type": "action"
   }, 
@@ -19603,6 +19600,459 @@
   {
     "value": "Yasmin does a very very small laugh even though she was still crying, and feeling scared, trying to take that moment as an attempt to calm down from the situation. Then Yasmin open the laboratory door.",
     "type": "action"
+  },
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Let's meet the beautiful \"Princess Luna\", then I want to ask you something in front of her.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "The... the beautiful Princess Luna? Really does she really look that much like Luna?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+  
+  {
+    "set": {
+      "playlistPlay": "bad-mystery"
+    },
+    "value": "Vinny then opened the door. So when everyone finally arrived, Yasmin was surprised and embarrassed to see the appearance of Rainbow Queen.",
+    "type": "action"
+  },
+
+  {
+    "value": "A...Ah? Is she some kind of monster?",
+    "character": "Yasmin",
+    "type": "think"
+  },
+
+
+  {
+    "value": "Awwww... So it's Yasmin and she's still embarrassed. Heh~ So Mr. Vinny is really being brave.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen smirks while watching Vinny and Yasmin.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "V..Vinny... She scares me a little.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "You don't need to be afraid, trust me. Is she pretty?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "I... I should I really answer?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was paralyzed, not knowing what to say, trying to feel courage to approach. Rainbow Queen giggles evilly while using magic at Yasmin's face to look into Yasmin's eyes. Yasmin seemed very nervous, still afraid that she couldn't move as she looked at Rainbow Queen.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..Ah? Hey! Is it that way without asking permission?!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "R...Rainbow Queen?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Shhhhh... Don't be afraid my lovely new pet~ I won't bite anyone~ I just came to get you. I just want you to calm down... I promise it'll be all right soon~ After all... your little friend is waiting for you~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin then tried to close her eyes, but she couldn't stop looking into Rainbow Queen's eyes. The low and calm ocillation of white colours of Rainbow Queen's eyes made Yasmin feel shy without knowing what to do, just still crying a little because of everything that was happening.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "M...my friend? Amy?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes. After all... I knew very well what was one of the greatest desires of creatures like you before you came to this world~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen smirks at Yasmin. Yasmin felt surprised and blushes very embarrassed, it seemed that she was understanding what Rainbow Queen really was saying through these words.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Does she know my true indentity?",
+    "character": "Yasmin",
+    "type": "think"
+  },
+
+  {
+    "value": "Y..Yep.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh. Your friend Vinny can now continue our ritual~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "set": {
+      "playlistPlay": "sad-plot-twist"
+    },
+    "value": "Vinny breathes deeply, in a negative feeling of acceptance during the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Can we continue?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny shows the magic collar.",
+    "type": "action"
+  }, 
+  
+  {
+    "value": "Well... Jasmin... I have this magic item that when placed around your neck, you will become a pet. Really, for all the weird giggles, Rainbow is a beautiful pony, she'll take good care of you, just like Amy.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked at the fearful look about the unknown of Yasmin. Vinny then caressed Yasmin's mane slowly to try to keep her calm.",
+    "type": "action"
+  },
+
+  {
+    "value": "Is... Is this really a dream? I want to believe that this is all a dream. This will be my biggest trust in your words.. V..Vinny.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin lowered her head, crying slightly during the progress.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh... This collar... is like the Amy's collar.",
+    "character": "Yasmin",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Yeah, I don't know. Sorry...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny delivered the collar on Yasmin's hooves.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wait... do I have to put it on?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Sshhh~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen levitated the collar and gently approached Yasmin. Yasmin was very nervous when she began to feel the magical energy approaching.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Just relax. You don't have to be afraid. I promise everything will end well. We'll have fun~ After all... your cell phone is with me too. I'll make sure to give it back to you~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "M..My phone?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen raised Yasmin's neck gently, making Yasmin's sad face look into her eyes. So Yasmin was levitated up by the magic while Rainbow Queen caressed Yasmin's mane gently to try to calm her while the collar was put next to her neck very slowly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...Why?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin slowly began to feel less threatened by feeling the gentleness of Rainbow Queen, making her just close her eyes a little, trying to calm down while trying to stop crying.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I said nothing bad would happen to you.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes Jasmin, I'm here by your side.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny got up and only held Yasmin's hoof during the process.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Rainbow Queen does a little smile of satisfaction, then put one of her paws next to Yasmin's neck, to help her feel courage by the decision.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Then you know what to do~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I... I... Y..Yep.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin closed her eyes completely, trying not to get too anxious during the process, Trusting the paw of Rainbow Queen and Vinny hoof. Then Yasmin closed the collar lock on her own neck with the help of Rainbow Queen's magic.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I... I... A..Aaaahhh!",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "So at this moment the collar started to cover an aura of magic over Yasmin, she tried to present some kind of resistance for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What is this strange feeling?!",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ssssssh~ I told you to keep calm. The magic is circling your body. Don't fight it. Remember I'm here~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I... I... I... I'm feeling weird.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen used her paw to lift Yasmin's face, Yasmin was slowly calming down and letting the magic continue to circulate. Vinny breathes deeply into sadness in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Calm down, everything will be fine, calm down...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Calm down? C..Calm down... What is this magic? V...Vinny? What am I becoming? What is it again? Am I alive?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin began to feel slightly dizzy when the magic circulated more over her body. Rainbow Queen's magic slowly helped put Yasmin back on Vinny's arms, Yasmin was feeling weak. Vinny could see that Yasmin wasn't dead, but her eyes showed a lot of weakness. But then the Yasmin's eyes were slowly starting to change color.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "J...Jasmin? Calm down, it's going to be okay. relax, I'm here.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked worried about Yasmin's eyes, trying to hope she was really okay.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y...yes... calm down...",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Yasmin couldn't speak properly anymore and then her eyes were completely the same color as Amy's eyes during the progress.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...Ah?! Jasmin? Your eyes!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "rainbow-queen-moment"
+    },
+    "value": "Rainbow Queen does a short evil giggles as she started to gently levitate Yasmin's body again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Thank you so much Mister Vinny for my gift~ For someone who took a while to get the courage, you surprised me. But that belongs to me now.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny tried to control the feelings of denial that he was feeling, so he looked at the empty hooves through a depressive look.",
+    "type": "action"
+  },
+
+  {
+    "value": "She'll stay well away from dangers right? Will Jasmin even stay far away from Elite Color?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh~ Totally out of harm's way. No one will be allowed to hurt her. The only dangerous pony she'll have around is me~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen smirks at Vinny while gently stroking Vinny's mane and levitating Yasmin until she was lying on Rainbow Queen's back. So Rainbow Queen used the scythe to lift Vinny's depressive face gently.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Awwww... Don't be sad. After all... We'll meet more times in your nightmares~ But I need to leave now. Someone must already miss me~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well... Not only in our nightmares, soon someone will even invite me to visit you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hm?~ Me invite you to my house?",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen does a short evil laugh in response while she uses the scythe to poke Vinny snout during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You'll be very welcome~ I can't deny visits. I am curious to see what you are planning this time.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rainbow Queen smirks at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "At least now is the first time I'll have a good reason to remember you. But well, good night silly one~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Rainbow Queen's scythe pressed Vinny's nose provocatively before definitively teleporting and disappearing completely from the place. Then the whole empty atmosphere of the night would circle around Vinny again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well...",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny entered James' lab just to look at the Yasmin mattress that was now empty.",
+    "type": "action"
+  },
+
+  {
+    "set": {
+      "playlistPlay": "sad"
+    },
+    "value": "Yeah...",
+    "character": "Vinny",
+    "type": "dialogue"
   }
   
 ]
