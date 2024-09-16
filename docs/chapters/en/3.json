@@ -18919,7 +18919,7 @@
 
   {
     "set": {
-      "playlistPlay": "rainbow-queen-moment"
+      "playlistPlay": "tense-mystery"
     },
     "value": "So during Vinny's flight, him heard the sound of a teleportation, so the Rainbow Queen appeared flying at the same speed as Vinny. When Vinny saw her flying, her wings were emitting a trail of colored magic, so she interrupted Vinny flight.",
     "type": "action"
@@ -18935,6 +18935,674 @@
     "value": "Peek a boo... Where do you think you're going?~",
     "character": "Rainbow Queen",
     "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well... to the bathroom.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Bathroom?~ We'll have to postpone your time to the bathroom.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then Rainbow Queen used her long wings and emitted a strong wind doing Vinny fall into a tree.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "H...HEY! CALM DOWN!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny got up and tried to go to Darkanger Ghost Town by flying very low between the trees, but Rainbow Queen then telerport in front of Vinny, so she used her magic and threw Vinny against a another tree. Rainbow Queen looked at Vinny very seriously.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Why are you running away from your responsibility?",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Go away! Leave me alone!!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Who said I authorized you to do anything else before finishing what I asked you to do?",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Fuck! Nobody said anything. Now we can talk more freely since Rayane is not around.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried to get up, but Rainbow Queen used the scythe to hold him against the broken tree.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh? So that's why you decided to buy time...",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen does a short evil laugh.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I appreciate your importance with Rayane's feelings to let her rest, after all, we're talking about your consequences. But well... We still have matters to take care of.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks around and took the cell phone during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You need me to do everything you want. Tell me, do your superiors know that you're interfering with a pony going to the bathroom at this hour?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hahahah! What's this bathroom story? That doesn't exist in this world! Don't waste my time. You know very well the reason I'm here.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen started to use magic against Vinny's cell phone. Vinny was a little frightened to see that the cell phone battery was extremely quickly drained by Rainbow Queen's magic until the battery was completely exhausted and the cell screen turned off.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Whaaat?! Fucking Rainbow!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "What a pity... Looks like I devoured your cell phone battery this time. Don't worry. You won't need it tonight~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then Rainbow Queen started to get closer to Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "That's what I wanted.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny throw the phone up very strongly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "THINK FAST!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rainbow Queen used magic to stop the phone. Vinny tries to fly, but Rainbow Queen teleported in front of Vinny again and used the levitation magic to interrupt him again.",
+    "type": "action"
+  },
+
+  {
+    "value": "Very funny... But you won't get away that easily.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "AAAHH! What do you want from me!? I'll make your deal yet. What problem? Do you think I'm going to fool a goddess?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen laughs evily at Vinny for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You're already fooling me. I promised Amy she was going to have a surprise tonight. You know very well what this means to you. You are not above your consequences!",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah... Amy... how will she find out that her dear master disappeared with her new friend? I made Jasmin and Rayane aware of the current situation where we are now. Yasmin will never want to look Amy in the eye if something happens to me, and even if you force her with some magic, it won't be real, it's all superficial, you left me with this death wish.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Magic? hahah! You still don't fully understand my skills.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a denial look at Rainbow Queen.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... I said I'll keep what I promised. It all came down to me, it was you to blame for wanting everything for tonight. Do you really want Jasmin so much? Come on now me and you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen smirks while the horn's magic began to glow.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh~ And how will Amy feel when she finds out that you cheated on me? How will Yasmin feel when she knows that you cheated on me? I did you a favor and now I'm asking you for a favor back!",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I... I don't care about myself at all, I ask you if you think I care about others? ",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Vinny breathes deeply into denial with all the situation.",
+    "type": "action"
+  },
+
+  {
+    "value": "Okay... Fine... Do you want me to make Jasmin a pet? Take me to her.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Awwww... Let's see how long these words of yours will last... Our little game will be fun~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "sad"
+    },
+    "value": "Rainbow Queen magic intensified even more, and in a few seconds Vinny and Rainbow Queen appeared next to James' laboratory again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Damn teleport... she teleports faster than Rayane.",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny then looked around. The strong wind of the night continued, and it seemed that everyone kept sleeping quietly, no one knew what was going on.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh~ So go ahead... be brave. I'll be here waiting for you. Mister Vinny~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah...",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny looked sadly at the door for a few seconds and then decided to enter James' lab. But when Vinny realized the door was locked, Rainbow Queen would teleport him into the lab.",
+    "type": "action"
+  },
+
+  {
+    "value": "Ah... Alright. Hello? Jasmin?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny could see that James' computer screen was still on. Yasmin was sleeping on the mattress that Rayane had given her for her to use. Looks like Yasmin improvised to sleep in James' lab while working.",
+    "type": "action"
+  },
+
+  {
+    "value": "Well... you haven't changed much... even in this world your sleep makes you faint for working a lot.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny woke Yasmin slowly not to scare her during the process. Yasmin yawned very tired, she looked around, it looked like she had accidentally passed out from sleep.",
+    "type": "action"
+  },
+
+  {
+    "value": "Uh...ah? V...Vinny? How did you get here? I thought I locked the door. What time is it?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Weeeell... Jasmin... I said this world is like Fallout. You should read Fallout Equestria. This world is dangerous... very dangerous. But... I need to ask you something very special, do you want to come with me?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was a little surprised and a little curious, not understanding very well what was happening.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah? I came with you to where? Is it your prank? Can't we do this later? I'm still very sleepy.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin yawned very sleepy, due to tiredness. So Yasmin just turned to the other side of the mattress trying to get back to sleep.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Jasmin... I'm serious... come on, I'll help you wake up. We need to take something seriously.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tries to help Yasmin wake up again during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What? Something serious? Vinny... come on... The whole village is sleeping.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was curious, but still not understanding very well what was happening. Yasmin was very sleepy, trying to look at Vinny's face.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I thought this house was something safe. I just spent the whole day having fun here.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Do you trust me? Trust me.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Trust you? Trust you with what? It's too late for you to play that silly game again.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin just put the pillow back in front of her face.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "No no... No, I'm serious, I swear, this time it's 100% serious.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Seriously? Vinny... it's midnight, you should be sleeping too.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "I need you to trust me now! P...Please! Listen to me! I need you!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was a little surprised by the feeling of Vinny's rush and looked at him curiously.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...Ah? Vinny? Are you okay?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "I said that this world is dangerous, unfortunately your coming to this world was something surprising for me and for everyone, you need to spend some time at Amy's house, until I find a way to get everything back to normal.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Dangerous? Amy's House? I didn't see anything dangerous. But what about our deal made by you?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Forget it! Forget everything I said today. There you will be safe. You will have Amy close to you, you can come visit me whenever you want, and when you want I can go visit just ask for a very special pony.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked at Yasmin's face of concern, still not understanding the situation very well. Vinny then does a small smile of nervousness, trying to keep talking.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... The special pony is here near us waiting for you. Can we meet her?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "But... Who's that special pony?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny stopped holding Jasmin and walked to the door.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Jasmin... you will have a calm and safe life, you will become a pet until I can reverse this.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "What? Now you will suddenly talk about it again? I thought you didn't want this.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin seemed even more worried and just kept lying on the mattress, a little hidden behind the blanket.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...What's really going on here? And... wait... Do we have visitors at this time of the night?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was slightly scared, trying to understand the subject of the conversation. Vinny then breathed deeply.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes, and you will become a pet, just like Amy, remember what I'm going to say, you need to want to be a pet, and you're free to go out whenever you want too.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "But Vinny... can't you tell me what's really going on? You're very strange today.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny does a denial look at the situation and only continued the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... Yeah. This place is very different, unfortunately both I, Rayane, James can't do anything, I tried and tried, and I'm here, asking you to trust me, that there's something much bigger that is going to happen with me and with everyone if you refuse.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Vinny... You're scaring me a little. It's like all this is putting your life in danger.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny lowered his head in sadness and kept talking.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I know... And outside this lab is your future master, as if she were a mother or a father. I don't know how to explain it well, but I promised I would go to your flying class, just don't forget to tell Amy or this pony that you met me a little while ago, okay?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "B..but why are you saying it like some kind of problem? This isn't looking friendly at all. I don't know if I can be ready for this.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was even more scared, and walked slowly towards the door in fear.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny... look at me. I trust you. I'm worried about you. I just wanted to better understand the context of your explanation. Will you be okay after all this? ",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin trembled in fear hearing as she slowly approached Vinny while trying not to be too scared, light tears came out of she eyes due to the feeling of fear.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And... so... is that it? Will we still be able to meet? Is that why you asked Amy to take care of me? I think the best thing that happened to me today is I no longer need to be a trans girl. T... That's the best feeling of my life I've had today.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny shows a look of concern to see that Yasmin was beginning to get emotionally vunerable during the conversation. It seemed that Yasmin was beginning to understand something about what was going on, and it was dong her feel scared.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "N...No... no! Jasmin!",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny tried to hold one of Yasmin's hooves to try to help her calm down.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Jasmin... Look at me! Look at me... I'll be fine if you become a pet, there's nothing wrong with being a pet, I would be myself, if I didn't have some important commitments here. I don't know, a rainbow pony who looks like Luna will tell you what it's like to be a pet, but you'll have everything you want. Everything as far as I know.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "L...Luna? A pony like Princess Luna? Maybe it's not that bad. At least I expect that.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks sideways for a few seconds before looking at Yasmin again. Yasmin continued to feel emotionally vunerable, and Vinny continued the conversation in a worried manner.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... Yes. I promise you will still see me, the same way Amy sees us here, as far as I know you will be the same, here we survive, there with Amy you will be able to live in peace until you can back to us for our world all right?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "O... Our world?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny took a deep breath and spoke looking at the eyes of Yasmin. ",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah... So I just need you to answer me a question. Do you accept being a pet?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin started to cry more while hugging Vinny in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny... I... I... ah... What's going on here? Do you really promise? You said we'd come home one day. I don't want to lose you again.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a bit surprised and just hugged Yasmin back gently. Vinny felt sorry to see Yasmin's sadness look so sincere.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Calm down, I'm not going, I'll be fine and much happier see you safe with Amy, all right? Let's meet the Rainbow Queen?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "R...Rainbow Queen? So that's her name. But Vinny... P..please... Don't forget me. Don't forget my existence. I really want to trust you that everything will be fine.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Yasmin cried even more during the talk. Vinny was in an expression of defeat and only tried to comfort Yasmin's feelings during the hug.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Shhhhh... I'm going to put some kind of collar on you, all right? Everything will be fine... trust me, we won't stay here forever. No one gives me a hard time here, not even a goddess that I almost accidentally kissed on a date in a cave. This is a long story I hope she's not listening. Let's go to balacubaco?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was still crying, but I was slowly trying not to lose control of her sanity due to the extreme fear.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Gods? A true goddess... I hope our God will protect us from it.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well... I really wanted to have that faith too in those moments.",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny kept hugging Yasmin for a few more seconds before he kept talking.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Jasmin... Listen to me... You don't have to be afraid, even though new things are happening, staying with Rain and Amy is safer than me here, but don't be afraid, you can ask Rainbow and Amy whatever you want, don't forget to tell me call when you want to learn to fly. Your safety is important because this world is not for you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I... I promise I won't get away from Amy.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Yasmin cries a little more, trying to accept what was about to happen. Vinny then looked for the door key for a few seconds and looked at Yasmin, asking a silly question to try to make her cheer up a bit.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Jaaasmin? Can you unlock it? as I am a zikado pony. Hihi! I unlocked it but I locked it to make it as real as possible.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? Real? You're still silly.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin does a very very small laugh even though she was still crying, and feeling scared, trying to take that moment as an attempt to calm down from the situation. Then Yasmin open the laboratory door.",
+    "type": "action"
   }
   
 ]
