@@ -18423,6 +18423,310 @@
     "value": "Well... I've had worse hangovers in the past.",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane then slowly got up, she was very depressed.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "sad"
+    },
+    "value": " Didn't want your friend ending like this. If I knew that all this was going to happen. Ah... I should have been more persistent in explaining to you about Rain agreements.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+  
+  {
+    "value": "Vinny breathes deeply in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Relax, I'll force her to turn into a pet, but she won't turn into this, and I don't want you to instrument yourself next time, you can be sensitive and Rainbow see your black energy or whatever. But... Really you still want to be friends with Rain? I'll still do what I promise but she doesn't seem the way she convinces fast about something, anyway I'm going to use Amy for that, I hope you don't mind, if she plays dirty against me I'll make sure Amy knows that all this.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane replies in a depressing voice.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... Rain is more than a friend to me. She is sometimes a little crazy because of her personality. But deep down Rain is a good pony. She's just been having a hard time lately.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "But... why Amy? Are you sure? Amy is just as sentimental as Ivy, she'll feel completely empty if you make her stop liking Rain.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny looks at Rayane a little seriously.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What about me? Someone asked what I want I have to do something, if I'm going to do something, if only I'm involved, everything I do involves everyone. If something happens that involves me or everyone, of course I'll do what involves me, I said exactly that I'm going to force Jasmin to become a pet, that was my final word and Rain agreed and squeezed my hoof. I'm going to talk to her, forcing is not turning, I said I'm going to force. Anyway, I'm already fucked. I need to take a walk alone, I remember the gypsy talking about a ghost, I'm going to look for this, the ghost was the last thing and the only thing I didn't do or see.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny? But did you forget? Rain knows very well about psychological manipulation. You will deliver a completely psychologically weak Yasmin. Rain will do all the rest of the work very easily. And... I just wanted to bring you closer to Rain, for Rain to come closer to me again.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane starts to cry slightly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'll recover everything I lost and unite us all in a new family. I promise I'll help you until the end to recover your friend too. I tried to bring you closer to the gypsy to do this. And... I'm sure Rain won't hurt your friends.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane cried slightly more while answering. Rayane's face started to change appearance again when she became extremely worried and depressed.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Rain said she'll kill you if Yasmin doesn't become a pet... Don't play with serious stuff. Let's at least try to get some rest now. I'm very tired of all this.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks very seriously at Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W..Well... I understand, but I'll be back in the morning, I need to think a lot for now. Just as you don't want to talk about your past, I don't feel good and I wouldn't understand why I choose to do what I choose to do. I'm not the type to leave one of my friends aside, if I fall, at least I'll fix it. There are always other ponies to rescue at \"Rayane beach\".",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks a little sad for a few seconds but him starts talking a little annoyed.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I... I... I'm going to make Amy hate Rainbow! Where is Darkanger Ghost Town?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane started to cry a lot, and the white region of her eyes started to get completely dark, only her irises were visible while she continued crying a lot.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny! No! Rain said she's going to talk to Amy tonight! Don't hurt Amy's feelings! This won't just destroy you psychologically... If Rain gets angrier she's going to get extremely powerful and out of control and that will be the end of us all! You are just going through a super misunderstanding between you and Rain. And... I'll tell you the whole truth, but please promise me you won't fight out for hate.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny was a little scared, but then he was trying to calm down.",
+    "type": "action"
+  },  
+
+  {
+    "value": "W...Well... You don't have to cry, calm down, I won't... I won't do anything with Amy, calm down, I... I just need some time, nobody likes to be lied to, I promise that I'm not going to hurt Amy or make her against or hate Rainbow.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny approached and stayed close, almost hugging Rayane in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You... you don't need to tell me about your past, this isn't a feelings game where I play with everyone to make you do something, I'm not Rain... I need to find this real ghost. I'm not going to do anything stupid today.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Promise me... and I'll promise help your friend.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane began to calm down slowly, and her eyes slowly normalized when hearing Vinny's words. Rayane was still crying. Then when Vinny got close enough, Rayane started to hug Vinny back, crying even more as her eyes kept changing color from black to white for a few seconds until her face slowly normalized more.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Rain is doing this because she doesn't like us. Rain just likes to be scary. Please... don't ask Rain for anything else. That's all I'm asking you.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I got it... I got it, it's going to be okay I promise, everything will be okay in the end, trust me. Please I'll escort you to your room, I... don't want you to go with me, you've seen a lot, I think you'd be safer emotionally at home with everyone, I'll be back before breakfast, I promise. Alright?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was having a hard time expressing words due to the extreme sadness she was feeling, but she tried her best to control herself",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... I go to bed... and sleep. I really need sleep and rest. Thank you.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Yeah... And... don't kneel for me, a princess like you can't kneel for just anyone.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Silly...",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane left a delicate kiss on Vinny's cheek while the hug ended. Vinny smiled a bit and helped Rayane get up.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Let's go inside, I'll accompany you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then got up, and wiped her face. Then the two walked into the house almost hugged. Rayane would slowly calm down more along the way while talking.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'm sorry... I promise I'll control myself better tomorrow.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny and Rayane walked through the dark hallway of the house, and the door just closes by itself. Then Vinny arrived at the door of the room. In the bedroom was Vinny's bed, Rayane's bed, and James who was already sleeping.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh. Well, sleep well, all right? Be careful not to dream about me with Princess Rayane. Hihi.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayanee does a little silly laugh and just lay in the bed. Rayane used magic to cover herself, she had completely forgotten that she was using the bow. She just gave Vinny a slight dramatic smile and hugged Vinny's hoof for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... Thank you, Vinny. You are already a dream in yourself.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then Rayane was slowly closing her eyes, letting herself be taken by the heavy sleep that was coming to calm her during the night. Then a few more seconds passed before she started to sleep.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah... Good night princess.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny caressed Rayane's mane slowly. Rayane felt much better to feel Vinny's affection while sleeping, Vinny feel that her sleep was going to be longer than usual tonight. Vinny was thoughtful for a few seconds until he decided to leave the room.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... But wait... where's Jasmin?",
+    "character": "think",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then realized that the door that followed the ladder to James' lab was open.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... yeah... I would go in and just look at James' lab.",
+    "character": "think",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then went up the stairs curiously. Vinny immediately noticed that the light in James' lab was on.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "What?",
+    "character": "think",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then realized that the lab door was delicately opened, so Vinny slowly entered the lab. Vinny would find Yasmin busy looking with great curiosity at something on James' computer.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What happened now?",
+    "character": "think",
+    "type": "dialogue"
+  },
+
+  {
+    "set": {
+      "playlistPlay": "think"
+    },
+    "value": "Vinny came close to Yasmin slowly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Jasmin? You shouldn't be sleeping?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A..ah? V..Vinny!",
+    "character": "Yasmin",
+    "type": "dialogue"
   }
   
 ]
