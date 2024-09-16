@@ -18711,7 +18711,7 @@
 
   {
     "set": {
-      "playlistPlay": "think"
+      "playlistPlay": "first-yasmin-night"
     },
     "value": "Vinny came close to Yasmin slowly.",
     "type": "action"
@@ -18726,6 +18726,214 @@
   {
     "value": "A..ah? V..Vinny!",
     "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Sorry Vinny... It's been a while since Amy came home. Remember that we promised you that we wouldn't talk about this pet story anymore? So I avoided going to her house tonight because I didn't want to worry you.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin does a little silly laugh, but then Yasmin does a small sad response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I don't want to make you suffer more than you've ever suffered because of me. So I decided to help a little one of James' projects after he decided to go to sleep.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little surprised to hear all this. So Vinny decided to sit next to Yasmin to see what was going on.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Aah... Alright, what are you helping him with?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was nervous to answer, but she calmed down during the dialogue.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hihi... I was really surprised when he told me about it, but he told me that he had been working on this little project since you two met. James is making a time machine. Don't you think that's incredible?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah... Time machine...Yeah... time machine...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny laughs a little nervous during the conversation. But then Vinny was interrupted by Yasmin again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But... I was very anxious to talk to you about this... Will you want to participate in my first day of flight training? I really wanted you to join me.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then tried to show happiness in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Training? Where is it going to be?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well... Me and Amy agreed that it would be next to the village border. She said she was going to call someone, but... but..... AH! Come on... I... I ended up forgetting her name.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin got a little uncomfortable during the situation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh heh. No problem, I participate, ask Amy to want me there with you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes! I'll tell her for sure. I would never leave you out of a special moment like this!",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin seemed very happy with the subject of the conversation, but then Vinny breathes deeply in repsonse.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And... you're right tonight, this is all new, let's save this pet story for later, did Amy say what time she would be back?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Ah... Amy said it would be after breakfast. Don't worry, we want to give you some time to rest your head first.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a bit thoughtful looking at Yasmin for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah? Vinny?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes yes, I'm going for it, good night! Hihi, you'll like Rayane's marshmallows.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny got up and got ready to say goodbye.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Marshmallows? Does she make marshmallows?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin smiles a little.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W..Well... good night.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah... Good night.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "When Vinny arrived outside James' laboratory, Vinny felt that the wind was much stronger than usual.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Rain... You are a beautiful motherfucker.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny spoke softly and looked at where Darkanger Ghost Town was. Vinny were still far from the place. Vinny started flying towards the city, as Vinny were flying, so him started to hear very familiar voices around.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Good... good! What the fuck is that now?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny flew very fast, far beyond the limit putting all the anger in flying to fly faster without caring about the pain.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "NO! Shut the fuck up!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "rainbow-queen-moment"
+    },
+    "value": "So during Vinny's flight, him heard the sound of a teleportation, so the Rainbow Queen appeared flying at the same speed as Vinny. When Vinny saw her flying, her wings were emitting a trail of colored magic, so she interrupted Vinny flight.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AH!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Peek a boo... Where do you think you're going?~",
+    "character": "Rainbow Queen",
     "type": "dialogue"
   }
   
