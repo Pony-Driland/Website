@@ -235,6 +235,7 @@ storyCfg.playlist = {
 
     'sad-plot-twist': [
         { id: '44A0UTwoCsg', type: 'youtube' },
+        { id: 'OCjvJoWrUSM', type: 'youtube' },
     ],
 
     'new-thing': [
