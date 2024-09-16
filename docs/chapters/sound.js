@@ -261,6 +261,17 @@ storyCfg.playlist = {
         { id: 'bGdD0YVh_kI', type: 'youtube' },
     ],
 
+    'first-yasmin-night': [
+        { id: 'iY4HnkvlQM4', type: 'youtube' },
+        { id: '24QJV6NnFHY', type: 'youtube' },
+        { id: 'DVrsjXSpH9o', type: 'youtube' },
+        { id: 'TOEiLlspdhM', type: 'youtube' },
+        { id: 'TMLnDTkUEgg', type: 'youtube' },
+        { id: '6yPivtTKLno', type: 'youtube' },
+        { id: 'xLD7nFdwYlk', type: 'youtube' },
+        { id: '4veUhkwfuXE', type: 'youtube' },
+    ],
+
 };
 
 // SFX
