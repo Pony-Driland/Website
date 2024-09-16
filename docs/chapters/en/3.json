@@ -20050,9 +20050,53 @@
     "set": {
       "playlistPlay": "sad"
     },
-    "value": "Yeah...",
+    "value": "Sorry Jasmin. I hope at least you're in a better place.",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny then breathed deeply and arranged the position of the blanket that was messy.",
+    "type": "action"
+  },
+
+  {
+    "value": "I just wanted to have my happy ending.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny then locked the lab door and put the key inside the saddle. Without thinking twice, Vinny decided to start flying high. Everything was very calm. Vinny realized the ghost flog was far from his house.",
+    "type": "action"
+  },
+
+  {
+    "value": "It seems that not even the ghosts were trying to get near the crazy goddess.",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny flies to Darkanger Ghost Town like there's no tomorrow, full speed ahead, very pissed off.",
+    "type": "action"
+  },
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Fucking crazy goddess!",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "dark-ambient-melodies"
+    },
+    "value": "Everything was very quiet, and as Vinny approached the village, Vinny began to feel a slight colder and a loneliness greater for being alone on the journey. Vinny's wings tired faster due to him attempt to fly too fast. Vinny's sleep was also getting too strong due to time, making him get tired even faster.",
+    "type": "action"
   }
   
 ]
