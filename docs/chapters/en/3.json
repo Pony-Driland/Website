@@ -1346,7 +1346,7 @@
   {
     "set": {
       "where": "Blackburn Village"
-  },
+    },
     "value": "Rayane does a huge jump towards the top of the village wall then stayed the rest of the way on top of the wall, finishing braking the movements until she came face to face with a guard extremely scared of Rayane's movements.",
     "type": "action"
   },
@@ -20078,6 +20078,9 @@
   },
 
   {
+    "set": {
+      "where": "Forest"
+    },
     "value": "Vinny flies to Darkanger Ghost Town like there's no tomorrow, full speed ahead, very pissed off.",
     "type": "action"
   },
@@ -20093,9 +20096,403 @@
 
   {
     "set": {
-      "playlistPlay": "dark-ambient-melodies"
+      "playlistPlay": "Darkanger-Ghost-Town"
     },
     "value": "Everything was very quiet, and as Vinny approached the village, Vinny began to feel a slight colder and a loneliness greater for being alone on the journey. Vinny's wings tired faster due to him attempt to fly too fast. Vinny's sleep was also getting too strong due to time, making him get tired even faster.",
+    "type": "action"
+  },
+
+  {
+    "value": "Fuck!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "set": {
+      "where": "Darkanger Ghost Town"
+    },
+    "value": "Very angry, Vinny let out a scream and went to hit the first tree he saw ahead.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "RAINBOW QUEEEEEEN!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny then relaxed a little and proceeded to Darkanger Ghost Town.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Fuck! Why do these shit happen to me even when I want to do something good??",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "When Vinny started to get close to the mysterious village, a much stronger wind interrupted Vinny for a few seconds before hearing a mysterious voice coming. A shadow suddenly appeared moving on the ground towards Vinny.",
+    "type": "action"
+  },
+
+
+  {
+    "value": "Hello? What are you doing here at this time of night? Ponies like you shouldn't be here.",
+    "character": "???",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh? Very cool, I'm going to die for a ghost. What can happen to me?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny speaks very softly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... Sorry. But your presence shows me that your soul is getting corrupted. I see regret and suffering coming from you. You're falling into darkness with every passing second... It's too dangerous for someone like you to approach this place. Your soul will meet a terrible end if you stay here.",
+    "character": "???",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Naaah, counting that I don't start to get black eyes, black things coming out of my body just like Rayane... I just went through a sad situation now, this is what I'm feeling is fleeting.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Black eyes? Black and obscure things? W...What? This shows me that you've interacted with ponies with a divine aura. How curious, I never thought this day would come again... Rayane a pony with a divine aura? How curious.",
+    "character": "???",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny breathes deeply not surprised by the ghost's response. Vinny sits and pay attention.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah? Even ghosts know Rayane now? I'm sorry if I didn't introduce myself, but as I said, a lot has happened, my name is Vinny, how do you know that I'll have an end if I stay here? Am I going to turn into a ghost?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah... Alright. Hello Vinny, I am the guardian of this place. My role is to keep all ponies safe and away from this place. I won't hurt you until you're stubborn with me. So all I'm going to ask you is distance from this place. Your soul is not safe in this village, if you die here, your spirit will be doomed to be trapped in this place forever.",
+    "character": "???",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny breathed heavily and with a calmer and relaxed look spoke.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Alright Guardian... That must be reason the Rainbow Queen didn't let me come here. She assumed this might happen. I understand, thanks for the warning.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "R..Rainbow Queen?",
+    "character": "???",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The shadow was surprised by Vinny's words. The shadow then started to move, Vinny only saw a unicornshaped shadow, and the chest of this shadow seemed to have some bright and colorful item on its chest.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah? What's that brilliant thing?",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "I'm surprised you know her personally as well as I do. But please refrain from returning to this place. You need to rest and purify your soul. I just want to protect you.",
+    "character": "???",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The shadow just moved away from Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "H..Hey! Wait! Wait! I'll do that, I'll go back and rest, but I need to ask two things first.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Huh?",
+    "character": "???",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Yeah. I'm not here for nothing, there's a much bigger reason, could you help me by answering my questions?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The shadow then returned and approached Vinny curiously.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Two things? Please be brief. I have to take care of this place so that terrible haunts don't flee from here.",
+    "character": "???",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Alright. Well... Rainbow Queen... She is the reason I'm here, I'm looking for a somewhat unique ghost, from what I've been told this causes a lot of interference in electronic devices in this world, and my 2nd question is about this colored item on your neck, I don't need to answer you about the item, but tell me where I can find you in a less troubled time.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The ghost was surprised to hear that.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Rainbow Queen? Ah... I never thought I'd hear someone with this question again. Well then. Sorry, but I've never had contact with this spirit. Are you not confusing this spirit with something else? It's very strange. But... my item?",
+    "character": "???",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "The shadow looked at the item then looked back at Vinny with a more serious look.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "This item is a special case. This item is what help me keep this place in order. I hope you're happy that you don't have ghosts trying to eat your soul.",
+    "character": "???",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The shadow then slightly calmed down with the continuation during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... Sorry, I'm also a lost spirit. It's impossible I'm here during the day. But if you really want to meet me again at a quieter time, meet me here in the early evening.",
+    "character": "???",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny felt a little better at hearing that.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Alright alright, tomorrow I'll show up again but calmly, just your words made me more lucid and calm. Thanks for your attention!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes Vinny, but be careful, don't be sad. Weak personality ponies are very vulnerable in this world.",
+    "character": "???",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "The spirit breathes deeply before the answer is over.",
+    "type": "action"
+  },
+  
+  {
+    "value": "I hope you never need to see what happens to ponies that have this terrible end.",
+    "character": "???",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "The spirit just disappeared completely from the place.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... I...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny saw that there was nothing.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AH!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Vinny does a poker face in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well, thanks for the help.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "where": "Forest",
+      "playlistPlay": "sad"
+    },
+    "value": "Vinny then just walks toward to him house. Vinny's vision was being taken over by darkness again. The village lights faded as Vinny walked away from it, leaving Vinny surrounded by fog in the empty and lonely forest.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I hate my life.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny kept walking but him was already bored. In the middle of the way, Vinny just found another red fruit fallen on the ground again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What? Another ghost came to talk to me?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny picked up the fruit but didn't eat it and looked around looking for someone or some noise.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hello?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny saw something moving among the trees, but Vinny couldn't tell exactly what was happening because him couldn't see any clues as to who it was. Vinny could only see light sparks that soon disappeared.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well! Here we go again.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny flies around, looking for something. But Vinny couldn't find anything else. All other clues had not appeared since then. Vinny could just see the way to himself return home.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmmm...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks at the moon, the sky, the clouds. Vinny then take the red fruit and spoke to the red fruit.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hi Rainbow Queen.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Nothing interesting happened, so Vinny threw it up and let it fall into his mouth.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmm! Yummy!! I'm getting crazy I'm talking to myself! Yeah, I wish I had my other me here with me just like before... miss them.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "where": "Blackburn Village",
+      "playlistPlay": "sad"
+    },
+    "value": "Vinny proceeded to the house, flying faster this time, eating the fruit during the travel. Vinny arrived in Blackburn Village, but he was very tired of all this journey. Vinny walks into the house and spent a little time analyzing around and thoughtfully before getting ready to go to the bedroom.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... Home sweet home.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The house was exactly the same as it was. The door leading to James' lab floor was still open and everything was very quiet with the sound of everyone sleeping. But something was different, Vinny found him cell phone out of battery lying on the floor of the hallway of the house.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What? Oh, forget it. I don't doubt anything else about that crazy goddess.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny just ignored the cell phone and went to see what Yasmin was doing on the computer before becoming a pet. Vinny looked sadly at the computer screen. Vinny just saw the James's programming software and some lines of code from James's time machine script. Looks like Yasmin had left everything well organized for James to see later. And on the other side was still the same empty mattress that would now be like this all night.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... At least. She had time to have a good memory with everyone here.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then locked the lab again and went back to get the cell and then went to bed. When Vinny got to him room, Rayane was still sleeping in a deep sleep and James was still sleeping peacefully. Vinny just lay in bed, not knowing what else to say.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'm sorry... Jasmin.",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Vinny just closed him eyes and forgot everything and tried to sleep. But Vinny had difficulties sleeping because of the last memories that happened during this night.",
     "type": "action"
   }
   

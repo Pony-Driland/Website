@@ -114,6 +114,12 @@ storyCfg.playlist = {
         { id: 'roABNwbjZf4', type: 'youtube' },
     ],
 
+    'Darkanger-Ghost-Town': [
+        { id: 'Q45IHLOtb9I', type: 'youtube' },
+        { id: 'UqDwrQhDQgY', type: 'youtube' },
+        { id: 'O1BZ00XboJE', type: 'youtube' },
+    ],
+
     'memories': [
         { id: 'Cste0PD-Xt4', type: 'youtube' },
         { id: 'A7DE3BXdPsA', type: 'youtube' },
