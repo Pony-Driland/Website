@@ -74,9 +74,9 @@ var storyCfg = {
         contract: '0xc322b221237473c75bb9e0bea85f47e847f5c703',
         blockchain: 'polygon',
         url: 'https://ud.me/d/{domain}',
-        /* value: 'ponydriland.nft', */
+        /* value: 'ponydriland.dream', */
         domainWallet: 'jasmindreasond.x',
-        valueURL: 'ponydriland.nft',
+        valueURL: 'ponydriland.dream',
         name: 'Unstoppable Domains'
     },
 
