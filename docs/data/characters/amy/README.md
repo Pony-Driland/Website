@@ -50,6 +50,20 @@ Due to the magic of the collar circling Amy's body, it makes her eyes no longer 
 
 <hr/>
 
+## Image Reference
+
+The development of the character's creation was in the year 2021. The character reference image came from the website `thisponydoesnotexist.net`.
+
+I do not insert the exact dates that the image was sent to my computer. Then I will put an estimate according to the original file itself.
+
+Unfortunately I no longer own the image generator seed of the drawing, because I renamed the file name.
+
+Date: Thursday, July 29, 2021 at 11:21 PM
+
+<img src="/img/demo/Amy.jpg" height="500">
+
+<hr/>
+
 ## Credits
 
 Character Development: JasminDreasond
