@@ -58,6 +58,10 @@ I do not insert the exact dates that the image was sent to my computer. Then I w
 
 Unfortunately I no longer own the image generator seed of the drawing, because I renamed the file name.
 
+An important detail is that when the image would be used to help create Amy was found, she already had the color of her eyes that originated the unique detail of Rainbow Queen's pets.
+
+This was a glitch from the website generator, but I enjoyed this idea so much that it became official and was standardized in all other pets characters.
+
 Date: Thursday, July 29, 2021 at 11:21 PM
 
 <img src="/img/demo/Amy.jpg" height="500">
