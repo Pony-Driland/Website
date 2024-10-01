@@ -35,6 +35,6 @@ Lora: Detail Slider LoRA | PonyXL SDXL
 
 ## Credits
 
-Character Development: Atrimy
+Character Development: Atrimy Redclouds
 
-Character Design: <a href="https://www.deviantart.com/atrimy-redclouds" target="_blank">Atrimy</a>
+Character Design: <a href="https://www.deviantart.com/atrimy-redclouds" target="_blank">Atrimy Redclouds</a>
