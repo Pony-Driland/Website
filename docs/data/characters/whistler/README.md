@@ -27,9 +27,17 @@ Model: Pony Diffusion V6 XL
 
 Lora: Detail Slider LoRA | PonyXL SDXL
 
+Idea progress:
+
+Mane color sequence of the image 1 or image 3
+
 <img src="/img/demo/whistler/1/00012-206539572.png" height="500">
 
+Eyes details of the image 2
+
 <img src="/img/demo/whistler/1/00014-303501042.png" height="500">
+
+Mane style of the image 3
 
 <img src="/img/demo/whistler/1/00018-1416256136.png" height="500">
 
