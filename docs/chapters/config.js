@@ -155,7 +155,7 @@ var storyCfg = {
     nsfw: {
         vore: {
             name: 'Vore',
-            description: 'Vore is a optional content only in some specific scenes. The part of the vore is more related to the characters that usually have supernatural features and has a personality compatible with this type of content. By use the vore option, you are responsible that you will accept seeing possible sinister or uncomfortable scenes for some specific audiences. Disabling it will not interfere with the main story. The censored version will just skip these parts, warning what happened, focusing only on the useful information for the reader to understand the story. But maybe you\'ll skip some extra canonical info that is interest only to this audience type.'
+            description: 'The scale of this content is small or medium. The vore parts is more related to the characters that make sense of this type of behavior. You are responsible that you will accept seeing possible sinister or uncomfortable scenes for some specific audiences. Disabling it will not interfere with the main story. The censored version will just skip these parts, warning what happened, focusing only on the useful information for the reader to understand the story. But maybe you\'ll skip some extra canonical infos.'
         },
         questionable: {
             name: 'Questionable',
