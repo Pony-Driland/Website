@@ -20793,6 +20793,124 @@
     "value": "Rainbow Queen sighed contently while feeling the dark energy being consumed inside her belly. So Rainbow Queen looked at Amy who was very embarrassed seeing all this happening.",
     "value_alternative": "Rainbow Queen breathed contently. So Rainbow Queen looked at Amy who was very embarrassed seeing all this happening.",
     "type": "action"
+  },
+
+  {
+    "value": "M..master? Did you really swallow Yasmin whole?",
+    "character": "Amy",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rainbow Queen smirks at Amy and gently licked her just in purpose to do Amy feel calmer. ",
+    "type": "action"
+  },
+
+  {
+    "value": "Heh~ Yes. And I always told you it wasn't dangerous. I only consume dark energy. And you wouldn't stay needing to feel my breath every morning while I clean up your impurities~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Y...Yes master.",
+    "character": "Amy",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rainbow Queen's magic put Amy face gently lying on her fluffy belly to sleep during the talk.",
+    "type": "action"
+  },
+
+  {
+    "value": "I hope you learned something today, you can also join her next night~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "A...Ah? Me? W..well...",
+    "character": "Amy",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rainbow Queen smirks at Amy nervous smile and just kiss her mane kindly in response.",
+    "type": "action"
+  },
+
+  {
+    "value": "Good night my little pet~ Tomorrow you and your new friend will have a lot of fun.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "G...good night master.",
+    "character": "Amy",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rainbow Queen then does a small sincere smile at Amy and spawn a small plushie of herself to Amy hug while sleeping. Rainbow Queen closed her eyes, preparing to sleep. So Rainbow Queen's horn began to shine, beginning to center all her omnipresent at the point where she was sleeping.",
+    "type": "action"
+  },
+
+  {
+    "value": "This feeling is so good... Finally I have a point of the time-space where I can feel at peace.",
+    "character": "Rainbow Queen",
+    "type": "think"
+  },
+
+  {
+    "set": {
+      "where": "Darkanger Ghost Town"
+    },
+    "value": "Rainbow Queen then changed her consciousness to another moment of the space-time temporarily. So Rainbow Queen looked at a huge temple of the Darkanger Ghost Town, staring at the temple for a few seconds.",
+    "type": "action"
+  },
+
+  {
+    "value": "Now I cannot allow my plans for this place to fail. Everything is going as I planned.",
+    "character": "Rainbow Queen",
+    "type": "think"
+  },
+
+  {
+    "value": "Rainbow Queen was breathing deeply for a few seconds.",
+    "type": "action"
+  },
+
+  {
+    "value": "Heh~ But now what matters is to use my last line of the space-time to sleep with my pets.",
+    "character": "Rainbow Queen",
+    "type": "think"
+  },
+
+  {
+    "set": {
+      "where": "???"
+    },
+    "value": "Rainbow Queen then returned to the consciousness of the omnipresent that she was more prioritizing that it is to continue sleeping with Amy and Yasmin. So Rainbow Queen kept sleeping, and the story just kept following, many hours passed until finally a new day begins.",
+    "type": "action"
+  },
+
+  {
+    "set": {
+      "where": "Blackburn Village",
+      "dayNightCycle": "morning",
+      "day": 5,
+      "playlistPlay": null
+    },
+    "value": "So Vinny woke up much later than usual the next day with someone trying to wake him up.",
+    "type": "action"
+  },
+
+  {
+    "value": "Hmmmm... James! Leave me alone! Leave me alone! I want to sleep with wings!",
+    "character": "Vinny",
+    "type": "dialogue"
   }
   
 ]
