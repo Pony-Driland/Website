@@ -154,14 +154,17 @@ var storyCfg = {
     // NSFW Config (You can freely add as many NSFW filters as you like.)
     nsfw: {
         vore: {
+            size: 12,
             name: 'Vore',
             description: 'The scale of this content is small or medium. The vore parts is more related to the characters that make sense of this type of behavior. You are responsible that you will accept seeing possible sinister or uncomfortable scenes for some specific audiences. Disabling it will not interfere with the main story. The censored version will just skip these parts, warning what happened, focusing only on the useful information for the reader to understand the story. But maybe you\'ll skip some extra canonical infos.'
         },
         questionable: {
+            size: 6,
             name: 'Questionable',
             description: 'The scale of this content is small, there\'s nothing sexually explicit inside story, but the questionable content is present in some quick scenes. Disabling this option will make you skip optional scenes or see some censored dialogues.'
         },
         extreme_violence: {
+            size: 6,
             name: 'Extreme Violence',
             description: 'The details of some battle scenes can be uncomfortable or can cause nausea in some readers. By disabling this option you will decrease the level of violence in the story. Activate at your own risk, I will not be responsible for your decisions.'
         }

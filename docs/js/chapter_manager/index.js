@@ -743,7 +743,9 @@ var openChapterMenu = function (params = {}) {
                           }
 
                           nsfwContent.push(
-                            $("<div>", { class: "col-sm-4" }).append(
+                            $("<div>", {
+                              class: `col-sm-${storyCfg.nsfw[NSFWITEM].size}`,
+                            }).append(
                               $("<div>", { class: "card" }).append(
                                 $("<div>", { class: "card-body" }).append(
                                   $("<h5>", { class: "card-title" }).text(
