@@ -121,8 +121,14 @@ storyCfg.playlist = {
     ],
 
     'memories': [
+        { id: 'c-MCbeEIEfw', type: 'youtube' },
         { id: 'Cste0PD-Xt4', type: 'youtube' },
         { id: 'A7DE3BXdPsA', type: 'youtube' },
+        { id: 'B4hVK3TYf7M', type: 'youtube' },
+    ],
+
+    'Cursed Lands Ambience': [
+        { id: '5DOnEnzIO9o', type: 'youtube' },
     ],
 
     'songs-for-an-dying-world': [

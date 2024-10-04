@@ -20492,7 +20492,306 @@
   }, 
 
   {
+    "set": {
+      "playlistPlay": null
+    },
     "value": "Vinny just closed him eyes and forgot everything and tried to sleep. But Vinny had difficulties sleeping because of the last memories that happened during this night.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "where": "???"
+    },
+    "value": "Meanwhile Vinny was sleeping, in a very distant and mysterious place was happening other things. It was a place that seemed empty and dark to all sides, which illuminated only the center of that place.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "sad"
+    },
+    "value": "Y...Yasmin? Are you feeling better?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin opened her eyes slowly, still feeling weakness, but could open her eyes enough to see Amy. Amy then smiled a little while seeing that she was okay.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y..Yasmin!",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy hugged Yasmin gently in happiness to see Yasmin finally waking up. Yasmin still confused, feeling a little safer due to the silence of the place, looked at Amy curiously.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah? Amy? Where am I? Why am I so weak?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Don't be afraid, my master and I are here now. My master told me everything about you.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Your master?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin looked at the magic collar on her own neck for a few seconds. Yasmin was a little surprised while feeling anxiety that everything was not a dream. Amy looked a little worried at Yasmin and just smiled a little while answering timidly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y...Yes. I know what you're thinking. But trust me, my master is not evil. My master always gives her life for us and this universe. She doesn't want to lose what she loves most.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A little tear out of Amy's eye while she hugs Yasmin more.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "My... My master and I don't want to lose more things that we've lost in our most important life. And I don't want to lose a new friend like you again.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin tried to answer with a weak sad voice, she was struggling to make long answers due to her own weakness that was feeling at that time, but still tried to say something.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Amy... please don't cry. Well... actually who was to be crying now is me.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin began to cough as a result of trying to speak more than her own body allowed.",
+    "type": "action"
+  },  
+
+  {
+    "value": "I should never have bought that weird burger. I ruined everything. My life... the Vinny life... the...",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then suddenly Rainbow Queen in her giantness size appeared behind Yasmin and Amy. Rainbow Queen was lying with her face next to the two ones, Rainbow Queen's hot breath then touched Yasmin, making Yasmin notice her presence.",
+    "type": "action"
+  },
+
+  {
+    "value": "W...What?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin was surprised and blushed, not knowing what to say. She seemed paralyzed to see the size that suddenly Rainbow Queen became.",
+    "type": "action"
+  },
+
+  {
+    "value": "Shhhhhh~ Don't talk too much now my little pet~ You need to rest.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rainbow Queen smirks before levitating Yasmin and Amy next to her face. Yasmin kept feeling surprised, but Amy just smiled and hugged Rainbow Queen's cheek kindly.",
+    "type": "action"
+  },
+
+  {
+    "value": "Yay! Our master is absolutely right. I said she's not evil, she'll help you feel better tomorrow.",
+    "character": "Amy",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Heh~ My little Amy's right. Don't be afraid, I won't bite you.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "nsfw": ["questionable"],
+    "value": "Rainbow Queen put Amy on the ground next to her cheek to be used as a pillow. Meanwhile, Rainbow Queen used her giant tongue intimidatingly to lick Yasmin slowly. Yasmin was shy without knowing how to react in the levitation, and Rainbow Queen used this moment to continue talking.",
+    "value_alternative": "Rainbow Queen put Amy on the ground next to her cheek to be used as a pillow. Meanwhile, Rainbow Queen used her magic to face Yasmin by her giant eyes. Yasmin was shy without knowing how to react in the levitation, and Rainbow Queen used this moment to continue talking.",
+    "type": "action"
+  },
+
+  {
+    "value": "A...are you doing?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Shhhh~ I hope you don't feel sad about me having used your beautiful little hooves on your little phone to me know better who my new pet is~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "M..my phone?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Yes~ You seem to have an interesting special civilization, but it doesn't seem to be safe for lovely creatures as you go back there.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rainbow Queen smirks at Yasmin while blowing a warm air on Yasmin's face gently and approaching Yasmin more and more towards her giant face slowly.",
+    "type": "action"
+  },
+
+  {
+    "value": "But don't think I just learned important things. No pet can hide cute secrets from me.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "nsfw": ["questionable"],
+    "value": "Rainbow Queen does a small evil laugh and licked Yasmin's face gently again while her giant mouth drained a little dark energy that was inside Yasmin. Yasmin slowly felt more tired during the process.",
+    "value_alternative": "Rainbow Queen does a small evil laugh and licked Yasmin's face gently while her giant mouth drained a little dark energy that was inside Yasmin. Yasmin slowly felt tired during the process.",
+    "type": "action"
+  },
+
+  {
+    "value": "I... I...",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "nsfw": ["vore"],
+    "value": "Rainbow Queen smirks again while she gently put Yasmin into her own mouth. Realizing her mouth was busy, she started using telepathy to communicate with Yasmin.",
+    "type": "action"
+  },
+
+  {
+    "nsfw": ["vore"],
+    "value": "I...",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Shhhhhh~ My new pet needs to rest.",
+    "character": "Rainbow Queen",
+    "type": "telepathy"
+  },
+
+  {
+    "nsfw": ["vore"],
+    "value": "Rainbow Queen just closed her mouth, doing Yasmin feel completely timid by the darkness.",
+    "type": "action"
+  },
+
+  {
+    "nsfw": ["vore"],
+    "value": "But...",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "nsfw": ["vore"],
+    "value": "Heh. And she'll rest where she belongs~",
+    "character": "Rainbow Queen",
+    "type": "telepathy"
+  },
+
+  {
+    "nsfw": ["vore"],
+    "value": "Rainbow Queen swallows Yasmin gently, Yasmin was confused, not understanding what would happen, but weakness and tiredness did not let her have much resistance, only accepting fate.",
+    "type": "action"
+  },
+
+  {
+    "nsfw": ["vore"],
+    "value": "She... is she really doing this to me?",
+    "character": "Yasmin",
+    "type": "think"
+  },
+
+  {
+    "nsfw": ["vore"],
+    "value": "Don't try to hide your feelings from your master. I know you liked it~",
+    "character": "Rainbow Queen",
+    "type": "telepathy"
+  },
+
+  {
+    "nsfw": ["vore"],
+    "value": "Rainbow Queen smirks again and just swallowed for the last time until Yasmin finally got stuck inside her belly. So Rainbow Queen stopped using telepathy and does a small evil giggles while curled up slowly and licked her lips.",
+    "type": "action"
+  },
+
+  {
+    "nsfw": ["vore"],
+    "value": "B..but... what does that mean?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "nsfw": ["vore"],
+    "value": "Yasmin was very embarrassed to realize that she was really inside the belly of Rainbow Queen, everything was dark, but it was just a safe humid place.",
+    "type": "action"
+  },
+
+  {
+    "nsfw": ["vore"],
+    "value": "Shhhhhh~ Don't worry little pet... you're my little dessert now. I will teleport you and your humble soul later~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "nsfw": ["vore"],
+    "value": "Yasmin looked at the sides and only felt that the environment just began to drain even more dark energy from her body, making Yasmin feel even weaker and begins to close the eyes, falling asleep slowly.",
+    "value_alternative": "Rainbow Queen then only swallowed Yasmin gently. The Rainbow Queen body just began to drain even more dark energy from Yasmin, making Yasmin begins to close the eyes, falling asleep slowly.",
+    "type": "action"
+  },
+
+  {
+    "nsfw": ["vore"],
+    "value": "Yes... Yes... Just let it happen my little pet~ This way is much easier for me to consume your dark energy~",
+    "value_alternative": "Heh~ Yes... This way is much easier for me to consume your dark energy~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },
+
+  {
+    "nsfw": ["vore"],
+    "value": "Rainbow Queen sighed contently while feeling the dark energy being consumed inside her belly. So Rainbow Queen looked at Amy who was very embarrassed seeing all this happening.",
+    "value_alternative": "Rainbow Queen breathed contently. So Rainbow Queen looked at Amy who was very embarrassed seeing all this happening.",
     "type": "action"
   }
   
