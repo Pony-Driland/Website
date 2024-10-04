@@ -394,7 +394,7 @@ var openChapterMenu = function (params = {}) {
       // Info
       $("<div>", { class: "alert alert-info" })
         .text(
-          "Bold texts are action texts, small texts are thoughts of characters, common texts are dialogues.",
+          "Bold texts are action texts, small texts are thoughts of characters, common texts are dialogues or telepathy. If you are using filters to keep your reading 100% SFW, some unnecessary text lines will be automatically skipped.",
         )
         .prepend($("<i>", { class: "fas fa-info-circle me-3" })),
 
