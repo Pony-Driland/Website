@@ -20209,7 +20209,7 @@
   }, 
 
   {
-    "value": "The shadow was surprised by Vinny's words. The shadow then started to move, Vinny only saw a unicornshaped shadow, and the chest of this shadow seemed to have some bright and colorful item on its chest.",
+    "value": "The shadow was surprised by Vinny's words. The shadow then started to move, Vinny only saw a male unicornshaped shadow, and the chest of this shadow seemed to have some bright and colorful item on its chest.",
     "type": "action"
   }, 
 
@@ -20903,14 +20903,599 @@
       "day": 5,
       "playlistPlay": null
     },
-    "value": "So Vinny woke up much later than usual the next day with someone trying to wake him up.",
+    "value": "So Vinny woke up much later than usual. It was a new day and someone trying to wake him up.",
     "type": "action"
   },
 
   {
-    "value": "Hmmmm... James! Leave me alone! Leave me alone! I want to sleep with wings!",
+    "value": "Hmmmm... James! Leave me alone! Leave me alone! I want to sleep with wings! Fine?",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "set": {
+      "playlistPlay": "think"
+    },
+    "value": "Vinny heard Rayane's voice laughing, then Vinny feel something poking him nose.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmm...? What? I know that voice...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Siiiiilly~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Okay... fine fine... I...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny opened his eyes slowly during the progress.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah? Rayane? Did you sleep well?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little when Vinny see a marshmallow in him mouth in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...What??",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh~ Silly you... I thought I was going to be late waking up and it looks like you were late~",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Well... Last night was just a mess, I almost gave up, but I managed to get home safely at least. Hihi... Did I miss breakfast?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a small smile of nervousness while responding and he stretched his body in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was a little curious and looked at Vinny's face for a few seconds before hugging Vinny in an emotional way for a few seconds, putting the breakfast plate next to him.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "The important thing is that my dream is safe. I'm glad you're okay after everything that happened yesterday.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Ah... Hihi... Nothing ends with me Princess Rayane. Where are everypony?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tries to smile a little while eating breakfast.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Calm down silly one... Don't forget your marshmallow~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smirks at Vinny as she put the marshmallow in Vinny's mouth again. So Rayane breathes deeply before she starts talking a little more serious.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Everyone went to do their daily activities... James is in his lab, I still haven't had the courage to explain to him what happened to Yasmin.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "What?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a bit surprised and very curious.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And I need to talk to Kai, is he here? I need to ask him for help.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Kai? He's at his diplomatic meetings again. He's having a lot of meetings to decide what he's going to say in the gabinet meeting of the regions that is almost scheduled. He doesn't want to take too long because he knows that everyone is already questioning where Hiroshi is. And Amy was here at home too, but you were sleeping, so she must have gone to do what she was going to do today.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+
+  {
+    "value": "Ah? Amy here? That's weird that Amy came here, if Yasmin was supposed to be with her, because she's here. Well I'll ask her that later.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny keep eating breakfast while answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "HMM! This food is good! Hihi!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little bit of Vinny's reactions, but then she was surprised again to remember something.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "That's what I asked her too. But she said that Yasmin is too embarrassed to meet us. Amy was trying to be positive about whether Yasmin would have the courage to see you today, but at least she said Yasmin is fine. I still haven't been able to see how Yasmin is doing because she hasn't met me today either.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then looked curiously at Rayane in response. So Vinny does a little nervous laugh.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...Weeeeell... shall we talk to James? By the way, you weren't there when Rainbow was here again. We saw Rainbow 2 times yesterday, then she came to me a 3rd time. This is complicated, then I went to Darkanger Ghost Town and talked to a guardian who said that I need to calm down, that I had regret and suffering, and that would make me leave falling into darkness forever.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "3rd... 3rd time? Well... Yes... James still hasn't eaten his marshmallow~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane does a very small giggles, but could not hide the concern she was feeling.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But don't forgot it. It's too dangerous to go Darkanger alone. You need to be calm so you don't get influenced by the negative energies of the place. I'm glad the guardian prevented you from going inside unprepared.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little uncomfortable for a few seconds before he finished answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ahh... As emotional as I am, everything is fleeting for me, tonight I'm going there again. I would be happy if you had told me that before little Princess Rayane. Hihi...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes... But... I'm sorry, I was so sad yesterday. Next time you will go with your royal princess~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then kept hugging Vinny for a few more seconds during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Let's at least try to do things better today.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smirks at Vinny before poking his snout in response. Vinny then does a small laugh of nervousness.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah... Thanks.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "sad"
+    },
+    "value": "Vinny got up and went to James's lab with Rayane. James was inside the lab, so the door was completely locked.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... Sorry Rayane, but I think you're more unstable than me, have you ever been there in Darkanger Ghost Town?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny knocked on the door during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Unstable?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane replied with a tone of curiosity at her words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well, Rain took me to visit there a few times before we got into a problem.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane replied with a sad little look of nostalgia for a few seconds. Vinny was a little curious to see Rayane's sad face.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "R...Really??",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "But then the door was finally opened. Vinny and rayane was interrupted by James' words.",
+    "type": "action"
+  },
+
+  {
+    "value": "Vinny! What happened yesterday?! You slept most of the morning today!!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh god!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny entered the room and hugged James in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hey, how are you? I had a busy night with Rainbow queen, too bad you came back to the room at that time I screamed, you could have gone with us to enjoy the night out!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "James was curious about Vinny's answers, trying to understand what was happening.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Party?",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "P...Party? Rainbow Queen? What stupidity is that?",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Uh, didn't you feel any powerful energy while sleeping? Or before I yell that?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James then remained confused for a few seconds before remembering something.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... I felt a strange energy before I heard you yelling \"I TOLD YOU I FOUND YOUR EYES BEAUTIFUL!\". I was very scared until I heard you screaming this all of a sudden. Then I decided to hide in the room because I didn't know if you were crazy or if I was crazy.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? No no no! That was the first time Rainbow was here, then you didn't feel it again?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "First time? Wait... Did she really come to our house?! I was asleep by the time I could!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was very surprised in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I just remember Amy and Yasmin waking me up in the middle of the night, wanting to go to my lab. But then when I woke up this morning, she was just gone. I just found her mattress on the floor of my lab. I think she must have gone to play with Amy just when she woke up.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then looked at Rayane's curiosity and sadness look for a few seconds before looking again at James.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Eeeeeh... almost... Rainbow came to this house 2 times yesterday, you could have seen her 2 times if you had woken up, the first time she tried to stop me from letting Amy convince Yasmin to become a pet.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "2 times??",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny? Tell me... What really happened yesterday?",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny then looked at Rayane who was very curious to know the rest of Vinny's response. Vinny looked back at James, and then Rayane, realizing he had no choice but to speak the truth. Vinny then breathes deeply and responds depressingly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... yeah... Sorry... The second time she was here, I had to convince Yasmin to become a pet. I'm sorry, but just as Amy comes to visit us, Yasmin should too. This was partly my fault.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+
+  {
+    "value": "A few seconds of silence went on, and James was still trying to understand what really happened.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "F..Fine? What do you mean almost? What did you say? What story is this?! What's on this goddess's head?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James... Relax, it wasn't your fault, you just slept, you just miss the chance to see her. 2 times in the same night.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W..Well...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then suddenly Rayane's bow that was invisible appeared again, but this time on James' head.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..ah? NO, NO! My invisibility experiment was supposed to last longer than that! AH!!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James tried to make the red bow invisible again, but unsuccessfully. Rayane started to giggle a little at James' reaction.",
+    "type": "action"
+  },
+
+  {
+    "value": "I was just waiting for this moment to arrive.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah! You look young with a bow James! I think I would love to have you as my own pet! Here goes my proposal, it becomes my pet and mine alone, and I convince Rayane to stop giving you marshmallow.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried to laugh a bit, but James interrupted.",
+    "type": "action"
+  },
+
+  {
+    "value": "FUCK! VINNY! NEVER SAY THAT AGAIN!",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Heeeey... I'm kidding! ",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Then Vinny breathes deeply into realizing that he had to get back to the serious matter.",
+    "type": "action"
+  },
+
+  {
+    "value": "Anyway. This bow lost its feeling 5 times, so you can see how wrong things are, I had to change the fate of this bow 5 times. and now I don't know, giving it to someone who likes it seems satisfying.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Then it's your turn to use it!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then James passed the bow to Vinny. Vinny then replied sadly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... I don't know, maybe someone who likes the idea, if I question at some point I can give it to Amy, I've also thought, taking advantage of Rainbow being Amy with Yasmin, try to bring Amy to stay with us, and leave Rainbow, so we could make this change, but a princess said it's too risky, even though I'm risky.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James slowly became calmer, and Vinny realized that the conversation environment was getting depressing again. Vinny was trying to cheer up the conversation a little while watching James' face of shame.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... James... I'll keep the bow, why are you ashamed of it? Your new friend just became a pet. You need give a little support for her. You being a little less prejudice would help her deal with it.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane pokes Vinny's shoulder kindly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But Amy already has a little bow, and Amy really likes being a pet, and she's spending more time with Yasmin this time.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny tried to hide some of his own tears and kept answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I...I'm just scared of this whole story! So Vinny's plan is to use this to get close to Yasmin again?",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny lowered his head, mourning a little and then looked at James and Rayane again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "No, no... Well... I'm going to talk to gypsy. James... Do you want to come with me? Or want to work? Gypsy already met Rayane, I think you should be next. I need to ask her about a ghost, as she doesn't need to consult her crystal ball, so I'll only ask about our first session, I think she won't charge anything.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James breathes deeply before continuing to respond.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "The gypsy? Really? I don't trust this weather forecast thing. But well, what's so special about her that you think she can help us?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James... You are literally making a time machine, why not believe that someone with a ball can't predict the future? Literally you can go in the future to see our future come back and tell us.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "In my case I'm using science! And this time machine can only go to the future. It is impossible to travel to the past. Don't think you can go back to the past to fix your accident with Yasmin if that was your initial plan. And why should I trust someone with a magic ball that I'm not even sure works?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Fuck! James!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was even more disappointed to hear James' words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Why nothing I plan is wanting to work right now?!",
+    "character": "Vinny",
+    "type": "think"
   }
   
 ]
