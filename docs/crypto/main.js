@@ -57,6 +57,8 @@ storyCfg.web3.login = function () {
             title: 'Login Protocol',
             body: $('<center>').append(
 
+                $('<p>').text(`Login is not required. You can continue using all the tools of the website for free. Login is only to use cloud services.`),
+
                 $('<button>', { class: 'btn btn-info m-4' }).text('Metamask').click(function () {
 
                     $('#crypto_connection').modal('hide');
