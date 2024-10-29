@@ -17258,7 +17258,7 @@
   }, 
 
   {
-    "value": "Vinny looks at the apple that fell to the ground and looked up to see if there was something where it had come from. Vinny just saw a normal apple tree.",
+    "value": "Vinny looks at the fruit that fell to the ground and looked up to see if there was something where it had come from. Vinny just saw a normal fruit tree.",
     "type": "action"
   }, 
 
@@ -17274,7 +17274,7 @@
   },
 
   {
-    "value": "An apple?",
+    "value": "An fruit?",
     "character": "Aniya",
     "type": "dialogue"
   },
@@ -17314,7 +17314,7 @@
   }, 
 
   {
-    "value": "Vinny tried to laugh a little bit to feel better. Vinny eats the apple while accompanying Rayane. Rayane pokes Vinny's muzzle before starting to walk.",
+    "value": "Vinny tried to laugh a little bit to feel better. Vinny eats the fruit while accompanying Rayane. Rayane pokes Vinny's muzzle before starting to walk.",
     "type": "action"
   }, 
 
@@ -21476,7 +21476,7 @@
   }, 
 
   {
-    "value": "In my case I'm using science! And this time machine can only go to the future. It is impossible to travel to the past. Don't think you can go back to the past to fix your accident with Yasmin if that was your initial plan. And why should I trust someone with a magic ball that I'm not even sure works?",
+    "value": "In my case I'm using science! It's not that simple to use this machine! And this time machine can only go to the future!. Don't think you can go back to the past to fix your accident with Yasmin if that was your initial plan. And why should I trust someone with a magic ball that I'm not even sure works?",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -21493,9 +21493,1325 @@
   }, 
 
   {
-    "value": "Why nothing I plan is wanting to work right now?!",
+    "value": "Why my plan cannot work right now?!",
     "character": "Vinny",
     "type": "think"
+  },
+
+  {
+    "value": "Vinny... it needs a lot of energy to work. I will only be able to send 1 pony to the future through this machine.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah! It seems, where 1 pony fits, 2 ponies fit, come on... Are you going to be ashamed of getting squeezed with me together?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Squeeze? Whaaat??",
+    "character": "James",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Yeah. And are you free today? I'm going to the pony of the gypsy science.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "James then became thoughtful and took a deep breath before answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... Okay, I'll give her a chance. But if she makes something up, I'm leaving!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James... You didn't understand, we're not going to consult, I'll ask her where I can find this ghost that she invented or talked about, if you want to consult, it's up to you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Talk about ghosts? Oh, I don't think it's worth it.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then looks a little scared at James.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But... you... aren't you afraid about the future? Well... if one of us dies, knows someone is going to die, or if one of us changes sides. What will be your reaction? For example if I did some shit, and I'm on the Rainbow's side and I'm hunting you, or you guys killing me because I'm a criminal.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was slightly surprised and interrupted the conversation a little.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I've never traveled in time... So I have no idea what that kind of thing would be like.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James replied without any concern",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Nah... Don't worry about it... This machine will allow you to return to the present. When you go back to the present, the timeline that was created artificially will be undone. At least you will know important information to try to avoid any future disaster. Don't you think that's more efficient than asking a gypsy?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "No, let's go to the gypsy, anyway, she charges for consultation.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "What?!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah, but anyway, maybe she'll help me with Yasmin... she has to tell you that, don't I, and you Rayane? What will you do? Will you go with us? Or will you do something?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "James... You needs to trust the magic ball more~ I'll go with my dream~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "You're kidding me, right?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James, come on! Rainbow Queen also devoured my cell phone's energy, can you charge it?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny delivered the phone to James during the talk. James then looked confused to the phone, impressed trying to believe what Vinny said.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W..What? What the fuck is that? Devoured what? D..Did she devour your cell phone's energy?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James then looked at the phone for a few more seconds before continuing to respond.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... I can charge the battery easily.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James levitated the cell phone and took it to the charger while Rayane giggles a little more.",
+    "type": "action"
+  },
+
+  {
+    "value": "My silly dream... First Rain eats you... now she eats your cell phone battery too?~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "If you laugh I'll devour you too, and it's not what you're thinking. Hihi...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Really?~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smirks in response.",
+    "type": "action"
+  },
+
+  {
+    "value": "Guys... please, it's not time for that.",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny laugh a little to relax during the talk.",
+    "type": "action"
+  },
+
+  {
+    "value": "Alright... Remember that apple that fell on my head after we left the gypsy's cabin? It fell again on the my way to home, someone or something threw it, and all you could see was sparks, because everyone and everything likes to throw things at my face?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmm... What is the little fool up to this time?~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Nah! No no no! If you're going to do your double-measures, do it outside my lab!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was embarrassed by the conversation between Vinny and Rayane, so James pushed the two out of the laboratory and closed the door. Rayane was surprised for a few seconds before laughing a little.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Apple? Apple... What is an apple?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was curious about the name.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "That's weird... Maybe you didn't interact with a haunting accidentally?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah... Well! It's a red fruit, anyway. Where's James? James? JAMES!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny knocked on the lab door in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Stop being funny! You know you can go inside even with the door locked, right?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmm.... Red berries?~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was thoughtful thinking about what would be a apple.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "JAAAMES!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh~ I don't think James likes the gypsy. It'll be interesting to see these two talking to each other for the first time.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James took a deep breath and opened the door slowly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Fine! But it's just one time...just one. I don't want to listen to her bullshit!",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "James... Come on... you don't need to hear her. The sooner we go, the sooner we finish. Is everyone ready?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James lowers his head by accepting the situation he is feeling disappointed while Vinny gets ready to leave.",
+    "type": "action"
+  },
+
+  {
+    "value": "Heh... I'm ready~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Fineee...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James crosses his hooves, waiting for what Vinny will say.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a poker face in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wait... we don't have to walk. Rayane can teleport us.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Heh... Silly one... That's lack of marshmallow~ All right. Let's go.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane boops Vinny, doing a silly, malicious face and looked at Vinny for a few seconds before using the magic. Then everyone was teleported close to the path of the Aniya's cabin. James was surprised to feel for the first time being teleported by Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Here we are now~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Uh... That was really quick.",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "set": {
+      "playlistPlay": "think"
+    },
+    "value": "Well, let's see if she's available? We don't know if she's with any customers, it would be cliché if the thing that throws things in my face be with her now.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then walked slowly towards the cabin to see what was happening.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Silly... Anything I throw a marshmallow at you so you don't miss it~",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "James was still quiet with a poker face in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ok...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James followed Vinny and Rayane while the cabin door opened slowly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Rayane? Is she with a customer? Did Rain find out about her or did she run away?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Heh~ it's daytime... Rain would never come here with so many ponies watching. Maybe she would come here with some normal pony transformation.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "T...Transformation??",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny was a little surprised for a few seconds, but Rayane interrupted him.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "James... Come... knowledge awaits you~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James still bored, lowered his head and only approached Rayane. James breathes deeply before responding.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Fine...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then approached a bit more and looked at the crystal ball inside the room.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "James... Look at it... the crystal ball, are you going to see it, or are you scared?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Fear? Oh! Why would I be afraid of something so silly?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James then gave up feeling a stupid pony and walked toward the crystal ball, and when James got too close...",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AAAH! OH MY RAINBOW! A CRAZY SCIENTIST!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya get out of the chair completely scared.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AAH! A CRAZY GYPSY!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a face hoof in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AH! I FORGOT TO GO TO THE ROOM!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was laughing a little in the background.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Everyone... Silly and silly and completely silly~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Meeeee? Silly?! He's crazy! Crazy! What extreme temporal energy is this again!!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya pointed her hoof at James.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Temporal energy?! What?! What stupidity is that!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James got up from the floor trying to understand what was happening.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes! YOUR TEMPORAL ENERGY! Don't scare me like that! Wait... ah?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya looked at Vinny and Rayane. Then Aniya felt even more surprised than normal.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y...You! You have a strong gift of bringing giant temporal energies to my house! What else needs to happen here?!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Calm Down! Relax... If you want I can arrange a little party here in your cabin. Hihi! Today we don't want any new appointments, just to see if you remember our first appointment and the ghost you said could help me. I'm looking for him.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks at James during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And... this is a friend of mine, with him he makes this group happier, me, Rayane and him.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...what?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Party? Paaarty?? VINNY! My house will explode if you bring in more temporal energy from this level! Are you thinking you are time travelers now?!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James does a poker face in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... No?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was completely scared for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wait... ghost? And did you find the ghost? Hmmmmm...",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was staring at James during the talk. Vinny looked at Aniya and the crystal ball.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wait... what??",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "If I had found the ghost, I wouldn't be here. You said a place but I don't remember, I just remember you talking about Darkanger Ghost Town.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks at Aniya again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But... I don't know about time travel, if you have a magic that can do it I can go to find out about the draw for some cash prize to share with you if you want. But anyway this is out of time. Ironically out of time! Hihi! Do you know where I find the ghost?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "God... There we go again...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James does a face hoof.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "C..Cash? Alright... Let's go to the important subject. This haunting is hard to find. I think it will be easier for you to use electronics to capture the ghost. This mad scientist can help you. He must have many electronic devices!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya pointed to James in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh sure... Me...",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Aniya then does a small malicious smile for James.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... you! I'll need to analyze your brighter future, your energy seems a little higher than usual. It wasn't for a scientist to have so much temporal energy like that!",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "You... You're scaring me, you know?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James blushes a little and walked away from her way. Aniya laughed a little at James in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Then make a time machine that I stop scaring you~",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James responded very ironically to Aniya.",
+    "type": "action"
+  },
+
+  {
+    "value": "Ah... Hahaha... jokes...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane magic puts a marshmallow in James' mouth in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...What??",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Your turn is over~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh! Hey Aniya, explain this to me, how can James help?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya laughed a little before asking the question in a very curious way.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Your friend may not be as scary as I thought. So... what happened to your other friend? Don't you remember? I helped a friend of yours not to be pet. If you're still alive... it means you managed to do something, right?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah... Weeeeeeeeell...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny just looked at Aniya and didn't say anything for a few seconds in response. Aniya felt a little bad feeling about all this.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Weeell?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "In the end I was the one who had to convince her to become a pet, Mrs Rainbow Queen in the last moments almost \"begged\" and in the end I did all the work. Mr. James was sleeping when she appeared 2 times at our house, what a thing, luck that Rayane and I left here early, imagine her showing up here out of nowhere.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W... whaaaaaaaaaat?!?! ",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was completely scared, thinking about what to say for a few seconds, looked around, analyzing everything around while thinking about what to say.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "JAMES! You're a scientist! Stop sleeping!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya started shaking James while herself was responding.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W... what?! I didn't even know what was going on!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "No..no! Don't even think about bringing her here! For God's sake Rainbow Queen!! OH MY FUCK GOD!!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was completely scared during the talk. And James was dizzy just begging to stop being shaken.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "She...and..she's really crazy... Y..Yes...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "H..Hey! Calm down you two! Nothing bad will happen now.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya then took a deep breath and calmed down before answering a little worried.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Okay... tell me, how long ago was that?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well... Shortly after Rayane and I left your cabin, not long ago.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Little time?? Alright! Aaalright! Okay! You three need to listen to me now!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W..what?",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Aniya of a slap on James' face for him to return to reality faster.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "OUCH!",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Fine! Maybe not so bad this time. Well, your friend is probably now feeling embarrassed about what happened, she must have woken up and got to know her new life a little. The magic of that collar is slowly entering her brain and her soul! The longer you wait, the harder she has the courage to see you again.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya breathes deeply and speaks more seriously.",
+    "type": "action"
+  },
+
+  {
+    "value": "I felt that way too, Amy felt that way. So it's really good that you solve this as soon as possible so it doesn't become too difficult a task. If your friend fights the magic of the collar the situation can be even worse and she'll be even more depressed because she can't break the magic! Especially if Rain's \"playing\" with your friend!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a bit surprised and worried before continuing to respond.",
+    "type": "action"
+  },
+
+  {
+    "value": "Y..Yeah... I was going to see her practicing her flying lessons, Amy can invite me to see Yasmin's flying lessons at Rainbow Queen's house. As much as the time there is different, what about the ghost?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wait... Wait... Aniya what?? You're talking like you've been a...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was completely surprised but was interrupted by Rayane's marshmallow again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Sssh~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Taking flying lessons with Amy? That sounds like a good idea... Wait... at Rain's house?!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Aniya was completely surprised.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Are you crazy?! Vinny! You're going to be teleported sooooo far away from here! Rain lives on top of the coldest mountain in this world!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya replied still very surprised for a few seconds.",
+    "type": "action"
+  },  
+
+  {
+    "set": {
+      "playlistPlay": "sad"
+    },
+    "value": "I..! I...!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya began to feel a small flashback.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Aniya... Why are you doing this? You seem to like this crystal ball so much more than our friendship.",
+    "character": "Amy (Flashback)",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy embraced Aniya's hoof very kindly as she looked sadly at Aniya.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...Amy? N..No! No... Please don't look at me like this. Look... It's not you. Don't you see? This isn't my place.",
+    "character": "Aniya (Flashback)",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "But... our master who gave you these powers as you wanted so much. Our master trusted you. I convinced our master to trust you. I made this for you. And I brought your new gypsy clothes because it's your favorite fantasy. A..Aniya... please, at least stay here with me as a gypsy.",
+    "character": "Amy (Flashback)",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Amy's voice started shaking in sadness as a little tear from Amy's eyes began to come out, making Aniya feel worried.",
+    "type": "action"
+  },
+
+  {
+    "value": "Amy... I... I...",
+    "character": "Aniya (Flashback)",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Aniya felt very nervous, not wanting to break Amy's sincere feelings, so the flashback was interrupted when Aniya remembered that she needed to continue answering Vinny. Aniya replies with a slight feeling of guilt for something.",
+    "type": "action"
+  },
+
+
+  {
+    "value": "Oh that's right... Amy... she's going to be a new challenge to you. If Amy gets too attached to your friend, she won't want to be alone again. She was always visiting me because she felt lonely during the day when Rain is busy doing other things....but it's always hard to spend time with her because of my work. But today it looks like she didn't.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? About that, at this point James already had to connect the dots, you know where Rainbow lives, to have this connection with Amy. My concern is what does Rainbow do while she's not with her pets? And when she's not after me too.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks at Aniya eyes. Aniya does a little sad face in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny... It's extremely cold there. You will turn an ice statue before you even start to see her pyramid. The only way you can get there without dying is if Rain teleports you into her pyramid.",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "What is Rainbow involvement with Elite color? Does she have any involvement?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Tears began to come out of Aniya's eyes while responding.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I promised her I would never open my mouth about it. I should at least start fulfilling my promises. I never really understood about this Elite Color, but it was part of the old Royal Color.",
+    "character": "Aniya",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "H..Hey! You don't need to open your mouth, relax, just that you promised never to open your mouth, I already have my deductions, anyway Amy is with us in our temporary home, do you want to see her? Maybe you and I will convince her to ask Rainbow Queen, the last words that Rain said is also that I was welcome and that it would be nice to have visitors.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya looked a little worried for Vinny while cleaning her tears.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "V...Vinny... Just be careful what you're getting into... If Rain wants to play with you, you are lost. She feels much more comfortable in her house to use her magic to become a giant sphinx!",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Nah... She giant sphinx transformation already ate me, I'm used to carrying these things with me, but what about the ghost, do you know if it's really worth finding it?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W..what? She devoured you?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was a little surprised and embarrassed. So Vinny was a little surprised to remember something.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... James remembers when we were rescuing Yasmin, she was passed out, my radars went crazy remember that? I felt a little thing at that moment, and it wasn't a stomachache.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Okay... okay... let's talk about the ghost... There's no way for me to know, I've never seen this ghost, the ghost's never manifested itself physically different from everyone I've seen. But if the ghost knows how to play with electronics, at least this may know how to manipulate something that can be useful to you.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James finished chewing the marshmallow and swallowing. James took a deep breath before answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... and my radar failed, but it seems like it was just that moment, that was completely weird.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmmmm... All right, but changing the subject again.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks at Aniya.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You made an expression of who has already been swallowed too. Hihi!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W... what?! CHANGE SUBJECT! CHANGE IMMEDIATELY!!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya blushes completely and Vinny laughs a little to see Aniya forget the sadness because of it.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh! Anyway how is your schedule today? Don't you want to get together with Amy and us today? Anyway I think you really don't know where I can find this ghost, but can I find it in Darkanger Ghost Town? I don't want to occupy your precious time anymore, by the way, you must have many customers, right?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was completely embarrassed for a few seconds before reply Vinny back.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "M..my schedule? Just a few appointments and... Yes... I can try to find you later.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James looked seriously at Aniya, trying to understand the situation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "This topic is getting really weird... What are you guys talking about?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "And the scientist! Shhhhhh! Stay quiet! Nobody needs to talk about it!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya used magic to levitate the crystal ball away. James does a poker face in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ok. Sorry...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane laughed a little. But then she tried to feel empathy for Aniya.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Calm down James... She was just embarrassed~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah James, this is woman thing only...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James laughed sarcasticly as he answered.",
+    "type": "action"
+  },
+
+  {
+    "value": "Woman thing? haha ha! Very funny! You also came to me with this talk, what are you then?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah... Well... Rayane, you saw Amy right? She was there with us right?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh. Yes. Amy said she would be in the village or near the forest as she said.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "So... Aniya... what are we going to do? Do you come with us? Or will you stay? your help would be extremely important to convince Amy to convince Rainbow to take me there to see Yasmin learn to fly.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah... Visiting Amy is fine... but why Rain?",
+    "character": "Aniya",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Huh? I didn't say visit Rain, I said go see Amy, 2 heads are better than 1... I think. Well, let's go then... every second here is a long time there, do you guys want to deal with something? For me i ended up here.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh~ How so long? At her house, the weather is the same as here.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah... Nothing at all, I'm confused... it won't be too much fun my friend James not in, remember that I can know some very \"wet\" things between Aniya and Rain. Hihi!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W..What?! How so wet?! No! Close your mouth!!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was blushing in shame and then James slap Vinny's face in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "VINNY! STOP! NOW!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James! Fuck! Alright! What are we going to do? Are we all going to see Amy together? ",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked at the red bow that was still on his head. Rayane does a little giggles in response.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Hmmm... I think this little bow on my head will give more charism.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes~ It's a great idea. Amy will feel closer to you.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well, James, don't you want to say anything or ask anything? Remember that consultations are charged, you and the crystal ball lady can leave you without money.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "What? But we didn't make any inquiries!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "You can accidentally ask for one. Be careful you don't have to see her ball shining... i was hypnotized when i saw her.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James breathes deeply in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Let's just get out of here. You are so abused. It was nice meeting you Aniya.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James! Come on! You need to smile a little! Well, shall we walk?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James just tried to ignore the subject of the conversation.",
+    "type": "action"
+  },
+
+  {
+    "value": "So... are you leaving already? So it's ok... at night we'll meet so... It was nice getting to know you all better.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? Aren't you coming?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Y..Yes! I'll come, it's just going to be later.. Maybe lunch time is my break.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmmm... So take this~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane used her smartmoby to transfer the location of the temporary home to Aniya SmartMoby. Aniya was a little surprised in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W... what?! How did you know that?!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Because I know Rain... see you later then~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "B..But... w..what...",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "So Vinny, Rayane, and James get out of Aniya's cabin and start talking during the travel.",
+    "type": "action"
   }
   
 ]
