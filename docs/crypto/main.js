@@ -337,7 +337,7 @@ storyCfg.web3.login = function () {
             body: $('<center>').append(
 
                 $('<div>').append(
-                    $('<p>').text('This is your cloud storage. Choose what you want to do. All your data is saved within the blockchain publicly. Any other user will be able to see your data saved.'),
+                    $('<p>').text('This is your cloud storage. Choose what you want to do. All your data is saved inside the blockchain publicly. Any user can see your data in a blockchain explorer.'),
                     $('<small>').append(
                         $('<a>', { href: `${puddyWeb3.getBlockchain().blockExplorerUrls}address/${storyCfg.web3.contractAddress}`, target: '_blank' }).text(storyCfg.web3.contractAddress)
                     ),
