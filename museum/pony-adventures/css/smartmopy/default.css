@@ -1,0 +1,315 @@
+/* Body */
+
+#topnamepx {
+    padding: 10px;
+    font-size: 13pt;
+    position: fixed;
+    width: 343px;
+    top: 38px;
+}
+
+a,
+a:link,
+a:visited,
+a:hover {
+    cursor: default;
+    text-decoration: none;
+    color: #f2f2f2;
+}
+
+a:hover {
+    color: #b3b3b3;
+}
+
+a:active {
+    color: #8c8c8c;
+}
+
+input[type="submit"] {
+    color: #1a1a1a;
+    border: 0px solid transparent;
+    padding: 5px 15px;
+}
+
+input[type="submit"]:hover {
+    background-color: #cccccc;
+}
+
+input[type="submit"]:active {
+    background-color: #b3b3b3;
+}
+
+.privacytext {
+    white-space: pre-wrap;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 2px rgba(53, 0, 0, 0.0);
+    background-color: rgba(217, 217, 217, 1);
+}
+
+::-webkit-scrollbar-thumb {
+    margin: 5px !important;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+
+/* Topo */
+
+#top {
+    background-color: #262626;
+    padding: 5px 10px;
+    position: absolute;
+    width: 343px;
+    top: 8px;
+    z-index: 2;
+    transition: background-color 0.3s;
+}
+
+#top div[position="right"] {
+    float: right;
+}
+
+#top div[position="left"] {
+    float: left;
+}
+
+#top div[position="right"],
+#top div[position="left"] {
+    position: relative;
+    color: #f2f2f2;
+}
+
+#top .glyphicon {
+    -webkit-filter: brightness(470%);
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+
+/* Bottom */
+
+#bottom {
+    padding: 7px 10px;
+    bottom: 8px;
+    position: absolute;
+    background-color: #1a1a1a;
+    width: 343px;
+    z-index: 2;
+}
+
+#bottom center span {
+    font-size: 20pt;
+    -webkit-filter: brightness(470%);
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 80px;
+    padding: 5px 0px;
+    transition: all 0.3s;
+}
+
+#bottom center span:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+}
+
+#bottom center span:active {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+}
+
+
+/* Container */
+
+#container {
+    min-width: 359px;
+    max-width: 359px;
+    width: 359px;
+    min-height: 590px;
+    max-height: 590px;
+    height: 590px;
+    -webkit-user-select: none;
+    cursor: default;
+    border: 8px inset #003333;
+    border-radius: 15px;
+    background-color: #f2f2f2;
+}
+
+.backgroundoptions {
+    position: fixed;
+    min-width: 343px;
+    max-width: 343px;
+    width: 343px;
+    min-height: 574px;
+    max-height: 574px;
+    height: 574px;
+    top: 8px;
+    background-color: #000;
+}
+
+.backgroundimage {
+    background-image: url(/images/smartphone/background.png);
+    background-size: 200% auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.5;
+}
+
+
+/* Tela */
+
+#tela {
+    clear: both;
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    position: relative;
+    z-index: 1;
+    transition: all 1s;
+    color: #f2f2f2;
+    overflow-y: auto;
+    overflow-x: hidden;
+    animation-name: opacitymenu;
+    animation-duration: 1s;
+}
+
+.nofullscreen {
+    padding-top: 30px !important;
+}
+
+.bottomon {
+    padding-bottom: 50px !important;
+}
+
+@keyframes opacitymenu {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Menu */
+
+#appmenu {
+    margin: auto;
+    margin: 15px;
+}
+
+#appmenu tr td figure span {
+    position: relative;
+    float: left;
+    left: 25%;
+}
+
+#appmenu tr td figure .badge {
+    position: relative;
+    left: -15px;
+    float: right;
+    top: -2;
+    margin: -15px;
+}
+
+#appmenu tr td figure img {
+    height: 58px;
+    width: 58px;
+    border-radius: 15px;
+}
+
+#appmenu tr td figure {
+    text-align: center;
+    transition: -webkit-filter 0.1s;
+}
+
+#appmenu tr td figure:hover {
+    -webkit-filter: brightness(120%);
+}
+
+#appmenu tr td figure:active {
+    -webkit-filter: brightness(130%);
+}
+
+#appmenu tr td figure:empty {
+    opacity: 0;
+}
+
+#noapp {
+    height: 58px;
+    width: 58px;
+}
+
+
+/* Páginas */
+
+
+/* Welcome */
+
+#welcome * {
+    text-align: center;
+    margin: auto;
+    font-weight: bold;
+    position: relative;
+    margin-top: 50%;
+}
+
+#welcome div {
+    width: 300px;
+    font-size: 10pt;
+}
+
+.registerclick {
+    margin: 25px auto !important;
+    font-size: 17pt !important;
+}
+
+
+/* Block Page */
+
+#blockpage .top {
+    text-align: center;
+    margin: auto;
+    font-weight: bold;
+    position: relative;
+    margin-top: 50%;
+    width: 300px;
+    font-size: 19pt;
+}
+
+#blockpage .bottom {
+    text-align: center;
+    margin: auto;
+    font-weight: bold;
+    position: relative;
+    width: 300px;
+    font-size: 10pt;
+}
+
+#blockpage input[type="password"] {
+    color: #1a1a1a;
+    margin: 15px 15%;
+    width: 70%;
+    text-align: center;
+}
+
+.registerclick {
+    margin: 25px auto !important;
+    font-size: 17pt !important;
+}
+
+
+/* Apps */

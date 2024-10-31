@@ -1,0 +1,327 @@
+{
+
+    // Informação Básica \\
+
+    "appName": { "message": "Pony Driland" },
+    "appNamepart1": { "message": "Pony" },
+    "appNamepart2": { "message": "Driland" },
+    "appDesc": { "message": "Em desenvolvimento" },
+
+
+    // Copyright e Créditos \\
+
+    "artmadeby": { "message": "Arte feita por" },
+
+    "translationmadeby": { "message": "Texto original feito por" },
+    "translationcrediturl": { "message": "https://jackiedreasond.tumblr.com" },
+    "translationcreditname": { "message": "Jackie Dreasond" },
+
+
+
+    // Politica de Privacidade \\
+
+    "privacynt": { "message": "Política de Privacidade" },
+    "privacytext": { "message": "Ao utilizar este produto, você concorda que aceita armazenar arquivos no seu navegador para salvar todo o seu progresso.\nExtensão não possui anúncios publicitários e nenhuma informação ou dado será recolhida durante o uso." },
+
+
+
+    // Penalidade \\
+
+    "penaenter": { "message": "O espaço tempo entrou em colapso!\nOh não! Você se lascou." },
+    "penawarn": { "message": "Você está perdido no espaço tempo! Você irá voltar em breve neste determinado horário" },
+
+    "penafreetitle": { "message": "Noticias do Espaço Tempo" },
+    "penafreemessage": { "message": "As coisas parecem que se normalizaram novamente" },
+    "penanoti": { "message": "Mensagem do Alem" },
+
+
+    "hospitalwarn": { "message": "Você irá sair do hospital neste determinado horário" },
+
+    "hospfreetitle": { "message": "Noticias do Hospital" },
+    "hospfreemessage": { "message": "Você foi liberado com sucesso do hospital" },
+    "hospnoti": { "message": "Ponystalt S.O.S" },
+
+    "banhotitle": { "message": "Banho iniciado!" },
+    "banhoinip1": { "message": "Você entrou no banheiro para começar o seu banho.\nFavor, aguarde" },
+    "banhoinip2": { "message": "minutos até você poder retornar novamente." },
+    "banhowarn": { "message": "Você irá sair do seu banho neste determinado horário" },
+
+    "banhofstitle": { "message": "Banho Finalizado com sucesso!" },
+    "banhofsmsg": { "message": "Você já pode voltar a suas atividades" },
+    "banhofsnoti": { "message": "Banheiro" },
+
+
+
+    // Menu \\
+
+    "menuhome": { "message": "Página Inicial" },
+    "menuyourhome": { "message": "Sua Casa" },
+    "menumap": { "message": "Mapa" },
+    "menuquest": { "message": "Quest" },
+
+    "moneyCounts": { "message": "Bytes" },
+    "moneyCount": { "message": "Byte" },
+
+
+
+    // Botões \\
+
+    "save": { "message": "Salvar" },
+    "close": { "message": "Fechar" },
+    "confirm": { "message": "Confirmar" },
+    "continue": { "message": "Continuar" },
+
+
+
+    // Padrões \\
+
+    "history": { "message": "História" },
+    "economy": { "message": "Economia" },
+    "social": { "message": "Social" },
+    "special": { "message": "Especial" },
+
+    "dificuldade": { "message": "Dificuldade" },
+    "dica": { "message": "Dica" },
+
+    "achievement": { "message": "Conquista" },
+    "unlocked": { "message": "Desbloqueada" },
+    "blocked": { "message": "Bloqueado" },
+
+    "inventory": { "message": "Inventário" },
+    "faq": { "message": "F.A.Q" },
+    "about": { "message": "Sobre" },
+    "help": { "message": "Ajuda" },
+    "message": { "message": "Mensagem" },
+
+    "gemmasc": { "message": "Masculino" },
+    "gemfem": { "message": "Feminino" },
+
+    "classter": { "message": "Terrestre" },
+    "classpeg": { "message": "Pégaso" },
+    "classuni": { "message": "Unicórnio" },
+
+    "createchar": { "message": "Criação de Personagem" },
+
+    "func": { "message": "Função" },
+    "options": { "message": "Opções" },
+    "esccinza": { "message": "Escala de Cinza" },
+    "brilho": { "message": "Brilho" },
+    "rotcolor": { "message": "Rotação de Cor" },
+    "satcolor": { "message": "Saturação de Cor" },
+
+    "ativar": { "message": "Ativar" },
+    "escolher": { "message": "Escolher" },
+    "pretbrank": { "message": "Preto e Branco" },
+
+    "base": { "message": "Base" },
+    "focinho": { "message": "Focinho" },
+    "crina": { "message": "Crina" },
+    "cauda": { "message": "Cauda" },
+    "olho": { "message": "Olho" },
+    "iris": { "message": "Íris" },
+
+    "base": { "message": "Base" },
+    "focinho": { "message": "Focinho" },
+    "crina": { "message": "Crina" },
+    "cauda": { "message": "Cauda" },
+    "olho": { "message": "Olho" },
+    "iris": { "message": "Íris" },
+
+    "dperso": { "message": "Dados do Personagem" },
+    "nmperso": { "message": "Nome" },
+    "classnm": { "message": "Classe" },
+    "idgeno": { "message": "Identidade de Gênero" },
+
+    "separeponyeditorcolor": { "message": "Seleções de uma Cor" },
+    "separeponyeditormulticolor": { "message": "Seleções de Multi Cor" },
+
+    "ponynameempty": { "message": "Não deixe o campo de nome vazio!" },
+    "confirmponyeditor": { "message": "Tem certeza que está tudo certo?\nVocê não poderá voltar mais aqui depois de confirmar!" },
+
+
+
+
+
+
+    // SmartMopy \\
+
+    // Texto \\
+
+    "registersmartmopy": { "message": "Seja bem vindo, visitante.\nEste é o seu SmartMopy, termine de preencher seus dados clicando logo abaixo!" },
+
+    // Configurações \\
+
+    "appconfig11": { "message": "Ativar Notificações" },
+    "appconfig12": { "message": "Ativar notificações no seu navegador quando ocorrer alguma coisa no SmartMopy." },
+    "appconfig21": { "message": "Ativar Som" },
+    "appconfig22": { "message": "Receber notificação sonora quando ocorrer alguma coisa no SmartMopy." },
+    "appconfig31": { "message": "Som do Teclado" },
+    "appconfig32": { "message": "Fazer barulho sempre quando você estiver tocando no SmartMopy." },
+    "appconfig41": { "message": "Número do modelo" },
+    "appconfig42": { "message": "PONY-FK6700" },
+    "appconfig51": { "message": "Versão Nanoproid" },
+    "appconfig52": { "message": "6.0.1" },
+    "appconfig61": { "message": "PIN" },
+    "appconfig62": { "message": "Adicione um código para ser utilizado quando você estiver inativo do computador." },
+
+    // Configurações - PIN \\
+
+    "appconfigsub11": { "message": "Use o sistema de bloqueio apenas se você utilizar um computador compartilhado.\n\nSeja muito cuidadoso com o seu PIN, pois, caso de perda, você não terá acesso ao seu progresso." },
+    "appconfigsub12": { "message": "Confirme seu PIN" },
+    "insertpin": { "message": "Inserir PIN" },
+    "resetaccountpin": { "message": "Gostaria de resetar sua conta?" },
+    "clickherepin": { "message": "Clique Aqui" },
+
+    "clickresetpinconfirm1": { "message": "Tem certeza que deseja fazer isso?" },
+    "clickresetpinconfirm2": { "message": "Se você for outra pessoa, não faça isso" },
+    "clickresetpinconfirm3": { "message": "Tenha certeza sobre o que está fazendo" },
+    "clickresetpinconfirm4": { "message": "Você foi avisado! Clique para continuar" },
+    "clickresetpinconfirm5": { "message": "Favor, confirme sua ação" },
+
+
+
+    // Guia de Ajuda \\
+
+    "apphelptitle": { "message": "Guia de ajuda do SmartMopy" },
+
+    "apphelptitledf1": { "message": "PIN de Segurança e Resetando Conta" },
+    "apphelpassdf1": { "message": "Como funciona o PIN de segurança" },
+    "apphelptextdf1": { "message": "O PIN de segurança é uma janela de senha que aparece antes de você acessar o SmartMoby.\n\nAlem de impedir acesso ao SmartMoby, toda a extensão também é bloqueada até a liberação do usuário.\n\nSistema de PIN de segurança também é uma alternativa para você efetuar um reset na sua conta a qualquer momento que você desejar.\n\n\nOBS: Não se esqueça que você sempre vai está com o PIN desativado depois de restaurar o acesso a extensão." },
+
+    "apphelptitledf2": { "message": "Usando o SmartMoby" },
+    "apphelpassdf2": { "message": "Conheça o básico do SmartMoby" },
+    "apphelptextdf2": { "message": "Ícones à baixo da tela:\n\nSeta: Voltar uma página interior\nMeio: Entrar na extensão\nQuadrado: Retornar para o menu\n\nSMS: Uma notificação irá te avisar sempre quando chegar alguma mensagem importante para ser lida neste aplicativo.\n\nConfigurações: Gostaria de desativar alguma funcionalidade, ou adicionar alguma camada de segurança? Não esqueça de entrar aqui.\n\n\nVocê ainda irá desbloquear mais novos aplicativos com o passar do tempo que você for jogando. Não deixe de tentar obter todos eles!" },
+
+    "apphelptitledf3": { "message": "Quem Somos" },
+    "apphelpassdf3": { "message": "Por que foi lançado" },
+    "apphelptextdf3": { "message": "O jogo foi desenvolvido por uma equipe de voluntários com o proposito de sua diversão.\n\nNão temos nenhum tipo de interesse lucrativo, mas se você tiver interesse em efetuar uma doação para ajudar a surgir projetos melhores de alguns dos membros da equipe, você pode encontrar em suas páginas, algum método de enviar uma doação.\n(Paypal ou por Deviantart)\n\nLembrando que nem todos os voluntários possuem uma página de doação. Seus links estão nos créditos no final da página." },
+
+    "apphelptitledf4": { "message": "Está faltando cores" },
+    "apphelpassdf4": { "message": "Não conseguiu encontrar algumas determinadas cores no Editor de Pônei" },
+    "apphelptextdf4": { "message": "Algumas cores talvez você apenas encontre vendendo em lojas espalhadas pelo mapa.\n\nNão se esqueça de sempre visitar as lojas de customização para achar a cor certa que você deseja." },
+
+    "apphelptitledf5": { "message": "Jogo é totalmente Gratis?" },
+    "apphelpassdf5": { "message": "Sim, e ele sempre será totalmente gratis para todos os usuários. A única coisa que importa é sua diversão." },
+
+    "apphelptitledf6": { "message": "O que foi utilizado para criar o jogo?" },
+    "apphelpassdf6": { "message": "Alem do fundamental HTML5 e CSS3, foi usado Bootstrap e Jquery." },
+
+    "apphelptitledf7": { "message": "Alguma coisa nova pode ser adicionada em alguma atualização?" },
+    "apphelpassdf7": { "message": "Claro! Isso pode acontecer a qualquer momento." },
+
+    "apphelptitledf8": { "message": "Desligar o computador afeta na jogatina?" },
+    "apphelpassdf8": { "message": "Não, existe um sistema inteligente lendo a sua hora local para o jogo conseguir trabalhar mesmo depois de fechado." },
+
+    "apphelptitledf9": { "message": "Existe eventos especiais?" },
+    "apphelpassdf9": { "message": "Sim, mas apenas para datas comemorativas ou especiais." },
+
+
+
+    // App          AVISO: NÃO USE NOMES GRANDES! ENCURTE ELES QUE NEM O 'CONFIG.' \\
+
+    "appsms": { "message": "S.M.S" },
+    "appbloqueio": { "message": "Bloqueio" },
+    "appconfig": { "message": "Config." },
+    "apphelp": { "message": "Ajuda" },
+
+
+
+
+
+
+    // Estilos \\
+
+    "defaultName": { "message": "Padrão" },
+
+    // Crinas \\
+
+    "twilightstyle": { "message": "Estilo Twilight" },
+    "rainbowstyle": { "message": "Estilo Rainbow" },
+
+
+
+
+
+
+
+
+
+
+
+    // Biblioteca de Itens \\
+
+
+    // Opções \\
+
+    "customclickal": { "message": "Alimentação" },
+    "customclickcs": { "message": "Customização" },
+    "customclickeq": { "message": "Equipamento" },
+    "customclickar": { "message": "Armas" },
+    "customclickmb": { "message": "Mobilia" },
+    "customclickik": { "message": "Itens Diversos" },
+
+
+
+    // Avisos \\
+
+    "iteminsertwarn": { "message": "Você tem certeza que deseja aplicar este item?" },
+
+
+
+    // Itens \\
+
+    "shop": { "message": "Loja" },
+    "foodlist": { "message": "Alimento" },
+
+
+    "customroupa": { "message": "Roupa" },
+    "customrosto": { "message": "Rosto" },
+    "customcabeca": { "message": "Cabeça" },
+    "customacessorio": { "message": "Acessório" },
+    "customcauda": { "message": "Cauda" },
+    "customcascofr": { "message": "Casco da Frente" },
+    "customcascoat": { "message": "Casco de Trás" },
+
+
+
+    // Raridade \\
+
+    "raryNormal": { "message": "Normal" },
+    "rarySpecial": { "message": "Especial" },
+    "raryRary": { "message": "Raro" },
+    "rarySuperRary": { "message": "Super Raro" },
+    "raryMegaRary": { "message": "Mega Raro" },
+    "raryUnique": { "message": "Único" },
+    "raryOmega": { "message": "Ω" },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // welcome.html \\
+
+    "welcometitle": { "message": "Bem Vindo!" },
+
+    "textwelcome1part1": { "message": "Escolha qual" },
+    "textwelcome1part2": { "message": "você deseja inserir no seu personagem" },
+
+    "dialgwelcome1": { "message": "Seja bem vindo, você acaba de chegar em um novo mundo!\nVocê deve está muito cansado depois de toda essa longa viagem. Gostaria de se sentar para relaxar um pouco?" },
+    "dialgwelcome2": { "message": "Perfeito! Sua nova casa já está praticamente pronta!\nEspero que se sinta a vontade, estarei te esperando por lá para te entregar mais instruções.\nEnquanto isso você pode ir terminando de se arrumar. Lamento pela sua casa antiga ter sido carbonizada pelo incêndio, mas tenho certeza que vai gostar de construir uma vida nova por aqui." },
+    "dialgwelcome3": { "message": "Vish.. Tudo bem então. Já que você diz..." },
+    "dialgwelcome4": { "message": "Eu sei que está nervoso por tudo isso ter acontecido por causa de uma simples vela, mas...." },
+    "dialgclickwelcome1": { "message": "Opa! Eu agradeço" },
+    "dialgclickwelcome2": { "message": "Esquece... Era só uma casinha boba. Eu dou conta disso tudo" },
+    "dialgclickwelcome3": { "message": "Ok ok ok... Me deixa escolher o visual novo logo!" },
+    "dialgclickwelcome4": { "message": "SAIIIII" }
+
+}

@@ -1,0 +1,93 @@
+/* Config */
+
+#topnamepx {
+    background-color: #ff751a;
+}
+
+#top {
+    background-color: #cc5200;
+}
+
+#tela {
+    top: 44px;
+    height: 92.3% !important;
+    min-height: 92.3% !important;
+    max-height: 92.3% !important;
+}
+
+#anexo {
+    float: right;
+    cursor: pointer;
+    margin-top: 4px;
+    margin-right: 5px;
+}
+
+#anexo:hover {
+    color: #000;
+}
+
+.appsms {
+    background-color: rgba(244, 244, 244, 1);
+    transition: background-color 0.5s !important;
+    color: #000;
+}
+
+.appsms label {
+    border-bottom: 1px solid rgba(200, 200, 200, 1);
+    !important;
+    margin-bottom: 0px;
+}
+
+.appsms label:last-child {
+    border-bottom: 0px solid transparent !important;
+}
+
+.appsms .mnsubmenu {
+    padding: 6px 15px;
+    font-weight: normal;
+    width: 100%;
+    line-height: 2px !important;
+}
+
+.appsms .mnsubmenu:hover {
+    background-color: #d9d9d9;
+}
+
+.appsms .mnsubmenu:active {
+    background-color: #bfbfbf;
+}
+
+.appsms .mnsubmenu h6 {
+    margin-top: -2px !important;
+}
+
+.appsms .mndisplay {
+    padding: 6px 15px;
+    font-weight: normal;
+    width: 100%;
+    line-height: 2px !important;
+    white-space: pre-wrap;
+}
+
+.appsms .mndisplay h6 {
+    margin-top: 25px !important;
+}
+
+.appsms h6 {
+    color: #595959;
+}
+
+.appsms h4 {
+    color: #262626;
+}
+
+.appsms input {
+    margin: 10% 7px;
+    float: right;
+}
+
+.appsms hr {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    margin: -5px;
+    margin-bottom: 0px !important;
+}

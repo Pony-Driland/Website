@@ -1,0 +1,32 @@
+{  
+"name":"__MSG_appName__",
+"short_name":"Pony Driland",
+"description":"__MSG_appDesc__",
+ "default_locale": "en",
+"version":"0.17",
+"manifest_version":2,
+"requirements": {
+  "3D": {
+    "features": ["webgl"]
+  }
+},
+"background": {
+      "page": "pages/extension/background.html"
+   },
+   "browser_action": {
+      "default_icon": {
+         "19": "icons/icon.png",
+         "38": "icons/icon_38.png"
+      },
+      "default_popup": "pages/extension/smartmopy.html",
+      "default_title": "Template Extension"
+   },
+   "permissions": ["background", "contextMenus", "storage", "idle", "notifications"],
+   "icons": {
+      "128": "icons/icon_128.png",
+      "16": "icons/icon_16.png",
+      "48": "icons/icon_48.png"
+   }
+   
+}
+

@@ -1,0 +1,11 @@
+.dialog1{
+background: #e6e6e6;
+max-width: 70%;
+border-radius: 15px;
+padding: 10px;
+min-height: 160px;
+max-height: 160px;
+overflow-y: auto;
+text-align: center;
+white-space:pre-wrap;
+}

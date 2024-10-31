@@ -1,0 +1,131 @@
+#mypony {
+    margin: auto;
+}
+
+#ponymyname {
+    font-weight: bold;
+    text-align: center;
+    font-family: equestria;
+    font-size: 40pt;
+}
+
+
+/* Input */
+
+.centeroptions input {
+    margin: 10px !important;
+}
+
+
+/* Inventário Intro */
+
+#tableitemlist {
+    width: 100%;
+    background-color: #e6e6e6;
+}
+
+.pageivtname {
+    text-align: center;
+    font-family: equestria;
+    font-size: 40pt;
+    letter-spacing: 0px;
+}
+
+
+/* Lista Inventário */
+
+.bxinventory {
+    padding: 0px 10px;
+    border-right: 1px solid #ccc;
+    vertical-align: top;
+}
+
+#inventorylist {
+    width: 200px;
+    margin: 50px 0px;
+}
+
+#inventorylist .affix {
+    top: 65px;
+    width: 200px;
+    padding: 0px 10px;
+}
+
+#inventorylist ul {
+    list-style: none;
+    padding-left: 0;
+    text-align: center;
+    font-family: equestria;
+    font-size: 20pt;
+    letter-spacing: 0px;
+}
+
+#inventorylist ul hr {
+    margin: 5px;
+    border-color: #ccc;
+}
+
+#inventorylist ul li:hover {
+    cursor: pointer;
+    color: #808080
+}
+
+#inventorylist ul li:active {
+    color: #4d4d4d
+}
+
+
+/* Inventário */
+
+#inventory {
+    text-align: center;
+    padding: 20px;
+    min-width: 915px;
+}
+
+#inventory .ivitem {
+    width: 165px;
+    height: 235px;
+    text-align: center;
+    padding: 25px 10px;
+    transition: background-color 0.15s, color 0.15s;
+    display: inline-block;
+    margin: auto;
+    cursor: pointer;
+}
+
+#inventory .ivitem:hover {
+    background-color: #333;
+    color: #FFF;
+}
+
+#inventory .ivitem:active {
+    background-color: #595959;
+    color: #FFF;
+}
+
+#inventory .ivitem .image {
+    height: 100px;
+    width: 100px;
+    min-height: 100px;
+    min-width: 100px;
+    max-height: 100px;
+    max-width: 100px;
+}
+
+#inventory .ivitem .title {
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+#inventory .ivitem .rarity {
+    font-size: 10pt;
+    font-weight: bold;
+    margin-top: -4px;
+}
+
+#inventory .ivitem .type {
+    font-size: 8pt;
+    font-weight: bold;
+    margin-top: 6px;
+}
