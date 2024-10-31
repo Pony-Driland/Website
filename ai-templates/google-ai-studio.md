@@ -14,6 +14,12 @@ As a normal human who can make mistakes, there is also the risk of AI accidental
 
 Remember that using this AI does not replace reading the original content. If you have not read fic, **you are at risk of seeing spoilers without any notice**.
 
+### Roleplays will not work properly
+
+This prompt was just made to study the fic Pony Driland. Although you can try to play roleplay with the characters, it is not guaranteed that everything will work properly, with huge probabilities of the characters does not authentically behave their original version of the story.
+
+Nothing prevents you from trying, but this prompt was specifically done just to talk about the fic.
+
 ### System Instructions
 
 ```
