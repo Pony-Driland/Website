@@ -1,0 +1,82 @@
+/* Config */
+
+#topnamepx {
+    background-color: #00cc66;
+}
+
+#top {
+    background-color: #008040;
+}
+
+#tela {
+    top: 44px;
+    height: 92.3% !important;
+    min-height: 92.3% !important;
+    max-height: 92.3% !important;
+}
+
+.apphelp {
+    background-color: rgba(244, 244, 244, 1);
+    transition: background-color 0.5s !important;
+    color: #000;
+}
+
+.apphelp label {
+    border-bottom: 1px solid rgba(200, 200, 200, 1);
+    !important;
+    margin-bottom: 0px;
+}
+
+.apphelp label:last-child {
+    border-bottom: 0px solid transparent !important;
+}
+
+.apphelp .mnsubmenu {
+    padding: 6px 15px;
+    font-weight: normal;
+    width: 100%;
+    line-height: 2px !important;
+}
+
+.apphelp .mnsubmenu:hover {
+    background-color: #d9d9d9;
+}
+
+.apphelp .mnsubmenu:active {
+    background-color: #bfbfbf;
+}
+
+.apphelp .mnsubmenu h6 {
+    margin-top: -2px !important;
+}
+
+.apphelp .mndisplay {
+    padding: 6px 15px;
+    font-weight: normal;
+    width: 100%;
+    line-height: 2px !important;
+    white-space: pre-wrap;
+}
+
+.apphelp .mndisplay h6 {
+    margin-top: 5px !important;
+}
+
+.apphelp h6 {
+    color: #595959;
+}
+
+.apphelp h4 {
+    color: #262626;
+}
+
+.apphelp input {
+    margin: 10% 7px;
+    float: right;
+}
+
+.apphelp hr {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    margin: -5px;
+    margin-bottom: 0px !important;
+}

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html xml:lang="pt" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title langchrome="welcometitle"></title>
+<script src="../js/jquery/jquery-3.1.0.js"></script>
+<script src="../js/bootstrap/bootstrap.js"></script>
+<script type="text/javascript" src="../../js/background/sendbacktemplate.js"></script>
+<script type="text/javascript" src="../../js/background/sendbackpage.js"></script>
+<script src="../../js/plugins/default/chromeapi.js"></script>
+<script src="../../js/plugins/default/checking.js"></script>
+<script src="../js/plugins/editor/ponyeditor.js"></script>
+<script src="../js/plugins/history/dialogo.js"></script>
+<link type="text/css" rel="stylesheet" href="../css/bootstrap/bootstrap.css">
+<link type="text/css" rel="stylesheet" href="../css/plugins/default.css">
+<link type="text/css" rel="stylesheet" href="../css/plugins/dialogo.css">
+<link type="text/css" rel="stylesheet" href="../css/pages/intro.css">
+</head>
+
+<body>
+
+<div id="container">
+
+<!-- Intro -->
+<div id="introgeral">
+<div id="introtexto" class="dialog1"></div>
+<input type="submit" id="introgo" />
+</div>
+
+<!-- Start -->
+
+<div id="customstart">
+
+<div id="mypony">
+<div class="myponybase ocpcauda1"></div>
+<div class="myponybase ocpcauda2"></div>
+<div class="myponybase ocpcauda3"></div>
+<div class="myponybase ocpbase baseglobalcolor"></div>
+<div class="myponybase ocpolho1"></div>
+<div class="myponybase ocpolho2"></div>
+<div class="myponybase ocpolho3"></div>
+<div class="myponybase ocpfocinho baseglobalcolor"></div>
+<div class="myponybase ocpboca"></div>
+<div class="myponybase ocasa baseglobalcolor"></div>
+<div class="myponybase ocpcrina1"></div>
+<div class="myponybase ocpcrina2"></div>
+<div class="myponybase ocpcrina3"></div>
+<div class="myponybase ocporelha baseglobalcolor"></div>
+<div class="myponybase occhifre baseglobalcolor"></div>
+</div>
+
+<!-- Personagem -->
+
+<table id="custompanel" class="panelcreato1">
+
+<thead>
+<tr>
+<td langchrome="createchar" colspan="7">
+</td>
+</tr>
+</thead>
+
+<!-- Base -->
+<tbody>
+<tr colspan="5" class="titletcustom">
+<td langchrome="func">
+</td>
+<td langchrome="options">
+</td>
+<td langchrome="esccinza">
+</td>
+<td langchrome="brilho">
+</td>
+<td langchrome="rotcolor">
+</td>
+<td langchrome="satcolor">
+</td>
+<td langchrome="pretbrank">
+</td>
+</tr>
+
+<!-- Pele -->
+<tr removept="bottom">
+<td langchrome="base">
+</td>
+<td>
+<a id="visualbase" class="changepageclk" name="changevisual" langchrome="escolher"></a>
+</td>
+<td>
+<input type="range" id="pelerange1" max="100" name="pelerange" />
+</td>
+<td>
+<input type="range" id="pelerange2" max="100" name="pelerange" min="35" />
+</td>
+<td>
+<input type="range" id="pelerange3" max="360" colorRG="rainbow" name="pelerange" />
+</td>
+<td>
+<input type="range" id="pelerange4" max="800" name="pelerange" />
+</td>
+<td>
+<span langchrome="ativar"></span> <input type="checkbox" name="pelerange" id="pelebranca" />
+</td>
+</tr>
+
+<!-- Focinho -->
+<tr removept="top">
+<td langchrome="focinho">
+</td>
+<td>
+<a id="visualfocinho" class="changepageclk" name="changevisual" langchrome="escolher"></a>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+
+<!-- Crina -->
+<tr removept="bottom" removepxbottom="crina">
+<td langchrome="crina">
+</td>
+<td>
+<a id="visualcrina" class="changepageclk" name="changevisual" langchrome="escolher"></a>
+</td>
+<td>
+<input type="range" id="crinarange11" name="crinarange1" max="100" />
+</td>
+<td>
+<input type="range" id="crinarange12" name="crinarange1" max="100" min="35" />
+</td>
+<td>
+<input type="range" id="crinarange13" colorRG="rainbow" name="crinarange1" max="360" />
+</td>
+<td>
+<input type="range" id="crinarange14" name="crinarange1" max="800" />
+</td>
+<td>
+<span langchrome="ativar"></span> <input type="checkbox" name="crinarange1" id="crinabranca1" />
+</td>
+</tr>
+
+<tr removept="center" removepxcenter="crina">
+<td>
+</td>
+<td>
+</td>
+<td>
+<input type="range" id="crinarange21" name="crinarange2" max="100" />
+</td>
+<td>
+<input type="range" id="crinarange22" name="crinarange2" max="100" min="35" />
+</td>
+<td>
+<input type="range" id="crinarange23" colorRG="rainbow" name="crinarange2" max="360" />
+</td>
+<td>
+<input type="range" id="crinarange24" name="crinarange2" max="800" />
+</td>
+<td>
+<span langchrome="ativar"></span> <input type="checkbox" name="crinarange2" id="crinabranca2" />
+</td>
+</tr>
+
+<tr removept="top" removepxtop="crina">
+<td>
+</td>
+<td>
+</td>
+<td>
+<input type="range" id="crinarange31" name="crinarange3" max="100" />
+</td>
+<td>
+<input type="range" id="crinarange32" name="crinarange3" max="100" min="35" />
+</td>
+<td>
+<input type="range" id="crinarange33" colorRG="rainbow" name="crinarange3" max="360" />
+</td>
+<td>
+<input type="range" id="crinarange34" name="crinarange3" max="800" />
+</td>
+<td>
+<span langchrome="ativar"></span> <input type="checkbox" name="crinarange3" id="crinabranca3" />
+</td>
+</tr>
+
+<!-- Cauda -->
+<tr removept="bottom" removepxbottom="cauda">
+<td langchrome="cauda">
+</td>
+<td>
+<a id="visualcauda" class="changepageclk" name="changevisual" langchrome="escolher"></a>
+</td>
+<td>
+<input type="range" id="caudarange11" name="caudarange1" max="100" />
+</td>
+<td>
+<input type="range" id="caudarange12" name="caudarange1" max="100" min="35" />
+</td>
+<td>
+<input type="range" id="caudarange13" colorRG="rainbow" name="caudarange1" max="360" />
+</td>
+<td>
+<input type="range" id="caudarange14" name="caudarange1" max="800" />
+</td>
+<td>
+<span langchrome="ativar"></span> <input type="checkbox" name="caudarange1" id="caudabranca1" />
+</td>
+</tr>
+
+<tr removept="center" removepxcenter="cauda">
+<td>
+</td>
+<td>
+</td>
+<td>
+<input type="range" id="caudarange21" name="caudarange2" max="100" />
+</td>
+<td>
+<input type="range" id="caudarange22" name="caudarange2" max="100" min="35" />
+</td>
+<td>
+<input type="range" id="caudarange23" colorRG="rainbow" name="caudarange2" max="360" />
+</td>
+<td>
+<input type="range" id="caudarange24" name="caudarange2" max="800" />
+</td>
+<td>
+<span langchrome="ativar"></span> <input type="checkbox" name="caudarange2" id="caudabranca2" />
+</td>
+</tr>
+
+<tr removept="top" removepxtop="cauda">
+<td>
+</td>
+<td>
+</td>
+<td>
+<input type="range" id="caudarange31" name="caudarange3" max="100" />
+</td>
+<td>
+<input type="range" id="caudarange32" name="caudarange3" max="100" min="35" />
+</td>
+<td>
+<input type="range" id="caudarange33" colorRG="rainbow" name="caudarange3" max="360" />
+</td>
+<td>
+<input type="range" id="caudarange34" name="caudarange3" max="800" />
+</td>
+<td>
+<span langchrome="ativar"></span> <input type="checkbox" name="caudarange3" id="caudabranca3" />
+</td>
+</tr>
+
+
+
+<!-- Olho -->
+<tr removept="bottom">
+<td langchrome="olho">
+</td>
+<td>
+<a id="visualolho" class="changepageclk" name="changevisual" langchrome="escolher"></a>
+</td>
+<td>
+<input type="range" id="olhorange11" name="olhorange1" max="100" />
+</td>
+<td>
+<input type="range" id="olhorange12" name="olhorange1" max="500" />
+</td>
+<td>
+<input type="range" id="olhorange13" colorRG="rainbow" name="olhorange1" max="360" />
+</td>
+<td>
+<input type="range" id="olhorange14" name="olhorange1" max="800" />
+</td>
+<td>
+<span langchrome="ativar"></span> <input type="checkbox" name="olhorange1" id="olhobranca1" />
+</td>
+</tr>
+
+
+
+<!-- Iris -->
+<tr removept="top">
+<td langchrome="iris">
+</td>
+<td>
+</td>
+<td>
+<input type="range" id="olhorange21" name="olhorange2" max="100" />
+</td>
+<td>
+<input type="range" id="olhorange22" name="olhorange2" max="100" min="35" />
+</td>
+<td>
+<input type="range" id="olhorange23" colorRG="rainbow" name="olhorange2" max="360" />
+</td>
+<td>
+<input type="range" id="olhorange24" name="olhorange2" max="800" />
+</td>
+<td>
+<span langchrome="ativar"></span> <input type="checkbox" name="olhorange2" id="olhobranca2" />
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+<br><br>
+
+<table id="infoponypanel" class="panelcreato1">
+
+<thead>
+<tr>
+<td langchrome="dperso" colspan="7">
+</td>
+</tr>
+</thead>
+
+<!-- Base -->
+<tbody>
+
+<tr>
+<td langchrome="nmperso">
+</td>
+<td>
+<input type="text" size="30" id="ponyname" class="form-control" maxlength="30" />
+</td>
+</tr>
+
+<tr>
+<td langchrome="classnm">
+</td>
+<td>
+<select id="ponyclass">
+<option langchrome="classter" value="terr"></option>
+<option langchrome="classpeg" value="pegs"></option>
+<option langchrome="classuni" value="unic"></option>
+</select>
+</td>
+</tr>
+
+<tr>
+<td langchrome="idgeno">
+</td>
+<td>
+<select id="ponygem">
+<option langchrome="gemmasc" value="masc"></option>
+<option langchrome="gemfem" value="femin" selected></option>
+</select>
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+<br/> <br/>
+
+<input type="submit" id="confirmpony" langchrome="confirm" />
+
+
+</div>
+
+<!-- Selecionar -->
+
+<div id="chagetablet">
+
+<span class="titlecustompanel"><strong langchrome="textwelcome1part1"></strong> <strong id="itemponyname"></strong> <strong langchrome="textwelcome1part2"></strong>:</span>
+
+<br>
+
+<div id="customlistp"><form id="customselected">
+
+</form></div>
+<div id="customimagep"></div>
+
+<input langchrome="save" id="savepony" type="submit" /> <input langchrome="close" id="closepony" type="submit" />
+
+</div>
+
+<!-- Copyright -->
+
+<center>
+<br><br>
+<b langchrome="privacynt"></b>
+<br>
+<span class="privacytext" langchrome="privacytext"></span>
+</center>
+
+</div>
+
+</body>
+  
+<script src="../js/plugins/default/generator.js"></script>
+<script src="../js/pages/intro.js"></script>
+
+</html>

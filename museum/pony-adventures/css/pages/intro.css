@@ -1,0 +1,130 @@
+/* Objetos */
+
+#introgeral *{
+margin: auto;
+}
+
+#introgeral{
+text-align: center;
+}
+
+#introgo{
+margin: 15px;
+}
+
+#customstart{
+display: none;
+text-align: center;
+}
+
+#customstart *{
+margin: auto;
+}
+
+#introgo:hover{
+margin: 14px !important;
+}
+
+/* Barras */
+
+input[type=range]{
+min-width: 200px;
+}
+
+input[colorRG="rainbow"]{
+min-width: 250px;
+}
+
+#custompanel *, #infoponypanel thead tr td{ text-align: center; }
+
+table thead tr td{
+font-family: equestria;
+font-size: 18pt;
+letter-spacing: 1px;
+}
+
+table tbody tr td a{
+color: #333;
+}
+
+
+/* Escolher Personalização */
+
+#chagetablet{
+background-color: #F1F1F1;
+border: 2px dotted #0A1C40;
+padding: 16px;
+border-radius: 15px;
+position: fixed;
+width: 1000px;
+height: 595px;
+top:0;
+bottom: 0;
+left: 0;
+right: 0;
+margin: auto;
+text-align: center;
+display: none;
+}
+
+#customlistp{
+width: 445px;
+float: left;
+}
+
+#customimagep{
+width: 445px;
+float: right;
+}
+
+#customlistp, #customimagep{
+
+padding: 15px;
+margin: 10px;
+height: 455px;
+}
+
+#customimagep{
+background-repeat: no-repeat;
+}
+
+#customselected label{
+display: block;
+margin: 5px;
+}
+
+#chagetablet input[type="submit"]{
+position: relative;
+top: 0px;
+margin: 5px !important;
+}
+
+#chagetablet input[type="submit"]:hover{
+position: relative;
+top: 0px;
+margin: 4px !important;
+}
+
+.titlecustompanel{
+font-size: 21pt;
+font-weight: bold;
+font-family: equestria;
+font-size
+}
+
+#chagetablet label span{
+font-weight: normal;
+}
+
+#customselected div{
+font-weight: bold;
+font-size: 12pt;
+}
+
+
+
+
+.statuscharacterx[class*="affix"]:not(.affix-top){
+z-index: -1 !important;
+opacity: 0 !important;
+}

@@ -1,0 +1,87 @@
+/* Config */
+
+.appconfig{
+background-color: rgba(0,0,0, 0.95);
+transition: background-color 0.5s !important;
+}
+
+.appconfig label{
+padding: 6px 15px;
+font-weight: normal;
+width: 100%;
+line-height: 2px !important;
+}
+
+.appconfig label:hover{
+background-color: #0d0d0d;
+}
+
+.appconfig label:active{
+background-color: #404040;
+}
+
+.appconfig input{
+margin: 10% 7px;
+float: right;
+}
+
+.appconfig h6{
+color: #d9d9d9;
+margin-top: -8px !important;
+}
+
+.appconfig hr{
+border-color: rgba(255,255,255, 0.3) !important;
+margin: -5px;
+margin-bottom: 0px !important;
+}
+
+
+/* Sub Config - PIN */
+
+#passwordtable{
+margin: 24% 25px;
+text-align: center;
+}
+
+.appblock label{
+padding: auto !important;
+font-weight: normal !important;
+width: auto !important;
+line-height: 0px !important;
+}
+
+.appblock label:hover{
+background-color: transparent !important;
+}
+
+.appblock label:active{
+background-color: transparent !important;
+}
+
+.appblock input{
+margin: auto !important;
+float: none !important;
+}
+
+.appblock{
+background-color: rgba(0,0,0, 0.95);
+transition: background-color 0.5s !important;
+}
+
+.appblock input[type="password"]{
+color: #1a1a1a;
+margin: 15px 15% !important;
+width: 70%;
+text-align: center;
+}
+
+.appblock .failpassword{
+color: red !important;
+}
+
+.confirmpass{
+margin-top: 0px !important;
+}
+
+.appblock input[type="checkbox"]{margin: 5px !important;}

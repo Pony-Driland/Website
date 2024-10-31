@@ -1,0 +1,110 @@
+/* Base */
+
+hr{
+border-color: #ccc;
+}
+
+#container{
+margin:0 auto !important;
+width:90%;
+}
+
+/* Intro */
+
+#questmenu{
+float: left;
+width: 20%;
+}
+
+#quesitem{
+float: right;
+width: 80%;
+padding: 15px;
+min-height: 690px;
+border-left: 1px solid #ccc;
+border-right: 1px solid #ccc;
+}
+
+#quesitem:empty{
+border: 1px solid transparent !important;
+}
+
+.qsttitle{
+font-size: 31pt;
+font-family: equestria;
+letter-spacing: 0px;
+line-height: 1.1;
+word-spacing: -6px;
+margin-left: 18px;
+}
+
+.qsttext, .qsttedi{
+text-align: justify;
+font-style: italic;
+}
+
+
+
+
+
+/* Menu */
+
+#questmenu ul{
+padding: 15px;
+border-left: 1px solid #ccc;
+border-right: 1px solid #ccc;
+margin-right: 10px;
+min-height: 690px;
+}
+
+#questmenu ul li{
+text-align: center;
+font-family: equestria;
+letter-spacing: 0px;
+line-height: 1.1;
+word-spacing: -6px;
+display: block;
+}
+
+#questmenu ul li ol{
+padding: 0px;
+}
+
+#questmenu ul li span{
+font-weight: bold;
+font-size: 24pt;
+}
+
+#questmenu ul li ol li{
+font-size: 16pt;
+transition: background-color 0.15s, color 0.15s;
+cursor: pointer;
+}
+
+.glyphicon{
+margin: 17px 9px;
+font-size: 14pt !important;
+color: #404040;
+}
+
+.glyphicon-star{color: #3385ff;}
+.glyphicon-bitcoin{color: #00b300;}
+.glyphicon-heart-empty{color: #ff3333;}
+.glyphicon-gift{color: #ff80ff;}
+
+/* Menu Click */
+
+#questmenu ul li ol li:hover{
+background-color: #d9d9d9;
+color: #000;
+}
+
+#questmenu ul li ol li:active{
+background-color: #bfbfbf;
+color: #000;
+}
+
+#questmenu ul li ol .active{
+font-weight: bold;
+color: #262626;
+}

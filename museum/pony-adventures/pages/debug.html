@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html xml:lang="pt" lang="pt">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Debug</title>
+    <script src="../js/jquery/jquery-3.1.0.js"></script>
+    <script src="../js/bootstrap/bootstrap.js"></script>
+    <script type="text/javascript" src="../../js/background/sendbacktemplate.js"></script>
+    <script type="text/javascript" src="../../js/background/sendbackpage.js"></script>
+    <script src="../../js/plugins/default/chromeapi.js"></script>
+    <script src="../../js/plugins/default/checking.js"></script>
+    <link type="text/css" rel="stylesheet" href="../css/bootstrap/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="../css/plugins/default.css">
+</head>
+
+<body>
+
+    <div id="container" class="container">
+
+
+        <h1>
+            <center><strong>DEBUG</strong></center>
+        </h1>
+
+
+        <!-- Money -->
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">money/bank</span>
+            <input type="number" class="form-control" placeholder="Value" id="value_money" min="0" , value="0" aria-describedby="basic-addon1">
+            <span class="input-group-addon" id="basic-addon1">
+                
+                
+                                    <select id="set_money">
+                                        <option value="add">add</option>
+                                        <option value="remove">remove</option>
+                                        <option value="multiplication">multiplication</option>
+                                        <option value="division">division</option>
+                                        <option value="modulus">modulus</option>
+                                        <option value="multiplicationX">multiplicationX</option>
+                                        <option value="divisionX">divisionX</option>
+                                        <option value="modulusX">modulusX</option>
+                                    </select>
+
+                                    <select id="type_money">
+                                        <option value="money">money</option>
+                                        <option value="bank">bank</option>
+                                    </select>
+
+                                    <button type="button" class="btn btn-default" id="send_money">Send</button>
+                
+                
+                            </span>
+        </div>
+
+        Bank:
+        <div id="bank"></div>
+
+        <br/>
+
+        <!-- quest -->
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">quest</span>
+            <input type="text" class="form-control" placeholder="Value" id="value_quest" aria-describedby="basic-addon1">
+            <input type="number" class="form-control" placeholder="Number" id="number_quest" min="0" , value="0" aria-describedby="basic-addon1">
+            <span class="input-group-addon" id="basic-addon1">
+        
+                <select id="set_quest">
+                    <option value="add">add</option>
+                    <option value="remove">remove</option>
+                    <option value="multiplication">multiplication</option>
+                    <option value="division">division</option>
+                    <option value="modulus">modulus</option>
+                    <option value="multiplicationX">multiplicationX</option>
+                    <option value="divisionX">divisionX</option>
+                    <option value="modulusX">modulusX</option>
+                </select>
+        
+                <button type="button" class="btn btn-default" id="add_quest">Add</button>
+                <button type="button" class="btn btn-default" id="remove_quest">Remove</button>
+                <button type="button" class="btn btn-default" id="edit_quest">Edit</button>
+        
+        
+                    </span>
+        </div>
+
+        <div id="quest"></div>
+        <br/>
+
+        <!-- foodlist -->
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">foodlist</span>
+            <input type="text" class="form-control" placeholder="Value" id="value_foodlist" aria-describedby="basic-addon1">
+            <input type="number" class="form-control" placeholder="Number" id="number_foodlist" min="0" , value="0" aria-describedby="basic-addon1">
+            <span class="input-group-addon" id="basic-addon1">
+                
+                <select id="set_foodlist">
+                    <option value="add">add</option>
+                    <option value="remove">remove</option>
+                    <option value="multiplication">multiplication</option>
+                    <option value="division">division</option>
+                    <option value="modulus">modulus</option>
+                    <option value="multiplicationX">multiplicationX</option>
+                    <option value="divisionX">divisionX</option>
+                    <option value="modulusX">modulusX</option>
+                </select>
+                                    <button type="button" class="btn btn-default" id="add_foodlist">Add</button>
+                                    <button type="button" class="btn btn-default" id="remove_foodlist">Remove</button>
+                                    <button type="button" class="btn btn-default" id="edit_foodlist">Edit</button>
+                
+                
+                            </span>
+        </div>
+
+        <div id="foodlist"></div>
+        <br/>
+
+        <!-- keylist -->
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">keylist</span>
+            <input type="text" class="form-control" placeholder="Value" id="value_keylist" aria-describedby="basic-addon1">
+            <input type="number" class="form-control" placeholder="Number" id="number_keylist" min="0" , value="0" aria-describedby="basic-addon1">
+            <span class="input-group-addon" id="basic-addon1">
+        
+                <select id="set_keylist">
+                    <option value="add">add</option>
+                    <option value="remove">remove</option>
+                    <option value="multiplication">multiplication</option>
+                    <option value="division">division</option>
+                    <option value="modulus">modulus</option>
+                    <option value="multiplicationX">multiplicationX</option>
+                    <option value="divisionX">divisionX</option>
+                    <option value="modulusX">modulusX</option>
+                </select>
+        
+                <button type="button" class="btn btn-default" id="add_keylist">Add</button>
+                <button type="button" class="btn btn-default" id="remove_keylist">Remove</button>
+                <button type="button" class="btn btn-default" id="edit_keylist">Edit</button>
+        
+        
+                    </span>
+        </div>
+
+        <div id="keylist"></div>
+        <br/>
+
+        <!-- weaponlist -->
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">weaponlist</span>
+            <input type="text" class="form-control" placeholder="Value" id="value_weaponlist" aria-describedby="basic-addon1">
+            <input type="number" class="form-control" placeholder="Number" id="number_weaponlist" min="0" , value="0" aria-describedby="basic-addon1">
+            <span class="input-group-addon" id="basic-addon1">
+        
+                <select id="set_weaponlist">
+                    <option value="add">add</option>
+                    <option value="remove">remove</option>
+                    <option value="multiplication">multiplication</option>
+                    <option value="division">division</option>
+                    <option value="modulus">modulus</option>
+                    <option value="multiplicationX">multiplicationX</option>
+                    <option value="divisionX">divisionX</option>
+                    <option value="modulusX">modulusX</option>
+                </select>
+        
+                <button type="button" class="btn btn-default" id="add_weaponlist">Add</button>
+                <button type="button" class="btn btn-default" id="remove_weaponlist">Remove</button>
+                <button type="button" class="btn btn-default" id="edit_weaponlist">Edit</button>
+        
+        
+                    </span>
+        </div>
+
+        <div id="weaponlist"></div>
+        weaponset:
+        <div id="weaponset"></div>
+        <br/>
+
+
+
+        <!-- equiplist -->
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">equiplist</span>
+            <input type="text" class="form-control" placeholder="Value" id="value_equiplist" aria-describedby="basic-addon1">
+            <input type="number" class="form-control" placeholder="Number" id="number_equiplist" min="0" , value="0" aria-describedby="basic-addon1">
+            <span class="input-group-addon" id="basic-addon1">
+        
+                <select id="set_equiplist">
+                    <option value="add">add</option>
+                    <option value="remove">remove</option>
+                    <option value="multiplication">multiplication</option>
+                    <option value="division">division</option>
+                    <option value="modulus">modulus</option>
+                    <option value="multiplicationX">multiplicationX</option>
+                    <option value="divisionX">divisionX</option>
+                    <option value="modulusX">modulusX</option>
+                </select>
+        
+                <button type="button" class="btn btn-default" id="add_equiplist">Add</button>
+                <button type="button" class="btn btn-default" id="remove_equiplist">Remove</button>
+                <button type="button" class="btn btn-default" id="edit_equiplist">Edit</button>
+        
+        
+                    </span>
+        </div>
+
+        <div id="equiplist"></div>
+
+
+        <br/> customroupa:
+        <div id="customroupa"></div>
+        <br/> customrosto:
+        <div id="customrosto"></div>
+        <br/> customcabeca:
+        <div id="customcabeca"></div>
+        <br/> customacessorio:
+        <div id="customacessorio"></div>
+        <br/> customcauda:
+        <div id="customcauda"></div>
+        <br/> customcascofr:
+        <div id="customcascofr"></div>
+        <br/> customcascoat:
+        <div id="customcascoat"></div>
+        <br/><br/>
+
+
+        <!-- achievement -->
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">achievement</span>
+            <input type="text" class="form-control" placeholder="Value" id="value_achievement" aria-describedby="basic-addon1">
+            <input type="checkbox" class="form-control" id="check_achievement" aria-describedby="basic-addon1">
+            <span class="input-group-addon" id="basic-addon1">
+        
+                <button type="button" class="btn btn-default" id="sadd_achievement">Add</button>
+                <button type="button" class="btn btn-default" id="sremove_achievement">Remove</button>
+                <button type="button" class="btn btn-default" id="sedit_achievement">Edit</button>
+        
+        
+                    </span>
+        </div>
+
+        <div id="achievement"></div>
+        <br/>
+
+    </div>
+
+    <script src="../js/pages/debug.js"></script>
+    <script src="../js/plugins/default/generator.js"></script>
+</body>
+
+</html>
