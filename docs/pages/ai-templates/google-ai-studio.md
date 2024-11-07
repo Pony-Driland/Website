@@ -4,7 +4,7 @@ All content developed here uses only authorized official fic material.
 
 This page will contain only content created by me, if you are looking for AI fan-mades, search inside the Pony Driland community itself or on third-party websites that have content availability (but i will not be responsible for content posted by fans on these websites).
 
-## Google AI Studio
+## Google AI Studio (Beta)
 
 https://aistudio.google.com
 
@@ -15,6 +15,10 @@ This AI template will answer questions you ask about the fic Pony Driland in a w
 ### Do not trust 100% in the AI replies
 
 As a normal human who can make mistakes, there is also the risk of AI accidentally answering something that does not exist in the fic. (What is another important reason for you to read the fic before using this AI)
+
+### First message of the AI
+
+AI will first analyze the text, probably speaking a feedback on what AI thinks about my fic, but after that, you will be free to type anything.
 
 ### ALERT! SPOILERS!
 
@@ -41,3 +45,7 @@ If the user authorizes, you can freely write any type of detail that is not secu
 ### Safety Settings
 
 If you want to have a complete experience to ask questions about the fic, we recommend you disable all filters. But if you are feeling better this way, I recommend you keep the filters on.
+
+### Demo Image
+
+<img src="/img/ai-example/google-ai.png" />
