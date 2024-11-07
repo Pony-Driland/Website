@@ -650,11 +650,8 @@ $(function () {
           text: "Official AI Models",
           icon: "fa-solid fa-toolbox",
           click: () => {
-            openMDFIle("pages/ai-templates/google-ai-studio.md");
-            urlUpdate(
-              "/pages/ai-templates/google-ai-studio.md",
-              "Official AI Models",
-            );
+            openMDFIle("pages/ai-templates/ai-models.md");
+            urlUpdate("/pages/ai-templates/ai-models.md", "Official AI Models");
           },
         });
 
