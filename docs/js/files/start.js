@@ -644,6 +644,20 @@ $(function () {
           },
         });
 
+        tipsPages.push({
+          href: `javascript:void(0)`,
+          id: "ai-fic-template",
+          text: "Official AI Models",
+          icon: "fa-solid fa-circle-info",
+          click: () => {
+            openMDFIle("pages/ai-templates/google-ai-studio.md");
+            urlUpdate(
+              "/pages/ai-templates/google-ai-studio.md",
+              "Official AI Models",
+            );
+          },
+        });
+
         // Patreon
         if (storyCfg.patreon) {
           donationsItems.push({
