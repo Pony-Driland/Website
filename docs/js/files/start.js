@@ -640,6 +640,19 @@ $(function () {
 
         // Base
         const donationsItems = [];
+        const tipsPages = [];
+
+        // Writer Tips
+        tipsPages.push({
+          href: `javascript:void(0)`,
+          id: "information-menu",
+          text: "AI Tips for writers",
+          icon: "fa-solid fa-circle-info",
+          click: () => {
+            openMDFIle("pages/writerTips.md");
+            urlUpdate("pages/writerTips.md", "AI Tips for writers");
+          },
+        });
 
         // Patreon
         if (storyCfg.patreon) {
@@ -745,25 +758,31 @@ $(function () {
           });
         }
 
-        for (const item in donationsItems) {
-          const newHtml = $("<li>").prepend(
-            $("<a>", {
+        const addDropdown = (where) => {
+          for (const item in where) {
+            const aData = {
               class: "dropdown-item",
-              target: "_blank",
-              href: donationsItems[item].href,
-              id: donationsItems[item].id,
-            })
-              .text(donationsItems[item].text)
-              .prepend(
-                $("<i>", { class: `${donationsItems[item].icon} me-2` }),
-              ),
-          );
+              href: where[item].href,
+              id: where[item].id,
+            };
 
-          if (donationsItems[item].click)
-            newHtml.on("click", donationsItems[item].click);
+            if (where[item].href && where[item].href !== "javascript:void(0)")
+              aData.target = "_blank";
 
-          donationsItems[item] = newHtml;
-        }
+            const newHtml = $("<li>").prepend(
+              $("<a>", aData)
+                .text(where[item].text)
+                .prepend($("<i>", { class: `${where[item].icon} me-2` })),
+            );
+
+            if (where[item].click) newHtml.on("click", where[item].click);
+
+            where[item] = newHtml;
+          }
+        };
+
+        addDropdown(donationsItems);
+        addDropdown(tipsPages);
 
         const metaLogin = {
           base: $("<li>", { class: "nav-item font-weight-bold" }),
@@ -808,6 +827,23 @@ $(function () {
                 urlUpdate();
                 return false;
               }),
+
+            $("<li>", {
+              class: "nav-item dropdown",
+              id: "information-menu",
+            }).prepend(
+              $("<a>", {
+                class: "nav-link dropdown-toggle",
+                href: "#",
+                role: "button",
+                "data-bs-toggle": "dropdown",
+                "aria-expanded": "false",
+              })
+                .text("Informations and Tips")
+                .append($("<span>", { class: "navbar-toggler-icon" })),
+
+              $("<ul>", { class: "dropdown-menu" }).append(tipsPages),
+            ),
 
             // Discord Server
             $("<li>", { class: "nav-item" }).prepend(
