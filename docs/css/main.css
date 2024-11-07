@@ -474,3 +474,18 @@ body.thunder-effect #bg-sky .flash {
 .selected-tr {
     outline: 1px solid red;
 }
+
+#markdown-read pre,
+#markdown-read pre code {
+    font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace !important; 
+}
+
+#markdown-read pre {
+    background-color: #2d2d2d;
+    border: 1px solid #000;
+    padding: 15px;
+}
+
+#markdown-read pre code {
+    color: #fff;
+}

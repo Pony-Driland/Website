@@ -1,3 +1,9 @@
+# Official AI Models
+
+All content developed here uses only authorized official fic material.
+
+This page will contain only content created by me, if you are looking for AI fan-mades, search inside the Pony Driland community itself or on third-party websites that have content availability (but i will not be responsible for content posted by fans on these websites).
+
 ## Google AI Studio
 
 https://aistudio.google.com
