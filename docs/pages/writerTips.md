@@ -51,7 +51,7 @@
     fic inside an AI to stay several hours chatting about everything that happened in the story.
     Imagine you can have a friend who you can talk about your fic at the time you want, when you want, about anything
     you want, this is the experience of using AI, making all this experience very fun.
-    But this will depend solely on the writer's creativity in asking questions for AI, because AI will only provide you
+    But this will depend solely on the writer's creativity in asking questions to AI, because AI will only provide you
     a good conversation if you starts these good conversations.
     <br /><br />
     You can ask about what AI thinks about the last parts you've posted from your fic, question what AI thinks about
