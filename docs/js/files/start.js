@@ -621,18 +621,7 @@ $(function () {
         const donationsItems = [];
         const tipsPages = [];
 
-        // Writer Tips
-        tipsPages.push({
-          href: `javascript:void(0)`,
-          id: "tiny-ai-writer-tips",
-          text: "AI Tips for writers",
-          icon: "fa-solid fa-circle-info",
-          click: () => {
-            openMDFIle("pages/writerTips.md");
-            urlUpdate("/pages/writerTips.md", "AI Tips for writers");
-          },
-        });
-
+        // Tiny Tips
         tipsPages.push({
           href: `javascript:void(0)`,
           id: "information-menu",
@@ -646,9 +635,20 @@ $(function () {
 
         tipsPages.push({
           href: `javascript:void(0)`,
+          id: "tiny-ai-writer-tips",
+          text: "AI Tips for writers",
+          icon: "fa-solid fa-circle-info",
+          click: () => {
+            openMDFIle("pages/writerTips.md");
+            urlUpdate("/pages/writerTips.md", "AI Tips for writers");
+          },
+        });
+
+        tipsPages.push({
+          href: `javascript:void(0)`,
           id: "ai-fic-template",
           text: "Official AI Models",
-          icon: "fa-solid fa-circle-info",
+          icon: "fa-solid fa-toolbox",
           click: () => {
             openMDFIle("pages/ai-templates/google-ai-studio.md");
             urlUpdate(
