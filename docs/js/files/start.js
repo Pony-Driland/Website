@@ -11,8 +11,6 @@ console.log(`Description: ${storyCfg.description}`);
 console.log(`Author: ${storyCfg.creator}`);
 console.log(`Author Page: ${storyCfg.creator_url}`);
 console.log(`Age Rating: ${storyCfg.ageRating}`);
-console.log(`NFT Domain: ${storyCfg.nftDomain.value}`);
-console.log(`NFT Domain Provider: ${storyCfg.nftDomain.name}`);
 console.log(
   `Github Repository: https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}`,
 );
@@ -645,34 +643,22 @@ $(function () {
 
         // Patreon
         if (storyCfg.patreon) {
-          donationsItems.push(
-            $("<li>").prepend(
-              $("<a>", {
-                class: "dropdown-item",
-                target: "_blank",
-                href: `https://patreon.com/${storyCfg.patreon}`,
-                id: "patreon-url",
-              })
-                .text("Patreon")
-                .prepend($("<i>", { class: "fa-brands fa-patreon me-2" })),
-            ),
-          );
+          donationsItems.push({
+            href: `https://patreon.com/${storyCfg.patreon}`,
+            id: "patreon-url",
+            text: "Patreon",
+            icon: "fa-brands fa-patreon",
+          });
         }
 
         // Kofi
         if (storyCfg.kofi) {
-          donationsItems.push(
-            $("<li>").prepend(
-              $("<a>", {
-                class: "dropdown-item",
-                target: "_blank",
-                href: `https://ko-fi.com/${storyCfg.kofi}`,
-                id: "kofi-url",
-              })
-                .text("Ko-Fi")
-                .prepend($("<i>", { class: "fa-solid fa-mug-hot me-2" })),
-            ),
-          );
+          donationsItems.push({
+            href: `https://ko-fi.com/${storyCfg.kofi}`,
+            id: "kofi-url",
+            text: "Ko-Fi",
+            icon: "fa-solid fa-mug-hot",
+          });
         }
 
         // Bitcoin
@@ -681,19 +667,13 @@ $(function () {
           storyCfg.bitcoin.address &&
           storyCfg.bitcoin.explorer
         ) {
-          donationsItems.push(
-            $("<li>").prepend(
-              $("<a>", {
-                class: "dropdown-item",
-                target: "_blank",
-                href: storyCfg.bitcoin.explorer + storyCfg.bitcoin.address,
-                id: "bitcoin-wallet",
-              })
-                .text("Bitcoin")
-                .prepend($("<i>", { class: "fa-brands fa-bitcoin me-2" }))
-                .click(baseCryptoModal("bitcoin", "Bitcoin")),
-            ),
-          );
+          donationsItems.push({
+            href: storyCfg.bitcoin.explorer + storyCfg.bitcoin.address,
+            id: "bitcoin-wallet",
+            text: "Bitcoin",
+            icon: "fa-brands fa-bitcoin",
+            click: baseCryptoModal("bitcoin", "Bitcoin"),
+          });
         }
 
         // Dogecoin
@@ -702,19 +682,13 @@ $(function () {
           storyCfg.dogecoin.address &&
           storyCfg.dogecoin.explorer
         ) {
-          donationsItems.push(
-            $("<li>").prepend(
-              $("<a>", {
-                class: "dropdown-item",
-                target: "_blank",
-                href: storyCfg.dogecoin.explorer + storyCfg.dogecoin.address,
-                id: "dogecoin-wallet",
-              })
-                .text("Dogecoin")
-                .prepend($("<i>", { class: "cf cf-doge me-2" }))
-                .click(baseCryptoModal("dogecoin", "Dogecoin")),
-            ),
-          );
+          donationsItems.push({
+            href: storyCfg.dogecoin.explorer + storyCfg.dogecoin.address,
+            id: "dogecoin-wallet",
+            text: "Dogecoin",
+            icon: "cf cf-doge",
+            click: baseCryptoModal("dogecoin", "Dogecoin"),
+          });
         }
 
         // Ethereum
@@ -723,19 +697,13 @@ $(function () {
           storyCfg.ethereum.address &&
           storyCfg.ethereum.explorer
         ) {
-          donationsItems.push(
-            $("<li>").prepend(
-              $("<a>", {
-                class: "dropdown-item",
-                target: "_blank",
-                href: storyCfg.ethereum.explorer + storyCfg.ethereum.address,
-                id: "ethereum-wallet",
-              })
-                .text("Ethereum")
-                .prepend($("<i>", { class: "fa-brands fa-ethereum me-2" }))
-                .click(baseCryptoModal("ethereum", "Ethereum")),
-            ),
-          );
+          donationsItems.push({
+            href: storyCfg.ethereum.explorer + storyCfg.ethereum.address,
+            id: "ethereum-wallet",
+            text: "Ethereum",
+            icon: "fa-brands fa-ethereum",
+            click: baseCryptoModal("ethereum", "Ethereum"),
+          });
         }
 
         // Polygon
@@ -744,55 +712,57 @@ $(function () {
           storyCfg.polygon.address &&
           storyCfg.polygon.explorer
         ) {
-          donationsItems.push(
-            $("<li>").prepend(
-              $("<a>", {
-                class: "dropdown-item",
-                target: "_blank",
-                href: storyCfg.polygon.explorer + storyCfg.polygon.address,
-                id: "polygon-wallet",
-              })
-                .text("Polygon")
-                .prepend($("<i>", { class: "cf cf-matic me-2" }))
-                .click(baseCryptoModal("polygon", "Polygon")),
-            ),
-          );
+          donationsItems.push({
+            href: storyCfg.polygon.explorer + storyCfg.polygon.address,
+            id: "polygon-wallet",
+            text: "Polygon",
+            icon: "cf cf-matic",
+            click: baseCryptoModal("polygon", "Polygon"),
+          });
         }
 
         // BNB
         if (storyCfg.bnb && storyCfg.bnb.address && storyCfg.bnb.explorer) {
-          donationsItems.push(
-            $("<li>").prepend(
-              $("<a>", {
-                class: "dropdown-item",
-                target: "_blank",
-                href: storyCfg.bnb.explorer + storyCfg.bnb.address,
-                id: "bnb-wallet",
-              })
-                .text("BNB")
-                .prepend($("<i>", { class: "cf cf-bnb me-2" }))
-                .click(baseCryptoModal("bnb", "BNB")),
-            ),
-          );
+          donationsItems.push({
+            href: storyCfg.bnb.explorer + storyCfg.bnb.address,
+            id: "bnb-wallet",
+            text: "BNB",
+            icon: "cf cf-bnb",
+            click: baseCryptoModal("bnb", "BNB"),
+          });
         }
 
         // Crypto Wallet
         if (storyCfg.nftDomain && storyCfg.nftDomain.url) {
-          donationsItems.push(
-            $("<li>").prepend(
-              $("<a>", {
-                class: "dropdown-item",
-                target: "_blank",
-                href: storyCfg.nftDomain.url.replace(
-                  "{domain}",
-                  storyCfg.nftDomain.domainWallet,
-                ),
-                id: "crypto-wallet",
-              })
-                .text("Unstoppable Domains")
-                .prepend($("<i>", { class: "fas fa-wallet me-2" })),
+          donationsItems.push({
+            href: storyCfg.nftDomain.url.replace(
+              "{domain}",
+              storyCfg.nftDomain.domainWallet,
             ),
+            id: "crypto-wallet",
+            text: "More crypto wallets",
+            icon: "fas fa-wallet",
+          });
+        }
+
+        for (const item in donationsItems) {
+          const newHtml = $("<li>").prepend(
+            $("<a>", {
+              class: "dropdown-item",
+              target: "_blank",
+              href: donationsItems[item].href,
+              id: donationsItems[item].id,
+            })
+              .text(donationsItems[item].text)
+              .prepend(
+                $("<i>", { class: `${donationsItems[item].icon} me-2` }),
+              ),
           );
+
+          if (donationsItems[item].click)
+            newHtml.on("click", donationsItems[item].click);
+
+          donationsItems[item] = newHtml;
         }
 
         const metaLogin = {
@@ -1038,20 +1008,6 @@ $(function () {
             })
               .text("Mastodon")
               .prepend($("<i>", { class: "fa-brands fa-mastodon me-2" })),
-          ),
-        );
-      }
-
-      // Lenster
-      if (storyCfg.lenster) {
-        tinyFooter[1].push(
-          $("<li>").prepend(
-            $("<a>", {
-              target: "_blank",
-              href: `https://lenster.xyz/u/${storyCfg.lenster}`,
-            })
-              .text("Lenster")
-              .prepend($("<i>", { class: "fa-solid fa-share-nodes me-2" })),
           ),
         );
       }

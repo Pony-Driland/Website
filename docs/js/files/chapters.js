@@ -252,25 +252,7 @@ var storyData = {
 
         // Start App
         $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
-        if (
-          storyCfg.nftDomain &&
-          typeof storyCfg.nftDomain.value === "string" &&
-          storyCfg.nftDomain.value.length > 0
-        ) {
-          resolution
-            .ipfsHash(storyCfg.nftDomain.value)
-            .then((cid) => {
-              storyData.cid = cid;
-              storyData.cid32 = CIDTool.base32(cid);
-              startTinyApp();
-            })
-            .catch((err) => {
-              failApp(err);
-              startTinyApp();
-            });
-        } else {
-          startTinyApp();
-        }
+        startTinyApp();
       } else {
         failApp(new Error("Start App not found!"));
       }
