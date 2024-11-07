@@ -37,3 +37,48 @@ This is the main justification that the characters Vinny and Yasmin are alternat
 There is much more content that I have developed, but it has not been placed in the original game folder. Rainbow Queen already existed at the beginning of the game's development, but it was not the same Rainbow Queen of the final version. Although Rainbow Queen 2018 has already had some of the features of the current Rainbow Queen as the energy control skills that were already dark since the beginning, this Rainbow Queen has not yet had a deep story, as there were no characters like James and Rayane.
 
 Rainbow Queen of 2018 reminded much more of an organic version of a Rainbow Factory (brony fic), which was the first inspiration used to create the character before she was transformed into the Rainbow Queen we know today.
+
+## Map development
+
+This version of the map is made entirely in css. There is still no final developed version of this map at the time I'm writing it (11/07/2024) (mm/dd/yyyy).
+
+Although I still don't have the official map, I always find it good to have a location note in a story.
+
+<img src="./img/museum/map-beta-1.png" />
+
+But this map is not the first developed either. Actually this map is inspired by another map that I drew in real life when I was trying to develop a poke-fic. This drawing should have about 10 years of existence, I no longer remember the exact date, excuse the dirty old paper, but the paper really was inside a "treasure chest".
+
+The sheet of paper where I drew this map is giant, I hardly managed to put on the table of my computer, but there is the image.
+
+<img src="./img/museum/photo_2024-11-07_10-28-53.jpg" />
+
+Maybe I'll reuse some of these names on fic Pony Driland. I'm not gonna put it like a promise, but as a probability.
+
+I knew absolutely nothing English or Japanese in my childhood, so I simply wrote the names randomly, so do not try to look for meaning in them.
+
+The only logic of these names is that they are modified names of real names of my state where I was born. The state name is "Espírito Santo".
+
+<img src="./img/museum/photo_2024-11-07_15-14-42.jpg" />
+Azure Stone
+
+Sekon Ruins (Serra)
+
+Hakiro City
+
+Son Makons City (São Mateus)
+
+Sunatino (Colatina)
+
+Kakiaco City (Cariacica)
+
+Linhaho City (Linhares)
+
+Guarapan City (Guarapari)
+
+Arocruzo City (Aracruz)
+
+VItokion City (Vitória)
+
+Region: Kanitono
+
+<img src="./img/museum/photo_2024-11-07_15-15-08.jpg" />
