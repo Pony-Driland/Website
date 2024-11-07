@@ -645,12 +645,23 @@ $(function () {
         // Writer Tips
         tipsPages.push({
           href: `javascript:void(0)`,
-          id: "information-menu",
+          id: "tiny-ai-writer-tips",
           text: "AI Tips for writers",
           icon: "fa-solid fa-circle-info",
           click: () => {
             openMDFIle("pages/writerTips.md");
             urlUpdate("pages/writerTips.md", "AI Tips for writers");
+          },
+        });
+
+        tipsPages.push({
+          href: `javascript:void(0)`,
+          id: "information-menu",
+          text: "Museum",
+          icon: "fa-solid fa-building-columns",
+          click: () => {
+            openMDFIle("pages/museum.md");
+            urlUpdate("pages/museum.md", "Museum");
           },
         });
 
