@@ -533,27 +533,6 @@ $(function () {
       // Readme
       storyData.readme = readme;
 
-      // Get News
-      /* if (storyCfg && storyCfg.news && storyCfg.news.url) {
-                fetch(storyCfg.news.url, { method: 'GET' })
-                    .then(response => response.json())
-                    .then(data => {
-    
-                        console.log(data);
-    
-                    });
-            } */
-
-      /* 
-            
-    dsMK.toHTML(data[item].content, {
-        escapeHTML: true,
-        embed: false,
-        discordOnly: false,
-    });
-            
-            */
-
       // Read Me Disable
       let readButtonDisabled = "";
       if (storyCfg.underDevelopment) {
@@ -1215,15 +1194,6 @@ $(function () {
       fn();
     });
   };
-
-  /* fetch('https://api.ipregistry.co/?key=tryout').then(function (response) { return response.json(); }).then(function (payload) {
-        storyData.ipRegistry = payload;
-        puddyWeb3.waitReadyProvider().then(startApp).catch(startApp);
-    }).catch(err => {
-        console.error(err);
-        alert(err.message);
-        puddyWeb3.waitReadyProvider().then(startApp).catch(startApp);
-    }); */
 
   puddyWeb3.waitReadyProvider().then(startApp).catch(startApp);
 });
