@@ -69,24 +69,11 @@ var storyCfg = {
         explorer: 'https://polygonscan.com/address/'
     },
 
-    // NFT Domain
-    nftDomain: {
-        contract: '0xc322b221237473c75bb9e0bea85f47e847f5c703',
-        blockchain: 'polygon',
-        url: 'https://ud.me/{domain}',
-        /* value: 'ponydriland.dream', */
-        domainWallet: 'jasmindreasond.x',
-        valueURL: 'ponydriland.dream',
-        name: 'Unstoppable Domains'
-    },
-
     // Info
     mastodon: {
         domain: "equestria.social",
         username: "JasminDreasond"
     },
-
-    lenster: 'jasmindreasond',
 
     // Info
     mirror: [
