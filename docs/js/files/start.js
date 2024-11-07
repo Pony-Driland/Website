@@ -629,7 +629,7 @@ $(function () {
           icon: "fa-solid fa-circle-info",
           click: () => {
             openMDFIle("pages/writerTips.md");
-            urlUpdate("pages/writerTips.md", "AI Tips for writers");
+            urlUpdate("/pages/writerTips.md", "AI Tips for writers");
           },
         });
 
@@ -640,7 +640,7 @@ $(function () {
           icon: "fa-solid fa-building-columns",
           click: () => {
             openMDFIle("pages/museum.md");
-            urlUpdate("pages/museum.md", "Museum");
+            urlUpdate("/pages/museum.md", "Museum");
           },
         });
 
