@@ -621,6 +621,14 @@ $(function () {
         const donationsItems = [];
         const tipsPages = [];
 
+        // Derpibooru
+        tipsPages.push({
+          href: `https://derpibooru.org/tags/${storyCfg.derpibooru_tag}`,
+          id: "derpibooru-page",
+          text: "Derpibooru",
+          icon: "fa-solid fa-paintbrush",
+        });
+
         // Tiny Tips
         tipsPages.push({
           href: `javascript:void(0)`,
@@ -829,6 +837,18 @@ $(function () {
                 return false;
               }),
 
+            // Discord Server
+            $("<li>", { class: "nav-item" }).prepend(
+              $("<a>", {
+                class: "nav-link",
+                target: "_blank",
+                href: `https://discord.gg/${storyCfg.discordInvite}`,
+                id: "discord-server",
+              })
+                .text("Discord Server")
+                .prepend($("<i>", { class: "fab fa-discord me-2" })),
+            ),
+
             $("<li>", {
               class: "nav-item dropdown",
               id: "information-menu",
@@ -844,30 +864,6 @@ $(function () {
                 .append($("<span>", { class: "navbar-toggler-icon" })),
 
               $("<ul>", { class: "dropdown-menu" }).append(tipsPages),
-            ),
-
-            // Discord Server
-            $("<li>", { class: "nav-item" }).prepend(
-              $("<a>", {
-                class: "nav-link",
-                target: "_blank",
-                href: `https://discord.gg/${storyCfg.discordInvite}`,
-                id: "discord-server",
-              })
-                .text("Discord Server")
-                .prepend($("<i>", { class: "fab fa-discord me-2" })),
-            ),
-
-            // Derpibooru
-            $("<li>", { class: "nav-item" }).prepend(
-              $("<a>", {
-                target: "_blank",
-                class: "nav-link",
-                href: "https://derpibooru.org/tags/" + storyCfg.derpibooru_tag,
-                id: "derpibooru-page",
-              })
-                .text("Derpibooru")
-                .prepend($("<i>", { class: "fa-solid fa-paintbrush me-2" })),
             ),
 
             // Donations Button
