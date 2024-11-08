@@ -61,6 +61,8 @@ The only logic of these names is that they are modified names of real names of m
 You can realize that the idea of having an ice mountain with a huge snowstorm already exsted here, just changing the fact that here this mountain was in a farther place, while on the map of Pony Driland this mountain is centered on the map.
 
 <img src="./img/museum/photo_2024-11-07_15-14-42.jpg" />
+
+```
 Azure Stone
 
 Sekon Ruins (Serra)
@@ -79,8 +81,9 @@ Guarapan City (Guarapari)
 
 Arocruzo City (Aracruz)
 
-VItokion City (Vitória)
+Vitokion City (Vitória)
 
 Region: Kanitono
+```
 
 <img src="./img/museum/photo_2024-11-07_15-15-08.jpg" />
