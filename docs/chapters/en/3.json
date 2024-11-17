@@ -22763,7 +22763,7 @@
   },
 
   {
-    "value": "So... are you leaving already? So it's ok... at night we'll meet so... It was nice getting to know you all better.",
+    "value": "So... are you leaving already? W..Well... it's ok... at night we'll meet so... It was nice getting to know you all better.",
     "character": "Aniya",
     "type": "dialogue"
   }, 
@@ -22775,7 +22775,7 @@
   }, 
 
   {
-    "value": "Y..Yes! I'll come, it's just going to be later.. Maybe lunch time is my break.",
+    "value": "Y..Yes! I'll come, it's just going to be later.. Maybe lunch time can be my break.",
     "character": "Aniya",
     "type": "dialogue"
   }, 
@@ -22812,6 +22812,667 @@
   {
     "value": "So Vinny, Rayane, and James get out of Aniya's cabin and start talking during the travel.",
     "type": "action"
+  }, 
+
+  {
+    "value": "Okay...",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The place was pretty empty, it seemed a lot less busy at this time. But it could be seen that there were more ponies walking the village streets.",
+    "type": "action"
+  },
+
+
+  {
+    "value": "James... Do you have your money there? Look on the good side, she just by looking at you knew you were a scientist, the two of you make a beautiful couple, as if you were an atheist and a believer.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "What? Are you shipping me?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was confused and embarrassed.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "WOW! You aged about 10 years after using that word, but hey, you noticed a lot, right James? Anyway, we discovered a lot, if you paid attention, and remember the location of the energy peaks on the mountain, you should have already called 1+1=2.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James does a facehoof.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "How beautiful... Alright... that I noticed a long time ago. I used this mountain location's data as a base for knowing when the Rainbow Queen is close.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hm! It worked fine yesterday... 2 times. Hihi! But calm down, where do you want to go now?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Silly ones~  wasn't your plan to find Amy?~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny feels a little surprised to remember about this detail.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y..Yes! Yes, but if you two want to do something else, too, for me we'd go see Amy, I don't know if James wants to hang out for a while.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was surprised for a few seconds before answering",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... I have to get back to the lab. I can't be too late to help Kai. But in a way thanks for the fun.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? Will you help Kai with what?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I have to finish the machine that we will use the power to restore the energy of both regions for us to put an end to this mess.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Two machines? Wow, well, good luck then. But what about the money?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes. Yes... I'm getting paid for it too. So we're helping each other.",
+    "character": "James",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "No, did you bring money here with us?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "What? No... I left everything at home because I already knew that Rayane was just going to teleport us.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah! Alright, well then let's go then. Rayane, I'm ready!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane seemed thoughtful, she was secretly thinking about Aniya's behavior for a few seconds before looking again at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smirks at Vinny, quietly listening to the conversation.",
+    "type": "action"
+  },
+
+  {
+    "value": "Heh~ Let's go then... the two silly ones~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane started to prepare the magic of the horn, concentrating energy to perform the teleport skill.",
+    "type": "action"
+  },
+
+  {
+    "value": "Aniya's looks looked like she's trying to say something different.",
+    "character": "Rayane",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Rayane then teleported everyone back to James' lab, but Rayane still didn't turn off the magic.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "My god... Rayane is fast using this magic!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "You're welcome~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W..Wait... Rayane?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes?~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane looks directly at Vinny while smirking in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Your horn?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "My horn?~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes... your horn...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Good luck to you two. I'll see you later.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James looked at Rayane's strange reaction, finding it all very strange, but then just ignored it, understanding that Rayane was being silly. James go back to the lab and closes the door.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh. Ok~ I can't hold for long time.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane poked Vinny's nose and teleported again, and now Vinny and Rayane were close to the village exit.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...Whaaat?! Why here again? Is amy here?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes~ she told me she would be here. I need to think of something, and I imagine you also have important things to do now.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well... let's look for her, without husband and wife this time.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny spoke a little disappointed with irony.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... Who knows in the future.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Awwwwww~ Don't worry... You can still do another roleplay with this little bow on your ear.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane laugh a little in response while looking at the red bow on the Vinny's head.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Look, if you leave everything to me, we could end up becoming each other's pet.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny boops Rayane in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Are we going to split up or together?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smirks at Vinny when receiving the boop, touching Vinny's hoof in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh~ You've been getting really silly lately again~ Let's search individually but without leaving each other's close.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "But... Why are you different? Is something happening?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was a little uncomfortable, but then she answered.",
+    "type": "action"
+  },
+
+  {
+    "value": "You spent too long watching me cry and get dramatic. I thought you missed seeing me a little happier.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ohhh.. you're getting different, but I'm going up.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well... Yes.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was trying to ignore Vinny's words a little and started looking to Amy while Vinny started flying, looking Amy, too. Vinny spent a few minutes looking for something, then it didn't take long, Vinny would find Amy and Yasmin near the village border alone in a flower bed. Amy seemed busy helping Yasmin not feel alone.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..Ah? Yes! I found it!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny flew back to Rayane to inform her.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Rayane! Amy and Yasmin are near the village border alone in a flower bed. I did!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was still thinking about Aniya, but then she looked curiously at Vinny when she heard about Yasmin and Amy.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Flower bed? Well, looks like we're going to have to take it slow... Remember what Aniya said about Yasmin.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? I forgot...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "She said that Yasmin is still embarrassed to introduce herself to us. Don't you remember that Amy was afraid of you at first? It will be something like that. Yasmin will need to feel safe again, maybe a good conversation will help her feel better.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmm... she still remembers me, anyway, this little bow on me will help, in the middle of the way I take a flower and give it to you too to be more beautiful than you already are.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Flower? Heh~ Choose the flower of a princess very well.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smirks before poking Vinny nose in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But let's be very careful, we don't know what happened to Yasmin after the last night.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah... Let's go.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny walked while talking to Rayane. Vinny breathes deeply during the progress.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Have you thought about the end of everything? If everything goes right? I go back to my world, you go back to yours, James, Yasmin. We will never see each other again.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? Go back to our world?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was a little surprised.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W..Well... This is a very difficult choice, I can't imagine a life without you around anymore. I think I've gotten too used to this reality now.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny got a little thoughtful and worried while still walking hoping to get close to the flower fields.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I...",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny would get close to some bushes and trees. Vinny could see Amy and Yasmin together sharing a sandwich. Yasmin was very shy and Amy was very cheerful trying to make her feel more comfortable. Vinny was then interrupted to see Rayane feeling better at seeing that Yasmin is fine.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Awwwwww~ Amy really did what she promised you after all.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..Ah! Promise me to take care of me then!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh~ I take good care of my dream when he needs me. I've been doing this for a long time~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The two again looked at the Amy situation. Vinny and Rayane could see that the place was very quiet, it was just a simple hidden flower bed that few ponies could find alone. Yasmin and Amy were still there talking near some other trees that were nearby, enjoying the shade of the trees.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "At least she's really feeling good. Should I trust that Rainbow Queen is keeping her promise?",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "A..Ah... Seriously... how are we supposed to show up without looking like a couple?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I don't know~ I was being too silly with my words. What's your plan then?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I think it's better if we approach in a super normal way, if she sees us I'll take a flower and give it to you to put it on your hair. It's hard not to notice me with this relationship here.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "So let's go sir silly... Choose your princess flower very well~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then pushed Vinny gently to go ahead, making Vinny feel a little nervous for a few seconds. Vinny saw flowers of different colors, it was very good to choose which colors him wanted to use.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well! Between red or blue... little blue to represent you now, and maybe a red one to represent you from before... which one will I choose in?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Blue or red? What do you mean by red?~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I just explained, uh, I think it's going to be a really blue one, representing a new life, just like your eyes. Hihi!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "My eyes? The eyes that look at you every time you wake up~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks at Yasmin, still walking during the progress. Yasmin and Amy were still distracted eating the morning snack, but when Vinny tried to think about the flowers, he feels that Amy realized his presence.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... I... Ah!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny waves to Amy in response.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Amy! Jasmin!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy smiled and waved back. But Yasmin was scared and tried to hide behind Amy out of shame. Amy was then slightly surprised and tried to help her in response. Rayane was slightly surprised to see that Yasmin's eye colors were different.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Jasmin?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "first-yasmin-night"
+    },
+    "value": "Those eyes, she's really scared. What happened here?",
+    "character": "Rayane",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Hey... Yasmin... calm down... It's Vinny, I said we'd meet him again sometime here.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny waved back smiling a little and then took the flower that was more similar to Rayane's eye and put it on her mane. Rayane looked a little worried about Vinny's behavior without him realizing it.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Keep calm, we came to see you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh no...",
+    "character": "Rayane",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny could just see that Yasmin was watching, still slightly hidden, but her eyes still represented a certain fear of something.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Jasmin?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "You didn't tell me that her eyes had changed too.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wasn't it to change? When Rain locked the collar, an aura covered her and her eyes slowly became just like Amy's eyes.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was slightly surprised while answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I've never seen this Rain ritual in my entire life, so I don't know much about the process.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh... hi everypony? What are you two talking about? Can I help you?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy replied slightly curious and shy, trying to understand what was happening.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..Ah! Hi Amy! We missed you, that's reason we're looking for you.",
+    "character": "Vinny",
+    "type": "dialogue"
   }
   
 ]
