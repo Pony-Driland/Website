@@ -23394,7 +23394,7 @@
 
   {
     "set": {
-      "playlistPlay": "first-yasmin-night"
+      "playlistPlay": "aniya-first-time"
     },
     "value": "Those eyes, she's really scared. What happened here?",
     "character": "Rayane",
@@ -23465,12 +23465,735 @@
   }, 
 
   {
-    "value": "Amy replied slightly curious and shy, trying to understand what was happening.",
+    "value": "Amy replied slightly curious and shy, trying to understand what was happening. So when Vinny realized Amy's question, Vinny tried to focus on the subject of the conversation on her.",
     "type": "action"
   }, 
 
   {
-    "value": "A..Ah! Hi Amy! We missed you, that's reason we're looking for you.",
+    "value": "A..Ah! Hi Amy... We missed you, that's reason we're looking for you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+
+  {
+    "value": "Vinny looked at Rayane and went back to talking to amy. Vinny breathes deeply before continuing the conversation, looking a little worried at Yasmin.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... We were talking about Yasmin, we missed her a lot too.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny smiles a little in response. Amy then got a little worried about seeing Vinny's behavior, she made a small friendly smile as she responded.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I... I'm glad to see you...",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy tries to help Yasmin to stop hiding, but Yasmin seemed to be feeling even more intimidated by the presence of Vinny. Rayane looked at this moment as a good opportunity to try to feel the energy of Yasmin's soul while everyone was busy talking.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y...Yasmin?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin then decides to hide behind a tree during the process.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "N...no.... I can't appear like this.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin started to cry a little while answering. Amy then approached a little Yasmin, feeling worried about seeing her tears.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "B.. but it's Vinny... You told me so much about him when we were at our master's house.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy replied with a slight sad face, approaching her, trying to make her calm down. Vinny then looked worried at Yasmin and tried to talk when he realized that Yasmin was with the red bow on her head.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hey... Jasmin... It's ok, I came with a bow too, so you can see that, you know this bow very well, you've already seen it, if you want I'll tell you how Mrs. Rayane made it appear on my life.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny smiles a little in reponse. No one was realizing it, but Rayane was a little more concerned than normal.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Her soul is... is very sensitive, I am not enjoying it. Her soul suddenly became very sensitive in few seconds. If I at least had the ability to feel her soul more deeply.",
+    "character": "Rayane",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Yasmin then looked at Vinny bow, she tried to look for some acceptance by observing the bow, but she hid again. Yasmin was slightly depressed when answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I... I'm ashamed about many things...",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Sorry Mr Vinny... But she's not feeling well yet.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy replied slightly sad as she approached Yasmin and hugged her to try to make her feel better.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "My master said it might still take a while for her to calm down.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh, it's ok, I understand, I really wanted to see you two, hang out with you for a while, I promised that I would see Yasmin's first flying training session.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny sit down while talking. Yasmin slightly cried a little more when remembering the training.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...What? That's really weird. She looks sadder than yesterday.",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Yes... She said that she had promised that you would watch her training, that's reason I went to the market to buy some food for us to eat while she stayed here resting. But now I'm very worried, she's very ashamed to see you.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy does a small depressive look and started talking with a sad voice, trying to be as sincere as possible.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But... Yasmin woke up in the middle of the night while my master had used her sphinx magic to make us feel more cozy during our night's sleep. She was very surprised not knowing what to do, so my master started talking to her, asking if she was ok and what she liked. So she had invited Yasmin closer to her face and started licking her gently to make her feel safer.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...Whaaat?",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "We woke up the next day and she was feeling better, but I couldn't understand why she was very depressed. My master said she needs a lot of emotional support from me because she went through a traumatic moment. So... I think I'm understanding what's going on. She just wants some acceptance.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was slightly surprised and just tried to speak softly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Vinny... Listen to me. Rain is slowly demarcating Yasmin in the same way she already demarcated Amy. Rain doesn't want Yasmin to leave Amy, she wants Yasmin to stay with her and Amy. I think Rain is trying to demonstrate something to you so much to her through this, but I still can't understand what it is.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was slightly worried when she finished answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I think this is going to be harder than I thought. We won't be able to do this in a few hours. I know it all sounds silly, but remember it's the same Rain that tried to kill you.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "B..but! God, it looks like I'm sinking in a lot of shit every day.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked at the ground, thoughtful and a little depressed for a few seconds, so he looked again at Amy who was still waiting for some response from Vinny. He sat next to Amy and talked.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Jasmin... Amy... It's okay, I understand, I like being close to you Jasmin, of you 2 actually, no problem, I really believe that you will overcome everything, just remember our moments in the Discord, in voice chat playing GTA, here you can relax.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny smiles a little for everyone.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "We are still your friends, Amy is still your friend, I am still your friends, Rayane too, we will all be supporting you whatever your need or what you need, we believe in you Jasmin.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin looked shyly at Vinny, trying to find some comfort in his words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I... I still have to get over that we're a long way from home and why all this is happening. B...but still thank you for appreciating my only little way to help you. I just need to take my time.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin tried to stop being sad, but couldn't, remembering the moment she saw how well the good duo between Vinny and Rayane, then Yasmin cried a little more before slowly walking away again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y... You two are a nice duo... and I've already done my little part to save your life after your hamburger accident. It seems my usefulness is over.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin does a dramatic smile while whining and crying again for a few seconds. Yasmin put her hoof on her chest, looking to feel some kind of pain.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "M...my... my usefulness...",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Amy was surprised and worried about Yasmin's words so she hugged her to try to make her feel better as soon as possible. Rayane was also surprised, but she didn't know what to say.",
+    "type": "action"
+  },  
+
+  {
+    "value": "My God... it seems my theory is getting right. Her soul cannot continue this way. This will end up accelerating Rain's plan.",
+    "character": "Rayane",
+    "type": "think"
+  },
+
+  {
+    "value": "N..no... Yasmin... Please no. I promise everything will be fine. Your friends are here... and you're so much more than useful to me. You're the one who said I'm cute and made me feel happy to have a new best friend. Now you're as cute as I am... We can be great friends together with our master.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy does a small depressive smile, feeling very worried about Yasmin. Yasmin was surprised by the hug before answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "O..oh yes Amy... Thank you so much for being my new friend. Can we... can we try on yesterday's clothes again?",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin wiped her eyes a little while feeling slightly better from the hug.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes! I'll let you use your favorite.... Well Mr Vinny, we'll go home. If we don't show up in the afternoon, we'll be back at night.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy replied in the most positive way possible, adjusting Yasmin's red bow gently to try to cheer her up a little more. Vinny seemed surprised, feeling affected by the whole situation, but sought to keep calm so as not to feel anxious while responding a little depressed.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y...Yeah! Yeah, that's fine, you have my support, but Amy... don't forget my words I've said to you now and before. Our last night talk about Yasmin.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny breathes deeply before continuing to respond.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Jasmin... I will always support you to be happy, I find out it's not your fault I ended up here, you just bought me a snack, relax, try to cheer up with us, if you can't try with Amy, remember, everyone we have something bigger waiting for us. Trust me... Hihi... There will still be a lot of bubbles coming from me.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny smiles at Rayane. Rayane still worried, just smiled a little back, trying to bring some hope. Then Vinny goes back to Amy and Yasmin.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Just promise me you'll call me when you start training your wings, alright?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny picked up 2 flowers and gently delivered to Amy and Yasmin.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "One for you and one for Jasmin ok? So you two don't forget about me and Rayane.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Yasmin lowered her face and looked down for a few seconds, then slightly looked up, Yasmin's eyes showed that she was extremely unstable emotionally.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y...Yes.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Amy sympathized with Yasmin, and held the flowers while still hugging her gently, trying to make her feel better. Then Amy does a little shy smile and put the flowers on the red bows.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "We won't forget you, Mr Vinny and Rayane.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy looked at Yasmin's face, helping her get up from the hug.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Come on Yasmin... Our master will be worried about you if she finds you like this.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy's collar began to glow and a teleportation aura began to form between Amy and Yasmin.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y..Yes... Amy.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin then stopped looking at Vinny and Rayane and went back to looking down and at the collar, waiting for the teleport to be executed.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "See you later Yasmin, stay safe...",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane does a gentle and slow wave to allow Yasmin to wave back while doing a little smile so Yasmin wouldn't be intimidated.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Yeah... See you later, Yasmin.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny would move away and stay close to Rayane waving at the same rhythm and smiling.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Bye.",
+    "character": "Yasmin",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "sad"
+    },
+    "value": "Yasmin did not seem to know more than words to say, so the two ones simply disappeared in colored glow. Rayane then began to say in a sad voice.",
+    "type": "action"
+  },
+
+
+  {
+    "value": "Vinny... now I understand perfectly the reason Rain chose Yasmin.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny breathes deeply and looks at Rayane, trying do not feel worse than he was already.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Tell me... a good thing isn't it?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes. It's not good at all. Rain always chooses her pets for ponies that are very depressed, remember? Your friend was sorry about her accident, She is also sad that she had to sacrifice her decisions to see you feeling better. She's also sad that we didn't give her much chance to identify with our friend group... She's also depressed knowing she won't be coming home.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then looked at Vinny's eyes to finish the dialogue more deeply.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And now she's also depressed about not feeling useful to you anymore. And the only alternative she felt more welcomed was next to Amy. Rain knew that Yasmin was going to feel the perfect storm to become her pet and make Amy feel happy with her. It looks like the hole is much deeper in how you're going to get her back.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried to hold the feeling of guilt and frustration for a few seconds before answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I... I had been thinking about it but i've never looked that way, in fact she is all that, but there's something more. Rayane... in my world, there was always someone depressed that came to me, even though they didn't know me, I attract it, I know very well how each one is and reacts, Jasmin is not in her normal, this is of relevance even for Rainbow.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks at Rayane a little seriously.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I have the knife and the cheese to ruin all this chemistry between Amy, Yasmin and Rainbow, if she knows the truth of all this, she'll hate Rainbow, but that... let's leave it as a last option. The worst case is that Yasmin gets worse, she just gets sad and sad and never gets happy again, it spreads until it takes over her body and mind. Anyway I still haven't given up on her, the gypsy is hiding things from Rainbow, I'm worried that she did something, took something from her. I don't know... It's like Rain took the will of something from some pony, there are many types of spells, even time, what if Rainbow takes the pets, and uses them as a recharge for something bigger?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny breathes deeply before he keeps talking.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Anyway I won't let Rainbow plans continue like it. If she really likes the pets, she'll have to at least listen to me if she wants Yasmin well, because it's not up to her, even with spells and everything, the feeling goes it's in there.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "One of Rayane's hooves embraced Vinny gently during the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "No Vinny... I know that Rain is very predatory, but in the end she just has a very quetionable way to take care her pets. Yasmin was a special case for her, she was mad at you because of Ivy. In the end Rain just wanted a pet and the worst part stayed for you.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane showed a guilt-feeling look at Vinny during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'm sorry for everything that happened... But please, let's take it easy. Remember Aniya? She looks like she had a similar idea to yours, and she looks regretful. If you separate Yasmin, Amy, and Rain, there will still be a lot of emotional scars between them. Because now Rain has already planted in Yasmin's head the feelings of pet.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane gently delivers a flower to Vinny while continuing the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You need to be very careful... Rain really loves her pets... She will make Yasmin feel happy again, but she will discreetly try to make Yasmin walk away from you during this process. Remember it... In Rain's head the only problem is you, not Yasmin. And it can be very destructive to us to destroy this true feeling by her pets.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Exactly, Rayane, the two of us are going to lose, do you think Rain will want to lose something? I don't want to make it worse, but in extreme cases, the alternatives are running out, but I'm aware of the situation, just trust me. Don't believe what you hear out there, Yasmin is sad, this is a street of double meaning, she is not sad just with Rain, she is sad in everything, a depressed pony is easily manipulated by others to make it worse, but she It's still depressing for me, why not manipulate it to feel good? No magic or anything?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked at the flower while he kept talking.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Anyway, remember what the gypsy said, time is precious, anyway, if Yasmin gets worse, Amy will notice, this is a key, you can try to convince her to convince Yasmin to leave. I said that they are free to want to leave, the moment to convince them to want to leave on their own is now, that they are finding everything strange, sad about everything. The difficult thing is to do this with Amy close to Yasmin, I don't want to hurt her feelings if she hears something from me or Yasmin about being a pet in a negative sense.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane replied slightly sad in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But we're going to have an even worse situation if we make Rain feel even lonelier. Remember that if she loses control of her emotions, she will become extremely destructive. Can you imagine the consequences that could happen to this world if Rain suddenly start losing control of her own powers? I can't allow us to make the problem even worse. Rain has probably already changed Yasmin's mind a lot, all we can do now is try to reverse some things without hurting their feelings.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks suspiciously at Rayane a little ironically.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... Anyway tonight we're going to the ghost village there, right? Another thing that the guardian said is about your divine aura... how long do you want to keep hiding it inside you?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "M... My divine aura? I still don't understand what this divine aura is about. I never knew much about it.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Every time you get emotionally unstable, you put out a kind of black aura, your eyes go black, it looks like you have a demon in your body. Are there demons in this world? You need to learn to control it, it's inside you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes... Yes, I remember seeing this before...",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane looked at her own hooves and breathed deeply. Rayane was slightly sad and replied.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "As far as I know, it was Rain who passed some of her divine aura to me, it improved my body to use new skills, but to control this aura in a moment of instability is very difficult.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "We can try to make you at least have an idea of what you have in there.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes, I still have no idea what to expect. But... I also have a question for you. What do you want to do with a time machine?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little surprised to hear about it as he sat in the flower garden to calm down.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A cool idea would be for me to kidnap myself in 1 minute to have an epic battle with you in the future, you against 10 minutes...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny giggles a little but then go back to normal.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ok! Sorry! Sorry! But... I've only been aware of the time machine for a short time, I don't think so, I don't like the idea of knowing about the future.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane laughed a little in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Silly~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was very thoughtful before speaking the suggestions.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Maybe... you can use this to find out something about Yasmin? Or something about Elite Color? Or something about Rain?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Nah... It's a time machine, not a machine for knowing things, think about it, if this time machine is really going to work... it means that we're going to the future to improve things, and things are good for us.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane didn't know what to think and felt a little uncomfortable.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I don't have talent with this time travel stuff... I don't know if I would have the courage to go to the future, but I wanted to at least see the consequences of Rain's decisions. Maybe that would help us to stop her plans.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wait... Talent? Have you ever traveled back in time?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "No. Unfortunately not. There is magic to predict the future that can be greatly improved to be more accurate in predictions, but to travel to the future is impossible... Not even Rain can travel to the future.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmm... And don't you think it's weird? a grou0p of ponies that could go to the future? If not even the goddess can? Anyway about your little friend inside you, that special magic, do you want to work on it? Have you tried to see if you have a conscience or if you have any personification in your psychological?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane feels a little surprised about reflect on it.",
+    "type": "action"
+  },
+
+  {
+    "value": "Heh~ It was James who invented this time machine. James must know something very special that no other pony knows. But No... this dark form has no conscience... She's just a manifestation of my feelings.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah?? Hey! So she just manifests herself? If she shows up when you have some big feeling, then she knows when you're bad or good.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Silly~ she's just an energy that manifests with my feelings. As long as I'm feeling good, it'll be ok.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well... Have you ever thought that you can use it if you know how to control it in moments of extreme need? Like a hidden power, for example if James and I are shot in front of you dying and you're weak, have you ever thought about using that power to your advantage? You can help everyone using it.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was thoughtful about Vinny's words, surprised about it all.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "This is a good question...",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny prepared to speak more, but him felt that the morning was almost over and the position of the sun indicated that it was starting to get afternoon.",
+    "type": "action"
+  }, 
+
+
+  {
+    "value": "Well... yeah! We've been here for a long time, what do you want to do? We still have the ghosts, and wait for Aniya and Amy.",
     "character": "Vinny",
     "type": "dialogue"
   }
