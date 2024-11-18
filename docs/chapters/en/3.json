@@ -24187,6 +24187,9 @@
   }, 
 
   {
+    "set": {
+      "dayNightCycle": "evening"
+    },
     "value": "Vinny prepared to speak more, but him felt that the morning was almost over and the position of the sun indicated that it was starting to get afternoon.",
     "type": "action"
   }, 
