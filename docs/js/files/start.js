@@ -21,14 +21,15 @@ console.groupEnd();
 const renderRoleplayFormat = (chapter) => {
   let data = "";
   for (const item in storyData.data[chapter]) {
+    const lineText = `(Line ${Number(item) + 1})`;
     if (storyData.data[chapter][item].type === "action")
-      data += `\n*${storyData.data[chapter][item].value}*`;
+      data += `\n${lineText} *${storyData.data[chapter][item].value}*`;
     if (storyData.data[chapter][item].type === "think")
-      data += `\n${storyData.data[chapter][item].character}'s thinks: ${storyData.data[chapter][item].value}`;
+      data += `\n${lineText} ${storyData.data[chapter][item].character}'s thinks: ${storyData.data[chapter][item].value}`;
     if (storyData.data[chapter][item].type === "telepathy")
-      data += `\n${storyData.data[chapter][item].character}'s telepathy voice: ${storyData.data[chapter][item].value}`;
+      data += `\n${lineText} ${storyData.data[chapter][item].character}'s telepathy voice: ${storyData.data[chapter][item].value}`;
     if (storyData.data[chapter][item].type === "dialogue")
-      data += `\n${storyData.data[chapter][item].character}: ${storyData.data[chapter][item].value}`;
+      data += `\n${lineText} ${storyData.data[chapter][item].character}: ${storyData.data[chapter][item].value}`;
   }
   return data;
 };
