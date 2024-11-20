@@ -12,6 +12,8 @@ This template was tested only in the `Gemini 1.5 Pro` model. You will need to en
 
 This AI template will answer questions you ask about the fic Pony Driland in a way rich in information.
 
+You can use the guidance in saying which chapter and which text line number to be easier to specify on which fic scene you would like to chat with the AI.
+
 ### Do not trust 100% in the AI replies
 
 As a normal human who can make mistakes, there is also the risk of AI accidentally answering something that does not exist in the fic. (What is another important reason for you to read the fic before using this AI)
