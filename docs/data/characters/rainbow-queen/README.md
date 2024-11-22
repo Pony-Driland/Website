@@ -95,7 +95,9 @@ A useful tip: always mix the original neon color with white color, and mix it to
 
 Rainbow Queen's mane will rarely uses a solid-colored lineart, the best way to make the mane have a satisfactory effect is to put all the color painting of the mane on top of the lineart for the lineart to merge with the painting colors. Another shortcut to achieve Rainbow Queen's best mane results is to pick up the clone layer in Motion Blur, add some effects of "Saturation/Lightness" and then change the effect of the layer to "Screen".
 
+### Mane Animation
 
+The Rainbow Queen mane has a very hypinotic effect that you can only see in animations. To replicate this effect, you just need to spin Hue Effect in 360°.
 
 ### Small color effect (optional)
 
