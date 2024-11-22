@@ -83,6 +83,34 @@ This weapon is the pure manifestation of her negative feelings. Divine creatures
 
 <hr/>
 
+## Drawing Tips
+
+### Mane lighting
+
+Rainbow Queen's mane literally emits light, as its colored energy becomes more explicitly visible through in her original mane.
+Her eyes and her horn also emits light, but remember that the intensity of the light depends on the amount of energy she is using. So if she's sleeping, it's normal that the amount of light is almost invisible.
+
+Always try to reflect a rainbow neon under these colored manes to become more realistic. 
+A useful tip: always mix the original neon color with white color, and mix it together with a Blur Motion.
+
+Rainbow Queen's mane will rarely uses a solid-colored lineart, the best way to make the mane have a satisfactory effect is to put all the color painting of the mane on top of the lineart for the lineart to merge with the painting colors. Another shortcut to achieve Rainbow Queen's best mane results is to pick up the clone layer in Bluer Motion, add some effects of "Saturation/Lightness" and then change the effect of the layer to "Screen".
+
+### Small color effect (optional)
+
+If you need an extra color effect, you can copy the original layer of the character's drawing (the final version of the drawing), and in this new layer use a Motion Blur left or right. After that you change the effect of the layer to "Color" and just delete the parts you do not want the effect to be executed.
+
+<img src="/img/characters/rainbow-queen/drawing-examples/2024-11-22_00-00.png" height="500">
+
+<img src="/img/characters/rainbow-queen/drawing-examples/2024-11-22_00-01.png" height="500">
+
+<img src="/img/characters/rainbow-queen/drawing-examples/2024-11-22_00-02_1.png" height="500">
+
+<img src="/img/characters/rainbow-queen/drawing-examples/2024-11-22_00-02.png" height="500">
+
+<img src="/img/characters/rainbow-queen/drawing-examples/unknown (4).png" height="500">
+
+<hr/>
+
 ## Fun silly fact (SPOILERS!!)
 
 When Pony Driland was in the first chapter, the first characters drawing made were Rainbow Queen and Rayane.
