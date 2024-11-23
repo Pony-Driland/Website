@@ -829,6 +829,9 @@ var openChapterMenu = function (params = {}) {
               saveRoleplayFormat();
             }),
         ),
+      $("<h5>").text(
+        `When you open a chapter, look at the top of the page. You will find extra tools and even a bookmark manager to save your progress in your browser.`,
+      ),
     );
 
     // Read More Data
