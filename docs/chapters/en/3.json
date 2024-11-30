@@ -5276,7 +5276,7 @@
   }, 
 
   {
-    "value": "Gypsy revealed the horn behind the hood, and levitated the chair that was behind Vinny, and made Vinny sit in the chair by force.",
+    "value": "Gypsy revealed the horn behind the hood, and levitated the chair that was behind Vinny, and made Vinny sit on the chair by force.",
     "type": "action"
   }, 
 
@@ -24197,13 +24197,856 @@
     "set": {
       "dayNightCycle": "evening"
     },
-    "value": "Vinny prepared to speak more, but him felt that the morning was almost over and the position of the sun indicated that it was starting to get afternoon.",
+    "value": "Vinny prepared to speak more, but him felt that the morning was almost over and the position of the sun indicated that it was starting the afternoon.",
     "type": "action"
   }, 
 
 
   {
     "value": "Well... yeah! We've been here for a long time, what do you want to do? We still have the ghosts, and wait for Aniya and Amy.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+
+  {
+    "value": "Rayane was slightly curious thinking about it for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But... Aren't you going to talk to Aniya? I also remember that you wanted to visit Rain's house.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah... Talk to Aniya? Did you want to visit Rain's house? Amy is going to invite me to see Yasmin learning to fly. I'm planting my \"seeds\" in Amy and Yasmin too, I'll be invited... I HOPE, to see Yasmin learn to fly.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little in response for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Plant seeds? What kind of seeds?~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "For the future, I get closer to Yasmin more and more, whether Rain likes it or not, it's Amy and Yasmin's wish, to have me there when she learns to fly.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny feels a little sad and worried while he was still talking.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Do you have Gypsy and her hidden powers, because it seems like you try to avoid your divine aura? I wish i had some hidden powers!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane put her hoof on Vinny's shoulder and kept answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Calm down... I know the positive side of it all. You and Rain somehow have no escape from each other now because of Yasmin and Amy.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Yeah... That's really a good thing to think about.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },   
+
+  {
+    "value": "Rayane giggles a little before smirking at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And don't worry... I already use my divine aura for my abilities such as my healing power and teleportation.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The teleportation?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Yes~ And Amy already said she wanted to come to our house at night or in the afternoon. Let's keep our focus now.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was thoughtful to see that he had no choice.",
+    "type": "action"
+  },
+
+  {
+    "value": "Well... yeah... Let's go together, I'll accompany you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },  
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Rayane prepares the teleportation magic during the talk.",
+    "type": "action"
+  },
+
+  {
+    "value": "Heh... Fine~ Time for my favorite part.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "think"
+    },
+    "value": "Vinny just breathes deeply and hoped everything would happen. Rayane then used teleportation magic. Vinny and Rayane then appear in front of the door of the main house, and Vinny came face to face with Aniya who was getting ready to knock on the door.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AAAHH! HAUNT!! OH GOD!!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was scared and jumped back in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AAAAAAAAAAAHHH CRYSTAL BALL!!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "WHY?! I have no peace even when visiting your house!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was a little surprised, but in an attempt to feel better at a fun time, she laughs a little bit of the situation.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Two silly ones~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "You! Ok ok... alright.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny approached Aniya and hugged she and spoke in a tone of irony.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Crystal ball... we have a lot to talk about everything happened in the last days. Well! Welcome to our humble, temporary home. Be careful with temporal energy... Here will happen to everything and a little more. hihi!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya does a poker face in response, trying not to seem timid by the hug.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wh... what? Everything and more? N...no! I'll avoid using my time spells for now.",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Hih! If 3 ponies almost explode your cabin, imagine several, well, welcome, and Amy is not here, she left with Yasmin a short time ago, and things are very bad.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "N..No! No temporal energies yet! I... I...!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny opens the door and goes in, waiting for Aniya and Rayane to enter.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ladies first?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I... wait... though? What happened?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Aniya slowly calmed down and began to get very confused when looking at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Aah...",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "set": {
+      "playlistPlay": "calm"
+    },
+    "value": "Aniya was a little embarrassed by Vinny's request, she does a light silly smile of nervousness without wanting to enter.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh...thanks... Are you inviting me in?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane pushed Aniya's behind gently to help her enter the house, laughing a little.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You silly~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny entered the house and went in front of Aniya, putting his hoof on her forehead and closing her eyes.",
+    "type": "action"
+  },
+
+
+  {
+    "value": "Are you feeling it? Are you feeling? I am!! This headache of mine... I need to have lunch soon. Hihi!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A...Aaah? H...hey! Get me out of this darkness!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was surprised trying to touch Vinny for a few seconds, but Vinny returned to normal and explained very gently.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh! Well! You know James, but you'll meet the rest of the guys here.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya looks around very curiously for a few seconds. She does a short nervous laugh when she realized that everything was a joke.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Uh...ah? What? Yes...",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Everyone find Jeff, Wagner, Ivy at the dinner table, eating peacefully. Aniya seemed a little more surprised than normal when looking at the Ivy face.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah?",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Oh? Hey! Mr. Vinny! I thought you and Rayane were going to be late today.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy smiles, waving at Vinny in response. When Jeff and Wagner listened to Ivy, they looked back, surprised to see Aniya's visit.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh! Hi, welcome!",
+    "character": "Wagner",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hi... hello everypony... Good... good afternoon...",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya does a nervous smile. Aniya seems to be getting increasingly timid by the whole situation. Rayane was a little surprised, but then she smirks a little, trying to keep the gentleness.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You'll feel right at home now~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then levitated a marshmallow and handed over Aniya as a souvenir of welcome. Aniya then looked at the marshmallow, still curiously timid about all that.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..ah? Thank you Rayane.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya does a slight nervous smile again in response. Vinny then looked a little surprised at the timidity of Aniya, and then decided to continue the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh! Alrgiht! Well guys! She is Aniya, she helped me a lot recently.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny smiles and introduce her to everypony during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Aniya these are Jeff, Wagner...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny points to Ivy on the table.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And! This charming Pegasus is Ivy, she's Amy's sister.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya felt a great nervousness when looking at the presence of Ivy when she heard the words \"Amy's sister\".",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...Amy siiister??",
+    "character": "Aniya",
+    "type": "think"
+  },
+
+  {
+    "value": "You're welcome to our banquet! Hihi! Feel free! James where is he?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya looks for any chair, smiling nervously again in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hey... hey hey everypony...",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya waved shyly during the talk. Then everyone waved at her back.",
+    "type": "action"
+  },
+
+  {
+    "value": "Well... Hello Aniya! Make yourself at home! Everypony here cooked the food together today. I hope you like the food.",
+    "character": "Jeff",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wow! Did you help Vinny? So you are more than welcome!",
+    "character": "Wagner",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes... yes... thank you all...",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Aniya responded with the same smile of nervousness, but then she was interrupted by the voice of Ivy who replied kindly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hihihi... Looks like she's shy to be here with us, let me help you sit on the chair.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy smiles and offered the chair next to her for Aniya to sit.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... ah! Thank you Ivy. Thank you so much.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya does a shy smile in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes, don't be shy, everypony here will enjoy having you around~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smirks at Aniya and used the magic to help Aniya sit on the chair in response. Then Aniya looked at the sides and was again a little surprised to look at Ivy's sincere smile.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "H..Hello? S...Sorry! Did you're Amy's sister? Hi...",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes. Glad to meet you. I've never felt better than today, I hope you enjoy the meal. It's the first time I feel very happy to receive a visit in our home.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "T...Thank you...",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya does a short shy laugh, but was slowly feeling more comfortable when she saw herself surrounded by new ponies.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hihi! Well... Sorry about James, Him ate a meal earlier because he's busy in his jobs.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then smirks, thinking about James' punishment.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmmmm... James will need to run away from the marshmallows again.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "R... Run away? Yes.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy giggles a little more in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And you Mr. Vinny? Looks like your friend didn't come today, I thought she slept at our house. Did she have to go back to her house early? After all, I don't even know where she lives.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "My friend? My friend... Ah!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny spoke in a curious and cheerful way.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Aaaahh... Jasmin...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks at Aniya and went back to answering Ivy well disguised.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I think she's with Amy, the two of them are working on some issues together. But they're both going back, maybe Jasmin spent the night at Amy's house, I didn't have much time to ask... what about Kai? He hasn't come here?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya did a poker face and then a hoof face in response. Ivy was a little surprised to hear about it all.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Amy's house? Oh? Does Amy have a house? I never visited her house... Looks like Amy's actually more adult than I am.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A..Adult? Ah! Yes yes... what about Kai? He hasn't come here?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy smiles in response during the talk when looking at Vinny nervous smile.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... yes. Kai is still busy with his diplomatic stuff. He seems very busy the last few days.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I understand, well if you see him, say that if he needs me for something, anything can look for me.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny sits on the chair, looking at the table and prepares to eat the food. Vinny seemed very hungry looking at the food.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well! Hihi! I'm going to eat!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy giggles in the Vinny's reaction before replying Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It's ok Mr. Vinny... enjoy the food.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy replied happily as she went back to eating the food and talking to the others. ",
+    "type": "action"
+  }, 
+
+  {
+    "value": "And you Aniya? Something interesting to us...?",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya smiles when looking at the plate, and ate with great excitement. The extreme reaction of Aniya eating food in an extremely cheerful way seemed to show that it did not eat well for years.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Aniya?",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh God! This looks really delicious!! It's been a long time that I don't eat something delicious like that!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was surprised by Aniya's excitement about the meal.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh... Someone got excited~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy giggles a little, feeling surprised by the scene.",
+    "type": "action"
+  },
+
+  {
+    "value": "I've never seen anyone so happy for my food.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny also seemed surprised, he did not know what to say right now.",
+    "type": "action"
+  },
+
+  {
+    "value": "A... A too long time? Well, help yourself, feel free, today you are our guest. Hihih...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny ask Aniya a little ironically during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "How was your day today?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "NOM NOM NOM!! This is really good! My Rainbow Queen from Heaven!!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wow!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "All around were even more surprised by Aniya's satisfaction for the meal.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh... She looks really hungry.",
+    "character": "Jeff",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy giggles a little, just trying to respond with a little nervousness, waiting for everyone to keep calm.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hihi... she's the house guest. Our visit needs to feel safe here.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W... Well... You're right. Alright. ",
+    "character": "Wagner",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Shhhhh~ She really is a lot hungrier than she should~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wagner does a short nervous laugh, but accepted the situation happily. Then everyone went back to doing what they were doing.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya stopped eating when she heard the situation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "My day? A..ah! Sorry for my bad manners...",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya does a short nervous laugh in response. Aniya was very embarrassed and looked at everyone with a lot of shame, but then Vinny would laugh a bit of the situation to try to make her feel calmer.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh... Relax. You can eat all you want. Feel at home.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looked at Rayane a little worried about Aniya and then ate a little too quickly. Rayane just made a slight movement with her head in agreement and went back to eating. Then time passed. Aniya was the first to finish eating.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W..wow?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy laughed a little to see Aniya feeling very satisfied by the meal. Then Ivy helped Aniya to clean her mouth gently.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hihi... Looks like your new friend felt really good about the meal. I should invite her to come eat here more times.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Uh...ah?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya blushes, feeling embarrassed by the scene.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "T... thank you...",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya does a slight nervous smile in response. Vinny then looked at the whole situation and prepared to dialogue.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... Of course! She's welcome! And you could open a restaurant! I would eat easily every day. Heh! I would pay 1000 bits for a meal like that.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny giggles a little during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah... I'm kidding... but seriously, the food was really good. Hihi!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya does a poker face when she heard the word \"1000 bits\". Ivy replies happily.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hihi... But this is my plan with Wagner anyway. We also want to include Jeff in our restaurant so he can also earn some money. Anyway, thank you very much for the compliment.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny then responded with a sincere smile to hear all this.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "R...Really? Yes Ivy! This is very good! Seriously food is something essential in life, there are always people buying and consuming it, that makes a lot of money.",
     "character": "Vinny",
     "type": "dialogue"
   }
