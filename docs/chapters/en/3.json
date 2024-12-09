@@ -25046,9 +25046,673 @@
   }, 
 
   {
-    "value": "R...Really? Yes Ivy! This is very good! Seriously food is something essential in life, there are always people buying and consuming it, that makes a lot of money.",
+    "value": "R...Really? Yes Ivy! This is very good! Seriously food is something essential in life, there are always ponies buying and consuming it, that makes a lot of money.",
     "character": "Vinny",
     "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy then smiles to respond happily.",
+    "type": "action"
+  },
+
+  {
+    "value": "Did you hear that Wagner? Mr. Vinny approves my idea!",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh... okay okay... Let's continue this plan. But I still want to see if we can sell some sweet candies at the restaurant.",
+    "character": "Wagner",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "When Vinny realized that Ivy was starting to talk more to Wagner and Jeff, he decided look curiously at Aniya.",
+    "type": "action"
+  },
+
+  {
+    "value": "W...Well! Sorry for my jokes... I'm really trying to distract myself and distract everyone here. hihi... How are you feeling?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Aniya does a nervous smile, feeling ashamed during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "think"
+    },
+    "value": "I..I'm fine... I think I got too busy with the meal.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah... but sorry to ask... How long has it been since you've had a meal like this?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A...Aaaah... That's a personal matter...",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya kept her nervous face, trying not to get too into the subject, but she's interrupted by Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Aniya... don't be like that... There will still exist more marshmallows for you~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...What?!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well, if you need help or any suggestions on how to increase your profits, you can call me. I'm going to see James all right?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya tried to keep hiding the nervousness, blushing a little, but slowly became emotional trying not to cry and answered.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "O... Okay, thank you. Thank you very much.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little before answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Awwww... Don't worry... I'll stay here talking with you while my dream solves problems~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Y...Yes.",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny smiles, seeing everything was going to be okay, so Vinny decided to climb the stairs, going to James' lab, but the door was locked again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hey? Hello? James?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny knock on the door during the dialogue, it was a few seconds before James opened the door, surprised by his visit.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah? Vi... Vinny? Sorry I didn't show up on your lunch break.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Nah... It's ok. But... are you ok?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James replied, feeling a little more surprised.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I'm fine.... I was just surprised at how much code your friend Yasmin had written in the last night, so I had to spend an extra hour just to finish the links of the algorithms.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny breathes deeply and looks at the ground for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yeah, she did that every day for other things in our world. Did you find anything wrong?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Nothing... Are just a few simple things to fix. She didn't have time to review the code apparently. But... any news today?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "N... New? Well look who's sitting at our table today.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Huh?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny went down the stairs with James quietly to point at Aniya.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...what?!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James closed his mouth and returned to the laboratory with Vinny, doing a very surprised face in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...Whaaat? Did you bring the weird spirit one here?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny speaks a little discouraged to James in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You asked, but... I think it was very good for her, she devoured her food as if she hadn't eaten for days, I think she's not getting enough money to eat properly.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh? Wait... Are you serious?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James stays still for a few seconds before the conversation continues. James was a little worried, but he was trying to be honest in him dialogue.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Look... Her work is questionable, I'm not sure if there is any skill to do what she does... We have to be a little realistic.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well... I keep thinking, if I didn't have Rayane, would it be you and me adventuring? Or would you still want to stay in your room?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...what? There's no way I could predict this. It's too many possibilities. But... my biggest certainty is that we wouldn't have met Hiroshi, or Kai, or Jeff, or Wagner, or Ivy, we wouldn't have known more about Rainbow Queen, and most likely you would have had more difficulty approaching Amy, since even in that it was Rayane who introduced you.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmm... but... Where is Marlon? I still think he was the one who told the members of the Elite Color where Ivy, Rayane, and me was in the underground.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Marlon? It makes no sense, he was the one who told me where you were. He helped me find you, then the train owner helped me to use the train to find you.",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+
+  {
+    "value": "You said it right, you were one of the helped ponies. But...answer me it... you really want to be alone? Look at everyone who's with us now.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was a little thoughtful before answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... Sometimes I need time to focus on my inventions... But... That's all... This is a portable laboratory that is on a terrace of a house. I can't leave this place open up here.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "What? That's all? You have no other reason to isolate yourself?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was even more nervous, feeling a little uncomfortable during the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... that's curious, I think I've changed a lot since we met...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "For something good or bad?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "James tried to hide his negative feelings a little while continuing the conversation.",
+    "type": "action"
+  },
+
+  {
+    "value": "I'm a little more social, not like you wanted, but I feel like I've completely forgotten about my idea of solitary adventures.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a little poker face in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I wanted to? Ah... I don't understand, what do you think I want for you?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was confused not knowing what to answer for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... Are you trying to create a family among us? That's what I understood after seeing everything that happened.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Do you think that's all it is? Are we creating a family so that in the end we all split up and go back to our world?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James looked back, hiding a small tear, removing it from his own face and then looked again at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It seems that this part of the plan got lost in the middle of our journey. But somehow we still have to not allow this dimension to disappear along with all of us.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah... was James your name before I came here too?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes... but this is one of my names. I also have my birth name from my planet. You should remember that none of us here speak the same language.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a poker face for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... well, changing the subject to something more constructive, do you want some help?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James breathes deeply for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Help me? But don't you have to visit the ghosts or go after Yasmin?",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yasmin? She's in a strong depression because she thinks it's her fault I ended up here, ghosts only appear in the ghost town at night, I'll need your help to convince Yasmin to stay on our side.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny shows a feeling of sadness and speaks to James more seriously.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "James! Listen to me, if we take too long, it'll be too late, I won't make her change her mind, she'll feel guilty. I'll say that she's guilty for saving us all if she feels guilty for not wanting to bring you here for a snack, because I saved you, brought Rayane out of a life of darkness, I saved Ivy, all this just happened because I was here... You'll need to support her that's not shameful be a pet.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James feels surprised by Vinny's determination, not knowing what to say.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...Whaat? My help? But... what I can do? She only knew me as the unicorn of the time machine. You need to see things through another \"angle\"... if I were to make a hierarchy between your position and Yasmin's position, I would say that she is extremely far below you. Your life superiority must be causing her depression.",
+    "character": "James",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Do you think she feels useless?? The gypsy said that the less time we can make her look good, the better for us, otherwise she'll just start to have acceptance acceptance after acceptance... She'll turn like a pony that doesn't decide anything!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was a little thoughtful, feeling a little better to see that Vinny really wanted to help Yasmin.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "O..Ok. Yes... but she feels useless to you. That's not to say she feels totally useless. If you left her with Amy, she'll find a use in her life with Amy and Rainbow Queen. ",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James took a deep breath for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "At least that's what I can say if the magic of that collar doesn't drain her individuality, that will be the end of her previous life. She won't be able to decide to stop being a pet anymore, and you will have to spend the rest of your life accepting this fate. If she's a lot more depressed than usual, we will have some permanent effects as some pet effects on her personality might not go away.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A...Ah... Fine... Got it.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was thoughtful for a few seconds, feeling even more concerned and anxious, so decided to change a little the subject of the conversation before replying again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I... I'll think about it all. But... There's something else weird going on. Isn't Kai here too?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "K..Kai? Well... Kai is coming here sometimes for us to talk about how to prepare the machine, I'm in the more technical part.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Which machines? He wants to show everyone which machine?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The machine that will help the regions. Don't worry about the time machine... Only we know about this time machine. My biggest challenge will be to energize it.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well! Maybe you can do something with what the gypsy said, temporal energy or something. But what kind of energy are you thinking about?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James looked at the drawer of messy chargers for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "No... No temporal energy. I need another kind of energy. Any kind of energy that can be used as fuel will do... I just need energy to run the machine.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Whaaat? Does energy generated from combustion is a option?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James does a face hoof.",
+    "type": "action"
+  },
+
+  {
+    "value": "Combustion? No! This is going to be dangerous! I'm talking about a very powerful energy! We're talking about time travel, not turning on the light in a house.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "You rude...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James does a poker face in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah...",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Relax... I was just analyzing everything. You know? What will everyone decide when all this is over? Are they all staying or leaving?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James does a small depressive look before answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I... I think my biggest certainty is that everyone will want to stay.... Especially me, don't you remember? My planet exploded, I have nowhere else to live in my dimension.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah... S..Sorry... I'm sorry to remind you of your planet, I think I'll try to leave you alone, I'll just try to get my phone back.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "It's fine... I don't think you should be consuming your short time here.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was still thinking about his sadness until he heard the word cell phone.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh? Your cell phone, yes. I managed to recharge it. It was difficult but I made it. I had to change the battery because the old one was defective.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W...What? You what? Did my cell phone battery have a problem? such that? could you explain me?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Your other battery was discharged in an extremely unusual way. The battery couldn't resist. But don't worry, I put a better battery in it that recharges by magic.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W.. wow! I liked it, it's a magic powered cell phone for a pegasus.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes? It stores magic to work. You spend several hours with Rayane, so the battery won't be a problem for you.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James took Vinny's phone out of the backpack using the levitation magic and handed it to Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmmm... Can I call him to see how things are? Basically there are 2 identical phones in this dimension, they could communicate in some discreet way.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was a little surprised to hear that.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...Wait? Two identical cell phones?! You took our conversation purposefully because did you want to do this??",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh! Yes, the Jasmin phone is similar to mine, a different model, but made and manufactured by the same brand.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny picked up the phone, called and analyzed the situation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wait... are you telling me you want to communicate with the other cell? You idiot! The signal network of your world does not exist here!",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a poker face.",
+    "type": "action"
+  },
+
+  {
+    "value": "Ah... W...Well.. Usually has giant antennas and they transmit a strong signal everywhere.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Giant antennae... Ah... It won't draw any attention at all! Vinny...  I'll go back to what I was doing. I wish you luck. Looks like you have a long night ahead of you.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a small laugh of nervousness in response.",
+    "type": "action"
+  },
+
+  {
+    "value": "Y..Yeah... yeah... But... thank you very much, not for the cell phone, or for helping us, but for being by my side, if you need anything, anything at all, you can tell me, if you need me to get something for you, and everything else, just ask. Alright?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James was thoughtful for a few seconds after hearing Vinny's words, looking at a mysterious photographic for a few seconds, so he looked at Vinny again, making a small depressive smile.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You're welcome... I say the same. Bye.",
+    "character": "James",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "James then expected Vinny to leave the lab to close the door. When the door was closed, Vinny felt he had something else wrong with James, but Vinny decided to leave it for another moment. Vinny went down the stairs, finding Rayane and Aniya talking to each other at the lunch table that had already ended.",
+    "type": "action"
   }
   
 ]
