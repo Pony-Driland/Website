@@ -630,6 +630,14 @@ $(function () {
           icon: "fa-solid fa-paintbrush",
         });
 
+        // Tantabus
+        tipsPages.push({
+          href: `https://tantabus.ai/tags/${storyCfg.derpibooru_tag}`,
+          id: "tantabus-page",
+          text: "Tantabus",
+          icon: "fa-solid fa-paintbrush",
+        });
+
         // Tiny Tips
         tipsPages.push({
           href: `javascript:void(0)`,
