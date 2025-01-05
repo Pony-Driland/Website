@@ -25713,6 +25713,171 @@
   {
     "value": "James then expected Vinny to leave the lab to close the door. When the door was closed, Vinny felt he had something else wrong with James, but Vinny decided to leave it for another moment. Vinny went down the stairs, finding Rayane and Aniya talking to each other at the lunch table that had already ended.",
     "type": "action"
+  },
+
+  {
+    "value": "Hey! How are you two?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh? Look who's back~ I'm fine.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya seems to be feeling a great nervousness when listening to Vinny's voice.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..ah? Ah... Hi Vinny, I'm great too. Weeeell... I have to go back to my work, but I'll be here again tonight as I promised.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hm.... But... What were you talking about me there?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny says a little ironic to Aniya.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...What?? I didn't say anything. I was just having a personal conversation with Rayane. No big deal... and... and I'm sorry I took your money.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya replied briefly regretfully and returned the 7 bits back to Vinny. Vinny was a bit surprised and looked at the bits, and then at Aniya again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh... you can stay, actually I was the one who owed you an appointment, relax, you can take it out of the last appointment. Hihi!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny refused the bits and returned to Aniya.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A..Aah? Really?",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Anyway, it's not kissing or swimming, but I'm happy to have you around, you with us is a good thing, I have one last question for you in case you want to answer.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Thank you Vinny! I'm glad you're not mad at me!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya seems happy to have the bits, but then she would be curious about the question.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What kind of question?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "What do you know about divine aura? I suppose on one of my dates with Rainbow, she accidentally did something to me, now every time i get angry or sad it starts to come out of me, do you know anything about that? I'm hypothetically speaking it to you.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "W... what?!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was extremely surprised in response, thinking about what to say for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Divine aura? Ah yes, divine aura. It's an aura that allows you to learn and use certain skills that are normally only used by deities. I also have some divine aura so I can use my foresight skills.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmmm... If this divine aura wants to take over my actions? Simple examples? I'm talking about something that controls my decisions, something more powerful than myself. Did you learn to control yours or did it come that way?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah... Take care of you? That will never happen...",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya laughs a little.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Divine auras are not living things. Now if you lose control of your actions and emotions, the divine aura can end up making your emotions even more out of control, making you do terrible things. Well, I've never lost control of mine, so I can't tell you for sure.",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny was a little bored and answered.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "So what's your suggestion for me not to lose control? Do I try to work on it, or do I just ignore it so it can get out of control later on? I thought I'd work on trying to control it, and use it in crucial moments of life and death.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "C..Control it? First you have to have good emotional control, but why do you want to know that so much if you don't have a divine aura?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was confused, trying to understand why Vinny were talking about this.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I don't know, I thought I caught a little, all our dates, there wasn't even one that Rainbow wasn't mad at me, she screamed, wanted to kill me, wanted to use me as blackmail... in one of these moments she might accidentally made it. She got really mad at me and did something, but I think it must be hallucinations in my head... right, Rayane?",
+    "character": "Vinny",
+    "type": "dialogue"
   }
   
 ]
