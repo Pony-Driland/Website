@@ -25878,6 +25878,124 @@
     "value": "I don't know, I thought I caught a little, all our dates, there wasn't even one that Rainbow wasn't mad at me, she screamed, wanted to kill me, wanted to use me as blackmail... in one of these moments she might accidentally made it. She got really mad at me and did something, but I think it must be hallucinations in my head... right, Rayane?",
     "character": "Vinny",
     "type": "dialogue"
+  },
+
+  {
+    "value": "No... it's not like that. Divine auras are shared only when they are allowed to be shared.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "and she is angry about certain matters about you.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane does a little nervous smile when she finished answering. Vinny breathes deeply and then tries to speak in a more relaxed way.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... I see. Well... Aniya... you come back at night, right? If I can visit Rainbow at her house, why do Jasmin need the collar?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya does a short laugh, trying not to think too much about her nervousness.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "No, it's impossible for you to get there by normal methods because of the extreme cold. The collars have a teleportation magic to her house, you can imagine a haunted mansion full of portal doors... Her house is literally her particular universe.",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny was a little scared to hear that.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "P...Particular universe? Wait... for me to go there, do I need a collar?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+  
+  {
+    "value": "Aniya does a facehoof.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "No... Rain can use Amy's collar to teleport you along with Amy. Or... she can see you in person herself and teleport you there. But then I don't know how your meeting will be.",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya does a small nervous giggles. Vinny ignored Aniya's sense of danger and smiled at her.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Our dates... I've had much worse dates, nothing that a good chat and a pleasant breath and a perfume can't solve it. Hihi!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Perfume?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah... Sorry! Well... You must be busy today, do you have any questions for me?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Wait... what?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya does a poker face in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Nothing for now... thanks so much for lunch. It was nice to get to know you better. Soooo... See you later... Goodbye Rayane! Goodbye Vinny!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya does a little shy laugh, waving to the two while preparing to leave.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hihi, alright! Thank you so much for your company. Goodbye!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh... goodbye~",
+    "character": "Rayane",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Then Aniya was finally finished closing the door and only stayed Vinny and Rayane in the room. Vinny looked at Rayane and realized that she was very thoughtful about the subject of the conversation.",
+    "type": "action"
   }
   
 ]
