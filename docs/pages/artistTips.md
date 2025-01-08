@@ -106,6 +106,7 @@ I will be talking only about domestic AIs, more specifically about the Stable Di
 Although we focus on generative AIs, we will work with the part that only human artists can perform in this area. The content commented here will not be possible to run by a prompter. If you are a prompter, I do not recommend you continue reading these tips because the vocabulary of the subject will be fully dedicated to artists, so you can end up facing some terms you don't know.
 
 This explanation will only be for the development of <strong>Lora Models</strong>. I have no ability to explain AI ethics for <strong>Checkpoint Models</strong>. My only opinion about Checkpoint Models is that they must be AI Template with the essential content to start preparing AI for use.
+
 </p>
 
 <h4 id="ai_tips_drawing_1">Separation between Prompters and Artists</h4>
@@ -118,6 +119,7 @@ Currently I imagine things this way. The artist makes the drawings, the art deve
 The human artist is not required to stay at the top of the pyramid, it will also be possible at times the artist and the art developer be the same person in the same way that the artist and the prompter can also be the same person while the art developer can only belong to the other layers below it.
 
 This herarchy model will also be used when defining credits for the creators of an AI model.
+
 </p>
 
 <img src="./img/drawio/art-herachy.webp" />
@@ -132,19 +134,14 @@ If you have good skills as a prompter, you can explore the generative images of 
 If you know how to use the Ai Tool OpenPose in the ControlNet, you can use better tools to develop your reference faster.
 
 But if you have no conditions to do this, but you know how to use the Source Filmmaker that is installed in your Steam Account, you can use img2img to convert a 3D image to a 2D drawing reference.
+
 </p>
 
-<h4 id="ai_tips_drawing_3">Using AI to create drawing reference</h4>
+<h4 id="ai_tips_drawing_3">Request drawing fixes</h4>
 
-<p>
-If you are an artist who has difficulties creating a reference of drawings, this is your best opportunity of your life.
+If you are correcting an old drawing or some drawing you are making, just as I explained in the tips for writers, you can use the prompts in an img2img to get a corrected version of the drawing. Any small detail that is missing may then be corrected normally in any drawing software.
 
-If you have good skills as a prompter, you can explore the generative images of an AI to get character position references and redraw only the drawing skeleton to create your character. This is a smart way to use drawing AI as your personal drawing assistant.
-
-If you know how to use the Ai Tool OpenPose in the ControlNet, you can use better tools to develop your reference faster.
-
-But if you have no conditions to do this, but you know how to use the Source Filmmaker that is installed in your Steam Account, you can use img2img to convert a 3D image to a 2D drawing reference.
-</p>
+You can see an example of me doing this with a character fic: Whistler.
 
 <h4 id="ai_tips_drawing_4">New commissions market for artists</h4>
 
@@ -164,11 +161,25 @@ Is there the risk of any Pony Maker creator evolving to transform the existing a
 
 If you are worried about your art style, you can try to draw in a generic art style.
 
-<h4 id="ai_tips_drawing_5">Request drawing fixes</h4>
+<h4 id="ai_tips_drawing_5">Is your art style very special in the fandom? Good news!</h4>
 
-If you are correcting an old drawing or some drawing you are making, just as I explained in the tips for writers, you can use the prompts in an img2img to get a corrected version of the drawing. Any small detail that is missing may then be corrected normally in any drawing software.
+Imagine the following situation, you are a famous artist, everyone loves your art style, you have a good Patreon with people who follow you. You are an artist who participates in fandom for many years and everyone respects you.
 
-You can see an example of me doing this with a character fic: Whistler.
+There are two things that are happening now:
+
+1- Many other artists are copying various elements of your art style to use in their art style. There is the risk of you being forgotten in the coming decades if the new artists cannot remember who you are in the future.
+
+2- Now with the existence of AIs, the process 1 mentioned is being extremely accelerated much faster than you imagine, especially if your original drawings are being used for this. This process of forgetting will be even worse if you try to fight this, as you will avoid some AI Trainers who give credits to original artists.
+
+If you take many years to know how to solve this, your art style has a risk of becoming a public art style without any chance of people knowing you were the original creator of art style.
+
+All art styles inevitably mix with the art style of other artists until it becomes something generic.
+
+Yes, we are talking about the famous term "art style theft". You are being victim to the same situation that many big gaming companies have tried to fight for many decades, but all failed.
+
+The difference is that games remain recognized by their creators because the game has a complete identity that cannot be changed, while the art style can be freely reused for various different contents.
+
+This is happening because when people love something a lot, they want to revive it somehow. This behavior is normal in many developers (especially modders), and now the AIs are bringing this same scenario to the artists.
 
 <h5>How to solve this?</h5>
 
