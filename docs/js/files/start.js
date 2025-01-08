@@ -653,11 +653,11 @@ $(function () {
         tipsPages.push({
           href: `javascript:void(0)`,
           id: "tiny-ai-writer-tips",
-          text: "AI Tips for writers",
+          text: "AI Tips for human artists",
           icon: "fa-solid fa-circle-info",
           click: () => {
-            openMDFIle("pages/writerTips.md");
-            urlUpdate("/pages/writerTips.md", "AI Tips for writers");
+            openMDFIle("pages/artistTips.md");
+            urlUpdate("/pages/artistTips.md", "AI Tips for human artists");
           },
         });
 
