@@ -175,7 +175,9 @@ This means that if you draw a canonical character in a generic art style, the pr
 
 2 - Now with the existence of AIs, the process 1 mentioned is being extremely accelerated much faster than you imagine, especially if your original drawings are being used to train AI. This process of forgetting will be even worse if you try to fight against AI trainers, as you will avoid some AI Trainers who give credits to original artists.
 
-<h5>Fine... But what about the problem of the "art style theft"?</h5>
+Some AI websites can have rules against the use of personal art style if you can prove that your art style is really 100% unique (remember, the more years are advanced, the more artists and AI Trainers will be inspired by your art style), but some AI Trainers will mix your art style with other existing art styles for AI to create a more personal art style. 
+
+<h5>There are better alternatives to solving the "art style theft"?</h5>
 
 Now that you know of this reality between artists, and the risks that these transformations of art styles, there is another new challenge that is coming directly from the AIs.
 
