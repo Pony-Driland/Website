@@ -169,17 +169,17 @@ There are two things that are happening now:
 
 1- Many other artists are copying various elements of your art style to use in their art style. There is the risk of your authorship being forgotten in the coming decades if the new artists cannot remember who you are in the future.
 
-2- Now with the existence of AIs, the process 1 mentioned is being extremely accelerated much faster than you imagine, especially if your original drawings are being used for this. This process of forgetting will be even worse if you try to fight this, as you will avoid some AI Trainers who give credits to original artists.
+2- Now with the existence of AIs, the process 1 mentioned is being extremely accelerated much faster than you imagine, especially if your original drawings are being used to train AI. This process of forgetting will be even worse if you try to fight against AI trainers, as you will avoid some AI Trainers who give credits to original artists.
 
 If you take many years to know how to solve this, your art style has a risk of becoming a public art style without any chance of people knowing you were the original creator of the art style.
 
-All art styles inevitably mix with the art style of other artists until it becomes an common art style. This effect is easier to be perceived in character poses where the probability of a same pose being repeated in various different art styles is higher.
+All art styles inevitably mix with the art style of other artists until it becomes an common art style. This effect is easier to be perceived in character poses where the probability of a same pose being repeated in various different art styles is higher. We do not realize this when drawing has many elements together with the character, but the drawings where the character is the focus of the drawing, makes it easier to be perceived.
 
-This means that if you draw a canonical character in a generic art style, the probability of you accidentally make an drawing almost entirely similar to another artist drawing is higher (especially if you use vector art in places like MLP G4 style).
+This means that if you draw a canonical character in a generic art style, the probability of you accidentally make an drawing almost entirely similar to another artist drawing in the internet is higher (especially if you use vector art in places like MLP G4 style).
 
 Yes, we are talking about the famous term "art style theft". You are being victim to the same situation that many big gaming companies have tried to fight for many decades, but all failed.
 
-The difference is that games remain recognized by their creators because the game has a complete identity that cannot be changed, while the art style can be freely reused for various different contents.
+The difference is that the authors of games remain recognized because the game has a complete identity that cannot be changed, while the art style can be freely reused for various different contents.
 
 This is happening because when people love something a lot, they want to revive it somehow. This behavior is normal in many developers (especially modders), and now the AIs are bringing this same scenario to the artists.
 
