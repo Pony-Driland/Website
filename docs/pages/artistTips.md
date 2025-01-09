@@ -179,7 +179,7 @@ Some AI websites can have rules against the use of personal art style if you can
 
 <h5>There are better alternatives to solving the "art style theft"?</h5>
 
-Now that you know of this reality between artists, and the risks that these transformations of art styles, there is another new challenge that is coming directly from the AIs.
+Now that you know of this reality between artists, and the risks that these transformations of art styles, you must understanding a new challenge that is coming directly from the AIs.
 
 First you don't have to panic if your art style is already being replicated by AI Models, remember that you are the original art style artist, this fact will already help you do an extremely better job than all the AI Trainers who used your old drawings. If your art style is really extremely unique, the moment you follow these steps, it will be much easier for you to win the AI Trainer and benefit from it all.
 
