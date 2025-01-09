@@ -8,7 +8,7 @@ I am writing this text in January 2025, and I know that the new human artists of
 The world of art here in 2025 is extremely divided, many artists are at risk of being erased from history due to their own egos. It is useless to warn them about it, because this is the first time in history that a group of artists try to exterminate a technology that was made to help them.
 </p>
 <p>
-I am a human artist who works with art in drawings, music, writings, web designer, animations, and I do not want to be the next artist victim of this destructive culture. I’m over 5 years working with art and I’ve never seen something like this level make the art world look like a 1933 way.
+I am a human artist who works with drawings, music, fics, web designer, animations, and I do not want to be the next artist victim of this destructive culture. I’m over 5 years working with art and I’ve never seen something like this level make the art world look like a 1933 way.
 </p>
 <p>
 I have the hope that many artists abandon these destructive cultures and try to follow some of these instruction. The fate of preserving your own creations is not in destroying the AI, but in using the AI tech to preserve your own work. AI will not dominate the art if artists dominate AIs before.
