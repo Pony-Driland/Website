@@ -107,6 +107,18 @@ Although we focus on generative AIs, we will work with the part that only human 
 
 This explanation will only be for the development of <strong>Lora Models</strong>. I have no ability to explain AI ethics for <strong>Checkpoint Models</strong>. My only opinion about Checkpoint Models is that they must be AI Template with the essential content to start preparing AI for use.
 
+If you don't know what Lora Model is, it's a AI model that works like a "DLC" or a "extension" (choose the term you find best for you to understand it) of the Checkpoint Model (Checkpoint model is the main AI Model used to make AI Art). This means that you are using a AI Model to use data from another existing AI model.
+
+Before you use a Lora Model, always look for what the checkpoint type base you'll use. The simplest models are SD1.5, if you want better models (which needs a better video graphic card), I recommend you use an SD XL model as they are the most popular models for running on the most affordable high price of video graphic cards.
+
+If you want a recommendation of a simple and totally safe way to install Drawing AI in your computer, I am recommending for you the Stability Matrix:
+
+https://lykos.ai/
+
+https://github.com/LykosAI/StabilityMatrix
+
+Remember that you must have at least 8GB VRAM in your video graphic card to run it or you will have performance issues in your computer.
+
 </p>
 
 <h4 id="ai_tips_drawing_1">Separation between Prompters and Artists</h4>
