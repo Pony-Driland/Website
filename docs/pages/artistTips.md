@@ -173,7 +173,11 @@ There are two things that are happening now:
 
 If you take many years to know how to solve this, your art style has a risk of becoming a public art style without any chance of people knowing you were the original creator of the art style.
 
-All art styles inevitably mix with the art style of other artists until it becomes an common art style. This event is easier to be perceived in character poses where the probability of a same pose being repeated in various different art styles is higher. We do not realize this when drawing has many elements together with the character, but the drawings where the character is the focus of the drawing, makes it easier to be perceived.
+All art styles inevitably mix with the art style of other artists until it becomes an common art style. This event is easier to be perceived in character poses where the probability of a same pose being repeated in various different art styles is higher. 
+
+Minimalist styles also have a high probability of this happening, and you can easily perceive this in web vector icons.
+
+We do not realize this when drawing has many elements together with the character, but the drawings where the character is the focus of the drawing, makes it easier to be perceived.
 
 This means that if you draw a canonical character in a generic art style, the probability of you accidentally make an drawing almost entirely similar to another artist drawing in the internet is higher (especially if you use vector art in places like MLP G4 style).
 
