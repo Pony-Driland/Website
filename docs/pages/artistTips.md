@@ -165,27 +165,27 @@ If you are worried about your art style, you can try to draw in a generic art st
 
 Imagine the following situation, you are a famous artist, everyone loves your art style, you have a good Patreon with people who follow you. You are an artist who participates in fandom for many years and everyone respects you.
 
-There are two things that are happening now:
+<h5>There are two things that are happening now:</h5>
 
-1- Many other artists are copying various elements of your art style to use in their art style. There is the risk of your authorship being forgotten in the coming decades if the new artists cannot remember who you are in the future.
+1 - Many other artists are copying various elements of your art style to use in their art style. There is the risk of your authorship being forgotten in the coming decades if the new artists cannot remember who you are in the future.
 
-2- Now with the existence of AIs, the process 1 mentioned is being extremely accelerated much faster than you imagine, especially if your original drawings are being used to train AI. This process of forgetting will be even worse if you try to fight against AI trainers, as you will avoid some AI Trainers who give credits to original artists.
+All art styles inevitably mix with the art style of other artists until it becomes an common art style (Especially the minimalist styles). This event is easier to be perceived in character poses where the probability of a same pose being repeated in various different art styles is higher. The probability that we can detect this decreases even more when drawing has many elements together with the character.
 
-If you take many years to know how to solve this, your art style has a risk of becoming a public art style without any chance of people knowing you were the original creator of the art style.
+This means that if you draw a canonical character in a generic art style, the probability of you accidentally make an drawing almost entirely similar to another artist drawing or animation frame in the internet is higher (especially if you use vector art in places like MLP G4 style). All this can at some point fall into the subject of the famous term "art style theft" or "art theft" in various ways when you want to compare two artists (especially if the person is paranoid), and in the same way can happen when you want to compare with an AI Art.
 
-All art styles inevitably mix with the art style of other artists until it becomes an common art style. This event is easier to be perceived in character poses where the probability of a same pose being repeated in various different art styles is higher. 
+2 - Now with the existence of AIs, the process 1 mentioned is being extremely accelerated much faster than you imagine, especially if your original drawings are being used to train AI. This process of forgetting will be even worse if you try to fight against AI trainers, as you will avoid some AI Trainers who give credits to original artists.
 
-Minimalist styles also have a high probability of this happening, and you can easily perceive this in common web vector icons.
+<h5>Fine... But what about the problem of the "art style theft"?</h5>
 
-We do not realize this when drawing has many elements together with the character, but the drawings where the character is the focus of the drawing, makes it easier to be perceived.
+Now that you know of this reality between artists, and the risks that these transformations of art styles, there is another new challenge that is coming directly from the AIs.
 
-This means that if you draw a canonical character in a generic art style, the probability of you accidentally make an drawing almost entirely similar to another artist drawing or animation frame in the internet is higher (especially if you use vector art in places like MLP G4 style).
+First you don't have to panic if your art style is already being replicated by AI Models, remember that you are the original art style artist, this fact will already help you do an extremely better job than all the AI Trainers who used your old drawings. If your art style is really extremely unique, the moment you follow these steps, it will be much easier for you to win the AI Trainer and benefit from it all.
 
-Yes, we are talking about the famous term "art style theft". You are being victim to a situation of content modification that many big gaming companies have tried to fight for many decades, but all failed.
+You are being victim in a situation of content modification that many big gaming companies have tried to fight for many decades, but all failed. Which is when modders of a game try to turn a closed game into an open source game.
 
-The difference is that the authors of games remain recognized because the game has a complete identity that cannot be changed, while the art style can be freely reused for various different contents.
+The difference is that the authors of games remain recognized because the game has a complete identity that cannot be changed, while the art style can be freely reused for various different contents. These two social bubbles are colliding with each other in a way never before seen.
 
-This is happening because when people love something a lot, they want to revive it somehow. This behavior is normal in many developers (especially modders), and now the AIs are bringing this same scenario to the artists.
+This is happening because when people love something a lot, they want to revive it somehow. This behavior is normal in many developers (especially modders), and now the AIs are bringing this same scenario to the artists, and if you really have an exclusive art style, you can have a solution to deal with this kind of situation and depending on the size of your possible new community that i will describe below, this can increase your income from your Patreon.
 
 <h5>How to solve this?</h5>
 
@@ -193,10 +193,22 @@ The most practical way to do this is to do what game companies rarely decide to 
 
 Attention!!! Look for help from your friends who understand about Generative AI before doing this process, and they will help you create the best possible AI performance of your art style (Don't make the accident you make the process of yourself sending data from your drawings to a random company).
 
-If you are able to build this community, search for websites like CivitAI to promote the AI model of your art style. Learn how to write good licenses to define how prompters can use your AI Model.
+If you are able to build this community, search for websites like CivitAI to promote the AI model of your art style, and build an environment in your Discord server especially for it. Learn how to write good licenses to define how prompters can use your AI Model. Some websites already have tools for you to set in your license the permissions that the user can use in your art style.
 
-Remember that an AI model is not just something fun, it is the ultimate preservation of something you created to be used by other people. The whole story of your work years will be saved forever in a file that everyone will want to download in the coming years.
+Remember that an AI model is not just something fun, it is the ultimate preservation of something you created to be used by other people. The whole story of your art work will be saved in a file that everyone will want to download in the coming years.
 
 If you don't have a Patreon yet, build a dedicated Patreon especially for you to work in your AI Model, and you can continue drawing freely to add even more content to your AI Model. Your Patreon can be dedicated to prompters sending monthly donations while you provide early access to content from your AI model.
+
+<h5>What are the main benefits of being an artist developing an AI Model of Art Style?</h5>
+
+The first extremely obvious part is that you are an artist, you have complete freedom to expand the possibilities of your AI Model using your drawing super power.
+
+If many people love your art style, you will create a "pandemic" of your art style in the internet. That means more people will want to know this art style, and they will want to know who you are, and support you.
+
+Your Art Style will receive an official name created by you, and even if other AI Trainers make Model Merge, they will have to mention the name of your AI Model.
+
+All AI art derivations using your art style will automatically have credits for you if they are being published in websites like CivitAI.
+
+You have more dissemination power than traditional artists of the 2020s. Let the prompters do the entire promote art for you.
 
 If you have OCs inside this AI Model, try creating chatbots of your official OCs for people to have fun. Partner with other AI models to further promote your name, and extend the logivity of your artist name in the Internet! This is a huge chest of opportunities for several artists.
