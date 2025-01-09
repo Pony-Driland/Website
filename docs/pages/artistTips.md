@@ -175,13 +175,13 @@ If you take many years to know how to solve this, your art style has a risk of b
 
 All art styles inevitably mix with the art style of other artists until it becomes an common art style. This event is easier to be perceived in character poses where the probability of a same pose being repeated in various different art styles is higher. 
 
-Minimalist styles also have a high probability of this happening, and you can easily perceive this in web vector icons.
+Minimalist styles also have a high probability of this happening, and you can easily perceive this in common web vector icons.
 
 We do not realize this when drawing has many elements together with the character, but the drawings where the character is the focus of the drawing, makes it easier to be perceived.
 
-This means that if you draw a canonical character in a generic art style, the probability of you accidentally make an drawing almost entirely similar to another artist drawing in the internet is higher (especially if you use vector art in places like MLP G4 style).
+This means that if you draw a canonical character in a generic art style, the probability of you accidentally make an drawing almost entirely similar to another artist drawing or animation frame in the internet is higher (especially if you use vector art in places like MLP G4 style).
 
-Yes, we are talking about the famous term "art style theft". You are being victim to the same situation that many big gaming companies have tried to fight for many decades, but all failed.
+Yes, we are talking about the famous term "art style theft". You are being victim to a situation of content modification that many big gaming companies have tried to fight for many decades, but all failed.
 
 The difference is that the authors of games remain recognized because the game has a complete identity that cannot be changed, while the art style can be freely reused for various different contents.
 
