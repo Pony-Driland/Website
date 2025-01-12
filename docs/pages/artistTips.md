@@ -215,7 +215,7 @@ If you don't have a Patreon yet, build a dedicated Patreon especially for you to
 
 <h5>What are the main benefits of being an artist developing an AI Model of Art Style?</h5>
 
-The first extremely obvious part is that you are an artist, you have complete freedom to expand the possibilities of your AI Model using your drawing super power.
+The first extremely obvious part is that you are an artist, you have complete freedom to expand the possibilities of your AI Model using your drawing skills.
 
 If many people love your art style, you will create a "pandemic" of your art style in the internet. That means more people will want to know this art style, and they will want to know who you are, and support you.
 
