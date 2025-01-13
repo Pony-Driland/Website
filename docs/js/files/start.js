@@ -20,20 +20,52 @@ console.groupEnd();
 // Roleplay format
 const renderRoleplayFormat = (chapter) => {
   let data = "";
-  for (const item in storyData.data[chapter]) {
-    const lineText = `(Line ${Number(item) + 1})`;
-    let flashback = storyData.data[chapter][item].flashback
-      ? " (Flasback scene)"
-      : "";
 
-    if (storyData.data[chapter][item].type === "action")
-      data += `\n${lineText}${flashback} *${storyData.data[chapter][item].value}*`;
-    if (storyData.data[chapter][item].type === "think")
-      data += `\n${lineText}${flashback} ${storyData.data[chapter][item].character}'s thinks: ${storyData.data[chapter][item].value}`;
-    if (storyData.data[chapter][item].type === "telepathy")
-      data += `\n${lineText}${flashback} ${storyData.data[chapter][item].character}'s telepathy voice: ${storyData.data[chapter][item].value}`;
-    if (storyData.data[chapter][item].type === "dialogue")
-      data += `\n${lineText}${flashback} ${storyData.data[chapter][item].character}: ${storyData.data[chapter][item].value}`;
+  let day = null;
+  let dayNightCycle = null;
+  let weather = null;
+  let where = null;
+
+  for (const item in storyData.data[chapter]) {
+    const lineText = `[Fic Line ${Number(item) + 1}]`;
+    const ficData = storyData.data[chapter][item];
+
+    if (ficData.set) {
+      if (typeof ficData.set.day === "number") {
+        if (day !== null) data += `\n) `;
+        day = ficData.set.day;
+        data += `(Day Number: ${day}`;
+      }
+
+      if (typeof ficData.set.dayNightCycle === "string") {
+        if (dayNightCycle !== null) data += `\n) `;
+        dayNightCycle = ficData.set.dayNightCycle;
+        data += `(Day Status: ${dayNightCycle}`;
+      }
+
+      if (typeof ficData.set.weather === "string") {
+        if (weather !== null) data += `\n) `;
+        weather = ficData.set.weather;
+        data += `(Weather: ${weather}`;
+      }
+
+      if (typeof ficData.set.where === "string") {
+        if (where !== null) data += `\n) `;
+        where = ficData.set.where;
+        data += `(Location: ${where}`;
+      }
+    }
+
+    const isFlashBack = ficData.flashback ? " from flashback scene" : "";
+
+    if (ficData.type === "action") data += `\n${lineText} *${ficData.value}*`;
+
+    if (ficData.type === "think")
+      data += `\n${lineText} ${ficData.character}'s thinks${isFlashBack}: ${ficData.value}`;
+    if (ficData.type === "telepathy")
+      data += `\n${lineText} ${ficData.character}'s telepathy voice${isFlashBack}: ${ficData.value}`;
+    if (ficData.type === "dialogue")
+      data += `\n${lineText} ${ficData.character}${isFlashBack}: ${ficData.value}`;
   }
   return data;
 };
@@ -42,7 +74,7 @@ const saveRoleplayFormat = (chapter) => {
   let file = "";
 
   const insertChapter = (cpId) => {
-    file += `\n\n---------- Chapter ${cpId} ----------`;
+    file += `\n\n---------- Chapter ${cpId} ----------\n`;
     file += renderRoleplayFormat(cpId);
     file += `\n\n---------- The end chapter ${cpId} ----------`;
   };
