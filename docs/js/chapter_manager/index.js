@@ -72,6 +72,42 @@ var rainMode = {
 };
 
 var storyDialogue = {
+  template: (
+    data,
+    item,
+    items,
+    message,
+    type,
+    msgTag,
+    baseWidth = null,
+    baseName = "",
+  ) => {
+    storyData.chapter.html[item] = $("<tr>", { line: item }).append(
+      // Line number
+      $("<td>", {
+        class:
+          "py-4 font-weight-bold d-none d-md-table-cell text-white text-center",
+      }).text(item),
+
+      // Type base
+      $("<td>", { class: "py-4 text-white text-center", width: baseWidth })
+        .text(baseName)
+        .prepend(
+          $("<span>", { class: "badge bg-secondary" }).text(
+            `${type}${data.flashback ? ` (Flashback)` : ""}`,
+          ),
+          baseName ? $("<br>") : null,
+        ),
+
+      // Text
+      $("<td>", { class: "py-4 text-break text-white" }).append(
+        $(`<${msgTag}>`, { class: "text-break" }).text(message),
+      ),
+    );
+
+    items.push(storyData.chapter.html[item]);
+  },
+
   nsfwChecker: function (data) {
     if (Array.isArray(data.nsfw)) {
       let nsfwValue = false;
@@ -99,94 +135,56 @@ var storyDialogue = {
   // Action
   action: function (item, items, data) {
     const message = storyDialogue.nsfwChecker(data);
-    if (message) {
-      storyData.chapter.html[item] = $("<tr>", { line: item }).append(
-        $("<td>", {
-          class:
-            "py-4 font-weight-bold d-none d-md-table-cell text-white text-center",
-        }).text(item),
-        $("<td>", { class: "py-4 text-white text-center" })
-          .text("")
-          .prepend($("<span>", { class: "badge bg-secondary" }).text("Action")),
-        $("<td>", { class: "py-4 text-break text-white" }).append(
-          $("<strong>", { class: "text-break" }).text(message),
-        ),
-      );
-
-      items.push(storyData.chapter.html[item]);
-    }
+    if (message)
+      storyDialogue.template(data, item, items, message, "Action", "strong");
   },
 
   // Dialogue
   dialogue: function (item, items, data) {
     const message = storyDialogue.nsfwChecker(data);
-    if (message) {
-      storyData.chapter.html[item] = $("<tr>", { line: item }).append(
-        $("<td>", {
-          class:
-            "py-4 font-weight-bold d-none d-md-table-cell text-white text-center",
-        }).text(item),
-        $("<td>", { class: "py-4 text-white text-center", width: "15%" })
-          .text(data.character)
-          .prepend(
-            $("<span>", { class: "badge bg-secondary" }).text("Character"),
-            $("<br/>"),
-          ),
-        $("<td>", { class: "py-4 text-break text-white" }).append(
-          $("<span>", { class: "text-break" }).text(message),
-        ),
+    if (message)
+      storyDialogue.template(
+        data,
+        item,
+        items,
+        message,
+        "Character",
+        "span",
+        "15%",
+        data.character,
       );
-
-      items.push(storyData.chapter.html[item]);
-    }
   },
 
   // Telepathy
   telepathy: function (item, items, data) {
     const message = storyDialogue.nsfwChecker(data);
-    if (message) {
-      storyData.chapter.html[item] = $("<tr>", { line: item }).append(
-        $("<td>", {
-          class:
-            "py-4 font-weight-bold d-none d-md-table-cell text-white text-center",
-        }).text(item),
-        $("<td>", { class: "py-4 text-white text-center", width: "15%" })
-          .text(data.character)
-          .prepend(
-            $("<span>", { class: "badge bg-secondary" }).text("telepathy"),
-            $("<br/>"),
-          ),
-        $("<td>", { class: "py-4 text-break text-white" }).append(
-          $("<small>", { class: "text-break" }).text(message),
-        ),
+    if (message)
+      storyDialogue.template(
+        data,
+        item,
+        items,
+        message,
+        "Telepathy",
+        "small",
+        "15%",
+        data.character,
       );
-
-      items.push(storyData.chapter.html[item]);
-    }
   },
 
   // Think
   think: function (item, items, data) {
     const message = storyDialogue.nsfwChecker(data);
-    if (message) {
-      storyData.chapter.html[item] = $("<tr>", { line: item }).append(
-        $("<td>", {
-          class:
-            "py-4 font-weight-bold d-none d-md-table-cell text-white text-center",
-        }).text(item),
-        $("<td>", { class: "py-4 text-white text-center", width: "15%" })
-          .text(data.character)
-          .prepend(
-            $("<span>", { class: "badge bg-secondary" }).text("Thought"),
-            $("<br/>"),
-          ),
-        $("<td>", { class: "py-4 text-break text-white" }).append(
-          $("<small>", { class: "text-break" }).text(message),
-        ),
+    if (message)
+      storyDialogue.template(
+        data,
+        item,
+        items,
+        message,
+        "Thought",
+        "small",
+        "15%",
+        data.character,
       );
-
-      items.push(storyData.chapter.html[item]);
-    }
   },
 };
 
@@ -883,7 +881,7 @@ var openChapterMenu = function (params = {}) {
                   // Complete
                   return false;
                 })
-                .text("Load"),
+                .text("Load Chapter"),
             ),
           ),
         ),
