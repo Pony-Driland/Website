@@ -258,7 +258,7 @@ var openChapterMenu = function (params = {}) {
     // Detect Bookmark
     if (
       typeof storyData.chapter.bookmark[storyData.chapter.selected] ===
-        "number" &&
+      "number" &&
       storyData.chapter.bookmark[storyData.chapter.selected] !== 1
     ) {
       // Update Line
@@ -486,8 +486,10 @@ var openChapterMenu = function (params = {}) {
 
   // Nope. Choose One
   else {
+    const markdownRead = $("#markdown-read");
+
     // Prepare Choose
-    $("#markdown-read").append(
+    markdownRead.append(
       // Banner
       $("<img>", { class: "img-fluid mb-2", src: "/img/external/banner1.jpg" }),
 
@@ -822,12 +824,6 @@ var openChapterMenu = function (params = {}) {
                 dialog: "modal-lg",
               });
             }),
-
-          $("<button>", { class: "ms-3 btn btn-info btn-sm" })
-            .text("Save As all chapters")
-            .click(function () {
-              saveRoleplayFormat();
-            }),
         ),
       $("<h5>").text(
         `When you open a chapter, look at the top of the page. You will find extra tools and even a bookmark manager to save your progress in your browser.`,
@@ -850,8 +846,8 @@ var openChapterMenu = function (params = {}) {
       }
 
       // Add Chapter
-      $("#markdown-read").append(
-        $("<div>", { class: "card" }).append(
+      markdownRead.append(
+        $("<div>", { class: "card mb-2" }).append(
           $("<div>", { class: "card-body" }).append(
             $("<h5>", { class: "card-title" })
               .text("Chapter " + chapter)
@@ -874,32 +870,66 @@ var openChapterMenu = function (params = {}) {
             $("<p>", { class: "card-text small" }).text(
               storyCfg.chapterName[chapter].description,
             ),
-            $("<a>", {
-              class: "btn btn-primary m-2 ms-0",
-              href: `/chapter/${chapter}.html`,
-              chapter: chapter,
-            })
-              .click(function () {
-                // Start Chapter
-                newRead(Number($(this).attr("chapter")));
-
-                // Complete
-                return false;
+            $('<div>', { class: 'd-grid gap-2 col-6 mx-auto' }).append(
+              $("<a>", {
+                class: "btn btn-primary m-2 ms-0",
+                href: `/chapter/${chapter}.html`,
+                chapter: chapter,
               })
-              .text("Load"),
-            $("<a>", {
-              class: "btn btn-primary m-2 me-0",
-              href: `/chapter/${chapter}.html`,
-              chapter: chapter,
-            })
-              .click(function () {
-                // Save Chapter
-                saveRoleplayFormat(Number($(this).attr("chapter")));
+                .click(function () {
+                  // Start Chapter
+                  newRead(Number($(this).attr("chapter")));
 
-                // Complete
-                return false;
-              })
-              .text("Save as"),
+                  // Complete
+                  return false;
+                })
+                .text("Load")
+            ),
+          ),
+        ),
+      );
+    }
+
+    markdownRead.append(
+      $("<h2>")
+        .text(`Download Content`)
+        .prepend($("<i>", { class: "fa-solid fa-download me-3" })).append(
+          $("<button>", { class: "ms-3 btn btn-info btn-sm" })
+            .text("Save As all chapters")
+            .click(function () {
+              saveRoleplayFormat();
+            }),
+        ),
+      $("<h5>").text(
+        `Here you can download the official content of fic to produce unofficial content dedicated to artificial intelligence. The website script will convert all content to be easily understood by AI languages. Remember that you are downloading the uncensored version.`,
+      ),
+    );
+
+    for (let i = 0; i < storyData.chapter.amount; i++) {
+      // Chapter Number
+      const chapter = String(i + 1);
+
+      // Add Chapter
+      markdownRead.append(
+        $("<div>", { class: "card" }).append(
+          $("<div>", { class: "card-body" }).append(
+            $("<h5>", { class: "card-title m-0" })
+              .text(`Chapter ${chapter} - `).append(
+                $('<small>').text(storyCfg.chapterName[chapter].title),
+                $("<a>", {
+                  class: "btn btn-primary m-2 me-0 btn-sm",
+                  href: `/chapter/${chapter}.html`,
+                  chapter: chapter,
+                })
+                  .click(function () {
+                    // Save Chapter
+                    saveRoleplayFormat(Number($(this).attr("chapter")));
+
+                    // Complete
+                    return false;
+                  })
+                  .text("Save as"),
+              )
           ),
         ),
       );
