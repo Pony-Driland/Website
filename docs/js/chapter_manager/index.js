@@ -258,7 +258,7 @@ var openChapterMenu = function (params = {}) {
     // Detect Bookmark
     if (
       typeof storyData.chapter.bookmark[storyData.chapter.selected] ===
-      "number" &&
+        "number" &&
       storyData.chapter.bookmark[storyData.chapter.selected] !== 1
     ) {
       // Update Line
@@ -870,7 +870,7 @@ var openChapterMenu = function (params = {}) {
             $("<p>", { class: "card-text small" }).text(
               storyCfg.chapterName[chapter].description,
             ),
-            $('<div>', { class: 'd-grid gap-2 col-6 mx-auto' }).append(
+            $("<div>", { class: "d-grid gap-2 col-6 mx-auto" }).append(
               $("<a>", {
                 class: "btn btn-primary m-2 ms-0",
                 href: `/chapter/${chapter}.html`,
@@ -883,7 +883,7 @@ var openChapterMenu = function (params = {}) {
                   // Complete
                   return false;
                 })
-                .text("Load")
+                .text("Load"),
             ),
           ),
         ),
@@ -893,7 +893,8 @@ var openChapterMenu = function (params = {}) {
     markdownRead.append(
       $("<h2>")
         .text(`Download Content`)
-        .prepend($("<i>", { class: "fa-solid fa-download me-3" })).append(
+        .prepend($("<i>", { class: "fa-solid fa-download me-3" }))
+        .append(
           $("<button>", { class: "ms-3 btn btn-info btn-sm" })
             .text("Save As all chapters")
             .click(function () {
@@ -914,8 +915,9 @@ var openChapterMenu = function (params = {}) {
         $("<div>", { class: "card" }).append(
           $("<div>", { class: "card-body" }).append(
             $("<h5>", { class: "card-title m-0" })
-              .text(`Chapter ${chapter} - `).append(
-                $('<small>').text(storyCfg.chapterName[chapter].title),
+              .text(`Chapter ${chapter} - `)
+              .append(
+                $("<small>").text(storyCfg.chapterName[chapter].title),
                 $("<a>", {
                   class: "btn btn-primary m-2 me-0 btn-sm",
                   href: `/chapter/${chapter}.html`,
@@ -929,7 +931,7 @@ var openChapterMenu = function (params = {}) {
                     return false;
                   })
                   .text("Save as"),
-              )
+              ),
           ),
         ),
       );
