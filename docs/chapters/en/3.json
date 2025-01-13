@@ -16679,13 +16679,15 @@
 
   {
     "value": "If this plan leaks... I'll have every right to do anything else myself thing. Even eliminate you forever if I want to...",
-    "character": "Rainbow Queen (Flashback)",
+    "character": "Rainbow Queen",
+    "flashback": true,
     "type": "dialogue"
   }, 
 
   {
     "value": "IF THIS PLAN LEAKS... LEAAAKS...",
-    "character": "Rainbow Queen (Flashback)",
+    "character": "Rainbow Queen",
+    "flashback": true,
     "type": "dialogue"
   }, 
 
@@ -22411,35 +22413,41 @@
 
   {
     "value": "Aniya... Why are you doing this? You seem to like this crystal ball so much more than our friendship.",
-    "character": "Amy (Flashback)",
+    "character": "Amy",
+    "flashback": true,
     "type": "dialogue"
   }, 
 
   {
     "value": "Amy embraced Aniya's hoof very kindly as she looked sadly at Aniya.",
+    "flashback": true,
     "type": "action"
   }, 
 
   {
     "value": "A...Amy? N..No! No... Please don't look at me like this. Look... It's not you. Don't you see? This isn't my place.",
-    "character": "Aniya (Flashback)",
+    "character": "Aniya",
+    "flashback": true,
     "type": "dialogue"
   }, 
 
   {
     "value": "But... our master who gave you these powers as you wanted so much. Our master trusted you. I convinced our master to trust you. I made this for you. And I brought your new gypsy clothes because it's your favorite fantasy. A..Aniya... please, at least stay here with me as a gypsy.",
-    "character": "Amy (Flashback)",
+    "character": "Amy",
+    "flashback": true,
     "type": "dialogue"
   },  
 
   {
     "value": "Amy's voice started shaking in sadness as a little tear from Amy's eyes began to come out, making Aniya feel worried.",
+    "flashback": true,
     "type": "action"
   },
 
   {
     "value": "Amy... I... I...",
-    "character": "Aniya (Flashback)",
+    "character": "Aniya",
+    "flashback": true,
     "type": "dialogue"
   },
 

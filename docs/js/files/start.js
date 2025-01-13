@@ -22,14 +22,18 @@ const renderRoleplayFormat = (chapter) => {
   let data = "";
   for (const item in storyData.data[chapter]) {
     const lineText = `(Line ${Number(item) + 1})`;
+    let flashback = storyData.data[chapter][item].flashback
+      ? " (Flasback scene)"
+      : "";
+
     if (storyData.data[chapter][item].type === "action")
-      data += `\n${lineText} *${storyData.data[chapter][item].value}*`;
+      data += `\n${lineText}${flashback} *${storyData.data[chapter][item].value}*`;
     if (storyData.data[chapter][item].type === "think")
-      data += `\n${lineText} ${storyData.data[chapter][item].character}'s thinks: ${storyData.data[chapter][item].value}`;
+      data += `\n${lineText}${flashback} ${storyData.data[chapter][item].character}'s thinks: ${storyData.data[chapter][item].value}`;
     if (storyData.data[chapter][item].type === "telepathy")
-      data += `\n${lineText} ${storyData.data[chapter][item].character}'s telepathy voice: ${storyData.data[chapter][item].value}`;
+      data += `\n${lineText}${flashback} ${storyData.data[chapter][item].character}'s telepathy voice: ${storyData.data[chapter][item].value}`;
     if (storyData.data[chapter][item].type === "dialogue")
-      data += `\n${lineText} ${storyData.data[chapter][item].character}: ${storyData.data[chapter][item].value}`;
+      data += `\n${lineText}${flashback} ${storyData.data[chapter][item].character}: ${storyData.data[chapter][item].value}`;
   }
   return data;
 };

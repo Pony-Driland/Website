@@ -630,7 +630,7 @@ musicManager.updatePlayer = function () {
       const newTitle = `Youtube - ${storyData.music.author_name} - ${storyData.music.title}`;
       const divBase = $("#music-player > a").has(storyData.music.nav.info);
 
-      if (divBase.data("bs-tooltip-data") !== newTitle) {
+      if (divBase && divBase.data("bs-tooltip-data") !== newTitle) {
         divBase
           .data("bs-tooltip-data", newTitle)
           .data("bs-tooltip")
