@@ -172,9 +172,8 @@ storyData.youtube = {
       console.log(`Loading youtube video embed...`, videoID);
 
       // Youtube Player
-      if (storyData.youtube.player) {
+      if (storyData.youtube.player && storyData.youtube.player.setVolume)
         storyData.youtube.player.setVolume(storyData.music.volume);
-      }
 
       storyData.music.loading = false;
       storyData.youtube.loading = false;
