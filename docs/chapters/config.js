@@ -174,7 +174,7 @@ var storyCfg = {
 
         3: {
             color: '#000',
-            title: 'They need help',
+            title: 'They needs help',
             description: 'These ponies need your help. But at the cost of what consequences?'
         }
 

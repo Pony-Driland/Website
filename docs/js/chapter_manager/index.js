@@ -76,36 +76,38 @@ var storyDialogue = {
     data,
     item,
     items,
-    message,
     type,
     msgTag,
     baseWidth = null,
     baseName = "",
   ) => {
-    storyData.chapter.html[item] = $("<tr>", { line: item }).append(
-      // Line number
-      $("<td>", {
-        class:
-          "py-4 font-weight-bold d-none d-md-table-cell text-white text-center",
-      }).text(item),
+    const message = storyDialogue.nsfwChecker(data);
+    if (message) {
+      storyData.chapter.html[item] = $("<tr>", { line: item }).append(
+        // Line number
+        $("<td>", {
+          class:
+            "py-4 font-weight-bold d-none d-md-table-cell text-white text-center",
+        }).text(item),
 
-      // Type base
-      $("<td>", { class: "py-4 text-white text-center", width: baseWidth })
-        .text(baseName)
-        .prepend(
-          $("<span>", { class: "badge bg-secondary" }).text(
-            `${type}${data.flashback ? ` (Flashback)` : ""}`,
+        // Type base
+        $("<td>", { class: "py-4 text-white text-center", width: baseWidth })
+          .text(baseName)
+          .prepend(
+            $("<span>", { class: "badge bg-secondary" }).text(
+              `${type}${data.flashback ? ` (Flashback)` : ""}`,
+            ),
+            baseName ? $("<br>") : null,
           ),
-          baseName ? $("<br>") : null,
+
+        // Text
+        $("<td>", { class: "py-4 text-break text-white" }).append(
+          $(`<${msgTag}>`, { class: "text-break" }).text(message),
         ),
+      );
 
-      // Text
-      $("<td>", { class: "py-4 text-break text-white" }).append(
-        $(`<${msgTag}>`, { class: "text-break" }).text(message),
-      ),
-    );
-
-    items.push(storyData.chapter.html[item]);
+      items.push(storyData.chapter.html[item]);
+    }
   },
 
   nsfwChecker: function (data) {
@@ -133,59 +135,44 @@ var storyDialogue = {
   },
 
   // Action
-  action: function (item, items, data) {
-    const message = storyDialogue.nsfwChecker(data);
-    if (message)
-      storyDialogue.template(data, item, items, message, "Action", "strong");
-  },
+  action: (item, items, data) =>
+    storyDialogue.template(data, item, items, "Action", "strong"),
 
   // Dialogue
-  dialogue: function (item, items, data) {
-    const message = storyDialogue.nsfwChecker(data);
-    if (message)
-      storyDialogue.template(
-        data,
-        item,
-        items,
-        message,
-        "Character",
-        "span",
-        "15%",
-        data.character,
-      );
-  },
+  dialogue: (item, items, data) =>
+    storyDialogue.template(
+      data,
+      item,
+      items,
+      "Character",
+      "span",
+      "15%",
+      data.character,
+    ),
 
   // Telepathy
-  telepathy: function (item, items, data) {
-    const message = storyDialogue.nsfwChecker(data);
-    if (message)
-      storyDialogue.template(
-        data,
-        item,
-        items,
-        message,
-        "Telepathy",
-        "small",
-        "15%",
-        data.character,
-      );
-  },
+  telepathy: (item, items, data) =>
+    storyDialogue.template(
+      data,
+      item,
+      items,
+      "Telepathy",
+      "small",
+      "15%",
+      data.character,
+    ),
 
   // Think
-  think: function (item, items, data) {
-    const message = storyDialogue.nsfwChecker(data);
-    if (message)
-      storyDialogue.template(
-        data,
-        item,
-        items,
-        message,
-        "Thought",
-        "small",
-        "15%",
-        data.character,
-      );
-  },
+  think: (item, items, data) =>
+    storyDialogue.template(
+      data,
+      item,
+      items,
+      "Thought",
+      "small",
+      "15%",
+      data.character,
+    ),
 };
 
 var openChapterMenu = function (params = {}) {
