@@ -101,7 +101,7 @@ var tinyLib = {};
 tinyLib.mdManager = {};
 
 tinyLib.mdManager.extractMetadata = function (markdown) {
-    const charactersBetweenGroupedHyphens = /^---([\s\S]*?)---/;
+    const charactersBetweenGroupedHyphens = /^\#---([\s\S]*?)\#---/;
     const metadataMatched = markdown.match(charactersBetweenGroupedHyphens);
     const metadata = metadataMatched[1];
     if (!metadata) {
@@ -135,7 +135,7 @@ tinyLib.mdManager.extractMetadata = function (markdown) {
 }
 
 tinyLib.mdManager.removeMetadata = function (text) {
-    let result = text.replace(/^---([\s\S]*?)---/, '');
+    let result = text.replace(/^\#---([\s\S]*?)\#---/, '');
     while (result.startsWith('\n')) {
         result = result.substring(1);
     }

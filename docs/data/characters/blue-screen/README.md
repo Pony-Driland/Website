@@ -1,6 +1,6 @@
----
+#---
 title: 'Blue Screen'
----
+#---
 
 # Blue Screen (WIP)
 

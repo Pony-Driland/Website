@@ -1,6 +1,6 @@
----
+#---
 title: 'License'
----
+#---
 
 ## Copyright (c) 2020 Yasmin Seidel
 You are allowed to produce any type of unofficial content related to Pony Driland.
