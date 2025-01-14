@@ -81,9 +81,11 @@ storyData.youtube = {
       storyData.youtube.player.setShuffle(true);
 
       if (storyData.youtube.volume > 0) {
-        storyData.youtube.player.playVideo();
+        if (storyData.youtube.player.playVideo)
+          storyData.youtube.player.playVideo();
       } else {
-        storyData.youtube.player.pauseVideo();
+        if (storyData.youtube.player.pauseVideo)
+          storyData.youtube.player.pauseVideo();
       }
 
       // Send Data
@@ -239,7 +241,8 @@ storyData.youtube = {
                       storyData.music.title = jsonVideo.title;
 
                       if (storyData.youtube.volume < 1) {
-                        storyData.youtube.player.pauseVideo();
+                        if (storyData.youtube.player.pauseVideo)
+                          storyData.youtube.player.pauseVideo();
                       }
                     })
                     .fail((err) => {
@@ -266,7 +269,8 @@ storyData.youtube = {
                 // Stopping
                 if (storyData.music.isStopping) {
                   storyData.youtube.player.seekTo(0);
-                  storyData.youtube.player.pauseVideo();
+                  if (storyData.youtube.player.pauseVideo)
+                    storyData.youtube.player.pauseVideo();
                   storyData.music.isStopping = false;
                 }
 
@@ -494,9 +498,11 @@ var musicManager = {
             .click(function () {
               if (!storyData.music.loading) {
                 if (storyData.youtube.state === YT.PlayerState.PLAYING) {
-                  storyData.youtube.player.pauseVideo();
+                  if (storyData.youtube.player.pauseVideo)
+                    storyData.youtube.player.pauseVideo();
                 } else {
-                  storyData.youtube.player.playVideo();
+                  if (storyData.youtube.player.playVideo)
+                    storyData.youtube.player.playVideo();
                 }
               }
             })
