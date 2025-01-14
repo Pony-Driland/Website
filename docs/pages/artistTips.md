@@ -1,6 +1,6 @@
----
+#---
 title: 'AI Tips for human artists'
----
+#---
 
 <h1 id="ai_tips">AI Tips for Human Artists</h1>
 
