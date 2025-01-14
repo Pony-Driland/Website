@@ -887,7 +887,9 @@ var openChapterMenu = function (params = {}) {
             }),
         ),
       $("<h5>").text(
-        `Here you can download the official content of fic to produce unofficial content dedicated to artificial intelligence. The website script will convert all content to be easily understood by AI languages. Remember that you are downloading the uncensored version.`,
+        `Here you can download the official content of fic to produce unofficial content dedicated to artificial intelligence.`,
+      ).append(
+        $('<br/>'), $('<small>').text('Remember that you are downloading the uncensored version.'),
       ),
     );
 
@@ -921,6 +923,11 @@ var openChapterMenu = function (params = {}) {
         ),
       );
     }
+
+    markdownRead.append(
+      $("<p>", { class: 'm-0'})
+        .text(`This content is ready for AI to know which lines of text, chapters, day number, weather, location on any part of the fic you ask. The website script will convert all content to be easily understood by AI languages.`),
+    );
   }
 
   /* 
