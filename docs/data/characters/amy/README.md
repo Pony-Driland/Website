@@ -1,3 +1,7 @@
+---
+title: 'Amy'
+---
+
 # Amy
 
 ## Specie

@@ -146,35 +146,38 @@ var urlUpdate = function (url, title, isPopState = false) {
   if (typeof title !== "string" || title.length < 1) {
     title = storyCfg.title;
   }
+
+  const newUrl =
+    typeof url === "string" && !url.startsWith("/") && url !== "read-fic"
+      ? `/${url}`
+      : url;
+
   document.title = title;
-  storyData.urlPage = url;
+  storyData.urlPage = newUrl;
 
   // Google
   if (typeof storyCfg.gtag === "string" && gtag) {
     gtag("event", "url", {
       event_title: title,
       event_category: "open_url",
-      url: url,
+      url: newUrl,
     });
   }
 
   // Pop State
   if (!isPopState) {
-    if (typeof url === "string" && url.length > 0) {
+    if (typeof newUrl === "string" && newUrl.length > 0) {
       if (!storyCfg.custom_url[url]) {
         window.history.pushState(
           { pageTitle: title },
           "",
-          "/?path=" +
-            encodeURIComponent(url) +
-            "&title=" +
-            encodeURIComponent(title),
+          "/?path=" + encodeURIComponent(newUrl),
         );
       } else {
         window.history.pushState(
-          { pageTitle: storyCfg.custom_url[url].title },
+          { pageTitle: storyCfg.custom_url[newUrl].title },
           "",
-          storyCfg.custom_url[url].url,
+          storyCfg.custom_url[newUrl].url,
         );
       }
     } else {
@@ -289,7 +292,6 @@ var insertMarkdownFile = function (text, isMainPage = false, isHTML = false) {
     .removeAttr("target")
     .click(function () {
       openMDFIle($(this).attr("file"));
-      urlUpdate($(this).attr("file"), $(this).text().trim());
     });
 
   // Fix Image
@@ -399,35 +401,56 @@ var clearFicData = function () {
 var openMDFIle = function (url, isMain = false) {
   // Remove Fic Data
   clearFicData();
+
+  // New page
   if (url !== "MAIN") {
     // Read Data Base
     console.log(`Opening MD file "${url}"...`);
     $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
 
+    // Load ajax
     $.ajax({
-      url: url + fileVersion,
+      url: `${url}${fileVersion}`,
       type: "get",
       dataType: "text",
     })
+      // Complete
       .done(function (fileData) {
-        if (url.endsWith(".md")) {
-          console.log(`MD File opened successfully!`);
-          insertMarkdownFile(fileData, isMain, false);
-        } else {
-          console.log(`HTML File opened successfully!`);
-          insertMarkdownFile(fileData, isMain, true);
-        }
+        try {
+          const fileLines = tinyLib.mdManager.removeMetadata(fileData);
+          const metadata = tinyLib.mdManager.extractMetadata(fileData);
+          const title = metadata.title;
 
-        tinyLib.goToByScrollTop(0);
-        $.LoadingOverlay("hide");
+          if (url.endsWith(".md")) {
+            console.log(`MD File opened successfully!`);
+            insertMarkdownFile(fileLines, isMain, false);
+          } else {
+            console.log(`HTML File opened successfully!`);
+            insertMarkdownFile(fileLines, isMain, true);
+          }
+
+          tinyLib.goToByScrollTop(0);
+          $.LoadingOverlay("hide");
+          urlUpdate(url, title);
+        } catch (err) {
+          $.LoadingOverlay("hide");
+          console.error(err);
+          alert(err.message);
+        }
       })
+
+      // Fail
       .fail((err) => {
         $.LoadingOverlay("hide");
         console.error(err);
         alert(err.message);
       });
-  } else {
+  }
+
+  // Main page
+  else {
     insertMarkdownFile(storyData.readme, isMain, true);
+    urlUpdate();
   }
 };
 
@@ -680,10 +703,7 @@ $(function () {
           id: "information-menu",
           text: "Museum",
           icon: "fa-solid fa-building-columns",
-          click: () => {
-            openMDFIle("pages/museum.md");
-            urlUpdate("/pages/museum.md", "Museum");
-          },
+          click: () => openMDFIle("pages/museum.md"),
         });
 
         tipsPages.push({
@@ -691,10 +711,7 @@ $(function () {
           id: "tiny-ai-writer-tips",
           text: "AI Tips for human artists",
           icon: "fa-solid fa-circle-info",
-          click: () => {
-            openMDFIle("pages/artistTips.md");
-            urlUpdate("/pages/artistTips.md", "AI Tips for human artists");
-          },
+          click: () => openMDFIle("pages/artistTips.md"),
         });
 
         tipsPages.push({
@@ -702,10 +719,7 @@ $(function () {
           id: "ai-fic-template",
           text: "Official AI Models",
           icon: "fa-solid fa-toolbox",
-          click: () => {
-            openMDFIle("pages/ai-templates/ai-models.md");
-            urlUpdate("/pages/ai-templates/ai-models.md", "Official AI Models");
-          },
+          click: () => openMDFIle("pages/ai-templates/ai-models.md"),
         });
 
         // Patreon
@@ -863,7 +877,6 @@ $(function () {
             .text(storyCfg.title)
             .click(function () {
               openMDFIle("MAIN", true);
-              urlUpdate();
               return false;
             }),
 
@@ -878,7 +891,6 @@ $(function () {
               )
               .click(function () {
                 openMDFIle("MAIN", true);
-                urlUpdate();
                 return false;
               }),
 
@@ -957,7 +969,7 @@ $(function () {
                 $("<a>", {
                   id: "fic-start",
                   class: "nav-link",
-                  href: "/?path=read-fic&title=Pony%20Driland",
+                  href: "/?path=read-fic",
                 })
                   .text("Read Fic")
                   .append(isNewValue)
@@ -967,7 +979,6 @@ $(function () {
                 if (!readButtonDisabled) {
                   $("#top_page").addClass("d-none");
                   openChapterMenu();
-                  urlUpdate("read-fic");
                 }
                 return false;
               }),
@@ -993,7 +1004,6 @@ $(function () {
             .text(storyCfg.title)
             .click(function () {
               openMDFIle("MAIN", true);
-              urlUpdate();
               return false;
             }),
 
@@ -1182,7 +1192,7 @@ $(function () {
           )
           .click(function () {
             openMDFIle("/LICENSE.md");
-            urlUpdate("/LICENSE.md", "License");
+
             return false;
           }),
       );

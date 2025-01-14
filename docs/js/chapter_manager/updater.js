@@ -246,7 +246,7 @@ cacheChapterUpdater.data = function (lastPage) {
             $("<input>", { type: "text", class: "form-control text-center" })
               .prop("readonly", true)
               .val(
-                `${location.protocol}//${location.host}/?path=read-fic&title=${encodeURIComponent(storyCfg.title)}&chapter=${storyData.chapter.selected}&line=${storyData.chapter.line}`,
+                `${location.protocol}//${location.host}/?path=read-fic&chapter=${storyData.chapter.selected}&line=${storyData.chapter.line}`,
               )
               .click(function () {
                 $(this).select();

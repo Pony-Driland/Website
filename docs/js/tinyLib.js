@@ -1,11 +1,11 @@
 // Bootstrap 5
-const enableQuery = function() {
+const enableQuery = function () {
 
     $.fn.modal = function (type, configObject) {
         this.each(function () {
-    
+
             if (!$(this).data('bs-modal')) {
-    
+
                 if (configObject) {
                     $(this).data('bs-modal', new bootstrap.Modal(this, configObject));
                 } else if (typeof type !== 'string') {
@@ -13,25 +13,25 @@ const enableQuery = function() {
                 } else {
                     $(this).data('bs-modal', new bootstrap.Modal(this));
                 }
-    
+
             }
 
             const modal = $(this).data('bs-modal');
-    
+
             if (typeof type === 'string' && typeof modal[type] === 'function') {
                 modal[type]();
             } else {
                 modal.show();
             }
-    
+
         });
     };
 
     $.fn.tooltip = function (type, configObject) {
         this.each(function () {
-    
+
             if (!$(this).data('bs-tooltip')) {
-    
+
                 if (configObject) {
                     $(this).data('bs-tooltip', new bootstrap.Tooltip(this, configObject));
                 } else if (typeof type !== 'string') {
@@ -39,9 +39,9 @@ const enableQuery = function() {
                 } else {
                     $(this).data('bs-tooltip', new bootstrap.Tooltip(this));
                 }
-    
+
             }
-    
+
         });
     };
 
@@ -96,6 +96,51 @@ var tinyLib = {};
     if (document[hidden] !== undefined)
         onchange({ type: document[hidden] ? "blur" : "focus" });
 })();
+
+// MD Data manager
+tinyLib.mdManager = {};
+
+tinyLib.mdManager.extractMetadata = function (markdown) {
+    const charactersBetweenGroupedHyphens = /^---([\s\S]*?)---/;
+    const metadataMatched = markdown.match(charactersBetweenGroupedHyphens);
+    const metadata = metadataMatched[1];
+    if (!metadata) {
+        return {};
+    }
+
+    const metadataLines = metadata.split("\n");
+    const metadataObject = metadataLines.reduce((accumulator, line) => {
+        const [key, ...value] = line.split(":").map((part) => part.trim());
+
+        if (key) {
+            accumulator[key] = value[1] ? value.join(":") : value.join("");
+
+            if (
+                (
+                    accumulator[key].startsWith('\'') &&
+                    accumulator[key].endsWith('\'')
+                ) ||
+                (
+                    accumulator[key].startsWith('"') &&
+                    accumulator[key].endsWith('"')
+                )
+            )
+                accumulator[key] = accumulator[key].substring(1, accumulator[key].length - 1);
+
+        }
+        return accumulator;
+    }, {});
+
+    return metadataObject;
+}
+
+tinyLib.mdManager.removeMetadata = function (text) {
+    let result = text.replace(/^---([\s\S]*?)---/, '');
+    while (result.startsWith('\n')) {
+        result = result.substring(1);
+    }
+    return result;
+}
 
 // Dialog
 tinyLib.dialog = function (data1, data2) {
@@ -242,7 +287,7 @@ $.fn.selectRange = function (start, end) {
 };
 
 // https://stackoverflow.com/questions/15900485/correct-way-to-convert-size-in-bytes-to-kb-mb-gb-in-javascript
-tinyLib.formatBytes = function(bytes, decimals = 2) {
+tinyLib.formatBytes = function (bytes, decimals = 2) {
 
     if (bytes === 0) return '0 Bytes';
 
@@ -257,7 +302,7 @@ tinyLib.formatBytes = function(bytes, decimals = 2) {
 };
 
 // Alert
-alert = function(text, title = 'Browser Warning!') {
+alert = function (text, title = 'Browser Warning!') {
     return tinyLib.modal({
         title: $('<span>').text(title),
         body: $('<div>', { class: 'text-break' }).css('white-space', 'pre-wrap').text(text),
@@ -266,7 +311,7 @@ alert = function(text, title = 'Browser Warning!') {
 };
 
 // This is a functions that scrolls to #{blah}link
-tinyLib.goToByScroll = function(id, speed = 'slow') {
+tinyLib.goToByScroll = function (id, speed = 'slow') {
     const offset = id.offset();
     if (offset) {
         $('html,body').animate({
@@ -275,22 +320,22 @@ tinyLib.goToByScroll = function(id, speed = 'slow') {
     }
 };
 
-tinyLib.goToByScrollTop = function(speed = 'slow') {
+tinyLib.goToByScrollTop = function (speed = 'slow') {
     $('html,body').animate({
         scrollTop: 0
     }, speed);
 };
 
-tinyLib.isPageTop = function() {
+tinyLib.isPageTop = function () {
     return ($(window).scrollTop() + $(window).height() === $(document).height());
 };
 
-tinyLib.isPageBottom = function() {
+tinyLib.isPageBottom = function () {
     return ((window.innerHeight + window.scrollY) >= document.body.offsetHeight);
 };
 
 // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-tinyLib.shuffle = function(array) {
+tinyLib.shuffle = function (array) {
 
     let currentIndex = array.length,
         randomIndex;
@@ -313,7 +358,7 @@ tinyLib.shuffle = function(array) {
 };
 
 // Rule 3
-tinyLib.rule3 = function(val1, val2, val3, inverse) {
+tinyLib.rule3 = function (val1, val2, val3, inverse) {
     if (inverse == true) {
         return Number(val1 * val2) / val3;
     } else {
@@ -322,17 +367,17 @@ tinyLib.rule3 = function(val1, val2, val3, inverse) {
 };
 
 // Title Case
-tinyLib.toTitleCase = function(str) {
+tinyLib.toTitleCase = function (str) {
     return str.replace(
         /\w\S*/g,
-        function(txt) {
+        function (txt) {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
         }
     );
 }
 
 // Boolean Checker
-tinyLib.booleanCheck = function(value) {
+tinyLib.booleanCheck = function (value) {
 
     if (
 
@@ -353,7 +398,7 @@ tinyLib.booleanCheck = function(value) {
 };
 
 // Visible Item
-$.fn.isInViewport = function() {
+$.fn.isInViewport = function () {
 
     const elementTop = $(this).offset().top;
     const elementBottom = elementTop + $(this).outerHeight();
@@ -365,7 +410,7 @@ $.fn.isInViewport = function() {
 
 };
 
-$.fn.isScrolledIntoView = function() {
+$.fn.isScrolledIntoView = function () {
 
     const docViewTop = $(window).scrollTop();
     const docViewBottom = docViewTop + $(window).height();
@@ -377,7 +422,7 @@ $.fn.isScrolledIntoView = function() {
 
 };
 
-$.fn.visibleOnWindow = function() {
+$.fn.visibleOnWindow = function () {
     // Don't include behind the header
     const header = $("#md-navbar");
     let headerOffset = 0;
@@ -411,11 +456,11 @@ $.fn.visibleOnWindow = function() {
 };
 
 tinyLib.lastScrollTime = 0;
-window.addEventListener("scroll", function() {
+window.addEventListener("scroll", function () {
     tinyLib.lastScrollTime = new Date().getTime();
 });
 tinyLib.afterScrollQueue = [];
-(tinyLib.afterScrollCheck = function() {
+(tinyLib.afterScrollCheck = function () {
     requestAnimationFrame(tinyLib.afterScrollCheck);
     if (new Date().getTime() - tinyLib.lastScrollTime > 100) {
         while (tinyLib.afterScrollQueue.length) {
@@ -423,7 +468,7 @@ tinyLib.afterScrollQueue = [];
         }
     }
 })();
-tinyLib.doAfterScroll = function(f) {
+tinyLib.doAfterScroll = function (f) {
     tinyLib.lastScrollTime = new Date().getTime();
     tinyLib.afterScrollQueue.push(f);
 }

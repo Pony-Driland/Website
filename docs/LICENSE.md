@@ -1,3 +1,7 @@
+---
+title: 'License'
+---
+
 ## Copyright (c) 2020 Yasmin Seidel
 You are allowed to produce any type of unofficial content related to Pony Driland.
 You can freely produce fan art, animations, any kind of artistic content as long as you give credit to Pony Driland project.

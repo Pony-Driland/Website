@@ -1,3 +1,7 @@
+---
+title: 'Museum'
+---
+
 ## Pony Driland Museum
 
 Here you can find interesting information about the development history of Pony Driland. Although fic has been published in 2021, there are many other things that have happened many years before everything becomes what it is today.
