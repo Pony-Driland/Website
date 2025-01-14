@@ -210,7 +210,7 @@ var openNewAddress = function (data, isPopState = false, useCustom = false) {
   ) {
     insertMarkdownFile(storyData.readme, true, true);
   } else {
-    openMDFIle(filePath);
+    openMDFile(filePath);
     if (typeof data.title === "string" && data.title.length > 0) {
       urlUpdate(data.path, data.title, isPopState);
     } else {
@@ -296,7 +296,7 @@ var insertMarkdownFile = function (text, isMainPage = false, isHTML = false) {
   $('[id="markdown-read"] a[file]')
     .removeAttr("target")
     .click(function () {
-      openMDFIle($(this).attr("file"));
+      openMDFile($(this).attr("file"));
     });
 
   // Fix Image
@@ -403,60 +403,64 @@ var clearFicData = function () {
 };
 
 // Open MD FIle
-var openMDFIle = function (url, isMain = false) {
-  // Remove Fic Data
-  clearFicData();
+var openMDFile = function (url, isMain = false) {
+  if (typeof url === "string") {
+    // Remove Fic Data
+    clearFicData();
 
-  // New page
-  if (url !== "MAIN") {
-    // Read Data Base
-    console.log(`Opening MD file "${url}"...`);
-    $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
+    // New page
+    if (url !== "MAIN") {
+      // Read Data Base
+      console.log(`Opening MD file "${url}"...`);
+      $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
 
-    // Load ajax
-    $.ajax({
-      url: `${url}${fileVersion}`,
-      type: "get",
-      dataType: "text",
-    })
-      // Complete
-      .done(function (fileData) {
-        try {
-          const fileLines = tinyLib.mdManager.removeMetadata(fileData);
-          const metadata = tinyLib.mdManager.extractMetadata(fileData);
-          const title = metadata.title;
+      // Load ajax
+      $.ajax({
+        url: `${url.startsWith("/") ? url : `/${url}`}${fileVersion}`,
+        type: "get",
+        dataType: "text",
+      })
+        // Complete
+        .done(function (fileData) {
+          try {
+            const fileLines = tinyLib.mdManager.removeMetadata(fileData);
+            const metadata = tinyLib.mdManager.extractMetadata(fileData);
+            const title = metadata.title;
 
-          if (url.endsWith(".md")) {
-            console.log(`MD File opened successfully!`);
-            insertMarkdownFile(fileLines, isMain, false);
-          } else {
-            console.log(`HTML File opened successfully!`);
-            insertMarkdownFile(fileLines, isMain, true);
+            if (url.endsWith(".md")) {
+              console.log(`MD File opened successfully!`);
+              insertMarkdownFile(fileLines, isMain, false);
+            } else {
+              console.log(`HTML File opened successfully!`);
+              insertMarkdownFile(fileLines, isMain, true);
+            }
+
+            tinyLib.goToByScrollTop(0);
+            $.LoadingOverlay("hide");
+            urlUpdate(url, title);
+          } catch (err) {
+            $.LoadingOverlay("hide");
+            console.error(err);
+            alert(err.message);
           }
+        })
 
-          tinyLib.goToByScrollTop(0);
-          $.LoadingOverlay("hide");
-          urlUpdate(url, title);
-        } catch (err) {
+        // Fail
+        .fail((err) => {
           $.LoadingOverlay("hide");
           console.error(err);
           alert(err.message);
-        }
-      })
+        });
+    }
 
-      // Fail
-      .fail((err) => {
-        $.LoadingOverlay("hide");
-        console.error(err);
-        alert(err.message);
-      });
+    // Main page
+    else {
+      insertMarkdownFile(storyData.readme, isMain, true);
+      urlUpdate();
+    }
+    return;
   }
-
-  // Main page
-  else {
-    insertMarkdownFile(storyData.readme, isMain, true);
-    urlUpdate();
-  }
+  throw new Error("Invalid Md File Url!");
 };
 
 // Start App
@@ -708,7 +712,7 @@ $(function () {
           id: "information-menu",
           text: "Museum",
           icon: "fa-solid fa-building-columns",
-          click: () => openMDFIle("pages/museum.md"),
+          click: () => openMDFile("pages/museum.md"),
         });
 
         tipsPages.push({
@@ -716,7 +720,7 @@ $(function () {
           id: "tiny-ai-writer-tips",
           text: "AI Tips for human artists",
           icon: "fa-solid fa-circle-info",
-          click: () => openMDFIle("pages/artistTips.md"),
+          click: () => openMDFile("pages/artistTips.md"),
         });
 
         tipsPages.push({
@@ -724,7 +728,7 @@ $(function () {
           id: "ai-fic-template",
           text: "Official AI Models",
           icon: "fa-solid fa-toolbox",
-          click: () => openMDFIle("pages/ai-templates/ai-models.md"),
+          click: () => openMDFile("pages/ai-templates/ai-models.md"),
         });
 
         // Patreon
@@ -881,7 +885,7 @@ $(function () {
           $("<a>", { class: "navbar-brand d-none d-lg-block", href: "/" })
             .text(storyCfg.title)
             .click(function () {
-              openMDFIle("MAIN", true);
+              openMDFile("MAIN", true);
               return false;
             }),
 
@@ -895,7 +899,7 @@ $(function () {
                   .prepend($("<i>", { class: "fas fa-home me-2" })),
               )
               .click(function () {
-                openMDFIle("MAIN", true);
+                openMDFile("MAIN", true);
                 return false;
               }),
 
@@ -1008,7 +1012,7 @@ $(function () {
           })
             .text(storyCfg.title)
             .click(function () {
-              openMDFIle("MAIN", true);
+              openMDFile("MAIN", true);
               return false;
             }),
 
@@ -1196,7 +1200,7 @@ $(function () {
               .prepend($("<i>", { class: "fas fa-copyright me-2" })),
           )
           .click(function () {
-            openMDFIle("/LICENSE.md");
+            openMDFile("/LICENSE.md");
 
             return false;
           }),
