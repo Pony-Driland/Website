@@ -636,10 +636,9 @@ musicManager.updatePlayer = function () {
       const divBase = $("#music-player > a").has(storyData.music.nav.info);
 
       if (divBase && divBase.data("bs-tooltip-data") !== newTitle) {
-        divBase
-          .data("bs-tooltip-data", newTitle)
-          .data("bs-tooltip")
-          .setContent({ ".tooltip-inner": newTitle });
+        divBase.data("bs-tooltip-data", newTitle);
+        const bsToolTip = divBase.data("bs-tooltip");
+        if (bsToolTip) bsToolTip.setContent({ ".tooltip-inner": newTitle });
       }
     }
 
