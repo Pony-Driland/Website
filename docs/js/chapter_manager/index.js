@@ -465,7 +465,12 @@ var openChapterMenu = function (params = {}) {
       }
     }
 
+    const newParams = { chapter: params.chapter };
+    if (params.line) newParams.line = params.line;
+    if (params.page) newParams.page = params.page;
+
     // Send Data
+    urlUpdate(`read-fic`, null, false, newParams);
     newRead(Number(params.chapter), params.page, params.line, true);
   }
 
@@ -866,6 +871,7 @@ var openChapterMenu = function (params = {}) {
               })
                 .click(function () {
                   // Start Chapter
+                  urlUpdate(`read-fic`, null, false, { chapter });
                   newRead(Number($(this).attr("chapter")));
 
                   // Complete
