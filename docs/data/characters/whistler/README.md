@@ -1,3 +1,7 @@
+---
+title: 'Whistler'
+---
+
 # Whistler (WIP)
 
 ## Specie

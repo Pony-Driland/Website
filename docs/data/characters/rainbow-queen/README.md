@@ -1,3 +1,7 @@
+---
+title: 'Rainbow Queen'
+---
+
 # Rainbow Queen
 
 ## This character's description may contain possible spoilers!

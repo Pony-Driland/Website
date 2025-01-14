@@ -1,3 +1,7 @@
+---
+title: 'AI Tips for human artists'
+---
+
 <h1 id="ai_tips">AI Tips for Human Artists</h1>
 
 <h1 id="ai_tips_introduction">Introduction</h1>

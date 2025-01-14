@@ -1,3 +1,7 @@
+---
+title: 'Official AI Models'
+---
+
 # Official AI Models
 
 All content developed here uses only authorized official fic material.

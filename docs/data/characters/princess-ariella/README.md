@@ -1,3 +1,7 @@
+---
+title: 'Princess Ariella'
+---
+
 # Princess Ariella
 
 ## Specie

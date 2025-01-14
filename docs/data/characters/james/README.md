@@ -1,3 +1,7 @@
+---
+title: 'James'
+---
+
 # James
 
 ## Specie
