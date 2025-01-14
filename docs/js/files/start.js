@@ -141,16 +141,21 @@ if (Array.isArray(storyCfg.mirror) || storyCfg.mirror.length > 0) {
 }
 
 // URL Update
-var urlUpdate = function (url, title, isPopState = false) {
+var urlUpdate = function (url, title, isPopState = false, extra = {}) {
   // Page Title
   if (typeof title !== "string" || title.length < 1) {
     title = storyCfg.title;
   }
 
-  const newUrl =
+  let newUrl =
     typeof url === "string" && !url.startsWith("/") && url !== "read-fic"
       ? `/${url}`
       : url;
+
+  let extraReady = "";
+  for (const item in extra) {
+    extraReady += `&${item}=${extra[item]}`;
+  }
 
   document.title = title;
   storyData.urlPage = newUrl;
@@ -167,17 +172,17 @@ var urlUpdate = function (url, title, isPopState = false) {
   // Pop State
   if (!isPopState) {
     if (typeof newUrl === "string" && newUrl.length > 0) {
-      if (!storyCfg.custom_url[url]) {
+      if (!storyCfg.custom_url[newUrl]) {
         window.history.pushState(
           { pageTitle: title },
           "",
-          "/?path=" + encodeURIComponent(newUrl),
+          "/?path=" + encodeURIComponent(newUrl) + extraReady,
         );
       } else {
         window.history.pushState(
           { pageTitle: storyCfg.custom_url[newUrl].title },
           "",
-          storyCfg.custom_url[newUrl].url,
+          storyCfg.custom_url[newUrl].url + extraReady,
         );
       }
     } else {
