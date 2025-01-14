@@ -499,7 +499,7 @@ var openChapterMenu = function (params = {}) {
             const content = [];
             for (const item in storyData.characters.data) {
               const charData = storyData.characters.data[item];
-              const isNpc = storyCfg.characters[`npc/${charData.id}`]
+              const isNpc = storyCfg.characters[`npc/${charData.id}`];
               if (!charData.value.startsWith("???") && !isNpc) {
                 // Prepare Data
                 const dataBase = $("<div>", { class: "card-body" }).append(
