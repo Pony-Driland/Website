@@ -498,32 +498,35 @@ var openChapterMenu = function (params = {}) {
             const newDiv = $("<div>", { class: "row" });
             const content = [];
             for (const item in storyData.characters.data) {
-              // Prepare Data
               const charData = storyData.characters.data[item];
-              const dataBase = $("<div>", { class: "card-body" }).append(
-                $("<h5>", { class: "card-title" }).text(
-                  tinyLib.toTitleCase(charData.value),
-                ),
-                $("<p>", { class: "card-text small" }).text(
-                  `Performed ${charData.count} dialogues`,
-                ),
-              );
-
-              // Chapter Read
-              for (const item2 in charData.chapter) {
-                dataBase.append(
+              const isNpc = storyCfg.characters[`npc/${charData.id}`]
+              if (!charData.value.startsWith("???") && !isNpc) {
+                // Prepare Data
+                const dataBase = $("<div>", { class: "card-body" }).append(
+                  $("<h5>", { class: "card-title" }).text(
+                    tinyLib.toTitleCase(charData.value),
+                  ),
                   $("<p>", { class: "card-text small" }).text(
-                    `${charData.chapter[item2]} dialogues in Chapter ${item2}`,
+                    `Performed ${charData.count} dialogues`,
+                  ),
+                );
+
+                // Chapter Read
+                for (const item2 in charData.chapter) {
+                  dataBase.append(
+                    $("<p>", { class: "card-text small" }).text(
+                      `${charData.chapter[item2]} dialogues in Chapter ${item2}`,
+                    ),
+                  );
+                }
+
+                // Insert Data
+                content.push(
+                  $("<div>", { class: "col-sm-6" }).append(
+                    $("<div>", { class: "card" }).append(dataBase),
                   ),
                 );
               }
-
-              // Insert Data
-              content.push(
-                $("<div>", { class: "col-sm-6" }).append(
-                  $("<div>", { class: "card" }).append(dataBase),
-                ),
-              );
             }
 
             // Modal
@@ -886,11 +889,16 @@ var openChapterMenu = function (params = {}) {
               saveRoleplayFormat();
             }),
         ),
-      $("<h5>").text(
-        `Here you can download the official content of fic to produce unofficial content dedicated to artificial intelligence.`,
-      ).append(
-        $('<br/>'), $('<small>').text('Remember that you are downloading the uncensored version.'),
-      ),
+      $("<h5>")
+        .text(
+          `Here you can download the official content of fic to produce unofficial content dedicated to artificial intelligence.`,
+        )
+        .append(
+          $("<br/>"),
+          $("<small>").text(
+            "Remember that you are downloading the uncensored version.",
+          ),
+        ),
     );
 
     for (let i = 0; i < storyData.chapter.amount; i++) {
@@ -925,8 +933,9 @@ var openChapterMenu = function (params = {}) {
     }
 
     markdownRead.append(
-      $("<p>", { class: 'm-0'})
-        .text(`This content is ready for AI to know which lines of text, chapters, day number, weather, location on any part of the fic you ask. The website script will convert all content to be easily understood by AI languages.`),
+      $("<p>", { class: "m-0" }).text(
+        `This content is ready for AI to know which lines of text, chapters, day number, weather, location on any part of the fic you ask. The website script will convert all content to be easily understood by AI languages.`,
+      ),
     );
   }
 

@@ -18671,7 +18671,7 @@
 
   {
     "value": "Well... But wait... where's Jasmin?",
-    "character": "think",
+    "character": "Rayane",
     "type": "dialogue"
   }, 
 
@@ -18682,7 +18682,7 @@
 
   {
     "value": "Ah... yeah... I would go in and just look at James' lab.",
-    "character": "think",
+    "character": "Vinny",
     "type": "dialogue"
   }, 
 
@@ -18695,8 +18695,8 @@
     "set": {
       "playlistPlay": null
     },
-    "value": "What?",
-    "character": "think",
+    "value": "What? Hello?",
+    "character": "Vinny",
     "type": "dialogue"
   }, 
 
@@ -18706,8 +18706,8 @@
   }, 
 
   {
-    "value": "What happened now?",
-    "character": "think",
+    "value": "A..Ah? Vinny? What happened now?",
+    "character": "Yasmin",
     "type": "dialogue"
   },
 

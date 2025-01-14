@@ -1251,7 +1251,7 @@ $(function () {
           `If this is the first time you enter the website, remember that to browse the website, use navbar at the top of the page. If you want to read the fic, go to the "Read Fic" page that is in the right corner of the navbar.
 
 This same navbar will also show all the fic tools as "bookmark" and data progress of the story. Although we have an account system, you are not required to use. Please use only what you really find necessary to use.`,
-          'Welcome to Pony Driland!'
+          "Welcome to Pony Driland!",
         );
       }
     });

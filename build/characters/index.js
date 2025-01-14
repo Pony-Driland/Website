@@ -1,6 +1,10 @@
 // Get Path
 const path = require('path');
 const fs = require('fs');
+const { glob } = require("glob");
+
+const getDirectories = (src, callback) => glob(src + '/**/*')
+    .then((data) => callback(null, data)).catch((err) => callback(err));
 
 // Get Fic Data
 const ficData = require('../publicFolder')();
@@ -8,7 +12,7 @@ console.log(ficData);
 
 // Read Data
 const folderPath = path.join(__dirname, './data');
-fs.readdir(folderPath, (err, files) => {
+getDirectories(folderPath, (err, files) => {
     if (!err) {
 
         // Prepare Custom URL
@@ -16,36 +20,46 @@ fs.readdir(folderPath, (err, files) => {
 
         // Read Files
         files.forEach(async file => {
+            if (!fs.lstatSync(`${file}`).isDirectory()) {
 
-            // File Name
-            file = path.parse(file);
+                // File Name
+                file = path.parse(file);
 
-            // Start Group
-            console.group(file.base);
+                // Start Group
+                console.group(file.base);
 
-            // Get JSON
-            const jsonFile = require(path.join(folderPath, './' + file.name + '.json'));
-            console.log('JSON File', jsonFile);
+                // Get JSON
+                const jsonFile = require(path.join(file.dir, './' + file.name + '.json'));
+                console.log('JSON File', jsonFile);
 
-            // Create oEmbed File
-            console.log('Creating JSON oEmbed...');
-            fs.writeFileSync(path.join(ficData.path, './oEmbed/characters/' + file.name + '.json'), JSON.stringify({
-                author_name: jsonFile.author_name,
-                url: jsonFile.type !== 'ario' ? ficData.config.ipfs.host.replace('{cid}', jsonFile.image) : `https://ar-io.dev/${jsonFile.image}`,
-                cache_age: 7200,
-                tags: jsonFile.tags,
-                provider_name: ficData.config.title,
-                provider_url: 'https://' + ficData.config.domain,
-                title: jsonFile.title,
-                description: jsonFile.description,
-                type: 'photo',
-                version: '1.0'
-            }, null, 2));
-            console.log('Done!');
+                // Create oEmbed File
+                if (
+                    jsonFile.author_name &&
+                    jsonFile.type &&
+                    jsonFile.image &&
+                    jsonFile.tags &&
+                    jsonFile.title &&
+                    jsonFile.description &&
+                    jsonFile.color
+                ) {
+                    console.log('Creating JSON oEmbed...');
+                    fs.writeFileSync(path.join(ficData.path, './oEmbed/characters/' + file.name + '.json'), JSON.stringify({
+                        author_name: jsonFile.author_name,
+                        url: jsonFile.type !== 'ario' ? ficData.config.ipfs.host.replace('{cid}', jsonFile.image) : `https://ar-io.dev/${jsonFile.image}`,
+                        cache_age: 7200,
+                        tags: jsonFile.tags,
+                        provider_name: ficData.config.title,
+                        provider_url: 'https://' + ficData.config.domain,
+                        title: jsonFile.title,
+                        description: jsonFile.description,
+                        type: 'photo',
+                        version: '1.0'
+                    }, null, 2));
+                    console.log('Done!');
 
-            // Create HTML File
-            console.log('Creating HTML...');
-            fs.writeFileSync(path.join(ficData.path, './characters/' + file.name + '.html'), `
+                    // Create HTML File
+                    console.log('Creating HTML...');
+                    fs.writeFileSync(path.join(ficData.path, './characters/' + file.name + '.html'), `
 <!doctype html>
 <html lang="en">
     <head>
@@ -107,22 +121,27 @@ fs.readdir(folderPath, (err, files) => {
 
 </html>
             `);
-            console.log('Done!');
+                    console.log('Done!');
+                }
 
-            // Create Custom URL
-            customURLs[file.name] = {
-                path: '/data/characters/' + file.name + '/README.md',
-                url: '/characters/' + file.name + '.html',
-                title: jsonFile.title,
-                description: jsonFile.description
-            };
+                // Create Custom URL
+                const fileId = file.dir.endsWith('/characters/data') ? file.name :
+                    `${path.basename(file.dir)}/${file.name}`;
 
-            // End Group
-            console.groupEnd();
+                customURLs[fileId] = {};
 
-            // Complete
-            return;
+                if (!jsonFile.isNpc) {
+                    customURLs[fileId].path = '/data/characters/' + fileId + '/README.md';
+                    customURLs[fileId].url = '/characters/' + fileId + '.html';
+                }
 
+                customURLs[fileId].title = jsonFile.title;
+                customURLs[fileId].description = jsonFile.description;
+
+                // End Group
+                console.groupEnd();
+
+            }
         });
 
         // Custom List
@@ -145,4 +164,4 @@ for(const item in storyCfg.characters) {
 });
 
 // Interval
-setInterval(function() {}, 100);
+setInterval(function () { }, 100);
