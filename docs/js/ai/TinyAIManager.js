@@ -323,17 +323,24 @@ const AiScriptStart = () => {
 
     // Checker
     tinyAiScript.checkTitle = () => {
+        // Get selected Ai
         const selectedAi = tinyStorage.selectedAi();
 
         // Exists Google only. Then select google generative
         if (selectedAi === 'google-generative') {
+            // Update html
             aiLogin.button.find('> i').removeClass('text-danger-emphasis');
             aiLogin.title = 'AI Enabled';
+
+            // Update Ai API script
             setGoogleAi(tinyAi, tinyStorage.getApiKey('google-generative'));
         } else {
+            // Update html
             aiLogin.button.find('> i').addClass('text-danger-emphasis');
             aiLogin.title = 'AI Disabled';
         }
+
+        // update login button
         aiLogin.button.attr("title", aiLogin.title);
         aiLogin.button.attr("data-bs-original-title", aiLogin.title);
     };

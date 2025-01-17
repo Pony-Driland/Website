@@ -918,7 +918,7 @@ $(() => {
             $("<li>", { class: "nav-item" })
               .prepend(
                 $("<a>", { class: "nav-link", href: "/", id: "homepage" })
-                  .text("Homepage")
+                  .text("Home")
                   .prepend($("<i>", { class: "fas fa-home me-2" })),
               )
               .on("click", () => {
@@ -934,7 +934,7 @@ $(() => {
                 href: `https://discord.gg/${storyCfg.discordInvite}`,
                 id: "discord-server",
               })
-                .text("Discord Server")
+                .text("Discord")
                 .prepend($("<i>", { class: "fab fa-discord me-2" })),
             ),
 
@@ -948,9 +948,7 @@ $(() => {
                 role: "button",
                 "data-bs-toggle": "dropdown",
                 "aria-expanded": "false",
-              })
-                .text("Informations and Tips")
-                .append($("<span>", { class: "navbar-toggler-icon" })),
+              }).text("Information"),
 
               $("<ul>", { class: "dropdown-menu" }).append(tipsPages),
             ),
@@ -966,9 +964,7 @@ $(() => {
                 role: "button",
                 "data-bs-toggle": "dropdown",
                 "aria-expanded": "false",
-              })
-                .text("Donations")
-                .append($("<span>", { class: "navbar-toggler-icon" })),
+              }).text("Donations"),
 
               $("<ul>", { class: "dropdown-menu" }).append(donationsItems),
             ),
