@@ -55,7 +55,7 @@ const rainConfig = {};
 })();
 
 // Start Rain
-var rainMode = {
+const rainMode = {
   start: function () {
     $(".rain").empty();
     $(".rain.front-row").append(rainConfig.drops);
@@ -71,7 +71,7 @@ var rainMode = {
   },
 };
 
-var storyDialogue = {
+const storyDialogue = {
   template: (
     data,
     item,
@@ -175,13 +175,13 @@ var storyDialogue = {
     ),
 };
 
-var openChapterMenu = function (params = {}) {
+const openChapterMenu = (params = {}) => {
   // Prepare Data
   clearFicData();
   $("#markdown-read").empty();
 
   // New Read
-  const newRead = async function (chapter = 1, page = 1, line = null) {
+  const newRead = async (chapter = 1, page = 1, line = null) => {
     // Clear Update Warn
     $("#fic-start")
       .text("Read Fic")
@@ -498,7 +498,7 @@ var openChapterMenu = function (params = {}) {
         // Character Statistics
         $("<a>", { class: "nav-item nav-link", href: "javascript:void(0)" })
           .text("Character Statistics")
-          .click(function () {
+          .on("click", () => {
             // Prepare Content
             const newDiv = $("<div>", { class: "row" });
             const content = [];
@@ -551,7 +551,7 @@ var openChapterMenu = function (params = {}) {
         // Word Statistics
         $("<a>", { class: "nav-item nav-link", href: "javascript:void(0)" })
           .text("Letter Statistics")
-          .click(function () {
+          .on("click", () => {
             // Prepare Content
             const newDiv = $("<div>", { class: "row" });
             const content = [];
@@ -607,7 +607,7 @@ var openChapterMenu = function (params = {}) {
 
         $("<a>", { class: "nav-item nav-link", href: "javascript:void(0)" })
           .text("Word Statistics")
-          .click(function () {
+          .on("click", () => {
             // Prepare Content
             const newDiv = $("<div>", { class: "row" });
             const content = [];
@@ -689,7 +689,7 @@ var openChapterMenu = function (params = {}) {
         .append(
           $("<button>", { class: "ms-3 btn btn-info btn-sm" })
             .text("Choose Optional NSFW Content")
-            .click(function () {
+            .on("click", () => {
               // Nothing NSFW
               let existNSFW = false;
               let nsfwContent = $("<center>", {
@@ -752,7 +752,7 @@ var openChapterMenu = function (params = {}) {
                                   $("<button>", {
                                     class: "btn btn-" + buttonClass,
                                   })
-                                    .click(function () {
+                                    .on("click", function () {
                                       // Enable
                                       if (!nsfwValue) {
                                         localStorage.setItem(
@@ -869,7 +869,7 @@ var openChapterMenu = function (params = {}) {
                 href: `/chapter/${chapter}.html`,
                 chapter: chapter,
               })
-                .click(function () {
+                .on("click", function () {
                   // Start Chapter
                   urlUpdate(`read-fic`, null, false, { chapter });
                   newRead(Number($(this).attr("chapter")));
@@ -891,9 +891,7 @@ var openChapterMenu = function (params = {}) {
         .append(
           $("<button>", { class: "ms-3 btn btn-info btn-sm" })
             .text("Save As all chapters")
-            .click(function () {
-              saveRoleplayFormat();
-            }),
+            .on("click", () => saveRoleplayFormat()),
         ),
       $("<h5>")
         .text(
@@ -924,7 +922,7 @@ var openChapterMenu = function (params = {}) {
                   href: `/chapter/${chapter}.html`,
                   chapter: chapter,
                 })
-                  .click(function () {
+                  .on("click", function () {
                     // Save Chapter
                     saveRoleplayFormat(Number($(this).attr("chapter")));
 

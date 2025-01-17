@@ -1,5 +1,5 @@
 // Start Load
-var appData = { youtube: {} };
+const appData = { youtube: {}, ai: { using: false } };
 
 // Start Document
 console.groupCollapsed("App Information");
@@ -127,10 +127,9 @@ const saveRoleplayFormat = (chapter) => {
   );
 };
 
-var dice = {
+const dice = {
   roll: function () {
-    var randomNumber = Math.floor(Math.random() * this.sides) + 1;
-    return randomNumber;
+    return (randomNumber = Math.floor(Math.random() * this.sides) + 1);
   },
 };
 
@@ -141,7 +140,7 @@ if (Array.isArray(storyCfg.mirror) || storyCfg.mirror.length > 0) {
 }
 
 // URL Update
-var urlUpdate = function (url, title, isPopState = false, extra = {}) {
+const urlUpdate = function (url, title, isPopState = false, extra = {}) {
   // Page Title
   if (typeof title !== "string" || title.length < 1) {
     title = storyCfg.title;
@@ -191,7 +190,7 @@ var urlUpdate = function (url, title, isPopState = false, extra = {}) {
   }
 };
 
-var openNewAddress = function (data, isPopState = false, useCustom = false) {
+const openNewAddress = function (data, isPopState = false, useCustom = false) {
   // File Path
   const filePath = data.path;
 
@@ -260,7 +259,7 @@ $(window).on("popstate", function () {
 });
 
 // Insert Maarkdown File
-var insertMarkdownFile = function (text, isMainPage = false, isHTML = false) {
+const insertMarkdownFile = function (text, isMainPage = false, isHTML = false) {
   // Prepare Convert Base
   const convertBase = `https\\:\\/\\/github.com\\/${storyCfg.github.account}\\/${storyCfg.github.repository}\\/blob\\/main\\/`;
 
@@ -295,7 +294,7 @@ var insertMarkdownFile = function (text, isMainPage = false, isHTML = false) {
   // Convert File URLs
   $('[id="markdown-read"] a[file]')
     .removeAttr("target")
-    .click(function () {
+    .on("click", function () {
       openMDFile($(this).attr("file"));
     });
 
@@ -310,7 +309,7 @@ var insertMarkdownFile = function (text, isMainPage = false, isHTML = false) {
       $(this).replaceWith(newImage);
 
       // Load Image FIle
-      var pswpElement = document.querySelectorAll(".pswp")[0];
+      const pswpElement = document.querySelectorAll(".pswp")[0];
       newImage
         .css({
           cursor: "pointer",
@@ -331,9 +330,9 @@ var insertMarkdownFile = function (text, isMainPage = false, isHTML = false) {
 
           newImg.src = $(this).attr("src");
         })
-        .click(function () {
+        .on("click", function () {
           const imgSize = $(this).data("image-size");
-          var gallery = new PhotoSwipe(
+          const gallery = new PhotoSwipe(
             pswpElement,
             PhotoSwipeUI_Default,
             [{ src: $(this).attr("src"), h: imgSize.height, w: imgSize.width }],
@@ -364,7 +363,7 @@ var insertMarkdownFile = function (text, isMainPage = false, isHTML = false) {
 };
 
 // Remove Fic Data
-var clearFicData = function () {
+const clearFicData = function () {
   for (const item in storyData.sfx) {
     if (typeof storyData.sfx[item].hide === "function") {
       storyData.sfx[item].hide(0);
@@ -403,7 +402,7 @@ var clearFicData = function () {
 };
 
 // Open MD FIle
-var openMDFile = function (url, isMain = false) {
+const openMDFile = function (url, isMain = false) {
   if (typeof url === "string") {
     // Remove Fic Data
     clearFicData();
@@ -464,10 +463,12 @@ var openMDFile = function (url, isMain = false) {
 };
 
 // Start App
-$(function () {
-  const startApp = function () {
+$(() => {
+  const startApp = () => {
     console.log("Starting App...");
-    storyData.start(function (fn, readme) {
+    storyData.start((fn, readme) => {
+      const tinyAiScript = AiScriptStart();
+
       // Crypto Allow Detector
       if (
         storyData.ipRegistry &&
@@ -835,6 +836,7 @@ $(function () {
           });
         }
 
+        // Dropdown
         const addDropdown = (where) => {
           for (const item in where) {
             const aData = {
@@ -861,6 +863,7 @@ $(function () {
         addDropdown(donationsItems);
         addDropdown(tipsPages);
 
+        // Meta Login
         const metaLogin = {
           base: $("<li>", { class: "nav-item font-weight-bold" }),
           title: "Login",
@@ -878,13 +881,33 @@ $(function () {
           .prepend($("<i>", { class: "fa-brands fa-ethereum me-2" }));
 
         metaLogin.base.prepend(metaLogin.button);
-        metaLogin.button.click(storyCfg.web3.login);
+        metaLogin.button.on("click", storyCfg.web3.login);
 
+        // AI Login
+        const aiLogin = {
+          base: $("<li>", { class: "nav-item font-weight-bold" }),
+        };
+        tinyAiScript.setAiLogin(aiLogin);
+
+        aiLogin.button = $("<a>", {
+          id: "ai-login",
+          class: "nav-link",
+          href: "#",
+        }).prepend($("<i>", { class: "fa-solid fa-robot me-2" }));
+
+        tinyAiScript.checkTitle();
+        aiLogin.base.prepend(aiLogin.button);
+        aiLogin.button.on("click", function () {
+          tinyAiScript.login(this);
+          return false;
+        });
+
+        // Nav Items
         const newItem = [
           // Title
           $("<a>", { class: "navbar-brand d-none d-lg-block", href: "/" })
             .text(storyCfg.title)
-            .click(function () {
+            .on("click", () => {
               openMDFile("MAIN", true);
               return false;
             }),
@@ -898,7 +921,7 @@ $(function () {
                   .text("Homepage")
                   .prepend($("<i>", { class: "fas fa-home me-2" })),
               )
-              .click(function () {
+              .on("click", () => {
                 openMDFile("MAIN", true);
                 return false;
               }),
@@ -968,6 +991,7 @@ $(function () {
             $("<li>", { id: "fic-chapter", class: "nav-item nav-link" }),
 
             // Login
+            aiLogin.base,
             metaLogin.base,
 
             // Read Fic
@@ -984,7 +1008,7 @@ $(function () {
                   .append(isNewValue)
                   .prepend($("<i>", { class: "fab fa-readme me-2" })),
               )
-              .click(function () {
+              .on("click", () => {
                 if (!readButtonDisabled) {
                   $("#top_page").addClass("d-none");
                   openChapterMenu();
@@ -994,6 +1018,7 @@ $(function () {
           ),
         ];
 
+        aiLogin.button.tooltip();
         metaLogin.button.tooltip();
         return newItem;
       };
@@ -1011,7 +1036,7 @@ $(function () {
             href: "/",
           })
             .text(storyCfg.title)
-            .click(function () {
+            .on("click", () => {
               openMDFile("MAIN", true);
               return false;
             }),
@@ -1199,9 +1224,8 @@ $(function () {
               .text("License")
               .prepend($("<i>", { class: "fas fa-copyright me-2" })),
           )
-          .click(function () {
+          .on("click", () => {
             openMDFile("/LICENSE.md");
-
             return false;
           }),
       );

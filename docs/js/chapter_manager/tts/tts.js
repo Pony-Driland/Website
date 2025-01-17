@@ -1,7 +1,7 @@
 // Base
 storyData.tts = {};
 
-var ttsManager = {
+const ttsManager = {
   startBase: function () {
     if ($("#fic-nav > #status #tts").length < 1) {
       // Buttons
@@ -27,9 +27,7 @@ var ttsManager = {
             class: "text-white",
             title: "Start TTS",
           })
-            .click(function () {
-              ttsManager.enable();
-            })
+            .on("click", () => ttsManager.enable())
             .append(storyData.tts.nav.play),
           // Stop
           $("<a>", {
@@ -37,9 +35,7 @@ var ttsManager = {
             class: "text-white",
             title: "Stop TTS",
           })
-            .click(function () {
-              ttsManager.disable();
-            })
+            .on("click", () => ttsManager.disable())
             .append(storyData.tts.nav.stop),
         ),
       );

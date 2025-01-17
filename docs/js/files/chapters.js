@@ -1,9 +1,9 @@
 // Params
 const urlSearchParams = new URLSearchParams(window.location.search);
-var params = Object.fromEntries(urlSearchParams.entries());
+const params = Object.fromEntries(urlSearchParams.entries());
 
 // On Off Validator
-var plugValue = function (item) {
+const plugValue = function (item) {
   if (
     (typeof item === "string" &&
       (item === "true" || item === "on" || item === "1")) ||
@@ -16,7 +16,7 @@ var plugValue = function (item) {
 };
 
 // Prepare Data
-var storyData = {
+const storyData = {
   // Info
   title: storyCfg.title,
   description: storyCfg.description,

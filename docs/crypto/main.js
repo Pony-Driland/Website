@@ -1,26 +1,24 @@
 // Start Web3
-var puddyWeb3 = new PuddyWeb3('matic');
+const puddyWeb3 = new PuddyWeb3('matic');
 
 // Accounts Changed
-puddyWeb3.on('accountsChanged', function (data) {
-
+puddyWeb3.on('accountsChanged', (data) => {
     // Get Address
     const address = puddyWeb3.getAddress();
     console.log('Web3 Connected', address, data);
-
 });
 
 // Network Changed
-puddyWeb3.on('networkChanged', function (networkId) {
+puddyWeb3.on('networkChanged', (networkId) => {
     console.log('Web3 Network Connected', networkId);
 });
 
-puddyWeb3.on('network', function (newNetwork, oldNetwork) {
+puddyWeb3.on('network', (newNetwork, oldNetwork) => {
     console.log('Web3 Network Connected', newNetwork, oldNetwork);
 });
 
 // Connection Update
-puddyWeb3.on('connectionUpdate', function (trigger) {
+puddyWeb3.on('connectionUpdate', (trigger) => {
 
     // Get Address
     const address = puddyWeb3.getAddress();
@@ -47,7 +45,7 @@ puddyWeb3.on('connectionUpdate', function (trigger) {
 });
 
 // Login
-storyCfg.web3.login = function () {
+storyCfg.web3.login = () => {
 
     // Login Mode
     if (!puddyWeb3.existAccounts()) {
@@ -59,7 +57,7 @@ storyCfg.web3.login = function () {
 
                 $('<p>').text(`Login is not required. You can continue using all the tools of the website for free. Login is only to use cloud services.`),
 
-                $('<button>', { class: 'btn btn-info m-4' }).text('Metamask').click(function () {
+                $('<button>', { class: 'btn btn-info m-4' }).text('Metamask').on('click', () => {
 
                     $('#crypto_connection').modal('hide');
                     puddyWeb3.alertIsEnabled();
@@ -83,8 +81,8 @@ storyCfg.web3.login = function () {
     // Panel
     else {
 
-        const checkPanelActive = function () {
-            return new Promise(function (resolve, reject) {
+        const checkPanelActive = () => {
+            return new Promise((resolve, reject) => {
                 storyCfg.web3.contract.enabled(puddyWeb3.getAddress()).then((isEnabled) => {
 
                     // Get Value
@@ -114,7 +112,7 @@ storyCfg.web3.login = function () {
         let clickType2 = null;
 
         // NSFW Filter
-        itemsData.nsfwFilter = $('<button>', { class: 'btn btn-secondary m-2' }).text('NSFW Filters').click(function () {
+        itemsData.nsfwFilter = $('<button>', { class: 'btn btn-secondary m-2' }).text('NSFW Filters').on('click', function() {
 
             const filters = [];
             const nsfwList = [];
@@ -132,8 +130,8 @@ storyCfg.web3.login = function () {
                                 if (storyCfg.nsfw[NSFWITEM]) {
 
                                     // Action
-                                    filters.push($('<button>', { class: 'btn btn-secondary m-2' }).data('nsfw_crypto_data', { id: NSFWITEM, data: storyCfg.nsfw[NSFWITEM] }).text(storyCfg.nsfw[NSFWITEM].name).click(async function () {
-
+                                    filters.push($('<button>', { class: 'btn btn-secondary m-2' }).data('nsfw_crypto_data', { id: NSFWITEM, data: storyCfg.nsfw[NSFWITEM] }).text(storyCfg.nsfw[NSFWITEM].name).on('click', async function() {
+                                        const tinyThis = this;
                                         $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
                                         await puddyWeb3.requestAccounts();
                                         $.LoadingOverlay("hide");
@@ -141,7 +139,7 @@ storyCfg.web3.login = function () {
                                             checkPanelActive().then(() => {
 
                                                 let setValue = 0;
-                                                const nsfwID = $(this).data('nsfw_crypto_data').id;
+                                                const nsfwID = $(tinyThis).data('nsfw_crypto_data').id;
                                                 if (typeof nsfwID === 'string' && nsfwID.length > 0) {
 
                                                     const value = localStorage.getItem('NSFW' + nsfwID);
@@ -213,7 +211,7 @@ storyCfg.web3.login = function () {
         items.push(itemsData.nsfwFilter);
 
         // Volume
-        itemsData.volume = $('<button>', { class: 'btn btn-secondary m-2' }).text('Volume').click(async function () {
+        itemsData.volume = $('<button>', { class: 'btn btn-secondary m-2' }).text('Volume').on('click', async () => {
 
             $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
             await puddyWeb3.requestAccounts();
@@ -263,7 +261,7 @@ storyCfg.web3.login = function () {
         if (storyData.chapter.selected > 0) {
 
             // Bookmark
-            itemsData.bookmark = $('<button>', { class: 'btn btn-secondary m-2' }).text('Bookmark - Chapter ' + storyData.chapter.selected).click(async function () {
+            itemsData.bookmark = $('<button>', { class: 'btn btn-secondary m-2' }).text('Bookmark - Chapter ' + storyData.chapter.selected).on('click', async () => {
 
                 $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
                 await puddyWeb3.requestAccounts();
@@ -344,7 +342,7 @@ storyCfg.web3.login = function () {
                 ),
 
                 // Load
-                $('<button>', { class: 'btn btn-secondary m-4' }).text('Load').click(function () {
+                $('<button>', { class: 'btn btn-secondary m-4' }).text('Load').on('click', () => {
 
                     clickType = 'load';
                     clickType2 = 'Load';
@@ -363,7 +361,7 @@ storyCfg.web3.login = function () {
                 }),
 
                 // Save
-                $('<button>', { class: 'btn btn-primary m-4' }).text('Save').click(function () {
+                $('<button>', { class: 'btn btn-primary m-4' }).text('Save').on('click', () => {
 
                     clickType = 'save';
                     clickType2 = 'Save';
@@ -392,14 +390,12 @@ storyCfg.web3.login = function () {
 };
 
 // Connection Update
-puddyWeb3.on('signerUpdated', function (signer) {
-
+puddyWeb3.on('signerUpdated', (signer) => {
     storyCfg.web3.contract = new ethers.Contract(
         storyCfg.web3.contractAddress,
         storyCfg.web3.abi.base,
         signer
     );
-
 });
 
 puddyWeb3.waitAddress().then(() => {

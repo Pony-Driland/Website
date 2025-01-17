@@ -2380,7 +2380,7 @@
                 $(document).ready(function() {
 
                     $('.u-photo').each(function() {
-                        $(this).click(function() {
+                        $(this).on('click', function() {
                             
                             var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, [{ 
                                 src: $(this).attr('src'), 

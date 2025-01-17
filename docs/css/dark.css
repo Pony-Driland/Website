@@ -1256,7 +1256,21 @@ select.form-control:focus::-ms-value {
 
 .tooltip-inner {
   color: #fff;
-  background-color: #000; }
+  background-color: #000; 
+}
+
+[data-popper-placement="right"] > .tooltip-arrow::before {
+  border-right-color: #000 !important;  
+}
+[data-popper-placement="left"] > .tooltip-arrow::before {
+  border-left-color: #000 !important;  
+}
+[data-popper-placement="top"] > .tooltip-arrow::before {
+  border-top-color: #000 !important;  
+}
+[data-popper-placement="bottom"] > .tooltip-arrow::before {
+  border-bottom-color: #000 !important;  
+}
 
 .popover {
   background-color: #fff;

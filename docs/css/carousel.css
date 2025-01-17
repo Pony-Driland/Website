@@ -1,5 +1,6 @@
 #carouselHomepage .carousel-item .carousel-caption {
     background-color: rgba(0, 0, 0, 0.8);
+    color: #fff !important;
     position: sticky;
 }
 
@@ -7,6 +8,22 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+#carouselHomepage .carousel-indicators [data-bs-target]::marker {
+    opacity: 0;
+    font-size: 0;
+}
+
+#carouselHomepage .carousel-indicators li{
+    background-color: #fff !important;
+}
+
+#carouselHomepage .carousel-control-next > span,
+#carouselHomepage .carousel-control-prev > span,
+#carouselHomepage .carousel-control-next,
+#carouselHomepage .carousel-control-prev {
+    filter: invert(1) grayscale(100);
 }
 
 #carouselHomepage,

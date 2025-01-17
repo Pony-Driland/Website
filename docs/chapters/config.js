@@ -1,4 +1,4 @@
-var storyCfg = {
+const storyCfg = {
 
     // Crypto Block
     cryptoBlock: [
