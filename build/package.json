@@ -3,7 +3,7 @@
         "node": ">=20.0.0"
     },
     "scripts": {
-        "fix:prettier": "prettier --write ../docs/js/chapter_manager/* && prettier --write ../docs/js/files/*"
+        "fix:prettier": "prettier --write ../docs/js/chapter_manager/* && prettier --write ../docs/js/files/* && prettier --write ../docs/js/ai/*"
     },
     "author": {
         "name": "JasminDreasond (Yasmin Seidel)",
