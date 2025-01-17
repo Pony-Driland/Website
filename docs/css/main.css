@@ -489,3 +489,8 @@ body.thunder-effect #bg-sky .flash {
 #markdown-read pre code {
     color: #fff;
 }
+
+.badge.chapter-notification:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}

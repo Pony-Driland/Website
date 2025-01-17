@@ -829,13 +829,32 @@ const openChapterMenu = (params = {}) => {
       const chapter = String(i + 1);
       let isNewValue = "";
       if (storyData.isNew[chapter] === 2) {
-        isNewValue = $("<span>", { class: "badge badge-primary ms-3" }).text(
-          "NEW",
-        );
+        isNewValue = $("<span>", {
+          class: "badge chapter-notification badge-primary ms-3",
+        }).text("NEW");
       } else if (storyData.isNew[chapter] === 1) {
-        isNewValue = $("<span>", { class: "badge badge-secondary ms-3" }).text(
-          "UPDATE",
-        );
+        isNewValue = $("<span>", {
+          class: "badge chapter-notification badge-secondary ms-3",
+        }).text("UPDATE");
+      }
+
+      if (isNewValue) {
+        isNewValue.attr("title", "Click to mark as read").tooltip();
+        isNewValue.on("click", function () {
+          // Save MD5
+          localStorage.setItem(
+            "chapter" + chapter + "MD5",
+            objHash(storyData.data[chapter]),
+          );
+
+          const tooltip = $(this).data("bs-tooltip");
+          if (tooltip) {
+            tooltip.hide();
+            tooltip.disable();
+          }
+
+          $(this).remove();
+        });
       }
 
       // Add Chapter
