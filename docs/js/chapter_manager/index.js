@@ -841,18 +841,21 @@ const openChapterMenu = (params = {}) => {
       if (isNewValue) {
         isNewValue.attr("title", "Click to mark as read").tooltip();
         isNewValue.on("click", function () {
-          // Save MD5
+          // Clear is new value
           localStorage.setItem(
             "chapter" + chapter + "MD5",
             objHash(storyData.data[chapter]),
           );
+          storyData.isNew[chapter] = 0;
 
+          // Remove tooltip
           const tooltip = $(this).data("bs-tooltip");
           if (tooltip) {
             tooltip.hide();
             tooltip.disable();
           }
 
+          // Remove element
           $(this).remove();
         });
       }
