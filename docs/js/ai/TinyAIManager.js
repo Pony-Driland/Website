@@ -428,12 +428,13 @@ const AiScriptStart = () => {
     $("#top_page").addClass("d-none");
 
     // Sidebar
+    const sidebarStyle = {
+      class: "bg-dark text-white p-3",
+      style: "width: 250px; min-width: 250px;",
+    };
 
     // Left
-    const sidebarLeft = $("<div>", {
-      class: "bg-dark text-white p-3",
-      style: "width: 250px;",
-    }).append(
+    const sidebarLeft = $("<div>", sidebarStyle).append(
       $("<h5>", { class: "text-center mb-4", text: "Menu" }),
       $("<ul>", { class: "list-unstyled" }).append(
         $("<li>", { class: "mb-3" }).append(
@@ -461,10 +462,7 @@ const AiScriptStart = () => {
     );
 
     // Right
-    const sidebarRight = $("<div>", {
-      class: "bg-dark text-white p-3",
-      style: "width: 250px;",
-    }).append(
+    const sidebarRight = $("<div>", sidebarStyle).append(
       $("<h5>", { class: "text-center mb-4", text: "Menu" }),
       $("<ul>", { class: "list-unstyled" }).append(
         $("<li>", { class: "mb-3" }).append(
@@ -513,10 +511,10 @@ const AiScriptStart = () => {
     // Message Maker
     const makeMessage = (message = null, username = null) =>
       $("<div>", {
-        class: `d-flex flex-column mb-3${typeof username !== "string" ? " align-items-end" : ""}`,
+        class: `mb-3${typeof username !== "string" ? " d-flex flex-column align-items-end" : ""}`,
       }).append(
         $("<div>", {
-          class: `bg-${typeof username === "string" ? "secondary" : "primary"} text-white p-2 rounded`,
+          class: `bg-${typeof username === "string" ? "secondary d-inline-block" : "primary"} text-white p-2 rounded`,
         }).append($("<span>").text(message)),
         $("<div>", {
           class: `text-muted small mt-1${typeof username !== "string" ? " text-end" : ""}`,
