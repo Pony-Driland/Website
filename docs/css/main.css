@@ -1,90 +1,89 @@
+#root {
+  padding-top: 56px;
+}
+
 /* Web3 */
 #login {
-    transition: color 1s;
+  transition: color 1s;
 }
 
 .web3-connected #login {
-    color: #3ad63a  !important;
+  color: #3ad63a !important;
 }
 
 .web3-connected.ficMode #login {
-    color: #40cce6  !important;
+  color: #40cce6 !important;
 }
 
 /* Navbar Top */
 
 #mdMenu {
-    /* height: 105px; */
-    margin: 0px 70px;
+  /* height: 105px; */
+  margin: 0px 70px;
 }
 
 .mastodon-tag-copy {
-    pointer-events: none;
-    position: fixed;
-    top: -500px;
-    left: 0
+  pointer-events: none;
+  position: fixed;
+  top: -500px;
+  left: 0;
 }
-
 
 /* Break Word */
 
 .text-break {
-    overflow-wrap: break-word !important;
-    word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
 }
-
 
 /* Youtube */
 
 #youtubePlayer {
-    pointer-events: none;
-    /* height: 39px;
+  pointer-events: none;
+  /* height: 39px;
     width: 39px; */
-    background-color: #000 !important;
+  background-color: #000 !important;
 }
 
 #youtubePlayer.hidden {
-    position: fixed !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
+  position: fixed !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
-
 
 /* Markdown */
 
-#markdown-read>h1,
-#markdown-read>h2,
-#markdown-read>h3,
-#markdown-read>h4,
-#markdown-read>h5,
-#markdown-read>h6 {
-    margin-top: 24px !important;
-    margin-bottom: 16px !important;
-    font-weight: 600 !important;
-    line-height: 1.25 !important;
+#markdown-read > h1,
+#markdown-read > h2,
+#markdown-read > h3,
+#markdown-read > h4,
+#markdown-read > h5,
+#markdown-read > h6 {
+  margin-top: 24px !important;
+  margin-bottom: 16px !important;
+  font-weight: 600 !important;
+  line-height: 1.25 !important;
 }
 
-#markdown-read>h1,
-#markdown-read>h2 {
-    border-bottom: 1px solid #303030;
-    padding-bottom: 6px;
+#markdown-read > h1,
+#markdown-read > h2 {
+  border-bottom: 1px solid #303030;
+  padding-bottom: 6px;
 }
 
-#markdown-read>hr {
-    height: 0.25em;
-    padding: 0;
-    margin: 24px 0;
-    background-color: #303030;
-    border: 0;
+#markdown-read > hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #303030;
+  border: 0;
 }
-
 
 /* Page Item */
 
 .page-item.active a {
-    font-weight: bold;
+  font-weight: bold;
 }
-
 
 /* Fic Mod */
 
@@ -93,42 +92,41 @@
 .ficMode #mdMenu #license,
 .ficMode #mdMenu #derpibooru-page,
 .ficMode #mdMenu #blog-url {
-    display: none !important;
+  display: none !important;
 }
-
 
 /* Music Player */
 
-#music-player>a {
-    margin: 0px 3px;
-    padding: 8px;
-    display: inline-block;
+#music-player > a {
+  margin: 0px 3px;
+  padding: 8px;
+  display: inline-block;
 }
 
-#music-player>a.disabled {
-    opacity: 0.7 !important;
-    pointer-events: none !important;
+#music-player > a.disabled {
+  opacity: 0.7 !important;
+  pointer-events: none !important;
 }
 
 .disabled-player {
-    display: none !important;
+  display: none !important;
 }
 
 /* TTS Player */
 
-#tts-player>a {
-    margin: 0px 3px;
-    padding: 8px;
-    display: inline-block;
+#tts-player > a {
+  margin: 0px 3px;
+  padding: 8px;
+  display: inline-block;
 }
 
-#tts-player>a.disabled {
-    opacity: 0.7 !important;
-    pointer-events: none !important;
+#tts-player > a.disabled {
+  opacity: 0.7 !important;
+  pointer-events: none !important;
 }
 
 .tts-player {
-    display: none !important;
+  display: none !important;
 }
 
 /* ============================================================================================== 
@@ -138,364 +136,386 @@ https://mkrtchyan.ga
 ================================================================================================= */
 
 @keyframes move-twink-back {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: -10000px 5000px;
-    }
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
 }
 
 @-webkit-keyframes move-twink-back {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: -10000px 5000px;
-    }
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
 }
 
 @-moz-keyframes move-twink-back {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: -10000px 5000px;
-    }
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
 }
 
 @-ms-keyframes move-twink-back {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: -10000px 5000px;
-    }
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
 }
 
 @keyframes move-clouds-back {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 10000px 0;
-    }
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
 }
 
 @-webkit-keyframes move-clouds-back {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 10000px 0;
-    }
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
 }
 
 @-moz-keyframes move-clouds-back {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 10000px 0;
-    }
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
 }
 
 @-ms-keyframes move-clouds-back {
-    from {
-        background-position: 0;
-    }
-    to {
-        background-position: 10000px 0;
-    }
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
 }
 
 .stars,
 .twinkling,
 .clouds {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .stars {
-    background: #000 url("/img/bg/sky-stars/stars.png") repeat top center;
-    z-index: -3;
+  background: #000 url("/img/bg/sky-stars/stars.png") repeat top center;
+  z-index: -3;
 }
 
 .twinkling {
-    background: transparent url("/img/bg/sky-stars/twinkling.png") repeat top center;
-    z-index: -2;
-    -moz-animation: move-twink-back 200s linear infinite;
-    -ms-animation: move-twink-back 200s linear infinite;
-    -o-animation: move-twink-back 200s linear infinite;
-    -webkit-animation: move-twink-back 200s linear infinite;
-    animation: move-twink-back 200s linear infinite;
+  background: transparent url("/img/bg/sky-stars/twinkling.png") repeat top
+    center;
+  z-index: -2;
+  -moz-animation: move-twink-back 200s linear infinite;
+  -ms-animation: move-twink-back 200s linear infinite;
+  -o-animation: move-twink-back 200s linear infinite;
+  -webkit-animation: move-twink-back 200s linear infinite;
+  animation: move-twink-back 200s linear infinite;
 }
 
 .clouds {
-    background: transparent url("/img/bg/sky-stars/clouds3.png") repeat top center;
-    z-index: -1;
-    -moz-animation: move-clouds-back 200s linear infinite;
-    -ms-animation: move-clouds-back 200s linear infinite;
-    -o-animation: move-clouds-back 200s linear infinite;
-    -webkit-animation: move-clouds-back 200s linear infinite;
-    animation: move-clouds-back 200s linear infinite;
+  background: transparent url("/img/bg/sky-stars/clouds3.png") repeat top center;
+  z-index: -1;
+  -moz-animation: move-clouds-back 200s linear infinite;
+  -ms-animation: move-clouds-back 200s linear infinite;
+  -o-animation: move-clouds-back 200s linear infinite;
+  -webkit-animation: move-clouds-back 200s linear infinite;
+  animation: move-clouds-back 200s linear infinite;
 }
-
 
 /* Cicle Day Night */
 
 body:not(.ficMode) #bg-sky {
-    display: none !important;
+  display: none !important;
 }
-
 
 /* Transition */
 
 body.ficMode .stars {
-    transition: background-color 1s;
+  transition: background-color 1s;
 }
-
 
 /* Morning */
 
 body.fic-daycicle-morning .stars {
-    background-color: #202020;
-    background-image: none !important;
+  background-color: #202020;
+  background-image: none !important;
 }
 
 body.fic-daycicle-morning .twinkling {
-    opacity: 0;
-    background-image: none !important;
+  opacity: 0;
+  background-image: none !important;
 }
-
 
 /* Evening */
 
 body.fic-daycicle-evening .stars {
-    background-color: #2c2a26;
-    background-image: none !important;
+  background-color: #2c2a26;
+  background-image: none !important;
 }
 
 body.fic-daycicle-evening .twinkling {
-    opacity: 0;
-    background-image: none !important;
+  opacity: 0;
+  background-image: none !important;
 }
-
 
 /* Night */
 
 body.fic-daycicle-night .stars {
-    background-color: #0d1322;
+  background-color: #0d1322;
 }
 
 body.fic-daycicle-night .twinkling {
-    filter: hue-rotate(194deg) brightness(0.21);
+  filter: hue-rotate(194deg) brightness(0.21);
 }
-
 
 /* Late At Night */
 
 body.fic-daycicle-lateAtNight .stars {
-    background-color: #0c0e1a;
+  background-color: #0c0e1a;
 }
 
 body.fic-daycicle-lateAtNight .twinkling {
-    filter: hue-rotate(198deg) brightness(0.16);
+  filter: hue-rotate(198deg) brightness(0.16);
 }
-
 
 /* Rain made by Aaron Rickle */
 
 body.raining-sky #bg-sky .rain {
-    display: none !important;
-    position: fixed;
-    top: 56px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    z-index: -1 !important;
+  display: none !important;
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: -1 !important;
 }
 
 body.raining-sky #bg-sky .rain.back-row {
-    opacity: 0;
-    display: none;
-    z-index: 1;
-    bottom: 60px;
-    opacity: 0.5;
+  opacity: 0;
+  display: none;
+  z-index: 1;
+  bottom: 60px;
+  opacity: 0.5;
 }
 
 body.raining-sky #bg-sky .drop {
-    position: absolute;
-    bottom: 100%;
-    width: 15px;
-    height: 120px;
-    pointer-events: none;
-    animation: drop 0.5s linear infinite;
+  position: absolute;
+  bottom: 100%;
+  width: 15px;
+  height: 120px;
+  pointer-events: none;
+  animation: drop 0.5s linear infinite;
 }
 
 @keyframes drop {
-    0% {
-        transform: translateY(0vh);
-    }
-    75% {
-        transform: translateY(90vh);
-    }
-    100% {
-        transform: translateY(90vh);
-    }
+  0% {
+    transform: translateY(0vh);
+  }
+  75% {
+    transform: translateY(90vh);
+  }
+  100% {
+    transform: translateY(90vh);
+  }
 }
 
 body.raining-sky #bg-sky .stem {
-    width: 1px;
-    height: 60%;
-    margin-left: 7px;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.25));
-    animation: stem 0.5s linear infinite;
+  width: 1px;
+  height: 60%;
+  margin-left: 7px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.25)
+  );
+  animation: stem 0.5s linear infinite;
 }
 
 @keyframes stem {
-    0% {
-        opacity: 1;
-    }
-    65% {
-        opacity: 1;
-    }
-    75% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 1;
+  }
+  65% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 body.raining-sky #bg-sky .splat {
-    width: 15px;
-    height: 10px;
-    border-top: 2px dotted rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    opacity: 1;
-    transform: scale(0);
-    animation: splat 0.5s linear infinite;
-    display: none;
+  width: 15px;
+  height: 10px;
+  border-top: 2px dotted rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  opacity: 1;
+  transform: scale(0);
+  animation: splat 0.5s linear infinite;
+  display: none;
 }
 
 @keyframes splat {
-    0% {
-        opacity: 1;
-        transform: scale(0);
-    }
-    80% {
-        opacity: 1;
-        transform: scale(0);
-    }
-    90% {
-        opacity: 0.5;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(1.5);
-    }
+  0% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  90% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
 }
 
 body.raining-sky #bg-sky .rain,
 body.raining-sky #bg-sky .rain.back-row {
-    display: block !important;
+  display: block !important;
 }
-
 
 /* Flash */
 
 @-webkit-keyframes flash {
-    0% {
-        opacity: 1;
-    }
-    2% {
-        opacity: 0;
-    }
-    3% {
-        opacity: 0.6;
-    }
-    4% {
-        opacity: 0.2;
-    }
-    6% {
-        opacity: 0.9;
-    }
-    100% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 1;
+  }
+  2% {
+    opacity: 0;
+  }
+  3% {
+    opacity: 0.6;
+  }
+  4% {
+    opacity: 0.2;
+  }
+  6% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes flash {
-    0% {
-        opacity: 1;
-    }
-    2% {
-        opacity: 0;
-    }
-    3% {
-        opacity: 0.6;
-    }
-    4% {
-        opacity: 0.2;
-    }
-    6% {
-        opacity: .9;
-    }
-    100% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 1;
+  }
+  2% {
+    opacity: 0;
+  }
+  3% {
+    opacity: 0.6;
+  }
+  4% {
+    opacity: 0.2;
+  }
+  6% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 body.thunder-effect #bg-sky .flash {
-    animation: flash 12s linear infinite;
-    background-color: white;
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+  animation: flash 12s linear infinite;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 /* Selected table row */
 .selected-tr {
-    outline: 1px solid red;
+  outline: 1px solid red;
 }
 
 #markdown-read pre,
 #markdown-read pre code {
-    font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace !important; 
+  font-family: Lucida Console, Lucida Sans Typewriter, monaco,
+    Bitstream Vera Sans Mono, monospace !important;
 }
 
 #markdown-read pre {
-    background-color: #2d2d2d;
-    border: 1px solid #000;
-    padding: 15px;
+  background-color: #2d2d2d;
+  border: 1px solid #000;
+  padding: 15px;
 }
 
 #markdown-read pre code {
-    color: #fff;
+  color: #fff;
 }
 
 .badge.chapter-notification:hover {
-    opacity: 0.7;
-    cursor: pointer;
+  opacity: 0.7;
+  cursor: pointer;
 }
 
-/* Temp */
-#ai-login {
-    display: none;
+/* AI Tab */
+body:not(.can-ai) .nav-ai {
+  display: none !important;
+}
+
+body.is-using-ai .page-footer {
+  display: none !important;
+}
+
+body.is-using-ai #root {
+  padding-top: 8px;
+}
+
+body.is-using-ai #markdown-read {
+  padding: 0px;
+  margin: 0px;
+  min-width: 100%;
+  min-height: 100%;
+  height: 100%;
+  position: absolute;
+  padding-bottom: 56px;
+}
+
+body.is-using-ai,
+body.is-using-ai #root,
+body.is-using-ai #app {
+  overflow: hidden !important;
 }

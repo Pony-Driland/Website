@@ -1,5 +1,6 @@
 // Start Load
 const appData = { youtube: {}, ai: { using: false } };
+appData.emitter = new EventEmitter();
 
 // Start Document
 console.groupCollapsed("App Information");
@@ -146,8 +147,23 @@ const urlUpdate = function (url, title, isPopState = false, extra = {}) {
     title = storyCfg.title;
   }
 
+  if (url === "ai") {
+    if (!appData.ai.using) {
+      appData.ai.using = true;
+      appData.emitter.emit("isUsingAI", true);
+    }
+  } else {
+    if (appData.ai.using) {
+      appData.ai.using = false;
+      appData.emitter.emit("isUsingAI", false);
+    }
+  }
+
   let newUrl =
-    typeof url === "string" && !url.startsWith("/") && url !== "read-fic"
+    typeof url === "string" &&
+    !url.startsWith("/") &&
+    url !== "read-fic" &&
+    url !== "ai"
       ? `/${url}`
       : url;
 
@@ -231,11 +247,9 @@ $(window).on("popstate", function () {
   const loadPage = function () {
     if (storyData.urlPage !== params.path) {
       storyData.urlPage = params.path;
-      if (params.path !== "read-fic") {
-        openNewAddress(params, true);
-      } else {
-        openChapterMenu(params);
-      }
+      if (params.path === "read-fic") openChapterMenu(params);
+      if (params.path === "ai") return;
+      else openNewAddress(params, true);
     }
   };
 
@@ -938,6 +952,22 @@ $(() => {
                 .prepend($("<i>", { class: "fab fa-discord me-2" })),
             ),
 
+            // AI
+            $("<li>", { class: "nav-item nav-ai" })
+              .prepend(
+                $("<a>", {
+                  class: "nav-link",
+                  href: "javascript:void(0)",
+                  id: "ai-access-page",
+                })
+                  .text("AI Page")
+                  .prepend($("<i>", { class: "fa-solid fa-server me-2" })),
+              )
+              .on("click", () => {
+                tinyAiScript.open();
+                return false;
+              }),
+
             $("<li>", {
               class: "nav-item dropdown",
               id: "information-menu",
@@ -1272,18 +1302,19 @@ $(() => {
       );
 
       // Start Readme
-      if (params.path !== "read-fic") {
-        openNewAddress(params, true, true);
-      } else {
-        openChapterMenu(params);
-      }
+      if (params.path === "read-fic") openChapterMenu(params);
+      else if (params.path === "ai") tinyAiScript.open();
+      else openNewAddress(params, true, true);
 
       // Complete
       if (storyCfg.underDevelopment) {
         $("#under-development").modal();
       }
+
+      // Final part
       fn();
 
+      // First Time
       if (!localStorage.getItem("firstTime")) {
         localStorage.setItem("firstTime", true);
         alert(

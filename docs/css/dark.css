@@ -45,7 +45,12 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   color: #cccccc;
-  background-color: rgb(29, 29, 29); }
+  background-color: rgb(29, 29, 29); 
+}
+
+.body-background {
+  background-color: rgb(29, 29, 29);
+}
 
 caption {
   color: #6c757d;
