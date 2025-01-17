@@ -189,7 +189,7 @@ storyData.youtube = {
       if (!storyData.youtube.player) {
         // 2. This code loads the IFrame Player API code asynchronously.
         console.log(`Starting Youtube API...`, videoID);
-        var tag = document.createElement("script");
+        const tag = document.createElement("script");
         tag.src = "https://www.youtube.com/iframe_api";
         $("head").append(tag);
 
@@ -329,7 +329,7 @@ storyData.youtube = {
 };
 
 // Music Manager
-var musicManager = {
+const musicManager = {
   // Sound Cache
   cache: { blob: {}, buffer: {} },
 
@@ -482,7 +482,7 @@ var musicManager = {
             class: "disabled text-white",
             title: "Source",
           })
-            .click(function () {
+            .on("click", () => {
               if (!storyData.music.loading) {
                 open(storyData.youtube.player.getVideoUrl(), "_blank");
               }
@@ -495,7 +495,7 @@ var musicManager = {
             class: "disabled text-white",
             title: "Play/Pause",
           })
-            .click(function () {
+            .on("click", () => {
               if (!storyData.music.loading) {
                 if (storyData.youtube.state === YT.PlayerState.PLAYING) {
                   if (storyData.youtube.player.pauseVideo)
@@ -514,7 +514,7 @@ var musicManager = {
             class: "disabled text-white",
             title: "Stop",
           })
-            .click(function () {
+            .on("click", () => {
               if (!storyData.music.loading) {
                 storyData.music.isStopping = true;
                 storyData.youtube.player.stopVideo();
@@ -528,7 +528,7 @@ var musicManager = {
             class: "disabled text-white",
             title: "Volume",
           })
-            .click(function () {
+            .on("click", () => {
               if (!storyData.music.loading) {
                 // Modal
                 tinyLib.modal({
@@ -561,7 +561,7 @@ var musicManager = {
             class: "disabled text-white",
             title: "Disable",
           })
-            .click(function () {
+            .on("click", function () {
               if (!storyData.music.loading) {
                 $(this).removeClass("");
                 if (storyData.music.useThis) {

@@ -1,5 +1,5 @@
 // Prepare Cache
-var cacheChapterUpdater = { iconSize: "12pt", soundCache: {} };
+const cacheChapterUpdater = { iconSize: "12pt", soundCache: {} };
 
 cacheChapterUpdater.setActiveItem = function (item, scrollIntoView = false) {
   if (cacheChapterUpdater.locked) {
@@ -236,7 +236,7 @@ cacheChapterUpdater.data = function (lastPage) {
       storyData.chapter.nav.bookmark.tooltip();
 
       // Action
-      storyData.chapter.nav.bookmark.click(function () {
+      storyData.chapter.nav.bookmark.on("click", () => {
         tinyLib.modal({
           title: $("<span>").text("Bookmark"),
           body: $("<center>").append(
@@ -248,7 +248,7 @@ cacheChapterUpdater.data = function (lastPage) {
               .val(
                 `${location.protocol}//${location.host}/?path=read-fic&chapter=${storyData.chapter.selected}&line=${storyData.chapter.line}`,
               )
-              .click(function () {
+              .on("click", function () {
                 $(this).select();
               }),
           ),
@@ -283,7 +283,7 @@ cacheChapterUpdater.data = function (lastPage) {
 };
 
 // Set Actions
-var chapterSet = {
+const chapterSet = {
   playEffect: function (value, actionFromNow = false) {
     if (actionFromNow && value && value.file && storyData.sfx[value.file]) {
       if (!cacheChapterUpdater.soundCache[value.file]) {

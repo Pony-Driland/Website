@@ -51,7 +51,7 @@ enableQuery();
 $(() => { enableQuery(); })
 
 // Prepare Tiny Lib
-var tinyLib = {};
+const tinyLib = {};
 
 (function () {
     var hidden = "windowHidden";

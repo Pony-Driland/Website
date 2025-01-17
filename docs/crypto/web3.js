@@ -1,6 +1,5 @@
 // BETA MODULE!
-
-var PuddyWeb3 = class {
+class PuddyWeb3 {
 
     // Constructor Base
     constructor(network, provider) {
