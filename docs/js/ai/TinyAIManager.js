@@ -491,30 +491,48 @@ const AiScriptStart = () => {
       ),
     );
 
-    const messages = [
-      // Message from the bot
-      $("<div>", { class: "d-flex flex-column mb-3" }).append(
-        $("<div>", {
-          class: "bg-secondary text-white p-2 rounded",
-          text: "Hello! How can I assist you today?",
-        }),
-        $("<div>", { class: "text-muted small mt-1", text: "Bot" }),
-      ),
+    // Input
+    const msgInput = $("<input>", {
+      type: "text",
+      class: "form-control border-dark",
+      placeholder: "Type your message...",
+    });
 
-      // Message from the user
+    // Submit
+    const msgSubmit = $("<button>", {
+      class: "btn btn-primary input-group-text-dark",
+      text: "Send",
+    });
+
+    // Message List
+    const msgList = $("<div>", {
+      class: "p-3",
+      style: "margin-bottom: 55px !important;",
+    });
+
+    // Message Maker
+    const makeMessage = (message = null, username = null) =>
       $("<div>", {
-        class: "d-flex flex-column mb-3 align-items-end",
+        class: `d-flex flex-column mb-3${typeof username !== "string" ? " align-items-end" : ""}`,
       }).append(
         $("<div>", {
-          class: "bg-primary text-white p-2 rounded",
-          text: "I have a question about your services.",
-        }),
+          class: `bg-${typeof username === "string" ? "secondary" : "primary"} text-white p-2 rounded`,
+        }).append($("<span>").text(message)),
         $("<div>", {
-          class: "text-muted small mt-1 text-end",
-          text: "User",
+          class: `text-muted small mt-1${typeof username !== "string" ? " text-end" : ""}`,
+          text: typeof username === "string" ? username : "User",
         }),
-      ),
-    ];
+      );
+
+    // Example test
+    const msgExamples = () => {
+      // Message from the bot
+      msgList.append(makeMessage("Hello! How can I assist you today?", "Bot"));
+      // Message from the user
+      msgList.append(makeMessage("I have a question about your services."));
+    };
+
+    msgExamples();
 
     // Container
     const container = $("<div>", { class: "d-flex h-100 y-100" }).append(
@@ -522,29 +540,17 @@ const AiScriptStart = () => {
       // Main container
       $("<div>", { class: "flex-grow-1 d-flex flex-column" }).append(
         $("<div>", { class: "justify-content-center h-100" }).append(
-          // Chat Header
-          // $('<div>', { class: 'bg-primary text-white p-3 rounded-top text-center' }).append(
-          //     $('<h5>', { class: 'mb-0', text: 'Chatbot Room' })
-          // ),
-
           // Chat Messages Area
           $("<div>", {
             class: "h-100 body-background",
             style: "overflow-y: auto; margin-bottom: -54px;",
-          }).append($("<div>", { class: "p-3", style: 'margin-bottom: 55px !important;' }).append(messages)),
+          }).append(msgList),
 
           // Input Area
           $("<div>", { class: "px-3 d-inline-block w-100" }).append(
             $("<div>", { class: "input-group pb-3 body-background" }).append(
-              $("<input>", {
-                type: "text",
-                class: "form-control border-dark",
-                placeholder: "Type your message...",
-              }),
-              $("<button>", {
-                class: "btn btn-primary input-group-text-dark",
-                text: "Send",
-              }),
+              msgInput,
+              msgSubmit,
             ),
           ),
         ),
