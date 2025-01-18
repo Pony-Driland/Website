@@ -24,6 +24,16 @@ class TinyAIManager {
     this._getServerCache = null;
     this._getModels = null;
 
+    // Ai Config
+    this.config = {};
+    this.config.maxOutputTokens = null;
+    this.config.temperature = null;
+    this.config.topP = null;
+    this.config.topK = null;
+    this.config.presencePenalty = null;
+    this.config.frequencyPenalty = null;
+    this.config.enableEnhancedCivicAnswers = false;
+
     // Build Parts
     this._partTypes = {
       text: (text) => (typeof text === "string" ? text : null),
@@ -35,6 +45,123 @@ class TinyAIManager {
         // data: "'$(base64 $B64FLAGS a11.txt)'"
       },
     };
+  }
+
+  // Config
+  setMaxOutputTokens() {
+    if (
+      typeof value === "number" &&
+      !Number.isNaN(value) &&
+      Number.isFinite(value)
+    ) {
+      this.config.maxOutputTokens = value;
+      return;
+    }
+    throw new Error("Invalid number value!");
+  }
+
+  getMaxOutputTokens() {
+    return typeof this.config.maxOutputTokens === "number"
+      ? this.config.maxOutputTokens
+      : null;
+  }
+
+  setTemperature() {
+    if (
+      typeof value === "number" &&
+      !Number.isNaN(value) &&
+      Number.isFinite(value)
+    ) {
+      this.config.temperature = value;
+      return;
+    }
+    throw new Error("Invalid number value!");
+  }
+
+  getTemperature() {
+    return typeof this.config.temperature ? this.config.temperature : null;
+  }
+
+  setTopP() {
+    if (
+      typeof value === "number" &&
+      !Number.isNaN(value) &&
+      Number.isFinite(value)
+    ) {
+      this.config.topP = value;
+      return;
+    }
+    throw new Error("Invalid number value!");
+  }
+
+  getTopP() {
+    return typeof this.config.topP === "number" ? this.config.topP : null;
+  }
+
+  setTopK() {
+    if (
+      typeof value === "number" &&
+      !Number.isNaN(value) &&
+      Number.isFinite(value)
+    ) {
+      this.config.topK = value;
+      return;
+    }
+    throw new Error("Invalid number value!");
+  }
+
+  getTopK() {
+    return typeof this.config.topK === "number" ? this.config.topK : null;
+  }
+
+  setPresencePenalty() {
+    if (
+      typeof value === "number" &&
+      !Number.isNaN(value) &&
+      Number.isFinite(value)
+    ) {
+      this.config.presencePenalty = value;
+      return;
+    }
+    throw new Error("Invalid number value!");
+  }
+
+  getPresencePenalty() {
+    return typeof this.config.presencePenalty === "number"
+      ? this.config.presencePenalty
+      : null;
+  }
+
+  setFrequencyPenalty() {
+    if (
+      typeof value === "number" &&
+      !Number.isNaN(value) &&
+      Number.isFinite(value)
+    ) {
+      this.config.frequencyPenalty = value;
+      return;
+    }
+    throw new Error("Invalid number value!");
+  }
+
+  getFrequencyPenalty() {
+    return typeof this.config.frequencyPenalty === "number"
+      ? this.config.frequencyPenalty
+      : null;
+  }
+
+  setEnabledEnchancedCivicAnswers() {
+    if (typeof value === "boolean") {
+      this.config.enableEnhancedCivicAnswers = value;
+      return;
+    }
+    throw new Error("Invalid boolean value!");
+  }
+
+  isEnabledEnchancedCivicAnswers() {
+    return typeof this.config.enableEnhancedCivicAnswers === "boolean"
+      ? this.config.enableEnhancedCivicAnswers
+      : null;
   }
 
   // Builder
@@ -192,7 +319,7 @@ class TinyAIManager {
 
   insertServerCache(name, data) {
     if (typeof this._insertServerCache === "function")
-      return this._insertServerCache(this.#_apiKey, this.modelName, name, data);
+      return this._insertServerCache(this.#_apiKey, name, data);
     throw new Error("No insert cache api script defined.");
   }
 
@@ -207,7 +334,7 @@ class TinyAIManager {
 
   genContent(data, isStream = false) {
     if (typeof this._genContentApi === "function")
-      return this._genContentApi(this.#_apiKey, this.modelId, isStream, data);
+      return this._genContentApi(this.#_apiKey, isStream, data);
     throw new Error("No content generator api script defined.");
   }
 
@@ -245,8 +372,37 @@ class TinyAIManager {
     return null;
   }
 
-  _startHistory(id) {
-    this.history[id] = [];
+  addHistoryData(data, id) {
+    const selectedId = id || this._selectedHistory;
+    if (this.history[selectedId]) {
+      this.history[selectedId].data.push(data);
+      return;
+    }
+    throw new Error("Invalid history id data!");
+  }
+
+  setHistorySystemInstruction(data, id) {
+    const selectedId = id || this._selectedHistory;
+    if (this.history[selectedId] && typeof data === "string") {
+      this.history[selectedId].systemInstruction = data;
+      return;
+    }
+    throw new Error("Invalid history id data!");
+  }
+
+  setHistoryModel(data, id) {
+    const selectedId = id || this._selectedHistory;
+    if (this.history[selectedId] && typeof data === "string") {
+      this.history[selectedId].model = data;
+      return;
+    }
+    throw new Error("Invalid history id data!");
+  }
+
+  startHistory(id, selected = false) {
+    this.history[id] = { data: [], systemInstruction: null, model: null };
+    if (selected) this.selectHistory(id);
+    return this.history[id];
   }
 }
 
@@ -433,59 +589,171 @@ const AiScriptStart = () => {
       style: "width: 250px; min-width: 250px;",
     };
 
+    // Sidebar Button
+    const createButtonSidebar = (icon, text, callback, disabled = false) =>
+      $("<button>", {
+        type: "button",
+        class: `btn btn-link btn-bg text-start w-100${disabled ? " disabled" : ""}`,
+      })
+        .text(text)
+        .prepend($("<i>", { class: `${icon} me-2` }))
+        .on("click", callback)
+        .prop("disabled", disabled);
+
+    // Select Model
+    const modelSelector = $("<select>", {
+      class: "form-select",
+      id: "select-ai-model",
+    });
+    const resetModelSelector = () => {
+      modelSelector.empty();
+      modelSelector.append($("<option>").text("None"));
+    };
+
+    resetModelSelector();
+
+    // Token Count
+    const tokenCount = {
+      amount: $("<span>").text("0"),
+      total: $("<span>").text("0"),
+    };
+
     // Left
     const sidebarLeft = $("<div>", sidebarStyle).append(
-      $("<h5>", { class: "text-center mb-4", text: "Menu" }),
       $("<ul>", { class: "list-unstyled" }).append(
         $("<li>", { class: "mb-3" }).append(
-          $("<a>", {
-            href: "#",
-            class: "text-white text-decoration-none",
-            text: "Option 1",
-          }),
-        ),
-        $("<li>", { class: "mb-3" }).append(
-          $("<a>", {
-            href: "#",
-            class: "text-white text-decoration-none",
-            text: "Option 2",
-          }),
-        ),
-        $("<li>", { class: "mb-3" }).append(
-          $("<a>", {
-            href: "#",
-            class: "text-white text-decoration-none",
-            text: "Option 3",
-          }),
+          $("<h5>").text("Chatbots"),
+
+          createButtonSidebar(
+            "fa-solid fa-server",
+            "Main",
+            () => {
+              console.log("test");
+            },
+            true,
+          ),
+
+          $("<hr/>", { class: "border-white" }),
+          $("<div>", { class: "small text-grey" }).text(
+            "AI makes mistakes, so double-check it. AI does not replace the fic literature.",
+          ),
         ),
       ),
     );
 
     // Right
+    const sidebarRightBase = {
+      // Model Selector
+      modelSelector: $("<div>", {
+        class: "form-floating",
+        title: "The AI model used here",
+      }).append(
+        modelSelector,
+        $("<label>", { for: "select-ai-model" })
+          .text("Select AI Model")
+          .prepend($("<i>", { class: `fa-solid fa-atom me-2` })),
+      ),
+
+      // Token Counter
+      tokenCounter: $("<div>", {
+        class: "mt-3",
+        title: "Counts how many tokens are used for the content generation",
+      }).append(
+        $("<span>")
+          .text("Token count")
+          .prepend($("<i>", { class: `fa-solid fa-magnifying-glass me-2` })),
+        $("<div>", { class: "mt-1 small" }).append(
+          tokenCount.amount,
+          $("<span>", { class: "mx-1" }).text("/"),
+          tokenCount.total,
+        ),
+      ),
+
+      // Temperature
+      temperature: $("<div>", {
+        class: "mt-3",
+        title: "Creativity allowed in the responses",
+      }).append(
+        $("<span>")
+          .text("Temperature")
+          .prepend(
+            $("<i>", { class: `fa-solid fa-temperature-three-quarters me-2` }),
+          ),
+      ),
+
+      // Output Length
+      outputLength: $("<div>", {
+        class: "mt-3",
+        title: "Maximum number of tokens in response",
+      }).append(
+        $("<span>")
+          .text("Output length")
+          .prepend($("<i>", { class: `fa-solid fa-comment me-2` })),
+      ),
+
+      // Top P
+      topP: $("<div>", {
+        class: "mt-3",
+        title:
+          "The maximum cumulative probability of tokens to consider when sampling",
+      }).append(
+        $("<span>")
+          .text("Top P")
+          .prepend($("<i>", { class: `fa-solid fa-percent me-2` })),
+      ),
+
+      // Top K
+      topK: $("<div>", {
+        class: "mt-3",
+        title: "The maximum number of tokens to consider when sampling",
+      }).append(
+        $("<span>")
+          .text("Top K")
+          .prepend($("<i>", { class: `fa-solid fa-0 me-2` })),
+      ),
+
+      // Presence penalty
+      presencePenalty: $("<div>", {
+        class: "mt-3",
+        title:
+          "Presence penalty applied to the next token's logprobs if the token has already been seen in the response",
+      }).append(
+        $("<span>")
+          .text("Presence penalty")
+          .prepend($("<i>", { class: `fa-solid fa-hand me-2` })),
+      ),
+
+      // Frequency penalty
+      frequencyPenalty: $("<div>", {
+        class: "mt-3",
+        title:
+          "Frequency penalty applied to the next token's logprobs, multiplied by the number of times each token has been seen in the respponse so far",
+      }).append(
+        $("<span>")
+          .text("Frequency penalty")
+          .prepend($("<i>", { class: `fa-solid fa-hand me-2` })),
+      ),
+    };
+
+    sidebarRightBase.tokenCounter.tooltip();
+    sidebarRightBase.temperature.tooltip();
+    sidebarRightBase.outputLength.tooltip();
+    sidebarRightBase.topP.tooltip();
+    sidebarRightBase.topK.tooltip();
+    sidebarRightBase.presencePenalty.tooltip();
+    sidebarRightBase.frequencyPenalty.tooltip();
+
     const sidebarRight = $("<div>", sidebarStyle).append(
-      $("<h5>", { class: "text-center mb-4", text: "Menu" }),
       $("<ul>", { class: "list-unstyled" }).append(
-        $("<li>", { class: "mb-3" }).append(
-          $("<a>", {
-            href: "#",
-            class: "text-white text-decoration-none",
-            text: "Option 1",
-          }),
-        ),
-        $("<li>", { class: "mb-3" }).append(
-          $("<a>", {
-            href: "#",
-            class: "text-white text-decoration-none",
-            text: "Option 2",
-          }),
-        ),
-        $("<li>", { class: "mb-3" }).append(
-          $("<a>", {
-            href: "#",
-            class: "text-white text-decoration-none",
-            text: "Option 3",
-          }),
-        ),
+        $("<h5>").text("Run Settings"),
+        sidebarRightBase.modelSelector,
+        sidebarRightBase.tokenCounter,
+        sidebarRightBase.temperature,
+        sidebarRightBase.outputLength,
+        sidebarRightBase.topP,
+        sidebarRightBase.topK,
+        sidebarRightBase.presencePenalty,
+        sidebarRightBase.frequencyPenalty,
       ),
     );
 
@@ -530,8 +798,6 @@ const AiScriptStart = () => {
       msgList.append(makeMessage("I have a question about your services."));
     };
 
-    msgExamples();
-
     // Container
     const container = $("<div>", { class: "d-flex h-100 y-100" }).append(
       sidebarLeft,
@@ -556,6 +822,38 @@ const AiScriptStart = () => {
       sidebarRight,
     );
 
+    // Enable Read Only
+    const enableReadOnly = (isEnabled = true) => {
+      msgSubmit.prop("disabled", isEnabled);
+      msgInput.prop("disabled", isEnabled);
+
+      if (isEnabled) msgSubmit.addClass("disabled");
+      else msgSubmit.removeClass("disabled");
+    };
+
+    // Clear Messages
+    const clearMessages = () => msgList.empty();
+
+    enableReadOnly();
+
+    // Welcome
+    msgList.append(
+      makeMessage(`Welcome to Pony Driland's chatbot!`, "Website"),
+    );
+    msgList.append(
+      makeMessage(
+        `You need to choose what you would like to do here and let's start the conversation`,
+        "Website",
+      ),
+    );
+    msgList.append(
+      makeMessage(
+        `The chat will not work until you choose an activity to do here`,
+        "Website",
+      ),
+    );
+
+    // Complete
     $("#markdown-read").append(container);
   };
 
