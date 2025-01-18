@@ -529,3 +529,7 @@ body.is-using-ai #app {
     background-color: #1d1d1d;
     color: #f0f0f0;
 }
+
+#ai-login {
+    display: none !important;
+}
