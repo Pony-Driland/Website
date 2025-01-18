@@ -618,15 +618,70 @@ const AiScriptStart = () => {
       total: $("<span>").text("0"),
     };
 
+    // Ranger Generator
+    const tinyRanger = () => {
+      const rangerBase = $("<div>", {
+        class: "d-flex flex-row align-items-center",
+      });
+      const ranger = $("<input>", { type: "range", class: "form-range" });
+      const rangerNumber = $("<input>", {
+        type: "number",
+        class: "form-control ms-2",
+        style: "width: 70px; max-width: 70px; min-width: 70px;",
+      });
+
+      rangerBase.append(ranger, rangerNumber);
+      return [rangerBase, ranger, rangerNumber];
+    };
+
+    // Output Length
+    const outputLength = $("<input>", {
+      type: "number",
+      class: "form-control",
+    });
+
+    // Temperature
+    const temperature = tinyRanger();
+    // Top P
+    const topP = tinyRanger();
+    // Top K
+    const topK = tinyRanger();
+    // Presence penalty
+    const presencePenalty = tinyRanger();
+    // Frequency penalty
+    const frequencyPenalty = tinyRanger();
+
     // Left
     const sidebarLeft = $("<div>", sidebarStyle).append(
       $("<ul>", { class: "list-unstyled" }).append(
         $("<li>", { class: "mb-3" }).append(
+          // Templates
           $("<h5>").text("Chatbots"),
 
           createButtonSidebar(
             "fa-solid fa-server",
             "Main",
+            () => {
+              console.log("test");
+            },
+            true,
+          ),
+
+          // System Instructions
+          $("<h5>").text("Settings"),
+          createButtonSidebar(
+            "fa-solid fa-toolbox",
+            "System Instructions",
+            () => {
+              console.log("test");
+            },
+            true,
+          ),
+
+          // Prompt
+          createButtonSidebar(
+            "fa-solid fa-terminal",
+            "Prompt",
             () => {
               console.log("test");
             },
@@ -679,6 +734,7 @@ const AiScriptStart = () => {
           .prepend(
             $("<i>", { class: `fa-solid fa-temperature-three-quarters me-2` }),
           ),
+        temperature[0],
       ),
 
       // Output Length
@@ -689,6 +745,7 @@ const AiScriptStart = () => {
         $("<span>")
           .text("Output length")
           .prepend($("<i>", { class: `fa-solid fa-comment me-2` })),
+        outputLength,
       ),
 
       // Top P
@@ -700,6 +757,7 @@ const AiScriptStart = () => {
         $("<span>")
           .text("Top P")
           .prepend($("<i>", { class: `fa-solid fa-percent me-2` })),
+        topP[0],
       ),
 
       // Top K
@@ -710,6 +768,7 @@ const AiScriptStart = () => {
         $("<span>")
           .text("Top K")
           .prepend($("<i>", { class: `fa-solid fa-0 me-2` })),
+        topK[0],
       ),
 
       // Presence penalty
@@ -721,6 +780,7 @@ const AiScriptStart = () => {
         $("<span>")
           .text("Presence penalty")
           .prepend($("<i>", { class: `fa-solid fa-hand me-2` })),
+        presencePenalty[0],
       ),
 
       // Frequency penalty
@@ -732,6 +792,7 @@ const AiScriptStart = () => {
         $("<span>")
           .text("Frequency penalty")
           .prepend($("<i>", { class: `fa-solid fa-hand me-2` })),
+        frequencyPenalty[0],
       ),
     };
 
@@ -754,6 +815,17 @@ const AiScriptStart = () => {
         sidebarRightBase.topK,
         sidebarRightBase.presencePenalty,
         sidebarRightBase.frequencyPenalty,
+
+        $("<hr/>"),
+
+        // Reset Settings
+        createButtonSidebar(
+          "fa-solid fa-rotate-right",
+          "Reset default settings",
+          () => {
+            console.log("test");
+          },
+        ),
       ),
     );
 
@@ -826,9 +898,62 @@ const AiScriptStart = () => {
     const enableReadOnly = (isEnabled = true) => {
       msgSubmit.prop("disabled", isEnabled);
       msgInput.prop("disabled", isEnabled);
+      outputLength.prop("disabled", isEnabled);
 
-      if (isEnabled) msgSubmit.addClass("disabled");
-      else msgSubmit.removeClass("disabled");
+      temperature[1].prop("disabled", isEnabled);
+      temperature[2].prop("disabled", isEnabled);
+
+      topP[1].prop("disabled", isEnabled);
+      topP[2].prop("disabled", isEnabled);
+
+      topK[1].prop("disabled", isEnabled);
+      topK[2].prop("disabled", isEnabled);
+
+      presencePenalty[1].prop("disabled", isEnabled);
+      presencePenalty[2].prop("disabled", isEnabled);
+
+      frequencyPenalty[1].prop("disabled", isEnabled);
+      frequencyPenalty[2].prop("disabled", isEnabled);
+
+      if (isEnabled) {
+        msgInput.addClass("disabled");
+        msgSubmit.addClass("disabled");
+        outputLength.addClass("disabled");
+
+        temperature[1].addClass("disabled");
+        temperature[2].addClass("disabled");
+
+        topP[1].addClass("disabled");
+        topP[2].addClass("disabled");
+
+        topK[1].addClass("disabled");
+        topK[2].addClass("disabled");
+
+        presencePenalty[1].addClass("disabled");
+        presencePenalty[2].addClass("disabled");
+
+        frequencyPenalty[1].addClass("disabled");
+        frequencyPenalty[2].addClass("disabled");
+      } else {
+        msgInput.removeClass("disabled");
+        msgSubmit.removeClass("disabled");
+        outputLength.removeClass("disabled");
+
+        temperature[1].removeClass("disabled");
+        temperature[2].removeClass("disabled");
+
+        topP[1].removeClass("disabled");
+        topP[2].removeClass("disabled");
+
+        topK[1].removeClass("disabled");
+        topK[2].removeClass("disabled");
+
+        presencePenalty[1].removeClass("disabled");
+        presencePenalty[2].removeClass("disabled");
+
+        frequencyPenalty[1].removeClass("disabled");
+        frequencyPenalty[2].removeClass("disabled");
+      }
     };
 
     // Clear Messages
