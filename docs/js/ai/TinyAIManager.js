@@ -697,6 +697,7 @@ const AiScriptStart = () => {
     );
 
     // Right
+    const sidebarSettingTemplate = { span: { class: "pb-2 d-inline-block" } };
     const sidebarRightBase = {
       // Model Selector
       modelSelector: $("<div>", {
@@ -729,7 +730,7 @@ const AiScriptStart = () => {
         class: "mt-3",
         title: "Creativity allowed in the responses",
       }).append(
-        $("<span>")
+        $("<span>", sidebarSettingTemplate.span)
           .text("Temperature")
           .prepend(
             $("<i>", { class: `fa-solid fa-temperature-three-quarters me-2` }),
@@ -742,7 +743,7 @@ const AiScriptStart = () => {
         class: "mt-3",
         title: "Maximum number of tokens in response",
       }).append(
-        $("<span>")
+        $("<span>", sidebarSettingTemplate.span)
           .text("Output length")
           .prepend($("<i>", { class: `fa-solid fa-comment me-2` })),
         outputLength,
@@ -754,7 +755,7 @@ const AiScriptStart = () => {
         title:
           "The maximum cumulative probability of tokens to consider when sampling",
       }).append(
-        $("<span>")
+        $("<span>", sidebarSettingTemplate.span)
           .text("Top P")
           .prepend($("<i>", { class: `fa-solid fa-percent me-2` })),
         topP[0],
@@ -765,7 +766,7 @@ const AiScriptStart = () => {
         class: "mt-3",
         title: "The maximum number of tokens to consider when sampling",
       }).append(
-        $("<span>")
+        $("<span>", sidebarSettingTemplate.span)
           .text("Top K")
           .prepend($("<i>", { class: `fa-solid fa-0 me-2` })),
         topK[0],
@@ -777,7 +778,7 @@ const AiScriptStart = () => {
         title:
           "Presence penalty applied to the next token's logprobs if the token has already been seen in the response",
       }).append(
-        $("<span>")
+        $("<span>", sidebarSettingTemplate.span)
           .text("Presence penalty")
           .prepend($("<i>", { class: `fa-solid fa-hand me-2` })),
         presencePenalty[0],
@@ -789,7 +790,7 @@ const AiScriptStart = () => {
         title:
           "Frequency penalty applied to the next token's logprobs, multiplied by the number of times each token has been seen in the respponse so far",
       }).append(
-        $("<span>")
+        $("<span>", sidebarSettingTemplate.span)
           .text("Frequency penalty")
           .prepend($("<i>", { class: `fa-solid fa-hand me-2` })),
         frequencyPenalty[0],
@@ -816,7 +817,7 @@ const AiScriptStart = () => {
         sidebarRightBase.presencePenalty,
         sidebarRightBase.frequencyPenalty,
 
-        $("<hr/>"),
+        $("<hr/>", { class: "m-2" }),
 
         // Reset Settings
         createButtonSidebar(
