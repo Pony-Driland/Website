@@ -519,3 +519,13 @@ body.is-using-ai #root,
 body.is-using-ai #app {
   overflow: hidden !important;
 }
+
+/* BTN */
+.btn-bg {
+    text-decoration: none !important;
+}
+
+.btn-bg:hover {
+    background-color: #1d1d1d;
+    color: #f0f0f0;
+}

@@ -24,8 +24,8 @@ const setGoogleAi = (
   };
 
   // Build Request
-  const requestBuilder = (data, config = {}) => {
-    const requestBody = {};
+  const requestBuilder = (data, config = {}, cache = null) => {
+    const requestBody = { safetySettings: [] };
 
     // Model
     if (typeof config.model === "string") requestBody.model = config.model;
@@ -50,16 +50,48 @@ const setGoogleAi = (
         requestBody.systemInstruction = requestBody.systemInstruction[0];
       }
     }
+
+    // Config
+    requestBody.generationConfig = {};
+    if (typeof tinyGoogleAI.getMaxOutputTokens() === "number")
+      requestBody.generationConfig.maxOutputTokens =
+        tinyGoogleAI.getMaxOutputTokens();
+
+    if (typeof tinyGoogleAI.getTemperature() === "number")
+      requestBody.generationConfig.temperature = tinyGoogleAI.getTemperature();
+
+    if (typeof tinyGoogleAI.getTopP() === "number")
+      requestBody.generationConfig.topP = tinyGoogleAI.getTopP();
+
+    if (typeof tinyGoogleAI.getTopK() === "number")
+      requestBody.generationConfig.topK = tinyGoogleAI.getTopK();
+
+    if (typeof tinyGoogleAI.getPresencePenalty() === "number")
+      requestBody.generationConfig.presencePenalty =
+        tinyGoogleAI.getPresencePenalty();
+
+    if (typeof tinyGoogleAI.getFrequencyPenalty() === "number")
+      requestBody.generationConfig.frequencyPenalty =
+        tinyGoogleAI.getFrequencyPenalty();
+
+    if (typeof tinyGoogleAI.isEnabledEnchancedCivicAnswers() === "boolean")
+      requestBody.generationConfig.enableEnhancedCivicAnswers =
+        tinyGoogleAI.isEnabledEnchancedCivicAnswers();
+
+    // Cache
+    if (cache) requestBody.cachedContent = cache;
+
+    // Complete
     return requestBody;
   };
 
   // The Fetch API
   // https://ai.google.dev/api/generate-content?hl=pt-br#method:-models.generatecontent
   tinyGoogleAI._setGenContent(
-    (apiKey, selectedModel, isStream, data) =>
+    (apiKey, isStream, data) =>
       new Promise((resolve, reject) =>
         fetch(
-          `${apiUrl}/models/${selectedModel}:${!isStream ? "generateContent" : "streamGenerateContent"}?key=${encodeURIComponent(apiKey)}`,
+          `${apiUrl}/models/${tinyGoogleAI.getModel().id}:${!isStream ? "generateContent" : "streamGenerateContent"}?key=${encodeURIComponent(apiKey)}`,
           {
             method: "POST",
             headers: {
@@ -162,7 +194,7 @@ const setGoogleAi = (
   // Model Cache creator
   // https://ai.google.dev/api/caching?hl=pt-br#method:-cachedcontents.create
   tinyGoogleAI._setInsertServerCache(
-    (apiKey, modelName, cacheName, data) =>
+    (apiKey, cacheName, data) =>
       new Promise((resolve, reject) =>
         fetch(`${apiUrl}/cachedContents?key=${encodeURIComponent(apiKey)}`, {
           method: "POST",
@@ -170,7 +202,10 @@ const setGoogleAi = (
             "Content-Type": "application/json",
           },
           body: JSON.stringify(
-            requestBuilder(data, { model: modelName, name: cacheName }),
+            requestBuilder(data, {
+              model: tinyGoogleAI.getModel().name,
+              name: cacheName,
+            }),
           ),
         })
           // Request
