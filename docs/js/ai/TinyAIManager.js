@@ -1011,7 +1011,10 @@ const AiScriptStart = () => {
           );
         }
 
-        modelSelector.val(tinyAi.getModel());
+        modelSelector.val(
+          localStorage.getItem("tiny-ai-storage-model-selected") ||
+            tinyAi.getModel(),
+        );
         modelSelector.trigger("change");
       }
     };
@@ -1059,8 +1062,13 @@ const AiScriptStart = () => {
 
     modelSelector.on("change", function () {
       const model = tinyAi.getModelData(modelSelector.val());
-      if (model) insertDefaultSettings(model);
-      else {
+      if (model) {
+        insertDefaultSettings(model);
+        localStorage.setItem(
+          "tiny-ai-storage-model-selected",
+          modelSelector.val(),
+        );
+      } else {
         tokenCount.total.text(0);
         temperature.reset().disable();
         outputLength.val(0).prop("disabled", true).addClass("disabled");
@@ -1068,6 +1076,7 @@ const AiScriptStart = () => {
         topK.reset().disable();
         presencePenalty.reset().disable();
         frequencyPenalty.reset().disable();
+        localStorage.removeItem("tiny-ai-storage-model-selected");
       }
     });
 
