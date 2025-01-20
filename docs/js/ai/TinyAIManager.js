@@ -3,8 +3,7 @@ class TinyAIManager {
 
   constructor() {
     // Config
-    this.modelId = null;
-    this.modelName = null;
+    this.model = null;
     this.#_apiKey = null;
 
     // History
@@ -48,7 +47,7 @@ class TinyAIManager {
   }
 
   // Config
-  setMaxOutputTokens() {
+  setMaxOutputTokens(value) {
     if (
       typeof value === "number" &&
       !Number.isNaN(value) &&
@@ -66,7 +65,7 @@ class TinyAIManager {
       : null;
   }
 
-  setTemperature() {
+  setTemperature(value) {
     if (
       typeof value === "number" &&
       !Number.isNaN(value) &&
@@ -82,7 +81,7 @@ class TinyAIManager {
     return typeof this.config.temperature ? this.config.temperature : null;
   }
 
-  setTopP() {
+  setTopP(value) {
     if (
       typeof value === "number" &&
       !Number.isNaN(value) &&
@@ -98,7 +97,7 @@ class TinyAIManager {
     return typeof this.config.topP === "number" ? this.config.topP : null;
   }
 
-  setTopK() {
+  setTopK(value) {
     if (
       typeof value === "number" &&
       !Number.isNaN(value) &&
@@ -114,7 +113,7 @@ class TinyAIManager {
     return typeof this.config.topK === "number" ? this.config.topK : null;
   }
 
-  setPresencePenalty() {
+  setPresencePenalty(value) {
     if (
       typeof value === "number" &&
       !Number.isNaN(value) &&
@@ -132,7 +131,7 @@ class TinyAIManager {
       : null;
   }
 
-  setFrequencyPenalty() {
+  setFrequencyPenalty(value) {
     if (
       typeof value === "number" &&
       !Number.isNaN(value) &&
@@ -150,7 +149,7 @@ class TinyAIManager {
       : null;
   }
 
-  setEnabledEnchancedCivicAnswers() {
+  setEnabledEnchancedCivicAnswers(value) {
     if (typeof value === "boolean") {
       this.config.enableEnhancedCivicAnswers = value;
       return;
@@ -220,9 +219,18 @@ class TinyAIManager {
     return this.models;
   }
 
+  getModelData(id) {
+    return this.models.find((item) => item.id === id);
+  }
+
+  existsModel(id) {
+    return this.getModelData(id) ? true : false;
+  }
+
   _insertNewModel(model) {
     if (this.models.findIndex((item) => item.id === model.id) < 0) {
       const newData = {
+        _response: model._response,
         name: typeof model.name === "string" ? model.name : null,
         id: typeof model.id === "string" ? model.id : null,
         displayName:
@@ -340,17 +348,12 @@ class TinyAIManager {
 
   // Model
   setModel(model) {
-    if (model) {
-      this.modelId = typeof model.id === "string" ? model.id : null;
-      this.modelName = typeof model.name === "string" ? model.name : null;
-    } else {
-      this.modelId = null;
-      this.modelName = null;
-    }
+    if (model) this.model = typeof model === "string" ? model : null;
+    else this.model = null;
   }
 
   getModel() {
-    return { id: this.modelId, name: this.modelName };
+    return this.model;
   }
 
   // History
@@ -574,7 +577,7 @@ const AiScriptStart = () => {
   };
 
   // Open AI Page
-  tinyAiScript.open = () => {
+  tinyAiScript.open = async () => {
     // Update Url
     urlUpdate("ai");
 
@@ -583,10 +586,16 @@ const AiScriptStart = () => {
     $("#markdown-read").empty();
     $("#top_page").addClass("d-none");
 
+    // Start loading page
+    $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
+
+    // Load Models
+    if (tinyAi.getModelsList().length < 1) await tinyAi.getModels(100);
+
     // Sidebar
     const sidebarStyle = {
       class: "bg-dark text-white p-3",
-      style: "width: 250px; min-width: 250px;",
+      style: "width: 250px; min-width: 250px; overflow-y: auto;",
     };
 
     // Sidebar Button
@@ -612,6 +621,14 @@ const AiScriptStart = () => {
 
     resetModelSelector();
 
+    // To Number
+    const convertToNumber = (val) =>
+      typeof val === "string" && val.length > 0
+        ? Number(val)
+        : typeof val === "number"
+          ? val
+          : null;
+
     // Token Count
     const tokenCount = {
       amount: $("<span>").text("0"),
@@ -630,8 +647,111 @@ const AiScriptStart = () => {
         style: "width: 70px; max-width: 70px; min-width: 70px;",
       });
 
+      ranger.on("wheel", function (event) {
+        event.preventDefault();
+        let currentValue = Number(ranger.val());
+
+        const getValue = (where, defaultValue) => {
+          let newValue = ranger.attr(where);
+          if (typeof newValue === "string" && newValue.length > 0)
+            newValue = Number(newValue);
+          else newValue = defaultValue;
+          return newValue;
+        };
+
+        const step = getValue("step", 1);
+        const min = getValue("min", 0);
+        const max = getValue("max", 0);
+
+        // Detect scroll position
+        if (event.originalEvent.deltaY < 0) {
+          // Up
+          currentValue += step;
+        } else {
+          // Down
+          currentValue -= step;
+        }
+
+        // Update value
+        if (currentValue < min) ranger.val(min).trigger("input");
+        else if (currentValue > max) ranger.val(max).trigger("input");
+        else ranger.val(currentValue).trigger("input");
+      });
+
+      ranger.on("input", function () {
+        rangerNumber.val(ranger.val());
+      });
+
+      rangerNumber.on("input", function () {
+        ranger.val(rangerNumber.val());
+      });
+
+      rangerNumber.on("change", function () {
+        let value = parseInt(rangerNumber.val());
+        let min = parseInt(rangerNumber.attr("min"));
+        let max = parseInt(rangerNumber.attr("max"));
+        if (value < min) {
+          rangerNumber.val(min);
+        } else if (value > max) {
+          rangerNumber.val(max);
+        }
+      });
+
       rangerBase.append(ranger, rangerNumber);
-      return [rangerBase, ranger, rangerNumber];
+      return {
+        getBase: () => ranger,
+        getBase2: () => rangerNumber,
+        trigger: function (value) {
+          return ranger.trigger(value);
+        },
+        reset: function () {
+          this.setMin(0);
+          this.setMax(0);
+          this.setStep(0);
+          this.val(0);
+          return this;
+        },
+        setMin: function (value) {
+          ranger.attr("min", value);
+          rangerNumber.attr("min", value);
+          return this;
+        },
+        setMax: function (value) {
+          ranger.attr("max", value);
+          rangerNumber.attr("max", value);
+          return this;
+        },
+        setStep: function (value) {
+          ranger.attr("step", value);
+          rangerNumber.attr("step", value);
+          return this;
+        },
+
+        disable: function () {
+          ranger.addClass("disabled");
+          ranger.prop("disabled", true);
+          rangerNumber.addClass("disabled");
+          rangerNumber.prop("disabled", true);
+          return this;
+        },
+        enable: function () {
+          ranger.removeClass("disabled");
+          ranger.prop("disabled", false);
+          rangerNumber.removeClass("disabled");
+          rangerNumber.prop("disabled", false);
+          return this;
+        },
+
+        insert: () => rangerBase,
+        val: function (value) {
+          if (typeof value !== "undefined") {
+            ranger.val(value);
+            rangerNumber.val(value);
+            return this;
+          }
+          return convertToNumber(ranger.val());
+        },
+      };
     };
 
     // Output Length
@@ -640,16 +760,68 @@ const AiScriptStart = () => {
       class: "form-control",
     });
 
+    outputLength.on("input", () =>
+      tinyAi.setMaxOutputTokens(convertToNumber(outputLength.val())),
+    );
+
     // Temperature
     const temperature = tinyRanger();
+    temperature
+      .getBase()
+      .on("input", () =>
+        tinyAi.setTemperature(convertToNumber(temperature.val())),
+      );
+    temperature
+      .getBase2()
+      .on("change", () =>
+        tinyAi.setTemperature(convertToNumber(temperature.val())),
+      );
+    temperature.val(1);
+    tinyAi.setTemperature(1);
+
     // Top P
     const topP = tinyRanger();
+    topP
+      .getBase()
+      .on("input", () => tinyAi.setTopP(convertToNumber(topP.val())));
+    topP
+      .getBase2()
+      .on("change", () => tinyAi.setTopP(convertToNumber(topP.val())));
+
     // Top K
     const topK = tinyRanger();
+    topK
+      .getBase()
+      .on("input", () => tinyAi.setTopK(convertToNumber(topK.val())));
+    topK
+      .getBase2()
+      .on("change", () => tinyAi.setTopK(convertToNumber(topK.val())));
+
     // Presence penalty
     const presencePenalty = tinyRanger();
+    presencePenalty
+      .getBase()
+      .on("input", () =>
+        tinyAi.setPresencePenalty(convertToNumber(presencePenalty.val())),
+      );
+    presencePenalty
+      .getBase2()
+      .on("change", () =>
+        tinyAi.setPresencePenalty(convertToNumber(presencePenalty.val())),
+      );
+
     // Frequency penalty
     const frequencyPenalty = tinyRanger();
+    frequencyPenalty
+      .getBase()
+      .on("input", () =>
+        tinyAi.setFrequencyPenalty(convertToNumber(frequencyPenalty.val())),
+      );
+    frequencyPenalty
+      .getBase2()
+      .on("change", () =>
+        tinyAi.setFrequencyPenalty(convertToNumber(frequencyPenalty.val())),
+      );
 
     // Left
     const sidebarLeft = $("<div>", sidebarStyle).append(
@@ -682,6 +854,26 @@ const AiScriptStart = () => {
           createButtonSidebar(
             "fa-solid fa-terminal",
             "Prompt",
+            () => {
+              console.log("test");
+            },
+            true,
+          ),
+
+          // Import
+          createButtonSidebar(
+            "fa-solid fa-file-import",
+            "Import",
+            () => {
+              console.log("test");
+            },
+            true,
+          ),
+
+          // Export
+          createButtonSidebar(
+            "fa-solid fa-file-export",
+            "Export",
             () => {
               console.log("test");
             },
@@ -735,7 +927,7 @@ const AiScriptStart = () => {
           .prepend(
             $("<i>", { class: `fa-solid fa-temperature-three-quarters me-2` }),
           ),
-        temperature[0],
+        temperature.insert(),
       ),
 
       // Output Length
@@ -758,7 +950,7 @@ const AiScriptStart = () => {
         $("<span>", sidebarSettingTemplate.span)
           .text("Top P")
           .prepend($("<i>", { class: `fa-solid fa-percent me-2` })),
-        topP[0],
+        topP.insert(),
       ),
 
       // Top K
@@ -769,7 +961,7 @@ const AiScriptStart = () => {
         $("<span>", sidebarSettingTemplate.span)
           .text("Top K")
           .prepend($("<i>", { class: `fa-solid fa-0 me-2` })),
-        topK[0],
+        topK.insert(),
       ),
 
       // Presence penalty
@@ -781,7 +973,7 @@ const AiScriptStart = () => {
         $("<span>", sidebarSettingTemplate.span)
           .text("Presence penalty")
           .prepend($("<i>", { class: `fa-solid fa-hand me-2` })),
-        presencePenalty[0],
+        presencePenalty.insert(),
       ),
 
       // Frequency penalty
@@ -793,10 +985,11 @@ const AiScriptStart = () => {
         $("<span>", sidebarSettingTemplate.span)
           .text("Frequency penalty")
           .prepend($("<i>", { class: `fa-solid fa-hand me-2` })),
-        frequencyPenalty[0],
+        frequencyPenalty.insert(),
       ),
     };
 
+    // Active tooltip
     sidebarRightBase.tokenCounter.tooltip();
     sidebarRightBase.temperature.tooltip();
     sidebarRightBase.outputLength.tooltip();
@@ -804,6 +997,98 @@ const AiScriptStart = () => {
     sidebarRightBase.topK.tooltip();
     sidebarRightBase.presencePenalty.tooltip();
     sidebarRightBase.frequencyPenalty.tooltip();
+
+    // Models list
+    const updateModelList = () => {
+      const models = tinyAi.getModelsList();
+      resetModelSelector();
+      if (models.length > 0) {
+        for (const index in models) {
+          modelSelector.append(
+            $("<option>", { value: models[index].id }).text(
+              models[index].displayName,
+            ),
+          );
+        }
+
+        modelSelector.val(tinyAi.getModel());
+        modelSelector.trigger("change");
+      }
+    };
+
+    const insertDefaultSettings = (model) => {
+      tinyAi.setModel(modelSelector.val());
+      presencePenalty.disable();
+      frequencyPenalty.disable();
+
+      tokenCount.total.text(
+        model.inputTokenLimit.toLocaleString(navigator.language || "en-US"),
+      );
+
+      outputLength
+        .val(model.outputTokenLimit)
+        .prop("disabled", false)
+        .removeClass("disabled")
+        .trigger("input");
+
+      temperature.setMin(0).setStep(0.1).setMax(model.maxTemperature).enable();
+      if (temperature.val() > model.maxTemperature)
+        temperature.val(model.maxTemperature);
+      temperature.trigger("input");
+
+      if (typeof model.topP === "number")
+        topP
+          .val(model.topP)
+          .setMax(1)
+          .setMin(0)
+          .setStep(0.1)
+          .enable()
+          .trigger("input");
+      else topP.reset().disable();
+
+      if (typeof model.topK === "number")
+        topK
+          .val(model.topK)
+          .setMax(100)
+          .setMin(0)
+          .setStep(1)
+          .enable()
+          .trigger("input");
+      else topK.reset().disable();
+    };
+
+    modelSelector.on("change", function () {
+      const model = tinyAi.getModelData(modelSelector.val());
+      if (model) insertDefaultSettings(model);
+      else {
+        tokenCount.total.text(0);
+        temperature.reset().disable();
+        outputLength.val(0).prop("disabled", true).addClass("disabled");
+        topP.reset().disable();
+        topK.reset().disable();
+        presencePenalty.reset().disable();
+        frequencyPenalty.reset().disable();
+      }
+    });
+
+    // Load more models
+    const loadMoreModels = createButtonSidebar(
+      "fa-solid fa-bars-progress",
+      "Load more models",
+      async () => {
+        $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
+        await tinyAi.getModels(100);
+
+        if (!tinyAi._nextModelsPageToken) {
+          loadMoreModels.addClass("disabled");
+          loadMoreModels.prop("disabled", true);
+        }
+
+        updateModelList();
+        $.LoadingOverlay("hide");
+      },
+      !tinyAi._nextModelsPageToken,
+    );
 
     const sidebarRight = $("<div>", sidebarStyle).append(
       $("<ul>", { class: "list-unstyled" }).append(
@@ -819,12 +1104,19 @@ const AiScriptStart = () => {
 
         $("<hr/>", { class: "m-2" }),
 
+        // Load more models
+        loadMoreModels,
+
         // Reset Settings
         createButtonSidebar(
           "fa-solid fa-rotate-right",
           "Reset default settings",
           () => {
-            console.log("test");
+            const model = tinyAi.getModelData(modelSelector.val());
+            if (model) {
+              temperature.val(1);
+              insertDefaultSettings(model);
+            }
           },
         ),
       ),
@@ -849,6 +1141,8 @@ const AiScriptStart = () => {
       style: "margin-bottom: 55px !important;",
     });
 
+    const addMessage = (item) => msgList.append(item);
+
     // Message Maker
     const makeMessage = (message = null, username = null) =>
       $("<div>", {
@@ -866,9 +1160,9 @@ const AiScriptStart = () => {
     // Example test
     const msgExamples = () => {
       // Message from the bot
-      msgList.append(makeMessage("Hello! How can I assist you today?", "Bot"));
+      addMessage(makeMessage("Hello! How can I assist you today?", "Bot"));
       // Message from the user
-      msgList.append(makeMessage("I have a question about your services."));
+      addMessage(makeMessage("I have a question about your services."));
     };
 
     // Container
@@ -896,83 +1190,51 @@ const AiScriptStart = () => {
     );
 
     // Enable Read Only
+    const enableModelReadOnly = (isEnabled = true) => {
+      modelSelector.prop("disabled", isEnabled);
+      outputLength.prop("disabled", isEnabled);
+
+      temperature[isEnabled ? "disable" : "enable"]();
+      topP[isEnabled ? "disable" : "enable"]();
+      topK[isEnabled ? "disable" : "enable"]();
+      presencePenalty[isEnabled ? "disable" : "enable"]();
+      frequencyPenalty[isEnabled ? "disable" : "enable"]();
+
+      if (isEnabled) {
+        modelSelector.addClass("disabled");
+        outputLength.addClass("disabled");
+      } else {
+        modelSelector.removeClass("disabled");
+        outputLength.removeClass("disabled");
+      }
+    };
+
     const enableReadOnly = (isEnabled = true) => {
       msgSubmit.prop("disabled", isEnabled);
       msgInput.prop("disabled", isEnabled);
-      outputLength.prop("disabled", isEnabled);
-
-      temperature[1].prop("disabled", isEnabled);
-      temperature[2].prop("disabled", isEnabled);
-
-      topP[1].prop("disabled", isEnabled);
-      topP[2].prop("disabled", isEnabled);
-
-      topK[1].prop("disabled", isEnabled);
-      topK[2].prop("disabled", isEnabled);
-
-      presencePenalty[1].prop("disabled", isEnabled);
-      presencePenalty[2].prop("disabled", isEnabled);
-
-      frequencyPenalty[1].prop("disabled", isEnabled);
-      frequencyPenalty[2].prop("disabled", isEnabled);
 
       if (isEnabled) {
         msgInput.addClass("disabled");
         msgSubmit.addClass("disabled");
-        outputLength.addClass("disabled");
-
-        temperature[1].addClass("disabled");
-        temperature[2].addClass("disabled");
-
-        topP[1].addClass("disabled");
-        topP[2].addClass("disabled");
-
-        topK[1].addClass("disabled");
-        topK[2].addClass("disabled");
-
-        presencePenalty[1].addClass("disabled");
-        presencePenalty[2].addClass("disabled");
-
-        frequencyPenalty[1].addClass("disabled");
-        frequencyPenalty[2].addClass("disabled");
       } else {
         msgInput.removeClass("disabled");
         msgSubmit.removeClass("disabled");
-        outputLength.removeClass("disabled");
-
-        temperature[1].removeClass("disabled");
-        temperature[2].removeClass("disabled");
-
-        topP[1].removeClass("disabled");
-        topP[2].removeClass("disabled");
-
-        topK[1].removeClass("disabled");
-        topK[2].removeClass("disabled");
-
-        presencePenalty[1].removeClass("disabled");
-        presencePenalty[2].removeClass("disabled");
-
-        frequencyPenalty[1].removeClass("disabled");
-        frequencyPenalty[2].removeClass("disabled");
       }
     };
 
     // Clear Messages
     const clearMessages = () => msgList.empty();
-
     enableReadOnly();
 
     // Welcome
-    msgList.append(
-      makeMessage(`Welcome to Pony Driland's chatbot!`, "Website"),
-    );
-    msgList.append(
+    addMessage(makeMessage(`Welcome to Pony Driland's chatbot!`, "Website"));
+    addMessage(
       makeMessage(
         `You need to choose what you would like to do here and let's start the conversation`,
         "Website",
       ),
     );
-    msgList.append(
+    addMessage(
       makeMessage(
         `The chat will not work until you choose an activity to do here`,
         "Website",
@@ -980,7 +1242,9 @@ const AiScriptStart = () => {
     );
 
     // Complete
+    updateModelList();
     $("#markdown-read").append(container);
+    $.LoadingOverlay("hide");
   };
 
   // Complete
