@@ -1,10 +1,7 @@
 const setGoogleAi = (
   tinyGoogleAI,
   GEMINI_API_KEY,
-  MODEL_DATA = {
-    id: "gemini-1.5-flash",
-    name: "models/gemini-1.5-flash-001",
-  },
+  MODEL_DATA = "gemini-1.5-flash-001",
 ) => {
   const apiUrl = "https://generativelanguage.googleapis.com/v1beta";
   tinyGoogleAI.setApiKey(GEMINI_API_KEY);
@@ -91,7 +88,7 @@ const setGoogleAi = (
     (apiKey, isStream, data) =>
       new Promise((resolve, reject) =>
         fetch(
-          `${apiUrl}/models/${tinyGoogleAI.getModel().id}:${!isStream ? "generateContent" : "streamGenerateContent"}?key=${encodeURIComponent(apiKey)}`,
+          `${apiUrl}/models/${tinyGoogleAI.getModel()}:${!isStream ? "generateContent" : "streamGenerateContent"}?key=${encodeURIComponent(apiKey)}`,
           {
             method: "POST",
             headers: {
@@ -203,7 +200,7 @@ const setGoogleAi = (
           },
           body: JSON.stringify(
             requestBuilder(data, {
-              model: tinyGoogleAI.getModel().name,
+              model: `models/${tinyGoogleAI.getModel()}`,
               name: cacheName,
             }),
           ),
@@ -284,8 +281,9 @@ const setGoogleAi = (
 
               for (const index in result.models) {
                 const newModel = {
+                  _response: result.models[index],
                   name: result.models[index].name,
-                  id: result.models[index].baseModelId,
+                  id: result.models[index].name.substring(7),
                   displayName: result.models[index].displayName,
                   version: result.models[index].version,
                   description: result.models[index].description,
@@ -298,12 +296,6 @@ const setGoogleAi = (
                   supportedGenerationMethods:
                     result.models[index].supportedGenerationMethods,
                 };
-
-                if (!newModel.id) {
-                  newModel.id = newModel.name;
-                  if (!newModel.id.endsWith(`-${newModel.version}`))
-                    newModel.id += `-${newModel.version}`;
-                }
 
                 const inserted = tinyGoogleAI._insertNewModel(newModel);
                 if (inserted) finalData.newData.push(inserted);
