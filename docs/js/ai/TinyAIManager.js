@@ -532,8 +532,6 @@ const AiScriptStart = () => {
     aiLogin = newAiLogin;
   };
 
-  appData.ai.api = tinyAi;
-
   // Detect Using AI
   appData.emitter.on("isUsingAI", (usingAI) => {
     if (usingAI) {
