@@ -348,10 +348,16 @@ const insertMarkdownFile = function (text, isMainPage = false, isHTML = false) {
         })
         .on("click", function () {
           const imgSize = $(this).data("image-size");
+          const imgData = { src: $(this).attr("src") };
+          if (imgSize) {
+            imgData.h = imgSize?.height;
+            imgData.w = imgSize?.width;
+          }
+
           const gallery = new PhotoSwipe(
             pswpElement,
             PhotoSwipeUI_Default,
-            [{ src: $(this).attr("src"), h: imgSize.height, w: imgSize.width }],
+            [imgData],
             { index: 0 },
           );
           gallery.init();
