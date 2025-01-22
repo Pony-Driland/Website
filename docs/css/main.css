@@ -530,6 +530,43 @@ body.is-using-ai #app {
     color: #f0f0f0;
 }
 
-#ai-login {
-    display: none !important;
+#ai-chatbox .ai-text-editor {
+  text-align: end;
+  margin-bottom: -31px;
+  position: relative;
+  top: -31px;
+  right: 8px;
+}
+
+#ai-chatbox .ai-chat-data {
+  border: 1px solid transparent;
+}
+
+#ai-chatbox .ai-chat-data:hover {
+  border-color: #fff;
+}
+
+#ai-chatbox .ai-chat-data .ai-text-editor {
+  display: none;
+}
+
+#ai-chatbox .ai-chat-data:hover .ai-text-editor {
+  display: block;
+}
+
+#ai-chatbox .ai-chat-data:hover .btn-bg  {
+  background-color: #1d1d1d;
+}
+
+#ai-chatbox .ai-chat-data:hover .btn-bg:hover {
+  background-color: #383838;
+}
+
+#ai-chatbox .ai-chat-data p:last-child,
+#ai-chatbox .ai-chat-data h1:last-child,
+#ai-chatbox .ai-chat-data h2:last-child,
+#ai-chatbox .ai-chat-data h3:last-child,
+#ai-chatbox .ai-chat-data h4:last-child,
+#ai-chatbox .ai-chat-data h5:last-child {
+  margin-bottom: 0px;
 }

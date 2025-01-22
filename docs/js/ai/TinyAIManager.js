@@ -9,9 +9,7 @@ class TinyAIManager {
     // History
     this._selectedHistory = null;
     this.history = {};
-
-    // Cache
-    this.cache = {};
+    this._historyIds = 0;
 
     // Models
     this.models = [];
@@ -40,8 +38,6 @@ class TinyAIManager {
         if (typeof data.mime_type === "string" && typeof data.data === "string")
           return data;
         return null;
-        // mime_type: "text/plain",
-        // data: "'$(base64 $B64FLAGS a11.txt)'"
       },
     };
   }
@@ -187,7 +183,8 @@ class TinyAIManager {
     } else if (item.content) insertPart(item.content);
 
     // Complete
-    contents.push(contentData);
+    if (contents) return contents.push(contentData);
+    return contentData;
   }
 
   // API Key
@@ -311,30 +308,6 @@ class TinyAIManager {
     return newCache;
   }
 
-  // Server Cache
-  _insertCache(name, data) {
-    this.cache[name] = this._createContentData(data);
-    return this.cache[name];
-  }
-
-  getCache(name) {
-    return this.cache[name] || null;
-  }
-
-  _setInsertServerCache(value) {
-    this._insertServerCache = typeof value === "function" ? value : null;
-  }
-
-  insertServerCache(name, data) {
-    if (typeof this._insertServerCache === "function")
-      return this._insertServerCache(this.#_apiKey, name, data);
-    throw new Error("No insert cache api script defined.");
-  }
-
-  _setGetServerCache(value) {
-    this._getServerCache = typeof value === "function" ? value : null;
-  }
-
   // Fetch API
   _setGenContent(callback) {
     this._genContentApi = typeof callback === "function" ? callback : null;
@@ -365,21 +338,73 @@ class TinyAIManager {
     return false;
   }
 
+  getHistoryId() {
+    return this._selectedHistory;
+  }
+
   getHistory(id) {
     return this.history[id || this._selectedHistory] || null;
   }
 
   getHistoryIndex(index, id) {
     const history = this.getHistory(id);
-    if (history && history[index]) return history[index];
+    if (history && history.data[index]) return history.data[index];
+    return null;
+  }
+
+  getHistoryIndexById(msgId, id) {
+    const history = this.getHistory(id);
+    if (history) return history.ids.indexOf(msgId);
+    return -1;
+  }
+
+  getHistoryDataIdByIndex(index, id) {
+    const history = this.getHistory(id);
+    if (history) return history.data[index] ? history.ids[index] : -1;
+    return -1;
+  }
+
+  deleteHistoryIndex(index, id) {
+    const history = this.getHistory(id);
+    if (history && history.data[index]) {
+      history.data.splice(index, 1);
+      history.ids.splice(index, 1);
+      return true;
+    }
+    return false;
+  }
+
+  replaceHistoryIndex(index, data, id) {
+    const history = this.getHistory(id);
+    if (history && history.data[index]) {
+      history.data[index] = data;
+      return true;
+    }
+    return false;
+  }
+
+  getLastHistoryIndex(id) {
+    const history = this.getHistory(id);
+    if (history && history.data[history.data.length - 1])
+      return history.data.length - 1;
+    return -1;
+  }
+
+  getLastHistoryIndexData(id) {
+    const history = this.getHistory(id);
+    if (history && history.data[history.data.length - 1])
+      return history.data[history.data.length - 1];
     return null;
   }
 
   addHistoryData(data, id) {
     const selectedId = id || this._selectedHistory;
     if (this.history[selectedId]) {
+      const newId = this._historyIds;
+      this._historyIds++;
       this.history[selectedId].data.push(data);
-      return;
+      this.history[selectedId].ids.push(newId);
+      return newId;
     }
     throw new Error("Invalid history id data!");
   }
@@ -393,6 +418,17 @@ class TinyAIManager {
     throw new Error("Invalid history id data!");
   }
 
+  getHistorySystemInstruction(id) {
+    const selectedId = id || this._selectedHistory;
+    if (
+      this.history[selectedId] &&
+      typeof this.history[selectedId].systemInstruction === "string"
+    ) {
+      return this.history[selectedId].systemInstruction;
+    }
+    return null;
+  }
+
   setHistoryModel(data, id) {
     const selectedId = id || this._selectedHistory;
     if (this.history[selectedId] && typeof data === "string") {
@@ -403,7 +439,12 @@ class TinyAIManager {
   }
 
   startHistory(id, selected = false) {
-    this.history[id] = { data: [], systemInstruction: null, model: null };
+    this.history[id] = {
+      data: [],
+      ids: [],
+      systemInstruction: null,
+      model: null,
+    };
     if (selected) this.selectHistory(id);
     return this.history[id];
   }
@@ -631,7 +672,7 @@ const AiScriptStart = () => {
 
     // Token Count
     const tokenCount = {
-      amount: $("<span>").text("0"),
+      amount: $("<span>").data("token-count", 0).text("0"),
       total: $("<span>").text("0"),
     };
 
@@ -823,20 +864,149 @@ const AiScriptStart = () => {
         tinyAi.setFrequencyPenalty(convertToNumber(frequencyPenalty.val())),
       );
 
+    // Get fic cache
+    const getFicCache = (id, instructionId, introduction, newContent) => {
+      newContent()
+        .then((ficData) => {
+          // Start chatbot script
+          if (!tinyAi.selectHistory(id)) {
+            // Start History
+            tinyAi.startHistory(id, true);
+            // Set Model
+            tinyAi.setHistoryModel(tinyAi.getModel());
+
+            // Set Instruction
+            tinyAi.setHistorySystemInstruction(
+              aiTemplates.instructions[instructionId],
+            );
+
+            // Add first data
+            tinyAi.addHistoryData({
+              role: "user",
+              parts: [
+                {
+                  inlineData: {
+                    mime_type: ficData.mime,
+                    data: Base64.encode(ficData.data),
+                  },
+                },
+              ],
+            });
+          }
+
+          // Clear data and start system
+          clearMessages();
+          enableReadOnly(false);
+          addMessage(
+            makeMessage({ message: introduction, tokens: 0 }, "Introduction"),
+          );
+
+          insertImportData(tinyAi.getHistory().data, true);
+        })
+        .catch((err) => {
+          console.error(err);
+          alert(err.message);
+          $.LoadingOverlay("hide");
+        });
+    };
+
+    // Import button
+    const importButton = $("<input>", {
+      type: "file",
+      accept: ".json",
+      style: "display: none;",
+    });
+
+    const insertImportData = (data, readOnly = false) => {
+      // Insert data
+      if (Array.isArray(data)) {
+        for (const index in data) {
+          const indexId = !readOnly
+            ? tinyAi.addHistoryData(
+                tinyAi._buildContents(null, data[index], data[index].role),
+              )
+            : tinyAi.getHistoryDataIdByIndex(index);
+
+          const msg = !readOnly
+            ? tinyAi.getLastHistoryIndexData()
+            : data[index];
+          if (
+            msg &&
+            msg.parts &&
+            msg.parts[0] &&
+            typeof msg.parts[0].text === "string"
+          ) {
+            addMessage(
+              makeMessage(
+                {
+                  message: msg.parts[0].text,
+                  tokens: 0,
+                  index: indexId,
+                },
+                msg.role === "user" ? null : tinyLib.toTitleCase(msg.role),
+              ),
+            );
+          }
+        }
+      }
+    };
+
+    importButton.on("change", (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          try {
+            // Read data
+            const jsonData = JSON.parse(e.target.result);
+            if (jsonData.file && typeof jsonData.id === "string") {
+              // Start History
+              tinyAi.startHistory(jsonData.id, true);
+
+              // Set model
+              if (typeof jsonData.file.model === "string") {
+                modelSelector.val(jsonData.file.model);
+                tinyAi.setHistoryModel(jsonData.file.model);
+                selectModel(jsonData.file.model);
+              }
+
+              // Set Instruction
+              tinyAi.setHistorySystemInstruction(
+                jsonData.file.systemInstruction,
+              );
+
+              // Clear messages
+              clearMessages();
+              enableReadOnly(false);
+
+              // Complete
+              insertImportData(jsonData.file.data);
+            }
+          } catch (err) {
+            console.error(err);
+            alert(err.message);
+          }
+        };
+
+        reader.readAsText(file);
+      }
+    });
+
     // Left
     const sidebarLeft = $("<div>", sidebarStyle).append(
       $("<ul>", { class: "list-unstyled" }).append(
         $("<li>", { class: "mb-3" }).append(
           // Templates
-          $("<h5>").text("Chatbots"),
+          $("<h5>").text("Templates"),
 
-          createButtonSidebar(
-            "fa-solid fa-server",
-            "Main",
-            () => {
-              console.log("test");
-            },
-            true,
+          // Fic Talk
+          createButtonSidebar("fa-solid fa-server", "Fic Talk", () =>
+            getFicCache(
+              "ficTalk",
+              "talkToFic",
+              "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic, but be careful, because I will answer questions related to literally anything that happened in fic, including censored scenes.",
+              async () => saveRoleplayFormat(null, false),
+            ),
           ),
 
           // System Instructions
@@ -845,9 +1015,11 @@ const AiScriptStart = () => {
             "fa-solid fa-toolbox",
             "System Instructions",
             () => {
-              console.log("test");
+              alert(
+                tinyAi.getHistorySystemInstruction(),
+                "System Instructions",
+              );
             },
-            true,
           ),
 
           // Prompt
@@ -861,25 +1033,26 @@ const AiScriptStart = () => {
           ),
 
           // Import
-          createButtonSidebar(
-            "fa-solid fa-file-import",
-            "Import",
-            () => {
-              console.log("test");
-            },
-            true,
+          createButtonSidebar("fa-solid fa-file-import", "Import", () =>
+            importButton.trigger("click"),
           ),
+
+          importButton,
 
           // Export
-          createButtonSidebar(
-            "fa-solid fa-file-export",
-            "Export",
-            () => {
-              console.log("test");
-            },
-            true,
-          ),
+          createButtonSidebar("fa-solid fa-file-export", "Export", () => {
+            const exportData = {
+              file: tinyAi.getHistory(),
+              id: tinyAi.getHistoryId(),
+            };
 
+            saveAs(
+              new Blob([JSON.stringify(exportData)], { type: "text/plain" }),
+              `Pony Driland - ${tinyAi.getHistoryId()} - AI Export.json`,
+            );
+          }),
+
+          // Tiny information
           $("<hr/>", { class: "border-white" }),
           $("<div>", { class: "small text-grey" }).text(
             "AI makes mistakes, so double-check it. AI does not replace the fic literature.",
@@ -1060,14 +1233,12 @@ const AiScriptStart = () => {
       else topK.reset().disable();
     };
 
-    modelSelector.on("change", function () {
-      const model = tinyAi.getModelData(modelSelector.val());
+    const selectModel = (newModel) => {
+      const model = tinyAi.getModelData(newModel);
       if (model) {
         insertDefaultSettings(model);
-        localStorage.setItem(
-          "tiny-ai-storage-model-selected",
-          modelSelector.val(),
-        );
+        localStorage.setItem("tiny-ai-storage-model-selected", newModel);
+        if (tinyAi.getHistory()) tinyAi.setHistoryModel(newModel);
       } else {
         tokenCount.total.text(0);
         temperature.reset().disable();
@@ -1078,7 +1249,9 @@ const AiScriptStart = () => {
         frequencyPenalty.reset().disable();
         localStorage.removeItem("tiny-ai-storage-model-selected");
       }
-    });
+    };
+
+    modelSelector.on("change", () => selectModel(modelSelector.val()));
 
     // Load more models
     const loadMoreModels = createButtonSidebar(
@@ -1131,6 +1304,55 @@ const AiScriptStart = () => {
       ),
     );
 
+    // Execute messages
+    const executeAi = () =>
+      new Promise((resolve, reject) => {
+        const history = tinyAi.getHistory();
+        const content = [
+          {
+            role: "system",
+            parts: [{ text: history.systemInstruction }],
+          },
+        ];
+        for (const index in history.data) {
+          content.push(history.data[index]);
+        }
+
+        tinyAi
+          .genContent(content)
+          .then((result) => {
+            console.log(result);
+            tokenCount.amount
+              .data("token-count", result.tokenUsage.count.total)
+              .text(result.tokenUsage.count.total);
+            for (const index in result.contents) {
+              const msg = result.contents[index];
+
+              if (
+                msg &&
+                msg.parts &&
+                msg.parts[0] &&
+                typeof msg.parts[0].text === "string" &&
+                msg.parts[0].text.length > 0
+              ) {
+                const indexId = tinyAi.addHistoryData(msg);
+                addMessage(
+                  makeMessage(
+                    {
+                      message: msg.parts[0].text,
+                      tokens: 0,
+                      index: indexId,
+                    },
+                    msg.role === "user" ? null : tinyLib.toTitleCase(msg.role),
+                  ),
+                );
+              }
+            }
+            resolve(result);
+          })
+          .catch(reject);
+      });
+
     // Input
     const msgInput = $("<input>", {
       type: "text",
@@ -1144,47 +1366,172 @@ const AiScriptStart = () => {
       text: "Send",
     });
 
+    msgSubmit.on("click", async () => {
+      // Prepare to get data
+      $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
+      msgInput.blur();
+      const msg = msgInput.val();
+
+      // Add new message
+      if (typeof msg === "string" && msg.length > 0) {
+        const indexId = tinyAi.addHistoryData(
+          tinyAi._buildContents(
+            null,
+            {
+              role: "user",
+              parts: [{ text: msg }],
+            },
+            "user",
+          ),
+        );
+        addMessage(
+          makeMessage({
+            message: msg,
+            tokens: 0,
+            index: indexId,
+          }),
+        );
+      }
+
+      // Execute Ai
+      await executeAi().catch((err) => {
+        console.error(err);
+        alert(err.message);
+      });
+
+      // Complete
+      msgInput.val("");
+      msgInput.focus();
+      $.LoadingOverlay("hide");
+    });
+
+    msgInput.on("keydown", function (event) {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        msgSubmit.trigger("click");
+      }
+    });
+
     // Message List
     const msgList = $("<div>", {
       class: "p-3",
       style: "margin-bottom: 55px !important;",
     });
 
-    const addMessage = (item) => msgList.append(item);
+    const addMessage = (item) => {
+      msgList.append(item);
+      chatContainer.animate(
+        {
+          scrollTop: chatContainer.prop("scrollHeight"),
+        },
+        300,
+      );
+    };
 
     // Message Maker
-    const makeMessage = (message = null, username = null) =>
-      $("<div>", {
-        class: `mb-3${typeof username !== "string" ? " d-flex flex-column align-items-end" : ""}`,
-      }).append(
-        $("<div>", {
-          class: `bg-${typeof username === "string" ? "secondary d-inline-block" : "primary"} text-white p-2 rounded`,
-        }).append($("<span>").text(message)),
+    const makeMessage = (
+      data = { message: null, tokens: 0, index: -1 },
+      username = null,
+    ) => {
+      // Prepare renderer
+      let msgData = data.message;
+      const renderer = new marked.Renderer();
+      const msgBase = $("<div>", {
+        class: `p-3${typeof username !== "string" ? " d-flex flex-column align-items-end" : ""} ai-chat-data`,
+      });
+
+      const msgBallon = $("<div>", {
+        class: `bg-${typeof username === "string" ? "secondary d-inline-block" : "primary"} text-white p-2 rounded`,
+      });
+
+      const isIgnore = typeof data.index !== "number" || data.index < 0;
+      const tinyIndex = tinyAi.getHistoryIndexById(data.index);
+
+      // Remove links
+      renderer.link = (href, title, text) => `<span>${text}</span>`;
+
+      // Edit message panel
+      const editPanel = $("<div>", { class: "ai-text-editor" });
+      editPanel.append(
+        // Delete button
+        $("<button>", { class: "btn btn-sm btn-bg" })
+          .append($("<i>", { class: "fa-solid fa-trash-can" }))
+          .on("click", () => {
+            const tinyIndex = tinyAi.getHistoryIndexById(data.index);
+            if (!isIgnore && tinyIndex > -1) {
+              tinyAi.deleteHistoryIndex(tinyIndex);
+              const amount = tokenCount.amount.data("token-count");
+              tokenCount.amount.data("token-count", amount - data.tokens);
+              tokenCount.amount.text(amount - data.tokens);
+            }
+
+            msgBase.remove();
+          }),
+
+        // Edit button
+        !isIgnore && tinyIndex > -1
+          ? $("<button>", { class: "btn btn-sm btn-bg" })
+              .append($("<i>", { class: "fa-solid fa-pen-to-square" }))
+              .on("click", () => {
+                // Text
+                const textInput = $("<textarea>", { class: "form-control" });
+                textInput.val(msgData);
+
+                // Submit
+                const submitButton = $("<button>", {
+                  class: `btn btn-${typeof username !== "string" ? "secondary d-inline-block" : "primary"} mt-2`,
+                  text: "Submit",
+                });
+
+                submitButton.on("click", () => {
+                  msgData = textInput.val();
+                  const newContent = tinyAi.getHistoryIndex(tinyIndex);
+                  newContent.parts[0].text = msgData;
+                  tinyAi.replaceHistoryIndex(tinyIndex, newContent);
+                  msgBallon.removeClass("w-100").empty();
+                  msgBallon.append(
+                    marked.parse(msgData, { renderer: renderer }),
+                  );
+                });
+
+                // Complete
+                msgBallon
+                  .empty()
+                  .addClass("w-100")
+                  .append(
+                    textInput,
+                    $("<div>", { class: "d-grid gap-2 col-6 mx-auto" }).append(
+                      submitButton,
+                    ),
+                  );
+              })
+          : null,
+      );
+
+      // Send message
+      return msgBase.append(
+        editPanel,
+        msgBallon.append(marked.parse(msgData, { renderer: renderer })),
         $("<div>", {
           class: `text-muted small mt-1${typeof username !== "string" ? " text-end" : ""}`,
           text: typeof username === "string" ? username : "User",
         }),
       );
-
-    // Example test
-    const msgExamples = () => {
-      // Message from the bot
-      addMessage(makeMessage("Hello! How can I assist you today?", "Bot"));
-      // Message from the user
-      addMessage(makeMessage("I have a question about your services."));
     };
 
     // Container
+    const chatContainer = $("<div>", {
+      id: "ai-chatbox",
+      class: "h-100 body-background",
+      style: "overflow-y: auto; margin-bottom: -54px;",
+    });
     const container = $("<div>", { class: "d-flex h-100 y-100" }).append(
       sidebarLeft,
       // Main container
       $("<div>", { class: "flex-grow-1 d-flex flex-column" }).append(
         $("<div>", { class: "justify-content-center h-100" }).append(
           // Chat Messages Area
-          $("<div>", {
-            class: "h-100 body-background",
-            style: "overflow-y: auto; margin-bottom: -54px;",
-          }).append(msgList),
+          chatContainer.append(msgList),
 
           // Input Area
           $("<div>", { class: "px-3 d-inline-block w-100" }).append(
@@ -1236,16 +1583,30 @@ const AiScriptStart = () => {
     enableReadOnly();
 
     // Welcome
-    addMessage(makeMessage(`Welcome to Pony Driland's chatbot!`, "Website"));
     addMessage(
       makeMessage(
-        `You need to choose what you would like to do here and let's start the conversation`,
+        {
+          message: `Welcome to Pony Driland's chatbot!`,
+          tokens: 0,
+        },
         "Website",
       ),
     );
     addMessage(
       makeMessage(
-        `The chat will not work until you choose an activity to do here`,
+        {
+          message: `You need to choose what you would like to do here and let's start the conversation`,
+          tokens: 0,
+        },
+        "Website",
+      ),
+    );
+    addMessage(
+      makeMessage(
+        {
+          message: `The chat will not work until you choose an activity to do here`,
+          tokens: 0,
+        },
         "Website",
       ),
     );

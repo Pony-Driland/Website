@@ -71,7 +71,7 @@ const renderRoleplayFormat = (chapter) => {
   return data;
 };
 
-const saveRoleplayFormat = (chapter) => {
+const saveRoleplayFormat = (chapter, saveAsFile = true) => {
   let file = "";
 
   const insertChapter = (cpId) => {
@@ -122,10 +122,12 @@ const saveRoleplayFormat = (chapter) => {
     info += `\nBNB Donations: ${storyCfg.bnb.address}`;
   }
 
-  saveAs(
-    new Blob([`${info}\n\n${file}`], { type: "text/plain" }),
-    `Pony Driland${!chapter ? "" : ` - Chapter ${chapter}`}.txt`,
-  );
+  if (saveAsFile)
+    saveAs(
+      new Blob([`${info}\n\n${file}`], { type: "text/plain" }),
+      `Pony Driland${!chapter ? "" : ` - Chapter ${chapter}`}.txt`,
+    );
+  else return { data: `${info}\n\n${file}`, mime: "text/plain" };
 };
 
 const dice = {
