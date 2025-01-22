@@ -1358,7 +1358,7 @@ const AiScriptStart = () => {
               .find(".ai-msg-ballon")
               .empty()
               .append(marked.parse(msgData, { renderer: renderer }));
-            scrollChatContainerToTop(0);
+            scrollChatContainerToTop();
           }
         };
 
@@ -1527,7 +1527,7 @@ const AiScriptStart = () => {
       style: "margin-bottom: 55px !important;",
     });
 
-    const scrollChatContainerToTop = (speed = 300) =>
+    const scrollChatContainerToTop = (speed = 0) =>
       chatContainer.animate(
         {
           scrollTop: chatContainer.prop("scrollHeight"),
