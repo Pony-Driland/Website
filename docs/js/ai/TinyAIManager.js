@@ -621,6 +621,7 @@ const AiScriptStart = () => {
 
   // Open AI Page
   tinyAiScript.open = async () => {
+    tinyNotification.requestPerm();
     // Update Url
     urlUpdate("ai");
 
@@ -867,11 +868,17 @@ const AiScriptStart = () => {
       );
 
     // Get fic cache
-    const getFicCache = (id, instructionId, introduction, newContent) => {
+    const getFicCache = (
+      id,
+      instructionId,
+      introduction,
+      newContent,
+      forceReset = false,
+    ) => {
       newContent()
         .then((ficData) => {
           // Start chatbot script
-          if (!tinyAi.selectHistory(id)) {
+          if (forceReset || !tinyAi.selectHistory(id)) {
             // Start History
             tinyAi.startHistory(id, true);
             // Set Model
@@ -994,16 +1001,59 @@ const AiScriptStart = () => {
       }
     });
 
+    const ficConfigs = {
+      data: [
+        {
+          title: "Fic Talk",
+          id: "ficTalk",
+          template: "talkToFic",
+          icon: "fa-solid fa-server",
+          intro:
+            "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic, but be careful, because I will answer questions related to literally anything that happened in fic, including censored scenes. Sadly I’m not made for roleplay, but I can try.",
+          getData: async () => saveRoleplayFormat(null, false),
+        },
+      ],
+      selected: null,
+    };
+
     const ficTemplates = [
-      createButtonSidebar("fa-solid fa-server", "Fic Talk", () =>
-        getFicCache(
-          "ficTalk",
-          "talkToFic",
-          "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic, but be careful, because I will answer questions related to literally anything that happened in fic, including censored scenes. Sadly I’m not made for roleplay, but I can try.",
-          async () => saveRoleplayFormat(null, false),
-        ),
-      ),
+      createButtonSidebar("fa-solid fa-arrows-rotate", "Reset History", () => {
+        const index = ficConfigs.data.findIndex(
+          (item) => item.id === ficConfigs.selected,
+        );
+        if (index > -1) {
+          getFicCache(
+            ficConfigs.data[index].id,
+            ficConfigs.data[index].template,
+            ficConfigs.data[index].intro,
+            () => {
+              ficConfigs.selected = ficConfigs.data[index].id;
+              return ficConfigs.data[index].getData();
+            },
+            true,
+          );
+        }
+      }),
     ];
+
+    for (const index in ficConfigs.data) {
+      ficTemplates.push(
+        createButtonSidebar(
+          ficConfigs.data[index].icon,
+          ficConfigs.data[index].title,
+          () =>
+            getFicCache(
+              ficConfigs.data[index].id,
+              ficConfigs.data[index].template,
+              ficConfigs.data[index].intro,
+              () => {
+                ficConfigs.selected = ficConfigs.data[index].id;
+                return ficConfigs.data[index].getData();
+              },
+            ),
+        ),
+      );
+    }
 
     const importAndExport = [
       // Import
@@ -1394,7 +1444,12 @@ const AiScriptStart = () => {
               msgBallon.addClass("entering-ai-message");
             }
             // Remove class
-            else msgBallon.removeClass("entering-ai-message");
+            else {
+              msgBallon.removeClass("entering-ai-message");
+              const ballonCache = msgBallon.data("tiny-ai-cache");
+              if (ballonCache && $("body").hasClass("windowHidden"))
+                tinyNotification.send(ballonCache.role, ballonCache.msg);
+            }
           })
           .then((result) => {
             if (!result.error) {
@@ -1553,7 +1608,11 @@ const AiScriptStart = () => {
       username = null,
     ) => {
       // Prepare renderer
-      const tinyCache = { msg: data.message };
+      const tinyCache = {
+        msg: data.message,
+        role: username ? tinyLib.toTitleCase(username) : "User",
+      };
+
       const renderer = makeMsgRenderer();
       const msgBase = $("<div>", {
         class: `p-3${typeof username !== "string" ? " d-flex flex-column align-items-end" : ""} ai-chat-data`,
@@ -1596,8 +1655,13 @@ const AiScriptStart = () => {
 
                 // Submit
                 const submitButton = $("<button>", {
-                  class: `btn btn-${typeof username !== "string" ? "secondary d-inline-block" : "primary"} mt-2`,
+                  class: `w-100 me-2 btn btn-${typeof username !== "string" ? "secondary d-inline-block" : "primary"} mt-2`,
                   text: "Submit",
+                });
+
+                const cancelButton = $("<button>", {
+                  class: `w-100 btn btn-${typeof username !== "string" ? "secondary d-inline-block" : "primary"} mt-2`,
+                  text: "Cancel",
                 });
 
                 submitButton.on("click", () => {
@@ -1611,14 +1675,22 @@ const AiScriptStart = () => {
                   );
                 });
 
+                cancelButton.on("click", () => {
+                  msgBallon.removeClass("w-100").empty();
+                  msgBallon.append(
+                    marked.parse(tinyCache.msg, { renderer: renderer }),
+                  );
+                });
+
                 // Complete
                 msgBallon
                   .empty()
                   .addClass("w-100")
                   .append(
                     textInput,
-                    $("<div>", { class: "d-grid gap-2 col-6 mx-auto" }).append(
+                    $("<div>", { class: "d-flex mx-5" }).append(
                       submitButton,
+                      cancelButton,
                     ),
                   );
               })
