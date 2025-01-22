@@ -330,7 +330,7 @@ const insertMarkdownFile = function (text, isMainPage = false, isHTML = false) {
         .css({
           cursor: "pointer",
           opacity: "0%",
-          "pointer-events": "",
+          "pointer-events": "none",
         })
         .on("load", function () {
           const newImg = new Image();
