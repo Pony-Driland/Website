@@ -550,7 +550,7 @@ body.is-using-ai #app {
   display: none;
 }
 
-#ai-chatbox .ai-chat-data:hover .ai-text-editor {
+#ai-chatbox .ai-chat-data:not(.entering-ai-message):hover .ai-text-editor {
   display: block;
 }
 

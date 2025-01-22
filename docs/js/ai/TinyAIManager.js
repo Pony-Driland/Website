@@ -996,6 +996,39 @@ const AiScriptStart = () => {
       }
     });
 
+    const ficTemplates = [
+      createButtonSidebar("fa-solid fa-server", "Fic Talk", () =>
+        getFicCache(
+          "ficTalk",
+          "talkToFic",
+          "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic, but be careful, because I will answer questions related to literally anything that happened in fic, including censored scenes.",
+          async () => saveRoleplayFormat(null, false),
+        ),
+      ),
+    ];
+
+    const importAndExport = [
+      // Import
+      createButtonSidebar("fa-solid fa-file-import", "Import", () =>
+        importButton.trigger("click"),
+      ),
+
+      importButton,
+
+      // Export
+      createButtonSidebar("fa-solid fa-file-export", "Export", () => {
+        const exportData = {
+          file: tinyAi.getHistory(),
+          id: tinyAi.getHistoryId(),
+        };
+
+        saveAs(
+          new Blob([JSON.stringify(exportData)], { type: "text/plain" }),
+          `Pony Driland - ${tinyAi.getHistoryId()} - AI Export.json`,
+        );
+      }),
+    ];
+
     // Left
     const sidebarLeft = $("<div>", sidebarStyle).append(
       $("<ul>", { class: "list-unstyled" }).append(
@@ -1004,14 +1037,7 @@ const AiScriptStart = () => {
           $("<h5>").text("Templates"),
 
           // Fic Talk
-          createButtonSidebar("fa-solid fa-server", "Fic Talk", () =>
-            getFicCache(
-              "ficTalk",
-              "talkToFic",
-              "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic, but be careful, because I will answer questions related to literally anything that happened in fic, including censored scenes.",
-              async () => saveRoleplayFormat(null, false),
-            ),
-          ),
+          ficTemplates,
 
           // System Instructions
           $("<h5>").text("Settings"),
@@ -1036,25 +1062,8 @@ const AiScriptStart = () => {
             true,
           ),
 
-          // Import
-          createButtonSidebar("fa-solid fa-file-import", "Import", () =>
-            importButton.trigger("click"),
-          ),
-
-          importButton,
-
-          // Export
-          createButtonSidebar("fa-solid fa-file-export", "Export", () => {
-            const exportData = {
-              file: tinyAi.getHistory(),
-              id: tinyAi.getHistoryId(),
-            };
-
-            saveAs(
-              new Blob([JSON.stringify(exportData)], { type: "text/plain" }),
-              `Pony Driland - ${tinyAi.getHistoryId()} - AI Export.json`,
-            );
-          }),
+          // Import and Export
+          importAndExport,
 
           // Tiny information
           $("<hr/>", { class: "border-white" }),
@@ -1450,42 +1459,61 @@ const AiScriptStart = () => {
     });
 
     msgSubmit.on("click", async () => {
-      // Prepare to get data
-      $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
-      msgInput.blur();
-      const msg = msgInput.val();
+      if (!msgInput.prop("disabled")) {
+        // Prepare to get data
+        msgInput.blur();
+        const msg = msgInput.val();
+        msgInput.val("");
+        enableReadOnly();
+        modelChangerReadOnly();
 
-      // Add new message
-      if (typeof msg === "string" && msg.length > 0) {
-        const indexId = tinyAi.addHistoryData(
-          tinyAi._buildContents(
-            null,
-            {
-              role: "user",
-              parts: [{ text: msg }],
-            },
-            "user",
-          ),
-        );
-        addMessage(
-          makeMessage({
-            message: msg,
-            tokens: 0,
-            index: indexId,
-          }),
-        );
+        let points = ".";
+        let secondsWaiting = -1;
+        const loadingMoment = () => {
+          points += ".";
+          if (points === "...") points = ".";
+
+          secondsWaiting++;
+          msgInput.val(`(${secondsWaiting}s) Waiting response${points}`);
+        };
+        const loadingMessage = setInterval(loadingMoment, 1000);
+        loadingMoment();
+
+        // Add new message
+        if (typeof msg === "string" && msg.length > 0) {
+          const indexId = tinyAi.addHistoryData(
+            tinyAi._buildContents(
+              null,
+              {
+                role: "user",
+                parts: [{ text: msg }],
+              },
+              "user",
+            ),
+          );
+          addMessage(
+            makeMessage({
+              message: msg,
+              tokens: 0,
+              index: indexId,
+            }),
+          );
+        }
+
+        // Execute Ai
+        await executeAi().catch((err) => {
+          console.error(err);
+          alert(err.message);
+        });
+
+        // Complete
+        clearInterval(loadingMessage);
+        msgInput.val("");
+
+        enableReadOnly(false);
+        modelChangerReadOnly(false);
+        msgInput.focus();
       }
-
-      // Execute Ai
-      await executeAi().catch((err) => {
-        console.error(err);
-        alert(err.message);
-      });
-
-      // Complete
-      msgInput.val("");
-      msgInput.focus();
-      $.LoadingOverlay("hide");
     });
 
     msgInput.on("keydown", function (event) {
@@ -1656,17 +1684,25 @@ const AiScriptStart = () => {
       }
     };
 
-    const enableReadOnly = (isEnabled = true) => {
-      msgSubmit.prop("disabled", isEnabled);
-      msgInput.prop("disabled", isEnabled);
-
+    const readOnlyTemplate = (item, isEnabled) => {
+      item.prop("disabled", isEnabled);
       if (isEnabled) {
-        msgInput.addClass("disabled");
-        msgSubmit.addClass("disabled");
+        item.addClass("disabled");
       } else {
-        msgInput.removeClass("disabled");
-        msgSubmit.removeClass("disabled");
+        item.removeClass("disabled");
       }
+    };
+
+    const enableReadOnly = (isEnabled = true) => {
+      readOnlyTemplate(msgSubmit, isEnabled);
+      readOnlyTemplate(msgInput, isEnabled);
+    };
+
+    const modelChangerReadOnly = (isEnabled = true) => {
+      for (const index in ficTemplates)
+        readOnlyTemplate(ficTemplates[index], isEnabled);
+      for (const index in importAndExport)
+        readOnlyTemplate(importAndExport[index], isEnabled);
     };
 
     // Clear Messages
