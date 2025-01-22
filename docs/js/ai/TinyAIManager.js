@@ -1203,8 +1203,8 @@ const AiScriptStart = () => {
       }
     };
 
-    const insertDefaultSettings = (model) => {
-      tinyAi.setModel(modelSelector.val());
+    const insertDefaultSettings = (model, newModel) => {
+      tinyAi.setModel(newModel);
       presencePenalty.disable();
       frequencyPenalty.disable();
 
@@ -1247,7 +1247,7 @@ const AiScriptStart = () => {
     const selectModel = (newModel) => {
       const model = tinyAi.getModelData(newModel);
       if (model) {
-        insertDefaultSettings(model);
+        insertDefaultSettings(model, newModel);
         localStorage.setItem("tiny-ai-storage-model-selected", newModel);
         if (tinyAi.getHistory()) tinyAi.setHistoryModel(newModel);
       } else {
@@ -1308,7 +1308,7 @@ const AiScriptStart = () => {
             const model = tinyAi.getModelData(modelSelector.val());
             if (model) {
               temperature.val(1);
-              insertDefaultSettings(model);
+              insertDefaultSettings(model, modelSelector.val());
             }
           },
         ),
