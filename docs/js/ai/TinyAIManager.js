@@ -1001,7 +1001,7 @@ const AiScriptStart = () => {
         getFicCache(
           "ficTalk",
           "talkToFic",
-          "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic, but be careful, because I will answer questions related to literally anything that happened in fic, including censored scenes.",
+          "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic, but be careful, because I will answer questions related to literally anything that happened in fic, including censored scenes. Sadly I’m not made for roleplay, but I can try.",
           async () => saveRoleplayFormat(null, false),
         ),
       ),
@@ -1068,7 +1068,7 @@ const AiScriptStart = () => {
           // Tiny information
           $("<hr/>", { class: "border-white" }),
           $("<div>", { class: "small text-grey" }).text(
-            "AI makes mistakes, so double-check it. AI does not replace the fic literature.",
+            "AI makes mistakes, so double-check it. AI does not replace the fic literature (Careful! AI can type spoilers!).",
           ),
         ),
       ),
