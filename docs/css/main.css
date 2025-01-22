@@ -502,6 +502,7 @@ body.is-using-ai .page-footer {
 
 body.is-using-ai #root {
   padding-top: 8px;
+  display: flex;
 }
 
 body.is-using-ai #markdown-read {
