@@ -227,16 +227,28 @@ const setGoogleAi = (
                       for (const index2 in tinyData.contents[index].parts) {
                         const item = tinyData.contents[index].parts[index2];
                         if (typeof item.text === "string") {
-                          if (typeof streamCache[index][index2] !== "string")
-                            streamCache[index][index2] = "";
-                          streamCache[index][index2] += item.text;
+                          if (!streamCache[index][index2])
+                            streamCache[index][index2] = {};
+
+                          if (
+                            typeof streamCache[index][index2].text !== "string"
+                          )
+                            streamCache[index][index2].text = "";
+
+                          streamCache[index][index2].text += item.text;
+                          item.text = streamCache[index][index2].text;
+
+                          if (typeof tinyData.contents[index].role === "string")
+                            streamCache[index][index2].role =
+                              tinyData.contents[index].role;
                         }
                       }
                     }
 
                     // Complete
                     streamResult = result;
-                    tinyResult.data = streamCache;
+                    tinyResult.contents = tinyData.contents;
+                    tinyResult.done = false;
                     streamingCallback(tinyResult);
                   }
                 } catch {}
@@ -246,6 +258,7 @@ const setGoogleAi = (
           }
 
           // Complete
+          streamingCallback({ done: true });
           const finalData = finalPromise(streamResult);
           for (const index in finalData.contents) {
             for (const index2 in finalData.contents[index].parts) {
