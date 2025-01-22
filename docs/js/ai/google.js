@@ -21,8 +21,14 @@ const setGoogleAi = (
   };
 
   // Build Request
-  const requestBuilder = (data, config = {}, cache = null) => {
-    const requestBody = { safetySettings: [] };
+  const requestBuilder = (
+    data,
+    config = {},
+    cache = null,
+    cacheMode = false,
+  ) => {
+    const requestBody = {};
+    if (!cacheMode) requestBody.safetySettings = [];
 
     // Model
     if (typeof config.model === "string") requestBody.model = config.model;
@@ -49,31 +55,34 @@ const setGoogleAi = (
     }
 
     // Config
-    requestBody.generationConfig = {};
-    if (typeof tinyGoogleAI.getMaxOutputTokens() === "number")
-      requestBody.generationConfig.maxOutputTokens =
-        tinyGoogleAI.getMaxOutputTokens();
+    if (!cacheMode) {
+      requestBody.generationConfig = {};
+      if (typeof tinyGoogleAI.getMaxOutputTokens() === "number")
+        requestBody.generationConfig.maxOutputTokens =
+          tinyGoogleAI.getMaxOutputTokens();
 
-    if (typeof tinyGoogleAI.getTemperature() === "number")
-      requestBody.generationConfig.temperature = tinyGoogleAI.getTemperature();
+      if (typeof tinyGoogleAI.getTemperature() === "number")
+        requestBody.generationConfig.temperature =
+          tinyGoogleAI.getTemperature();
 
-    if (typeof tinyGoogleAI.getTopP() === "number")
-      requestBody.generationConfig.topP = tinyGoogleAI.getTopP();
+      if (typeof tinyGoogleAI.getTopP() === "number")
+        requestBody.generationConfig.topP = tinyGoogleAI.getTopP();
 
-    if (typeof tinyGoogleAI.getTopK() === "number")
-      requestBody.generationConfig.topK = tinyGoogleAI.getTopK();
+      if (typeof tinyGoogleAI.getTopK() === "number")
+        requestBody.generationConfig.topK = tinyGoogleAI.getTopK();
 
-    if (typeof tinyGoogleAI.getPresencePenalty() === "number")
-      requestBody.generationConfig.presencePenalty =
-        tinyGoogleAI.getPresencePenalty();
+      if (typeof tinyGoogleAI.getPresencePenalty() === "number")
+        requestBody.generationConfig.presencePenalty =
+          tinyGoogleAI.getPresencePenalty();
 
-    if (typeof tinyGoogleAI.getFrequencyPenalty() === "number")
-      requestBody.generationConfig.frequencyPenalty =
-        tinyGoogleAI.getFrequencyPenalty();
+      if (typeof tinyGoogleAI.getFrequencyPenalty() === "number")
+        requestBody.generationConfig.frequencyPenalty =
+          tinyGoogleAI.getFrequencyPenalty();
 
-    if (typeof tinyGoogleAI.isEnabledEnchancedCivicAnswers() === "boolean")
-      requestBody.generationConfig.enableEnhancedCivicAnswers =
-        tinyGoogleAI.isEnabledEnchancedCivicAnswers();
+      if (typeof tinyGoogleAI.isEnabledEnchancedCivicAnswers() === "boolean")
+        requestBody.generationConfig.enableEnhancedCivicAnswers =
+          tinyGoogleAI.isEnabledEnchancedCivicAnswers();
+    }
 
     // Cache
     if (cache) requestBody.cachedContent = cache;
@@ -177,72 +186,6 @@ const setGoogleAi = (
               }
             }
 
-            // Error result
-            else buildErrorData(result, finalData);
-
-            // Complete
-            resolve(finalData);
-          })
-          // Error
-          .catch(reject),
-      ),
-  );
-
-  // Model Cache creator
-  // https://ai.google.dev/api/caching?hl=pt-br#method:-cachedcontents.create
-  tinyGoogleAI._setInsertServerCache(
-    (apiKey, cacheName, data) =>
-      new Promise((resolve, reject) =>
-        fetch(`${apiUrl}/cachedContents?key=${encodeURIComponent(apiKey)}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(
-            requestBuilder(data, {
-              model: `models/${tinyGoogleAI.getModel()}`,
-              name: cacheName,
-            }),
-          ),
-        })
-          // Request
-          .then((res) => res.json())
-          .then((result) => {
-            // Prepare final data
-            const finalData = { _response: result };
-            if (!result.error)
-              finalData.data = tinyGoogleAI._insertCache(cacheName, result);
-            // Error result
-            else buildErrorData(result, finalData);
-
-            // Complete
-            resolve(finalData);
-          })
-          // Error
-          .catch(reject),
-      ),
-  );
-
-  // https://ai.google.dev/api/caching?hl=pt-br#method:-cachedcontents.get
-  tinyGoogleAI._setGetServerCache(
-    (apiKey, cacheName) =>
-      new Promise((resolve, reject) =>
-        fetch(
-          `${apiUrl}/cachedContents/${cacheName}?key=${encodeURIComponent(apiKey)}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          },
-        )
-          // Request
-          .then((res) => res.json())
-          .then((result) => {
-            // Prepare final data
-            const finalData = { _response: result };
-            if (!result.error)
-              finalData.data = tinyGoogleAI._insertCache(cacheName, result);
             // Error result
             else buildErrorData(result, finalData);
 
