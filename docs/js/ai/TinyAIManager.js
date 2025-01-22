@@ -1311,6 +1311,7 @@ const AiScriptStart = () => {
     // Execute messages
     const executeAi = () =>
       new Promise((resolve, reject) => {
+        // Prepare history
         const history = tinyAi.getHistory();
         const content = [
           {
@@ -1322,20 +1323,80 @@ const AiScriptStart = () => {
           content.push(history.data[index]);
         }
 
+        // Insert tokens
+        const insertTokens = (tokenUsage) => {
+          const totalToken =
+            tokenUsage && tokenUsage.count ? tokenUsage.count.total : 0;
+          tokenCount.amount.data("token-count", totalToken).text(totalToken);
+        };
+
+        // Insert message
+        let msgBallon;
+        let indexId;
+        let isComplete = false;
+        const insertMessage = (msgData, role) => {
+          if (!msgBallon) {
+            msgBallon = makeMessage(
+              {
+                message: msgData,
+                tokens: 0,
+                index: indexId,
+              },
+              role === "user" ? null : tinyLib.toTitleCase(role),
+            );
+            addMessage(msgBallon);
+          } else {
+            const renderer = makeMsgRenderer();
+            msgBallon
+              .find(".ai-msg-ballon")
+              .empty()
+              .append(marked.parse(msgData, { renderer: renderer }));
+            scrollChatContainerToTop(0);
+          }
+        };
+
         tinyAi
-          .genContent(content)
+          .genContent(content, (chuck) => {
+            isComplete = chuck.done;
+            if (!isComplete) {
+              // Update tokens
+              insertTokens(chuck.tokenUsage);
+
+              // Update history
+              if (typeof indexId === "undefined")
+                indexId = tinyAi.addHistoryData(chuck.contents[0]);
+              else
+                tinyAi.replaceHistoryIndex(
+                  tinyAi.getHistoryIndexById(indexId),
+                  chuck.contents[0],
+                );
+
+              // Send insert request
+              if (typeof chuck.contents[0].parts[0].text === "string")
+                insertMessage(
+                  chuck.contents[0].parts[0].text,
+                  chuck.contents[0].role,
+                );
+
+              // Update message cache
+              const oldBallonCache = msgBallon.data("tiny-ai-cache");
+              oldBallonCache.msg = chuck.contents[0].parts[0].text;
+              msgBallon.data("tiny-ai-cache", oldBallonCache);
+
+              // Add class
+              msgBallon.addClass("entering-ai-message");
+            }
+            // Remove class
+            else msgBallon.removeClass("entering-ai-message");
+          })
           .then((result) => {
             if (!result.error) {
-              const totalToken =
-                result.tokenUsage && result.tokenUsage.count
-                  ? result.tokenUsage.count.total
-                  : 0;
-              tokenCount.amount
-                .data("token-count", totalToken)
-                .text(totalToken);
+              // Insert tokens
+              insertTokens(result.tokenUsage);
+
+              // Insert content
               for (const index in result.contents) {
                 const msg = result.contents[index];
-
                 if (
                   msg &&
                   msg.parts &&
@@ -1343,25 +1404,33 @@ const AiScriptStart = () => {
                   typeof msg.parts[0].text === "string" &&
                   msg.parts[0].text.length > 0
                 ) {
-                  const indexId = tinyAi.addHistoryData(msg);
-                  addMessage(
-                    makeMessage(
-                      {
-                        message: msg.parts[0].text,
-                        tokens: 0,
-                        index: indexId,
-                      },
-                      msg.role === "user"
-                        ? null
-                        : tinyLib.toTitleCase(msg.role),
-                    ),
-                  );
+                  // Update history
+                  if (typeof indexId === "undefined")
+                    indexId = tinyAi.addHistoryData(msg);
+                  else
+                    tinyAi.replaceHistoryIndex(
+                      tinyAi.getHistoryIndexById(indexId),
+                      msg,
+                    );
+
+                  // Send message request
+                  insertMessage(msg.parts[0].text, msg.role);
+
+                  // Update message data
+                  const oldBallonCache = msgBallon.data("tiny-ai-cache");
+                  oldBallonCache.msg = msg.parts[0].text;
+                  msgBallon.data("tiny-ai-cache", oldBallonCache);
                 }
               }
-            } else {
+            }
+
+            // Error
+            else {
               console.log(`AI Generator Error`, result.error);
               alert(result.error.message);
             }
+
+            // Complete
             resolve(result);
           })
           .catch(reject);
@@ -1432,37 +1501,45 @@ const AiScriptStart = () => {
       style: "margin-bottom: 55px !important;",
     });
 
-    const addMessage = (item) => {
-      msgList.append(item);
+    const scrollChatContainerToTop = (speed = 300) =>
       chatContainer.animate(
         {
           scrollTop: chatContainer.prop("scrollHeight"),
         },
-        300,
+        speed,
       );
+
+    const addMessage = (item) => {
+      msgList.append(item);
+      scrollChatContainerToTop();
     };
 
     // Message Maker
+    const makeMsgRenderer = () => {
+      const renderer = new marked.Renderer();
+      // Remove links
+      renderer.link = (href, title, text) => `<span>${text}</span>`;
+      return renderer;
+    };
+
     const makeMessage = (
       data = { message: null, tokens: 0, index: -1 },
       username = null,
     ) => {
       // Prepare renderer
-      let msgData = data.message;
-      const renderer = new marked.Renderer();
+      const tinyCache = { msg: data.message };
+      const renderer = makeMsgRenderer();
       const msgBase = $("<div>", {
         class: `p-3${typeof username !== "string" ? " d-flex flex-column align-items-end" : ""} ai-chat-data`,
       });
 
       const msgBallon = $("<div>", {
-        class: `bg-${typeof username === "string" ? "secondary d-inline-block" : "primary"} text-white p-2 rounded`,
+        class: `bg-${typeof username === "string" ? "secondary d-inline-block" : "primary"} text-white p-2 rounded ai-msg-ballon`,
       });
 
+      msgBase.data("tiny-ai-cache", tinyCache);
       const isIgnore = typeof data.index !== "number" || data.index < 0;
       const tinyIndex = tinyAi.getHistoryIndexById(data.index);
-
-      // Remove links
-      renderer.link = (href, title, text) => `<span>${text}</span>`;
 
       // Edit message panel
       const editPanel = $("<div>", { class: "ai-text-editor" });
@@ -1489,7 +1566,7 @@ const AiScriptStart = () => {
               .on("click", () => {
                 // Text
                 const textInput = $("<textarea>", { class: "form-control" });
-                textInput.val(msgData);
+                textInput.val(tinyCache.msg);
 
                 // Submit
                 const submitButton = $("<button>", {
@@ -1498,13 +1575,13 @@ const AiScriptStart = () => {
                 });
 
                 submitButton.on("click", () => {
-                  msgData = textInput.val();
+                  tinyCache.msg = textInput.val();
                   const newContent = tinyAi.getHistoryIndex(tinyIndex);
-                  newContent.parts[0].text = msgData;
+                  newContent.parts[0].text = tinyCache.msg;
                   tinyAi.replaceHistoryIndex(tinyIndex, newContent);
                   msgBallon.removeClass("w-100").empty();
                   msgBallon.append(
-                    marked.parse(msgData, { renderer: renderer }),
+                    marked.parse(tinyCache.msg, { renderer: renderer }),
                   );
                 });
 
@@ -1525,7 +1602,7 @@ const AiScriptStart = () => {
       // Send message
       return msgBase.append(
         editPanel,
-        msgBallon.append(marked.parse(msgData, { renderer: renderer })),
+        msgBallon.append(marked.parse(tinyCache.msg, { renderer: renderer })),
         $("<div>", {
           class: `text-muted small mt-1${typeof username !== "string" ? " text-end" : ""}`,
           text: typeof username === "string" ? username : "User",
