@@ -313,9 +313,14 @@ class TinyAIManager {
     this._genContentApi = typeof callback === "function" ? callback : null;
   }
 
-  genContent(data, isStream = false) {
+  genContent(data, streamCallback) {
     if (typeof this._genContentApi === "function")
-      return this._genContentApi(this.#_apiKey, isStream, data);
+      return this._genContentApi(
+        this.#_apiKey,
+        typeof streamCallback === "function" ? true : false,
+        data,
+        streamCallback,
+      );
     throw new Error("No content generator api script defined.");
   }
 
@@ -527,6 +532,8 @@ const AiScriptStart = () => {
     aiLogin = newAiLogin;
   };
 
+  appData.ai.api = tinyAi;
+
   // Detect Using AI
   appData.emitter.on("isUsingAI", (usingAI) => {
     if (usingAI) {
@@ -535,9 +542,6 @@ const AiScriptStart = () => {
       $("body").removeClass("is-using-ai");
     }
   });
-
-  // Test
-  appData.ai.api = tinyAi;
 
   // Checker
   tinyAiScript.checkTitle = () => {
@@ -1321,32 +1325,42 @@ const AiScriptStart = () => {
         tinyAi
           .genContent(content)
           .then((result) => {
-            console.log(result);
-            tokenCount.amount
-              .data("token-count", result.tokenUsage.count.total)
-              .text(result.tokenUsage.count.total);
-            for (const index in result.contents) {
-              const msg = result.contents[index];
+            if (!result.error) {
+              const totalToken =
+                result.tokenUsage && result.tokenUsage.count
+                  ? result.tokenUsage.count.total
+                  : 0;
+              tokenCount.amount
+                .data("token-count", totalToken)
+                .text(totalToken);
+              for (const index in result.contents) {
+                const msg = result.contents[index];
 
-              if (
-                msg &&
-                msg.parts &&
-                msg.parts[0] &&
-                typeof msg.parts[0].text === "string" &&
-                msg.parts[0].text.length > 0
-              ) {
-                const indexId = tinyAi.addHistoryData(msg);
-                addMessage(
-                  makeMessage(
-                    {
-                      message: msg.parts[0].text,
-                      tokens: 0,
-                      index: indexId,
-                    },
-                    msg.role === "user" ? null : tinyLib.toTitleCase(msg.role),
-                  ),
-                );
+                if (
+                  msg &&
+                  msg.parts &&
+                  msg.parts[0] &&
+                  typeof msg.parts[0].text === "string" &&
+                  msg.parts[0].text.length > 0
+                ) {
+                  const indexId = tinyAi.addHistoryData(msg);
+                  addMessage(
+                    makeMessage(
+                      {
+                        message: msg.parts[0].text,
+                        tokens: 0,
+                        index: indexId,
+                      },
+                      msg.role === "user"
+                        ? null
+                        : tinyLib.toTitleCase(msg.role),
+                    ),
+                  );
+                }
               }
+            } else {
+              console.log(`AI Generator Error`, result.error);
+              alert(result.error.message);
             }
             resolve(result);
           })

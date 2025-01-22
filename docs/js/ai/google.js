@@ -94,9 +94,173 @@ const setGoogleAi = (
   // The Fetch API
   // https://ai.google.dev/api/generate-content?hl=pt-br#method:-models.generatecontent
   tinyGoogleAI._setGenContent(
-    (apiKey, isStream, data) =>
-      new Promise((resolve, reject) =>
-        fetch(
+    (apiKey, isStream, data, streamingCallback) =>
+      new Promise((resolve, reject) => {
+        // Usage metadata
+        const buildUsageMetada = (result) => {
+          const usageMetadata = {
+            count: {
+              candidates: null,
+              prompt: null,
+              total: null,
+            },
+          };
+
+          let needShowMetadataError;
+          if (result.usageMetadata) {
+            // Candidates
+            if (typeof result.usageMetadata.candidatesTokenCount === "number")
+              usageMetadata.count.candidates =
+                result.usageMetadata.candidatesTokenCount;
+            else needShowMetadataError = true;
+
+            // Prompt
+            if (typeof result.usageMetadata.promptTokenCount === "number")
+              usageMetadata.count.prompt =
+                result.usageMetadata.promptTokenCount;
+            else needShowMetadataError = true;
+
+            // Total
+            if (typeof result.usageMetadata.totalTokenCount === "number")
+              usageMetadata.count.total = result.usageMetadata.totalTokenCount;
+            else needShowMetadataError = true;
+          }
+          // Error
+          else needShowMetadataError = true;
+
+          return [usageMetadata, needShowMetadataError];
+        };
+
+        // Build content
+        const buildContent = (result, finalData) => {
+          if (Array.isArray(result.candidates)) {
+            for (const index in result.candidates) {
+              const item = result.candidates[index];
+              if (item.content) {
+                // Finished reason
+                let finishReason = null;
+                if (typeof item.finishReason === "string")
+                  finishReason = item.finishReason.toUpperCase();
+
+                // Build content
+                tinyGoogleAI._buildContents(
+                  finalData.contents,
+                  item.content,
+                  item.content.role,
+                );
+                finalData.contents[finalData.contents.length - 1].finishReason =
+                  finishReason;
+              }
+            }
+          }
+        };
+
+        const finalPromise = (result) => {
+          // Prepare final data
+          const finalData = { _response: result };
+          if (!result.error) {
+            // Content
+            finalData.contents = [];
+
+            // Model Version
+            finalData.modelVersion =
+              typeof result.modelVersion === "string"
+                ? result.modelVersion
+                : null;
+
+            // Token Usage
+            const [tokenUsage, needShowMetadataError] =
+              buildUsageMetada(result);
+            finalData.tokenUsage = tokenUsage;
+            if (needShowMetadataError) {
+              console.error(
+                "Usage Metadata not found in the Google AI result.",
+              );
+              console.log(result);
+            }
+
+            // Build content
+            buildContent(result, finalData);
+          }
+
+          // Error result
+          else buildErrorData(result, finalData);
+
+          // Complete
+          return finalData;
+        };
+
+        // Streaming response
+        const streamingResponse = async (stream) => {
+          const reader = stream.getReader();
+          const decoder = new TextDecoder("utf-8");
+          let done = false;
+          let countData = 0;
+          let streamResult = {};
+          const streamCache = [];
+
+          // Read streaming
+          while (!done) {
+            const { value, done: streamDone } = await reader.read();
+            done = streamDone;
+            if (value) {
+              const chunk = decoder.decode(value, { stream: true });
+              if (!done) {
+                try {
+                  const jsonChunk = JSON.parse(
+                    `${countData > 0 ? `[${chunk.substring(1)}` : chunk}]`,
+                  );
+
+                  // Send temp data
+                  const result = jsonChunk[0];
+                  if (result) {
+                    const tinyData = { contents: [] };
+                    buildContent(result, tinyData);
+
+                    const tinyResult = {
+                      tokenUsage: buildUsageMetada(result)[0],
+                    };
+
+                    for (const index in tinyData.contents) {
+                      if (!Array.isArray(streamCache[index]))
+                        streamCache[index] = [];
+                      for (const index2 in tinyData.contents[index].parts) {
+                        const item = tinyData.contents[index].parts[index2];
+                        if (typeof item.text === "string") {
+                          if (typeof streamCache[index][index2] !== "string")
+                            streamCache[index][index2] = "";
+                          streamCache[index][index2] += item.text;
+                        }
+                      }
+                    }
+
+                    // Complete
+                    streamResult = result;
+                    tinyResult.data = streamCache;
+                    streamingCallback(tinyResult);
+                  }
+                } catch {}
+              }
+            }
+            countData++;
+          }
+
+          // Complete
+          const finalData = finalPromise(streamResult);
+          for (const index in finalData.contents) {
+            for (const index2 in finalData.contents[index].parts) {
+              if (
+                typeof finalData.contents[index].parts[index2].text === "string"
+              )
+                finalData.contents[index].parts[index2].text =
+                  streamCache[index][index2];
+            }
+          }
+          resolve(finalData);
+        };
+
+        // Request
+        const fetchRequest = fetch(
           `${apiUrl}/models/${tinyGoogleAI.getModel()}:${!isStream ? "generateContent" : "streamGenerateContent"}?key=${encodeURIComponent(apiKey)}`,
           {
             method: "POST",
@@ -105,96 +269,35 @@ const setGoogleAi = (
             },
             body: JSON.stringify(requestBuilder(data)),
           },
-        )
-          // Request
-          .then((res) => res.json())
-          .then((result) => {
-            // Prepare final data
-            const finalData = { _response: result };
-            if (!result.error) {
-              // Content
-              finalData.contents = [];
+        );
 
-              // Model Version
-              finalData.modelVersion =
-                typeof result.modelVersion === "string"
-                  ? result.modelVersion
-                  : null;
+        // Normal
 
-              // Token Usage
-              finalData.tokenUsage = {
-                count: {
-                  candidates: null,
-                  prompt: null,
-                  total: null,
-                },
-              };
-
-              // Token Usage
-              let needShowMetadataError = false;
-              if (result.usageMetadata) {
-                // Candidates
-                if (
-                  typeof result.usageMetadata.candidatesTokenCount === "number"
-                )
-                  finalData.tokenUsage.count.candidates =
-                    result.usageMetadata.candidatesTokenCount;
-                else needShowMetadataError = true;
-
-                // Prompt
-                if (typeof result.usageMetadata.promptTokenCount === "number")
-                  finalData.tokenUsage.count.prompt =
-                    result.usageMetadata.promptTokenCount;
-                else needShowMetadataError = true;
-
-                // Total
-                if (typeof result.usageMetadata.totalTokenCount === "number")
-                  finalData.tokenUsage.count.total =
-                    result.usageMetadata.totalTokenCount;
-                else needShowMetadataError = true;
-              }
-              // Error
-              else needShowMetadataError = true;
-              if (needShowMetadataError) {
-                console.error(
-                  "Usage Metadata not found in the Google AI result.",
+        // Request
+        fetchRequest
+          .then((res) => {
+            // Normal
+            if (!isStream)
+              res
+                .json()
+                .then((result) => resolve(finalPromise(result)))
+                .catch(reject);
+            else {
+              // Error Streaming
+              if (!res.body) reject(new Error("No AI streaming value found."));
+              else if (!res.ok)
+                reject(
+                  new Error(
+                    `Erro HTTP ${fetchRequest.status}: ${fetchRequest.statusText}`,
+                  ),
                 );
-                console.log(result);
-              }
-
-              // Build content
-              if (Array.isArray(result.candidates)) {
-                for (const index in result.candidates) {
-                  const item = result.candidates[index];
-                  if (item.content) {
-                    // Finished reason
-                    let finishReason = null;
-                    if (typeof item.finishReason === "string")
-                      finishReason = item.finishReason.toUpperCase();
-
-                    // Build content
-                    tinyGoogleAI._buildContents(
-                      finalData.contents,
-                      item.content,
-                      item.content.role,
-                    );
-                    finalData.contents[
-                      finalData.contents.length - 1
-                    ].finishReason = finishReason;
-                  }
-                }
-              }
+              // Streaming
+              else streamingResponse(res.body);
             }
-
-            // Error result
-            else buildErrorData(result, finalData);
-
-            // Complete
-            resolve(finalData);
           })
           // Error
-          .catch(reject),
-      ),
+          .catch(reject);
+      }),
   );
 
   // Models
