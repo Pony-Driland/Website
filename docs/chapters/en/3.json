@@ -10914,18 +10914,13 @@
   }, 
 
   {
-    "value": "What? C...Calena? I don't remember Calena changing so much... Oh my god. But what is this?! Someone tells me that this is all a dream.",
+    "value": "What? C...Calena? I don't remember Calena changing so much... Oh my God. But what is this?! Someone tells me that this is all a dream.",
     "character": "Yasmin",
     "type": "dialogue"
   }, 
 
   {
-    "value": "She was extremely scared, trying to understand what was happening.",
-    "type": "action"
-  }, 
-
-  {
-    "value": "She gave up trying to walk and was even more scared when looking at the hooves.",
+    "value": "Yasmin was extremely scared, trying to understand what was happening, then she looked again, questioning herself when looking at the hooves.",
     "type": "action"
   }, 
 
@@ -10934,6 +10929,12 @@
     "character": "Yasmin",
     "type": "dialogue"
   }, 
+
+  {
+    "value": "I... I... I'm a real girl now? A pony girl? Am I no longer trans girl?",
+    "character": "Yasmin",
+    "type": "think"
+  },
 
   {
     "value": "Calena? What the fuck is this Vinny? Who is this pony? You're scaring her even more.",
