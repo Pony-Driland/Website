@@ -1783,7 +1783,7 @@ const AiScriptStart = () => {
     addMessage(
       makeMessage(
         {
-          message: `Welcome to Pony Driland's chatbot!`,
+          message: `Welcome to Pony Driland's chatbot! This is a chatbot developed exclusively to interact with the content of fic`,
           tokens: 0,
         },
         "Website",
@@ -1792,7 +1792,9 @@ const AiScriptStart = () => {
     addMessage(
       makeMessage(
         {
-          message: `You need to choose what you would like to do here and let's start the conversation`,
+          message:
+            "This means that whenever the story is updated, I am automatically updated for you to always view the answers of the latest content, because the algorithm of this website converts the content of fic to prompts." +
+            "\nChoose something to be done here so we can start our conversation!",
           tokens: 0,
         },
         "Website",
