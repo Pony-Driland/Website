@@ -57,6 +57,14 @@ const renderRoleplayFormat = (chapter) => {
       }
     }
 
+    if(ficData.info) {
+      data += `\n(Curiosities:`;
+      for(const info in ficData.info) {
+        data += `\n${info} - ${ficData.info[info]}`;
+      }
+      data += `\n)\n`;
+    }
+
     const isFlashBack = ficData.flashback ? " from flashback scene" : "";
 
     if (ficData.type === "action") data += `\n${lineText} *${ficData.value}*`;
