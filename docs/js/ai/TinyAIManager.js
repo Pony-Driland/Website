@@ -1794,16 +1794,7 @@ const AiScriptStart = () => {
         {
           message:
             "This means that whenever the story is updated, I am automatically updated for you to always view the answers of the latest content, because the algorithm of this website converts the content of fic to prompts." +
-            "\nChoose something to be done here so we can start our conversation!",
-          tokens: 0,
-        },
-        "Website",
-      ),
-    );
-    addMessage(
-      makeMessage(
-        {
-          message: `The chat will not work until you choose an activity to do here`,
+            "\n\nChoose something to be done here so we can start our conversation! The chat will not work until you choose an activity to do here",
           tokens: 0,
         },
         "Website",
