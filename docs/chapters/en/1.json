@@ -9,7 +9,7 @@
             "dayNightCycle": "morning",
             "day": 1,
             "weather": "sun",
-            "playlistPlay": null
+            "playlistPlay": "happyness"
         },
         "info": {
             "X-Tudo": "The X-Tudo is a typical Brazilian sandwich known for its abundance. It usually includes bread, a beef patty, cheese, ham, bacon, egg, lettuce, tomato, mayonnaise, ketchup, and optional ingredients like corn, peas, potato sticks, and even extra meat. It's a hearty and fully loaded sandwich.",
@@ -21,7 +21,6 @@
     },
 
     {
-        "set": { "playlistPlay": "happyness" },
         "type": "action",
         "value": "Yasmin then looked at the monitor impatiently, and just wanted to get this story over with, so Vinny wouldn't need to talk about the X-Tudo anymore."
     },
