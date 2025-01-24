@@ -80,7 +80,9 @@ const renderRoleplayFormat = (chapter) => {
 };
 
 const saveRoleplayFormat = (chapter, saveAsFile = true) => {
-  let file = `---------- Official Pony Driland fic file ----------`;
+  const fileStart = `---------- Official Pony Driland fic file ----------`;
+  const fileEnd = `---------- The end Official Pony Driland fic file ----------`;
+  let file = ``;
 
   const insertChapter = (cpId) => {
     file += `\n\n---------- Chapter ${cpId} ----------\n`;
@@ -98,7 +100,6 @@ const saveRoleplayFormat = (chapter, saveAsFile = true) => {
   }
 
   file = file.substring(2, file.length);
-  file += `\n\n---------- The end Official Pony Driland fic file ----------`;
 
   let info = `Title: ${storyData.title}\nDescription: ${storyData.description}\nAuthor: ${storyCfg.creator}\nAuthor Page: ${storyCfg.creator_url}`;
   if (
@@ -133,7 +134,9 @@ const saveRoleplayFormat = (chapter, saveAsFile = true) => {
 
   if (saveAsFile)
     saveAs(
-      new Blob([`${info}\n\n${file}`], { type: "text/plain" }),
+      new Blob([`${fileStart}\n\n${info}\n\n${file}\n\n${fileEnd}`], {
+        type: "text/plain",
+      }),
       `Pony Driland${!chapter ? "" : ` - Chapter ${chapter}`}.txt`,
     );
   else return { data: `${info}\n\n${file}`, mime: "text/plain" };
