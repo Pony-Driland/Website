@@ -48,7 +48,7 @@ class TinyNotification {
   ) {
     if (this.allowed) {
       const options = {
-        body: body.length < 100 ? body : `${body.substring(100)}...`,
+        body: body.length < 100 ? body : `${body.substring(0, 100)}...`,
         icon: config.icon,
         vibrate: config.vibrate,
       };
