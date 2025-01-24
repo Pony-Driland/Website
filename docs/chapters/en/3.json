@@ -10793,7 +10793,7 @@
   }, 
 
   {
-    "value": "Vinny heard the coughing again, and this time Vinny was more attentive, and realized that it was the mysterious pegasus was coughing, she was starting to delicately try to move.",
+    "value": "Vinny heard the coughing again, and this time Vinny was more attentive, and realized that it was the mysterious female pegasus was coughing, she was starting to delicately try to move.",
     "type": "action"
   }, 
 
@@ -10931,9 +10931,14 @@
   }, 
 
   {
-    "value": "I... I... I'm a real girl now? A pony girl? Am I no longer trans girl?",
+    "value": "Wait... I... I... I'm a real girl now? Pony girl? Am I no longer trans girl? Oh...",
     "character": "Yasmin",
     "type": "think"
+  }, 
+
+  {
+    "value": "Yasmin felt even more surprised when she realized the first super positive point of situation, but was still scared due to the other consequences.",
+    "type": "action"
   },
 
   {
