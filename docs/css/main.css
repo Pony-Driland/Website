@@ -580,3 +580,29 @@ body.is-using-ai #app {
 #ai-chatbox .ai-chat-data h5:last-child {
   margin-bottom: 0px;
 }
+
+#ai-chatbox .ai-chat-data table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+#ai-chatbox .ai-chat-data thead th {
+  text-align: left;
+  font-weight: bold;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+}
+
+#ai-chatbox .ai-chat-data tbody td {
+  padding: 8px;
+  border-bottom: 1px solid #ccc; 
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
