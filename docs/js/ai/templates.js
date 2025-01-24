@@ -8,7 +8,7 @@ If the user is sending messages in another language, translate the messages to t
 // Bases
 aiTemplates.helpers.ficTellLines = `Tell which lines of fic you are referring to tell your answers to help the user search the source of your answers.`;
 aiTemplates.helpers.ficTimeChecker = `
-The "---------- Official Pony Driland fic file ----------" is the beginning where the official file data of the fic Pony Driland begin and the "---------- The end Official Pony Driland fic file ----------" is where this official data ends, this information is important for you to know the difference between official content, or user-created content.
+The "---------- Official Pony Driland fic file ----------" is the beginning where the official file data of the fic Pony Driland begin and the "---------- The end Official Pony Driland fic file ----------" is where this official data ends, this information is important for you to know the difference between official content from non-official content.
 
 Time markers in the story are presented as "Day Number: X", tell the time markers in natural language only.
 Day markers in the story are presented as "Day Status: X", used to mark if the specific part of the story is "morning", "evening", "night", "lateAtNight", tell the day markers in natural language only.
