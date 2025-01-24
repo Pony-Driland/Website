@@ -57,8 +57,6 @@ class TinyNotification {
         if (window.focus) window.focus();
         notification.close();
       };
-    } else {
-      throw new Error("Notifications are not allowed.");
     }
   }
 }
