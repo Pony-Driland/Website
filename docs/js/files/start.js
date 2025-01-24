@@ -57,9 +57,9 @@ const renderRoleplayFormat = (chapter) => {
       }
     }
 
-    if(ficData.info) {
+    if (ficData.info) {
       data += `\n(Curiosities:`;
-      for(const info in ficData.info) {
+      for (const info in ficData.info) {
         data += `\n${info} - ${ficData.info[info]}`;
       }
       data += `\n)\n`;

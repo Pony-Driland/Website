@@ -1403,11 +1403,10 @@ const AiScriptStart = () => {
             );
             addMessage(msgBallon);
           } else {
-            const renderer = makeMsgRenderer();
             msgBallon
               .find(".ai-msg-ballon")
               .empty()
-              .append(marked.parse(msgData, { renderer: renderer }));
+              .append(makeMsgRenderer(msgData));
             scrollChatContainerToTop();
           }
         };
@@ -1596,11 +1595,19 @@ const AiScriptStart = () => {
     };
 
     // Message Maker
-    const makeMsgRenderer = () => {
+    const makeMsgRenderer = (msg) => {
       const renderer = new marked.Renderer();
-      // Remove links
+      const final = '<span class="final-ai-icon">';
+
+      // Remove links and html
       renderer.link = (href, title, text) => `<span>${text}</span>`;
-      return renderer;
+      renderer.image = () => ``;
+      renderer.html = (data) => {
+        if (data.raw !== final || data.text !== final) return ``;
+        else return `${final}█</span>`;
+      };
+
+      return marked.parse(`${msg}${final}`, { renderer: renderer });
     };
 
     const makeMessage = (
@@ -1613,7 +1620,6 @@ const AiScriptStart = () => {
         role: username ? tinyLib.toTitleCase(username) : "User",
       };
 
-      const renderer = makeMsgRenderer();
       const msgBase = $("<div>", {
         class: `p-3${typeof username !== "string" ? " d-flex flex-column align-items-end" : ""} ai-chat-data`,
       });
@@ -1670,16 +1676,12 @@ const AiScriptStart = () => {
                   newContent.parts[0].text = tinyCache.msg;
                   tinyAi.replaceHistoryIndex(tinyIndex, newContent);
                   msgBallon.removeClass("w-100").empty();
-                  msgBallon.append(
-                    marked.parse(tinyCache.msg, { renderer: renderer }),
-                  );
+                  msgBallon.append(makeMsgRenderer(tinyCache.msg));
                 });
 
                 cancelButton.on("click", () => {
                   msgBallon.removeClass("w-100").empty();
-                  msgBallon.append(
-                    marked.parse(tinyCache.msg, { renderer: renderer }),
-                  );
+                  msgBallon.append(makeMsgRenderer(tinyCache.msg));
                 });
 
                 // Complete
@@ -1700,7 +1702,7 @@ const AiScriptStart = () => {
       // Send message
       return msgBase.append(
         editPanel,
-        msgBallon.append(marked.parse(tinyCache.msg, { renderer: renderer })),
+        msgBallon.append(makeMsgRenderer(tinyCache.msg)),
         $("<div>", {
           class: `text-muted small mt-1${typeof username !== "string" ? " text-end" : ""}`,
           text: typeof username === "string" ? username : "User",
