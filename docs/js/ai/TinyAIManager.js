@@ -313,13 +313,14 @@ class TinyAIManager {
     this._genContentApi = typeof callback === "function" ? callback : null;
   }
 
-  genContent(data, streamCallback) {
+  genContent(data, controller, streamCallback) {
     if (typeof this._genContentApi === "function")
       return this._genContentApi(
         this.#_apiKey,
         typeof streamCallback === "function" ? true : false,
         data,
         streamCallback,
+        controller,
       );
     throw new Error("No content generator api script defined.");
   }
@@ -1055,26 +1056,13 @@ const AiScriptStart = () => {
       );
     }
 
-    const importAndExport = [
+    const importItems = [
       // Import
       createButtonSidebar("fa-solid fa-file-import", "Import", () =>
         importButton.trigger("click"),
       ),
 
       importButton,
-
-      // Export
-      createButtonSidebar("fa-solid fa-file-export", "Export", () => {
-        const exportData = {
-          file: tinyAi.getHistory(),
-          id: tinyAi.getHistoryId(),
-        };
-
-        saveAs(
-          new Blob([JSON.stringify(exportData)], { type: "text/plain" }),
-          `Pony Driland - ${tinyAi.getHistoryId()} - AI Export.json`,
-        );
-      }),
     ];
 
     // Left
@@ -1110,8 +1098,21 @@ const AiScriptStart = () => {
             true,
           ),
 
-          // Import and Export
-          importAndExport,
+          // Import
+          importItems,
+
+          // Export
+          createButtonSidebar("fa-solid fa-file-export", "Export", () => {
+            const exportData = {
+              file: tinyAi.getHistory(),
+              id: tinyAi.getHistoryId(),
+            };
+
+            saveAs(
+              new Blob([JSON.stringify(exportData)], { type: "text/plain" }),
+              `Pony Driland - ${tinyAi.getHistoryId()} - AI Export.json`,
+            );
+          }),
 
           // Tiny information
           $("<hr/>", { class: "border-white" }),
@@ -1366,7 +1367,7 @@ const AiScriptStart = () => {
     );
 
     // Execute messages
-    const executeAi = () =>
+    const executeAi = (tinyCache = {}, tinyController) =>
       new Promise((resolve, reject) => {
         // Prepare history
         const history = tinyAi.getHistory();
@@ -1388,22 +1389,20 @@ const AiScriptStart = () => {
         };
 
         // Insert message
-        let msgBallon;
-        let indexId;
         let isComplete = false;
         const insertMessage = (msgData, role) => {
-          if (!msgBallon) {
-            msgBallon = makeMessage(
+          if (!tinyCache.msgBallon) {
+            tinyCache.msgBallon = makeMessage(
               {
                 message: msgData,
                 tokens: 0,
-                index: indexId,
+                index: tinyCache.indexId,
               },
               role === "user" ? null : tinyLib.toTitleCase(role),
             );
-            addMessage(msgBallon);
+            addMessage(tinyCache.msgBallon);
           } else {
-            msgBallon
+            tinyCache.msgBallon
               .find(".ai-msg-ballon")
               .empty()
               .append(makeMsgRenderer(msgData));
@@ -1411,19 +1410,43 @@ const AiScriptStart = () => {
           }
         };
 
+        let isCanceled = false;
+        tinyCache.cancel = () => {
+          if (!isCanceled) {
+            if (tinyCache.msgBallon) tinyCache.msgBallon.remove();
+            if (
+              typeof tinyCache.indexId === "number" ||
+              typeof tinyCache.indexId === "string"
+            )
+              tinyAi.deleteHistoryIndex(
+                tinyAi.getHistoryIndexById(tinyCache.indexId),
+              );
+            completeTask();
+            isCanceled = true;
+          }
+        };
+
+        const completeTask = () => {
+          if (typeof tinyCache.indexId !== "undefined")
+            delete tinyCache.indexId;
+          if (typeof tinyCache.msgBallon !== "undefined")
+            delete tinyCache.msgBallon;
+          if (typeof tinyCache.cancel !== "undefined") delete tinyCache.cancel;
+        };
+
         tinyAi
-          .genContent(content, (chuck) => {
+          .genContent(content, tinyController, (chuck) => {
             isComplete = chuck.done;
             if (!isComplete) {
               // Update tokens
               insertTokens(chuck.tokenUsage);
 
               // Update history
-              if (typeof indexId === "undefined")
-                indexId = tinyAi.addHistoryData(chuck.contents[0]);
+              if (typeof tinyCache.indexId === "undefined")
+                tinyCache.indexId = tinyAi.addHistoryData(chuck.contents[0]);
               else
                 tinyAi.replaceHistoryIndex(
-                  tinyAi.getHistoryIndexById(indexId),
+                  tinyAi.getHistoryIndexById(tinyCache.indexId),
                   chuck.contents[0],
                 );
 
@@ -1435,19 +1458,20 @@ const AiScriptStart = () => {
                 );
 
               // Update message cache
-              const oldBallonCache = msgBallon.data("tiny-ai-cache");
+              const oldBallonCache = tinyCache.msgBallon.data("tiny-ai-cache");
               oldBallonCache.msg = chuck.contents[0].parts[0].text;
-              msgBallon.data("tiny-ai-cache", oldBallonCache);
+              tinyCache.msgBallon.data("tiny-ai-cache", oldBallonCache);
 
               // Add class
-              msgBallon.addClass("entering-ai-message");
+              tinyCache.msgBallon.addClass("entering-ai-message");
             }
             // Remove class
             else {
-              msgBallon.removeClass("entering-ai-message");
-              const ballonCache = msgBallon.data("tiny-ai-cache");
+              tinyCache.msgBallon.removeClass("entering-ai-message");
+              const ballonCache = tinyCache.msgBallon.data("tiny-ai-cache");
               if (ballonCache && $("body").hasClass("windowHidden"))
                 tinyNotification.send(ballonCache.role, ballonCache.msg);
+              completeTask();
             }
           })
           .then((result) => {
@@ -1466,11 +1490,11 @@ const AiScriptStart = () => {
                   msg.parts[0].text.length > 0
                 ) {
                   // Update history
-                  if (typeof indexId === "undefined")
-                    indexId = tinyAi.addHistoryData(msg);
+                  if (typeof tinyCache.indexId === "undefined")
+                    tinyCache.indexId = tinyAi.addHistoryData(msg);
                   else
                     tinyAi.replaceHistoryIndex(
-                      tinyAi.getHistoryIndexById(indexId),
+                      tinyAi.getHistoryIndexById(tinyCache.indexId),
                       msg,
                     );
 
@@ -1478,9 +1502,10 @@ const AiScriptStart = () => {
                   insertMessage(msg.parts[0].text, msg.role);
 
                   // Update message data
-                  const oldBallonCache = msgBallon.data("tiny-ai-cache");
+                  const oldBallonCache =
+                    tinyCache.msgBallon.data("tiny-ai-cache");
                   oldBallonCache.msg = msg.parts[0].text;
-                  msgBallon.data("tiny-ai-cache", oldBallonCache);
+                  tinyCache.msgBallon.data("tiny-ai-cache", oldBallonCache);
                 }
               }
             }
@@ -1492,6 +1517,7 @@ const AiScriptStart = () => {
             }
 
             // Complete
+            completeTask();
             resolve(result);
           })
           .catch(reject);
@@ -1510,13 +1536,21 @@ const AiScriptStart = () => {
       text: "Send",
     });
 
+    const cancelSubmit = $("<button>", {
+      class: "btn btn-primary input-group-text-dark rounded-end",
+      text: "Cancel",
+    });
+
+    const submitCache = {};
     msgSubmit.on("click", async () => {
       if (!msgInput.prop("disabled")) {
         // Prepare to get data
         msgInput.blur();
         const msg = msgInput.val();
         msgInput.val("");
-        enableReadOnly();
+
+        const controller = new AbortController();
+        enableReadOnly(true, controller);
         modelChangerReadOnly();
 
         let points = ".";
@@ -1553,7 +1587,8 @@ const AiScriptStart = () => {
         }
 
         // Execute Ai
-        await executeAi().catch((err) => {
+        await executeAi(submitCache, controller).catch((err) => {
+          if (submitCache.cancel) submitCache.cancel();
           console.error(err);
           alert(err.message);
         });
@@ -1729,6 +1764,7 @@ const AiScriptStart = () => {
           $("<div>", { class: "px-3 d-inline-block w-100" }).append(
             $("<div>", { class: "input-group pb-3 body-background" }).append(
               msgInput,
+              cancelSubmit,
               msgSubmit,
             ),
           ),
@@ -1766,16 +1802,35 @@ const AiScriptStart = () => {
       }
     };
 
-    const enableReadOnly = (isEnabled = true) => {
+    const enableReadOnly = (isEnabled = true, controller = null) => {
       readOnlyTemplate(msgSubmit, isEnabled);
       readOnlyTemplate(msgInput, isEnabled);
+      readOnlyTemplate(cancelSubmit, !isEnabled || !controller);
+      if (controller) {
+        msgSubmit.addClass("d-none");
+        cancelSubmit.removeClass("d-none");
+        cancelSubmit.on("click", () => {
+          enableReadOnly(false);
+          try {
+            if (submitCache.cancel) submitCache.cancel();
+            controller.abort();
+          } catch (err) {
+            console.error(err);
+            alert(err.message);
+          }
+        });
+      } else {
+        msgSubmit.removeClass("d-none");
+        cancelSubmit.addClass("d-none");
+        cancelSubmit.off("click");
+      }
     };
 
     const modelChangerReadOnly = (isEnabled = true) => {
       for (const index in ficTemplates)
         readOnlyTemplate(ficTemplates[index], isEnabled);
-      for (const index in importAndExport)
-        readOnlyTemplate(importAndExport[index], isEnabled);
+      for (const index in importItems)
+        readOnlyTemplate(importItems[index], isEnabled);
     };
 
     // Clear Messages
