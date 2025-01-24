@@ -1010,7 +1010,7 @@ const AiScriptStart = () => {
           template: "talkToFic",
           icon: "fa-solid fa-server",
           intro:
-            "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic, but be careful, because I will answer questions related to literally anything that happened in fic, including censored scenes. Sadly I'm not made for roleplay, but I can try.",
+            "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic in your native language (if i can support to do this), but be careful, because I will answer questions related to literally anything that happened in fic, including censored scenes. Sadly I'm not made for roleplay, but I can try.",
           getData: async () => saveRoleplayFormat(null, false),
         },
         /* 
@@ -1021,7 +1021,7 @@ const AiScriptStart = () => {
           template: "talkToFic",
           icon: "fa-solid fa-server",
           intro:
-            "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic. Sadly I'm not made for roleplay, but I can try.",
+            "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic in your native language (if i can support to do this). Sadly I'm not made for roleplay, but I can try.",
           getData: async () => saveRoleplayFormat(null, false),
         },
         {
@@ -1030,7 +1030,7 @@ const AiScriptStart = () => {
           template: "talkToFicSfw",
           icon: "fa-solid fa-server",
           intro:
-            "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic, but be careful, because I will answer questions related to literally anything that happened in fic, including censored scenes. Sadly I'm not made for roleplay, but I can try.",
+            "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic in your native language (if i can support to do this), but be careful, because I will answer questions related to literally anything that happened in fic, including censored scenes. Sadly I'm not made for roleplay, but I can try.",
           getData: async () => saveRoleplayFormat(null, false),
         }, 
         */
