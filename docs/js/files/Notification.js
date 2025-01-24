@@ -1,6 +1,7 @@
 class TinyNotification {
   constructor() {
     this.allowed = false;
+    this.sound = new Audio("/audio/notification.ogg");
   }
 
   requestPerm() {
@@ -58,6 +59,7 @@ class TinyNotification {
         notification.close();
       };
     }
+    this.sound.play().catch((err) => console.error(err));
   }
 }
 
