@@ -94,7 +94,7 @@ const setGoogleAi = (
   // The Fetch API
   // https://ai.google.dev/api/generate-content?hl=pt-br#method:-models.generatecontent
   tinyGoogleAI._setGenContent(
-    (apiKey, isStream, data, streamingCallback) =>
+    (apiKey, isStream, data, streamingCallback, controller) =>
       new Promise((resolve, reject) => {
         // Usage metadata
         const buildUsageMetada = (result) => {
@@ -192,90 +192,102 @@ const setGoogleAi = (
 
         // Streaming response
         const streamingResponse = async (stream) => {
-          const reader = stream.getReader();
-          const decoder = new TextDecoder("utf-8");
-          let done = false;
-          let countData = 0;
-          let streamResult = {};
-          const streamCache = [];
+          try {
+            const reader = stream.getReader();
+            const decoder = new TextDecoder("utf-8");
+            let done = false;
+            let countData = 0;
+            let streamResult = {};
+            const streamCache = [];
 
-          // Read streaming
-          while (!done) {
-            const { value, done: streamDone } = await reader.read();
-            done = streamDone;
-            if (value) {
-              const chunk = decoder.decode(value, { stream: true });
-              if (!done) {
-                try {
-                  const jsonChunk = JSON.parse(
-                    `${countData > 0 ? `[${chunk.substring(1)}` : chunk}]`,
-                  );
+            // Read streaming
+            while (!done) {
+              if (reader && typeof reader.read === "function") {
+                const { value, done: streamDone } = await reader.read();
+                done = streamDone;
+                if (value) {
+                  const chunk = decoder.decode(value, { stream: true });
+                  if (!done) {
+                    try {
+                      const jsonChunk = JSON.parse(
+                        `${countData > 0 ? `[${chunk.substring(1)}` : chunk}]`,
+                      );
 
-                  // Send temp data
-                  const result = jsonChunk[0];
-                  if (result) {
-                    const tinyData = { contents: [] };
-                    buildContent(result, tinyData);
+                      // Send temp data
+                      const result = jsonChunk[0];
+                      if (result) {
+                        const tinyData = { contents: [] };
+                        buildContent(result, tinyData);
 
-                    const tinyResult = {
-                      tokenUsage: buildUsageMetada(result)[0],
-                    };
+                        const tinyResult = {
+                          tokenUsage: buildUsageMetada(result)[0],
+                        };
 
-                    for (const index in tinyData.contents) {
-                      if (!Array.isArray(streamCache[index]))
-                        streamCache[index] = [];
-                      for (const index2 in tinyData.contents[index].parts) {
-                        const item = tinyData.contents[index].parts[index2];
-                        if (typeof item.text === "string") {
-                          if (!streamCache[index][index2])
-                            streamCache[index][index2] = {};
+                        for (const index in tinyData.contents) {
+                          if (!Array.isArray(streamCache[index]))
+                            streamCache[index] = [];
+                          for (const index2 in tinyData.contents[index].parts) {
+                            const item = tinyData.contents[index].parts[index2];
+                            if (typeof item.text === "string") {
+                              if (!streamCache[index][index2])
+                                streamCache[index][index2] = {};
 
-                          if (
-                            typeof streamCache[index][index2].text !== "string"
-                          )
-                            streamCache[index][index2].text = "";
+                              if (
+                                typeof streamCache[index][index2].text !==
+                                "string"
+                              )
+                                streamCache[index][index2].text = "";
 
-                          streamCache[index][index2].text += item.text;
-                          item.text = streamCache[index][index2].text;
+                              streamCache[index][index2].text += item.text;
+                              item.text = streamCache[index][index2].text;
 
-                          if (typeof tinyData.contents[index].role === "string")
-                            streamCache[index][index2].role =
-                              tinyData.contents[index].role;
+                              if (
+                                typeof tinyData.contents[index].role ===
+                                "string"
+                              )
+                                streamCache[index][index2].role =
+                                  tinyData.contents[index].role;
+                            }
+                          }
                         }
-                      }
-                    }
 
-                    // Complete
-                    streamResult = result;
-                    tinyResult.contents = tinyData.contents;
-                    tinyResult.done = false;
-                    streamingCallback(tinyResult);
+                        // Complete
+                        streamResult = result;
+                        tinyResult.contents = tinyData.contents;
+                        tinyResult.done = false;
+                        streamingCallback(tinyResult);
+                      }
+                    } catch {}
                   }
-                } catch {}
+                }
+                countData++;
+              } else done = true;
+            }
+
+            // Complete
+            streamingCallback({ done: true });
+            const finalData = finalPromise(streamResult);
+            for (const index in finalData.contents) {
+              for (const index2 in finalData.contents[index].parts) {
+                if (
+                  typeof finalData.contents[index].parts[index2].text ===
+                  "string"
+                )
+                  finalData.contents[index].parts[index2].text =
+                    streamCache[index][index2];
               }
             }
-            countData++;
+            resolve(finalData);
+          } catch (err) {
+            reject(err);
           }
-
-          // Complete
-          streamingCallback({ done: true });
-          const finalData = finalPromise(streamResult);
-          for (const index in finalData.contents) {
-            for (const index2 in finalData.contents[index].parts) {
-              if (
-                typeof finalData.contents[index].parts[index2].text === "string"
-              )
-                finalData.contents[index].parts[index2].text =
-                  streamCache[index][index2];
-            }
-          }
-          resolve(finalData);
         };
 
         // Request
         const fetchRequest = fetch(
           `${apiUrl}/models/${tinyGoogleAI.getModel()}:${!isStream ? "generateContent" : "streamGenerateContent"}?key=${encodeURIComponent(apiKey)}`,
           {
+            signal: controller ? controller.signal : undefined,
             method: "POST",
             headers: {
               "Content-Type": "application/json",
