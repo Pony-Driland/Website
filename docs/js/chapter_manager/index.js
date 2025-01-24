@@ -403,7 +403,9 @@ const openChapterMenu = (params = {}) => {
         .append([
           $("<thead>").append(
             $("<tr>").append(
-              $("<th>", { class: 'd-none d-md-table-cell', scope: "col" }).text("Line"),
+              $("<th>", { class: "d-none d-md-table-cell", scope: "col" }).text(
+                "Line",
+              ),
               $("<th>", { scope: "col" }).text("Type"),
               $("<th>", { scope: "col" }).text("Content"),
             ),
@@ -905,64 +907,6 @@ const openChapterMenu = (params = {}) => {
         ),
       );
     }
-
-    markdownRead.append(
-      $("<h2>")
-        .text(`Download Content`)
-        .prepend($("<i>", { class: "fa-solid fa-download me-3" }))
-        .append(
-          $("<button>", { class: "ms-3 btn btn-info btn-sm" })
-            .text("Save As all chapters")
-            .on("click", () => saveRoleplayFormat()),
-        ),
-      $("<h5>")
-        .text(
-          `Here you can download the official content of fic to produce unofficial content dedicated to artificial intelligence.`,
-        )
-        .append(
-          $("<br/>"),
-          $("<small>").text(
-            "Remember that you are downloading the uncensored version.",
-          ),
-        ),
-    );
-
-    for (let i = 0; i < storyData.chapter.amount; i++) {
-      // Chapter Number
-      const chapter = String(i + 1);
-
-      // Add Chapter
-      markdownRead.append(
-        $("<div>", { class: "card" }).append(
-          $("<div>", { class: "card-body" }).append(
-            $("<h5>", { class: "card-title m-0" })
-              .text(`Chapter ${chapter} - `)
-              .append(
-                $("<small>").text(storyCfg.chapterName[chapter].title),
-                $("<a>", {
-                  class: "btn btn-primary m-2 me-0 btn-sm",
-                  href: `/chapter/${chapter}.html`,
-                  chapter: chapter,
-                })
-                  .on("click", function () {
-                    // Save Chapter
-                    saveRoleplayFormat(Number($(this).attr("chapter")));
-
-                    // Complete
-                    return false;
-                  })
-                  .text("Save as"),
-              ),
-          ),
-        ),
-      );
-    }
-
-    markdownRead.append(
-      $("<p>", { class: "m-0" }).text(
-        `This content is ready for AI to know which lines of text, chapters, day number, weather, location on any part of the fic you ask. The website script will convert all content to be easily understood by AI languages.`,
-      ),
-    );
   }
 
   /* 
