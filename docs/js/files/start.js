@@ -80,7 +80,7 @@ const renderRoleplayFormat = (chapter) => {
 };
 
 const saveRoleplayFormat = (chapter, saveAsFile = true) => {
-  let file = "";
+  let file = `---------- Official Pony Driland fic file ----------`;
 
   const insertChapter = (cpId) => {
     file += `\n\n---------- Chapter ${cpId} ----------\n`;
@@ -98,6 +98,7 @@ const saveRoleplayFormat = (chapter, saveAsFile = true) => {
   }
 
   file = file.substring(2, file.length);
+  file += `\n\n---------- The end Official Pony Driland fic file ----------`;
 
   let info = `Title: ${storyData.title}\nDescription: ${storyData.description}\nAuthor: ${storyCfg.creator}\nAuthor Page: ${storyCfg.creator_url}`;
   if (
