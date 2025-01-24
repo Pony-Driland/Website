@@ -1598,6 +1598,7 @@ const AiScriptStart = () => {
     const makeMsgRenderer = (msg) => {
       const renderer = new marked.Renderer();
       const final = '<span class="final-ai-icon">';
+      // | █ ▌▐ _
 
       // Remove links and html
       renderer.link = (href, title, text) => `<span>${text}</span>`;
