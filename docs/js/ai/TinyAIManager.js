@@ -1523,7 +1523,7 @@ const AiScriptStart = () => {
         let secondsWaiting = -1;
         const loadingMoment = () => {
           points += ".";
-          if (points === "...") points = ".";
+          if (points === "....") points = ".";
 
           secondsWaiting++;
           msgInput.val(`(${secondsWaiting}s) Waiting response${points}`);
