@@ -639,7 +639,7 @@ const AiScriptStart = () => {
 
     // Sidebar
     const sidebarStyle = {
-      class: "bg-dark text-white p-3",
+      class: "bg-dark text-white p-3 d-none d-md-block",
       style: "width: 250px; min-width: 250px; overflow-y: auto;",
     };
 

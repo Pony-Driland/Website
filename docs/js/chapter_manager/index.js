@@ -403,7 +403,7 @@ const openChapterMenu = (params = {}) => {
         .append([
           $("<thead>").append(
             $("<tr>").append(
-              $("<th>", { scope: "col" }).text("Line"),
+              $("<th>", { class: 'd-none d-md-table-cell', scope: "col" }).text("Line"),
               $("<th>", { scope: "col" }).text("Type"),
               $("<th>", { scope: "col" }).text("Content"),
             ),
