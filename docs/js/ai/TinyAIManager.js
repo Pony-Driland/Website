@@ -1139,7 +1139,7 @@ const AiScriptStart = () => {
           createButtonSidebar("fa-solid fa-download", "Downloads", () => {
             const body = $("<div>");
             body.append(
-              $("<h2>")
+              $("<h3>")
                 .text(`Download Content`)
                 .prepend($("<i>", { class: "fa-solid fa-download me-3" }))
                 .append(
@@ -1500,6 +1500,7 @@ const AiScriptStart = () => {
           }
         };
 
+        // Cancel task
         let isCanceled = false;
         tinyCache.cancel = () => {
           if (!isCanceled) {
@@ -1516,6 +1517,7 @@ const AiScriptStart = () => {
           }
         };
 
+        // Task complete!
         const completeTask = () => {
           if (typeof tinyCache.indexId !== "undefined")
             delete tinyCache.indexId;
@@ -1524,6 +1526,7 @@ const AiScriptStart = () => {
           if (typeof tinyCache.cancel !== "undefined") delete tinyCache.cancel;
         };
 
+        // Content Generator
         tinyAi
           .genContent(content, tinyController, (chuck) => {
             isComplete = chuck.done;
