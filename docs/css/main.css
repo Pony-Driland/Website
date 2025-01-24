@@ -560,6 +560,10 @@ body.is-using-ai #app {
   display: block;
 }
 
+#ai-chatbox .ai-chat-data:not(.entering-ai-message) .final-ai-icon {
+  display: none;
+}
+
 #ai-chatbox .ai-chat-data:hover .btn-bg  {
   background-color: #1d1d1d;
 }
