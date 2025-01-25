@@ -1794,21 +1794,6 @@ const AiScriptStart = () => {
       // Edit message panel
       const editPanel = $("<div>", { class: "ai-text-editor" });
       editPanel.append(
-        // Delete button
-        $("<button>", { class: "btn btn-sm btn-bg" })
-          .append($("<i>", { class: "fa-solid fa-trash-can" }))
-          .on("click", () => {
-            const tinyIndex = tinyAi.getHistoryIndexById(data.index);
-            if (!isIgnore && tinyIndex > -1) {
-              tinyAi.deleteHistoryIndex(tinyIndex);
-              const amount = tokenCount.amount.data("token-count");
-              tokenCount.amount.data("token-count", amount - data.tokens);
-              tokenCount.amount.text(amount - data.tokens);
-            }
-
-            msgBase.remove();
-          }),
-
         // Edit button
         !isIgnore && tinyIndex > -1
           ? $("<button>", { class: "btn btn-sm btn-bg" })
@@ -1856,6 +1841,21 @@ const AiScriptStart = () => {
                   );
               })
           : null,
+
+        // Delete button
+        $("<button>", { class: "btn btn-sm btn-bg" })
+          .append($("<i>", { class: "fa-solid fa-trash-can" }))
+          .on("click", () => {
+            const tinyIndex = tinyAi.getHistoryIndexById(data.index);
+            if (!isIgnore && tinyIndex > -1) {
+              tinyAi.deleteHistoryIndex(tinyIndex);
+              const amount = tokenCount.amount.data("token-count");
+              tokenCount.amount.data("token-count", amount - data.tokens);
+              tokenCount.amount.text(amount - data.tokens);
+            }
+
+            msgBase.remove();
+          }),
       );
 
       // Send message
