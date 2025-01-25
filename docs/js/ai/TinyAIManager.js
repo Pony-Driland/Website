@@ -403,6 +403,18 @@ class TinyAIManager {
     return null;
   }
 
+  existsFirstHistoryIndex(id) {
+    const history = this.getHistory(id);
+    if (history && history.data[0]) return true;
+    return false;
+  }
+
+  getFirstHistoryIndexData(id) {
+    const history = this.getHistory(id);
+    if (history && history.data[0]) return history.data[0];
+    return null;
+  }
+
   addHistoryData(data, id) {
     const selectedId = id || this._selectedHistory;
     if (this.history[selectedId]) {
@@ -902,6 +914,24 @@ const AiScriptStart = () => {
                 },
               ],
             });
+          }
+
+          // Exists data
+          else {
+            // Get first history data
+            const tinyData = tinyAi.getFirstHistoryIndexData();
+
+            // In the future this replacement will be optional. This is the process to update the fic data for the user not to use outdated data.
+            if (
+              tinyData &&
+              tinyData.parts &&
+              tinyData.parts[0] &&
+              tinyData.parts[0].inlineData
+            )
+              tinyData.parts[0].inlineData = {
+                mime_type: ficData.mime,
+                data: Base64.encode(ficData.data),
+              };
           }
 
           // Clear data and start system

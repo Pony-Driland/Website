@@ -313,7 +313,7 @@ const setGoogleAi = (
               else if (!res.ok)
                 reject(
                   new Error(
-                    `Erro HTTP ${fetchRequest.status}: ${fetchRequest.statusText}`,
+                    `Error ${typeof res.status === "number" ? `HTTP ${res.status}` : "UNKNOWN ERROR"}: ${typeof res.statusText === "string" ? (res.statusText.length > 0 ? res.statusText : "...") : "Unknown"}`,
                   ),
                 );
               // Streaming
