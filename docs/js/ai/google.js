@@ -1,7 +1,7 @@
 const setGoogleAi = (
   tinyGoogleAI,
   GEMINI_API_KEY,
-  MODEL_DATA = "gemini-1.5-pro",
+  MODEL_DATA = "gemini-1.5-flash",
 ) => {
   const apiUrl = "https://generativelanguage.googleapis.com/v1beta";
   tinyGoogleAI.setApiKey(GEMINI_API_KEY);
