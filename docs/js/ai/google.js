@@ -349,23 +349,48 @@ const setGoogleAi = (
 
               // Update Token
               tinyGoogleAI._setNextModelsPageToken(result.nextPageToken);
+              const newModels = [];
+              const modelOrder = {
+                "gemini-1.5-flash": 1,
+                "gemini-1.5-pro": 0,
+              };
 
               for (const index in result.models) {
+                const id = result.models[index].name.substring(7);
+                let allowed = false;
+                for (const id2 in modelOrder) {
+                  if (id.startsWith(id2) || id === id2) allowed = true;
+                }
+
+                if (allowed) {
+                  if (typeof modelOrder[id] === "number")
+                    result.models[index]._NEW_ORDER = modelOrder[id];
+                  newModels.push(result.models[index]);
+                }
+              }
+
+              for (const index in result.models) {
+                if (typeof result.models[index]._NEW_ORDER !== "number")
+                  result.models[index]._NEW_ORDER = 999999;
+              }
+              newModels.sort((a, b) => a._NEW_ORDER - b._NEW_ORDER);
+
+              for (const index in newModels) {
                 const newModel = {
-                  _response: result.models[index],
-                  name: result.models[index].name,
-                  id: result.models[index].name.substring(7),
-                  displayName: result.models[index].displayName,
-                  version: result.models[index].version,
-                  description: result.models[index].description,
-                  inputTokenLimit: result.models[index].inputTokenLimit,
-                  outputTokenLimit: result.models[index].outputTokenLimit,
-                  temperature: result.models[index].temperature,
-                  maxTemperature: result.models[index].maxTemperature,
-                  topP: result.models[index].topP,
-                  topK: result.models[index].topK,
+                  _response: newModels[index],
+                  name: newModels[index].name,
+                  id: newModels[index].name.substring(7),
+                  displayName: newModels[index].displayName,
+                  version: newModels[index].version,
+                  description: newModels[index].description,
+                  inputTokenLimit: newModels[index].inputTokenLimit,
+                  outputTokenLimit: newModels[index].outputTokenLimit,
+                  temperature: newModels[index].temperature,
+                  maxTemperature: newModels[index].maxTemperature,
+                  topP: newModels[index].topP,
+                  topK: newModels[index].topK,
                   supportedGenerationMethods:
-                    result.models[index].supportedGenerationMethods,
+                    newModels[index].supportedGenerationMethods,
                 };
 
                 const inserted = tinyGoogleAI._insertNewModel(newModel);
