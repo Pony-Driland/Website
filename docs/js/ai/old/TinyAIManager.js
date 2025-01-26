@@ -4,6 +4,8 @@ class TinyAIManager {
   constructor() {
     // Cache
     this.cache = {};
+    this._insertServerCache = null;
+    this._getServerCache = null;
   }
 
   // Server Cache
