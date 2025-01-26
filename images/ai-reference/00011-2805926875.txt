@@ -1,0 +1,36 @@
+Image Width: {
+  "value": 1024,
+  "description": "1024px"
+}
+Image Height: {
+  "value": 1320,
+  "description": "1320px"
+}
+Bit Depth: {
+  "value": 8,
+  "description": "8"
+}
+Color Type: {
+  "value": 2,
+  "description": "RGB"
+}
+Compression: {
+  "value": 0,
+  "description": "Deflate/Inflate"
+}
+Filter: {
+  "value": 0,
+  "description": "Adaptive"
+}
+Interlace: {
+  "value": 0,
+  "description": "Noninterlaced"
+}
+parameters: {
+  "value": "score_9, princess luna, feral, female, alicorn, solo, happy, solo, full body, stomach_background,  <lora:geewhy_xl5:1> geewhy_style\nSteps: 35, Sampler: Euler a, Schedule type: Automatic, CFG scale: 7, Seed: 2805926875, Size: 1024x1324, Model hash: a4547c11fd, Model: prefectPonyXL_v3, Clip skip: 2, Lora hashes: \"geewhy_xl5: e31054fa052c\", Version: f2.0.1v1.10.1-previous-597-gecd4d28e",
+  "description": "score_9, princess luna, feral, female, alicorn, solo, happy, solo, full body, stomach_background,  <lora:geewhy_xl5:1> geewhy_style\nSteps: 35, Sampler: Euler a, Schedule type: Automatic, CFG scale: 7, Seed: 2805926875, Size: 1024x1324, Model hash: a4547c11fd, Model: prefectPonyXL_v3, Clip skip: 2, Lora hashes: \"geewhy_xl5: e31054fa052c\", Version: f2.0.1v1.10.1-previous-597-gecd4d28e"
+}
+FileType: {
+  "value": "png",
+  "description": "PNG"
+}

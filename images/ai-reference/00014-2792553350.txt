@@ -1,0 +1,36 @@
+Image Width: {
+  "value": 512,
+  "description": "512px"
+}
+Image Height: {
+  "value": 640,
+  "description": "640px"
+}
+Bit Depth: {
+  "value": 8,
+  "description": "8"
+}
+Color Type: {
+  "value": 2,
+  "description": "RGB"
+}
+Compression: {
+  "value": 0,
+  "description": "Deflate/Inflate"
+}
+Filter: {
+  "value": 0,
+  "description": "Adaptive"
+}
+Interlace: {
+  "value": 0,
+  "description": "Noninterlaced"
+}
+parameters: {
+  "value": "score_9, pony, semi antro, twilight sparkle, white background, happy, belly button, looking at viewer, on two feets, female  <lora:Wholesome_MLP-v1.2:1>, (high art quality), (high detailed), 8k, (high resolution), masterpiece, best quality, amazing quality\nSteps: 35, Sampler: Euler a, Schedule type: Automatic, CFG scale: 7.1, Seed: 2792553350, Size: 512x640, Model hash: 81670468ae, Model: prefectPonyXL_v40, ControlNet 0: \"Module: openpose_full, Model: kohya_controllllite_xl_openpose_anime [7e5349e5], Weight: 1, Resize Mode: Crop and Resize, Processor Res: 512, Threshold A: 0.5, Threshold B: 0.5, Guidance Start: 0.0, Guidance End: 1.0, Pixel Perfect: True, Control Mode: Balanced, Hr Option: Both\", Lora hashes: \"Wholesome_MLP-v1.2: 712253bff3b4\", Version: f2.0.1v1.10.1-previous-628-gbae1bba8, Module 1: sdxl_vae",
+  "description": "score_9, pony, semi antro, twilight sparkle, white background, happy, belly button, looking at viewer, on two feets, female  <lora:Wholesome_MLP-v1.2:1>, (high art quality), (high detailed), 8k, (high resolution), masterpiece, best quality, amazing quality\nSteps: 35, Sampler: Euler a, Schedule type: Automatic, CFG scale: 7.1, Seed: 2792553350, Size: 512x640, Model hash: 81670468ae, Model: prefectPonyXL_v40, ControlNet 0: \"Module: openpose_full, Model: kohya_controllllite_xl_openpose_anime [7e5349e5], Weight: 1, Resize Mode: Crop and Resize, Processor Res: 512, Threshold A: 0.5, Threshold B: 0.5, Guidance Start: 0.0, Guidance End: 1.0, Pixel Perfect: True, Control Mode: Balanced, Hr Option: Both\", Lora hashes: \"Wholesome_MLP-v1.2: 712253bff3b4\", Version: f2.0.1v1.10.1-previous-628-gbae1bba8, Module 1: sdxl_vae"
+}
+FileType: {
+  "value": "png",
+  "description": "PNG"
+}
