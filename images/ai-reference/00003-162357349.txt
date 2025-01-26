@@ -1,0 +1,36 @@
+Image Width: {
+  "value": 1216,
+  "description": "1216px"
+}
+Image Height: {
+  "value": 832,
+  "description": "832px"
+}
+Bit Depth: {
+  "value": 8,
+  "description": "8"
+}
+Color Type: {
+  "value": 2,
+  "description": "RGB"
+}
+Compression: {
+  "value": 0,
+  "description": "Deflate/Inflate"
+}
+Filter: {
+  "value": 0,
+  "description": "Adaptive"
+}
+Interlace: {
+  "value": 0,
+  "description": "Noninterlaced"
+}
+parameters: {
+  "value": "score_9, score_8_up, score_7_up, score_6_up, score_5_up, score_4_up, Princess Luna, feral pony, open mouth, all fours, view from above, pov, tongue out, drool, seductive look, heavenly, looking at viewer, close up, wide open eyes\n\nNegative prompt: simple background, lowres, low res, bad anatomy, text, worst quality, low quality, JPEG artifacts, signature, watermark, blurry, watermark, text, speech bubble, monochrome, out of frame, deformed, blurry, disfigured, poorly drawn face, mutation, mutated, extra limb, ugly, out of focus, depth of field, focal blur, signature, extra hands, extra fingers, disfigured, clothes, penis, sex, lewd, sexual, balls, oral, anal, nsfw, suggestive, romantic, genital, genitals, 3D\nSteps: 50, Sampler: Euler a, CFG scale: 7.5, Seed: 162357349, Size: 1216x832, Model hash: 67ab2fd8ec, Model: ponyDiffusionV6XL_v6StartWithThisOne, VAE hash: 235745af8d, VAE: sdxl_vae.safetensors, Clip skip: 2, Version: f0.0.17v1.8.0rc-latest-276-g29be1da7",
+  "description": "score_9, score_8_up, score_7_up, score_6_up, score_5_up, score_4_up, Princess Luna, feral pony, open mouth, all fours, view from above, pov, tongue out, drool, seductive look, heavenly, looking at viewer, close up, wide open eyes\n\nNegative prompt: simple background, lowres, low res, bad anatomy, text, worst quality, low quality, JPEG artifacts, signature, watermark, blurry, watermark, text, speech bubble, monochrome, out of frame, deformed, blurry, disfigured, poorly drawn face, mutation, mutated, extra limb, ugly, out of focus, depth of field, focal blur, signature, extra hands, extra fingers, disfigured, clothes, penis, sex, lewd, sexual, balls, oral, anal, nsfw, suggestive, romantic, genital, genitals, 3D\nSteps: 50, Sampler: Euler a, CFG scale: 7.5, Seed: 162357349, Size: 1216x832, Model hash: 67ab2fd8ec, Model: ponyDiffusionV6XL_v6StartWithThisOne, VAE hash: 235745af8d, VAE: sdxl_vae.safetensors, Clip skip: 2, Version: f0.0.17v1.8.0rc-latest-276-g29be1da7"
+}
+FileType: {
+  "value": "png",
+  "description": "PNG"
+}

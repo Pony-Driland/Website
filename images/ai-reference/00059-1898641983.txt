@@ -1,0 +1,36 @@
+Image Width: {
+  "value": 832,
+  "description": "832px"
+}
+Image Height: {
+  "value": 1216,
+  "description": "1216px"
+}
+Bit Depth: {
+  "value": 8,
+  "description": "8"
+}
+Color Type: {
+  "value": 2,
+  "description": "RGB"
+}
+Compression: {
+  "value": 0,
+  "description": "Deflate/Inflate"
+}
+Filter: {
+  "value": 0,
+  "description": "Adaptive"
+}
+Interlace: {
+  "value": 0,
+  "description": "Noninterlaced"
+}
+parameters: {
+  "value": "score_9, score_8_up, score_7_up,score_6_up, score_5_up, score_4_up, solo, 1 girl, pony, feral, highly detailed macro illustration, Princess Luna smirking, intricate details, high resolution, sharp focus, (from_above:1.3), best render quality, detailed mouth, dark throat, open mouth, saliva, close-up on mouth,  open wings <lora:Wholesome_MLP-v1.2:1>\nNegative prompt: (e621p_low), poorly drawn, bad anatomy, Bad proportions, watercolor painting, brush strokes, , blurry, Signature, watermark, bad face, distorted face, messed up eyes, deformed, bad fingers, bw\nSteps: 35, Sampler: Euler a, Schedule type: Automatic, CFG scale: 7.5, Seed: 1898641983, Size: 832x1216, Model hash: 8cd86b11ad, Model: ponyDiffusionV6XL_v6StartWithThisOne, Clip skip: 2, Lora hashes: \"Wholesome_MLP-v1.2: 712253bff3b4\", Version: f2.0.1v1.10.1-previous-581-ge4ad1140",
+  "description": "score_9, score_8_up, score_7_up,score_6_up, score_5_up, score_4_up, solo, 1 girl, pony, feral, highly detailed macro illustration, Princess Luna smirking, intricate details, high resolution, sharp focus, (from_above:1.3), best render quality, detailed mouth, dark throat, open mouth, saliva, close-up on mouth,  open wings <lora:Wholesome_MLP-v1.2:1>\nNegative prompt: (e621p_low), poorly drawn, bad anatomy, Bad proportions, watercolor painting, brush strokes, , blurry, Signature, watermark, bad face, distorted face, messed up eyes, deformed, bad fingers, bw\nSteps: 35, Sampler: Euler a, Schedule type: Automatic, CFG scale: 7.5, Seed: 1898641983, Size: 832x1216, Model hash: 8cd86b11ad, Model: ponyDiffusionV6XL_v6StartWithThisOne, Clip skip: 2, Lora hashes: \"Wholesome_MLP-v1.2: 712253bff3b4\", Version: f2.0.1v1.10.1-previous-581-ge4ad1140"
+}
+FileType: {
+  "value": "png",
+  "description": "PNG"
+}
