@@ -217,17 +217,32 @@ class TinyAIManager {
   }
 
   getModelData(id) {
-    return this.models.find((item) => item.id === id);
+    const model = this.models.find((item) => item.id === id);
+    if (model) return model;
+    else {
+      for (const index in this.models) {
+        if (this.models[index].category) {
+          const modelCategory = this.models[index].data.find(
+            (item) => item.id === id,
+          );
+          if (modelCategory) return modelCategory;
+        }
+      }
+    }
+    return null;
   }
 
   existsModel(id) {
     return this.getModelData(id) ? true : false;
   }
 
+  // Insert model
   _insertNewModel(model) {
     if (this.models.findIndex((item) => item.id === model.id) < 0) {
+      // Model data
       const newData = {
         _response: model._response,
+        index: typeof model.index === "number" ? model.index : 9999999,
         name: typeof model.name === "string" ? model.name : null,
         id: typeof model.id === "string" ? model.id : null,
         displayName:
@@ -253,6 +268,7 @@ class TinyAIManager {
         topK: typeof model.topK === "number" ? model.topK : null,
       };
 
+      // Supported generation methods
       if (Array.isArray(model.supportedGenerationMethods)) {
         newData.supportedGenerationMethods = [];
         for (const index in model.supportedGenerationMethods) {
@@ -263,7 +279,38 @@ class TinyAIManager {
         }
       }
 
-      this.models.push(newData);
+      // Is category
+      if (
+        model.category &&
+        typeof model.category.id === "string" &&
+        typeof model.category.displayName === "string" &&
+        typeof model.category.index === "number"
+      ) {
+        // Check category
+        let category = this.models.find(
+          (item) => item.category === model.category.id,
+        );
+        // Insert new category
+        if (!category) {
+          category = {
+            category: model.category.id,
+            displayName: model.category.displayName,
+            index: model.category.index,
+            data: [],
+          };
+          this.models.push(category);
+        }
+
+        // Complete and sort data
+        category.data.push(newData);
+        category.data.sort((a, b) => a.index - b.index);
+      }
+
+      // Normal mode
+      else this.models.push(newData);
+
+      // Sort data
+      this.models.sort((a, b) => a.index - b.index);
       return newData;
     }
     return null;
@@ -1358,14 +1405,39 @@ const AiScriptStart = () => {
       const models = tinyAi.getModelsList();
       resetModelSelector();
       if (models.length > 0) {
-        for (const index in models) {
+        // Insert model
+        const insertItem = (id, displayName, disabled = false) =>
           modelSelector.append(
-            $("<option>", { value: models[index].id }).text(
-              models[index].displayName,
-            ),
+            $("<option>", { value: id })
+              .prop("disabled", disabled)
+              .text(displayName),
           );
+
+        // Get models
+        for (const index in models) {
+          // Normal insert
+          if (!models[index].category && !Array.isArray(models[index].data))
+            insertItem(models[index].id, models[index].displayName);
+          // Category insert
+          else {
+            // Category
+            insertItem(
+              models[index].category,
+              models[index].displayName || models[index].category,
+              true,
+            );
+
+            // Category items
+            for (const index2 in models[index].data) {
+              insertItem(
+                models[index].data[index2].id,
+                models[index].data[index2].displayName,
+              );
+            }
+          }
         }
 
+        // New model value
         modelSelector.val(
           localStorage.getItem("tiny-ai-storage-model-selected") ||
             tinyAi.getModel(),

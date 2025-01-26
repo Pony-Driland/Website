@@ -3,9 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 const folderPath = path.join(__dirname, '../../images/ai-reference');
-
 try {
-
     fs.readdir(folderPath, (err, files) => {
         if (err) {
             console.error(err);
@@ -37,7 +35,6 @@ try {
             }
         }
     });
-
 } catch (error) {
     console.log('Error: ' + error.message);
 }
