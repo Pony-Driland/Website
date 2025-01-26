@@ -1,5 +1,10 @@
 class TinyAIManager {
   #_apiKey;
+  #_getModels;
+  #_genContentApi;
+  #_historyIds;
+  #_selectedHistory;
+  #_partTypes;
 
   constructor() {
     // Config
@@ -7,19 +12,17 @@ class TinyAIManager {
     this.#_apiKey = null;
 
     // History
-    this._selectedHistory = null;
+    this.#_selectedHistory = null;
     this.history = {};
-    this._historyIds = 0;
+    this.#_historyIds = 0;
 
     // Models
     this.models = [];
     this._nextModelsPageToken = null;
 
     // Functions
-    this._genContentApi = null;
-    this._insertServerCache = null;
-    this._getServerCache = null;
-    this._getModels = null;
+    this.#_genContentApi = null;
+    this.#_getModels = null;
 
     // Ai Config
     this.config = {};
@@ -32,7 +35,7 @@ class TinyAIManager {
     this.config.enableEnhancedCivicAnswers = false;
 
     // Build Parts
-    this._partTypes = {
+    this.#_partTypes = {
       text: (text) => (typeof text === "string" ? text : null),
       inlineData: (data) => {
         if (typeof data.mime_type === "string" && typeof data.data === "string")
@@ -172,8 +175,8 @@ class TinyAIManager {
     const insertPart = (content) => {
       const tinyResult = {};
       for (const valName in content) {
-        if (typeof tinyThis._partTypes[valName] === "function")
-          tinyResult[valName] = tinyThis._partTypes[valName](content[valName]);
+        if (typeof tinyThis.#_partTypes[valName] === "function")
+          tinyResult[valName] = tinyThis.#_partTypes[valName](content[valName]);
       }
       contentData.parts.push(tinyResult);
     };
@@ -199,12 +202,12 @@ class TinyAIManager {
   }
 
   _setGetModels(getModels) {
-    this._getModels = typeof getModels === "function" ? getModels : null;
+    this.#_getModels = typeof getModels === "function" ? getModels : null;
   }
 
   getModels(pageSize = 50, pageToken = null) {
-    if (typeof this._getModels === "function")
-      return this._getModels(
+    if (typeof this.#_getModels === "function")
+      return this.#_getModels(
         this.#_apiKey,
         pageSize,
         pageToken || this._nextModelsPageToken,
@@ -357,12 +360,12 @@ class TinyAIManager {
 
   // Fetch API
   _setGenContent(callback) {
-    this._genContentApi = typeof callback === "function" ? callback : null;
+    this.#_genContentApi = typeof callback === "function" ? callback : null;
   }
 
   genContent(data, controller, streamCallback) {
-    if (typeof this._genContentApi === "function")
-      return this._genContentApi(
+    if (typeof this.#_genContentApi === "function")
+      return this.#_genContentApi(
         this.#_apiKey,
         typeof streamCallback === "function" ? true : false,
         data,
@@ -385,18 +388,18 @@ class TinyAIManager {
   // History
   selectHistory(id) {
     if (this.history[id]) {
-      this._selectedHistory = id;
+      this.#_selectedHistory = id;
       return true;
     }
     return false;
   }
 
   getHistoryId() {
-    return this._selectedHistory;
+    return this.#_selectedHistory;
   }
 
   getHistory(id) {
-    return this.history[id || this._selectedHistory] || null;
+    return this.history[id || this.#_selectedHistory] || null;
   }
 
   getHistoryIndex(index, id) {
@@ -463,10 +466,10 @@ class TinyAIManager {
   }
 
   addHistoryData(data, id) {
-    const selectedId = id || this._selectedHistory;
+    const selectedId = id || this.#_selectedHistory;
     if (this.history[selectedId]) {
-      const newId = this._historyIds;
-      this._historyIds++;
+      const newId = this.#_historyIds;
+      this.#_historyIds++;
       this.history[selectedId].data.push(data);
       this.history[selectedId].ids.push(newId);
       return newId;
@@ -475,7 +478,7 @@ class TinyAIManager {
   }
 
   setHistorySystemInstruction(data, id) {
-    const selectedId = id || this._selectedHistory;
+    const selectedId = id || this.#_selectedHistory;
     if (this.history[selectedId] && typeof data === "string") {
       this.history[selectedId].systemInstruction = data;
       return;
@@ -484,7 +487,7 @@ class TinyAIManager {
   }
 
   getHistorySystemInstruction(id) {
-    const selectedId = id || this._selectedHistory;
+    const selectedId = id || this.#_selectedHistory;
     if (
       this.history[selectedId] &&
       typeof this.history[selectedId].systemInstruction === "string"
@@ -495,7 +498,7 @@ class TinyAIManager {
   }
 
   setHistoryModel(data, id) {
-    const selectedId = id || this._selectedHistory;
+    const selectedId = id || this.#_selectedHistory;
     if (this.history[selectedId] && typeof data === "string") {
       this.history[selectedId].model = data;
       return;
