@@ -349,12 +349,38 @@ const setGoogleAi = (
 
               // Update Token
               tinyGoogleAI._setNextModelsPageToken(result.nextPageToken);
-              const newModels = [];
+
+              // Categories
+              const newModels = [
+                {
+                  category: "main",
+                  index: 0,
+                  displayName: "--> Main models",
+                  data: [],
+                },
+                {
+                  category: "exp",
+                  index: 1,
+                  displayName: "--> Experimental models",
+                  data: [],
+                },
+                {
+                  category: "others",
+                  index: 2,
+                  displayName: "--> Other models",
+                  data: [],
+                },
+              ];
               const modelOrder = {
-                "gemini-1.5-flash": 1,
-                "gemini-1.5-pro": 0,
+                "gemini-2.0-flash": { index: 0, category: "main" },
+                "gemini-1.5-flash": { index: 1, category: "main" },
+                "gemini-1.5-pro": { index: 2, category: "main" },
+                "gemini-1.0-pro": { index: 3, category: "main" },
+                "gemini-2.0-flash-exp": { index: 0, category: "exp" },
               };
 
+              // Read models
+              console.log("[Google Generative] Models list", result.models);
               for (const index in result.models) {
                 const id = result.models[index].name.substring(7);
                 let allowed = false;
@@ -362,39 +388,69 @@ const setGoogleAi = (
                   if (id.startsWith(id2) || id === id2) allowed = true;
                 }
 
+                // Allow add the model
                 if (allowed) {
-                  if (typeof modelOrder[id] === "number")
-                    result.models[index]._NEW_ORDER = modelOrder[id];
-                  newModels.push(result.models[index]);
+                  // Add custom order
+                  if (
+                    modelOrder[id] &&
+                    typeof modelOrder[id].index === "number"
+                  )
+                    result.models[index]._NEW_ORDER = modelOrder[id].index;
+                  else result.models[index]._NEW_ORDER = 999999;
+
+                  // Add Category
+                  if (
+                    modelOrder[id] &&
+                    typeof modelOrder[id].category === "string"
+                  ) {
+                    const category = newModels.find(
+                      (item) => item.category === modelOrder[id].category,
+                    );
+                    if (category) category.data.push(result.models[index]);
+                    // Nope
+                    else
+                      newModels[newModels.length - 1].data.push(
+                        result.models[index],
+                      );
+                  } else
+                    newModels[newModels.length - 1].data.push(
+                      result.models[index],
+                    );
                 }
               }
 
-              for (const index in result.models) {
-                if (typeof result.models[index]._NEW_ORDER !== "number")
-                  result.models[index]._NEW_ORDER = 999999;
-              }
-              newModels.sort((a, b) => a._NEW_ORDER - b._NEW_ORDER);
-
+              // Send data
               for (const index in newModels) {
-                const newModel = {
-                  _response: newModels[index],
-                  name: newModels[index].name,
-                  id: newModels[index].name.substring(7),
-                  displayName: newModels[index].displayName,
-                  version: newModels[index].version,
-                  description: newModels[index].description,
-                  inputTokenLimit: newModels[index].inputTokenLimit,
-                  outputTokenLimit: newModels[index].outputTokenLimit,
-                  temperature: newModels[index].temperature,
-                  maxTemperature: newModels[index].maxTemperature,
-                  topP: newModels[index].topP,
-                  topK: newModels[index].topK,
-                  supportedGenerationMethods:
-                    newModels[index].supportedGenerationMethods,
-                };
+                for (const index2 in newModels[index].data) {
+                  const newModel = {
+                    _response: newModels[index].data[index2],
+                    category: {
+                      displayName: newModels[index].displayName,
+                      id: newModels[index].category,
+                      index: newModels[index].index,
+                    },
+                    index: newModels[index].data[index2]._NEW_ORDER,
+                    name: newModels[index].data[index2].name,
+                    id: newModels[index].data[index2].name.substring(7),
+                    displayName: newModels[index].data[index2].displayName,
+                    version: newModels[index].data[index2].version,
+                    description: newModels[index].data[index2].description,
+                    inputTokenLimit:
+                      newModels[index].data[index2].inputTokenLimit,
+                    outputTokenLimit:
+                      newModels[index].data[index2].outputTokenLimit,
+                    temperature: newModels[index].data[index2].temperature,
+                    maxTemperature:
+                      newModels[index].data[index2].maxTemperature,
+                    topP: newModels[index].data[index2].topP,
+                    topK: newModels[index].data[index2].topK,
+                    supportedGenerationMethods:
+                      newModels[index].data[index2].supportedGenerationMethods,
+                  };
 
-                const inserted = tinyGoogleAI._insertNewModel(newModel);
-                if (inserted) finalData.newData.push(inserted);
+                  const inserted = tinyGoogleAI._insertNewModel(newModel);
+                  if (inserted) finalData.newData.push(inserted);
+                }
               }
             }
 

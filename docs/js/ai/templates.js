@@ -10,6 +10,7 @@ aiTemplates.helpers.ficTellLines = `Tell which lines of fic you are referring to
 aiTemplates.helpers.ficTimeChecker = `
 The "---------- Official Pony Driland fic file ----------" is the beginning where the official file data of the fic Pony Driland begin and the "---------- The end Official Pony Driland fic file ----------" is where this official data ends, this information is important for you to know the difference between official content from non-official content.
 
+Fic line markers in the story are presented as "[Fic Line X]", tell the fic line markers in natural language only.
 Time markers in the story are presented as "Day Number: X", tell the time markers in natural language only.
 Day markers in the story are presented as "Day Status: X", used to mark if the specific part of the story is "morning", "evening", "night", "lateAtNight", tell the day markers in natural language only.
 Weather markers in the story are presented as "Weather: X", used to mark if the specific part of the story is "sun", "bolt", "rain", "heavyrain", "rain", "snow", tell the weather markers in natural language only.
