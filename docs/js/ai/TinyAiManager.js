@@ -1,4 +1,4 @@
-class TinyAIManager {
+class TinyAiManager {
   #_apiKey;
   #_getModels;
   #_genContentApi;
@@ -588,7 +588,7 @@ const AiScriptStart = () => {
   const tinyAiScript = {};
 
   // Read AI Apis
-  const tinyAi = new TinyAIManager();
+  const tinyAi = new TinyAiManager();
   const tinyStorage = new TinyAiStorage();
   let aiLogin = null;
   tinyAiScript.setAiLogin = (newAiLogin) => {
