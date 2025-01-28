@@ -26010,6 +26010,315 @@
   {
     "value": "Then Aniya was finally finished closing the door and only stayed Vinny and Rayane in the room. Vinny looked at Rayane and realized that she was very thoughtful about the subject of the conversation.",
     "type": "action"
+  },
+  
+  {
+    "value": "Rayane... and Marlon? Do you know where his whereabouts are?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane looks a little surprised in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah? Marlon? I have no idea, I never heard any more information about him.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Remember the tunnel before you close the door with Ivy? There was no one alive who knew we were back there, just Marlon, don't you remember?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I just remember James saying that he was the one who warned us that we were there.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes, but that pony, who seemed to be the leader of the others, looked like the boss, she knew I was there, and she knew my name... Where do you guys know each other from? And do you have any idea how she knew it was me?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was surprised to hear it, looking worried about the supposed pony.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wait.... Pri...? A... a...",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane feels a nervousness without knowing how to finish the subject.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AH? Ah...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? Then we talk about it...",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was confused, suspicious of something and then looked curiously at Rayane.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ham? Why do you avoid talking about her?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "We haven't talked in a long time... that's all.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane seems to be feeling a little annoyed remembering the other pony that fought with her.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Weeell... Rayane... we can talk, I'm not her, tell me, do you still like her?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane replied still annoyed about the subject of the conversation and walked towards the door.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... She's just an old friend. Let's avoid talking about this subject. I think I go to the street fair looking for something interesting to do.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a crying face with his eyes fixed on Rayane in silence, still seeing Rayane leaving, waiting for her to react in an understanding way.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ooh, I'm sorry.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then looked a little sorry for Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh?",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny went to Rayane's side during the talk.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I think I'm going to talk a little about my past... the origin of my person... How I got like this, so nice and charismatic. Can I accompany the princess to this epic adventure in search of the golden snack at the fair?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane breathed deeply in response, feeling a sadness in the heart.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Sorry Vinny, I still haven't fully recovered from our last night. Too many problems, too many things happening at once, especially your loss from yesterday. I need to rest my head a little more. But... what? Golden snack?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ohh. ok, ok... Well, do you want to stay with me at the street fair? If not, I'll take a walk around the ghost town by day, see what I can find there, and get to know the territory so that when I arrive at night, I'll know where we're going.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little before answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What are we going to do at the street fair?~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a super poker face.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You... you... You who said you were going to the street fair, well, I'll give you some time to process and think, I'm going to the city of ghosts, and then I'm going to the fair, if you want to go there and have some fun. But are you ok to go to ghost town there? Apparently you have to have a good psychologist to get in there.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny prepares to go to the city of ghosts, waiting for Rayane replies. Rayane laughs a little before smirking at Vinny, booping him snout in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Silly~ The ghost town is only dangerous at night. But there's nothing interesting there during the day. Many doors are likely to be locked. You'll end up scaring the sleeping spirits with this little red bow~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah... Ah! I'm used to getting attention baby, if we want our future to shine brighter than gold, we have to get used to the shine, if you really believe in me, believe it.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny puts on dark glasses and spoke.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Our future is going to shine so much that you'll need to buy sunglasses like mine. Hehe! Otherwise you'll be blind.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Rayane giggles a little in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Silly~ Just don't forget your appointment for the night. Looks like you're going to have a long journey if someone really accepts your invitation~",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny does a poker face for a few seconds, then he'd be talking a little more serious again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes, when Jasmin learns to fly, I'll be wandering around looking for a clue, at night I'll be free, if she wants to learn to fly today, I don't know her will for that.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny started to walk towards the city of ghosts but calmly waiting for Rayane to say something.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Remember that Rain will do something to you again. Do you really think she would let you go to her house for free? She certainly already knows why you want to go there.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A...Aaah? For free? It's not me wanting it. It's Amy and Jasmin, if Rain throws a curse I won't go, that will make both Jamin and Amy very upset, and she knows it.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "She'll throw a curse if you don't behave at her house... But I have a slight feeling she's going to play with your psyche again when you get there.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Nah... I have charm, in the end I'll be behaved, I can have some jokes, but I have enough ways to talk to anyone, no matter how crazy it seems. Hihi!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Play with Rain? Heh... You'll end up in another silly, crazy prank of hers again~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh! I'll make sure to have the 2 friends close to me all the time, if she wants to play, she'll have to play with them around.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Vinny scratched his head a little before he finished the conversation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... but we can keep talking later, i need to go now.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hmm... Okay~ I hope you know what you're doing.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Y..Yes! Good luck at your street fair time.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Vinny then sends a kiss to Rayane, preparing to fly.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Heh Good luck my dream~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane sends a kiss back, hoping Vinny would finally start flying up to the ghost village at full speed.",
+    "type": "action"
   }
   
 ]
