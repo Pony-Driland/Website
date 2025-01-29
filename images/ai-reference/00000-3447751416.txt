@@ -1,0 +1,62 @@
+Image Width: {
+  "value": 1024,
+  "description": "1024px"
+}
+Image Height: {
+  "value": 1424,
+  "description": "1424px"
+}
+Bit Depth: {
+  "value": 8,
+  "description": "8"
+}
+Color Type: {
+  "value": 2,
+  "description": "RGB"
+}
+Compression: {
+  "value": 0,
+  "description": "Deflate/Inflate"
+}
+Filter: {
+  "value": 0,
+  "description": "Adaptive"
+}
+Interlace: {
+  "value": 0,
+  "description": "Noninterlaced"
+}
+parameters: {
+  "value": "score_9, Daybreaker, looking at the viewer, low-angle view, (from below), feral, pony, floppy ears, evil smirking look, fluffy, drool, solo, white background <lora:Wholesome-MLP-v1.3b:0.7>\nSteps: 35, Sampler: Euler a, Schedule type: Automatic, CFG scale: 7, Seed: 3447751416, Size: 1024x1424, Model hash: 821aa5537f, Model: autismmixSDXL_autismmixPony, Lora hashes: \"Wholesome-MLP-v1.3b: E76B7288CD56\", Version: f1.2.5-v1.10.1RC-latest-975-gadce4eed",
+  "description": "score_9, Daybreaker, looking at the viewer, low-angle view, (from below), feral, pony, floppy ears, evil smirking look, fluffy, drool, solo, white background <lora:Wholesome-MLP-v1.3b:0.7>\nSteps: 35, Sampler: Euler a, Schedule type: Automatic, CFG scale: 7, Seed: 3447751416, Size: 1024x1424, Model hash: 821aa5537f, Model: autismmixSDXL_autismmixPony, Lora hashes: \"Wholesome-MLP-v1.3b: E76B7288CD56\", Version: f1.2.5-v1.10.1RC-latest-975-gadce4eed"
+}
+FileType: {
+  "value": "png",
+  "description": "PNG"
+}
+  "description": "\u0000\u0000\u0000\u0000"
+}
+Device Model Number: {
+  "value": "\u0000\u0000\u0000\u0000",
+  "description": "\u0000\u0000\u0000\u0000"
+}
+Rendering Intent: {
+  "value": 0,
+  "description": "Perceptual"
+}
+Profile Creator: {
+  "value": "lcms",
+  "description": "lcms"
+}
+ICC Description: {
+  "value": "sRGB-elle-V2-srgbtrc.icc\u0000\u0000\u0000",
+  "description": "sRGB-elle-V2-srgbtrc.icc\u0000\u0000\u0000"
+}
+ICC Copyright: {
+  "value": "Copyright 2015, Elle Stone (website: http://ninedegreesbelow.com/; email: ellestone@ninedegreesbelow.com). This ICC profile is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License (https://creativecommons.org/licenses/by-sa/3.0/legalc",
+  "description": "Copyright 2015, Elle Stone (website: http://ninedegreesbelow.com/; email: ellestone@ninedegreesbelow.com). This ICC profile is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License (https://creativecommons.org/licenses/by-sa/3.0/legalc"
+}
+FileType: {
+  "value": "jpeg",
+  "description": "JPEG"
+}
