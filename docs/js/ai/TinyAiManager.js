@@ -1745,6 +1745,11 @@ const AiScriptStart = () => {
               else {
                 console.log(`AI Generator Error`, result.error);
                 alert(result.error.message);
+                if (
+                  typeof result.error.message === "string" &&
+                  result.error.message.length > 0
+                )
+                  tinyNotification.send("Ai Error", result.error.message);
               }
 
               // Complete
