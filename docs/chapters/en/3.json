@@ -23776,7 +23776,7 @@
   }, 
 
   {
-    "value": "Y...Yeah! Yeah, that's fine, you have my support, but Amy... don't forget my words I've said to you now and before. Our last night talk about Yasmin.",
+    "value": "Y...Yeah! Yeah, that's fine, you have my support, but Amy... don't forget my words I've said to you now and before. Our last night talk about Jasmin.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -26300,6 +26300,9 @@
   }, 
 
   {
+    "set": {
+      "playlistPlay": null
+    },
     "value": "Y..Yes! Good luck at your street fair time.",
     "character": "Vinny",
     "type": "dialogue"
@@ -26318,6 +26321,357 @@
 
   {
     "value": "Rayane sends a kiss back, hoping Vinny would finally start flying up to the ghost village at full speed.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "songs-for-an-empty-world",
+      "where": "???"
+    },
+    "value": "Meanwhile in a very distant place, Rainbow Queen was walking in a mysterious corridor, the place was abandoned and had many random doors and some old paintings. Every step of Rainbow Queen echoed the entire corridor due to silence, then Rainbow Queen suddenly stopped walking when she heard steps that did not belong to her.",
+    "type": "action"
+  },  
+
+  {
+    "value": "What?",
+    "character": "Rainbow Queen",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Rainbow Queen didn't move, she just looked the side curiously towards the sound.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Amy? My dear, why are you here?",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy blushed shyly listening to Rainbow Queen's voice saying her name. So... Amy responded delicately.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Ma... Master? I am bringing an small invitation to you, but What are you doing here? You haven't been here in this corridor for many years.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen then breathes deeply and looked back, Rainbow Queen's intimidating gaze then changed to a slightly more friendly look when she saw Amy's innocent look.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Hmmmm... It's been years since I don't get invitations~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen smirks at Amy, responding kindly.",
+    "type": "action"
+  },  
+
+  {
+    "value": "How interesting, and who would this invitation be? I thought almost everyone had abandoned me.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy does a small smile, lovingly happy that she is trying to help Rainbow Queen not feel lonely.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Mr Vinny is inviting you to accept that he visits our house to see Yasmin train her wings.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen feels a little surprised for a few seconds.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Vinny?",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Yes. Mr Vinny.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen was thoughtful for a few seconds.",
+    "type": "action"
+  },  
+
+  {
+    "value": "This idiot doesn't really learn, and now he wants to visit my house? Is that pony wanting to die?",
+    "character": "Rainbow Queen",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Rainbow Queen does a small evil laugh.",
+    "type": "action"
+  },  
+
+  {
+    "value": "I can't refuse, he was brave to give me a good gift yesterday. If he wants to be my visit, then he better not disappoint me. My house rules won't be changed just because he's here.",
+    "character": "Rainbow Queen",
+    "type": "think"
+  },  
+
+  {
+    "value": "M...master?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen then looked again at Amy and smirks in response, caressing Amy's mane gently.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Shhhhhh~ Don't worry, I'll listen to my little pet's words. Let him come here when you find it better.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy then showed a small sincere timid smile showing that she was happy to hear it.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Thank you, master. I love you so much.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy hugged Rainbow Queen kindly, rubbing her own face on Rainbow Queen's fur, showing all the gratitude for hearing it. Rainbow Queen then looked down, showing a satisfactory little evil smile, watching Amy's smile, Rainbow Queen used her wings and two paws to gently cover Amy to respond to her hug.",
+    "type": "action"
+  },  
+
+  {
+    "value": "My little pet~",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "After a few seconds of affection, Amy looked back at Rainbow Queen's face, smiling in response and asked.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Master, will you tell me why you're here too?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen then looked at the door in front of her and then Amy again.",
+    "type": "action"
+  },  
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "I just came to visit some memories. Seeing information about the Earth for the first time reminded me of her existence.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Her? Oh yes... her...",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy shows empathy for Rainbow Queen's feelings and hugs her again.",
+    "type": "action"
+  },  
+
+  {
+    "set": {
+      "playlistPlay": "sad"
+    },
+    "value": "I miss her too.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen gently rubbed her paw on Amy's mane while using magic to open the door slowly then started a flashback. Rainbow Queen of this flashback was a young adult. The flashback seemed to be in this same corridor.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Master! Please say! Say it! Say it! What is the next fighting skill??",
+    "character": "Rainbow Queen",
+    "flashback": true,
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then a laugh was heard.",
+    "type": "action"
+  },
+
+  {
+    "value": "Rainbow... my daughter. I've told you, I'm not your master, I'm your mother. And you haven't finished your task yet.",
+    "character": "???",
+    "flashback": true,
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Task? The... the book? I don't want to write stupid books, I want to protect the world! Why did you so insist on asking me to write this book??",
+    "character": "Rainbow Queen",
+    "flashback": true,
+    "type": "dialogue"
+  },
+
+  {
+    "value": "My little Rainbow~ Being a god is not just having super powers. You need to write your story, conserve your teachings, and your heart needs is ready for all this.",
+    "character": "???",
+    "flashback": true,
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then a sound of magic was heard and a black book was placed on Rainbow Queen's paw gently. The book title was \"Color Bible\".",
+    "type": "action"
+  },
+
+  {
+    "value": "You promised me you'd take care of this book, and I really want to write it along with you.",
+    "character": "???",
+    "flashback": true,
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen does a sad look at the mysterious pony.",
+    "type": "action"
+  },  
+
+  {
+    "value": "But master...",
+    "character": "Rainbow Queen",
+    "flashback": true,
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Listen to me daughter, our world needs this book more than you imagine. Everypony needs to know the truth, and the truth will make all of them free. Do you know how dangerous for our humanity is for us to be forgotten?",
+    "character": "???",
+    "flashback": true,
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Yes. I know... I know... I know your world has been destroyed, you don't have to repeat everything again. But... you're not gonna disappear, right?",
+    "character": "Rainbow Queen",
+    "flashback": true,
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then the flashback ended, and Rainbow Queen was watching the Color Bible on her paws while a few tears came out of her eyes.",
+    "type": "action"
+  },  
+
+  {
+    "value": "AAAAAAAAAAAAHHH!",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "A big gust of energy was made during the scream while Amy hugged Rainbow Queen to stay safe, trying to calm her down.",
+    "type": "action"
+  },  
+
+  {
+    "value": "M..Master... calm down... Please...",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen stopped, seeing Amy's sad eyes, crying and begging her to stay calm.",
+    "type": "action"
+  },  
+
+  {
+    "value": "I... I... I'm sorry my little pet.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen looked at the mess that the place had become, so Rainbow Queen hugged Amy back while using magic to tidy up the mess.",
+    "type": "action"
+  },  
+
+  {
+    "value": "I have to get back to work, so go back to your friend Yasmin. I promise I'll be fine to see the smile of all of you.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy does a look of concern, showing a little more affection before she finished the answer.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Y... Yes master.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rainbow Queen kissed Amy's forehead gently to show that everything was fine, and teleported her elsewhere, possibly where Yasmin was.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Well... Time for me to get back to work.",
+    "character": "Rainbow Queen",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": null
+    },
+    "value": "Rainbow Queen then invoked her scythe and teleported elsewhere. Then there was a little silence for a few seconds until the scene decided to return to Vinny who was arriving in Darkanger Ghost Town.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "where": "Darkanger Ghost Town"
+    },
+    "value": "Everything in the forest was normal and it didn't take long for Vinny to arrive at the entrance of Darkanger Ghost Town again. Vinny recognized the entrance to the village, but this time the path was open for him to enter.",
     "type": "action"
   }
   

@@ -20,6 +20,10 @@ storyCfg.playlist = {
         { id: 'FhhbYF8JANg', type: 'youtube' },
     ],
 
+    'songs-for-an-empty-world': [
+        { id: 'f1tYe3TkhTc', type: 'youtube' },
+    ],
+
     'an-antagonistic-battle': [
         { id: 'AhpvfGJ81n4', type: 'youtube' },
     ],

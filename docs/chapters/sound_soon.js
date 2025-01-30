@@ -74,10 +74,6 @@ storyCfg.playlist = {
         { id: '3-pZbPNpLhI', type: 'youtube' },
     ],
 
-    'songs-for-an-empty-world': [
-        { id: 'f1tYe3TkhTc', type: 'youtube' },
-    ],
-
     'Heist | D&D/TTRPG Music | 1 Hour': [
         { id: 'WW4bdFhcZgw', type: 'youtube' },
     ],
