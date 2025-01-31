@@ -477,6 +477,35 @@ class TinyAiManager {
     throw new Error("Invalid history id data!");
   }
 
+  setMainHistoryFileData(mime, data, isBase64 = false, id) {
+    const selectedId = id || this.#_selectedHistory;
+    if (
+      this.history[selectedId] &&
+      typeof data === "string" &&
+      typeof mime === "string"
+    ) {
+      this.history[selectedId].file = {
+        mime,
+        data: !isBase64 ? Base64.encode(data) : data,
+      };
+      return;
+    }
+    throw new Error("Invalid history id data!");
+  }
+
+  getMainHistoryFileData(id) {
+    const selectedId = id || this.#_selectedHistory;
+    if (
+      this.history[selectedId] &&
+      this.history[selectedId].file &&
+      typeof this.history[selectedId].file.data === "string" &&
+      typeof this.history[selectedId].file.mime === "string"
+    ) {
+      return this.history[selectedId].file;
+    }
+    return null;
+  }
+
   setHistorySystemInstruction(data, id) {
     const selectedId = id || this.#_selectedHistory;
     if (this.history[selectedId] && typeof data === "string") {
@@ -969,18 +998,8 @@ const AiScriptStart = () => {
                 aiTemplates.instructions[instructionId],
               );
 
-              // Add first data
-              tinyAi.addHistoryData({
-                role: "user",
-                parts: [
-                  {
-                    inlineData: {
-                      mime_type: ficData.mime,
-                      data: Base64.encode(ficData.data),
-                    },
-                  },
-                ],
-              });
+              // Add file data
+              tinyAi.setMainHistoryFileData(ficData.mime, ficData.data);
             }
 
             // Exists data
@@ -989,16 +1008,16 @@ const AiScriptStart = () => {
               const tinyData = tinyAi.getFirstHistoryIndexData();
 
               // In the future this replacement will be optional. This is the process to update the fic data for the user not to use outdated data.
+              tinyAi.setMainHistoryFileData(ficData.mime, ficData.data);
+
+              // Delete old file version
               if (
                 tinyData &&
                 tinyData.parts &&
                 tinyData.parts[0] &&
                 tinyData.parts[0].inlineData
               )
-                tinyData.parts[0].inlineData = {
-                  mime_type: ficData.mime,
-                  data: Base64.encode(ficData.data),
-                };
+                tinyAi.deleteHistoryIndex(0);
             }
 
             // Clear data and start system
@@ -1082,12 +1101,35 @@ const AiScriptStart = () => {
                   jsonData.file.systemInstruction,
                 );
 
+                // Set file
+                if (jsonData.file.file)
+                  tinyAi.setMainHistoryFileData(
+                    jsonData.file.file.mime,
+                    jsonData.file.file.data,
+                    true,
+                  );
+
                 // Clear messages
                 clearMessages();
                 enableReadOnly(false);
 
                 // Complete
                 insertImportData(jsonData.file.data);
+
+                // Open Get Fic Cache
+                const index = ficConfigs.data.findIndex(
+                  (item) => item.id === jsonData.id,
+                );
+                if (index > -1)
+                  getFicCache(
+                    ficConfigs.data[index].id,
+                    ficConfigs.data[index].template,
+                    ficConfigs.data[index].intro,
+                    () => {
+                      ficConfigs.selected = ficConfigs.data[index].id;
+                      return ficConfigs.data[index].getData();
+                    },
+                  );
               }
             } catch (err) {
               console.error(err);
@@ -1603,6 +1645,19 @@ const AiScriptStart = () => {
               parts: [{ text: history.systemInstruction }],
             },
           ];
+          if (history.file)
+            content.push({
+              role: "user",
+              parts: [
+                {
+                  inlineData: {
+                    mime_type: history.file.mime,
+                    data: history.file.data,
+                  },
+                },
+              ],
+            });
+
           for (const index in history.data) {
             content.push(history.data[index]);
           }
