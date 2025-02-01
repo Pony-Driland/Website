@@ -1317,8 +1317,8 @@ const AiScriptStart = () => {
       const sidebarLeft = $("<div>", sidebarStyle).append(
         $("<ul>", { class: "list-unstyled" }).append(
           $("<li>", { class: "mb-3" }).append(
-            // Templates
-            $("<h5>").text("Templates"),
+            // Modes
+            $("<h5>").text("Modes"),
 
             // Fic Talk
             ficTemplates,
