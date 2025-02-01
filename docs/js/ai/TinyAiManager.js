@@ -477,7 +477,28 @@ class TinyAiManager {
     throw new Error("Invalid history id data!");
   }
 
-  setMainHistoryFileData(mime, data, isBase64 = false, id) {
+  setHistoryPrompt(promptData, id) {
+    const selectedId = id || this.#_selectedHistory;
+    if (this.history[selectedId] && typeof promptData === "string") {
+      this.history[selectedId].prompt = promptData;
+      return;
+    }
+    throw new Error("Invalid history id data!");
+  }
+
+  getHistoryPrompt(id) {
+    const selectedId = id || this.#_selectedHistory;
+    if (
+      this.history[selectedId] &&
+      typeof this.history[selectedId].prompt === "string" &&
+      this.history[selectedId].prompt.length > 0
+    ) {
+      return this.history[selectedId].prompt;
+    }
+    return null;
+  }
+
+  setHistoryFileData(mime, data, isBase64 = false, id) {
     const selectedId = id || this.#_selectedHistory;
     if (
       this.history[selectedId] &&
@@ -493,7 +514,7 @@ class TinyAiManager {
     throw new Error("Invalid history id data!");
   }
 
-  getMainHistoryFileData(id) {
+  getHistoryFileData(id) {
     const selectedId = id || this.#_selectedHistory;
     if (
       this.history[selectedId] &&
@@ -717,7 +738,7 @@ const AiScriptStart = () => {
         googleAi.desc,
         googleAi.input,
 
-        $("<button>", { class: "btn btn-info m-4" })
+        $("<button>", { class: "btn btn-info mx-4 mt-4" })
           .text("Set API Tokens")
           .on("click", () => {
             tinyStorage.setApiKey("google-generative", googleAi.input.val());
@@ -999,7 +1020,7 @@ const AiScriptStart = () => {
               );
 
               // Add file data
-              tinyAi.setMainHistoryFileData(ficData.mime, ficData.data);
+              tinyAi.setHistoryFileData(ficData.mime, ficData.data);
             }
 
             // Exists data
@@ -1008,7 +1029,7 @@ const AiScriptStart = () => {
               const tinyData = tinyAi.getFirstHistoryIndexData();
 
               // In the future this replacement will be optional. This is the process to update the fic data for the user not to use outdated data.
-              tinyAi.setMainHistoryFileData(ficData.mime, ficData.data);
+              tinyAi.setHistoryFileData(ficData.mime, ficData.data);
 
               // Delete old file version
               if (
@@ -1028,6 +1049,7 @@ const AiScriptStart = () => {
             );
 
             insertImportData(tinyAi.getHistory().data, true);
+            firstTimeChange(false);
           })
           .catch((err) => {
             console.error(err);
@@ -1101,13 +1123,8 @@ const AiScriptStart = () => {
                   jsonData.file.systemInstruction,
                 );
 
-                // Set file
-                if (jsonData.file.file)
-                  tinyAi.setMainHistoryFileData(
-                    jsonData.file.file.mime,
-                    jsonData.file.file.data,
-                    true,
-                  );
+                if (typeof jsonData.file.prompt === "string")
+                  tinyAi.setHistoryPrompt(jsonData.file.prompt);
 
                 // Clear messages
                 clearMessages();
@@ -1229,6 +1246,73 @@ const AiScriptStart = () => {
         importButton,
       ];
 
+      const ficPromptItems = [
+        // System Instructions
+        createButtonSidebar("fa-solid fa-toolbox", "System Instructions", () =>
+          tinyModalTextarea({
+            id: "ai_instructions",
+            info: "System Instructions:",
+            size: 400,
+            textarea: tinyAi.getHistorySystemInstruction(),
+            submitName: "Set Instructions",
+            submitCall: (value) => tinyAi.setHistorySystemInstruction(value),
+          }),
+        ),
+
+        // Prompt
+        createButtonSidebar("fa-solid fa-terminal", "Prompt", () =>
+          tinyModalTextarea({
+            id: "ai_prompt",
+            info: "This prompt will always be inserted at the beginning of all your requests:",
+            size: 200,
+            textarea: tinyAi.getHistoryPrompt(),
+            submitName: "Set Prompt",
+            submitCall: (value) => tinyAi.setHistoryPrompt(value),
+          }),
+        ),
+      ];
+
+      // Textarea Template
+      const tinyModalTextarea = (
+        config = {
+          info: "???",
+          size: 200,
+          submitName: "Submit",
+          submitCall: null,
+          id: null,
+          textarea: null,
+        },
+      ) => {
+        const body = $("<div>");
+        const textarea = $("<textarea>", {
+          class: "form-control",
+          style: `height: ${String(config.size)}px;`,
+        });
+        textarea.val(config.textarea);
+
+        body.append($("<p>").text(config.info));
+        body.append(textarea);
+
+        const submit = $("<button>", { class: "btn btn-info m-2 ms-0" });
+        submit.text(config.submitName);
+
+        submit.on("click", () => {
+          config.submitCall(textarea.val());
+          $(`#${config.id}`).modal("hide");
+        });
+
+        body.append(
+          $("<div>", { class: "d-grid gap-2 col-6 mx-auto" }).append(submit),
+        );
+
+        tinyLib.modal({
+          id: config.id,
+          title: "AI Prompt",
+          dialog: "modal-lg",
+          body,
+        });
+      };
+
       // Left
       const sidebarLeft = $("<div>", sidebarStyle).append(
         $("<ul>", { class: "list-unstyled" }).append(
@@ -1239,28 +1323,9 @@ const AiScriptStart = () => {
             // Fic Talk
             ficTemplates,
 
-            // System Instructions
+            // Settings
             $("<h5>").text("Settings"),
-            createButtonSidebar(
-              "fa-solid fa-toolbox",
-              "System Instructions",
-              () => {
-                alert(
-                  tinyAi.getHistorySystemInstruction(),
-                  "System Instructions",
-                );
-              },
-            ),
-
-            // Prompt
-            createButtonSidebar(
-              "fa-solid fa-terminal",
-              "Prompt",
-              () => {
-                console.log("test");
-              },
-              true,
-            ),
+            ficPromptItems,
 
             // Import
             importItems,
@@ -1271,6 +1336,8 @@ const AiScriptStart = () => {
                 file: tinyAi.getHistory(),
                 id: tinyAi.getHistoryId(),
               };
+
+              if (exportData.file.file) delete exportData.file.file;
 
               saveAs(
                 new Blob([JSON.stringify(exportData)], { type: "text/plain" }),
@@ -1639,12 +1706,17 @@ const AiScriptStart = () => {
         new Promise((resolve, reject) => {
           // Prepare history
           const history = tinyAi.getHistory();
-          const content = [
-            {
+          const content = [];
+
+          if (
+            typeof history.systemInstruction === "string" &&
+            history.systemInstruction.length > 0
+          )
+            content.push({
               role: "system",
               parts: [{ text: history.systemInstruction }],
-            },
-          ];
+            });
+
           if (history.file)
             content.push({
               role: "user",
@@ -1656,6 +1728,12 @@ const AiScriptStart = () => {
                   },
                 },
               ],
+            });
+
+          if (typeof history.prompt === "string" && history.prompt.length > 0)
+            content.push({
+              role: "user",
+              parts: [{ text: history.prompt }],
             });
 
           for (const index in history.data) {
@@ -2124,9 +2202,18 @@ const AiScriptStart = () => {
           readOnlyTemplate(importItems[index], isEnabled);
       };
 
+      const firstTimeChange = (isDisabled = false) => {
+        for (const index in ficPromptItems) {
+          ficPromptItems[index].prop("disabled", isDisabled);
+          if (isDisabled) ficPromptItems[index].addClass("disabled");
+          else ficPromptItems[index].removeClass("disabled");
+        }
+      };
+
       // Clear Messages
       const clearMessages = () => msgList.empty();
       enableReadOnly();
+      firstTimeChange(true);
 
       // Welcome
       addMessage(
