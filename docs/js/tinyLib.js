@@ -188,7 +188,7 @@ tinyLib.modal = function (data) {
                 ),
 
                 $("<div>", { class: "modal-body" }).append(data.body),
-                $("<div>", { class: "modal-footer" }).append(data.footer)
+                data.footer ? $("<div>", { class: "modal-footer" }).append(data.footer) : null,
 
             )
         )
