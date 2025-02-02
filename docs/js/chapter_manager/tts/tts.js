@@ -137,7 +137,7 @@ const ttsManager = {
     ttsManager.synth.speak(utterance);
   },
   readLineInternal(line) {
-    let data = storyData.data[storyData.chapter.selected][line - 1];
+    const data = storyData.chapter.ficPageData[line - 1];
     ttsManager.queue = [];
     if (data.info) {
       for (let key of Object.keys(data.info)) {
