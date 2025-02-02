@@ -179,12 +179,15 @@ const openChapterMenu = (params = {}) => {
   // Prepare Data
   clearFicData();
   $("#markdown-read").empty();
+  storyData.chapter.blockLineSave = false;
 
   // Get Page Data
   const getPageData = (line, chapter) => {
+    // Prepare data
     let page = 1;
     let selectedLine = null;
     const filtedItems = [];
+    // Validator
     if (
       typeof storyData.chapter.bookmark[chapter] === "number" &&
       storyData.chapter.bookmark[chapter] !== 1
@@ -194,23 +197,26 @@ const openChapterMenu = (params = {}) => {
       else selectedLine = line;
 
       // Read Data
-      let counter = 0;
+      let counter = 1;
       for (const i in storyData.data[chapter]) {
         if (storyDialogue.nsfwChecker(storyData.data[chapter][i])) {
           if (i < selectedLine) {
-            // Counter Update
-            counter++;
-
             // Reset
             if (counter > storyCfg.itemsPerPage) {
-              counter = 0;
+              counter = 1;
               page++;
             }
+            // Counter Update
+            counter++;
           }
+          // Add item
           filtedItems.push(storyData.data[chapter][i]);
         }
       }
-    } else {
+    }
+
+    // Add item
+    else {
       for (const index in storyData.data[chapter]) {
         if (storyDialogue.nsfwChecker(storyData.data[chapter][index])) {
           filtedItems.push(storyData.data[chapter][index]);
@@ -218,6 +224,7 @@ const openChapterMenu = (params = {}) => {
       }
     }
 
+    // Complete
     return { page, selectedLine, filtedItems };
   };
 
@@ -318,6 +325,7 @@ const openChapterMenu = (params = {}) => {
       filtedItems,
       selectedLine: line,
     } = getPageData(selectedLine, chapter);
+    storyData.chapter.ficPageData = filtedItems;
 
     // Save MD5
     localStorage.setItem(
@@ -330,46 +338,128 @@ const openChapterMenu = (params = {}) => {
 
     // Items
     const table = $("<tbody>");
+    const tinyPag = { base: [], default: [], search: [] };
+    tinyPag.base[0] = $("<div>");
+    tinyPag.base[1] = $("<div>");
 
-    const tinyPag = $("<nav>");
-    tinyPag.bootstrapPaginator({
-      currentPage: pagination.currentPage,
-      totalPages: pagination.totalPages,
-      size: "normal",
-      alignment: "center",
-    });
+    const addDefaultPagination = (ftItems, tPage, where = "default") => {
+      tinyPag.base[0].empty();
+      tinyPag.base[1].empty();
 
-    const tinyPag2 = $("<nav>");
-    tinyPag2.bootstrapPaginator({
-      currentPage: pagination.currentPage,
-      totalPages: pagination.totalPages,
-      size: "normal",
-      alignment: "center",
-    });
+      tinyPag[where][0] = $("<nav>");
+      tinyPag[where][0].bootstrapPaginator({
+        currentPage: tPage.currentPage,
+        totalPages: tPage.totalPages,
+        size: "normal",
+        alignment: "center",
+      });
 
-    tinyPag.on("page-changed", function () {
-      // Process Data
-      const page = Number($(this).find(".active").text().trim());
-      const pagination = paginateArray(
-        filtedItems,
-        page,
-        storyCfg.itemsPerPage,
-      );
-      insertTableData(table, pagination);
+      tinyPag[where][1] = $("<nav>");
+      tinyPag[where][1].bootstrapPaginator({
+        currentPage: tPage.currentPage,
+        totalPages: tPage.totalPages,
+        size: "normal",
+        alignment: "center",
+      });
 
-      // Scroll
-      tinyLib.goToByScroll($("#app"), 0);
-      tinyPag2.bootstrapPaginator("show", page);
-      $(window).trigger("scroll");
-    });
+      tinyPag[where][0].on("page-changed", function () {
+        // Process Data
+        const page = Number($(this).find(".active").text().trim());
+        const tPage = paginateArray(ftItems, page, storyCfg.itemsPerPage);
+        insertTableData(table, tPage);
 
-    tinyPag2.on("page-changed", function () {
-      // Get Page
-      const page = Number($(this).find(".active").text().trim());
-      tinyPag.bootstrapPaginator("show", page);
-    });
+        // Scroll
+        tinyLib.goToByScroll($("#app"), 0);
+        tinyPag[where][1].bootstrapPaginator("show", page);
+        $(window).trigger("scroll");
+      });
 
+      tinyPag[where][1].on("page-changed", function () {
+        // Get Page
+        const page = Number($(this).find(".active").text().trim());
+        tinyPag[where][0].bootstrapPaginator("show", page);
+      });
+
+      tinyPag.base[0].append(tinyPag[where][0]);
+      tinyPag.base[1].append(tinyPag[where][1]);
+    };
+
+    addDefaultPagination(filtedItems, pagination);
     insertTableData(table, pagination);
+
+    // Search
+    storyData.chapter.blockLineSave = false;
+    const searchItems = {
+      base: $("<div>", { class: "input-group mb-3" }),
+    };
+
+    // Search checker
+    const searchCheck = () => {
+      // Get values
+      const character = searchItems.character.val().toLowerCase();
+      const message = searchItems.message.val().toLowerCase();
+
+      // Nope
+      if (character.length < 1 && message.length < 1) {
+        storyData.chapter.blockLineSave = false;
+        addDefaultPagination(filtedItems, pagination);
+        insertTableData(table, pagination);
+      }
+
+      // Search data
+      else {
+        tinyPag.base[0].empty();
+        tinyPag.base[1].empty();
+        storyData.chapter.blockLineSave = true;
+
+        // Add search data
+        const searchResult = [];
+        for (const index in storyData.data[chapter]) {
+          const chapterData = storyData.data[chapter][index];
+          const dialogue = storyDialogue.nsfwChecker(chapterData);
+          if (
+            typeof dialogue === "string" &&
+            (message.length < 1 ||
+              dialogue.toLocaleLowerCase().includes(message)) &&
+            (character.length < 1 ||
+              (typeof chapterData.character === "string" &&
+                chapterData.character.toLocaleLowerCase() === character))
+          ) {
+            searchResult.push(chapterData);
+          }
+        }
+
+        // Complete
+        const pagination = paginateArray(
+          searchResult,
+          1,
+          storyCfg.itemsPerPage,
+        );
+
+        addDefaultPagination(searchResult, pagination, "search");
+        insertTableData(table, pagination);
+      }
+
+      tinyLib.goToByScroll($("#app"), 0);
+      $(window).trigger("scroll");
+    };
+
+    searchItems.character = $("<input>", {
+      type: "text",
+      class: "form-control",
+      placeholder: "Character Name",
+    });
+
+    searchItems.message = $("<input>", {
+      type: "text",
+      class: "form-control",
+      placeholder: "Dialogue / Action",
+      style: "width: 60%",
+    });
+
+    searchItems.character.on("change", searchCheck);
+    searchItems.message.on("change", searchCheck);
+    searchItems.base.append(searchItems.character, searchItems.message);
 
     // Table
     $("#markdown-read").append(
@@ -390,7 +480,8 @@ const openChapterMenu = (params = {}) => {
         ),
 
       // Pagination
-      tinyPag,
+      searchItems.base,
+      tinyPag.base[0],
 
       // Table
       $("<table>", {
@@ -411,7 +502,7 @@ const openChapterMenu = (params = {}) => {
         ]),
 
       // Pagination
-      tinyPag2,
+      tinyPag.base[1],
 
       // Night Effects
       $("<div>", { id: "bg-sky" }).append(

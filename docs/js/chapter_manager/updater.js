@@ -89,6 +89,7 @@ cacheChapterUpdater.scrollData = function () {
 
   // Exist Playlist
   if (
+    !storyData.chapter.blockLineSave &&
     !storyData.music.disabled &&
     Array.isArray(storyData.music.playlist) &&
     storyData.music.playlist.length > 0
@@ -102,7 +103,11 @@ cacheChapterUpdater.scrollData = function () {
   }
 
   // Google
-  if (typeof storyCfg.gtag === "string" && gtag) {
+  if (
+    !storyData.chapter.blockLineSave &&
+    typeof storyCfg.gtag === "string" &&
+    gtag
+  ) {
     gtag("event", "chapter", {
       event_chapter: `Chapter ${storyData.chapter.selected}`,
       event_category: "line",
@@ -123,11 +128,12 @@ cacheChapterUpdater.scrollData = function () {
   // Change Sound
   if (oldWeather !== storyData.chapter.weather) {
     removeAllWeather();
-
-    if (storyData.chapter.weather === "heavyrain") {
-      storyData.sfx["heavy-rain"].show();
-    } else if (storyData.chapter.weather === "bolt") {
-      storyData.sfx["heavy-rain-little-thunder"].show();
+    if (!storyData.chapter.blockLineSave) {
+      if (storyData.chapter.weather === "heavyrain") {
+        storyData.sfx["heavy-rain"].show();
+      } else if (storyData.chapter.weather === "bolt") {
+        storyData.sfx["heavy-rain-little-thunder"].show();
+      }
     }
   }
 
@@ -142,6 +148,7 @@ cacheChapterUpdater.scrollData = function () {
 
       // Play
       if (
+        !storyData.chapter.blockLineSave &&
         value.enabled &&
         !cacheChapterUpdater.soundCache[value.file].playing
       ) {
@@ -191,12 +198,14 @@ cacheChapterUpdater.data = function (lastPage) {
     musicManager.startBase();
     storyData.chapter.line = lastPage;
     const data = storyData.data[storyData.chapter.selected];
-    for (const i in data) {
-      // Get Data
-      if (data[i].set) {
-        for (const item in data[i].set) {
-          if (typeof chapterSet[item] === "function") {
-            chapterSet[item](data[i].set[item], i < lastPage);
+    if (!storyData.chapter.blockLineSave) {
+      for (const i in data) {
+        // Get Data
+        if (data[i].set) {
+          for (const item in data[i].set) {
+            if (typeof chapterSet[item] === "function") {
+              chapterSet[item](data[i].set[item], i < lastPage);
+            }
           }
         }
       }
@@ -257,6 +266,14 @@ cacheChapterUpdater.data = function (lastPage) {
       });
     }
 
+    if (!storyData.chapter.blockLineSave) {
+      storyData.chapter.nav.bookmark.removeClass("disabled");
+      storyData.chapter.nav.bookmark.prop("disabled", false);
+    } else {
+      storyData.chapter.nav.bookmark.addClass("disabled");
+      storyData.chapter.nav.bookmark.prop("disabled", true);
+    }
+
     // Sortable  #status
     $("#fic-nav").each(function () {
       $(this)
@@ -270,12 +287,15 @@ cacheChapterUpdater.data = function (lastPage) {
     });
 
     // Update Title
-    localStorage.setItem(
-      "bookmark" + storyData.chapter.selected,
-      storyData.chapter.line,
-    );
-    storyData.chapter.bookmark[storyData.chapter.selected] =
-      storyData.chapter.line;
+    if (!storyData.chapter.blockLineSave) {
+      localStorage.setItem(
+        "bookmark" + storyData.chapter.selected,
+        storyData.chapter.line,
+      );
+      storyData.chapter.bookmark[storyData.chapter.selected] =
+        storyData.chapter.line;
+    }
+
     const infoInsert = `Chapter ${storyData.chapter.selected} / Line ${storyData.chapter.line}`;
     $("#fic-chapter").text(infoInsert);
     document.title = `${storyData.title} - ${infoInsert}`;
