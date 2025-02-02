@@ -212,7 +212,7 @@ const openChapterMenu = (params = {}) => {
           // Add item
           filtedItems.push({
             content: storyData.data[chapter][i],
-            line: Number(i),
+            line: Number(i) + 1,
           });
         }
       }
@@ -224,7 +224,7 @@ const openChapterMenu = (params = {}) => {
         if (storyDialogue.nsfwChecker(storyData.data[chapter][index])) {
           filtedItems.push({
             content: storyData.data[chapter][index],
-            line: Number(index),
+            line: Number(index) + 1,
           });
         }
       }
@@ -250,11 +250,7 @@ const openChapterMenu = (params = {}) => {
     for (const item in pagination.data) {
       const pagData = pagination.data[item].content;
       if (typeof storyDialogue[pagData.type] === "function") {
-        storyDialogue[pagData.type](
-          pagination.data[item].line + 1,
-          items,
-          pagData,
-        );
+        storyDialogue[pagData.type](pagination.data[item].line, items, pagData);
       }
     }
 
@@ -430,7 +426,10 @@ const openChapterMenu = (params = {}) => {
               (typeof chapterData.character === "string" &&
                 chapterData.character.toLocaleLowerCase() === character))
           ) {
-            searchResult.push({ content: chapterData, line: Number(index) });
+            searchResult.push({
+              content: chapterData,
+              line: Number(index) + 1,
+            });
           }
         }
 
