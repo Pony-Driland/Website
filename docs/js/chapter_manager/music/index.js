@@ -307,10 +307,15 @@ storyData.youtube = {
 
       // Reuse Player
       else {
-        storyData.youtube.player.loadVideoById({
-          videoId: videoID,
-          startSeconds: 0,
-        });
+        if (
+          storyData.youtube &&
+          storyData.youtube.player &&
+          storyData.youtube.player.loadVideoById
+        )
+          storyData.youtube.player.loadVideoById({
+            videoId: videoID,
+            startSeconds: 0,
+          });
       }
 
       // Prepare Volume

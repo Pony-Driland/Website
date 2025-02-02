@@ -180,8 +180,81 @@ const openChapterMenu = (params = {}) => {
   clearFicData();
   $("#markdown-read").empty();
 
+  // Get Page Data
+  const getPageData = (line, chapter) => {
+    let page = 1;
+    let selectedLine = null;
+    const filtedItems = [];
+    if (
+      typeof storyData.chapter.bookmark[chapter] === "number" &&
+      storyData.chapter.bookmark[chapter] !== 1
+    ) {
+      // Update Line
+      if (line === null) selectedLine = storyData.chapter.bookmark[chapter];
+      else selectedLine = line;
+
+      // Read Data
+      let counter = 0;
+      for (const i in storyData.data[chapter]) {
+        if (storyDialogue.nsfwChecker(storyData.data[chapter][i])) {
+          if (i < selectedLine) {
+            // Counter Update
+            counter++;
+
+            // Reset
+            if (counter > storyCfg.itemsPerPage) {
+              counter = 0;
+              page++;
+            }
+          }
+          filtedItems.push(storyData.data[chapter][i]);
+        }
+      }
+    } else {
+      for (const index in storyData.data[chapter]) {
+        if (storyDialogue.nsfwChecker(storyData.data[chapter][index])) {
+          filtedItems.push(storyData.data[chapter][index]);
+        }
+      }
+    }
+
+    return { page, selectedLine, filtedItems };
+  };
+
+  // Insert table data
+  const insertTableData = (table, tinyPag2, pagination) => {
+    // Reset Item
+    storyData.chapter.html = {};
+    table.empty();
+
+    // Items
+    const items = [];
+
+    // Insert Items
+    let lastNumber = 0;
+    const numberPag = Number(
+      pagination.perPage * Number(pagination.currentPage - 1),
+    );
+    for (const item in pagination.data) {
+      lastNumber = Number(item) + numberPag + 1;
+      if (typeof storyDialogue[pagination.data[item].type] === "function") {
+        storyDialogue[pagination.data[item].type](
+          lastNumber,
+          items,
+          pagination.data[item],
+        );
+      }
+    }
+
+    // Update Data
+    cacheChapterUpdater.data(numberPag + 1);
+
+    // Insert
+    table.append(items);
+  };
+
   // New Read
-  const newRead = async (chapter = 1, page = 1, line = null) => {
+  const newRead = async (chapter = 1, selectedLine = null) => {
     // Clear Update Warn
     $("#fic-start")
       .text("Read Fic")
@@ -238,35 +311,13 @@ const openChapterMenu = (params = {}) => {
 
     // Prepare Data
     $("#markdown-read").empty();
-    storyData.chapter.html = {};
 
     // Detect Bookmark
-    if (
-      typeof storyData.chapter.bookmark[storyData.chapter.selected] ===
-        "number" &&
-      storyData.chapter.bookmark[storyData.chapter.selected] !== 1
-    ) {
-      // Update Line
-      if (line === null) {
-        line = storyData.chapter.bookmark[storyData.chapter.selected];
-      }
-
-      // Read Data
-      page = 1;
-      let counter = 0;
-      for (let i = 0; i < line; i++) {
-        if (storyData.data[chapter][i]) {
-          // Counter Update
-          counter++;
-
-          // Reset
-          if (counter > storyCfg.itemsPerPage) {
-            counter = 0;
-            page++;
-          }
-        }
-      }
-    }
+    const {
+      page,
+      filtedItems,
+      selectedLine: line,
+    } = getPageData(selectedLine, chapter);
 
     // Save MD5
     localStorage.setItem(
@@ -274,34 +325,13 @@ const openChapterMenu = (params = {}) => {
       objHash(storyData.data[chapter]),
     );
 
-    // Get Pagination
-    const pagination = paginateArray(
-      storyData.data[chapter],
-      page,
-      storyCfg.itemsPerPage,
-    );
+    // Pagination
+    const pagination = paginateArray(filtedItems, page, storyCfg.itemsPerPage);
 
     // Items
-    const items = [];
+    const table = $("<tbody>");
 
-    // Insert Items
-    let lastNumber = 0;
-    const numberPag = Number(
-      pagination.perPage * Number(pagination.currentPage - 1),
-    );
-    for (const item in pagination.data) {
-      lastNumber = Number(item) + numberPag + 1;
-      if (typeof storyDialogue[pagination.data[item].type] === "function") {
-        storyDialogue[pagination.data[item].type](
-          lastNumber,
-          items,
-          pagination.data[item],
-        );
-      }
-    }
-
-    // Pagination
-    let tinyPag = $("<nav>");
+    const tinyPag = $("<nav>");
     tinyPag.bootstrapPaginator({
       currentPage: pagination.currentPage,
       totalPages: pagination.totalPages,
@@ -309,7 +339,7 @@ const openChapterMenu = (params = {}) => {
       alignment: "center",
     });
 
-    let tinyPag2 = $("<nav>");
+    const tinyPag2 = $("<nav>");
     tinyPag2.bootstrapPaginator({
       currentPage: pagination.currentPage,
       totalPages: pagination.totalPages,
@@ -318,44 +348,16 @@ const openChapterMenu = (params = {}) => {
     });
 
     tinyPag.on("page-changed", function () {
-      // Get Page
+      // Process Data
       const page = Number($(this).find(".active").text().trim());
-
-      // Prepare Pagination
       const pagination = paginateArray(
-        storyData.data[chapter],
+        filtedItems,
         page,
         storyCfg.itemsPerPage,
       );
+      insertTableData(table, tinyPag2, pagination);
 
-      // Reset Item
-      storyData.chapter.html = {};
-      table.empty();
-
-      // Items
-      const items = [];
-
-      // Insert Items
-      let lastNumber = 0;
-      const numberPag = Number(
-        pagination.perPage * Number(pagination.currentPage - 1),
-      );
-      for (const item in pagination.data) {
-        lastNumber = Number(item) + numberPag + 1;
-        if (typeof storyDialogue[pagination.data[item].type] === "function") {
-          storyDialogue[pagination.data[item].type](
-            lastNumber,
-            items,
-            pagination.data[item],
-          );
-        }
-      }
-
-      // Update Data
-      cacheChapterUpdater.data(numberPag + 1);
-
-      // Insert
-      table.append(items);
+      // Scroll
       tinyLib.goToByScroll($("#app"), 0);
       tinyPag2.bootstrapPaginator("show", page);
       $(window).trigger("scroll");
@@ -367,12 +369,7 @@ const openChapterMenu = (params = {}) => {
       tinyPag.bootstrapPaginator("show", page);
     });
 
-    // Update Data
-    cacheChapterUpdater.data(numberPag + 1);
-
-    // Items
-    const table = $("<tbody>");
-    table.append(items);
+    insertTableData(table, tinyPag2, pagination);
 
     // Table
     $("#markdown-read").append(
@@ -432,28 +429,14 @@ const openChapterMenu = (params = {}) => {
 
     // Complete
     $(window).trigger("scroll");
-    if (line !== null) {
+    if (line !== null)
       tinyLib.goToByScroll($('#markdown-read [line="' + line + '"]'), 0);
-    }
     rainMode.start();
     return;
   };
 
   // Exist Chapter
   if (typeof params.chapter === "string" && params.chapter.length > 0) {
-    // Fix Page
-    if (params.page) {
-      params.page = Number(params.page);
-      if (
-        typeof params.page !== "number" ||
-        isNaN(params.page) ||
-        !isFinite(params.page) ||
-        params.page < 1
-      ) {
-        params.page = 1;
-      }
-    }
-
     // Fix Line
     if (params.line) {
       params.line = Number(params.line);
@@ -469,11 +452,10 @@ const openChapterMenu = (params = {}) => {
 
     const newParams = { chapter: params.chapter };
     if (params.line) newParams.line = params.line;
-    if (params.page) newParams.page = params.page;
 
     // Send Data
     urlUpdate(`read-fic`, null, false, newParams);
-    newRead(Number(params.chapter), params.page, params.line, true);
+    newRead(Number(params.chapter), params.line, true);
   }
 
   // Nope. Choose One
