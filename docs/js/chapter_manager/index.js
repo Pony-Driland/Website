@@ -222,7 +222,7 @@ const openChapterMenu = (params = {}) => {
   };
 
   // Insert table data
-  const insertTableData = (table, tinyPag2, pagination) => {
+  const insertTableData = (table, pagination) => {
     // Reset Item
     storyData.chapter.html = {};
     table.empty();
@@ -355,7 +355,7 @@ const openChapterMenu = (params = {}) => {
         page,
         storyCfg.itemsPerPage,
       );
-      insertTableData(table, tinyPag2, pagination);
+      insertTableData(table, pagination);
 
       // Scroll
       tinyLib.goToByScroll($("#app"), 0);
@@ -369,7 +369,7 @@ const openChapterMenu = (params = {}) => {
       tinyPag.bootstrapPaginator("show", page);
     });
 
-    insertTableData(table, tinyPag2, pagination);
+    insertTableData(table, pagination);
 
     // Table
     $("#markdown-read").append(
