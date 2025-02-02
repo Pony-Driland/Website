@@ -74,7 +74,7 @@ const rainMode = {
 const storyDialogue = {
   template: (
     data,
-    item,
+    line,
     items,
     type,
     msgTag,
@@ -83,12 +83,12 @@ const storyDialogue = {
   ) => {
     const message = storyDialogue.nsfwChecker(data);
     if (message) {
-      storyData.chapter.html[item] = $("<tr>", { line: item }).append(
+      storyData.chapter.html[line] = $("<tr>", { line: line }).append(
         // Line number
         $("<td>", {
           class:
             "py-4 font-weight-bold d-none d-md-table-cell text-white text-center",
-        }).text(item),
+        }).text(line),
 
         // Type base
         $("<td>", { class: "py-4 text-white text-center", width: baseWidth })
@@ -106,7 +106,7 @@ const storyDialogue = {
         ),
       );
 
-      items.push(storyData.chapter.html[item]);
+      items.push(storyData.chapter.html[line]);
     }
   },
 
@@ -135,14 +135,14 @@ const storyDialogue = {
   },
 
   // Action
-  action: (item, items, data) =>
-    storyDialogue.template(data, item, items, "Action", "strong"),
+  action: (line, items, data) =>
+    storyDialogue.template(data, line, items, "Action", "strong"),
 
   // Dialogue
-  dialogue: (item, items, data) =>
+  dialogue: (line, items, data) =>
     storyDialogue.template(
       data,
-      item,
+      line,
       items,
       "Character",
       "span",
@@ -151,10 +151,10 @@ const storyDialogue = {
     ),
 
   // Telepathy
-  telepathy: (item, items, data) =>
+  telepathy: (line, items, data) =>
     storyDialogue.template(
       data,
-      item,
+      line,
       items,
       "Telepathy",
       "small",
@@ -163,10 +163,10 @@ const storyDialogue = {
     ),
 
   // Think
-  think: (item, items, data) =>
+  think: (line, items, data) =>
     storyDialogue.template(
       data,
-      item,
+      line,
       items,
       "Thought",
       "small",
@@ -210,7 +210,10 @@ const openChapterMenu = (params = {}) => {
             counter++;
           }
           // Add item
-          filtedItems.push(storyData.data[chapter][i]);
+          filtedItems.push({
+            content: storyData.data[chapter][i],
+            line: Number(i),
+          });
         }
       }
     }
@@ -219,7 +222,10 @@ const openChapterMenu = (params = {}) => {
     else {
       for (const index in storyData.data[chapter]) {
         if (storyDialogue.nsfwChecker(storyData.data[chapter][index])) {
-          filtedItems.push(storyData.data[chapter][index]);
+          filtedItems.push({
+            content: storyData.data[chapter][index],
+            line: Number(index),
+          });
         }
       }
     }
@@ -238,17 +244,16 @@ const openChapterMenu = (params = {}) => {
     const items = [];
 
     // Insert Items
-    let lastNumber = 0;
     const numberPag = Number(
       pagination.perPage * Number(pagination.currentPage - 1),
     );
     for (const item in pagination.data) {
-      lastNumber = Number(item) + numberPag + 1;
-      if (typeof storyDialogue[pagination.data[item].type] === "function") {
-        storyDialogue[pagination.data[item].type](
-          lastNumber,
+      const pagData = pagination.data[item].content;
+      if (typeof storyDialogue[pagData.type] === "function") {
+        storyDialogue[pagData.type](
+          pagination.data[item].line + 1,
           items,
-          pagination.data[item],
+          pagData,
         );
       }
     }
@@ -425,7 +430,7 @@ const openChapterMenu = (params = {}) => {
               (typeof chapterData.character === "string" &&
                 chapterData.character.toLocaleLowerCase() === character))
           ) {
-            searchResult.push(chapterData);
+            searchResult.push({ content: chapterData, line: Number(index) });
           }
         }
 
