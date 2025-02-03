@@ -827,6 +827,7 @@ $(() => {
             id: "ethereum-wallet",
             text: "Ethereum",
             icon: "fa-brands fa-ethereum",
+            web3Element: true,
             click: baseCryptoModal("ethereum", "Ethereum"),
           });
         }
@@ -842,6 +843,7 @@ $(() => {
             id: "polygon-wallet",
             text: "Polygon",
             icon: "cf cf-matic",
+            web3Element: true,
             click: baseCryptoModal("polygon", "Polygon"),
           });
         }
@@ -853,6 +855,7 @@ $(() => {
             id: "bnb-wallet",
             text: "BNB",
             icon: "cf cf-bnb",
+            web3Element: true,
             click: baseCryptoModal("bnb", "BNB"),
           });
         }
@@ -866,6 +869,7 @@ $(() => {
             ),
             id: "crypto-wallet",
             text: "More crypto wallets",
+            web3Element: true,
             icon: "fas fa-wallet",
           });
         }
@@ -882,7 +886,9 @@ $(() => {
             if (where[item].href && where[item].href !== "javascript:void(0)")
               aData.target = "_blank";
 
-            const newHtml = $("<li>").prepend(
+            const newHtml = $("<li>", {
+              class: where[item].web3Element ? "web3-element" : null,
+            }).prepend(
               $("<a>", aData)
                 .text(where[item].text)
                 .prepend($("<i>", { class: `${where[item].icon} me-2` })),
