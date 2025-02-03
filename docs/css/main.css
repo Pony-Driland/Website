@@ -3,6 +3,10 @@
 }
 
 /* Web3 */
+body:not(.browser-with-web3) .web3-element {
+  display: none;
+}
+
 #login {
   transition: color 1s;
 }
