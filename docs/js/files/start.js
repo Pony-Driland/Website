@@ -908,7 +908,7 @@ $(() => {
 
         metaLogin.button = $("<a>", {
           id: "login",
-          class: "nav-link",
+          class: "nav-link web3-element",
           href: "#",
         })
           .attr("title", metaLogin.title)
