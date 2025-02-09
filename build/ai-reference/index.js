@@ -11,25 +11,36 @@ try {
         }
 
         for (const index in files) {
-            if (!files[index].endsWith('.txt')) {
-                fs.readFile(path.join(folderPath, files[index]), (err, data) => {
-                    if (err)
-                        throw err;
-                    else {
-                        try {
-                            const metadata = ExifReader.load(Buffer.from(data), { includeUnknown: true });
-                            let fileContent = '';
-                            for (const item in metadata) {
-                                if (fileContent) fileContent += `\n`;
-                                fileContent += `${item}: ${JSON.stringify(metadata[item], null, 2)}`;
+            if (!files[index].endsWith('.txt') && !files[index].endsWith('.md')) {
+                const pathFile = path.join(folderPath, files[index]);
+                fs.stat(pathFile, (err, stats) => {
+                    if (err) {
+                        console.error(err);
+                        console.log(pathFile);
+                    } else if (!stats.isDirectory()) {
+                        fs.readFile(pathFile, (err, data) => {
+                            if (err) {
+                                console.error(err);
+                                console.log(pathFile);
                             }
-                            fs.writeFile(path.join(folderPath, `${path.parse(`./${files[index]}`).name}.txt`), fileContent, (err) => {
-                                if (err)
+                            else {
+                                try {
+                                    const metadata = ExifReader.load(Buffer.from(data), { includeUnknown: true });
+                                    let fileContent = '';
+                                    for (const item in metadata) {
+                                        if (fileContent) fileContent += `\n`;
+                                        fileContent += `${item}: ${JSON.stringify(metadata[item], null, 2)}`;
+                                    }
+                                    fs.writeFile(path.join(folderPath, `${path.parse(`./${files[index]}`).name}.txt`), fileContent, (err) => {
+                                        if (err)
+                                            console.error(err);
+                                    });
+                                } catch (err) {
+                                    console.log(pathFile);
                                     console.error(err);
-                            });
-                        } catch (err) {
-                            console.error(err);
-                        }
+                                }
+                            }
+                        });
                     }
                 });
             }
