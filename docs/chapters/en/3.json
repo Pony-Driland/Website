@@ -26671,7 +26671,222 @@
     "set": {
       "where": "Darkanger Ghost Town"
     },
-    "value": "Everything in the forest was normal and it didn't take long for Vinny to arrive at the entrance of Darkanger Ghost Town again. Vinny recognized the entrance to the village, but this time the path was open for him to enter.",
+    "value": "Vinny arrive at the entrance of Darkanger Ghost Town again. Vinny recognized the entrance to the village, but this time the path was open for him to enter.",
+    "type": "action"
+  }, 
+
+  {
+    "set": {
+      "playlistPlay": "songs-for-an-empty-world"
+    },
+    "value": "What? Well, I just need to find a ghost or something.",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "The place was completely deserted. All Vinny could see was some abandoned houses and empty places, and right in the center of the village him would find a big white temple that was closed.",
+    "type": "action"
+  },
+
+  {
+    "value": "What a weirder place. I think it's the first time I see a temple in this world.",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "Vinny just analyzed the temple, seeing the huge temple door, the black door looked very impact resistant. The temple appeared to have multiple floors and a clock with a giant yellow bell on top. The temple landscape was quite beautiful combined with the big trees. ",
+    "type": "action"
+  },
+
+  {
+    "value": "Interesting, should I go in and see what's inside?",
+    "character": "Vinny",
+    "type": "think"
+  },
+
+  {
+    "value": "One of these trees accidentally drops a blue fruit on Vinny head.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AH! What the fuck is that?!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny sat and analyzed the blue fruit and after a few seconds screamed very calmly.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah? Hellooooooo? Please don't want to be crazy you're talking to yourself! Ah... is anyone listening to me?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "No one answered, and Vinny saw only a light blue spark disappearing from the tree, doing Vinny feel loneliness again.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W... what? Even you spark at me...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny took the blue fruit and this time him kept it, going around the streets and houses. Vinny just couldn't find anything. Him spent a long time looking at the abandoned things around and some statues that were on the way. The statues seemed to symbolize ponies holding books, but Vinny didn't recognize any of the statues. ",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Look... that's not a good place to play with Hide and Seek, you know?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny couldn't find anything special, but him felt a peace of the abandoned place. The sound of nature made the place very calm and relaxing to spend time.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Fine... Alright... I...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny accidentally bumped something invisible, but him couldn't see what it was.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "OH! WHAT?!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tounch again, trying to understand the shape of the thing.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... Who are you?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny felt a shape of a pony's face that seemed to be terrestrial, but more sparks left the ground and the mysterious haunting left Vinny. Him heard no voice, no sound, just the sound of sparks.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Fine...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny flew up and took the blue fruit and dropped it on the supposed head. The blue fruit simply falls to the ground. Then Vinny felt something smell him mane, the haunting was upon him back.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "H... Hey! Hey hey! What are you doing?!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny flies to the ground and look running up and back.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Look at me! Please! Just one word! ONE W...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny didn't feel anything anymore, and everything was completely quiet again. Then suddenly Vinny feel the cell phone starting to show some signs of defect.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah... Oh no... Not again...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny touch the cell phone, but the cell phone's touch screen would have more problems then the phone screen freezes on a screen written \"Help me! Bring me back!\". The screen lasted a few seconds while the cell phone came out some micro noises for a few seconds before the screen returned to normal.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "W...WHAT?! FUCK! Where are you!! Stop this joke!!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Then again Vinny felt another blue fruit falling on him head.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "AHH! COME ON! COME OOON! Please listen to me, if you can't talk, can you at least write?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "The cell phone went crazy again and displayed another message on the screen \"Wake up! By your side that you kept poking my face! Call Rayane!\". Then the cell phone go back to normal again. Vinny was a little scared, thinking for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "R...Rayane?? Give me a name so she knows what it's about and I'll call her now. Who are you??",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Nothing else happened with Vinny's cell phone and there was only a total silence of the environment, Vinny was very curious, trying to understand the situation. Vinny tries touch some invisible thing, but him couldn't touch anything. His hoof just moved in the air.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny does a super poker face looking around for a few seconds. Vinny was staring at the strange statues, not knowing what to do now.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... It seems that the charming Rayane is famous in the spiritual world too. I'm gonna have to go ask her.",
+    "character": "Vinnie",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "where": "Blackburn Village"
+    },
+    "value": "Vinny then decides to fly again and return to Blackburn Village. So when him went back to the same garden place, him arrived back at the flower bed and found Rayane practicing magic.",
     "type": "action"
   }
   

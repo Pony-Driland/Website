@@ -1744,7 +1744,11 @@ const AiScriptStart = () => {
           const insertTokens = (tokenUsage) => {
             const totalToken =
               tokenUsage && tokenUsage.count ? tokenUsage.count.total : 0;
-            tokenCount.amount.data("token-count", totalToken).text(totalToken);
+
+            if (totalToken > Number(tokenCount.amount.data("token-count")))
+              tokenCount.amount
+                .data("token-count", totalToken)
+                .text(totalToken);
           };
 
           // Insert message
