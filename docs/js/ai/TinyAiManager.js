@@ -1748,7 +1748,7 @@ const AiScriptStart = () => {
             if (totalToken > Number(tokenCount.amount.data("token-count")))
               tokenCount.amount
                 .data("token-count", totalToken)
-                .text(totalToken);
+                .text(totalToken.toLocaleString(navigator.language || "en-US"));
           };
 
           // Insert message
