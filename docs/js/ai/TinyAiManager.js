@@ -1,6 +1,7 @@
 class TinyAiManager {
   #_apiKey;
   #_getModels;
+  #_countTokens;
   #_genContentApi;
   #_historyIds;
   #_selectedHistory;
@@ -317,6 +318,17 @@ class TinyAiManager {
       return newData;
     }
     return null;
+  }
+
+  // Count Token
+  _setCountTokens(countTokens) {
+    this.#_countTokens = typeof countTokens === "function" ? countTokens : null;
+  }
+
+  countTokens(data, controller) {
+    if (typeof this.#_countTokens === "function")
+      return this.#_countTokens(this.#_apiKey, controller, data);
+    throw new Error("No count token api script defined.");
   }
 
   // Content
@@ -1006,7 +1018,7 @@ const AiScriptStart = () => {
         forceReset = false,
       ) => {
         // Reset token count
-        tokenCount.amount.data("token-count", 0).text('0');
+        tokenCount.amount.data("token-count", 0).text("0");
         newContent()
           .then((ficData) => {
             // Start chatbot script
@@ -1052,6 +1064,50 @@ const AiScriptStart = () => {
 
             insertImportData(tinyAi.getHistory().data, true);
             firstTimeChange(false);
+
+            // Get Ai Tokens
+            enableReadOnly(true);
+            modelChangerReadOnly();
+            const oldMsgInput = msgInput.val();
+
+            let points = ".";
+            let secondsWaiting = -1;
+            const loadingMoment = () => {
+              points += ".";
+              if (points === "....") points = ".";
+
+              secondsWaiting++;
+              msgInput.val(`(${secondsWaiting}s) Loading model data${points}`);
+            };
+            const loadingMessage = setInterval(loadingMoment, 1000);
+            loadingMoment();
+
+            const stopLoadingMessage = () => {
+              clearInterval(loadingMessage);
+              msgInput.val(oldMsgInput);
+              enableReadOnly(false);
+              modelChangerReadOnly(false);
+              msgInput.focus();
+            };
+
+            getAiTokens()
+              .then((tokenData) => {
+                if (typeof tokenData.totalTokens === "number") {
+                  tokenCount.amount
+                    .data("token-count", tokenData.totalTokens)
+                    .text(
+                      tokenData.totalTokens.toLocaleString(
+                        navigator.language || "en-US",
+                      ),
+                    );
+                } else tokenCount.amount.data("token-count", 0).text("0");
+                stopLoadingMessage();
+              })
+              .catch((err) => {
+                alert(err.message, "Error get AI tokens");
+                console.error(err);
+                stopLoadingMessage();
+              });
           })
           .catch((err) => {
             console.error(err);
@@ -1704,43 +1760,55 @@ const AiScriptStart = () => {
       );
 
       // Execute messages
+      const prepareContentList = () => {
+        // Prepare history
+        const history = tinyAi.getHistory();
+        const content = [];
+
+        if (
+          typeof history.systemInstruction === "string" &&
+          history.systemInstruction.length > 0
+        )
+          content.push({
+            role: "system",
+            parts: [{ text: history.systemInstruction }],
+          });
+
+        if (history.file)
+          content.push({
+            role: "user",
+            parts: [
+              {
+                inlineData: {
+                  mime_type: history.file.mime,
+                  data: history.file.data,
+                },
+              },
+            ],
+          });
+
+        if (typeof history.prompt === "string" && history.prompt.length > 0)
+          content.push({
+            role: "user",
+            parts: [{ text: history.prompt }],
+          });
+
+        for (const index in history.data) {
+          content.push(history.data[index]);
+        }
+
+        return content;
+      };
+
+      const getAiTokens = () =>
+        new Promise((resolve, reject) => {
+          const content = prepareContentList();
+          tinyAi.countTokens(content).then(resolve).catch(reject);
+        });
+
       const executeAi = (tinyCache = {}, tinyController) =>
         new Promise((resolve, reject) => {
-          // Prepare history
-          const history = tinyAi.getHistory();
-          const content = [];
-
-          if (
-            typeof history.systemInstruction === "string" &&
-            history.systemInstruction.length > 0
-          )
-            content.push({
-              role: "system",
-              parts: [{ text: history.systemInstruction }],
-            });
-
-          if (history.file)
-            content.push({
-              role: "user",
-              parts: [
-                {
-                  inlineData: {
-                    mime_type: history.file.mime,
-                    data: history.file.data,
-                  },
-                },
-              ],
-            });
-
-          if (typeof history.prompt === "string" && history.prompt.length > 0)
-            content.push({
-              role: "user",
-              parts: [{ text: history.prompt }],
-            });
-
-          for (const index in history.data) {
-            content.push(history.data[index]);
-          }
+          const content = prepareContentList();
 
           // Insert tokens
           const insertTokens = (tokenUsage) => {
