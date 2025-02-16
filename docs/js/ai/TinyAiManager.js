@@ -1005,6 +1005,8 @@ const AiScriptStart = () => {
         newContent,
         forceReset = false,
       ) => {
+        // Reset token count
+        tokenCount.amount.data("token-count", 0).text('0');
         newContent()
           .then((ficData) => {
             // Start chatbot script
