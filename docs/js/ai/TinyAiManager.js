@@ -1064,50 +1064,7 @@ const AiScriptStart = () => {
 
             insertImportData(tinyAi.getHistory().data, true);
             firstTimeChange(false);
-
-            // Get Ai Tokens
-            enableReadOnly(true);
-            modelChangerReadOnly();
-            const oldMsgInput = msgInput.val();
-
-            let points = ".";
-            let secondsWaiting = -1;
-            const loadingMoment = () => {
-              points += ".";
-              if (points === "....") points = ".";
-
-              secondsWaiting++;
-              msgInput.val(`(${secondsWaiting}s) Loading model data${points}`);
-            };
-            const loadingMessage = setInterval(loadingMoment, 1000);
-            loadingMoment();
-
-            const stopLoadingMessage = () => {
-              clearInterval(loadingMessage);
-              msgInput.val(oldMsgInput);
-              enableReadOnly(false);
-              modelChangerReadOnly(false);
-              msgInput.focus();
-            };
-
-            getAiTokens()
-              .then((tokenData) => {
-                if (typeof tokenData.totalTokens === "number") {
-                  tokenCount.amount
-                    .data("token-count", tokenData.totalTokens)
-                    .text(
-                      tokenData.totalTokens.toLocaleString(
-                        navigator.language || "en-US",
-                      ),
-                    );
-                } else tokenCount.amount.data("token-count", 0).text("0");
-                stopLoadingMessage();
-              })
-              .catch((err) => {
-                alert(err.message, "Error get AI tokens");
-                console.error(err);
-                stopLoadingMessage();
-              });
+            updateAiTokenCounterData();
           })
           .catch((err) => {
             console.error(err);
@@ -1313,7 +1270,10 @@ const AiScriptStart = () => {
             size: 400,
             textarea: tinyAi.getHistorySystemInstruction(),
             submitName: "Set Instructions",
-            submitCall: (value) => tinyAi.setHistorySystemInstruction(value),
+            submitCall: (value) => {
+              tinyAi.setHistorySystemInstruction(value);
+              updateAiTokenCounterData();
+            },
           }),
         ),
 
@@ -1325,7 +1285,10 @@ const AiScriptStart = () => {
             size: 200,
             textarea: tinyAi.getHistoryPrompt(),
             submitName: "Set Prompt",
-            submitCall: (value) => tinyAi.setHistoryPrompt(value),
+            submitCall: (value) => {
+              tinyAi.setHistoryPrompt(value);
+              updateAiTokenCounterData();
+            },
           }),
         ),
       ];
@@ -1806,6 +1769,53 @@ const AiScriptStart = () => {
           tinyAi.countTokens(content).then(resolve).catch(reject);
         });
 
+      // Get Ai Tokens
+      const updateAiTokenCounterData = () => {
+        enableReadOnly(true);
+        modelChangerReadOnly();
+        const oldMsgInput = msgInput.val();
+
+        let points = ".";
+        let secondsWaiting = -1;
+        const loadingMoment = () => {
+          points += ".";
+          if (points === "....") points = ".";
+
+          secondsWaiting++;
+          msgInput.val(`(${secondsWaiting}s) Loading model data${points}`);
+        };
+        const loadingMessage = setInterval(loadingMoment, 1000);
+        loadingMoment();
+
+        const stopLoadingMessage = () => {
+          clearInterval(loadingMessage);
+          msgInput.val(oldMsgInput);
+          enableReadOnly(false);
+          modelChangerReadOnly(false);
+          msgInput.focus();
+        };
+
+        getAiTokens()
+          .then((tokenData) => {
+            if (typeof tokenData.totalTokens === "number") {
+              tokenCount.amount
+                .data("token-count", tokenData.totalTokens)
+                .text(
+                  tokenData.totalTokens.toLocaleString(
+                    navigator.language || "en-US",
+                  ),
+                );
+            } else tokenCount.amount.data("token-count", 0).text("0");
+            stopLoadingMessage();
+          })
+          .catch((err) => {
+            alert(err.message, "Error get AI tokens");
+            console.error(err);
+            stopLoadingMessage();
+          });
+      };
+
+      // Execute AI script
       const executeAi = (tinyCache = {}, tinyController) =>
         new Promise((resolve, reject) => {
           const content = prepareContentList();
