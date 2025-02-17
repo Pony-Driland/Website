@@ -1063,7 +1063,7 @@ const AiScriptStart = () => {
             );
 
             insertImportData(tinyAi.getHistory().data, true);
-            firstTimeChange(false);
+            disablePromptButtons(false);
             updateAiTokenCounterData();
           })
           .catch((err) => {
@@ -1773,6 +1773,7 @@ const AiScriptStart = () => {
       const updateAiTokenCounterData = () => {
         enableReadOnly(true);
         modelChangerReadOnly();
+        disablePromptButtons(true);
         const oldMsgInput = msgInput.val();
 
         let points = ".";
@@ -1792,6 +1793,7 @@ const AiScriptStart = () => {
           msgInput.val(oldMsgInput);
           enableReadOnly(false);
           modelChangerReadOnly(false);
+          disablePromptButtons(false);
           msgInput.focus();
         };
 
@@ -2005,6 +2007,7 @@ const AiScriptStart = () => {
           const controller = new AbortController();
           enableReadOnly(true, controller);
           modelChangerReadOnly();
+          disablePromptButtons(true);
 
           let points = ".";
           let secondsWaiting = -1;
@@ -2048,6 +2051,7 @@ const AiScriptStart = () => {
 
           // Complete
           clearInterval(loadingMessage);
+          disablePromptButtons(false);
           msgInput.val("");
 
           enableReadOnly(false);
@@ -2286,7 +2290,7 @@ const AiScriptStart = () => {
           readOnlyTemplate(importItems[index], isEnabled);
       };
 
-      const firstTimeChange = (isDisabled = false) => {
+      const disablePromptButtons = (isDisabled = false) => {
         for (const index in ficPromptItems) {
           ficPromptItems[index].prop("disabled", isDisabled);
           if (isDisabled) ficPromptItems[index].addClass("disabled");
@@ -2297,7 +2301,7 @@ const AiScriptStart = () => {
       // Clear Messages
       const clearMessages = () => msgList.empty();
       enableReadOnly();
-      firstTimeChange(true);
+      disablePromptButtons(true);
 
       // Welcome
       addMessage(
