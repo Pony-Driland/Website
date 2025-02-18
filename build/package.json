@@ -3,7 +3,12 @@
         "node": ">=20.0.0"
     },
     "scripts": {
-        "fix:prettier": "prettier --write ../docs/js/chapter_manager/* && prettier --write ../docs/js/files/* && prettier --write ../docs/js/ai/*"
+        "fix:prettier": "prettier --write ../docs/js/chapter_manager/* && prettier --write ../docs/js/files/* && prettier --write ../docs/js/ai/*",
+        "update-base64": "node ./base64",
+        "update-chapter": "node ./chapter",
+        "update-characters": "node ./characters",
+        "update-sitemap": "node ./sitemap",
+        "deploy-keybase": "node ./deploy-keybase"
     },
     "author": {
         "name": "JasminDreasond (Yasmin Seidel)",

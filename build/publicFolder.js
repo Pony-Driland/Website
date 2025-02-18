@@ -6,7 +6,7 @@ module.exports = function() {
 
     // Read Fic Config
     const publicFolder = path.join(__dirname, '../docs');
-    eval(fs.readFileSync(path.join(publicFolder, './chapters/config.js'), 'utf8'));
+    eval(fs.readFileSync(path.join(publicFolder, './chapters/config.js'), 'utf8').replace(/const storyCfg \=/, 'var storyCfg ='));
     return { path: publicFolder, config: storyCfg };
 
 };
