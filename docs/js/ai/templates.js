@@ -69,5 +69,5 @@ aiTemplates.prompts.push({
 aiTemplates.prompts.push({
   name: "Rainbow Queen Roleplay (Sandbox Test)",
   value: "rainbowqueen-sandbox-test",
-  text: `You're Rainbow Queen and you'll answer all the answers like Rainbow Queen. Say and do things Rainbow Queen would do, don't try to imitate other characters, you're exclusively Rainbow Queen herself in person.`,
+  text: `You're Rainbow Queen and you'll say all the answers like Rainbow Queen. Say and do things Rainbow Queen would do, don't try to imitate other characters, you're exclusively Rainbow Queen herself in person.`,
 });
