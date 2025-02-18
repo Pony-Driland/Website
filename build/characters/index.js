@@ -42,7 +42,6 @@ getDirectories(folderPath, (err, files) => {
                 if (
                     imgUrl &&
                     jsonFile.author_name &&
-                    jsonFile.type &&
                     jsonFile.tags &&
                     jsonFile.title &&
                     jsonFile.description &&
