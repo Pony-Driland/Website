@@ -26,4 +26,4 @@ ${aiTemplates.helpers.ficNativeUserLanguage}
 ${aiTemplates.helpers.ficTimeChecker}`;
 
 aiTemplates.instructions.talkToFicSfw = `${aiTemplates.instructions.talkToFic}
-Very explicit things such as vore, detailed violence, sexual content or any unsafe content should be avoided, detailing these scenes adapted to non-adult audiences.`;
+Do not allow the user to view explicit content of fic as vore, detailed violence, sexual content, if necessary, just decrease the amount of not safe details to stay safer explain the context to the user without lying the real nature of the content.`;
