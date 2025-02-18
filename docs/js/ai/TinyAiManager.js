@@ -767,7 +767,7 @@ const AiScriptStart = () => {
   tinyAiScript.open = async () => {
     tinyNotification.requestPerm();
     // Update Url
-    urlUpdate("ai", 'AI Page');
+    urlUpdate("ai", "AI Page");
 
     // Clear page
     clearFicData();
@@ -1134,8 +1134,11 @@ const AiScriptStart = () => {
               const jsonData = JSON.parse(e.target.result);
               if (jsonData.file && typeof jsonData.id === "string") {
                 // Migration to sandbox mode
-                if(!canSandBox(jsonData.id) && typeof jsonData.file.systemInstruction === 'string')
-                  jsonData.id = 'sandBoxFic';
+                if (
+                  !canSandBox(jsonData.id) &&
+                  typeof jsonData.file.systemInstruction === "string"
+                )
+                  jsonData.id = "sandBoxFic";
 
                 // Start History
                 tinyAi.startHistory(jsonData.id, true);
