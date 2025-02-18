@@ -598,6 +598,8 @@ const setGoogleAi = (
 
               // Prompt tokens details
               if (result.promptTokensDetails) {
+                if (!finalData.promptTokensDetails)
+                  finalData.promptTokensDetails = {};
                 // Token Count
                 if (typeof result.promptTokensDetails.tokenCount === "number")
                   finalData.promptTokensDetails.tokenCount =
