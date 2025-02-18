@@ -1267,6 +1267,10 @@ const AiScriptStart = () => {
             size: 400,
             textarea: tinyAi.getHistorySystemInstruction(),
             submitName: "Set Instructions",
+            addTemplates: {
+              data: aiTemplates.prompts,
+              title: "Select a prompt to be added",
+            },
             submitCall: (value) => {
               tinyAi.setHistorySystemInstruction(value);
               updateAiTokenCounterData();
