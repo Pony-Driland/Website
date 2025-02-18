@@ -992,5 +992,5 @@ const openChapterMenu = (params = {}) => {
         If the character's name matches a character with a page, it will be a link to access the page.
 
     */
-  urlUpdate("read-fic");
+  urlUpdate("read-fic", 'Read Fic');
 };

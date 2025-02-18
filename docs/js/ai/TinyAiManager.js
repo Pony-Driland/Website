@@ -767,7 +767,7 @@ const AiScriptStart = () => {
   tinyAiScript.open = async () => {
     tinyNotification.requestPerm();
     // Update Url
-    urlUpdate("ai");
+    urlUpdate("ai", 'AI Page');
 
     // Clear page
     clearFicData();
