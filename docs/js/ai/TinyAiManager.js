@@ -1176,21 +1176,21 @@ const AiScriptStart = () => {
       const ficConfigs = {
         data: [
           {
-            title: "Fic Talk",
+            title: "Safe Talk",
             id: "ficTalkSfw",
             template: "talkToFicSfw",
             icon: "fa-solid fa-server",
             intro:
-              "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic in your native language (if i can support to do this). Sadly I'm not made for roleplay, but I can try.",
+              "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic in your native language (if i can support to do this). I will try to hide some explicit details from fic, but if you insist, I will try to say in a few details. Sadly I'm not made for roleplay, but I can try.",
             getData: async () => saveRoleplayFormat(null, false),
           },
           {
-            title: "Fic Talk (Not censored)",
+            title: "Full Talk",
             id: "ficTalk",
             template: "talkToFic",
             icon: "fa-solid fa-server",
             intro:
-              "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic in your native language (if i can support to do this), but be careful, because I will answer questions related to literally anything that happened in fic, including censored scenes. Sadly I'm not made for roleplay, but I can try.",
+              "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic in your native language (if i can support to do this), but be careful, because I will answer questions related to literally anything that happened in fic, including censored scenes (but i will do this respecting the limitations of my selected model). Sadly I'm not made for roleplay, but I can try.",
             getData: async () => saveRoleplayFormat(null, false),
           },
         ],
