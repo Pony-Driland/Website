@@ -12,7 +12,7 @@ Female / Unicorn
 
 Coming Soon...
 
-<img src="https://ar-io.dev/LLZaY7dCEbMPxBig_EYMDj8GbQX5vyVZh6eJ31wmOow" height="500">
+<img src="/img/characters/beta/aniya/image.png" height="500">
 
 <hr/>
 

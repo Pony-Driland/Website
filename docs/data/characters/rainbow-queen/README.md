@@ -8,12 +8,12 @@ title: 'Rainbow Queen'
 
 ### Normal Version (WIP)
 
-<img src="https://ar-io.dev/2l2dbZxB292CsGBi7-1qtPTXvvjCRmYQiauD1LahdB4" height="500">
+<img src="/img/characters/rainbow-queen/wip/ref-1.gif" height="500">
 <a href="https://derpibooru.org/images/2717471" target="_blank">Derpibooru Page</a>
 
 ### Dark Version
 
-<img src="https://ar-io.dev/0SyvCKcKbsVSxaEW3DGl6D-EKjlJJCT36wjkLO8htok" height="500">
+<img src="/img/characters/rainbow-queen/ref-dark.webp" height="500">
 <a href="https://derpibooru.org/images/2743841" target="_blank">Derpibooru Page</a>
 
 <hr/>
@@ -65,7 +65,7 @@ Due to the fact that the Rainbow Queen has in its mix of races being a Sphinx Po
 
 <hr/>
 
-<img src="https://ar-io.dev/VtXS4VqRDljlQdVtE5gTaQQyR2bPuOv-YDK6AQ4xF_k" height="500">
+<img src="/img/gallery/chapter1-gift.jpg" height="500">
 
 Character Lineart: <a href="https://derpibooru.org/tags/artist-colon-joaothejohn" target="_blank">João the John</a>
 
@@ -81,7 +81,7 @@ Final Artwork: JasminDreasond
 
 This weapon is the pure manifestation of her negative feelings. Divine creatures with negative feelings are extremely dangerous as their negative feelings can overload the amount of power evolved by anger, this scythe is invoked to try to drain the negative feelings and focus all the anger on a weapon where the negative energy can try to get controlled. But when this weapon is used, it can cause a great level of destruction due to the negative energies accumulated within it.
 
-<img src="https://ar-io.dev/EGwe6QEqi2PP2bhJP1OcXj_QZOC_Gwin20b9DiC83sk" height="500">
+<img src="/img/characters/rainbow-queen/scythe.gif" height="500">
 
 <hr/>
 
