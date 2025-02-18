@@ -1185,12 +1185,12 @@ const AiScriptStart = () => {
             getData: async () => saveRoleplayFormat(null, false),
           },
           {
-            title: "Full Talk",
+            title: "Sandbox",
             id: "ficTalk",
             template: "talkToFic",
-            icon: "fa-solid fa-book-open-reader",
+            icon: "fa-solid fa-fill-drip",
             intro:
-              "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic in your native language (if i can support to do this), but be careful, because I will answer questions related to literally anything that happened in fic, including censored scenes (but i will do this respecting the limitations of my selected model). Sadly I'm not made for roleplay, but I can try.",
+              "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic in your native language (if i can support to do this), but be careful, because I will answer questions related to literally anything that happened in fic, including censored scenes. This is my purely sandbox version, that means I have no special configuration, allowing you to do whatever you want within the limits of your selected model. Sadly I'm not made for roleplay, but I can try.",
             getData: async () => saveRoleplayFormat(null, false),
           },
         ],
