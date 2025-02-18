@@ -510,6 +510,27 @@ class TinyAiManager {
     return null;
   }
 
+  setHistoryFirstDialogue(dialogue, id) {
+    const selectedId = id || this.#_selectedHistory;
+    if (this.history[selectedId] && typeof dialogue === "string") {
+      this.history[selectedId].firstDialogue = dialogue;
+      return;
+    }
+    throw new Error("Invalid history id data!");
+  }
+
+  getHistoryFirstDialogue(id) {
+    const selectedId = id || this.#_selectedHistory;
+    if (
+      this.history[selectedId] &&
+      typeof this.history[selectedId].firstDialogue === "string" &&
+      this.history[selectedId].firstDialogue.length > 0
+    ) {
+      return this.history[selectedId].firstDialogue;
+    }
+    return null;
+  }
+
   setHistoryFileData(mime, data, isBase64 = false, id) {
     const selectedId = id || this.#_selectedHistory;
     if (
@@ -775,6 +796,7 @@ const AiScriptStart = () => {
     $("#top_page").addClass("d-none");
 
     // Start loading page
+    let isFirstTime = true;
     $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
     if (tinyAiScript.isEnabled()) {
       // Load Models
@@ -1019,6 +1041,7 @@ const AiScriptStart = () => {
         newContent,
         forceReset = false,
       ) => {
+        isFirstTime = false;
         // Reset token count
         tokenCount.amount.data("token-count", 0).text("0");
         newContent()
@@ -1171,6 +1194,9 @@ const AiScriptStart = () => {
                 if (typeof jsonData.file.prompt === "string")
                   tinyAi.setHistoryPrompt(jsonData.file.prompt);
 
+                if (typeof jsonData.file.firstDialogue === "string")
+                  tinyAi.setHistoryFirstDialogue(jsonData.file.firstDialogue);
+
                 // Clear messages
                 clearMessages();
                 enableReadOnly(false);
@@ -1310,7 +1336,7 @@ const AiScriptStart = () => {
               };
             } else tinyModalData.readOnly = true;
 
-            tinyModalTextarea(tinyModalData);
+            tinyModalTextarea(tinyModalData, ["instructionText", "text"]);
           },
         ),
 
@@ -1332,6 +1358,27 @@ const AiScriptStart = () => {
             },
           }),
         ),
+
+        // First Dialogue
+        /* createButtonSidebar("fa-solid fa-comment-dots", "First Dialogue", () =>
+          tinyModalTextarea(
+            {
+              id: "ai_first_dialogue",
+              info: "This is the initial dialogue that can be inserted as a model message:",
+              size: 200,
+              textarea: tinyAi.getHistoryFirstDialogue(),
+              submitName: "Set First Message",
+              addTemplates: {
+                data: aiTemplates.prompts,
+                title: "Select a prompt to be added",
+              },
+              submitCall: (value) => {
+                tinyAi.setHistoryFirstDialogue(value);
+              },
+            },
+            "firstDialogue",
+          ),
+        ), */
       ];
 
       // Textarea Template
@@ -1346,6 +1393,7 @@ const AiScriptStart = () => {
           textarea: null,
           readOnly: false,
         },
+        textValueName = "text",
       ) => {
         // Body
         const body = $("<div>");
@@ -1380,25 +1428,85 @@ const AiScriptStart = () => {
 
           // Add options
           for (const index in config.addTemplates.data) {
-            if (!config.addTemplates.data[index].hr)
-              textareaAdd.append(
-                $("<option>", {
-                  value: config.addTemplates.data[index].value,
-                })
-                  .data(
-                    "TinyAI-select-text",
-                    config.addTemplates.data[index].text,
-                  )
-                  .text(config.addTemplates.data[index].name)
-                  .prop(
-                    "disabled",
-                    typeof config.addTemplates.data[index].disabled ===
-                      "boolean"
-                      ? config.addTemplates.data[index].disabled
-                      : false,
-                  ),
-              );
-            else addSeparator();
+            // Validator
+            const valueTypeValidator = () => {
+              // Tiny code
+              const tinyTypeValidator = (tinyTxtValName) =>
+                typeof config.addTemplates.data[index][tinyTxtValName] ===
+                  "string" ||
+                config.addTemplates.data[index].type === tinyTxtValName;
+
+              // String
+              if (typeof textValueName === "string")
+                return tinyTypeValidator(textValueName);
+
+              // Array
+              if (Array.isArray(textValueName)) {
+                for (const index in textValueName) {
+                  if (tinyTypeValidator(textValueName[index])) return true;
+                }
+              }
+
+              // Nothing
+              return false;
+            };
+
+            // Get data
+            const getTypeValue = () => {
+              // Tiny code
+              const tinyTypeValidator = (tinyTxtValName) =>
+                typeof config.addTemplates.data[index][tinyTxtValName] ===
+                "string"
+                  ? config.addTemplates.data[index][tinyTxtValName]
+                  : null;
+
+              // String
+              if (typeof textValueName === "string") {
+                const value = tinyTypeValidator(textValueName);
+                if (value) return value;
+              }
+
+              // Array
+              if (Array.isArray(textValueName)) {
+                for (const index in textValueName) {
+                  const value = tinyTypeValidator(textValueName[index]);
+                  if (value) return value;
+                }
+              }
+
+              // Nothing
+              return null;
+            };
+
+            // Normal way
+            if (!config.addTemplates.data[index].hr) {
+              // Validator
+              if (
+                valueTypeValidator() &&
+                (typeof config.addTemplates.data[index].value === "string" ||
+                  config.addTemplates.data[index].disabled)
+              )
+                textareaAdd.append(
+                  $("<option>", {
+                    value: config.addTemplates.data[index].value,
+                  })
+                    // Data item
+                    .data("TinyAI-select-text", getTypeValue())
+                    // Option name
+                    .text(config.addTemplates.data[index].name)
+
+                    // Option is disabled?
+                    .prop(
+                      "disabled",
+                      typeof config.addTemplates.data[index].disabled ===
+                        "boolean"
+                        ? config.addTemplates.data[index].disabled
+                        : false,
+                    ),
+                );
+            }
+            // Separator
+            else if (valueTypeValidator()) addSeparator();
           }
 
           // Option selected
@@ -1408,6 +1516,7 @@ const AiScriptStart = () => {
             const text = option
               ? option.data("TinyAI-select-text")
               : null || null;
+
             textareaAdd.val("DEFAULT");
 
             // Insert text
@@ -1802,7 +1911,11 @@ const AiScriptStart = () => {
           localStorage.removeItem("tiny-ai-storage-model-selected");
         }
 
-        if (!ignoreTokenUpdater && !modelSelector.prop("disabled"))
+        if (
+          !isFirstTime &&
+          !ignoreTokenUpdater &&
+          !modelSelector.prop("disabled")
+        )
           updateAiTokenCounterData();
       };
 
