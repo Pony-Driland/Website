@@ -10,6 +10,8 @@ const getDirectories = (src, callback) => glob(src + '/**/*')
 const ficData = require('../publicFolder')();
 console.log(ficData);
 
+const selectedType = 'none';
+
 // Read Data
 const folderPath = path.join(__dirname, './data');
 getDirectories(folderPath, (err, files) => {
@@ -32,11 +34,15 @@ getDirectories(folderPath, (err, files) => {
                 const jsonFile = require(path.join(file.dir, './' + file.name + '.json'));
                 console.log('JSON File', jsonFile);
 
+                const imgUrl = selectedType === 'cid' && jsonFile['cid-image'] ? ficData.config.ipfs.host.replace('{cid}', jsonFile['cid-image']) :
+                selectedType === 'ario' && jsonFile['ario-image'] ? `https://ar-io.dev/${jsonFile['ario-image']}` :
+                    jsonFile.image;
+
                 // Create oEmbed File
                 if (
+                    imgUrl &&
                     jsonFile.author_name &&
                     jsonFile.type &&
-                    jsonFile.image &&
                     jsonFile.tags &&
                     jsonFile.title &&
                     jsonFile.description &&
@@ -45,7 +51,7 @@ getDirectories(folderPath, (err, files) => {
                     console.log('Creating JSON oEmbed...');
                     fs.writeFileSync(path.join(ficData.path, './oEmbed/characters/' + file.name + '.json'), JSON.stringify({
                         author_name: jsonFile.author_name,
-                        url: jsonFile.type !== 'ario' ? ficData.config.ipfs.host.replace('{cid}', jsonFile.image) : `https://ar-io.dev/${jsonFile.image}`,
+                        url: imgUrl,
                         cache_age: 7200,
                         tags: jsonFile.tags,
                         provider_name: ficData.config.title,
@@ -92,7 +98,7 @@ getDirectories(folderPath, (err, files) => {
 
         <!-- Embed -->
         <link href="../oEmbed/characters/${file.name}.json" rel="alternate" title="oEmbed JSON Profile" type="application/json+oembed">
-        <meta content="${jsonFile.type !== 'ario' ? ficData.config.ipfs.host.replace('{cid}', jsonFile.image) : `https://ar-io.dev/${jsonFile.image}`}" property="og:image">
+        <meta content="${imgUrl}" property="og:image">
         <link href="https://${ficData.config.domain}/characters/${file.name}.html" rel="canonical">
         
         <!-- Theme -->
@@ -109,7 +115,7 @@ getDirectories(folderPath, (err, files) => {
         <meta name="twitter:card" content="summary">
         <meta name="twitter:site" content="@${ficData.config.twitter.username}">
         <meta name="twitter:creator" content="@${ficData.config.twitter.username}">
-        <meta name="twitter:image" content="${jsonFile.type !== 'ario' ? ficData.config.ipfs.host.replace('{cid}', jsonFile.image) : `https://ar-io.dev/${jsonFile.image}`}">
+        <meta name="twitter:image" content="${imgUrl}">
 
         <!-- Script -->
         <script src="../js/jquery.min.js"></script>
