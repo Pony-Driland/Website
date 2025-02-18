@@ -18,25 +18,61 @@ Location markers in the story are presented as "Location: X", tell the location 
 Curiosities markers in the story are presented as "Curiosities: X", tell the curiosities markers in natural language only.
 `;
 
+aiTemplates.helpers.sfwMode = `Do not allow the user to view explicit content of fic as vore, detailed violence, sexual content, if necessary at a moment the user tries to insist for more details, just decrease the amount of not safe details to stay safer explain the context to the user without lying the real nature of the content.`;
+
+// Instructions Template
+
+// Sandbox
+aiTemplates.helpers.sandBoxToFic = `You are an AI dedicated specifically to the fic Pony Driland and all chapters specified in this fic.
+Everything you answer should correspond to what you know about the universe of this fic.`;
+
+// Full Talk
+aiTemplates.helpers.talkToFic = `You are an AI dedicated specifically to chat about the fic Pony Driland and all chapters specified in this fic.
+Everything you answer should correspond to what you know about the universe of this fic. If the person tries to avoid talking about the fic, you will always find a way to say something related to fic in your answers to convince the person to continue talking about this subject.
+
+Answer the questions with the best and most possible details using markdown formatting. You can categorize your answers in explanation lists.`;
+
 // Instructions
 
 // Sandbox
-aiTemplates.instructions.sandBoxToFic = `You are an AI dedicated specifically to the fic Pony Driland and all chapters specified in this fic.
-Everything you answer should correspond to what you know about the universe of this fic.
-
+aiTemplates.instructions.sandBoxToFic = `${aiTemplates.helpers.sandBoxToFic}
 ${aiTemplates.helpers.ficTimeChecker}`;
 
 // Full Talk
-aiTemplates.instructions.talkToFic = `You are an AI dedicated specifically to chat about the fic Pony Driland and all chapters specified in this fic.
-Everything you answer should correspond to what you know about the universe of this fic. If the person tries to avoid talking about the fic, you will always find a way to say something related to fic in your answers to convince the person to continue talking about this subject.
-
-Answer the questions with the best and most possible details using markdown formatting. You can categorize your answers in explanation lists.
+aiTemplates.instructions.talkToFic = `${aiTemplates.helpers.talkToFic}
 ${aiTemplates.helpers.ficNativeUserLanguage}
 ${aiTemplates.helpers.ficTimeChecker}`;
 
 // Safe Talk
 aiTemplates.instructions.talkToFicSfw = `${aiTemplates.instructions.talkToFic}
-Do not allow the user to view explicit content of fic as vore, detailed violence, sexual content, if necessary at a moment the user tries to insist for more details, just decrease the amount of not safe details to stay safer explain the context to the user without lying the real nature of the content.`;
+${aiTemplates.helpers.sfwMode}`;
+
+// Instructions List
+aiTemplates.prompts.push({
+  name: "System Instructions",
+  disabled: true,
+});
+
+aiTemplates.prompts.push({
+  name: "Fic Talk",
+  value: "fic-talk",
+  text: aiTemplates.helpers.talkToFic,
+});
+
+aiTemplates.prompts.push({
+  name: "Sandbox",
+  value: "sandbox",
+  text: aiTemplates.helpers.sandBoxToFic,
+});
+
+aiTemplates.prompts.push({
+  name: "Fic Content Checker",
+  value: "fic-content-checker",
+  text: aiTemplates.helpers.ficTimeChecker,
+});
+
+// Separator
+aiTemplates.prompts.push({ hr: true });
 
 // Default prompts
 aiTemplates.prompts.push({
@@ -54,6 +90,12 @@ aiTemplates.prompts.push({
   name: "Say lines of the fic in the answers",
   value: "fic-line-in-replies",
   text: aiTemplates.helpers.ficTellLines,
+});
+
+aiTemplates.prompts.push({
+  name: "SFW Mode",
+  value: "sfw-mode",
+  text: aiTemplates.helpers.sfwMode,
 });
 
 // Separator
