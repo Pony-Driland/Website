@@ -1778,7 +1778,7 @@ const AiScriptStart = () => {
         else topK.reset().disable();
       };
 
-      const selectModel = (newModel) => {
+      const selectModel = (newModel, ignoreTokenUpdater = false) => {
         const model = tinyAi.getModelData(newModel);
         if (model) {
           insertDefaultSettings(model, newModel);
@@ -1794,6 +1794,9 @@ const AiScriptStart = () => {
           frequencyPenalty.reset().disable();
           localStorage.removeItem("tiny-ai-storage-model-selected");
         }
+
+        if (!ignoreTokenUpdater && !modelSelector.prop("disabled"))
+          updateAiTokenCounterData();
       };
 
       modelSelector.on("change", () => selectModel(modelSelector.val()));
@@ -1854,37 +1857,38 @@ const AiScriptStart = () => {
         // Prepare history
         const history = tinyAi.getHistory();
         const content = [];
+        if (history) {
+          if (
+            typeof history.systemInstruction === "string" &&
+            history.systemInstruction.length > 0
+          )
+            content.push({
+              role: "system",
+              parts: [{ text: history.systemInstruction }],
+            });
 
-        if (
-          typeof history.systemInstruction === "string" &&
-          history.systemInstruction.length > 0
-        )
-          content.push({
-            role: "system",
-            parts: [{ text: history.systemInstruction }],
-          });
-
-        if (history.file)
-          content.push({
-            role: "user",
-            parts: [
-              {
-                inlineData: {
-                  mime_type: history.file.mime,
-                  data: history.file.data,
+          if (history.file)
+            content.push({
+              role: "user",
+              parts: [
+                {
+                  inlineData: {
+                    mime_type: history.file.mime,
+                    data: history.file.data,
+                  },
                 },
-              },
-            ],
-          });
+              ],
+            });
 
-        if (typeof history.prompt === "string" && history.prompt.length > 0)
-          content.push({
-            role: "user",
-            parts: [{ text: history.prompt }],
-          });
+          if (typeof history.prompt === "string" && history.prompt.length > 0)
+            content.push({
+              role: "user",
+              parts: [{ text: history.prompt }],
+            });
 
-        for (const index in history.data) {
-          content.push(history.data[index]);
+          for (const index in history.data) {
+            content.push(history.data[index]);
+          }
         }
 
         return content;
@@ -1893,7 +1897,9 @@ const AiScriptStart = () => {
       const getAiTokens = () =>
         new Promise((resolve, reject) => {
           const content = prepareContentList();
-          tinyAi.countTokens(content).then(resolve).catch(reject);
+          if (content.length > 0)
+            tinyAi.countTokens(content).then(resolve).catch(reject);
+          else resolve({});
         });
 
       // Get Ai Tokens
@@ -1901,6 +1907,7 @@ const AiScriptStart = () => {
         enableReadOnly(true);
         modelChangerReadOnly();
         disablePromptButtons(true);
+        enableModelReadOnly();
         const oldMsgInput = msgInput.val();
 
         let points = ".";
@@ -1921,6 +1928,7 @@ const AiScriptStart = () => {
           enableReadOnly(false);
           modelChangerReadOnly(false);
           disablePromptButtons(false);
+          enableModelReadOnly(false);
           msgInput.focus();
         };
 
@@ -2135,6 +2143,7 @@ const AiScriptStart = () => {
           enableReadOnly(true, controller);
           modelChangerReadOnly();
           disablePromptButtons(true);
+          enableModelSelectorReadOnly(true);
 
           let points = ".";
           let secondsWaiting = -1;
@@ -2183,6 +2192,7 @@ const AiScriptStart = () => {
 
           enableReadOnly(false);
           modelChangerReadOnly(false);
+          enableModelSelectorReadOnly(false);
           msgInput.focus();
         }
       });
@@ -2358,9 +2368,15 @@ const AiScriptStart = () => {
       );
 
       // Enable Read Only
-      const enableModelReadOnly = (isEnabled = true) => {
+      const enableModelSelectorReadOnly = (isEnabled = true) => {
         modelSelector.prop("disabled", isEnabled);
+        if (isEnabled) modelSelector.addClass("disabled");
+        else modelSelector.removeClass("disabled");
+      };
+
+      const enableModelReadOnly = (isEnabled = true) => {
         outputLength.prop("disabled", isEnabled);
+        enableModelSelectorReadOnly(isEnabled);
 
         temperature[isEnabled ? "disable" : "enable"]();
         topP[isEnabled ? "disable" : "enable"]();
@@ -2368,13 +2384,8 @@ const AiScriptStart = () => {
         presencePenalty[isEnabled ? "disable" : "enable"]();
         frequencyPenalty[isEnabled ? "disable" : "enable"]();
 
-        if (isEnabled) {
-          modelSelector.addClass("disabled");
-          outputLength.addClass("disabled");
-        } else {
-          modelSelector.removeClass("disabled");
-          outputLength.removeClass("disabled");
-        }
+        if (isEnabled) outputLength.addClass("disabled");
+        else outputLength.removeClass("disabled");
       };
 
       const readOnlyTemplate = (item, isEnabled) => {
