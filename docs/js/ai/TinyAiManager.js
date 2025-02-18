@@ -657,6 +657,8 @@ const AiScriptStart = () => {
     aiLogin = newAiLogin;
   };
 
+  const canSandBox = (value) => value === "sandBoxFic";
+
   // Detect Using AI
   appData.emitter.on("isUsingAI", (usingAI) => {
     if (usingAI) {
@@ -1134,6 +1136,14 @@ const AiScriptStart = () => {
                 // Start History
                 tinyAi.startHistory(jsonData.id, true);
 
+                // Open Get Fic Cache
+                const index = ficConfigs.data.findIndex(
+                  (item) => item.id === jsonData.id,
+                );
+
+                const instructionId =
+                  index > -1 ? ficConfigs.data[index].template : null;
+
                 // Set model
                 if (typeof jsonData.file.model === "string") {
                   modelSelector.val(jsonData.file.model);
@@ -1142,9 +1152,14 @@ const AiScriptStart = () => {
                 }
 
                 // Set Instruction
-                tinyAi.setHistorySystemInstruction(
-                  jsonData.file.systemInstruction,
-                );
+                if (canSandBox(jsonData.id))
+                  tinyAi.setHistorySystemInstruction(
+                    jsonData.file.systemInstruction,
+                  );
+                else if (aiTemplates.instructions[instructionId])
+                  tinyAi.setHistorySystemInstruction(
+                    aiTemplates.instructions[instructionId],
+                  );
 
                 if (typeof jsonData.file.prompt === "string")
                   tinyAi.setHistoryPrompt(jsonData.file.prompt);
@@ -1156,14 +1171,10 @@ const AiScriptStart = () => {
                 // Complete
                 insertImportData(jsonData.file.data);
 
-                // Open Get Fic Cache
-                const index = ficConfigs.data.findIndex(
-                  (item) => item.id === jsonData.id,
-                );
                 if (index > -1)
                   getFicCache(
                     ficConfigs.data[index].id,
-                    ficConfigs.data[index].template,
+                    instructionId,
                     ficConfigs.data[index].intro,
                     () => {
                       ficConfigs.selected = ficConfigs.data[index].id;
@@ -1269,22 +1280,31 @@ const AiScriptStart = () => {
 
       const ficPromptItems = [
         // System Instructions
-        createButtonSidebar("fa-solid fa-toolbox", "System Instructions", () =>
-          tinyModalTextarea({
-            id: "ai_instructions",
-            info: "System Instructions:",
-            size: 400,
-            textarea: tinyAi.getHistorySystemInstruction(),
-            submitName: "Set Instructions",
-            addTemplates: {
-              data: aiTemplates.prompts,
-              title: "Select a prompt to be added",
-            },
-            submitCall: (value) => {
-              tinyAi.setHistorySystemInstruction(value);
-              updateAiTokenCounterData();
-            },
-          }),
+        createButtonSidebar(
+          "fa-solid fa-toolbox",
+          "System Instructions",
+          () => {
+            const tinyModalData = {
+              id: "ai_instructions",
+              info: "System Instructions:",
+              size: 400,
+              textarea: tinyAi.getHistorySystemInstruction(),
+              submitName: "Set Instructions",
+              submitCall: (value) => {
+                tinyAi.setHistorySystemInstruction(value);
+                updateAiTokenCounterData();
+              },
+            };
+
+            if (canSandBox(ficConfigs.selected)) {
+              tinyModalData.addTemplates = {
+                data: aiTemplates.prompts,
+                title: "Select a prompt to be added",
+              };
+            } else tinyModalData.readOnly = true;
+
+            tinyModalTextarea(tinyModalData);
+          },
         ),
 
         // Prompt
@@ -1317,6 +1337,7 @@ const AiScriptStart = () => {
           submitCall: null,
           id: null,
           textarea: null,
+          readOnly: false,
         },
       ) => {
         // Body
@@ -1326,6 +1347,7 @@ const AiScriptStart = () => {
           style: `height: ${String(config.size)}px;`,
         });
         textarea.val(config.textarea);
+        if (config.readOnly) textarea.prop("readOnly", true);
 
         // Templates list
         if (
@@ -1421,6 +1443,8 @@ const AiScriptStart = () => {
           $(`#${config.id}`).modal("hide");
         });
 
+        if (config.readOnly) submit.prop("disabled", true).addClass("disabled");
+
         body.append(
           $("<div>", { class: "d-grid gap-2 col-6 mx-auto" }).append(submit),
         );
@@ -1454,9 +1478,12 @@ const AiScriptStart = () => {
             // Export
             createButtonSidebar("fa-solid fa-file-export", "Export", () => {
               const exportData = {
-                file: tinyAi.getHistory(),
+                file: clone(tinyAi.getHistory()),
                 id: tinyAi.getHistoryId(),
               };
+
+              if (!canSandBox(ficConfigs.selected))
+                delete exportData.file.systemInstruction;
 
               if (exportData.file.file) delete exportData.file.file;
 
