@@ -34,8 +34,8 @@ getDirectories(folderPath, (err, files) => {
                 const jsonFile = require(path.join(file.dir, './' + file.name + '.json'));
                 console.log('JSON File', jsonFile);
 
-                const imgUrl = selectedType === 'cid' && jsonFile['cid-image'] ? ficData.config.ipfs.host.replace('{cid}', jsonFile['cid-image']) :
-                selectedType === 'ario' && jsonFile['ario-image'] ? `https://ar-io.dev/${jsonFile['ario-image']}` :
+                const imgUrl = selectedType === 'ipfs' && ficData.config.ipfs.files[jsonFile.image] ? ficData.config.ipfs.host.replace('{cid}', ficData.config.ipfs.files[jsonFile.image]) :
+                    selectedType === 'ario' && ficData.config.ario.files[jsonFile.image] ? ficData.config.ario.host.replace('{cid}', ficData.config.ario.files[jsonFile.image]) :
                     jsonFile.image;
 
                 // Create oEmbed File

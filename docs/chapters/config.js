@@ -180,40 +180,44 @@ const storyCfg = {
 
     },
 
-    // IPFS
-    ipfs: {
-        host: 'https://cloudflare-ipfs.com/ipfs/{cid}'
-    },
-
     // Word Blacklist
     wordCountBlacklick: [],
 
+    // IPFS
+    ipfs: {
+        host: 'https://cloudflare-ipfs.com/ipfs/{cid}',
+        files: {},
+    },
+
     // Ar-Io
     ario: {
-        "/img/characters/amy/ref.jpg": "AZhBxGQ1gbgLVp7RDlBqAG-ky37BcwIGIOLXW15Tn9c",
-        "/img/characters/amy/wip-collar.jpg": "F2VfXQrr0UK39bSMSp5M1P0riNeZ5fFE2BE0qh73dmk",
-    
-        "/img/characters/beta/aniya/image.png": "LLZaY7dCEbMPxBig_EYMDj8GbQX5vyVZh6eJ31wmOow",
-    
-        "/img/characters/beta/james/image.png": "3ReqC2QPg6RpVM508FVjWEBBgxI3hrfkG8YMHUypWGY",
-    
-        "/img/characters/rayane/ref.png": "u4NBTOjArg3WdOoUXft6jbo13q6yNa9D14Zu_hZGUCc",
-    
-        "/img/characters/rainbow-queen/ref-dark.jpg": "Y4r5XCLaD3uXMNvCeENDrBaEBbESu5KLXai7bC5kqRw",
-        "/img/characters/rainbow-queen/wip/ref-1.gif": "2l2dbZxB292CsGBi7-1qtPTXvvjCRmYQiauD1LahdB4",
-        "/img/characters/rainbow-queen/ref-dark.webp": "0SyvCKcKbsVSxaEW3DGl6D-EKjlJJCT36wjkLO8htok",
-        "/img/gallery/chapter1-gift.jpg": "VtXS4VqRDljlQdVtE5gTaQQyR2bPuOv-YDK6AQ4xF_k",
-        "/img/characters/rainbow-queen/scythe.gif": "EGwe6QEqi2PP2bhJP1OcXj_QZOC_Gwin20b9DiC83sk",
-    
-        "/img/characters/whistler/wip/headshot.png": "vm8s0QOvBKAmOyUq5Nf6iFo9ybaEq8-Qg7z_co2oW_M",
-    
-        "/img/characters/blue-screen/ref.jpg": "5og2tDBMNV0EwLBZcRA6bwytRJDJDXK76DVvrz0XDBk",
-    
-        "/img/characters/princess-ariella/ref.png": "LHFvTaQPlHbDnc4vM_xLQ0LWH8ypdqtSccgApjFatq8",
-    
-        "/img/characters/prisma/ref.jpg": "HD4luK_pU20Xwe1SM6em0h9-5DI_h2wSgdQTBbXj8y8",
-    
-        "/img/characters/layla/ref.jpg": "shHPlacMUy7JWHqNO0GQPZitOyDdFFv7UsgktT69c1A"
+        host: 'https://ar-io.dev/{cid}',
+        files: {
+            "/img/characters/amy/ref.jpg": "AZhBxGQ1gbgLVp7RDlBqAG-ky37BcwIGIOLXW15Tn9c",
+            "/img/characters/amy/wip-collar.jpg": "F2VfXQrr0UK39bSMSp5M1P0riNeZ5fFE2BE0qh73dmk",
+        
+            "/img/characters/beta/aniya/image.png": "LLZaY7dCEbMPxBig_EYMDj8GbQX5vyVZh6eJ31wmOow",
+        
+            "/img/characters/beta/james/image.png": "3ReqC2QPg6RpVM508FVjWEBBgxI3hrfkG8YMHUypWGY",
+        
+            "/img/characters/rayane/ref.png": "u4NBTOjArg3WdOoUXft6jbo13q6yNa9D14Zu_hZGUCc",
+        
+            "/img/characters/rainbow-queen/ref-dark.jpg": "Y4r5XCLaD3uXMNvCeENDrBaEBbESu5KLXai7bC5kqRw",
+            "/img/characters/rainbow-queen/wip/ref-1.gif": "2l2dbZxB292CsGBi7-1qtPTXvvjCRmYQiauD1LahdB4",
+            "/img/characters/rainbow-queen/ref-dark.webp": "0SyvCKcKbsVSxaEW3DGl6D-EKjlJJCT36wjkLO8htok",
+            "/img/gallery/chapter1-gift.jpg": "VtXS4VqRDljlQdVtE5gTaQQyR2bPuOv-YDK6AQ4xF_k",
+            "/img/characters/rainbow-queen/scythe.gif": "EGwe6QEqi2PP2bhJP1OcXj_QZOC_Gwin20b9DiC83sk",
+        
+            "/img/characters/whistler/wip/headshot.png": "vm8s0QOvBKAmOyUq5Nf6iFo9ybaEq8-Qg7z_co2oW_M",
+        
+            "/img/characters/blue-screen/ref.jpg": "5og2tDBMNV0EwLBZcRA6bwytRJDJDXK76DVvrz0XDBk",
+        
+            "/img/characters/princess-ariella/ref.png": "LHFvTaQPlHbDnc4vM_xLQ0LWH8ypdqtSccgApjFatq8",
+        
+            "/img/characters/prisma/ref.jpg": "HD4luK_pU20Xwe1SM6em0h9-5DI_h2wSgdQTBbXj8y8",
+        
+            "/img/characters/layla/ref.jpg": "shHPlacMUy7JWHqNO0GQPZitOyDdFFv7UsgktT69c1A"
+        }
     }
 
 };
