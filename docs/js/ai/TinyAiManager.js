@@ -1282,6 +1282,10 @@ const AiScriptStart = () => {
             size: 200,
             textarea: tinyAi.getHistoryPrompt(),
             submitName: "Set Prompt",
+            addTemplates: {
+              data: aiTemplates.prompts,
+              title: "Select a prompt to be added",
+            },
             submitCall: (value) => {
               tinyAi.setHistoryPrompt(value);
               updateAiTokenCounterData();
@@ -1296,11 +1300,13 @@ const AiScriptStart = () => {
           info: "???",
           size: 200,
           submitName: "Submit",
+          addTemplates: null,
           submitCall: null,
           id: null,
           textarea: null,
         },
       ) => {
+        // Body
         const body = $("<div>");
         const textarea = $("<textarea>", {
           class: "form-control",
@@ -1308,9 +1314,92 @@ const AiScriptStart = () => {
         });
         textarea.val(config.textarea);
 
+        // Templates list
+        if (
+          config.addTemplates &&
+          Array.isArray(config.addTemplates.data) &&
+          config.addTemplates.data.length > 0
+        ) {
+          // Select
+          const textareaAdd = $("<select>", { class: "form-control" });
+          textareaAdd.append(
+            $("<option>", { value: "DEFAULT" }).text(config.addTemplates.title),
+          );
+
+          // Separator
+          const addSeparator = () =>
+            textareaAdd.append(
+              $("<option>")
+                .prop("disabled", true)
+                .text("----------------------"),
+            );
+
+          addSeparator();
+
+          // Add options
+          for (const index in config.addTemplates.data) {
+            if (!config.addTemplates.data[index].hr)
+              textareaAdd.append(
+                $("<option>", {
+                  value: config.addTemplates.data[index].value,
+                })
+                  .data(
+                    "TinyAI-select-text",
+                    config.addTemplates.data[index].text,
+                  )
+                  .text(config.addTemplates.data[index].name)
+                  .prop(
+                    "disabled",
+                    typeof config.addTemplates.data[index].disabled ===
+                      "boolean"
+                      ? config.addTemplates.data[index].disabled
+                      : false,
+                  ),
+              );
+            else addSeparator();
+          }
+
+          // Option selected
+          textareaAdd.on("change", () => {
+            // Get value
+            const option = textareaAdd.find(`[value="${textareaAdd.val()}"]`);
+            const text = option
+              ? option.data("TinyAI-select-text")
+              : null || null;
+            textareaAdd.val("DEFAULT");
+
+            // Insert text
+            if (typeof text === "string" && text.length > 0) {
+              // Cursor position
+              const start = textarea.prop("selectionStart");
+              const end = textarea.prop("selectionEnd");
+
+              // Textarea content
+              const content = textarea.val();
+
+              // Insert new text
+              textarea.val(
+                content.substring(0, start) + text + content.substring(end),
+              );
+
+              // New cursor position
+              const newCursorPosition = start + text.length;
+              textarea
+                .prop("selectionStart", newCursorPosition)
+                .prop("selectionEnd", newCursorPosition)
+                .focus();
+            }
+          });
+
+          // Insert into body
+          body.append(textareaAdd);
+        }
+
+        // Add textarea
         body.append($("<p>").text(config.info));
         body.append(textarea);
 
+        // Submit
         const submit = $("<button>", { class: "btn btn-info m-2 ms-0" });
         submit.text(config.submitName);
 
@@ -1323,6 +1412,7 @@ const AiScriptStart = () => {
           $("<div>", { class: "d-grid gap-2 col-6 mx-auto" }).append(submit),
         );
 
+        // Start modal
         tinyLib.modal({
           id: config.id,
           title: "AI Prompt",
