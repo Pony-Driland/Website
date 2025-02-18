@@ -1065,6 +1065,14 @@ const AiScriptStart = () => {
             insertImportData(tinyAi.getHistory().data, true);
             disablePromptButtons(false);
             updateAiTokenCounterData();
+
+            // Update button list
+            for (const index in ficConfigs.buttons) {
+              // Nope
+              if (ficConfigs.data[index].id !== ficConfigs.selected)
+                ficConfigs.buttons[index].removeClass("selected");
+              else ficConfigs.buttons[index].addClass("selected");
+            }
           })
           .catch((err) => {
             console.error(err);
@@ -1203,6 +1211,7 @@ const AiScriptStart = () => {
             getData: async () => saveRoleplayFormat(null, false),
           },
         ],
+        buttons: [],
         selected: null,
       };
 
@@ -1231,22 +1240,22 @@ const AiScriptStart = () => {
       ];
 
       for (const index in ficConfigs.data) {
-        ficTemplates.push(
-          createButtonSidebar(
-            ficConfigs.data[index].icon,
-            ficConfigs.data[index].title,
-            () =>
-              getFicCache(
-                ficConfigs.data[index].id,
-                ficConfigs.data[index].template,
-                ficConfigs.data[index].intro,
-                () => {
-                  ficConfigs.selected = ficConfigs.data[index].id;
-                  return ficConfigs.data[index].getData();
-                },
-              ),
-          ),
+        const newButton = createButtonSidebar(
+          ficConfigs.data[index].icon,
+          ficConfigs.data[index].title,
+          () =>
+            getFicCache(
+              ficConfigs.data[index].id,
+              ficConfigs.data[index].template,
+              ficConfigs.data[index].intro,
+              () => {
+                ficConfigs.selected = ficConfigs.data[index].id;
+                return ficConfigs.data[index].getData();
+              },
+            ),
         );
+        ficConfigs.buttons.push(newButton);
+        ficTemplates.push(newButton);
       }
 
       const importItems = [
@@ -1428,7 +1437,7 @@ const AiScriptStart = () => {
       // Left
       const sidebarLeft = $("<div>", sidebarStyle).append(
         $("<ul>", { class: "list-unstyled" }).append(
-          $("<li>", { class: "mb-3" }).append(
+          $("<li>", { id: "ai-mode-list", class: "mb-3" }).append(
             // Modes
             $("<h5>").text("Modes"),
 
