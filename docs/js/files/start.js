@@ -80,27 +80,45 @@ const renderRoleplayFormat = (chapter) => {
 };
 
 const saveRoleplayFormat = (chapter, saveAsFile = true) => {
+  // File start and end
   const fileStart = `---------- Official Pony Driland fic file ----------`;
   const fileEnd = `---------- The end Official Pony Driland fic file ----------`;
   let file = ``;
 
+  // Insert chapter
   const insertChapter = (cpId) => {
     file += `\n\n---------- Chapter ${cpId} ----------\n`;
     file += renderRoleplayFormat(cpId);
     file += `\n\n---------- The end chapter ${cpId} ----------`;
   };
 
-  if (typeof chapter !== "number") {
+  // Insert all chapters
+  if (typeof chapter !== "number" || Array.isArray(chapter)) {
     for (let i = 0; i < storyData.chapter.amount; i++) {
+      // Chapter item
       const item = i + 1;
-      insertChapter(item);
+
+      // Insert all chapters
+      if (!Array.isArray(chapter)) insertChapter(item);
+      // Selected chapters
+      else {
+        for (const index in chapter) {
+          if (typeof chapter[index] === "number" && item === chapter[index])
+            insertChapter(item);
+        }
+      }
     }
-  } else {
+  }
+
+  // Insert chapter number
+  else {
     insertChapter(chapter);
   }
 
+  // Fix file
   file = file.substring(2, file.length);
 
+  // Info data
   let info = `Title: ${storyData.title}\nDescription: ${storyData.description}\nAuthor: ${storyCfg.creator}\nAuthor Page: ${storyCfg.creator_url}`;
   if (
     (storyCfg.bitcoin && storyCfg.bitcoin.address) ||
@@ -132,16 +150,22 @@ const saveRoleplayFormat = (chapter, saveAsFile = true) => {
     info += `\nBNB Donations: ${storyCfg.bnb.address}`;
   }
 
+  // Save file
   if (saveAsFile)
     saveAs(
       new Blob([`${fileStart}\n\n${info}\n\n${file}\n\n${fileEnd}`], {
         type: "text/plain",
       }),
-      `Pony Driland${!chapter ? "" : ` - Chapter ${chapter}`}.txt`,
+      `Pony Driland${
+        typeof chapter !== "number" && !Array.isArray(chapter)
+          ? ""
+          : ` - Chapter ${typeof chapter === "number" ? String(chapter) : chapter.join("-")}`
+      }.txt`,
     );
   else return { data: `${info}\n\n${file}`, mime: "text/plain" };
 };
 
+// Tiny dice
 const dice = {
   roll: function () {
     return (randomNumber = Math.floor(Math.random() * this.sides) + 1);
