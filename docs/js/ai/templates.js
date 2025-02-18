@@ -18,6 +18,11 @@ Location markers in the story are presented as "Location: X", tell the location 
 Curiosities markers in the story are presented as "Curiosities: X", tell the curiosities markers in natural language only.
 `;
 
+aiTemplates.instructions.sandBoxToFic = `You are an AI dedicated specifically to the fic Pony Driland and all chapters specified in this fic.
+Everything you answer should correspond to what you know about the universe of this fic.
+
+${aiTemplates.helpers.ficTimeChecker}`;
+
 aiTemplates.instructions.talkToFic = `You are an AI dedicated specifically to chat about the fic Pony Driland and all chapters specified in this fic.
 Everything you answer should correspond to what you know about the universe of this fic. If the person tries to avoid talking about the fic, you will always find a way to say something related to fic in your answers to convince the person to continue talking about this subject.
 
