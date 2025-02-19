@@ -2412,10 +2412,11 @@ const AiScriptStart = () => {
           // Subtract the new height by the min size to get the exact amount of height created
           const tinyFinalValue = height - minHeight;
 
+          // Get the current scroll position before adding new content
+          const scrollBefore = chatContainer.scrollTop();
+          const heightBefore = chatContainer.prop("scrollHeight");
+
           // And use this to correct the size of other elements
-          const needScroll =
-            chatContainer.scrollTop() + chatContainer.innerHeight() >=
-            chatContainer.prop("scrollHeight");
           chatContainer.css("padding-bottom", `${String(tinyFinalValue)}px`);
 
           textInputContainer.css({
@@ -2423,12 +2424,12 @@ const AiScriptStart = () => {
             top: `-${String(tinyFinalValue)}px`,
           });
 
-          // Fix scroll
-          if (needScroll)
-            chatContainer.animate(
-              { scrollTop: chatContainer.prop("scrollHeight") },
-              0,
-            );
+          // Get the new scroll height after adding content
+          const heightAfter = chatContainer.prop("scrollHeight");
+          const heightDiff = heightAfter - heightBefore;
+
+          // Adjust the scroll position to maintain the user's view
+          chatContainer.scrollTop(scrollBefore + heightDiff);
         },
       );
 
