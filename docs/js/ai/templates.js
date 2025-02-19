@@ -107,7 +107,7 @@ aiTemplates.prompts.push({ hr: true, type: "text" });
 
 // Tests
 aiTemplates.prompts.push({
-  name: "The tiny test list",
+  name: "The tiny sandbox list",
   disabled: true,
   type: "text",
 });
@@ -128,7 +128,7 @@ aiTemplates.funcs.convertToCharacter = (
 
 // Rainbow Queen test
 aiTemplates.prompts.push({
-  name: "Rainbow Queen Roleplay (Sandbox Test)",
+  name: "Rainbow Queen Roleplay (Test)",
   value: "rainbowqueen-sandbox-test",
   text: `You're Rainbow Queen and you'll say all the answers like Rainbow Queen. Say and do things Rainbow Queen would do, don't try to imitate other characters, you're exclusively Rainbow Queen herself in person.`,
 });
@@ -136,14 +136,14 @@ aiTemplates.prompts.push({
 /*
   Rainbow Queen Roleplay game
 
-  I am not the creator of this prompt, I just modified an existing internet prompt made for the Sphinx character, but I completely forgot who the original author is.
-  I appreciate if someone finds the original author to give credits.
+  This is a modified version of the model "The Sphinx" created by Tiffin_ (I just modified the model by myself)
+  Original file: https://character-tavern.com/character/chub_Tiffin_/the-sphinx-ef904bc46e30
 */
-/*
 aiTemplates.prompts.push({
-  name: "Rainbow Queen Game (Sandbox Test) (Original prompt author unknown)",
+  name: "Rainbow Queen Game (Game Test) (Modified Version of The Sphinx by Tiffin_)",
   value: "rainbowqueen-game-test",
-  text: aiTemplates.funcs.convertToCharacter(
+  sandboxOnly: true,
+  sandBoxText: aiTemplates.funcs.convertToCharacter(
     `
 Scenary: {{char}} imposes her will with a rule of risk and reward, only ruin and slavery await those who fail her games
 
@@ -199,9 +199,9 @@ A small ruffle of giant wings betrayed her interest. "աɛʟʟ աɛʟʟ... աɦ�
 | 1 | Beg for mercy and promise fealty to this powerful, ancient mistress? |
 | 2 | Stand defiant, and try to bargain or outwit the cryptic chimera? |
 | 3 | Cower, and await your fate at the mercy of her terrible jaws and talons? |
+
 Something else? (Please specify)
 `,
     { name: "Rainbow Queen", user: "user" },
   ),
 });
-*/

@@ -1066,8 +1066,6 @@ const AiScriptStart = () => {
             else {
               // Get first history data
               const tinyData = tinyAi.getFirstHistoryIndexData();
-
-              // In the future this replacement will be optional. This is the process to update the fic data for the user not to use outdated data.
               tinyAi.setHistoryFileData(ficData.mime, ficData.data);
 
               // Delete old file version
@@ -1080,14 +1078,34 @@ const AiScriptStart = () => {
                 tinyAi.deleteHistoryIndex(0);
             }
 
-            // Clear data and start system
+            // Clear data
             clearMessages();
             enableReadOnly(false);
             addMessage(
               makeMessage({ message: introduction, tokens: 0 }, "Introduction"),
             );
 
-            insertImportData(tinyAi.getHistory().data, true);
+            const history = tinyAi.getHistory();
+
+            // Insert first message
+            if (
+              history.data.length < 1 &&
+              typeof history.firstDialogue === "string"
+            ) {
+              history.data.push(
+                tinyAi._buildContents(
+                  null,
+                  {
+                    role: "model",
+                    parts: [{ text: history.firstDialogue }],
+                  },
+                  "model",
+                ),
+              );
+            }
+
+            // Start system
+            insertImportData(history.data, true);
             disablePromptButtons(false);
             updateAiTokenCounterData();
 
@@ -1200,6 +1218,23 @@ const AiScriptStart = () => {
                 // Clear messages
                 clearMessages();
                 enableReadOnly(false);
+
+                // Insert first message
+                if (
+                  jsonData.file.data.length < 1 &&
+                  typeof jsonData.file.firstDialogue === "string"
+                ) {
+                  jsonData.file.data.push(
+                    tinyAi._buildContents(
+                      null,
+                      {
+                        role: "model",
+                        parts: [{ text: jsonData.file.firstDialogue }],
+                      },
+                      "model",
+                    ),
+                  );
+                }
 
                 // Complete
                 insertImportData(jsonData.file.data);
@@ -1342,25 +1377,28 @@ const AiScriptStart = () => {
 
         // Prompt
         createButtonSidebar("fa-solid fa-terminal", "Prompt", () =>
-          tinyModalTextarea({
-            id: "ai_prompt",
-            info: "This prompt will always be inserted at the beginning of all your requests:",
-            size: 200,
-            textarea: tinyAi.getHistoryPrompt(),
-            submitName: "Set Prompt",
-            addTemplates: {
-              data: aiTemplates.prompts,
-              title: "Select a prompt to be added",
+          tinyModalTextarea(
+            {
+              id: "ai_prompt",
+              info: "This prompt will always be inserted at the beginning of all your requests:",
+              size: 200,
+              textarea: tinyAi.getHistoryPrompt(),
+              submitName: "Set Prompt",
+              addTemplates: {
+                data: aiTemplates.prompts,
+                title: "Select a prompt to be added",
+              },
+              submitCall: (value) => {
+                tinyAi.setHistoryPrompt(value);
+                updateAiTokenCounterData();
+              },
             },
-            submitCall: (value) => {
-              tinyAi.setHistoryPrompt(value);
-              updateAiTokenCounterData();
-            },
-          }),
+            !canSandBox(ficConfigs.selected) ? "text" : ["sandBoxText", "text"],
+          ),
         ),
 
         // First Dialogue
-        /* createButtonSidebar("fa-solid fa-comment-dots", "First Dialogue", () =>
+        createButtonSidebar("fa-solid fa-comment-dots", "First Dialogue", () =>
           tinyModalTextarea(
             {
               id: "ai_first_dialogue",
@@ -1374,11 +1412,14 @@ const AiScriptStart = () => {
               },
               submitCall: (value) => {
                 tinyAi.setHistoryFirstDialogue(value);
+                enabledFirstDialogue(
+                  typeof value === "string" && value.length > 0,
+                );
               },
             },
             "firstDialogue",
           ),
-        ), */
+        ),
       ];
 
       // Textarea Template
@@ -1478,35 +1519,42 @@ const AiScriptStart = () => {
               return null;
             };
 
-            // Normal way
-            if (!config.addTemplates.data[index].hr) {
-              // Validator
-              if (
-                valueTypeValidator() &&
-                (typeof config.addTemplates.data[index].value === "string" ||
-                  config.addTemplates.data[index].disabled)
-              )
-                textareaAdd.append(
-                  $("<option>", {
-                    value: config.addTemplates.data[index].value,
-                  })
-                    // Data item
-                    .data("TinyAI-select-text", getTypeValue())
-                    // Option name
-                    .text(config.addTemplates.data[index].name)
+            if (
+              typeof config.addTemplates.data[index].sandboxOnly !==
+                "boolean" ||
+              !config.addTemplates.data[index].sandboxOnly ||
+              canSandBox(ficConfigs.selected)
+            ) {
+              // Normal way
+              if (!config.addTemplates.data[index].hr) {
+                // Validator
+                if (
+                  valueTypeValidator() &&
+                  (typeof config.addTemplates.data[index].value === "string" ||
+                    config.addTemplates.data[index].disabled)
+                )
+                  textareaAdd.append(
+                    $("<option>", {
+                      value: config.addTemplates.data[index].value,
+                    })
+                      // Data item
+                      .data("TinyAI-select-text", getTypeValue())
+                      // Option name
+                      .text(config.addTemplates.data[index].name)
 
-                    // Option is disabled?
-                    .prop(
-                      "disabled",
-                      typeof config.addTemplates.data[index].disabled ===
-                        "boolean"
-                        ? config.addTemplates.data[index].disabled
-                        : false,
-                    ),
-                );
+                      // Option is disabled?
+                      .prop(
+                        "disabled",
+                        typeof config.addTemplates.data[index].disabled ===
+                          "boolean"
+                          ? config.addTemplates.data[index].disabled
+                          : false,
+                      ),
+                  );
+              }
+              // Separator
+              else if (valueTypeValidator()) addSeparator();
             }
-            // Separator
-            else if (valueTypeValidator()) addSeparator();
           }
 
           // Option selected
@@ -2324,6 +2372,68 @@ const AiScriptStart = () => {
         }
       });
 
+      // First Dialogue button
+      const firstDialogueBase = {
+        base: $("<div>", {
+          class:
+            "first-dialogue-base position-absolute  top-50 start-50 translate-middle",
+          style: "pointer-events: none;",
+        }),
+
+        button: $("<button>", {
+          title: "Insert first dialogue",
+          class:
+            "btn btn-lg btn-bg d-flex justify-content-center align-items-center",
+          style: [
+            "pointer-events: all",
+            "height: 150px",
+            "font-size: 100px",
+            "background-color: transparent !important",
+          ].join("; "),
+        }),
+      };
+
+      firstDialogueBase.button.append(
+        $("<i>", { class: "fa-solid fa-circle-play" }),
+      );
+
+      firstDialogueBase.button.on("click", () => {
+        enabledFirstDialogue(false);
+        const history = tinyAi.getHistory();
+
+        // Insert first message
+        if (
+          history.data.length < 1 &&
+          typeof history.firstDialogue === "string"
+        ) {
+          const indexId = tinyAi.addHistoryData(
+            tinyAi._buildContents(
+              null,
+              {
+                role: "model",
+                parts: [{ text: history.firstDialogue }],
+              },
+              "model",
+            ),
+          );
+
+          addMessage(
+            makeMessage(
+              {
+                message: history.firstDialogue,
+                tokens: 0,
+                index: indexId,
+              },
+              "Model",
+            ),
+          );
+
+          updateAiTokenCounterData();
+        }
+      });
+
+      firstDialogueBase.base.append(firstDialogueBase.button);
+
       // Message List
       const msgList = $("<div>", {
         class: "p-3",
@@ -2446,6 +2556,7 @@ const AiScriptStart = () => {
               }
 
               msgBase.remove();
+              enabledFirstDialogue();
             }),
         );
 
@@ -2466,10 +2577,15 @@ const AiScriptStart = () => {
         class: "h-100 body-background",
         style: "overflow-y: auto; margin-bottom: -54px;",
       });
-      const container = $("<div>", { class: "d-flex h-100 y-100" }).append(
+
+      const container = $("<div>", {
+        class: "d-flex h-100 y-100",
+        id: "ai-element-root",
+      }).append(
         sidebarLeft,
         // Main container
         $("<div>", { class: "flex-grow-1 d-flex flex-column" }).append(
+          firstDialogueBase.base,
           $("<div>", { class: "justify-content-center h-100" }).append(
             // Chat Messages Area
             chatContainer.append(msgList),
@@ -2486,6 +2602,8 @@ const AiScriptStart = () => {
         ),
         sidebarRight,
       );
+
+      firstDialogueBase.button.tooltip();
 
       // Enable Read Only
       const enableModelSelectorReadOnly = (isEnabled = true) => {
@@ -2548,12 +2666,45 @@ const AiScriptStart = () => {
           readOnlyTemplate(importItems[index], isEnabled);
       };
 
+      // First Dialogue script
+      const enabledFirstDialogue = (isEnabled = true) => {
+        // Insert First Dialogue
+        const insertAddFirstDialogue = () => {
+          firstDialogueBase.base.removeClass("d-none");
+          firstDialogueBase.button
+            .prop("disabled", false)
+            .removeClass("disabled");
+        };
+
+        // Remove First Dialogue
+        const removeAddFirstDialogue = () => {
+          firstDialogueBase.base.addClass("d-none");
+          firstDialogueBase.button.prop("disabled", true).addClass("disabled");
+        };
+
+        // Check need first dialogue
+        if (isEnabled) {
+          const history = tinyAi.getHistory();
+          if (
+            history.data.length < 1 &&
+            typeof history.firstDialogue === "string" &&
+            history.firstDialogue.length > 0
+          )
+            insertAddFirstDialogue();
+          else removeAddFirstDialogue();
+        } else removeAddFirstDialogue();
+      };
+
+      // Disable dialogue buttons
       const disablePromptButtons = (isDisabled = false) => {
+        // Execute disable script
         for (const index in ficPromptItems) {
           ficPromptItems[index].prop("disabled", isDisabled);
           if (isDisabled) ficPromptItems[index].addClass("disabled");
           else ficPromptItems[index].removeClass("disabled");
         }
+        // First dialogue script
+        enabledFirstDialogue(!isDisabled);
       };
 
       // Clear Messages
