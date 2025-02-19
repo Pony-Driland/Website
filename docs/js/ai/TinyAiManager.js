@@ -1475,6 +1475,7 @@ const AiScriptStart = () => {
           Array.isArray(config.addTemplates.data) &&
           config.addTemplates.data.length > 0
         ) {
+          const templateList = config.addTemplates.data;
           // Select
           const textareaAdd = $("<select>", { class: "form-control" });
           textareaAdd.append(
@@ -1492,14 +1493,14 @@ const AiScriptStart = () => {
           addSeparator();
 
           // Add options
-          for (const index in config.addTemplates.data) {
+          for (const index in templateList) {
+            const templateItem = templateList[index];
             // Validator
             const valueTypeValidator = () => {
               // Tiny code
               const tinyTypeValidator = (tinyTxtValName) =>
-                typeof config.addTemplates.data[index][tinyTxtValName] ===
-                  "string" ||
-                config.addTemplates.data[index].type === tinyTxtValName;
+                typeof templateItem[tinyTxtValName] === "string" ||
+                templateItem.type === tinyTxtValName;
 
               // String
               if (typeof textValueName === "string")
@@ -1520,9 +1521,8 @@ const AiScriptStart = () => {
             const getTypeValue = () => {
               // Tiny code
               const tinyTypeValidator = (tinyTxtValName) =>
-                typeof config.addTemplates.data[index][tinyTxtValName] ===
-                "string"
-                  ? config.addTemplates.data[index][tinyTxtValName]
+                typeof templateItem[tinyTxtValName] === "string"
+                  ? templateItem[tinyTxtValName]
                   : null;
 
               // String
@@ -1550,39 +1550,36 @@ const AiScriptStart = () => {
             if (
               ficOptionData &&
               // Sandbox
-              (typeof config.addTemplates.data[index].sandboxOnly !==
-                "boolean" ||
-                !config.addTemplates.data[index].sandboxOnly ||
+              (typeof templateItem.sandboxOnly !== "boolean" ||
+                !templateItem.sandboxOnly ||
                 canSandBox(ficConfigs.selected)) &&
               // Safe mode
               (typeof ficOptionData.isSafe !== "boolean" ||
                 !ficOptionData.isSafe ||
-                (ficOptionData.isSafe &&
-                  !config.addTemplates.data[index].isNotSafe))
+                (ficOptionData.isSafe && !templateItem.isNotSafe))
             ) {
               // Normal way
-              if (!config.addTemplates.data[index].hr) {
+              if (!templateItem.hr) {
                 // Validator
                 if (
                   valueTypeValidator() &&
-                  (typeof config.addTemplates.data[index].value === "string" ||
-                    config.addTemplates.data[index].disabled)
+                  (typeof templateItem.value === "string" ||
+                    templateItem.disabled)
                 )
                   textareaAdd.append(
                     $("<option>", {
-                      value: config.addTemplates.data[index].value,
+                      value: templateItem.value,
                     })
                       // Data item
                       .data("TinyAI-select-text", getTypeValue())
                       // Option name
-                      .text(config.addTemplates.data[index].name)
+                      .text(templateItem.name)
 
                       // Option is disabled?
                       .prop(
                         "disabled",
-                        typeof config.addTemplates.data[index].disabled ===
-                          "boolean"
-                          ? config.addTemplates.data[index].disabled
+                        typeof templateItem.disabled === "boolean"
+                          ? templateItem.disabled
                           : false,
                       ),
                   );

@@ -3,6 +3,7 @@
         "node": ">=20.0.0"
     },
     "scripts": {
+        "start": "node ./",
         "fix:prettier": "prettier --write ../docs/js/chapter_manager/* && prettier --write ../docs/js/files/* && prettier --write ../docs/js/ai/*",
         "update-base64": "node ./base64",
         "update-chapter": "node ./chapter",
