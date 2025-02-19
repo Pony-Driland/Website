@@ -2320,6 +2320,7 @@ const AiScriptStart = () => {
         minHeight = 38,
         maxHeight = 150,
         moreConfig = {},
+        callback = null,
       ) => {
         // Create textarea
         const textarea = $("<textarea>", {
@@ -2334,7 +2335,8 @@ const AiScriptStart = () => {
 
         textarea.on("input", () => {
           // Reset for minimum height before recalculating
-          const lines = textarea.val().split("\n").length;
+          const value = textarea.val();
+          const lines = value.split("\n").length;
           textarea.css("height", "auto");
 
           // Get scrollHeight via jQuery
@@ -2343,10 +2345,8 @@ const AiScriptStart = () => {
 
           // Defines height, but respects the maximum limit
           textarea.css("height", `${String(height)}px`);
-          textInputContainer.css({
-            position: "relative",
-            top: `-${String(height - minHeight)}px`,
-          });
+          if (typeof callback === "function")
+            callback({ height, newHeight, lines, value });
         });
 
         // Complete
@@ -2354,10 +2354,30 @@ const AiScriptStart = () => {
       };
 
       // Input
-      const msgInput = createTextareaInputExition(38, 150, {
-        class: "form-control border-dark",
-        placeholder: "Type your message...",
-      });
+      const msgInputValues = { minHeight: 38, maxHeight: 150 };
+      const msgInput = createTextareaInputExition(
+        msgInputValues.minHeight,
+        msgInputValues.maxHeight,
+        {
+          class: "form-control border-dark",
+          placeholder: "Type your message...",
+        },
+        (inputResult) => {
+          const { height } = inputResult;
+          const { minHeight } = msgInputValues;
+
+          // Subtract the new height by the min size to get the exact amount of height created
+          const tinyFinalValue = height - minHeight;
+
+          // And use this to correct the size of other elements
+          chatContainer.css("padding-bottom", `${String(tinyFinalValue)}px`);
+
+          textInputContainer.css({
+            position: "relative",
+            top: `-${String(tinyFinalValue)}px`,
+          });
+        },
+      );
 
       // Submit
       const msgSubmit = $("<button>", {
