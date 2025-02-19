@@ -957,7 +957,7 @@ $(() => {
           title: "",
           updateTitle: () => {
             if (aiLogin.button) {
-              const title = `${aiLogin.title}${aiLogin.secondsUsed > 0 ? ` - ${tinyLib.formatTimer(aiLogin.secondsUsed)}` : ""}`;
+              const title = `${aiLogin.title}${aiLogin.secondsUsed > 0 ? ` - ${tinyLib.formatDayTimer(aiLogin.secondsUsed)}` : ""}`;
               aiLogin.button.removeAttr("title");
               aiLogin.button.attr("data-bs-original-title", title);
             }

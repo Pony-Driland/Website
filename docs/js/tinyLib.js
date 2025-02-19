@@ -405,6 +405,25 @@ tinyLib.formatTimer = function(seconds) {
     return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 }
 
+tinyLib.formatDayTimer = function(seconds) {
+    const days = Math.floor(seconds / (24 * 3600));
+    seconds %= (24 * 3600);
+    const hours = Math.floor(seconds / 3600);
+    seconds %= 3600;
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+
+    // Build the display string with the conditions
+    let timeString = "";
+
+    if (days > 0) {
+        timeString += `${days}d `;
+    }
+    timeString += `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+
+    return timeString.trim();
+}
+
 // Visible Item
 $.fn.isInViewport = function () {
 
