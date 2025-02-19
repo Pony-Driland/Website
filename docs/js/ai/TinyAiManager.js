@@ -1293,6 +1293,7 @@ const AiScriptStart = () => {
         ],
         buttons: [],
         selected: null,
+        contentsMd5: null,
       };
 
       const ficTemplates = [
@@ -2085,52 +2086,72 @@ const AiScriptStart = () => {
 
       // Get Ai Tokens
       const updateAiTokenCounterData = () => {
-        enableReadOnly(true);
-        modelChangerReadOnly();
-        disablePromptButtons(true);
-        enableModelReadOnly();
-        const oldMsgInput = msgInput.val();
+        const history = tinyAi.getHistory();
+        if (history) {
+          const contentsMd5 = objHash(
+            history
+              ? {
+                  data: history.data,
+                  systemInstruction: history.systemInstruction,
+                  propmt: history.prompt,
+                  file: history.file,
+                }
+              : {},
+          );
 
-        let points = ".";
-        let secondsWaiting = -1;
-        const loadingMoment = () => {
-          points += ".";
-          if (points === "....") points = ".";
+          if (
+            !ficConfigs.contentsMd5 ||
+            ficConfigs.contentsMd5 !== contentsMd5
+          ) {
+            enableReadOnly(true);
+            modelChangerReadOnly();
+            disablePromptButtons(true);
+            enableModelReadOnly();
+            const oldMsgInput = msgInput.val();
 
-          secondsWaiting++;
-          msgInput.val(`(${secondsWaiting}s) Loading model data${points}`);
-        };
-        const loadingMessage = setInterval(loadingMoment, 1000);
-        loadingMoment();
+            let points = ".";
+            let secondsWaiting = -1;
+            const loadingMoment = () => {
+              points += ".";
+              if (points === "....") points = ".";
 
-        const stopLoadingMessage = () => {
-          clearInterval(loadingMessage);
-          msgInput.val(oldMsgInput);
-          enableReadOnly(false);
-          modelChangerReadOnly(false);
-          disablePromptButtons(false);
-          enableModelReadOnly(false);
-          msgInput.focus();
-        };
+              secondsWaiting++;
+              msgInput.val(`(${secondsWaiting}s) Loading model data${points}`);
+            };
+            const loadingMessage = setInterval(loadingMoment, 1000);
+            loadingMoment();
 
-        getAiTokens()
-          .then((tokenData) => {
-            if (typeof tokenData.totalTokens === "number") {
-              tokenCount.amount
-                .data("token-count", tokenData.totalTokens)
-                .text(
-                  tokenData.totalTokens.toLocaleString(
-                    navigator.language || "en-US",
-                  ),
-                );
-            } else tokenCount.amount.data("token-count", 0).text("0");
-            stopLoadingMessage();
-          })
-          .catch((err) => {
-            alert(err.message, "Error get AI tokens");
-            console.error(err);
-            stopLoadingMessage();
-          });
+            const stopLoadingMessage = () => {
+              clearInterval(loadingMessage);
+              msgInput.val(oldMsgInput);
+              enableReadOnly(false);
+              modelChangerReadOnly(false);
+              disablePromptButtons(false);
+              enableModelReadOnly(false);
+              msgInput.focus();
+            };
+
+            getAiTokens()
+              .then((tokenData) => {
+                if (typeof tokenData.totalTokens === "number") {
+                  tokenCount.amount
+                    .data("token-count", tokenData.totalTokens)
+                    .text(
+                      tokenData.totalTokens.toLocaleString(
+                        navigator.language || "en-US",
+                      ),
+                    );
+                } else tokenCount.amount.data("token-count", 0).text("0");
+                stopLoadingMessage();
+                ficConfigs.contentsMd5 = contentsMd5;
+              })
+              .catch((err) => {
+                alert(err.message, "Error get AI tokens");
+                console.error(err);
+                stopLoadingMessage();
+              });
+          }
+        }
       };
 
       // Execute AI script
