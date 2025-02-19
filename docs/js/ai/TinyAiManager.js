@@ -2282,9 +2282,46 @@ const AiScriptStart = () => {
             .catch(reject);
         });
 
+      // Textarea input edition
+      const createTextareaInputExition = (
+        minHeight = 38,
+        maxHeight = 150,
+        moreConfig = {},
+      ) => {
+        // Create textarea
+        const textarea = $("<textarea>", {
+          style: [
+            `min-height: ${minHeight}px`,
+            `height: ${minHeight}px`,
+            `max-height: ${maxHeight}px` /* Max lines (5 lines = 150px.) */,
+            "resize: none",
+          ].join("; "),
+          ...moreConfig,
+        });
+
+        textarea.on("input", () => {
+          // Reset for minimum height before recalculating
+          const lines = textarea.val().split("\n").length;
+          textarea.css("height", "auto");
+
+          // Get scrollHeight via jQuery
+          const newHeight = textarea.prop("scrollHeight");
+          const height = lines > 1 ? Math.min(newHeight, maxHeight) : minHeight;
+
+          // Defines height, but respects the maximum limit
+          textarea.css("height", `${String(height)}px`);
+          textInputContainer.css({
+            position: "relative",
+            top: `-${String(height - minHeight)}px`,
+          });
+        });
+
+        // Complete
+        return textarea;
+      };
+
       // Input
-      const msgInput = $("<input>", {
-        type: "text",
+      const msgInput = createTextareaInputExition(38, 150, {
         class: "form-control border-dark",
         placeholder: "Type your message...",
       });
@@ -2306,7 +2343,7 @@ const AiScriptStart = () => {
           // Prepare to get data
           msgInput.blur();
           const msg = msgInput.val();
-          msgInput.val("");
+          msgInput.val("").trigger("input");
 
           const controller = new AbortController();
           enableReadOnly(true, controller);
@@ -2579,6 +2616,10 @@ const AiScriptStart = () => {
         style: "overflow-y: auto; margin-bottom: -54px;",
       });
 
+      const textInputContainer = $("<div>", {
+        class: "input-group pb-3 body-background",
+      }).append(msgInput, cancelSubmit, msgSubmit);
+
       const container = $("<div>", {
         class: "d-flex h-100 y-100",
         id: "ai-element-root",
@@ -2593,11 +2634,7 @@ const AiScriptStart = () => {
 
             // Input Area
             $("<div>", { class: "px-3 d-inline-block w-100" }).append(
-              $("<div>", { class: "input-group pb-3 body-background" }).append(
-                msgInput,
-                cancelSubmit,
-                msgSubmit,
-              ),
+              textInputContainer,
             ),
           ),
         ),

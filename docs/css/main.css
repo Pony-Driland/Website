@@ -521,7 +521,7 @@ body.is-using-ai #markdown-read {
   min-height: 100%;
   height: 100%;
   position: absolute;
-  padding-bottom: 56px;
+  padding-top: 56px;
 }
 
 body.is-using-ai,
