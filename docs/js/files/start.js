@@ -1,5 +1,8 @@
 // Start Load
-const appData = { youtube: {}, ai: { using: false } };
+const appData = {
+  youtube: {},
+  ai: { using: false, interval: null, secondsUsed: 0 },
+};
 appData.emitter = new EventEmitter();
 
 // Start Document
@@ -422,6 +425,12 @@ const insertMarkdownFile = function (text, isMainPage = false, isHTML = false) {
 
 // Remove Fic Data
 const clearFicData = function () {
+  if (appData.ai.interval) {
+    clearInterval(appData.ai.interval);
+    appData.ai.interval = null;
+    appData.ai.secondsUsed = 0;
+  }
+
   for (const item in storyData.sfx) {
     if (typeof storyData.sfx[item].hide === "function") {
       storyData.sfx[item].hide(0);
@@ -950,6 +959,15 @@ $(() => {
         // AI Login
         const aiLogin = {
           base: $("<li>", { class: "nav-item font-weight-bold" }),
+          secondsUsed: 0,
+          title: "",
+          updateTitle: () => {
+            if (aiLogin.button) {
+              const title = `${aiLogin.title}${aiLogin.secondsUsed > 0 ? ` - ${tinyLib.formatTimer(aiLogin.secondsUsed)}` : ""}`;
+              aiLogin.button.removeAttr("title");
+              aiLogin.button.attr("data-bs-original-title", title);
+            }
+          },
         };
         tinyAiScript.setAiLogin(aiLogin);
 
