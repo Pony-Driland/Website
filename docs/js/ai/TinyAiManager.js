@@ -1267,6 +1267,7 @@ const AiScriptStart = () => {
             id: "ficTalkSfw",
             template: "talkToFicSfw",
             icon: "fa-solid fa-book-open",
+            isSafe: true,
             intro:
               "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic in your native language (if i can support to do this). I will try to hide some explicit details from fic, but if you insist, I will try to say in a few details.",
             getData: async () => saveRoleplayFormat(null, false),
@@ -1519,11 +1520,22 @@ const AiScriptStart = () => {
               return null;
             };
 
+            const ficOptionData = ficConfigs.data.find(
+              (item) => item.id === ficConfigs.selected,
+            );
+
             if (
-              typeof config.addTemplates.data[index].sandboxOnly !==
+              ficOptionData &&
+              // Sandbox
+              (typeof config.addTemplates.data[index].sandboxOnly !==
                 "boolean" ||
-              !config.addTemplates.data[index].sandboxOnly ||
-              canSandBox(ficConfigs.selected)
+                !config.addTemplates.data[index].sandboxOnly ||
+                canSandBox(ficConfigs.selected)) &&
+              // Safe mode
+              (typeof ficOptionData.isSafe !== "boolean" ||
+                !ficOptionData.isSafe ||
+                (ficOptionData.isSafe &&
+                  !config.addTemplates.data[index].isNotSafe))
             ) {
               // Normal way
               if (!config.addTemplates.data[index].hr) {

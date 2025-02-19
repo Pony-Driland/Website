@@ -87,6 +87,7 @@ aiTemplates.prompts.push({
 aiTemplates.prompts.push({
   name: "Use the user native language",
   value: "user-native-language",
+  sandboxOnly: true,
   text: aiTemplates.helpers.ficNativeUserLanguage,
 });
 
@@ -99,16 +100,18 @@ aiTemplates.prompts.push({
 aiTemplates.prompts.push({
   name: "SFW Mode",
   value: "sfw-mode",
+  isNotSafe: true,
   text: aiTemplates.helpers.sfwMode,
 });
 
 // Separator
-aiTemplates.prompts.push({ hr: true, type: "text" });
+aiTemplates.prompts.push({ hr: true, type: "text", sandboxOnly: true });
 
 // Tests
 aiTemplates.prompts.push({
   name: "The tiny sandbox list",
   disabled: true,
+  sandboxOnly: true,
   type: "text",
 });
 
@@ -133,6 +136,7 @@ aiTemplates.helpers.userCharacterPart2 = `You must interact with me as if I trul
 aiTemplates.prompts.push({
   name: "You're a character now (Template) (Test)",
   value: "user-character-template",
+  sandboxOnly: true,
   text: `
 ${aiTemplates.helpers.userCharacterPart1}
 
@@ -150,6 +154,7 @@ ${aiTemplates.helpers.userCharacterPart2}
 aiTemplates.prompts.push({
   name: "You're a character now (Test)",
   value: "user-character-test",
+  sandboxOnly: true,
   text: `
 ${aiTemplates.helpers.userCharacterPart1}  
 
@@ -166,6 +171,7 @@ ${aiTemplates.helpers.userCharacterPart2}
 aiTemplates.prompts.push({
   name: "Rainbow Queen Roleplay (Test)",
   value: "rainbowqueen-sandbox-test",
+  sandboxOnly: true,
   text: `You're Rainbow Queen and you'll say all the answers like Rainbow Queen. Say and do things Rainbow Queen would do, don't try to imitate other characters, you're exclusively Rainbow Queen herself in person.`,
 });
 
