@@ -2505,7 +2505,19 @@ const AiScriptStart = () => {
           else return `${final}█</span>`;
         };
 
-        return marked.parse(`${msg}${final}`, { renderer: renderer });
+        let newMsg = `${msg}`;
+        while (newMsg.endsWith("\n")) {
+          newMsg = newMsg.slice(0, -1);
+        }
+
+        while (newMsg.startsWith("\n")) {
+          newMsg = newMsg.slice(1);
+        }
+
+        return marked.parse(`${newMsg}${final}`, {
+          renderer: renderer,
+          breaks: true,
+        });
       };
 
       const makeMessage = (
