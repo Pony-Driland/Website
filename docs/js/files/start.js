@@ -1369,6 +1369,52 @@ $(() => {
         ),
       );
 
+      // Carousel
+      const indicators = $(
+        "body > #root #carouselHomepage .carousel-indicators",
+      );
+      const inner = $("body > #root #carouselHomepage .carousel-inner");
+
+      const slides = [
+        {
+          img: "./img/homepage/banner/pony_driland.jpg",
+          title: "Pony Driland",
+          text: "Discover a science fiction story mixed with horror, mystery, and adventure. A mysterious dimension has just been discovered!",
+        },
+        {
+          img: "./img/homepage/banner/discord.jpg",
+          title: "Discord Server",
+          text: '<a href="https://discord.gg/GegfAgNxRX" target="_blank">Join the Discord official server and join the community to see real-time updates.</a>',
+        },
+      ];
+
+      // Insert slides
+      slides.forEach((slide, index) => {
+        // Options
+        $("<li>", {
+          "data-bs-target": "#carouselHomepage",
+          "data-bs-slide-to": index,
+          class: index === 0 ? "active" : "",
+        }).appendTo(indicators);
+
+        const item = $("<div>", {
+          class: "carousel-item" + (index === 0 ? " active" : ""),
+        }).appendTo(inner);
+
+        // Image
+        $("<div>", {
+          class: "img",
+          css: { "background-image": "url(" + slide.img + ")" },
+        }).appendTo(item);
+
+        // Text
+        const caption = $("<div>", { class: "carousel-caption" }).appendTo(
+          item,
+        );
+        $("<h5>", { class: "px-5", text: slide.title }).appendTo(caption);
+        $("<p>", { class: "px-5" }).html(slide.text).appendTo(caption);
+      });
+
       // Start Readme
       if (params.path === "read-fic") openChapterMenu(params);
       else if (params.path === "ai") tinyAiScript.open();
