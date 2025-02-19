@@ -843,6 +843,27 @@ const AiScriptStart = () => {
       const tokenCount = {
         amount: $("<span>").data("token-count", 0).text("0"),
         total: $("<span>").text("0"),
+        updateValue: (where, value) => {
+          if (typeof value === "number") {
+            if (
+              tokenCount[where] &&
+              where !== "updateValue" &&
+              where !== "getValue"
+            )
+              return tokenCount[where]
+                .data("token-count", value)
+                .text(value.toLocaleString(navigator.language || "en-US"));
+          } else return tokenCount[where].data("token-count", 0).text(0);
+        },
+
+        getValue: (where) => {
+          if (
+            tokenCount[where] &&
+            where !== "updateValue" &&
+            where !== "getValue"
+          )
+            return tokenCount[where].data("token-count") || 0;
+        },
       };
 
       // Ranger Generator
@@ -1043,7 +1064,8 @@ const AiScriptStart = () => {
       ) => {
         isFirstTime = false;
         // Reset token count
-        tokenCount.amount.data("token-count", 0).text("0");
+        const oldTokenCount = tokenCount.getValue("amount");
+        tokenCount.updateValue("amount", 0);
         newContent()
           .then((ficData) => {
             // Start chatbot script
@@ -1107,7 +1129,7 @@ const AiScriptStart = () => {
             // Start system
             insertImportData(history.data, true);
             disablePromptButtons(false);
-            updateAiTokenCounterData();
+            updateAiTokenCounterData(oldTokenCount);
 
             // Update button list
             for (const index in ficConfigs.buttons) {
@@ -1916,9 +1938,7 @@ const AiScriptStart = () => {
         presencePenalty.disable();
         frequencyPenalty.disable();
 
-        tokenCount.total.text(
-          model.inputTokenLimit.toLocaleString(navigator.language || "en-US"),
-        );
+        tokenCount.updateValue("total", model.inputTokenLimit);
 
         outputLength
           .val(model.outputTokenLimit)
@@ -2085,7 +2105,7 @@ const AiScriptStart = () => {
         });
 
       // Get Ai Tokens
-      const updateAiTokenCounterData = () => {
+      const updateAiTokenCounterData = (oldTokenCount = null) => {
         const history = tinyAi.getHistory();
         if (history) {
           const contentsMd5 = objHash(
@@ -2133,15 +2153,9 @@ const AiScriptStart = () => {
 
             getAiTokens()
               .then((tokenData) => {
-                if (typeof tokenData.totalTokens === "number") {
-                  tokenCount.amount
-                    .data("token-count", tokenData.totalTokens)
-                    .text(
-                      tokenData.totalTokens.toLocaleString(
-                        navigator.language || "en-US",
-                      ),
-                    );
-                } else tokenCount.amount.data("token-count", 0).text("0");
+                if (typeof tokenData.totalTokens === "number")
+                  tokenCount.updateValue("amount", tokenData.totalTokens);
+                else tokenCount.updateValue("amount", 0);
                 stopLoadingMessage();
                 ficConfigs.contentsMd5 = contentsMd5;
               })
@@ -2150,7 +2164,8 @@ const AiScriptStart = () => {
                 console.error(err);
                 stopLoadingMessage();
               });
-          }
+          } else if (typeof oldTokenCount === "number")
+            tokenCount.updateValue("amount", oldTokenCount);
         }
       };
 
@@ -2164,10 +2179,8 @@ const AiScriptStart = () => {
             const totalToken =
               tokenUsage && tokenUsage.count ? tokenUsage.count.total : 0;
 
-            if (totalToken > Number(tokenCount.amount.data("token-count")))
-              tokenCount.amount
-                .data("token-count", totalToken)
-                .text(totalToken.toLocaleString(navigator.language || "en-US"));
+            if (totalToken > tokenCount.getValue("amount"))
+              tokenCount.updateValue("amount", totalToken);
           };
 
           // Insert message
@@ -2653,9 +2666,8 @@ const AiScriptStart = () => {
               const tinyIndex = tinyAi.getHistoryIndexById(data.index);
               if (!isIgnore && tinyIndex > -1) {
                 tinyAi.deleteHistoryIndex(tinyIndex);
-                const amount = tokenCount.amount.data("token-count");
-                tokenCount.amount.data("token-count", amount - data.tokens);
-                tokenCount.amount.text(amount - data.tokens);
+                const amount = tokenCount.getValue("amount");
+                tokenCount.updateValue("amount", amount - data.tokens);
               }
 
               msgBase.remove();
