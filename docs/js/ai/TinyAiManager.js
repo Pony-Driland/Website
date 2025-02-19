@@ -2413,12 +2413,22 @@ const AiScriptStart = () => {
           const tinyFinalValue = height - minHeight;
 
           // And use this to correct the size of other elements
+          const needScroll =
+            chatContainer.scrollTop() + chatContainer.innerHeight() >=
+            chatContainer.prop("scrollHeight");
           chatContainer.css("padding-bottom", `${String(tinyFinalValue)}px`);
 
           textInputContainer.css({
             position: "relative",
             top: `-${String(tinyFinalValue)}px`,
           });
+
+          // Fix scroll
+          if (needScroll)
+            chatContainer.animate(
+              { scrollTop: chatContainer.prop("scrollHeight") },
+              0,
+            );
         },
       );
 
