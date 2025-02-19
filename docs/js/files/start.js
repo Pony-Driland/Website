@@ -670,12 +670,6 @@ $(() => {
       // Readme
       storyData.readme = readme;
 
-      // Read Me Disable
-      let readButtonDisabled = "";
-      if (storyCfg.underDevelopment) {
-        readButtonDisabled = " d-none";
-      }
-
       // Read Updater
       let isNewValue = "";
       storyData.globalIsNew = 0;
@@ -1090,7 +1084,7 @@ $(() => {
 
             // Read Fic
             $("<li>", {
-              class: "nav-item font-weight-bold" + readButtonDisabled,
+              class: "nav-item font-weight-bold",
             })
               .prepend(
                 $("<a>", {
@@ -1103,10 +1097,8 @@ $(() => {
                   .prepend($("<i>", { class: "fab fa-readme me-2" })),
               )
               .on("click", () => {
-                if (!readButtonDisabled) {
-                  $("#top_page").addClass("d-none");
-                  openChapterMenu();
-                }
+                $("#top_page").addClass("d-none");
+                openChapterMenu();
                 return false;
               }),
           ),
@@ -1419,11 +1411,6 @@ $(() => {
       if (params.path === "read-fic") openChapterMenu(params);
       else if (params.path === "ai") tinyAiScript.open();
       else openNewAddress(params, true, true);
-
-      // Complete
-      if (storyCfg.underDevelopment) {
-        $("#under-development").modal();
-      }
 
       // Final part
       fn();

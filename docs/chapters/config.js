@@ -81,7 +81,6 @@ const storyCfg = {
     ],
 
     gtag: 'G-PS1R5G3G50',
-    underDevelopment: false,
     domain: 'ponydriland.com',
     itemsPerPage: 100,
     title: 'Pony Driland',
