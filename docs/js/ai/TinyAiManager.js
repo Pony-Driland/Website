@@ -712,9 +712,8 @@ const AiScriptStart = () => {
       tinyAiScript.enabled = false;
     }
 
-    // update login button
-    aiLogin.button.attr("title", aiLogin.title);
-    aiLogin.button.attr("data-bs-original-title", aiLogin.title);
+    // Update login button
+    aiLogin.updateTitle();
   };
 
   tinyAiScript.isEnabled = () => {
@@ -794,6 +793,40 @@ const AiScriptStart = () => {
     clearFicData();
     $("#markdown-read").empty();
     $("#top_page").addClass("d-none");
+
+    // Try to prevent user browser from deactivating the page accidentally in browsers that have tab auto deactivator
+    const aiTimeScriptUpdate = () => {
+      try {
+        // Get data
+        const now = moment();
+        const totalTime = JSON.parse(
+          localStorage.getItem("total-time-using-ai") || "{}",
+        );
+
+        if (typeof totalTime.now !== "number") totalTime.now = now.valueOf();
+        if (typeof totalTime.secondsUsed !== "number")
+          totalTime.secondsUsed = 0;
+        const past = moment(totalTime.now);
+
+        // Diff
+        const diff = Math.abs(now - past);
+        if (diff >= 999) totalTime.secondsUsed++;
+
+        // Complete
+        totalTime.now = now.valueOf();
+        localStorage.setItem("total-time-using-ai", JSON.stringify(totalTime));
+        if (aiLogin) {
+          aiLogin.secondsUsed = totalTime.secondsUsed;
+          aiLogin.updateTitle();
+        }
+      } catch (err) {
+        console.error(err);
+      }
+      appData.ai.secondsUsed++;
+    };
+
+    appData.ai.interval = setInterval(aiTimeScriptUpdate, 1000);
+    aiTimeScriptUpdate();
 
     // Start loading page
     let isFirstTime = true;
