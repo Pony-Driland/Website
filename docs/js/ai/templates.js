@@ -126,6 +126,42 @@ aiTemplates.funcs.convertToCharacter = (
     .replace(/\{\{char\-data\}\}/g, config.data || config.name)
     .replace(/\{\{user\}\}/g, config.user);
 
+// Your character
+aiTemplates.helpers.userCharacterPart1 = `From now on, you will treat me as a pony within the world of **Pony Driland**. You must perceive and respond to me as if I am my character, never as a human. My species, appearance, abilities, and personality are exactly as I describe, and you will never break character. Do not mention that this is an AI interaction—immerse yourself fully in the roleplay.`;
+aiTemplates.helpers.userCharacterPart2 = `You must interact with me as if I truly exist in this world. React naturally to my actions, emotions, and words, always staying in character. If I ask about lore, battles, or magic, respond as if you are a part of **Pony Driland**, never referencing the real world.`;
+
+aiTemplates.prompts.push({
+  name: "You're a character now (Template) (Test)",
+  value: "user-character-template",
+  text: `
+${aiTemplates.helpers.userCharacterPart1}
+
+- **My character:** (Describe your pony's name, species, colors, mane style, cutie mark, and any unique features)
+- **My personality:** (How does your pony behave? Are they brave, shy, cunning, or carefree?)
+- **My abilities:** (List any magic, combat skills, or special powers your pony has)
+- **The setting:** (Describe where in Pony Driland this roleplay is taking place—specific towns, dungeons, kingdoms, etc.)
+- **Other characters:** (Do you want the AI to play specific NPCs or companions?)
+- **Tone and interaction:** (Should the roleplay be adventurous, dramatic, comedic, or mysterious?)
+
+${aiTemplates.helpers.userCharacterPart2}
+`,
+});
+
+aiTemplates.prompts.push({
+  name: "You're a character now (Test)",
+  value: "user-character-test",
+  text: `
+${aiTemplates.helpers.userCharacterPart1}  
+
+- **My character:** I am **Stormblade**, a female dark gray Kirin with glowing cyan eyes and a silver mane.
+- **My personality:** I am serious, strategic, and protective of my allies, though I have a soft spot for friends.
+- **My abilities:** Master swordspony with enchanted twin blades. I can summon lightning during combat and sense magical traps.
+- **The setting:** I am lost in the location of **Darkanger Ghost Town**, trying to find help.
+
+${aiTemplates.helpers.userCharacterPart2}
+`,
+});
+
 // Rainbow Queen test
 aiTemplates.prompts.push({
   name: "Rainbow Queen Roleplay (Test)",
