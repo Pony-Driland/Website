@@ -667,6 +667,15 @@ class TinyAiStorage extends EventEmitter {
   }
 }
 
+window.addEventListener("beforeunload", function (e) {
+  if (appData.ai.using) {
+    const message =
+      "You have unsaved changes in your AI session. If you leave, the changes will be lost.";
+    e.returnValue = message;
+    return message;
+  }
+});
+
 const AiScriptStart = () => {
   const tinyAiScript = {};
 
