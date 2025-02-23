@@ -86,7 +86,7 @@ const storyCfg = {
     title: 'Pony Driland',
     derpibooru_tag: 'pony+driland',
     blog_url: 'https://blog.ponydriland.com/',
-    discordInvite: 'GegfAgNxRX',
+    discordInvite: 'sSkysVtj7y',
     description: 'The dimension of lost creatures and the home of hope.',
     urlPage: null,
     defaultLang: 'en',
