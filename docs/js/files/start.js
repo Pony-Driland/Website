@@ -1376,7 +1376,7 @@ $(() => {
         {
           img: "./img/homepage/banner/discord.jpg",
           title: "Discord Server",
-          text: '<a href="https://discord.gg/TgHdvJd" target="_blank">Join the Discord official server to see real-time updates.</a>',
+          text: '<a href="https://discord.gg/sSkysVtj7y" target="_blank">Join the Discord official server to see real-time updates.</a>',
         },
       ];
 
