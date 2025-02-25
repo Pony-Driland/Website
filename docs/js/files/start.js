@@ -381,6 +381,7 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
               typeof metadata.charTable[tIndex][1].url === 'string'
             )
               td.append($('<a>', {
+                class: 'text-decoration-none',
                 target: '_blank',
                 href: !metadata.charTable[tIndex][1].isRepUrl ? metadata.charTable[tIndex][1].url : 'javascript:void(0)',
                 file: metadata.charTable[tIndex][1].isRepUrl ? `../${metadata.charTable[tIndex][1].isRepUrl}` : null,
