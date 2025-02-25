@@ -490,6 +490,16 @@ body.thunder-effect #bg-sky .flash {
   color: #fff;
 }
 
+#markdown-read .character-wikicard .pswp-space {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  #markdown-read .character-wikicard {
+    width: 400px;
+  }
+}
+
 .badge.chapter-notification:hover {
   opacity: 0.7;
   cursor: pointer;
@@ -532,12 +542,12 @@ body.is-using-ai #app {
 
 /* BTN */
 .btn-bg {
-    text-decoration: none !important;
+  text-decoration: none !important;
 }
 
 .btn-bg:hover {
-    background-color: #1d1d1d;
-    color: #f0f0f0;
+  background-color: #1d1d1d;
+  color: #f0f0f0;
 }
 
 /* AI Chatbox */
@@ -569,7 +579,7 @@ body.is-using-ai #app {
   display: none;
 }
 
-#ai-chatbox .ai-chat-data:hover .btn-bg  {
+#ai-chatbox .ai-chat-data:hover .btn-bg {
   background-color: #1d1d1d;
 }
 
@@ -607,12 +617,12 @@ body.is-using-ai #app {
 
 #ai-chatbox .ai-chat-data tbody td {
   padding: 8px;
-  border-bottom: 1px solid #ccc; 
+  border-bottom: 1px solid #ccc;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
 }
 
 /* Ai Mode List */
 #ai-mode-list .btn.selected {
-  color: #e36b00;;
+  color: #e36b00;
 }
