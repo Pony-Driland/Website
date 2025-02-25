@@ -1,28 +1,35 @@
 #---
 title: 'Rainbow Queen'
+mode: 'wiki'
+
+name: 'Rainbow Queen'
+subName: 'Nicknamed Rain by family and friends'
+cardUrl: '/img/gallery/chapter1-gift.jpg'
+
+charTable_0_0: 'Kind'
+charTable_0_1: 'Sphinx / Alicorn / Kirin'
+
+charTable_1_0: 'Sex'
+charTable_1_1: 'Female'
+
+charTable_2_0: 'Residence'
+charTable_2_1: '???'
+
+charTable_3_0: 'Occupation'
+charTable_3_1: 'Pony Driland Goddess'
+
+charTable_4_0: 'Pets'
+charTable_4_1: '[Amy](https://github.com/Pony-Driland/Website/blob/main/docs/data/characters/amy/README.md)'
+charTable_5_0: ''
+charTable_5_1: '[Layla](https://github.com/Pony-Driland/Website/blob/main/docs/data/characters/layla/README.md)'
+
 #---
 
-# Rainbow Queen
-
-## This character's description may contain possible spoilers!
-
-### Normal Version (WIP)
-
-<img src="/img/characters/rainbow-queen/wip/ref-1.gif" height="500">
-<a href="https://derpibooru.org/images/2717471" target="_blank">Derpibooru Page</a>
-
-### Dark Version
-
-<img src="/img/characters/rainbow-queen/ref-dark.webp" height="500">
-<a href="https://derpibooru.org/images/2743841" target="_blank">Derpibooru Page</a>
-
-<hr/>
+Rainbow Queen, a majestic and enigmatic figure in the world of Pony Driland, a powerful being with a complex personality, she is known for both her benevolence and her darkness side. While she demonstrates care for the souls of the deceased and a desire to protect Pony Driland, her methods are sometimes questionable. Her ability to manipulate divine energies further contribute to her enigma. 
 
 ## Character Information
 
 ### Specie
-
-Female / Sphinx / Alicorn / Kirin
 
 Rainbow Queen is a unique blend of alicorn, sphinx, and kirin, with a white body and a vibrant, flowing rainbow mane and tail that stand out against the dark background. She has a fierce, intense expression, with eyes that appear white at first glance but are actually a mesmerizing blend of many colors. Black markings around her eyes resemble a mask, enhancing her striking appearance. Her horn features black accents, adding to her mystical and intimidating aura. 
 
@@ -65,6 +72,18 @@ Due to the fact that the Rainbow Queen has in its mix of races being a Sphinx Po
 
 <hr/>
 
+### Normal Version (WIP)
+
+<img src="/img/characters/rainbow-queen/wip/ref-1.gif" height="500">
+<a href="https://derpibooru.org/images/2717471" target="_blank">Derpibooru Page</a>
+
+### Dark Version
+
+<img src="/img/characters/rainbow-queen/ref-dark.webp" height="500">
+<a href="https://derpibooru.org/images/2743841" target="_blank">Derpibooru Page</a>
+
+<hr/>
+
 <img src="/img/gallery/chapter1-gift.jpg" height="500">
 
 Character Lineart: <a href="https://derpibooru.org/tags/artist-colon-joaothejohn" target="_blank">João the John</a>
@@ -82,14 +101,6 @@ Final Artwork: JasminDreasond
 This weapon is the pure manifestation of her negative feelings. Divine creatures with negative feelings are extremely dangerous as their negative feelings can overload the amount of power evolved by anger, this scythe is invoked to try to drain the negative feelings and focus all the anger on a weapon where the negative energy can try to get controlled. But when this weapon is used, it can cause a great level of destruction due to the negative energies accumulated within it.
 
 <img src="/img/characters/rainbow-queen/scythe.gif" height="500">
-
-<hr/>
-
-## Pets
-
-<a href="https://github.com/Pony-Driland/Website/blob/main/docs/data/characters/amy/README.md" target="_blank">Amy</a>
-
-<a href="https://github.com/Pony-Driland/Website/blob/main/docs/data/characters/layla/README.md" target="_blank">Layla</a>
 
 <hr/>
 

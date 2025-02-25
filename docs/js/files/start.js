@@ -159,10 +159,9 @@ const saveRoleplayFormat = (chapter, saveAsFile = true) => {
       new Blob([`${fileStart}\n\n${info}\n\n${file}\n\n${fileEnd}`], {
         type: "text/plain",
       }),
-      `Pony Driland${
-        typeof chapter !== "number" && !Array.isArray(chapter)
-          ? ""
-          : ` - Chapter ${typeof chapter === "number" ? String(chapter) : chapter.join("-")}`
+      `Pony Driland${typeof chapter !== "number" && !Array.isArray(chapter)
+        ? ""
+        : ` - Chapter ${typeof chapter === "number" ? String(chapter) : chapter.join("-")}`
       }.txt`,
     );
   else return { data: `${info}\n\n${file}`, mime: "text/plain" };
@@ -202,9 +201,9 @@ const urlUpdate = function (url, title, isPopState = false, extra = {}) {
 
   let newUrl =
     typeof url === "string" &&
-    !url.startsWith("/") &&
-    url !== "read-fic" &&
-    url !== "ai"
+      !url.startsWith("/") &&
+      url !== "read-fic" &&
+      url !== "ai"
       ? `/${url}`
       : url;
 
@@ -264,7 +263,7 @@ const openNewAddress = function (data, isPopState = false, useCustom = false) {
     filePath.indexOf("http://") > -1 ||
     filePath.indexOf("https://") > -1
   ) {
-    insertMarkdownFile(storyData.readme, true, true);
+    insertMarkdownFile(storyData.readme, null, true, true);
   } else {
     openMDFile(filePath);
     if (typeof data.title === "string" && data.title.length > 0) {
@@ -314,9 +313,9 @@ $(window).on("popstate", function () {
 });
 
 // Insert Maarkdown File
-const insertMarkdownFile = function (text, isMainPage = false, isHTML = false) {
+const insertMarkdownFile = function (text, metadata = null, isMainPage = false, isHTML = false) {
   // Prepare Convert Base
-  const convertBase = `https\\:\\/\\/github.com\\/${storyCfg.github.account}\\/${storyCfg.github.repository}\\/blob\\/main\\/`;
+  console.log(metadata);
 
   // Convert Data
   let data;
@@ -328,18 +327,92 @@ const insertMarkdownFile = function (text, isMainPage = false, isHTML = false) {
   }
 
   data = data
-    .replace(
-      new RegExp(`href\=\"${convertBase}docs\\/`, "g"),
+    .replace(tinyLib.getGitUrlPath(`href\=\"{url}docs\\/`),
       'href="javascript:void(0)" file="../',
     )
-    .replace(new RegExp(`src\=\"${convertBase}docs\\/`, "g"), 'src="../')
+    .replace(tinyLib.getGitUrlPath(`src\=\"{url}docs\\/`), 'src="../')
     .replace(
       new RegExp(`src\=\"https\:\/\/ipfs\.io\/ipfs\/`, "g"),
       'src="https://cloudflare-ipfs.com/ipfs/',
     );
 
+  // Markdown page ways
+  const markdownBase = $("#markdown-read");
+  const pageTypes = {
+    // Wiki
+    wiki: () => {
+      // Row
+      const row = $('<div>');
+
+      // Main content
+      const colMain = $('<div>');
+
+      colMain.append(
+        $('<h1>').text(metadata.name),
+        data,
+      );
+
+      // Sidebar
+      const colSidebar = $('<div>', { class: 'float-end character-wikicard ms-2 mb-2' });
+      const card = $('<div>', { class: 'card position-relative' });
+      const cardImg = $('<img>', {
+        src: metadata.cardUrl,
+        class: 'card-img-top',
+        alt: metadata.name
+      });
+
+      // Card body
+      const cardBody = $('<div>', { class: 'card-body' }).append(
+        $('<h5>', { class: 'card-title' }).text(metadata.name),
+        $('<p>', { class: 'card-text text-muted' }).text(`(${metadata.subName})`),
+      );
+
+      // Character table
+      if (Array.isArray(metadata.charTable) && metadata.charTable.length > 0) {
+        const cardBodyTable = $('<table>', { class: 'table table-hover m-0' });
+        const cardBodyTbody = $('<tbody>');
+        for (const tIndex in metadata.charTable) {
+          if (typeof metadata.charTable[tIndex][1] !== 'undefined') {
+            const td = $('<td>', { class: 'bg-transparent' });
+            if (typeof metadata.charTable[tIndex][1] === 'string')
+              td.text(metadata.charTable[tIndex][1]);
+            else if (
+              typeof metadata.charTable[tIndex][1].text === 'string' &&
+              typeof metadata.charTable[tIndex][1].url === 'string'
+            )
+              td.append($('<a>', {
+                target: '_blank',
+                href: !metadata.charTable[tIndex][1].isRepUrl ? metadata.charTable[tIndex][1].url : 'javascript:void(0)',
+                file: metadata.charTable[tIndex][1].isRepUrl ? `../${metadata.charTable[tIndex][1].isRepUrl}` : null,
+              }).text(metadata.charTable[tIndex][1].text));
+
+            cardBodyTbody.append($('<tr>').append(
+              $('<th>', { class: 'bg-transparent', scope: 'row' }).text(metadata.charTable[tIndex][0]), td
+            ));
+          }
+        }
+
+        cardBodyTable.append(cardBodyTbody);
+        cardBody.append(cardBodyTable);
+      }
+
+      // Add card
+      card.append(cardImg, cardBody);
+      colSidebar.append(card);
+
+      // Complete
+      row.append(colSidebar, colMain);
+      markdownBase.html(row);
+    },
+  };
+
   // Insert Data
-  $("#markdown-read").empty().html(data);
+  markdownBase.empty();
+  if (!metadata || typeof metadata.mode !== 'string' || typeof pageTypes[metadata.mode] !== 'function')
+    markdownBase.html(data);
+  else pageTypes[metadata.mode]();
+
+  // Top Page
   if (isMainPage) {
     $("#top_page").removeClass("d-none");
   } else {
@@ -417,7 +490,7 @@ const insertMarkdownFile = function (text, isMainPage = false, isHTML = false) {
       // Load Image
       newImage.attr("src", src);
 
-      const newTinyPlace = $("<p>", { class: "mt-4" });
+      const newTinyPlace = $("<p>", { class: "pswp-space mt-4" });
       newTinyPlace.insertAfter(newImage);
     }
   });
@@ -468,7 +541,7 @@ const clearFicData = function () {
   }
 };
 
-// Open MD FIle
+// Open MD File
 const openMDFile = function (url, isMain = false) {
   if (typeof url === "string") {
     // Remove Fic Data
@@ -490,16 +563,44 @@ const openMDFile = function (url, isMain = false) {
         .done(function (fileData) {
           try {
             const fileLines = tinyLib.mdManager.removeMetadata(fileData);
-            const metadata = tinyLib.mdManager.extractMetadata(fileData);
-            const title = metadata.title;
+            const md = tinyLib.mdManager.extractMetadata(fileData);
+            const title = md.title;
 
-            if (url.endsWith(".md")) {
-              console.log(`MD File opened successfully!`);
-              insertMarkdownFile(fileLines, isMain, false);
-            } else {
-              console.log(`HTML File opened successfully!`);
-              insertMarkdownFile(fileLines, isMain, true);
+            const metadata = {};
+            const githubRegex = tinyLib.getGitUrlPath('{url}docs\\/');
+            for (const key in md) {
+              const match = key.match(/^([^_]+)(?:_(\d+))+/);
+              if (match) {
+                const name = match[1];
+                const indices = match[0].split('_').slice(1).map(Number);
+
+                if (!metadata[name]) {
+                  metadata[name] = [];
+                }
+
+                let currentLevel = metadata[name];
+                for (let i = 0; i < indices.length - 1; i++) {
+                  if (!currentLevel[indices[i]]) {
+                    currentLevel[indices[i]] = [];
+                  }
+                  currentLevel = currentLevel[indices[i]];
+                }
+
+                const markdownLink = md[key].match(/^\[(.*?)\]\((.*?)\)$/);
+                if (markdownLink) {
+                  currentLevel[indices[indices.length - 1]] = {
+                    text: markdownLink[1],
+                    url: markdownLink[2],
+                    isRepUrl: githubRegex.test(markdownLink[2]) ? markdownLink[2].replace(githubRegex, '') : null,
+                  };
+                } else {
+                  currentLevel[indices[indices.length - 1]] = md[key];
+                }
+              } else metadata[key] = md[key];
             }
+
+            console.log(`${url.endsWith(".md") ? 'MD' : 'HTML'} File opened successfully!`);
+            insertMarkdownFile(fileLines, metadata, isMain, url.endsWith(".md") ? false : true);
 
             tinyLib.goToByScrollTop(0);
             $.LoadingOverlay("hide");
@@ -521,7 +622,7 @@ const openMDFile = function (url, isMain = false) {
 
     // Main page
     else {
-      insertMarkdownFile(storyData.readme, isMain, true);
+      insertMarkdownFile(storyData.readme, null, isMain, true);
       urlUpdate();
     }
     return;

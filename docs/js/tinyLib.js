@@ -424,6 +424,11 @@ tinyLib.formatDayTimer = function(seconds) {
     return timeString.trim();
 }
 
+tinyLib.getGitUrlPath = function(text, type = 'g') {
+    const tinyUrl = `https\\:\\/\\/github.com\\/${storyCfg.github.account}\\/${storyCfg.github.repository}\\/blob\\/main\\/`;
+    return new RegExp(typeof text === 'string' ? text.replace('{url}', tinyUrl) : tinyUrl, type);
+}
+
 // Visible Item
 $.fn.isInViewport = function () {
 
