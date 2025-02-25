@@ -23,11 +23,32 @@ charTable_4_1: '[Amy](https://github.com/Pony-Driland/Website/blob/main/docs/dat
 charTable_5_0: ''
 charTable_5_1: '[Layla](https://github.com/Pony-Driland/Website/blob/main/docs/data/characters/layla/README.md)'
 
+contentList_0: 'Specie'
+contentList_1: 'Natural Habitat'
+contentList_2: 'Hobby'
+contentList_3: 'Personality (Incomplete)'
+contentList_4: 'Power'
+
+contentList_5_0: 'Versions'
+contentList_5_1: 'Normal Version (WIP)'
+contentList_5_2: 'Dark Version'
+
+contentList_6_0: 'Items'
+contentList_6_1: 'Scythe'
+
+contentList_7_0: 'Drawing Tips'
+contentList_7_1: 'Mane lighting'
+contentList_7_2: 'Mane Animation'
+contentList_7_3: 'Small color effect (optional)'
+
+contentList_8: 'Fun silly fact (SPOILERS!!)'
+contentList_9: 'Credits'
+
 #---
 
 Rainbow Queen, a majestic and enigmatic figure in the world of Pony Driland, a powerful being with a complex personality, she is known for both her benevolence and her darkness side. While she demonstrates care for the souls of the deceased and a desire to protect Pony Driland, her methods are sometimes questionable. Her ability to manipulate divine energies further contribute to her enigma. 
 
-## Character Information
+{{content_list}}
 
 ### Specie
 
@@ -70,8 +91,6 @@ She can freely create and produce whatever she wants. But she doesn't use her po
 
 Due to the fact that the Rainbow Queen has in its mix of races being a Sphinx Pony, she also has the ability to manipulate she size, being able to become giant or normal size at any time.
 
-<hr/>
-
 ### Normal Version (WIP)
 
 <img src="/img/characters/rainbow-queen/wip/ref-1.gif" height="500">
@@ -80,9 +99,8 @@ Due to the fact that the Rainbow Queen has in its mix of races being a Sphinx Po
 ### Dark Version
 
 <img src="/img/characters/rainbow-queen/ref-dark.webp" height="500">
-<a href="https://derpibooru.org/images/2743841" target="_blank">Derpibooru Page</a>
 
-<hr/>
+<a href="https://derpibooru.org/images/2743841" target="_blank">Derpibooru Page</a>
 
 <img src="/img/gallery/chapter1-gift.jpg" height="500">
 
@@ -92,19 +110,15 @@ Scythe Lineart: JasminDreasond
 
 Final Artwork: JasminDreasond
 
-<hr/>
-
-## Items
-
 ### Scythe
 
 This weapon is the pure manifestation of her negative feelings. Divine creatures with negative feelings are extremely dangerous as their negative feelings can overload the amount of power evolved by anger, this scythe is invoked to try to drain the negative feelings and focus all the anger on a weapon where the negative energy can try to get controlled. But when this weapon is used, it can cause a great level of destruction due to the negative energies accumulated within it.
 
 <img src="/img/characters/rainbow-queen/scythe.gif" height="500">
 
-<hr/>
-
 ## Drawing Tips
+
+Some details about Rainbow Queen can seem confusing to understand how to draw. So I decided to show myself how I work on drawing images from Rainbow Queen.
 
 ### Mane lighting
 
@@ -150,8 +164,6 @@ Mane solid colors:
 
 <img src="/img/characters/rainbow-queen/drawing-examples/2024-11-22_00-37.png" height="500">
 
-<hr/>
-
 ## Fun silly fact (SPOILERS!!)
 
 When Pony Driland was in the first chapter, the first characters drawing made were Rainbow Queen and Rayane.
@@ -159,8 +171,6 @@ When Pony Driland was in the first chapter, the first characters drawing made we
 Rayane's design was made by a human artist, but her design was inspired by an AI drawing.
 
 Rainbow Queen is canonically an AI, but Rainbow Queen's entire design creation never had any AI involvement.
-
-<hr/>
 
 ## Credits
 

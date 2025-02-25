@@ -336,13 +336,18 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
       'src="https://cloudflare-ipfs.com/ipfs/',
     );
 
+  const canContentList = metadata && Array.isArray(metadata.contentList) && metadata.contentList.length > 0;
+  if (canContentList)
+    data = data.replace('{{content_list}}', '<div class="content-list-data"></div>');
+  else data = data.replace('{{content_list}}', '');
+
   // Markdown page ways
   const markdownBase = $("#markdown-read");
   const pageTypes = {
     // Wiki
     wiki: () => {
       // Row
-      const row = $('<div>');
+      const row = $('<div>', { class: 'wiki-page' });
 
       // Main content
       const colMain = $('<div>');
@@ -419,6 +424,81 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
   } else {
     $("#top_page").addClass("d-none");
   }
+
+  const markdownHid = (text) => `tiny-wiki-${encodeURIComponent(
+    text.toLowerCase().trim().replace(/ /g, '_')
+      .replace(/\(|\)|\?|\!/g, '_')
+  )}`;
+
+  markdownBase.find(`h1,h2,h3,h4,h5`).each(function () {
+    $(this).attr('id', markdownHid($(this).text()));
+  });
+
+  // Content List
+  if (canContentList)
+    $('[id="markdown-read"] .content-list-data').each(function () {
+      const tinyBase = $('<div>', { class: 'bg-black rounded-top collapse-content d-flex align-items-center' });
+      // Open Button
+      const openButton = $('<h5>', { class: 'm-0 p-2 w-100' });
+      openButton.text('Contents').prepend(
+        $('<i>', { class: 'd-flex align-items-center fa-solid fa-list me-2 small' })
+      );
+
+      const collapseButton = $('<button>', {
+        'data-bs-toggle': 'collapse',
+        href: '#content-list-collapse',
+        role: 'button',
+        type: 'button',
+        class: 'btn btn-link btn-bg p-2 d-flex justify-content-center align-items-center me-2',
+        style: 'height: 30px; width: 30px; font-size: 14px;',
+      }).append(
+        $('<i>', { class: 'fa-solid fa-xmark' }),
+      );
+
+      tinyBase.append(openButton, collapseButton);
+
+      // The Ul
+      const ul = $('<ul>', { class: 'list-group mb-3 rounded-top-0 bg-black collapse show', id: 'content-list-collapse' });
+
+      // Insert Li
+      const insertLi = (tClass = '', text, isLast, index, index2 = null, extraElement = null) => {
+        const li = $('<li>', { class: `${tClass} pb-0 border-0` });
+        const liTarget = markdownBase.find(`#${markdownHid(text)}`);
+        const tinyText = `${Number(index) + 1}.${index2 !== null ? `${Number(index2)}.` : ''} ${text}`;
+
+        if (liTarget.length > 0)
+          li.append($('<a>', { class: 'btn btn-link btn-bg w-100 text-start', href: `#${liTarget.attr('id')}` }).text(tinyText));
+        else
+          li.text(tinyText);
+
+        if (extraElement)
+          li.append(extraElement);
+        return li;
+      }
+
+      // Read data
+      let isLast = false;
+      for (let index = 0; index < metadata.contentList.length; index++) {
+        isLast = index === metadata.contentList.length - 1;
+        if (typeof metadata.contentList[index] === 'string')
+          ul.append(insertLi('list-group-item pt-0', metadata.contentList[index], isLast, index));
+        else if (Array.isArray(metadata.contentList[index]) && metadata.contentList[index].length > 0) {
+          const ul2 = $('<ul>', { class: 'my-0' });
+
+          ul.append(
+            insertLi('list-group-item py-0', metadata.contentList[index][0], null, index, null, ul2),
+          );
+
+          for (const index2 in metadata.contentList[index])
+            if (Number(index2) !== 0 && typeof metadata.contentList[index][index2] === 'string')
+              ul2.append(insertLi(`pt-0`, metadata.contentList[index][index2], isLast, index, index2));
+        }
+      }
+
+      ul.find('> li:first').removeClass('py-0').removeClass('pt-0').addClass('pb-0');
+      ul.find('> li:last').removeClass('py-0').removeClass('pb-0').addClass('pt-0');
+      $(this).append(tinyBase, ul);
+    });
 
   // Convert File URLs
   $('[id="markdown-read"] a[file]')
