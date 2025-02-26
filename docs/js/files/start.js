@@ -466,13 +466,10 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
         const liTarget = markdownBase.find(`#${markdownHid(text)}`);
         const tinyText = `${Number(index) + 1}.${index2 !== null ? `${Number(index2)}.` : ''} ${text}`;
 
-        if (liTarget.length > 0)
-          li.append($('<a>', { class: 'btn btn-link btn-bg w-100 text-start', href: `#${liTarget.attr('id')}` }).text(tinyText));
-        else
-          li.text(tinyText);
-
+        li.append($('<a>', { class: 'btn btn-link btn-bg w-100 text-start', href: liTarget.length > 0 ? `#${liTarget.attr('id')}` : null }).text(tinyText));
         if (extraElement)
           li.append(extraElement);
+
         return li;
       }
 
