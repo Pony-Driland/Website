@@ -491,7 +491,7 @@ const insertMarkdownFile = function (
         class:
           "btn btn-link btn-bg p-2 d-flex justify-content-center align-items-center me-2",
         style: "height: 30px; width: 30px; font-size: 14px;",
-      }).append($("<i>", { class: "fa-solid fa-xmark" }));
+      }).append($("<i>", { class: "fa-solid fa-square-minus" }));
 
       tinyBase.append(openButton, collapseButton);
 
