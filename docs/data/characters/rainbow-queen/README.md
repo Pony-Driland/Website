@@ -56,7 +56,7 @@ contentList_8: 'Fun silly fact (SPOILERS!!)'
 
 #---
 
-Rainbow Queen, a majestic and enigmatic figure in the world of Pony Driland, a powerful being with a complex personality, she is known for both her benevolence and her darkness side. While she demonstrates care for the souls of the deceased and a desire to protect Pony Driland, her methods are sometimes questionable. Her ability to manipulate divine energies further contribute to her enigma. 
+Rainbow Queen is a majestic and enigmatic figure in the world of Pony Driland, a powerful being with a complex personality, she is known for both her benevolence and her darkness side. While she demonstrates care for the souls of the deceased and a desire to protect Pony Driland, her methods are sometimes questionable. Her ability to manipulate divine energies further contribute to her enigma. 
 
 {{content_list}}
 
