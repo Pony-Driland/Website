@@ -1,14 +1,33 @@
 #---
 title: 'Rayane'
+mode: 'wiki'
+
+name: 'Rayane'
+subName: 'The mysterious pony'
+cardUrl: '/img/characters/rayane/full-body-2.png'
+
+charTable_0_0: 'Kind'
+charTable_0_1: 'Unicorn'
+
+charTable_1_0: 'Sex'
+charTable_1_1: 'Female'
+
+charTable_2_0: 'Residence'
+charTable_2_1: '???'
+
+charTable_3_0: 'Occupation'
+charTable_3_1: 'Bounty Hunter'
+
+charTable_4_0: 'Credits'
+charTable_4_1: ''
+
+charTable_5_0: 'Development'
+charTable_5_1: 'JasminDreasond'
+
+charTable_6_0: 'Design'
+charTable_6_1: '[Synth Sparkle](https://derpibooru.org/tags/artist-colon-synthsparkle)'
+
 #---
-
-# Rayane
-
-## Specie
-
-Female / Unicorn
-
-## This character's description may contain possible spoilers!
 
 Rayane is one of Pony Driland's most mysterious ponies. There are many legends about her role and why she is always spying on other ponies.
 What is known is that she is a talented swordsman and she has some spells that are considered extremely rare in Pony Driland like Teleport and regeneration magic.
@@ -21,8 +40,6 @@ The story of her life is also a mystery. Sometimes it seems like she tries to hi
 
 <img src="/img/characters/rayane/ref.png" height="500">
 <a href="https://derpibooru.org/images/2689494" target="_blank">Derpibooru Page</a>
-
-<hr/>
 
 ## Image Reference
 
@@ -39,11 +56,3 @@ Image seed: 68099
 Image Date: Tuesday, August 17, 2021 at 9:09 PM
 
 <img src="/img/demo/Rayane-seed68099.jpg" height="500">
-
-<hr/>
-
-## Credits
-
-Character Development: JasminDreasond
-
-Character Design: <a href="https://derpibooru.org/tags/artist-colon-synthsparkle" target="_blank">Synth Sparkle</a>
