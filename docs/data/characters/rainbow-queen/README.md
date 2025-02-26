@@ -23,6 +23,17 @@ charTable_4_1: '[Amy](https://github.com/Pony-Driland/Website/blob/main/docs/dat
 charTable_5_0: ''
 charTable_5_1: '[Layla](https://github.com/Pony-Driland/Website/blob/main/docs/data/characters/layla/README.md)'
 
+charTable_6_0: 'Credits'
+charTable_6_1: ''
+
+charTable_7_0: 'Development'
+charTable_7_1: 'JasminDreasond'
+
+charTable_8_0: 'Design'
+charTable_8_1: '[Blujetink](https://derpibooru.org/tags/artist-colon-acersiii)'
+charTable_9_0: ''
+charTable_9_1: 'JasminDreasond'
+
 contentList_0: 'Specie'
 contentList_1: 'Natural Habitat'
 contentList_2: 'Hobby'
@@ -42,7 +53,6 @@ contentList_7_2: 'Mane Animation'
 contentList_7_3: 'Small color effect (optional)'
 
 contentList_8: 'Fun silly fact (SPOILERS!!)'
-contentList_9: 'Credits'
 
 #---
 
@@ -171,9 +181,3 @@ When Pony Driland was in the first chapter, the first characters drawing made we
 Rayane's design was made by a human artist, but her design was inspired by an AI drawing.
 
 Rainbow Queen is canonically an AI, but Rainbow Queen's entire design creation never had any AI involvement.
-
-## Credits
-
-Character Development: JasminDreasond
-
-Character Design: <a href="https://derpibooru.org/tags/artist-colon-acersiii" target="_blank">Blujetink and JasminDreasond</a>
