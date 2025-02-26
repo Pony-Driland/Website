@@ -1,29 +1,42 @@
 #---
 title: 'Princess Ariella'
+mode: 'wiki'
+
+name: 'Princess Ariella'
+subName: 'Founder of Pony Driland'
+cardUrl: '/img/characters/princess-ariella/full-body.png'
+
+charTable_0_0: 'Kind'
+charTable_0_1: 'Alicorn'
+
+charTable_1_0: 'Sex'
+charTable_1_1: 'Female'
+
+charTable_2_0: 'Residence'
+charTable_2_1: '???'
+
+charTable_3_0: 'Credits'
+charTable_3_1: ''
+
+charTable_4_0: 'Development'
+charTable_4_1: 'JasminDreasond'
+
+charTable_5_0: 'Design'
+charTable_5_1: '[Synth Sparkle](https://derpibooru.org/tags/artist-colon-synthsparkle)'
 #---
 
-# Princess Ariella
+Ariella is the founder of Pony Driland, and of her mysterious kingdom she ruled on her home planet before this planet has a cruel fate in an intergalactic war. Ariella follows the ethics of Christianity, the origin of her religious behavior is revealed only in history, where all her personality of goodness and love originates that she has for her kingdom inhabitants.
 
-## Specie
+She has a very strong personality in always caring for everyone's life around her before herself, even if it takes her own life.
 
-Female / Alicorn
+Ariella is currently a mother, her maternal personality greatly contributes to the way she takes care of her kingdom. Ariella always seeks to keep her traditions within her family, teaching her daughters how to use the skills to help protect the kingdom, this includes educating her daughters to possess her ethics and morals to keep the safety of her kingdom.
 
-## This character's description may contain possible spoilers!
+She magic is also a reality manipulation skill and its wings can be used to produce fantastic magic in the sky such as manipulating the weather, one of the skills that is also present in Rainbow Queen.
 
-Ariella was the first princess of her kingdom founded by her. she has a pure heart and loves all of her creation and her kingdom very much.
-
-For her, the lives of everyone in her kingdom matters a lot. Her determination to make the kingdom a better place is extremely high. She could sacrifice herself if necessary just to save her kingdom life.
-
-She is also a great mother and she always tries to teach her children all her ethics so that the future generations have the same level of responsibility as she were.
-
-She uses her magic both to help her kingdom and to protect it. Your magic is also a giant reality manipulation skill and its wings can be used to produce fantastic magic in the sky such as manipulating the weather.
-
-Her personality is kind. Her sense of justice to protect her kingdom can make her personality more dramatic and extremely defensive. Her worst fear is losing the things she love the most.
+She worst fear is losing the things she love the most.
 
 <img src="/img/characters/princess-ariella/ref.png" height="500">
 <a href="https://derpibooru.org/images/2682038" target="_blank">Derpibooru Page</a>
-
-<hr/>
 
 ## Image Reference
 
@@ -49,11 +62,3 @@ Image Date: Thursday, July 29, 2021 at 12:14 AM
 <img src="/img/demo/princess-ariella/new-pony3.jpg" height="500">
 
 <img src="/img/demo/princess-ariella/cores.png" height="500">
-
-<hr/>
-
-## Credits
-
-Character Development: JasminDreasond
-
-Character Design: <a href="https://derpibooru.org/tags/artist-colon-synthsparkle" target="_blank">Synth Sparkle</a>

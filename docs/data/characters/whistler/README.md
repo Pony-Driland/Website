@@ -1,14 +1,32 @@
 #---
 title: 'Whistler'
+mode: 'wiki'
+
+name: 'Whistler (WIP)'
+subName: 'The mysterious subterranean driver'
+cardUrl: '/img/characters/whistler/wip/headshot.png'
+
+charTable_0_0: 'Kind'
+charTable_0_1: 'Earth Pony'
+
+charTable_1_0: 'Sex'
+charTable_1_1: 'Female'
+
+charTable_2_0: 'Residence'
+charTable_2_1: '???'
+
+charTable_3_0: 'Occupation'
+charTable_3_1: 'Train Driver'
+
+charTable_4_0: 'Credits'
+charTable_4_1: ''
+
+charTable_5_0: 'Development'
+charTable_5_1: 'Atrimy Redclouds'
+
+charTable_6_0: 'Design'
+charTable_6_1: '[Atrimy Redclouds](https://www.deviantart.com/atrimy-redclouds)'
 #---
-
-# Whistler (WIP)
-
-## Specie
-
-Female / Earth Pony
-
-## This character's description may contain possible spoilers!
 
 Coming Soon...
 
@@ -17,11 +35,9 @@ She's a mechanic working on anykind of heavy machinery (mostly steam trains).
 She's a train mechanic, meaning she works on, maintain and drive steam engines. 
 While being sometimes hot headed, she does always try to do good.
 
-Original first image made by Atrimy Redclouds:
+Original first image made by :
 
 <img src="/img/characters/whistler/wip/headshot.png" height="500">
-
-<hr/>
 
 ## Updated versions
 
@@ -46,9 +62,3 @@ Eyes details of the image 2
 Mane style of the image 3
 
 <img src="/img/demo/whistler/1/00018-1416256136.png" height="500">
-
-## Credits
-
-Character Development: Atrimy Redclouds
-
-Character Design: <a href="https://www.deviantart.com/atrimy-redclouds" target="_blank">Atrimy Redclouds</a>

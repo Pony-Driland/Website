@@ -1,47 +1,63 @@
 #---
 title: 'Layla'
+mode: 'wiki'
+
+name: 'Layla'
+subName: 'Rainbow Queen's pet'
+cardUrl: '/img/characters/layla/ref.jpg'
+
+charTable_0_0: 'Kind'
+charTable_0_1: 'Pegasus'
+
+charTable_1_0: 'Sex'
+charTable_1_1: 'Female'
+
+charTable_2_0: 'Residence'
+charTable_2_1: 'Rainbow Queen's home'
+
+charTable_3_0: 'Credits'
+charTable_3_1: ''
+
+charTable_4_0: 'Development'
+charTable_4_1: 'JasminDreasond'
+
+charTable_5_0: 'Design'
+charTable_5_1: '[João the John](https://derpibooru.org/tags/artist-colon-joaothejohn)'
+
+contentList_1_0: 'Items'
+contentList_1_1: 'Collar'
+
+contentList_2: 'Image Reference'
 #---
 
-# Layla
+Layla is one of Rainbow Queen's pets, her gentle nature shaped by a past event that led her to Pony Driland by accident.
 
-## Specie
+Much like Amy, her misfortune struck during childhood, when she ran away from home. Unlike other ponies, she never had the chance to grow up in a normal environment, spending the rest of her early years struggling to survive on her own until she finally reached adulthood.
 
-Female / Pegasus
+What Layla experienced in Pony Driland remains more of a mystery compared to Amy, but the circumstances that determined her fate were strikingly similar.
 
-## This character's description may contain possible spoilers! (BETA)
+Just like Amy, she ended up lost in the forest, drawing Rainbow Queen’s attention as she was hunted down. Unable to find her way back to her village, she was overwhelmed with loneliness and despair.
 
-Layla is one of Rainbow Queen's pets. Her sweet personality was a result of past events of her accidentally going to Pony Driland.
+However, unlike Amy, Layla never attempted to take her own life. Instead, she resigned herself to a slow, sorrowful demise, wandering the woods in the desperate hope that someone would eventually find and help her.
 
-Like Amy... Her accident happened right during her childhood when she ran away from home, which made it impossible for her to grow like the other ponies, and she ended up spending the rest of her childhood struggling to survive on her own until she became an adult.
+Rainbow Queen, sensing the immense sorrow within Layla, attempted to comfort her in the forest. At first, Layla feared her, wary of Rainbow Queen’s naturally malevolent presence. But as time passed, she began to see the true nature behind the so-called monster. Slowly, her fear subsided, and she discovered that befriending such a being could, in an odd way, bring her a sense of security.
 
-Her past is more mysterious than Amy about what she did in Pony Driland, but the origin of her fate is similar to Amy's.
+Though Rainbow Queen had a dominant personality and took an interest in keeping her close, Layla still struggled with the reality of her choices. In the end, with no better path ahead, she accepted Rainbow Queen’s presence in her life.
 
-As Amy, her fate ended up making her get lost in the woods, causing her to be chased by Rainbow Queen, she felt extremely sad and lonely for never finding her way back to her village.
+Realizing that Layla did not wish to be alone, Rainbow Queen, as a goddess, proposed a pact. She offered Layla the chance to become her pet, promising her a much better life in return. Layla would still have the freedom to choose, but she would have to respect Rainbow Queen’s wishes and refer to her as her master.
 
-Unlike Amy, she didn't try to commit suicide, she chose to attempt a slow and very depressing death from being lost in the forest in hopes of finding some pony to help her.
+Without hesitation—driven by her deep sadness—Layla accepted. Fear still lingered in her heart as she embraced her new reality.
 
-Rainbow Queen already knew she was feeling extremely sad, and tried to make Layla feel better together in the forest. Layla started feeling scared of Rainbow Queen due to Rainbow Queen's natural nature to be malignant, but as she spent more time together with Rainbow Queen getting to know her true Rainbow Queen personality. After a while Layla felt calmer, and everything that seemed to be a monster, she found that being friends with a possible monster could make her feel more secure.
+Sealing their bond, Rainbow Queen placed a magical collar around Layla’s neck, officially making her her pet. To soothe her, Rainbow Queen pulled her into an embrace. Layla, overwhelmed by emotion, burst into tears, but as time passed, she slowly calmed down. She realized that despite Rainbow Queen’s dominant nature, she truly wanted to care for her rather than let her fall into despair.
 
-Rainbow Queen despite having a dominant personality that is interested in being closer to her, Layla was very sad to have a second option, and agreed to be together with Rainbow Queen.
+Years have passed since that day, and Layla has long lost track of her true age. Her youthful appearance remains unchanged, and those who recognize her often see her as the pony who enjoys buying a variety of clothes and accessories to fulfill her playful fantasies.
 
-When Rainbow Queen realized that Layla was not wanting to be alone, Rainbow Queen being a goddess she offered a pact with Layla. Rainbow Queen invited her to be her pet, in return, she could have a much better life together with Rainbow Queen. She would have freedom of choice, but always respecting Rainbow Queen's wishes and should call her master.
+No longer trapped in depression, Layla found happiness in her role as a beloved pet. With Rainbow Queen’s protection, secured through her magical collar, she flourished into a sweet, cheerful, and adorable pony. However, this also led her to develop a deep dependency on Rainbow Queen, as she never felt truly safe without her.
 
-Layla didn't think twice due to her sadness, and accepted her new fate. She was very scared of her choice.
-
-Rainbow Queen then put the magic collar around her neck and made her new pet. Rainbow Queen then hugged her to calm her down and make her feel better. Layla then cried a lot again, but she slowly calmed down as she felt that even though Rainbow Queen was dominant, Rainbow Queen wanted to take care of her and not let her take her own life.
-
-Since then many years have passed and Layla no longer knows her true age, as she always kept her youthful appearance, but many recognized her when they found her as a pony who likes to buy clothes and accessories of various types for her silly fantasy. that she loves.
-
-Layla was no longer a depressed pony, feeling loved like the pet she is, she developed her new personality very sweet, happy, and cute. She came to be protected by Rainbow Queen through her magical collar. This made Layla develop a huge dependence on Rainbow Queen for her to feel safe while she maintained her shy personality.
-
-She knew that through the magical collar, she could be teleported, or ask for Rainbow Queen's help. And then her new lifestyle that made her feel better continued, making her forget about her sad past, but still sometimes she was a little worried about what happened to her family, as now she was extremely far away from home.
+She knew that through the magical collar, she could be teleported, or ask for Rainbow Queen's help. Then she continued the new lifestyle that made her feel better, making her forget about her sad past, but still sometimes she feel a little worried about what happened to her family, as now she is extremely far away from home.
 
 <img src="/img/characters/layla/ref.jpg" height="500">
 <a href="https://derpibooru.org/images/2737673" target="_blank">Derpibooru Page</a>
-
-<hr/>
-
-## Items
 
 ### Collar
 
@@ -52,8 +68,6 @@ All Rainbow Queens pets have the eternal life while the pet could be forever a R
 Due to the magic of the collar circling Amy's body, it makes her eyes no longer have the natural color, being replaced by colored ones.
 
 <img src="/img/characters/amy/wip-collar.jpg" height="500">
-
-<hr/>
 
 ## Image Reference
 
@@ -66,11 +80,3 @@ Unfortunately I no longer own the image generator seed of the drawing, because I
 Date: Saturday, October 30, 2021 at 11:46 PM
 
 <img src="/img/demo/Layla.jpg" height="500">
-
-<hr/>
-
-## Credits
-
-Character Development: JasminDreasond
-
-Character Design: <a href="https://derpibooru.org/tags/artist-colon-joaothejohn" target="_blank">João the John</a>

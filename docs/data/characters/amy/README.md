@@ -1,17 +1,39 @@
 #---
 title: 'Amy'
+mode: 'wiki'
+
+name: 'Amy'
+subName: 'Rainbow Queen's pet'
+cardUrl: '/img/characters/amy/ref.jpg'
+
+charTable_0_0: 'Kind'
+charTable_0_1: 'Pegasus'
+
+charTable_1_0: 'Sex'
+charTable_1_1: 'Female'
+
+charTable_2_0: 'Residence'
+charTable_2_1: 'Rainbow Queen's home'
+
+charTable_3_0: 'Credits'
+charTable_3_1: ''
+
+charTable_4_0: 'Development'
+charTable_4_1: 'JasminDreasond'
+
+charTable_5_0: 'Design'
+charTable_5_1: '[João the John](https://derpibooru.org/tags/artist-colon-joaothejohn)'
+
+contentList_1_0: 'Items'
+contentList_1_1: 'Collar'
+
+contentList_2: 'Image Reference'
 #---
-
-# Amy
-
-## Specie
-
-Female / Pegasus
-
-## This character's description may contain possible spoilers!
 
 Amy is one of Rainbow Queen's pets. Her sweet personality was a result of past events of her accidentally going to Pony Driland.
 Her accident happened right during her childhood when she ran away from home, which made it impossible for her to grow like the other ponies, and she ended up spending the rest of her childhood struggling to survive on her own until she became an adult.
+
+{{content_list}}
 
 Amy has always tried to rediscover the things she lost as a child, which ended up making her more difficult to survive due to her depression. Amy then had a hard time socializing, getting a good job, which ended up making her feel more depressed.
 
@@ -33,14 +55,10 @@ Since then many years have passed and Amy no longer knows her true age, as she a
 
 Amy was no longer a depressed pony, feeling loved like the pet she is, she developed her new personality very sweet and cute. She came to be protected by Rainbow Queen through her magical collar. This made Amy develop a huge dependence on Rainbow Queen for her to feel safe while she maintained her shy personality.
 
-She knew that through the magical collar, she could be teleported, or ask for Rainbow Queen's help. And then her new lifestyle that made her feel better continued, making her forget about her sad past, but still sometimes she was a little worried about what happened to her family, as now she was extremely far away from home.
+She knew that through the magical collar, she could be teleported, or ask for Rainbow Queen's help. Then she continued the new lifestyle that made her feel better, making her forget about her sad past, but still sometimes she was a little worried about what happened to her family, as now she was extremely far away from home.
 
 <img src="/img/characters/amy/ref.jpg" height="500">
 <a href="https://derpibooru.org/images/2734116" target="_blank">Derpibooru Page</a>
-
-<hr/>
-
-## Items
 
 ### Collar
 
@@ -51,8 +69,6 @@ All Rainbow Queens pets have the eternal life while the pet could be forever a R
 Due to the magic of the collar circling Amy's body, it makes her eyes no longer have the natural color, being replaced by colored ones.
 
 <img src="/img/characters/amy/wip-collar.jpg" height="500">
-
-<hr/>
 
 ## Image Reference
 
@@ -69,11 +85,3 @@ This was a glitch from the website generator, but I enjoyed this idea so much th
 Date: Thursday, July 29, 2021 at 11:21 PM
 
 <img src="/img/demo/Amy.jpg" height="500">
-
-<hr/>
-
-## Credits
-
-Character Development: JasminDreasond
-
-Character Design: <a href="https://derpibooru.org/tags/artist-colon-joaothejohn" target="_blank">João the John</a>
