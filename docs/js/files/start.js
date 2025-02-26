@@ -159,9 +159,10 @@ const saveRoleplayFormat = (chapter, saveAsFile = true) => {
       new Blob([`${fileStart}\n\n${info}\n\n${file}\n\n${fileEnd}`], {
         type: "text/plain",
       }),
-      `Pony Driland${typeof chapter !== "number" && !Array.isArray(chapter)
-        ? ""
-        : ` - Chapter ${typeof chapter === "number" ? String(chapter) : chapter.join("-")}`
+      `Pony Driland${
+        typeof chapter !== "number" && !Array.isArray(chapter)
+          ? ""
+          : ` - Chapter ${typeof chapter === "number" ? String(chapter) : chapter.join("-")}`
       }.txt`,
     );
   else return { data: `${info}\n\n${file}`, mime: "text/plain" };
@@ -201,9 +202,9 @@ const urlUpdate = function (url, title, isPopState = false, extra = {}) {
 
   let newUrl =
     typeof url === "string" &&
-      !url.startsWith("/") &&
-      url !== "read-fic" &&
-      url !== "ai"
+    !url.startsWith("/") &&
+    url !== "read-fic" &&
+    url !== "ai"
       ? `/${url}`
       : url;
 
@@ -313,7 +314,12 @@ $(window).on("popstate", function () {
 });
 
 // Insert Maarkdown File
-const insertMarkdownFile = function (text, metadata = null, isMainPage = false, isHTML = false) {
+const insertMarkdownFile = function (
+  text,
+  metadata = null,
+  isMainPage = false,
+  isHTML = false,
+) {
   // Prepare Convert Base
   console.log(metadata);
 
@@ -327,7 +333,8 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
   }
 
   data = data
-    .replace(tinyLib.getGitUrlPath(`href\=\"{url}docs\\/`),
+    .replace(
+      tinyLib.getGitUrlPath(`href\=\"{url}docs\\/`),
       'href="javascript:void(0)" file="../',
     )
     .replace(tinyLib.getGitUrlPath(`src\=\"{url}docs\\/`), 'src="../')
@@ -336,10 +343,16 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
       'src="https://cloudflare-ipfs.com/ipfs/',
     );
 
-  const canContentList = metadata && Array.isArray(metadata.contentList) && metadata.contentList.length > 0;
+  const canContentList =
+    metadata &&
+    Array.isArray(metadata.contentList) &&
+    metadata.contentList.length > 0;
   if (canContentList)
-    data = data.replace('{{content_list}}', '<div class="content-list-data"></div>');
-  else data = data.replace('{{content_list}}', '');
+    data = data.replace(
+      "{{content_list}}",
+      '<div class="content-list-data"></div>',
+    );
+  else data = data.replace("{{content_list}}", "");
 
   // Markdown page ways
   const markdownBase = $("#markdown-read");
@@ -347,54 +360,67 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
     // Wiki
     wiki: () => {
       // Row
-      const row = $('<div>', { class: 'wiki-page' });
+      const row = $("<div>", { class: "wiki-page" });
 
       // Main content
-      const colMain = $('<div>');
+      const colMain = $("<div>");
 
-      colMain.append(
-        $('<h1>').text(metadata.name),
-        data,
-      );
+      colMain.append($("<h1>").text(metadata.name), data);
 
       // Sidebar
-      const colSidebar = $('<div>', { class: 'float-end character-wikicard ms-2 mb-2' });
-      const card = $('<div>', { class: 'card position-relative' });
-      const cardImg = $('<img>', {
+      const colSidebar = $("<div>", {
+        class: "float-end character-wikicard ms-2 mb-2",
+      });
+
+      const card = $("<div>", { class: "card position-relative" });
+      const cardImg = $("<img>", {
         src: metadata.cardUrl,
-        class: 'card-img-top',
-        alt: metadata.name
+        class: "card-img-top",
+        alt: metadata.name,
       });
 
       // Card body
-      const cardBody = $('<div>', { class: 'card-body' }).append(
-        $('<h5>', { class: 'card-title' }).text(metadata.name),
-        $('<p>', { class: 'card-text text-muted' }).text(`(${metadata.subName})`),
+      const cardBody = $("<div>", { class: "card-body" }).append(
+        $("<h5>", { class: "card-title" }).text(metadata.name),
+        $("<p>", { class: "card-text text-muted" }).text(
+          `(${metadata.subName})`,
+        ),
       );
 
       // Character table
       if (Array.isArray(metadata.charTable) && metadata.charTable.length > 0) {
-        const cardBodyTable = $('<table>', { class: 'table table-hover m-0' });
-        const cardBodyTbody = $('<tbody>');
+        const cardBodyTable = $("<table>", { class: "table table-hover m-0" });
+        const cardBodyTbody = $("<tbody>");
         for (const tIndex in metadata.charTable) {
-          if (typeof metadata.charTable[tIndex][1] !== 'undefined') {
-            const td = $('<td>', { class: 'bg-transparent' });
-            if (typeof metadata.charTable[tIndex][1] === 'string')
+          if (typeof metadata.charTable[tIndex][1] !== "undefined") {
+            const td = $("<td>", { class: "bg-transparent" });
+            if (typeof metadata.charTable[tIndex][1] === "string")
               td.text(metadata.charTable[tIndex][1]);
             else if (
-              typeof metadata.charTable[tIndex][1].text === 'string' &&
-              typeof metadata.charTable[tIndex][1].url === 'string'
+              typeof metadata.charTable[tIndex][1].text === "string" &&
+              typeof metadata.charTable[tIndex][1].url === "string"
             )
-              td.append($('<a>', {
-                class: 'text-decoration-none',
-                target: '_blank',
-                href: !metadata.charTable[tIndex][1].isRepUrl ? metadata.charTable[tIndex][1].url : 'javascript:void(0)',
-                file: metadata.charTable[tIndex][1].isRepUrl ? `../${metadata.charTable[tIndex][1].isRepUrl}` : null,
-              }).text(metadata.charTable[tIndex][1].text));
+              td.append(
+                $("<a>", {
+                  class: "text-decoration-none",
+                  target: "_blank",
+                  href: !metadata.charTable[tIndex][1].isRepUrl
+                    ? metadata.charTable[tIndex][1].url
+                    : "javascript:void(0)",
+                  file: metadata.charTable[tIndex][1].isRepUrl
+                    ? `../${metadata.charTable[tIndex][1].isRepUrl}`
+                    : null,
+                }).text(metadata.charTable[tIndex][1].text),
+              );
 
-            cardBodyTbody.append($('<tr>').append(
-              $('<th>', { class: 'bg-transparent', scope: 'row' }).text(metadata.charTable[tIndex][0]), td
-            ));
+            cardBodyTbody.append(
+              $("<tr>").append(
+                $("<th>", { class: "bg-transparent", scope: "row" }).text(
+                  metadata.charTable[tIndex][0],
+                ),
+                td,
+              ),
+            );
           }
         }
 
@@ -414,7 +440,11 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
 
   // Insert Data
   markdownBase.empty();
-  if (!metadata || typeof metadata.mode !== 'string' || typeof pageTypes[metadata.mode] !== 'function')
+  if (
+    !metadata ||
+    typeof metadata.mode !== "string" ||
+    typeof pageTypes[metadata.mode] !== "function"
+  )
     markdownBase.html(data);
   else pageTypes[metadata.mode]();
 
@@ -425,75 +455,131 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
     $("#top_page").addClass("d-none");
   }
 
-  const markdownHid = (text) => `tiny-wiki-${encodeURIComponent(
-    text.toLowerCase().trim().replace(/ /g, '_')
-      .replace(/\(|\)|\?|\!/g, '_')
-  )}`;
+  const markdownHid = (text) =>
+    `tiny-wiki-${encodeURIComponent(
+      text
+        .toLowerCase()
+        .trim()
+        .replace(/ /g, "_")
+        .replace(/\(|\)|\?|\!/g, "_"),
+    )}`;
 
   markdownBase.find(`h1,h2,h3,h4,h5`).each(function () {
-    $(this).attr('id', markdownHid($(this).text()));
+    $(this).attr("id", markdownHid($(this).text()));
   });
 
   // Content List
   if (canContentList)
     $('[id="markdown-read"] .content-list-data').each(function () {
-      const tinyBase = $('<div>', { class: 'bg-black rounded-top collapse-content d-flex align-items-center' });
+      const tinyBase = $("<div>", {
+        class:
+          "bg-black rounded-top collapse-content d-flex align-items-center",
+      });
       // Open Button
-      const openButton = $('<h5>', { class: 'm-0 p-2 w-100' });
-      openButton.text('Contents').prepend(
-        $('<i>', { class: 'd-flex align-items-center fa-solid fa-list me-2 small' })
+      const openButton = $("<h5>", { class: "m-0 p-2 w-100" });
+      openButton.text("Contents").prepend(
+        $("<i>", {
+          class: "d-flex align-items-center fa-solid fa-list me-2 small",
+        }),
       );
 
-      const collapseButton = $('<button>', {
-        'data-bs-toggle': 'collapse',
-        href: '#content-list-collapse',
-        role: 'button',
-        type: 'button',
-        class: 'btn btn-link btn-bg p-2 d-flex justify-content-center align-items-center me-2',
-        style: 'height: 30px; width: 30px; font-size: 14px;',
-      }).append(
-        $('<i>', { class: 'fa-solid fa-xmark' }),
-      );
+      const collapseButton = $("<button>", {
+        "data-bs-toggle": "collapse",
+        href: "#content-list-collapse",
+        role: "button",
+        type: "button",
+        class:
+          "btn btn-link btn-bg p-2 d-flex justify-content-center align-items-center me-2",
+        style: "height: 30px; width: 30px; font-size: 14px;",
+      }).append($("<i>", { class: "fa-solid fa-xmark" }));
 
       tinyBase.append(openButton, collapseButton);
 
       // The Ul
-      const ul = $('<ul>', { class: 'list-group mb-3 rounded-top-0 bg-black collapse show', id: 'content-list-collapse' });
+      const ul = $("<ul>", {
+        class: "list-group mb-3 rounded-top-0 bg-black collapse show",
+        id: "content-list-collapse",
+      });
 
       // Insert Li
-      const insertLi = (tClass = '', text, isLast, index, index2 = null, extraElement = null) => {
-        const li = $('<li>', { class: `${tClass} pb-0 border-0` });
+      const insertLi = (
+        tClass = "",
+        text,
+        isLast,
+        index,
+        index2 = null,
+        extraElement = null,
+      ) => {
+        const li = $("<li>", { class: `${tClass} pb-0 border-0` });
         const liTarget = markdownBase.find(`#${markdownHid(text)}`);
-        const tinyText = `${Number(index) + 1}.${index2 !== null ? `${Number(index2)}.` : ''} ${text}`;
+        const tinyText = `${Number(index) + 1}.${index2 !== null ? `${Number(index2)}.` : ""} ${text}`;
 
-        li.append($('<a>', { class: 'btn btn-link btn-bg w-100 text-start', href: liTarget.length > 0 ? `#${liTarget.attr('id')}` : null }).text(tinyText));
-        if (extraElement)
-          li.append(extraElement);
+        li.append(
+          $("<a>", {
+            class: "btn btn-link btn-bg w-100 text-start",
+            href: liTarget.length > 0 ? `#${liTarget.attr("id")}` : null,
+          }).text(tinyText),
+        );
+        if (extraElement) li.append(extraElement);
 
         return li;
-      }
+      };
 
       // Read data
       let isLast = false;
       for (let index = 0; index < metadata.contentList.length; index++) {
         isLast = index === metadata.contentList.length - 1;
-        if (typeof metadata.contentList[index] === 'string')
-          ul.append(insertLi('list-group-item pt-0', metadata.contentList[index], isLast, index));
-        else if (Array.isArray(metadata.contentList[index]) && metadata.contentList[index].length > 0) {
-          const ul2 = $('<ul>', { class: 'my-0' });
+        if (typeof metadata.contentList[index] === "string")
+          ul.append(
+            insertLi(
+              "list-group-item pt-0",
+              metadata.contentList[index],
+              isLast,
+              index,
+            ),
+          );
+        else if (
+          Array.isArray(metadata.contentList[index]) &&
+          metadata.contentList[index].length > 0
+        ) {
+          const ul2 = $("<ul>", { class: "my-0" });
 
           ul.append(
-            insertLi('list-group-item py-0', metadata.contentList[index][0], null, index, null, ul2),
+            insertLi(
+              "list-group-item py-0",
+              metadata.contentList[index][0],
+              null,
+              index,
+              null,
+              ul2,
+            ),
           );
 
           for (const index2 in metadata.contentList[index])
-            if (Number(index2) !== 0 && typeof metadata.contentList[index][index2] === 'string')
-              ul2.append(insertLi(`pt-0`, metadata.contentList[index][index2], isLast, index, index2));
+            if (
+              Number(index2) !== 0 &&
+              typeof metadata.contentList[index][index2] === "string"
+            )
+              ul2.append(
+                insertLi(
+                  `pt-0`,
+                  metadata.contentList[index][index2],
+                  isLast,
+                  index,
+                  index2,
+                ),
+              );
         }
       }
 
-      ul.find('> li:first').removeClass('py-0').removeClass('pt-0').addClass('pb-0');
-      ul.find('> li:last').removeClass('py-0').removeClass('pb-0').addClass('pt-0');
+      ul.find("> li:first")
+        .removeClass("py-0")
+        .removeClass("pt-0")
+        .addClass("pb-0");
+      ul.find("> li:last")
+        .removeClass("py-0")
+        .removeClass("pb-0")
+        .addClass("pt-0");
       $(this).append(tinyBase, ul);
     });
 
@@ -645,12 +731,12 @@ const openMDFile = function (url, isMain = false) {
             const title = md.title;
 
             const metadata = {};
-            const githubRegex = tinyLib.getGitUrlPath('{url}docs\\/');
+            const githubRegex = tinyLib.getGitUrlPath("{url}docs\\/");
             for (const key in md) {
               const match = key.match(/^([^_]+)(?:_(\d+))+/);
               if (match) {
                 const name = match[1];
-                const indices = match[0].split('_').slice(1).map(Number);
+                const indices = match[0].split("_").slice(1).map(Number);
 
                 if (!metadata[name]) {
                   metadata[name] = [];
@@ -669,7 +755,9 @@ const openMDFile = function (url, isMain = false) {
                   currentLevel[indices[indices.length - 1]] = {
                     text: markdownLink[1],
                     url: markdownLink[2],
-                    isRepUrl: githubRegex.test(markdownLink[2]) ? markdownLink[2].replace(githubRegex, '') : null,
+                    isRepUrl: githubRegex.test(markdownLink[2])
+                      ? markdownLink[2].replace(githubRegex, "")
+                      : null,
                   };
                 } else {
                   currentLevel[indices[indices.length - 1]] = md[key];
@@ -677,8 +765,15 @@ const openMDFile = function (url, isMain = false) {
               } else metadata[key] = md[key];
             }
 
-            console.log(`${url.endsWith(".md") ? 'MD' : 'HTML'} File opened successfully!`);
-            insertMarkdownFile(fileLines, metadata, isMain, url.endsWith(".md") ? false : true);
+            console.log(
+              `${url.endsWith(".md") ? "MD" : "HTML"} File opened successfully!`,
+            );
+            insertMarkdownFile(
+              fileLines,
+              metadata,
+              isMain,
+              url.endsWith(".md") ? false : true,
+            );
 
             tinyLib.goToByScrollTop(0);
             $.LoadingOverlay("hide");
