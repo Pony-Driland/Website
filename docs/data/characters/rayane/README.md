@@ -2,7 +2,7 @@
 title: 'Rayane'
 mode: 'wiki'
 
-name: 'Rayane'
+name: 'Rayane (Page WIP)'
 subName: 'The mysterious pony'
 cardUrl: '/img/characters/rayane/full-body-2.png'
 

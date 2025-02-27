@@ -2,7 +2,7 @@
 title: 'Amy'
 mode: 'wiki'
 
-name: 'Amy'
+name: 'Amy (Page WIP)'
 subName: 'Rainbow Queen's pet'
 cardUrl: '/img/characters/amy/ref.jpg'
 
