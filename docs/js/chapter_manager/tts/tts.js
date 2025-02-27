@@ -2,6 +2,17 @@
 storyData.tts = {};
 
 const ttsManager = {
+  enabled: false,
+  voicePreferenceList: ["Zira - English", "English (USA,l03)", "DEFAULT"],
+  synth: window.speechSynthesis,
+  voices: [],
+  voice: null,
+  lastLine: 0,
+
+  ttsTimeout: null,
+  queue: [],
+
+  // Start tts base
   startBase: function () {
     if ($("#fic-nav > #status #tts").length < 1) {
       // Buttons
@@ -52,13 +63,7 @@ const ttsManager = {
     setInterval(ttsManager.updatePlayer, 100);
   },
 
-  enabled: false,
-  voicePreferenceList: ["Zira - English", "English (USA,l03)", "DEFAULT"],
-  synth: window.speechSynthesis,
-  voices: [],
-  voice: null,
-  lastLine: 0,
-
+  // Enable and disable
   enable: function () {
     ttsManager.enabled = true;
     cacheChapterUpdater.data(storyData.chapter.line);
@@ -68,12 +73,15 @@ const ttsManager = {
     ttsManager.synth.cancel();
   },
 
+  // Init data
   init: function () {
+    // Get voices
     ttsManager.voices = ttsManager.synth.getVoices();
     if (ttsManager.voices.length === 0) {
       ttsManager.synth.onvoiceschanged = ttsManager.init;
       return;
     }
+
     for (const preferenceString of ttsManager.voicePreferenceList) {
       for (const voice of ttsManager.voices) {
         const voiceName = voice.name.toLowerCase();
@@ -88,30 +96,39 @@ const ttsManager = {
         break;
       }
     }
+
     if (ttsManager.voice === null) {
       // console.log("No preferred voice found, using first");
       ttsManager.voice = ttsManager.voices[0];
     }
   },
-  ttsTimeout: null,
+
+  // Read line
   readLine(line) {
+    // Nothing here
     if (!ttsManager.enabled) {
       return;
     }
 
+    // Read line
     if (typeof line === "number") {
-      ttsManager.lastLine = line;
+      ttsManager.lastLine =
+        storyData.chapter.ficPageData.findIndex((item) => line === item.line) ||
+        -1;
+      ttsManager.lastLine++;
     } else {
       console.error("non-number passed to ttsManager.readLine");
       return;
     }
     ttsManager.synth.cancel();
 
+    // Clear timeout
     if (ttsManager.ttsTimeout !== null) {
       clearTimeout(ttsManager.ttsTimeout);
       ttsManager.ttsTimeout = null;
     }
 
+    // And add new timeout
     if (ttsManager.voice == null) {
       ttsManager.ttsTimeout = setTimeout(() => {
         ttsManager.readLine(line);
@@ -123,11 +140,13 @@ const ttsManager = {
       ttsManager.readLineInternal(line);
     }, 500);
   },
-  queue: [],
+
+  // Next Utterance
   nextUtterance() {
     console.log(ttsManager.queue);
+    console.log(ttsManager.lastLine);
     if (ttsManager.queue.length == 0) {
-      cacheChapterUpdater.setActiveItem(ttsManager.lastLine + 1, true);
+      cacheChapterUpdater.setActiveItem(ttsManager.lastLine, true);
       return;
     }
     let text = ttsManager.queue.shift();
@@ -137,8 +156,12 @@ const ttsManager = {
     utterance.onend = ttsManager.nextUtterance;
     ttsManager.synth.speak(utterance);
   },
+
+  // Read line internal
   readLineInternal(line) {
-    const data = storyData.chapter.ficPageData.find(item => line === item.line)?.content || {};
+    const data =
+      storyData.chapter.ficPageData.find((item) => line === item.line)
+        ?.content || {};
     ttsManager.queue = [];
     if (data.info) {
       for (let key of Object.keys(data.info)) {
@@ -152,10 +175,9 @@ const ttsManager = {
     if (data.character) {
       actionString += ": " + data.character;
     }
+
     ttsManager.queue.push(actionString);
-
     ttsManager.queue.push(data.value);
-
     ttsManager.nextUtterance();
   },
 };
