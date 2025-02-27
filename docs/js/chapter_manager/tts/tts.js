@@ -125,6 +125,7 @@ const ttsManager = {
   },
   queue: [],
   nextUtterance() {
+    console.log(ttsManager.queue);
     if (ttsManager.queue.length == 0) {
       cacheChapterUpdater.setActiveItem(ttsManager.lastLine + 1, true);
       return;
@@ -137,7 +138,7 @@ const ttsManager = {
     ttsManager.synth.speak(utterance);
   },
   readLineInternal(line) {
-    const data = storyData.chapter.ficPageData[line - 1];
+    const data = storyData.chapter.ficPageData.find(item => line === item.line)?.content || {};
     ttsManager.queue = [];
     if (data.info) {
       for (let key of Object.keys(data.info)) {
