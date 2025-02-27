@@ -29,9 +29,11 @@ charTable_7_1: '[JasminDreasond](https://derpibooru.org/tags/artist-colon-jasmin
 #---
 
 <span class="made-by-ai">
+
 This character has not yet appeared in the Pony Driland story. Details regarding their species, abilities, personality, and role in the narrative are currently unknown. Further information will be added to this page as the story progresses and the character is formally introduced. Please check back for updates.
 
 Blue Screen is a pony inspired by computer errors and system failures. Her body is bright blue, resembling the Windows Blue Screen of Death (BSOD), and her dark blue mane features glowing circuit-like patterns. She has red hexagonal eyes that turn cyan in BSOD Mode. Her cutie mark is a yellow warning sign, symbolizing crashes and system instability. Blue Screen represents glitches, digital corruption, or a malfunctioning, making her a unique embodiment of technology and errors in the Pony Driland universe.
+
 </span>
 
 Although there is no cutie marks in Pony Driland, this character mysteriously has a cutie mark, no one knows the real reason for it, creating a new suspense atmosphere of trying to know what the origin of this character is.

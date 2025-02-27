@@ -5,6 +5,16 @@ const appData = {
 };
 appData.emitter = new EventEmitter();
 
+// Check if CTRL + ALT + A was pressed
+$(document).on("keydown", function (event) {
+  if (event.ctrlKey && event.altKey && event.key.toLowerCase() === "a") {
+    event.preventDefault(); // Prevent any default behavior
+    if ($("body").hasClass("detect-made-by-ai")) {
+      $("body").removeClass("detect-made-by-ai");
+    } else $("body").addClass("detect-made-by-ai");
+  }
+});
+
 // Start Document
 console.groupCollapsed("App Information");
 console.log(
@@ -726,10 +736,12 @@ const openMDFile = function (url, isMain = false) {
         // Complete
         .done(function (fileData) {
           try {
+            // Get metadata
             const fileLines = tinyLib.mdManager.removeMetadata(fileData);
             const md = tinyLib.mdManager.extractMetadata(fileData);
             const title = md.title;
 
+            // Prepare metadata (script created by ChatGPT)
             const metadata = {};
             const githubRegex = tinyLib.getGitUrlPath("{url}docs\\/");
             for (const key in md) {
@@ -765,6 +777,7 @@ const openMDFile = function (url, isMain = false) {
               } else metadata[key] = md[key];
             }
 
+            // Complete! Insert data into page
             console.log(
               `${url.endsWith(".md") ? "MD" : "HTML"} File opened successfully!`,
             );
@@ -779,6 +792,7 @@ const openMDFile = function (url, isMain = false) {
             $.LoadingOverlay("hide");
             urlUpdate(url, title);
           } catch (err) {
+            // Error!
             $.LoadingOverlay("hide");
             console.error(err);
             alert(err.message);
