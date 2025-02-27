@@ -2,7 +2,7 @@
 title: 'Princess Ariella'
 mode: 'wiki'
 
-name: 'Princess Ariella'
+name: 'Princess Ariella (Page WIP)'
 subName: 'Founder of Pony Driland'
 cardUrl: '/img/characters/princess-ariella/full-body.png'
 

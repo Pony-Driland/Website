@@ -1025,6 +1025,7 @@ $(() => {
         // Base
         const donationsItems = [];
         const tipsPages = [];
+        const charactersItems = [];
 
         // Derpibooru
         tipsPages.push({
@@ -1175,14 +1176,72 @@ $(() => {
           });
         }
 
+        // Characters
+        charactersItems.push({
+          file: "/data/characters/rayane/README.md",
+          text: "Rayane (Page WIP)",
+        });
+
+        charactersItems.push({
+          file: "/data/characters/james/README.md",
+          text: "James (WIP)",
+        });
+
+        charactersItems.push({
+          file: "/data/characters/rainbow-queen/README.md",
+          text: "Rainbow Queen",
+        });
+
+        charactersItems.push({
+          file: "/data/characters/princess-ariella/README.md",
+          text: "Princess Ariella (Page WIP)",
+        });
+
+        charactersItems.push({
+          file: "/data/characters/amy/README.md",
+          text: "Amy (Page WIP)",
+        });
+
+        charactersItems.push({
+          file: "/data/characters/layla/README.md",
+          text: "Layla (Page WIP)",
+        });
+
+        charactersItems.push({
+          file: "/data/characters/prisma/README.md",
+          text: "Prisma (WIP)",
+        });
+
+        charactersItems.push({
+          file: "/data/characters/aniya/README.md",
+          text: "Aniya (WIP)",
+        });
+
+        charactersItems.push({
+          file: "/data/characters/blue-screen/README.md",
+          text: "Blue Screen (WIP)",
+        });
+
+        charactersItems.push({
+          file: "/data/characters/whistler/README.md",
+          text: "Whistler (WIP)",
+        });
+
         // Dropdown
         const addDropdown = (where) => {
           for (const item in where) {
             const aData = {
               class: "dropdown-item",
-              href: where[item].href,
               id: where[item].id,
             };
+
+            if (typeof where[item].href === "string")
+              aData.href = where[item].href;
+
+            if (typeof where[item].file === "string") {
+              aData.href = "javascript:void(0)";
+              aData.file = where[item].file;
+            }
 
             if (where[item].href && where[item].href !== "javascript:void(0)")
               aData.target = "_blank";
@@ -1195,6 +1254,12 @@ $(() => {
                 .prepend($("<i>", { class: `${where[item].icon} me-2` })),
             );
 
+            console.log(where[item].file);
+            if (typeof where[item].file === "string")
+              newHtml.on("click", function () {
+                openMDFile(aData.file);
+              });
+
             if (where[item].click) newHtml.on("click", where[item].click);
 
             where[item] = newHtml;
@@ -1203,6 +1268,7 @@ $(() => {
 
         addDropdown(donationsItems);
         addDropdown(tipsPages);
+        addDropdown(charactersItems);
 
         // Meta Login
         const metaLogin = {
@@ -1288,6 +1354,18 @@ $(() => {
                 .prepend($("<i>", { class: "fab fa-discord me-2" })),
             ),
 
+            // Blog
+            $("<li>", { class: "nav-item" }).prepend(
+              $("<a>", {
+                class: "nav-link",
+                target: "_blank",
+                href: storyCfg.blog_url,
+                id: "blog-url",
+              })
+                .text("Blog")
+                .prepend($("<i>", { class: "fa-solid fa-rss me-2" })),
+            ),
+
             // AI
             $("<li>", { class: "nav-item nav-ai" })
               .prepend(
@@ -1335,10 +1413,20 @@ $(() => {
               $("<ul>", { class: "dropdown-menu" }).append(donationsItems),
             ),
 
-            // Blog
-            /* $('<li>', { class: 'nav-item nav-link', target: '_blank', href: storyCfg.blog_url, id: 'blog-url' }).text('Blog').prepend(
-                            $('<i>', { class: 'fa-solid fa-rss me-2' })
-                        ), */
+            $("<li>", {
+              class: "nav-item dropdown",
+              id: "donations-menu",
+            }).prepend(
+              $("<a>", {
+                class: "nav-link dropdown-toggle",
+                href: "#",
+                role: "button",
+                "data-bs-toggle": "dropdown",
+                "aria-expanded": "false",
+              }).text("Characters"),
+
+              $("<ul>", { class: "dropdown-menu" }).append(charactersItems),
+            ),
           ),
 
           // Nav 2
