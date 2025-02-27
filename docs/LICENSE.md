@@ -31,6 +31,6 @@ https://opensource.org/licenses/MIT
 <hr/>
 
 ### Fanfic Engine
-The fanfic engine is under the MIT license. Please just don't remove my development credits from the engine.
+The fic engine is under the MIT license. Please just don't remove my development credits from the engine.
 
 https://opensource.org/licenses/MIT

@@ -30,6 +30,7 @@ contentList_1_1: 'Collar'
 contentList_2: 'Image Reference'
 #---
 
+<span class="made-by-ai">
 Layla is one of Rainbow Queen's pets, her gentle nature shaped by a past event that led her to Pony Driland by accident.
 
 Much like Amy, her misfortune struck during childhood, when she ran away from home. Unlike other ponies, she never had the chance to grow up in a normal environment, spending the rest of her early years struggling to survive on her own until she finally reached adulthood.
@@ -53,6 +54,7 @@ Sealing their bond, Rainbow Queen placed a magical collar around Layla’s neck,
 Years have passed since that day, and Layla has long lost track of her true age. Her youthful appearance remains unchanged, and those who recognize her often see her as the pony who enjoys buying a variety of clothes and accessories to fulfill her playful fantasies.
 
 No longer trapped in depression, Layla found happiness in her role as a beloved pet. With Rainbow Queen’s protection, secured through her magical collar, she flourished into a sweet, cheerful, and adorable pony. However, this also led her to develop a deep dependency on Rainbow Queen, as she never felt truly safe without her.
+</span>
 
 She knew that through the magical collar, she could be teleported, or ask for Rainbow Queen's help. Then she continued the new lifestyle that made her feel better, making her forget about her sad past, but still sometimes she feel a little worried about what happened to her family, as now she is extremely far away from home.
 
