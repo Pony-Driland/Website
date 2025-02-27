@@ -26888,6 +26888,277 @@
     },
     "value": "Vinny then decides to fly again and return to Blackburn Village. So when him went back to the same garden place, him arrived back at the flower bed and found Rayane practicing magic.",
     "type": "action"
+  },
+
+  {
+    "value": "Hey? Rayane? Raaaaayane!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then stopped using the horn magic, and looked at Vinny, doing a confused face in response.",
+    "type": "action"
+  },
+
+  {
+    "value": "Vinny? My dream is here~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes! Me! An invisible ghost head is calling you in the city there.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then became even more confused by hearing the converging subject.",
+    "type": "action"
+  },
+
+  {
+    "value": "Floating head? W... What? But it's not night yet...",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah... I tripped over a head... on someone in the middle of the street, and she asked for my help and asked to call you. I don't, but she managed to use my cell phone causing interference in it. is it the pony that the gypsy spoke of?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Are you sure it's a ghost? Yes... it seems so...",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Well, I bumped onto something, it was invisible, and someone kept throwing blue fruits at me and running away with sparks.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane then became very thoughtful, trying to reflect on the subject to try to have an idea.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "This is much weirder than I imagined... And still asking for my help. That shadow kept spying on us?",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah... Could it be a friend of yours who got lost in that city and turned into a ghost?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I only know the guardian... This kind of haunting that appears during the day is impossible to be him.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny feels surprised, trying to understand what was happening.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... what are we going to do? Coming soon it's at night... Do you want to go with me there?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little before smirking at Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "If you're not late after visiting Rain's house, we'll go there. I'll bring a tent in case we need to take a break in this ghost village anyway~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny was a little surprised to remember that without knowing which decision to choose.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Y...Yeah! Well, the ghost buddy wants you, not me, but I'll try to stay close to you, what are we going to do now? Are we going now or are we going later?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh~ The sun is already setting... We should go home.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny still thinks about the situation for a few seconds.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... Fine... What time is Amy coming to visit us anyway?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smirks at Vinny while poking him snout and using magic to pull him face close to hers.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... She'll probably be here soon after she went to Rain... I'm watching you for now~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Hihi... Anything I'll give Rain a kiss and she ran out screaming calling for Goku again.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny smirks at Rayane in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Anyway, I'll try to get Amy and Jasmin to train here with us, not there. But I don't know if Rain will feel comfortable with everyone there, if it gave us that, imagine with everyone.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little before replying Vinny.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Everyone here? Alright then~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "And remembering that Aniya will be there too.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Surprised replied with a bit of malice.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But... are you the jealous type?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little before smirking at Vinny in response.",
+    "type": "action"
+  },
+
+  {
+    "value": "Silly, don't try this or I'll need more marshmallow~",
+    "character": "Rayane",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Marshmallow? Don't swallow me like your divine friend... I'm in profit. Hehe!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "My silly one... you're not food, you're my dream~ Well, let's keep up with your plan, I hope everything is okay.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane pokes Vinny snout again and getting ready to use the teleportation magic.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "H..Heh! Well, imagine if Rain come here... how crazy...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Nah~ She wouldn't do that... Rain always likes to keep her identity private.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah? But you said yourself that she likes to prank... can't she turn into someone? Look like?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane was surprised to remember something from a long time ago.",
+    "type": "action"
+  },
+
+  {
+    "value": "Hmm... yes, this is true, she can, but I don't even remember the last time she did it anymore. The only thing she has a hard time hiding the colorful colors of her eyes.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny was a little suspicious before he kept talking.",
+    "type": "action"
+  },
+
+  {
+    "value": "Ah... so she could be Jasmin, or Amy. It's very easy eyes to imitate the colors.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little before replying Vinny back.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Nope~ Amy eyes are not the same... Rain's eyes are much brighter in color. You could easily feel that. But, well, let's go home, we can't waste much time in this conversation.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny does a poker face in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Yes... I'm finally ready.",
+    "character": "Vinny",
+    "type": "dialogue"
   }
   
 ]
