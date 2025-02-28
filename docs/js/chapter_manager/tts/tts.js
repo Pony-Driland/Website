@@ -14,7 +14,6 @@ const ttsManager = {
 
   // Start tts base
   startBase: function () {
-    console.log("startBase");
     if ($("#fic-nav > #status #tts").length < 1) {
       // Buttons
       if (!storyData.tts.nav) {
@@ -66,19 +65,16 @@ const ttsManager = {
 
   // Enable and disable
   enable: function () {
-    console.log("enable");
     ttsManager.enabled = true;
     cacheChapterUpdater.data(storyData.chapter.line);
   },
   disable: function () {
-    console.log("disable");
     ttsManager.enabled = false;
     ttsManager.synth.cancel();
   },
 
   // Init data
   init: function () {
-    console.log("init");
     ttsManager.firstTime = false;
     // Get voices
     ttsManager.voices = ttsManager.synth.getVoices();
@@ -110,7 +106,6 @@ const ttsManager = {
 
   // Read line
   readLine(line) {
-    console.log("readLine", line);
     // Nothing here
     if (!ttsManager.enabled) {
       return;
@@ -118,12 +113,16 @@ const ttsManager = {
 
     // Read line
     if (typeof line === "number") {
-      const ficData = storyData.chapter.ficPageData.find((item) => line === item.line);
-      if(ficData) {
+      const ficData = storyData.chapter.ficPageData.find(
+        (item) => line === item.line,
+      );
+      if (ficData) {
         ttsManager.lastLine = ficData?.line || -1;
         ttsManager.lastLine++;
       } else {
-        console.error("non-number passed to ttsManager.readLine in the new fic data");
+        console.error(
+          "non-number passed to ttsManager.readLine in the new fic data",
+        );
         return;
       }
     } else {
@@ -153,8 +152,6 @@ const ttsManager = {
 
   // Next Utterance
   nextUtterance() {
-    console.log("nextUtterance", ttsManager.lastLine);
-    console.log(ttsManager.queue);
     if (ttsManager.queue.length == 0) {
       cacheChapterUpdater.setActiveItem(ttsManager.lastLine, true);
       return;
@@ -169,7 +166,6 @@ const ttsManager = {
 
   // Read line internal
   readLineInternal(line) {
-    console.log("readLineInternal", line);
     // Get data
     const data =
       storyData.chapter.ficPageData.find((item) => line === item.line)
