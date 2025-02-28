@@ -153,7 +153,12 @@ const ttsManager = {
   // Next Utterance
   nextUtterance() {
     if (ttsManager.queue.length == 0) {
-      cacheChapterUpdater.setActiveItem(ttsManager.lastLine, true);
+      if (
+        storyData.chapter.ficPageData.find(
+          (item) => ttsManager.lastLine === item.line,
+        )
+      )
+        cacheChapterUpdater.setActiveItem(ttsManager.lastLine, true);
       return;
     }
     let text = ttsManager.queue.shift();
