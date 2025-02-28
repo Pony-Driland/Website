@@ -189,10 +189,8 @@ const ttsManager = {
 
     // Add action
     let actionString = data.type;
-    if (data.flashback)
-      actionString += " flashback"
-    if (data.character)
-      actionString += ": " + data.character;
+    if (data.flashback) actionString += " flashback";
+    if (data.character) actionString += `: ${data.character}`;
 
     ttsManager.queue.push(actionString);
     ttsManager.queue.push(data.value);
