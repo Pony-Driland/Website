@@ -193,10 +193,11 @@ cacheChapterUpdater.data = function (lastPage) {
     // Call text to speech manager - only reads if it's been enabled
     ttsManager.startBase();
     if (storyData.chapter.ficPageData) {
-      const ttsIndex = storyData.chapter.ficPageData.findIndex(
+      const tinyData = storyData.chapter.ficPageData.find(
         (ficData) => ficData.line === Number(lastPage),
       );
-      if (ttsIndex > -1) ttsManager.readLine(ttsIndex + 1);
+      const ttsIndex = tinyData.line || -1;
+      if (ttsIndex > -1) ttsManager.readLine(ttsIndex);
     }
 
     // Update Data Cache
