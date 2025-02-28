@@ -159,10 +159,14 @@ const ttsManager = {
 
   // Read line internal
   readLineInternal(line) {
+    // Get data
     const data =
       storyData.chapter.ficPageData.find((item) => line === item.line)
         ?.content || {};
+
     ttsManager.queue = [];
+
+    // Read info
     if (data.info) {
       for (let key of Object.keys(data.info)) {
         if (typeof cumulativeData.info[key] === "undefined") {
@@ -171,6 +175,7 @@ const ttsManager = {
       }
     }
 
+    // Add action
     let actionString = data.type;
     if (data.character) {
       actionString += ": " + data.character;
@@ -178,6 +183,8 @@ const ttsManager = {
 
     ttsManager.queue.push(actionString);
     ttsManager.queue.push(data.value);
+
+    // Execute voice
     ttsManager.nextUtterance();
   },
 };
