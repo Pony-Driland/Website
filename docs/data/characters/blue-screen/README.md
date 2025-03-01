@@ -2,7 +2,7 @@
 title: 'Blue Screen'
 mode: 'wiki'
 
-name: 'Blue Screen (WIP)'
+name: 'Blue Screen (Page WIP)'
 subName: 'The mysterious creature of glitches'
 cardUrl: '/img/characters/blue-screen/full-body-1.png'
 
