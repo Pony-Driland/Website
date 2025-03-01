@@ -12,6 +12,38 @@ const ttsManager = {
   ttsTimeout: null,
   queue: [],
 
+  // Find Line
+  findLine: function (line, dontTryAgain = false) {
+    let index = storyData.chapter.ficPageData.findIndex(
+      (item) => line === item.line,
+    );
+    const ficData = storyData.chapter.ficPageData[index];
+
+    // Complete 1
+    if (
+      ficData ||
+      dontTryAgain ||
+      !Array.isArray(storyData.chapter.ficPageData)
+    )
+      return ficData;
+
+    // Try loop
+    while (index < storyData.chapter.ficPageData.length) {
+      // Read data
+      if (storyData.chapter.ficPageData[index]) {
+        const fcData = storyData.chapter.ficPageData[index];
+        // Check line and use it
+        if (fcData.line >= line) return fcData;
+      }
+
+      // Next
+      index++;
+    }
+
+    // Complete 2
+    return null;
+  },
+
   // Start tts base
   startBase: function () {
     if ($("#fic-nav > #status #tts").length < 1) {
@@ -113,9 +145,7 @@ const ttsManager = {
 
     // Read line
     if (typeof line === "number") {
-      const ficData = storyData.chapter.ficPageData.find(
-        (item) => line === item.line,
-      );
+      const ficData = ttsManager.findLine(line);
       if (ficData) {
         ttsManager.lastLine = ficData?.line || -1;
         ttsManager.lastLine++;
@@ -153,12 +183,8 @@ const ttsManager = {
   // Next Utterance
   nextUtterance() {
     if (ttsManager.queue.length == 0) {
-      if (
-        storyData.chapter.ficPageData.find(
-          (item) => ttsManager.lastLine === item.line,
-        )
-      )
-        cacheChapterUpdater.setActiveItem(ttsManager.lastLine, true);
+      const ficData = ttsManager.findLine(ttsManager.lastLine);
+      if (ficData) cacheChapterUpdater.setActiveItem(ficData.line, true);
       return;
     }
     let text = ttsManager.queue.shift();
@@ -172,10 +198,7 @@ const ttsManager = {
   // Read line internal
   readLineInternal(line) {
     // Get data
-    const data =
-      storyData.chapter.ficPageData.find((item) => line === item.line)
-        ?.content || {};
-
+    const data = ttsManager.findLine(line)?.content || {};
     ttsManager.queue = [];
 
     // Read info
