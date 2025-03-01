@@ -2,7 +2,7 @@
 title: 'Prisma'
 mode: 'wiki'
 
-name: 'Prisma (WIP)'
+name: 'Prisma (Character WIP)'
 subName: '???'
 cardUrl: '/img/characters/prisma/ref.jpg'
 

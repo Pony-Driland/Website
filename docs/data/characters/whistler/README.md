@@ -2,7 +2,7 @@
 title: 'Whistler'
 mode: 'wiki'
 
-name: 'Whistler (WIP)'
+name: 'Whistler (Character WIP)'
 subName: 'The mysterious subterranean driver'
 cardUrl: '/img/characters/whistler/wip/headshot.png'
 

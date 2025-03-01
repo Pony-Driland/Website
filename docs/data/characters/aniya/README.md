@@ -2,7 +2,7 @@
 title: 'Aniya'
 mode: 'wiki'
 
-name: 'Aniya (WIP)'
+name: 'Aniya (Character WIP)'
 subName: 'The specialist in temporal energy'
 cardUrl: '/img/characters/beta/aniya/image.png'
 

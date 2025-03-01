@@ -2,7 +2,7 @@
 title: 'James'
 mode: 'wiki'
 
-name: 'James (WIP)'
+name: 'James (Character WIP)'
 subName: 'Pony Driland dimension developer'
 cardUrl: '/img/characters/beta/james/image.png'
 
