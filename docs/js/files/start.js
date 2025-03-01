@@ -1198,7 +1198,7 @@ $(() => {
 
         charactersItems.push({
           file: "/data/characters/james/README.md",
-          text: "James (WIP)",
+          text: "James (Character WIP)",
         });
 
         charactersItems.push({
@@ -1223,22 +1223,22 @@ $(() => {
 
         charactersItems.push({
           file: "/data/characters/prisma/README.md",
-          text: "Prisma (WIP)",
+          text: "Prisma (Character WIP)",
         });
 
         charactersItems.push({
           file: "/data/characters/aniya/README.md",
-          text: "Aniya (WIP)",
+          text: "Aniya (Character WIP)",
         });
 
         charactersItems.push({
           file: "/data/characters/blue-screen/README.md",
-          text: "Blue Screen (WIP)",
+          text: "Blue Screen (Page WIP)",
         });
 
         charactersItems.push({
           file: "/data/characters/whistler/README.md",
-          text: "Whistler (WIP)",
+          text: "Whistler (Character WIP)",
         });
 
         // Dropdown
