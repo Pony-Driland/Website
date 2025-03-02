@@ -2306,12 +2306,22 @@ const AiScriptStart = () => {
               }
               // Remove class
               else {
+                const notificationError = () =>
+                  tinyNotification.send(
+                    "System",
+                    "Your message was not processed.",
+                  );
+
                 if (tinyCache.msgBallon) {
                   tinyCache.msgBallon.removeClass("entering-ai-message");
                   const ballonCache = tinyCache.msgBallon.data("tiny-ai-cache");
-                  if (ballonCache && $("body").hasClass("windowHidden"))
-                    tinyNotification.send(ballonCache.role, ballonCache.msg);
-                }
+                  if ($("body").hasClass("windowHidden")) {
+                    if (ballonCache)
+                      tinyNotification.send(ballonCache.role, ballonCache.msg);
+                    else notificationError();
+                  }
+                } else if ($("body").hasClass("windowHidden"))
+                  notificationError();
                 completeTask();
               }
             })
