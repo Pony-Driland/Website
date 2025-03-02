@@ -889,7 +889,7 @@ const openChapterMenu = (params = {}) => {
                 ],
                 body: $("<center>").append(
                   $("<p>", { class: "text-danger" }).text(
-                    "By activating these settings, you agree that you are responsible for the content you consume and that you are over 18 years old!",
+                    "Don't expect fantastic +18 stuff here. The NSFW content will not try to be explicit, and it is only used to enrich the content of the fic (example: bring more realistic scenes). By activating these settings, you agree that you are responsible for the content you consume and that you are over 18 years old!",
                   ),
                   nsfwDIV,
                 ),
