@@ -197,7 +197,7 @@ const storyCfg = {
         
             "/img/characters/beta/aniya/image.png": "LLZaY7dCEbMPxBig_EYMDj8GbQX5vyVZh6eJ31wmOow",
         
-            "/img/characters/beta/james/image.png": "3ReqC2QPg6RpVM508FVjWEBBgxI3hrfkG8YMHUypWGY",
+            "/img/characters/beta/james/old/image.png": "3ReqC2QPg6RpVM508FVjWEBBgxI3hrfkG8YMHUypWGY",
         
             "/img/characters/rayane/ref.png": "u4NBTOjArg3WdOoUXft6jbo13q6yNa9D14Zu_hZGUCc",
         
