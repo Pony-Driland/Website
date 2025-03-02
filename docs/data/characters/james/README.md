@@ -4,7 +4,7 @@ mode: 'wiki'
 
 name: 'James (Character WIP)'
 subName: 'Pony Driland dimension developer'
-cardUrl: '/img/characters/beta/james/image.png'
+cardUrl: '/img/characters/beta/james/old/image.png'
 
 charTable_0_0: 'Kind'
 charTable_0_1: 'Unicorn'
@@ -45,4 +45,4 @@ Currently James does not have an official art, keeping only this image generated
 
 But this art is already a concept of how James would be within history.
 
-<img src="/img/characters/beta/james/image.png" height="500">
+<img src="/img/characters/beta/james/old/image.png" height="500">
