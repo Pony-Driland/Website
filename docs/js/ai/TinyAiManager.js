@@ -2306,10 +2306,12 @@ const AiScriptStart = () => {
               }
               // Remove class
               else {
-                tinyCache.msgBallon.removeClass("entering-ai-message");
-                const ballonCache = tinyCache.msgBallon.data("tiny-ai-cache");
-                if (ballonCache && $("body").hasClass("windowHidden"))
-                  tinyNotification.send(ballonCache.role, ballonCache.msg);
+                if (tinyCache.msgBallon) {
+                  tinyCache.msgBallon.removeClass("entering-ai-message");
+                  const ballonCache = tinyCache.msgBallon.data("tiny-ai-cache");
+                  if (ballonCache && $("body").hasClass("windowHidden"))
+                    tinyNotification.send(ballonCache.role, ballonCache.msg);
+                }
                 completeTask();
               }
             })
