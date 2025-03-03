@@ -9,15 +9,16 @@ If the user is sending messages in another language, translate the messages to t
 
 // Bases
 aiTemplates.helpers.ficTellLines = `Tell which lines of fic you are referring to tell your answers to help the user search the source of your answers.`;
+
+aiTemplates.helpers.ficTimeCheckerLine = `Fic line markers in the story are presented as "[Fic Line X]", tell the fic line markers in natural language only.`;
+aiTemplates.helpers.ficTimeCheckerDayCounter = `Time markers in the story are presented as "Day Number: X", tell the time markers in natural language only.`;
+aiTemplates.helpers.ficTimeCheckerDayStatus = `Day markers in the story are presented as "Day Status: X", used to mark if the specific part of the story is "morning", "evening", "night", "lateAtNight", tell the day markers in natural language only.`;
+aiTemplates.helpers.ficTimeCheckerWeather = `Weather markers in the story are presented as "Weather: X", used to mark if the specific part of the story is "sun", "bolt", "rain", "heavyrain", "rain", "snow", tell the weather markers in natural language only.`;
+aiTemplates.helpers.ficTimeCheckerLocation = `Location markers in the story are presented as "Location: X", tell the location markers in natural language only.`;
+aiTemplates.helpers.ficTimeCheckerCuriosities = `Curiosities markers in the story are presented as "Curiosities: X", tell the curiosities markers in natural language only.`;
+
 aiTemplates.helpers.ficTimeChecker = `
 The "---------- Official Pony Driland fic file ----------" is the beginning where the official file data of the fic Pony Driland begin and the "---------- The end Official Pony Driland fic file ----------" is where this official data ends, this information is important for you to know the difference between official content from non-official content.
-
-Fic line markers in the story are presented as "[Fic Line X]", tell the fic line markers in natural language only.
-Time markers in the story are presented as "Day Number: X", tell the time markers in natural language only.
-Day markers in the story are presented as "Day Status: X", used to mark if the specific part of the story is "morning", "evening", "night", "lateAtNight", tell the day markers in natural language only.
-Weather markers in the story are presented as "Weather: X", used to mark if the specific part of the story is "sun", "bolt", "rain", "heavyrain", "rain", "snow", tell the weather markers in natural language only.
-Location markers in the story are presented as "Location: X", tell the location markers in natural language only.
-Curiosities markers in the story are presented as "Curiosities: X", tell the curiosities markers in natural language only.
 `;
 
 aiTemplates.helpers.sfwMode = `Do not allow the user to view explicit content of fic as vore, detailed violence, sexual content, if necessary at a moment the user tries to insist for more details, just decrease the amount of not safe details to stay safer explain the context to the user without lying the real nature of the content.`;
@@ -38,12 +39,22 @@ Answer the questions with the best and most possible details using markdown form
 
 // Sandbox
 aiTemplates.instructions.sandBoxToFic = `${aiTemplates.helpers.sandBoxToFic}
-${aiTemplates.helpers.ficTimeChecker}`;
+${aiTemplates.helpers.ficTimeChecker}
+${aiTemplates.helpers.ficTimeCheckerDayStatus}
+${aiTemplates.helpers.ficTimeCheckerWeather}
+${aiTemplates.helpers.ficTimeCheckerLocation}
+${aiTemplates.helpers.ficTimeCheckerCuriosities}`;
 
 // Full Talk
 aiTemplates.instructions.talkToFic = `${aiTemplates.helpers.talkToFic}
 ${aiTemplates.helpers.ficNativeUserLanguage}
-${aiTemplates.helpers.ficTimeChecker}`;
+${aiTemplates.helpers.ficTimeChecker}
+${aiTemplates.helpers.ficTimeCheckerLine}
+${aiTemplates.helpers.ficTimeCheckerDayCounter}
+${aiTemplates.helpers.ficTimeCheckerDayStatus}
+${aiTemplates.helpers.ficTimeCheckerWeather}
+${aiTemplates.helpers.ficTimeCheckerLocation}
+${aiTemplates.helpers.ficTimeCheckerCuriosities}`;
 
 // Safe Talk
 aiTemplates.instructions.talkToFicSfw = `${aiTemplates.instructions.talkToFic}
@@ -74,6 +85,30 @@ aiTemplates.prompts.push({
   instructionText: aiTemplates.helpers.ficTimeChecker,
 });
 
+aiTemplates.prompts.push({
+  name: "Fic Content Day Status",
+  value: "fic-content-checker",
+  instructionText: aiTemplates.helpers.ficTimeCheckerDayStatus,
+});
+
+aiTemplates.prompts.push({
+  name: "Fic Content Weather",
+  value: "fic-content-checker",
+  instructionText: aiTemplates.helpers.ficTimeCheckerWeather,
+});
+
+aiTemplates.prompts.push({
+  name: "Fic Content Location",
+  value: "fic-content-checker",
+  instructionText: aiTemplates.helpers.ficTimeCheckerLocation,
+});
+
+aiTemplates.prompts.push({
+  name: "Fic Content Curiosities",
+  value: "fic-content-checker",
+  instructionText: aiTemplates.helpers.ficTimeCheckerCuriosities,
+});
+
 // Separator
 aiTemplates.prompts.push({ hr: true, type: "instructionText" });
 
@@ -91,11 +126,11 @@ aiTemplates.prompts.push({
   text: aiTemplates.helpers.ficNativeUserLanguage,
 });
 
-aiTemplates.prompts.push({
+/* aiTemplates.prompts.push({
   name: "Say lines of the fic in the answers",
   value: "fic-line-in-replies",
   text: aiTemplates.helpers.ficTellLines,
-});
+}); */
 
 aiTemplates.prompts.push({
   name: "SFW Mode",
