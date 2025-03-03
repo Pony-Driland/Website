@@ -32,7 +32,7 @@ console.log(`Tags`, storyCfg.tags);
 console.groupEnd();
 
 // Roleplay format
-const renderRoleplayFormat = (chapter) => {
+const renderRoleplayFormat = (chapter, saveCfg = {}) => {
   let data = "";
 
   let day = null;
@@ -41,36 +41,36 @@ const renderRoleplayFormat = (chapter) => {
   let where = null;
 
   for (const item in storyData.data[chapter]) {
-    const lineText = `[Fic Line ${Number(item) + 1}]`;
+    let lineText = `${saveCfg.ficLine ? `[Fic Line ${Number(item) + 1}] ` : ""}`;
     const ficData = storyData.data[chapter][item];
 
     if (ficData.set) {
-      if (typeof ficData.set.day === "number") {
+      if (saveCfg.dayNumber && typeof ficData.set.day === "number") {
         if (day !== null) data += `\n) `;
         day = ficData.set.day;
         data += `(Day Number: ${day}`;
       }
 
-      if (typeof ficData.set.dayNightCycle === "string") {
+      if (saveCfg.dayStatus && typeof ficData.set.dayNightCycle === "string") {
         if (dayNightCycle !== null) data += `\n) `;
         dayNightCycle = ficData.set.dayNightCycle;
         data += `(Day Status: ${dayNightCycle}`;
       }
 
-      if (typeof ficData.set.weather === "string") {
+      if (saveCfg.weather && typeof ficData.set.weather === "string") {
         if (weather !== null) data += `\n) `;
         weather = ficData.set.weather;
         data += `(Weather: ${weather}`;
       }
 
-      if (typeof ficData.set.where === "string") {
+      if (saveCfg.location && typeof ficData.set.where === "string") {
         if (where !== null) data += `\n) `;
         where = ficData.set.where;
         data += `(Location: ${where}`;
       }
     }
 
-    if (ficData.info) {
+    if (saveCfg.curiosities && ficData.info) {
       data += `\n(Curiosities:`;
       for (const info in ficData.info) {
         data += `\n${info} - ${ficData.info[info]}`;
@@ -80,19 +80,33 @@ const renderRoleplayFormat = (chapter) => {
 
     const isFlashBack = ficData.flashback ? " from flashback scene" : "";
 
-    if (ficData.type === "action") data += `\n${lineText} *${ficData.value}*`;
+    if (ficData.type === "action") data += `\n${lineText}*${ficData.value}*`;
 
     if (ficData.type === "think")
-      data += `\n${lineText} ${ficData.character}'s thinks${isFlashBack}: ${ficData.value}`;
+      data += `\n${lineText}${ficData.character}'s thinks${isFlashBack}: ${ficData.value}`;
     if (ficData.type === "telepathy")
-      data += `\n${lineText} ${ficData.character}'s telepathy voice${isFlashBack}: ${ficData.value}`;
+      data += `\n${lineText}${ficData.character}'s telepathy voice${isFlashBack}: ${ficData.value}`;
     if (ficData.type === "dialogue")
-      data += `\n${lineText} ${ficData.character}${isFlashBack}: ${ficData.value}`;
+      data += `\n${lineText}${ficData.character}${isFlashBack}: ${ficData.value}`;
   }
   return data;
 };
 
-const saveRoleplayFormat = (chapter, saveAsFile = true) => {
+const saveRoleplayFormat = (chapter, saveAsFile = true, tinyCfg = {}) => {
+  // Save Config
+  const saveCfg = {
+    dayNumber: true,
+    dayStatus: true,
+    weather: true,
+    location: true,
+    curiosities: true,
+    ficLine: true,
+  };
+
+  for (const item in tinyCfg) {
+    if (typeof tinyCfg[item] === "boolean") saveCfg[item] = tinyCfg[item];
+  }
+
   // File start and end
   const fileStart = `---------- Official Pony Driland fic file ----------`;
   const fileEnd = `---------- The end Official Pony Driland fic file ----------`;
@@ -101,7 +115,7 @@ const saveRoleplayFormat = (chapter, saveAsFile = true) => {
   // Insert chapter
   const insertChapter = (cpId) => {
     file += `\n\n---------- Chapter ${cpId} ----------\n`;
-    file += renderRoleplayFormat(cpId);
+    file += renderRoleplayFormat(cpId, saveCfg);
     file += `\n\n---------- The end chapter ${cpId} ----------`;
   };
 

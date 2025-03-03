@@ -1352,7 +1352,11 @@ const AiScriptStart = () => {
             icon: "fa-solid fa-fill-drip",
             intro:
               "Welcome to sandbox of the fic Pony Driland! This is my purely sandbox version, that means I have no special configuration, allowing you to do whatever you want within the limits of your selected model.",
-            getData: async () => saveRoleplayFormat(null, false),
+            getData: async () =>
+              saveRoleplayFormat(null, false, {
+                ficLine: false,
+                dayNumber: false,
+              }),
           },
         ],
         buttons: [],
