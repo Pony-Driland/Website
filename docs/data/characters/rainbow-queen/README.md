@@ -7,32 +7,44 @@ subName: 'Nicknamed Rain by family and friends'
 cardUrl: '/img/gallery/chapter1-gift.jpg'
 
 charTable_0_0: 'Kind'
-charTable_0_1: 'Sphinx / Alicorn / Kirin'
+charTable_0_1: 'Hybrid'
 
-charTable_1_0: 'Sex'
-charTable_1_1: 'Female'
+charTable_1_0: 'Hybrid'
+charTable_1_1: 'Sphinx'
 
-charTable_2_0: 'Residence'
-charTable_2_1: '???'
+charTable_2_0: ''
+charTable_2_1: 'Alicorn'
 
-charTable_3_0: 'Occupation'
-charTable_3_1: 'Pony Driland Goddess'
+charTable_3_0: ''
+charTable_3_1: 'Kirin'
 
-charTable_4_0: 'Pets'
-charTable_4_1: '[Amy](https://github.com/Pony-Driland/Website/blob/main/docs/data/characters/amy/README.md)'
-charTable_5_0: ''
-charTable_5_1: '[Layla](https://github.com/Pony-Driland/Website/blob/main/docs/data/characters/layla/README.md)'
+charTable_4_0: ''
+charTable_4_1: 'AI Pony'
 
-charTable_6_0: 'Credits'
-charTable_6_1: ''
+charTable_5_0: 'Sex'
+charTable_5_1: 'Female'
 
-charTable_7_0: 'Development'
-charTable_7_1: 'JasminDreasond'
+charTable_6_0: 'Residence'
+charTable_6_1: '???'
 
-charTable_8_0: 'Design'
-charTable_8_1: '[Blujetink](https://derpibooru.org/tags/artist-colon-acersiii)'
+charTable_7_0: 'Occupation'
+charTable_7_1: 'Pony Driland Goddess'
+
+charTable_8_0: 'Pets'
+charTable_8_1: '[Amy](https://github.com/Pony-Driland/Website/blob/main/docs/data/characters/amy/README.md)'
 charTable_9_0: ''
-charTable_9_1: 'JasminDreasond'
+charTable_9_1: '[Layla](https://github.com/Pony-Driland/Website/blob/main/docs/data/characters/layla/README.md)'
+
+charTable_10_0: 'Credits'
+charTable_10_1: ''
+
+charTable_11_0: 'Development'
+charTable_11_1: 'JasminDreasond'
+
+charTable_12_0: 'Design'
+charTable_12_1: '[Blujetink](https://derpibooru.org/tags/artist-colon-acersiii)'
+charTable_13_0: ''
+charTable_13_1: 'JasminDreasond'
 
 contentList_0: 'Specie'
 contentList_1: 'Natural Habitat'
