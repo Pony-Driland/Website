@@ -27534,6 +27534,212 @@
     "value": "Hihi... I'm glad everyone is happy by the cupcake... Make yourself at home.",
     "character": "Ivy",
     "type": "dialogue"
+  },
+
+  {
+    "value": "Heh! Ivy... Who's at home?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy smiles at Vinny cutely before answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wagner and Jeff. They are tired after spending all day talking about the restaurant.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy then replied slightly curious when mentioning about James.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "But James... I still don't know if he's here. He went crazy in the head when he was having some problems with the radars again.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "What? These problems, when was it? Was it a little while ago?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },  
+
+  {
+    "value": "Ivy giggles a little while answering.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It was early afternoon... But now it looks like he's getting less paranoid... I offered him a cupcake to calm down earlier today.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah... Yes... Yes, thank you by your response.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny was a little suspicious, trying to think about what James was doing.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "What did our scientist tabacu head do now?",
+    "character": "Vinny",
+    "type": "think"
+  }, 
+
+  {
+    "value": "Rayane was distracted by Aniya's nonsense, the two seemed to have started having fun while Vinny went to James' room.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "James?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "He left in the afternoon. But I didn't pay attention if he came back. He must be in his lab.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy was slightly curious. At this moment knocks on the door was heard.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh? More visits? Who did you bring this time?",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy walked very happily towards the door.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Nobody... Rayane?",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny was a little surprised, paying attention to the door. Rayane continued laughing at Aniya eating cupcakes. Ivy then went to answer the door and opened it. Vinny and Rayane then heard Ivy's voice showing happiness for something she saw.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh? Amy! Good to see my little sister again!",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy replied happily as she hugged Amy to greet her.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Sissy!",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy replied also very happy, hugging Ivy back in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "I made cupcakes today, I hope you like it.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy patted Amy's head gently while handing her the cupcake in response. Amy blushes a little before answering. She replied shyly and was delighted by the cupcake.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh? C... Cupcake?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy held the cupcake very delicately and started to eat it gently with a smile on her face.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Thanks sissy... I didn't know you can make cupcakes too.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy giggles a little in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "It's okay... Now I will look at my garden, feel at home.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy gently lowers her head to show that she would go to the garden, and go there. Vinny does a poker face and went back to Amy gently.",
+    "type": "action"
+  },
+
+  {
+    "value": "Welcome Amy! How are you?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy looks at Vinny curiously in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh?",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Mr Vinny... You're here too, I'm fine.",
+    "character": "Amy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Amy replied happily while hugging Vinny gently, doing a shy smile on her face. Then Vinny realized that Yasmin wasn't there.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Ah? Hey, where's Yasmin?",
+    "character": "Vinny",
+    "type": "dialogue"
   }
   
 ]
