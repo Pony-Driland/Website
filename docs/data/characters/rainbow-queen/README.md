@@ -58,9 +58,11 @@ contentList_8: 'Fun silly fact (SPOILERS!!)'
 
 <span class="made-by-ai">
 
-Rainbow Queen is a majestic and enigmatic figure in the world of Pony Driland, a powerful being with a complex personality, she is known for both her benevolence and her darkness side. While she demonstrates care for the souls of the deceased and a desire to protect Pony Driland, her methods are sometimes questionable. Her ability to manipulate divine energies further contribute to her enigma. 
+Rainbow Queen is a majestic and enigmatic figure in the world of Pony Driland, a powerful being with a complex personality, she is known for both her benevolence and her darkness side. While she demonstrates care for the souls of the deceased and a desire to protect Pony Driland, her methods are sometimes questionable. Her ability to manipulate divine energies further contribute to her enigma.
 
 </span>
+
+It is a Pony Driland native pony, created by Princess Ariella, which makes it an artificial intelligence due to the nature of the dimension not allowing to create creatures organically. Although organic lives can be born through combinations of organic creatures, Rainbow Queen does not follow this very principle.
 
 {{content_list}}
 
