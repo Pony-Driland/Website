@@ -27151,6 +27151,9 @@
   },
 
   {
+    "set": {
+      "playlistPlay": null
+    },
     "value": "Vinny does a poker face in response.",
     "type": "action"
   }, 
@@ -27158,6 +27161,378 @@
   {
     "value": "Yes... I'm finally ready.",
     "character": "Vinny",
+    "type": "dialogue"
+  },
+  
+  {
+    "set": {
+      "playlistPlay": "calm"
+    },
+    "value": "Then Rayane teleported along with Vinny back to the door of the house. At this moment, Vinny came face to face with Aniya. Aniya feels completely surprised and scared by the teleportation.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "OH?!",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "AAH!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "ON MY FACE AGAIN!",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "But what pony that predicts the future is scared like that?! You can't be like that, you have to predict things!",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Rayane is unpredictable!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane laughed a little before interrupting Vinny and Aniya.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Shhhhh... Time for you two to calm down.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yeah... but someone throwing fruit at me on my head out of nowhere is unpredictable, but...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny looks at Rayane in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Do you think I should mention what we talked about earlier? Or not?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya looks very confused in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Wait... Throwing fruit at you?",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Heh~ It's your choice.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "What?",
+    "character": "Aniya",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Yeah... yeah... Today I went to the city of ghosts there, but in some moments very fast, someone throws a fruit on me and it disappears to the sound of sparks, if you look quickly you can even see the sparks, and today I found an invisible pony causing interference on my cell asking Rayane for help.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya moved away a bit from Vinny due to surprise.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Fru... Fruit? Sound of sparks... Wait... Did you find the haunting?! And asking for help from Rayane?!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I don't know, is it him? Or she? I'm thinking I'll have to help her so she can help me... I'm thinking it's some old friendship of Rayane's, since this ghost asked me to call Rayane. I wanted help, not help someone...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny lay on the ground, saying in an ironic way several meaningless words.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Aaaaaaah... wa wa waawwaaw...",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "So Rayane interrupted Vinny and continued the conversation.",
+    "type": "action"
+  },  
+
+  {
+    "value": "Yes... But this fact remains very strange, I do not remember having known haunts.",
+    "character": "Rayane",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Aniya was looking at Vinny on the floor, doing a big poker face, not understanding anything else what was happening.",
+    "type": "action"
+  },
+
+  {
+    "value": "Do you not remember any pony that turned a haunter? You may know someone who has become one against their will. I don't know... Rayane, it might be a Rain's thing to get you away from me too.",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "No... I don't have any memories about it.",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "You're just making me more and more confused!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "set": {
+      "dayNightCycle": "night"
+    },
+    "value": "Then the village lights began to light up from the approaching night, Vinny looked at the situation and felt it was time to think of something faster.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Well... let's go.",
+    "character": "Vinny",
+    "type": "dialogue"
+  },
+
+  {
+    "value": "Vinny then passed through the door and offered the passage to Rayane and Aniya.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "First the most beautiful ponies in the world. Hihi!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya looked at the situation, she laughed a little as she blushed a little and entered the house.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "You silly...",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "No silly... He's my dream~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ah...",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane also entered the house while smirking at Vinny and Aniya, and her tail passed over Vinny face before entering the house.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "A...Are you doing??",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny tried to bite Rayane's tail, but Rayane tail rubbed Vinny's face a little more, avoiding the bites while Rayane laughed a little.",
+    "type": "action"
+  },
+
+  {
+    "value": "Don't do it again, or I'll bite you too~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Huh? Do you have experience in deflecting the bite tail? Who tried to bite you for you to have this ability?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya does another poker face and entered the house, and closed the door after all were inside.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "No one tried to bite me... I can predict your moves after you started booping me~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane smirks at Vinny again, but before any other possible nonsense happen, Ivy arrived to talk to everyone. Ivy seemed to be hiding something behind her wings.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh? Mr Vinny and Mysterious Rayane have arrived!",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy replied happily, Aniya was embarrassed by the scene she was seeing.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Uh... hello...",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Anya waved to Ivy in response, Rayane laughed a little when she saw Aniya's face.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hello Ivy! How are you?",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "I'm great! Very sweet. We are all getting some rest, but I decided to come here when I heard the sound of the door.",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy then revealed that she was hiding cupcakes that she herself had cooked, showing all the happiness by the food.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Here it is! I did it myself!",
+    "character": "Ivy",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Oh... ooooooooh? Cupcakes??",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was delighted by the Ivy cupcakes, trying to resist the feelings of wanting to eat one.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh... it looks like we arrived at the right time~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Yes yes... Hihi thank you very much!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Vinny took a cupcake gently and started eating in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hmmmm! This is delicious!",
+    "character": "Vinny",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya held a cupcake and bit a small piece to try.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Oh... oh... OH! YES! IT'S CUPCAKES!! YES! I missed it so much!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Aniya was very happy and started eating the cupcake happily in response.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Heh... Looks like someone was missing cupcakes too~",
+    "character": "Rayane",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Rayane giggles a little while offering Aniya a tissue box to wipe her mouth.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Very good! THIS IS VERY GOOD! Thank you very much Ivy!!",
+    "character": "Aniya",
+    "type": "dialogue"
+  }, 
+
+  {
+    "value": "Ivy laughed a little more about the situation, getting a little embarrassed by Aniya happiness without knowing how to respond Aniya.",
+    "type": "action"
+  }, 
+
+  {
+    "value": "Hihi... I'm glad everyone is happy by the cupcake... Make yourself at home.",
+    "character": "Ivy",
     "type": "dialogue"
   }
   
