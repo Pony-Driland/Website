@@ -1,0 +1,1 @@
+(?<!\s)\.\.\.(?=[A-Za-z]|[A-Za-z].) --> procurar todo o texto que possui alguma palavra grudada em 3 pontos.
