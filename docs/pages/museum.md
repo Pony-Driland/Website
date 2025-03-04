@@ -28,7 +28,7 @@ As strange as it sounds, this was an extension for Google Chrome as the idea was
 
 ### Game stuff that were brought to fic
 
-All the initial concept about smartmoby and the Master smartmoby was started in this game, and there are images in this folder about how that device would be.
+All the initial concept about smartmoby and the master smartmoby was started in this game, and there are images in this folder about how that device would be.
 
 The first version of the device was to be Pip-Boy more compacted as a Smart Clock, but the idea was changing over time, as it would be very uncomfortable for the characters to have a device in their arms that stays practically for all eternity using it. The game was literally played in real time, there was no pause, and if you ignored the game, you would be penalized, as the game knew how long you got inactive without playing.
 
