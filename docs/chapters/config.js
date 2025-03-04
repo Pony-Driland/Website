@@ -213,7 +213,7 @@ const storyCfg = {
         
             "/img/characters/princess-ariella/ref.png": "LHFvTaQPlHbDnc4vM_xLQ0LWH8ypdqtSccgApjFatq8",
         
-            "/img/characters/prisma/ref.jpg": "HD4luK_pU20Xwe1SM6em0h9-5DI_h2wSgdQTBbXj8y8",
+            "/img/characters/prisma/old/ref.jpg": "HD4luK_pU20Xwe1SM6em0h9-5DI_h2wSgdQTBbXj8y8",
         
             "/img/characters/layla/ref.jpg": "shHPlacMUy7JWHqNO0GQPZitOyDdFFv7UsgktT69c1A"
         }

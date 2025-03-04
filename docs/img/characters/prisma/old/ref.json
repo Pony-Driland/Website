@@ -1,0 +1,44 @@
+{
+    "name": "Prisma",
+    "image": "ipfs://QmWBivG5x6XX8FPLxRs6UK1nNxYVgGLH3vvjj6Ay1VSCSU",
+    "image_url": "ipfs://QmWBivG5x6XX8FPLxRs6UK1nNxYVgGLH3vvjj6Ay1VSCSU",
+    "attributes": [
+        {
+            "trait_type": "Character",
+            "value": "Rayane"
+        },
+        {
+            "trait_type": "Cute",
+            "value": "Yes"
+        },
+        {
+            "trait_type": "Gender",
+            "value": "Female"
+        },
+        {
+            "trait_type": "Race",
+            "value": "Unicorn"
+        },
+        {
+            "trait_type": "Specie",
+            "value": "Pony"
+        },
+        {
+            "trait_type": "Size",
+            "value": "Normal"
+        },
+        {
+            "trait_type": "Designer",
+            "value": "AI"
+        },
+        {
+            "trait_type": "Author",
+            "value": "JasminDreasond"
+        },
+        {
+            "trait_type": "Image",
+            "value": "Full Body"
+        }
+    ],
+    "background_color": "FFFFFF"
+}
