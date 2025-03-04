@@ -392,7 +392,7 @@
   }, 
 
   {
-    "value": "Wh-what? AH? R-Rayane?!",
+    "value": "Wh-what? AH? Ra-Rayane?!",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -969,7 +969,7 @@
   }, 
 
   {
-    "value": "R-Really? Okay. There is a haunted village next to Blackburn. It is an abandoned village that was supposed to be another common village in this region, but it seems that its founder ended up being cursed and disappeared. So sometimes strange things happen coming from this village towards Blackburn.",
+    "value": "Re-Really? Okay. There is a haunted village next to Blackburn. It is an abandoned village that was supposed to be another common village in this region, but it seems that its founder ended up being cursed and disappeared. So sometimes strange things happen coming from this village towards Blackburn.",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -1388,7 +1388,7 @@
   }, 
 
   {
-    "value": "R-Rayane? When will I be known too? Hm?",
+    "value": "Ra-Rayane? When will I be known too? Hm?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -1496,7 +1496,7 @@
   }, 
 
   {
-    "value": "R-Rayane? And now?",
+    "value": "Ra-Rayane? And now?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -1513,7 +1513,7 @@
   }, 
 
   {
-    "value": "Oh yes... Everypony... just down the hall... Doctor is wating for you and... W-What?! R-Rayane?!",
+    "value": "Oh yes... Everypony... just down the hall... Doctor is wating for you and... W-What?! Ra-Rayane?!",
     "character": "Hospital Attendant",
     "type": "dialogue"
   },
@@ -1592,7 +1592,7 @@
   }, 
 
   {
-    "value": "R-Rayane? This is a surprise to see here! I never seen you on a hospital or bring some patient to a hospital. Our hospital network has no information about you. We will generate your password for you to be allowed to enter soon. Alright? But... W-What happened for you came here?",
+    "value": "Ra-Rayane? This is a surprise to see here! I never seen you on a hospital or bring some patient to a hospital. Our hospital network has no information about you. We will generate your password for you to be allowed to enter soon. Alright? But... W-What happened for you came here?",
     "character": "Hospital Attendant",
     "type": "dialogue"
   },
@@ -1643,7 +1643,7 @@
   }, 
 
   {
-    "value": "R-Really?",
+    "value": "Re-Really?",
     "character": "Hospital Attendant",
     "type": "dialogue"
   }, 
@@ -2073,7 +2073,7 @@
   }, 
 
   {
-    "value": "W-What? magical creature? R-Rain? This is you?",
+    "value": "W-What? magical creature? Ra-Rain? This is you?",
     "character": "Rayane",
     "type": "think"
   }, 
@@ -2153,7 +2153,7 @@
   }, 
 
   {
-    "value": "R-Rayane? Listen me please. We are here to help you. No matter who you are. Our job in the end is to help everyone. So please remember this.",
+    "value": "Ra-Rayane? Listen me please. We are here to help you. No matter who you are. Our job in the end is to help everyone. So please remember this.",
     "character": "Doctor",
     "type": "dialogue"
   }, 
@@ -4432,7 +4432,7 @@
   }, 
 
   {
-    "value": "R-Rainbow Queen?! Wait... Now I understand... This name is very familiar. I had heard about her... but I never met her until after the cave day.",
+    "value": "Ra-Rainbow Queen?! Wait... Now I understand... This name is very familiar. I had heard about her... but I never met her until after the cave day.",
     "character": "James",
     "type": "dialogue"
   },
@@ -4499,7 +4499,7 @@
   }, 
 
   {
-    "value": "R-Rainbow Queen family?! That doesn't seem like a good idea. Why is Vinny trying to intrude on an unknown family? And what family is this?!",
+    "value": "Ra-Rainbow Queen family?! That doesn't seem like a good idea. Why is Vinny trying to intrude on an unknown family? And what family is this?!",
     "character": "James",
     "type": "think"
   }, 
@@ -4568,7 +4568,7 @@
   }, 
 
   {
-    "value": "R-Red bow? AH! A long story... but summing it all up. This bow was Rayane who bought it for me after we accidentally got married and I wanted to have kids and she didn't. But then she changed her mind and wanted to have children. We went to a clothing store to see clothes for our future baby girl and Rayane accidentally got it all wrong and we were teased. And in the end I got this in my head! I need something to cover like a cape or something. My cape was... ah fuck.",
+    "value": "Re-Red bow? AH! A long story... but summing it all up. This bow was Rayane who bought it for me after we accidentally got married and I wanted to have kids and she didn't. But then she changed her mind and wanted to have children. We went to a clothing store to see clothes for our future baby girl and Rayane accidentally got it all wrong and we were teased. And in the end I got this in my head! I need something to cover like a cape or something. My cape was... ah fuck.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -4765,7 +4765,7 @@
   }, 
 
   {
-    "value": "R-Rainbow Queen pony? N-No no no! REALLY?! T-The goddess? Are you serious?!?!",
+    "value": "Ra-Rainbow Queen pony? N-No no no! REALLY?! T-The goddess? Are you serious?!?!",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -4776,7 +4776,7 @@
   }, 
 
   {
-    "value": "R-REAAAALLY?! I-I... OH CRAP!",
+    "value": "RE-REAAAALLY?! I-I... OH CRAP!",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -9601,7 +9601,7 @@
   }, 
 
   {
-    "value": "A-AAAAHHH!! R-RAIN! A-AAAAHHH!",
+    "value": "A-AAAAHHH!! RA-RAIN! A-AAAAHHH!",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -15153,7 +15153,7 @@
   }, 
 
   {
-    "value": "R-Rain? Here?",
+    "value": "Ra-Rain? Here?",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -15170,7 +15170,7 @@
   }, 
 
   {
-    "value": "M-my master? Here? R-Really? I wasn't waiting for her here. And..I was talking to Yasmin... My master can't wait a few more minutes?",
+    "value": "M-my master? Here? Re-Really? I wasn't waiting for her here. And..I was talking to Yasmin... My master can't wait a few more minutes?",
     "character": "Amy",
     "type": "dialogue"
   }, 
@@ -17548,7 +17548,7 @@
   }, 
 
   {
-    "value": "R-Rayane! Calm down, everything will be fine. Trust me.",
+    "value": "Ra-Rayane! Calm down, everything will be fine. Trust me.",
     "character": "Vinny",
     "type": "dialogue"
   },
@@ -17775,7 +17775,7 @@
   }, 
 
   {
-    "value": "R-Rayane!",
+    "value": "Ra-Rayane!",
     "character": "Vinny",
     "type": "dialogue"
   },
@@ -19538,7 +19538,7 @@
   }, 
 
   {
-    "value": "R-Rainbow Queen? So that's her name. But Vinny... P-please... Don't forget me. Don't forget my existence. I really want to trust you that everything will be fine.",
+    "value": "Ra-Rainbow Queen? So that's her name. But Vinny... P-please... Don't forget me. Don't forget my existence. I really want to trust you that everything will be fine.",
     "character": "Yasmin",
     "type": "dialogue"
   },
@@ -19681,7 +19681,7 @@
   }, 
 
   {
-    "value": "R-Rainbow Queen?",
+    "value": "Ra-Rainbow Queen?",
     "character": "Yasmin",
     "type": "dialogue"
   },  
@@ -20211,7 +20211,7 @@
   },
 
   {
-    "value": "R-Rainbow Queen?",
+    "value": "Ra-Rainbow Queen?",
     "character": "???",
     "type": "dialogue"
   }, 
@@ -21202,7 +21202,7 @@
   }, 
 
   {
-    "value": "R-Really??",
+    "value": "Re-Really??",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -24731,7 +24731,7 @@
   }, 
 
   {
-    "value": "R-Run away? Yes.",
+    "value": "Ru-Run away? Yes.",
     "character": "Ivy",
     "type": "dialogue"
   }, 
@@ -25060,7 +25060,7 @@
   }, 
 
   {
-    "value": "R-Really? Yes Ivy! This is very good! Seriously food is something essential in life, there are always ponies buying and consuming it, that makes a lot of money.",
+    "value": "Re-Really? Yes Ivy! This is very good! Seriously food is something essential in life, there are always ponies buying and consuming it, that makes a lot of money.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -26855,7 +26855,7 @@
   }, 
 
   {
-    "value": "R-Rayane?? Give me a name so she knows what it's about and I'll call her now. Who are you??",
+    "value": "Ra-Rayane?? Give me a name so she knows what it's about and I'll call her now. Who are you??",
     "character": "Vinny",
     "type": "dialogue"
   }, 

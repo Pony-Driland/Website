@@ -3261,7 +3261,7 @@
     },
 
     {
-        "value": "R-Rayane? What does she want from you?! I don't want to participate in another sword game of hers. She likes to be silly when she's swinging her sword.",
+        "value": "Ra-Rayane? What does she want from you?! I don't want to participate in another sword game of hers. She likes to be silly when she's swinging her sword.",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -9304,7 +9304,7 @@
     },
 
     {
-        "value": "Wait, Vinny?! R-Rayane here?!",
+        "value": "Wait, Vinny?! Ra-Rayane here?!",
         "character": "Raquel",
         "type": "dialogue"
     },
@@ -14290,7 +14290,7 @@
     },
 
     {
-        "value": "R-Rayane? Are you ok? I felt a strange thing coming from you. Your eyes were different.",
+        "value": "Ra-Rayane? Are you ok? I felt a strange thing coming from you. Your eyes were different.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -14307,7 +14307,7 @@
     },
 
     {
-        "value": "V-Vinny? R-Rayane? W-what?",
+        "value": "V-Vinny? Ra-Rayane? W-what?",
         "character": "James",
         "type": "dialogue"
     },
@@ -15329,7 +15329,7 @@
     },
 
     {
-        "value": "R-RAYANE! SHUT UP!",
+        "value": "RA-RAYANE! SHUT UP!",
         "character": "James",
         "type": "dialogue"
     },
@@ -16111,7 +16111,7 @@
         "set": {
             "playlistPlay": "bad-mystery"
         },
-        "value": "R-Rayane? Are you sure you're okay?",
+        "value": "Ra-Rayane? Are you sure you're okay?",
         "character": "James",
         "type": "dialogue"
     },
@@ -16765,7 +16765,7 @@
     },
 
     {
-        "value": "R-Rainbow Queen?",
+        "value": "Ra-Rainbow Queen?",
         "character": "Female Unicorn",
         "type": "dialogue"
     },
@@ -16966,7 +16966,7 @@
     },
 
     {
-        "value": "R-Ruby? I..Is Ruby okay?",
+        "value": "Ru-Ruby? I..Is Ruby okay?",
         "character": "???",
         "type": "dialogue"
     },
@@ -17365,7 +17365,7 @@
     },
 
     {
-        "value": "R-Rayane? James? This is no good.",
+        "value": "Ra-Rayane? James? This is no good.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -18441,7 +18441,7 @@
     },
 
     {
-        "value": "What the fuck is going on here?! R-Rayane?!",
+        "value": "What the fuck is going on here?! Ra-Rayane?!",
         "character": "James",
         "type": "dialogue"
     },
@@ -19247,7 +19247,7 @@
     },
 
     {
-        "value": "N-no... stop it... R-Rain no...",
+        "value": "N-no... stop it... Ra-Rain no...",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -19381,7 +19381,7 @@
     },
 
     {
-        "value": "R-Rayane?",
+        "value": "Ra-Rayane?",
         "character": "Vinny",
         "type": "think"
     },
@@ -20678,7 +20678,7 @@
     },
 
     {
-        "value": "R-Really?",
+        "value": "Ra-Really?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -22577,7 +22577,7 @@
     },
 
     {
-        "value": "R-Rayane? What are you doing?",
+        "value": "Ra-Rayane? What are you doing?",
         "character": "Vinny",
         "type": "dialogue"
     },
