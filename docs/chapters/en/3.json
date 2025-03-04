@@ -4880,7 +4880,7 @@
     "set": {
       "playlistPlay": null
     },
-    "value": "...is there lunch here?",
+    "value": "is there lunch here?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -6058,7 +6058,7 @@
   },
 
   {
-    "value": "...Oh how cute... I want to blow myself up!",
+    "value": "Oh how cute... I want to blow myself up!",
     "character": "James",
     "type": "dialogue"
   },
@@ -7080,7 +7080,7 @@
     "set": {
       "playlistPlay": null
     },
-    "value": "...So... i-if you're already going to have a happy future... W-won't you want to join me? J-Join me? And... will I lose you again?",
+    "value": "So... i-if you're already going to have a happy future... W-won't you want to join me? J-Join me? And... will I lose you again?",
     "character": "Amy",
     "type": "dialogue"
   }, 
@@ -11398,7 +11398,7 @@
   },
 
   {
-    "value": "...Fine! Bighead.",
+    "value": "Fine! Bighead.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -16111,7 +16111,7 @@
   }, 
 
   {
-    "value": "...and that's it. Hey? Hey! Do you want to go to the gypsy? If we're really going to go on it, and she really knows we're going on it.",
+    "value": "and that's it. Hey? Hey! Do you want to go to the gypsy? If we're really going to go on it, and she really knows we're going on it.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -17095,7 +17095,7 @@
   },
   
   {
-    "value": "...you at least either hate her or like her.",
+    "value": "you at least either hate her or like her.",
     "character": "Vinny",
     "type": "dialogue"
   },
