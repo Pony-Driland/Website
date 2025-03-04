@@ -392,7 +392,7 @@
   }, 
 
   {
-    "value": "Wh-what? AH? Ra-Rayane?!",
+    "value": "Wh-what? AH? Ra-rayane?!",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -1054,7 +1054,7 @@
   }, 
 
   {
-    "value": "Oh? Vi-Vinny? Heh~ Silly you. Are you thinking about?~",
+    "value": "Oh? Vi-vinny? Heh~ Silly you. Are you thinking about?~",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -1388,7 +1388,7 @@
   }, 
 
   {
-    "value": "Ra-Rayane? When will I be known too? Hm?",
+    "value": "Ra-rayane? When will I be known too? Hm?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -1496,7 +1496,7 @@
   }, 
 
   {
-    "value": "Ra-Rayane? And now?",
+    "value": "Ra-rayane? And now?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -1513,7 +1513,7 @@
   }, 
 
   {
-    "value": "Oh yes... Everypony... just down the hall... Doctor is wating for you and... W-What?! Ra-Rayane?!",
+    "value": "Oh yes... Everypony... just down the hall... Doctor is wating for you and... W-What?! Ra-rayane?!",
     "character": "Hospital Attendant",
     "type": "dialogue"
   },
@@ -1592,7 +1592,7 @@
   }, 
 
   {
-    "value": "Ra-Rayane? This is a surprise to see here! I never seen you on a hospital or bring some patient to a hospital. Our hospital network has no information about you. We will generate your password for you to be allowed to enter soon. Alright? But... W-What happened for you came here?",
+    "value": "Ra-rayane? This is a surprise to see here! I never seen you on a hospital or bring some patient to a hospital. Our hospital network has no information about you. We will generate your password for you to be allowed to enter soon. Alright? But... W-What happened for you came here?",
     "character": "Hospital Attendant",
     "type": "dialogue"
   },
@@ -2153,7 +2153,7 @@
   }, 
 
   {
-    "value": "Ra-Rayane? Listen me please. We are here to help you. No matter who you are. Our job in the end is to help everyone. So please remember this.",
+    "value": "Ra-rayane? Listen me please. We are here to help you. No matter who you are. Our job in the end is to help everyone. So please remember this.",
     "character": "Doctor",
     "type": "dialogue"
   }, 
@@ -4211,7 +4211,7 @@
   }, 
 
   {
-    "value": "Vi-Vinny?! VINNY! OH FUCK GOD! I looked for you everywhere!!",
+    "value": "Vi-vinny?! VINNY! OH FUCK GOD! I looked for you everywhere!!",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -6330,7 +6330,7 @@
   }, 
 
   {
-    "value": "Vi-Vinny? Oh yes. I just need your password. Somebody else? Yes, a pegasus got special permission to enter without a password. Remember there can only be two in the same room.",
+    "value": "Vi-vinny? Oh yes. I just need your password. Somebody else? Yes, a pegasus got special permission to enter without a password. Remember there can only be two in the same room.",
     "character": "Hospital Attendant",
     "type": "dialogue"
   }, 
@@ -6560,7 +6560,7 @@
     "set": {
       "playlistPlay": "tense-mystery"
     },
-    "value": "Vi-Vinny? What happened?!",
+    "value": "Vi-vinny? What happened?!",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -6928,7 +6928,7 @@
     "set": {
       "playlistPlay": null
     },
-    "value": "Vi-Vinny. You have to go ahead... Amy trusts you more.",
+    "value": "Vi-vinny. You have to go ahead... Amy trusts you more.",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -6965,7 +6965,7 @@
   }, 
 
   {
-    "value": "Vi-Vinny? You here?",
+    "value": "Vi-vinny? You here?",
     "character": "Amy",
     "type": "dialogue"
   }, 
@@ -6993,7 +6993,7 @@
   }, 
 
   {
-    "value": "Mr Vi-Vinny? Y-You here?",
+    "value": "Mr Vi-vinny? Y-You here?",
     "character": "Ivy",
     "type": "dialogue"
   }, 
@@ -8792,7 +8792,7 @@
   },
 
   {
-    "value": "Vi-Vinny?",
+    "value": "Vi-vinny?",
     "character": "Rayane",
     "type": "think"
   },
@@ -8953,7 +8953,7 @@
   }, 
 
   {
-    "value": "Vi-Vinny? What's happening? T-This all... seems like a dream.",
+    "value": "Vi-vinny? What's happening? T-This all... seems like a dream.",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -9042,7 +9042,7 @@
   }, 
 
   {
-    "value": "Vi-Vinny! Are you doing??",
+    "value": "Vi-vinny! Are you doing??",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -9935,7 +9935,7 @@
   },
 
   {
-    "value": "W-what? Rainbow Queen? Vi-Vinny? Oh my god... VINNY! You need wake up too!! How did I not see any explosions or anything like that... where did you go? That doesn't make the most sense... Why would Rainbow Queen want your friend from your planet all of a sudden? And...Wait? She managed to bring someone out of your world completely selectively???",
+    "value": "W-what? Rainbow Queen? Vi-vinny? Oh my god... VINNY! You need wake up too!! How did I not see any explosions or anything like that... where did you go? That doesn't make the most sense... Why would Rainbow Queen want your friend from your planet all of a sudden? And...Wait? She managed to bring someone out of your world completely selectively???",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -9958,7 +9958,7 @@
   }, 
 
   {
-    "value": "Vi-Vinny? Oh my fuck god... What did you get up to? Your friend is in our dimension and does Rainbow Queen want to do something with your friend if you can't find a new pet? This... this is very poorly explained. This smells like a gigantic problem.",
+    "value": "Vi-vinny? Oh my fuck god... What did you get up to? Your friend is in our dimension and does Rainbow Queen want to do something with your friend if you can't find a new pet? This... this is very poorly explained. This smells like a gigantic problem.",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -11297,7 +11297,7 @@
   }, 
 
   {
-    "value": "W-What?! Vi-Vinny.. you're scaring me. What do you mean trapped? I have my things to do at home, our friends, our normal life.",
+    "value": "W-What?! Vi-vinny.. you're scaring me. What do you mean trapped? I have my things to do at home, our friends, our normal life.",
     "character": "Yasmin",
     "type": "dialogue"
   },
@@ -12071,7 +12071,7 @@
   },  
 
   {
-    "value": "Oh hey... Hello everyone. Vi-Vinny? This blue one called you a dream?",
+    "value": "Oh hey... Hello everyone. Vi-vinny? This blue one called you a dream?",
     "character": "Yasmin",
     "type": "dialogue"
   },
@@ -13850,7 +13850,7 @@
   }, 
 
   {
-    "value": "Vi-Vinny? Are you okay? Oh! His wing is different.",
+    "value": "Vi-vinny? Are you okay? Oh! His wing is different.",
     "character": "Yasmin",
     "type": "dialogue"
   }, 
@@ -13861,7 +13861,7 @@
   }, 
 
   {
-    "value": "Vi-Vinny?",
+    "value": "Vi-vinny?",
     "character": "Amy",
     "type": "dialogue"
   }, 
@@ -16296,7 +16296,7 @@
   },
 
   {
-    "value": "NO! I-I... I can't! What is Rayane doing here?! I did nothing! Which means all that scary feeling?! Vi-Vinny?! Rayane?!",
+    "value": "NO! I-I... I can't! What is Rayane doing here?! I did nothing! Which means all that scary feeling?! Vi-vinny?! Rayane?!",
     "character": "Aniya",
     "type": "dialogue"
   }, 
@@ -16726,7 +16726,7 @@
   }, 
 
   {
-    "value": "Vi-Vinny? Vinny! Wake up!",
+    "value": "Vi-vinny? Vinny! Wake up!",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -17548,7 +17548,7 @@
   }, 
 
   {
-    "value": "Ra-Rayane! Calm down, everything will be fine. Trust me.",
+    "value": "Ra-rayane! Calm down, everything will be fine. Trust me.",
     "character": "Vinny",
     "type": "dialogue"
   },
@@ -17775,7 +17775,7 @@
   }, 
 
   {
-    "value": "Ra-Rayane!",
+    "value": "Ra-rayane!",
     "character": "Vinny",
     "type": "dialogue"
   },
@@ -18732,7 +18732,7 @@
   }, 
 
   {
-    "value": "A-ah? Vi-Vinny!",
+    "value": "A-ah? Vi-vinny!",
     "character": "Yasmin",
     "type": "dialogue"
   },
@@ -19222,7 +19222,7 @@
   },
 
   {
-    "value": "Uh... ah? Vi-Vinny? How did you get here? I thought I locked the door. What time is it?",
+    "value": "Uh... ah? Vi-vinny? How did you get here? I thought I locked the door. What time is it?",
     "character": "Yasmin",
     "type": "dialogue"
   }, 
@@ -19652,7 +19652,7 @@
   }, 
 
   {
-    "value": "Vi-Vinny... She scares me a little.",
+    "value": "Vi-vinny... She scares me a little.",
     "character": "Yasmin",
     "type": "dialogue"
   }, 
@@ -19766,7 +19766,7 @@
   },
 
   {
-    "value": "Is... Is this really a dream? I want to believe that this is all a dream. This will be my biggest trust in your words.. Vi-Vinny.",
+    "value": "Is... Is this really a dream? I want to believe that this is all a dream. This will be my biggest trust in your words.. Vi-vinny.",
     "character": "Yasmin",
     "type": "dialogue"
   }, 
@@ -19918,7 +19918,7 @@
   }, 
 
   {
-    "value": "Calm down? C-Calm down... What is this magic? Vi-Vinny? What am I becoming? What is it again? Am I alive?",
+    "value": "Calm down? C-Calm down... What is this magic? Vi-vinny? What am I becoming? What is it again? Am I alive?",
     "character": "Yasmin",
     "type": "dialogue"
   }, 
@@ -22515,7 +22515,7 @@
   }, 
 
   {
-    "value": "Vi-Vinny... Just be careful what you're getting into... If Rain wants to play with you, you are lost. She feels much more comfortable in her house to use her magic to become a giant sphinx!",
+    "value": "Vi-vinny... Just be careful what you're getting into... If Rain wants to play with you, you are lost. She feels much more comfortable in her house to use her magic to become a giant sphinx!",
     "character": "Aniya",
     "type": "dialogue"
   },
@@ -25190,7 +25190,7 @@
   }, 
 
   {
-    "value": "Ah? Vi-Vinny? Sorry I didn't show up on your lunch break.",
+    "value": "Ah? Vi-vinny? Sorry I didn't show up on your lunch break.",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -26855,7 +26855,7 @@
   }, 
 
   {
-    "value": "Ra-Rayane?? Give me a name so she knows what it's about and I'll call her now. Who are you??",
+    "value": "Ra-rayane?? Give me a name so she knows what it's about and I'll call her now. Who are you??",
     "character": "Vinny",
     "type": "dialogue"
   }, 

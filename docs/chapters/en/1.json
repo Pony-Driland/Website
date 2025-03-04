@@ -431,7 +431,7 @@
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Vi-Vinny? Are you okay? The X-Tudo is for eating! Not to mess up! What are you doing?!"
+        "value": "Vi-vinny? Are you okay? The X-Tudo is for eating! Not to mess up! What are you doing?!"
     },
 
     {
@@ -483,7 +483,7 @@
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Vinny?!... of... you... O... ...What's happening?! Vi-Vinny! The signal! The service is horrible! N-Nooo! Came back here! V-Viiiiiny!"
+        "value": "Vinny?!... of... you... O... ...What's happening?! Vi-vinny! The signal! The service is horrible! N-Nooo! Came back here! V-Viiiiiny!"
     },
 
     {
@@ -3244,7 +3244,7 @@
     },
 
     {
-        "value": "Vi-Vinny?",
+        "value": "Vi-vinny?",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -3261,7 +3261,7 @@
     },
 
     {
-        "value": "Ra-Rayane? What does she want from you?! I don't want to participate in another sword game of hers. She likes to be silly when she's swinging her sword.",
+        "value": "Ra-rayane? What does she want from you?! I don't want to participate in another sword game of hers. She likes to be silly when she's swinging her sword.",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -3867,7 +3867,7 @@
     },
 
     {
-        "value": "Vi-Vinny? You... you really look happy.",
+        "value": "Vi-vinny? You... you really look happy.",
         "character": "Raquel",
         "type": "dialogue"
     },
@@ -7951,7 +7951,7 @@
     },
 
     {
-        "value": "Ja-James... if you were born here, why aren't you from here? I did not understand.",
+        "value": "Ja-james... if you were born here, why aren't you from here? I did not understand.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -9036,7 +9036,7 @@
         "set": {
             "playlistPlay": "sad"
         },
-        "value": "Ja-James? OH MY RAINBOW! JAAAAMES! You are here! Vinny! I do not believe! I thought you were dead!",
+        "value": "Ja-james? OH MY RAINBOW! JAAAAMES! You are here! Vinny! I do not believe! I thought you were dead!",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -9304,7 +9304,7 @@
     },
 
     {
-        "value": "Wait, Vinny?! Ra-Rayane here?!",
+        "value": "Wait, Vinny?! Ra-rayane here?!",
         "character": "Raquel",
         "type": "dialogue"
     },
@@ -13024,7 +13024,7 @@
     },
 
     {
-        "value": "Vi-Vinny?! WHAT?!",
+        "value": "Vi-vinny?! WHAT?!",
         "character": "Raquel",
         "type": "dialogue"
     },
@@ -14290,7 +14290,7 @@
     },
 
     {
-        "value": "Ra-Rayane? Are you ok? I felt a strange thing coming from you. Your eyes were different.",
+        "value": "Ra-rayane? Are you ok? I felt a strange thing coming from you. Your eyes were different.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -14307,7 +14307,7 @@
     },
 
     {
-        "value": "Vi-Vinny? Ra-Rayane? W-what?",
+        "value": "Vi-vinny? Ra-rayane? W-what?",
         "character": "James",
         "type": "dialogue"
     },
@@ -15003,7 +15003,7 @@
     },
 
     {
-        "value": "Vi-Vinny? Rayane? Take care! I'm happy for your new friendship.",
+        "value": "Vi-vinny? Rayane? Take care! I'm happy for your new friendship.",
         "character": "Raquel",
         "type": "dialogue"
     },
@@ -16111,7 +16111,7 @@
         "set": {
             "playlistPlay": "bad-mystery"
         },
-        "value": "Ra-Rayane? Are you sure you're okay?",
+        "value": "Ra-rayane? Are you sure you're okay?",
         "character": "James",
         "type": "dialogue"
     },
@@ -17145,7 +17145,7 @@
     },
 
     {
-        "value": "Huh? Vi-Vinny? This glow. Those colors. I am not liking this.",
+        "value": "Huh? Vi-vinny? This glow. Those colors. I am not liking this.",
         "character": "James",
         "type": "dialogue"
     },
@@ -17184,7 +17184,7 @@
     },
 
     {
-        "value": "Gi-Give me this!",
+        "value": "Gi-give me this!",
         "character": "James",
         "type": "dialogue"
     },
@@ -17365,7 +17365,7 @@
     },
 
     {
-        "value": "Ra-Rayane? James? This is no good.",
+        "value": "Ra-rayane? James? This is no good.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -17379,7 +17379,7 @@
         "set": {
             "playlistPlay": "tense-mystery"
         },
-        "value": "Vi-Vinny. We need to get out of this cave now! All I can do is try to decrease the energy emitted by our SmartMobies!",
+        "value": "Vi-vinny. We need to get out of this cave now! All I can do is try to decrease the energy emitted by our SmartMobies!",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -18441,7 +18441,7 @@
     },
 
     {
-        "value": "What the fuck is going on here?! Ra-Rayane?!",
+        "value": "What the fuck is going on here?! Ra-rayane?!",
         "character": "James",
         "type": "dialogue"
     },
@@ -19275,7 +19275,7 @@
     },
 
     {
-        "value": "Vi-Vinny?",
+        "value": "Vi-vinny?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -19381,7 +19381,7 @@
     },
 
     {
-        "value": "Ra-Rayane?",
+        "value": "Ra-rayane?",
         "character": "Vinny",
         "type": "think"
     },
@@ -22577,7 +22577,7 @@
     },
 
     {
-        "value": "Ra-Rayane? What are you doing?",
+        "value": "Ra-rayane? What are you doing?",
         "character": "Vinny",
         "type": "dialogue"
     },
