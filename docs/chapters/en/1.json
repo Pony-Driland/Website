@@ -483,7 +483,7 @@
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Vinny?!... of... you... O... ...What's happening?! Vi-vinny! The signal! The service is horrible! N-nooo! Came back here! V-Viiiiiny!"
+        "value": "Vinny?! of... you... Oh... What's happening?! Vi-vinny! The signal! The service is horrible! N-nooo! Came back here! V-Viiiiiny!"
     },
 
     {
@@ -533,7 +533,7 @@
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "What the fuck... What? Am I a horse? ...a pony? I don't know."
+        "value": "What the fuck... What? Am I a horse? A pony? I don't know."
     },
 
     {
@@ -14738,7 +14738,7 @@
     },
 
     {
-        "value": "A-ah? ...HEY! My horn!",
+        "value": "A-ah? HEY! My horn!",
         "character": "James",
         "type": "dialogue"
     },
@@ -19993,7 +19993,7 @@
     },
 
     {
-        "value": "fuck.",
+        "value": "Fuck.",
         "character": "Vinny",
         "type": "think"
     },
