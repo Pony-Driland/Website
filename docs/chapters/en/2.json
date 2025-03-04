@@ -1128,7 +1128,7 @@
     },
 
     {
-        "value": "Oh? T-That feeling. This is getting a little scary. But I think I'm getting what's going on here.",
+        "value": "Oh? Th-that feeling. This is getting a little scary. But I think I'm getting what's going on here.",
         "character": "Vinny",
         "type": "think"
     },
@@ -4845,7 +4845,7 @@
     },
 
     {
-        "value": "Re-Really? Is there a way to hack this? Okay. Can you hack Rayane's heart?",
+        "value": "Re-really? Is there a way to hack this? Okay. Can you hack Rayane's heart?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -5997,7 +5997,7 @@
     },
 
     {
-        "value": "By-bye Vinny and Rayane. G-Good luck.",
+        "value": "By-bye Vinny and Rayane. Go-good luck.",
         "character": "James",
         "type": "dialogue"
     },
@@ -7760,7 +7760,7 @@
     },
 
     {
-        "value": "Re-Really. I'm so sorry about all this.",
+        "value": "Re-really. I'm so sorry about all this.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -16348,7 +16348,7 @@
     },
 
     {
-        "value": "Th-the mysterious Rayane? Ra-rayane is a good pony now? I never understood who she really is. Everyone always scared me when telling stories about her. Bu-but..b-but... I'll try.",
+        "value": "Th-the mysterious Rayane? Ra-rayane is a good pony now? I never understood who she really is. Everyone always scared me when telling stories about her. Bu-but..bu-but... I'll try.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -18336,7 +18336,7 @@
     },
 
     {
-        "value": "W-will she try to kill me? Re-Really?",
+        "value": "W-will she try to kill me? Re-really?",
         "character": "Vinny",
         "type": "think"
     },
