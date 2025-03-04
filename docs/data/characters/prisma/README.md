@@ -4,7 +4,7 @@ mode: 'wiki'
 
 name: 'Prisma (Character WIP)'
 subName: '???'
-cardUrl: '/img/characters/prisma/ref.jpg'
+cardUrl: '/img/characters/prisma/00015-1607304273.png'
 
 charTable_0_0: 'Kind'
 charTable_0_1: 'Unicorn'
@@ -53,5 +53,13 @@ Currently Prisma does not have an official art, keeping only this image generate
 
 But this art is already a concept of how Prisma would be within history.
 
-<img src="/img/characters/prisma/ref.jpg" height="500">
+<img src="/img/characters/prisma/00015-1607304273.png" height="500">
+
+<img src="/img/characters/prisma/old/ref.jpg" height="500">
 <a href="https://tantabus.ai/images/3856" target="_blank">Tantabus Page</a>
+
+### Extra Image
+
+This image just appeared randomly when I was working on AI. So I decided to share here. This image is not considered canonical for now.
+
+<img src="/img/characters/prisma/00007-77629153.png" height="500">
