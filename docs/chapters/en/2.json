@@ -21047,7 +21047,10 @@
     },
 
     {
-        "value": "She wings were very wet and she was wearing a raincoat. It looked like she was wearing a collar with something shiny in the middle of it. Then Vinny was a little scared and then tried to run toward the pony. But she keep running away.",
+        "info": {
+            "Rainbow Queen's Pet collar": "This magical collar features a sleek black band with a silver buckle, fitting snugly around the wearer's neck. The most striking element is the glowing heart-shaped pendant attached to a small translucent ring. The pendant has a soft, radiant gradient of pastel colors, shifting between warm golden hues and delicate rainbow tones. At its center, a golden ankh symbol is embedded, further enhancing its mystical aura. The pendant emits a faint but constant glow, indicating an inherent magical property, possibly related to protection, power, or spiritual connection."
+        },
+        "value": "Her wings were very wet, and she was wearing a raincoat. Around her neck, a sleek black collar with a silver buckle was visible, adorned with a glowing heart-shaped pendant that shimmered in soft rainbow hues. Vinny felt a little scared upon noticing it and then tried to run toward the pony, but she kept running away.",
         "type": "action"
     },
 
