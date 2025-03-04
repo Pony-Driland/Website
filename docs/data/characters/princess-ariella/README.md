@@ -33,7 +33,7 @@ Ariella is currently a mother, her maternal personality greatly contributes to t
 
 She magic is also a reality manipulation skill and its wings can be used to produce fantastic magic in the sky such as manipulating the weather, one of the skills that is also present in Rainbow Queen. She worst fear is losing the things she love the most.
 
-Although Rainbow Queen is a daughter of Princess Ariella, she did not have enough life time with her mother due to the great mysterious event that made Princess Ariella disappear along with the Master SmartMoby which is reported by Hiroshi during his last days of life in the chapter 2.
+Although Rainbow Queen is a daughter of Princess Ariella, she did not have enough life time with her mother due to the great mysterious event that made Princess Ariella disappear along with the Master smartmoby which is reported by Hiroshi during his last days of life in the chapter 2.
 
 <img src="/img/characters/princess-ariella/ref.png" height="500">
 <a href="https://derpibooru.org/images/2682038" target="_blank">Derpibooru Page</a>

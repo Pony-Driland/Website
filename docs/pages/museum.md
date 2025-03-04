@@ -28,13 +28,13 @@ As strange as it sounds, this was an extension for Google Chrome as the idea was
 
 ### Game stuff that were brought to fic
 
-All the initial concept about SmartMoby and the Master SmartMoby was started in this game, and there are images in this folder about how that device would be.
+All the initial concept about smartmoby and the Master smartmoby was started in this game, and there are images in this folder about how that device would be.
 
 The first version of the device was to be Pip-Boy more compacted as a Smart Clock, but the idea was changing over time, as it would be very uncomfortable for the characters to have a device in their arms that stays practically for all eternity using it. The game was literally played in real time, there was no pause, and if you ignored the game, you would be penalized, as the game knew how long you got inactive without playing.
 
 The game had health bars that decreased at a speed of hours for the bar to become empty. If you remember when I commented that the game was initially created to be an offline NeoPets, this is where you will now understand why these health bars worked this way.
 
-The idea of this game would be you being a person who mysteriously discovers the extension of the Google Chrome, and this extension has the power to transport you to the dimension of Pony Driland, where the entire original story of the fic happens. This concept was kept on the fic, just by changing the Google Chrome extension for the idea that you find SmartMoby in real life that basically does the same thing. In the original game when you install the extension, you also find SmartMoby for the first time. The idea is to get confused about what the extension is and click the button to start the game to start your journey, which is exactly what happens at the beginning of the original fic story.
+The idea of this game would be you being a person who mysteriously discovers the extension of the Google Chrome, and this extension has the power to transport you to the dimension of Pony Driland, where the entire original story of the fic happens. This concept was kept on the fic, just by changing the Google Chrome extension for the idea that you find smartmoby in real life that basically does the same thing. In the original game when you install the extension, you also find smartmoby for the first time. The idea is to get confused about what the extension is and click the button to start the game to start your journey, which is exactly what happens at the beginning of the original fic story.
 
 This is the main justification that the characters Vinny and Yasmin are alternative versions of real people, following precisely this principle that was created in the original idea of the game Pony Adventures.
 
