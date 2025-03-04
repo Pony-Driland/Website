@@ -12,7 +12,7 @@
     },
 
     {
-        "value": "N-Nooo, no, I still don't want to ride you, you... you... you promised me... you'd let me...",
+        "value": "N-nooo, no, I still don't want to ride you, you... you... you promised me... you'd let me...",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -23,7 +23,7 @@
     },
 
     {
-        "value": "N-No no... A-ah.",
+        "value": "N-no no... A-ah.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -167,7 +167,7 @@
   }, 
 
   {
-    "value": "Y-Yeah! He must be under a lot of pressure.",
+    "value": "Y-yeah! He must be under a lot of pressure.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -653,7 +653,7 @@
   }, 
 
   {
-    "value": "Y-Yeah? Good morning!",
+    "value": "Y-yeah? Good morning!",
     "character": "Jeff",
     "type": "dialogue"
   }, 
@@ -2090,7 +2090,7 @@
   }, 
   
   {
-    "value": "T-The sleep? N-No! My magic!",
+    "value": "Th-the sleep? N-no! My magic!",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -2321,7 +2321,7 @@
   }, 
 
   {
-    "value": "Y-Yeah. Okay. Come on... let's save her.",
+    "value": "Y-yeah. Okay. Come on... let's save her.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -2476,7 +2476,7 @@
   }, 
 
   {
-    "value": "Y-Yeah! And... what's in this street fair?",
+    "value": "Y-yeah! And... what's in this street fair?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -2914,7 +2914,7 @@
   }, 
 
   {
-    "value": "N-No! No no no no... came back here!",
+    "value": "N-no! No no no no... came back here!",
     "character": "Vinny",
     "type": "think"
   }, 
@@ -2982,7 +2982,7 @@
   }, 
 
   {
-    "value": "Y-Yeah! Baby... I swear I don't know who this Rayane is. I don't know what it is I swear.",
+    "value": "Y-yeah! Baby... I swear I don't know who this Rayane is. I don't know what it is I swear.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -3313,7 +3313,7 @@
   }, 
 
   {
-    "value": "Ah? Reality? Y-Yeah! Yes yes!",
+    "value": "Ah? Reality? Y-yeah! Yes yes!",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -3684,7 +3684,7 @@
   },
 
   {
-    "value": "A-ah? N-No! No no! Please! Keep your distance! I-I don't want trouble with anyone! Leave me alone!",
+    "value": "A-ah? N-no! No no! Please! Keep your distance! I-I don't want trouble with anyone! Leave me alone!",
     "character": "Amy",
     "type": "dialogue"
   }, 
@@ -4056,7 +4056,7 @@
   }, 
 
   {
-    "value": "A-ah! Y-Yeah. Yeah... yes and no. if I wanted to pass this message on to Rain, it would be from me, a supposed pony monster, now if Amy asks something, if she wants to do something, Rain will ask and... going until she gets to us. Anyway this is plan A, get help from Amy or Rain. The plan B is the one I'm going to talk to James now, but I need you to keep the radio here.",
+    "value": "A-ah! Y-yeah. Yeah... yes and no. if I wanted to pass this message on to Rain, it would be from me, a supposed pony monster, now if Amy asks something, if she wants to do something, Rain will ask and... going until she gets to us. Anyway this is plan A, get help from Amy or Rain. The plan B is the one I'm going to talk to James now, but I need you to keep the radio here.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -4607,7 +4607,7 @@
   },
 
   {
-    "value": "C-Calm down. Sorry. I'll do something for you. I will give you the greatest honor. I appreciate the 100 bits, but I can survive. Alright?",
+    "value": "Ca-calm down. Sorry. I'll do something for you. I will give you the greatest honor. I appreciate the 100 bits, but I can survive. Alright?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -4669,7 +4669,7 @@
   }, 
 
   {
-    "value": "T-this... This is so embarrassing! This is... is... for... ARGH! F..Fine. Rayane must have told you what this little red bow is about!",
+    "value": "Th-this... This is so embarrassing! This is... is... for... ARGH! F..Fine. Rayane must have told you what this little red bow is about!",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -4765,7 +4765,7 @@
   }, 
 
   {
-    "value": "Ra-Rainbow Queen pony? N-No no no! REALLY?! T-The goddess? Are you serious?!?!",
+    "value": "Ra-Rainbow Queen pony? N-no no no! REALLY?! Th-the goddess? Are you serious?!?!",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -4984,7 +4984,7 @@
   }, 
 
   {
-    "value": "Rayane saving you? T-this is all very new to me. I've never heard anyone tell this kind of story. Yes... She knows Pony Driland all over. She always seems to have some privileged contact with some important pony.",
+    "value": "Rayane saving you? Th-this is all very new to me. I've never heard anyone tell this kind of story. Yes... She knows Pony Driland all over. She always seems to have some privileged contact with some important pony.",
     "character": "Salespony",
     "type": "dialogue"
   }, 
@@ -5228,7 +5228,7 @@
   },
 
   {
-    "value": "H-hello?",
+    "value": "He-hello?",
     "character": "Vinny",
     "type": "dialogue"
   },
@@ -6415,7 +6415,7 @@
   }, 
 
   {
-    "value": "H-hello? Yes doctor... I have Vinny here, he has no password and needs special permission to enter because of an urgent matter.",
+    "value": "He-hello? Yes doctor... I have Vinny here, he has no password and needs special permission to enter because of an urgent matter.",
     "character": "Hospital Attendant",
     "type": "dialogue"
   }, 
@@ -6426,7 +6426,7 @@
   }, 
 
   {
-    "value": "Y-Yeah... he said he knows Amy... Ask Amy if she can use her special authorization to let Vinny in. Hm? Alright then. Thanks.",
+    "value": "Y-yeah... he said he knows Amy... Ask Amy if she can use her special authorization to let Vinny in. Hm? Alright then. Thanks.",
     "character": "Hospital Attendant",
     "type": "dialogue"
   }, 
@@ -6713,7 +6713,7 @@
   }, 
 
   {
-    "value": "T-this... oh no... Calm down, I know how we're going to get into this. Trust me Vinny, I don't have time to say what's going to happen now.",
+    "value": "Th-this... oh no... Calm down, I know how we're going to get into this. Trust me Vinny, I don't have time to say what's going to happen now.",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -6859,7 +6859,7 @@
   }, 
 
   {
-    "value": "Y-Yeah. Yes... feeling pain. Well! Okay!",
+    "value": "Y-yeah. Yes... feeling pain. Well! Okay!",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -6987,7 +6987,7 @@
   }, 
 
   {
-    "value": "Y-Yeah... calm down everyone... Hello to you two... How long have you been here?",
+    "value": "Y-yeah... calm down everyone... Hello to you two... How long have you been here?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -7071,7 +7071,7 @@
   }, 
 
   {
-    "value": "T-the collar!",
+    "value": "Th-the collar!",
     "character": "Vinny",
     "type": "think"
   }, 
@@ -7135,7 +7135,7 @@
   }, 
 
   {
-    "value": "H-Huh? Are you Ivy's sister? How?",
+    "value": "H-huh? Are you Ivy's sister? How?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -7262,7 +7262,7 @@
   }, 
 
   {
-    "value": "N-No! I can't abandon my master and my other friend. My master also loves me a lot along with my friend, it would be very unfair of me to simply abandon the one who took care of me with so much affection. She always gives me all the love she has for me. She's a giant evil Sphinx who has a way of taking care of me, our silly fantasies. is what makes me feel less afraid of the monstrosities of this world.",
+    "value": "N-no! I can't abandon my master and my other friend. My master also loves me a lot along with my friend, it would be very unfair of me to simply abandon the one who took care of me with so much affection. She always gives me all the love she has for me. She's a giant evil Sphinx who has a way of taking care of me, our silly fantasies. is what makes me feel less afraid of the monstrosities of this world.",
     "character": "Amy",
     "type": "dialogue"
   }, 
@@ -7514,7 +7514,7 @@
   }, 
 
   {
-    "value": "Y-Yeah. But Ivy... the decision is still yours. Do you remember how you got here? Maybe knowing how you got here, remembering something that will help you something.",
+    "value": "Y-yeah. But Ivy... the decision is still yours. Do you remember how you got here? Maybe knowing how you got here, remembering something that will help you something.",
     "character": "Vinny",
     "type": "dialogue"
   },
@@ -8692,7 +8692,7 @@
   },
 
   {
-    "value": "Y-Yeah! You can understand that all this is as if Rayane were a younger sister who gets into various problems and wants to do whatever she wants while you are the oldest and most responsible here.",
+    "value": "Y-yeah! You can understand that all this is as if Rayane were a younger sister who gets into various problems and wants to do whatever she wants while you are the oldest and most responsible here.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -8953,7 +8953,7 @@
   }, 
 
   {
-    "value": "Vi-vinny? What's happening? T-This all... seems like a dream.",
+    "value": "Vi-vinny? What's happening? Th-this all... seems like a dream.",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -9256,7 +9256,7 @@
   }, 
 
   {
-    "value": "WHAT?! T-This is cheating!",
+    "value": "WHAT?! Th-this is cheating!",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -9414,7 +9414,7 @@
   }, 
 
   {
-    "value": "T-This goddess is crazy. Look what I'm getting into!",
+    "value": "Th-this goddess is crazy. Look what I'm getting into!",
     "character": "Vinny",
     "type": "think"
   }, 
@@ -9630,7 +9630,7 @@
   }, 
 
   {
-    "value": "Y-Yeah...I...",
+    "value": "Y-yeah...I...",
     "character": "Vinny",
     "type": "dialogue"
   },
@@ -10114,7 +10114,7 @@
   }, 
 
   {
-    "value": "Y-Yeah. I made a deal where Rainbow Queen gave life back to Ivy. But I need to get her a pet, and if I fail... she stays with my friend from my planet... in short, she lets me convince anyone at any cost. A pony that is already in contact, a pony that wants to kill itself. In the right conversation I can. But... this pony don't want to have a new life  for being a pet of a goddess.",
+    "value": "Y-yeah. I made a deal where Rainbow Queen gave life back to Ivy. But I need to get her a pet, and if I fail... she stays with my friend from my planet... in short, she lets me convince anyone at any cost. A pony that is already in contact, a pony that wants to kill itself. In the right conversation I can. But... this pony don't want to have a new life  for being a pet of a goddess.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -10490,7 +10490,7 @@
   }, 
 
   {
-    "value": "Y-Yeah. Yes...y-yes... Ah?",
+    "value": "Y-yeah. Yes...y-yes... Ah?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -10584,7 +10584,7 @@
     "set": {
       "playlistPlay": "sad"
     },
-    "value": "A-aah? T-This is you? Jasmin?",
+    "value": "A-aah? Th-this is you? Jasmin?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -10662,7 +10662,7 @@
   }, 
 
   {
-    "value": "N-No... no way... It can't be true. Yes... Rainbow Queen really has this ability from master smartmoby.",
+    "value": "N-no... no way... It can't be true. Yes... Rainbow Queen really has this ability from master smartmoby.",
     "character": "James",
     "type": "think"
   }, 
@@ -10931,7 +10931,7 @@
   }, 
 
   {
-    "value": "Wait... I... I... I'm a real girl now? Pony girl? Am I no longer trans girl? Oh...",
+    "value": "Wait... I-I I'm a real girl now? Pony girl? Am I no longer trans girl? Oh...",
     "character": "Yasmin",
     "type": "think"
   }, 
@@ -11291,7 +11291,7 @@
   }, 
 
   {
-    "value": "Y-Yeah! Anyway, do you know what wings open to the maximum mean?",
+    "value": "Y-yeah! Anyway, do you know what wings open to the maximum mean?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -12138,7 +12138,7 @@
   },
 
   {
-    "value": "Y-Yeah! and...",
+    "value": "Y-yeah! and...",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -12367,7 +12367,7 @@
   }, 
 
   {
-    "value": "T-The agreement? Ye-yes. I was exactly afraid of your agreements with Rain. And... I wanted to know what you and Rain were talking about. But... Wait... what?! A new pet?!",
+    "value": "Th-the agreement? Ye-yes. I was exactly afraid of your agreements with Rain. And... I wanted to know what you and Rain were talking about. But... Wait... what?! A new pet?!",
     "character": "Rayane",
     "type": "dialogue"
   },
@@ -12917,7 +12917,7 @@
   }, 
 
   {
-    "value": "Y-Yeah! Remember our first encounter in the cave? When Rainbow was together with the other pony. I have my slight impression that once again leads to Elite Color... What is it like to become a Elite Color member? Are ponies born there? Or anyone can join? Anyway this information was inside the tablet? So Hiroshi knew all this? Was there anything else on the tablets??",
+    "value": "Y-yeah! Remember our first encounter in the cave? When Rainbow was together with the other pony. I have my slight impression that once again leads to Elite Color... What is it like to become a Elite Color member? Are ponies born there? Or anyone can join? Anyway this information was inside the tablet? So Hiroshi knew all this? Was there anything else on the tablets??",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -12946,7 +12946,7 @@
   },
 
   {
-    "value": "Y-Yeah! He spoke but I forgot... he was very old, living his normal life and still lived another 100 years. What do you think about Royal color? Why does everything have color in the name?",
+    "value": "Y-yeah! He spoke but I forgot... he was very old, living his normal life and still lived another 100 years. What do you think about Royal color? Why does everything have color in the name?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -13025,7 +13025,7 @@
   }, 
 
   {
-    "value": "Ah... T-this is too dangerous for me. I don't know what that collar does. What if she decides to move on her own? We don't know what the Rainbow Queen can do through it. I don't want to risk touching it and doing something unintentionally while I extract energy.",
+    "value": "Ah... Th-this is too dangerous for me. I don't know what that collar does. What if she decides to move on her own? We don't know what the Rainbow Queen can do through it. I don't want to risk touching it and doing something unintentionally while I extract energy.",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -13197,7 +13197,7 @@
   }, 
   
   {
-    "value": "Y-Yeah... Thank you.",
+    "value": "Y-yeah... Thank you.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -13517,7 +13517,7 @@
   }, 
 
   {
-    "value": "Y-Yeah! Me and Ivy spent a lot of time talking after we reminisced about having met before. It was very wonderful to know that we met again. It's the only good thing that happened in our life in the last few days.",
+    "value": "Y-yeah! Me and Ivy spent a lot of time talking after we reminisced about having met before. It was very wonderful to know that we met again. It's the only good thing that happened in our life in the last few days.",
     "character": "Wagner",
     "type": "dialogue"
   }, 
@@ -13929,7 +13929,7 @@
   }, 
 
   {
-    "value": "Y-Yeah! It's time for my request. Hihi! Rayane? Are you ready?",
+    "value": "Y-yeah! It's time for my request. Hihi! Rayane? Are you ready?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -14132,7 +14132,7 @@
   }, 
 
   {
-    "value": "N-No Mr Vinny... I don't need new friends, you've helped me a lot for today.",
+    "value": "N-no Mr Vinny... I don't need new friends, you've helped me a lot for today.",
     "character": "Amy",
     "type": "dialogue"
   }, 
@@ -14471,7 +14471,7 @@
   }, 
 
   {
-    "value": "N-No! No no... that's not such a bad thing, I thought about that hypothesis, ok but I'm going to go inside and tell Amy to turn Yasmin into a pet then, to make sure everything is ok? I thought it was something more serious that it didn't go beyond two ones. I'll be right back I'll talk to two ones before Amy leaves, okay? Wait for me here it will be quick.",
+    "value": "N-no! No no... that's not such a bad thing, I thought about that hypothesis, ok but I'm going to go inside and tell Amy to turn Yasmin into a pet then, to make sure everything is ok? I thought it was something more serious that it didn't go beyond two ones. I'll be right back I'll talk to two ones before Amy leaves, okay? Wait for me here it will be quick.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -16004,7 +16004,7 @@
   }, 
 
   {
-    "value": "Omnipresence? Y-Yeah! By the way, whoever finds you cute and fluffy with that little bow, is a good pony to be a pet, like that. But I'm tired of choosing... tonight I'm all yours, whatever you say I'll obey and do, if you want to go see the gypsy, let's see the gypsy, if you want to look for a pet, let's see the pet, if you just want to go for a walk and if you're lucky we found a ghost let's go for a walk.",
+    "value": "Omnipresence? Y-yeah! By the way, whoever finds you cute and fluffy with that little bow, is a good pony to be a pet, like that. But I'm tired of choosing... tonight I'm all yours, whatever you say I'll obey and do, if you want to go see the gypsy, let's see the gypsy, if you want to look for a pet, let's see the pet, if you just want to go for a walk and if you're lucky we found a ghost let's go for a walk.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -17192,7 +17192,7 @@
   }, 
 
   {
-    "value": "Y-Yeah! This doesn't smell good, I told Amy to ask Rain if I had pretty eyes... this was all before I knew I shit everything, but I don't know... I feel like now, after all, Rain she's closer to me, she even came out chuckling, not evil, seeing the joke she made me go through.",
+    "value": "Y-yeah! This doesn't smell good, I told Amy to ask Rain if I had pretty eyes... this was all before I knew I shit everything, but I don't know... I feel like now, after all, Rain she's closer to me, she even came out chuckling, not evil, seeing the joke she made me go through.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -17599,7 +17599,7 @@
   }, 
 
   {
-    "value": "N-No! Stop! Are you doing?!",
+    "value": "N-no! Stop! Are you doing?!",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -17622,7 +17622,7 @@
   }, 
 
   {
-    "value": "N-No! Vinny!",
+    "value": "N-no! Vinny!",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -17736,7 +17736,7 @@
   }, 
 
   {
-    "value": "N-No! Rayane, that's enough, it's over for me, another pony will always appear that will need your help, I ended up here, I have no more reason to stay here.",
+    "value": "N-no! Rayane, that's enough, it's over for me, another pony will always appear that will need your help, I ended up here, I have no more reason to stay here.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -19465,7 +19465,7 @@
   }, 
 
   {
-    "value": "N-No... no! Jasmin!",
+    "value": "N-no... no! Jasmin!",
     "character": "Vinny",
     "type": "think"
   },
@@ -19918,7 +19918,7 @@
   }, 
 
   {
-    "value": "Calm down? C-Calm down... What is this magic? Vi-vinny? What am I becoming? What is it again? Am I alive?",
+    "value": "Calm down? Ca-calm down... What is this magic? Vi-vinny? What am I becoming? What is it again? Am I alive?",
     "character": "Yasmin",
     "type": "dialogue"
   }, 
@@ -20811,7 +20811,7 @@
   },
 
   {
-    "value": "M-master? Did you really swallow Yasmin whole?",
+    "value": "Ma-master? Did you really swallow Yasmin whole?",
     "character": "Amy",
     "type": "dialogue"
   },
@@ -22356,7 +22356,7 @@
   },
 
   {
-    "value": "Y-Yeah... I was going to see her practicing her flying lessons, Amy can invite me to see Yasmin's flying lessons at Rainbow Queen's house. As much as the time there is different, what about the ghost?",
+    "value": "Y-yeah... I was going to see her practicing her flying lessons, Amy can invite me to see Yasmin's flying lessons at Rainbow Queen's house. As much as the time there is different, what about the ghost?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -22431,7 +22431,7 @@
   }, 
 
   {
-    "value": "A-amy? N-No! No... Please don't look at me like this. Look... It's not you. Don't you see? This isn't my place.",
+    "value": "A-amy? N-no! No... Please don't look at me like this. Look... It's not you. Don't you see? This isn't my place.",
     "character": "Aniya",
     "flashback": true,
     "type": "dialogue"
@@ -23776,7 +23776,7 @@
   }, 
 
   {
-    "value": "Y-Yeah! Yeah, that's fine, you have my support, but Amy... don't forget my words I've said to you now and before. Our last night talk about Jasmin.",
+    "value": "Y-yeah! Yeah, that's fine, you have my support, but Amy... don't forget my words I've said to you now and before. Our last night talk about Jasmin.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -24410,7 +24410,7 @@
   }, 
 
   {
-    "value": "N-No! No temporal energies yet! I-I...!",
+    "value": "N-no! No temporal energies yet! I-I...!",
     "character": "Aniya",
     "type": "dialogue"
   }, 
@@ -24691,7 +24691,7 @@
   }, 
 
   {
-    "value": "H-hello? So-sorry! Did you're Amy's sister? Hi...",
+    "value": "He-hello? So-sorry! Did you're Amy's sister? Hi...",
     "character": "Aniya",
     "type": "dialogue"
   }, 
@@ -25708,7 +25708,7 @@
   },
 
   {
-    "value": "Y-Yeah... yeah... But... thank you very much, not for the cell phone, or for helping us, but for being by my side, if you need anything, anything at all, you can tell me, if you need me to get something for you, and everything else, just ask. Alright?",
+    "value": "Y-yeah... yeah... But... thank you very much, not for the cell phone, or for helping us, but for being by my side, if you need anything, anything at all, you can tell me, if you need me to get something for you, and everything else, just ask. Alright?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -26434,7 +26434,7 @@
   },  
 
   {
-    "value": "M-master?",
+    "value": "Ma-master?",
     "character": "Amy",
     "type": "dialogue"
   }, 
@@ -26610,7 +26610,7 @@
   },  
 
   {
-    "value": "M-Master... calm down... Please...",
+    "value": "Ma-master... calm down... Please...",
     "character": "Amy",
     "type": "dialogue"
   }, 
@@ -26993,7 +26993,7 @@
   }, 
 
   {
-    "value": "Y-Yeah! Well, the ghost buddy wants you, not me, but I'll try to stay close to you, what are we going to do now? Are we going now or are we going later?",
+    "value": "Y-yeah! Well, the ghost buddy wants you, not me, but I'll try to stay close to you, what are we going to do now? Are we going now or are we going later?",
     "character": "Vinny",
     "type": "dialogue"
   }, 

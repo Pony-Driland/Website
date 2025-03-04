@@ -398,7 +398,7 @@
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "N-Noo! My house! What's in this crap?"
+        "value": "N-noo! My house! What's in this crap?"
     },
 
     {
@@ -483,7 +483,7 @@
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Vinny?!... of... you... O... ...What's happening?! Vi-vinny! The signal! The service is horrible! N-Nooo! Came back here! V-Viiiiiny!"
+        "value": "Vinny?!... of... you... O... ...What's happening?! Vi-vinny! The signal! The service is horrible! N-nooo! Came back here! V-Viiiiiny!"
     },
 
     {
@@ -5204,7 +5204,7 @@
     },
 
     {
-        "value": "WHAT?! N-No! N-Noooo! SORRY! AAAH! VINNY! HELP ME!",
+        "value": "WHAT?! N-no! N-noooo! SORRY! AAAH! VINNY! HELP ME!",
         "character": "James",
         "type": "dialogue"
     },
@@ -5700,7 +5700,7 @@
     },
 
     {
-        "value": "Is this true? T-the true? My God.",
+        "value": "Is this true? Th-the true? My God.",
         "character": "Vinny",
         "type": "think"
     },
@@ -6902,7 +6902,7 @@
     },
 
     {
-        "value": "What? Ba-banana? ZzzZzZz... N-No! Alien bananas trying to invade my planet! I WILL CALL THE PLANETARY GENERAL! DON'T LET THEM IN! I WILL CALL FOR REINFORCEMENT!",
+        "value": "What? Ba-banana? ZzzZzZz... N-no! Alien bananas trying to invade my planet! I WILL CALL THE PLANETARY GENERAL! DON'T LET THEM IN! I WILL CALL FOR REINFORCEMENT!",
         "character": "James",
         "type": "dialogue"
     },
@@ -11919,7 +11919,7 @@
     },
 
     {
-        "value": "Ye-yes yes. I understood perfectly, completely perfectly understood. T-The food is already on the table.",
+        "value": "Ye-yes yes. I understood perfectly, completely perfectly understood. Th-the food is already on the table.",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -14362,7 +14362,7 @@
     },
 
     {
-        "value": "N-No! Vinny! Stop! She is the princess of a particular planet in my dimension!",
+        "value": "N-no! Vinny! Stop! She is the princess of a particular planet in my dimension!",
         "character": "James",
         "type": "dialogue"
     },
@@ -16751,7 +16751,7 @@
     },
 
     {
-        "value": "Please! Rainbow Queen! N-Noo! Give me a second chance! I can still try to find your precious item!",
+        "value": "Please! Rainbow Queen! N-noo! Give me a second chance! I can still try to find your precious item!",
         "character": "Female Unicorn",
         "type": "dialogue"
     },
@@ -16776,7 +16776,7 @@
     },
 
     {
-        "value": "N-No Rainbow Queen! Stop! Just stop!",
+        "value": "N-no Rainbow Queen! Stop! Just stop!",
         "character": "Female Unicorn",
         "type": "dialogue"
     },
@@ -16814,7 +16814,7 @@
     },
 
     {
-        "value": "N-No! Impossible! How did you do that?!",
+        "value": "N-no! Impossible! How did you do that?!",
         "character": "Female Unicorn",
         "type": "dialogue"
     },
@@ -18075,7 +18075,7 @@
     },
 
     {
-        "value": "N-No! She didn't leave any gaps between the stones. I can't use teleport if I don't have at least one hole for my magic to pull us to the other side!",
+        "value": "N-no! She didn't leave any gaps between the stones. I can't use teleport if I don't have at least one hole for my magic to pull us to the other side!",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -21053,7 +21053,7 @@
     },
 
     {
-        "value": "Y-Yeah.",
+        "value": "Y-yeah.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -21731,7 +21731,7 @@
     },
 
     {
-        "value": "Y-Yeah.",
+        "value": "Y-yeah.",
         "character": "Vinny",
         "type": "dialogue"
     },
