@@ -824,7 +824,7 @@
     },
 
     {
-        "value": "O-oh god. This looks a lot worse than I imagined. R-Rayane? Holy crap! Rayane!",
+        "value": "O-oh god. This looks a lot worse than I imagined. Ra-Rayane? Holy crap! Rayane!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -915,7 +915,7 @@
     },
 
     {
-        "value": "R-Rayane? H-hello? R-Rayane?",
+        "value": "Ra-Rayane? Hello? Rayane?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -929,7 +929,7 @@
         "set": {
             "playlistPlay": "dark-ambient-melodies"
         },
-        "value": "Hello? R-Rayane? Somebody?",
+        "value": "Hello? Ra-Rayane? Somebody?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -940,7 +940,7 @@
     },
 
     {
-        "value": "N-Nooo! R-Rayane? RAYANE!",
+        "value": "N-Nooo! Ra-Rayane? RAYANE!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -987,7 +987,7 @@
     },
 
     {
-        "value": "R-Rayane. Don't worry, you can rest here, I'll take care of you and the other one here. Stay here while I go check out what happened. Okay?",
+        "value": "Ra-Rayane. Don't worry, you can rest here, I'll take care of you and the other one here. Stay here while I go check out what happened. Okay?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -1012,7 +1012,7 @@
         "set": {
             "playEffect": { "file": "nuke-1", "enabled": false }
         },
-        "value": "R-Rayane. It's gonna be okay. I promise.",
+        "value": "Ra-Rayane. It's gonna be okay. I promise.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -1434,7 +1434,7 @@
     },
 
     {
-        "value": "R-Rayane?",
+        "value": "Ra-Rayane?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -1555,7 +1555,7 @@
     },
 
     {
-        "value": "R-Rain? You really came back...? I-I...",
+        "value": "Ra-Rain? You really came back...? I-I...",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -2185,7 +2185,7 @@
     },
 
     {
-        "value": "N-no... the... the explosion... the... the prophecy... of... R-Rainbow... R-Raaaaainbow...",
+        "value": "N-no... the... the explosion... the... the prophecy... of... Ra-Rainbow... Ra-Raaaaainbow...",
         "character": "Wagner",
         "type": "dialogue"
     },
@@ -2926,7 +2926,7 @@
     },
 
     {
-        "value": "The prophecy? R-Rain created this prophecy just as a warning. She knows that a discord between the two regions will be total destruction.",
+        "value": "The prophecy? Ra-Rain created this prophecy just as a warning. She knows that a discord between the two regions will be total destruction.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -3496,7 +3496,7 @@
     },
 
     {
-        "value": "R-Rainbow Queen?! Wait... Rain? Rainbow? Rainbow Queen? What?!",
+        "value": "Ra-Rainbow Queen?! Wait... Rain? Rainbow? Rainbow Queen? What?!",
         "character": "Vinny",
         "type": "think"
     },
@@ -4845,7 +4845,7 @@
     },
 
     {
-        "value": "R-Really? Is there a way to hack this? Okay. Can you hack Rayane's heart?",
+        "value": "Re-Really? Is there a way to hack this? Okay. Can you hack Rayane's heart?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -6236,7 +6236,7 @@
     },
 
     {
-        "value": "Oh? Rayane? R-Rayane! What kind of joke is this? Hiroshi never informed me that she would be accompanied by someone.",
+        "value": "Oh? Rayane? Ra-Rayane! What kind of joke is this? Hiroshi never informed me that she would be accompanied by someone.",
         "character": "Guard",
         "type": "dialogue"
     },
@@ -6484,7 +6484,7 @@
     },
 
     {
-        "value": "Huh? R-Rayane? What are you doing?",
+        "value": "Huh? Ra-Rayane? What are you doing?",
         "character": "Guard 2",
         "type": "dialogue"
     },
@@ -6513,7 +6513,7 @@
     },
 
     {
-        "value": "R-Rayane? Did you find something?",
+        "value": "Ra-Rayane? Did you find something?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -6530,7 +6530,7 @@
     },
 
     {
-        "value": "R-Rayane... This is confidential. Are you sure you know what you're doing? If you miss the password 3 times, all alarms will be triggered.",
+        "value": "Ra-Rayane... This is confidential. Are you sure you know what you're doing? If you miss the password 3 times, all alarms will be triggered.",
         "character": "Guard 1",
         "type": "dialogue"
     },
@@ -6959,7 +6959,7 @@
     },
 
     {
-        "value": "R-Rayane? Don't you want a megaphone to let everyone know we're here?",
+        "value": "Ra-Rayane? Don't you want a megaphone to let everyone know we're here?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -7524,7 +7524,7 @@
     },
     
     {
-        "value": "R-Rayane! You rock!",
+        "value": "Ra-Rayane! You rock!",
         "character": "Guard 2",
         "type": "dialogue"
     },
@@ -7760,7 +7760,7 @@
     },
 
     {
-        "value": "R-Really. I'm so sorry about all this.",
+        "value": "Re-Really. I'm so sorry about all this.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -7849,7 +7849,7 @@
     },
 
     {
-        "value": "T-thank... you... and... and Rayane... R-Ra...",
+        "value": "T-thank... you... and... and Rayane... Ra...",
         "character": "Unicorn Soldier",
         "type": "dialogue"
     },
@@ -8862,7 +8862,7 @@
     },
 
     {
-        "value": "R-Rayane? This sound is very strange. And it's also very relaxing. What can this be? Are you feeling something?",
+        "value": "Ra-Rayane? This sound is very strange. And it's also very relaxing. What can this be? Are you feeling something?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -8907,7 +8907,7 @@
     },
 
     {
-        "value": "R-Rayane? Remember when you made my smartmoby weak? H-help me...",
+        "value": "Ra-Rayane? Remember when you made my smartmoby weak? H-help me...",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -11014,13 +11014,13 @@
     },
 
     {
-        "value": "R-Rainbow Queen?!",
+        "value": "Ra-Rainbow Queen?!",
         "character": "Rowan",
         "type": "dialogue"
     },
 
     {
-        "value": "R-Rainbow Queen?!",
+        "value": "Ra-Rainbow Queen?!",
         "character": "Kai",
         "type": "dialogue"
     },
@@ -11133,7 +11133,7 @@
     },
 
     {
-        "value": "R-Rayane? This is the same magic... Rainbow Queen has used this spell on me over 100 years ago. A-Are you hiding something very special?",
+        "value": "Ra-Rayane? This is the same magic... Rainbow Queen has used this spell on me over 100 years ago. A-Are you hiding something very special?",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -12469,7 +12469,7 @@
 
 
     {
-        "value": "R-Rayane? Can you borrow the armor back please? Heh. This armor must still smell like you.",
+        "value": "Ra-Rayane? Can you borrow the armor back please? Heh. This armor must still smell like you.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -13514,7 +13514,7 @@
     },
 
     {
-        "value": "R-Radar?",
+        "value": "Ra-Radar?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -15547,7 +15547,7 @@
     },
 
     {
-        "value": "R-Rayane... So can you help me?",
+        "value": "Ra-Rayane... So can you help me?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -15770,7 +15770,7 @@
     },
 
     {
-        "value": "R-Royal Color?",
+        "value": "Ro-Royal Color?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -15843,7 +15843,7 @@
     },
 
     {
-        "value": "R-Rain? T-This is you?",
+        "value": "Ra-Rain? T-This is you?",
         "character": "Rayane",
         "type": "think"
     },
@@ -15876,7 +15876,7 @@
     },
 
     {
-        "value": "W-well... I still don't understand what happened to Marlon and Kai. I-I need to finish calming down first. We can talk better about this later. I'm not feeling well enough to worry about Rain right now. R-Rain..a-and the Master Smartmoby...",
+        "value": "W-well... I still don't understand what happened to Marlon and Kai. I-I need to finish calming down first. We can talk better about this later. I'm not feeling well enough to worry about Rain right now. Ra-Rain..a-and the Master Smartmoby...",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -15898,7 +15898,7 @@
     },
 
     {
-        "value": "R-Rayane? Ok ok... Calm down, you are getting the same tattoos as your friend. You have the same tattoos as hers, the part of the Master Smartmoby interacts with you too.",
+        "value": "Ra-Rayane? Ok ok... Calm down, you are getting the same tattoos as your friend. You have the same tattoos as hers, the part of the Master Smartmoby interacts with you too.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -16348,7 +16348,7 @@
     },
 
     {
-        "value": "T-The mysterious Rayane? R-Rayane is a good pony now? I never understood who she really is. Everyone always scared me when telling stories about her. B-but..b-but... I'll try.",
+        "value": "T-The mysterious Rayane? Ra-Rayane is a good pony now? I never understood who she really is. Everyone always scared me when telling stories about her. B-but..b-but... I'll try.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -17909,7 +17909,7 @@
     },
 
     {
-        "value": "R-ROWAN!",
+        "value": "RO-ROWAN!",
         "character": "Vinny",
         "type": "think"
     },
@@ -18223,7 +18223,7 @@
     },
 
     {
-        "value": "R-Rayane! Thank you! But the crazy commander is going to drain all Vinny's energy!",
+        "value": "Ra-Rayane! Thank you! But the crazy commander is going to drain all Vinny's energy!",
         "character": "Rowan",
         "type": "dialogue"
     },
@@ -18336,7 +18336,7 @@
     },
 
     {
-        "value": "W-Wl she try to kill me? R-Really?",
+        "value": "W-Wl she try to kill me? Re-Really?",
         "character": "Vinny",
         "type": "think"
     },
@@ -18387,7 +18387,7 @@
     },
 
     {
-        "value": "W-What fuck?! R-Rayane?!",
+        "value": "W-What fuck?! Ra-Rayane?!",
         "character": "Prisma",
         "type": "dialogue"
     },
@@ -18493,7 +18493,7 @@
     },
 
     {
-        "value": "B-bachelor party? A-are you doing? Wait! R-Rayane here too?! You are very hurt! You will have to be very careful!",
+        "value": "B-bachelor party? A-are you doing? Wait! Ra-Rayane here too?! You are very hurt! You will have to be very careful!",
         "character": "Kai",
         "type": "dialogue"
     },
@@ -18696,7 +18696,7 @@
     },
 
     {
-        "value": "Oh... R-Raynae?! CALM DOWN!",
+        "value": "Oh... Ra-Raynae?! CALM DOWN!",
         "character": "Prisma",
         "type": "dialogue"
     },
@@ -18710,7 +18710,7 @@
         "set": {
             "playEffect": { "file": "onderwish-emergency", "enabled": false }
         },
-        "value": "R-Rayane! M-My Rainbow! Rayane will kill her!!",
+        "value": "Ra-Rayane! M-My Rainbow! Rayane will kill her!!",
         "character": "Kai",
         "type": "dialogue"
     },
@@ -19870,7 +19870,7 @@
     },
 
     {
-        "value": "R-Rowan! oh my Rainbow! Are you alive!",
+        "value": "Ro-Rowan! oh my Rainbow! Are you alive!",
         "character": "Kai",
         "type": "dialogue"
     },
@@ -20181,7 +20181,7 @@
     },
 
     {
-        "value": "R-Rainbow Queen? The mysterious goddess of Hiroshi legend? A powerful entity with uncontrolled mood? This entity can drain so much energy at the same time?! N-No! There's something very wrong with that! This is impossible!",
+        "value": "Ra-Rainbow Queen? The mysterious goddess of Hiroshi legend? A powerful entity with uncontrolled mood? This entity can drain so much energy at the same time?! N-No! There's something very wrong with that! This is impossible!",
         "character": "James",
         "type": "think"
     },
@@ -20541,7 +20541,7 @@
     },
 
     {
-        "value": "R-Rayane meet the commander?! Okay! Hmmmm... If Rayane knows this goddess... So it makes a lot of sense for Rayane to have a little divine aura in her body. Alicorns can transfer some of their divine auras to other common ponies. It's like planting a seed to later bloom.",
+        "value": "Ra-Rayane meet the commander?! Okay! Hmmmm... If Rayane knows this goddess... So it makes a lot of sense for Rayane to have a little divine aura in her body. Alicorns can transfer some of their divine auras to other common ponies. It's like planting a seed to later bloom.",
         "character": "James",
         "type": "dialogue"
     },
