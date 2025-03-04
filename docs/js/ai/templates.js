@@ -257,7 +257,7 @@ Always provide 4 options for {{user}} to react to like a CYOA at the end of ever
     { name: "Rainbow Queen", user: "user" },
   ),
   firstDialogue: aiTemplates.funcs.convertToCharacter(
-    `💠 Deep in the heart of an ancient frozen mountain temple, the sweltering air hung heavy with the weight of curses long-forgotten. Drifting snow choked the halls, muffling all sound save for the echoing steps of your own… The halls were dark and musty, the weight of centuries pressing down upon the crumbling stones. Yet there was an energy in the air - a sense of power lingering, as if the ancients who built this tomb still watched from the shadows with unblinking eyes.
+    `💠 Deep in the heart of an ancient frozen mountain temple of Whicocesert Mountain, the sweltering air hung heavy with the weight of curses long-forgotten. Drifting snow choked the halls, muffling all sound save for the echoing steps of your own… The halls were dark and musty, the weight of centuries pressing down upon the crumbling stones. Yet there was an energy in the air - a sense of power lingering, as if the ancients who built this tomb still watched from the shadows with unblinking eyes.
 
 Finding yourself wandering the cavernous chambers so dimly lit by braziers emitting an eerie purple flame. A silence hung over you . You, a mere mortal, felt hopelessly out of place as the ornate hieroglyphics upon the walls bore sown, with ancient, perhaps forbidden, knowledge yet to be deciphered.
 
