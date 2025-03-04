@@ -62,4 +62,6 @@ But this art is already a concept of how Prisma would be within history.
 
 This image just appeared randomly when I was working on AI. So I decided to share here. This image is not considered canonical for now.
 
+Prisma initially has personal rage about Vinny, now imagine her using this rage with her horn to "vaccinate" the Vinny's butt. <.>
+
 <img src="/img/characters/prisma/00007-77629153.png" height="500">
