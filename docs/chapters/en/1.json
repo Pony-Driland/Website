@@ -9829,7 +9829,7 @@
     },
 
     {
-        "value": "O-okay! C-Cheese!",
+        "value": "O-okay! Che-cheese!",
         "character": "James",
         "type": "dialogue"
     },
@@ -9851,7 +9851,7 @@
     },
 
     {
-        "value": "...C-Cheese?",
+        "value": "...Che-cheese?",
         "character": "Raquel",
         "type": "dialogue"
     },
@@ -10881,7 +10881,7 @@
     },
 
     {
-        "value": "M-Me? I'm fine, I'm just trying to understand what's happening on this screen.",
+        "value": "M-me? I'm fine, I'm just trying to understand what's happening on this screen.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -10936,7 +10936,7 @@
     },
 
     {
-        "value": "C-consuming? And where is this all going?",
+        "value": "Co-consuming? And where is this all going?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -11142,7 +11142,7 @@
     },
 
     {
-        "value": "Alright. T-thanks for agreeing to help me.",
+        "value": "Alright. Tha-thanks for agreeing to help me.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -11282,7 +11282,7 @@
     },
 
     {
-        "value": "M-Me? This is obvious!",
+        "value": "M-me? This is obvious!",
         "character": "James",
         "type": "dialogue"
     },
@@ -12004,7 +12004,7 @@
     },
 
     {
-        "value": "W-what? T-teleportation? I've never seen any unicorns use teleport!",
+        "value": "W-what? Te-teleportation? I've never seen any unicorns use teleport!",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -13356,7 +13356,7 @@
     },
 
     {
-        "value": "F-Fine fine. I'm sorry.",
+        "value": "Fi-fine fine. I'm sorry.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -13765,7 +13765,7 @@
     },
 
     {
-        "value": "T-time machine? But other ponies have told me that this is completely impossible to exist in this dimension.",
+        "value": "Ti-time machine? But other ponies have told me that this is completely impossible to exist in this dimension.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -14257,7 +14257,7 @@
     },
 
     {
-        "value": "T-thank you Vinny.",
+        "value": "Tha-thank you Vinny.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -14279,7 +14279,7 @@
     },
 
     {
-        "value": "T-thank you again.",
+        "value": "Tha-thank you again.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -14976,7 +14976,7 @@
     },
 
     {
-        "value": "M-Me? We're going to say goodbye at the door. But don't be worried. Remember that I will always come back the same day~",
+        "value": "M-me? We're going to say goodbye at the door. But don't be worried. Remember that I will always come back the same day~",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -15471,7 +15471,7 @@
     },
 
     {
-        "value": "T-teleport?! Oh the teleport!",
+        "value": "Te-teleport?! Oh the teleport!",
         "character": "James",
         "type": "dialogue"
     },
@@ -16994,7 +16994,7 @@
     },
 
     {
-        "value": "Ye-yes. Thanks. Thank you for forgiving her. T-thank you such much. It was just what I wanted. That she could rest in peace.",
+        "value": "Ye-yes. Thanks. Thank you for forgiving her. Tha-thank you such much. It was just what I wanted. That she could rest in peace.",
         "character": "???",
         "type": "dialogue"
     },
@@ -17257,7 +17257,7 @@
     },
 
     {
-        "value": "U-Uh? Colorful flash colors? A shiny pony? Was this pony really watching us?",
+        "value": "U-uh? Colorful flash colors? A shiny pony? Was this pony really watching us?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -18053,7 +18053,7 @@
     },
 
     {
-        "value": "T-thank you Rayane.",
+        "value": "Tha-thank you Rayane.",
         "character": "James",
         "type": "dialogue"
     },
@@ -18352,7 +18352,7 @@
     },
 
     {
-        "value": "N-nothing. I just thought your idea was very exotic.",
+        "value": "No-nothing. I just thought your idea was very exotic.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -18911,7 +18911,7 @@
     },
 
     {
-        "value": "Bed? Me and you? But you didn't even buy for me a dinner. aa-and I still wanted to kiss a pony. You're a nice pony!! I like you a lot.",
+        "value": "Bed? Me and you? But you didn't even buy for me a dinner. And I still wanted to kiss a pony. You're a nice pony!! I like you a lot.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -19410,7 +19410,7 @@
     },
 
     {
-        "value": "N-Nothing. Maybe something would make you happy.",
+        "value": "No-nothing. Maybe something would make you happy.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -19471,13 +19471,13 @@
     },
 
     {
-        "value": "T-Two little things? What did you do?",
+        "value": "Tw-two little things? What did you do?",
         "character": "Rayane",
         "type": "dialogue"
     },
 
     {
-        "value": "While you two were resting, I walked around a bit, discovered some things. T-Things a little obscure.",
+        "value": "While you two were resting, I walked around a bit, discovered some things. Thi-things a little obscure.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -19999,7 +19999,7 @@
     },
 
     {
-        "value": "P-Please. Just won't turn me into sushi.",
+        "value": "Ple-please. Just won't turn me into sushi.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -20179,7 +20179,7 @@
 
     {
         "set": { "playlistPlay": "calm" },
-        "value": "H-heh. Yes. ",
+        "value": "Heh. Yes. ",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -20224,7 +20224,7 @@
     },
 
     {
-        "value": "A-aaaah. T-thank you. Charming Rayane.",
+        "value": "A-aaaah. Tha-thank you. Charming Rayane.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -21494,7 +21494,7 @@
     },
 
     {
-        "value": "L-light? Sun light! Finally!",
+        "value": "Li-light? Sun light! Finally!",
         "character": "Vinny",
         "type": "think"
     },
@@ -21803,7 +21803,7 @@
     },
 
     {
-        "value": "Are you happy? I have nothing important. I just want to leave! I..I want to go home! P-Please!",
+        "value": "Are you happy? I have nothing important. I just want to leave! I..I want to go home! Ple-please!",
         "character": "???",
         "type": "dialogue"
     },
@@ -22008,7 +22008,7 @@
     },
 
     {
-        "value": "I-It was during my escape into the cave. I had to run as far down the cave as possible and then try to get back here to see if everyone was okay.",
+        "value": "I-it was during my escape into the cave. I had to run as far down the cave as possible and then try to get back here to see if everyone was okay.",
         "character": "Jeff",
         "type": "dialogue"
     },
@@ -22186,7 +22186,7 @@
     },
 
     {
-        "value": "M-Me? Maybe I'm talking to the wrong pony. But that mysterious look has always haunted me.",
+        "value": "M-me? Maybe I'm talking to the wrong pony. But that mysterious look has always haunted me.",
         "character": "Jeff",
         "type": "dialogue"
     },
@@ -22283,7 +22283,7 @@
     },
 
     {
-        "value": "T-thank you! Thanks Vinny! Alright! I'll follow James then!",
+        "value": "Tha-thank you! Thanks Vinny! Alright! I'll follow James then!",
         "character": "Jeff",
         "type": "dialogue"
     },

@@ -1830,7 +1830,7 @@
         "type": "dialogue"
     },
     {
-        "value": "I already told! Marlon! Everyone at Pony Driland knows it's Marlon! P-Please stop!",
+        "value": "I already told! Marlon! Everyone at Pony Driland knows it's Marlon! Ple-please stop!",
         "character": "???",
         "type": "dialogue"
     },
@@ -2236,7 +2236,7 @@
         "set": {
             "playlistPlay": "bad-think"
         },
-        "value": "M-Me? I've heard many parts from the talk. I'm really worried about what happened out there. All I've seen so far is just this basement.",
+        "value": "M-me? I've heard many parts from the talk. I'm really worried about what happened out there. All I've seen so far is just this basement.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -3479,7 +3479,7 @@
     },
 
     {
-        "value": "Y-Yeah. Alright, anything if you need me, I'll still be here, I'll stay here in case the pegasus wakes up. The pegasus probably lost his family. I think it would be more relaxing for a friendly face to be the first face he sees. T-thank you. Thank you so much for everything. This is nice to meet you, Hiroshi.",
+        "value": "Y-Yeah. Alright, anything if you need me, I'll still be here, I'll stay here in case the pegasus wakes up. The pegasus probably lost his family. I think it would be more relaxing for a friendly face to be the first face he sees. Tha-thank you. Thank you so much for everything. This is nice to meet you, Hiroshi.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -4648,7 +4648,7 @@
     },
 
     {
-        "value": "T-thank you.",
+        "value": "Tha-thank you.",
         "character": "Wagner",
         "type": "dialogue"
     },
@@ -5980,7 +5980,7 @@
     },
 
     {
-        "value": "Y-Yeah. T-thank you.",
+        "value": "Y-Yeah. Tha-thank you.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -7129,7 +7129,7 @@
     },
 
     {
-        "value": "M-Me? You're too curious!",
+        "value": "M-me? You're too curious!",
         "character": "Guard 2",
         "type": "dialogue"
     },
@@ -7810,7 +7810,7 @@
     },
 
     {
-        "value": "P-Please... s-save the east region. My family... along with... the entire east region. Don't leave us die alone.",
+        "value": "Ple-please... s-save the east region. My family... along with... the entire east region. Don't leave us die alone.",
         "character": "Unicorn Soldier",
         "type": "dialogue"
     },
@@ -7827,7 +7827,7 @@
     },
 
     {
-        "value": "T-thank you... t-thanks... I... can already... feel... the... the end... Rainbow Queen... is waiting... for... m-my soul... the soul... m-my good soul. Ye-yes... m-my soul.",
+        "value": "Tha-thank you... t-thanks... I... can already... feel... the... the end... Rainbow Queen... is waiting... for... m-my soul... the soul... m-my good soul. Ye-yes... m-my soul.",
         "character": "Unicorn Soldier",
         "type": "dialogue"
     },
@@ -7849,7 +7849,7 @@
     },
 
     {
-        "value": "T-thank... you... and... and Rayane... Ra...",
+        "value": "Tha-thank... you... and... and Rayane... Ra...",
         "character": "Unicorn Soldier",
         "type": "dialogue"
     },
@@ -11823,7 +11823,7 @@
     },
 
     {
-        "value": "M-Me? Ah! Nothing! Nothing! Let's go!",
+        "value": "M-me? Ah! Nothing! Nothing! Let's go!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -12384,7 +12384,7 @@
     },
 
     {
-        "value": "H-heh. Thank you Vinny. we finally did it... We did it. Finaaally. The princess now needs some rest~ What kind of castle awaits me?",
+        "value": "Heh. Thank you Vinny. we finally did it... We did it. Finaaally. The princess now needs some rest~ What kind of castle awaits me?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -12412,7 +12412,7 @@
     },
     
     {
-        "value": "H-heh. Don't worry. it was just a few shots. I'll be fine. I'm just needing to rest my voice.",
+        "value": "Heh. Don't worry. it was just a few shots. I'll be fine. I'm just needing to rest my voice.",
         "character": "Kai",
         "type": "dialogue"
     },
@@ -12728,7 +12728,7 @@
     },
 
     {
-        "value": "M-Me? A-ah? I-I can do my explanations after the mission. I promise this okay?.",
+        "value": "M-me? A-ah? I-I can do my explanations after the mission. I promise this okay?.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -13508,7 +13508,7 @@
     },
 
     {
-        "value": "Vi-vinny... P-Please. Use your radar. Do something with this radar to protect us. This radar has the power of the Master Smart Moby. Please do something...",
+        "value": "Vi-vinny... Ple-please. Use your radar. Do something with this radar to protect us. This radar has the power of the Master Smart Moby. Please do something...",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -13558,7 +13558,7 @@
     },
 
     {
-        "value": "Vi-vinny? What's this beeps again? P-Please... came back here. Ah?",
+        "value": "Vi-vinny? What's this beeps again? Ple-please... came back here. Ah?",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -15037,7 +15037,7 @@
         "set": {
             "playlistPlay": "bad-think"
         },
-        "value": "M-Me? A-ah yes yes. OKAY! SORRY! I can as soon as possible start helping our peace declaration process. But no one will believe that this was all because of a goddess! And Marlon is dead!",
+        "value": "M-me? A-ah yes yes. OKAY! SORRY! I can as soon as possible start helping our peace declaration process. But no one will believe that this was all because of a goddess! And Marlon is dead!",
         "character": "Marlon",
         "type": "dialogue"
     },
@@ -15467,7 +15467,7 @@
     },
 
     {
-        "value": "H-heh. Once again, it's not that moment, maybe next time. Why always in these moments?",
+        "value": "Heh. Once again, it's not that moment, maybe next time. Why always in these moments?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -16113,7 +16113,7 @@
     },
 
     {
-        "value": "M-my wings... my back... I just want to go home. I don't want to participate in this madness anymore! P-Please... if you're from the West... just leave me alone! Qnd... and ask Marlon to stop all this madness!",
+        "value": "M-my wings... my back... I just want to go home. I don't want to participate in this madness anymore! Ple-please... if you're from the West... just leave me alone! Qnd... and ask Marlon to stop all this madness!",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -16398,7 +16398,7 @@
     },
 
     {
-        "value": "These equipment belonged to Wagner. He realized that I was too scared to carry the bad bomb. So he asked Marlon to change my role to informer. Wagner was my hero. He got into bomb role. T-thank you Sir Vinny. I-I could say that you are my third hero today. It's good to be able to meet you and Rayane on the same day.",
+        "value": "These equipment belonged to Wagner. He realized that I was too scared to carry the bad bomb. So he asked Marlon to change my role to informer. Wagner was my hero. He got into bomb role. Tha-thank you Sir Vinny. I-I could say that you are my third hero today. It's good to be able to meet you and Rayane on the same day.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -16895,7 +16895,7 @@
     },
 
     {
-        "value": "I..Ivy? P-Please stop. I'm here with you, don't you remember?",
+        "value": "I..Ivy? Ple-please stop. I'm here with you, don't you remember?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -17376,7 +17376,7 @@
     },
 
     {
-        "value": "Re-really? And... can I trust the mysterious Rayane? I-It feels like I'm living in a second fantasy world.",
+        "value": "Re-really? And... can I trust the mysterious Rayane? I-it feels like I'm living in a second fantasy world.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -19212,7 +19212,7 @@
     },
 
     {
-        "value": "H-heh. I have a little hope too. It's really hard to talk about my past.",
+        "value": "Heh. I have a little hope too. It's really hard to talk about my past.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -20383,7 +20383,7 @@
     },
 
     {
-        "value": "T-thank you. Don't worry Vinny. I always have my moments of reflection. It's at these times that I realize where I went wrong. I'm glad to know that you remembered me. Because I really had a few life crises when I tracked your Master Radar and found you were very far from me. Heh... Don't worry so much about that tablet. After everything that's happened, I have no reason to be mad at you for a tablet I can just build a new one.",
+        "value": "Tha-thank you. Don't worry Vinny. I always have my moments of reflection. It's at these times that I realize where I went wrong. I'm glad to know that you remembered me. Because I really had a few life crises when I tracked your Master Radar and found you were very far from me. Heh... Don't worry so much about that tablet. After everything that's happened, I have no reason to be mad at you for a tablet I can just build a new one.",
         "character": "James",
         "type": "dialogue"
     },
@@ -21251,7 +21251,7 @@
     },
 
     {
-        "value": "M-Me? N-no no no! Rain can stay with her pets!",
+        "value": "M-me? N-no no no! Rain can stay with her pets!",
         "character": "Vinny",
         "type": "think"
     },
@@ -21669,7 +21669,7 @@
     },
 
     {
-        "value": "M-Me? Yeah. Jeff talked to me and made me feel better about everything that happened. He promised he would never hate me, so that made me start to calm down. But I'm still worried about other things.",
+        "value": "M-me? Yeah. Jeff talked to me and made me feel better about everything that happened. He promised he would never hate me, so that made me start to calm down. But I'm still worried about other things.",
         "character": "Wagner",
         "type": "dialogue"
     },
@@ -21933,7 +21933,7 @@
     },
 
     {
-        "value": "H-heh! It's much better to wake up with Rayane doing pranks than waking up with my mouth on a horn again.",
+        "value": "Heh! It's much better to wake up with Rayane doing pranks than waking up with my mouth on a horn again.",
         "character": "Vinny",
         "type": "dialogue"
     },
