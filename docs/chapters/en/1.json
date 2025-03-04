@@ -431,7 +431,7 @@
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "V-Vinny? Are you okay? The X-Tudo is for eating! Not to mess up! What are you doing?!"
+        "value": "Vi-Vinny? Are you okay? The X-Tudo is for eating! Not to mess up! What are you doing?!"
     },
 
     {
@@ -483,7 +483,7 @@
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "Vinny?!... of... you... O... ...What's happening?! V-Vinny! The signal! The service is horrible! N-Nooo! Came back here! V-Viiiiiny!"
+        "value": "Vinny?!... of... you... O... ...What's happening?! Vi-Vinny! The signal! The service is horrible! N-Nooo! Came back here! V-Viiiiiny!"
     },
 
     {
@@ -998,7 +998,7 @@
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "H-Hey! Wait me!"
+        "value": "He-hey! Wait me!"
     },
 
     {
@@ -1853,7 +1853,7 @@
     },
 
     {
-        "value": "Y-Yes... we arrived. @.@",
+        "value": "Ye-yes... we arrived. @.@",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -3244,7 +3244,7 @@
     },
 
     {
-        "value": "V-Vinny?",
+        "value": "Vi-Vinny?",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -3867,7 +3867,7 @@
     },
 
     {
-        "value": "V-Vinny? You... you really look happy.",
+        "value": "Vi-Vinny? You... you really look happy.",
         "character": "Raquel",
         "type": "dialogue"
     },
@@ -4865,7 +4865,7 @@
     },
 
     {
-        "value": "H-hey! Wait! Aah, could you explain to me what is happening? Who are you and what is this?",
+        "value": "He-hey! Wait! Aah, could you explain to me what is happening? Who are you and what is this?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -5012,7 +5012,7 @@
     },
 
     {
-        "value": "S-sorry. Oh, and that tablet's are common in my world, including you have my phone which is a mini tablet. I used your tablet to defend you and me from crazy pony, and his head broke his tablet. I am really sorry.",
+        "value": "So-sorry. Oh, and that tablet's are common in my world, including you have my phone which is a mini tablet. I used your tablet to defend you and me from crazy pony, and his head broke his tablet. I am really sorry.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -5040,7 +5040,7 @@
     },
 
     {
-        "value": "Y-Yes? Wasn't it all right for everyone here to have one of these? I came here unintentionally, and I ended up coming with my phone... Why? Need something in it?",
+        "value": "Ye-yes? Wasn't it all right for everyone here to have one of these? I came here unintentionally, and I ended up coming with my phone... Why? Need something in it?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -6192,7 +6192,7 @@
     },
 
     {
-        "value": "B-but... but what the fuck is this?",
+        "value": "Bu-but... but what the fuck is this?",
         "character": "Vinny",
         "type": "think"
     },
@@ -6725,7 +6725,7 @@
     },
 
     {
-        "value": "B-But but Vinny!",
+        "value": "Bu-but but Vinny!",
         "character": "James",
         "type": "dialogue"
     },
@@ -7951,7 +7951,7 @@
     },
 
     {
-        "value": "J-James... if you were born here, why aren't you from here? I did not understand.",
+        "value": "Ja-James... if you were born here, why aren't you from here? I did not understand.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -8025,7 +8025,7 @@
     },
 
     {
-        "value": "B-But what the fuck is this? Is it now an intergalactic war?",
+        "value": "Bu-but what the fuck is this? Is it now an intergalactic war?",
         "character": "Vinny",
         "type": "think"
     },
@@ -8042,7 +8042,7 @@
     },
 
     {
-        "value": "B-but unfortunately our last spaceship only had room for one. Only one creature could use this little spaceship! He just pushed me and sent my spaceship into interstellar space!",
+        "value": "Bu-but unfortunately our last spaceship only had room for one. Only one creature could use this little spaceship! He just pushed me and sent my spaceship into interstellar space!",
         "character": "James",
         "type": "dialogue"
     },
@@ -8053,7 +8053,7 @@
     },
 
     {
-        "value": "H-hey, James, I'm sorry, so you were here when this entire dimmension started.",
+        "value": "He-hey, James, I'm sorry, so you were here when this entire dimmension started.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -9036,7 +9036,7 @@
         "set": {
             "playlistPlay": "sad"
         },
-        "value": "J-James? OH MY RAINBOW! JAAAAMES! You are here! Vinny! I do not believe! I thought you were dead!",
+        "value": "Ja-James? OH MY RAINBOW! JAAAAMES! You are here! Vinny! I do not believe! I thought you were dead!",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -9047,7 +9047,7 @@
     },
 
     {
-        "value": "Oh! Wow! Calm down Kenny, we are alive. We are here now. S-Sorry it took so long. I had some mishaps along the way.",
+        "value": "Oh! Wow! Calm down Kenny, we are alive. We are here now. So-sorry it took so long. I had some mishaps along the way.",
         "character": "James",
         "type": "dialogue"
     },
@@ -10409,7 +10409,7 @@
     },
 
     {
-        "value": "S-sorry. Are we late?",
+        "value": "So-sorry. Are we late?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -11645,7 +11645,7 @@
     },
 
     {
-        "value": "Ah. Y-yes. Fine.",
+        "value": "Ah. Ye-yes. Fine.",
         "character": "James",
         "type": "dialogue"
     },
@@ -11919,7 +11919,7 @@
     },
 
     {
-        "value": "Y-yes yes. I understood perfectly, completely perfectly understood. T-The food is already on the table.",
+        "value": "Ye-yes yes. I understood perfectly, completely perfectly understood. T-The food is already on the table.",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -11947,7 +11947,7 @@
     },
 
     {
-        "value": "Y-yes Rayane.",
+        "value": "Ye-yes Rayane.",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -12168,7 +12168,7 @@
     },
 
     {
-        "value": "H-hey! Okay okay. Let's go.",
+        "value": "He-hey! Okay okay. Let's go.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -12834,7 +12834,7 @@
     },
 
     {
-        "value": "R-ready.",
+        "value": "Re-ready.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -12996,7 +12996,7 @@
     },
 
     {
-        "value": "Y-Yes! Yes! I'm ready! Let's go!",
+        "value": "Ye-yes! Yes! I'm ready! Let's go!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -13024,7 +13024,7 @@
     },
 
     {
-        "value": "V-Vinny?! WHAT?!",
+        "value": "Vi-Vinny?! WHAT?!",
         "character": "Raquel",
         "type": "dialogue"
     },
@@ -13284,7 +13284,7 @@
     },
 
     {
-        "value": "H-hey! This is my cool sunglasses!",
+        "value": "He-hey! This is my cool sunglasses!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -14135,7 +14135,7 @@
     },
 
     {
-        "value": "N-Nostalgia?",
+        "value": "No-nostalgia?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -14307,7 +14307,7 @@
     },
 
     {
-        "value": "V-Vinny? Ra-Rayane? W-what?",
+        "value": "Vi-Vinny? Ra-Rayane? W-what?",
         "character": "James",
         "type": "dialogue"
     },
@@ -14578,7 +14578,7 @@
     },
 
     {
-        "value": "Y-yes. I will join. But remember Vinny what I told you. I can't be with you all the time.",
+        "value": "Ye-yes. I will join. But remember Vinny what I told you. I can't be with you all the time.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -14954,7 +14954,7 @@
     },
 
     {
-        "value": "H-hey Raquel, don't worry. I promise everything will be fine. I'll wait here.",
+        "value": "He-hey Raquel, don't worry. I promise everything will be fine. I'll wait here.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -15003,7 +15003,7 @@
     },
 
     {
-        "value": "V-Vinny? Rayane? Take care! I'm happy for your new friendship.",
+        "value": "Vi-Vinny? Rayane? Take care! I'm happy for your new friendship.",
         "character": "Raquel",
         "type": "dialogue"
     },
@@ -16022,7 +16022,7 @@
     },
 
     {
-        "value": "Y-Yes. I'm fine. Sorry for my scare. But getting on the wanted list means the Elite Color will try to eliminate you at all costs for trying to gain inside information.",
+        "value": "Ye-yes. I'm fine. Sorry for my scare. But getting on the wanted list means the Elite Color will try to eliminate you at all costs for trying to gain inside information.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -16700,7 +16700,7 @@
     },
 
     {
-        "value": "S-Sorry Vinny. But I need some rest now. Okay?",
+        "value": "So-sorry Vinny. But I need some rest now. Okay?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -16793,7 +16793,7 @@
     },
 
     {
-        "value": "B-but but!",
+        "value": "Bu-but but!",
         "character": "Female Unicorn",
         "type": "dialogue"
     },
@@ -16842,7 +16842,7 @@
     },
 
     {
-        "value": "B-but I don't want to die. I know what I did was wrong, but I helped track down a radar that discovered the parts of Master SmartMoby.",
+        "value": "Bu-but I don't want to die. I know what I did was wrong, but I helped track down a radar that discovered the parts of Master SmartMoby.",
         "character": "Ruby",
         "type": "dialogue"
     },
@@ -16855,7 +16855,7 @@
     },
 
     {
-        "value": "B-but but. I-I... n-noo... I...",
+        "value": "Bu-but but. I-I... n-noo... I...",
         "character": "Ruby",
         "type": "dialogue"
     },
@@ -16883,7 +16883,7 @@
     },
 
     {
-        "value": "S-Sorry Rainbow Queen. Sorry I broke the deal. P-please, sorry. Contracts and Agreements. An deal should never be broken. I'm sorry.",
+        "value": "So-sorry Rainbow Queen. Sorry I broke the deal. P-please, sorry. Contracts and Agreements. An deal should never be broken. I'm sorry.",
         "character": "Ruby",
         "type": "dialogue"
     },
@@ -16994,7 +16994,7 @@
     },
 
     {
-        "value": "Y-yes. Thanks. Thank you for forgiving her. T-thank you such much. It was just what I wanted. That she could rest in peace.",
+        "value": "Ye-yes. Thanks. Thank you for forgiving her. T-thank you such much. It was just what I wanted. That she could rest in peace.",
         "character": "???",
         "type": "dialogue"
     },
@@ -17022,7 +17022,7 @@
     },
 
     {
-        "value": "V-very important conversation?",
+        "value": "Ve-very important conversation?",
         "character": "???",
         "type": "dialogue"
     },
@@ -17047,7 +17047,7 @@
         "set": {
             "playlistPlay": null
         },
-        "value": "Y-yes.",
+        "value": "Ye-yes.",
         "character": "???",
         "type": "dialogue"
     },
@@ -17145,7 +17145,7 @@
     },
 
     {
-        "value": "Huh? V-Vinny? This glow. Those colors. I am not liking this.",
+        "value": "Huh? Vi-Vinny? This glow. Those colors. I am not liking this.",
         "character": "James",
         "type": "dialogue"
     },
@@ -17184,7 +17184,7 @@
     },
 
     {
-        "value": "G-Give me this!",
+        "value": "Gi-Give me this!",
         "character": "James",
         "type": "dialogue"
     },
@@ -17379,7 +17379,7 @@
         "set": {
             "playlistPlay": "tense-mystery"
         },
-        "value": "V-Vinny. We need to get out of this cave now! All I can do is try to decrease the energy emitted by our SmartMobies!",
+        "value": "Vi-Vinny. We need to get out of this cave now! All I can do is try to decrease the energy emitted by our SmartMobies!",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -17396,7 +17396,7 @@
     },
 
     {
-        "value": " H-hey James? Did you find something? James? Oh god. James is busy.",
+        "value": " He-hey James? Did you find something? James? Oh god. James is busy.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -17418,7 +17418,7 @@
     },
 
     {
-        "value": " B-But Rayane, and if...",
+        "value": " Bu-but Rayane, and if...",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -17469,7 +17469,7 @@
     },
 
     {
-        "value": "B-but... but...",
+        "value": "Bu-but... but...",
         "character": "James",
         "type": "dialogue"
     },
@@ -17685,7 +17685,7 @@
     },
 
     {
-        "value": "S-sorry. But are you sure the storm was really necessary?",
+        "value": "So-sorry. But are you sure the storm was really necessary?",
         "character": "???",
         "type": "dialogue"
     },
@@ -17707,7 +17707,7 @@
     },
 
     {
-        "value": "Ah? Master SmartMoby? That voice. B-But... As she already found out about Master SmartMoby?",
+        "value": "Ah? Master SmartMoby? That voice. Bu-but... As she already found out about Master SmartMoby?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -17762,7 +17762,7 @@
     },
 
     {
-        "value": "H-hey! You'll end up disintegrating this cave too much!",
+        "value": "He-hey! You'll end up disintegrating this cave too much!",
         "character": "???",
         "type": "dialogue"
     },
@@ -17840,7 +17840,7 @@
     },
 
     {
-        "value": "S-sorry. But you've been much kinder in the past.",
+        "value": "So-sorry. But you've been much kinder in the past.",
         "character": "???",
         "type": "dialogue"
     },
@@ -18452,7 +18452,7 @@
     },
 
     {
-        "value": "S-sorry for my panic. It was just a scare. I will try to calm down. I promise I will try to calm down.",
+        "value": "So-sorry for my panic. It was just a scare. I will try to calm down. I promise I will try to calm down.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -19275,7 +19275,7 @@
     },
 
     {
-        "value": "V-Vinny?",
+        "value": "Vi-Vinny?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -19320,7 +19320,7 @@
     },
 
     {
-        "value": "Y-Yes. I ended up thinking too much about what happened last night before I went to sleep.",
+        "value": "Ye-yes. I ended up thinking too much about what happened last night before I went to sleep.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -21087,7 +21087,7 @@
     },
 
     {
-        "value": "Y-yes. Let's go.",
+        "value": "Ye-yes. Let's go.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -22124,7 +22124,7 @@
     },
 
     {
-        "value": "H-hey Vinny. S-Sorry, but maybe I'm wrong. This blue pony is mysterious Rayane that some ponies talk so much about?",
+        "value": "He-hey Vinny. So-sorry, but maybe I'm wrong. This blue pony is mysterious Rayane that some ponies talk so much about?",
         "character": "Jeff",
         "type": "dialogue"
     },
@@ -22163,7 +22163,7 @@
     },
 
     {
-        "value": "H-hey!",
+        "value": "He-hey!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -22362,7 +22362,7 @@
     },
 
     {
-        "value": "Yes. I'm fine. B-But what's that worried face?",
+        "value": "Yes. I'm fine. Bu-but what's that worried face?",
         "character": "James",
         "type": "dialogue"
     },
@@ -22458,7 +22458,7 @@
     },
 
     {
-        "value": "H-hey! Calm down! Take your time!",
+        "value": "He-hey! Calm down! Take your time!",
         "character": "James",
         "type": "dialogue"
     },
