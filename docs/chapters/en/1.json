@@ -448,13 +448,13 @@
     {
         "type": "dialogue",
         "character": "Yasmin",
-        "value": "W-What?! What is this Vinny? Did the restaurant give you some kind of SmartWatch as a gift?!"
+        "value": "W-what?! What is this Vinny? Did the restaurant give you some kind of SmartWatch as a gift?!"
     },
 
     {
         "type": "dialogue",
         "character": "Vinny",
-        "value": "Stop joking around! I need help! What is happening?! W-What the fuck?! My house will explode!"
+        "value": "Stop joking around! I need help! What is happening?! W-what the fuck?! My house will explode!"
     },
 
     {
@@ -4569,7 +4569,7 @@
 
     {
         "set": { "playlistPlay": null },
-        "value": "W-What? Oh no no no. Whoever it is, go away!",
+        "value": "W-what? Oh no no no. Whoever it is, go away!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -4696,7 +4696,7 @@
     },
 
     {
-        "value": "W-What? Hey what are you doing?",
+        "value": "W-what? Hey what are you doing?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -4776,7 +4776,7 @@
     },
 
     {
-        "value": "W-What?! No! My stuff! What's going on here?!",
+        "value": "W-what?! No! My stuff! What's going on here?!",
         "character": "??? 2",
         "type": "dialogue"
     },
@@ -6713,7 +6713,7 @@
 
 
     {
-        "value": "W-What?! Are you sure?",
+        "value": "W-what?! Are you sure?",
         "character": "James",
         "type": "dialogue"
     },
@@ -6957,7 +6957,7 @@
     },
 
     {
-        "value": "W-What? I-I did I die? @.@",
+        "value": "W-what? I-I did I die? @.@",
         "character": "James",
         "type": "dialogue"
     },
@@ -7804,7 +7804,7 @@
     },
 
     {
-        "value": "W-What? Are you serious? I've been trying to climb this mountain for years!",
+        "value": "W-what? Are you serious? I've been trying to climb this mountain for years!",
         "character": "James",
         "type": "dialogue"
     },
@@ -7945,7 +7945,7 @@
     },
 
     {
-        "value": "W-What?! No! No no no!",
+        "value": "W-what?! No! No no no!",
         "character": "Vinny",
         "type": "think"
     },
@@ -7969,7 +7969,7 @@
     },
 
     {
-        "value": "W-What? So this mysterious pony is a god in your concept. This is interesting.",
+        "value": "W-what? So this mysterious pony is a god in your concept. This is interesting.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -10892,7 +10892,7 @@
     },
 
     {
-        "value": "W-What?! By chance this is not my heart rate right?!",
+        "value": "W-what?! By chance this is not my heart rate right?!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -11600,7 +11600,7 @@
     },
 
     {
-        "value": "W-What? So you two go outside? Please let Kenny know that I'm going to be a while.",
+        "value": "W-what? So you two go outside? Please let Kenny know that I'm going to be a while.",
         "character": "James",
         "type": "dialogue"
     },
@@ -12004,7 +12004,7 @@
     },
 
     {
-        "value": "W-What? T-teleportation? I've never seen any unicorns use teleport!",
+        "value": "W-what? T-teleportation? I've never seen any unicorns use teleport!",
         "character": "Kenny",
         "type": "dialogue"
     },
@@ -13406,7 +13406,7 @@
     },
 
     {
-        "value": "W-Well, What about this thing, won't it draw the attention of Elite Color?",
+        "value": "W-well, What about this thing, won't it draw the attention of Elite Color?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -13495,7 +13495,7 @@
     },
 
     {
-        "value": "W-What? Your friend? Well, that seems to make sense from what you explained to me about the waves.",
+        "value": "W-what? Your friend? Well, that seems to make sense from what you explained to me about the waves.",
         "character": "James",
         "type": "dialogue"
     },
@@ -14816,7 +14816,7 @@
     },
 
     {
-        "value": "W-What the fuck?!",
+        "value": "W-what the fuck?!",
         "character": "James",
         "type": "dialogue"
     },
@@ -15058,7 +15058,7 @@
     },
 
     {
-        "value": "W-What? Me? Yes. I'm much better... I think I managed to get some of my sentimental weight off my back.",
+        "value": "W-what? Me? Yes. I'm much better... I think I managed to get some of my sentimental weight off my back.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -15573,7 +15573,7 @@
     },
 
     {
-        "value": "W-What? My mouth?! WHAT?!",
+        "value": "W-what? My mouth?! WHAT?!",
         "character": "James",
         "type": "dialogue"
     },
@@ -15905,7 +15905,7 @@
     },
 
     {
-        "value": "W-What hell? What is happening on this mountain? Okay okay.",
+        "value": "W-what hell? What is happening on this mountain? Okay okay.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -16123,7 +16123,7 @@
     },
 
     {
-        "value": "W-What?",
+        "value": "W-what?",
         "character": "James",
         "type": "dialogue"
     },
@@ -16938,7 +16938,7 @@
     },
 
     {
-        "value": "W-What will you do?",
+        "value": "W-what will you do?",
         "character": "Ruby",
         "type": "dialogue"
     },
@@ -17195,7 +17195,7 @@
     },
 
     {
-        "value": "W-What is it? I heard a little bit of the radar in the video. There was something increasing in intensity. You're scaring me!",
+        "value": "W-what is it? I heard a little bit of the radar in the video. There was something increasing in intensity. You're scaring me!",
         "character": "James",
         "type": "dialogue"
     },
@@ -17385,7 +17385,7 @@
     },
 
     {
-        "value": "W-What? What do you mean by that?",
+        "value": "W-what? What do you mean by that?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -17879,7 +17879,7 @@
     },
 
     {
-        "value": "W-What? It's impossible. Your magic always feels any SmartMoby.",
+        "value": "W-what? It's impossible. Your magic always feels any SmartMoby.",
         "character": "???",
         "type": "dialogue"
     },
@@ -18081,7 +18081,7 @@
     },
 
     {
-        "value": "W-What? Are you serious?",
+        "value": "W-what? Are you serious?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -18098,7 +18098,7 @@
     },
 
     {
-        "value": "W-What? The cave exit is blocked?",
+        "value": "W-what? The cave exit is blocked?",
         "character": "James",
         "type": "dialogue"
     },
@@ -19153,7 +19153,7 @@
     },
 
     {
-        "value": "Hello? W-What the hell is that?",
+        "value": "Hello? W-what the hell is that?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -19175,7 +19175,7 @@
     },
 
     {
-        "value": "W-Where is everybody?",
+        "value": "W-where is everybody?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -20054,7 +20054,7 @@
     },
 
     {
-        "value": "W-What?!",
+        "value": "W-what?!",
         "character": "Vinny",
         "type": "think"
     },
@@ -20633,7 +20633,7 @@
     },
 
     {
-        "value": "W-What?! What the fuck is this conversation?!",
+        "value": "W-what?! What the fuck is this conversation?!",
         "character": "James",
         "type": "dialogue"
     },
@@ -20861,7 +20861,7 @@
     },
 
     {
-        "value": "W-What? Are you serious?",
+        "value": "W-what? Are you serious?",
         "character": "James",
         "type": "dialogue"
     },
@@ -21284,7 +21284,7 @@
     },
 
     {
-        "value": "W-Well, in theory, here is a cave, there's gold on the wall and some broken pickaxes, there's some kind of exploration going on, but there was some dead pony here. Is someone there blowing up something to maybe get gold. A-alright?",
+        "value": "W-well, in theory, here is a cave, there's gold on the wall and some broken pickaxes, there's some kind of exploration going on, but there was some dead pony here. Is someone there blowing up something to maybe get gold. A-alright?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -21708,7 +21708,7 @@
     },
 
     {
-        "value": "W-What are you going to do Rayane?",
+        "value": "W-what are you going to do Rayane?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -21826,7 +21826,7 @@
     },
 
     {
-        "value": "W-What do you want from me?",
+        "value": "W-what do you want from me?",
         "character": "???",
         "type": "dialogue"
     },
@@ -21892,7 +21892,7 @@
     },
 
     {
-        "value": "W-Where did you do that?",
+        "value": "W-where did you do that?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -22130,7 +22130,7 @@
     },
 
     {
-        "value": "W-Who?",
+        "value": "W-who?",
         "character": "Vinny",
         "type": "dialogue"
     },

@@ -34,7 +34,7 @@
     },
 
     {
-        "value": "W-What? Is that you? My... my sweetheart?",
+        "value": "W-what? Is that you? My... my sweetheart?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -223,7 +223,7 @@
     "set": {
       "playlistPlay": "think"
   },
-    "value": "W-What? Pact? What is happening to James?",
+    "value": "W-what? Pact? What is happening to James?",
     "character": "Rayane",
     "type": "think"
   },
@@ -302,7 +302,7 @@
   }, 
 
   {
-    "value": "C-Carry you... zZzZzZz? W-What?..Is that really you? ZzZzZzz... N-Never spoke... to me like that... ZzZzZz...",
+    "value": "C-Carry you... zZzZzZz? W-what?..Is that really you? ZzZzZzz... N-Never spoke... to me like that... ZzZzZz...",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -336,7 +336,7 @@
   }, 
 
   {
-    "value": "W-What? Ariella? Did he really say this name? What's going on here?",
+    "value": "W-what? Ariella? Did he really say this name? What's going on here?",
     "character": "Rayane",
     "type": "think"
   },
@@ -381,7 +381,7 @@
   }, 
 
   {
-    "value": "W-What? H-huh? And..wait... No! What fuck is this?!",
+    "value": "W-what? H-huh? And..wait... No! What fuck is this?!",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -930,7 +930,7 @@
 
 
   {
-    "value": "W-What? Oh no no no. Do not need to be sad! Her being alive already helps and a lot. I'm here to thank you for helping her. Anyway, Rayane said we're close to Blackburn. We can get some assistance there. As much as I think it will cost money.",
+    "value": "W-what? Oh no no no. Do not need to be sad! Her being alive already helps and a lot. I'm here to thank you for helping her. Anyway, Rayane said we're close to Blackburn. We can get some assistance there. As much as I think it will cost money.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -997,7 +997,7 @@
   }, 
 
   {
-    "value": "We hunt ghosts? What? You're welcome. W-Well...",
+    "value": "We hunt ghosts? What? You're welcome. W-well...",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -1235,7 +1235,7 @@
   }, 
 
   {
-    "value": "W-What? OH FUCK! CHARMING RAYANE! WAIT ME!",
+    "value": "W-what? OH FUCK! CHARMING RAYANE! WAIT ME!",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -1513,7 +1513,7 @@
   }, 
 
   {
-    "value": "Oh yes... Everypony... just down the hall... Doctor is wating for you and... W-What?! Ra-rayane?!",
+    "value": "Oh yes... Everypony... just down the hall... Doctor is wating for you and... W-what?! Ra-rayane?!",
     "character": "Hospital Attendant",
     "type": "dialogue"
   },
@@ -1530,7 +1530,7 @@
   },
 
   {
-    "value": "W-What? Bu-but... but what emergency? And... I'm not seeing anyone hurt.",
+    "value": "W-what? Bu-but... but what emergency? And... I'm not seeing anyone hurt.",
     "character": "Hospital Attendant",
     "type": "dialogue"
   }, 
@@ -1558,7 +1558,7 @@
   }, 
 
   {
-    "value": "W-Well! Everyone here seems more surprised than me.",
+    "value": "W-well! Everyone here seems more surprised than me.",
     "character": "Vinny",
     "type": "think"
   },
@@ -1570,7 +1570,7 @@
   },
 
   {
-    "value": "W-Wow!",
+    "value": "W-wow!",
     "character": "Vinny",
     "type": "dialogue"
   },
@@ -1592,7 +1592,7 @@
   }, 
 
   {
-    "value": "Ra-rayane? This is a surprise to see here! I never seen you on a hospital or bring some patient to a hospital. Our hospital network has no information about you. We will generate your password for you to be allowed to enter soon. Alright? But... W-What happened for you came here?",
+    "value": "Ra-rayane? This is a surprise to see here! I never seen you on a hospital or bring some patient to a hospital. Our hospital network has no information about you. We will generate your password for you to be allowed to enter soon. Alright? But... W-what happened for you came here?",
     "character": "Hospital Attendant",
     "type": "dialogue"
   },
@@ -1609,7 +1609,7 @@
   }, 
 
   {
-    "value": "O-Oh! W-Well... Okay. Hello! What's your name?",
+    "value": "O-Oh! W-well... Okay. Hello! What's your name?",
     "character": "Hospital Attendant",
     "type": "dialogue"
   }, 
@@ -1954,7 +1954,7 @@
   }, 
 
   {
-    "value": "W-What?",
+    "value": "W-what?",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -1985,7 +1985,7 @@
   },
 
   {
-    "value": "W-Well... Doctor? What's the problem?",
+    "value": "W-well... Doctor? What's the problem?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -2073,7 +2073,7 @@
   }, 
 
   {
-    "value": "W-What? magical creature? Ra-Rain? This is you?",
+    "value": "W-what? magical creature? Ra-Rain? This is you?",
     "character": "Rayane",
     "type": "think"
   }, 
@@ -2304,7 +2304,7 @@
   }, 
 
   {
-    "value": "W-What? That's weird, can't you guys hear us? Why are hospitals an exception?",
+    "value": "W-what? That's weird, can't you guys hear us? Why are hospitals an exception?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -2639,7 +2639,7 @@
   }, 
 
   {
-    "value": "W-What?! If someone takes off the collar?",
+    "value": "W-what?! If someone takes off the collar?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -2774,13 +2774,13 @@
   }, 
 
   {
-    "value": "W-What? She actually looks a lot more harmless than I imagined.",
+    "value": "W-what? She actually looks a lot more harmless than I imagined.",
     "character": "Vinny",
     "type": "think"
   }, 
 
   {
-    "value": "So are we going to see clothes for me and our future daughter maybe? I make up an excuse like we're on our honeymoon, and for fantasies I wore this armor and lost my clothes shall we? W-Well! Don't forget that you don't want children because your career plan a child will give you a lot of problems.",
+    "value": "So are we going to see clothes for me and our future daughter maybe? I make up an excuse like we're on our honeymoon, and for fantasies I wore this armor and lost my clothes shall we? W-well! Don't forget that you don't want children because your career plan a child will give you a lot of problems.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -3729,7 +3729,7 @@
   }, 
 
   {
-    "value": "W-Well... I don't know what's going on. You don't have to trust me if you don't want to. You are free to trust or not. I just wanted to understand the reason for you called me a monster. Look here... Are you want the binoculars? Can I give you this?",
+    "value": "W-well... I don't know what's going on. You don't have to trust me if you don't want to. You are free to trust or not. I just wanted to understand the reason for you called me a monster. Look here... Are you want the binoculars? Can I give you this?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -3883,7 +3883,7 @@
   }, 
 
   {
-    "value": "W-Wow. Amy said... 100 years? Why did she care about Ivy like this? I think she's the second pony I've seen using teleportation. Well... At least I hope she says something nice about me to the scythe goddess.",
+    "value": "W-wow. Amy said... 100 years? Why did she care about Ivy like this? I think she's the second pony I've seen using teleportation. Well... At least I hope she says something nice about me to the scythe goddess.",
     "character": "Vinny",
     "type": "think"
   }, 
@@ -4005,7 +4005,7 @@
   }, 
 
   {
-    "value": "But... Strangely she said that she hasn't been to the hospital for about 100 years. W-What's going here?",
+    "value": "But... Strangely she said that she hasn't been to the hospital for about 100 years. W-what's going here?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -4106,7 +4106,7 @@
   }, 
 
   {
-    "value": "W-Well... the good side is that you learned to survive. If everything goes right in the end... you will have your house, your little room. you will have everything you want. We just need to wait for time... wait for time, what a funny way of saying that everything has its time.",
+    "value": "W-well... the good side is that you learned to survive. If everything goes right in the end... you will have your house, your little room. you will have everything you want. We just need to wait for time... wait for time, what a funny way of saying that everything has its time.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -4404,7 +4404,7 @@
   }, 
 
   {
-    "value": "W-Well... Vinny, I understand your side. But everything you've said are... We'll need more time to get something in return. Rayane will need to train her magic... The ghosts will create problems for us solve. We want to save a life and we don't know how much time is left.",
+    "value": "W-well... Vinny, I understand your side. But everything you've said are... We'll need more time to get something in return. Rayane will need to train her magic... The ghosts will create problems for us solve. We want to save a life and we don't know how much time is left.",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -4596,7 +4596,7 @@
   }, 
 
   {
-    "value": "W-What?! Money? Well... I can lend you money to buy a cape. But please... remember that you will have to find some way to make money. I usually sell some of my creations. Do not forget my words. Here it is.",
+    "value": "W-what?! Money? Well... I can lend you money to buy a cape. But please... remember that you will have to find some way to make money. I usually sell some of my creations. Do not forget my words. Here it is.",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -4720,7 +4720,7 @@
   }, 
 
   {
-    "value": "W-What? Here?",
+    "value": "W-what? Here?",
     "character": "James",
     "type": "think"
   }, 
@@ -5023,7 +5023,7 @@
   }, 
 
   {
-    "value": "W-Whaaat?? Where can I find someone who can answer me about it?",
+    "value": "W-whaaat?? Where can I find someone who can answer me about it?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -5126,7 +5126,7 @@
   }, 
 
   {
-    "value": "W-What? Ah? Hey! Excuse me, if possible can you tell me what is the gypsy place?",
+    "value": "W-what? Ah? Hey! Excuse me, if possible can you tell me what is the gypsy place?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -5399,7 +5399,7 @@
   }, 
 
   {
-    "value": "W-Well... Well well... I'm talking to you now. I'm just in a delicate situation. What is this crystal ball?",
+    "value": "W-well... Well well... I'm talking to you now. I'm just in a delicate situation. What is this crystal ball?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -5479,7 +5479,7 @@
   }, 
 
   {
-    "value": "W-Well, I don't want to take up your time. You looks like a very busy pony. But... If I can, can I know your name?",
+    "value": "W-well, I don't want to take up your time. You looks like a very busy pony. But... If I can, can I know your name?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -5490,7 +5490,7 @@
   },
 
   {
-    "value": "Busy? W-Whaaaat? Looks like you'll want to come back here. Then fine! Buuuut! Tell me more about yourself... something tells me that you hide something very special. Heh! My name is Aniya.",
+    "value": "Busy? W-whaaaat? Looks like you'll want to come back here. Then fine! Buuuut! Tell me more about yourself... something tells me that you hide something very special. Heh! My name is Aniya.",
     "character": "Gypsy",
     "type": "dialogue"
   }, 
@@ -5670,7 +5670,7 @@
   }, 
 
   {
-    "value": "W-What?!",
+    "value": "W-what?!",
     "character": "Vinny",
     "type": "think"
   },
@@ -6459,7 +6459,7 @@
   }, 
 
   {
-    "value": "W-What? Well, I know Amy, we were talking a little while ago. Are the doctor and she really in the room? Then Amy releases my access! I know what she is doing. She's trying to talk to Ivy, I don't know if it's helping or making it worse!",
+    "value": "W-what? Well, I know Amy, we were talking a little while ago. Are the doctor and she really in the room? Then Amy releases my access! I know what she is doing. She's trying to talk to Ivy, I don't know if it's helping or making it worse!",
     "character": "Vinny",
     "type": "dialogue"
   },
@@ -6696,7 +6696,7 @@
   }, 
 
   {
-    "value": "W-What the fuck is going on here?",
+    "value": "W-what the fuck is going on here?",
     "character": "Vinny",
     "type": "think"
   }, 
@@ -7080,7 +7080,7 @@
     "set": {
       "playlistPlay": null
     },
-    "value": "...So... i-if you're already going to have a happy future... W-Won't you want to join me? J-Join me? And... will I lose you again?",
+    "value": "...So... i-if you're already going to have a happy future... W-won't you want to join me? J-Join me? And... will I lose you again?",
     "character": "Amy",
     "type": "dialogue"
   }, 
@@ -7447,7 +7447,7 @@
   }, 
 
   {
-    "value": "W-What?",
+    "value": "W-what?",
     "character": "Rayane",
     "type": "think"
   }, 
@@ -7475,7 +7475,7 @@
   }, 
 
   {
-    "value": "Yeah... you're in a hospital. You're there to recover youself but with you here and not there, your body thinks you're not there. I can't say. W-Well... Maybe Rayane or Amy has an alternative.",
+    "value": "Yeah... you're in a hospital. You're there to recover youself but with you here and not there, your body thinks you're not there. I can't say. W-well... Maybe Rayane or Amy has an alternative.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -7761,7 +7761,7 @@
   }, 
 
   {
-    "value": "W-What? Oh yes. Now the trick that Rayane said happens.",
+    "value": "W-what? Oh yes. Now the trick that Rayane said happens.",
     "character": "Vinny",
     "type": "think"
   },
@@ -7807,7 +7807,7 @@
   }, 
 
   {
-    "value": "W-What? What the fuck is she trying to do?",
+    "value": "W-what? What the fuck is she trying to do?",
     "character": "Vinny",
     "type": "think"
   }, 
@@ -8355,7 +8355,7 @@
   }, 
 
   {
-    "value": "W-Well... It's really tempting, but I understand everything you said about the pie, the magic item. The pie only I can eat, and the potion only Rayane can take without knowing the origin of it, on condition that she opens up to me and tell the truth of her past correct? Isn't it easier for you to talk about her past?",
+    "value": "W-well... It's really tempting, but I understand everything you said about the pie, the magic item. The pie only I can eat, and the potion only Rayane can take without knowing the origin of it, on condition that she opens up to me and tell the truth of her past correct? Isn't it easier for you to talk about her past?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -8383,7 +8383,7 @@
   },
 
   {
-    "value": "W-What?",
+    "value": "W-what?",
     "character": "Vinny",
     "type": "dialogue"
   },  
@@ -8439,7 +8439,7 @@
   }, 
 
   {
-    "value": "W-What? Wow! Is she serious?!",
+    "value": "W-what? Wow! Is she serious?!",
     "character": "Vinny",
     "type": "think"
   },
@@ -8720,7 +8720,7 @@
   }, 
 
   {
-    "value": "Y-yeah... and... even you booping me is the same way... the only difference is that Rayane boop my nose, and you're booping me using your... scythe on my neck. W-Well! Come on? About our agreement you can be sure that agreed is agreed. Either way, you're going to win, whether I win or lose. We can go? Who goes first?",
+    "value": "Y-yeah... and... even you booping me is the same way... the only difference is that Rayane boop my nose, and you're booping me using your... scythe on my neck. W-well! Come on? About our agreement you can be sure that agreed is agreed. Either way, you're going to win, whether I win or lose. We can go? Who goes first?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -9172,7 +9172,7 @@
   }, 
 
   {
-    "value": "W-What?! Where???",
+    "value": "W-what?! Where???",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -9515,7 +9515,7 @@
   }, 
 
   {
-    "value": "W-What?? O-oh no... Can I say my last words first?",
+    "value": "W-what?? O-oh no... Can I say my last words first?",
     "character": "Vinny",
     "type": "dialogue"
   },
@@ -10539,7 +10539,7 @@
   }, 
 
   {
-    "value": "W-What?! FUCK! But I fixed that today!",
+    "value": "W-what?! FUCK! But I fixed that today!",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -10640,7 +10640,7 @@
   },
 
   {
-    "value": "W-Well...",
+    "value": "W-well...",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -10869,7 +10869,7 @@
   }, 
 
   {
-    "value": "W-What? Hey wait! Jasmin??",
+    "value": "W-what? Hey wait! Jasmin??",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -10880,7 +10880,7 @@
   }, 
 
   {
-    "value": "W-What?! Do you know my nickname?! Oh my God! I think I hit my head too hard!",
+    "value": "W-what?! Do you know my nickname?! Oh my God! I think I hit my head too hard!",
     "character": "???",
     "type": "dialogue"
   }, 
@@ -10925,7 +10925,7 @@
   }, 
 
   {
-    "value": "W-What happened to me?! E-Everything feels so real. I-I... I'm having a lucid dream?!",
+    "value": "W-what happened to me?! E-Everything feels so real. I-I... I'm having a lucid dream?!",
     "character": "Yasmin",
     "type": "dialogue"
   }, 
@@ -10953,7 +10953,7 @@
   }, 
 
   {
-    "value": "Okay! Sorry bighead! Calm down Jasmin, you were transported to this world of ponies. W-Well...",
+    "value": "Okay! Sorry bighead! Calm down Jasmin, you were transported to this world of ponies. W-well...",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -10975,7 +10975,7 @@
   }, 
 
   {
-    "value": "Wait... us? How teleported? I-I lost a friend a few minutes ago and now all of a sudden I hear this conversation from us? W-Who are you?",
+    "value": "Wait... us? How teleported? I-I lost a friend a few minutes ago and now all of a sudden I hear this conversation from us? W-who are you?",
     "character": "Yasmin",
     "type": "dialogue"
   }, 
@@ -11003,7 +11003,7 @@
   }, 
 
   {
-    "value": "James? W-What? I don't remember any James... You're going to kidnap me!",
+    "value": "James? W-what? I don't remember any James... You're going to kidnap me!",
     "character": "Yasmin",
     "type": "dialogue"
   }, 
@@ -11099,7 +11099,7 @@
   }, 
 
   {
-    "value": "W-What?! No! No no! Don't leave me here!",
+    "value": "W-what?! No! No no! Don't leave me here!",
     "character": "Yasmin",
     "type": "dialogue"
   }, 
@@ -11297,7 +11297,7 @@
   }, 
 
   {
-    "value": "W-What?! Vi-vinny.. you're scaring me. What do you mean trapped? I have my things to do at home, our friends, our normal life.",
+    "value": "W-what?! Vi-vinny.. you're scaring me. What do you mean trapped? I have my things to do at home, our friends, our normal life.",
     "character": "Yasmin",
     "type": "dialogue"
   },
@@ -11353,7 +11353,7 @@
   }, 
 
   {
-    "value": "W-Well! James, why don't you introduce yourself first?",
+    "value": "W-well! James, why don't you introduce yourself first?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -11992,7 +11992,7 @@
   }, 
 
   {
-    "value": "W-What?! VINNY! No no no! Stop this!!",
+    "value": "W-what?! VINNY! No no no! Stop this!!",
     "character": "Yasmin",
     "type": "dialogue"
   }, 
@@ -12523,7 +12523,7 @@
   }, 
 
   {
-    "value": "W-Well! Rainbow is involved with the Elite Color, and Rainbow was with Hiroshi from the beginning, she even gave him a new life in the form of an agreement. I'm aware of everything going to the extreme I don't want to, and I'm wanting to let her go. But I have ponies that trust me. I can't just let someone come and abuse them as they please... If it gets extreme, I have my plans B, C, and D!",
+    "value": "W-well! Rainbow is involved with the Elite Color, and Rainbow was with Hiroshi from the beginning, she even gave him a new life in the form of an agreement. I'm aware of everything going to the extreme I don't want to, and I'm wanting to let her go. But I have ponies that trust me. I can't just let someone come and abuse them as they please... If it gets extreme, I have my plans B, C, and D!",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -13003,7 +13003,7 @@
   },  
 
   {
-    "value": "W-What??",
+    "value": "W-what??",
     "character": "James",
     "type": "dialogue"
   },
@@ -14098,7 +14098,7 @@
   }, 
 
   {
-    "value": "W-What? I-I take care? D-do you trust me? I-I... A-ah? Someone who wants to become a pet? Are you looking for a new friend for me?",
+    "value": "W-what? I-I take care? D-do you trust me? I-I... A-ah? Someone who wants to become a pet? Are you looking for a new friend for me?",
     "character": "Amy",
     "type": "dialogue"
   },  
@@ -14477,7 +14477,7 @@
   }, 
 
   {
-    "value": "W-What? Alright Vinny.",
+    "value": "W-what? Alright Vinny.",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -14723,7 +14723,7 @@
   }, 
 
   {
-    "value": "W-What? No no no... No way! Why is the crazy goddess looking so sincere?!",
+    "value": "W-what? No no no... No way! Why is the crazy goddess looking so sincere?!",
     "character": "Vinny",
     "type": "think"
   },
@@ -14885,7 +14885,7 @@
   }, 
 
   {
-    "value": "W-Well... It's destiny that unites us... do I really want to meet you always? Whenever we meet you give me a scolding, once again fate unites us and later on it will unite again because of your gypsy pet with the name of Aniya. I'm not looking for you, it's destiny that makes us always unite. You are a goddess, a kind of religion where people follow you.",
+    "value": "W-well... It's destiny that unites us... do I really want to meet you always? Whenever we meet you give me a scolding, once again fate unites us and later on it will unite again because of your gypsy pet with the name of Aniya. I'm not looking for you, it's destiny that makes us always unite. You are a goddess, a kind of religion where people follow you.",
     "character": "Vinny",
     "type": "dialogue"
   },
@@ -14947,7 +14947,7 @@
   }, 
 
   {
-    "value": "W-Well...",
+    "value": "W-well...",
     "character": "Vinny",
     "type": "dialogue"
   },
@@ -15120,7 +15120,7 @@
   }, 
 
   {
-    "value": "W-Well... I hope you're not seeing things.",
+    "value": "W-well... I hope you're not seeing things.",
     "character": "Ivy",
     "type": "dialogue"
   }, 
@@ -15225,7 +15225,7 @@
   }, 
 
   {
-    "value": "Bu-but I didn't hear anything... W-What did she say about me?",
+    "value": "Bu-but I didn't hear anything... W-what did she say about me?",
     "character": "Amy",
     "type": "dialogue"
   }, 
@@ -15343,13 +15343,13 @@
   }, 
 
   {
-    "value": "W-What? Maid outfit?? Fine... fine... It's just Amy. Goddamn it, that'll be harder than I thought.",
+    "value": "W-what? Maid outfit?? Fine... fine... It's just Amy. Goddamn it, that'll be harder than I thought.",
     "character": "Vinny",
     "type": "think"
   }, 
 
   {
-    "value": "W-Well... I'm sorry to put you through this scare.",
+    "value": "W-well... I'm sorry to put you through this scare.",
     "character": "Vinny",
     "type": "dialogue"
   },
@@ -15488,7 +15488,7 @@
   }, 
 
   {
-    "value": "W-Well! I don't know. You've just been brought into this world, it's up to you to decide, but take it easy, you're still going to lose a lot of me in this world.",
+    "value": "W-well! I don't know. You've just been brought into this world, it's up to you to decide, but take it easy, you're still going to lose a lot of me in this world.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -15821,7 +15821,7 @@
   }, 
 
   {
-    "value": "W-What? The windows of this place are strange.",
+    "value": "W-what? The windows of this place are strange.",
     "character": "Vinny",
     "type": "think"
   },
@@ -16033,7 +16033,7 @@
   }, 
 
   {
-    "value": "AH... Doesn't work with children? Because of the size? Isn't Amy a child? W-Whaat? That's not enough, if that's it, everything I do and say has meaning my dear Rayane.",
+    "value": "AH... Doesn't work with children? Because of the size? Isn't Amy a child? W-whaat? That's not enough, if that's it, everything I do and say has meaning my dear Rayane.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -16324,7 +16324,7 @@
   }, 
 
   {
-    "value": "New session? W-What? With Rayane? Is it really serious? Vinny and Rayane?",
+    "value": "New session? W-what? With Rayane? Is it really serious? Vinny and Rayane?",
     "character": "Aniya",
     "type": "dialogue"
   }, 
@@ -16494,7 +16494,7 @@
   }, 
 
   {
-    "value": "W-What??",
+    "value": "W-what??",
     "character": "Aniya",
     "type": "dialogue"
   },
@@ -17101,7 +17101,7 @@
   },
 
   {
-    "value": "W-W-well...",
+    "value": "W-w-well...",
     "character": "Aniya",
     "type": "dialogue"
   }, 
@@ -17338,7 +17338,7 @@
   }, 
 
   {
-    "value": "W-Wow... They're really two crazy ponies. They could have stayed in my house instead of walking on that haunted street.",
+    "value": "W-wow... They're really two crazy ponies. They could have stayed in my house instead of walking on that haunted street.",
     "character": "Aniya",
     "type": "think"
   },
@@ -17358,7 +17358,7 @@
   }, 
 
   {
-    "value": "W-What? Are you sure? You just won that money. Can I help you pay?",
+    "value": "W-what? Are you sure? You just won that money. Can I help you pay?",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -17639,7 +17639,7 @@
   }, 
 
   {
-    "value": "W-Wait! Rayane didn't do anything. The deal was between you and me.",
+    "value": "W-wait! Rayane didn't do anything. The deal was between you and me.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -18234,7 +18234,7 @@
   }, 
 
   {
-    "value": "W-Well... I'm going to talk to you alone. Just that.",
+    "value": "W-well... I'm going to talk to you alone. Just that.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -18265,7 +18265,7 @@
   }, 
 
   {
-    "value": "W-What?",
+    "value": "W-what?",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -18520,7 +18520,7 @@
   }, 
 
   {
-    "value": "W-Well... I understand, but I'll be back in the morning, I need to think a lot for now. Just as you don't want to talk about your past, I don't feel good and I wouldn't understand why I choose to do what I choose to do. I'm not the type to leave one of my friends aside, if I fall, at least I'll fix it. There are always other ponies to rescue at \"Rayane beach\".",
+    "value": "W-well... I understand, but I'll be back in the morning, I need to think a lot for now. Just as you don't want to talk about your past, I don't feel good and I wouldn't understand why I choose to do what I choose to do. I'm not the type to leave one of my friends aside, if I fall, at least I'll fix it. There are always other ponies to rescue at \"Rayane beach\".",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -18553,7 +18553,7 @@
   },  
 
   {
-    "value": "W-Well... You don't have to cry, calm down, I won't... I won't do anything with Amy, calm down, I-I just need some time, nobody likes to be lied to, I promise that I'm not going to hurt Amy or make her against or hate Rainbow.",
+    "value": "W-well... You don't have to cry, calm down, I won't... I won't do anything with Amy, calm down, I-I just need some time, nobody likes to be lied to, I promise that I'm not going to hurt Amy or make her against or hate Rainbow.",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -18878,7 +18878,7 @@
   }, 
 
   {
-    "value": "W-Well... good night.",
+    "value": "W-well... good night.",
     "character": "Yasmin",
     "type": "dialogue"
   }, 
@@ -19381,7 +19381,7 @@
   }, 
 
   {
-    "value": "W-What's really going on here? And... wait... Do we have visitors at this time of the night?",
+    "value": "W-what's really going on here? And... wait... Do we have visitors at this time of the night?",
     "character": "Yasmin",
     "type": "dialogue"
   }, 
@@ -20177,7 +20177,7 @@
   }, 
 
   {
-    "value": "Black eyes? Black and obscure things? W-What? This shows me that you've interacted with ponies with a divine aura. How curious, I never thought this day would come again... Rayane a pony with a divine aura? How curious.",
+    "value": "Black eyes? Black and obscure things? W-what? This shows me that you've interacted with ponies with a divine aura. How curious, I never thought this day would come again... Rayane a pony with a divine aura? How curious.",
     "character": "???",
     "type": "dialogue"
   }, 
@@ -20608,7 +20608,7 @@
   },
 
   {
-    "value": "W-What?",
+    "value": "W-what?",
     "character": "Yasmin",
     "type": "dialogue"
   }, 
@@ -20971,7 +20971,7 @@
   }, 
 
   {
-    "value": "W-What??",
+    "value": "W-what??",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -21096,7 +21096,7 @@
   }, 
 
   {
-    "value": "W-Weeeeell... shall we talk to James? By the way, you weren't there when Rainbow was here again. We saw Rainbow 2 times yesterday, then she came to me a 3rd time. This is complicated, then I went to Darkanger Ghost Town and talked to a guardian who said that I need to calm down, that I had regret and suffering, and that would make me leave falling into darkness forever.",
+    "value": "W-weeeeell... shall we talk to James? By the way, you weren't there when Rainbow was here again. We saw Rainbow 2 times yesterday, then she came to me a 3rd time. This is complicated, then I went to Darkanger Ghost Town and talked to a guardian who said that I need to calm down, that I had regret and suffering, and that would make me leave falling into darkness forever.",
     "character": "Vinny",
     "type": "dialogue"
   },  
@@ -21345,7 +21345,7 @@
   }, 
 
   {
-    "value": "W-Well...",
+    "value": "W-well...",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -21646,7 +21646,7 @@
   }, 
 
   {
-    "value": "W-What? What the fuck is that? Devoured what? D-Did she devour your cell phone's energy?",
+    "value": "W-what? What the fuck is that? Devoured what? D-Did she devour your cell phone's energy?",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -22191,7 +22191,7 @@
   }, 
 
   {
-    "value": "W-What??",
+    "value": "W-what??",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -22704,7 +22704,7 @@
   }, 
 
   {
-    "value": "W-What?! How so wet?! No! Close your mouth!!",
+    "value": "W-what?! How so wet?! No! Close your mouth!!",
     "character": "Aniya",
     "type": "dialogue"
   }, 
@@ -22784,7 +22784,7 @@
   },
 
   {
-    "value": "So... are you leaving already? W-Well... it's ok... at night we'll meet so... It was nice getting to know you all better.",
+    "value": "So... are you leaving already? W-well... it's ok... at night we'll meet so... It was nice getting to know you all better.",
     "character": "Aniya",
     "type": "dialogue"
   }, 
@@ -23008,7 +23008,7 @@
   }, 
 
   {
-    "value": "W-Wait... Rayane?",
+    "value": "W-wait... Rayane?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -23065,7 +23065,7 @@
   }, 
 
   {
-    "value": "W-Whaaat?! Why here again? Is amy here?",
+    "value": "W-whaaat?! Why here again? Is amy here?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -23263,7 +23263,7 @@
   }, 
 
   {
-    "value": "W-Well... This is a very difficult choice, I can't imagine a life without you around anymore. I think I've gotten too used to this reality now.",
+    "value": "W-well... This is a very difficult choice, I can't imagine a life without you around anymore. I think I've gotten too used to this reality now.",
     "character": "Rayane",
     "type": "dialogue"
   }, 
@@ -23614,7 +23614,7 @@
   }, 
 
   {
-    "value": "W-What? That's really weird. She looks sadder than yesterday.",
+    "value": "W-what? That's really weird. She looks sadder than yesterday.",
     "character": "Vinny",
     "type": "think"
   },
@@ -23637,7 +23637,7 @@
   }, 
 
   {
-    "value": "W-Whaaat?",
+    "value": "W-whaaat?",
     "character": "Vinny",
     "type": "think"
   }, 
@@ -24938,7 +24938,7 @@
   }, 
 
   {
-    "value": "W-Well... You're right. Alright. ",
+    "value": "W-well... You're right. Alright. ",
     "character": "Wagner",
     "type": "dialogue"
   }, 
@@ -25091,7 +25091,7 @@
   },
 
   {
-    "value": "W-Well! Sorry for my jokes... I'm really trying to distract myself and distract everyone here. hihi... How are you feeling?",
+    "value": "W-well! Sorry for my jokes... I'm really trying to distract myself and distract everyone here. hihi... How are you feeling?",
     "character": "Vinny",
     "type": "dialogue"
   },
@@ -25134,7 +25134,7 @@
   }, 
 
   {
-    "value": "W-What?!",
+    "value": "W-what?!",
     "character": "Aniya",
     "type": "dialogue"
   }, 
@@ -25258,7 +25258,7 @@
   }, 
 
   {
-    "value": "W-Whaaat? Did you bring the weird spirit one here?",
+    "value": "W-whaaat? Did you bring the weird spirit one here?",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -25463,7 +25463,7 @@
   }, 
 
   {
-    "value": "W-Whaat? My help? But... what I can do? She only knew me as the unicorn of the time machine. You need to see things through another \"angle\"... if I were to make a hierarchy between your position and Yasmin's position, I would say that she is extremely far below you. Your life superiority must be causing her depression.",
+    "value": "W-whaat? My help? But... what I can do? She only knew me as the unicorn of the time machine. You need to see things through another \"angle\"... if I were to make a hierarchy between your position and Yasmin's position, I would say that she is extremely far below you. Your life superiority must be causing her depression.",
     "character": "James",
     "type": "dialogue"
   },
@@ -25623,7 +25623,7 @@
   }, 
 
   {
-    "value": "W-What? You what? Did my cell phone battery have a problem? such that? could you explain me?",
+    "value": "W-what? You what? Did my cell phone battery have a problem? such that? could you explain me?",
     "character": "Vinny",
     "type": "dialogue"
   }, 
@@ -25663,7 +25663,7 @@
   }, 
 
   {
-    "value": "W-Wait? Two identical cell phones?! You took our conversation purposefully because did you want to do this??",
+    "value": "W-wait? Two identical cell phones?! You took our conversation purposefully because did you want to do this??",
     "character": "James",
     "type": "dialogue"
   }, 
@@ -25691,7 +25691,7 @@
   },
 
   {
-    "value": "Ah... W-Well.. Usually has giant antennas and they transmit a strong signal everywhere.",
+    "value": "Ah... W-well.. Usually has giant antennas and they transmit a strong signal everywhere.",
     "character": "Vinny",
     "type": "dialogue"
   },
@@ -25764,7 +25764,7 @@
   }, 
 
   {
-    "value": "W-What?? I didn't say anything. I was just having a personal conversation with Rayane. No big deal... and... and I'm sorry I took your money.",
+    "value": "W-what?? I didn't say anything. I was just having a personal conversation with Rayane. No big deal... and... and I'm sorry I took your money.",
     "character": "Aniya",
     "type": "dialogue"
   }, 
@@ -26919,7 +26919,7 @@
   },
 
   {
-    "value": "Floating head? W-What? But it's not night yet...",
+    "value": "Floating head? W-what? But it's not night yet...",
     "character": "Rayane",
     "type": "dialogue"
   }, 
