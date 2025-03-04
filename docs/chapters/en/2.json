@@ -1211,7 +1211,7 @@
     },
 
     {
-        "value": "A-Ah. We were here protecting ourselves from the explosion. We caught someone involved in this attack, he's passed out. I don't want to do anything with you, I wanted to stay close to Rayane until she wakes up. I've been with Rayane for a long time and I've never done her any harm, you have to believe me. We can talk about it if you want. What can I do to make you believe in me?",
+        "value": "A-ah. We were here protecting ourselves from the explosion. We caught someone involved in this attack, he's passed out. I don't want to do anything with you, I wanted to stay close to Rayane until she wakes up. I've been with Rayane for a long time and I've never done her any harm, you have to believe me. We can talk about it if you want. What can I do to make you believe in me?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -1566,7 +1566,7 @@
     },
 
     {
-        "value": "A-Aaah? Vi-vinny?",
+        "value": "A-aaah? Vi-vinny?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -1880,7 +1880,7 @@
     },
 
     {
-        "value": "M-My name is Wagner! WAGNER!",
+        "value": "M-my name is Wagner! WAGNER!",
         "character": "???",
         "type": "dialogue"
     },
@@ -2258,7 +2258,7 @@
     },
     
     {
-        "value": "A-Alicorn? The forest still exists?",
+        "value": "A-alicorn? The forest still exists?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -2355,7 +2355,7 @@
     },
 
     {
-        "value": "Wh-what?! I-Impossible! A-Are you serious?! We've had a lot of disagreements lately!",
+        "value": "Wh-what?! I-Impossible! A-are you serious?! We've had a lot of disagreements lately!",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -2582,7 +2582,7 @@
     },
 
     {
-        "value": "O-Okay okay. I also saw the tattoos when we were in the cave. But... but what is this?",
+        "value": "O-okay okay. I also saw the tattoos when we were in the cave. But... but what is this?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -4024,7 +4024,7 @@
     },
 
     {
-        "value": "A-Accessory? Ah! My accessory! This is a special planning equipment. It helps me fly longer distances. It's so curious to imagine what life would be like if this were giant mechanical wings to make a giant object fly.",
+        "value": "A-accessory? Ah! My accessory! This is a special planning equipment. It helps me fly longer distances. It's so curious to imagine what life would be like if this were giant mechanical wings to make a giant object fly.",
         "character": "Wagner",
         "type": "dialogue"
     },
@@ -4278,7 +4278,7 @@
     },
 
     {
-        "value": "O-Okay?",
+        "value": "O-okay?",
         "character": "Jeff",
         "type": "dialogue"
     },
@@ -4817,7 +4817,7 @@
     },
 
     {
-        "value": "A-Are you not very skilled at modifying or analyzing and comparing?",
+        "value": "A-are you not very skilled at modifying or analyzing and comparing?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -6344,7 +6344,7 @@
     },
 
     {
-        "value": "O-Okay. Sorry. What do you think Rayane? Will we find Hiroshi in time?",
+        "value": "O-okay. Sorry. What do you think Rayane? Will we find Hiroshi in time?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -6839,7 +6839,7 @@
     },
 
     {
-        "value": "O-Okay. Let's go.",
+        "value": "O-okay. Let's go.",
         "character": "Guard 2",
         "type": "dialogue"
     },
@@ -8006,7 +8006,7 @@
     },
 
     {
-        "value": "O-Okay.",
+        "value": "O-okay.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -8520,7 +8520,7 @@
     },
 
     {
-        "value": "A-Ah? Let's calm down. It seems that despair is over.",
+        "value": "A-ah? Let's calm down. It seems that despair is over.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -8637,7 +8637,7 @@
     },
 
     {
-        "value": "A-Ah?",
+        "value": "A-ah?",
         "character": "Guard 2",
         "type": "dialogue"
     },
@@ -9445,7 +9445,7 @@
     },
 
     {
-        "value": "W-What? O-Okay! Let's see if there's something inside. Heh! Take it easy with that bomb.",
+        "value": "W-What? O-okay! Let's see if there's something inside. Heh! Take it easy with that bomb.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -10178,7 +10178,7 @@
         "set": {
             "playEffect": { "file": "train-1", "enabled": false }
         },
-        "value": "O-Okay.",
+        "value": "O-okay.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -10248,7 +10248,7 @@
     },
 
     {
-        "value": "A-Are you sure? This relic is very powerful. We're all going to die during the explosion! I forgot to mention that one of these ponies that is coming here is Rayane!",
+        "value": "A-are you sure? This relic is very powerful. We're all going to die during the explosion! I forgot to mention that one of these ponies that is coming here is Rayane!",
         "character": "Random Female Pony",
         "type": "dialogue"
     },
@@ -11008,7 +11008,7 @@
     },
 
     {
-        "value": "A-Aaaah?!",
+        "value": "A-aaaah?!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -11065,7 +11065,7 @@
     },
 
     {
-        "value": "A-Ah? Rayane?",
+        "value": "A-ah? Rayane?",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -11133,7 +11133,7 @@
     },
 
     {
-        "value": "Ra-rayane? This is the same magic... Rainbow Queen has used this spell on me over 100 years ago. A-Are you hiding something very special?",
+        "value": "Ra-rayane? This is the same magic... Rainbow Queen has used this spell on me over 100 years ago. A-are you hiding something very special?",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -12006,7 +12006,7 @@
     },
 
     {
-        "value": "A-Aaaahhh?? Okay okay. Go Rayane. But next time I choose how I'm going to ride you. you need to be careful because the first time can be weird. Go up with affection ok?",
+        "value": "A-aaaahhh?? Okay okay. Go Rayane. But next time I choose how I'm going to ride you. you need to be careful because the first time can be weird. Go up with affection ok?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -12023,7 +12023,7 @@
     },
 
     {
-        "value": "M-My wings? Are we going to fly to the door? Oh yes! That's a great idea!",
+        "value": "M-my wings? Are we going to fly to the door? Oh yes! That's a great idea!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -12627,7 +12627,7 @@
     },
 
     {
-        "value": "A-Ah! H-Hiroshi? Wait! Are you sure you're okay? I am noticing that you are very different.",
+        "value": "A-ah! H-Hiroshi? Wait! Are you sure you're okay? I am noticing that you are very different.",
         "character": "Rowan",
         "type": "dialogue"
     },
@@ -12728,7 +12728,7 @@
     },
 
     {
-        "value": "M-Me? A-Ah? I-I can do my explanations after the mission. I promise this okay?.",
+        "value": "M-Me? A-ah? I-I can do my explanations after the mission. I promise this okay?.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -12911,7 +12911,7 @@
         "set": {
             "playlistPlay": null
         },
-        "value": "O-Okay sir!",
+        "value": "O-okay sir!",
         "character": "Guard 951",
         "type": "dialogue"
     },
@@ -13004,7 +13004,7 @@
     },
 
     {
-        "value": "A-Ah? M-My little job? M-My... AAAAHH! W-Whats happening here?!",
+        "value": "A-ah? M-my little job? M-my... AAAAHH! W-Whats happening here?!",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -13302,7 +13302,7 @@
     },
 
     {
-        "value": "A-Ah? F..Fine! Fine!",
+        "value": "A-ah? F..Fine! Fine!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -13841,7 +13841,7 @@
     },
 
     {
-        "value": "O-Oh no! M-My magic! N-NOO!",
+        "value": "O-Oh no! M-my magic! N-NOO!",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -14071,7 +14071,7 @@
     },
 
     {
-        "value": "O-Okay. I-I-I will trust you.",
+        "value": "O-okay. I-I-I will trust you.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -14237,7 +14237,7 @@
     },
 
     {
-        "value": "A-Ah? What's this now?",
+        "value": "A-ah? What's this now?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -14479,7 +14479,7 @@
     },
 
     {
-        "value": "Okay! SORRY! Bu-but... A-Ah? Are you ok?",
+        "value": "Okay! SORRY! Bu-but... A-ah? Are you ok?",
         "character": "Marlon",
         "type": "dialogue"
     },
@@ -15054,7 +15054,7 @@
     },
 
     {
-        "value": "A-Ah Yes... But Vi-vinny... L-Look on the good side. I think this is more than enough that the whole Hiroshi theory was more than certain that it's real.",
+        "value": "A-ah Yes... But Vi-vinny... L-Look on the good side. I think this is more than enough that the whole Hiroshi theory was more than certain that it's real.",
         "character": "Marlon",
         "type": "dialogue"
     },
@@ -15422,7 +15422,7 @@
     },
 
     {
-        "value": "A-Ah! Aiaiai...",
+        "value": "A-ah! Aiaiai...",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -15558,7 +15558,7 @@
     },
 
     {
-        "value": "A-Ah? Ye-yes yes. Sorry.",
+        "value": "A-ah? Ye-yes yes. Sorry.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -15943,7 +15943,7 @@
     },
 
     {
-        "value": "A-Ah? Yes! But please... you must promise to never leave me alone.",
+        "value": "A-ah? Yes! But please... you must promise to never leave me alone.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -16130,7 +16130,7 @@
     },
 
     {
-        "value": "A-Ah? So Marlon was arrested? Ye-yes... every bone in my back and in my wings... I don't feel my body right anymore.",
+        "value": "A-ah? So Marlon was arrested? Ye-yes... every bone in my back and in my wings... I don't feel my body right anymore.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -16279,7 +16279,7 @@
     },
 
     {
-        "value": "M-My name? My name is Ivy.",
+        "value": "M-my name? My name is Ivy.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -16359,7 +16359,7 @@
     },
 
     {
-        "value": "O-Ouch! O-oouch... A-Ah. Ye-yes. I-I did... Yes. Sorry Sir Vinny. if I'm too childish and a complete crybaby. But before I came here... I was a kid. So I spent the rest of my childhood in this dimension until I became an adult. Marlon said I needed to learn to grow up. So he put me in this crazy job. My pony dream ended up showing I'm a failure even at this.",
+        "value": "O-Ouch! O-oouch... A-ah. Ye-yes. I-I did... Yes. Sorry Sir Vinny. if I'm too childish and a complete crybaby. But before I came here... I was a kid. So I spent the rest of my childhood in this dimension until I became an adult. Marlon said I needed to learn to grow up. So he put me in this crazy job. My pony dream ended up showing I'm a failure even at this.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -16460,7 +16460,7 @@
     },
 
     {
-        "value": "M-My bag? Ye-yes! My magic saddle was the best thing I've ever been given as a gift. Feel free.",
+        "value": "M-my bag? Ye-yes! My magic saddle was the best thing I've ever been given as a gift. Feel free.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -16532,7 +16532,7 @@
     },
 
     {
-        "value": "A-Ah? What prevents you from changing?",
+        "value": "A-ah? What prevents you from changing?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -16639,7 +16639,7 @@
     },
 
     {
-        "value": "O-Okay... Mister Vinny.",
+        "value": "O-okay... Mister Vinny.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -17219,7 +17219,7 @@
     },
 
     {
-        "value": "A-Ah? AH! Sorry! James is a friend of ours. This is simple! James won't kill me in an irreversible way. For example, he kills me for 1 minute or for a short time and then revives me, I don't know how long in this body I can stay without breathing and dead. But anyway, let's think of a plan, what are we going to do here? Wait for someone? See other rooms?",
+        "value": "A-ah? AH! Sorry! James is a friend of ours. This is simple! James won't kill me in an irreversible way. For example, he kills me for 1 minute or for a short time and then revives me, I don't know how long in this body I can stay without breathing and dead. But anyway, let's think of a plan, what are we going to do here? Wait for someone? See other rooms?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -17396,7 +17396,7 @@
     },
 
     {
-        "value": "O-Okay. Mysterious Rayane.",
+        "value": "O-okay. Mysterious Rayane.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -17847,7 +17847,7 @@
     },
 
     {
-        "value": "A-Ah? No... no no! I think it's better not. I will continue my mission. The mysterious responsible item must be here.",
+        "value": "A-ah? No... no no! I think it's better not. I will continue my mission. The mysterious responsible item must be here.",
         "character": "Guard 1",
         "type": "dialogue"
     },
@@ -18089,7 +18089,7 @@
     },
 
     {
-        "value": "Ah? A-Ah? Was it you? I want to see your faces. What trust is this, your soldier is with the thin thread of life almost breaking and you care more about you? Let's do it like this, I tell you how this informant looked like between you, and you show your face.",
+        "value": "Ah? A-ah? Was it you? I want to see your faces. What trust is this, your soldier is with the thin thread of life almost breaking and you care more about you? Let's do it like this, I tell you how this informant looked like between you, and you show your face.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -18435,7 +18435,7 @@
     },
 
     {
-        "value": "T-This voice... Wait? Vi-vinny?! What are you doing here?! You are very hurt! O-Okay!!",
+        "value": "T-This voice... Wait? Vi-vinny?! What are you doing here?! You are very hurt! O-okay!!",
         "character": "Kai",
         "type": "dialogue"
     },
@@ -18571,7 +18571,7 @@
     },
 
     {
-        "value": "A-Ah? YES YES! Let's go!",
+        "value": "A-ah? YES YES! Let's go!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -18710,7 +18710,7 @@
         "set": {
             "playEffect": { "file": "onderwish-emergency", "enabled": false }
         },
-        "value": "Ra-rayane! M-My Rainbow! Rayane will kill her!!",
+        "value": "Ra-rayane! M-my Rainbow! Rayane will kill her!!",
         "character": "Kai",
         "type": "dialogue"
     },
@@ -18862,7 +18862,7 @@
     },
 
     {
-        "value": "Bu-but what power is that?! A-Ah! I forgot! Rayane's sword is magic too!",
+        "value": "Bu-but what power is that?! A-ah! I forgot! Rayane's sword is magic too!",
         "character": "Kai",
         "type": "dialogue"
     },
@@ -19083,7 +19083,7 @@
     },
 
     {
-        "value": "A-Ah? This is about what?",
+        "value": "A-ah? This is about what?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -19683,7 +19683,7 @@
     },
 
     {
-        "value": "A-Ah!",
+        "value": "A-ah!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -20044,7 +20044,7 @@
     },
 
     {
-        "value": "Oh? But what is this sad face? A-Ah. She's still under my special magic. She won't make reactions without my help to be released from my magic because of her condition. She will still continue to sleep during this time.",
+        "value": "Oh? But what is this sad face? A-ah. She's still under my special magic. She won't make reactions without my help to be released from my magic because of her condition. She will still continue to sleep during this time.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -20193,7 +20193,7 @@
     },
 
     {
-        "value": "A-Ah? Me? So-sorry! But the name is Rainbow Queen? This name is very familiar. I heard a lot of ponies like Marlon and Hiroshi talking about her.",
+        "value": "A-ah? Me? So-sorry! But the name is Rainbow Queen? This name is very familiar. I heard a lot of ponies like Marlon and Hiroshi talking about her.",
         "character": "James",
         "type": "dialogue"
     },
@@ -20941,7 +20941,7 @@
     },
 
     {
-        "value": "Ah? A-Ah! I have a magnet of problems and crazy females, look at Rayane for example. Rainbow Queen will always show up if I'm around someone who has made a deal with her before or someone is dying in front of me. Anything you kill me in a safe way and resurrect me.",
+        "value": "Ah? A-ah! I have a magnet of problems and crazy females, look at Rayane for example. Rainbow Queen will always show up if I'm around someone who has made a deal with her before or someone is dying in front of me. Anything you kill me in a safe way and resurrect me.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -21041,7 +21041,7 @@
     },
 
     {
-        "value": "A-Ah? What?! Who is this girl?!",
+        "value": "A-ah? What?! Who is this girl?!",
         "character": "Vinny",
         "type": "think"
     },
@@ -21419,7 +21419,7 @@
     },
 
     {
-        "value": "A-Ah? Didn't she have intimacy with you? Weren't you guys friends?",
+        "value": "A-ah? Didn't she have intimacy with you? Weren't you guys friends?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -21697,7 +21697,7 @@
     },
 
     {
-        "value": "A-Aaahh? You don't know her?",
+        "value": "A-aaahh? You don't know her?",
         "character": "Vinny",
         "type": "dialogue"
     },
