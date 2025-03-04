@@ -35,7 +35,7 @@
     },
 
     {
-        "value": "Y-yes. This time I don't have my little pot with sand or dirt, but I have my wings and I know how to fly. You can be calm about me. I know how to take care of myself in more delicate situations like this.",
+        "value": "Ye-yes. This time I don't have my little pot with sand or dirt, but I have my wings and I know how to fly. You can be calm about me. I know how to take care of myself in more delicate situations like this.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -63,7 +63,7 @@
     },
 
     {
-        "value": "V-Vinny. I-I can't see you like this. You really need armor. But I only have one unicorn armor left. You won't be able to use your wings when you're wearing the armor.",
+        "value": "Vi-Vinny. I-I can't see you like this. You really need armor. But I only have one unicorn armor left. You won't be able to use your wings when you're wearing the armor.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -149,7 +149,7 @@
     },
 
     {
-        "value": "B-But he said this time he was going to try something better. And the Elite Color was going to try to control the balance of the war.",
+        "value": "Bu-but he said this time he was going to try something better. And the Elite Color was going to try to control the balance of the war.",
         "character": "???",
         "type": "dialogue"
     },
@@ -173,7 +173,7 @@
     },
 
     {
-        "value": "Y-Yes. Elite Color has always been something very important to all of us! This dimension urgently needs to expand the energy! Our dimension will become a real strong dimension! Isn't that what you want?",
+        "value": "Ye-yes. Elite Color has always been something very important to all of us! This dimension urgently needs to expand the energy! Our dimension will become a real strong dimension! Isn't that what you want?",
         "character": "???",
         "type": "dialogue"
     },
@@ -197,7 +197,7 @@
     },
 
     {
-        "value": "S-sorry. I know you have empathy for souls. I'm sorry!",
+        "value": "So-sorry. I know you have empathy for souls. I'm sorry!",
         "character": "???",
         "type": "dialogue"
     },
@@ -233,7 +233,7 @@
     },
 
     {
-        "value": "Y-Yes. This is true. T-The true.",
+        "value": "Ye-yes. This is true. T-The true.",
         "character": "???",
         "type": "dialogue"
     },
@@ -475,7 +475,7 @@
     },
 
     {
-        "value": "V-Vinny? Be careful! You are an easy target while flying up.",
+        "value": "Vi-Vinny? Be careful! You are an easy target while flying up.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -863,7 +863,7 @@
     },
 
     {
-        "value": "Rayane! You can use your teleport. S-sorry. No matter what happens, it's my fault. I brought you here. Do your best!",
+        "value": "Rayane! You can use your teleport. So-sorry. No matter what happens, it's my fault. I brought you here. Do your best!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -880,7 +880,7 @@
     },
 
     {
-        "value": "Y-Yes... yes. S-sorry Rayane.",
+        "value": "Ye-yes... yes. So-sorry Rayane.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -965,7 +965,7 @@
     },
 
     {
-        "value": "V-Vinny? I-I'm fine. It's great to see you again.",
+        "value": "Vi-Vinny? I-I'm fine. It's great to see you again.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -998,7 +998,7 @@
     },
 
     {
-        "value": "B-But how did I survive it? What really happened here?",
+        "value": "Bu-but how did I survive it? What really happened here?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -1566,7 +1566,7 @@
     },
 
     {
-        "value": "A-Aaah? V-Vinny?",
+        "value": "A-Aaah? Vi-Vinny?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -2028,7 +2028,7 @@
     },
 
     {
-        "value": "B-but everypony was going to wait for the village to be evacuated! Someone promised me that they would do their best to evacuate the village as soon as possible! You talking like that sounds like it was a giant explosion! We just wanted to access the center of the village! Marlon just wanted to open the secret tunnel!",
+        "value": "Bu-but everypony was going to wait for the village to be evacuated! Someone promised me that they would do their best to evacuate the village as soon as possible! You talking like that sounds like it was a giant explosion! We just wanted to access the center of the village! Marlon just wanted to open the secret tunnel!",
         "character": "Wagner",
         "type": "dialogue"
     },
@@ -2050,7 +2050,7 @@
     },
 
     {
-        "value": "B-But how can I trust you about my family's life? This is not true! Stop talking nonsense! I wouldn't let a military team drop a very destructive bomb!",
+        "value": "Bu-but how can I trust you about my family's life? This is not true! Stop talking nonsense! I wouldn't let a military team drop a very destructive bomb!",
         "character": "Wagner",
         "type": "dialogue"
     },
@@ -2173,7 +2173,7 @@
     },
 
     {
-        "value": "The prophecy of the great drought of the eastern region. O-Our world is slowly dying. This magical relic is our only hope for us to live for a few more generations. B-But the West region... b-built... a bunker... a bunker for... for... p-protect the relic...",
+        "value": "The prophecy of the great drought of the eastern region. O-Our world is slowly dying. This magical relic is our only hope for us to live for a few more generations. Bu-but the West region... b-built... a bunker... a bunker for... for... p-protect the relic...",
         "character": "Wagner",
         "type": "dialogue"
     },
@@ -2332,7 +2332,7 @@
     },
 
     {
-        "value": "B-but that was my question. I thought you knew the answer to answer me.",
+        "value": "Bu-but that was my question. I thought you knew the answer to answer me.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -2457,7 +2457,7 @@
     },
 
     {
-        "value": "B-but she's going crazy! She is increasingly losing her mind! I tried to help her in many ways! But she is much more paranoid about the past than I am!",
+        "value": "Bu-but she's going crazy! She is increasingly losing her mind! I tried to help her in many ways! But she is much more paranoid about the past than I am!",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -2542,7 +2542,7 @@
     },
 
     {
-        "value": "Y-Yes. The Master smartmoby is the highest deity in this world. But it's been a long time since te Master smartmoby disappeared. I never knew who used this by the last time.",
+        "value": "Ye-yes. The Master smartmoby is the highest deity in this world. But it's been a long time since te Master smartmoby disappeared. I never knew who used this by the last time.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -3731,7 +3731,7 @@
     },
 
     {
-        "value": "Y-yes. It was very scary for me to find out that this all was my fault.",
+        "value": "Ye-yes. It was very scary for me to find out that this all was my fault.",
         "character": "Wagner",
         "type": "dialogue"
     },
@@ -3787,7 +3787,7 @@
     },
 
     {
-        "value": "O-okay okay. The pony responsible for the bomb? It was Marlon. Marlon asked me a lot to guide this last bomb. B-But be careful. Please... Be very very careful. Marlon knows that invaders can come after him.",
+        "value": "O-okay okay. The pony responsible for the bomb? It was Marlon. Marlon asked me a lot to guide this last bomb. Bu-but be careful. Please... Be very very careful. Marlon knows that invaders can come after him.",
         "character": "Wagner",
         "type": "dialogue"
     },
@@ -3915,7 +3915,7 @@
     },
 
     {
-        "value": "Y-Yes. Yes yes.",
+        "value": "Ye-yes. Yes yes.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -4004,7 +4004,7 @@
     },
 
     {
-        "value": "W-what? Y-yes! I'll try to think on something. I-I will try the better.",
+        "value": "W-what? Ye-yes! I'll try to think on something. I-I will try the better.",
         "character": "Wagner",
         "type": "dialogue"
     },
@@ -4046,7 +4046,7 @@
     },
 
     {
-        "value": "Well... Ah? J-James?",
+        "value": "Well... Ah? Ja-James?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -4154,7 +4154,7 @@
     },
 
     {
-        "value": "Y-Yes. I already feel so much better to see that you and Rayane are okay. I didn't know what else I would have done if I had lost all of you.",
+        "value": "Ye-yes. I already feel so much better to see that you and Rayane are okay. I didn't know what else I would have done if I had lost all of you.",
         "character": "James",
         "type": "dialogue"
     },
@@ -4698,7 +4698,7 @@
     },
 
     {
-        "value": "Y-Yes! We're great, we're just not adepted to having to deal with situations like this.",
+        "value": "Ye-yes! We're great, we're just not adepted to having to deal with situations like this.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -5901,7 +5901,7 @@
     },
 
     {
-        "value": "H-Hey! Calm down James. The worst has already happened. We'll just need some device to keep contact.",
+        "value": "He-hey! Calm down James. The worst has already happened. We'll just need some device to keep contact.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -5940,7 +5940,7 @@
     },
 
     {
-        "value": "Y-yes. I'm sure. I will do my best.",
+        "value": "Ye-yes. I'm sure. I will do my best.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -6558,7 +6558,7 @@
     },
 
     {
-        "value": "Y-Yes. It's very dangerous for you to end up getting the password wrong 3 times. It's going to get everyone's attention here.",
+        "value": "Ye-yes. It's very dangerous for you to end up getting the password wrong 3 times. It's going to get everyone's attention here.",
         "character": "Guard 1",
         "type": "dialogue"
     },
@@ -6806,7 +6806,7 @@
     },
 
     {
-        "value": "B-but...but... How did you do that! You don't even know the password!",
+        "value": "Bu-but...but... How did you do that! You don't even know the password!",
         "character": "Guard 1",
         "type": "dialogue"
     },
@@ -7038,7 +7038,7 @@
     },
 
     {
-        "value": "Y-Yes.",
+        "value": "Ye-yes.",
         "character": "Guard 1",
         "type": "dialogue"
     },
@@ -7338,7 +7338,7 @@
     },
 
     {
-        "value": "S-sorry.",
+        "value": "So-sorry.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -7496,7 +7496,7 @@
     },
 
     {
-        "value": "V-Vinny! N-No! Okay. This will definitely get their attention!",
+        "value": "Vi-Vinny! N-No! Okay. This will definitely get their attention!",
         "character": "Rayane",
         "type": "think"
     },
@@ -7621,7 +7621,7 @@
     },
 
     {
-        "value": "H-hey? Is everypony okay?",
+        "value": "He-hey? Is everypony okay?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -7827,7 +7827,7 @@
     },
 
     {
-        "value": "T-Thank you... t-thanks... I... can already... feel... the... the end... Rainbow Queen... is waiting... for... m-my soul... the soul... m-my good soul. Y-yes... m-my soul.",
+        "value": "T-Thank you... t-thanks... I... can already... feel... the... the end... Rainbow Queen... is waiting... for... m-my soul... the soul... m-my good soul. Ye-yes... m-my soul.",
         "character": "Unicorn Soldier",
         "type": "dialogue"
     },
@@ -8548,7 +8548,7 @@
     },
 
     {
-        "value": "S-sorry! We found something blocking the way. We almost crashed the train. Hope no one got hurt.",
+        "value": "So-sorry! We found something blocking the way. We almost crashed the train. Hope no one got hurt.",
         "character": "Guard 2",
         "type": "dialogue"
     },
@@ -8748,7 +8748,7 @@
     },
 
     {
-        "value": "H-hey. Calm your magic. Do not worry about me.",
+        "value": "He-hey. Calm your magic. Do not worry about me.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -8812,7 +8812,7 @@
 
     
     {
-        "value": "H-Hey? Anyone there? If no one moves. I'm going to throw a grenade in there!",
+        "value": "He-hey? Anyone there? If no one moves. I'm going to throw a grenade in there!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -9155,7 +9155,7 @@
     },
 
     {
-        "value": "Y-Yes. O-okay. F..fine. B-but... Kai already trusts you? I'm surprised that in a short time you already have an intimacy.",
+        "value": "Ye-yes. O-okay. F..fine. Bu-but... Kai already trusts you? I'm surprised that in a short time you already have an intimacy.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -9562,7 +9562,7 @@
     },
 
     {
-        "value": "H-Hey! WOW!",
+        "value": "He-hey! WOW!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -9771,7 +9771,7 @@
     },
 
     {
-        "value": "Y-Yes. I'm just worried about having failed my mission. I'm still surprised seeing you with Rayane here. I've never seen her like this. But why are you caring so much about our lives? You just suddenly appeared. I never thought to find someone like you so suddenly.",
+        "value": "Ye-yes. I'm just worried about having failed my mission. I'm still surprised seeing you with Rayane here. I've never seen her like this. But why are you caring so much about our lives? You just suddenly appeared. I never thought to find someone like you so suddenly.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -9987,7 +9987,7 @@
     },
 
     {
-        "value": "S-Sorry again... Vinny. Every hour my time gets shorter. I need help... from any possible healing or medical item.",
+        "value": "So-sorry again... Vinny. Every hour my time gets shorter. I need help... from any possible healing or medical item.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -10231,7 +10231,7 @@
     },
 
     {
-        "value": "Y-Yes sir. B-but the other ponies that died? Aren't we going to save the bodies? We need to justify the death of each of them. And if these intruders come here to attack us, our machine is in danger of exploding.",
+        "value": "Ye-yes sir. Bu-but the other ponies that died? Aren't we going to save the bodies? We need to justify the death of each of them. And if these intruders come here to attack us, our machine is in danger of exploding.",
         "character": "Random Female Pony",
         "type": "dialogue"
     },
@@ -10287,7 +10287,7 @@
     },
 
     {
-        "value": "B-but... but Okay sir. But please, just be careful with her. You knew she wouldn't dare to perform this bomb task.",
+        "value": "Bu-but... but Okay sir. But please, just be careful with her. You knew she wouldn't dare to perform this bomb task.",
         "character": "Random Female Pony",
         "type": "dialogue"
     },
@@ -11076,7 +11076,7 @@
     },
 
     {
-        "value": "V-Vinny? What is Rayane going to do? Will this help Hiroshi?",
+        "value": "Vi-Vinny? What is Rayane going to do? Will this help Hiroshi?",
         "character": "Kai",
         "type": "dialogue"
     },
@@ -11183,7 +11183,7 @@
     },
 
     {
-        "value": "Y-Yes... I'm great. I am very happy to see that my past still exists in this world. My soul can finally feel calmer. My soul is sure it can rest in peace one day. I have all my hopes on you all.",
+        "value": "Ye-yes... I'm great. I am very happy to see that my past still exists in this world. My soul can finally feel calmer. My soul is sure it can rest in peace one day. I have all my hopes on you all.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -11703,7 +11703,7 @@
     },
 
     {
-        "value": "V-Vinny. Don't you remember? This radar was made to find the...",
+        "value": "Vi-Vinny. Don't you remember? This radar was made to find the...",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -11720,7 +11720,7 @@
     },
     
     {
-        "value": "Well... I just chose the strength where the signal could reach the surface. I wasn't expecting something so powerful. B-But what is that on the screen? It looks like I ended up finding something more than the end.",
+        "value": "Well... I just chose the strength where the signal could reach the surface. I wasn't expecting something so powerful. Bu-but what is that on the screen? It looks like I ended up finding something more than the end.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -11783,7 +11783,7 @@
     },
 
     {
-        "value": "Y-Yes. Yes. Kai is right. It's a lot of questions for a short time.",
+        "value": "Ye-yes. Yes. Kai is right. It's a lot of questions for a short time.",
         "character": "Rowan",
         "type": "dialogue"
     },
@@ -12051,7 +12051,7 @@
     },
 
     {
-        "value": "W-what? A-ah! Y-Yes yes Kai!",
+        "value": "W-what? A-ah! Ye-yes yes Kai!",
         "character": "Rowan",
         "type": "dialogue"
     },
@@ -12124,7 +12124,7 @@
     },
 
     {
-        "value": "V-Vinny! We need to enter the password as soon as possible now!",
+        "value": "Vi-Vinny! We need to enter the password as soon as possible now!",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -12395,7 +12395,7 @@
     },
 
     {
-        "value": "S-sorry the delay. We need to get out of this castle first. Hmmmmmmmmm...",
+        "value": "So-sorry the delay. We need to get out of this castle first. Hmmmmmmmmm...",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -12423,7 +12423,7 @@
     },
 
     {
-        "value": "Y-Yes. This pain is nothing compared to everything I've been through. The break should now be quick. We haven't finished the mission yet.",
+        "value": "Ye-yes. This pain is nothing compared to everything I've been through. The break should now be quick. We haven't finished the mission yet.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -12553,7 +12553,7 @@
     },
 
     {
-        "value": "Huh? Y-Yes. But why?",
+        "value": "Huh? Ye-yes. But why?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -12874,7 +12874,7 @@
     },
 
     {
-        "value": "S-sorry sir... Too late for you to say that. It seems that the last powerful energy that we detected here underground had the capacity to reach the surface. Everyone should now know where we are.",
+        "value": "So-sorry sir... Too late for you to say that. It seems that the last powerful energy that we detected here underground had the capacity to reach the surface. Everyone should now know where we are.",
         "character": "Guard 951",
         "type": "dialogue"
     },
@@ -13508,7 +13508,7 @@
     },
 
     {
-        "value": "V-Vinny... P-Please. Use your radar. Do something with this radar to protect us. This radar has the power of the Master Smart Moby. Please do something...",
+        "value": "Vi-Vinny... P-Please. Use your radar. Do something with this radar to protect us. This radar has the power of the Master Smart Moby. Please do something...",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -13558,7 +13558,7 @@
     },
 
     {
-        "value": "V-Vinny? What's this beeps again? P-Please... came back here. Ah?",
+        "value": "Vi-Vinny? What's this beeps again? P-Please... came back here. Ah?",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -13569,7 +13569,7 @@
     },
 
     {
-        "value": "Y-yes! The radar! I need the radar energy!",
+        "value": "Ye-yes! The radar! I need the radar energy!",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -13609,7 +13609,7 @@
     },
 
     {
-        "value": "I-I don't know. S-Sorry!",
+        "value": "I-I don't know. So-sorry!",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -13632,7 +13632,7 @@
     },
 
     {
-        "value": "V-Vinny! Rayane! Look at me please!",
+        "value": "Vi-Vinny! Rayane! Look at me please!",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -13774,7 +13774,7 @@
     },
 
     {
-        "value": "Y-you? B-but but...",
+        "value": "Y-you? Bu-but but...",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -13930,7 +13930,7 @@
     },
 
     {
-        "value": "V-Vinny? V-Vinny... how good it is to see you. Y-yes. I'm fine... and... I'm just... so tired. I don't know what happened. I completely lost control of my teleportation. I don't know how many ponies I teleported.",
+        "value": "Vi-Vinny? Vi-Vinny... how good it is to see you. Ye-yes. I'm fine... and... I'm just... so tired. I don't know what happened. I completely lost control of my teleportation. I don't know how many ponies I teleported.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -14104,7 +14104,7 @@
     },
 
     {
-        "value": "H-Hello V-Vinny. H-hello Rayane.",
+        "value": "H-Hello Vi-Vinny. H-hello Rayane.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -14165,7 +14165,7 @@
     },
 
     {
-        "value": "V-Vinny. I just want to ask you a simple question. Did you get the... magic relic? A-and where is Marlon?",
+        "value": "Vi-Vinny. I just want to ask you a simple question. Did you get the... magic relic? A-and where is Marlon?",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -14204,7 +14204,7 @@
     },
 
     {
-        "value": "B-but... but... and... I need to...",
+        "value": "Bu-but... but... and... I need to...",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -14479,7 +14479,7 @@
     },
 
     {
-        "value": "Okay! SORRY! B-but... A-Ah? Are you ok?",
+        "value": "Okay! SORRY! Bu-but... A-Ah? Are you ok?",
         "character": "Marlon",
         "type": "dialogue"
     },
@@ -14636,7 +14636,7 @@
     },
 
     {
-        "value": "You two never understand how I've lived for over 100 years? I have passed through more than a generation of Pony Driland. I had an eternal life pact with Rainbow Queen herself. B-But in return. I was supposed to be the guardian of the original story of Pony Driland. She told me I shouldn't start any wars. I shouldn't put the lives of innocent ponies in danger.",
+        "value": "You two never understand how I've lived for over 100 years? I have passed through more than a generation of Pony Driland. I had an eternal life pact with Rainbow Queen herself. Bu-but in return. I was supposed to be the guardian of the original story of Pony Driland. She told me I shouldn't start any wars. I shouldn't put the lives of innocent ponies in danger.",
         "character": "Hiroshi",
         "type": "dialogue"
     },
@@ -14676,7 +14676,7 @@
     },
 
     {
-        "value": "Y-yes! What will happen to everyone without you? You could have at least told me your age for all of us. I have never seen this Rainbow Queen. H-How will I know who she is?",
+        "value": "Ye-yes! What will happen to everyone without you? You could have at least told me your age for all of us. I have never seen this Rainbow Queen. H-How will I know who she is?",
         "character": "Marlon",
         "type": "dialogue"
     },
@@ -14783,7 +14783,7 @@
     },
 
     {
-        "value": "Y-Yes. I'm sorry.",
+        "value": "Ye-yes. I'm sorry.",
         "character": "Marlon",
         "type": "dialogue"
     },
@@ -14906,7 +14906,7 @@
     },
 
     {
-        "value": "B-But but! ARGH!",
+        "value": "Bu-but but! ARGH!",
         "character": "Marlon",
         "type": "dialogue"
     },
@@ -15054,7 +15054,7 @@
     },
 
     {
-        "value": "A-Ah Yes... But V-Vinny... L-Look on the good side. I think this is more than enough that the whole Hiroshi theory was more than certain that it's real.",
+        "value": "A-Ah Yes... But Vi-Vinny... L-Look on the good side. I think this is more than enough that the whole Hiroshi theory was more than certain that it's real.",
         "character": "Marlon",
         "type": "dialogue"
     },
@@ -15333,7 +15333,7 @@
     },
 
     {
-        "value": "This is a lot more depressing than I can think. I have no idea how many unexpected things have happened now. B-but it's ok. Maybe a little rest will help me calm down.",
+        "value": "This is a lot more depressing than I can think. I have no idea how many unexpected things have happened now. Bu-but it's ok. Maybe a little rest will help me calm down.",
         "character": "Marlon",
         "type": "think"
     },
@@ -15502,7 +15502,7 @@
 
 
     {
-        "value": "S-Sorry Rayane. But I-I need you to see a pony one last time no matter how hard it is.",
+        "value": "So-sorry Rayane. But I-I need you to see a pony one last time no matter how hard it is.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -15558,7 +15558,7 @@
     },
 
     {
-        "value": "A-Ah? Y-Yes yes. Sorry.",
+        "value": "A-Ah? Ye-yes yes. Sorry.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -15810,7 +15810,7 @@
     },
 
     {
-        "value": "Y-Yes. Kai. Kai has always been very close to him.",
+        "value": "Ye-yes. Kai. Kai has always been very close to him.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -16085,7 +16085,7 @@
     },
 
     {
-        "value": "S-Sorry Vinny. But my regeneration can only heal wounds. Unfortunately I won't be able to rebuild her body. We need a doctor.",
+        "value": "So-sorry Vinny. But my regeneration can only heal wounds. Unfortunately I won't be able to rebuild her body. We need a doctor.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -16096,7 +16096,7 @@
     },
 
     {
-        "value": "T-the voice... This voice is familiar. B-But who is the other voice?",
+        "value": "T-the voice... This voice is familiar. Bu-but who is the other voice?",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -16130,7 +16130,7 @@
     },
 
     {
-        "value": "A-Ah? So Marlon was arrested? Y-Yes... every bone in my back and in my wings... I don't feel my body right anymore.",
+        "value": "A-Ah? So Marlon was arrested? Ye-yes... every bone in my back and in my wings... I don't feel my body right anymore.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -16152,7 +16152,7 @@
     },
 
     {
-        "value": "Y-Yes. I brought you here. Now everything will end well.",
+        "value": "Ye-yes. I brought you here. Now everything will end well.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -16348,7 +16348,7 @@
     },
 
     {
-        "value": "T-The mysterious Rayane? Ra-Rayane is a good pony now? I never understood who she really is. Everyone always scared me when telling stories about her. B-but..b-but... I'll try.",
+        "value": "T-The mysterious Rayane? Ra-Rayane is a good pony now? I never understood who she really is. Everyone always scared me when telling stories about her. Bu-but..b-but... I'll try.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -16359,7 +16359,7 @@
     },
 
     {
-        "value": "O-Ouch! O-oouch... A-Ah. Y-yes. I-I did... Yes. Sorry Sir Vinny. if I'm too childish and a complete crybaby. But before I came here... I was a kid. So I spent the rest of my childhood in this dimension until I became an adult. Marlon said I needed to learn to grow up. So he put me in this crazy job. My pony dream ended up showing I'm a failure even at this.",
+        "value": "O-Ouch! O-oouch... A-Ah. Ye-yes. I-I did... Yes. Sorry Sir Vinny. if I'm too childish and a complete crybaby. But before I came here... I was a kid. So I spent the rest of my childhood in this dimension until I became an adult. Marlon said I needed to learn to grow up. So he put me in this crazy job. My pony dream ended up showing I'm a failure even at this.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -16460,7 +16460,7 @@
     },
 
     {
-        "value": "M-My bag? Y-Yes! My magic saddle was the best thing I've ever been given as a gift. Feel free.",
+        "value": "M-My bag? Ye-yes! My magic saddle was the best thing I've ever been given as a gift. Feel free.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -16705,7 +16705,7 @@
     },
 
     {
-        "value": "Y-Yes. But please go carefully. I know I'm going to be in pain but I don't want to be in too much pain.",
+        "value": "Ye-yes. But please go carefully. I know I'm going to be in pain but I don't want to be in too much pain.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -16722,7 +16722,7 @@
     },
 
     {
-        "value": "B-But please. If I'm hindering you more than helping you, please let me know. I also don't want to disturb you and the mysterious Rayane. I saw on the computer that it looks like there were some earthquakes in Pony Driland.",
+        "value": "Bu-but please. If I'm hindering you more than helping you, please let me know. I also don't want to disturb you and the mysterious Rayane. I saw on the computer that it looks like there were some earthquakes in Pony Driland.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -16786,7 +16786,7 @@
         "set": {
             "playlistPlay": null
         },
-        "value": "Y-yes! Is it the mysterious Rayane? You two seem like a good couple.",
+        "value": "Ye-yes! Is it the mysterious Rayane? You two seem like a good couple.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -16833,7 +16833,7 @@
     },
 
     {
-        "value": "B-But I promise to try to be of use to you in something. Even if it's something very dangerous and I don't have a choice. Maybe Marlon is right.",
+        "value": "Bu-but I promise to try to be of use to you in something. Even if it's something very dangerous and I don't have a choice. Maybe Marlon is right.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -16850,7 +16850,7 @@
     },
 
     {
-        "value": "Y-Yes... Marlon is right... I have to stop being a crying baby and try to take my first steps to try to find my destiny. W-Well... Let's check.",
+        "value": "Ye-yes... Marlon is right... I have to stop being a crying baby and try to take my first steps to try to find my destiny. W-Well... Let's check.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -17073,7 +17073,7 @@
     },
 
     {
-        "value": "Y-Yes. It's ok. Hmmmmmmm... Ivy? I think Wagner is very hurt for having helped with the bomb. I have a suggestion for you. Your kiss would help Wagner, his reaction will be the same as Rayane's, see?",
+        "value": "Ye-yes. It's ok. Hmmmmmmm... Ivy? I think Wagner is very hurt for having helped with the bomb. I have a suggestion for you. Your kiss would help Wagner, his reaction will be the same as Rayane's, see?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -17084,7 +17084,7 @@
     },
 
     {
-        "value": "M-my little kiss? Y-Yes. I-I-I'll remember that. Looks like he needs my help little help.",
+        "value": "M-my little kiss? Ye-yes. I-I-I'll remember that. Looks like he needs my help little help.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -17213,7 +17213,7 @@
     },
 
     {
-        "value": "S-sorry to intrude on the private conversation between you and the mysterious Rayane. B-but who are you two talking about? Who is Rain and who is James?",
+        "value": "So-sorry to intrude on the private conversation between you and the mysterious Rayane. Bu-but who are you two talking about? Who is Rain and who is James?",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -17230,7 +17230,7 @@
     },
 
     {
-        "value": "V-Vinny! No! if your body starts to disintegrate, it's over. Your body would have to be rebuilt again somehow. And you know Rain might as well take your soul away if she doesn't like you.",
+        "value": "Vi-Vinny! No! if your body starts to disintegrate, it's over. Your body would have to be rebuilt again somehow. And you know Rain might as well take your soul away if she doesn't like you.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -17293,7 +17293,7 @@
     },
 
     {
-        "value": "W-Well... We have a part of the Master SmartMoby. So we could try to use it to try to benefit both regions. Y-Yes! We have to avoid trying to make pacts as much as possible! Remember one thing. If you lose, the pact is literally you selling your soul to Rain. You will literally be submissive to her will whether you like it or not.",
+        "value": "W-Well... We have a part of the Master SmartMoby. So we could try to use it to try to benefit both regions. Ye-yes! We have to avoid trying to make pacts as much as possible! Remember one thing. If you lose, the pact is literally you selling your soul to Rain. You will literally be submissive to her will whether you like it or not.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -17376,7 +17376,7 @@
     },
 
     {
-        "value": "R-really? And... can I trust the mysterious Rayane? I-It feels like I'm living in a second fantasy world.",
+        "value": "Re-really? And... can I trust the mysterious Rayane? I-It feels like I'm living in a second fantasy world.",
         "character": "Ivy",
         "type": "dialogue"
     },
@@ -18128,7 +18128,7 @@
     },
 
     {
-        "value": "H-Hey! If it was one of you how would you feel? Let your soldiers speak for themselves. Nobody wants that friend of yours to die. You already know right? I have a bomb on my body! Would you be ready to sacrifice your soldiers? Let them choose what they want. Do you want to do it the easy way where everyone pretends nothing happened here and we all leave or your hard way? We are all tired of it all. I just want to go home and see my family. Only that.",
+        "value": "He-hey! If it was one of you how would you feel? Let your soldiers speak for themselves. Nobody wants that friend of yours to die. You already know right? I have a bomb on my body! Would you be ready to sacrifice your soldiers? Let them choose what they want. Do you want to do it the easy way where everyone pretends nothing happened here and we all leave or your hard way? We are all tired of it all. I just want to go home and see my family. Only that.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -18173,7 +18173,7 @@
     },
 
     {
-        "value": "H-hey! If you know my name, it must be my intimates, right? THINK FAST!",
+        "value": "He-hey! If you know my name, it must be my intimates, right? THINK FAST!",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -18435,7 +18435,7 @@
     },
 
     {
-        "value": "T-This voice... Wait? V-Vinny?! What are you doing here?! You are very hurt! O-Okay!!",
+        "value": "T-This voice... Wait? Vi-Vinny?! What are you doing here?! You are very hurt! O-Okay!!",
         "character": "Kai",
         "type": "dialogue"
     },
@@ -18457,7 +18457,7 @@
     },
 
     {
-        "value": "J-jumping? B-But what about Rowan?! I came to rescue him! I'm not leaving here without Rowan!",
+        "value": "J-jumping? Bu-but what about Rowan?! I came to rescue him! I'm not leaving here without Rowan!",
         "character": "Kai",
         "type": "dialogue"
     },
@@ -18764,7 +18764,7 @@
     },
 
     {
-        "value": "H-huh? V-Vinny? V-Vinny!! Oh no! What did I do?!",
+        "value": "H-huh? Vi-Vinny? Vi-Vinny!! Oh no! What did I do?!",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -18862,7 +18862,7 @@
     },
 
     {
-        "value": "B-but what power is that?! A-Ah! I forgot! Rayane's sword is magic too!",
+        "value": "Bu-but what power is that?! A-Ah! I forgot! Rayane's sword is magic too!",
         "character": "Kai",
         "type": "dialogue"
     },
@@ -18968,7 +18968,7 @@
     },
 
     {
-        "value": "S-sorry Prisma. I didn't want to make you start using your powers. I feel like you were trying to avoid a confrontation with me.",
+        "value": "So-sorry Prisma. I didn't want to make you start using your powers. I feel like you were trying to avoid a confrontation with me.",
         "character": "Rayane",
         "type": "think"
     },
@@ -19178,7 +19178,7 @@
     },
 
     {
-        "value": "Y-Yes. But I almost lost she again. She was going to do anything to kill you. If I hadn't arrived in time, she would have killed you one way or another. But yes. at least everyone managed to help each other in the end.",
+        "value": "Ye-yes. But I almost lost she again. She was going to do anything to kill you. If I hadn't arrived in time, she would have killed you one way or another. But yes. at least everyone managed to help each other in the end.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -19375,7 +19375,7 @@
     },
 
     {
-        "value": "Ah? V-Vinny?",
+        "value": "Ah? Vi-Vinny?",
         "character": "James",
         "type": "dialogue"
     },
@@ -19415,7 +19415,7 @@
     },
 
     {
-        "value": "Y-yes. He always considered me his right-hand man in decisions. He always trained me to be a possible successor. But what do you mean by all this? He is fine? And who is Ivy?",
+        "value": "Ye-yes. He always considered me his right-hand man in decisions. He always trained me to be a possible successor. But what do you mean by all this? He is fine? And who is Ivy?",
         "character": "Kai",
         "type": "dialogue"
     },
@@ -19444,7 +19444,7 @@
     },
 
     {
-        "value": "Kai... S-Sorry. But this is hard to say to you.",
+        "value": "Kai... So-sorry. But this is hard to say to you.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -19824,7 +19824,7 @@
     },
 
     {
-        "value": "Y-Yes! It makes sense now.",
+        "value": "Ye-yes! It makes sense now.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -19993,7 +19993,7 @@
     },
 
     {
-        "value": "Y-yes! This is true!",
+        "value": "Ye-yes! This is true!",
         "character": "Rowan",
         "type": "dialogue"
     },
@@ -20157,7 +20157,7 @@
     },
 
     {
-        "value": "H-Hey!! Calm down James! Why all this agitation?",
+        "value": "He-hey!! Calm down James! Why all this agitation?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -20193,7 +20193,7 @@
     },
 
     {
-        "value": "A-Ah? Me? S-Sorry! But the name is Rainbow Queen? This name is very familiar. I heard a lot of ponies like Marlon and Hiroshi talking about her.",
+        "value": "A-Ah? Me? So-sorry! But the name is Rainbow Queen? This name is very familiar. I heard a lot of ponies like Marlon and Hiroshi talking about her.",
         "character": "James",
         "type": "dialogue"
     },
@@ -20305,7 +20305,7 @@
     },
 
     {
-        "value": "Y-yes. It's ok James, I'll be waiting for you two.",
+        "value": "Ye-yes. It's ok James, I'll be waiting for you two.",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -20339,7 +20339,7 @@
     },
 
     {
-        "value": "Y-Yes Kai. It's ok.",
+        "value": "Ye-yes Kai. It's ok.",
         "character": "Rowan",
         "type": "dialogue"
     },
@@ -20682,7 +20682,7 @@
     },
 
     {
-        "value": "J-James? Calm down, we all make mistakes. I'm here. Rayane, and Kenny is here too. I'm actually worried about him. But don't worry. We'll really manage, if we're going to stay alive we'll stay, if we're going to die... Well... It's not really a motivating stage but we're going to do everything to delay this or never happen.",
+        "value": "Ja-James? Calm down, we all make mistakes. I'm here. Rayane, and Kenny is here too. I'm actually worried about him. But don't worry. We'll really manage, if we're going to stay alive we'll stay, if we're going to die... Well... It's not really a motivating stage but we're going to do everything to delay this or never happen.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -20715,7 +20715,7 @@
     },
 
     {
-        "value": "Y-Yes. She's a goddess. If she wants to... she can erase this entire dimension in a few seconds and create a new one. If we're still alive, it's because she has a special reason for all this. Maybe I have something she wants. This can be the knowledge of how this dimension works. If Rayane has any involvement with this, maybe that's what she was going to do to me and she didn't.",
+        "value": "Ye-yes. She's a goddess. If she wants to... she can erase this entire dimension in a few seconds and create a new one. If we're still alive, it's because she has a special reason for all this. Maybe I have something she wants. This can be the knowledge of how this dimension works. If Rayane has any involvement with this, maybe that's what she was going to do to me and she didn't.",
         "character": "James",
         "type": "dialogue"
     },
@@ -20851,7 +20851,7 @@
     },
 
     {
-        "value": "Ah? H-hey! Relax! I have this armor that even Rayane lent me and it's an armor for alicorn. By the way, it's good that it washes my wounds, you'll get a cold if you don't use it, I'll be fine with this helmet you gave me.",
+        "value": "Ah? He-hey! Relax! I have this armor that even Rayane lent me and it's an armor for alicorn. By the way, it's good that it washes my wounds, you'll get a cold if you don't use it, I'll be fine with this helmet you gave me.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -21016,7 +21016,7 @@
     },
 
     {
-        "value": "H-Hey! You can go ahead! I will be watching the landscape.",
+        "value": "He-hey! You can go ahead! I will be watching the landscape.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -21809,7 +21809,7 @@
     },
 
     {
-        "value": "H-Hey! Calm down, I don't know if we're talking about the same pegasus, you don't even know her name, but I know, my intuition is never wrong. I-I know you will find she or she will find you.",
+        "value": "He-hey! Calm down, I don't know if we're talking about the same pegasus, you don't even know her name, but I know, my intuition is never wrong. I-I know you will find she or she will find you.",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -21860,7 +21860,7 @@
     },
 
     {
-        "value": "Y-yes. Good night to all of you.",
+        "value": "Ye-yes. Good night to all of you.",
         "character": "Wagner",
         "type": "dialogue"
     },
