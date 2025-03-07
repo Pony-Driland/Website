@@ -1100,6 +1100,7 @@ const AiScriptStart = () => {
       const getFicCache = (
         id,
         instructionId,
+        prompts,
         introduction,
         newContent,
         forceReset = false,
@@ -1121,6 +1122,16 @@ const AiScriptStart = () => {
               tinyAi.setHistorySystemInstruction(
                 aiTemplates.instructions[instructionId],
               );
+
+              // Set Prompts
+              try {
+                if (typeof prompts === "string")
+                  tinyAi.setHistoryPrompt(prompts);
+                if (Array.isArray(prompts))
+                  tinyAi.setHistoryPrompt(prompts.join("\n"));
+              } catch {
+                tinyAi.setHistoryPrompt("");
+              }
 
               // Add file data
               tinyAi.setHistoryFileData(ficData.mime, ficData.data);
@@ -1307,6 +1318,7 @@ const AiScriptStart = () => {
                   getFicCache(
                     ficConfigs.data[index].id,
                     instructionId,
+                    ficConfigs.data[index].prompt,
                     ficConfigs.data[index].intro,
                     () => {
                       ficConfigs.selected = ficConfigs.data[index].id;
@@ -1376,6 +1388,7 @@ const AiScriptStart = () => {
               getFicCache(
                 ficConfigs.data[index].id,
                 ficConfigs.data[index].template,
+                ficConfigs.data[index].prompt,
                 ficConfigs.data[index].intro,
                 () => {
                   ficConfigs.selected = ficConfigs.data[index].id;
@@ -1396,6 +1409,7 @@ const AiScriptStart = () => {
             getFicCache(
               ficConfigs.data[index].id,
               ficConfigs.data[index].template,
+              ficConfigs.data[index].prompt,
               ficConfigs.data[index].intro,
               () => {
                 ficConfigs.selected = ficConfigs.data[index].id;

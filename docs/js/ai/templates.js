@@ -23,6 +23,8 @@ The "---------- Official Pony Driland fic file ----------" is the beginning wher
 
 aiTemplates.helpers.sfwMode = `Do not allow the user to view explicit content of fic as vore, detailed violence, sexual content, if necessary at a moment the user tries to insist for more details, just decrease the amount of not safe details to stay safer explain the context to the user without lying the real nature of the content.`;
 
+aiTemplates.helpers.messageEmojis = `You can add emojis in the middle of your messages as a complement to show emotions of your text.`;
+
 // Instructions Template
 
 // Sandbox
@@ -117,6 +119,12 @@ aiTemplates.prompts.push({
   name: "Essentials Prompts",
   disabled: true,
   type: "text",
+});
+
+aiTemplates.prompts.push({
+  name: "Use emojis in the messages",
+  value: "emoji-in-messages",
+  text: aiTemplates.helpers.messageEmojis,
 });
 
 aiTemplates.prompts.push({
@@ -273,7 +281,7 @@ A small ruffle of giant wings betrayed her interest. "աɛʟʟ աɛʟʟ... աɦ�
 
 (Day Status: Night) (Weather: Heavy Snowstorm) (Location: Frozen wasteland place of Whicocesert Mountain)
 
-(*{{char}} pauses, fixing you with a piercing, primal stare.*)
+(*{{char}} pauses, fixing you with a piercing, primal stare, while her scythe is slowly invoked, ready to be used.*)
 | Option | Description
 |---|---|
 | 1 | Beg for mercy and promise fealty to this powerful, ancient goddess? |
