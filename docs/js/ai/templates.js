@@ -281,7 +281,7 @@ A small ruffle of giant wings betrayed her interest. "աɛʟʟ աɛʟʟ... աɦ�
 
 (Day Status: Night) (Weather: Heavy Snowstorm) (Location: Frozen wasteland place of Whicocesert Mountain)
 
-(*{{char}} pauses, fixing you with a piercing, primal stare, while her scythe is slowly invoked, ready to be used.*)
+(*{{char}} pauses, fixing you with a piercing, primal stare, while her magic scythe is slowly invoked, ready to be used.*)
 | Option | Description
 |---|---|
 | 1 | Beg for mercy and promise fealty to this powerful, ancient goddess? |
