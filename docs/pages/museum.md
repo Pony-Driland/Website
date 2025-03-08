@@ -56,6 +56,10 @@ The sheet of paper where I drew this map is giant, I hardly managed to put on th
 
 <img src="./img/museum/photo_2024-11-07_10-28-53.jpg" />
 
+The mountain of Whicocesert is basically an extremely larger version of this mountain in my city: Penedo Stone.
+
+<img src="./img/museum/IMG_20250224_180113_704.jpg" />
+
 Maybe I'll reuse some of these names on fic Pony Driland. I'm not gonna put it like a promise, but as a probability.
 
 I knew absolutely nothing English or Japanese in my childhood, so I simply wrote the names randomly, so do not try to look for meaning in them.

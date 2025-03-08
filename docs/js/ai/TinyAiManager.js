@@ -2660,7 +2660,7 @@ const AiScriptStart = () => {
           newMsg = newMsg.slice(1);
         }
 
-        return marked.parse(`${newMsg}${final}`, {
+        return marked.parse(`${newMsg}${final}`.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/,""), {
           renderer: renderer,
           breaks: true,
         });

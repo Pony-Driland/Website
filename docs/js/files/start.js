@@ -351,7 +351,7 @@ const insertMarkdownFile = function (
   let data;
 
   if (!isHTML) {
-    data = marked.parse(text);
+    data = marked.parse(text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/,""));
   } else {
     data = text;
   }
