@@ -24,13 +24,13 @@ To maintain the freedom of community development, I am allowing commercial use o
 When using Pony Driland elements in your projects, I will also be asking for credits. You have complete creative freedom to produce alternative content about Pony Driland.
 
 ### Files
-Javascript files, CSS files, HTML Files can be freely modified under the MIT license.
+Javascript files, CSS files, HTML Files can be freely modified under the agpl-3.0 license.
 
-https://opensource.org/licenses/MIT
+https://www.gnu.org/licenses/agpl-3.0.en.html
 
 <hr/>
 
 ### Fanfic Engine
-The fic engine is under the MIT license. Please just don't remove my development credits from the engine.
+The fic engine is under the agpl-3.0 license. Please just don't remove my development credits from the engine.
 
-https://opensource.org/licenses/MIT
+https://www.gnu.org/licenses/agpl-3.0.en.html
