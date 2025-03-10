@@ -3,7 +3,7 @@ title: 'Layla'
 mode: 'wiki'
 
 name: 'Layla (Page WIP)'
-subName: 'Rainbow Queen's pet'
+subName: 'Mystery and rebellion'
 cardUrl: '/img/characters/layla/ref.jpg'
 
 charTable_0_0: 'Kind'
@@ -15,14 +15,17 @@ charTable_1_1: 'Female'
 charTable_2_0: 'Residence'
 charTable_2_1: 'Rainbow Queen's home'
 
-charTable_3_0: 'Credits'
-charTable_3_1: ''
+charTable_3_0: 'Family'
+charTable_3_1: 'Rainbow Queen's pet'
 
-charTable_4_0: 'Development'
-charTable_4_1: 'JasminDreasond'
+charTable_4_0: 'Credits'
+charTable_4_1: ''
 
-charTable_5_0: 'Design'
-charTable_5_1: '[João the John](https://derpibooru.org/tags/artist-colon-joaothejohn)'
+charTable_5_0: 'Development'
+charTable_5_1: 'JasminDreasond'
+
+charTable_6_0: 'Design'
+charTable_6_1: '[João the John](https://derpibooru.org/tags/artist-colon-joaothejohn)'
 
 contentList_1_0: 'Items'
 contentList_1_1: 'Collar'

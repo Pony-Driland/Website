@@ -1,29 +1,38 @@
 #---
 title: 'Yasmin'
+mode: 'wiki'
+
+name: 'Yasmin (Page WIP)'
+subName: 'T̷͕̺͈̲̋͗̓̈͗͌̅͛̚ͅi̴̩̝̠͖̥͕͊̄̊͑͗͐̌͐͊̃͘͜m̴̫͔͓̀͐̊̈́e̷̡̛͙̰͚̙̼̣̜͔̪̊̀̓̔̑̔̀͒͊̈́͘̚͘͝l̵̨͎̬̝̻͚͎̻̋͑i̶̛̯̮͚̗̼̗͖̺̤̥̤͙͇̱̒̆̂̌̑̈́́͑́͌́̀͝n̶̨̡̖̂͝ȩ̷̪̩̭͍͈̲̗̭̺̙͆͐͜ ̸̨̧̥͕̮͕̪͒̐̒͛͘ë̵͕̗̼̲̤̓̌̆̈́͠r̶̢̡̧͈͈̝͖̠̹̺̯̤͍̪̥̈́̈́̅͘͠͝ŕ̶͙͙̽o̴̘͝r̷͈̈̔̃͂͛̈́̈́̌͒͋͝'
+cardUrl: ''
+
+charTable_0_0: 'Kind'
+charTable_0_1: 'Pegasus'
+
+charTable_1_0: 'Sex'
+charTable_1_1: 'Female'
+
+charTable_2_0: 'Residence'
+charTable_2_1: 'Rainbow Queen's home'
+
+charTable_3_0: 'Family'
+charTable_3_1: 'Rainbow Queen's pet'
+
+charTable_4_0: 'Credits'
+charTable_4_1: ''
+
+charTable_5_0: 'Development'
+charTable_5_1: 'JasminDreasond'
+
 #---
 
-# Yasmin
-
-## Specie
-
-Female / Pegasus
-
-## This character's description may contain possible spoilers!
-
-Yasmin is a version of an alternate universe of myself. (Yasmin Seidel)
-
-The story of this Yasmin separates from my original timeline on the date 24 jul, 2021. 
+The story of this Yasmin (Yasmin Seidel) separates from my original timeline on the date 24 jul, 2021. 
 That means everything that happened to me after this date no longer belongs to the timeline of this character.
 
-This Yasmin has no knowledge of cryptocurrency, knows nothing of what happened after the emergence of 
-the current 2024 AI age. In this timeline this Yasmin also knows absolutely nothing about the existence of Pony Driland. 
-The Pony Driland story has never been written anywhere in this universe.
+Although this Yasmin has very small knowledge about crypto, already has some specialties as programming, but knows nothing of what happened after the emergence of 
+the 2024 AI age, in this timeline Yasmin knows absolutely nothing about the existence of Pony Driland. Apart from these factors, all the other canonical things happened in the life of this Yasmin.
 
-Apart from these factors, all the other canonical things happened in the life of this Yasmin, and she faced 
-a very unexpected situation in having been brought to Pony Driland by Rainbow Queen.
-
-Yasmin recognizes that many elements of this dimension about ponies are familiar, but she also recognizes that this is not the
-same world she has known through stories about ponies in her world.
+All this makes you understand that this story is a timeline of a parallel universe of our reality. What does that mean?
 
 ### Chapter 3
 
