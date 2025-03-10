@@ -16,7 +16,7 @@ As long as:
 - It is **clearly and explicitly stated** that the content is **unofficial**.  
 
 ## 2. Disclaimer  
-I, **Yasmin Seidel**, do not monitor or regulate community-generated content and **hold no responsibility** for any alternative works created by third parties.  
+I, **Yasmin Seidel**, do not monitor community-generated content and **hold no responsibility** for any alternative works created by third parties.  
 
 ## 3. Official Recognition  
 I may support, promote, or acknowledge unofficial works. However, a work will only be considered **official** if it has been **explicitly approved** by me, and the artist has been formally notified.  
