@@ -1,7 +1,7 @@
 const setGoogleAi = (
   tinyGoogleAI,
   GEMINI_API_KEY,
-  MODEL_DATA = "gemini-1.5-flash",
+  MODEL_DATA = "gemini-2.0-flash",
 ) => {
   const apiUrl = "https://generativelanguage.googleapis.com/v1beta";
   tinyGoogleAI.setApiKey(GEMINI_API_KEY);
@@ -465,13 +465,28 @@ const setGoogleAi = (
                   data: [],
                 },
               ];
-              const modelOrder = {
-                "gemini-2.0-flash": { index: 0, category: "main" },
-                "gemini-1.5-flash": { index: 1, category: "main" },
-                "gemini-1.5-pro": { index: 2, category: "main" },
-                "gemini-1.0-pro": { index: 3, category: "main" },
-                "gemini-2.0-flash-exp": { index: 0, category: "exp" },
+
+              const modelOrderIndexUsed = { main: -1, exp: -1};
+              const modelOrder = {};
+
+              const addModelVersions = (version = '') => {
+                // Release
+                modelOrderIndexUsed.main++;
+                modelOrder[`gemini-${version}-flash`] = { index: modelOrderIndexUsed.main, category: "main" };
+                modelOrderIndexUsed.main++;
+                modelOrder[`gemini-${version}-pro`] = { index: modelOrderIndexUsed.main, category: "main" };
+                // Exp
+                modelOrderIndexUsed.exp++;
+                modelOrder[`gemini-${version}-flash-exp`] = { index: modelOrderIndexUsed.exp, category: "exp" };
+                modelOrderIndexUsed.exp++;
+                modelOrder[`gemini-${version}-pro-exp`] = { index: modelOrderIndexUsed.exp, category: "exp" };
               };
+
+              addModelVersions('1.5');
+              for(let versionNumber = 2; versionNumber < 100; versionNumber++) {
+                addModelVersions(`${versionNumber}.0`);
+                addModelVersions(`${versionNumber}.5`);
+              }
 
               // Read models
               console.log("[Google Generative] Models list", result.models);
