@@ -482,11 +482,11 @@ const setGoogleAi = (
                 modelOrder[`gemini-${version}-pro-exp`] = { index: modelOrderIndexUsed.exp, category: "exp" };
               };
 
-              addModelVersions('1.5');
-              for(let versionNumber = 2; versionNumber < 100; versionNumber++) {
+              for (let versionNumber = 99; versionNumber >= 2; versionNumber--) {
                 addModelVersions(`${versionNumber}.0`);
                 addModelVersions(`${versionNumber}.5`);
               }
+              addModelVersions('1.5');
 
               // Read models
               console.log("[Google Generative] Models list", result.models);
