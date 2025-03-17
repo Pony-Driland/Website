@@ -2027,7 +2027,7 @@
     },
 
     {
-        "value": "Aww... Really know? Do you know how to defend yourself too?~",
+        "value": "Aww... Really know? Do you know how to defend yourself too~?",
         "character": "???",
         "type": "dialogue"
     },
@@ -2077,7 +2077,7 @@
     },
 
     {
-        "value": "Meet the newbies... you know this is my role here. Can you please let me continue what I started?~",
+        "value": "Meet the newbies... you know this is my role here. Can you please let me continue what I started~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -2222,7 +2222,7 @@
     },
 
     {
-        "value": "Ham? Okay?~",
+        "value": "Ham? Okay~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -5298,7 +5298,7 @@
     },
 
     {
-        "value": "And you Vinny... What are you doing in this very specific place with this mad scientist?~",
+        "value": "And you Vinny... What are you doing in this very specific place with this mad scientist~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -6242,7 +6242,7 @@
     },
 
     {
-        "value": "Ah? Do you really want to know the answer?~",
+        "value": "Ah? Do you really want to know the answer~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -6327,7 +6327,7 @@
 
     {
         "set": { "playlistPlay": "bad-think" },
-        "value": "Shhhh~ Don't worry about him~ I'm here~ You have my word, I'm glad to hear your words from the small village. I never heard that from anyone. My greatest wish is that you keep your word. Okay?~",
+        "value": "Shhhh~ Don't worry about him~ I'm here~ You have my word, I'm glad to hear your words from the small village. I never heard that from anyone. My greatest wish is that you keep your word. Okay~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -9104,7 +9104,7 @@
     },
 
     {
-        "value": "Oh? do you really want to know?~",
+        "value": "Oh? do you really want to know~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -9694,7 +9694,7 @@
     },
 
     {
-        "value": "I'm loving it~ James is too. Right James?~",
+        "value": "I'm loving it~ James is too. Right James~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -10086,7 +10086,7 @@
     },
 
     {
-        "value": "Lab?~",
+        "value": "Lab~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -11515,7 +11515,7 @@
     },
 
     {
-        "value": "James Room? We're in the lab. What story is this?~",
+        "value": "James Room? We're in the lab. What story is this~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -11650,7 +11650,7 @@
     },
 
     {
-        "value": "Heh. No need to be ashamed. We can help you with that too. Alright?~",
+        "value": "Heh. No need to be ashamed. We can help you with that too. Alright~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -11970,7 +11970,7 @@
     },
 
     {
-        "value": "Awwww. Don't worry. I already have the perfect place for it~ Right Vinny?~",
+        "value": "Awwww. Don't worry. I already have the perfect place for it~ Right Vinny~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -12301,7 +12301,7 @@
     },
 
     {
-        "value": "Vinny?~ How's your helicopter mode going?~",
+        "value": "Vinny~? How's your helicopter mode going~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -12369,7 +12369,7 @@
     },
 
     {
-        "value": "Oops~ Was I too fast?~",
+        "value": "Oops~ Was I too fast~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -12601,7 +12601,7 @@
     },
 
     {
-        "value": "Oops?~",
+        "value": "Oops~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -12618,7 +12618,7 @@
     },
 
     {
-        "value": "I won? Can you repeat again?~",
+        "value": "I won? Can you repeat again~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -12711,7 +12711,7 @@
     },
 
     {
-        "value": "Are you ready?~",
+        "value": "Are you ready~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -12734,7 +12734,7 @@
     },
 
     {
-        "value": "Hm. what would that term be?~ Well, time for your challenge. Here we go~",
+        "value": "Hm. what would that term be~? Well, time for your challenge. Here we go~",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -12822,7 +12822,7 @@
     },
 
     {
-        "value": "Ready?~",
+        "value": "Ready~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -13129,7 +13129,7 @@
     },
 
     {
-        "value": "Anyway. What are we going to do in Kenny's room?~",
+        "value": "Anyway. What are we going to do in Kenny's room~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -13896,7 +13896,7 @@
     },
 
     {
-        "value": "Uh? Ah? I? Heh. Something interesting?~",
+        "value": "Uh? Ah? I? Heh. Something interesting~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -13916,7 +13916,7 @@
     },
 
     {
-        "value": "Mess up? Hmmmmmmm. Heh~ What kind of mess?~",
+        "value": "Mess up? Hmmmmmmm. Heh~ What kind of mess~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -14083,7 +14083,7 @@
     },
 
     {
-        "value": "Just show me the picture and I will use my magic. Alright?~",
+        "value": "Just show me the picture and I will use my magic. Alright~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -15288,7 +15288,7 @@
     },
 
     {
-        "value": "Heh. I want good quality marshmallows. Alright?~",
+        "value": "Heh. I want good quality marshmallows. Alright~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -15459,7 +15459,7 @@
     },
 
     {
-        "value": "James's a really silly scientist. Did you forget that I have teleport?~",
+        "value": "James's a really silly scientist. Did you forget that I have teleport~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -15690,7 +15690,7 @@
     },
 
     {
-        "value": "Heh. That's what happens when you're late in your lab. Alright?~",
+        "value": "Heh. That's what happens when you're late in your lab. Alright~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -15873,7 +15873,7 @@
     },
 
     {
-        "value": "James, no stress. Let's wait here. Alright?~",
+        "value": "James, no stress. Let's wait here. Alright~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -18547,7 +18547,7 @@
     },
 
     {
-        "value": "So what do we get? Wind?~",
+        "value": "So what do we get? Wind~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -19735,7 +19735,7 @@
     },
 
     {
-        "value": "Are you sure you're really interested in training with me?~ What are you using as combat equipment?",
+        "value": "Are you sure you're really interested in training with me~? What are you using as combat equipment?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -19914,7 +19914,7 @@
     },
 
     {
-        "value": "Are you ready? Can I put?~",
+        "value": "Are you ready? Can I put~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -20263,7 +20263,7 @@
     },
 
     {
-        "value": "Hm?~ Yes. James is a sleepyhead. James is a heavy sleeper~",
+        "value": "Hm~? Yes. James is a sleepyhead. James is a heavy sleeper~",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -20296,7 +20296,7 @@
     },
 
     {
-        "value": "Are you okay now?~",
+        "value": "Are you okay now~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -20616,7 +20616,7 @@
     },
 
     {
-        "value": "Hmmmm. Eat a horn? What's the silly thing this time?~",
+        "value": "Hmmmm. Eat a horn? What's the silly thing this time~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -21036,7 +21036,7 @@
     },
 
     {
-        "value": "Seriously?~ Never let your guard down in these situations. This will be your biggest mistake. Silly one~",
+        "value": "Seriously~? Never let your guard down in these situations. This will be your biggest mistake. Silly one~",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -22169,7 +22169,7 @@
     },
 
     {
-        "value": "Heh. So you say you remember me. If you think that, why are you afraid? I spared your life when we found you here today. I have no reason to hurt you. Alright?~",
+        "value": "Heh. So you say you remember me. If you think that, why are you afraid? I spared your life when we found you here today. I have no reason to hurt you. Alright~?",
         "character": "Rayane",
         "type": "dialogue"
     },
@@ -22209,7 +22209,7 @@
     },
 
     {
-        "value": "If you have any bad memories of something. All I'm going to ask you is to keep calm. Everything can be very different from what you're thinking. Alright?~",
+        "value": "If you have any bad memories of something. All I'm going to ask you is to keep calm. Everything can be very different from what you're thinking. Alright~?",
         "character": "Rayane",
         "type": "dialogue"
     },
