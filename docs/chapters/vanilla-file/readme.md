@@ -5,3 +5,5 @@ These are the original files of fic before the final stage of publication. The p
 This means that you can find dialogues removed, and you can also find dialogues that have been added after the adaptation step of the text.
 
 This space is just a place of preservation, I will not modify any original file posted in that folder. Every time a chapter is finished, I will place the original file for public access.
+
+**Tiny warning: The files have been converted from another data storage format, so maybe you find some json errors.**
