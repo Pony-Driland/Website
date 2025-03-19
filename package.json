@@ -3,13 +3,13 @@
         "node": ">=20.0.0"
     },
     "scripts": {
-        "start": "node ./",
-        "fix:prettier": "prettier --write ../docs/js/chapter_manager/* && prettier --write ../docs/js/files/* && prettier --write ../docs/js/ai/*",
-        "update-base64": "node ./base64",
-        "update-chapter": "node ./chapter",
-        "update-characters": "node ./characters",
-        "update-sitemap": "node ./sitemap",
-        "deploy-keybase": "node ./deploy-keybase"
+        "start": "node ./build/",
+        "fix:prettier": "prettier --write ./docs/js/chapter_manager/* && prettier --write ./docs/js/files/* && prettier --write ./docs/js/ai/*",
+        "update-base64": "node ./build/base64",
+        "update-chapter": "node ./build/chapter",
+        "update-characters": "node ./build/characters",
+        "update-sitemap": "node ./build/sitemap",
+        "deploy-keybase": "node ./build/deploy-keybase"
     },
     "author": {
         "name": "JasminDreasond (Yasmin Seidel)",
