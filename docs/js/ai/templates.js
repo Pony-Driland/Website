@@ -11,11 +11,11 @@ If the user is sending messages in another language, translate the messages to t
 aiTemplates.helpers.ficTellLines = `Tell which lines of fic you are referring to tell your answers to help the user search the source of your answers.`;
 
 aiTemplates.helpers.ficTimeCheckerLine = `Fic line markers in the story are presented as "[Fic Line X]", tell the fic line markers in natural language only.`;
-aiTemplates.helpers.ficTimeCheckerDayCounter = `Time markers in the story are presented as "Day Number: X", tell the time markers in natural language only.`;
-aiTemplates.helpers.ficTimeCheckerDayStatus = `Day markers in the story are presented as "Day Status: X", used to mark if the specific part of the story is "morning", "evening", "night", "lateAtNight", tell the day markers in natural language only.`;
-aiTemplates.helpers.ficTimeCheckerWeather = `Weather markers in the story are presented as "Weather: X", used to mark if the specific part of the story is "sun", "bolt", "rain", "heavyrain", "rain", "snow", tell the weather markers in natural language only.`;
-aiTemplates.helpers.ficTimeCheckerLocation = `Location markers in the story are presented as "Location: X", tell the location markers in natural language only.`;
-aiTemplates.helpers.ficTimeCheckerCuriosities = `Curiosities markers in the story are presented as "Curiosities: X", tell the curiosities markers in natural language only.`;
+aiTemplates.helpers.ficTimeCheckerDayCounter = `Time markers in the story are presented as "Day Number= X", tell the time markers in natural language only.`;
+aiTemplates.helpers.ficTimeCheckerDayStatus = `Day markers in the story are presented as "Day Status= X", used to mark if the specific part of the story is "morning", "evening", "night", "lateAtNight", tell the day markers in natural language only.`;
+aiTemplates.helpers.ficTimeCheckerWeather = `Weather markers in the story are presented as "Weather= X", used to mark if the specific part of the story is "sun", "bolt", "rain", "heavyrain", "rain", "snow", tell the weather markers in natural language only.`;
+aiTemplates.helpers.ficTimeCheckerLocation = `Location markers in the story are presented as "Location= X", tell the location markers in natural language only.`;
+aiTemplates.helpers.ficTimeCheckerCuriosities = `Curiosities markers in the story are presented as "Curiosity= X", tell the curiosities markers in natural language only.`;
 
 aiTemplates.helpers.ficTimeChecker = `
 The "---------- Official Pony Driland fic file ----------" is the beginning where the official file data of the fic Pony Driland begin and the "---------- The end Official Pony Driland fic file ----------" is where this official data ends, this information is important for you to know the difference between official content from non-official content.
@@ -279,7 +279,9 @@ A small ruffle of giant wings betrayed her interest. "աɛʟʟ աɛʟʟ... աɦ�
 
 "𝙊𝙧 𝙞𝙨 𝙮𝙤𝙪𝙧 𝙨𝙥𝙞𝙧𝙞𝙩 𝙨𝙤 𝙧𝙚𝙨𝙩𝙡𝙚𝙨𝙨 𝙮𝙤𝙪 𝙘𝙖𝙢𝙚 𝙨𝙚𝙚𝙠𝙞𝙣𝙜 𝙢𝙚 𝙤𝙪𝙩 𝙤𝙛 𝙮𝙤𝙪𝙧 𝙤𝙬𝙣 𝙛𝙧𝙚𝙚 𝙬𝙞𝙡𝙡?" {{char}} rumbles in that same hauntingly mellifluous tone. Her piercing amber eyes bore into you with an almost palpable weight. "𝙎𝙥𝙚𝙖𝙠 𝙣𝙤𝙬, 𝙨𝙩𝙖𝙩𝙚 𝙮𝙤𝙪𝙧 𝙧𝙚𝙖𝙨𝙤𝙣 𝙛𝙤𝙧 𝙩𝙧𝙚𝙨𝙥𝙖𝙨𝙨𝙞𝙣𝙜 𝙞𝙛 𝙮𝙤𝙪 𝙫𝙖𝙡𝙪𝙚 𝙩𝙝𝙚 𝙘𝙤𝙣𝙩𝙞𝙣𝙪𝙖𝙩𝙞𝙤𝙣 𝙤𝙛 𝙮𝙤𝙪𝙧 𝙛𝙧𝙖𝙜𝙞𝙡𝙚 𝙚𝙭𝙞𝙨𝙩𝙚𝙣𝙘𝙚."
 
-(Day Status: Night) (Weather: Heavy Snowstorm) (Location: Frozen wasteland place of Whicocesert Mountain)
+Day Status= Night
+Weather= Heavy Snowstorm
+Location= Frozen wasteland place of Whicocesert Mountain
 
 (*{{char}} pauses, fixing you with a piercing, primal stare, while her magic scythe is slowly invoked, ready to be used.*)
 | Option | Description
