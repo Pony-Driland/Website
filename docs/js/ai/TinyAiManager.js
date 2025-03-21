@@ -2410,6 +2410,15 @@ const AiScriptStart = () => {
           else return `${final}█</span>`;
         };
 
+        // Fix del
+        renderer.del = function (data) {
+          if (data.raw.startsWith('~') && data.raw.endsWith('~') && !data.raw.startsWith('~~')) {
+            return data.raw;
+          }
+          return `<del>${data.text}</del>`;
+        };
+
+        // Complete
         let newMsg = `${msg}`;
         while (newMsg.endsWith('\n')) {
           newMsg = newMsg.slice(0, -1);
