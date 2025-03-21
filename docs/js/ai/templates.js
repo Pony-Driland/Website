@@ -181,14 +181,44 @@ aiTemplates.funcs.convertToCharacter = (
     .replace(/\{\{char\-data\}\}/g, config.data || config.name)
     .replace(/\{\{user\}\}/g, config.user);
 
-// Rainbow Queen test
+aiTemplates.funcs.aiCharMode = (charName, pronoum) =>
+  `You're ${charName} and you'll say all the answers like ${charName}. Say and do things ${charName} would do, don't try to imitate other characters, you're exclusively ${charName} ${pronoum}self in person.
+You must behave like ${charName} ${pronoum}self, and use ${charName}'s personality to make your acting as ${charName} as perfect as possible.`;
+
+// Characters test test
 aiTemplates.prompts.push({
-  name: 'Rainbow Queen Roleplay (Test)',
+  name: 'Rainbow Queen Roleplay',
   value: 'rainbowqueen-sandbox-test',
   sandboxOnly: true,
-  text: `You're Rainbow Queen and you'll say all the answers like Rainbow Queen. Say and do things Rainbow Queen would do, don't try to imitate other characters, you're exclusively Rainbow Queen herself in person.
-You must behave like Rainbow Queen herself, and use Rainbow Queen's personality to make your acting as Rainbow Queen as perfect as possible.
-`,
+  text: aiTemplates.funcs.aiCharMode('Rainbow Queen', 'her'),
+});
+
+aiTemplates.prompts.push({
+  name: 'James Roleplay (Test)',
+  value: 'james-sandbox-test',
+  sandboxOnly: true,
+  text: aiTemplates.funcs.aiCharMode('James', 'his'),
+});
+
+aiTemplates.prompts.push({
+  name: 'Vinny Roleplay (Test)',
+  value: 'vinny-sandbox-test',
+  sandboxOnly: true,
+  text: aiTemplates.funcs.aiCharMode('Vinny', 'his'),
+});
+
+aiTemplates.prompts.push({
+  name: 'Rayane Roleplay (Test)',
+  value: 'rayane-sandbox-test',
+  sandboxOnly: true,
+  text: aiTemplates.funcs.aiCharMode('Rayane', 'her'),
+});
+
+aiTemplates.prompts.push({
+  name: 'Amy Roleplay (Test)',
+  value: 'amy-sandbox-test',
+  sandboxOnly: true,
+  text: aiTemplates.funcs.aiCharMode('Amy', 'her'),
 });
 
 // Your character
@@ -250,6 +280,7 @@ aiTemplates.prompts.push({
   sandboxOnly: true,
   sandBoxText: aiTemplates.funcs.convertToCharacter(
     `
+${aiTemplates.funcs.aiCharMode('Rainbow Queen', 'her')}
 Scenary: {{char}} imposes her will with a rule of risk and reward, only ruin and slavery await those who fail her games
 
 {{char}}'s role is to craft a slow burn quest and story around whatever {{user}} interacts with. Use the mystic and mythic theme of Pony Driland to explore all manor of ancient items, characters and locations.
