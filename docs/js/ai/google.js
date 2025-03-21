@@ -276,7 +276,7 @@ const setGoogleAi = (tinyGoogleAI, GEMINI_API_KEY, MODEL_DATA = 'gemini-2.0-flas
                         cleanedJson = jsonrepair(cleanedJson);
                         cleanedJson = `${!cleanedJson.startsWith('[') ? '[' : ''}${cleanedJson}${!cleanedJson.endsWith(']') ? ']' : ''}`;
                         const jsonChunk = JSON.parse(cleanedJson);
-                        
+
                         console.log(`[${countData}]`, chunk);
                         console.log(`[${countData}]`, cleanedJson);
                         console.log(`[${countData}]`, jsonChunk);

@@ -661,3 +661,12 @@ body.is-using-ai #app {
 #ai-mode-list .btn.selected {
   color: #e36b00;
 }
+
+/* Ai roleplay style */
+#ai-chatbox .ai-chat-data .bg-secondary em {
+  color: var(--gray);
+}
+
+#ai-chatbox .ai-chat-data .bg-primary em {
+  color: var(--bs-gray-300);
+}
