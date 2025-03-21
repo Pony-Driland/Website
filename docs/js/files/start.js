@@ -46,36 +46,30 @@ const renderRoleplayFormat = (chapter, saveCfg = {}) => {
 
     if (ficData.set) {
       if (saveCfg.dayNumber && typeof ficData.set.day === "number") {
-        if (day !== null) data += `\n) `;
         day = ficData.set.day;
-        data += `(Day Number: ${day}`;
+        data += `\nDay Number= ${day}`;
       }
 
       if (saveCfg.dayStatus && typeof ficData.set.dayNightCycle === "string") {
-        if (dayNightCycle !== null) data += `\n) `;
         dayNightCycle = ficData.set.dayNightCycle;
-        data += `(Day Status: ${dayNightCycle}`;
+        data += `\nDay Status= ${dayNightCycle}`;
       }
 
       if (saveCfg.weather && typeof ficData.set.weather === "string") {
-        if (weather !== null) data += `\n) `;
         weather = ficData.set.weather;
-        data += `(Weather: ${weather}`;
+        data += `\nWeather= ${weather}`;
       }
 
       if (saveCfg.location && typeof ficData.set.where === "string") {
-        if (where !== null) data += `\n) `;
         where = ficData.set.where;
-        data += `(Location: ${where}`;
+        data += `\nLocation= ${where}`;
       }
     }
 
     if (saveCfg.curiosities && ficData.info) {
-      data += `\n(Curiosities:`;
       for (const info in ficData.info) {
-        data += `\n${info} - ${ficData.info[info]}`;
+        data += `\nCuriosity= ${info}: ${ficData.info[info]}`;
       }
-      data += `\n)\n`;
     }
 
     const isFlashBack = ficData.flashback ? " from flashback scene" : "";
