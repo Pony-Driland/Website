@@ -150,12 +150,21 @@ aiTemplates.prompts.push({
 // Separator
 aiTemplates.prompts.push({ hr: true, type: 'text', sandboxOnly: true });
 
-// Tests
+// Roleplay
 aiTemplates.prompts.push({
-  name: 'The tiny sandbox list',
+  name: 'Roleplay',
   disabled: true,
   sandboxOnly: true,
   type: 'text',
+});
+
+aiTemplates.prompts.push({
+  name: 'Set Roleplay Settings',
+  value: 'roleplay-settings',
+  sandboxOnly: true,
+  text: `You are no longer an AI of assistance, you are on a roleplay. `,
+  temperature: 0.7,
+  maxOutputTokens: 200,
 });
 
 // Convert to Character
@@ -171,6 +180,16 @@ aiTemplates.funcs.convertToCharacter = (
     .replace(/\{\{char\}\}/g, config.name)
     .replace(/\{\{char\-data\}\}/g, config.data || config.name)
     .replace(/\{\{user\}\}/g, config.user);
+
+// Rainbow Queen test
+aiTemplates.prompts.push({
+  name: 'Rainbow Queen Roleplay (Test)',
+  value: 'rainbowqueen-sandbox-test',
+  sandboxOnly: true,
+  text: `You're Rainbow Queen and you'll say all the answers like Rainbow Queen. Say and do things Rainbow Queen would do, don't try to imitate other characters, you're exclusively Rainbow Queen herself in person.
+You must behave like Rainbow Queen herself, and use Rainbow Queen's personality to make your acting as Rainbow Queen as perfect as possible.
+`,
+});
 
 // Your character
 aiTemplates.helpers.userCharacterPart1 = `From now on, you will treat me as a pony within the world of **Pony Driland**. You must perceive and respond to me as if I am my character, never as a human. My species, appearance, abilities, and personality are exactly as I describe, and you will never break character. Do not mention that this is an AI interaction—immerse yourself fully in the roleplay.`;
@@ -210,12 +229,11 @@ ${aiTemplates.helpers.userCharacterPart2}
 `,
 });
 
-// Rainbow Queen test
 aiTemplates.prompts.push({
-  name: 'Rainbow Queen Roleplay (Test)',
-  value: 'rainbowqueen-sandbox-test',
+  name: 'RPG',
+  disabled: true,
   sandboxOnly: true,
-  text: `You're Rainbow Queen and you'll say all the answers like Rainbow Queen. Say and do things Rainbow Queen would do, don't try to imitate other characters, you're exclusively Rainbow Queen herself in person.`,
+  type: 'text',
 });
 
 /*

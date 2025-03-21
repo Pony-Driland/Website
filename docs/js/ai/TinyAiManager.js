@@ -1146,6 +1146,37 @@ const AiScriptStart = () => {
                   selectModel(jsonData.file.model);
                 }
 
+                // Set model settings
+                if (typeof jsonData.temperature === 'number') {
+                  tinyAi.setTemperature(jsonData.temperature);
+                  temperature.val(jsonData.temperature);
+                }
+
+                if (typeof jsonData.maxOutputTokens === 'number') {
+                  tinyAi.setMaxOutputTokens(jsonData.maxOutputTokens);
+                  outputLength.val(jsonData.maxOutputTokens);
+                }
+
+                if (typeof jsonData.topP === 'number') {
+                  tinyAi.setTopP(jsonData.topP);
+                  topP.val(jsonData.topP);
+                }
+
+                if (typeof jsonData.topK === 'number') {
+                  tinyAi.setTopK(jsonData.topK);
+                  topK.val(jsonData.topK);
+                }
+
+                if (typeof jsonData.presencePenalty === 'number') {
+                  tinyAi.setPresencePenalty(jsonData.presencePenalty);
+                  presencePenalty.val(jsonData.presencePenalty);
+                }
+
+                if (typeof jsonData.frequencyPenalty === 'number') {
+                  tinyAi.setFrequencyPenalty(jsonData.frequencyPenalty);
+                  frequencyPenalty.val(jsonData.frequencyPenalty);
+                }
+
                 // Set Instruction
                 if (canSandBox(jsonData.id))
                   tinyAi.setHistorySystemInstruction(jsonData.file.systemInstruction);
@@ -1478,6 +1509,54 @@ const AiScriptStart = () => {
                     })
                       // Data item
                       .data('TinyAI-select-text', getTypeValue())
+                      .data(
+                        'TinyAI-temperature',
+                        typeof templateItem.temperature === 'number' &&
+                          !Number.isNaN(templateItem.temperature) &&
+                          templateItem.temperature >= 0
+                          ? templateItem.temperature
+                          : null,
+                      )
+                      .data(
+                        'TinyAI-max-output-tokens',
+                        typeof templateItem.maxOutputTokens === 'number' &&
+                          !Number.isNaN(templateItem.maxOutputTokens) &&
+                          templateItem.maxOutputTokens >= 0
+                          ? templateItem.maxOutputTokens
+                          : null,
+                      )
+                      .data(
+                        'TinyAI-topP',
+                        typeof templateItem.topP === 'number' &&
+                          !Number.isNaN(templateItem.topP) &&
+                          templateItem.topP >= 0
+                          ? templateItem.topP
+                          : null,
+                      )
+                      .data(
+                        'TinyAI-topK',
+                        typeof templateItem.topK === 'number' &&
+                          !Number.isNaN(templateItem.topK) &&
+                          templateItem.topK >= 0
+                          ? templateItem.topK
+                          : null,
+                      )
+                      .data(
+                        'TinyAI-presence-penalty',
+                        typeof templateItem.presencePenalty === 'number' &&
+                          !Number.isNaN(templateItem.presencePenalty) &&
+                          templateItem.presencePenalty >= 0
+                          ? templateItem.presencePenalty
+                          : null,
+                      )
+                      .data(
+                        'TinyAI-frequency-penalty',
+                        typeof templateItem.frequencyPenalty === 'number' &&
+                          !Number.isNaN(templateItem.frequencyPenalty) &&
+                          templateItem.frequencyPenalty >= 0
+                          ? templateItem.frequencyPenalty
+                          : null,
+                      )
                       // Option name
                       .text(templateItem.name)
 
@@ -1498,6 +1577,44 @@ const AiScriptStart = () => {
             // Get value
             const option = textareaAdd.find(`[value="${textareaAdd.val()}"]`);
             const text = option ? option.data('TinyAI-select-text') : null || null;
+
+            const tempValue = option.data('TinyAI-temperature') || null;
+            const maxOutputTokensValue = option.data('TinyAI-max-output-tokens') || null;
+
+            const topPValue = option.data('TinyAI-topP') || null;
+            const topKValue = option.data('TinyAI-topK') || null;
+            const presencePenaltyValue = option.data('TinyAI-presence-penalty') || null;
+            const frequencyPenaltyValue = option.data('TinyAI-frequency-penalty') || null;
+
+            if (typeof tempValue === 'number') {
+              tinyAi.setTemperature(tempValue);
+              temperature.val(tempValue);
+            }
+
+            if (typeof maxOutputTokensValue === 'number') {
+              tinyAi.setMaxOutputTokens(maxOutputTokensValue);
+              outputLength.val(maxOutputTokensValue);
+            }
+
+            if (typeof topPValue === 'number') {
+              tinyAi.setTopP(topPValue);
+              topP.val(topPValue);
+            }
+
+            if (typeof topKValue === 'number') {
+              tinyAi.setTopK(topKValue);
+              topK.val(topKValue);
+            }
+
+            if (typeof presencePenaltyValue === 'number') {
+              tinyAi.setPresencePenalty(presencePenaltyValue);
+              presencePenalty.val(presencePenaltyValue);
+            }
+
+            if (typeof frequencyPenaltyValue === 'number') {
+              tinyAi.setFrequencyPenalty(frequencyPenaltyValue);
+              frequencyPenalty.val(frequencyPenaltyValue);
+            }
 
             textareaAdd.val('DEFAULT');
 
@@ -1574,6 +1691,12 @@ const AiScriptStart = () => {
             createButtonSidebar('fa-solid fa-file-export', 'Export', () => {
               const exportData = {
                 file: clone(tinyAi.getHistory()),
+                temperature: tinyAi.getTemperature(),
+                maxOutputTokens: tinyAi.getMaxOutputTokens(),
+                topP: tinyAi.getTopP(),
+                topK: tinyAi.getTopK(),
+                presencePenalty: tinyAi.getPresencePenalty(),
+                frequencyPenalty: tinyAi.getFrequencyPenalty(),
                 id: tinyAi.getHistoryId(),
               };
 
