@@ -5,9 +5,8 @@ const params = Object.fromEntries(urlSearchParams.entries());
 // On Off Validator
 const plugValue = function (item) {
   if (
-    (typeof item === "string" &&
-      (item === "true" || item === "on" || item === "1")) ||
-    ((typeof item === "boolean" || typeof item === "number") && item)
+    (typeof item === 'string' && (item === 'true' || item === 'on' || item === '1')) ||
+    ((typeof item === 'boolean' || typeof item === 'number') && item)
   ) {
     return true;
   } else {
@@ -52,20 +51,20 @@ const storyData = {
     startApp,
     failApp = function (err) {
       console.error(err);
-      if (typeof err.message === "string") {
+      if (typeof err.message === 'string') {
         alert(err.message);
       }
     },
   ) {
     if (localStorage) {
-      if (typeof startApp === "function") {
+      if (typeof startApp === 'function') {
         // Start App
         const startTinyApp = function () {
           // Read Data Base
           $.ajax({
-            url: "/readme.html" + fileVersion,
-            type: "get",
-            dataType: "text",
+            url: '/readme.html' + fileVersion,
+            type: 'get',
+            dataType: 'text',
           })
             .done(function (readme) {
               // Load Data
@@ -75,20 +74,10 @@ const storyData = {
                 const chapter = i + 1;
                 console.log(`Loading Chapter ${chapter}...`);
                 console.log(
-                  "./chapters/" +
-                    storyData.lang.active +
-                    "/" +
-                    chapter +
-                    ".json" +
-                    fileVersion,
+                  './chapters/' + storyData.lang.active + '/' + chapter + '.json' + fileVersion,
                 );
                 $.getJSON(
-                  "./chapters/" +
-                    storyData.lang.active +
-                    "/" +
-                    chapter +
-                    ".json" +
-                    fileVersion,
+                  './chapters/' + storyData.lang.active + '/' + chapter + '.json' + fileVersion,
                 )
 
                   // Complete
@@ -100,14 +89,11 @@ const storyData = {
                     for (const item in data) {
                       // Character Counter
                       if (
-                        typeof data[item].character === "string" &&
+                        typeof data[item].character === 'string' &&
                         data[item].character.length > 0
                       ) {
-                        const character = tinyLib.toTitleCase(
-                          data[item].character,
-                        );
-                        const characterLower =
-                          data[item].character.toLowerCase();
+                        const character = tinyLib.toTitleCase(data[item].character);
+                        const characterLower = data[item].character.toLowerCase();
 
                         let newData = storyData.characters.data.find(
                           (char) => char.value === character,
@@ -115,14 +101,14 @@ const storyData = {
                         if (!newData) {
                           newData = {
                             value: character,
-                            id: characterLower.replace(/ /g, "-"),
+                            id: characterLower.replace(/ /g, '-'),
                             count: 0,
                             chapter: {},
                           };
                           storyData.characters.data.push(newData);
                         }
 
-                        if (typeof newData.chapter[chapter] !== "number") {
+                        if (typeof newData.chapter[chapter] !== 'number') {
                           newData.chapter[chapter] = 0;
                         }
                         newData.chapter[chapter]++;
@@ -132,16 +118,14 @@ const storyData = {
                       }
 
                       // Get Text
-                      const text = data[item].value
-                        .replace(/(\r\n|\n|\r)/gm, "")
-                        .trim();
-                      const textSplit = text.split(" ");
+                      const text = data[item].value.replace(/(\r\n|\n|\r)/gm, '').trim();
+                      const textSplit = text.split(' ');
 
                       // Check Text
                       for (const item2 in textSplit) {
                         // Filter
-                        const text = tinyLib.toTitleCase(
-                          textSplit[item2].replace(/[^a-zA-Z]+/g, ""),
+                        const text = tinyLib.removeAiTags(
+                          tinyLib.toTitleCase(textSplit[item2].replace(/[^a-zA-Z]+/g, '')),
                         );
                         if (isNaN(Number(text)) && text.length > 0) {
                           // Count Data
@@ -149,9 +133,7 @@ const storyData = {
                             storyCfg.wordCountBlacklick = [];
                           }
                           if (storyCfg.wordCountBlacklick.indexOf(text) < 0) {
-                            let wordData = storyData.words.find(
-                              (word) => word.value === text,
-                            );
+                            let wordData = storyData.words.find((word) => word.value === text);
                             if (!wordData) {
                               wordData = { count: 0, value: text };
                               storyData.words.push(wordData);
@@ -166,7 +148,7 @@ const storyData = {
                         }
                       }
 
-                      letters += text.replace(/ /gm, "").length;
+                      letters += text.replace(/ |\<ai\>|\<\/ai\>/gm, '').length;
                     }
 
                     // Order Words
@@ -185,7 +167,7 @@ const storyData = {
                     storyData.wordsCount[chapter] = words;
                     storyData.wordsCount.total += words;
                     storyData.chapter.bookmark[chapter] = Number(
-                      localStorage.getItem("bookmark" + chapter),
+                      localStorage.getItem('bookmark' + chapter),
                     );
                     if (
                       isNaN(storyData.chapter.bookmark[chapter]) ||
@@ -195,14 +177,12 @@ const storyData = {
                       storyData.chapter.bookmark[chapter] = 1;
                     }
 
-                    const isNew = !localStorage.getItem(
-                      "chapter" + chapter + "MD5",
-                    );
+                    const isNew = !localStorage.getItem('chapter' + chapter + 'MD5');
                     let isUpdate = false;
                     if (!isNew) {
                       isUpdate =
                         objHash(storyData.data[chapter]) !==
-                        localStorage.getItem("chapter" + chapter + "MD5");
+                        localStorage.getItem('chapter' + chapter + 'MD5');
                     }
 
                     if (isNew) {
@@ -220,11 +200,11 @@ const storyData = {
                     if (storyData.count === storyData.chapter.amount) {
                       delete storyData.count;
                       delete storyData.start;
-                      console.log("App Started!");
-                      console.log("Loading UI...");
+                      console.log('App Started!');
+                      console.log('Loading UI...');
                       startApp(function () {
-                        $.LoadingOverlay("hide");
-                        console.log("UI loaded!");
+                        $.LoadingOverlay('hide');
+                        console.log('UI loaded!');
                       }, readme);
                     }
                   })
@@ -232,31 +212,29 @@ const storyData = {
                   // Fail
                   .fail(function (err) {
                     console.log(`Chapter ${chapter} failed during the load!`);
-                    $.LoadingOverlay("hide");
+                    $.LoadingOverlay('hide');
                     failApp(err);
                   });
               }
             })
             .fail((err) => {
               console.log(`README.md failed during the load!`);
-              $.LoadingOverlay("hide");
+              $.LoadingOverlay('hide');
               failApp(err);
             });
         };
 
         // Auto Bookmark
-        storyData.autoBookmark = plugValue(
-          localStorage.getItem("autoBookMark"),
-        );
+        storyData.autoBookmark = plugValue(localStorage.getItem('autoBookMark'));
 
         // Start App
-        $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
+        $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
         startTinyApp();
       } else {
-        failApp(new Error("Start App not found!"));
+        failApp(new Error('Start App not found!'));
       }
     } else {
-      failApp(new Error("Local Storage API not found!"));
+      failApp(new Error('Local Storage API not found!'));
     }
   },
 };

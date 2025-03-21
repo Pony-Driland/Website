@@ -3,7 +3,7 @@ storyData.tts = {};
 
 const ttsManager = {
   enabled: false,
-  voicePreferenceList: ["Zira - English", "English (USA,l03)", "DEFAULT"],
+  voicePreferenceList: ['Zira - English', 'English (USA,l03)', 'DEFAULT'],
   synth: window.speechSynthesis,
   voices: [],
   voice: null,
@@ -14,18 +14,11 @@ const ttsManager = {
 
   // Find Line
   findLine: function (line, dontTryAgain = false) {
-    let index = storyData.chapter.ficPageData.findIndex(
-      (item) => line === item.line,
-    );
+    let index = storyData.chapter.ficPageData.findIndex((item) => line === item.line);
     const ficData = storyData.chapter.ficPageData[index];
 
     // Complete 1
-    if (
-      ficData ||
-      dontTryAgain ||
-      !Array.isArray(storyData.chapter.ficPageData)
-    )
-      return ficData;
+    if (ficData || dontTryAgain || !Array.isArray(storyData.chapter.ficPageData)) return ficData;
 
     // Try loop
     while (index < storyData.chapter.ficPageData.length) {
@@ -46,45 +39,45 @@ const ttsManager = {
 
   // Start tts base
   startBase: function () {
-    if ($("#fic-nav > #status #tts").length < 1) {
+    if ($('#fic-nav > #status #tts').length < 1) {
       // Buttons
       if (!storyData.tts.nav) {
         storyData.tts.nav = {};
       }
-      storyData.tts.nav.play = $("<i>", { class: "fas fa-play" });
-      storyData.tts.nav.stop = $("<i>", { class: "fas fa-stop" });
+      storyData.tts.nav.play = $('<i>', { class: 'fas fa-play' });
+      storyData.tts.nav.stop = $('<i>', { class: 'fas fa-stop' });
 
       // Prepare
       if (!storyData.chapter.nav) {
         storyData.chapter.nav = {};
       }
-      storyData.chapter.nav.tts = $("<div>", {
+      storyData.chapter.nav.tts = $('<div>', {
         indexItem: 1,
-        class: "nav-item",
-        id: "tts",
+        class: 'nav-item',
+        id: 'tts',
       }).append(
-        $("<div>", { id: "tts-player" }).append(
+        $('<div>', { id: 'tts-player' }).append(
           // Play
-          $("<a>", {
-            href: "javascript:void(0)",
-            class: "text-white",
-            title: "Start TTS",
+          $('<a>', {
+            href: 'javascript:void(0)',
+            class: 'text-white',
+            title: 'Start TTS',
           })
-            .on("click", () => ttsManager.enable())
+            .on('click', () => ttsManager.enable())
             .append(storyData.tts.nav.play),
           // Stop
-          $("<a>", {
-            href: "javascript:void(0)",
-            class: "text-white",
-            title: "Stop TTS",
+          $('<a>', {
+            href: 'javascript:void(0)',
+            class: 'text-white',
+            title: 'Stop TTS',
           })
-            .on("click", () => ttsManager.disable())
+            .on('click', () => ttsManager.disable())
             .append(storyData.tts.nav.stop),
         ),
       );
 
       // Insert
-      $("#fic-nav > #status").prepend([
+      $('#fic-nav > #status').prepend([
         // TTS
         storyData.chapter.nav.tts,
       ]);
@@ -144,19 +137,17 @@ const ttsManager = {
     }
 
     // Read line
-    if (typeof line === "number") {
+    if (typeof line === 'number') {
       const ficData = ttsManager.findLine(line);
       if (ficData) {
         ttsManager.lastLine = ficData?.line || -1;
         ttsManager.lastLine++;
       } else {
-        console.error(
-          "non-number passed to ttsManager.readLine in the new fic data",
-        );
+        console.error('non-number passed to ttsManager.readLine in the new fic data');
         return;
       }
     } else {
-      console.error("non-number passed to ttsManager.readLine");
+      console.error('non-number passed to ttsManager.readLine');
       return;
     }
     ttsManager.synth.cancel();
@@ -204,19 +195,19 @@ const ttsManager = {
     // Read info
     if (data.info) {
       for (let key of Object.keys(data.info)) {
-        if (typeof cumulativeData.info[key] === "undefined") {
-          ttsManager.queue.push("Info " + key + ": " + data.info[key]);
+        if (typeof cumulativeData.info[key] === 'undefined') {
+          ttsManager.queue.push('Info ' + key + ': ' + tinyLib.removeAiTags(data.info[key]));
         }
       }
     }
 
     // Add action
     let actionString = data.type;
-    if (data.flashback) actionString += " flashback";
+    if (data.flashback) actionString += ' flashback';
     if (data.character) actionString += `: ${data.character}`;
 
     ttsManager.queue.push(actionString);
-    ttsManager.queue.push(data.value);
+    ttsManager.queue.push(tinyLib.removeAiTags(data.value));
 
     // Execute voice
     ttsManager.nextUtterance();

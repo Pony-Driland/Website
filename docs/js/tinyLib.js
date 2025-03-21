@@ -376,6 +376,11 @@ tinyLib.toTitleCase = function (str) {
     );
 }
 
+// Remove AI tags
+tinyLib.removeAiTags = function (str) {
+    return str.replace(/\<ai\>|\<\/ai\>/g, '');
+}
+
 // Boolean Checker
 tinyLib.booleanCheck = function (value) {
 

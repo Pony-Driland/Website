@@ -1,10 +1,4 @@
-musicManager.start.pizzicato = function (
-  item,
-  loop,
-  resolve,
-  url,
-  forcePic = false,
-) {
+musicManager.start.pizzicato = function (item, loop, resolve, url, forcePic = false) {
   // Pizzicato Space
   const pizzicato = {};
 
@@ -14,7 +8,7 @@ musicManager.start.pizzicato = function (
 
   const newSound = new Pizzicato.Sound(
     {
-      source: "file",
+      source: 'file',
       options: { path: url, loop: loop },
     },
     function () {
@@ -53,7 +47,7 @@ musicManager.start.pizzicato = function (
     return new Promise(function (resolve, reject) {
       setTimeout(function () {
         try {
-          if (typeof volume === "number") {
+          if (typeof volume === 'number') {
             pizzicato.setVolume(volume);
           } else {
             pizzicato.setVolume(pizzicato.volume);
@@ -72,7 +66,7 @@ musicManager.start.pizzicato = function (
   pizzicato.setVolume = function (value, notEdit = false) {
     return new Promise(function (resolve) {
       let tinyValue = value;
-      if (typeof tinyValue !== "number") {
+      if (typeof tinyValue !== 'number') {
         tinyValue = pizzicato.volume;
       }
 
@@ -114,7 +108,7 @@ musicManager.start.pizzicato = function (
     pizzicato.showing = false;
 
     if (
-      typeof hideTimeout === "number" &&
+      typeof hideTimeout === 'number' &&
       !isNaN(hideTimeout) &&
       isFinite(hideTimeout) &&
       hideTimeout > 0
@@ -161,7 +155,7 @@ musicManager.start.pizzicato = function (
     pizzicato.start();
 
     if (
-      typeof hideTimeout === "number" &&
+      typeof hideTimeout === 'number' &&
       !isNaN(hideTimeout) &&
       isFinite(hideTimeout) &&
       hideTimeout > 0
@@ -195,7 +189,7 @@ musicManager.start.pizzicato = function (
   };
 
   // End Sound
-  newSound.on("end", function () {
+  newSound.on('end', function () {
     if (!loop) {
       pizzicato.hide(0);
     }

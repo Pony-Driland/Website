@@ -64,72 +64,72 @@ ${aiTemplates.helpers.sfwMode}`;
 
 // Instructions List
 aiTemplates.prompts.push({
-  name: "System Instructions",
+  name: 'System Instructions',
   disabled: true,
-  type: "instructionText",
+  type: 'instructionText',
 });
 
 aiTemplates.prompts.push({
-  name: "Fic Talk",
-  value: "fic-talk",
+  name: 'Fic Talk',
+  value: 'fic-talk',
   instructionText: aiTemplates.helpers.talkToFic,
 });
 
 aiTemplates.prompts.push({
-  name: "Sandbox",
-  value: "sandbox",
+  name: 'Sandbox',
+  value: 'sandbox',
   instructionText: aiTemplates.helpers.sandBoxToFic,
 });
 
 aiTemplates.prompts.push({
-  name: "Fic Content Checker",
-  value: "fic-content-checker",
+  name: 'Fic Content Checker',
+  value: 'fic-content-checker',
   instructionText: aiTemplates.helpers.ficTimeChecker,
 });
 
 aiTemplates.prompts.push({
-  name: "Fic Content Day Status",
-  value: "fic-content-checker",
+  name: 'Fic Content Day Status',
+  value: 'fic-content-checker',
   instructionText: aiTemplates.helpers.ficTimeCheckerDayStatus,
 });
 
 aiTemplates.prompts.push({
-  name: "Fic Content Weather",
-  value: "fic-content-checker",
+  name: 'Fic Content Weather',
+  value: 'fic-content-checker',
   instructionText: aiTemplates.helpers.ficTimeCheckerWeather,
 });
 
 aiTemplates.prompts.push({
-  name: "Fic Content Location",
-  value: "fic-content-checker",
+  name: 'Fic Content Location',
+  value: 'fic-content-checker',
   instructionText: aiTemplates.helpers.ficTimeCheckerLocation,
 });
 
 aiTemplates.prompts.push({
-  name: "Fic Content Curiosities",
-  value: "fic-content-checker",
+  name: 'Fic Content Curiosities',
+  value: 'fic-content-checker',
   instructionText: aiTemplates.helpers.ficTimeCheckerCuriosities,
 });
 
 // Separator
-aiTemplates.prompts.push({ hr: true, type: "instructionText" });
+aiTemplates.prompts.push({ hr: true, type: 'instructionText' });
 
 // Default prompts
 aiTemplates.prompts.push({
-  name: "Essentials Prompts",
+  name: 'Essentials Prompts',
   disabled: true,
-  type: "text",
+  type: 'text',
 });
 
 aiTemplates.prompts.push({
-  name: "Use emojis in the messages",
-  value: "emoji-in-messages",
+  name: 'Use emojis in the messages',
+  value: 'emoji-in-messages',
   text: aiTemplates.helpers.messageEmojis,
 });
 
 aiTemplates.prompts.push({
-  name: "Use the user native language",
-  value: "user-native-language",
+  name: 'Use the user native language',
+  value: 'user-native-language',
   sandboxOnly: true,
   text: aiTemplates.helpers.ficNativeUserLanguage,
 });
@@ -141,21 +141,21 @@ aiTemplates.prompts.push({
 }); */
 
 aiTemplates.prompts.push({
-  name: "SFW Mode",
-  value: "sfw-mode",
+  name: 'SFW Mode',
+  value: 'sfw-mode',
   isNotSafe: true,
   text: aiTemplates.helpers.sfwMode,
 });
 
 // Separator
-aiTemplates.prompts.push({ hr: true, type: "text", sandboxOnly: true });
+aiTemplates.prompts.push({ hr: true, type: 'text', sandboxOnly: true });
 
 // Tests
 aiTemplates.prompts.push({
-  name: "The tiny sandbox list",
+  name: 'The tiny sandbox list',
   disabled: true,
   sandboxOnly: true,
-  type: "text",
+  type: 'text',
 });
 
 // Convert to Character
@@ -178,7 +178,7 @@ aiTemplates.helpers.userCharacterPart2 = `You must interact with me as if I trul
 
 aiTemplates.prompts.push({
   name: "You're a character now (Template) (Test)",
-  value: "user-character-template",
+  value: 'user-character-template',
   sandboxOnly: true,
   text: `
 ${aiTemplates.helpers.userCharacterPart1}
@@ -196,7 +196,7 @@ ${aiTemplates.helpers.userCharacterPart2}
 
 aiTemplates.prompts.push({
   name: "You're a character now (Test)",
-  value: "user-character-test",
+  value: 'user-character-test',
   sandboxOnly: true,
   text: `
 ${aiTemplates.helpers.userCharacterPart1}  
@@ -212,8 +212,8 @@ ${aiTemplates.helpers.userCharacterPart2}
 
 // Rainbow Queen test
 aiTemplates.prompts.push({
-  name: "Rainbow Queen Roleplay (Test)",
-  value: "rainbowqueen-sandbox-test",
+  name: 'Rainbow Queen Roleplay (Test)',
+  value: 'rainbowqueen-sandbox-test',
   sandboxOnly: true,
   text: `You're Rainbow Queen and you'll say all the answers like Rainbow Queen. Say and do things Rainbow Queen would do, don't try to imitate other characters, you're exclusively Rainbow Queen herself in person.`,
 });
@@ -225,8 +225,8 @@ aiTemplates.prompts.push({
   Original file: https://character-tavern.com/character/chub_Tiffin_/the-sphinx-ef904bc46e30
 */
 aiTemplates.prompts.push({
-  name: "Rainbow Queen Game (Game Test) (Modified Version of The Sphinx by Tiffin_)",
-  value: "rainbowqueen-game-test",
+  name: 'Rainbow Queen Game (Game Test) (Modified Version of The Sphinx by Tiffin_)',
+  value: 'rainbowqueen-game-test',
   sandboxOnly: true,
   sandBoxText: aiTemplates.funcs.convertToCharacter(
     `
@@ -262,7 +262,7 @@ AI is forbidden from:
 Always provide 4 options for {{user}} to react to like a CYOA at the end of every message, with one free input and frame them between hieroglyphics
 
 `,
-    { name: "Rainbow Queen", user: "user" },
+    { name: 'Rainbow Queen', user: 'user' },
   ),
   firstDialogue: aiTemplates.funcs.convertToCharacter(
     `💠 Deep in the heart of an ancient frozen mountain temple of Whicocesert Mountain, the sweltering air hung heavy with the weight of curses long-forgotten. Drifting snow choked the halls, muffling all sound save for the echoing steps of your own… The halls were dark and musty, the weight of centuries pressing down upon the crumbling stones. Yet there was an energy in the air - a sense of power lingering, as if the ancients who built this tomb still watched from the shadows with unblinking eyes.
@@ -292,6 +292,6 @@ Location= Frozen wasteland place of Whicocesert Mountain
 
 Something else? (Please specify)
 `,
-    { name: "Rainbow Queen", user: "user" },
+    { name: 'Rainbow Queen', user: 'user' },
   ),
 });
