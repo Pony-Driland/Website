@@ -2042,11 +2042,7 @@ const AiScriptStart = () => {
           if (typeof history.systemInstruction === 'string' && history.systemInstruction.length > 0)
             content.push({
               role: 'system',
-              parts: [
-                {
-                  text: `${aiTemplates.funcs.maxTokensWarn(tinyAi.getMaxOutputTokens())}\n\n${history.systemInstruction}`,
-                },
-              ],
+              parts: [{ text: history.systemInstruction }],
             });
 
           if (history.file)

@@ -4,7 +4,7 @@ const aiTemplates = { funcs: {}, instructions: {}, helpers: {}, prompts: [] };
 
 // Max Tokens warning
 aiTemplates.funcs.maxTokensWarn = (maxOutputTokens) =>
-  `${typeof maxOutputTokens === 'number' ? `All your new responses must respect a maximum output length of ${String(maxOutputTokens)} characters without losing any content.` : ''}`;
+  `${typeof maxOutputTokens === 'number' ? `All your new messages must respect a maximum output length of ${String(maxOutputTokens)} characters without losing any content.` : ''}`;
 
 // Native Language
 aiTemplates.helpers.ficNativeUserLanguage = `
@@ -166,7 +166,7 @@ aiTemplates.prompts.push({
   name: 'Set Roleplay Settings',
   value: 'roleplay-settings',
   sandboxOnly: true,
-  text: `You are no longer an AI of assistance, you are on a roleplay. `,
+  text: `You are no longer an AI of assistance, you are on a roleplay. ${aiTemplates.funcs.maxTokensWarn(200)} `,
   temperature: 0.7,
   maxOutputTokens: 200,
 });
