@@ -769,24 +769,6 @@ $(() => {
     storyData.start((fn, readme) => {
       const tinyAiScript = AiScriptStart();
 
-      // Crypto Allow Detector
-      if (
-        storyData.ipRegistry &&
-        storyData.ipRegistry.location &&
-        storyData.ipRegistry.location.country &&
-        typeof storyData.ipRegistry.location.country.code === 'string'
-      ) {
-        storyData.allowCrypto = true;
-        if (Array.isArray(storyCfg.cryptoBlock)) {
-          for (const item in storyCfg.cryptoBlock) {
-            if (storyData.ipRegistry.location.country.code === storyCfg.cryptoBlock[item]) {
-              storyData.allowCrypto = false;
-              break;
-            }
-          }
-        }
-      }
-
       // Custom Colors
       $('head').append(
         $('<style>', { id: 'custom_color' }).text(`
