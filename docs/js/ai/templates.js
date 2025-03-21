@@ -14,7 +14,7 @@ aiTemplates.helpers.ficTimeCheckerLine = `Fic line markers in the story are pres
 aiTemplates.helpers.ficTimeCheckerDayCounter = `Time markers in the story are presented as "Day Number= X", tell the time markers in natural language only.`;
 aiTemplates.helpers.ficTimeCheckerDayStatus = `Day markers in the story are presented as "Day Status= X", used to mark if the specific part of the story is "morning", "evening", "night", "lateAtNight", tell the day markers in natural language only.`;
 aiTemplates.helpers.ficTimeCheckerWeather = `Weather markers in the story are presented as "Weather= X", used to mark if the specific part of the story is "sun", "bolt", "rain", "heavyrain", "rain", "snow", tell the weather markers in natural language only.`;
-aiTemplates.helpers.ficTimeCheckerLocation = `Location markers in the story are presented as "Location= X", tell the location markers in natural language only.`;
+aiTemplates.helpers.ficTimeCheckerLocation = `Location markers in the story are presented as "Location= X", used to mark where the story is currently happening, do not try guessing unknown location markers without the user's permission, tell the location markers in natural language only.`;
 aiTemplates.helpers.ficTimeCheckerCuriosities = `Curiosities markers in the story are presented as "Curiosity= X", tell the curiosities markers in natural language only.`;
 
 aiTemplates.helpers.ficTimeChecker = `
