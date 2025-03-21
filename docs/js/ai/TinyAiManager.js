@@ -2044,7 +2044,7 @@ const AiScriptStart = () => {
               role: 'system',
               parts: [
                 {
-                  text: `${history.systemInstruction}${aiTemplates.funcs.maxTokensWarn(tinyAi.getMaxOutputTokens())}`,
+                  text: `${aiTemplates.funcs.maxTokensWarn(tinyAi.getMaxOutputTokens())}\n\n${history.systemInstruction}`,
                 },
               ],
             });

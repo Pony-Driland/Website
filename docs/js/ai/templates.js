@@ -4,7 +4,7 @@ const aiTemplates = { funcs: {}, instructions: {}, helpers: {}, prompts: [] };
 
 // Max Tokens warning
 aiTemplates.funcs.maxTokensWarn = (maxOutputTokens) =>
-  `${typeof maxOutputTokens === 'number' ? `\n\nEnsure that your new response have a maximum output length of ${String(maxOutputTokens)} characters.` : ''}`;
+  `${typeof maxOutputTokens === 'number' ? `All your new responses must respect a maximum output length of ${String(maxOutputTokens)} characters without losing any content.` : ''}`;
 
 // Native Language
 aiTemplates.helpers.ficNativeUserLanguage = `
