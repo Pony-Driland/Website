@@ -245,6 +245,8 @@ aiTemplates.prompts.push({
 aiTemplates.prompts.push({
   name: 'Rainbow Queen Game (Game Test) (Modified Version of The Sphinx by Tiffin_)',
   value: 'rainbowqueen-game-test',
+  temperature: 0.7,
+  maxOutputTokens: 4000,
   sandboxOnly: true,
   sandBoxText: aiTemplates.funcs.convertToCharacter(
     `
