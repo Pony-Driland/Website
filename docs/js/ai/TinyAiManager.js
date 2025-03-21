@@ -2196,33 +2196,37 @@ const AiScriptStart = () => {
           tinyAi
             .genContent(content, tinyController, (chuck) => {
               isComplete = chuck.done;
-              if (!isComplete) {
-                // Update tokens
-                insertTokens(chuck.tokenUsage);
+              // Update tokens
+              if (chuck.tokenUsage) insertTokens(chuck.tokenUsage);
 
-                // Update history
-                if (typeof tinyCache.indexId === 'undefined')
-                  tinyCache.indexId = tinyAi.addHistoryData(chuck.contents[0]);
-                else
-                  tinyAi.replaceHistoryIndex(
-                    tinyAi.getHistoryIndexById(tinyCache.indexId),
-                    chuck.contents[0],
-                  );
+              // Read contents
+              if (chuck.contents) {
+                for (const index in chuck.contents) {
+                  // Update history
+                  if (typeof tinyCache.indexId === 'undefined')
+                    tinyCache.indexId = tinyAi.addHistoryData(chuck.contents[index]);
+                  else
+                    tinyAi.replaceHistoryIndex(
+                      tinyAi.getHistoryIndexById(tinyCache.indexId),
+                      chuck.contents[index],
+                    );
 
-                // Send insert request
-                if (typeof chuck.contents[0].parts[0].text === 'string')
-                  insertMessage(chuck.contents[0].parts[0].text, chuck.contents[0].role);
+                  // Send insert request
+                  if (typeof chuck.contents[index].parts[0].text === 'string')
+                    insertMessage(chuck.contents[index].parts[0].text, chuck.contents[index].role);
 
-                // Update message cache
-                const oldBallonCache = tinyCache.msgBallon.data('tiny-ai-cache');
-                oldBallonCache.msg = chuck.contents[0].parts[0].text;
-                tinyCache.msgBallon.data('tiny-ai-cache', oldBallonCache);
+                  // Update message cache
+                  const oldBallonCache = tinyCache.msgBallon.data('tiny-ai-cache');
+                  oldBallonCache.msg = chuck.contents[index].parts[0].text;
+                  tinyCache.msgBallon.data('tiny-ai-cache', oldBallonCache);
 
-                // Add class
-                tinyCache.msgBallon.addClass('entering-ai-message');
+                  // Add class
+                  tinyCache.msgBallon.addClass('entering-ai-message');
+                }
               }
+
               // Remove class
-              else {
+              if (isComplete) {
                 const notificationError = () =>
                   tinyNotification.send('System', 'Your message was not processed.');
 

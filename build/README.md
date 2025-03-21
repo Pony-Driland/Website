@@ -28,6 +28,5 @@ Don't forget to give credits if you want to use my fanfic website building syste
 
 ## Browserify Example
 
-browserify modules/marked.js -o marked.js
-
-browserify index.js -p esmify > bundle.js
+browserify build/modules/marked.js -o docs/js/marked.js
+browserify build/modules/index.js -p esmify > docs/js/bundle.js
