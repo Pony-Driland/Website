@@ -17,7 +17,7 @@ storyData.music = {
   songVolumeUpdate: function () {
     setTimeout(function () {
       for (const item in storyData.sfx) {
-        if (typeof storyData.sfx[item].volume === "number") {
+        if (typeof storyData.sfx[item].volume === 'number') {
           storyData.sfx[item].setVolume();
         }
       }
@@ -29,7 +29,7 @@ storyData.music = {
 storyData.youtube = {
   // Check Youtube Values
   checkYT: function () {
-    return typeof YT !== "undefined" && YT.PlayerState;
+    return typeof YT !== 'undefined' && YT.PlayerState;
   },
 
   // Volume
@@ -46,11 +46,10 @@ storyData.youtube = {
       // Get Data
       storyData.youtube.volume = storyData.youtube.player.getVolume();
       storyData.youtube.quality = storyData.youtube.player.getPlaybackQuality();
-      storyData.youtube.qualityList =
-        storyData.youtube.player.getAvailableQualityLevels();
+      storyData.youtube.qualityList = storyData.youtube.player.getAvailableQualityLevels();
 
       // Storage Volume
-      const storageVolume = Number(localStorage.getItem("storyVolume"));
+      const storageVolume = Number(localStorage.getItem('storyVolume'));
       if (
         isNaN(storageVolume) ||
         !isFinite(storageVolume) ||
@@ -58,16 +57,16 @@ storyData.youtube = {
         storageVolume > 100
       ) {
         if (
-          typeof storyData.youtube.volume !== "number" ||
+          typeof storyData.youtube.volume !== 'number' ||
           isNaN(storyData.youtube.volume) ||
           !isFinite(storyData.youtube.volume)
         ) {
           storyData.youtube.volume = 100;
           storyData.youtube.player.setVolume(100);
-          localStorage.setItem("storyVolume", 100);
+          localStorage.setItem('storyVolume', 100);
           storyData.music.volume = 100;
         } else {
-          localStorage.setItem("storyVolume", storyData.youtube.volume);
+          localStorage.setItem('storyVolume', storyData.youtube.volume);
         }
       } else {
         storyData.youtube.volume = storageVolume;
@@ -81,15 +80,13 @@ storyData.youtube = {
       storyData.youtube.player.setShuffle(true);
 
       if (storyData.youtube.volume > 0) {
-        if (storyData.youtube.player.playVideo)
-          storyData.youtube.player.playVideo();
+        if (storyData.youtube.player.playVideo) storyData.youtube.player.playVideo();
       } else {
-        if (storyData.youtube.player.pauseVideo)
-          storyData.youtube.player.pauseVideo();
+        if (storyData.youtube.player.pauseVideo) storyData.youtube.player.pauseVideo();
       }
 
       // Send Data
-      if (typeof appData.youtube.onReady === "function") {
+      if (typeof appData.youtube.onReady === 'function') {
         appData.youtube.onReady(event);
       }
     },
@@ -99,12 +96,11 @@ storyData.youtube = {
       // Event
       if (event) {
         storyData.youtube.state = event.data;
-        storyData.youtube.qualityList =
-          storyData.youtube.player.getAvailableQualityLevels();
+        storyData.youtube.qualityList = storyData.youtube.player.getAvailableQualityLevels();
       }
 
       // Send Data
-      if (typeof appData.youtube.onStateChange === "function") {
+      if (typeof appData.youtube.onStateChange === 'function') {
         appData.youtube.onStateChange(event);
       }
     },
@@ -114,7 +110,7 @@ storyData.youtube = {
       if (event) {
         storyData.youtube.quality = event.data;
       }
-      if (typeof appData.youtube.onPlaybackQualityChange === "function") {
+      if (typeof appData.youtube.onPlaybackQualityChange === 'function') {
         appData.youtube.onPlaybackQualityChange(event);
       }
       /* player.setPlaybackQuality('default') */
@@ -122,20 +118,20 @@ storyData.youtube = {
 
     // Other
     onPlaybackRateChange: function (event) {
-      if (typeof appData.youtube.onPlaybackRateChange === "function") {
+      if (typeof appData.youtube.onPlaybackRateChange === 'function') {
         appData.youtube.onPlaybackRateChange(event);
       }
     },
 
     onError: function (event) {
       console.error(event);
-      if (typeof appData.youtube.onError === "function") {
+      if (typeof appData.youtube.onError === 'function') {
         appData.youtube.onError(event);
       }
     },
 
     onApiChange: function (event) {
-      if (typeof appData.youtube.onApiChange === "function") {
+      if (typeof appData.youtube.onApiChange === 'function') {
         appData.youtube.onApiChange(event);
       }
     },
@@ -143,10 +139,7 @@ storyData.youtube = {
 
   // Quality
   setQuality: function (value) {
-    if (
-      storyData.youtube.qualityList.indexOf(value) > -1 ||
-      value === "default"
-    ) {
+    if (storyData.youtube.qualityList.indexOf(value) > -1 || value === 'default') {
       storyData.youtube.quality = value;
       storyData.youtube.player.setPlaybackQuality(value);
       return true;
@@ -157,7 +150,7 @@ storyData.youtube = {
 
   // Volume
   setVolume: function (number) {
-    localStorage.setItem("storyVolume", Number(number));
+    localStorage.setItem('storyVolume', Number(number));
     storyData.youtube.volume = Number(number);
     storyData.youtube.player.setVolume(Number(number));
     storyData.music.volume = Number(number);
@@ -189,9 +182,9 @@ storyData.youtube = {
       if (!storyData.youtube.player) {
         // 2. This code loads the IFrame Player API code asynchronously.
         console.log(`Starting Youtube API...`, videoID);
-        const tag = document.createElement("script");
-        tag.src = "https://www.youtube.com/iframe_api";
-        $("head").append(tag);
+        const tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        $('head').append(tag);
 
         // Current Time Detector
         setInterval(function () {
@@ -210,25 +203,21 @@ storyData.youtube = {
                   storyData.youtube.embed = {};
                   $.ajax({
                     url:
-                      "https://www.youtube.com/oembed?format=json&url=" +
+                      'https://www.youtube.com/oembed?format=json&url=' +
                       encodeURIComponent(
-                        `https://www.youtube.com/watch?v=` +
-                          storyData.youtube.videoID,
+                        `https://www.youtube.com/watch?v=` + storyData.youtube.videoID,
                       ),
-                    type: "get",
-                    dataType: "json",
+                    type: 'get',
+                    dataType: 'json',
                   })
                     .done(function (jsonVideo) {
-                      console.log(
-                        `Youtube video embed loaded!`,
-                        storyData.youtube.videoID,
-                      );
+                      console.log(`Youtube video embed loaded!`, storyData.youtube.videoID);
                       storyData.youtube.embed = jsonVideo;
 
-                      if (typeof storyCfg.gtag === "string" && gtag) {
-                        gtag("event", "chapter", {
+                      if (typeof storyCfg.gtag === 'string' && gtag) {
+                        gtag('event', 'chapter', {
                           event_chapter: `Chapter ${storyData.chapter.selected}`,
-                          event_category: "song_playing",
+                          event_category: 'song_playing',
                           song: `${jsonVideo.provider_name} - ${jsonVideo.author_name} - ${jsonVideo.title}`,
                         });
                       }
@@ -252,11 +241,9 @@ storyData.youtube = {
                 }
 
                 storyData.music.playing = true;
-                storyData.youtube.duration =
-                  storyData.youtube.player.getDuration();
-                storyData.youtube.currentTime =
-                  storyData.youtube.player.getCurrentTime();
-                if (typeof appData.youtube.onPlaying === "function") {
+                storyData.youtube.duration = storyData.youtube.player.getDuration();
+                storyData.youtube.currentTime = storyData.youtube.player.getCurrentTime();
+                if (typeof appData.youtube.onPlaying === 'function') {
                   appData.youtube.onPlaying();
                 }
               }
@@ -269,8 +256,7 @@ storyData.youtube = {
                 // Stopping
                 if (storyData.music.isStopping) {
                   storyData.youtube.player.seekTo(0);
-                  if (storyData.youtube.player.pauseVideo)
-                    storyData.youtube.player.pauseVideo();
+                  if (storyData.youtube.player.pauseVideo) storyData.youtube.player.pauseVideo();
                   storyData.music.isStopping = false;
                 }
 
@@ -286,8 +272,7 @@ storyData.youtube = {
 
                 // Progress
                 storyData.music.stoppabled = true;
-                storyData.youtube.currentTime =
-                  storyData.youtube.player.getDuration();
+                storyData.youtube.currentTime = storyData.youtube.player.getDuration();
               }
 
               // Paused
@@ -307,11 +292,7 @@ storyData.youtube = {
 
       // Reuse Player
       else {
-        if (
-          storyData.youtube &&
-          storyData.youtube.player &&
-          storyData.youtube.player.loadVideoById
-        )
+        if (storyData.youtube && storyData.youtube.player && storyData.youtube.player.loadVideoById)
           storyData.youtube.player.loadVideoById({
             videoId: videoID,
             startSeconds: 0,
@@ -320,8 +301,8 @@ storyData.youtube = {
 
       // Prepare Volume
       if (
-        typeof storyData.youtube.volume === "number" &&
-        typeof storyData.music.volume === "number" &&
+        typeof storyData.youtube.volume === 'number' &&
+        typeof storyData.music.volume === 'number' &&
         storyData.youtube.volume !== storyData.music.volume
       ) {
         if (storyData.youtube.player) {
@@ -343,7 +324,7 @@ const musicManager = {
     return new Promise(function (resolve, reject) {
       const vanillaURL = url;
       if (!musicManager.cache.blob[vanillaURL]) {
-        fetch(url, { method: "GET" })
+        fetch(url, { method: 'GET' })
           .then((response) => response.blob())
           .then((blob) => {
             const url = window.URL.createObjectURL(blob);
@@ -351,11 +332,11 @@ const musicManager = {
             let loaded = false;
 
             const audio = new Audio();
-            audio.preload = "auto";
+            audio.preload = 'auto';
             audio.onerror = reject;
 
             audio.addEventListener(
-              "canplaythrough",
+              'canplaythrough',
               function () {
                 if (!loaded) {
                   loaded = true;
@@ -379,13 +360,10 @@ const musicManager = {
     return new Promise(function (resolve, reject) {
       const vanillaURL = url;
       if (!musicManager.cache.buffer[vanillaURL]) {
-        fetch(url, { method: "GET" })
+        fetch(url, { method: 'GET' })
           .then((response) => response.arrayBuffer())
           .then((buffer) => {
-            var buffAudio = new BuffAudio(
-              new AudioContext(),
-              new Uint8Array(buffer),
-            );
+            var buffAudio = new BuffAudio(new AudioContext(), new Uint8Array(buffer));
             musicManager.cache.buffer[vanillaURL] = buffAudio;
             resolve(buffAudio);
           })
@@ -399,7 +377,7 @@ const musicManager = {
   // Next Song
   nextMusic: function () {
     if (
-      typeof storyData.music.now.index === "number" &&
+      typeof storyData.music.now.index === 'number' &&
       !isNaN(storyData.music.now.index) &&
       isFinite(storyData.music.now.index) &&
       storyData.music.now.index > -1 &&
@@ -414,13 +392,13 @@ const musicManager = {
       const song = storyData.music.playlist[storyData.music.now.index];
       if (
         song &&
-        typeof song.id === "string" &&
+        typeof song.id === 'string' &&
         song.id.length > 0 &&
-        typeof song.type === "string" &&
+        typeof song.type === 'string' &&
         song.type.length > 0
       ) {
         // Youtube
-        if (song.type === "youtube") {
+        if (song.type === 'youtube') {
           setTimeout(function () {
             storyData.youtube.play(song.id);
           }, 1000);
@@ -432,10 +410,10 @@ const musicManager = {
   disable: function (react = true) {
     if (react) {
       storyData.music.disabled = true;
-      $("#music-player").addClass("disabled-player");
+      $('#music-player').addClass('disabled-player');
     } else {
       storyData.music.disabled = false;
-      $("#music-player").removeClass("disabled-player");
+      $('#music-player').removeClass('disabled-player');
     }
   },
 
@@ -451,7 +429,7 @@ const musicManager = {
     }
 
     // Add Item Base
-    if ($("#fic-nav > #status #music").length < 1) {
+    if ($('#fic-nav > #status #music').length < 1) {
       // Update
       storyData.music.songVolumeUpdate();
 
@@ -461,12 +439,12 @@ const musicManager = {
       }
 
       // Buttons
-      storyData.music.nav.youtube = $("#youtubePlayer");
-      storyData.music.nav.info = $("<i>", { class: "fas fa-info-circle" });
-      storyData.music.nav.play = $("<i>", { class: "fas fa-play" });
-      storyData.music.nav.volume = $("<i>", { class: "fas fa-volume-mute" });
-      storyData.music.nav.stop = $("<i>", { class: "fas fa-stop" });
-      storyData.music.nav.disable = $("<i>", { class: "fas fa-ban" });
+      storyData.music.nav.youtube = $('#youtubePlayer');
+      storyData.music.nav.info = $('<i>', { class: 'fas fa-info-circle' });
+      storyData.music.nav.play = $('<i>', { class: 'fas fa-play' });
+      storyData.music.nav.volume = $('<i>', { class: 'fas fa-volume-mute' });
+      storyData.music.nav.stop = $('<i>', { class: 'fas fa-stop' });
+      storyData.music.nav.disable = $('<i>', { class: 'fas fa-ban' });
 
       // Fix Youtube Player
       //storyData.music.nav.youtube.removeClass('hidden');
@@ -475,51 +453,49 @@ const musicManager = {
       if (!storyData.chapter.nav) {
         storyData.chapter.nav = {};
       }
-      storyData.chapter.nav.music = $("<div>", {
+      storyData.chapter.nav.music = $('<div>', {
         indexItem: 1,
-        class: "nav-item",
-        id: "music",
+        class: 'nav-item',
+        id: 'music',
       }).append(
-        $("<div>", { id: "music-player", class: "d-none" }).append(
+        $('<div>', { id: 'music-player', class: 'd-none' }).append(
           // Info
-          $("<a>", {
-            href: "javascript:void(0)",
-            class: "disabled text-white",
-            title: "Source",
+          $('<a>', {
+            href: 'javascript:void(0)',
+            class: 'disabled text-white',
+            title: 'Source',
           })
-            .on("click", () => {
+            .on('click', () => {
               if (!storyData.music.loading) {
-                open(storyData.youtube.player.getVideoUrl(), "_blank");
+                open(storyData.youtube.player.getVideoUrl(), '_blank');
               }
             })
             .append(storyData.music.nav.info),
 
           // Play
-          $("<a>", {
-            href: "javascript:void(0)",
-            class: "disabled text-white",
-            title: "Play/Pause",
+          $('<a>', {
+            href: 'javascript:void(0)',
+            class: 'disabled text-white',
+            title: 'Play/Pause',
           })
-            .on("click", () => {
+            .on('click', () => {
               if (!storyData.music.loading) {
                 if (storyData.youtube.state === YT.PlayerState.PLAYING) {
-                  if (storyData.youtube.player.pauseVideo)
-                    storyData.youtube.player.pauseVideo();
+                  if (storyData.youtube.player.pauseVideo) storyData.youtube.player.pauseVideo();
                 } else {
-                  if (storyData.youtube.player.playVideo)
-                    storyData.youtube.player.playVideo();
+                  if (storyData.youtube.player.playVideo) storyData.youtube.player.playVideo();
                 }
               }
             })
             .append(storyData.music.nav.play),
 
           // Stop
-          $("<a>", {
-            href: "javascript:void(0)",
-            class: "disabled text-white",
-            title: "Stop",
+          $('<a>', {
+            href: 'javascript:void(0)',
+            class: 'disabled text-white',
+            title: 'Stop',
           })
-            .on("click", () => {
+            .on('click', () => {
               if (!storyData.music.loading) {
                 storyData.music.isStopping = true;
                 storyData.youtube.player.stopVideo();
@@ -528,24 +504,21 @@ const musicManager = {
             .append(storyData.music.nav.stop),
 
           // Volume
-          $("<a>", {
-            href: "javascript:void(0)",
-            class: "disabled text-white",
-            title: "Volume",
+          $('<a>', {
+            href: 'javascript:void(0)',
+            class: 'disabled text-white',
+            title: 'Volume',
           })
-            .on("click", () => {
+            .on('click', () => {
               if (!storyData.music.loading) {
                 // Modal
                 tinyLib.modal({
-                  title: [
-                    $("<i>", { class: "fas fa-volume me-3" }),
-                    "Song Volume",
-                  ],
-                  body: $("<center>").append(
-                    $("<p>").text("Change the page music volume"),
-                    $("<input>", {
-                      class: "form-control range",
-                      type: "range",
+                  title: [$('<i>', { class: 'fas fa-volume me-3' }), 'Song Volume'],
+                  body: $('<center>').append(
+                    $('<p>').text('Change the page music volume'),
+                    $('<input>', {
+                      class: 'form-control range',
+                      type: 'range',
                       min: 0,
                       max: 100,
                     })
@@ -554,27 +527,27 @@ const musicManager = {
                       })
                       .val(storyData.music.volume),
                   ),
-                  dialog: "modal-lg",
+                  dialog: 'modal-lg',
                 });
               }
             })
             .append(storyData.music.nav.volume),
 
           // Disable
-          $("<a>", {
-            href: "javascript:void(0)",
-            class: "disabled text-white",
-            title: "Disable",
+          $('<a>', {
+            href: 'javascript:void(0)',
+            class: 'disabled text-white',
+            title: 'Disable',
           })
-            .on("click", function () {
+            .on('click', function () {
               if (!storyData.music.loading) {
-                $(this).removeClass("");
+                $(this).removeClass('');
                 if (storyData.music.useThis) {
                   storyData.music.useThis = false;
-                  storyData.music.nav.disable.addClass("text-danger");
+                  storyData.music.nav.disable.addClass('text-danger');
                 } else {
                   storyData.music.useThis = true;
-                  storyData.music.nav.disable.removeClass("text-danger");
+                  storyData.music.nav.disable.removeClass('text-danger');
                 }
               }
             })
@@ -583,7 +556,7 @@ const musicManager = {
       );
 
       // Insert
-      $("#fic-nav > #status").prepend([
+      $('#fic-nav > #status').prepend([
         // Music
         storyData.chapter.nav.music,
 
@@ -601,9 +574,9 @@ const musicManager = {
 // https://developers.google.com/youtube/iframe_api_reference?hl=pt-br
 function onYouTubeIframeAPIReady() {
   console.log(`Youtube API started!`);
-  storyData.youtube.player = new YT.Player("youtubePlayer", {
-    height: "auto",
-    width: "auto",
+  storyData.youtube.player = new YT.Player('youtubePlayer', {
+    height: 'auto',
+    width: 'auto',
     playerVars: { controls: 0 },
     videoId: storyData.youtube.videoID,
     startSeconds: 0,
@@ -615,10 +588,7 @@ function onYouTubeIframeAPIReady() {
 musicManager.updatePlayer = function () {
   if (storyData.music.nav) {
     // View
-    $("#music-player")
-      .addClass("border")
-      .removeClass("d-none")
-      .addClass("me-3");
+    $('#music-player').addClass('border').removeClass('d-none').addClass('me-3');
 
     // Buff
     if (
@@ -627,55 +597,47 @@ musicManager.updatePlayer = function () {
       !storyData.music.usingSystem ||
       !storyData.youtube.checkYT()
     ) {
-      $("#music-player > a").addClass("disabled");
+      $('#music-player > a').addClass('disabled');
     } else {
-      $("#music-player > a").removeClass("disabled");
+      $('#music-player > a').removeClass('disabled');
     }
 
     // Title
-    if (
-      typeof storyData.music.title === "string" &&
-      storyData.music.title.length > 0
-    ) {
+    if (typeof storyData.music.title === 'string' && storyData.music.title.length > 0) {
       const newTitle = `Youtube - ${storyData.music.author_name} - ${storyData.music.title}`;
-      const divBase = $("#music-player > a").has(storyData.music.nav.info);
+      const divBase = $('#music-player > a').has(storyData.music.nav.info);
 
-      if (divBase && divBase.data("bs-tooltip-data") !== newTitle) {
-        divBase.data("bs-tooltip-data", newTitle);
-        const bsToolTip = divBase.data("bs-tooltip");
-        if (bsToolTip) bsToolTip.setContent({ ".tooltip-inner": newTitle });
+      if (divBase && divBase.data('bs-tooltip-data') !== newTitle) {
+        divBase.data('bs-tooltip-data', newTitle);
+        const bsToolTip = divBase.data('bs-tooltip');
+        if (bsToolTip) bsToolTip.setContent({ '.tooltip-inner': newTitle });
       }
     }
 
     // Playing
     if (storyData.music.playing) {
-      storyData.music.nav.play.addClass("fa-pause").removeClass("fa-play");
+      storyData.music.nav.play.addClass('fa-pause').removeClass('fa-play');
     } else if (storyData.music.paused) {
-      storyData.music.nav.play.addClass("fa-play").removeClass("fa-pause");
+      storyData.music.nav.play.addClass('fa-play').removeClass('fa-pause');
     } else if (
       storyData.music.stoppabled ||
-      typeof storyData.music.currentTime !== "number" ||
-      typeof storyData.music.duration !== "number" ||
+      typeof storyData.music.currentTime !== 'number' ||
+      typeof storyData.music.duration !== 'number' ||
       storyData.music.currentTime === storyData.music.duration
     ) {
-      storyData.music.nav.play.addClass("fa-play").removeClass("fa-pause");
+      storyData.music.nav.play.addClass('fa-play').removeClass('fa-pause');
     }
 
     // Volume
-    storyData.music.nav.volume
-      .removeClass("fa-volume-mute")
-      .removeClass("fa-volume-up");
-    if (
-      typeof storyData.music.volume === "number" &&
-      storyData.music.volume > 0
-    ) {
-      storyData.music.nav.volume.addClass("fa-volume-up");
+    storyData.music.nav.volume.removeClass('fa-volume-mute').removeClass('fa-volume-up');
+    if (typeof storyData.music.volume === 'number' && storyData.music.volume > 0) {
+      storyData.music.nav.volume.addClass('fa-volume-up');
     } else {
-      storyData.music.nav.volume.addClass("fas fa-volume-mute");
+      storyData.music.nav.volume.addClass('fas fa-volume-mute');
     }
 
     // Tooltip
-    $("#music-player > a[title]").each(function () {
+    $('#music-player > a[title]').each(function () {
       $(this).tooltip();
     });
   }
@@ -685,10 +647,10 @@ musicManager.updatePlayer = function () {
 ttsManager.updatePlayer = function () {
   if (storyData.tts.nav) {
     // View
-    $("#tts-player").addClass("border").removeClass("d-none").addClass("me-3");
+    $('#tts-player').addClass('border').removeClass('d-none').addClass('me-3');
 
     // Tooltip
-    $("#tts-player > a[title]").each(function () {
+    $('#tts-player > a[title]').each(function () {
       $(this).tooltip();
     });
   }
@@ -696,8 +658,8 @@ ttsManager.updatePlayer = function () {
 
 // Insert SFX
 musicManager.start = {};
-musicManager.insertSFX = function (item, loop = true, type = "all") {
-  if (typeof loop !== "boolean") {
+musicManager.insertSFX = function (item, loop = true, type = 'all') {
+  if (typeof loop !== 'boolean') {
     loop = true;
   }
   return new Promise(async function (resolve, reject) {
@@ -711,8 +673,8 @@ musicManager.insertSFX = function (item, loop = true, type = "all") {
         let url = null;
 
         // IPFS
-        if (storyCfg.sfx[item].type === "ipfs") {
-          url = storyCfg.ipfs.host.replace("{cid}", storyCfg.sfx[item].value);
+        if (storyCfg.sfx[item].type === 'ipfs') {
+          url = storyCfg.ipfs.host.replace('{cid}', storyCfg.sfx[item].value);
         }
 
         // Normal
@@ -741,28 +703,22 @@ musicManager.insertSFX = function (item, loop = true, type = "all") {
 
           // Start Pizzicato
           const startPizzicato = function (forcePic = false) {
-            return musicManager.start.pizzicato(
-              item,
-              loop,
-              tinyResolve,
-              file.currentSrc,
-              forcePic,
-            );
+            return musicManager.start.pizzicato(item, loop, tinyResolve, file.currentSrc, forcePic);
           };
 
           // Loop Audio
           if (loop) {
             // All Modules
-            if (type === "all") {
+            if (type === 'all') {
               const newSound = new SeamlessLoop();
               newSound.addUri(file.currentSrc, file.duration * 1000, item);
               newSound.callback(function () {
                 musicManager.start.seamlessloop(item, newSound);
                 startPizzicato();
               });
-            } else if (type === "pizzicato") {
+            } else if (type === 'pizzicato') {
               startPizzicato(true);
-            } else if (type === "main") {
+            } else if (type === 'main') {
               const newSound = new SeamlessLoop();
               newSound.addUri(file.currentSrc, file.duration * 1000, item);
               newSound.callback(function () {
@@ -770,28 +726,28 @@ musicManager.insertSFX = function (item, loop = true, type = "all") {
                 tinyResolve();
               });
             } else {
-              reject(new Error("Invalid Module Type!"));
+              reject(new Error('Invalid Module Type!'));
             }
           }
 
           // Nope
           else {
             // All Modules
-            if (type === "all") {
+            if (type === 'all') {
               // Start
               musicManager.start.vanilla(item, file);
               startPizzicato();
-            } else if (type === "pizzicato") {
+            } else if (type === 'pizzicato') {
               startPizzicato(true);
-            } else if (type === "main") {
+            } else if (type === 'main') {
               musicManager.start.vanilla(item, file);
               tinyResolve();
             } else {
-              reject(new Error("Invalid Module Type!"));
+              reject(new Error('Invalid Module Type!'));
             }
           }
         } else {
-          reject(new Error("Invalid SFX File! " + item));
+          reject(new Error('Invalid SFX File! ' + item));
         }
       } catch (err) {
         // Fail
@@ -831,7 +787,7 @@ musicManager.stopPlaylist = async function () {
             // Youtube Player
             if (
               storyData.youtube.player &&
-              typeof storyData.youtube.player.setVolume === "function"
+              typeof storyData.youtube.player.setVolume === 'function'
             ) {
               storyData.youtube.player.setVolume(volume);
             }
@@ -856,20 +812,16 @@ musicManager.stopPlaylist = async function () {
 musicManager.startPlaylist = function () {
   if (
     storyData.readFic &&
-    objHash(storyData.music.playlist) !==
-      objHash(storyData.music.playlistPlaying)
+    objHash(storyData.music.playlist) !== objHash(storyData.music.playlistPlaying)
   ) {
     // Check Status
-    if (
-      Array.isArray(storyData.music.playlist) &&
-      storyData.music.playlist.length > 0
-    ) {
+    if (Array.isArray(storyData.music.playlist) && storyData.music.playlist.length > 0) {
       // Play Song
       tinyLib.shuffle(storyData.music.playlist);
 
       const playSong = function () {
         if (
-          typeof storyData.music.now.index === "number" &&
+          typeof storyData.music.now.index === 'number' &&
           !isNaN(storyData.music.now.index) &&
           isFinite(storyData.music.now.index) &&
           storyData.music.now.index > -1
@@ -881,13 +833,13 @@ musicManager.startPlaylist = function () {
           const song = storyData.music.playlist[storyData.music.now.index];
           if (
             song &&
-            typeof song.id === "string" &&
+            typeof song.id === 'string' &&
             song.id.length > 0 &&
-            typeof song.type === "string" &&
+            typeof song.type === 'string' &&
             song.type.length > 0
           ) {
             // Youtube
-            if (song.type === "youtube") {
+            if (song.type === 'youtube') {
               setTimeout(function () {
                 storyData.youtube.play(song.id);
               }, 100);

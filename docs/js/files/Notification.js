@@ -1,30 +1,30 @@
 class TinyNotification {
   constructor() {
     this.allowed = false;
-    this.sound = new Audio("/audio/notification.ogg");
+    this.sound = new Audio('/audio/notification.ogg');
   }
 
   requestPerm() {
     const tinyThis = this;
     return new Promise((resolve, reject) => {
       if (tinyThis.isCompatible()) {
-        if (Notification.permission === "default") {
+        if (Notification.permission === 'default') {
           Notification.requestPermission()
             .then((permission) => {
-              if (permission === "granted") {
+              if (permission === 'granted') {
                 tinyThis.allowed = true;
                 resolve(true);
-              } else if (permission === "denied") {
+              } else if (permission === 'denied') {
                 tinyThis.allowed = false;
                 resolve(false);
               }
             })
             .catch(reject);
         } else {
-          if (Notification.permission === "granted") {
+          if (Notification.permission === 'granted') {
             tinyThis.allowed = true;
             resolve(true);
-          } else if (Notification.permission === "denied") {
+          } else if (Notification.permission === 'denied') {
             tinyThis.allowed = false;
             resolve(false);
           }
@@ -37,14 +37,14 @@ class TinyNotification {
   }
 
   isCompatible() {
-    if (!("Notification" in window)) return false;
+    if (!('Notification' in window)) return false;
     return true;
   }
 
   send(
     title = null,
     body = null,
-    config = { icon: "/img/icon/192.png", vibrate: [200, 100, 200] },
+    config = { icon: '/img/icon/192.png', vibrate: [200, 100, 200] },
   ) {
     if (this.allowed) {
       const options = {

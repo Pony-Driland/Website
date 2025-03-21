@@ -29,7 +29,7 @@ musicManager.start.seamlessloop = function (item, newSound) {
     return new Promise(function (resolve, reject) {
       setTimeout(function () {
         try {
-          if (typeof volume === "number") {
+          if (typeof volume === 'number') {
             storyData.sfx[item].setVolume(volume);
           } else {
             storyData.sfx[item].setVolume(storyData.sfx[item].volume);
@@ -48,7 +48,7 @@ musicManager.start.seamlessloop = function (item, newSound) {
   storyData.sfx[item].setVolume = function (value, notEdit = false) {
     return new Promise(function (resolve) {
       let tinyValue = value;
-      if (typeof tinyValue !== "number") {
+      if (typeof tinyValue !== 'number') {
         tinyValue = storyData.sfx[item].volume;
       }
 
@@ -90,7 +90,7 @@ musicManager.start.seamlessloop = function (item, newSound) {
     storyData.sfx[item].showing = false;
 
     if (
-      typeof hideTimeout === "number" &&
+      typeof hideTimeout === 'number' &&
       !isNaN(hideTimeout) &&
       isFinite(hideTimeout) &&
       hideTimeout > 0
@@ -140,7 +140,7 @@ musicManager.start.seamlessloop = function (item, newSound) {
     storyData.sfx[item].start();
 
     if (
-      typeof hideTimeout === "number" &&
+      typeof hideTimeout === 'number' &&
       !isNaN(hideTimeout) &&
       isFinite(hideTimeout) &&
       hideTimeout > 0

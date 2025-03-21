@@ -15,7 +15,7 @@ musicManager.start.vanilla = function (item, newSound) {
     return new Promise(function (resolve, reject) {
       setTimeout(function () {
         try {
-          if (typeof volume === "number") {
+          if (typeof volume === 'number') {
             storyData.sfx[item].setVolume(volume);
           } else {
             storyData.sfx[item].setVolume(storyData.sfx[item].volume);
@@ -27,7 +27,7 @@ musicManager.start.vanilla = function (item, newSound) {
           storyData.sfx[item].currentTime = 0;
           storyData.sfx[item].leftTime = storyData.sfx[item].duration;
 
-          if (typeof inTime === "number") {
+          if (typeof inTime === 'number') {
             storyData.sfx[item].currentTime = inTime;
             newSound.currentTime = inTime;
           }
@@ -54,7 +54,7 @@ musicManager.start.vanilla = function (item, newSound) {
   storyData.sfx[item].setVolume = function (value, notEdit = false) {
     return new Promise(function (resolve) {
       let tinyValue = value;
-      if (typeof tinyValue !== "number") {
+      if (typeof tinyValue !== 'number') {
         tinyValue = storyData.sfx[item].volume;
       }
 
@@ -162,7 +162,7 @@ musicManager.start.vanilla = function (item, newSound) {
     storyData.sfx[item].showing = false;
 
     if (
-      typeof hideTimeout === "number" &&
+      typeof hideTimeout === 'number' &&
       !isNaN(hideTimeout) &&
       isFinite(hideTimeout) &&
       hideTimeout > 0
@@ -217,7 +217,7 @@ musicManager.start.vanilla = function (item, newSound) {
     newSound.play();
 
     if (
-      typeof hideTimeout === "number" &&
+      typeof hideTimeout === 'number' &&
       !isNaN(hideTimeout) &&
       isFinite(hideTimeout) &&
       hideTimeout > 0
@@ -254,7 +254,7 @@ musicManager.start.vanilla = function (item, newSound) {
 
   // Audio Action
   newSound.addEventListener(
-    "ended",
+    'ended',
     function () {
       storyData.sfx[item].stop();
     },
@@ -262,7 +262,7 @@ musicManager.start.vanilla = function (item, newSound) {
   );
 
   newSound.addEventListener(
-    "timeupdate",
+    'timeupdate',
     function () {
       if (storyData.sfx[item].playing) {
         storyData.sfx[item].currentTime = storyData.sfx[item].file.currentTime;

@@ -19,27 +19,27 @@ class TinyAiManager {
   }
 
   _setInsertServerCache(value) {
-    this._insertServerCache = typeof value === "function" ? value : null;
+    this._insertServerCache = typeof value === 'function' ? value : null;
   }
 
   insertServerCache(name, data) {
-    if (typeof this._insertServerCache === "function")
+    if (typeof this._insertServerCache === 'function')
       return this._insertServerCache(this.#_apiKey, name, data);
-    throw new Error("No insert cache api script defined.");
+    throw new Error('No insert cache api script defined.');
   }
 
   _setGetServerCache(value) {
-    this._getServerCache = typeof value === "function" ? value : null;
+    this._getServerCache = typeof value === 'function' ? value : null;
   }
 }
 
 // Get fic cache
 const getFicCache = (id, instructionId, newContent) => {
   // Final Result
-  $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
+  $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
   const finalResolve = (cacheContent) => {
     console.log(cacheContent);
-    $.LoadingOverlay("hide");
+    $.LoadingOverlay('hide');
   };
 
   // Get Data
@@ -50,11 +50,11 @@ const getFicCache = (id, instructionId, newContent) => {
         tinyAi
           .insertServerCache(id, [
             {
-              role: "system",
+              role: 'system',
               parts: [{ text: aiTemplates.instructions[instructionId] }],
             },
             {
-              role: "user",
+              role: 'user',
               parts: [
                 {
                   inlineData: {
@@ -70,14 +70,14 @@ const getFicCache = (id, instructionId, newContent) => {
             else if (result.error) {
               console.error(result.error);
               alert(result.error.message);
-              $.LoadingOverlay("hide");
+              $.LoadingOverlay('hide');
             }
           }),
       )
       .catch((err) => {
         console.error(err);
         alert(err.message);
-        $.LoadingOverlay("hide");
+        $.LoadingOverlay('hide');
       });
   }
   // Use cache data

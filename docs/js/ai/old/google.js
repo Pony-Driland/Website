@@ -9,14 +9,13 @@ tinyGoogleAI._setInsertServerCache(
         .find((tModel) => tModel.id === tinyGoogleAI.getModel());
       if (modelData) {
         model = modelData.name;
-        if (!model.endsWith(`-${modelData.version}`))
-          model += `-${modelData.version}`;
+        if (!model.endsWith(`-${modelData.version}`)) model += `-${modelData.version}`;
       }
 
       fetch(`${apiUrl}/cachedContents?key=${encodeURIComponent(apiKey)}`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(
           requestBuilder(
@@ -35,8 +34,7 @@ tinyGoogleAI._setInsertServerCache(
         .then((result) => {
           // Prepare final data
           const finalData = { _response: result };
-          if (!result.error)
-            finalData.data = tinyGoogleAI._insertCache(cacheName, result);
+          if (!result.error) finalData.data = tinyGoogleAI._insertCache(cacheName, result);
           // Error result
           else buildErrorData(result, finalData);
 
@@ -52,22 +50,18 @@ tinyGoogleAI._setInsertServerCache(
 tinyGoogleAI._setGetServerCache(
   (apiKey, cacheName) =>
     new Promise((resolve, reject) =>
-      fetch(
-        `${apiUrl}/cachedContents/${cacheName}?key=${encodeURIComponent(apiKey)}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
+      fetch(`${apiUrl}/cachedContents/${cacheName}?key=${encodeURIComponent(apiKey)}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      )
+      })
         // Request
         .then((res) => res.json())
         .then((result) => {
           // Prepare final data
           const finalData = { _response: result };
-          if (!result.error)
-            finalData.data = tinyGoogleAI._insertCache(cacheName, result);
+          if (!result.error) finalData.data = tinyGoogleAI._insertCache(cacheName, result);
           // Error result
           else buildErrorData(result, finalData);
 

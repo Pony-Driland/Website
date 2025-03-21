@@ -37,10 +37,9 @@ class TinyAiManager {
 
     // Build Parts
     this.#_partTypes = {
-      text: (text) => (typeof text === "string" ? text : null),
+      text: (text) => (typeof text === 'string' ? text : null),
       inlineData: (data) => {
-        if (typeof data.mime_type === "string" && typeof data.data === "string")
-          return data;
+        if (typeof data.mime_type === 'string' && typeof data.data === 'string') return data;
         return null;
       },
     };
@@ -48,33 +47,23 @@ class TinyAiManager {
 
   // Config
   setMaxOutputTokens(value) {
-    if (
-      typeof value === "number" &&
-      !Number.isNaN(value) &&
-      Number.isFinite(value)
-    ) {
+    if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
       this.config.maxOutputTokens = value;
       return;
     }
-    throw new Error("Invalid number value!");
+    throw new Error('Invalid number value!');
   }
 
   getMaxOutputTokens() {
-    return typeof this.config.maxOutputTokens === "number"
-      ? this.config.maxOutputTokens
-      : null;
+    return typeof this.config.maxOutputTokens === 'number' ? this.config.maxOutputTokens : null;
   }
 
   setTemperature(value) {
-    if (
-      typeof value === "number" &&
-      !Number.isNaN(value) &&
-      Number.isFinite(value)
-    ) {
+    if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
       this.config.temperature = value;
       return;
     }
-    throw new Error("Invalid number value!");
+    throw new Error('Invalid number value!');
   }
 
   getTemperature() {
@@ -82,83 +71,63 @@ class TinyAiManager {
   }
 
   setTopP(value) {
-    if (
-      typeof value === "number" &&
-      !Number.isNaN(value) &&
-      Number.isFinite(value)
-    ) {
+    if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
       this.config.topP = value;
       return;
     }
-    throw new Error("Invalid number value!");
+    throw new Error('Invalid number value!');
   }
 
   getTopP() {
-    return typeof this.config.topP === "number" ? this.config.topP : null;
+    return typeof this.config.topP === 'number' ? this.config.topP : null;
   }
 
   setTopK(value) {
-    if (
-      typeof value === "number" &&
-      !Number.isNaN(value) &&
-      Number.isFinite(value)
-    ) {
+    if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
       this.config.topK = value;
       return;
     }
-    throw new Error("Invalid number value!");
+    throw new Error('Invalid number value!');
   }
 
   getTopK() {
-    return typeof this.config.topK === "number" ? this.config.topK : null;
+    return typeof this.config.topK === 'number' ? this.config.topK : null;
   }
 
   setPresencePenalty(value) {
-    if (
-      typeof value === "number" &&
-      !Number.isNaN(value) &&
-      Number.isFinite(value)
-    ) {
+    if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
       this.config.presencePenalty = value;
       return;
     }
-    throw new Error("Invalid number value!");
+    throw new Error('Invalid number value!');
   }
 
   getPresencePenalty() {
-    return typeof this.config.presencePenalty === "number"
-      ? this.config.presencePenalty
-      : null;
+    return typeof this.config.presencePenalty === 'number' ? this.config.presencePenalty : null;
   }
 
   setFrequencyPenalty(value) {
-    if (
-      typeof value === "number" &&
-      !Number.isNaN(value) &&
-      Number.isFinite(value)
-    ) {
+    if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
       this.config.frequencyPenalty = value;
       return;
     }
-    throw new Error("Invalid number value!");
+    throw new Error('Invalid number value!');
   }
 
   getFrequencyPenalty() {
-    return typeof this.config.frequencyPenalty === "number"
-      ? this.config.frequencyPenalty
-      : null;
+    return typeof this.config.frequencyPenalty === 'number' ? this.config.frequencyPenalty : null;
   }
 
   setEnabledEnchancedCivicAnswers(value) {
-    if (typeof value === "boolean") {
+    if (typeof value === 'boolean') {
       this.config.enableEnhancedCivicAnswers = value;
       return;
     }
-    throw new Error("Invalid boolean value!");
+    throw new Error('Invalid boolean value!');
   }
 
   isEnabledEnchancedCivicAnswers() {
-    return typeof this.config.enableEnhancedCivicAnswers === "boolean"
+    return typeof this.config.enableEnhancedCivicAnswers === 'boolean'
       ? this.config.enableEnhancedCivicAnswers
       : null;
   }
@@ -170,13 +139,13 @@ class TinyAiManager {
     const contentData = { parts: [] };
 
     // Role
-    if (typeof role === "string") contentData.role = role;
+    if (typeof role === 'string') contentData.role = role;
 
     // Parts
     const insertPart = (content) => {
       const tinyResult = {};
       for (const valName in content) {
-        if (typeof tinyThis.#_partTypes[valName] === "function")
+        if (typeof tinyThis.#_partTypes[valName] === 'function')
           tinyResult[valName] = tinyThis.#_partTypes[valName](content[valName]);
       }
       contentData.parts.push(tinyResult);
@@ -193,27 +162,23 @@ class TinyAiManager {
 
   // API Key
   setApiKey(apiKey) {
-    this.#_apiKey = typeof apiKey === "string" ? apiKey : null;
+    this.#_apiKey = typeof apiKey === 'string' ? apiKey : null;
   }
 
   // Models
   _setNextModelsPageToken(nextModelsPageToken) {
     this._nextModelsPageToken =
-      typeof nextModelsPageToken === "string" ? nextModelsPageToken : null;
+      typeof nextModelsPageToken === 'string' ? nextModelsPageToken : null;
   }
 
   _setGetModels(getModels) {
-    this.#_getModels = typeof getModels === "function" ? getModels : null;
+    this.#_getModels = typeof getModels === 'function' ? getModels : null;
   }
 
   getModels(pageSize = 50, pageToken = null) {
-    if (typeof this.#_getModels === "function")
-      return this.#_getModels(
-        this.#_apiKey,
-        pageSize,
-        pageToken || this._nextModelsPageToken,
-      );
-    throw new Error("No model list api script defined.");
+    if (typeof this.#_getModels === 'function')
+      return this.#_getModels(this.#_apiKey, pageSize, pageToken || this._nextModelsPageToken);
+    throw new Error('No model list api script defined.');
   }
 
   getModelsList() {
@@ -226,9 +191,7 @@ class TinyAiManager {
     else {
       for (const index in this.models) {
         if (this.models[index].category) {
-          const modelCategory = this.models[index].data.find(
-            (item) => item.id === id,
-          );
+          const modelCategory = this.models[index].data.find((item) => item.id === id);
           if (modelCategory) return modelCategory;
         }
       }
@@ -246,54 +209,39 @@ class TinyAiManager {
       // Model data
       const newData = {
         _response: model._response,
-        index: typeof model.index === "number" ? model.index : 9999999,
-        name: typeof model.name === "string" ? model.name : null,
-        id: typeof model.id === "string" ? model.id : null,
-        displayName:
-          typeof model.displayName === "string" ? model.displayName : null,
-        version: typeof model.version === "string" ? model.version : null,
-        description:
-          typeof model.description === "string" ? model.description : null,
-        inputTokenLimit:
-          typeof model.inputTokenLimit === "number"
-            ? model.inputTokenLimit
-            : null,
+        index: typeof model.index === 'number' ? model.index : 9999999,
+        name: typeof model.name === 'string' ? model.name : null,
+        id: typeof model.id === 'string' ? model.id : null,
+        displayName: typeof model.displayName === 'string' ? model.displayName : null,
+        version: typeof model.version === 'string' ? model.version : null,
+        description: typeof model.description === 'string' ? model.description : null,
+        inputTokenLimit: typeof model.inputTokenLimit === 'number' ? model.inputTokenLimit : null,
         outputTokenLimit:
-          typeof model.outputTokenLimit === "number"
-            ? model.outputTokenLimit
-            : null,
-        temperature:
-          typeof model.temperature === "number" ? model.temperature : null,
-        maxTemperature:
-          typeof model.maxTemperature === "number"
-            ? model.maxTemperature
-            : null,
-        topP: typeof model.topP === "number" ? model.topP : null,
-        topK: typeof model.topK === "number" ? model.topK : null,
+          typeof model.outputTokenLimit === 'number' ? model.outputTokenLimit : null,
+        temperature: typeof model.temperature === 'number' ? model.temperature : null,
+        maxTemperature: typeof model.maxTemperature === 'number' ? model.maxTemperature : null,
+        topP: typeof model.topP === 'number' ? model.topP : null,
+        topK: typeof model.topK === 'number' ? model.topK : null,
       };
 
       // Supported generation methods
       if (Array.isArray(model.supportedGenerationMethods)) {
         newData.supportedGenerationMethods = [];
         for (const index in model.supportedGenerationMethods) {
-          if (typeof model.supportedGenerationMethods[index] === "string")
-            newData.supportedGenerationMethods.push(
-              model.supportedGenerationMethods[index],
-            );
+          if (typeof model.supportedGenerationMethods[index] === 'string')
+            newData.supportedGenerationMethods.push(model.supportedGenerationMethods[index]);
         }
       }
 
       // Is category
       if (
         model.category &&
-        typeof model.category.id === "string" &&
-        typeof model.category.displayName === "string" &&
-        typeof model.category.index === "number"
+        typeof model.category.id === 'string' &&
+        typeof model.category.displayName === 'string' &&
+        typeof model.category.index === 'number'
       ) {
         // Check category
-        let category = this.models.find(
-          (item) => item.category === model.category.id,
-        );
+        let category = this.models.find((item) => item.category === model.category.id);
         // Insert new category
         if (!category) {
           category = {
@@ -322,36 +270,32 @@ class TinyAiManager {
 
   // Count Token
   _setCountTokens(countTokens) {
-    this.#_countTokens = typeof countTokens === "function" ? countTokens : null;
+    this.#_countTokens = typeof countTokens === 'function' ? countTokens : null;
   }
 
   countTokens(data, controller) {
-    if (typeof this.#_countTokens === "function")
+    if (typeof this.#_countTokens === 'function')
       return this.#_countTokens(this.#_apiKey, controller, data);
-    throw new Error("No count token api script defined.");
+    throw new Error('No count token api script defined.');
   }
 
   // Content
   _createContentData(data) {
     const newCache = { contents: [] };
 
-    if (typeof data.createTime === "string")
-      newCache.createTime = data.createTime;
+    if (typeof data.createTime === 'string') newCache.createTime = data.createTime;
 
-    if (typeof data.updateTime === "string")
-      newCache.updateTime = data.updateTime;
+    if (typeof data.updateTime === 'string') newCache.updateTime = data.updateTime;
 
-    if (typeof data.expireTime === "string")
-      newCache.expireTime = data.expireTime;
+    if (typeof data.expireTime === 'string') newCache.expireTime = data.expireTime;
 
-    if (typeof data.ttl === "string") newCache.ttl = data.ttl;
+    if (typeof data.ttl === 'string') newCache.ttl = data.ttl;
 
-    if (typeof data.name === "string") newCache.name = data.name;
+    if (typeof data.name === 'string') newCache.name = data.name;
 
-    if (typeof data.displayName === "string")
-      newCache.displayName = data.displayName;
+    if (typeof data.displayName === 'string') newCache.displayName = data.displayName;
 
-    if (typeof data.model === "string") newCache.model = data.model;
+    if (typeof data.model === 'string') newCache.model = data.model;
 
     // Content
     for (const index in data.contents) {
@@ -361,8 +305,7 @@ class TinyAiManager {
 
     // System Instructions
     if (newCache.systemInstruction) {
-      if (!Array.isArray(newCache.systemInstruction))
-        newCache.systemInstruction = [];
+      if (!Array.isArray(newCache.systemInstruction)) newCache.systemInstruction = [];
       this._buildContents(newCache.systemInstruction, data.systemInstruction);
       newCache.systemInstruction = newCache.systemInstruction[0];
     }
@@ -372,24 +315,24 @@ class TinyAiManager {
 
   // Fetch API
   _setGenContent(callback) {
-    this.#_genContentApi = typeof callback === "function" ? callback : null;
+    this.#_genContentApi = typeof callback === 'function' ? callback : null;
   }
 
   genContent(data, controller, streamCallback) {
-    if (typeof this.#_genContentApi === "function")
+    if (typeof this.#_genContentApi === 'function')
       return this.#_genContentApi(
         this.#_apiKey,
-        typeof streamCallback === "function" ? true : false,
+        typeof streamCallback === 'function' ? true : false,
         data,
         streamCallback,
         controller,
       );
-    throw new Error("No content generator api script defined.");
+    throw new Error('No content generator api script defined.');
   }
 
   // Model
   setModel(model) {
-    if (model) this.model = typeof model === "string" ? model : null;
+    if (model) this.model = typeof model === 'string' ? model : null;
     else this.model = null;
   }
 
@@ -453,8 +396,7 @@ class TinyAiManager {
 
   getLastHistoryIndex(id) {
     const history = this.getHistory(id);
-    if (history && history.data[history.data.length - 1])
-      return history.data.length - 1;
+    if (history && history.data[history.data.length - 1]) return history.data.length - 1;
     return -1;
   }
 
@@ -486,23 +428,23 @@ class TinyAiManager {
       this.history[selectedId].ids.push(newId);
       return newId;
     }
-    throw new Error("Invalid history id data!");
+    throw new Error('Invalid history id data!');
   }
 
   setHistoryPrompt(promptData, id) {
     const selectedId = id || this.#_selectedHistory;
-    if (this.history[selectedId] && typeof promptData === "string") {
+    if (this.history[selectedId] && typeof promptData === 'string') {
       this.history[selectedId].prompt = promptData;
       return;
     }
-    throw new Error("Invalid history id data!");
+    throw new Error('Invalid history id data!');
   }
 
   getHistoryPrompt(id) {
     const selectedId = id || this.#_selectedHistory;
     if (
       this.history[selectedId] &&
-      typeof this.history[selectedId].prompt === "string" &&
+      typeof this.history[selectedId].prompt === 'string' &&
       this.history[selectedId].prompt.length > 0
     ) {
       return this.history[selectedId].prompt;
@@ -512,18 +454,18 @@ class TinyAiManager {
 
   setHistoryFirstDialogue(dialogue, id) {
     const selectedId = id || this.#_selectedHistory;
-    if (this.history[selectedId] && typeof dialogue === "string") {
+    if (this.history[selectedId] && typeof dialogue === 'string') {
       this.history[selectedId].firstDialogue = dialogue;
       return;
     }
-    throw new Error("Invalid history id data!");
+    throw new Error('Invalid history id data!');
   }
 
   getHistoryFirstDialogue(id) {
     const selectedId = id || this.#_selectedHistory;
     if (
       this.history[selectedId] &&
-      typeof this.history[selectedId].firstDialogue === "string" &&
+      typeof this.history[selectedId].firstDialogue === 'string' &&
       this.history[selectedId].firstDialogue.length > 0
     ) {
       return this.history[selectedId].firstDialogue;
@@ -533,18 +475,14 @@ class TinyAiManager {
 
   setHistoryFileData(mime, data, isBase64 = false, id) {
     const selectedId = id || this.#_selectedHistory;
-    if (
-      this.history[selectedId] &&
-      typeof data === "string" &&
-      typeof mime === "string"
-    ) {
+    if (this.history[selectedId] && typeof data === 'string' && typeof mime === 'string') {
       this.history[selectedId].file = {
         mime,
         data: !isBase64 ? Base64.encode(data) : data,
       };
       return;
     }
-    throw new Error("Invalid history id data!");
+    throw new Error('Invalid history id data!');
   }
 
   getHistoryFileData(id) {
@@ -552,8 +490,8 @@ class TinyAiManager {
     if (
       this.history[selectedId] &&
       this.history[selectedId].file &&
-      typeof this.history[selectedId].file.data === "string" &&
-      typeof this.history[selectedId].file.mime === "string"
+      typeof this.history[selectedId].file.data === 'string' &&
+      typeof this.history[selectedId].file.mime === 'string'
     ) {
       return this.history[selectedId].file;
     }
@@ -562,18 +500,18 @@ class TinyAiManager {
 
   setHistorySystemInstruction(data, id) {
     const selectedId = id || this.#_selectedHistory;
-    if (this.history[selectedId] && typeof data === "string") {
+    if (this.history[selectedId] && typeof data === 'string') {
       this.history[selectedId].systemInstruction = data;
       return;
     }
-    throw new Error("Invalid history id data!");
+    throw new Error('Invalid history id data!');
   }
 
   getHistorySystemInstruction(id) {
     const selectedId = id || this.#_selectedHistory;
     if (
       this.history[selectedId] &&
-      typeof this.history[selectedId].systemInstruction === "string"
+      typeof this.history[selectedId].systemInstruction === 'string'
     ) {
       return this.history[selectedId].systemInstruction;
     }
@@ -582,11 +520,11 @@ class TinyAiManager {
 
   setHistoryModel(data, id) {
     const selectedId = id || this.#_selectedHistory;
-    if (this.history[selectedId] && typeof data === "string") {
+    if (this.history[selectedId] && typeof data === 'string') {
       this.history[selectedId].model = data;
       return;
     }
-    throw new Error("Invalid history id data!");
+    throw new Error('Invalid history id data!');
   }
 
   startHistory(id, selected = false) {
@@ -606,10 +544,10 @@ class TinyAiStorage extends EventEmitter {
   constructor() {
     super();
 
-    this._selected = localStorage.getItem("tiny-ai-storage-selected");
-    if (typeof this._selected !== "string") this._selected = null;
+    this._selected = localStorage.getItem('tiny-ai-storage-selected');
+    if (typeof this._selected !== 'string') this._selected = null;
 
-    this.storage = localStorage.getItem("tiny-ai-storage");
+    this.storage = localStorage.getItem('tiny-ai-storage');
     try {
       this.storage = JSON.parse(this.storage);
       if (!this.storage) this.storage = {};
@@ -619,21 +557,18 @@ class TinyAiStorage extends EventEmitter {
   }
 
   _saveApiStorage() {
-    localStorage.setItem("tiny-ai-storage", JSON.stringify(this.storage));
-    this.emit("saveApiStorage", this.storage);
+    localStorage.setItem('tiny-ai-storage', JSON.stringify(this.storage));
+    this.emit('saveApiStorage', this.storage);
   }
 
   _updateExistsAi() {
     for (const item in this.storage) {
-      if (
-        typeof this.storage[item] === "string" &&
-        this.storage[item].length > 0
-      ) {
+      if (typeof this.storage[item] === 'string' && this.storage[item].length > 0) {
         this._selected = item;
         break;
       }
     }
-    localStorage.setItem("tiny-ai-storage-selected", this._selected);
+    localStorage.setItem('tiny-ai-storage-selected', this._selected);
   }
 
   selectedAi() {
@@ -641,14 +576,14 @@ class TinyAiStorage extends EventEmitter {
   }
 
   setApiKey(name, key) {
-    if (typeof key === "string") {
+    if (typeof key === 'string') {
       this.storage[name] = key;
       this._saveApiStorage();
       this._updateExistsAi();
-      this.emit("setApiKey", name, key);
+      this.emit('setApiKey', name, key);
       return;
     }
-    throw new Error("Invalid AI api key data type!");
+    throw new Error('Invalid AI api key data type!');
   }
 
   delApiKey(name) {
@@ -656,7 +591,7 @@ class TinyAiStorage extends EventEmitter {
       delete this.storage[name];
       this._saveApiStorage();
       this._updateExistsAi();
-      this.emit("delApiKey", name);
+      this.emit('delApiKey', name);
       return true;
     }
     return false;
@@ -667,10 +602,10 @@ class TinyAiStorage extends EventEmitter {
   }
 }
 
-window.addEventListener("beforeunload", function (e) {
+window.addEventListener('beforeunload', function (e) {
   if (appData.ai.using) {
     const message =
-      "You have unsaved changes in your AI session. If you leave, the changes will be lost.";
+      'You have unsaved changes in your AI session. If you leave, the changes will be lost.';
     e.returnValue = message;
     return message;
   }
@@ -687,14 +622,14 @@ const AiScriptStart = () => {
     aiLogin = newAiLogin;
   };
 
-  const canSandBox = (value) => value === "sandBoxFic";
+  const canSandBox = (value) => value === 'sandBoxFic';
 
   // Detect Using AI
-  appData.emitter.on("isUsingAI", (usingAI) => {
+  appData.emitter.on('isUsingAI', (usingAI) => {
     if (usingAI) {
-      $("body").addClass("is-using-ai");
+      $('body').addClass('is-using-ai');
     } else {
-      $("body").removeClass("is-using-ai");
+      $('body').removeClass('is-using-ai');
     }
   });
 
@@ -704,20 +639,20 @@ const AiScriptStart = () => {
     const selectedAi = tinyStorage.selectedAi();
 
     // Exists Google only. Then select google generative
-    if (selectedAi === "google-generative") {
+    if (selectedAi === 'google-generative') {
       // Update html
-      aiLogin.button.find("> i").removeClass("text-danger-emphasis");
-      aiLogin.title = "AI Enabled";
-      $("body").addClass("can-ai");
+      aiLogin.button.find('> i').removeClass('text-danger-emphasis');
+      aiLogin.title = 'AI Enabled';
+      $('body').addClass('can-ai');
 
       // Update Ai API script
-      setGoogleAi(tinyAi, tinyStorage.getApiKey("google-generative"));
+      setGoogleAi(tinyAi, tinyStorage.getApiKey('google-generative'));
       tinyAiScript.enabled = true;
     } else {
       // Update html
-      aiLogin.button.find("> i").addClass("text-danger-emphasis");
-      aiLogin.title = "AI Disabled";
-      $("body").removeClass("can-ai");
+      aiLogin.button.find('> i').addClass('text-danger-emphasis');
+      aiLogin.title = 'AI Disabled';
+      $('body').removeClass('can-ai');
       tinyAiScript.enabled = false;
     }
 
@@ -730,7 +665,7 @@ const AiScriptStart = () => {
     const selectedAi = tinyStorage.selectedAi();
 
     // Exists Google only. Then select google generative
-    if (selectedAi === "google-generative") {
+    if (selectedAi === 'google-generative') {
       tinyAiScript.enabled = true;
       return true;
     } else {
@@ -744,36 +679,34 @@ const AiScriptStart = () => {
   tinyAiScript.login = () => {
     // Google AI
     const googleAi = {
-      input: $("<input>", {
-        type: "password",
-        class: "form-control text-center",
+      input: $('<input>', {
+        type: 'password',
+        class: 'form-control text-center',
       }),
-      title: $("<h4>").text("Google Studio"),
-      desc: $("<p>").append(
-        $("<span>").text("You can get your Google API key "),
-        $("<a>", {
-          href: "https://aistudio.google.com/apikey",
-          target: "_blank",
-        }).text("here"),
-        $("<span>").text(". Website: aistudio.google.com"),
+      title: $('<h4>').text('Google Studio'),
+      desc: $('<p>').append(
+        $('<span>').text('You can get your Google API key '),
+        $('<a>', {
+          href: 'https://aistudio.google.com/apikey',
+          target: '_blank',
+        }).text('here'),
+        $('<span>').text('. Website: aistudio.google.com'),
       ),
     };
 
-    googleAi.input.val(tinyStorage.getApiKey("google-generative"));
+    googleAi.input.val(tinyStorage.getApiKey('google-generative'));
 
     // Modal
     tinyLib.modal({
-      id: "ai_connection",
-      title: "AI Protocol",
-      dialog: "modal-lg",
-      body: $("<center>").append(
-        $("<p>").text(
-          `You are in an optional setting. You do not need AI to use the website!`,
-        ),
-        $("<p>").text(
+      id: 'ai_connection',
+      title: 'AI Protocol',
+      dialog: 'modal-lg',
+      body: $('<center>').append(
+        $('<p>').text(`You are in an optional setting. You do not need AI to use the website!`),
+        $('<p>').text(
           `This website does not belong to any AI company, and all API input is stored locally inside your machine. This website is just a client to run prompts in artificial intelligence, there is no native artificial intelligence installed here.`,
         ),
-        $("<p>").text(
+        $('<p>').text(
           `By activating an artificial intelligence service in your session, you agree to the terms of use and privacy policies of the third party services you are using on this website. You will always be warned when any artificial intelligence service needs to be run on this website.`,
         ),
 
@@ -781,12 +714,12 @@ const AiScriptStart = () => {
         googleAi.desc,
         googleAi.input,
 
-        $("<button>", { class: "btn btn-info mx-4 mt-4" })
-          .text("Set API Tokens")
-          .on("click", () => {
-            tinyStorage.setApiKey("google-generative", googleAi.input.val());
+        $('<button>', { class: 'btn btn-info mx-4 mt-4' })
+          .text('Set API Tokens')
+          .on('click', () => {
+            tinyStorage.setApiKey('google-generative', googleAi.input.val());
             tinyAiScript.checkTitle();
-            $("#ai_connection").modal("hide");
+            $('#ai_connection').modal('hide');
           }),
       ),
     });
@@ -796,25 +729,22 @@ const AiScriptStart = () => {
   tinyAiScript.open = async () => {
     tinyNotification.requestPerm();
     // Update Url
-    urlUpdate("ai", "AI Page");
+    urlUpdate('ai', 'AI Page');
 
     // Clear page
     clearFicData();
-    $("#markdown-read").empty();
-    $("#top_page").addClass("d-none");
+    $('#markdown-read').empty();
+    $('#top_page').addClass('d-none');
 
     // Try to prevent user browser from deactivating the page accidentally in browsers that have tab auto deactivator
     const aiTimeScriptUpdate = () => {
       try {
         // Get data
         const now = moment();
-        const totalTime = JSON.parse(
-          localStorage.getItem("total-time-using-ai") || "{}",
-        );
+        const totalTime = JSON.parse(localStorage.getItem('total-time-using-ai') || '{}');
 
-        if (typeof totalTime.now !== "number") totalTime.now = now.valueOf();
-        if (typeof totalTime.secondsUsed !== "number")
-          totalTime.secondsUsed = 0;
+        if (typeof totalTime.now !== 'number') totalTime.now = now.valueOf();
+        if (typeof totalTime.secondsUsed !== 'number') totalTime.secondsUsed = 0;
         const past = moment(totalTime.now);
 
         // Diff
@@ -823,7 +753,7 @@ const AiScriptStart = () => {
 
         // Complete
         totalTime.now = now.valueOf();
-        localStorage.setItem("total-time-using-ai", JSON.stringify(totalTime));
+        localStorage.setItem('total-time-using-ai', JSON.stringify(totalTime));
         if (aiLogin) {
           aiLogin.secondsUsed = totalTime.secondsUsed;
           aiLogin.updateTitle();
@@ -839,102 +769,93 @@ const AiScriptStart = () => {
 
     // Start loading page
     let isFirstTime = true;
-    $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
+    $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
     if (tinyAiScript.isEnabled()) {
       // Load Models
       if (tinyAi.getModelsList().length < 1) await tinyAi.getModels(100);
 
       // Sidebar
       const sidebarStyle = {
-        class: "bg-dark text-white p-3 d-none d-md-block",
-        style: "width: 250px; min-width: 250px; overflow-y: auto;",
+        class: 'bg-dark text-white p-3 d-none d-md-block',
+        style: 'width: 250px; min-width: 250px; overflow-y: auto;',
       };
 
       // Sidebar Button
       const createButtonSidebar = (icon, text, callback, disabled = false) =>
-        $("<button>", {
-          type: "button",
-          class: `btn btn-link btn-bg text-start w-100${disabled ? " disabled" : ""}`,
+        $('<button>', {
+          type: 'button',
+          class: `btn btn-link btn-bg text-start w-100${disabled ? ' disabled' : ''}`,
         })
           .text(text)
-          .prepend($("<i>", { class: `${icon} me-2` }))
-          .on("click", callback)
-          .prop("disabled", disabled);
+          .prepend($('<i>', { class: `${icon} me-2` }))
+          .on('click', callback)
+          .prop('disabled', disabled);
 
       // Select Model
-      const modelSelector = $("<select>", {
-        class: "form-select",
-        id: "select-ai-model",
+      const modelSelector = $('<select>', {
+        class: 'form-select',
+        id: 'select-ai-model',
       });
       const resetModelSelector = () => {
         modelSelector.empty();
-        modelSelector.append($("<option>").text("None"));
+        modelSelector.append($('<option>').text('None'));
       };
 
       resetModelSelector();
 
       // To Number
       const convertToNumber = (val) =>
-        typeof val === "string" && val.length > 0
+        typeof val === 'string' && val.length > 0
           ? Number(val)
-          : typeof val === "number"
+          : typeof val === 'number'
             ? val
             : null;
 
       // Token Count
       const tokenCount = {
-        amount: $("<span>").data("token-count", 0).text("0"),
-        total: $("<span>").text("0"),
+        amount: $('<span>').data('token-count', 0).text('0'),
+        total: $('<span>').text('0'),
         updateValue: (where, value) => {
-          if (typeof value === "number") {
-            if (
-              tokenCount[where] &&
-              where !== "updateValue" &&
-              where !== "getValue"
-            )
+          if (typeof value === 'number') {
+            if (tokenCount[where] && where !== 'updateValue' && where !== 'getValue')
               return tokenCount[where]
-                .data("token-count", value)
-                .text(value.toLocaleString(navigator.language || "en-US"));
-          } else return tokenCount[where].data("token-count", 0).text(0);
+                .data('token-count', value)
+                .text(value.toLocaleString(navigator.language || 'en-US'));
+          } else return tokenCount[where].data('token-count', 0).text(0);
         },
 
         getValue: (where) => {
-          if (
-            tokenCount[where] &&
-            where !== "updateValue" &&
-            where !== "getValue"
-          )
-            return tokenCount[where].data("token-count") || 0;
+          if (tokenCount[where] && where !== 'updateValue' && where !== 'getValue')
+            return tokenCount[where].data('token-count') || 0;
         },
       };
 
       // Ranger Generator
       const tinyRanger = () => {
-        const rangerBase = $("<div>", {
-          class: "d-flex flex-row align-items-center",
+        const rangerBase = $('<div>', {
+          class: 'd-flex flex-row align-items-center',
         });
-        const ranger = $("<input>", { type: "range", class: "form-range" });
-        const rangerNumber = $("<input>", {
-          type: "number",
-          class: "form-control ms-2",
-          style: "width: 70px; max-width: 70px; min-width: 70px;",
+        const ranger = $('<input>', { type: 'range', class: 'form-range' });
+        const rangerNumber = $('<input>', {
+          type: 'number',
+          class: 'form-control ms-2',
+          style: 'width: 70px; max-width: 70px; min-width: 70px;',
         });
 
-        ranger.on("wheel", function (event) {
+        ranger.on('wheel', function (event) {
           event.preventDefault();
           let currentValue = Number(ranger.val());
 
           const getValue = (where, defaultValue) => {
             let newValue = ranger.attr(where);
-            if (typeof newValue === "string" && newValue.length > 0)
-              newValue = Number(newValue);
+            if (typeof newValue === 'string' && newValue.length > 0) newValue = Number(newValue);
             else newValue = defaultValue;
             return newValue;
           };
 
-          const step = getValue("step", 1);
-          const min = getValue("min", 0);
-          const max = getValue("max", 0);
+          const step = getValue('step', 1);
+          const min = getValue('min', 0);
+          const max = getValue('max', 0);
 
           // Detect scroll position
           if (event.originalEvent.deltaY < 0) {
@@ -946,23 +867,23 @@ const AiScriptStart = () => {
           }
 
           // Update value
-          if (currentValue < min) ranger.val(min).trigger("input");
-          else if (currentValue > max) ranger.val(max).trigger("input");
-          else ranger.val(currentValue).trigger("input");
+          if (currentValue < min) ranger.val(min).trigger('input');
+          else if (currentValue > max) ranger.val(max).trigger('input');
+          else ranger.val(currentValue).trigger('input');
         });
 
-        ranger.on("input", function () {
+        ranger.on('input', function () {
           rangerNumber.val(ranger.val());
         });
 
-        rangerNumber.on("input", function () {
+        rangerNumber.on('input', function () {
           ranger.val(rangerNumber.val());
         });
 
-        rangerNumber.on("change", function () {
+        rangerNumber.on('change', function () {
           let value = parseInt(rangerNumber.val());
-          let min = parseInt(rangerNumber.attr("min"));
-          let max = parseInt(rangerNumber.attr("max"));
+          let min = parseInt(rangerNumber.attr('min'));
+          let max = parseInt(rangerNumber.attr('max'));
           if (value < min) {
             rangerNumber.val(min);
           } else if (value > max) {
@@ -985,39 +906,39 @@ const AiScriptStart = () => {
             return this;
           },
           setMin: function (value) {
-            ranger.attr("min", value);
-            rangerNumber.attr("min", value);
+            ranger.attr('min', value);
+            rangerNumber.attr('min', value);
             return this;
           },
           setMax: function (value) {
-            ranger.attr("max", value);
-            rangerNumber.attr("max", value);
+            ranger.attr('max', value);
+            rangerNumber.attr('max', value);
             return this;
           },
           setStep: function (value) {
-            ranger.attr("step", value);
-            rangerNumber.attr("step", value);
+            ranger.attr('step', value);
+            rangerNumber.attr('step', value);
             return this;
           },
 
           disable: function () {
-            ranger.addClass("disabled");
-            ranger.prop("disabled", true);
-            rangerNumber.addClass("disabled");
-            rangerNumber.prop("disabled", true);
+            ranger.addClass('disabled');
+            ranger.prop('disabled', true);
+            rangerNumber.addClass('disabled');
+            rangerNumber.prop('disabled', true);
             return this;
           },
           enable: function () {
-            ranger.removeClass("disabled");
-            ranger.prop("disabled", false);
-            rangerNumber.removeClass("disabled");
-            rangerNumber.prop("disabled", false);
+            ranger.removeClass('disabled');
+            ranger.prop('disabled', false);
+            rangerNumber.removeClass('disabled');
+            rangerNumber.prop('disabled', false);
             return this;
           },
 
           insert: () => rangerBase,
           val: function (value) {
-            if (typeof value !== "undefined") {
+            if (typeof value !== 'undefined') {
               ranger.val(value);
               rangerNumber.val(value);
               return this;
@@ -1028,12 +949,12 @@ const AiScriptStart = () => {
       };
 
       // Output Length
-      const outputLength = $("<input>", {
-        type: "number",
-        class: "form-control",
+      const outputLength = $('<input>', {
+        type: 'number',
+        class: 'form-control',
       });
 
-      outputLength.on("input", () =>
+      outputLength.on('input', () =>
         tinyAi.setMaxOutputTokens(convertToNumber(outputLength.val())),
       );
 
@@ -1041,60 +962,40 @@ const AiScriptStart = () => {
       const temperature = tinyRanger();
       temperature
         .getBase()
-        .on("input", () =>
-          tinyAi.setTemperature(convertToNumber(temperature.val())),
-        );
+        .on('input', () => tinyAi.setTemperature(convertToNumber(temperature.val())));
       temperature
         .getBase2()
-        .on("change", () =>
-          tinyAi.setTemperature(convertToNumber(temperature.val())),
-        );
+        .on('change', () => tinyAi.setTemperature(convertToNumber(temperature.val())));
       temperature.val(1);
       tinyAi.setTemperature(1);
 
       // Top P
       const topP = tinyRanger();
-      topP
-        .getBase()
-        .on("input", () => tinyAi.setTopP(convertToNumber(topP.val())));
-      topP
-        .getBase2()
-        .on("change", () => tinyAi.setTopP(convertToNumber(topP.val())));
+      topP.getBase().on('input', () => tinyAi.setTopP(convertToNumber(topP.val())));
+      topP.getBase2().on('change', () => tinyAi.setTopP(convertToNumber(topP.val())));
 
       // Top K
       const topK = tinyRanger();
-      topK
-        .getBase()
-        .on("input", () => tinyAi.setTopK(convertToNumber(topK.val())));
-      topK
-        .getBase2()
-        .on("change", () => tinyAi.setTopK(convertToNumber(topK.val())));
+      topK.getBase().on('input', () => tinyAi.setTopK(convertToNumber(topK.val())));
+      topK.getBase2().on('change', () => tinyAi.setTopK(convertToNumber(topK.val())));
 
       // Presence penalty
       const presencePenalty = tinyRanger();
       presencePenalty
         .getBase()
-        .on("input", () =>
-          tinyAi.setPresencePenalty(convertToNumber(presencePenalty.val())),
-        );
+        .on('input', () => tinyAi.setPresencePenalty(convertToNumber(presencePenalty.val())));
       presencePenalty
         .getBase2()
-        .on("change", () =>
-          tinyAi.setPresencePenalty(convertToNumber(presencePenalty.val())),
-        );
+        .on('change', () => tinyAi.setPresencePenalty(convertToNumber(presencePenalty.val())));
 
       // Frequency penalty
       const frequencyPenalty = tinyRanger();
       frequencyPenalty
         .getBase()
-        .on("input", () =>
-          tinyAi.setFrequencyPenalty(convertToNumber(frequencyPenalty.val())),
-        );
+        .on('input', () => tinyAi.setFrequencyPenalty(convertToNumber(frequencyPenalty.val())));
       frequencyPenalty
         .getBase2()
-        .on("change", () =>
-          tinyAi.setFrequencyPenalty(convertToNumber(frequencyPenalty.val())),
-        );
+        .on('change', () => tinyAi.setFrequencyPenalty(convertToNumber(frequencyPenalty.val())));
 
       // Get fic cache
       const getFicCache = (
@@ -1107,8 +1008,8 @@ const AiScriptStart = () => {
       ) => {
         isFirstTime = false;
         // Reset token count
-        const oldTokenCount = tokenCount.getValue("amount");
-        tokenCount.updateValue("amount", 0);
+        const oldTokenCount = tokenCount.getValue('amount');
+        tokenCount.updateValue('amount', 0);
         newContent()
           .then((ficData) => {
             // Start chatbot script
@@ -1119,18 +1020,14 @@ const AiScriptStart = () => {
               tinyAi.setHistoryModel(tinyAi.getModel());
 
               // Set Instruction
-              tinyAi.setHistorySystemInstruction(
-                aiTemplates.instructions[instructionId],
-              );
+              tinyAi.setHistorySystemInstruction(aiTemplates.instructions[instructionId]);
 
               // Set Prompts
               try {
-                if (typeof prompts === "string")
-                  tinyAi.setHistoryPrompt(prompts);
-                if (Array.isArray(prompts))
-                  tinyAi.setHistoryPrompt(prompts.join("\n"));
+                if (typeof prompts === 'string') tinyAi.setHistoryPrompt(prompts);
+                if (Array.isArray(prompts)) tinyAi.setHistoryPrompt(prompts.join('\n'));
               } catch {
-                tinyAi.setHistoryPrompt("");
+                tinyAi.setHistoryPrompt('');
               }
 
               // Add file data
@@ -1144,37 +1041,27 @@ const AiScriptStart = () => {
               tinyAi.setHistoryFileData(ficData.mime, ficData.data);
 
               // Delete old file version
-              if (
-                tinyData &&
-                tinyData.parts &&
-                tinyData.parts[0] &&
-                tinyData.parts[0].inlineData
-              )
+              if (tinyData && tinyData.parts && tinyData.parts[0] && tinyData.parts[0].inlineData)
                 tinyAi.deleteHistoryIndex(0);
             }
 
             // Clear data
             clearMessages();
             enableReadOnly(false);
-            addMessage(
-              makeMessage({ message: introduction, tokens: 0 }, "Introduction"),
-            );
+            addMessage(makeMessage({ message: introduction, tokens: 0 }, 'Introduction'));
 
             const history = tinyAi.getHistory();
 
             // Insert first message
-            if (
-              history.data.length < 1 &&
-              typeof history.firstDialogue === "string"
-            ) {
+            if (history.data.length < 1 && typeof history.firstDialogue === 'string') {
               history.data.push(
                 tinyAi._buildContents(
                   null,
                   {
-                    role: "model",
+                    role: 'model',
                     parts: [{ text: history.firstDialogue }],
                   },
-                  "model",
+                  'model',
                 ),
               );
             }
@@ -1188,22 +1075,22 @@ const AiScriptStart = () => {
             for (const index in ficConfigs.buttons) {
               // Nope
               if (ficConfigs.data[index].id !== ficConfigs.selected)
-                ficConfigs.buttons[index].removeClass("selected");
-              else ficConfigs.buttons[index].addClass("selected");
+                ficConfigs.buttons[index].removeClass('selected');
+              else ficConfigs.buttons[index].addClass('selected');
             }
           })
           .catch((err) => {
             console.error(err);
             alert(err.message);
-            $.LoadingOverlay("hide");
+            $.LoadingOverlay('hide');
           });
       };
 
       // Import button
-      const importButton = $("<input>", {
-        type: "file",
-        accept: ".json",
-        style: "display: none;",
+      const importButton = $('<input>', {
+        type: 'file',
+        accept: '.json',
+        style: 'display: none;',
       });
 
       const insertImportData = (data, readOnly = false) => {
@@ -1211,20 +1098,11 @@ const AiScriptStart = () => {
         if (Array.isArray(data)) {
           for (const index in data) {
             const indexId = !readOnly
-              ? tinyAi.addHistoryData(
-                  tinyAi._buildContents(null, data[index], data[index].role),
-                )
+              ? tinyAi.addHistoryData(tinyAi._buildContents(null, data[index], data[index].role))
               : tinyAi.getHistoryDataIdByIndex(index);
 
-            const msg = !readOnly
-              ? tinyAi.getLastHistoryIndexData()
-              : data[index];
-            if (
-              msg &&
-              msg.parts &&
-              msg.parts[0] &&
-              typeof msg.parts[0].text === "string"
-            ) {
+            const msg = !readOnly ? tinyAi.getLastHistoryIndexData() : data[index];
+            if (msg && msg.parts && msg.parts[0] && typeof msg.parts[0].text === 'string') {
               addMessage(
                 makeMessage(
                   {
@@ -1232,7 +1110,7 @@ const AiScriptStart = () => {
                     tokens: 0,
                     index: indexId,
                   },
-                  msg.role === "user" ? null : tinyLib.toTitleCase(msg.role),
+                  msg.role === 'user' ? null : tinyLib.toTitleCase(msg.role),
                 ),
               );
             }
@@ -1240,7 +1118,7 @@ const AiScriptStart = () => {
         }
       };
 
-      importButton.on("change", (event) => {
+      importButton.on('change', (event) => {
         const file = event.target.files[0];
         if (file) {
           const reader = new FileReader();
@@ -1248,27 +1126,21 @@ const AiScriptStart = () => {
             try {
               // Read data
               const jsonData = JSON.parse(e.target.result);
-              if (jsonData.file && typeof jsonData.id === "string") {
+              if (jsonData.file && typeof jsonData.id === 'string') {
                 // Migration to sandbox mode
-                if (
-                  !canSandBox(jsonData.id) &&
-                  typeof jsonData.file.systemInstruction === "string"
-                )
-                  jsonData.id = "sandBoxFic";
+                if (!canSandBox(jsonData.id) && typeof jsonData.file.systemInstruction === 'string')
+                  jsonData.id = 'sandBoxFic';
 
                 // Start History
                 tinyAi.startHistory(jsonData.id, true);
 
                 // Open Get Fic Cache
-                const index = ficConfigs.data.findIndex(
-                  (item) => item.id === jsonData.id,
-                );
+                const index = ficConfigs.data.findIndex((item) => item.id === jsonData.id);
 
-                const instructionId =
-                  index > -1 ? ficConfigs.data[index].template : null;
+                const instructionId = index > -1 ? ficConfigs.data[index].template : null;
 
                 // Set model
-                if (typeof jsonData.file.model === "string") {
+                if (typeof jsonData.file.model === 'string') {
                   modelSelector.val(jsonData.file.model);
                   tinyAi.setHistoryModel(jsonData.file.model);
                   selectModel(jsonData.file.model);
@@ -1276,18 +1148,14 @@ const AiScriptStart = () => {
 
                 // Set Instruction
                 if (canSandBox(jsonData.id))
-                  tinyAi.setHistorySystemInstruction(
-                    jsonData.file.systemInstruction,
-                  );
+                  tinyAi.setHistorySystemInstruction(jsonData.file.systemInstruction);
                 else if (aiTemplates.instructions[instructionId])
-                  tinyAi.setHistorySystemInstruction(
-                    aiTemplates.instructions[instructionId],
-                  );
+                  tinyAi.setHistorySystemInstruction(aiTemplates.instructions[instructionId]);
 
-                if (typeof jsonData.file.prompt === "string")
+                if (typeof jsonData.file.prompt === 'string')
                   tinyAi.setHistoryPrompt(jsonData.file.prompt);
 
-                if (typeof jsonData.file.firstDialogue === "string")
+                if (typeof jsonData.file.firstDialogue === 'string')
                   tinyAi.setHistoryFirstDialogue(jsonData.file.firstDialogue);
 
                 // Clear messages
@@ -1297,16 +1165,16 @@ const AiScriptStart = () => {
                 // Insert first message
                 if (
                   jsonData.file.data.length < 1 &&
-                  typeof jsonData.file.firstDialogue === "string"
+                  typeof jsonData.file.firstDialogue === 'string'
                 ) {
                   jsonData.file.data.push(
                     tinyAi._buildContents(
                       null,
                       {
-                        role: "model",
+                        role: 'model',
                         parts: [{ text: jsonData.file.firstDialogue }],
                       },
-                      "model",
+                      'model',
                     ),
                   );
                 }
@@ -1339,31 +1207,31 @@ const AiScriptStart = () => {
       const ficConfigs = {
         data: [
           {
-            title: "Safe Talk",
-            id: "ficTalkSfw",
-            template: "talkToFicSfw",
-            icon: "fa-solid fa-book-open",
+            title: 'Safe Talk',
+            id: 'ficTalkSfw',
+            template: 'talkToFicSfw',
+            icon: 'fa-solid fa-book-open',
             isSafe: true,
             intro:
-              "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic in your native language (if i can support to do this). I will try to hide some explicit details from fic, but if you insist, I will try to say in a few details.",
+              'Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic in your native language (if i can support to do this). I will try to hide some explicit details from fic, but if you insist, I will try to say in a few details.',
             getData: async () => saveRoleplayFormat(null, false),
           },
           {
-            title: "Full Talk",
-            id: "ficTalk",
-            template: "talkToFic",
-            icon: "fa-solid fa-book-open-reader",
+            title: 'Full Talk',
+            id: 'ficTalk',
+            template: 'talkToFic',
+            icon: 'fa-solid fa-book-open-reader',
             intro:
-              "Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic in your native language (if i can support to do this), but be careful, because I will answer questions related to literally anything that happened in fic, including censored scenes (but i will do this respecting the limitations of my selected model).",
+              'Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic in your native language (if i can support to do this), but be careful, because I will answer questions related to literally anything that happened in fic, including censored scenes (but i will do this respecting the limitations of my selected model).',
             getData: async () => saveRoleplayFormat(null, false),
           },
           {
-            title: "Sandbox",
-            id: "sandBoxFic",
-            template: "sandBoxToFic",
-            icon: "fa-solid fa-fill-drip",
+            title: 'Sandbox',
+            id: 'sandBoxFic',
+            template: 'sandBoxToFic',
+            icon: 'fa-solid fa-fill-drip',
             intro:
-              "Welcome to sandbox of the fic Pony Driland! This is my purely sandbox version, that means I have no special configuration, allowing you to do whatever you want within the limits of your selected model.",
+              'Welcome to sandbox of the fic Pony Driland! This is my purely sandbox version, that means I have no special configuration, allowing you to do whatever you want within the limits of your selected model.',
             getData: async () =>
               saveRoleplayFormat(null, false, {
                 ficLine: false,
@@ -1377,28 +1245,22 @@ const AiScriptStart = () => {
       };
 
       const ficTemplates = [
-        createButtonSidebar(
-          "fa-solid fa-arrows-rotate",
-          "Reset History",
-          () => {
-            const index = ficConfigs.data.findIndex(
-              (item) => item.id === ficConfigs.selected,
+        createButtonSidebar('fa-solid fa-arrows-rotate', 'Reset History', () => {
+          const index = ficConfigs.data.findIndex((item) => item.id === ficConfigs.selected);
+          if (index > -1) {
+            getFicCache(
+              ficConfigs.data[index].id,
+              ficConfigs.data[index].template,
+              ficConfigs.data[index].prompt,
+              ficConfigs.data[index].intro,
+              () => {
+                ficConfigs.selected = ficConfigs.data[index].id;
+                return ficConfigs.data[index].getData();
+              },
+              true,
             );
-            if (index > -1) {
-              getFicCache(
-                ficConfigs.data[index].id,
-                ficConfigs.data[index].template,
-                ficConfigs.data[index].prompt,
-                ficConfigs.data[index].intro,
-                () => {
-                  ficConfigs.selected = ficConfigs.data[index].id;
-                  return ficConfigs.data[index].getData();
-                },
-                true,
-              );
-            }
-          },
-        ),
+          }
+        }),
       ];
 
       for (const index in ficConfigs.data) {
@@ -1423,8 +1285,8 @@ const AiScriptStart = () => {
 
       const importItems = [
         // Import
-        createButtonSidebar("fa-solid fa-file-import", "Import", () =>
-          importButton.trigger("click"),
+        createButtonSidebar('fa-solid fa-file-import', 'Import', () =>
+          importButton.trigger('click'),
         ),
 
         importButton,
@@ -1432,76 +1294,70 @@ const AiScriptStart = () => {
 
       const ficPromptItems = [
         // System Instructions
-        createButtonSidebar(
-          "fa-solid fa-toolbox",
-          "System Instructions",
-          () => {
-            const tinyModalData = {
-              id: "ai_instructions",
-              info: "System Instructions:",
-              size: 400,
-              textarea: tinyAi.getHistorySystemInstruction(),
-              submitName: "Set Instructions",
-              submitCall: (value) => {
-                tinyAi.setHistorySystemInstruction(value);
-                updateAiTokenCounterData();
-              },
+        createButtonSidebar('fa-solid fa-toolbox', 'System Instructions', () => {
+          const tinyModalData = {
+            id: 'ai_instructions',
+            info: 'System Instructions:',
+            size: 400,
+            textarea: tinyAi.getHistorySystemInstruction(),
+            submitName: 'Set Instructions',
+            submitCall: (value) => {
+              tinyAi.setHistorySystemInstruction(value);
+              updateAiTokenCounterData();
+            },
+          };
+
+          if (canSandBox(ficConfigs.selected)) {
+            tinyModalData.addTemplates = {
+              data: aiTemplates.prompts,
+              title: 'Select a prompt to be added',
             };
+          } else tinyModalData.readOnly = true;
 
-            if (canSandBox(ficConfigs.selected)) {
-              tinyModalData.addTemplates = {
-                data: aiTemplates.prompts,
-                title: "Select a prompt to be added",
-              };
-            } else tinyModalData.readOnly = true;
-
-            tinyModalTextarea(tinyModalData, ["instructionText", "text"]);
-          },
-        ),
+          tinyModalTextarea(tinyModalData, ['instructionText', 'text']);
+        }),
 
         // Prompt
-        createButtonSidebar("fa-solid fa-terminal", "Prompt", () =>
+        createButtonSidebar('fa-solid fa-terminal', 'Prompt', () =>
           tinyModalTextarea(
             {
-              id: "ai_prompt",
-              info: "This prompt will always be inserted at the beginning of all your requests:",
+              id: 'ai_prompt',
+              info: 'This prompt will always be inserted at the beginning of all your requests:',
               size: 200,
               textarea: tinyAi.getHistoryPrompt(),
-              submitName: "Set Prompt",
+              submitName: 'Set Prompt',
               addTemplates: {
                 data: aiTemplates.prompts,
-                title: "Select a prompt to be added",
+                title: 'Select a prompt to be added',
               },
               submitCall: (value) => {
                 tinyAi.setHistoryPrompt(value);
                 updateAiTokenCounterData();
               },
             },
-            !canSandBox(ficConfigs.selected) ? "text" : ["sandBoxText", "text"],
+            !canSandBox(ficConfigs.selected) ? 'text' : ['sandBoxText', 'text'],
           ),
         ),
 
         // First Dialogue
-        createButtonSidebar("fa-solid fa-comment-dots", "First Dialogue", () =>
+        createButtonSidebar('fa-solid fa-comment-dots', 'First Dialogue', () =>
           tinyModalTextarea(
             {
-              id: "ai_first_dialogue",
-              info: "This is the initial dialogue that can be inserted as a model message:",
+              id: 'ai_first_dialogue',
+              info: 'This is the initial dialogue that can be inserted as a model message:',
               size: 200,
               textarea: tinyAi.getHistoryFirstDialogue(),
-              submitName: "Set First Message",
+              submitName: 'Set First Message',
               addTemplates: {
                 data: aiTemplates.prompts,
-                title: "Select a prompt to be added",
+                title: 'Select a prompt to be added',
               },
               submitCall: (value) => {
                 tinyAi.setHistoryFirstDialogue(value);
-                enabledFirstDialogue(
-                  typeof value === "string" && value.length > 0,
-                );
+                enabledFirstDialogue(typeof value === 'string' && value.length > 0);
               },
             },
-            "firstDialogue",
+            'firstDialogue',
           ),
         ),
       ];
@@ -1509,25 +1365,25 @@ const AiScriptStart = () => {
       // Textarea Template
       const tinyModalTextarea = (
         config = {
-          info: "???",
+          info: '???',
           size: 200,
-          submitName: "Submit",
+          submitName: 'Submit',
           addTemplates: null,
           submitCall: null,
           id: null,
           textarea: null,
           readOnly: false,
         },
-        textValueName = "text",
+        textValueName = 'text',
       ) => {
         // Body
-        const body = $("<div>");
-        const textarea = $("<textarea>", {
-          class: "form-control",
+        const body = $('<div>');
+        const textarea = $('<textarea>', {
+          class: 'form-control',
           style: `height: ${String(config.size)}px;`,
         });
         textarea.val(config.textarea);
-        if (config.readOnly) textarea.prop("readOnly", true);
+        if (config.readOnly) textarea.prop('readOnly', true);
 
         // Templates list
         if (
@@ -1537,18 +1393,12 @@ const AiScriptStart = () => {
         ) {
           const templateList = config.addTemplates.data;
           // Select
-          const textareaAdd = $("<select>", { class: "form-control" });
-          textareaAdd.append(
-            $("<option>", { value: "DEFAULT" }).text(config.addTemplates.title),
-          );
+          const textareaAdd = $('<select>', { class: 'form-control' });
+          textareaAdd.append($('<option>', { value: 'DEFAULT' }).text(config.addTemplates.title));
 
           // Separator
           const addSeparator = () =>
-            textareaAdd.append(
-              $("<option>")
-                .prop("disabled", true)
-                .text("----------------------"),
-            );
+            textareaAdd.append($('<option>').prop('disabled', true).text('----------------------'));
 
           addSeparator();
 
@@ -1559,12 +1409,11 @@ const AiScriptStart = () => {
             const valueTypeValidator = () => {
               // Tiny code
               const tinyTypeValidator = (tinyTxtValName) =>
-                typeof templateItem[tinyTxtValName] === "string" ||
+                typeof templateItem[tinyTxtValName] === 'string' ||
                 templateItem.type === tinyTxtValName;
 
               // String
-              if (typeof textValueName === "string")
-                return tinyTypeValidator(textValueName);
+              if (typeof textValueName === 'string') return tinyTypeValidator(textValueName);
 
               // Array
               if (Array.isArray(textValueName)) {
@@ -1581,12 +1430,12 @@ const AiScriptStart = () => {
             const getTypeValue = () => {
               // Tiny code
               const tinyTypeValidator = (tinyTxtValName) =>
-                typeof templateItem[tinyTxtValName] === "string"
+                typeof templateItem[tinyTxtValName] === 'string'
                   ? templateItem[tinyTxtValName]
                   : null;
 
               // String
-              if (typeof textValueName === "string") {
+              if (typeof textValueName === 'string') {
                 const value = tinyTypeValidator(textValueName);
                 if (value) return value;
               }
@@ -1603,18 +1452,16 @@ const AiScriptStart = () => {
               return null;
             };
 
-            const ficOptionData = ficConfigs.data.find(
-              (item) => item.id === ficConfigs.selected,
-            );
+            const ficOptionData = ficConfigs.data.find((item) => item.id === ficConfigs.selected);
 
             if (
               ficOptionData &&
               // Sandbox
-              (typeof templateItem.sandboxOnly !== "boolean" ||
+              (typeof templateItem.sandboxOnly !== 'boolean' ||
                 !templateItem.sandboxOnly ||
                 canSandBox(ficConfigs.selected)) &&
               // Safe mode
-              (typeof ficOptionData.isSafe !== "boolean" ||
+              (typeof ficOptionData.isSafe !== 'boolean' ||
                 !ficOptionData.isSafe ||
                 (ficOptionData.isSafe && !templateItem.isNotSafe))
             ) {
@@ -1623,24 +1470,21 @@ const AiScriptStart = () => {
                 // Validator
                 if (
                   valueTypeValidator() &&
-                  (typeof templateItem.value === "string" ||
-                    templateItem.disabled)
+                  (typeof templateItem.value === 'string' || templateItem.disabled)
                 )
                   textareaAdd.append(
-                    $("<option>", {
+                    $('<option>', {
                       value: templateItem.value,
                     })
                       // Data item
-                      .data("TinyAI-select-text", getTypeValue())
+                      .data('TinyAI-select-text', getTypeValue())
                       // Option name
                       .text(templateItem.name)
 
                       // Option is disabled?
                       .prop(
-                        "disabled",
-                        typeof templateItem.disabled === "boolean"
-                          ? templateItem.disabled
-                          : false,
+                        'disabled',
+                        typeof templateItem.disabled === 'boolean' ? templateItem.disabled : false,
                       ),
                   );
               }
@@ -1650,34 +1494,30 @@ const AiScriptStart = () => {
           }
 
           // Option selected
-          textareaAdd.on("change", () => {
+          textareaAdd.on('change', () => {
             // Get value
             const option = textareaAdd.find(`[value="${textareaAdd.val()}"]`);
-            const text = option
-              ? option.data("TinyAI-select-text")
-              : null || null;
+            const text = option ? option.data('TinyAI-select-text') : null || null;
 
-            textareaAdd.val("DEFAULT");
+            textareaAdd.val('DEFAULT');
 
             // Insert text
-            if (typeof text === "string" && text.length > 0) {
+            if (typeof text === 'string' && text.length > 0) {
               // Cursor position
-              const start = textarea.prop("selectionStart");
-              const end = textarea.prop("selectionEnd");
+              const start = textarea.prop('selectionStart');
+              const end = textarea.prop('selectionEnd');
 
               // Textarea content
               const content = textarea.val();
 
               // Insert new text
-              textarea.val(
-                content.substring(0, start) + text + content.substring(end),
-              );
+              textarea.val(content.substring(0, start) + text + content.substring(end));
 
               // New cursor position
               const newCursorPosition = start + text.length;
               textarea
-                .prop("selectionStart", newCursorPosition)
-                .prop("selectionEnd", newCursorPosition)
+                .prop('selectionStart', newCursorPosition)
+                .prop('selectionEnd', newCursorPosition)
                 .focus();
             }
           });
@@ -1687,90 +1527,85 @@ const AiScriptStart = () => {
         }
 
         // Add textarea
-        body.append($("<p>").text(config.info));
+        body.append($('<p>').text(config.info));
         body.append(textarea);
 
         // Submit
-        const submit = $("<button>", { class: "btn btn-info m-2 ms-0" });
+        const submit = $('<button>', { class: 'btn btn-info m-2 ms-0' });
         submit.text(config.submitName);
 
-        submit.on("click", () => {
+        submit.on('click', () => {
           config.submitCall(textarea.val());
-          $(`#${config.id}`).modal("hide");
+          $(`#${config.id}`).modal('hide');
         });
 
-        if (config.readOnly) submit.prop("disabled", true).addClass("disabled");
+        if (config.readOnly) submit.prop('disabled', true).addClass('disabled');
 
-        body.append(
-          $("<div>", { class: "d-grid gap-2 col-6 mx-auto" }).append(submit),
-        );
+        body.append($('<div>', { class: 'd-grid gap-2 col-6 mx-auto' }).append(submit));
 
         // Start modal
         tinyLib.modal({
           id: config.id,
-          title: "AI Prompt",
-          dialog: "modal-lg",
+          title: 'AI Prompt',
+          dialog: 'modal-lg',
           body,
         });
       };
 
       // Left
-      const sidebarLeft = $("<div>", sidebarStyle).append(
-        $("<ul>", { class: "list-unstyled" }).append(
-          $("<li>", { id: "ai-mode-list", class: "mb-3" }).append(
+      const sidebarLeft = $('<div>', sidebarStyle).append(
+        $('<ul>', { class: 'list-unstyled' }).append(
+          $('<li>', { id: 'ai-mode-list', class: 'mb-3' }).append(
             // Modes
-            $("<h5>").text("Modes"),
+            $('<h5>').text('Modes'),
 
             // Fic Talk
             ficTemplates,
 
             // Settings
-            $("<h5>").text("Settings"),
+            $('<h5>').text('Settings'),
             ficPromptItems,
 
             // Import
-            $("<h5>").text("Data"),
+            $('<h5>').text('Data'),
             importItems,
 
             // Export
-            createButtonSidebar("fa-solid fa-file-export", "Export", () => {
+            createButtonSidebar('fa-solid fa-file-export', 'Export', () => {
               const exportData = {
                 file: clone(tinyAi.getHistory()),
                 id: tinyAi.getHistoryId(),
               };
 
-              if (!canSandBox(ficConfigs.selected))
-                delete exportData.file.systemInstruction;
+              if (!canSandBox(ficConfigs.selected)) delete exportData.file.systemInstruction;
 
               if (exportData.file.file) delete exportData.file.file;
 
               saveAs(
-                new Blob([JSON.stringify(exportData)], { type: "text/plain" }),
+                new Blob([JSON.stringify(exportData)], { type: 'text/plain' }),
                 `Pony Driland - ${tinyAi.getHistoryId()} - AI Export.json`,
               );
             }),
 
             // Downloads
-            createButtonSidebar("fa-solid fa-download", "Downloads", () => {
-              const body = $("<div>");
+            createButtonSidebar('fa-solid fa-download', 'Downloads', () => {
+              const body = $('<div>');
               body.append(
-                $("<h3>")
+                $('<h3>')
                   .text(`Download Content`)
-                  .prepend($("<i>", { class: "fa-solid fa-download me-3" }))
+                  .prepend($('<i>', { class: 'fa-solid fa-download me-3' }))
                   .append(
-                    $("<button>", { class: "ms-3 btn btn-info btn-sm" })
-                      .text("Save As all chapters")
-                      .on("click", () => saveRoleplayFormat()),
+                    $('<button>', { class: 'ms-3 btn btn-info btn-sm' })
+                      .text('Save As all chapters')
+                      .on('click', () => saveRoleplayFormat()),
                   ),
-                $("<h5>")
+                $('<h5>')
                   .text(
                     `Here you can download the official content of fic to produce unofficial content dedicated to artificial intelligence.`,
                   )
                   .append(
-                    $("<br/>"),
-                    $("<small>").text(
-                      "Remember that you are downloading the uncensored version.",
-                    ),
+                    $('<br/>'),
+                    $('<small>').text('Remember that you are downloading the uncensored version.'),
                   ),
               );
 
@@ -1780,29 +1615,25 @@ const AiScriptStart = () => {
 
                 // Add Chapter
                 body.append(
-                  $("<div>", { class: "card" }).append(
-                    $("<div>", { class: "card-body" }).append(
-                      $("<h5>", { class: "card-title m-0" })
+                  $('<div>', { class: 'card' }).append(
+                    $('<div>', { class: 'card-body' }).append(
+                      $('<h5>', { class: 'card-title m-0' })
                         .text(`Chapter ${chapter} - `)
                         .append(
-                          $("<small>").text(
-                            storyCfg.chapterName[chapter].title,
-                          ),
-                          $("<a>", {
-                            class: "btn btn-primary m-2 me-0 btn-sm",
+                          $('<small>').text(storyCfg.chapterName[chapter].title),
+                          $('<a>', {
+                            class: 'btn btn-primary m-2 me-0 btn-sm',
                             href: `/chapter/${chapter}.html`,
                             chapter: chapter,
                           })
-                            .on("click", function () {
+                            .on('click', function () {
                               // Save Chapter
-                              saveRoleplayFormat(
-                                Number($(this).attr("chapter")),
-                              );
+                              saveRoleplayFormat(Number($(this).attr('chapter')));
 
                               // Complete
                               return false;
                             })
-                            .text("Save as"),
+                            .text('Save as'),
                         ),
                     ),
                   ),
@@ -1810,66 +1641,66 @@ const AiScriptStart = () => {
               }
 
               body.append(
-                $("<p>", { class: "m-0" }).text(
+                $('<p>', { class: 'm-0' }).text(
                   `This content is ready for AI to know which lines of text, chapters, day number, weather, location on any part of the fic you ask. The website script will convert all content to be easily understood by AI languages.`,
                 ),
               );
 
               tinyLib.modal({
-                id: "ai_downloads",
-                title: "AI Downloads",
-                dialog: "modal-lg",
+                id: 'ai_downloads',
+                title: 'AI Downloads',
+                dialog: 'modal-lg',
                 body,
               });
             }),
 
             // Tiny information
-            $("<hr/>", { class: "border-white" }),
-            $("<div>", { class: "small text-grey" }).text(
-              "AI makes mistakes, so double-check it. AI does not replace the fic literature (Careful! AI can type spoilers!).",
+            $('<hr/>', { class: 'border-white' }),
+            $('<div>', { class: 'small text-grey' }).text(
+              'AI makes mistakes, so double-check it. AI does not replace the fic literature (Careful! AI can type spoilers!).',
             ),
           ),
         ),
       );
 
       // Right
-      const sidebarSettingTemplate = { span: { class: "pb-2 d-inline-block" } };
+      const sidebarSettingTemplate = { span: { class: 'pb-2 d-inline-block' } };
       const sidebarRightBase = {
         // Model Selector
-        modelSelector: $("<div>", {
-          class: "form-floating",
-          title: "The AI model used here",
+        modelSelector: $('<div>', {
+          class: 'form-floating',
+          title: 'The AI model used here',
         }).append(
           modelSelector,
-          $("<label>", { for: "select-ai-model" })
-            .text("Select AI Model")
-            .prepend($("<i>", { class: `fa-solid fa-atom me-2` })),
+          $('<label>', { for: 'select-ai-model' })
+            .text('Select AI Model')
+            .prepend($('<i>', { class: `fa-solid fa-atom me-2` })),
         ),
 
         // Token Counter
-        tokenCounter: $("<div>", {
-          class: "mt-3",
-          title: "Counts how many tokens are used for the content generation",
+        tokenCounter: $('<div>', {
+          class: 'mt-3',
+          title: 'Counts how many tokens are used for the content generation',
         }).append(
-          $("<span>")
-            .text("Token count")
-            .prepend($("<i>", { class: `fa-solid fa-magnifying-glass me-2` })),
-          $("<div>", { class: "mt-1 small" }).append(
+          $('<span>')
+            .text('Token count')
+            .prepend($('<i>', { class: `fa-solid fa-magnifying-glass me-2` })),
+          $('<div>', { class: 'mt-1 small' }).append(
             tokenCount.amount,
-            $("<span>", { class: "mx-1" }).text("/"),
+            $('<span>', { class: 'mx-1' }).text('/'),
             tokenCount.total,
           ),
         ),
 
         // Temperature
-        temperature: $("<div>", {
-          class: "mt-3",
-          title: "Creativity allowed in the responses",
+        temperature: $('<div>', {
+          class: 'mt-3',
+          title: 'Creativity allowed in the responses',
         }).append(
-          $("<span>", sidebarSettingTemplate.span)
-            .text("Temperature")
+          $('<span>', sidebarSettingTemplate.span)
+            .text('Temperature')
             .prepend(
-              $("<i>", {
+              $('<i>', {
                 class: `fa-solid fa-temperature-three-quarters me-2`,
               }),
             ),
@@ -1877,60 +1708,59 @@ const AiScriptStart = () => {
         ),
 
         // Output Length
-        outputLength: $("<div>", {
-          class: "mt-3",
-          title: "Maximum number of tokens in response",
+        outputLength: $('<div>', {
+          class: 'mt-3',
+          title: 'Maximum number of tokens in response',
         }).append(
-          $("<span>", sidebarSettingTemplate.span)
-            .text("Output length")
-            .prepend($("<i>", { class: `fa-solid fa-comment me-2` })),
+          $('<span>', sidebarSettingTemplate.span)
+            .text('Output length')
+            .prepend($('<i>', { class: `fa-solid fa-comment me-2` })),
           outputLength,
         ),
 
         // Top P
-        topP: $("<div>", {
-          class: "mt-3",
-          title:
-            "The maximum cumulative probability of tokens to consider when sampling",
+        topP: $('<div>', {
+          class: 'mt-3',
+          title: 'The maximum cumulative probability of tokens to consider when sampling',
         }).append(
-          $("<span>", sidebarSettingTemplate.span)
-            .text("Top P")
-            .prepend($("<i>", { class: `fa-solid fa-percent me-2` })),
+          $('<span>', sidebarSettingTemplate.span)
+            .text('Top P')
+            .prepend($('<i>', { class: `fa-solid fa-percent me-2` })),
           topP.insert(),
         ),
 
         // Top K
-        topK: $("<div>", {
-          class: "mt-3",
-          title: "The maximum number of tokens to consider when sampling",
+        topK: $('<div>', {
+          class: 'mt-3',
+          title: 'The maximum number of tokens to consider when sampling',
         }).append(
-          $("<span>", sidebarSettingTemplate.span)
-            .text("Top K")
-            .prepend($("<i>", { class: `fa-solid fa-0 me-2` })),
+          $('<span>', sidebarSettingTemplate.span)
+            .text('Top K')
+            .prepend($('<i>', { class: `fa-solid fa-0 me-2` })),
           topK.insert(),
         ),
 
         // Presence penalty
-        presencePenalty: $("<div>", {
-          class: "mt-3",
+        presencePenalty: $('<div>', {
+          class: 'mt-3',
           title:
             "Presence penalty applied to the next token's logprobs if the token has already been seen in the response",
         }).append(
-          $("<span>", sidebarSettingTemplate.span)
-            .text("Presence penalty")
-            .prepend($("<i>", { class: `fa-solid fa-hand me-2` })),
+          $('<span>', sidebarSettingTemplate.span)
+            .text('Presence penalty')
+            .prepend($('<i>', { class: `fa-solid fa-hand me-2` })),
           presencePenalty.insert(),
         ),
 
         // Frequency penalty
-        frequencyPenalty: $("<div>", {
-          class: "mt-3",
+        frequencyPenalty: $('<div>', {
+          class: 'mt-3',
           title:
             "Frequency penalty applied to the next token's logprobs, multiplied by the number of times each token has been seen in the respponse so far",
         }).append(
-          $("<span>", sidebarSettingTemplate.span)
-            .text("Frequency penalty")
-            .prepend($("<i>", { class: `fa-solid fa-hand me-2` })),
+          $('<span>', sidebarSettingTemplate.span)
+            .text('Frequency penalty')
+            .prepend($('<i>', { class: `fa-solid fa-hand me-2` })),
           frequencyPenalty.insert(),
         ),
       };
@@ -1952,9 +1782,7 @@ const AiScriptStart = () => {
           // Insert model
           const insertItem = (id, displayName, disabled = false) =>
             modelSelector.append(
-              $("<option>", { value: id })
-                .prop("disabled", disabled)
-                .text(displayName),
+              $('<option>', { value: id }).prop('disabled', disabled).text(displayName),
             );
 
           // Get models
@@ -1973,20 +1801,16 @@ const AiScriptStart = () => {
 
               // Category items
               for (const index2 in models[index].data) {
-                insertItem(
-                  models[index].data[index2].id,
-                  models[index].data[index2].displayName,
-                );
+                insertItem(models[index].data[index2].id, models[index].data[index2].displayName);
               }
             }
           }
 
           // New model value
           modelSelector.val(
-            localStorage.getItem("tiny-ai-storage-model-selected") ||
-              tinyAi.getModel(),
+            localStorage.getItem('tiny-ai-storage-model-selected') || tinyAi.getModel(),
           );
-          modelSelector.trigger("change");
+          modelSelector.trigger('change');
         }
       };
 
@@ -1995,41 +1819,24 @@ const AiScriptStart = () => {
         presencePenalty.disable();
         frequencyPenalty.disable();
 
-        tokenCount.updateValue("total", model.inputTokenLimit);
+        tokenCount.updateValue('total', model.inputTokenLimit);
 
         outputLength
           .val(model.outputTokenLimit)
-          .prop("disabled", false)
-          .removeClass("disabled")
-          .trigger("input");
+          .prop('disabled', false)
+          .removeClass('disabled')
+          .trigger('input');
 
-        temperature
-          .setMin(0)
-          .setStep(0.1)
-          .setMax(model.maxTemperature)
-          .enable();
-        if (temperature.val() > model.maxTemperature)
-          temperature.val(model.maxTemperature);
-        temperature.trigger("input");
+        temperature.setMin(0).setStep(0.1).setMax(model.maxTemperature).enable();
+        if (temperature.val() > model.maxTemperature) temperature.val(model.maxTemperature);
+        temperature.trigger('input');
 
-        if (typeof model.topP === "number")
-          topP
-            .val(model.topP)
-            .setMax(1)
-            .setMin(0)
-            .setStep(0.1)
-            .enable()
-            .trigger("input");
+        if (typeof model.topP === 'number')
+          topP.val(model.topP).setMax(1).setMin(0).setStep(0.1).enable().trigger('input');
         else topP.reset().disable();
 
-        if (typeof model.topK === "number")
-          topK
-            .val(model.topK)
-            .setMax(100)
-            .setMin(0)
-            .setStep(1)
-            .enable()
-            .trigger("input");
+        if (typeof model.topK === 'number')
+          topK.val(model.topK).setMax(100).setMin(0).setStep(1).enable().trigger('input');
         else topK.reset().disable();
       };
 
@@ -2037,51 +1844,47 @@ const AiScriptStart = () => {
         const model = tinyAi.getModelData(newModel);
         if (model) {
           insertDefaultSettings(model, newModel);
-          localStorage.setItem("tiny-ai-storage-model-selected", newModel);
+          localStorage.setItem('tiny-ai-storage-model-selected', newModel);
           if (tinyAi.getHistory()) tinyAi.setHistoryModel(newModel);
         } else {
           tokenCount.total.text(0);
           temperature.reset().disable();
-          outputLength.val(0).prop("disabled", true).addClass("disabled");
+          outputLength.val(0).prop('disabled', true).addClass('disabled');
           topP.reset().disable();
           topK.reset().disable();
           presencePenalty.reset().disable();
           frequencyPenalty.reset().disable();
-          localStorage.removeItem("tiny-ai-storage-model-selected");
+          localStorage.removeItem('tiny-ai-storage-model-selected');
         }
 
-        if (
-          !isFirstTime &&
-          !ignoreTokenUpdater &&
-          !modelSelector.prop("disabled")
-        )
+        if (!isFirstTime && !ignoreTokenUpdater && !modelSelector.prop('disabled'))
           updateAiTokenCounterData();
       };
 
-      modelSelector.on("change", () => selectModel(modelSelector.val()));
+      modelSelector.on('change', () => selectModel(modelSelector.val()));
 
       // Load more models
       const loadMoreModels = createButtonSidebar(
-        "fa-solid fa-bars-progress",
-        "Load more models",
+        'fa-solid fa-bars-progress',
+        'Load more models',
         async () => {
-          $.LoadingOverlay("show", { background: "rgba(0,0,0, 0.5)" });
+          $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
           await tinyAi.getModels(100);
 
           if (!tinyAi._nextModelsPageToken) {
-            loadMoreModels.addClass("disabled");
-            loadMoreModels.prop("disabled", true);
+            loadMoreModels.addClass('disabled');
+            loadMoreModels.prop('disabled', true);
           }
 
           updateModelList();
-          $.LoadingOverlay("hide");
+          $.LoadingOverlay('hide');
         },
         !tinyAi._nextModelsPageToken,
       );
 
-      const sidebarRight = $("<div>", sidebarStyle).append(
-        $("<ul>", { class: "list-unstyled" }).append(
-          $("<h5>").text("Run Settings"),
+      const sidebarRight = $('<div>', sidebarStyle).append(
+        $('<ul>', { class: 'list-unstyled' }).append(
+          $('<h5>').text('Run Settings'),
           sidebarRightBase.modelSelector,
           sidebarRightBase.tokenCounter,
           sidebarRightBase.temperature,
@@ -2091,23 +1894,19 @@ const AiScriptStart = () => {
           sidebarRightBase.presencePenalty,
           sidebarRightBase.frequencyPenalty,
 
-          $("<hr/>", { class: "m-2" }),
+          $('<hr/>', { class: 'm-2' }),
 
           // Load more models
           loadMoreModels,
 
           // Reset Settings
-          createButtonSidebar(
-            "fa-solid fa-rotate-right",
-            "Reset default settings",
-            () => {
-              const model = tinyAi.getModelData(modelSelector.val());
-              if (model) {
-                temperature.val(1);
-                insertDefaultSettings(model, modelSelector.val());
-              }
-            },
-          ),
+          createButtonSidebar('fa-solid fa-rotate-right', 'Reset default settings', () => {
+            const model = tinyAi.getModelData(modelSelector.val());
+            if (model) {
+              temperature.val(1);
+              insertDefaultSettings(model, modelSelector.val());
+            }
+          }),
         ),
       );
 
@@ -2117,18 +1916,15 @@ const AiScriptStart = () => {
         const history = tinyAi.getHistory();
         const content = [];
         if (history) {
-          if (
-            typeof history.systemInstruction === "string" &&
-            history.systemInstruction.length > 0
-          )
+          if (typeof history.systemInstruction === 'string' && history.systemInstruction.length > 0)
             content.push({
-              role: "system",
+              role: 'system',
               parts: [{ text: history.systemInstruction }],
             });
 
           if (history.file)
             content.push({
-              role: "user",
+              role: 'user',
               parts: [
                 {
                   inlineData: {
@@ -2139,9 +1935,9 @@ const AiScriptStart = () => {
               ],
             });
 
-          if (typeof history.prompt === "string" && history.prompt.length > 0)
+          if (typeof history.prompt === 'string' && history.prompt.length > 0)
             content.push({
-              role: "user",
+              role: 'user',
               parts: [{ text: history.prompt }],
             });
 
@@ -2156,8 +1952,7 @@ const AiScriptStart = () => {
       const getAiTokens = () =>
         new Promise((resolve, reject) => {
           const content = prepareContentList();
-          if (content.length > 0)
-            tinyAi.countTokens(content).then(resolve).catch(reject);
+          if (content.length > 0) tinyAi.countTokens(content).then(resolve).catch(reject);
           else resolve({});
         });
 
@@ -2176,21 +1971,18 @@ const AiScriptStart = () => {
               : {},
           );
 
-          if (
-            !ficConfigs.contentsMd5 ||
-            ficConfigs.contentsMd5 !== contentsMd5
-          ) {
+          if (!ficConfigs.contentsMd5 || ficConfigs.contentsMd5 !== contentsMd5) {
             enableReadOnly(true);
             modelChangerReadOnly();
             disablePromptButtons(true);
             enableModelReadOnly();
             const oldMsgInput = msgInput.val();
 
-            let points = ".";
+            let points = '.';
             let secondsWaiting = -1;
             const loadingMoment = () => {
-              points += ".";
-              if (points === "....") points = ".";
+              points += '.';
+              if (points === '....') points = '.';
 
               secondsWaiting++;
               msgInput.val(`(${secondsWaiting}s) Loading model data${points}`);
@@ -2210,19 +2002,19 @@ const AiScriptStart = () => {
 
             getAiTokens()
               .then((tokenData) => {
-                if (typeof tokenData.totalTokens === "number")
-                  tokenCount.updateValue("amount", tokenData.totalTokens);
-                else tokenCount.updateValue("amount", 0);
+                if (typeof tokenData.totalTokens === 'number')
+                  tokenCount.updateValue('amount', tokenData.totalTokens);
+                else tokenCount.updateValue('amount', 0);
                 stopLoadingMessage();
                 ficConfigs.contentsMd5 = contentsMd5;
               })
               .catch((err) => {
-                alert(err.message, "Error get AI tokens");
+                alert(err.message, 'Error get AI tokens');
                 console.error(err);
                 stopLoadingMessage();
               });
-          } else if (typeof oldTokenCount === "number")
-            tokenCount.updateValue("amount", oldTokenCount);
+          } else if (typeof oldTokenCount === 'number')
+            tokenCount.updateValue('amount', oldTokenCount);
         }
       };
 
@@ -2233,11 +2025,10 @@ const AiScriptStart = () => {
 
           // Insert tokens
           const insertTokens = (tokenUsage) => {
-            const totalToken =
-              tokenUsage && tokenUsage.count ? tokenUsage.count.total : 0;
+            const totalToken = tokenUsage && tokenUsage.count ? tokenUsage.count.total : 0;
 
-            if (totalToken > tokenCount.getValue("amount"))
-              tokenCount.updateValue("amount", totalToken);
+            if (totalToken > tokenCount.getValue('amount'))
+              tokenCount.updateValue('amount', totalToken);
           };
 
           // Insert message
@@ -2250,14 +2041,11 @@ const AiScriptStart = () => {
                   tokens: 0,
                   index: tinyCache.indexId,
                 },
-                role === "user" ? null : tinyLib.toTitleCase(role),
+                role === 'user' ? null : tinyLib.toTitleCase(role),
               );
               addMessage(tinyCache.msgBallon);
             } else {
-              tinyCache.msgBallon
-                .find(".ai-msg-ballon")
-                .empty()
-                .append(makeMsgRenderer(msgData));
+              tinyCache.msgBallon.find('.ai-msg-ballon').empty().append(makeMsgRenderer(msgData));
               scrollChatContainerToTop();
             }
           };
@@ -2267,13 +2055,8 @@ const AiScriptStart = () => {
           tinyCache.cancel = () => {
             if (!isCanceled) {
               if (tinyCache.msgBallon) tinyCache.msgBallon.remove();
-              if (
-                typeof tinyCache.indexId === "number" ||
-                typeof tinyCache.indexId === "string"
-              )
-                tinyAi.deleteHistoryIndex(
-                  tinyAi.getHistoryIndexById(tinyCache.indexId),
-                );
+              if (typeof tinyCache.indexId === 'number' || typeof tinyCache.indexId === 'string')
+                tinyAi.deleteHistoryIndex(tinyAi.getHistoryIndexById(tinyCache.indexId));
               completeTask();
               isCanceled = true;
             }
@@ -2281,12 +2064,9 @@ const AiScriptStart = () => {
 
           // Task complete!
           const completeTask = () => {
-            if (typeof tinyCache.indexId !== "undefined")
-              delete tinyCache.indexId;
-            if (typeof tinyCache.msgBallon !== "undefined")
-              delete tinyCache.msgBallon;
-            if (typeof tinyCache.cancel !== "undefined")
-              delete tinyCache.cancel;
+            if (typeof tinyCache.indexId !== 'undefined') delete tinyCache.indexId;
+            if (typeof tinyCache.msgBallon !== 'undefined') delete tinyCache.msgBallon;
+            if (typeof tinyCache.cancel !== 'undefined') delete tinyCache.cancel;
           };
 
           // Content Generator
@@ -2298,7 +2078,7 @@ const AiScriptStart = () => {
                 insertTokens(chuck.tokenUsage);
 
                 // Update history
-                if (typeof tinyCache.indexId === "undefined")
+                if (typeof tinyCache.indexId === 'undefined')
                   tinyCache.indexId = tinyAi.addHistoryData(chuck.contents[0]);
                 else
                   tinyAi.replaceHistoryIndex(
@@ -2307,39 +2087,30 @@ const AiScriptStart = () => {
                   );
 
                 // Send insert request
-                if (typeof chuck.contents[0].parts[0].text === "string")
-                  insertMessage(
-                    chuck.contents[0].parts[0].text,
-                    chuck.contents[0].role,
-                  );
+                if (typeof chuck.contents[0].parts[0].text === 'string')
+                  insertMessage(chuck.contents[0].parts[0].text, chuck.contents[0].role);
 
                 // Update message cache
-                const oldBallonCache =
-                  tinyCache.msgBallon.data("tiny-ai-cache");
+                const oldBallonCache = tinyCache.msgBallon.data('tiny-ai-cache');
                 oldBallonCache.msg = chuck.contents[0].parts[0].text;
-                tinyCache.msgBallon.data("tiny-ai-cache", oldBallonCache);
+                tinyCache.msgBallon.data('tiny-ai-cache', oldBallonCache);
 
                 // Add class
-                tinyCache.msgBallon.addClass("entering-ai-message");
+                tinyCache.msgBallon.addClass('entering-ai-message');
               }
               // Remove class
               else {
                 const notificationError = () =>
-                  tinyNotification.send(
-                    "System",
-                    "Your message was not processed.",
-                  );
+                  tinyNotification.send('System', 'Your message was not processed.');
 
                 if (tinyCache.msgBallon) {
-                  tinyCache.msgBallon.removeClass("entering-ai-message");
-                  const ballonCache = tinyCache.msgBallon.data("tiny-ai-cache");
-                  if ($("body").hasClass("windowHidden")) {
-                    if (ballonCache)
-                      tinyNotification.send(ballonCache.role, ballonCache.msg);
+                  tinyCache.msgBallon.removeClass('entering-ai-message');
+                  const ballonCache = tinyCache.msgBallon.data('tiny-ai-cache');
+                  if ($('body').hasClass('windowHidden')) {
+                    if (ballonCache) tinyNotification.send(ballonCache.role, ballonCache.msg);
                     else notificationError();
                   }
-                } else if ($("body").hasClass("windowHidden"))
-                  notificationError();
+                } else if ($('body').hasClass('windowHidden')) notificationError();
                 completeTask();
               }
             })
@@ -2355,11 +2126,11 @@ const AiScriptStart = () => {
                     msg &&
                     msg.parts &&
                     msg.parts[0] &&
-                    typeof msg.parts[0].text === "string" &&
+                    typeof msg.parts[0].text === 'string' &&
                     msg.parts[0].text.length > 0
                   ) {
                     // Update history
-                    if (typeof tinyCache.indexId === "undefined")
+                    if (typeof tinyCache.indexId === 'undefined')
                       tinyCache.indexId = tinyAi.addHistoryData(msg);
                     else
                       tinyAi.replaceHistoryIndex(
@@ -2371,10 +2142,9 @@ const AiScriptStart = () => {
                     insertMessage(msg.parts[0].text, msg.role);
 
                     // Update message data
-                    const oldBallonCache =
-                      tinyCache.msgBallon.data("tiny-ai-cache");
+                    const oldBallonCache = tinyCache.msgBallon.data('tiny-ai-cache');
                     oldBallonCache.msg = msg.parts[0].text;
-                    tinyCache.msgBallon.data("tiny-ai-cache", oldBallonCache);
+                    tinyCache.msgBallon.data('tiny-ai-cache', oldBallonCache);
                   }
                 }
               }
@@ -2383,11 +2153,8 @@ const AiScriptStart = () => {
               else {
                 console.log(`AI Generator Error`, result.error);
                 alert(result.error.message);
-                if (
-                  typeof result.error.message === "string" &&
-                  result.error.message.length > 0
-                )
-                  tinyNotification.send("Ai Error", result.error.message);
+                if (typeof result.error.message === 'string' && result.error.message.length > 0)
+                  tinyNotification.send('Ai Error', result.error.message);
               }
 
               // Complete
@@ -2405,30 +2172,29 @@ const AiScriptStart = () => {
         callback = null,
       ) => {
         // Create textarea
-        const textarea = $("<textarea>", {
+        const textarea = $('<textarea>', {
           style: [
             `min-height: ${minHeight}px`,
             `height: ${minHeight}px`,
             `max-height: ${maxHeight}px` /* Max lines (5 lines = 150px.) */,
-            "resize: none",
-          ].join("; "),
+            'resize: none',
+          ].join('; '),
           ...moreConfig,
         });
 
-        textarea.on("input", () => {
+        textarea.on('input', () => {
           // Reset for minimum height before recalculating
           const value = textarea.val();
-          const lines = value.split("\n").length;
-          textarea.css("height", "auto");
+          const lines = value.split('\n').length;
+          textarea.css('height', 'auto');
 
           // Get scrollHeight via jQuery
-          const newHeight = textarea.prop("scrollHeight");
+          const newHeight = textarea.prop('scrollHeight');
           const height = lines > 1 ? Math.min(newHeight, maxHeight) : minHeight;
 
           // Defines height, but respects the maximum limit
-          textarea.css("height", `${String(height)}px`);
-          if (typeof callback === "function")
-            callback({ height, newHeight, lines, value });
+          textarea.css('height', `${String(height)}px`);
+          if (typeof callback === 'function') callback({ height, newHeight, lines, value });
         });
 
         // Complete
@@ -2441,8 +2207,8 @@ const AiScriptStart = () => {
         msgInputValues.minHeight,
         msgInputValues.maxHeight,
         {
-          class: "form-control border-dark",
-          placeholder: "Type your message...",
+          class: 'form-control border-dark',
+          placeholder: 'Type your message...',
         },
         (inputResult) => {
           const { height } = inputResult;
@@ -2453,18 +2219,18 @@ const AiScriptStart = () => {
 
           // Get the current scroll position before adding new content
           const scrollBefore = chatContainer.scrollTop();
-          const heightBefore = chatContainer.prop("scrollHeight");
+          const heightBefore = chatContainer.prop('scrollHeight');
 
           // And use this to correct the size of other elements
-          chatContainer.css("padding-bottom", `${String(tinyFinalValue)}px`);
+          chatContainer.css('padding-bottom', `${String(tinyFinalValue)}px`);
 
           textInputContainer.css({
-            position: "relative",
+            position: 'relative',
             top: `-${String(tinyFinalValue)}px`,
           });
 
           // Get the new scroll height after adding content
-          const heightAfter = chatContainer.prop("scrollHeight");
+          const heightAfter = chatContainer.prop('scrollHeight');
           const heightDiff = heightAfter - heightBefore;
 
           // Adjust the scroll position to maintain the user's view
@@ -2473,23 +2239,23 @@ const AiScriptStart = () => {
       );
 
       // Submit
-      const msgSubmit = $("<button>", {
-        class: "btn btn-primary input-group-text-dark",
-        text: "Send",
+      const msgSubmit = $('<button>', {
+        class: 'btn btn-primary input-group-text-dark',
+        text: 'Send',
       });
 
-      const cancelSubmit = $("<button>", {
-        class: "btn btn-primary input-group-text-dark rounded-end",
-        text: "Cancel",
+      const cancelSubmit = $('<button>', {
+        class: 'btn btn-primary input-group-text-dark rounded-end',
+        text: 'Cancel',
       });
 
       const submitCache = {};
-      msgSubmit.on("click", async () => {
-        if (!msgInput.prop("disabled")) {
+      msgSubmit.on('click', async () => {
+        if (!msgInput.prop('disabled')) {
           // Prepare to get data
           msgInput.blur();
           const msg = msgInput.val();
-          msgInput.val("").trigger("input");
+          msgInput.val('').trigger('input');
 
           const controller = new AbortController();
           enableReadOnly(true, controller);
@@ -2497,11 +2263,11 @@ const AiScriptStart = () => {
           disablePromptButtons(true);
           enableModelSelectorReadOnly(true);
 
-          let points = ".";
+          let points = '.';
           let secondsWaiting = -1;
           const loadingMoment = () => {
-            points += ".";
-            if (points === "....") points = ".";
+            points += '.';
+            if (points === '....') points = '.';
 
             secondsWaiting++;
             msgInput.val(`(${secondsWaiting}s) Waiting response${points}`);
@@ -2510,15 +2276,15 @@ const AiScriptStart = () => {
           loadingMoment();
 
           // Add new message
-          if (typeof msg === "string" && msg.length > 0) {
+          if (typeof msg === 'string' && msg.length > 0) {
             const indexId = tinyAi.addHistoryData(
               tinyAi._buildContents(
                 null,
                 {
-                  role: "user",
+                  role: 'user',
                   parts: [{ text: msg }],
                 },
-                "user",
+                'user',
               ),
             );
             addMessage(
@@ -2540,7 +2306,7 @@ const AiScriptStart = () => {
           // Complete
           clearInterval(loadingMessage);
           disablePromptButtons(false);
-          msgInput.val("");
+          msgInput.val('');
 
           enableReadOnly(false);
           modelChangerReadOnly(false);
@@ -2549,55 +2315,48 @@ const AiScriptStart = () => {
         }
       });
 
-      msgInput.on("keydown", function (event) {
-        if (event.key === "Enter" && !event.shiftKey) {
+      msgInput.on('keydown', function (event) {
+        if (event.key === 'Enter' && !event.shiftKey) {
           event.preventDefault();
-          msgSubmit.trigger("click");
+          msgSubmit.trigger('click');
         }
       });
 
       // First Dialogue button
       const firstDialogueBase = {
-        base: $("<div>", {
-          class:
-            "first-dialogue-base position-absolute  top-50 start-50 translate-middle",
-          style: "pointer-events: none;",
+        base: $('<div>', {
+          class: 'first-dialogue-base position-absolute  top-50 start-50 translate-middle',
+          style: 'pointer-events: none;',
         }),
 
-        button: $("<button>", {
-          title: "Insert first dialogue",
-          class:
-            "btn btn-lg btn-bg d-flex justify-content-center align-items-center",
+        button: $('<button>', {
+          title: 'Insert first dialogue',
+          class: 'btn btn-lg btn-bg d-flex justify-content-center align-items-center',
           style: [
-            "pointer-events: all",
-            "height: 150px",
-            "font-size: 100px",
-            "background-color: transparent !important",
-          ].join("; "),
+            'pointer-events: all',
+            'height: 150px',
+            'font-size: 100px',
+            'background-color: transparent !important',
+          ].join('; '),
         }),
       };
 
-      firstDialogueBase.button.append(
-        $("<i>", { class: "fa-solid fa-circle-play" }),
-      );
+      firstDialogueBase.button.append($('<i>', { class: 'fa-solid fa-circle-play' }));
 
-      firstDialogueBase.button.on("click", () => {
+      firstDialogueBase.button.on('click', () => {
         enabledFirstDialogue(false);
         const history = tinyAi.getHistory();
 
         // Insert first message
-        if (
-          history.data.length < 1 &&
-          typeof history.firstDialogue === "string"
-        ) {
+        if (history.data.length < 1 && typeof history.firstDialogue === 'string') {
           const indexId = tinyAi.addHistoryData(
             tinyAi._buildContents(
               null,
               {
-                role: "model",
+                role: 'model',
                 parts: [{ text: history.firstDialogue }],
               },
-              "model",
+              'model',
             ),
           );
 
@@ -2608,7 +2367,7 @@ const AiScriptStart = () => {
                 tokens: 0,
                 index: indexId,
               },
-              "Model",
+              'Model',
             ),
           );
 
@@ -2619,15 +2378,15 @@ const AiScriptStart = () => {
       firstDialogueBase.base.append(firstDialogueBase.button);
 
       // Message List
-      const msgList = $("<div>", {
-        class: "p-3",
-        style: "margin-bottom: 55px !important;",
+      const msgList = $('<div>', {
+        class: 'p-3',
+        style: 'margin-bottom: 55px !important;',
       });
 
       const scrollChatContainerToTop = (speed = 0) =>
         chatContainer.animate(
           {
-            scrollTop: chatContainer.prop("scrollHeight"),
+            scrollTop: chatContainer.prop('scrollHeight'),
           },
           speed,
         );
@@ -2652,102 +2411,99 @@ const AiScriptStart = () => {
         };
 
         let newMsg = `${msg}`;
-        while (newMsg.endsWith("\n")) {
+        while (newMsg.endsWith('\n')) {
           newMsg = newMsg.slice(0, -1);
         }
 
-        while (newMsg.startsWith("\n")) {
+        while (newMsg.startsWith('\n')) {
           newMsg = newMsg.slice(1);
         }
 
-        return marked.parse(`${newMsg}${final}`.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/,""), {
-          renderer: renderer,
-          breaks: true,
-        });
+        return marked.parse(
+          `${newMsg}${final}`.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ''),
+          {
+            renderer: renderer,
+            breaks: true,
+          },
+        );
       };
 
-      const makeMessage = (
-        data = { message: null, tokens: 0, index: -1 },
-        username = null,
-      ) => {
+      const makeMessage = (data = { message: null, tokens: 0, index: -1 }, username = null) => {
         // Prepare renderer
         const tinyCache = {
           msg: data.message,
-          role: username ? tinyLib.toTitleCase(username) : "User",
+          role: username ? tinyLib.toTitleCase(username) : 'User',
         };
 
-        const msgBase = $("<div>", {
-          class: `p-3${typeof username !== "string" ? " d-flex flex-column align-items-end" : ""} ai-chat-data`,
+        const msgBase = $('<div>', {
+          class: `p-3${typeof username !== 'string' ? ' d-flex flex-column align-items-end' : ''} ai-chat-data`,
         });
 
-        const msgBallon = $("<div>", {
-          class: `bg-${typeof username === "string" ? "secondary d-inline-block" : "primary"} text-white p-2 rounded ai-msg-ballon`,
+        const msgBallon = $('<div>', {
+          class: `bg-${typeof username === 'string' ? 'secondary d-inline-block' : 'primary'} text-white p-2 rounded ai-msg-ballon`,
         });
 
-        msgBase.data("tiny-ai-cache", tinyCache);
-        const isIgnore = typeof data.index !== "number" || data.index < 0;
+        msgBase.data('tiny-ai-cache', tinyCache);
+        const isIgnore = typeof data.index !== 'number' || data.index < 0;
         const tinyIndex = tinyAi.getHistoryIndexById(data.index);
 
         // Edit message panel
-        const editPanel = $("<div>", { class: "ai-text-editor" });
+        const editPanel = $('<div>', { class: 'ai-text-editor' });
         editPanel.append(
           // Edit button
           !isIgnore && tinyIndex > -1
-            ? $("<button>", { class: "btn btn-sm btn-bg" })
-                .append($("<i>", { class: "fa-solid fa-pen-to-square" }))
-                .on("click", () => {
+            ? $('<button>', { class: 'btn btn-sm btn-bg' })
+                .append($('<i>', { class: 'fa-solid fa-pen-to-square' }))
+                .on('click', () => {
                   // Text
-                  const textInput = $("<textarea>", { class: "form-control" });
+                  const textInput = $('<textarea>', { class: 'form-control' });
                   textInput.val(tinyCache.msg);
 
                   // Submit
-                  const submitButton = $("<button>", {
-                    class: `w-100 me-2 btn btn-${typeof username !== "string" ? "secondary d-inline-block" : "primary"} mt-2`,
-                    text: "Submit",
+                  const submitButton = $('<button>', {
+                    class: `w-100 me-2 btn btn-${typeof username !== 'string' ? 'secondary d-inline-block' : 'primary'} mt-2`,
+                    text: 'Submit',
                   });
 
-                  const cancelButton = $("<button>", {
-                    class: `w-100 btn btn-${typeof username !== "string" ? "secondary d-inline-block" : "primary"} mt-2`,
-                    text: "Cancel",
+                  const cancelButton = $('<button>', {
+                    class: `w-100 btn btn-${typeof username !== 'string' ? 'secondary d-inline-block' : 'primary'} mt-2`,
+                    text: 'Cancel',
                   });
 
-                  submitButton.on("click", () => {
+                  submitButton.on('click', () => {
                     tinyCache.msg = textInput.val();
                     const newContent = tinyAi.getHistoryIndex(tinyIndex);
                     newContent.parts[0].text = tinyCache.msg;
                     tinyAi.replaceHistoryIndex(tinyIndex, newContent);
-                    msgBallon.removeClass("w-100").empty();
+                    msgBallon.removeClass('w-100').empty();
                     msgBallon.append(makeMsgRenderer(tinyCache.msg));
                   });
 
-                  cancelButton.on("click", () => {
-                    msgBallon.removeClass("w-100").empty();
+                  cancelButton.on('click', () => {
+                    msgBallon.removeClass('w-100').empty();
                     msgBallon.append(makeMsgRenderer(tinyCache.msg));
                   });
 
                   // Complete
                   msgBallon
                     .empty()
-                    .addClass("w-100")
+                    .addClass('w-100')
                     .append(
                       textInput,
-                      $("<div>", { class: "d-flex mx-5" }).append(
-                        submitButton,
-                        cancelButton,
-                      ),
+                      $('<div>', { class: 'd-flex mx-5' }).append(submitButton, cancelButton),
                     );
                 })
             : null,
 
           // Delete button
-          $("<button>", { class: "btn btn-sm btn-bg" })
-            .append($("<i>", { class: "fa-solid fa-trash-can" }))
-            .on("click", () => {
+          $('<button>', { class: 'btn btn-sm btn-bg' })
+            .append($('<i>', { class: 'fa-solid fa-trash-can' }))
+            .on('click', () => {
               const tinyIndex = tinyAi.getHistoryIndexById(data.index);
               if (!isIgnore && tinyIndex > -1) {
                 tinyAi.deleteHistoryIndex(tinyIndex);
-                const amount = tokenCount.getValue("amount");
-                tokenCount.updateValue("amount", amount - data.tokens);
+                const amount = tokenCount.getValue('amount');
+                tokenCount.updateValue('amount', amount - data.tokens);
               }
 
               msgBase.remove();
@@ -2759,40 +2515,38 @@ const AiScriptStart = () => {
         return msgBase.append(
           editPanel,
           msgBallon.append(makeMsgRenderer(tinyCache.msg)),
-          $("<div>", {
-            class: `text-muted small mt-1${typeof username !== "string" ? " text-end" : ""}`,
-            text: typeof username === "string" ? username : "User",
+          $('<div>', {
+            class: `text-muted small mt-1${typeof username !== 'string' ? ' text-end' : ''}`,
+            text: typeof username === 'string' ? username : 'User',
           }),
         );
       };
 
       // Container
-      const chatContainer = $("<div>", {
-        id: "ai-chatbox",
-        class: "h-100 body-background",
-        style: "overflow-y: auto; margin-bottom: -54px;",
+      const chatContainer = $('<div>', {
+        id: 'ai-chatbox',
+        class: 'h-100 body-background',
+        style: 'overflow-y: auto; margin-bottom: -54px;',
       });
 
-      const textInputContainer = $("<div>", {
-        class: "input-group pb-3 body-background",
+      const textInputContainer = $('<div>', {
+        class: 'input-group pb-3 body-background',
       }).append(msgInput, cancelSubmit, msgSubmit);
 
-      const container = $("<div>", {
-        class: "d-flex h-100 y-100",
-        id: "ai-element-root",
+      const container = $('<div>', {
+        class: 'd-flex h-100 y-100',
+        id: 'ai-element-root',
       }).append(
         sidebarLeft,
         // Main container
-        $("<div>", { class: "flex-grow-1 d-flex flex-column" }).append(
+        $('<div>', { class: 'flex-grow-1 d-flex flex-column' }).append(
           firstDialogueBase.base,
-          $("<div>", { class: "justify-content-center h-100" }).append(
+          $('<div>', { class: 'justify-content-center h-100' }).append(
             // Chat Messages Area
             chatContainer.append(msgList),
 
             // Input Area
-            $("<div>", { class: "px-3 d-inline-block w-100" }).append(
-              textInputContainer,
-            ),
+            $('<div>', { class: 'px-3 d-inline-block w-100' }).append(textInputContainer),
           ),
         ),
         sidebarRight,
@@ -2802,31 +2556,31 @@ const AiScriptStart = () => {
 
       // Enable Read Only
       const enableModelSelectorReadOnly = (isEnabled = true) => {
-        modelSelector.prop("disabled", isEnabled);
-        if (isEnabled) modelSelector.addClass("disabled");
-        else modelSelector.removeClass("disabled");
+        modelSelector.prop('disabled', isEnabled);
+        if (isEnabled) modelSelector.addClass('disabled');
+        else modelSelector.removeClass('disabled');
       };
 
       const enableModelReadOnly = (isEnabled = true) => {
-        outputLength.prop("disabled", isEnabled);
+        outputLength.prop('disabled', isEnabled);
         enableModelSelectorReadOnly(isEnabled);
 
-        temperature[isEnabled ? "disable" : "enable"]();
-        topP[isEnabled ? "disable" : "enable"]();
-        topK[isEnabled ? "disable" : "enable"]();
-        presencePenalty[isEnabled ? "disable" : "enable"]();
-        frequencyPenalty[isEnabled ? "disable" : "enable"]();
+        temperature[isEnabled ? 'disable' : 'enable']();
+        topP[isEnabled ? 'disable' : 'enable']();
+        topK[isEnabled ? 'disable' : 'enable']();
+        presencePenalty[isEnabled ? 'disable' : 'enable']();
+        frequencyPenalty[isEnabled ? 'disable' : 'enable']();
 
-        if (isEnabled) outputLength.addClass("disabled");
-        else outputLength.removeClass("disabled");
+        if (isEnabled) outputLength.addClass('disabled');
+        else outputLength.removeClass('disabled');
       };
 
       const readOnlyTemplate = (item, isEnabled) => {
-        item.prop("disabled", isEnabled);
+        item.prop('disabled', isEnabled);
         if (isEnabled) {
-          item.addClass("disabled");
+          item.addClass('disabled');
         } else {
-          item.removeClass("disabled");
+          item.removeClass('disabled');
         }
       };
 
@@ -2835,9 +2589,9 @@ const AiScriptStart = () => {
         readOnlyTemplate(msgInput, isEnabled);
         readOnlyTemplate(cancelSubmit, !isEnabled || !controller);
         if (controller) {
-          msgSubmit.addClass("d-none");
-          cancelSubmit.removeClass("d-none");
-          cancelSubmit.on("click", () => {
+          msgSubmit.addClass('d-none');
+          cancelSubmit.removeClass('d-none');
+          cancelSubmit.on('click', () => {
             enableReadOnly(false);
             try {
               if (submitCache.cancel) submitCache.cancel();
@@ -2848,33 +2602,29 @@ const AiScriptStart = () => {
             }
           });
         } else {
-          msgSubmit.removeClass("d-none");
-          cancelSubmit.addClass("d-none");
-          cancelSubmit.off("click");
+          msgSubmit.removeClass('d-none');
+          cancelSubmit.addClass('d-none');
+          cancelSubmit.off('click');
         }
       };
 
       const modelChangerReadOnly = (isEnabled = true) => {
-        for (const index in ficTemplates)
-          readOnlyTemplate(ficTemplates[index], isEnabled);
-        for (const index in importItems)
-          readOnlyTemplate(importItems[index], isEnabled);
+        for (const index in ficTemplates) readOnlyTemplate(ficTemplates[index], isEnabled);
+        for (const index in importItems) readOnlyTemplate(importItems[index], isEnabled);
       };
 
       // First Dialogue script
       const enabledFirstDialogue = (isEnabled = true) => {
         // Insert First Dialogue
         const insertAddFirstDialogue = () => {
-          firstDialogueBase.base.removeClass("d-none");
-          firstDialogueBase.button
-            .prop("disabled", false)
-            .removeClass("disabled");
+          firstDialogueBase.base.removeClass('d-none');
+          firstDialogueBase.button.prop('disabled', false).removeClass('disabled');
         };
 
         // Remove First Dialogue
         const removeAddFirstDialogue = () => {
-          firstDialogueBase.base.addClass("d-none");
-          firstDialogueBase.button.prop("disabled", true).addClass("disabled");
+          firstDialogueBase.base.addClass('d-none');
+          firstDialogueBase.button.prop('disabled', true).addClass('disabled');
         };
 
         // Check need first dialogue
@@ -2882,7 +2632,7 @@ const AiScriptStart = () => {
           const history = tinyAi.getHistory();
           if (
             history.data.length < 1 &&
-            typeof history.firstDialogue === "string" &&
+            typeof history.firstDialogue === 'string' &&
             history.firstDialogue.length > 0
           )
             insertAddFirstDialogue();
@@ -2894,9 +2644,9 @@ const AiScriptStart = () => {
       const disablePromptButtons = (isDisabled = false) => {
         // Execute disable script
         for (const index in ficPromptItems) {
-          ficPromptItems[index].prop("disabled", isDisabled);
-          if (isDisabled) ficPromptItems[index].addClass("disabled");
-          else ficPromptItems[index].removeClass("disabled");
+          ficPromptItems[index].prop('disabled', isDisabled);
+          if (isDisabled) ficPromptItems[index].addClass('disabled');
+          else ficPromptItems[index].removeClass('disabled');
         }
         // First dialogue script
         enabledFirstDialogue(!isDisabled);
@@ -2914,33 +2664,33 @@ const AiScriptStart = () => {
             message: `Welcome to Pony Driland's chatbot! This is a chatbot developed exclusively to interact with the content of fic`,
             tokens: 0,
           },
-          "Website",
+          'Website',
         ),
       );
       addMessage(
         makeMessage(
           {
             message:
-              "This means that whenever the story is updated, I am automatically updated for you to always view the answers of the latest content, because the algorithm of this website converts the content of fic to prompts." +
-              "\n\nChoose something to be done here so we can start our conversation! The chat will not work until you choose an activity to do here",
+              'This means that whenever the story is updated, I am automatically updated for you to always view the answers of the latest content, because the algorithm of this website converts the content of fic to prompts.' +
+              '\n\nChoose something to be done here so we can start our conversation! The chat will not work until you choose an activity to do here',
             tokens: 0,
           },
-          "Website",
+          'Website',
         ),
       );
 
       // Complete
       updateModelList();
-      $("#markdown-read").append(container);
+      $('#markdown-read').append(container);
     } else {
       alert(
-        "You did not activate AI mode in your session. Please click the robot icon and activate and then come back here again.",
-        "AI Page",
+        'You did not activate AI mode in your session. Please click the robot icon and activate and then come back here again.',
+        'AI Page',
       );
     }
 
     // Finished
-    $.LoadingOverlay("hide");
+    $.LoadingOverlay('hide');
   };
 
   // Complete
