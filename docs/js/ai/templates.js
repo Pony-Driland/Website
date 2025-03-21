@@ -166,9 +166,9 @@ aiTemplates.prompts.push({
   name: 'Set Roleplay Settings',
   value: 'roleplay-settings',
   sandboxOnly: true,
-  text: `You are no longer an AI of assistance, you are on a roleplay. ${aiTemplates.funcs.maxTokensWarn(200)} `,
+  text: `You are no longer an AI of assistance, you are on a roleplay. `,
   temperature: 0.7,
-  maxOutputTokens: 200,
+  maxOutputTokens: 700,
 });
 
 // Convert to Character
@@ -280,10 +280,10 @@ aiTemplates.prompts.push({
   name: 'Rainbow Queen Game (Game Test) (Modified Version of The Sphinx by Tiffin_)',
   value: 'rainbowqueen-game-test',
   temperature: 0.7,
-  maxOutputTokens: 4000,
+  maxOutputTokens: 7000,
   sandboxOnly: true,
   sandBoxText: aiTemplates.funcs.convertToCharacter(
-    `${aiTemplates.funcs.maxTokensWarn(4000)}
+    `
 ${aiTemplates.funcs.aiCharMode('Rainbow Queen', 'her')}
 Scenary: {{char}} imposes her will with a rule of risk and reward, only ruin and slavery await those who fail her games
 
