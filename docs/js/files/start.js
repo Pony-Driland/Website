@@ -74,14 +74,14 @@ const renderRoleplayFormat = (chapter, saveCfg = {}) => {
 
     const isFlashBack = ficData.flashback ? ' from flashback scene' : '';
 
-    if (ficData.type === 'action') data += `\n${lineText}*${ficData.value}*`;
+    if (ficData.type === 'action') data += `\n${lineText}*${tinyLib.removeAiTags(ficData.value)}*`;
 
     if (ficData.type === 'think')
-      data += `\n${lineText}${ficData.character}'s thinks${isFlashBack}: ${ficData.value}`;
+      data += `\n${lineText}${ficData.character}'s thinks${isFlashBack}: ${tinyLib.removeAiTags(ficData.value)}`;
     if (ficData.type === 'telepathy')
-      data += `\n${lineText}${ficData.character}'s telepathy voice${isFlashBack}: ${ficData.value}`;
+      data += `\n${lineText}${ficData.character}'s telepathy voice${isFlashBack}: ${tinyLib.removeAiTags(ficData.value)}`;
     if (ficData.type === 'dialogue')
-      data += `\n${lineText}${ficData.character}${isFlashBack}: ${ficData.value}`;
+      data += `\n${lineText}${ficData.character}${isFlashBack}: ${tinyLib.removeAiTags(ficData.value)}`;
   }
   return data;
 };
