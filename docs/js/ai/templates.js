@@ -175,6 +175,14 @@ aiTemplates.prompts.push({
 `,
 });
 
+aiTemplates.prompts.push({
+  name: 'Try to naturalize the character',
+  value: 'roleplay-try-natu-char',
+  sandboxOnly: true,
+  text: `Instead of long monologues or excessive descriptions, focus on how the character interacts with their surroundings and the other participants. Keep the dialogue conversational and natural, reflecting emotions and personality without feeling scripted.
+`,
+});
+
 // Convert to Character
 aiTemplates.funcs.convertToCharacter = (
   text,
