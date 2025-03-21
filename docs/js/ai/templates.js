@@ -283,7 +283,7 @@ aiTemplates.prompts.push({
   maxOutputTokens: 4000,
   sandboxOnly: true,
   sandBoxText: aiTemplates.funcs.convertToCharacter(
-    `
+    `${aiTemplates.funcs.maxTokensWarn(4000)}
 ${aiTemplates.funcs.aiCharMode('Rainbow Queen', 'her')}
 Scenary: {{char}} imposes her will with a rule of risk and reward, only ruin and slavery await those who fail her games
 
