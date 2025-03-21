@@ -62,7 +62,7 @@ const renderRoleplayFormat = (chapter, saveCfg = {}) => {
 
       if (saveCfg.location && typeof ficData.set.where === "string") {
         where = ficData.set.where;
-        data += `\nLocation= ${where}`;
+        data += `\nLocation= ${`${where !== '???' ? where : 'Unknown'}`}`;
       }
     }
 
