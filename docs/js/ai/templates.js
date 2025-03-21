@@ -2,10 +2,6 @@ const aiTemplates = { funcs: {}, instructions: {}, helpers: {}, prompts: [] };
 
 // is four-legged and pony-like
 
-// Max Tokens warning
-aiTemplates.funcs.maxTokensWarn = (maxOutputTokens) =>
-  `${typeof maxOutputTokens === 'number' ? `All your new messages must respect a maximum output length of ${String(maxOutputTokens)} characters without losing any content.` : ''}`;
-
 // Native Language
 aiTemplates.helpers.ficNativeUserLanguage = `
 If the user is sending messages in another language, translate the messages to the language of the user's message.
@@ -168,7 +164,15 @@ aiTemplates.prompts.push({
   sandboxOnly: true,
   text: `You are no longer an AI of assistance, you are on a roleplay. `,
   temperature: 0.7,
-  maxOutputTokens: 700,
+  maxOutputTokens: 200,
+});
+
+aiTemplates.prompts.push({
+  name: 'Basic Roleplay Way',
+  value: 'roleplay-basic-way',
+  sandboxOnly: true,
+  text: `Write roleplay messages that follows this model as a guideline: the character's dialogue is accompanied by an action, for example: the character speaks and then an action in asterisks follows, such as "Hello there! *smiles warmly*". The sequence is flexible and does not need to be fixed; you may start with an action followed by dialogue or mix multiple dialogues and actions as needed. The goal is to combine conversation and physical expression naturally, creating a dynamic and engaging interaction that resembles a real-life exchange.
+`,
 });
 
 // Convert to Character

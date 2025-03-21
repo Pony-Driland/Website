@@ -259,59 +259,79 @@ const setGoogleAi = (tinyGoogleAI, GEMINI_API_KEY, MODEL_DATA = 'gemini-2.0-flas
             const streamCache = [];
 
             // Read streaming
+            console.groupCollapsed('[google-generative] Streaming request.');
             while (!done) {
               if (reader && typeof reader.read === 'function') {
-                const { value, done: streamDone } = await reader.read();
+                const readerData = await reader.read();
+                const { value, done: streamDone } = readerData;
                 done = streamDone;
                 if (value) {
                   const chunk = decoder.decode(value, { stream: true });
                   if (!done) {
+                    let cleanedJson = '';
                     try {
-                      const jsonChunk = JSON.parse(
-                        `${countData > 0 ? `[${chunk.substring(1)}` : chunk}]`,
-                      );
+                      cleanedJson = chunk.trim();
+                      if (cleanedJson.startsWith(',')) cleanedJson = cleanedJson.substring(1);
+                      if (cleanedJson.length > 1) {
+                        cleanedJson = jsonrepair(cleanedJson);
+                        cleanedJson = `${!cleanedJson.startsWith('[') ? '[' : ''}${cleanedJson}${!cleanedJson.endsWith(']') ? ']' : ''}`;
+                        const jsonChunk = JSON.parse(cleanedJson);
+                        
+                        console.log(`[${countData}]`, chunk);
+                        console.log(`[${countData}]`, cleanedJson);
+                        console.log(`[${countData}]`, jsonChunk);
 
-                      // Send temp data
-                      const result = jsonChunk[0];
-                      if (result) {
-                        const tinyData = { contents: [] };
-                        buildContent(result, tinyData);
+                        // Send temp data
+                        for (const indexResult in jsonChunk) {
+                          const result = jsonChunk[indexResult];
+                          if (result) {
+                            const tinyData = { contents: [] };
+                            buildContent(result, tinyData);
 
-                        const tinyResult = {
-                          tokenUsage: buildUsageMetada(result)[0],
-                        };
+                            const tinyResult = {
+                              tokenUsage: buildUsageMetada(result)[0],
+                            };
 
-                        for (const index in tinyData.contents) {
-                          if (!Array.isArray(streamCache[index])) streamCache[index] = [];
-                          for (const index2 in tinyData.contents[index].parts) {
-                            const item = tinyData.contents[index].parts[index2];
-                            if (typeof item.text === 'string') {
-                              if (!streamCache[index][index2]) streamCache[index][index2] = {};
+                            for (const index in tinyData.contents) {
+                              if (!Array.isArray(streamCache[index])) streamCache[index] = [];
+                              for (const index2 in tinyData.contents[index].parts) {
+                                const item = tinyData.contents[index].parts[index2];
+                                if (typeof item.text === 'string') {
+                                  if (!streamCache[index][index2]) streamCache[index][index2] = {};
 
-                              if (typeof streamCache[index][index2].text !== 'string')
-                                streamCache[index][index2].text = '';
+                                  if (typeof streamCache[index][index2].text !== 'string')
+                                    streamCache[index][index2].text = '';
 
-                              streamCache[index][index2].text += item.text;
-                              item.text = streamCache[index][index2].text;
+                                  streamCache[index][index2].text += item.text;
+                                  item.text = streamCache[index][index2].text;
 
-                              if (typeof tinyData.contents[index].role === 'string')
-                                streamCache[index][index2].role = tinyData.contents[index].role;
+                                  if (typeof tinyData.contents[index].role === 'string')
+                                    streamCache[index][index2].role = tinyData.contents[index].role;
+                                }
+                              }
                             }
+
+                            // Complete
+                            streamResult = result;
+                            tinyResult.contents = tinyData.contents;
+                            tinyResult.done = false;
+                            streamingCallback(tinyResult);
                           }
                         }
-
-                        // Complete
-                        streamResult = result;
-                        tinyResult.contents = tinyData.contents;
-                        tinyResult.done = false;
-                        streamingCallback(tinyResult);
                       }
-                    } catch {}
+                    } catch {
+                      console.log(`[google-generative] [ai-error] [chuck] [${countData}]`, chunk);
+                      console.log(
+                        `[google-generative] [ai-error] [cleanedJson] [${countData}]`,
+                        cleanedJson,
+                      );
+                    }
                   }
                 }
                 countData++;
               } else done = true;
             }
+            console.groupEnd();
 
             // Complete
             streamingCallback({ done: true });
