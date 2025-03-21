@@ -2,6 +2,10 @@ const aiTemplates = { funcs: {}, instructions: {}, helpers: {}, prompts: [] };
 
 // is four-legged and pony-like
 
+// Max Tokens warning
+aiTemplates.funcs.maxTokensWarn = (maxOutputTokens) =>
+  `${typeof maxOutputTokens === 'number' ? `\n\nEnsure that your new response have a maximum output length of ${String(maxOutputTokens)} characters.` : ''}`;
+
 // Native Language
 aiTemplates.helpers.ficNativeUserLanguage = `
 If the user is sending messages in another language, translate the messages to the language of the user's message.
