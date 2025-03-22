@@ -2147,11 +2147,14 @@ const AiScriptStart = () => {
           const content = prepareContentList();
 
           // Insert tokens
+          let amountTokens = 0;
           const insertTokens = (tokenUsage) => {
             const totalToken = tokenUsage && tokenUsage.count ? tokenUsage.count.total : 0;
 
-            if (totalToken > tokenCount.getValue('amount'))
+            if (totalToken > amountTokens) {
+              amountTokens = totalToken;
               tokenCount.updateValue('amount', totalToken);
+            }
           };
 
           // Insert message
