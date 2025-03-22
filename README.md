@@ -29,3 +29,15 @@ If you're curious about copyright ownership of images and files, everything is d
 The purpose of this repository is to preserve all the content of the fanfic, and also to preserve the open source code for any other developer is free to reuse the website script for any project.
 
 Some specific folders may have instructions on how to use them. Then feel free to browse the files.
+
+## Features
+
+- Text search system in fic.
+- Filters for the user to choose which type of content should be censored or not in fic.
+- Bookmark directly from the browser that the user can save on the favorites.
+- The user can optionally choose to listen to selected youtube playlists in each fic scene.
+- When reading the story, the user can see at the top of the screen indicators showing what is happening in the environment of story.
+- TTS Speaker to read the story through audio.
+- Wiki page integrated into the website to view character information.
+- Optional non-profit cloud system using web3 technology for you to save your progress. You need to have a web3 extension installed in your browser to be visible.
+- AI chatbot for the user to have fun with the fic universe through roleplay, or natural conversations.
