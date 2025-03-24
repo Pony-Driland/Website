@@ -557,7 +557,7 @@ const AiScriptStart = () => {
           for (const index in data) {
             const indexId = !readOnly
               ? tinyAi.addData(tinyAi.buildContents(null, data[index], data[index].role))
-              : tinyAi.getDataIdByIndex(index);
+              : tinyAi.getIndexById(index);
 
             const msg = !readOnly ? tinyAi.getLastIndexData() : data[index];
             if (msg && msg.parts && msg.parts[0] && typeof msg.parts[0].text === 'string') {
@@ -1601,7 +1601,7 @@ const AiScriptStart = () => {
             if (!isCanceled) {
               if (tinyCache.msgBallon) tinyCache.msgBallon.remove();
               if (typeof tinyCache.indexId === 'number' || typeof tinyCache.indexId === 'string')
-                tinyAi.deleteIndex(tinyAi.getIndexById(tinyCache.indexId));
+                tinyAi.deleteIndex(tinyAi.getIndexOfId(tinyCache.indexId));
               completeTask();
               isCanceled = true;
             }
@@ -1629,7 +1629,7 @@ const AiScriptStart = () => {
                     tinyCache.indexId = tinyAi.addData(chuck.contents[index]);
                   else
                     tinyAi.replaceIndex(
-                      tinyAi.getIndexById(tinyCache.indexId),
+                      tinyAi.getIndexOfId(tinyCache.indexId),
                       chuck.contents[index],
                     );
 
@@ -1681,7 +1681,7 @@ const AiScriptStart = () => {
                     // Update history
                     if (typeof tinyCache.indexId === 'undefined')
                       tinyCache.indexId = tinyAi.addData(msg);
-                    else tinyAi.replaceIndex(tinyAi.getIndexById(tinyCache.indexId), msg);
+                    else tinyAi.replaceIndex(tinyAi.getIndexOfId(tinyCache.indexId), msg);
 
                     // Send message request
                     insertMessage(msg.parts[0].text, msg.role);
@@ -1999,7 +1999,7 @@ const AiScriptStart = () => {
 
         msgBase.data('tiny-ai-cache', tinyCache);
         const isIgnore = typeof data.index !== 'number' || data.index < 0;
-        const tinyIndex = tinyAi.getIndexById(data.index);
+        const tinyIndex = tinyAi.getIndexOfId(data.index);
 
         // Edit message panel
         const editPanel = $('<div>', { class: 'ai-text-editor' });
@@ -2053,7 +2053,7 @@ const AiScriptStart = () => {
           $('<button>', { class: 'btn btn-sm btn-bg' })
             .append($('<i>', { class: 'fa-solid fa-trash-can' }))
             .on('click', () => {
-              const tinyIndex = tinyAi.getIndexById(data.index);
+              const tinyIndex = tinyAi.getIndexOfId(data.index);
               if (!isIgnore && tinyIndex > -1) {
                 tinyAi.deleteIndex(tinyIndex);
                 const amount = tokenCount.getValue('amount');

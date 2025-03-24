@@ -6,11 +6,21 @@
  * It implements a session management system to help handle multiple different bots.
  * However, this script is not optimized for efficiently handling multiple AI instances simultaneously, which may be required for high-load scenarios or when running several AI instances at once.
  *
+ * **Note**: This script does not automatically manage or track the token count for messages. Developers need to implement their own logic to monitor and manage token usage if necessary.
+ *
  * Documentation written with the assistance of OpenAI's ChatGPT.
  *
  * @author JasminDreasond
  * @version 1.0
  * @date 2025-03-24
+ *
+ * License: AGPL-3.0
+ * ----------
+ * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
 class TinyAiApi extends EventEmitter {
@@ -603,6 +613,80 @@ class TinyAiApi extends EventEmitter {
   }
 
   /**
+   * Calculates the total number of tokens used for messages in the session history.
+   *
+   * This method iterates over the `tokens` array in the session history and sums the `count` of tokens
+   * from each message, returning the total sum. If no valid session history is found or if token data is
+   * missing, it will return `null`.
+   *
+   * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
+   * @returns {number|null} The total number of tokens used in the session history, or `null` if no data is available.
+   */
+  getTotalTokens(id) {
+    const history = this.getData(id);
+    if (history) {
+      let result = 0;
+      for (const msgIndex in history.tokens) {
+        if (typeof history.tokens.count === 'number') result += history.tokens[msgIndex].count;
+      }
+      return result;
+    }
+    return null;
+  }
+
+  /**
+   * Retrieves the token data for a specific message in the session history by its index.
+   *
+   * **Note**: This method does not manage the token count automatically. It assumes that token data has been added
+   * to the history using the `addData` method.
+   *
+   * @param {number} msgIndex - The index of the message in the session history.
+   * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
+   * @returns {Object|null} The token data associated with the message at the specified index, or `null` if the data is not found.
+   */
+  getMsgTokensByIndex(msgIndex, id) {
+    const history = this.getData(id);
+    if (history) {
+      const existsIndex = this.indexExists(msgIndex, id);
+      if (existsIndex) return history.tokens[msgIndex];
+    }
+    return null;
+  }
+
+  /**
+   * Retrieves the token data for a specific message in the session history by its message ID.
+   *
+   * **Note**: This method does not manage the token count automatically. It assumes that token data has been added
+   * to the history using the `addData` method.
+   *
+   * @param {string} msgId - The unique ID of the message in the session history.
+   * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
+   * @returns {Object|null} The token data associated with the message with the given ID, or `null` if the message is not found.
+   */
+  getMsgTokensById(msgId, id) {
+    const history = this.getData(id);
+    if (history) {
+      const msgIndex = this.getIndexOfId(msgId);
+      if (msgIndex > -1) return history.tokens[msgIndex];
+    }
+    return null;
+  }
+
+  /**
+   * Checks if a specific index exists in the session history.
+   *
+   * **Note**: This method assumes that the history data is available and that the `getIndex` method is used
+   * to retrieve the index. If the `getIndex` method returns a valid index, this method will return `true`.
+   *
+   * @param {number} index - The index to check for existence in the session history.
+   * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
+   * @returns {boolean} `true` if the index exists, otherwise `false`.
+   */
+  indexExists(index, id) {
+    return this.getIndex(index, id) ? true : false;
+  }
+
+  /**
    * Retrieve a specific data entry by its index from the session history.
    *
    * @param {number} index - The index of the data entry to retrieve.
@@ -622,7 +706,7 @@ class TinyAiApi extends EventEmitter {
    * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
    * @returns {number} The index of the message ID in the session history, or `-1` if not found.
    */
-  getIndexById(msgId, id) {
+  getIndexOfId(msgId, id) {
     const history = this.getData(id);
     if (history) return history.ids.indexOf(msgId);
     return -1;
@@ -635,7 +719,7 @@ class TinyAiApi extends EventEmitter {
    * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
    * @returns {string|number} The message ID at the specified index, or `-1` if the index is out of bounds or not found.
    */
-  getDataIdByIndex(index, id) {
+  getIndexById(index, id) {
     const history = this.getData(id);
     if (history) return history.data[index] ? history.ids[index] : -1;
     return -1;
@@ -653,6 +737,7 @@ class TinyAiApi extends EventEmitter {
     if (history && history.data[index]) {
       history.data.splice(index, 1);
       history.ids.splice(index, 1);
+      history.tokens.splice(index, 1);
       this.emit('deleteIndex', index, id);
       return true;
     }
@@ -728,18 +813,24 @@ class TinyAiApi extends EventEmitter {
 
   /**
    * Adds new data to the selected session history.
+   * If no session ID is provided, the currently selected session history ID will be used.
    *
-   * @param {Object} data - The data to be added to the history.
-   * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
+   * **Note**: The `tokenData` parameter is optional and can be used to track token-related data associated with the new entry.
+   * This may include token counts, but this script does not manage token counting automatically. Developers must implement token management separately if necessary.
+   *
+   * @param {Object} data - The data to be added to the session history.
+   * @param {Object} [tokenData={count: null}] - Optional token-related data to be associated with the new entry. Defaults to `{count: null}`.
+   * @param {string} [id] - The session history ID. If omitted, the currently selected session ID will be used.
    * @returns {number} The new ID of the added data entry.
-   * @throws {Error} If the provided session ID is invalid or does not exist.
+   * @throws {Error} If the provided session ID is invalid or the session ID does not exist in history.
    */
-  addData(data, id) {
+  addData(data, tokenData = { count: null }, id = undefined) {
     const selectedId = this.getId(id);
     if (this.history[selectedId]) {
       const newId = this.#_historyIds;
       this.#_historyIds++;
       this.history[selectedId].data.push(data);
+      this.history[selectedId].tokens.push(tokenData);
       this.history[selectedId].ids.push(newId);
       this.emit('addData', newId, data, selectedId);
       return newId;
@@ -907,6 +998,7 @@ class TinyAiApi extends EventEmitter {
     this.history[id] = {
       data: [],
       ids: [],
+      tokens: [],
       systemInstruction: null,
       model: null,
     };
