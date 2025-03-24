@@ -75,7 +75,7 @@ class TinyAiApi extends EventEmitter {
    */
   setMaxOutputTokens(value, id) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      this.#_insertIntoHistory(id || this.getId(), { maxOutputTokens: value });
+      this.#_insertIntoHistory(this.getId(id), { maxOutputTokens: value });
       this.emit('setMaxOutputTokens', value, id);
       return;
     }
@@ -102,7 +102,7 @@ class TinyAiApi extends EventEmitter {
    */
   setTemperature(value, id) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      this.#_insertIntoHistory(id || this.getId(), { temperature: value });
+      this.#_insertIntoHistory(this.getId(id), { temperature: value });
       this.emit('setTemperature', value, id);
       return;
     }
@@ -129,7 +129,7 @@ class TinyAiApi extends EventEmitter {
    */
   setTopP(value, id) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      this.#_insertIntoHistory(id || this.getId(), { topP: value });
+      this.#_insertIntoHistory(this.getId(id), { topP: value });
       this.emit('setTopP', value, id);
       return;
     }
@@ -156,7 +156,7 @@ class TinyAiApi extends EventEmitter {
    */
   setTopK(value, id) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      this.#_insertIntoHistory(id || this.getId(), { topK: value });
+      this.#_insertIntoHistory(this.getId(id), { topK: value });
       this.emit('setTopK', value, id);
       return;
     }
@@ -183,7 +183,7 @@ class TinyAiApi extends EventEmitter {
    */
   setPresencePenalty(value, id) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      this.#_insertIntoHistory(id || this.getId(), { presencePenalty: value });
+      this.#_insertIntoHistory(this.getId(id), { presencePenalty: value });
       this.emit('setPresencePenalty', value, id);
       return;
     }
@@ -210,7 +210,7 @@ class TinyAiApi extends EventEmitter {
    */
   setFrequencyPenalty(value, id) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      this.#_insertIntoHistory(id || this.getId(), { frequencyPenalty: value });
+      this.#_insertIntoHistory(this.getId(id), { frequencyPenalty: value });
       this.emit('setFrequencyPenalty', value, id);
       return;
     }
@@ -239,7 +239,7 @@ class TinyAiApi extends EventEmitter {
    */
   setEnabledEnchancedCivicAnswers(value, id) {
     if (typeof value === 'boolean') {
-      this.#_insertIntoHistory(id || this.getId(), { enableEnhancedCivicAnswers: value });
+      this.#_insertIntoHistory(this.getId(id), { enableEnhancedCivicAnswers: value });
       this.emit('setEnabledEnchancedCivicAnswers', value, id);
       return;
     }
@@ -268,7 +268,7 @@ class TinyAiApi extends EventEmitter {
    */
   setModel(data, id) {
     const model = typeof data === 'string' ? data : null;
-    this.#_insertIntoHistory(id || this.getId(), { model });
+    this.#_insertIntoHistory(this.getId(id), { model });
     this.emit('setModel', model, id);
   }
 
