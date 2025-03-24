@@ -17,9 +17,9 @@
  * License: AGPL-3.0
  * ----------
  * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
@@ -535,6 +535,23 @@ class TinyAiApi extends EventEmitter {
    */
   _setErrorCodes(errors) {
     this._errorCode = errors;
+  }
+
+  /**
+   * Get error details based on the provided error code.
+   *
+   * @param {string|number} code - The error code to look up.
+   * @returns {Object|null} An object containing the error message, or null if no error is found.
+   */
+  getErrorCode(code) {
+    if (this._errorCode) {
+      const errData = this._errorCode[code];
+      if (errData) {
+        if (typeof errData === 'string') return { text: errData };
+        else if (typeof errData.text === 'string') return errData;
+      }
+    }
+    return null;
   }
 
   /**
