@@ -150,10 +150,10 @@ const setGoogleAi = (tinyGoogleAI, GEMINI_API_KEY, MODEL_DATA = 'gemini-2.0-flas
 
       if (item.role !== 'system') {
         if (!Array.isArray(requestBody.contents)) requestBody.contents = [];
-        tinyGoogleAI.buildContents(requestBody.contents, item, item.role);
+        tinyGoogleAI.buildContents(requestBody.contents, item, item.role, true);
       } else {
         if (!Array.isArray(requestBody.systemInstruction)) requestBody.systemInstruction = [];
-        tinyGoogleAI.buildContents(requestBody.systemInstruction, item);
+        tinyGoogleAI.buildContents(requestBody.systemInstruction, item, true);
         requestBody.systemInstruction = requestBody.systemInstruction[0];
       }
     }

@@ -308,12 +308,13 @@ class TinyAiApi extends EventEmitter {
   /**
    * Build content data for an AI session.
    *
-   * @param {Array} contents - An array to which the built content data will be pushed (optional).
+   * @param {Array} [contents] - An optional array to which the built content data will be pushed.
    * @param {Object} item - The item containing content parts or a content object.
    * @param {string} [role] - The role to be associated with the content (optional).
-   * @returns {Object} The constructed content data object, or pushes it to the provided array if given.
+   * @param {boolean} [rmFinishReason=false] - If true, removes the `finishReason` property from the content.
+   * @returns {Object|undefined} The constructed content data object, or undefined if pushed to an array.
    */
-  buildContents(contents, item, role) {
+  buildContents(contents, item, role, rmFinishReason = false) {
     // Content Data
     const tinyThis = this;
     const contentData = { parts: [] };
@@ -334,6 +335,12 @@ class TinyAiApi extends EventEmitter {
     if (Array.isArray(item.parts)) {
       for (const index in item.parts) insertPart(item.parts[index]);
     } else if (item.content) insertPart(item.content);
+
+    if (
+      !rmFinishReason &&
+      (typeof item.finishReason === 'string' || typeof item.finishReason === 'number')
+    )
+      contentData.finishReason = item.finishReason;
 
     // Complete
     if (Array.isArray(contents)) return contents.push(contentData);
@@ -774,18 +781,20 @@ class TinyAiApi extends EventEmitter {
   }
 
   /**
-   * Replace the entry at the specified index in the session history with new data.
+   * Replaces an entry at the specified index in the session history with new data.
    *
    * @param {number} index - The index of the entry to replace.
    * @param {Object} data - The new data to replace the existing entry.
-   * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
+   * @param {number} [tokens] - (Optional) The token count associated with the new entry.
+   * @param {string} [id] - (Optional) The session ID. If omitted, the currently selected session history ID will be used.
    * @returns {boolean} `true` if the entry was successfully replaced, `false` if the index is invalid or the entry does not exist.
    */
-  replaceIndex(index, data, id) {
+  replaceIndex(index, data, tokens, id) {
     const history = this.getData(id);
     if (history && history.data[index]) {
       history.data[index] = data;
-      this.emit('replaceIndex', index, data, id);
+      if (tokens) history.tokens[index] = tokens;
+      this.emit('replaceIndex', index, data, tokens, id);
       return true;
     }
     return false;

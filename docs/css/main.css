@@ -670,3 +670,11 @@ body.is-using-ai #app {
 #ai-chatbox .ai-chat-data .bg-primary em {
   color: var(--bs-gray-300);
 }
+
+#ai-chatbox .ai-chat-data .alert {
+  background-color: #000 !important;
+}
+
+#ai-chatbox .ai-chat-data .alert .btn-close {
+  filter: var(--bs-btn-close-white-filter) !important;
+}
