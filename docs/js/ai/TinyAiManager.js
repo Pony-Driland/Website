@@ -1,4 +1,4 @@
-class TinyAiManager {
+class TinyAiManager extends EventEmitter {
   #_apiKey;
   #_getModels;
   #_countTokens;
@@ -6,8 +6,10 @@ class TinyAiManager {
   #_historyIds;
   #_selectedHistory;
   #_partTypes;
+  #_insertIntoHistory;
 
   constructor() {
+    super();
     // Config
     this.model = null;
     this.#_apiKey = null;
@@ -35,6 +37,16 @@ class TinyAiManager {
     this.config.frequencyPenalty = null;
     this.config.enableEnhancedCivicAnswers = false;
 
+    this.#_insertIntoHistory = function (id, data) {
+      if (typeof id === 'string' && this.history[id]) {
+        for (const where in data) {
+          this.history[id][where] = data[where];
+        }
+        return true;
+      }
+      return false;
+    };
+
     // Build Parts
     this.#_partTypes = {
       text: (text) => (typeof text === 'string' ? text : null),
@@ -46,9 +58,11 @@ class TinyAiManager {
   }
 
   // Config
-  setMaxOutputTokens(value) {
+  setMaxOutputTokens(value, id, forceGlobal = false) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      this.config.maxOutputTokens = value;
+      if (typeof id !== 'string' || forceGlobal) this.config.maxOutputTokens = value;
+      this.#_insertIntoHistory(id, { maxOutputTokens: value });
+      this.emit('setMaxOutputTokens', value, id);
       return;
     }
     throw new Error('Invalid number value!');
@@ -58,9 +72,11 @@ class TinyAiManager {
     return typeof this.config.maxOutputTokens === 'number' ? this.config.maxOutputTokens : null;
   }
 
-  setTemperature(value) {
+  setTemperature(value, id, forceGlobal = false) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      this.config.temperature = value;
+      if (typeof id !== 'string' || forceGlobal) this.config.temperature = value;
+      this.#_insertIntoHistory(id, { temperature: value });
+      this.emit('setTemperature', value, id);
       return;
     }
     throw new Error('Invalid number value!');
@@ -70,9 +86,11 @@ class TinyAiManager {
     return typeof this.config.temperature ? this.config.temperature : null;
   }
 
-  setTopP(value) {
+  setTopP(value, id, forceGlobal = false) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      this.config.topP = value;
+      if (typeof id !== 'string' || forceGlobal) this.config.topP = value;
+      this.#_insertIntoHistory(id, { topP: value });
+      this.emit('setTopP', value, id);
       return;
     }
     throw new Error('Invalid number value!');
@@ -82,9 +100,11 @@ class TinyAiManager {
     return typeof this.config.topP === 'number' ? this.config.topP : null;
   }
 
-  setTopK(value) {
+  setTopK(value, id, forceGlobal = false) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      this.config.topK = value;
+      if (typeof id !== 'string' || forceGlobal) this.config.topK = value;
+      this.#_insertIntoHistory(id, { topK: value });
+      this.emit('setTopK', value, id);
       return;
     }
     throw new Error('Invalid number value!');
@@ -94,9 +114,11 @@ class TinyAiManager {
     return typeof this.config.topK === 'number' ? this.config.topK : null;
   }
 
-  setPresencePenalty(value) {
+  setPresencePenalty(value, id, forceGlobal = false) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      this.config.presencePenalty = value;
+      if (typeof id !== 'string' || forceGlobal) this.config.presencePenalty = value;
+      this.#_insertIntoHistory(id, { presencePenalty: value });
+      this.emit('setPresencePenalty', value, id);
       return;
     }
     throw new Error('Invalid number value!');
@@ -106,9 +128,11 @@ class TinyAiManager {
     return typeof this.config.presencePenalty === 'number' ? this.config.presencePenalty : null;
   }
 
-  setFrequencyPenalty(value) {
+  setFrequencyPenalty(value, id, forceGlobal = false) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      this.config.frequencyPenalty = value;
+      if (typeof id !== 'string' || forceGlobal) this.config.frequencyPenalty = value;
+      this.#_insertIntoHistory(id, { frequencyPenalty: value });
+      this.emit('setFrequencyPenalty', value, id);
       return;
     }
     throw new Error('Invalid number value!');
@@ -118,9 +142,11 @@ class TinyAiManager {
     return typeof this.config.frequencyPenalty === 'number' ? this.config.frequencyPenalty : null;
   }
 
-  setEnabledEnchancedCivicAnswers(value) {
+  setEnabledEnchancedCivicAnswers(value, id, forceGlobal = false) {
     if (typeof value === 'boolean') {
-      this.config.enableEnhancedCivicAnswers = value;
+      if (typeof id !== 'string' || forceGlobal) this.config.enableEnhancedCivicAnswers = value;
+      this.#_insertIntoHistory(id, { enableEnhancedCivicAnswers: value });
+      this.emit('setEnabledEnchancedCivicAnswers', value, id);
       return;
     }
     throw new Error('Invalid boolean value!');
@@ -334,6 +360,7 @@ class TinyAiManager {
   setModel(model) {
     if (model) this.model = typeof model === 'string' ? model : null;
     else this.model = null;
+    this.emit('setModel', this.model);
   }
 
   getModel() {
@@ -344,6 +371,7 @@ class TinyAiManager {
   selectHistory(id) {
     if (this.history[id]) {
       this.#_selectedHistory = id;
+      this.emit('selectHistory', id);
       return true;
     }
     return false;
@@ -380,6 +408,7 @@ class TinyAiManager {
     if (history && history.data[index]) {
       history.data.splice(index, 1);
       history.ids.splice(index, 1);
+      this.emit('deleteHistoryIndex', index, id);
       return true;
     }
     return false;
@@ -389,6 +418,7 @@ class TinyAiManager {
     const history = this.getHistory(id);
     if (history && history.data[index]) {
       history.data[index] = data;
+      this.emit('replaceHistoryIndex', index, data, id);
       return true;
     }
     return false;
@@ -426,6 +456,7 @@ class TinyAiManager {
       this.#_historyIds++;
       this.history[selectedId].data.push(data);
       this.history[selectedId].ids.push(newId);
+      this.emit('addHistoryData', newId, data, selectedId);
       return newId;
     }
     throw new Error('Invalid history id data!');
@@ -435,6 +466,7 @@ class TinyAiManager {
     const selectedId = id || this.#_selectedHistory;
     if (this.history[selectedId] && typeof promptData === 'string') {
       this.history[selectedId].prompt = promptData;
+      this.emit('setHistoryPrompt', promptData, selectedId);
       return;
     }
     throw new Error('Invalid history id data!');
@@ -456,6 +488,7 @@ class TinyAiManager {
     const selectedId = id || this.#_selectedHistory;
     if (this.history[selectedId] && typeof dialogue === 'string') {
       this.history[selectedId].firstDialogue = dialogue;
+      this.emit('setHistoryFirstDialogue', dialogue, selectedId);
       return;
     }
     throw new Error('Invalid history id data!');
@@ -480,6 +513,7 @@ class TinyAiManager {
         mime,
         data: !isBase64 ? Base64.encode(data) : data,
       };
+      this.emit('setHistoryFileData', this.history[selectedId].file, selectedId);
       return;
     }
     throw new Error('Invalid history id data!');
@@ -502,6 +536,7 @@ class TinyAiManager {
     const selectedId = id || this.#_selectedHistory;
     if (this.history[selectedId] && typeof data === 'string') {
       this.history[selectedId].systemInstruction = data;
+      this.emit('setHistorySystemInstruction', data, selectedId);
       return;
     }
     throw new Error('Invalid history id data!');
@@ -522,6 +557,7 @@ class TinyAiManager {
     const selectedId = id || this.#_selectedHistory;
     if (this.history[selectedId] && typeof data === 'string') {
       this.history[selectedId].model = data;
+      this.emit('setHistoryModel', data, selectedId);
       return;
     }
     throw new Error('Invalid history id data!');
@@ -535,6 +571,7 @@ class TinyAiManager {
       model: null,
     };
     if (selected) this.selectHistory(id);
+    this.emit('startHistory', this.history[id], id, selected ? true : false);
     return this.history[id];
   }
 }
@@ -1147,35 +1184,16 @@ const AiScriptStart = () => {
                 }
 
                 // Set model settings
-                if (typeof jsonData.temperature === 'number') {
+                if (typeof jsonData.temperature === 'number')
                   tinyAi.setTemperature(jsonData.temperature);
-                  temperature.val(jsonData.temperature);
-                }
-
-                if (typeof jsonData.maxOutputTokens === 'number') {
+                if (typeof jsonData.maxOutputTokens === 'number')
                   tinyAi.setMaxOutputTokens(jsonData.maxOutputTokens);
-                  outputLength.val(jsonData.maxOutputTokens);
-                }
-
-                if (typeof jsonData.topP === 'number') {
-                  tinyAi.setTopP(jsonData.topP);
-                  topP.val(jsonData.topP);
-                }
-
-                if (typeof jsonData.topK === 'number') {
-                  tinyAi.setTopK(jsonData.topK);
-                  topK.val(jsonData.topK);
-                }
-
-                if (typeof jsonData.presencePenalty === 'number') {
+                if (typeof jsonData.topP === 'number') tinyAi.setTopP(jsonData.topP);
+                if (typeof jsonData.topK === 'number') tinyAi.setTopK(jsonData.topK);
+                if (typeof jsonData.presencePenalty === 'number')
                   tinyAi.setPresencePenalty(jsonData.presencePenalty);
-                  presencePenalty.val(jsonData.presencePenalty);
-                }
-
-                if (typeof jsonData.frequencyPenalty === 'number') {
+                if (typeof jsonData.frequencyPenalty === 'number')
                   tinyAi.setFrequencyPenalty(jsonData.frequencyPenalty);
-                  frequencyPenalty.val(jsonData.frequencyPenalty);
-                }
 
                 // Set Instruction
                 if (canSandBox(jsonData.id))
@@ -1586,35 +1604,15 @@ const AiScriptStart = () => {
             const presencePenaltyValue = option.data('TinyAI-presence-penalty') || null;
             const frequencyPenaltyValue = option.data('TinyAI-frequency-penalty') || null;
 
-            if (typeof tempValue === 'number') {
-              tinyAi.setTemperature(tempValue);
-              temperature.val(tempValue);
-            }
-
-            if (typeof maxOutputTokensValue === 'number') {
+            if (typeof tempValue === 'number') tinyAi.setTemperature(tempValue);
+            if (typeof maxOutputTokensValue === 'number')
               tinyAi.setMaxOutputTokens(maxOutputTokensValue);
-              outputLength.val(maxOutputTokensValue);
-            }
-
-            if (typeof topPValue === 'number') {
-              tinyAi.setTopP(topPValue);
-              topP.val(topPValue);
-            }
-
-            if (typeof topKValue === 'number') {
-              tinyAi.setTopK(topKValue);
-              topK.val(topKValue);
-            }
-
-            if (typeof presencePenaltyValue === 'number') {
+            if (typeof topPValue === 'number') tinyAi.setTopP(topPValue);
+            if (typeof topKValue === 'number') tinyAi.setTopK(topKValue);
+            if (typeof presencePenaltyValue === 'number')
               tinyAi.setPresencePenalty(presencePenaltyValue);
-              presencePenalty.val(presencePenaltyValue);
-            }
-
-            if (typeof frequencyPenaltyValue === 'number') {
+            if (typeof frequencyPenaltyValue === 'number')
               tinyAi.setFrequencyPenalty(frequencyPenaltyValue);
-              frequencyPenalty.val(frequencyPenaltyValue);
-            }
 
             textareaAdd.val('DEFAULT');
 
@@ -2692,6 +2690,21 @@ const AiScriptStart = () => {
       );
 
       firstDialogueBase.button.tooltip();
+
+      // Prepare events
+      tinyAi.removeAllListeners('setMaxOutputTokens');
+      tinyAi.removeAllListeners('setTemperature');
+      tinyAi.removeAllListeners('setTopP');
+      tinyAi.removeAllListeners('setTopK');
+      tinyAi.removeAllListeners('setPresencePenalty');
+      tinyAi.removeAllListeners('setFrequencyPenalty');
+
+      tinyAi.on('setMaxOutputTokens', (value) => outputLength.val(value));
+      tinyAi.on('setTemperature', (value) => temperature.val(value));
+      tinyAi.on('setTopP', (value) => topP.val(value));
+      tinyAi.on('setTopK', (value) => topK.val(value));
+      tinyAi.on('setPresencePenalty', (value) => presencePenalty.val(value));
+      tinyAi.on('setFrequencyPenalty', (value) => frequencyPenalty.val(value));
 
       // Enable Read Only
       const enableModelSelectorReadOnly = (isEnabled = true) => {
