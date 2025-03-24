@@ -34,14 +34,18 @@ class TinyAiApi extends EventEmitter {
   #_insertIntoHistory;
 
   /**
-   * Creates an instance of the AIManager class.
-   * Initializes internal variables and sets up initial configurations for handling AI models, session history, and content generation.
+   * Creates an instance of the TinyAiApi class.
+   * Initializes internal variables, sets up initial configurations for handling AI models,
+   * session history, and content generation, with the option to use a single or multiple instances.
+   *
+   * @param {boolean} isSingle - If true, configures the instance to handle a single session only.
    */
-  constructor() {
+  constructor(isSingle = false) {
     super();
     // Config
     this.#_apiKey = null;
     this._errorCode = null;
+    this._isSingle = isSingle;
 
     // History
     this.#_selectedHistory = null;
@@ -74,6 +78,14 @@ class TinyAiApi extends EventEmitter {
         return null;
       },
     };
+
+    // Is single instance
+    if (this._isSingle) {
+      this.startDataId('main', true);
+      this.startDataId = null;
+      this.stopDataId = null;
+      this.selectDataId = null;
+    }
   }
 
   /**
@@ -616,7 +628,7 @@ class TinyAiApi extends EventEmitter {
    * @returns {string|null} The selected session history ID, or `null` if no history ID is selected.
    */
   getId(id) {
-    return id || this.#_selectedHistory;
+    return id && !this._isSingle ? id : this.#_selectedHistory;
   }
 
   /**
@@ -626,7 +638,7 @@ class TinyAiApi extends EventEmitter {
    * @returns {Object|null} The data associated with the session ID, or `null` if no data exists for that ID.
    */
   getData(id) {
-    return this.history[id || this.#_selectedHistory] || null;
+    return this.history[this.getId(id)] || null;
   }
 
   /**
