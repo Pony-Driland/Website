@@ -2,6 +2,10 @@ const aiTemplates = { funcs: {}, instructions: {}, helpers: {}, prompts: [] };
 
 // is four-legged and pony-like
 
+// Max Tokens warning
+aiTemplates.funcs.maxTokensWarn = (maxOutputTokens, isTextContinue = false) =>
+  `${typeof maxOutputTokens === 'number' ? `${!isTextContinue ? 'A' : 'a'}ll your new responses must respect a maximum output length of ${String(maxOutputTokens)} characters without losing any content.` : ''}`;
+
 // Native Language
 aiTemplates.helpers.ficNativeUserLanguage = `
 If the user is sending messages in another language, translate the messages to the language of the user's message.
@@ -162,7 +166,7 @@ aiTemplates.prompts.push({
   name: 'Set Roleplay Settings',
   value: 'roleplay-settings',
   sandboxOnly: true,
-  text: `You are no longer an AI of assistance, you are on a roleplay. `,
+  text: `You are no longer an AI of assistance, you are on a roleplay and ${aiTemplates.funcs.maxTokensWarn(200, true)} `,
   temperature: 0.7,
   maxOutputTokens: 200,
 });

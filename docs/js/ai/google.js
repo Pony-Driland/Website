@@ -120,10 +120,10 @@ const setGoogleAi = (tinyGoogleAI, GEMINI_API_KEY, MODEL_DATA = 'gemini-2.0-flas
 
       if (item.role !== 'system') {
         if (!Array.isArray(requestBody.contents)) requestBody.contents = [];
-        tinyGoogleAI._buildContents(requestBody.contents, item, item.role);
+        tinyGoogleAI.buildContents(requestBody.contents, item, item.role);
       } else {
         if (!Array.isArray(requestBody.systemInstruction)) requestBody.systemInstruction = [];
-        tinyGoogleAI._buildContents(requestBody.systemInstruction, item);
+        tinyGoogleAI.buildContents(requestBody.systemInstruction, item);
         requestBody.systemInstruction = requestBody.systemInstruction[0];
       }
     }
@@ -164,8 +164,11 @@ const setGoogleAi = (tinyGoogleAI, GEMINI_API_KEY, MODEL_DATA = 'gemini-2.0-flas
   // The Fetch API
   // https://ai.google.dev/api/generate-content?hl=pt-br#method:-models.generatecontent
   tinyGoogleAI._setGenContent(
-    (apiKey, isStream, data, streamingCallback, controller) =>
+    (apiKey, isStream, data, model, streamingCallback, controller) =>
       new Promise((resolve, reject) => {
+        // Request
+        const requestBody = requestBuilder(data);
+
         // Usage metadata
         const buildUsageMetada = (result) => {
           const usageMetadata = {
@@ -211,7 +214,7 @@ const setGoogleAi = (tinyGoogleAI, GEMINI_API_KEY, MODEL_DATA = 'gemini-2.0-flas
                   finishReason = item.finishReason.toUpperCase();
 
                 // Build content
-                tinyGoogleAI._buildContents(finalData.contents, item.content, item.content.role);
+                tinyGoogleAI.buildContents(finalData.contents, item.content, item.content.role);
                 finalData.contents[finalData.contents.length - 1].finishReason = finishReason;
               }
             }
@@ -260,6 +263,7 @@ const setGoogleAi = (tinyGoogleAI, GEMINI_API_KEY, MODEL_DATA = 'gemini-2.0-flas
 
             // Read streaming
             console.groupCollapsed('[google-generative] Streaming request.');
+            console.log(`[ai-config] [${model}]`, requestBody, data);
             while (!done) {
               if (reader && typeof reader.read === 'function') {
                 const readerData = await reader.read();
@@ -350,14 +354,14 @@ const setGoogleAi = (tinyGoogleAI, GEMINI_API_KEY, MODEL_DATA = 'gemini-2.0-flas
 
         // Request
         const fetchRequest = fetch(
-          `${apiUrl}/models/${tinyGoogleAI.getModel()}:${!isStream ? 'generateContent' : 'streamGenerateContent'}?key=${encodeURIComponent(apiKey)}`,
+          `${apiUrl}/models/${model}:${!isStream ? 'generateContent' : 'streamGenerateContent'}?key=${encodeURIComponent(apiKey)}`,
           {
             signal: controller ? controller.signal : undefined,
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify(requestBuilder(data)),
+            body: JSON.stringify(requestBody),
           },
         );
 
@@ -553,24 +557,21 @@ const setGoogleAi = (tinyGoogleAI, GEMINI_API_KEY, MODEL_DATA = 'gemini-2.0-flas
   // Token Counter
   // https://ai.google.dev/api/tokens?hl=pt-br#method:-models.counttokens
   tinyGoogleAI._setCountTokens(
-    (apiKey, controller, data) =>
+    (apiKey, model, controller, data) =>
       new Promise((resolve, reject) => {
         const dataContent = requestBuilder(data);
-        const modelInfo = tinyGoogleAI.getModelData(tinyGoogleAI.getModel());
+        const modelInfo = tinyGoogleAI.getModelData(model);
         dataContent.model = modelInfo?.name;
-        fetch(
-          `${apiUrl}/models/${tinyGoogleAI.getModel()}:countTokens?key=${encodeURIComponent(apiKey)}`,
-          {
-            signal: controller ? controller.signal : undefined,
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              generateContentRequest: dataContent,
-            }),
+        fetch(`${apiUrl}/models/${model}:countTokens?key=${encodeURIComponent(apiKey)}`, {
+          signal: controller ? controller.signal : undefined,
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
           },
-        )
+          body: JSON.stringify({
+            generateContentRequest: dataContent,
+          }),
+        })
           // Request
           .then((res) => res.json())
           .then((result) => {
