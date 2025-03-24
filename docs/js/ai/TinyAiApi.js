@@ -575,13 +575,15 @@ class TinyAiApi extends EventEmitter {
     return false;
   }
 
-  /**
-   * Get the currently selected session history ID.
-   *
-   * @returns {string|null} The selected session history ID, or `null` if no history ID is selected.
-   */
-  getId() {
-    return this.#_selectedHistory;
+/**
+ * Get the currently selected session history ID.
+ * If no ID is provided, it returns the default selected session history ID.
+ *
+ * @param {string} [id] - The session history ID to retrieve. If not provided, it uses the default selected ID.
+ * @returns {string|null} The selected session history ID, or `null` if no history ID is selected.
+ */
+  getId(id) {
+    return id || this.#_selectedHistory;
   }
 
   /**
@@ -727,7 +729,7 @@ class TinyAiApi extends EventEmitter {
    * @throws {Error} If the provided session ID is invalid or does not exist.
    */
   addData(data, id) {
-    const selectedId = id || this.#_selectedHistory;
+    const selectedId = this.getId(id);
     if (this.history[selectedId]) {
       const newId = this.#_historyIds;
       this.#_historyIds++;
@@ -747,7 +749,7 @@ class TinyAiApi extends EventEmitter {
    * @throws {Error} If the provided session ID is invalid or the prompt data is not a string.
    */
   setPrompt(promptData, id) {
-    const selectedId = id || this.#_selectedHistory;
+    const selectedId = this.getId(id);
     if (this.history[selectedId] && typeof promptData === 'string') {
       this.history[selectedId].prompt = promptData;
       this.emit('setPrompt', promptData, selectedId);
@@ -763,7 +765,7 @@ class TinyAiApi extends EventEmitter {
    * @returns {string|null} The prompt for the session if available, otherwise null.
    */
   getPrompt(id) {
-    const selectedId = id || this.#_selectedHistory;
+    const selectedId = this.getId(id);
     if (
       this.history[selectedId] &&
       typeof this.history[selectedId].prompt === 'string' &&
@@ -783,7 +785,7 @@ class TinyAiApi extends EventEmitter {
    * @returns {void}
    */
   setFirstDialogue(dialogue, id) {
-    const selectedId = id || this.#_selectedHistory;
+    const selectedId = this.getId(id);
     if (this.history[selectedId] && typeof dialogue === 'string') {
       this.history[selectedId].firstDialogue = dialogue;
       this.emit('setFirstDialogue', dialogue, selectedId);
@@ -799,7 +801,7 @@ class TinyAiApi extends EventEmitter {
    * @returns {string|null} The first dialogue if it exists and is a non-empty string, or null if no first dialogue is set.
    */
   getFirstDialogue(id) {
-    const selectedId = id || this.#_selectedHistory;
+    const selectedId = this.getId(id);
     if (
       this.history[selectedId] &&
       typeof this.history[selectedId].firstDialogue === 'string' &&
@@ -821,7 +823,7 @@ class TinyAiApi extends EventEmitter {
    * @returns {void} This function does not return a value.
    */
   setFileData(mime, data, isBase64 = false, id) {
-    const selectedId = id || this.#_selectedHistory;
+    const selectedId = this.getId(id);
     if (this.history[selectedId] && typeof data === 'string' && typeof mime === 'string') {
       this.history[selectedId].file = {
         mime,
@@ -841,7 +843,7 @@ class TinyAiApi extends EventEmitter {
    * @throws {Error} If no valid session history ID is found.
    */
   getFileData(id) {
-    const selectedId = id || this.#_selectedHistory;
+    const selectedId = this.getId(id);
     if (
       this.history[selectedId] &&
       this.history[selectedId].file &&
@@ -862,7 +864,7 @@ class TinyAiApi extends EventEmitter {
    * @throws {Error} If the session history is invalid or the provided data is not a string.
    */
   setSystemInstruction(data, id) {
-    const selectedId = id || this.#_selectedHistory;
+    const selectedId = this.getId(id);
     if (this.history[selectedId] && typeof data === 'string') {
       this.history[selectedId].systemInstruction = data;
       this.emit('setSystemInstruction', data, selectedId);
@@ -878,7 +880,7 @@ class TinyAiApi extends EventEmitter {
    * @returns {string|null} The system instruction for the selected session, or `null` if no instruction is set.
    */
   getSystemInstruction(id) {
-    const selectedId = id || this.#_selectedHistory;
+    const selectedId = this.getId(id);
     if (
       this.history[selectedId] &&
       typeof this.history[selectedId].systemInstruction === 'string'
