@@ -11,7 +11,6 @@ class TinyAiManager extends EventEmitter {
   constructor() {
     super();
     // Config
-    this.model = null;
     this.#_apiKey = null;
 
     // History
@@ -26,16 +25,6 @@ class TinyAiManager extends EventEmitter {
     // Functions
     this.#_genContentApi = null;
     this.#_getModels = null;
-
-    // Ai Config
-    this.config = {};
-    this.config.maxOutputTokens = null;
-    this.config.temperature = null;
-    this.config.topP = null;
-    this.config.topK = null;
-    this.config.presencePenalty = null;
-    this.config.frequencyPenalty = null;
-    this.config.enableEnhancedCivicAnswers = false;
 
     this.#_insertIntoHistory = function (id, data) {
       if (typeof id === 'string' && this.history[id]) {
@@ -58,108 +47,122 @@ class TinyAiManager extends EventEmitter {
   }
 
   // Config
-  setMaxOutputTokens(value, id, forceGlobal = false) {
+  setMaxOutputTokens(value, id) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      if (typeof id !== 'string' || forceGlobal) this.config.maxOutputTokens = value;
-      this.#_insertIntoHistory(id, { maxOutputTokens: value });
+      this.#_insertIntoHistory(id || this.getId(), { maxOutputTokens: value });
       this.emit('setMaxOutputTokens', value, id);
       return;
     }
     throw new Error('Invalid number value!');
   }
 
-  getMaxOutputTokens() {
-    return typeof this.config.maxOutputTokens === 'number' ? this.config.maxOutputTokens : null;
+  getMaxOutputTokens(id) {
+    const history = this.getData(id);
+    return history && typeof history.maxOutputTokens === 'number' ? history.maxOutputTokens : null;
   }
 
-  setTemperature(value, id, forceGlobal = false) {
+  setTemperature(value, id) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      if (typeof id !== 'string' || forceGlobal) this.config.temperature = value;
-      this.#_insertIntoHistory(id, { temperature: value });
+      this.#_insertIntoHistory(id || this.getId(), { temperature: value });
       this.emit('setTemperature', value, id);
       return;
     }
     throw new Error('Invalid number value!');
   }
 
-  getTemperature() {
-    return typeof this.config.temperature ? this.config.temperature : null;
+  getTemperature(id) {
+    const history = this.getData(id);
+    return history && typeof history.temperature ? history.temperature : null;
   }
 
-  setTopP(value, id, forceGlobal = false) {
+  setTopP(value, id) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      if (typeof id !== 'string' || forceGlobal) this.config.topP = value;
-      this.#_insertIntoHistory(id, { topP: value });
+      this.#_insertIntoHistory(id || this.getId(), { topP: value });
       this.emit('setTopP', value, id);
       return;
     }
     throw new Error('Invalid number value!');
   }
 
-  getTopP() {
-    return typeof this.config.topP === 'number' ? this.config.topP : null;
+  getTopP(id) {
+    const history = this.getData(id);
+    return history && typeof history.topP === 'number' ? history.topP : null;
   }
 
-  setTopK(value, id, forceGlobal = false) {
+  setTopK(value, id) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      if (typeof id !== 'string' || forceGlobal) this.config.topK = value;
-      this.#_insertIntoHistory(id, { topK: value });
+      this.#_insertIntoHistory(id || this.getId(), { topK: value });
       this.emit('setTopK', value, id);
       return;
     }
     throw new Error('Invalid number value!');
   }
 
-  getTopK() {
-    return typeof this.config.topK === 'number' ? this.config.topK : null;
+  getTopK(id) {
+    const history = this.getData(id);
+    return history && typeof history.topK === 'number' ? history.topK : null;
   }
 
-  setPresencePenalty(value, id, forceGlobal = false) {
+  setPresencePenalty(value, id) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      if (typeof id !== 'string' || forceGlobal) this.config.presencePenalty = value;
-      this.#_insertIntoHistory(id, { presencePenalty: value });
+      this.#_insertIntoHistory(id || this.getId(), { presencePenalty: value });
       this.emit('setPresencePenalty', value, id);
       return;
     }
     throw new Error('Invalid number value!');
   }
 
-  getPresencePenalty() {
-    return typeof this.config.presencePenalty === 'number' ? this.config.presencePenalty : null;
+  getPresencePenalty(id) {
+    const history = this.getData(id);
+    return history && typeof history.presencePenalty === 'number' ? history.presencePenalty : null;
   }
 
-  setFrequencyPenalty(value, id, forceGlobal = false) {
+  setFrequencyPenalty(value, id) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      if (typeof id !== 'string' || forceGlobal) this.config.frequencyPenalty = value;
-      this.#_insertIntoHistory(id, { frequencyPenalty: value });
+      this.#_insertIntoHistory(id || this.getId(), { frequencyPenalty: value });
       this.emit('setFrequencyPenalty', value, id);
       return;
     }
     throw new Error('Invalid number value!');
   }
 
-  getFrequencyPenalty() {
-    return typeof this.config.frequencyPenalty === 'number' ? this.config.frequencyPenalty : null;
+  getFrequencyPenalty(id) {
+    const history = this.getData(id);
+    return history && typeof history.frequencyPenalty === 'number'
+      ? history.frequencyPenalty
+      : null;
   }
 
-  setEnabledEnchancedCivicAnswers(value, id, forceGlobal = false) {
+  setEnabledEnchancedCivicAnswers(value, id) {
     if (typeof value === 'boolean') {
-      if (typeof id !== 'string' || forceGlobal) this.config.enableEnhancedCivicAnswers = value;
-      this.#_insertIntoHistory(id, { enableEnhancedCivicAnswers: value });
+      this.#_insertIntoHistory(id || this.getId(), { enableEnhancedCivicAnswers: value });
       this.emit('setEnabledEnchancedCivicAnswers', value, id);
       return;
     }
     throw new Error('Invalid boolean value!');
   }
 
-  isEnabledEnchancedCivicAnswers() {
-    return typeof this.config.enableEnhancedCivicAnswers === 'boolean'
-      ? this.config.enableEnhancedCivicAnswers
+  isEnabledEnchancedCivicAnswers(id) {
+    const history = this.getData(id);
+    return history && typeof history.enableEnhancedCivicAnswers === 'boolean'
+      ? history.enableEnhancedCivicAnswers
       : null;
   }
 
+  // Model
+  setModel(data, id) {
+    const model = typeof data === 'string' ? data : null;
+    this.#_insertIntoHistory(id || this.getId(), { model });
+    this.emit('setModel', model, id);
+  }
+
+  getModel(id) {
+    const history = this.getData(id);
+    return history && typeof history.model === 'string' ? history.model : null;
+  }
+
   // Builder
-  _buildContents(contents, item, role) {
+  buildContents(contents, item, role) {
     // Content Data
     const tinyThis = this;
     const contentData = { parts: [] };
@@ -299,44 +302,10 @@ class TinyAiManager extends EventEmitter {
     this.#_countTokens = typeof countTokens === 'function' ? countTokens : null;
   }
 
-  countTokens(data, controller) {
+  countTokens(data, model, controller) {
     if (typeof this.#_countTokens === 'function')
-      return this.#_countTokens(this.#_apiKey, controller, data);
+      return this.#_countTokens(this.#_apiKey, model || this.getModel(), controller, data);
     throw new Error('No count token api script defined.');
-  }
-
-  // Content
-  _createContentData(data) {
-    const newCache = { contents: [] };
-
-    if (typeof data.createTime === 'string') newCache.createTime = data.createTime;
-
-    if (typeof data.updateTime === 'string') newCache.updateTime = data.updateTime;
-
-    if (typeof data.expireTime === 'string') newCache.expireTime = data.expireTime;
-
-    if (typeof data.ttl === 'string') newCache.ttl = data.ttl;
-
-    if (typeof data.name === 'string') newCache.name = data.name;
-
-    if (typeof data.displayName === 'string') newCache.displayName = data.displayName;
-
-    if (typeof data.model === 'string') newCache.model = data.model;
-
-    // Content
-    for (const index in data.contents) {
-      const item = result.contents[index];
-      this._buildContents(newCache.contents, item.content, item.content.role);
-    }
-
-    // System Instructions
-    if (newCache.systemInstruction) {
-      if (!Array.isArray(newCache.systemInstruction)) newCache.systemInstruction = [];
-      this._buildContents(newCache.systemInstruction, data.systemInstruction);
-      newCache.systemInstruction = newCache.systemInstruction[0];
-    }
-
-    return newCache;
   }
 
   // Fetch API
@@ -344,135 +313,125 @@ class TinyAiManager extends EventEmitter {
     this.#_genContentApi = typeof callback === 'function' ? callback : null;
   }
 
-  genContent(data, controller, streamCallback) {
+  genContent(data, model, controller, streamCallback) {
     if (typeof this.#_genContentApi === 'function')
       return this.#_genContentApi(
         this.#_apiKey,
         typeof streamCallback === 'function' ? true : false,
         data,
+        model || this.getModel(),
         streamCallback,
         controller,
       );
     throw new Error('No content generator api script defined.');
   }
 
-  // Model
-  setModel(model) {
-    if (model) this.model = typeof model === 'string' ? model : null;
-    else this.model = null;
-    this.emit('setModel', this.model);
-  }
-
-  getModel() {
-    return this.model;
-  }
-
   // History
-  selectHistory(id) {
+  selectDataId(id) {
     if (this.history[id]) {
       this.#_selectedHistory = id;
-      this.emit('selectHistory', id);
+      this.emit('selectDataId', id);
       return true;
     }
     return false;
   }
 
-  getHistoryId() {
+  getId() {
     return this.#_selectedHistory;
   }
 
-  getHistory(id) {
+  getData(id) {
     return this.history[id || this.#_selectedHistory] || null;
   }
 
-  getHistoryIndex(index, id) {
-    const history = this.getHistory(id);
+  getIndex(index, id) {
+    const history = this.getData(id);
     if (history && history.data[index]) return history.data[index];
     return null;
   }
 
-  getHistoryIndexById(msgId, id) {
-    const history = this.getHistory(id);
+  getIndexById(msgId, id) {
+    const history = this.getData(id);
     if (history) return history.ids.indexOf(msgId);
     return -1;
   }
 
-  getHistoryDataIdByIndex(index, id) {
-    const history = this.getHistory(id);
+  getDataIdByIndex(index, id) {
+    const history = this.getData(id);
     if (history) return history.data[index] ? history.ids[index] : -1;
     return -1;
   }
 
-  deleteHistoryIndex(index, id) {
-    const history = this.getHistory(id);
+  deleteIndex(index, id) {
+    const history = this.getData(id);
     if (history && history.data[index]) {
       history.data.splice(index, 1);
       history.ids.splice(index, 1);
-      this.emit('deleteHistoryIndex', index, id);
+      this.emit('deleteIndex', index, id);
       return true;
     }
     return false;
   }
 
-  replaceHistoryIndex(index, data, id) {
-    const history = this.getHistory(id);
+  replaceIndex(index, data, id) {
+    const history = this.getData(id);
     if (history && history.data[index]) {
       history.data[index] = data;
-      this.emit('replaceHistoryIndex', index, data, id);
+      this.emit('replaceIndex', index, data, id);
       return true;
     }
     return false;
   }
 
-  getLastHistoryIndex(id) {
-    const history = this.getHistory(id);
+  getLastIndex(id) {
+    const history = this.getData(id);
     if (history && history.data[history.data.length - 1]) return history.data.length - 1;
     return -1;
   }
 
-  getLastHistoryIndexData(id) {
-    const history = this.getHistory(id);
+  getLastIndexData(id) {
+    const history = this.getData(id);
     if (history && history.data[history.data.length - 1])
       return history.data[history.data.length - 1];
     return null;
   }
 
-  existsFirstHistoryIndex(id) {
-    const history = this.getHistory(id);
+  existsFirstIndex(id) {
+    const history = this.getData(id);
     if (history && history.data[0]) return true;
     return false;
   }
 
-  getFirstHistoryIndexData(id) {
-    const history = this.getHistory(id);
+  getFirstIndexData(id) {
+    const history = this.getData(id);
     if (history && history.data[0]) return history.data[0];
     return null;
   }
 
-  addHistoryData(data, id) {
+  addData(data, id) {
     const selectedId = id || this.#_selectedHistory;
     if (this.history[selectedId]) {
       const newId = this.#_historyIds;
       this.#_historyIds++;
       this.history[selectedId].data.push(data);
       this.history[selectedId].ids.push(newId);
-      this.emit('addHistoryData', newId, data, selectedId);
+      this.emit('addData', newId, data, selectedId);
       return newId;
     }
     throw new Error('Invalid history id data!');
   }
 
-  setHistoryPrompt(promptData, id) {
+  setPrompt(promptData, id) {
     const selectedId = id || this.#_selectedHistory;
     if (this.history[selectedId] && typeof promptData === 'string') {
       this.history[selectedId].prompt = promptData;
-      this.emit('setHistoryPrompt', promptData, selectedId);
+      this.emit('setPrompt', promptData, selectedId);
       return;
     }
     throw new Error('Invalid history id data!');
   }
 
-  getHistoryPrompt(id) {
+  getPrompt(id) {
     const selectedId = id || this.#_selectedHistory;
     if (
       this.history[selectedId] &&
@@ -484,17 +443,17 @@ class TinyAiManager extends EventEmitter {
     return null;
   }
 
-  setHistoryFirstDialogue(dialogue, id) {
+  setFirstDialogue(dialogue, id) {
     const selectedId = id || this.#_selectedHistory;
     if (this.history[selectedId] && typeof dialogue === 'string') {
       this.history[selectedId].firstDialogue = dialogue;
-      this.emit('setHistoryFirstDialogue', dialogue, selectedId);
+      this.emit('setFirstDialogue', dialogue, selectedId);
       return;
     }
     throw new Error('Invalid history id data!');
   }
 
-  getHistoryFirstDialogue(id) {
+  getFirstDialogue(id) {
     const selectedId = id || this.#_selectedHistory;
     if (
       this.history[selectedId] &&
@@ -506,20 +465,20 @@ class TinyAiManager extends EventEmitter {
     return null;
   }
 
-  setHistoryFileData(mime, data, isBase64 = false, id) {
+  setFileData(mime, data, isBase64 = false, id) {
     const selectedId = id || this.#_selectedHistory;
     if (this.history[selectedId] && typeof data === 'string' && typeof mime === 'string') {
       this.history[selectedId].file = {
         mime,
         data: !isBase64 ? Base64.encode(data) : data,
       };
-      this.emit('setHistoryFileData', this.history[selectedId].file, selectedId);
+      this.emit('setFileData', this.history[selectedId].file, selectedId);
       return;
     }
     throw new Error('Invalid history id data!');
   }
 
-  getHistoryFileData(id) {
+  getFileData(id) {
     const selectedId = id || this.#_selectedHistory;
     if (
       this.history[selectedId] &&
@@ -532,17 +491,17 @@ class TinyAiManager extends EventEmitter {
     return null;
   }
 
-  setHistorySystemInstruction(data, id) {
+  setSystemInstruction(data, id) {
     const selectedId = id || this.#_selectedHistory;
     if (this.history[selectedId] && typeof data === 'string') {
       this.history[selectedId].systemInstruction = data;
-      this.emit('setHistorySystemInstruction', data, selectedId);
+      this.emit('setSystemInstruction', data, selectedId);
       return;
     }
     throw new Error('Invalid history id data!');
   }
 
-  getHistorySystemInstruction(id) {
+  getSystemInstruction(id) {
     const selectedId = id || this.#_selectedHistory;
     if (
       this.history[selectedId] &&
@@ -553,25 +512,15 @@ class TinyAiManager extends EventEmitter {
     return null;
   }
 
-  setHistoryModel(data, id) {
-    const selectedId = id || this.#_selectedHistory;
-    if (this.history[selectedId] && typeof data === 'string') {
-      this.history[selectedId].model = data;
-      this.emit('setHistoryModel', data, selectedId);
-      return;
-    }
-    throw new Error('Invalid history id data!');
-  }
-
-  startHistory(id, selected = false) {
+  startDataId(id, selected = false) {
     this.history[id] = {
       data: [],
       ids: [],
       systemInstruction: null,
       model: null,
     };
-    if (selected) this.selectHistory(id);
-    this.emit('startHistory', this.history[id], id, selected ? true : false);
+    if (selected) this.selectDataId(id);
+    this.emit('startDataId', this.history[id], id, selected ? true : false);
     return this.history[id];
   }
 }
@@ -1050,36 +999,34 @@ const AiScriptStart = () => {
         newContent()
           .then((ficData) => {
             // Start chatbot script
-            if (forceReset || !tinyAi.selectHistory(id)) {
+            if (forceReset || !tinyAi.selectDataId(id)) {
               // Start History
-              tinyAi.startHistory(id, true);
-              // Set Model
-              tinyAi.setHistoryModel(tinyAi.getModel());
+              tinyAi.startDataId(id, true);
 
               // Set Instruction
-              tinyAi.setHistorySystemInstruction(aiTemplates.instructions[instructionId]);
+              tinyAi.setSystemInstruction(aiTemplates.instructions[instructionId]);
 
               // Set Prompts
               try {
-                if (typeof prompts === 'string') tinyAi.setHistoryPrompt(prompts);
-                if (Array.isArray(prompts)) tinyAi.setHistoryPrompt(prompts.join('\n'));
+                if (typeof prompts === 'string') tinyAi.setPrompt(prompts);
+                if (Array.isArray(prompts)) tinyAi.setPrompt(prompts.join('\n'));
               } catch {
-                tinyAi.setHistoryPrompt('');
+                tinyAi.setPrompt('');
               }
 
               // Add file data
-              tinyAi.setHistoryFileData(ficData.mime, ficData.data);
+              tinyAi.setFileData(ficData.mime, ficData.data);
             }
 
             // Exists data
             else {
               // Get first history data
-              const tinyData = tinyAi.getFirstHistoryIndexData();
-              tinyAi.setHistoryFileData(ficData.mime, ficData.data);
+              const tinyData = tinyAi.getFirstIndexData();
+              tinyAi.setFileData(ficData.mime, ficData.data);
 
               // Delete old file version
               if (tinyData && tinyData.parts && tinyData.parts[0] && tinyData.parts[0].inlineData)
-                tinyAi.deleteHistoryIndex(0);
+                tinyAi.deleteIndex(0);
             }
 
             // Clear data
@@ -1087,12 +1034,12 @@ const AiScriptStart = () => {
             enableReadOnly(false);
             addMessage(makeMessage({ message: introduction, tokens: 0 }, 'Introduction'));
 
-            const history = tinyAi.getHistory();
+            const history = tinyAi.getData();
 
             // Insert first message
             if (history.data.length < 1 && typeof history.firstDialogue === 'string') {
               history.data.push(
-                tinyAi._buildContents(
+                tinyAi.buildContents(
                   null,
                   {
                     role: 'model',
@@ -1135,10 +1082,10 @@ const AiScriptStart = () => {
         if (Array.isArray(data)) {
           for (const index in data) {
             const indexId = !readOnly
-              ? tinyAi.addHistoryData(tinyAi._buildContents(null, data[index], data[index].role))
-              : tinyAi.getHistoryDataIdByIndex(index);
+              ? tinyAi.addData(tinyAi.buildContents(null, data[index], data[index].role))
+              : tinyAi.getDataIdByIndex(index);
 
-            const msg = !readOnly ? tinyAi.getLastHistoryIndexData() : data[index];
+            const msg = !readOnly ? tinyAi.getLastIndexData() : data[index];
             if (msg && msg.parts && msg.parts[0] && typeof msg.parts[0].text === 'string') {
               addMessage(
                 makeMessage(
@@ -1169,7 +1116,7 @@ const AiScriptStart = () => {
                   jsonData.id = 'sandBoxFic';
 
                 // Start History
-                tinyAi.startHistory(jsonData.id, true);
+                tinyAi.startDataId(jsonData.id, true);
 
                 // Open Get Fic Cache
                 const index = ficConfigs.data.findIndex((item) => item.id === jsonData.id);
@@ -1179,7 +1126,7 @@ const AiScriptStart = () => {
                 // Set model
                 if (typeof jsonData.file.model === 'string') {
                   modelSelector.val(jsonData.file.model);
-                  tinyAi.setHistoryModel(jsonData.file.model);
+                  tinyAi.setModel(jsonData.file.model, jsonData.id);
                   selectModel(jsonData.file.model);
                 }
 
@@ -1197,15 +1144,15 @@ const AiScriptStart = () => {
 
                 // Set Instruction
                 if (canSandBox(jsonData.id))
-                  tinyAi.setHistorySystemInstruction(jsonData.file.systemInstruction);
+                  tinyAi.setSystemInstruction(jsonData.file.systemInstruction);
                 else if (aiTemplates.instructions[instructionId])
-                  tinyAi.setHistorySystemInstruction(aiTemplates.instructions[instructionId]);
+                  tinyAi.setSystemInstruction(aiTemplates.instructions[instructionId]);
 
                 if (typeof jsonData.file.prompt === 'string')
-                  tinyAi.setHistoryPrompt(jsonData.file.prompt);
+                  tinyAi.setPrompt(jsonData.file.prompt);
 
                 if (typeof jsonData.file.firstDialogue === 'string')
-                  tinyAi.setHistoryFirstDialogue(jsonData.file.firstDialogue);
+                  tinyAi.setFirstDialogue(jsonData.file.firstDialogue);
 
                 // Clear messages
                 clearMessages();
@@ -1217,7 +1164,7 @@ const AiScriptStart = () => {
                   typeof jsonData.file.firstDialogue === 'string'
                 ) {
                   jsonData.file.data.push(
-                    tinyAi._buildContents(
+                    tinyAi.buildContents(
                       null,
                       {
                         role: 'model',
@@ -1348,10 +1295,10 @@ const AiScriptStart = () => {
             id: 'ai_instructions',
             info: 'System Instructions:',
             size: 400,
-            textarea: tinyAi.getHistorySystemInstruction(),
+            textarea: tinyAi.getSystemInstruction(),
             submitName: 'Set Instructions',
             submitCall: (value) => {
-              tinyAi.setHistorySystemInstruction(value);
+              tinyAi.setSystemInstruction(value);
               updateAiTokenCounterData();
             },
           };
@@ -1373,14 +1320,14 @@ const AiScriptStart = () => {
               id: 'ai_prompt',
               info: 'This prompt will always be inserted at the beginning of all your requests:',
               size: 200,
-              textarea: tinyAi.getHistoryPrompt(),
+              textarea: tinyAi.getPrompt(),
               submitName: 'Set Prompt',
               addTemplates: {
                 data: aiTemplates.prompts,
                 title: 'Select a prompt to be added',
               },
               submitCall: (value) => {
-                tinyAi.setHistoryPrompt(value);
+                tinyAi.setPrompt(value);
                 updateAiTokenCounterData();
               },
             },
@@ -1395,14 +1342,14 @@ const AiScriptStart = () => {
               id: 'ai_first_dialogue',
               info: 'This is the initial dialogue that can be inserted as a model message:',
               size: 200,
-              textarea: tinyAi.getHistoryFirstDialogue(),
+              textarea: tinyAi.getFirstDialogue(),
               submitName: 'Set First Message',
               addTemplates: {
                 data: aiTemplates.prompts,
                 title: 'Select a prompt to be added',
               },
               submitCall: (value) => {
-                tinyAi.setHistoryFirstDialogue(value);
+                tinyAi.setFirstDialogue(value);
                 enabledFirstDialogue(typeof value === 'string' && value.length > 0);
               },
             },
@@ -1688,14 +1635,14 @@ const AiScriptStart = () => {
             // Export
             createButtonSidebar('fa-solid fa-file-export', 'Export', () => {
               const exportData = {
-                file: clone(tinyAi.getHistory()),
+                file: clone(tinyAi.getData()),
                 temperature: tinyAi.getTemperature(),
                 maxOutputTokens: tinyAi.getMaxOutputTokens(),
                 topP: tinyAi.getTopP(),
                 topK: tinyAi.getTopK(),
                 presencePenalty: tinyAi.getPresencePenalty(),
                 frequencyPenalty: tinyAi.getFrequencyPenalty(),
-                id: tinyAi.getHistoryId(),
+                id: tinyAi.getId(),
               };
 
               if (!canSandBox(ficConfigs.selected)) delete exportData.file.systemInstruction;
@@ -1704,7 +1651,7 @@ const AiScriptStart = () => {
 
               saveAs(
                 new Blob([JSON.stringify(exportData)], { type: 'text/plain' }),
-                `Pony Driland - ${tinyAi.getHistoryId()} - AI Export.json`,
+                `Pony Driland - ${tinyAi.getId()} - AI Export.json`,
               );
             }),
 
@@ -1936,7 +1883,7 @@ const AiScriptStart = () => {
       };
 
       const insertDefaultSettings = (model, newModel) => {
-        tinyAi.setModel(newModel);
+        tinyAi.setModel(newModel, ficConfigs.selected);
         presencePenalty.disable();
         frequencyPenalty.disable();
 
@@ -1966,7 +1913,7 @@ const AiScriptStart = () => {
         if (model) {
           insertDefaultSettings(model, newModel);
           localStorage.setItem('tiny-ai-storage-model-selected', newModel);
-          if (tinyAi.getHistory()) tinyAi.setHistoryModel(newModel);
+          if (tinyAi.getData()) tinyAi.setModel(newModel, ficConfigs.selected);
         } else {
           tokenCount.total.text(0);
           temperature.reset().disable();
@@ -2034,7 +1981,7 @@ const AiScriptStart = () => {
       // Execute messages
       const prepareContentList = () => {
         // Prepare history
-        const history = tinyAi.getHistory();
+        const history = tinyAi.getData();
         const content = [];
         if (history) {
           if (typeof history.systemInstruction === 'string' && history.systemInstruction.length > 0)
@@ -2079,7 +2026,7 @@ const AiScriptStart = () => {
 
       // Get Ai Tokens
       const updateAiTokenCounterData = (oldTokenCount = null) => {
-        const history = tinyAi.getHistory();
+        const history = tinyAi.getData();
         if (history) {
           const contentsMd5 = objHash(
             history
@@ -2180,7 +2127,7 @@ const AiScriptStart = () => {
             if (!isCanceled) {
               if (tinyCache.msgBallon) tinyCache.msgBallon.remove();
               if (typeof tinyCache.indexId === 'number' || typeof tinyCache.indexId === 'string')
-                tinyAi.deleteHistoryIndex(tinyAi.getHistoryIndexById(tinyCache.indexId));
+                tinyAi.deleteIndex(tinyAi.getIndexById(tinyCache.indexId));
               completeTask();
               isCanceled = true;
             }
@@ -2195,7 +2142,7 @@ const AiScriptStart = () => {
 
           // Content Generator
           tinyAi
-            .genContent(content, tinyController, (chuck) => {
+            .genContent(content, tinyAi.getModel(), tinyController, (chuck) => {
               isComplete = chuck.done;
               // Update tokens
               if (chuck.tokenUsage) insertTokens(chuck.tokenUsage);
@@ -2205,10 +2152,10 @@ const AiScriptStart = () => {
                 for (const index in chuck.contents) {
                   // Update history
                   if (typeof tinyCache.indexId === 'undefined')
-                    tinyCache.indexId = tinyAi.addHistoryData(chuck.contents[index]);
+                    tinyCache.indexId = tinyAi.addData(chuck.contents[index]);
                   else
-                    tinyAi.replaceHistoryIndex(
-                      tinyAi.getHistoryIndexById(tinyCache.indexId),
+                    tinyAi.replaceIndex(
+                      tinyAi.getIndexById(tinyCache.indexId),
                       chuck.contents[index],
                     );
 
@@ -2259,12 +2206,8 @@ const AiScriptStart = () => {
                   ) {
                     // Update history
                     if (typeof tinyCache.indexId === 'undefined')
-                      tinyCache.indexId = tinyAi.addHistoryData(msg);
-                    else
-                      tinyAi.replaceHistoryIndex(
-                        tinyAi.getHistoryIndexById(tinyCache.indexId),
-                        msg,
-                      );
+                      tinyCache.indexId = tinyAi.addData(msg);
+                    else tinyAi.replaceIndex(tinyAi.getIndexById(tinyCache.indexId), msg);
 
                     // Send message request
                     insertMessage(msg.parts[0].text, msg.role);
@@ -2405,8 +2348,8 @@ const AiScriptStart = () => {
 
           // Add new message
           if (typeof msg === 'string' && msg.length > 0) {
-            const indexId = tinyAi.addHistoryData(
-              tinyAi._buildContents(
+            const indexId = tinyAi.addData(
+              tinyAi.buildContents(
                 null,
                 {
                   role: 'user',
@@ -2473,12 +2416,12 @@ const AiScriptStart = () => {
 
       firstDialogueBase.button.on('click', () => {
         enabledFirstDialogue(false);
-        const history = tinyAi.getHistory();
+        const history = tinyAi.getData();
 
         // Insert first message
         if (history.data.length < 1 && typeof history.firstDialogue === 'string') {
-          const indexId = tinyAi.addHistoryData(
-            tinyAi._buildContents(
+          const indexId = tinyAi.addData(
+            tinyAi.buildContents(
               null,
               {
                 role: 'model',
@@ -2582,7 +2525,7 @@ const AiScriptStart = () => {
 
         msgBase.data('tiny-ai-cache', tinyCache);
         const isIgnore = typeof data.index !== 'number' || data.index < 0;
-        const tinyIndex = tinyAi.getHistoryIndexById(data.index);
+        const tinyIndex = tinyAi.getIndexById(data.index);
 
         // Edit message panel
         const editPanel = $('<div>', { class: 'ai-text-editor' });
@@ -2609,9 +2552,9 @@ const AiScriptStart = () => {
 
                   submitButton.on('click', () => {
                     tinyCache.msg = textInput.val();
-                    const newContent = tinyAi.getHistoryIndex(tinyIndex);
+                    const newContent = tinyAi.getIndex(tinyIndex);
                     newContent.parts[0].text = tinyCache.msg;
-                    tinyAi.replaceHistoryIndex(tinyIndex, newContent);
+                    tinyAi.replaceIndex(tinyIndex, newContent);
                     msgBallon.removeClass('w-100').empty();
                     msgBallon.append(makeMsgRenderer(tinyCache.msg));
                   });
@@ -2636,9 +2579,9 @@ const AiScriptStart = () => {
           $('<button>', { class: 'btn btn-sm btn-bg' })
             .append($('<i>', { class: 'fa-solid fa-trash-can' }))
             .on('click', () => {
-              const tinyIndex = tinyAi.getHistoryIndexById(data.index);
+              const tinyIndex = tinyAi.getIndexById(data.index);
               if (!isIgnore && tinyIndex > -1) {
-                tinyAi.deleteHistoryIndex(tinyIndex);
+                tinyAi.deleteIndex(tinyIndex);
                 const amount = tokenCount.getValue('amount');
                 tokenCount.updateValue('amount', amount - data.tokens);
               }
@@ -2781,7 +2724,7 @@ const AiScriptStart = () => {
 
         // Check need first dialogue
         if (isEnabled) {
-          const history = tinyAi.getHistory();
+          const history = tinyAi.getData();
           if (
             history.data.length < 1 &&
             typeof history.firstDialogue === 'string' &&
