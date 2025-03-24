@@ -276,10 +276,12 @@ const AiScriptStart = () => {
         total: $('<span>').text('0'),
         updateValue: (where, value) => {
           if (typeof value === 'number') {
-            if (tokenCount[where] && where !== 'updateValue' && where !== 'getValue')
-              return tokenCount[where]
-                .data('token-count', value)
-                .text(value.toLocaleString(navigator.language || 'en-US'));
+            if (!Number.isNaN(value) && Number.isFinite(value)) {
+              if (tokenCount[where] && where !== 'updateValue' && where !== 'getValue')
+                return tokenCount[where]
+                  .data('token-count', value)
+                  .text(value.toLocaleString(navigator.language || 'en-US'));
+            }
           } else return tokenCount[where].data('token-count', 0).text(0);
         },
 
@@ -525,7 +527,11 @@ const AiScriptStart = () => {
             }
 
             // Start system
-            insertImportData(history.data, true);
+            insertImportData(
+              history.data,
+              Array.isArray(history.tokens) ? history.tokens : [],
+              true,
+            );
             disablePromptButtons(false);
             updateAiTokenCounterData(oldTokenCount);
 
@@ -551,12 +557,15 @@ const AiScriptStart = () => {
         style: 'display: none;',
       });
 
-      const insertImportData = (data, readOnly = false) => {
+      const insertImportData = (data, tokens, readOnly = false) => {
         // Insert data
         if (Array.isArray(data)) {
           for (const index in data) {
             const indexId = !readOnly
-              ? tinyAi.addData(tinyAi.buildContents(null, data[index], data[index].role))
+              ? tinyAi.addData(
+                  tinyAi.buildContents(null, data[index], data[index].role),
+                  tokens[index],
+                )
               : tinyAi.getIndexById(index);
 
             const msg = !readOnly ? tinyAi.getLastIndexData() : data[index];
@@ -565,7 +574,8 @@ const AiScriptStart = () => {
                 makeMessage(
                   {
                     message: msg.parts[0].text,
-                    tokens: 0,
+                    tokens: tokens[index] ? tokens[index].count : 0,
+                    finishReason: msg.finishReason,
                     index: indexId,
                   },
                   msg.role === 'user' ? null : tinyLib.toTitleCase(msg.role),
@@ -650,7 +660,10 @@ const AiScriptStart = () => {
                 }
 
                 // Complete
-                insertImportData(jsonData.file.data);
+                insertImportData(
+                  jsonData.file.data,
+                  Array.isArray(jsonData.file.tokens) ? jsonData.file.tokens : [],
+                );
 
                 if (index > -1)
                   getFicCache(
@@ -1572,12 +1585,13 @@ const AiScriptStart = () => {
 
           // Insert message
           let isComplete = false;
-          const insertMessage = (msgData, role) => {
+          const insertMessage = (msgData, role, tokens = 0, finishReason = null) => {
             if (!tinyCache.msgBallon) {
               tinyCache.msgBallon = makeMessage(
                 {
                   message: msgData,
-                  tokens: 0,
+                  tokens,
+                  finishReason,
                   index: tinyCache.indexId,
                 },
                 role === 'user' ? null : tinyLib.toTitleCase(role),
@@ -1618,18 +1632,33 @@ const AiScriptStart = () => {
               // Read contents
               if (chuck.contents) {
                 for (const index in chuck.contents) {
+                  const promptTokens =
+                    chuck.tokenUsage &&
+                    chuck.tokenUsage.count &&
+                    typeof chuck.tokenUsage.count.prompt === 'number'
+                      ? chuck.tokenUsage.count.prompt
+                      : 0;
+
                   // Update history
                   if (typeof tinyCache.indexId === 'undefined')
-                    tinyCache.indexId = tinyAi.addData(chuck.contents[index]);
+                    tinyCache.indexId = tinyAi.addData(chuck.contents[index], {
+                      count: promptTokens || null,
+                    });
                   else
                     tinyAi.replaceIndex(
                       tinyAi.getIndexOfId(tinyCache.indexId),
                       chuck.contents[index],
+                      { count: promptTokens || null },
                     );
 
                   // Send insert request
                   if (typeof chuck.contents[index].parts[0].text === 'string')
-                    insertMessage(chuck.contents[index].parts[0].text, chuck.contents[index].role);
+                    insertMessage(
+                      chuck.contents[index].parts[0].text,
+                      chuck.contents[index].role,
+                      promptTokens,
+                      chuck.contents[index].finishReason,
+                    );
 
                   // Update message cache
                   const oldBallonCache = tinyCache.msgBallon.data('tiny-ai-cache');
@@ -1672,13 +1701,23 @@ const AiScriptStart = () => {
                     typeof msg.parts[0].text === 'string' &&
                     msg.parts[0].text.length > 0
                   ) {
+                    const promptTokens =
+                      result.tokenUsage &&
+                      result.tokenUsage.count &&
+                      typeof result.tokenUsage.count.prompt === 'number'
+                        ? result.tokenUsage.count.prompt
+                        : 0;
+
                     // Update history
                     if (typeof tinyCache.indexId === 'undefined')
-                      tinyCache.indexId = tinyAi.addData(msg);
-                    else tinyAi.replaceIndex(tinyAi.getIndexOfId(tinyCache.indexId), msg);
+                      tinyCache.indexId = tinyAi.addData(msg, { count: promptTokens || null });
+                    else
+                      tinyAi.replaceIndex(tinyAi.getIndexOfId(tinyCache.indexId), msg, {
+                        count: promptTokens || null,
+                      });
 
                     // Send message request
-                    insertMessage(msg.parts[0].text, msg.role);
+                    insertMessage(msg.parts[0].text, msg.role, promptTokens, msg.finishReason);
 
                     // Update message data
                     const oldBallonCache = tinyCache.msgBallon.data('tiny-ai-cache');
@@ -1976,7 +2015,27 @@ const AiScriptStart = () => {
         );
       };
 
-      const makeMessage = (data = { message: null, tokens: 0, index: -1 }, username = null) => {
+      const makeMsgWarning = (finishReason) => {
+        const tinyError = tinyAi.getErrorCode(finishReason);
+        if (tinyError && typeof tinyError.text === 'string' && !tinyError.hide)
+          return $('<div>')
+            .addClass('mt-2 mb-0 alert alert-danger alert-dismissible fade show')
+            .attr('role', 'alert')
+            .text(tinyError.text)
+            .prepend($('<i>').addClass('fas fa-exclamation-triangle me-2'))
+            .append(
+              $('<button>').addClass('btn-close').attr({
+                type: 'button',
+                'data-bs-dismiss': 'alert',
+              }),
+            );
+        return null;
+      };
+
+      const makeMessage = (
+        data = { message: null, tokens: 0, finishReason: null, index: -1 },
+        username = null,
+      ) => {
         // Prepare renderer
         const tinyCache = {
           msg: data.message,
@@ -2022,7 +2081,7 @@ const AiScriptStart = () => {
                     tinyCache.msg = textInput.val();
                     const newContent = tinyAi.getIndex(tinyIndex);
                     newContent.parts[0].text = tinyCache.msg;
-                    tinyAi.replaceIndex(tinyIndex, newContent);
+                    tinyAi.replaceIndex(tinyIndex, newContent, { count: null });
                     msgBallon.removeClass('w-100').empty();
                     msgBallon.append(makeMsgRenderer(tinyCache.msg));
                   });
@@ -2067,6 +2126,7 @@ const AiScriptStart = () => {
             class: `text-muted small mt-1${typeof username !== 'string' ? ' text-end' : ''}`,
             text: typeof username === 'string' ? username : 'User',
           }),
+          makeMsgWarning(data.finishReason),
         );
       };
 
