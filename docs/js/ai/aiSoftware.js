@@ -475,6 +475,7 @@ const AiScriptStart = () => {
             if (forceReset || !tinyAi.selectDataId(id)) {
               // Start History
               tinyAi.startDataId(id, true);
+              tinyAi.setModel(modelSelector.val());
 
               // Set Instruction
               tinyAi.setSystemInstruction(aiTemplates.instructions[instructionId]);
