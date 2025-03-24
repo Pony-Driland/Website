@@ -12,6 +12,7 @@ class TinyAiManager extends EventEmitter {
     super();
     // Config
     this.#_apiKey = null;
+    this._errorCode = null;
 
     // History
     this.#_selectedHistory = null;
@@ -306,6 +307,11 @@ class TinyAiManager extends EventEmitter {
     if (typeof this.#_countTokens === 'function')
       return this.#_countTokens(this.#_apiKey, model || this.getModel(), controller, data);
     throw new Error('No count token api script defined.');
+  }
+
+  // Error codes
+  _setErrorCodes(errors) {
+    this._errorCode = errors;
   }
 
   // Fetch API
