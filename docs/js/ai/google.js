@@ -209,25 +209,23 @@ const setGoogleAi = (tinyGoogleAI, GEMINI_API_KEY, MODEL_DATA = 'gemini-2.0-flas
             },
           };
 
-          let needShowMetadataError;
+          let needShowMetadataError = false;
           if (result.usageMetadata) {
             // Candidates
             if (typeof result.usageMetadata.candidatesTokenCount === 'number')
               usageMetadata.count.candidates = result.usageMetadata.candidatesTokenCount;
-            else needShowMetadataError = true;
-
             // Prompt
             if (typeof result.usageMetadata.promptTokenCount === 'number')
               usageMetadata.count.prompt = result.usageMetadata.promptTokenCount;
-            else needShowMetadataError = true;
-
             // Total
             if (typeof result.usageMetadata.totalTokenCount === 'number')
               usageMetadata.count.total = result.usageMetadata.totalTokenCount;
-            else needShowMetadataError = true;
           }
           // Error
           else needShowMetadataError = true;
+          usageMetadata.isResult =
+            typeof usageMetadata.count.candidates === 'number' &&
+            typeof usageMetadata.count.prompt === 'number';
 
           return [usageMetadata, needShowMetadataError];
         };

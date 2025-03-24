@@ -1568,19 +1568,38 @@ const AiScriptStart = () => {
       };
 
       // Execute AI script
-      const executeAi = (tinyCache = {}, tinyController) =>
+      const executeAi = (tinyCache = {}, sentIndex = null, tinyController = undefined) =>
         new Promise((resolve, reject) => {
           const content = prepareContentList();
 
           // Insert tokens
-          let amountTokens = 0;
-          const insertTokens = (tokenUsage) => {
-            const totalToken = tokenUsage && tokenUsage.count ? tokenUsage.count.total : 0;
+          const amountTokens = {
+            total: null,
+            data: { candidates: null, prompt: null, total: null },
+          };
 
-            if (totalToken > amountTokens) {
-              amountTokens = totalToken;
-              tokenCount.updateValue('amount', totalToken);
+          const buildAmountTokens = (tokenUsage) => {
+            // Build amount tokens
+            if (tokenUsage) {
+              // Preparing entire amount
+              if (!tokenUsage.isResult) amountTokens.total = tokenUsage.count.prompt;
+              // The prompt result amount
+              else {
+                amountTokens.data.candidates = tokenUsage.count.candidates;
+                amountTokens.data.prompt = tokenUsage.count.prompt;
+                amountTokens.data.total = tokenUsage.count.total;
+                // Add the value of the user prompt
+                if (typeof sentIndex === 'number')
+                  tinyAi.replaceIndex(sentIndex, null, { count: amountTokens.data.prompt || null });
+              }
             }
+
+            // Fix total tokens
+            if (typeof amountTokens.total === 'number')
+              tokenCount.updateValue('amount', amountTokens.total);
+            const totalAmountToken = tinyAi.getTotalTokens();
+            if (totalAmountToken > amountTokens.total)
+              tokenCount.updateValue('amount', totalAmountToken);
           };
 
           // Insert message
@@ -1627,18 +1646,12 @@ const AiScriptStart = () => {
             .genContent(content, tinyAi.getModel(), tinyController, (chuck) => {
               isComplete = chuck.done;
               // Update tokens
-              if (chuck.tokenUsage) insertTokens(chuck.tokenUsage);
+              buildAmountTokens(chuck.tokenUsage);
+              const promptTokens = amountTokens.data.candidates || 0;
 
               // Read contents
               if (chuck.contents) {
                 for (const index in chuck.contents) {
-                  const promptTokens =
-                    chuck.tokenUsage &&
-                    chuck.tokenUsage.count &&
-                    typeof chuck.tokenUsage.count.prompt === 'number'
-                      ? chuck.tokenUsage.count.prompt
-                      : 0;
-
                   // Update history
                   if (typeof tinyCache.indexId === 'undefined')
                     tinyCache.indexId = tinyAi.addData(chuck.contents[index], {
@@ -1689,7 +1702,8 @@ const AiScriptStart = () => {
             .then((result) => {
               if (!result.error) {
                 // Insert tokens
-                insertTokens(result.tokenUsage);
+                buildAmountTokens(result.tokenUsage);
+                const promptTokens = amountTokens.data.candidates || 0;
 
                 // Insert content
                 for (const index in result.contents) {
@@ -1701,13 +1715,6 @@ const AiScriptStart = () => {
                     typeof msg.parts[0].text === 'string' &&
                     msg.parts[0].text.length > 0
                   ) {
-                    const promptTokens =
-                      result.tokenUsage &&
-                      result.tokenUsage.count &&
-                      typeof result.tokenUsage.count.prompt === 'number'
-                        ? result.tokenUsage.count.prompt
-                        : 0;
-
                     // Update history
                     if (typeof tinyCache.indexId === 'undefined')
                       tinyCache.indexId = tinyAi.addData(msg, { count: promptTokens || null });
@@ -1854,8 +1861,9 @@ const AiScriptStart = () => {
           loadingMoment();
 
           // Add new message
+          let sentIndex = null;
           if (typeof msg === 'string' && msg.length > 0) {
-            const indexId = tinyAi.addData(
+            sentIndex = tinyAi.addData(
               tinyAi.buildContents(
                 null,
                 {
@@ -1869,13 +1877,13 @@ const AiScriptStart = () => {
               makeMessage({
                 message: msg,
                 tokens: 0,
-                index: indexId,
+                index: sentIndex,
               }),
             );
           }
 
           // Execute Ai
-          await executeAi(submitCache, controller).catch((err) => {
+          await executeAi(submitCache, sentIndex, controller).catch((err) => {
             if (submitCache.cancel) submitCache.cancel();
             console.error(err);
             alert(err.message);

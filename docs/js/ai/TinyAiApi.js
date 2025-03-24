@@ -784,15 +784,15 @@ class TinyAiApi extends EventEmitter {
    * Replaces an entry at the specified index in the session history with new data.
    *
    * @param {number} index - The index of the entry to replace.
-   * @param {Object} data - The new data to replace the existing entry.
-   * @param {number} [tokens] - (Optional) The token count associated with the new entry.
-   * @param {string} [id] - (Optional) The session ID. If omitted, the currently selected session history ID will be used.
+   * @param {Object} [data] - The new data to replace the existing entry (optional).
+   * @param {number} [tokens] - The token count associated with the new entry (optional).
+   * @param {string} [id] - The session ID (optional). If omitted, the currently selected session history ID will be used.
    * @returns {boolean} `true` if the entry was successfully replaced, `false` if the index is invalid or the entry does not exist.
    */
   replaceIndex(index, data, tokens, id) {
     const history = this.getData(id);
-    if (history && history.data[index]) {
-      history.data[index] = data;
+    if (history && history.data[index] && (data || tokens)) {
+      if (data) history.data[index] = data;
       if (tokens) history.tokens[index] = tokens;
       this.emit('replaceIndex', index, data, tokens, id);
       return true;
