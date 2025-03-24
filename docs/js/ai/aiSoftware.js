@@ -605,16 +605,16 @@ const AiScriptStart = () => {
                 }
 
                 // Set model settings
-                if (typeof jsonData.temperature === 'number')
-                  tinyAi.setTemperature(jsonData.temperature);
-                if (typeof jsonData.maxOutputTokens === 'number')
-                  tinyAi.setMaxOutputTokens(jsonData.maxOutputTokens);
-                if (typeof jsonData.topP === 'number') tinyAi.setTopP(jsonData.topP);
-                if (typeof jsonData.topK === 'number') tinyAi.setTopK(jsonData.topK);
-                if (typeof jsonData.presencePenalty === 'number')
-                  tinyAi.setPresencePenalty(jsonData.presencePenalty);
-                if (typeof jsonData.frequencyPenalty === 'number')
-                  tinyAi.setFrequencyPenalty(jsonData.frequencyPenalty);
+                if (typeof jsonData.file.temperature === 'number')
+                  tinyAi.setTemperature(jsonData.file.temperature);
+                if (typeof jsonData.file.maxOutputTokens === 'number')
+                  tinyAi.setMaxOutputTokens(jsonData.file.maxOutputTokens);
+                if (typeof jsonData.file.topP === 'number') tinyAi.setTopP(jsonData.file.topP);
+                if (typeof jsonData.file.topK === 'number') tinyAi.setTopK(jsonData.file.topK);
+                if (typeof jsonData.file.presencePenalty === 'number')
+                  tinyAi.setPresencePenalty(jsonData.file.presencePenalty);
+                if (typeof jsonData.file.frequencyPenalty === 'number')
+                  tinyAi.setFrequencyPenalty(jsonData.file.frequencyPenalty);
 
                 // Set Instruction
                 if (canSandBox(jsonData.id))
@@ -1110,12 +1110,6 @@ const AiScriptStart = () => {
             createButtonSidebar('fa-solid fa-file-export', 'Export', () => {
               const exportData = {
                 file: clone(tinyAi.getData()),
-                temperature: tinyAi.getTemperature(),
-                maxOutputTokens: tinyAi.getMaxOutputTokens(),
-                topP: tinyAi.getTopP(),
-                topK: tinyAi.getTopK(),
-                presencePenalty: tinyAi.getPresencePenalty(),
-                frequencyPenalty: tinyAi.getFrequencyPenalty(),
                 id: tinyAi.getId(),
               };
 
