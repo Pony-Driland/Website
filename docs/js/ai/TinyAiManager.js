@@ -1,4 +1,4 @@
-class TinyAiManager extends EventEmitter {
+class TinyAiApi extends EventEmitter {
   #_apiKey;
   #_getModels;
   #_countTokens;
@@ -607,7 +607,7 @@ const AiScriptStart = () => {
   const tinyAiScript = {};
 
   // Read AI Apis
-  const tinyAi = new TinyAiManager();
+  const tinyAi = new TinyAiApi();
   const tinyStorage = new TinyAiStorage();
   let aiLogin = null;
   tinyAiScript.setAiLogin = (newAiLogin) => {
