@@ -561,27 +561,33 @@ class TinyAiApi extends EventEmitter {
   }
 
   /**
-   * Select a session history ID to work with.
+   * Select a session history ID to set as the active session.
+   * If `null` is passed, it deselects the current session ID.
    *
-   * @param {string} id - The session history ID to select.
-   * @returns {boolean} `true` if the history ID was successfully selected, `false` if the ID does not exist in history.
+   * @param {string|null} id - The session history ID to select, or `null` to deselect the current session.
+   * @returns {boolean} `true` if the session ID was successfully selected or deselected, `false` if the ID does not exist in history.
    */
   selectDataId(id) {
-    if (this.history[id]) {
-      this.#_selectedHistory = id;
-      this.emit('selectDataId', id);
-      return true;
+    if (id !== null) {
+      if (this.history[id]) {
+        this.#_selectedHistory = id;
+        this.emit('selectDataId', id);
+        return true;
+      }
+      return false;
     }
-    return false;
+    this.#_selectedHistory = null;
+    this.emit('selectDataId', null);
+    return true;
   }
 
-/**
- * Get the currently selected session history ID.
- * If no ID is provided, it returns the default selected session history ID.
- *
- * @param {string} [id] - The session history ID to retrieve. If not provided, it uses the default selected ID.
- * @returns {string|null} The selected session history ID, or `null` if no history ID is selected.
- */
+  /**
+   * Get the currently selected session history ID.
+   * If no ID is provided, it returns the default selected session history ID.
+   *
+   * @param {string} [id] - The session history ID to retrieve. If not provided, it uses the default selected ID.
+   * @returns {string|null} The selected session history ID, or `null` if no history ID is selected.
+   */
   getId(id) {
     return id || this.#_selectedHistory;
   }
@@ -907,5 +913,22 @@ class TinyAiApi extends EventEmitter {
     if (selected) this.selectDataId(id);
     this.emit('startDataId', this.history[id], id, selected ? true : false);
     return this.history[id];
+  }
+
+  /**
+   * Stop the data session associated with the provided ID.
+   * This will remove the session data from history and reset the selected session ID if necessary.
+   *
+   * @param {string} id - The session history ID to stop and remove from history.
+   * @returns {boolean} `true` if the session ID was found and successfully stopped, `false` otherwise.
+   */
+  stopDataId(id) {
+    if (this.history[id]) {
+      delete this.history[id];
+      if (this.getId() === id) this.selectDataId(null);
+      this.emit('stopDataId', id);
+      return true;
+    }
+    return false;
   }
 }
