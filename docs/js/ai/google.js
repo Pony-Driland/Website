@@ -1,3 +1,10 @@
+/**
+ * Configures the Tiny AI manager to use the Google Gemini API.
+ *
+ * @param {Object} tinyGoogleAI - The TinyAiApi instance to be configured.
+ * @param {string} GEMINI_API_KEY - The API key for Google Gemini.
+ * @param {string} [MODEL_DATA='gemini-2.0-flash'] - The model to use (default is 'gemini-2.0-flash').
+ */
 const setGoogleAi = (tinyGoogleAI, GEMINI_API_KEY, MODEL_DATA = 'gemini-2.0-flash') => {
   const apiUrl = 'https://generativelanguage.googleapis.com/v1beta';
   tinyGoogleAI.setApiKey(GEMINI_API_KEY);
