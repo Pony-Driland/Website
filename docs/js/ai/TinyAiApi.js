@@ -755,15 +755,15 @@ class TinyAiApi extends EventEmitter {
   /**
    * Checks if a specific index exists in the session history.
    *
-   * **Note**: This method assumes that the history data is available and that the `getIndex` method is used
-   * to retrieve the index. If the `getIndex` method returns a valid index, this method will return `true`.
+   * **Note**: This method assumes that the history data is available and that the `getMsgByIndex` method is used
+   * to retrieve the index. If the `getMsgByIndex` method returns a valid index, this method will return `true`.
    *
    * @param {number} index - The index to check for existence in the session history.
    * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
    * @returns {boolean} `true` if the index exists, otherwise `false`.
    */
   indexExists(index, id) {
-    return this.getIndex(index, id) ? true : false;
+    return this.getMsgByIndex(index, id) ? true : false;
   }
 
   /**
@@ -773,9 +773,25 @@ class TinyAiApi extends EventEmitter {
    * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
    * @returns {Array|null} The data entry at the specified index, or `null` if the index is out of bounds or no data exists for the given session ID.
    */
-  getIndex(index, id) {
+  getMsgByIndex(index, id) {
     const history = this.getData(id);
     if (history && history.data[index]) return history.data[index];
+    return null;
+  }
+
+  /**
+   * Retrieves a specific message by its ID from the session history.
+   *
+   * @param {string} msgId - The ID of the message to retrieve.
+   * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
+   * @returns {Object|null} The message data associated with the given ID, or `null` if the message ID is invalid or does not exist.
+   */
+  getMsgById(msgId, id) {
+    const history = this.getData(id);
+    if (history) {
+      const index = this.getIndexOfId(msgId);
+      if (history.data[index]) return history.data[index];
+    }
     return null;
   }
 
