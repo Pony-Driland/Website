@@ -1451,7 +1451,7 @@ const AiScriptStart = () => {
         }
 
         if (!isFirstTime && !ignoreTokenUpdater && !modelSelector.prop('disabled'))
-          updateAiTokenCounterData();
+          updateAiTokenCounterData(undefined, true);
       };
 
       modelSelector.on('change', () => selectModel(modelSelector.val()));
@@ -2208,6 +2208,7 @@ const AiScriptStart = () => {
                   // Text
                   const textInput = $('<textarea>', { class: 'form-control' });
                   textInput.val(tinyCache.msg);
+                  const oldMsg = tinyCache.msg;
 
                   // Submit
                   const submitButton = $('<button>', {
@@ -2220,19 +2221,24 @@ const AiScriptStart = () => {
                     text: 'Cancel',
                   });
 
+                  const closeReplace = () => {
+                    msgBallon.removeClass('w-100').empty();
+                    msgBallon.append(makeMsgRenderer(tinyCache.msg));
+                  };
+
                   submitButton.on('click', () => {
                     tinyCache.msg = textInput.val();
-                    const newContent = tinyAi.getIndex(tinyIndex);
-                    newContent.parts[0].text = tinyCache.msg;
-                    tinyAi.replaceIndex(tinyIndex, newContent, { count: null });
-                    msgBallon.removeClass('w-100').empty();
-                    msgBallon.append(makeMsgRenderer(tinyCache.msg));
+                    const newMsg = tinyCache.msg;
+                    if (typeof oldMsg !== 'string' || oldMsg !== newMsg) {
+                      const newContent = tinyAi.getIndex(tinyIndex);
+                      newContent.parts[0].text = tinyCache.msg;
+                      tinyAi.replaceIndex(tinyIndex, newContent, { count: null });
+                      closeReplace();
+                      updateAiTokenCounterData();
+                    } else closeReplace();
                   });
 
-                  cancelButton.on('click', () => {
-                    msgBallon.removeClass('w-100').empty();
-                    msgBallon.append(makeMsgRenderer(tinyCache.msg));
-                  });
+                  cancelButton.on('click', () => closeReplace());
 
                   // Complete
                   msgBallon
