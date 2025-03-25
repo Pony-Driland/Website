@@ -1735,7 +1735,6 @@ const AiScriptStart = () => {
                 amountTokens.data.prompt = tokenUsage.count.prompt;
                 amountTokens.data.total = tokenUsage.count.total;
                 // Add the value of the user prompt
-                console.log('buildAmountTokens', sentId, amountTokens.data.prompt);
                 if (typeof sentId === 'number')
                   tinyAi.replaceIndex(tinyAi.getIndexOfId(sentId), null, {
                     count: amountTokens.data.prompt || null,
