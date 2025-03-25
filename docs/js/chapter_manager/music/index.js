@@ -363,7 +363,7 @@ const musicManager = {
         fetch(url, { method: 'GET' })
           .then((response) => response.arrayBuffer())
           .then((buffer) => {
-            var buffAudio = new BuffAudio(new AudioContext(), new Uint8Array(buffer));
+            const buffAudio = new BuffAudio(new AudioContext(), new Uint8Array(buffer));
             musicManager.cache.buffer[vanillaURL] = buffAudio;
             resolve(buffAudio);
           })
