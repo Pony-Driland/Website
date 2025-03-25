@@ -510,7 +510,8 @@ const AiScriptStart = () => {
             // Clear data
             clearMessages();
             enableReadOnly(false);
-            addMessage(makeMessage({ message: introduction, tokens: 0 }, 'Introduction'));
+            enableMessageButtons(true);
+            addMessage(makeMessage({ message: introduction }, 'Introduction'));
 
             const history = tinyAi.getData();
 
@@ -576,7 +577,6 @@ const AiScriptStart = () => {
                 makeMessage(
                   {
                     message: msg.parts[0].text,
-                    tokens: tokens[index] ? tokens[index].count : 0,
                     finishReason: msg.finishReason,
                     index: indexId,
                   },
@@ -666,6 +666,7 @@ const AiScriptStart = () => {
                 // Clear messages
                 clearMessages();
                 enableReadOnly(false);
+                enableMessageButtons(true);
 
                 // Insert first message
                 if (
@@ -1663,6 +1664,7 @@ const AiScriptStart = () => {
           modelChangerReadOnly();
           disablePromptButtons(true);
           enableModelReadOnly();
+          enableMessageButtons(false);
           const oldMsgInput = msgInput.val();
 
           let points = '.';
@@ -1684,6 +1686,7 @@ const AiScriptStart = () => {
             modelChangerReadOnly(false);
             disablePromptButtons(false);
             enableModelReadOnly(false);
+            enableMessageButtons(true);
             msgInput.focus();
           };
 
@@ -1723,7 +1726,7 @@ const AiScriptStart = () => {
                 amountTokens.data.prompt = tokenUsage.count.prompt;
                 amountTokens.data.total = tokenUsage.count.total;
                 // Add the value of the user prompt
-                if (typeof sentIndex === 'number')
+                if (typeof sentIndex === 'number' || typeof sentIndex === 'string')
                   tinyAi.replaceIndex(sentIndex, null, { count: amountTokens.data.prompt || null });
               }
             }
@@ -1738,12 +1741,11 @@ const AiScriptStart = () => {
 
           // Insert message
           let isComplete = false;
-          const insertMessage = (msgData, role, tokens = 0, finishReason = null) => {
+          const insertMessage = (msgData, role, finishReason = null) => {
             if (!tinyCache.msgBallon) {
               tinyCache.msgBallon = makeMessage(
                 {
                   message: msgData,
-                  tokens,
                   finishReason,
                   index: tinyCache.indexId,
                 },
@@ -1803,7 +1805,6 @@ const AiScriptStart = () => {
                     insertMessage(
                       chuck.contents[index].parts[0].text,
                       chuck.contents[index].role,
-                      promptTokens,
                       chuck.contents[index].finishReason,
                     );
 
@@ -1858,7 +1859,7 @@ const AiScriptStart = () => {
                       });
 
                     // Send message request
-                    insertMessage(msg.parts[0].text, msg.role, promptTokens, msg.finishReason);
+                    insertMessage(msg.parts[0].text, msg.role, msg.finishReason);
 
                     // Update message data
                     const oldBallonCache = tinyCache.msgBallon.data('tiny-ai-cache');
@@ -1978,6 +1979,7 @@ const AiScriptStart = () => {
 
           const controller = new AbortController();
           enableReadOnly(true, controller);
+          enableMessageButtons(false);
           modelChangerReadOnly();
           disablePromptButtons(true);
           enableModelSelectorReadOnly(true);
@@ -2010,7 +2012,6 @@ const AiScriptStart = () => {
             addMessage(
               makeMessage({
                 message: msg,
-                tokens: 0,
                 index: sentIndex,
               }),
             );
@@ -2028,6 +2029,7 @@ const AiScriptStart = () => {
           disablePromptButtons(false);
           msgInput.val('');
 
+          enableMessageButtons(true);
           enableReadOnly(false);
           modelChangerReadOnly(false);
           enableModelSelectorReadOnly(false);
@@ -2084,7 +2086,6 @@ const AiScriptStart = () => {
             makeMessage(
               {
                 message: history.firstDialogue,
-                tokens: 0,
                 index: indexId,
               },
               'Model',
@@ -2175,7 +2176,7 @@ const AiScriptStart = () => {
       };
 
       const makeMessage = (
-        data = { message: null, tokens: 0, finishReason: null, index: -1 },
+        data = { message: null, finishReason: null, index: -1 },
         username = null,
       ) => {
         // Prepare renderer
@@ -2250,9 +2251,13 @@ const AiScriptStart = () => {
             .on('click', () => {
               const tinyIndex = tinyAi.getIndexOfId(data.index);
               if (!isIgnore && tinyIndex > -1) {
+                const tinyTokens = tinyAi.getMsgTokensByIndex(tinyIndex);
                 tinyAi.deleteIndex(tinyIndex);
                 const amount = tokenCount.getValue('amount');
-                tokenCount.updateValue('amount', amount - data.tokens);
+                tokenCount.updateValue(
+                  'amount',
+                  amount - Number(tinyTokens && tinyTokens.count ? tinyTokens.count : 0),
+                );
               }
 
               msgBase.remove();
@@ -2340,6 +2345,11 @@ const AiScriptStart = () => {
         else outputLength.removeClass('disabled');
       };
 
+      const enableMessageButtons = (isEnabled = true) => {
+        if (isEnabled) chatContainer.removeClass('hide-msg-buttons');
+        else chatContainer.addClass('hide-msg-buttons');
+      };
+
       const readOnlyTemplate = (item, isEnabled) => {
         item.prop('disabled', isEnabled);
         if (isEnabled) {
@@ -2358,6 +2368,7 @@ const AiScriptStart = () => {
           cancelSubmit.removeClass('d-none');
           cancelSubmit.on('click', () => {
             enableReadOnly(false);
+            enableMessageButtons(true);
             try {
               if (submitCache.cancel) submitCache.cancel();
               controller.abort();
@@ -2420,6 +2431,7 @@ const AiScriptStart = () => {
       // Clear Messages
       const clearMessages = () => msgList.empty();
       enableReadOnly();
+      enableMessageButtons(false);
       disablePromptButtons(true);
 
       // Welcome
@@ -2427,7 +2439,6 @@ const AiScriptStart = () => {
         makeMessage(
           {
             message: `Welcome to Pony Driland's chatbot! This is a chatbot developed exclusively to interact with the content of fic`,
-            tokens: 0,
           },
           'Website',
         ),
@@ -2438,7 +2449,6 @@ const AiScriptStart = () => {
             message:
               'This means that whenever the story is updated, I am automatically updated for you to always view the answers of the latest content, because the algorithm of this website converts the content of fic to prompts.' +
               '\n\nChoose something to be done here so we can start our conversation! The chat will not work until you choose an activity to do here',
-            tokens: 0,
           },
           'Website',
         ),
