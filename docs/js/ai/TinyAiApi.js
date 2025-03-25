@@ -799,7 +799,7 @@ class TinyAiApi extends EventEmitter {
    * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
    * @returns {string|number} The message ID at the specified index, or `-1` if the index is out of bounds or not found.
    */
-  getIndexById(index, id) {
+  getIdByIndex(index, id) {
     const history = this.getData(id);
     if (history) return history.data[index] ? history.ids[index] : -1;
     return -1;

@@ -567,12 +567,12 @@ const AiScriptStart = () => {
         // Insert data
         if (Array.isArray(data)) {
           for (const index in data) {
-            const indexId = !readOnly
+            const msgId = !readOnly
               ? tinyAi.addData(
                   tinyAi.buildContents(null, data[index], data[index].role),
                   tokens[index],
                 )
-              : tinyAi.getIndexById(index);
+              : tinyAi.getIdByIndex(index);
 
             const msg = !readOnly ? tinyAi.getLastIndexData() : data[index];
             if (msg && msg.parts && msg.parts[0] && typeof msg.parts[0].text === 'string') {
@@ -581,7 +581,7 @@ const AiScriptStart = () => {
                   {
                     message: msg.parts[0].text,
                     finishReason: msg.finishReason,
-                    index: indexId,
+                    id: msgId,
                   },
                   msg.role === 'user' ? null : tinyLib.toTitleCase(msg.role),
                 ),
@@ -1714,7 +1714,7 @@ const AiScriptStart = () => {
       };
 
       // Execute AI script
-      const executeAi = (tinyCache = {}, sentIndex = null, tinyController = undefined) =>
+      const executeAi = (tinyCache = {}, sentId = null, tinyController = undefined) =>
         new Promise((resolve, reject) => {
           const { content } = prepareContentList();
 
@@ -1735,8 +1735,11 @@ const AiScriptStart = () => {
                 amountTokens.data.prompt = tokenUsage.count.prompt;
                 amountTokens.data.total = tokenUsage.count.total;
                 // Add the value of the user prompt
-                if (typeof sentIndex === 'number' || typeof sentIndex === 'string')
-                  tinyAi.replaceIndex(sentIndex, null, { count: amountTokens.data.prompt || null });
+                console.log('buildAmountTokens', sentId, amountTokens.data.prompt);
+                if (typeof sentId === 'number')
+                  tinyAi.replaceIndex(tinyAi.getIndexOfId(sentId), null, {
+                    count: amountTokens.data.prompt || null,
+                  });
               }
             }
 
@@ -1756,7 +1759,7 @@ const AiScriptStart = () => {
                 {
                   message: msgData,
                   finishReason,
-                  index: tinyCache.indexId,
+                  id: tinyCache.msgId,
                 },
                 role === 'user' ? null : tinyLib.toTitleCase(role),
               );
@@ -1772,8 +1775,8 @@ const AiScriptStart = () => {
           tinyCache.cancel = () => {
             if (!isCanceled) {
               if (tinyCache.msgBallon) tinyCache.msgBallon.remove();
-              if (typeof tinyCache.indexId === 'number' || typeof tinyCache.indexId === 'string')
-                tinyAi.deleteIndex(tinyAi.getIndexOfId(tinyCache.indexId));
+              if (typeof tinyCache.msgId === 'number' || typeof tinyCache.msgId === 'string')
+                tinyAi.deleteIndex(tinyAi.getIndexOfId(tinyCache.msgId));
               completeTask();
               isCanceled = true;
             }
@@ -1781,7 +1784,7 @@ const AiScriptStart = () => {
 
           // Task complete!
           const completeTask = () => {
-            if (typeof tinyCache.indexId !== 'undefined') delete tinyCache.indexId;
+            if (typeof tinyCache.msgId !== 'undefined') delete tinyCache.msgId;
             if (typeof tinyCache.msgBallon !== 'undefined') delete tinyCache.msgBallon;
             if (typeof tinyCache.cancel !== 'undefined') delete tinyCache.cancel;
           };
@@ -1798,13 +1801,13 @@ const AiScriptStart = () => {
               if (chuck.contents) {
                 for (const index in chuck.contents) {
                   // Update history
-                  if (typeof tinyCache.indexId === 'undefined')
-                    tinyCache.indexId = tinyAi.addData(chuck.contents[index], {
+                  if (typeof tinyCache.msgId === 'undefined')
+                    tinyCache.msgId = tinyAi.addData(chuck.contents[index], {
                       count: promptTokens || null,
                     });
                   else
                     tinyAi.replaceIndex(
-                      tinyAi.getIndexOfId(tinyCache.indexId),
+                      tinyAi.getIndexOfId(tinyCache.msgId),
                       chuck.contents[index],
                       { count: promptTokens || null },
                     );
@@ -1860,10 +1863,10 @@ const AiScriptStart = () => {
                     msg.parts[0].text.length > 0
                   ) {
                     // Update history
-                    if (typeof tinyCache.indexId === 'undefined')
-                      tinyCache.indexId = tinyAi.addData(msg, { count: promptTokens || null });
+                    if (typeof tinyCache.msgId === 'undefined')
+                      tinyCache.msgId = tinyAi.addData(msg, { count: promptTokens || null });
                     else
-                      tinyAi.replaceIndex(tinyAi.getIndexOfId(tinyCache.indexId), msg, {
+                      tinyAi.replaceIndex(tinyAi.getIndexOfId(tinyCache.msgId), msg, {
                         count: promptTokens || null,
                       });
 
@@ -2006,9 +2009,9 @@ const AiScriptStart = () => {
           loadingMoment();
 
           // Add new message
-          let sentIndex = null;
+          let sentId = null;
           if (typeof msg === 'string' && msg.length > 0) {
-            sentIndex = tinyAi.addData(
+            sentId = tinyAi.addData(
               tinyAi.buildContents(
                 null,
                 {
@@ -2021,13 +2024,13 @@ const AiScriptStart = () => {
             addMessage(
               makeMessage({
                 message: msg,
-                index: sentIndex,
+                id: sentId,
               }),
             );
           }
 
           // Execute Ai
-          await executeAi(submitCache, sentIndex, controller).catch((err) => {
+          await executeAi(submitCache, sentId, controller).catch((err) => {
             if (submitCache.cancel) submitCache.cancel();
             console.error(err);
             alert(err.message);
@@ -2080,7 +2083,7 @@ const AiScriptStart = () => {
 
         // Insert first message
         if (history.data.length < 1 && typeof history.firstDialogue === 'string') {
-          const indexId = tinyAi.addData(
+          const msgId = tinyAi.addData(
             tinyAi.buildContents(
               null,
               {
@@ -2095,7 +2098,7 @@ const AiScriptStart = () => {
             makeMessage(
               {
                 message: history.firstDialogue,
-                index: indexId,
+                id: msgId,
               },
               'Model',
             ),
@@ -2185,7 +2188,7 @@ const AiScriptStart = () => {
       };
 
       const makeMessage = (
-        data = { message: null, finishReason: null, index: -1 },
+        data = { message: null, finishReason: null, id: -1 },
         username = null,
       ) => {
         // Prepare renderer
@@ -2203,8 +2206,8 @@ const AiScriptStart = () => {
         });
 
         msgBase.data('tiny-ai-cache', tinyCache);
-        const isIgnore = typeof data.index !== 'number' || data.index < 0;
-        const tinyIndex = tinyAi.getIndexOfId(data.index);
+        const isIgnore = typeof data.id !== 'number' || data.id < 0;
+        const tinyIndex = tinyAi.getIndexOfId(data.id);
 
         // Edit message panel
         const editPanel = $('<div>', { class: 'ai-text-editor' });
@@ -2264,7 +2267,7 @@ const AiScriptStart = () => {
           $('<button>', { class: 'btn btn-sm btn-bg' })
             .append($('<i>', { class: 'fa-solid fa-trash-can' }))
             .on('click', () => {
-              const tinyIndex = tinyAi.getIndexOfId(data.index);
+              const tinyIndex = tinyAi.getIndexOfId(data.id);
               if (!isIgnore && tinyIndex > -1) {
                 const tinyTokens = tinyAi.getMsgTokensByIndex(tinyIndex);
                 tinyAi.deleteIndex(tinyIndex);
