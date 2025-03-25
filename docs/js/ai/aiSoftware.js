@@ -580,7 +580,6 @@ const AiScriptStart = () => {
                 makeMessage(
                   {
                     message: msg.parts[0].text,
-                    finishReason: msg.finishReason,
                     id: msgId,
                   },
                   msg.role === 'user' ? null : tinyLib.toTitleCase(msg.role),
@@ -1752,12 +1751,11 @@ const AiScriptStart = () => {
 
           // Insert message
           let isComplete = false;
-          const insertMessage = (msgData, role, finishReason = null) => {
+          const insertMessage = (msgData, role, finishReason) => {
             if (!tinyCache.msgBallon) {
               tinyCache.msgBallon = makeMessage(
                 {
                   message: msgData,
-                  finishReason,
                   id: tinyCache.msgId,
                 },
                 role === 'user' ? null : tinyLib.toTitleCase(role),
@@ -1765,6 +1763,8 @@ const AiScriptStart = () => {
               addMessage(tinyCache.msgBallon);
             } else {
               tinyCache.msgBallon.find('.ai-msg-ballon').empty().append(makeMsgRenderer(msgData));
+              const tinyErrorAlert = tinyCache.msgBallon.data('tiny-ai-error-alert');
+              if (tinyErrorAlert) tinyErrorAlert.updateText(finishReason);
               scrollChatContainerToTop();
             }
           };
@@ -2170,26 +2170,32 @@ const AiScriptStart = () => {
       };
 
       const makeMsgWarning = (finishReason) => {
-        const tinyError = tinyAi.getErrorCode(finishReason);
-        if (tinyError && typeof tinyError.text === 'string' && !tinyError.hide)
-          return $('<div>')
-            .addClass('mt-2 mb-0 alert alert-danger alert-dismissible fade show')
-            .attr('role', 'alert')
-            .text(tinyError.text)
-            .prepend($('<i>').addClass('fas fa-exclamation-triangle me-2'))
-            .append(
-              $('<button>').addClass('btn-close').attr({
-                type: 'button',
-                'data-bs-dismiss': 'alert',
-              }),
-            );
-        return null;
+        const textBase = $('<span>');
+        const result = $('<div>')
+          .addClass(`mt-2 mb-0 alert alert-danger alert-dismissible fade show d-none`)
+          .attr('role', 'alert')
+          .append(textBase)
+          .prepend($('<i>').addClass('fas fa-exclamation-triangle me-2'))
+          .append(
+            $('<button>').addClass('btn-close').attr({
+              type: 'button',
+              'data-bs-dismiss': 'alert',
+            }),
+          );
+
+        const updateText = (errorCode) => {
+          const tinyError = tinyAi.getErrorCode(errorCode);
+          if (tinyError && typeof tinyError.text === 'string' && !tinyError.hide) {
+            textBase.text(tinyError.text);
+            result.removeClass('d-none');
+          }
+        };
+
+        updateText(finishReason);
+        return { textBase, result, updateText };
       };
 
-      const makeMessage = (
-        data = { message: null, finishReason: null, id: -1 },
-        username = null,
-      ) => {
+      const makeMessage = (data = { message: null, id: -1 }, username = null) => {
         // Prepare renderer
         const tinyCache = {
           msg: data.message,
@@ -2235,13 +2241,15 @@ const AiScriptStart = () => {
                   const closeReplace = () => {
                     msgBallon.removeClass('w-100').empty();
                     msgBallon.append(makeMsgRenderer(tinyCache.msg));
+                    const msg = tinyAi.getMsgById();
+                    tinyErrorAlert.updateText(msg ? msg.finishReason : null);
                   };
 
                   submitButton.on('click', () => {
                     tinyCache.msg = textInput.val();
                     const newMsg = tinyCache.msg;
                     if (typeof oldMsg !== 'string' || oldMsg !== newMsg) {
-                      const newContent = tinyAi.getIndex(tinyIndex);
+                      const newContent = tinyAi.getMsgByIndex(tinyIndex);
                       newContent.parts[0].text = tinyCache.msg;
                       tinyAi.replaceIndex(tinyIndex, newContent, { count: null });
                       closeReplace();
@@ -2282,16 +2290,22 @@ const AiScriptStart = () => {
             }),
         );
 
+        const msg = tinyAi.getMsgById(data.id);
+        const tinyErrorAlert = makeMsgWarning(msg ? msg.finishReason : null);
+
         // Send message
-        return msgBase.append(
+        const msgContent = msgBase.append(
           editPanel,
           msgBallon.append(makeMsgRenderer(tinyCache.msg)),
           $('<div>', {
             class: `text-muted small mt-1${typeof username !== 'string' ? ' text-end' : ''}`,
             text: typeof username === 'string' ? username : 'User',
           }),
-          makeMsgWarning(data.finishReason),
+          tinyErrorAlert.result,
         );
+
+        msgContent.data('tiny-ai-error-alert', tinyErrorAlert);
+        return msgContent;
       };
 
       // Container
