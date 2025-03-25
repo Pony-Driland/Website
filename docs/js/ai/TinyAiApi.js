@@ -23,6 +23,9 @@
  * You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
+// import objHash from 'object-hash';
+// import EventEmitter from 'events';
+
 class TinyAiApi extends EventEmitter {
   #_apiKey;
   #_getModels;
@@ -662,9 +665,18 @@ class TinyAiApi extends EventEmitter {
     const history = this.getData(id);
     if (history) {
       let result = 0;
-      for (const msgIndex in history.tokens) {
-        if (typeof history.tokens.count === 'number') result += history.tokens[msgIndex].count;
+      for (const msgIndex in history.tokens.data) {
+        if (typeof history.tokens.data[msgIndex].count === 'number')
+          result += history.tokens.data[msgIndex].count;
       }
+
+      const promptInfo = this.getTokens('prompt', id);
+      const fileDataInfo = this.getTokens('file', id);
+      const systemInstructionInfo = this.getTokens('systemInstruction', id);
+      if (typeof promptInfo === 'number') result += promptInfo;
+      if (typeof fileDataInfo === 'number') result += fileDataInfo;
+      if (typeof systemInstructionInfo === 'number') result += systemInstructionInfo;
+
       return result;
     }
     return null;
@@ -684,7 +696,7 @@ class TinyAiApi extends EventEmitter {
     const history = this.getData(id);
     if (history) {
       const existsIndex = this.indexExists(msgIndex, id);
-      if (existsIndex) return history.tokens[msgIndex];
+      if (existsIndex) return history.tokens.data[msgIndex];
     }
     return null;
   }
@@ -703,7 +715,39 @@ class TinyAiApi extends EventEmitter {
     const history = this.getData(id);
     if (history) {
       const msgIndex = this.getIndexOfId(msgId);
-      if (msgIndex > -1) return history.tokens[msgIndex];
+      if (msgIndex > -1) return history.tokens.data[msgIndex];
+    }
+    return null;
+  }
+
+  /**
+   * Retrieves the hash of a message at a specified index in the selected session history.
+   *
+   * @param {number} msgIndex - The index of the message whose hash is being retrieved.
+   * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
+   * @returns {string|null} The hash value of the message at the specified index, or null if the index is invalid or does not exist.
+   */
+  getMsgHashByIndex(msgIndex, id) {
+    const history = this.getData(id);
+    if (history) {
+      const existsIndex = this.indexExists(msgIndex, id);
+      if (existsIndex) return history.hash.data[msgIndex];
+    }
+    return null;
+  }
+
+  /**
+   * Retrieves the hash of a message based on its ID from the selected session history.
+   *
+   * @param {string} msgId - The ID of the message whose hash is being retrieved.
+   * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
+   * @returns {string|null} The hash value of the message with the specified ID, or null if the message ID is invalid or does not exist.
+   */
+  getMsgHashById(msgId, id) {
+    const history = this.getData(id);
+    if (history) {
+      const msgIndex = this.getIndexOfId(msgId);
+      if (msgIndex > -1) return history.hash.data[msgIndex];
     }
     return null;
   }
@@ -773,7 +817,8 @@ class TinyAiApi extends EventEmitter {
     if (history && history.data[index]) {
       history.data.splice(index, 1);
       history.ids.splice(index, 1);
-      history.tokens.splice(index, 1);
+      history.hash.data.splice(index, 1);
+      history.tokens.data.splice(index, 1);
       this.emit('deleteIndex', index, id);
       return true;
     }
@@ -792,9 +837,15 @@ class TinyAiApi extends EventEmitter {
   replaceIndex(index, data, tokens, id) {
     const history = this.getData(id);
     if (history && history.data[index] && (data || tokens)) {
-      if (data) history.data[index] = data;
-      if (tokens) history.tokens[index] = tokens;
-      this.emit('replaceIndex', index, data, tokens, id);
+      let hash = null;
+      if (data) {
+        hash = objHash(data);
+        history.data[index] = data;
+        history.hash.data[index] = hash;
+      }
+
+      if (tokens) history.tokens.data[index] = tokens;
+      this.emit('replaceIndex', index, data, tokens, hash, id);
       return true;
     }
     return false;
@@ -867,10 +918,14 @@ class TinyAiApi extends EventEmitter {
     if (this.history[selectedId]) {
       const newId = this.#_historyIds;
       this.#_historyIds++;
+      const hash = objHash(data);
+
       this.history[selectedId].data.push(data);
-      this.history[selectedId].tokens.push(tokenData);
+      this.history[selectedId].tokens.data.push(tokenData);
       this.history[selectedId].ids.push(newId);
-      this.emit('addData', newId, data, selectedId);
+      this.history[selectedId].hash.data.push(hash);
+
+      this.emit('addData', newId, data, tokenData, hash, selectedId);
       return newId;
     }
     throw new Error('Invalid history id data!');
@@ -880,14 +935,22 @@ class TinyAiApi extends EventEmitter {
    * Sets a prompt for the selected session history.
    *
    * @param {string} promptData - The prompt to be set for the session.
+   * @param {number} [tokenAmount] - The number of tokens associated with the prompt (optional).
    * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
    * @throws {Error} If the provided session ID is invalid or the prompt data is not a string.
    */
-  setPrompt(promptData, id) {
+  setPrompt(promptData, tokenAmount, id) {
     const selectedId = this.getId(id);
-    if (this.history[selectedId] && typeof promptData === 'string') {
-      this.history[selectedId].prompt = promptData;
-      this.emit('setPrompt', promptData, selectedId);
+    if (this.history[selectedId]) {
+      let hash;
+      if (typeof promptData === 'string') {
+        hash = objHash(promptData);
+        this.history[selectedId].prompt = promptData;
+        this.history[selectedId].hash.prompt = hash;
+      }
+
+      if (typeof tokenAmount === 'number') this.history[selectedId].tokens.prompt = tokenAmount;
+      this.emit('setPrompt', promptData, hash, selectedId);
       return;
     }
     throw new Error('Invalid history id data!');
@@ -915,15 +978,24 @@ class TinyAiApi extends EventEmitter {
    * Sets the first dialogue for the selected session history.
    *
    * @param {string} dialogue - The dialogue to set as the first dialogue.
+   * @param {number} [tokenAmount] - The number of tokens associated with the dialogue (optional).
    * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
-   * @throws {Error} Throws an error if the history ID is invalid or the dialogue is not a string.
+   * @throws {Error} Throws an error if the session ID is invalid or the dialogue is not a string.
    * @returns {void}
    */
-  setFirstDialogue(dialogue, id) {
+  setFirstDialogue(dialogue, tokenAmount, id) {
     const selectedId = this.getId(id);
-    if (this.history[selectedId] && typeof dialogue === 'string') {
-      this.history[selectedId].firstDialogue = dialogue;
-      this.emit('setFirstDialogue', dialogue, selectedId);
+    if (this.history[selectedId]) {
+      let hash;
+      if (typeof dialogue === 'string') {
+        hash = objHash(dialogue);
+        this.history[selectedId].firstDialogue = dialogue;
+        this.history[selectedId].hash.firstDialogue = hash;
+      }
+
+      if (typeof tokenAmount === 'number')
+        this.history[selectedId].tokens.firstDialogue = tokenAmount;
+      this.emit('setFirstDialogue', dialogue, hash, selectedId);
       return;
     }
     throw new Error('Invalid history id data!');
@@ -953,18 +1025,26 @@ class TinyAiApi extends EventEmitter {
    * @param {string} mime - The MIME type of the file (e.g., 'text/plain', 'application/pdf').
    * @param {string} data - The file content, either as a string or base64-encoded.
    * @param {boolean} [isBase64=false] - A flag indicating whether the `data` is already base64-encoded. Defaults to false.
+   * @param {number} [tokenAmount] - The token count associated with the file data (optional).
    * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
-   * @throws {Error} If the session history ID or data is invalid.
-   * @returns {void} This function does not return a value.
+   * @throws {Error} If the session ID is invalid or data/mime is not a string.
+   * @returns {void}
    */
-  setFileData(mime, data, isBase64 = false, id) {
+  setFileData(mime, data, isBase64 = false, tokenAmount = undefined, id = undefined) {
     const selectedId = this.getId(id);
-    if (this.history[selectedId] && typeof data === 'string' && typeof mime === 'string') {
-      this.history[selectedId].file = {
-        mime,
-        data: !isBase64 ? Base64.encode(data) : data,
-      };
-      this.emit('setFileData', this.history[selectedId].file, selectedId);
+    if (this.history[selectedId]) {
+      let hash;
+      if (typeof data === 'string' && typeof mime === 'string') {
+        this.history[selectedId].file = {
+          mime,
+          data: !isBase64 ? Base64.encode(data) : data,
+        };
+        hash = objHash(this.history[selectedId].file);
+        this.history[selectedId].hash.file = hash;
+      }
+
+      if (typeof tokenAmount === 'number') this.history[selectedId].tokens.file = tokenAmount;
+      this.emit('setFileData', this.history[selectedId].file, hash, selectedId);
       return;
     }
     throw new Error('Invalid history id data!');
@@ -994,15 +1074,24 @@ class TinyAiApi extends EventEmitter {
    * Sets a system instruction for the selected session history.
    *
    * @param {string} data - The system instruction to set.
+   * @param {number} [tokenAmount] - The token count associated with the system instruction (optional).
    * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
-   * @returns {void} This method does not return a value.
-   * @throws {Error} If the session history is invalid or the provided data is not a string.
+   * @throws {Error} If the session history ID is invalid or the provided data is not a string.
+   * @returns {void}
    */
-  setSystemInstruction(data, id) {
+  setSystemInstruction(data, tokenAmount, id) {
     const selectedId = this.getId(id);
-    if (this.history[selectedId] && typeof data === 'string') {
-      this.history[selectedId].systemInstruction = data;
-      this.emit('setSystemInstruction', data, selectedId);
+    if (this.history[selectedId]) {
+      let hash;
+      if (typeof data === 'string') {
+        hash = objHash(data);
+        this.history[selectedId].systemInstruction = data;
+        this.history[selectedId].hash.systemInstruction = hash;
+      }
+
+      if (typeof tokenAmount === 'number')
+        this.history[selectedId].tokens.systemInstruction = tokenAmount;
+      this.emit('setSystemInstruction', data, hash, selectedId);
       return;
     }
     throw new Error('Invalid history id data!');
@@ -1026,6 +1115,34 @@ class TinyAiApi extends EventEmitter {
   }
 
   /**
+   * Retrieves the token count for a specific category within the selected session history.
+   *
+   * @param {string} where - The category from which to retrieve the token count (e.g., 'prompt', 'file', 'systemInstruction').
+   * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
+   * @returns {number|null} The token count if available, otherwise null.
+   */
+  getTokens(where, id) {
+    const selectedId = this.getId(id);
+    if (this.history[selectedId] && typeof this.history[selectedId].tokens[where] === 'number')
+      return this.history[selectedId].tokens[where];
+    return null;
+  }
+
+  /**
+   * Retrieves the hash value for a specific item in the selected session history.
+   *
+   * @param {string} where - The key representing the item whose hash value is being retrieved (e.g., 'prompt', 'file', 'systemInstruction').
+   * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
+   * @returns {string|null} The hash value of the specified item, or null if the item does not exist.
+   */
+  getHash(where, id) {
+    const selectedId = this.getId(id);
+    if (this.history[selectedId] && typeof this.history[selectedId].hash[where] === 'string')
+      return this.history[selectedId].hash[where];
+    return null;
+  }
+
+  /**
    * Starts a new data session with the given session ID.
    *
    * @param {string} id - The session ID for the new data session.
@@ -1036,7 +1153,8 @@ class TinyAiApi extends EventEmitter {
     this.history[id] = {
       data: [],
       ids: [],
-      tokens: [],
+      tokens: { data: [] },
+      hash: { data: [] },
       systemInstruction: null,
       model: null,
     };
