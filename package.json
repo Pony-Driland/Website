@@ -25,7 +25,7 @@
         "clone": "^2.1.2",
         "events": "^3.3.0",
         "exifreader": "^4.26.0",
-        "express": "^4.20.0",
+        "express": "^4.21.2",
         "file-saver": "^2.0.5",
         "gasparesganga-jquery-loading-overlay": "^2.1.7",
         "glob": "^11.0.1",
