@@ -1168,6 +1168,11 @@ body-parser@1.20.3:
     type-is "~1.6.18"
     unpipe "1.0.0"
 
+bootstrap@^5.3.3:
+  version "5.3.3"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.3.3.tgz#de35e1a765c897ac940021900fcbb831602bac38"
+  integrity sha512-8HLCdWgyoMguSO9o+aH+iuZ+aht+mzW0u3HIMzVu7Srrpv7EBBxTnrFlSCskwdY1+EOFQSm7uMJhNQHkdPcmjg==
+
 brace-expansion@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-2.0.1.tgz#1edc459e0f0c548486ecf9fc99f2221364b9a0ae"
@@ -1384,7 +1389,7 @@ cliui@^6.0.0:
     strip-ansi "^6.0.0"
     wrap-ansi "^6.2.0"
 
-clone@^2.0.0, clone@^2.1.1:
+clone@^2.0.0, clone@^2.1.1, clone@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
   integrity sha512-3Pe/CF1Nn94hyhIYpjtiLhdCoEoz0DqQ+988E9gmeEdQZlojxnOb74wctFyuwWQHzqyf9X7C7MG8juUpqBJT8w==
@@ -2101,6 +2106,11 @@ fetch-blob@^3.1.2, fetch-blob@^3.1.4:
     node-domexception "^1.0.0"
     web-streams-polyfill "^3.0.3"
 
+file-saver@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/file-saver/-/file-saver-2.0.5.tgz#d61cfe2ce059f414d899e9dd6d4107ee25670c38"
+  integrity sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==
+
 finalhandler@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-1.2.0.tgz#7d23fe5731b207b4640e4fcd00aec1f9207a7b32"
@@ -2177,6 +2187,13 @@ functional-red-black-tree@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
   integrity sha512-dsKNQNdj6xA3T+QlADDA7mOSlX0qiMINjn0cgr+eGHGsbSHzTabcIogz2+p/iqP1Xs6EP/sS2SbqH+brGTbq0g==
+
+gasparesganga-jquery-loading-overlay@^2.1.7:
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/gasparesganga-jquery-loading-overlay/-/gasparesganga-jquery-loading-overlay-2.1.7.tgz#d6935b6fe22f6c3074dfce194d794ff0d2e8c02b"
+  integrity sha512-QItSCC330EPsUwdvzDO50SwQksmaMSf+loDYHiEpyc1tptXkeGXtFp36igNsT1cPTXRXlYxCW8wtK63K88SIdA==
+  dependencies:
+    jquery ">=1.7.0"
 
 gensync@^1.0.0-beta.2:
   version "1.0.0-beta.2"
@@ -2480,10 +2497,20 @@ jackspeak@^4.0.1:
   dependencies:
     "@isaacs/cliui" "^8.0.2"
 
+jquery@>=1.7.0, jquery@^3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.7.1.tgz#083ef98927c9a6a74d05a6af02806566d16274de"
+  integrity sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==
+
 js-base64@^3.7.7:
   version "3.7.7"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-3.7.7.tgz#e51b84bf78fbf5702b9541e2cb7bfcb893b43e79"
   integrity sha512-7rCnleh0z2CkXhH67J8K1Ytz0b2Y+yxTPL+/KOJoa20hfnVQ/3/T6W/KflYI4bRHRagNeXeU2bkNGI3v1oS/lw==
+
+js-loading-overlay@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/js-loading-overlay/-/js-loading-overlay-1.2.0.tgz#9dfa8e815969fa67049af798cb9b65afc7d33549"
+  integrity sha512-1No+SmLxzclgGr1wvJbfp1cCnEF+GsWJUJHv8URu/9YJW/BnNdWrYFYIw/gKXDJWFr/ZdR+9gnbJbND+vn+z4Q==
 
 js-sha3@0.8.0:
   version "0.8.0"
@@ -2699,10 +2726,10 @@ ltgt@~2.2.0:
   resolved "https://registry.yarnpkg.com/ltgt/-/ltgt-2.2.1.tgz#f35ca91c493f7b73da0e07495304f17b31f87ee5"
   integrity sha512-AI2r85+4MquTw9ZYqabu4nMwy9Oftlfa/e/52t9IjtfG+mGBbTNdAoZ3RQKLHR6r0wQnwZnPIEh/Ya6XTWAKNA==
 
-marked@^15.0.6:
-  version "15.0.6"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-15.0.6.tgz#8165f16afb6f4b30a35bdcee657c3b8415820a8f"
-  integrity sha512-Y07CUOE+HQXbVDCGl3LXggqJDbXDP2pArc2C1N1RRMN0ONiShoSsIInMd5Gsxupe7fKLpgimTV+HOJ9r7bA+pg==
+marked@^15.0.7:
+  version "15.0.7"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-15.0.7.tgz#f67d7e34d202ce087e6b879107b5efb04e743314"
+  integrity sha512-dgLIeKGLx5FwziAnsk4ONoGwHwGPJzselimvlVskE9XLN4Orv9u2VA3GWw/lYUqjfA0rUT/6fqKwfZJapP9BEg==
 
 math-intrinsics@^1.1.0:
   version "1.1.0"
@@ -2813,6 +2840,11 @@ minipass@^7.1.2:
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/minipass/-/minipass-7.1.2.tgz#93a9626ce5e5e66bd4db86849e7515e92340a707"
   integrity sha512-qOOzS1cBTWYF4BH8fVePDBOO9iptMnGUEZwNc/cMWnTV2nVLZ7VoNWEPHkYczZA0pdoA7dl6e7FL659nX9S2aw==
+
+moment@^2.30.1:
+  version "2.30.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.30.1.tgz#f8c91c07b7a786e30c59926df530b4eac96974ae"
+  integrity sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==
 
 ms@2.0.0:
   version "2.0.0"
@@ -3007,6 +3039,11 @@ performance-now@^2.1.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==
 
+photoswipe@^5.4.4:
+  version "5.4.4"
+  resolved "https://registry.yarnpkg.com/photoswipe/-/photoswipe-5.4.4.tgz#e045dc036453493188d5c8665b0e8f1000ac4d6e"
+  integrity sha512-WNFHoKrkZNnvFFhbHL93WDkW3ifwVOXSW3w1UuZZelSmgXpIGiZSNlZJq37rR8YejqME2rHs9EhH9ZvlvFH2NA==
+
 picocolors@^1.0.0, picocolors@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.0.1.tgz#a8ad579b571952f0e5d25892de5445bcfe25aaa1"
@@ -3021,6 +3058,11 @@ pify@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-5.0.0.tgz#1f5eca3f5e87ebec28cc6d54a0e4aaf00acc127f"
   integrity sha512-eW/gHNMlxdSP6dmG6uJip6FXN0EQBwm2clYYd8Wul42Cwu/DK8HEftzsapcNdYe2MfLiIwZqsDk2RDEsTE79hA==
+
+pizzicato@^0.6.4:
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/pizzicato/-/pizzicato-0.6.4.tgz#a386ec79e4e615cf8e7e125959a3cb7d1da9e607"
+  integrity sha512-1Y4UGnhdBvCoeRTt4Cor/zPRsH/pEAGsBESy0zeR8mH2i2piJRQLEEctkzUJGo6h64GiepZy+LFaJ/a3riR+WA==
 
 pngjs@^3.3.0:
   version "3.4.0"

@@ -264,11 +264,7 @@ const AiScriptStart = () => {
 
       // To Number
       const convertToNumber = (val) =>
-        typeof val === 'string' && val.length > 0
-          ? Number(val)
-          : typeof val === 'number'
-            ? val
-            : 0;
+        typeof val === 'string' && val.length > 0 ? Number(val) : typeof val === 'number' ? val : 0;
 
       // Token Count
       const tokenCount = {
