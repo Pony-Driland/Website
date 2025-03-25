@@ -268,7 +268,7 @@ const AiScriptStart = () => {
           ? Number(val)
           : typeof val === 'number'
             ? val
-            : null;
+            : 0;
 
       // Token Count
       const tokenCount = {
