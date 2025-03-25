@@ -467,91 +467,94 @@ const AiScriptStart = () => {
         hashItems,
         newContent,
         forceReset = false,
-      ) => {
-        isFirstTime = false;
-        // Reset token count
-        tokenCount.updateValue('amount', 0);
-        newContent()
-          .then((ficData) => {
-            // Start chatbot script
-            if (forceReset || !tinyAi.selectDataId(id)) {
-              // Start History
-              tinyAi.startDataId(id, true);
-              tinyAi.setModel(modelSelector.val());
+      ) =>
+        new Promise((resolve, reject) => {
+          isFirstTime = false;
+          // Reset token count
+          tokenCount.updateValue('amount', 0);
+          newContent()
+            .then((ficData) => {
+              // Start chatbot script
+              if (forceReset || !tinyAi.selectDataId(id)) {
+                // Start History
+                tinyAi.startDataId(id, true);
+                tinyAi.setModel(modelSelector.val());
 
-              // Set Instruction
-              tinyAi.setSystemInstruction(aiTemplates.instructions[instructionId], 0);
+                // Set Instruction
+                tinyAi.setSystemInstruction(aiTemplates.instructions[instructionId], 0);
 
-              // Set Prompts
-              try {
-                if (typeof prompts === 'string') tinyAi.setPrompt(prompts, 0);
-                if (Array.isArray(prompts)) tinyAi.setPrompt(prompts.join('\n'), 0);
-              } catch {
-                tinyAi.setPrompt('', 0);
+                // Set Prompts
+                try {
+                  if (typeof prompts === 'string') tinyAi.setPrompt(prompts, 0);
+                  if (Array.isArray(prompts)) tinyAi.setPrompt(prompts.join('\n'), 0);
+                } catch {
+                  tinyAi.setPrompt('', 0);
+                }
               }
-            }
 
-            // Exists data
-            else {
-              // Get first history data
-              const tinyData = tinyAi.getFirstIndexData();
-              // Delete old file version
-              if (tinyData && tinyData.parts && tinyData.parts[0] && tinyData.parts[0].inlineData)
-                tinyAi.deleteIndex(0);
-            }
+              // Exists data
+              else {
+                // Get first history data
+                const tinyData = tinyAi.getFirstIndexData();
+                // Delete old file version
+                if (tinyData && tinyData.parts && tinyData.parts[0] && tinyData.parts[0].inlineData)
+                  tinyAi.deleteIndex(0);
+              }
 
-            // Add file data
-            const fileTokens = tinyAi.getTokens('file');
-            const oldFileHash = tinyAi.getHash('file');
-            tinyAi.setFileData(ficData.mime, ficData.data);
-            const newFileHash = tinyAi.getHash('file');
-            if (oldFileHash === newFileHash) tinyAi.setFileData(null, null, null, fileTokens || 0);
+              // Add file data
+              const fileTokens = tinyAi.getTokens('file');
+              const oldFileHash = tinyAi.getHash('file');
+              tinyAi.setFileData(ficData.mime, ficData.data);
+              const newFileHash = tinyAi.getHash('file');
+              if (oldFileHash === newFileHash)
+                tinyAi.setFileData(null, null, null, fileTokens || 0);
 
-            // Clear data
-            clearMessages();
-            enableReadOnly(false);
-            enableMessageButtons(true);
-            addMessage(makeMessage({ message: introduction }, 'Introduction'));
+              // Clear data
+              clearMessages();
+              enableReadOnly(false);
+              enableMessageButtons(true);
+              addMessage(makeMessage({ message: introduction }, 'Introduction'));
 
-            const history = tinyAi.getData();
+              const history = tinyAi.getData();
 
-            // Insert first message
-            if (history.data.length < 1 && typeof history.firstDialogue === 'string') {
-              history.data.push(
-                tinyAi.buildContents(
-                  null,
-                  {
-                    role: 'model',
-                    parts: [{ text: history.firstDialogue }],
-                  },
-                  'model',
-                ),
+              // Insert first message
+              if (history.data.length < 1 && typeof history.firstDialogue === 'string') {
+                history.data.push(
+                  tinyAi.buildContents(
+                    null,
+                    {
+                      role: 'model',
+                      parts: [{ text: history.firstDialogue }],
+                    },
+                    'model',
+                  ),
+                );
+              }
+
+              // Start system
+              insertImportData(
+                history.data,
+                history.tokens && Array.isArray(history.tokens.data) ? history.tokens.data : [],
+                true,
               );
-            }
+              disablePromptButtons(false);
+              updateAiTokenCounterData(hashItems, forceReset);
 
-            // Start system
-            insertImportData(
-              history.data,
-              history.tokens && Array.isArray(history.tokens.data) ? history.tokens.data : [],
-              true,
-            );
-            disablePromptButtons(false);
-            updateAiTokenCounterData(hashItems, forceReset);
-
-            // Update button list
-            for (const index in ficConfigs.buttons) {
-              // Nope
-              if (ficConfigs.data[index].id !== ficConfigs.selected)
-                ficConfigs.buttons[index].removeClass('selected');
-              else ficConfigs.buttons[index].addClass('selected');
-            }
-          })
-          .catch((err) => {
-            console.error(err);
-            alert(err.message);
-            $.LoadingOverlay('hide');
-          });
-      };
+              // Update button list
+              for (const index in ficConfigs.buttons) {
+                // Nope
+                if (ficConfigs.data[index].id !== ficConfigs.selected)
+                  ficConfigs.buttons[index].removeClass('selected');
+                else ficConfigs.buttons[index].addClass('selected');
+              }
+              resolve();
+            })
+            .catch((err) => {
+              alert(err.message);
+              $.LoadingOverlay('hide');
+              reject(err);
+            });
+        });
 
       // Import button
       const importButton = $('<input>', {
@@ -775,7 +778,7 @@ const AiScriptStart = () => {
                 return ficConfigs.data[index].getData();
               },
               true,
-            );
+            ).then(() => resetSettingsButton.trigger('click'));
           }
         }),
       ];
@@ -1475,6 +1478,18 @@ const AiScriptStart = () => {
         !tinyAi._nextModelsPageToken,
       );
 
+      const resetSettingsButton = createButtonSidebar(
+        'fa-solid fa-rotate-right',
+        'Reset default settings',
+        () => {
+          const model = tinyAi.getModelData(modelSelector.val());
+          if (model) {
+            temperature.val(1);
+            insertDefaultSettings(model, modelSelector.val());
+          }
+        },
+      );
+
       const sidebarRight = $('<div>', sidebarStyle).append(
         $('<ul>', { class: 'list-unstyled' }).append(
           $('<h5>').text('Run Settings'),
@@ -1493,13 +1508,7 @@ const AiScriptStart = () => {
           loadMoreModels,
 
           // Reset Settings
-          createButtonSidebar('fa-solid fa-rotate-right', 'Reset default settings', () => {
-            const model = tinyAi.getModelData(modelSelector.val());
-            if (model) {
-              temperature.val(1);
-              insertDefaultSettings(model, modelSelector.val());
-            }
-          }),
+          resetSettingsButton,
         ),
       );
 
