@@ -464,12 +464,12 @@ const AiScriptStart = () => {
         instructionId,
         prompts,
         introduction,
+        hashItems,
         newContent,
         forceReset = false,
       ) => {
         isFirstTime = false;
         // Reset token count
-        const oldTokenCount = tokenCount.getValue('amount');
         tokenCount.updateValue('amount', 0);
         newContent()
           .then((ficData) => {
@@ -480,30 +480,32 @@ const AiScriptStart = () => {
               tinyAi.setModel(modelSelector.val());
 
               // Set Instruction
-              tinyAi.setSystemInstruction(aiTemplates.instructions[instructionId]);
+              tinyAi.setSystemInstruction(aiTemplates.instructions[instructionId], 0);
 
               // Set Prompts
               try {
-                if (typeof prompts === 'string') tinyAi.setPrompt(prompts);
-                if (Array.isArray(prompts)) tinyAi.setPrompt(prompts.join('\n'));
+                if (typeof prompts === 'string') tinyAi.setPrompt(prompts, 0);
+                if (Array.isArray(prompts)) tinyAi.setPrompt(prompts.join('\n'), 0);
               } catch {
-                tinyAi.setPrompt('');
+                tinyAi.setPrompt('', 0);
               }
-
-              // Add file data
-              tinyAi.setFileData(ficData.mime, ficData.data);
             }
 
             // Exists data
             else {
               // Get first history data
               const tinyData = tinyAi.getFirstIndexData();
-              tinyAi.setFileData(ficData.mime, ficData.data);
-
               // Delete old file version
               if (tinyData && tinyData.parts && tinyData.parts[0] && tinyData.parts[0].inlineData)
                 tinyAi.deleteIndex(0);
             }
+
+            // Add file data
+            const fileTokens = tinyAi.getTokens('file');
+            const oldFileHash = tinyAi.getHash('file');
+            tinyAi.setFileData(ficData.mime, ficData.data);
+            const newFileHash = tinyAi.getHash('file');
+            if (oldFileHash === newFileHash) tinyAi.setFileData(null, null, null, fileTokens || 0);
 
             // Clear data
             clearMessages();
@@ -529,11 +531,11 @@ const AiScriptStart = () => {
             // Start system
             insertImportData(
               history.data,
-              Array.isArray(history.tokens) ? history.tokens : [],
+              history.tokens && Array.isArray(history.tokens.data) ? history.tokens.data : [],
               true,
             );
             disablePromptButtons(false);
-            updateAiTokenCounterData(oldTokenCount);
+            updateAiTokenCounterData(hashItems);
 
             // Update button list
             for (const index in ficConfigs.buttons) {
@@ -628,15 +630,38 @@ const AiScriptStart = () => {
 
                 // Set Instruction
                 if (canSandBox(jsonData.id))
-                  tinyAi.setSystemInstruction(jsonData.file.systemInstruction);
+                  tinyAi.setSystemInstruction(
+                    jsonData.file.systemInstruction,
+                    jsonData.file.tokens ? jsonData.file.tokens.systemInstruction : 0,
+                  );
                 else if (aiTemplates.instructions[instructionId])
-                  tinyAi.setSystemInstruction(aiTemplates.instructions[instructionId]);
+                  tinyAi.setSystemInstruction(
+                    aiTemplates.instructions[instructionId],
+                    jsonData.file.tokens ? jsonData.file.tokens.systemInstruction : 0,
+                  );
 
+                // Prompt
                 if (typeof jsonData.file.prompt === 'string')
-                  tinyAi.setPrompt(jsonData.file.prompt);
+                  tinyAi.setPrompt(
+                    jsonData.file.prompt,
+                    jsonData.file.tokens ? jsonData.file.tokens.prompt : 0,
+                  );
 
+                // First Dialogue
                 if (typeof jsonData.file.firstDialogue === 'string')
-                  tinyAi.setFirstDialogue(jsonData.file.firstDialogue);
+                  tinyAi.setFirstDialogue(
+                    jsonData.file.firstDialogue,
+                    jsonData.file.tokens ? jsonData.file.tokens.firstDialogue : 0,
+                  );
+
+                // File
+                if (jsonData.file.tokens && typeof jsonData.file.tokens.file === 'number')
+                  tinyAi.setFileData(
+                    null,
+                    null,
+                    null,
+                    jsonData.file.tokens ? jsonData.file.tokens.file : 0,
+                  );
 
                 // Clear messages
                 clearMessages();
@@ -662,8 +687,14 @@ const AiScriptStart = () => {
                 // Complete
                 insertImportData(
                   jsonData.file.data,
-                  Array.isArray(jsonData.file.tokens) ? jsonData.file.tokens : [],
+                  jsonData.file.tokens && Array.isArray(jsonData.file.tokens.data)
+                    ? jsonData.file.tokens.data
+                    : [],
                 );
+
+                if (jsonData.file.hash)
+                  jsonData.file.hash.model =
+                    typeof jsonData.file.model === 'string' ? objHash(jsonData.file.model) : null;
 
                 if (index > -1)
                   getFicCache(
@@ -671,6 +702,7 @@ const AiScriptStart = () => {
                     instructionId,
                     ficConfigs.data[index].prompt,
                     ficConfigs.data[index].intro,
+                    jsonData.file.hash,
                     () => {
                       ficConfigs.selected = ficConfigs.data[index].id;
                       return ficConfigs.data[index].getData();
@@ -736,6 +768,7 @@ const AiScriptStart = () => {
               ficConfigs.data[index].template,
               ficConfigs.data[index].prompt,
               ficConfigs.data[index].intro,
+              null,
               () => {
                 ficConfigs.selected = ficConfigs.data[index].id;
                 return ficConfigs.data[index].getData();
@@ -756,6 +789,7 @@ const AiScriptStart = () => {
               ficConfigs.data[index].template,
               ficConfigs.data[index].prompt,
               ficConfigs.data[index].intro,
+              null,
               () => {
                 ficConfigs.selected = ficConfigs.data[index].id;
                 return ficConfigs.data[index].getData();
@@ -785,7 +819,7 @@ const AiScriptStart = () => {
             textarea: tinyAi.getSystemInstruction(),
             submitName: 'Set Instructions',
             submitCall: (value) => {
-              tinyAi.setSystemInstruction(value);
+              tinyAi.setSystemInstruction(value, 0);
               updateAiTokenCounterData();
             },
           };
@@ -814,7 +848,7 @@ const AiScriptStart = () => {
                 title: 'Select a prompt to be added',
               },
               submitCall: (value) => {
-                tinyAi.setPrompt(value);
+                tinyAi.setPrompt(value, 0);
                 updateAiTokenCounterData();
               },
             },
@@ -1460,19 +1494,30 @@ const AiScriptStart = () => {
       );
 
       // Execute messages
-      const prepareContentList = () => {
+      const prepareContentList = (addIndexList = false) => {
         // Prepare history
         const history = tinyAi.getData();
         const content = [];
+        const indexList = [];
+
+        let systemData = null;
+        let fileData = null;
+        let promptData = null;
+
         if (history) {
-          if (typeof history.systemInstruction === 'string' && history.systemInstruction.length > 0)
-            content.push({
+          if (
+            typeof history.systemInstruction === 'string' &&
+            history.systemInstruction.length > 0
+          ) {
+            systemData = {
               role: 'system',
               parts: [{ text: history.systemInstruction }],
-            });
+            };
+            content.push(systemData);
+          }
 
-          if (history.file)
-            content.push({
+          if (history.file) {
+            fileData = {
               role: 'user',
               parts: [
                 {
@@ -1482,95 +1527,174 @@ const AiScriptStart = () => {
                   },
                 },
               ],
-            });
+            };
+            content.push(fileData);
+          }
 
-          if (typeof history.prompt === 'string' && history.prompt.length > 0)
-            content.push({
+          if (typeof history.prompt === 'string' && history.prompt.length > 0) {
+            promptData = {
               role: 'user',
               parts: [{ text: history.prompt }],
-            });
+            };
+            content.push(promptData);
+          }
 
           for (const index in history.data) {
+            if (addIndexList) indexList.push(history.data[index]);
             content.push(history.data[index]);
           }
         }
 
-        return content;
+        return { content, indexList, systemData, promptData, fileData };
       };
 
-      const getAiTokens = () =>
-        new Promise((resolve, reject) => {
-          const content = prepareContentList();
-          if (content.length > 0) tinyAi.countTokens(content).then(resolve).catch(reject);
-          else resolve({});
+      const getAiTokens = (hashItems = { data: [] }) =>
+        new Promise(async (resolve, reject) => {
+          try {
+            const { content, indexList, systemData, promptData, fileData } =
+              prepareContentList(true);
+            if (content.length > 0) {
+              // Get tokens data
+              const updateTokenData = async (
+                name,
+                contentToCheck,
+                hash = null,
+                oldHash = null,
+                tinyTokens = { count: null },
+                callback,
+              ) => {
+                if (
+                  // Exist content to check tokens
+                  hash &&
+                  contentToCheck && // Model
+                  ((typeof hashItems.model === 'string' &&
+                    hashItems.model !== objHash(tinyAi.getModel())) ||
+                    // Hash
+                    (typeof oldHash === 'string' && oldHash !== hash) ||
+                    // Token Count
+                    typeof tinyTokens.count !== 'number' ||
+                    Number.isNaN(tinyTokens.count) ||
+                    !Number.isFinite(tinyTokens.count) ||
+                    tinyTokens.count < 1) &&
+                  // Callback
+                  typeof callback === 'function'
+                ) {
+                  console.log(`[tiny-ai] Executing token counter in "${name}".`);
+                  const newTokens = await tinyAi.countTokens(
+                    Array.isArray(contentToCheck) ? contentToCheck : [contentToCheck],
+                  );
+
+                  const newToken =
+                    newTokens && typeof newTokens.totalTokens === 'number'
+                      ? newTokens.totalTokens
+                      : null;
+                  if (typeof newToken === 'number') callback(newToken);
+                }
+              };
+
+              // Prompt
+              await updateTokenData(
+                'prompt',
+                promptData,
+                tinyAi.getHash('prompt'),
+                typeof hashItems.prompt === 'string' ? hashItems.prompt : null,
+                { count: tinyAi.getTokens('prompt') },
+                (newCount) => tinyAi.setPrompt(null, newCount),
+              );
+
+              // File
+              await updateTokenData(
+                'file',
+                fileData,
+                tinyAi.getHash('file'),
+                typeof hashItems.file === 'string' ? hashItems.file : null,
+                { count: tinyAi.getTokens('file') },
+                (newCount) => tinyAi.setFileData(null, null, false, newCount),
+              );
+
+              // System Instruction
+              const systemCheck = clone(systemData);
+              systemCheck.role = 'user';
+              await updateTokenData(
+                'systemInstruction',
+                systemCheck,
+                tinyAi.getHash('systemInstruction'),
+                typeof hashItems.systemInstruction === 'string'
+                  ? hashItems.systemInstruction
+                  : null,
+                { count: tinyAi.getTokens('systemInstruction') },
+                (newCount) => tinyAi.setSystemInstruction(null, newCount),
+              );
+
+              // Read messages
+              for (const index in indexList) {
+                await updateTokenData(
+                  'message',
+                  indexList[index],
+                  tinyAi.getMsgHashByIndex(index),
+                  typeof hashItems.data[index] === 'string' ? hashItems.data[index] : null,
+                  tinyAi.getMsgTokensByIndex(index) || { count: null },
+                  (newCount) => tinyAi.replaceIndex(index, null, { count: newCount }),
+                );
+              }
+
+              resolve(tinyAi.getTotalTokens());
+            } else resolve(0);
+          } catch (err) {
+            reject(err);
+          }
         });
 
       // Get Ai Tokens
-      const updateAiTokenCounterData = (oldTokenCount = null) => {
+      const updateAiTokenCounterData = (hashItems) => {
         const history = tinyAi.getData();
         if (history) {
-          const contentsMd5 = objHash(
-            history
-              ? {
-                  data: history.data,
-                  systemInstruction: history.systemInstruction,
-                  propmt: history.prompt,
-                  file: history.file,
-                }
-              : {},
-          );
+          enableReadOnly(true);
+          modelChangerReadOnly();
+          disablePromptButtons(true);
+          enableModelReadOnly();
+          const oldMsgInput = msgInput.val();
 
-          if (!ficConfigs.contentsMd5 || ficConfigs.contentsMd5 !== contentsMd5) {
-            enableReadOnly(true);
-            modelChangerReadOnly();
-            disablePromptButtons(true);
-            enableModelReadOnly();
-            const oldMsgInput = msgInput.val();
+          let points = '.';
+          let secondsWaiting = -1;
+          const loadingMoment = () => {
+            points += '.';
+            if (points === '....') points = '.';
 
-            let points = '.';
-            let secondsWaiting = -1;
-            const loadingMoment = () => {
-              points += '.';
-              if (points === '....') points = '.';
+            secondsWaiting++;
+            msgInput.val(`(${secondsWaiting}s) Loading model data${points}`);
+          };
+          const loadingMessage = setInterval(loadingMoment, 1000);
+          loadingMoment();
 
-              secondsWaiting++;
-              msgInput.val(`(${secondsWaiting}s) Loading model data${points}`);
-            };
-            const loadingMessage = setInterval(loadingMoment, 1000);
-            loadingMoment();
+          const stopLoadingMessage = () => {
+            clearInterval(loadingMessage);
+            msgInput.val(oldMsgInput);
+            enableReadOnly(false);
+            modelChangerReadOnly(false);
+            disablePromptButtons(false);
+            enableModelReadOnly(false);
+            msgInput.focus();
+          };
 
-            const stopLoadingMessage = () => {
-              clearInterval(loadingMessage);
-              msgInput.val(oldMsgInput);
-              enableReadOnly(false);
-              modelChangerReadOnly(false);
-              disablePromptButtons(false);
-              enableModelReadOnly(false);
-              msgInput.focus();
-            };
-
-            getAiTokens()
-              .then((tokenData) => {
-                if (typeof tokenData.totalTokens === 'number')
-                  tokenCount.updateValue('amount', tokenData.totalTokens);
-                else tokenCount.updateValue('amount', 0);
-                stopLoadingMessage();
-                ficConfigs.contentsMd5 = contentsMd5;
-              })
-              .catch((err) => {
-                alert(err.message, 'Error get AI tokens');
-                console.error(err);
-                stopLoadingMessage();
-              });
-          } else if (typeof oldTokenCount === 'number')
-            tokenCount.updateValue('amount', oldTokenCount);
+          getAiTokens(hashItems || undefined)
+            .then((totalTokens) => {
+              if (typeof totalTokens === 'number') tokenCount.updateValue('amount', totalTokens);
+              else tokenCount.updateValue('amount', 0);
+              stopLoadingMessage();
+            })
+            .catch((err) => {
+              alert(err.message, 'Error get AI tokens');
+              console.error(err);
+              stopLoadingMessage();
+            });
         }
       };
 
       // Execute AI script
       const executeAi = (tinyCache = {}, sentIndex = null, tinyController = undefined) =>
         new Promise((resolve, reject) => {
-          const content = prepareContentList();
+          const { content } = prepareContentList();
 
           // Insert tokens
           const amountTokens = {
