@@ -147,14 +147,15 @@ const setGoogleAi = (tinyGoogleAI, GEMINI_API_KEY, MODEL_DATA = 'gemini-2.0-flas
     // Execute builder
     for (const index in data) {
       const item = data[index];
-
-      if (item.role !== 'system') {
-        if (!Array.isArray(requestBody.contents)) requestBody.contents = [];
-        tinyGoogleAI.buildContents(requestBody.contents, item, item.role, true);
-      } else {
-        if (!Array.isArray(requestBody.systemInstruction)) requestBody.systemInstruction = [];
-        tinyGoogleAI.buildContents(requestBody.systemInstruction, item, true);
-        requestBody.systemInstruction = requestBody.systemInstruction[0];
+      if (item) {
+        if (item.role !== 'system') {
+          if (!Array.isArray(requestBody.contents)) requestBody.contents = [];
+          tinyGoogleAI.buildContents(requestBody.contents, item, item.role, true);
+        } else {
+          if (!Array.isArray(requestBody.systemInstruction)) requestBody.systemInstruction = [];
+          tinyGoogleAI.buildContents(requestBody.systemInstruction, item, true);
+          requestBody.systemInstruction = requestBody.systemInstruction[0];
+        }
       }
     }
 
@@ -590,54 +591,62 @@ const setGoogleAi = (tinyGoogleAI, GEMINI_API_KEY, MODEL_DATA = 'gemini-2.0-flas
         const dataContent = requestBuilder(data);
         const modelInfo = tinyGoogleAI.getModelData(model);
         dataContent.model = modelInfo?.name;
-        fetch(`${apiUrl}/models/${model}:countTokens?key=${encodeURIComponent(apiKey)}`, {
-          signal: controller ? controller.signal : undefined,
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            generateContentRequest: dataContent,
-          }),
-        })
-          // Request
-          .then((res) => res.json())
-          .then((result) => {
-            const finalData = { _response: result };
-            if (!result.error) {
-              // Total tokens
-              if (typeof result.totalTokens === 'number')
-                finalData.totalTokens = result.totalTokens;
-              else finalData.totalTokens = null;
-
-              // Cached Content Token Count
-              if (typeof result.cachedContentTokenCount === 'number')
-                finalData.cachedContentTokenCount = result.cachedContentTokenCount;
-              else finalData.cachedContentTokenCount = null;
-
-              // Prompt tokens details
-              if (result.promptTokensDetails) {
-                if (!finalData.promptTokensDetails) finalData.promptTokensDetails = {};
-                // Token Count
-                if (typeof result.promptTokensDetails.tokenCount === 'number')
-                  finalData.promptTokensDetails.tokenCount = result.promptTokensDetails.tokenCount;
-                else finalData.promptTokensDetails.tokenCount = null;
-
-                // Modality
-                if (typeof result.promptTokensDetails.modality === 'string')
-                  finalData.promptTokensDetails.modality = result.promptTokensDetails.modality;
-                else finalData.promptTokensDetails.modality = null;
-              }
-            }
-
-            // Error result
-            else buildErrorData(result, finalData);
-
-            // Complete
-            resolve(finalData);
+        if (Array.isArray(dataContent.contents) && dataContent.contents.length > 0) {
+          fetch(`${apiUrl}/models/${model}:countTokens?key=${encodeURIComponent(apiKey)}`, {
+            signal: controller ? controller.signal : undefined,
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              generateContentRequest: dataContent,
+            }),
           })
-          // Error
-          .catch(reject);
+            // Request
+            .then((res) => res.json())
+            .then((result) => {
+              const finalData = { _response: result };
+              if (!result.error) {
+                // Total tokens
+                if (typeof result.totalTokens === 'number')
+                  finalData.totalTokens = result.totalTokens;
+                else finalData.totalTokens = null;
+
+                // Cached Content Token Count
+                if (typeof result.cachedContentTokenCount === 'number')
+                  finalData.cachedContentTokenCount = result.cachedContentTokenCount;
+                else finalData.cachedContentTokenCount = null;
+
+                // Prompt tokens details
+                if (result.promptTokensDetails) {
+                  if (!finalData.promptTokensDetails) finalData.promptTokensDetails = {};
+                  // Token Count
+                  if (typeof result.promptTokensDetails.tokenCount === 'number')
+                    finalData.promptTokensDetails.tokenCount =
+                      result.promptTokensDetails.tokenCount;
+                  else finalData.promptTokensDetails.tokenCount = null;
+
+                  // Modality
+                  if (typeof result.promptTokensDetails.modality === 'string')
+                    finalData.promptTokensDetails.modality = result.promptTokensDetails.modality;
+                  else finalData.promptTokensDetails.modality = null;
+                }
+              }
+
+              // Error result
+              else buildErrorData(result, finalData);
+
+              // Complete
+              resolve(finalData);
+            })
+            // Error
+            .catch(reject);
+        } else
+          resolve({
+            _response: {},
+            totalTokens: null,
+            cachedContentTokenCount: null,
+          });
       }),
   );
 };

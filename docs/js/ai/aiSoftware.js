@@ -535,7 +535,7 @@ const AiScriptStart = () => {
               true,
             );
             disablePromptButtons(false);
-            updateAiTokenCounterData(hashItems);
+            updateAiTokenCounterData(hashItems, forceReset);
 
             // Update button list
             for (const index in ficConfigs.buttons) {
@@ -819,8 +819,11 @@ const AiScriptStart = () => {
             textarea: tinyAi.getSystemInstruction(),
             submitName: 'Set Instructions',
             submitCall: (value) => {
-              tinyAi.setSystemInstruction(value, 0);
-              updateAiTokenCounterData();
+              const oldValue = tinyAi.getSystemInstruction();
+              if (typeof oldValue !== 'string' || oldValue !== value) {
+                tinyAi.setSystemInstruction(value, 0);
+                updateAiTokenCounterData();
+              }
             },
           };
 
@@ -848,8 +851,11 @@ const AiScriptStart = () => {
                 title: 'Select a prompt to be added',
               },
               submitCall: (value) => {
-                tinyAi.setPrompt(value, 0);
-                updateAiTokenCounterData();
+                const oldValue = tinyAi.getPrompt();
+                if (typeof oldValue !== 'string' || oldValue !== value) {
+                  tinyAi.setPrompt(value, 0);
+                  updateAiTokenCounterData();
+                }
               },
             },
             !canSandBox(ficConfigs.selected) ? 'text' : ['sandBoxText', 'text'],
@@ -870,8 +876,11 @@ const AiScriptStart = () => {
                 title: 'Select a prompt to be added',
               },
               submitCall: (value) => {
-                tinyAi.setFirstDialogue(value);
-                enabledFirstDialogue(typeof value === 'string' && value.length > 0);
+                const oldValue = tinyAi.getFirstDialogue();
+                if (typeof oldValue !== 'string' || oldValue !== value) {
+                  tinyAi.setFirstDialogue(value);
+                  enabledFirstDialogue(typeof value === 'string' && value.length > 0);
+                }
               },
             },
             'firstDialogue',
@@ -1548,7 +1557,7 @@ const AiScriptStart = () => {
         return { content, indexList, systemData, promptData, fileData };
       };
 
-      const getAiTokens = (hashItems = { data: [] }) =>
+      const getAiTokens = (hashItems = { data: [] }, forceUpdate = false) =>
         new Promise(async (resolve, reject) => {
           try {
             const { content, indexList, systemData, promptData, fileData } =
@@ -1564,20 +1573,21 @@ const AiScriptStart = () => {
                 callback,
               ) => {
                 if (
+                  forceUpdate ||
                   // Exist content to check tokens
-                  hash &&
-                  contentToCheck && // Model
-                  ((typeof hashItems.model === 'string' &&
-                    hashItems.model !== objHash(tinyAi.getModel())) ||
-                    // Hash
-                    (typeof oldHash === 'string' && oldHash !== hash) ||
-                    // Token Count
-                    typeof tinyTokens.count !== 'number' ||
-                    Number.isNaN(tinyTokens.count) ||
-                    !Number.isFinite(tinyTokens.count) ||
-                    tinyTokens.count < 1) &&
-                  // Callback
-                  typeof callback === 'function'
+                  (hash &&
+                    contentToCheck && // Model
+                    ((typeof hashItems.model === 'string' &&
+                      hashItems.model !== objHash(tinyAi.getModel())) ||
+                      // Hash
+                      (typeof oldHash === 'string' && oldHash !== hash) ||
+                      // Token Count
+                      typeof tinyTokens.count !== 'number' ||
+                      Number.isNaN(tinyTokens.count) ||
+                      !Number.isFinite(tinyTokens.count) ||
+                      tinyTokens.count < 1) &&
+                    // Callback
+                    typeof callback === 'function')
                 ) {
                   console.log(`[tiny-ai] Executing token counter in "${name}".`);
                   const newTokens = await tinyAi.countTokens(
@@ -1646,7 +1656,7 @@ const AiScriptStart = () => {
         });
 
       // Get Ai Tokens
-      const updateAiTokenCounterData = (hashItems) => {
+      const updateAiTokenCounterData = (hashItems, forceReset = false) => {
         const history = tinyAi.getData();
         if (history) {
           enableReadOnly(true);
@@ -1677,7 +1687,7 @@ const AiScriptStart = () => {
             msgInput.focus();
           };
 
-          getAiTokens(hashItems || undefined)
+          getAiTokens(hashItems || undefined, forceReset)
             .then((totalTokens) => {
               if (typeof totalTokens === 'number') tokenCount.updateValue('amount', totalTokens);
               else tokenCount.updateValue('amount', 0);
