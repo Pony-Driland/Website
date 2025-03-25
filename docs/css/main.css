@@ -586,6 +586,14 @@ body.is-using-ai #app {
 }
 
 /* AI Chatbox */
+#ai-chatbox.hide-msg-buttons .ai-text-editor > button {
+  pointer-events: none !important;
+}
+
+#ai-chatbox.hide-msg-buttons .ai-text-editor > button > * {
+  opacity: 0.6 !important;
+}
+
 #ai-chatbox .ai-text-editor {
   text-align: end;
   margin-bottom: -31px;
