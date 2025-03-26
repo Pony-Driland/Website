@@ -131,14 +131,17 @@ self.addEventListener('activate', function (event) {
 });
 
 const canCacheExt = [
-  "mp3",
-  "aac",
-  "ogg",
-  "opus",
-  "wma",
-  "flac",
-  "wav",
-  "m4a"
+  ".mp3",
+  ".aac",
+  ".ogg",
+  ".opus",
+  ".wma",
+  ".flac",
+  ".wav",
+  ".m4a",
+  "/img/bg/sky-stars/clouds3.png",
+  "/img/bg/sky-stars/stars.png",
+  "/img/bg/sky-stars/twinkling.png",
 ];
 
 self.addEventListener('fetch', function (event) {
@@ -156,7 +159,7 @@ self.addEventListener('fetch', function (event) {
 
   let canCache = false;
   for (const index in canCacheExt) {
-    if (request.url.endsWith(`.${canCacheExt[index]}`)) {
+    if (request.url.endsWith(canCacheExt[index])) {
       canCache = true;
       break;
     }
