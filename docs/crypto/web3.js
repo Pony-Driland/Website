@@ -290,7 +290,7 @@ class PuddyWeb3 {
         }
 
         this.enabled = true;
-        this.provider = new ethers.providers.Web3Provider(this.wallet_connect);
+        this.provider = new ethers.BrowserProvider(this.wallet_connect);
 
         this.provider.on('accountsChanged', async (data) => {
             tinyThis.accountsChanged(data);
