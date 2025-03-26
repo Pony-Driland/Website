@@ -3841,6 +3841,11 @@ for-each@^0.3.3, for-each@^0.3.5:
   dependencies:
     is-callable "^1.2.7"
 
+for-promise@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/for-promise/-/for-promise-1.4.3.tgz#04acb52f013846722a2098c547b6abad2806f44c"
+  integrity sha512-GHpaVIJdFYewYsyoH9JLlP+RW4tJHz6YWbKkGYq2O52CVonQ9IzNS+b9GauxEOddoTV//h/3ttZREbr4d7vwJw==
+
 foreground-child@^3.1.0:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/foreground-child/-/foreground-child-3.3.1.tgz#32e8e9ed1b68a3497befb9ac2b6adf92a638576f"
