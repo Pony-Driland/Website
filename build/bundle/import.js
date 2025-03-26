@@ -1,3 +1,7 @@
+// For Promise
+import forPromise from 'for-promise';
+import { countObj, objType } from 'for-promise/utils/lib.mjs';
+
 // Photoswipe
 import PhotoSwipeLightbox from 'photoswipe';
 
@@ -13,6 +17,9 @@ import WalletConnectProvider from '@walletconnect/web3-provider';
 import WalletConnect from '@walletconnect/client';
 
 // Imports
+global.window.forPromise = forPromise;
+global.window.objType = objType;
+global.window.countObj = countObj;
 global.window.Pizzicato = Pizzicato;
 global.window.PhotoSwipeLightbox = PhotoSwipeLightbox;
 // global.window.WalletConnectQR = WalletConnectQR;
