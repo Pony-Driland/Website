@@ -1,3 +1,6 @@
+// Socket.io
+import { io } from 'socket.io-client';
+
 // For Promise
 import forPromise from 'for-promise';
 import { countObj, objType } from 'for-promise/utils/lib.mjs';
@@ -17,6 +20,7 @@ import WalletConnectProvider from '@walletconnect/web3-provider';
 import WalletConnect from '@walletconnect/client';
 
 // Imports
+global.window.io = io;
 global.window.forPromise = forPromise;
 global.window.objType = objType;
 global.window.countObj = countObj;
