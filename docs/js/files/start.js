@@ -780,6 +780,7 @@ const openMDFile = function (url, isMain = false) {
 
 // Start App
 $(() => {
+  vanillaPwa.install();
   const startApp = () => {
     console.log('Starting App...');
     storyData.start((fn, readme) => {
