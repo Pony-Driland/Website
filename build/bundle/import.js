@@ -6,7 +6,7 @@ import Pizzicato from 'pizzicato';
 
 // Web3
 import BigNumber from 'bignumber.js';
-import { ethers } from 'ethers/lib.esm/index.js';
+import * as ethers from 'ethers/lib.esm/index.js';
 
 // import WalletConnectQR from '@walletconnect/qrcode-modal';
 import WalletConnectProvider from '@walletconnect/web3-provider';

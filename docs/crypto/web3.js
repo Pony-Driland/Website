@@ -2,7 +2,7 @@
 class PuddyWeb3 {
 
     // Constructor Base
-    constructor(network, provider) {
+    constructor(network) {
 
         // Base
         const tinyThis = this;
@@ -52,41 +52,15 @@ class PuddyWeb3 {
         if (typeof network === 'string') { this.network = network; }
 
         // Get Provider
-        if (provider !== null && ethers.providers) {
-            if (provider) {
+        if(window.ethereum) {
+            this.enabled = true;
+            this.provider = new ethers.BrowserProvider(window.ethereum);
 
-                this.enabled = true;
-                this.provider = new ethers.providers.Web3Provider(provider);
+            this.provider.on('accountsChanged', (accounts) => {
+                tinyThis.accountsChanged(accounts);
+            });
 
-                this.provider.on('accountsChanged', (accounts) => {
-                    tinyThis.accountsChanged(accounts);
-                });
-
-                this.checkConnection();
-
-            } else if (window.ethereum) {
-
-                window.ethereum.on('accountsChanged', function (accounts) {
-                    tinyThis.accountsChanged(accounts);
-                });
-
-                window.ethereum.on('networkChanged', function (networkId) {
-                    tinyThis.networkChanged(networkId);
-                });
-
-                this.enabled = true;
-                this.provider = new ethers.providers.Web3Provider(window.ethereum, 'any');
-
-                this.provider.on('network', (newNetwork, oldNetwork) => {
-                    tinyThis.setNetwork(newNetwork, oldNetwork);
-                });
-
-                this.checkConnection();
-                this.readyProvider();
-
-            } else {
-                this.enabled = false;
-            }
+            this.checkConnection();   
         } else { this.enabled = false; }
 
         // Complete
