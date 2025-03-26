@@ -6,7 +6,7 @@
         "start": "node ./build/",
         "install": "yarn build-bundle",
         "build-bundle": "browserify build/bundle/require -o docs/bundle.js && browserify build/bundle/import -p esmify > docs/bundle2.js && npx babel-node build/bundle/css && npx babel-node build/bundle/files",
-        "fix:prettier": "prettier --write ./docs/js/chapter_manager/* && prettier --write ./docs/js/files/* && prettier --write ./docs/js/ai/* && prettier --write ./docs/js/pwa/* && prettier --write ./docs/crypto/*",
+        "fix:prettier": "prettier --write ./docs/js/chapter_manager/* && prettier --write ./docs/js/files/* && prettier --write ./docs/js/ai/* && prettier --write ./docs/js/pwa/* && prettier --write ./docs/js/crypto/*",
         "update-base64": "node ./build/base64",
         "update-chapter": "node ./build/chapter",
         "update-characters": "node ./build/characters",
