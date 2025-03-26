@@ -3,7 +3,7 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 import crypto from 'crypto';
 
-import TimedMap from './database';
+import TimedMap from './TimedMap';
 
 const app = express();
 const server = createServer(app);

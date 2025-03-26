@@ -1,4 +1,4 @@
-import TimedMap from '../database';
+import TimedMap from '../TimedMap';
 
 // Example usage:
 const myTimedMap = new TimedMap();
