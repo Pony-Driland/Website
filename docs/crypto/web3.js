@@ -52,7 +52,7 @@ class PuddyWeb3 {
         if (typeof network === 'string') { this.network = network; }
 
         // Get Provider
-        if (provider !== null) {
+        if (provider !== null && ethers.providers) {
             if (provider) {
 
                 this.enabled = true;
