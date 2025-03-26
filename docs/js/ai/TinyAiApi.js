@@ -1067,6 +1067,25 @@ class TinyAiApi extends EventEmitter {
   }
 
   /**
+   * Removes file data from the selected session history.
+   *
+   * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
+   * @throws {Error} If the session history ID is invalid.
+   * @returns {void} This method does not return a value.
+   */
+  removeFileData(id) {
+    const selectedId = this.getId(id);
+    if (this.history[selectedId]) {
+      delete this.history[selectedId].file;
+      delete this.history[selectedId].hash.file;
+      delete this.history[selectedId].tokens.file;
+      this.emit('setFileData', null, null, selectedId);
+      return;
+    }
+    throw new Error('Invalid history id data!');
+  }
+
+  /**
    * Retrieves file data from the selected session history.
    *
    * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.

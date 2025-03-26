@@ -81,7 +81,7 @@ const AiScriptStart = () => {
     aiLogin = newAiLogin;
   };
 
-  const canSandBox = (value) => value === 'sandBoxFic';
+  const canSandBox = (value) => value === 'sandBoxFic' || value === 'noData';
 
   // Detect Using AI
   appData.emitter.on('isUsingAI', (usingAI) => {
@@ -500,7 +500,8 @@ const AiScriptStart = () => {
               // Add file data
               const fileTokens = tinyAi.getTokens('file');
               const oldFileHash = tinyAi.getHash('file');
-              tinyAi.setFileData(ficData.mime, ficData.data);
+              if (ficData) tinyAi.setFileData(ficData.mime, ficData.data);
+              else tinyAi.removeFileData();
               const newFileHash = tinyAi.getHash('file');
               if (oldFileHash === newFileHash)
                 tinyAi.setFileData(null, null, null, fileTokens || 0);
@@ -751,6 +752,15 @@ const AiScriptStart = () => {
                 ficLine: false,
                 dayNumber: false,
               }),
+          },
+          {
+            title: 'No Data',
+            id: 'noData',
+            template: null,
+            icon: 'fa-solid fa-file',
+            intro:
+              'You are in a completely clean environment, with no stored data from the fic. You can use all website features without any limitations.',
+            getData: async () => null,
           },
         ],
         buttons: [],
