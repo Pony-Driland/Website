@@ -1639,7 +1639,7 @@ const AiScriptStart = () => {
 
               // System Instruction
               const systemCheck = clone(systemData);
-              systemCheck.role = 'user';
+              if (systemCheck) systemCheck.role = 'user';
               await updateTokenData(
                 'systemInstruction',
                 systemCheck,
