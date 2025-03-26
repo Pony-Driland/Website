@@ -119,7 +119,7 @@
           // Register new Service Worker
           const registerNewService = () =>
             navigator.serviceWorker
-              .register('./js/pwa/service-worker.js', { scope: './' })
+              .register('./service-worker.js', { scope: './' })
               // Complete
               .then((registration) => {
                 console.log('[PWA] Service Worker Registered.');
