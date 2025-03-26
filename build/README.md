@@ -25,8 +25,3 @@ Don't forget to give credits if you want to use my fanfic website building syste
 /docs/manifest.json
 
 /docs/README.md
-
-## Browserify Example
-
-browserify build/modules/marked.js -o docs/js/marked.js
-browserify build/modules/index.js -p esmify > docs/js/bundle.js
