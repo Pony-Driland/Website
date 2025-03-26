@@ -2,7 +2,7 @@
 class PuddyWeb3 {
 
     // Constructor Base
-    constructor(network) {
+    constructor(network, provider) {
 
         // Base
         const tinyThis = this;
@@ -52,15 +52,41 @@ class PuddyWeb3 {
         if (typeof network === 'string') { this.network = network; }
 
         // Get Provider
-        if(window.ethereum) {
-            this.enabled = true;
-            this.provider = new ethers.BrowserProvider(window.ethereum);
+        if (provider !== null) {
+            if (provider) {
 
-            this.provider.on('accountsChanged', (accounts) => {
-                tinyThis.accountsChanged(accounts);
-            });
+                this.enabled = true;
+                this.provider = new ethers.providers.Web3Provider(provider);
 
-            this.checkConnection();   
+                this.provider.on('accountsChanged', (accounts) => {
+                    tinyThis.accountsChanged(accounts);
+                });
+
+                this.checkConnection();
+
+            } else if (window.ethereum) {
+
+                window.ethereum.on('accountsChanged', function (accounts) {
+                    tinyThis.accountsChanged(accounts);
+                });
+
+                window.ethereum.on('networkChanged', function (networkId) {
+                    tinyThis.networkChanged(networkId);
+                });
+
+                this.enabled = true;
+                this.provider = new ethers.providers.Web3Provider(window.ethereum, 'any');
+
+                this.provider.on('network', (newNetwork, oldNetwork) => {
+                    tinyThis.setNetwork(newNetwork, oldNetwork);
+                });
+
+                this.checkConnection();
+                this.readyProvider();
+
+            } else {
+                this.enabled = false;
+            }
         } else { this.enabled = false; }
 
         // Complete
@@ -290,7 +316,7 @@ class PuddyWeb3 {
         }
 
         this.enabled = true;
-        this.provider = new ethers.BrowserProvider(this.wallet_connect);
+        this.provider = new ethers.providers.Web3Provider(this.wallet_connect);
 
         this.provider.on('accountsChanged', async (data) => {
             tinyThis.accountsChanged(data);
