@@ -268,7 +268,7 @@ $.fn.selectRange = function (start, end) {
         if (typeof end !== "number") { end = start; }
         return this.each(function () {
             if (this.setSelectionRange) {
-                this.focus();
+                this.trigger("focus");
                 this.setSelectionRange(start, end);
             } else if (this.createTextRange) {
                 var range = this.createTextRange();

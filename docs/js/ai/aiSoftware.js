@@ -1109,7 +1109,7 @@ const AiScriptStart = () => {
               textarea
                 .prop('selectionStart', newCursorPosition)
                 .prop('selectionEnd', newCursorPosition)
-                .focus();
+                .trigger('focus');
             }
           });
 
@@ -1691,7 +1691,7 @@ const AiScriptStart = () => {
             disablePromptButtons(false);
             enableModelReadOnly(false);
             enableMessageButtons(true);
-            msgInput.focus();
+            msgInput.trigger('focus');
           };
 
           getAiTokens(hashItems || undefined, forceReset)
@@ -1978,7 +1978,7 @@ const AiScriptStart = () => {
 
       const submitMessage = async () => {
         // Prepare to get data
-        msgInput.blur();
+        msgInput.trigger('blur');
         const msg = msgInput.val();
         msgInput.val('').trigger('input');
 
@@ -2038,7 +2038,7 @@ const AiScriptStart = () => {
         enableReadOnly(false);
         modelChangerReadOnly(false);
         enableModelSelectorReadOnly(false);
-        msgInput.focus();
+        msgInput.trigger('focus');
       };
 
       const submitCache = {};
