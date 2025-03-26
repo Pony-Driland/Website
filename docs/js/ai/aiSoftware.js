@@ -1976,72 +1976,74 @@ const AiScriptStart = () => {
         text: 'Cancel',
       });
 
+      const submitMessage = async () => {
+        // Prepare to get data
+        msgInput.blur();
+        const msg = msgInput.val();
+        msgInput.val('').trigger('input');
+
+        const controller = new AbortController();
+        enableReadOnly(true, controller);
+        enableMessageButtons(false);
+        modelChangerReadOnly();
+        disablePromptButtons(true);
+        enableModelSelectorReadOnly(true);
+
+        let points = '.';
+        let secondsWaiting = -1;
+        const loadingMoment = () => {
+          points += '.';
+          if (points === '....') points = '.';
+
+          secondsWaiting++;
+          msgInput.val(`(${secondsWaiting}s) Waiting response${points}`);
+        };
+        const loadingMessage = setInterval(loadingMoment, 1000);
+        loadingMoment();
+
+        // Add new message
+        let sentId = null;
+        if (typeof msg === 'string' && msg.length > 0) {
+          sentId = tinyAi.addData(
+            tinyAi.buildContents(
+              null,
+              {
+                role: 'user',
+                parts: [{ text: msg }],
+              },
+              'user',
+            ),
+          );
+          addMessage(
+            makeMessage({
+              message: msg,
+              id: sentId,
+            }),
+          );
+        }
+
+        // Execute Ai
+        await executeAi(submitCache, sentId, controller).catch((err) => {
+          if (submitCache.cancel) submitCache.cancel();
+          console.error(err);
+          alert(err.message);
+        });
+
+        // Complete
+        clearInterval(loadingMessage);
+        disablePromptButtons(false);
+        msgInput.val('');
+
+        enableMessageButtons(true);
+        enableReadOnly(false);
+        modelChangerReadOnly(false);
+        enableModelSelectorReadOnly(false);
+        msgInput.focus();
+      };
+
       const submitCache = {};
       msgSubmit.on('click', async () => {
-        if (!msgInput.prop('disabled')) {
-          // Prepare to get data
-          msgInput.blur();
-          const msg = msgInput.val();
-          msgInput.val('').trigger('input');
-
-          const controller = new AbortController();
-          enableReadOnly(true, controller);
-          enableMessageButtons(false);
-          modelChangerReadOnly();
-          disablePromptButtons(true);
-          enableModelSelectorReadOnly(true);
-
-          let points = '.';
-          let secondsWaiting = -1;
-          const loadingMoment = () => {
-            points += '.';
-            if (points === '....') points = '.';
-
-            secondsWaiting++;
-            msgInput.val(`(${secondsWaiting}s) Waiting response${points}`);
-          };
-          const loadingMessage = setInterval(loadingMoment, 1000);
-          loadingMoment();
-
-          // Add new message
-          let sentId = null;
-          if (typeof msg === 'string' && msg.length > 0) {
-            sentId = tinyAi.addData(
-              tinyAi.buildContents(
-                null,
-                {
-                  role: 'user',
-                  parts: [{ text: msg }],
-                },
-                'user',
-              ),
-            );
-            addMessage(
-              makeMessage({
-                message: msg,
-                id: sentId,
-              }),
-            );
-          }
-
-          // Execute Ai
-          await executeAi(submitCache, sentId, controller).catch((err) => {
-            if (submitCache.cancel) submitCache.cancel();
-            console.error(err);
-            alert(err.message);
-          });
-
-          // Complete
-          clearInterval(loadingMessage);
-          disablePromptButtons(false);
-          msgInput.val('');
-
-          enableMessageButtons(true);
-          enableReadOnly(false);
-          modelChangerReadOnly(false);
-          enableModelSelectorReadOnly(false);
-          msgInput.focus();
-        }
+        if (!msgInput.prop('disabled')) submitMessage();
       });
 
       msgInput.on('keydown', function (event) {
