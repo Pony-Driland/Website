@@ -569,7 +569,6 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
       $(this).replaceWith(newImage);
 
       // Load Image FIle
-      const pswpElement = document.querySelectorAll('.pswp')[0];
       newImage
         .css({
           cursor: 'pointer',
@@ -593,15 +592,32 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
         .on('click', function () {
           const imgSize = $(this).data('image-size');
           const imgData = { src: $(this).attr('src') };
+          const imgAlt = $(this).add('alt');
           if (imgSize) {
             imgData.h = imgSize?.height;
             imgData.w = imgSize?.width;
           }
 
-          const gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, [imgData], {
-            index: 0,
+          if (typeof imgAlt === 'string' && imgAlt.length > 0) imgData.alt = imgAlt;
+          const pswp = new PhotoSwipeLightbox({
+            dataSource: [imgData],
+            close: true,
+            zoom: true,
+            fullscreen: true,
+            counter: false,
+            arrowPrev: false,
+            arrowNext: false,
+            share: false,
+            padding: { top: 40, bottom: 40, left: 100, right: 100 },
           });
-          gallery.init();
+
+          pswp.on('close', () => {
+            setTimeout(() => {
+              pswp.destroy();
+            }, 5000);
+          });
+
+          pswp.init();
           $(this).fadeTo('fast', 0.7, function () {
             $(this).fadeTo('fast', 1);
           });
@@ -915,7 +931,7 @@ $(() => {
         const baseCryptoModal = function (crypto_value, title) {
           return function () {
             const qrcodeCanvas = $('<canvas>');
-            qrcode.toCanvas(qrcodeCanvas[0], storyCfg[crypto_value].address, function (error) {
+            QRCode.toCanvas(qrcodeCanvas[0], storyCfg[crypto_value].address, function (error) {
               if (error) {
                 alert(error);
               } else {

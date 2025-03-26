@@ -80,8 +80,8 @@ getDirectories(folderPath, (err, files) => {
         <link href="../img/icon/icon.png" rel="icon" type="image/x-icon"/>
         
         <!-- CSS -->
-        <link rel="preload" href="/css/bootstrap.min.css" as="style">
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="preload" href="/bundle.css" as="style">
+        <link rel="stylesheet" href="../bundle.css">
         <link rel="stylesheet" href="../css/dark.css">
         <link rel="stylesheet" href="../css/main.css">
         <link rel="manifest" href="../manifest.json">
@@ -117,8 +117,8 @@ getDirectories(folderPath, (err, files) => {
         <meta name="twitter:image" content="${imgUrl}">
 
         <!-- Script -->
-        <script src="../js/jquery.min.js"></script>
-        <script src="../js/loadingoverlay.min.js"></script>
+        <script src="../bundle.js"></script>
+        <script src="../bundle2.js"></script>
         <script src="../js/files/redirect.js"></script>
     
     </head>
@@ -167,6 +167,3 @@ for(const item in storyCfg.characters) {
         console.error(err);
     }
 });
-
-// Interval
-setInterval(function () { }, 100);

@@ -59,6 +59,3 @@ fs.readdir(folderPath, (err, files) => {
         console.error(err);
     }
 });
-
-// Interval
-setInterval(function() {}, 100);
