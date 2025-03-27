@@ -173,7 +173,7 @@ io.on('connection', (socket) => {
     if (userIsRateLimited(socket)) return;
 
     // Check if user is server owner or server mod
-    if(yourId !== serverOwnerId && !moderators.has(yourId) ) {
+    if (yourId !== serverOwnerId && !moderators.has(yourId)) {
       socket.emit('ban-failed', { msg: 'You are not allowed to do this.', banned: true, code: 1 });
       return;
     }
@@ -205,7 +205,7 @@ io.on('connection', (socket) => {
     if (userIsRateLimited(socket)) return;
 
     // Check if user is server owner or server mod
-    if(yourId !== serverOwnerId && !moderators.has(yourId) ) {
+    if (yourId !== serverOwnerId && !moderators.has(yourId)) {
       socket.emit('ban-failed', { msg: 'You are not allowed to do this.', banned: true, code: 1 });
       return;
     }
@@ -234,7 +234,7 @@ io.on('connection', (socket) => {
     if (userIsRateLimited(socket)) return;
 
     // Check if user is server owner or server mod
-    if(yourId !== serverOwnerId && !moderators.has(yourId) ) {
+    if (yourId !== serverOwnerId && !moderators.has(yourId)) {
       socket.emit('kick-failed', { msg: 'You are not allowed to do this.', code: 1 });
       return;
     }
@@ -264,20 +264,43 @@ io.on('connection', (socket) => {
     const rUsers = roomUsers.get(roomId);
     const room = rooms.get(roomId);
     if (!rUsers || !room) {
-      socket.emit('room-ban-failed', { msg: 'Room not found.', banned: true, userId, roomId, code: 1 });
+      socket.emit('room-ban-failed', {
+        msg: 'Room not found.',
+        banned: true,
+        userId,
+        roomId,
+        code: 1,
+      });
       return;
     }
 
     // Check if user is server owner or server mod
-    if(yourId !== serverOwnerId && !moderators.has(yourId) && room.ownerId !== yourId && !room.moderators.has(yourId)) {
-      socket.emit('room-ban-failed', { msg: 'You are not allowed to do this.', roomId, userId, banned: true, code: 2 });
+    if (
+      yourId !== serverOwnerId &&
+      !moderators.has(yourId) &&
+      room.ownerId !== yourId &&
+      !room.moderators.has(yourId)
+    ) {
+      socket.emit('room-ban-failed', {
+        msg: 'You are not allowed to do this.',
+        roomId,
+        userId,
+        banned: true,
+        code: 2,
+      });
       return;
     }
 
     // Check if user exists
     if (!users.has(userId)) {
       //
-      socket.emit('room-ban-failed', { msg: 'User not found.', banned: true, userId, roomId, code: 3 });
+      socket.emit('room-ban-failed', {
+        msg: 'User not found.',
+        banned: true,
+        userId,
+        roomId,
+        code: 3,
+      });
       return;
     }
 
@@ -293,7 +316,7 @@ io.on('connection', (socket) => {
       rUsers.delete(userId);
       io.to(roomId).emit('user-left', { roomId, userId });
       io.to(roomId).emit('user-banned', { roomId, userId });
-      if(userSocket) userSocket.leave(roomId);
+      if (userSocket) userSocket.leave(roomId);
     }
 
     // User ban successfully.
@@ -304,7 +327,7 @@ io.on('connection', (socket) => {
     const { userId, roomId } = data;
     // Validate values
     if (typeof userId !== 'string' || typeof roomId !== 'string') return;
-    
+
     // Get user
     const yourId = userSession.getUserId(socket);
     if (!yourId) return; // Only logged-in users can use it
@@ -314,13 +337,30 @@ io.on('connection', (socket) => {
     const room = rooms.get(roomId);
     if (!room) {
       //
-      socket.emit('room-ban-failed', { msg: 'Room not found.', banned: false, userId, roomId, code: 1 });
+      socket.emit('room-ban-failed', {
+        msg: 'Room not found.',
+        banned: false,
+        userId,
+        roomId,
+        code: 1,
+      });
       return;
     }
 
     // Check if user is server owner or server mod
-    if(yourId !== serverOwnerId && !moderators.has(yourId) && room.ownerId !== yourId && !room.moderators.has(yourId)) {
-      socket.emit('room-ban-failed', { msg: 'You are not allowed to do this.', banned: false, userId, roomId, code: 2 });
+    if (
+      yourId !== serverOwnerId &&
+      !moderators.has(yourId) &&
+      room.ownerId !== yourId &&
+      !room.moderators.has(yourId)
+    ) {
+      socket.emit('room-ban-failed', {
+        msg: 'You are not allowed to do this.',
+        banned: false,
+        userId,
+        roomId,
+        code: 2,
+      });
       return;
     }
 
@@ -350,10 +390,20 @@ io.on('connection', (socket) => {
     }
 
     // Check if user is server owner or server mod
-    if(yourId !== serverOwnerId && !moderators.has(yourId) && room.ownerId !== yourId && !room.moderators.has(yourId)) {
-      socket.emit('room-kick-failed', { msg: 'You are not allowed to do this.', userId, roomId, code: 2 });
+    if (
+      yourId !== serverOwnerId &&
+      !moderators.has(yourId) &&
+      room.ownerId !== yourId &&
+      !room.moderators.has(yourId)
+    ) {
+      socket.emit('room-kick-failed', {
+        msg: 'You are not allowed to do this.',
+        userId,
+        roomId,
+        code: 2,
+      });
       return;
-    }    
+    }
 
     // Check if user is connected
     const userSocket = userSockets.get(userId);
