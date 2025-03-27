@@ -23,8 +23,8 @@ const moderators = new Set(['mod1', 'mod2']); // List of moderators
 const EVENT_LIMIT = 5; // Max events
 const MESSAGES_LIMIT = 5; // Max messages
 const RATE_LIMIT_TIME = 10 * 1000; // 10 seconds
-const MESSAGE_SIZE_LIMIT = 200; // Max message size
 
+const MESSAGE_SIZE_LIMIT = 200; // Max message size
 const USER_ID_SIZE_LIMIT = 100; // Max user id size
 const PASSWORD_SIZE_LIMIT = 200; // Max password size
 const NICKNAME_SIZE_LIMIT = 100; // Max user id size
@@ -95,9 +95,17 @@ const userSession = {
 
 const sendRateLimit = (socket) => {
   socket.emit('update-ratelimts', {
-    userId: USER_ID_SIZE_LIMIT,
-    password: PASSWORD_SIZE_LIMIT,
-    nickname: NICKNAME_SIZE_LIMIT,
+    size: {
+      userId: USER_ID_SIZE_LIMIT,
+      password: PASSWORD_SIZE_LIMIT,
+      nickname: NICKNAME_SIZE_LIMIT,
+      msg: MESSAGE_SIZE_LIMIT,
+    },
+    limit: {
+      msg: MESSAGES_LIMIT,
+      events: EVENT_LIMIT,
+    },
+    time: RATE_LIMIT_TIME,
   });
 };
 
