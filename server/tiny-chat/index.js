@@ -20,6 +20,7 @@ const userSockets = new Map(); // Socket users
 const EVENT_LIMIT = 5; // Max events
 const MESSAGES_LIMIT = 5; // Max messages
 const RATE_LIMIT_TIME = 10 * 1000; // 10 seconds
+const MAX_USERS_PER_ROOM = 50; // Max users per room
 
 const MESSAGE_SIZE_LIMIT = 200; // Max message size
 const USER_ID_SIZE_LIMIT = 100; // Max user id size
@@ -104,6 +105,7 @@ const sendRateLimit = (socket) => {
     limit: {
       msg: MESSAGES_LIMIT,
       events: EVENT_LIMIT,
+      roomUsers: MAX_USERS_PER_ROOM,
     },
     time: RATE_LIMIT_TIME,
   });
