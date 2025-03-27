@@ -658,7 +658,7 @@ export default function roomManager(socket, io) {
     else {
       roomData.set(roomId, Object.assign(roomData.get(roomId), values));
       // Notify all users in the room about the updated data
-      io.to(roomId).emit('update-room-data', { roomId, values: roomData.get(roomId) });
+      socket.to(roomId).emit('update-room-data', { roomId, values: roomData.get(roomId) });
     }
   });
 }

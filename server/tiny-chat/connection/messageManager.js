@@ -53,7 +53,16 @@ export default function messageManager(socket, io) {
     history.set(msgIndex, { userId, text: message, date: msgDate, edited: 0 });
 
     // Emit to the room that the user joined (based on roomId)
-    io.to(roomId).emit('new-message', {
+    socket.emit('message-status', {
+      type: 'sent',
+      roomId,
+      id: msgIndex,
+      text: message,
+      date: msgDate,
+      edited: 0,
+    });
+
+    socket.to(roomId).emit('new-message', {
       roomId,
       id: msgIndex,
       userId,
@@ -113,7 +122,17 @@ export default function messageManager(socket, io) {
     history.set(messageId, msg);
 
     // Emit the event only to logged-in users in the room
-    io.to(roomId).emit('update-message', { roomId, id: messageId, text: newText, edited: msgDate });
+    socket.emit('message-status', {
+      type: 'edited',
+      roomId,
+      id: messageId,
+      text: newText,
+      edited: msgDate,
+    });
+
+    socket
+      .to(roomId)
+      .emit('update-message', { roomId, id: messageId, text: newText, edited: msgDate });
   });
 
   socket.on('delete-message', (data) => {
@@ -150,7 +169,8 @@ export default function messageManager(socket, io) {
     history.delete(messageId);
 
     // Emit the event only to logged-in users in the room
-    io.to(roomId).emit('delete-message', { roomId, id: messageId });
+    socket.emit('message-status', { type: 'deleted', roomId, id: messageId });
+    socket.to(roomId).emit('delete-message', { roomId, id: messageId });
   });
 
   socket.on('roll-dice', (data) => {
@@ -187,7 +207,8 @@ export default function messageManager(socket, io) {
         }
         rollDice(sides);
       }
-      return io.to(roomId).emit('roll-result', { results, total, sides: sidesList });
+
+      io.to(roomId).emit('roll-result', { results, total });
     }
   });
 }
