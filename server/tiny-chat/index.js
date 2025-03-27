@@ -156,7 +156,9 @@ const userIsRateLimited = createRateLimit(EVENT_LIMIT, 'events', 1);
 const userMsgIsRateLimited = createRateLimit(MESSAGES_LIMIT, 'messages', 2);
 
 io.on('connection', (socket) => {
-  console.log(`[APP] User connected: ${socket.id}`);
+  console.log(
+    `[APP] [${socket.handshake ? socket.handshake.address : '?.?.?.?'}] User connected: ${socket.id}`,
+  );
 
   socket.on('register', (data) => {
     const { userId, password, nickname } = data;
@@ -183,7 +185,7 @@ io.on('connection', (socket) => {
     createAccount(userId, password, nickname);
 
     // User registered successfully.
-    socket.emit('register-status', 0);
+    socket.emit('register-status', { userId, password, nickname });
   });
 
   socket.on('login', (data) => {
@@ -193,25 +195,25 @@ io.on('connection', (socket) => {
 
     // Check if user is using account
     if (userSession.getUserId(socket)) {
-      socket.emit('login-failed', { msg: "You're already logged in!", roomId, code: 4 });
+      socket.emit('login-failed', { msg: "You're already logged in!", code: 4 });
       return;
     }
 
     if (userSockets.get(userId)) {
-      socket.emit('login-failed', { msg: 'The account is already in use.', roomId, code: 3 });
+      socket.emit('login-failed', { msg: 'The account is already in use.', code: 3 });
       return;
     }
 
     // Validate user credentials
     if (!users.has(userId)) {
-      socket.emit('login-failed', { msg: 'User does not exist.', roomId, code: 2 });
+      socket.emit('login-failed', { msg: 'User does not exist.', code: 2 });
       return;
     }
 
     const user = users.get(userId);
     const hashedPassword = getHashString(password);
     if (user.password !== hashedPassword) {
-      socket.emit('login-failed', { msg: 'Invalid user credentials.', roomId, code: 1 });
+      socket.emit('login-failed', { msg: 'Invalid user credentials.', code: 1 });
       return;
     }
 
@@ -227,6 +229,9 @@ io.on('connection', (socket) => {
     userSockets.set(userId, socket);
 
     // Success!
+    console.log(
+      `[APP] [${socket.handshake ? socket.handshake.address : '?.?.?.?'}] User ${userId} logged in: ${socket.id}`,
+    );
     socket.emit('login-success', { userId, nickname });
   });
 
@@ -264,15 +269,6 @@ io.on('connection', (socket) => {
     // Add user to the room
     room.users.add(userId);
 
-    // Add user to the room's user map with their nickname and initial ping value (e.g., 0 for now)
-    if (!roomUsers.has(roomId)) {
-      roomUsers.set(roomId, new Map());
-    }
-    roomUsers.get(roomId).set(userId, { nickname, ping: Date.now() });
-
-    socket.join(roomId);
-    console.log(`[APP] ${userId} joined the room: ${roomId}`);
-
     // Send chat history and settings only to the joined user
     let history = roomHistories.get(roomId);
     if (!history) {
@@ -281,12 +277,46 @@ io.on('connection', (socket) => {
     }
 
     // Emit chat history and settings to the user
-    socket.emit('chat-history', mapToArray(history));
+    socket.emit('room-users', mapToArray(roomUsers.get(roomId)));
+    socket.emit('room-history', mapToArray(history));
+    socket.emit('update-settings', room);
     socket.emit('update-settings', room);
     sendRateLimit(socket);
 
+    // Add user to the room's user map with their nickname and initial ping value (e.g., 0 for now)
+    const pingNow = Date.now();
+    if (!roomUsers.has(roomId)) {
+      roomUsers.set(roomId, new Map());
+    }
+    roomUsers.get(roomId).set(userId, { nickname, ping: pingNow });
+
     // Notify room members about the new user (excluding the user who just joined)
-    io.to(roomId).emit('user-joined', { roomId, userId, nickname });
+    socket.join(roomId);
+    io.to(roomId).emit('user-joined', { roomId, userId, nickname, ping: pingNow });
+  });
+
+  socket.on('leave', (data) => {
+    const { roomId } = data;
+    // Validate values
+    if (typeof roomId !== 'string') return;
+
+    // Get user
+    const userId = userSession.getUserId(socket);
+    if (!userId) return;
+
+    // Disconnect user from room
+    const room = roomUsers.get(roomId);
+    if (!room) {
+      socket.emit('leave-failed', { msg: 'No Room users.', roomId, code: 1 });
+      return;
+    }
+
+    if (room.has(userId)) {
+      // Remove the user from their room
+      room.delete(userId);
+      io.to(roomId).emit('user-left', { roomId, userId });
+      socket.leave(roomId);
+    } else socket.emit('leave-failed', { msg: "You're not in the room.", roomId, code: 2 });
   });
 
   socket.on('send-message', (data) => {
@@ -551,9 +581,12 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     // Get user
     const userId = userSession.getUserId(socket);
+    const ipAddress = socket.handshake ? socket.handshake.address : '?.?.?.?';
 
     // Bye
-    console.log(`[APP] ${userId} disconnected.`);
+    console.log(
+      `[APP] [${ipAddress}] ${userId ? `User ${userId}` : 'Unknown user'} disconnected: ${socket.id}`,
+    );
 
     // Disconnect user from rooms
     if (userId)
