@@ -162,6 +162,45 @@ io.on('connection', (socket) => {
     `[APP] [${socket.handshake ? socket.handshake.address : '?.?.?.?'}] User connected: ${socket.id}`,
   );
 
+  socket.on('ban', (data) => {
+    const { userId, reason } = data;
+    // Validate values
+    if (typeof userId !== 'string' || typeof reason !== 'string') return;
+
+    // Disconnect user
+    if (userSockets.has(userId)) userSockets.get(userId).disconnect();
+
+    // Add into the ban list
+    bannedUsers.set(userId, { date: Date.now(), reason });
+
+    // User ban successfully.
+    socket.emit('ban-status', { userId, reason, banned: true });
+  });
+
+  socket.on('unban', (data) => {
+    const { userId, reason } = data;
+    // Validate values
+    if (typeof userId !== 'string') return;
+
+    // Remove user from the ban list
+    bannedUsers.delete(userId);
+
+    // User ban successfully.
+    socket.emit('ban-status', { userId, banned: false });
+  });
+
+  socket.on('kick', (data) => {
+    const { userId } = data;
+    // Validate values
+    if (typeof userId !== 'string') return;
+
+    // Disconnect user
+    if (userSockets.has(userId)) userSockets.get(userId).disconnect();
+
+    // User kick successfully.
+    socket.emit('kick-status', { userId });
+  });
+
   socket.on('register', (data) => {
     const { userId, password, nickname } = data;
     // Validate values
