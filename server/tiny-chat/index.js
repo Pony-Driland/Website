@@ -167,6 +167,12 @@ io.on('connection', (socket) => {
     // Validate values
     if (typeof userId !== 'string' || typeof reason !== 'string') return;
 
+    // Check if user exists
+    if (!users.has(userId)) {
+      socket.emit('ban-failed', { msg: 'User not found.', banned: true, code: 1 });
+      return;
+    }
+
     // Disconnect user
     if (userSockets.has(userId)) userSockets.get(userId).disconnect();
 
@@ -178,9 +184,15 @@ io.on('connection', (socket) => {
   });
 
   socket.on('unban', (data) => {
-    const { userId, reason } = data;
+    const { userId } = data;
     // Validate values
     if (typeof userId !== 'string') return;
+
+    // Check if user exists
+    if (!users.has(userId)) {
+      socket.emit('ban-failed', { msg: 'User not found.', banned: false, code: 1 });
+      return;
+    }
 
     // Remove user from the ban list
     bannedUsers.delete(userId);
@@ -196,9 +208,104 @@ io.on('connection', (socket) => {
 
     // Disconnect user
     if (userSockets.has(userId)) userSockets.get(userId).disconnect();
+    else {
+      socket.emit('kick-failed', { msg: 'User not found.', code: 1 });
+      return;
+    }
 
     // User kick successfully.
     socket.emit('kick-status', { userId });
+  });
+
+  socket.on('banFromRoom', (data) => {
+    const { userId, roomId } = data;
+    // Validate values
+    if (typeof userId !== 'string' || typeof roomId !== 'string') return;
+
+    // Check if the room exists
+    const rUsers = roomUsers.get(roomId);
+    const room = rooms.get(roomId);
+    if (!rUsers || !room) {
+      socket.emit('room-ban-failed', { msg: 'Room not found.', banned: true, userId, roomId, code: 1 });
+      return;
+    }
+
+    // Check if user exists
+    if (!users.has(userId)) {
+      //
+      socket.emit('room-ban-failed', { msg: 'User not found.', banned: true, userId, roomId, code: 2 });
+      return;
+    }
+
+    // Check if user is connected
+    const userSocket = userSockets.get(userId);
+
+    // Add into the ban list
+    room.banned.add(userId);
+    room.set(roomId, room);
+
+    // Remove the user from their room
+    if (rUsers.has(userId)) {
+      rUsers.delete(userId);
+      io.to(roomId).emit('user-left', { roomId, userId });
+      io.to(roomId).emit('user-banned', { roomId, userId });
+      if(userSocket) userSocket.leave(roomId);
+    }
+
+    // User ban successfully.
+    socket.emit('room-ban-status', { roomId, userId, banned: true });
+  });
+
+  socket.on('unbanFromRoom', (data) => {
+    const { userId, roomId } = data;
+    // Validate values
+    if (typeof userId !== 'string' || typeof roomId !== 'string') return;
+
+    // Check if the room exists
+    const room = rooms.get(roomId);
+    if (!room) {
+      //
+      socket.emit('room-ban-failed', { msg: 'Room not found.', banned: false, userId, roomId, code: 1 });
+      return;
+    }
+
+    // Remove user from the ban list
+    room.banned.delete(userId);
+    room.set(roomId, room);
+
+    // User ban successfully.
+    socket.emit('room-ban-status', { roomId, userId, banned: false });
+  });
+
+  socket.on('kickFromRoom', (data) => {
+    const { userId, roomId } = data;
+    // Validate values
+    if (typeof userId !== 'string' || typeof roomId !== 'string') return;
+
+    // Check if the room exists
+    const room = roomUsers.get(roomId);
+    if (!room) {
+      socket.emit('room-kick-failed', { msg: 'Room not found.', userId, roomId, code: 1 });
+      return;
+    }
+
+    // Check if user is connected
+    const userSocket = userSockets.get(userId);
+    if (!userSocket) {
+      socket.emit('room-kick-failed', { msg: 'User not found.', userId, roomId, code: 2 });
+      return;
+    }
+
+    // Remove the user from their room
+    if (room.has(userId)) {
+      room.delete(userId);
+      io.to(roomId).emit('user-left', { roomId, userId });
+      io.to(roomId).emit('user-kicked', { roomId, userId });
+      userSocket.leave(roomId);
+    } else socket.emit('room-kick-failed', { msg: 'User is not in the room.', roomId, code: 2 });
+
+    // User kick successfully.
+    socket.emit('room-kick-status', { roomId, userId });
   });
 
   socket.on('register', (data) => {
@@ -318,6 +425,12 @@ io.on('connection', (socket) => {
       return;
     }
 
+    // Check if the user is banned
+    if (room.banned.has(userId)) {
+      socket.emit('join-failed', { msg: "You're is banned.", roomId, code: 4 });
+      return;
+    }
+
     // Add user to the room
     room.users.add(userId);
 
@@ -412,7 +525,8 @@ io.on('connection', (socket) => {
     const history = roomHistories.get(roomId);
     if (!history) return;
 
-    history.set(msgIndex, { userId, text: message });
+    const msgDate = Date.now();
+    history.set(msgIndex, { userId, text: message, date: msgDate, edited: 0 });
 
     // Emit to the room that the user joined (based on roomId)
     io.to(roomId).emit('new-message', {
@@ -420,6 +534,8 @@ io.on('connection', (socket) => {
       id: msgIndex,
       userId,
       text: message,
+      date: msgDate,
+      edited: 0,
     });
   });
 
@@ -467,11 +583,13 @@ io.on('connection', (socket) => {
       return;
 
     // Edit message
+    const msgDate = Date.now();
     msg.text = newText;
+    msg.edited = msgDate;
     history.set(messageId, msg);
 
     // Emit the event only to logged-in users in the room
-    io.to(roomId).emit('update-message', { roomId, id: messageId, text: newText });
+    io.to(roomId).emit('update-message', { roomId, id: messageId, text: newText, edited: msgDate });
   });
 
   socket.on('delete-message', (data) => {
