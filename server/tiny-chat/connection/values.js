@@ -122,9 +122,13 @@ export const sendRateLimit = (socket) => {
 export const createRateLimit = (limitCount = 5, itemName = 'items', code = -1) => {
   // Track the events for rate limiting
   const userEventCounts = new Map();
-  return (socket) => {
+  return (socket, isUnknown = false) => {
     // Is a user
-    const userId = userSession.getUserId(socket);
+    const userId = !isUnknown
+      ? userSession.getUserId(socket)
+      : socket.handshake
+        ? socket.handshake.address
+        : '?.?.?.?';
     if (!userId) return;
 
     // Rate limiting logic
