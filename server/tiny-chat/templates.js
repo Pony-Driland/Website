@@ -1,9 +1,10 @@
 // Define a default room for testing
 const templates = {
   room: {
+    title: '',
     password: 'roompassword', // Room password
     maxUsers: 50, // Max users allowed in the room
-    ownerId: 'owner456', // Secondary room owner
+    ownerId: 'owner456',
     moderators: new Set(['roomMod1', 'roomMod2']), // Room-specific moderators
     banned: new Set(['user1', 'user2']),
     disabled: false,
