@@ -498,8 +498,12 @@ io.on('connection', (socket) => {
 
     // Prepare results
     const results = [];
-    const sidesList = [];
     let total = 0;
+    const rollDice = (sides) => {
+      const roll = Math.floor(Math.random() * sides) + 1;
+      results.push({ sides, roll });
+      total += roll;
+    };
 
     // Check if all dice should have the same number of sides
     if (sameSides) {
@@ -507,31 +511,18 @@ io.on('connection', (socket) => {
       if (typeof sides !== 'number' || sides < 2) {
         return io.to(roomId).emit('roll-result', { error: 'Invalid dice configuration' });
       }
-
       // Roll all dice with the same number of sides
-      for (let i = 0; i < dice.length; i++) {
-        sidesList.push(sides);
-        const roll = Math.floor(Math.random() * sides) + 1;
-        results.push({ sides, roll });
-        total += roll;
-      }
-
+      for (let i = 0; i < dice.length; i++) rollDice(sides);
       return io.to(roomId).emit('roll-result', { results, total });
     } else {
       // Roll dice with different number of sides
-
       // Iterate over each die and roll with its respective number of sides
       for (const sides of dice) {
         if (typeof sides !== 'number' || sides < 2) {
           return io.to(roomId).emit('roll-result', { error: 'Invalid dice configuration' });
         }
-
-        sidesList.push(sides);
-        const roll = Math.floor(Math.random() * sides) + 1;
-        results.push({ sides, roll });
-        total += roll;
+        rollDice(sides);
       }
-
       return io.to(roomId).emit('roll-result', { results, total, sides: sidesList });
     }
   });
