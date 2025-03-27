@@ -7,7 +7,7 @@ import {
   MESSAGE_SIZE_LIMIT,
 } from './values';
 
-export default function message(socket, io) {
+export default function messageManager(socket, io) {
   socket.on('send-message', (data) => {
     const { message, roomId } = data;
     // Validate values

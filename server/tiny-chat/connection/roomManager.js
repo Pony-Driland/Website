@@ -50,9 +50,15 @@ export default function roomManager(socket, io) {
       return;
     }
 
+    // Check if the room is disabled
+    if (room.disabled) {
+      socket.emit('join-failed', { msg: 'Room is disabled.', roomId, code: 4 });
+      return;
+    }
+
     // Check if the user is banned
     if (room.banned.has(userId)) {
-      socket.emit('join-failed', { msg: "You're is banned.", roomId, code: 4 });
+      socket.emit('join-failed', { msg: "You're is banned.", roomId, code: 5 });
       return;
     }
 
