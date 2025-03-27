@@ -13,11 +13,8 @@ const io = new Server({
   cors: { origin: '*' },
 });
 
+const serverOwnerId = 'owner123'; // Server owner ID
 const userSockets = new Map(); // Socket users
-
-// Ids
-const serverOwnerId = 'owner123'; // Room owner ID
-const moderators = new Set(['mod1', 'mod2']); // List of moderators
 
 // Rate limit settings
 const EVENT_LIMIT = 5; // Max events
@@ -31,6 +28,9 @@ const NICKNAME_SIZE_LIMIT = 100; // Max user id size
 
 // Database
 const users = new TimedMap(); // Stores user credentials
+const moderators = new TimedMap(); // Stores the list of server moderators
+const bannedUsers = new TimedMap(); // Stores the list of banned users
+
 const rooms = new TimedMap(); // Stores room configurations, including password, etc.
 const roomHistories = new Map(); // Stores room histories
 
@@ -194,12 +194,23 @@ io.on('connection', (socket) => {
     if (typeof userId !== 'string' || typeof password !== 'string') return;
 
     // Check if user is using account
+    if (bannedUsers.has(userId)) {
+      const banData = bannedUsers.get(userId);
+      socket.emit('login-failed', {
+        reason: banData.reason,
+        date: banData.date,
+        msg: "You're banned!",
+        code: 5,
+      });
+      return;
+    }
+
     if (userSession.getUserId(socket)) {
       socket.emit('login-failed', { msg: "You're already logged in!", code: 4 });
       return;
     }
 
-    if (userSockets.get(userId)) {
+    if (userSockets.has(userId)) {
       socket.emit('login-failed', { msg: 'The account is already in use.', code: 3 });
       return;
     }
@@ -410,7 +421,7 @@ io.on('connection', (socket) => {
         userId !== serverOwnerId &&
         !moderators.has(userId) &&
         room.ownerId !== userId &&
-        !room.roomModerators.has(userId))
+        !room.moderators.has(userId))
     )
       return;
 
@@ -448,7 +459,7 @@ io.on('connection', (socket) => {
         userId !== serverOwnerId &&
         !moderators.has(userId) &&
         room.ownerId !== userId &&
-        !room.roomModerators.has(userId))
+        !room.moderators.has(userId))
     )
       return;
 
@@ -479,15 +490,37 @@ io.on('connection', (socket) => {
 
     if (!isRoomOwner && !isServerOwner) return; // Only room owner or server owner can update settings
 
-    // Allowed updates (only password and roomModerators)
+    // Allowed updates
     const allowedUpdates = {};
 
     if ('password' in newSettings) {
-      allowedUpdates.password = newSettings.password;
+      if (typeof newSettings.password === 'string') allowedUpdates.password = newSettings.password;
     }
 
-    if ('roomModerators' in newSettings) {
-      allowedUpdates.roomModerators = new Set(newSettings.roomModerators);
+    if ('maxUsers' in newSettings) {
+      if (
+        typeof newSettings.maxUsers === 'number' &&
+        !Number.isNaN(newSettings.maxUsers) &&
+        Number.isFinite(newSettings.maxUsers)
+      ) {
+        allowedUpdates.maxUsers = newSettings.maxUsers;
+        if (allowedUpdates.maxUsers > MAX_USERS_PER_ROOM)
+          allowedUpdates.maxUsers = MAX_USERS_PER_ROOM;
+        else if (allowedUpdates.maxUsers < 1) allowedUpdates.maxUsers = 1;
+      }
+    }
+
+    if ('moderators' in newSettings) {
+      if (Array.isArray(newSettings.moderators)) {
+        let canExecute = true;
+        for (const index in newSettings.moderators) {
+          if (typeof newSettings.moderators[index] !== 'string') {
+            canExecute = false;
+            break;
+          }
+        }
+        if (canExecute) allowedUpdates.moderators = new Set(newSettings.moderators);
+      }
     }
 
     // Apply updates if there are valid changes
