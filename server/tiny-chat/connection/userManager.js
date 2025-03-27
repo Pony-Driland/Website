@@ -10,6 +10,7 @@ import {
   userSockets,
   serverOwnerId,
   NICKNAME_SIZE_LIMIT,
+  OPEN_REGISTRATION,
 } from './values';
 
 export default function userManager(socket, io) {
@@ -153,15 +154,13 @@ export default function userManager(socket, io) {
     // Check User
     if (userIsRateLimited(socket)) return;
 
-    if (userSession.getUserId(socket) !== serverOwnerId) {
-      // Only the owner can create accounts.
-      socket.emit('register-status', 2);
+    if (!OPEN_REGISTRATION && userSession.getUserId(socket) !== serverOwnerId) {
+      socket.emit('register-status', { code: 2, msg: 'Only the owner can create accounts.' });
       return;
     }
 
     if (users.has(userId)) {
-      // User ID already exists.
-      socket.emit('register-status', 1);
+      socket.emit('register-status', { code: 1, msg: 'User Id already exists.' });
       return;
     }
 
