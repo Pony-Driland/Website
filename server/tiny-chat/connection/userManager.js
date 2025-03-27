@@ -152,7 +152,7 @@ export default function userManager(socket, io) {
       return;
 
     // Check User
-    if (userIsRateLimited(socket)) return;
+    if (userIsRateLimited(socket, true)) return;
 
     if (!OPEN_REGISTRATION && userSession.getUserId(socket) !== serverOwnerId) {
       socket.emit('register-status', { code: 2, msg: 'Only the owner can create accounts.' });
