@@ -1,7 +1,7 @@
 import { Server } from 'socket.io';
 import crypto from 'crypto';
-import { objType } from 'for-promise/utils/lib.mjs';
 
+import { objType } from './lib/objChecker';
 import TimedMap from './TimedMap';
 import startFiles from './appStorage';
 
