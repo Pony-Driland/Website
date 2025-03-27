@@ -167,9 +167,20 @@ io.on('connection', (socket) => {
     // Validate values
     if (typeof userId !== 'string' || typeof reason !== 'string') return;
 
+    // Get user
+    const yourId = userSession.getUserId(socket);
+    if (!yourId) return; // Only logged-in users can use it
+    if (userIsRateLimited(socket)) return;
+
+    // Check if user is server owner or server mod
+    if(yourId !== serverOwnerId && !moderators.has(yourId) ) {
+      socket.emit('ban-failed', { msg: 'You are not allowed to do this.', banned: true, code: 1 });
+      return;
+    }
+
     // Check if user exists
     if (!users.has(userId)) {
-      socket.emit('ban-failed', { msg: 'User not found.', banned: true, code: 1 });
+      socket.emit('ban-failed', { msg: 'User not found.', banned: true, code: 2 });
       return;
     }
 
@@ -188,9 +199,20 @@ io.on('connection', (socket) => {
     // Validate values
     if (typeof userId !== 'string') return;
 
+    // Get user
+    const yourId = userSession.getUserId(socket);
+    if (!yourId) return; // Only logged-in users can use it
+    if (userIsRateLimited(socket)) return;
+
+    // Check if user is server owner or server mod
+    if(yourId !== serverOwnerId && !moderators.has(yourId) ) {
+      socket.emit('ban-failed', { msg: 'You are not allowed to do this.', banned: true, code: 1 });
+      return;
+    }
+
     // Check if user exists
     if (!users.has(userId)) {
-      socket.emit('ban-failed', { msg: 'User not found.', banned: false, code: 1 });
+      socket.emit('ban-failed', { msg: 'User not found.', banned: false, code: 2 });
       return;
     }
 
@@ -206,10 +228,21 @@ io.on('connection', (socket) => {
     // Validate values
     if (typeof userId !== 'string') return;
 
+    // Get user
+    const yourId = userSession.getUserId(socket);
+    if (!yourId) return; // Only logged-in users can use it
+    if (userIsRateLimited(socket)) return;
+
+    // Check if user is server owner or server mod
+    if(yourId !== serverOwnerId && !moderators.has(yourId) ) {
+      socket.emit('kick-failed', { msg: 'You are not allowed to do this.', code: 1 });
+      return;
+    }
+
     // Disconnect user
     if (userSockets.has(userId)) userSockets.get(userId).disconnect();
     else {
-      socket.emit('kick-failed', { msg: 'User not found.', code: 1 });
+      socket.emit('kick-failed', { msg: 'User not found.', code: 2 });
       return;
     }
 
@@ -222,6 +255,11 @@ io.on('connection', (socket) => {
     // Validate values
     if (typeof userId !== 'string' || typeof roomId !== 'string') return;
 
+    // Get user
+    const yourId = userSession.getUserId(socket);
+    if (!yourId) return; // Only logged-in users can use it
+    if (userIsRateLimited(socket)) return;
+
     // Check if the room exists
     const rUsers = roomUsers.get(roomId);
     const room = rooms.get(roomId);
@@ -230,10 +268,16 @@ io.on('connection', (socket) => {
       return;
     }
 
+    // Check if user is server owner or server mod
+    if(yourId !== serverOwnerId && !moderators.has(yourId) && room.ownerId !== yourId && !room.moderators.has(yourId)) {
+      socket.emit('room-ban-failed', { msg: 'You are not allowed to do this.', roomId, userId, banned: true, code: 2 });
+      return;
+    }
+
     // Check if user exists
     if (!users.has(userId)) {
       //
-      socket.emit('room-ban-failed', { msg: 'User not found.', banned: true, userId, roomId, code: 2 });
+      socket.emit('room-ban-failed', { msg: 'User not found.', banned: true, userId, roomId, code: 3 });
       return;
     }
 
@@ -260,12 +304,23 @@ io.on('connection', (socket) => {
     const { userId, roomId } = data;
     // Validate values
     if (typeof userId !== 'string' || typeof roomId !== 'string') return;
+    
+    // Get user
+    const yourId = userSession.getUserId(socket);
+    if (!yourId) return; // Only logged-in users can use it
+    if (userIsRateLimited(socket)) return;
 
     // Check if the room exists
     const room = rooms.get(roomId);
     if (!room) {
       //
       socket.emit('room-ban-failed', { msg: 'Room not found.', banned: false, userId, roomId, code: 1 });
+      return;
+    }
+
+    // Check if user is server owner or server mod
+    if(yourId !== serverOwnerId && !moderators.has(yourId) && room.ownerId !== yourId && !room.moderators.has(yourId)) {
+      socket.emit('room-ban-failed', { msg: 'You are not allowed to do this.', banned: false, userId, roomId, code: 2 });
       return;
     }
 
@@ -282,6 +337,11 @@ io.on('connection', (socket) => {
     // Validate values
     if (typeof userId !== 'string' || typeof roomId !== 'string') return;
 
+    // Get user
+    const yourId = userSession.getUserId(socket);
+    if (!yourId) return; // Only logged-in users can use it
+    if (userIsRateLimited(socket)) return;
+
     // Check if the room exists
     const room = roomUsers.get(roomId);
     if (!room) {
@@ -289,10 +349,16 @@ io.on('connection', (socket) => {
       return;
     }
 
+    // Check if user is server owner or server mod
+    if(yourId !== serverOwnerId && !moderators.has(yourId) && room.ownerId !== yourId && !room.moderators.has(yourId)) {
+      socket.emit('room-kick-failed', { msg: 'You are not allowed to do this.', userId, roomId, code: 2 });
+      return;
+    }    
+
     // Check if user is connected
     const userSocket = userSockets.get(userId);
     if (!userSocket) {
-      socket.emit('room-kick-failed', { msg: 'User not found.', userId, roomId, code: 2 });
+      socket.emit('room-kick-failed', { msg: 'User not found.', userId, roomId, code: 3 });
       return;
     }
 
@@ -697,7 +763,9 @@ io.on('connection', (socket) => {
     if (typeof roomId !== 'string' || !objType(values, 'object') || typeof isPrivate !== 'boolean')
       return;
 
-    // Check user
+    // Get user
+    const userId = userSession.getUserId(socket);
+    if (!userId) return; // Only logged-in users can update settings
     if (userIsRateLimited(socket)) return;
 
     // Get room
@@ -705,7 +773,7 @@ io.on('connection', (socket) => {
     if (!room) return;
 
     // Check if the user is the owner of the room or the server owner
-    if (socket.userId !== room.ownerId && socket.userId !== serverOwnerId) {
+    if (userId !== room.ownerId && userId !== serverOwnerId) {
       socket.emit('error-message', {
         roomId,
         text: message,
