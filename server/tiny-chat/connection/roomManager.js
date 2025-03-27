@@ -116,7 +116,7 @@ export default function roomManager(socket, io) {
     } else socket.emit('leave-failed', { msg: "You're not in the room.", roomId, code: 2 });
   });
 
-  socket.on('banFromRoom', (data) => {
+  socket.on('ban-from-room', (data) => {
     const { userId, roomId } = data;
     // Validate values
     if (typeof userId !== 'string' || typeof roomId !== 'string') return;
@@ -189,7 +189,7 @@ export default function roomManager(socket, io) {
     socket.emit('room-ban-status', { roomId, userId, banned: true });
   });
 
-  socket.on('unbanFromRoom', (data) => {
+  socket.on('unban-from-room', (data) => {
     const { userId, roomId } = data;
     // Validate values
     if (typeof userId !== 'string' || typeof roomId !== 'string') return;
@@ -244,7 +244,7 @@ export default function roomManager(socket, io) {
     socket.emit('room-ban-status', { roomId, userId, banned: false });
   });
 
-  socket.on('kickFromRoom', (data) => {
+  socket.on('kick-from-room', (data) => {
     const { userId, roomId } = data;
     // Validate values
     if (typeof userId !== 'string' || typeof roomId !== 'string') return;
@@ -296,7 +296,7 @@ export default function roomManager(socket, io) {
     socket.emit('room-kick-status', { roomId, userId });
   });
 
-  socket.on('createRoom', (data) => {
+  socket.on('create-room', (data) => {
     const { roomId, password, title } = data;
     // Validate values
     if (typeof roomId !== 'string' || typeof password !== 'string' || typeof title !== 'string')
@@ -322,7 +322,7 @@ export default function roomManager(socket, io) {
     }
   });
 
-  socket.on('deleteRoom', (data) => {
+  socket.on('delete-room', (data) => {
     const { roomId } = data;
     // Validate values
     if (typeof roomId !== 'string') return;
@@ -375,7 +375,7 @@ export default function roomManager(socket, io) {
     socket.emit('room-delete-status', { roomId });
   });
 
-  socket.on('disableRoom', (data) => {
+  socket.on('disable-room', (data) => {
     const { roomId } = data;
     // Validate values
     if (typeof roomId !== 'string') return;
@@ -430,7 +430,7 @@ export default function roomManager(socket, io) {
     socket.emit('room-disable-status', { roomId, disabled: true });
   });
 
-  socket.on('enableRoom', (data) => {
+  socket.on('enable-room', (data) => {
     const { roomId } = data;
     // Validate values
     if (typeof roomId !== 'string') return;
