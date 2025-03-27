@@ -59,7 +59,7 @@ export const createAccount = (userId, password, nickname) => {
 
 export const createRoom = (userId, roomId, password, title) => {
   const hashedPassword = getHashString(password.substring(0, PASSWORD_SIZE_LIMIT));
-  users.set(roomId.substring(0, ROOM_ID_SIZE_LIMIT), {
+  rooms.set(roomId.substring(0, ROOM_ID_SIZE_LIMIT), {
     password: hashedPassword,
     title: title.substring(0, ROOM_TITLE_SIZE_LIMIT),
     maxUsers: MAX_USERS_PER_ROOM,
