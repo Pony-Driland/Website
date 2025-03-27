@@ -77,8 +77,7 @@ export default function roomManager(socket, io) {
     // Emit chat history and settings to the user
     socket.emit('room-users', mapToArray(roomUsers.get(roomId)));
     socket.emit('room-history', mapToArray(history));
-    socket.emit('update-settings', room);
-    socket.emit('update-settings', room);
+    socket.emit('update-room', room);
     sendRateLimit(socket);
 
     // Add user to the room's user map with their nickname and initial ping value (e.g., 0 for now)
@@ -477,7 +476,94 @@ export default function roomManager(socket, io) {
     socket.emit('room-disable-status', { roomId, disabled: false });
   });
 
-  socket.on('update-settings', (data) => {
+  socket.on('room-add-mod', (data) => {
+    const { roomId, mods } = data;
+    // Validate values
+    if (typeof roomId !== 'string' || Array.isArray(mods)) return;
+
+    // Get user
+    const userId = userSession.getUserId(socket);
+    if (!userId) return; // Only logged-in users can update settings
+    if (userIsRateLimited(socket)) return;
+
+    // Get room
+    const room = rooms.get(roomId);
+    if (!room) return; // Room does not exist
+
+    // Check if the user is the room owner or the server owner
+    const isRoomOwner = userId === room.ownerId;
+    const isServerOwner = userId === serverOwnerId; // 'serverOwnerId' refers to the server owner
+
+    if (!isRoomOwner && !isServerOwner) return; // Only room owner or server owner can update settings
+
+    // Allowed updates
+    const allowedUpdates = {};
+
+    const rUsers = roomUsers.get(roomId);
+    let canExecute = rUsers ? true : false;
+    const newMods = room.moderators ? [...room.moderators] : [];
+    if (canExecute) {
+      for (const index in mods) {
+        if (
+          typeof mods[index] === 'string' &&
+          rUsers.has(mods[index]) &&
+          newMods.indexOf(mods[index]) < 0
+        )
+          newMods.push(mods[index]);
+      }
+      allowedUpdates.moderators = new Set(newMods);
+    }
+
+    // Apply updates if there are valid changes
+    if (Object.keys(allowedUpdates).length > 0) {
+      rooms.set(roomId, Object.assign(room, allowedUpdates));
+
+      // Notify all users in the room about the updated settings
+      io.to(roomId).emit('update-room', { room: rooms.get(roomId), roomId });
+    }
+  });
+
+  socket.on('room-remove-mod', (data) => {
+    const { roomId, mods } = data;
+    // Validate values
+    if (typeof roomId !== 'string' || Array.isArray(mods)) return;
+
+    // Get user
+    const userId = userSession.getUserId(socket);
+    if (!userId) return; // Only logged-in users can update settings
+    if (userIsRateLimited(socket)) return;
+
+    // Get room
+    const room = rooms.get(roomId);
+    if (!room) return; // Room does not exist
+
+    // Check if the user is the room owner or the server owner
+    const isRoomOwner = userId === room.ownerId;
+    const isServerOwner = userId === serverOwnerId; // 'serverOwnerId' refers to the server owner
+
+    if (!isRoomOwner && !isServerOwner) return; // Only room owner or server owner can update settings
+
+    // Allowed updates
+    const allowedUpdates = {};
+
+    const newMods = [];
+    const oldMods = room.moderators ? [...room.moderators] : [];
+    for (const index in oldMods) {
+      if (typeof oldMods[index] === 'string' && mods.indexOf(oldMods[index]) < 0)
+        newMods.push(mods[index]);
+    }
+    allowedUpdates.moderators = new Set(newMods);
+
+    // Apply updates if there are valid changes
+    if (Object.keys(allowedUpdates).length > 0) {
+      rooms.set(roomId, Object.assign(room, allowedUpdates));
+
+      // Notify all users in the room about the updated settings
+      io.to(roomId).emit('update-room', { room: rooms.get(roomId), roomId });
+    }
+  });
+
+  socket.on('update-room', (data) => {
     const { roomId, newSettings } = data;
     // Validate values
     if (typeof roomId !== 'string' || !objType(newSettings, 'object')) return;
@@ -528,7 +614,7 @@ export default function roomManager(socket, io) {
       rooms.set(roomId, Object.assign(room, allowedUpdates));
 
       // Notify all users in the room about the updated settings
-      io.to(roomId).emit('update-settings', { room, roomId });
+      io.to(roomId).emit('update-room', { room: rooms.get(roomId), roomId });
     }
   });
 
@@ -564,14 +650,15 @@ export default function roomManager(socket, io) {
       if (!privateRoomData.has(roomId)) {
         privateRoomData.set(roomId, {});
       }
-      Object.assign(privateRoomData.get(roomId), values);
-      socket.emit('private-room-data-updated', { roomId, values: privateRoomData.get(roomId) });
+      privateRoomData.set(roomId, Object.assign(privateRoomData.get(roomId), values));
+      // Notify all users in the room about the updated data
+      socket.emit('private-update-room-data', { roomId, values: privateRoomData.get(roomId) });
     }
     // Nope
     else {
       roomData.set(roomId, Object.assign(roomData.get(roomId), values));
       // Notify all users in the room about the updated data
-      io.to(roomId).emit('room-data-updated', { roomId, values: roomData.get(roomId) });
+      io.to(roomId).emit('update-room-data', { roomId, values: roomData.get(roomId) });
     }
   });
 }
