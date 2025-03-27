@@ -15,7 +15,9 @@ import {
   users,
   userSockets,
   serverOwnerId,
+  createRoom,
   MAX_USERS_PER_ROOM,
+  ROOM_TITLE_SIZE_LIMIT,
 } from './values';
 
 export default function roomManager(socket, io) {
@@ -295,6 +297,32 @@ export default function roomManager(socket, io) {
     socket.emit('room-kick-status', { roomId, userId });
   });
 
+  socket.on('createRoom', (data) => {
+    const { roomId, password, title } = data;
+    // Validate values
+    if (typeof roomId !== 'string' || typeof password !== 'string' || typeof title !== 'string')
+      return;
+
+    // Get user
+    const userId = userSession.getUserId(socket);
+    if (!userId) return; // Only logged-in users can use it
+    if (userIsRateLimited(socket)) return;
+
+    // Check if the room exists
+    let room = rooms.get(roomId);
+    if (!room) {
+      createRoom(userId, roomId, password, title);
+      socket.emit('room-create-status', { userId, roomId, password, title });
+    } else {
+      socket.emit('room-create-failed', {
+        msg: 'This room already exists.',
+        roomId,
+        code: 1,
+      });
+      return;
+    }
+  });
+
   socket.on('disableRoom', (data) => {
     const { roomId } = data;
     // Validate values
@@ -365,7 +393,6 @@ export default function roomManager(socket, io) {
     // Check if the room exists
     const room = rooms.get(roomId);
     if (!room) {
-      //
       socket.emit('room-ban-failed', {
         msg: 'Room not found.',
         banned: false,
@@ -422,8 +449,14 @@ export default function roomManager(socket, io) {
     // Allowed updates
     const allowedUpdates = {};
 
+    if ('title' in newSettings) {
+      if (typeof newSettings.title === 'string')
+        allowedUpdates.title = newSettings.title.substring(0, ROOM_TITLE_SIZE_LIMIT);
+    }
+
     if ('password' in newSettings) {
-      if (typeof newSettings.password === 'string') allowedUpdates.password = newSettings.password;
+      if (typeof newSettings.password === 'string')
+        allowedUpdates.password = newSettings.password.substring(0, PASSWORD_SIZE_LIMIT);
     }
 
     if ('maxUsers' in newSettings) {
@@ -436,19 +469,6 @@ export default function roomManager(socket, io) {
         if (allowedUpdates.maxUsers > MAX_USERS_PER_ROOM)
           allowedUpdates.maxUsers = MAX_USERS_PER_ROOM;
         else if (allowedUpdates.maxUsers < 1) allowedUpdates.maxUsers = 1;
-      }
-    }
-
-    if ('moderators' in newSettings) {
-      if (Array.isArray(newSettings.moderators)) {
-        let canExecute = true;
-        for (const index in newSettings.moderators) {
-          if (typeof newSettings.moderators[index] !== 'string') {
-            canExecute = false;
-            break;
-          }
-        }
-        if (canExecute) allowedUpdates.moderators = new Set(newSettings.moderators);
       }
     }
 

@@ -15,6 +15,9 @@ export const USER_ID_SIZE_LIMIT = 100; // Max user id size
 export const PASSWORD_SIZE_LIMIT = 200; // Max password size
 export const NICKNAME_SIZE_LIMIT = 100; // Max user id size
 
+export const ROOM_ID_SIZE_LIMIT = 100;
+export const ROOM_TITLE_SIZE_LIMIT = 100;
+
 // Database
 export const users = new TimedMap(); // Stores user credentials
 export const moderators = new TimedMap(); // Stores the list of server moderators
@@ -51,6 +54,20 @@ export const createAccount = (userId, password, nickname) => {
   users.set(userId.substring(0, USER_ID_SIZE_LIMIT), {
     password: hashedPassword,
     nickname: nickname.substring(0, NICKNAME_SIZE_LIMIT),
+  });
+};
+
+export const createRoom = (userId, roomId, password, title) => {
+  const hashedPassword = getHashString(password.substring(0, PASSWORD_SIZE_LIMIT));
+  users.set(roomId.substring(0, ROOM_ID_SIZE_LIMIT), {
+    password: hashedPassword,
+    title: title.substring(0, ROOM_TITLE_SIZE_LIMIT),
+    maxUsers: MAX_USERS_PER_ROOM,
+    ownerId: userId,
+    moderators: new Set([]),
+    banned: new Set([]),
+    disabled: false,
+    last_index: 0,
   });
 };
 
