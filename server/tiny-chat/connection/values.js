@@ -4,6 +4,8 @@ import TimedMap from '../TimedMap';
 export const serverOwnerId = 'owner123'; // Server owner ID
 export const userSockets = new Map(); // Socket users
 
+export const OPEN_REGISTRATION = false;
+
 // Rate limit settings
 export const EVENT_LIMIT = 5; // Max events
 export const MESSAGES_LIMIT = 5; // Max messages
