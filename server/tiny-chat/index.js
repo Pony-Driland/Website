@@ -364,6 +364,12 @@ io.on('connection', (socket) => {
       return;
     }
 
+    // Check if user exists
+    if (!users.has(userId)) {
+      socket.emit('ban-failed', { msg: 'User not found.', roomId, userId, banned: false, code: 3 });
+      return;
+    }
+
     // Remove user from the ban list
     room.banned.delete(userId);
     room.set(roomId, room);
