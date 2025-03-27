@@ -6,6 +6,7 @@ const templates = {
     ownerId: 'owner456', // Secondary room owner
     moderators: new Set(['roomMod1', 'roomMod2']), // Room-specific moderators
     banned: new Set(['user1', 'user2']),
+    disabled: false,
     last_index: 0,
   },
   history: {
