@@ -1,8 +1,7 @@
 import { Server } from 'socket.io';
 import startFiles from './appStorage';
 
-import message from './connection/message';
-import disableRoom from './connection/disableRoom';
+import messageManager from './connection/messageManager';
 import userManager from './connection/userManager';
 import roomManager from './connection/roomManager';
 
@@ -18,8 +17,7 @@ io.on('connection', (socket) => {
   console.log(
     `[APP] [${socket.handshake ? socket.handshake.address : '?.?.?.?'}] User connected: ${socket.id}`,
   );
-  message(socket, io);
-  disableRoom(socket, io);
+  messageManager(socket, io);
   userManager(socket, io);
   roomManager(socket, io);
 });
