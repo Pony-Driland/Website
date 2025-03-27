@@ -140,7 +140,6 @@ export const createRateLimit = (limitCount = 5, itemName = 'items', code = -1) =
     if (currentTime - userTimestamp < RATE_LIMIT_TIME && userMessageCount >= limitCount) {
       const rateLimitTime = RATE_LIMIT_TIME / 1000;
       socket.emit('rate-limit', {
-        roomId,
         msg: `Rate limit exceeded. You can send a maximum of ${limitCount} ${itemName} in ${rateLimitTime} seconds.`,
         code,
         numbers: [limitCount, rateLimitTime],
