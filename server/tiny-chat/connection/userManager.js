@@ -69,7 +69,7 @@ export default function userManager(socket, io) {
     // Remove user from the ban list
     bannedUsers.delete(userId);
 
-    // User ban successfully.
+    // User unban successfully.
     socket.emit('ban-status', { userId, banned: false });
   });
 

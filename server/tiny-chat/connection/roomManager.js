@@ -241,7 +241,7 @@ export default function roomManager(socket, io) {
     room.banned.delete(userId);
     room.set(roomId, room);
 
-    // User ban successfully.
+    // User unban successfully.
     socket.emit('room-ban-status', { roomId, userId, banned: false });
   });
 
@@ -323,6 +323,59 @@ export default function roomManager(socket, io) {
     }
   });
 
+  socket.on('deleteRoom', (data) => {
+    const { roomId } = data;
+    // Validate values
+    if (typeof roomId !== 'string') return;
+
+    // Get user
+    const userId = userSession.getUserId(socket);
+    if (!userId) return; // Only logged-in users can use it
+    if (userIsRateLimited(socket)) return;
+
+    // Check if the room exists
+    const room = rooms.get(roomId);
+    const rUsers = roomUsers.get(roomId);
+    if (!room) {
+      socket.emit('room-delete-failed', {
+        msg: 'Room not found.',
+        roomId,
+        code: 1,
+      });
+      return;
+    }
+
+    // Check if user is server owner or server mod
+    if (userId !== serverOwnerId && !moderators.has(userId) && room.ownerId !== userId) {
+      socket.emit('room-delete-failed', {
+        msg: 'You are not allowed to do this.',
+        roomId,
+        code: 2,
+      });
+      return;
+    }
+
+    // Disconnect user from rooms
+    if (rUsers) {
+      rUsers.forEach((userData, tUser) => {
+        // Remove the user from their room
+        rUsers.delete(tUser);
+        socket.leave(roomId);
+        io.to(roomId).emit('user-left', { roomId, userId: tUser });
+      });
+
+      roomUsers.delete(roomId);
+    }
+
+    if (rooms.has(roomId)) rooms.delete(roomId);
+    if (roomHistories.has(roomId)) roomHistories.delete(roomId);
+    if (privateRoomData.has(roomId)) privateRoomData.delete(roomId);
+    if (roomData.has(roomId)) roomData.delete(roomId);
+
+    // Room delete successfully.
+    socket.emit('room-delete-status', { roomId });
+  });
+
   socket.on('disableRoom', (data) => {
     const { roomId } = data;
     // Validate values
@@ -337,7 +390,7 @@ export default function roomManager(socket, io) {
     const rUsers = roomUsers.get(roomId);
     const room = rooms.get(roomId);
     if (!rUsers || !room) {
-      socket.emit('room-ban-failed', {
+      socket.emit('room-disable-failed', {
         msg: 'Room not found.',
         disabled: true,
         roomId,
@@ -353,7 +406,7 @@ export default function roomManager(socket, io) {
       room.ownerId !== userId &&
       !room.moderators.has(userId)
     ) {
-      socket.emit('room-ban-failed', {
+      socket.emit('room-disable-failed', {
         msg: 'You are not allowed to do this.',
         roomId,
         disabled: true,
@@ -367,16 +420,14 @@ export default function roomManager(socket, io) {
     room.set(roomId, room);
 
     // Disconnect user from rooms
-    roomUsers.forEach((users, roomId) => {
-      roomUsers.forEach((userData, tUser) => {
-        // Remove the user from their room
-        users.delete(tUser);
-        socket.leave(roomId);
-        io.to(roomId).emit('user-left', { roomId, userId: tUser });
-      });
+    rUsers.forEach((userData, tUser) => {
+      // Remove the user from their room
+      rUsers.delete(tUser);
+      socket.leave(roomId);
+      io.to(roomId).emit('user-left', { roomId, userId: tUser });
     });
 
-    // User ban successfully.
+    // Room disabled successfully.
     socket.emit('room-disable-status', { roomId, disabled: true });
   });
 
@@ -393,9 +444,9 @@ export default function roomManager(socket, io) {
     // Check if the room exists
     const room = rooms.get(roomId);
     if (!room) {
-      socket.emit('room-ban-failed', {
+      socket.emit('room-enable-failed', {
         msg: 'Room not found.',
-        banned: false,
+        disabled: false,
         roomId,
         code: 1,
       });
@@ -409,9 +460,9 @@ export default function roomManager(socket, io) {
       room.ownerId !== userId &&
       !room.moderators.has(userId)
     ) {
-      socket.emit('room-ban-failed', {
+      socket.emit('room-enable-failed', {
         msg: 'You are not allowed to do this.',
-        banned: false,
+        disabled: false,
         roomId,
         code: 2,
       });
@@ -422,7 +473,7 @@ export default function roomManager(socket, io) {
     room.disabled = false;
     room.set(roomId, room);
 
-    // User ban successfully.
+    // Room enabled successfully.
     socket.emit('room-disable-status', { roomId, disabled: false });
   });
 
