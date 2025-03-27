@@ -156,7 +156,7 @@ const userIsRateLimited = createRateLimit(EVENT_LIMIT, 'events', 1);
 const userMsgIsRateLimited = createRateLimit(MESSAGES_LIMIT, 'messages', 2);
 
 io.on('connection', (socket) => {
-  console.log(`User connected: ${socket.id}`);
+  console.log(`[APP] User connected: ${socket.id}`);
 
   socket.on('register', (data) => {
     const { userId, password, nickname } = data;
@@ -186,57 +186,80 @@ io.on('connection', (socket) => {
     socket.emit('register-status', 0);
   });
 
-  socket.on('join', (data) => {
-    const { userId, password, roomId, roomPassword } = data;
+  socket.on('login', (data) => {
+    const { userId, password } = data;
     // Validate values
-    if (
-      typeof userId !== 'string' ||
-      typeof password !== 'string' ||
-      typeof roomId !== 'string' ||
-      roomPassword !== 'string'
-    )
-      return;
+    if (typeof userId !== 'string' || typeof password !== 'string') return;
 
     // Check if user is using account
-    if (userSockets.get(userId)) return;
+    if (userSession.getUserId(socket)) {
+      socket.emit('login-failed', { msg: "You're already logged in!", roomId, code: 4 });
+      return;
+    }
 
-    // Check if the room exists
-    const room = rooms.get(roomId);
-    if (!room) {
-      // Room not found.
-      socket.emit('join-failed', { roomId, code: 0 });
+    if (userSockets.get(userId)) {
+      socket.emit('login-failed', { msg: 'The account is already in use.', roomId, code: 3 });
       return;
     }
 
     // Validate user credentials
+    if (!users.has(userId)) {
+      socket.emit('login-failed', { msg: 'User does not exist.', roomId, code: 2 });
+      return;
+    }
+
+    const user = users.get(userId);
     const hashedPassword = getHashString(password);
-    if (!users.has(userId) || users.get(userId).password !== hashedPassword) {
-      // Invalid user credentials.
-      socket.emit('join-failed', { roomId, code: 1 });
+    if (user.password !== hashedPassword) {
+      socket.emit('login-failed', { msg: 'Invalid user credentials.', roomId, code: 1 });
       return;
     }
 
     // Get the user's nickname from the users map
-    const nickname = users.get(userId).nickname;
-
-    // Check if the room has a password and validate it
-    if (room.password && room.password !== roomPassword) {
-      // Incorrect room password.
-      socket.emit('join-failed', { roomId, code: 2 });
-      return;
-    }
-
-    // Check if the room is full
-    if (room.users.size >= room.maxUsers) {
-      // Room is full.
-      socket.emit('join-failed', { roomId, code: 3 });
-      return;
-    }
+    const nickname = user.nickname;
 
     // Set session data
     userSession.check(socket);
     userSession.setUserId(socket, userId);
     userSession.setNickname(socket, nickname);
+
+    // Add user into userSockets
+    userSockets.set(userId, socket);
+
+    // Success!
+    socket.emit('login-success', { userId, nickname });
+  });
+
+  socket.on('join', (data) => {
+    const { roomId, password } = data;
+    // Validate values
+    if (typeof roomId !== 'string' || password !== 'string') return;
+
+    // Get user
+    const userId = userSession.getUserId(socket);
+    if (!userId) return;
+    if (userIsRateLimited(socket)) return;
+
+    // Check if the room exists
+    const room = rooms.get(roomId);
+    if (!room) {
+      //
+      socket.emit('join-failed', { msg: 'Room not found.', roomId, code: 1 });
+      return;
+    }
+
+    // Check if the room has a password and validate it
+    if (room.password && room.password !== password) {
+      //
+      socket.emit('join-failed', { msg: 'Incorrect room password.', roomId, code: 2 });
+      return;
+    }
+
+    // Check if the room is full
+    if (room.users.size >= room.maxUsers) {
+      socket.emit('join-failed', { msg: 'Room is full.', roomId, code: 3 });
+      return;
+    }
 
     // Add user to the room
     room.users.add(userId);
@@ -248,7 +271,7 @@ io.on('connection', (socket) => {
     roomUsers.get(roomId).set(userId, { nickname, ping: Date.now() });
 
     socket.join(roomId);
-    console.log(`${userId} joined the room: ${roomId}`);
+    console.log(`[APP] ${userId} joined the room: ${roomId}`);
 
     // Send chat history and settings only to the joined user
     let history = roomHistories.get(roomId);
@@ -262,9 +285,6 @@ io.on('connection', (socket) => {
     socket.emit('update-settings', room);
     sendRateLimit(socket);
 
-    // Add user into userSockets
-    userSockets.set(userId, socket);
-
     // Notify room members about the new user (excluding the user who just joined)
     io.to(roomId).emit('user-joined', { roomId, userId, nickname });
   });
@@ -276,6 +296,7 @@ io.on('connection', (socket) => {
 
     // Get user
     const userId = userSession.getUserId(socket);
+    if (!userId) return;
     if (userMsgIsRateLimited(socket)) return;
 
     // Check text size
@@ -535,14 +556,15 @@ io.on('connection', (socket) => {
     console.log(`[APP] ${userId} disconnected.`);
 
     // Disconnect user from rooms
-    roomUsers.forEach((users, roomId) => {
-      if (users.has(userId)) {
-        // Remove the user from their room
-        users.delete(userId);
-        socket.leave(roomId);
-        io.to(roomId).emit('user-left', { roomId, userId });
-      }
-    });
+    if (userId)
+      roomUsers.forEach((users, roomId) => {
+        if (users.has(userId)) {
+          // Remove the user from their room
+          users.delete(userId);
+          socket.leave(roomId);
+          io.to(roomId).emit('user-left', { roomId, userId });
+        }
+      });
 
     // Remove from userSockets
     userSockets.delete(userId);
