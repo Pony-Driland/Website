@@ -9,6 +9,7 @@ import {
   users,
   userSockets,
   serverOwnerId,
+  NICKNAME_SIZE_LIMIT,
 } from './values';
 
 export default function userManager(socket, io) {
@@ -98,6 +99,49 @@ export default function userManager(socket, io) {
 
     // User kick successfully.
     socket.emit('kick-status', { userId });
+  });
+
+  socket.on('change-password', (data) => {
+    const { password } = data;
+    // Validate values
+    if (typeof password !== 'string') return;
+
+    // Get user
+    const userId = userSession.getUserId(socket);
+    if (!userId) return; // Only logged-in users can use it
+    if (userIsRateLimited(socket)) return;
+    const user = users.get(userId);
+
+    // Change password
+    user.password = getHashString(password.substring(0, PASSWORD_SIZE_LIMIT));
+
+    // Set user data
+    users.set(userId, user);
+
+    // User unban successfully.
+    socket.emit('user-password-status', { userId, password: user.password });
+  });
+
+  socket.on('change-nickname', (data) => {
+    const { nickname } = data;
+    // Validate values
+    if (typeof nickname !== 'string') return;
+
+    // Get user
+    const userId = userSession.getUserId(socket);
+    if (!userId) return; // Only logged-in users can use it
+    if (userIsRateLimited(socket)) return;
+    const user = users.get(userId);
+
+    // Change nickname
+    user.nickname = nickname.substring(0, NICKNAME_SIZE_LIMIT);
+
+    // Set user data
+    users.set(userId, user);
+    userSession.setNickname(socket, user.nickname);
+
+    // User unban successfully.
+    socket.emit('user-nickname-status', { userId, nickname: user.nickname });
   });
 
   socket.on('register', (data) => {
@@ -199,12 +243,7 @@ export default function userManager(socket, io) {
     // Disconnect user from rooms
     if (userId)
       roomUsers.forEach((users, roomId) => {
-        if (users.has(userId)) {
-          // Remove the user from their room
-          users.delete(userId);
-          socket.leave(roomId);
-          io.to(roomId).emit('user-left', { roomId, userId });
-        }
+        if (users.has(userId)) leaveRoom(socket, io, roomId);
       });
 
     // Remove from userSockets

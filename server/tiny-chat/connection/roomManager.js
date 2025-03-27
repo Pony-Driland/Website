@@ -16,6 +16,8 @@ import {
   userSockets,
   serverOwnerId,
   createRoom,
+  joinRoom,
+  leaveRoom,
   MAX_USERS_PER_ROOM,
   ROOM_TITLE_SIZE_LIMIT,
 } from './values';
@@ -79,17 +81,7 @@ export default function roomManager(socket, io) {
     socket.emit('room-history', mapToArray(history));
     socket.emit('update-room', room);
     sendRateLimit(socket);
-
-    // Add user to the room's user map with their nickname and initial ping value (e.g., 0 for now)
-    const pingNow = Date.now();
-    if (!roomUsers.has(roomId)) {
-      roomUsers.set(roomId, new Map());
-    }
-    roomUsers.get(roomId).set(userId, { nickname, ping: pingNow });
-
-    // Notify room members about the new user (excluding the user who just joined)
-    socket.join(roomId);
-    io.to(roomId).emit('user-joined', { roomId, userId, nickname, ping: pingNow });
+    joinRoom(socket, io, roomId);
   });
 
   socket.on('leave', (data) => {
@@ -101,19 +93,16 @@ export default function roomManager(socket, io) {
     const userId = userSession.getUserId(socket);
     if (!userId) return;
 
-    // Disconnect user from room
-    const room = roomUsers.get(roomId);
-    if (!room) {
-      socket.emit('leave-failed', { msg: 'No Room users.', roomId, code: 1 });
-      return;
+    // Execute leave
+    const leaveStatus = leaveRoom(socket, io, roomId);
+    if (!leaveStatus.success) {
+      if (leaveStatus.code === 1) {
+        socket.emit('leave-failed', { msg: 'No Room users.', roomId, code: 1 });
+      } else if (leaveStatus.code === 2)
+        socket.emit('leave-failed', { msg: "You're not in the room.", roomId, code: 2 });
+      else if (leaveStatus.code === 3)
+        socket.emit('leave-failed', { msg: 'Invalid data.', roomId, code: 3 });
     }
-
-    if (room.has(userId)) {
-      // Remove the user from their room
-      room.delete(userId);
-      io.to(roomId).emit('user-left', { roomId, userId });
-      socket.leave(roomId);
-    } else socket.emit('leave-failed', { msg: "You're not in the room.", roomId, code: 2 });
   });
 
   socket.on('ban-from-room', (data) => {
@@ -170,20 +159,13 @@ export default function roomManager(socket, io) {
       return;
     }
 
-    // Check if user is connected
-    const userSocket = userSockets.get(userId);
-
     // Add into the ban list
     room.banned.add(userId);
     room.set(roomId, room);
 
     // Remove the user from their room
-    if (rUsers.has(userId)) {
-      rUsers.delete(userId);
-      io.to(roomId).emit('user-left', { roomId, userId });
-      io.to(roomId).emit('user-banned', { roomId, userId });
-      if (userSocket) userSocket.leave(roomId);
-    }
+    io.to(roomId).emit('user-banned', { roomId, userId });
+    leaveRoom(userSockets.get(userId), io, roomId);
 
     // User ban successfully.
     socket.emit('room-ban-status', { roomId, userId, banned: true });
@@ -272,25 +254,19 @@ export default function roomManager(socket, io) {
         msg: 'You are not allowed to do this.',
         userId,
         roomId,
-        code: 2,
+        code: 4,
       });
       return;
     }
 
-    // Check if user is connected
-    const userSocket = userSockets.get(userId);
-    if (!userSocket) {
-      socket.emit('room-kick-failed', { msg: 'User not found.', userId, roomId, code: 3 });
-      return;
-    }
-
     // Remove the user from their room
-    if (room.has(userId)) {
-      room.delete(userId);
-      io.to(roomId).emit('user-left', { roomId, userId });
-      io.to(roomId).emit('user-kicked', { roomId, userId });
-      userSocket.leave(roomId);
-    } else socket.emit('room-kick-failed', { msg: 'User is not in the room.', roomId, code: 2 });
+    const kickStatus = leaveRoom(userSockets.get(userId), io, roomId);
+    if (!kickStatus.success) {
+      if (kickStatus.code === 2)
+        socket.emit('room-kick-failed', { msg: 'User not found.', roomId, code: 2 });
+      else if (kickStatus.code === 3)
+        socket.emit('room-kick-failed', { msg: 'Invalid data.', roomId, code: 3 });
+    } else io.to(roomId).emit('user-kicked', { roomId, userId });
 
     // User kick successfully.
     socket.emit('room-kick-status', { roomId, userId });
@@ -357,12 +333,8 @@ export default function roomManager(socket, io) {
     // Disconnect user from rooms
     if (rUsers) {
       rUsers.forEach((userData, tUser) => {
-        // Remove the user from their room
-        rUsers.delete(tUser);
-        socket.leave(roomId);
-        io.to(roomId).emit('user-left', { roomId, userId: tUser });
+        leaveRoom(userSockets.get(tUser), io, roomId);
       });
-
       roomUsers.delete(roomId);
     }
 
@@ -420,10 +392,7 @@ export default function roomManager(socket, io) {
 
     // Disconnect user from rooms
     rUsers.forEach((userData, tUser) => {
-      // Remove the user from their room
-      rUsers.delete(tUser);
-      socket.leave(roomId);
-      io.to(roomId).emit('user-left', { roomId, userId: tUser });
+      leaveRoom(userSockets.get(tUser), io, roomId);
     });
 
     // Room disabled successfully.

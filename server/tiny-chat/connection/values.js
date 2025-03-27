@@ -161,3 +161,57 @@ export const createRateLimit = (limitCount = 5, itemName = 'items', code = -1) =
 
 export const userIsRateLimited = createRateLimit(EVENT_LIMIT, 'events', 1);
 export const userMsgIsRateLimited = createRateLimit(MESSAGES_LIMIT, 'messages', 2);
+
+// Join Room
+export const joinRoom = (socket, io, roomId) => {
+  if (socket) {
+    // Get data
+    const userId = userSession.getUserId(socket);
+    const nickname = userSession.getNickname(socket);
+    if (userId && roomId) {
+      // Add user to the room's user map with their nickname and initial ping value (e.g., 0 for now)
+      const pingNow = Date.now();
+      if (!roomUsers.has(roomId)) {
+        roomUsers.set(roomId, new Map());
+      }
+      roomUsers.get(roomId).set(userId, { nickname, ping: pingNow });
+
+      // Notify room members about the new user (excluding the user who just joined)
+      socket.join(roomId);
+      io.to(roomId).emit('user-joined', { roomId, userId, nickname, ping: pingNow });
+      return true;
+    }
+  }
+  return false;
+};
+
+// Leave room
+export const leaveRoom = (socket, io, roomId) => {
+  if (socket) {
+    // Get data
+    const userId = userSession.getUserId(socket);
+    const nickname = userSession.getNickname(socket);
+    if (userId && roomId) {
+      // Get room
+      const room = roomUsers.get(roomId);
+      // Room not found
+      if (!room) return { success: false, code: 1 };
+
+      // Disconnect user from room
+      if (room.has(userId)) {
+        // Remove the user from their room
+        room.delete(userId);
+        io.to(roomId).emit('user-left', { roomId, nickname, userId });
+        socket.leave(roomId);
+        // Complete
+        return { success: true };
+      }
+      // User not found
+      return { success: false, code: 2 };
+    }
+    // Invalid data
+    else if (!roomId) return { success: false, code: 3 };
+  }
+  // No data
+  else return { success: false, code: 0 };
+};
