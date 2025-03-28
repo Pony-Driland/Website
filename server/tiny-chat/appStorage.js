@@ -51,9 +51,10 @@ async function ensureIniFile(iniFilePath, templateFilePath) {
 
     // Load the INI file using the ini module
     const config = ini.parse(fs.readFileSync(iniFilePath, 'utf-8'));
+    const defaultCfg = ini.parse(fs.readFileSync(templateFilePath, 'utf-8'));
     console.log('[APP] [INI] INI file loaded!');
 
-    return config;
+    return { config, defaultCfg };
   } catch (err) {
     console.error('[APP] [INI] Error ensuring INI file:');
     console.error(err);
@@ -80,24 +81,30 @@ export default async function startFiles() {
     const appDir = createAppDirectory();
 
     // Start ini file
-    const config = await ensureIniFile(
+    const config = {};
+    const { newCfg, defaultCfg } = await ensureIniFile(
       path.join(appDir, `./config.ini`),
       path.join(__dirname, `./config.ini`),
     );
-    if (!config) return null;
-    for (const item in config.limits) _setIniConfig(item, config.limits);
-    if (
-      (typeof config.server.registration_open === 'boolean' && config.server.registration_open) ||
-      (typeof config.server.registration_open === 'string' &&
-        (config.server.registration_open === 'yes' ||
-          config.server.registration_open === 'on' ||
-          config.server.registration_open === 'true'))
-    )
-      _setIniConfig('OPEN_REGISTRATION', true);
-    else _setIniConfig('OPEN_REGISTRATION', false);
 
-    if (typeof config.server.owner_id === 'string')
-      _setIniConfig('OWNER_ID', config.server.owner_id);
+    const getIniBoolean = (value) =>
+      (typeof value === 'boolean' && value) ||
+      (typeof value === 'string' && (value === 'yes' || value === 'on' || value === 'true'))
+        ? true
+        : false;
+
+    // Insert Config
+    const loadTinyCfg = (theCfg) => {
+      for (const item in theCfg) config[item] = theCfg[item];
+      for (const item in theCfg.limits)
+        if (typeof theCfg.limits[item] === 'number') _setIniConfig(item, theCfg.limits[item]);
+      _setIniConfig('OPEN_REGISTRATION', getIniBoolean(theCfg.server.registration_open));
+      if (typeof theCfg.server.owner_id === 'string')
+        _setIniConfig('OWNER_ID', theCfg.server.owner_id);
+    };
+
+    loadTinyCfg(defaultCfg);
+    if (newCfg) loadTinyCfg(newCfg);
 
     /**
      * Object with a config of your application.
@@ -129,8 +136,8 @@ export default async function startFiles() {
     process.on('SIGINT', async () => {
       const isOpen = await isDbOpen(config, db);
       if (isOpen) {
-        if (config.database.type === 'sqlite3') await db.close().catch(console.error);
-        if (config.database.type === 'postgre') await db.end().catch(console.error);
+        if (config.database.type === 'sqlite3') await db.close().catch(() => {});
+        if (config.database.type === 'postgre') await db.end().catch(() => {});
       }
     });
 
