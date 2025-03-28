@@ -8,11 +8,9 @@ import {
   moderators,
   users,
   userSockets,
-  serverOwnerId,
   sendIncompleteDataInfo,
   accountNotDetected,
-  NICKNAME_SIZE_LIMIT,
-  OPEN_REGISTRATION,
+  getIniConfig,
 } from './values';
 
 export default function userManager(socket, io) {
@@ -27,7 +25,7 @@ export default function userManager(socket, io) {
     if (userIsRateLimited(socket, fn)) return;
 
     // Check if user is server owner or server mod
-    if (yourId !== serverOwnerId && !moderators.has(yourId)) {
+    if (yourId !== getIniConfig('OWNER_ID') && !moderators.has(yourId)) {
       return fn({ error: true, msg: 'You are not allowed to do this.', code: 1 });
     }
 
@@ -57,7 +55,7 @@ export default function userManager(socket, io) {
     if (userIsRateLimited(socket, fn)) return;
 
     // Check if user is server owner or server mod
-    if (yourId !== serverOwnerId && !moderators.has(yourId)) {
+    if (yourId !== getIniConfig('OWNER_ID') && !moderators.has(yourId)) {
       return fn({ error: true, msg: 'You are not allowed to do this.', code: 1 });
     }
 
@@ -84,7 +82,7 @@ export default function userManager(socket, io) {
     if (userIsRateLimited(socket, fn)) return;
 
     // Check if user is server owner or server mod
-    if (yourId !== serverOwnerId && !moderators.has(yourId)) {
+    if (yourId !== getIniConfig('OWNER_ID') && !moderators.has(yourId)) {
       return fn({ error: true, msg: 'You are not allowed to do this.', code: 1 });
     }
 
@@ -109,8 +107,15 @@ export default function userManager(socket, io) {
     if (userIsRateLimited(socket, fn)) return;
     const user = users.get(userId);
 
+    if (password.length < getIniConfig('MIN_PASSWORD_SIZE'))
+      return fn({
+        error: true,
+        code: 1,
+        msg: 'Your password does not have the minimum number of characters.',
+      });
+
     // Change password
-    user.password = getHashString(password.substring(0, PASSWORD_SIZE_LIMIT));
+    user.password = getHashString(password.substring(0, getIniConfig('PASSWORD_SIZE')));
 
     // Set user data
     users.set(userId, user);
@@ -131,7 +136,7 @@ export default function userManager(socket, io) {
     const user = users.get(userId);
 
     // Change nickname
-    user.nickname = nickname.substring(0, NICKNAME_SIZE_LIMIT);
+    user.nickname = nickname.substring(0, getIniConfig('NICKNAME_SIZE'));
 
     // Set user data
     users.set(userId, user);
@@ -150,13 +155,30 @@ export default function userManager(socket, io) {
     // Check User
     if (userIsRateLimited(socket, fn, true)) return;
 
-    if (!OPEN_REGISTRATION && userSession.getUserId(socket) !== serverOwnerId) {
+    if (
+      !getIniConfig('OPEN_REGISTRATION') &&
+      userSession.getUserId(socket) !== getIniConfig('OWNER_ID')
+    ) {
       return fn({ error: true, code: 2, msg: 'Only the owner can create accounts.' });
     }
 
     if (users.has(userId)) {
       return fn({ error: true, code: 1, msg: 'User Id already exists.' });
     }
+
+    if (password.length < getIniConfig('MIN_PASSWORD_SIZE'))
+      return fn({
+        error: true,
+        code: 3,
+        msg: 'Your password does not have the minimum number of characters.',
+      });
+
+    if (userId.length < 1)
+      return fn({
+        error: true,
+        code: 4,
+        msg: 'Your user id does not have the minimum number of characters.',
+      });
 
     // Create Account
     createAccount(userId, password, nickname);

@@ -1,24 +1,17 @@
 import crypto from 'crypto';
 import TimedMap from '../TimedMap';
 
-export const serverOwnerId = 'owner123'; // Server owner ID
 export const userSockets = new Map(); // Socket users
 
-export const OPEN_REGISTRATION = false;
-
 // Rate limit settings
-export const EVENT_LIMIT = 5; // Max events
-export const MESSAGES_LIMIT = 5; // Max messages
-export const RATE_LIMIT_TIME = 10 * 1000; // 10 seconds
-export const MAX_USERS_PER_ROOM = 50; // Max users per room
+const LIMITS = {
+  OWNER_ID: '',
+};
 
-export const MESSAGE_SIZE_LIMIT = 200; // Max message size
-export const USER_ID_SIZE_LIMIT = 100; // Max user id size
-export const PASSWORD_SIZE_LIMIT = 200; // Max password size
-export const NICKNAME_SIZE_LIMIT = 100; // Max user id size
-
-export const ROOM_ID_SIZE_LIMIT = 100;
-export const ROOM_TITLE_SIZE_LIMIT = 100;
+export const getIniConfig = (where) => LIMITS[where];
+export const _setIniConfig = (where, value) => {
+  LIMITS[where] = value || 0;
+};
 
 // Database
 export const users = new TimedMap(); // Stores user credentials
@@ -52,19 +45,19 @@ export function mapToArray(map) {
  * @param {string} nickname - The user's chosen nickname.
  */
 export const createAccount = (userId, password, nickname) => {
-  const hashedPassword = getHashString(password.substring(0, PASSWORD_SIZE_LIMIT));
-  users.set(userId.substring(0, USER_ID_SIZE_LIMIT), {
+  const hashedPassword = getHashString(password.substring(0, getIniConfig('PASSWORD_SIZE')));
+  users.set(userId.substring(0, getIniConfig('USER_ID_SIZE')), {
     password: hashedPassword,
-    nickname: nickname.substring(0, NICKNAME_SIZE_LIMIT),
+    nickname: nickname.substring(0, getIniConfig('NICKNAME_SIZE')),
   });
 };
 
 export const createRoom = (userId, roomId, password, title) => {
-  const hashedPassword = getHashString(password.substring(0, PASSWORD_SIZE_LIMIT));
-  rooms.set(roomId.substring(0, ROOM_ID_SIZE_LIMIT), {
+  const hashedPassword = getHashString(password.substring(0, getIniConfig('PASSWORD_SIZE')));
+  rooms.set(roomId.substring(0, getIniConfig('ROOM_ID_SIZE')), {
     password: hashedPassword,
-    title: title.substring(0, ROOM_TITLE_SIZE_LIMIT),
-    maxUsers: MAX_USERS_PER_ROOM,
+    title: title.substring(0, getIniConfig('ROOM_TITLE_SIZE')),
+    maxUsers: getIniConfig('MAX_USERS_PER_ROOM'),
     ownerId: userId,
     moderators: new Set([]),
     banned: new Set([]),
@@ -104,17 +97,20 @@ export const userSession = {
 export const sendRateLimit = (socket) => {
   socket.emit('update-ratelimts', {
     size: {
-      userId: USER_ID_SIZE_LIMIT,
-      password: PASSWORD_SIZE_LIMIT,
-      nickname: NICKNAME_SIZE_LIMIT,
-      msg: MESSAGE_SIZE_LIMIT,
+      userId: getIniConfig('USER_ID_SIZE'),
+      password: getIniConfig('PASSWORD_SIZE'),
+      minPassword: getIniConfig('MIN_PASSWORD_SIZE'),
+      nickname: getIniConfig('NICKNAME_SIZE'),
+      msg: getIniConfig('MESSAGE_SIZE'),
+      roomSize: getIniConfig('ROOM_ID_SIZE'),
+      roomTitle: getIniConfig('ROOM_TITLE_SIZE'),
     },
     limit: {
-      msg: MESSAGES_LIMIT,
-      events: EVENT_LIMIT,
-      roomUsers: MAX_USERS_PER_ROOM,
+      msg: getIniConfig('MESSAGES'),
+      events: getIniConfig('EVENT'),
+      roomUsers: getIniConfig('MAX_USERS_PER_ROOM'),
     },
-    time: RATE_LIMIT_TIME,
+    time: getIniConfig('RATE_LIMIT_TIME'),
   });
 };
 
@@ -136,9 +132,12 @@ export const createRateLimit = (limitCount = 5, itemName = 'items', code = -1) =
     const userTimestamp = userMessageTimestamps.get(userId) || 0;
     const userMessageCount = userEventCounts.get(userId) || 0;
 
-    // Check if rate limit is exceeded based on EVENT_LIMIT
-    if (currentTime - userTimestamp < RATE_LIMIT_TIME && userMessageCount >= limitCount) {
-      const rateLimitTime = RATE_LIMIT_TIME / 1000;
+    // Check if rate limit is exceeded based on RATE_LIMIT_TIME
+    if (
+      currentTime - userTimestamp < getIniConfig('RATE_LIMIT_TIME') &&
+      userMessageCount >= limitCount
+    ) {
+      const rateLimitTime = getIniConfig('RATE_LIMIT_TIME') / 1000;
       fn({
         error: true,
         ratelimit: true,
@@ -150,7 +149,7 @@ export const createRateLimit = (limitCount = 5, itemName = 'items', code = -1) =
     }
 
     // Update message count and timestamp
-    if (currentTime - userTimestamp > RATE_LIMIT_TIME) {
+    if (currentTime - userTimestamp > getIniConfig('RATE_LIMIT_TIME')) {
       // Reset the message count if the rate limit window has passed
       userEventCounts.set(userId, 1); // Start new count for a new window
     } else {
@@ -166,8 +165,8 @@ export const createRateLimit = (limitCount = 5, itemName = 'items', code = -1) =
   };
 };
 
-export const userIsRateLimited = createRateLimit(EVENT_LIMIT, 'events', 1);
-export const userMsgIsRateLimited = createRateLimit(MESSAGES_LIMIT, 'messages', 2);
+export const userIsRateLimited = createRateLimit(getIniConfig('EVENT'), 'events', 1);
+export const userMsgIsRateLimited = createRateLimit(getIniConfig('MESSAGES'), 'messages', 2);
 
 // Incomplete data
 export const sendIncompleteDataInfo = (fn, code = 0) => {

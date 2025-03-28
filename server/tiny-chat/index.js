@@ -20,6 +20,12 @@ startFiles().then((appStorage) => {
   });
 
   // Start server
+  process.on('SIGINT', async () => {
+    try {
+      io.close();
+    } catch {}
+  });
+
   io.listen(appStorage.config.server.port);
   console.log(`[APP] Server running on port ${appStorage.config.server.port}`);
 });
