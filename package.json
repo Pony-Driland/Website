@@ -5,11 +5,11 @@
     "scripts": {
         "start": "node ./build/",
         "start:tiny-chat": "npx babel-node server/tiny-chat/index.js",
-        "full-build:tiny-chat": "yarn && yarn build:tiny-chat",
-        "build:tiny-chat": "nexe index.js server/tiny-chat/index.js -o tiny-chat --build",
-        "build:windows:tiny-chat": "nexe index.js server/tiny-chat/index.js -o tiny-chat --build --target windows-x64",
-        "build:linux:tiny-chat": "nexe index.js server/tiny-chat/index.js -o tiny-chat --build --target linux-x64",
-        "build:mac:tiny-chat": "nexe index.js server/tiny-chat/index.js -o tiny-chat --build --target macos-x64",
+        "build:tiny-chat": "node build/pkg/tiny-chat.js",
+        "build:tiny-chat:all": "node build/pkg/tiny-chat.js --os=all",
+        "build:tiny-chat:win32": "node build/pkg/tiny-chat.js --os=win32",
+        "build:tiny-chat:linux": "node build/pkg/tiny-chat.js --os=linux",
+        "build:tiny-chat:darwin": "node build/pkg/tiny-chat.js --os=darwin",
         "example:tiny-chat-timedmap": "npx babel-node server/tiny-chat/examples/TimedMap.js",
         "install": "yarn build-bundle",
         "build-bundle": "browserify build/bundle/require -o docs/bundle.js && browserify build/bundle/import -p esmify > docs/bundle2.js && npx babel-node build/bundle/css && npx babel-node build/bundle/files",
@@ -24,6 +24,9 @@
         "name": "JasminDreasond (Yasmin Seidel)",
         "email": "tiny@puddy.club",
         "url": "https://github.com/JasminDreasond"
+    },
+    "pkg": {
+        "assets": "dist/server/tiny-chat/config.ini"
     },
     "dependencies": {
         "@cryptofonts/cryptofont": "^1.3.5",
@@ -74,6 +77,8 @@
         "browser-resolve": "^2.0.0",
         "browserify": "^17.0.1",
         "esmify": "^2.1.1",
+        "nexe": "^5.0.0-beta.4",
+        "fs-extra": "^11.3.0",
         "prettier": "3.5.3"
     }
 }
