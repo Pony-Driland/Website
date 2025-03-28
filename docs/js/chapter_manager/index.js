@@ -258,9 +258,7 @@ const openChapterMenu = (params = {}) => {
   // New Read
   const newRead = async (chapter = 1, selectedLine = null) => {
     // Clear Update Warn
-    $('#fic-start')
-      .text('Read Fic')
-      .prepend($('<i>', { class: 'fab fa-readme me-2' }));
+    $('#fic-start').text('Read Fic').prepend(tinyLib.icon('fab fa-readme me-2'));
 
     // Load Sounds
     if (storyCfg.sfx) {
@@ -446,11 +444,12 @@ const openChapterMenu = (params = {}) => {
     // Table
     $('#markdown-read').append(
       // Info
-      $('<div>', { class: 'alert alert-info' })
+      tinyLib.bs
+        .alert('info')
         .text(
           'Bold texts are action texts, small texts are thoughts of characters, common texts are dialogues or telepathy. If you are using filters to keep your reading 100% SFW, some unnecessary text lines will be automatically skipped.',
         )
-        .prepend($('<i>', { class: 'fas fa-info-circle me-3' })),
+        .prepend(tinyLib.icon('fas fa-info-circle me-3')),
 
       // Title
       $('<h3>')
@@ -584,7 +583,7 @@ const openChapterMenu = (params = {}) => {
 
             // Modal
             tinyLib.modal({
-              title: [$('<i>', { class: 'fa-solid fa-user me-3' }), 'Character Statistics'],
+              title: [tinyLib.icon('fa-solid fa-user me-3'), 'Character Statistics'],
               body: $('<span>').append(newDiv.append(content)),
               dialog: 'modal-lg',
             });
@@ -636,7 +635,7 @@ const openChapterMenu = (params = {}) => {
 
             // Modal
             tinyLib.modal({
-              title: [$('<i>', { class: 'fa-solid fa-a me-3' }), 'Letter Statistics'],
+              title: [tinyLib.icon('fa-solid fa-a me-3'), 'Letter Statistics'],
               body: $('<span>').append(newDiv.append(content)),
               dialog: 'modal-lg',
             });
@@ -687,7 +686,7 @@ const openChapterMenu = (params = {}) => {
 
             // Modal
             tinyLib.modal({
-              title: [$('<i>', { class: 'fa-solid fa-a me-3' }), 'Word Statistics'],
+              title: [tinyLib.icon('fa-solid fa-a me-3'), 'Word Statistics'],
               body: $('<span>').append(newDiv.append(content)),
               dialog: 'modal-lg',
             });
@@ -699,30 +698,34 @@ const openChapterMenu = (params = {}) => {
 
       // Info
       $('<div>', { class: 'collapse', id: 'warnings' }).append(
-        $('<div>', { class: 'alert alert-info' })
+        tinyLib.bs
+          .alert('info')
           .text(
             'Every time you read a chapter, it will automatically save where you left off. This checkpoint is saved on your browser, if you want to transfer your checkpoint to other computers, save the URL of your checkpoint that will appear when you open a chapter.',
           )
-          .prepend($('<i>', { class: 'fas fa-info-circle me-3' })),
+          .prepend(tinyLib.icon('fas fa-info-circle me-3')),
 
-        $('<div>', { class: 'alert alert-info' })
+        tinyLib.bs
+          .alert('info')
           .text(
             "Disclaimer: All songs played on this page are played directly from Youtube. This means that many songs do not belong to me and are being used only to please the reading environment. I recognize that if an artist asks to remove a song, I will replace it with another song. And all the songs that are played are counted as views on the original author's youtube channel. The official music page link will also be available in the player info icon.",
           )
-          .prepend($('<i>', { class: 'fas fa-info-circle me-3' })),
+          .prepend(tinyLib.icon('fas fa-info-circle me-3')),
 
-        $('<div>', { class: 'alert alert-info' })
+        tinyLib.bs
+          .alert('info')
           .text(
             'Our site does not have access to your access information, but some third-party applications installed on this page can collect your navigation data. YouTube, Google, Cloudflare.',
           )
-          .prepend($('<i>', { class: 'fas fa-info-circle me-3' })),
+          .prepend(tinyLib.icon('fas fa-info-circle me-3')),
       ),
 
       $('<h2>')
         .text(`Please choose a chapter to read.`)
-        .prepend($('<i>', { class: 'fas fa-book-open me-3' }))
+        .prepend(tinyLib.icon('fas fa-book-open me-3'))
         .append(
-          $('<button>', { class: 'ms-3 btn btn-info btn-sm' })
+          tinyLib.bs
+            .button('info btn-sm ms-3')
             .text('Choose Optional NSFW Content')
             .on('click', () => {
               // Nothing NSFW
@@ -779,9 +782,9 @@ const openChapterMenu = (params = {}) => {
                                   $('<p>', { class: 'card-text small' }).text(
                                     storyCfg.nsfw[NSFWITEM].description,
                                   ),
-                                  $('<button>', {
-                                    class: 'btn btn-' + buttonClass,
-                                  })
+
+                                  tinyLib.bs
+                                    .button(buttonClass)
                                     .on('click', function () {
                                       // Enable
                                       if (!nsfwValue) {
@@ -828,7 +831,7 @@ const openChapterMenu = (params = {}) => {
 
               // Modal
               tinyLib.modal({
-                title: [$('<i>', { class: 'fas fa-eye me-3' }), 'NSFW Settings'],
+                title: [tinyLib.icon('fas fa-eye me-3'), 'NSFW Settings'],
                 body: $('<center>').append(
                   $('<p>', { class: 'text-danger' }).text(
                     "Don't expect fantastic +18 stuff here. The NSFW content will not try to be explicit, and it is only used to enrich the content of the fic (example: bring more realistic scenes). By activating these settings, you agree that you are responsible for the content you consume and that you are over 18 years old!",

@@ -238,7 +238,7 @@ cacheChapterUpdater.data = function (lastPage) {
       });
       storyData.chapter.nav.bookmark
         .attr('title', 'Bookmark')
-        .append($('<i>', { class: 'fas fa-bookmark' }));
+        .append(tinyLib.icon('fas fa-bookmark'));
       storyData.chapter.nav.bookmark.tooltip();
 
       // Action
@@ -382,7 +382,7 @@ const chapterSet = {
             .data('bs-tooltip')
             .setContent({ '.tooltip-inner': newTitle });
         }
-        obj.removeAttr('title').append($('<i>', { class: types[value].icon }));
+        obj.removeAttr('title').append(tinyLib.icon(types[value].icon));
       }
     }
   },
@@ -414,7 +414,7 @@ const chapterSet = {
       const obj = $('#fic-nav > #status #weather').css('font-size', cacheChapterUpdater.iconSize);
       obj.empty();
       if (types[value]) {
-        obj.attr('title', types[value].title).append($('<i>', { class: types[value].icon }));
+        obj.attr('title', types[value].title).append(tinyLib.icon(types[value].icon));
         obj.tooltip();
         obj.removeAttr('title');
       }

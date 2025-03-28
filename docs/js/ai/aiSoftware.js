@@ -21,13 +21,25 @@ class TinyAiStorage extends EventEmitter {
   }
 
   _updateExistsAi() {
-    for (const item in this.storage) {
-      if (typeof this.storage[item] === 'string' && this.storage[item].length > 0) {
-        this._selected = item;
-        break;
-      }
+    if (
+      this._selected &&
+      (typeof this.storage[this._selected] !== 'string' || this.storage[this._selected].length < 1)
+    ) {
+      this._selected = null;
+      localStorage.removeItem('tiny-ai-storage-selected');
     }
-    localStorage.setItem('tiny-ai-storage-selected', this._selected);
+  }
+
+  setSelectedAi(value) {
+    this._selected =
+      typeof value === 'string' &&
+      typeof this.storage[value] === 'string' &&
+      this.storage[value].length > 0
+        ? value
+        : null;
+
+    if (this._selected) localStorage.setItem('tiny-ai-storage-selected', this._selected);
+    else localStorage.removeItem('tiny-ai-storage-selected');
   }
 
   selectedAi() {
@@ -101,7 +113,7 @@ const AiScriptStart = () => {
     if (selectedAi === 'google-generative') {
       // Update html
       aiLogin.button.find('> i').removeClass('text-danger-emphasis');
-      aiLogin.title = 'AI Enabled';
+      aiLogin.title = 'AI/RP Enabled';
       $('body').addClass('can-ai');
 
       // Update Ai API script
@@ -110,7 +122,7 @@ const AiScriptStart = () => {
     } else {
       // Update html
       aiLogin.button.find('> i').addClass('text-danger-emphasis');
-      aiLogin.title = 'AI Disabled';
+      aiLogin.title = 'AI/RP Disabled';
       $('body').removeClass('can-ai');
       tinyAiScript.enabled = false;
     }
@@ -136,29 +148,62 @@ const AiScriptStart = () => {
 
   // Login button
   tinyAiScript.login = () => {
+    // Selector
+    const selector = $('<select>', { class: 'form-select text-center' });
+    selector.append($('<option>', { value: 'NONE' }).text('None'));
+    const apiPlace = $('<span>');
+    selector.on('change', function () {
+      const value = selector.val();
+      const html =
+        tinyAiHtml[value] && tinyAiHtml[value].inputs ? tinyAiHtml[value].inputs() : null;
+      apiPlace.empty();
+      if (html) apiPlace.append(html.desc, html.input, html.submit);
+      tinyStorage.setSelectedAi(value);
+      tinyAiScript.checkTitle();
+    });
+
+    const tinyAiHtml = {};
+
     // Google AI
-    const googleAi = {
-      input: $('<input>', {
+    selector.append($('<option>', { value: 'google-generative' }).text('Google Studio'));
+    tinyAiHtml['google-generative'] = {};
+    const googleAi = tinyAiHtml['google-generative'];
+    googleAi.inputs = () => {
+      const data = {};
+      data.input = $('<input>', {
         type: 'password',
         class: 'form-control text-center',
-      }),
-      title: $('<h4>').text('Google Studio'),
-      desc: $('<p>').append(
+      });
+      data.input.val(tinyStorage.getApiKey('google-generative'));
+
+      data.desc = $('<p>').append(
         $('<span>').text('You can get your Google API key '),
         $('<a>', {
           href: 'https://aistudio.google.com/apikey',
           target: '_blank',
         }).text('here'),
         $('<span>').text('. Website: aistudio.google.com'),
-      ),
+      );
+
+      data.submit = tinyLib.bs
+        .button('info mx-4 mt-4')
+        .text('Set API Tokens')
+        .on('click', () => {
+          tinyStorage.setApiKey('google-generative', data.input.val());
+          tinyAiScript.checkTitle();
+          $('#ai_connection').modal('hide');
+        });
+
+      return data;
     };
 
-    googleAi.input.val(tinyStorage.getApiKey('google-generative'));
-
     // Modal
+    selector.val(tinyStorage.selectedAi() || 'NONE');
+    selector.trigger('change');
+
     tinyLib.modal({
       id: 'ai_connection',
-      title: 'AI Protocol',
+      title: 'AI/RP Protocol',
       dialog: 'modal-lg',
       body: $('<center>').append(
         $('<p>').text(`You are in an optional setting. You do not need AI to use the website!`),
@@ -168,18 +213,8 @@ const AiScriptStart = () => {
         $('<p>').text(
           `By activating an artificial intelligence service in your session, you agree to the terms of use and privacy policies of the third party services you are using on this website. You will always be warned when any artificial intelligence service needs to be run on this website.`,
         ),
-
-        googleAi.title,
-        googleAi.desc,
-        googleAi.input,
-
-        $('<button>', { class: 'btn btn-info mx-4 mt-4' })
-          .text('Set API Tokens')
-          .on('click', () => {
-            tinyStorage.setApiKey('google-generative', googleAi.input.val());
-            tinyAiScript.checkTitle();
-            $('#ai_connection').modal('hide');
-          }),
+        selector,
+        apiPlace,
       ),
     });
   };
@@ -241,12 +276,10 @@ const AiScriptStart = () => {
 
       // Sidebar Button
       const createButtonSidebar = (icon, text, callback, disabled = false) =>
-        $('<button>', {
-          type: 'button',
-          class: `btn btn-link btn-bg text-start w-100${disabled ? ' disabled' : ''}`,
-        })
+        tinyLib.bs
+          .button(`link btn-bg text-start w-100${disabled ? ' disabled' : ''}`)
           .text(text)
-          .prepend($('<i>', { class: `${icon} me-2` }))
+          .prepend(tinyLib.icon(`${icon} me-2`))
           .on('click', callback)
           .prop('disabled', disabled);
 
@@ -1132,7 +1165,7 @@ const AiScriptStart = () => {
         body.append(textarea);
 
         // Submit
-        const submit = $('<button>', { class: 'btn btn-info m-2 ms-0' });
+        const submit = tinyLib.bs.button('info m-2 ms-0');
         submit.text(config.submitName);
 
         submit.on('click', () => {
@@ -1194,9 +1227,10 @@ const AiScriptStart = () => {
               body.append(
                 $('<h3>')
                   .text(`Download Content`)
-                  .prepend($('<i>', { class: 'fa-solid fa-download me-3' }))
+                  .prepend(tinyLib.icon('fa-solid fa-download me-3'))
                   .append(
-                    $('<button>', { class: 'ms-3 btn btn-info btn-sm' })
+                    tinyLib.bs
+                      .button('info btn-sm ms-3')
                       .text('Save As all chapters')
                       .on('click', () => saveRoleplayFormat()),
                   ),
@@ -1275,7 +1309,7 @@ const AiScriptStart = () => {
           modelSelector,
           $('<label>', { for: 'select-ai-model' })
             .text('Select AI Model')
-            .prepend($('<i>', { class: `fa-solid fa-atom me-2` })),
+            .prepend(tinyLib.icon(`fa-solid fa-atom me-2`)),
         ),
 
         // Token Counter
@@ -1285,7 +1319,7 @@ const AiScriptStart = () => {
         }).append(
           $('<span>')
             .text('Token count')
-            .prepend($('<i>', { class: `fa-solid fa-magnifying-glass me-2` })),
+            .prepend(tinyLib.icon(`fa-solid fa-magnifying-glass me-2`)),
           $('<div>', { class: 'mt-1 small' }).append(
             tokenCount.amount,
             $('<span>', { class: 'mx-1' }).text('/'),
@@ -1300,11 +1334,7 @@ const AiScriptStart = () => {
         }).append(
           $('<span>', sidebarSettingTemplate.span)
             .text('Temperature')
-            .prepend(
-              $('<i>', {
-                class: `fa-solid fa-temperature-three-quarters me-2`,
-              }),
-            ),
+            .prepend(tinyLib.icon(`fa-solid fa-temperature-three-quarters me-2`)),
           temperature.insert(),
         ),
 
@@ -1315,7 +1345,7 @@ const AiScriptStart = () => {
         }).append(
           $('<span>', sidebarSettingTemplate.span)
             .text('Output length')
-            .prepend($('<i>', { class: `fa-solid fa-comment me-2` })),
+            .prepend(tinyLib.icon(`fa-solid fa-comment me-2`)),
           outputLength,
         ),
 
@@ -1326,7 +1356,7 @@ const AiScriptStart = () => {
         }).append(
           $('<span>', sidebarSettingTemplate.span)
             .text('Top P')
-            .prepend($('<i>', { class: `fa-solid fa-percent me-2` })),
+            .prepend(tinyLib.icon(`fa-solid fa-percent me-2`)),
           topP.insert(),
         ),
 
@@ -1337,7 +1367,7 @@ const AiScriptStart = () => {
         }).append(
           $('<span>', sidebarSettingTemplate.span)
             .text('Top K')
-            .prepend($('<i>', { class: `fa-solid fa-0 me-2` })),
+            .prepend(tinyLib.icon(`fa-solid fa-0 me-2`)),
           topK.insert(),
         ),
 
@@ -1349,7 +1379,7 @@ const AiScriptStart = () => {
         }).append(
           $('<span>', sidebarSettingTemplate.span)
             .text('Presence penalty')
-            .prepend($('<i>', { class: `fa-solid fa-hand me-2` })),
+            .prepend(tinyLib.icon(`fa-solid fa-hand me-2`)),
           presencePenalty.insert(),
         ),
 
@@ -1361,7 +1391,7 @@ const AiScriptStart = () => {
         }).append(
           $('<span>', sidebarSettingTemplate.span)
             .text('Frequency penalty')
-            .prepend($('<i>', { class: `fa-solid fa-hand me-2` })),
+            .prepend(tinyLib.icon(`fa-solid fa-hand me-2`)),
           frequencyPenalty.insert(),
         ),
       };
@@ -1976,15 +2006,11 @@ const AiScriptStart = () => {
       );
 
       // Submit
-      const msgSubmit = $('<button>', {
-        class: 'btn btn-primary input-group-text-dark',
-        text: 'Send',
-      });
+      const msgSubmit = tinyLib.bs.button('primary input-group-text-dark').text('Send');
 
-      const cancelSubmit = $('<button>', {
-        class: 'btn btn-primary input-group-text-dark rounded-end',
-        text: 'Cancel',
-      });
+      const cancelSubmit = tinyLib.bs
+        .button('primary input-group-text-dark rounded-end')
+        .text('Cancel');
 
       const submitMessage = async () => {
         // Prepare to get data
@@ -2070,19 +2096,18 @@ const AiScriptStart = () => {
           style: 'pointer-events: none;',
         }),
 
-        button: $('<button>', {
-          title: 'Insert first dialogue',
-          class: 'btn btn-lg btn-bg d-flex justify-content-center align-items-center',
-          style: [
-            'pointer-events: all',
-            'height: 150px',
-            'font-size: 100px',
-            'background-color: transparent !important',
-          ].join('; '),
-        }),
+        button: tinyLib.bs
+          .button('lg btn-bg d-flex justify-content-center align-items-center')
+          .attr('title', 'Insert first dialogue')
+          .css({
+            'pointer-events': 'all',
+            height: 150,
+            'font-size': '100px',
+            'background-color': 'transparent !important',
+          }),
       };
 
-      firstDialogueBase.button.append($('<i>', { class: 'fa-solid fa-circle-play' }));
+      firstDialogueBase.button.append(tinyLib.icon('fa-solid fa-circle-play'));
 
       firstDialogueBase.button.on('click', () => {
         enabledFirstDialogue(false);
@@ -2179,17 +2204,11 @@ const AiScriptStart = () => {
 
       const makeMsgWarning = (finishReason) => {
         const textBase = $('<span>');
-        const result = $('<div>')
-          .addClass(`mt-2 mb-0 alert alert-danger alert-dismissible fade show d-none`)
-          .attr('role', 'alert')
-          .append(textBase)
-          .prepend($('<i>').addClass('fas fa-exclamation-triangle me-2'))
-          .append(
-            $('<button>').addClass('btn-close').attr({
-              type: 'button',
-              'data-bs-dismiss': 'alert',
-            }),
-          );
+        const result = tinyLib.bs.alert(
+          'danger',
+          [tinyLib.icon('fas fa-exclamation-triangle me-2'), textBase],
+          true,
+        );
 
         const updateText = (errorCode) => {
           const tinyError = tinyAi.getErrorCode(errorCode);
@@ -2227,8 +2246,9 @@ const AiScriptStart = () => {
         editPanel.append(
           // Edit button
           !isIgnore && tinyIndex > -1
-            ? $('<button>', { class: 'btn btn-sm btn-bg' })
-                .append($('<i>', { class: 'fa-solid fa-pen-to-square' }))
+            ? tinyLib.bs
+                .button('bg btn-sm')
+                .append(tinyLib.icon('fa-solid fa-pen-to-square'))
                 .on('click', () => {
                   // Text
                   const textInput = $('<textarea>', { class: 'form-control' });
@@ -2236,15 +2256,17 @@ const AiScriptStart = () => {
                   const oldMsg = tinyCache.msg;
 
                   // Submit
-                  const submitButton = $('<button>', {
-                    class: `w-100 me-2 btn btn-${typeof username !== 'string' ? 'secondary d-inline-block' : 'primary'} mt-2`,
-                    text: 'Submit',
-                  });
+                  const submitButton = tinyLib.bs
+                    .button(
+                      `${typeof username !== 'string' ? 'secondary d-inline-block' : 'primary'} mt-2 w-100 me-2`,
+                    )
+                    .text('Submit');
 
-                  const cancelButton = $('<button>', {
-                    class: `w-100 btn btn-${typeof username !== 'string' ? 'secondary d-inline-block' : 'primary'} mt-2`,
-                    text: 'Cancel',
-                  });
+                  const cancelButton = tinyLib.bs
+                    .button(
+                      `${typeof username !== 'string' ? 'secondary d-inline-block' : 'primary'} mt-2 w-100`,
+                    )
+                    .text('Cancel');
 
                   const closeReplace = () => {
                     msgBallon.removeClass('w-100').empty();
@@ -2279,8 +2301,9 @@ const AiScriptStart = () => {
             : null,
 
           // Delete button
-          $('<button>', { class: 'btn btn-sm btn-bg' })
-            .append($('<i>', { class: 'fa-solid fa-trash-can' }))
+          tinyLib.bs
+            .button('bg btn-sm')
+            .append(tinyLib.icon('fa-solid fa-trash-can'))
             .on('click', () => {
               const tinyIndex = tinyAi.getIndexOfId(data.id);
               if (!isIgnore && tinyIndex > -1) {
