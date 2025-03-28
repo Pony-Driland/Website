@@ -18,52 +18,49 @@ import {
   createRoom,
   joinRoom,
   leaveRoom,
+  ownerOnly,
+  accountNotDetected,
+  sendIncompleteDataInfo,
   MAX_USERS_PER_ROOM,
   ROOM_TITLE_SIZE_LIMIT,
 } from './values';
 
 export default function roomManager(socket, io) {
-  socket.on('join', (data) => {
+  socket.on('join', (data, fn) => {
     const { roomId, password } = data;
     // Validate values
-    if (typeof roomId !== 'string' || password !== 'string') return;
+    if (typeof roomId !== 'string' || password !== 'string') return sendIncompleteDataInfo(fn);
 
     // Get user
     const userId = userSession.getUserId(socket);
-    if (!userId) return;
-    if (userIsRateLimited(socket)) return;
+    if (!userId) return accountNotDetected(fn);
+    if (userIsRateLimited(socket, fn)) return;
 
     // Check if the room exists
     const room = rooms.get(roomId);
     if (!room) {
       //
-      socket.emit('join-failed', { msg: 'Room not found.', roomId, code: 1 });
-      return;
+      return fn({ error: true, msg: 'Room not found.', code: 1 });
     }
 
     // Check if the room has a password and validate it
     if (room.password && room.password !== password) {
-      //
-      socket.emit('join-failed', { msg: 'Incorrect room password.', roomId, code: 2 });
-      return;
+      return fn({ error: true, msg: 'Incorrect room password.', code: 2 });
     }
 
     // Check if the room is full
     if (room.users.size >= room.maxUsers) {
-      socket.emit('join-failed', { msg: 'Room is full.', roomId, code: 3 });
-      return;
+      return fn({ error: true, msg: 'Room is full.', code: 3 });
     }
 
     // Check if the room is disabled
     if (room.disabled) {
-      socket.emit('join-failed', { msg: 'Room is disabled.', roomId, code: 4 });
-      return;
+      return fn({ error: true, msg: 'Room is disabled.', code: 4 });
     }
 
     // Check if the user is banned
     if (room.banned.has(userId)) {
-      socket.emit('join-failed', { msg: "You're banned.", roomId, code: 5 });
-      return;
+      return fn({ error: true, msg: "You're banned.", code: 5 });
     }
 
     // Add user to the room
@@ -81,52 +78,48 @@ export default function roomManager(socket, io) {
     socket.emit('room-history', mapToArray(history));
     socket.emit('update-room', room);
     sendRateLimit(socket);
-    joinRoom(socket, io, roomId);
+    joinRoom(socket, io, roomId, fn);
   });
 
-  socket.on('leave', (data) => {
+  socket.on('leave', (data, fn) => {
     const { roomId } = data;
     // Validate values
-    if (typeof roomId !== 'string') return;
+    if (typeof roomId !== 'string') return sendIncompleteDataInfo(fn);
 
     // Get user
     const userId = userSession.getUserId(socket);
-    if (!userId) return;
+    if (!userId) return accountNotDetected(fn);
 
     // Execute leave
     const leaveStatus = leaveRoom(socket, io, roomId);
     if (!leaveStatus.success) {
       if (leaveStatus.code === 1) {
-        socket.emit('leave-failed', { msg: 'No Room users.', roomId, code: 1 });
+        fn({ error: true, msg: 'No Room users.', roomId, code: 1 });
       } else if (leaveStatus.code === 2)
-        socket.emit('leave-failed', { msg: "You're not in the room.", roomId, code: 2 });
-      else if (leaveStatus.code === 3)
-        socket.emit('leave-failed', { msg: 'Invalid data.', roomId, code: 3 });
-    }
+        fn({ error: true, msg: "You're not in the room.", roomId, code: 2 });
+      else if (leaveStatus.code === 3) fn({ error: true, msg: 'Invalid data.', roomId, code: 3 });
+    } else fn({ success: true });
   });
 
-  socket.on('ban-from-room', (data) => {
+  socket.on('ban-from-room', (data, fn) => {
     const { userId, roomId } = data;
     // Validate values
-    if (typeof userId !== 'string' || typeof roomId !== 'string') return;
+    if (typeof userId !== 'string' || typeof roomId !== 'string') return sendIncompleteDataInfo(fn);
 
     // Get user
     const yourId = userSession.getUserId(socket);
-    if (!yourId) return; // Only logged-in users can use it
-    if (userIsRateLimited(socket)) return;
+    if (!yourId) return accountNotDetected(fn); // Only logged-in users can use it
+    if (userIsRateLimited(socket, fn)) return;
 
     // Check if the room exists
     const rUsers = roomUsers.get(roomId);
     const room = rooms.get(roomId);
     if (!rUsers || !room) {
-      socket.emit('room-ban-failed', {
+      return fn({
+        error: true,
         msg: 'Room not found.',
-        banned: true,
-        userId,
-        roomId,
         code: 1,
       });
-      return;
     }
 
     // Check if user is server owner or server mod
@@ -136,27 +129,20 @@ export default function roomManager(socket, io) {
       room.ownerId !== yourId &&
       !room.moderators.has(yourId)
     ) {
-      socket.emit('room-ban-failed', {
+      return fn({
         msg: 'You are not allowed to do this.',
-        roomId,
-        userId,
-        banned: true,
+        error: true,
         code: 2,
       });
-      return;
     }
 
     // Check if user exists
     if (!users.has(userId)) {
-      //
-      socket.emit('room-ban-failed', {
+      return fn({
+        error: true,
         msg: 'User not found.',
-        banned: true,
-        userId,
-        roomId,
         code: 3,
       });
-      return;
     }
 
     // Add into the ban list
@@ -168,31 +154,27 @@ export default function roomManager(socket, io) {
     leaveRoom(userSockets.get(userId), io, roomId);
 
     // User ban successfully.
-    socket.emit('room-ban-status', { roomId, userId, banned: true });
+    fn({ success: true });
   });
 
-  socket.on('unban-from-room', (data) => {
+  socket.on('unban-from-room', (data, fn) => {
     const { userId, roomId } = data;
     // Validate values
-    if (typeof userId !== 'string' || typeof roomId !== 'string') return;
+    if (typeof userId !== 'string' || typeof roomId !== 'string') return sendIncompleteDataInfo(fn);
 
     // Get user
     const yourId = userSession.getUserId(socket);
-    if (!yourId) return; // Only logged-in users can use it
-    if (userIsRateLimited(socket)) return;
+    if (!yourId) return accountNotDetected(fn); // Only logged-in users can use it
+    if (userIsRateLimited(socket, fn)) return;
 
     // Check if the room exists
     const room = rooms.get(roomId);
     if (!room) {
-      //
-      socket.emit('room-ban-failed', {
+      return fn({
+        error: true,
         msg: 'Room not found.',
-        banned: false,
-        userId,
-        roomId,
         code: 1,
       });
-      return;
     }
 
     // Check if user is server owner or server mod
@@ -202,20 +184,16 @@ export default function roomManager(socket, io) {
       room.ownerId !== yourId &&
       !room.moderators.has(yourId)
     ) {
-      socket.emit('room-ban-failed', {
+      return fn({
+        error: true,
         msg: 'You are not allowed to do this.',
-        banned: false,
-        userId,
-        roomId,
         code: 2,
       });
-      return;
     }
 
     // Check if user exists
     if (!users.has(userId)) {
-      socket.emit('ban-failed', { msg: 'User not found.', roomId, userId, banned: false, code: 3 });
-      return;
+      return fn({ error: true, msg: 'User not found.', code: 3 });
     }
 
     // Remove user from the ban list
@@ -223,24 +201,23 @@ export default function roomManager(socket, io) {
     room.set(roomId, room);
 
     // User unban successfully.
-    socket.emit('room-ban-status', { roomId, userId, banned: false });
+    fn({ success: true });
   });
 
-  socket.on('kick-from-room', (data) => {
+  socket.on('kick-from-room', (data, fn) => {
     const { userId, roomId } = data;
     // Validate values
-    if (typeof userId !== 'string' || typeof roomId !== 'string') return;
+    if (typeof userId !== 'string' || typeof roomId !== 'string') return sendIncompleteDataInfo(fn);
 
     // Get user
     const yourId = userSession.getUserId(socket);
-    if (!yourId) return; // Only logged-in users can use it
-    if (userIsRateLimited(socket)) return;
+    if (!yourId) return accountNotDetected(fn); // Only logged-in users can use it
+    if (userIsRateLimited(socket, fn)) return;
 
     // Check if the room exists
     const room = roomUsers.get(roomId);
     if (!room) {
-      socket.emit('room-kick-failed', { msg: 'Room not found.', userId, roomId, code: 1 });
-      return;
+      return fn({ error: true, msg: 'Room not found.', code: 1 });
     }
 
     // Check if user is server owner or server mod
@@ -250,84 +227,88 @@ export default function roomManager(socket, io) {
       room.ownerId !== yourId &&
       !room.moderators.has(yourId)
     ) {
-      socket.emit('room-kick-failed', {
+      return fn({
+        error: true,
         msg: 'You are not allowed to do this.',
-        userId,
-        roomId,
         code: 4,
       });
-      return;
     }
 
     // Remove the user from their room
+    const kickResult = {};
     const kickStatus = leaveRoom(userSockets.get(userId), io, roomId);
     if (!kickStatus.success) {
-      if (kickStatus.code === 2)
-        socket.emit('room-kick-failed', { msg: 'User not found.', roomId, code: 2 });
-      else if (kickStatus.code === 3)
-        socket.emit('room-kick-failed', { msg: 'Invalid data.', roomId, code: 3 });
-    } else io.to(roomId).emit('user-kicked', { roomId, userId });
+      if (kickStatus.code === 2) {
+        kickResult.code = 2;
+        kickResult.error = true;
+        kickResult.msg = 'User not found.';
+      } else if (kickStatus.code === 3) {
+        kickResult.code = 3;
+        kickResult.error = true;
+        kickResult.msg = 'Invalid data.';
+      }
+    } else {
+      kickResult.success = true;
+      io.to(roomId).emit('user-kicked', { roomId, userId });
+    }
 
-    // User kick successfully.
-    socket.emit('room-kick-status', { roomId, userId });
+    // Complete
+    fn(kickResult);
   });
 
-  socket.on('create-room', (data) => {
+  socket.on('create-room', (data, fn) => {
     const { roomId, password, title } = data;
     // Validate values
     if (typeof roomId !== 'string' || typeof password !== 'string' || typeof title !== 'string')
-      return;
+      return sendIncompleteDataInfo(fn);
 
     // Get user
     const userId = userSession.getUserId(socket);
-    if (!userId) return; // Only logged-in users can use it
-    if (userIsRateLimited(socket)) return;
+    if (!userId) return accountNotDetected(fn); // Only logged-in users can use it
+    if (userIsRateLimited(socket, fn)) return;
 
     // Check if the room exists
     let room = rooms.get(roomId);
     if (!room) {
       createRoom(userId, roomId, password, title);
-      socket.emit('room-create-status', { userId, roomId, password, title });
+      return fn({ success: true });
     } else {
-      socket.emit('room-create-failed', {
+      return fn({
+        error: true,
         msg: 'This room already exists.',
-        roomId,
         code: 1,
       });
-      return;
     }
   });
 
-  socket.on('delete-room', (data) => {
+  socket.on('delete-room', (data, fn) => {
     const { roomId } = data;
     // Validate values
-    if (typeof roomId !== 'string') return;
+    if (typeof roomId !== 'string') return sendIncompleteDataInfo(fn);
 
     // Get user
     const userId = userSession.getUserId(socket);
-    if (!userId) return; // Only logged-in users can use it
-    if (userIsRateLimited(socket)) return;
+    if (!userId) return accountNotDetected(fn); // Only logged-in users can use it
+    if (userIsRateLimited(socket, fn)) return;
 
     // Check if the room exists
     const room = rooms.get(roomId);
     const rUsers = roomUsers.get(roomId);
     if (!room) {
-      socket.emit('room-delete-failed', {
+      return fn({
+        error: true,
         msg: 'Room not found.',
-        roomId,
         code: 1,
       });
-      return;
     }
 
     // Check if user is server owner or server mod
     if (userId !== serverOwnerId && !moderators.has(userId) && room.ownerId !== userId) {
-      socket.emit('room-delete-failed', {
+      return fn({
+        error: true,
         msg: 'You are not allowed to do this.',
-        roomId,
         code: 2,
       });
-      return;
     }
 
     // Disconnect user from rooms
@@ -344,30 +325,28 @@ export default function roomManager(socket, io) {
     if (roomData.has(roomId)) roomData.delete(roomId);
 
     // Room delete successfully.
-    socket.emit('room-delete-status', { roomId });
+    fn({ success: true });
   });
 
-  socket.on('disable-room', (data) => {
+  socket.on('disable-room', (data, fn) => {
     const { roomId } = data;
     // Validate values
-    if (typeof roomId !== 'string') return;
+    if (typeof roomId !== 'string') return sendIncompleteDataInfo(fn);
 
     // Get user
     const userId = userSession.getUserId(socket);
-    if (!userId) return; // Only logged-in users can use it
-    if (userIsRateLimited(socket)) return;
+    if (!userId) return accountNotDetected(fn); // Only logged-in users can use it
+    if (userIsRateLimited(socket, fn)) return;
 
     // Check if the room exists
     const rUsers = roomUsers.get(roomId);
     const room = rooms.get(roomId);
     if (!rUsers || !room) {
-      socket.emit('room-disable-failed', {
+      return fn({
+        error: true,
         msg: 'Room not found.',
-        disabled: true,
-        roomId,
         code: 1,
       });
-      return;
     }
 
     // Check if user is server owner or server mod
@@ -377,13 +356,11 @@ export default function roomManager(socket, io) {
       room.ownerId !== userId &&
       !room.moderators.has(userId)
     ) {
-      socket.emit('room-disable-failed', {
+      return fn({
+        error: true,
         msg: 'You are not allowed to do this.',
-        roomId,
-        disabled: true,
         code: 2,
       });
-      return;
     }
 
     // Change room status
@@ -396,29 +373,27 @@ export default function roomManager(socket, io) {
     });
 
     // Room disabled successfully.
-    socket.emit('room-disable-status', { roomId, disabled: true });
+    fn({ success: true });
   });
 
-  socket.on('enable-room', (data) => {
+  socket.on('enable-room', (data, fn) => {
     const { roomId } = data;
     // Validate values
-    if (typeof roomId !== 'string') return;
+    if (typeof roomId !== 'string') return sendIncompleteDataInfo(fn);
 
     // Get user
     const userId = userSession.getUserId(socket);
-    if (!userId) return; // Only logged-in users can use it
-    if (userIsRateLimited(socket)) return;
+    if (!userId) return accountNotDetected(fn); // Only logged-in users can use it
+    if (userIsRateLimited(socket, fn)) return;
 
     // Check if the room exists
     const room = rooms.get(roomId);
     if (!room) {
-      socket.emit('room-enable-failed', {
+      return fn({
+        error: true,
         msg: 'Room not found.',
-        disabled: false,
-        roomId,
         code: 1,
       });
-      return;
     }
 
     // Check if user is server owner or server mod
@@ -428,13 +403,11 @@ export default function roomManager(socket, io) {
       room.ownerId !== userId &&
       !room.moderators.has(userId)
     ) {
-      socket.emit('room-enable-failed', {
+      return fn({
+        error: true,
         msg: 'You are not allowed to do this.',
-        disabled: false,
-        roomId,
         code: 2,
       });
-      return;
     }
 
     // Enable room back
@@ -442,28 +415,28 @@ export default function roomManager(socket, io) {
     room.set(roomId, room);
 
     // Room enabled successfully.
-    socket.emit('room-disable-status', { roomId, disabled: false });
+    fn({ success: true });
   });
 
-  socket.on('room-add-mod', (data) => {
+  socket.on('room-add-mod', (data, fn) => {
     const { roomId, mods } = data;
     // Validate values
-    if (typeof roomId !== 'string' || Array.isArray(mods)) return;
+    if (typeof roomId !== 'string' || Array.isArray(mods)) return sendIncompleteDataInfo(fn);
 
     // Get user
     const userId = userSession.getUserId(socket);
-    if (!userId) return; // Only logged-in users can update settings
-    if (userIsRateLimited(socket)) return;
+    if (!userId) return accountNotDetected(fn); // Only logged-in users can update settings
+    if (userIsRateLimited(socket, fn)) return;
 
     // Get room
     const room = rooms.get(roomId);
-    if (!room) return; // Room does not exist
+    if (!room) return fn({ error: true, msg: 'Room not found.', code: 1 }); // Room does not exist
 
     // Check if the user is the room owner or the server owner
     const isRoomOwner = userId === room.ownerId;
     const isServerOwner = userId === serverOwnerId; // 'serverOwnerId' refers to the server owner
 
-    if (!isRoomOwner && !isServerOwner) return; // Only room owner or server owner can update settings
+    if (!isRoomOwner && !isServerOwner) return ownerOnly(fn, 2); // Only room owner or server owner can update settings
 
     // Allowed updates
     const allowedUpdates = {};
@@ -490,27 +463,28 @@ export default function roomManager(socket, io) {
       // Notify all users in the room about the updated settings
       io.to(roomId).emit('update-room', { room: rooms.get(roomId), roomId });
     }
+    fn({ success: true });
   });
 
-  socket.on('room-remove-mod', (data) => {
+  socket.on('room-remove-mod', (data, fn) => {
     const { roomId, mods } = data;
     // Validate values
-    if (typeof roomId !== 'string' || Array.isArray(mods)) return;
+    if (typeof roomId !== 'string' || Array.isArray(mods)) return sendIncompleteDataInfo(fn);
 
     // Get user
     const userId = userSession.getUserId(socket);
-    if (!userId) return; // Only logged-in users can update settings
-    if (userIsRateLimited(socket)) return;
+    if (!userId) return accountNotDetected(fn); // Only logged-in users can update settings
+    if (userIsRateLimited(socket, fn)) return;
 
     // Get room
     const room = rooms.get(roomId);
-    if (!room) return; // Room does not exist
+    if (!room) return fn({ error: true, msg: 'Room not found.', code: 1 }); // Room does not exist
 
     // Check if the user is the room owner or the server owner
     const isRoomOwner = userId === room.ownerId;
     const isServerOwner = userId === serverOwnerId; // 'serverOwnerId' refers to the server owner
 
-    if (!isRoomOwner && !isServerOwner) return; // Only room owner or server owner can update settings
+    if (!isRoomOwner && !isServerOwner) return ownerOnly(fn, 2); // Only room owner or server owner can update settings
 
     // Allowed updates
     const allowedUpdates = {};
@@ -530,27 +504,29 @@ export default function roomManager(socket, io) {
       // Notify all users in the room about the updated settings
       io.to(roomId).emit('update-room', { room: rooms.get(roomId), roomId });
     }
+    fn({ success: true });
   });
 
-  socket.on('update-room', (data) => {
+  socket.on('update-room', (data, fn) => {
     const { roomId, newSettings } = data;
     // Validate values
-    if (typeof roomId !== 'string' || !objType(newSettings, 'object')) return;
+    if (typeof roomId !== 'string' || !objType(newSettings, 'object'))
+      return sendIncompleteDataInfo(fn);
 
     // Get user
     const userId = userSession.getUserId(socket);
-    if (!userId) return; // Only logged-in users can update settings
-    if (userIsRateLimited(socket)) return;
+    if (!userId) return accountNotDetected(fn); // Only logged-in users can update settings
+    if (userIsRateLimited(socket, fn)) return;
 
     // Get room
     const room = rooms.get(roomId);
-    if (!room) return; // Room does not exist
+    if (!room) return fn({ error: true, msg: 'Room not found.', code: 1 }); // Room does not exist
 
     // Check if the user is the room owner or the server owner
     const isRoomOwner = userId === room.ownerId;
     const isServerOwner = userId === serverOwnerId; // 'serverOwnerId' refers to the server owner
 
-    if (!isRoomOwner && !isServerOwner) return; // Only room owner or server owner can update settings
+    if (!isRoomOwner && !isServerOwner) return ownerOnly(fn, 2); // Only room owner or server owner can update settings
 
     // Allowed updates
     const allowedUpdates = {};
@@ -585,33 +561,32 @@ export default function roomManager(socket, io) {
       // Notify all users in the room about the updated settings
       io.to(roomId).emit('update-room', { room: rooms.get(roomId), roomId });
     }
+
+    fn({ success: true });
   });
 
-  socket.on('update-room-data', (data) => {
+  socket.on('update-room-data', (data, fn) => {
     const { roomId, isPrivate, values } = data;
     // Validate values
     if (typeof roomId !== 'string' || !objType(values, 'object') || typeof isPrivate !== 'boolean')
-      return;
+      return sendIncompleteDataInfo(fn);
 
     // Get user
     const userId = userSession.getUserId(socket);
-    if (!userId) return; // Only logged-in users can update settings
-    if (userIsRateLimited(socket)) return;
+    if (!userId) return accountNotDetected(fn); // Only logged-in users can update settings
+    if (userIsRateLimited(socket, fn)) return;
 
     // Get room
     const room = rooms.get(roomId);
-    if (!room) return;
+    if (!room) return fn({ error: true, msg: 'Room not found.', code: 1 });
 
     // Check if the user is the owner of the room or the server owner
     if (userId !== room.ownerId && userId !== serverOwnerId) {
-      socket.emit('error-message', {
-        roomId,
-        text: message,
-        isPrivate,
+      return fn({
+        error: true,
         msg: `You do not have permission to update this room${isPrivate ? ' private' : ''} data.`,
         code: 2,
       });
-      return;
     }
 
     // Update the room data
@@ -629,5 +604,7 @@ export default function roomManager(socket, io) {
       // Notify all users in the room about the updated data
       socket.to(roomId).emit('update-room-data', { roomId, values: roomData.get(roomId) });
     }
+
+    fn({ success: true });
   });
 }
