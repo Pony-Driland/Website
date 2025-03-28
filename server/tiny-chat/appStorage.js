@@ -77,7 +77,7 @@ export default async function startFiles() {
   const appStorage = {};
   try {
     // Start content
-    console.log(`[APP] Starting folder...`);
+    console.log(`[APP] [INFO] Starting folder...`);
     const appDir = createAppDirectory();
     console.log(`[APP] [INFO] Folder: ${appDir}`);
 
@@ -272,7 +272,7 @@ export default async function startFiles() {
   }
 
   if (canStart) {
-    console.log(`[APP] Starting app...`);
+    console.log(`[APP] [INFO] Starting app...`);
     return appStorage;
   }
   return null;
