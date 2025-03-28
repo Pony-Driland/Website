@@ -78,6 +78,8 @@ export default function roomManager(socket, io) {
     socket.emit('room-history', mapToArray(history));
     socket.emit('update-room', room);
     sendRateLimit(socket);
+
+    // Complete
     joinRoom(socket, io, roomId, fn);
   });
 
@@ -272,13 +274,14 @@ export default function roomManager(socket, io) {
     if (!room) {
       createRoom(userId, roomId, password, title);
       return fn({ success: true });
-    } else {
-      return fn({
-        error: true,
-        msg: 'This room already exists.',
-        code: 1,
-      });
     }
+
+    // Room exists
+    fn({
+      error: true,
+      msg: 'This room already exists.',
+      code: 1,
+    });
   });
 
   socket.on('delete-room', (data, fn) => {
@@ -463,6 +466,8 @@ export default function roomManager(socket, io) {
       // Notify all users in the room about the updated settings
       io.to(roomId).emit('update-room', { room: rooms.get(roomId), roomId });
     }
+
+    // Complete
     fn({ success: true });
   });
 
@@ -504,6 +509,8 @@ export default function roomManager(socket, io) {
       // Notify all users in the room about the updated settings
       io.to(roomId).emit('update-room', { room: rooms.get(roomId), roomId });
     }
+
+    // Complete
     fn({ success: true });
   });
 
@@ -562,6 +569,7 @@ export default function roomManager(socket, io) {
       io.to(roomId).emit('update-room', { room: rooms.get(roomId), roomId });
     }
 
+    // Complete
     fn({ success: true });
   });
 
@@ -605,6 +613,7 @@ export default function roomManager(socket, io) {
       socket.to(roomId).emit('update-room-data', { roomId, values: roomData.get(roomId) });
     }
 
+    // Complete
     fn({ success: true });
   });
 }

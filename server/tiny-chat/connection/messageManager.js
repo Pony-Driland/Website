@@ -51,12 +51,6 @@ export default function messageManager(socket, io) {
     history.set(msgIndex, { userId, text: message, date: msgDate, edited: 0 });
 
     // Emit to the room that the user joined (based on roomId)
-    fn({
-      success: true,
-      id: msgIndex,
-      date: msgDate,
-    });
-
     socket.to(roomId).emit('new-message', {
       roomId,
       id: msgIndex,
@@ -65,6 +59,9 @@ export default function messageManager(socket, io) {
       date: msgDate,
       edited: 0,
     });
+
+    // Complete
+    fn({ id: msgIndex, date: msgDate });
   });
 
   socket.on('edit-message', (data, fn) => {
@@ -117,14 +114,12 @@ export default function messageManager(socket, io) {
     history.set(messageId, msg);
 
     // Emit the event only to logged-in users in the room
-    fn({
-      success: true,
-      edited: msgDate,
-    });
-
     socket
       .to(roomId)
       .emit('update-message', { roomId, id: messageId, text: newText, edited: msgDate });
+
+    // Complete
+    fn({ edited: msgDate });
   });
 
   socket.on('delete-message', (data, fn) => {
@@ -163,8 +158,8 @@ export default function messageManager(socket, io) {
     history.delete(messageId);
 
     // Emit the event only to logged-in users in the room
-    fn({ success: true });
     socket.to(roomId).emit('delete-message', { roomId, id: messageId });
+    fn({ success: true });
   });
 
   socket.on('roll-dice', (data, fn) => {
@@ -190,7 +185,9 @@ export default function messageManager(socket, io) {
       }
       // Roll all dice with the same number of sides
       for (let i = 0; i < dice.length; i++) rollDice(sides);
-      return io.to(roomId).emit('roll-result', { results, total });
+
+      // Complete
+      io.to(roomId).emit('roll-result', { results, total });
     } else {
       // Roll dice with different number of sides
       // Iterate over each die and roll with its respective number of sides
@@ -201,9 +198,11 @@ export default function messageManager(socket, io) {
         rollDice(sides);
       }
 
+      // Complete
       io.to(roomId).emit('roll-result', { results, total });
     }
 
+    // Complete
     fn({ success: true });
   });
 }
