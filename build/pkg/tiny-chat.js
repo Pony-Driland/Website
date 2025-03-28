@@ -4,7 +4,7 @@ const os = require('os');
 const fs = require('fs');
 
 // Detecta o sistema operacional padrão caso não seja especificado
-const targetNodeVersion = 'node14';
+const targetNodeVersion = 'node18';
 const defaultTarget = (value) => {
     switch (value) {
         case 'win32': return `${targetNodeVersion}-win-x64`;
