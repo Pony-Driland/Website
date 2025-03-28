@@ -7,14 +7,14 @@ import ini from 'ini';
 
 import { _setIniConfig } from './connection/values';
 
-const FOLDER_NAME = 'ponydriland_tiny_chat';
+const FOLDER_NAME = 'tiny-chat_data';
 
 // Function to create folder to store files
 function createAppDirectory() {
   console.log('[APP] [INFO] Starting data directory creation...');
 
   const appDirectory =
-    process.env.NODE_ENV === 'production'
+    process.env.NODE_ENV === 'production' || process.pkg
       ? path.join(path.dirname(process.execPath), FOLDER_NAME) // For production, next to the .exe
       : path.join(__dirname, `../${FOLDER_NAME}`); // For development, inside the project folder
 
@@ -54,7 +54,7 @@ async function ensureIniFile(iniFilePath, templateFilePath) {
     const defaultCfg = ini.parse(fs.readFileSync(templateFilePath, 'utf-8'));
     console.log('[APP] [INI] INI file loaded!');
 
-    return { config, defaultCfg };
+    return { newCfg: config, defaultCfg };
   } catch (err) {
     console.error('[APP] [INI] Error ensuring INI file:');
     console.error(err);
@@ -79,6 +79,7 @@ export default async function startFiles() {
     // Start content
     console.log(`[APP] Starting folder...`);
     const appDir = createAppDirectory();
+    console.log(`[APP] [INFO] Folder: ${appDir}`);
 
     // Start ini file
     const config = {};
