@@ -9,31 +9,31 @@ import {
   users,
   userSockets,
   serverOwnerId,
+  sendIncompleteDataInfo,
+  accountNotDetected,
   NICKNAME_SIZE_LIMIT,
   OPEN_REGISTRATION,
 } from './values';
 
 export default function userManager(socket, io) {
-  socket.on('ban', (data) => {
+  socket.on('ban', (data, fn) => {
     const { userId, reason } = data;
     // Validate values
-    if (typeof userId !== 'string' || typeof reason !== 'string') return;
+    if (typeof userId !== 'string' || typeof reason !== 'string') return sendIncompleteDataInfo(fn);
 
     // Get user
     const yourId = userSession.getUserId(socket);
-    if (!yourId) return; // Only logged-in users can use it
-    if (userIsRateLimited(socket)) return;
+    if (!yourId) return accountNotDetected(fn); // Only logged-in users can use it
+    if (userIsRateLimited(socket, fn)) return;
 
     // Check if user is server owner or server mod
     if (yourId !== serverOwnerId && !moderators.has(yourId)) {
-      socket.emit('ban-failed', { msg: 'You are not allowed to do this.', banned: true, code: 1 });
-      return;
+      return fn({ error: true, msg: 'You are not allowed to do this.', code: 1 });
     }
 
     // Check if user exists
     if (!users.has(userId)) {
-      socket.emit('ban-failed', { msg: 'User not found.', banned: true, code: 2 });
-      return;
+      return fn({ error: true, msg: 'User not found.', code: 2 });
     }
 
     // Disconnect user
@@ -43,74 +43,70 @@ export default function userManager(socket, io) {
     bannedUsers.set(userId, { date: Date.now(), reason });
 
     // User ban successfully.
-    socket.emit('ban-status', { userId, reason, banned: true });
+    fn({ success: true });
   });
 
-  socket.on('unban', (data) => {
+  socket.on('unban', (data, fn) => {
     const { userId } = data;
     // Validate values
-    if (typeof userId !== 'string') return;
+    if (typeof userId !== 'string') return sendIncompleteDataInfo(fn);
 
     // Get user
     const yourId = userSession.getUserId(socket);
-    if (!yourId) return; // Only logged-in users can use it
-    if (userIsRateLimited(socket)) return;
+    if (!yourId) return accountNotDetected(fn); // Only logged-in users can use it
+    if (userIsRateLimited(socket, fn)) return;
 
     // Check if user is server owner or server mod
     if (yourId !== serverOwnerId && !moderators.has(yourId)) {
-      socket.emit('ban-failed', { msg: 'You are not allowed to do this.', banned: true, code: 1 });
-      return;
+      return fn({ error: true, msg: 'You are not allowed to do this.', code: 1 });
     }
 
     // Check if user exists
     if (!users.has(userId)) {
-      socket.emit('ban-failed', { msg: 'User not found.', banned: false, code: 2 });
-      return;
+      return fn({ error: true, msg: 'User not found.', code: 2 });
     }
 
     // Remove user from the ban list
     bannedUsers.delete(userId);
 
     // User unban successfully.
-    socket.emit('ban-status', { userId, banned: false });
+    fn({ success: true });
   });
 
-  socket.on('kick', (data) => {
+  socket.on('kick', (data, fn) => {
     const { userId } = data;
     // Validate values
-    if (typeof userId !== 'string') return;
+    if (typeof userId !== 'string') return sendIncompleteDataInfo(fn);
 
     // Get user
     const yourId = userSession.getUserId(socket);
-    if (!yourId) return; // Only logged-in users can use it
-    if (userIsRateLimited(socket)) return;
+    if (!yourId) return accountNotDetected(fn); // Only logged-in users can use it
+    if (userIsRateLimited(socket, fn)) return;
 
     // Check if user is server owner or server mod
     if (yourId !== serverOwnerId && !moderators.has(yourId)) {
-      socket.emit('kick-failed', { msg: 'You are not allowed to do this.', code: 1 });
-      return;
+      return fn({ error: true, msg: 'You are not allowed to do this.', code: 1 });
     }
 
     // Disconnect user
     if (userSockets.has(userId)) userSockets.get(userId).disconnect();
     else {
-      socket.emit('kick-failed', { msg: 'User not found.', code: 2 });
-      return;
+      return fn({ error: true, msg: 'User not found.', code: 2 });
     }
 
     // User kick successfully.
-    socket.emit('kick-status', { userId });
+    fn({ success: true });
   });
 
-  socket.on('change-password', (data) => {
+  socket.on('change-password', (data, fn) => {
     const { password } = data;
     // Validate values
-    if (typeof password !== 'string') return;
+    if (typeof password !== 'string') return sendIncompleteDataInfo(fn);
 
     // Get user
     const userId = userSession.getUserId(socket);
-    if (!userId) return; // Only logged-in users can use it
-    if (userIsRateLimited(socket)) return;
+    if (!userId) return accountNotDetected(fn); // Only logged-in users can use it
+    if (userIsRateLimited(socket, fn)) return;
     const user = users.get(userId);
 
     // Change password
@@ -120,18 +116,18 @@ export default function userManager(socket, io) {
     users.set(userId, user);
 
     // User unban successfully.
-    socket.emit('user-password-status', { userId, password: user.password });
+    fn({ success: true });
   });
 
-  socket.on('change-nickname', (data) => {
+  socket.on('change-nickname', (data, fn) => {
     const { nickname } = data;
     // Validate values
-    if (typeof nickname !== 'string') return;
+    if (typeof nickname !== 'string') return sendIncompleteDataInfo(fn);
 
     // Get user
     const userId = userSession.getUserId(socket);
-    if (!userId) return; // Only logged-in users can use it
-    if (userIsRateLimited(socket)) return;
+    if (!userId) return accountNotDetected(fn); // Only logged-in users can use it
+    if (userIsRateLimited(socket, fn)) return;
     const user = users.get(userId);
 
     // Change nickname
@@ -142,73 +138,68 @@ export default function userManager(socket, io) {
     userSession.setNickname(socket, user.nickname);
 
     // User unban successfully.
-    socket.emit('user-nickname-status', { userId, nickname: user.nickname });
+    fn({ nickname: user.nickname });
   });
 
-  socket.on('register', (data) => {
+  socket.on('register', (data, fn) => {
     const { userId, password, nickname } = data;
     // Validate values
     if (typeof userId !== 'string' || typeof password !== 'string' || typeof nickname !== 'string')
-      return;
+      return sendIncompleteDataInfo(fn);
 
     // Check User
-    if (userIsRateLimited(socket, true)) return;
+    if (userIsRateLimited(socket, fn, true)) return;
 
     if (!OPEN_REGISTRATION && userSession.getUserId(socket) !== serverOwnerId) {
-      socket.emit('register-status', { code: 2, msg: 'Only the owner can create accounts.' });
-      return;
+      return fn({ error: true, code: 2, msg: 'Only the owner can create accounts.' });
     }
 
     if (users.has(userId)) {
-      socket.emit('register-status', { code: 1, msg: 'User Id already exists.' });
-      return;
+      return fn({ error: true, code: 1, msg: 'User Id already exists.' });
     }
 
     // Create Account
     createAccount(userId, password, nickname);
 
     // User registered successfully.
-    socket.emit('register-status', { userId, password, nickname });
+    fn({ userId, nickname });
   });
 
-  socket.on('login', (data) => {
+  socket.on('login', (data, fn) => {
     const { userId, password } = data;
     // Validate values
-    if (typeof userId !== 'string' || typeof password !== 'string') return;
+    if (typeof userId !== 'string' || typeof password !== 'string')
+      return sendIncompleteDataInfo(fn);
 
     // Check if user is using account
     if (bannedUsers.has(userId)) {
       const banData = bannedUsers.get(userId);
-      socket.emit('login-failed', {
+      return fn({
+        error: true,
         reason: banData.reason,
         date: banData.date,
         msg: "You're banned!",
         code: 5,
       });
-      return;
     }
 
     if (userSession.getUserId(socket)) {
-      socket.emit('login-failed', { msg: "You're already logged in!", code: 4 });
-      return;
+      return fn({ error: true, msg: "You're already logged in!", code: 4 });
     }
 
     if (userSockets.has(userId)) {
-      socket.emit('login-failed', { msg: 'The account is already in use.', code: 3 });
-      return;
+      return fn({ error: true, msg: 'The account is already in use.', code: 3 });
     }
 
     // Validate user credentials
     if (!users.has(userId)) {
-      socket.emit('login-failed', { msg: 'User does not exist.', code: 2 });
-      return;
+      return fn({ error: true, msg: 'User does not exist.', code: 2 });
     }
 
     const user = users.get(userId);
     const hashedPassword = getHashString(password);
     if (user.password !== hashedPassword) {
-      socket.emit('login-failed', { msg: 'Invalid user credentials.', code: 1 });
-      return;
+      return fn({ error: true, msg: 'Invalid user credentials.', code: 1 });
     }
 
     // Get the user's nickname from the users map
@@ -226,7 +217,7 @@ export default function userManager(socket, io) {
     console.log(
       `[APP] [${socket.handshake ? socket.handshake.address : '?.?.?.?'}] User ${userId} logged in: ${socket.id}`,
     );
-    socket.emit('login-success', { userId, nickname });
+    fn({ userId, nickname });
   });
 
   socket.on('disconnect', () => {

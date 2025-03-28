@@ -122,14 +122,14 @@ export const sendRateLimit = (socket) => {
 export const createRateLimit = (limitCount = 5, itemName = 'items', code = -1) => {
   // Track the events for rate limiting
   const userEventCounts = new Map();
-  return (socket, isUnknown = false) => {
+  return (socket, fn, isUnknown = false) => {
     // Is a user
     const userId = !isUnknown
       ? userSession.getUserId(socket)
       : socket.handshake
         ? socket.handshake.address
         : '?.?.?.?';
-    if (!userId) return;
+    if (!userId) return false;
 
     // Rate limiting logic
     const currentTime = Date.now();
@@ -139,7 +139,9 @@ export const createRateLimit = (limitCount = 5, itemName = 'items', code = -1) =
     // Check if rate limit is exceeded based on EVENT_LIMIT
     if (currentTime - userTimestamp < RATE_LIMIT_TIME && userMessageCount >= limitCount) {
       const rateLimitTime = RATE_LIMIT_TIME / 1000;
-      socket.emit('rate-limit', {
+      fn({
+        error: true,
+        ratelimit: true,
         msg: `Rate limit exceeded. You can send a maximum of ${limitCount} ${itemName} in ${rateLimitTime} seconds.`,
         code,
         numbers: [limitCount, rateLimitTime],
@@ -167,8 +169,42 @@ export const createRateLimit = (limitCount = 5, itemName = 'items', code = -1) =
 export const userIsRateLimited = createRateLimit(EVENT_LIMIT, 'events', 1);
 export const userMsgIsRateLimited = createRateLimit(MESSAGES_LIMIT, 'messages', 2);
 
+// Incomplete data
+export const sendIncompleteDataInfo = (fn, code = 0) => {
+  fn({
+    error: true,
+    msg: `Your data does not respect the requirements for this request. Your request has been cancelled.`,
+    code,
+  });
+};
+
+export const accountNotDetected = (fn, code = 0) => {
+  fn({
+    error: true,
+    noAccount: true,
+    msg: `No account has been detected to complete this request. Your request has been cancelled.`,
+    code,
+  });
+};
+
+export const roomNotDetected = (fn, code = 0) => {
+  fn({
+    error: true,
+    msg: `Room hasn't been detected.`,
+    code,
+  });
+};
+
+export const ownerOnly = (fn, code = 0) => {
+  fn({
+    error: true,
+    msg: `Only the owner is allowed to perform this action.`,
+    code,
+  });
+};
+
 // Join Room
-export const joinRoom = (socket, io, roomId) => {
+export const joinRoom = (socket, io, roomId, fn) => {
   if (socket) {
     // Get data
     const userId = userSession.getUserId(socket);
@@ -183,15 +219,19 @@ export const joinRoom = (socket, io, roomId) => {
 
       // Notify room members about the new user (excluding the user who just joined)
       socket.join(roomId);
-      io.to(roomId).emit('user-joined', { roomId, userId, nickname, ping: pingNow });
+
+      const socketData = { roomId, userId, nickname, ping: pingNow };
+      io.to(roomId).emit('user-joined', socketData);
+      if (fn) fn(socketData);
       return true;
     }
   }
+  if (fn) fn({ error: true, msg: 'Invalid data!' });
   return false;
 };
 
 // Leave room
-export const leaveRoom = (socket, io, roomId) => {
+export const leaveRoom = (socket, io, roomId, fn) => {
   if (socket) {
     // Get data
     const userId = userSession.getUserId(socket);
@@ -209,14 +249,22 @@ export const leaveRoom = (socket, io, roomId) => {
         io.to(roomId).emit('user-left', { roomId, nickname, userId });
         socket.leave(roomId);
         // Complete
+        if (fn) fn({ success: true });
         return { success: true };
       }
       // User not found
+      if (fn) fn({ success: false, code: 2, msg: 'User not found.' });
       return { success: false, code: 2 };
     }
     // Invalid data
-    else if (!roomId) return { success: false, code: 3 };
+    else if (!roomId) {
+      if (fn) fn({ success: false, code: 3, msg: 'Invalid data.' });
+      return { success: false, code: 3 };
+    }
   }
   // No data
-  else return { success: false, code: 0 };
+  else {
+    if (fn) fn({ success: false, code: 0, msg: 'No data.' });
+    return { success: false, code: 0 };
+  }
 };
