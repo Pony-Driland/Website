@@ -1276,6 +1276,13 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@json-editor/json-editor@^2.15.2":
+  version "2.15.2"
+  resolved "https://registry.yarnpkg.com/@json-editor/json-editor/-/json-editor-2.15.2.tgz#a6081207b5074e24bb2f4fcb3d93553d24cab66a"
+  integrity sha512-vUQ7Oy+7VfNIzu6irtPz5qfHbMNTlQWUbHJ7eunxFza+SBwUXfq2Uh5QYD2d6hLDhF22sYh8DPpLWFixQrt1+Q==
+  dependencies:
+    core-js "^3.27.2"
+
 "@metamask/safe-event-emitter@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@metamask/safe-event-emitter/-/safe-event-emitter-2.0.0.tgz#af577b477c683fad17c619a78208cede06f9605c"
@@ -3550,7 +3557,7 @@ core-js@^2.4.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
   integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
 
-core-js@^3.30.2:
+core-js@^3.27.2, core-js@^3.30.2:
   version "3.41.0"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.41.0.tgz#57714dafb8c751a6095d028a7428f1fb5834a776"
   integrity sha512-SJ4/EHwS36QMJd6h/Rg+GyR4A5xE0FSI3eZ+iBVpfqf1x0eTSg1smWLHrA+2jQThZSh97fmSgFSU8B61nxosxA==
