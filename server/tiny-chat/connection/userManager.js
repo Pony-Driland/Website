@@ -217,6 +217,8 @@ export default function userManager(socket, io) {
     console.log(
       `[APP] [${socket.handshake ? socket.handshake.address : '?.?.?.?'}] User ${userId} logged in: ${socket.id}`,
     );
+
+    // Complete
     fn({ userId, nickname });
   });
 
