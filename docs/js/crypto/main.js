@@ -52,7 +52,8 @@ storyCfg.web3.login = () => {
           `Login is not required. You can continue using all the tools of the website for free. Login is only to use cloud services.`,
         ),
 
-        $('<button>', { class: 'btn btn-info m-4' })
+        tinyLib.bs
+          .button('info m-4')
           .text('Metamask')
           .on('click', () => {
             $('#crypto_connection').modal('hide');
@@ -126,7 +127,8 @@ storyCfg.web3.login = () => {
     let clickType2 = null;
 
     // NSFW Filter
-    itemsData.nsfwFilter = $('<button>', { class: 'btn btn-secondary m-2' })
+    itemsData.nsfwFilter = tinyLib.bs
+      .button('secondary m-2')
       .text('NSFW Filters')
       .on('click', function () {
         const filters = [];
@@ -144,7 +146,8 @@ storyCfg.web3.login = () => {
                   if (storyCfg.nsfw[NSFWITEM]) {
                     // Action
                     filters.push(
-                      $('<button>', { class: 'btn btn-secondary m-2' })
+                      tinyLib.bs
+                        .button('secondary m-2')
                         .data('nsfw_crypto_data', { id: NSFWITEM, data: storyCfg.nsfw[NSFWITEM] })
                         .text(storyCfg.nsfw[NSFWITEM].name)
                         .on('click', async function () {
@@ -244,7 +247,8 @@ storyCfg.web3.login = () => {
     items.push(itemsData.nsfwFilter);
 
     // Volume
-    itemsData.volume = $('<button>', { class: 'btn btn-secondary m-2' })
+    itemsData.volume = tinyLib.bs
+      .button('secondary m-2')
       .text('Volume')
       .on('click', async () => {
         $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
@@ -316,7 +320,8 @@ storyCfg.web3.login = () => {
     // Chapter Selected
     if (storyData.chapter.selected > 0) {
       // Bookmark
-      itemsData.bookmark = $('<button>', { class: 'btn btn-secondary m-2' })
+      itemsData.bookmark = tinyLib.bs
+        .button('secondary m-2')
         .text('Bookmark - Chapter ' + storyData.chapter.selected)
         .on('click', async () => {
           $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
@@ -412,7 +417,8 @@ storyCfg.web3.login = () => {
         ),
 
         // Load
-        $('<button>', { class: 'btn btn-secondary m-4' })
+        tinyLib.bs
+          .button('secondary m-4')
           .text('Load')
           .on('click', () => {
             clickType = 'load';
@@ -431,7 +437,8 @@ storyCfg.web3.login = () => {
           }),
 
         // Save
-        $('<button>', { class: 'btn btn-primary m-4' })
+        tinyLib.bs
+          .button('primary m-4')
           .text('Save')
           .on('click', () => {
             clickType = 'save';

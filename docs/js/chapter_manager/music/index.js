@@ -440,11 +440,11 @@ const musicManager = {
 
       // Buttons
       storyData.music.nav.youtube = $('#youtubePlayer');
-      storyData.music.nav.info = $('<i>', { class: 'fas fa-info-circle' });
-      storyData.music.nav.play = $('<i>', { class: 'fas fa-play' });
-      storyData.music.nav.volume = $('<i>', { class: 'fas fa-volume-mute' });
-      storyData.music.nav.stop = $('<i>', { class: 'fas fa-stop' });
-      storyData.music.nav.disable = $('<i>', { class: 'fas fa-ban' });
+      storyData.music.nav.info = tinyLib.icon('fas fa-info-circle');
+      storyData.music.nav.play = tinyLib.icon('fas fa-play');
+      storyData.music.nav.volume = tinyLib.icon('fas fa-volume-mute');
+      storyData.music.nav.stop = tinyLib.icon('fas fa-stop');
+      storyData.music.nav.disable = tinyLib.icon('fas fa-ban');
 
       // Fix Youtube Player
       //storyData.music.nav.youtube.removeClass('hidden');
@@ -513,7 +513,7 @@ const musicManager = {
               if (!storyData.music.loading) {
                 // Modal
                 tinyLib.modal({
-                  title: [$('<i>', { class: 'fas fa-volume me-3' }), 'Song Volume'],
+                  title: [tinyLib.icon('fas fa-volume me-3'), 'Song Volume'],
                   body: $('<center>').append(
                     $('<p>').text('Change the page music volume'),
                     $('<input>', {

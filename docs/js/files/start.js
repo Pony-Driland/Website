@@ -475,20 +475,20 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
       });
       // Open Button
       const openButton = $('<h5>', { class: 'm-0 p-2 w-100' });
-      openButton.text('Contents').prepend(
-        $('<i>', {
-          class: 'd-flex align-items-center fa-solid fa-list me-2 small',
-        }),
-      );
+      openButton
+        .text('Contents')
+        .prepend(tinyLib.icon('d-flex align-items-center fa-solid fa-list me-2 small'));
 
-      const collapseButton = $('<button>', {
-        'data-bs-toggle': 'collapse',
-        href: '#content-list-collapse',
-        role: 'button',
-        type: 'button',
-        class: 'btn btn-link btn-bg p-2 d-flex justify-content-center align-items-center me-2',
-        style: 'height: 30px; width: 30px; font-size: 14px;',
-      }).append($('<i>', { class: 'fa-solid fa-square-minus' }));
+      const collapseButton = tinyLib.bs
+        .button('link btn-bg p-2 d-flex justify-content-center align-items-center me-2')
+        .attr('data-bs-toggle', 'collapse')
+        .attr('href', '#content-list-collapse')
+        .css({
+          height: 30,
+          width: 30,
+          'font-size': '14px',
+        })
+        .append(tinyLib.icon('fa-solid fa-square-minus'));
 
       tinyBase.append(openButton, collapseButton);
 
@@ -1175,7 +1175,7 @@ $(() => {
             }).prepend(
               $('<a>', aData)
                 .text(where[item].text)
-                .prepend($('<i>', { class: `${where[item].icon} me-2` })),
+                .prepend(tinyLib.icon(`${where[item].icon} me-2`)),
             );
 
             console.log(where[item].file);
@@ -1209,7 +1209,7 @@ $(() => {
           href: '#',
         })
           .attr('title', metaLogin.title)
-          .prepend($('<i>', { class: 'fa-brands fa-ethereum me-2' }));
+          .prepend(tinyLib.icon('fa-brands fa-ethereum me-2'));
 
         metaLogin.base.prepend(metaLogin.button);
         metaLogin.button.on('click', storyCfg.web3.login);
@@ -1233,7 +1233,7 @@ $(() => {
           id: 'ai-login',
           class: 'nav-link',
           href: '#',
-        }).prepend($('<i>', { class: 'fa-solid fa-robot me-2' }));
+        }).prepend(tinyLib.icon('fa-solid fa-robot me-2'));
 
         tinyAiScript.checkTitle();
         aiLogin.base.prepend(aiLogin.button);
@@ -1259,7 +1259,7 @@ $(() => {
               .prepend(
                 $('<a>', { class: 'nav-link', href: '/', id: 'homepage' })
                   .text('Home')
-                  .prepend($('<i>', { class: 'fas fa-home me-2' })),
+                  .prepend(tinyLib.icon('fas fa-home me-2')),
               )
               .on('click', () => {
                 openMDFile('MAIN', true);
@@ -1275,7 +1275,7 @@ $(() => {
                 id: 'discord-server',
               })
                 .text('Discord')
-                .prepend($('<i>', { class: 'fab fa-discord me-2' })),
+                .prepend(tinyLib.icon('fab fa-discord me-2')),
             ),
 
             // Blog
@@ -1287,7 +1287,7 @@ $(() => {
                 id: 'blog-url',
               })
                 .text('Blog')
-                .prepend($('<i>', { class: 'fa-solid fa-rss me-2' })),
+                .prepend(tinyLib.icon('fa-solid fa-rss me-2')),
             ),
 
             // AI
@@ -1299,7 +1299,7 @@ $(() => {
                   id: 'ai-access-page',
                 })
                   .text('AI Page')
-                  .prepend($('<i>', { class: 'fa-solid fa-server me-2' })),
+                  .prepend(tinyLib.icon('fa-solid fa-server me-2')),
               )
               .on('click', () => {
                 tinyAiScript.open();
@@ -1380,7 +1380,7 @@ $(() => {
                 })
                   .text('Read Fic')
                   .append(isNewValue)
-                  .prepend($('<i>', { class: 'fab fa-readme me-2' })),
+                  .prepend(tinyLib.icon('fab fa-readme me-2')),
               )
               .on('click', () => {
                 $('#top_page').addClass('d-none');
@@ -1398,68 +1398,27 @@ $(() => {
       // Insert Navbar
       $('body').prepend(
         // Navbar
-        $('<nav>', {
-          class: 'navbar navbar-expand-lg navbar-dark bg-dark fixed-top',
-          id: 'md-navbar',
-        }).append(
+        tinyLib.bs.navbar.root('md-navbar', 'dark', true).append(
           // Title
-          $('<a>', {
-            class: 'navbar-brand d-block d-lg-none ms-sm-4',
-            href: '/',
-          })
-            .text(storyCfg.title)
-            .on('click', () => {
-              openMDFile('MAIN', true);
-              return false;
-            }),
-
-          // Button
-          $('<button>', {
-            class: 'navbar-toggler me-sm-4',
-            type: 'button',
-            'data-bs-toggle': 'collapse',
-            'data-bs-target': '#mdMenu',
-            'aria-controls': '#mdMenu',
-            'aria-expanded': false,
-          }).append($('<span>', { class: 'navbar-toggler-icon' })),
+          tinyLib.bs.navbar.title(storyCfg.title, '/').on('click', () => {
+            openMDFile('MAIN', true);
+            return false;
+          }),
 
           // Collapse
-          $('<div>', {
-            class: 'collapse navbar-collapse',
-            id: 'mdMenu',
-          }).append(navbarItems()),
+          tinyLib.bs.navbar.collapse('mdMenu', navbarItems()),
 
           // OffCanvas
-          $('<div>', {
-            class: 'offcanvas offcanvas-end d-lg-none',
-            tabindex: -1,
-            id: 'offcanvasNavbar',
-            'aria-labelledby': 'offcanvasNavbarLabel',
-          }).append(
-            $('<div>', { class: 'offcanvas-header' }).append(
-              $('<h5>', {
-                class: 'offcanvas-title',
-                id: 'offcanvasNavbarLabel',
-              }).text(storyCfg.title),
-              $('<button>', {
-                class: 'btn-close',
-                type: 'button',
-                'data-bs-dismiss': 'offcanvas',
-              }),
-
-              $('<div>', {
-                class: 'offcanvas-body',
-              }) /* .append(navbarItems()) */,
-            ),
+          tinyLib.bs.offcanvas(
+            'end d-lg-none',
+            'offcanvasNavbar',
+            storyCfg.title /* , navbarItems() */,
           ),
         ),
       );
 
       // Insert Readme
-      $('#app').append(
-        // Content
-        $('<div>', { id: 'markdown-read', class: 'container' }),
-      );
+      $('#app').append(tinyLib.bs.container('markdown-read'));
 
       // Footer Base
       const tinyFooter = { 1: [], 2: [] };
@@ -1475,7 +1434,7 @@ $(() => {
               href: `https://opensea.io/collection/${storyCfg.opensea}`,
             })
               .text('OpenSea')
-              .prepend($('<i>', { class: 'fab fa-ethereum me-2' })),
+              .prepend(tinyLib.icon('fab fa-ethereum me-2')),
           ),
         );
       }
@@ -1486,7 +1445,7 @@ $(() => {
           $('<li>').append(
             $('<a>', { href: `https://${storyData.cid32}.ipfs.dweb.link/` })
               .text('IPFS ' + storyCfg.nftDomain.name)
-              .prepend($('<i>', { class: 'fas fa-wifi me-2' })),
+              .prepend(tinyLib.icon('fas fa-wifi me-2')),
           ),
         );
       }
@@ -1501,7 +1460,7 @@ $(() => {
               href: `https://${storyCfg.mastodon.domain}/@${storyCfg.mastodon.username}`,
             })
               .text('Mastodon')
-              .prepend($('<i>', { class: 'fa-brands fa-mastodon me-2' })),
+              .prepend(tinyLib.icon('fa-brands fa-mastodon me-2')),
           ),
         );
       }
@@ -1515,7 +1474,7 @@ $(() => {
               href: `https://discord.gg/${storyCfg.discordInvite}`,
             })
               .text('Discord Server')
-              .prepend($('<i>', { class: 'fab fa-discord me-2' })),
+              .prepend(tinyLib.icon('fab fa-discord me-2')),
           ),
         );
       }
@@ -1530,7 +1489,7 @@ $(() => {
           $('<li>').append(
             $('<a>', { target: '_blank', href: `https://${storyCfg.domain}` })
               .text('Website')
-              .prepend($('<i>', { class: 'fa-solid fa-pager me-2' })),
+              .prepend(tinyLib.icon('fa-solid fa-pager me-2')),
           ),
         );
       } else {
@@ -1541,7 +1500,7 @@ $(() => {
               href: `https://${storyCfg.mirror[dice.roll() - 1]}`,
             })
               .text('Mirror')
-              .prepend($('<i>', { class: 'fa-solid fa-pager me-2' })),
+              .prepend(tinyLib.icon('fa-solid fa-pager me-2')),
           ),
         );
       }
@@ -1555,7 +1514,7 @@ $(() => {
               href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.valueURL),
             })
               .text(storyCfg.nftDomain.name)
-              .prepend($('<i>', { class: 'fas fa-marker me-2' })),
+              .prepend(tinyLib.icon('fas fa-marker me-2')),
           ),
         );
       }
@@ -1568,7 +1527,7 @@ $(() => {
               href: `https://github.com/${storyCfg.github.account}/${storyCfg.github.repository}`,
             })
               .text('Github')
-              .prepend($('<i>', { class: 'fab fa-github me-2' })),
+              .prepend(tinyLib.icon('fab fa-github me-2')),
           ),
         );
       }
@@ -1577,7 +1536,7 @@ $(() => {
         $('<li>').append(
           $('<a>', { target: '_blank', href: 'mailto:' + storyCfg.contact })
             .text('Contact')
-            .prepend($('<i>', { class: 'fas fa-envelope me-2' })),
+            .prepend(tinyLib.icon('fas fa-envelope me-2')),
         ),
       );
 
@@ -1590,7 +1549,7 @@ $(() => {
               id: 'license',
             })
               .text('License')
-              .prepend($('<i>', { class: 'fas fa-copyright me-2' })),
+              .prepend(tinyLib.icon('fas fa-copyright me-2')),
           )
           .on('click', () => {
             openMDFile('/LICENSE.md');

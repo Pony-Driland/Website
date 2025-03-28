@@ -136,18 +136,7 @@ tinyLib.dialog = function (data1, data2) {
 tinyLib.alert = function (where, alertType, icon, text) {
   $(where)
     .empty()
-    .append(
-      $('<div>', {
-        class: 'alert alert-' + alertType + ' alert-dismissible fade show',
-      }).append(
-        $('<button>', { class: 'close', 'data-dismiss': 'alert', type: 'button' }).append(
-          $('<span>', { 'aria-hidden': true, class: 'text-secondary' }).text('×'),
-        ),
-        $('<i>', { class: icon }),
-        ' ',
-        text,
-      ),
-    );
+    .append(tinyLib.bs.alert(alertType, [$('<i>', { class: icon }), ' ', text], true));
 };
 
 // Modal
@@ -500,4 +489,94 @@ tinyLib.afterScrollQueue = [];
 tinyLib.doAfterScroll = function (f) {
   tinyLib.lastScrollTime = new Date().getTime();
   tinyLib.afterScrollQueue.push(f);
+};
+
+// Icon
+tinyLib.icon = (classItem) => $('<i>', { class: classItem });
+
+// Bootstrap
+tinyLib.bs = {};
+
+// Button
+tinyLib.bs.button = (className = 'primary', tag = 'button', isButton = true) =>
+  $(`<${tag}>`, {
+    class: `btn btn-${className}`,
+    role: isButton ? 'button' : null,
+    type: isButton ? 'button' : null,
+  });
+
+// Btn Close
+tinyLib.bs.closeButton = (dataDismiss = null) =>
+  $('<button>', {
+    class: 'btn-close',
+    type: 'button',
+    'data-bs-dismiss': dataDismiss,
+  });
+
+// Navbar
+tinyLib.bs.navbar = {};
+tinyLib.bs.navbar.root = (id, theme = 'dark', isFixed = false) =>
+  $('<nav>', {
+    class: `navbar navbar-expand-lg navbar-${theme} bg-${theme}${isFixed ? ' fixed-top' : ''}`,
+    id,
+  });
+
+tinyLib.bs.navbar.title = (text, href) =>
+  $('<a>', {
+    class: 'navbar-brand d-block d-lg-none ms-sm-4',
+    href,
+    text,
+  });
+
+tinyLib.bs.navbar.collapse = (id, content) => [
+  $('<button>', {
+    class: 'navbar-toggler me-sm-4',
+    type: 'button',
+    'data-bs-toggle': 'collapse',
+    'data-bs-target': `#${id}`,
+  }).append($('<span>', { class: 'navbar-toggler-icon' })),
+
+  // Collapse
+  $('<div>', {
+    class: 'collapse navbar-collapse',
+    id,
+  }).append(content),
+];
+
+// Offcanvas
+tinyLib.bs.offcanvas = (where = 'start', id = '', title = '', content = null, tabIndex = -1) =>
+  $('<div>', {
+    class: `offcanvas offcanvas-${where}`,
+    tabindex: tabIndex,
+    id,
+  }).append(
+    $('<div>', { class: 'offcanvas-header' }).append(
+      $('<h5>', {
+        class: 'offcanvas-title',
+        id: `${id}Label`,
+      }).text(title),
+      tinyLib.bs.closeButton('offcanvas'),
+
+      $('<div>', {
+        class: 'offcanvas-body',
+      }).append(content),
+    ),
+  );
+
+// Container
+tinyLib.bs.container = (id = null, classItems = null, tag = 'div') =>
+  $(`<${tag}>`, {
+    id,
+    class: `container${classItems ? ` ${classItems}` : ''}`,
+  });
+
+// Alert
+tinyLib.bs.alert = (type = 'primary', content = null, isDismissible = false) => {
+  const result = $('<div>', {
+    class: `alert alert-${type}${isDismissible ? ` alert-dismissible fade show` : ''}`,
+    role: 'alert',
+  });
+  result.append(content);
+  if (isDismissible) result.append(tinyLib.bs.closeButton('alert'));
+  return result;
 };

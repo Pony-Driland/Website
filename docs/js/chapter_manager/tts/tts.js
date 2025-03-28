@@ -44,8 +44,8 @@ const ttsManager = {
       if (!storyData.tts.nav) {
         storyData.tts.nav = {};
       }
-      storyData.tts.nav.play = $('<i>', { class: 'fas fa-play' });
-      storyData.tts.nav.stop = $('<i>', { class: 'fas fa-stop' });
+      storyData.tts.nav.play = tinyLib.icon('fas fa-play');
+      storyData.tts.nav.stop = tinyLib.icon('fas fa-stop');
 
       // Prepare
       if (!storyData.chapter.nav) {
