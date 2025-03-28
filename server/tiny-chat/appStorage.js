@@ -134,11 +134,8 @@ export default async function startFiles() {
     if (config.database.type === 'postgre') await db.connect();
 
     process.on('SIGINT', async () => {
-      const isOpen = await isDbOpen(config, db);
-      if (isOpen) {
-        if (config.database.type === 'sqlite3') await db.close().catch(() => {});
-        if (config.database.type === 'postgre') await db.end().catch(() => {});
-      }
+      if (config.database.type === 'sqlite3') await db.close().catch(() => {});
+      if (config.database.type === 'postgre') await db.end().catch(() => {});
     });
 
     console.log(`[APP] [${config.database.type}] Database connection opened.`);
