@@ -14,15 +14,13 @@ import {
   moderators,
   users,
   userSockets,
-  serverOwnerId,
   createRoom,
   joinRoom,
   leaveRoom,
   ownerOnly,
   accountNotDetected,
   sendIncompleteDataInfo,
-  MAX_USERS_PER_ROOM,
-  ROOM_TITLE_SIZE_LIMIT,
+  getIniConfig,
 } from './values';
 
 export default function roomManager(socket, io) {
@@ -55,7 +53,7 @@ export default function roomManager(socket, io) {
 
     // Check if the room is disabled
     if (
-      userId !== serverOwnerId &&
+      userId !== getIniConfig('OWNER_ID') &&
       !moderators.has(userId) &&
       room.ownerId !== userId &&
       room.disabled
@@ -131,7 +129,7 @@ export default function roomManager(socket, io) {
 
     // Check if user is server owner or server mod
     if (
-      yourId !== serverOwnerId &&
+      yourId !== getIniConfig('OWNER_ID') &&
       !moderators.has(yourId) &&
       room.ownerId !== yourId &&
       !room.moderators.has(yourId)
@@ -186,7 +184,7 @@ export default function roomManager(socket, io) {
 
     // Check if user is server owner or server mod
     if (
-      yourId !== serverOwnerId &&
+      yourId !== getIniConfig('OWNER_ID') &&
       !moderators.has(yourId) &&
       room.ownerId !== yourId &&
       !room.moderators.has(yourId)
@@ -229,7 +227,7 @@ export default function roomManager(socket, io) {
 
     // Check if user is server owner or server mod
     if (
-      yourId !== serverOwnerId &&
+      yourId !== getIniConfig('OWNER_ID') &&
       !moderators.has(yourId) &&
       room.ownerId !== yourId &&
       !room.moderators.has(yourId)
@@ -274,6 +272,13 @@ export default function roomManager(socket, io) {
     if (!userId) return accountNotDetected(fn); // Only logged-in users can use it
     if (userIsRateLimited(socket, fn)) return;
 
+    if (roomId.length < 1)
+      return fn({
+        error: true,
+        code: 2,
+        msg: 'Your room id does not have the minimum number of characters.',
+      });
+
     // Check if the room exists
     let room = rooms.get(roomId);
     if (!room) {
@@ -311,7 +316,7 @@ export default function roomManager(socket, io) {
     }
 
     // Check if user is server owner or server mod
-    if (userId !== serverOwnerId && !moderators.has(userId) && room.ownerId !== userId) {
+    if (userId !== getIniConfig('OWNER_ID') && !moderators.has(userId) && room.ownerId !== userId) {
       return fn({
         error: true,
         msg: 'You are not allowed to do this.',
@@ -358,7 +363,7 @@ export default function roomManager(socket, io) {
     }
 
     // Check if user is server owner or server mod
-    if (userId !== serverOwnerId && !moderators.has(userId) && room.ownerId !== userId) {
+    if (userId !== getIniConfig('OWNER_ID') && !moderators.has(userId) && room.ownerId !== userId) {
       return fn({
         error: true,
         msg: 'You are not allowed to do this.',
@@ -400,7 +405,7 @@ export default function roomManager(socket, io) {
     }
 
     // Check if user is server owner or server mod
-    if (userId !== serverOwnerId && !moderators.has(userId) && room.ownerId !== userId) {
+    if (userId !== getIniConfig('OWNER_ID') && !moderators.has(userId) && room.ownerId !== userId) {
       return fn({
         error: true,
         msg: 'You are not allowed to do this.',
@@ -432,7 +437,7 @@ export default function roomManager(socket, io) {
 
     // Check if the user is the room owner or the server owner
     const isRoomOwner = userId === room.ownerId;
-    const isServerOwner = userId === serverOwnerId; // 'serverOwnerId' refers to the server owner
+    const isServerOwner = userId === getIniConfig('OWNER_ID'); // 'getIniConfig('OWNER_ID')' refers to the server owner
 
     if (!isRoomOwner && !isServerOwner) return ownerOnly(fn, 2); // Only room owner or server owner can update settings
 
@@ -482,7 +487,7 @@ export default function roomManager(socket, io) {
 
     // Check if the user is the room owner or the server owner
     const isRoomOwner = userId === room.ownerId;
-    const isServerOwner = userId === serverOwnerId; // 'serverOwnerId' refers to the server owner
+    const isServerOwner = userId === getIniConfig('OWNER_ID'); // 'getIniConfig('OWNER_ID')' refers to the server owner
 
     if (!isRoomOwner && !isServerOwner) return ownerOnly(fn, 2); // Only room owner or server owner can update settings
 
@@ -526,7 +531,7 @@ export default function roomManager(socket, io) {
 
     // Check if the user is the room owner or the server owner
     const isRoomOwner = userId === room.ownerId;
-    const isServerOwner = userId === serverOwnerId; // 'serverOwnerId' refers to the server owner
+    const isServerOwner = userId === getIniConfig('OWNER_ID'); // 'getIniConfig('OWNER_ID')' refers to the server owner
 
     if (!isRoomOwner && !isServerOwner) return ownerOnly(fn, 2); // Only room owner or server owner can update settings
 
@@ -535,12 +540,12 @@ export default function roomManager(socket, io) {
 
     if ('title' in newSettings) {
       if (typeof newSettings.title === 'string')
-        allowedUpdates.title = newSettings.title.substring(0, ROOM_TITLE_SIZE_LIMIT);
+        allowedUpdates.title = newSettings.title.substring(0, getIniConfig('ROOM_TITLE_SIZE'));
     }
 
     if ('password' in newSettings) {
       if (typeof newSettings.password === 'string')
-        allowedUpdates.password = newSettings.password.substring(0, PASSWORD_SIZE_LIMIT);
+        allowedUpdates.password = newSettings.password.substring(0, getIniConfig('PASSWORD_SIZE'));
     }
 
     if ('maxUsers' in newSettings) {
@@ -550,8 +555,8 @@ export default function roomManager(socket, io) {
         Number.isFinite(newSettings.maxUsers)
       ) {
         allowedUpdates.maxUsers = newSettings.maxUsers;
-        if (allowedUpdates.maxUsers > MAX_USERS_PER_ROOM)
-          allowedUpdates.maxUsers = MAX_USERS_PER_ROOM;
+        if (allowedUpdates.maxUsers > getIniConfig('MAX_USERS_PER_ROOM'))
+          allowedUpdates.maxUsers = getIniConfig('MAX_USERS_PER_ROOM');
         else if (allowedUpdates.maxUsers < 1) allowedUpdates.maxUsers = 1;
       }
     }
@@ -584,7 +589,7 @@ export default function roomManager(socket, io) {
     if (!room) return fn({ error: true, msg: 'Room not found.', code: 1 });
 
     // Check if the user is the owner of the room or the server owner
-    if (userId !== room.ownerId && userId !== serverOwnerId) {
+    if (userId !== room.ownerId && userId !== getIniConfig('OWNER_ID')) {
       return fn({
         error: true,
         msg: `You do not have permission to update this room${isPrivate ? ' private' : ''} data.`,

@@ -6,7 +6,7 @@ import {
   moderators,
   accountNotDetected,
   sendIncompleteDataInfo,
-  MESSAGE_SIZE_LIMIT,
+  getIniConfig,
 } from './values';
 
 export default function messageManager(socket, io) {
@@ -22,13 +22,13 @@ export default function messageManager(socket, io) {
     if (userMsgIsRateLimited(socket, fn)) return;
 
     // Check text size
-    if (message.length > MESSAGE_SIZE_LIMIT) {
+    if (message.length > getIniConfig('MESSAGE_SIZE')) {
       // The text reached the limit size
       return fn({
         error: true,
-        msg: `The text reached the limit size of ${MESSAGE_SIZE_LIMIT}.`,
+        msg: `The text reached the limit size of ${getIniConfig('MESSAGE_SIZE')}.`,
         code: 1,
-        numbers: [MESSAGE_SIZE_LIMIT],
+        numbers: [getIniConfig('MESSAGE_SIZE')],
       });
     }
 
@@ -40,6 +40,15 @@ export default function messageManager(socket, io) {
     // Update the last index of the room
     const msgIndex = ++room.last_index;
     room.set(roomId, room);
+
+    // Get message
+    const msg = history.get(msgIndex);
+    if (msg)
+      return fn({
+        error: true,
+        msg: `This message Id is already being used.`,
+        code: 3,
+      });
 
     // Emit to the room that the history index is updated
     io.to(roomId).emit('history-index-updated', {
@@ -81,13 +90,13 @@ export default function messageManager(socket, io) {
     if (!room || !history) return fn({ error: true, msg: 'Room not found.', code: 1 });
 
     // Check text size
-    if (newText.length > MESSAGE_SIZE_LIMIT) {
+    if (newText.length > getIniConfig('MESSAGE_SIZE')) {
       // The text reached the limit size
       return fn({
         error: true,
-        msg: `The text reached the limit size of ${MESSAGE_SIZE_LIMIT}.`,
+        msg: `The text reached the limit size of ${getIniConfig('MESSAGE_SIZE')}.`,
         code: 2,
-        numbers: [MESSAGE_SIZE_LIMIT],
+        numbers: [getIniConfig('MESSAGE_SIZE')],
       });
     }
 
@@ -102,7 +111,7 @@ export default function messageManager(socket, io) {
 
     if (
       msg.userId !== userId &&
-      userId !== serverOwnerId &&
+      userId !== getIniConfig('OWNER_ID') &&
       !moderators.has(userId) &&
       room.ownerId !== userId &&
       !room.moderators.has(userId)
@@ -155,7 +164,7 @@ export default function messageManager(socket, io) {
 
     if (
       msg.userId !== userId &&
-      userId !== serverOwnerId &&
+      userId !== getIniConfig('OWNER_ID') &&
       !moderators.has(userId) &&
       room.ownerId !== userId &&
       !room.moderators.has(userId)

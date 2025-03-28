@@ -5,6 +5,8 @@ import sqlite3 from 'sqlite3';
 import { Client } from 'pg';
 import ini from 'ini';
 
+import { _setIniConfig } from './connection/values';
+
 const FOLDER_NAME = 'ponydriland_tiny_chat';
 
 // Function to create folder to store files
@@ -83,6 +85,19 @@ export default async function startFiles() {
       path.join(__dirname, `./config.ini`),
     );
     if (!config) return null;
+    for (const item in config.limits) _setIniConfig(item, config.limits);
+    if (
+      (typeof config.server.registration_open === 'boolean' && config.server.registration_open) ||
+      (typeof config.server.registration_open === 'string' &&
+        (config.server.registration_open === 'yes' ||
+          config.server.registration_open === 'on' ||
+          config.server.registration_open === 'true'))
+    )
+      _setIniConfig('OPEN_REGISTRATION', true);
+    else _setIniConfig('OPEN_REGISTRATION', false);
+
+    if (typeof config.server.owner_id === 'string')
+      _setIniConfig('OWNER_ID', config.server.owner_id);
 
     /**
      * Object with a config of your application.

@@ -35,6 +35,7 @@ Sends a message to a specific room, updating the message history and notifying o
 
 - `1`: Message exceeds size limit.
 - `2`: Room not found.
+- `3`: The message Id is already being used.
 
 ---
 
