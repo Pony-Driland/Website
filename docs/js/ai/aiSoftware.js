@@ -2205,7 +2205,7 @@ const AiScriptStart = () => {
       const makeMsgWarning = (finishReason) => {
         const textBase = $('<span>');
         const result = tinyLib.bs.alert(
-          'danger',
+          'danger mt-2 mb-0 d-none',
           [tinyLib.icon('fas fa-exclamation-triangle me-2'), textBase],
           true,
         );
