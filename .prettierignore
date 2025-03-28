@@ -9,3 +9,4 @@ package.json
 package-lock.json
 LICENSE
 README.md
+*.ini
