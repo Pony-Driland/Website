@@ -4,7 +4,12 @@
     },
     "scripts": {
         "start": "node ./build/",
-        "start-tiny-chat": "npx babel-node server/tiny-chat/index.js",
+        "start:tiny-chat": "npx babel-node server/tiny-chat/index.js",
+        "full-build:tiny-chat": "yarn && yarn build:tiny-chat",
+        "build:tiny-chat": "nexe index.js server/tiny-chat/index.js -o tiny-chat --build",
+        "build:windows:tiny-chat": "nexe index.js server/tiny-chat/index.js -o tiny-chat --build --target windows-x64",
+        "build:linux:tiny-chat": "nexe index.js server/tiny-chat/index.js -o tiny-chat --build --target linux-x64",
+        "build:mac:tiny-chat": "nexe index.js server/tiny-chat/index.js -o tiny-chat --build --target macos-x64",
         "example:tiny-chat-timedmap": "npx babel-node server/tiny-chat/examples/TimedMap.js",
         "install": "yarn build-bundle",
         "build-bundle": "browserify build/bundle/require -o docs/bundle.js && browserify build/bundle/import -p esmify > docs/bundle2.js && npx babel-node build/bundle/css && npx babel-node build/bundle/files",
@@ -69,7 +74,6 @@
         "browser-resolve": "^2.0.0",
         "browserify": "^17.0.1",
         "esmify": "^2.1.1",
-        "pkg": "^5.8.1",
         "prettier": "3.5.3"
     }
 }
