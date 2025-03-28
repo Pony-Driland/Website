@@ -93,18 +93,24 @@ export default function messageManager(socket, io) {
 
     // Get message
     const msg = history.get(messageId);
-    if (
-      !msg ||
-      (msg.userId !== userId &&
-        userId !== serverOwnerId &&
-        !moderators.has(userId) &&
-        room.ownerId !== userId &&
-        !room.moderators.has(userId))
-    )
+    if (!msg)
       return fn({
         error: true,
         msg: `The original message was not found.`,
         code: 3,
+      });
+
+    if (
+      msg.userId !== userId &&
+      userId !== serverOwnerId &&
+      !moderators.has(userId) &&
+      room.ownerId !== userId &&
+      !room.moderators.has(userId)
+    )
+      return fn({
+        error: true,
+        msg: `You don't have enough permissions.`,
+        code: 4,
       });
 
     // Edit message
@@ -140,18 +146,24 @@ export default function messageManager(socket, io) {
 
     // Get message
     const msg = history.get(messageId);
-    if (
-      !msg ||
-      (msg.userId !== userId &&
-        userId !== serverOwnerId &&
-        !moderators.has(userId) &&
-        room.ownerId !== userId &&
-        !room.moderators.has(userId))
-    )
+    if (!msg)
       return fn({
         error: true,
         msg: `The original message was not found.`,
         code: 2,
+      });
+
+    if (
+      msg.userId !== userId &&
+      userId !== serverOwnerId &&
+      !moderators.has(userId) &&
+      room.ownerId !== userId &&
+      !room.moderators.has(userId)
+    )
+      return fn({
+        error: true,
+        msg: `You don't have enough permissions.`,
+        code: 3,
       });
 
     // Delete message

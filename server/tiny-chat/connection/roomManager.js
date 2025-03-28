@@ -54,7 +54,12 @@ export default function roomManager(socket, io) {
     }
 
     // Check if the room is disabled
-    if (room.disabled) {
+    if (
+      userId !== serverOwnerId &&
+      !moderators.has(userId) &&
+      room.ownerId !== userId &&
+      room.disabled
+    ) {
       return fn({ error: true, msg: 'Room is disabled.', code: 4 });
     }
 
@@ -353,12 +358,7 @@ export default function roomManager(socket, io) {
     }
 
     // Check if user is server owner or server mod
-    if (
-      userId !== serverOwnerId &&
-      !moderators.has(userId) &&
-      room.ownerId !== userId &&
-      !room.moderators.has(userId)
-    ) {
+    if (userId !== serverOwnerId && !moderators.has(userId) && room.ownerId !== userId) {
       return fn({
         error: true,
         msg: 'You are not allowed to do this.',
@@ -400,12 +400,7 @@ export default function roomManager(socket, io) {
     }
 
     // Check if user is server owner or server mod
-    if (
-      userId !== serverOwnerId &&
-      !moderators.has(userId) &&
-      room.ownerId !== userId &&
-      !room.moderators.has(userId)
-    ) {
+    if (userId !== serverOwnerId && !moderators.has(userId) && room.ownerId !== userId) {
       return fn({
         error: true,
         msg: 'You are not allowed to do this.',
