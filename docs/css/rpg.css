@@ -1,0 +1,35 @@
+/* Info box */
+#ai-element-root #info_box {
+    overflow-y: visible;
+}
+#ai-element-root #info_box > [data-schemapath="root"] > h3 {
+    padding: 12px;
+}
+#ai-element-root #info_box h3 {
+    font-size: 16pt;
+}
+#ai-element-root #info_box > [data-schemapath="root"] > .card-body {
+    overflow-y: auto;
+}
+#ai-element-root #info_box div {
+    padding: 0;
+    margin: 2px;
+}
+
+/* Map */
+#ai-element-root [id^="map_"] table tr,
+#ai-element-root [id^="map_"] table td {
+    overflow: hidden;
+}
+
+#ai-element-root [id^="map_"] table tr {
+    vertical-align: middle;
+}
+
+#ai-element-root [id^="map_"] table td {
+    border-width: 1px;
+}
+
+#ai-element-root [id^="map_"] table {
+    table-layout: fixed;
+}

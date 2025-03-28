@@ -57,3 +57,7 @@ require('gasparesganga-jquery-loading-overlay');
 // Bootstrap
 var bootstrap = require("bootstrap");
 global.window.bootstrap = bootstrap;
+
+// Json editor
+const JSONEditor = require('@json-editor/json-editor');
+global.window.JSONEditor = JSONEditor.JSONEditor;
