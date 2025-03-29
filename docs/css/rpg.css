@@ -1,19 +1,70 @@
-/* Info box */
-#ai-element-root #info_box {
-    overflow-y: visible;
+/* Offcanvas */
+#ai-element-root .offcanvas {
+    padding-top: 56px;
+    max-width: 650px;
+    width: 100%;
 }
-#ai-element-root #info_box > [data-schemapath="root"] > h3 {
-    padding: 12px;
+
+#ai-element-root .offcanvas .je-object__container .card {
+    background-color: transparent !important;
+    border-left: 0px;
+    border-right: 0px;
+    border-radius: 0;
 }
-#ai-element-root #info_box h3 {
-    font-size: 16pt;
+
+#ai-element-root .offcanvas .je-object__container,
+#ai-element-root .offcanvas .je-object__container .card {
+    padding: 10px 0px !important;
 }
-#ai-element-root #info_box > [data-schemapath="root"] > .card-body {
-    overflow-y: auto;
+
+#ai-element-root .offcanvas .je-object__container .btn {
+    margin: 3px;
+    border-radius: 4px;
 }
-#ai-element-root #info_box div {
-    padding: 0;
-    margin: 2px;
+
+#ai-element-root .offcanvas .je-modal {
+    padding: 9px !important;
+    background-color: #242424;
+}
+
+#ai-element-root .offcanvas-header,
+#ai-element-root .offcanvas-body {
+    height: 100%;
+}
+
+#ai-element-root .offcanvas-header {
+    padding: 0px;
+}
+
+#ai-element-root .offcanvas-header {
+    align-items: start;
+}
+
+#ai-element-root .offcanvas-title {
+    display: none;
+}
+
+#ai-element-root #rpg_ai_base_1 .btn-close {
+    right: 10px;
+}
+
+#ai-element-root #rpg_ai_base_1 .offcanvas-body {
+    padding-right: 30px;
+}
+
+#ai-element-root #rpg_ai_base_2 .btn-close {
+    left: 0px;
+}
+
+#ai-element-root #rpg_ai_base_2 .offcanvas-body {
+    padding-left: 30px;
+}
+
+#ai-element-root .offcanvas-header .btn-close {
+    position: absolute;
+    z-index: 1;
+    font-size: 10px;
+    margin-top: 0px;
 }
 
 /* Map */
