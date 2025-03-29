@@ -1725,12 +1725,24 @@ const AiScriptStart = () => {
         let rpgPrivateContentData = null;
 
         if (history) {
+          // RPG Data
+          const canPublicRPG =
+            rpgData.allowAiUse.public &&
+            objType(history.rpgData, 'object') &&
+            countObj(history.rpgData) > 0;
+
+          const canPrivateRPG =
+            rpgData.allowAiUse.private &&
+            objType(history.rpgPrivateData, 'object') &&
+            countObj(history.rpgPrivateData) > 0;
+
+          // System Instruction
           if (
             typeof history.systemInstruction === 'string' &&
             history.systemInstruction.length > 0
           ) {
             let extraInfo = '';
-            if (objType(history.rpgData, 'object') || objType(history.rpgPrivateData, 'object'))
+            if (canPublicRPG || canPrivateRPG)
               extraInfo += `\n${aiTemplates.helpers.ficRpgChecker}`;
             systemData = {
               role: 'system',
@@ -1739,6 +1751,7 @@ const AiScriptStart = () => {
             content.push(systemData);
           }
 
+          // File
           if (history.file) {
             fileData = {
               role: 'user',
@@ -1754,11 +1767,8 @@ const AiScriptStart = () => {
             content.push(fileData);
           }
 
-          if (
-            rpgData.allowAiUse.public &&
-            objType(history.rpgData, 'object') &&
-            countObj(history.rpgData, 'object') > 0
-          ) {
+          // Public RPG
+          if (canPublicRPG) {
             rpgData.oldHash.public = tinyAi.getHash('rpgData');
             const tinyRpgData = clone(history.rpgData);
             delete tinyRpgData.allowAiUse;
@@ -1773,11 +1783,8 @@ const AiScriptStart = () => {
             content.push(rpgContentData);
           }
 
-          if (
-            rpgData.allowAiUse.private &&
-            objType(history.rpgPrivateData, 'object') &&
-            countObj(history.rpgPrivateData, 'object') > 0
-          ) {
+          // Private RPG
+          if (canPrivateRPG) {
             rpgData.oldHash.private = tinyAi.getHash('rpgPrivateData');
             const tinyRpgData = clone(history.rpgPrivateData);
             delete tinyRpgData.allowAiUse;
@@ -1792,6 +1799,7 @@ const AiScriptStart = () => {
             content.push(rpgPrivateContentData);
           }
 
+          // Prompt
           if (typeof history.prompt === 'string' && history.prompt.length > 0) {
             promptData = {
               role: 'user',
@@ -1800,6 +1808,7 @@ const AiScriptStart = () => {
             content.push(promptData);
           }
 
+          // History data
           for (const index in history.data) {
             if (addIndexList) indexList.push(history.data[index]);
             content.push(history.data[index]);
