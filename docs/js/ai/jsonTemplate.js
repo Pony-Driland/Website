@@ -7,6 +7,7 @@ aiTemplates.funcs.jsonTemplate = function () {
         // Result Data
         const resultData = {
           title: data.title,
+          description: data.description,
           type: 'array',
           id: data.id,
           options: {
@@ -22,61 +23,133 @@ aiTemplates.funcs.jsonTemplate = function () {
             },
             // Base
             properties: {
-              name: { type: 'string', title: 'Name', description: 'Character name' },
-              race: { type: 'string', title: 'Race', description: 'Character race or species' },
+              name: { type: 'string', title: 'Name', description: 'The name of the character.' },
+              race: {
+                type: 'string',
+                title: 'Race',
+                description: 'The race or species of the character.',
+              },
               location: {
                 type: 'string',
                 title: 'Location',
-                description: 'Current location of the character',
+                description: 'Where the character is located in the game world.',
               },
               coins: {
                 type: 'number',
                 title: 'Coins',
                 minimum: 0,
-                description: 'Amount of coins the character has',
+                description: 'Amount of coins the character possesses.',
               },
-              gender: { type: 'string', title: 'Gender', description: 'Character gender' },
-              totalhp: {
+              gender: {
+                type: 'string',
+                title: 'Gender',
+                description: 'The gender of the character.',
+              },
+              level: {
                 type: 'number',
-                title: 'Total HP',
+                title: 'Level',
                 minimum: 1,
-                description: 'Maximum health points',
+                description: 'The level of the character.',
               },
-              hp: { type: 'number', title: 'HP', minimum: 0, description: 'Current health points' },
-              mana: {
+              class: {
+                type: 'string',
+                title: 'Class',
+                description: 'The class of the character (e.g., Warrior, Mage).',
+              },
+              experience: {
                 type: 'number',
-                title: 'Mana',
+                title: 'Experience',
                 minimum: 0,
-                description: 'Character mana points for magic use',
+                description: 'The experience points the character has earned.',
               },
               attack: {
                 type: 'number',
                 title: 'Attack',
                 minimum: 0,
-                description: 'Attack power of the character',
+                description: "The character's attack power.",
               },
               defense: {
                 type: 'number',
                 title: 'Defense',
                 minimum: 0,
-                description: 'Defensive capability of the character',
+                description: "The character's defense power.",
+              },
+              totalhp: {
+                type: 'number',
+                title: 'Total HP',
+                minimum: 1,
+                description: 'The maximum health points of the character.',
+              },
+              hp: {
+                type: 'number',
+                title: 'HP',
+                minimum: 0,
+                description: 'The current health points of the character.',
+              },
+              mana: {
+                type: 'number',
+                title: 'Mana',
+                minimum: 0,
+                description: "The character's mana, used for casting spells.",
+              },
+              proficiency: {
+                title: 'Proficiencies',
+                type: 'array',
+                id: 'proficiencies',
+                description:
+                  'A list of proficiencies or skills the character excels in, such as weapon types, magical abilities, or other talents.',
+                options: { collapsed: true },
+                items: {
+                  title: 'Proficiency',
+                  headerTemplate: '{{self.name}}',
+                  type: 'object',
+                  id: 'item',
+                  options: { collapsed: true },
+                  properties: {
+                    name: {
+                      type: 'string',
+                      title: 'Title',
+                      minLength: 1,
+                      description: 'The title of the proficiency.',
+                    },
+                    items: {
+                      type: 'string',
+                      title: 'Proficiency',
+                      minLength: 1,
+                      description:
+                        'List of proficiencies or areas the character is skilled in (e.g., Archery, Stealth).',
+                    },
+                  },
+                },
+              },
+              alignment: {
+                type: 'string',
+                title: 'Alignment',
+                description: "The character's moral alignment (e.g., Lawful Good, Chaotic Evil).",
+              },
+              background: {
+                type: 'string',
+                format: 'textarea',
+                title: 'Background',
+                description: 'A brief history or backstory of the character.',
               },
               dead: {
                 type: 'boolean',
                 title: 'Dead',
-                description: 'Indicates if the character is dead',
+                description: 'Indicates whether the character is dead.',
               },
               fainted: {
                 type: 'boolean',
                 title: 'Fainted',
-                description: 'Indicates if the character is unconscious',
+                description: 'Indicates whether the character is currently fainted.',
               },
               inventory: {
                 title: 'Inventory',
                 type: 'array',
                 id: 'inventory',
                 options: { collapsed: true },
-                description: 'List of items the character carries',
+                description:
+                  'A list of items the character carries, including weapons, tools, and other important belongings.',
                 items: {
                   title: 'Item',
                   headerTemplate: '{{self.name}} ({{self.amount}})',
@@ -84,12 +157,65 @@ aiTemplates.funcs.jsonTemplate = function () {
                   id: 'item',
                   options: { collapsed: true },
                   properties: {
-                    name: { type: 'string', title: 'Name', minLength: 1, description: 'Item name' },
+                    name: {
+                      type: 'string',
+                      title: 'Name',
+                      minLength: 1,
+                      description: 'The name of the item.',
+                    },
                     amount: {
                       type: 'number',
                       title: 'Amount',
                       minimum: 1,
-                      description: 'Quantity of the item',
+                      description: 'How many units of this item the character has.',
+                    },
+                  },
+                },
+              },
+              equipment: {
+                title: 'Equipment',
+                type: 'array',
+                id: 'equipment',
+                description:
+                  'A collection of items the character can equip, like weapons, armor, and accessories, each providing bonuses or abilities to enhance performance.',
+                options: { collapsed: true },
+                items: {
+                  headerTemplate: '{{self.name}}',
+                  title: 'Equipment',
+                  type: 'object',
+                  id: 'equip',
+                  options: { collapsed: true },
+                  properties: {
+                    name: {
+                      type: 'string',
+                      title: 'Name',
+                      minLength: 1,
+                      description: 'The name of the equipment.',
+                    },
+                    type: {
+                      type: 'string',
+                      title: 'Type',
+                      description: 'The type of equipment (e.g., Weapon, Armor).',
+                    },
+                    stats: {
+                      type: 'object',
+                      title: 'Stats',
+                      description:
+                        'The stats or bonuses provided by the equipment (e.g., +5 Attack).',
+                      properties: {
+                        attack: {
+                          type: 'number',
+                          title: 'Attack',
+                          minimum: 0,
+                          description: 'The attack bonus provided by the equipment.',
+                        },
+                        defense: {
+                          type: 'number',
+                          title: 'Defense',
+                          minimum: 0,
+                          description: 'The defense bonus provided by the equipment.',
+                        },
+                      },
                     },
                   },
                 },
@@ -99,7 +225,8 @@ aiTemplates.funcs.jsonTemplate = function () {
                 type: 'array',
                 id: 'skills',
                 options: { collapsed: true },
-                description: 'List of skills the character has',
+                description:
+                  'A list of skills the character has acquired, showcasing their abilities and expertise in various areas.',
                 items: {
                   title: 'Skill',
                   headerTemplate: '{{self.name}} ({{self.amount}})',
@@ -111,19 +238,58 @@ aiTemplates.funcs.jsonTemplate = function () {
                       type: 'string',
                       title: 'Name',
                       minLength: 1,
-                      description: 'Skill name',
+                      description: 'The name of the skill.',
                     },
                     amount: {
                       type: 'number',
                       title: 'Amount',
                       minimum: 0,
-                      description: 'Skill level or power',
+                      description: 'How skilled the character is in this ability.',
                     },
                     cost: {
                       type: 'number',
                       title: 'Cost',
                       minimum: 0,
-                      description: 'Cost to use the skill',
+                      description: 'The cost (e.g., mana or stamina) to use this skill.',
+                    },
+                  },
+                },
+              },
+              relationships: {
+                title: 'Relationships',
+                type: 'array',
+                id: 'relationships',
+                description:
+                  'A list of relationships the character has with others, such as friends, enemies, allies, or rivals, influencing interactions and story progression.',
+                options: { collapsed: true },
+                items: {
+                  title: 'Relationship',
+                  type: 'object',
+                  id: 'relationship',
+                  options: { collapsed: true },
+                  properties: {
+                    name: {
+                      type: 'string',
+                      title: 'Name',
+                      description:
+                        'The name of the individual the character has a relationship with.',
+                    },
+                    type: {
+                      type: 'string',
+                      title: 'Type',
+                      description: 'The type of relationship (e.g., Friend, Rival, Ally).',
+                    },
+                    status: {
+                      type: 'string',
+                      title: 'Status',
+                      description:
+                        'The current status of the relationship (e.g., Friendly, Hostile).',
+                    },
+                    notes: {
+                      type: 'string',
+                      format: 'textarea',
+                      title: 'Notes',
+                      description: 'Any additional notes about the relationship.',
                     },
                   },
                 },
@@ -132,7 +298,7 @@ aiTemplates.funcs.jsonTemplate = function () {
                 type: 'string',
                 format: 'textarea',
                 title: 'About',
-                description: 'Character background and details',
+                description: 'Additional details or backstory for the character.',
               },
             },
           },
@@ -140,6 +306,8 @@ aiTemplates.funcs.jsonTemplate = function () {
         if (data.mascot) {
           resultData.items.properties.mascot = rpgBase.generator.characterList({
             title: 'Mascots',
+            description:
+              'A list of mascots that accompany the character, offering unique abilities and support in quests and battles.',
             id: 'mascots',
             itemTitle: 'Mascot',
             itemID: 'mascot',
@@ -195,13 +363,31 @@ aiTemplates.funcs.jsonTemplate = function () {
                 type: 'string',
                 title: 'Name',
                 minLength: 1,
-                description: 'The name of the skill.',
+                description: 'The name of the skill (e.g., Fireball, Stealth, Healing).',
               },
               about: {
                 type: 'string',
                 format: 'textarea',
                 title: 'About',
-                description: 'A description of how the skill works or its effects.',
+                description: 'A brief description of the skill, its effects, and limitations.',
+              },
+              level: {
+                type: 'number',
+                title: 'Level',
+                description: "The skill's rank, affecting its power and effectiveness.",
+                minimum: 1,
+              },
+              cost: {
+                type: 'number',
+                title: 'Cost',
+                description: 'The resource cost (mana, stamina, etc.) to use the skill.',
+                minimum: 0,
+              },
+              cooldown: {
+                type: 'number',
+                title: 'Cooldown',
+                description: 'The time before the skill can be used again (in turns or seconds).',
+                minimum: 0,
               },
             },
           },
@@ -245,14 +431,42 @@ aiTemplates.funcs.jsonTemplate = function () {
                     type: 'string',
                     title: 'Locations',
                     format: 'textarea',
-                    description:
-                      'List of locations where the item is available or restricted. Type "all" for all locations, or invert the list for blacklisting locations.',
+                    description: 'Locations where the item is available or restricted.',
                   },
                   about: {
                     type: 'string',
                     format: 'textarea',
                     title: 'About',
                     description: 'A description of the item and its uses.',
+                  },
+                  rarity: {
+                    type: 'string',
+                    title: 'Rarity',
+                    description: 'The rarity of the item (e.g., Common, Rare, Legendary).',
+                  },
+                  weight: {
+                    type: 'number',
+                    title: 'Weight',
+                    minimum: 0,
+                    description: 'The weight of the item, affecting inventory space.',
+                  },
+                  effects: {
+                    type: 'string',
+                    title: 'Effects',
+                    format: 'textarea',
+                    description: 'Any special effects or buffs the item provides.',
+                  },
+                  durability: {
+                    type: 'number',
+                    title: 'Durability',
+                    minimum: 0,
+                    description: 'How much the item can be used before breaking or deteriorating.',
+                  },
+                  use: {
+                    type: 'string',
+                    title: 'Use',
+                    description:
+                      'How the item is used in the game (e.g., Equip, Consume, Activate).',
                   },
                 },
               },
@@ -377,18 +591,21 @@ aiTemplates.funcs.jsonTemplate = function () {
                         },
                         color: {
                           type: 'string',
-                          title: 'Color Code (Empty to Transparent)',
-                          description: 'Color code associated with the location on the map.',
+                          title: 'Color Code',
+                          description:
+                            'Color code associated with the location on the map (Empty to Transparent).',
                         },
                         fontColor: {
                           type: 'string',
-                          title: 'Font Color Code (Empty to Default)',
-                          description: 'Font color code for text at the location.',
+                          title: 'Font Color Code',
+                          description:
+                            'Font color code for text at the location (Empty to Default).',
                         },
                         coordinates: {
                           type: 'string',
-                          title: 'Coordinates (Width x Height)',
-                          description: 'Coordinates marking the location on the map.',
+                          title: 'Coordinates',
+                          description:
+                            'Coordinates marking the location on the map (Width x Height).',
                         },
                         about: {
                           type: 'string',
@@ -413,6 +630,8 @@ aiTemplates.funcs.jsonTemplate = function () {
   rpgBase.generator.characters = {
     teamCharacters: rpgBase.generator.characterList({
       title: 'Team Characters',
+      description:
+        'A list of characters in the team or party who assist in quests, battles, and story progression, with unique interactions with the main character.',
       id: 'teamCharacters',
       itemTitle: 'Character',
       itemID: 'Character',
@@ -421,6 +640,8 @@ aiTemplates.funcs.jsonTemplate = function () {
 
     specialCharacters: rpgBase.generator.characterList({
       title: 'Special Characters',
+      description:
+        'A list of key characters with special abilities, unique backgrounds, or significant roles in the story and quests.',
       id: 'specialCharacters',
       itemTitle: 'Character',
       itemID: 'Character',
@@ -429,6 +650,8 @@ aiTemplates.funcs.jsonTemplate = function () {
 
     villainsCharacters: rpgBase.generator.characterList({
       title: 'Villains Characters',
+      description:
+        'A list of antagonists or villains who oppose the protagonist, with their own motives, abilities, and goals.',
       id: 'villainsCharacters',
       itemTitle: 'Character',
       itemID: 'Character',
