@@ -121,7 +121,7 @@ class TinyAiApi extends EventEmitter {
       // Send custom value into the history
       const selectedId = this.getId(id);
       this.#_insertIntoHistory(this.getId(id), sendValue);
-      this.history[selectedId].hash[name] = hash;
+      this.history[selectedId].hash[name] = objHash(value);
       this.emit(tinyLib.toTitleCase(name), value, id);
       return;
     }
