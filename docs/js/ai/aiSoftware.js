@@ -671,8 +671,22 @@ const AiScriptStart = () => {
 
                 // Open Get Fic Cache
                 const index = ficConfigs.data.findIndex((item) => item.id === jsonData.id);
-
                 const instructionId = index > -1 ? ficConfigs.data[index].template : null;
+
+                // Set custom values
+                const customValues = tinyAi.getCustomValueList(jsonData.id);
+                for (const i in customValues) {
+                  if (
+                    objType(customValues[i], 'object') &&
+                    typeof customValues[i].name === 'string' &&
+                    typeof customValues[i].type === 'string'
+                  ) {
+                    const { name, type } = customValues[i];
+                    if (objType(jsonData.file[name], type)) {
+                      tinyAi.setCustomValue(name, jsonData.file[name], jsonData.id);
+                    }
+                  }
+                }
 
                 // Set model
                 if (typeof jsonData.file.model === 'string') {

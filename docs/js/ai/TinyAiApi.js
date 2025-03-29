@@ -92,6 +92,66 @@ class TinyAiApi extends EventEmitter {
   }
 
   /**
+   * Sets a custom value in the selected session history.
+   *
+   * @param {string} name - The name of the custom value to set.
+   * @param {*} value - The value to be assigned to the custom key.
+   * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
+   * @throws {Error} If the custom value name is invalid (not a non-empty string).
+   * @returns {void} This method does not return a value.
+   */
+  setCustomValue(name, value, id) {
+    if (typeof name === 'string' && name.length > 0 && name !== 'customList') {
+      // Prepare value to send
+      const sendValue = {};
+      sendValue[name] = value;
+
+      // This value is extremely important for the import process to identify which custom values are being used
+      const history = this.getData(id);
+      if (!Array.isArray(history.customList)) history.customList = [];
+
+      // Validate the custom value
+      const props = history.customList.find((item) => item.name === name);
+      if (!props || typeof props.type !== 'string' || typeof props.name !== 'string') {
+        if (typeof history[name] === 'undefined')
+          history.customList.push({ name, type: objType(value) });
+        else throw new Error('This value name is already being used!');
+      } else if (props.type !== objType(value)) throw new Error('Invalid custom value type!');
+
+      // Send custom value into the history
+      this.#_insertIntoHistory(this.getId(id), sendValue);
+      this.emit(tinyLib.toTitleCase(name), value, id);
+      return;
+    }
+    throw new Error('Invalid custom value!');
+  }
+
+  /**
+   * Retrieves a custom value from the selected session history.
+   *
+   * @param {string} name - The name of the custom value to retrieve.
+   * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
+   * @returns {*} The value associated with the specified name, or `null` if it does not exist.
+   */
+  getCustomValue(name, id) {
+    const history = this.getData(id);
+    return history && typeof history[name] !== 'undefined' && history[name] !== null
+      ? history[name]
+      : null;
+  }
+
+  /**
+   * Retrieves the list of custom values from the selected session history.
+   *
+   * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
+   * @returns {Array} An array of custom values if available, or an empty array if no custom values exist.
+   */
+  getCustomValueList(id) {
+    const history = this.getData(id);
+    return history && Array.isArray(history.customList) ? history.customList : [];
+  }
+
+  /**
    * Set the maximum output tokens setting for an AI session.
    *
    * @param {number} value - The maximum number of output tokens to be set.
