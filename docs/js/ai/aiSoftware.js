@@ -267,6 +267,7 @@ const AiScriptStart = () => {
         public: $('<div>', { id: 'info_box' }),
         private: $('<div>', { id: 'privateInfo' }),
       },
+      ready: { public: false, private: false },
       data: {
         public: null,
         private: null,
@@ -284,20 +285,28 @@ const AiScriptStart = () => {
             try {
               // The tiny start script
               const executeTinyStart = (isFirstTime = false) => {
-                rpgData.data[where].off('ready', funcExecStart);
+                const rpgEditor = rpgData.data[where];
+                // Remove first time
+                if (isFirstTime) rpgEditor.off('ready', funcExecStart);
                 // Get data
                 loadData[where] = tinyAi.getCustomValue(valueName);
                 if (!objType(loadData[where], 'object')) loadData[where] = {};
 
                 // Insert data
-                rpgData.data[where].setValue(rpgData.filter(loadData[where]));
-                rpgData.data[where].validate();
+                rpgEditor.setValue(rpgData.filter(loadData[where]));
+                rpgEditor.validate();
 
                 // Load map
                 // chatbox.maps.generator(where);
 
-                // Disable by default
-                rpgData.data[where].disable();
+                // Change events
+                if (isFirstTime) {
+                  rpgEditor.on('change', () => {
+                    if(ficConfigs.selected) {
+                      console.log(rpgEditor.getValue());
+                    }
+                  });
+                }
               };
               const funcExecStart = () => executeTinyStart(true);
 
@@ -326,6 +335,7 @@ const AiScriptStart = () => {
 
             // Complete
             if (!failed) {
+              rpgData.ready[where] = true;
               amountStarted++;
               if (amountStarted >= 2) resolve(loadData);
             }
@@ -334,7 +344,6 @@ const AiScriptStart = () => {
           // Read json now
           startJsonNow('public', 'rpgData');
           startJsonNow('private', 'rpgPrivateData');
-          console.log(rpgData);
         }),
     };
 
@@ -2607,6 +2616,13 @@ const AiScriptStart = () => {
       // Disable dialogue buttons
       const disablePromptButtons = (isDisabled = false) => {
         // Execute disable script
+        for (const item in rpgData.ready) {
+          if (rpgData.ready[item]) {
+            if (isDisabled) rpgData.data[item].disable();
+            else rpgData.data[item].enable();
+          }
+        }
+
         for (const index in ficPromptItems) {
           ficPromptItems[index].prop('disabled', isDisabled);
           if (isDisabled) ficPromptItems[index].addClass('disabled');
