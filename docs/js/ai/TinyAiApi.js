@@ -807,14 +807,11 @@ class TinyAiApi extends EventEmitter {
         if (typeof history.tokens.data[msgIndex].count === 'number')
           result += history.tokens.data[msgIndex].count;
       }
-
-      const promptInfo = this.getTokens('prompt', id);
-      const fileDataInfo = this.getTokens('file', id);
-      const systemInstructionInfo = this.getTokens('systemInstruction', id);
-      if (typeof promptInfo === 'number') result += promptInfo;
-      if (typeof fileDataInfo === 'number') result += fileDataInfo;
-      if (typeof systemInstructionInfo === 'number') result += systemInstructionInfo;
-
+      for (const item in history.tokens) {
+        if (typeof history.tokens[item] === 'number') {
+          result += history.tokens[item];
+        }
+      }
       return result;
     }
     return null;
