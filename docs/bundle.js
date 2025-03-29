@@ -64,7 +64,7 @@ global.window.bootstrap = bootstrap;
 const JSONEditor = require('@json-editor/json-editor');
 global.window.JSONEditor = JSONEditor.JSONEditor;
 global.window.JSONEditor.defaults.options.theme = 'bootstrap5';
-global.window.JSONEditor.defaults.options.iconlib = "fontawesome6";
+global.window.JSONEditor.defaults.options.iconlib = "fontawesome5";
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"@json-editor/json-editor":2,"bootstrap":5,"clone":8,"events":11,"file-saver":12,"gasparesganga-jquery-loading-overlay":13,"jquery":16,"js-base64":17,"jsonrepair":18,"marked":19,"md5":20,"moment":21,"object-hash":22,"paginate-array":23,"qrcode":24}],2:[function(require,module,exports){
 /*! For license information please see jsoneditor.js.LICENSE.txt */
