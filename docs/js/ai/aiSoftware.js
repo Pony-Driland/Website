@@ -267,14 +267,13 @@ const AiScriptStart = () => {
     if (tinyAiScript.isEnabled()) {
       // Get RPG Template
       const rpgData = {
+        html: { public: null, private: null },
+        offcanvas: { public: null, private: null },
+        ready: { public: false, private: false },
+        data: { public: null, private: null },
         base: {
           public: $('<div>', { id: 'info_box' }),
           private: $('<div>', { id: 'privateInfo' }),
-        },
-        ready: { public: false, private: false },
-        data: {
-          public: null,
-          private: null,
         },
         init: (forceRestart = false) =>
           new Promise((resolve, reject) => {
@@ -2529,10 +2528,37 @@ const AiScriptStart = () => {
       tinyAi.on('setFrequencyPenalty', (value) => frequencyPenalty.val(value));
 
       // Prepare RPG
-      container.prepend(
-        tinyLib.bs.offcanvas('start', 'rpg_ai_base_1', '', rpgData.base.public, true),
-        tinyLib.bs.offcanvas('end', 'rpg_ai_base_2', '', rpgData.base.private, false),
+      rpgData.html.public = tinyLib.bs.offcanvas(
+        'start',
+        'rpg_ai_base_1',
+        '',
+        rpgData.base.public,
+        true,
       );
+      rpgData.html.private = tinyLib.bs.offcanvas(
+        'end',
+        'rpg_ai_base_2',
+        '',
+        rpgData.base.private,
+        false,
+      );
+      container.prepend(rpgData.html.public, rpgData.html.private);
+      rpgData.offcanvas.public = new bootstrap.Offcanvas(rpgData.html.public.get(0));
+      rpgData.offcanvas.private = new bootstrap.Offcanvas(rpgData.html.private.get(0));
+
+      const completeTheOffCanvasRpg = () => {
+        // offCanvas closed
+        const onOffCanvasClosed = (type) => () => {
+          const tinyData = rpgData.data[type].getValue();
+          console.log(tinyData);
+        };
+        rpgData.html.public
+          .get(0)
+          .addEventListener('hide.bs.offcanvas', onOffCanvasClosed('public'));
+        rpgData.html.private
+          .get(0)
+          .addEventListener('hide.bs.offcanvas', onOffCanvasClosed('private'));
+      };
 
       // Enable Read Only
       const enableModelSelectorReadOnly = (isEnabled = true) => {
@@ -2674,7 +2700,7 @@ const AiScriptStart = () => {
       // Complete
       updateModelList();
       $('#markdown-read').append(container);
-      await rpgData.init();
+      await rpgData.init().then(completeTheOffCanvasRpg);
     } else {
       alert(
         'You did not activate AI mode in your session. Please click the robot icon and activate and then come back here again.',
