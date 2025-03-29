@@ -267,15 +267,75 @@ const AiScriptStart = () => {
         public: $('<div>', { id: 'info_box' }),
         private: $('<div>', { id: 'privateInfo' }),
       },
-      init: () => {
-        rpgData.template = aiTemplates.funcs.jsonTemplate();
-        rpgData.public = new JSONEditor(rpgData.base.public.get(0), rpgData.template);
-        rpgData.private = new JSONEditor(rpgData.base.private.get(0), rpgData.template);
-
-        // rpgData.public.disable();
-        // rpgData.private.disable();
-        console.log(rpgData);
+      data: {
+        public: null,
+        private: null,
       },
+      init: (forceRestart = false) =>
+        new Promise((resolve, reject) => {
+          // Get template
+          rpgData.template = aiTemplates.funcs.jsonTemplate();
+
+          // Start json
+          let failed = false;
+          let amountStarted = 0;
+          const loadData = {};
+          const startJsonNow = (where, valueName) => {
+            try {
+              // The tiny start script
+              const executeTinyStart = (isFirstTime = false) => {
+                rpgData.data[where].off('ready', funcExecStart);
+                // Get data
+                loadData[where] = tinyAi.getCustomValue(valueName);
+                if (!objType(loadData[where], 'object')) loadData[where] = {};
+
+                // Insert data
+                rpgData.data[where].setValue(rpgData.filter(loadData[where]));
+                rpgData.data[where].validate();
+
+                // Load map
+                // chatbox.maps.generator(where);
+
+                // Disable by default
+                rpgData.data[where].disable();
+              };
+              const funcExecStart = () => executeTinyStart(true);
+
+              // Start json data
+              if (forceRestart || !rpgData.data[where]) {
+                // Remove Old
+                if (rpgData.data[where]) rpgData.data[where].destroy();
+                // Insert template
+                rpgData.data[where] = new JSONEditor(rpgData.base[where].get(0), rpgData.template);
+
+                // Start scripts now
+                rpgData.data[where].on('ready', funcExecStart);
+              } else executeTinyStart(false);
+            } catch (err) {
+              // Error!
+              console.error(err);
+              if (!failed) {
+                failed = true;
+                reject(
+                  new Error(
+                    'An error occurred at booting your RPG. Check your console for more details!',
+                  ),
+                );
+              }
+            }
+
+            // Complete
+            if (!failed) {
+              amountStarted++;
+              if (amountStarted >= 2) resolve(loadData);
+            }
+          };
+
+          // Read json now
+          startJsonNow('public', 'rpgData');
+          startJsonNow('private', 'rpgPrivateData');
+          console.log(rpgData);
+        }),
     };
 
     // Data Filter
@@ -2585,7 +2645,7 @@ const AiScriptStart = () => {
       // Complete
       updateModelList();
       $('#markdown-read').append(container);
-      rpgData.init();
+      await rpgData.init();
     } else {
       alert(
         'You did not activate AI mode in your session. Please click the robot icon and activate and then come back here again.',
