@@ -304,10 +304,16 @@ const AiScriptStart = () => {
                   // chatbox.maps.generator(where);
 
                   // Change events
+                  if (!ficConfigs.selected) rpgEditor.disable();
                   if (isFirstTime) {
                     rpgEditor.on('change', () => {
+                      rpgEditor.validate();
                       if (ficConfigs.selected) {
-                        console.log(rpgEditor.getValue());
+                        try {
+                          tinyAi.setCustomValue(valueName, rpgEditor.getValue());
+                        } catch (err) {
+                          console.error(err);
+                        }
                       }
                     });
                   }
@@ -607,7 +613,7 @@ const AiScriptStart = () => {
           // Reset token count
           tokenCount.updateValue('amount', 0);
           newContent()
-            .then((ficData) => {
+            .then(async (ficData) => {
               // Start chatbot script
               if (forceReset || !tinyAi.selectDataId(id)) {
                 // Start History
@@ -634,6 +640,9 @@ const AiScriptStart = () => {
                 if (tinyData && tinyData.parts && tinyData.parts[0] && tinyData.parts[0].inlineData)
                   tinyAi.deleteIndex(0);
               }
+
+              // Load rpg data
+              await rpgData.init();
 
               // Add file data
               const fileTokens = tinyAi.getTokens('file');
@@ -746,16 +755,17 @@ const AiScriptStart = () => {
                 const instructionId = index > -1 ? ficConfigs.data[index].template : null;
 
                 // Set custom values
-                const customValues = tinyAi.getCustomValueList(jsonData.id);
-                for (const i in customValues) {
-                  if (
-                    objType(customValues[i], 'object') &&
-                    typeof customValues[i].name === 'string' &&
-                    typeof customValues[i].type === 'string'
-                  ) {
-                    const { name, type } = customValues[i];
-                    if (objType(jsonData.file[name], type)) {
-                      tinyAi.setCustomValue(name, jsonData.file[name], jsonData.id);
+                if (Array.isArray(jsonData.file.customList)) {
+                  for (const i in jsonData.file.customList) {
+                    if (
+                      objType(jsonData.file.customList[i], 'object') &&
+                      typeof jsonData.file.customList[i].name === 'string' &&
+                      typeof jsonData.file.customList[i].type === 'string'
+                    ) {
+                      const { name, type } = jsonData.file.customList[i];
+                      if (objType(jsonData.file[name], type)) {
+                        tinyAi.setCustomValue(name, jsonData.file[name], jsonData.id);
+                      }
                     }
                   }
                 }
@@ -1329,7 +1339,7 @@ const AiScriptStart = () => {
               toggle: 'offcanvas',
               target: '#rpg_ai_base_2',
             }),
-            createButtonSidebar('fa-solid fa-map', 'Classic Map'),
+            createButtonSidebar('fa-solid fa-map', 'Classic Map', null, true),
 
             // Import
             $('<h5>').text('Data'),
