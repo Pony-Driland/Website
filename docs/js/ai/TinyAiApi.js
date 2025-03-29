@@ -119,7 +119,9 @@ class TinyAiApi extends EventEmitter {
       } else if (props.type !== objType(value)) throw new Error('Invalid custom value type!');
 
       // Send custom value into the history
+      const selectedId = this.getId(id);
       this.#_insertIntoHistory(this.getId(id), sendValue);
+      this.history[selectedId].hash[name] = hash;
       this.emit(tinyLib.toTitleCase(name), value, id);
       return;
     }
