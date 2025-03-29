@@ -267,6 +267,11 @@ const AiScriptStart = () => {
     if (tinyAiScript.isEnabled()) {
       // Get RPG Template
       const rpgData = {
+        allowAiUse: { public: false, private: false },
+        setAllowAiUse: (value, type) => {
+          if (typeof rpgData.allowAiUse[type] === 'boolean')
+            rpgData.allowAiUse[type] = typeof value === 'boolean' ? value : false;
+        },
         html: { public: null, private: null },
         offcanvas: { public: null, private: null },
         ready: { public: false, private: false },
@@ -309,7 +314,11 @@ const AiScriptStart = () => {
                       rpgEditor.validate();
                       if (ficConfigs.selected) {
                         try {
-                          tinyAi.setCustomValue(valueName, rpgEditor.getValue());
+                          const tinyData = rpgEditor.getValue();
+                          if (tinyData) {
+                            tinyAi.setCustomValue(valueName, tinyData);
+                            rpgData.setAllowAiUse(tinyData.allowAiUse, where);
+                          }
                         } catch (err) {
                           console.error(err);
                         }
@@ -642,6 +651,11 @@ const AiScriptStart = () => {
 
               // Load rpg data
               await rpgData.init();
+              const tinyRpgData = rpgData.data.public.getValue();
+              const tinyRpgPrivateData = rpgData.data.private.getValue();
+              if (tinyRpgData) rpgData.setAllowAiUse(tinyRpgData.allowAiUse, 'public');
+              if (tinyRpgPrivateData)
+                rpgData.setAllowAiUse(tinyRpgPrivateData.allowAiUse, 'private');
 
               // Add file data
               const fileTokens = tinyAi.getTokens('file');
@@ -2550,7 +2564,10 @@ const AiScriptStart = () => {
         // offCanvas closed
         const onOffCanvasClosed = (type) => () => {
           const tinyData = rpgData.data[type].getValue();
-          console.log(tinyData);
+          if (tinyData) {
+            rpgData.setAllowAiUse(tinyData.allowAiUse, type);
+            if (tinyData.allowAiUse) updateAiTokenCounterData();
+          }
         };
         rpgData.html.public
           .get(0)

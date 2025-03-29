@@ -324,11 +324,11 @@ aiTemplates.funcs.jsonTemplate = function () {
       options: { collapsed: false },
       // Base
       properties: {
-        allowAiUse: {
+        /* allowAiUse: {
           type: 'boolean',
           title: 'Allow AI Prompt Usage (BETA)',
           description: 'Allow AI to use this data for generative content in future responses.',
-        },
+        }, */
         comments: {
           type: 'string',
           format: 'textarea',
