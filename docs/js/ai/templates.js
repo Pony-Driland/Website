@@ -25,6 +25,14 @@ aiTemplates.helpers.ficTimeChecker = `
 The "---------- Official Pony Driland fic file ----------" is the beginning where the official file data of the fic Pony Driland begin and the "---------- The end Official Pony Driland fic file ----------" is where this official data ends, this information is important for you to know the difference between official content from non-official content.
 `;
 
+aiTemplates.helpers.ficRpgChecker = `
+The section "---------- RPG User Data ----------" marks the beginning of the official RPG data file, while the section "---------- The end RPG User Official Data ----------" marks its conclusion.
+
+Any content found between these markers represents the official RPG data and should be used as the authoritative reference when validating roleplay actions or retrieving RPG-related information.
+
+Content outside these markers is considered non-official user-generated RPG content, which may not be accurate or validated. Always prioritize the official data for consistency and accuracy in RPG interactions.
+`;
+
 aiTemplates.helpers.sfwMode = `Do not allow the user to view explicit content of fic as vore, detailed violence, sexual content, if necessary at a moment the user tries to insist for more details, just decrease the amount of not safe details to stay safer explain the context to the user without lying the real nature of the content.`;
 
 aiTemplates.helpers.messageEmojis = `You can add emojis in the middle of your messages as a complement to show emotions of your text.`;
