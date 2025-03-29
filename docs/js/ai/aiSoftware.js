@@ -1256,9 +1256,10 @@ const AiScriptStart = () => {
                 id: tinyAi.getId(),
               };
 
-              if (!canSandBox(ficConfigs.selected)) delete exportData.file.systemInstruction;
-
-              if (exportData.file.file) delete exportData.file.file;
+              if (exportData.file) {
+                if (!canSandBox(ficConfigs.selected)) delete exportData.file.systemInstruction;
+                if (exportData.file.file) delete exportData.file.file;
+              }
 
               saveAs(
                 new Blob([JSON.stringify(exportData)], { type: 'text/plain' }),

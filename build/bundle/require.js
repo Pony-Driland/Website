@@ -62,4 +62,4 @@ global.window.bootstrap = bootstrap;
 const JSONEditor = require('@json-editor/json-editor');
 global.window.JSONEditor = JSONEditor.JSONEditor;
 global.window.JSONEditor.defaults.options.theme = 'bootstrap5';
-global.window.JSONEditor.defaults.options.iconlib = "fontawesome6";
+global.window.JSONEditor.defaults.options.iconlib = "fontawesome5";

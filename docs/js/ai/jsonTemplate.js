@@ -274,7 +274,7 @@ aiTemplates.funcs.jsonTemplate = function () {
                   cities: {
                     type: 'string',
                     title:
-                      'Locations (Type "all" to use in all locations and invert the list to a blacklist)',
+                      'Locations (Type "all" to apply everywhere and invert the list to create a blacklist.)',
                     format: 'textarea',
                   },
                   about: {
@@ -290,7 +290,7 @@ aiTemplates.funcs.jsonTemplate = function () {
             maps: {
               title: 'Maps',
               type: 'array',
-              id: 'maps',
+              id: 'maps_v1',
 
               options: {
                 collapsed: true,

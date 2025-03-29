@@ -15,6 +15,14 @@
 #ai-element-root .offcanvas .je-object__container,
 #ai-element-root .offcanvas .je-object__container .card {
     padding: 10px 0px !important;
+    padding-left: 3px !important;
+}
+
+#ai-element-root .offcanvas .je-object__container .h3 {
+    font-size: 21px !important;
+    margin: 0px;
+    display: inline-flex !important;
+    align-items: center;
 }
 
 #ai-element-root .offcanvas .je-object__container .btn {
