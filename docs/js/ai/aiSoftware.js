@@ -261,6 +261,37 @@ const AiScriptStart = () => {
     appData.ai.interval = setInterval(aiTimeScriptUpdate, 1000);
     aiTimeScriptUpdate();
 
+    // Get RPG Template
+    const rpgData = {
+      base: {
+        public: $('<div>', { id: 'info_box' }),
+        private: $('<div>', { id: 'privateInfo' }),
+      },
+      init: () => {
+        rpgData.template = aiTemplates.funcs.jsonTemplate();
+        rpgData.public = new JSONEditor(rpgData.base.public.get(0), rpgData.template);
+        rpgData.private = new JSONEditor(rpgData.base.private.get(0), rpgData.template);
+
+        // rpgData.public.disable();
+        // rpgData.private.disable();
+        console.log(rpgData);
+      },
+    };
+
+    // Data Filter
+    rpgData.filter = function (value) {
+      if (typeof value === 'string') {
+        try {
+          value = JSON.parse(value);
+        } catch (err) {
+          console.error(err);
+          value = null;
+        }
+      }
+
+      return value;
+    };
+
     // Start loading page
     let isFirstTime = true;
     $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
@@ -275,13 +306,15 @@ const AiScriptStart = () => {
       };
 
       // Sidebar Button
-      const createButtonSidebar = (icon, text, callback, disabled = false) =>
-        tinyLib.bs
-          .button(`link btn-bg text-start w-100${disabled ? ' disabled' : ''}`)
+      const createButtonSidebar = (icon, text, callback, disabled = false, options = null) => {
+        const tinyClass = `link btn-bg text-start w-100${disabled ? ' disabled' : ''}`;
+        return tinyLib.bs
+          .button(!options ? tinyClass : { class: tinyClass, ...options })
           .text(text)
           .prepend(tinyLib.icon(`${icon} me-2`))
           .on('click', callback)
           .prop('disabled', disabled);
+      };
 
       // Select Model
       const modelSelector = $('<select>', {
@@ -1199,6 +1232,18 @@ const AiScriptStart = () => {
             // Settings
             $('<h5>').text('Settings'),
             ficPromptItems,
+
+            // RPG
+            $('<h5>').text('RPG'),
+            createButtonSidebar('fa-solid fa-note-sticky', 'View Data', null, false, {
+              toggle: 'offcanvas',
+              target: '#rpg_ai_base_1',
+            }),
+            createButtonSidebar('fa-solid fa-book', 'View Private', null, false, {
+              toggle: 'offcanvas',
+              target: '#rpg_ai_base_2',
+            }),
+            createButtonSidebar('fa-solid fa-map', 'Classic Map'),
 
             // Import
             $('<h5>').text('Data'),
@@ -2386,6 +2431,12 @@ const AiScriptStart = () => {
       tinyAi.on('setPresencePenalty', (value) => presencePenalty.val(value));
       tinyAi.on('setFrequencyPenalty', (value) => frequencyPenalty.val(value));
 
+      // Prepare RPG
+      container.prepend(
+        tinyLib.bs.offcanvas('start', 'rpg_ai_base_1', '', rpgData.base.public, true),
+        tinyLib.bs.offcanvas('end', 'rpg_ai_base_2', '', rpgData.base.private, false),
+      );
+
       // Enable Read Only
       const enableModelSelectorReadOnly = (isEnabled = true) => {
         modelSelector.prop('disabled', isEnabled);
@@ -2519,6 +2570,7 @@ const AiScriptStart = () => {
       // Complete
       updateModelList();
       $('#markdown-read').append(container);
+      rpgData.init();
     } else {
       alert(
         'You did not activate AI mode in your session. Please click the robot icon and activate and then come back here again.',

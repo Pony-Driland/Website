@@ -498,12 +498,27 @@ tinyLib.icon = (classItem) => $('<i>', { class: classItem });
 tinyLib.bs = {};
 
 // Button
-tinyLib.bs.button = (className = 'primary', tag = 'button', isButton = true) =>
-  $(`<${tag}>`, {
-    class: `btn btn-${className}`,
-    role: isButton ? 'button' : null,
+tinyLib.bs.button = (className = 'primary', tag = 'button', isButton = true) => {
+  const buttonClass =
+    typeof className === 'string'
+      ? className
+      : objType(className, 'object') && typeof className.class === 'string'
+        ? className.class
+        : null;
+  return $(`<${tag}>`, {
+    class: `btn btn-${buttonClass}`,
+    role: isButton && (!objType(className, 'object') || !className.toggle) ? 'button' : null,
     type: isButton ? 'button' : null,
+    'data-bs-toggle':
+      objType(className, 'object') && typeof className.toggle === 'string'
+        ? className.toggle
+        : null,
+    'data-bs-target':
+      objType(className, 'object') && typeof className.target === 'string'
+        ? className.target
+        : null,
   });
+};
 
 // Btn Close
 tinyLib.bs.closeButton = (dataDismiss = null) =>
@@ -544,7 +559,14 @@ tinyLib.bs.navbar.collapse = (id, content) => [
 ];
 
 // Offcanvas
-tinyLib.bs.offcanvas = (where = 'start', id = '', title = '', content = null, tabIndex = -1) =>
+tinyLib.bs.offcanvas = (
+  where = 'start',
+  id = '',
+  title = '',
+  content = null,
+  closeButtonInverse = false,
+  tabIndex = -1,
+) =>
   $('<div>', {
     class: `offcanvas offcanvas-${where}`,
     tabindex: tabIndex,
@@ -555,11 +577,13 @@ tinyLib.bs.offcanvas = (where = 'start', id = '', title = '', content = null, ta
         class: 'offcanvas-title',
         id: `${id}Label`,
       }).text(title),
-      tinyLib.bs.closeButton('offcanvas'),
+      !closeButtonInverse && tinyLib.bs.closeButton('offcanvas'),
 
       $('<div>', {
         class: 'offcanvas-body',
       }).append(content),
+
+      closeButtonInverse && tinyLib.bs.closeButton('offcanvas'),
     ),
   );
 
