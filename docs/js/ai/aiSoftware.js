@@ -272,6 +272,9 @@ const AiScriptStart = () => {
           if (typeof rpgData.allowAiUse[type] === 'boolean')
             rpgData.allowAiUse[type] = typeof value === 'boolean' ? value : false;
         },
+
+        hash: { public: null, private: null },
+        oldHash: { public: null, private: null },
         html: { public: null, private: null },
         offcanvas: { public: null, private: null },
         ready: { public: false, private: false },
@@ -317,6 +320,7 @@ const AiScriptStart = () => {
                           const tinyData = rpgEditor.getValue();
                           if (tinyData) {
                             tinyAi.setCustomValue(valueName, tinyData);
+                            rpgData.hash[where] = tinyAi.getHash(valueName);
                             rpgData.setAllowAiUse(tinyData.allowAiUse, where);
                           }
                         } catch (err) {
@@ -777,7 +781,12 @@ const AiScriptStart = () => {
                     ) {
                       const { name, type } = jsonData.file.customList[i];
                       if (objType(jsonData.file[name], type)) {
-                        tinyAi.setCustomValue(name, jsonData.file[name], jsonData.id);
+                        tinyAi.setCustomValue(
+                          name,
+                          jsonData.file[name],
+                          jsonData.file.tokens ? jsonData.file.tokens[name] : 0,
+                          jsonData.id,
+                        );
                       }
                     }
                   }
@@ -1712,15 +1721,20 @@ const AiScriptStart = () => {
         let systemData = null;
         let fileData = null;
         let promptData = null;
+        let rpgContentData = null;
+        let rpgPrivateContentData = null;
 
         if (history) {
           if (
             typeof history.systemInstruction === 'string' &&
             history.systemInstruction.length > 0
           ) {
+            let extraInfo = '';
+            if (objType(history.rpgData, 'object') || objType(history.rpgPrivateData, 'object'))
+              extraInfo += `\n\nThe "---------- RPG User Official Data ----------" is the beginning where the official file data of the RPG begin and the "---------- The end RPG User Official Data ----------" is where this official data ends, this information is important for you to know the difference between official user rpg content from non-official user rpg content.`;
             systemData = {
               role: 'system',
-              parts: [{ text: history.systemInstruction }],
+              parts: [{ text: `${history.systemInstruction}${extraInfo}` }],
             };
             content.push(systemData);
           }
@@ -1740,6 +1754,44 @@ const AiScriptStart = () => {
             content.push(fileData);
           }
 
+          if (
+            rpgData.allowAiUse.public &&
+            objType(history.rpgData, 'object') &&
+            countObj(history.rpgData, 'object') > 0
+          ) {
+            rpgData.oldHash.public = tinyAi.getHash('rpgData');
+            const tinyRpgData = clone(history.rpgData);
+            delete tinyRpgData.allowAiUse;
+            let tinyText = '---------- RPG User Official Data ----------\n\n';
+            tinyText += JSON.stringify(tinyRpgData);
+            tinyText += '\n\n---------- The User end RPG Official Data ----------';
+
+            rpgContentData = {
+              role: 'user',
+              parts: [{ text: tinyText }],
+            };
+            content.push(rpgContentData);
+          }
+
+          if (
+            rpgData.allowAiUse.private &&
+            objType(history.rpgPrivateData, 'object') &&
+            countObj(history.rpgPrivateData, 'object') > 0
+          ) {
+            rpgData.oldHash.private = tinyAi.getHash('rpgPrivateData');
+            const tinyRpgData = clone(history.rpgPrivateData);
+            delete tinyRpgData.allowAiUse;
+            let tinyText = '---------- RPG Official Data ----------\n\n';
+            tinyText += JSON.stringify(tinyRpgData);
+            tinyText += '\n\n---------- The end RPG Official Data ----------';
+
+            rpgPrivateContentData = {
+              role: 'user',
+              parts: [{ text: tinyText }],
+            };
+            content.push(rpgPrivateContentData);
+          }
+
           if (typeof history.prompt === 'string' && history.prompt.length > 0) {
             promptData = {
               role: 'user',
@@ -1754,14 +1806,29 @@ const AiScriptStart = () => {
           }
         }
 
-        return { content, indexList, systemData, promptData, fileData };
+        return {
+          content,
+          indexList,
+          systemData,
+          promptData,
+          fileData,
+          rpgContentData,
+          rpgPrivateContentData,
+        };
       };
 
       const getAiTokens = (hashItems = { data: [] }, forceUpdate = false) =>
         new Promise(async (resolve, reject) => {
           try {
-            const { content, indexList, systemData, promptData, fileData } =
-              prepareContentList(true);
+            const {
+              content,
+              indexList,
+              systemData,
+              promptData,
+              fileData,
+              rpgContentData,
+              rpgPrivateContentData,
+            } = prepareContentList(true);
             if (content.length > 0) {
               // Get tokens data
               const updateTokenData = async (
@@ -1773,7 +1840,7 @@ const AiScriptStart = () => {
                 callback,
               ) => {
                 if (
-                  forceUpdate ||
+                  (forceUpdate && contentToCheck) ||
                   // Exist content to check tokens
                   (hash &&
                     contentToCheck && // Model
@@ -1801,6 +1868,29 @@ const AiScriptStart = () => {
                   if (typeof newToken === 'number') callback(newToken);
                 }
               };
+
+              // RPG
+              if (rpgData.allowAiUse.public)
+                await updateTokenData(
+                  'rpgData',
+                  rpgContentData,
+                  tinyAi.getHash('rpgData'),
+                  typeof hashItems.rpgData === 'string' ? hashItems.rpgData : null,
+                  { count: tinyAi.getTokens('rpgData') },
+                  (newCount) => tinyAi.setCustomValue('rpgData', null, newCount),
+                );
+              else tinyAi.setCustomValue('rpgData', null, 0);
+
+              if (rpgData.allowAiUse.private)
+                await updateTokenData(
+                  'rpgPrivateData',
+                  rpgPrivateContentData,
+                  tinyAi.getHash('rpgPrivateData'),
+                  typeof hashItems.rpgPrivateData === 'string' ? hashItems.rpgPrivateData : null,
+                  { count: tinyAi.getTokens('rpgPrivateData') },
+                  (newCount) => tinyAi.setCustomValue('rpgPrivateData', null, newCount),
+                );
+              else tinyAi.setCustomValue('rpgPrivateData', null, 0);
 
               // Prompt
               await updateTokenData(
@@ -1856,50 +1946,56 @@ const AiScriptStart = () => {
         });
 
       // Get Ai Tokens
+      let usingUpdateToken = false;
       const updateAiTokenCounterData = (hashItems, forceReset = false) => {
-        const history = tinyAi.getData();
-        if (history) {
-          enableReadOnly(true);
-          modelChangerReadOnly();
-          disablePromptButtons(true);
-          enableModelReadOnly();
-          enableMessageButtons(false);
-          const oldMsgInput = msgInput.val();
+        if (!usingUpdateToken) {
+          usingUpdateToken = true;
+          const history = tinyAi.getData();
+          if (history) {
+            enableReadOnly(true);
+            modelChangerReadOnly();
+            disablePromptButtons(true);
+            enableModelReadOnly();
+            enableMessageButtons(false);
+            const oldMsgInput = msgInput.val();
 
-          let points = '.';
-          let secondsWaiting = -1;
-          const loadingMoment = () => {
-            points += '.';
-            if (points === '....') points = '.';
+            let points = '.';
+            let secondsWaiting = -1;
+            const loadingMoment = () => {
+              points += '.';
+              if (points === '....') points = '.';
 
-            secondsWaiting++;
-            msgInput.val(`(${secondsWaiting}s) Loading model data${points}`);
-          };
-          const loadingMessage = setInterval(loadingMoment, 1000);
-          loadingMoment();
+              secondsWaiting++;
+              msgInput.val(`(${secondsWaiting}s) Loading model data${points}`);
+            };
+            const loadingMessage = setInterval(loadingMoment, 1000);
+            loadingMoment();
 
-          const stopLoadingMessage = () => {
-            clearInterval(loadingMessage);
-            msgInput.val(oldMsgInput);
-            enableReadOnly(false);
-            modelChangerReadOnly(false);
-            disablePromptButtons(false);
-            enableModelReadOnly(false);
-            enableMessageButtons(true);
-            msgInput.trigger('focus');
-          };
+            const stopLoadingMessage = () => {
+              clearInterval(loadingMessage);
+              msgInput.val(oldMsgInput);
+              enableReadOnly(false);
+              modelChangerReadOnly(false);
+              disablePromptButtons(false);
+              enableModelReadOnly(false);
+              enableMessageButtons(true);
+              msgInput.trigger('focus');
+            };
 
-          getAiTokens(hashItems || undefined, forceReset)
-            .then((totalTokens) => {
-              if (typeof totalTokens === 'number') tokenCount.updateValue('amount', totalTokens);
-              else tokenCount.updateValue('amount', 0);
-              stopLoadingMessage();
-            })
-            .catch((err) => {
-              alert(err.message, 'Error get AI tokens');
-              console.error(err);
-              stopLoadingMessage();
-            });
+            getAiTokens(hashItems || undefined, forceReset)
+              .then((totalTokens) => {
+                if (typeof totalTokens === 'number') tokenCount.updateValue('amount', totalTokens);
+                else tokenCount.updateValue('amount', 0);
+                stopLoadingMessage();
+                usingUpdateToken = false;
+              })
+              .catch((err) => {
+                alert(err.message, 'Error get AI tokens');
+                console.error(err);
+                stopLoadingMessage();
+                usingUpdateToken = false;
+              });
+          }
         }
       };
 
@@ -2562,19 +2658,28 @@ const AiScriptStart = () => {
 
       const completeTheOffCanvasRpg = () => {
         // offCanvas closed
-        const onOffCanvasClosed = (type) => () => {
-          const tinyData = rpgData.data[type].getValue();
-          if (tinyData) {
-            rpgData.setAllowAiUse(tinyData.allowAiUse, type);
-            if (tinyData.allowAiUse) updateAiTokenCounterData();
-          }
+        const onOffCanvasClosed = (where, type) => () => {
+          setTimeout(() => {
+            const tinyData = rpgData.data[where].getValue();
+            if (tinyData) {
+              rpgData.setAllowAiUse(tinyData.allowAiUse, where);
+              if (
+                rpgData.data[where].isEnabled() &&
+                rpgData.hash[where] !== rpgData.oldHash[where]
+              ) {
+                rpgData.oldHash[where] = rpgData.hash[where];
+                tinyAi.setCustomValue(type, null, 0);
+                updateAiTokenCounterData();
+              }
+            }
+          }, 300);
         };
         rpgData.html.public
           .get(0)
-          .addEventListener('hide.bs.offcanvas', onOffCanvasClosed('public'));
+          .addEventListener('hide.bs.offcanvas', onOffCanvasClosed('public', 'rpgData'));
         rpgData.html.private
           .get(0)
-          .addEventListener('hide.bs.offcanvas', onOffCanvasClosed('private'));
+          .addEventListener('hide.bs.offcanvas', onOffCanvasClosed('private', 'rpgPrivateData'));
       };
 
       // Enable Read Only
