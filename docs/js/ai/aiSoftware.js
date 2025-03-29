@@ -1731,7 +1731,7 @@ const AiScriptStart = () => {
           ) {
             let extraInfo = '';
             if (objType(history.rpgData, 'object') || objType(history.rpgPrivateData, 'object'))
-              extraInfo += `\n\nThe "---------- RPG User Official Data ----------" is the beginning where the official file data of the RPG begin and the "---------- The end RPG User Official Data ----------" is where this official data ends, this information is important for you to know the difference between official user rpg content from non-official user rpg content.`;
+              extraInfo += `\n${aiTemplates.helpers.ficRpgChecker}`;
             systemData = {
               role: 'system',
               parts: [{ text: `${history.systemInstruction}${extraInfo}` }],
