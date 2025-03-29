@@ -96,11 +96,12 @@ class TinyAiApi extends EventEmitter {
    *
    * @param {string} name - The name of the custom value to set.
    * @param {*} value - The value to be assigned to the custom key.
+   * @param {number} [tokenAmount] - The token amount associated with the custom value (optional).
    * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
-   * @throws {Error} If the custom value name is invalid (not a non-empty string).
+   * @throws {Error} If the custom value name is invalid (not a non-empty string) or conflicts with existing data.
    * @returns {void} This method does not return a value.
    */
-  setCustomValue(name, value, id) {
+  setCustomValue(name, value, tokenAmount, id) {
     if (typeof name === 'string' && name.length > 0 && name !== 'customList') {
       // Prepare value to send
       const sendValue = {};
@@ -111,18 +112,93 @@ class TinyAiApi extends EventEmitter {
       if (!Array.isArray(history.customList)) history.customList = [];
 
       // Validate the custom value
-      const props = history.customList.find((item) => item.name === name);
-      if (!props || typeof props.type !== 'string' || typeof props.name !== 'string') {
-        if (typeof history[name] === 'undefined')
-          history.customList.push({ name, type: objType(value) });
-        else throw new Error('This value name is already being used!');
-      } else if (props.type !== objType(value)) throw new Error('Invalid custom value type!');
+      if (value !== null) {
+        const props = history.customList.find((item) => item.name === name);
+        if (!props || typeof props.type !== 'string' || typeof props.name !== 'string') {
+          if (typeof history[name] === 'undefined')
+            history.customList.push({ name, type: objType(value) });
+          else throw new Error('This value name is already being used!');
+        } else if (props.type !== objType(value))
+          throw new Error(
+            `Invalid custom value type! ${name}: ${props.type} === ${objType(value)}`,
+          );
+      }
+
+      // Add Tokens
+      const selectedId = this.getId(id);
+      if (typeof tokenAmount === 'number') this.history[selectedId].tokens[name] = tokenAmount;
 
       // Send custom value into the history
-      const selectedId = this.getId(id);
-      this.#_insertIntoHistory(this.getId(id), sendValue);
-      this.history[selectedId].hash[name] = objHash(value);
+      if (value !== null) {
+        this.#_insertIntoHistory(this.getId(id), sendValue);
+        this.history[selectedId].hash[name] = objHash(value);
+      }
+
+      // Complete
       this.emit(tinyLib.toTitleCase(name), value, id);
+      return;
+    }
+    throw new Error('Invalid custom value!');
+  }
+
+  /**
+   * Resets a custom value in the selected session history.
+   *
+   * @param {string} name - The name of the custom value to reset.
+   * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
+   * @throws {Error} If the custom value name is invalid or does not match an existing entry.
+   * @returns {void} This method does not return a value.
+   */
+  resetCustomValue(name, id) {
+    if (typeof name === 'string' && name.length > 0 && name !== 'customList') {
+      // Prepare value to send
+      const sendValue = {};
+      sendValue[name] = null;
+
+      // This value is extremely important for the import process to identify which custom values are being used
+      const history = this.getData(id);
+      if (!Array.isArray(history.customList)) history.customList = [];
+
+      // Validate the custom value
+      const props = history.customList.find((item) => item.name === name);
+      if (
+        objType(props, 'object') &&
+        typeof props.type === 'string' &&
+        typeof props.name === 'string'
+      ) {
+        // Reset Tokens
+        const selectedId = this.getId(id);
+        if (typeof this.history[selectedId].tokens[name] !== 'undefined')
+          delete this.history[selectedId].tokens[name];
+
+        // Reset custom value
+        this.#_insertIntoHistory(this.getId(id), sendValue);
+        if (typeof this.history[selectedId].hash[name] !== 'undefined')
+          delete this.history[selectedId].hash[name];
+
+        // Complete
+        this.emit(tinyLib.toTitleCase(name), null, id);
+        return;
+      }
+      throw new Error('Invalid custom value data type!');
+    }
+    throw new Error('Invalid custom value!');
+  }
+
+  /**
+   * Completely removes a custom value from the selected session history.
+   *
+   * @param {string} name - The name of the custom value to erase.
+   * @param {string} [id] - The session ID. If omitted, the currently selected session history ID will be used.
+   * @throws {Error} If the custom value name is invalid or does not exist.
+   * @returns {void} This method does not return a value.
+   */
+  eraseCustomValue(name, id) {
+    this.resetCustomValue(name, id);
+    const history = this.getData(id);
+    if (history) {
+      const index = history.customList.findIndex((item) => item.name === name);
+      if (index > -1) history.customList.splice(index, 1);
       return;
     }
     throw new Error('Invalid custom value!');
