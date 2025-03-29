@@ -286,7 +286,15 @@ const AiScriptStart = () => {
         init: (forceRestart = false) =>
           new Promise((resolve, reject) => {
             // Get template
-            rpgData.template = aiTemplates.funcs.jsonTemplate();
+            rpgData.template = {
+              schema: aiTemplates.funcs.jsonTemplate(),
+              // Seed the form with a starting value
+              startval: {},
+              // Disable additional properties
+              no_additional_properties: false,
+              // Require all properties by default
+              required_by_default: false,
+            };
 
             // Start json
             let failed = false;

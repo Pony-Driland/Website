@@ -660,24 +660,13 @@ aiTemplates.funcs.jsonTemplate = function () {
   };
 
   // Editor
-  const jsonEditorTemplate = {
-    schema: rpgBase.data,
-
-    // Seed the form with a starting value
-    startval: {},
-
-    // Disable additional properties
-    no_additional_properties: false,
-
-    // Require all properties by default
-    required_by_default: false,
-  };
+  const schema = rpgBase.data;
 
   // Insert Characters
   for (const item in rpgBase.generator.characters) {
-    jsonEditorTemplate.schema.properties[item] = rpgBase.generator.characters[item];
+    schema.properties[item] = rpgBase.generator.characters[item];
   }
 
   // Complete
-  return jsonEditorTemplate;
+  return schema;
 };
