@@ -538,14 +538,14 @@ tinyLib.bs.navbar.root = (id, theme = 'dark', isFixed = false) =>
 
 tinyLib.bs.navbar.title = (text, href) =>
   $('<a>', {
-    class: 'navbar-brand d-block d-lg-none ms-sm-4',
+    class: 'navbar-brand d-block d-lg-none ms-4',
     href,
     text,
   });
 
 tinyLib.bs.navbar.collapse = (id, content) => [
   $('<button>', {
-    class: 'navbar-toggler me-sm-4',
+    class: 'navbar-toggler me-4',
     type: 'button',
     'data-bs-toggle': 'collapse',
     'data-bs-target': `#${id}`,
