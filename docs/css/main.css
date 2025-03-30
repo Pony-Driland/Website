@@ -67,6 +67,11 @@ body:not(.browser-with-web3) .web3-element {
   background-color: #2c2c2c;
 }
 
+#offcanvasNavbar .nav-item:active .nav-link,
+#offcanvasNavbar .nav-item:active {
+  background-color: #333333;
+}
+
 #offcanvasNavbar .nav-item .nav-link {
   margin: 0px !important;
 }
