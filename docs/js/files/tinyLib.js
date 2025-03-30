@@ -532,13 +532,13 @@ tinyLib.bs.closeButton = (dataDismiss = null) =>
 tinyLib.bs.navbar = {};
 tinyLib.bs.navbar.root = (id, theme = 'dark', isFixed = false) =>
   $('<nav>', {
-    class: `navbar navbar-expand-lg navbar-${theme} bg-${theme}${isFixed ? ' fixed-top' : ''}`,
+    class: `navbar navbar-expand-lg navbar-${theme} bg-${theme}${isFixed ? ' fixed-top' : ''} px-lg-3`,
     id,
   });
 
 tinyLib.bs.navbar.title = (text, href) =>
   $('<a>', {
-    class: 'navbar-brand d-block d-lg-none ms-4',
+    class: 'navbar-brand d-block d-lg-none ms-3',
     href,
     text,
   });
