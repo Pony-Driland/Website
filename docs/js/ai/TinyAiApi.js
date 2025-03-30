@@ -109,34 +109,36 @@ class TinyAiApi extends EventEmitter {
 
       // This value is extremely important for the import process to identify which custom values are being used
       const history = this.getData(id);
-      if (!Array.isArray(history.customList)) history.customList = [];
+      if (history) {
+        if (!Array.isArray(history.customList)) history.customList = [];
 
-      // Validate the custom value
-      if (value !== null) {
-        const props = history.customList.find((item) => item.name === name);
-        if (!props || typeof props.type !== 'string' || typeof props.name !== 'string') {
-          if (typeof history[name] === 'undefined')
-            history.customList.push({ name, type: objType(value) });
-          else throw new Error('This value name is already being used!');
-        } else if (props.type !== objType(value))
-          throw new Error(
-            `Invalid custom value type! ${name}: ${props.type} === ${objType(value)}`,
-          );
+        // Validate the custom value
+        if (value !== null) {
+          const props = history.customList.find((item) => item.name === name);
+          if (!props || typeof props.type !== 'string' || typeof props.name !== 'string') {
+            if (typeof history[name] === 'undefined')
+              history.customList.push({ name, type: objType(value) });
+            else throw new Error('This value name is already being used!');
+          } else if (props.type !== objType(value))
+            throw new Error(
+              `Invalid custom value type! ${name}: ${props.type} === ${objType(value)}`,
+            );
+        }
+
+        // Add Tokens
+        const selectedId = this.getId(id);
+        if (typeof tokenAmount === 'number') this.history[selectedId].tokens[name] = tokenAmount;
+
+        // Send custom value into the history
+        if (value !== null) {
+          this.#_insertIntoHistory(this.getId(id), sendValue);
+          this.history[selectedId].hash[name] = objHash(value);
+        }
+
+        // Complete
+        this.emit(tinyLib.toTitleCase(name), value, id);
+        return;
       }
-
-      // Add Tokens
-      const selectedId = this.getId(id);
-      if (typeof tokenAmount === 'number') this.history[selectedId].tokens[name] = tokenAmount;
-
-      // Send custom value into the history
-      if (value !== null) {
-        this.#_insertIntoHistory(this.getId(id), sendValue);
-        this.history[selectedId].hash[name] = objHash(value);
-      }
-
-      // Complete
-      this.emit(tinyLib.toTitleCase(name), value, id);
-      return;
     }
     throw new Error('Invalid custom value!');
   }
@@ -157,28 +159,30 @@ class TinyAiApi extends EventEmitter {
 
       // This value is extremely important for the import process to identify which custom values are being used
       const history = this.getData(id);
-      if (!Array.isArray(history.customList)) history.customList = [];
+      if (history) {
+        if (!Array.isArray(history.customList)) history.customList = [];
 
-      // Validate the custom value
-      const props = history.customList.find((item) => item.name === name);
-      if (
-        objType(props, 'object') &&
-        typeof props.type === 'string' &&
-        typeof props.name === 'string'
-      ) {
-        // Reset Tokens
-        const selectedId = this.getId(id);
-        if (typeof this.history[selectedId].tokens[name] !== 'undefined')
-          delete this.history[selectedId].tokens[name];
+        // Validate the custom value
+        const props = history.customList.find((item) => item.name === name);
+        if (
+          objType(props, 'object') &&
+          typeof props.type === 'string' &&
+          typeof props.name === 'string'
+        ) {
+          // Reset Tokens
+          const selectedId = this.getId(id);
+          if (typeof this.history[selectedId].tokens[name] !== 'undefined')
+            delete this.history[selectedId].tokens[name];
 
-        // Reset custom value
-        this.#_insertIntoHistory(this.getId(id), sendValue);
-        if (typeof this.history[selectedId].hash[name] !== 'undefined')
-          delete this.history[selectedId].hash[name];
+          // Reset custom value
+          this.#_insertIntoHistory(this.getId(id), sendValue);
+          if (typeof this.history[selectedId].hash[name] !== 'undefined')
+            delete this.history[selectedId].hash[name];
 
-        // Complete
-        this.emit(tinyLib.toTitleCase(name), null, id);
-        return;
+          // Complete
+          this.emit(tinyLib.toTitleCase(name), null, id);
+          return;
+        }
       }
       throw new Error('Invalid custom value data type!');
     }

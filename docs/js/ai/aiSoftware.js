@@ -286,13 +286,8 @@ const AiScriptStart = () => {
         },
         init: (forceRestart = false) =>
           new Promise((resolve, reject) => {
-            const customSchema = tinyAi.getCustomValue('schema');
-            const schemaHash = tinyAi.getHash('schema');
             // Get template
             rpgData.template = {
-              schema: objType(customSchema, 'object')
-                ? customSchema
-                : aiTemplates.funcs.jsonTemplate(),
               // Seed the form with a starting value
               startval: {},
               // Disable additional properties
@@ -300,6 +295,18 @@ const AiScriptStart = () => {
               // Require all properties by default
               required_by_default: false,
             };
+
+            // Add custom Schema
+            const customSchema = tinyAi.getCustomValue('rpgSchema');
+            if (objType(customSchema, 'object')) rpgData.template.schema = customSchema;
+            // Default schema
+            else {
+              rpgData.template.schema = aiTemplates.funcs.jsonTemplate();
+              if (ficConfigs.selected)
+                tinyAi.setCustomValue('rpgSchema', rpgData.template.schema, 0);
+            }
+
+            const schemaHash = tinyAi.getHash('rpgSchema');
 
             // Start json
             let failed = false;
@@ -342,6 +349,16 @@ const AiScriptStart = () => {
                       }
                     });
                   }
+
+                  // Complete
+                  if (!failed) {
+                    rpgData.ready[where] = true;
+                    amountStarted++;
+                    if (amountStarted >= 2) {
+                      rpgData.schemaHash = schemaHash;
+                      resolve(loadData);
+                    }
+                  }
                 };
                 const funcExecStart = () => executeTinyStart(true);
 
@@ -368,16 +385,6 @@ const AiScriptStart = () => {
                       'An error occurred at booting your RPG. Check your console for more details!',
                     ),
                   );
-                }
-              }
-
-              // Complete
-              if (!failed) {
-                rpgData.ready[where] = true;
-                amountStarted++;
-                if (amountStarted >= 2) {
-                  rpgData.schemaHash = schemaHash;
-                  resolve(loadData);
                 }
               }
             };
@@ -1737,8 +1744,10 @@ const AiScriptStart = () => {
         let systemData = null;
         let fileData = null;
         let promptData = null;
+
         let rpgContentData = null;
         let rpgPrivateContentData = null;
+        let rpgSchema = null;
 
         if (history) {
           // RPG Data
@@ -1783,13 +1792,33 @@ const AiScriptStart = () => {
             content.push(fileData);
           }
 
+          // RPG Data
+          if (canPublicRPG || canPrivateRPG) {
+            const tinyRpgData = clone(rpgData.template.schema);
+            if (
+              tinyRpgData &&
+              objType(tinyRpgData.properties, 'object') &&
+              typeof tinyRpgData.properties.allowAiUse !== 'undefined'
+            )
+              delete tinyRpgData.properties.allowAiUse;
+            let tinyText = '---------- RPG User Official Data ----------\n\n';
+            tinyText += JSON.stringify({ schema: tinyRpgData });
+            tinyText += '\n\n---------- The User end RPG Official Data ----------';
+
+            rpgSchema = {
+              role: 'user',
+              parts: [{ text: tinyText }],
+            };
+            content.push(rpgSchema);
+          }
+
           // Public RPG
           if (canPublicRPG) {
             rpgData.oldHash.public = tinyAi.getHash('rpgData');
             const tinyRpgData = clone(history.rpgData);
-            delete tinyRpgData.allowAiUse;
+            if (typeof tinyRpgData.allowAiUse !== 'undefined') delete tinyRpgData.allowAiUse;
             let tinyText = '---------- RPG User Official Data ----------\n\n';
-            tinyText += JSON.stringify(tinyRpgData);
+            tinyText += JSON.stringify({ database: tinyRpgData });
             tinyText += '\n\n---------- The User end RPG Official Data ----------';
 
             rpgContentData = {
@@ -1803,9 +1832,9 @@ const AiScriptStart = () => {
           if (canPrivateRPG) {
             rpgData.oldHash.private = tinyAi.getHash('rpgPrivateData');
             const tinyRpgData = clone(history.rpgPrivateData);
-            delete tinyRpgData.allowAiUse;
+            if (typeof tinyRpgData.allowAiUse !== 'undefined') delete tinyRpgData.allowAiUse;
             let tinyText = '---------- RPG Official Data ----------\n\n';
-            tinyText += JSON.stringify(tinyRpgData);
+            tinyText += JSON.stringify({ database: tinyRpgData });
             tinyText += '\n\n---------- The end RPG Official Data ----------';
 
             rpgPrivateContentData = {
@@ -1839,6 +1868,7 @@ const AiScriptStart = () => {
           fileData,
           rpgContentData,
           rpgPrivateContentData,
+          rpgSchema,
         };
       };
 
@@ -1853,6 +1883,7 @@ const AiScriptStart = () => {
               fileData,
               rpgContentData,
               rpgPrivateContentData,
+              rpgSchema,
             } = prepareContentList(true);
             if (content.length > 0) {
               // Get tokens data
@@ -1895,6 +1926,17 @@ const AiScriptStart = () => {
               };
 
               // RPG
+              if (rpgData.allowAiUse.public || rpgData.allowAiUse.private)
+                await updateTokenData(
+                  'rpgSchema',
+                  rpgSchema,
+                  tinyAi.getHash('rpgSchema'),
+                  typeof hashItems.rpgSchema === 'string' ? hashItems.rpgSchema : null,
+                  { count: tinyAi.getTokens('rpgSchema') },
+                  (newCount) => tinyAi.setCustomValue('rpgSchema', null, newCount),
+                );
+              else tinyAi.setCustomValue('rpgSchema', null, 0);
+
               if (rpgData.allowAiUse.public)
                 await updateTokenData(
                   'rpgData',
