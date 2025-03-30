@@ -663,7 +663,7 @@ const clearFicData = function () {
     .removeClass(`fic-daycicle-night`)
     .removeClass(`fic-daycicle-lateAtNight`);
 
-  $('#fic-nav > ul > #status').empty();
+  storyData.nc.base.right.find('> #status').empty();
   $('#fic-chapter').empty();
   storyData.readFic = false;
   storyData.chapter.html = {};
@@ -924,7 +924,7 @@ $(() => {
       }
 
       // Dropdown
-      const addDropdown = (newItem, offCanvasEl) => {
+      const addDropdown = (newItem) => {
         for (const valueName in newItem.dropdowns) {
           const dataList = newItem.dbBase[valueName];
           const tinyHtml = newItem.dropdowns[valueName];
@@ -957,7 +957,7 @@ $(() => {
             if (item.click) li.on('click', item.click);
             li.on('click', () => {
               element.hide();
-              if (offCanvasEl) offCanvasEl.hide();
+              offCanvasNavCfg.hide();
             });
           });
         }
@@ -1363,13 +1363,16 @@ $(() => {
 
       // Navbar items
       const navbarData = navbarItems();
-      const navbarData2 = navbarItems();
+      const offCanvasBase = $('<ul>');
+      const navbarOffCanvas = tinyLib.bs.offcanvas(
+        'end d-lg-none',
+        'offcanvasNavbar',
+        null,
+        offCanvasBase,
+      );
 
-      // OffCanvas
-      const navbarOffCanvas = tinyLib.bs.offcanvas('end d-lg-none', 'offcanvasNavbar', null, [
-        navbarData2.left,
-        navbarData2.right,
-      ]);
+      const tinyCollapse1 = tinyLib.bs.navbar.collapse('left', 'small mdMenu', null);
+      const tinyCollapse2 = tinyLib.bs.navbar.collapse('right', 'small mdMenu', 'fic-nav');
 
       // Insert Navbar
       $('body').prepend(
@@ -1393,17 +1396,33 @@ $(() => {
             .append($('<span>', { class: 'navbar-toggler-icon' })),
 
           // Collapse
-          tinyLib.bs.navbar.collapse('left', 'small mdMenu', null, navbarData.left),
-          tinyLib.bs.navbar.collapse('right', 'small mdMenu', 'fic-nav', navbarData.right),
+          tinyCollapse1,
+          tinyCollapse2,
         ),
       );
 
-      navbarOffCanvas.append(navbarData2);
+      storyData.nc = { base: {}, item: {} };
+      storyData.nc.item.left = tinyCollapse1.find('> ul');
+      storyData.nc.item.right = tinyCollapse2.find('> ul');
       const offCanvasNavCfg = new bootstrap.Offcanvas(navbarOffCanvas.get(0));
-
       addDropdown(navbarData);
-      addDropdown(navbarData2, offCanvasNavCfg);
-      navbarData2.setOffCanvas(offCanvasNavCfg);
+      navbarData.setOffCanvas(offCanvasNavCfg);
+
+      const checkWindowSize = () => {
+        if (window.matchMedia('(min-width: 992px)').matches) {
+          storyData.nc.base.left = storyData.nc.item.left;
+          storyData.nc.base.right = storyData.nc.item.right;
+          storyData.nc.item.left.append(navbarData.left);
+          storyData.nc.item.right.append(navbarData.right);
+        } else {
+          storyData.nc.base.left = offCanvasBase;
+          storyData.nc.base.right = offCanvasBase;
+          offCanvasBase.append(navbarData.left, navbarData.right);
+        }
+      };
+
+      window.addEventListener('resize', checkWindowSize);
+      checkWindowSize();
 
       // Insert Readme
       $('#app').append(tinyLib.bs.container('markdown-read'));

@@ -1,3 +1,4 @@
+// https://github.com/json-editor/json-editor?tab=readme-ov-file
 aiTemplates.funcs.jsonTemplate = function () {
   const rpgBase = {
     // Generator
