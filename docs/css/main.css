@@ -23,6 +23,82 @@ body:not(.browser-with-web3) .web3-element {
   color: #40cce6 !important;
 }
 
+/* Navbar Top - offcanvas */
+#offcanvasNavbar {
+  background-color: #171717;
+  border-color: #000;
+  max-width: 360px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+#offcanvasNavbar .offcanvas-header {
+  padding: 0px;
+}
+
+#offcanvasNavbar .offcanvas-header > .btn-close {
+  position: fixed;
+  top: 8px;
+  font-size: 10px;
+  right: 15px;
+}
+
+#offcanvasNavbar .nav-item {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  list-style: none;
+}
+
+#offcanvasNavbar .nav-item .nav-link,
+#offcanvasNavbar .nav-item {
+  text-align: center;
+  align-self: center;
+  width: 100%;
+  border-radius: 10px;
+}
+
+#offcanvasNavbar .nav-item .nav-link,
+#offcanvasNavbar .nav-item {
+  background-color: #1e1e1e;
+}
+
+#offcanvasNavbar .nav-item:hover .nav-link,
+#offcanvasNavbar .nav-item:hover {
+  background-color: #2c2c2c;
+}
+
+#offcanvasNavbar .nav-item .nav-link {
+  margin: 0px !important;
+}
+
+#offcanvasNavbar .nav-item:not(:first-child) .nav-link,
+#offcanvasNavbar .nav-item:not(:first-child):not(.empty) {
+  margin-top: 8px;
+}
+
+/* #offcanvasNavbar .nav-item + li,
+#offcanvasNavbar #status >*:not(:empty) {
+  border-top: 1px solid;
+} */
+
+#offcanvasNavbar #status:not(:empty) {
+  margin-top: 8px;
+}
+
+#offcanvasNavbar #status:empty {
+  margin-top: -20px;
+}
+
+#offcanvasNavbar #status >*:empty {
+  margin-top: -13px;
+}
+
+#offcanvasNavbar .nav-item #music-player,
+#offcanvasNavbar .nav-item #tts-player {
+  margin: 0px !important;
+  border: 0px !important;
+}
+
 /* Navbar Top */
 .tiny-navabar-style .navbar-nav-left, .tiny-navabar-style .navbar-nav-right {
   white-space: nowrap;

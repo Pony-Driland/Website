@@ -1363,7 +1363,7 @@ $(() => {
 
       // Navbar items
       const navbarData = navbarItems();
-      const offCanvasBase = $('<ul>');
+      const offCanvasBase = $('<ul>', { class: 'list-group list-group-flush' });
       const navbarOffCanvas = tinyLib.bs.offcanvas(
         'end d-lg-none',
         'offcanvasNavbar',
