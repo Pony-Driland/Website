@@ -329,6 +329,12 @@ aiTemplates.funcs.jsonTemplate = function () {
           title: 'Allow AI Prompt Usage (BETA)',
           description: 'Allow AI to use this data for generative content in future responses.',
         },
+        allowAiSchemaUse: {
+          type: 'boolean',
+          title: 'Allow AI Schema Prompt Usage (BETA)',
+          description:
+            'Allow AI to use the schema data for generative content in future responses.',
+        },
         comments: {
           type: 'string',
           format: 'textarea',
