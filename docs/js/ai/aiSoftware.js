@@ -1005,13 +1005,11 @@ const AiScriptStart = () => {
         }
       };
 
-      const ficTemplates = [
+      const ficResets = [
         // History
-        createButtonSidebar('fa-solid fa-arrows-rotate', 'Reset History', () =>
-          resetEntireData(true),
-        ),
+        createButtonSidebar('fa-solid fa-arrows-rotate', 'History', () => resetEntireData(true)),
         // Schema
-        createButtonSidebar('fa-solid fa-arrows-rotate', 'Reset RPG Schema', () => {
+        createButtonSidebar('fa-solid fa-arrows-rotate', 'RPG Schema', () => {
           rpgData.template.schema = aiTemplates.funcs.jsonTemplate();
           if (ficConfigs.selected) {
             tinyAi.setCustomValue('rpgSchema', rpgData.template.schema, 0);
@@ -1020,6 +1018,8 @@ const AiScriptStart = () => {
         }),
       ];
 
+      // Fic Templates
+      const ficTemplates = [];
       for (const index in ficConfigs.data) {
         const newButton = createButtonSidebar(
           ficConfigs.data[index].icon,
@@ -1386,129 +1386,142 @@ const AiScriptStart = () => {
       };
 
       // Left
-      const sidebarLeft = $('<div>', sidebarStyle).append(
-        $('<ul>', { class: 'list-unstyled' }).append(
-          $('<li>', { id: 'ai-mode-list', class: 'mb-3' }).append(
-            // Modes
-            $('<h5>').text('Modes'),
+      const sidebarLeft = $('<div>', sidebarStyle)
+        .removeClass('d-md-block')
+        .removeClass('p-3')
+        .addClass('d-md-flex')
+        .addClass('flex-column')
+        .addClass('py-0')
+        .append(
+          $('<ul>', { class: 'list-unstyled flex-grow-1 overflow-auto mb-0 pt-3 px-3' }).append(
+            $('<li>', { id: 'ai-mode-list', class: 'mb-3' }).append(
+              // Reset
+              $('<h5>').text('Reset'),
+              ficResets,
 
-            // Fic Talk
-            ficTemplates,
+              // Modes
+              $('<h5>').text('Modes'),
 
-            // Settings
-            $('<h5>').text('Settings'),
-            ficPromptItems,
+              // Fic Talk
+              ficTemplates,
 
-            // RPG
-            $('<h5>').text('RPG'),
-            createButtonSidebar('fa-solid fa-note-sticky', 'View Data', null, false, {
-              toggle: 'offcanvas',
-              target: '#rpg_ai_base_1',
-            }),
-            createButtonSidebar('fa-solid fa-book', 'View Private', null, false, {
-              toggle: 'offcanvas',
-              target: '#rpg_ai_base_2',
-            }),
-            createButtonSidebar('fa-solid fa-map', 'Classic Map', null, true),
+              // Settings
+              $('<h5>').text('Settings'),
+              ficPromptItems,
 
-            // Import
-            $('<h5>').text('Data'),
-            importItems,
+              // RPG
+              $('<h5>').text('RPG'),
+              createButtonSidebar('fa-solid fa-note-sticky', 'View Data', null, false, {
+                toggle: 'offcanvas',
+                target: '#rpg_ai_base_1',
+              }),
+              createButtonSidebar('fa-solid fa-book', 'View Private', null, false, {
+                toggle: 'offcanvas',
+                target: '#rpg_ai_base_2',
+              }),
+              createButtonSidebar('fa-solid fa-map', 'Classic Map', null, true),
 
-            // Export
-            createButtonSidebar('fa-solid fa-file-export', 'Export', () => {
-              const exportData = {
-                file: clone(tinyAi.getData()),
-                id: tinyAi.getId(),
-              };
+              // Import
+              $('<h5>').text('Data'),
+              importItems,
 
-              if (exportData.file) {
-                if (!canSandBox(ficConfigs.selected)) delete exportData.file.systemInstruction;
-                if (exportData.file.file) delete exportData.file.file;
-              }
+              // Export
+              createButtonSidebar('fa-solid fa-file-export', 'Export', () => {
+                const exportData = {
+                  file: clone(tinyAi.getData()),
+                  id: tinyAi.getId(),
+                };
 
-              saveAs(
-                new Blob([JSON.stringify(exportData)], { type: 'text/plain' }),
-                `Pony Driland - ${tinyAi.getId()} - AI Export.json`,
-              );
-            }),
+                if (exportData.file) {
+                  if (!canSandBox(ficConfigs.selected)) delete exportData.file.systemInstruction;
+                  if (exportData.file.file) delete exportData.file.file;
+                }
 
-            // Downloads
-            createButtonSidebar('fa-solid fa-download', 'Downloads', () => {
-              const body = $('<div>');
-              body.append(
-                $('<h3>')
-                  .text(`Download Content`)
-                  .prepend(tinyLib.icon('fa-solid fa-download me-3'))
-                  .append(
-                    tinyLib.bs
-                      .button('info btn-sm ms-3')
-                      .text('Save As all chapters')
-                      .on('click', () => saveRoleplayFormat()),
-                  ),
-                $('<h5>')
-                  .text(
-                    `Here you can download the official content of fic to produce unofficial content dedicated to artificial intelligence.`,
-                  )
-                  .append(
-                    $('<br/>'),
-                    $('<small>').text('Remember that you are downloading the uncensored version.'),
-                  ),
-              );
+                saveAs(
+                  new Blob([JSON.stringify(exportData)], { type: 'text/plain' }),
+                  `Pony Driland - ${tinyAi.getId()} - AI Export.json`,
+                );
+              }),
 
-              for (let i = 0; i < storyData.chapter.amount; i++) {
-                // Chapter Number
-                const chapter = String(i + 1);
-
-                // Add Chapter
+              // Downloads
+              createButtonSidebar('fa-solid fa-download', 'Downloads', () => {
+                const body = $('<div>');
                 body.append(
-                  $('<div>', { class: 'card' }).append(
-                    $('<div>', { class: 'card-body' }).append(
-                      $('<h5>', { class: 'card-title m-0' })
-                        .text(`Chapter ${chapter} - `)
-                        .append(
-                          $('<small>').text(storyCfg.chapterName[chapter].title),
-                          $('<a>', {
-                            class: 'btn btn-primary m-2 me-0 btn-sm',
-                            href: `/chapter/${chapter}.html`,
-                            chapter: chapter,
-                          })
-                            .on('click', function () {
-                              // Save Chapter
-                              saveRoleplayFormat(Number($(this).attr('chapter')));
-
-                              // Complete
-                              return false;
-                            })
-                            .text('Save as'),
-                        ),
+                  $('<h3>')
+                    .text(`Download Content`)
+                    .prepend(tinyLib.icon('fa-solid fa-download me-3'))
+                    .append(
+                      tinyLib.bs
+                        .button('info btn-sm ms-3')
+                        .text('Save As all chapters')
+                        .on('click', () => saveRoleplayFormat()),
                     ),
+                  $('<h5>')
+                    .text(
+                      `Here you can download the official content of fic to produce unofficial content dedicated to artificial intelligence.`,
+                    )
+                    .append(
+                      $('<br/>'),
+                      $('<small>').text(
+                        'Remember that you are downloading the uncensored version.',
+                      ),
+                    ),
+                );
+
+                for (let i = 0; i < storyData.chapter.amount; i++) {
+                  // Chapter Number
+                  const chapter = String(i + 1);
+
+                  // Add Chapter
+                  body.append(
+                    $('<div>', { class: 'card' }).append(
+                      $('<div>', { class: 'card-body' }).append(
+                        $('<h5>', { class: 'card-title m-0' })
+                          .text(`Chapter ${chapter} - `)
+                          .append(
+                            $('<small>').text(storyCfg.chapterName[chapter].title),
+                            $('<a>', {
+                              class: 'btn btn-primary m-2 me-0 btn-sm',
+                              href: `/chapter/${chapter}.html`,
+                              chapter: chapter,
+                            })
+                              .on('click', function () {
+                                // Save Chapter
+                                saveRoleplayFormat(Number($(this).attr('chapter')));
+
+                                // Complete
+                                return false;
+                              })
+                              .text('Save as'),
+                          ),
+                      ),
+                    ),
+                  );
+                }
+
+                body.append(
+                  $('<p>', { class: 'm-0' }).text(
+                    `This content is ready for AI to know which lines of text, chapters, day number, weather, location on any part of the fic you ask. The website script will convert all content to be easily understood by AI languages.`,
                   ),
                 );
-              }
 
-              body.append(
-                $('<p>', { class: 'm-0' }).text(
-                  `This content is ready for AI to know which lines of text, chapters, day number, weather, location on any part of the fic you ask. The website script will convert all content to be easily understood by AI languages.`,
-                ),
-              );
-
-              tinyLib.modal({
-                id: 'ai_downloads',
-                title: 'AI Downloads',
-                dialog: 'modal-lg',
-                body,
-              });
-            }),
+                tinyLib.modal({
+                  id: 'ai_downloads',
+                  title: 'AI Downloads',
+                  dialog: 'modal-lg',
+                  body,
+                });
+              }),
+            ),
 
             // Tiny information
-            $('<hr/>', { class: 'border-white' }),
-            $('<div>', { class: 'small text-grey' }).text(
-              'AI makes mistakes, so double-check it. AI does not replace the fic literature (Careful! AI can type spoilers!).',
-            ),
+            $('<div>', { class: 'small text-grey p-2 bg-dark position-sticky bottom-0 pt-0' })
+              .text(
+                'AI makes mistakes, so double-check it. AI does not replace the fic literature (Careful! AI can type spoilers!).',
+              )
+              .prepend($('<hr/>', { class: 'border-white mt-0 mb-2' })),
           ),
-        ),
-      );
+        );
 
       // Right
       const sidebarSettingTemplate = { span: { class: 'pb-2 d-inline-block' } };
@@ -2846,6 +2859,7 @@ const AiScriptStart = () => {
       };
 
       const modelChangerReadOnly = (isEnabled = true) => {
+        for (const index in ficResets) readOnlyTemplate(ficResets[index], isEnabled);
         for (const index in ficTemplates) readOnlyTemplate(ficTemplates[index], isEnabled);
         for (const index in importItems) readOnlyTemplate(importItems[index], isEnabled);
       };
