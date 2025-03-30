@@ -32,8 +32,19 @@ body:not(.browser-with-web3) .web3-element {
   overflow-y: auto;
 }
 
+#offcanvasNavbar .offcanvas-body {
+  padding-top: 0px;
+}
+
+#offcanvasNavbar .offcanvas-title {
+  padding-top: 16px;
+  padding-bottom: 7px;
+}
+
 #offcanvasNavbar .offcanvas-header {
   padding: 0px;
+  display: block;
+  text-align: center;
 }
 
 #offcanvasNavbar .offcanvas-header > .btn-close {
