@@ -269,9 +269,14 @@ const AiScriptStart = () => {
       const rpgData = {
         schemaHash: null,
         allowAiUse: { public: false, private: false },
+        allowAiSchemaUse: { public: false, private: false },
         setAllowAiUse: (value, type) => {
           if (typeof rpgData.allowAiUse[type] === 'boolean')
             rpgData.allowAiUse[type] = typeof value === 'boolean' ? value : false;
+        },
+        setAllowAiSchemaUse: (value, type) => {
+          if (typeof rpgData.allowAiSchemaUse[type] === 'boolean')
+            rpgData.allowAiSchemaUse[type] = typeof value === 'boolean' ? value : false;
         },
 
         hash: { public: null, private: null },
@@ -342,6 +347,7 @@ const AiScriptStart = () => {
                             tinyAi.setCustomValue(valueName, tinyData);
                             rpgData.hash[where] = tinyAi.getHash(valueName);
                             rpgData.setAllowAiUse(tinyData.allowAiUse, where);
+                            rpgData.setAllowAiSchemaUse(tinyData.allowAiSchemaUse, where);
                           }
                         } catch (err) {
                           console.error(err);
@@ -680,9 +686,14 @@ const AiScriptStart = () => {
               await rpgData.init();
               const tinyRpgData = rpgData.data.public.getValue();
               const tinyRpgPrivateData = rpgData.data.private.getValue();
-              if (tinyRpgData) rpgData.setAllowAiUse(tinyRpgData.allowAiUse, 'public');
-              if (tinyRpgPrivateData)
+              if (tinyRpgData) {
+                rpgData.setAllowAiUse(tinyRpgData.allowAiUse, 'public');
+                rpgData.setAllowAiSchemaUse(tinyRpgData.allowAiSchemaUse, 'public');
+              }
+              if (tinyRpgPrivateData) {
                 rpgData.setAllowAiUse(tinyRpgPrivateData.allowAiUse, 'private');
+                rpgData.setAllowAiSchemaUse(tinyRpgPrivateData.allowAiSchemaUse, 'private');
+              }
 
               // Add file data
               const fileTokens = tinyAi.getTokens('file');
@@ -975,22 +986,36 @@ const AiScriptStart = () => {
         contentsMd5: null,
       };
 
+      // Reset buttons
+      const resetEntireData = (resetAll = false) => {
+        const index = ficConfigs.data.findIndex((item) => item.id === ficConfigs.selected);
+        if (index > -1) {
+          getFicCache(
+            ficConfigs.data[index].id,
+            ficConfigs.data[index].template,
+            ficConfigs.data[index].prompt,
+            ficConfigs.data[index].intro,
+            null,
+            () => {
+              ficConfigs.selected = ficConfigs.data[index].id;
+              return ficConfigs.data[index].getData();
+            },
+            resetAll,
+          ).then(() => resetSettingsButton.trigger('click'));
+        }
+      };
+
       const ficTemplates = [
-        createButtonSidebar('fa-solid fa-arrows-rotate', 'Reset History', () => {
-          const index = ficConfigs.data.findIndex((item) => item.id === ficConfigs.selected);
-          if (index > -1) {
-            getFicCache(
-              ficConfigs.data[index].id,
-              ficConfigs.data[index].template,
-              ficConfigs.data[index].prompt,
-              ficConfigs.data[index].intro,
-              null,
-              () => {
-                ficConfigs.selected = ficConfigs.data[index].id;
-                return ficConfigs.data[index].getData();
-              },
-              true,
-            ).then(() => resetSettingsButton.trigger('click'));
+        // History
+        createButtonSidebar('fa-solid fa-arrows-rotate', 'Reset History', () =>
+          resetEntireData(true),
+        ),
+        // Schema
+        createButtonSidebar('fa-solid fa-arrows-rotate', 'Reset RPG Schema', () => {
+          rpgData.template.schema = aiTemplates.funcs.jsonTemplate();
+          if (ficConfigs.selected) {
+            tinyAi.setCustomValue('rpgSchema', rpgData.template.schema, 0);
+            resetEntireData(false);
           }
         }),
       ];
@@ -1761,6 +1786,13 @@ const AiScriptStart = () => {
             objType(history.rpgPrivateData, 'object') &&
             countObj(history.rpgPrivateData) > 0;
 
+          const existsRpgSchema =
+            objType(rpgData.template.schema, 'object') && countObj(rpgData.template.schema) > 0;
+
+          const canPublicSchemaRPG = rpgData.allowAiSchemaUse.public && existsRpgSchema;
+
+          const canPrivateSchemaRPG = rpgData.allowAiSchemaUse.private && existsRpgSchema;
+
           // System Instruction
           if (
             typeof history.systemInstruction === 'string' &&
@@ -1793,14 +1825,14 @@ const AiScriptStart = () => {
           }
 
           // RPG Data
-          if (canPublicRPG || canPrivateRPG) {
+          if ((canPublicRPG || canPrivateRPG) && (canPublicSchemaRPG || canPrivateSchemaRPG)) {
             const tinyRpgData = clone(rpgData.template.schema);
-            if (
-              tinyRpgData &&
-              objType(tinyRpgData.properties, 'object') &&
-              typeof tinyRpgData.properties.allowAiUse !== 'undefined'
-            )
+
+            if (typeof tinyRpgData.properties.allowAiUse !== 'undefined')
               delete tinyRpgData.properties.allowAiUse;
+            if (typeof tinyRpgData.properties.allowAiSchemaUse !== 'undefined')
+              delete tinyRpgData.properties.allowAiSchemaUse;
+
             let tinyText = '---------- RPG User Official Data ----------\n\n';
             tinyText += JSON.stringify({ schema: tinyRpgData });
             tinyText += '\n\n---------- The User end RPG Official Data ----------';
@@ -1926,7 +1958,10 @@ const AiScriptStart = () => {
               };
 
               // RPG
-              if (rpgData.allowAiUse.public || rpgData.allowAiUse.private)
+              if (
+                (rpgData.allowAiUse.public || rpgData.allowAiUse.private) &&
+                (rpgData.allowAiSchemaUse.public || rpgData.allowAiSchemaUse.private)
+              )
                 await updateTokenData(
                   'rpgSchema',
                   rpgSchema,
@@ -2730,6 +2765,7 @@ const AiScriptStart = () => {
             const tinyData = rpgData.data[where].getValue();
             if (tinyData) {
               rpgData.setAllowAiUse(tinyData.allowAiUse, where);
+              rpgData.setAllowAiSchemaUse(tinyData.allowAiSchemaUse, where);
               if (
                 rpgData.data[where].isEnabled() &&
                 rpgData.hash[where] !== rpgData.oldHash[where]
