@@ -1367,7 +1367,7 @@ $(() => {
       const navbarOffCanvas = tinyLib.bs.offcanvas(
         'end d-lg-none',
         'offcanvasNavbar',
-        null,
+        'Pony Driland',
         offCanvasBase,
       );
 
