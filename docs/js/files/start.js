@@ -923,9 +923,50 @@ $(() => {
         copyrightText = `© ${storyCfg.year} - ${yearNow} ${storyCfg.title} | `;
       }
 
+      // Dropdown
+      const addDropdown = (newItem, offCanvasEl) => {
+        for (const valueName in newItem.dropdowns) {
+          const dataList = newItem.dbBase[valueName];
+          const tinyHtml = newItem.dropdowns[valueName];
+          tinyLib.bs.dropdownClick(tinyHtml, dataList, (li, element, item) => {
+            // Create Dropdown
+            const aItem = $('<a>', { class: 'dropdown-item', id: item.id, href: item.href });
+            li.append(aItem);
+
+            // Add text
+            aItem.text(item.text);
+            if (item.icon) aItem.prepend(tinyLib.icon(`${item.icon} me-2`));
+
+            // File
+            if (typeof item.file === 'string') {
+              aItem.attr('href', 'javascript:void(0)');
+              aItem.attr('file', item.file);
+            }
+
+            // Target
+            if (item.href && item.href !== 'javascript:void(0)') aItem.attr('target', '_blank');
+
+            // Is web3
+            if (item.web3Element) li.addClass('web3-element');
+
+            // Click
+            if (typeof item.file === 'string')
+              li.on('click', function () {
+                openMDFile(aItem.attr('file'));
+              });
+            if (item.click) li.on('click', item.click);
+            li.on('click', () => {
+              element.hide();
+              if (offCanvasEl) offCanvasEl.hide();
+            });
+          });
+        }
+      };
+
       // Insert Navbars
       const navbarItems = function () {
         // Base Crypto Modal
+        let offCanvasEl = null;
         const baseCryptoModal = function (crypto_value, title) {
           return function () {
             const qrcodeCanvas = $('<canvas>');
@@ -968,6 +1009,9 @@ $(() => {
         newItem.dbBase.donations = [];
         newItem.dbBase.information = [];
         newItem.dbBase.characters = [];
+        newItem.setOffCanvas = (newOffCanvas) => {
+          offCanvasEl = newOffCanvas;
+        };
 
         // Derpibooru
         newItem.dbBase.information.push({
@@ -1218,16 +1262,16 @@ $(() => {
         );
         newItem.left = [
           // Homepage
-          $('<li>', { class: 'nav-item' })
-            .prepend(
-              $('<a>', { class: 'nav-link', href: '/', id: 'homepage' })
-                .text('Home')
-                .prepend(tinyLib.icon('fas fa-home me-2')),
-            )
-            .on('click', () => {
-              openMDFile('MAIN', true);
-              return false;
-            }),
+          $('<li>', { class: 'nav-item' }).prepend(
+            $('<a>', { class: 'nav-link', href: '/', id: 'homepage' })
+              .text('Home')
+              .prepend(tinyLib.icon('fas fa-home me-2'))
+              .on('click', () => {
+                openMDFile('MAIN', true);
+                if (offCanvasEl) offCanvasEl.hide();
+                return false;
+              }),
+          ),
 
           // Discord Server
           $('<li>', { class: 'nav-item' }).prepend(
@@ -1238,7 +1282,10 @@ $(() => {
               id: 'discord-server',
             })
               .text('Discord')
-              .prepend(tinyLib.icon('fab fa-discord me-2')),
+              .prepend(tinyLib.icon('fab fa-discord me-2'))
+              .on('click', () => {
+                if (offCanvasEl) offCanvasEl.hide();
+              }),
           ),
 
           // Blog
@@ -1250,24 +1297,27 @@ $(() => {
               id: 'blog-url',
             })
               .text('Blog')
-              .prepend(tinyLib.icon('fa-solid fa-rss me-2')),
+              .prepend(tinyLib.icon('fa-solid fa-rss me-2'))
+              .on('click', () => {
+                if (offCanvasEl) offCanvasEl.hide();
+              }),
           ),
 
           // AI
-          $('<li>', { class: 'nav-item nav-ai' })
-            .prepend(
-              $('<a>', {
-                class: 'nav-link',
-                href: '/?path=ai',
-                id: 'ai-access-page',
-              })
-                .text('AI Page')
-                .prepend(tinyLib.icon('fa-solid fa-server me-2')),
-            )
-            .on('click', () => {
-              tinyAiScript.open();
-              return false;
-            }),
+          $('<li>', { class: 'nav-item nav-ai' }).prepend(
+            $('<a>', {
+              class: 'nav-link',
+              href: '/?path=ai',
+              id: 'ai-access-page',
+            })
+              .text('AI Page')
+              .prepend(tinyLib.icon('fa-solid fa-server me-2'))
+              .on('click', () => {
+                tinyAiScript.open();
+                if (offCanvasEl) offCanvasEl.hide();
+                return false;
+              }),
+          ),
 
           newItem.dropdowns.information,
           newItem.dropdowns.donations,
@@ -1301,6 +1351,7 @@ $(() => {
             .on('click', () => {
               $('#top_page').addClass('d-none');
               openChapterMenu();
+              if (offCanvasEl) offCanvasEl.hide();
               return false;
             }),
         ];
@@ -1310,11 +1361,20 @@ $(() => {
         return newItem;
       };
 
+      // Navbar items
       const navbarData = navbarItems();
+      const navbarData2 = navbarItems();
+
+      // OffCanvas
+      const navbarOffCanvas = tinyLib.bs.offcanvas('end d-lg-none', 'offcanvasNavbar', null, [
+        navbarData2.left,
+        navbarData2.right,
+      ]);
 
       // Insert Navbar
       $('body').prepend(
         // Navbar
+        navbarOffCanvas,
         tinyLib.bs.navbar.root('md-navbar', 'dark', true).append(
           // Title
           tinyLib.bs.navbar.title(storyCfg.title, '/').on('click', () => {
@@ -1338,44 +1398,12 @@ $(() => {
         ),
       );
 
-      // Dropdown
-      const addDropdown = (valueName) => {
-        const dataList = navbarData.dbBase[valueName];
-        const tinyHtml = navbarData.dropdowns[valueName];
-        tinyLib.bs.dropdownClick(tinyHtml, dataList, (li, element, item) => {
-          // Create Dropdown
-          const aItem = $('<a>', { class: 'dropdown-item', id: item.id, href: item.href });
-          li.append(aItem);
+      navbarOffCanvas.append(navbarData2);
+      const offCanvasNavCfg = new bootstrap.Offcanvas(navbarOffCanvas.get(0));
 
-          // Add text
-          aItem.text(item.text);
-          if (item.icon) aItem.prepend(tinyLib.icon(`${item.icon} me-2`));
-
-          // File
-          if (typeof item.file === 'string') {
-            aItem.attr('href', 'javascript:void(0)');
-            aItem.attr('file', item.file);
-          }
-
-          // Target
-          if (item.href && item.href !== 'javascript:void(0)') aItem.attr('target', '_blank');
-
-          // Is web3
-          if (item.web3Element) li.addClass('web3-element');
-
-          // Click
-          if (typeof item.file === 'string')
-            li.on('click', function () {
-              openMDFile(aItem.attr('file'));
-            });
-          if (item.click) li.on('click', item.click);
-          li.on('click', () => element.hide());
-        });
-      };
-
-      addDropdown('donations');
-      addDropdown('information');
-      addDropdown('characters');
+      addDropdown(navbarData);
+      addDropdown(navbarData2, offCanvasNavCfg);
+      navbarData2.setOffCanvas(offCanvasNavCfg);
 
       // Insert Readme
       $('#app').append(tinyLib.bs.container('markdown-read'));

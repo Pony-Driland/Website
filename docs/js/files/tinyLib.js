@@ -564,26 +564,32 @@ tinyLib.bs.offcanvas = (
   content = null,
   closeButtonInverse = false,
   tabIndex = -1,
-) =>
-  $('<div>', {
+) => {
+  const body = $('<div>', {
+    class: 'offcanvas-body',
+  });
+
+  if (!Array.isArray(content)) body.append(content);
+  else for (const index in content) body.append(content[index]);
+
+  return $('<div>', {
     class: `offcanvas offcanvas-${where}`,
     tabindex: tabIndex,
     id,
   }).append(
     $('<div>', { class: 'offcanvas-header' }).append(
-      $('<h5>', {
-        class: 'offcanvas-title',
-        id: `${id}Label`,
-      }).text(title),
+      title
+        ? $('<h5>', {
+            class: 'offcanvas-title',
+            id: `${id}Label`,
+          }).text(title)
+        : null,
       !closeButtonInverse && tinyLib.bs.closeButton('offcanvas'),
-
-      $('<div>', {
-        class: 'offcanvas-body',
-      }).append(content),
-
+      body,
       closeButtonInverse && tinyLib.bs.closeButton('offcanvas'),
     ),
   );
+};
 
 // Container
 tinyLib.bs.container = (id = null, classItems = null, tag = 'div') =>
