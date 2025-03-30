@@ -329,9 +329,6 @@ $(window).on('popstate', function () {
 
 // Insert Maarkdown File
 const insertMarkdownFile = function (text, metadata = null, isMainPage = false, isHTML = false) {
-  // Prepare Convert Base
-  console.log(metadata);
-
   // Convert Data
   let data;
 
@@ -666,7 +663,7 @@ const clearFicData = function () {
     .removeClass(`fic-daycicle-night`)
     .removeClass(`fic-daycicle-lateAtNight`);
 
-  $('#fic-nav > #status').empty();
+  $('#fic-nav > ul > #status').empty();
   $('#fic-chapter').empty();
   storyData.readFic = false;
   storyData.chapter.html = {};
@@ -967,12 +964,13 @@ $(() => {
         };
 
         // Base
-        const donationsItems = [];
-        const tipsPages = [];
-        const charactersItems = [];
+        const newItem = { dbBase: {} };
+        newItem.dbBase.donations = [];
+        newItem.dbBase.information = [];
+        newItem.dbBase.characters = [];
 
         // Derpibooru
-        tipsPages.push({
+        newItem.dbBase.information.push({
           href: `https://derpibooru.org/tags/${storyCfg.derpibooru_tag}`,
           id: 'derpibooru-page',
           text: 'Derpibooru',
@@ -980,7 +978,7 @@ $(() => {
         });
 
         // Tantabus
-        tipsPages.push({
+        newItem.dbBase.information.push({
           href: `https://tantabus.ai/tags/${storyCfg.derpibooru_tag}`,
           id: 'tantabus-page',
           text: 'Tantabus',
@@ -988,7 +986,7 @@ $(() => {
         });
 
         // Tiny Tips
-        tipsPages.push({
+        newItem.dbBase.information.push({
           href: `javascript:void(0)`,
           id: 'information-menu',
           text: 'Museum',
@@ -996,7 +994,7 @@ $(() => {
           click: () => openMDFile('pages/museum.md'),
         });
 
-        tipsPages.push({
+        newItem.dbBase.information.push({
           href: `javascript:void(0)`,
           id: 'tiny-ai-writer-tips',
           text: 'AI Tips for human artists',
@@ -1004,7 +1002,7 @@ $(() => {
           click: () => openMDFile('pages/artistTips.md'),
         });
 
-        tipsPages.push({
+        newItem.dbBase.information.push({
           href: `javascript:void(0)`,
           id: 'ai-fic-template',
           text: 'Official AI Models',
@@ -1014,7 +1012,7 @@ $(() => {
 
         // Patreon
         if (storyCfg.patreon) {
-          donationsItems.push({
+          newItem.dbBase.donations.push({
             href: `https://patreon.com/${storyCfg.patreon}`,
             id: 'patreon-url',
             text: 'Patreon',
@@ -1024,7 +1022,7 @@ $(() => {
 
         // Kofi
         if (storyCfg.kofi) {
-          donationsItems.push({
+          newItem.dbBase.donations.push({
             href: `https://ko-fi.com/${storyCfg.kofi}`,
             id: 'kofi-url',
             text: 'Ko-Fi',
@@ -1034,7 +1032,7 @@ $(() => {
 
         // Bitcoin
         if (storyCfg.bitcoin && storyCfg.bitcoin.address && storyCfg.bitcoin.explorer) {
-          donationsItems.push({
+          newItem.dbBase.donations.push({
             href: storyCfg.bitcoin.explorer + storyCfg.bitcoin.address,
             id: 'bitcoin-wallet',
             text: 'Bitcoin',
@@ -1045,7 +1043,7 @@ $(() => {
 
         // Dogecoin
         if (storyCfg.dogecoin && storyCfg.dogecoin.address && storyCfg.dogecoin.explorer) {
-          donationsItems.push({
+          newItem.dbBase.donations.push({
             href: storyCfg.dogecoin.explorer + storyCfg.dogecoin.address,
             id: 'dogecoin-wallet',
             text: 'Dogecoin',
@@ -1056,7 +1054,7 @@ $(() => {
 
         // Ethereum
         if (storyCfg.ethereum && storyCfg.ethereum.address && storyCfg.ethereum.explorer) {
-          donationsItems.push({
+          newItem.dbBase.donations.push({
             href: storyCfg.ethereum.explorer + storyCfg.ethereum.address,
             id: 'ethereum-wallet',
             text: 'Ethereum',
@@ -1068,7 +1066,7 @@ $(() => {
 
         // Polygon
         if (storyCfg.polygon && storyCfg.polygon.address && storyCfg.polygon.explorer) {
-          donationsItems.push({
+          newItem.dbBase.donations.push({
             href: storyCfg.polygon.explorer + storyCfg.polygon.address,
             id: 'polygon-wallet',
             text: 'Polygon',
@@ -1080,7 +1078,7 @@ $(() => {
 
         // BNB
         if (storyCfg.bnb && storyCfg.bnb.address && storyCfg.bnb.explorer) {
-          donationsItems.push({
+          newItem.dbBase.donations.push({
             href: storyCfg.bnb.explorer + storyCfg.bnb.address,
             id: 'bnb-wallet',
             text: 'BNB',
@@ -1092,7 +1090,7 @@ $(() => {
 
         // Crypto Wallet
         if (storyCfg.nftDomain && storyCfg.nftDomain.url) {
-          donationsItems.push({
+          newItem.dbBase.donations.push({
             href: storyCfg.nftDomain.url.replace('{domain}', storyCfg.nftDomain.domainWallet),
             id: 'crypto-wallet',
             text: 'More crypto wallets',
@@ -1102,97 +1100,55 @@ $(() => {
         }
 
         // Characters
-        charactersItems.push({
+        newItem.dbBase.characters.push({
           file: '/data/characters/rayane/README.md',
           text: 'Rayane (Page WIP)',
         });
 
-        charactersItems.push({
+        newItem.dbBase.characters.push({
           file: '/data/characters/james/README.md',
           text: 'James (Character WIP)',
         });
 
-        charactersItems.push({
+        newItem.dbBase.characters.push({
           file: '/data/characters/rainbow-queen/README.md',
           text: 'Rainbow Queen',
         });
 
-        charactersItems.push({
+        newItem.dbBase.characters.push({
           file: '/data/characters/princess-ariella/README.md',
           text: 'Princess Ariella (Page WIP)',
         });
 
-        charactersItems.push({
+        newItem.dbBase.characters.push({
           file: '/data/characters/amy/README.md',
           text: 'Amy (Page WIP)',
         });
 
-        charactersItems.push({
+        newItem.dbBase.characters.push({
           file: '/data/characters/layla/README.md',
           text: 'Layla (Page WIP)',
         });
 
-        charactersItems.push({
+        newItem.dbBase.characters.push({
           file: '/data/characters/prisma/README.md',
           text: 'Prisma (Character WIP)',
         });
 
-        charactersItems.push({
+        newItem.dbBase.characters.push({
           file: '/data/characters/aniya/README.md',
           text: 'Aniya (Character WIP)',
         });
 
-        charactersItems.push({
+        newItem.dbBase.characters.push({
           file: '/data/characters/blue-screen/README.md',
           text: 'Blue Screen (Page WIP)',
         });
 
-        charactersItems.push({
+        newItem.dbBase.characters.push({
           file: '/data/characters/whistler/README.md',
           text: 'Whistler (Character WIP)',
         });
-
-        // Dropdown
-        const addDropdown = (where) => {
-          for (const item in where) {
-            const aData = {
-              class: 'dropdown-item',
-              id: where[item].id,
-            };
-
-            if (typeof where[item].href === 'string') aData.href = where[item].href;
-
-            if (typeof where[item].file === 'string') {
-              aData.href = 'javascript:void(0)';
-              aData.file = where[item].file;
-            }
-
-            if (where[item].href && where[item].href !== 'javascript:void(0)')
-              aData.target = '_blank';
-
-            const newHtml = $('<li>', {
-              class: where[item].web3Element ? 'web3-element' : null,
-            }).prepend(
-              $('<a>', aData)
-                .text(where[item].text)
-                .prepend(tinyLib.icon(`${where[item].icon} me-2`)),
-            );
-
-            console.log(where[item].file);
-            if (typeof where[item].file === 'string')
-              newHtml.on('click', function () {
-                openMDFile(aData.file);
-              });
-
-            if (where[item].click) newHtml.on('click', where[item].click);
-
-            where[item] = newHtml;
-          }
-        };
-
-        addDropdown(donationsItems);
-        addDropdown(tipsPages);
-        addDropdown(charactersItems);
 
         // Meta Login
         const metaLogin = {
@@ -1203,11 +1159,8 @@ $(() => {
           metaLogin.title = puddyWeb3.getAddress();
         }
 
-        metaLogin.button = $('<a>', {
-          id: 'login',
-          class: 'nav-link web3-element',
-          href: '#',
-        })
+        metaLogin.button = tinyLib.bs
+          .button({ dsBtn: true, id: 'login', class: 'nav-link web3-element' })
           .attr('title', metaLogin.title)
           .prepend(tinyLib.icon('fa-brands fa-ethereum me-2'));
 
@@ -1229,11 +1182,9 @@ $(() => {
         };
         tinyAiScript.setAiLogin(aiLogin);
 
-        aiLogin.button = $('<a>', {
-          id: 'ai-login',
-          class: 'nav-link',
-          href: '#',
-        }).prepend(tinyLib.icon('fa-solid fa-robot me-2'));
+        aiLogin.button = tinyLib.bs
+          .button({ id: 'ai-login', dsBtn: true, class: 'nav-link' })
+          .prepend(tinyLib.icon('fa-solid fa-robot me-2'));
 
         tinyAiScript.checkTitle();
         aiLogin.base.prepend(aiLogin.button);
@@ -1243,157 +1194,123 @@ $(() => {
         });
 
         // Nav Items
-        const newItem = [
-          // Title
-          $('<a>', { class: 'navbar-brand d-none d-lg-block', href: '/' })
-            .text(storyCfg.title)
+        newItem.dropdowns = {};
+
+        newItem.dropdowns.information = $('<li>', {
+          class: 'nav-item dropdown',
+          id: 'information-menu',
+        }).prepend(
+          tinyLib.bs.button({ dsBtn: true, class: 'nav-link dropdown-toggle' }).text('Information'),
+        );
+        // Donations Button
+        newItem.dropdowns.donations = $('<li>', {
+          class: 'nav-item dropdown',
+          id: 'donations-menu',
+        }).prepend(
+          tinyLib.bs.button({ dsBtn: true, class: 'nav-link dropdown-toggle' }).text('Donations'),
+        );
+        // Characters
+        newItem.dropdowns.characters = $('<li>', {
+          class: 'nav-item dropdown',
+          id: 'characters-menu',
+        }).prepend(
+          tinyLib.bs.button({ dsBtn: true, class: 'nav-link dropdown-toggle' }).text('Characters'),
+        );
+        newItem.left = [
+          // Homepage
+          $('<li>', { class: 'nav-item' })
+            .prepend(
+              $('<a>', { class: 'nav-link', href: '/', id: 'homepage' })
+                .text('Home')
+                .prepend(tinyLib.icon('fas fa-home me-2')),
+            )
             .on('click', () => {
               openMDFile('MAIN', true);
               return false;
             }),
 
-          // Nav 1
-          $('<ul>', { class: 'navbar-nav me-auto mt-2 mt-lg-0 small' }).append(
-            // Homepage
-            $('<li>', { class: 'nav-item' })
-              .prepend(
-                $('<a>', { class: 'nav-link', href: '/', id: 'homepage' })
-                  .text('Home')
-                  .prepend(tinyLib.icon('fas fa-home me-2')),
-              )
-              .on('click', () => {
-                openMDFile('MAIN', true);
-                return false;
-              }),
-
-            // Discord Server
-            $('<li>', { class: 'nav-item' }).prepend(
-              $('<a>', {
-                class: 'nav-link',
-                target: '_blank',
-                href: `https://discord.gg/${storyCfg.discordInvite}`,
-                id: 'discord-server',
-              })
-                .text('Discord')
-                .prepend(tinyLib.icon('fab fa-discord me-2')),
-            ),
-
-            // Blog
-            $('<li>', { class: 'nav-item' }).prepend(
-              $('<a>', {
-                class: 'nav-link',
-                target: '_blank',
-                href: storyCfg.blog_url,
-                id: 'blog-url',
-              })
-                .text('Blog')
-                .prepend(tinyLib.icon('fa-solid fa-rss me-2')),
-            ),
-
-            // AI
-            $('<li>', { class: 'nav-item nav-ai' })
-              .prepend(
-                $('<a>', {
-                  class: 'nav-link',
-                  href: 'javascript:void(0)',
-                  id: 'ai-access-page',
-                })
-                  .text('AI Page')
-                  .prepend(tinyLib.icon('fa-solid fa-server me-2')),
-              )
-              .on('click', () => {
-                tinyAiScript.open();
-                return false;
-              }),
-
-            $('<li>', {
-              class: 'nav-item dropdown',
-              id: 'information-menu',
-            }).prepend(
-              $('<a>', {
-                class: 'nav-link dropdown-toggle',
-                href: '#',
-                role: 'button',
-                'data-bs-toggle': 'dropdown',
-                'aria-expanded': 'false',
-              }).text('Information'),
-
-              $('<ul>', { class: 'dropdown-menu' }).append(tipsPages),
-            ),
-
-            // Donations Button
-            $('<li>', {
-              class: 'nav-item dropdown',
-              id: 'donations-menu',
-            }).prepend(
-              $('<a>', {
-                class: 'nav-link dropdown-toggle',
-                href: '#',
-                role: 'button',
-                'data-bs-toggle': 'dropdown',
-                'aria-expanded': 'false',
-              }).text('Donations'),
-
-              $('<ul>', { class: 'dropdown-menu' }).append(donationsItems),
-            ),
-
-            $('<li>', {
-              class: 'nav-item dropdown',
-              id: 'donations-menu',
-            }).prepend(
-              $('<a>', {
-                class: 'nav-link dropdown-toggle',
-                href: '#',
-                role: 'button',
-                'data-bs-toggle': 'dropdown',
-                'aria-expanded': 'false',
-              }).text('Characters'),
-
-              $('<ul>', { class: 'dropdown-menu' }).append(charactersItems),
-            ),
-          ),
-
-          // Nav 2
-          $('<ul>', {
-            class: 'nav navbar-nav ms-auto mb-2 mb-lg-0 small',
-            id: 'fic-nav',
-          }).append(
-            // Status Place
-            $('<li>', { id: 'status' }).css('display', 'contents'),
-
-            // Chapter Name
-            $('<li>', { id: 'fic-chapter', class: 'nav-item nav-link' }),
-
-            // Login
-            aiLogin.base,
-            metaLogin.base,
-
-            // Read Fic
-            $('<li>', {
-              class: 'nav-item font-weight-bold',
+          // Discord Server
+          $('<li>', { class: 'nav-item' }).prepend(
+            $('<a>', {
+              class: 'nav-link',
+              target: '_blank',
+              href: `https://discord.gg/${storyCfg.discordInvite}`,
+              id: 'discord-server',
             })
-              .prepend(
-                $('<a>', {
-                  id: 'fic-start',
-                  class: 'nav-link',
-                  href: '/?path=read-fic',
-                })
-                  .text('Read Fic')
-                  .append(isNewValue)
-                  .prepend(tinyLib.icon('fab fa-readme me-2')),
-              )
-              .on('click', () => {
-                $('#top_page').addClass('d-none');
-                openChapterMenu();
-                return false;
-              }),
+              .text('Discord')
+              .prepend(tinyLib.icon('fab fa-discord me-2')),
           ),
+
+          // Blog
+          $('<li>', { class: 'nav-item' }).prepend(
+            $('<a>', {
+              class: 'nav-link',
+              target: '_blank',
+              href: storyCfg.blog_url,
+              id: 'blog-url',
+            })
+              .text('Blog')
+              .prepend(tinyLib.icon('fa-solid fa-rss me-2')),
+          ),
+
+          // AI
+          $('<li>', { class: 'nav-item nav-ai' })
+            .prepend(
+              $('<a>', {
+                class: 'nav-link',
+                href: '/?path=ai',
+                id: 'ai-access-page',
+              })
+                .text('AI Page')
+                .prepend(tinyLib.icon('fa-solid fa-server me-2')),
+            )
+            .on('click', () => {
+              tinyAiScript.open();
+              return false;
+            }),
+
+          newItem.dropdowns.information,
+          newItem.dropdowns.donations,
+          newItem.dropdowns.characters,
+        ];
+        newItem.right = [
+          // Status Place
+          $('<span>', { id: 'status' }),
+
+          // Chapter Name
+          $('<li>', { id: 'fic-chapter', class: 'nav-item nav-link' }),
+
+          // Login
+          aiLogin.base,
+          metaLogin.base,
+
+          // Read Fic
+          $('<li>', {
+            class: 'nav-item font-weight-bold',
+          })
+            .prepend(
+              $('<a>', {
+                id: 'fic-start',
+                class: 'nav-link',
+                href: '/?path=read-fic',
+              })
+                .text('Read Fic')
+                .append(isNewValue)
+                .prepend(tinyLib.icon('fab fa-readme me-2')),
+            )
+            .on('click', () => {
+              $('#top_page').addClass('d-none');
+              openChapterMenu();
+              return false;
+            }),
         ];
 
         aiLogin.button.tooltip();
         metaLogin.button.tooltip();
         return newItem;
       };
+
+      const navbarData = navbarItems();
 
       // Insert Navbar
       $('body').prepend(
@@ -1405,17 +1322,60 @@ $(() => {
             return false;
           }),
 
-          // Collapse
-          tinyLib.bs.navbar.collapse('mdMenu', navbarItems()),
+          // Offcanvas button
+          tinyLib.bs
+            .button({
+              dsBtn: true,
+              class: 'navbar-toggler',
+              toggle: 'offcanvas',
+              target: '#offcanvasNavbar',
+            })
+            .append($('<span>', { class: 'navbar-toggler-icon' })),
 
-          // OffCanvas
-          tinyLib.bs.offcanvas(
-            'end d-lg-none',
-            'offcanvasNavbar',
-            storyCfg.title /* , navbarItems() */,
-          ),
+          // Collapse
+          tinyLib.bs.navbar.collapse('left', 'small mdMenu', null, navbarData.left),
+          tinyLib.bs.navbar.collapse('right', 'small mdMenu', 'fic-nav', navbarData.right),
         ),
       );
+
+      // Dropdown
+      const addDropdown = (valueName) => {
+        const dataList = navbarData.dbBase[valueName];
+        const tinyHtml = navbarData.dropdowns[valueName];
+        tinyLib.bs.dropdownClick(tinyHtml, dataList, (li, element, item) => {
+          // Create Dropdown
+          const aItem = $('<a>', { class: 'dropdown-item', id: item.id, href: item.href });
+          li.append(aItem);
+
+          // Add text
+          aItem.text(item.text);
+          if (item.icon) aItem.prepend(tinyLib.icon(`${item.icon} me-2`));
+
+          // File
+          if (typeof item.file === 'string') {
+            aItem.attr('href', 'javascript:void(0)');
+            aItem.attr('file', item.file);
+          }
+
+          // Target
+          if (item.href && item.href !== 'javascript:void(0)') aItem.attr('target', '_blank');
+
+          // Is web3
+          if (item.web3Element) li.addClass('web3-element');
+
+          // Click
+          if (typeof item.file === 'string')
+            li.on('click', function () {
+              openMDFile(aItem.attr('file'));
+            });
+          if (item.click) li.on('click', item.click);
+          li.on('click', () => element.hide());
+        });
+      };
+
+      addDropdown('donations');
+      addDropdown('information');
+      addDropdown('characters');
 
       // Insert Readme
       $('#app').append(tinyLib.bs.container('markdown-read'));

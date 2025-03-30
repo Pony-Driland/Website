@@ -24,10 +24,24 @@ body:not(.browser-with-web3) .web3-element {
 }
 
 /* Navbar Top */
+.tiny-navabar-style .navbar-nav-left, .tiny-navabar-style .navbar-nav-right {
+  white-space: nowrap;
+  overflow-x: auto;
+  flex-grow: 1;
+}
 
-#mdMenu {
-  /* height: 105px; */
-  margin: 0px 70px;
+.tiny-navabar-style {
+  white-space: nowrap;
+}
+
+.tiny-navabar-style .navbar-collapse {
+  padding-top: 9px;
+  padding-bottom: 10px;
+}
+
+.tiny-navabar-style .navbar-toggler {
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .mastodon-tag-copy {
@@ -95,45 +109,44 @@ body:not(.browser-with-web3) .web3-element {
 
 /* Fic Mod */
 
-.ficMode #mdMenu #donations-menu,
-.ficMode #mdMenu #discord-server,
-.ficMode #mdMenu #license,
-.ficMode #mdMenu #derpibooru-page,
-.ficMode #mdMenu #blog-url {
+.ficMode .mdMenu #donations-menu,
+.ficMode .mdMenu #discord-server,
+.ficMode .mdMenu #license,
+.ficMode .mdMenu #derpibooru-page,
+.ficMode .mdMenu #blog-url {
   display: none !important;
 }
 
-/* Music Player */
-
-#music-player > a {
-  margin: 0px 3px;
-  padding: 8px;
-  display: inline-block;
+/* Status Icons */
+#fic-nav #status {
+  display: flex;
+  align-items: center;
 }
 
-#music-player > a.disabled {
-  opacity: 0.7 !important;
-  pointer-events: none !important;
+#fic-nav #status #weather,
+#fic-nav #status #bookmark,
+#fic-nav #status #dayNightCycle {
+  font-size: 13pt;
+  margin-top: -5px;
+  position: relative;
+  top: 3px;
 }
 
-.disabled-player {
-  display: none !important;
-}
-
-/* TTS Player */
-
+#music-player > a,
 #tts-player > a {
-  margin: 0px 3px;
-  padding: 8px;
+  margin: 1px 4px;
+  padding: 5px;
   display: inline-block;
 }
 
+#music-player > a.disabled,
 #tts-player > a.disabled {
   opacity: 0.7 !important;
   pointer-events: none !important;
 }
 
-.tts-player {
+.tts-player,
+.disabled-player {
   display: none !important;
 }
 
@@ -689,4 +702,18 @@ body.is-using-ai #app {
 
 #ai-chatbox .ai-chat-data .alert .btn-close {
   filter: var(--bs-btn-close-white-filter) !important;
+}
+
+/* Dropdown */
+.tippy-content {
+  padding: 0px;
+}
+
+.tippy-box {
+  background-color: transparent;
+  border: 0;
+}
+
+.tippy-content > .dropdown-menu {
+  position: inherit;
 }

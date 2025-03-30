@@ -1192,7 +1192,8 @@ class TinyAiApi extends EventEmitter {
       if (typeof data === 'string' && typeof mime === 'string') {
         this.history[selectedId].file = {
           mime,
-          data: !isBase64 ? Base64.encode(data) : data,
+          data,
+          base64: !isBase64 ? Base64.encode(data) : data,
         };
         hash = objHash(this.history[selectedId].file);
         this.history[selectedId].hash.file = hash;

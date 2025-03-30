@@ -6,6 +6,7 @@ import { mkdir } from 'fs/promises';
 const cssFiles = [
   '@cryptofonts/cryptofont/cryptofont.min.css',
   '@fortawesome/fontawesome-free/css/all.min.css',
+  'tippy.js/dist/tippy.css',
   'bootstrap/dist/css/bootstrap.min.css',
   'photoswipe/dist/photoswipe.css',
 ];
