@@ -267,6 +267,7 @@ const AiScriptStart = () => {
     if (tinyAiScript.isEnabled()) {
       // Get RPG Template
       const rpgData = {
+        schemaHash: null,
         allowAiUse: { public: false, private: false },
         setAllowAiUse: (value, type) => {
           if (typeof rpgData.allowAiUse[type] === 'boolean')
@@ -285,9 +286,13 @@ const AiScriptStart = () => {
         },
         init: (forceRestart = false) =>
           new Promise((resolve, reject) => {
+            const customSchema = tinyAi.getCustomValue('schema');
+            const schemaHash = tinyAi.getHash('schema');
             // Get template
             rpgData.template = {
-              schema: aiTemplates.funcs.jsonTemplate(),
+              schema: objType(customSchema, 'object')
+                ? customSchema
+                : aiTemplates.funcs.jsonTemplate(),
               // Seed the form with a starting value
               startval: {},
               // Disable additional properties
@@ -341,7 +346,7 @@ const AiScriptStart = () => {
                 const funcExecStart = () => executeTinyStart(true);
 
                 // Start json data
-                if (forceRestart || !rpgData.data[where]) {
+                if (rpgData.schemaHash !== schemaHash || !rpgData.data[where] || forceRestart) {
                   // Remove Old
                   if (rpgData.data[where]) rpgData.data[where].destroy();
                   // Insert template
@@ -370,7 +375,10 @@ const AiScriptStart = () => {
               if (!failed) {
                 rpgData.ready[where] = true;
                 amountStarted++;
-                if (amountStarted >= 2) resolve(loadData);
+                if (amountStarted >= 2) {
+                  rpgData.schemaHash = schemaHash;
+                  resolve(loadData);
+                }
               }
             };
 
