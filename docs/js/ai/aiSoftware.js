@@ -1829,7 +1829,7 @@ const AiScriptStart = () => {
                 {
                   inlineData: {
                     mime_type: history.file.mime,
-                    data: history.file.data,
+                    data: history.file.base64,
                   },
                 },
               ],

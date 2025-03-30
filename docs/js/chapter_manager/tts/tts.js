@@ -39,7 +39,7 @@ const ttsManager = {
 
   // Start tts base
   startBase: function () {
-    if ($('#fic-nav > #status #tts').length < 1) {
+    if ($('#fic-nav > ul > #status #tts').length < 1) {
       // Buttons
       if (!storyData.tts.nav) {
         storyData.tts.nav = {};
@@ -77,7 +77,7 @@ const ttsManager = {
       );
 
       // Insert
-      $('#fic-nav > #status').prepend([
+      $('#fic-nav > ul > #status').prepend([
         // TTS
         storyData.chapter.nav.tts,
       ]);

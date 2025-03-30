@@ -505,8 +505,11 @@ tinyLib.bs.button = (className = 'primary', tag = 'button', isButton = true) => 
       : objType(className, 'object') && typeof className.class === 'string'
         ? className.class
         : null;
+  const introClass = typeof className === 'string' || !className.dsBtn ? 'btn btn-' : '';
+
   return $(`<${tag}>`, {
-    class: `btn btn-${buttonClass}`,
+    id: objType(className, 'object') && typeof className.id === 'string' ? className.id : null,
+    class: `${introClass}${buttonClass}`,
     role: isButton && (!objType(className, 'object') || !className.toggle) ? 'button' : null,
     type: isButton ? 'button' : null,
     'data-bs-toggle':
@@ -532,31 +535,26 @@ tinyLib.bs.closeButton = (dataDismiss = null) =>
 tinyLib.bs.navbar = {};
 tinyLib.bs.navbar.root = (id, theme = 'dark', isFixed = false) =>
   $('<nav>', {
-    class: `navbar navbar-expand-lg navbar-${theme} bg-${theme}${isFixed ? ' fixed-top' : ''} px-lg-3`,
+    class: `navbar navbar-expand-lg navbar-${theme} bg-${theme}${isFixed ? ' fixed-top' : ''} px-4 py-0 tiny-navabar-style`,
     id,
   });
 
 tinyLib.bs.navbar.title = (text, href) =>
   $('<a>', {
-    class: 'navbar-brand d-block d-lg-none ms-3',
+    class: 'navbar-brand',
     href,
     text,
   });
 
-tinyLib.bs.navbar.collapse = (id, content) => [
-  $('<button>', {
-    class: 'navbar-toggler me-4',
-    type: 'button',
-    'data-bs-toggle': 'collapse',
-    'data-bs-target': `#${id}`,
-  }).append($('<span>', { class: 'navbar-toggler-icon' })),
-
-  // Collapse
+tinyLib.bs.navbar.collapse = (dir, className, id, content) =>
   $('<div>', {
-    class: 'collapse navbar-collapse',
+    class: `collapse navbar-collapse navbar-nav-${dir}${className ? ` ${className}` : ''}`,
     id,
-  }).append(content),
-];
+  }).append(
+    $('<ul>', {
+      class: `navbar-nav ${dir === 'left' ? 'me' : dir === 'right' ? 'ms' : ''}-auto mb-2 mb-lg-0`,
+    }).append(content),
+  );
 
 // Offcanvas
 tinyLib.bs.offcanvas = (
@@ -603,4 +601,26 @@ tinyLib.bs.alert = (type = 'primary', content = null, isDismissible = false) => 
   result.append(content);
   if (isDismissible) result.append(tinyLib.bs.closeButton('alert'));
   return result;
+};
+
+// Dropdown
+tinyLib.bs.dropdownClick = (place, data, callbackInsert) => {
+  const rootBase = $('<ul>', { class: 'dropdown-menu show' });
+  const element = tippy(place.get(0), {
+    content: rootBase.get(0),
+    allowHTML: true,
+    interactive: true,
+    arrow: false,
+    theme: 'dark-border',
+    placement: 'bottom-start',
+    trigger: 'click',
+    hideOnClick: true,
+    appendTo: () => $('body > #root').get(0),
+  });
+
+  for (const index in data) {
+    const li = $('<li>');
+    rootBase.append(li);
+    callbackInsert(li, element, data[index], index);
+  }
 };
