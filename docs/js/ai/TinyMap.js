@@ -347,7 +347,6 @@ class TinyMap {
           .css('cursor', 'pointer')
           .data('tinyLocation', this.locations[item2])
           .on('click', function () {
-            console.log('Tiny location time!');
             // Prepare Click
             const tinyLocation = $(this).data('tinyLocation');
 
