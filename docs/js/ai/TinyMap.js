@@ -558,7 +558,6 @@ class TinyMap {
     // The table
     if (resetHtml) this.html.table = $('<table>', { class: 'table table-bordered' });
     this.updateMapSize();
-    this.updateMapImage();
 
     // Insert map table into map element
     this.buildMapGrid();
