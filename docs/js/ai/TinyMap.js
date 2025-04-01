@@ -1,4 +1,28 @@
+/*
+ * TinyMap - A lightweight map generator and handler
+ *
+ * Author: JasminDreasond
+ * Description: This script is an adaptation of an older version used in an RPG page of the application called MyOC Page.
+ *
+ * This class provides functionalities to build and manage a grid-based map, allowing for the placement of locations and routes dynamically.
+ * The map can be updated in real-time, and interactions such as tooltips and click events enhance the user experience.
+ *
+ * Features:
+ * - Dynamic map creation using a grid system
+ * - Supports customizable tile sizes and map dimensions
+ * - Allows adding locations and routes with colors, names, and tooltips
+ * - Interactive elements for displaying additional information
+ * - Easy integration with RPG systems and other applications
+ *
+ * Documentation created by: ChatGPT (OpenAI)
+ */
+
 class TinyMap {
+  /**
+   * Creates a new TinyMap instance.
+   * @param {Object} map - The map configuration containing size, tile dimensions, image, colors, locations, and routes.
+   * @param {boolean} [firstBuild=true] - Determines if the map should be built immediately.
+   */
   constructor(map, firstBuild = true) {
     // Data
     this.map = map;
@@ -7,7 +31,6 @@ class TinyMap {
     this._isSubPage = false;
 
     // Design
-    this.image = typeof this.map.image === 'string' ? this.map.image : '';
     this.defaultColor = typeof this.map.defaultColor === 'string' ? this.map.defaultColor : '';
 
     // Size
@@ -21,9 +44,15 @@ class TinyMap {
 
     // First build
     if (firstBuild) this.buildMap(true);
+    this.setMapImage(this.map.image);
   }
 
-  // Validate Size
+  /**
+   * Validates the size and tile dimensions of the map.
+   * Ensures that all size and tile values are numbers and finite.
+   *
+   * @returns {boolean} - True if size and tile dimensions are valid, false otherwise.
+   */
   sizeIsValidated() {
     return (
       !Number.isNaN(this.size[0]) &&
@@ -37,7 +66,15 @@ class TinyMap {
     );
   }
 
-  // Set grid
+  /**
+   * Calculates and sets the grid dimensions based on the map size and tile size.
+   * The grid represents how many tiles fit within the map's dimensions.
+   *
+   * - `grid.height`: Number of tiles that fit in the vertical axis.
+   * - `grid.width`: Number of tiles that fit in the horizontal axis.
+   *
+   * This method ensures that the grid values are rounded to the nearest whole number.
+   */
   _setGrid() {
     this.grid = {
       height: Math.round(this.size[1] / this.tile[1]),
@@ -45,13 +82,31 @@ class TinyMap {
     };
   }
 
-  // Set map name
+  /**
+   * Sets the name of the map and updates the corresponding UI element if available.
+   *
+   * @param {string} name - The new name of the map.
+   *
+   * This method updates the `name` property of the map and, if the `mapButton`
+   * element exists in `this.html`, it updates its text content to reflect the new name.
+   */
   setMapName(name) {
     this.name = name;
     if (this.html.mapButton) this.html.mapButton.text(name);
   }
 
-  // Set size
+  /**
+   * Sets the size of the map and optionally updates the grid.
+   *
+   * @param {Array} size - An array containing the new width and height of the map.
+   * @param {boolean} [setGrid=true] - A flag indicating whether to update the grid after setting the size.
+   *
+   * This method updates the `size` property of the map, ensuring the values are converted to numbers
+   * and are within the allowed limits. It then calls the `_setGrid` method to adjust the grid based on
+   * the new size unless the `setGrid` parameter is set to `false`.
+   *
+   * The width of the map is limited to the `_limitSize` value to prevent the map from exceeding a maximum size.
+   */
   setSize(size = [], setGrid = true) {
     // Size
     this.size = size;
@@ -71,7 +126,18 @@ class TinyMap {
     if (setGrid) return this._setGrid();
   }
 
-  // Set tile
+  /**
+   * Sets the tile size of the map and optionally updates the grid.
+   *
+   * @param {Array} tile - An array containing the new width and height for each tile.
+   * @param {boolean} [setGrid=true] - A flag indicating whether to update the grid after setting the tile size.
+   *
+   * This method updates the `tile` property of the map, ensuring the values are converted to numbers
+   * and are within the allowed limits. It then calls the `_setGrid` method to adjust the grid based on
+   * the new tile size unless the `setGrid` parameter is set to `false`.
+   *
+   * The height of each tile is limited to the `_limitSize` value to prevent the tile from exceeding a maximum size.
+   */
   setTile(tile = [], setGrid = true) {
     // Tile
     this.tile = tile;
@@ -91,11 +157,30 @@ class TinyMap {
     if (setGrid) return this._setGrid();
   }
 
-  // Empty function in map html
+  /**
+   * Clears the content of the map's HTML table element.
+   *
+   * This method empties the HTML table associated with the map by calling the `empty()` method on the
+   * `html.table` element. This is typically used to remove any existing content from the map before
+   * redrawing or reinitializing it.
+   */
   emptyMap() {
     this.html.table.empty();
   }
 
+  /**
+   * Creates a table cell (`<td>`) element for the grid with optional coordinates, size, background color, and text.
+   *
+   * This function generates a table cell (`<td>`) element that can be used as part of the grid layout. The created
+   * cell has optional coordinates, a specified height and width, an optional background color, and optional text content.
+   *
+   * @param {number} [cw=0] - The column width, used to set the cell's coordinates (optional).
+   * @param {number} [ch=0] - The row height, used to set the cell's coordinates (optional).
+   * @param {string|null} [text=null] - The text content to be displayed inside the cell (optional).
+   * @param {string|null} [color=null] - The background color of the cell (optional).
+   *
+   * @returns {jQuery} - A jQuery object representing the table cell (`<td>`) element.
+   */
   _buildGridTemplate(cw = 0, ch = 0, text = null, color = null) {
     return $('<td>', {
       class: 'p-0 m-0',
@@ -110,7 +195,18 @@ class TinyMap {
       .text(text);
   }
 
-  // Map Html
+  /**
+   * Builds the grid for the map by generating a table structure with cells.
+   *
+   * This function creates a grid layout by generating HTML table rows (`<tr>`) and cells (`<td>`) dynamically.
+   * The grid dimensions are determined based on the `this.grid.height` and `this.grid.width` values.
+   * It also utilizes `_buildGridTemplate()` to build individual table cells with optional coordinates and styling.
+   *
+   * The generated grid will be appended to the `this.html.table` element, and an array of grid elements is stored
+   * in `this.html.grid`.
+   *
+   * @returns {void}
+   */
   buildMapGrid() {
     // Prepare Table
     this.html.grid = [];
@@ -171,6 +267,16 @@ class TinyMap {
     }
   }
 
+  /**
+   * Updates the grid content by generating and applying routes and locations to the map grid.
+   *
+   * This function performs two main tasks:
+   * 1. It updates the grid cells with route information, including tooltips, route number, and styling (background color, font color).
+   * 2. It updates the grid cells with location information, including tooltips, location names, mini names, and styling.
+   * Additionally, it sets up click events on the location cells to trigger modal dialogs with location details and item shops.
+   *
+   * @returns {void}
+   */
   updateGridContent() {
     // Routes Generator
     const tinyThis = this;
@@ -345,6 +451,15 @@ class TinyMap {
     }
   }
 
+  /**
+   * Updates the size of the map by adjusting the dimensions of the map's table element.
+   *
+   * This function modifies the `width` and `height` of the `html.table` element based on:
+   * - The map's overall size (`this.size[0]` for width, `this.size[1]` for height).
+   * - The size of the individual tiles (`this.tile[0]` for tile width, `this.tile[1]` for tile height).
+   *
+   * @returns {void}
+   */
   updateMapSize() {
     this.html.table.css({
       width: this.size[0] + this.tile[0],
@@ -352,13 +467,40 @@ class TinyMap {
     });
   }
 
-  updateMapImage() {
+  /**
+   * Sets the background image for the map and updates the table's background style.
+   *
+   * This function checks if the provided image URL (`imgUrl`) is a valid data URL (i.e., it starts with `data:`).
+   * If it is, it sets the `this.image` property to that URL. The function then updates the background style
+   * of `this.html.table` with the new image URL, and adjusts the background size to fit the map size.
+   *
+   * @param {string} imgUrl - The URL of the image to be set as the map background. It must be a valid string and
+   *                          should start with 'data:' for data URLs.
+   *
+   * @returns {void}
+   */
+  setMapImage(imgUrl) {
+    this.image = typeof imgUrl === 'string' && imgUrl.startsWith('data:') ? imgUrl : '';
     this.html.table.css({
       background: this.image ? 'transparent url("' + this.image + '") no-repeat right bottom' : '',
       'background-size': this.image ? this.size[0] + 'px ' + Number(this.size[1] - 2) + 'px' : '',
     });
   }
 
+  /**
+   * Builds a new page structure by clearing the existing content and appending new elements.
+   *
+   * This function modifies `this.html.base` to build a new page layout. It:
+   * - Clears any existing content using `.empty()`.
+   * - Optionally adds a title, if a `title` string is provided, by creating an `<h3>` element.
+   * - Appends a new `<div>` with an optional class name (`className`) and the provided `tinyHtml` content.
+   *
+   * @param {jQuery} tinyHtml - The HTML content to be appended to the page.
+   * @param {string|null} [title=null] - The title for the page, which will be wrapped in an `<h3>` tag. If not provided, no title is added.
+   * @param {string|null} [className=null] - The CSS class to be applied to the wrapping `<div>`. If not provided, no class is applied.
+   *
+   * @returns {void}
+   */
   buildPage(tinyHtml, title = null, className = null) {
     this.html.base
       .empty()
@@ -368,6 +510,18 @@ class TinyMap {
       );
   }
 
+  /**
+   * Activates or deactivates the subpage view for the map.
+   *
+   * When activated, the function updates the page with the content of `this.html.subPage.html` and sets the title
+   * to `this.html.subPage.title`. When deactivated, the map view is restored and resized based on the current table
+   * dimensions, minus the tile size, with the class `table-responsive` applied.
+   *
+   * @param {boolean} [active=true] - Whether to activate or deactivate the subpage view.
+   *                                  If `true`, the subpage content is shown. If `false`, the map view is restored.
+   *
+   * @returns {void}
+   */
   activeSubPage(active = true) {
     this._isSubPage = active;
     if (!active)
@@ -381,6 +535,21 @@ class TinyMap {
     else this.buildPage(this.html.subPage.html, this.html.subPage.title);
   }
 
+  /**
+   * Builds or resets the map view.
+   *
+   * If `resetHtml` is `true`, the HTML elements are recreated from scratch, including the base container,
+   * table, and map button. The map grid is rebuilt and the map's size and image are updated accordingly.
+   * The subpage view is also deactivated.
+   *
+   * When `resetHtml` is `false`, the function updates the existing map view without altering the HTML structure.
+   * The map button toggles the visibility of the map and subpage content based on the current state of the subpage.
+   *
+   * @param {boolean} [resetHtml=false] - Whether to reset the HTML structure and start from scratch. If `true`,
+   *                                      the HTML elements for the map are recreated.
+   *
+   * @returns {void}
+   */
   buildMap(resetHtml = false) {
     // The map
     const tinyThis = this;
@@ -414,14 +583,29 @@ class TinyMap {
     this.activeSubPage(false);
   }
 
+  /**
+   * Gets the map button element.
+   *
+   * @returns {jQuery} The map button element.
+   */
   getMapButton() {
     return this.html.mapButton;
   }
 
+  /**
+   * Gets the map table HTML element.
+   *
+   * @returns {jQuery} The table element representing the map.
+   */
   getMapHtml() {
     return this.html.table;
   }
 
+  /**
+   * Gets the base HTML element for the map container.
+   *
+   * @returns {jQuery} The base container element for the map.
+   */
   getMapBaseHtml() {
     return this.html.base;
   }
