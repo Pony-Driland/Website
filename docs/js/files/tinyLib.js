@@ -22,18 +22,18 @@ const enableQuery = function () {
     });
   };
 
-  $.fn.tooltip = function (type, configObject) {
+  $.fn.tooltip = function (type, configObject, returnTooltip = false) {
+    let tooltip = null;
     this.each(function () {
       if (!$(this).data('bs-tooltip')) {
-        if (configObject) {
-          $(this).data('bs-tooltip', new bootstrap.Tooltip(this, configObject));
-        } else if (typeof type !== 'string') {
-          $(this).data('bs-tooltip', new bootstrap.Tooltip(this, type));
-        } else {
-          $(this).data('bs-tooltip', new bootstrap.Tooltip(this));
-        }
+        if (objType(configObject, 'object')) tooltip = new bootstrap.Tooltip(this, configObject);
+        else if (typeof type !== 'string') tooltip = new bootstrap.Tooltip(this, type);
+        else tooltip = new bootstrap.Tooltip(this);
+        $(this).data('bs-tooltip', tooltip);
       }
     });
+    if (!returnTooltip) tooltip = null;
+    return tooltip || this;
   };
 };
 
@@ -168,6 +168,7 @@ tinyLib.modal = function (data) {
 
   $('body').prepend(modal);
   modal.modal();
+  return modal;
 };
 
 tinyLib.formGroup = function (data) {

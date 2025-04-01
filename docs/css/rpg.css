@@ -76,19 +76,20 @@
 }
 
 /* Map */
-#ai-element-root [id^="map_"] table tr,
-#ai-element-root [id^="map_"] table td {
+#tinyMaps table tr,
+#tinyMaps table td {
     overflow: hidden;
 }
 
-#ai-element-root [id^="map_"] table tr {
+#tinyMaps table tr {
     vertical-align: middle;
 }
 
-#ai-element-root [id^="map_"] table td {
+#tinyMaps table td {
     border-width: 1px;
+    text-align: center;
 }
 
-#ai-element-root [id^="map_"] table {
+#tinyMaps table {
     table-layout: fixed;
 }

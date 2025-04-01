@@ -332,9 +332,6 @@ const AiScriptStart = () => {
                   rpgEditor.setValue(rpgData.filter(loadData[where]));
                   rpgEditor.validate();
 
-                  // Load map
-                  // chatbox.maps.generator(where);
-
                   // Change events
                   if (!ficConfigs.selected) rpgEditor.disable();
                   if (isFirstTime) {
@@ -1419,7 +1416,65 @@ const AiScriptStart = () => {
                 toggle: 'offcanvas',
                 target: '#rpg_ai_base_2',
               }),
-              createButtonSidebar('fa-solid fa-map', 'Classic Map', null, true),
+              createButtonSidebar('fa-solid fa-map', 'Classic Map', () => {
+                const startTinyMap = function (place) {
+                  // Get Map Data
+                  let maps;
+                  try {
+                    maps = rpgData.data[place].getEditor('root.settings.maps').getValue();
+                  } catch (e) {
+                    maps = null;
+                  }
+
+                  // Exist Map
+                  tinyHtml.empty();
+                  try {
+                    if (Array.isArray(maps)) {
+                      for (const index in maps) {
+                        const map = new TinyMap(maps[index]);
+                        tinyHtml.append(
+                          map.getMapBaseHtml(),
+                          $('<center>').append(map.getMapButton()),
+                        );
+                      }
+                    }
+                  } catch (e) {
+                    // No Map
+                    console.error(e);
+                    tinyHtml.empty();
+                  }
+                };
+
+                const tinyHtml = $('<span>');
+                const tinyHr = $('<hr>', { class: 'my-5 d-none' });
+                const modal = tinyLib.modal({
+                  title: 'Maps',
+                  dialog: 'modal-lg',
+                  id: 'tinyMaps',
+                  body: [
+                    tinyHtml,
+                    tinyHr,
+                    $('<center>').append(
+                      // Public Maps
+                      tinyLib.bs
+                        .button('secondary m-2')
+                        .text('Public')
+                        .on('click', () => {
+                          tinyHr.removeClass('d-none');
+                          startTinyMap('public');
+                        }),
+                      // Private Maps
+                      tinyLib.bs
+                        .button('secondary m-2')
+                        .text('Private')
+                        .on('click', () => {
+                          tinyHr.removeClass('d-none');
+                          startTinyMap('private');
+                        }),
+                    ),
+                  ],
+                });
+              }),
 
               // Import
               $('<h5>').text('Data'),
