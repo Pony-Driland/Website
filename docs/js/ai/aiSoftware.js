@@ -306,6 +306,10 @@ const AiScriptStart = () => {
       return data;
     };
 
+    // Separator
+    selector.append($('<option>').prop('disabled', true).text('--------------------'));
+    selector.append($('<option>').prop('disabled', true).text('AI Models'));
+
     // Google AI
     selector.append($('<option>', { value: 'google-generative' }).text('Google Studio'));
     tinyAiHtml['google-generative'] = {};
@@ -351,8 +355,12 @@ const AiScriptStart = () => {
       return data;
     };
 
+    // Separator
+    selector.append($('<option>').prop('disabled', true).text('--------------------'));
+    selector.append($('<option>').prop('disabled', true).text('Clients'));
+
     // Tiny chat
-    selector.append($('<option>', { value: 'tiny-chat' }).text('Multiplayer Client'));
+    selector.append($('<option>', { value: 'tiny-chat' }).text('Multiplayer'));
     tinyAiHtml['tiny-chat'] = {};
     const tinyChat = tinyAiHtml['tiny-chat'];
     tinyChat.inputs = () => {
