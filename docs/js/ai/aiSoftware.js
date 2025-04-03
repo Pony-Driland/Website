@@ -276,6 +276,36 @@ const AiScriptStart = () => {
           }),
       );
 
+    // No AI
+    selector.append($('<option>', { value: 'no-ai' }).text('No AI'));
+    tinyAiHtml['no-ai'] = {};
+    const noAi = tinyAiHtml['no-ai'];
+    noAi.inputs = () => {
+      const data = { input: [] };
+      data.input.push(hostButton(data.input, 0));
+      data.input.push(insertServerAbout());
+      const values = tinyStorage.getApiKey('no-ai') || {};
+      const ids = insertServerLogin(data.input, values);
+      data.input[0].find('> button').trigger('click');
+
+      data.desc = $('<p>').text(
+        'No AI will be used in this mode. You will only have access to the simple features.',
+      );
+
+      data.submit = tinyLib.bs
+        .button('info mx-4 mt-4')
+        .text('Set Settings')
+        .on('click', () => {
+          const result = insertSaveServerLogin(data.input, ids);
+          tinyStorage.setApiKey('no-ai', result);
+          tinyAiScript.checkTitle();
+          $('#ai_connection').modal('hide');
+        })
+        .prop('disabled', appData.ai.using);
+
+      return data;
+    };
+
     // Google AI
     selector.append($('<option>', { value: 'google-generative' }).text('Google Studio'));
     tinyAiHtml['google-generative'] = {};
@@ -313,36 +343,6 @@ const AiScriptStart = () => {
           const result = insertSaveServerLogin(data.input, ids);
           result.key = data.input[0].val();
           tinyStorage.setApiKey('google-generative', result);
-          tinyAiScript.checkTitle();
-          $('#ai_connection').modal('hide');
-        })
-        .prop('disabled', appData.ai.using);
-
-      return data;
-    };
-
-    // No AI
-    selector.append($('<option>', { value: 'no-ai' }).text('No AI'));
-    tinyAiHtml['no-ai'] = {};
-    const noAi = tinyAiHtml['no-ai'];
-    noAi.inputs = () => {
-      const data = { input: [] };
-      data.input.push(hostButton(data.input, 0));
-      data.input.push(insertServerAbout());
-      const values = tinyStorage.getApiKey('no-ai') || {};
-      const ids = insertServerLogin(data.input, values);
-      data.input[0].find('> button').trigger('click');
-
-      data.desc = $('<p>').text(
-        'No AI will be used in this mode. You will only have access to the simple features.',
-      );
-
-      data.submit = tinyLib.bs
-        .button('info mx-4 mt-4')
-        .text('Set Settings')
-        .on('click', () => {
-          const result = insertSaveServerLogin(data.input, ids);
-          tinyStorage.setApiKey('no-ai', result);
           tinyAiScript.checkTitle();
           $('#ai_connection').modal('hide');
         })
