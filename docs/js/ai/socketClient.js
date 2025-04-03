@@ -196,7 +196,7 @@ class TinyClientIo {
   // Login account
   login() {
     return this.#socketEmitApi('login', {
-      username: this.#cfg.username,
+      userId: this.#cfg.username,
       password: this.#cfg.password,
     });
   }
