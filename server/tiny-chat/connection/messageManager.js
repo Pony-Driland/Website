@@ -10,7 +10,7 @@ import {
 } from './values';
 
 export default function messageManager(socket, io) {
-  socket.on('send-message', (data, fn) => {
+  socket.on('send-message', async (data, fn) => {
     const { message, roomId } = data;
     // Validate values
     if (typeof message !== 'string' || message.trim() === '' || typeof roomId !== 'string')
@@ -33,7 +33,7 @@ export default function messageManager(socket, io) {
     }
 
     // Check if the room exist
-    const room = rooms.get(roomId);
+    const room = await rooms.get(roomId);
     const history = roomHistories.get(roomId);
     if (!room || !history) return fn({ error: true, msg: 'Room not found.', code: 2 });
 
@@ -42,7 +42,7 @@ export default function messageManager(socket, io) {
     room.set(roomId, room);
 
     // Get message
-    const msg = history.get(msgIndex);
+    const msg = await history.get(msgIndex);
     if (msg)
       return fn({
         error: true,
@@ -57,7 +57,7 @@ export default function messageManager(socket, io) {
     });
 
     const msgDate = Date.now();
-    history.set(msgIndex, { userId, text: message, date: msgDate, edited: 0 });
+    await history.set(msgIndex, { userId, text: message, date: msgDate, edited: 0 });
 
     // Emit to the room that the user joined (based on roomId)
     socket.to(roomId).emit('new-message', {
@@ -73,7 +73,7 @@ export default function messageManager(socket, io) {
     fn({ id: msgIndex, date: msgDate });
   });
 
-  socket.on('edit-message', (data, fn) => {
+  socket.on('edit-message', async (data, fn) => {
     const { roomId, messageId, newText } = data;
     // Validate values
     if (typeof newText !== 'string' || typeof roomId !== 'string' || messageId !== 'string')
@@ -86,7 +86,7 @@ export default function messageManager(socket, io) {
 
     // Get room
     const history = roomHistories.get(roomId);
-    const room = rooms.get(roomId);
+    const room = await rooms.get(roomId);
     if (!room || !history) return fn({ error: true, msg: 'Room not found.', code: 1 });
 
     // Check text size
@@ -101,7 +101,7 @@ export default function messageManager(socket, io) {
     }
 
     // Get message
-    const msg = history.get(messageId);
+    const msg = await history.get(messageId);
     if (!msg)
       return fn({
         error: true,
@@ -112,7 +112,7 @@ export default function messageManager(socket, io) {
     if (
       msg.userId !== userId &&
       userId !== getIniConfig('OWNER_ID') &&
-      !moderators.has(userId) &&
+      !(await moderators.has(userId)) &&
       room.ownerId !== userId &&
       !room.moderators.has(userId)
     )
@@ -126,7 +126,7 @@ export default function messageManager(socket, io) {
     const msgDate = Date.now();
     msg.text = newText;
     msg.edited = msgDate;
-    history.set(messageId, msg);
+    await history.set(messageId, msg);
 
     // Emit the event only to logged-in users in the room
     socket
@@ -137,7 +137,7 @@ export default function messageManager(socket, io) {
     fn({ edited: msgDate });
   });
 
-  socket.on('delete-message', (data, fn) => {
+  socket.on('delete-message', async (data, fn) => {
     const { roomId, messageId } = data;
     // Validate values
     if (typeof roomId !== 'string' || typeof messageId !== 'string')
@@ -149,12 +149,12 @@ export default function messageManager(socket, io) {
     if (userMsgIsRateLimited(socket, fn)) return;
 
     // Get room
-    const room = rooms.get(roomId);
+    const room = await rooms.get(roomId);
     const history = roomHistories.get(roomId);
     if (!room || !history) return fn({ error: true, msg: 'Room not found.', code: 1 });
 
     // Get message
-    const msg = history.get(messageId);
+    const msg = await history.get(messageId);
     if (!msg)
       return fn({
         error: true,
@@ -165,7 +165,7 @@ export default function messageManager(socket, io) {
     if (
       msg.userId !== userId &&
       userId !== getIniConfig('OWNER_ID') &&
-      !moderators.has(userId) &&
+      !(await moderators.has(userId)) &&
       room.ownerId !== userId &&
       !room.moderators.has(userId)
     )
@@ -176,7 +176,7 @@ export default function messageManager(socket, io) {
       });
 
     // Delete message
-    history.delete(messageId);
+    await history.delete(messageId);
 
     // Emit the event only to logged-in users in the room
     socket.to(roomId).emit('delete-message', { roomId, id: messageId });
