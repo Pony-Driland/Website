@@ -279,7 +279,7 @@ const AiScriptStart = () => {
         $('<div>').append(
           tinyLib.bs
             .button('secondary mb-3')
-            .text('Show host settings')
+            .text('Show host settings (Alpha)')
             .on('click', () => {
               for (const index in data.input) {
                 if (index > 1) {
