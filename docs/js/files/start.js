@@ -5,16 +5,6 @@ const appData = {
 };
 appData.emitter = new EventEmitter();
 
-// Check if CTRL + ALT + A was pressed
-$(document).on('keydown', function (event) {
-  if (event.ctrlKey && event.altKey && event.key.toLowerCase() === 'a') {
-    event.preventDefault(); // Prevent any default behavior
-    if ($('body').hasClass('detect-made-by-ai')) {
-      $('body').removeClass('detect-made-by-ai');
-    } else $('body').addClass('detect-made-by-ai');
-  }
-});
-
 // Start Document
 console.groupCollapsed('App Information');
 console.log(
