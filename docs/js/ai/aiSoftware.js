@@ -23,7 +23,10 @@ class TinyAiStorage extends EventEmitter {
   _updateExistsAi() {
     if (
       this._selected &&
-      (typeof this.storage[this._selected] !== 'string' || this.storage[this._selected].length < 1)
+      (typeof this.storage[this._selected] !== 'string' ||
+        this.storage[this._selected].length < 1) &&
+      typeof this.storage[this._selected] !== 'number' &&
+      !objType(this.storage[this._selected], 'object')
     ) {
       this._selected = null;
       localStorage.removeItem('tiny-ai-storage-selected');
@@ -33,8 +36,9 @@ class TinyAiStorage extends EventEmitter {
   setSelectedAi(value) {
     this._selected =
       typeof value === 'string' &&
-      typeof this.storage[value] === 'string' &&
-      this.storage[value].length > 0
+      ((typeof this.storage[value] === 'string' && this.storage[value].length > 0) ||
+        typeof this.storage[value] === 'number' ||
+        objType(this.storage[value], 'object'))
         ? value
         : null;
 
@@ -47,7 +51,7 @@ class TinyAiStorage extends EventEmitter {
   }
 
   setApiKey(name, key) {
-    if (typeof key === 'string') {
+    if (typeof key === 'string' || typeof key === 'number' || objType(key, 'object')) {
       this.storage[name] = key;
       this._saveApiStorage();
       this._updateExistsAi();
@@ -69,7 +73,9 @@ class TinyAiStorage extends EventEmitter {
   }
 
   getApiKey(name) {
-    return this.storage[name] || null;
+    return typeof this.storage[name] === 'string'
+      ? { key: this.storage[name] }
+      : this.storage[name] || { key: null };
   }
 }
 
@@ -86,6 +92,7 @@ const AiScriptStart = () => {
   const tinyAiScript = {};
 
   // Read AI Apis
+  const tinyIo = { client: null, socket: null, firstTime: true };
   const tinyAi = new TinyAiApi();
   const tinyStorage = new TinyAiStorage();
   let aiLogin = null;
@@ -94,6 +101,15 @@ const AiScriptStart = () => {
   };
 
   const canSandBox = (value) => value === 'sandBoxFic' || value === 'noData';
+
+  tinyAiScript.killIo = () => {
+    if (tinyIo.client) {
+      tinyIo.client.destroy();
+      tinyIo.client = null;
+      tinyIo.socket = null;
+      return true;
+    } else return false;
+  };
 
   // Detect Using AI
   appData.emitter.on('isUsingAI', (usingAI) => {
@@ -110,14 +126,27 @@ const AiScriptStart = () => {
     const selectedAi = tinyStorage.selectedAi();
 
     // Exists Google only. Then select google generative
-    if (selectedAi === 'google-generative') {
+    if (typeof selectedAi === 'string' && selectedAi.length > 0 && selectedAi !== 'NONE') {
       // Update html
       aiLogin.button.find('> i').removeClass('text-danger-emphasis');
       aiLogin.title = 'AI/RP Enabled';
       $('body').addClass('can-ai');
 
       // Update Ai API script
-      setGoogleAi(tinyAi, tinyStorage.getApiKey('google-generative'));
+      tinyAiScript.multiplayer = false;
+      tinyAiScript.server = null;
+
+      // Google Generative
+      if (selectedAi === 'google-generative')
+        setGoogleAi(tinyAi, tinyStorage.getApiKey('google-generative')?.key);
+
+      // Tiny Chat
+      if (selectedAi === 'tiny-chat') {
+        tinyAiScript.multiplayer = true;
+        tinyAiScript.server = 'socket-io';
+      }
+
+      // Enabled now
       tinyAiScript.enabled = true;
     } else {
       // Update html
@@ -131,19 +160,7 @@ const AiScriptStart = () => {
     aiLogin.updateTitle();
   };
 
-  tinyAiScript.isEnabled = () => {
-    // Get selected Ai
-    const selectedAi = tinyStorage.selectedAi();
-
-    // Exists Google only. Then select google generative
-    if (selectedAi === 'google-generative') {
-      tinyAiScript.enabled = true;
-      return true;
-    } else {
-      tinyAiScript.enabled = false;
-      return false;
-    }
-  };
+  tinyAiScript.isEnabled = () => typeof tinyStorage.selectedAi() === 'string';
   tinyAiScript.enabled = false;
 
   // Login button
@@ -162,19 +179,122 @@ const AiScriptStart = () => {
       tinyAiScript.checkTitle();
     });
 
+    selector.prop('disabled', appData.ai.using);
     const tinyAiHtml = {};
+
+    // Server login inputs
+    const insertServerLogin = (tinyInput, values) => {
+      const indexs = [];
+      tinyInput.push(
+        $('<input>', {
+          type: 'text',
+          placeholder: 'Server ip',
+          class: 'form-control text-center',
+        }),
+      );
+      indexs.push(tinyInput.length - 1);
+
+      tinyInput.push(
+        $('<input>', {
+          type: 'text',
+          placeholder: 'Username',
+          class: 'form-control text-center mt-3',
+        }),
+      );
+      indexs.push(tinyInput.length - 1);
+
+      tinyInput.push(
+        $('<input>', {
+          type: 'password',
+          placeholder: 'Password',
+          class: 'form-control text-center mt-2',
+        }),
+      );
+      indexs.push(tinyInput.length - 1);
+
+      tinyInput.push(
+        $('<input>', {
+          type: 'text',
+          placeholder: 'Room Id',
+          class: 'form-control text-center mt-3',
+        }),
+      );
+      indexs.push(tinyInput.length - 1);
+
+      tinyInput.push(
+        $('<input>', {
+          type: 'password',
+          placeholder: 'Room password',
+          class: 'form-control text-center mt-2',
+        }),
+      );
+      indexs.push(tinyInput.length - 1);
+
+      tinyInput[indexs[0]].val(values.ip).prop('disabled', appData.ai.using);
+      tinyInput[indexs[1]].val(values.username).prop('disabled', appData.ai.using);
+      tinyInput[indexs[2]].val(values.password).prop('disabled', appData.ai.using);
+      tinyInput[indexs[3]].val(values.roomId).prop('disabled', appData.ai.using);
+      tinyInput[indexs[4]].val(values.roomPassword).prop('disabled', appData.ai.using);
+
+      return indexs;
+    };
+
+    // Save server login
+    const insertSaveServerLogin = (inputs, ids) => {
+      return {
+        ip: inputs[ids[0]].val(),
+        username: inputs[ids[1]].val(),
+        password: inputs[ids[2]].val(),
+        roomId: inputs[ids[3]].val(),
+        roomPassword: inputs[ids[4]].val(),
+      };
+    };
+
+    // Server host about
+    const insertServerAbout = () =>
+      $('<p>').append(
+        $('<span>').text('You can host your server '),
+        $('<a>', {
+          href: 'https://github.com/Pony-Driland/Website/tree/main/server/tiny-chat',
+          target: '_blank',
+        }).text('here'),
+        $('<span>').text('. Enter the server settings you want to connect to.'),
+      );
 
     // Google AI
     selector.append($('<option>', { value: 'google-generative' }).text('Google Studio'));
     tinyAiHtml['google-generative'] = {};
     const googleAi = tinyAiHtml['google-generative'];
     googleAi.inputs = () => {
-      const data = {};
-      data.input = $('<input>', {
-        type: 'password',
-        class: 'form-control text-center',
-      });
-      data.input.val(tinyStorage.getApiKey('google-generative'));
+      const data = { input: [] };
+
+      data.input.push(
+        $('<input>', {
+          type: 'password',
+          class: 'form-control text-center mb-2',
+        }),
+      );
+
+      data.input.push(
+        $('<div>').append(
+          tinyLib.bs
+            .button('secondary mb-3')
+            .text('Show host settings')
+            .on('click', () => {
+              for (const index in data.input) {
+                if (index > 1) {
+                  data.input[index].toggleClass('d-none');
+                }
+              }
+            }),
+        ),
+      );
+
+      data.input.push(insertServerAbout());
+      const values = tinyStorage.getApiKey('google-generative') || {};
+      data.input[0].val(values.key).prop('disabled', appData.ai.using);
+      const ids = insertServerLogin(data.input, values);
+      data.input[1].find('> button').trigger('click');
 
       data.desc = $('<p>').append(
         $('<span>').text('You can get your Google API key '),
@@ -189,10 +309,36 @@ const AiScriptStart = () => {
         .button('info mx-4 mt-4')
         .text('Set API Tokens')
         .on('click', () => {
-          tinyStorage.setApiKey('google-generative', data.input.val());
+          const result = insertSaveServerLogin(data.input, ids);
+          result.key = data.input[0].val();
+          tinyStorage.setApiKey('google-generative', result);
           tinyAiScript.checkTitle();
           $('#ai_connection').modal('hide');
-        });
+        })
+        .prop('disabled', appData.ai.using);
+
+      return data;
+    };
+
+    // Tiny chat
+    selector.append($('<option>', { value: 'tiny-chat' }).text('Multiplayer Client'));
+    tinyAiHtml['tiny-chat'] = {};
+    const tinyChat = tinyAiHtml['tiny-chat'];
+    tinyChat.inputs = () => {
+      const data = { input: [] };
+      const values = tinyStorage.getApiKey('tiny-chat') || {};
+      const ids = insertServerLogin(data.input, values);
+      data.desc = insertServerAbout();
+
+      data.submit = tinyLib.bs
+        .button('info mx-4 mt-4')
+        .text('Set connection settings')
+        .on('click', () => {
+          tinyStorage.setApiKey('tiny-chat', insertSaveServerLogin(data.input, ids));
+          tinyAiScript.checkTitle();
+          $('#ai_connection').modal('hide');
+        })
+        .prop('disabled', appData.ai.using);
 
       return data;
     };
@@ -413,7 +559,8 @@ const AiScriptStart = () => {
       };
 
       // Load Models
-      if (tinyAi.getModelsList().length < 1) await tinyAi.getModels(100);
+      if (!tinyAiScript.multiplayer && tinyAi.getModelsList().length < 1)
+        await tinyAi.getModels(100);
 
       // Sidebar
       const sidebarStyle = {
@@ -705,8 +852,7 @@ const AiScriptStart = () => {
               clearMessages();
               enableReadOnly(false);
               enableMessageButtons(true);
-              addMessage(makeMessage({ message: introduction }, 'Introduction'));
-
+              makeTempMessage(introduction, 'Introduction');
               const history = tinyAi.getData();
 
               // Insert first message
@@ -1687,41 +1833,43 @@ const AiScriptStart = () => {
 
       // Models list
       const updateModelList = () => {
-        const models = tinyAi.getModelsList();
-        resetModelSelector();
-        if (models.length > 0) {
-          // Insert model
-          const insertItem = (id, displayName, disabled = false) =>
-            modelSelector.append(
-              $('<option>', { value: id }).prop('disabled', disabled).text(displayName),
-            );
-
-          // Get models
-          for (const index in models) {
-            // Normal insert
-            if (!models[index].category && !Array.isArray(models[index].data))
-              insertItem(models[index].id, models[index].displayName);
-            // Category insert
-            else {
-              // Category
-              insertItem(
-                models[index].category,
-                models[index].displayName || models[index].category,
-                true,
+        if (!tinyAiScript.multiplayer) {
+          const models = tinyAi.getModelsList();
+          resetModelSelector();
+          if (models.length > 0) {
+            // Insert model
+            const insertItem = (id, displayName, disabled = false) =>
+              modelSelector.append(
+                $('<option>', { value: id }).prop('disabled', disabled).text(displayName),
               );
 
-              // Category items
-              for (const index2 in models[index].data) {
-                insertItem(models[index].data[index2].id, models[index].data[index2].displayName);
+            // Get models
+            for (const index in models) {
+              // Normal insert
+              if (!models[index].category && !Array.isArray(models[index].data))
+                insertItem(models[index].id, models[index].displayName);
+              // Category insert
+              else {
+                // Category
+                insertItem(
+                  models[index].category,
+                  models[index].displayName || models[index].category,
+                  true,
+                );
+
+                // Category items
+                for (const index2 in models[index].data) {
+                  insertItem(models[index].data[index2].id, models[index].data[index2].displayName);
+                }
               }
             }
-          }
 
-          // New model value
-          modelSelector.val(
-            localStorage.getItem('tiny-ai-storage-model-selected') || tinyAi.getModel(),
-          );
-          modelSelector.trigger('change');
+            // New model value
+            modelSelector.val(
+              localStorage.getItem('tiny-ai-storage-model-selected') || tinyAi.getModel(),
+            );
+            modelSelector.trigger('change');
+          }
         }
       };
 
@@ -2535,7 +2683,7 @@ const AiScriptStart = () => {
         const history = tinyAi.getData();
 
         // Insert first message
-        if (history.data.length < 1 && typeof history.firstDialogue === 'string') {
+        if (history && history.data.length < 1 && typeof history.firstDialogue === 'string') {
           const msgId = tinyAi.addData(
             tinyAi.buildContents(
               null,
@@ -2581,6 +2729,8 @@ const AiScriptStart = () => {
         msgList.append(item);
         scrollChatContainerToTop();
       };
+
+      const makeTempMessage = (msg, type) => addMessage(makeMessage({ message: msg }, type));
 
       // Message Maker
       const makeMsgRenderer = (msg) => {
@@ -2854,13 +3004,18 @@ const AiScriptStart = () => {
       };
 
       // Enable Read Only
-      const enableModelSelectorReadOnly = (isEnabled = true) => {
+      const validateMultiplayer = (value = null, isInverse = false) =>
+        !tinyAiScript.multiplayer ? value : !isInverse ? true : false;
+
+      const enableModelSelectorReadOnly = (value = true) => {
+        const isEnabled = validateMultiplayer(value);
         modelSelector.prop('disabled', isEnabled);
         if (isEnabled) modelSelector.addClass('disabled');
         else modelSelector.removeClass('disabled');
       };
 
-      const enableModelReadOnly = (isEnabled = true) => {
+      const enableModelReadOnly = (value = true) => {
+        const isEnabled = validateMultiplayer(value);
         outputLength.prop('disabled', isEnabled);
         enableModelSelectorReadOnly(isEnabled);
 
@@ -2874,12 +3029,14 @@ const AiScriptStart = () => {
         else outputLength.removeClass('disabled');
       };
 
-      const enableMessageButtons = (isEnabled = true) => {
+      const enableMessageButtons = (value = true) => {
+        const isEnabled = validateMultiplayer(value);
         if (isEnabled) chatContainer.removeClass('hide-msg-buttons');
         else chatContainer.addClass('hide-msg-buttons');
       };
 
-      const readOnlyTemplate = (item, isEnabled) => {
+      const readOnlyTemplate = (item, value) => {
+        const isEnabled = validateMultiplayer(value);
         item.prop('disabled', isEnabled);
         if (isEnabled) {
           item.addClass('disabled');
@@ -2920,7 +3077,8 @@ const AiScriptStart = () => {
       };
 
       // First Dialogue script
-      const enabledFirstDialogue = (isEnabled = true) => {
+      const enabledFirstDialogue = (value = true) => {
+        const isEnabled = validateMultiplayer(value, true);
         // Insert First Dialogue
         const insertAddFirstDialogue = () => {
           firstDialogueBase.base.removeClass('d-none');
@@ -2937,6 +3095,7 @@ const AiScriptStart = () => {
         if (isEnabled) {
           const history = tinyAi.getData();
           if (
+            history &&
             history.data.length < 1 &&
             typeof history.firstDialogue === 'string' &&
             history.firstDialogue.length > 0
@@ -2947,7 +3106,8 @@ const AiScriptStart = () => {
       };
 
       // Disable dialogue buttons
-      const disablePromptButtons = (isDisabled = false) => {
+      const disablePromptButtons = (value = false) => {
+        const isDisabled = validateMultiplayer(value);
         // Execute disable script
         for (const item in rpgData.ready) {
           if (rpgData.ready[item]) {
@@ -2971,31 +3131,180 @@ const AiScriptStart = () => {
       enableMessageButtons(false);
       disablePromptButtons(true);
 
+      // Multiplayer disable inputs
+      if (tinyAiScript.multiplayer) {
+        modelChangerReadOnly();
+        enableModelReadOnly();
+        enableModelSelectorReadOnly();
+      }
+
       // Welcome
-      addMessage(
-        makeMessage(
-          {
-            message: `Welcome to Pony Driland's chatbot! This is a chatbot developed exclusively to interact with the content of fic`,
-          },
+      if (!tinyAiScript.multiplayer) {
+        makeTempMessage(
+          `Welcome to Pony Driland's chatbot! This is a chatbot developed exclusively to interact with the content of fic`,
           'Website',
-        ),
-      );
-      addMessage(
-        makeMessage(
-          {
-            message:
-              'This means that whenever the story is updated, I am automatically updated for you to always view the answers of the latest content, because the algorithm of this website converts the content of fic to prompts.' +
-              '\n\nChoose something to be done here so we can start our conversation! The chat will not work until you choose an activity to do here',
-          },
+        );
+        makeTempMessage(
+          'This means that whenever the story is updated, I am automatically updated for you to always view the answers of the latest content, because the algorithm of this website converts the content of fic to prompts.' +
+            '\n\nChoose something to be done here so we can start our conversation! The chat will not work until you choose an activity to do here',
           'Website',
-        ),
-      );
+        );
+        updateModelList();
+      }
 
       // Complete
-      updateModelList();
       $('#markdown-read').append(container);
       await rpgData.init().then(completeTheOffCanvasRpg);
-    } else {
+
+      // Rpg mode
+      tinyIo.client = new TinyClientIo(tinyStorage.getApiKey(tinyStorage.selectedAi()) || {});
+      tinyIo.socket = tinyIo.client.getSocket();
+      if (tinyIo.socket)
+        makeTempMessage(
+          'A server has been detected and we will try to connect to it before you start your session',
+          'Server',
+        );
+
+      // Start rpg mode
+      if (tinyAiScript.multiplayer || tinyIo.socket) {
+        // Socket client
+        if (tinyIo.socket) {
+          const { client } = tinyIo;
+          // Connection
+
+          // Send error message
+          const sendSocketError = (result) =>
+            makeTempMessage(
+              typeof result.msg === 'string'
+                ? `${result.msg} (${typeof result.code === 'number' ? result.code : 0})`
+                : 'Unknown error!',
+              'Server',
+            );
+
+          client.onConnect(() => {
+            // First time message
+            const firstTime = tinyIo.firstTime;
+            if (firstTime) tinyIo.firstTime = false;
+
+            // Message
+            makeTempMessage('You are connected! Signing into your account...', 'Server');
+
+            // Login
+            client.login().then((result) => {
+              // Message
+              if (!result.error) {
+                makeTempMessage('You were successfully logged in! Entering the room...', 'Server');
+              }
+              // Error
+              if (result.error) {
+                sendSocketError(result);
+                $.LoadingOverlay('hide');
+              }
+              // Join room
+              else
+                client.joinRoom().then((result2) => {
+                  if (!result2.error) {
+                    makeTempMessage('You successfully entered the room!', 'Server');
+                  }
+                  // Error
+                  else sendSocketError(result2);
+
+                  // Complete
+                  $.LoadingOverlay('hide');
+                });
+            });
+          });
+
+          // Disconnected
+          client.onDisconnect(() => {
+            makeTempMessage("You've been disconected", 'Server');
+            if (tinyAiScript.multiplayer)
+              $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
+          });
+
+          // Dice
+          client.onDiceRoll((result) => {
+            console.log(result);
+          });
+
+          // Get ratelimit data
+          client.onGetRateLimit((result) => {
+            console.log(result);
+          });
+
+          // Get user list
+          client.onUserList((result) => {
+            console.log(result);
+          });
+
+          // Room updates
+          client.onRoomUpdates((result) => {
+            console.log(result);
+          });
+
+          // User ban
+          client.onRoomBan((result) => {
+            console.log(result);
+          });
+
+          // User kick
+          client.onRoomKick((result) => {
+            console.log(result);
+          });
+
+          // User left
+          client.onUserLeft((result) => {
+            console.log(result);
+          });
+
+          // User join
+          client.onUserJoin((result) => {
+            console.log(result);
+          });
+
+          // Room data
+          client.onRoomData((result) => {
+            console.log(result);
+          });
+
+          // Private room data
+          client.onPrivateRoomData((result) => {
+            console.log(result);
+          });
+
+          // Message delete
+          client.onMessageDelete((result) => {
+            console.log(result);
+          });
+
+          // Message edit
+          client.offMessageEdit((result) => {
+            console.log(result);
+          });
+
+          // Room user
+          if (tinyAiScript.multiplayer) {
+            // Get room history
+            client.onGetHistory((result) => {
+              console.log(result);
+            });
+
+            // New message
+            client.onNewMessage((result) => {
+              console.log(result);
+            });
+          }
+        }
+
+        // No server
+        if (!tinyIo.socket)
+          makeTempMessage('No server has been detected. Your session is cancelled!', 'Server');
+        else if (!tinyAiScript.multiplayer) return;
+      }
+    }
+
+    // No AI data
+    else {
       alert(
         'You did not activate AI mode in your session. Please click the robot icon and activate and then come back here again.',
         'AI Page',
