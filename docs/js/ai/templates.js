@@ -11,27 +11,37 @@ aiTemplates.helpers.ficNativeUserLanguage = `
 If the user is sending messages in another language, translate the messages to the language of the user's message.
 `;
 
-// Bases
+// Tell lines
 aiTemplates.helpers.ficTellLines = `Tell which lines of fic you are referring to tell your answers to help the user search the source of your answers.`;
 
-aiTemplates.helpers.ficTimeCheckerLine = `Fic line markers in the story are presented as "[Fic Line X]", tell the fic line markers in natural language only.`;
-aiTemplates.helpers.ficTimeCheckerDayCounter = `Time markers in the story are presented as "Day Number= X", tell the time markers in natural language only.`;
-aiTemplates.helpers.ficTimeCheckerDayStatus = `Day markers in the story are presented as "Day Status= X", used to mark if the specific part of the story is "morning", "evening", "night", "lateAtNight", tell the day markers in natural language only.`;
-aiTemplates.helpers.ficTimeCheckerWeather = `Weather markers in the story are presented as "Weather= X", used to mark if the specific part of the story is "sun", "bolt", "rain", "heavyrain", "rain", "snow", tell the weather markers in natural language only.`;
-aiTemplates.helpers.ficTimeCheckerLocation = `Location markers in the story are presented as "Location= X", used to mark where the story is currently happening, do not try guessing unknown location markers without the user's permission, tell the location markers in natural language only.`;
-aiTemplates.helpers.ficTimeCheckerCuriosities = `Curiosities markers in the story are presented as "Curiosity= X", tell the curiosities markers in natural language only.`;
+// Fic Markers
+aiTemplates.funcs.ficTimeCheckerStart = (where, howMake) =>
+  `${where} markers in the story are presented as "${howMake}"`;
+aiTemplates.funcs.ficTimeCheckerFix = (where) =>
+  `, tell the ${where} markers in natural language only, not mentioning technical details that i mentioned`;
 
+aiTemplates.helpers.ficTimeCheckerLine = `${aiTemplates.funcs.ficTimeCheckerStart('Fic line', '[Fic Line X]')}${aiTemplates.funcs.ficTimeCheckerFix('fic line')}.`;
+aiTemplates.helpers.ficTimeCheckerDayCounter = `${aiTemplates.funcs.ficTimeCheckerStart('Time', 'Day Number= X')}${aiTemplates.funcs.ficTimeCheckerFix('time')}.`;
+aiTemplates.helpers.ficTimeCheckerDayStatus = `${aiTemplates.funcs.ficTimeCheckerStart('Day', 'Day Status= X')}, used to mark if the specific part of the story is "morning", "evening", "night", "lateAtNight"${aiTemplates.funcs.ficTimeCheckerFix('day')}.`;
+aiTemplates.helpers.ficTimeCheckerWeather = `${aiTemplates.funcs.ficTimeCheckerStart('Weather', 'Weather= X')}, used to mark if the specific part of the story is "sun", "bolt", "rain", "heavyrain", "rain", "snow"${aiTemplates.funcs.ficTimeCheckerFix('weather')}.`;
+aiTemplates.helpers.ficTimeCheckerLocation = `${aiTemplates.funcs.ficTimeCheckerStart('Location', 'Location= X')}, used to mark where the story is currently happening, do not try guessing unknown location markers without the user's permission${aiTemplates.funcs.ficTimeCheckerFix('location')}.`;
+aiTemplates.helpers.ficTimeCheckerCuriosities = `${aiTemplates.funcs.ficTimeCheckerStart('Curiosities', 'Curiosity= X')}${aiTemplates.funcs.ficTimeCheckerFix('curiosities')}.`;
+
+// Fic File
 aiTemplates.helpers.ficTimeChecker = `
 The "---------- Official Pony Driland fic file ----------" is the beginning where the official file data of the fic Pony Driland begin and the "---------- The end Official Pony Driland fic file ----------" is where this official data ends, this information is important for you to know the difference between official content from non-official content.
 `;
 
+// Rpg data
 aiTemplates.helpers.ficRpgChecker = `
 The section "---------- RPG User Data ----------" marks the beginning of the official RPG data file, while the section "---------- The end RPG User Official Data ----------" marks its conclusion.
 Any content found between these RPG markers represents the official RPG data and should be used as the authoritative reference when validating roleplay actions or retrieving RPG-related information, always prioritizing the official data for consistency and accuracy in RPG interactions.
 `;
 
+// SFW Mode
 aiTemplates.helpers.sfwMode = `Do not allow the user to view explicit content of fic as vore, detailed violence, sexual content, if necessary at a moment the user tries to insist for more details, just decrease the amount of not safe details to stay safer explain the context to the user without lying the real nature of the content.`;
 
+// Emojis
 aiTemplates.helpers.messageEmojis = `You can add emojis in the middle of your messages as a complement to show emotions of your text.`;
 
 // Instructions Template
