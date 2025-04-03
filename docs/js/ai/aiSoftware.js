@@ -3176,7 +3176,7 @@ const AiScriptStart = () => {
           const sendSocketError = (result) =>
             makeTempMessage(
               typeof result.msg === 'string'
-                ? `${result.msg} (${typeof result.code === 'number' ? result.code : 0})`
+                ? `${result.msg} (Code: ${typeof result.code === 'number' ? result.code : 0})`
                 : 'Unknown error!',
               'Server',
             );
