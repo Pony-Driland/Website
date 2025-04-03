@@ -107,6 +107,7 @@ const AiScriptStart = () => {
       tinyIo.client.destroy();
       tinyIo.client = null;
       tinyIo.socket = null;
+      console.log('[socket-io] Connection destroyed!');
       return true;
     } else return false;
   };

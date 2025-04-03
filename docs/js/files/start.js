@@ -635,6 +635,7 @@ const clearFicData = function () {
     appData.ai.interval = null;
     appData.ai.secondsUsed = 0;
   }
+  appData.ai.killIo();
 
   for (const item in storyData.sfx) {
     if (typeof storyData.sfx[item].hide === 'function') {
@@ -772,6 +773,7 @@ $(() => {
     console.log('Starting App...');
     storyData.start((fn, readme) => {
       const tinyAiScript = AiScriptStart();
+      appData.ai.killIo = tinyAiScript.killIo;
 
       // Custom Colors
       $('head').append(
