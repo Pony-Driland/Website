@@ -135,17 +135,17 @@ const AiScriptStart = () => {
 
       // Update Ai API script
       tinyAiScript.multiplayer = false;
-      tinyAiScript.server = null;
+      tinyAiScript.noai = false;
 
       // Google Generative
       if (selectedAi === 'google-generative')
         setGoogleAi(tinyAi, tinyStorage.getApiKey('google-generative')?.key);
 
       // Tiny Chat
-      if (selectedAi === 'tiny-chat') {
-        tinyAiScript.multiplayer = true;
-        tinyAiScript.server = 'socket-io';
-      }
+      if (selectedAi === 'tiny-chat') tinyAiScript.multiplayer = true;
+
+      // No Ai
+      if (selectedAi === 'no-ai') tinyAiScript.noai = true;
 
       // Enabled now
       tinyAiScript.enabled = true;
@@ -262,6 +262,20 @@ const AiScriptStart = () => {
         $('<span>').text('. Enter the server settings you want to connect to.'),
       );
 
+    const hostButton = (inputs, tinyBig = -1) =>
+      $('<div>').append(
+        tinyLib.bs
+          .button('secondary mb-3')
+          .text('Show host settings (Alpha)')
+          .on('click', () => {
+            for (const index in inputs) {
+              if (index > tinyBig) {
+                inputs[index].toggleClass('d-none');
+              }
+            }
+          }),
+      );
+
     // Google AI
     selector.append($('<option>', { value: 'google-generative' }).text('Google Studio'));
     tinyAiHtml['google-generative'] = {};
@@ -276,21 +290,7 @@ const AiScriptStart = () => {
         }),
       );
 
-      data.input.push(
-        $('<div>').append(
-          tinyLib.bs
-            .button('secondary mb-3')
-            .text('Show host settings (Alpha)')
-            .on('click', () => {
-              for (const index in data.input) {
-                if (index > 1) {
-                  data.input[index].toggleClass('d-none');
-                }
-              }
-            }),
-        ),
-      );
-
+      data.input.push(hostButton(data.input, 1));
       data.input.push(insertServerAbout());
       const values = tinyStorage.getApiKey('google-generative') || {};
       data.input[0].val(values.key).prop('disabled', appData.ai.using);
@@ -313,6 +313,36 @@ const AiScriptStart = () => {
           const result = insertSaveServerLogin(data.input, ids);
           result.key = data.input[0].val();
           tinyStorage.setApiKey('google-generative', result);
+          tinyAiScript.checkTitle();
+          $('#ai_connection').modal('hide');
+        })
+        .prop('disabled', appData.ai.using);
+
+      return data;
+    };
+
+    // No AI
+    selector.append($('<option>', { value: 'no-ai' }).text('No AI'));
+    tinyAiHtml['no-ai'] = {};
+    const noAi = tinyAiHtml['no-ai'];
+    noAi.inputs = () => {
+      const data = { input: [] };
+      data.input.push(hostButton(data.input, 0));
+      data.input.push(insertServerAbout());
+      const values = tinyStorage.getApiKey('no-ai') || {};
+      const ids = insertServerLogin(data.input, values);
+      data.input[0].find('> button').trigger('click');
+
+      data.desc = $('<p>').text(
+        'No AI will be used in this mode. You will only have access to the simple features.',
+      );
+
+      data.submit = tinyLib.bs
+        .button('info mx-4 mt-4')
+        .text('Set Settings')
+        .on('click', () => {
+          const result = insertSaveServerLogin(data.input, ids);
+          tinyStorage.setApiKey('no-ai', result);
           tinyAiScript.checkTitle();
           $('#ai_connection').modal('hide');
         })
@@ -560,7 +590,7 @@ const AiScriptStart = () => {
       };
 
       // Load Models
-      if (!tinyAiScript.multiplayer && tinyAi.getModelsList().length < 1)
+      if (!tinyAiScript.noai && !tinyAiScript.multiplayer && tinyAi.getModelsList().length < 1)
         await tinyAi.getModels(100);
 
       // Sidebar
@@ -1834,7 +1864,7 @@ const AiScriptStart = () => {
 
       // Models list
       const updateModelList = () => {
-        if (!tinyAiScript.multiplayer) {
+        if (!tinyAiScript.noai && !tinyAiScript.multiplayer) {
           const models = tinyAi.getModelsList();
           resetModelSelector();
           if (models.length > 0) {
@@ -1901,24 +1931,26 @@ const AiScriptStart = () => {
       };
 
       const selectModel = (newModel, ignoreTokenUpdater = false) => {
-        const model = tinyAi.getModelData(newModel);
-        if (model) {
-          insertDefaultSettings(model, newModel);
-          localStorage.setItem('tiny-ai-storage-model-selected', newModel);
-          if (tinyAi.getData()) tinyAi.setModel(newModel, ficConfigs.selected);
-        } else {
-          tokenCount.total.text(0);
-          temperature.reset().disable();
-          outputLength.val(0).prop('disabled', true).addClass('disabled');
-          topP.reset().disable();
-          topK.reset().disable();
-          presencePenalty.reset().disable();
-          frequencyPenalty.reset().disable();
-          localStorage.removeItem('tiny-ai-storage-model-selected');
-        }
+        if (!tinyAiScript.noai && !tinyAiScript.multiplayer) {
+          const model = tinyAi.getModelData(newModel);
+          if (model) {
+            insertDefaultSettings(model, newModel);
+            localStorage.setItem('tiny-ai-storage-model-selected', newModel);
+            if (tinyAi.getData()) tinyAi.setModel(newModel, ficConfigs.selected);
+          } else {
+            tokenCount.total.text(0);
+            temperature.reset().disable();
+            outputLength.val(0).prop('disabled', true).addClass('disabled');
+            topP.reset().disable();
+            topK.reset().disable();
+            presencePenalty.reset().disable();
+            frequencyPenalty.reset().disable();
+            localStorage.removeItem('tiny-ai-storage-model-selected');
+          }
 
-        if (!isFirstTime && !ignoreTokenUpdater && !modelSelector.prop('disabled'))
-          updateAiTokenCounterData(undefined, true);
+          if (!isFirstTime && !ignoreTokenUpdater && !modelSelector.prop('disabled'))
+            updateAiTokenCounterData(undefined, true);
+        }
       };
 
       modelSelector.on('change', () => selectModel(modelSelector.val()));
@@ -1928,16 +1960,18 @@ const AiScriptStart = () => {
         'fa-solid fa-bars-progress',
         'Load more models',
         async () => {
-          $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
-          await tinyAi.getModels(100);
+          if (!tinyAiScript.noai && !tinyAiScript.multiplayer) {
+            $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
+            await tinyAi.getModels(100);
 
-          if (!tinyAi._nextModelsPageToken) {
-            loadMoreModels.addClass('disabled');
-            loadMoreModels.prop('disabled', true);
+            if (!tinyAi._nextModelsPageToken) {
+              loadMoreModels.addClass('disabled');
+              loadMoreModels.prop('disabled', true);
+            }
+
+            updateModelList();
+            $.LoadingOverlay('hide');
           }
-
-          updateModelList();
-          $.LoadingOverlay('hide');
         },
         !tinyAi._nextModelsPageToken,
       );
@@ -2144,34 +2178,36 @@ const AiScriptStart = () => {
                 tinyTokens = { count: null },
                 callback,
               ) => {
-                if (
-                  (forceUpdate && contentToCheck) ||
-                  // Exist content to check tokens
-                  (hash &&
-                    contentToCheck && // Model
-                    ((typeof hashItems.model === 'string' &&
-                      hashItems.model !== objHash(tinyAi.getModel())) ||
-                      // Hash
-                      (typeof oldHash === 'string' && oldHash !== hash) ||
-                      // Token Count
-                      typeof tinyTokens.count !== 'number' ||
-                      Number.isNaN(tinyTokens.count) ||
-                      !Number.isFinite(tinyTokens.count) ||
-                      tinyTokens.count < 1) &&
-                    // Callback
-                    typeof callback === 'function')
-                ) {
-                  console.log(`[tiny-ai] Executing token counter in "${name}".`);
-                  const newTokens = await tinyAi.countTokens(
-                    Array.isArray(contentToCheck) ? contentToCheck : [contentToCheck],
-                  );
+                if (!tinyAiScript.noai && !tinyAiScript.multiplayer) {
+                  if (
+                    (forceUpdate && contentToCheck) ||
+                    // Exist content to check tokens
+                    (hash &&
+                      contentToCheck && // Model
+                      ((typeof hashItems.model === 'string' &&
+                        hashItems.model !== objHash(tinyAi.getModel())) ||
+                        // Hash
+                        (typeof oldHash === 'string' && oldHash !== hash) ||
+                        // Token Count
+                        typeof tinyTokens.count !== 'number' ||
+                        Number.isNaN(tinyTokens.count) ||
+                        !Number.isFinite(tinyTokens.count) ||
+                        tinyTokens.count < 1) &&
+                      // Callback
+                      typeof callback === 'function')
+                  ) {
+                    console.log(`[tiny-ai] Executing token counter in "${name}".`);
+                    const newTokens = await tinyAi.countTokens(
+                      Array.isArray(contentToCheck) ? contentToCheck : [contentToCheck],
+                    );
 
-                  const newToken =
-                    newTokens && typeof newTokens.totalTokens === 'number'
-                      ? newTokens.totalTokens
-                      : null;
-                  if (typeof newToken === 'number') callback(newToken);
-                }
+                    const newToken =
+                      newTokens && typeof newTokens.totalTokens === 'number'
+                        ? newTokens.totalTokens
+                        : null;
+                    if (typeof newToken === 'number') callback(newToken);
+                  }
+                } else callback(0);
               };
 
               // RPG
@@ -2257,7 +2293,9 @@ const AiScriptStart = () => {
                 );
               }
 
-              resolve(tinyAi.getTotalTokens());
+              resolve(
+                !tinyAiScript.noai && !tinyAiScript.multiplayer ? tinyAi.getTotalTokens() : 0,
+              );
             } else resolve(0);
           } catch (err) {
             reject(err);
@@ -2629,11 +2667,12 @@ const AiScriptStart = () => {
         }
 
         // Execute Ai
-        await executeAi(submitCache, sentId, controller).catch((err) => {
-          if (submitCache.cancel) submitCache.cancel();
-          console.error(err);
-          alert(err.message);
-        });
+        if (!tinyAiScript.noai && !tinyAiScript.multiplayer)
+          await executeAi(submitCache, sentId, controller).catch((err) => {
+            if (submitCache.cancel) submitCache.cancel();
+            console.error(err);
+            alert(err.message);
+          });
 
         // Complete
         clearInterval(loadingMessage);
@@ -3005,8 +3044,20 @@ const AiScriptStart = () => {
       };
 
       // Enable Read Only
-      const validateMultiplayer = (value = null, isInverse = false) =>
-        !tinyAiScript.multiplayer ? value : !isInverse ? true : false;
+      const validateMultiplayer = (value = null, needAi = true, isInverse = false) =>
+        // Normal mode
+        !tinyAiScript.multiplayer
+          ? // Ai enabled
+            !needAi || !tinyAiScript.noai
+            ? value
+            : // No AI
+              !isInverse
+              ? true
+              : false
+          : // Multiplayer
+            !isInverse
+            ? true
+            : false;
 
       const enableModelSelectorReadOnly = (value = true) => {
         const isEnabled = validateMultiplayer(value);
@@ -3031,13 +3082,13 @@ const AiScriptStart = () => {
       };
 
       const enableMessageButtons = (value = true) => {
-        const isEnabled = validateMultiplayer(value);
+        const isEnabled = validateMultiplayer(value, false);
         if (isEnabled) chatContainer.removeClass('hide-msg-buttons');
         else chatContainer.addClass('hide-msg-buttons');
       };
 
-      const readOnlyTemplate = (item, value) => {
-        const isEnabled = validateMultiplayer(value);
+      const readOnlyTemplate = (item, value, needAi = true) => {
+        const isEnabled = validateMultiplayer(value, needAi);
         item.prop('disabled', isEnabled);
         if (isEnabled) {
           item.addClass('disabled');
@@ -3047,9 +3098,9 @@ const AiScriptStart = () => {
       };
 
       const enableReadOnly = (isEnabled = true, controller = null) => {
-        readOnlyTemplate(msgSubmit, isEnabled);
-        readOnlyTemplate(msgInput, isEnabled);
-        readOnlyTemplate(cancelSubmit, !isEnabled || !controller);
+        readOnlyTemplate(msgSubmit, isEnabled, false);
+        readOnlyTemplate(msgInput, isEnabled, false);
+        readOnlyTemplate(cancelSubmit, !isEnabled || !controller, false);
         if (controller) {
           msgSubmit.addClass('d-none');
           cancelSubmit.removeClass('d-none');
@@ -3072,14 +3123,14 @@ const AiScriptStart = () => {
       };
 
       const modelChangerReadOnly = (isEnabled = true) => {
-        for (const index in ficResets) readOnlyTemplate(ficResets[index], isEnabled);
-        for (const index in ficTemplates) readOnlyTemplate(ficTemplates[index], isEnabled);
-        for (const index in importItems) readOnlyTemplate(importItems[index], isEnabled);
+        for (const index in ficResets) readOnlyTemplate(ficResets[index], isEnabled, false);
+        for (const index in ficTemplates) readOnlyTemplate(ficTemplates[index], isEnabled, false);
+        for (const index in importItems) readOnlyTemplate(importItems[index], isEnabled, false);
       };
 
       // First Dialogue script
       const enabledFirstDialogue = (value = true) => {
-        const isEnabled = validateMultiplayer(value, true);
+        const isEnabled = validateMultiplayer(value, false, true);
         // Insert First Dialogue
         const insertAddFirstDialogue = () => {
           firstDialogueBase.base.removeClass('d-none');
@@ -3108,7 +3159,7 @@ const AiScriptStart = () => {
 
       // Disable dialogue buttons
       const disablePromptButtons = (value = false) => {
-        const isDisabled = validateMultiplayer(value);
+        const isDisabled = validateMultiplayer(value, false);
         // Execute disable script
         for (const item in rpgData.ready) {
           if (rpgData.ready[item]) {
@@ -3133,8 +3184,8 @@ const AiScriptStart = () => {
       disablePromptButtons(true);
 
       // Multiplayer disable inputs
-      if (tinyAiScript.multiplayer) {
-        modelChangerReadOnly();
+      if (tinyAiScript.multiplayer || tinyAiScript.noai) {
+        if (tinyAiScript.multiplayer) modelChangerReadOnly();
         enableModelReadOnly();
         enableModelSelectorReadOnly();
       }
@@ -3167,6 +3218,7 @@ const AiScriptStart = () => {
         );
 
       // Start rpg mode
+      //////////////////////////////
       if (tinyAiScript.multiplayer || tinyIo.socket) {
         // Socket client
         if (tinyIo.socket) {
