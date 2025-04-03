@@ -21,14 +21,14 @@ class TinyClientIo {
 
       this.socket.on('connect_error', (err) => {
         console.error(err);
-        if (!socket.active) {
+        if (!tinyThis.socket.active) {
           // the connection was denied by the server
           // in that case, `socket.connect()` must be manually called in order to reconnect
         }
       });
 
       this.socket.on('connect', () => {
-        console.log('[socket.io] Connected!');
+        console.log(`[socket.io] Connected! Id: ${tinyThis.socket.id}`);
         tinyThis.id = tinyThis.socket.id;
         tinyThis.connected = tinyThis.socket.connected;
       });

@@ -14,7 +14,7 @@ import {
 } from './values';
 
 export default function userManager(socket, io) {
-  socket.on('ban', (data, fn) => {
+  socket.on('ban', async (data, fn) => {
     const { userId, reason } = data;
     // Validate values
     if (typeof userId !== 'string' || typeof reason !== 'string') return sendIncompleteDataInfo(fn);
@@ -25,12 +25,12 @@ export default function userManager(socket, io) {
     if (userIsRateLimited(socket, fn)) return;
 
     // Check if user is server owner or server mod
-    if (yourId !== getIniConfig('OWNER_ID') && !moderators.has(yourId)) {
+    if (yourId !== getIniConfig('OWNER_ID') && !(await moderators.has(yourId))) {
       return fn({ error: true, msg: 'You are not allowed to do this.', code: 1 });
     }
 
     // Check if user exists
-    if (!users.has(userId)) {
+    if (!(await users.has(userId))) {
       return fn({ error: true, msg: 'User not found.', code: 2 });
     }
 
@@ -38,13 +38,13 @@ export default function userManager(socket, io) {
     if (userSockets.has(userId)) userSockets.get(userId).disconnect();
 
     // Add into the ban list
-    bannedUsers.set(userId, { date: Date.now(), reason });
+    await bannedUsers.set(userId, { date: Date.now(), reason });
 
     // User ban successfully.
     fn({ success: true });
   });
 
-  socket.on('unban', (data, fn) => {
+  socket.on('unban', async (data, fn) => {
     const { userId } = data;
     // Validate values
     if (typeof userId !== 'string') return sendIncompleteDataInfo(fn);
@@ -55,23 +55,23 @@ export default function userManager(socket, io) {
     if (userIsRateLimited(socket, fn)) return;
 
     // Check if user is server owner or server mod
-    if (yourId !== getIniConfig('OWNER_ID') && !moderators.has(yourId)) {
+    if (yourId !== getIniConfig('OWNER_ID') && !(await moderators.has(yourId))) {
       return fn({ error: true, msg: 'You are not allowed to do this.', code: 1 });
     }
 
     // Check if user exists
-    if (!users.has(userId)) {
+    if (!(await users.has(userId))) {
       return fn({ error: true, msg: 'User not found.', code: 2 });
     }
 
     // Remove user from the ban list
-    bannedUsers.delete(userId);
+    await bannedUsers.delete(userId);
 
     // User unban successfully.
     fn({ success: true });
   });
 
-  socket.on('kick', (data, fn) => {
+  socket.on('kick', async (data, fn) => {
     const { userId } = data;
     // Validate values
     if (typeof userId !== 'string') return sendIncompleteDataInfo(fn);
@@ -82,7 +82,7 @@ export default function userManager(socket, io) {
     if (userIsRateLimited(socket, fn)) return;
 
     // Check if user is server owner or server mod
-    if (yourId !== getIniConfig('OWNER_ID') && !moderators.has(yourId)) {
+    if (yourId !== getIniConfig('OWNER_ID') && !(await moderators.has(yourId))) {
       return fn({ error: true, msg: 'You are not allowed to do this.', code: 1 });
     }
 
@@ -96,7 +96,7 @@ export default function userManager(socket, io) {
     fn({ success: true });
   });
 
-  socket.on('change-password', (data, fn) => {
+  socket.on('change-password', async (data, fn) => {
     const { password } = data;
     // Validate values
     if (typeof password !== 'string') return sendIncompleteDataInfo(fn);
@@ -105,7 +105,7 @@ export default function userManager(socket, io) {
     const userId = userSession.getUserId(socket);
     if (!userId) return accountNotDetected(fn); // Only logged-in users can use it
     if (userIsRateLimited(socket, fn)) return;
-    const user = users.get(userId);
+    const user = await users.get(userId);
 
     if (password.length < getIniConfig('MIN_PASSWORD_SIZE'))
       return fn({
@@ -118,13 +118,13 @@ export default function userManager(socket, io) {
     user.password = getHashString(password.substring(0, getIniConfig('PASSWORD_SIZE')));
 
     // Set user data
-    users.set(userId, user);
+    await users.set(userId, user);
 
     // User unban successfully.
     fn({ success: true });
   });
 
-  socket.on('change-nickname', (data, fn) => {
+  socket.on('change-nickname', async (data, fn) => {
     const { nickname } = data;
     // Validate values
     if (typeof nickname !== 'string') return sendIncompleteDataInfo(fn);
@@ -133,20 +133,20 @@ export default function userManager(socket, io) {
     const userId = userSession.getUserId(socket);
     if (!userId) return accountNotDetected(fn); // Only logged-in users can use it
     if (userIsRateLimited(socket, fn)) return;
-    const user = users.get(userId);
+    const user = await users.get(userId);
 
     // Change nickname
     user.nickname = nickname.substring(0, getIniConfig('NICKNAME_SIZE'));
 
     // Set user data
-    users.set(userId, user);
+    await users.set(userId, user);
     userSession.setNickname(socket, user.nickname);
 
     // User unban successfully.
     fn({ nickname: user.nickname });
   });
 
-  socket.on('register', (data, fn) => {
+  socket.on('register', async (data, fn) => {
     const { userId, password, nickname } = data;
     // Validate values
     if (typeof userId !== 'string' || typeof password !== 'string' || typeof nickname !== 'string')
@@ -162,7 +162,7 @@ export default function userManager(socket, io) {
       return fn({ error: true, code: 2, msg: 'Only the owner can create accounts.' });
     }
 
-    if (users.has(userId)) {
+    if (await users.has(userId)) {
       return fn({ error: true, code: 1, msg: 'User Id already exists.' });
     }
 
@@ -181,21 +181,21 @@ export default function userManager(socket, io) {
       });
 
     // Create Account
-    createAccount(userId, password, nickname);
+    await createAccount(userId, password, nickname);
 
     // User registered successfully.
     fn({ userId, nickname });
   });
 
-  socket.on('login', (data, fn) => {
+  socket.on('login', async (data, fn) => {
     const { userId, password } = data;
     // Validate values
     if (typeof userId !== 'string' || typeof password !== 'string')
       return sendIncompleteDataInfo(fn);
 
     // Check if user is using account
-    if (bannedUsers.has(userId)) {
-      const banData = bannedUsers.get(userId);
+    if (await bannedUsers.has(userId)) {
+      const banData = await bannedUsers.get(userId);
       return fn({
         error: true,
         reason: banData.reason,
@@ -214,11 +214,11 @@ export default function userManager(socket, io) {
     }
 
     // Validate user credentials
-    if (!users.has(userId)) {
+    if (!(await users.has(userId))) {
       return fn({ error: true, msg: 'User does not exist.', code: 2 });
     }
 
-    const user = users.get(userId);
+    const user = await users.get(userId);
     const hashedPassword = getHashString(password);
     if (user.password !== hashedPassword) {
       return fn({ error: true, msg: 'Invalid user credentials.', code: 1 });

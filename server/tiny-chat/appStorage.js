@@ -100,6 +100,7 @@ export default async function startFiles() {
       for (const item in theCfg.limits)
         if (typeof theCfg.limits[item] === 'number') _setIniConfig(item, theCfg.limits[item]);
       _setIniConfig('OPEN_REGISTRATION', getIniBoolean(theCfg.server.registration_open));
+      _setIniConfig('LOAD_ALL_HISTORY', getIniBoolean(theCfg.server.load_all_history));
       if (typeof theCfg.server.owner_id === 'string')
         _setIniConfig('OWNER_ID', theCfg.server.owner_id);
     };

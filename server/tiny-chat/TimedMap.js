@@ -99,6 +99,25 @@ class TimedMap extends Map {
   }
 
   /**
+   * Get all values from the map.
+   * @returns {Array} An array containing all values in the map.
+   */
+  getAll() {
+    return Array.from(super.values());
+  }
+
+  /**
+   * Get the last `count` added values from the map.
+   * @param {number} count - The number of last added values to retrieve.
+   * @returns {Array} An array with the last `count` values.
+   */
+  getAmount(count) {
+    if (count <= 0) return [];
+    const values = Array.from(super.values());
+    return values.slice(-count);
+  }
+
+  /**
    * Returns a copy of the current event queue to avoid data corruption.
    * @returns {Object[]} - A new array containing the event queue.
    */

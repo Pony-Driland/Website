@@ -44,17 +44,17 @@ export function mapToArray(map) {
  * @param {string} password - The user's password.
  * @param {string} nickname - The user's chosen nickname.
  */
-export const createAccount = (userId, password, nickname) => {
+export const createAccount = async (userId, password, nickname) => {
   const hashedPassword = getHashString(password.substring(0, getIniConfig('PASSWORD_SIZE')));
-  users.set(userId.substring(0, getIniConfig('USER_ID_SIZE')), {
+  await users.set(userId.substring(0, getIniConfig('USER_ID_SIZE')), {
     password: hashedPassword,
     nickname: nickname.substring(0, getIniConfig('NICKNAME_SIZE')),
   });
 };
 
-export const createRoom = (userId, roomId, password, title) => {
+export const createRoom = async (userId, roomId, password, title) => {
   const hashedPassword = getHashString(password.substring(0, getIniConfig('PASSWORD_SIZE')));
-  rooms.set(roomId.substring(0, getIniConfig('ROOM_ID_SIZE')), {
+  await rooms.set(roomId.substring(0, getIniConfig('ROOM_ID_SIZE')), {
     password: hashedPassword,
     title: title.substring(0, getIniConfig('ROOM_TITLE_SIZE')),
     maxUsers: getIniConfig('MAX_USERS_PER_ROOM'),
@@ -97,6 +97,7 @@ export const userSession = {
 export const sendRateLimit = (socket) => {
   socket.emit('update-ratelimts', {
     size: {
+      history: getIniConfig('HISTORY_SIZE'),
       userId: getIniConfig('USER_ID_SIZE'),
       password: getIniConfig('PASSWORD_SIZE'),
       minPassword: getIniConfig('MIN_PASSWORD_SIZE'),
@@ -110,6 +111,7 @@ export const sendRateLimit = (socket) => {
       events: getIniConfig('EVENT'),
       roomUsers: getIniConfig('MAX_USERS_PER_ROOM'),
     },
+    loadAllHistory: getIniConfig('LOAD_ALL_HISTORY'),
     time: getIniConfig('RATE_LIMIT_TIME'),
   });
 };
