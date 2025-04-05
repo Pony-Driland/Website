@@ -1,6 +1,6 @@
 import { objType } from "./lib/objChecker";
 
-class TimedMap {
+class TinySQL {
   #appStorage;
   #settings;
   #conditions;
@@ -212,4 +212,4 @@ class TimedMap {
   }
 }
 
-export default TimedMap;
+export default TinySQL;

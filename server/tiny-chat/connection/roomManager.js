@@ -1,6 +1,6 @@
 import isDebug from '../isDebug';
 import { objType } from '../lib/objChecker';
-import TimedMap from '../TimedMap';
+import TinySQL from '../TinySQL';
 
 import {
   userIsRateLimited,
@@ -88,7 +88,7 @@ export default function roomManager(socket, io, appStorage) {
     // Send chat history and settings only to the joined user
     let history = roomHistories.get(roomId);
     if (!history) {
-      history = new TimedMap();
+      history = new TinySQL();
       history.setDb(appStorage, { name: 'history', id: 'roomId', subId: 'historyId' });
       history.setDebug(isDebug());
       roomHistories.set(history);
