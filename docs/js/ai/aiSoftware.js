@@ -3012,16 +3012,28 @@ const AiScriptStart = () => {
       tinyAi.removeAllListeners('setSystemInstruction');
       tinyAi.removeAllListeners('startDataId');
       tinyAi.removeAllListeners('stopDataId');
-      tinyAi.removeAllListeners('rpgSchema');
-      tinyAi.removeAllListeners('rpgData');
-      tinyAi.removeAllListeners('rpgPrivateData');
+      tinyAi.removeAllListeners('setRpgSchema');
+      tinyAi.removeAllListeners('setRpgData');
+      tinyAi.removeAllListeners('setRpgPrivateData');
 
-      tinyAi.on('setMaxOutputTokens', (value) => outputLength.val(value));
-      tinyAi.on('setTemperature', (value) => temperature.val(value));
-      tinyAi.on('setTopP', (value) => topP.val(value));
-      tinyAi.on('setTopK', (value) => topK.val(value));
-      tinyAi.on('setPresencePenalty', (value) => presencePenalty.val(value));
-      tinyAi.on('setFrequencyPenalty', (value) => frequencyPenalty.val(value));
+      tinyAi.on('setMaxOutputTokens', (value) => {
+        outputLength.val(value);
+      });
+      tinyAi.on('setTemperature', (value) => {
+        temperature.val(value);
+      });
+      tinyAi.on('setTopP', (value) => {
+        topP.val(value);
+      });
+      tinyAi.on('setTopK', (value) => {
+        topK.val(value);
+      });
+      tinyAi.on('setPresencePenalty', (value) => {
+        presencePenalty.val(value);
+      });
+      tinyAi.on('setFrequencyPenalty', (value) => {
+        frequencyPenalty.val(value);
+      });
       tinyAi.on('setModel', (value) => {});
       tinyAi.on('selectDataId', (value) => {});
       tinyAi.on('deleteIndex', (value) => {});
@@ -3033,9 +3045,9 @@ const AiScriptStart = () => {
       tinyAi.on('setSystemInstruction', (value) => {});
       tinyAi.on('startDataId', (value) => {});
       tinyAi.on('stopDataId', (value) => {});
-      tinyAi.on('rpgSchema', (value) => {});
-      tinyAi.on('rpgData', (value) => {});
-      tinyAi.on('rpgPrivateData', (value) => {});
+      tinyAi.on('setRpgSchema', (value) => {});
+      tinyAi.on('setRpgData', (value) => {});
+      tinyAi.on('setRpgPrivateData', (value) => {});
 
       // Prepare RPG
       rpgData.html.public = tinyLib.bs.offcanvas(
