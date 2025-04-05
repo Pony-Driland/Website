@@ -74,6 +74,7 @@ class TinyClientIo {
       }
       if (objType(result.size, 'object')) {
         this.ratelimit.size = {
+          modelId: typeof result.size.modelId === 'number' ? result.size.modelId : 0,
           history: typeof result.size.history === 'number' ? result.size.history : 0,
           minPassword: typeof result.size.minPassword === 'number' ? result.size.minPassword : 0,
           msg: typeof result.size.msg === 'number' ? result.size.msg : 0,
