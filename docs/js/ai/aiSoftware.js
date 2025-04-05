@@ -3001,6 +3001,20 @@ const AiScriptStart = () => {
       tinyAi.removeAllListeners('setTopK');
       tinyAi.removeAllListeners('setPresencePenalty');
       tinyAi.removeAllListeners('setFrequencyPenalty');
+      tinyAi.removeAllListeners('setModel');
+      tinyAi.removeAllListeners('selectDataId');
+      tinyAi.removeAllListeners('deleteIndex');
+      tinyAi.removeAllListeners('replaceIndex');
+      tinyAi.removeAllListeners('addData');
+      tinyAi.removeAllListeners('setPrompt');
+      tinyAi.removeAllListeners('setFirstDialogue');
+      tinyAi.removeAllListeners('setFileData');
+      tinyAi.removeAllListeners('setSystemInstruction');
+      tinyAi.removeAllListeners('startDataId');
+      tinyAi.removeAllListeners('stopDataId');
+      tinyAi.removeAllListeners('rpgSchema');
+      tinyAi.removeAllListeners('rpgData');
+      tinyAi.removeAllListeners('rpgPrivateData');
 
       tinyAi.on('setMaxOutputTokens', (value) => outputLength.val(value));
       tinyAi.on('setTemperature', (value) => temperature.val(value));
@@ -3008,6 +3022,20 @@ const AiScriptStart = () => {
       tinyAi.on('setTopK', (value) => topK.val(value));
       tinyAi.on('setPresencePenalty', (value) => presencePenalty.val(value));
       tinyAi.on('setFrequencyPenalty', (value) => frequencyPenalty.val(value));
+      tinyAi.on('setModel', (value) => {});
+      tinyAi.on('selectDataId', (value) => {});
+      tinyAi.on('deleteIndex', (value) => {});
+      tinyAi.on('replaceIndex', (value) => {});
+      tinyAi.on('addData', (value) => {});
+      tinyAi.on('setPrompt', (value) => {});
+      tinyAi.on('setFirstDialogue', (value) => {});
+      tinyAi.on('setFileData', (value) => {});
+      tinyAi.on('setSystemInstruction', (value) => {});
+      tinyAi.on('startDataId', (value) => {});
+      tinyAi.on('stopDataId', (value) => {});
+      tinyAi.on('rpgSchema', (value) => {});
+      tinyAi.on('rpgData', (value) => {});
+      tinyAi.on('rpgPrivateData', (value) => {});
 
       // Prepare RPG
       rpgData.html.public = tinyLib.bs.offcanvas(
