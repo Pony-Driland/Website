@@ -63,10 +63,10 @@ startFiles().then(async (appStorage) => {
     FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE
   `;
   await appStorage.runQuery(
-    `CREATE TABLE IF NOT EXISTS history (historyId INTEGER PRIMARY KEY AUTOINCREMENT, ${historyQuery});`,
+    `CREATE TABLE IF NOT EXISTS history (historyId TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))), ${historyQuery});`,
   );
   await appStorage.runQuery(
-    `CREATE TABLE IF NOT EXISTS historyDeleted (historyId INTEGER NOT NULL, ${historyQuery});`,
+    `CREATE TABLE IF NOT EXISTS historyDeleted (historyId TEXT NOT NULL, ${historyQuery});`,
   );
 
   await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS users (
