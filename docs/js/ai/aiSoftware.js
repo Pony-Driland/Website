@@ -3263,6 +3263,10 @@ const AiScriptStart = () => {
               }
               // Check room
               else {
+                // Insert data
+                client.setUser(result);
+                console.log('[socket-io] [user-data]', client.getUser());
+                console.log('[socket-io] [ratelimit]', client.getRateLimit());
                 client.existsRoom().then((result2) => {
                   // Join room
                   const joinRoom = () =>
@@ -3303,67 +3307,95 @@ const AiScriptStart = () => {
 
           // Dice
           client.onDiceRoll((result) => {
-            console.log('dice', result);
+            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+              console.log('dice', result);
+            }
           });
 
           // Get user updated
           client.onUserUpdated((result) => {
-            console.log('userupdated', result);
+            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+              console.log('userupdated', result);
+            }
           });
 
           // Get ratelimit data
           client.onGetRateLimit((result) => {
-            console.log('ratelimit', result);
+            client.setRateLimit(result);
+            console.log('[socket-io] [ratelimit]', client.getRateLimit());
           });
 
           // Room updates
           client.onRoomUpdates((result) => {
-            console.log('roomupdate', result);
+            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+              console.log('roomupdate', result);
+            }
           });
 
           // User ban
           client.onRoomBan((result) => {
-            console.log('roomban', result);
+            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+              console.log('roomban', result);
+            }
           });
 
           // User kick
           client.onRoomKick((result) => {
-            console.log('roomkick', result);
+            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+              console.log('roomkick', result);
+            }
           });
 
           // User left
           client.onUserLeft((result) => {
-            console.log('userleft', result);
+            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+              console.log('userleft', result);
+            }
           });
 
           // User join
           client.onUserJoin((result) => {
-            console.log('userjoin', result);
+            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+              console.log('userjoin', result);
+            }
           });
 
           // Room data
           client.onRoomData((result) => {
-            console.log('roomdata', result);
+            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+              console.log('roomdata', result);
+            }
           });
 
           // Private room data
           client.onPrivateRoomData((result) => {
-            console.log('privateroomdata', result);
+            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+              console.log('privateroomdata', result);
+            }
           });
 
           // Message delete
           client.onMessageDelete((result) => {
-            console.log('messagedelete', result);
+            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+              console.log('messagedelete', result);
+            }
           });
 
           // Message edit
           client.onMessageEdit((result) => {
-            console.log('messageedit', result);
+            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+              console.log('messageedit', result);
+            }
           });
 
           // Get room data
           client.onRoomEnter((result) => {
-            console.log('roomenter', result);
+            if (!client.setRoom(result)) makeTempMessage(`Invalid room data detected!`, 'Server');
+            console.log('[socket-io] [room-data]', {
+              history: client.getHistory(),
+              room: client.getRoom(),
+              users: client.getUsers(),
+            });
           });
 
           // Room user

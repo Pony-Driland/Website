@@ -12,6 +12,7 @@ import {
   accountNotDetected,
   getIniConfig,
   leaveRoom,
+  getRateLimit,
 } from './values';
 
 export default function userManager(socket, io) {
@@ -245,7 +246,13 @@ export default function userManager(socket, io) {
     );
 
     // Complete
-    fn({ userId, nickname });
+    fn({
+      userId,
+      nickname,
+      isAdmin: userId === getIniConfig('OWNER_ID'),
+      isMod: await moderators.has(userId),
+      ratelimit: getRateLimit(),
+    });
   });
 
   socket.on('disconnect', () => {

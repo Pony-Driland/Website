@@ -4,7 +4,6 @@ import TinySQL from '../TinySQL';
 
 import {
   userIsRateLimited,
-  sendRateLimit,
   userSession,
   roomUsers,
   roomData,
@@ -106,7 +105,6 @@ export default function roomManager(socket, io, appStorage) {
       history: historyData || [],
       data: room || {},
     });
-    sendRateLimit(socket);
 
     // Complete
     joinRoom(socket, io, roomId, fn);
