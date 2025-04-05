@@ -613,7 +613,14 @@ Updates the settings of a specific room. Only the room owner or the server owner
 - The user must be the **room owner** or **server owner**.
 - The room must exist.
 - Allowed updates:
-  - **`title`**: Limited to `ROOM_TITLE_SIZE_LIMIT` characters.
+  - **`title`**: Limited to `ROOM_TITLE_SIZE` characters.
+  - **`model`**: Limited to `MODEL_ID_SIZE` characters.
+  - **`maxOutputTokens`**: Is a REAL value in SQL.
+  - **`temperature`**: Is a REAL value in SQL.
+  - **`topP`**: Is a REAL value in SQL.
+  - **`topK`**: Is a REAL value in SQL.
+  - **`presencePenalty`**: Is a REAL value in SQL.
+  - **`frequencyPenalty`**: Is a REAL value in SQL.
   - **`password`**: Limited to `PASSWORD_SIZE_LIMIT` characters.
   - **`maxUsers`**: Must be a finite number between `1` and `MAX_USERS_PER_ROOM`.
 - If updates are applied, all users in the room will receive an `room-updated` event.

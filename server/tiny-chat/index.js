@@ -29,6 +29,13 @@ startFiles().then(async (appStorage) => {
     roomId TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
     title TEXT,
     password TEXT,
+    model TEXT,
+    maxOutputTokens REAL,
+    temperature REAL,
+    topP REAL,
+    topK REAL,
+    presencePenalty REAL,
+    frequencyPenalty REAL,
     maxUsers INTEGER DEFAULT 50,
     ownerId TEXT NOT NULL,
     disabled BOOLEAN DEFAULT 0
