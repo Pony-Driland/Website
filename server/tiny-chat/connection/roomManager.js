@@ -99,9 +99,9 @@ export default function roomManager(socket, io, appStorage) {
       : await history.getAmount(getIniConfig('HISTORY_SIZE'));
 
     // Emit chat history and settings to the user
-    socket.emit('room-users', roomUsers.get(roomId));
-    socket.emit('room-history', historyData);
-    socket.emit('update-room', room);
+    socket.emit('room-users', roomUsers.get(roomId) || {});
+    socket.emit('room-history', historyData || []);
+    socket.emit('update-room', room || {});
     sendRateLimit(socket);
 
     // Complete

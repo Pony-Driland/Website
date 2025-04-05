@@ -11,6 +11,7 @@ import {
   sendIncompleteDataInfo,
   accountNotDetected,
   getIniConfig,
+  leaveRoom,
 } from './values';
 
 export default function userManager(socket, io) {
