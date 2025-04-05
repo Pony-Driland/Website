@@ -122,6 +122,14 @@ class TinyClientIo {
     }
   }
 
+  editUser(result) {
+    if (!this.users) this.users = {};
+    if (objType(result, 'object') && typeof result.userId === 'string') {
+      if (typeof result.ping === 'number') this.users[result.userId].ping = result.ping;
+      if (typeof result.nickname === 'string') this.users[result.userId].nickname = result.nickname;
+    }
+  }
+
   removeUser(result) {
     if (objType(result, 'object') && this.users) {
       if (typeof result.userId === 'string' && this.users[result.userId]) {
@@ -138,6 +146,18 @@ class TinyClientIo {
 
   // Room
   setRoom(result) {
+    if (objType(result, 'object')) {
+      this.room = {
+        id: typeof result.roomId === 'string' ? result.roomId : '',
+        title: typeof result.title === 'string' ? result.title : '',
+        ownerId: typeof result.ownerId === 'string' ? result.ownerId : '',
+        maxUsers: typeof result.maxUsers === 'number' ? result.maxUsers : 0,
+        disabled: typeof result.disabled === 'number' ? (result.disabled ? true : false) : false,
+      };
+    }
+  }
+
+  setRoomBase(result) {
     if (
       objType(result, 'object') &&
       objType(result.data, 'object') &&
@@ -145,14 +165,7 @@ class TinyClientIo {
       Array.isArray(result.history)
     ) {
       // Room data
-      this.room = {
-        id: typeof result.data.roomId === 'string' ? result.data.roomId : '',
-        title: typeof result.data.title === 'string' ? result.data.title : '',
-        ownerId: typeof result.data.ownerId === 'string' ? result.data.ownerId : '',
-        maxUsers: typeof result.data.maxUsers === 'number' ? result.data.maxUsers : 0,
-        disabled:
-          typeof result.data.disabled === 'number' ? (result.data.disabled ? true : false) : false,
-      };
+      this.setRoom(result.data);
       // Users
       this.setUsers({});
       if (objType(result.users, 'object')) {
