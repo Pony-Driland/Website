@@ -51,27 +51,23 @@ startFiles().then(async (appStorage) => {
     );
   `);
 
-  await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS history (
-    historyId INTEGER PRIMARY KEY AUTOINCREMENT,
+  const historyQuery = `
     roomId TEXT TEXT NOT NULL,
     userId TEXT TEXT NOT NULL,
     text TEXT NOT NULL,
     date INTEGER NOT NULL,
     edited INTEGER,
+    tokens INTEGER,
+    model TEXT,
+    errorCode TEXT,
     FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE
-    );
-  `);
-
-  await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS historyDeleted (
-    historyId INTEGER PRIMARY KEY AUTOINCREMENT,
-    roomId TEXT TEXT NOT NULL,
-    userId TEXT TEXT NOT NULL,
-    text TEXT NOT NULL,
-    date INTEGER NOT NULL,
-    edited INTEGER,
-    FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE
-    );
-  `);
+  `;
+  await appStorage.runQuery(
+    `CREATE TABLE IF NOT EXISTS history (historyId INTEGER PRIMARY KEY AUTOINCREMENT, ${historyQuery});`,
+  );
+  await appStorage.runQuery(
+    `CREATE TABLE IF NOT EXISTS historyDeleted (historyId INTEGER NOT NULL, ${historyQuery});`,
+  );
 
   await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS users (
     userId TEXT PRIMARY KEY,
