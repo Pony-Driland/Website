@@ -3246,9 +3246,7 @@ const AiScriptStart = () => {
               'Server',
             );
 
-          const checkRoomIdEvent = (result) =>
-            objType(result, 'object') && result.roomId === client.getRoomId();
-
+          client.install();
           client.onConnect(() => {
             // First time message
             client.resetData();
@@ -3315,120 +3313,14 @@ const AiScriptStart = () => {
 
           // Dice
           client.onDiceRoll((result) => {
-            if (checkRoomIdEvent(result)) {
+            if (client.checkRoomId(result)) {
               console.log('dice', result);
             }
           });
 
-          // Get user updated
-          client.onUserUpdated((result) => {
-            if (checkRoomIdEvent(result) && objType(result.data, 'object')) {
-              client.editUser({ userId: result.userId, nickname: result.data.nickname });
-              console.log('userupdated', result);
-            }
-          });
-
-          // Get ratelimit data
-          client.onGetRateLimit((result) => {
-            client.setRateLimit(result);
-            console.log('[socket-io] [ratelimit]', client.getRateLimit());
-          });
-
-          // Room updates
-          client.onRoomUpdates((result) => {
-            if (checkRoomIdEvent(result) && objType(result.data, 'object')) {
-              client.setRoom(result.data);
-              console.log('[socket-io] [room]', client.getRoom());
-            }
-          });
-
-          // User ban
-          client.onRoomBan((result) => {
-            if (checkRoomIdEvent(result)) {
-              console.log('roomban', result);
-            }
-          });
-
-          // User kick
-          client.onRoomKick((result) => {
-            if (checkRoomIdEvent(result)) {
-              console.log('roomkick', result);
-            }
-          });
-
-          // User left
-          client.onUserLeft((result) => {
-            if (checkRoomIdEvent(result)) {
-              client.removeUser(result);
-              console.log('[socket-io] [room-users]', client.getUsers());
-            }
-          });
-
-          // User join
-          client.onUserJoin((result) => {
-            if (checkRoomIdEvent(result)) {
-              client.addUser(result);
-              console.log('[socket-io] [room-users]', client.getUsers());
-            }
-          });
-
-          // Room data
-          client.onRoomData((result) => {
-            if (checkRoomIdEvent(result)) {
-              console.log('roomdata', result);
-            }
-          });
-
           // New message
-          client.onNewMessage((result) => {
-            client.addHistory(result);
-            console.log('[socket-io] [message-add]', client.getHistory());
+          client.on('newMessage', () => {
             if (tinyAiScript.multiplayer) {
-            }
-          });
-
-          // Message delete
-          client.onMessageDelete((result) => {
-            if (checkRoomIdEvent(result)) {
-              client.removeHistory(result.id);
-              console.log('[socket-io] [message-delete]', client.getHistory());
-            }
-          });
-
-          // Message edit
-          client.onMessageEdit((result) => {
-            if (checkRoomIdEvent(result)) {
-              client.editHistory(result);
-              console.log('[socket-io] [message-edit]', client.getHistory());
-            }
-          });
-
-          // Get room data
-          client.onRoomEnter((result) => {
-            if (checkRoomIdEvent(result)) {
-              if (!client.setRoomBase(result))
-                makeTempMessage(`Invalid room data detected!`, 'Server');
-              console.log('[socket-io] [room-data]', {
-                history: client.getHistory(),
-                room: client.getRoom(),
-                users: client.getUsers(),
-                mods: client.getMods(),
-              });
-            }
-          });
-
-          // Mod list update
-          client.onRoomModChange((result) => {
-            if (checkRoomIdEvent(result)) {
-              if (Array.isArray(result.result)) {
-                for (const index in result.result) {
-                  if (typeof result.result[index] === 'string') {
-                    if (result.type === 'add') client.addMod(result.result[index]);
-                    if (result.type === 'remove') client.removeMod(result.result[index]);
-                  }
-                }
-              }
-              console.log('[socket-io] [mod-data]', client.getMods());
             }
           });
         }
