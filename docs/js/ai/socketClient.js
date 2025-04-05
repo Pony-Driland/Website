@@ -10,6 +10,12 @@ class TinyClientIo {
     this.id = null;
     this.connected = false;
 
+    this.ratelimit = {};
+    this.room = { id: '' };
+    this.user = {};
+    this.users = {};
+    this.history = [];
+
     if (this.socket) {
       console.log('[socket.io] Starting...');
       this.socket.on('disconnect', (reason, details) => {
@@ -40,6 +46,117 @@ class TinyClientIo {
         console.log('[socket.io] Reconnecting...');
       });
     }
+  }
+
+  // Get room id
+  getRoomId() {
+    return this.#cfg.roomId;
+  }
+
+  // Rate limit
+  setRateLimit(result) {
+    this.ratelimit = { limit: {}, size: {}, time: null, loadAllHistory: null };
+    if (objType(result, 'object')) {
+      this.ratelimit.loadAllHistory =
+        typeof result.loadAllHistory === 'boolean' ? result.loadAllHistory : true;
+      this.ratelimit.time = typeof result.time === 'number' ? result.time : 0;
+      if (objType(result.limit, 'object')) {
+        this.ratelimit.limit = {
+          events: typeof result.limit.events === 'number' ? result.limit.events : 0,
+          msg: typeof result.limit.msg === 'number' ? result.limit.msg : 0,
+          roomUsers: typeof result.limit.roomUsers === 'number' ? result.limit.roomUsers : 0,
+        };
+      }
+      if (objType(result.size, 'object')) {
+        this.ratelimit.size = {
+          history: typeof result.size.history === 'number' ? result.size.history : 0,
+          minPassword: typeof result.size.minPassword === 'number' ? result.size.minPassword : 0,
+          msg: typeof result.size.msg === 'number' ? result.size.msg : 0,
+          nickname: typeof result.size.nickname === 'number' ? result.size.nickname : 0,
+          password: typeof result.size.password === 'number' ? result.size.password : 0,
+          roomSize: typeof result.size.roomSize === 'number' ? result.size.roomSize : 0,
+          roomTitle: typeof result.size.roomTitle === 'number' ? result.size.roomTitle : 0,
+          userId: typeof result.size.userId === 'number' ? result.size.userId : 0,
+        };
+      }
+    }
+  }
+
+  getRateLimit() {
+    return this.ratelimit || {};
+  }
+
+  // User
+  setUser(result) {
+    if (objType(result, 'object')) {
+      this.user = {
+        isAdmin: typeof result.isAdmin === 'boolean' ? result.isAdmin : false,
+        isMod: typeof result.isMod === 'boolean' ? result.isMod : false,
+        nickname: typeof result.nickname === 'string' ? result.nickname : '',
+        userId: typeof result.userId === 'string' ? result.userId : '',
+      };
+      if (objType(result.ratelimit, 'object')) this.setRateLimit(result.ratelimit);
+    } else this.user = {};
+  }
+
+  getUser() {
+    return this.user || {};
+  }
+
+  // Users
+  setUsers(result) {
+    this.users = objType(result, 'object') ? result : {};
+  }
+
+  getUsers() {
+    return this.users || {};
+  }
+
+  // Room
+  setRoom(result) {
+    if (
+      objType(result, 'object') &&
+      objType(result.data, 'object') &&
+      objType(result.users, 'object') &&
+      Array.isArray(result.history)
+    ) {
+      // Room data
+      this.room = {
+        id: typeof result.data.roomId === 'string' ? result.data.roomId : '',
+        title: typeof result.data.title === 'string' ? result.data.title : '',
+        ownerId: typeof result.data.ownerId === 'string' ? result.data.ownerId : '',
+        maxUsers: typeof result.data.maxUsers === 'number' ? result.data.maxUsers : 0,
+        disabled:
+          typeof result.data.disabled === 'number' ? (result.data.disabled ? true : false) : false,
+      };
+      // Users
+      this.setUsers(result.users);
+      // History
+      this.setHistory(result.history);
+
+      // Complete
+      return true;
+    }
+    // Error
+    else {
+      this.room = { id: '' };
+      this.setUsers({});
+      this.setHistory([]);
+      return false;
+    }
+  }
+
+  getRoom() {
+    return this.room || {};
+  }
+
+  // History
+  setHistory(result) {
+    this.history = Array.isArray(result) ? result : [];
+  }
+
+  getHistory() {
+    return this.history || [];
   }
 
   // Socket emit

@@ -115,7 +115,7 @@ startFiles().then(async (appStorage) => {
   bannedUsers.setDb(appStorage, { name: 'banned', id: 'userId' });
   bannedUsers.setDebug(debugMode);
 
-  moderators.setDb(appStorage, { name: 'moderators', id: 'roomId' });
+  moderators.setDb(appStorage, { name: 'moderators', id: 'userId' });
   moderators.setDebug(debugMode);
 
   privateRoomData.setDb(appStorage, { name: 'privateRoomData', id: 'roomId', json: ['data'] });

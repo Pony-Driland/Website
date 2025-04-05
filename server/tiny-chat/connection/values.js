@@ -111,26 +111,28 @@ export const userSession = {
   },
 };
 
+export const getRateLimit = () => ({
+  size: {
+    history: getIniConfig('HISTORY_SIZE'),
+    userId: getIniConfig('USER_ID_SIZE'),
+    password: getIniConfig('PASSWORD_SIZE'),
+    minPassword: getIniConfig('MIN_PASSWORD_SIZE'),
+    nickname: getIniConfig('NICKNAME_SIZE'),
+    msg: getIniConfig('MESSAGE_SIZE'),
+    roomSize: getIniConfig('ROOM_ID_SIZE'),
+    roomTitle: getIniConfig('ROOM_TITLE_SIZE'),
+  },
+  limit: {
+    msg: getIniConfig('MESSAGES'),
+    events: getIniConfig('EVENT'),
+    roomUsers: getIniConfig('MAX_USERS_PER_ROOM'),
+  },
+  loadAllHistory: getIniConfig('LOAD_ALL_HISTORY'),
+  time: getIniConfig('RATE_LIMIT_TIME'),
+});
+
 export const sendRateLimit = (socket) => {
-  socket.emit('update-ratelimts', {
-    size: {
-      history: getIniConfig('HISTORY_SIZE'),
-      userId: getIniConfig('USER_ID_SIZE'),
-      password: getIniConfig('PASSWORD_SIZE'),
-      minPassword: getIniConfig('MIN_PASSWORD_SIZE'),
-      nickname: getIniConfig('NICKNAME_SIZE'),
-      msg: getIniConfig('MESSAGE_SIZE'),
-      roomSize: getIniConfig('ROOM_ID_SIZE'),
-      roomTitle: getIniConfig('ROOM_TITLE_SIZE'),
-    },
-    limit: {
-      msg: getIniConfig('MESSAGES'),
-      events: getIniConfig('EVENT'),
-      roomUsers: getIniConfig('MAX_USERS_PER_ROOM'),
-    },
-    loadAllHistory: getIniConfig('LOAD_ALL_HISTORY'),
-    time: getIniConfig('RATE_LIMIT_TIME'),
-  });
+  socket.emit('update-ratelimts', getRateLimit());
 };
 
 // Rate limit editor
