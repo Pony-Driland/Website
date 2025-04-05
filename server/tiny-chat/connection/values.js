@@ -62,7 +62,6 @@ export const createRoom = async (userId, roomId, password, title) => {
     maxUsers: getIniConfig('MAX_USERS_PER_ROOM'),
     ownerId: userId,
     disabled: false,
-    last_index: 0,
   });
 };
 
