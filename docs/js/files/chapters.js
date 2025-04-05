@@ -219,7 +219,7 @@ const storyData = {
 
                       for (const item in aiPage.room) {
                         aiPage.hash[item] = { dataType: 'string' };
-                        aiPage.tokens[item] = { dataType: 'object' };
+                        aiPage.tokens[item] = { dataType: 'number' };
                       }
 
                       aiPage.room.session = { primaryKey: true, dataType: 'string' };
@@ -230,10 +230,15 @@ const storyData = {
                       aiPage.data = {
                         session: aiPage.room.session,
                         id: { notNull: true, dataType: 'number' },
+                        tokens: { notNull: true, dataType: 'object' },
+                        hash: { notNull: true, dataType: 'string' },
                         data: { dataType: 'object' },
                       };
 
-                      console.log(aiPage);
+                      aiPage.customList = {
+                        session: aiPage.room.session,
+                        data: { dataType: 'array' },
+                      };
 
                       connStore
                         .initDb({
@@ -251,6 +256,10 @@ const storyData = {
                             {
                               name: 'aiSessionsTokens',
                               columns: aiPage.tokens,
+                            },
+                            {
+                              name: 'aiSessionsCustomList',
+                              columns: aiPage.customList,
                             },
                             {
                               name: 'aiSessionsData',
