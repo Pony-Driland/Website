@@ -190,7 +190,7 @@ class TinyClientIo extends EventEmitter {
       objType(result.data, 'object') &&
       objType(result.users, 'object') &&
       objType(result.roomData, 'object') &&
-      objType(result.roomPrivate, 'object') &&
+      objType(result.roomPrivateData, 'object') &&
       Array.isArray(result.history) &&
       Array.isArray(result.mods)
     ) {
