@@ -114,9 +114,7 @@ Allows a user to join a specific room. Validates room credentials, room availabi
 
     - The room's chat history is retrieved. If no history exists, a new one is created and associated with the room.
     - The user is sent the following data:
-      - `room-users`: List of users in the room.
-      - `room-history`: The room's chat history.
-      - `update-room`: The current settings of the room.
+      - `room-entered`: Data received to load the room on the user page.
 
 11. **Complete Room Join:**
     - The user is successfully joined to the room.

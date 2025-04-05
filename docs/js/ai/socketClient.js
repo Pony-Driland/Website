@@ -76,12 +76,12 @@ class TinyClientIo {
   }
 
   // On message load
-  onHistoryLoad(callback) {
-    this.socket.on('room-history', callback);
+  onRoomEnter(callback) {
+    this.socket.on('room-entered', callback);
   }
 
-  offHistoryLoad(callback) {
-    this.socket.off('room-history', callback);
+  offRoomEnter(callback) {
+    this.socket.off('room-entered', callback);
   }
 
   // On new message
@@ -127,24 +127,6 @@ class TinyClientIo {
 
   offGetRateLimit(callback) {
     this.socket.off('update-ratelimts', callback);
-  }
-
-  // On user list load from room
-  onUserList(callback) {
-    this.socket.on('room-users', callback);
-  }
-
-  offUserList(callback) {
-    this.socket.off('room-users', callback);
-  }
-
-  // On room history load
-  onGetHistory(callback) {
-    this.socket.on('room-history', callback);
-  }
-
-  offGetHistory(callback) {
-    this.socket.off('room-history', callback);
   }
 
   // On room updates
