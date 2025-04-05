@@ -3282,10 +3282,12 @@ const AiScriptStart = () => {
                   // Exists?
                   else if (result2.exists) joinRoom();
                   else {
-                    client.createRoom().then((result3) => {
-                      if (!result3.error) joinRoom();
-                      else sendSocketError(result3);
-                    });
+                    if (!tinyAiScript.multiplayer)
+                      client.createRoom().then((result3) => {
+                        if (!result3.error) joinRoom();
+                        else sendSocketError(result3);
+                      });
+                    else makeTempMessage('The room was not found', 'Server');
                   }
                 });
               }
