@@ -22,7 +22,11 @@ import * as ethers from 'ethers/lib.esm/index.js';
 import WalletConnectProvider from '@walletconnect/web3-provider';
 import WalletConnect from '@walletconnect/client';
 
+// jsstore
+import * as JsStore from "jsstore";
+
 // Imports
+global.window.JsStore = JsStore;
 global.window.tippy = tippy;
 global.window.io = io;
 global.window.forPromise = forPromise;
