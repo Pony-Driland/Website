@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import TimedMap from '../TimedMap';
+import TinySQL from '../TinySQL';
 
 export const userSockets = new Map(); // Socket users
 
@@ -14,17 +14,17 @@ export const _setIniConfig = (where, value) => {
 };
 
 // Database
-export const users = new TimedMap(); // Stores user credentials
-export const moderators = new TimedMap(); // Stores the list of server moderators
-export const bannedUsers = new TimedMap(); // Stores the list of banned users
+export const users = new TinySQL(); // Stores user credentials
+export const moderators = new TinySQL(); // Stores the list of server moderators
+export const bannedUsers = new TinySQL(); // Stores the list of banned users
 
-export const roomModerators = new TimedMap(); // Stores users banned from room
-export const roomBannedUsers = new TimedMap(); // Stores users banned from room
-export const rooms = new TimedMap(); // Stores room configurations, including password, etc.
+export const roomModerators = new TinySQL(); // Stores users banned from room
+export const roomBannedUsers = new TinySQL(); // Stores users banned from room
+export const rooms = new TinySQL(); // Stores room configurations, including password, etc.
 export const roomHistories = new Map(); // Stores room histories
 
-export const privateRoomData = new TimedMap(); // Stores room private data
-export const roomData = new TimedMap(); // Stores room data
+export const privateRoomData = new TinySQL(); // Stores room private data
+export const roomData = new TinySQL(); // Stores room data
 
 // Track the users in rooms
 export const roomUsers = new Map(); // Stores room users
