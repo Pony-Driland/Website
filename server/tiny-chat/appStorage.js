@@ -98,7 +98,8 @@ export default async function startFiles() {
     const loadTinyCfg = (theCfg) => {
       for (const item in theCfg) config[item] = theCfg[item];
       for (const item in theCfg.limits)
-        if (typeof theCfg.limits[item] === 'number') _setIniConfig(item, theCfg.limits[item]);
+        if (typeof theCfg.limits[item] === 'number' || typeof theCfg.limits[item] === 'string')
+          _setIniConfig(item, Number(theCfg.limits[item]));
 
       _setIniConfig('OPEN_REGISTRATION', getIniBoolean(theCfg.server.registration_open));
       _setIniConfig('LOAD_ALL_HISTORY', getIniBoolean(theCfg.server.load_all_history));

@@ -1,4 +1,4 @@
-import { objType } from "./lib/objChecker";
+import { objType } from './lib/objChecker';
 
 class TinySQL {
   #appStorage;
