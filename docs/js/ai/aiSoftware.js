@@ -3311,18 +3311,13 @@ const AiScriptStart = () => {
               $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
           });
 
-          // Dice
-          client.onDiceRoll((result) => {
-            if (client.checkRoomId(result)) {
-              console.log('dice', result);
-            }
-          });
-
           // New message
           client.on('newMessage', () => {
             if (tinyAiScript.multiplayer) {
             }
           });
+
+          client.on('diceRoll', () => {});
         }
 
         // No server
