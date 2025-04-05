@@ -51,7 +51,7 @@ class TinyClientIo {
   // Reset data
   resetData() {
     this.ratelimit = {};
-    this.room = { id: '' };
+    this.room = {};
     this.user = {};
     this.users = {};
     this.history = [];
@@ -194,9 +194,10 @@ class TinyClientIo {
     }
     // Error
     else {
-      this.room = { id: '' };
+      this.setRoom({});
       this.setUsers({});
       this.setHistory([]);
+      this.setMods([]);
       return false;
     }
   }
