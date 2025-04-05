@@ -771,8 +771,8 @@ $(() => {
   vanillaPwa.install();
   const startApp = () => {
     console.log('Starting App...');
-    storyData.start((fn, readme) => {
-      const tinyAiScript = AiScriptStart();
+    storyData.start((connStore, fn, readme) => {
+      const tinyAiScript = AiScriptStart(connStore);
       appData.ai.killIo = tinyAiScript.killIo;
 
       // Custom Colors

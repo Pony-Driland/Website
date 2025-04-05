@@ -88,7 +88,7 @@ window.addEventListener('beforeunload', function (e) {
   }
 });
 
-const AiScriptStart = () => {
+const AiScriptStart = (connStore) => {
   const tinyAiScript = {};
 
   // Read AI Apis

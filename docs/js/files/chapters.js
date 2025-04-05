@@ -197,14 +197,88 @@ const storyData = {
                     // Complete
                     storyData.count++;
                     if (storyData.count === storyData.chapter.amount) {
-                      delete storyData.count;
-                      delete storyData.start;
-                      console.log('App Started!');
-                      console.log('Loading UI...');
-                      startApp(function () {
-                        $.LoadingOverlay('hide');
-                        console.log('UI loaded!');
-                      }, readme);
+                      // Start jsStore
+                      const connStore = new JsStore.Connection(new Worker('jsstore.worker.min.js'));
+
+                      // Ai page database
+                      const aiPage = { room: {}, hash: {}, tokens: {}, data: {} };
+                      aiPage.room = {
+                        prompt: { dataType: 'string' },
+                        firstDialogue: { dataType: 'string' },
+                        systemInstruction: { dataType: 'string' },
+                        rpgSchema: { dataType: 'object' },
+                        rpgData: { dataType: 'object' },
+                        rpgPrivateData: { dataType: 'object' },
+                        maxOutputTokens: { dataType: 'number' },
+                        temperature: { dataType: 'number' },
+                        topP: { dataType: 'number' },
+                        topK: { dataType: 'number' },
+                        presencePenalty: { dataType: 'number' },
+                        frequencyPenalty: { dataType: 'number' },
+                      };
+
+                      for (const item in aiPage.room) {
+                        aiPage.hash[item] = { dataType: 'string' };
+                        aiPage.tokens[item] = { dataType: 'object' };
+                      }
+
+                      aiPage.room.session = { primaryKey: true, dataType: 'string' };
+                      aiPage.room.model = { dataType: 'string' };
+                      aiPage.hash.session = aiPage.room.session;
+                      aiPage.tokens.session = aiPage.room.session;
+
+                      aiPage.data = {
+                        session: aiPage.room.session,
+                        id: { notNull: true, dataType: 'number' },
+                        data: { dataType: 'object' },
+                      };
+
+                      console.log(aiPage);
+
+                      connStore
+                        .initDb({
+                          name: 'pony-driland',
+                          tables: [
+                            // Ai page
+                            {
+                              name: 'aiSessionsRoom',
+                              columns: aiPage.room,
+                            },
+                            {
+                              name: 'aiSessionsHash',
+                              columns: aiPage.hash,
+                            },
+                            {
+                              name: 'aiSessionsTokens',
+                              columns: aiPage.tokens,
+                            },
+                            {
+                              name: 'aiSessionsData',
+                              columns: aiPage.data,
+                            },
+                          ],
+                        })
+                        .then(() => {
+                          // Complete
+                          delete storyData.count;
+                          delete storyData.start;
+                          console.log('App Started!');
+                          console.log('Loading UI...');
+                          // Start app now
+                          startApp(
+                            connStore,
+                            function () {
+                              $.LoadingOverlay('hide');
+                              console.log('UI loaded!');
+                            },
+                            readme,
+                          );
+                        })
+                        // Error
+                        .catch((err) => {
+                          alert(err.message);
+                          console.error(err);
+                        });
                     }
                   })
 
