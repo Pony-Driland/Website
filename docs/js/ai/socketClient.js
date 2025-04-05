@@ -1,7 +1,8 @@
-class TinyClientIo {
+class TinyClientIo extends EventEmitter {
   #cfg;
 
   constructor(cfg) {
+    super();
     const tinyThis = this;
     this.#cfg = cfg;
     this.socket = typeof cfg.ip === 'string' && cfg.ip.length > 0 ? new io(cfg.ip) : null;
@@ -613,5 +614,144 @@ class TinyClientIo {
 
   destroy() {
     if (this.socket) this.socket.destroy();
+  }
+
+  checkRoomId(result) {
+    return objType(result, 'object') && result.roomId === this.getRoomId();
+  }
+
+  install() {
+    const client = this;
+    // Get user updated
+    client.onUserUpdated((result) => {
+      if (client.checkRoomId(result) && objType(result.data, 'object')) {
+        client.editUser({ userId: result.userId, nickname: result.data.nickname });
+
+        client.emit('userUpdated', result);
+        console.log('[socket-io] [user-data]', this.getUser());
+      }
+    });
+
+    // Get ratelimit data
+    client.onGetRateLimit((result) => {
+      client.setRateLimit(result);
+
+      client.emit('getRateLimit', result);
+      console.log('[socket-io] [ratelimit]', client.getRateLimit());
+    });
+
+    // Room updates
+    client.onRoomUpdates((result) => {
+      if (client.checkRoomId(result) && objType(result.data, 'object')) {
+        client.setRoom(result.data);
+
+        client.emit('roomUpdates', result);
+        console.log('[socket-io] [room]', client.getRoom());
+      }
+    });
+
+    // User ban
+    client.onRoomBan((result) => {
+      if (client.checkRoomId(result)) {
+        console.log('roomban', result);
+        ////////////////////////////////////
+      }
+    });
+
+    // User kick
+    client.onRoomKick((result) => {
+      if (client.checkRoomId(result)) {
+        console.log('roomkick', result);
+        ////////////////////////////////////
+      }
+    });
+
+    // User left
+    client.onUserLeft((result) => {
+      if (client.checkRoomId(result)) {
+        client.removeUser(result);
+
+        client.emit('userLeft', result);
+        console.log('[socket-io] [room-users]', client.getUsers());
+      }
+    });
+
+    // User join
+    client.onUserJoin((result) => {
+      if (client.checkRoomId(result)) {
+        client.addUser(result);
+
+        client.emit('userJoin', result);
+        console.log('[socket-io] [room-users]', client.getUsers());
+      }
+    });
+
+    // Room data
+    client.onRoomData((result) => {
+      if (client.checkRoomId(result)) {
+        console.log('roomdata', result);
+        ////////////////////////////////////
+      }
+    });
+
+    // New message
+    client.onNewMessage((result) => {
+      client.addHistory(result);
+
+      client.emit('newMessage', result);
+      console.log('[socket-io] [message-add]', client.getHistory());
+    });
+
+    // Message delete
+    client.onMessageDelete((result) => {
+      if (client.checkRoomId(result)) {
+        client.removeHistory(result.id);
+
+        client.emit('messageDelete', result);
+        console.log('[socket-io] [message-delete]', client.getHistory());
+      }
+    });
+
+    // Message edit
+    client.onMessageEdit((result) => {
+      if (client.checkRoomId(result)) {
+        client.editHistory(result);
+
+        client.emit('messageEdit', result);
+        console.log('[socket-io] [message-edit]', client.getHistory());
+      }
+    });
+
+    // Get room data
+    client.onRoomEnter((result) => {
+      if (client.checkRoomId(result)) {
+        if (!client.setRoomBase(result)) makeTempMessage(`Invalid room data detected!`, 'Server');
+
+        client.emit('roomEnter', result);
+        console.log('[socket-io] [room-data]', {
+          history: client.getHistory(),
+          room: client.getRoom(),
+          users: client.getUsers(),
+          mods: client.getMods(),
+        });
+      }
+    });
+
+    // Mod list update
+    client.onRoomModChange((result) => {
+      if (client.checkRoomId(result)) {
+        if (Array.isArray(result.result)) {
+          for (const index in result.result) {
+            if (typeof result.result[index] === 'string') {
+              if (result.type === 'add') client.addMod(result.result[index]);
+              if (result.type === 'remove') client.removeMod(result.result[index]);
+            }
+          }
+        }
+
+        client.emit('roomModChange', result);
+        console.log('[socket-io] [mod-data]', client.getMods());
+      }
+    });
   }
 }
