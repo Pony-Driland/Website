@@ -530,7 +530,7 @@ Adds moderators to a room. Only the room owner or the server owner can perform t
 4. Retrieves the room data.
 5. Verifies if the user is the room owner or the server owner.
 6. Adds new moderators from `mods` if they are not already moderators and exist in the room users list.
-7. Updates the room data and notifies all users in the room via `update-room` event.
+7. Updates the room data and notifies all users in the room via `room-mod-updated` event.
 8. Returns a success response.
 
 ---
@@ -572,7 +572,7 @@ Removes moderators from a room. Only the room owner or the server owner can perf
 4. Retrieves the room data.
 5. Verifies if the user is the room owner or the server owner.
 6. Removes moderators listed in `mods` from the room's moderator list.
-7. Updates the room data and notifies all users in the room via `update-room` event.
+7. Updates the room data and notifies all users in the room via `room-mod-updated` event.
 8. Returns a success response.
 
 ---
@@ -616,7 +616,7 @@ Updates the settings of a specific room. Only the room owner or the server owner
   - **`title`**: Limited to `ROOM_TITLE_SIZE_LIMIT` characters.
   - **`password`**: Limited to `PASSWORD_SIZE_LIMIT` characters.
   - **`maxUsers`**: Must be a finite number between `1` and `MAX_USERS_PER_ROOM`.
-- If updates are applied, all users in the room will receive an `update-room` event.
+- If updates are applied, all users in the room will receive an `room-updated` event.
 
 #### Example Usage
 

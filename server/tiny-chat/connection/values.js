@@ -133,7 +133,7 @@ export const getRateLimit = () => ({
 });
 
 export const sendRateLimit = (socket) => {
-  socket.emit('update-ratelimts', getRateLimit());
+  socket.emit('ratelimt-updated', getRateLimit());
 };
 
 // Rate limit editor
