@@ -3261,24 +3261,40 @@ const AiScriptStart = () => {
                 sendSocketError(result);
                 $.LoadingOverlay('hide');
               }
-              // Join room
-              else
-                client.joinRoom().then((result2) => {
-                  if (!result2.error) {
-                    makeTempMessage('You successfully entered the room!', 'Server');
-                  }
-                  // Error
-                  else sendSocketError(result2);
+              // Check room
+              else {
+                client.existsRoom().then((result2) => {
+                  // Join room
+                  const joinRoom = () =>
+                    client.joinRoom().then((result4) => {
+                      if (!result4.error) {
+                        makeTempMessage('You successfully entered the room!', 'Server');
+                      }
+                      // Error
+                      else sendSocketError(result4);
 
-                  // Complete
-                  $.LoadingOverlay('hide');
+                      // Complete
+                      $.LoadingOverlay('hide');
+                    });
+
+                  // Error
+                  if (result2.error) sendSocketError(result2);
+                  // Exists?
+                  else if (result2.exists) joinRoom();
+                  else {
+                    client.createRoom().then((result3) => {
+                      if (!result3.error) joinRoom();
+                      else sendSocketError(result3);
+                    });
+                  }
                 });
+              }
             });
           });
 
           // Disconnected
-          client.onDisconnect(() => {
-            makeTempMessage("You've been disconected", 'Server');
+          client.onDisconnect((reason, details) => {
+            makeTempMessage(`You are disconected! ${details.description}`, 'Server');
             if (tinyAiScript.multiplayer)
               $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
           });

@@ -6,6 +6,7 @@ import { Client } from 'pg';
 import ini from 'ini';
 
 import { _setIniConfig } from './connection/values';
+import isDebug from './isDebug';
 
 const FOLDER_NAME = 'tiny-chat_data';
 
@@ -13,10 +14,9 @@ const FOLDER_NAME = 'tiny-chat_data';
 function createAppDirectory() {
   console.log('[APP] [INFO] Starting data directory creation...');
 
-  const appDirectory =
-    process.env.NODE_ENV === 'production' || process.pkg
-      ? path.join(path.dirname(process.execPath), FOLDER_NAME) // For production, next to the .exe
-      : path.join(__dirname, `../${FOLDER_NAME}`); // For development, inside the project folder
+  const appDirectory = isDebug()
+    ? path.join(path.dirname(process.execPath), FOLDER_NAME) // For production, next to the .exe
+    : path.join(__dirname, `../${FOLDER_NAME}`); // For development, inside the project folder
 
   console.log(`[APP] [INFO] Checking if directory ${appDirectory} exists...`);
 
@@ -99,10 +99,14 @@ export default async function startFiles() {
       for (const item in theCfg) config[item] = theCfg[item];
       for (const item in theCfg.limits)
         if (typeof theCfg.limits[item] === 'number') _setIniConfig(item, theCfg.limits[item]);
+
       _setIniConfig('OPEN_REGISTRATION', getIniBoolean(theCfg.server.registration_open));
       _setIniConfig('LOAD_ALL_HISTORY', getIniBoolean(theCfg.server.load_all_history));
-      if (typeof theCfg.server.owner_id === 'string')
-        _setIniConfig('OWNER_ID', theCfg.server.owner_id);
+
+      if (typeof theCfg.genesis.owner_id === 'string')
+        _setIniConfig('OWNER_ID', theCfg.genesis.owner_id);
+      if (typeof theCfg.genesis.owner_password === 'string')
+        _setIniConfig('OWNER_PASSWORD', theCfg.genesis.owner_password);
     };
 
     loadTinyCfg(defaultCfg);

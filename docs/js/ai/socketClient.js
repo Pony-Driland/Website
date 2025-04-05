@@ -20,7 +20,6 @@ class TinyClientIo {
       });
 
       this.socket.on('connect_error', (err) => {
-        console.error(err);
         if (!tinyThis.socket.active) {
           // the connection was denied by the server
           // in that case, `socket.connect()` must be manually called in order to reconnect
@@ -205,7 +204,7 @@ class TinyClientIo {
   joinRoom() {
     return this.#socketEmitApi('join', {
       roomId: this.#cfg.roomId,
-      roomPassword: this.#cfg.password,
+      password: this.#cfg.roomPassword,
     });
   }
 
@@ -241,10 +240,17 @@ class TinyClientIo {
   }
 
   // Create room
-  createRoom(password = '', title = '') {
+  existsRoom() {
+    return this.#socketEmitApi('exists-room', {
+      roomId: this.#cfg.roomId,
+    });
+  }
+
+  // Create room
+  createRoom(title = '') {
     return this.#socketEmitApi('create-room', {
       roomId: this.#cfg.roomId,
-      password,
+      password: this.#cfg.roomPassword,
       title,
     });
   }

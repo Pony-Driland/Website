@@ -7,6 +7,7 @@ import {
   accountNotDetected,
   sendIncompleteDataInfo,
   getIniConfig,
+  roomModerators,
 } from './values';
 
 export default function messageManager(socket, io) {
@@ -76,7 +77,7 @@ export default function messageManager(socket, io) {
   socket.on('edit-message', async (data, fn) => {
     const { roomId, messageId, newText } = data;
     // Validate values
-    if (typeof newText !== 'string' || typeof roomId !== 'string' || messageId !== 'string')
+    if (typeof newText !== 'string' || typeof roomId !== 'string' || typeof messageId !== 'string')
       return sendIncompleteDataInfo(fn);
 
     // Get user
@@ -114,7 +115,7 @@ export default function messageManager(socket, io) {
       userId !== getIniConfig('OWNER_ID') &&
       !(await moderators.has(userId)) &&
       room.ownerId !== userId &&
-      !room.moderators.has(userId)
+      !(await roomModerators.has(roomId, userId))
     )
       return fn({
         error: true,
@@ -167,7 +168,7 @@ export default function messageManager(socket, io) {
       userId !== getIniConfig('OWNER_ID') &&
       !(await moderators.has(userId)) &&
       room.ownerId !== userId &&
-      !room.moderators.has(userId)
+      !(await roomModerators.has(roomId, userId))
     )
       return fn({
         error: true,
