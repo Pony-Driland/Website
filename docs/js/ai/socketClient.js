@@ -112,6 +112,26 @@ class TinyClientIo {
     this.users = objType(result, 'object') ? result : {};
   }
 
+  addUser(result) {
+    if (!this.users) this.users = {};
+    if (objType(result, 'object') && typeof result.userId === 'string') {
+      this.users[result.userId] = {
+        ping: typeof result.ping === 'number' ? result.ping : 0,
+        nickname: typeof result.nickname === 'string' ? result.nickname : null,
+      };
+    }
+  }
+
+  removeUser(result) {
+    if (objType(result, 'object') && this.users) {
+      if (typeof result.userId === 'string' && this.users[result.userId]) {
+        delete this.users[result.userId];
+        return true;
+      }
+    }
+    return false;
+  }
+
   getUsers() {
     return this.users || {};
   }
@@ -134,7 +154,13 @@ class TinyClientIo {
           typeof result.data.disabled === 'number' ? (result.data.disabled ? true : false) : false,
       };
       // Users
-      this.setUsers(result.users);
+      this.setUsers({});
+      if (objType(result.users, 'object')) {
+        for (const item in result.users) {
+          this.addUser(result.users[item]);
+        }
+      }
+
       // History
       this.setHistory(result.history);
 
