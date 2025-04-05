@@ -1605,8 +1605,10 @@ const AiScriptStart = () => {
                 const startTinyMap = function (place) {
                   // Get Map Data
                   let maps;
+                  let location;
                   try {
                     maps = rpgData.data[place].getEditor('root.settings.maps').getValue();
+                    location = rpgData.data[place].getEditor('root.location').getValue();
                   } catch (e) {
                     maps = null;
                   }
@@ -1617,6 +1619,8 @@ const AiScriptStart = () => {
                     if (Array.isArray(maps)) {
                       for (const index in maps) {
                         const map = new TinyMap(maps[index]);
+                        map.setLocation(location);
+                        map.buildMap(true);
                         tinyHtml.append(
                           map.getMapBaseHtml(),
                           $('<center>').append(map.getMapButton()),

@@ -90,6 +90,23 @@
     text-align: center;
 }
 
+#tinyMaps table td[location_enabled="on"] {
+    box-shadow: 0 0 0 rgba(255, 0, 0, 0.7);
+    animation: tinymaps_pulse_mark 1.5s infinite;
+}
+
+@keyframes tinymaps_pulse_mark {
+0% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+}
+70% {
+    box-shadow: 0 0 0 15px rgba(255, 0, 0, 0);
+}
+100% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+}
+}
+
 #tinyMaps table {
     table-layout: fixed;
 }
