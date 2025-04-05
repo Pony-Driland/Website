@@ -8,6 +8,7 @@ import {
   sendIncompleteDataInfo,
   getIniConfig,
   roomModerators,
+  roomHistoriesDeleted,
 } from './values';
 
 export default function messageManager(socket, io) {
@@ -173,6 +174,7 @@ export default function messageManager(socket, io) {
       });
 
     // Delete message
+    await roomHistoriesDeleted.set(roomId, msg);
     await history.delete(messageId);
 
     // Emit the event only to logged-in users in the room

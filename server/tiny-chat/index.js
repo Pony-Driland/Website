@@ -12,6 +12,7 @@ import {
   privateRoomData,
   roomBannedUsers,
   roomData,
+  roomHistoriesDeleted,
   roomModerators,
   rooms,
   users,
@@ -51,6 +52,17 @@ startFiles().then(async (appStorage) => {
   `);
 
   await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS history (
+    historyId INTEGER PRIMARY KEY AUTOINCREMENT,
+    roomId TEXT TEXT NOT NULL,
+    userId TEXT TEXT NOT NULL,
+    text TEXT NOT NULL,
+    date INTEGER NOT NULL,
+    edited INTEGER,
+    FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE
+    );
+  `);
+
+  await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS historyDeleted (
     historyId INTEGER PRIMARY KEY AUTOINCREMENT,
     roomId TEXT TEXT NOT NULL,
     userId TEXT TEXT NOT NULL,
@@ -129,6 +141,13 @@ startFiles().then(async (appStorage) => {
 
   users.setDb(appStorage, { name: 'users', id: 'userId' });
   users.setDebug(debugMode);
+
+  roomHistoriesDeleted.setDb(appStorage, {
+    name: 'historyDeleted',
+    id: 'roomId',
+    subId: 'historyId',
+  });
+  roomHistoriesDeleted.setDebug(debugMode);
 
   // Start admin account
   const ownerData = {
