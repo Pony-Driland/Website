@@ -122,6 +122,7 @@ class TinyClientIo extends EventEmitter {
         ping: typeof result.ping === 'number' ? result.ping : 0,
         nickname: typeof result.nickname === 'string' ? result.nickname : null,
       };
+      return this.users[result.userId];
     }
   }
 
@@ -130,6 +131,7 @@ class TinyClientIo extends EventEmitter {
     if (objType(result, 'object') && typeof result.userId === 'string') {
       if (typeof result.ping === 'number') this.users[result.userId].ping = result.ping;
       if (typeof result.nickname === 'string') this.users[result.userId].nickname = result.nickname;
+      return this.users[result.userId];
     }
   }
 
@@ -137,10 +139,10 @@ class TinyClientIo extends EventEmitter {
     if (objType(result, 'object') && this.users) {
       if (typeof result.userId === 'string' && this.users[result.userId]) {
         delete this.users[result.userId];
-        return true;
+        return result.userId;
       }
     }
-    return false;
+    return null;
   }
 
   getUsers() {
@@ -164,6 +166,7 @@ class TinyClientIo extends EventEmitter {
           typeof result.frequencyPenalty === 'number' ? result.frequencyPenalty : null,
         disabled: typeof result.disabled === 'number' ? (result.disabled ? true : false) : false,
       };
+      return this.room;
     }
   }
 
@@ -222,18 +225,28 @@ class TinyClientIo extends EventEmitter {
   }
 
   addHistory(data) {
-    if (this.history.findIndex((item) => item.id === data.id) < 0)
-      this.history.push(this.#filterHistoryData(item));
+    if (this.history.findIndex((item) => item.id === data.id) < 0) {
+      const newData = this.#filterHistoryData(item);
+      this.history.push(newData);
+      return newData;
+    }
   }
 
   editHistory(data) {
     const index = this.history.findIndex((item) => item.id === data.id);
-    if (index > -1) this.history[index] = this.#filterHistoryData(data);
+    if (index > -1) {
+      this.history[index] = this.#filterHistoryData(data);
+      return this.history[index];
+    }
   }
 
   removeHistory(id) {
     const index = this.history.findIndex((item) => item.id === id);
-    if (index > -1) this.history.splice(index, 1);
+    if (index > -1) {
+      const id = this.history[index].id;
+      this.history.splice(index, 1);
+      return id;
+    }
   }
 
   // Mods
@@ -622,12 +635,35 @@ class TinyClientIo extends EventEmitter {
 
   install() {
     const client = this;
+    // Dice
+    client.onDiceRoll((result) => {
+      if (client.checkRoomId(result)) {
+        const data = { total: null, results: null };
+        if (typeof result.total === 'number') data.total = result.total;
+        if (Array.isArray(result.results)) {
+          data.results = [];
+          for (const index in result.results)
+            if (
+              typeof result.results[index].sides === 'number' &&
+              typeof result.results[index].roll === 'number'
+            )
+              data.results.push({
+                sides: result.results[index].sides,
+                roll: result.results[index].roll,
+              });
+        }
+
+        client.emit('diceRoll', data);
+        console.log('[socket-io] [dice]', data);
+      }
+    });
+
     // Get user updated
     client.onUserUpdated((result) => {
       if (client.checkRoomId(result) && objType(result.data, 'object')) {
-        client.editUser({ userId: result.userId, nickname: result.data.nickname });
+        const data = client.editUser({ userId: result.userId, nickname: result.data.nickname });
 
-        client.emit('userUpdated', result);
+        if (data) client.emit('userUpdated', data);
         console.log('[socket-io] [user-data]', client.getUser());
       }
     });
@@ -635,43 +671,37 @@ class TinyClientIo extends EventEmitter {
     // Get ratelimit data
     client.onGetRateLimit((result) => {
       client.setRateLimit(result);
-
-      client.emit('getRateLimit', result);
+      client.emit('getRateLimit', client.getRateLimit());
       console.log('[socket-io] [ratelimit]', client.getRateLimit());
     });
 
     // Room updates
     client.onRoomUpdates((result) => {
       if (client.checkRoomId(result) && objType(result.data, 'object')) {
-        client.setRoom(result.data);
-
-        client.emit('roomUpdates', result);
+        const data = client.setRoom(result.data);
+        if (data) client.emit('roomUpdates', data);
         console.log('[socket-io] [room]', client.getRoom());
       }
     });
 
     // User ban
     client.onRoomBan((result) => {
-      if (client.checkRoomId(result)) {
-        console.log('roomban', result);
-        ////////////////////////////////////
-      }
+      if (client.checkRoomId(result))
+        client.emit('userBan', typeof result.userId === 'string' ? result.userId : null);
     });
 
     // User kick
     client.onRoomKick((result) => {
-      if (client.checkRoomId(result)) {
-        console.log('roomkick', result);
-        ////////////////////////////////////
-      }
+      if (client.checkRoomId(result))
+        client.emit('userKick', typeof result.userId === 'string' ? result.userId : null);
     });
 
     // User left
     client.onUserLeft((result) => {
       if (client.checkRoomId(result)) {
-        client.removeUser(result);
+        const data = client.removeUser(result);
 
-        client.emit('userLeft', result);
+        if (data) client.emit('userLeft', data);
         console.log('[socket-io] [room-users]', client.getUsers());
       }
     });
@@ -679,9 +709,9 @@ class TinyClientIo extends EventEmitter {
     // User join
     client.onUserJoin((result) => {
       if (client.checkRoomId(result)) {
-        client.addUser(result);
+        const data = client.addUser(result);
 
-        client.emit('userJoin', result);
+        if (data) client.emit('userJoin', data);
         console.log('[socket-io] [room-users]', client.getUsers());
       }
     });
@@ -696,18 +726,17 @@ class TinyClientIo extends EventEmitter {
 
     // New message
     client.onNewMessage((result) => {
-      client.addHistory(result);
-
-      client.emit('newMessage', result);
+      const data = client.addHistory(result);
+      if (data) client.emit('newMessage', data);
       console.log('[socket-io] [message-add]', client.getHistory());
     });
 
     // Message delete
     client.onMessageDelete((result) => {
       if (client.checkRoomId(result)) {
-        client.removeHistory(result.id);
+        const data = client.removeHistory(result.id);
 
-        client.emit('messageDelete', result);
+        if (data) client.emit('messageDelete', data);
         console.log('[socket-io] [message-delete]', client.getHistory());
       }
     });
@@ -715,9 +744,8 @@ class TinyClientIo extends EventEmitter {
     // Message edit
     client.onMessageEdit((result) => {
       if (client.checkRoomId(result)) {
-        client.editHistory(result);
-
-        client.emit('messageEdit', result);
+        const data = client.editHistory(result);
+        if (data) client.emit('messageEdit', data);
         console.log('[socket-io] [message-edit]', client.getHistory());
       }
     });
@@ -727,7 +755,7 @@ class TinyClientIo extends EventEmitter {
       if (client.checkRoomId(result)) {
         if (!client.setRoomBase(result)) makeTempMessage(`Invalid room data detected!`, 'Server');
 
-        client.emit('roomEnter', result);
+        client.emit('roomEnter');
         console.log('[socket-io] [room-data]', {
           history: client.getHistory(),
           room: client.getRoom(),
@@ -743,13 +771,18 @@ class TinyClientIo extends EventEmitter {
         if (Array.isArray(result.result)) {
           for (const index in result.result) {
             if (typeof result.result[index] === 'string') {
-              if (result.type === 'add') client.addMod(result.result[index]);
-              if (result.type === 'remove') client.removeMod(result.result[index]);
+              if (result.type === 'add') {
+                client.addMod(result.result[index]);
+                client.emit('roomModChange', 'add', result.result[index]);
+              }
+              if (result.type === 'remove') {
+                client.removeMod(result.result[index]);
+                client.emit('roomModChange', 'remove', result.result[index]);
+              }
             }
           }
         }
 
-        client.emit('roomModChange', result);
         console.log('[socket-io] [mod-data]', client.getMods());
       }
     });
