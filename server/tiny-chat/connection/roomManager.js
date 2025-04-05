@@ -99,6 +99,7 @@ export default function roomManager(socket, io, appStorage) {
       : await history.getAmount(getIniConfig('HISTORY_SIZE'));
 
     // Emit chat history and settings to the user
+    if (typeof room.password !== 'undefined') delete room.password;
     socket.emit('room-users', roomUsers.get(roomId) || {});
     socket.emit('room-history', historyData || []);
     socket.emit('update-room', room || {});
@@ -570,7 +571,9 @@ export default function roomManager(socket, io, appStorage) {
       await rooms.set(roomId, Object.assign(room, allowedUpdates));
 
       // Notify all users in the room about the updated settings
-      io.to(roomId).emit('update-room', { room: await rooms.get(roomId), roomId });
+      const newRoom = await rooms.get(roomId);
+      if (typeof newRoom.password !== 'undefined') delete newRoom.password;
+      io.to(roomId).emit('update-room', { room: newRoom, roomId });
     }
 
     // Complete
