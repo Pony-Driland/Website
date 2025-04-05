@@ -149,7 +149,6 @@ class TinyClientIo {
   setRoom(result) {
     if (objType(result, 'object')) {
       this.room = {
-        id: typeof result.roomId === 'string' ? result.roomId : '',
         title: typeof result.title === 'string' ? result.title : '',
         ownerId: typeof result.ownerId === 'string' ? result.ownerId : '',
         maxUsers: typeof result.maxUsers === 'number' ? result.maxUsers : 0,
@@ -204,6 +203,20 @@ class TinyClientIo {
 
   getHistory() {
     return this.history || [];
+  }
+
+  addHistory(data) {
+    if (this.history.findIndex((item) => item.id === data.id) < 0) this.history.push(userId);
+  }
+
+  editHistory(data) {
+    const index = this.history.findIndex((item) => item.id === data.id);
+    if (index > -1) this.history[index] = data;
+  }
+
+  removeHistory(id) {
+    const index = this.history.findIndex((item) => item.id === id);
+    if (index > -1) this.history.splice(index, 1);
   }
 
   // Mods

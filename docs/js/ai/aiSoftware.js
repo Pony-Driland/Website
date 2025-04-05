@@ -3375,17 +3375,27 @@ const AiScriptStart = () => {
             }
           });
 
+          // New message
+          client.onNewMessage((result) => {
+            client.addHistory(result);
+            console.log('[socket-io] [message-add]', client.getHistory());
+            if (tinyAiScript.multiplayer) {
+            }
+          });
+
           // Message delete
           client.onMessageDelete((result) => {
             if (checkRoomIdEvent(result)) {
-              console.log('messagedelete', result);
+              client.removeHistory(result.id);
+              console.log('[socket-io] [message-delete]', client.getHistory());
             }
           });
 
           // Message edit
           client.onMessageEdit((result) => {
             if (checkRoomIdEvent(result)) {
-              console.log('messageedit', result);
+              client.editHistory(result);
+              console.log('[socket-io] [message-edit]', client.getHistory());
             }
           });
 
@@ -3417,14 +3427,6 @@ const AiScriptStart = () => {
               console.log('[socket-io] [mod-data]', client.getMods());
             }
           });
-
-          // Room user
-          if (tinyAiScript.multiplayer) {
-            // New message
-            client.onNewMessage((result) => {
-              console.log(result);
-            });
-          }
         }
 
         // No server
