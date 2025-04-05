@@ -3314,11 +3314,6 @@ const AiScriptStart = () => {
             console.log('ratelimit', result);
           });
 
-          // Get user list
-          client.onUserList((result) => {
-            console.log('userlist', result);
-          });
-
           // Room updates
           client.onRoomUpdates((result) => {
             console.log('roomupdate', result);
@@ -3364,18 +3359,13 @@ const AiScriptStart = () => {
             console.log('messageedit', result);
           });
 
-          // Room history
-          client.onHistoryLoad((result) => {
-            console.log('historyload', result);
+          // Get room data
+          client.onRoomEnter((result) => {
+            console.log('roomenter', result);
           });
 
           // Room user
           if (tinyAiScript.multiplayer) {
-            // Get room history
-            client.onGetHistory((result) => {
-              console.log(result);
-            });
-
             // New message
             client.onNewMessage((result) => {
               console.log(result);

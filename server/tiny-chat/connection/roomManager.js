@@ -101,9 +101,11 @@ export default function roomManager(socket, io, appStorage) {
 
     // Emit chat history and settings to the user
     if (typeof room.password !== 'undefined') delete room.password;
-    socket.emit('room-users', roomUsers.get(roomId) || {});
-    socket.emit('room-history', historyData || []);
-    socket.emit('update-room', room || {});
+    socket.emit('room-entered', {
+      users: roomUsers.get(roomId) || {},
+      history: historyData || [],
+      data: room || {},
+    });
     sendRateLimit(socket);
 
     // Complete
