@@ -21,12 +21,13 @@ class TinyMap {
   /**
    * Creates a new TinyMap instance.
    * @param {Object} map - The map configuration containing size, tile dimensions, image, colors, locations, and routes.
-   * @param {boolean} [firstBuild=true] - Determines if the map should be built immediately.
+   * @param {boolean} [firstBuild=false] - Determines if the map should be built immediately.
    */
-  constructor(map, firstBuild = true) {
+  constructor(map, firstBuild = false) {
     // Data
     this.map = map;
     this.html = {};
+    this.location = null;
     this._limitSize = 4000;
     this._isSubPage = false;
 
@@ -45,6 +46,19 @@ class TinyMap {
     // First build
     if (firstBuild) this.buildMap(true);
     this.setMapImage(this.map.image);
+  }
+
+  /**
+   * Sets the current location for the RPG map.
+   *
+   * Updates the internal `location` property.
+   * Accepts only string values; if a non-string is provided,
+   * the location is set to `null`.
+   *
+   * @param {string} location - The name or identifier of the map location.
+   */
+  setLocation(location) {
+    this.location = typeof location === 'string' ? location : null;
   }
 
   /**
@@ -301,6 +315,11 @@ class TinyMap {
       const coordplace = getCoordPlace(this.routes[item2].coordinates);
       if (coordplace) {
         const routeNumber = item2;
+        coordplace.attr(
+          'location_enabled',
+          this.location === `Route {number}`.replace(/\{number\}/g, routeNumber) ? 'on' : 'off',
+        );
+
         if (this.routes[item2].about) {
           coordplace.attr(
             'title',
@@ -329,6 +348,10 @@ class TinyMap {
     for (const item2 in this.locations) {
       const coordplace = getCoordPlace(this.locations[item2].coordinates);
       if (coordplace) {
+        coordplace.attr(
+          'location_enabled',
+          this.location === this.locations[item2].name ? 'on' : 'off',
+        );
         coordplace.attr('title', this.locations[item2].name);
         const tooltip = coordplace.tooltip(null, null, true);
 
@@ -480,10 +503,13 @@ class TinyMap {
    */
   setMapImage(imgUrl) {
     this.image = typeof imgUrl === 'string' && imgUrl.startsWith('data:') ? imgUrl : '';
-    this.html.table.css({
-      background: this.image ? 'transparent url("' + this.image + '") no-repeat right bottom' : '',
-      'background-size': this.image ? this.size[0] + 'px ' + Number(this.size[1] - 2) + 'px' : '',
-    });
+    if (this.html.table)
+      this.html.table.css({
+        background: this.image
+          ? 'transparent url("' + this.image + '") no-repeat right bottom'
+          : '',
+        'background-size': this.image ? this.size[0] + 'px ' + Number(this.size[1] - 2) + 'px' : '',
+      });
   }
 
   /**
@@ -579,6 +605,7 @@ class TinyMap {
 
     // Build page
     this.activeSubPage(false);
+    this.setMapImage(this.image);
   }
 
   /**
