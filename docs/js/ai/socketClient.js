@@ -55,6 +55,7 @@ class TinyClientIo {
     this.user = {};
     this.users = {};
     this.history = [];
+    this.mods = [];
   }
 
   // Rate limit
@@ -162,17 +163,20 @@ class TinyClientIo {
       objType(result, 'object') &&
       objType(result.data, 'object') &&
       objType(result.users, 'object') &&
-      Array.isArray(result.history)
+      Array.isArray(result.history) &&
+      Array.isArray(result.mods)
     ) {
       // Room data
       this.setRoom(result.data);
+
       // Users
       this.setUsers({});
-      if (objType(result.users, 'object')) {
-        for (const item in result.users) {
-          this.addUser(result.users[item]);
-        }
-      }
+      for (const item in result.users) this.addUser(result.users[item]);
+
+      // Mods
+      this.setMods([]);
+      for (const index in result.mods)
+        if (typeof result.mods[index].userId === 'string') this.addMod(result.mods[index].userId);
 
       // History
       this.setHistory(result.history);
@@ -200,6 +204,24 @@ class TinyClientIo {
 
   getHistory() {
     return this.history || [];
+  }
+
+  // Mods
+  getMods() {
+    return this.mods || [];
+  }
+
+  setMods(result) {
+    this.mods = Array.isArray(result) ? result : [];
+  }
+
+  addMod(userId) {
+    if (this.mods.indexOf(userId) < 0) this.mods.push(userId);
+  }
+
+  removeMod(userId) {
+    const index = this.mods.indexOf(userId);
+    if (index > -1) this.mods.splice(index, 1);
   }
 
   // Socket emit
@@ -255,20 +277,20 @@ class TinyClientIo {
 
   // On message edit
   onMessageEdit(callback) {
-    this.socket.on('update-message', callback);
+    this.socket.on('message-updated', callback);
   }
 
   offMessageEdit(callback) {
-    this.socket.off('update-message', callback);
+    this.socket.off('message-updated', callback);
   }
 
   // On message delete
   onMessageDelete(callback) {
-    this.socket.on('delete-message', callback);
+    this.socket.on('message-deleted', callback);
   }
 
   offMessageDelete(callback) {
-    this.socket.off('delete-message', callback);
+    this.socket.off('message-deleted', callback);
   }
 
   // On dice result
@@ -282,20 +304,20 @@ class TinyClientIo {
 
   // On server ratelimit load
   onGetRateLimit(callback) {
-    this.socket.on('update-ratelimts', callback);
+    this.socket.on('ratelimt-updated', callback);
   }
 
   offGetRateLimit(callback) {
-    this.socket.off('update-ratelimts', callback);
+    this.socket.off('ratelimt-updated', callback);
   }
 
   // On room updates
   onRoomUpdates(callback) {
-    this.socket.on('update-room', callback);
+    this.socket.on('room-updated', callback);
   }
 
   offRoomUpdates(callback) {
-    this.socket.off('update-room', callback);
+    this.socket.off('room-updated', callback);
   }
 
   // On user banned from room
@@ -336,20 +358,20 @@ class TinyClientIo {
 
   // On room data
   onRoomData(callback) {
-    this.socket.on('update-room-data', callback);
+    this.socket.on('room-data-updated', callback);
   }
 
   offRoomData(callback) {
-    this.socket.off('update-room-data', callback);
+    this.socket.off('room-data-updated', callback);
   }
 
-  // On private room data
-  onPrivateRoomData(callback) {
-    this.socket.on('private-update-room-data', callback);
+  // On mod change
+  onRoomModChange(callback) {
+    this.socket.on('room-mod-updated', callback);
   }
 
-  offPrivateRoomData(callback) {
-    this.socket.off('private-update-room-data', callback);
+  offRoomModChange(callback) {
+    this.socket.off('room-mod-updated', callback);
   }
 
   // Login account

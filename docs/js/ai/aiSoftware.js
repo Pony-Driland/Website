@@ -3334,9 +3334,7 @@ const AiScriptStart = () => {
           client.onRoomUpdates((result) => {
             if (checkRoomIdEvent(result) && objType(result.data, 'object')) {
               client.setRoom(result.data);
-              console.log('[socket-io] [room-data]', {
-                room: client.getRoom(),
-              });
+              console.log('[socket-io] [room]', client.getRoom());
             }
           });
 
@@ -3358,9 +3356,7 @@ const AiScriptStart = () => {
           client.onUserLeft((result) => {
             if (checkRoomIdEvent(result)) {
               client.removeUser(result);
-              console.log('[socket-io] [room-data]', {
-                users: client.getUsers(),
-              });
+              console.log('[socket-io] [room-users]', client.getUsers());
             }
           });
 
@@ -3368,9 +3364,7 @@ const AiScriptStart = () => {
           client.onUserJoin((result) => {
             if (checkRoomIdEvent(result)) {
               client.addUser(result);
-              console.log('[socket-io] [room-data]', {
-                users: client.getUsers(),
-              });
+              console.log('[socket-io] [room-users]', client.getUsers());
             }
           });
 
@@ -3378,13 +3372,6 @@ const AiScriptStart = () => {
           client.onRoomData((result) => {
             if (checkRoomIdEvent(result)) {
               console.log('roomdata', result);
-            }
-          });
-
-          // Private room data
-          client.onPrivateRoomData((result) => {
-            if (checkRoomIdEvent(result)) {
-              console.log('privateroomdata', result);
             }
           });
 
@@ -3404,13 +3391,31 @@ const AiScriptStart = () => {
 
           // Get room data
           client.onRoomEnter((result) => {
-            if (!client.setRoomBase(result))
-              makeTempMessage(`Invalid room data detected!`, 'Server');
-            console.log('[socket-io] [room-data]', {
-              history: client.getHistory(),
-              room: client.getRoom(),
-              users: client.getUsers(),
-            });
+            if (checkRoomIdEvent(result)) {
+              if (!client.setRoomBase(result))
+                makeTempMessage(`Invalid room data detected!`, 'Server');
+              console.log('[socket-io] [room-data]', {
+                history: client.getHistory(),
+                room: client.getRoom(),
+                users: client.getUsers(),
+                mods: client.getMods(),
+              });
+            }
+          });
+
+          // Mod list update
+          client.onRoomModChange((result) => {
+            if (checkRoomIdEvent(result)) {
+              if (Array.isArray(result.result)) {
+                for (const index in result.result) {
+                  if (typeof result.result[index] === 'string') {
+                    if (result.type === 'add') client.addMod(result.result[index]);
+                    if (result.type === 'remove') client.removeMod(result.result[index]);
+                  }
+                }
+              }
+              console.log('[socket-io] [mod-data]', client.getMods());
+            }
           });
 
           // Room user

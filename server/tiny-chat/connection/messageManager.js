@@ -129,7 +129,7 @@ export default function messageManager(socket, io) {
     // Emit the event only to logged-in users in the room
     socket
       .to(roomId)
-      .emit('update-message', { roomId, id: messageId, text: newText, edited: msgDate });
+      .emit('message-updated', { roomId, id: messageId, text: newText, edited: msgDate });
 
     // Complete
     fn({ edited: msgDate });
@@ -178,7 +178,7 @@ export default function messageManager(socket, io) {
     await history.delete(messageId);
 
     // Emit the event only to logged-in users in the room
-    socket.to(roomId).emit('delete-message', { roomId, id: messageId });
+    socket.to(roomId).emit('message-deleted', { roomId, id: messageId });
     fn({ success: true });
   });
 

@@ -102,8 +102,10 @@ export default function roomManager(socket, io, appStorage) {
     if (typeof room.password !== 'undefined') delete room.password;
     const usersList = roomUsers.get(roomId);
     socket.emit('room-entered', {
+      roomId,
       users: usersList ? Object.fromEntries(usersList) : {},
       history: historyData || [],
+      mods: (await roomModerators.getAll()) || [],
       data: room || {},
     });
 
@@ -476,15 +478,18 @@ export default function roomManager(socket, io, appStorage) {
 
     if (!isRoomOwner && !isServerOwner) return ownerOnly(fn, 2); // Only room owner or server owner can update settings
 
+    const result = [];
     if (roomUsers.get(roomId)) {
       for (const index in mods) {
-        if (typeof mods[index] === 'string')
+        if (typeof mods[index] === 'string') {
           await roomModerators.set(roomId, { userId: mods[index] });
+          result.push(mods[index]);
+        }
       }
     }
 
     // Notify all users in the room about the updated settings
-    // io.to(roomId).emit('update-room', { room: await rooms.get(roomId), roomId });
+    io.to(roomId).emit('room-mod-updated', { result, type: 'add', roomId });
 
     // Complete
     fn({ success: true });
@@ -510,12 +515,16 @@ export default function roomManager(socket, io, appStorage) {
 
     if (!isRoomOwner && !isServerOwner) return ownerOnly(fn, 2); // Only room owner or server owner can update settings
 
+    const result = [];
     for (const index in mods) {
-      if (typeof mods[index] === 'string') await roomModerators.delete(roomId, mods[index]);
+      if (typeof mods[index] === 'string') {
+        await roomModerators.delete(roomId, mods[index]);
+        result.push(mods[index]);
+      }
     }
 
     // Notify all users in the room about the updated settings
-    // io.to(roomId).emit('update-room', { room: await rooms.get(roomId), roomId });
+    io.to(roomId).emit('room-mod-updated', { result, type: 'remove', roomId });
 
     // Complete
     fn({ success: true });
@@ -575,7 +584,7 @@ export default function roomManager(socket, io, appStorage) {
       // Notify all users in the room about the updated settings
       const newRoom = await rooms.get(roomId);
       if (typeof newRoom.password !== 'undefined') delete newRoom.password;
-      io.to(roomId).emit('update-room', { data: newRoom, roomId });
+      io.to(roomId).emit('room-updated', { data: newRoom, roomId });
     }
 
     // Complete
@@ -612,8 +621,9 @@ export default function roomManager(socket, io, appStorage) {
       if (!privateData) privateData = {};
       await privateRoomData.set(roomId, Object.assign(privateData, values));
       // Notify all users in the room about the updated data
-      socket.emit('private-update-room-data', {
+      socket.emit('room-data-updated', {
         roomId,
+        isPrivate: true,
         values: await privateRoomData.get(roomId),
       });
     }
@@ -621,7 +631,11 @@ export default function roomManager(socket, io, appStorage) {
     else {
       await roomData.set(roomId, Object.assign(await roomData.get(roomId), values));
       // Notify all users in the room about the updated data
-      socket.to(roomId).emit('update-room-data', { roomId, values: await roomData.get(roomId) });
+      socket.to(roomId).emit('room-data-updated', {
+        roomId,
+        isPrivate: false,
+        values: await roomData.get(roomId),
+      });
     }
 
     // Complete
