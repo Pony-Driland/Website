@@ -3301,62 +3301,67 @@ const AiScriptStart = () => {
 
           // Dice
           client.onDiceRoll((result) => {
-            console.log(result);
+            console.log('dice', result);
           });
 
           // Get ratelimit data
           client.onGetRateLimit((result) => {
-            console.log(result);
+            console.log('ratelimit', result);
           });
 
           // Get user list
           client.onUserList((result) => {
-            console.log(result);
+            console.log('userlist', result);
           });
 
           // Room updates
           client.onRoomUpdates((result) => {
-            console.log(result);
+            console.log('roomupdate', result);
           });
 
           // User ban
           client.onRoomBan((result) => {
-            console.log(result);
+            console.log('roomban', result);
           });
 
           // User kick
           client.onRoomKick((result) => {
-            console.log(result);
+            console.log('roomkick', result);
           });
 
           // User left
           client.onUserLeft((result) => {
-            console.log(result);
+            console.log('userleft', result);
           });
 
           // User join
           client.onUserJoin((result) => {
-            console.log(result);
+            console.log('userjoin', result);
           });
 
           // Room data
           client.onRoomData((result) => {
-            console.log(result);
+            console.log('roomdata', result);
           });
 
           // Private room data
           client.onPrivateRoomData((result) => {
-            console.log(result);
+            console.log('privateroomdata', result);
           });
 
           // Message delete
           client.onMessageDelete((result) => {
-            console.log(result);
+            console.log('messagedelete', result);
           });
 
           // Message edit
-          client.offMessageEdit((result) => {
-            console.log(result);
+          client.onMessageEdit((result) => {
+            console.log('messageedit', result);
+          });
+
+          // Room history
+          client.onHistoryLoad((result) => {
+            console.log('historyload', result);
           });
 
           // Room user

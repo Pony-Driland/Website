@@ -66,6 +66,15 @@ class TinyClientIo {
     this.socket.off('disconnect', callback);
   }
 
+  // On message load
+  onHistoryLoad(callback) {
+    this.socket.on('room-history', callback);
+  }
+
+  offHistoryLoad(callback) {
+    this.socket.off('room-history', callback);
+  }
+
   // On new message
   onNewMessage(callback) {
     this.socket.on('new-message', callback);
