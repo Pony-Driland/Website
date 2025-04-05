@@ -38,10 +38,6 @@ export default function messageManager(socket, io) {
     const history = roomHistories.get(roomId);
     if (!room || !history) return fn({ error: true, msg: 'Room not found.', code: 2 });
 
-    // Update the last index of the room
-    const msgIndex = ++room.last_index;
-    room.set(roomId, room);
-
     // Get message
     const msg = await history.get(msgIndex);
     if (msg)
