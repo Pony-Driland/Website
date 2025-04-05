@@ -67,7 +67,25 @@ export const createRoom = async (userId, roomId, password, title) => {
 
 export const userSession = {
   check: (socket) => {
-    if (!socket.tinySession) socket.tinySession = {};
+    if (!socket.tinySession) socket.tinySession = { rooms: [] };
+  },
+  addRoom: (socket, roomId) => {
+    if (socket.tinySession && typeof roomId === 'string') {
+      if (socket.tinySession.rooms.indexOf(roomId) < 0) socket.tinySession.rooms.push(roomId);
+      return true;
+    }
+    return false;
+  },
+  eachRooms: (socket, callback) => {
+    if (socket.tinySession)
+      for (const index in socket.tinySession.rooms) callback(socket.tinySession.rooms[index]);
+  },
+  removeRoom: (socket, roomId) => {
+    if (socket.tinySession && typeof roomId === 'string') {
+      const index = socket.tinySession.rooms.indexOf(roomId);
+      if (index > -1) socket.tinySession.rooms.splice(index, 1);
+    }
+    return false;
   },
   getUserId: (socket) =>
     socket.tinySession && typeof socket.tinySession.userId === 'string'
@@ -220,6 +238,7 @@ export const joinRoom = (socket, io, roomId, fn) => {
       // Notify room members about the new user (excluding the user who just joined)
       socket.join(roomId);
 
+      userSession.addRoom(socket, roomId);
       const socketData = { roomId, userId, nickname, ping: pingNow };
       io.to(roomId).emit('user-joined', socketData);
       if (fn) fn(socketData);
@@ -248,6 +267,7 @@ export const leaveRoom = (socket, io, roomId, fn) => {
         room.delete(userId);
         io.to(roomId).emit('user-left', { roomId, nickname, userId });
         socket.leave(roomId);
+        userSession.removeRoom(socket, roomId);
         // Complete
         if (fn) fn({ success: true });
         return { success: true };

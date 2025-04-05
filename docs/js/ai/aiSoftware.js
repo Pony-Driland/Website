@@ -3304,6 +3304,11 @@ const AiScriptStart = () => {
             console.log('dice', result);
           });
 
+          // Get user updated
+          client.onUserUpdated((result) => {
+            console.log('userupdated', result);
+          });
+
           // Get ratelimit data
           client.onGetRateLimit((result) => {
             console.log('ratelimit', result);

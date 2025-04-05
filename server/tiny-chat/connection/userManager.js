@@ -142,6 +142,9 @@ export default function userManager(socket, io) {
     // Set user data
     await users.set(userId, user);
     userSession.setNickname(socket, user.nickname);
+    userSession.eachRooms(socket, (roomId) =>
+      io.to(roomId).emit('user-updated', { roomId, userId, data: { nickname: user.nickname } }),
+    );
 
     // User unban successfully.
     fn({ nickname: user.nickname });

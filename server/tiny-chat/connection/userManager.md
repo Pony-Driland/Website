@@ -122,6 +122,7 @@ This event allows a logged-in user to change their nickname.
 - Validates the `nickname`.
 - Checks if the sender is logged in and not rate-limited.
 - Updates the user's nickname.
+- Sends the user's nickname update to all rooms using the event `user-updated`.
 
 ---
 
