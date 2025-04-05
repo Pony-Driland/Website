@@ -1636,7 +1636,7 @@ const AiScriptStart = () => {
 
                 const tinyHtml = $('<span>');
                 const tinyHr = $('<hr>', { class: 'my-5 d-none' });
-                const modal = tinyLib.modal({
+                tinyLib.modal({
                   title: 'Maps',
                   dialog: 'modal-lg',
                   id: 'tinyMaps',

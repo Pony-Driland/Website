@@ -206,13 +206,18 @@ class TinyClientIo {
     return this.history || [];
   }
 
+  #filterHistoryData(data) {
+    return data;
+  }
+
   addHistory(data) {
-    if (this.history.findIndex((item) => item.id === data.id) < 0) this.history.push(userId);
+    if (this.history.findIndex((item) => item.id === data.id) < 0)
+      this.history.push(this.#filterHistoryData(item));
   }
 
   editHistory(data) {
     const index = this.history.findIndex((item) => item.id === data.id);
-    if (index > -1) this.history[index] = data;
+    if (index > -1) this.history[index] = this.#filterHistoryData(data);
   }
 
   removeHistory(id) {
