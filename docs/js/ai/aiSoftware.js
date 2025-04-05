@@ -3242,8 +3242,12 @@ const AiScriptStart = () => {
               'Server',
             );
 
+          const checkRoomIdEvent = (result) =>
+            objType(result, 'object') && result.roomId === client.getRoomId();
+
           client.onConnect(() => {
             // First time message
+            client.resetData();
             const firstTime = tinyIo.firstTime;
             if (firstTime) tinyIo.firstTime = false;
 
@@ -3307,14 +3311,14 @@ const AiScriptStart = () => {
 
           // Dice
           client.onDiceRoll((result) => {
-            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+            if (checkRoomIdEvent(result)) {
               console.log('dice', result);
             }
           });
 
           // Get user updated
           client.onUserUpdated((result) => {
-            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+            if (checkRoomIdEvent(result)) {
               console.log('userupdated', result);
             }
           });
@@ -3327,63 +3331,63 @@ const AiScriptStart = () => {
 
           // Room updates
           client.onRoomUpdates((result) => {
-            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+            if (checkRoomIdEvent(result)) {
               console.log('roomupdate', result);
             }
           });
 
           // User ban
           client.onRoomBan((result) => {
-            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+            if (checkRoomIdEvent(result)) {
               console.log('roomban', result);
             }
           });
 
           // User kick
           client.onRoomKick((result) => {
-            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+            if (checkRoomIdEvent(result)) {
               console.log('roomkick', result);
             }
           });
 
           // User left
           client.onUserLeft((result) => {
-            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+            if (checkRoomIdEvent(result)) {
               console.log('userleft', result);
             }
           });
 
           // User join
           client.onUserJoin((result) => {
-            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+            if (checkRoomIdEvent(result)) {
               console.log('userjoin', result);
             }
           });
 
           // Room data
           client.onRoomData((result) => {
-            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+            if (checkRoomIdEvent(result)) {
               console.log('roomdata', result);
             }
           });
 
           // Private room data
           client.onPrivateRoomData((result) => {
-            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+            if (checkRoomIdEvent(result)) {
               console.log('privateroomdata', result);
             }
           });
 
           // Message delete
           client.onMessageDelete((result) => {
-            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+            if (checkRoomIdEvent(result)) {
               console.log('messagedelete', result);
             }
           });
 
           // Message edit
           client.onMessageEdit((result) => {
-            if (objType(result, 'object') && result.roomId === client.getRoomId()) {
+            if (checkRoomIdEvent(result)) {
               console.log('messageedit', result);
             }
           });

@@ -22,6 +22,7 @@ export const roomModerators = new TinySQL(); // Stores users banned from room
 export const roomBannedUsers = new TinySQL(); // Stores users banned from room
 export const rooms = new TinySQL(); // Stores room configurations, including password, etc.
 export const roomHistories = new Map(); // Stores room histories
+export const roomHistoriesDeleted = new TinySQL(); // Stores room histories
 
 export const privateRoomData = new TinySQL(); // Stores room private data
 export const roomData = new TinySQL(); // Stores room data

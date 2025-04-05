@@ -9,12 +9,7 @@ class TinyClientIo {
 
     this.id = null;
     this.connected = false;
-
-    this.ratelimit = {};
-    this.room = { id: '' };
-    this.user = {};
-    this.users = {};
-    this.history = [];
+    this.resetData();
 
     if (this.socket) {
       console.log('[socket.io] Starting...');
@@ -51,6 +46,15 @@ class TinyClientIo {
   // Get room id
   getRoomId() {
     return this.#cfg.roomId;
+  }
+
+  // Reset data
+  resetData() {
+    this.ratelimit = {};
+    this.room = { id: '' };
+    this.user = {};
+    this.users = {};
+    this.history = [];
   }
 
   // Rate limit
