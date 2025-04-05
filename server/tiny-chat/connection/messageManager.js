@@ -39,28 +39,13 @@ export default function messageManager(socket, io) {
     const history = roomHistories.get(roomId);
     if (!room || !history) return fn({ error: true, msg: 'Room not found.', code: 2 });
 
-    // Get message
-    const msg = await history.get(msgIndex);
-    if (msg)
-      return fn({
-        error: true,
-        msg: `This message Id is already being used.`,
-        code: 3,
-      });
-
-    // Emit to the room that the history index is updated
-    io.to(roomId).emit('history-index-updated', {
-      index: msgIndex,
-      roomId,
-    });
-
     const msgDate = Date.now();
-    await history.set(msgIndex, { userId, text: message, date: msgDate, edited: 0 });
+    const msg = await history.set(roomId, { userId, text: message, date: msgDate, edited: 0 });
 
     // Emit to the room that the user joined (based on roomId)
     socket.to(roomId).emit('new-message', {
       roomId,
-      id: msgIndex,
+      id: msg.id,
       userId,
       text: message,
       date: msgDate,
@@ -127,9 +112,14 @@ export default function messageManager(socket, io) {
     await history.set(messageId, msg);
 
     // Emit the event only to logged-in users in the room
-    socket
-      .to(roomId)
-      .emit('message-updated', { roomId, id: messageId, text: newText, edited: msgDate });
+    socket.to(roomId).emit('message-updated', {
+      roomId,
+      id: messageId,
+      userId: msg,
+      text: newText,
+      date: msg.date,
+      edited: msgDate,
+    });
 
     // Complete
     fn({ edited: msgDate });
