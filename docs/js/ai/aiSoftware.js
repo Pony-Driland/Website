@@ -3019,34 +3019,53 @@ const AiScriptStart = () => {
       tinyAi.on('setMaxOutputTokens', (value) => {
         outputLength.val(value);
       });
+
       tinyAi.on('setTemperature', (value) => {
         temperature.val(value);
       });
+
       tinyAi.on('setTopP', (value) => {
         topP.val(value);
       });
+
       tinyAi.on('setTopK', (value) => {
         topK.val(value);
       });
+
       tinyAi.on('setPresencePenalty', (value) => {
         presencePenalty.val(value);
       });
+
       tinyAi.on('setFrequencyPenalty', (value) => {
         frequencyPenalty.val(value);
       });
+
       tinyAi.on('setModel', (value) => {});
+
       tinyAi.on('selectDataId', (value) => {});
+
       tinyAi.on('deleteIndex', (value) => {});
+
       tinyAi.on('replaceIndex', (value) => {});
+
       tinyAi.on('addData', (value) => {});
+
       tinyAi.on('setPrompt', (value) => {});
+
       tinyAi.on('setFirstDialogue', (value) => {});
+
       tinyAi.on('setFileData', (value) => {});
+
       tinyAi.on('setSystemInstruction', (value) => {});
+
       tinyAi.on('startDataId', (value) => {});
+
       tinyAi.on('stopDataId', (value) => {});
+
       tinyAi.on('setRpgSchema', (value) => {});
+
       tinyAi.on('setRpgData', (value) => {});
+
       tinyAi.on('setRpgPrivateData', (value) => {});
 
       // Prepare RPG
