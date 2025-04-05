@@ -575,7 +575,7 @@ export default function roomManager(socket, io, appStorage) {
       // Notify all users in the room about the updated settings
       const newRoom = await rooms.get(roomId);
       if (typeof newRoom.password !== 'undefined') delete newRoom.password;
-      io.to(roomId).emit('update-room', { room: newRoom, roomId });
+      io.to(roomId).emit('update-room', { data: newRoom, roomId });
     }
 
     // Complete

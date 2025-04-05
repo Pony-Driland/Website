@@ -3318,7 +3318,8 @@ const AiScriptStart = () => {
 
           // Get user updated
           client.onUserUpdated((result) => {
-            if (checkRoomIdEvent(result)) {
+            if (checkRoomIdEvent(result) && objType(result.data, 'object')) {
+              client.editUser({ userId: result.userId, nickname: result.data.nickname });
               console.log('userupdated', result);
             }
           });
@@ -3331,8 +3332,11 @@ const AiScriptStart = () => {
 
           // Room updates
           client.onRoomUpdates((result) => {
-            if (checkRoomIdEvent(result)) {
-              console.log('roomupdate', result);
+            if (checkRoomIdEvent(result) && objType(result.data, 'object')) {
+              client.setRoom(result.data);
+              console.log('[socket-io] [room-data]', {
+                room: client.getRoom(),
+              });
             }
           });
 
@@ -3400,7 +3404,8 @@ const AiScriptStart = () => {
 
           // Get room data
           client.onRoomEnter((result) => {
-            if (!client.setRoom(result)) makeTempMessage(`Invalid room data detected!`, 'Server');
+            if (!client.setRoomBase(result))
+              makeTempMessage(`Invalid room data detected!`, 'Server');
             console.log('[socket-io] [room-data]', {
               history: client.getHistory(),
               room: client.getRoom(),
