@@ -362,6 +362,13 @@ tinyLib.toTitleCase = function (str) {
   });
 };
 
+tinyLib.toTitleCaseLowerFirst = function (str) {
+  const titleCased = str.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+  return titleCased.charAt(0).toLowerCase() + titleCased.slice(1);
+};
+
 // Remove AI tags
 tinyLib.removeAiTags = function (str) {
   return str.replace(/\<ai\>|\<\/ai\>/g, '');

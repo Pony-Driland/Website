@@ -91,6 +91,13 @@ class TinyAiApi extends EventEmitter {
     }
   }
 
+  #toTitleCaseLowerFirst(str) {
+    const titleCased = str.replace(/\w\S*/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+    return titleCased.charAt(0).toLowerCase() + titleCased.slice(1);
+  }
+
   /**
    * Sets a custom value in the selected session history.
    *
@@ -136,7 +143,7 @@ class TinyAiApi extends EventEmitter {
         }
 
         // Complete
-        this.emit(tinyLib.toTitleCase(name), value, id);
+        this.emit(this.#toTitleCaseLowerFirst(name), value, id);
         return;
       }
     }
@@ -180,7 +187,7 @@ class TinyAiApi extends EventEmitter {
             delete this.history[selectedId].hash[name];
 
           // Complete
-          this.emit(tinyLib.toTitleCase(name), null, id);
+          this.emit(this.#toTitleCaseLowerFirst(name), null, id);
           return;
         }
       }
