@@ -6,6 +6,63 @@ Documentation written with the assistance of OpenAI's ChatGPT.
 
 ## Events
 
+### `exists-room`
+
+#### Description
+
+Checks whether a room with the provided `roomId` exists. Requires a valid user session and a valid `roomId`. This is a non-intrusive check that does not attempt to join or modify the room.
+
+#### Parameters
+
+- `roomId` _(string, required)_: The unique identifier of the room to be checked.
+
+#### Execution Flow
+
+1. **Data Validation:**
+
+   - Verifies that the `roomId` is a valid string.
+
+2. **User Authentication:**
+
+   - If no valid user is associated with the current socket, the function responds using `account not detect protocol` and exits.
+
+3. **Room Existence Check:**
+
+   - Calls room check to determine if the room exists in the current system.
+
+4. **Return Result:**
+
+   - Responds to the client using the provided callback `fn`, with an object:
+     - `{ exists: true }` if the room exists.
+     - `{ exists: false }` if the room does not exist.
+
+#### Response
+
+- Success:  
+  Returns a response object:
+
+  ```json
+  { "exists": true | false }
+  ```
+
+- Failure:
+  - If `roomId` is invalid: calls invalid data protocol.
+  - If the user is not authenticated: calls no account protocol.
+
+#### Example Usage
+
+```js
+socket.emit('exists-room', { roomId: 'abc123' }, (response) => {
+  if (response.exists) {
+    console.log('The room exists.');
+  } else {
+    console.log('Room not found.');
+  }
+});
+```
+
+---
+
 ### `join`
 
 #### Description

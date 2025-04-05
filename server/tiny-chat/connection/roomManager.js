@@ -1,3 +1,4 @@
+import isDebug from '../isDebug';
 import { objType } from '../lib/objChecker';
 import TimedMap from '../TimedMap';
 
@@ -5,7 +6,6 @@ import {
   userIsRateLimited,
   sendRateLimit,
   userSession,
-  mapToArray,
   roomUsers,
   roomData,
   privateRoomData,
@@ -21,13 +21,31 @@ import {
   accountNotDetected,
   sendIncompleteDataInfo,
   getIniConfig,
+  roomModerators,
+  roomBannedUsers,
+  getHashString,
 } from './values';
 
-export default function roomManager(socket, io) {
+export default function roomManager(socket, io, appStorage) {
+  socket.on('exists-room', async (data, fn) => {
+    const { roomId } = data;
+    // Validate values
+    if (typeof roomId !== 'string') return sendIncompleteDataInfo(fn);
+
+    // Get user
+    const userId = userSession.getUserId(socket);
+    if (!userId) return accountNotDetected(fn);
+
+    // Check room
+    const result = await rooms.has(roomId);
+    fn({ exists: result });
+  });
+
   socket.on('join', async (data, fn) => {
     const { roomId, password } = data;
     // Validate values
-    if (typeof roomId !== 'string' || password !== 'string') return sendIncompleteDataInfo(fn);
+    if (typeof roomId !== 'string' || typeof password !== 'string')
+      return sendIncompleteDataInfo(fn);
 
     // Get user
     const userId = userSession.getUserId(socket);
@@ -42,12 +60,13 @@ export default function roomManager(socket, io) {
     }
 
     // Check if the room has a password and validate it
-    if (room.password && room.password !== password) {
+    if (room.password && room.password !== getHashString(password)) {
       return fn({ error: true, msg: 'Incorrect room password.', code: 2 });
     }
 
     // Check if the room is full
-    if ((await room.users.size()) >= room.maxUsers) {
+    const roomUserList = roomUsers.get(roomId);
+    if (roomUserList && roomUserList.size >= room.maxUsers) {
       return fn({ error: true, msg: 'Room is full.', code: 3 });
     }
 
@@ -62,17 +81,16 @@ export default function roomManager(socket, io) {
     }
 
     // Check if the user is banned
-    if (room.banned.has(userId)) {
+    if (await roomBannedUsers.has(roomId, userId)) {
       return fn({ error: true, msg: "You're banned.", code: 5 });
     }
-
-    // Add user to the room
-    await room.users.add(userId);
 
     // Send chat history and settings only to the joined user
     let history = roomHistories.get(roomId);
     if (!history) {
       history = new TimedMap();
+      history.setDb(appStorage, { name: 'history', id: 'roomId', subId: 'historyId' });
+      history.setDebug(isDebug());
       roomHistories.set(history);
     }
 
@@ -81,7 +99,7 @@ export default function roomManager(socket, io) {
       : await history.getAmount(getIniConfig('HISTORY_SIZE'));
 
     // Emit chat history and settings to the user
-    socket.emit('room-users', mapToArray(roomUsers.get(roomId)));
+    socket.emit('room-users', roomUsers.get(roomId));
     socket.emit('room-history', historyData);
     socket.emit('update-room', room);
     sendRateLimit(socket);
@@ -136,7 +154,7 @@ export default function roomManager(socket, io) {
       yourId !== getIniConfig('OWNER_ID') &&
       !(await moderators.has(yourId)) &&
       room.ownerId !== yourId &&
-      !room.moderators.has(yourId)
+      !(await roomModerators.has(roomId, yourId))
     ) {
       return fn({
         msg: 'You are not allowed to do this.',
@@ -155,8 +173,7 @@ export default function roomManager(socket, io) {
     }
 
     // Add into the ban list
-    room.banned.add(userId);
-    room.set(roomId, room);
+    await roomBannedUsers.set(roomId, { userId });
 
     // Remove the user from their room
     io.to(roomId).emit('user-banned', { roomId, userId });
@@ -191,7 +208,7 @@ export default function roomManager(socket, io) {
       yourId !== getIniConfig('OWNER_ID') &&
       !(await moderators.has(yourId)) &&
       room.ownerId !== yourId &&
-      !room.moderators.has(yourId)
+      !(await roomModerators.has(roomId, yourId))
     ) {
       return fn({
         error: true,
@@ -206,8 +223,7 @@ export default function roomManager(socket, io) {
     }
 
     // Remove user from the ban list
-    room.banned.delete(userId);
-    room.set(roomId, room);
+    await roomBannedUsers.delete(roomId, userId);
 
     // User unban successfully.
     fn({ success: true });
@@ -234,7 +250,7 @@ export default function roomManager(socket, io) {
       yourId !== getIniConfig('OWNER_ID') &&
       !(await moderators.has(yourId)) &&
       room.ownerId !== yourId &&
-      !room.moderators.has(yourId)
+      !(await roomModerators.has(roomId, yourId))
     ) {
       return fn({
         error: true,
@@ -457,31 +473,14 @@ export default function roomManager(socket, io) {
 
     if (!isRoomOwner && !isServerOwner) return ownerOnly(fn, 2); // Only room owner or server owner can update settings
 
-    // Allowed updates
-    const allowedUpdates = {};
-
-    const rUsers = roomUsers.get(roomId);
-    let canExecute = rUsers ? true : false;
-    const newMods = room.moderators ? [...room.moderators] : [];
-    if (canExecute) {
+    if (roomUsers.get(roomId)) {
       for (const index in mods) {
-        if (
-          typeof mods[index] === 'string' &&
-          rUsers.has(mods[index]) &&
-          newMods.indexOf(mods[index]) < 0
-        )
-          newMods.push(mods[index]);
+        if (typeof mods[index] === 'string') await roomModerators.set(roomId, { userId: mods[index] });
       }
-      allowedUpdates.moderators = new Set(newMods);
     }
 
-    // Apply updates if there are valid changes
-    if (Object.keys(allowedUpdates).length > 0) {
-      await rooms.set(roomId, Object.assign(room, allowedUpdates));
-
-      // Notify all users in the room about the updated settings
-      io.to(roomId).emit('update-room', { room: await rooms.get(roomId), roomId });
-    }
+    // Notify all users in the room about the updated settings
+    // io.to(roomId).emit('update-room', { room: await rooms.get(roomId), roomId });
 
     // Complete
     fn({ success: true });
@@ -507,24 +506,12 @@ export default function roomManager(socket, io) {
 
     if (!isRoomOwner && !isServerOwner) return ownerOnly(fn, 2); // Only room owner or server owner can update settings
 
-    // Allowed updates
-    const allowedUpdates = {};
-
-    const newMods = [];
-    const oldMods = room.moderators ? [...room.moderators] : [];
-    for (const index in oldMods) {
-      if (typeof oldMods[index] === 'string' && mods.indexOf(oldMods[index]) < 0)
-        newMods.push(mods[index]);
+    for (const index in mods) {
+      if (typeof mods[index] === 'string') await roomModerators.delete(roomId, mods[index]);
     }
-    allowedUpdates.moderators = new Set(newMods);
 
-    // Apply updates if there are valid changes
-    if (Object.keys(allowedUpdates).length > 0) {
-      await rooms.set(roomId, Object.assign(room, allowedUpdates));
-
-      // Notify all users in the room about the updated settings
-      io.to(roomId).emit('update-room', { room: await rooms.get(roomId), roomId });
-    }
+    // Notify all users in the room about the updated settings
+    // io.to(roomId).emit('update-room', { room: await rooms.get(roomId), roomId });
 
     // Complete
     fn({ success: true });

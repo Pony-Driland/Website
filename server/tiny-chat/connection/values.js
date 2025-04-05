@@ -18,6 +18,8 @@ export const users = new TimedMap(); // Stores user credentials
 export const moderators = new TimedMap(); // Stores the list of server moderators
 export const bannedUsers = new TimedMap(); // Stores the list of banned users
 
+export const roomModerators = new TimedMap(); // Stores users banned from room
+export const roomBannedUsers = new TimedMap(); // Stores users banned from room
 export const rooms = new TimedMap(); // Stores room configurations, including password, etc.
 export const roomHistories = new Map(); // Stores room histories
 
@@ -59,8 +61,6 @@ export const createRoom = async (userId, roomId, password, title) => {
     title: title.substring(0, getIniConfig('ROOM_TITLE_SIZE')),
     maxUsers: getIniConfig('MAX_USERS_PER_ROOM'),
     ownerId: userId,
-    moderators: new Set([]),
-    banned: new Set([]),
     disabled: false,
     last_index: 0,
   });
