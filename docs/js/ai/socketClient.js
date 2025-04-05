@@ -714,14 +714,20 @@ class TinyClientIo extends EventEmitter {
 
     // User ban
     client.onRoomBan((result) => {
-      if (client.checkRoomId(result))
-        client.emit('userBan', typeof result.userId === 'string' ? result.userId : null);
+      if (client.checkRoomId(result)) {
+        const data = typeof result.userId === 'string' ? result.userId : null;
+        client.emit('userBanned', data);
+        console.log('[socket-io] [room-ban]', data);
+      }
     });
 
     // User kick
     client.onRoomKick((result) => {
-      if (client.checkRoomId(result))
-        client.emit('userKick', typeof result.userId === 'string' ? result.userId : null);
+      if (client.checkRoomId(result)) {
+        const data = typeof result.userId === 'string' ? result.userId : null;
+        client.emit('userKicked', data);
+        console.log('[socket-io] [room-kick]', data);
+      }
     });
 
     // User left
@@ -748,7 +754,7 @@ class TinyClientIo extends EventEmitter {
     client.onRoomData((result) => {
       if (client.checkRoomId(result)) {
         const data = client.setRoomData(result);
-        console.log('roomData', data);
+        console.log('[socket-io] [room-data]', data);
       }
     });
 
