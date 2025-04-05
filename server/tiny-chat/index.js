@@ -30,8 +30,7 @@ startFiles().then(async (appStorage) => {
     password TEXT,
     maxUsers INTEGER DEFAULT 50,
     ownerId TEXT NOT NULL,
-    disabled BOOLEAN DEFAULT 0,
-    last_index INTEGER DEFAULT 0
+    disabled BOOLEAN DEFAULT 0
     );
     `);
 

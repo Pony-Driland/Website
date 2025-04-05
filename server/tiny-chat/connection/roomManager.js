@@ -58,6 +58,7 @@ export default function roomManager(socket, io, appStorage) {
       //
       return fn({ error: true, msg: 'Room not found.', code: 1 });
     }
+    room.maxUsers = room.maxUsers || getIniConfig('MAX_USERS_PER_ROOM');
 
     // Check if the room has a password and validate it
     if (room.password && room.password !== getHashString(password)) {
