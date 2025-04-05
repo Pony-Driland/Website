@@ -18,7 +18,10 @@ Sends a message to a specific room, updating the message history and notifying o
 ```json
 {
   "message": "string", // The text of the message
-  "roomId": "string" // The room where the message should be sent
+  "roomId": "string", // The room where the message should be sent
+  "tokens": "number", // Number of content tokens
+  "model": "string", // Model used to generate the token amount
+  "errorCode": "string" // Error code sent by content generator
 }
 ```
 
@@ -50,7 +53,10 @@ Edits an existing message in a room, provided the user has the necessary permiss
 {
   "roomId": "string", // The ID of the room
   "messageId": "string", // The ID of the message to be edited
-  "newText": "string" // The new content of the message
+  "newText": "string", // The new content of the message
+  "tokens": "number", // Number of content tokens
+  "model": "string", // Model used to generate the token amount
+  "errorCode": "string" // Error code sent by content generator
 }
 ```
 

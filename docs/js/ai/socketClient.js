@@ -178,7 +178,8 @@ class TinyClientIo {
         if (typeof result.mods[index].userId === 'string') this.addMod(result.mods[index].userId);
 
       // History
-      this.setHistory(result.history);
+      this.setHistory([]);
+      for (const index in result.history) this.addHistory(result.history[index]);
 
       // Complete
       return true;

@@ -13,7 +13,7 @@ import {
 
 export default function messageManager(socket, io) {
   socket.on('send-message', async (data, fn) => {
-    const { message, roomId } = data;
+    const { message, roomId, tokens, model, errorCode } = data;
     // Validate values
     if (typeof message !== 'string' || message.trim() === '' || typeof roomId !== 'string')
       return sendIncompleteDataInfo(fn);
@@ -40,7 +40,19 @@ export default function messageManager(socket, io) {
     if (!room || !history) return fn({ error: true, msg: 'Room not found.', code: 2 });
 
     const msgDate = Date.now();
-    const msg = await history.set(roomId, { userId, text: message, date: msgDate, edited: 0 });
+    const msg = await history.set(roomId, {
+      userId,
+      text: message,
+      date: msgDate,
+      edited: 0,
+      tokens: typeof tokens === 'number' ? tokens : undefined,
+      model:
+        typeof model === 'string' ? model.substring(0, getIniConfig('MESSAGE_SIZE')) : undefined,
+      errorCode:
+        typeof errorCode === 'string'
+          ? errorCode.substring(0, getIniConfig('MESSAGE_SIZE'))
+          : undefined,
+    });
 
     // Emit to the room that the user joined (based on roomId)
     socket.to(roomId).emit('new-message', {
@@ -49,6 +61,10 @@ export default function messageManager(socket, io) {
       userId,
       text: message,
       date: msgDate,
+      tokens: typeof tokens === 'number' ? tokens : null,
+      model: typeof model === 'string' ? model.substring(0, getIniConfig('MESSAGE_SIZE')) : null,
+      errorCode:
+        typeof errorCode === 'string' ? errorCode.substring(0, getIniConfig('MESSAGE_SIZE')) : null,
       edited: 0,
     });
 
@@ -57,7 +73,7 @@ export default function messageManager(socket, io) {
   });
 
   socket.on('edit-message', async (data, fn) => {
-    const { roomId, messageId, newText } = data;
+    const { roomId, messageId, newText, tokens, model, errorCode } = data;
     // Validate values
     if (typeof newText !== 'string' || typeof roomId !== 'string' || typeof messageId !== 'string')
       return sendIncompleteDataInfo(fn);
@@ -108,6 +124,10 @@ export default function messageManager(socket, io) {
     // Edit message
     const msgDate = Date.now();
     msg.text = newText;
+    if (typeof tokens === 'number') msg.tokens = tokens;
+    if (typeof model === 'string') msg.model = model.substring(0, getIniConfig('MESSAGE_SIZE'));
+    if (typeof errorCode === 'string')
+      msg.errorCode = errorCode.substring(0, getIniConfig('MESSAGE_SIZE'));
     msg.edited = msgDate;
     await history.set(messageId, msg);
 
@@ -119,6 +139,9 @@ export default function messageManager(socket, io) {
       text: newText,
       date: msg.date,
       edited: msgDate,
+      tokens: typeof tokens === 'number' ? tokens : null,
+      model: typeof model === 'string' ? model : null,
+      errorCode: typeof errorCode === 'string' ? errorCode : null,
     });
 
     // Complete
