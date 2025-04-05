@@ -106,6 +106,11 @@ export default function roomManager(socket, io, appStorage) {
       users: usersList ? Object.fromEntries(usersList) : {},
       history: historyData || [],
       mods: (await roomModerators.getAll()) || [],
+      roomData: (await roomData.get(roomId)) || {},
+      roomPrivateData:
+        userId === room.ownerId || userId === getIniConfig('OWNER_ID')
+          ? (await privateRoomData.get(roomId)) || {}
+          : {},
       data: room || {},
     });
 

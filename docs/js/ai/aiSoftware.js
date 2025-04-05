@@ -3311,12 +3311,18 @@ const AiScriptStart = () => {
               $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
           });
 
+          // Enter room
+          client.on('roomEntered', (success) => {
+            if (!success) makeTempMessage(`Invalid room data detected!`, 'Server');
+          });
+
           // New message
           client.on('newMessage', () => {
             if (tinyAiScript.multiplayer) {
             }
           });
 
+          // Dice rool
           client.on('diceRoll', () => {});
         }
 

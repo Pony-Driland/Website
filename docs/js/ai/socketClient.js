@@ -53,6 +53,8 @@ class TinyClientIo extends EventEmitter {
   resetData() {
     this.ratelimit = {};
     this.room = {};
+    this.roomData = {};
+    this.roomPrivateData = {};
     this.user = {};
     this.users = {};
     this.history = [];
@@ -170,11 +172,25 @@ class TinyClientIo extends EventEmitter {
     }
   }
 
+  setRoomData(result) {
+    if (
+      objType(result, 'object') &&
+      objType(result.values, 'object') &&
+      typeof result.isPrivate === 'boolean'
+    ) {
+      if (result.isPrivate) this.roomPrivateData = result.values;
+      else this.roomData = result.values;
+      return { isPrivate: result.isPrivate, values: result.values };
+    }
+  }
+
   setRoomBase(result) {
     if (
       objType(result, 'object') &&
       objType(result.data, 'object') &&
       objType(result.users, 'object') &&
+      objType(result.roomData, 'object') &&
+      objType(result.roomPrivate, 'object') &&
       Array.isArray(result.history) &&
       Array.isArray(result.mods)
     ) {
@@ -194,6 +210,10 @@ class TinyClientIo extends EventEmitter {
       this.setHistory([]);
       for (const index in result.history) this.addHistory(result.history[index]);
 
+      // Room Data
+      this.setRoomData({ values: result.roomData, isPrivate: false });
+      this.setRoomData({ values: result.roomPrivateData, isPrivate: true });
+
       // Complete
       return true;
     }
@@ -205,6 +225,14 @@ class TinyClientIo extends EventEmitter {
       this.setMods([]);
       return false;
     }
+  }
+
+  getRoomData() {
+    return this.roomData || {};
+  }
+
+  getRoomPrivateData() {
+    return this.roomPrivateData || {};
   }
 
   getRoom() {
@@ -719,8 +747,8 @@ class TinyClientIo extends EventEmitter {
     // Room data
     client.onRoomData((result) => {
       if (client.checkRoomId(result)) {
-        console.log('roomdata', result);
-        ////////////////////////////////////
+        const data = client.setRoomData(result);
+        console.log('roomData', data);
       }
     });
 
@@ -753,7 +781,8 @@ class TinyClientIo extends EventEmitter {
     // Get room data
     client.onRoomEnter((result) => {
       if (client.checkRoomId(result)) {
-        if (!client.setRoomBase(result)) makeTempMessage(`Invalid room data detected!`, 'Server');
+        if (!client.setRoomBase(result)) client.emit('roomEntered', false);
+        else client.emit('roomEntered', true);
 
         client.emit('roomEnter');
         console.log('[socket-io] [room-data]', {
@@ -761,6 +790,8 @@ class TinyClientIo extends EventEmitter {
           room: client.getRoom(),
           users: client.getUsers(),
           mods: client.getMods(),
+          roomData: client.getRoomData(),
+          roomPrivateData: client.getRoomPrivateData(),
         });
       }
     });
