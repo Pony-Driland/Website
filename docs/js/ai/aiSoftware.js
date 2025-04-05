@@ -3353,14 +3353,20 @@ const AiScriptStart = () => {
           // User left
           client.onUserLeft((result) => {
             if (checkRoomIdEvent(result)) {
-              console.log('userleft', result);
+              client.removeUser(result);
+              console.log('[socket-io] [room-data]', {
+                users: client.getUsers(),
+              });
             }
           });
 
           // User join
           client.onUserJoin((result) => {
             if (checkRoomIdEvent(result)) {
-              console.log('userjoin', result);
+              client.addUser(result);
+              console.log('[socket-io] [room-data]', {
+                users: client.getUsers(),
+              });
             }
           });
 

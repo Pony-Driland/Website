@@ -100,8 +100,9 @@ export default function roomManager(socket, io, appStorage) {
 
     // Emit chat history and settings to the user
     if (typeof room.password !== 'undefined') delete room.password;
+    const usersList = roomUsers.get(roomId);
     socket.emit('room-entered', {
-      users: roomUsers.get(roomId) || {},
+      users: usersList ? Object.fromEntries(usersList) : {},
       history: historyData || [],
       data: room || {},
     });
