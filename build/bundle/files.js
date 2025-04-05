@@ -4,7 +4,8 @@ import path from 'node:path';
 // Modules you want to copy
 const modulesToCopy = [
     "@cryptofonts/cryptofont/fonts",
-    "@fortawesome/fontawesome-free/webfonts"
+    "@fortawesome/fontawesome-free/webfonts",
+    ["jsstore/dist/jsstore.worker.min.js", "jsstore.worker.min.js"]
 ]; // Replace with the desired modules
 
 // Default reference path for modules (you can change this)
