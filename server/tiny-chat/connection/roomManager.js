@@ -554,6 +554,21 @@ export default function roomManager(socket, io, appStorage) {
     // Allowed updates
     const allowedUpdates = {};
 
+    const checkRealValues = (where, value) => {
+      if (typeof value !== 'number' || !Number.isFinite(value)) return;
+      const MIN_REAL = -3.4e38;
+      const MAX_REAL = 3.4e38;
+
+      // Check interval
+      if (value < MIN_REAL || value > MAX_REAL) return;
+
+      // Check accuracy: maximum ~7 significant digits
+      const significantDigits = parseFloat(value.toPrecision(7));
+
+      // Insert config
+      if (value === significantDigits) allowedUpdates[where] = value;
+    };
+
     if ('title' in newSettings) {
       if (typeof newSettings.title === 'string')
         allowedUpdates.title = newSettings.title.substring(0, getIniConfig('ROOM_TITLE_SIZE'));
@@ -563,6 +578,21 @@ export default function roomManager(socket, io, appStorage) {
       if (typeof newSettings.password === 'string')
         allowedUpdates.password = newSettings.password.substring(0, getIniConfig('PASSWORD_SIZE'));
     }
+
+    if ('model' in newSettings) {
+      if (typeof newSettings.model === 'string')
+        allowedUpdates.model = newSettings.model.substring(0, getIniConfig('MODEL_ID_SIZE'));
+    }
+
+    if ('maxOutputTokens' in newSettings)
+      checkRealValues('maxOutputTokens', newSettings.maxOutputTokens);
+    if ('temperature' in newSettings) checkRealValues('temperature', newSettings.temperature);
+    if ('topP' in newSettings) checkRealValues('topP', newSettings.topP);
+    if ('topK' in newSettings) checkRealValues('topK', newSettings.topK);
+    if ('presencePenalty' in newSettings)
+      checkRealValues('presencePenalty', newSettings.presencePenalty);
+    if ('frequencyPenalty' in newSettings)
+      checkRealValues('frequencyPenalty', newSettings.frequencyPenalty);
 
     if ('maxUsers' in newSettings) {
       if (

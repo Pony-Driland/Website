@@ -152,6 +152,14 @@ class TinyClientIo {
         title: typeof result.title === 'string' ? result.title : '',
         ownerId: typeof result.ownerId === 'string' ? result.ownerId : '',
         maxUsers: typeof result.maxUsers === 'number' ? result.maxUsers : 0,
+        model: typeof result.model === 'string' ? result.model : null,
+        maxOutputTokens: typeof result.maxOutputTokens === 'number' ? result.maxOutputTokens : null,
+        temperature: typeof result.temperature === 'number' ? result.temperature : null,
+        topP: typeof result.topP === 'number' ? result.topP : null,
+        topK: typeof result.topK === 'number' ? result.topK : null,
+        presencePenalty: typeof result.presencePenalty === 'number' ? result.presencePenalty : null,
+        frequencyPenalty:
+          typeof result.frequencyPenalty === 'number' ? result.frequencyPenalty : null,
         disabled: typeof result.disabled === 'number' ? (result.disabled ? true : false) : false,
       };
     }
