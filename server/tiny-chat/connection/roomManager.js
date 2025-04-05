@@ -475,7 +475,8 @@ export default function roomManager(socket, io, appStorage) {
 
     if (roomUsers.get(roomId)) {
       for (const index in mods) {
-        if (typeof mods[index] === 'string') await roomModerators.set(roomId, { userId: mods[index] });
+        if (typeof mods[index] === 'string')
+          await roomModerators.set(roomId, { userId: mods[index] });
       }
     }
 
