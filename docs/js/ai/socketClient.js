@@ -628,7 +628,7 @@ class TinyClientIo extends EventEmitter {
         client.editUser({ userId: result.userId, nickname: result.data.nickname });
 
         client.emit('userUpdated', result);
-        console.log('[socket-io] [user-data]', this.getUser());
+        console.log('[socket-io] [user-data]', client.getUser());
       }
     });
 
