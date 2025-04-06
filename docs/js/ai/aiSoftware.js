@@ -1541,6 +1541,7 @@ const AiScriptStart = (connStore) => {
       };
 
       // Left
+      const connectionInfoBar = $('<span>');
       const sidebarLeft = $('<div>', sidebarStyle)
         .removeClass('d-md-block')
         .removeClass('p-3')
@@ -1732,11 +1733,15 @@ const AiScriptStart = (connStore) => {
             ),
 
             // Tiny information
-            $('<div>', { class: 'small text-grey p-2 bg-dark position-sticky bottom-0 pt-0' })
-              .text(
+            $('<div>', {
+              class: 'small text-grey p-2 bg-dark position-sticky bottom-0 pt-0',
+            }).append(
+              $('<hr/>', { class: 'border-white mt-0 mb-2' }),
+              connectionInfoBar,
+              $('<span>').text(
                 'AI makes mistakes, so double-check it. AI does not replace the fic literature (Careful! AI can type spoilers!).',
-              )
-              .prepend($('<hr/>', { class: 'border-white mt-0 mb-2' })),
+              ),
+            ),
           ),
         );
 
@@ -3455,13 +3460,21 @@ const AiScriptStart = (connStore) => {
         tinyIo.socket = tinyIo.client.getSocket();
         if (tinyIo.socket)
           makeTempMessage(
-            'A server has been detected and we will try to connect to it before you start your session',
-            'Server',
+            `A server has been detected in your config and we will try to connect to it now!`,
+            rpgCfg.ip,
           );
 
         // Start rpg mode
         //////////////////////////////
         if (tinyAiScript.multiplayer || tinyIo.socket) {
+          // Online tab html
+          const onlineStatus = {};
+          onlineStatus.wrapper = $('<div>').addClass('mb-1 d-flex align-items-center gap-1 small');
+          onlineStatus.icon = tinyLib.icon('fas fa-circle text-danger');
+          onlineStatus.text = $('<span>').text('Offline');
+          onlineStatus.wrapper.append(onlineStatus.icon, onlineStatus.text);
+          connectionInfoBar.replaceWith(onlineStatus.wrapper);
+
           // Socket client
           if (tinyIo.socket) {
             const { client } = tinyIo;
@@ -3473,26 +3486,33 @@ const AiScriptStart = (connStore) => {
                 typeof result.msg === 'string'
                   ? `${result.msg} (Code: ${typeof result.code === 'number' ? result.code : 0})`
                   : 'Unknown error!',
-                'Server',
+                rpgCfg.ip,
               );
 
             client.install();
             client.onConnect(() => {
+              // Online!
+              onlineStatus.icon.removeClass('text-danger').addClass('text-success');
+              onlineStatus.text.text('Online');
+
               // First time message
               client.resetData();
               const firstTime = tinyIo.firstTime;
               if (firstTime) tinyIo.firstTime = false;
 
               // Message
-              makeTempMessage('You are connected! Signing into your account...', 'Server');
+              makeTempMessage(
+                `You are connected! Your connection id is **${client.getSocket()?.id}**. Signing into your account...`,
+                rpgCfg.ip,
+              );
 
               // Login
               client.login().then((result) => {
                 // Message
                 if (!result.error) {
                   makeTempMessage(
-                    'You were successfully logged in! Entering the room...',
-                    'Server',
+                    `Welcome **${result.nickname || result.userId}**! You were successfully logged in! Entering the room...`,
+                    rpgCfg.ip,
                   );
                 }
                 // Error
@@ -3511,7 +3531,10 @@ const AiScriptStart = (connStore) => {
                     const joinRoom = () =>
                       client.joinRoom().then((result4) => {
                         if (!result4.error) {
-                          makeTempMessage('You successfully entered the room!', 'Server');
+                          makeTempMessage(
+                            `You successfully entered the room **${result4.roomId}**!`,
+                            rpgCfg.ip,
+                          );
                         }
                         // Error
                         else sendSocketError(result4);
@@ -3530,7 +3553,7 @@ const AiScriptStart = (connStore) => {
                           if (!result3.error) joinRoom();
                           else sendSocketError(result3);
                         });
-                      else makeTempMessage('The room was not found', 'Server');
+                      else makeTempMessage('The room was not found', rpgCfg.ip);
                     }
                   });
                 }
@@ -3539,14 +3562,19 @@ const AiScriptStart = (connStore) => {
 
             // Disconnected
             client.onDisconnect((reason, details) => {
-              makeTempMessage(`You are disconected! ${details.description}`, 'Server');
+              // Offline!
+              onlineStatus.icon.addClass('text-danger').removeClass('text-success');
+              onlineStatus.text.text('Offline');
+
+              // Message
+              makeTempMessage(`You are disconected! ${details.description}`, rpgCfg.ip);
               if (tinyAiScript.multiplayer)
                 $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
             });
 
             // Enter room
             client.on('roomEntered', (success) => {
-              if (!success) makeTempMessage(`Invalid room data detected!`, 'Server');
+              if (!success) makeTempMessage(`Invalid room data detected!`, rpgCfg.ip);
             });
 
             // New message
@@ -3561,7 +3589,7 @@ const AiScriptStart = (connStore) => {
 
           // No server
           if (!tinyIo.socket)
-            makeTempMessage('No server has been detected. Your session is cancelled!', 'Server');
+            makeTempMessage('No server has been detected. Your session is cancelled!', rpgCfg.ip);
           else if (!tinyAiScript.multiplayer) return;
         }
       }
