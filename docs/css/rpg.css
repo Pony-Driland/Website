@@ -1,112 +1,197 @@
 /* Offcanvas */
 #ai-element-root .offcanvas {
-    padding-top: 56px;
-    max-width: 650px;
-    width: 100%;
+  padding-top: 56px;
+  max-width: 650px;
+  width: 100%;
 }
 
 #ai-element-root .offcanvas .je-object__container .card {
-    background-color: transparent !important;
-    border-left: 0px;
-    border-right: 0px;
-    border-radius: 0;
+  background-color: transparent !important;
+  border-left: 0px;
+  border-right: 0px;
+  border-radius: 0;
 }
 
 #ai-element-root .offcanvas .je-object__container,
 #ai-element-root .offcanvas .je-object__container .card {
-    padding: 10px 0px !important;
-    padding-left: 3px !important;
+  padding: 10px 0px !important;
+  padding-left: 3px !important;
 }
 
 #ai-element-root .offcanvas .je-object__container .h3 {
-    font-size: 21px !important;
-    margin: 0px;
-    display: inline-flex !important;
-    align-items: center;
+  font-size: 21px !important;
+  margin: 0px;
+  display: inline-flex !important;
+  align-items: center;
 }
 
 #ai-element-root .offcanvas .je-object__container .btn {
-    margin: 3px;
-    border-radius: 4px;
+  margin: 3px;
+  border-radius: 4px;
 }
 
 #ai-element-root .offcanvas .je-modal {
-    padding: 9px !important;
-    background-color: #242424;
+  padding: 9px !important;
+  background-color: #242424;
 }
 
 #ai-element-root .offcanvas-header,
 #ai-element-root .offcanvas-body {
-    height: 100%;
+  height: 100%;
 }
 
 #ai-element-root .offcanvas-header {
-    padding: 0px;
+  padding: 0px;
 }
 
 #ai-element-root .offcanvas-header {
-    align-items: start;
+  align-items: start;
 }
 
 #ai-element-root .offcanvas-title {
-    display: none;
+  display: none;
 }
 
 #ai-element-root #rpg_ai_base_1 .btn-close {
-    right: 10px;
+  right: 10px;
 }
 
 #ai-element-root #rpg_ai_base_1 .offcanvas-body {
-    padding-right: 30px;
+  padding-right: 30px;
 }
 
 #ai-element-root #rpg_ai_base_2 .btn-close {
-    left: 0px;
+  left: 0px;
 }
 
 #ai-element-root #rpg_ai_base_2 .offcanvas-body {
-    padding-left: 30px;
+  padding-left: 30px;
 }
 
 #ai-element-root .offcanvas-header .btn-close {
-    position: absolute;
-    z-index: 1;
-    font-size: 10px;
-    margin-top: 0px;
+  position: absolute;
+  z-index: 1;
+  font-size: 10px;
+  margin-top: 0px;
 }
 
 /* Map */
 #tinyMaps table tr,
 #tinyMaps table td {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 #tinyMaps table tr {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 #tinyMaps table td {
-    border-width: 1px;
-    text-align: center;
+  border-width: 1px;
+  text-align: center;
 }
 
-#tinyMaps table td[location_enabled="on"] {
-    box-shadow: 0 0 0 rgba(255, 0, 0, 0.7);
-    animation: tinymaps_pulse_mark 1.5s infinite;
+#tinyMaps table td[location_enabled='on'] {
+  box-shadow: 0 0 0 rgba(255, 0, 0, 0.7);
+  animation: tinymaps_pulse_mark 1.5s infinite;
 }
 
 @keyframes tinymaps_pulse_mark {
-0% {
+  0% {
     box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
-}
-70% {
+  }
+  70% {
     box-shadow: 0 0 0 15px rgba(255, 0, 0, 0);
-}
-100% {
+  }
+  100% {
     box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
-}
+  }
 }
 
 #tinyMaps table {
-    table-layout: fixed;
+  table-layout: fixed;
+}
+
+/* 
+ * Created by: Yasmin Seidel (JasminDreasond)
+ * Co-developed with: ChatGPT (OpenAI) as coding assistant
+*/
+.tiny-dice-body {
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tiny-dice-body .dice-area {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+  perspective: 1200px;
+  margin: 30px 0px;
+}
+
+.tiny-dice-body .dice-container,
+.tiny-dice-body .cube-wrapper,
+.tiny-dice-body .face {
+  width: 100px;
+  height: 100px;
+}
+
+.tiny-dice-body .cube-wrapper {
+  position: absolute;
+  transform-style: preserve-3d;
+  animation: spinCubeCustom 2s ease-in-out forwards;
+}
+
+.tiny-dice-body .face {
+  position: absolute;
+  background: linear-gradient(135deg, #ff3399, #33ccff);
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.tiny-dice-body .face1 {
+  transform: rotateY(0deg) translateZ(50px);
+}
+.tiny-dice-body .face2 {
+  transform: rotateY(90deg) translateZ(50px);
+}
+.tiny-dice-body .face3 {
+  transform: rotateY(180deg) translateZ(50px);
+}
+.tiny-dice-body .face4 {
+  transform: rotateY(-90deg) translateZ(50px);
+}
+.tiny-dice-body .face5 {
+  transform: rotateX(90deg) translateZ(50px);
+}
+.tiny-dice-body .face6 {
+  transform: rotateX(-90deg) translateZ(50px);
+}
+
+@keyframes spinCube {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(1440deg) rotateY(2160deg);
+  }
+}
+
+@keyframes spinCubeCustom {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(var(--rotX)) rotateY(var(--rotY));
+  }
 }
