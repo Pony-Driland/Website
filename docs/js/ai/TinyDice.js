@@ -79,8 +79,9 @@ class TinyDice {
    * @param {number} max - Maximum possible value (used to randomize the other faces)
    */
   insertCube(result, max) {
-    const cube = this.#createCube(result, max);
+    const { cube, sequence } = this.#createCube(result, max);
     this.diceArea.appendChild(cube);
+    return sequence;
   }
 
   /**
@@ -117,10 +118,31 @@ class TinyDice {
     wrapper.style.setProperty('--rotY', `${rotY}deg`);
 
     // Create the cube
+    const sequence = new Set();
     for (let i = 1; i <= 6; i++) {
       const face = document.createElement('div');
       face.className = `face face${i}`;
-      face.textContent = i !== 1 ? Math.floor(Math.random() * max) : result;
+      // Ignored results
+      if (i !== 1) {
+        let roll;
+        let extraValue = 0;
+        let usingExtra = false;
+        do {
+          roll = !usingExtra ? Math.floor(Math.random() * max) + 1 : extraValue;
+          if (sequence.size >= max) {
+            extraValue++;
+            usingExtra = true;
+          }
+        } while (sequence.has(roll));
+        sequence.add(roll);
+        face.textContent = roll;
+      }
+      // The result!
+      else {
+        face.textContent = result;
+        sequence.add(result);
+      }
+      // Side added
       wrapper.appendChild(face);
     }
 
@@ -131,7 +153,7 @@ class TinyDice {
 
     // Insert the cube
     container.appendChild(wrapper);
-    return container;
+    return { cube: container, sequence };
   }
 
   /**
@@ -141,11 +163,13 @@ class TinyDice {
    * @param {number[]} perDieData - Optional array of max values per die
    */
   insertCubes(count, maxGlobal, perDieData) {
+    const cubes = [];
     for (let i = 0; i < count; i++) {
       const max = typeof perDieData[i] === 'number' ? perDieData[i] : maxGlobal;
       const result = Math.floor(Math.random() * max) + 1;
-      this.insertCube(result, max);
+      cubes.push(this.insertCube(result, max));
     }
+    return cubes;
   }
 
   /**
@@ -157,6 +181,6 @@ class TinyDice {
   roll(maxValue, diceCount, perDieValues) {
     const { count, maxGlobal, perDieData } = this.getRollResult(maxValue, diceCount, perDieValues);
     this.clearCubes();
-    this.insertCubes(count, maxGlobal, perDieData);
+    return this.insertCubes(count, maxGlobal, perDieData);
   }
 }
