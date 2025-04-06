@@ -970,7 +970,7 @@ const AiScriptStart = (connStore) => {
           // Migration to sandbox mode
           if (!canSandBox(sessionId) && typeof file.systemInstruction === 'string')
             sessionId = 'sandBoxFic';
-          await resetSession(sessionId, true);
+          if (forceLoad) await resetSession(sessionId, true);
 
           // Start History
           tinyAi.startDataId(sessionId, true);
@@ -2586,7 +2586,7 @@ const AiScriptStart = (connStore) => {
           placeholder: 'Type your message...',
         },
         (inputResult) => {
-          const { height } = inputResult;
+          const { height, value } = inputResult;
           const { minHeight } = msgInputValues;
 
           // Subtract the new height by the min size to get the exact amount of height created
@@ -2610,6 +2610,9 @@ const AiScriptStart = (connStore) => {
 
           // Adjust the scroll position to maintain the user's view
           chatContainer.scrollTop(scrollBefore + heightDiff);
+
+          // Value
+          // console.log(value)
         },
       );
 
@@ -2656,7 +2659,10 @@ const AiScriptStart = (connStore) => {
                 'user',
               );
 
-              const newTokens = await tinyAi.countTokens([newMsg]);
+              const newTokens =
+                !tinyAiScript.noai && !tinyAiScript.multiplayer
+                  ? await tinyAi.countTokens([newMsg])
+                  : { totalTokens: 0 };
               const newToken =
                 newTokens && typeof newTokens.totalTokens === 'number'
                   ? newTokens.totalTokens
