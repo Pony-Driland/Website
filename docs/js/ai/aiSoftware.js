@@ -3655,7 +3655,7 @@ const AiScriptStart = (connStore) => {
         });
 
         // Import data
-        for (const item in sessions) importFileSession(sessions[item]);
+        for (const item in sessions) await importFileSession(sessions[item]);
       }
     }
 
