@@ -886,18 +886,11 @@ const AiScriptStart = (connStore) => {
               makeTempMessage(introduction, 'Introduction');
               const history = tinyAi.getData();
 
-              // Insert first message
-              if (history.data.length < 1 && typeof history.firstDialogue === 'string') {
-                history.data.push(
-                  tinyAi.buildContents(
-                    null,
-                    {
-                      role: 'model',
-                      parts: [{ text: history.firstDialogue }],
-                    },
-                    'model',
-                  ),
-                );
+              // Restore textarea
+              if (ficConfigs.selected) {
+                let textBackup = localStorage.getItem(`tiny-ai-textarea-${ficConfigs.selected}`);
+                if (typeof textBackup !== 'string') textBackup = '';
+                msgInput.val(textBackup).trigger('input');
               }
 
               // Start system
@@ -1050,20 +1043,6 @@ const AiScriptStart = (connStore) => {
             clearMessages();
             enableReadOnly(false);
             enableMessageButtons(true);
-
-            // Insert first message
-            if (file.data.length < 1 && typeof file.firstDialogue === 'string') {
-              file.data.push(
-                tinyAi.buildContents(
-                  null,
-                  {
-                    role: 'model',
-                    parts: [{ text: file.firstDialogue }],
-                  },
-                  'model',
-                ),
-              );
-            }
           }
 
           // Complete
@@ -2612,7 +2591,10 @@ const AiScriptStart = (connStore) => {
           chatContainer.scrollTop(scrollBefore + heightDiff);
 
           // Value
-          // console.log(value)
+          localStorage.setItem(
+            `tiny-ai-textarea-${ficConfigs.selected}`,
+            typeof value === 'string' ? value : '',
+          );
         },
       );
 
