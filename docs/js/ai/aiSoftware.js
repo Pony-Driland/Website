@@ -3016,69 +3016,77 @@ const AiScriptStart = (connStore) => {
       tinyAi.removeAllListeners('setRpgData');
       tinyAi.removeAllListeners('setRpgPrivateData');
 
+      // tinyAi.on('startDataId', () => {});
       // tinyAi.on('setFileData', (value) => {});
 
       // Save backup
+      const saveSessionTimeout = {};
       const saveSessionBackup = () => {
-        if (ficConfigs.selected) {
-          // Get session
-          const tinyData = tinyAi.getData();
-          const customList = tinyData.customList;
-          const hash = tinyData.hash;
-          const tokens = tinyData.tokens;
+        const sessionSelected = ficConfigs.selected;
+        if (sessionSelected) {
+          if (saveSessionTimeout[sessionSelected])
+            clearTimeout(saveSessionTimeout[sessionSelected]);
+          saveSessionTimeout[sessionSelected] = setTimeout(() => {
+            // Get session
+            const tinyData = tinyAi.getData();
+            const customList = tinyData.customList;
+            const hash = tinyData.hash;
+            const tokens = tinyData.tokens;
 
-          // Room data
-          const roomSaveData = {
-            prompt: typeof tinyData.prompt === 'string' ? tinyData.prompt : null,
-            firstDialogue:
-              typeof tinyData.firstDialogue === 'string' ? tinyData.firstDialogue : null,
-            systemInstruction:
-              typeof tinyData.systemInstruction === 'string' ? tinyData.systemInstruction : null,
-            rpgSchema: objType(tinyData.rpgSchema, 'object') ? tinyData.rpgSchema : null,
-            rpgData: objType(tinyData.rpgData, 'object') ? tinyData.rpgData : null,
-            rpgPrivateData: objType(tinyData.rpgPrivateData, 'object')
-              ? tinyData.rpgPrivateData
-              : null,
-            maxOutputTokens:
-              typeof tinyData.maxOutputTokens === 'number' ? tinyData.maxOutputTokens : null,
-            temperature: typeof tinyData.temperature === 'number' ? tinyData.temperature : null,
-            topP: typeof tinyData.topP === 'number' ? tinyData.topP : null,
-            topK: typeof tinyData.topK === 'number' ? tinyData.topK : null,
-            presencePenalty:
-              typeof tinyData.presencePenalty === 'number' ? tinyData.presencePenalty : null,
-            frequencyPenalty:
-              typeof tinyData.frequencyPenalty === 'number' ? tinyData.frequencyPenalty : null,
-          };
+            // Room data
+            const roomSaveData = {
+              prompt: typeof tinyData.prompt === 'string' ? tinyData.prompt : null,
+              firstDialogue:
+                typeof tinyData.firstDialogue === 'string' ? tinyData.firstDialogue : null,
+              systemInstruction:
+                typeof tinyData.systemInstruction === 'string' ? tinyData.systemInstruction : null,
+              rpgSchema: objType(tinyData.rpgSchema, 'object') ? tinyData.rpgSchema : null,
+              rpgData: objType(tinyData.rpgData, 'object') ? tinyData.rpgData : null,
+              rpgPrivateData: objType(tinyData.rpgPrivateData, 'object')
+                ? tinyData.rpgPrivateData
+                : null,
+              maxOutputTokens:
+                typeof tinyData.maxOutputTokens === 'number' ? tinyData.maxOutputTokens : null,
+              temperature: typeof tinyData.temperature === 'number' ? tinyData.temperature : null,
+              topP: typeof tinyData.topP === 'number' ? tinyData.topP : null,
+              topK: typeof tinyData.topK === 'number' ? tinyData.topK : null,
+              presencePenalty:
+                typeof tinyData.presencePenalty === 'number' ? tinyData.presencePenalty : null,
+              frequencyPenalty:
+                typeof tinyData.frequencyPenalty === 'number' ? tinyData.frequencyPenalty : null,
+            };
 
-          // Insert template
-          const tinyInsert = (where, fData) =>
-            connStore.insert({ into: where, upsert: true, values: [fData] }).catch(console.error);
+            // Insert template
+            const tinyInsert = (where, fData) =>
+              connStore.insert({ into: where, upsert: true, values: [fData] }).catch(console.error);
 
-          // Hash and tokens data insert
-          const hashData = {};
-          const tokenData = {};
-          for (const item in roomSaveData) {
-            hashData[item] = typeof hash[item] === 'string' ? hash[item] : null;
-            tokenData[item] = typeof tokens[item] === 'number' ? tokens[item] : null;
-          }
+            // Hash and tokens data insert
+            const hashData = {};
+            const tokenData = {};
+            for (const item in roomSaveData) {
+              hashData[item] = typeof hash[item] === 'string' ? hash[item] : null;
+              tokenData[item] = typeof tokens[item] === 'number' ? tokens[item] : null;
+            }
 
-          // Hash
-          hashData.session = ficConfigs.selected;
-          tinyInsert('aiSessionsHash', hashData);
+            // Hash
+            hashData.session = sessionSelected;
+            tinyInsert('aiSessionsHash', hashData);
 
-          // Tokens
-          tokenData.session = ficConfigs.selected;
-          tinyInsert('aiSessionsTokens', tokenData);
+            // Tokens
+            tokenData.session = sessionSelected;
+            tinyInsert('aiSessionsTokens', tokenData);
 
-          // Room
-          roomSaveData.session = ficConfigs.selected;
-          tinyInsert('aiSessionsRoom', roomSaveData);
+            // Room
+            roomSaveData.session = sessionSelected;
+            tinyInsert('aiSessionsRoom', roomSaveData);
 
-          // Custom list
-          tinyInsert('aiSessionsCustomList', {
-            session: ficConfigs.selected,
-            data: customList,
-          });
+            // Custom list
+            tinyInsert('aiSessionsCustomList', {
+              session: sessionSelected,
+              data: customList,
+            });
+            saveSessionTimeout[sessionSelected] = null;
+          }, 500);
         }
       };
 
@@ -3140,12 +3148,15 @@ const AiScriptStart = (connStore) => {
         saveSessionBackup();
       });
 
-      // tinyAi.on('startDataId', () => {});
-      // tinyAi.on('stopDataId', () => {});
+      tinyAi.on('stopDataId', () => {});
+
+      tinyAi.on('deleteIndex', () => {});
+
+      tinyAi.on('replaceIndex', () => {});
+
+      tinyAi.on('addData', () => {});
+
       // tinyAi.on('selectDataId', () => {});
-      // tinyAi.on('deleteIndex', () => {});
-      // tinyAi.on('replaceIndex', () => {});
-      // tinyAi.on('addData', () => {});
 
       // Prepare RPG
       rpgData.html.public = tinyLib.bs.offcanvas(
