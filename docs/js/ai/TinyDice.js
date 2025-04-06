@@ -167,7 +167,7 @@ class TinyDice {
     for (let i = 0; i < count; i++) {
       const max = typeof perDieData[i] === 'number' ? perDieData[i] : maxGlobal;
       const result = Math.floor(Math.random() * max) + 1;
-      cubes.push(this.insertCube(result, max));
+      cubes.push({ sequence: this.insertCube(result, max), result });
     }
     return cubes;
   }
