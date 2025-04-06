@@ -3019,6 +3019,11 @@ const AiScriptStart = (connStore) => {
       // tinyAi.on('startDataId', () => {});
       // tinyAi.on('setFileData', (value) => {});
 
+      // Insert template
+      const tinyInsertDb = (where, fData) =>
+        connStore.insert({ into: where, upsert: true, values: [fData] }).catch(console.error);
+      const tinyMsgIdDb = (sessionId, id) => `${sessionId}:${id}`;
+
       // Save backup
       const saveSessionTimeout = {};
       const saveSessionBackup = () => {
@@ -3056,10 +3061,6 @@ const AiScriptStart = (connStore) => {
                 typeof tinyData.frequencyPenalty === 'number' ? tinyData.frequencyPenalty : null,
             };
 
-            // Insert template
-            const tinyInsert = (where, fData) =>
-              connStore.insert({ into: where, upsert: true, values: [fData] }).catch(console.error);
-
             // Hash and tokens data insert
             const hashData = {};
             const tokenData = {};
@@ -3073,18 +3074,18 @@ const AiScriptStart = (connStore) => {
 
             // Hash
             hashData.session = sessionSelected;
-            tinyInsert('aiSessionsHash', hashData);
+            tinyInsertDb('aiSessionsHash', hashData);
 
             // Tokens
             tokenData.session = sessionSelected;
-            tinyInsert('aiSessionsTokens', tokenData);
+            tinyInsertDb('aiSessionsTokens', tokenData);
 
             // Room
             roomSaveData.session = sessionSelected;
-            tinyInsert('aiSessionsRoom', roomSaveData);
+            tinyInsertDb('aiSessionsRoom', roomSaveData);
 
             // Custom list
-            tinyInsert('aiSessionsCustomList', {
+            tinyInsertDb('aiSessionsCustomList', {
               session: sessionSelected,
               data: customList,
             });
@@ -3151,13 +3152,50 @@ const AiScriptStart = (connStore) => {
         saveSessionBackup();
       });
 
-      tinyAi.on('stopDataId', () => {});
+      tinyAi.on('stopDataId', (id) => {
+        connStore.remove({ from: 'aiSessionsRoom', where: { session: id } }).catch(console.error);
+        connStore.remove({ from: 'aiSessionsHash', where: { session: id } }).catch(console.error);
+        connStore.remove({ from: 'aiSessionsTokens', where: { session: id } }).catch(console.error);
+        connStore
+          .remove({ from: 'aiSessionsCustomList', where: { session: id } })
+          .catch(console.error);
+        connStore.remove({ from: 'aiSessionsData', where: { session: id } }).catch(console.error);
+      });
 
-      tinyAi.on('deleteIndex', () => {});
+      tinyAi.on('deleteIndex', (index) => {
+        const id = tinyAi.getIdByIndex(index);
+        if (typeof id === 'number' || typeof id === 'string')
+          connStore
+            .remove({
+              from: 'aiSessionsData',
+              where: { msg_id: tinyMsgIdDb(ficConfigs.selected, id) },
+            })
+            .catch(console.error);
+      });
 
-      tinyAi.on('replaceIndex', () => {});
+      tinyAi.on('replaceIndex', (index, data, tokens, hash) => {
+        const id = tinyAi.getIdByIndex(index);
+        if (typeof id === 'number' || typeof id === 'string')
+          tinyInsertDb('aiSessionsData', {
+            session: ficConfigs.selected,
+            msg_id: tinyMsgIdDb(ficConfigs.selected, id),
+            data,
+            id,
+            tokens,
+            hash,
+          });
+      });
 
-      tinyAi.on('addData', () => {});
+      tinyAi.on('addData', (newId, data, tokenData, hash) => {
+        tinyInsertDb('aiSessionsData', {
+          session: ficConfigs.selected,
+          msg_id: tinyMsgIdDb(ficConfigs.selected, newId),
+          data,
+          id: newId,
+          tokens: tokenData,
+          hash,
+        });
+      });
 
       // tinyAi.on('selectDataId', () => {});
 
