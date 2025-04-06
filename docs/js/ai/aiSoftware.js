@@ -2636,7 +2636,7 @@ const AiScriptStart = (connStore) => {
         msgInput.val('').trigger('input');
 
         const controller = new AbortController();
-        enableReadOnly(true, controller);
+        enableReadOnly(true);
         enableMessageButtons(false);
         modelChangerReadOnly();
         disablePromptButtons(true);
@@ -2681,6 +2681,7 @@ const AiScriptStart = (connStore) => {
           }
         });
         if (canContinue) {
+          enableReadOnly(true, controller);
           addMessage(
             makeMessage({
               message: msg,
@@ -3657,10 +3658,7 @@ const AiScriptStart = (connStore) => {
         });
 
         // Import data
-        for (const item in sessions) {
-          console.log(sessions[item]);
-          importFileSession(sessions[item]);
-        }
+        for (const item in sessions) importFileSession(sessions[item]);
       }
     }
 
