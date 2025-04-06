@@ -231,7 +231,8 @@ const storyData = {
                       aiPage.tokens.session = aiPage.room.session;
 
                       aiPage.data = {
-                        session: aiPage.room.session,
+                        session: { notNull: true, dataType: 'string' },
+                        msg_id: { primaryKey: true, dataType: 'string' },
                         id: { notNull: true, dataType: 'number' },
                         tokens: { notNull: true, dataType: 'object' },
                         hash: { notNull: true, dataType: 'string' },
