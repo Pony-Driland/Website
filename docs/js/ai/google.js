@@ -224,10 +224,6 @@ const setGoogleAi = (tinyGoogleAI, GEMINI_API_KEY, MODEL_DATA = 'gemini-2.0-flas
           }
           // Error
           else needShowMetadataError = true;
-          usageMetadata.isResult =
-            typeof usageMetadata.count.candidates === 'number' &&
-            typeof usageMetadata.count.prompt === 'number';
-
           return [usageMetadata, needShowMetadataError];
         };
 
