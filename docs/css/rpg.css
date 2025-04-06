@@ -195,3 +195,16 @@
     transform: rotateX(var(--rotX)) rotateY(var(--rotY));
   }
 }
+
+.tiny-dice-body .cube-wrapper.spin-infinite {
+  animation: spinCubeInfinite 4s linear infinite !important;
+}
+
+@keyframes spinCubeInfinite {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(var(--rotX)) rotateY(var(--rotY));
+  }
+}
