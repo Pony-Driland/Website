@@ -975,11 +975,12 @@ class TinyAiApi extends EventEmitter {
   deleteIndex(index, id) {
     const history = this.getData(id);
     if (history && history.data[index]) {
+      const msgId = this.getIdByIndex(index);
       history.data.splice(index, 1);
       history.ids.splice(index, 1);
       history.hash.data.splice(index, 1);
       history.tokens.data.splice(index, 1);
-      this.emit('deleteIndex', index, id);
+      this.emit('deleteIndex', index, msgId, id);
       return true;
     }
     return false;
@@ -1080,12 +1081,16 @@ class TinyAiApi extends EventEmitter {
       this.#_historyIds++;
       const hash = objHash(data);
 
+      const tokenContent = objType(tokenData, 'object')
+        ? tokenData
+        : { count: typeof tokenData === 'number' ? tokenData : null };
+
       this.history[selectedId].data.push(data);
-      this.history[selectedId].tokens.data.push(tokenData);
+      this.history[selectedId].tokens.data.push(tokenContent);
       this.history[selectedId].ids.push(newId);
       this.history[selectedId].hash.data.push(hash);
 
-      this.emit('addData', newId, data, tokenData, hash, selectedId);
+      this.emit('addData', newId, data, tokenContent, hash, selectedId);
       return newId;
     }
     throw new Error('Invalid history id data!');

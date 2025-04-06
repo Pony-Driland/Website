@@ -2369,7 +2369,7 @@ const AiScriptStart = (connStore) => {
       };
 
       // Execute AI script
-      const executeAi = (tinyCache = {}, sentId = null, tinyController = undefined) =>
+      const executeAi = (tinyCache = {}, tinyController = undefined) =>
         new Promise((resolve, reject) => {
           const { content } = prepareContentList();
 
@@ -2382,19 +2382,13 @@ const AiScriptStart = (connStore) => {
           const buildAmountTokens = (tokenUsage) => {
             // Build amount tokens
             if (tokenUsage) {
-              // Preparing entire amount
-              if (!tokenUsage.isResult) amountTokens.total = tokenUsage.count.prompt;
               // The prompt result amount
-              else {
+              if (typeof tokenUsage.count.candidates === 'number')
                 amountTokens.data.candidates = tokenUsage.count.candidates;
+              if (typeof tokenUsage.count.prompt === 'number')
                 amountTokens.data.prompt = tokenUsage.count.prompt;
+              if (typeof tokenUsage.count.total === 'number')
                 amountTokens.data.total = tokenUsage.count.total;
-                // Add the value of the user prompt
-                if (typeof sentId === 'number')
-                  tinyAi.replaceIndex(tinyAi.getIndexOfId(sentId), null, {
-                    count: amountTokens.data.prompt || null,
-                  });
-              }
             }
 
             // Fix total tokens
@@ -2659,32 +2653,46 @@ const AiScriptStart = (connStore) => {
 
         // Add new message
         let sentId = null;
-        if (typeof msg === 'string' && msg.length > 0) {
-          sentId = tinyAi.addData(
-            tinyAi.buildContents(
-              null,
-              {
-                role: 'user',
-                parts: [{ text: msg }],
-              },
-              'user',
-            ),
-          );
+        const canContinue = await new Promise(async (resolve) => {
+          try {
+            if (typeof msg === 'string' && msg.length > 0) {
+              const newMsg = tinyAi.buildContents(
+                null,
+                { role: 'user', parts: [{ text: msg }] },
+                'user',
+              );
+
+              const newTokens = await tinyAi.countTokens([newMsg]);
+              const newToken =
+                newTokens && typeof newTokens.totalTokens === 'number'
+                  ? newTokens.totalTokens
+                  : null;
+
+              sentId = tinyAi.addData(newMsg, { count: newToken });
+              resolve(true);
+            } else resolve(false);
+          } catch (err) {
+            console.error(err);
+            alert(err.message);
+            resolve(false);
+          }
+        });
+        if (canContinue) {
           addMessage(
             makeMessage({
               message: msg,
               id: sentId,
             }),
           );
-        }
 
-        // Execute Ai
-        if (!tinyAiScript.noai && !tinyAiScript.multiplayer)
-          await executeAi(submitCache, sentId, controller).catch((err) => {
-            if (submitCache.cancel) submitCache.cancel();
-            console.error(err);
-            alert(err.message);
-          });
+          // Execute Ai
+          if (!tinyAiScript.noai && !tinyAiScript.multiplayer)
+            await executeAi(submitCache, controller).catch((err) => {
+              if (submitCache.cancel) submitCache.cancel();
+              console.error(err);
+              alert(err.message);
+            });
+        }
 
         // Complete
         clearInterval(loadingMessage);
@@ -2994,6 +3002,9 @@ const AiScriptStart = (connStore) => {
 
       firstDialogueBase.button.tooltip();
 
+      // Can use backup
+      const canUsejsStore = !tinyAiScript.multiplayer && !tinyIo.socket;
+
       // Prepare events
       tinyAi.removeAllListeners('setMaxOutputTokens');
       tinyAi.removeAllListeners('setTemperature');
@@ -3028,7 +3039,7 @@ const AiScriptStart = (connStore) => {
       const saveSessionTimeout = {};
       const saveSessionBackup = () => {
         const sessionSelected = ficConfigs.selected;
-        if (sessionSelected) {
+        if (canUsejsStore && sessionSelected) {
           if (saveSessionTimeout[sessionSelected])
             clearTimeout(saveSessionTimeout[sessionSelected]);
           saveSessionTimeout[sessionSelected] = setTimeout(() => {
@@ -3152,49 +3163,64 @@ const AiScriptStart = (connStore) => {
         saveSessionBackup();
       });
 
+      // Delete session
       tinyAi.on('stopDataId', (id) => {
-        connStore.remove({ from: 'aiSessionsRoom', where: { session: id } }).catch(console.error);
-        connStore.remove({ from: 'aiSessionsHash', where: { session: id } }).catch(console.error);
-        connStore.remove({ from: 'aiSessionsTokens', where: { session: id } }).catch(console.error);
-        connStore
-          .remove({ from: 'aiSessionsCustomList', where: { session: id } })
-          .catch(console.error);
-        connStore.remove({ from: 'aiSessionsData', where: { session: id } }).catch(console.error);
-      });
-
-      tinyAi.on('deleteIndex', (index) => {
-        const id = tinyAi.getIdByIndex(index);
-        if (typeof id === 'number' || typeof id === 'string')
+        if (canUsejsStore) {
+          connStore.remove({ from: 'aiSessionsRoom', where: { session: id } }).catch(console.error);
+          connStore.remove({ from: 'aiSessionsHash', where: { session: id } }).catch(console.error);
           connStore
-            .remove({
-              from: 'aiSessionsData',
-              where: { msg_id: tinyMsgIdDb(ficConfigs.selected, id) },
-            })
+            .remove({ from: 'aiSessionsTokens', where: { session: id } })
             .catch(console.error);
+          connStore
+            .remove({ from: 'aiSessionsCustomList', where: { session: id } })
+            .catch(console.error);
+          connStore.remove({ from: 'aiSessionsData', where: { session: id } }).catch(console.error);
+        }
       });
 
-      tinyAi.on('replaceIndex', (index, data, tokens, hash) => {
+      // Delete message
+      tinyAi.on('deleteIndex', (index, id) => {
+        if (typeof id === 'number' || typeof id === 'string') {
+          if (canUsejsStore)
+            connStore
+              .remove({
+                from: 'aiSessionsData',
+                where: { msg_id: tinyMsgIdDb(ficConfigs.selected, id) },
+              })
+              .catch(console.error);
+        }
+      });
+
+      // Edit message
+      tinyAi.on('replaceIndex', (index) => {
         const id = tinyAi.getIdByIndex(index);
-        if (typeof id === 'number' || typeof id === 'string')
+        const data = tinyAi.getMsgByIndex(index);
+        const tokens = tinyAi.getMsgTokensByIndex(index);
+        const hash = tinyAi.getMsgHashByIndex(index);
+        if (typeof id === 'number' || typeof id === 'string') {
+          if (canUsejsStore)
+            tinyInsertDb('aiSessionsData', {
+              session: ficConfigs.selected,
+              msg_id: tinyMsgIdDb(ficConfigs.selected, id),
+              data,
+              id,
+              tokens,
+              hash,
+            });
+        }
+      });
+
+      // Add message
+      tinyAi.on('addData', (newId, data, tokenData, hash) => {
+        if (canUsejsStore)
           tinyInsertDb('aiSessionsData', {
             session: ficConfigs.selected,
-            msg_id: tinyMsgIdDb(ficConfigs.selected, id),
+            msg_id: tinyMsgIdDb(ficConfigs.selected, newId),
             data,
-            id,
-            tokens,
+            id: newId,
+            tokens: tokenData,
             hash,
           });
-      });
-
-      tinyAi.on('addData', (newId, data, tokenData, hash) => {
-        tinyInsertDb('aiSessionsData', {
-          session: ficConfigs.selected,
-          msg_id: tinyMsgIdDb(ficConfigs.selected, newId),
-          data,
-          id: newId,
-          tokens: tokenData,
-          hash,
-        });
       });
 
       // tinyAi.on('selectDataId', () => {});
@@ -3421,7 +3447,7 @@ const AiScriptStart = (connStore) => {
 
       // Start rpg mode
       //////////////////////////////
-      if (tinyAiScript.multiplayer || tinyIo.socket) {
+      if (!canUsejsStore) {
         // Socket client
         if (tinyIo.socket) {
           const { client } = tinyIo;
