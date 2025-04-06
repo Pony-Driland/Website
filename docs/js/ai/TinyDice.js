@@ -118,7 +118,8 @@ class TinyDice {
     wrapper.style.setProperty('--rotY', `${rotY}deg`);
 
     // Create the cube
-    const sequence = new Set();
+    const sequence = [];
+    const countSeq = new Set();
     for (let i = 1; i <= 6; i++) {
       const face = document.createElement('div');
       face.className = `face face${i}`;
@@ -129,18 +130,24 @@ class TinyDice {
         let usingExtra = false;
         do {
           roll = !usingExtra ? Math.floor(Math.random() * max) + 1 : extraValue;
-          if (sequence.size >= max) {
+          if (usingExtra || sequence.length >= max) {
+            if (extraValue >= max) {
+              extraValue = 0;
+              countSeq.clear();
+            }
             extraValue++;
             usingExtra = true;
           }
-        } while (sequence.has(roll));
-        sequence.add(roll);
+        } while (countSeq.has(roll));
+        sequence.push(roll);
+        countSeq.add(roll);
         face.textContent = roll;
       }
       // The result!
       else {
         face.textContent = result;
-        sequence.add(result);
+        sequence.push(result);
+        countSeq.add(result);
       }
       // Side added
       wrapper.appendChild(face);
