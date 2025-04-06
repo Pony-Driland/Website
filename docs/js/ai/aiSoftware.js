@@ -839,6 +839,7 @@ const AiScriptStart = (connStore) => {
           newContent()
             .then(async (ficData) => {
               // Start chatbot script
+              if (forceReset) await resetSession(id, true);
               if (forceReset || !tinyAi.selectDataId(id)) {
                 // Start History
                 tinyAi.startDataId(id, true);
@@ -940,7 +941,8 @@ const AiScriptStart = (connStore) => {
         style: 'display: none;',
       });
 
-      const insertImportData = (data, tokens, readOnly = false) => {
+      // When sId is used, it means that the request is coming from a session that is not active in the chat
+      const insertImportData = (data, tokens, readOnly = false, sId = undefined) => {
         // Insert data
         if (Array.isArray(data)) {
           for (const index in data) {
@@ -948,23 +950,157 @@ const AiScriptStart = (connStore) => {
               ? tinyAi.addData(
                   tinyAi.buildContents(null, data[index], data[index].role),
                   tokens[index],
+                  sId,
                 )
               : tinyAi.getIdByIndex(index);
 
-            const msg = !readOnly ? tinyAi.getLastIndexData() : data[index];
-            if (msg && msg.parts && msg.parts[0] && typeof msg.parts[0].text === 'string') {
-              addMessage(
-                makeMessage(
+            if (!sId) {
+              const msg = !readOnly ? tinyAi.getLastIndexData() : data[index];
+              if (msg && msg.parts && msg.parts[0] && typeof msg.parts[0].text === 'string') {
+                addMessage(
+                  makeMessage(
+                    {
+                      message: msg.parts[0].text,
+                      id: msgId,
+                    },
+                    msg.role === 'user' ? null : tinyLib.toTitleCase(msg.role),
+                  ),
+                );
+              }
+            }
+          }
+        }
+      };
+
+      const importFileSession = async (jsonData, forceLoad = false) => {
+        if (objType(jsonData, 'object') && jsonData.file && typeof jsonData.id === 'string') {
+          const { file } = jsonData;
+          let sessionId = jsonData.id;
+          // Migration to sandbox mode
+          if (!canSandBox(sessionId) && typeof file.systemInstruction === 'string')
+            sessionId = 'sandBoxFic';
+          await resetSession(sessionId, true);
+
+          // Start History
+          tinyAi.startDataId(sessionId, true);
+
+          // Open Get Fic Cache
+          const index = ficConfigs.data.findIndex((item) => item.id === sessionId);
+          const instructionId = index > -1 ? ficConfigs.data[index].template : null;
+
+          // Set custom values
+          if (Array.isArray(file.customList)) {
+            for (const i in file.customList) {
+              if (
+                objType(file.customList[i], 'object') &&
+                typeof file.customList[i].name === 'string' &&
+                typeof file.customList[i].type === 'string'
+              ) {
+                const { name, type } = file.customList[i];
+                if (objType(file[name], type)) {
+                  tinyAi.setCustomValue(
+                    name,
+                    file[name],
+                    file.tokens ? file.tokens[name] : 0,
+                    sessionId,
+                  );
+                }
+              }
+            }
+          }
+
+          // Set model
+          if (typeof file.model === 'string') {
+            modelSelector.val(file.model);
+            tinyAi.setModel(file.model, sessionId);
+            selectModel(file.model);
+          }
+
+          // Set model settings
+          if (typeof file.temperature === 'number') tinyAi.setTemperature(file.temperature);
+          if (typeof file.maxOutputTokens === 'number')
+            tinyAi.setMaxOutputTokens(file.maxOutputTokens);
+          if (typeof file.topP === 'number') tinyAi.setTopP(file.topP);
+          if (typeof file.topK === 'number') tinyAi.setTopK(file.topK);
+          if (typeof file.presencePenalty === 'number')
+            tinyAi.setPresencePenalty(file.presencePenalty);
+          if (typeof file.frequencyPenalty === 'number')
+            tinyAi.setFrequencyPenalty(file.frequencyPenalty);
+
+          // Set Instruction
+          if (canSandBox(sessionId))
+            tinyAi.setSystemInstruction(
+              file.systemInstruction,
+              file.tokens ? file.tokens.systemInstruction : 0,
+            );
+          else if (aiTemplates.instructions[instructionId])
+            tinyAi.setSystemInstruction(
+              aiTemplates.instructions[instructionId],
+              file.tokens ? file.tokens.systemInstruction : 0,
+            );
+
+          // Prompt
+          if (typeof file.prompt === 'string')
+            tinyAi.setPrompt(file.prompt, file.tokens ? file.tokens.prompt : 0);
+
+          // First Dialogue
+          if (typeof file.firstDialogue === 'string')
+            tinyAi.setFirstDialogue(
+              file.firstDialogue,
+              file.tokens ? file.tokens.firstDialogue : 0,
+            );
+
+          // File
+          if (file.tokens && typeof file.tokens.file === 'number')
+            tinyAi.setFileData(null, null, null, file.tokens ? file.tokens.file : 0);
+
+          if (forceLoad) {
+            // Clear messages
+            clearMessages();
+            enableReadOnly(false);
+            enableMessageButtons(true);
+
+            // Insert first message
+            if (file.data.length < 1 && typeof file.firstDialogue === 'string') {
+              file.data.push(
+                tinyAi.buildContents(
+                  null,
                   {
-                    message: msg.parts[0].text,
-                    id: msgId,
+                    role: 'model',
+                    parts: [{ text: file.firstDialogue }],
                   },
-                  msg.role === 'user' ? null : tinyLib.toTitleCase(msg.role),
+                  'model',
                 ),
               );
             }
           }
+
+          // Complete
+          insertImportData(
+            file.data,
+            file.tokens && Array.isArray(file.tokens.data) ? file.tokens.data : [],
+            false,
+            forceLoad ? undefined : sessionId,
+          );
+
+          if (file.hash)
+            file.hash.model = typeof file.model === 'string' ? objHash(file.model) : null;
+
+          if (forceLoad && index > -1)
+            getFicCache(
+              ficConfigs.data[index].id,
+              instructionId,
+              ficConfigs.data[index].prompt,
+              ficConfigs.data[index].intro,
+              file.hash,
+              () => {
+                ficConfigs.selected = ficConfigs.data[index].id;
+                return ficConfigs.data[index].getData();
+              },
+            );
+          return true;
         }
+        return false;
       };
 
       importButton.on('change', (event) => {
@@ -975,140 +1111,7 @@ const AiScriptStart = (connStore) => {
             try {
               // Read data
               const jsonData = JSON.parse(e.target.result);
-              if (jsonData.file && typeof jsonData.id === 'string') {
-                // Migration to sandbox mode
-                if (!canSandBox(jsonData.id) && typeof jsonData.file.systemInstruction === 'string')
-                  jsonData.id = 'sandBoxFic';
-
-                // Start History
-                tinyAi.startDataId(jsonData.id, true);
-
-                // Open Get Fic Cache
-                const index = ficConfigs.data.findIndex((item) => item.id === jsonData.id);
-                const instructionId = index > -1 ? ficConfigs.data[index].template : null;
-
-                // Set custom values
-                if (Array.isArray(jsonData.file.customList)) {
-                  for (const i in jsonData.file.customList) {
-                    if (
-                      objType(jsonData.file.customList[i], 'object') &&
-                      typeof jsonData.file.customList[i].name === 'string' &&
-                      typeof jsonData.file.customList[i].type === 'string'
-                    ) {
-                      const { name, type } = jsonData.file.customList[i];
-                      if (objType(jsonData.file[name], type)) {
-                        tinyAi.setCustomValue(
-                          name,
-                          jsonData.file[name],
-                          jsonData.file.tokens ? jsonData.file.tokens[name] : 0,
-                          jsonData.id,
-                        );
-                      }
-                    }
-                  }
-                }
-
-                // Set model
-                if (typeof jsonData.file.model === 'string') {
-                  modelSelector.val(jsonData.file.model);
-                  tinyAi.setModel(jsonData.file.model, jsonData.id);
-                  selectModel(jsonData.file.model);
-                }
-
-                // Set model settings
-                if (typeof jsonData.file.temperature === 'number')
-                  tinyAi.setTemperature(jsonData.file.temperature);
-                if (typeof jsonData.file.maxOutputTokens === 'number')
-                  tinyAi.setMaxOutputTokens(jsonData.file.maxOutputTokens);
-                if (typeof jsonData.file.topP === 'number') tinyAi.setTopP(jsonData.file.topP);
-                if (typeof jsonData.file.topK === 'number') tinyAi.setTopK(jsonData.file.topK);
-                if (typeof jsonData.file.presencePenalty === 'number')
-                  tinyAi.setPresencePenalty(jsonData.file.presencePenalty);
-                if (typeof jsonData.file.frequencyPenalty === 'number')
-                  tinyAi.setFrequencyPenalty(jsonData.file.frequencyPenalty);
-
-                // Set Instruction
-                if (canSandBox(jsonData.id))
-                  tinyAi.setSystemInstruction(
-                    jsonData.file.systemInstruction,
-                    jsonData.file.tokens ? jsonData.file.tokens.systemInstruction : 0,
-                  );
-                else if (aiTemplates.instructions[instructionId])
-                  tinyAi.setSystemInstruction(
-                    aiTemplates.instructions[instructionId],
-                    jsonData.file.tokens ? jsonData.file.tokens.systemInstruction : 0,
-                  );
-
-                // Prompt
-                if (typeof jsonData.file.prompt === 'string')
-                  tinyAi.setPrompt(
-                    jsonData.file.prompt,
-                    jsonData.file.tokens ? jsonData.file.tokens.prompt : 0,
-                  );
-
-                // First Dialogue
-                if (typeof jsonData.file.firstDialogue === 'string')
-                  tinyAi.setFirstDialogue(
-                    jsonData.file.firstDialogue,
-                    jsonData.file.tokens ? jsonData.file.tokens.firstDialogue : 0,
-                  );
-
-                // File
-                if (jsonData.file.tokens && typeof jsonData.file.tokens.file === 'number')
-                  tinyAi.setFileData(
-                    null,
-                    null,
-                    null,
-                    jsonData.file.tokens ? jsonData.file.tokens.file : 0,
-                  );
-
-                // Clear messages
-                clearMessages();
-                enableReadOnly(false);
-                enableMessageButtons(true);
-
-                // Insert first message
-                if (
-                  jsonData.file.data.length < 1 &&
-                  typeof jsonData.file.firstDialogue === 'string'
-                ) {
-                  jsonData.file.data.push(
-                    tinyAi.buildContents(
-                      null,
-                      {
-                        role: 'model',
-                        parts: [{ text: jsonData.file.firstDialogue }],
-                      },
-                      'model',
-                    ),
-                  );
-                }
-
-                // Complete
-                insertImportData(
-                  jsonData.file.data,
-                  jsonData.file.tokens && Array.isArray(jsonData.file.tokens.data)
-                    ? jsonData.file.tokens.data
-                    : [],
-                );
-
-                if (jsonData.file.hash)
-                  jsonData.file.hash.model =
-                    typeof jsonData.file.model === 'string' ? objHash(jsonData.file.model) : null;
-
-                if (index > -1)
-                  getFicCache(
-                    ficConfigs.data[index].id,
-                    instructionId,
-                    ficConfigs.data[index].prompt,
-                    ficConfigs.data[index].intro,
-                    jsonData.file.hash,
-                    () => {
-                      ficConfigs.selected = ficConfigs.data[index].id;
-                      return ficConfigs.data[index].getData();
-                    },
-                  );
-              }
+              importFileSession(jsonData, true);
             } catch (err) {
               console.error(err);
               alert(err.message);
@@ -3036,10 +3039,46 @@ const AiScriptStart = (connStore) => {
         connStore.insert({ into: where, upsert: true, values: [fData] }).catch(console.error);
       const tinyMsgIdDb = (sessionId, id) => `${sessionId}:${id}`;
 
+      // Reset session
+      const resetSession = (id, useReadOnly = false) =>
+        new Promise((resolve, reject) => {
+          if (useReadOnly) {
+            disablePromptButtons(true);
+            enableMessageButtons(false);
+            enableReadOnly(true);
+            modelChangerReadOnly(true);
+            enableModelSelectorReadOnly(true);
+          }
+
+          const disableReadOnly = () => {
+            if (useReadOnly) {
+              disablePromptButtons(false);
+              enableMessageButtons(true);
+              enableReadOnly(false);
+              modelChangerReadOnly(false);
+              enableModelSelectorReadOnly(false);
+            }
+          };
+          Promise.all([
+            connStore.remove({ from: 'aiSessionsRoom', where: { session: id } }),
+            connStore.remove({ from: 'aiSessionsHash', where: { session: id } }),
+            connStore.remove({ from: 'aiSessionsTokens', where: { session: id } }),
+            connStore.remove({ from: 'aiSessionsCustomList', where: { session: id } }),
+            connStore.remove({ from: 'aiSessionsData', where: { session: id } }),
+          ])
+            .then((result) => {
+              disableReadOnly();
+              resolve(result);
+            })
+            .catch((err) => {
+              disableReadOnly();
+              reject(err);
+            });
+        });
+
       // Save backup
       const saveSessionTimeout = {};
-      const saveSessionBackup = () => {
-        const sessionSelected = ficConfigs.selected;
+      const saveSessionBackup = (sessionSelected) => {
         if (canUsejsStore && sessionSelected) {
           if (saveSessionTimeout[sessionSelected])
             clearTimeout(saveSessionTimeout[sessionSelected]);
@@ -3052,6 +3091,7 @@ const AiScriptStart = (connStore) => {
 
             // Room data
             const roomSaveData = {
+              model: typeof tinyData.model === 'string' ? tinyData.model : null,
               prompt: typeof tinyData.prompt === 'string' ? tinyData.prompt : null,
               firstDialogue:
                 typeof tinyData.firstDialogue === 'string' ? tinyData.firstDialogue : null,
@@ -3106,103 +3146,93 @@ const AiScriptStart = (connStore) => {
         }
       };
 
-      tinyAi.on('setMaxOutputTokens', (value) => {
+      tinyAi.on('setMaxOutputTokens', (value, id) => {
         outputLength.val(value);
-        saveSessionBackup();
+        saveSessionBackup(id);
       });
 
-      tinyAi.on('setTemperature', (value) => {
+      tinyAi.on('setTemperature', (value, id) => {
         temperature.val(value);
-        saveSessionBackup();
+        saveSessionBackup(id);
       });
 
-      tinyAi.on('setTopP', (value) => {
+      tinyAi.on('setTopP', (value, id) => {
         topP.val(value);
-        saveSessionBackup();
+        saveSessionBackup(id);
       });
 
-      tinyAi.on('setTopK', (value) => {
+      tinyAi.on('setTopK', (value, id) => {
         topK.val(value);
-        saveSessionBackup();
+        saveSessionBackup(id);
       });
 
-      tinyAi.on('setPresencePenalty', (value) => {
+      tinyAi.on('setPresencePenalty', (value, id) => {
         presencePenalty.val(value);
-        saveSessionBackup();
+        saveSessionBackup(id);
       });
 
-      tinyAi.on('setFrequencyPenalty', (value) => {
+      tinyAi.on('setFrequencyPenalty', (value, id) => {
         frequencyPenalty.val(value);
-        saveSessionBackup();
+        saveSessionBackup(id);
       });
 
-      tinyAi.on('setModel', () => {
-        saveSessionBackup();
+      tinyAi.on('setModel', (data, id) => {
+        saveSessionBackup(id);
       });
 
-      tinyAi.on('setPrompt', () => {
-        saveSessionBackup();
+      tinyAi.on('setPrompt', (data, hash, id) => {
+        saveSessionBackup(id);
       });
 
-      tinyAi.on('setFirstDialogue', () => {
-        saveSessionBackup();
+      tinyAi.on('setFirstDialogue', (data, hash, id) => {
+        saveSessionBackup(id);
       });
 
-      tinyAi.on('setSystemInstruction', () => {
-        saveSessionBackup();
+      tinyAi.on('setSystemInstruction', (data, hash, id) => {
+        saveSessionBackup(id);
       });
 
-      tinyAi.on('setRpgSchema', () => {
-        saveSessionBackup();
+      tinyAi.on('setRpgSchema', (value, id) => {
+        saveSessionBackup(id);
       });
 
-      tinyAi.on('setRpgData', () => {
-        saveSessionBackup();
+      tinyAi.on('setRpgData', (value, id) => {
+        saveSessionBackup(id);
       });
 
-      tinyAi.on('setRpgPrivateData', () => {
-        saveSessionBackup();
+      tinyAi.on('setRpgPrivateData', (value, id) => {
+        saveSessionBackup(id);
       });
 
       // Delete session
       tinyAi.on('stopDataId', (id) => {
-        if (canUsejsStore && id) {
-          connStore.remove({ from: 'aiSessionsRoom', where: { session: id } }).catch(console.error);
-          connStore.remove({ from: 'aiSessionsHash', where: { session: id } }).catch(console.error);
-          connStore
-            .remove({ from: 'aiSessionsTokens', where: { session: id } })
-            .catch(console.error);
-          connStore
-            .remove({ from: 'aiSessionsCustomList', where: { session: id } })
-            .catch(console.error);
-          connStore.remove({ from: 'aiSessionsData', where: { session: id } }).catch(console.error);
-        }
+        if (canUsejsStore && id) resetSession(id).catch(console.error);
       });
 
       // Delete message
-      tinyAi.on('deleteIndex', (index, id) => {
+      tinyAi.on('deleteIndex', (index, id, sId) => {
         if (typeof id === 'number' || typeof id === 'string') {
-          if (canUsejsStore && ficConfigs.selected)
+          if (canUsejsStore)
             connStore
               .remove({
                 from: 'aiSessionsData',
-                where: { msg_id: tinyMsgIdDb(ficConfigs.selected, id) },
+                where: { msg_id: tinyMsgIdDb(sId, id) },
               })
               .catch(console.error);
         }
       });
 
       // Edit message
-      tinyAi.on('replaceIndex', (index) => {
+      tinyAi.on('replaceIndex', (index, ndata, ntokens, nhash, sId) => {
         const id = tinyAi.getIdByIndex(index);
         const data = tinyAi.getMsgByIndex(index);
         const tokens = tinyAi.getMsgTokensByIndex(index);
         const hash = tinyAi.getMsgHashByIndex(index);
         if (typeof id === 'number' || typeof id === 'string') {
-          if (canUsejsStore && ficConfigs.selected)
+          if (canUsejsStore)
             tinyInsertDb('aiSessionsData', {
-              session: ficConfigs.selected,
-              msg_id: tinyMsgIdDb(ficConfigs.selected, id),
+              session: sId,
+              msg_id: tinyMsgIdDb(sId, id),
               data,
               id,
               tokens,
@@ -3212,11 +3242,11 @@ const AiScriptStart = (connStore) => {
       });
 
       // Add message
-      tinyAi.on('addData', (newId, data, tokenData, hash) => {
-        if (canUsejsStore && ficConfigs.selected)
+      tinyAi.on('addData', (newId, data, tokenData, hash, sId) => {
+        if (canUsejsStore)
           tinyInsertDb('aiSessionsData', {
-            session: ficConfigs.selected,
-            msg_id: tinyMsgIdDb(ficConfigs.selected, newId),
+            session: sId,
+            msg_id: tinyMsgIdDb(sId, newId),
             data,
             id: newId,
             tokens: tokenData,
@@ -3561,10 +3591,74 @@ const AiScriptStart = (connStore) => {
           hash: await connStore.select({ from: 'aiSessionsHash' }),
           tokens: await connStore.select({ from: 'aiSessionsTokens' }),
           customList: await connStore.select({ from: 'aiSessionsCustomList' }),
-          data: await connStore.select({ from: 'aiSessionsData' }),
+          data: await connStore.select({
+            from: 'aiSessionsData',
+            order: { by: 'id', type: 'asc' },
+          }),
+        };
+        const sessions = {};
+        const executeSessionInsert = (where, callback) => {
+          for (const index in sessionData[where]) {
+            const sessionItem = sessionData[where][index];
+            if (!sessions[sessionItem.session])
+              sessions[sessionItem.session] = {
+                id: sessionItem.session,
+                file: { data: [], ids: [] },
+              };
+            callback(sessionItem, sessions[sessionItem.session].file);
+          }
         };
 
-        console.log(sessionData);
+        // Insert rooms
+        executeSessionInsert('rooms', (item, file) => {
+          for (const name in item) file[name] = item[name];
+          if (!canSandBox(item.session) && typeof file.systemInstruction !== 'undefined')
+            delete file.systemInstruction;
+          delete file.session;
+        });
+
+        // Insert hash
+        executeSessionInsert('hash', (item, file) => {
+          file.hash = { data: [] };
+          for (const name in item) if (typeof item[name] === 'string') file.hash[name] = item[name];
+          if (!canSandBox(item.session) && typeof file.hash.systemInstruction !== 'undefined')
+            delete file.hash.systemInstruction;
+          delete file.hash.session;
+        });
+
+        // Insert tokens
+        executeSessionInsert('tokens', (item, file) => {
+          file.tokens = { data: [] };
+          for (const name in item)
+            if (typeof item[name] === 'number') file.tokens[name] = item[name];
+          if (!canSandBox(item.session) && typeof file.tokens.systemInstruction !== 'undefined')
+            delete file.tokens.systemInstruction;
+        });
+
+        // Insert custom list
+        executeSessionInsert('customList', (item, file) => {
+          file.customList = item.data || null;
+        });
+
+        // Insert data
+        executeSessionInsert('data', (item, file) => {
+          // Insert id
+          file.ids.push(typeof item.id === 'number' ? item.id : null);
+          // Insert hash
+          file.hash.data.push(typeof item.hash === 'string' ? item.hash : null);
+          // Insert tokens
+          const tokens = objType(item.tokens, 'object') ? item.tokens : { count: null };
+          if (typeof tokens.count !== 'number') tokens.count = null;
+          file.tokens.data.push(tokens);
+          // Insert data
+          if (objType(item.data, 'object')) file.data.push(item.data);
+        });
+
+        // Import data
+        for (const item in sessions) {
+          console.log(sessions[item]);
+          importFileSession(sessions[item]);
+        }
       }
     }
 

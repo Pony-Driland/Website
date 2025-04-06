@@ -31,7 +31,6 @@ class TinyAiApi extends EventEmitter {
   #_getModels;
   #_countTokens;
   #_genContentApi;
-  #_historyIds;
   #_selectedHistory;
   #_partTypes;
   #_insertIntoHistory;
@@ -53,7 +52,6 @@ class TinyAiApi extends EventEmitter {
     // History
     this.#_selectedHistory = null;
     this.history = {};
-    this.#_historyIds = 0;
 
     // Models
     this.models = [];
@@ -141,7 +139,7 @@ class TinyAiApi extends EventEmitter {
         }
 
         // Complete
-        this.emit(`set${this.#capitalizeFirstLetter(name)}`, value, id);
+        this.emit(`set${this.#capitalizeFirstLetter(name)}`, value, this.getId(id));
         return;
       }
     }
@@ -185,7 +183,7 @@ class TinyAiApi extends EventEmitter {
             delete this.history[selectedId].hash[name];
 
           // Complete
-          this.emit(`set${this.#capitalizeFirstLetter(name)}`, null, id);
+          this.emit(`set${this.#capitalizeFirstLetter(name)}`, null, this.getId(id));
           return;
         }
       }
@@ -247,8 +245,9 @@ class TinyAiApi extends EventEmitter {
    */
   setMaxOutputTokens(value, id) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      this.#_insertIntoHistory(this.getId(id), { maxOutputTokens: value });
-      this.emit('setMaxOutputTokens', value, id);
+      const selectedId = this.getId(id);
+      this.#_insertIntoHistory(selectedId, { maxOutputTokens: value });
+      this.emit('setMaxOutputTokens', value, selectedId);
       return;
     }
     throw new Error('Invalid number value!');
@@ -274,8 +273,9 @@ class TinyAiApi extends EventEmitter {
    */
   setTemperature(value, id) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      this.#_insertIntoHistory(this.getId(id), { temperature: value });
-      this.emit('setTemperature', value, id);
+      const selectedId = this.getId(id);
+      this.#_insertIntoHistory(selectedId, { temperature: value });
+      this.emit('setTemperature', value, selectedId);
       return;
     }
     throw new Error('Invalid number value!');
@@ -301,8 +301,9 @@ class TinyAiApi extends EventEmitter {
    */
   setTopP(value, id) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      this.#_insertIntoHistory(this.getId(id), { topP: value });
-      this.emit('setTopP', value, id);
+      const selectedId = this.getId(id);
+      this.#_insertIntoHistory(selectedId, { topP: value });
+      this.emit('setTopP', value, selectedId);
       return;
     }
     throw new Error('Invalid number value!');
@@ -328,8 +329,9 @@ class TinyAiApi extends EventEmitter {
    */
   setTopK(value, id) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      this.#_insertIntoHistory(this.getId(id), { topK: value });
-      this.emit('setTopK', value, id);
+      const selectedId = this.getId(id);
+      this.#_insertIntoHistory(selectedId, { topK: value });
+      this.emit('setTopK', value, selectedId);
       return;
     }
     throw new Error('Invalid number value!');
@@ -355,8 +357,9 @@ class TinyAiApi extends EventEmitter {
    */
   setPresencePenalty(value, id) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      this.#_insertIntoHistory(this.getId(id), { presencePenalty: value });
-      this.emit('setPresencePenalty', value, id);
+      const selectedId = this.getId(id);
+      this.#_insertIntoHistory(selectedId, { presencePenalty: value });
+      this.emit('setPresencePenalty', value, selectedId);
       return;
     }
     throw new Error('Invalid number value!');
@@ -382,8 +385,9 @@ class TinyAiApi extends EventEmitter {
    */
   setFrequencyPenalty(value, id) {
     if (typeof value === 'number' && !Number.isNaN(value) && Number.isFinite(value)) {
-      this.#_insertIntoHistory(this.getId(id), { frequencyPenalty: value });
-      this.emit('setFrequencyPenalty', value, id);
+      const selectedId = this.getId(id);
+      this.#_insertIntoHistory(selectedId, { frequencyPenalty: value });
+      this.emit('setFrequencyPenalty', value, selectedId);
       return;
     }
     throw new Error('Invalid number value!');
@@ -411,8 +415,9 @@ class TinyAiApi extends EventEmitter {
    */
   setEnabledEnchancedCivicAnswers(value, id) {
     if (typeof value === 'boolean') {
-      this.#_insertIntoHistory(this.getId(id), { enableEnhancedCivicAnswers: value });
-      this.emit('setEnabledEnchancedCivicAnswers', value, id);
+      const selectedId = this.getId(id);
+      this.#_insertIntoHistory(selectedId, { enableEnhancedCivicAnswers: value });
+      this.emit('setEnabledEnchancedCivicAnswers', value, selectedId);
       return;
     }
     throw new Error('Invalid boolean value!');
@@ -440,8 +445,9 @@ class TinyAiApi extends EventEmitter {
    */
   setModel(data, id) {
     const model = typeof data === 'string' ? data : null;
-    this.#_insertIntoHistory(this.getId(id), { model });
-    this.emit('setModel', model, id);
+    const selectedId = this.getId(id);
+    this.#_insertIntoHistory(selectedId, { model });
+    this.emit('setModel', model, selectedId);
   }
 
   /**
@@ -980,7 +986,7 @@ class TinyAiApi extends EventEmitter {
       history.ids.splice(index, 1);
       history.hash.data.splice(index, 1);
       history.tokens.data.splice(index, 1);
-      this.emit('deleteIndex', index, msgId, id);
+      this.emit('deleteIndex', index, msgId, this.getId(id));
       return true;
     }
     return false;
@@ -1006,7 +1012,7 @@ class TinyAiApi extends EventEmitter {
       }
 
       if (tokens) history.tokens.data[index] = tokens;
-      this.emit('replaceIndex', index, data, tokens, hash, id);
+      this.emit('replaceIndex', index, data, tokens, hash, this.getId(id));
       return true;
     }
     return false;
@@ -1077,8 +1083,9 @@ class TinyAiApi extends EventEmitter {
   addData(data, tokenData = { count: null }, id = undefined) {
     const selectedId = this.getId(id);
     if (this.history[selectedId]) {
-      const newId = this.#_historyIds;
-      this.#_historyIds++;
+      if (typeof this.history[selectedId].nextId !== 'number') this.history[selectedId].nextId = 0;
+      const newId = this.history[selectedId].nextId;
+      this.history[selectedId].nextId++;
       const hash = objHash(data);
 
       const tokenContent = objType(tokenData, 'object')
