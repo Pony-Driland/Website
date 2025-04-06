@@ -3603,8 +3603,6 @@ const AiScriptStart = (connStore) => {
         executeSessionInsert('hash', (item, file) => {
           file.hash = { data: [] };
           for (const name in item) if (typeof item[name] === 'string') file.hash[name] = item[name];
-          if (!canSandBox(item.session) && typeof file.hash.systemInstruction !== 'undefined')
-            delete file.hash.systemInstruction;
           delete file.hash.session;
         });
 
@@ -3613,8 +3611,6 @@ const AiScriptStart = (connStore) => {
           file.tokens = { data: [] };
           for (const name in item)
             if (typeof item[name] === 'number') file.tokens[name] = item[name];
-          if (!canSandBox(item.session) && typeof file.tokens.systemInstruction !== 'undefined')
-            delete file.tokens.systemInstruction;
         });
 
         // Insert custom list
