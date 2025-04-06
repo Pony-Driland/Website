@@ -3042,38 +3042,40 @@ const AiScriptStart = (connStore) => {
       // Reset session
       const resetSession = (id, useReadOnly = false) =>
         new Promise((resolve, reject) => {
-          if (useReadOnly) {
-            disablePromptButtons(true);
-            enableMessageButtons(false);
-            enableReadOnly(true);
-            modelChangerReadOnly(true);
-            enableModelSelectorReadOnly(true);
-          }
-
-          const disableReadOnly = () => {
+          if (canUsejsStore) {
             if (useReadOnly) {
-              disablePromptButtons(false);
-              enableMessageButtons(true);
-              enableReadOnly(false);
-              modelChangerReadOnly(false);
-              enableModelSelectorReadOnly(false);
+              disablePromptButtons(true);
+              enableMessageButtons(false);
+              enableReadOnly(true);
+              modelChangerReadOnly(true);
+              enableModelSelectorReadOnly(true);
             }
-          };
-          Promise.all([
-            connStore.remove({ from: 'aiSessionsRoom', where: { session: id } }),
-            connStore.remove({ from: 'aiSessionsHash', where: { session: id } }),
-            connStore.remove({ from: 'aiSessionsTokens', where: { session: id } }),
-            connStore.remove({ from: 'aiSessionsCustomList', where: { session: id } }),
-            connStore.remove({ from: 'aiSessionsData', where: { session: id } }),
-          ])
-            .then((result) => {
-              disableReadOnly();
-              resolve(result);
-            })
-            .catch((err) => {
-              disableReadOnly();
-              reject(err);
-            });
+
+            const disableReadOnly = () => {
+              if (useReadOnly) {
+                disablePromptButtons(false);
+                enableMessageButtons(true);
+                enableReadOnly(false);
+                modelChangerReadOnly(false);
+                enableModelSelectorReadOnly(false);
+              }
+            };
+            Promise.all([
+              connStore.remove({ from: 'aiSessionsRoom', where: { session: id } }),
+              connStore.remove({ from: 'aiSessionsHash', where: { session: id } }),
+              connStore.remove({ from: 'aiSessionsTokens', where: { session: id } }),
+              connStore.remove({ from: 'aiSessionsCustomList', where: { session: id } }),
+              connStore.remove({ from: 'aiSessionsData', where: { session: id } }),
+            ])
+              .then((result) => {
+                disableReadOnly();
+                resolve(result);
+              })
+              .catch((err) => {
+                disableReadOnly();
+                reject(err);
+              });
+          } else resolve(null);
         });
 
       // Save backup
