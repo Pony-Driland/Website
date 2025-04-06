@@ -222,6 +222,9 @@ const storyData = {
                         aiPage.tokens[item] = { dataType: 'number' };
                       }
 
+                      aiPage.hash.file = { dataType: 'string' };
+                      aiPage.tokens.file = { dataType: 'number' };
+
                       aiPage.room.session = { primaryKey: true, dataType: 'string' };
                       aiPage.room.model = { dataType: 'string' };
                       aiPage.hash.session = aiPage.room.session;

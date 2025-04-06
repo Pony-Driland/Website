@@ -3068,6 +3068,9 @@ const AiScriptStart = (connStore) => {
               tokenData[item] = typeof tokens[item] === 'number' ? tokens[item] : null;
             }
 
+            hashData.file = typeof hash.file === 'string' ? hash.file : null;
+            tokenData.file = typeof tokens.file === 'number' ? tokens.file : null;
+
             // Hash
             hashData.session = sessionSelected;
             tinyInsert('aiSessionsHash', hashData);
