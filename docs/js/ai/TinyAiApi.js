@@ -91,10 +91,9 @@ class TinyAiApi extends EventEmitter {
     }
   }
 
-  #toTitleCase(str) {
-    return str.replace(/\w\S*/g, function (txt) {
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
+  #capitalizeFirstLetter(str) {
+    if (!str) return '';
+    return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
   /**
@@ -142,7 +141,7 @@ class TinyAiApi extends EventEmitter {
         }
 
         // Complete
-        this.emit(`set${this.#toTitleCase(name)}`, value, id);
+        this.emit(`set${this.#capitalizeFirstLetter(name)}`, value, id);
         return;
       }
     }
@@ -186,7 +185,7 @@ class TinyAiApi extends EventEmitter {
             delete this.history[selectedId].hash[name];
 
           // Complete
-          this.emit(`set${this.#toTitleCase(name)}`, null, id);
+          this.emit(`set${this.#capitalizeFirstLetter(name)}`, null, id);
           return;
         }
       }
