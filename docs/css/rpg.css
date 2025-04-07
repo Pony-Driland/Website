@@ -148,14 +148,11 @@
 
 .tiny-dice-body .face {
   position: absolute;
-  background: linear-gradient(135deg, #ff3399, #33ccff);
-  color: white;
   font-size: 2em;
   font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 10px;
 }
 

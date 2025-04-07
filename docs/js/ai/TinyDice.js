@@ -1,6 +1,6 @@
 /**
  * TinyDice - JavaScript class for rendering animated 3D dice with HTML/CSS.
- * 
+ *
  * Created by: Yasmin Seidel (JasminDreasond)
  * Co-developed with: ChatGPT (OpenAI) as coding assistant
  *
@@ -14,14 +14,29 @@
  * Usage:
  * const container = document.getElementById('myDice');
  * const dice = new TinyDice(container);
- * 
- * dice.roll(6, 3); // Rolls 3d6
- * dice.roll(100, 3, '6,12,20'); // Rolls d6, d12, and d20
- * dice.roll(10, 2, null, true); // Rolls 2d10 with infinite spin
- * dice.roll(10, 2, null, false, true); // Rolls 2d10 with values starting at 0
+ *
+ * dice.roll(6, 3);                        // Rolls 3d6
+ * dice.roll(100, 3, '6,12,20');           // Rolls d6, d12, and d20
+ * dice.roll(10, 2, null, true);           // Rolls 2d10 with infinite spin
+ * dice.roll(10, 2, null, false, true);    // Rolls 2d10 with values starting at 0
+ *
+ * Customization:
+ * dice.setBgSkin('metal');                // Sets background skin
+ * dice.setTextSkin('neon');               // Sets text skin
+ * dice.setBorderSkin('2px solid glow');   // Sets border skin
+ *
+ * dice.getBgSkin();                       // Gets current or default background skin
+ * dice.getTextSkin();                     // Gets current or default text skin
+ * dice.getBorderSkin();                   // Gets current or default border skin
  */
 class TinyDice {
   #cubeId = 0; // used for incremental z-index to avoid overlapping issues
+  #defaultBgSkin = 'linear-gradient(135deg, #ff3399, #33ccff)';
+  #defaultBorderSkin = '2px solid rgba(255, 255, 255, 0.2)';
+  #defaultTextSkin = 'white';
+  #bgSkin;
+  #textSkin;
+  #borderSkin;
   #diceBase;
 
   /**
@@ -37,6 +52,63 @@ class TinyDice {
     this.#diceBase.appendChild(this.diceArea);
   }
 
+  /**
+   * Sets the background skin of the dice.
+   * @param {string|null} skin - The skin name to apply as background. Pass null or non-string to reset to default.
+   */
+  setBgSkin(skin) {
+    this.#bgSkin = typeof skin === 'string' ? skin : null;
+  }
+
+  /**
+   * Gets the currently applied background skin.
+   * @returns {string} The current background skin, or the default if not set.
+   */
+  getBgSkin() {
+    return this.#bgSkin || this.#defaultBgSkin;
+  }
+
+  /**
+   * Sets the text skin (style) of the dice numbers.
+   * @param {string|null} skin - The skin name to apply to the text. Pass null or non-string to reset to default.
+   */
+  setTextSkin(skin) {
+    this.#textSkin = typeof skin === 'string' ? skin : null;
+  }
+
+  /**
+   * Gets the currently applied text skin.
+   * @returns {string} The current text skin, or the default if not set.
+   */
+  getTextSkin() {
+    return this.#textSkin || this.#defaultTextSkin;
+  }
+
+  /**
+   * Sets the border skin (style) of the dice edges.
+   * @param {string|null} skin - The skin name to apply to the border. Pass null or non-string to reset to default.
+   */
+  setBorderSkin(skin) {
+    this.#borderSkin = typeof skin === 'string' ? skin : null;
+  }
+
+  /**
+   * Gets the currently applied border skin.
+   * @returns {string} The current border skin, or the default if not set.
+   */
+  getBorderSkin() {
+    return this.#borderSkin || this.#defaultBorderSkin;
+  }
+
+  /**
+   * Generates a random integer between 1 and max (inclusive).
+   * If `canZero` is true, the range becomes 0 to max (inclusive).
+   *
+   * @private
+   * @param {number} max - The maximum value for the roll (inclusive).
+   * @param {boolean} [canZero=false] - Whether the result can include 0.
+   * @returns {number} A random integer between 1 and max, or 0 and max if `canZero` is true. Returns 0 if max <= 0.
+   */
   #rollNumber(max = 0, canZero = false) {
     if (max > 0) {
       let maxValue = max;
@@ -137,6 +209,9 @@ class TinyDice {
     for (let i = 1; i <= 6; i++) {
       const face = document.createElement('div');
       face.className = `face face${i}`;
+      face.style.background = this.getBgSkin();
+      face.style.color = this.getTextSkin();
+      face.style.border = this.getBorderSkin();
       // Ignored results
       if (i !== 1) {
         let roll;
