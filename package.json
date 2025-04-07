@@ -69,7 +69,8 @@
         "socket.io-client": "^4.8.1",
         "sqlite": "^5.1.1",
         "sqlite3": "^5.1.7",
-        "tippy.js": "^6.3.7"
+        "tippy.js": "^6.3.7",
+        "validate-color": "^2.2.4"
     },
     "devDependencies": {
         "@babel/cli": "^7.27.0",

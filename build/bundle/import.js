@@ -25,7 +25,11 @@ import WalletConnect from '@walletconnect/client';
 // jsstore
 import * as JsStore from "jsstore";
 
+// Validate color
+import validateColor from "validate-color";
+
 // Imports
+global.window.validateColor = validateColor;
 global.window.JsStore = JsStore;
 global.window.tippy = tippy;
 global.window.io = io;
