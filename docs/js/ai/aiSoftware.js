@@ -1691,7 +1691,7 @@ const AiScriptStart = (connStore) => {
                       'borderSkin',
                       'e.g. black',
                       localStorage.getItem(`tiny-dice-border`) ||
-                        '2px solid rgba(255, 255, 255, 0.2)',
+                        '2px solid rgba(0, 0, 0, 0.05)',
                     ),
                     // Bg skin
                     createInputField(
