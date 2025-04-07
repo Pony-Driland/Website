@@ -9404,6 +9404,11 @@ v8flags@^3.1.1:
   dependencies:
     homedir-polyfill "^1.0.1"
 
+validate-color@^2.2.4:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/validate-color/-/validate-color-2.2.4.tgz#77acf863458cd637ee944f604932512f6cbe6103"
+  integrity sha512-Znolz+b6CwW6eBXYld7MFM3O7funcdyRfjKC/X9hqYV/0VcC5LB/L45mff7m3dIn9wdGdNOAQ/fybNuD5P/HDw==
+
 vary@^1, vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"

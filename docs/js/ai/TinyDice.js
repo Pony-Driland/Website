@@ -1,3 +1,5 @@
+// import validateColor from "validate-color";
+
 /**
  * TinyDice - JavaScript class for rendering animated 3D dice with HTML/CSS.
  *
@@ -53,11 +55,134 @@ class TinyDice {
   }
 
   /**
-   * Sets the background skin of the dice.
-   * @param {string|null} skin - The skin name to apply as background. Pass null or non-string to reset to default.
+   * Validates a linear-gradient string to prevent unsafe or malformed styles.
+   *
+   * @private
+   * @param {string} value - The CSS gradient string.
+   * @returns {boolean}
+   */
+  #isValidLinearGradient(value) {
+    if (typeof value !== 'string') return false;
+    const normalized = value.trim().toLowerCase();
+
+    // Must start with 'linear-gradient(' and end with ')'
+    if (!normalized.startsWith('linear-gradient(') || !normalized.endsWith(')')) {
+      return false;
+    }
+
+    // Block unsafe patterns
+    const unsafePattern = /(url\s*\(|expression\s*\(|javascript:|<|>|data:)/i;
+    if (unsafePattern.test(value)) {
+      return false;
+    }
+
+    // Extract content inside the parentheses
+    const content = value.slice(value.indexOf('(') + 1, -1).trim();
+    if (!content) return false;
+
+    // Safe split by commas outside of parentheses
+    const parts = [];
+    let buffer = '';
+    let depth = 0;
+
+    for (let char of content) {
+      if (char === '(') depth++;
+      if (char === ')') depth--;
+
+      if (char === ',' && depth === 0) {
+        parts.push(buffer.trim());
+        buffer = '';
+      } else {
+        buffer += char;
+      }
+    }
+
+    if (buffer.trim()) parts.push(buffer.trim());
+    if (parts.length < 1) return false; // needs at least one component
+
+    let colorCount = 0;
+
+    for (let i = 0; i < parts.length; i++) {
+      const part = parts[i];
+      // First item can optionally be a direction or angle
+      if (i === 0 && /^(to\s+\w+|\d+deg|[+-]?\d+rad|[+-]?\d+turn)$/i.test(part)) {
+        continue;
+      }
+
+      if (validateColor(part.trim())) {
+        colorCount++;
+      } else {
+        // Extract possible color value before any stop (e.g. "red 20%" → "red")
+        const colorCandidate = part.trim().split(/\s+/)[0];
+
+        if (validateColor(colorCandidate)) {
+          colorCount++;
+        } else {
+          return false; // invalid color
+        }
+      }
+    }
+
+    // Must have at least 1 valid color and no more than 50
+    return colorCount >= 1 && colorCount <= 50;
+  }
+
+  /**
+   * Validates a CSS border string like '1px solid red' or '2px dashed linear-gradient(...)'.
+   *
+   * @private
+   * @param {string} value - The CSS border string.
+   * @returns {boolean}
+   */
+  #isValidCssBorder(value) {
+    if (typeof value !== 'string') return false;
+
+    const parts = value.trim().split(/\s+/);
+    if (parts.length < 3) return false;
+
+    const [width, style, ...colorParts] = parts;
+    const color = colorParts.join(' ');
+
+    // Validate width (basic check for length units)
+    const isValidWidth = /^(\d+(\.\d+)?)(px|em|rem|%)$/.test(width);
+    if (!isValidWidth) return false;
+
+    // Validate border style
+    const validStyles = [
+      'none',
+      'solid',
+      'dashed',
+      'dotted',
+      'double',
+      'groove',
+      'ridge',
+      'inset',
+      'outset',
+      'hidden',
+    ];
+    if (!validStyles.includes(style)) return false;
+
+    // Validate color (either direct or linear-gradient)
+    return validateColor(color) || this.#isValidLinearGradient(color);
+  }
+
+  /**
+   * Sets the background skin style if it's a valid CSS color or linear-gradient.
+   * Prevents injection of unsafe or malformed styles.
+   *
+   * @param {string} skin - A valid CSS color string or gradient.
    */
   setBgSkin(skin) {
-    this.#bgSkin = typeof skin === 'string' ? skin : null;
+    if (typeof skin !== 'string') {
+      this.#bgSkin = null;
+      return;
+    }
+
+    const trimmed = skin.trim();
+    const isGradient = this.#isValidLinearGradient(trimmed);
+    const isColor = validateColor(trimmed);
+
+    this.#bgSkin = isGradient || isColor ? trimmed : null;
   }
 
   /**
@@ -73,7 +198,7 @@ class TinyDice {
    * @param {string|null} skin - The skin name to apply to the text. Pass null or non-string to reset to default.
    */
   setTextSkin(skin) {
-    this.#textSkin = typeof skin === 'string' ? skin : null;
+    this.#textSkin = typeof skin === 'string' && validateColor(skin) ? skin : null;
   }
 
   /**
@@ -89,7 +214,7 @@ class TinyDice {
    * @param {string|null} skin - The skin name to apply to the border. Pass null or non-string to reset to default.
    */
   setBorderSkin(skin) {
-    this.#borderSkin = typeof skin === 'string' ? skin : null;
+    this.#borderSkin = typeof skin === 'string' && this.#isValidCssBorder(skin) ? skin : null;
   }
 
   /**
