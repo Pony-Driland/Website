@@ -1666,39 +1666,52 @@ const AiScriptStart = (connStore) => {
                 };
 
                 const $formRow2 = $('<div>')
-                  .addClass('row g-3')
+                  .addClass('row g-3 mb-4')
                   .append(
                     createInputField(
                       'Background Skin',
                       'bgSkin',
                       'e.g. red or rgb(200,0,0)',
-                      'white',
+                      localStorage.getItem(`tiny-dice-bg`) || 'white',
                     ),
-                    createInputField('Text Skin', 'textSkin', 'e.g. white or #fff', 'black'),
+                    createInputField(
+                      'Text Skin',
+                      'textSkin',
+                      'e.g. white or #fff',
+                      localStorage.getItem(`tiny-dice-text`) || 'black',
+                    ),
                     createInputField(
                       'Border Skin',
                       'borderSkin',
                       'e.g. black',
-                      '2px solid rgba(255, 255, 255, 0.2)',
+                      localStorage.getItem(`tiny-dice-border`) || '2px solid rgba(255, 255, 255, 0.2)',
                     ),
-                    createInputField('Background Image', 'bgImg', 'data:image/png;base64,...'),
+                    createInputField(
+                      'Background Image',
+                      'bgImg',
+                      'data:image/png;base64,...',
+                      localStorage.getItem(`tiny-dice-img`) || undefined,
+                    ),
                   );
 
-                configs.bgSkin.on('change', function () {
-                  dice.setBgSkin($(this).val().trim() || null);
+                const updateDiceData = (where, dataName, value) => {
+                  dice[where](value);
+                  if (value) localStorage.setItem(`tiny-dice-${dataName}`, value);
+                  else localStorage.removeItem(`tiny-dice-${dataName}`);
                   dice.updateDicesSkin();
+                };
+
+                configs.bgSkin.on('change', function () {
+                  updateDiceData('setBgSkin', 'bg', $(this).val().trim() || null);
                 });
                 configs.textSkin.on('change', function () {
-                  dice.setTextSkin($(this).val().trim() || null);
-                  dice.updateDicesSkin();
+                  updateDiceData('setTextSkin', 'text', $(this).val().trim() || null);
                 });
                 configs.borderSkin.on('change', function () {
-                  dice.setBorderSkin($(this).val().trim() || null);
-                  dice.updateDicesSkin();
+                  updateDiceData('setBorderSkin', 'border', $(this).val().trim() || null);
                 });
                 configs.bgImg.on('change', function () {
-                  dice.setBgImg($(this).val().trim() || null);
-                  dice.updateDicesSkin();
+                  updateDiceData('setBgImg', 'img', $(this).val().trim() || null);
                 });
 
                 const updateAllSkins = () => {
@@ -1712,7 +1725,7 @@ const AiScriptStart = (connStore) => {
                 $root.append($('<center>').append($formRow), $allow0Col, $formRow2);
                 if (tinyIo.socket && tinyIo.client) {
                   const $applyBtn = $('<button>')
-                    .addClass('btn btn-success w-100 mt-4')
+                    .addClass('btn btn-success w-100')
                     .attr('id', 'applySkins')
                     .text('Apply Dice Skins to Account')
                     .attr('disabled', !tinyIo.client.isConnected());
