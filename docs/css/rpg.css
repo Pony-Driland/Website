@@ -140,6 +140,11 @@
   height: 100px;
 }
 
+.tiny-dice-body .face::selection {
+  background: var(--dice-selection-bg);
+  color: var(--dice-selection-text);
+}
+
 .tiny-dice-body .cube-wrapper {
   position: absolute;
   transform-style: preserve-3d;
