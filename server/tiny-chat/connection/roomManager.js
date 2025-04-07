@@ -23,10 +23,12 @@ import {
   roomModerators,
   roomBannedUsers,
   getHashString,
+  noDataInfo,
 } from './values';
 
 export default function roomManager(socket, io, appStorage) {
   socket.on('exists-room', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { roomId } = data;
     // Validate values
     if (typeof roomId !== 'string') return sendIncompleteDataInfo(fn);
@@ -41,6 +43,7 @@ export default function roomManager(socket, io, appStorage) {
   });
 
   socket.on('join', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { roomId, password } = data;
     // Validate values
     if (typeof roomId !== 'string' || typeof password !== 'string')
@@ -119,6 +122,7 @@ export default function roomManager(socket, io, appStorage) {
   });
 
   socket.on('leave', (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { roomId } = data;
     // Validate values
     if (typeof roomId !== 'string') return sendIncompleteDataInfo(fn);
@@ -139,6 +143,7 @@ export default function roomManager(socket, io, appStorage) {
   });
 
   socket.on('ban-from-room', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { userId, roomId } = data;
     // Validate values
     if (typeof userId !== 'string' || typeof roomId !== 'string') return sendIncompleteDataInfo(fn);
@@ -194,6 +199,7 @@ export default function roomManager(socket, io, appStorage) {
   });
 
   socket.on('unban-from-room', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { userId, roomId } = data;
     // Validate values
     if (typeof userId !== 'string' || typeof roomId !== 'string') return sendIncompleteDataInfo(fn);
@@ -240,6 +246,7 @@ export default function roomManager(socket, io, appStorage) {
   });
 
   socket.on('kick-from-room', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { userId, roomId } = data;
     // Validate values
     if (typeof userId !== 'string' || typeof roomId !== 'string') return sendIncompleteDataInfo(fn);
@@ -292,6 +299,7 @@ export default function roomManager(socket, io, appStorage) {
   });
 
   socket.on('create-room', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { roomId, password, title } = data;
     // Validate values
     if (typeof roomId !== 'string' || typeof password !== 'string' || typeof title !== 'string')
@@ -325,6 +333,7 @@ export default function roomManager(socket, io, appStorage) {
   });
 
   socket.on('delete-room', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { roomId } = data;
     // Validate values
     if (typeof roomId !== 'string') return sendIncompleteDataInfo(fn);
@@ -376,6 +385,7 @@ export default function roomManager(socket, io, appStorage) {
   });
 
   socket.on('disable-room', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { roomId } = data;
     // Validate values
     if (typeof roomId !== 'string') return sendIncompleteDataInfo(fn);
@@ -423,6 +433,7 @@ export default function roomManager(socket, io, appStorage) {
   });
 
   socket.on('enable-room', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { roomId } = data;
     // Validate values
     if (typeof roomId !== 'string') return sendIncompleteDataInfo(fn);
@@ -464,6 +475,7 @@ export default function roomManager(socket, io, appStorage) {
   });
 
   socket.on('room-add-mod', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { roomId, mods } = data;
     // Validate values
     if (typeof roomId !== 'string' || Array.isArray(mods)) return sendIncompleteDataInfo(fn);
@@ -501,6 +513,7 @@ export default function roomManager(socket, io, appStorage) {
   });
 
   socket.on('room-remove-mod', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { roomId, mods } = data;
     // Validate values
     if (typeof roomId !== 'string' || Array.isArray(mods)) return sendIncompleteDataInfo(fn);
@@ -536,6 +549,7 @@ export default function roomManager(socket, io, appStorage) {
   });
 
   socket.on('update-room', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { roomId, newSettings } = data;
     // Validate values
     if (typeof roomId !== 'string' || !objType(newSettings, 'object'))
@@ -627,6 +641,7 @@ export default function roomManager(socket, io, appStorage) {
   });
 
   socket.on('update-room-data', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { roomId, isPrivate, values } = data;
     // Validate values
     if (typeof roomId !== 'string' || !objType(values, 'object') || typeof isPrivate !== 'boolean')

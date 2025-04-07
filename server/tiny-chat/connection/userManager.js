@@ -13,10 +13,12 @@ import {
   getIniConfig,
   leaveRoom,
   getRateLimit,
+  noDataInfo,
 } from './values';
 
 export default function userManager(socket, io) {
   socket.on('ban', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { userId, reason } = data;
     // Validate values
     if (typeof userId !== 'string' || typeof reason !== 'string') return sendIncompleteDataInfo(fn);
@@ -47,6 +49,7 @@ export default function userManager(socket, io) {
   });
 
   socket.on('unban', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { userId } = data;
     // Validate values
     if (typeof userId !== 'string') return sendIncompleteDataInfo(fn);
@@ -74,6 +77,7 @@ export default function userManager(socket, io) {
   });
 
   socket.on('kick', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { userId } = data;
     // Validate values
     if (typeof userId !== 'string') return sendIncompleteDataInfo(fn);
@@ -99,6 +103,7 @@ export default function userManager(socket, io) {
   });
 
   socket.on('change-password', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { password } = data;
     // Validate values
     if (typeof password !== 'string') return sendIncompleteDataInfo(fn);
@@ -127,6 +132,7 @@ export default function userManager(socket, io) {
   });
 
   socket.on('change-nickname', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { nickname } = data;
     // Validate values
     if (typeof nickname !== 'string') return sendIncompleteDataInfo(fn);
@@ -152,6 +158,7 @@ export default function userManager(socket, io) {
   });
 
   socket.on('register', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { userId, password, nickname } = data;
     // Validate values
     if (typeof userId !== 'string' || typeof password !== 'string' || typeof nickname !== 'string')
@@ -193,6 +200,7 @@ export default function userManager(socket, io) {
   });
 
   socket.on('login', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { userId, password } = data;
     // Validate values
     if (typeof userId !== 'string' || typeof password !== 'string')

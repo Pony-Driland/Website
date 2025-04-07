@@ -1,5 +1,6 @@
 import crypto from 'crypto';
 import TinySQL from '../TinySQL';
+import { objType } from '../lib/objChecker';
 
 export const userSockets = new Map(); // Socket users
 
@@ -198,6 +199,19 @@ export const sendIncompleteDataInfo = (fn, code = 0) => {
     msg: `Your data does not respect the requirements for this request. Your request has been cancelled.`,
     code,
   });
+};
+
+// Incomplete data
+export const noDataInfo = (data, fn, code = 0) => {
+  if (!objType(data, 'object')) {
+    fn({
+      error: true,
+      msg: `Your data does not respect the requirements for this request. Your request has been cancelled.`,
+      code,
+    });
+    return true;
+  }
+  return false;
 };
 
 export const accountNotDetected = (fn, code = 0) => {
