@@ -49,6 +49,24 @@ class TinyMap {
   }
 
   /**
+   * Validates a background-image value restricted to safe data:image URLs only.
+   *
+   * @private
+   * @param {string} value - The CSS background-image value.
+   * @returns {boolean}
+   */
+  #isValidDataImage(value) {
+    if (typeof value !== 'string') return false;
+
+    const normalized = value.trim();
+
+    // Only allow data:image/... base64 or URL-encoded images
+    const dataUrlPattern = /^data:image\/(png|jpeg|jpg|gif|webp);base64,[a-z0-9+\/=]+$/i;
+
+    return dataUrlPattern.test(normalized);
+  }
+
+  /**
    * Sets the current location for the RPG map.
    *
    * Updates the internal `location` property.
@@ -502,7 +520,7 @@ class TinyMap {
    * @returns {void}
    */
   setMapImage(imgUrl) {
-    this.image = typeof imgUrl === 'string' && imgUrl.startsWith('data:') ? imgUrl : '';
+    this.image = typeof imgUrl === 'string' && this.#isValidDataImage(imgUrl) ? imgUrl : '';
     if (this.html.table)
       this.html.table.css({
         background: this.image

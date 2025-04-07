@@ -37,6 +37,7 @@ class TinyDice {
   #defaultBorderSkin = '2px solid rgba(255, 255, 255, 0.2)';
   #defaultTextSkin = 'white';
   #bgSkin;
+  #bgImg;
   #textSkin;
   #borderSkin;
   #diceBase;
@@ -52,6 +53,24 @@ class TinyDice {
     this.diceArea = document.createElement('div');
     this.diceArea.classList.add('dice-area');
     this.#diceBase.appendChild(this.diceArea);
+  }
+
+  /**
+   * Validates a background-image value restricted to safe data:image URLs only.
+   *
+   * @private
+   * @param {string} value - The CSS background-image value.
+   * @returns {boolean}
+   */
+  #isValidDataImage(value) {
+    if (typeof value !== 'string') return false;
+
+    const normalized = value.trim();
+
+    // Only allow data:image/... base64 or URL-encoded images
+    const dataUrlPattern = /^data:image\/(png|jpeg|jpg|gif|webp);base64,[a-z0-9+\/=]+$/i;
+
+    return dataUrlPattern.test(normalized);
   }
 
   /**
@@ -164,6 +183,31 @@ class TinyDice {
 
     // Validate color (either direct or linear-gradient)
     return validateColor(color) || this.#isValidLinearGradient(color);
+  }
+
+  /**
+   * Sets the background image using a `data:` URL or, optionally, a standard image URL if forced.
+   *
+   * For security reasons, only `data:` URLs are accepted by default to avoid external resource injection.
+   * You can override this restriction using the `forceUnsafe` flag, but this is discouraged unless trusted.
+   *
+   * @public
+   * @param {string|null} value - The background-image URL (must be a `data:` image by default).
+   * @param {boolean} [forceUnsafe=false] - Allows setting non-data URLs if true (use with caution).
+   */
+  setBgImg(value, forceUnsafe = false) {
+    this.#bgImg =
+      typeof value === 'string' && (forceUnsafe || this.#isValidDataImage(value)) ? value : null;
+  }
+
+  /**
+   * Returns the currently set background image if valid, or null.
+   *
+   * @public
+   * @returns {string|null} - The current background-image value (data:image URL) or null if none is set.
+   */
+  getBgImg() {
+    return this.#bgImg || null;
   }
 
   /**
@@ -332,11 +376,24 @@ class TinyDice {
     const countSeq = new Set();
     const min = !canZero ? 0 : -1;
     for (let i = 1; i <= 6; i++) {
+      // Element
       const face = document.createElement('div');
       face.className = `face face${i}`;
+
+      // Skin
       face.style.background = this.getBgSkin();
       face.style.color = this.getTextSkin();
       face.style.border = this.getBorderSkin();
+
+      // Background image
+      const bgImg = this.getBgImg();
+      if (bgImg) {
+        face.style.backgroundImage = `url("${bgImg}")`;
+        face.style.backgroundPosition = 'center';
+        face.style.backgroundSize = '100%';
+        face.style.backgroundRepeat = 'repeat';
+      }
+
       // Ignored results
       if (i !== 1) {
         let roll;
