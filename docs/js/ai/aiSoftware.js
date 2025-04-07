@@ -1576,12 +1576,12 @@ const AiScriptStart = (connStore) => {
                 // Form template
                 const configs = {};
                 const genLabel = (id, text) =>
-                  $('<label>').addClass('form-label').attr('for', id).text(text);
+                  $('<label>').addClass('form-label').attr('for', `tiny-dice_${id}`).text(text);
 
                 const genInput = (id, type, value, min) =>
                   $('<input>')
                     .addClass('form-control text-center')
-                    .attr({ id, type, min })
+                    .attr({ id: `tiny-dice_${id}`, type, min })
                     .attr('placeholder', min)
                     .val(value);
 
@@ -1611,6 +1611,23 @@ const AiScriptStart = (connStore) => {
                     ),
                   );
 
+                const $allow0input = $('<input>')
+                  .addClass('form-check-input')
+                  .attr({ type: 'checkbox', id: 'tiny-dice_allow0' });
+                const $allow0Col = $('<div>')
+                  .addClass('d-flex justify-content-center align-items-center mt-2')
+                  .append(
+                    $('<div>')
+                      .addClass('form-check')
+                      .append(
+                        $allow0input,
+                        $('<label>')
+                          .addClass('form-check-label')
+                          .attr('for', 'tiny-dice_allow0')
+                          .text('Allow zero values'),
+                      ),
+                  );
+
                 $formRow.append($maxValueCol, $diceCountCol, $perDieCol);
 
                 // Roll button
@@ -1620,7 +1637,12 @@ const AiScriptStart = (connStore) => {
 
                 // Add container
                 const $diceContainer = $('<div>');
-                $root.append($('<center>').append($formRow), $rollButton, $diceContainer);
+                $root.append(
+                  $('<center>').append($formRow),
+                  $allow0Col,
+                  $rollButton,
+                  $diceContainer,
+                );
 
                 // TinyDice logic
                 const dice = new TinyDice($diceContainer.get(0));
@@ -1629,8 +1651,9 @@ const AiScriptStart = (connStore) => {
                   const count = parseInt(configs.diceCount.val()) || 1;
                   const perDieRaw = configs.perDieValues.val().trim();
                   const perDie = perDieRaw.length > 0 ? perDieRaw : null;
+                  const canZero = $allow0input.is(':checked');
 
-                  dice.roll(max, count, perDie);
+                  dice.roll(max, count, perDie, canZero);
                 });
 
                 dice.setBgSkin('white');

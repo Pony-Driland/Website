@@ -472,7 +472,8 @@ class TinyDice {
   rollDices(count, maxGlobal, perDieData, canZero = false, rollInfinity = undefined) {
     const cubes = [];
     for (let i = 0; i < count; i++) {
-      const max = Array.isArray(perDieData) && typeof perDieData[i] === 'number' ? perDieData[i] : maxGlobal;
+      const max =
+        Array.isArray(perDieData) && typeof perDieData[i] === 'number' ? perDieData[i] : maxGlobal;
       const result = this.#rollNumber(max, canZero);
       cubes.push({
         sequence: this.insertDiceElement(result, max, canZero, rollInfinity),
