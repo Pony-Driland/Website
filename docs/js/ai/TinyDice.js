@@ -32,6 +32,7 @@
  * dice.getBorderSkin();                   // Gets current or default border skin
  */
 class TinyDice {
+  #elements = [];
   #cubeId = 0; // used for incremental z-index to avoid overlapping issues
   #defaultBgSkin = 'linear-gradient(135deg, #ff3399, #33ccff)';
   #defaultBorderSkin = '2px solid rgba(255, 255, 255, 0.2)';
@@ -270,6 +271,58 @@ class TinyDice {
   }
 
   /**
+   * Applies the current visual skin to a specific dice face element.
+   * This includes background color, text color, border style, and optionally
+   * a `background-image` if set via `setBgImg`.
+   *
+   * @private
+   * @param {HTMLElement} face - The HTML element representing a dice face.
+   */
+  #updateDiceSkin(face) {
+    // Skin
+    face.style.background = this.getBgSkin();
+    face.style.color = this.getTextSkin();
+    face.style.border = this.getBorderSkin();
+
+    // Background image
+    const bgImg = this.getBgImg();
+    if (bgImg) {
+      face.style.backgroundImage = `url("${bgImg}")`;
+      face.style.backgroundPosition = 'center';
+      face.style.backgroundSize = '100%';
+      face.style.backgroundRepeat = 'repeat';
+    }
+  }
+
+  /**
+   * Updates the visual skin of all dice face elements currently rendered.
+   * Iterates through each dice in `this.#elements` and applies the active
+   * background, text color, border, and background image styles using `#updateDiceSkin`.
+   *
+   * @public
+   */
+  updateDicesSkin() {
+    for (const index in this.#elements) this.updateDiceSkin(index);
+  }
+
+  /**
+   * Updates the visual skin of a specific die by index.
+   * Applies current background color, text color, border style, and background image
+   * to all face elements of the selected die using `#updateDiceSkin`.
+   *
+   * @public
+   * @param {number|string} index - The index of the die to update.
+   * @returns {boolean} Returns `true` if the die was found and updated; otherwise `false`.
+   */
+  updateDiceSkin(index) {
+    if (this.#elements[index]) {
+      for (const index2 in this.#elements[index].faces)
+        this.#updateDiceSkin(this.#elements[index].faces[index2]);
+      return true;
+    } else return false;
+  }
+
+  /**
    * Generates a random integer between 1 and max (inclusive).
    * If `canZero` is true, the range becomes 0 to max (inclusive).
    *
@@ -341,6 +394,7 @@ class TinyDice {
   clearDiceArea() {
     this.#cubeId = 0;
     this.diceArea.innerHTML = '';
+    this.#elements = [];
   }
 
   /**
@@ -354,13 +408,16 @@ class TinyDice {
    */
   #createCube(result, max, canZero = false, rollInfinity = false) {
     // Container
+    const diceElements = { faces: [] };
     const container = document.createElement('div');
     container.className = 'dice-container';
     container.style.zIndex = 1000 + this.#cubeId++; // each dice with higher priority
+    diceElements.container = container;
 
     // Wrapper
     const wrapper = document.createElement('div');
     wrapper.className = `cube-wrapper${rollInfinity ? ` spin-infinite` : ''}`;
+    diceElements.wrapper = wrapper;
 
     // Get rot
     const rotX = 360 * (3 + Math.floor(Math.random() * 5));
@@ -379,20 +436,7 @@ class TinyDice {
       // Element
       const face = document.createElement('div');
       face.className = `face face${i}`;
-
-      // Skin
-      face.style.background = this.getBgSkin();
-      face.style.color = this.getTextSkin();
-      face.style.border = this.getBorderSkin();
-
-      // Background image
-      const bgImg = this.getBgImg();
-      if (bgImg) {
-        face.style.backgroundImage = `url("${bgImg}")`;
-        face.style.backgroundPosition = 'center';
-        face.style.backgroundSize = '100%';
-        face.style.backgroundRepeat = 'repeat';
-      }
+      this.#updateDiceSkin(face);
 
       // Ignored results
       if (i !== 1) {
@@ -429,6 +473,7 @@ class TinyDice {
       }
       // Side added
       wrapper.appendChild(face);
+      diceElements.faces.push(face);
     }
 
     // Stop cube animation
@@ -440,6 +485,7 @@ class TinyDice {
 
     // Insert the cube
     container.appendChild(wrapper);
+    this.#elements.push(diceElements);
     return { cube: container, sequence };
   }
 

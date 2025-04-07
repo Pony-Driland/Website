@@ -1632,17 +1632,11 @@ const AiScriptStart = (connStore) => {
 
                 // Roll button
                 const $rollButton = $('<button>')
-                  .addClass('btn btn-primary w-100 my-4')
+                  .addClass('btn btn-primary w-100 mb-4 mt-2')
                   .text('Roll Dice');
 
                 // Add container
                 const $diceContainer = $('<div>');
-                $root.append(
-                  $('<center>').append($formRow),
-                  $allow0Col,
-                  $rollButton,
-                  $diceContainer,
-                );
 
                 // TinyDice logic
                 const dice = new TinyDice($diceContainer.get(0));
@@ -1656,9 +1650,67 @@ const AiScriptStart = (connStore) => {
                   dice.roll(max, count, perDie, canZero);
                 });
 
-                dice.setBgSkin('white');
-                dice.setTextSkin('black');
-                dice.rollDices(3, 0);
+                // Skin form
+                const createInputField = (label, id, placeholder, value) => {
+                  configs[id] = $('<input>')
+                    .addClass('form-control')
+                    .attr({ type: 'text', placeholder })
+                    .val(value);
+
+                  return $('<div>')
+                    .addClass('col-md-3')
+                    .append(
+                      $('<label>').addClass('form-label').attr('for', id).text(label),
+                      configs[id],
+                    );
+                };
+
+                const $formRow2 = $('<div>')
+                  .addClass('row g-3')
+                  .append(
+                    createInputField(
+                      'Background Skin',
+                      'bgSkin',
+                      'e.g. red or rgb(200,0,0)',
+                      'white',
+                    ),
+                    createInputField('Text Skin', 'textSkin', 'e.g. white or #fff', 'black'),
+                    createInputField('Border Skin', 'borderSkin', 'e.g. black', '2px solid rgba(255, 255, 255, 0.2)'),
+                    createInputField('Background Image', 'bgImg', 'data:image/png;base64,...'),
+                  );
+
+                const $applyBtn = $('<button>')
+                  .addClass('btn btn-success w-100 mt-4')
+                  .attr('id', 'applySkins')
+                  .text('Apply Skins to Dice');
+
+                $applyBtn.on('click', function () {
+                  const bg = configs.bgSkin.val().trim();
+                  const text = configs.textSkin.val().trim();
+                  const border = configs.borderSkin.val().trim();
+                  const img = configs.bgImg.val().trim();
+
+                  if (bg) dice.setBgSkin(bg);
+                  if (text) dice.setTextSkin(text);
+                  if (border) dice.setBorderSkin(border);
+                  if (img) dice.setBgImg(img);
+                  dice.updateDicesSkin();
+                });
+
+                // Root insert
+                $root.append(
+                  $('<center>').append($formRow),
+                  $allow0Col,
+
+                  $formRow2,
+                  $applyBtn,
+
+                  $rollButton,
+                  $diceContainer,
+                );
+
+                $applyBtn.trigger('click');
+                dice.roll(0, 3);
 
                 // Start modal
                 tinyLib.modal({
