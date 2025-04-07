@@ -1675,41 +1675,61 @@ const AiScriptStart = (connStore) => {
                       'white',
                     ),
                     createInputField('Text Skin', 'textSkin', 'e.g. white or #fff', 'black'),
-                    createInputField('Border Skin', 'borderSkin', 'e.g. black', '2px solid rgba(255, 255, 255, 0.2)'),
+                    createInputField(
+                      'Border Skin',
+                      'borderSkin',
+                      'e.g. black',
+                      '2px solid rgba(255, 255, 255, 0.2)',
+                    ),
                     createInputField('Background Image', 'bgImg', 'data:image/png;base64,...'),
                   );
 
-                const $applyBtn = $('<button>')
-                  .addClass('btn btn-success w-100 mt-4')
-                  .attr('id', 'applySkins')
-                  .text('Apply Skins to Dice');
-
-                $applyBtn.on('click', function () {
-                  const bg = configs.bgSkin.val().trim();
-                  const text = configs.textSkin.val().trim();
-                  const border = configs.borderSkin.val().trim();
-                  const img = configs.bgImg.val().trim();
-
-                  if (bg) dice.setBgSkin(bg);
-                  if (text) dice.setTextSkin(text);
-                  if (border) dice.setBorderSkin(border);
-                  if (img) dice.setBgImg(img);
+                configs.bgSkin.on('change', function () {
+                  dice.setBgSkin($(this).val().trim() || null);
+                  dice.updateDicesSkin();
+                });
+                configs.textSkin.on('change', function () {
+                  dice.setTextSkin($(this).val().trim() || null);
+                  dice.updateDicesSkin();
+                });
+                configs.borderSkin.on('change', function () {
+                  dice.setBorderSkin($(this).val().trim() || null);
+                  dice.updateDicesSkin();
+                });
+                configs.bgImg.on('change', function () {
+                  dice.setBgImg($(this).val().trim() || null);
                   dice.updateDicesSkin();
                 });
 
+                const updateAllSkins = () => {
+                  configs.bgSkin.trigger('change');
+                  configs.textSkin.trigger('change');
+                  configs.borderSkin.trigger('change');
+                  configs.bgImg.trigger('change');
+                };
+
                 // Root insert
-                $root.append(
-                  $('<center>').append($formRow),
-                  $allow0Col,
+                $root.append($('<center>').append($formRow), $allow0Col, $formRow2);
+                if (tinyIo.socket && tinyIo.client) {
+                  const $applyBtn = $('<button>')
+                    .addClass('btn btn-success w-100 mt-4')
+                    .attr('id', 'applySkins')
+                    .text('Apply Dice Skins to Account')
+                    .attr('disabled', !tinyIo.client.isConnected());
 
-                  $formRow2,
-                  $applyBtn,
+                  $applyBtn.on('click', function () {
+                    updateAllSkins();
+                    const bg = configs.bgSkin.val().trim();
+                    const text = configs.textSkin.val().trim();
+                    const border = configs.borderSkin.val().trim();
+                    const img = configs.bgImg.val().trim();
+                  });
 
-                  $rollButton,
-                  $diceContainer,
-                );
+                  $root.append($applyBtn);
+                }
 
-                $applyBtn.trigger('click');
+                $root.append($rollButton, $diceContainer);
+                updateAllSkins();
                 dice.roll(0, 3);
 
                 // Start modal

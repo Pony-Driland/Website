@@ -44,6 +44,11 @@ class TinyClientIo extends EventEmitter {
     }
   }
 
+  // Is connected
+  isConnected() {
+    return this.connected;
+  }
+
   // Get room id
   getRoomId() {
     return this.#cfg.roomId;
