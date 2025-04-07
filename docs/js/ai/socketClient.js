@@ -88,6 +88,14 @@ class TinyClientIo extends EventEmitter {
           userId: typeof result.size.userId === 'number' ? result.size.userId : 0,
         };
       }
+      if (objType(result.dice, 'object')) {
+        this.ratelimit.dice = {
+          img: typeof result.dice.img === 'number' ? result.dice.img : 0,
+          border: typeof result.dice.border === 'number' ? result.dice.border : 0,
+          bg: typeof result.dice.bg === 'number' ? result.dice.bg : 0,
+          text: typeof result.dice.text === 'number' ? result.dice.text : 0,
+        };
+      }
     }
   }
 

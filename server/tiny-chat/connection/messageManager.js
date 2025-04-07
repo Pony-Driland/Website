@@ -1,3 +1,4 @@
+import { objType } from '../lib/objChecker';
 import {
   userMsgIsRateLimited,
   userSession,
@@ -201,7 +202,7 @@ export default function messageManager(socket, io) {
 
   socket.on('roll-dice', (data, fn) => {
     if (noDataInfo(data, fn)) return;
-    const { sameSides, dice, roomId } = data;
+    const { sameSides, dice, diceSkin, roomId } = data;
     // Validate input data
     if (!Array.isArray(dice) || dice.length === 0 || typeof roomId !== 'string')
       return sendIncompleteDataInfo(fn);
@@ -237,7 +238,30 @@ export default function messageManager(socket, io) {
       }
 
       // Complete
-      io.to(roomId).emit('roll-result', { results, total });
+      io.to(roomId).emit('roll-result', {
+        results,
+        total,
+        skin: objType(diceSkin, 'object')
+          ? {
+              img:
+                typeof diceSkin.img === 'string'
+                  ? diceSkin.img.substring(0, getIniConfig('DICE_IMG_SIZE'))
+                  : null,
+              border:
+                typeof diceSkin.border === 'string'
+                  ? diceSkin.border.substring(0, getIniConfig('DICE_BORDER_STYLE'))
+                  : null,
+              bg:
+                typeof diceSkin.bg === 'string'
+                  ? diceSkin.bg.substring(0, getIniConfig('DICE_BG_STYLE'))
+                  : null,
+              text:
+                typeof diceSkin.text === 'string'
+                  ? diceSkin.text.substring(0, getIniConfig('DICE_TEXT_STYLE'))
+                  : null,
+            }
+          : {},
+      });
     }
 
     // Complete
