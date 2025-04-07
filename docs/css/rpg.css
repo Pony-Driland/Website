@@ -156,6 +156,14 @@
   border-radius: 10px;
 }
 
+.tiny-dice-body .face:not(.face1) {
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -ms-user-select: none !important;
+  cursor: default !important;
+}
+
 .tiny-dice-body .face1 {
   transform: rotateY(0deg) translateZ(50px);
 }
