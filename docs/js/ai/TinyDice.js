@@ -36,7 +36,11 @@ class TinyDice {
   #cubeId = 0; // used for incremental z-index to avoid overlapping issues
   #defaultBgSkin = 'linear-gradient(135deg, #ff3399, #33ccff)';
   #defaultBorderSkin = '2px solid rgba(255, 255, 255, 0.2)';
+  #defaultSelectionTextSkin = '#FFF';
+  #defaultSelectionBgSkin = '#000';
   #defaultTextSkin = 'white';
+  #selectionBgSkin;
+  #selectionTextSkin;
   #bgSkin;
   #bgImg;
   #textSkin;
@@ -271,6 +275,61 @@ class TinyDice {
   }
 
   /**
+   * Sets the background skin for selected dice.
+   * Accepts valid CSS color strings or `linear-gradient(...)`.
+   * Invalid values reset the skin to `null`.
+   *
+   * @public
+   * @param {string} skin - The CSS background to apply when a die is selected.
+   */
+  setSelectionBgSkin(skin) {
+    if (typeof skin !== 'string') {
+      this.#selectionBgSkin = null;
+      return;
+    }
+
+    const trimmed = skin.trim();
+    const isGradient = this.#isValidLinearGradient(trimmed);
+    const isColor = validateColor(trimmed);
+
+    this.#selectionBgSkin = isGradient || isColor ? trimmed : null;
+  }
+
+  /**
+   * Gets the background skin used for selected dice.
+   * Returns the custom value if set; otherwise, returns the default.
+   *
+   * @public
+   * @returns {string} The current background skin for selected dice.
+   */
+  getSelectionBgSkin() {
+    return this.#selectionBgSkin || this.#defaultSelectionBgSkin;
+  }
+
+  /**
+   * Sets the text color for selected dice.
+   * Only valid CSS color values are accepted.
+   * Invalid inputs will reset the color to `null`.
+   *
+   * @public
+   * @param {string} skin - The text color for selected dice.
+   */
+  setSelectionTextSkin(skin) {
+    this.#selectionTextSkin = typeof skin === 'string' && validateColor(skin) ? skin : null;
+  }
+
+  /**
+   * Gets the text color used for selected dice.
+   * Returns the custom value if set; otherwise, returns the default.
+   *
+   * @public
+   * @returns {string} The current text color for selected dice.
+   */
+  getSelectionTextSkin() {
+    return this.#selectionTextSkin || this.#defaultSelectionTextSkin;
+  }
+
+  /**
    * Applies the current visual skin to a specific dice face element.
    * This includes background color, text color, border style, and optionally
    * a `background-image` if set via `setBgImg`.
@@ -283,6 +342,8 @@ class TinyDice {
     face.style.background = this.getBgSkin();
     face.style.color = this.getTextSkin();
     face.style.border = this.getBorderSkin();
+    face.style.setProperty('--dice-selection-bg', this.getSelectionBgSkin());
+    face.style.setProperty('--dice-selection-text', this.getSelectionTextSkin());
 
     // Background image
     const bgImg = this.getBgImg();

@@ -1658,14 +1658,14 @@ const AiScriptStart = (connStore) => {
                     .val(value);
 
                   return $('<div>')
-                    .addClass('col-md-3')
+                    .addClass('col-md-4')
                     .append(
                       $('<label>').addClass('form-label').attr('for', id).text(label),
                       configs[id],
                     );
                 };
 
-                const $formRow2 = $('<div>')
+                const $formRow2 = $('<div>', { class: 'd-none' })
                   .addClass('row g-3 mb-4')
                   .append(
                     createInputField(
@@ -1684,7 +1684,20 @@ const AiScriptStart = (connStore) => {
                       'Border Skin',
                       'borderSkin',
                       'e.g. black',
-                      localStorage.getItem(`tiny-dice-border`) || '2px solid rgba(255, 255, 255, 0.2)',
+                      localStorage.getItem(`tiny-dice-border`) ||
+                        '2px solid rgba(255, 255, 255, 0.2)',
+                    ),
+                    createInputField(
+                      'Select Bg Skin',
+                      'selectionBgSkin',
+                      'e.g. black or #000',
+                      localStorage.getItem(`tiny-dice-selection-bg`) || 'black',
+                    ),
+                    createInputField(
+                      'Select Text Skin',
+                      'selectionTextSkin',
+                      'e.g. white or #fff',
+                      localStorage.getItem(`tiny-dice-selection-text`) || 'white',
                     ),
                     createInputField(
                       'Background Image',
@@ -1713,6 +1726,16 @@ const AiScriptStart = (connStore) => {
                 configs.bgImg.on('change', function () {
                   updateDiceData('setBgImg', 'img', $(this).val().trim() || null);
                 });
+                configs.selectionBgSkin.on('change', function () {
+                  updateDiceData('setSelectionBgSkin', 'selectionBg', $(this).val().trim() || null);
+                });
+                configs.selectionTextSkin.on('change', function () {
+                  updateDiceData(
+                    'setSelectionTextSkin',
+                    'selectionText',
+                    $(this).val().trim() || null,
+                  );
+                });
 
                 const updateAllSkins = () => {
                   configs.bgSkin.trigger('change');
@@ -1723,25 +1746,33 @@ const AiScriptStart = (connStore) => {
 
                 // Root insert
                 $root.append($('<center>').append($formRow), $allow0Col, $formRow2);
-                if (tinyIo.socket && tinyIo.client) {
-                  const $applyBtn = $('<button>')
-                    .addClass('btn btn-success w-100')
-                    .attr('id', 'applySkins')
-                    .text('Apply Dice Skins to Account')
-                    .attr('disabled', !tinyIo.client.isConnected());
 
-                  $applyBtn.on('click', function () {
-                    updateAllSkins();
-                    const bg = configs.bgSkin.val().trim();
-                    const text = configs.textSkin.val().trim();
-                    const border = configs.borderSkin.val().trim();
-                    const img = configs.bgImg.val().trim();
-                  });
+                const $applyBtn = $('<button>')
+                  .addClass('btn btn-success w-100')
+                  .text('Edit Skin Data');
+                $applyBtn.on('click', function () {
+                  // Show content
+                  if ($formRow2.hasClass('d-none')) {
+                    $applyBtn.text(
+                      tinyIo.socket && tinyIo.client ? 'Apply Dice Skins' : 'Hide Skin Data',
+                    );
+                  }
+                  // Hide Content
+                  else {
+                    $applyBtn.text('Edit Skin Data');
+                    if (tinyIo.socket && tinyIo.client) {
+                      updateAllSkins();
+                      const bg = configs.bgSkin.val().trim();
+                      const text = configs.textSkin.val().trim();
+                      const border = configs.borderSkin.val().trim();
+                      const img = configs.bgImg.val().trim();
+                    }
+                  }
+                  // Change class mode
+                  $formRow2.toggleClass('d-none');
+                });
 
-                  $root.append($applyBtn);
-                }
-
-                $root.append($rollButton, $diceContainer);
+                $root.append($applyBtn, $rollButton, $diceContainer);
                 updateAllSkins();
                 dice.roll(0, 3);
 
