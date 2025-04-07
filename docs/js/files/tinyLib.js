@@ -506,11 +506,8 @@ tinyLib.icon = (classItem) => $('<i>', { class: classItem });
 tinyLib.upload = {};
 tinyLib.upload.button = (configs = {}, button = null, callback = null) => {
   // Create button
-  const importButton = $('<input>', {
-    type: 'file',
-    accept: configs.accept,
-    style: 'display: none;',
-  });
+  const importButton = $('<input>', { type: 'file', style: 'display: none;' });
+  importButton.attr('accept', configs.accept);
 
   // Multiple
   if (configs.multiple) importButton.prop('multiple', true);
@@ -525,9 +522,45 @@ tinyLib.upload.button = (configs = {}, button = null, callback = null) => {
   return button;
 };
 
+// File base64 selector template
+tinyLib.upload.dataUrl = (button = null, baseFormat = '', callback = null, accept = '*') =>
+  tinyLib.upload.button({ accept: `${baseFormat}/${accept}` }, button, (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    // Image type validation
+    if (!file.type.startsWith(`${baseFormat}/`)) {
+      callback(new Error('Selected file is not an image'), null);
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      try {
+        const base64Data = e.target.result;
+        const format = file.type.split('/')[1]; // ex: <format>/png → png
+        // Ensure that the URL format is correct in the required pattern
+        const dataUrl = `data:${baseFormat}/${format};base64,${base64Data.split(',')[1]}`;
+        callback(null, dataUrl);
+      } catch (err) {
+        callback(err, null);
+      }
+    };
+
+    reader.onerror = function (err) {
+      callback(err, null);
+    };
+
+    reader.readAsDataURL(file);
+  });
+
+// Image upload
+tinyLib.upload.img = (button = null, callback = null, accept = '*') =>
+  tinyLib.upload.dataUrl(button, 'image', callback, accept);
+
 // Json upload
 tinyLib.upload.json = (button = null, callback = null) =>
-  tinyLib.upload.button({ type: '.json' }, button, (event) => {
+  tinyLib.upload.button({ accept: '.json' }, button, (event) => {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
@@ -539,6 +572,10 @@ tinyLib.upload.json = (button = null, callback = null) =>
         } catch (err) {
           callback(err, null);
         }
+      };
+
+      reader.onerror = function (err) {
+        callback(err, null);
       };
       reader.readAsText(file);
     }
