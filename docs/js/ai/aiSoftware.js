@@ -918,13 +918,6 @@ const AiScriptStart = (connStore) => {
             });
         });
 
-      // Import button
-      const importButton = $('<input>', {
-        type: 'file',
-        accept: '.json',
-        style: 'display: none;',
-      });
-
       // When sId is used, it means that the request is coming from a session that is not active in the chat
       const insertImportData = (data, tokens, readOnly = false, sId = undefined) => {
         // Insert data
@@ -1073,25 +1066,6 @@ const AiScriptStart = (connStore) => {
         return false;
       };
 
-      importButton.on('change', (event) => {
-        const file = event.target.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = function (e) {
-            try {
-              // Read data
-              const jsonData = JSON.parse(e.target.result);
-              importFileSession(jsonData, true);
-            } catch (err) {
-              console.error(err);
-              alert(err.message);
-            }
-          };
-
-          reader.readAsText(file);
-        }
-      });
-
       const ficConfigs = {
         data: [
           {
@@ -1198,11 +1172,17 @@ const AiScriptStart = (connStore) => {
 
       const importItems = [
         // Import
-        createButtonSidebar('fa-solid fa-file-import', 'Import', () =>
-          importButton.trigger('click'),
+        tinyLib.upload.json(
+          createButtonSidebar('fa-solid fa-file-import', 'Import'),
+          (err, jsonData) => {
+            if (err) {
+              console.error(err);
+              alert(err.message);
+              return;
+            }
+            importFileSession(jsonData, true);
+          },
         ),
-
-        importButton,
       ];
 
       const ficPromptItems = [
@@ -1631,12 +1611,18 @@ const AiScriptStart = (connStore) => {
                 $formRow.append($maxValueCol, $diceCountCol, $perDieCol);
 
                 // Roll button
-                const $rollButton = $('<button>')
-                  .addClass('btn btn-primary w-100 mb-4 mt-2')
-                  .text('Roll Dice');
+                const $rollButton = tinyLib.bs.button('primary w-100 mb-4 mt-2').text('Roll Dice');
 
                 // Add container
                 const $diceContainer = $('<div>');
+                const readSkinValues = [
+                  ['bgSkin', 'bg', 'setBgSkin'],
+                  ['textSkin', 'text', 'setTextSkin'],
+                  ['borderSkin', 'border', 'setBorderSkin'],
+                  ['bgImg', 'img', 'setBgImg'],
+                  ['selectionBgSkin', 'selectionBg', 'setSelectionBgSkin'],
+                  ['selectionTextSkin', 'selectionText', 'setSelectionTextSkin'],
+                ];
 
                 // TinyDice logic
                 const dice = new TinyDice($diceContainer.get(0));
@@ -1705,6 +1691,52 @@ const AiScriptStart = (connStore) => {
                       'data:image/png;base64,...',
                       localStorage.getItem(`tiny-dice-img`) || undefined,
                     ),
+                    // Export
+                    $('<div>', { class: 'col-md-6' }).append(
+                      tinyLib.bs
+                        .button('info w-100')
+                        .text('Export')
+                        .on('click', () => {
+                          // Data base
+                          const fileData = { data: {} };
+                          for (const index in readSkinValues) {
+                            const readSkinData = readSkinValues[index];
+                            fileData.data[readSkinData[1]] = configs[readSkinData[0]].val().trim();
+                          }
+
+                          // Date
+                          fileData.date = Date.now();
+                          // Save
+                          saveAs(
+                            new Blob([JSON.stringify(fileData)], { type: 'text/plain' }),
+                            `tiny_dice_skin_ponydriland.json`,
+                          );
+                        }),
+                    ),
+                    // Import
+                    $('<div>', { class: 'col-md-6' }).append(
+                      tinyLib.upload.json(
+                        tinyLib.bs.button('info w-100').text('Import'),
+                        (err, jsonData) => {
+                          // Error
+                          if (err) {
+                            console.error(err);
+                            alert(err.message);
+                            return;
+                          }
+
+                          // Insert data
+                          if (objType(jsonData, 'object') && objType(jsonData.data, 'object')) {
+                            for (const index in readSkinValues) {
+                              const readSkinData = readSkinValues[index];
+                              const item = jsonData.data[readSkinData[1]];
+                              if (typeof item === 'string' || typeof item === 'number')
+                                configs[readSkinData[0]].val(item).trigger('change');
+                            }
+                          }
+                        },
+                      ),
+                    ),
                   );
 
                 const updateDiceData = (where, dataName, value) => {
@@ -1714,42 +1746,26 @@ const AiScriptStart = (connStore) => {
                   dice.updateDicesSkin();
                 };
 
-                configs.bgSkin.on('change', function () {
-                  updateDiceData('setBgSkin', 'bg', $(this).val().trim() || null);
-                });
-                configs.textSkin.on('change', function () {
-                  updateDiceData('setTextSkin', 'text', $(this).val().trim() || null);
-                });
-                configs.borderSkin.on('change', function () {
-                  updateDiceData('setBorderSkin', 'border', $(this).val().trim() || null);
-                });
-                configs.bgImg.on('change', function () {
-                  updateDiceData('setBgImg', 'img', $(this).val().trim() || null);
-                });
-                configs.selectionBgSkin.on('change', function () {
-                  updateDiceData('setSelectionBgSkin', 'selectionBg', $(this).val().trim() || null);
-                });
-                configs.selectionTextSkin.on('change', function () {
-                  updateDiceData(
-                    'setSelectionTextSkin',
-                    'selectionText',
-                    $(this).val().trim() || null,
-                  );
-                });
+                for (const index in readSkinValues) {
+                  configs[readSkinValues[index][0]].on('change', function () {
+                    updateDiceData(
+                      readSkinValues[index][2],
+                      readSkinValues[index][1],
+                      $(this).val().trim() || null,
+                    );
+                  });
+                }
 
                 const updateAllSkins = () => {
-                  configs.bgSkin.trigger('change');
-                  configs.textSkin.trigger('change');
-                  configs.borderSkin.trigger('change');
-                  configs.bgImg.trigger('change');
+                  for (const index in readSkinValues)
+                    configs[readSkinValues[index][0]].trigger('change');
                 };
 
                 // Root insert
                 $root.append($('<center>').append($formRow), $allow0Col, $formRow2);
 
-                const $applyBtn = $('<button>')
-                  .addClass('btn btn-success w-100')
-                  .text('Edit Skin Data');
+                // Main button of the skin editor
+                const $applyBtn = tinyLib.bs.button('success w-100').text('Edit Skin Data');
                 $applyBtn.on('click', function () {
                   // Show content
                   if ($formRow2.hasClass('d-none')) {
@@ -1762,10 +1778,9 @@ const AiScriptStart = (connStore) => {
                     $applyBtn.text('Edit Skin Data');
                     if (tinyIo.socket && tinyIo.client) {
                       updateAllSkins();
-                      const bg = configs.bgSkin.val().trim();
-                      const text = configs.textSkin.val().trim();
-                      const border = configs.borderSkin.val().trim();
-                      const img = configs.bgImg.val().trim();
+                      for (const index in readSkinValues) {
+                        const value = configs[readSkinValues[index][0]].val().trim();
+                      }
                     }
                   }
                   // Change class mode
