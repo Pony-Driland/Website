@@ -1711,25 +1711,31 @@ const AiScriptStart = (connStore) => {
                     configs.bgImg,
                     $('<div>', { class: 'col-md-4' }).append(
                       $('<label>').addClass('form-label').text('Custom Image'),
-                      tinyLib.upload.img(bgImgUploadButton.text('Select Image'), (err, dataUrl) => {
-                        console.log(`[dice-file] [upload] Image length: ${dataUrl.length}`);
-                        // Error
-                        if (err) {
-                          console.error(err);
-                          bgImgUploadButton.addClass('text-danger');
-                          return;
-                        }
-                        // Insert image
-                        const sizeLimitList = getDiceRateLimit();
-                        if (
-                          !sizeLimitList ||
-                          typeof sizeLimitList.img !== 'number' ||
-                          dataUrl.length <= sizeLimitList.img
-                        )
-                          configs.bgImg.val(dataUrl).removeClass('text-danger').trigger('change');
-                        // Nope
-                        else bgImgUploadButton.addClass('text-danger');
-                      }),
+                      tinyLib.upload.img(
+                        bgImgUploadButton.text('Select Image').on('contextmenu', (e) => {
+                          e.preventDefault();
+                          configs.bgImg.val('').removeClass('text-danger').trigger('change');
+                        }),
+                        (err, dataUrl) => {
+                          console.log(`[dice-file] [upload] Image length: ${dataUrl.length}`);
+                          // Error
+                          if (err) {
+                            console.error(err);
+                            bgImgUploadButton.addClass('text-danger');
+                            return;
+                          }
+                          // Insert image
+                          const sizeLimitList = getDiceRateLimit();
+                          if (
+                            !sizeLimitList ||
+                            typeof sizeLimitList.img !== 'number' ||
+                            dataUrl.length <= sizeLimitList.img
+                          )
+                            configs.bgImg.val(dataUrl).removeClass('text-danger').trigger('change');
+                          // Nope
+                          else bgImgUploadButton.addClass('text-danger');
+                        },
+                      ),
                     ),
                     // Export
                     $('<div>', { class: 'col-md-6' }).append(
@@ -1781,8 +1787,10 @@ const AiScriptStart = (connStore) => {
 
                 const updateDiceData = (where, dataName, value) => {
                   dice[where](value);
-                  if (value) localStorage.setItem(`tiny-dice-${dataName}`, value);
-                  else localStorage.removeItem(`tiny-dice-${dataName}`);
+                  if (!tinyIo.socket || !tinyIo.client) {
+                    if (value) localStorage.setItem(`tiny-dice-${dataName}`, value);
+                    else localStorage.removeItem(`tiny-dice-${dataName}`);
+                  }
                   dice.updateDicesSkin();
                 };
 
