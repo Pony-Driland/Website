@@ -1549,6 +1549,16 @@ const AiScriptStart = (connStore) => {
               $('<h5>').text('RPG'),
               // Dice
               createButtonSidebar('fa-solid fa-dice', 'Roll Dice', () => {
+                // Ratelimit
+                const getDiceRateLimit = () => {
+                  let sizeLimit = null;
+                  if (tinyIo.socket && tinyIo.client) {
+                    const ratelimit = tinyIo.client.getRateLimit();
+                    if (objType(ratelimit.dice, 'object')) sizeLimit = ratelimit.dice;
+                  }
+                  return sizeLimit;
+                };
+
                 // Root
                 const $root = $('<div>');
                 const $formRow = $('<div>').addClass('row g-3');
@@ -1651,21 +1661,31 @@ const AiScriptStart = (connStore) => {
                     );
                 };
 
+                configs.bgImg = $('<input>')
+                  .addClass('form-control')
+                  .addClass('d-none')
+                  .attr('type', 'text')
+                  .val(localStorage.getItem(`tiny-dice-img`) || undefined);
+                const bgImgUploadButton = tinyLib.bs.button('info w-100');
+
                 const $formRow2 = $('<div>', { class: 'd-none' })
                   .addClass('row g-3 mb-4')
                   .append(
+                    // Background skin
                     createInputField(
                       'Background Skin',
                       'bgSkin',
                       'e.g. red or rgb(200,0,0)',
                       localStorage.getItem(`tiny-dice-bg`) || 'white',
                     ),
+                    // Text skin
                     createInputField(
                       'Text Skin',
                       'textSkin',
                       'e.g. white or #fff',
                       localStorage.getItem(`tiny-dice-text`) || 'black',
                     ),
+                    // Border skin
                     createInputField(
                       'Border Skin',
                       'borderSkin',
@@ -1673,23 +1693,43 @@ const AiScriptStart = (connStore) => {
                       localStorage.getItem(`tiny-dice-border`) ||
                         '2px solid rgba(255, 255, 255, 0.2)',
                     ),
+                    // Bg skin
                     createInputField(
                       'Select Bg Skin',
                       'selectionBgSkin',
                       'e.g. black or #000',
                       localStorage.getItem(`tiny-dice-selection-bg`) || 'black',
                     ),
+                    // Text skin
                     createInputField(
                       'Select Text Skin',
                       'selectionTextSkin',
                       'e.g. white or #fff',
                       localStorage.getItem(`tiny-dice-selection-text`) || 'white',
                     ),
-                    createInputField(
-                      'Background Image',
-                      'bgImg',
-                      'data:image/png;base64,...',
-                      localStorage.getItem(`tiny-dice-img`) || undefined,
+                    // Image upload
+                    configs.bgImg,
+                    $('<div>', { class: 'col-md-4' }).append(
+                      $('<label>').addClass('form-label').text('Custom Image'),
+                      tinyLib.upload.img(bgImgUploadButton.text('Select Image'), (err, dataUrl) => {
+                        console.log(`[dice-file] [upload] Image length: ${dataUrl.length}`);
+                        // Error
+                        if (err) {
+                          console.error(err);
+                          bgImgUploadButton.addClass('text-danger');
+                          return;
+                        }
+                        // Insert image
+                        const sizeLimitList = getDiceRateLimit();
+                        if (
+                          !sizeLimitList ||
+                          typeof sizeLimitList.img !== 'number' ||
+                          dataUrl.length <= sizeLimitList.img
+                        )
+                          configs.bgImg.val(dataUrl).removeClass('text-danger').trigger('change');
+                        // Nope
+                        else bgImgUploadButton.addClass('text-danger');
+                      }),
                     ),
                     // Export
                     $('<div>', { class: 'col-md-6' }).append(
