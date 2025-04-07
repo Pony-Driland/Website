@@ -245,19 +245,19 @@ export default function messageManager(socket, io) {
           ? {
               img:
                 typeof diceSkin.img === 'string'
-                  ? diceSkin.img.substring(0, getIniConfig('DICE_IMG_SIZE'))
+                  ? diceSkin.img.substring(0, getIniConfig('DICE_IMG_SIZE')).trim()
                   : null,
               border:
                 typeof diceSkin.border === 'string'
-                  ? diceSkin.border.substring(0, getIniConfig('DICE_BORDER_STYLE'))
+                  ? diceSkin.border.substring(0, getIniConfig('DICE_BORDER_STYLE')).trim()
                   : null,
               bg:
                 typeof diceSkin.bg === 'string'
-                  ? diceSkin.bg.substring(0, getIniConfig('DICE_BG_STYLE'))
+                  ? diceSkin.bg.substring(0, getIniConfig('DICE_BG_STYLE')).trim()
                   : null,
               text:
                 typeof diceSkin.text === 'string'
-                  ? diceSkin.text.substring(0, getIniConfig('DICE_TEXT_STYLE'))
+                  ? diceSkin.text.substring(0, getIniConfig('DICE_TEXT_STYLE')).trim()
                   : null,
             }
           : {},
