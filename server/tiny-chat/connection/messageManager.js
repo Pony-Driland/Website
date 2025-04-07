@@ -259,6 +259,18 @@ export default function messageManager(socket, io) {
                 typeof diceSkin.text === 'string'
                   ? diceSkin.text.substring(0, getIniConfig('DICE_TEXT_STYLE')).trim()
                   : null,
+              selectionBg:
+                typeof diceSkin.selectionBg === 'string'
+                  ? diceSkin.selectionBg
+                      .substring(0, getIniConfig('DICE_SELECTION_BG_STYLE'))
+                      .trim()
+                  : null,
+              selectionText:
+                typeof diceSkin.selectionText === 'string'
+                  ? diceSkin.selectionText
+                      .substring(0, getIniConfig('DICE_SELECTION_TEXT_STYLE'))
+                      .trim()
+                  : null,
             }
           : {},
       });
