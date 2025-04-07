@@ -137,6 +137,8 @@ export const getRateLimit = () => ({
     border: getIniConfig('DICE_BORDER_STYLE'),
     bg: getIniConfig('DICE_BG_STYLE'),
     text: getIniConfig('DICE_TEXT_STYLE'),
+    selectionBg: getIniConfig('DICE_SELECTION_BG_STYLE'),
+    selectionText: getIniConfig('DICE_SELECTION_TEXT_STYLE'),
   },
   loadAllHistory: getIniConfig('LOAD_ALL_HISTORY'),
   time: getIniConfig('RATE_LIMIT_TIME'),
