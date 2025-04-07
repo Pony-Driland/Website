@@ -1,37 +1,24 @@
 /**
- * TinyDice is a self-contained JavaScript class for rendering animated 3D dice
- * using HTML and CSS. It supports rolling dice with randomized values and smooth,
- * stylish cube animations.
- *
+ * TinyDice - JavaScript class for rendering animated 3D dice with HTML/CSS.
+ * 
  * Created by: Yasmin Seidel (JasminDreasond)
  * Co-developed with: ChatGPT (OpenAI) as coding assistant
  *
  * Features:
- * - Custom number of dice
- * - Individual maximum values per die
- * - Dynamic rendering and animation of dice cubes
+ * - Roll any number of dice
+ * - Supports custom max values per die
+ * - Optional spinning animation (infinite or ending)
+ * - Dynamic cube generation and animation
+ * - Option to include zero in rolls (canZero)
  *
  * Usage:
- *
- * // 1. Create an HTML container (e.g., <div id="myDice"></div>)
  * const container = document.getElementById('myDice');
- *
- * // 2. Instantiate the class
  * const dice = new TinyDice(container);
- *
- * // 3. Roll the dice (optional arguments: maxValue, diceCount, perDieValues, rollInfinity)
- * dice.roll(100, 3); // Rolls 3 dice with values from 1 to 100
- * dice.roll(100, 3, '6,12,20'); // Rolls 3 dice with max values: 6, 12, and 20
- * dice.roll(20, 2, null, true); // Rolls 2 d20s that spin infinitely
- *
- * Public Methods:
- * - roll(maxValue, diceCount, perDieValues, rollInfinity): Rolls the dice with optional configuration
- * - clearCubes(): Removes all dice from the display
- * - insertCube(result, max, rollInfinity): Inserts a single animated die cube
- *
- * Private Methods:
- * - #createCube(result, max, rollInfinity): Generates the DOM structure of a single 3D cube
- * - getRollResult(maxValue, diceCount, perDieValues): Parses input and returns config object
+ * 
+ * dice.roll(6, 3); // Rolls 3d6
+ * dice.roll(100, 3, '6,12,20'); // Rolls d6, d12, and d20
+ * dice.roll(10, 2, null, true); // Rolls 2d10 with infinite spin
+ * dice.roll(10, 2, null, false, true); // Rolls 2d10 with values starting at 0
  */
 class TinyDice {
   #cubeId = 0; // used for incremental z-index to avoid overlapping issues
@@ -48,6 +35,18 @@ class TinyDice {
     this.diceArea = document.createElement('div');
     this.diceArea.classList.add('dice-area');
     this.#diceBase.appendChild(this.diceArea);
+  }
+
+  #rollNumber(max = 0, canZero = false) {
+    if (max > 0) {
+      let maxValue = max;
+      let finalValue = 1;
+      if (canZero) {
+        maxValue++;
+        finalValue--;
+      }
+      return Math.floor(Math.random() * maxValue) + finalValue;
+    } else return 0;
   }
 
   /**
@@ -84,11 +83,12 @@ class TinyDice {
    *
    * @param {number} result - The value displayed on the front face of the die.
    * @param {number} max - The maximum value for the die (used to generate other random faces).
+   * @param {boolean} [canZero=false] - Whether 0 is a valid face value.
    * @param {boolean} [rollInfinity=false] - Whether the die should spin indefinitely.
    * @returns {number[]} - An array representing the values on all six faces of the cube.
    */
-  insertCube(result, max, rollInfinity) {
-    const { cube, sequence } = this.#createCube(result, max, rollInfinity);
+  insertCubeElement(result, max, canZero, rollInfinity) {
+    const { cube, sequence } = this.#createCube(result, max, canZero, rollInfinity);
     this.diceArea.appendChild(cube);
     return sequence;
   }
@@ -111,7 +111,7 @@ class TinyDice {
    * @param {boolean} [rollInfinity=false] - If true, the cube will spin infinitely.
    * @returns {{ cube: HTMLElement, sequence: number[] }} - The cube element and an array of all face values.
    */
-  #createCube(result, max, rollInfinity = false) {
+  #createCube(result, max, canZero = false, rollInfinity = false) {
     // Container
     const container = document.createElement('div');
     container.className = 'dice-container';
@@ -133,25 +133,33 @@ class TinyDice {
     // Create the cube
     const sequence = [];
     const countSeq = new Set();
+    const min = !canZero ? 0 : -1;
     for (let i = 1; i <= 6; i++) {
       const face = document.createElement('div');
       face.className = `face face${i}`;
       // Ignored results
       if (i !== 1) {
         let roll;
-        let extraValue = 0;
-        let usingExtra = false;
-        do {
-          roll = !usingExtra ? Math.floor(Math.random() * max) + 1 : extraValue;
-          if (usingExtra || sequence.length >= max) {
-            if (extraValue >= max) {
-              extraValue = 0;
-              countSeq.clear();
+        // Normal max
+        if (max > min) {
+          let extraValue = min;
+          let usingExtra = false;
+          do {
+            roll = !usingExtra ? this.#rollNumber(max, canZero) : extraValue;
+            if (usingExtra || sequence.length >= max) {
+              if (extraValue >= max) {
+                extraValue = min;
+                countSeq.clear();
+              }
+              extraValue++;
+              usingExtra = true;
             }
-            extraValue++;
-            usingExtra = true;
-          }
-        } while (countSeq.has(roll));
+          } while (countSeq.has(roll));
+        }
+        // 0 or negative max
+        else roll = max;
+
+        // Insert sequence
         sequence.push(roll);
         countSeq.add(roll);
         face.textContent = roll;
@@ -179,20 +187,40 @@ class TinyDice {
   }
 
   /**
+   * Inserts a single die cube into the DOM using the specified configuration.
+   *
+   * @param {number} max - Default maximum value for dice (if no individual values are given).
+   * @param {boolean} [canZero=false] - Whether 0 is a valid result.
+   * @param {boolean} [rollInfinity=false] - Whether all dice should spin infinitely.
+   * @returns {{ result: number, sequence: number[] }} - Array with results and face sequences for each die.
+   */
+  insertCube(max, canZero = false, rollInfinity = undefined) {
+    const result = this.#rollNumber(max, canZero);
+    return {
+      sequence: this.insertCubeElement(result, max, canZero, rollInfinity),
+      result,
+    };
+  }
+
+  /**
    * Inserts multiple dice cubes into the DOM using the specified configuration.
    *
    * @param {number} count - Number of dice to insert.
    * @param {number} maxGlobal - Default maximum value for dice (if no individual values are given).
-   * @param {number[]} perDieData - Array of individual max values per die (optional).
+   * @param {number[]} perDieData - Optional: Array of individual max values per die.
+   * @param {boolean} [canZero=false] - Whether 0 is a valid result on any die.
    * @param {boolean} [rollInfinity=false] - Whether all dice should spin infinitely.
    * @returns {Array<{ result: number, sequence: number[] }>} - Array with results and face sequences for each die.
    */
-  insertCubes(count, maxGlobal, perDieData, rollInfinity) {
+  insertCubes(count, maxGlobal, perDieData, canZero = false, rollInfinity = undefined) {
     const cubes = [];
     for (let i = 0; i < count; i++) {
       const max = typeof perDieData[i] === 'number' ? perDieData[i] : maxGlobal;
-      const result = Math.floor(Math.random() * max) + 1;
-      cubes.push({ sequence: this.insertCube(result, max, rollInfinity), result });
+      const result = this.#rollNumber(max, canZero);
+      cubes.push({
+        sequence: this.insertCubeElement(result, max, canZero, rollInfinity),
+        result,
+      });
     }
     return cubes;
   }
@@ -203,12 +231,13 @@ class TinyDice {
    * @param {number} maxValue - Default maximum value for all dice (used if perDieValues is not provided).
    * @param {number} diceCount - How many dice to roll.
    * @param {string|Array<number>} [perDieValues] - Optional: comma-separated string or array of individual max values.
-   * @param {boolean} [rollInfinity=false] - Whether the dice should animate infinitely.
+   * @param {boolean} [canZero=false] - Whether 0 is a valid result.
+   * @param {boolean} [rollInfinity=false] - Whether dice spin infinitely.
    * @returns {Array<{ result: number, sequence: number[] }>} - Array with results and face sequences for each die.
    */
-  roll(maxValue, diceCount, perDieValues, rollInfinity) {
+  roll(maxValue, diceCount, perDieValues, canZero, rollInfinity) {
     const { count, maxGlobal, perDieData } = this.getRollResult(maxValue, diceCount, perDieValues);
     this.clearCubes();
-    return this.insertCubes(count, maxGlobal, perDieData, rollInfinity);
+    return this.insertCubes(count, maxGlobal, perDieData, canZero, rollInfinity);
   }
 }
