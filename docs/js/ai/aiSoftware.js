@@ -1578,7 +1578,7 @@ const AiScriptStart = (connStore) => {
                   body: [diceBase],
                 });
 
-                console.log(tinyDices.roll(7, 5));
+                console.log(tinyDices.roll(6, 5));
               }),
               createButtonSidebar('fa-solid fa-note-sticky', 'View Data', null, false, {
                 toggle: 'offcanvas',
