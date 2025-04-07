@@ -130,6 +130,12 @@ export const getRateLimit = () => ({
     events: getIniConfig('EVENT'),
     roomUsers: getIniConfig('MAX_USERS_PER_ROOM'),
   },
+  dice: {
+    img: getIniConfig('DICE_IMG_SIZE'),
+    border: getIniConfig('DICE_BORDER_STYLE'),
+    bg: getIniConfig('DICE_BG_STYLE'),
+    text: getIniConfig('DICE_TEXT_STYLE'),
+  },
   loadAllHistory: getIniConfig('LOAD_ALL_HISTORY'),
   time: getIniConfig('RATE_LIMIT_TIME'),
 });
