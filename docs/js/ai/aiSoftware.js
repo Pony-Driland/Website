@@ -1567,27 +1567,95 @@ const AiScriptStart = (connStore) => {
 
               // RPG
               $('<h5>').text('RPG'),
+              // Dice
               createButtonSidebar('fa-solid fa-dice', 'Roll Dice', () => {
-                const diceBase = $('<div>');
-                const tinyDices = new TinyDice(diceBase.get(0));
+                // Root
+                const $root = $('<div>');
+                const $formRow = $('<div>').addClass('row g-3');
 
+                // Form template
+                const configs = {};
+                const genLabel = (id, text) =>
+                  $('<label>').addClass('form-label').attr('for', id).text(text);
+
+                const genInput = (id, type, value, min) =>
+                  $('<input>')
+                    .addClass('form-control text-center')
+                    .attr({ id, type, min })
+                    .attr('placeholder', min)
+                    .val(value);
+
+                const genConfig = (id, text, type, value, min) => {
+                  configs[id] = genInput(id, type, value, min);
+                  return [genLabel(id, text), configs[id]];
+                };
+
+                // Form
+                const $maxValueCol = $('<div>')
+                  .addClass('col-md-4')
+                  .append(genConfig('maxValue', 'Max Value', 'number', 6, 1));
+
+                const $diceCountCol = $('<div>')
+                  .addClass('col-md-4')
+                  .append(genConfig('diceCount', 'Dice Count', 'number', 3, 1));
+
+                const $perDieCol = $('<div>')
+                  .addClass('col-md-4')
+                  .append(
+                    genConfig(
+                      'perDieValues',
+                      'Per-Die Values (e.g., 6,12,20)',
+                      'text',
+                      '',
+                      'Optional',
+                    ),
+                  );
+
+                $formRow.append($maxValueCol, $diceCountCol, $perDieCol);
+
+                // Roll button
+                const $rollButton = $('<button>')
+                  .addClass('btn btn-primary w-100 my-4')
+                  .text('Roll Dice');
+
+                // Add container
+                const $diceContainer = $('<div>');
+                $root.append($('<center>').append($formRow), $rollButton, $diceContainer);
+
+                // TinyDice logic
+                const dice = new TinyDice($diceContainer.get(0));
+                $rollButton.on('click', function () {
+                  const max = parseInt(configs.maxValue.val()) || 6;
+                  const count = parseInt(configs.diceCount.val()) || 1;
+                  const perDieRaw = configs.perDieValues.val().trim();
+                  const perDie = perDieRaw.length > 0 ? perDieRaw : null;
+
+                  dice.roll(max, count, perDie);
+                });
+
+                dice.setBgSkin('white');
+                dice.setTextSkin('black');
+                dice.rollDices(3, 0);
+
+                // Start modal
                 tinyLib.modal({
                   title: 'Dice Roll',
                   dialog: 'modal-lg',
                   id: 'dice-roll',
-                  body: [diceBase],
+                  body: $root,
                 });
-
-                console.log(tinyDices.roll(6, 5));
               }),
+              // RPG Data
               createButtonSidebar('fa-solid fa-note-sticky', 'View Data', null, false, {
                 toggle: 'offcanvas',
                 target: '#rpg_ai_base_1',
               }),
+              // Private RPG Data
               createButtonSidebar('fa-solid fa-book', 'View Private', null, false, {
                 toggle: 'offcanvas',
                 target: '#rpg_ai_base_2',
               }),
+              // Classic Map
               createButtonSidebar('fa-solid fa-map', 'Classic Map', () => {
                 const startTinyMap = function (place) {
                   // Get Map Data
@@ -3511,9 +3579,7 @@ const AiScriptStart = (connStore) => {
               const connectionId = client.getSocket()?.id;
               onlineStatus.icon.removeClass('text-danger').addClass('text-success');
               onlineStatus.text.text('Online');
-              onlineStatus.id.empty().text('Id: ').append(
-                $('<strong>').text(connectionId)
-              );
+              onlineStatus.id.empty().text('Id: ').append($('<strong>').text(connectionId));
 
               // First time message
               client.resetData();

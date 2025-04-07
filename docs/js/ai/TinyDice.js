@@ -298,7 +298,7 @@ class TinyDice {
    * @param {string|Array<number>} perDieValues - Optional: a comma-separated string or array of individual max values.
    * @returns {{ count: number, maxGlobal: number, perDieData: number[] }} - Parsed dice configuration.
    */
-  getRollResult(maxValue = 0, diceCount = 0, perDieValues = '') {
+  getRollConfig(maxValue = 0, diceCount = 0, perDieValues = '') {
     // Get count
     const count = typeof diceCount === 'number' ? diceCount : 1;
     const maxGlobal = typeof maxValue === 'number' ? maxValue : 100;
@@ -328,7 +328,7 @@ class TinyDice {
    * @param {boolean} [rollInfinity=false] - Whether the die should spin indefinitely.
    * @returns {number[]} - An array representing the values on all six faces of the cube.
    */
-  insertCubeElement(result, max, canZero, rollInfinity) {
+  insertDiceElement(result, max, canZero, rollInfinity) {
     const { cube, sequence } = this.#createCube(result, max, canZero, rollInfinity);
     this.diceArea.appendChild(cube);
     return sequence;
@@ -338,7 +338,7 @@ class TinyDice {
    * Clears all dice cubes from the display area.
    * Resets internal cube counter to avoid z-index conflicts.
    */
-  clearCubes() {
+  clearDiceArea() {
     this.#cubeId = 0;
     this.diceArea.innerHTML = '';
   }
@@ -451,10 +451,10 @@ class TinyDice {
    * @param {boolean} [rollInfinity=false] - Whether all dice should spin infinitely.
    * @returns {{ result: number, sequence: number[] }} - Array with results and face sequences for each die.
    */
-  insertCube(max, canZero = false, rollInfinity = undefined) {
+  rollDice(max, canZero = false, rollInfinity = undefined) {
     const result = this.#rollNumber(max, canZero);
     return {
-      sequence: this.insertCubeElement(result, max, canZero, rollInfinity),
+      sequence: this.insertDiceElement(result, max, canZero, rollInfinity),
       result,
     };
   }
@@ -469,13 +469,13 @@ class TinyDice {
    * @param {boolean} [rollInfinity=false] - Whether all dice should spin infinitely.
    * @returns {Array<{ result: number, sequence: number[] }>} - Array with results and face sequences for each die.
    */
-  insertCubes(count, maxGlobal, perDieData, canZero = false, rollInfinity = undefined) {
+  rollDices(count, maxGlobal, perDieData, canZero = false, rollInfinity = undefined) {
     const cubes = [];
     for (let i = 0; i < count; i++) {
-      const max = typeof perDieData[i] === 'number' ? perDieData[i] : maxGlobal;
+      const max = Array.isArray(perDieData) && typeof perDieData[i] === 'number' ? perDieData[i] : maxGlobal;
       const result = this.#rollNumber(max, canZero);
       cubes.push({
-        sequence: this.insertCubeElement(result, max, canZero, rollInfinity),
+        sequence: this.insertDiceElement(result, max, canZero, rollInfinity),
         result,
       });
     }
@@ -493,8 +493,8 @@ class TinyDice {
    * @returns {Array<{ result: number, sequence: number[] }>} - Array with results and face sequences for each die.
    */
   roll(maxValue, diceCount, perDieValues, canZero, rollInfinity) {
-    const { count, maxGlobal, perDieData } = this.getRollResult(maxValue, diceCount, perDieValues);
-    this.clearCubes();
-    return this.insertCubes(count, maxGlobal, perDieData, canZero, rollInfinity);
+    const { count, maxGlobal, perDieData } = this.getRollConfig(maxValue, diceCount, perDieValues);
+    this.clearDiceArea();
+    return this.rollDices(count, maxGlobal, perDieData, canZero, rollInfinity);
   }
 }

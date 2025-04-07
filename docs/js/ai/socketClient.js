@@ -94,6 +94,8 @@ class TinyClientIo extends EventEmitter {
           border: typeof result.dice.border === 'number' ? result.dice.border : 0,
           bg: typeof result.dice.bg === 'number' ? result.dice.bg : 0,
           text: typeof result.dice.text === 'number' ? result.dice.text : 0,
+          amount: typeof result.dice.amount === 'number' ? result.dice.amount : 0,
+          sides: typeof result.dice.sides === 'number' ? result.dice.sides : 0,
         };
       }
     }

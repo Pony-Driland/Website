@@ -131,6 +131,8 @@ export const getRateLimit = () => ({
     roomUsers: getIniConfig('MAX_USERS_PER_ROOM'),
   },
   dice: {
+    amount: getIniConfig('DICE_AMOUNT'),
+    sides: getIniConfig('DICE_SIDES'),
     img: getIniConfig('DICE_IMG_SIZE'),
     border: getIniConfig('DICE_BORDER_STYLE'),
     bg: getIniConfig('DICE_BG_STYLE'),
