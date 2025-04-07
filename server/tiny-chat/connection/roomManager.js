@@ -154,9 +154,8 @@ export default function roomManager(socket, io, appStorage) {
     if (userIsRateLimited(socket, fn)) return;
 
     // Check if the room exists
-    const rUsers = roomUsers.get(roomId);
     const room = await rooms.get(roomId);
-    if (!rUsers || !room) {
+    if (!room) {
       return fn({
         error: true,
         msg: 'Room not found.',

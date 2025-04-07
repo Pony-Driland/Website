@@ -1,5 +1,9 @@
 import { objType } from './lib/objChecker';
 
+/**
+ * TinySQL is a wrapper for basic SQL operations on a local storage abstraction.
+ * It supports inserting, updating, deleting, querying and joining JSON-based structured data.
+ */
 class TinySQL {
   #appStorage;
   #settings;
@@ -7,6 +11,8 @@ class TinySQL {
 
   constructor() {
     this.debug = false;
+
+    // Predefined condition operator mappings used in searches
     this.#conditions = {
       LIKE: (condition) => ({
         operator: 'LIKE',
@@ -21,20 +27,43 @@ class TinySQL {
       '<': () => ({ operator: '<' }),
     };
 
+    // Helpers for JSON operations within SQL queries
     this.jsonOp = {
       // WHERE json_extract(data, '$.name') = 'Rainbow Queen' | Search exact value inside json
+      /**
+       * Extracts a JSON key from a field using SQLite's json_extract.
+       * @param {string} name - The key to extract.
+       * @param {string} [where='data'] - The field to search in.
+       */
       extract: (name, where = 'data') => `json_extract(${where}, '$.${name}')`,
       // FROM json_each(json_extract(data, '$.tags')) | Search inside a array
+      /**
+       * Unrolls a JSON array into multiple rows using json_each.
+       * @param {string} name - The key to iterate over.
+       * @param {string} [where='data'] - The field to search in.
+       */
       each: (name, where = 'data') => `json_each(${this.jsonOp.extract(name, where)})`,
       // WHERE CAST(json_extract(data, '$.level') AS INTEGER) > 10 | Filter by a numerical value within JSON
+      /**
+       * Extracts a key and casts it to an integer for numeric comparisons.
+       * @param {string} name - The key to convert.
+       * @param {string} [where='data'] - The field to search in.
+       */
       filterNumber: (name, where = 'data') =>
         `CAST(${this.jsonOp.extract(name, where)} AS INTEGER)`,
     };
 
+    // Aliases for alternative comparison operators
     this.#conditions['='] = this.#conditions['==='];
     this.#conditions['!='] = this.#conditions['!=='];
   }
 
+  /**
+   * Parses JSON fields from result rows if marked in the settings.
+   * @private
+   * @param {object} result - The result row to check.
+   * @returns {object}
+   */
   #jsonChecker(result) {
     if (objType(result, 'object')) {
       for (const item in result) {
@@ -50,6 +79,11 @@ class TinySQL {
     return result;
   }
 
+  /**
+   * Set the storage adapter and database settings.
+   * @param {object} appStorage - Object with methods like getSingleData, getAllData, runQuery.
+   * @param {object} [settings={}] - Configuration settings for the table and behavior.
+   */
   setDb(appStorage, settings = {}) {
     if (typeof settings.select !== 'string') settings.select = '*';
     if (!Array.isArray(settings.json)) settings.json = [];
@@ -63,10 +97,20 @@ class TinySQL {
     this.#settings = settings;
   }
 
+  /**
+   * Enables or disables debug output to console.
+   * @param {boolean} [isDebug=false]
+   */
   setDebug(isDebug = false) {
     this.debug = typeof isDebug === 'boolean' ? isDebug : false;
   }
 
+  /**
+   * Check if a row with the given ID (and optional subId) exists.
+   * @param {string|number} id - Primary key value.
+   * @param {string|number} [subId] - Optional sub-ID for composite key.
+   * @returns {Promise<boolean>}
+   */
   async has(id, subId) {
     const useSub = this.#settings.subId && subId ? true : false;
     const params = [id];
@@ -78,6 +122,13 @@ class TinySQL {
     return result['COUNT(*)'] === 1;
   }
 
+  /**
+   * Insert or update a record with given data.
+   * @param {string|number} id - Primary key value.
+   * @param {object} valueObj - Data to store.
+   * @param {object|null} [extraData=null] - Data for join table, if configured.
+   * @returns {Promise<object|object[]>}
+   */
   async set(id, valueObj = {}, extraData = null) {
     const results = [];
     const columns = Object.keys(valueObj);
@@ -114,6 +165,12 @@ class TinySQL {
     return results.length < 2 ? results[0] : results;
   }
 
+  /**
+   * Get a record by its ID (and optional subId).
+   * @param {string|number} id - Primary key value.
+   * @param {string|number} [subId] - Optional sub-ID for composite key.
+   * @returns {Promise<object|null>}
+   */
   async get(id, subId) {
     const useSub = this.#settings.subId && subId ? true : false;
     const params = [id];
@@ -129,6 +186,12 @@ class TinySQL {
     return result;
   }
 
+  /**
+   * Delete a record by its ID (and optional subId).
+   * @param {string|number} id - Primary key value.
+   * @param {string|number} [subId] - Optional sub-ID for composite key.
+   * @returns {Promise<object>}
+   */
   async delete(id, subId) {
     const useSub = this.#settings.subId && subId ? true : false;
     const query = `DELETE FROM ${this.#settings.name} WHERE ${this.#settings.id} = ?${useSub ? ` AND ${this.#settings.subId} = ?` : ''}`;
@@ -140,6 +203,11 @@ class TinySQL {
     return result;
   }
 
+  /**
+   * Get a limited number of rows from the database.
+   * @param {number} count - Number of rows to retrieve.
+   * @returns {Promise<object[]>}
+   */
   async getAmount(count) {
     const joinClause = this.#settings.join
       ? `LEFT JOIN ${this.#settings.join} j ON ${this.#settings.joinCompare || ''}`
@@ -155,6 +223,10 @@ class TinySQL {
     return results;
   }
 
+  /**
+   * Get all records from the table.
+   * @returns {Promise<object[]>}
+   */
   async getAll() {
     const joinClause = this.#settings.join
       ? `LEFT JOIN ${this.#settings.join} j ON ${this.#settings.joinCompare || ''}`
@@ -170,6 +242,11 @@ class TinySQL {
     return results;
   }
 
+  /**
+   * Perform a filtered search with given criteria.
+   * @param {object} [criteria={}] - Conditions with optional operators and logical operators.
+   * @returns {Promise<object[]>}
+   */
   async search(criteria = {}) {
     const conditions = [];
     const values = [];

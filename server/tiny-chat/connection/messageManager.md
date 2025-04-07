@@ -135,7 +135,15 @@ Rolls one or multiple dice, either with the same number of sides or different on
 ```json
 {
   "results": [{ "sides": "number", "roll": "number" }],
-  "total": "number"
+  "total": "number",
+  "skin": [{
+    "img": "string",
+    "border": "string",
+    "bg": "string",
+    "text:" "string",
+    "selectionBg": "string",
+    "selectionText": "string"
+  }]
 }
 ```
 
