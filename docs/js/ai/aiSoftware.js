@@ -1567,6 +1567,19 @@ const AiScriptStart = (connStore) => {
 
               // RPG
               $('<h5>').text('RPG'),
+              createButtonSidebar('fa-solid fa-dice', 'Roll Dice', () => {
+                const diceBase = $('<div>');
+                const tinyDices = new TinyDice(diceBase.get(0));
+
+                tinyLib.modal({
+                  title: 'Dice Roll',
+                  dialog: 'modal-lg',
+                  id: 'dice-roll',
+                  body: [diceBase],
+                });
+
+                console.log(tinyDices.roll(7, 5));
+              }),
               createButtonSidebar('fa-solid fa-note-sticky', 'View Data', null, false, {
                 toggle: 'offcanvas',
                 target: '#rpg_ai_base_1',
@@ -3469,11 +3482,14 @@ const AiScriptStart = (connStore) => {
         if (tinyAiScript.multiplayer || tinyIo.socket) {
           // Online tab html
           const onlineStatus = {};
-          onlineStatus.wrapper = $('<div>').addClass('mb-1 d-flex align-items-center gap-1 small');
+          onlineStatus.base = $('<div>').addClass('mb-1 small');
+          onlineStatus.wrapper = $('<div>').addClass('d-flex align-items-center gap-1');
           onlineStatus.icon = tinyLib.icon('fas fa-circle text-danger');
           onlineStatus.text = $('<span>').text('Offline');
-          onlineStatus.wrapper.append(onlineStatus.icon, onlineStatus.text);
-          connectionInfoBar.replaceWith(onlineStatus.wrapper);
+          onlineStatus.id = $('<span>');
+          onlineStatus.wrapper.append(onlineStatus.icon, onlineStatus.text, onlineStatus.id);
+          onlineStatus.base.append(onlineStatus.wrapper, onlineStatus.id);
+          connectionInfoBar.replaceWith(onlineStatus.base);
 
           // Socket client
           if (tinyIo.socket) {
@@ -3492,8 +3508,12 @@ const AiScriptStart = (connStore) => {
             client.install();
             client.onConnect(() => {
               // Online!
+              const connectionId = client.getSocket()?.id;
               onlineStatus.icon.removeClass('text-danger').addClass('text-success');
               onlineStatus.text.text('Online');
+              onlineStatus.id.empty().text('Id: ').append(
+                $('<strong>').text(connectionId)
+              );
 
               // First time message
               client.resetData();
@@ -3502,7 +3522,7 @@ const AiScriptStart = (connStore) => {
 
               // Message
               makeTempMessage(
-                `You are connected! Your connection id is **${client.getSocket()?.id}**. Signing into your account...`,
+                `You are connected! Your connection id is **${connectionId}**. Signing into your account...`,
                 rpgCfg.ip,
               );
 
@@ -3565,6 +3585,7 @@ const AiScriptStart = (connStore) => {
               // Offline!
               onlineStatus.icon.addClass('text-danger').removeClass('text-success');
               onlineStatus.text.text('Offline');
+              onlineStatus.id.empty();
 
               // Message
               makeTempMessage(`You are disconected! ${details.description}`, rpgCfg.ip);
