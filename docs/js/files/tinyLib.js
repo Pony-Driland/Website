@@ -502,6 +502,48 @@ tinyLib.doAfterScroll = function (f) {
 // Icon
 tinyLib.icon = (classItem) => $('<i>', { class: classItem });
 
+// Files Upload button
+tinyLib.upload = {};
+tinyLib.upload.button = (configs = {}, button = null, callback = null) => {
+  // Create button
+  const importButton = $('<input>', {
+    type: 'file',
+    accept: configs.accept,
+    style: 'display: none;',
+  });
+
+  // Multiple
+  if (configs.multiple) importButton.prop('multiple', true);
+
+  // Directory
+  if (configs.directory) importButton.prop('directory', true);
+
+  // Prepare button functions
+  importButton.on('change', callback);
+  button.on('click', () => importButton.trigger('click'));
+  button.parent().append(importButton);
+  return button;
+};
+
+// Json upload
+tinyLib.upload.json = (button = null, callback = null) =>
+  tinyLib.upload.button({ type: '.json' }, button, (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        try {
+          // Read data
+          const jsonData = JSON.parse(e.target.result);
+          callback(null, jsonData);
+        } catch (err) {
+          callback(err, null);
+        }
+      };
+      reader.readAsText(file);
+    }
+  });
+
 // Bootstrap
 tinyLib.bs = {};
 
