@@ -9,10 +9,12 @@ import {
   getIniConfig,
   roomModerators,
   roomHistoriesDeleted,
+  noDataInfo,
 } from './values';
 
 export default function messageManager(socket, io) {
   socket.on('send-message', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { message, roomId, tokens, model, errorCode } = data;
     // Validate values
     if (typeof message !== 'string' || message.trim() === '' || typeof roomId !== 'string')
@@ -73,6 +75,7 @@ export default function messageManager(socket, io) {
   });
 
   socket.on('edit-message', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { roomId, messageId, newText, tokens, model, errorCode } = data;
     // Validate values
     if (typeof newText !== 'string' || typeof roomId !== 'string' || typeof messageId !== 'string')
@@ -149,6 +152,7 @@ export default function messageManager(socket, io) {
   });
 
   socket.on('delete-message', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
     const { roomId, messageId } = data;
     // Validate values
     if (typeof roomId !== 'string' || typeof messageId !== 'string')
@@ -196,8 +200,9 @@ export default function messageManager(socket, io) {
   });
 
   socket.on('roll-dice', (data, fn) => {
-    // Validate input data
+    if (noDataInfo(data, fn)) return;
     const { sameSides, dice, roomId } = data;
+    // Validate input data
     if (!Array.isArray(dice) || dice.length === 0 || typeof roomId !== 'string')
       return sendIncompleteDataInfo(fn);
 
