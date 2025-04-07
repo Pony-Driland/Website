@@ -1,4 +1,4 @@
-import { objType } from '../lib/objChecker';
+import { countObj, objType } from '../lib/objChecker';
 import {
   userMsgIsRateLimited,
   userSession,
@@ -11,6 +11,9 @@ import {
   roomModerators,
   roomHistoriesDeleted,
   noDataInfo,
+  usersDice,
+  userDiceIsRateLimited,
+  roomUsers,
 } from './values';
 
 export default function messageManager(socket, io) {
@@ -200,12 +203,75 @@ export default function messageManager(socket, io) {
     fn({ success: true });
   });
 
-  socket.on('roll-dice', (data, fn) => {
+  socket.on('roll-dice', async (data, fn) => {
     if (noDataInfo(data, fn)) return;
     const { sameSides, dice, diceSkin, roomId } = data;
     // Validate input data
     if (!Array.isArray(dice) || dice.length === 0 || typeof roomId !== 'string')
       return sendIncompleteDataInfo(fn);
+
+    // Get user
+    const userId = userSession.getUserId(socket);
+    if (!userId) return accountNotDetected(fn); // Only logged-in users can use dices
+    if (userDiceIsRateLimited(socket, fn)) return;
+
+    // Check if the room exists
+    const rUsers = roomUsers.get(roomId);
+    if (!rUsers) {
+      return fn({
+        error: true,
+        msg: 'Room not found.',
+        code: 1,
+      });
+    }
+
+    // You need join the room
+    if (!rUsers.get(userId)) return fn({ error: true, code: 2, msg: 'You are not in this room.' });
+
+    // Dice skin
+    const skin = objType(diceSkin, 'object')
+      ? {
+          img:
+            typeof diceSkin.img === 'string'
+              ? diceSkin.img.substring(0, getIniConfig('DICE_IMG_SIZE')).trim()
+              : null,
+          border:
+            typeof diceSkin.border === 'string'
+              ? diceSkin.border.substring(0, getIniConfig('DICE_BORDER_STYLE')).trim()
+              : null,
+          bg:
+            typeof diceSkin.bg === 'string'
+              ? diceSkin.bg.substring(0, getIniConfig('DICE_BG_STYLE')).trim()
+              : null,
+          text:
+            typeof diceSkin.text === 'string'
+              ? diceSkin.text.substring(0, getIniConfig('DICE_TEXT_STYLE')).trim()
+              : null,
+          selectionBg:
+            typeof diceSkin.selectionBg === 'string'
+              ? diceSkin.selectionBg.substring(0, getIniConfig('DICE_SELECTION_BG_STYLE')).trim()
+              : null,
+          selectionText:
+            typeof diceSkin.selectionText === 'string'
+              ? diceSkin.selectionText
+                  .substring(0, getIniConfig('DICE_SELECTION_TEXT_STYLE'))
+                  .trim()
+              : null,
+        }
+      : {};
+
+    if (countObj(skin) < 1) {
+      const userDice = await usersDice.get(userId);
+      if (userDice) {
+        skin.img = typeof userDice.img === 'string' ? userDice.img : null;
+        skin.border = typeof userDice.border === 'string' ? userDice.border : null;
+        skin.bg = typeof userDice.bg === 'string' ? userDice.bg : null;
+        skin.text = typeof userDice.text === 'string' ? userDice.text : null;
+        skin.selectionBg = typeof userDice.selectionBg === 'string' ? userDice.selectionBg : null;
+        skin.selectionText =
+          typeof userDice.selectionText === 'string' ? userDice.selectionText : null;
+      }
+    }
 
     // Prepare results
     const results = [];
@@ -219,64 +285,22 @@ export default function messageManager(socket, io) {
     // Check if all dice should have the same number of sides
     if (sameSides) {
       const sides = dice[0];
-      if (typeof sides !== 'number' || sides < 2) {
-        return io.to(roomId).emit('roll-result', { error: 'Invalid dice configuration' });
-      }
+      if (typeof sides !== 'number' || sides < 2)
+        return fn({ error: true, code: 3, msg: 'Invalid dice of same sides configuration' });
       // Roll all dice with the same number of sides
       for (let i = 0; i < dice.length; i++) rollDice(sides);
-
-      // Complete
-      io.to(roomId).emit('roll-result', { results, total });
     } else {
       // Roll dice with different number of sides
       // Iterate over each die and roll with its respective number of sides
       for (const sides of dice) {
-        if (typeof sides !== 'number' || sides < 2) {
-          return io.to(roomId).emit('roll-result', { error: 'Invalid dice configuration' });
-        }
+        if (typeof sides !== 'number' || sides < 2)
+          return fn({ error: true, code: 4, msg: 'Invalid dice of diff sides configuration' });
         rollDice(sides);
       }
-
-      // Complete
-      io.to(roomId).emit('roll-result', {
-        results,
-        total,
-        skin: objType(diceSkin, 'object')
-          ? {
-              img:
-                typeof diceSkin.img === 'string'
-                  ? diceSkin.img.substring(0, getIniConfig('DICE_IMG_SIZE')).trim()
-                  : null,
-              border:
-                typeof diceSkin.border === 'string'
-                  ? diceSkin.border.substring(0, getIniConfig('DICE_BORDER_STYLE')).trim()
-                  : null,
-              bg:
-                typeof diceSkin.bg === 'string'
-                  ? diceSkin.bg.substring(0, getIniConfig('DICE_BG_STYLE')).trim()
-                  : null,
-              text:
-                typeof diceSkin.text === 'string'
-                  ? diceSkin.text.substring(0, getIniConfig('DICE_TEXT_STYLE')).trim()
-                  : null,
-              selectionBg:
-                typeof diceSkin.selectionBg === 'string'
-                  ? diceSkin.selectionBg
-                      .substring(0, getIniConfig('DICE_SELECTION_BG_STYLE'))
-                      .trim()
-                  : null,
-              selectionText:
-                typeof diceSkin.selectionText === 'string'
-                  ? diceSkin.selectionText
-                      .substring(0, getIniConfig('DICE_SELECTION_TEXT_STYLE'))
-                      .trim()
-                  : null,
-            }
-          : {},
-      });
     }
 
     // Complete
+    socket.to(roomId).emit('roll-result', { results, total, skin });
     fn({ success: true });
   });
 }

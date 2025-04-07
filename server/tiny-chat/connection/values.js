@@ -27,6 +27,7 @@ export const roomHistoriesDeleted = new TinySQL(); // Stores room histories
 
 export const privateRoomData = new TinySQL(); // Stores room private data
 export const roomData = new TinySQL(); // Stores room data
+export const usersDice = new TinySQL(); // Stores users dice
 
 // Track the users in rooms
 export const roomUsers = new Map(); // Stores room users
@@ -71,19 +72,34 @@ export const userSession = {
   check: (socket) => {
     if (!socket.tinySession) socket.tinySession = { rooms: [] };
   },
+  isInRoom: (socket, roomId) => {
+    if (
+      socket.tinySession &&
+      Array.isArray(socket.tinySession.rooms) &&
+      socket.tinySession.rooms.indexOf(roomId) > -1
+    )
+      return true;
+
+    return false;
+  },
   addRoom: (socket, roomId) => {
     if (socket.tinySession && typeof roomId === 'string') {
-      if (socket.tinySession.rooms.indexOf(roomId) < 0) socket.tinySession.rooms.push(roomId);
+      if (Array.isArray(socket.tinySession.rooms) && socket.tinySession.rooms.indexOf(roomId) < 0)
+        socket.tinySession.rooms.push(roomId);
       return true;
     }
     return false;
   },
   eachRooms: (socket, callback) => {
-    if (socket.tinySession)
+    if (socket.tinySession && Array.isArray(socket.tinySession.rooms))
       for (const index in socket.tinySession.rooms) callback(socket.tinySession.rooms[index]);
   },
   removeRoom: (socket, roomId) => {
-    if (socket.tinySession && typeof roomId === 'string') {
+    if (
+      socket.tinySession &&
+      Array.isArray(socket.tinySession.rooms) &&
+      typeof roomId === 'string'
+    ) {
       const index = socket.tinySession.rooms.indexOf(roomId);
       if (index > -1) socket.tinySession.rooms.splice(index, 1);
     }
@@ -127,6 +143,7 @@ export const getRateLimit = () => ({
   },
   limit: {
     msg: getIniConfig('MESSAGES'),
+    diceRolls: getIniConfig('DICE_ROLLS'),
     events: getIniConfig('EVENT'),
     roomUsers: getIniConfig('MAX_USERS_PER_ROOM'),
   },
@@ -201,6 +218,7 @@ export const createRateLimit = (limitCount = 5, itemName = 'items', code = -1) =
 
 export const userIsRateLimited = createRateLimit(getIniConfig('EVENT'), 'events', 1);
 export const userMsgIsRateLimited = createRateLimit(getIniConfig('MESSAGES'), 'messages', 2);
+export const userDiceIsRateLimited = createRateLimit(getIniConfig('DICE_ROLLS'), 'dice rolls', 3);
 
 // Incomplete data
 export const sendIncompleteDataInfo = (fn, code = 0) => {

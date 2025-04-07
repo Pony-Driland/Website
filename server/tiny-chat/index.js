@@ -16,6 +16,7 @@ import {
   roomModerators,
   rooms,
   users,
+  usersDice,
 } from './connection/values';
 import isDebug from './isDebug';
 
@@ -83,10 +84,23 @@ startFiles().then(async (appStorage) => {
     );
   `);
 
+  await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS usersDice (
+    userId TEXT PRIMARY KEY,
+    bg TEXT,
+    text TEXT,
+    border TEXT,
+    img TEXT,
+    selectionBg TEXT,
+    selectionText TEXT,
+    FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE
+    );
+  `);
+
   await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS moderators (
     userId TEXT PRIMARY KEY,
     reason TEXT,
-    date INTEGER NOT NULL
+    date INTEGER NOT NULL,
+    FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE
     );
   `);
 
@@ -144,6 +158,9 @@ startFiles().then(async (appStorage) => {
 
   users.setDb(appStorage, { name: 'users', id: 'userId' });
   users.setDebug(debugMode);
+
+  usersDice.setDb(appStorage, { name: 'usersDice', id: 'userId' });
+  usersDice.setDebug(debugMode);
 
   roomHistoriesDeleted.setDb(appStorage, {
     name: 'historyDeleted',

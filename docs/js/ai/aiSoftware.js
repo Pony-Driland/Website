@@ -1649,12 +1649,12 @@ const AiScriptStart = (connStore) => {
                 // Skin form
                 const createInputField = (label, id, placeholder, value) => {
                   configs[id] = $('<input>')
-                    .addClass('form-control')
+                    .addClass('form-control text-center')
                     .attr({ type: 'text', placeholder })
                     .val(value);
 
                   return $('<div>')
-                    .addClass('col-md-4')
+                    .addClass('col-md-4 text-center')
                     .append(
                       $('<label>').addClass('form-label').attr('for', id).text(label),
                       configs[id],
@@ -1690,8 +1690,7 @@ const AiScriptStart = (connStore) => {
                       'Border Skin',
                       'borderSkin',
                       'e.g. black',
-                      localStorage.getItem(`tiny-dice-border`) ||
-                        '2px solid rgba(0, 0, 0, 0.05)',
+                      localStorage.getItem(`tiny-dice-border`) || '2px solid rgba(0, 0, 0, 0.05)',
                     ),
                     // Bg skin
                     createInputField(
@@ -1709,7 +1708,7 @@ const AiScriptStart = (connStore) => {
                     ),
                     // Image upload
                     configs.bgImg,
-                    $('<div>', { class: 'col-md-4' }).append(
+                    $('<div>', { class: 'col-md-4 text-center' }).append(
                       $('<label>').addClass('form-label').text('Custom Image'),
                       tinyLib.upload.img(
                         bgImgUploadButton.text('Select Image').on('contextmenu', (e) => {

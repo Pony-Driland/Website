@@ -76,6 +76,7 @@ class TinyClientIo extends EventEmitter {
       if (objType(result.limit, 'object')) {
         this.ratelimit.limit = {
           events: typeof result.limit.events === 'number' ? result.limit.events : 0,
+          diceRolls: typeof result.limit.diceRolls === 'number' ? result.limit.diceRolls : 0,
           msg: typeof result.limit.msg === 'number' ? result.limit.msg : 0,
           roomUsers: typeof result.limit.roomUsers === 'number' ? result.limit.roomUsers : 0,
         };
