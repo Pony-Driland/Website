@@ -219,6 +219,7 @@ export const createRateLimit = (limitCount = 5, itemName = 'items', code = -1) =
 export const userIsRateLimited = createRateLimit(getIniConfig('EVENT'), 'events', 1);
 export const userMsgIsRateLimited = createRateLimit(getIniConfig('MESSAGES'), 'messages', 2);
 export const userDiceIsRateLimited = createRateLimit(getIniConfig('DICE_ROLLS'), 'dice rolls', 3);
+export const userUpdateDiceIsRateLimited = createRateLimit(getIniConfig('DICE_ROLLS'), 'dice changes', 3);
 
 // Incomplete data
 export const sendIncompleteDataInfo = (fn, code = 0) => {

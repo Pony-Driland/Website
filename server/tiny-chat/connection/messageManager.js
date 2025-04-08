@@ -14,6 +14,7 @@ import {
   usersDice,
   userDiceIsRateLimited,
   roomUsers,
+  userUpdateDiceIsRateLimited,
 } from './values';
 
 export default function messageManager(socket, io) {
@@ -245,7 +246,7 @@ export default function messageManager(socket, io) {
     // Get user
     const userId = userSession.getUserId(socket);
     if (!userId) return accountNotDetected(fn); // Only logged-in users can use dices
-    if (userDiceIsRateLimited(socket, fn)) return;
+    if (userUpdateDiceIsRateLimited(socket, fn)) return;
 
     // Insert skin
     const skin = getDiceData(diceSkin);
