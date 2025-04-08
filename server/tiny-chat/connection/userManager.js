@@ -105,15 +105,24 @@ export default function userManager(socket, io) {
 
   socket.on('change-password', async (data, fn) => {
     if (noDataInfo(data, fn)) return;
-    const { password } = data;
+    const { oldPassword, password } = data;
     // Validate values
-    if (typeof password !== 'string') return sendIncompleteDataInfo(fn);
+    if (typeof password !== 'string' || typeof oldPassword !== 'string')
+      return sendIncompleteDataInfo(fn);
 
     // Get user
     const userId = userSession.getUserId(socket);
     if (!userId) return accountNotDetected(fn); // Only logged-in users can use it
     if (userIsRateLimited(socket, fn)) return;
     const user = await users.get(userId);
+
+    // Validate password
+    if (user.password !== getHashString(oldPassword))
+      return fn({
+        error: true,
+        code: 2,
+        msg: 'Your current password is incorrect.',
+      });
 
     if (password.length < getIniConfig('MIN_PASSWORD_SIZE'))
       return fn({

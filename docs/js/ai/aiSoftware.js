@@ -1559,7 +1559,7 @@ const AiScriptStart = (connStore) => {
 
           if (tinyCfg.isOnline) {
             tinyCfg.data = tinyIo.client.getDice() || {};
-            const ratelimit = tinyIo.client.getRateLimit() || {};
+            const ratelimit = tinyIo.client.getRateLimit() || { dice: {}, size: {} };
             if (objType(ratelimit.dice, 'object')) tinyCfg.rateLimit = ratelimit.dice;
           } else {
             tinyCfg.data.img = localStorage.getItem(`tiny-dice-img`) || undefined;
@@ -2003,65 +2003,194 @@ const AiScriptStart = (connStore) => {
       // Online Mode options
       if (!canUsejsStore) {
         leftMenu.push($('<h5>').text('Online'));
+        const templateChangeInfo = (
+          id,
+          icon,
+          buttonName,
+          title,
+          labelName,
+          placeHolder,
+          infoName,
+          getInfo,
+          callback,
+        ) => {
+          leftMenu.push(
+            createButtonSidebar(icon, buttonName, () => {
+              // Prepare root
+              const $root = $('<div>');
 
-        // Edit nickname
-        leftMenu.push(
-          createButtonSidebar('fa-solid fa-id-card', 'Edit nickname', () => {
-            // Prepare root
-            const $root = $('<div>');
+              const $card = $('<div>').addClass('card shadow rounded-4');
+              const $cardBody = $('<div>').addClass('card-body');
 
-            const $card = $('<div>').addClass('card shadow rounded-4');
-            const $cardBody = $('<div>').addClass('card-body');
+              const $inputGroup = $('<div>').addClass('mb-3');
+              const $label = $('<label>')
+                .addClass('form-label')
+                .attr('for', 'on_edit_tinyinfo')
+                .text(labelName);
 
-            const $inputGroup = $('<div>').addClass('mb-3');
-            const $label = $('<label>')
-              .addClass('form-label')
-              .attr('for', 'on_edit_nickname')
-              .text('Nickname');
-
-            const $input = $('<input>').addClass('form-control').addClass('text-center').attr({
-              type: 'text',
-              id: 'on_edit_nickname',
-              placeholder: 'Enter your nickname',
-            });
-
-            // Page information
-            const ratelimit = tinyIo.client.getRateLimit() || {};
-            const userData = tinyIo.client.getUser() || {};
-            $input
-              .attr('maxLength', ratelimit.size.nickname)
-              .val(typeof userData?.nickname === 'string' ? userData?.nickname : '')
-              .on('keydown', function (e) {
-                if (e.key === 'Enter') {
-                  e.preventDefault();
-                  $saveBtn.click();
-                }
+              const $input = $('<input>').addClass('form-control').addClass('text-center').attr({
+                type: 'text',
+                id: 'on_edit_tinyinfo',
+                placeholder: placeHolder,
               });
 
-            const $saveBtn = tinyLib.bs.button('primary w-100').text('Save');
+              // Page information
+              const { ratelimit, userData } = getInfo();
+              $input
+                .attr('maxLength', ratelimit.size[infoName])
+                .val(typeof userData[infoName] === 'string' ? userData[infoName] : '')
+                .on('keydown', function (e) {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    $saveBtn.click();
+                  }
+                });
 
-            // Build elements
-            $inputGroup.addClass('text-center').append($label, $input);
-            $cardBody.append($inputGroup, $saveBtn);
-            $card.append($cardBody);
-            $root.append($card);
+              const $saveBtn = tinyLib.bs.button('primary w-100').text('Save');
 
-            // Click button event
-            $saveBtn.on('click', function () {
-              tinyIo.client.changeNickname($input.val().trim());
-              modal.modal('hide');
+              // Build elements
+              $inputGroup.addClass('text-center').append($label, $input);
+              $cardBody.append($inputGroup, $saveBtn);
+              $card.append($cardBody);
+              $root.append($card);
+
+              // Click button event
+              $saveBtn.on('click', function () {
+                callback($input.val().trim());
+                modal.modal('hide');
+              });
+
+              // Start modal
+              const modal = tinyLib.modal({
+                title: title,
+                dialog: 'modal-lg',
+                id,
+                body: $root,
+              });
+
+              modal.on('shown.bs.modal', () => {
+                $input.trigger('focus');
+              });
+            }),
+          );
+        };
+
+        // Edit nickname
+        templateChangeInfo(
+          'edit-nickname', // Id
+          'fa-solid fa-id-card', // Icon
+          'Edit nickname', // Button name
+          'Edit your Nickname', // Title
+          'Nickname', // Label name
+          'Enter your nickname', // Place Holder
+          'nickname', // Object Name
+          () => {
+            const ratelimit = tinyIo.client.getRateLimit() || { size: {} };
+            const userData = tinyIo.client.getUser() || {};
+            return { ratelimit, userData };
+          },
+          (value) => {
+            tinyIo.client.changeNickname(value);
+          },
+        );
+
+        leftMenu.push(
+          createButtonSidebar('fas fa-key', 'Change password', () => {
+            // Root
+            const ratelimit = tinyIo.client.getRateLimit() || { size: {} };
+            const $root = $('<div>');
+
+            // Error place
+            const $errorBox = tinyLib.bs.alert('danger', '', false).addClass('d-none');
+
+            // Create label and input
+            const createInputGroup = (labelText, inputId, type = 'password') => {
+              const $group = $('<div>').addClass('mb-3');
+              const $label = $('<label>')
+                .addClass('form-label')
+                .attr('for', inputId)
+                .text(labelText);
+              const $input = $('<input>').addClass('form-control').attr({
+                type,
+                id: inputId,
+                placeholder: labelText,
+                maxLength: ratelimit.size.password,
+              });
+              $group.append($label, $input);
+              return { group: $group, input: $input };
+            };
+
+            const current = createInputGroup('Current Password', 'current-password');
+            const newPass = createInputGroup('New Password', 'new-password');
+            const confirmPass = createInputGroup('Confirm New Password', 'confirm-password');
+
+            // Change password button
+            const $button = tinyLib.bs.button('primary').addClass('w-100').text('Change Password');
+
+            // Build all
+            $root.append($errorBox, current.group, newPass.group, confirmPass.group, $button);
+
+            // show error
+            const showError = (msg) => {
+              $errorBox.html(msg).removeClass('d-none');
+            };
+
+            // Hide the error when the user starts to type
+            [current.input, newPass.input, confirmPass.input].forEach(($input) => {
+              $input.on('input', () => $errorBox.addClass('d-none'));
             });
 
-            // Start modal
+            // Enter button
+            [current.input, newPass.input, confirmPass.input].forEach(($input) => {
+              $input.on('keydown', (e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  $button.click();
+                }
+              });
+            });
+
+            // Button click
+            $button.on('click', () => {
+              const currentVal = current.input.val().trim();
+              const newVal = newPass.input.val().trim();
+              const confirmVal = confirmPass.input.val().trim();
+
+              if (!currentVal || !newVal || !confirmVal) {
+                showError('Please fill in all fields.');
+                return;
+              }
+
+              if (newVal !== confirmVal) {
+                showError('New passwords do not match.');
+                return;
+              }
+
+              if (newVal.length < ratelimit.size.minPassword) {
+                showError(
+                  `New password must be at least ${ratelimit.size.minPassword} characters.`,
+                );
+                return;
+              }
+
+              // Tiny okay!
+              $errorBox.addClass('d-none');
+              modal.modal('hide');
+              tinyIo.client.changePassword(currentVal, newVal).then((result) => {
+                if (result.error) alert(`${result.msg}\nCode ${result.code}`);
+              });
+            });
+
+            // Create modal
             const modal = tinyLib.modal({
-              title: 'Edit your Nickname',
+              title: 'Change Password',
               dialog: 'modal-lg',
-              id: 'dice-roll',
+              id: 'modal-password-change',
               body: $root,
             });
 
             modal.on('shown.bs.modal', () => {
-              $input.trigger('focus');
+              current.input.trigger('focus');
             });
           }),
         );
