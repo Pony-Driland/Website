@@ -88,6 +88,7 @@ This event allows a logged-in user to change their password.
 #### Arguments:
 
 - `password` (string): The new password.
+- `oldPassword` (string): The current password.
 
 #### Callback:
 

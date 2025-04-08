@@ -655,9 +655,10 @@ class TinyClientIo extends EventEmitter {
   }
 
   // Change your password
-  changePassword(password = '') {
+  changePassword(oldPassword = '', password = '') {
     return this.#socketEmitApi('change-password', {
       password,
+      oldPassword,
     });
   }
 
