@@ -159,6 +159,7 @@ export const getRateLimit = () => ({
   },
   loadAllHistory: getIniConfig('LOAD_ALL_HISTORY'),
   time: getIniConfig('RATE_LIMIT_TIME'),
+  openRegistration: getIniConfig('OPEN_REGISTRATION'),
 });
 
 export const sendRateLimit = (socket) => {

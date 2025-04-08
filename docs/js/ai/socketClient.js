@@ -73,6 +73,9 @@ class TinyClientIo extends EventEmitter {
       this.ratelimit.loadAllHistory =
         typeof result.loadAllHistory === 'boolean' ? result.loadAllHistory : true;
       this.ratelimit.time = typeof result.time === 'number' ? result.time : 0;
+      this.ratelimit.openRegistration =
+        typeof result.openRegistration === 'boolean' ? result.openRegistration : false;
+
       if (objType(result.limit, 'object')) {
         this.ratelimit.limit = {
           events: typeof result.limit.events === 'number' ? result.limit.events : 0,
