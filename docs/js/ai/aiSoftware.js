@@ -1918,6 +1918,7 @@ const AiScriptStart = (connStore) => {
 
                       const result = await tinyIo.client.setAccountDice(diceSkin);
                       if (result.error) $totalBase.addClass('text-danger').text(result.msg);
+                      else $totalBase.removeClass('text-danger').text(0);
 
                       // Enable buttons again
                       for (const index in readSkinValues)
