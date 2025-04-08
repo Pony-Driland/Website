@@ -558,7 +558,7 @@ class TinyClientIo extends EventEmitter {
   // Login account
   setAccountDice(diceSkin) {
     return this.#socketEmitApi('set-dice', {
-      diceSkin
+      diceSkin,
     });
   }
 
@@ -703,10 +703,11 @@ class TinyClientIo extends EventEmitter {
   }
 
   // Roll Dice
-  rollDice(dice = [], sameSides = false) {
+  rollDice(dice = [], sameSides = false, canZero = false) {
     return this.#socketEmitApi('roll-dice', {
       roomId: this.#cfg.roomId,
       sameSides,
+      canZero,
       dice,
     });
   }
