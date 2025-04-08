@@ -114,6 +114,45 @@ class TinyClientIo extends EventEmitter {
     return this.ratelimit || {};
   }
 
+  // Dice
+  setDice(result) {
+    this.dice = {};
+    if (objType(result, 'object')) {
+      const ratelimit = this.getRateLimit()?.dice;
+      this.dice.img =
+        typeof result.img === 'string'
+          ? result.img.substring(0, ratelimit.img || result.img.length)
+          : null;
+      this.dice.border =
+        typeof result.border === 'string'
+          ? result.border.substring(0, ratelimit.border || result.border.length)
+          : null;
+      this.dice.bg =
+        typeof result.bg === 'string'
+          ? result.bg.substring(0, ratelimit.bg || result.bg.length)
+          : null;
+      this.dice.text =
+        typeof result.text === 'string'
+          ? result.text.substring(0, ratelimit.text || result.text.length)
+          : null;
+      this.dice.selectionBg =
+        typeof result.selectionBg === 'string'
+          ? result.selectionBg.substring(0, ratelimit.selectionBg || result.selectionBg.length)
+          : null;
+      this.dice.selectionText =
+        typeof result.selectionText === 'string'
+          ? result.selectionText.substring(
+              0,
+              ratelimit.selectionText || result.selectionText.length,
+            )
+          : null;
+    }
+  }
+
+  getDice() {
+    return this.dice;
+  }
+
   // User
   setUser(result) {
     if (objType(result, 'object')) {
@@ -123,8 +162,13 @@ class TinyClientIo extends EventEmitter {
         nickname: typeof result.nickname === 'string' ? result.nickname : '',
         userId: typeof result.userId === 'string' ? result.userId : '',
       };
-      if (objType(result.ratelimit, 'object')) this.setRateLimit(result.ratelimit);
-    } else this.user = {};
+      this.setRateLimit(result.ratelimit);
+      this.setDice(result.dice);
+    } else {
+      this.user = {};
+      this.setRateLimit();
+      this.setDice();
+    }
   }
 
   getUser() {
@@ -508,6 +552,13 @@ class TinyClientIo extends EventEmitter {
     return this.#socketEmitApi('kick-from-room', {
       userId,
       roomId: this.#cfg.roomId,
+    });
+  }
+
+  // Login account
+  setAccountDice(diceSkin) {
+    return this.#socketEmitApi('set-dice', {
+      diceSkin
     });
   }
 

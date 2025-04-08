@@ -110,15 +110,17 @@ Deletes a message from the room history if the user has the necessary permission
 ### `roll-dice`
 
 **Description:**
-Rolls one or multiple dice, either with the same number of sides or different ones.
+
+Allows a logged-in user to roll one or more dice, either using the same number of sides or different ones. The results are broadcast to all users in the specified room. Dice can also be visually customized using user-owned skins.
 
 **Payload:**
 
 ```json
 {
-  "sameSides": "boolean", // If true, all dice have the same number of sides
-  "dice": ["number"], // List of dice sides to roll
-  "roomId": "string" // The ID of the room
+  "sameSides": true, // If true, all dice will have the same number of sides
+  "dice": [2, 2, 2], // Array of dice sides. If sameSides is true, all values should be the same
+  "diceSkin": "object", // (Optional) Skin to apply to the dice
+  "roomId": "string" // ID of the room where the dice will be rolled
 }
 ```
 
@@ -130,23 +132,98 @@ Rolls one or multiple dice, either with the same number of sides or different on
 }
 ```
 
-**Broadcasted Event:**
+**Broadcasted Event:** `roll-result`
 
 ```json
 {
-  "results": [{ "sides": "number", "roll": "number" }],
-  "total": "number",
-  "skin": [{
+  "results": [
+    { "sides": 2, "roll": 3 },
+    { "sides": 2, "roll": 5 },
+    { "sides": 2, "roll": 2 }
+  ],
+  "total": 10,
+  "skin": {
     "img": "string",
     "border": "string",
     "bg": "string",
-    "text:" "string",
+    "text": "string",
     "selectionBg": "string",
     "selectionText": "string"
-  }]
+  }
 }
 ```
 
+**Error Responses (Acknowledgment):**
+
+```json
+{ "error": true, "code": 1, "msg": "Room not found." }
+{ "error": true, "code": 2, "msg": "You are not in this room." }
+{ "error": true, "code": 3, "msg": "Invalid dice of same sides configuration" }
+{ "error": true, "code": 4, "msg": "Invalid dice of diff sides configuration" }
+```
+
+**Validation Rules:**
+
+- User must be logged in.
+- The `dice` array must contain at least one item.
+- All dice values must be numbers greater than or equal to 2.
+- If `sameSides` is `true`, all dice must use the same number of sides.
+- The user must be present in the room (`roomId`).
+- If no valid `diceSkin` is provided, the server will fallback to the user's default dice skin if available.
+
+**Note:**
+
+- Dice rolling is subject to rate limiting per user to prevent abuse.
+
+---
+
+### `set-dice`
+
+**Description:**
+
+Allows a logged-in user to define a custom visual style (skin) for dice rolls. The skin affects the appearance of dice results shared in chat rooms and can include colors, images, and text styles. All values are trimmed and validated based on system configuration limits.
+
+**Payload:**
+
+```json
+{
+  "diceSkin": {
+    "img": "string", // (Optional) Dice image data
+    "border": "string", // (Optional) Border style or color
+    "bg": "string", // (Optional) Background style or color
+    "text": "string", // (Optional) Text color or style
+    "selectionBg": "string", // (Optional) Background color when selected
+    "selectionText": "string" // (Optional) Text color when selected
+  }
+}
+```
+
+**Acknowledgment Response:**
+
+```json
+{
+  "success": true
+}
+```
+
+**Validation Rules:**
+
+- User must be logged in.
+- Payload must include a valid `diceSkin` object.
+- Each field in `diceSkin` must be a string if provided.
+- All string values are trimmed and truncated based on internal configuration:
+
+| Field           | Max Length (Config Key)     |
+| --------------- | --------------------------- |
+| `img`           | `DICE_IMG_SIZE`             |
+| `border`        | `DICE_BORDER_STYLE`         |
+| `bg`            | `DICE_BG_STYLE`             |
+| `text`          | `DICE_TEXT_STYLE`           |
+| `selectionBg`   | `DICE_SELECTION_BG_STYLE`   |
+| `selectionText` | `DICE_SELECTION_TEXT_STYLE` |
+
 **Error Handling:**
 
-- If invalid dice values are provided, an error message is emitted to the room.
+- If the `diceSkin` object is missing or not valid, an error acknowledgment is returned.
+- If the user is not authenticated, the request is rejected.
+- Requests are subject to dice customization rate limits per user.
