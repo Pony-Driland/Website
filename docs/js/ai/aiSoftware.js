@@ -406,6 +406,10 @@ const AiScriptStart = (connStore) => {
     $('#markdown-read').empty();
     $('#top_page').addClass('d-none');
 
+    // Can use backup
+    const rpgCfg = tinyStorage.getApiKey(tinyStorage.selectedAi()) || {};
+    const canUsejsStore = typeof rpgCfg.ip !== 'string' || rpgCfg.ip.length < 1;
+
     // Try to prevent user browser from deactivating the page accidentally in browsers that have tab auto deactivator
     const aiTimeScriptUpdate = () => {
       try {
@@ -1520,6 +1524,643 @@ const AiScriptStart = (connStore) => {
         });
       };
 
+      const isOnline = () => (canUsejsStore && tinyIo.socket && tinyIo.client ? true : false);
+      const leftMenu = [];
+      // Reset
+      leftMenu.push($('<h5>').text('Reset'));
+      leftMenu.push(...ficResets);
+
+      // Modes
+      leftMenu.push($('<h5>').text('Modes'));
+
+      // Fic Talk
+      leftMenu.push(...ficTemplates);
+
+      // Settings
+      leftMenu.push($('<h5>').text('Settings'));
+      leftMenu.push(...ficPromptItems);
+
+      // RPG
+      leftMenu.push($('<h5>').text('RPG'));
+      // Dice
+      leftMenu.push(
+        createButtonSidebar('fa-solid fa-dice', 'Roll Dice', () => {
+          // Root
+          const $root = $('<div>');
+          const $formRow = $('<div>').addClass('row g-3');
+          const $totalBase = $('<center>', { class: 'fw-bold mt-3' }).text(0);
+
+          // Config
+          const tinyCfg = {
+            isOnline: isOnline(),
+            data: {},
+            rateLimit: {},
+          };
+
+          if (tinyCfg.isOnline) {
+            tinyCfg.data = tinyIo.client.getDice() || {};
+            const ratelimit = tinyIo.client.getRateLimit() || {};
+            if (objType(ratelimit.dice, 'object')) tinyCfg.rateLimit = ratelimit.dice;
+          } else {
+            tinyCfg.data.img = localStorage.getItem(`tiny-dice-img`) || undefined;
+            tinyCfg.data.bg = localStorage.getItem(`tiny-dice-bg`) || 'white';
+            tinyCfg.data.text = localStorage.getItem(`tiny-dice-text`) || 'black';
+            tinyCfg.data.border =
+              localStorage.getItem(`tiny-dice-border`) || '2px solid rgba(0, 0, 0, 0.05)';
+            tinyCfg.data.selectionBg = localStorage.getItem(`tiny-dice-selection-bg`) || 'black';
+            tinyCfg.data.selectionText =
+              localStorage.getItem(`tiny-dice-selection-text`) || 'white';
+          }
+
+          // Form template
+          const configs = {};
+          const genLabel = (id, text) =>
+            $('<label>').addClass('form-label').attr('for', `tiny-dice_${id}`).text(text);
+
+          const genInput = (id, type, value, min) =>
+            $('<input>')
+              .addClass('form-control text-center')
+              .attr({ id: `tiny-dice_${id}`, type, min })
+              .attr('placeholder', min)
+              .val(value);
+
+          const genConfig = (id, text, type, value, min) => {
+            configs[id] = genInput(id, type, value, min);
+            return [genLabel(id, text), configs[id]];
+          };
+
+          // Form
+          const $maxValueCol = $('<div>')
+            .addClass('col-md-4')
+            .append(genConfig('maxValue', 'Max Value', 'number', 6, 1));
+
+          const $diceCountCol = $('<div>')
+            .addClass('col-md-4')
+            .append(genConfig('diceCount', 'Dice Count', 'number', 3, 1));
+
+          const $perDieCol = $('<div>')
+            .addClass('col-md-4')
+            .append(
+              genConfig('perDieValues', 'Per-Die Values (e.g., 6,12,20)', 'text', '', 'Optional'),
+            );
+
+          const $allow0input = $('<input>')
+            .addClass('form-check-input')
+            .attr({ type: 'checkbox', id: 'tiny-dice_allow0' });
+          const $allow0Col = $('<div>')
+            .addClass('d-flex justify-content-center align-items-center mt-2')
+            .append(
+              $('<div>')
+                .addClass('form-check')
+                .append(
+                  $allow0input,
+                  $('<label>')
+                    .addClass('form-check-label')
+                    .attr('for', 'tiny-dice_allow0')
+                    .text('Allow zero values'),
+                ),
+            );
+
+          $formRow.append($maxValueCol, $diceCountCol, $perDieCol);
+
+          // Roll button
+          const $rollButton = tinyLib.bs.button('primary w-100 mb-4 mt-2').text('Roll Dice');
+
+          // Add container
+          const $diceContainer = $('<div>');
+          const readSkinValues = [
+            ['bgSkin', 'bg', 'setBgSkin'],
+            ['textSkin', 'text', 'setTextSkin'],
+            ['borderSkin', 'border', 'setBorderSkin'],
+            ['bgImg', 'img', 'setBgImg'],
+            ['selectionBgSkin', 'selectionBg', 'setSelectionBgSkin'],
+            ['selectionTextSkin', 'selectionText', 'setSelectionTextSkin'],
+          ];
+
+          // TinyDice logic
+          const dice = new TinyDice($diceContainer.get(0));
+          let updateTotalBase = null;
+          $rollButton.on('click', async function () {
+            // Get values
+            const max = parseInt(configs.maxValue.val()) || 6;
+            const count = parseInt(configs.diceCount.val()) || 1;
+            const perDieRaw = configs.perDieValues.val().trim();
+            const perDie = perDieRaw.length > 0 ? perDieRaw : null;
+            const canZero = $allow0input.is(':checked');
+            $totalBase.text(0);
+            if (updateTotalBase) {
+              clearTimeout(updateTotalBase);
+              updateTotalBase = null;
+            }
+
+            // Offline
+            if (!tinyCfg.isOnline) {
+              const result = dice.roll(max, count, perDie, canZero);
+              let total = 0;
+              for (const item of result) total += item.result;
+              updateTotalBase = setTimeout(() => {
+                $totalBase.text(total);
+                updateTotalBase = null;
+              }, 2000);
+            }
+            // Online
+            else {
+              // Prepare data
+              const diceParse = dice.getRollConfig(max, count, perDie);
+              const sameSides = diceParse.perDieData.length < 1 ? true : false;
+              const sides = [];
+              if (sameSides)
+                for (let i = 0; i < diceParse.count; i++) sides.push(diceParse.maxGlobal);
+              else
+                for (const index in diceParse.perDieData) sides.push(diceParse.perDieData[index]);
+
+              // Get result
+              $(this).attr('disabled', true).addClass('disabled');
+              const result = await tinyIo.client.rollDice(sides, sameSides, canZero);
+              $(this).attr('disabled', false).removeClass('disabled');
+
+              // Proccess Results
+              if (!result.error) {
+                dice.clearDiceArea();
+                $totalBase.removeClass('text-danger');
+                if (Array.isArray(result.results) && typeof result.total === 'number') {
+                  for (const index in result.results) {
+                    if (
+                      typeof result.results[index].sides === 'number' &&
+                      typeof result.results[index].roll === 'number'
+                    )
+                      dice.insertDiceElement(
+                        result.results[index].roll,
+                        result.results[index].sides,
+                        canZero,
+                      );
+                  }
+                  updateTotalBase = setTimeout(() => {
+                    $totalBase.text(result.total);
+                    updateTotalBase = null;
+                  }, 2000);
+                }
+              } else $totalBase.addClass('text-danger').text(result.msg);
+            }
+          });
+
+          // Skin form
+          const createInputField = (label, id, placeholder, value) => {
+            configs[id] = $('<input>')
+              .addClass('form-control text-center')
+              .attr({ type: 'text', placeholder })
+              .val(value);
+
+            return $('<div>')
+              .addClass('col-md-4 text-center')
+              .append($('<label>').addClass('form-label').attr('for', id).text(label), configs[id]);
+          };
+
+          configs.bgImg = $('<input>')
+            .addClass('form-control')
+            .addClass('d-none')
+            .attr('type', 'text')
+            .val(tinyCfg.data.img);
+          const bgImgUploadButton = tinyLib.bs.button('info w-100');
+          const uploadImgButton = tinyLib.upload.img(
+            bgImgUploadButton.text('Select Image').on('contextmenu', (e) => {
+              e.preventDefault();
+              configs.bgImg.val('').removeClass('text-danger').trigger('change');
+            }),
+            (err, dataUrl) => {
+              console.log(`[dice-file] [upload] Image length: ${dataUrl.length}`);
+              // Error
+              if (err) {
+                console.error(err);
+                bgImgUploadButton.addClass('text-danger');
+                return;
+              }
+              // Insert image
+              if (
+                typeof tinyCfg.rateLimit.img !== 'number' ||
+                dataUrl.length <= tinyCfg.rateLimit.img
+              )
+                configs.bgImg.val(dataUrl).removeClass('text-danger').trigger('change');
+              // Nope
+              else bgImgUploadButton.addClass('text-danger');
+            },
+          );
+
+          const importDiceButton = tinyLib.upload.json(
+            tinyLib.bs.button('info w-100').text('Import'),
+            (err, jsonData) => {
+              // Error
+              if (err) {
+                console.error(err);
+                alert(err.message);
+                return;
+              }
+
+              // Insert data
+              if (objType(jsonData, 'object') && objType(jsonData.data, 'object')) {
+                for (const index in readSkinValues) {
+                  const readSkinData = readSkinValues[index];
+                  const name = readSkinData[1];
+                  const item = jsonData.data[name];
+                  if (typeof item === 'string' || typeof item === 'number') {
+                    const newValue =
+                      typeof tinyCfg.rateLimit[name] !== 'number' ||
+                      item.length <= tinyCfg.rateLimit[name]
+                        ? item
+                        : null;
+                    configs[readSkinData[0]].val(newValue).trigger('change');
+                  }
+                }
+              }
+            },
+          );
+
+          const $formRow2 = $('<div>', { class: 'd-none' })
+            .addClass('row g-3 mb-4')
+            .append(
+              // Background skin
+              createInputField(
+                'Background Skin',
+                'bgSkin',
+                'e.g. red or rgb(200,0,0)',
+                tinyCfg.data.bg,
+              ),
+              // Text skin
+              createInputField('Text Skin', 'textSkin', 'e.g. white or #fff', tinyCfg.data.text),
+              // Border skin
+              createInputField('Border Skin', 'borderSkin', 'e.g. black', tinyCfg.data.border),
+              // Bg skin
+              createInputField(
+                'Select Bg Skin',
+                'selectionBgSkin',
+                'e.g. black or #000',
+                tinyCfg.data.selectionBg,
+              ),
+              // Text skin
+              createInputField(
+                'Select Text Skin',
+                'selectionTextSkin',
+                'e.g. white or #fff',
+                tinyCfg.data.selectionText,
+              ),
+              // Image upload
+              configs.bgImg,
+              $('<div>', { class: 'col-md-4 text-center' }).append(
+                $('<label>').addClass('form-label').text('Custom Image'),
+                uploadImgButton,
+              ),
+              // Export
+              $('<div>', { class: 'col-md-6' }).append(
+                tinyLib.bs
+                  .button('info w-100')
+                  .text('Export')
+                  .on('click', () => {
+                    // Data base
+                    const fileData = { data: {} };
+                    for (const index in readSkinValues) {
+                      const readSkinData = readSkinValues[index];
+                      fileData.data[readSkinData[1]] = configs[readSkinData[0]].val().trim();
+                    }
+
+                    // Date
+                    fileData.date = Date.now();
+                    // Save
+                    saveAs(
+                      new Blob([JSON.stringify(fileData)], { type: 'text/plain' }),
+                      `tiny_dice_skin_ponydriland.json`,
+                    );
+                  }),
+              ),
+              // Import
+              $('<div>', { class: 'col-md-6' }).append(importDiceButton),
+            );
+
+          const updateDiceData = (where, dataName, value) => {
+            dice[where](value);
+            if (!tinyIo.socket || !tinyIo.client) {
+              if (value) localStorage.setItem(`tiny-dice-${dataName}`, value);
+              else localStorage.removeItem(`tiny-dice-${dataName}`);
+            }
+            dice.updateDicesSkin();
+          };
+
+          for (const index in readSkinValues) {
+            configs[readSkinValues[index][0]].on('change', function () {
+              updateDiceData(
+                readSkinValues[index][2],
+                readSkinValues[index][1],
+                $(this).val().trim() || null,
+              );
+            });
+          }
+
+          const updateAllSkins = () => {
+            for (const index in readSkinValues) configs[readSkinValues[index][0]].trigger('change');
+          };
+
+          // Root insert
+          $root.append($('<center>').append($formRow), $allow0Col, $formRow2);
+
+          // Main button of the skin editor
+          const $applyBtn = tinyLib.bs.button('success w-100').text('Edit Skin Data');
+          $applyBtn.on('click', async function () {
+            // Show content
+            if ($formRow2.hasClass('d-none')) {
+              $applyBtn.text(
+                tinyIo.socket && tinyIo.client ? 'Apply Dice Skins' : 'Hide Skin Data',
+              );
+            }
+            // Hide Content
+            else {
+              $applyBtn.text('Edit Skin Data');
+              if (tinyCfg.isOnline) {
+                updateAllSkins();
+
+                // Disable buttons
+                $applyBtn.attr('disabled', true).addClass('disabled');
+                const diceSkin = {};
+                importDiceButton.attr('disabled', true).addClass('disabled');
+                uploadImgButton.attr('disabled', true).addClass('disabled');
+
+                // Send dice data
+                for (const index in readSkinValues)
+                  diceSkin[readSkinValues[index][1]] = configs[readSkinValues[index][0]]
+                    .attr('disabled', true)
+                    .addClass('disabled')
+                    .val()
+                    .trim();
+
+                const result = await tinyIo.client.setAccountDice(diceSkin);
+                if (result.error) $totalBase.addClass('text-danger').text(result.msg);
+                else $totalBase.removeClass('text-danger').text(0);
+
+                // Enable buttons again
+                for (const index in readSkinValues)
+                  configs[readSkinValues[index][0]].attr('disabled', false).removeClass('disabled');
+                uploadImgButton.attr('disabled', false).removeClass('disabled');
+                importDiceButton.attr('disabled', false).removeClass('disabled');
+                $applyBtn.attr('disabled', false).removeClass('disabled');
+              }
+            }
+            // Change class mode
+            $formRow2.toggleClass('d-none');
+          });
+
+          $root.append($applyBtn, $rollButton, $diceContainer, $totalBase);
+          updateAllSkins();
+          dice.roll(0, 3);
+
+          // Start modal
+          tinyLib.modal({
+            title: 'Dice Roll',
+            dialog: 'modal-lg',
+            id: 'dice-roll',
+            body: $root,
+          });
+        }),
+      );
+
+      // RPG Data
+      leftMenu.push(
+        createButtonSidebar('fa-solid fa-note-sticky', 'View Data', null, false, {
+          toggle: 'offcanvas',
+          target: '#rpg_ai_base_1',
+        }),
+      );
+
+      // Private RPG Data
+      leftMenu.push(
+        createButtonSidebar('fa-solid fa-book', 'View Private', null, false, {
+          toggle: 'offcanvas',
+          target: '#rpg_ai_base_2',
+        }),
+      );
+
+      // Classic Map
+      leftMenu.push(
+        createButtonSidebar('fa-solid fa-map', 'Classic Map', () => {
+          const startTinyMap = function (place) {
+            // Get Map Data
+            let maps;
+            let location;
+            try {
+              maps = rpgData.data[place].getEditor('root.settings.maps').getValue();
+              location = rpgData.data[place].getEditor('root.location').getValue();
+            } catch (e) {
+              maps = null;
+            }
+
+            // Exist Map
+            tinyHtml.empty();
+            try {
+              if (Array.isArray(maps)) {
+                for (const index in maps) {
+                  const map = new TinyMap(maps[index]);
+                  map.setLocation(location);
+                  map.buildMap(true);
+                  tinyHtml.append(map.getMapBaseHtml(), $('<center>').append(map.getMapButton()));
+                }
+              }
+            } catch (e) {
+              // No Map
+              console.error(e);
+              tinyHtml.empty();
+            }
+          };
+
+          const tinyHtml = $('<span>');
+          const tinyHr = $('<hr>', { class: 'my-5 d-none' });
+          tinyLib.modal({
+            title: 'Maps',
+            dialog: 'modal-lg',
+            id: 'tinyMaps',
+            body: [
+              tinyHtml,
+              tinyHr,
+              $('<center>').append(
+                // Public Maps
+                tinyLib.bs
+                  .button('secondary m-2')
+                  .text('Public')
+                  .on('click', () => {
+                    tinyHr.removeClass('d-none');
+                    startTinyMap('public');
+                  }),
+                // Private Maps
+                tinyLib.bs
+                  .button('secondary m-2')
+                  .text('Private')
+                  .on('click', () => {
+                    tinyHr.removeClass('d-none');
+                    startTinyMap('private');
+                  }),
+              ),
+            ],
+          });
+        }),
+      );
+
+      // Online Mode options
+      if (!canUsejsStore) {
+        leftMenu.push($('<h5>').text('Online'));
+
+        // Edit nickname
+        leftMenu.push(
+          createButtonSidebar('fa-solid fa-id-card', 'Edit nickname', () => {
+            // Prepare root
+            const $root = $('<div>');
+
+            const $card = $('<div>').addClass('card shadow rounded-4');
+            const $cardBody = $('<div>').addClass('card-body');
+
+            const $inputGroup = $('<div>').addClass('mb-3');
+            const $label = $('<label>')
+              .addClass('form-label')
+              .attr('for', 'on_edit_nickname')
+              .text('Nickname');
+
+            const $input = $('<input>').addClass('form-control').addClass('text-center').attr({
+              type: 'text',
+              id: 'on_edit_nickname',
+              placeholder: 'Enter your nickname',
+            });
+
+            // Page information
+            const ratelimit = tinyIo.client.getRateLimit() || {};
+            const userData = tinyIo.client.getUser() || {};
+            $input
+              .attr('maxLength', ratelimit.size.nickname)
+              .val(typeof userData?.nickname === 'string' ? userData?.nickname : '')
+              .on('keydown', function (e) {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  $saveBtn.click();
+                }
+              });
+
+            const $saveBtn = tinyLib.bs.button('primary w-100').text('Save');
+
+            // Build elements
+            $inputGroup.addClass('text-center').append($label, $input);
+            $cardBody.append($inputGroup, $saveBtn);
+            $card.append($cardBody);
+            $root.append($card);
+
+            // Click button event
+            $saveBtn.on('click', function () {
+              tinyIo.client.changeNickname($input.val().trim());
+              modal.modal('hide');
+            });
+
+            // Start modal
+            const modal = tinyLib.modal({
+              title: 'Edit your Nickname',
+              dialog: 'modal-lg',
+              id: 'dice-roll',
+              body: $root,
+            });
+
+            modal.on('shown.bs.modal', () => {
+              $input.trigger('focus');
+            });
+          }),
+        );
+      }
+
+      // Import
+      leftMenu.push($('<h5>').text('Data'));
+      leftMenu.push(...importItems);
+
+      // Export
+      leftMenu.push(
+        createButtonSidebar('fa-solid fa-file-export', 'Export', () => {
+          const exportData = {
+            file: clone(tinyAi.getData()),
+            id: tinyAi.getId(),
+          };
+
+          if (exportData.file) {
+            if (!canSandBox(ficConfigs.selected)) delete exportData.file.systemInstruction;
+            if (exportData.file.file) delete exportData.file.file;
+          }
+
+          saveAs(
+            new Blob([JSON.stringify(exportData)], { type: 'text/plain' }),
+            `Pony Driland - ${tinyAi.getId()} - AI Export.json`,
+          );
+        }),
+      );
+
+      // Downloads
+      leftMenu.push(
+        createButtonSidebar('fa-solid fa-download', 'Downloads', () => {
+          const body = $('<div>');
+          body.append(
+            $('<h3>')
+              .text(`Download Content`)
+              .prepend(tinyLib.icon('fa-solid fa-download me-3'))
+              .append(
+                tinyLib.bs
+                  .button('info btn-sm ms-3')
+                  .text('Save As all chapters')
+                  .on('click', () => saveRoleplayFormat()),
+              ),
+            $('<h5>')
+              .text(
+                `Here you can download the official content of fic to produce unofficial content dedicated to artificial intelligence.`,
+              )
+              .append(
+                $('<br/>'),
+                $('<small>').text('Remember that you are downloading the uncensored version.'),
+              ),
+          );
+
+          for (let i = 0; i < storyData.chapter.amount; i++) {
+            // Chapter Number
+            const chapter = String(i + 1);
+
+            // Add Chapter
+            body.append(
+              $('<div>', { class: 'card' }).append(
+                $('<div>', { class: 'card-body' }).append(
+                  $('<h5>', { class: 'card-title m-0' })
+                    .text(`Chapter ${chapter} - `)
+                    .append(
+                      $('<small>').text(storyCfg.chapterName[chapter].title),
+                      $('<a>', {
+                        class: 'btn btn-primary m-2 me-0 btn-sm',
+                        href: `/chapter/${chapter}.html`,
+                        chapter: chapter,
+                      })
+                        .on('click', function () {
+                          // Save Chapter
+                          saveRoleplayFormat(Number($(this).attr('chapter')));
+
+                          // Complete
+                          return false;
+                        })
+                        .text('Save as'),
+                    ),
+                ),
+              ),
+            );
+          }
+
+          body.append(
+            $('<p>', { class: 'm-0' }).text(
+              `This content is ready for AI to know which lines of text, chapters, day number, weather, location on any part of the fic you ask. The website script will convert all content to be easily understood by AI languages.`,
+            ),
+          );
+
+          tinyLib.modal({
+            id: 'ai_downloads',
+            title: 'AI Downloads',
+            dialog: 'modal-lg',
+            body,
+          });
+        }),
+      );
+
       // Left
       const connectionInfoBar = $('<span>');
       const sidebarLeft = $('<div>', sidebarStyle)
@@ -1530,589 +2171,7 @@ const AiScriptStart = (connStore) => {
         .addClass('py-0')
         .append(
           $('<ul>', { class: 'list-unstyled flex-grow-1 overflow-auto mb-0 pt-3 px-3' }).append(
-            $('<li>', { id: 'ai-mode-list', class: 'mb-3' }).append(
-              // Reset
-              $('<h5>').text('Reset'),
-              ficResets,
-
-              // Modes
-              $('<h5>').text('Modes'),
-
-              // Fic Talk
-              ficTemplates,
-
-              // Settings
-              $('<h5>').text('Settings'),
-              ficPromptItems,
-
-              // RPG
-              $('<h5>').text('RPG'),
-              // Dice
-              createButtonSidebar('fa-solid fa-dice', 'Roll Dice', () => {
-                // Root
-                const $root = $('<div>');
-                const $formRow = $('<div>').addClass('row g-3');
-                const $totalBase = $('<center>', { class: 'fw-bold mt-3' }).text(0);
-
-                // Config
-                const tinyCfg = {
-                  isOnline: tinyIo.socket && tinyIo.client ? true : false,
-                  data: {},
-                  rateLimit: {},
-                };
-
-                if (tinyCfg.isOnline) {
-                  tinyCfg.data = tinyIo.client.getDice() || {};
-                  const ratelimit = tinyIo.client.getRateLimit() || {};
-                  if (objType(ratelimit.dice, 'object')) tinyCfg.rateLimit = ratelimit.dice;
-                } else {
-                  tinyCfg.data.img = localStorage.getItem(`tiny-dice-img`) || undefined;
-                  tinyCfg.data.bg = localStorage.getItem(`tiny-dice-bg`) || 'white';
-                  tinyCfg.data.text = localStorage.getItem(`tiny-dice-text`) || 'black';
-                  tinyCfg.data.border =
-                    localStorage.getItem(`tiny-dice-border`) || '2px solid rgba(0, 0, 0, 0.05)';
-                  tinyCfg.data.selectionBg =
-                    localStorage.getItem(`tiny-dice-selection-bg`) || 'black';
-                  tinyCfg.data.selectionText =
-                    localStorage.getItem(`tiny-dice-selection-text`) || 'white';
-                }
-
-                // Form template
-                const configs = {};
-                const genLabel = (id, text) =>
-                  $('<label>').addClass('form-label').attr('for', `tiny-dice_${id}`).text(text);
-
-                const genInput = (id, type, value, min) =>
-                  $('<input>')
-                    .addClass('form-control text-center')
-                    .attr({ id: `tiny-dice_${id}`, type, min })
-                    .attr('placeholder', min)
-                    .val(value);
-
-                const genConfig = (id, text, type, value, min) => {
-                  configs[id] = genInput(id, type, value, min);
-                  return [genLabel(id, text), configs[id]];
-                };
-
-                // Form
-                const $maxValueCol = $('<div>')
-                  .addClass('col-md-4')
-                  .append(genConfig('maxValue', 'Max Value', 'number', 6, 1));
-
-                const $diceCountCol = $('<div>')
-                  .addClass('col-md-4')
-                  .append(genConfig('diceCount', 'Dice Count', 'number', 3, 1));
-
-                const $perDieCol = $('<div>')
-                  .addClass('col-md-4')
-                  .append(
-                    genConfig(
-                      'perDieValues',
-                      'Per-Die Values (e.g., 6,12,20)',
-                      'text',
-                      '',
-                      'Optional',
-                    ),
-                  );
-
-                const $allow0input = $('<input>')
-                  .addClass('form-check-input')
-                  .attr({ type: 'checkbox', id: 'tiny-dice_allow0' });
-                const $allow0Col = $('<div>')
-                  .addClass('d-flex justify-content-center align-items-center mt-2')
-                  .append(
-                    $('<div>')
-                      .addClass('form-check')
-                      .append(
-                        $allow0input,
-                        $('<label>')
-                          .addClass('form-check-label')
-                          .attr('for', 'tiny-dice_allow0')
-                          .text('Allow zero values'),
-                      ),
-                  );
-
-                $formRow.append($maxValueCol, $diceCountCol, $perDieCol);
-
-                // Roll button
-                const $rollButton = tinyLib.bs.button('primary w-100 mb-4 mt-2').text('Roll Dice');
-
-                // Add container
-                const $diceContainer = $('<div>');
-                const readSkinValues = [
-                  ['bgSkin', 'bg', 'setBgSkin'],
-                  ['textSkin', 'text', 'setTextSkin'],
-                  ['borderSkin', 'border', 'setBorderSkin'],
-                  ['bgImg', 'img', 'setBgImg'],
-                  ['selectionBgSkin', 'selectionBg', 'setSelectionBgSkin'],
-                  ['selectionTextSkin', 'selectionText', 'setSelectionTextSkin'],
-                ];
-
-                // TinyDice logic
-                const dice = new TinyDice($diceContainer.get(0));
-                let updateTotalBase = null;
-                $rollButton.on('click', async function () {
-                  // Get values
-                  const max = parseInt(configs.maxValue.val()) || 6;
-                  const count = parseInt(configs.diceCount.val()) || 1;
-                  const perDieRaw = configs.perDieValues.val().trim();
-                  const perDie = perDieRaw.length > 0 ? perDieRaw : null;
-                  const canZero = $allow0input.is(':checked');
-                  $totalBase.text(0);
-                  if (updateTotalBase) {
-                    clearTimeout(updateTotalBase);
-                    updateTotalBase = null;
-                  }
-
-                  // Offline
-                  if (!tinyCfg.isOnline) {
-                    const result = dice.roll(max, count, perDie, canZero);
-                    let total = 0;
-                    for (const item of result) total += item.result;
-                    updateTotalBase = setTimeout(() => {
-                      $totalBase.text(total);
-                      updateTotalBase = null;
-                    }, 2000);
-                  }
-                  // Online
-                  else {
-                    // Prepare data
-                    const diceParse = dice.getRollConfig(max, count, perDie);
-                    const sameSides = diceParse.perDieData.length < 1 ? true : false;
-                    const sides = [];
-                    if (sameSides)
-                      for (let i = 0; i < diceParse.count; i++) sides.push(diceParse.maxGlobal);
-                    else
-                      for (const index in diceParse.perDieData)
-                        sides.push(diceParse.perDieData[index]);
-
-                    // Get result
-                    $(this).attr('disabled', true).addClass('disabled');
-                    const result = await tinyIo.client.rollDice(sides, sameSides, canZero);
-                    $(this).attr('disabled', false).removeClass('disabled');
-
-                    // Proccess Results
-                    if (!result.error) {
-                      dice.clearDiceArea();
-                      $totalBase.removeClass('text-danger');
-                      if (Array.isArray(result.results) && typeof result.total === 'number') {
-                        for (const index in result.results) {
-                          if (
-                            typeof result.results[index].sides === 'number' &&
-                            typeof result.results[index].roll === 'number'
-                          )
-                            dice.insertDiceElement(
-                              result.results[index].roll,
-                              result.results[index].sides,
-                              canZero,
-                            );
-                        }
-                        updateTotalBase = setTimeout(() => {
-                          $totalBase.text(result.total);
-                          updateTotalBase = null;
-                        }, 2000);
-                      }
-                    } else $totalBase.addClass('text-danger').text(result.msg);
-                  }
-                });
-
-                // Skin form
-                const createInputField = (label, id, placeholder, value) => {
-                  configs[id] = $('<input>')
-                    .addClass('form-control text-center')
-                    .attr({ type: 'text', placeholder })
-                    .val(value);
-
-                  return $('<div>')
-                    .addClass('col-md-4 text-center')
-                    .append(
-                      $('<label>').addClass('form-label').attr('for', id).text(label),
-                      configs[id],
-                    );
-                };
-
-                configs.bgImg = $('<input>')
-                  .addClass('form-control')
-                  .addClass('d-none')
-                  .attr('type', 'text')
-                  .val(tinyCfg.data.img);
-                const bgImgUploadButton = tinyLib.bs.button('info w-100');
-                const uploadImgButton = tinyLib.upload.img(
-                  bgImgUploadButton.text('Select Image').on('contextmenu', (e) => {
-                    e.preventDefault();
-                    configs.bgImg.val('').removeClass('text-danger').trigger('change');
-                  }),
-                  (err, dataUrl) => {
-                    console.log(`[dice-file] [upload] Image length: ${dataUrl.length}`);
-                    // Error
-                    if (err) {
-                      console.error(err);
-                      bgImgUploadButton.addClass('text-danger');
-                      return;
-                    }
-                    // Insert image
-                    if (
-                      typeof tinyCfg.rateLimit.img !== 'number' ||
-                      dataUrl.length <= tinyCfg.rateLimit.img
-                    )
-                      configs.bgImg.val(dataUrl).removeClass('text-danger').trigger('change');
-                    // Nope
-                    else bgImgUploadButton.addClass('text-danger');
-                  },
-                );
-
-                const importDiceButton = tinyLib.upload.json(
-                  tinyLib.bs.button('info w-100').text('Import'),
-                  (err, jsonData) => {
-                    // Error
-                    if (err) {
-                      console.error(err);
-                      alert(err.message);
-                      return;
-                    }
-
-                    // Insert data
-                    if (objType(jsonData, 'object') && objType(jsonData.data, 'object')) {
-                      for (const index in readSkinValues) {
-                        const readSkinData = readSkinValues[index];
-                        const name = readSkinData[1];
-                        const item = jsonData.data[name];
-                        if (typeof item === 'string' || typeof item === 'number') {
-                          const newValue =
-                            typeof tinyCfg.rateLimit[name] !== 'number' ||
-                            item.length <= tinyCfg.rateLimit[name]
-                              ? item
-                              : null;
-                          configs[readSkinData[0]].val(newValue).trigger('change');
-                        }
-                      }
-                    }
-                  },
-                );
-
-                const $formRow2 = $('<div>', { class: 'd-none' })
-                  .addClass('row g-3 mb-4')
-                  .append(
-                    // Background skin
-                    createInputField(
-                      'Background Skin',
-                      'bgSkin',
-                      'e.g. red or rgb(200,0,0)',
-                      tinyCfg.data.bg,
-                    ),
-                    // Text skin
-                    createInputField(
-                      'Text Skin',
-                      'textSkin',
-                      'e.g. white or #fff',
-                      tinyCfg.data.text,
-                    ),
-                    // Border skin
-                    createInputField(
-                      'Border Skin',
-                      'borderSkin',
-                      'e.g. black',
-                      tinyCfg.data.border,
-                    ),
-                    // Bg skin
-                    createInputField(
-                      'Select Bg Skin',
-                      'selectionBgSkin',
-                      'e.g. black or #000',
-                      tinyCfg.data.selectionBg,
-                    ),
-                    // Text skin
-                    createInputField(
-                      'Select Text Skin',
-                      'selectionTextSkin',
-                      'e.g. white or #fff',
-                      tinyCfg.data.selectionText,
-                    ),
-                    // Image upload
-                    configs.bgImg,
-                    $('<div>', { class: 'col-md-4 text-center' }).append(
-                      $('<label>').addClass('form-label').text('Custom Image'),
-                      uploadImgButton,
-                    ),
-                    // Export
-                    $('<div>', { class: 'col-md-6' }).append(
-                      tinyLib.bs
-                        .button('info w-100')
-                        .text('Export')
-                        .on('click', () => {
-                          // Data base
-                          const fileData = { data: {} };
-                          for (const index in readSkinValues) {
-                            const readSkinData = readSkinValues[index];
-                            fileData.data[readSkinData[1]] = configs[readSkinData[0]].val().trim();
-                          }
-
-                          // Date
-                          fileData.date = Date.now();
-                          // Save
-                          saveAs(
-                            new Blob([JSON.stringify(fileData)], { type: 'text/plain' }),
-                            `tiny_dice_skin_ponydriland.json`,
-                          );
-                        }),
-                    ),
-                    // Import
-                    $('<div>', { class: 'col-md-6' }).append(importDiceButton),
-                  );
-
-                const updateDiceData = (where, dataName, value) => {
-                  dice[where](value);
-                  if (!tinyIo.socket || !tinyIo.client) {
-                    if (value) localStorage.setItem(`tiny-dice-${dataName}`, value);
-                    else localStorage.removeItem(`tiny-dice-${dataName}`);
-                  }
-                  dice.updateDicesSkin();
-                };
-
-                for (const index in readSkinValues) {
-                  configs[readSkinValues[index][0]].on('change', function () {
-                    updateDiceData(
-                      readSkinValues[index][2],
-                      readSkinValues[index][1],
-                      $(this).val().trim() || null,
-                    );
-                  });
-                }
-
-                const updateAllSkins = () => {
-                  for (const index in readSkinValues)
-                    configs[readSkinValues[index][0]].trigger('change');
-                };
-
-                // Root insert
-                $root.append($('<center>').append($formRow), $allow0Col, $formRow2);
-
-                // Main button of the skin editor
-                const $applyBtn = tinyLib.bs.button('success w-100').text('Edit Skin Data');
-                $applyBtn.on('click', async function () {
-                  // Show content
-                  if ($formRow2.hasClass('d-none')) {
-                    $applyBtn.text(
-                      tinyIo.socket && tinyIo.client ? 'Apply Dice Skins' : 'Hide Skin Data',
-                    );
-                  }
-                  // Hide Content
-                  else {
-                    $applyBtn.text('Edit Skin Data');
-                    if (tinyCfg.isOnline) {
-                      updateAllSkins();
-
-                      // Disable buttons
-                      $applyBtn.attr('disabled', true).addClass('disabled');
-                      const diceSkin = {};
-                      importDiceButton.attr('disabled', true).addClass('disabled');
-                      uploadImgButton.attr('disabled', true).addClass('disabled');
-
-                      // Send dice data
-                      for (const index in readSkinValues)
-                        diceSkin[readSkinValues[index][1]] = configs[readSkinValues[index][0]]
-                          .attr('disabled', true)
-                          .addClass('disabled')
-                          .val()
-                          .trim();
-
-                      const result = await tinyIo.client.setAccountDice(diceSkin);
-                      if (result.error) $totalBase.addClass('text-danger').text(result.msg);
-                      else $totalBase.removeClass('text-danger').text(0);
-
-                      // Enable buttons again
-                      for (const index in readSkinValues)
-                        configs[readSkinValues[index][0]]
-                          .attr('disabled', false)
-                          .removeClass('disabled');
-                      uploadImgButton.attr('disabled', false).removeClass('disabled');
-                      importDiceButton.attr('disabled', false).removeClass('disabled');
-                      $applyBtn.attr('disabled', false).removeClass('disabled');
-                    }
-                  }
-                  // Change class mode
-                  $formRow2.toggleClass('d-none');
-                });
-
-                $root.append($applyBtn, $rollButton, $diceContainer, $totalBase);
-                updateAllSkins();
-                dice.roll(0, 3);
-
-                // Start modal
-                tinyLib.modal({
-                  title: 'Dice Roll',
-                  dialog: 'modal-lg',
-                  id: 'dice-roll',
-                  body: $root,
-                });
-              }),
-              // RPG Data
-              createButtonSidebar('fa-solid fa-note-sticky', 'View Data', null, false, {
-                toggle: 'offcanvas',
-                target: '#rpg_ai_base_1',
-              }),
-              // Private RPG Data
-              createButtonSidebar('fa-solid fa-book', 'View Private', null, false, {
-                toggle: 'offcanvas',
-                target: '#rpg_ai_base_2',
-              }),
-              // Classic Map
-              createButtonSidebar('fa-solid fa-map', 'Classic Map', () => {
-                const startTinyMap = function (place) {
-                  // Get Map Data
-                  let maps;
-                  let location;
-                  try {
-                    maps = rpgData.data[place].getEditor('root.settings.maps').getValue();
-                    location = rpgData.data[place].getEditor('root.location').getValue();
-                  } catch (e) {
-                    maps = null;
-                  }
-
-                  // Exist Map
-                  tinyHtml.empty();
-                  try {
-                    if (Array.isArray(maps)) {
-                      for (const index in maps) {
-                        const map = new TinyMap(maps[index]);
-                        map.setLocation(location);
-                        map.buildMap(true);
-                        tinyHtml.append(
-                          map.getMapBaseHtml(),
-                          $('<center>').append(map.getMapButton()),
-                        );
-                      }
-                    }
-                  } catch (e) {
-                    // No Map
-                    console.error(e);
-                    tinyHtml.empty();
-                  }
-                };
-
-                const tinyHtml = $('<span>');
-                const tinyHr = $('<hr>', { class: 'my-5 d-none' });
-                tinyLib.modal({
-                  title: 'Maps',
-                  dialog: 'modal-lg',
-                  id: 'tinyMaps',
-                  body: [
-                    tinyHtml,
-                    tinyHr,
-                    $('<center>').append(
-                      // Public Maps
-                      tinyLib.bs
-                        .button('secondary m-2')
-                        .text('Public')
-                        .on('click', () => {
-                          tinyHr.removeClass('d-none');
-                          startTinyMap('public');
-                        }),
-                      // Private Maps
-                      tinyLib.bs
-                        .button('secondary m-2')
-                        .text('Private')
-                        .on('click', () => {
-                          tinyHr.removeClass('d-none');
-                          startTinyMap('private');
-                        }),
-                    ),
-                  ],
-                });
-              }),
-
-              // Import
-              $('<h5>').text('Data'),
-              importItems,
-
-              // Export
-              createButtonSidebar('fa-solid fa-file-export', 'Export', () => {
-                const exportData = {
-                  file: clone(tinyAi.getData()),
-                  id: tinyAi.getId(),
-                };
-
-                if (exportData.file) {
-                  if (!canSandBox(ficConfigs.selected)) delete exportData.file.systemInstruction;
-                  if (exportData.file.file) delete exportData.file.file;
-                }
-
-                saveAs(
-                  new Blob([JSON.stringify(exportData)], { type: 'text/plain' }),
-                  `Pony Driland - ${tinyAi.getId()} - AI Export.json`,
-                );
-              }),
-
-              // Downloads
-              createButtonSidebar('fa-solid fa-download', 'Downloads', () => {
-                const body = $('<div>');
-                body.append(
-                  $('<h3>')
-                    .text(`Download Content`)
-                    .prepend(tinyLib.icon('fa-solid fa-download me-3'))
-                    .append(
-                      tinyLib.bs
-                        .button('info btn-sm ms-3')
-                        .text('Save As all chapters')
-                        .on('click', () => saveRoleplayFormat()),
-                    ),
-                  $('<h5>')
-                    .text(
-                      `Here you can download the official content of fic to produce unofficial content dedicated to artificial intelligence.`,
-                    )
-                    .append(
-                      $('<br/>'),
-                      $('<small>').text(
-                        'Remember that you are downloading the uncensored version.',
-                      ),
-                    ),
-                );
-
-                for (let i = 0; i < storyData.chapter.amount; i++) {
-                  // Chapter Number
-                  const chapter = String(i + 1);
-
-                  // Add Chapter
-                  body.append(
-                    $('<div>', { class: 'card' }).append(
-                      $('<div>', { class: 'card-body' }).append(
-                        $('<h5>', { class: 'card-title m-0' })
-                          .text(`Chapter ${chapter} - `)
-                          .append(
-                            $('<small>').text(storyCfg.chapterName[chapter].title),
-                            $('<a>', {
-                              class: 'btn btn-primary m-2 me-0 btn-sm',
-                              href: `/chapter/${chapter}.html`,
-                              chapter: chapter,
-                            })
-                              .on('click', function () {
-                                // Save Chapter
-                                saveRoleplayFormat(Number($(this).attr('chapter')));
-
-                                // Complete
-                                return false;
-                              })
-                              .text('Save as'),
-                          ),
-                      ),
-                    ),
-                  );
-                }
-
-                body.append(
-                  $('<p>', { class: 'm-0' }).text(
-                    `This content is ready for AI to know which lines of text, chapters, day number, weather, location on any part of the fic you ask. The website script will convert all content to be easily understood by AI languages.`,
-                  ),
-                );
-
-                tinyLib.modal({
-                  id: 'ai_downloads',
-                  title: 'AI Downloads',
-                  dialog: 'modal-lg',
-                  body,
-                });
-              }),
-            ),
+            $('<li>', { id: 'ai-mode-list', class: 'mb-3' }).append(leftMenu),
 
             // Tiny information
             $('<div>', {
@@ -3371,10 +3430,6 @@ const AiScriptStart = (connStore) => {
       );
 
       firstDialogueBase.button.tooltip();
-
-      // Can use backup
-      const rpgCfg = tinyStorage.getApiKey(tinyStorage.selectedAi()) || {};
-      const canUsejsStore = typeof rpgCfg.ip !== 'string' || rpgCfg.ip.length < 1;
 
       // Prepare events
       tinyAi.removeAllListeners('setMaxOutputTokens');

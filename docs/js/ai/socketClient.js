@@ -663,14 +663,23 @@ class TinyClientIo extends EventEmitter {
 
   // Change your nickname
   changeNickname(nickname = '') {
-    return this.#socketEmitApi('change-password', {
-      nickname,
+    const tinyThis = this;
+    return new Promise((resolve, reject) => {
+      tinyThis
+        .#socketEmitApi('change-nickname', {
+          nickname,
+        })
+        .then((result) => {
+          if (!result.error) tinyThis.user.nickname = nickname;
+          resolve(result);
+        })
+        .catch(reject);
     });
   }
 
   // Register account
   register(userId = '', password = '', nickname = '') {
-    return this.#socketEmitApi('change-password', {
+    return this.#socketEmitApi('register', {
       userId,
       password,
       nickname,

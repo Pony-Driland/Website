@@ -51,7 +51,7 @@ export function mapToArray(map) {
  */
 export const createAccount = async (userId, password, nickname) => {
   const hashedPassword = getHashString(password.substring(0, getIniConfig('PASSWORD_SIZE')));
-  await users.set(userId.substring(0, getIniConfig('USER_ID_SIZE')), {
+  await users.set(userId.substring(0, getIniConfig('USER_ID_SIZE')).replace(/ /g, ''), {
     password: hashedPassword,
     nickname: nickname.substring(0, getIniConfig('NICKNAME_SIZE')),
   });
@@ -219,7 +219,11 @@ export const createRateLimit = (limitCount = 5, itemName = 'items', code = -1) =
 export const userIsRateLimited = createRateLimit(getIniConfig('EVENT'), 'events', 1);
 export const userMsgIsRateLimited = createRateLimit(getIniConfig('MESSAGES'), 'messages', 2);
 export const userDiceIsRateLimited = createRateLimit(getIniConfig('DICE_ROLLS'), 'dice rolls', 3);
-export const userUpdateDiceIsRateLimited = createRateLimit(getIniConfig('DICE_ROLLS'), 'dice changes', 3);
+export const userUpdateDiceIsRateLimited = createRateLimit(
+  getIniConfig('DICE_ROLLS'),
+  'dice changes',
+  3,
+);
 
 // Incomplete data
 export const sendIncompleteDataInfo = (fn, code = 0) => {
