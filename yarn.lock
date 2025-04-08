@@ -4631,10 +4631,10 @@ evp_bytestokey@^1.0.0, evp_bytestokey@^1.0.3:
     md5.js "^1.3.4"
     safe-buffer "^5.1.1"
 
-exifreader@^4.26.0:
-  version "4.27.0"
-  resolved "https://registry.yarnpkg.com/exifreader/-/exifreader-4.27.0.tgz#2fe47d3f982402e546d9491bd063b912ee0b29bb"
-  integrity sha512-wrjtidE4MN5yQGI0ydeJm0Yw+HeCrziQGj5MccnHS0G+IyDoF8cyazKabXxj9F5LjXxqYTKiXm9nTYqvKAESzg==
+exifreader@^4.28.0:
+  version "4.28.0"
+  resolved "https://registry.yarnpkg.com/exifreader/-/exifreader-4.28.0.tgz#fa2935e8cf47f85a651f5cefcf895e141f294695"
+  integrity sha512-J24W3CUicreoHLz0KJUP2V6NAVUXnTnu4KG5t2X+cNfT00vP6hjnbTY0opMEhPrTzp03kARMqvIMm0+1B+CPVw==
   optionalDependencies:
     "@xmldom/xmldom" "^0.9.4"
 
