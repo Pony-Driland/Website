@@ -1549,19 +1549,32 @@ const AiScriptStart = (connStore) => {
               $('<h5>').text('RPG'),
               // Dice
               createButtonSidebar('fa-solid fa-dice', 'Roll Dice', () => {
-                // Ratelimit
-                const getDiceRateLimit = () => {
-                  let sizeLimit = null;
-                  if (tinyIo.socket && tinyIo.client) {
-                    const ratelimit = tinyIo.client.getRateLimit();
-                    if (objType(ratelimit.dice, 'object')) sizeLimit = ratelimit.dice;
-                  }
-                  return sizeLimit;
-                };
-
                 // Root
                 const $root = $('<div>');
                 const $formRow = $('<div>').addClass('row g-3');
+
+                // Config
+                const tinyCfg = {
+                  isOnline: tinyIo.socket && tinyIo.client ? true : false,
+                  data: {},
+                  rateLimit: {},
+                };
+
+                if (tinyCfg.isOnline) {
+                  tinyCfg.data = tinyIo.client.getDice() || {};
+                  const ratelimit = tinyIo.client.getRateLimit() || {};
+                  if (objType(ratelimit.dice, 'object')) tinyCfg.rateLimit = ratelimit.dice;
+                } else {
+                  tinyCfg.data.img = localStorage.getItem(`tiny-dice-img`) || undefined;
+                  tinyCfg.data.bg = localStorage.getItem(`tiny-dice-bg`) || 'white';
+                  tinyCfg.data.text = localStorage.getItem(`tiny-dice-text`) || 'black';
+                  tinyCfg.data.border =
+                    localStorage.getItem(`tiny-dice-border`) || '2px solid rgba(0, 0, 0, 0.05)';
+                  tinyCfg.data.selectionBg =
+                    localStorage.getItem(`tiny-dice-selection-bg`) || 'black';
+                  tinyCfg.data.selectionText =
+                    localStorage.getItem(`tiny-dice-selection-text`) || 'white';
+                }
 
                 // Form template
                 const configs = {};
@@ -1665,8 +1678,60 @@ const AiScriptStart = (connStore) => {
                   .addClass('form-control')
                   .addClass('d-none')
                   .attr('type', 'text')
-                  .val(localStorage.getItem(`tiny-dice-img`) || undefined);
+                  .val(tinyCfg.data.img);
                 const bgImgUploadButton = tinyLib.bs.button('info w-100');
+                const uploadImgButton = tinyLib.upload.img(
+                  bgImgUploadButton.text('Select Image').on('contextmenu', (e) => {
+                    e.preventDefault();
+                    configs.bgImg.val('').removeClass('text-danger').trigger('change');
+                  }),
+                  (err, dataUrl) => {
+                    console.log(`[dice-file] [upload] Image length: ${dataUrl.length}`);
+                    // Error
+                    if (err) {
+                      console.error(err);
+                      bgImgUploadButton.addClass('text-danger');
+                      return;
+                    }
+                    // Insert image
+                    if (
+                      typeof tinyCfg.rateLimit.img !== 'number' ||
+                      dataUrl.length <= tinyCfg.rateLimit.img
+                    )
+                      configs.bgImg.val(dataUrl).removeClass('text-danger').trigger('change');
+                    // Nope
+                    else bgImgUploadButton.addClass('text-danger');
+                  },
+                );
+
+                const importDiceButton = tinyLib.upload.json(
+                  tinyLib.bs.button('info w-100').text('Import'),
+                  (err, jsonData) => {
+                    // Error
+                    if (err) {
+                      console.error(err);
+                      alert(err.message);
+                      return;
+                    }
+
+                    // Insert data
+                    if (objType(jsonData, 'object') && objType(jsonData.data, 'object')) {
+                      for (const index in readSkinValues) {
+                        const readSkinData = readSkinValues[index];
+                        const name = readSkinData[1];
+                        const item = jsonData.data[name];
+                        if (typeof item === 'string' || typeof item === 'number') {
+                          const newValue =
+                            typeof tinyCfg.rateLimit[name] !== 'number' ||
+                            item.length <= tinyCfg.rateLimit[name]
+                              ? item
+                              : null;
+                          configs[readSkinData[0]].val(newValue).trigger('change');
+                        }
+                      }
+                    }
+                  },
+                );
 
                 const $formRow2 = $('<div>', { class: 'd-none' })
                   .addClass('row g-3 mb-4')
@@ -1676,65 +1741,41 @@ const AiScriptStart = (connStore) => {
                       'Background Skin',
                       'bgSkin',
                       'e.g. red or rgb(200,0,0)',
-                      localStorage.getItem(`tiny-dice-bg`) || 'white',
+                      tinyCfg.data.bg,
                     ),
                     // Text skin
                     createInputField(
                       'Text Skin',
                       'textSkin',
                       'e.g. white or #fff',
-                      localStorage.getItem(`tiny-dice-text`) || 'black',
+                      tinyCfg.data.text,
                     ),
                     // Border skin
                     createInputField(
                       'Border Skin',
                       'borderSkin',
                       'e.g. black',
-                      localStorage.getItem(`tiny-dice-border`) || '2px solid rgba(0, 0, 0, 0.05)',
+                      tinyCfg.data.border,
                     ),
                     // Bg skin
                     createInputField(
                       'Select Bg Skin',
                       'selectionBgSkin',
                       'e.g. black or #000',
-                      localStorage.getItem(`tiny-dice-selection-bg`) || 'black',
+                      tinyCfg.data.selectionBg,
                     ),
                     // Text skin
                     createInputField(
                       'Select Text Skin',
                       'selectionTextSkin',
                       'e.g. white or #fff',
-                      localStorage.getItem(`tiny-dice-selection-text`) || 'white',
+                      tinyCfg.data.selectionText,
                     ),
                     // Image upload
                     configs.bgImg,
                     $('<div>', { class: 'col-md-4 text-center' }).append(
                       $('<label>').addClass('form-label').text('Custom Image'),
-                      tinyLib.upload.img(
-                        bgImgUploadButton.text('Select Image').on('contextmenu', (e) => {
-                          e.preventDefault();
-                          configs.bgImg.val('').removeClass('text-danger').trigger('change');
-                        }),
-                        (err, dataUrl) => {
-                          console.log(`[dice-file] [upload] Image length: ${dataUrl.length}`);
-                          // Error
-                          if (err) {
-                            console.error(err);
-                            bgImgUploadButton.addClass('text-danger');
-                            return;
-                          }
-                          // Insert image
-                          const sizeLimitList = getDiceRateLimit();
-                          if (
-                            !sizeLimitList ||
-                            typeof sizeLimitList.img !== 'number' ||
-                            dataUrl.length <= sizeLimitList.img
-                          )
-                            configs.bgImg.val(dataUrl).removeClass('text-danger').trigger('change');
-                          // Nope
-                          else bgImgUploadButton.addClass('text-danger');
-                        },
-                      ),
+                      uploadImgButton,
                     ),
                     // Export
                     $('<div>', { class: 'col-md-6' }).append(
@@ -1759,29 +1800,7 @@ const AiScriptStart = (connStore) => {
                         }),
                     ),
                     // Import
-                    $('<div>', { class: 'col-md-6' }).append(
-                      tinyLib.upload.json(
-                        tinyLib.bs.button('info w-100').text('Import'),
-                        (err, jsonData) => {
-                          // Error
-                          if (err) {
-                            console.error(err);
-                            alert(err.message);
-                            return;
-                          }
-
-                          // Insert data
-                          if (objType(jsonData, 'object') && objType(jsonData.data, 'object')) {
-                            for (const index in readSkinValues) {
-                              const readSkinData = readSkinValues[index];
-                              const item = jsonData.data[readSkinData[1]];
-                              if (typeof item === 'string' || typeof item === 'number')
-                                configs[readSkinData[0]].val(item).trigger('change');
-                            }
-                          }
-                        },
-                      ),
-                    ),
+                    $('<div>', { class: 'col-md-6' }).append(importDiceButton),
                   );
 
                 const updateDiceData = (where, dataName, value) => {
@@ -1813,7 +1832,7 @@ const AiScriptStart = (connStore) => {
 
                 // Main button of the skin editor
                 const $applyBtn = tinyLib.bs.button('success w-100').text('Edit Skin Data');
-                $applyBtn.on('click', function () {
+                $applyBtn.on('click', async function () {
                   // Show content
                   if ($formRow2.hasClass('d-none')) {
                     $applyBtn.text(
@@ -1823,11 +1842,35 @@ const AiScriptStart = (connStore) => {
                   // Hide Content
                   else {
                     $applyBtn.text('Edit Skin Data');
-                    if (tinyIo.socket && tinyIo.client) {
+                    if (tinyCfg.isOnline) {
                       updateAllSkins();
-                      for (const index in readSkinValues) {
-                        const value = configs[readSkinValues[index][0]].val().trim();
-                      }
+
+                      // Disable buttons
+                      $applyBtn.attr('disabled', true).addClass('disabled');
+                      const diceSkin = {};
+                      importDiceButton.attr('disabled', true).addClass('disabled');
+                      uploadImgButton.attr('disabled', true).addClass('disabled');
+
+                      // Send dice data
+                      for (const index in readSkinValues)
+                        diceSkin[readSkinValues[index][1]] = configs[readSkinValues[index][0]]
+                          .attr('disabled', true)
+                          .addClass('disabled')
+                          .val()
+                          .trim();
+                      
+                      const result = await tinyIo.client.setAccountDice(diceSkin);
+                      if(result.error)
+                        alert(result.msg);
+
+                      // Enable buttons again
+                      for (const index in readSkinValues)
+                        configs[readSkinValues[index][0]]
+                          .attr('disabled', false)
+                          .removeClass('disabled');
+                      uploadImgButton.attr('disabled', false).removeClass('disabled');
+                      importDiceButton.attr('disabled', false).removeClass('disabled');
+                      $applyBtn.attr('disabled', false).removeClass('disabled');
                     }
                   }
                   // Change class mode
@@ -3812,6 +3855,7 @@ const AiScriptStart = (connStore) => {
                   // Insert data
                   client.setUser(result);
                   console.log('[socket-io] [user-data]', client.getUser());
+                  console.log('[socket-io] [dice]', client.getDice());
                   console.log('[socket-io] [ratelimit]', client.getRateLimit());
                   client.existsRoom().then((result2) => {
                     // Join room

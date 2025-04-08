@@ -14,6 +14,7 @@ import {
   leaveRoom,
   getRateLimit,
   noDataInfo,
+  usersDice,
 } from './values';
 
 export default function userManager(socket, io) {
@@ -260,6 +261,7 @@ export default function userManager(socket, io) {
       isAdmin: userId === getIniConfig('OWNER_ID'),
       isMod: await moderators.has(userId),
       ratelimit: getRateLimit(),
+      dice: await usersDice.get(userId),
     });
   });
 

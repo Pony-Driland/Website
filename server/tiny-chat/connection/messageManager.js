@@ -203,33 +203,9 @@ export default function messageManager(socket, io) {
     fn({ success: true });
   });
 
-  socket.on('roll-dice', async (data, fn) => {
-    if (noDataInfo(data, fn)) return;
-    const { sameSides, dice, diceSkin, roomId } = data;
-    // Validate input data
-    if (!Array.isArray(dice) || dice.length === 0 || typeof roomId !== 'string')
-      return sendIncompleteDataInfo(fn);
-
-    // Get user
-    const userId = userSession.getUserId(socket);
-    if (!userId) return accountNotDetected(fn); // Only logged-in users can use dices
-    if (userDiceIsRateLimited(socket, fn)) return;
-
-    // Check if the room exists
-    const rUsers = roomUsers.get(roomId);
-    if (!rUsers) {
-      return fn({
-        error: true,
-        msg: 'Room not found.',
-        code: 1,
-      });
-    }
-
-    // You need join the room
-    if (!rUsers.get(userId)) return fn({ error: true, code: 2, msg: 'You are not in this room.' });
-
-    // Dice skin
-    const skin = objType(diceSkin, 'object')
+  // Dice data
+  const getDiceData = (diceSkin = {}) =>
+    objType(diceSkin, 'object')
       ? {
           img:
             typeof diceSkin.img === 'string'
@@ -260,17 +236,53 @@ export default function messageManager(socket, io) {
         }
       : {};
 
+  socket.on('set-dice', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
+    const { diceSkin } = data;
+    // Validate input data
+    if (!objType(diceSkin, 'object')) return sendIncompleteDataInfo(fn);
+
+    // Get user
+    const userId = userSession.getUserId(socket);
+    if (!userId) return accountNotDetected(fn); // Only logged-in users can use dices
+    if (userDiceIsRateLimited(socket, fn)) return;
+
+    // Insert skin
+    const skin = getDiceData(diceSkin);
+    await usersDice.set(userId, skin);
+    fn({ success: true });
+  });
+
+  socket.on('roll-dice', async (data, fn) => {
+    if (noDataInfo(data, fn)) return;
+    const { sameSides, dice, diceSkin, roomId } = data;
+    // Validate input data
+    if (!Array.isArray(dice) || dice.length === 0 || typeof roomId !== 'string')
+      return sendIncompleteDataInfo(fn);
+
+    // Get user
+    const userId = userSession.getUserId(socket);
+    if (!userId) return accountNotDetected(fn); // Only logged-in users can use dices
+    if (userDiceIsRateLimited(socket, fn)) return;
+
+    // Check if the room exists
+    const rUsers = roomUsers.get(roomId);
+    if (!rUsers) {
+      return fn({
+        error: true,
+        msg: 'Room not found.',
+        code: 1,
+      });
+    }
+
+    // You need join the room
+    if (!rUsers.get(userId)) return fn({ error: true, code: 2, msg: 'You are not in this room.' });
+
+    // Dice skin
+    const skin = getDiceData(diceSkin);
     if (countObj(skin) < 1) {
-      const userDice = await usersDice.get(userId);
-      if (userDice) {
-        skin.img = typeof userDice.img === 'string' ? userDice.img : null;
-        skin.border = typeof userDice.border === 'string' ? userDice.border : null;
-        skin.bg = typeof userDice.bg === 'string' ? userDice.bg : null;
-        skin.text = typeof userDice.text === 'string' ? userDice.text : null;
-        skin.selectionBg = typeof userDice.selectionBg === 'string' ? userDice.selectionBg : null;
-        skin.selectionText =
-          typeof userDice.selectionText === 'string' ? userDice.selectionText : null;
-      }
+      const userDice = getDiceData(await usersDice.get(userId));
+      if (userDice) for (const name in userDice) skin[name] = userDice[name];
     }
 
     // Prepare results
