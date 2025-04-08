@@ -1552,6 +1552,7 @@ const AiScriptStart = (connStore) => {
                 // Root
                 const $root = $('<div>');
                 const $formRow = $('<div>').addClass('row g-3');
+                const $totalBase = $('<center>', { class: 'fw-bold mt-3' }).text(0);
 
                 // Config
                 const tinyCfg = {
@@ -1649,14 +1650,70 @@ const AiScriptStart = (connStore) => {
 
                 // TinyDice logic
                 const dice = new TinyDice($diceContainer.get(0));
-                $rollButton.on('click', function () {
+                let updateTotalBase = null;
+                $rollButton.on('click', async function () {
+                  // Get values
                   const max = parseInt(configs.maxValue.val()) || 6;
                   const count = parseInt(configs.diceCount.val()) || 1;
                   const perDieRaw = configs.perDieValues.val().trim();
                   const perDie = perDieRaw.length > 0 ? perDieRaw : null;
                   const canZero = $allow0input.is(':checked');
+                  $totalBase.text(0);
+                  if (updateTotalBase) {
+                    clearTimeout(updateTotalBase);
+                    updateTotalBase = null;
+                  }
 
-                  dice.roll(max, count, perDie, canZero);
+                  // Offline
+                  if (!tinyCfg.isOnline) {
+                    const result = dice.roll(max, count, perDie, canZero);
+                    let total = 0;
+                    for (const item of result) total += item.result;
+                    updateTotalBase = setTimeout(() => {
+                      $totalBase.text(total);
+                      updateTotalBase = null;
+                    }, 2000);
+                  }
+                  // Online
+                  else {
+                    // Prepare data
+                    const diceParse = dice.getRollConfig(max, count, perDie);
+                    const sameSides = diceParse.perDieData.length < 1 ? true : false;
+                    const sides = [];
+                    if (sameSides)
+                      for (let i = 0; i < diceParse.count; i++) sides.push(diceParse.maxGlobal);
+                    else
+                      for (const index in diceParse.perDieData)
+                        sides.push(diceParse.perDieData[index]);
+
+                    // Get result
+                    $(this).attr('disabled', true).addClass('disabled');
+                    const result = await tinyIo.client.rollDice(sides, sameSides, canZero);
+                    $(this).attr('disabled', false).removeClass('disabled');
+
+                    // Proccess Results
+                    if (!result.error) {
+                      dice.clearDiceArea();
+                      $totalBase.removeClass('text-danger');
+                      if (Array.isArray(result.results) && typeof result.total === 'number') {
+                        for (const index in result.results) {
+                          if (
+                            typeof result.results[index].sides === 'number' &&
+                            typeof result.results[index].roll === 'number'
+                          )
+                            dice.insertDiceElement(
+                              result.results[index].roll,
+                              result.results[index].sides,
+                              canZero,
+                            );
+                        }
+                        updateTotalBase = setTimeout(() => {
+                          $totalBase.text(result.total);
+                          updateTotalBase = null;
+                        }, 2000);
+                      }
+                    } else $totalBase.addClass('text-danger').text(result.msg);
+                  }
                 });
 
                 // Skin form
@@ -1858,10 +1915,9 @@ const AiScriptStart = (connStore) => {
                           .addClass('disabled')
                           .val()
                           .trim();
-                      
+
                       const result = await tinyIo.client.setAccountDice(diceSkin);
-                      if(result.error)
-                        alert(result.msg);
+                      if (result.error) alert(result.msg);
 
                       // Enable buttons again
                       for (const index in readSkinValues)
@@ -1877,7 +1933,7 @@ const AiScriptStart = (connStore) => {
                   $formRow2.toggleClass('d-none');
                 });
 
-                $root.append($applyBtn, $rollButton, $diceContainer);
+                $root.append($applyBtn, $rollButton, $diceContainer, $totalBase);
                 updateAllSkins();
                 dice.roll(0, 3);
 

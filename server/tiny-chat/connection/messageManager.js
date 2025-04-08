@@ -255,9 +255,14 @@ export default function messageManager(socket, io) {
 
   socket.on('roll-dice', async (data, fn) => {
     if (noDataInfo(data, fn)) return;
-    const { sameSides, dice, diceSkin, roomId } = data;
+    const { sameSides, canZero, dice, diceSkin, roomId } = data;
     // Validate input data
-    if (!Array.isArray(dice) || dice.length === 0 || typeof roomId !== 'string')
+    if (
+      !Array.isArray(dice) ||
+      dice.length === 0 ||
+      typeof roomId !== 'string' ||
+      typeof canZero !== 'boolean'
+    )
       return sendIncompleteDataInfo(fn);
 
     // Get user
@@ -289,7 +294,14 @@ export default function messageManager(socket, io) {
     const results = [];
     let total = 0;
     const rollDice = (sides) => {
-      const roll = Math.floor(Math.random() * sides) + 1;
+      let max = sides;
+      let tinyFix = 1;
+      if (canZero) {
+        max++;
+        tinyFix--;
+      }
+
+      const roll = Math.floor(Math.random() * max) + tinyFix;
       results.push({ sides, roll });
       total += roll;
     };
@@ -312,7 +324,7 @@ export default function messageManager(socket, io) {
     }
 
     // Complete
-    socket.to(roomId).emit('roll-result', { results, total, skin });
-    fn({ success: true });
+    socket.to(roomId).emit('roll-result', { results, total, skin, canZero });
+    fn({ success: true, results, total });
   });
 }
