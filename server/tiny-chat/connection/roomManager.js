@@ -420,11 +420,12 @@ export default function roomManager(socket, io, appStorage) {
 
     // Change room status
     room.disabled = true;
-    room.set(roomId, room);
+    rooms.set(roomId, room);
 
     // Disconnect user from rooms
     rUsers.forEach((userData, tUser) => {
-      leaveRoom(userSockets.get(tUser), io, roomId);
+      if (tUser !== getIniConfig('OWNER_ID') && tUser !== room.ownerId)
+        leaveRoom(userSockets.get(tUser), io, roomId);
     });
 
     // Room disabled successfully.
@@ -467,7 +468,7 @@ export default function roomManager(socket, io, appStorage) {
 
     // Enable room back
     room.disabled = false;
-    room.set(roomId, room);
+    rooms.set(roomId, room);
 
     // Room enabled successfully.
     fn({ success: true });

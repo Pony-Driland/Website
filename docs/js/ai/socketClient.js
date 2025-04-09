@@ -44,6 +44,11 @@ class TinyClientIo extends EventEmitter {
     }
   }
 
+  // Get user id
+  getUserId() {
+    return this.#cfg.username;
+  }
+
   // Is connected
   isConnected() {
     return this.connected;
@@ -364,9 +369,7 @@ class TinyClientIo extends EventEmitter {
   // Socket emit
   #socketEmitApi(where, data) {
     const tinyThis = this;
-    return new Promise((resolve) => {
-      tinyThis.socket.emit(where, data, (result) => resolve(result));
-    });
+    return new Promise((resolve) => tinyThis.socket.emit(where, data, (result) => resolve(result)));
   }
 
   // On connection
@@ -590,16 +593,34 @@ class TinyClientIo extends EventEmitter {
 
   // Disable room
   disableRoom() {
-    return this.#socketEmitApi('disable-room', {
-      roomId: this.#cfg.roomId,
-    });
+    const tinyThis = this;
+    return new Promise((resolve, reject) =>
+      tinyThis
+        .#socketEmitApi('disable-room', {
+          roomId: this.#cfg.roomId,
+        })
+        .then((result) => {
+          if (!result.error) tinyThis.room.disabled = true;
+          resolve(result);
+        })
+        .catch(reject),
+    );
   }
 
   // Enable room
   enableRoom() {
-    return this.#socketEmitApi('enable-room', {
-      roomId: this.#cfg.roomId,
-    });
+    const tinyThis = this;
+    return new Promise((resolve, reject) =>
+      tinyThis
+        .#socketEmitApi('enable-room', {
+          roomId: this.#cfg.roomId,
+        })
+        .then((result) => {
+          if (!result.error) tinyThis.room.disabled = false;
+          resolve(result);
+        })
+        .catch(reject),
+    );
   }
 
   // Add room mods
@@ -668,7 +689,7 @@ class TinyClientIo extends EventEmitter {
   // Change your nickname
   changeNickname(nickname = '') {
     const tinyThis = this;
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) =>
       tinyThis
         .#socketEmitApi('change-nickname', {
           nickname,
@@ -677,8 +698,8 @@ class TinyClientIo extends EventEmitter {
           if (!result.error) tinyThis.user.nickname = nickname;
           resolve(result);
         })
-        .catch(reject);
-    });
+        .catch(reject),
+    );
   }
 
   // Register account
