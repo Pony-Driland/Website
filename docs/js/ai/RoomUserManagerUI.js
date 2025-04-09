@@ -24,8 +24,10 @@
 class UserRoomManager {
   #usersHtml = [];
   #client;
-  constructor({ root, currentUserId, users, moderators, isOwner }) {
-    this.$root = root; // DOM container principal
+  constructor({ client, root, currentUserId, users, moderators, isOwner }) {
+    this.$root = root;
+    this.#client = client;
+
     this.currentUserId = currentUserId;
     this.users = users || {};
     this.moderators = moderators || [];
@@ -67,16 +69,17 @@ class UserRoomManager {
   }
 
   checkPerms() {
-    if (this.$unbanInput) {
-      if (!this.isModerator && !this.isOwner)
-        this.$unbanInput.prop('disabled', true).addClass('disabled');
-      else this.$unbanInput.prop('disabled', false).removeClass('disabled');
-    }
-
-    if (this.$kickAll) {
-      if (!this.isModerator && !this.isOwner)
-        this.$kickAll.prop('disabled', true).addClass('disabled');
-      else this.$kickAll.prop('disabled', false).removeClass('disabled');
+    const room = this.#client.getRoom() || {};
+    if (this.$unbanInput) this.$unbanInput.prop('disabled', !this.isModerator && !this.isOwner);
+    if (this.$kickAll) this.$kickAll.prop('disabled', !this.isModerator && !this.isOwner);
+    for (const item of this.#usersHtml) {
+      console.log(item);
+      const needDisable =
+        item.userId === room.ownerId ||
+        item.userId === this.currentUserId ||
+        (!this.isModerator && !this.isOwner);
+      item.actions.kick.prop('disabled', needDisable);
+      item.actions.ban.prop('disabled', needDisable);
     }
   }
 
@@ -88,9 +91,10 @@ class UserRoomManager {
     // Kick all (menos quem está logado)
     this.$kickAll = tinyLib.bs.button('danger').text('Kick all');
     this.$kickAll.on('click', () => {
+      const room = this.#client.getRoom() || {};
       const userIds = [];
       Object.keys(this.users).forEach((userId) => {
-        if (userId !== this.currentUserId) userIds.push(userId);
+        if (userId !== this.currentUserId && userId !== room.ownerId) userIds.push(userId);
       });
       if (userIds.length > 0) this.kickUser(userIds);
     });
@@ -180,7 +184,8 @@ class UserRoomManager {
           : this.roomActive
             ? 'Room is Active'
             : 'Room is Inactive',
-      ).prop('disabled', !this.isOwner);
+      )
+      .prop('disabled', !this.isOwner);
   }
 
   renderUserList(filter = '') {
@@ -191,10 +196,7 @@ class UserRoomManager {
     const isMod = (userId) =>
       this.moderators.some((mod) => {
         const modStatus = mod.userId === userId;
-        if (this.currentUserId === userId) {
-          this.isModerator = modStatus;
-          this.checkPerms();
-        }
+        if (this.currentUserId === userId) this.isModerator = modStatus;
         return modStatus;
       });
 
@@ -242,15 +244,13 @@ class UserRoomManager {
       const $kickBtn = tinyLib.bs
         .button('warning')
         .append($('<i>').addClass('fas fa-user-slash'))
-        .attr('title', 'Kick')
-        .prop('disabled', user.isSelf || (!this.isOwner && !this.isModerator));
+        .attr('title', 'Kick');
       $kickBtn.on('click', () => this.kickUser(user.userId));
 
       const $banBtn = tinyLib.bs
         .button('danger')
         .append($('<i>').addClass('fas fa-ban'))
-        .attr('title', 'Ban')
-        .prop('disabled', user.isSelf || (!this.isOwner && !this.isModerator));
+        .attr('title', 'Ban');
       $banBtn.on('click', () => this.banUser(user.userId));
 
       $actions.append($kickBtn, $banBtn);
@@ -296,7 +296,10 @@ class UserRoomManager {
       ping: moment(data.ping),
     };
     const newHash = objHash(this.users[userId]);
-    if (newHash !== oldHash) this.renderUserList(this.#getSearch());
+    if (newHash !== oldHash) {
+      this.renderUserList(this.#getSearch());
+      this.checkPerms();
+    }
   }
 
   removeUser(userId) {
@@ -309,24 +312,29 @@ class UserRoomManager {
   promoteModerator(userId) {
     if (!this.moderators.find((m) => m.userId === userId)) {
       this.moderators.push({ userId });
+      if (userId === this.currentUserId) this.isModerator = true;
       this.renderUserList(this.#getSearch());
+      this.checkPerms();
     }
   }
 
   demoteModerator(userId) {
     this.moderators = this.moderators.filter((m) => m.userId !== userId);
+    if (userId === this.currentUserId) this.isModerator = false;
     this.renderUserList(this.#getSearch());
+    this.checkPerms();
   }
 
   setModerators(moderatorList) {
     this.moderators = Array.isArray(moderatorList) ? moderatorList : [];
     this.renderUserList(this.#getSearch());
+    this.checkPerms();
   }
 
   reqPromoteModerator(userId) {
     if (!this.moderators.find((m) => m.userId === userId)) {
       const html = this.#usersHtml.find((item) => item.userId === userId);
-      if (html) html.actions.mod.prop('disabled', true).addClass('disabled');
+      if (html) html.actions.mod.prop('disabled', true);
       this.#client.addMod([userId]).then((result) => {
         if (html) html.actions.mod.prop('disabled', false).removeClass('disabled');
         if (!result.error) this.promoteModerator(userId);
@@ -336,7 +344,7 @@ class UserRoomManager {
 
   reqDemoteModerator(userId) {
     const html = this.#usersHtml.find((item) => item.userId === userId);
-    if (html) html.actions.mod.prop('disabled', true).addClass('disabled');
+    if (html) html.actions.mod.prop('disabled', true);
     this.#client.removeMod([userId]).then((result) => {
       if (html) html.actions.mod.prop('disabled', false).removeClass('disabled');
       if (!result.error) this.demoteModerator(userId);
@@ -345,7 +353,7 @@ class UserRoomManager {
 
   banUser(userId) {
     const html = this.#usersHtml.find((item) => item.userId === userId);
-    if (html) html.actions.ban.prop('disabled', true).addClass('disabled');
+    if (html) html.actions.ban.prop('disabled', true);
     this.#client.banUser(userId).then((result) => {
       if (html) html.actions.ban.prop('disabled', false).removeClass('disabled');
       if (!result.error) this.removeUser(userId);
@@ -353,7 +361,7 @@ class UserRoomManager {
   }
 
   unbanUser(userId) {
-    this.$unbanInput.prop('disabled', true).addClass('disabled');
+    this.$unbanInput.prop('disabled', true);
     this.#client.unbanUser(userId).then((result) => {
       this.$unbanInput.prop('disabled', false).removeClass('disabled');
       if (result.error)
@@ -364,7 +372,7 @@ class UserRoomManager {
 
   kickUser(userId) {
     const html = this.#usersHtml.find((item) => item.userId === userId);
-    if (html) html.actions.kick.prop('disabled', true).addClass('disabled');
+    if (html) html.actions.kick.prop('disabled', true);
     this.#client.kickUser(userId).then((result) => {
       if (html) html.actions.kick.prop('disabled', false).removeClass('disabled');
       if (!result.error) this.removeUser(userId);
