@@ -385,3 +385,35 @@ Something else? (Please specify)
     { name: 'Rainbow Queen', user: 'user' },
   ),
 });
+
+// Separator
+aiTemplates.prompts.push({ hr: true, type: 'instructionText', sandboxOnly: true });
+
+// TavernAI
+aiTemplates.prompts.push({
+  name: 'Templates from TavernAI',
+  disabled: true,
+  sandboxOnly: true,
+  type: 'instructionText',
+});
+
+aiTemplates.helpers.tavernAiChatClassic = `Write {{char}}'s next reply in a fictional roleplay chat between {{char}} and {{user}}. Write 1 reply only, use markdown and avoid repetition. Write at least 1 paragraph, up to 4. Italicize everything except for speech. Be proactive, creative, and drive the plot and conversation forward. Never write summaries or replies for {{user}}. React dynamically and realistically to {{user}}'s actions and words.`;
+aiTemplates.helpers.tavernAiRoomClassic = `The system is responsible for writing a fictional roleplay chat between {{char}} and other character(s). Right now, the system is writing for {{char}}'s next reply. Note that {{user}} might or might not be involved in the roleplay. Write 1 reply only, use markdown and avoid repetition. Write at least 1 paragraph, up to 4. Italicize everything except for speech. Be proactive, creative, and drive the plot and conversation forward. Never write summaries or replies for {{user}}. Take into account {{user}}'s actions and words.`;
+
+aiTemplates.prompts.push({
+  name: 'Chat Classic',
+  value: 'tavern-ai-chat-classic',
+  sandboxOnly: true,
+  instructionText: aiTemplates.helpers.tavernAiChatClassic
+    .replace(/\{\{user\}\}/g, '<user>')
+    .replace(/\{\{char\}\}/g, '<character>'),
+});
+
+aiTemplates.prompts.push({
+  name: 'Room Classic',
+  value: 'tavern-ai-room-classic',
+  sandboxOnly: true,
+  instructionText: aiTemplates.helpers.tavernAiRoomClassic
+    .replace(/\{\{user\}\}/g, '<user>')
+    .replace(/\{\{char\}\}/g, '<character>'),
+});

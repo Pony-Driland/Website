@@ -357,9 +357,10 @@ export default function roomManager(socket, io, appStorage) {
 
   socket.on('delete-room', async (data, fn) => {
     if (noDataInfo(data, fn)) return;
-    const { roomId } = data;
+    const { roomId, password } = data;
     // Validate values
-    if (typeof roomId !== 'string') return sendIncompleteDataInfo(fn);
+    if (typeof roomId !== 'string' || typeof password !== 'string')
+      return sendIncompleteDataInfo(fn);
 
     // Get user
     const userId = userSession.getUserId(socket);
@@ -389,6 +390,15 @@ export default function roomManager(socket, io, appStorage) {
         code: 2,
       });
     }
+
+    // Validate password
+    const user = await users.get(userId);
+    if (user.password !== getHashString(password))
+      return fn({
+        error: true,
+        code: 3,
+        msg: 'Your password is incorrect.',
+      });
 
     // Disconnect user from rooms
     if (rUsers) {

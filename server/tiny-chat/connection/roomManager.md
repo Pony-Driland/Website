@@ -403,6 +403,10 @@ This documentation provides a structured overview of the available room moderati
     ```json
     { "error": true, "msg": "You are not allowed to do this.", "code": 2 }
     ```
+  - Insufficient permissions:
+    ```json
+    { "error": true, "msg": "Your password is incorrect.", "code": 3 }
+    ```
 
 #### Conditions:
 
