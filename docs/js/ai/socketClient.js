@@ -6,22 +6,27 @@ class TinyClientIo extends EventEmitter {
     const tinyThis = this;
     this.#cfg = cfg;
     this.socket = typeof cfg.ip === 'string' && cfg.ip.length > 0 ? new io(cfg.ip) : null;
-    this.disconnectedDetails = { reason: null, details: null };
 
     this.id = null;
     this.connected = false;
+    this.active = false;
     this.resetData();
 
     if (this.socket) {
       console.log('[socket.io] Starting...');
       this.socket.on('disconnect', (reason, details) => {
-        console.log('[socket.io] Disconnected!', reason, details);
+        tinyThis.active = tinyThis.socket.active;
         tinyThis.id = null;
-        tinyThis.disconnectedDetails = { reason, details };
         tinyThis.connected = tinyThis.socket.connected;
+
+        console.log(
+          `[socket-io] [disconnect]${typeof reason === 'string' ? ` ${reason}` : ''}`,
+          details,
+        );
       });
 
       this.socket.on('connect_error', (err) => {
+        tinyThis.active = tinyThis.socket.active;
         if (!tinyThis.socket.active) {
           // the connection was denied by the server
           // in that case, `socket.connect()` must be manually called in order to reconnect
@@ -29,19 +34,27 @@ class TinyClientIo extends EventEmitter {
       });
 
       this.socket.on('connect', () => {
+        tinyThis.active = tinyThis.socket.active;
         console.log(`[socket.io] Connected! Id: ${tinyThis.socket.id}`);
         tinyThis.id = tinyThis.socket.id;
         tinyThis.connected = tinyThis.socket.connected;
       });
 
       this.socket.io.on('reconnect_attempt', () => {
+        tinyThis.active = tinyThis.socket.active;
         console.log('[socket.io] Trying to reconnect...');
       });
 
       this.socket.io.on('reconnect', () => {
+        tinyThis.active = tinyThis.socket.active;
         console.log('[socket.io] Reconnecting...');
       });
     }
+  }
+
+  // Is Active
+  isActive() {
+    return this.active;
   }
 
   // Get user id
