@@ -24,6 +24,18 @@
 class UserRoomManager {
   #usersHtml = [];
   #client;
+
+  /**
+   * Creates a new instance of the user room manager.
+   *
+   * @param {Object} options - The configuration object.
+   * @param {Object} options.client - The client instance used for communication.
+   * @param {jQuery} options.root - The root DOM element where the UI will be rendered.
+   * @param {string} options.currentUserId - The ID of the current user.
+   * @param {Object<string, Object>} [options.users={}] - An object containing user data, keyed by user ID.
+   * @param {Array<Object>} [options.moderators=[]] - An array of moderator objects, each containing at least a `userId`.
+   * @param {boolean} [options.isOwner=false] - Whether the current user is the room owner.
+   */
   constructor({ client, root, currentUserId, users, moderators, isOwner }) {
     this.$root = root;
     this.#client = client;
@@ -45,15 +57,30 @@ class UserRoomManager {
     this.init();
   }
 
+  /**
+   * Retrieves the current search input value in lowercase.
+   *
+   * @returns {string} The trimmed, lowercase search query or an empty string if not valid.
+   * @private
+   */
   #getSearch() {
     const value = this.$searchInput?.val()?.trim().toLowerCase();
     return typeof value === 'string' ? value : '';
   }
 
+  /**
+   * Sets a new client instance for the manager.
+   *
+   * @param {Object} client - The new client instance to assign.
+   */
   setClient(client) {
     this.#client = client;
   }
 
+  /**
+   * Initializes the user interface by rendering the header, user list, footer,
+   * and checking permissions.
+   */
   init() {
     this.renderHeader();
     this.renderUserList();
@@ -61,13 +88,21 @@ class UserRoomManager {
     this.checkPerms();
   }
 
-  // Essa função será chamada pelo backend para atualizar o status da sala
+  /**
+   * Updates the active status of the room and resets the waiting room flag.
+   *
+   * @param {boolean} active - Indicates whether the room is active.
+   */
   setRoomStatus(active) {
     this.roomActive = active;
     this.isWaitingRoomStatus = false;
     this.updateRoomStatusButton();
   }
 
+  /**
+   * Checks and updates permissions for the current user and enables/disables
+   * appropriate UI controls based on user roles.
+   */
   checkPerms() {
     const room = this.#client.getRoom() || {};
     if (this.$unbanInput) this.$unbanInput.prop('disabled', !this.isModerator && !this.isOwner);
@@ -82,6 +117,16 @@ class UserRoomManager {
     }
   }
 
+  /**
+   * Renders the header section of the user manager UI.
+   *
+   * Includes:
+   * - A "Kick all" button to remove all users except the current user and the room owner.
+   * - A room status toggle button to enable or disable the room.
+   * - A search input to filter users in real-time.
+   *
+   * Appends the constructed elements to the root and initializes their events.
+   */
   renderHeader() {
     this.$header = $('<div>').addClass(
       'd-flex flex-wrap align-items-center justify-content-between mb-3 gap-2',
@@ -136,6 +181,16 @@ class UserRoomManager {
     this.updateRoomStatusButton();
   }
 
+  /**
+   * Renders the footer section of the user manager UI.
+   *
+   * Includes:
+   * - An input field to manually enter a user ID to unban.
+   * - An "Unban" button that triggers the unbanning action.
+   *
+   * The input listens for the "Enter" key to trigger the unban action as well.
+   * Appends the constructed elements to the root container.
+   */
   renderFooter() {
     this.$footer = $('<div>');
     // Desbanir usuário manualmente
@@ -168,6 +223,16 @@ class UserRoomManager {
     this.$root.append(this.$footer);
   }
 
+  /**
+   * Updates the visual state and label of the room status toggle button.
+   *
+   * Changes the button style and text based on the current room state:
+   * - Green ("Room is Active") when the room is active.
+   * - Red ("Room is Inactive") when the room is inactive.
+   * - Yellow ("Waiting...") while the state is updating.
+   *
+   * Disables the button if the current user is not the room owner.
+   */
   updateRoomStatusButton() {
     const $btn = this.$roomStatusButton;
     if (!$btn) return;
@@ -187,6 +252,25 @@ class UserRoomManager {
       .prop('disabled', !this.isOwner);
   }
 
+  /**
+   * Renders the user list in the room, applying optional search filtering and sorting.
+   *
+   * This method:
+   * - Clears and rebuilds the user list UI.
+   * - Sorts users by:
+   *    1. Logged-in user first,
+   *    2. Then by most recent ping (activity),
+   *    3. Then by nickname (alphabetically).
+   * - Filters the list based on a search string, matching against nickname and userId.
+   * - Displays for each user:
+   *    - Nickname and user ID
+   *    - Last ping time (human-readable)
+   *    - Action buttons: Kick, Ban, Promote/Demote Moderator
+   * - Updates `this.isModerator` if the logged-in user is found among moderators.
+   * - Stores tooltip and action button references in `this.#usersHtml` for later updates.
+   *
+   * @param {string} [filter=''] - Optional filter string to match against nickname or userId.
+   */
   renderUserList(filter = '') {
     for (const item of this.#usersHtml) item.tooltips.map((item) => item.hide());
     this.$userList.empty();
@@ -288,6 +372,15 @@ class UserRoomManager {
     });
   }
 
+  /**
+   * Adds or updates a user in the internal user list.
+   *
+   * If the user is new or their data (nickname/ping) has changed,
+   * it triggers a re-render of the user list and re-checks permissions.
+   *
+   * @param {string} userId - Unique identifier of the user.
+   * @param {{nickname?: string, ping: number|string|Date}} data - User data, including nickname and ping timestamp.
+   */
   addUser(userId, data) {
     const oldHash = this.users[userId] ? objHash(this.users[userId]) : null;
     this.users[userId] = {
@@ -301,6 +394,13 @@ class UserRoomManager {
     }
   }
 
+  /**
+   * Removes a user from the internal user list.
+   *
+   * If the user exists, they are removed and the user list is re-rendered.
+   *
+   * @param {string} userId - Unique identifier of the user to remove.
+   */
   removeUser(userId) {
     if (this.users[userId]) {
       delete this.users[userId];
@@ -308,6 +408,12 @@ class UserRoomManager {
     }
   }
 
+  /**
+   * Adds a user to the list of moderators, if not already present.
+   * Triggers a re-render of the user list and permission checks.
+   *
+   * @param {string} userId - The user ID to promote to moderator.
+   */
   promoteModerator(userId) {
     if (!this.moderators.find((m) => m.userId === userId)) {
       this.moderators.push({ userId });
@@ -317,6 +423,12 @@ class UserRoomManager {
     }
   }
 
+  /**
+   * Removes a user from the list of moderators.
+   * Triggers a re-render of the user list and permission checks.
+   *
+   * @param {string} userId - The user ID to demote from moderator.
+   */
   demoteModerator(userId) {
     this.moderators = this.moderators.filter((m) => m.userId !== userId);
     if (userId === this.currentUserId) this.isModerator = false;
@@ -324,12 +436,24 @@ class UserRoomManager {
     this.checkPerms();
   }
 
+  /**
+   * Replaces the entire list of moderators with a new list.
+   * Triggers a re-render of the user list and permission checks.
+   *
+   * @param {Array<{userId: string}>} moderatorList - Array of moderator objects.
+   */
   setModerators(moderatorList) {
     this.moderators = Array.isArray(moderatorList) ? moderatorList : [];
     this.renderUserList(this.#getSearch());
     this.checkPerms();
   }
 
+  /**
+   * Sends a request to promote a user to moderator via the client.
+   * Updates UI button state during request and, on success, adds the user as a moderator.
+   *
+   * @param {string} userId - The user ID to promote.
+   */
   reqPromoteModerator(userId) {
     if (!this.moderators.find((m) => m.userId === userId)) {
       const html = this.#usersHtml.find((item) => item.userId === userId);
@@ -341,6 +465,12 @@ class UserRoomManager {
     }
   }
 
+  /**
+   * Sends a request to demote a user from moderator via the client.
+   * Updates UI button state during request and, on success, removes the user from the moderator list.
+   *
+   * @param {string} userId - The user ID to demote.
+   */
   reqDemoteModerator(userId) {
     const html = this.#usersHtml.find((item) => item.userId === userId);
     if (html) html.actions.mod.prop('disabled', true);
@@ -350,6 +480,13 @@ class UserRoomManager {
     });
   }
 
+  /**
+   * Sends a request to ban a user via the client.
+   * Disables the ban button during the request.
+   * On success, removes the user from the user list.
+   *
+   * @param {string} userId - The user ID to ban.
+   */
   banUser(userId) {
     const html = this.#usersHtml.find((item) => item.userId === userId);
     if (html) html.actions.ban.prop('disabled', true);
@@ -359,6 +496,13 @@ class UserRoomManager {
     });
   }
 
+  /**
+   * Sends a request to unban a user via the client.
+   * Disables the input field during the request.
+   * On failure, displays the error message in the input.
+   *
+   * @param {string} userId - The user ID to unban.
+   */
   unbanUser(userId) {
     this.$unbanInput.prop('disabled', true);
     this.#client.unbanUser(userId).then((result) => {
@@ -369,6 +513,13 @@ class UserRoomManager {
     });
   }
 
+  /**
+   * Sends a request to kick a user via the client.
+   * Disables the kick button during the request.
+   * On success, removes the user from the user list.
+   *
+   * @param {string} userId - The user ID to kick.
+   */
   kickUser(userId) {
     const html = this.#usersHtml.find((item) => item.userId === userId);
     if (html) html.actions.kick.prop('disabled', true);
@@ -378,6 +529,10 @@ class UserRoomManager {
     });
   }
 
+  /**
+   * Destroys the root element, removing all child elements.
+   * Used to clean up the component from the DOM.
+   */
   destroy() {
     if (this.$root) this.$root.empty();
   }

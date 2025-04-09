@@ -599,9 +599,10 @@ class TinyClientIo extends EventEmitter {
   }
 
   // Delete room
-  deleteRoom() {
+  deleteRoom(password) {
     return this.#socketEmitApi('delete-room', {
       roomId: this.#cfg.roomId,
+      password,
     });
   }
 
