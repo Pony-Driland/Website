@@ -73,7 +73,6 @@ class UserRoomManager {
     if (this.$unbanInput) this.$unbanInput.prop('disabled', !this.isModerator && !this.isOwner);
     if (this.$kickAll) this.$kickAll.prop('disabled', !this.isModerator && !this.isOwner);
     for (const item of this.#usersHtml) {
-      console.log(item);
       const needDisable =
         item.userId === room.ownerId ||
         item.userId === this.currentUserId ||

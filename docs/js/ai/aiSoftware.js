@@ -1526,7 +1526,7 @@ const AiScriptStart = (connStore) => {
         });
       };
 
-      const isOnline = () => (canUsejsStore && tinyIo.client ? true : false);
+      const isOnline = () => (!canUsejsStore && tinyIo.client ? true : false);
       const leftMenu = [];
       // Reset
       leftMenu.push($('<h5>').text('Reset'));
