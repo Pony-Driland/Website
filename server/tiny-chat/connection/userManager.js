@@ -102,7 +102,7 @@ export default function userManager(socket, io) {
 
     // Disconnect user
     const kickResults = { success: true, data: [] };
-    for (const userId in userIds) {
+    for (const userId of userIds) {
       const kickResult = {};
       if (userSockets.has(userId)) {
         userSockets.get(userId).disconnect();

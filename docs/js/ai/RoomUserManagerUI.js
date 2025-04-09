@@ -40,6 +40,11 @@ class UserRoomManager {
     this.init();
   }
 
+  #getSearch() {
+    const value = this.$searchInput?.val()?.trim().toLowerCase();
+    return typeof value === 'string' ? value : '';
+  }
+
   setClient(client) {
     this.#client = client;
   }
@@ -288,51 +293,45 @@ class UserRoomManager {
   }
 
   addUser(userId, data) {
+    const oldHash = this.users[userId] ? objHash(this.users[userId]) : null;
     this.users[userId] = {
       nickname: data.nickname || userId,
       ping: moment(data.ping),
     };
-    this.renderUserList(this.$searchInput?.val()?.trim().toLowerCase() || '');
+    const newHash = objHash(this.users[userId]);
+    if (newHash !== oldHash) this.renderUserList(this.#getSearch());
   }
 
   removeUser(userId) {
     if (this.users[userId]) {
       delete this.users[userId];
-      this.renderUserList(this.$searchInput?.val()?.trim().toLowerCase() || '');
-    }
-  }
-
-  updateUser(userId, newData) {
-    if (this.users[userId]) {
-      if (newData.nickname) this.users[userId].nickname = newData.nickname;
-      if (newData.ping) this.users[userId].ping = moment(newData.ping);
-      this.renderUserList(this.$searchInput?.val()?.trim().toLowerCase() || '');
+      this.renderUserList(this.#getSearch());
     }
   }
 
   promoteModerator(userId) {
     if (!this.moderators.find((m) => m.userId === userId)) {
       this.moderators.push({ userId });
-      this.renderUserList(this.$searchInput?.val()?.trim().toLowerCase() || '');
+      this.renderUserList(this.#getSearch());
     }
   }
 
   demoteModerator(userId) {
     this.moderators = this.moderators.filter((m) => m.userId !== userId);
-    this.renderUserList(this.$searchInput?.val()?.trim().toLowerCase() || '');
+    this.renderUserList(this.#getSearch());
   }
 
   setModerators(moderatorList) {
     this.moderators = Array.isArray(moderatorList) ? moderatorList : [];
-    this.renderUserList(this.$searchInput?.val()?.trim().toLowerCase() || '');
+    this.renderUserList(this.#getSearch());
   }
 
   reqPromoteModerator(userId) {
     if (!this.moderators.find((m) => m.userId === userId)) {
       const html = this.#usersHtml.find((item) => item.userId === userId);
-      html.actions.mod.prop('disabled', true).addClass('disabled');
+      if (html) html.actions.mod.prop('disabled', true).addClass('disabled');
       this.#client.addMod([userId]).then((result) => {
-        html.actions.mod.prop('disabled', false).removeClass('disabled');
+        if (html) html.actions.mod.prop('disabled', false).removeClass('disabled');
         if (!result.error) this.promoteModerator(userId);
       });
     }
@@ -340,18 +339,18 @@ class UserRoomManager {
 
   reqDemoteModerator(userId) {
     const html = this.#usersHtml.find((item) => item.userId === userId);
-    html.actions.mod.prop('disabled', true).addClass('disabled');
+    if (html) html.actions.mod.prop('disabled', true).addClass('disabled');
     this.#client.removeMod([userId]).then((result) => {
-      html.actions.mod.prop('disabled', false).removeClass('disabled');
+      if (html) html.actions.mod.prop('disabled', false).removeClass('disabled');
       if (!result.error) this.demoteModerator(userId);
     });
   }
 
   banUser(userId) {
     const html = this.#usersHtml.find((item) => item.userId === userId);
-    html.actions.ban.prop('disabled', true).addClass('disabled');
+    if (html) html.actions.ban.prop('disabled', true).addClass('disabled');
     this.#client.banUser(userId).then((result) => {
-      html.actions.ban.prop('disabled', false).removeClass('disabled');
+      if (html) html.actions.ban.prop('disabled', false).removeClass('disabled');
       if (!result.error) this.removeUser(userId);
     });
   }
@@ -368,9 +367,9 @@ class UserRoomManager {
 
   kickUser(userId) {
     const html = this.#usersHtml.find((item) => item.userId === userId);
-    html.actions.kick.prop('disabled', true).addClass('disabled');
+    if (html) html.actions.kick.prop('disabled', true).addClass('disabled');
     this.#client.kickUser(userId).then((result) => {
-      html.actions.kick.prop('disabled', false).removeClass('disabled');
+      if (html) html.actions.kick.prop('disabled', false).removeClass('disabled');
       if (!result.error) this.removeUser(userId);
     });
   }
