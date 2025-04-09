@@ -4318,12 +4318,11 @@ const AiScriptStart = (connStore) => {
               onlineStatus.id.empty();
 
               // Message
-              console.log(`[socket-io] [disconnect]${typeof reason === 'string' ? ` ${reason}` : ''}`, details);
               makeTempMessage(
                 `You are disconected${objType(details, 'object') && typeof details.description === 'string' ? ` (${details.description})` : ''}${typeof reason === 'string' ? `: ${reason}` : ''}`,
                 rpgCfg.ip,
               );
-              if (tinyAiScript.multiplayer)
+              if (tinyAiScript.multiplayer && client.isActive())
                 $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
             });
 
