@@ -19,12 +19,15 @@
  * manager.setModerators([{ userId: 'user1' }]);
  */
 class UserRoomManager {
+  #usersHtml = [];
+  #client;
   constructor({ root, currentUserId, users, moderators, isOwner }) {
     this.$root = root; // DOM container principal
     this.currentUserId = currentUserId;
     this.users = users || {};
     this.moderators = moderators || [];
     this.isOwner = isOwner === true;
+    this.isModerator = false;
 
     this.roomActive = true;
     this.isWaitingRoomStatus = false;
@@ -34,6 +37,10 @@ class UserRoomManager {
     this.$userList = $('<div>');
 
     this.init();
+  }
+
+  setClient(client) {
+    this.#client = client;
   }
 
   init() {
@@ -58,7 +65,7 @@ class UserRoomManager {
     $kickAll.on('click', () => {
       Object.keys(this.users).forEach((userId) => {
         if (userId !== this.currentUserId) {
-          this.removeUser(userId);
+          this.kickUser(userId);
         }
       });
     });
@@ -112,9 +119,16 @@ class UserRoomManager {
   }
 
   renderUserList(filter = '') {
+    for (const item of this.#usersHtml) item.tooltips.map((item) => item.hide());
     this.$userList.empty();
+    this.#usersHtml = [];
 
-    const isMod = (userId) => this.moderators.some((mod) => mod.userId === userId);
+    const isMod = (userId) =>
+      this.moderators.some((mod) => {
+        const modStatus = mod.userId === userId;
+        if (this.currentUserId === userId) this.isModerator = modStatus;
+        return modStatus;
+      });
 
     const sortedUsers = Object.entries(this.users)
       .map(([userId, data]) => ({
@@ -156,41 +170,47 @@ class UserRoomManager {
 
       const $ping = $('<div>').addClass('text-muted small text-nowrap').text(user.ping.fromNow());
       const $actions = $('<div>').addClass('d-flex flex-wrap gap-2');
+      const tooltips = [];
 
       if (!user.isSelf) {
-        const $kickBtn = tinyLib.bs
-          .button('warning')
-          .append($('<i>').addClass('fas fa-user-slash'));
-        $kickBtn.attr('title', 'Kick');
-        $kickBtn.on('click', () => this.removeUser(user.userId));
+        // Apenas moderadores ou o dono podem ver botões de kick/ban
+        if (this.isOwner || this.isModerator) {
+          const $kickBtn = tinyLib.bs
+            .button('warning')
+            .append($('<i>').addClass('fas fa-user-slash'))
+            .attr('title', 'Kick');
 
-        const $banBtn = tinyLib.bs.button('danger').append($('<i>').addClass('fas fa-ban'));
-        $banBtn.attr('title', 'Ban');
-        $banBtn.on('click', () => this.banUser(user.userId));
-        $actions.append($kickBtn, $banBtn);
-        $banBtn.tooltip();
-        $kickBtn.tooltip();
+          $kickBtn.on('click', () => this.kickUser(user.userId));
 
+          const $banBtn = tinyLib.bs
+            .button('danger')
+            .append($('<i>').addClass('fas fa-ban'))
+            .attr('title', 'Ban');
+
+          $banBtn.on('click', () => this.banUser(user.userId));
+
+          $actions.append($kickBtn, $banBtn);
+          tooltips.push($banBtn.tooltip(null, null, true));
+          tooltips.push($kickBtn.tooltip(null, null, true));
+        }
+
+        // Apenas o dono pode promover/despromover moderadores
         if (this.isOwner) {
           const $modBtn = tinyLib.bs.button(user.isModerator ? 'secondary' : 'info');
-
-          const modIcon = $('<i>').addClass(
-            user.isModerator ? 'fas fa-arrow-down' : 'fas fa-arrow-up',
-          );
-
-          $modBtn.append(modIcon);
-          $modBtn.attr('title', user.isModerator ? 'Demote' : 'Promote');
+          $modBtn
+            .append($('<i>').addClass(user.isModerator ? 'fas fa-user-minus' : 'fas fa-user-plus'))
+            .attr('title', user.isModerator ? 'Demote' : 'Promote');
 
           $modBtn.on('click', () => {
             if (user.isModerator) {
-              this.demoteModerator(user.userId);
+              this.reqDemoteModerator(user.userId);
             } else {
-              this.promoteModerator(user.userId);
+              this.reqPromoteModerator(user.userId);
             }
           });
 
           $actions.append($modBtn);
-          $modBtn.tooltip();
+          tooltips.push($modBtn.tooltip(null, null, true));
         }
       } else {
         // Show disabled action buttons for yourself ("You")
@@ -224,6 +244,7 @@ class UserRoomManager {
         $ping.addClass('col-2 text-end'),
         $actions.addClass('col-5 justify-content-end'),
       );
+      this.#usersHtml.push({ tooltips });
 
       this.$userList.append($row);
     });
@@ -264,28 +285,30 @@ class UserRoomManager {
     this.renderUserList(this.$searchInput?.val()?.trim().toLowerCase() || '');
   }
 
+  reqPromoteModerator(userId) {
+    if (!this.moderators.find((m) => m.userId === userId)) {
+      this.#client;
+    }
+  }
+
+  reqDemoteModerator(userId) {
+    this.#client;
+  }
+
   setModerators(moderatorList) {
     this.moderators = Array.isArray(moderatorList) ? moderatorList : [];
     this.renderUserList(this.$searchInput?.val()?.trim().toLowerCase() || '');
   }
 
   banUser(userId) {
-    // Placeholder: real ban logic should be handled elsewhere
-    console.warn(`User "${userId}" has been banned.`);
-    this.removeUser(userId);
+    this.#client;
+  }
+
+  kickUser(userId) {
+    this.#client;
   }
 
   destroy() {
-    if (this.$root) {
-      this.$root.empty();
-    }
-    this.users = {};
-    this.moderators = [];
-    this.roomActive = true;
-    this.isWaitingRoomStatus = false;
-    this.$roomStatusButton = null;
-    this.$searchInput = null;
-    this.$userList = null;
-    this.$header = null;
+    if (this.$root) this.$root.empty();
   }
 }
