@@ -190,7 +190,7 @@ class TinyClientIo extends EventEmitter {
         ping: typeof result.ping === 'number' ? result.ping : 0,
         nickname: typeof result.nickname === 'string' ? result.nickname : null,
       };
-      return this.users[result.userId];
+      return { data: this.users[result.userId], userId: result.userId };
     }
   }
 
@@ -818,7 +818,6 @@ class TinyClientIo extends EventEmitter {
     client.onUserLeft((result) => {
       if (client.checkRoomId(result)) {
         const data = client.removeUser(result);
-
         if (data) client.emit('userLeft', data);
         console.log('[socket-io] [room-users]', client.getUsers());
       }
@@ -828,7 +827,6 @@ class TinyClientIo extends EventEmitter {
     client.onUserJoin((result) => {
       if (client.checkRoomId(result)) {
         const data = client.addUser(result);
-
         if (data) client.emit('userJoin', data);
         console.log('[socket-io] [room-users]', client.getUsers());
       }
