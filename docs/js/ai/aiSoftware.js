@@ -4318,7 +4318,10 @@ const AiScriptStart = (connStore) => {
               onlineStatus.id.empty();
 
               // Message
-              makeTempMessage(`You are disconected! ${details.description}`, rpgCfg.ip);
+              makeTempMessage(
+                `You are disconected!${objType(details, 'object') && typeof details.description === 'string' ? ` ${details.description}` : ''}`,
+                rpgCfg.ip,
+              );
               if (tinyAiScript.multiplayer)
                 $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
             });
