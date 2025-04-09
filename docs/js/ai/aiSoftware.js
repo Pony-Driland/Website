@@ -4318,8 +4318,9 @@ const AiScriptStart = (connStore) => {
               onlineStatus.id.empty();
 
               // Message
+              console.log(`[socket-io] [disconnect]${typeof reason === 'string' ? ` ${reason}` : ''}`, details);
               makeTempMessage(
-                `You are disconected!${objType(details, 'object') && typeof details.description === 'string' ? ` ${details.description}` : ''}`,
+                `You are disconected${objType(details, 'object') && typeof details.description === 'string' ? ` (${details.description})` : ''}${typeof reason === 'string' ? `: ${reason}` : ''}`,
                 rpgCfg.ip,
               );
               if (tinyAiScript.multiplayer)
