@@ -72,6 +72,12 @@ class UserRoomManager {
         this.$unbanInput.prop('disabled', true).addClass('disabled');
       else this.$unbanInput.prop('disabled', false).removeClass('disabled');
     }
+
+    if (this.$kickAll) {
+      if (!this.isModerator && !this.isOwner)
+        this.$kickAll.prop('disabled', true).addClass('disabled');
+      else this.$kickAll.prop('disabled', false).removeClass('disabled');
+    }
   }
 
   renderHeader() {
@@ -80,8 +86,8 @@ class UserRoomManager {
     );
 
     // Kick all (menos quem está logado)
-    const $kickAll = tinyLib.bs.button('danger').text('Kick all');
-    $kickAll.on('click', () => {
+    this.$kickAll = tinyLib.bs.button('danger').text('Kick all');
+    this.$kickAll.on('click', () => {
       const userIds = [];
       Object.keys(this.users).forEach((userId) => {
         if (userId !== this.currentUserId) userIds.push(userId);
@@ -121,7 +127,7 @@ class UserRoomManager {
     });
 
     const $searchWrapper = $('<div>').addClass('flex-grow-1').append(this.$searchInput);
-    this.$header.append($kickAll, $roomStatus, $searchWrapper);
+    this.$header.append(this.$kickAll, $roomStatus, $searchWrapper);
     this.$root.append(this.$header, this.$userList);
 
     this.updateRoomStatusButton();
@@ -174,7 +180,7 @@ class UserRoomManager {
           : this.roomActive
             ? 'Room is Active'
             : 'Room is Inactive',
-      );
+      ).prop('disabled', !this.isOwner);
   }
 
   renderUserList(filter = '') {
