@@ -24,6 +24,7 @@ import {
   roomBannedUsers,
   getHashString,
   noDataInfo,
+  getJoinData,
 } from './values';
 
 export default function roomManager(socket, io, appStorage) {
@@ -104,9 +105,12 @@ export default function roomManager(socket, io, appStorage) {
     // Emit chat history and settings to the user
     if (typeof room.password !== 'undefined') delete room.password;
     const usersList = roomUsers.get(roomId);
+    const users = usersList ? Object.fromEntries(usersList) : {};
+    if (!users[userId]) users[userId] = getJoinData(socket);
+
     socket.emit('room-entered', {
       roomId,
-      users: usersList ? Object.fromEntries(usersList) : {},
+      users,
       history: historyData || [],
       mods: (await roomModerators.getAll()) || [],
       roomData: (await roomData.get(roomId)) || {},
