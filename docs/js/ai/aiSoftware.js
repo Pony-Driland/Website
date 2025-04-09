@@ -396,6 +396,7 @@ const AiScriptStart = (connStore) => {
 
   // Open AI Page
   tinyAiScript.open = async () => {
+    let sessionEnabled = true;
     tinyNotification.requestPerm();
     // Update Url
     urlUpdate('ai', 'AI Page');
@@ -884,8 +885,10 @@ const AiScriptStart = (connStore) => {
 
               // Clear data
               clearMessages();
-              enableReadOnly(false);
-              enableMessageButtons(true);
+              if (sessionEnabled) {
+                enableReadOnly(false);
+                enableMessageButtons(true);
+              }
               makeTempMessage(introduction, 'Introduction');
               const history = tinyAi.getData();
 
@@ -902,7 +905,7 @@ const AiScriptStart = (connStore) => {
                 history.tokens && Array.isArray(history.tokens.data) ? history.tokens.data : [],
                 true,
               );
-              disablePromptButtons(false);
+              if (sessionEnabled) disablePromptButtons(false);
               updateAiTokenCounterData(hashItems, forceReset);
 
               // Update button list
@@ -3092,11 +3095,13 @@ const AiScriptStart = (connStore) => {
             const stopLoadingMessage = () => {
               clearInterval(loadingMessage);
               msgInput.val(oldMsgInput);
-              enableReadOnly(false);
-              modelChangerReadOnly(false);
-              disablePromptButtons(false);
-              enableModelReadOnly(false);
-              enableMessageButtons(true);
+              if (sessionEnabled) {
+                enableReadOnly(false);
+                modelChangerReadOnly(false);
+                disablePromptButtons(false);
+                enableModelReadOnly(false);
+                enableMessageButtons(true);
+              }
               msgInput.trigger('focus');
             };
 
@@ -3445,7 +3450,7 @@ const AiScriptStart = (connStore) => {
           );
 
           // Execute Ai
-          if (!tinyAiScript.noai && !tinyAiScript.multiplayer)
+          if (!tinyAiScript.noai && !tinyAiScript.multiplayer && sessionEnabled)
             await executeAi(submitCache, controller).catch((err) => {
               if (submitCache.cancel) submitCache.cancel();
               console.error(err);
@@ -3455,13 +3460,15 @@ const AiScriptStart = (connStore) => {
 
         // Complete
         clearInterval(loadingMessage);
-        disablePromptButtons(false);
+        if (sessionEnabled) disablePromptButtons(false);
         msgInput.val('');
 
-        enableMessageButtons(true);
-        enableReadOnly(false);
-        modelChangerReadOnly(false);
-        enableModelSelectorReadOnly(false);
+        if (sessionEnabled) {
+          enableMessageButtons(true);
+          enableReadOnly(false);
+          modelChangerReadOnly(false);
+          enableModelSelectorReadOnly(false);
+        }
         msgInput.trigger('focus');
       };
 
@@ -3804,7 +3811,7 @@ const AiScriptStart = (connStore) => {
             }
 
             const disableReadOnly = () => {
-              if (useReadOnly) {
+              if (useReadOnly && sessionEnabled) {
                 disablePromptButtons(false);
                 enableMessageButtons(true);
                 enableReadOnly(false);
@@ -4322,8 +4329,21 @@ const AiScriptStart = (connStore) => {
                 `You are disconected${objType(details, 'object') && typeof details.description === 'string' ? ` (${details.description})` : ''}${typeof reason === 'string' ? `: ${reason}` : ''}`,
                 rpgCfg.ip,
               );
-              if (tinyAiScript.multiplayer && client.isActive())
-                $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
+
+              // Prepare disconnect progress
+              if (tinyAiScript.multiplayer) {
+                // Is active
+                if (client.isActive()) $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
+                // Disable page
+                else {
+                  enableReadOnly(true);
+                  modelChangerReadOnly();
+                  disablePromptButtons(true);
+                  enableModelReadOnly(true);
+                  enableMessageButtons(false);
+                  sessionEnabled = false;
+                }
+              }
             });
 
             // Enter room
