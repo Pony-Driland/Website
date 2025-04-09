@@ -851,3 +851,135 @@ body.is-using-ai #app {
     transform: rotate(0deg);
   }
 }
+
+.btn-magic {
+  position: relative;
+  z-index: 1;
+  border: none;
+  color: #fff !important;
+  background-color: #6610f2; /* base de botão mágico, pode trocar */
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.5),
+              0 0 20px rgba(0, 255, 255, 0.3),
+              0 0 30px rgba(255, 255, 255, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.btn-magic:hover {
+  transform: scale(1.05);
+}
+
+.btn-magic::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    #ff00cc,
+    #3333ff,
+    #00ffe0,
+    #ff00cc
+  );
+  animation: magic-border 4s linear infinite;
+  filter: blur(10px);
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.btn-magic > span {
+  position: relative;
+  z-index: 1;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(90deg, #ffffff, #ff99ff, #99ccff);
+  animation: shimmerText 3s ease-in-out infinite;
+}
+
+@keyframes magic-border {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmerText {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px #fff) drop-shadow(0 0 8px #ff00cc);
+  }
+  50% {
+    filter: drop-shadow(0 0 10px #00ffff) drop-shadow(0 0 20px #ff99ff);
+  }
+}
+
+.btn-text-glow {
+  position: relative;
+  color: #fff;
+  z-index: 1;
+}
+
+.btn-text-glow::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+  height: 140%;
+  border-radius: 10px;
+  z-index: -1;
+  background: radial-gradient(circle at center,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 0, 255, 0.3) 40%,
+    rgba(0, 255, 255, 0.15) 70%,
+    transparent 100%
+  );
+  animation: glow-pulse 2.5s ease-in-out infinite;
+  filter: blur(6px);
+  pointer-events: none;
+}
+  
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+.patreon-thankyou {
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1.2rem;
+  color: #444;
+  margin: 2rem 0;
+}
+
+.magic-name {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 1.3rem;
+  background-image: linear-gradient(90deg, #fff, #d46cff, #6bcaff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shimmerText 3s ease-in-out infinite;
+}
+
+@keyframes shimmerText {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px #fff);
+  }
+  50% {
+    filter: drop-shadow(0 0 6px #b67fff);
+  }
+}

@@ -2529,6 +2529,24 @@ const AiScriptStart = (connStore) => {
             ),
           );
 
+          const patreonNames = [
+            "Jimm"
+          ];
+          
+          const $thankYouBox = $('<div>').addClass('patreon-thankyou');
+          
+          const $thankYouText = $('<p>').text('Tiny magic moment to thank these magical patreons which supports the tiny fic:');
+          const $ul = $('<ul>');
+          
+          patreonNames.forEach((name) => {
+            const $nameSpan = $('<span>').addClass('magic-name').text(name);
+            const $li = $('<li>').append($nameSpan);
+            $ul.append($li);
+          });
+          
+          $thankYouBox.append($thankYouText, $ul);
+          $container.append($thankYouBox);
+
           tinyLib.modal({
             title: 'Tiny Donations!',
             dialog: 'modal-lg',
