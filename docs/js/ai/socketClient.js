@@ -854,7 +854,7 @@ class TinyClientIo extends EventEmitter {
     client.onUserJoin((result) => {
       if (client.checkRoomId(result)) {
         const data = client.addUser(result);
-        if (data) client.emit('userJoin', data);
+        if (data) client.emit('userJoined', data);
         console.log('[socket-io] [room-users]', client.getUsers());
       }
     });

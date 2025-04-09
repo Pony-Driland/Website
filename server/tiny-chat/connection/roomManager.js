@@ -285,7 +285,7 @@ export default function roomManager(socket, io, appStorage) {
 
     // Remove the user from their room
     const kickResults = { success: true, data: [] };
-    for (const userId in userIds) {
+    for (const userId of userIds) {
       const kickResult = {};
       const kickStatus = leaveRoom(userSockets.get(userId), io, roomId);
       if (!kickStatus.success) {

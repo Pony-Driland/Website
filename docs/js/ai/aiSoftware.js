@@ -2024,15 +2024,15 @@ const AiScriptStart = (connStore) => {
                 currentUserId: user.userId,
                 isOwner: user.userId === room.ownerId,
                 root: $root,
-                users: tinyIo.client.getUsers(),
-                moderators: tinyIo.client.getMods(),
+                users: clone(tinyIo.client.getUsers()),
+                moderators: clone(tinyIo.client.getMods()),
               });
 
               userManager.setClient(tinyIo.client);
               userManager.setRoomStatus(!room.disabled);
 
               // Add events
-              const usersAdded = (data) => userManager.addUser(data.userId, data.data);
+              const usersAdded = (data) => userManager.addUser(data.userId, clone(data.data));
               const usersRemoved = (userId) => userManager.removeUser(userId);
               const userModUpdated = (type, userId) => {
                 if (type === 'add') userManager.promoteModerator(userId);
@@ -2043,7 +2043,7 @@ const AiScriptStart = (connStore) => {
               };
 
               tinyIo.client.on('userPing', usersAdded);
-              tinyIo.client.on('userJoin', usersAdded);
+              tinyIo.client.on('userJoined', usersAdded);
               tinyIo.client.on('userLeft', usersRemoved);
               tinyIo.client.on('userKicked', usersRemoved);
               tinyIo.client.on('userBanned', usersRemoved);
@@ -2053,7 +2053,7 @@ const AiScriptStart = (connStore) => {
               // Close modal
               modal.on('hidden.bs.modal', () => {
                 tinyIo.client.off('userPing', usersAdded);
-                tinyIo.client.off('userJoin', usersAdded);
+                tinyIo.client.off('userJoined', usersAdded);
                 tinyIo.client.off('userLeft', usersRemoved);
                 tinyIo.client.off('userKicked', usersRemoved);
                 tinyIo.client.off('userBanned', usersRemoved);
