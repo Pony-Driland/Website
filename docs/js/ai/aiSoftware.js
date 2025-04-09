@@ -2536,7 +2536,7 @@ const AiScriptStart = (connStore) => {
           const $thankYouBox = $('<div>').addClass('patreon-thankyou');
           
           const $thankYouText = $('<p>').text('Tiny magic moment to thank these magical patreons which supports the tiny fic:');
-          const $ul = $('<ul>');
+          const $ul = $('<ul>', { class: 'list-unstyled' });
           
           patreonNames.forEach((name) => {
             const $nameSpan = $('<span>').addClass('magic-name').text(name);
