@@ -2506,19 +2506,19 @@ const AiScriptStart = (connStore) => {
           );
 
           $container.append(
-            $('<p>', { class: 'made-by-ai' }).html(
+            $('<p>', { class: 'made-by-ai m-0' }).html(
               'If you enjoyed all the love and effort I put into this <strong>super AI roleplay project</strong>,',
             ),
           );
 
           $container.append(
             $('<p>', { class: 'made-by-ai' }).html(
-              'I warmly invite you to support it with a <strong>voluntary contribution</strong>',
+              'I warmly invite you to support it with a <strong>voluntary donation</strong>',
             ),
           );
 
           $container.append(
-            $('<p>', { class: 'made-by-ai' }).html(
+            $('<p>', { class: 'made-by-ai m-0' }).html(
               'I accept both <strong>traditional currencies</strong> and <strong>cryptocurrencies</strong> as donation methods',
             ),
           );
