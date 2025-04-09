@@ -53,6 +53,7 @@ class UserRoomManager {
     this.renderHeader();
     this.renderUserList();
     this.renderFooter();
+    this.checkPerms();
   }
 
   // Essa função será chamada pelo backend para atualizar o status da sala
@@ -60,6 +61,14 @@ class UserRoomManager {
     this.roomActive = active;
     this.isWaitingRoomStatus = false;
     this.updateRoomStatusButton();
+  }
+
+  checkPerms() {
+    if (this.$unbanInput) {
+      if (!this.isModerator && !this.isOwner)
+        this.$unbanInput.prop('disabled', true).addClass('disabled');
+      else this.$unbanInput.prop('disabled', false).removeClass('disabled');
+    }
   }
 
   renderHeader() {
@@ -173,7 +182,10 @@ class UserRoomManager {
     const isMod = (userId) =>
       this.moderators.some((mod) => {
         const modStatus = mod.userId === userId;
-        if (this.currentUserId === userId) this.isModerator = modStatus;
+        if (this.currentUserId === userId) {
+          this.isModerator = modStatus;
+          this.checkPerms();
+        }
         return modStatus;
       });
 

@@ -274,24 +274,29 @@ export const ownerOnly = (fn, code = 0) => {
 };
 
 // Join Room
+export const getJoinData = (socket) => {
+  const nickname = userSession.getNickname(socket);
+  const pingNow = Date.now();
+  return { nickname, ping: pingNow };
+};
+
 export const joinRoom = (socket, io, roomId, fn) => {
   if (socket) {
     // Get data
     const userId = userSession.getUserId(socket);
-    const nickname = userSession.getNickname(socket);
     if (userId && roomId) {
       // Add user to the room's user map with their nickname and initial ping value (e.g., 0 for now)
-      const pingNow = Date.now();
+      const joinData = getJoinData(socket);
       if (!roomUsers.has(roomId)) {
         roomUsers.set(roomId, new Map());
       }
-      roomUsers.get(roomId).set(userId, { nickname, ping: pingNow });
+      roomUsers.get(roomId).set(userId, joinData);
 
       // Notify room members about the new user (excluding the user who just joined)
       socket.join(roomId);
 
       userSession.addRoom(socket, roomId);
-      const socketData = { roomId, userId, nickname, ping: pingNow };
+      const socketData = { roomId, userId, nickname: joinData.nickname, ping: joinData.ping };
       io.to(roomId).emit('user-joined', socketData);
       if (fn) fn(socketData);
       return true;

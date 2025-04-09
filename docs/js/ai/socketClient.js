@@ -270,7 +270,7 @@ class TinyClientIo extends EventEmitter {
 
       // Users
       this.setUsers({});
-      for (const item in result.users) this.addUser(result.users[item]);
+      for (const item in result.users) this.addUser({ userId: item, ...result.users[item] });
 
       // Mods
       this.setMods([]);
@@ -931,6 +931,52 @@ class TinyClientIo extends EventEmitter {
 
         console.log('[socket-io] [mod-data]', client.getMods());
       }
+    });
+
+    // Connect
+    client.onConnect(() => {
+      client.resetData();
+      client.emit('connect', client.getSocket()?.id);
+      // Login
+      client.login().then((result) => {
+        // Check room
+        client.emit('join', result);
+        if (!result.error) {
+          // Insert data
+          client.setUser(result);
+          console.log('[socket-io] [user-data]', client.getUser());
+          console.log('[socket-io] [dice]', client.getDice());
+          console.log('[socket-io] [ratelimit]', client.getRateLimit());
+          client.existsRoom().then((result2) => {
+            // Join room
+            const joinRoom = () =>
+              client.joinRoom().then((result4) => {
+                // Error
+                if (result4.error) client.emit('roomError', result4);
+                // Complete
+                else client.emit('roomJoinned', result4);
+              });
+
+            // Error
+            if (result2.error) client.emit('roomError', result2);
+            // Exists?
+            else if (result2.exists) joinRoom();
+            else {
+              if (!tinyAiScript.multiplayer)
+                client.createRoom().then((result3) => {
+                  if (!result3.error) joinRoom();
+                  else client.emit('roomError', result3);
+                });
+              else client.emit('roomNotFound', result2);
+            }
+          });
+        }
+      });
+    });
+
+    // Disconnect
+    client.onDisconnect((reason, details) => {
+      client.emit('disconnect', reason, details);
     });
   }
 }

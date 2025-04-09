@@ -83,7 +83,7 @@ const AiScriptStart = (connStore) => {
   const tinyAiScript = {};
 
   // Read AI Apis
-  const tinyIo = { client: null, socket: null, firstTime: true };
+  const tinyIo = { client: null, firstTime: true };
   const tinyAi = new TinyAiApi();
   const tinyStorage = new TinyAiStorage();
   let aiLogin = null;
@@ -97,7 +97,6 @@ const AiScriptStart = (connStore) => {
     if (tinyIo.client) {
       tinyIo.client.destroy();
       tinyIo.client = null;
-      tinyIo.socket = null;
       console.log('[socket-io] Connection destroyed!');
       return true;
     } else return false;
@@ -1524,7 +1523,7 @@ const AiScriptStart = (connStore) => {
         });
       };
 
-      const isOnline = () => (canUsejsStore && tinyIo.socket && tinyIo.client ? true : false);
+      const isOnline = () => (canUsejsStore && tinyIo.client ? true : false);
       const leftMenu = [];
       // Reset
       leftMenu.push($('<h5>').text('Reset'));
@@ -1837,7 +1836,7 @@ const AiScriptStart = (connStore) => {
 
           const updateDiceData = (where, dataName, value) => {
             dice[where](value);
-            if (!tinyIo.socket || !tinyIo.client) {
+            if (!tinyIo.client) {
               if (value) localStorage.setItem(`tiny-dice-${dataName}`, value);
               else localStorage.removeItem(`tiny-dice-${dataName}`);
             }
@@ -1866,9 +1865,7 @@ const AiScriptStart = (connStore) => {
           $applyBtn.on('click', async function () {
             // Show content
             if ($formRow2.hasClass('d-none')) {
-              $applyBtn.text(
-                tinyIo.socket && tinyIo.client ? 'Apply Dice Skins' : 'Hide Skin Data',
-              );
+              $applyBtn.text(tinyIo.client ? 'Apply Dice Skins' : 'Hide Skin Data');
             }
             // Hide Content
             else {
@@ -4227,8 +4224,8 @@ const AiScriptStart = (connStore) => {
       // Rpg mode
       if (!canUsejsStore) {
         tinyIo.client = new TinyClientIo(rpgCfg);
-        tinyIo.socket = tinyIo.client.getSocket();
-        if (tinyIo.socket)
+        const socket = tinyIo.client.getSocket();
+        if (socket)
           makeTempMessage(
             `A server has been detected in your config and we will try to connect to it now!`,
             rpgCfg.ip,
@@ -4236,7 +4233,7 @@ const AiScriptStart = (connStore) => {
 
         // Start rpg mode
         //////////////////////////////
-        if (tinyAiScript.multiplayer || tinyIo.socket) {
+        if (tinyAiScript.multiplayer || socket) {
           // Online tab html
           const onlineStatus = {};
           onlineStatus.base = $('<div>').addClass('mb-1 small');
@@ -4249,7 +4246,7 @@ const AiScriptStart = (connStore) => {
           connectionInfoBar.replaceWith(onlineStatus.base);
 
           // Socket client
-          if (tinyIo.socket) {
+          if (socket) {
             const { client } = tinyIo;
             // Connection
 
@@ -4262,16 +4259,17 @@ const AiScriptStart = (connStore) => {
                 rpgCfg.ip,
               );
 
+            // Install scripts
             client.install();
-            client.onConnect(() => {
-              // Online!
-              const connectionId = client.getSocket()?.id;
+
+            // Connected
+            client.on('connect', (connectionId) => {
+              // Prepare online status
               onlineStatus.icon.removeClass('text-danger').addClass('text-success');
               onlineStatus.text.text('Online');
               onlineStatus.id.empty().text('Id: ').append($('<strong>').text(connectionId));
 
               // First time message
-              client.resetData();
               const firstTime = tinyIo.firstTime;
               if (firstTime) tinyIo.firstTime = false;
 
@@ -4280,64 +4278,40 @@ const AiScriptStart = (connStore) => {
                 `You are connected! Your connection id is **${connectionId}**. Signing into your account...`,
                 rpgCfg.ip,
               );
+            });
 
-              // Login
-              client.login().then((result) => {
-                // Message
-                if (!result.error) {
-                  makeTempMessage(
-                    `Welcome **${result.nickname || result.userId}**! You were successfully logged in! Entering the room...`,
-                    rpgCfg.ip,
-                  );
-                }
-                // Error
-                if (result.error) {
-                  sendSocketError(result);
-                  $.LoadingOverlay('hide');
-                }
-                // Check room
-                else {
-                  // Insert data
-                  client.setUser(result);
-                  console.log('[socket-io] [user-data]', client.getUser());
-                  console.log('[socket-io] [dice]', client.getDice());
-                  console.log('[socket-io] [ratelimit]', client.getRateLimit());
-                  client.existsRoom().then((result2) => {
-                    // Join room
-                    const joinRoom = () =>
-                      client.joinRoom().then((result4) => {
-                        if (!result4.error) {
-                          makeTempMessage(
-                            `You successfully entered the room **${result4.roomId}**!`,
-                            rpgCfg.ip,
-                          );
-                        }
-                        // Error
-                        else sendSocketError(result4);
+            client.on('login', (result) => {
+              // Message
+              if (!result.error) {
+                makeTempMessage(
+                  `Welcome **${result.nickname || result.userId}**! You were successfully logged in! Entering the room...`,
+                  rpgCfg.ip,
+                );
+              }
+              // Error
+              else {
+                sendSocketError(result);
+                $.LoadingOverlay('hide');
+              }
+            });
 
-                        // Complete
-                        $.LoadingOverlay('hide');
-                      });
+            client.on('roomError', (result) => {
+              sendSocketError(result);
+              $.LoadingOverlay('hide');
+            });
 
-                    // Error
-                    if (result2.error) sendSocketError(result2);
-                    // Exists?
-                    else if (result2.exists) joinRoom();
-                    else {
-                      if (!tinyAiScript.multiplayer)
-                        client.createRoom().then((result3) => {
-                          if (!result3.error) joinRoom();
-                          else sendSocketError(result3);
-                        });
-                      else makeTempMessage('The room was not found', rpgCfg.ip);
-                    }
-                  });
-                }
-              });
+            client.on('roomNotFound', () => {
+              makeTempMessage('The room was not found', rpgCfg.ip);
+              $.LoadingOverlay('hide');
+            });
+
+            client.on('roomJoinned', (result) => {
+              makeTempMessage(`You successfully entered the room **${result.roomId}**!`, rpgCfg.ip);
+              $.LoadingOverlay('hide');
             });
 
             // Disconnected
-            client.onDisconnect((reason, details) => {
+            client.on('disconnect', (reason, details) => {
               // Offline!
               onlineStatus.icon.addClass('text-danger').removeClass('text-success');
               onlineStatus.text.text('Offline');
@@ -4370,7 +4344,7 @@ const AiScriptStart = (connStore) => {
           }
 
           // No server
-          if (!tinyIo.socket)
+          if (!socket)
             makeTempMessage('No server has been detected. Your session is cancelled!', rpgCfg.ip);
           else if (!tinyAiScript.multiplayer) return;
         }
