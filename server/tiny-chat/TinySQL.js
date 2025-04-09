@@ -140,7 +140,7 @@ class TinySQL {
 
     const query = `INSERT INTO ${this.#settings.name} (${this.#settings.id}, ${columns.join(', ')}) 
                    VALUES (?, ${placeholders}) 
-                   ON CONFLICT(${this.#settings.id}) DO UPDATE SET ${updateClause}`;
+                   ON CONFLICT(${this.#settings.id}${this.#settings.subId ? `, ${this.#settings.subId}` : ''}) DO UPDATE SET ${updateClause}`;
 
     results.push(await this.#appStorage.runQuery(query, [id, ...values]));
     if (this.debug) console.log('[sql] [set]', query, [id, ...values], results[results.length - 1]);
@@ -155,7 +155,7 @@ class TinySQL {
 
       const metaQuery = `INSERT INTO ${this.#settings.join} (${this.#settings.id}, ${metaColumns.join(', ')}) 
                            VALUES (?, ${metaPlaceholders}) 
-                           ON CONFLICT(${this.#settings.id}) DO UPDATE SET ${metaUpdateClause}`;
+                           ON CONFLICT(${this.#settings.id}${this.#settings.subId ? `, ${this.#settings.subId}` : ''}) DO UPDATE SET ${metaUpdateClause}`;
 
       results.push(await this.#appStorage.runQuery(metaQuery, [id, ...metaValues]));
       if (this.debug)

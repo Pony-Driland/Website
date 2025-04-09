@@ -2045,6 +2045,8 @@ const AiScriptStart = (connStore) => {
               tinyIo.client.on('userPing', usersAdded);
               tinyIo.client.on('userJoin', usersAdded);
               tinyIo.client.on('userLeft', usersRemoved);
+              tinyIo.client.on('userKicked', usersRemoved);
+              tinyIo.client.on('userBanned', usersRemoved);
               tinyIo.client.on('roomModChange', userModUpdated);
               tinyIo.client.on('roomUpdates', roomStatusUpdate);
 
@@ -2053,6 +2055,8 @@ const AiScriptStart = (connStore) => {
                 tinyIo.client.off('userPing', usersAdded);
                 tinyIo.client.off('userJoin', usersAdded);
                 tinyIo.client.off('userLeft', usersRemoved);
+                tinyIo.client.off('userKicked', usersRemoved);
+                tinyIo.client.off('userBanned', usersRemoved);
                 tinyIo.client.off('roomModChange', userModUpdated);
                 tinyIo.client.off('roomUpdates', roomStatusUpdate);
                 userManager.destroy();
