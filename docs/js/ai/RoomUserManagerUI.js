@@ -233,68 +233,44 @@ class UserRoomManager {
       const tooltips = [];
       const actions = {};
 
-      if (!user.isSelf) {
-        if (this.isOwner || this.isModerator) {
-          const $kickBtn = tinyLib.bs
-            .button('warning')
-            .append($('<i>').addClass('fas fa-user-slash'))
-            .attr('title', 'Kick');
-          $kickBtn.on('click', () => this.kickUser(user.userId));
+      const $kickBtn = tinyLib.bs
+        .button('warning')
+        .append($('<i>').addClass('fas fa-user-slash'))
+        .attr('title', 'Kick')
+        .prop('disabled', user.isSelf || (!this.isOwner && !this.isModerator));
+      $kickBtn.on('click', () => this.kickUser(user.userId));
 
-          const $banBtn = tinyLib.bs
-            .button('danger')
-            .append($('<i>').addClass('fas fa-ban'))
-            .attr('title', 'Ban');
-          $banBtn.on('click', () => this.banUser(user.userId));
+      const $banBtn = tinyLib.bs
+        .button('danger')
+        .append($('<i>').addClass('fas fa-ban'))
+        .attr('title', 'Ban')
+        .prop('disabled', user.isSelf || (!this.isOwner && !this.isModerator));
+      $banBtn.on('click', () => this.banUser(user.userId));
 
-          $actions.append($kickBtn, $banBtn);
-          actions.kick = $kickBtn;
-          actions.ban = $banBtn;
-          tooltips.push($banBtn.tooltip(null, null, true));
-          tooltips.push($kickBtn.tooltip(null, null, true));
+      $actions.append($kickBtn, $banBtn);
+      actions.kick = $kickBtn;
+      actions.ban = $banBtn;
+      tooltips.push($banBtn.tooltip(null, null, true));
+      tooltips.push($kickBtn.tooltip(null, null, true));
+
+      const $modBtn = tinyLib.bs.button(user.isModerator ? 'secondary' : 'info');
+      $modBtn
+        .append($('<i>').addClass(user.isModerator ? 'fas fa-user-minus' : 'fas fa-user-plus'))
+        .attr('title', user.isModerator ? 'Demote' : 'Promote')
+        .prop('disabled', user.isSelf || !this.isOwner);
+      $modBtn.on('click', () => {
+        if (user.isModerator) {
+          this.reqDemoteModerator(user.userId);
+        } else {
+          this.reqPromoteModerator(user.userId);
         }
+      });
 
-        if (this.isOwner) {
-          const $modBtn = tinyLib.bs.button(user.isModerator ? 'secondary' : 'info');
-          $modBtn
-            .append($('<i>').addClass(user.isModerator ? 'fas fa-user-minus' : 'fas fa-user-plus'))
-            .attr('title', user.isModerator ? 'Demote' : 'Promote');
-          $modBtn.on('click', () => {
-            if (user.isModerator) {
-              this.reqDemoteModerator(user.userId);
-            } else {
-              this.reqPromoteModerator(user.userId);
-            }
-          });
+      $actions.append($modBtn);
+      actions.mod = $modBtn;
+      tooltips.push($modBtn.tooltip(null, null, true));
 
-          $actions.append($modBtn);
-          actions.mod = $modBtn;
-          tooltips.push($modBtn.tooltip(null, null, true));
-        }
-      } else {
-        const $kickBtn = tinyLib.bs
-          .button('warning')
-          .append($('<i>').addClass('fas fa-user-slash'))
-          .attr('title', 'Kick')
-          .prop('disabled', true);
-
-        const $banBtn = tinyLib.bs
-          .button('danger')
-          .append($('<i>').addClass('fas fa-ban'))
-          .attr('title', 'Ban')
-          .prop('disabled', true);
-
-        const $modBtn = tinyLib.bs
-          .button('secondary')
-          .append($('<i>').addClass('fas fa-arrow-up'))
-          .attr('title', 'Promote')
-          .prop('disabled', true);
-
-        $actions.append($kickBtn, $banBtn);
-        if (this.isOwner) $actions.append($modBtn);
-
-        $info.append($('<span>').addClass('badge bg-secondary ms-2').text('You'));
-      }
+      if (user.isSelf) $info.append($('<span>').addClass('badge bg-secondary ms-2').text('You'));
 
       $row.append(
         $info.addClass('col-5'),
