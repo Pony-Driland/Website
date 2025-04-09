@@ -2003,6 +2003,64 @@ const AiScriptStart = (connStore) => {
       // Online Mode options
       if (!canUsejsStore) {
         leftMenu.push($('<h5>').text('Online'));
+
+        leftMenu.push(
+          createButtonSidebar('fas fa-users', 'Room users', () => {
+            if (tinyIo.client) {
+              const $root = $('<div>');
+
+              // Start modal
+              const modal = tinyLib.modal({
+                title: 'User manager',
+                dialog: 'modal-lg',
+                id: 'user-manager',
+                body: $root,
+              });
+
+              // Start user room data
+              const user = tinyIo.client.getUser() || {};
+              const room = tinyIo.client.getRoom() || {};
+              const userManager = new UserRoomManager({
+                currentUserId: user.userId,
+                isOwner: user.userId === room.ownerId,
+                root: $root,
+                users: tinyIo.client.getUsers(),
+                moderators: tinyIo.client.getMods(),
+              });
+
+              userManager.setClient(tinyIo.client);
+              userManager.setRoomStatus(!room.disabled);
+
+              // Add events
+              const usersAdded = (data) => userManager.addUser(data.userId, data.data);
+              const usersRemoved = (userId) => userManager.removeUser(userId);
+              const userModUpdated = (type, userId) => {
+                if (type === 'add') userManager.promoteModerator(userId);
+                if (type === 'remove') userManager.demoteModerator(userId);
+              };
+              const roomStatusUpdate = (roomData) => {
+                userManager.setRoomStatus(!roomData.disabled);
+              };
+
+              tinyIo.client.on('userPing', usersAdded);
+              tinyIo.client.on('userJoin', usersAdded);
+              tinyIo.client.on('userLeft', usersRemoved);
+              tinyIo.client.on('roomModChange', userModUpdated);
+              tinyIo.client.on('roomUpdates', roomStatusUpdate);
+
+              // Close modal
+              modal.on('hidden.bs.modal', () => {
+                tinyIo.client.off('userPing', usersAdded);
+                tinyIo.client.off('userJoin', usersAdded);
+                tinyIo.client.off('userLeft', usersRemoved);
+                tinyIo.client.off('roomModChange', userModUpdated);
+                tinyIo.client.off('roomUpdates', roomStatusUpdate);
+                userManager.destroy();
+              });
+            }
+          }),
+        );
+
         const templateChangeInfo = (
           id,
           icon,
@@ -4296,6 +4354,11 @@ const AiScriptStart = (connStore) => {
             client.on('newMessage', () => {
               if (tinyAiScript.multiplayer) {
               }
+            });
+
+            // You was kicked
+            client.on('userLeft', (userId) => {
+              if (userId === client.getUserId()) client.disconnect();
             });
 
             // Dice rool

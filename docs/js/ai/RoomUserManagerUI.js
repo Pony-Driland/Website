@@ -79,8 +79,16 @@ class UserRoomManager {
       this.isWaitingRoomStatus = true;
       this.updateRoomStatusButton();
 
-      const newStatus = !this.roomActive;
-      // requestRoomStatusChange(newStatus); // Dispara requisição ao backend
+      if (this.roomActive)
+        this.#client.disableRoom().then((result) => {
+          if (!result.error) this.setRoomStatus(false);
+          else this.setRoomStatus(true);
+        });
+      else
+        this.#client.enableRoom().then((result) => {
+          if (!result.error) this.setRoomStatus(true);
+          else this.setRoomStatus(false);
+        });
     });
 
     // Input de pesquisa
@@ -171,6 +179,7 @@ class UserRoomManager {
       const $ping = $('<div>').addClass('text-muted small text-nowrap').text(user.ping.fromNow());
       const $actions = $('<div>').addClass('d-flex flex-wrap gap-2');
       const tooltips = [];
+      const actions = {};
 
       if (!user.isSelf) {
         // Apenas moderadores ou o dono podem ver botões de kick/ban
@@ -190,6 +199,8 @@ class UserRoomManager {
           $banBtn.on('click', () => this.banUser(user.userId));
 
           $actions.append($kickBtn, $banBtn);
+          actions.kick = $kickBtn;
+          actions.ban = $banBtn;
           tooltips.push($banBtn.tooltip(null, null, true));
           tooltips.push($kickBtn.tooltip(null, null, true));
         }
@@ -210,6 +221,7 @@ class UserRoomManager {
           });
 
           $actions.append($modBtn);
+          actions.mod = $modBtn;
           tooltips.push($modBtn.tooltip(null, null, true));
         }
       } else {
@@ -244,7 +256,7 @@ class UserRoomManager {
         $ping.addClass('col-2 text-end'),
         $actions.addClass('col-5 justify-content-end'),
       );
-      this.#usersHtml.push({ tooltips });
+      this.#usersHtml.push({ tooltips, actions, userId: user.userId });
 
       this.$userList.append($row);
     });
@@ -285,27 +297,47 @@ class UserRoomManager {
     this.renderUserList(this.$searchInput?.val()?.trim().toLowerCase() || '');
   }
 
-  reqPromoteModerator(userId) {
-    if (!this.moderators.find((m) => m.userId === userId)) {
-      this.#client;
-    }
-  }
-
-  reqDemoteModerator(userId) {
-    this.#client;
-  }
-
   setModerators(moderatorList) {
     this.moderators = Array.isArray(moderatorList) ? moderatorList : [];
     this.renderUserList(this.$searchInput?.val()?.trim().toLowerCase() || '');
   }
 
+  reqPromoteModerator(userId) {
+    if (!this.moderators.find((m) => m.userId === userId)) {
+      const html = this.#usersHtml.find((item) => item.userId === userId);
+      html.actions.mod.prop('disabled', true).addClass('disabled');
+      this.#client.addMod([userId]).then((result) => {
+        html.actions.mod.prop('disabled', false).removeClass('disabled');
+        if (!result.error) this.promoteModerator(userId);
+      });
+    }
+  }
+
+  reqDemoteModerator(userId) {
+    const html = this.#usersHtml.find((item) => item.userId === userId);
+    html.actions.mod.prop('disabled', true).addClass('disabled');
+    this.#client.removeMod([userId]).then((result) => {
+      html.actions.mod.prop('disabled', false).removeClass('disabled');
+      if (!result.error) this.demoteModerator(userId);
+    });
+  }
+
   banUser(userId) {
-    this.#client;
+    const html = this.#usersHtml.find((item) => item.userId === userId);
+    html.actions.ban.prop('disabled', true).addClass('disabled');
+    this.#client.banUser(userId).then((result) => {
+      html.actions.ban.prop('disabled', false).removeClass('disabled');
+      if (!result.error) this.removeUser(userId);
+    });
   }
 
   kickUser(userId) {
-    this.#client;
+    const html = this.#usersHtml.find((item) => item.userId === userId);
+    html.actions.kick.prop('disabled', true).addClass('disabled');
+    this.#client.kickUser(userId).then((result) => {
+      html.actions.kick.prop('disabled', false).removeClass('disabled');
+      if (!result.error) this.removeUser(userId);
+    });
   }
 
   destroy() {
