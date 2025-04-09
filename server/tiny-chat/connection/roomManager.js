@@ -169,10 +169,12 @@ export default function roomManager(socket, io, appStorage) {
 
     // Check if user is server owner or server mod
     if (
-      yourId !== getIniConfig('OWNER_ID') &&
-      !(await moderators.has(yourId)) &&
-      room.ownerId !== yourId &&
-      !(await roomModerators.has(roomId, yourId))
+      (yourId !== getIniConfig('OWNER_ID') &&
+        !(await moderators.has(yourId)) &&
+        room.ownerId !== yourId &&
+        !(await roomModerators.has(roomId, yourId))) ||
+      userId === room.ownerId ||
+      userId === getIniConfig('OWNER_ID')
     ) {
       return fn({
         msg: 'You are not allowed to do this.',
@@ -291,20 +293,26 @@ export default function roomManager(socket, io, appStorage) {
     const kickResults = { success: true, data: [] };
     for (const userId of userIds) {
       const kickResult = {};
-      const kickStatus = leaveRoom(userSockets.get(userId), io, roomId);
-      if (!kickStatus.success) {
-        if (kickStatus.code === 2) {
-          kickResult.code = 2;
-          kickResult.error = true;
-          kickResult.msg = 'User not found.';
-        } else if (kickStatus.code === 3) {
-          kickResult.code = 3;
-          kickResult.error = true;
-          kickResult.msg = 'Invalid data.';
+      if (userId !== room.ownerId && userId !== getIniConfig('OWNER_ID')) {
+        const kickStatus = leaveRoom(userSockets.get(userId), io, roomId);
+        if (!kickStatus.success) {
+          if (kickStatus.code === 2) {
+            kickResult.code = 2;
+            kickResult.error = true;
+            kickResult.msg = 'User not found.';
+          } else if (kickStatus.code === 3) {
+            kickResult.code = 3;
+            kickResult.error = true;
+            kickResult.msg = 'Invalid data.';
+          }
+        } else {
+          kickResult.success = true;
+          io.to(roomId).emit('user-kicked', { roomId, userId });
         }
       } else {
-        kickResult.success = true;
-        io.to(roomId).emit('user-kicked', { roomId, userId });
+        kickResult.code = 4;
+        kickResult.error = true;
+        kickResult.msg = 'You are not allowed to do this.';
       }
       kickResults.data.push(kickResult);
     }
@@ -494,7 +502,7 @@ export default function roomManager(socket, io, appStorage) {
     if (noDataInfo(data, fn)) return;
     const { roomId, mods } = data;
     // Validate values
-    if (typeof roomId !== 'string' || Array.isArray(mods)) return sendIncompleteDataInfo(fn);
+    if (typeof roomId !== 'string' || !Array.isArray(mods)) return sendIncompleteDataInfo(fn);
 
     // Get user
     const userId = userSession.getUserId(socket);
@@ -532,7 +540,7 @@ export default function roomManager(socket, io, appStorage) {
     if (noDataInfo(data, fn)) return;
     const { roomId, mods } = data;
     // Validate values
-    if (typeof roomId !== 'string' || Array.isArray(mods)) return sendIncompleteDataInfo(fn);
+    if (typeof roomId !== 'string' || !Array.isArray(mods)) return sendIncompleteDataInfo(fn);
 
     // Get user
     const userId = userSession.getUserId(socket);

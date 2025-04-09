@@ -288,7 +288,8 @@ class TinyClientIo extends EventEmitter {
       // Mods
       this.setMods([]);
       for (const index in result.mods)
-        if (typeof result.mods[index].userId === 'string') this.addMod(result.mods[index].userId);
+        if (typeof result.mods[index].userId === 'string')
+          this.addModUser(result.mods[index].userId);
 
       // History
       this.setHistory([]);
@@ -370,11 +371,11 @@ class TinyClientIo extends EventEmitter {
     this.mods = Array.isArray(result) ? result : [];
   }
 
-  addMod(userId) {
+  addModUser(userId) {
     if (this.mods.indexOf(userId) < 0) this.mods.push(userId);
   }
 
-  removeMod(userId) {
+  removeModUser(userId) {
     const index = this.mods.indexOf(userId);
     if (index > -1) this.mods.splice(index, 1);
   }
@@ -931,11 +932,11 @@ class TinyClientIo extends EventEmitter {
           for (const index in result.result) {
             if (typeof result.result[index] === 'string') {
               if (result.type === 'add') {
-                client.addMod(result.result[index]);
+                client.addModUser(result.result[index]);
                 client.emit('roomModChange', 'add', result.result[index]);
               }
               if (result.type === 'remove') {
-                client.removeMod(result.result[index]);
+                client.removeModUser(result.result[index]);
                 client.emit('roomModChange', 'remove', result.result[index]);
               }
             }

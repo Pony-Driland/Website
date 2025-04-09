@@ -2021,14 +2021,17 @@ const AiScriptStart = (connStore) => {
               const user = tinyIo.client.getUser() || {};
               const room = tinyIo.client.getRoom() || {};
               const userManager = new UserRoomManager({
+                client: tinyIo.client,
                 currentUserId: user.userId,
                 isOwner: user.userId === room.ownerId,
                 root: $root,
                 users: clone(tinyIo.client.getUsers()),
-                moderators: clone(tinyIo.client.getMods()),
+                moderators: [],
               });
 
-              userManager.setClient(tinyIo.client);
+              const mods = tinyIo.client.getMods() || [];
+              for (userId of mods) userManager.promoteModerator(userId);
+
               userManager.setRoomStatus(!room.disabled);
 
               // Add events
