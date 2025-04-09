@@ -105,7 +105,7 @@ body:not(.browser-with-web3) .web3-element {
   margin-top: -20px;
 }
 
-#offcanvasNavbar #status >*:empty {
+#offcanvasNavbar #status > *:empty {
   margin-top: -13px;
 }
 
@@ -116,7 +116,8 @@ body:not(.browser-with-web3) .web3-element {
 }
 
 /* Navbar Top */
-.tiny-navabar-style .navbar-nav-left, .tiny-navabar-style .navbar-nav-right {
+.tiny-navabar-style .navbar-nav-left,
+.tiny-navabar-style .navbar-nav-right {
   white-space: nowrap;
   overflow-x: auto;
   flex-grow: 1;
@@ -334,13 +335,12 @@ https://mkrtchyan.ga
 }
 
 .stars {
-  background: #000 url("/img/bg/sky-stars/stars.png") repeat top center;
+  background: #000 url('/img/bg/sky-stars/stars.png') repeat top center;
   z-index: -3;
 }
 
 .twinkling {
-  background: transparent url("/img/bg/sky-stars/twinkling.png") repeat top
-    center;
+  background: transparent url('/img/bg/sky-stars/twinkling.png') repeat top center;
   z-index: -2;
   -moz-animation: move-twink-back 200s linear infinite;
   -ms-animation: move-twink-back 200s linear infinite;
@@ -350,7 +350,7 @@ https://mkrtchyan.ga
 }
 
 .clouds {
-  background: transparent url("/img/bg/sky-stars/clouds3.png") repeat top center;
+  background: transparent url('/img/bg/sky-stars/clouds3.png') repeat top center;
   z-index: -1;
   -moz-animation: move-clouds-back 200s linear infinite;
   -ms-animation: move-clouds-back 200s linear infinite;
@@ -463,11 +463,7 @@ body.raining-sky #bg-sky .stem {
   width: 1px;
   height: 60%;
   margin-left: 7px;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0.25)
-  );
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.25));
   animation: stem 0.5s linear infinite;
 }
 
@@ -585,8 +581,12 @@ body.thunder-effect #bg-sky .flash {
 
 #markdown-read pre,
 #markdown-read pre code {
-  font-family: Lucida Console, Lucida Sans Typewriter, monaco,
-    Bitstream Vera Sans Mono, monospace !important;
+  font-family:
+    Lucida Console,
+    Lucida Sans Typewriter,
+    monaco,
+    Bitstream Vera Sans Mono,
+    monospace !important;
 }
 
 #markdown-read pre {
@@ -646,7 +646,10 @@ body.thunder-effect #bg-sky .flash {
 /* AI Tab */
 body.detect-made-by-ai .made-by-ai {
   color: yellow;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
     1px 1px 0 #000;
 }
 
@@ -808,4 +811,43 @@ body.is-using-ai #app {
 
 .tippy-content > .dropdown-menu {
   position: inherit;
+}
+
+/* Donate effects */
+/* By ChatGPT (OpenAI) as coding assistant */
+.donation-highlight {
+  display: inline-block;
+  position: relative;
+  padding: 7px;
+  border-radius: 20px;
+  background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffe0, #ff00cc);
+  background-size: 600% 600%;
+  animation: glowBorder 6s ease infinite;
+  box-shadow:
+    0 0 20px rgba(255, 0, 255, 0.5),
+    0 0 40px rgba(0, 255, 255, 0.3),
+    0 0 60px rgba(255, 255, 255, 0.2);
+  margin: 30px;
+}
+
+.donation-highlight img {
+  border-radius: 15px;
+  z-index: 1;
+  position: relative;
+}
+
+/* Animação do fundo */
+@keyframes glowBorder {
+  0% {
+    background-position: 0% 50%;
+    transform: rotate(0deg);
+  }
+  50% {
+    background-position: 100% 50%;
+    transform: rotate(1deg);
+  }
+  100% {
+    background-position: 0% 50%;
+    transform: rotate(0deg);
+  }
 }

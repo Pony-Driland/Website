@@ -2494,6 +2494,57 @@ const AiScriptStart = (connStore) => {
         }),
       );
 
+      // Donate
+      leftMenu.push($('<h5>').text('Donate'));
+      leftMenu.push(
+        createButtonSidebar('fas fa-donate', 'Donate <3', () => {
+          const $container = $('<div>').addClass('text-center');
+          $container.append(
+            $('<p>', { class: 'made-by-ai' }).html(
+              'This project took <strong>months of dedication</strong> and many <em>sleepless nights</em>.',
+            ),
+          );
+
+          $container.append(
+            $('<p>', { class: 'made-by-ai' }).html(
+              'If you enjoyed all the love and effort I put into this <strong>super AI roleplay project</strong>,',
+            ),
+          );
+
+          $container.append(
+            $('<p>', { class: 'made-by-ai' }).html(
+              'I warmly invite you to support it with a <strong>voluntary contribution</strong>',
+            ),
+          );
+
+          $container.append(
+            $('<p>', { class: 'made-by-ai' }).html(
+              'I accept both <strong>traditional currencies</strong> and <strong>cryptocurrencies</strong> as donation methods',
+            ),
+          );
+
+          $container.append(
+            $('<p>', { class: 'made-by-ai' }).html(
+              'Thank you for helping this tiny magical project grow! 🎁💕',
+            ),
+          );
+
+          tinyLib.modal({
+            title: 'Tiny Donations!',
+            dialog: 'modal-lg',
+            id: 'modal-donate',
+            body: $container.append(
+              $('<div>', { class: 'donation-highlight' }).append(
+                $('<img>', {
+                  class: 'd-block w-100',
+                  src: '/img/ai-example/2025-04-09_06-48.jpg',
+                }),
+              ),
+            ),
+          });
+        }),
+      );
+
       // Left
       const connectionInfoBar = $('<span>');
       const sidebarLeft = $('<div>', sidebarStyle)

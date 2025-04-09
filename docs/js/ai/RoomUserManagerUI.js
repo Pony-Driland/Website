@@ -3,6 +3,9 @@
  *
  * UI Component to manage users in a real-time room environment.
  *
+ * Created by: Yasmin Seidel (JasminDreasond)
+ * Co-developed with: ChatGPT (OpenAI) as coding assistant
+ *
  * @param {Object} config
  * @param {string} config.currentUserId - The userId of the current logged-in user.
  * @param {boolean} config.isOwner - Whether the current user is the owner of the room.
