@@ -132,7 +132,7 @@ class UserRoomManager {
       'd-flex flex-wrap align-items-center justify-content-between mb-3 gap-2',
     );
 
-    // Kick all (menos quem está logado)
+    // Kick all
     this.$kickAll = tinyLib.bs.button('danger').text('Kick all');
     this.$kickAll.on('click', () => {
       const room = this.#client.getRoom() || {};
@@ -164,7 +164,7 @@ class UserRoomManager {
         });
     });
 
-    // Input de pesquisa
+    // Search input
     this.$searchInput = $('<input>', {
       type: 'text',
       class: 'form-control',
@@ -193,7 +193,6 @@ class UserRoomManager {
    */
   renderFooter() {
     this.$footer = $('<div>');
-    // Desbanir usuário manualmente
     const $unbanWrapper = $('<div>').addClass('d-flex mt-4 gap-2 align-items-center');
     this.$unbanInput = $('<input>')
       .addClass('form-control')
