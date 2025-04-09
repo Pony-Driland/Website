@@ -33,6 +33,7 @@ class UserRoomManager {
     this.isWaitingRoomStatus = false;
 
     this.$header = null;
+    this.$footer = null;
     this.$searchInput = null;
     this.$userList = $('<div>');
 
@@ -46,6 +47,7 @@ class UserRoomManager {
   init() {
     this.renderHeader();
     this.renderUserList();
+    this.renderFooter();
   }
 
   // Essa função será chamada pelo backend para atualizar o status da sala
@@ -63,11 +65,11 @@ class UserRoomManager {
     // Kick all (menos quem está logado)
     const $kickAll = tinyLib.bs.button('danger').text('Kick all');
     $kickAll.on('click', () => {
+      const userIds = [];
       Object.keys(this.users).forEach((userId) => {
-        if (userId !== this.currentUserId) {
-          this.kickUser(userId);
-        }
+        if (userId !== this.currentUserId) userIds.push(userId);
       });
+      if (userIds.length > 0) this.kickUser(userIds);
     });
 
     // Room status
@@ -106,6 +108,38 @@ class UserRoomManager {
     this.$root.append(this.$header, this.$userList);
 
     this.updateRoomStatusButton();
+  }
+
+  renderFooter() {
+    this.$footer = $('<div>');
+    // Desbanir usuário manualmente
+    const $unbanWrapper = $('<div>').addClass('d-flex mt-4 gap-2 align-items-center');
+    this.$unbanInput = $('<input>')
+      .addClass('form-control')
+      .attr('type', 'text')
+      .attr('placeholder', 'Enter user ID to unban')
+      .on('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          $unbanButton.trigger('click');
+        }
+      });
+
+    const $unbanButton = tinyLib.bs.button('success').text('Unban');
+    $unbanButton.on('click', () => {
+      if (!this.$unbanInput.prop('disabled')) {
+        const userId = this.$unbanInput.val().trim();
+        if (userId) {
+          this.$unbanInput.val('');
+          this.unbanUser(userId);
+        }
+      }
+    });
+
+    $unbanWrapper.append(this.$unbanInput, $unbanButton);
+    this.$userList.append();
+    this.$footer.append($unbanWrapper);
+    this.$root.append(this.$footer);
   }
 
   updateRoomStatusButton() {
@@ -170,10 +204,8 @@ class UserRoomManager {
       );
 
       const $info = $('<div>').addClass('flex-grow-1 d-flex align-items-center gap-2');
-
       const $nickname = $('<strong>').text(user.nickname);
       const $userIdText = $('<small>').addClass('text-muted').text(`(${user.userId})`);
-
       $info.append($nickname, $userIdText);
 
       const $ping = $('<div>').addClass('text-muted small text-nowrap').text(user.ping.fromNow());
@@ -182,20 +214,17 @@ class UserRoomManager {
       const actions = {};
 
       if (!user.isSelf) {
-        // Apenas moderadores ou o dono podem ver botões de kick/ban
         if (this.isOwner || this.isModerator) {
           const $kickBtn = tinyLib.bs
             .button('warning')
             .append($('<i>').addClass('fas fa-user-slash'))
             .attr('title', 'Kick');
-
           $kickBtn.on('click', () => this.kickUser(user.userId));
 
           const $banBtn = tinyLib.bs
             .button('danger')
             .append($('<i>').addClass('fas fa-ban'))
             .attr('title', 'Ban');
-
           $banBtn.on('click', () => this.banUser(user.userId));
 
           $actions.append($kickBtn, $banBtn);
@@ -205,13 +234,11 @@ class UserRoomManager {
           tooltips.push($kickBtn.tooltip(null, null, true));
         }
 
-        // Apenas o dono pode promover/despromover moderadores
         if (this.isOwner) {
           const $modBtn = tinyLib.bs.button(user.isModerator ? 'secondary' : 'info');
           $modBtn
             .append($('<i>').addClass(user.isModerator ? 'fas fa-user-minus' : 'fas fa-user-plus'))
             .attr('title', user.isModerator ? 'Demote' : 'Promote');
-
           $modBtn.on('click', () => {
             if (user.isModerator) {
               this.reqDemoteModerator(user.userId);
@@ -225,7 +252,6 @@ class UserRoomManager {
           tooltips.push($modBtn.tooltip(null, null, true));
         }
       } else {
-        // Show disabled action buttons for yourself ("You")
         const $kickBtn = tinyLib.bs
           .button('warning')
           .append($('<i>').addClass('fas fa-user-slash'))
@@ -247,7 +273,6 @@ class UserRoomManager {
         $actions.append($kickBtn, $banBtn);
         if (this.isOwner) $actions.append($modBtn);
 
-        // Add "You" label beside the user name
         $info.append($('<span>').addClass('badge bg-secondary ms-2').text('You'));
       }
 
@@ -328,6 +353,16 @@ class UserRoomManager {
     this.#client.banUser(userId).then((result) => {
       html.actions.ban.prop('disabled', false).removeClass('disabled');
       if (!result.error) this.removeUser(userId);
+    });
+  }
+
+  unbanUser(userId) {
+    this.$unbanInput.prop('disabled', true).addClass('disabled');
+    this.#client.unbanUser(userId).then((result) => {
+      this.$unbanInput.prop('disabled', false).removeClass('disabled');
+      if (result.error)
+        this.$unbanInput.val(typeof result.msg === 'string' ? result.msg : 'Unknown error');
+      this.$unbanInput.trigger('focus').trigger('select');
     });
   }
 

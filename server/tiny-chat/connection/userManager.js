@@ -81,7 +81,7 @@ export default function userManager(socket, io) {
     if (noDataInfo(data, fn)) return;
     const { userId } = data;
     // Validate values
-    if (typeof userId !== 'string') return sendIncompleteDataInfo(fn);
+    if (typeof userId !== 'string' && !Array.isArray(userId)) return sendIncompleteDataInfo(fn);
 
     // Get user
     const yourId = userSession.getUserId(socket);
@@ -93,14 +93,30 @@ export default function userManager(socket, io) {
       return fn({ error: true, msg: 'You are not allowed to do this.', code: 1 });
     }
 
+    // User list
+    const userIds = [];
+    if (typeof userId === 'string') userIds.push(userId);
+    else
+      for (const index in userId)
+        if (typeof userId[index] === 'string') userIds.push(userId[index]);
+
     // Disconnect user
-    if (userSockets.has(userId)) userSockets.get(userId).disconnect();
-    else {
-      return fn({ error: true, msg: 'User not found.', code: 2 });
+    const kickResults = { success: true, data: [] };
+    for (const userId in userIds) {
+      const kickResult = {};
+      if (userSockets.has(userId)) {
+        userSockets.get(userId).disconnect();
+        kickResult.success = true;
+      } else {
+        kickResult.error = true;
+        kickResult.msg = 'User not found.';
+        kickResult.code = 2;
+      }
+      kickResults.data.push(kickResult);
     }
 
     // User kick successfully.
-    fn({ success: true });
+    fn(kickResults);
   });
 
   socket.on('change-password', async (data, fn) => {
