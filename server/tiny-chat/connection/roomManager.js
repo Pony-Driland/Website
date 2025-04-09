@@ -248,7 +248,8 @@ export default function roomManager(socket, io, appStorage) {
     if (noDataInfo(data, fn)) return;
     const { userId, roomId } = data;
     // Validate values
-    if (typeof userId !== 'string' || typeof roomId !== 'string') return sendIncompleteDataInfo(fn);
+    if ((typeof userId !== 'string' && !Array.isArray(userId)) || typeof roomId !== 'string')
+      return sendIncompleteDataInfo(fn);
 
     // Get user
     const yourId = userSession.getUserId(socket);
@@ -275,26 +276,37 @@ export default function roomManager(socket, io, appStorage) {
       });
     }
 
+    // User list
+    const userIds = [];
+    if (typeof userId === 'string') userIds.push(userId);
+    else
+      for (const index in userId)
+        if (typeof userId[index] === 'string') userIds.push(userId[index]);
+
     // Remove the user from their room
-    const kickResult = {};
-    const kickStatus = leaveRoom(userSockets.get(userId), io, roomId);
-    if (!kickStatus.success) {
-      if (kickStatus.code === 2) {
-        kickResult.code = 2;
-        kickResult.error = true;
-        kickResult.msg = 'User not found.';
-      } else if (kickStatus.code === 3) {
-        kickResult.code = 3;
-        kickResult.error = true;
-        kickResult.msg = 'Invalid data.';
+    const kickResults = { success: true, data: [] };
+    for (const userId in userIds) {
+      const kickResult = {};
+      const kickStatus = leaveRoom(userSockets.get(userId), io, roomId);
+      if (!kickStatus.success) {
+        if (kickStatus.code === 2) {
+          kickResult.code = 2;
+          kickResult.error = true;
+          kickResult.msg = 'User not found.';
+        } else if (kickStatus.code === 3) {
+          kickResult.code = 3;
+          kickResult.error = true;
+          kickResult.msg = 'Invalid data.';
+        }
+      } else {
+        kickResult.success = true;
+        io.to(roomId).emit('user-kicked', { roomId, userId });
       }
-    } else {
-      kickResult.success = true;
-      io.to(roomId).emit('user-kicked', { roomId, userId });
+      kickResults.data.push(kickResult);
     }
 
     // Complete
-    fn(kickResult);
+    fn(kickResults);
   });
 
   socket.on('create-room', async (data, fn) => {
