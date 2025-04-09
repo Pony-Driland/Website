@@ -793,8 +793,14 @@ class TinyClientIo extends EventEmitter {
 
     // Get user updated
     client.onUserUpdated((result) => {
-      if (client.checkRoomId(result) && objType(result.data, 'object')) {
+      if (
+        client.checkRoomId(result) &&
+        objType(result.data, 'object') &&
+        typeof result.userId === 'string' &&
+        typeof result.data.nickname === 'string'
+      ) {
         const data = client.editUser({ userId: result.userId, nickname: result.data.nickname });
+        if (result.userId === client.getUserId()) this.user.nickname = result.data.nickname;
 
         if (data) client.emit('userUpdated', data);
         console.log('[socket-io] [user-data]', client.getUser());
