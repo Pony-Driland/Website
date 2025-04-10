@@ -71,7 +71,7 @@ function purgeExpiredRecords(cacheStorage) {
 }
 
 /**
- * Handles versioned JavaScript files from same origin or subdomains.
+ * Handles versioned JavaScript and CSS files from same origin or subdomains.
  * Caches based on version (?v=*) and only updates if version is higher.
  * Removes old cached versions when newer is stored.
  *
@@ -79,7 +79,7 @@ function purgeExpiredRecords(cacheStorage) {
  * @param {Request} request
  * @returns {Promise<Response>}
  */
-async function handleVersionedJS(cacheStorage, request) {
+async function handleVersionedStatic(cacheStorage, request) {
   const requestURL = new URL(request.url);
   const originURL = new URL(self.location.origin);
 
@@ -88,7 +88,7 @@ async function handleVersionedJS(cacheStorage, request) {
     requestURL.hostname !== originURL.hostname &&
     !requestURL.hostname.endsWith(`.${originURL.hostname}`)
   ) {
-    return fetch(request); // not allowed
+    return fetch(request); // cross-origin not allowed
   }
 
   const versionParam = requestURL.searchParams.get('v');
@@ -99,7 +99,7 @@ async function handleVersionedJS(cacheStorage, request) {
   }
 
   const incomingVersion = Number(versionParam);
-  const versionedCache = await cacheStorage.open('versioned-js');
+  const versionedCache = await cacheStorage.open('versioned-static');
   const cachedRequests = await versionedCache.keys();
 
   let outdatedRequest = null;
@@ -209,8 +209,11 @@ self.addEventListener('fetch', function (event) {
   const request = event.request;
   const origin = self?.origin || self.location?.origin;
 
-  if (request.destination === 'script' && request.url.includes('?v=')) {
-    event.respondWith(handleVersionedJS(caches, request));
+  if (
+    (request.destination === 'script' || request.destination === 'style') &&
+    request.url.includes('?v=')
+  ) {
+    event.respondWith(handleVersionedStatic(caches, request));
     return;
   }
 
