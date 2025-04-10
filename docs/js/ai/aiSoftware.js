@@ -1810,7 +1810,12 @@ const AiScriptStart = (connStore) => {
               // Text skin
               createInputField('Text Skin', 'textSkin', 'e.g. white or #fff', tinyCfg.data.text),
               // Border skin
-              createInputField('Border Skin', 'borderSkin', 'e.g. black', tinyCfg.data.border),
+              createInputField(
+                'Border Skin',
+                'borderSkin',
+                'e.g. 2px solid rgba(255, 255, 255, 0.2)',
+                tinyCfg.data.border,
+              ),
               // Bg skin
               createInputField(
                 'Select Bg Skin',
@@ -1912,7 +1917,10 @@ const AiScriptStart = (connStore) => {
 
                 const result = await tinyIo.client.setAccountDice(diceSkin);
                 if (result.error) $totalBase.addClass('text-danger').text(result.msg);
-                else $totalBase.removeClass('text-danger').text(0);
+                else {
+                  $totalBase.removeClass('text-danger').text(0);
+                  tinyIo.client.setDice(diceSkin);
+                }
 
                 // Enable buttons again
                 for (const index in readSkinValues)
