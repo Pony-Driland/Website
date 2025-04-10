@@ -1,4 +1,13 @@
 /**
+ * Helper to get current timestamp
+ * @returns {Number}
+ */
+function now() {
+  const d = new Date();
+  return d.getTime();
+}
+
+/**
  * Service worker interepts requests for images
  * It puts retrieved images in cache for 1 day
  * If image not found responds with fallback
@@ -8,15 +17,6 @@ const INVALIDATION_INTERVAL = Number(24 * 60 * 60 * 1000) * 31; // 31 days
 const NS = 'MAGE';
 const SEPARATOR = '|';
 const VERSION = Math.ceil(now() / INVALIDATION_INTERVAL);
-
-/**
- * Helper to get current timestamp
- * @returns {Number}
- */
-function now() {
-  const d = new Date();
-  return d.getTime();
-}
 
 /**
  * Build cache storage key that includes namespace, url and record version
@@ -52,22 +52,83 @@ function parseKey(key) {
 /**
  * Invalidate records matchinf actual version
  *
- * @param {Cache} caches
+ * @param {Cache} cacheStorage
  * @returns {Promise}
  */
-function purgeExpiredRecords(caches) {
+function purgeExpiredRecords(cacheStorage) {
   console.log('[PWA] [service-worker] Purging...');
-  return caches.keys().then(function (keys) {
-    return Promise.all(
-      keys.map(function (key) {
+  return cacheStorage.keys().then((keys) =>
+    Promise.all(
+      keys.map((key) => {
         const record = parseKey(key);
         if (record.ns === NS && record.ver !== VERSION) {
           console.log('[PWA] [service-worker] deleting', key);
-          return caches.delete(key);
+          return cacheStorage.delete(key);
         }
       }),
-    );
-  });
+    )
+  );
+}
+
+/**
+ * Handles versioned JavaScript files from same origin or subdomains.
+ * Caches based on version (?v=*) and only updates if version is higher.
+ * Removes old cached versions when newer is stored.
+ *
+ * @param {CacheStorage} cacheStorage
+ * @param {Request} request
+ * @returns {Promise<Response>}
+ */
+async function handleVersionedJS(cacheStorage, request) {
+  const requestURL = new URL(request.url);
+  const originURL = new URL(self.location.origin);
+
+  // Only allow same origin or subdomains
+  if (
+    requestURL.hostname !== originURL.hostname &&
+    !requestURL.hostname.endsWith(`.${originURL.hostname}`)
+  ) {
+    return fetch(request); // not allowed
+  }
+
+  const versionParam = requestURL.searchParams.get('v');
+  const path = requestURL.pathname;
+
+  if (!versionParam || isNaN(versionParam)) {
+    return fetch(request); // not versioned
+  }
+
+  const incomingVersion = Number(versionParam);
+  const versionedCache = await cacheStorage.open('versioned-js');
+  const cachedRequests = await versionedCache.keys();
+
+  let outdatedRequest = null;
+
+  for (const cachedReq of cachedRequests) {
+    const cachedURL = new URL(cachedReq.url);
+    const cachedVersion = Number(cachedURL.searchParams.get('v') || 0);
+
+    if (
+      cachedURL.hostname === requestURL.hostname &&
+      cachedURL.pathname === path
+    ) {
+      if (incomingVersion <= cachedVersion) {
+        const response = await versionedCache.match(cachedReq);
+        if (response) return response; // use cached older version
+      } else {
+        outdatedRequest = cachedReq; // mark for deletion
+      }
+    }
+  }
+
+  // Fetch the new version
+  const networkResponse = await fetch(request);
+  if (networkResponse.ok) {
+    if (outdatedRequest) await versionedCache.delete(outdatedRequest); // remove old version
+    await versionedCache.put(request, networkResponse.clone()); // save new
+  }
+
+  return networkResponse;
 }
 
 /**
@@ -148,6 +209,11 @@ self.addEventListener('fetch', function (event) {
   const request = event.request;
   const origin = self?.origin || self.location?.origin;
 
+  if (request.destination === 'script' && request.url.includes('?v=')) {
+    event.respondWith(handleVersionedJS(caches, request));
+    return;
+  }
+
   if (
     request.method !== 'GET' ||
     request.url.startsWith('blob:') ||
@@ -157,14 +223,7 @@ self.addEventListener('fetch', function (event) {
   )
     return;
 
-  let canCache = false;
-  for (const index in canCacheExt) {
-    if (request.url.endsWith(canCacheExt[index])) {
-      canCache = true;
-      break;
-    }
-  }
-
+  const canCache = canCacheExt.some(ext => request.url.endsWith(ext));
   if (!canCache) return;
   event.respondWith(proxyRequest(caches, request));
 });
