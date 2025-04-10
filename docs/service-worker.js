@@ -204,14 +204,19 @@ const canCacheExt = [
   "/img/bg/sky-stars/stars.png",
   "/img/bg/sky-stars/twinkling.png",
 ];
+const versionedExts = ['.js', '.css', '.woff', '.woff2', '.ttf', '.otf', '.eot'];
 
 self.addEventListener('fetch', function (event) {
   const request = event.request;
   const origin = self?.origin || self.location?.origin;
 
   if (
-    (request.destination === 'script' || request.destination === 'style') &&
-    request.url.includes('?v=')
+    request.method === 'GET' &&
+    request.url.includes('?v=') &&
+    (
+      ['script', 'style', 'manifest', 'font'].includes(request.destination) &&
+      versionedExts.some(ext => request.url.split('?')[0].endsWith(ext))
+    )
   ) {
     event.respondWith(handleVersionedStatic(caches, request));
     return;
