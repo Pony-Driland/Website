@@ -446,155 +446,11 @@ const AiScriptStart = (connStore) => {
     $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
     if (tinyAiScript.isEnabled()) {
       const contentEnabler = new EnablerAiContent();
+      const rpgData = new RpgData();
 
       // Get RPG Template
-      const rpgData = {
-        schemaHash: null,
-        allowAiUse: { public: false, private: false },
-        allowAiSchemaUse: { public: false, private: false },
-        setAllowAiUse: (value, type) => {
-          if (typeof rpgData.allowAiUse[type] === 'boolean')
-            rpgData.allowAiUse[type] = typeof value === 'boolean' ? value : false;
-        },
-        setAllowAiSchemaUse: (value, type) => {
-          if (typeof rpgData.allowAiSchemaUse[type] === 'boolean')
-            rpgData.allowAiSchemaUse[type] = typeof value === 'boolean' ? value : false;
-        },
-
-        hash: { public: null, private: null },
-        oldHash: { public: null, private: null },
-        html: { public: null, private: null },
-        offcanvas: { public: null, private: null },
-        ready: { public: false, private: false },
-        data: { public: null, private: null },
-        base: {
-          public: $('<div>', { id: 'info_box' }),
-          private: $('<div>', { id: 'privateInfo' }),
-        },
-        init: (forceRestart = false) =>
-          new Promise((resolve, reject) => {
-            // Get template
-            rpgData.template = {
-              // Seed the form with a starting value
-              startval: {},
-              // Disable additional properties
-              no_additional_properties: false,
-              // Require all properties by default
-              required_by_default: false,
-            };
-
-            // Add custom Schema
-            const customSchema = tinyAi.getCustomValue('rpgSchema');
-            if (objType(customSchema, 'object')) rpgData.template.schema = customSchema;
-            // Default schema
-            else {
-              rpgData.template.schema = aiTemplates.funcs.jsonTemplate();
-              if (ficConfigs.selected)
-                tinyAi.setCustomValue('rpgSchema', rpgData.template.schema, 0);
-            }
-
-            const schemaHash = tinyAi.getHash('rpgSchema');
-
-            // Start json
-            let failed = false;
-            let amountStarted = 0;
-            const loadData = {};
-            const startJsonNow = (where, valueName) => {
-              try {
-                // The tiny start script
-                const executeTinyStart = (isFirstTime = false) => {
-                  const rpgEditor = rpgData.data[where];
-                  // Remove first time
-                  if (isFirstTime) rpgEditor.off('ready', funcExecStart);
-                  // Get data
-                  loadData[where] = tinyAi.getCustomValue(valueName);
-                  if (!objType(loadData[where], 'object')) loadData[where] = {};
-
-                  // Insert data
-                  rpgEditor.setValue(rpgData.filter(loadData[where]));
-                  rpgEditor.validate();
-
-                  // Change events
-                  if (!ficConfigs.selected) rpgEditor.disable();
-                  if (isFirstTime) {
-                    rpgEditor.on('change', () => {
-                      rpgEditor.validate();
-                      if (ficConfigs.selected) {
-                        try {
-                          const tinyData = rpgEditor.getValue();
-                          if (tinyData) {
-                            tinyAi.setCustomValue(valueName, tinyData);
-                            rpgData.hash[where] = tinyAi.getHash(valueName);
-                            rpgData.setAllowAiUse(tinyData.allowAiUse, where);
-                            rpgData.setAllowAiSchemaUse(tinyData.allowAiSchemaUse, where);
-                          }
-                        } catch (err) {
-                          console.error(err);
-                        }
-                      }
-                    });
-                  }
-
-                  // Complete
-                  if (!failed) {
-                    rpgData.ready[where] = true;
-                    amountStarted++;
-                    if (amountStarted >= 2) {
-                      rpgData.schemaHash = schemaHash;
-                      resolve(loadData);
-                    }
-                  }
-                };
-                const funcExecStart = () => executeTinyStart(true);
-
-                // Start json data
-                if (rpgData.schemaHash !== schemaHash || !rpgData.data[where] || forceRestart) {
-                  // Remove Old
-                  if (rpgData.data[where]) rpgData.data[where].destroy();
-                  // Insert template
-                  rpgData.data[where] = new JSONEditor(
-                    rpgData.base[where].get(0),
-                    rpgData.template,
-                  );
-
-                  // Start scripts now
-                  rpgData.data[where].on('ready', funcExecStart);
-                } else executeTinyStart(false);
-              } catch (err) {
-                // Error!
-                console.error(err);
-                if (!failed) {
-                  failed = true;
-                  reject(
-                    new Error(
-                      'An error occurred at booting your RPG. Check your console for more details!',
-                    ),
-                  );
-                }
-              }
-            };
-
-            // Read json now
-            startJsonNow('public', 'rpgData');
-            startJsonNow('private', 'rpgPrivateData');
-          }),
-      };
-
+      rpgData.setTinyAi(tinyAi);
       contentEnabler.setRpgData(rpgData);
-
-      // Data Filter
-      rpgData.filter = function (value) {
-        if (typeof value === 'string') {
-          try {
-            value = JSON.parse(value);
-          } catch (err) {
-            console.error(err);
-            value = null;
-          }
-        }
-
-        return value;
-      };
 
       // Load Models
       if (!tinyAiScript.noai && !tinyAiScript.multiplayer && tinyAi.getModelsList().length < 1)
@@ -1131,6 +987,7 @@ const AiScriptStart = (connStore) => {
         selected: null,
         contentsMd5: null,
       };
+      rpgData.setFicConfigs(ficConfigs);
 
       // Reset buttons
       const resetEntireData = (resetAll = false) => {
@@ -4367,52 +4224,7 @@ const AiScriptStart = (connStore) => {
       });
 
       // tinyAi.on('selectDataId', () => {});
-
-      // Prepare RPG
-      rpgData.html.public = tinyLib.bs.offcanvas(
-        'start',
-        'rpg_ai_base_1',
-        '',
-        rpgData.base.public,
-        true,
-      );
-      rpgData.html.private = tinyLib.bs.offcanvas(
-        'end',
-        'rpg_ai_base_2',
-        '',
-        rpgData.base.private,
-        false,
-      );
-      container.prepend(rpgData.html.public, rpgData.html.private);
-      rpgData.offcanvas.public = new bootstrap.Offcanvas(rpgData.html.public.get(0));
-      rpgData.offcanvas.private = new bootstrap.Offcanvas(rpgData.html.private.get(0));
-
-      const completeTheOffCanvasRpg = () => {
-        // offCanvas closed
-        const onOffCanvasClosed = (where, type) => () => {
-          setTimeout(() => {
-            const tinyData = rpgData.data[where].getValue();
-            if (tinyData) {
-              rpgData.setAllowAiUse(tinyData.allowAiUse, where);
-              rpgData.setAllowAiSchemaUse(tinyData.allowAiSchemaUse, where);
-              if (
-                rpgData.data[where].isEnabled() &&
-                rpgData.hash[where] !== rpgData.oldHash[where]
-              ) {
-                rpgData.oldHash[where] = rpgData.hash[where];
-                tinyAi.setCustomValue(type, null, 0);
-                updateAiTokenCounterData();
-              }
-            }
-          }, 300);
-        };
-        rpgData.html.public
-          .get(0)
-          .addEventListener('hide.bs.offcanvas', onOffCanvasClosed('public', 'rpgData'));
-        rpgData.html.private
-          .get(0)
-          .addEventListener('hide.bs.offcanvas', onOffCanvasClosed('private', 'rpgPrivateData'));
-      };
+      rpgData.initOffCanvas(container);
 
       // Enable Read Only
       const validateMultiplayer = (value = null, needAi = true, isInverse = false) =>
@@ -4491,7 +4303,7 @@ const AiScriptStart = (connStore) => {
 
       // Complete
       $('#markdown-read').append(container);
-      await rpgData.init().then(completeTheOffCanvasRpg);
+      await rpgData.init().then(() => rpgData.finishOffCanvas(updateAiTokenCounterData));
 
       // Rpg mode
       if (!canUsejsStore) {
