@@ -445,6 +445,8 @@ const AiScriptStart = (connStore) => {
     let isFirstTime = true;
     $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
     if (tinyAiScript.isEnabled()) {
+      const contentEnabler = new EnablerAiContent();
+
       // Get RPG Template
       const rpgData = {
         schemaHash: null,
@@ -578,6 +580,8 @@ const AiScriptStart = (connStore) => {
           }),
       };
 
+      contentEnabler.setRpgData(rpgData);
+
       // Data Filter
       rpgData.filter = function (value) {
         if (typeof value === 'string') {
@@ -618,6 +622,7 @@ const AiScriptStart = (connStore) => {
         class: 'form-select',
         id: 'select-ai-model',
       });
+      contentEnabler.setModelSelector(modelSelector);
       const resetModelSelector = () => {
         modelSelector.empty();
         modelSelector.append($('<option>').text('None'));
@@ -773,6 +778,7 @@ const AiScriptStart = (connStore) => {
         type: 'number',
         class: 'form-control',
       });
+      contentEnabler.setOutputLength(outputLength);
 
       outputLength.on('input', () =>
         tinyAi.setMaxOutputTokens(convertToNumber(outputLength.val())),
@@ -780,6 +786,7 @@ const AiScriptStart = (connStore) => {
 
       // Temperature
       const temperature = tinyRanger();
+      contentEnabler.setTemperature(temperature);
       temperature
         .getBase()
         .on('input', () => tinyAi.setTemperature(convertToNumber(temperature.val())));
@@ -791,16 +798,19 @@ const AiScriptStart = (connStore) => {
 
       // Top P
       const topP = tinyRanger();
+      contentEnabler.setTopP(topP);
       topP.getBase().on('input', () => tinyAi.setTopP(convertToNumber(topP.val())));
       topP.getBase2().on('change', () => tinyAi.setTopP(convertToNumber(topP.val())));
 
       // Top K
       const topK = tinyRanger();
+      contentEnabler.setTopK(topK);
       topK.getBase().on('input', () => tinyAi.setTopK(convertToNumber(topK.val())));
       topK.getBase2().on('change', () => tinyAi.setTopK(convertToNumber(topK.val())));
 
       // Presence penalty
       const presencePenalty = tinyRanger();
+      contentEnabler.setPresencePenalty(presencePenalty);
       presencePenalty
         .getBase()
         .on('input', () => tinyAi.setPresencePenalty(convertToNumber(presencePenalty.val())));
@@ -810,6 +820,7 @@ const AiScriptStart = (connStore) => {
 
       // Frequency penalty
       const frequencyPenalty = tinyRanger();
+      contentEnabler.setFrequencyPenalty(frequencyPenalty);
       frequencyPenalty
         .getBase()
         .on('input', () => tinyAi.setFrequencyPenalty(convertToNumber(frequencyPenalty.val())));
@@ -886,8 +897,8 @@ const AiScriptStart = (connStore) => {
               // Clear data
               clearMessages();
               if (sessionEnabled) {
-                enableReadOnly(false);
-                enableMessageButtons(true);
+                contentEnabler.enBase();
+                contentEnabler.enMessageButtons();
               }
               makeTempMessage(introduction, 'Introduction');
               const history = tinyAi.getData();
@@ -905,7 +916,7 @@ const AiScriptStart = (connStore) => {
                 history.tokens && Array.isArray(history.tokens.data) ? history.tokens.data : [],
                 true,
               );
-              if (sessionEnabled) disablePromptButtons(false);
+              if (sessionEnabled) contentEnabler.enPromptButtons();
               updateAiTokenCounterData(hashItems, forceReset);
 
               // Update button list
@@ -1040,8 +1051,8 @@ const AiScriptStart = (connStore) => {
           if (forceLoad) {
             // Clear messages
             clearMessages();
-            enableReadOnly(false);
-            enableMessageButtons(true);
+            contentEnabler.enBase();
+            contentEnabler.enMessageButtons();
           }
 
           // Complete
@@ -1152,9 +1163,11 @@ const AiScriptStart = (connStore) => {
           }
         }),
       ];
+      contentEnabler.setFicResets(ficResets);
 
       // Fic Templates
       const ficTemplates = [];
+      contentEnabler.setFicTemplates(ficTemplates);
       for (const index in ficConfigs.data) {
         const newButton = createButtonSidebar(
           ficConfigs.data[index].icon,
@@ -1190,6 +1203,7 @@ const AiScriptStart = (connStore) => {
           },
         ),
       ];
+      contentEnabler.setImportItems(importItems);
 
       const ficPromptItems = [
         // System Instructions
@@ -1269,6 +1283,7 @@ const AiScriptStart = (connStore) => {
           ),
         ),
       ];
+      contentEnabler.setFicPromptItems(ficPromptItems);
 
       // Textarea Template
       const tinyModalTextarea = (
@@ -3403,11 +3418,11 @@ const AiScriptStart = (connStore) => {
           usingUpdateToken = true;
           const history = tinyAi.getData();
           if (history) {
-            enableReadOnly(true);
-            modelChangerReadOnly();
-            disablePromptButtons(true);
-            enableModelReadOnly();
-            enableMessageButtons(false);
+            contentEnabler.deBase();
+            contentEnabler.deModelChanger();
+            contentEnabler.dePromptButtons();
+            contentEnabler.deModel();
+            contentEnabler.deMessageButtons();
             const oldMsgInput = msgInput.val();
 
             let points = '.';
@@ -3426,11 +3441,11 @@ const AiScriptStart = (connStore) => {
               clearInterval(loadingMessage);
               msgInput.val(oldMsgInput);
               if (sessionEnabled) {
-                enableReadOnly(false);
-                modelChangerReadOnly(false);
-                disablePromptButtons(false);
-                enableModelReadOnly(false);
-                enableMessageButtons(true);
+                contentEnabler.enBase();
+                contentEnabler.enModelChanger();
+                contentEnabler.enPromptButtons();
+                contentEnabler.enModel();
+                contentEnabler.enMessageButtons();
               }
               msgInput.trigger('focus');
             };
@@ -3708,13 +3723,16 @@ const AiScriptStart = (connStore) => {
           );
         },
       );
+      contentEnabler.setMsgInput(msgInput);
 
       // Submit
       const msgSubmit = tinyLib.bs.button('primary input-group-text-dark').text('Send');
+      contentEnabler.setMsgSubmit(msgSubmit);
 
       const cancelSubmit = tinyLib.bs
         .button('primary input-group-text-dark rounded-end')
         .text('Cancel');
+      contentEnabler.setCancelSubmit(cancelSubmit);
 
       const submitMessage = async () => {
         // Prepare to get data
@@ -3723,11 +3741,11 @@ const AiScriptStart = (connStore) => {
         msgInput.val('').trigger('input');
 
         const controller = new AbortController();
-        enableReadOnly(true);
-        enableMessageButtons(false);
-        modelChangerReadOnly();
-        disablePromptButtons(true);
-        enableModelSelectorReadOnly(true);
+        contentEnabler.deBase();
+        contentEnabler.deMessageButtons();
+        contentEnabler.deModelChanger();
+        contentEnabler.dePromptButtons();
+        contentEnabler.deModelSelector();
 
         let points = '.';
         let secondsWaiting = -1;
@@ -3771,7 +3789,7 @@ const AiScriptStart = (connStore) => {
           }
         });
         if (canContinue) {
-          enableReadOnly(true, controller);
+          contentEnabler.deBase(controller);
           addMessage(
             makeMessage({
               message: msg,
@@ -3790,19 +3808,20 @@ const AiScriptStart = (connStore) => {
 
         // Complete
         clearInterval(loadingMessage);
-        if (sessionEnabled) disablePromptButtons(false);
+        if (sessionEnabled) contentEnabler.enPromptButtons();
         msgInput.val('');
 
         if (sessionEnabled) {
-          enableMessageButtons(true);
-          enableReadOnly(false);
-          modelChangerReadOnly(false);
-          enableModelSelectorReadOnly(false);
+          contentEnabler.enMessageButtons();
+          contentEnabler.enBase();
+          contentEnabler.enModelChanger();
+          contentEnabler.enModelSelector();
         }
         msgInput.trigger('focus');
       };
 
       const submitCache = {};
+      contentEnabler.setSubmitCache(submitCache);
       msgSubmit.on('click', async () => {
         if (!msgInput.prop('disabled')) submitMessage();
       });
@@ -4073,6 +4092,8 @@ const AiScriptStart = (connStore) => {
         style: 'overflow-y: auto; margin-bottom: -54px;',
       });
 
+      contentEnabler.setChatContainer(chatContainer);
+
       const textInputContainer = $('<div>', {
         class: 'input-group pb-3 body-background',
       }).append(msgInput, cancelSubmit, msgSubmit);
@@ -4133,20 +4154,20 @@ const AiScriptStart = (connStore) => {
         new Promise((resolve, reject) => {
           if (canUsejsStore) {
             if (useReadOnly) {
-              disablePromptButtons(true);
-              enableMessageButtons(false);
-              enableReadOnly(true);
-              modelChangerReadOnly(true);
-              enableModelSelectorReadOnly(true);
+              contentEnabler.dePromptButtons();
+              contentEnabler.deMessageButtons();
+              contentEnabler.deBase();
+              contentEnabler.deModelChanger();
+              contentEnabler.deModelSelector();
             }
 
             const disableReadOnly = () => {
               if (useReadOnly && sessionEnabled) {
-                disablePromptButtons(false);
-                enableMessageButtons(true);
-                enableReadOnly(false);
-                modelChangerReadOnly(false);
-                enableModelSelectorReadOnly(false);
+                contentEnabler.enPromptButtons();
+                contentEnabler.enMessageButtons();
+                contentEnabler.enBase();
+                contentEnabler.enModelChanger();
+                contentEnabler.enModelSelector();
               }
             };
             Promise.all([
@@ -4409,74 +4430,7 @@ const AiScriptStart = (connStore) => {
             ? true
             : false;
 
-      const enableModelSelectorReadOnly = (value = true) => {
-        const isEnabled = validateMultiplayer(value);
-        modelSelector.prop('disabled', isEnabled);
-        if (isEnabled) modelSelector.addClass('disabled');
-        else modelSelector.removeClass('disabled');
-      };
-
-      const enableModelReadOnly = (value = true) => {
-        const isEnabled = validateMultiplayer(value);
-        outputLength.prop('disabled', isEnabled);
-        enableModelSelectorReadOnly(isEnabled);
-
-        temperature[isEnabled ? 'disable' : 'enable']();
-        topP[isEnabled ? 'disable' : 'enable']();
-        topK[isEnabled ? 'disable' : 'enable']();
-        presencePenalty[isEnabled ? 'disable' : 'enable']();
-        frequencyPenalty[isEnabled ? 'disable' : 'enable']();
-
-        if (isEnabled) outputLength.addClass('disabled');
-        else outputLength.removeClass('disabled');
-      };
-
-      const enableMessageButtons = (value = true) => {
-        const isEnabled = validateMultiplayer(value, false);
-        if (isEnabled) chatContainer.removeClass('hide-msg-buttons');
-        else chatContainer.addClass('hide-msg-buttons');
-      };
-
-      const readOnlyTemplate = (item, value, needAi = true) => {
-        const isEnabled = validateMultiplayer(value, needAi);
-        item.prop('disabled', isEnabled);
-        if (isEnabled) {
-          item.addClass('disabled');
-        } else {
-          item.removeClass('disabled');
-        }
-      };
-
-      const enableReadOnly = (isEnabled = true, controller = null) => {
-        readOnlyTemplate(msgSubmit, isEnabled, false);
-        readOnlyTemplate(msgInput, isEnabled, false);
-        readOnlyTemplate(cancelSubmit, !isEnabled || !controller, false);
-        if (controller) {
-          msgSubmit.addClass('d-none');
-          cancelSubmit.removeClass('d-none');
-          cancelSubmit.on('click', () => {
-            enableReadOnly(false);
-            enableMessageButtons(true);
-            try {
-              if (submitCache.cancel) submitCache.cancel();
-              controller.abort();
-            } catch (err) {
-              console.error(err);
-              alert(err.message);
-            }
-          });
-        } else {
-          msgSubmit.removeClass('d-none');
-          cancelSubmit.addClass('d-none');
-          cancelSubmit.off('click');
-        }
-      };
-
-      const modelChangerReadOnly = (isEnabled = true) => {
-        for (const index in ficResets) readOnlyTemplate(ficResets[index], isEnabled, false);
-        for (const index in ficTemplates) readOnlyTemplate(ficTemplates[index], isEnabled, false);
-        for (const index in importItems) readOnlyTemplate(importItems[index], isEnabled, false);
-      };
+      contentEnabler.setValidateMultiplayer(validateMultiplayer);
 
       // First Dialogue script
       const enabledFirstDialogue = (value = true) => {
@@ -4506,38 +4460,19 @@ const AiScriptStart = (connStore) => {
           else removeAddFirstDialogue();
         } else removeAddFirstDialogue();
       };
-
-      // Disable dialogue buttons
-      const disablePromptButtons = (value = false) => {
-        const isDisabled = validateMultiplayer(value, false);
-        // Execute disable script
-        for (const item in rpgData.ready) {
-          if (rpgData.ready[item]) {
-            if (isDisabled) rpgData.data[item].disable();
-            else rpgData.data[item].enable();
-          }
-        }
-
-        for (const index in ficPromptItems) {
-          ficPromptItems[index].prop('disabled', isDisabled);
-          if (isDisabled) ficPromptItems[index].addClass('disabled');
-          else ficPromptItems[index].removeClass('disabled');
-        }
-        // First dialogue script
-        enabledFirstDialogue(!isDisabled);
-      };
+      contentEnabler.setEnabledFirstDialogue(enabledFirstDialogue);
 
       // Clear Messages
       const clearMessages = () => msgList.empty();
-      enableReadOnly();
-      enableMessageButtons(false);
-      disablePromptButtons(true);
+      contentEnabler.deBase();
+      contentEnabler.deMessageButtons();
+      contentEnabler.dePromptButtons();
 
       // Multiplayer disable inputs
       if (tinyAiScript.multiplayer || tinyAiScript.noai) {
-        if (tinyAiScript.multiplayer) modelChangerReadOnly();
-        enableModelReadOnly();
-        enableModelSelectorReadOnly();
+        if (tinyAiScript.multiplayer) contentEnabler.deModelChanger();
+        contentEnabler.deModel();
+        contentEnabler.deModelSelector();
       }
 
       // Welcome
@@ -4666,11 +4601,11 @@ const AiScriptStart = (connStore) => {
                 if (client.isActive()) $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
                 // Disable page
                 else {
-                  enableReadOnly(true);
-                  modelChangerReadOnly();
-                  disablePromptButtons(true);
-                  enableModelReadOnly(true);
-                  enableMessageButtons(false);
+                  contentEnabler.deBase();
+                  contentEnabler.deModelChanger();
+                  contentEnabler.dePromptButtons();
+                  contentEnabler.deModel();
+                  contentEnabler.deMessageButtons();
                   sessionEnabled = false;
                 }
               }
