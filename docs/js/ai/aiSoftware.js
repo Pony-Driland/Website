@@ -1630,6 +1630,7 @@ const AiScriptStart = (connStore) => {
 
           // Add container
           const $diceContainer = $('<div>');
+          const $diceError = $('<div>');
           const readSkinValues = [
             ['bgSkin', 'bg', 'setBgSkin'],
             ['textSkin', 'text', 'setTextSkin'],
@@ -1731,20 +1732,39 @@ const AiScriptStart = (connStore) => {
             }),
             (err, dataUrl) => {
               console.log(`[dice-file] [upload] Image length: ${dataUrl.length}`);
+
               // Error
+              bgImgUploadButton.removeClass('text-danger');
               if (err) {
                 console.error(err);
                 bgImgUploadButton.addClass('text-danger');
                 return;
               }
-              // Insert image
-              if (
-                typeof tinyCfg.rateLimit.img !== 'number' ||
-                dataUrl.length <= tinyCfg.rateLimit.img
-              )
-                configs.bgImg.val(dataUrl).removeClass('text-danger').trigger('change');
-              // Nope
-              else bgImgUploadButton.addClass('text-danger');
+
+              const maxSize = tinyCfg.rateLimit.img || 0;
+              const base64String = dataUrl.split(',')[1];
+              const padding = (base64String.match(/=+$/) || [''])[0].length;
+              const sizeInBytes = (base64String.length * 3) / 4 - padding;
+
+              const convertToMb = (tinyBytes) => `${(tinyBytes / (1024 * 1024)).toFixed(2)} MB`;
+              console.log(`[dice-file] [upload] Image size: ${convertToMb(sizeInBytes)}`);
+              console.log(`[dice-file] [upload] Upload limit: ${convertToMb(maxSize)}`);
+
+              // Big Image
+              $diceError.empty();
+              if (maxSize > 0 && sizeInBytes > maxSize) {
+                bgImgUploadButton.addClass('text-danger');
+                tinyLib.alert(
+                  $diceError,
+                  'danger',
+                  'bi bi-exclamation-triangle-fill',
+                  `Image is too large: ${convertToMb(sizeInBytes)} (max allowed: ${convertToMb(maxSize)})`,
+                );
+                return;
+              }
+
+              // OK
+              configs.bgImg.val(dataUrl).removeClass('text-danger').trigger('change');
             },
           );
 
@@ -1906,7 +1926,7 @@ const AiScriptStart = (connStore) => {
             $formRow2.toggleClass('d-none');
           });
 
-          $root.append($applyBtn, $rollButton, $diceContainer, $totalBase);
+          $root.append($applyBtn, $rollButton, $diceError, $diceContainer, $totalBase);
           updateAllSkins();
           dice.roll(0, 3);
 
