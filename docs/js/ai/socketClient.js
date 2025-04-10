@@ -110,7 +110,7 @@ class TinyClientIo extends EventEmitter {
           msg: typeof result.size.msg === 'number' ? result.size.msg : 0,
           nickname: typeof result.size.nickname === 'number' ? result.size.nickname : 0,
           password: typeof result.size.password === 'number' ? result.size.password : 0,
-          roomSize: typeof result.size.roomSize === 'number' ? result.size.roomSize : 0,
+          roomId: typeof result.size.roomId === 'number' ? result.size.roomId : 0,
           roomTitle: typeof result.size.roomTitle === 'number' ? result.size.roomTitle : 0,
           userId: typeof result.size.userId === 'number' ? result.size.userId : 0,
         };
@@ -781,7 +781,7 @@ class TinyClientIo extends EventEmitter {
     return objType(result, 'object') && result.roomId === this.getRoomId();
   }
 
-  install() {
+  install(tinyAiScript) {
     const client = this;
     // Dice
     client.onDiceRoll((result) => {

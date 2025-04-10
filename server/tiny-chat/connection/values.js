@@ -137,7 +137,7 @@ export const getRateLimit = () => ({
     minPassword: getIniConfig('MIN_PASSWORD_SIZE'),
     nickname: getIniConfig('NICKNAME_SIZE'),
     msg: getIniConfig('MESSAGE_SIZE'),
-    roomSize: getIniConfig('ROOM_ID_SIZE'),
+    roomId: getIniConfig('ROOM_ID_SIZE'),
     roomTitle: getIniConfig('ROOM_TITLE_SIZE'),
     modelId: getIniConfig('MODEL_ID_SIZE'),
   },

@@ -2005,7 +2005,237 @@ const AiScriptStart = (connStore) => {
         leftMenu.push($('<h5>').text('Online'));
 
         leftMenu.push(
-          createButtonSidebar('fas fa-users', 'Room users', () => {
+          createButtonSidebar('fas fa-users', 'Room settings', () => {
+            if (tinyIo.client) {
+              const room = tinyIo.client.getRoom() || {};
+              const ratelimit = tinyIo.client.getRateLimit() || { size: {}, limit: {} };
+              const user = tinyIo.client.getUser() || {};
+              const cantEdit = room.ownerId !== tinyIo.client.getUserId() && !user.isOwner;
+
+              const $root = $('<div>');
+
+              const $formContainer = $('<div>').addClass('mb-4');
+              const $editError = $('<div>').addClass('text-danger small mt-2');
+              const $deleteError = $('<div>').addClass('text-danger small mt-2');
+
+              // ─── Edit room ───────────────────────────────
+              const $editForm = $('<form>').addClass('mb-4');
+              $editForm.append($('<h5>').text('Edit Room Info'));
+
+              const $roomId = $('<input>')
+                .attr({
+                  type: 'text',
+                  id: 'roomId',
+                  placeholder: 'Enter new room title',
+                  maxLength: ratelimit.size.roomId,
+                })
+                .prop('disabled', true)
+                .addClass('form-control')
+                .addClass('form-control')
+                .val(tinyIo.client.getRoomId());
+
+              const $roomTitle = $('<input>')
+                .attr({
+                  type: 'text',
+                  id: 'roomTitle',
+                  placeholder: 'Enter new room title',
+                  maxLength: ratelimit.size.roomTitle,
+                })
+                .addClass('form-control')
+                .val(room.title)
+                .prop('disabled', cantEdit);
+
+              $editForm.append(
+                $('<div>')
+                  .addClass('row mb-3')
+                  .append(
+                    $('<div>')
+                      .addClass('col-md-6')
+                      .append(
+                        $('<label>').attr('for', 'roomId').addClass('form-label').text('Room ID'),
+                        $roomId,
+                      ),
+                    $('<div>')
+                      .addClass('col-md-6')
+                      .append(
+                        $('<label>')
+                          .attr('for', 'roomTitle')
+                          .addClass('form-label')
+                          .text('Room Title'),
+                        $roomTitle,
+                      ),
+                  ),
+              );
+
+              // Max users
+              $editForm.append(
+                $('<div>')
+                  .addClass('mb-3')
+                  .append(
+                    $('<label>').attr('for', 'maxUsers').addClass('form-label').text('Max Users'),
+                    $('<input>')
+                      .attr({
+                        type: 'number',
+                        id: 'maxUsers',
+                        min: 1,
+                        max: ratelimit.limit.roomUsers,
+                        placeholder: 'Maximum number of users',
+                      })
+                      .addClass('form-control')
+                      .val(room.maxUsers)
+                      .prop('disabled', cantEdit),
+                  ),
+              );
+
+              // New password
+              $editForm.append(
+                $('<div>')
+                  .addClass('mb-3')
+                  .append(
+                    $('<label>')
+                      .attr('for', 'roomPassword')
+                      .addClass('form-label')
+                      .text('New Room Password'),
+                    $('<input>')
+                      .attr({
+                        type: 'password',
+                        id: 'roomPassword',
+                        placeholder: 'Leave empty to keep current password',
+                        maxLength: ratelimit.size.password,
+                      })
+                      .addClass('form-control')
+                      .prop('disabled', cantEdit),
+                  ),
+              );
+
+              // Submit
+              $editForm.append(
+                $('<button>')
+                  .attr('type', 'submit')
+                  .addClass('btn btn-primary')
+                  .text('Save Changes')
+                  .prop('disabled', cantEdit),
+              );
+
+              // ─── Delete room ─────────────────────────────
+              const $deleteSection = $('<div>').addClass('border-top pt-4');
+
+              $deleteSection.append(
+                $('<h5>').addClass('text-danger').text('Delete Room'),
+                $('<p>')
+                  .addClass('text-muted mb-2')
+                  .html(
+                    'This action <strong>cannot be undone</strong>. Deleting this room will remove all its data permanently.',
+                  ),
+              );
+
+              const $deleteForm = $('<form>').addClass('d-flex flex-column gap-2');
+
+              // Your password
+              $deleteForm.append(
+                $('<div>').append(
+                  $('<label>')
+                    .attr('for', 'ownerPassword')
+                    .addClass('form-label')
+                    .text('Enter your current password to confirm:'),
+                  $('<input>')
+                    .attr({
+                      type: 'password',
+                      id: 'ownerPassword',
+                      placeholder: 'Current account password',
+                      maxLength: ratelimit.size.password,
+                    })
+                    .addClass('form-control')
+                    .prop('disabled', cantEdit),
+                ),
+              );
+
+              // Delete now
+              $deleteForm.append(
+                $('<button>')
+                  .attr('type', 'submit')
+                  .addClass('btn btn-danger mt-2')
+                  .text('Delete Room Permanently')
+                  .prop('disabled', cantEdit),
+              );
+
+              $deleteSection.append($deleteForm);
+
+              // ─── Container time ───────────────────────────────
+              $formContainer.append($editForm, $deleteSection);
+
+              // ─── Add into the DOM ───
+              $root.append($formContainer);
+
+              $editForm.append($editError);
+              $deleteForm.append($deleteError);
+
+              // Start modal
+              const modal = tinyLib.modal({
+                title: 'Room Settings',
+                dialog: 'modal-lg',
+                id: 'user-manager',
+                body: $root,
+              });
+
+              $editForm.on('submit', (e) => {
+                e.preventDefault();
+                if (!cantEdit) {
+                  $editError.empty(); // limpa erros anteriores
+
+                  const title = $roomTitle.val().trim();
+                  const maxUsers = parseInt($editForm.find('#maxUsers').val(), 10);
+                  const password = $editForm.find('#roomPassword').val().trim();
+
+                  if (Number.isNaN(maxUsers) || maxUsers <= 0) {
+                    $editError.text('Max users must be a positive number.');
+                    return;
+                  }
+
+                  if (maxUsers > 50) {
+                    $editError.text('Max users cannot exceed 50.');
+                    return;
+                  }
+
+                  const newSettings = { title, maxUsers };
+                  if (typeof password === 'string' && password.length > 0)
+                    newSettings.password = password;
+
+                  modal.modal('hide');
+                  tinyIo.client.updateRoomSettings(newSettings).then((result) => {
+                    if (result.error) alert(`${result.msg}\nCode ${result.code}`);
+                    else alert('Your room settings has been changed successfully!');
+                  });
+                }
+              });
+
+              $deleteForm.on('submit', (e) => {
+                e.preventDefault();
+                if (!cantEdit) {
+                  $deleteError.empty(); // limpa erros anteriores
+
+                  const password = $deleteForm.find('#ownerPassword').val().trim();
+
+                  if (!password) {
+                    $deleteError.text('Please enter your current password.');
+                    return;
+                  }
+
+                  if (!confirm('Are you absolutely sure? This cannot be undone.')) return;
+
+                  modal.modal('hide');
+                  tinyIo.client.deleteRoom(password).then((result) => {
+                    if (result.error) alert(`${result.msg}\nCode ${result.code}`);
+                    else alert('Your room has been deleted successfully!');
+                  });
+                }
+              });
+            }
+          }),
+        );
+
+        leftMenu.push(
+          createButtonSidebar('fas fa-users', 'User manager', () => {
             if (tinyIo.client) {
               const $root = $('<div>');
 
@@ -4339,7 +4569,7 @@ const AiScriptStart = (connStore) => {
               );
 
             // Install scripts
-            client.install();
+            client.install(tinyAiScript);
 
             // Connected
             client.on('connect', (connectionId) => {
