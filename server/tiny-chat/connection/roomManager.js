@@ -54,6 +54,7 @@ export default function roomManager(socket, io, appStorage) {
     const userId = userSession.getUserId(socket);
     if (!userId) return accountNotDetected(fn);
     if (userIsRateLimited(socket, fn)) return;
+    const isMod = await moderators.has(userId);
 
     // Check if the room exists
     const room = await rooms.get(roomId);
@@ -64,7 +65,13 @@ export default function roomManager(socket, io, appStorage) {
     room.maxUsers = room.maxUsers || getIniConfig('MAX_USERS_PER_ROOM');
 
     // Check if the room has a password and validate it
-    if (room.password && room.password !== getHashString(password)) {
+    if (
+      userId !== getIniConfig('OWNER_ID') &&
+      room.ownerId !== userId &&
+      !isMod &&
+      room.password &&
+      room.password !== getHashString(password)
+    ) {
       return fn({ error: true, msg: 'Incorrect room password.', code: 2 });
     }
 
@@ -75,12 +82,7 @@ export default function roomManager(socket, io, appStorage) {
     }
 
     // Check if the room is disabled
-    if (
-      userId !== getIniConfig('OWNER_ID') &&
-      !(await moderators.has(userId)) &&
-      room.ownerId !== userId &&
-      room.disabled
-    ) {
+    if (userId !== getIniConfig('OWNER_ID') && !isMod && room.ownerId !== userId && room.disabled) {
       return fn({ error: true, msg: 'Room is disabled.', code: 4 });
     }
 
@@ -629,7 +631,9 @@ export default function roomManager(socket, io, appStorage) {
 
     if ('password' in newSettings) {
       if (typeof newSettings.password === 'string')
-        allowedUpdates.password = newSettings.password.substring(0, getIniConfig('PASSWORD_SIZE'));
+        allowedUpdates.password = getHashString(
+          newSettings.password.substring(0, getIniConfig('PASSWORD_SIZE')),
+        );
     }
 
     if ('model' in newSettings) {

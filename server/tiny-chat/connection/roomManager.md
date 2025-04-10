@@ -92,7 +92,7 @@ Allows a user to join a specific room. Validates room credentials, room availabi
    - The function checks if the room exists by attempting to retrieve it from the `rooms`. If the room is not found, an error message with code `1` ("Room not found") is returned.
 5. **Password Validation:**
 
-   - If the room requires a password, it is validated against the password provided by the user. If incorrect, an error message with code `2` ("Incorrect room password") is returned.
+   - If the room requires a password, it is validated against the password provided by the user (ignored by server moderators and server owner). If incorrect, an error message with code `2` ("Incorrect room password") is returned.
 
 6. **Room Capacity Check:**
 

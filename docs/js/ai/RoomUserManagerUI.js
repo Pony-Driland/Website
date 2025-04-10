@@ -105,13 +105,16 @@ class UserRoomManager {
    */
   checkPerms() {
     const room = this.#client.getRoom() || {};
-    if (this.$unbanInput) this.$unbanInput.prop('disabled', !this.isModerator && !this.isOwner);
-    if (this.$kickAll) this.$kickAll.prop('disabled', !this.isModerator && !this.isOwner);
+    const user = this.#client.getUser() || {};
+    if (this.$unbanInput)
+      this.$unbanInput.prop('disabled', !this.isModerator && !this.isOwner && !user.isOwner);
+    if (this.$kickAll)
+      this.$kickAll.prop('disabled', !this.isModerator && !this.isOwner && !user.isOwner);
     for (const item of this.#usersHtml) {
       const needDisable =
         item.userId === room.ownerId ||
         item.userId === this.currentUserId ||
-        (!this.isModerator && !this.isOwner);
+        (!this.isModerator && !this.isOwner && !user.isOwner);
       item.actions.kick.prop('disabled', needDisable);
       item.actions.ban.prop('disabled', needDisable);
     }
