@@ -4161,6 +4161,11 @@ const AiScriptStart = (connStore) => {
               checkSetting('presencePenalty');
               checkSetting('frequencyPenalty');
               checkSetting('model');
+
+              checkSetting('prompt');
+              checkSetting('firstDialogue');
+              checkSetting('systemInstruction');
+
               tinyIo.client.updateRoomSettings(newSettings);
             }
           }, 1000);
@@ -4181,12 +4186,12 @@ const AiScriptStart = (connStore) => {
       tinyAiSocketTemplate('setFrequencyPenalty', frequencyPenalty);
       tinyAiSocketTemplate('setModel');
 
-      tinyAi.on('setPrompt', (data, hash, id) => saveSessionBackup(id));
-      tinyAi.on('setFirstDialogue', (data, hash, id) => saveSessionBackup(id));
-      tinyAi.on('setSystemInstruction', (data, hash, id) => saveSessionBackup(id));
-      tinyAi.on('setRpgSchema', (value, id) => saveSessionBackup(id));
-      tinyAi.on('setRpgData', (value, id) => saveSessionBackup(id));
-      tinyAi.on('setRpgPrivateData', (value, id) => saveSessionBackup(id));
+      tinyAiSocketTemplate('setPrompt');
+      tinyAiSocketTemplate('setFirstDialogue');
+      tinyAiSocketTemplate('setSystemInstruction');
+      tinyAiSocketTemplate('setRpgSchema');
+      tinyAiSocketTemplate('setRpgData');
+      tinyAiSocketTemplate('setRpgPrivateData');
 
       // Delete session
       tinyAi.on('stopDataId', (id) => {

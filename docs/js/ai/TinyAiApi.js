@@ -1114,15 +1114,14 @@ class TinyAiApi extends EventEmitter {
   setPrompt(promptData, tokenAmount, id) {
     const selectedId = this.getId(id);
     if (this.history[selectedId]) {
-      let hash;
       if (typeof promptData === 'string') {
-        hash = objHash(promptData);
+        const hash = objHash(promptData);
         this.history[selectedId].prompt = promptData;
         this.history[selectedId].hash.prompt = hash;
       }
 
       if (typeof tokenAmount === 'number') this.history[selectedId].tokens.prompt = tokenAmount;
-      this.emit('setPrompt', promptData, hash, selectedId);
+      this.emit('setPrompt', promptData, selectedId);
       return;
     }
     throw new Error('Invalid history id data!');
@@ -1158,16 +1157,15 @@ class TinyAiApi extends EventEmitter {
   setFirstDialogue(dialogue, tokenAmount, id) {
     const selectedId = this.getId(id);
     if (this.history[selectedId]) {
-      let hash;
       if (typeof dialogue === 'string') {
-        hash = objHash(dialogue);
+        const hash = objHash(dialogue);
         this.history[selectedId].firstDialogue = dialogue;
         this.history[selectedId].hash.firstDialogue = hash;
       }
 
       if (typeof tokenAmount === 'number')
         this.history[selectedId].tokens.firstDialogue = tokenAmount;
-      this.emit('setFirstDialogue', dialogue, hash, selectedId);
+      this.emit('setFirstDialogue', dialogue, selectedId);
       return;
     }
     throw new Error('Invalid history id data!');
@@ -1274,16 +1272,15 @@ class TinyAiApi extends EventEmitter {
   setSystemInstruction(data, tokenAmount, id) {
     const selectedId = this.getId(id);
     if (this.history[selectedId]) {
-      let hash;
       if (typeof data === 'string') {
-        hash = objHash(data);
+        const hash = objHash(data);
         this.history[selectedId].systemInstruction = data;
         this.history[selectedId].hash.systemInstruction = hash;
       }
 
       if (typeof tokenAmount === 'number')
         this.history[selectedId].tokens.systemInstruction = tokenAmount;
-      this.emit('setSystemInstruction', data, hash, selectedId);
+      this.emit('setSystemInstruction', data, selectedId);
       return;
     }
     throw new Error('Invalid history id data!');
