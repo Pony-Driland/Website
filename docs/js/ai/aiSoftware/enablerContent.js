@@ -94,11 +94,14 @@ class EnablerAiContent {
     this.outputLength.prop('disabled', isEnabled);
     this.#enableModelSelectorReadOnly(isEnabled);
 
-    this.temperature[isEnabled ? 'disable' : 'enable']();
-    this.topP[isEnabled ? 'disable' : 'enable']();
-    this.topK[isEnabled ? 'disable' : 'enable']();
-    this.presencePenalty[isEnabled ? 'disable' : 'enable']();
-    this.frequencyPenalty[isEnabled ? 'disable' : 'enable']();
+    const validateChange = (where) =>
+      this[where][isEnabled || this[where].valString2().trim().length < 1 ? 'disable' : 'enable']();
+
+    validateChange('temperature');
+    validateChange('topP');
+    validateChange('topK');
+    validateChange('presencePenalty');
+    validateChange('frequencyPenalty');
 
     if (isEnabled) this.outputLength.addClass('disabled');
     else this.outputLength.removeClass('disabled');
