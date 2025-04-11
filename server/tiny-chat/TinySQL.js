@@ -123,6 +123,55 @@ class TinySQL {
   }
 
   /**
+   * Update an existing record with given data.
+   * Will not insert if the record doesn't exist.
+   * @param {string|number} id - Primary key value.
+   * @param {object} valueObj - Data to update.
+   * @param {object|null} [extraData=null] - Data for join table, if configured.
+   * @returns {Promise<object|object[]|null>} Null if no rows were updated.
+   */
+  async update(id, valueObj = {}, extraData = null) {
+    const results = [];
+
+    const columns = Object.keys(valueObj);
+    const values = Object.values(valueObj).map((v) =>
+      typeof v === 'object' ? JSON.stringify(v) : v,
+    );
+    const setClause = columns.map((col) => `${col} = ?`).join(', ');
+
+    const useSub = this.#settings.subId && typeof valueObj[this.#settings.subId] !== 'undefined';
+    const query = `UPDATE ${this.#settings.name} SET ${setClause} WHERE ${this.#settings.id} = ?${useSub ? ` AND ${this.#settings.subId} = ?` : ''}`;
+    const params = [...values, id];
+    if (useSub) params.push(valueObj[this.#settings.subId]);
+
+    const mainResult = await this.#appStorage.runQuery(query, params);
+    results.push(mainResult);
+    if (this.debug) console.log('[sql] [update]', query, params, mainResult);
+
+    if (mainResult?.changes === 0 || mainResult?.rowsAffected === 0) {
+      return null; // No record updated
+    }
+
+    if (extraData !== null && this.#settings.join) {
+      const metaColumns = Object.keys(extraData);
+      const metaValues = Object.values(extraData).map((v) =>
+        typeof v === 'object' ? JSON.stringify(v) : v,
+      );
+      const metaSetClause = metaColumns.map((col) => `${col} = ?`).join(', ');
+
+      const metaQuery = `UPDATE ${this.#settings.join} SET ${metaSetClause} WHERE ${this.#settings.id} = ?${useSub ? ` AND ${this.#settings.subId} = ?` : ''}`;
+      const metaParams = [...metaValues, id];
+      if (useSub) metaParams.push(valueObj[this.#settings.subId]);
+
+      const metaResult = await this.#appStorage.runQuery(metaQuery, metaParams);
+      results.push(metaResult);
+      if (this.debug) console.log('[sql] [update-meta]', metaQuery, metaParams, metaResult);
+    }
+
+    return results.length < 2 ? results[0] : results;
+  }
+
+  /**
    * Insert or update a record with given data.
    * @param {string|number} id - Primary key value.
    * @param {object} valueObj - Data to store.
