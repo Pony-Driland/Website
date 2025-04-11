@@ -3,6 +3,10 @@ class EnablerAiContent {
   #enabledFirstDialogue;
   constructor() {}
 
+  setResetSettingsButton(resetSettingsButton) {
+    this.resetSettingsButton = resetSettingsButton;
+  }
+
   setTemperature(temperature) {
     this.temperature = temperature;
   }
@@ -103,8 +107,13 @@ class EnablerAiContent {
     validateChange('presencePenalty');
     validateChange('frequencyPenalty');
 
-    if (isEnabled) this.outputLength.addClass('disabled');
-    else this.outputLength.removeClass('disabled');
+    if (isEnabled) {
+      this.outputLength.addClass('disabled');
+      this.resetSettingsButton.addClass('disabled');
+    } else {
+      this.outputLength.removeClass('disabled');
+      this.resetSettingsButton.removeClass('disabled');
+    }
   }
 
   enModel() {
