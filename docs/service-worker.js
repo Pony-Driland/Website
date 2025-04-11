@@ -17,6 +17,8 @@ const INVALIDATION_INTERVAL = Number(24 * 60 * 60 * 1000) * 31; // 31 days
 const NS = 'MAGE';
 const SEPARATOR = '|';
 const VERSION = Math.ceil(now() / INVALIDATION_INTERVAL);
+const OFFLINE_CACHE_NAME = 'offline-v1';
+const OFFLINE_URL = '/offline.html';
 
 /**
  * Build cache storage key that includes namespace, url and record version
@@ -178,17 +180,33 @@ function proxyRequest(caches, request) {
         return networkResponse;
       };
 
-      return fetch(request.clone()).then(resolve);
+      return fetch(request.clone()).then(resolve).catch((err) => {
+        if (request.mode === 'navigate') {
+          caches.open(OFFLINE_CACHE_NAME).then((cache) => cache.match(OFFLINE_URL));
+          return;
+        }
+        return err;
+      });
     });
   });
 }
 
 self.addEventListener('install', function (event) {
-  event.waitUntil(self.skipWaiting());
+  event.waitUntil(
+    Promise.all([
+      self.skipWaiting(),
+      caches.open(OFFLINE_CACHE_NAME).then(cache => cache.add(OFFLINE_URL)),
+    ])
+  );
 });
 
 self.addEventListener('activate', function (event) {
-  event.waitUntil(purgeExpiredRecords(caches));
+  event.waitUntil(
+    Promise.all([
+      self.clients.claim(),
+      purgeExpiredRecords(caches)
+    ])
+  );
 });
 
 const canCacheExt = [
