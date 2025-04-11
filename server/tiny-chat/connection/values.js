@@ -21,9 +21,13 @@ export const bannedUsers = new TinySQL(); // Stores the list of banned users
 
 export const roomModerators = new TinySQL(); // Stores users banned from room
 export const roomBannedUsers = new TinySQL(); // Stores users banned from room
+
 export const rooms = new TinySQL(); // Stores room configurations, including password, etc.
 export const roomHistories = new Map(); // Stores room histories
 export const roomHistoriesDeleted = new TinySQL(); // Stores room histories
+
+export const roomTokens = new TinySQL(); // Stores room histories
+export const roomHash = new TinySQL(); // Stores room histories
 
 export const privateRoomData = new TinySQL(); // Stores room private data
 export const roomData = new TinySQL(); // Stores room data
@@ -140,6 +144,9 @@ export const getRateLimit = () => ({
     roomId: getIniConfig('ROOM_ID_SIZE'),
     roomTitle: getIniConfig('ROOM_TITLE_SIZE'),
     modelId: getIniConfig('MODEL_ID_SIZE'),
+    prompt: getIniConfig('ROOM_PROMPT'),
+    systemInstruction: getIniConfig('ROOM_SYSTEM_INSTRUCTION'),
+    firstDialogue: getIniConfig('ROOM_FIRST_DIALOGUE'),
   },
   limit: {
     msg: getIniConfig('MESSAGES'),

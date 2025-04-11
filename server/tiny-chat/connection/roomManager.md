@@ -617,6 +617,10 @@ Updates the settings of a specific room. Only the room owner or the server owner
 - The user must be the **room owner** or **server owner**.
 - The room must exist.
 - Allowed updates:
+  - **`prompt`**: Limited to `ROOM_PROMPT` characters.
+  - **`firstDialogue`**: Limited to `MESSAGE_SIZE` characters.
+  - **`systemInstruction`**: Limited to `ROOM_SYSTEM_INSTRUCTION` characters.
+  - **`firstDialogue`**: Limited to `ROOM_FIRST_DIALOGUE` characters.
   - **`title`**: Limited to `ROOM_TITLE_SIZE` characters.
   - **`model`**: Limited to `MODEL_ID_SIZE` characters.
   - **`maxOutputTokens`**: Is a REAL value in SQL.

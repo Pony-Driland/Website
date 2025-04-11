@@ -113,6 +113,11 @@ class TinyClientIo extends EventEmitter {
           roomId: typeof result.size.roomId === 'number' ? result.size.roomId : 0,
           roomTitle: typeof result.size.roomTitle === 'number' ? result.size.roomTitle : 0,
           userId: typeof result.size.userId === 'number' ? result.size.userId : 0,
+          prompt: typeof result.size.prompt === 'number' ? result.size.prompt : 0,
+          systemInstruction:
+            typeof result.size.systemInstruction === 'number' ? result.size.systemInstruction : 0,
+          firstDialogue:
+            typeof result.size.firstDialogue === 'number' ? result.size.firstDialogue : 0,
         };
       }
       if (objType(result.dice, 'object')) {
@@ -977,7 +982,7 @@ class TinyClientIo extends EventEmitter {
             // Exists?
             else if (result2.exists) joinRoom();
             else {
-              if (!tinyAiScript.multiplayer)
+              if (!tinyAiScript.mpClient)
                 client.createRoom().then((result3) => {
                   if (!result3.error) joinRoom();
                   else client.emit('roomError', result3);

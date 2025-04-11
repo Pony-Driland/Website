@@ -624,6 +624,35 @@ export default function roomManager(socket, io, appStorage) {
       if (value === significantDigits) allowedUpdates[where] = value;
     };
 
+    if ('firstDialogue' in newSettings) {
+      if (typeof newSettings.firstDialogue === 'string')
+        allowedUpdates.firstDialogue = newSettings.firstDialogue.substring(
+          0,
+          getIniConfig('MESSAGE_SIZE'),
+        );
+    }
+
+    if ('prompt' in newSettings) {
+      if (typeof newSettings.prompt === 'string')
+        allowedUpdates.prompt = newSettings.prompt.substring(0, getIniConfig('ROOM_PROMPT'));
+    }
+
+    if ('systemInstruction' in newSettings) {
+      if (typeof newSettings.systemInstruction === 'string')
+        allowedUpdates.systemInstruction = newSettings.systemInstruction.substring(
+          0,
+          getIniConfig('ROOM_SYSTEM_INSTRUCTION'),
+        );
+    }
+
+    if ('firstDialogue' in newSettings) {
+      if (typeof newSettings.firstDialogue === 'string')
+        allowedUpdates.firstDialogue = newSettings.firstDialogue.substring(
+          0,
+          getIniConfig('ROOM_FIRST_DIALOGUE'),
+        );
+    }
+
     if ('title' in newSettings) {
       if (typeof newSettings.title === 'string')
         allowedUpdates.title = newSettings.title.substring(0, getIniConfig('ROOM_TITLE_SIZE'));
