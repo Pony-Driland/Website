@@ -2893,12 +2893,12 @@ const AiScriptStart = (connStore) => {
           .trigger('input');
 
         const maxTemperature = typeof model.maxTemperature === 'number' ? model.maxTemperature : 2;
-        temperature.setMin(0).setStep(0.1).setMax(maxTemperature).enable();
+        temperature.setMin(0).setStep(0.05).setMax(maxTemperature).enable();
         if (temperature.val() > maxTemperature) temperature.val(maxTemperature);
         temperature.trigger('input');
 
         if (typeof model.topP === 'number')
-          topP.val(model.topP).setMax(1).setMin(0).setStep(0.1).enable().trigger('input');
+          topP.val(model.topP).setMax(1).setMin(0).setStep(0.05).enable().trigger('input');
         else topP.reset().disable();
 
         if (typeof model.topK === 'number')
