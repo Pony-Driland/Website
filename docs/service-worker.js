@@ -8,6 +8,18 @@ function now() {
 }
 
 /**
+ * Checks if the service worker is running on localhost
+ * @returns {Boolean}
+ */
+function isLocalhost() {
+  return (
+    self.location.hostname === 'localhost' ||
+    self.location.hostname === '127.0.0.1' ||
+    self.location.hostname === '::1'
+  );
+}
+
+/**
  * Service worker interepts requests for images
  * It puts retrieved images in cache for 1 day
  * If image not found responds with fallback
@@ -125,7 +137,7 @@ async function handleVersionedStatic(cacheStorage, request) {
 
   // Fetch the new version
   const networkResponse = await fetch(request);
-  if (networkResponse.ok) {
+  if (networkResponse.ok && !isLocalhost()) {
     if (outdatedRequest) await versionedCache.delete(outdatedRequest); // remove old version
     await versionedCache.put(request, networkResponse.clone()); // save new
   }
@@ -143,6 +155,7 @@ async function handleVersionedStatic(cacheStorage, request) {
 function proxyRequest(caches, request) {
   const key = buildKey(request.url);
   // set namespace
+  if (isLocalhost()) return fetch(request);
   return caches.open(key).then(function (cache) {
     // check cache
     return cache.match(request).then(function (cachedResponse) {
@@ -176,7 +189,8 @@ function proxyRequest(caches, request) {
           request.url,
           networkResponse.type,
         );
-        cache.put(request, networkResponse.clone());
+        if (!isLocalhost())
+          cache.put(request, networkResponse.clone());
         return networkResponse;
       };
 
@@ -192,21 +206,37 @@ function proxyRequest(caches, request) {
 }
 
 self.addEventListener('install', function (event) {
-  event.waitUntil(
-    Promise.all([
-      self.skipWaiting(),
-      caches.open(OFFLINE_CACHE_NAME).then(cache => cache.add(OFFLINE_URL)),
-    ])
-  );
+  if (isLocalhost()) {
+    console.warn('[PWA] [service-worker] Install on localhost, skipping offline cache.');
+    event.waitUntil(self.skipWaiting());
+  } else
+    event.waitUntil(
+      Promise.all([
+        self.skipWaiting(),
+        caches.open(OFFLINE_CACHE_NAME).then(cache => cache.add(OFFLINE_URL)),
+      ])
+    );
 });
 
 self.addEventListener('activate', function (event) {
-  event.waitUntil(
-    Promise.all([
-      self.clients.claim(),
-      purgeExpiredRecords(caches)
-    ])
-  );
+  if (isLocalhost()) {
+    console.warn('[PWA] [service-worker] Localhost detected, clearing all caches...');
+    event.waitUntil(
+      Promise.all([
+        self.clients.claim(),
+        caches.keys().then((keys) =>
+          Promise.all(keys.map((key) => caches.delete(key)))
+        ),
+      ])
+    );
+  } else {
+    event.waitUntil(
+      Promise.all([
+        self.clients.claim(),
+        purgeExpiredRecords(caches),
+      ])
+    );
+  }
 });
 
 const canCacheExt = [
@@ -250,7 +280,7 @@ self.addEventListener('fetch', function (event) {
     return;
 
   const canCache = canCacheExt.some(ext => request.url.endsWith(ext));
-  if (!canCache) return;
+  if (!canCache || isLocalhost()) return;
   event.respondWith(proxyRequest(caches, request));
 });
 
