@@ -64,26 +64,20 @@ export default function roomManager(socket, io, appStorage) {
     }
     room.maxUsers = room.maxUsers || getIniConfig('MAX_USERS_PER_ROOM');
 
-    // Check if the room has a password and validate it
-    if (
-      userId !== getIniConfig('OWNER_ID') &&
-      room.ownerId !== userId &&
-      !isMod &&
-      room.password &&
-      room.password !== getHashString(password)
-    ) {
-      return fn({ error: true, msg: 'Incorrect room password.', code: 2 });
-    }
+    if (userId !== getIniConfig('OWNER_ID') && room.ownerId !== userId && !isMod) {
+      // Check if the room has a password and validate it
+      if (room.password && room.password !== getHashString(password))
+        return fn({ error: true, msg: 'Incorrect room password.', code: 2 });
 
-    // Check if the room is full
-    const roomUserList = roomUsers.get(roomId);
-    if (roomUserList && roomUserList.size >= room.maxUsers) {
-      return fn({ error: true, msg: 'Room is full.', code: 3 });
-    }
+      if (!(await roomModerators.has(roomId, userId))) {
+        // Check if the room is full
+        const roomUserList = roomUsers.get(roomId);
+        if (roomUserList && roomUserList.size >= room.maxUsers)
+          return fn({ error: true, msg: 'Room is full.', code: 3 });
+      }
 
-    // Check if the room is disabled
-    if (userId !== getIniConfig('OWNER_ID') && !isMod && room.ownerId !== userId && room.disabled) {
-      return fn({ error: true, msg: 'Room is disabled.', code: 4 });
+      // Check if the room is disabled
+      if (room.disabled) return fn({ error: true, msg: 'Room is disabled.', code: 4 });
     }
 
     // Check if the user is banned
