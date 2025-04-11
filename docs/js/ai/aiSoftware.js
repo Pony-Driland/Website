@@ -4058,9 +4058,7 @@ const AiScriptStart = (connStore) => {
       const saveSessionTimeout = {};
       const saveSessionBackup = (sessionSelected, where) => {
         if (sessionSelected) {
-          if (saveSessionTimeout[sessionSelected])
-            clearTimeout(saveSessionTimeout[sessionSelected]);
-          saveSessionTimeout[sessionSelected] = setTimeout(() => {
+          const getSessionData = () => {
             // Get session
             const tinyData = tinyAi.getData();
             const customList = tinyData.customList;
@@ -4122,7 +4120,15 @@ const AiScriptStart = (connStore) => {
                     : null,
             };
 
-            if (canUsejsStore) {
+            return { roomSaveData, model, tokens, hash, customList };
+          };
+
+          // jsStore (offline)
+          if (canUsejsStore) {
+            if (saveSessionTimeout[sessionSelected])
+              clearTimeout(saveSessionTimeout[sessionSelected]);
+            saveSessionTimeout[sessionSelected] = setTimeout(() => {
+              const { roomSaveData, tokens, hash, customList } = getSessionData();
               // Hash and tokens data insert
               const hashData = {};
               const tokenData = {};
@@ -4151,51 +4157,49 @@ const AiScriptStart = (connStore) => {
                 session: sessionSelected,
                 data: customList,
               });
+
+              // Complete
               saveSessionTimeout[sessionSelected] = null;
-            }
+            }, 1000);
+          }
 
-            // Insert new data
-            else if (typeof where === 'string' && !tinyAiScript.mpClient) {
+          // Database (online)
+          else if (typeof where === 'string' && !tinyAiScript.mpClient) {
+            const timeoutId = `${sessionSelected}_${where}`;
+            if (saveSessionTimeout[timeoutId]) clearTimeout(saveSessionTimeout[timeoutId]);
+            saveSessionTimeout[timeoutId] = setTimeout(() => {
+              const { roomSaveData } = getSessionData();
+
+              // Send data
               const newSettings = {};
-              const checkSetting = (where) => {
-                if (roomSaveData[where] !== null) newSettings[where] = roomSaveData[where];
-              };
-
-              checkSetting('maxOutputTokens');
-              checkSetting('temperature');
-              checkSetting('topP');
-              checkSetting('topK');
-              checkSetting('presencePenalty');
-              checkSetting('frequencyPenalty');
-              checkSetting('model');
-
-              checkSetting('prompt');
-              checkSetting('firstDialogue');
-              checkSetting('systemInstruction');
-
+              if (roomSaveData[where] !== null) newSettings[where] = roomSaveData[where];
               tinyIo.client.updateRoomSettings(newSettings);
-            }
-          }, 1000);
+
+              // Complete
+              saveSessionTimeout[timeoutId] = null;
+            });
+          }
         }
       };
 
-      const tinyAiSocketTemplate = (where, el) =>
+      const tinyAiSocketTemplate = (where, where2, el) =>
         tinyAi.on(where, (value, id) => {
           if (el) el.val(value);
-          saveSessionBackup(id, where);
+          saveSessionBackup(id, where2);
         });
 
-      tinyAiSocketTemplate('setMaxOutputTokens', outputLength);
-      tinyAiSocketTemplate('setTemperature', temperature);
-      tinyAiSocketTemplate('setTopP', topP);
-      tinyAiSocketTemplate('setTopK', topK);
-      tinyAiSocketTemplate('setPresencePenalty', presencePenalty);
-      tinyAiSocketTemplate('setFrequencyPenalty', frequencyPenalty);
-      tinyAiSocketTemplate('setModel');
+      tinyAiSocketTemplate('setMaxOutputTokens', 'maxOutputTokens', outputLength);
+      tinyAiSocketTemplate('setTemperature', 'temperature', temperature);
+      tinyAiSocketTemplate('setTopP', 'topP', topP);
+      tinyAiSocketTemplate('setTopK', 'topK', topK);
+      tinyAiSocketTemplate('setPresencePenalty', 'presencePenalty', presencePenalty);
+      tinyAiSocketTemplate('setFrequencyPenalty', 'frequencyPenalty', frequencyPenalty);
+      tinyAiSocketTemplate('setModel', 'model');
 
-      tinyAiSocketTemplate('setPrompt');
-      tinyAiSocketTemplate('setFirstDialogue');
-      tinyAiSocketTemplate('setSystemInstruction');
+      tinyAiSocketTemplate('setPrompt', 'prompt');
+      tinyAiSocketTemplate('setFirstDialogue', 'firstDialogue');
+      tinyAiSocketTemplate('setSystemInstruction', 'systemInstruction');
+
       tinyAiSocketTemplate('setRpgSchema');
       tinyAiSocketTemplate('setRpgData');
       tinyAiSocketTemplate('setRpgPrivateData');
