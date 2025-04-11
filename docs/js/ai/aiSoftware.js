@@ -4148,7 +4148,7 @@ const AiScriptStart = (connStore) => {
             }
 
             // Insert new data
-            if (typeof where === 'string' && !tinyAiScript.mpClient) {
+            else if (typeof where === 'string' && !tinyAiScript.mpClient) {
               const newSettings = {};
               const checkSetting = (where) => {
                 if (roomSaveData[where] !== null) newSettings[where] = roomSaveData[where];

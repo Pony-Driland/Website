@@ -69,11 +69,17 @@ export default function roomManager(socket, io, appStorage) {
       if (room.password && room.password !== getHashString(password))
         return fn({ error: true, msg: 'Incorrect room password.', code: 2 });
 
-      if (!(await roomModerators.has(roomId, userId))) {
-        // Check if the room is full
-        const roomUserList = roomUsers.get(roomId);
-        if (roomUserList && roomUserList.size >= room.maxUsers)
-          return fn({ error: true, msg: 'Room is full.', code: 3 });
+      // Check if the room is full
+      const roomUserList = roomUsers.get(roomId);
+      if (roomUserList) {
+        if (!(await roomModerators.has(roomId, userId))) {
+          if (roomUserList.size >= room.maxUsers)
+            return fn({ error: true, msg: 'Room is full.', code: 3 });
+        } else {
+          const modMaxUser = Number(room.maxUsers + 2);
+          if (roomUserList.size >= modMaxUser)
+            return fn({ error: true, msg: 'Room is full.', code: 3 });
+        }
       }
 
       // Check if the room is disabled
