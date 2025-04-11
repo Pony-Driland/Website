@@ -148,10 +148,9 @@ export default function userManager(socket, io) {
       });
 
     // Change password
-    user.password = getHashString(password.substring(0, getIniConfig('PASSWORD_SIZE')));
-
-    // Set user data
-    await users.set(userId, user);
+    await users.update(userId, {
+      password: getHashString(password.substring(0, getIniConfig('PASSWORD_SIZE'))),
+    });
 
     // User unban successfully.
     fn({ success: true });
@@ -170,10 +169,7 @@ export default function userManager(socket, io) {
     const user = await users.get(userId);
 
     // Change nickname
-    user.nickname = nickname.substring(0, getIniConfig('NICKNAME_SIZE'));
-
-    // Set user data
-    await users.set(userId, user);
+    await users.update(userId, { nickname: nickname.substring(0, getIniConfig('NICKNAME_SIZE')) });
     userSession.setNickname(socket, user.nickname);
     userSession.eachRooms(socket, (roomId) =>
       io.to(roomId).emit('user-updated', { roomId, userId, data: { nickname: user.nickname } }),

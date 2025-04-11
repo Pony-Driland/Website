@@ -455,8 +455,7 @@ export default function roomManager(socket, io, appStorage) {
     }
 
     // Change room status
-    room.disabled = true;
-    rooms.set(roomId, room);
+    rooms.update(roomId, { disabled: true });
 
     // Disconnect user from rooms
     rUsers.forEach((userData, tUser) => {
@@ -503,8 +502,7 @@ export default function roomManager(socket, io, appStorage) {
     }
 
     // Enable room back
-    room.disabled = false;
-    rooms.set(roomId, room);
+    rooms.update(roomId, { disabled: false });
 
     // Room enabled successfully.
     fn({ success: true });
@@ -695,7 +693,7 @@ export default function roomManager(socket, io, appStorage) {
 
     // Apply updates if there are valid changes
     if (Object.keys(allowedUpdates).length > 0) {
-      await rooms.set(roomId, Object.assign(room, allowedUpdates));
+      await rooms.update(roomId, allowedUpdates);
 
       // Notify all users in the room about the updated settings
       const newRoom = await rooms.get(roomId);
