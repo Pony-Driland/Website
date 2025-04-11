@@ -513,8 +513,14 @@ const setGoogleAi = (tinyGoogleAI, GEMINI_API_KEY, MODEL_DATA = 'gemini-2.0-flas
               for (const index in result.models) {
                 const id = result.models[index].name.substring(7);
                 let allowed = false;
-                for (const id2 in modelOrder) {
-                  if (id.startsWith(id2) || id === id2) allowed = true;
+                if (
+                  Array.isArray(result.models[index].supportedGenerationMethods) &&
+                  result.models[index].supportedGenerationMethods.indexOf('generateContent') > -1 &&
+                  result.models[index].supportedGenerationMethods.indexOf('countTokens') > -1
+                ) {
+                  for (const id2 in modelOrder) {
+                    if (id.startsWith(id2) || id === id2) allowed = true;
+                  }
                 }
 
                 // Allow add the model

@@ -12,9 +12,11 @@ import {
   privateRoomData,
   roomBannedUsers,
   roomData,
+  roomHash,
   roomHistoriesDeleted,
   roomModerators,
   rooms,
+  roomTokens,
   users,
   usersDice,
 } from './connection/values';
@@ -30,7 +32,10 @@ startFiles().then(async (appStorage) => {
     roomId TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
     title TEXT,
     password TEXT,
+    prompt TEXT,
     model TEXT,
+    systemInstruction TEXT,
+    firstDialogue TEXT,
     maxOutputTokens REAL,
     temperature REAL,
     topP REAL,
@@ -42,6 +47,30 @@ startFiles().then(async (appStorage) => {
     disabled BOOLEAN DEFAULT 0
     );
     `);
+
+  await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS roomTokens (
+    roomId TEXT PRIMARY KEY,
+    prompt INTEGER,
+    systemInstruction INTEGER,
+    rpgSchema INTEGER,
+    rpgData INTEGER,
+    rpgPrivateData INTEGER,
+    file INTEGER,
+    FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE
+    );
+  `);
+
+  await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS roomHash (
+    roomId TEXT PRIMARY KEY,
+    prompt TEXT,
+    systemInstruction TEXT,
+    rpgSchema TEXT,
+    rpgData TEXT,
+    rpgPrivateData TEXT,
+    file TEXT,
+    FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE
+    );
+  `);
 
   await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS roomModerators (
     roomId TEXT,
@@ -66,7 +95,6 @@ startFiles().then(async (appStorage) => {
     date INTEGER NOT NULL,
     edited INTEGER,
     tokens INTEGER,
-    model TEXT,
     errorCode TEXT,
     FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE
   `;
@@ -118,6 +146,13 @@ startFiles().then(async (appStorage) => {
     );
   `);
 
+  await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS rpgSchema (
+    roomId TEXT PRIMARY KEY,
+    data JSON NOT NULL,
+    FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE
+    );
+  `);
+
   await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS roomData (
     roomId TEXT PRIMARY KEY,
     data JSON NOT NULL,
@@ -155,6 +190,12 @@ startFiles().then(async (appStorage) => {
 
   rooms.setDb(appStorage, { name: 'rooms', id: 'roomId' });
   rooms.setDebug(debugMode);
+
+  roomHash.setDb(appStorage, { name: 'roomHash', id: 'roomId' });
+  roomHash.setDebug(debugMode);
+
+  roomTokens.setDb(appStorage, { name: 'roomTokens', id: 'roomId' });
+  roomTokens.setDebug(debugMode);
 
   users.setDb(appStorage, { name: 'users', id: 'userId' });
   users.setDebug(debugMode);

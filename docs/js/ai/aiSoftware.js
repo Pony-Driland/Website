@@ -124,15 +124,15 @@ const AiScriptStart = (connStore) => {
       $('body').addClass('can-ai');
 
       // Update Ai API script
-      tinyAiScript.multiplayer = false;
+      tinyAiScript.mpClient = false;
       tinyAiScript.noai = false;
 
       // Google Generative
       if (selectedAi === 'google-generative')
         setGoogleAi(tinyAi, tinyStorage.getApiKey('google-generative')?.key);
 
-      // Tiny Chat
-      if (selectedAi === 'tiny-chat') tinyAiScript.multiplayer = true;
+      // Tiny Chat --> this is a multiplayer client session
+      if (selectedAi === 'tiny-chat') tinyAiScript.mpClient = true;
 
       // No Ai
       if (selectedAi === 'no-ai') tinyAiScript.noai = true;
@@ -453,7 +453,7 @@ const AiScriptStart = (connStore) => {
       contentEnabler.setRpgData(rpgData);
 
       // Load Models
-      if (!tinyAiScript.noai && !tinyAiScript.multiplayer && tinyAi.getModelsList().length < 1)
+      if (!tinyAiScript.noai && !tinyAiScript.mpClient && tinyAi.getModelsList().length < 1)
         await tinyAi.getModels(100);
 
       // Sidebar
@@ -1400,15 +1400,18 @@ const AiScriptStart = (connStore) => {
 
       const isOnline = () => (!canUsejsStore && tinyIo.client ? true : false);
       const leftMenu = [];
-      // Reset
-      leftMenu.push($('<h5>').text('Reset'));
-      leftMenu.push(...ficResets);
 
-      // Modes
-      leftMenu.push($('<h5>').text('Modes'));
+      if (!tinyAiScript.mpClient) {
+        // Reset
+        leftMenu.push($('<h5>').text('Reset'));
+        leftMenu.push(...ficResets);
 
-      // Fic Talk
-      leftMenu.push(...ficTemplates);
+        // Modes
+        leftMenu.push($('<h5>').text('Modes'));
+
+        // Fic Talk
+        leftMenu.push(...ficTemplates);
+      }
 
       // Settings
       leftMenu.push($('<h5>').text('Settings'));
@@ -2830,7 +2833,7 @@ const AiScriptStart = (connStore) => {
 
       // Models list
       const updateModelList = () => {
-        if (!tinyAiScript.noai && !tinyAiScript.multiplayer) {
+        if (!tinyAiScript.noai && !tinyAiScript.mpClient) {
           const models = tinyAi.getModelsList();
           resetModelSelector();
           if (models.length > 0) {
@@ -2883,8 +2886,9 @@ const AiScriptStart = (connStore) => {
           .removeClass('disabled')
           .trigger('input');
 
-        temperature.setMin(0).setStep(0.1).setMax(model.maxTemperature).enable();
-        if (temperature.val() > model.maxTemperature) temperature.val(model.maxTemperature);
+        const maxTemperature = typeof model.maxTemperature === 'number' ? model.maxTemperature : 2;
+        temperature.setMin(0).setStep(0.1).setMax(maxTemperature).enable();
+        if (temperature.val() > maxTemperature) temperature.val(maxTemperature);
         temperature.trigger('input');
 
         if (typeof model.topP === 'number')
@@ -2897,7 +2901,7 @@ const AiScriptStart = (connStore) => {
       };
 
       const selectModel = (newModel, ignoreTokenUpdater = false) => {
-        if (!tinyAiScript.noai && !tinyAiScript.multiplayer) {
+        if (!tinyAiScript.noai && !tinyAiScript.mpClient) {
           const model = tinyAi.getModelData(newModel);
           if (model) {
             insertDefaultSettings(model, newModel);
@@ -2926,7 +2930,7 @@ const AiScriptStart = (connStore) => {
         'fa-solid fa-bars-progress',
         'Load more models',
         async () => {
-          if (!tinyAiScript.noai && !tinyAiScript.multiplayer) {
+          if (!tinyAiScript.noai && !tinyAiScript.mpClient) {
             $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
             await tinyAi.getModels(100);
 
@@ -3144,7 +3148,7 @@ const AiScriptStart = (connStore) => {
                 tinyTokens = { count: null },
                 callback,
               ) => {
-                if (!tinyAiScript.noai && !tinyAiScript.multiplayer) {
+                if (!tinyAiScript.noai && !tinyAiScript.mpClient) {
                   if (
                     (forceUpdate && contentToCheck) ||
                     // Exist content to check tokens
@@ -3259,9 +3263,7 @@ const AiScriptStart = (connStore) => {
                 );
               }
 
-              resolve(
-                !tinyAiScript.noai && !tinyAiScript.multiplayer ? tinyAi.getTotalTokens() : 0,
-              );
+              resolve(!tinyAiScript.noai && !tinyAiScript.mpClient ? tinyAi.getTotalTokens() : 0);
             } else resolve(0);
           } catch (err) {
             reject(err);
@@ -3628,7 +3630,7 @@ const AiScriptStart = (connStore) => {
               );
 
               const newTokens =
-                !tinyAiScript.noai && !tinyAiScript.multiplayer
+                !tinyAiScript.noai && !tinyAiScript.mpClient
                   ? await tinyAi.countTokens([newMsg])
                   : { totalTokens: 0 };
               const newToken =
@@ -3655,7 +3657,7 @@ const AiScriptStart = (connStore) => {
           );
 
           // Execute Ai
-          if (!tinyAiScript.noai && !tinyAiScript.multiplayer && sessionEnabled)
+          if (!tinyAiScript.noai && !tinyAiScript.mpClient && sessionEnabled)
             await executeAi(submitCache, controller).catch((err) => {
               if (submitCache.cancel) submitCache.cancel();
               console.error(err);
@@ -4047,8 +4049,8 @@ const AiScriptStart = (connStore) => {
 
       // Save backup
       const saveSessionTimeout = {};
-      const saveSessionBackup = (sessionSelected) => {
-        if (canUsejsStore && sessionSelected) {
+      const saveSessionBackup = (sessionSelected, where) => {
+        if (sessionSelected) {
           if (saveSessionTimeout[sessionSelected])
             clearTimeout(saveSessionTimeout[sessionSelected]);
           saveSessionTimeout[sessionSelected] = setTimeout(() => {
@@ -4057,6 +4059,7 @@ const AiScriptStart = (connStore) => {
             const customList = tinyData.customList;
             const hash = tinyData.hash;
             const tokens = tinyData.tokens;
+            const model = tinyAi.getModelData(modelSelector.val()) || {};
 
             // Room data
             const roomSaveData = {
@@ -4072,106 +4075,118 @@ const AiScriptStart = (connStore) => {
                 ? tinyData.rpgPrivateData
                 : null,
               maxOutputTokens:
-                typeof tinyData.maxOutputTokens === 'number' ? tinyData.maxOutputTokens : null,
-              temperature: typeof tinyData.temperature === 'number' ? tinyData.temperature : null,
-              topP: typeof tinyData.topP === 'number' ? tinyData.topP : null,
-              topK: typeof tinyData.topK === 'number' ? tinyData.topK : null,
+                typeof tinyData.maxOutputTokens === 'number'
+                  ? tinyData.maxOutputTokens
+                  : typeof model.outputTokenLimit === 'number'
+                    ? model.outputTokenLimit
+                    : null,
+              temperature:
+                typeof tinyData.temperature === 'number'
+                  ? tinyData.temperature
+                  : typeof model.maxTemperature === 'number' ||
+                      typeof model.temperature === 'number'
+                    ? typeof model.temperature === 'number'
+                      ? model.temperature
+                      : 1
+                    : null,
+              topP:
+                typeof tinyData.topP === 'number'
+                  ? tinyData.topP
+                  : typeof model.topP === 'number'
+                    ? model.topP
+                    : null,
+              topK:
+                typeof tinyData.topK === 'number'
+                  ? tinyData.topK
+                  : typeof model.topK === 'number'
+                    ? model.topK
+                    : null,
               presencePenalty:
-                typeof tinyData.presencePenalty === 'number' ? tinyData.presencePenalty : null,
+                typeof tinyData.presencePenalty === 'number'
+                  ? tinyData.presencePenalty
+                  : typeof model.presencePenalty === 'number'
+                    ? model.presencePenalty
+                    : null,
               frequencyPenalty:
-                typeof tinyData.frequencyPenalty === 'number' ? tinyData.frequencyPenalty : null,
+                typeof tinyData.frequencyPenalty === 'number'
+                  ? tinyData.frequencyPenalty
+                  : typeof model.frequencyPenalty === 'number'
+                    ? model.frequencyPenalty
+                    : null,
             };
 
-            // Hash and tokens data insert
-            const hashData = {};
-            const tokenData = {};
-            for (const item in roomSaveData) {
-              hashData[item] = typeof hash[item] === 'string' ? hash[item] : null;
-              tokenData[item] = typeof tokens[item] === 'number' ? tokens[item] : null;
+            if (canUsejsStore) {
+              // Hash and tokens data insert
+              const hashData = {};
+              const tokenData = {};
+              for (const item in roomSaveData) {
+                hashData[item] = typeof hash[item] === 'string' ? hash[item] : null;
+                tokenData[item] = typeof tokens[item] === 'number' ? tokens[item] : null;
+              }
+
+              hashData.file = typeof hash.file === 'string' ? hash.file : null;
+              tokenData.file = typeof tokens.file === 'number' ? tokens.file : null;
+
+              // Hash
+              hashData.session = sessionSelected;
+              tinyInsertDb('aiSessionsHash', hashData);
+
+              // Tokens
+              tokenData.session = sessionSelected;
+              tinyInsertDb('aiSessionsTokens', tokenData);
+
+              // Room
+              roomSaveData.session = sessionSelected;
+              tinyInsertDb('aiSessionsRoom', roomSaveData);
+
+              // Custom list
+              tinyInsertDb('aiSessionsCustomList', {
+                session: sessionSelected,
+                data: customList,
+              });
+              saveSessionTimeout[sessionSelected] = null;
             }
 
-            hashData.file = typeof hash.file === 'string' ? hash.file : null;
-            tokenData.file = typeof tokens.file === 'number' ? tokens.file : null;
+            // Insert new data
+            if (typeof where === 'string' && !tinyAiScript.mpClient) {
+              const newSettings = {};
+              const checkSetting = (where) => {
+                if (roomSaveData[where] !== null) newSettings[where] = roomSaveData[where];
+              };
 
-            // Hash
-            hashData.session = sessionSelected;
-            tinyInsertDb('aiSessionsHash', hashData);
-
-            // Tokens
-            tokenData.session = sessionSelected;
-            tinyInsertDb('aiSessionsTokens', tokenData);
-
-            // Room
-            roomSaveData.session = sessionSelected;
-            tinyInsertDb('aiSessionsRoom', roomSaveData);
-
-            // Custom list
-            tinyInsertDb('aiSessionsCustomList', {
-              session: sessionSelected,
-              data: customList,
-            });
-            saveSessionTimeout[sessionSelected] = null;
-          }, 500);
+              checkSetting('maxOutputTokens');
+              checkSetting('temperature');
+              checkSetting('topP');
+              checkSetting('topK');
+              checkSetting('presencePenalty');
+              checkSetting('frequencyPenalty');
+              checkSetting('model');
+              tinyIo.client.updateRoomSettings(newSettings);
+            }
+          }, 1000);
         }
       };
 
-      tinyAi.on('setMaxOutputTokens', (value, id) => {
-        outputLength.val(value);
-        saveSessionBackup(id);
-      });
+      const tinyAiSocketTemplate = (where, el) =>
+        tinyAi.on(where, (value, id) => {
+          if (el) el.val(value);
+          saveSessionBackup(id, where);
+        });
 
-      tinyAi.on('setTemperature', (value, id) => {
-        temperature.val(value);
-        saveSessionBackup(id);
-      });
+      tinyAiSocketTemplate('setMaxOutputTokens', outputLength);
+      tinyAiSocketTemplate('setTemperature', temperature);
+      tinyAiSocketTemplate('setTopP', topP);
+      tinyAiSocketTemplate('setTopK', topK);
+      tinyAiSocketTemplate('setPresencePenalty', presencePenalty);
+      tinyAiSocketTemplate('setFrequencyPenalty', frequencyPenalty);
+      tinyAiSocketTemplate('setModel');
 
-      tinyAi.on('setTopP', (value, id) => {
-        topP.val(value);
-        saveSessionBackup(id);
-      });
-
-      tinyAi.on('setTopK', (value, id) => {
-        topK.val(value);
-        saveSessionBackup(id);
-      });
-
-      tinyAi.on('setPresencePenalty', (value, id) => {
-        presencePenalty.val(value);
-        saveSessionBackup(id);
-      });
-
-      tinyAi.on('setFrequencyPenalty', (value, id) => {
-        frequencyPenalty.val(value);
-        saveSessionBackup(id);
-      });
-
-      tinyAi.on('setModel', (data, id) => {
-        saveSessionBackup(id);
-      });
-
-      tinyAi.on('setPrompt', (data, hash, id) => {
-        saveSessionBackup(id);
-      });
-
-      tinyAi.on('setFirstDialogue', (data, hash, id) => {
-        saveSessionBackup(id);
-      });
-
-      tinyAi.on('setSystemInstruction', (data, hash, id) => {
-        saveSessionBackup(id);
-      });
-
-      tinyAi.on('setRpgSchema', (value, id) => {
-        saveSessionBackup(id);
-      });
-
-      tinyAi.on('setRpgData', (value, id) => {
-        saveSessionBackup(id);
-      });
-
-      tinyAi.on('setRpgPrivateData', (value, id) => {
-        saveSessionBackup(id);
-      });
+      tinyAi.on('setPrompt', (data, hash, id) => saveSessionBackup(id));
+      tinyAi.on('setFirstDialogue', (data, hash, id) => saveSessionBackup(id));
+      tinyAi.on('setSystemInstruction', (data, hash, id) => saveSessionBackup(id));
+      tinyAi.on('setRpgSchema', (value, id) => saveSessionBackup(id));
+      tinyAi.on('setRpgData', (value, id) => saveSessionBackup(id));
+      tinyAi.on('setRpgPrivateData', (value, id) => saveSessionBackup(id));
 
       // Delete session
       tinyAi.on('stopDataId', (id) => {
@@ -4229,7 +4244,7 @@ const AiScriptStart = (connStore) => {
       // Enable Read Only
       const validateMultiplayer = (value = null, needAi = true, isInverse = false) =>
         // Normal mode
-        !tinyAiScript.multiplayer
+        !tinyAiScript.mpClient
           ? // Ai enabled
             !needAi || !tinyAiScript.noai
             ? value
@@ -4281,14 +4296,14 @@ const AiScriptStart = (connStore) => {
       contentEnabler.dePromptButtons();
 
       // Multiplayer disable inputs
-      if (tinyAiScript.multiplayer || tinyAiScript.noai) {
-        if (tinyAiScript.multiplayer) contentEnabler.deModelChanger();
+      if (tinyAiScript.mpClient || tinyAiScript.noai) {
+        if (tinyAiScript.mpClient) contentEnabler.deModelChanger();
         contentEnabler.deModel();
         contentEnabler.deModelSelector();
       }
 
       // Welcome
-      if (!tinyAiScript.multiplayer) {
+      if (!tinyAiScript.mpClient) {
         makeTempMessage(
           `Welcome to Pony Driland's chatbot! This is a chatbot developed exclusively to interact with the content of fic`,
           'Website',
@@ -4317,7 +4332,7 @@ const AiScriptStart = (connStore) => {
 
         // Start rpg mode
         //////////////////////////////
-        if (tinyAiScript.multiplayer || socket) {
+        if (tinyAiScript.mpClient || socket) {
           // Online tab html
           const onlineStatus = {};
           onlineStatus.base = $('<div>').addClass('mb-1 small');
@@ -4408,7 +4423,7 @@ const AiScriptStart = (connStore) => {
               );
 
               // Prepare disconnect progress
-              if (tinyAiScript.multiplayer) {
+              if (tinyAiScript.mpClient) {
                 // Is active
                 if (client.isActive()) $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
                 // Disable page
@@ -4430,7 +4445,7 @@ const AiScriptStart = (connStore) => {
 
             // New message
             client.on('newMessage', () => {
-              if (tinyAiScript.multiplayer) {
+              if (tinyAiScript.mpClient) {
               }
             });
 
@@ -4446,7 +4461,7 @@ const AiScriptStart = (connStore) => {
           // No server
           if (!socket)
             makeTempMessage('No server has been detected. Your session is cancelled!', rpgCfg.ip);
-          else if (!tinyAiScript.multiplayer) return;
+          else if (!tinyAiScript.mpClient) return;
         }
       }
 
