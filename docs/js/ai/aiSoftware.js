@@ -626,6 +626,12 @@ const AiScriptStart = (connStore) => {
             }
             return convertToNumber(ranger.val());
           },
+          valString: function () {
+            return String(ranger.val());
+          },
+          valString2: function () {
+            return String(rangerNumber.val());
+          },
         };
       };
 

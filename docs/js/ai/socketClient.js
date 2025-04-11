@@ -250,7 +250,8 @@ class TinyClientIo extends EventEmitter {
         model: typeof result.model === 'string' ? result.model : null,
         prompt: typeof result.prompt === 'string' ? result.prompt : null,
         firstDialogue: typeof result.firstDialogue === 'string' ? result.firstDialogue : null,
-        systemInstruction: typeof result.systemInstruction === 'string' ? result.systemInstruction : null,
+        systemInstruction:
+          typeof result.systemInstruction === 'string' ? result.systemInstruction : null,
         maxOutputTokens: typeof result.maxOutputTokens === 'number' ? result.maxOutputTokens : null,
         temperature: typeof result.temperature === 'number' ? result.temperature : null,
         topP: typeof result.topP === 'number' ? result.topP : null,
