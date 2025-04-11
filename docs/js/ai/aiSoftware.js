@@ -2963,6 +2963,7 @@ const AiScriptStart = (connStore) => {
           }
         },
       );
+      contentEnabler.setResetSettingsButton(resetSettingsButton);
 
       const sidebarRight = $('<div>', sidebarStyle).append(
         $('<ul>', { class: 'list-unstyled' }).append(
