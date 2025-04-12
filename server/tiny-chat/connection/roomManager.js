@@ -1,6 +1,4 @@
-import isDebug from '../isDebug';
 import { objType } from '../lib/objChecker';
-import TinySQL from '../TinySQL';
 
 import {
   userIsRateLimited,

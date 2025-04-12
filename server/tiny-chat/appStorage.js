@@ -14,7 +14,7 @@ const FOLDER_NAME = 'tiny-chat_data';
 function createAppDirectory() {
   console.log('[APP] [INFO] Starting data directory creation...');
 
-  const appDirectory = isDebug()
+  const appDirectory = !isDebug()
     ? path.join(path.dirname(process.execPath), FOLDER_NAME) // For production, next to the .exe
     : path.join(__dirname, `../${FOLDER_NAME}`); // For development, inside the project folder
 
