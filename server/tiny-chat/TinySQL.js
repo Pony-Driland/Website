@@ -8,7 +8,6 @@ class TinySQL {
   #appStorage;
   #settings;
   #conditions;
-
   #table = {};
 
   constructor() {
@@ -158,6 +157,7 @@ class TinySQL {
       });
 
     // Save the table structure using an object with column names as keys
+    this.#table = {};
     for (const column of columns) {
       if (column.length >= 2) {
         const [name, type, options] = column;
@@ -193,8 +193,7 @@ class TinySQL {
             break;
 
           case 'BIGINT':
-            if(typeof raw === 'bigint')
-              result[item] = raw;
+            if (typeof raw === 'bigint') result[item] = raw;
             else {
               try {
                 result[item] = BigInt(raw);
@@ -224,8 +223,7 @@ class TinySQL {
               } catch {
                 result[item] = null;
               }
-            } else if(objType(raw, 'object') || Array.isArray(raw))
-              result[item] = raw;
+            } else if (objType(raw, 'object') || Array.isArray(raw)) result[item] = raw;
             else result[item] = null;
             break;
 
@@ -324,23 +322,32 @@ class TinySQL {
    * Insert or update a record with given data.
    * @param {string|number} id - Primary key value.
    * @param {object} valueObj - Data to store.
+   * @param {boolean} [onlyIfNew=false] - If true, only insert if the record does not already exist.
    * @returns {Promise<object>}
    */
-  async set(id, valueObj = {}) {
+  async set(id, valueObj = {}, onlyIfNew = false) {
     const results = [];
     const columns = Object.keys(valueObj);
     const values = Object.values(valueObj).map((v) =>
       typeof v === 'object' ? JSON.stringify(v) : v,
     );
     const placeholders = columns.map(() => '?').join(', ');
-    const updateClause = columns.map((col) => `${col} = excluded.${col}`).join(', ');
 
-    const query = `INSERT INTO ${this.#settings.name} (${this.#settings.id}, ${columns.join(', ')}) 
-                   VALUES (?, ${placeholders}) 
-                   ON CONFLICT(${this.#settings.id}${this.#settings.subId ? `, ${this.#settings.subId}` : ''}) DO UPDATE SET ${updateClause}`;
+    let query = `INSERT INTO ${this.#settings.name} (${this.#settings.id}, ${columns.join(', ')}) 
+               VALUES (?, ${placeholders})`;
+
+    if (!onlyIfNew) {
+      const updateClause = columns.map((col) => `${col} = excluded.${col}`).join(', ');
+      query += ` ON CONFLICT(${this.#settings.id}${this.#settings.subId ? `, ${this.#settings.subId}` : ''}) 
+               DO UPDATE SET ${updateClause}`;
+    } else {
+      query += ` ON CONFLICT(${this.#settings.id}${this.#settings.subId ? `, ${this.#settings.subId}` : ''}) DO NOTHING`;
+    }
 
     results.push(await this.#appStorage.runQuery(query, [id, ...values]));
-    if (this.debug) console.log('[sql] [set]', query, [id, ...values], results[results.length - 1]);
+    if (this.debug) {
+      console.log('[sql] [set]', query, [id, ...values], results[results.length - 1]);
+    }
     return results[0] || [];
   }
 
