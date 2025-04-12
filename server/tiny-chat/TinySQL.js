@@ -468,43 +468,105 @@ class TinySQL {
   }
 
   /**
-   * Perform a filtered search with given criteria.
-   * @param {object} [criteria={}] - Conditions with optional operators and logical operators.
+   * Perform a filtered search with nested criteria.
+   *
+   * Supports complex logical groupings (AND/OR) and flat condition style.
+   *
+   * @example
+   * // Simple search (flat style):
+   * await db.search({
+   *   status: { value: 'active' },
+   *   age: { value: 18, operator: '>=' }
+   * });
+   *
+   * // Grouped search:
+   * await db.search({
+   *   group: 'AND',
+   *   conditions: [
+   *     { column: 'status', value: 'active' },
+   *     {
+   *       group: 'OR',
+   *       conditions: [
+   *         { column: 'role', value: 'admin' },
+   *         { column: 'role', value: 'mod' }
+   *       ]
+   *     }
+   *   ]
+   * });
+   *
+   * // Equivalent SQL:
+   * // WHERE (status = ?) AND ((role = ?) OR (role = ?))
+   *
+   * @param {object} [criteria={}] - Nested criteria object.
+   *        Can be flat object style or grouped with `{ group: 'AND'|'OR', conditions: [...] }`.
    * @returns {Promise<object[]>}
    */
   async search(criteria = {}) {
-    const conditions = [];
     const values = [];
 
-    for (const col in criteria) {
-      const condition = criteria[col];
-      let operator = '=';
-      let value = condition.value;
+    const parseGroup = (group) => {
+      if (!group || typeof group !== 'object') return '';
 
-      if (condition.operator) {
-        const selected = condition.operator.toUpperCase();
+      if (group.conditions && Array.isArray(group.conditions)) {
+        const logic = group.group?.toUpperCase() === 'OR' ? 'OR' : 'AND';
+        const innerConditions = group.conditions.map((cond) => {
+          return `(${parseGroup(cond)})`;
+        });
+        return innerConditions.join(` ${logic} `);
+      }
+
+      // Flat object fallback for backward compatibility
+      if (!group.column && typeof group === 'object') {
+        const entries = Object.entries(group);
+        const logic = 'AND';
+        const innerConditions = entries.map(([col, cond]) => {
+          let operator = '=';
+          let value = cond.value;
+
+          if (cond.operator) {
+            const selected = cond.operator.toUpperCase();
+            if (typeof this.#conditions[selected] === 'function') {
+              const result = this.#conditions[selected](cond);
+              if (typeof result.operator === 'string') operator = result.operator;
+              if (typeof result.value !== 'undefined') value = result.value;
+            }
+          }
+
+          values.push(value);
+          return `(${col} ${operator} ?)`;
+        });
+        return innerConditions.join(` ${logic} `);
+      }
+
+      // If it's a single condition
+      const col = group.column;
+      let operator = '=';
+      let value = group.value;
+
+      if (group.operator) {
+        const selected = group.operator.toUpperCase();
         if (typeof this.#conditions[selected] === 'function') {
-          const result = this.#conditions[selected](condition);
+          const result = this.#conditions[selected](group);
           if (typeof result.operator === 'string') operator = result.operator;
-          if (typeof result.value === 'string') operator = result.value;
+          if (typeof result.value !== 'undefined') value = result.value;
         }
       }
 
-      const logicalOp = condition.logicalOperator ? condition.logicalOperator.toUpperCase() : 'AND';
-      conditions.push(`${conditions.length ? logicalOp + ' ' : ''}${col} ${operator} ?`);
       values.push(value);
-    }
+      return `${col} ${operator} ?`;
+    };
+
+    const whereClause = Object.keys(criteria).length ? `WHERE ${parseGroup(criteria)}` : '';
 
     const joinClause = this.#settings.join
       ? `LEFT JOIN ${this.#settings.join} j ON ${this.#settings.joinCompare || ''}`
       : '';
     const orderClause = this.#settings.order ? `ORDER BY ${this.#settings.order}` : '';
-    const whereClause = conditions.length ? `WHERE ${conditions.join(' ')}` : '';
 
     const query = `SELECT ${this.#settings.select} FROM ${this.#settings.name} t 
-                   ${joinClause} 
-                   ${whereClause} 
-                   ${orderClause}`;
+                     ${joinClause} 
+                     ${whereClause} 
+                     ${orderClause}`;
 
     const results = await this.#appStorage.getAllData(query, values);
     for (const index in results) this.#jsonChecker(results[index]);
