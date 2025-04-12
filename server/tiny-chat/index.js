@@ -214,14 +214,12 @@ startFiles().then(async (appStorage) => {
     typeof ownerData.userId === 'string' &&
     ownerData.userId.length > 0
   )
-    await appStorage.runQuery(
-      `INSERT INTO users (userId, password)
-    SELECT $1, $2
-    WHERE NOT EXISTS (
-        SELECT 1 FROM users WHERE userId = $1
-    )
-  `,
-      [ownerData.userId, getHashString(ownerData.password)],
+    await users.set(
+      ownerData.userId,
+      {
+        password: getHashString(ownerData.password),
+      },
+      true,
     );
 
   // Socket IO
