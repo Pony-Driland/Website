@@ -137,6 +137,7 @@ export default async function startFiles() {
             })
           : null;
 
+    appStorage.db = db;
     if (!db) return;
     if (config.database.type === 'postgre') await db.connect();
 
@@ -179,87 +180,6 @@ export default async function startFiles() {
       // Check if the new directory already exists
       if (!fs.existsSync(newDirPath)) fs.mkdirSync(newDirPath);
     };
-
-    /**
-     * Executes a query to get all rows from a database table.
-     * @function
-     * @async
-     * @param {string} query - The SQL query to execute.
-     * @param {Array} [params] - The parameters to bind to the query.
-     * @returns {Promise<Array>} A promise that resolves to an array of rows.
-     * @throws {Error} Throws an error if the query fails.
-     */
-    appStorage.getAllData = null;
-
-    if (config.database.type === 'sqlite3')
-      appStorage.getAllData = async function (query, params = []) {
-        return db.all(query, params);
-      };
-
-    if (config.database.type === 'postgre')
-      appStorage.getAllData = async function (query, params = []) {
-        await db.open(); // Ensure the connection is open
-        try {
-          const res = await db.query(query, params);
-          return res.rows; // Returning rows similar to db.all
-        } catch (err) {
-          throw err;
-        }
-      };
-
-    /**
-     * Executes a query to get a single row from a database table.
-     * @function
-     * @async
-     * @param {string} query - The SQL query to execute.
-     * @param {Array} [params] - The parameters to bind to the query.
-     * @returns {Promise<Object>} A promise that resolves to a single row object.
-     * @throws {Error} Throws an error if the query fails.
-     */
-    appStorage.getSingleData = null;
-
-    if (config.database.type === 'sqlite3')
-      appStorage.getSingleData = async function (query, params = []) {
-        return db.get(query, params);
-      };
-
-    if (config.database.type === 'postgre')
-      appStorage.getSingleData = async function (query, params = []) {
-        await db.open(); // Ensure the connection is open
-        try {
-          const res = await db.query(query, params);
-          return res.rows[0]; // Returning the first row, similar to db.get
-        } catch (err) {
-          throw err;
-        }
-      };
-
-    /**
-     * Executes an SQL statement to modify the database (e.g., INSERT, UPDATE).
-     * @function
-     * @async
-     * @param {string} query - The SQL query to execute.
-     * @param {Array} params - The parameters to bind to the query.
-     * @returns {Promise<Object>} A promise that resolves to the result of the query execution.
-     * @throws {Error} Throws an error if the query fails.
-     */
-    appStorage.runQuery = null;
-
-    if (config.database.type === 'sqlite3')
-      appStorage.runQuery = async function (query, params) {
-        return db.run(query, params);
-      };
-
-    if (config.database.type === 'postgre')
-      appStorage.runQuery = async function (query, params) {
-        await db.open(); // Ensure the connection is open
-        try {
-          const res = await db.query(query, params);
-          return res; // Returns the query result, similar to db.run
-        } catch (err) {
-          throw err;
-        }
-      };
 
     /**
      * A method to check if the database connection is open.
