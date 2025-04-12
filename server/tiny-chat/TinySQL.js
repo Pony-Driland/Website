@@ -28,52 +28,50 @@ class TinySQL {
       '<': () => ({ operator: '<' }),
     };
 
-    // Helpers for JSON operations within SQL queries (SQLite-compatible)
-    this.jsonOp = {
-      // Example: WHERE json_extract(data, '$.name') = 'Rainbow Queen'
-      /**
-       * Extracts the value of a key from a JSON object using SQLite's json_extract function.
-       * @param {string} where - The JSON column to extract from.
-       * @param {string} name - The key or path to extract (dot notation).
-       * @returns {string} SQL snippet to extract a value from JSON.
-       */
-      extract: (where = null, name = null) => `json_extract(${where}, '$.${name}')`,
-
-      /**
-       * Expands each element in a JSON array or each property in a JSON object into separate rows.
-       * Intended for use in the FROM clause.
-       * @param {string} source - JSON column or expression to expand.
-       * @returns {string} SQL snippet calling json_each.
-       */
-      each: (source = null) => `json_each(${source})`,
-
-      // Example: FROM json_each(json_extract(data, '$.tags'))
-      /**
-       * Unrolls a JSON array from a specific key inside a JSON column using json_each.
-       * Ideal for iterating over array elements in a FROM clause.
-       * @param {string} where - The JSON column containing the array.
-       * @param {string} name - The key of the JSON array.
-       * @returns {string} SQL snippet to extract and expand a JSON array.
-       */
-      extractArray: (where = null, name = null) =>
-        this.jsonOp.each(this.jsonOp.extract(where, name)),
-
-      // Example: WHERE CAST(json_extract(data, '$.level') AS INTEGER) > 10
-      /**
-       * Extracts a key from a JSON object and casts it to a given SQLite type (INTEGER, TEXT, REAL, etc.).
-       * @param {string} where - The JSON column to extract from.
-       * @param {string} name - The key or path to extract.
-       * @param {string} type - The type to cast to (e.g., 'INTEGER', 'TEXT', 'REAL').
-       * @returns {string} SQL snippet with cast applied.
-       */
-      cast: (where = null, name = null, type = 'NULL') =>
-        `CAST(${this.jsonOp.extract(where, name)} AS ${type.toUpperCase()})`,
-    };
-
     // Aliases for alternative comparison operators
     this.#conditions['='] = this.#conditions['==='];
     this.#conditions['!='] = this.#conditions['!=='];
   }
+
+  // Helpers for JSON operations within SQL queries (SQLite-compatible)
+
+  // Example: WHERE json_extract(data, '$.name') = 'Rainbow Queen'
+  /**
+   * Extracts the value of a key from a JSON object using SQLite's json_extract function.
+   * @param {string} where - The JSON column to extract from.
+   * @param {string} name - The key or path to extract (dot notation).
+   * @returns {string} SQL snippet to extract a value from JSON.
+   */
+  jsonExtract = (where = null, name = null) => `json_extract(${where}, '$.${name}')`;
+
+  /**
+   * Expands each element in a JSON array or each property in a JSON object into separate rows.
+   * Intended for use in the FROM clause.
+   * @param {string} source - JSON column or expression to expand.
+   * @returns {string} SQL snippet calling json_each.
+   */
+  jsonEach = (source = null) => `json_each(${source})`;
+
+  // Example: FROM json_each(json_extract(data, '$.tags'))
+  /**
+   * Unrolls a JSON array from a specific key inside a JSON column using json_each.
+   * Ideal for iterating over array elements in a FROM clause.
+   * @param {string} where - The JSON column containing the array.
+   * @param {string} name - The key of the JSON array.
+   * @returns {string} SQL snippet to extract and expand a JSON array.
+   */
+  arrayExtract = (where = null, name = null) => this.jsonEach(this.jsonExtract(where, name));
+
+  // Example: WHERE CAST(json_extract(data, '$.level') AS INTEGER) > 10
+  /**
+   * Extracts a key from a JSON object and casts it to a given SQLite type (INTEGER, TEXT, REAL, etc.).
+   * @param {string} where - The JSON column to extract from.
+   * @param {string} name - The key or path to extract.
+   * @param {string} type - The type to cast to (e.g., 'INTEGER', 'TEXT', 'REAL').
+   * @returns {string} SQL snippet with cast applied.
+   */
+  jsonCast = (where = null, name = null, type = 'NULL') =>
+    `CAST(${this.jsonExtract(where, name)} AS ${type.toUpperCase()})`;
 
   /**
    * Updates the table by adding, removing, modifying or renaming columns.
