@@ -141,7 +141,7 @@ export default async function startFiles() {
     };
 
     // Start database
-    await startDatabase(appStorage);
+    canStart = await startDatabase(appStorage);
   } catch (err) {
     canStart = false;
     console.error(err);
