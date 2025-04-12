@@ -9,6 +9,8 @@ class TinySQL {
   #settings;
   #conditions;
 
+  #table = {};
+
   constructor() {
     this.debug = false;
 
@@ -114,6 +116,7 @@ class TinySQL {
 
   /**
    * Creates a table in the database based on provided column definitions.
+   * Also stores the column structure in this.#table as an object keyed by column name.
    * @param {Array<Array<string|any>>} columns - An array of column definitions.
    * Each column is defined by an array containing the column name, type, and optional configurations.
    * @returns {Promise<void>}
@@ -153,26 +156,96 @@ class TinySQL {
         if (this.debug) console.log('[sql] [createTable]', query);
         return result;
       });
+
+    // Save the table structure using an object with column names as keys
+    for (const column of columns) {
+      if (column.length >= 2) {
+        const [name, type, options] = column;
+        this.#table[name] = {
+          type,
+          options: options || null,
+        };
+      }
+    }
   }
 
   /**
-   * Parses JSON fields from result rows if marked in the settings.
+   * Parses and validates fields from result rows based on SQL types in this.#table.
    * @private
    * @param {object} result - The result row to check.
    * @returns {object}
    */
   #jsonChecker(result) {
-    if (objType(result, 'object')) {
-      for (const item in result) {
-        if (this.#settings.json.indexOf(item) > -1) {
-          try {
-            result[item] = JSON.parse(result[item]);
-          } catch {
-            result[item] = null;
-          }
+    if (!objType(result, 'object')) return result;
+
+    for (const item in result) {
+      const column = this.#table?.[item];
+      if (!column || result[item] == null) continue;
+
+      const type = column.type?.toUpperCase?.().trim() || '';
+      const raw = result[item];
+
+      try {
+        switch (type) {
+          case 'BOOLEAN':
+          case 'BOOL':
+            result[item] = raw === true || raw === 'true' || raw === 1 || raw === '1';
+            break;
+
+          case 'BIGINT':
+            if(typeof raw === 'bigint')
+              result[item] = raw;
+            else {
+              try {
+                result[item] = BigInt(raw);
+              } catch {
+                result[item] = null;
+              }
+            }
+            break;
+
+          case 'INTEGER':
+          case 'INT':
+          case 'SMALLINT':
+          case 'TINYINT':
+          case 'REAL':
+          case 'FLOAT':
+          case 'DOUBLE':
+          case 'DECIMAL':
+          case 'NUMERIC':
+            result[item] = typeof raw === 'number' ? raw : parseInt(raw);
+            if (Number.isNaN(result[item])) result[item] = null;
+            break;
+
+          case 'JSON':
+            if (typeof raw === 'string') {
+              try {
+                result[item] = JSON.parse(raw);
+              } catch {
+                result[item] = null;
+              }
+            } else if(objType(raw, 'object') || Array.isArray(raw))
+              result[item] = raw;
+            else result[item] = null;
+            break;
+
+          case 'TEXT':
+          case 'CHAR':
+          case 'VARCHAR':
+          case 'CLOB':
+            result[item] = typeof raw === 'string' ? raw : null;
+            break;
+
+          // Keeps original value
+          default:
+            result[item] = raw;
+            break;
         }
+      } catch {
+        result[item] = null; // safe fallback
       }
     }
+
     return result;
   }
 
@@ -183,7 +256,6 @@ class TinySQL {
    */
   setDb(appStorage, settings = {}) {
     if (typeof settings.select !== 'string') settings.select = '*';
-    if (!Array.isArray(settings.json)) settings.json = [];
     if (typeof settings.join !== 'string') settings.join = null;
     if (typeof settings.joinCompare !== 'string' && settings.join)
       settings.joinCompare = 't.key = j.key';
