@@ -132,7 +132,7 @@ class TinySQL {
    * @param {string} name - The key of the JSON array.
    * @returns {string} SQL snippet to extract and expand a JSON array.
    */
-  arrayExtract = (where = null, name = null) => this.getJsonEach(this.getJsonExtract(where, name));
+  getArrayExtract = (where = null, name = null) => this.getJsonEach(this.getJsonExtract(where, name));
 
   // Example: WHERE CAST(json_extract(data, '$.level') AS INTEGER) > 10
   /**
