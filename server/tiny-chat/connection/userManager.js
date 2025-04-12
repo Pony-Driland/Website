@@ -1,12 +1,10 @@
+import db from './sql';
 import {
   userIsRateLimited,
   userSession,
   createAccount,
   getHashString,
   roomUsers,
-  bannedUsers,
-  moderators,
-  users,
   userSockets,
   sendIncompleteDataInfo,
   accountNotDetected,
@@ -14,7 +12,6 @@ import {
   leaveRoom,
   getRateLimit,
   noDataInfo,
-  usersDice,
 } from './values';
 
 export default function userManager(socket, io) {
@@ -30,11 +27,13 @@ export default function userManager(socket, io) {
     if (userIsRateLimited(socket, fn)) return;
 
     // Check if user is server owner or server mod
+    const moderators = db.getTable('moderators');
     if (yourId !== getIniConfig('OWNER_ID') && !(await moderators.has(yourId))) {
       return fn({ error: true, msg: 'You are not allowed to do this.', code: 1 });
     }
 
     // Check if user exists
+    const users = db.getTable('users');
     if (!(await users.has(userId))) {
       return fn({ error: true, msg: 'User not found.', code: 2 });
     }
@@ -43,6 +42,7 @@ export default function userManager(socket, io) {
     if (userSockets.has(userId)) userSockets.get(userId).disconnect();
 
     // Add into the ban list
+    const bannedUsers = db.getTable('banned');
     await bannedUsers.set(userId, { date: Date.now(), reason });
 
     // User ban successfully.
@@ -61,16 +61,19 @@ export default function userManager(socket, io) {
     if (userIsRateLimited(socket, fn)) return;
 
     // Check if user is server owner or server mod
+    const moderators = db.getTable('moderators');
     if (yourId !== getIniConfig('OWNER_ID') && !(await moderators.has(yourId))) {
       return fn({ error: true, msg: 'You are not allowed to do this.', code: 1 });
     }
 
     // Check if user exists
+    const users = db.getTable('users');
     if (!(await users.has(userId))) {
       return fn({ error: true, msg: 'User not found.', code: 2 });
     }
 
     // Remove user from the ban list
+    const bannedUsers = db.getTable('banned');
     await bannedUsers.delete(userId);
 
     // User unban successfully.
@@ -89,6 +92,7 @@ export default function userManager(socket, io) {
     if (userIsRateLimited(socket, fn)) return;
 
     // Check if user is server owner or server mod
+    const moderators = db.getTable('moderators');
     if (yourId !== getIniConfig('OWNER_ID') && !(await moderators.has(yourId))) {
       return fn({ error: true, msg: 'You are not allowed to do this.', code: 1 });
     }
@@ -130,6 +134,7 @@ export default function userManager(socket, io) {
     const userId = userSession.getUserId(socket);
     if (!userId) return accountNotDetected(fn); // Only logged-in users can use it
     if (userIsRateLimited(socket, fn)) return;
+    const users = db.getTable('users');
     const user = await users.get(userId);
 
     // Validate password
@@ -166,6 +171,7 @@ export default function userManager(socket, io) {
     const userId = userSession.getUserId(socket);
     if (!userId) return accountNotDetected(fn); // Only logged-in users can use it
     if (userIsRateLimited(socket, fn)) return;
+    const users = db.getTable('users');
     const user = await users.get(userId);
 
     // Change nickname
@@ -196,6 +202,7 @@ export default function userManager(socket, io) {
       return fn({ error: true, code: 2, msg: 'Only the owner can create accounts.' });
     }
 
+    const users = db.getTable('users');
     if (await users.has(userId)) {
       return fn({ error: true, code: 1, msg: 'User Id already exists.' });
     }
@@ -229,6 +236,7 @@ export default function userManager(socket, io) {
       return sendIncompleteDataInfo(fn);
 
     // Check if user is using account
+    const bannedUsers = db.getTable('banned');
     if (await bannedUsers.has(userId)) {
       const banData = await bannedUsers.get(userId);
       return fn({
@@ -249,6 +257,7 @@ export default function userManager(socket, io) {
     }
 
     // Validate user credentials
+    const users = db.getTable('users');
     if (!(await users.has(userId))) {
       return fn({ error: true, msg: 'User does not exist.', code: 2 });
     }
@@ -276,6 +285,8 @@ export default function userManager(socket, io) {
     );
 
     // Complete
+    const moderators = db.getTable('moderators');
+    const usersDice = db.getTable('usersDice');
     fn({
       userId,
       nickname,

@@ -1,6 +1,6 @@
 import crypto from 'crypto';
-import TinySQL from '../TinySQL';
 import { objType } from '../lib/objChecker';
+import db from './sql';
 
 export const userSockets = new Map(); // Socket users
 
@@ -13,28 +13,6 @@ export const getIniConfig = (where) => LIMITS[where];
 export const _setIniConfig = (where, value) => {
   LIMITS[where] = value || 0;
 };
-
-// Database
-export const audit = new TinySQL(); // Stores audit data
-export const users = new TinySQL(); // Stores user credentials
-export const moderators = new TinySQL(); // Stores the list of server moderators
-export const bannedUsers = new TinySQL(); // Stores the list of banned users
-
-export const roomModerators = new TinySQL(); // Stores users banned from room
-export const roomBannedUsers = new TinySQL(); // Stores users banned from room
-
-export const rooms = new TinySQL(); // Stores room configurations, including password, etc.
-export const roomHistories = new TinySQL(); // Stores room histories
-export const roomHistoriesDeleted = new TinySQL(); // Stores room histories
-
-export const roomTokens = new TinySQL(); // Stores room histories
-export const roomHash = new TinySQL(); // Stores room histories
-
-export const privateRoomData = new TinySQL(); // Stores room private data
-export const roomData = new TinySQL(); // Stores room data
-export const rpgSchema = new TinySQL(); // Stores room rpg schema data
-
-export const usersDice = new TinySQL(); // Stores users dice
 
 // Track the users in rooms
 export const roomUsers = new Map(); // Stores room users
@@ -58,6 +36,7 @@ export function mapToArray(map) {
  */
 export const createAccount = async (userId, password, nickname) => {
   const hashedPassword = getHashString(password.substring(0, getIniConfig('PASSWORD_SIZE')));
+  const users = db.getTable('users');
   await users.set(userId.substring(0, getIniConfig('USER_ID_SIZE')).replace(/ /g, ''), {
     password: hashedPassword,
     nickname: nickname.substring(0, getIniConfig('NICKNAME_SIZE')),
@@ -66,6 +45,7 @@ export const createAccount = async (userId, password, nickname) => {
 
 export const createRoom = async (userId, roomId, password, title) => {
   const hashedPassword = getHashString(password.substring(0, getIniConfig('PASSWORD_SIZE')));
+  const rooms = db.getTable('rooms');
   await rooms.set(roomId.substring(0, getIniConfig('ROOM_ID_SIZE')), {
     password: hashedPassword,
     title: title.substring(0, getIniConfig('ROOM_TITLE_SIZE')),

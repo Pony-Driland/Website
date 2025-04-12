@@ -1,10 +1,8 @@
 import fs from 'fs';
 import path from 'path';
-import { open } from 'sqlite';
-import sqlite3 from 'sqlite3';
-import { Client } from 'pg';
 import ini from 'ini';
 
+import { startDatabase } from './connection/sql';
 import { _setIniConfig } from './connection/values';
 import isDebug from './isDebug';
 
@@ -62,16 +60,6 @@ async function ensureIniFile(iniFilePath, templateFilePath) {
   }
 }
 
-async function isDbOpen(config, client) {
-  try {
-    if (config.database.type === 'postgre') await client.query('SELECT 1');
-    if (config.database.type === 'sqlite3') await client.get('SELECT 1');
-    return true;
-  } catch (err) {
-    return false;
-  }
-}
-
 export default async function startFiles() {
   let canStart = true;
   const appStorage = {};
@@ -119,35 +107,6 @@ export default async function startFiles() {
      */
     appStorage.config = config;
 
-    // Opening the database
-    console.log(`[APP] [${config.database.type}] Starting database...`);
-    const db =
-      config.database.type === 'sqlite3'
-        ? await open({
-            filename: path.join(appDir, `./database.db`),
-            driver: sqlite3.Database,
-          })
-        : config.database.type === 'postgre'
-          ? new Client({
-              user: config.database.user,
-              host: config.database.host,
-              database: config.database.database,
-              password: config.database.password,
-              port: config.database.port,
-            })
-          : null;
-
-    appStorage.db = db;
-    if (!db) return;
-    if (config.database.type === 'postgre') await db.connect();
-
-    process.on('SIGINT', async () => {
-      if (config.database.type === 'sqlite3') await db.close().catch(() => {});
-      if (config.database.type === 'postgre') await db.end().catch(() => {});
-    });
-
-    console.log(`[APP] [${config.database.type}] Database connection opened.`);
-
     /**
      * String with a directory storage of your application.
      * @returns {string} - The full path of the created or existing directory.
@@ -181,17 +140,8 @@ export default async function startFiles() {
       if (!fs.existsSync(newDirPath)) fs.mkdirSync(newDirPath);
     };
 
-    /**
-     * A method to check if the database connection is open.
-     *
-     * This method attempts to run a simple query on the database to determine if the
-     * connection is open or closed. It returns `true` if the database is open and
-     * `false` if the database is closed.
-     *
-     * @function
-     * @returns {Promise<boolean>} A promise that resolves to `true` if the database is open, `false` otherwise.
-     */
-    appStorage.isDbOpen = () => isDbOpen(config, db);
+    // Start database
+    await startDatabase(appStorage);
   } catch (err) {
     canStart = false;
     console.error(err);
