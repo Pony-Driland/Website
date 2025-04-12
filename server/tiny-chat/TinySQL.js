@@ -6,8 +6,8 @@ import { objType } from './lib/objChecker';
  */
 class TinySQL {
   #appStorage;
-  #settings;
   #conditions;
+  #settings = {};
   #table = {};
 
   constructor() {
@@ -334,21 +334,38 @@ class TinySQL {
   }
 
   /**
-   * Set the storage adapter and database settings.
-   * @param {object} appStorage - Object with methods like getSingleData, getAllData, runQuery.
-   * @param {object} [settings={}] - Configuration settings for the table and behavior.
+   * Set or update database settings by merging with existing ones.
+   * This function ensures safe fallback values and formats the SELECT clause.
+   *
+   * @param {object} [settings={}] - Partial configuration to apply. Will be merged with current settings.
+   * @property {string} [settings.select='*'] - SELECT clause configuration. Can be simplified; complex expressions are auto-formatted.
+   * @property {string|null} [settings.join=null] - Optional JOIN table name.
+   * @property {string|null} [settings.joinCompare='t.key = j.key'] - Condition used to match JOIN tables.
+   * @property {string|null} [settings.order=null] - Optional ORDER BY clause.
+   * @property {string} [settings.id='key'] - Primary key column name.
+   * @property {string|null} [settings.subId=null] - Optional secondary key column name.
    */
   setDb(settings = {}) {
-    settings.select =
-      typeof settings.select === 'string' ? this.#selectGenerator(settings.select) : '*';
+    const selectValue =
+      typeof settings.select === 'string'
+        ? this.#selectGenerator(settings.select)
+        : this.#settings?.select || '*';
 
-    if (typeof settings.join !== 'string') settings.join = null;
-    if (typeof settings.joinCompare !== 'string' && settings.join)
-      settings.joinCompare = 't.key = j.key';
-    if (typeof settings.order !== 'string') settings.order = null;
-    if (typeof settings.id !== 'string') settings.id = 'key';
-    if (typeof settings.subId !== 'string') settings.subId = null;
-    this.#settings = settings;
+    const newSettings = {
+      ...this.#settings,
+      ...settings,
+    };
+
+    newSettings.select = selectValue;
+
+    if (typeof newSettings.join !== 'string') newSettings.join = null;
+    if (typeof newSettings.joinCompare !== 'string' && newSettings.join)
+      newSettings.joinCompare = 't.key = j.key';
+    if (typeof newSettings.order !== 'string') newSettings.order = null;
+    if (typeof newSettings.id !== 'string') newSettings.id = 'key';
+    if (typeof newSettings.subId !== 'string') newSettings.subId = null;
+
+    this.#settings = newSettings;
   }
 
   /**
