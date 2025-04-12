@@ -114,7 +114,7 @@ class TinySQL {
    * @param {string} name - The key or path to extract (dot notation).
    * @returns {string} SQL snippet to extract a value from JSON.
    */
-  jsonExtract = (where = null, name = null) => `json_extract(${where}, '$.${name}')`;
+  getJsonExtract = (where = null, name = null) => `json_extract(${where}, '$.${name}')`;
 
   /**
    * Expands each element in a JSON array or each property in a JSON object into separate rows.
@@ -122,7 +122,7 @@ class TinySQL {
    * @param {string} source - JSON column or expression to expand.
    * @returns {string} SQL snippet calling json_each.
    */
-  jsonEach = (source = null) => `json_each(${source})`;
+  getJsonEach = (source = null) => `json_each(${source})`;
 
   // Example: FROM json_each(json_extract(data, '$.tags'))
   /**
@@ -132,7 +132,7 @@ class TinySQL {
    * @param {string} name - The key of the JSON array.
    * @returns {string} SQL snippet to extract and expand a JSON array.
    */
-  arrayExtract = (where = null, name = null) => this.jsonEach(this.jsonExtract(where, name));
+  arrayExtract = (where = null, name = null) => this.getJsonEach(this.getJsonExtract(where, name));
 
   // Example: WHERE CAST(json_extract(data, '$.level') AS INTEGER) > 10
   /**
@@ -142,8 +142,8 @@ class TinySQL {
    * @param {string} type - The type to cast to (e.g., 'INTEGER', 'TEXT', 'REAL').
    * @returns {string} SQL snippet with cast applied.
    */
-  jsonCast = (where = null, name = null, type = 'NULL') =>
-    `CAST(${this.jsonExtract(where, name)} AS ${type.toUpperCase()})`;
+  getJsonCast = (where = null, name = null, type = 'NULL') =>
+    `CAST(${this.getJsonExtract(where, name)} AS ${type.toUpperCase()})`;
 
   /**
    * Updates the table by adding, removing, modifying or renaming columns.
