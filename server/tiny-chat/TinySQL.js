@@ -33,6 +33,10 @@ class TinySQL {
     this.#conditions['!='] = this.#conditions['!=='];
   }
 
+  #fixDebugQuery(value) {
+    return value.trim().replace(/  |(\r\n|\n|\r)/g, '');
+  }
+
   /**
    * Generates a SELECT clause based on the input, supporting SQL functions, columns, and aliases.
    * Automatically parses input to build valid SQL expressions.
@@ -164,7 +168,7 @@ class TinySQL {
         const query = `ALTER TABLE ${this.#settings.name} ADD COLUMN ${change[1]} ${change[2]} ${change[3] || ''}`;
         try {
           await this.#appStorage.runQuery(query);
-          if (this.debug) console.log('[sql] [updateTable - ADD]', query);
+          if (this.debug) console.log('[sql] [updateTable - ADD]', this.#fixDebugQuery(query));
         } catch (error) {
           console.error('[sql] [updateTable - ADD] Error adding column:', error);
         }
@@ -172,7 +176,7 @@ class TinySQL {
         const query = `ALTER TABLE ${this.#settings.name} DROP COLUMN IF EXISTS ${change[1]}`;
         try {
           await this.#appStorage.runQuery(query);
-          if (this.debug) console.log('[sql] [updateTable - REMOVE]', query);
+          if (this.debug) console.log('[sql] [updateTable - REMOVE]', this.#fixDebugQuery(query));
         } catch (error) {
           console.error('[sql] [updateTable - REMOVE] Error removing column:', error);
         }
@@ -182,7 +186,7 @@ class TinySQL {
         }`;
         try {
           await this.#appStorage.runQuery(query);
-          if (this.debug) console.log('[sql] [updateTable - MODIFY]', query);
+          if (this.debug) console.log('[sql] [updateTable - MODIFY]', this.#fixDebugQuery(query));
         } catch (error) {
           console.error('[sql] [updateTable - MODIFY] Error modifying column:', error);
         }
@@ -190,7 +194,7 @@ class TinySQL {
         const query = `ALTER TABLE ${this.#settings.name} RENAME COLUMN ${change[1]} TO ${change[2]}`;
         try {
           await this.#appStorage.runQuery(query);
-          if (this.debug) console.log('[sql] [updateTable - RENAME]', query);
+          if (this.debug) console.log('[sql] [updateTable - RENAME]', this.#fixDebugQuery(query));
         } catch (error) {
           console.error('[sql] [updateTable - RENAME] Error renaming column:', error);
         }
@@ -235,11 +239,11 @@ class TinySQL {
       .runQuery(query)
       .catch((err) => {
         console.error(err);
-        console.log(`[sql] [createTable] [error] ${query}`);
+        console.log(`[sql] [createTable] [error] ${this.#fixDebugQuery(query)}`);
         return err;
       })
       .then((result) => {
-        if (this.debug) console.log('[sql] [createTable]', query);
+        if (this.debug) console.log('[sql] [createTable]', this.#fixDebugQuery(query));
         return result;
       });
 
@@ -405,7 +409,7 @@ class TinySQL {
     if (useSub) params.push(subId);
 
     const result = await this.#appStorage.getSingleData(query, params);
-    if (this.debug) console.log('[sql] [has]', query, params, result);
+    if (this.debug) console.log('[sql] [has]', this.#fixDebugQuery(query), params, result);
     return result['COUNT(*)'] === 1;
   }
 
@@ -432,7 +436,7 @@ class TinySQL {
 
     const mainResult = await this.#appStorage.runQuery(query, params);
     results.push(mainResult);
-    if (this.debug) console.log('[sql] [update]', query, params, mainResult);
+    if (this.debug) console.log('[sql] [update]', this.#fixDebugQuery(query), params, mainResult);
 
     if (mainResult?.changes === 0 || mainResult?.rowsAffected === 0) return null; // No record updated
     return results[0] || null;
@@ -466,7 +470,12 @@ class TinySQL {
 
     results.push(await this.#appStorage.runQuery(query, [id, ...values]));
     if (this.debug) {
-      console.log('[sql] [set]', query, [id, ...values], results[results.length - 1]);
+      console.log(
+        '[sql] [set]',
+        this.#fixDebugQuery(query),
+        [id, ...values],
+        results[results.length - 1],
+      );
     }
     return results[0] || [];
   }
@@ -487,7 +496,7 @@ class TinySQL {
                    ${joinClause} WHERE t.${this.#settings.id} = ?${useSub ? ` AND t.${this.#settings.subId} = ?` : ''}`;
     if (useSub) params.push(subId);
     const result = this.#jsonChecker(await this.#appStorage.getSingleData(query, params));
-    if (this.debug) console.log('[sql] [get]', query, params, result);
+    if (this.debug) console.log('[sql] [get]', this.#fixDebugQuery(query), params, result);
     if (!result) return null;
     return result;
   }
@@ -505,7 +514,7 @@ class TinySQL {
     if (useSub) params.push(subId);
 
     const result = this.#appStorage.runQuery(query, params);
-    if (this.debug) console.log('[sql] [delete]', query, params, result);
+    if (this.debug) console.log('[sql] [delete]', this.#fixDebugQuery(query), params, result);
     return result;
   }
 
@@ -532,7 +541,7 @@ class TinySQL {
     const results = await this.#appStorage.getAllData(query, params);
     for (const index in results) this.#jsonChecker(results[index]);
 
-    if (this.debug) console.log('[sql] [getAmount]', query, params, results);
+    if (this.debug) console.log('[sql] [getAmount]', this.#fixDebugQuery(query), params, results);
     return results;
   }
 
@@ -557,7 +566,7 @@ class TinySQL {
     const results = await this.#appStorage.getAllData(query, filterId !== null ? [filterId] : []);
     for (const index in results) this.#jsonChecker(results[index]);
 
-    if (this.debug) console.log('[sql] [getAll]', query, filterId, results);
+    if (this.debug) console.log('[sql] [getAll]', this.#fixDebugQuery(query), filterId, results);
     return results;
   }
 
@@ -666,7 +675,7 @@ class TinySQL {
     const results = await this.#appStorage.getAllData(query, values);
     for (const index in results) this.#jsonChecker(results[index]);
 
-    if (this.debug) console.log('[sql] [search]', query, values, results);
+    if (this.debug) console.log('[sql] [search]', this.#fixDebugQuery(query), values, results);
     return results;
   }
 }
