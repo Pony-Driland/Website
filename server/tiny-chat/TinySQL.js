@@ -127,10 +127,9 @@ class TinySQL {
    * Will not insert if the record doesn't exist.
    * @param {string|number} id - Primary key value.
    * @param {object} valueObj - Data to update.
-   * @param {object|null} [extraData=null] - Data for join table, if configured.
-   * @returns {Promise<object|object[]|null>} Null if no rows were updated.
+   * @returns {Promise<object|null>} Null if no rows were updated.
    */
-  async update(id, valueObj = {}, extraData = null) {
+  async update(id, valueObj = {}) {
     const results = [];
 
     const columns = Object.keys(valueObj);
@@ -148,37 +147,17 @@ class TinySQL {
     results.push(mainResult);
     if (this.debug) console.log('[sql] [update]', query, params, mainResult);
 
-    if (mainResult?.changes === 0 || mainResult?.rowsAffected === 0) {
-      return null; // No record updated
-    }
-
-    if (extraData !== null && this.#settings.join) {
-      const metaColumns = Object.keys(extraData);
-      const metaValues = Object.values(extraData).map((v) =>
-        typeof v === 'object' ? JSON.stringify(v) : v,
-      );
-      const metaSetClause = metaColumns.map((col) => `${col} = ?`).join(', ');
-
-      const metaQuery = `UPDATE ${this.#settings.join} SET ${metaSetClause} WHERE ${this.#settings.id} = ?${useSub ? ` AND ${this.#settings.subId} = ?` : ''}`;
-      const metaParams = [...metaValues, id];
-      if (useSub) metaParams.push(valueObj[this.#settings.subId]);
-
-      const metaResult = await this.#appStorage.runQuery(metaQuery, metaParams);
-      results.push(metaResult);
-      if (this.debug) console.log('[sql] [update-meta]', metaQuery, metaParams, metaResult);
-    }
-
-    return results.length < 2 ? results[0] : results;
+    if (mainResult?.changes === 0 || mainResult?.rowsAffected === 0) return null; // No record updated
+    return results[0] || null;
   }
 
   /**
    * Insert or update a record with given data.
    * @param {string|number} id - Primary key value.
    * @param {object} valueObj - Data to store.
-   * @param {object|null} [extraData=null] - Data for join table, if configured.
-   * @returns {Promise<object|object[]>}
+   * @returns {Promise<object>}
    */
-  async set(id, valueObj = {}, extraData = null) {
+  async set(id, valueObj = {}) {
     const results = [];
     const columns = Object.keys(valueObj);
     const values = Object.values(valueObj).map((v) =>
@@ -193,25 +172,7 @@ class TinySQL {
 
     results.push(await this.#appStorage.runQuery(query, [id, ...values]));
     if (this.debug) console.log('[sql] [set]', query, [id, ...values], results[results.length - 1]);
-
-    if (extraData !== null && this.#settings.join) {
-      const metaColumns = Object.keys(extraData);
-      const metaValues = Object.values(extraData).map((v) =>
-        typeof v === 'object' ? JSON.stringify(v) : v,
-      );
-      const metaPlaceholders = metaColumns.map(() => '?').join(', ');
-      const metaUpdateClause = metaColumns.map((col) => `${col} = excluded.${col}`).join(', ');
-
-      const metaQuery = `INSERT INTO ${this.#settings.join} (${this.#settings.id}, ${metaColumns.join(', ')}) 
-                           VALUES (?, ${metaPlaceholders}) 
-                           ON CONFLICT(${this.#settings.id}${this.#settings.subId ? `, ${this.#settings.subId}` : ''}) DO UPDATE SET ${metaUpdateClause}`;
-
-      results.push(await this.#appStorage.runQuery(metaQuery, [id, ...metaValues]));
-      if (this.debug)
-        console.log('[sql] [set]', metaQuery, [id, ...metaValues], results[results.length - 1]);
-    }
-
-    return results.length < 2 ? results[0] : results;
+    return results[0] || [];
   }
 
   /**
