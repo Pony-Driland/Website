@@ -5,6 +5,7 @@ import messageManager from './connection/messageManager';
 import userManager from './connection/userManager';
 import roomManager from './connection/roomManager';
 import {
+  audit,
   bannedUsers,
   getHashString,
   getIniConfig,
@@ -13,10 +14,12 @@ import {
   roomBannedUsers,
   roomData,
   roomHash,
+  roomHistories,
   roomHistoriesDeleted,
   roomModerators,
   rooms,
   roomTokens,
+  rpgSchema,
   users,
   usersDice,
 } from './connection/values';
@@ -28,180 +31,94 @@ startFiles().then(async (appStorage) => {
   if (!appStorage) return;
 
   // Start database
-  await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS rooms (
-    roomId TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
-    title TEXT,
-    password TEXT,
-    prompt TEXT,
-    model TEXT,
-    systemInstruction TEXT,
-    firstDialogue TEXT,
-    maxOutputTokens REAL,
-    temperature REAL,
-    topP REAL,
-    topK REAL,
-    presencePenalty REAL,
-    frequencyPenalty REAL,
-    maxUsers INTEGER DEFAULT 50,
-    ownerId TEXT NOT NULL,
-    disabled BOOLEAN DEFAULT 0
-    );
-    `);
-
-  await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS roomTokens (
-    roomId TEXT PRIMARY KEY,
-    prompt INTEGER,
-    systemInstruction INTEGER,
-    rpgSchema INTEGER,
-    rpgData INTEGER,
-    rpgPrivateData INTEGER,
-    file INTEGER,
-    FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE
-    );
-  `);
-
-  await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS roomHash (
-    roomId TEXT PRIMARY KEY,
-    prompt TEXT,
-    systemInstruction TEXT,
-    rpgSchema TEXT,
-    rpgData TEXT,
-    rpgPrivateData TEXT,
-    file TEXT,
-    FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE
-    );
-  `);
-
-  await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS roomModerators (
-    roomId TEXT,
-    userId TEXT,
-    PRIMARY KEY (roomId, userId),
-    FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE
-    );
-  `);
-
-  await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS roomBannedUsers (
-    roomId TEXT,
-    userId TEXT,
-    PRIMARY KEY (roomId, userId),
-    FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE
-    );
-  `);
-
-  const historyQuery = `
-    roomId TEXT TEXT NOT NULL,
-    userId TEXT TEXT NOT NULL,
-    text TEXT NOT NULL,
-    date INTEGER NOT NULL,
-    edited INTEGER,
-    tokens INTEGER,
-    errorCode TEXT,
-    FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE
-  `;
-  await appStorage.runQuery(
-    `CREATE TABLE IF NOT EXISTS history (historyId TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))), ${historyQuery});`,
-  );
-  await appStorage.runQuery(
-    `CREATE TABLE IF NOT EXISTS historyDeleted (historyId TEXT NOT NULL, ${historyQuery});`,
-  );
-
-  await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS users (
-    userId TEXT PRIMARY KEY,
-    password TEXT NOT NULL,
-    nickname TEXT
-    );
-  `);
-
-  await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS usersDice (
-    userId TEXT PRIMARY KEY,
-    bg TEXT,
-    text TEXT,
-    border TEXT,
-    img TEXT,
-    selectionBg TEXT,
-    selectionText TEXT,
-    FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE
-    );
-  `);
-
-  await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS moderators (
-    userId TEXT PRIMARY KEY,
-    reason TEXT,
-    date INTEGER NOT NULL,
-    FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE
-    );
-  `);
-
-  await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS banned (
-    userId TEXT PRIMARY KEY,
-    reason TEXT,
-    date INTEGER NOT NULL
-    );
-  `);
-
-  await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS privateRoomData (
-    roomId TEXT PRIMARY KEY,
-    data JSON NOT NULL,
-    FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE
-    );
-  `);
-
-  await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS rpgSchema (
-    roomId TEXT PRIMARY KEY,
-    data JSON NOT NULL,
-    FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE
-    );
-  `);
-
-  await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS roomData (
-    roomId TEXT PRIMARY KEY,
-    data JSON NOT NULL,
-    FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE
-    );
-  `);
-
-  await appStorage.runQuery(`CREATE TABLE IF NOT EXISTS audit (
-    auditId INTEGER PRIMARY KEY AUTOINCREMENT,
-    userId TEXT NOT NULL,
-    target TEXT,
-    type TEXT NOT NULL
-    );
-  `);
-
   const debugMode = isDebug();
-
-  roomModerators.setDb(appStorage, { name: 'roomModerators', id: 'roomId', subId: 'userId' });
-  roomModerators.setDebug(debugMode);
-
-  roomBannedUsers.setDb(appStorage, { name: 'roomBannedUsers', id: 'roomId', subId: 'userId' });
-  roomBannedUsers.setDebug(debugMode);
-
-  bannedUsers.setDb(appStorage, { name: 'banned', id: 'userId' });
-  bannedUsers.setDebug(debugMode);
-
-  moderators.setDb(appStorage, { name: 'moderators', id: 'userId' });
-  moderators.setDebug(debugMode);
-
-  privateRoomData.setDb(appStorage, { name: 'privateRoomData', id: 'roomId', json: ['data'] });
-  privateRoomData.setDebug(debugMode);
-
-  roomData.setDb(appStorage, { name: 'roomData', id: 'roomId', json: ['data'] });
-  roomData.setDebug(debugMode);
 
   rooms.setDb(appStorage, { name: 'rooms', id: 'roomId' });
   rooms.setDebug(debugMode);
-
-  roomHash.setDb(appStorage, { name: 'roomHash', id: 'roomId' });
-  roomHash.setDebug(debugMode);
+  await rooms.createTable([
+    ['roomId', 'TEXT', 'PRIMARY KEY DEFAULT (lower(hex(randomblob(16))))'],
+    ['title', 'TEXT'],
+    ['password', 'TEXT'],
+    ['prompt', 'TEXT'],
+    ['model', 'TEXT'],
+    ['systemInstruction', 'TEXT'],
+    ['firstDialogue', 'TEXT'],
+    ['maxOutputTokens', 'REAL'],
+    ['temperature', 'REAL'],
+    ['topP', 'REAL'],
+    ['topK', 'REAL'],
+    ['presencePenalty', 'REAL'],
+    ['frequencyPenalty', 'REAL'],
+    ['maxUsers', 'INTEGER', 'DEFAULT 50'],
+    ['ownerId', 'TEXT', 'NOT NULL'],
+    ['disabled', 'BOOLEAN', 'DEFAULT 0'],
+  ]);
 
   roomTokens.setDb(appStorage, { name: 'roomTokens', id: 'roomId' });
   roomTokens.setDebug(debugMode);
+  await roomTokens.createTable([
+    ['roomId', 'TEXT', 'PRIMARY KEY'],
+    ['prompt', 'INTEGER'],
+    ['systemInstruction', 'INTEGER'],
+    ['rpgSchema', 'INTEGER'],
+    ['rpgData', 'INTEGER'],
+    ['rpgPrivateData', 'INTEGER'],
+    ['file', 'INTEGER'],
+    ['FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE'],
+  ]);
 
-  users.setDb(appStorage, { name: 'users', id: 'userId' });
-  users.setDebug(debugMode);
+  roomHash.setDb(appStorage, { name: 'roomHash', id: 'roomId' });
+  roomHash.setDebug(debugMode);
+  await roomHash.createTable([
+    ['roomId', 'TEXT', 'PRIMARY KEY'],
+    ['prompt', 'TEXT'],
+    ['systemInstruction', 'TEXT'],
+    ['rpgSchema', 'TEXT'],
+    ['rpgData', 'TEXT'],
+    ['rpgPrivateData', 'TEXT'],
+    ['file', 'TEXT'],
+    ['FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE'],
+  ]);
 
-  usersDice.setDb(appStorage, { name: 'usersDice', id: 'userId' });
-  usersDice.setDebug(debugMode);
+  roomModerators.setDb(appStorage, { name: 'roomModerators', id: 'roomId', subId: 'userId' });
+  roomModerators.setDebug(debugMode);
+  await roomModerators.createTable([
+    ['roomId', 'TEXT'],
+    ['userId', 'TEXT'],
+    ['PRIMARY KEY (roomId, userId)'],
+    ['FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE'],
+  ]);
+
+  roomBannedUsers.setDb(appStorage, { name: 'roomBannedUsers', id: 'roomId', subId: 'userId' });
+  roomBannedUsers.setDebug(debugMode);
+  await roomBannedUsers.createTable([
+    ['roomId', 'TEXT'],
+    ['userId', 'TEXT'],
+    ['PRIMARY KEY (roomId, userId)'],
+    ['FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE'],
+  ]);
+
+  const historyTemplate = [
+    ['roomId', 'TEXT', 'NOT NULL'],
+    ['userId', 'TEXT', 'NOT NULL'],
+    ['text', 'TEXT', 'NOT NULL'],
+    ['date', 'INTEGER', 'NOT NULL'],
+    ['edited', 'INTEGER'],
+    ['tokens', 'INTEGER'],
+    ['errorCode', 'TEXT'],
+    ['FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE'],
+  ];
+
+  roomHistories.setDb(appStorage, {
+    name: 'history',
+    id: 'roomId',
+    subId: 'historyId',
+  });
+  roomHistories.setDebug(debugMode);
+  await roomHistories.createTable([
+    ['historyId', 'TEXT', 'PRIMARY KEY DEFAULT (lower(hex(randomblob(16))))'],
+    ...historyTemplate,
+  ]);
 
   roomHistoriesDeleted.setDb(appStorage, {
     name: 'historyDeleted',
@@ -209,6 +126,81 @@ startFiles().then(async (appStorage) => {
     subId: 'historyId',
   });
   roomHistoriesDeleted.setDebug(debugMode);
+  await roomHistoriesDeleted.createTable([
+    ['historyId', 'TEXT', 'PRIMARY KEY'],
+    ...historyTemplate,
+  ]);
+
+  users.setDb(appStorage, { name: 'users', id: 'userId' });
+  users.setDebug(debugMode);
+  await users.createTable([
+    ['userId', 'TEXT', 'PRIMARY KEY'],
+    ['password', 'TEXT', 'NOT NULL'],
+    ['nickname', 'TEXT'],
+  ]);
+
+  usersDice.setDb(appStorage, { name: 'usersDice', id: 'userId' });
+  usersDice.setDebug(debugMode);
+  await usersDice.createTable([
+    ['userId', 'TEXT', 'PRIMARY KEY'],
+    ['bg', 'TEXT'],
+    ['text', 'TEXT'],
+    ['border', 'TEXT'],
+    ['img', 'TEXT'],
+    ['selectionBg', 'TEXT'],
+    ['selectionText', 'TEXT'],
+    ['FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE'],
+  ]);
+
+  moderators.setDb(appStorage, { name: 'moderators', id: 'userId' });
+  moderators.setDebug(debugMode);
+  await moderators.createTable([
+    ['userId', 'TEXT', 'PRIMARY KEY'],
+    ['reason', 'TEXT'],
+    ['date', 'INTEGER', 'NOT NULL'],
+    ['FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE'],
+  ]);
+
+  bannedUsers.setDb(appStorage, { name: 'banned', id: 'userId' });
+  bannedUsers.setDebug(debugMode);
+  await bannedUsers.createTable([
+    ['userId', 'TEXT', 'PRIMARY KEY'],
+    ['reason', 'TEXT'],
+    ['date', 'INTEGER', 'NOT NULL'],
+  ]);
+
+  privateRoomData.setDb(appStorage, { name: 'privateRoomData', id: 'roomId', json: ['data'] });
+  privateRoomData.setDebug(debugMode);
+  await privateRoomData.createTable([
+    ['roomId', 'TEXT', 'PRIMARY KEY'],
+    ['data', 'JSON', 'NOT NULL'],
+    ['FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE'],
+  ]);
+
+  rpgSchema.setDb(appStorage, { name: 'rpgSchema', id: 'roomId', json: ['data'] });
+  rpgSchema.setDebug(debugMode);
+  await rpgSchema.createTable([
+    ['roomId', 'TEXT', 'PRIMARY KEY'],
+    ['data', 'JSON', 'NOT NULL'],
+    ['FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE'],
+  ]);
+
+  roomData.setDb(appStorage, { name: 'roomData', id: 'roomId', json: ['data'] });
+  roomData.setDebug(debugMode);
+  await roomData.createTable([
+    ['roomId', 'TEXT', 'PRIMARY KEY'],
+    ['data', 'JSON', 'NOT NULL'],
+    ['FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE'],
+  ]);
+
+  audit.setDb(appStorage, { name: 'audit', id: 'auditId' });
+  audit.setDebug(debugMode);
+  await audit.createTable([
+    ['auditId', 'TEXT', 'PRIMARY KEY DEFAULT (lower(hex(randomblob(16))))'],
+    ['userId', 'TEXT', 'NOT NULL'],
+    ['target', 'TEXT'],
+    ['type', 'TEXT', 'NOT NULL'],
+  ]);
 
   // Start admin account
   const ownerData = {
