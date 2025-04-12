@@ -28,30 +28,46 @@ class TinySQL {
       '<': () => ({ operator: '<' }),
     };
 
-    // Helpers for JSON operations within SQL queries
+    // Helpers for JSON operations within SQL queries (SQLite-compatible)
     this.jsonOp = {
-      // WHERE json_extract(data, '$.name') = 'Rainbow Queen' | Search exact value inside json
+      // Example: WHERE json_extract(data, '$.name') = 'Rainbow Queen'
       /**
-       * Extracts a JSON key from a field using SQLite's json_extract.
-       * @param {string} name - The key to extract.
-       * @param {string} [where='data'] - The field to search in.
+       * Extracts the value of a key from a JSON object using SQLite's json_extract function.
+       * @param {string} where - The JSON column to extract from.
+       * @param {string} name - The key or path to extract (dot notation).
+       * @returns {string} SQL snippet to extract a value from JSON.
        */
-      extract: (name, where = 'data') => `json_extract(${where}, '$.${name}')`,
-      // FROM json_each(json_extract(data, '$.tags')) | Search inside a array
+      extract: (where = null, name = null) => `json_extract(${where}, '$.${name}')`,
+
       /**
-       * Unrolls a JSON array into multiple rows using json_each.
-       * @param {string} name - The key to iterate over.
-       * @param {string} [where='data'] - The field to search in.
+       * Expands each element in a JSON array or each property in a JSON object into separate rows.
+       * Intended for use in the FROM clause.
+       * @param {string} source - JSON column or expression to expand.
+       * @returns {string} SQL snippet calling json_each.
        */
-      each: (name, where = 'data') => `json_each(${this.jsonOp.extract(name, where)})`,
-      // WHERE CAST(json_extract(data, '$.level') AS INTEGER) > 10 | Filter by a numerical value within JSON
+      each: (source = null) => `json_each(${source})`,
+
+      // Example: FROM json_each(json_extract(data, '$.tags'))
       /**
-       * Extracts a key and casts it to an integer for numeric comparisons.
-       * @param {string} name - The key to convert.
-       * @param {string} [where='data'] - The field to search in.
+       * Unrolls a JSON array from a specific key inside a JSON column using json_each.
+       * Ideal for iterating over array elements in a FROM clause.
+       * @param {string} where - The JSON column containing the array.
+       * @param {string} name - The key of the JSON array.
+       * @returns {string} SQL snippet to extract and expand a JSON array.
        */
-      filterNumber: (name, where = 'data') =>
-        `CAST(${this.jsonOp.extract(name, where)} AS INTEGER)`,
+      extractArray: (where = null, name = null) =>
+        this.jsonOp.each(this.jsonOp.extract(where, name)),
+
+      // Example: WHERE CAST(json_extract(data, '$.level') AS INTEGER) > 10
+      /**
+       * Extracts a key from a JSON object and casts it to a given SQLite type (INTEGER, TEXT, REAL, etc.).
+       * @param {string} where - The JSON column to extract from.
+       * @param {string} name - The key or path to extract.
+       * @param {string} type - The type to cast to (e.g., 'INTEGER', 'TEXT', 'REAL').
+       * @returns {string} SQL snippet with cast applied.
+       */
+      cast: (where = null, name = null, type = 'NULL') =>
+        `CAST(${this.jsonOp.extract(where, name)} AS ${type.toUpperCase()})`,
     };
 
     // Aliases for alternative comparison operators
@@ -252,7 +268,7 @@ class TinySQL {
    * @param {object} appStorage - Object with methods like getSingleData, getAllData, runQuery.
    * @param {object} [settings={}] - Configuration settings for the table and behavior.
    */
-  setDb(appStorage, settings = {}) {
+  setDb(settings = {}) {
     if (typeof settings.select !== 'string') settings.select = '*';
     if (typeof settings.join !== 'string') settings.join = null;
     if (typeof settings.joinCompare !== 'string' && settings.join)
@@ -260,8 +276,22 @@ class TinySQL {
     if (typeof settings.order !== 'string') settings.order = null;
     if (typeof settings.id !== 'string') settings.id = 'key';
     if (typeof settings.subId !== 'string') settings.subId = null;
-    this.#appStorage = appStorage;
     this.#settings = settings;
+  }
+
+  /**
+   * Assigns the provided appStorage interface to the internal #appStorage property.
+   * It stores selected methods to interact with an external storage system.
+   *
+   * @param {object} appStorage - An object containing storage-related methods.
+   * Must include getAllData, getSingleData, and runQuery.
+   */
+  setAppStorage(appStorage) {
+    this.#appStorage = {
+      getAllData: appStorage.getAllData,
+      getSingleData: appStorage.getSingleData,
+      runQuery: appStorage.runQuery,
+    };
   }
 
   /**

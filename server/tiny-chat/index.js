@@ -33,7 +33,8 @@ startFiles().then(async (appStorage) => {
   // Start database
   const debugMode = isDebug();
 
-  rooms.setDb(appStorage, { name: 'rooms', id: 'roomId' });
+  rooms.setAppStorage(appStorage);
+  rooms.setDb({ name: 'rooms', id: 'roomId' });
   rooms.setDebug(debugMode);
   await rooms.createTable([
     ['roomId', 'TEXT', 'PRIMARY KEY DEFAULT (lower(hex(randomblob(16))))'],
@@ -54,7 +55,8 @@ startFiles().then(async (appStorage) => {
     ['disabled', 'BOOLEAN', 'DEFAULT 0'],
   ]);
 
-  roomTokens.setDb(appStorage, { name: 'roomTokens', id: 'roomId' });
+  roomTokens.setAppStorage(appStorage);
+  roomTokens.setDb({ name: 'roomTokens', id: 'roomId' });
   roomTokens.setDebug(debugMode);
   await roomTokens.createTable([
     ['roomId', 'TEXT', 'PRIMARY KEY'],
@@ -67,7 +69,8 @@ startFiles().then(async (appStorage) => {
     ['FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE'],
   ]);
 
-  roomHash.setDb(appStorage, { name: 'roomHash', id: 'roomId' });
+  roomHash.setAppStorage(appStorage);
+  roomHash.setDb({ name: 'roomHash', id: 'roomId' });
   roomHash.setDebug(debugMode);
   await roomHash.createTable([
     ['roomId', 'TEXT', 'PRIMARY KEY'],
@@ -80,7 +83,8 @@ startFiles().then(async (appStorage) => {
     ['FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE'],
   ]);
 
-  roomModerators.setDb(appStorage, { name: 'roomModerators', id: 'roomId', subId: 'userId' });
+  roomModerators.setAppStorage(appStorage);
+  roomModerators.setDb({ name: 'roomModerators', id: 'roomId', subId: 'userId' });
   roomModerators.setDebug(debugMode);
   await roomModerators.createTable([
     ['roomId', 'TEXT'],
@@ -89,7 +93,8 @@ startFiles().then(async (appStorage) => {
     ['FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE'],
   ]);
 
-  roomBannedUsers.setDb(appStorage, { name: 'roomBannedUsers', id: 'roomId', subId: 'userId' });
+  roomBannedUsers.setAppStorage(appStorage);
+  roomBannedUsers.setDb({ name: 'roomBannedUsers', id: 'roomId', subId: 'userId' });
   roomBannedUsers.setDebug(debugMode);
   await roomBannedUsers.createTable([
     ['roomId', 'TEXT'],
@@ -109,7 +114,8 @@ startFiles().then(async (appStorage) => {
     ['FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE'],
   ];
 
-  roomHistories.setDb(appStorage, {
+  roomHistories.setAppStorage(appStorage);
+  roomHistories.setDb({
     name: 'history',
     id: 'roomId',
     subId: 'historyId',
@@ -120,7 +126,8 @@ startFiles().then(async (appStorage) => {
     ...historyTemplate,
   ]);
 
-  roomHistoriesDeleted.setDb(appStorage, {
+  roomHistoriesDeleted.setAppStorage(appStorage);
+  roomHistoriesDeleted.setDb({
     name: 'historyDeleted',
     id: 'roomId',
     subId: 'historyId',
@@ -131,7 +138,8 @@ startFiles().then(async (appStorage) => {
     ...historyTemplate,
   ]);
 
-  users.setDb(appStorage, { name: 'users', id: 'userId' });
+  users.setAppStorage(appStorage);
+  users.setDb({ name: 'users', id: 'userId' });
   users.setDebug(debugMode);
   await users.createTable([
     ['userId', 'TEXT', 'PRIMARY KEY'],
@@ -139,7 +147,8 @@ startFiles().then(async (appStorage) => {
     ['nickname', 'TEXT'],
   ]);
 
-  usersDice.setDb(appStorage, { name: 'usersDice', id: 'userId' });
+  usersDice.setAppStorage(appStorage);
+  usersDice.setDb({ name: 'usersDice', id: 'userId' });
   usersDice.setDebug(debugMode);
   await usersDice.createTable([
     ['userId', 'TEXT', 'PRIMARY KEY'],
@@ -152,7 +161,8 @@ startFiles().then(async (appStorage) => {
     ['FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE'],
   ]);
 
-  moderators.setDb(appStorage, { name: 'moderators', id: 'userId' });
+  moderators.setAppStorage(appStorage);
+  moderators.setDb({ name: 'moderators', id: 'userId' });
   moderators.setDebug(debugMode);
   await moderators.createTable([
     ['userId', 'TEXT', 'PRIMARY KEY'],
@@ -161,7 +171,8 @@ startFiles().then(async (appStorage) => {
     ['FOREIGN KEY (userId) REFERENCES users(userId) ON DELETE CASCADE'],
   ]);
 
-  bannedUsers.setDb(appStorage, { name: 'banned', id: 'userId' });
+  bannedUsers.setAppStorage(appStorage);
+  bannedUsers.setDb({ name: 'banned', id: 'userId' });
   bannedUsers.setDebug(debugMode);
   await bannedUsers.createTable([
     ['userId', 'TEXT', 'PRIMARY KEY'],
@@ -169,7 +180,8 @@ startFiles().then(async (appStorage) => {
     ['date', 'INTEGER', 'NOT NULL'],
   ]);
 
-  privateRoomData.setDb(appStorage, { name: 'privateRoomData', id: 'roomId', json: ['data'] });
+  privateRoomData.setAppStorage(appStorage);
+  privateRoomData.setDb({ name: 'privateRoomData', id: 'roomId', json: ['data'] });
   privateRoomData.setDebug(debugMode);
   await privateRoomData.createTable([
     ['roomId', 'TEXT', 'PRIMARY KEY'],
@@ -177,7 +189,8 @@ startFiles().then(async (appStorage) => {
     ['FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE'],
   ]);
 
-  rpgSchema.setDb(appStorage, { name: 'rpgSchema', id: 'roomId', json: ['data'] });
+  rpgSchema.setAppStorage(appStorage);
+  rpgSchema.setDb({ name: 'rpgSchema', id: 'roomId', json: ['data'] });
   rpgSchema.setDebug(debugMode);
   await rpgSchema.createTable([
     ['roomId', 'TEXT', 'PRIMARY KEY'],
@@ -185,7 +198,8 @@ startFiles().then(async (appStorage) => {
     ['FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE'],
   ]);
 
-  roomData.setDb(appStorage, { name: 'roomData', id: 'roomId', json: ['data'] });
+  roomData.setAppStorage(appStorage);
+  roomData.setDb({ name: 'roomData', id: 'roomId', json: ['data'] });
   roomData.setDebug(debugMode);
   await roomData.createTable([
     ['roomId', 'TEXT', 'PRIMARY KEY'],
@@ -193,7 +207,8 @@ startFiles().then(async (appStorage) => {
     ['FOREIGN KEY (roomId) REFERENCES rooms(roomId) ON DELETE CASCADE'],
   ]);
 
-  audit.setDb(appStorage, { name: 'audit', id: 'auditId' });
+  audit.setAppStorage(appStorage);
+  audit.setDb({ name: 'audit', id: 'auditId' });
   audit.setDebug(debugMode);
   await audit.createTable([
     ['auditId', 'TEXT', 'PRIMARY KEY DEFAULT (lower(hex(randomblob(16))))'],
@@ -214,13 +229,7 @@ startFiles().then(async (appStorage) => {
     typeof ownerData.userId === 'string' &&
     ownerData.userId.length > 0
   )
-    await users.set(
-      ownerData.userId,
-      {
-        password: getHashString(ownerData.password),
-      },
-      true,
-    );
+    await users.set(ownerData.userId, { password: getHashString(ownerData.password) }, true);
 
   // Socket IO
   const io = new Server({ cors: { origin: '*' } });
