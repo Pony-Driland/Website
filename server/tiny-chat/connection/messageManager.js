@@ -43,11 +43,10 @@ export default function messageManager(socket, io) {
 
     // Check if the room exist
     const room = await rooms.get(roomId);
-    const history = roomHistories.get(roomId);
-    if (!room || !history) return fn({ error: true, msg: 'Room not found.', code: 2 });
+    if (!room) return fn({ error: true, msg: 'Room not found.', code: 2 });
 
     const msgDate = Date.now();
-    const msg = await history.set(roomId, {
+    const msg = await roomHistories.set(roomId, {
       userId,
       text: message,
       date: msgDate,
@@ -92,9 +91,8 @@ export default function messageManager(socket, io) {
     if (userMsgIsRateLimited(socket, fn)) return;
 
     // Get room
-    const history = roomHistories.get(roomId);
     const room = await rooms.get(roomId);
-    if (!room || !history) return fn({ error: true, msg: 'Room not found.', code: 1 });
+    if (!room) return fn({ error: true, msg: 'Room not found.', code: 1 });
 
     // Check text size
     if (newText.length > getIniConfig('MESSAGE_SIZE')) {
@@ -108,7 +106,7 @@ export default function messageManager(socket, io) {
     }
 
     // Get message
-    const msg = await history.get(messageId);
+    const msg = await roomHistories.get(roomId, messageId);
     if (!msg)
       return fn({
         error: true,
@@ -170,11 +168,10 @@ export default function messageManager(socket, io) {
 
     // Get room
     const room = await rooms.get(roomId);
-    const history = roomHistories.get(roomId);
-    if (!room || !history) return fn({ error: true, msg: 'Room not found.', code: 1 });
+    if (!room) return fn({ error: true, msg: 'Room not found.', code: 1 });
 
     // Get message
-    const msg = await history.get(messageId);
+    const msg = await roomHistories.get(roomId, messageId);
     if (!msg)
       return fn({
         error: true,

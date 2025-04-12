@@ -92,17 +92,9 @@ export default function roomManager(socket, io, appStorage) {
     }
 
     // Send chat history and settings only to the joined user
-    let history = roomHistories.get(roomId);
-    if (!history) {
-      history = new TinySQL();
-      history.setDb(appStorage, { name: 'history', id: 'roomId', subId: 'historyId' });
-      history.setDebug(isDebug());
-      roomHistories.set(history);
-    }
-
     const historyData = getIniConfig('LOAD_ALL_HISTORY')
-      ? await history.getAll()
-      : await history.getAmount(getIniConfig('HISTORY_SIZE'));
+      ? await roomHistories.getAll(roomId)
+      : await roomHistories.getAmount(roomId, getIniConfig('HISTORY_SIZE'));
 
     // Emit chat history and settings to the user
     if (typeof room.password !== 'undefined') delete room.password;
@@ -411,9 +403,6 @@ export default function roomManager(socket, io, appStorage) {
     }
 
     if (await rooms.has(roomId)) await rooms.delete(roomId);
-    if (roomHistories.has(roomId)) roomHistories.delete(roomId);
-    if (await privateRoomData.has(roomId)) await privateRoomData.delete(roomId);
-    if (await roomData.has(roomId)) await roomData.delete(roomId);
 
     // Room delete successfully.
     fn({ success: true });

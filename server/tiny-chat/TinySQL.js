@@ -59,6 +59,49 @@ class TinySQL {
   }
 
   /**
+   * Creates a table in the database based on provided column definitions.
+   * @param {Array<Array<string|any>>} columns - An array of column definitions.
+   * Each column is defined by an array containing the column name, type, and optional configurations.
+   * @returns {Promise<void>}
+   */
+  async createTable(columns) {
+    // Start building the query
+    let query = 'CREATE TABLE IF NOT EXISTS ' + this.#settings.name + ' (';
+
+    // Iterate through the columns array to construct column definitions
+    const columnDefinitions = columns.map((column) => {
+      // If the column definition contains more than two items, it's a full definition
+      if (column.length === 3) {
+        return `${column[0]} ${column[1]} ${column[2]}`;
+      }
+      // If only two items are provided, it's just the name and type (no additional configuration)
+      else if (column.length === 2) {
+        return `${column[0]} ${column[1]}`;
+      }
+      // If only one item is provided, it's a table setting (e.g., PRIMARY KEY)
+      else {
+        return column[0];
+      }
+    });
+
+    // Join all column definitions into a single string
+    query += columnDefinitions.join(', ') + ')';
+
+    // Execute the SQL query to create the table using runQuery
+    await this.#appStorage
+      .runQuery(query)
+      .catch((err) => {
+        console.error(err);
+        console.log(`[sql] [createTable] [error] ${query}`);
+        return err;
+      })
+      .then((result) => {
+        if (this.debug) console.log('[sql] [createTable]', query);
+        return result;
+      });
+  }
+
+  /**
    * Parses JSON fields from result rows if marked in the settings.
    * @private
    * @param {object} result - The result row to check.
@@ -215,40 +258,51 @@ class TinySQL {
 
   /**
    * Get a limited number of rows from the database.
+   * If an ID is provided, returns only the matching record(s) up to the specified count.
    * @param {number} count - Number of rows to retrieve.
+   * @param {string|number|null} [filterId=null] - Optional ID to filter by.
    * @returns {Promise<object[]>}
    */
-  async getAmount(count) {
+  async getAmount(count, filterId = null) {
     const joinClause = this.#settings.join
       ? `LEFT JOIN ${this.#settings.join} j ON ${this.#settings.joinCompare || ''}`
       : '';
     const orderClause = this.#settings.order ? `ORDER BY ${this.#settings.order}` : '';
+    const whereClause = filterId !== null ? `WHERE t.${this.#settings.id} = ?` : '';
     const query = `SELECT ${this.#settings.select} FROM ${this.#settings.name} t 
-                   ${joinClause} 
-                   ${orderClause} LIMIT ?`;
-    const results = await this.#appStorage.getAllData(query, [count]);
+                 ${joinClause} 
+                 ${whereClause}
+                 ${orderClause} LIMIT ?`.trim();
+
+    const params = filterId !== null ? [filterId, count] : [count];
+    const results = await this.#appStorage.getAllData(query, params);
     for (const index in results) this.#jsonChecker(results[index]);
 
-    if (this.debug) console.log('[sql] [getAmount]', query, [id], results);
+    if (this.debug) console.log('[sql] [getAmount]', query, params, results);
     return results;
   }
 
   /**
    * Get all records from the table.
+   * If an ID is provided, returns only the matching record(s).
+   * @param {string|number|null} [filterId=null] - Optional ID to filter by.
    * @returns {Promise<object[]>}
    */
-  async getAll() {
+  async getAll(filterId = null) {
     const joinClause = this.#settings.join
       ? `LEFT JOIN ${this.#settings.join} j ON ${this.#settings.joinCompare || ''}`
       : '';
     const orderClause = this.#settings.order ? `ORDER BY ${this.#settings.order}` : '';
+    const whereClause = filterId !== null ? `WHERE t.${this.#settings.id} = ?` : '';
     const query = `SELECT ${this.#settings.select} FROM ${this.#settings.name} t 
-                   ${joinClause} 
-                   ${orderClause}`;
-    const results = await this.#appStorage.getAllData(query);
+                 ${joinClause} 
+                 ${whereClause}
+                 ${orderClause}`.trim();
+
+    const results = await this.#appStorage.getAllData(query, filterId !== null ? [filterId] : []);
     for (const index in results) this.#jsonChecker(results[index]);
 
-    if (this.debug) console.log('[sql] [getAll]', query, results);
+    if (this.debug) console.log('[sql] [getAll]', query, filterId, results);
     return results;
   }
 
