@@ -1,15 +1,10 @@
 import { objType } from '../lib/objChecker';
+import db from './sql';
 
 import {
   userIsRateLimited,
   userSession,
   roomUsers,
-  roomData,
-  privateRoomData,
-  roomHistories,
-  rooms,
-  moderators,
-  users,
   userSockets,
   createRoom,
   joinRoom,
@@ -18,8 +13,6 @@ import {
   accountNotDetected,
   sendIncompleteDataInfo,
   getIniConfig,
-  roomModerators,
-  roomBannedUsers,
   getHashString,
   noDataInfo,
   getJoinData,
@@ -37,6 +30,7 @@ export default function roomManager(socket, io, appStorage) {
     if (!userId) return accountNotDetected(fn);
 
     // Check room
+    const rooms = db.getTable('rooms');
     const result = await rooms.has(roomId);
     fn({ exists: result });
   });
@@ -49,12 +43,14 @@ export default function roomManager(socket, io, appStorage) {
       return sendIncompleteDataInfo(fn);
 
     // Get user
+    const moderators = db.getTable('moderators');
     const userId = userSession.getUserId(socket);
     if (!userId) return accountNotDetected(fn);
     if (userIsRateLimited(socket, fn)) return;
     const isMod = await moderators.has(userId);
 
     // Check if the room exists
+    const rooms = db.getTable('rooms');
     const room = await rooms.get(roomId);
     if (!room) {
       //
@@ -69,6 +65,7 @@ export default function roomManager(socket, io, appStorage) {
 
       // Check if the room is full
       const roomUserList = roomUsers.get(roomId);
+      const roomModerators = db.getTable('roomModerators');
       if (roomUserList) {
         if (!(await roomModerators.has(roomId, userId))) {
           if (roomUserList.size >= room.maxUsers)
@@ -85,11 +82,13 @@ export default function roomManager(socket, io, appStorage) {
     }
 
     // Check if the user is banned
+    const roomBannedUsers = db.getTable('roomBannedUsers');
     if (await roomBannedUsers.has(roomId, userId)) {
       return fn({ error: true, msg: "You're banned.", code: 5 });
     }
 
     // Send chat history and settings only to the joined user
+    const roomHistories = db.getTable('history');
     const historyData = getIniConfig('LOAD_ALL_HISTORY')
       ? await roomHistories.getAll(roomId)
       : await roomHistories.getAmount(roomId, getIniConfig('HISTORY_SIZE'));
@@ -100,6 +99,9 @@ export default function roomManager(socket, io, appStorage) {
     const users = usersList ? Object.fromEntries(usersList) : {};
     if (!users[userId]) users[userId] = getJoinData(socket);
 
+    const roomModerators = db.getTable('roomModerators');
+    const privateRoomData = db.getTable('privateRoomData');
+    const roomData = db.getTable('roomData');
     socket.emit('room-entered', {
       roomId,
       users,
@@ -150,6 +152,7 @@ export default function roomManager(socket, io, appStorage) {
     if (userIsRateLimited(socket, fn)) return;
 
     // Check if the room exists
+    const rooms = db.getTable('rooms');
     const room = await rooms.get(roomId);
     if (!room) {
       return fn({
@@ -160,6 +163,8 @@ export default function roomManager(socket, io, appStorage) {
     }
 
     // Check if user is server owner or server mod
+    const moderators = db.getTable('moderators');
+    const roomModerators = db.getTable('roomModerators');
     if (
       (yourId !== getIniConfig('OWNER_ID') &&
         !(await moderators.has(yourId)) &&
@@ -176,6 +181,7 @@ export default function roomManager(socket, io, appStorage) {
     }
 
     // Check if user exists
+    const users = db.getTable('users');
     if (!(await users.has(userId))) {
       return fn({
         error: true,
@@ -185,6 +191,7 @@ export default function roomManager(socket, io, appStorage) {
     }
 
     // Add into the ban list
+    const roomBannedUsers = db.getTable('roomBannedUsers');
     await roomBannedUsers.set(roomId, { userId });
 
     // Remove the user from their room
@@ -207,6 +214,7 @@ export default function roomManager(socket, io, appStorage) {
     if (userIsRateLimited(socket, fn)) return;
 
     // Check if the room exists
+    const rooms = db.getTable('rooms');
     const room = await rooms.get(roomId);
     if (!room) {
       return fn({
@@ -217,6 +225,8 @@ export default function roomManager(socket, io, appStorage) {
     }
 
     // Check if user is server owner or server mod
+    const moderators = db.getTable('moderators');
+    const roomModerators = db.getTable('roomModerators');
     if (
       yourId !== getIniConfig('OWNER_ID') &&
       !(await moderators.has(yourId)) &&
@@ -231,11 +241,13 @@ export default function roomManager(socket, io, appStorage) {
     }
 
     // Check if user exists
+    const users = db.getTable('users');
     if (!(await users.has(userId))) {
       return fn({ error: true, msg: 'User not found.', code: 3 });
     }
 
     // Remove user from the ban list
+    const roomBannedUsers = db.getTable('roomBannedUsers');
     await roomBannedUsers.delete(roomId, userId);
 
     // User unban successfully.
@@ -261,6 +273,8 @@ export default function roomManager(socket, io, appStorage) {
     }
 
     // Check if user is server owner or server mod
+    const moderators = db.getTable('moderators');
+    const roomModerators = db.getTable('roomModerators');
     if (
       yourId !== getIniConfig('OWNER_ID') &&
       !(await moderators.has(yourId)) &&
@@ -333,6 +347,7 @@ export default function roomManager(socket, io, appStorage) {
       });
 
     // Check if the room exists
+    const rooms = db.getTable('rooms');
     let room = await rooms.get(roomId);
     if (!room) {
       await createRoom(userId, roomId, password, title);
@@ -360,6 +375,7 @@ export default function roomManager(socket, io, appStorage) {
     if (userIsRateLimited(socket, fn)) return;
 
     // Check if the room exists
+    const rooms = db.getTable('rooms');
     const room = await rooms.get(roomId);
     const rUsers = roomUsers.get(roomId);
     if (!room) {
@@ -371,6 +387,7 @@ export default function roomManager(socket, io, appStorage) {
     }
 
     // Check if user is server owner or server mod
+    const moderators = db.getTable('moderators');
     if (
       userId !== getIniConfig('OWNER_ID') &&
       !(await moderators.has(userId)) &&
@@ -384,6 +401,7 @@ export default function roomManager(socket, io, appStorage) {
     }
 
     // Validate password
+    const users = db.getTable('users');
     const user = await users.get(userId);
     if (user.password !== getHashString(password))
       return fn({
@@ -418,6 +436,7 @@ export default function roomManager(socket, io, appStorage) {
     if (userIsRateLimited(socket, fn)) return;
 
     // Check if the room exists
+    const rooms = db.getTable('rooms');
     const rUsers = roomUsers.get(roomId);
     const room = await rooms.get(roomId);
     if (!rUsers || !room) {
@@ -429,6 +448,7 @@ export default function roomManager(socket, io, appStorage) {
     }
 
     // Check if user is server owner or server mod
+    const moderators = db.getTable('moderators');
     if (
       userId !== getIniConfig('OWNER_ID') &&
       !(await moderators.has(userId)) &&
@@ -466,6 +486,7 @@ export default function roomManager(socket, io, appStorage) {
     if (userIsRateLimited(socket, fn)) return;
 
     // Check if the room exists
+    const rooms = db.getTable('rooms');
     const room = await rooms.get(roomId);
     if (!room) {
       return fn({
@@ -476,6 +497,7 @@ export default function roomManager(socket, io, appStorage) {
     }
 
     // Check if user is server owner or server mod
+    const moderators = db.getTable('moderators');
     if (
       userId !== getIniConfig('OWNER_ID') &&
       !(await moderators.has(userId)) &&
@@ -507,6 +529,7 @@ export default function roomManager(socket, io, appStorage) {
     if (userIsRateLimited(socket, fn)) return;
 
     // Get room
+    const rooms = db.getTable('rooms');
     const room = await rooms.get(roomId);
     if (!room) return fn({ error: true, msg: 'Room not found.', code: 1 }); // Room does not exist
 
@@ -517,6 +540,7 @@ export default function roomManager(socket, io, appStorage) {
     if (!isRoomOwner && !isServerOwner) return ownerOnly(fn, 2); // Only room owner or server owner can update settings
 
     const result = [];
+    const roomModerators = db.getTable('roomModerators');
     if (roomUsers.get(roomId)) {
       for (const index in mods) {
         if (typeof mods[index] === 'string') {
@@ -545,6 +569,7 @@ export default function roomManager(socket, io, appStorage) {
     if (userIsRateLimited(socket, fn)) return;
 
     // Get room
+    const rooms = db.getTable('rooms');
     const room = await rooms.get(roomId);
     if (!room) return fn({ error: true, msg: 'Room not found.', code: 1 }); // Room does not exist
 
@@ -555,6 +580,7 @@ export default function roomManager(socket, io, appStorage) {
     if (!isRoomOwner && !isServerOwner) return ownerOnly(fn, 2); // Only room owner or server owner can update settings
 
     const result = [];
+    const roomModerators = db.getTable('roomModerators');
     for (const index in mods) {
       if (typeof mods[index] === 'string') {
         await roomModerators.delete(roomId, mods[index]);
@@ -582,6 +608,7 @@ export default function roomManager(socket, io, appStorage) {
     if (userIsRateLimited(socket, fn)) return;
 
     // Get room
+    const rooms = db.getTable('rooms');
     const room = await rooms.get(roomId);
     if (!room) return fn({ error: true, msg: 'Room not found.', code: 1 }); // Room does not exist
 
@@ -705,6 +732,7 @@ export default function roomManager(socket, io, appStorage) {
     if (userIsRateLimited(socket, fn)) return;
 
     // Get room
+    const rooms = db.getTable('rooms');
     const room = await rooms.get(roomId);
     if (!room) return fn({ error: true, msg: 'Room not found.', code: 1 });
 
@@ -719,6 +747,7 @@ export default function roomManager(socket, io, appStorage) {
 
     // Update the room data
     if (isPrivate) {
+      const privateRoomData = db.getTable('privateRoomData');
       let privateData = await privateRoomData.get(roomId);
       if (!privateData) privateData = {};
       await privateRoomData.set(roomId, Object.assign(privateData, values));
@@ -731,6 +760,7 @@ export default function roomManager(socket, io, appStorage) {
     }
     // Nope
     else {
+      const roomData = db.getTable('roomData');
       await roomData.set(roomId, Object.assign(await roomData.get(roomId), values));
       // Notify all users in the room about the updated data
       socket.to(roomId).emit('room-data-updated', {

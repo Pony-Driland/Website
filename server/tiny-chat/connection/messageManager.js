@@ -1,17 +1,12 @@
 import { countObj, objType } from '../lib/objChecker';
+import db from './sql';
 import {
   userMsgIsRateLimited,
   userSession,
-  roomHistories,
-  rooms,
-  moderators,
   accountNotDetected,
   sendIncompleteDataInfo,
   getIniConfig,
-  roomModerators,
-  roomHistoriesDeleted,
   noDataInfo,
-  usersDice,
   userDiceIsRateLimited,
   roomUsers,
   userUpdateDiceIsRateLimited,
@@ -42,10 +37,12 @@ export default function messageManager(socket, io) {
     }
 
     // Check if the room exist
+    const rooms = db.getTable('rooms');
     const room = await rooms.get(roomId);
     if (!room) return fn({ error: true, msg: 'Room not found.', code: 2 });
 
     const msgDate = Date.now();
+    const roomHistories = db.getTable('history');
     const msg = await roomHistories.set(roomId, {
       userId,
       text: message,
@@ -91,6 +88,7 @@ export default function messageManager(socket, io) {
     if (userMsgIsRateLimited(socket, fn)) return;
 
     // Get room
+    const rooms = db.getTable('rooms');
     const room = await rooms.get(roomId);
     if (!room) return fn({ error: true, msg: 'Room not found.', code: 1 });
 
@@ -106,6 +104,7 @@ export default function messageManager(socket, io) {
     }
 
     // Get message
+    const roomHistories = db.getTable('history');
     const msg = await roomHistories.get(roomId, messageId);
     if (!msg)
       return fn({
@@ -114,6 +113,8 @@ export default function messageManager(socket, io) {
         code: 3,
       });
 
+    const moderators = db.getTable('moderators');
+    const roomModerators = db.getTable('roomModerators');
     if (
       msg.userId !== userId &&
       userId !== getIniConfig('OWNER_ID') &&
@@ -167,10 +168,12 @@ export default function messageManager(socket, io) {
     if (userMsgIsRateLimited(socket, fn)) return;
 
     // Get room
+    const rooms = db.getTable('rooms');
     const room = await rooms.get(roomId);
     if (!room) return fn({ error: true, msg: 'Room not found.', code: 1 });
 
     // Get message
+    const roomHistories = db.getTable('history');
     const msg = await roomHistories.get(roomId, messageId);
     if (!msg)
       return fn({
@@ -179,6 +182,8 @@ export default function messageManager(socket, io) {
         code: 2,
       });
 
+    const moderators = db.getTable('moderators');
+    const roomModerators = db.getTable('roomModerators');
     if (
       msg.userId !== userId &&
       userId !== getIniConfig('OWNER_ID') &&
@@ -193,6 +198,7 @@ export default function messageManager(socket, io) {
       });
 
     // Delete message
+    const roomHistoriesDeleted = db.getTable('historyDeleted');
     await roomHistoriesDeleted.set(roomId, msg);
     await history.delete(messageId);
 
@@ -247,6 +253,7 @@ export default function messageManager(socket, io) {
 
     // Insert skin
     const skin = getDiceData(diceSkin);
+    const usersDice = db.getTable('usersDice');
     await usersDice.set(userId, skin);
     fn({ success: true });
   });
@@ -284,6 +291,7 @@ export default function messageManager(socket, io) {
     // Dice skin
     const skin = getDiceData(diceSkin);
     if (countObj(skin) < 1) {
+      const usersDice = db.getTable('usersDice');
       const userDice = getDiceData(await usersDice.get(userId));
       if (userDice) for (const name in userDice) skin[name] = userDice[name];
     }
