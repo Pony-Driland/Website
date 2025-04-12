@@ -33,6 +33,78 @@ class TinySQL {
     this.#conditions['!='] = this.#conditions['!=='];
   }
 
+  /**
+   * Generates a SELECT clause based on the input, supporting SQL functions, columns, and aliases.
+   * Automatically parses input to build valid SQL expressions.
+   *
+   * @private
+   * @param {string|string[]|object|null|undefined} input - Columns, SQL expressions, or objects with column aliases.
+   * @returns {string} - A valid SELECT clause.
+   *
+   * @example
+   * this.#selectGenerator(); // returns '*'
+   * this.#selectGenerator('COUNT(*) AS total'); // returns 'COUNT(*) AS total'
+   * this.#selectGenerator(['id', 'username']); // returns 'id, username'
+   * this.#selectGenerator({ id: 'user_id', username: 'user_name' }); // returns 'id AS user_id, username AS user_name'
+   */
+  #selectGenerator(input) {
+    if (!input) return '*';
+
+    // If input is an array, join all columns
+    if (Array.isArray(input)) {
+      return (
+        input
+          .map((col) => this.#parseColumn(col))
+          .filter(Boolean)
+          .join(', ') || '*'
+      );
+    }
+
+    // If input is an object, handle key-value pairs for aliasing
+    if (typeof input === 'object') {
+      return (
+        Object.entries(input)
+          .map(([column, alias]) => {
+            return this.#parseColumn(column, alias);
+          })
+          .join(', ') || '*'
+      );
+    }
+
+    // If input is a string, treat it as a custom SQL expression
+    if (typeof input === 'string') {
+      return this.#parseColumn(input);
+    }
+
+    return '*';
+  }
+
+  /**
+   * Helper function to parse individual columns or SQL expressions.
+   * Supports aliasing and complex expressions.
+   *
+   * @private
+   * @param {string} column - Column name or SQL expression.
+   * @param {string} [alias] - Alias for the column (optional).
+   * @returns {string} - A valid SQL expression for SELECT clause.
+   */
+  #parseColumn(column, alias) {
+    // If column is a valid expression (e.g., COUNT(*), MAX(id)), return it as is
+    if (/^[A-Za-z0-9_\*().,]+$/.test(column)) {
+      if (alias) {
+        return `${column} AS ${alias}`;
+      }
+      return column;
+    }
+
+    // If column contains an alias
+    if (alias) {
+      return `${column} AS ${alias}`;
+    }
+
+    return column;
+  }
+
   // Helpers for JSON operations within SQL queries (SQLite-compatible)
 
   // Example: WHERE json_extract(data, '$.name') = 'Rainbow Queen'
@@ -267,7 +339,9 @@ class TinySQL {
    * @param {object} [settings={}] - Configuration settings for the table and behavior.
    */
   setDb(settings = {}) {
-    if (typeof settings.select !== 'string') settings.select = '*';
+    settings.select =
+      typeof settings.select === 'string' ? this.#selectGenerator(settings.select) : '*';
+
     if (typeof settings.join !== 'string') settings.join = null;
     if (typeof settings.joinCompare !== 'string' && settings.join)
       settings.joinCompare = 't.key = j.key';
@@ -422,15 +496,16 @@ class TinySQL {
    * If an ID is provided, returns only the matching record(s) up to the specified count.
    * @param {number} count - Number of rows to retrieve.
    * @param {string|number|null} [filterId=null] - Optional ID to filter by.
+   * @param {string|string[]|object} [selectValue='*'] - Defines which columns or expressions should be selected in the query.
    * @returns {Promise<object[]>}
    */
-  async getAmount(count, filterId = null) {
+  async getAmount(count, filterId = null, selectValue = '*') {
     const joinClause = this.#settings.join
       ? `LEFT JOIN ${this.#settings.join} j ON ${this.#settings.joinCompare || ''}`
       : '';
     const orderClause = this.#settings.order ? `ORDER BY ${this.#settings.order}` : '';
     const whereClause = filterId !== null ? `WHERE t.${this.#settings.id} = ?` : '';
-    const query = `SELECT ${this.#settings.select} FROM ${this.#settings.name} t 
+    const query = `SELECT ${this.#selectGenerator(selectValue)} FROM ${this.#settings.name} t 
                  ${joinClause} 
                  ${whereClause}
                  ${orderClause} LIMIT ?`.trim();
@@ -447,15 +522,16 @@ class TinySQL {
    * Get all records from the table.
    * If an ID is provided, returns only the matching record(s).
    * @param {string|number|null} [filterId=null] - Optional ID to filter by.
+   * @param {string|string[]|object} [selectValue='*'] - Defines which columns or expressions should be selected in the query.
    * @returns {Promise<object[]>}
    */
-  async getAll(filterId = null) {
+  async getAll(filterId = null, selectValue = '*') {
     const joinClause = this.#settings.join
       ? `LEFT JOIN ${this.#settings.join} j ON ${this.#settings.joinCompare || ''}`
       : '';
     const orderClause = this.#settings.order ? `ORDER BY ${this.#settings.order}` : '';
     const whereClause = filterId !== null ? `WHERE t.${this.#settings.id} = ?` : '';
-    const query = `SELECT ${this.#settings.select} FROM ${this.#settings.name} t 
+    const query = `SELECT ${this.#selectGenerator(selectValue)} FROM ${this.#settings.name} t 
                  ${joinClause} 
                  ${whereClause}
                  ${orderClause}`.trim();
@@ -471,6 +547,11 @@ class TinySQL {
    * Perform a filtered search with nested criteria.
    *
    * Supports complex logical groupings (AND/OR) and flat condition style.
+   *
+   * @param {object} [criteria={}] - Nested criteria object.
+   *        Can be flat object style or grouped with `{ group: 'AND'|'OR', conditions: [...] }`.
+   * @param {string|string[]|object} [selectValue='*'] - Defines which columns or expressions should be selected in the query.
+   * @returns {Promise<object[]>}
    *
    * @example
    * // Simple search (flat style):
@@ -496,12 +577,8 @@ class TinySQL {
    *
    * // Equivalent SQL:
    * // WHERE (status = ?) AND ((role = ?) OR (role = ?))
-   *
-   * @param {object} [criteria={}] - Nested criteria object.
-   *        Can be flat object style or grouped with `{ group: 'AND'|'OR', conditions: [...] }`.
-   * @returns {Promise<object[]>}
    */
-  async search(criteria = {}) {
+  async search(criteria = {}, selectValue = '*') {
     const values = [];
 
     const parseGroup = (group) => {
@@ -563,7 +640,7 @@ class TinySQL {
       : '';
     const orderClause = this.#settings.order ? `ORDER BY ${this.#settings.order}` : '';
 
-    const query = `SELECT ${this.#settings.select} FROM ${this.#settings.name} t 
+    const query = `SELECT ${this.#selectGenerator(selectValue)} FROM ${this.#settings.name} t 
                      ${joinClause} 
                      ${whereClause} 
                      ${orderClause}`;
