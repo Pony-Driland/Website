@@ -59,6 +59,60 @@ class TinySQL {
   }
 
   /**
+   * Updates the table by adding, removing, modifying or renaming columns.
+   * @param {Array<Array<string|any>>} changes - An array of changes to be made to the table.
+   * Each change is defined by an array, where:
+   *   - To add a column: ['ADD', 'columnName', 'columnType', 'columnOptions']
+   *   - To remove a column: ['REMOVE', 'columnName']
+   *   - To modify a column: ['MODIFY', 'columnName', 'newColumnType', 'newOptions']
+   *   - To rename a column: ['RENAME', 'oldColumnName', 'newColumnName']
+   * @returns {Promise<void>}
+   */
+  async updateTable(changes) {
+    for (const change of changes) {
+      const action = change[0];
+
+      if (action === 'ADD') {
+        const query = `ALTER TABLE ${this.#settings.name} ADD COLUMN ${change[1]} ${change[2]} ${change[3] || ''}`;
+        try {
+          await this.#appStorage.runQuery(query);
+          if (this.debug) console.log('[sql] [updateTable - ADD]', query);
+        } catch (error) {
+          console.error('[sql] [updateTable - ADD] Error adding column:', error);
+        }
+      } else if (action === 'REMOVE') {
+        const query = `ALTER TABLE ${this.#settings.name} DROP COLUMN IF EXISTS ${change[1]}`;
+        try {
+          await this.#appStorage.runQuery(query);
+          if (this.debug) console.log('[sql] [updateTable - REMOVE]', query);
+        } catch (error) {
+          console.error('[sql] [updateTable - REMOVE] Error removing column:', error);
+        }
+      } else if (action === 'MODIFY') {
+        const query = `ALTER TABLE ${this.#settings.name} ALTER COLUMN ${change[1]} TYPE ${change[2]}${
+          change[3] ? `, ALTER COLUMN ${change[1]} SET ${change[3]}` : ''
+        }`;
+        try {
+          await this.#appStorage.runQuery(query);
+          if (this.debug) console.log('[sql] [updateTable - MODIFY]', query);
+        } catch (error) {
+          console.error('[sql] [updateTable - MODIFY] Error modifying column:', error);
+        }
+      } else if (action === 'RENAME') {
+        const query = `ALTER TABLE ${this.#settings.name} RENAME COLUMN ${change[1]} TO ${change[2]}`;
+        try {
+          await this.#appStorage.runQuery(query);
+          if (this.debug) console.log('[sql] [updateTable - RENAME]', query);
+        } catch (error) {
+          console.error('[sql] [updateTable - RENAME] Error renaming column:', error);
+        }
+      } else {
+        console.warn(`[sql] [updateTable] Unknown updateTable action: ${action}`);
+      }
+    }
+  }
+
+  /**
    * Creates a table in the database based on provided column definitions.
    * @param {Array<Array<string|any>>} columns - An array of column definitions.
    * Each column is defined by an array containing the column name, type, and optional configurations.
