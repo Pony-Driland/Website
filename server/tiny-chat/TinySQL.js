@@ -1032,8 +1032,12 @@ class TinySqlQuery {
           case 'DATETIME':
           case 'TIMESTAMP':
           case 'TIME':
-            const date = new Date(raw);
-            result[item] = isNaN(date.getTime()) ? null : date;
+            if (raw instanceof Date && !Number.isNaN(raw.getTime())) {
+              result[item] = raw; // Valid date
+            } else {
+              const parsedDate = new Date(raw);
+              result[item] = Number.isNaN(parsedDate.getTime()) ? null : parsedDate;
+            }
             break;
 
           // Keeps original value
