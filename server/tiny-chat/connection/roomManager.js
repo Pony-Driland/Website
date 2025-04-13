@@ -606,7 +606,7 @@ export default function roomManager(socket, io, appStorage) {
     // Get user
     const userId = userSession.getUserId(socket);
     if (!userId) return accountNotDetected(fn); // Only logged-in users can update settings
-    if (userIsRateLimited(socket, fn)) return;
+    if (roomUpdateIsRateLimited(socket, fn)) return;
 
     // Get room
     const rooms = db.getTable('rooms');
