@@ -1405,6 +1405,7 @@ class TinySqlQuery {
    * @param {number} [searchData.perPage] - Number of items per page.
    * @param {string|string[]|object|null} [searchData.select='*'] - Which columns to select. Set to null to skip item data.
    * @param {string} [searchData.order] - SQL ORDER BY clause. Defaults to configured order.
+   * @param {object|object[]} [searchData.join] - JOIN definitions with table, compare, and optional type.
    * @returns {Promise<{ page: number, pages: number, total: number, position: number, item?: object } | null>}
    */
   async find(searchData = {}) {
@@ -1412,6 +1413,7 @@ class TinySqlQuery {
     const selectValue = searchData.select || '*';
     const perPage = searchData.perPage || null;
     const order = searchData.order || this.#settings.order;
+    const joinConfig = searchData.join || null;
 
     if (!filter || typeof filter !== 'object') return null;
     if (typeof perPage !== 'number' || perPage < 1) throw new Error('Invalid perPage value');
@@ -1429,6 +1431,7 @@ class TinySqlQuery {
              ROW_NUMBER() OVER (${orderClause || 'ORDER BY (SELECT 1)'}) AS rn,
              COUNT(*) OVER () AS total
       FROM ${this.#settings.name} t
+      ${this.#parseJoin(joinConfig)}
       ${whereClause ? `WHERE ${whereClause}` : ''}
     )
     SELECT *, rn AS position, CEIL(CAST(total AS FLOAT) / ${perPage}) AS pages
