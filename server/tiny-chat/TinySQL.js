@@ -987,6 +987,8 @@ class TinySqlQuery {
             break;
 
           case 'BIGINT':
+          case 'DECIMAL':
+          case 'NUMERIC':
             if (typeof raw === 'bigint') result[item] = raw;
             else {
               try {
@@ -1001,11 +1003,13 @@ class TinySqlQuery {
           case 'INT':
           case 'SMALLINT':
           case 'TINYINT':
+            result[item] = typeof raw === 'number' ? Math.trunc(raw) : parseInt(raw);
+            if (Number.isNaN(result[item])) result[item] = null;
+            break;
+
           case 'REAL':
           case 'FLOAT':
           case 'DOUBLE':
-          case 'DECIMAL':
-          case 'NUMERIC':
             result[item] = typeof raw === 'number' ? raw : parseFloat(raw);
             if (Number.isNaN(result[item])) result[item] = null;
             break;
