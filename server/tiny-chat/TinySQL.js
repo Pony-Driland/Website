@@ -590,7 +590,7 @@ class TinySqlQuery {
 
   /**
    * Formats SQL for colorful and readable debug in terminal.
-   * Adds indentation, line breaks, and ANSI colors.
+   * Adds indentation, line breaks, and ANSI colors to major SQL clauses.
    *
    * @private
    * @param {string} value - Raw SQL query string.
@@ -621,23 +621,42 @@ class TinySqlQuery {
       'HAVING',
       'LIMIT',
       'OFFSET',
+      'INSERT INTO',
+      'VALUES',
+      'UPDATE',
+      'SET',
+      'DELETE FROM',
+      'DELETE',
+      'CREATE TABLE',
+      'CREATE',
+      'DROP TABLE',
+      'DROP',
+      'ALTER TABLE',
+      'ALTER',
+      'UNION',
+      'EXCEPT',
+      'INTERSECT',
+      'DISTINCT',
     ];
 
-    // Formatar estrutura e indentação
+    // Sort to prevent short words from replacing the long ones first (e.g. DROP before DROP TABLE)
+    keywords.sort((a, b) => b.length - a.length);
+
+    // Line breaks before key keywords
     let formatted = value
       .trim()
-      .replace(/\s+/g, ' ')
-      .replace(new RegExp(`\\s*(${keywords.join('|')})\\s+`, 'gi'), '\n$1 ') // quebra antes de palavras-chave
-      .replace(/,\s*/g, ', ')
-      .replace(/\n/g, '\n  '); // indentação
+      .replace(/\s+/g, ' ')// collapses multiple spaces
+      .replace(new RegExp(`\\s*(${keywords.join('|')})\\s+`, 'gi'), '\n$1 ') // quebra antes das keywords
+      .replace(/,\s*/g, ', ') // well formatted commas
+      .replace(/\n/g, '\n  '); // indentation
 
-    // Aplicar cores nas palavras-chave
+    // Color all keywords
     for (const word of keywords) {
-      const regex = new RegExp(`(\\b${word}\\b)`, 'gi');
+      const regex = new RegExp(`(\\b${word.replace(/\s+/g, '\\s+')}\\b)`, 'gi');
       formatted = formatted.replace(regex, `${YELLOW}$1${WHITE}`);
     }
 
-    // Remover quebras externas e aplicar borda colorida
+    // Remove external breaks and apply colored edge
     return (
       `${BLUE}┌─[${MAGENTA}DEBUG SQL${BLUE}]───────────────────────────────────────────────${RESET}\n` +
       `  ${WHITE}${formatted.trim()}\n` +
@@ -863,8 +882,15 @@ class TinySqlQuery {
     const db = this.#db;
     const isConnectionError = (err) => this.isConnectionError(err);
     return new Promise((resolve, reject) => {
-      db.run(`DROP TABLE ${this.#settings.name};`)
-        .then(() => resolve(true))
+      const query = `DROP TABLE ${this.#settings.name};`;
+      db.run(query)
+        .then(() => {
+          if (this.debug) {
+            console.log('[sql] [dropTable]');
+            console.log(this.#debugSql(query));
+          }
+          resolve(true);
+        })
         .catch((err) => {
           if (isConnectionError(err))
             reject(err); // Rejects on connection-related errors
