@@ -715,7 +715,7 @@ class TinySqlQuery {
     }
 
     // If input is an object, handle key-value pairs for aliasing
-    if (typeof input === 'object') {
+    if (objType(input, 'object')) {
       return (
         Object.entries(input)
           .map(([column, alias]) => {
@@ -1163,6 +1163,51 @@ class TinySqlQuery {
   }
 
   /**
+   * Updates records based on a complex WHERE clause defined by a filter object.
+   * Instead of relying solely on an ID (or subId), this method uses #parseWhere to
+   * generate the conditions, and updates the given fields in valueObj.
+   *
+   * @param {object} valueObj - An object representing the columns and new values for the update.
+   * @param {object} filter - An object containing the conditions for the WHERE clause.
+   * @returns {Promise<number>} - Count of rows that were updated.
+   */
+  async advancedUpdate(valueObj = {}, filter = {}) {
+    // Validate parameters
+    if (!objType(filter, 'object')) {
+      throw new Error('Invalid filter object for advancedUpdate');
+    }
+    if (!objType(valueObj, 'object') || Object.keys(valueObj).length === 0) {
+      throw new Error('No update values provided for advancedUpdate');
+    }
+
+    // Set the SET clause and its parameters
+    const columns = Object.keys(valueObj);
+    const updateValues = Object.values(valueObj).map((v) =>
+      objType(v, 'object') || Array.isArray(v) ? JSON.stringify(v) : v,
+    );
+    const setClause = columns.map((col, index) => `${col} = $${index + 1}`).join(', ');
+
+    // Creates a parameter cache for WHERE.
+    // The initial index should be equal to updateValues.length + 1 to maintain the correct sequence.
+    const whereCache = { index: updateValues.length + 1, values: [] };
+    const whereClause = this.#parseWhere(whereCache, filter);
+    if (!whereClause) {
+      throw new Error('Empty WHERE clause — update aborted for safety');
+    }
+
+    // Build the complete query
+    const query = `UPDATE ${this.#settings.name} SET ${setClause} WHERE ${whereClause}`;
+    const params = [...updateValues, ...whereCache.values];
+
+    const result = await this.#db.run(query, params);
+    if (this.debug) {
+      console.log('[sql] [advancedUpdate]', params, result);
+      console.log(this.#debugSql(query));
+    }
+    return this.#getResultCount(result);
+  }
+
+  /**
    * Update an existing record with given data.
    * Will not insert if the record doesn't exist.
    * @param {string|number} id - Primary key value.
@@ -1172,7 +1217,7 @@ class TinySqlQuery {
   async update(id, valueObj = {}) {
     const columns = Object.keys(valueObj);
     const values = Object.values(valueObj).map((v) =>
-      typeof v === 'object' ? JSON.stringify(v) : v,
+      objType(v, 'object') || Array.isArray(v) ? JSON.stringify(v) : v,
     );
 
     const setClause = columns.map((col, index) => `${col} = $${index + 1}`).join(', ');
@@ -1201,7 +1246,7 @@ class TinySqlQuery {
   async set(id, valueObj = {}, onlyIfNew = false) {
     const columns = Object.keys(valueObj);
     const values = Object.values(valueObj).map((v) =>
-      typeof v === 'object' ? JSON.stringify(v) : v,
+      objType(v, 'object') || Array.isArray(v) ? JSON.stringify(v) : v,
     );
 
     const allParams = [id, ...values];
@@ -1263,6 +1308,34 @@ class TinySqlQuery {
     }
     if (!result) return null;
     return result;
+  }
+
+  /**
+   * Delete records based on a complex WHERE clause using a filter object.
+   *
+   * Uses the internal #parseWhere method to build a flexible condition set.
+   *
+   * @param {object} filter - An object containing the WHERE condition(s).
+   * @returns {Promise<number>} - Number of rows deleted.
+   */
+  async advancedDelete(filter = {}) {
+    if (!filter || typeof filter !== 'object') {
+      throw new Error('Invalid filter object for advancedDelete');
+    }
+
+    const pCache = { index: 1, values: [] };
+    const whereClause = this.#parseWhere(pCache, filter);
+    if (!whereClause) throw new Error('Empty WHERE clause — deletion aborted for safety');
+
+    const query = `DELETE FROM ${this.#settings.name} WHERE ${whereClause}`;
+    const result = await this.#db.run(query, pCache.values);
+
+    if (this.debug) {
+      console.log('[sql] [advancedDelete]', pCache.values, result);
+      console.log(this.#debugSql(query));
+    }
+
+    return this.#getResultCount(result);
   }
 
   /**
@@ -1412,7 +1485,7 @@ class TinySqlQuery {
     }
 
     // Flat object fallback for backward compatibility
-    if (!group.column && typeof group === 'object') {
+    if (objType(group, 'object') && !group.column) {
       const entries = Object.entries(group);
       const logic = 'AND';
       const innerConditions = entries.map(([col, cond]) => {
