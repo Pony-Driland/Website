@@ -1096,7 +1096,7 @@ class TinySqlQuery {
       if (!column || result[item] == null) continue;
       const type = column.type || '';
       const raw = result[item];
-      if (typeof this.#jsonEscapeAlias[type] === 'number')
+      if (typeof this.#jsonEscapeAlias[type] === 'function')
         result[item] = this.#jsonEscapeAlias[type](raw);
     }
 
