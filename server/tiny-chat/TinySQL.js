@@ -817,7 +817,7 @@ class TinySqlQuery {
   async has(id, subId) {
     const useSub = this.#settings.subId && subId ? true : false;
     const params = [id];
-    const query = `SELECT COUNT(*) FROM ${this.#settings.name} WHERE ${this.#settings.id} = ?${useSub ? ` AND ${this.#settings.subId} = ?` : ''}`;
+    const query = `SELECT COUNT(*) FROM ${this.#settings.name} WHERE ${this.#settings.id} = $1${useSub ? ` AND ${this.#settings.subId} = $2` : ''}`;
     if (useSub) params.push(subId);
 
     const result = await this.#db.get(query, params);
@@ -839,10 +839,12 @@ class TinySqlQuery {
     const values = Object.values(valueObj).map((v) =>
       typeof v === 'object' ? JSON.stringify(v) : v,
     );
-    const setClause = columns.map((col) => `${col} = ?`).join(', ');
+
+    const setClause = columns.map((col, index) => `${col} = $${index + 1}`).join(', ');
 
     const useSub = this.#settings.subId && typeof valueObj[this.#settings.subId] !== 'undefined';
-    const query = `UPDATE ${this.#settings.name} SET ${setClause} WHERE ${this.#settings.id} = ?${useSub ? ` AND ${this.#settings.subId} = ?` : ''}`;
+    const query = `UPDATE ${this.#settings.name} SET ${setClause} WHERE ${this.#settings.id} = $${columns.length + 1}${useSub ? ` AND ${this.#settings.subId} = $${columns.length + 2}` : ''}`;
+
     const params = [...values, id];
     if (useSub) params.push(valueObj[this.#settings.subId]);
 
@@ -867,15 +869,17 @@ class TinySqlQuery {
     const values = Object.values(valueObj).map((v) =>
       typeof v === 'object' ? JSON.stringify(v) : v,
     );
-    const placeholders = columns.map(() => '?').join(', ');
+
+    const allParams = [id, ...values];
+    const placeholders = allParams.map((_, index) => `$${index + 1}`).join(', ');
 
     let query = `INSERT INTO ${this.#settings.name} (${this.#settings.id}, ${columns.join(', ')}) 
-               VALUES (?, ${placeholders})`;
+                 VALUES (${placeholders})`;
 
     if (!onlyIfNew) {
       const updateClause = columns.map((col) => `${col} = excluded.${col}`).join(', ');
       query += ` ON CONFLICT(${this.#settings.id}${this.#settings.subId ? `, ${this.#settings.subId}` : ''}) 
-               DO UPDATE SET ${updateClause}`;
+                 DO UPDATE SET ${updateClause}`;
     } else {
       query += ` ON CONFLICT(${this.#settings.id}${this.#settings.subId ? `, ${this.#settings.subId}` : ''}) DO NOTHING`;
     }
@@ -898,12 +902,12 @@ class TinySqlQuery {
     }
     if (ids.length > 0) query += ` RETURNING ${returnIds}`;
 
-    results.push(await this.#db.get(query, [id, ...values]));
+    results.push(await this.#db.get(query, allParams));
     if (this.debug) {
       console.log(
         '[sql] [set]',
         this.#fixDebugQuery(query),
-        [id, ...values],
+        allParams,
         results[results.length - 1],
       );
     }
@@ -923,7 +927,7 @@ class TinySqlQuery {
       ? `LEFT JOIN ${this.#settings.join} j ON ${this.#settings.joinCompare || ''}`
       : '';
     const query = `SELECT ${this.#settings.select} FROM ${this.#settings.name} t 
-                   ${joinClause} WHERE t.${this.#settings.id} = ?${useSub ? ` AND t.${this.#settings.subId} = ?` : ''}`;
+                   ${joinClause} WHERE t.${this.#settings.id} = $1${useSub ? ` AND t.${this.#settings.subId} = $2` : ''}`;
     if (useSub) params.push(subId);
     const result = this.#jsonChecker(await this.#db.get(query, params));
     if (this.debug) console.log('[sql] [get]', this.#fixDebugQuery(query), params, result);
@@ -939,7 +943,7 @@ class TinySqlQuery {
    */
   async delete(id, subId) {
     const useSub = this.#settings.subId && subId ? true : false;
-    const query = `DELETE FROM ${this.#settings.name} WHERE ${this.#settings.id} = ?${useSub ? ` AND ${this.#settings.subId} = ?` : ''}`;
+    const query = `DELETE FROM ${this.#settings.name} WHERE ${this.#settings.id} = $1${useSub ? ` AND ${this.#settings.subId} = $2` : ''}`;
     const params = [id];
     if (useSub) params.push(subId);
 
@@ -961,11 +965,12 @@ class TinySqlQuery {
       ? `LEFT JOIN ${this.#settings.join} j ON ${this.#settings.joinCompare || ''}`
       : '';
     const orderClause = this.#settings.order ? `ORDER BY ${this.#settings.order}` : '';
-    const whereClause = filterId !== null ? `WHERE t.${this.#settings.id} = ?` : '';
+    const whereClause = filterId !== null ? `WHERE t.${this.#settings.id} = $1` : '';
+    const limitClause = `LIMIT $${filterId !== null ? 2 : 1}`;
     const query = `SELECT ${this.#selectGenerator(selectValue)} FROM ${this.#settings.name} t 
                  ${joinClause} 
                  ${whereClause}
-                 ${orderClause} LIMIT ?`.trim();
+                 ${orderClause} ${limitClause}`.trim();
 
     const params = filterId !== null ? [filterId, count] : [count];
     const results = await this.#db.all(query, params);
@@ -987,7 +992,7 @@ class TinySqlQuery {
       ? `LEFT JOIN ${this.#settings.join} j ON ${this.#settings.joinCompare || ''}`
       : '';
     const orderClause = this.#settings.order ? `ORDER BY ${this.#settings.order}` : '';
-    const whereClause = filterId !== null ? `WHERE t.${this.#settings.id} = ?` : '';
+    const whereClause = filterId !== null ? `WHERE t.${this.#settings.id} = $1` : '';
     const query = `SELECT ${this.#selectGenerator(selectValue)} FROM ${this.#settings.name} t 
                  ${joinClause} 
                  ${whereClause}
@@ -1037,6 +1042,7 @@ class TinySqlQuery {
    */
   async search(criteria = {}, selectValue = '*') {
     const values = [];
+    let placeholderIndex = 1;
 
     const parseGroup = (group) => {
       if (!group || typeof group !== 'object') return '';
@@ -1067,7 +1073,7 @@ class TinySqlQuery {
           }
 
           values.push(value);
-          return `(${col} ${operator} ?)`;
+          return `(${col} ${operator} $${placeholderIndex++})`;
         });
         return innerConditions.join(` ${logic} `);
       }
@@ -1087,7 +1093,7 @@ class TinySqlQuery {
       }
 
       values.push(value);
-      return `${col} ${operator} ?`;
+      return `${col} ${operator} $${placeholderIndex++}`;
     };
 
     const whereClause = Object.keys(criteria).length ? `WHERE ${parseGroup(criteria)}` : '';
