@@ -559,8 +559,113 @@ class TinySqlQuery {
     this.#conditions['!='] = this.#conditions['!=='];
   }
 
-  #fixDebugQuery(value) {
-    return value.trim().replace(/  |(\r\n|\n|\r)/g, '');
+  /**
+   * Formats SQL for clean and readable debug in terminal.
+   * Adds line breaks and indentation to major SQL clauses,
+   * and wraps the query with visual markers, without outer newlines.
+   *
+   * @private
+   * @param {string} value - Raw SQL query string.
+   * @returns {string} Formatted SQL string for terminal output.
+   */
+  #debugSqlClassic(value) {
+    const formatted = value
+      .trim()
+      .replace(/\s+/g, ' ') // collapse multiple spaces
+      .replace(
+        /\s*(WITH|SELECT|FROM|LEFT JOIN|RIGHT JOIN|FULL JOIN|INNER JOIN|CROSS JOIN|JOIN|ON|WHERE|GROUP BY|ORDER BY|HAVING|LIMIT|OFFSET)\s+/gi,
+        '\n$1 ',
+      )
+      .replace(/,\s*/g, ', ') // clean comma spacing
+      .replace(/\n/g, '\n  '); // indent each line
+
+    const result =
+      '┌─[DEBUG SQL]───────────────────────────────────────────────\n' +
+      '  ' +
+      formatted.trim() +
+      '\n' +
+      '└────────────────────────────────────────────────────────────';
+    return result;
+  }
+
+  /**
+   * Formats SQL for colorful and readable debug in terminal.
+   * Adds indentation, line breaks, and ANSI colors.
+   *
+   * @private
+   * @param {string} value - Raw SQL query string.
+   * @returns {string} Colorized and formatted SQL string for terminal.
+   */
+  #debugSql(value) {
+    const RESET = '\x1b[0m';
+    const WHITE = '\x1b[37m';
+    const BLUE = '\x1b[34m';
+    const MAGENTA = '\x1b[35m';
+    const YELLOW = '\x1b[33m';
+
+    // SQL keywords to highlight
+    const keywords = [
+      'WITH',
+      'SELECT',
+      'FROM',
+      'LEFT JOIN',
+      'RIGHT JOIN',
+      'FULL JOIN',
+      'INNER JOIN',
+      'CROSS JOIN',
+      'JOIN',
+      'ON',
+      'WHERE',
+      'GROUP BY',
+      'ORDER BY',
+      'HAVING',
+      'LIMIT',
+      'OFFSET',
+    ];
+
+    // Formatar estrutura e indentação
+    let formatted = value
+      .trim()
+      .replace(/\s+/g, ' ')
+      .replace(new RegExp(`\\s*(${keywords.join('|')})\\s+`, 'gi'), '\n$1 ') // quebra antes de palavras-chave
+      .replace(/,\s*/g, ', ')
+      .replace(/\n/g, '\n  '); // indentação
+
+    // Aplicar cores nas palavras-chave
+    for (const word of keywords) {
+      const regex = new RegExp(`(\\b${word}\\b)`, 'gi');
+      formatted = formatted.replace(regex, `${YELLOW}$1${WHITE}`);
+    }
+
+    // Remover quebras externas e aplicar borda colorida
+    return (
+      `${BLUE}┌─[${MAGENTA}DEBUG SQL${BLUE}]───────────────────────────────────────────────${RESET}\n` +
+      `  ${WHITE}${formatted.trim()}\n` +
+      `${BLUE}└────────────────────────────────────────────────────────────${RESET}`
+    );
+  }
+
+  /**
+   * Public wrapper for #debugSql().
+   * Formats a SQL query using styled indentation and ANSI colors for terminal output.
+   *
+   * @param {string} value - The raw SQL query string to be formatted.
+   * @returns {string} Formatted and colorized SQL for terminal display.
+   */
+  debugSql(value) {
+    return this.#debugSql(value);
+  }
+
+  /**
+   * Public wrapper for #debugSqlClassic().
+   * Formats a SQL query using minimal spacing (no colors or indentation).
+   * Good for compact, single-line SQL logging.
+   *
+   * @param {string} value - The raw SQL query string to be compressed.
+   * @returns {string} Compact single-line SQL string.
+   */
+  debugSqlClassic(value) {
+    return this.#debugSqlClassic(value);
   }
 
   /**
@@ -694,7 +799,10 @@ class TinySqlQuery {
         const query = `ALTER TABLE ${this.#settings.name} ADD COLUMN ${change[1]} ${change[2]} ${change[3] || ''}`;
         try {
           await this.#db.run(query);
-          if (this.debug) console.log('[sql] [updateTable - ADD]', this.#fixDebugQuery(query));
+          if (this.debug) {
+            console.log('[sql] [updateTable - ADD]');
+            console.log(this.#debugSql(query));
+          }
         } catch (error) {
           console.error('[sql] [updateTable - ADD] Error adding column:', error);
         }
@@ -702,7 +810,10 @@ class TinySqlQuery {
         const query = `ALTER TABLE ${this.#settings.name} DROP COLUMN IF EXISTS ${change[1]}`;
         try {
           await this.#db.run(query);
-          if (this.debug) console.log('[sql] [updateTable - REMOVE]', this.#fixDebugQuery(query));
+          if (this.debug) {
+            console.log('[sql] [updateTable - REMOVE]');
+            console.log(this.#debugSql(query));
+          }
         } catch (error) {
           console.error('[sql] [updateTable - REMOVE] Error removing column:', error);
         }
@@ -712,7 +823,10 @@ class TinySqlQuery {
         }`;
         try {
           await this.#db.run(query);
-          if (this.debug) console.log('[sql] [updateTable - MODIFY]', this.#fixDebugQuery(query));
+          if (this.debug) {
+            console.log('[sql] [updateTable - MODIFY]');
+            console.log(this.#debugSql(query));
+          }
         } catch (error) {
           console.error('[sql] [updateTable - MODIFY] Error modifying column:', error);
         }
@@ -720,7 +834,10 @@ class TinySqlQuery {
         const query = `ALTER TABLE ${this.#settings.name} RENAME COLUMN ${change[1]} TO ${change[2]}`;
         try {
           await this.#db.run(query);
-          if (this.debug) console.log('[sql] [updateTable - RENAME]', this.#fixDebugQuery(query));
+          if (this.debug) {
+            console.log('[sql] [updateTable - RENAME]');
+            console.log(this.#debugSql(query));
+          }
         } catch (error) {
           console.error('[sql] [updateTable - RENAME] Error renaming column:', error);
         }
@@ -791,11 +908,15 @@ class TinySqlQuery {
       .run(query)
       .catch((err) => {
         console.error(err);
-        console.log(`[sql] [createTable] [error] ${this.#fixDebugQuery(query)}`);
+        console.log(`[sql] [createTable] [error]`);
+        console.log(this.#debugSql(query));
         return err;
       })
       .then((result) => {
-        if (this.debug) console.log('[sql] [createTable]', this.#fixDebugQuery(query));
+        if (this.debug) {
+          console.log('[sql] [createTable]');
+          console.log(this.#debugSql(query));
+        }
         return result;
       });
 
@@ -988,7 +1109,10 @@ class TinySqlQuery {
     if (useSub) params.push(subId);
 
     const result = await this.#db.get(query, params);
-    if (this.debug) console.log('[sql] [has]', this.#fixDebugQuery(query), params, result);
+    if (this.debug) {
+      console.log('[sql] [has]', params, result);
+      console.log(this.#debugSql(query));
+    }
     return objType(result, 'object') && result['COUNT(*)'] === 1 ? true : false;
   }
 
@@ -1014,7 +1138,10 @@ class TinySqlQuery {
     if (useSub) params.push(valueObj[this.#settings.subId]);
 
     const result = await this.#db.run(query, params);
-    if (this.debug) console.log('[sql] [update]', this.#fixDebugQuery(query), params, result);
+    if (this.debug) {
+      console.log('[sql] [update]', params, result);
+      console.log(this.#debugSql(query));
+    }
     return this.#getResultCount(result);
   }
 
@@ -1065,7 +1192,8 @@ class TinySqlQuery {
 
     const result = await this.#db.get(query, allParams);
     if (this.debug) {
-      console.log('[sql] [set]', this.#fixDebugQuery(query), allParams, result);
+      console.log('[sql] [set]', allParams, result);
+      console.log(this.#debugSql(query));
     }
     return result || null;
   }
@@ -1083,7 +1211,10 @@ class TinySqlQuery {
                    ${this.#insertJoin()} WHERE t.${this.#settings.id} = $1${useSub ? ` AND t.${this.#settings.subId} = $2` : ''}`;
     if (useSub) params.push(subId);
     const result = this.#jsonChecker(await this.#db.get(query, params));
-    if (this.debug) console.log('[sql] [get]', this.#fixDebugQuery(query), params, result);
+    if (this.debug) {
+      console.log('[sql] [get]', params, result);
+      console.log(this.#debugSql(query));
+    }
     if (!result) return null;
     return result;
   }
@@ -1101,7 +1232,10 @@ class TinySqlQuery {
     if (useSub) params.push(subId);
 
     const result = await this.#db.run(query, params);
-    if (this.debug) console.log('[sql] [delete]', this.#fixDebugQuery(query), params, result);
+    if (this.debug) {
+      console.log('[sql] [delete]', params, result);
+      console.log(this.#debugSql(query));
+    }
     return this.#getResultCount(result);
   }
 
@@ -1126,7 +1260,10 @@ class TinySqlQuery {
     const results = await this.#db.all(query, params);
     for (const index in results) this.#jsonChecker(results[index]);
 
-    if (this.debug) console.log('[sql] [getAmount]', this.#fixDebugQuery(query), params, results);
+    if (this.debug) {
+      console.log('[sql] [getAmount]', params, results);
+      console.log(this.#debugSql(query));
+    }
     return results;
   }
 
@@ -1148,7 +1285,10 @@ class TinySqlQuery {
     const results = await this.#db.all(query, filterId !== null ? [filterId] : []);
     for (const index in results) this.#jsonChecker(results[index]);
 
-    if (this.debug) console.log('[sql] [getAll]', this.#fixDebugQuery(query), filterId, results);
+    if (this.debug) {
+      console.log('[sql] [getAll]', filterId, results);
+      console.log(this.#debugSql(query));
+    }
     return results;
   }
 
@@ -1465,8 +1605,10 @@ class TinySqlQuery {
       response.item = row;
     }
 
-    if (this.debug)
-      console.log('[sql] [find]', this.#fixDebugQuery(query), pCache.values, response);
+    if (this.debug) {
+      console.log('[sql] [find]', pCache.values, response);
+      console.log(this.#debugSql(query));
+    }
     return response;
   }
 
@@ -1560,15 +1702,20 @@ class TinySqlQuery {
     // Pagination
     if (typeof perPage === 'number' && perPage > -1) {
       results = await this.#pagination(query, values, perPage, page);
-      if (this.debug)
-        console.log('[sql] [search:paginated]', this.#fixDebugQuery(query), values, results);
+      if (this.debug) {
+        console.log('[sql] [search:paginated]', values, results);
+        console.log(this.#debugSql(query));
+      }
     }
 
     // Normal
     else {
       results = await this.#db.all(query, values);
       for (const index in results) this.#jsonChecker(results[index]);
-      if (this.debug) console.log('[sql] [search]', this.#fixDebugQuery(query), values, results);
+      if (this.debug) {
+        console.log('[sql] [search]', values, results);
+        console.log(this.#debugSql(query));
+      }
     }
 
     // Complete
