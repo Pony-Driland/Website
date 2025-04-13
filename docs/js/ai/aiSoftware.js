@@ -4173,11 +4173,16 @@ const AiScriptStart = (connStore) => {
               // Send data
               const newSettings = {};
               if (roomSaveData[where] !== null) newSettings[where] = roomSaveData[where];
-              tinyIo.client.updateRoomSettings(newSettings);
+              tinyIo.client.updateRoomSettings(newSettings).then((result) => {
+                if (result.error)
+                  alert(
+                    `Your data has not been saved! Try again!\n${result.msg}\nCode: ${result.code}`,
+                  );
+              });
 
               // Complete
               saveSessionTimeout[timeoutId] = null;
-            });
+            }, 1000);
           }
         }
       };

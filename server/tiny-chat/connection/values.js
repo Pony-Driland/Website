@@ -133,6 +133,7 @@ export const getRateLimit = () => ({
   },
   limit: {
     msg: getIniConfig('MESSAGES'),
+    roomUpdates: getIniConfig('ROOM_UPDATES'),
     diceRolls: getIniConfig('DICE_ROLLS'),
     events: getIniConfig('EVENT'),
     roomUsers: getIniConfig('MAX_USERS_PER_ROOM'),
@@ -157,10 +158,12 @@ export const sendRateLimit = (socket) => {
 };
 
 // Rate limit editor
-export const createRateLimit = (limitCount = 5, itemName = 'items', code = -1) => {
+export const createRateLimit = (limitCountName = '', itemName = 'items', code = -1) => {
   // Track the events for rate limiting
   const userEventCounts = new Map();
   return (socket, fn, isUnknown = false) => {
+    const limitCount = getIniConfig(limitCountName) || 5;
+
     // Is a user
     const userId = !isUnknown
       ? userSession.getUserId(socket)
@@ -207,14 +210,11 @@ export const createRateLimit = (limitCount = 5, itemName = 'items', code = -1) =
   };
 };
 
-export const userIsRateLimited = createRateLimit(getIniConfig('EVENT'), 'events', 1);
-export const userMsgIsRateLimited = createRateLimit(getIniConfig('MESSAGES'), 'messages', 2);
-export const userDiceIsRateLimited = createRateLimit(getIniConfig('DICE_ROLLS'), 'dice rolls', 3);
-export const userUpdateDiceIsRateLimited = createRateLimit(
-  getIniConfig('DICE_ROLLS'),
-  'dice changes',
-  3,
-);
+export const userIsRateLimited = createRateLimit('EVENT', 'events', 1);
+export const roomUpdateIsRateLimited = createRateLimit('ROOM_UPDATES', 'room updates', 1);
+export const userMsgIsRateLimited = createRateLimit('MESSAGES', 'messages', 2);
+export const userDiceIsRateLimited = createRateLimit('DICE_ROLLS', 'dice rolls', 3);
+export const userUpdateDiceIsRateLimited = createRateLimit('DICE_ROLLS', 'dice changes', 3);
 
 // Incomplete data
 export const sendIncompleteDataInfo = (fn, code = 0) => {
