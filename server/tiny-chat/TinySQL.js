@@ -1192,6 +1192,90 @@ class TinySqlQuery {
   }
 
   /**
+   * Builds a SQL WHERE clause from a nested or flat condition structure.
+   *
+   * This internal helper method parses logical groupings (AND/OR) and formats the conditions into
+   * SQL syntax, while managing parameter placeholders and values.
+   *
+   * It supports:
+   * - Nested condition groups via `group` and `conditions`.
+   * - Flat object-based filtering (legacy/fallback support).
+   * - Single-condition objects.
+   * - Dynamic operators through the internal `#conditions` handler.
+   *
+   * @param {object} [pCache={}] - Placeholder cache object.
+   * @param {number} [pCache.index=1] - Index for SQL placeholders (e.g., $1, $2).
+   * @param {any[]} [pCache.values=[]] - Array to store values corresponding to placeholders.
+   * @param {object} [group={}] - Grouped or single filter condition.
+   * @returns {string} SQL-formatted WHERE clause (without the "WHERE" keyword).
+   *
+   * @example
+   * const pCache = { index: 1, values: [] };
+   * const clause = this.#parseWhere(pCache, {
+   *   group: 'OR',
+   *   conditions: [
+   *     { column: 'status', value: 'active' },
+   *     { column: 'role', value: 'admin', operator: '=' }
+   *   ]
+   * });
+   * // clause: "(status = $1) OR (role = $2)"
+   * // pCache.values: ['active', 'admin']
+   */
+  #parseWhere(pCache = {}, group = {}) {
+    if (!objType(pCache, 'object') || !group || typeof group !== 'object') return '';
+    if (typeof pCache.index !== 'number') pCache.index = 1;
+    if (!Array.isArray(pCache.values)) pCache.values = [];
+
+    if (group.conditions && Array.isArray(group.conditions)) {
+      const logic = group.group?.toUpperCase() === 'OR' ? 'OR' : 'AND';
+      const innerConditions = group.conditions.map((cond) => {
+        return `(${this.#parseWhere(pCache, cond)})`;
+      });
+      return innerConditions.join(` ${logic} `);
+    }
+
+    // Flat object fallback for backward compatibility
+    if (!group.column && typeof group === 'object') {
+      const entries = Object.entries(group);
+      const logic = 'AND';
+      const innerConditions = entries.map(([col, cond]) => {
+        let operator = '=';
+        let value = cond.value;
+
+        if (cond.operator) {
+          const selected = cond.operator.toUpperCase();
+          if (typeof this.#conditions[selected] === 'function') {
+            const result = this.#conditions[selected](cond);
+            if (typeof result.operator === 'string') operator = result.operator;
+            if (typeof result.value !== 'undefined') value = result.value;
+          }
+        }
+
+        pCache.values.push(value);
+        return `(${col} ${operator} $${pCache.index++})`;
+      });
+      return innerConditions.join(` ${logic} `);
+    }
+
+    // If it's a single condition
+    const col = group.column;
+    let operator = '=';
+    let value = group.value;
+
+    if (group.operator) {
+      const selected = group.operator.toUpperCase();
+      if (typeof this.#conditions[selected] === 'function') {
+        const result = this.#conditions[selected](group);
+        if (typeof result.operator === 'string') operator = result.operator;
+        if (typeof result.value !== 'undefined') value = result.value;
+      }
+    }
+
+    pCache.values.push(value);
+    return `${col} ${operator} $${pCache.index++}`;
+  }
+
+  /**
    * Perform a filtered search with advanced nested criteria, pagination, and customizable settings.
    *
    * Supports complex logical groupings (AND/OR), flat condition style, custom ordering, and single or multiple joins.
@@ -1247,63 +1331,13 @@ class TinySqlQuery {
     const limit = searchData.limit || null;
     const criteria = searchData.q || {};
 
-    const values = [];
-    let placeholderIndex = 1;
-
-    const parseGroup = (group) => {
-      if (!group || typeof group !== 'object') return '';
-
-      if (group.conditions && Array.isArray(group.conditions)) {
-        const logic = group.group?.toUpperCase() === 'OR' ? 'OR' : 'AND';
-        const innerConditions = group.conditions.map((cond) => {
-          return `(${parseGroup(cond)})`;
-        });
-        return innerConditions.join(` ${logic} `);
-      }
-
-      // Flat object fallback for backward compatibility
-      if (!group.column && typeof group === 'object') {
-        const entries = Object.entries(group);
-        const logic = 'AND';
-        const innerConditions = entries.map(([col, cond]) => {
-          let operator = '=';
-          let value = cond.value;
-
-          if (cond.operator) {
-            const selected = cond.operator.toUpperCase();
-            if (typeof this.#conditions[selected] === 'function') {
-              const result = this.#conditions[selected](cond);
-              if (typeof result.operator === 'string') operator = result.operator;
-              if (typeof result.value !== 'undefined') value = result.value;
-            }
-          }
-
-          values.push(value);
-          return `(${col} ${operator} $${placeholderIndex++})`;
-        });
-        return innerConditions.join(` ${logic} `);
-      }
-
-      // If it's a single condition
-      const col = group.column;
-      let operator = '=';
-      let value = group.value;
-
-      if (group.operator) {
-        const selected = group.operator.toUpperCase();
-        if (typeof this.#conditions[selected] === 'function') {
-          const result = this.#conditions[selected](group);
-          if (typeof result.operator === 'string') operator = result.operator;
-          if (typeof result.value !== 'undefined') value = result.value;
-        }
-      }
-
-      values.push(value);
-      return `${col} ${operator} $${placeholderIndex++}`;
-    };
-
     // Where
-    const whereClause = Object.keys(criteria).length ? `WHERE ${parseGroup(criteria)}` : '';
+    const sQuery = {};
+    const whereClause = Object.keys(criteria).length
+      ? `WHERE ${this.#parseWhere(sQuery, criteria)}`
+      : '';
+
+    const { values } = sQuery;
 
     // Join script
     const insertJoin = (j, idx) => {
