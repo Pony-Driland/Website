@@ -1162,6 +1162,36 @@ class TinySqlQuery {
   }
 
   /**
+   * Executes a paginated query and returns results, total pages, and total item count.
+   *
+   * @param {string} query - The base SQL query (should not include LIMIT or OFFSET).
+   * @param {Array<any>} params - The parameters for the SQL query.
+   * @param {number} perPage - The number of items per page.
+   * @param {number} page - The current page number (starting from 1).
+   * @returns {Promise<{ items: any[], totalPages: number, totalItems: number }>}
+   */
+  async #pagination(query, params, perPage, page) {
+    const offset = (page - 1) * perPage;
+    const isZero = perPage < 1;
+
+    // Count total items
+    const countQuery = `SELECT COUNT(*) as total FROM (${query}) AS count_wrapper`;
+    const { total } = !isZero ? await this.#db.get(countQuery, params) : { total: 0 };
+
+    // Fetch paginated items
+    const paginatedQuery = `${query} LIMIT ? OFFSET ?`;
+    const items = !isZero ? await this.#db.all(paginatedQuery, [...params, perPage, offset]) : [];
+
+    const totalPages = !isZero ? Math.ceil(total / perPage) : 0;
+
+    return {
+      items,
+      totalPages,
+      totalItems: total,
+    };
+  }
+
+  /**
    * Perform a filtered search with nested criteria.
    *
    * Supports complex logical groupings (AND/OR) and flat condition style.
@@ -1196,7 +1226,7 @@ class TinySqlQuery {
    * // Equivalent SQL:
    * // WHERE (status = ?) AND ((role = ?) OR (role = ?))
    */
-  async search(criteria = {}, selectValue = '*') {
+  async search(criteria = {}, selectValue = '*', perPage = null, page = 1) {
     const values = [];
     let placeholderIndex = 1;
 
@@ -1264,10 +1294,17 @@ class TinySqlQuery {
                      ${whereClause} 
                      ${orderClause}`;
 
-    const results = await this.#db.all(query, values);
-    for (const index in results) this.#jsonChecker(results[index]);
+    let results;
+    if (typeof perPage === 'number' && perPage > -1) {
+      results = await this.#pagination(query, values, perPage, page);
+      if (this.debug)
+        console.log('[sql] [search:paginated]', this.#fixDebugQuery(query), values, results);
+    } else {
+      results = await this.#db.all(query, values);
+      for (const index in results) this.#jsonChecker(results[index]);
+      if (this.debug) console.log('[sql] [search]', this.#fixDebugQuery(query), values, results);
+    }
 
-    if (this.debug) console.log('[sql] [search]', this.#fixDebugQuery(query), values, results);
     return results;
   }
 }
