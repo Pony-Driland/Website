@@ -1090,7 +1090,6 @@ class TinySqlQuery {
    */
   #jsonChecker(result) {
     if (!objType(result, 'object')) return result;
-
     for (const item in result) {
       const column = this.#table?.[item];
       if (!column || result[item] == null) continue;
@@ -1101,6 +1100,40 @@ class TinySqlQuery {
     }
 
     return result;
+  }
+
+  /**
+   * Escapes values inside the valueObj using type definitions from this.#table.
+   * Only modifies the values that have a matching column in the table.
+   * Uses the appropriate parser from #jsonEscapeAlias.
+   * @param {object} valueObj - The object containing values to be escaped.
+   * @returns {object} The same valueObj with its values escaped according to table definitions.
+   */
+  #escapeValues(valueObj = {}) {
+    for (const key in valueObj) {
+      if (!valueObj.hasOwnProperty(key)) continue;
+
+      const columnDef = this.#table[key];
+      if (columnDef && columnDef.type) {
+        const type = columnDef.type.toUpperCase();
+        const escapeFn = this.#jsonEscapeAlias[type];
+
+        if (typeof escapeFn === 'function') {
+          valueObj[key] = escapeFn.call(this, valueObj[key]);
+        }
+      }
+    }
+
+    return valueObj;
+  }
+
+  /**
+   * Wrapper function to escape values in valueObj using #escapeValues.
+   * @param {object} valueObj - The object containing values to be escaped.
+   * @returns {object} The same valueObj with its values escaped according to table definitions.
+   */
+  escapeValues(valueObj = {}) {
+    return this.#escapeValues(valueObj);
   }
 
   /**
@@ -1209,6 +1242,29 @@ class TinySqlQuery {
   }
 
   /**
+   * Type-specific value transformers for preparing data before insertion or update.
+   * This object maps column types to functions that transform values accordingly.
+   * Used internally by #escapeValuesFix.
+   */
+  #jsonEscapeFix = {
+    // Serializes any value into a JSON string.
+    JSON: (raw) => JSON.stringify(raw),
+  };
+
+  /**
+   * Applies type-specific escaping to a single value based on the table's column definition.
+   * @param {any} v - The raw value to be escaped.
+   * @param {string} name - The column name associated with the value.
+   * @returns {any} The escaped value if a valid type and handler exist; otherwise, the original value.
+   */
+  #escapeValuesFix(v, name) {
+    const column = this.#table?.[name];
+    const type = column.type || '';
+    if (typeof this.#jsonEscapeFix[type] !== 'function') return v;
+    else return this.#jsonEscapeFix[type](v);
+  }
+
+  /**
    * Updates records based on a complex WHERE clause defined by a filter object.
    * Instead of relying solely on an ID (or subId), this method uses #parseWhere to
    * generate the conditions, and updates the given fields in valueObj.
@@ -1228,8 +1284,8 @@ class TinySqlQuery {
 
     // Set the SET clause and its parameters
     const columns = Object.keys(valueObj);
-    const updateValues = Object.values(valueObj).map((v) =>
-      objType(v, 'object') || Array.isArray(v) ? JSON.stringify(v) : v,
+    const updateValues = Object.values(valueObj).map((v, index) =>
+      this.#escapeValuesFix(v, columns[index]),
     );
     const setClause = columns.map((col, index) => `${col} = $${index + 1}`).join(', ');
 
@@ -1262,8 +1318,8 @@ class TinySqlQuery {
    */
   async update(id, valueObj = {}) {
     const columns = Object.keys(valueObj);
-    const values = Object.values(valueObj).map((v) =>
-      objType(v, 'object') || Array.isArray(v) ? JSON.stringify(v) : v,
+    const values = Object.values(valueObj).map((v, index) =>
+      this.#escapeValuesFix(v, columns[index]),
     );
 
     const setClause = columns.map((col, index) => `${col} = $${index + 1}`).join(', ');
@@ -1291,8 +1347,8 @@ class TinySqlQuery {
    */
   async set(id, valueObj = {}, onlyIfNew = false) {
     const columns = Object.keys(valueObj);
-    const values = Object.values(valueObj).map((v) =>
-      objType(v, 'object') || Array.isArray(v) ? JSON.stringify(v) : v,
+    const values = Object.values(valueObj).map((v, index) =>
+      this.#escapeValuesFix(v, columns[index]),
     );
 
     const allParams = [id, ...values];
