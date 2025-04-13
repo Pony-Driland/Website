@@ -960,6 +960,125 @@ class TinySqlQuery {
   }
 
   /**
+   * Utility functions to sanitize and convert raw database values
+   * into proper JavaScript types for JSON compatibility and safe parsing.
+   */
+  #jsonEscape = {
+    /**
+     * Converts truthy values to boolean `true`.
+     * Accepts: true, "true", 1, "1"
+     */
+    boolean: (raw) => raw === true || raw === 'true' || raw === 1 || raw === '1',
+    /**
+     * Converts values into BigInt.
+     * Returns `null` if parsing fails or value is invalid.
+     */
+    bigInt: (raw) => {
+      if (typeof raw === 'bigint') return raw;
+      else {
+        try {
+          return BigInt(raw);
+        } catch {
+          return null;
+        }
+      }
+    },
+    /**
+     * Converts values to integers using `parseInt`.
+     * Floats are truncated if given as numbers.
+     * Returns `null` on NaN.
+     */
+    int: (raw) => {
+      const result = typeof raw === 'number' ? Math.trunc(raw) : parseInt(raw);
+      if (Number.isNaN(result)) return null;
+      return result;
+    },
+    /**
+     * Parses values as floating-point numbers.
+     * Returns `null` if value is not a valid float.
+     */
+    float: (raw) => {
+      const result = typeof raw === 'number' ? raw : parseFloat(raw);
+      if (Number.isNaN(result)) return null;
+      return result;
+    },
+    /**
+     * Attempts to parse a string as JSON.
+     * If already an object or array, returns the value as-is.
+     * Otherwise returns `null` on failure.
+     */
+    json: (raw) => {
+      if (typeof raw === 'string') {
+        try {
+          return JSON.parse(raw);
+        } catch {
+          return null;
+        }
+      } else if (objType(raw, 'object') || Array.isArray(raw)) return raw;
+      return null;
+    },
+    /**
+     * Validates that the value is a string, otherwise returns `null`.
+     */
+    text: (raw) => (typeof raw === 'string' ? raw : null),
+    /**
+     * Converts the value into a valid Date object.
+     * Returns the original date if already valid,
+     * or a new Date instance if parsable.
+     * Returns `null` if parsing fails.
+     */
+    date: (raw) => {
+      if (raw instanceof Date && !Number.isNaN(raw.getTime())) {
+        return raw; // Valid date
+      } else {
+        const parsedDate = new Date(raw);
+        return Number.isNaN(parsedDate.getTime()) ? null : parsedDate;
+      }
+    },
+  };
+
+  /**
+   * Maps SQL data types (as returned from metadata or schema)
+   * to the appropriate conversion function from #jsonEscape.
+   */
+  #jsonEscapeAlias = {
+    // Boolean aliases
+    BOOLEAN: (raw) => this.#jsonEscape.boolean(raw),
+    BOOL: (raw) => this.#jsonEscape.boolean(raw),
+
+    // BigInt-compatible numeric types
+    BIGINT: (raw) => this.#jsonEscape.bigInt(raw),
+    DECIMAL: (raw) => this.#jsonEscape.bigInt(raw),
+    NUMERIC: (raw) => this.#jsonEscape.bigInt(raw),
+
+    // Integer aliases
+    INTEGER: (raw) => this.#jsonEscape.int(raw),
+    INT: (raw) => this.#jsonEscape.int(raw),
+    SMALLINT: (raw) => this.#jsonEscape.int(raw),
+    TINYINT: (raw) => this.#jsonEscape.int(raw),
+
+    // Floating-point types
+    REAL: (raw) => this.#jsonEscape.float(raw),
+    FLOAT: (raw) => this.#jsonEscape.float(raw),
+    DOUBLE: (raw) => this.#jsonEscape.float(raw),
+
+    // JSON-compatible field
+    JSON: (raw) => this.#jsonEscape.json(raw),
+
+    // Textual representations
+    TEXT: (raw) => this.#jsonEscape.text(raw),
+    CHAR: (raw) => this.#jsonEscape.text(raw),
+    VARCHAR: (raw) => this.#jsonEscape.text(raw),
+    CLOB: (raw) => this.#jsonEscape.text(raw),
+
+    // Date/time types
+    DATE: (raw) => this.#jsonEscape.date(raw),
+    DATETIME: (raw) => this.#jsonEscape.date(raw),
+    TIMESTAMP: (raw) => this.#jsonEscape.date(raw),
+    TIME: (raw) => this.#jsonEscape.date(raw),
+  };
+
+  /**
    * Parses and validates fields from result rows based on SQL types in this.#table.
    * Converts known SQL types to native JS types.
    *
@@ -975,83 +1094,10 @@ class TinySqlQuery {
     for (const item in result) {
       const column = this.#table?.[item];
       if (!column || result[item] == null) continue;
-
       const type = column.type || '';
       const raw = result[item];
-
-      try {
-        switch (type) {
-          case 'BOOLEAN':
-          case 'BOOL':
-            result[item] = raw === true || raw === 'true' || raw === 1 || raw === '1';
-            break;
-
-          case 'BIGINT':
-          case 'DECIMAL':
-          case 'NUMERIC':
-            if (typeof raw === 'bigint') result[item] = raw;
-            else {
-              try {
-                result[item] = BigInt(raw);
-              } catch {
-                result[item] = null;
-              }
-            }
-            break;
-
-          case 'INTEGER':
-          case 'INT':
-          case 'SMALLINT':
-          case 'TINYINT':
-            result[item] = typeof raw === 'number' ? Math.trunc(raw) : parseInt(raw);
-            if (Number.isNaN(result[item])) result[item] = null;
-            break;
-
-          case 'REAL':
-          case 'FLOAT':
-          case 'DOUBLE':
-            result[item] = typeof raw === 'number' ? raw : parseFloat(raw);
-            if (Number.isNaN(result[item])) result[item] = null;
-            break;
-
-          case 'JSON':
-            if (typeof raw === 'string') {
-              try {
-                result[item] = JSON.parse(raw);
-              } catch {
-                result[item] = null;
-              }
-            } else if (objType(raw, 'object') || Array.isArray(raw)) result[item] = raw;
-            else result[item] = null;
-            break;
-
-          case 'TEXT':
-          case 'CHAR':
-          case 'VARCHAR':
-          case 'CLOB':
-            result[item] = typeof raw === 'string' ? raw : null;
-            break;
-
-          case 'DATE':
-          case 'DATETIME':
-          case 'TIMESTAMP':
-          case 'TIME':
-            if (raw instanceof Date && !Number.isNaN(raw.getTime())) {
-              result[item] = raw; // Valid date
-            } else {
-              const parsedDate = new Date(raw);
-              result[item] = Number.isNaN(parsedDate.getTime()) ? null : parsedDate;
-            }
-            break;
-
-          // Keeps original value
-          default:
-            result[item] = raw;
-            break;
-        }
-      } catch {
-        result[item] = null; // safe fallback
-      }
+      if (typeof this.#jsonEscapeAlias[type] === 'number')
+        result[item] = this.#jsonEscapeAlias[type](raw);
     }
 
     return result;
