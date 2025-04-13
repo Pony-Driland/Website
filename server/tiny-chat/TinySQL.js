@@ -1,6 +1,7 @@
 import { open } from 'sqlite';
 import sqlite3 from 'sqlite3';
 import { Client } from 'pg';
+import EventEmitter from 'events';
 
 import { objType } from './lib/objChecker';
 
@@ -27,13 +28,119 @@ class TinySQL {
   #db;
   #tables = {};
   #debug = false;
+  #event = new EventEmitter();
 
   constructor() {}
 
+  /**
+   * Registers an event listener for the specified event.
+   *
+   * @param {string} name - Name of the event.
+   * @param {Function} callback - Function to call when the event is triggered.
+   */
+  on = (name, callback) => this.#event.on(name, callback);
+
+  /**
+   * Unregisters an event listener from the specified event.
+   *
+   * @param {string} name - Name of the event.
+   * @param {Function} callback - Function that was previously registered.
+   */
+  off = (name, callback) => this.#event.off(name, callback);
+
+  /**
+   * Alias for `on()`. Registers an event listener.
+   *
+   * @param {string} name - Name of the event.
+   * @param {Function} callback - Listener function.
+   */
+  addListener = (name, callback) => this.#event.addListener(name, callback);
+
+  /**
+   * Alias for `off()`. Removes a specific listener.
+   *
+   * @param {string} name - Name of the event.
+   * @param {Function} callback - Listener function to remove.
+   */
+  removeListener = (name, callback) => this.#event.removeListener(name, callback);
+
+  /**
+   * Removes all listeners for a specific event.
+   *
+   * @param {string} name - Name of the event.
+   */
+  removeAllListeners = (name) => this.#event.removeAllListeners(name);
+
+  /**
+   * Sets the maximum number of listeners for the event emitter.
+   *
+   * @param {number} count - The new maximum number of listeners.
+   */
+  setMaxListeners = (count) => this.#event.setMaxListeners(count);
+
+  /**
+   * Emits an event, triggering all listeners registered for the specified event name.
+   *
+   * @param {string} name - The name of the event to emit.
+   * @param {...any} args - Arguments to pass to the listener functions.
+   * @returns {boolean} Returns `true` if the event had listeners, `false` otherwise.
+   */
+  emit = (name, ...args) => this.#event.emit(name, ...args);
+
+  /**
+   * Checks if the given error message indicates a connection error based on the SQL engine in use.
+   *
+   * This method evaluates if the provided error message contains any known connection error codes
+   * for the current SQL engine (PostgreSQL or SQLite3).
+   *
+   * @param {string} msg - The error message to check.
+   * @returns {boolean} True if the error message matches any known connection error codes; otherwise, false.
+   */
+  isConnectionError(err) {
+    const sqlEngine = this.getSqlEngine();
+    if (typeof sqlEngine === 'string') {
+      // PostgreSQL
+      if (sqlEngine === 'postgre') {
+        const codes = [
+          'ECONNREFUSED',
+          'ENOTFOUND',
+          'EHOSTUNREACH',
+          'ETIMEDOUT',
+          'EPIPE',
+          '28P01',
+          '3D000',
+          '08006',
+          '08001',
+          '08004',
+          '53300',
+          '57P01',
+        ];
+        for (const code of codes) if (err.code === code) return true;
+      }
+
+      // Sqlite3
+      if (sqlEngine === 'sqlite3' && typeof err.message === 'string')
+        return err.message.includes('SQLITE_CANTOPEN');
+    }
+    return false;
+  }
+
+  /**
+   * Enables or disables debug mode.
+   *
+   * When debug mode is enabled, SQL queries and additional debug info will be logged to the console.
+   *
+   * @param {boolean} isDebug - If true, debug mode is enabled; otherwise, it's disabled.
+   */
   setIsDebug(isDebug) {
     this.#debug = typeof isDebug === 'boolean' ? isDebug : false;
   }
 
+  /**
+   * Checks whether debug mode is currently enabled.
+   *
+   * @returns {boolean} True if debug mode is enabled; otherwise, false.
+   */
   isDebug() {
     return this.#debug;
   }
@@ -218,6 +325,14 @@ class TinySQL {
   setSqlite3(db) {
     if (!this.#sqlEngine) {
       this.#sqlEngine = 'sqlite3';
+      const isConnectionError = (err) => this.isConnectionError(err);
+
+      // Event error detector
+      const rejectConnection = (reject, err) => {
+        if (isConnectionError(err)) event.emit('connection-error', err);
+        reject(err);
+      };
+      const event = this.#event;
 
       /**
        * Executes a query expected to return multiple rows.
@@ -230,7 +345,7 @@ class TinySQL {
         return new Promise((resolve, reject) => {
           db.all(query, params)
             .then((result) => resolve(Array.isArray(result) ? result : null))
-            .catch(reject);
+            .catch((err) => rejectConnection(reject, err));
         });
       };
 
@@ -245,7 +360,7 @@ class TinySQL {
         return new Promise((resolve, reject) => {
           db.get(query, params)
             .then((result) => resolve(objType(result, 'object') ? result : null))
-            .catch(reject);
+            .catch((err) => rejectConnection(reject, err));
         });
       };
 
@@ -260,7 +375,7 @@ class TinySQL {
         return new Promise((resolve, reject) => {
           db.run(query, params)
             .then((result) => resolve(objType(result, 'object') ? result : null))
-            .catch(reject);
+            .catch((err) => rejectConnection(reject, err));
         });
       };
     } else throw new Error('SQL has already been initialized in this instance!');
@@ -308,6 +423,14 @@ class TinySQL {
   setPostgre(db) {
     if (!this.#sqlEngine) {
       this.#sqlEngine = 'postgre';
+      const isConnectionError = (err) => this.isConnectionError(err);
+
+      // Event error detector
+      const rejectConnection = (err) => {
+        if (isConnectionError(err)) event.emit('connection-error', err);
+      };
+      const event = this.#event;
+      db.on('error', rejectConnection);
 
       /**
        * Executes a query expected to return multiple rows.
@@ -322,6 +445,7 @@ class TinySQL {
           const res = await db.query(query, params);
           return objType(res, 'object') && Array.isArray(res.rows) ? res.rows : null;
         } catch (err) {
+          rejectConnection(err);
           throw err;
         }
       };
@@ -341,6 +465,7 @@ class TinySQL {
             ? res.rows[0]
             : null;
         } catch (err) {
+          rejectConnection(err);
           throw err;
         }
       };
@@ -358,6 +483,7 @@ class TinySQL {
           const res = await db.query(query, params);
           return objType(res, 'object') ? res : null;
         } catch (err) {
+          rejectConnection(err);
           throw err;
         }
       };
@@ -618,11 +744,12 @@ class TinySqlQuery {
    */
   async dropTable() {
     const db = this.#db;
+    const isConnectionError = (err) => this.isConnectionError(err);
     return new Promise((resolve, reject) => {
       db.run(`DROP TABLE ${this.#settings.name};`)
         .then(() => resolve(true))
         .catch((err) => {
-          if (err.message.includes('SQLITE_CANTOPEN') || err.message.includes('ECONNREFUSED'))
+          if (isConnectionError(err))
             reject(err); // Rejects on connection-related errors
           else resolve(false); // Resolves with false on other errors
         });
