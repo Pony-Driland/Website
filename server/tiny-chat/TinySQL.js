@@ -809,6 +809,46 @@ class TinySqlQuery {
   }
 
   /**
+   * Maps database engines to the corresponding property used
+   * to check the number of affected rows after a write operation.
+   *
+   * This is used to abstract the difference between drivers like:
+   * - SQLite (uses `changes`)
+   * - PostgreSQL (uses `rowCount`)
+   *
+   * @private
+   * @type {Object.<string>}
+   */
+  #resultCounts = {
+    sqlite3: 'changes',
+    postgre: 'rowCount',
+  };
+
+  /**
+   * Retrieves the number of affected rows from a database operation result.
+   *
+   * This method abstracts differences between database engines, such as:
+   * - SQLite: returns `result.changes`
+   * - PostgreSQL: returns `result.rowCount`
+   * - Fallback: `result.rowsAffected`, if defined
+   *
+   * @private
+   * @param {Object} result - The result object returned by the database driver.
+   * @returns {number|null} The number of affected rows, or null if it can't be determined.
+   */
+  #getResultCount(result) {
+    const sqlEngine = this.#db.getSqlEngine();
+    if (objType(result, 'object'))
+      return typeof sqlEngine === 'string' &&
+        typeof result[this.#resultCounts[sqlEngine]] === 'number'
+        ? result[this.#resultCounts[sqlEngine]]
+        : typeof result.rowsAffected === 'number'
+          ? result.rowsAffected
+          : null;
+    return null;
+  }
+
+  /**
    * Check if a row with the given ID (and optional subId) exists.
    * @param {string|number} id - Primary key value.
    * @param {string|number} [subId] - Optional sub-ID for composite key.
@@ -817,12 +857,12 @@ class TinySqlQuery {
   async has(id, subId) {
     const useSub = this.#settings.subId && subId ? true : false;
     const params = [id];
-    const query = `SELECT COUNT(*) FROM ${this.#settings.name} WHERE ${this.#settings.id} = $1${useSub ? ` AND ${this.#settings.subId} = $2` : ''}`;
+    const query = `SELECT COUNT(*) FROM ${this.#settings.name} WHERE ${this.#settings.id} = $1${useSub ? ` AND ${this.#settings.subId} = $2` : ''} LIMIT 1`;
     if (useSub) params.push(subId);
 
     const result = await this.#db.get(query, params);
     if (this.debug) console.log('[sql] [has]', this.#fixDebugQuery(query), params, result);
-    return result['COUNT(*)'] === 1;
+    return objType(result, 'object') && result['COUNT(*)'] === 1 ? true : false;
   }
 
   /**
@@ -830,11 +870,9 @@ class TinySqlQuery {
    * Will not insert if the record doesn't exist.
    * @param {string|number} id - Primary key value.
    * @param {object} valueObj - Data to update.
-   * @returns {Promise<object|null>} Null if no rows were updated.
+   * @returns {Promise<number>} Count of rows were updated.
    */
   async update(id, valueObj = {}) {
-    const results = [];
-
     const columns = Object.keys(valueObj);
     const values = Object.values(valueObj).map((v) =>
       typeof v === 'object' ? JSON.stringify(v) : v,
@@ -848,12 +886,9 @@ class TinySqlQuery {
     const params = [...values, id];
     if (useSub) params.push(valueObj[this.#settings.subId]);
 
-    const mainResult = await this.#db.run(query, params);
-    results.push(mainResult);
-    if (this.debug) console.log('[sql] [update]', this.#fixDebugQuery(query), params, mainResult);
-
-    if (mainResult?.changes === 0 || mainResult?.rowsAffected === 0) return null; // No record updated
-    return results[0] || null;
+    const result = await this.#db.run(query, params);
+    if (this.debug) console.log('[sql] [update]', this.#fixDebugQuery(query), params, result);
+    return this.#getResultCount(result);
   }
 
   /**
@@ -864,7 +899,6 @@ class TinySqlQuery {
    * @returns {Promise<object|null>} - Generated values will be returned.
    */
   async set(id, valueObj = {}, onlyIfNew = false) {
-    const results = [];
     const columns = Object.keys(valueObj);
     const values = Object.values(valueObj).map((v) =>
       typeof v === 'object' ? JSON.stringify(v) : v,
@@ -902,16 +936,11 @@ class TinySqlQuery {
     }
     if (ids.length > 0) query += ` RETURNING ${returnIds}`;
 
-    results.push(await this.#db.get(query, allParams));
+    const result = await this.#db.get(query, allParams);
     if (this.debug) {
-      console.log(
-        '[sql] [set]',
-        this.#fixDebugQuery(query),
-        allParams,
-        results[results.length - 1],
-      );
+      console.log('[sql] [set]', this.#fixDebugQuery(query), allParams, result);
     }
-    return results[0] || null;
+    return result || null;
   }
 
   /**
@@ -939,7 +968,7 @@ class TinySqlQuery {
    * Delete a record by its ID (and optional subId).
    * @param {string|number} id - Primary key value.
    * @param {string|number} [subId] - Optional sub-ID for composite key.
-   * @returns {Promise<object>}
+   * @returns {Promise<number>} - Count of rows were updated.
    */
   async delete(id, subId) {
     const useSub = this.#settings.subId && subId ? true : false;
@@ -949,7 +978,7 @@ class TinySqlQuery {
 
     const result = await this.#db.run(query, params);
     if (this.debug) console.log('[sql] [delete]', this.#fixDebugQuery(query), params, result);
-    return result;
+    return this.#getResultCount(result);
   }
 
   /**
