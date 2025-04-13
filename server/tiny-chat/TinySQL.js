@@ -177,7 +177,7 @@ class TinySQL {
   }
 
   /**
-   * Initializes an SQLite3 database connection and sets up the SQL engine for this instance.
+   * Initializes an SQLite3 >= 3.35.0 database connection and sets up the SQL engine for this instance.
    *
    * This method creates a new SQLite3 database using the specified file path (or in-memory by default),
    * assigns the SQL engine behavior using `setSqlite3()`, and sets up a `SIGINT` listener to ensure
@@ -678,8 +678,8 @@ class TinySqlQuery {
       if (column.length >= 2) {
         const [name, type, options] = column;
         this.#table[name] = {
-          type,
-          options: options || null,
+          type: typeof type === 'string' ? type.toUpperCase().trim() : null,
+          options: typeof options === 'string' ? options.toUpperCase().trim() : null,
         };
       }
     }
@@ -698,7 +698,7 @@ class TinySqlQuery {
       const column = this.#table?.[item];
       if (!column || result[item] == null) continue;
 
-      const type = column.type?.toUpperCase?.().trim() || '';
+      const type = column.type || '';
       const raw = result[item];
 
       try {
@@ -880,7 +880,25 @@ class TinySqlQuery {
       query += ` ON CONFLICT(${this.#settings.id}${this.#settings.subId ? `, ${this.#settings.subId}` : ''}) DO NOTHING`;
     }
 
-    results.push(await this.#db.run(query, [id, ...values]));
+    const ids = [];
+    let returnIds = '';
+    for (const item in this.#table) {
+      const column = this.#table?.[item];
+      if (typeof valueObj[item] !== 'undefined') continue;
+      const options = column.options || '';
+      if (
+        options.includes('PRIMARY KEY') ||
+        options.includes('GENERATED ') ||
+        options.includes('DEFAULT ')
+      ) {
+        if (returnIds.length > 0) returnIds += ', ';
+        returnIds += item;
+        ids.push(item);
+      }
+    }
+    if (ids.length > 0) query += ` RETURNING ${returnIds}`;
+
+    results.push(await this.#db.get(query, [id, ...values]));
     if (this.debug) {
       console.log(
         '[sql] [set]',
@@ -925,7 +943,7 @@ class TinySqlQuery {
     const params = [id];
     if (useSub) params.push(subId);
 
-    const result = this.#db.run(query, params);
+    const result = await this.#db.run(query, params);
     if (this.debug) console.log('[sql] [delete]', this.#fixDebugQuery(query), params, result);
     return result;
   }
