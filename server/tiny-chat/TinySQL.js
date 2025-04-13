@@ -1079,11 +1079,8 @@ class TinySqlQuery {
   async get(id, subId) {
     const useSub = this.#settings.subId && subId ? true : false;
     const params = [id];
-    const joinClause = this.#settings.join
-      ? `LEFT JOIN ${this.#settings.join} j ON ${this.#settings.joinCompare || ''}`
-      : '';
     const query = `SELECT ${this.#settings.select} FROM ${this.#settings.name} t 
-                   ${joinClause} WHERE t.${this.#settings.id} = $1${useSub ? ` AND t.${this.#settings.subId} = $2` : ''}`;
+                   ${this.#insertJoin()} WHERE t.${this.#settings.id} = $1${useSub ? ` AND t.${this.#settings.subId} = $2` : ''}`;
     if (useSub) params.push(subId);
     const result = this.#jsonChecker(await this.#db.get(query, params));
     if (this.debug) console.log('[sql] [get]', this.#fixDebugQuery(query), params, result);
@@ -1117,14 +1114,11 @@ class TinySqlQuery {
    * @returns {Promise<object[]>}
    */
   async getAmount(count, filterId = null, selectValue = '*') {
-    const joinClause = this.#settings.join
-      ? `LEFT JOIN ${this.#settings.join} j ON ${this.#settings.joinCompare || ''}`
-      : '';
     const orderClause = this.#settings.order ? `ORDER BY ${this.#settings.order}` : '';
     const whereClause = filterId !== null ? `WHERE t.${this.#settings.id} = $1` : '';
     const limitClause = `LIMIT $${filterId !== null ? 2 : 1}`;
     const query = `SELECT ${this.#selectGenerator(selectValue)} FROM ${this.#settings.name} t 
-                 ${joinClause} 
+                 ${this.#insertJoin()} 
                  ${whereClause}
                  ${orderClause} ${limitClause}`.trim();
 
@@ -1144,13 +1138,10 @@ class TinySqlQuery {
    * @returns {Promise<object[]>}
    */
   async getAll(filterId = null, selectValue = '*') {
-    const joinClause = this.#settings.join
-      ? `LEFT JOIN ${this.#settings.join} j ON ${this.#settings.joinCompare || ''}`
-      : '';
     const orderClause = this.#settings.order ? `ORDER BY ${this.#settings.order}` : '';
     const whereClause = filterId !== null ? `WHERE t.${this.#settings.id} = $1` : '';
     const query = `SELECT ${this.#selectGenerator(selectValue)} FROM ${this.#settings.name} t 
-                 ${joinClause} 
+                 ${this.#insertJoin()} 
                  ${whereClause}
                  ${orderClause}`.trim();
 
@@ -1275,6 +1266,28 @@ class TinySqlQuery {
     return `${col} ${operator} $${pCache.index++}`;
   }
 
+  #insertJoin() {
+    return typeof this.#settings.join === 'string'
+      ? `LEFT JOIN ${this.#settings.join} j ON ${this.#settings.joinCompare || ''}`
+      : '';
+  }
+
+  #parseJoin(join) {
+    // Join script
+    const insertJoin = (j, idx) => {
+      const alias = `j${idx + 1}`;
+      return `LEFT JOIN ${j.table} ${alias} ON ${j.compare}`;
+    };
+    // Single join
+    return objType(join, 'object')
+      ? [join].map(insertJoin).join(' ')
+      : // Multi join
+        Array.isArray(join)
+        ? join.map(insertJoin).join(' ')
+        : // Default settings
+          this.#insertJoin();
+  }
+
   /**
    * Finds the first item matching the filter, along with its position, page, and total info.
    * Uses a single SQL query to calculate everything efficiently.
@@ -1343,7 +1356,8 @@ class TinySqlQuery {
       response.item = row;
     }
 
-    if (this.debug) console.log('[sql] [find]', this.#fixDebugQuery(query), pCache.values, response);
+    if (this.debug)
+      console.log('[sql] [find]', this.#fixDebugQuery(query), pCache.values, response);
     return response;
   }
 
@@ -1417,24 +1431,6 @@ class TinySqlQuery {
 
     const { values } = pCache;
 
-    // Join script
-    const insertJoin = (j, idx) => {
-      const alias = `j${idx + 1}`;
-      return `LEFT JOIN ${j.table} ${alias} ON ${j.compare}`;
-    };
-
-    const joinClause =
-      // Single join
-      objType(join, 'object')
-        ? [join].map(insertJoin).join(' ')
-        : // Multi join
-          Array.isArray(join)
-          ? join.map(insertJoin).join(' ')
-          : // Default settings
-            typeof this.#settings.join === 'string'
-            ? `LEFT JOIN ${this.#settings.join} j ON ${this.#settings.joinCompare || ''}`
-            : '';
-
     // Order by
     const orderClause = order ? `ORDER BY ${order}` : '';
 
@@ -1444,7 +1440,7 @@ class TinySqlQuery {
 
     // Query
     const query = `SELECT ${this.#selectGenerator(selectValue)} FROM ${this.#settings.name} t 
-                     ${joinClause} 
+                     ${this.#parseJoin(join)} 
                      ${whereClause} 
                      ${orderClause} 
                      ${limitClause}`.trim();
