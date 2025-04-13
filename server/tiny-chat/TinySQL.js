@@ -859,7 +859,7 @@ class TinySqlQuery {
    * @param {string|number} id - Primary key value.
    * @param {object} valueObj - Data to store.
    * @param {boolean} [onlyIfNew=false] - If true, only insert if the record does not already exist.
-   * @returns {Promise<object>}
+   * @returns {Promise<object|null>} - Generated values will be returned.
    */
   async set(id, valueObj = {}, onlyIfNew = false) {
     const results = [];
@@ -907,7 +907,7 @@ class TinySqlQuery {
         results[results.length - 1],
       );
     }
-    return results[0] || [];
+    return results[0] || null;
   }
 
   /**
