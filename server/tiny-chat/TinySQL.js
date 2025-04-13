@@ -1266,26 +1266,132 @@ class TinySqlQuery {
     return `${col} ${operator} $${pCache.index++}`;
   }
 
+  /**
+   * Generates a default LEFT JOIN clause based on internal settings.
+   *
+   * This method is used as a fallback when no custom join is provided.
+   * It expects `this.#settings.join` to be a string containing the table name,
+   * and `this.#settings.joinCompare` to be the ON condition.
+   *
+   * @private
+   * @returns {string} The default LEFT JOIN SQL snippet, or an empty string if no join is configured.
+   */
   #insertJoin() {
     return typeof this.#settings.join === 'string'
       ? `LEFT JOIN ${this.#settings.join} j ON ${this.#settings.joinCompare || ''}`
       : '';
   }
 
+  /**
+   * An object containing standard SQL JOIN types.
+   * Each property represents a commonly used SQL JOIN keyword.
+   * These JOINs define how to combine rows from two or more tables.
+   */
+  #joinTypes = {
+    /**
+     * INNER JOIN:
+     * Returns only the rows where there is a match in both tables.
+     * This is the most commonly used JOIN.
+     *
+     * Example:
+     * SELECT * FROM table1
+     * INNER JOIN table2 ON table1.id = table2.fk_id;
+     */
+    inner: 'INNER JOIN',
+
+    /**
+     * LEFT JOIN (or LEFT OUTER JOIN):
+     * Returns all rows from the left table, and matched rows from the right table.
+     * If there is no match, the result will contain NULLs for the right table.
+     *
+     * Example:
+     * SELECT * FROM table1
+     * LEFT JOIN table2 ON table1.id = table2.fk_id;
+     */
+    left: 'LEFT JOIN',
+
+    /**
+     * RIGHT JOIN (or RIGHT OUTER JOIN):
+     * Returns all rows from the right table, and matched rows from the left table.
+     * If there is no match, the result will contain NULLs for the left table.
+     *
+     * Example:
+     * SELECT * FROM table1
+     * RIGHT JOIN table2 ON table1.id = table2.fk_id;
+     */
+    right: 'RIGHT JOIN',
+
+    /**
+     * FULL JOIN (or FULL OUTER JOIN):
+     * Returns all rows from both tables.
+     * If there is no match, NULLs will be returned for the missing side.
+     *
+     * Example:
+     * SELECT * FROM table1
+     * FULL OUTER JOIN table2 ON table1.id = table2.fk_id;
+     */
+    full: 'FULL JOIN',
+
+    /**
+     * CROSS JOIN:
+     * Returns the Cartesian product of both tables.
+     * Every row from the first table is combined with every row from the second table.
+     *
+     * Example:
+     * SELECT * FROM table1
+     * CROSS JOIN table2;
+     */
+    cross: 'CROSS JOIN',
+
+    /**
+     * JOIN (default syntax, behaves like INNER JOIN):
+     * Equivalent to INNER JOIN when used without LEFT/RIGHT/FULL keywords.
+     * This is just a shorthand and often used in quick queries.
+     *
+     * Example:
+     * SELECT * FROM table1
+     * JOIN table2 ON table1.id = table2.fk_id;
+     */
+    join: 'JOIN',
+  };
+
+  /**
+   * Parses and generates JOIN clauses based on the provided configuration.
+   *
+   * Supports multiple formats:
+   * - If `join` is a single object: returns a single JOIN clause.
+   * - If `join` is an array of objects: generates multiple JOINs with aliases (`j1`, `j2`, ...).
+   * - If `join` is invalid or empty: falls back to `#insertJoin()` using internal settings.
+   *
+   * Each join object must contain:
+   * - `table`: The name of the table to join.
+   * - `compare`: The ON clause condition.
+   * - `type` (optional): One of the supported JOIN types (e.g., 'left', 'inner'). Defaults to 'left'.
+   *
+   * @private
+   * @param {object|object[]} join - The join configuration(s).
+   * @returns {string} One or more JOIN SQL snippets.
+   */
   #parseJoin(join) {
-    // Join script
     const insertJoin = (j, idx) => {
       const alias = `j${idx + 1}`;
-      return `LEFT JOIN ${j.table} ${alias} ON ${j.compare}`;
+      const typeKey = typeof j.type === 'string' ? j.type.toLowerCase() : 'left';
+      const joinType = this.#joinTypes[typeKey];
+
+      if (!joinType) {
+        throw new Error(
+          `Invalid JOIN type: '${j.type}'. Supported types: ${Object.keys(this.#joinTypes).join(', ')}`,
+        );
+      }
+
+      return `${joinType} ${j.table} ${alias} ON ${j.compare}`;
     };
-    // Single join
+
     return objType(join, 'object')
       ? [join].map(insertJoin).join(' ')
-      : // Multi join
-        Array.isArray(join)
+      : Array.isArray(join)
         ? join.map(insertJoin).join(' ')
-        : // Default settings
-          this.#insertJoin();
+        : this.#insertJoin();
   }
 
   /**
@@ -1406,9 +1512,9 @@ class TinySqlQuery {
    *   select: '*',
    *   perPage: 10,
    *   page: 2,
-   *   joins: [
-   *     { table: 'profiles', compare: 't.profile_id = j1.id' },
-   *     { table: 'roles', compare: 'j1.role_id = j2.id' }
+   *   join: [
+   *     { type: 'left', table: 'profiles', compare: 't.profile_id = j1.id' },
+   *     { type: 'left', table: 'roles', compare: 'j1.role_id = j2.id' }
    *   ],
    *   order: 'created_at DESC'
    * });
