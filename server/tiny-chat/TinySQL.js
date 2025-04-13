@@ -645,7 +645,7 @@ class TinySqlQuery {
     // Line breaks before key keywords
     let formatted = value
       .trim()
-      .replace(/\s+/g, ' ')// collapses multiple spaces
+      .replace(/\s+/g, ' ') // collapses multiple spaces
       .replace(new RegExp(`\\s*(${keywords.join('|')})\\s+`, 'gi'), '\n$1 ') // quebra antes das keywords
       .replace(/,\s*/g, ', ') // well formatted commas
       .replace(/\n/g, '\n  '); // indentation
@@ -961,6 +961,10 @@ class TinySqlQuery {
 
   /**
    * Parses and validates fields from result rows based on SQL types in this.#table.
+   * Converts known SQL types to native JS types.
+   *
+   * Supported types: BOOLEAN, INTEGER, BIGINT, FLOAT, TEXT, JSON, DATE, TIMESTAMP, etc.
+   *
    * @private
    * @param {object} result - The result row to check.
    * @returns {object}
@@ -1002,7 +1006,7 @@ class TinySqlQuery {
           case 'DOUBLE':
           case 'DECIMAL':
           case 'NUMERIC':
-            result[item] = typeof raw === 'number' ? raw : parseInt(raw);
+            result[item] = typeof raw === 'number' ? raw : parseFloat(raw);
             if (Number.isNaN(result[item])) result[item] = null;
             break;
 
@@ -1022,6 +1026,14 @@ class TinySqlQuery {
           case 'VARCHAR':
           case 'CLOB':
             result[item] = typeof raw === 'string' ? raw : null;
+            break;
+
+          case 'DATE':
+          case 'DATETIME':
+          case 'TIMESTAMP':
+          case 'TIME':
+            const date = new Date(raw);
+            result[item] = isNaN(date.getTime()) ? null : date;
             break;
 
           // Keeps original value
