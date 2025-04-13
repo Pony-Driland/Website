@@ -895,12 +895,12 @@ class TinySqlQuery {
    * This function ensures safe fallback values and formats the SELECT clause.
    *
    * @param {object} [settings={}] - Partial configuration to apply. Will be merged with current settings.
-   * @property {string} [settings.select='*'] - SELECT clause configuration. Can be simplified; complex expressions are auto-formatted.
-   * @property {string|null} [settings.join=null] - Optional JOIN table name.
-   * @property {string|null} [settings.joinCompare='t.key = j.key'] - Condition used to match JOIN tables.
-   * @property {string|null} [settings.order=null] - Optional ORDER BY clause.
-   * @property {string} [settings.id='key'] - Primary key column name.
-   * @property {string|null} [settings.subId=null] - Optional secondary key column name.
+   * @param {string} [settings.select='*'] - SELECT clause configuration. Can be simplified; complex expressions are auto-formatted.
+   * @param {string|null} [settings.join=null] - Optional JOIN table name.
+   * @param {string|null} [settings.joinCompare='t.key = j.key'] - Condition used to match JOIN tables.
+   * @param {string|null} [settings.order=null] - Optional ORDER BY clause.
+   * @param {string} [settings.id='key'] - Primary key column name.
+   * @param {string|null} [settings.subId=null] - Optional secondary key column name.
    * @param {object} - TinySQL Instance.
    */
   setDb(settings = {}, db = null) {
@@ -1281,13 +1281,19 @@ class TinySqlQuery {
    *
    * If selectValue is null, it only returns the pagination/position data, not the item itself.
    *
-   * @param {object} filter - Filtering criteria (same structure as in `search()`'s `q` param).
-   * @param {number} perPage - Number of items per page.
-   * @param {string|string[]|object|null} [selectValue='*'] - Which columns to select. Set to null to skip item data.
-   * @param {string} [order] - SQL ORDER BY clause. Defaults to configured order.
+   * @param {object} [searchData={}] - Main search configuration.
+   * @param {object} [searchData.q={}] - Nested criteria object.
+   * @param {number} [searchData.perPage] - Number of items per page.
+   * @param {string|string[]|object|null} [searchData.select='*'] - Which columns to select. Set to null to skip item data.
+   * @param {string} [searchData.order] - SQL ORDER BY clause. Defaults to configured order.
    * @returns {Promise<{ page: number, pages: number, total: number, position: number, item?: object } | null>}
    */
-  async find(filter, perPage, selectValue = '*', order = this.#settings.order) {
+  async find(searchData = {}) {
+    const filter = searchData.q || {};
+    const selectValue = searchData.select || '*';
+    const perPage = searchData.perPage || null;
+    const order = searchData.order || this.#settings.order;
+
     if (!filter || typeof filter !== 'object') return null;
     if (typeof perPage !== 'number' || perPage < 1) throw new Error('Invalid perPage value');
 
@@ -1350,9 +1356,9 @@ class TinySqlQuery {
    * @param {object} [searchData={}] - Main search configuration.
    * @param {object} [searchData.q={}] - Nested criteria object.
    *        Can be a flat object style or grouped with `{ group: 'AND'|'OR', conditions: [...] }`.
-   * @param {string|string[]|object} [selectValue='*'] - Defines which columns or expressions should be selected in the query.
-   * @param {number|null} [perPage=null] - Number of results per page. If set, pagination is applied.
-   * @param {number} [page=1] - Page number to retrieve when `perPage` is used.
+   * @param {string|string[]|object} [searchData.select='*'] - Defines which columns or expressions should be selected in the query.
+   * @param {number|null} [searchData.perPage=null] - Number of results per page. If set, pagination is applied.
+   * @param {number} [searchData.page=1] - Page number to retrieve when `perPage` is used.
    * @param {string} [searchData.order] - Custom `ORDER BY` clause (e.g. `'created_at DESC'`).
    * @param {string|object[]} [searchData.join] - A string for single join or array of objects for multiple joins.
    *        Each object should contain `{ table: 'name', compare: 'ON clause' }`.
@@ -1383,19 +1389,25 @@ class TinySqlQuery {
    * // With pagination and custom joins:
    * await db.search({
    *   q: { status: { value: 'active' } },
+   *   select: '*',
+   *   perPage: 10,
+   *   page: 2,
    *   joins: [
    *     { table: 'profiles', compare: 't.profile_id = j1.id' },
    *     { table: 'roles', compare: 'j1.role_id = j2.id' }
    *   ],
    *   order: 'created_at DESC'
-   * }, '*', 10, 2);
+   * });
    */
 
-  async search(searchData = {}, selectValue = '*', perPage = null, page = 1) {
+  async search(searchData = {}) {
     const order = searchData.order || this.#settings.order;
     const join = searchData.join || this.#settings.join;
     const limit = searchData.limit || null;
     const criteria = searchData.q || {};
+    const selectValue = searchData.select || '*';
+    const perPage = searchData.perPage || null;
+    const page = searchData.page || 1;
 
     // Where
     const pCache = { index: 1, values: [] };
