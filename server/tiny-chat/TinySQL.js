@@ -1276,6 +1276,72 @@ class TinySqlQuery {
   }
 
   /**
+   * Finds the first item matching the filter, along with its position, page, and total info.
+   * Uses a single SQL query to calculate everything efficiently.
+   *
+   * If selectValue is null, it only returns the pagination/position data, not the item itself.
+   *
+   * @param {object} filter - Filtering criteria (same structure as in `search()`'s `q` param).
+   * @param {number} perPage - Number of items per page.
+   * @param {string|string[]|object|null} [selectValue='*'] - Which columns to select. Set to null to skip item data.
+   * @param {string} [order] - SQL ORDER BY clause. Defaults to configured order.
+   * @returns {Promise<{ page: number, pages: number, total: number, position: number, item?: object } | null>}
+   */
+  async find(filter, perPage, selectValue = '*', order = this.#settings.order) {
+    if (!filter || typeof filter !== 'object') return null;
+    if (typeof perPage !== 'number' || perPage < 1) throw new Error('Invalid perPage value');
+
+    const pCache = { index: 1, values: [] };
+    const whereClause = this.#parseWhere(pCache, filter);
+    const orderClause = order ? `ORDER BY ${order}` : '';
+
+    // Avoid selecting data if selectValue is null
+    const selectedColumns = selectValue === null ? '' : `${this.#selectGenerator(selectValue)},`;
+
+    const query = `
+    WITH matched AS (
+      SELECT ${selectedColumns}
+             ROW_NUMBER() OVER (${orderClause || 'ORDER BY (SELECT 1)'}) AS rn,
+             COUNT(*) OVER () AS total
+      FROM ${this.#settings.name} t
+      ${whereClause ? `WHERE ${whereClause}` : ''}
+    )
+    SELECT *, rn AS position, CEIL(CAST(total AS FLOAT) / ${perPage}) AS pages
+    FROM matched
+    WHERE rn = 1
+  `.trim();
+
+    const row = await this.#db.get(query, pCache.values);
+    if (!row) return null;
+
+    const total = parseInt(row.total);
+    const pages = parseInt(row.pages);
+    const position = parseInt(row.position);
+    const page = Math.floor((position - 1) / perPage) + 1;
+
+    const response = {
+      page,
+      pages,
+      total,
+      position,
+    };
+
+    // If selectValue is NOT null, return the item
+    if (selectValue !== null) {
+      delete row.rn;
+      delete row.total;
+      delete row.pages;
+      delete row.position;
+
+      this.#jsonChecker(row);
+      response.item = row;
+    }
+
+    if (this.debug) console.log('[sql] [find]', this.#fixDebugQuery(query), pCache.values, response);
+    return response;
+  }
+
+  /**
    * Perform a filtered search with advanced nested criteria, pagination, and customizable settings.
    *
    * Supports complex logical groupings (AND/OR), flat condition style, custom ordering, and single or multiple joins.
@@ -1332,12 +1398,12 @@ class TinySqlQuery {
     const criteria = searchData.q || {};
 
     // Where
-    const sQuery = {};
+    const pCache = { index: 1, values: [] };
     const whereClause = Object.keys(criteria).length
-      ? `WHERE ${this.#parseWhere(sQuery, criteria)}`
+      ? `WHERE ${this.#parseWhere(pCache, criteria)}`
       : '';
 
-    const { values } = sQuery;
+    const { values } = pCache;
 
     // Join script
     const insertJoin = (j, idx) => {
