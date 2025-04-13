@@ -1192,41 +1192,61 @@ class TinySqlQuery {
   }
 
   /**
-   * Perform a filtered search with nested criteria.
+   * Perform a filtered search with advanced nested criteria, pagination, and customizable settings.
    *
-   * Supports complex logical groupings (AND/OR) and flat condition style.
+   * Supports complex logical groupings (AND/OR), flat condition style, custom ordering, and single or multiple joins.
+   * Pagination can be enabled using `perPage`, and additional settings like `order`, `join`, and `limit` can be passed inside `searchData`.
    *
-   * @param {object} [criteria={}] - Nested criteria object.
-   *        Can be flat object style or grouped with `{ group: 'AND'|'OR', conditions: [...] }`.
+   * @param {object} [searchData={}] - Main search configuration.
+   * @param {object} [searchData.q={}] - Nested criteria object.
+   *        Can be a flat object style or grouped with `{ group: 'AND'|'OR', conditions: [...] }`.
    * @param {string|string[]|object} [selectValue='*'] - Defines which columns or expressions should be selected in the query.
-   * @returns {Promise<object[]>}
+   * @param {number|null} [perPage=null] - Number of results per page. If set, pagination is applied.
+   * @param {number} [page=1] - Page number to retrieve when `perPage` is used.
+   * @param {string} [searchData.order] - Custom `ORDER BY` clause (e.g. `'created_at DESC'`).
+   * @param {string|object[]} [searchData.join] - A string for single join or array of objects for multiple joins.
+   *        Each object should contain `{ table: 'name', compare: 'ON clause' }`.
+   * @param {number} [searchData.limit] - Max number of results to return (ignored when `perPage` is used).
+   * @returns {Promise<object[]>} - Result rows matching the query.
    *
    * @example
-   * // Simple search (flat style):
-   * await db.search({
-   *   status: { value: 'active' },
-   *   age: { value: 18, operator: '>=' }
-   * });
+   * // Flat search:
+   * await db.search({ q: { status: { value: 'active' } } });
    *
    * // Grouped search:
    * await db.search({
-   *   group: 'AND',
-   *   conditions: [
-   *     { column: 'status', value: 'active' },
-   *     {
-   *       group: 'OR',
-   *       conditions: [
-   *         { column: 'role', value: 'admin' },
-   *         { column: 'role', value: 'mod' }
-   *       ]
-   *     }
-   *   ]
+   *   q: {
+   *     group: 'AND',
+   *     conditions: [
+   *       { column: 'status', value: 'active' },
+   *       {
+   *         group: 'OR',
+   *         conditions: [
+   *           { column: 'role', value: 'admin' },
+   *           { column: 'role', value: 'mod' }
+   *         ]
+   *       }
+   *     ]
+   *   }
    * });
    *
-   * // Equivalent SQL:
-   * // WHERE (status = ?) AND ((role = ?) OR (role = ?))
+   * // With pagination and custom joins:
+   * await db.search({
+   *   q: { status: { value: 'active' } },
+   *   joins: [
+   *     { table: 'profiles', compare: 't.profile_id = j1.id' },
+   *     { table: 'roles', compare: 'j1.role_id = j2.id' }
+   *   ],
+   *   order: 'created_at DESC'
+   * }, '*', 10, 2);
    */
-  async search(criteria = {}, selectValue = '*', perPage = null, page = 1) {
+
+  async search(searchData = {}, selectValue = '*', perPage = null, page = 1) {
+    const order = searchData.order || this.#settings.order;
+    const join = searchData.join || this.#settings.join;
+    const limit = searchData.limit || null;
+    const criteria = searchData.q || {};
+
     const values = [];
     let placeholderIndex = 1;
 
@@ -1282,29 +1302,59 @@ class TinySqlQuery {
       return `${col} ${operator} $${placeholderIndex++}`;
     };
 
+    // Where
     const whereClause = Object.keys(criteria).length ? `WHERE ${parseGroup(criteria)}` : '';
 
-    const joinClause = this.#settings.join
-      ? `LEFT JOIN ${this.#settings.join} j ON ${this.#settings.joinCompare || ''}`
-      : '';
-    const orderClause = this.#settings.order ? `ORDER BY ${this.#settings.order}` : '';
+    // Join script
+    const insertJoin = (j, idx) => {
+      const alias = `j${idx + 1}`;
+      return `LEFT JOIN ${j.table} ${alias} ON ${j.compare}`;
+    };
 
+    const joinClause =
+      // Single join
+      objType(join, 'object')
+        ? [join].map(insertJoin).join(' ')
+        : // Multi join
+          Array.isArray(join)
+          ? join.map(insertJoin).join(' ')
+          : // Default settings
+            typeof this.#settings.join === 'string'
+            ? `LEFT JOIN ${this.#settings.join} j ON ${this.#settings.joinCompare || ''}`
+            : '';
+
+    // Order by
+    const orderClause = order ? `ORDER BY ${order}` : '';
+
+    // Limit
+    const limitClause =
+      typeof perPage === 'number' ? '' : typeof limit === 'number' ? `LIMIT ${limit}` : '';
+
+    // Query
     const query = `SELECT ${this.#selectGenerator(selectValue)} FROM ${this.#settings.name} t 
                      ${joinClause} 
                      ${whereClause} 
-                     ${orderClause}`;
+                     ${orderClause} 
+                     ${limitClause}`.trim();
 
+    // Results
     let results;
+
+    // Pagination
     if (typeof perPage === 'number' && perPage > -1) {
       results = await this.#pagination(query, values, perPage, page);
       if (this.debug)
         console.log('[sql] [search:paginated]', this.#fixDebugQuery(query), values, results);
-    } else {
+    }
+
+    // Normal
+    else {
       results = await this.#db.all(query, values);
       for (const index in results) this.#jsonChecker(results[index]);
       if (this.debug) console.log('[sql] [search]', this.#fixDebugQuery(query), values, results);
     }
 
+    // Complete
     return results;
   }
 }
