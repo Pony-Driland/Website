@@ -1,7 +1,7 @@
-import { ClientBase } from 'pg';
+import { Client } from 'pg';
 import { objType } from '../../lib/objChecker';
 
-const clientBase = new ClientBase();
+const clientBase = new Client();
 
 /**
  * @author JasminDreasond
@@ -195,7 +195,7 @@ class TinySqlQuery {
    *       - `operator` (string): SQL comparison operator (default: 'LIKE', supports 'IN', '=', etc.)
    *       - `weight` (number): numeric weight applied when condition matches (default: 1)
    *
-   * Escaping of all values is handled by `ClientBase.escapeLiteral()` for SQL safety (PostgreSQL).
+   * Escaping of all values is handled by `Client.escapeLiteral()` for SQL safety (PostgreSQL).
    *
    * @private
    * @param {string|string[]|object|null|undefined} input - Select clause definition.
