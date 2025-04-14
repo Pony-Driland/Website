@@ -1,4 +1,4 @@
-import { objType } from "../../lib/objChecker";
+import { objType } from '../../lib/objChecker';
 
 /**
  * @author JasminDreasond
@@ -15,7 +15,7 @@ import { objType } from "../../lib/objChecker";
  *
  * You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
-class QueryParser {
+class TinySqlTags {
   constructor(defaultColumn = 'tags') {
     this.defaultColumn = defaultColumn;
   }
@@ -173,3 +173,5 @@ class QueryParser {
     );
   }
 }
+
+export default TinySqlTags;
