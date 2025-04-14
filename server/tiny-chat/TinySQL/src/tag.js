@@ -39,14 +39,14 @@ class TinySqlTags {
 
           if (not) {
             return `NOT EXISTS (
-              SELECT 1 FROM json_each(${tagsColumn})
-              WHERE json_each.value = ${param}
-            )`;
+            SELECT 1 FROM json_each(${tagsColumn})
+            WHERE value = ${param}
+          )`;
           } else {
             return `EXISTS (
-              SELECT 1 FROM json_each(${tagsColumn})
-              WHERE json_each.value = ${param}
-            )`;
+            SELECT 1 FROM json_each(${tagsColumn})
+            WHERE value = ${param}
+          )`;
           }
         });
 
@@ -61,14 +61,14 @@ class TinySqlTags {
 
         if (not) {
           where.push(`NOT EXISTS (
-            SELECT 1 FROM json_each(${tagsColumn})
-            WHERE json_each.value = ${param}
-          )`);
+          SELECT 1 FROM json_each(${tagsColumn})
+          WHERE value = ${param}
+        )`);
         } else {
           where.push(`EXISTS (
-            SELECT 1 FROM json_each(${tagsColumn})
-            WHERE json_each.value = ${param}
-          )`);
+          SELECT 1 FROM json_each(${tagsColumn})
+          WHERE value = ${param}
+        )`);
         }
       }
     }
