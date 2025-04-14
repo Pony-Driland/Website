@@ -190,10 +190,11 @@ class TinySqlQuery {
    *   - `boost`: object describing a weighted relevance score using CASE statements
    *     - Must include `alias` (string) and `value` (array of boost rules)
    *     - Each boost rule supports:
-   *       - `columns` (string|string[]): target columns
-   *       - `value` (string|array): value or values to compare
+   *       - `columns` (string|string[]): target columns to apply the condition on (optional)
+   *       - `value` (string|array): value(s) to compare, or a raw SQL condition if `columns` is omitted
    *       - `operator` (string): SQL comparison operator (default: 'LIKE', supports 'IN', '=', etc.)
    *       - `weight` (number): numeric weight applied when condition matches (default: 1)
+   *     - If `columns` is omitted, the `value` is treated as a raw SQL condition inserted directly into the CASE.
    *
    * Escaping of all values is handled by `Client.escapeLiteral()` for SQL safety (PostgreSQL).
    *
@@ -244,6 +245,10 @@ class TinySqlQuery {
    *         columns: 'tags',
    *         value: 'oc',
    *         weight: -1
+   *       },
+   *       {
+   *         value: "score > 100 AND views < 1000",
+   *         weight: 5
    *       }
    *     ]
    *   }
@@ -253,6 +258,7 @@ class TinySqlQuery {
    * //   WHEN tags LIKE '%fluttershy%' OR description LIKE '%fluttershy%' THEN 2
    * //   WHEN tags LIKE '%pinkie pie%' THEN 1.5
    * //   WHEN tags LIKE '%oc%' THEN -1
+   * //   WHEN score > 100 AND views < 1000 THEN 5
    * //   ELSE 0
    * // END AS relevance, id AS image_id, uploader AS user_name, created_at
    */
@@ -264,9 +270,15 @@ class TinySqlQuery {
       const cases = [];
 
       for (const boost of boostArray) {
-        const { columns = [], operator = 'LIKE', value, weight = 1 } = boost;
+        const { columns, operator = 'LIKE', value, weight = 1 } = boost;
 
         const opValue = operator.toUpperCase();
+
+        if (!columns) {
+          // No columns: treat value as raw condition
+          cases.push(`WHEN ${value} THEN ${weight}`);
+          continue;
+        }
 
         if (opValue === 'IN') {
           const conditions = columns.map((col) => {
@@ -346,6 +358,9 @@ class TinySqlQuery {
    * - Arrays of column names
    * - Objects with `values`, `aliases`, and `boost` definitions
    *
+   * The `boost` logic allows for custom relevance boosting with `CASE` statements.
+   * If a `columns` value is not provided, `value` will be treated as a raw SQL condition.
+   *
    * See `#selectGenerator` for detailed internal logic and examples.
    *
    * @param {string|string[]|object|null|undefined} input - Input for SELECT clause generation.
@@ -372,11 +387,32 @@ class TinySqlQuery {
    *         columns: ['title', 'description'],
    *         value: 'fluttershy',
    *         weight: 2
+   *       },
+   *       {
+   *         columns: 'tags',
+   *         value: 'pinkie pie',
+   *         operator: 'LIKE',
+   *         weight: 1.5
+   *       },
+   *       {
+   *         columns: 'tags',
+   *         value: 'oc',
+   *         weight: -1
+   *       },
+   *       {
+   *         value: "score > 100 AND views < 1000",
+   *         weight: 5
    *       }
    *     ]
    *   }
    * });
-   * // => CASE WHEN title LIKE '%fluttershy%' OR description LIKE '%fluttershy%' THEN 2 ELSE 0 END AS relevance
+   * // => CASE
+   * //   WHEN title LIKE '%fluttershy%' OR description LIKE '%fluttershy%' THEN 2
+   * //   WHEN tags LIKE '%pinkie pie%' THEN 1.5
+   * //   WHEN tags LIKE '%oc%' THEN -1
+   * //   WHEN score > 100 AND views < 1000 THEN 5
+   * //   ELSE 0
+   * // END AS relevance
    */
   selectGenerator(input) {
     return this.#selectGenerator(input);
