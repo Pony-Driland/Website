@@ -1338,10 +1338,10 @@ class TinySqlQuery {
    *
    * @example
    * // Flat search:
-   * await db.search({ q: { status: { value: 'active' } } });
+   * await table.search({ q: { status: { value: 'active' } } });
    *
    * // Grouped search:
-   * await db.search({
+   * await table.search({
    *   q: {
    *     group: 'AND',
    *     conditions: [
@@ -1358,7 +1358,7 @@ class TinySqlQuery {
    * });
    *
    * // With pagination and custom joins:
-   * await db.search({
+   * await table.search({
    *   q: { status: { value: 'active' } },
    *   select: '*',
    *   perPage: 10,

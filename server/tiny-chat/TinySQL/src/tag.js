@@ -76,7 +76,6 @@ class QueryParser {
   parseString(input) {
     const chunks = [];
     let buffer = '';
-    let inParens = false;
     let currentGroup = [];
 
     const flushBuffer = () => {
@@ -95,49 +94,44 @@ class QueryParser {
       currentGroup = [];
     };
 
-    // Pré-formatar: remover espaços duplos e normalizar
     input = input.replace(/\s+/g, ' ').trim();
 
     for (let i = 0; i < input.length; i++) {
-      const c = input[i];
+      const slice4 = input.slice(i, i + 4).toUpperCase();
+      const slice3 = input.slice(i, i + 3).toUpperCase();
 
-      if (c === '(') {
-        inParens = true;
+      if (input[i] === '(') {
         flushBuffer();
         currentGroup = [];
-      } else if (c === ')') {
+        continue;
+      }
+
+      if (input[i] === ')') {
         flushBuffer();
-        inParens = false;
         flushGroup();
-      } else if (input.slice(i, i + 4).toUpperCase() === ' AND') {
+        continue;
+      }
+
+      if (slice4 === ' AND') {
         flushBuffer();
         flushGroup();
         i += 3;
-      } else if (input.slice(i, i + 3).toUpperCase() === ' OR') {
+        continue;
+      }
+
+      if (slice3 === 'OR ') {
         flushBuffer();
         i += 2;
-      } else {
-        buffer += c;
+        continue;
       }
+
+      buffer += input[i];
     }
 
     flushBuffer();
     flushGroup();
 
-    const include = [];
-    const exclude = [];
-
-    for (const item of chunks) {
-      if (Array.isArray(item)) {
-        include.push(item);
-      } else if (item.startsWith('!')) {
-        exclude.push(item.slice(1));
-      } else {
-        include.push(item);
-      }
-    }
-
-    return { include, exclude };
+    return { include: chunks };
   }
 
   safeParseString(input) {
