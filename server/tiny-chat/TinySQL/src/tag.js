@@ -19,7 +19,9 @@ class TinySqlTags {
   constructor(defaultColumn = 'tags') {
     this.defaultValueName = null;
     this.useJsonEach = true;
+    this.noRepeat = false;
     this.parseLimit = -1;
+
     // json_each
     this.jsonEach = 'json_array_elements_text';
     this.specialQueries = [];
@@ -28,6 +30,10 @@ class TinySqlTags {
     this.wildcardB = '?';
 
     this.setColumnName(defaultColumn);
+  }
+
+  setCanRepeat(value = null) {
+    this.noRepeat = typeof value === 'boolean' ? !value : null;
   }
 
   setWildcard(where = null, value = null) {
@@ -132,33 +138,57 @@ class TinySqlTags {
 
   #extractSpecialsFromChunks(chunks) {
     const specials = [];
+    const boosts = [];
+    const uniqueTags = new Set();
+    const uniqueBoosts = new Set();
 
     for (let i = chunks.length - 1; i >= 0; i--) {
       const group = chunks[i];
-
       const terms = Array.isArray(group) ? group : [group];
       const remainingTerms = [];
 
       for (const term of terms) {
-        if (!term.includes(':')) {
-          remainingTerms.push(term);
-          continue;
+        // Verifica se o termo contém um boost (indicado por "^")
+        if (term.includes('^')) {
+          const [termValue, boostValue] = term.split('^');
+          let boost = parseFloat(boostValue) || 1; // Se não houver valor de boost válido, define como 1
+
+          // Se o noRepeat for true, verifica se o termo já foi adicionado
+          if (!uniqueBoosts.has(termValue.trim())) {
+            boosts.push({ term: termValue.trim(), boost });
+            uniqueBoosts.add(termValue.trim());
+          }
+
+          // Checar repeat de termos e permitir repetição dentro de grupos
+          if (!this.noRepeat || Array.isArray(group) || !uniqueTags.has(termValue.trim())) {
+            remainingTerms.push(termValue.trim());
+            if (!Array.isArray(group)) uniqueTags.add(termValue.trim());
+          }
+          continue; // Ignora a validação do ":"
         }
 
-        const [key, ...rest] = term.split(':');
-        const value = rest.join(':');
-        const found = this.specialQueries.find((q) => q.title === key);
+        // Se o termo contém ":", verifica se é um termo especial
+        if (term.includes(':')) {
+          const [key, ...rest] = term.split(':');
+          const value = rest.join(':');
+          const found = this.specialQueries.find((q) => q.title === key);
 
-        if (found && value !== undefined) {
-          let parsedValue = value;
-          if (typeof found.parser === 'function') parsedValue = found.parser(value);
-          specials.push({ key, value: parsedValue });
+          if (found && value !== undefined) {
+            let parsedValue = value;
+            if (typeof found.parser === 'function') parsedValue = found.parser(value);
+            specials.push({ key, value: parsedValue });
+          } else {
+            remainingTerms.push(term);
+          }
         } else {
-          remainingTerms.push(term);
+          // Se não for um termo especial, trata normalmente ou permita repetição dentro de grupos
+          if (!this.noRepeat || Array.isArray(group) || !uniqueTags.has(term)) {
+            remainingTerms.push(term);
+            if (!Array.isArray(group)) uniqueTags.add(term);
+          }
         }
       }
 
-      // Atualiza o chunk original
       if (remainingTerms.length === 0) {
         chunks.splice(i, 1);
       } else {
@@ -166,7 +196,7 @@ class TinySqlTags {
       }
     }
 
-    return specials;
+    return { specials, boosts };
   }
 
   parseString(input) {
@@ -175,13 +205,18 @@ class TinySqlTags {
     let currentGroup = [];
     let inQuotes = false;
     let quoteChar = '';
+    const uniqueTags = new Set(); // Para garantir que não existam tags duplicadas
+    let inGroup = false;
 
     const flushBuffer = () => {
       const value = buffer.trim();
       if (!value) return;
       if (this.parseLimit < 0 || tagCount < this.parseLimit) {
-        currentGroup.push(value);
-        tagCount++;
+        if (!this.noRepeat || inGroup || !uniqueTags.has(value)) {
+          currentGroup.push(value);
+          if (!inGroup) uniqueTags.add(value);
+          tagCount++;
+        }
       }
       buffer = '';
     };
@@ -222,12 +257,14 @@ class TinySqlTags {
       if (c === '(') {
         flushBuffer();
         currentGroup = [];
+        inGroup = true;
         continue;
       }
 
       if (c === ')') {
         flushBuffer();
         flushGroup();
+        inGroup = false;
         continue;
       }
 
@@ -250,7 +287,8 @@ class TinySqlTags {
     flushBuffer();
     flushGroup();
 
-    return { include: chunks, special: this.#extractSpecialsFromChunks(chunks) };
+    const { specials, boosts } = this.#extractSpecialsFromChunks(chunks);
+    return { include: chunks, specials, boosts };
   }
 
   safeParseString(input) {
