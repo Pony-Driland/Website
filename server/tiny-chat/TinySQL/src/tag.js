@@ -18,6 +18,30 @@ import { objType } from '../../lib/objChecker';
 class TinySqlTags {
   constructor(defaultColumn = 'tags') {
     this.defaultColumn = defaultColumn;
+    this.defaultValueName = null;
+    this.useJsonEach = true;
+    // json_each
+    this.jsonEach = 'json_array_elements_text';
+  }
+
+  setUseJsonEach(value) {
+    this.useJsonEach = typeof value === 'boolean' ? value : null;
+  }
+
+  setValueName(value) {
+    this.defaultValueName = typeof value === 'string' ? value : null;
+  }
+
+  removeValueName() {
+    this.defaultValueName = null;
+  }
+
+  setJsonEach(value) {
+    this.jsonEach = typeof value === 'string' ? value : null;
+  }
+
+  removeJsonEach() {
+    this.jsonEach = null;
   }
 
   #parseWhere(pCache = { index: 1, values: [] }, group = {}) {
@@ -27,7 +51,15 @@ class TinySqlTags {
 
     const where = [];
     const tagsColumn = group.column || this.defaultColumn;
+    const tagsValue = group.valueName || this.defaultValueName;
     const include = group.include || [];
+
+    const createQuery = (funcName, param) =>
+      `${funcName} (SELECT 1 FROM ${
+        this.useJsonEach
+          ? `${this.jsonEach}(${tagsColumn}) WHERE value = ${param}`
+          : `${tagsColumn} WHERE ${tagsColumn}.${tagsValue} = ${param}`
+      })`;
 
     for (const clause of include) {
       if (Array.isArray(clause)) {
@@ -36,18 +68,7 @@ class TinySqlTags {
           const cleanTag = not ? tag.slice(1) : tag;
           const param = `$${pCache.index++}`;
           pCache.values.push(cleanTag);
-
-          if (not) {
-            return `NOT EXISTS (
-            SELECT 1 FROM json_each(${tagsColumn})
-            WHERE value = ${param}
-          )`;
-          } else {
-            return `EXISTS (
-            SELECT 1 FROM json_each(${tagsColumn})
-            WHERE value = ${param}
-          )`;
-          }
+          return createQuery(`${not ? 'NOT ' : ''}EXISTS`, param);
         });
 
         if (ors.length) {
@@ -58,18 +79,7 @@ class TinySqlTags {
         const cleanTag = not ? clause.slice(1) : clause;
         const param = `$${pCache.index++}`;
         pCache.values.push(cleanTag);
-
-        if (not) {
-          where.push(`NOT EXISTS (
-          SELECT 1 FROM json_each(${tagsColumn})
-          WHERE value = ${param}
-        )`);
-        } else {
-          where.push(`EXISTS (
-          SELECT 1 FROM json_each(${tagsColumn})
-          WHERE value = ${param}
-        )`);
-        }
+        where.push(createQuery(`${not ? 'NOT ' : ''}EXISTS`, param));
       }
     }
 
