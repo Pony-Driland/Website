@@ -18,65 +18,69 @@ class QueryParser {
     this.defaultColumn = defaultColumn;
   }
 
-  #parseTagWhere(pCache = {}, group = {}) {
-    const alias = group.alias || 'p';
-    const column = group.column || this.defaultColumn;
-    const includeGroups = group.include || []; // Pode ser plano ou nested
-    const excludeList = group.exclude || [];
+  #parseWhere(pCache = { index: 1, values: [] }, group = {}) {
+    if (!objType(pCache, 'object') || !group || typeof group !== 'object') return '';
+    if (typeof pCache.index !== 'number') pCache.index = 1;
+    if (!Array.isArray(pCache.values)) pCache.values = [];
 
-    if (!includeGroups.length && !excludeList.length) return '';
+    const where = [];
+    const tagsColumn = group.column || this.defaultColumn;
+    const include = group.include || [];
 
-    // Gera subqueries EXISTS para cada grupo de inclusão
-    const includeConditions = includeGroups.map((entry) => {
-      if (Array.isArray(entry)) {
-        // OR group: mistura de EXISTS e NOT EXISTS
-        const orConditions = entry.map((term) => {
-          if (term.startsWith('!')) {
-            const cleanTerm = term.slice(1);
+    for (const clause of include) {
+      if (Array.isArray(clause)) {
+        const ors = clause.map((tag) => {
+          const not = tag.startsWith('!');
+          const cleanTag = not ? tag.slice(1) : tag;
+          const param = `$${pCache.index++}`;
+          pCache.values.push(cleanTag);
+
+          if (not) {
             return `NOT EXISTS (
-                SELECT 1 FROM json_each(${alias}.${column})
-                WHERE value = '${cleanTerm}'
-              )`;
+              SELECT 1 FROM json_each(${tagsColumn})
+              WHERE json_each.value = ${param}
+            )`;
           } else {
             return `EXISTS (
-                SELECT 1 FROM json_each(${alias}.${column})
-                WHERE value = '${term}'
-              )`;
+              SELECT 1 FROM json_each(${tagsColumn})
+              WHERE json_each.value = ${param}
+            )`;
           }
         });
-        return `(${orConditions.join(' OR ')})`;
+
+        if (ors.length) {
+          where.push(`(${ors.join(' OR ')})`);
+        }
       } else {
-        if (entry.startsWith('!')) {
-          const cleanTerm = entry.slice(1);
-          return `NOT EXISTS (
-              SELECT 1 FROM json_each(${alias}.${column})
-              WHERE value = '${cleanTerm}'
-            )`;
+        const not = clause.startsWith('!');
+        const cleanTag = not ? clause.slice(1) : clause;
+        const param = `$${pCache.index++}`;
+        pCache.values.push(cleanTag);
+
+        if (not) {
+          where.push(`NOT EXISTS (
+            SELECT 1 FROM json_each(${tagsColumn})
+            WHERE json_each.value = ${param}
+          )`);
         } else {
-          return `EXISTS (
-              SELECT 1 FROM json_each(${alias}.${column})
-              WHERE value = '${entry}'
-            )`;
+          where.push(`EXISTS (
+            SELECT 1 FROM json_each(${tagsColumn})
+            WHERE json_each.value = ${param}
+          )`);
         }
       }
-    });
+    }
 
-    // Gera NOT EXISTS para exclusões
-    const excludeConditions = excludeList.map((term) => {
-      return `NOT EXISTS (
-          SELECT 1 FROM json_each(${alias}.${column})
-          WHERE value = '${term}'
-        )`;
-    });
-
-    const allConditions = [...includeConditions, ...excludeConditions];
-    return allConditions.length ? `WHERE ${allConditions.join(' AND ')}` : '';
+    // Apenas AND entre as condições geradas
+    return where.length ? `(${where.join(' AND ')})` : '1';
   }
 
   parseString(input) {
     const chunks = [];
     let buffer = '';
     let currentGroup = [];
+    let inQuotes = false;
+    let quoteChar = '';
 
     const flushBuffer = () => {
       const value = buffer.trim();
@@ -97,35 +101,52 @@ class QueryParser {
     input = input.replace(/\s+/g, ' ').trim();
 
     for (let i = 0; i < input.length; i++) {
-      const slice4 = input.slice(i, i + 4).toUpperCase();
-      const slice3 = input.slice(i, i + 3).toUpperCase();
+      const c = input[i];
+      const next4 = input.slice(i, i + 4).toUpperCase();
+      const next3 = input.slice(i, i + 3).toUpperCase();
 
-      if (input[i] === '(') {
+      if (inQuotes) {
+        if (c === quoteChar) {
+          inQuotes = false;
+          quoteChar = '';
+        } else {
+          buffer += c;
+        }
+        continue;
+      }
+
+      if (c === '"' || c === "'") {
+        inQuotes = true;
+        quoteChar = c;
+        continue;
+      }
+
+      if (c === '(') {
         flushBuffer();
         currentGroup = [];
         continue;
       }
 
-      if (input[i] === ')') {
+      if (c === ')') {
         flushBuffer();
         flushGroup();
         continue;
       }
 
-      if (slice4 === ' AND') {
+      if (next4 === ' AND') {
         flushBuffer();
         flushGroup();
         i += 3;
         continue;
       }
 
-      if (slice3 === 'OR ') {
+      if (next3 === 'OR ') {
         flushBuffer();
         i += 2;
         continue;
       }
 
-      buffer += input[i];
+      buffer += c;
     }
 
     flushBuffer();
