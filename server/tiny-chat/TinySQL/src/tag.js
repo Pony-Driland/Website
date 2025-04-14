@@ -17,31 +17,40 @@ import { objType } from '../../lib/objChecker';
  */
 class TinySqlTags {
   constructor(defaultColumn = 'tags') {
-    this.defaultColumn = defaultColumn;
     this.defaultValueName = null;
     this.useJsonEach = true;
+    this.parseLimit = -1;
     // json_each
     this.jsonEach = 'json_array_elements_text';
+    this.setColumnName(defaultColumn);
+  }
+
+  setColumnName(value) {
+    this.defaultColumn = typeof value === 'string' ? value : '';
+  }
+
+  getColumnName() {
+    return this.defaultColumn;
+  }
+
+  setParseLimit(value) {
+    this.parseLimit = typeof value === 'number' ? value : -1;
+  }
+
+  getParseLimit() {
+    return this.parseLimit;
   }
 
   setUseJsonEach(value) {
-    this.useJsonEach = typeof value === 'boolean' ? value : null;
+    this.useJsonEach = typeof value === 'boolean' ? value : 'null';
   }
 
   setValueName(value) {
     this.defaultValueName = typeof value === 'string' ? value : null;
   }
 
-  removeValueName() {
-    this.defaultValueName = null;
-  }
-
   setJsonEach(value) {
     this.jsonEach = typeof value === 'string' ? value : null;
-  }
-
-  removeJsonEach() {
-    this.jsonEach = null;
   }
 
   #parseWhere(pCache = { index: 1, values: [] }, group = {}) {
@@ -101,7 +110,10 @@ class TinySqlTags {
     const flushBuffer = () => {
       const value = buffer.trim();
       if (!value) return;
-      currentGroup.push(value);
+      if (this.parseLimit < 0 || tagCount < this.parseLimit) {
+        currentGroup.push(value);
+        tagCount++;
+      }
       buffer = '';
     };
 
@@ -115,6 +127,7 @@ class TinySqlTags {
     };
 
     input = input.replace(/\s+/g, ' ').trim();
+    let tagCount = 0;
 
     for (let i = 0; i < input.length; i++) {
       const c = input[i];
