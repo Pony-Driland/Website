@@ -1,4 +1,7 @@
+import { ClientBase } from 'pg';
 import { objType } from '../../lib/objChecker';
+
+const clientBase = new ClientBase();
 
 /**
  * @author JasminDreasond
@@ -173,21 +176,120 @@ class TinySqlQuery {
   }
 
   /**
-   * Generates a SELECT clause based on the input, supporting SQL functions, columns, and aliases.
-   * Automatically parses input to build valid SQL expressions.
+   * Generates a SELECT clause based on the input, supporting SQL expressions, aliases,
+   * and boosts using CASE statements.
+   *
+   * This method supports the following input formats:
+   *
+   * - `null` or `undefined`: returns '*'
+   * - `string`: returns the parsed column/expression (with optional aliasing if `AS` is present)
+   * - `string[]`: returns a comma-separated list of parsed columns
+   * - `object`: supports structured input with:
+   *   - `aliases`: key-value pairs of column names and aliases
+   *   - `values`: array of column names or expressions
+   *   - `boost`: object describing a weighted relevance score using CASE statements
+   *     - Must include `alias` (string) and `value` (array of boost rules)
+   *     - Each boost rule supports:
+   *       - `columns` (string|string[]): target columns
+   *       - `value` (string|array): value or values to compare
+   *       - `operator` (string): SQL comparison operator (default: 'LIKE', supports 'IN', '=', etc.)
+   *       - `weight` (number): numeric weight applied when condition matches (default: 1)
+   *
+   * Escaping of all values is handled by `ClientBase.escapeLiteral()` for SQL safety (PostgreSQL).
    *
    * @private
-   * @param {string|string[]|object|null|undefined} input - Columns, SQL expressions, or objects with column aliases.
-   * @returns {string} - A valid SELECT clause.
+   * @param {string|string[]|object|null|undefined} input - Select clause definition.
+   * @returns {string} - A valid SQL SELECT clause string.
    *
    * @example
-   * this.#selectGenerator(); // returns '*'
-   * this.#selectGenerator('COUNT(*) AS total'); // returns 'COUNT(*) AS total'
-   * this.#selectGenerator(['id', 'username']); // returns 'id, username'
-   * this.#selectGenerator({ id: 'user_id', username: 'user_name' }); // returns 'id AS user_id, username AS user_name'
+   * this.#selectGenerator();
+   * // returns '*'
+   *
+   * this.#selectGenerator('COUNT(*) AS total');
+   * // returns 'COUNT(*) AS total'
+   *
+   * this.#selectGenerator(['id', 'username']);
+   * // returns 'id, username'
+   *
+   * this.#selectGenerator({
+   *   aliases: {
+   *     id: 'image_id',
+   *     uploader: 'user_name'
+   *   },
+   *   values: ['created_at', 'score']
+   * });
+   * // returns 'id AS image_id, uploader AS user_name, created_at, score'
+   *
+   * this.#selectGenerator({
+   *   aliases: {
+   *     id: 'image_id',
+   *     uploader: 'user_name'
+   *   },
+   *   values: ['created_at'],
+   *   boost: {
+   *     alias: 'relevance',
+   *     value: [
+   *       {
+   *         columns: ['tags', 'description'],
+   *         value: 'fluttershy',
+   *         weight: 2
+   *       },
+   *       {
+   *         columns: 'tags',
+   *         value: 'pinkie pie',
+   *         operator: 'LIKE',
+   *         weight: 1.5
+   *       },
+   *       {
+   *         columns: 'tags',
+   *         value: 'oc',
+   *         weight: -1
+   *       }
+   *     ]
+   *   }
+   * });
+   * // returns something like:
+   * // CASE
+   * //   WHEN tags LIKE '%fluttershy%' OR description LIKE '%fluttershy%' THEN 2
+   * //   WHEN tags LIKE '%pinkie pie%' THEN 1.5
+   * //   WHEN tags LIKE '%oc%' THEN -1
+   * //   ELSE 0
+   * // END AS relevance, id AS image_id, uploader AS user_name, created_at
    */
   #selectGenerator(input) {
     if (!input) return '*';
+
+    // Boost parser helper
+    const parseAdvancedBoosts = (boostArray, alias) => {
+      const cases = [];
+
+      for (const boost of boostArray) {
+        const { columns = [], operator = 'LIKE', value, weight = 1 } = boost;
+
+        const opValue = operator.toUpperCase();
+
+        if (opValue === 'IN') {
+          const conditions = columns.map((col) => {
+            if (Array.isArray(value)) {
+              const inList = value.map((v) => clientBase.escapeLiteral(v)).join(', ');
+              return `${col} IN (${inList})`;
+            } else {
+              console.warn(`IN operator expected array, got`, value);
+              return 'FALSE';
+            }
+          });
+          cases.push(`WHEN ${conditions.join(' OR ')} THEN ${weight}`);
+        } else {
+          const safeVal = clientBase.escapeLiteral(
+            ['LIKE', 'ILIKE'].includes(opValue) ? `%${value}%` : value,
+          );
+          const conditions = columns.map((col) => `${col} ${operator} ${safeVal}`);
+          cases.push(`WHEN ${conditions.join(' OR ')} THEN ${weight}`);
+        }
+      }
+
+      return `CASE ${cases.join(' ')} ELSE 0 END AS ${alias}`;
+    };
 
     // If input is an array, join all columns
     if (Array.isArray(input)) {
@@ -199,15 +301,29 @@ class TinySqlQuery {
       );
     }
 
-    // If input is an object, handle key-value pairs for aliasing
+    // If input is an object, handle key-value pairs for aliasing (with boosts support)
     if (objType(input, 'object')) {
-      return (
-        Object.entries(input)
-          .map(([column, alias]) => {
-            return this.#parseColumn(column, alias);
-          })
-          .join(', ') || '*'
-      );
+      let result = [];
+      // Processing aliases
+      if (input.aliases)
+        result = result.concat(
+          Object.entries(input.aliases).map(([col, alias]) => this.#parseColumn(col, alias)),
+        );
+
+      // If input is an array, join all columns
+      if (Array.isArray(input.values))
+        result.push(...input.values.map((col) => this.#parseColumn(col)));
+
+      // Processing boosts
+      if (objType(input.boost, 'object')) {
+        if (typeof input.boost.alias !== 'string')
+          throw new Error('Missing or invalid boost.alias in #selectGenerator');
+        if (Array.isArray(input.boost.value))
+          result.push(parseAdvancedBoosts(input.boost.value, input.boost.alias));
+      }
+
+      // Complete
+      return result.join(', ') || '*';
     }
 
     // If input is a string, treat it as a custom SQL expression
@@ -216,6 +332,54 @@ class TinySqlQuery {
     }
 
     return '*';
+  }
+
+  /**
+   * Public wrapper for the internal #selectGenerator method.
+   *
+   * This method builds a full SQL SELECT clause based on the input format,
+   * supporting SQL-safe expressions, aliases, simple column lists, and
+   * relevance-based boosting logic with CASE statements.
+   *
+   * It accepts the same inputs as `#selectGenerator`, allowing:
+   * - Simple string expressions
+   * - Arrays of column names
+   * - Objects with `values`, `aliases`, and `boost` definitions
+   *
+   * See `#selectGenerator` for detailed internal logic and examples.
+   *
+   * @param {string|string[]|object|null|undefined} input - Input for SELECT clause generation.
+   * @returns {string} - A properly formatted SQL SELECT clause.
+   *
+   * @example
+   * sql.selectGenerator('COUNT(*) AS total');
+   * // => 'COUNT(*) AS total'
+   *
+   * sql.selectGenerator(['id', 'name']);
+   * // => 'id, name'
+   *
+   * sql.selectGenerator({
+   *   aliases: { id: 'image_id' },
+   *   values: ['created_at']
+   * });
+   * // => 'id AS image_id, created_at'
+   *
+   * sql.selectGenerator({
+   *   boost: {
+   *     alias: 'relevance',
+   *     value: [
+   *       {
+   *         columns: ['title', 'description'],
+   *         value: 'fluttershy',
+   *         weight: 2
+   *       }
+   *     ]
+   *   }
+   * });
+   * // => CASE WHEN title LIKE '%fluttershy%' OR description LIKE '%fluttershy%' THEN 2 ELSE 0 END AS relevance
+   */
+  selectGenerator(input) {
+    return this.#selectGenerator(input);
   }
 
   /**
