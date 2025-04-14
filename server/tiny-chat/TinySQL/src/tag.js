@@ -1,3 +1,5 @@
+import { objType } from "../../lib/objChecker";
+
 /**
  * @author JasminDreasond
  * @version 1.0
@@ -73,6 +75,10 @@ class QueryParser {
 
     // Apenas AND entre as condições geradas
     return where.length ? `(${where.join(' AND ')})` : '1';
+  }
+
+  parseWhere(group, pCache) {
+    return this.#parseWhere(pCache, group);
   }
 
   parseString(input) {
