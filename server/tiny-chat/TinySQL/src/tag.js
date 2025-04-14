@@ -22,7 +22,18 @@ class TinySqlTags {
     this.parseLimit = -1;
     // json_each
     this.jsonEach = 'json_array_elements_text';
+    this.specialQueries = [];
     this.setColumnName(defaultColumn);
+  }
+
+  addSpecialQuery(config) {
+    if (objType(config, 'object') && typeof config.title === 'string')
+      this.specialQueries.push(config);
+  }
+
+  removeSpecialQuery(title) {
+    const index = this.specialQueries.findIndex((item) => item.title === title);
+    if (index > -1) this.specialQueries.splice(index, 1);
   }
 
   setColumnName(value) {
@@ -98,6 +109,45 @@ class TinySqlTags {
 
   parseWhere(group, pCache) {
     return this.#parseWhere(pCache, group);
+  }
+
+  #extractSpecialsFromChunks(chunks) {
+    const specials = [];
+
+    for (let i = chunks.length - 1; i >= 0; i--) {
+      const group = chunks[i];
+
+      const terms = Array.isArray(group) ? group : [group];
+      const remainingTerms = [];
+
+      for (const term of terms) {
+        if (!term.includes(':')) {
+          remainingTerms.push(term);
+          continue;
+        }
+
+        const [key, ...rest] = term.split(':');
+        const value = rest.join(':');
+        const found = this.specialQueries.find((q) => q.title === key);
+
+        if (found && value !== undefined) {
+          let parsedValue = value;
+          if (typeof found.parser === 'function') parsedValue = found.parser(value);
+          specials.push({ key, value: parsedValue });
+        } else {
+          remainingTerms.push(term);
+        }
+      }
+
+      // Atualiza o chunk original
+      if (remainingTerms.length === 0) {
+        chunks.splice(i, 1);
+      } else {
+        chunks[i] = Array.isArray(group) ? remainingTerms : remainingTerms[0];
+      }
+    }
+
+    return specials;
   }
 
   parseString(input) {
@@ -181,7 +231,7 @@ class TinySqlTags {
     flushBuffer();
     flushGroup();
 
-    return { include: chunks };
+    return { include: chunks, special: this.#extractSpecialsFromChunks(chunks) };
   }
 
   safeParseString(input) {
