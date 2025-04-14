@@ -151,7 +151,8 @@ class TinySqlTags {
         // Verifica se o termo contém um boost (indicado por "^")
         if (term.includes('^')) {
           const [termValue, boostValue] = term.split('^');
-          let boost = parseFloat(boostValue) || 1; // Se não houver valor de boost válido, define como 1
+          let boost = parseFloat(boostValue.replace(/\!/g, '-'));
+          if (Number.isNaN(boost)) boost = 1; // Se não houver valor de boost válido, define como 1
 
           // Se o noRepeat for true, verifica se o termo já foi adicionado
           if (!uniqueBoosts.has(termValue.trim())) {
