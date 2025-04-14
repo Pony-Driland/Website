@@ -23,7 +23,16 @@ class TinySqlTags {
     // json_each
     this.jsonEach = 'json_array_elements_text';
     this.specialQueries = [];
+
+    this.wildcardA = '*';
+    this.wildcardB = '?';
+
     this.setColumnName(defaultColumn);
+  }
+
+  setWildcard(where = null, value = null) {
+    if (where === 'wildcardA') this.wildcardA = typeof value === 'string' ? value : null;
+    if (where === 'wildcardB') this.wildcardB = typeof value === 'string' ? value : null;
   }
 
   addSpecialQuery(config) {
@@ -72,34 +81,44 @@ class TinySqlTags {
     const where = [];
     const tagsColumn = group.column || this.defaultColumn;
     const tagsValue = group.valueName || this.defaultValueName;
+    const allowWildcards = typeof group.allowWildcards === 'boolean' ? group.allowWildcards : false;
     const include = group.include || [];
 
-    const createQuery = (funcName, param) =>
+    const createQuery = (funcName, param, useLike = false) =>
       `${funcName} (SELECT 1 FROM ${
         this.useJsonEach
-          ? `${this.jsonEach}(${tagsColumn}) WHERE value = ${param}`
-          : `${tagsColumn} WHERE ${tagsColumn}.${tagsValue} = ${param}`
+          ? `${this.jsonEach}(${tagsColumn}) WHERE value ${useLike ? 'LIKE' : '='} ${param}`
+          : `${tagsColumn} WHERE ${tagsColumn}.${tagsValue} ${useLike ? 'LIKE' : '='} ${param}`
       })`;
+
+    const filterTag = (tag) => {
+      const not = tag.startsWith('!');
+      const cleanTag = not ? tag.slice(1) : tag;
+      const param = `$${pCache.index++}`;
+
+      const usesWildcard =
+        allowWildcards && (cleanTag.includes(this.wildcardA) || cleanTag.includes(this.wildcardB));
+      const filteredTag = usesWildcard
+        ? cleanTag
+            .replace(/([%_])/g, '\\$1')
+            .replaceAll(this.wildcardA, '%')
+            .replaceAll(this.wildcardB, '_')
+        : cleanTag;
+
+      pCache.values.push(filteredTag);
+      return { param, usesWildcard, not };
+    };
 
     for (const clause of include) {
       if (Array.isArray(clause)) {
         const ors = clause.map((tag) => {
-          const not = tag.startsWith('!');
-          const cleanTag = not ? tag.slice(1) : tag;
-          const param = `$${pCache.index++}`;
-          pCache.values.push(cleanTag);
-          return createQuery(`${not ? 'NOT ' : ''}EXISTS`, param);
+          const { param, usesWildcard, not } = filterTag(tag);
+          return createQuery(`${not ? 'NOT ' : ''}EXISTS`, param, usesWildcard);
         });
-
-        if (ors.length) {
-          where.push(`(${ors.join(' OR ')})`);
-        }
+        if (ors.length) where.push(`(${ors.join(' OR ')})`);
       } else {
-        const not = clause.startsWith('!');
-        const cleanTag = not ? clause.slice(1) : clause;
-        const param = `$${pCache.index++}`;
-        pCache.values.push(cleanTag);
-        where.push(createQuery(`${not ? 'NOT ' : ''}EXISTS`, param));
+        const { param, usesWildcard, not } = filterTag(clause);
+        where.push(createQuery(`${not ? 'NOT ' : ''}EXISTS`, param, usesWildcard));
       }
     }
 
