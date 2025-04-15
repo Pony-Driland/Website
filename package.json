@@ -42,7 +42,7 @@
         "clone": "^2.1.2",
         "ethers": "^5.8.0",
         "events": "^3.3.0",
-        "exifreader": "^4.26.0",
+        "exifreader": "^4.28.1",
         "express": "^4.20.0",
         "file-saver": "^2.0.5",
         "for-promise": "^1.4.3",
