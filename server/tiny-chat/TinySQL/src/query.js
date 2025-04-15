@@ -29,19 +29,16 @@ class TinySqlQuery {
     this.debug = false;
 
     // Predefined condition operator mappings used in searches
-
     this.addCondition('LIKE', (condition) => ({
       operator: 'LIKE',
       value:
-        `${typeof condition.likePosition !== 'string' || condition.likePosition === 'left' ? '%' : ''}` +
+        `${typeof condition.lPos !== 'string' || condition.lPos === 'left' ? '%' : ''}` +
         `${condition.value}` +
-        `${typeof condition.likePosition !== 'string' || condition.likePosition === 'right' ? '%' : ''}`,
+        `${typeof condition.lPos !== 'string' || condition.lPos === 'right' ? '%' : ''}`,
     }));
 
-    this.addCondition('===', '=');
-    this.addCondition('=', '=');
     this.addCondition('NOT', '!=');
-    this.addCondition('!==', '!=');
+    this.addCondition('=', '=');
     this.addCondition('!=', '!=');
     this.addCondition('>=', '>=');
     this.addCondition('<=', '<=');
@@ -49,15 +46,45 @@ class TinySqlQuery {
     this.addCondition('<', '<');
 
     // Soundex with custom value handler
-    this.addCondition(
-      'SOUNDEX',
-      (condition) => ({
-        operator: '=',
-        valType: 'SOUNDEX',
-        column: `SOUNDEX(${condition.column})`,
-      }),
-      (param) => `SOUNDEX(${param})`,
-    );
+    this.addConditionV2('SOUNDEX'); // Performs phonetic comparison based on how words sound. Example: SOUNDEX(name) = SOUNDEX('rainbow')
+
+    // Case conversion
+    this.addConditionV2('LOWER'); // Converts all characters in the column to lowercase. Example: LOWER(username) = 'fluttershy'
+    this.addConditionV2('UPPER'); // Converts all characters in the column to uppercase. Example: UPPER(username) = 'FLUTTERSHY'
+
+    // Trimming whitespace
+    this.addConditionV2('TRIM'); // Removes leading and trailing whitespace. Example: TRIM(title) = 'pony party'
+    this.addConditionV2('LTRIM'); // Removes leading whitespace only. Example: LTRIM(title) = 'pony party'
+    this.addConditionV2('RTRIM'); // Removes trailing whitespace only. Example: RTRIM(title) = 'pony party'
+
+    // String and value length
+    this.addConditionV2('LENGTH'); // Returns the number of characters in the column. Example: LENGTH(comment) > 100
+
+    // Mathematical operations
+    this.addConditionV2('ABS'); // Compares the absolute value of a column. Example: ABS(score) = 10
+    this.addConditionV2('ROUND'); // Rounds the numeric value of the column. Example: ROUND(rating) = 4
+    this.addConditionV2('CEIL', '>='); // Rounds the value up before comparison. Example: CEIL(price) >= 50
+    this.addConditionV2('FLOOR', '<='); // Rounds the value down before comparison. Example: FLOOR(price) <= 49
+
+    // Null and fallback handling
+    this.addConditionV2('COALESCE'); // Uses a fallback value if the column is NULL. Example: COALESCE(nickname) = 'anonymous'
+
+    // String formatting
+    this.addConditionV2('HEX'); // Converts value to hexadecimal string. Example: HEX(id) = '1A3F'
+    this.addConditionV2('QUOTE'); // Returns the string quoted. Example: QUOTE(title) = "'hello world'"
+
+    // Character and Unicode
+    this.addConditionV2('UNICODE'); // Gets the Unicode of the first character. Example: UNICODE(letter) = 9731
+    this.addConditionV2('CHAR'); // Converts a code point to its character. Example: CHAR(letter_code) = 'A'
+
+    // Type inspection
+    this.addConditionV2('TYPEOF'); // Returns the data type of the value. Example: TYPEOF(data_field) = 'text'
+
+    // Date and time extraction
+    this.addConditionV2('DATE'); // Extracts the date part. Example: DATE(timestamp) = '2025-04-15'
+    this.addConditionV2('TIME'); // Extracts the time part. Example: TIME(timestamp) = '15:30:00'
+    this.addConditionV2('DATETIME'); // Converts to full datetime. Example: DATETIME(created_at) = '2025-04-15 14:20:00'
+    this.addConditionV2('JULIANDAY'); // Converts to Julian day number. Example: JULIANDAY(date_column) = 2460085.5
   }
 
   /**
@@ -147,6 +174,78 @@ class TinySqlQuery {
     // Add value handler if provided
     if (valueHandler) this.#customValFunc[key] = valueHandler;
   }
+
+  /**
+   * Registers a SQL function-based condition with optional operator and function overrides.
+   *
+   * This method wraps a column inside a SQL function call (e.g., `LOWER(column)`) and applies
+   * a comparison operator to it (e.g., `=`). It's used in dynamic SQL condition generation,
+   * where the return object integrates into a parser that builds query fragments like:
+   * `FUNC(column) OP $param`, based on provided condition metadata.
+   *
+   * @param {string} funcName - The SQL function to apply to the column (e.g., `LOWER`, `SOUNDEX`).
+   * @param {string} [operator='='] - Default SQL operator to use (e.g., `=`, `!=`).
+   *
+   * ------------------------------------------------------
+   *
+   * The registered condition will:
+   * - Override the default operator if `condition.newOp` is provided.
+   * - Override the SQL function name (used in `valType`) if `condition.funcName` is a string.
+   * - Return a wrapped column as `column = val`, where `column` is `FUNC(condition.column)`.
+   *
+   * The `valType` is essential for the dynamic system to determine how the value should be
+   * transformed using `#customValFunc[valType]`, allowing things like:
+   *   - `SOUNDEX(name) = SOUNDEX($1)`
+   *   - `LOWER(username) = LOWER($2)`
+   *
+   * The registered function will be used later like this:
+   *   ```js
+   *   const result = this.#conditions[selected](group);
+   *   const param = typeof this.#customValFunc[result.valType] === 'function'
+   *     ? this.#customValFunc[result.valType]('$1')
+   *     : '$1';
+   *   const sql = `${result.column} ${result.operator} ${param}`;
+   *   ```
+   *
+   * The `group` object passed at runtime may include:
+   * @param {Object} group
+   * @param {string} group.column - The column name to apply the function on.
+   * @param {string} [group.newOp] - Optional override for the comparison operator.
+   * @param {string|null} [group.funcName] - Optional override for the SQL function name
+   *                                             (affects both SQL column and valType used in `#customValFunc`).
+   *
+   * @example
+   * // Registers LOWER() = ?
+   * addConditionV2('LOWER');
+   *
+   * // Parses as: LOWER(username) = LOWER($1)
+   * parse({ column: 'username', value: 'fluttershy', operator: 'LOWER' });
+   *
+   * @example
+   * // Registers a ROUND() comparison with "!="
+   * addConditionV2('ROUND', '!=');
+   *
+   * // Can be overridden at runtime:
+   * parse({ column: 'price', value: 'value', newOp: '>', operator: 'CEIL', funcName: null });
+   * // Result: CEIL(price) > value
+   *
+   * @returns {void}
+   */
+  addConditionV2 = (funcName, operator = '=') =>
+    this.addCondition(
+      funcName,
+      (condition) => ({
+        operator: typeof condition.newOp === 'string' ? condition.newOp : operator,
+        valType:
+          typeof condition.funcName === 'string'
+            ? condition.funcName
+            : condition.funcName !== null
+              ? funcName
+              : null,
+        column: `${funcName}(${condition.column})`,
+      }),
+      (param) => `${funcName}(${param})`,
+    );
 
   /**
    * Formats SQL for clean and readable debug in terminal.
@@ -1372,13 +1471,22 @@ class TinySqlQuery {
       return innerConditions.join(` ${logic} `);
     }
 
+    const getParamResult = (valType) => {
+      const newIndex = pCache.index++;
+      return typeof this.#customValFunc[valType] === 'function'
+        ? this.#customValFunc[valType](`$${newIndex}`)
+        : `$${newIndex}`;
+    };
+
     // Flat object fallback for backward compatibility
     if (objType(group, 'object') && !group.column) {
       const entries = Object.entries(group);
       const logic = 'AND';
-      const innerConditions = entries.map(([col, cond]) => {
+      const innerConditions = entries.map(([newCol, cond]) => {
+        let col = newCol;
         let operator = '=';
         let value = cond.value;
+        let valType = cond.valType;
 
         if (cond.operator) {
           const selected = cond.operator.toUpperCase();
@@ -1386,11 +1494,13 @@ class TinySqlQuery {
             const result = this.#conditions[selected](cond);
             if (typeof result.operator === 'string') operator = result.operator;
             if (typeof result.value !== 'undefined') value = result.value;
+            if (typeof result.column === 'string') col = result.column;
+            if (typeof result.valType === 'string') valType = result.valType;
           }
         }
 
         pCache.values.push(value);
-        return `(${col} ${operator} $${pCache.index++})`;
+        return `(${col} ${operator} $${getParamResult(valType)})`;
       });
       return innerConditions.join(` ${logic} `);
     }
@@ -1412,14 +1522,8 @@ class TinySqlQuery {
       }
     }
 
-    const newIndex = pCache.index++;
-    const paramResult =
-      typeof this.#customValFunc[valType] === 'function'
-        ? this.#customValFunc[valType](`$${newIndex}`)
-        : `$${newIndex}`;
-
     pCache.values.push(value);
-    return `${col} ${operator} ${paramResult}`;
+    return `${col} ${operator} ${getParamResult(valType)}`;
   }
 
   /**
