@@ -36,7 +36,7 @@
         "@walletconnect/client": "^1.8.0",
         "@walletconnect/qrcode-modal": "^1.8.0",
         "@walletconnect/web3-provider": "^1.8.0",
-        "bignumber.js": "^9.1.2",
+        "bignumber.js": "^9.2.1",
         "bootstrap": "^5.3.3",
         "buffer": "^6.0.3",
         "clone": "^2.1.2",
