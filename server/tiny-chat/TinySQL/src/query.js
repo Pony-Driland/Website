@@ -176,36 +176,27 @@ class TinySqlQuery {
   }
 
   /**
-   * Registers a SQL function-based condition with optional operator and function overrides.
+   * Registers a SQL function-based condition with optional operator and value transformation.
    *
-   * This method wraps a column inside a SQL function call (e.g., `LOWER(column)`) and applies
-   * a comparison operator to it (e.g., `=`). It's used in dynamic SQL condition generation,
-   * where the return object integrates into a parser that builds query fragments like:
-   * `FUNC(column) OP $param`, based on provided condition metadata.
+   * This helper wraps a SQL column in a function (e.g., `LOWER(column)`) and optionally
+   * transforms the parameter using the same function (e.g., `LOWER($1)`), depending on config.
    *
-   * @param {string} funcName - The SQL function to apply to the column (e.g., `LOWER`, `SOUNDEX`).
-   * @param {string} [operator='='] - Default SQL operator to use (e.g., `=`, `!=`).
+   * It integrates with the dynamic condition system that uses:
+   *   - `#conditions[name]` for SQL structure generation
+   *   - `#customValFunc[valType]` for optional value transformations
+   *
+   * @param {string} funcName - SQL function name to wrap around the column (e.g., `LOWER`, `SOUNDEX`).
+   * @param {boolean} [editParamByDefault=false] - If true, also applies the SQL function to the parameter by default.
+   * @param {string} [operator='='] - Default SQL comparison operator (e.g., `=`, `!=`, `>`, `<`).
    *
    * -----------------------------------------------------
    *
-   * The registered condition will:
-   * - Override the default operator if `condition.newOp` is provided.
-   * - Override the SQL function name (used in `valType`) if `condition.funcName` is a string.
-   * - Return a wrapped column as `column = val`, where `column` is `FUNC(condition.column)`.
+   * Runtime Behavior:
+   * - Uses `group.newOp` (if provided) to override the default operator.
+   * - Uses `group.funcName` (if string) to override the default function name used in `valType`.
+   * - If `funcName !== null` and `editParamByDefault === true`, the function will also apply to the param.
+   * - The final SQL looks like: FUNC(column) OP FUNC($n), if both sides use the same function.
    *
-   * The `valType` is essential for the dynamic system to determine how the value should be
-   * transformed using `#customValFunc[valType]`, allowing things like:
-   *   - `SOUNDEX(name) = SOUNDEX($1)`
-   *   - `LOWER(username) = LOWER($2)`
-   *
-   * The registered function will be used later like this:
-   *   ```js
-   *   const result = this.#conditions[selected](group);
-   *   const param = typeof this.#customValFunc[result.valType] === 'function'
-   *     ? this.#customValFunc[result.valType]('$1')
-   *     : '$1';
-   *   const sql = `${result.column} ${result.operator} ${param}`;
-   *   ```
    *
    * The `group` object passed at runtime may include:
    * @param {Object} group
@@ -213,12 +204,23 @@ class TinySqlQuery {
    * @param {string} [group.newOp] - Optional override for the comparison operator.
    * @param {string|null} [group.funcName] - Optional override for the SQL function name
    *                                             (affects both SQL column and valType used in `#customValFunc`).
-   * 
+   *
+   * --------------------------------------------------------------------------------
+   * How it's used in the system:
+   *
+   * ```js
+   * const result = this.#conditions[group.operator](group);
+   * const param = typeof this.#customValFunc[result.valType] === 'function'
+   *   ? this.#customValFunc[result.valType](`$1`)
+   *   : `$1`;
+   * const sql = `${result.column} ${result.operator} ${param}`;
+   * ```
+   *
    * -----------------------------------------------------
    * @example
    * // Registers a ROUND() comparison with "!="
    * addConditionV2('ROUND', false, '!=');
-   * 
+   *
    * -----------------------------------------------------
    * @example
    * // Registers LOWER() with editParamByDefault
@@ -226,7 +228,7 @@ class TinySqlQuery {
    *
    * // Parses as: LOWER(username) = LOWER($1)
    * parse({ column: 'username', value: 'fluttershy', operator: 'LOWER' });
-   * 
+   *
    *  -----------------------------------------------------
    * @example
    * // Registers UPPER() = ? without editParamByDefault
@@ -234,20 +236,20 @@ class TinySqlQuery {
    *
    * // Parses as: UPPER(username) = $1
    * parse({ column: 'username', value: 'rarity', operator: 'UPPER' });
-   * 
+   *
    *  -----------------------------------------------------
    * @example
    * // Can be overridden at runtime:
    * addConditionV2('CEIL', true);
-   * 
-   * parse({ 
-   *  column: 'price', 
-   *  value: 3, 
-   *  newOp: '>', 
-   *  operator: 'CEIL', 
-   *  funcName: null 
+   *
+   * parse({
+   *  column: 'price',
+   *  value: 3,
+   *  newOp: '>',
+   *  operator: 'CEIL',
+   *  funcName: null
    * });
-   * 
+   *
    * // Result: CEIL(price) > 3
    */
   addConditionV2 = (funcName, editParamByDefault = false, operator = '=') =>
