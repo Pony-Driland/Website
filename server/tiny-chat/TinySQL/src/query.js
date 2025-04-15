@@ -644,7 +644,7 @@ class TinySqlQuery {
     const db = this.#db;
     return new Promise((resolve, reject) => {
       const query = `DROP TABLE ${this.#settings.name};`;
-      db.run(query, null, 'dropTable')
+      db.run(query, undefined, 'dropTable')
         .then(() => resolve(true))
         .catch((err) => {
           if (db.isConnectionError(err))
