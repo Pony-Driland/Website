@@ -19,7 +19,8 @@ const clientBase = new Client();
  * You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 class TinySqlQuery {
-  #conditions;
+  #conditions = {};
+  #customValFunc = {};
   #db;
   #settings = {};
   #table = {};
@@ -28,23 +29,32 @@ class TinySqlQuery {
     this.debug = false;
 
     // Predefined condition operator mappings used in searches
-    this.#conditions = {
-      LIKE: (condition) => ({
-        operator: 'LIKE',
-        value: `${typeof condition.likePosition !== 'string' || condition.likePosition === 'left' ? '%' : ''}${condition.value}${typeof condition.likePosition !== 'string' || condition.likePosition === 'right' ? '%' : ''}`,
-      }),
-      NOT: () => ({ operator: '!=' }),
-      '===': () => ({ operator: '=' }),
-      '!==': () => ({ operator: '!=' }),
-      '>=': () => ({ operator: '>=' }),
-      '<=': () => ({ operator: '<=' }),
-      '>': () => ({ operator: '>' }),
-      '<': () => ({ operator: '<' }),
-    };
+
+    this.#conditions['LIKE'] = (condition) => ({
+      operator: 'LIKE',
+      value: `${typeof condition.likePosition !== 'string' || condition.likePosition === 'left' ? '%' : ''}${condition.value}${typeof condition.likePosition !== 'string' || condition.likePosition === 'right' ? '%' : ''}`,
+    });
+
+    this.#conditions['NOT'] = () => ({ operator: '!=' });
+    this.#conditions['==='] = () => ({ operator: '=' });
+    this.#conditions['!=='] = () => ({ operator: '!=' });
+    this.#conditions['>='] = () => ({ operator: '>=' });
+    this.#conditions['<='] = () => ({ operator: '<=' });
+    this.#conditions['>'] = () => ({ operator: '>' });
+    this.#conditions['<'] = () => ({ operator: '<' });
 
     // Aliases for alternative comparison operators
     this.#conditions['='] = this.#conditions['==='];
     this.#conditions['!='] = this.#conditions['!=='];
+
+    // Soundex
+    this.#conditions['SOUNDEX'] = (condition) => ({
+      operator: '=',
+      valType: 'SOUNDEX',
+      column: `SOUNDEX(${condition.column})`,
+    });
+
+    this.#customValFunc['SOUNDEX'] = (param) => `SOUNDEX(${param})`;
   }
 
   /**
@@ -1295,21 +1305,30 @@ class TinySqlQuery {
     }
 
     // If it's a single condition
-    const col = group.column;
+    let col = group.column;
     let operator = '=';
     let value = group.value;
+    let valType = group.valType;
 
     if (group.operator) {
       const selected = group.operator.toUpperCase();
       if (typeof this.#conditions[selected] === 'function') {
         const result = this.#conditions[selected](group);
         if (typeof result.operator === 'string') operator = result.operator;
+        if (typeof result.column === 'string') col = result.column;
+        if (typeof result.valType === 'string') valType = result.valType;
         if (typeof result.value !== 'undefined') value = result.value;
       }
     }
 
+    const newIndex = pCache.index++;
+    const paramResult =
+      typeof this.#customValFunc[valType] === 'function'
+        ? this.#customValFunc[valType](`$${newIndex}`)
+        : `$${newIndex}`;
+
     pCache.values.push(value);
-    return `${col} ${operator} $${pCache.index++}`;
+    return `${col} ${operator} ${paramResult}`;
   }
 
   /**
