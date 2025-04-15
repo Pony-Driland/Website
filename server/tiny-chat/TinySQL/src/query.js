@@ -1045,7 +1045,10 @@ class TinySqlQuery {
     JSON: (raw) => JSON.stringify(raw),
     TAGS: (raw) => {
       const result = [];
-      for (const tag of raw) if (typeof tag === 'string') result.push(tag);
+      for (const tag of raw) {
+        if (typeof tag === 'string') result.push(tag);
+        else throw new Error('Invalid tag format: each tag must be a string.');
+      }
       return JSON.stringify(result);
     },
   };
