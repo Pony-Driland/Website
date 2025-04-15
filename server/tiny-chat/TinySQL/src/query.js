@@ -30,31 +30,82 @@ class TinySqlQuery {
 
     // Predefined condition operator mappings used in searches
 
-    this.#conditions['LIKE'] = (condition) => ({
+    this.addCondition('LIKE', (condition) => ({
       operator: 'LIKE',
-      value: `${typeof condition.likePosition !== 'string' || condition.likePosition === 'left' ? '%' : ''}${condition.value}${typeof condition.likePosition !== 'string' || condition.likePosition === 'right' ? '%' : ''}`,
-    });
+      value:
+        `${typeof condition.likePosition !== 'string' || condition.likePosition === 'left' ? '%' : ''}` +
+        `${condition.value}` +
+        `${typeof condition.likePosition !== 'string' || condition.likePosition === 'right' ? '%' : ''}`,
+    }));
 
-    this.#conditions['NOT'] = () => ({ operator: '!=' });
-    this.#conditions['==='] = () => ({ operator: '=' });
-    this.#conditions['!=='] = () => ({ operator: '!=' });
-    this.#conditions['>='] = () => ({ operator: '>=' });
-    this.#conditions['<='] = () => ({ operator: '<=' });
-    this.#conditions['>'] = () => ({ operator: '>' });
-    this.#conditions['<'] = () => ({ operator: '<' });
+    this.addCondition('===', '=');
+    this.addCondition('=', '=');
+    this.addCondition('NOT', '!=');
+    this.addCondition('!==', '!=');
+    this.addCondition('!=', '!=');
+    this.addCondition('>=', '>=');
+    this.addCondition('<=', '<=');
+    this.addCondition('>', '>');
+    this.addCondition('<', '<');
 
-    // Aliases for alternative comparison operators
-    this.#conditions['='] = this.#conditions['==='];
-    this.#conditions['!='] = this.#conditions['!=='];
+    // Soundex with custom value handler
+    this.addCondition(
+      'SOUNDEX',
+      (condition) => ({
+        operator: '=',
+        valType: 'SOUNDEX',
+        column: `SOUNDEX(${condition.column})`,
+      }),
+      (param) => `SOUNDEX(${param})`,
+    );
+  }
 
-    // Soundex
-    this.#conditions['SOUNDEX'] = (condition) => ({
-      operator: '=',
-      valType: 'SOUNDEX',
-      column: `SOUNDEX(${condition.column})`,
-    });
+  /**
+   * Adds a new condition handler if the key is not already used.
+   * @param {string} key - The identifier for the new condition type.
+   * @param {string|function} conditionHandler - A string (operator) or a function returning condition object.
+   * @param {function|null} valueHandler - Optional custom value function, must be a function if provided.
+   */
+  addCondition(key, conditionHandler, valueHandler = null) {
+    if (typeof key !== 'string' || key.trim() === '') {
+      throw new Error(`Condition key must be a non-empty string.`);
+    }
 
-    this.#customValFunc['SOUNDEX'] = (param) => `SOUNDEX(${param})`;
+    if (this.#conditions[key] || this.#customValFunc[key]) {
+      throw new Error(`Condition key "${key}" already exists.`);
+    }
+
+    const isFunc = typeof conditionHandler === 'function';
+    const isStr = typeof conditionHandler === 'string';
+    const isObj = objType(conditionHandler, 'object');
+
+    if (!isFunc && !isStr && !isObj) {
+      throw new Error(
+        `Condition handler must be a string (operator), an object with an "operator", or a function.`,
+      );
+    }
+
+    if (isObj) {
+      if (typeof conditionHandler.operator !== 'string' || !conditionHandler.operator.trim()) {
+        throw new Error(
+          `When using an object as condition handler, it must contain a non-empty string "operator" field.`,
+        );
+      }
+    }
+
+    if (valueHandler !== null && typeof valueHandler !== 'function') {
+      throw new Error(`Custom value handler must be a function if provided.`);
+    }
+
+    // Add condition
+    this.#conditions[key] = isStr
+      ? () => ({ operator: conditionHandler })
+      : isObj
+        ? () => ({ ...conditionHandler }) // Clone the object
+        : conditionHandler; // function
+
+    // Add value handler if provided
+    if (valueHandler) this.#customValFunc[key] = valueHandler;
   }
 
   /**
