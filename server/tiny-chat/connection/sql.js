@@ -39,6 +39,7 @@ export const startDatabase = async (appStorage) => {
       ['roomId', 'TEXT', 'PRIMARY KEY DEFAULT (lower(hex(randomblob(16))))'],
       ['title', 'TEXT'],
       ['password', 'TEXT'],
+      ['tags', 'TAGS'],
       ['prompt', 'TEXT'],
       ['model', 'TEXT'],
       ['systemInstruction', 'TEXT'],

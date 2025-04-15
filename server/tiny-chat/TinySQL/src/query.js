@@ -642,13 +642,12 @@ class TinySqlQuery {
    */
   async dropTable() {
     const db = this.#db;
-    const isConnectionError = (err) => this.isConnectionError(err);
     return new Promise((resolve, reject) => {
       const query = `DROP TABLE ${this.#settings.name};`;
       db.run(query, null, 'dropTable')
         .then(() => resolve(true))
         .catch((err) => {
-          if (isConnectionError(err))
+          if (db.isConnectionError(err))
             reject(err); // Rejects on connection-related errors
           else resolve(false); // Resolves with false on other errors
         });
