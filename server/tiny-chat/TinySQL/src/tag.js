@@ -32,6 +32,36 @@ class TinySqlTags {
     this.setColumnName(defaultColumn);
   }
 
+  #tagInputs = {
+    '^': { list: 'boosts', valueKey: 'boost' },
+    '~': { list: 'fuzzies', valueKey: 'fuzzy' },
+  };
+
+  // Método para adicionar uma tag ao #tagInputs
+  addTagInput(key, list, valueKey) {
+    // Validação para garantir que list e valueKey sejam strings
+    if (typeof list !== 'string' || typeof valueKey !== 'string') {
+      throw new Error('Both list and valueKey must be strings');
+    }
+
+    // Impede adicionar o list com o nome "include"
+    if (list === 'include') {
+      throw new Error('Cannot add a tag with the list name "include"');
+    }
+
+    // Adiciona o novo item ao #tagInputs
+    this.#tagInputs[key] = { list, valueKey };
+  }
+
+  // Método para remover uma tag do #tagInputs
+  removeTagInput(key) {
+    if (this.#tagInputs.hasOwnProperty(key)) {
+      delete this.#tagInputs[key];
+      return true;
+    }
+    return false;
+  }
+
   setCanRepeat(value = null) {
     this.noRepeat = typeof value === 'boolean' ? !value : null;
   }
@@ -135,12 +165,6 @@ class TinySqlTags {
   parseWhere(group, pCache) {
     return this.#parseWhere(pCache, group);
   }
-
-  // Por favor não coloque o include aqui, ou seu código vai crashar.
-  #tagInputs = {
-    '^': { list: 'boosts', valueKey: 'boost' },
-    '~': { list: 'fuzzies', valueKey: 'fuzzy' },
-  };
 
   #extractSpecialsFromChunks(chunks) {
     const specials = [];
