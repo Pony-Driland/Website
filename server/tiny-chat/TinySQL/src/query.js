@@ -882,11 +882,13 @@ class TinySqlQuery {
     bigInt: (raw) => {
       if (typeof raw === 'bigint') return raw;
       else {
+        let result;
         try {
-          return BigInt(raw);
+          result = BigInt(raw);
         } catch {
-          return null;
+          result = null;
         }
+        return result;
       }
     },
     /**
@@ -895,8 +897,14 @@ class TinySqlQuery {
      * Returns `null` on NaN.
      */
     int: (raw) => {
-      const result = typeof raw === 'number' ? Math.trunc(raw) : parseInt(raw);
-      if (Number.isNaN(result)) return null;
+      let result;
+      try {
+        result = typeof raw === 'number' ? raw : parseInt(raw);
+        result = Math.trunc(result);
+        if (Number.isNaN(result)) result = null;
+      } catch {
+        result = null;
+      }
       return result;
     },
     /**
@@ -904,8 +912,13 @@ class TinySqlQuery {
      * Returns `null` if value is not a valid float.
      */
     float: (raw) => {
-      const result = typeof raw === 'number' ? raw : parseFloat(raw);
-      if (Number.isNaN(result)) return null;
+      let result;
+      try {
+        result = typeof raw === 'number' ? raw : parseFloat(raw);
+        if (Number.isNaN(result)) result = null;
+      } catch {
+        result = null;
+      }
       return result;
     },
     /**
@@ -915,11 +928,13 @@ class TinySqlQuery {
      */
     json: (raw) => {
       if (typeof raw === 'string') {
+        let result;
         try {
-          return JSON.parse(raw);
+          result = JSON.parse(raw);
         } catch {
-          return null;
+          result = null;
         }
+        return result;
       } else if (objType(raw, 'object') || Array.isArray(raw)) return raw;
       return null;
     },
@@ -934,12 +949,14 @@ class TinySqlQuery {
      * Returns `null` if parsing fails.
      */
     date: (raw) => {
-      if (raw instanceof Date && !Number.isNaN(raw.getTime())) {
-        return raw; // Valid date
-      } else {
-        const parsedDate = new Date(raw);
-        return Number.isNaN(parsedDate.getTime()) ? null : parsedDate;
+      let date;
+      try {
+        date = raw instanceof Date ? raw : new Date(raw);
+      } catch {
+        date = null;
       }
+      if (date !== null) return Number.isNaN(date.getTime()) ? null : date; // Valid date
+      return null;
     },
   };
 
