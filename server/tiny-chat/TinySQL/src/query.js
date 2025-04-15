@@ -61,10 +61,50 @@ class TinySqlQuery {
   }
 
   /**
-   * Adds a new condition handler if the key is not already used.
-   * @param {string} key - The identifier for the new condition type.
-   * @param {string|function} conditionHandler - A string (operator) or a function returning condition object.
-   * @param {function|null} valueHandler - Optional custom value function, must be a function if provided.
+   * Returns the condition key if it exists in the internal condition map.
+   *
+   * This method is useful for checking the existence of a condition without exposing its implementation.
+   *
+   * @param {string} key - The condition identifier to look up.
+   * @returns {string|null} The key if it exists, otherwise null.
+   */
+  getCondition(key) {
+    if (typeof key !== 'string' || !this.#conditions[key]) return null;
+    return key;
+  }
+
+  /**
+   * Retrieves a list of all registered condition keys.
+   *
+   * This method returns only the list of identifiers without exposing the associated condition logic.
+   *
+   * @returns {string[]} Array of all registered condition keys.
+   */
+  getConditions() {
+    return Object.keys(this.#conditions);
+  }
+
+  /**
+   * Registers a new condition under a unique key to be used in query generation.
+   *
+   * The `conditionHandler` determines how the condition will behave. It can be:
+   * - A **string**, representing a SQL operator (e.g., '=', '!=', 'LIKE');
+   * - An **object**, which must include an `operator` key (e.g., { operator: '>=' });
+   * - A **function**, which receives a `condition` object and returns a full condition definition.
+   *
+   * If a `valueHandler` is provided, it must be a function that handles value transformation,
+   * and will be stored under the same key in the internal value function map.
+   *
+   * This method does not allow overwriting an existing key in either condition or value handlers.
+   *
+   * @param {string} key - Unique identifier for the new condition type.
+   * @param {string|object|function} conditionHandler - Defines the logic or operator of the condition.
+   * @param {function|null} [valueHandler=null] - Optional custom function for value transformation (e.g., for SOUNDEX).
+   *
+   * @throws {Error} If the key is not a non-empty string.
+   * @throws {Error} If the key already exists in either conditions or value handlers.
+   * @throws {Error} If conditionHandler is not a string, object with `operator`, or function.
+   * @throws {Error} If valueHandler is provided but is not a function.
    */
   addCondition(key, conditionHandler, valueHandler = null) {
     if (typeof key !== 'string' || key.trim() === '') {
