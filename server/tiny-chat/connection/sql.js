@@ -28,8 +28,7 @@ export const startDatabase = async (appStorage) => {
       return false;
     }
 
-    // Debug mode
-    db.setIsDebug(isDebug());
+    // Tables time
     console.log(`[APP] [${config.database.type}] Loading tables...`);
 
     // Start database
@@ -205,6 +204,9 @@ export const startDatabase = async (appStorage) => {
       ['target', 'TEXT'],
       ['type', 'TEXT', 'NOT NULL'],
     ]);
+
+    // Debug mode
+    db.setIsDebug(isDebug());
 
     // Complete
     console.log(`[APP] [${config.database.type}] Database connection opened.`);
