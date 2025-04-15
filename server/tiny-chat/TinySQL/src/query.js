@@ -1262,23 +1262,57 @@ class TinySqlQuery {
   }
 
   /**
-   * Insert or update a record with given data.
-   * @param {string|number} id - Primary key value.
-   * @param {object} valueObj - Data to store.
-   * @param {boolean} [onlyIfNew=false] - If true, only insert if the record does not already exist.
-   * @returns {Promise<object|null>} - Generated values will be returned.
+   * Insert or update one or more records with given data.
+   *
+   * If `valueObj` is an array, `id` must also be an array of the same length.
+   * All objects inside the array must have identical keys.
+   *
+   * @param {string|number|Array<string|number>} id - Primary key value(s) for each record.
+   * @param {object|object[]} valueObj - A single object or an array of objects containing the data to store.
+   * @param {boolean} [onlyIfNew=false] - If true, only insert if the record(s) do not already exist.
+   * @returns {Promise<object|object[]|null>} - Generated values will be returned, or null if nothing was generated.
+   * @throws {Error} If `valueObj` is an array and `id` is not an array of the same length,
+   *                 or if objects in `valueObj` array have mismatched keys.
    */
   async set(id, valueObj = {}, onlyIfNew = false) {
-    const columns = Object.keys(valueObj);
-    const values = Object.values(valueObj).map((v, index) =>
-      this.#escapeValuesFix(v, columns[index]),
-    );
+    // Prepare validator
+    const isArray = Array.isArray(valueObj);
+    const objects = isArray ? valueObj : [valueObj];
+    const ids = isArray ? (Array.isArray(id) ? id : []) : [id];
 
-    const allParams = [id, ...values];
-    const placeholders = allParams.map((_, index) => `$${index + 1}`).join(', ');
+    // Check if all objects have the same id amount
+    if (objects.length === 0) return null;
+    if (isArray && ids.length !== objects.length)
+      throw new Error('When valueObj is an array, id must also be an array of the same length');
+
+    const columns = Object.keys(objects[0]);
+
+    // Check if all objects have the same keys
+    for (let i = 1; i < objects.length; i++) {
+      const keys = Object.keys(objects[i]);
+      if (keys.length !== columns.length || !columns.every((col) => keys.includes(col))) {
+        throw new Error('All objects in valueObj array must have the same keys');
+      }
+    }
+
+    // Prepare values
+    const allParams = [];
+    const valuePlaceholders = [];
+
+    // Insert content
+    for (let i = 0; i < objects.length; i++) {
+      const obj = objects[i];
+      const rowId = isArray ? ids[i] : ids[0];
+      const values = [rowId, ...columns.map((col) => this.#escapeValuesFix(obj[col], col))];
+      allParams.push(...values);
+
+      const offset = i * (columns.length + 1); // +1 for ID
+      const placeholders = values.map((_, idx) => `$${offset + idx + 1}`).join(', ');
+      valuePlaceholders.push(`(${placeholders})`);
+    }
 
     let query = `INSERT INTO ${this.#settings.name} (${this.#settings.id}, ${columns.join(', ')}) 
-                   VALUES (${placeholders})`;
+                   VALUES ${valuePlaceholders.join(', ')}`;
 
     if (!onlyIfNew) {
       const updateClause = columns.map((col) => `${col} = excluded.${col}`).join(', ');
@@ -1288,11 +1322,12 @@ class TinySqlQuery {
       query += ` ON CONFLICT(${this.#settings.id}${this.#settings.subId ? `, ${this.#settings.subId}` : ''}) DO NOTHING`;
     }
 
-    const ids = [];
+    // Add returning ids to generated keys
+    const genIds = [];
     let returnIds = '';
     for (const item in this.#table) {
       const column = this.#table?.[item];
-      if (typeof valueObj[item] !== 'undefined') continue;
+      if (typeof objects[0][item] !== 'undefined') continue;
       const options = column.options || '';
       if (
         options.includes('PRIMARY KEY') ||
@@ -1301,12 +1336,15 @@ class TinySqlQuery {
       ) {
         if (returnIds.length > 0) returnIds += ', ';
         returnIds += item;
-        ids.push(item);
+        genIds.push(item);
       }
     }
-    if (ids.length > 0) query += ` RETURNING ${returnIds}`;
+    if (genIds.length > 0) query += ` RETURNING ${returnIds}`;
 
-    const result = await this.#db.get(query, allParams);
+    // Complete!
+    const result = await (isArray
+      ? this.#db.all(query, allParams)
+      : this.#db.get(query, allParams));
     if (this.debug) {
       console.log('[sql] [set]', allParams, result);
       console.log(this.#debugSql(query));
