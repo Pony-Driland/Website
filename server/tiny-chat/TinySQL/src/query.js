@@ -46,7 +46,7 @@ class TinySqlQuery {
     this.addCondition('<', '<');
 
     // Soundex with custom value handler
-    this.addConditionV2('SOUNDEX'); // Performs phonetic comparison based on how words sound. Example: SOUNDEX(name) = SOUNDEX('rainbow')
+    this.addConditionV2('SOUNDEX', true); // Performs phonetic comparison based on how words sound. Example: SOUNDEX(name) = SOUNDEX('rainbow')
 
     // Case conversion
     this.addConditionV2('LOWER'); // Converts all characters in the column to lowercase. Example: LOWER(username) = 'fluttershy'
@@ -63,8 +63,8 @@ class TinySqlQuery {
     // Mathematical operations
     this.addConditionV2('ABS'); // Compares the absolute value of a column. Example: ABS(score) = 10
     this.addConditionV2('ROUND'); // Rounds the numeric value of the column. Example: ROUND(rating) = 4
-    this.addConditionV2('CEIL', '>='); // Rounds the value up before comparison. Example: CEIL(price) >= 50
-    this.addConditionV2('FLOOR', '<='); // Rounds the value down before comparison. Example: FLOOR(price) <= 49
+    this.addConditionV2('CEIL', false, '>='); // Rounds the value up before comparison. Example: CEIL(price) >= 50
+    this.addConditionV2('FLOOR', false, '<='); // Rounds the value down before comparison. Example: FLOOR(price) <= 49
 
     // Null and fallback handling
     this.addConditionV2('COALESCE'); // Uses a fallback value if the column is NULL. Example: COALESCE(nickname) = 'anonymous'
@@ -186,7 +186,7 @@ class TinySqlQuery {
    * @param {string} funcName - The SQL function to apply to the column (e.g., `LOWER`, `SOUNDEX`).
    * @param {string} [operator='='] - Default SQL operator to use (e.g., `=`, `!=`).
    *
-   * ------------------------------------------------------
+   * -----------------------------------------------------
    *
    * The registered condition will:
    * - Override the default operator if `condition.newOp` is provided.
@@ -213,25 +213,44 @@ class TinySqlQuery {
    * @param {string} [group.newOp] - Optional override for the comparison operator.
    * @param {string|null} [group.funcName] - Optional override for the SQL function name
    *                                             (affects both SQL column and valType used in `#customValFunc`).
-   *
+   * 
+   * -----------------------------------------------------
    * @example
-   * // Registers LOWER() = ?
-   * addConditionV2('LOWER');
+   * // Registers a ROUND() comparison with "!="
+   * addConditionV2('ROUND', false, '!=');
+   * 
+   * -----------------------------------------------------
+   * @example
+   * // Registers LOWER() with editParamByDefault
+   * addConditionV2('LOWER', true);
    *
    * // Parses as: LOWER(username) = LOWER($1)
    * parse({ column: 'username', value: 'fluttershy', operator: 'LOWER' });
-   *
+   * 
+   *  -----------------------------------------------------
    * @example
-   * // Registers a ROUND() comparison with "!="
-   * addConditionV2('ROUND', '!=');
+   * // Registers UPPER() = ? without editParamByDefault
+   * addConditionV2('UPPER');
    *
+   * // Parses as: UPPER(username) = $1
+   * parse({ column: 'username', value: 'rarity', operator: 'UPPER' });
+   * 
+   *  -----------------------------------------------------
+   * @example
    * // Can be overridden at runtime:
-   * parse({ column: 'price', value: 'value', newOp: '>', operator: 'CEIL', funcName: null });
-   * // Result: CEIL(price) > value
-   *
-   * @returns {void}
+   * addConditionV2('CEIL', true);
+   * 
+   * parse({ 
+   *  column: 'price', 
+   *  value: 3, 
+   *  newOp: '>', 
+   *  operator: 'CEIL', 
+   *  funcName: null 
+   * });
+   * 
+   * // Result: CEIL(price) > 3
    */
-  addConditionV2 = (funcName, operator = '=') =>
+  addConditionV2 = (funcName, editParamByDefault = false, operator = '=') =>
     this.addCondition(
       funcName,
       (condition) => ({
@@ -239,7 +258,7 @@ class TinySqlQuery {
         valType:
           typeof condition.funcName === 'string'
             ? condition.funcName
-            : condition.funcName !== null
+            : editParamByDefault && condition.funcName !== null
               ? funcName
               : null,
         column: `${funcName}(${condition.column})`,
