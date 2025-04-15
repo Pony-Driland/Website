@@ -34,6 +34,93 @@ class TinySQL {
   constructor() {}
 
   /**
+   * Formats SQL for colorful and readable debug in terminal.
+   * Adds indentation, line breaks, and ANSI colors to major SQL clauses.
+   *
+   * @private
+   * @param {string} value - Raw SQL query string.
+   * @returns {string} Colorized and formatted SQL string for terminal.
+   */
+  #debugSql(value) {
+    const RESET = '\x1b[0m';
+    const WHITE = '\x1b[37m';
+    const BLUE = '\x1b[34m';
+    const MAGENTA = '\x1b[35m';
+    const YELLOW = '\x1b[33m';
+
+    // SQL keywords to highlight
+    const keywords = [
+      'WITH',
+      'SELECT',
+      'FROM',
+      'LEFT JOIN',
+      'RIGHT JOIN',
+      'FULL JOIN',
+      'INNER JOIN',
+      'CROSS JOIN',
+      'JOIN',
+      'ON',
+      'WHERE',
+      'GROUP BY',
+      'ORDER BY',
+      'HAVING',
+      'LIMIT',
+      'OFFSET',
+      'INSERT INTO',
+      'VALUES',
+      'UPDATE',
+      'SET',
+      'DELETE FROM',
+      'DELETE',
+      'CREATE TABLE',
+      'CREATE',
+      'DROP TABLE',
+      'DROP',
+      'ALTER TABLE',
+      'ALTER',
+      'UNION',
+      'EXCEPT',
+      'INTERSECT',
+      'DISTINCT',
+    ];
+
+    // Sort to prevent short words from replacing the long ones first (e.g. DROP before DROP TABLE)
+    keywords.sort((a, b) => b.length - a.length);
+
+    // Line breaks before key keywords
+    let formatted = value
+      .trim()
+      .replace(/\s+/g, ' ') // collapses multiple spaces
+      .replace(new RegExp(`\\s*(${keywords.join('|')})\\s+`, 'gi'), '\n$1 ') // quebra antes das keywords
+      .replace(/,\s*/g, ', ') // well formatted commas
+      .replace(/\n/g, '\n  '); // indentation
+
+    // Color all keywords
+    for (const word of keywords) {
+      const regex = new RegExp(`(\\b${word.replace(/\s+/g, '\\s+')}\\b)`, 'gi');
+      formatted = formatted.replace(regex, `${YELLOW}$1${WHITE}`);
+    }
+
+    // Remove external breaks and apply colored edge
+    return (
+      `${BLUE}┌─[${MAGENTA}DEBUG SQL${BLUE}]───────────────────────────────────────────────${RESET}\n` +
+      `  ${WHITE}${formatted.trim()}\n` +
+      `${BLUE}└────────────────────────────────────────────────────────────${RESET}`
+    );
+  }
+
+  /**
+   * Public wrapper for #debugSql().
+   * Formats a SQL query using styled indentation and ANSI colors for terminal output.
+   *
+   * @param {string} value - The raw SQL query string to be formatted.
+   * @returns {string} Formatted and colorized SQL for terminal display.
+   */
+  debugSql(value) {
+    return this.#debugSql(value);
+  }
+
+  /**
    * Registers an event listener for the specified event.
    *
    * @param {string} name - Name of the event.
@@ -126,6 +213,24 @@ class TinySQL {
     return false;
   }
 
+  #debugConsoleText(debugName, status) {
+    const reset = '\x1b[0m';
+    const gray = '\x1b[90m';
+    const blue = '\x1b[34m';
+    const green = '\x1b[32m';
+    const cyan = '\x1b[36m';
+
+    const tagSQL = `${gray}[${blue}SQL${gray}]`;
+    const tagDebug = `${gray}[${green}DEBUG${gray}]`;
+    const tagName =
+      typeof debugName === 'string' && debugName.length > 0
+        ? ` ${gray}[${cyan}${debugName}${gray}]`
+        : '';
+    const tagStatus = typeof status === 'string' ? ` ${gray}[${status}${gray}]` : '';
+
+    return `${tagSQL} ${tagDebug}${tagName}${tagStatus}${reset}`;
+  }
+
   /**
    * Enables or disables debug mode.
    *
@@ -167,7 +272,6 @@ class TinySQL {
       const newTable = new TinySqlQuery();
       newTable.setDb(settings, this);
       await newTable.createTable(tableData);
-      newTable.setDebug(this.isDebug());
 
       this.#tables[settings.name] = newTable;
       return this.#tables[settings.name];
@@ -334,6 +438,24 @@ class TinySQL {
         reject(err);
       };
       const event = this.#event;
+      const isDebug = () => this.#debug;
+      const sendSqlDebug = (debugName, query) => {
+        if (isDebug()) {
+          console.log(this.#debugConsoleText(debugName));
+          console.log(this.#debugSql(query));
+        }
+      };
+      const sendSqlDebugResult = (debugName, type, data) => {
+        if (isDebug())
+          console.log(
+            this.#debugConsoleText(debugName, type),
+            typeof data !== 'undefined' &&
+              data !== null &&
+              (!Array.isArray(data) || data.length > 0)
+              ? data
+              : 'Success!',
+          );
+      };
 
       /**
        * Executes a query expected to return multiple rows.
@@ -342,10 +464,14 @@ class TinySQL {
        * @param {Array} [params=[]] - Optional query parameters.
        * @returns {Promise<Array<Object>|null>} Resolves with an array of result rows or null if invalid.
        */
-      this.all = async function (query, params = []) {
+      this.all = async function (query, params = [], debugName = null) {
         return new Promise((resolve, reject) => {
+          sendSqlDebug(debugName, query);
           db.all(query, params)
-            .then((result) => resolve(Array.isArray(result) ? result : null))
+            .then((result) => {
+              sendSqlDebugResult(debugName, null, result);
+              resolve(Array.isArray(result) ? result : null);
+            })
             .catch((err) => rejectConnection(reject, err));
         });
       };
@@ -357,10 +483,14 @@ class TinySQL {
        * @param {Array} [params=[]] - Optional query parameters.
        * @returns {Promise<Object|null>} Resolves with the result row or null if not a valid object.
        */
-      this.get = async function (query, params = []) {
+      this.get = async function (query, params = [], debugName = null) {
         return new Promise((resolve, reject) => {
+          sendSqlDebug(debugName, query);
           db.get(query, params)
-            .then((result) => resolve(objType(result, 'object') ? result : null))
+            .then((result) => {
+              sendSqlDebugResult(debugName, null, result);
+              resolve(objType(result, 'object') ? result : null);
+            })
             .catch((err) => rejectConnection(reject, err));
         });
       };
@@ -372,10 +502,14 @@ class TinySQL {
        * @param {Array} params - Query parameters.
        * @returns {Promise<Object|null>} Resolves with the result object or null if invalid.
        */
-      this.run = async function (query, params) {
+      this.run = async function (query, params, debugName = null) {
         return new Promise((resolve, reject) => {
+          sendSqlDebug(debugName, query);
           db.run(query, params)
-            .then((result) => resolve(objType(result, 'object') ? result : null))
+            .then((result) => {
+              sendSqlDebugResult(debugName, null, result);
+              resolve(objType(result, 'object') ? result : null);
+            })
             .catch((err) => rejectConnection(reject, err));
         });
       };
@@ -433,6 +567,25 @@ class TinySQL {
       const event = this.#event;
       db.on('error', rejectConnection);
 
+      const isDebug = () => this.#debug;
+      const sendSqlDebug = (debugName, query) => {
+        if (isDebug()) {
+          console.log(this.#debugConsoleText(debugName));
+          console.log(this.#debugSql(query));
+        }
+      };
+      const sendSqlDebugResult = (debugName, type, data) => {
+        if (isDebug())
+          console.log(
+            this.#debugConsoleText(debugName, type),
+            typeof data !== 'undefined' &&
+              data !== null &&
+              (!Array.isArray(data) || data.length > 0)
+              ? data
+              : 'Success!',
+          );
+      };
+
       /**
        * Executes a query expected to return multiple rows.
        *
@@ -440,10 +593,12 @@ class TinySQL {
        * @param {Array} [params=[]] - Optional query parameters.
        * @returns {Promise<Array<Object>|null>} Resolves with an array of result rows or null if invalid.
        */
-      this.all = async function (query, params = []) {
+      this.all = async function (query, params = [], debugName = null) {
         await db.open(); // Ensure the connection is open
         try {
+          sendSqlDebug(debugName, query);
           const res = await db.query(query, params);
+          sendSqlDebugResult(debugName, null, res);
           return objType(res, 'object') && Array.isArray(res.rows) ? res.rows : null;
         } catch (err) {
           rejectConnection(err);
@@ -458,10 +613,12 @@ class TinySQL {
        * @param {Array} [params=[]] - Optional query parameters.
        * @returns {Promise<Object|null>} Resolves with the first row of the result or null if not found.
        */
-      this.get = async function (query, params = []) {
+      this.get = async function (query, params = [], debugName = null) {
         await db.open(); // Ensure the connection is open
         try {
+          sendSqlDebug(debugName, query);
           const res = await db.query(query, params);
+          sendSqlDebugResult(debugName, null, res);
           return objType(res, 'object') && Array.isArray(res.rows) && objType(res.rows[0], 'object')
             ? res.rows[0]
             : null;
@@ -478,10 +635,12 @@ class TinySQL {
        * @param {Array} params - Query parameters.
        * @returns {Promise<Object|null>} Resolves with the result object or null if invalid.
        */
-      this.run = async function (query, params) {
+      this.run = async function (query, params, debugName = null) {
         await db.open(); // Ensure the connection is open
         try {
+          sendSqlDebug(debugName, query);
           const res = await db.query(query, params);
+          sendSqlDebugResult(debugName, null, res);
           return objType(res, 'object') ? res : null;
         } catch (err) {
           rejectConnection(err);

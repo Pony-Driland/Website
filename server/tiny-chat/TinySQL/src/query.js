@@ -1,5 +1,6 @@
 import { Client } from 'pg';
 import { objType } from '../../lib/objChecker';
+import TinySqlTags from './tag';
 
 const clientBase = new Client();
 
@@ -24,10 +25,9 @@ class TinySqlQuery {
   #db;
   #settings = {};
   #table = {};
+  #tagColumns = {};
 
   constructor() {
-    this.debug = false;
-
     // Predefined condition operator mappings used in searches
     this.addCondition('LIKE', (condition) => ({
       operator: 'LIKE',
@@ -267,134 +267,6 @@ class TinySqlQuery {
       }),
       (param) => `${funcName}(${param})`,
     );
-
-  /**
-   * Formats SQL for clean and readable debug in terminal.
-   * Adds line breaks and indentation to major SQL clauses,
-   * and wraps the query with visual markers, without outer newlines.
-   *
-   * @private
-   * @param {string} value - Raw SQL query string.
-   * @returns {string} Formatted SQL string for terminal output.
-   */
-  #debugSqlClassic(value) {
-    const formatted = value
-      .trim()
-      .replace(/\s+/g, ' ') // collapse multiple spaces
-      .replace(
-        /\s*(WITH|SELECT|FROM|LEFT JOIN|RIGHT JOIN|FULL JOIN|INNER JOIN|CROSS JOIN|JOIN|ON|WHERE|GROUP BY|ORDER BY|HAVING|LIMIT|OFFSET)\s+/gi,
-        '\n$1 ',
-      )
-      .replace(/,\s*/g, ', ') // clean comma spacing
-      .replace(/\n/g, '\n  '); // indent each line
-
-    const result =
-      '┌─[DEBUG SQL]───────────────────────────────────────────────\n' +
-      '  ' +
-      formatted.trim() +
-      '\n' +
-      '└────────────────────────────────────────────────────────────';
-    return result;
-  }
-
-  /**
-   * Formats SQL for colorful and readable debug in terminal.
-   * Adds indentation, line breaks, and ANSI colors to major SQL clauses.
-   *
-   * @private
-   * @param {string} value - Raw SQL query string.
-   * @returns {string} Colorized and formatted SQL string for terminal.
-   */
-  #debugSql(value) {
-    const RESET = '\x1b[0m';
-    const WHITE = '\x1b[37m';
-    const BLUE = '\x1b[34m';
-    const MAGENTA = '\x1b[35m';
-    const YELLOW = '\x1b[33m';
-
-    // SQL keywords to highlight
-    const keywords = [
-      'WITH',
-      'SELECT',
-      'FROM',
-      'LEFT JOIN',
-      'RIGHT JOIN',
-      'FULL JOIN',
-      'INNER JOIN',
-      'CROSS JOIN',
-      'JOIN',
-      'ON',
-      'WHERE',
-      'GROUP BY',
-      'ORDER BY',
-      'HAVING',
-      'LIMIT',
-      'OFFSET',
-      'INSERT INTO',
-      'VALUES',
-      'UPDATE',
-      'SET',
-      'DELETE FROM',
-      'DELETE',
-      'CREATE TABLE',
-      'CREATE',
-      'DROP TABLE',
-      'DROP',
-      'ALTER TABLE',
-      'ALTER',
-      'UNION',
-      'EXCEPT',
-      'INTERSECT',
-      'DISTINCT',
-    ];
-
-    // Sort to prevent short words from replacing the long ones first (e.g. DROP before DROP TABLE)
-    keywords.sort((a, b) => b.length - a.length);
-
-    // Line breaks before key keywords
-    let formatted = value
-      .trim()
-      .replace(/\s+/g, ' ') // collapses multiple spaces
-      .replace(new RegExp(`\\s*(${keywords.join('|')})\\s+`, 'gi'), '\n$1 ') // quebra antes das keywords
-      .replace(/,\s*/g, ', ') // well formatted commas
-      .replace(/\n/g, '\n  '); // indentation
-
-    // Color all keywords
-    for (const word of keywords) {
-      const regex = new RegExp(`(\\b${word.replace(/\s+/g, '\\s+')}\\b)`, 'gi');
-      formatted = formatted.replace(regex, `${YELLOW}$1${WHITE}`);
-    }
-
-    // Remove external breaks and apply colored edge
-    return (
-      `${BLUE}┌─[${MAGENTA}DEBUG SQL${BLUE}]───────────────────────────────────────────────${RESET}\n` +
-      `  ${WHITE}${formatted.trim()}\n` +
-      `${BLUE}└────────────────────────────────────────────────────────────${RESET}`
-    );
-  }
-
-  /**
-   * Public wrapper for #debugSql().
-   * Formats a SQL query using styled indentation and ANSI colors for terminal output.
-   *
-   * @param {string} value - The raw SQL query string to be formatted.
-   * @returns {string} Formatted and colorized SQL for terminal display.
-   */
-  debugSql(value) {
-    return this.#debugSql(value);
-  }
-
-  /**
-   * Public wrapper for #debugSqlClassic().
-   * Formats a SQL query using minimal spacing (no colors or indentation).
-   * Good for compact, single-line SQL logging.
-   *
-   * @param {string} value - The raw SQL query string to be compressed.
-   * @returns {string} Compact single-line SQL string.
-   */
-  debugSqlClassic(value) {
-    return this.#debugSqlClassic(value);
-  }
 
   /**
    * Generates a SELECT clause based on the input, supporting SQL expressions, aliases,
@@ -723,22 +595,14 @@ class TinySqlQuery {
       if (action === 'ADD') {
         const query = `ALTER TABLE ${this.#settings.name} ADD COLUMN ${change[1]} ${change[2]} ${change[3] || ''}`;
         try {
-          await this.#db.run(query);
-          if (this.debug) {
-            console.log('[sql] [updateTable - ADD]');
-            console.log(this.#debugSql(query));
-          }
+          await this.#db.run(query, undefined, 'updateTable - ADD');
         } catch (error) {
           console.error('[sql] [updateTable - ADD] Error adding column:', error);
         }
       } else if (action === 'REMOVE') {
         const query = `ALTER TABLE ${this.#settings.name} DROP COLUMN IF EXISTS ${change[1]}`;
         try {
-          await this.#db.run(query);
-          if (this.debug) {
-            console.log('[sql] [updateTable - REMOVE]');
-            console.log(this.#debugSql(query));
-          }
+          await this.#db.run(query, undefined, 'updateTable - REMOVE');
         } catch (error) {
           console.error('[sql] [updateTable - REMOVE] Error removing column:', error);
         }
@@ -747,22 +611,14 @@ class TinySqlQuery {
           change[3] ? `, ALTER COLUMN ${change[1]} SET ${change[3]}` : ''
         }`;
         try {
-          await this.#db.run(query);
-          if (this.debug) {
-            console.log('[sql] [updateTable - MODIFY]');
-            console.log(this.#debugSql(query));
-          }
+          await this.#db.run(query, undefined, 'updateTable - MODIFY');
         } catch (error) {
           console.error('[sql] [updateTable - MODIFY] Error modifying column:', error);
         }
       } else if (action === 'RENAME') {
         const query = `ALTER TABLE ${this.#settings.name} RENAME COLUMN ${change[1]} TO ${change[2]}`;
         try {
-          await this.#db.run(query);
-          if (this.debug) {
-            console.log('[sql] [updateTable - RENAME]');
-            console.log(this.#debugSql(query));
-          }
+          await this.#db.run(query, undefined, 'updateTable - RENAME');
         } catch (error) {
           console.error('[sql] [updateTable - RENAME] Error renaming column:', error);
         }
@@ -789,14 +645,8 @@ class TinySqlQuery {
     const isConnectionError = (err) => this.isConnectionError(err);
     return new Promise((resolve, reject) => {
       const query = `DROP TABLE ${this.#settings.name};`;
-      db.run(query)
-        .then(() => {
-          if (this.debug) {
-            console.log('[sql] [dropTable]');
-            console.log(this.#debugSql(query));
-          }
-          resolve(true);
-        })
+      db.run(query, null, 'dropTable')
+        .then(() => resolve(true))
         .catch((err) => {
           if (isConnectionError(err))
             reject(err); // Rejects on connection-related errors
@@ -808,6 +658,9 @@ class TinySqlQuery {
   /**
    * Creates a table in the database based on provided column definitions.
    * Also stores the column structure in this.#table as an object keyed by column name.
+   * If a column type is "TAGS", it will be replaced with "JSON" for SQL purposes,
+   * and registered in #tagColumns using a TinySqlTags instance,
+   * but the original "TAGS" value will be preserved in this.#table.
    * @param {Array<Array<string|any>>} columns - An array of column definitions.
    * Each column is defined by an array containing the column name, type, and optional configurations.
    * @returns {Promise<void>}
@@ -816,41 +669,37 @@ class TinySqlQuery {
     // Start building the query
     let query = 'CREATE TABLE IF NOT EXISTS ' + this.#settings.name + ' (';
 
-    // Iterate through the columns array to construct column definitions
-    const columnDefinitions = columns.map((column) => {
-      // If the column definition contains more than two items, it's a full definition
-      if (column.length === 3) {
-        return `${column[0]} ${column[1]} ${column[2]}`;
+    // Internal processing for SQL only (preserve original for #table)
+    const sqlColumns = columns.map((column) => {
+      const col = [...column]; // shallow clone to avoid mutating original
+
+      // Prepare to detect custom column type
+      if (col.length >= 2 && typeof col[1] === 'string') {
+        const [name, type] = col;
+        // Tags
+        if (type.toUpperCase() === 'TAGS') {
+          col[1] = 'JSON';
+          this.#tagColumns[name] = new TinySqlTags(name);
+        }
       }
+
+      // If the column definition contains more than two items, it's a full definition
+      if (col.length === 3) return `${col[0]} ${col[1]} ${col[2]}`;
       // If only two items are provided, it's just the name and type (no additional configuration)
-      else if (column.length === 2) {
-        return `${column[0]} ${column[1]}`;
+      else if (col.length === 2) {
+        return `${col[0]} ${col[1]}`;
       }
       // If only one item is provided, it's a table setting (e.g., PRIMARY KEY)
       else {
-        return column[0];
+        return col[0];
       }
     });
 
     // Join all column definitions into a single string
-    query += columnDefinitions.join(', ') + ')';
+    query += sqlColumns.join(', ') + ')';
 
     // Execute the SQL query to create the table using db.run
-    await this.#db
-      .run(query)
-      .catch((err) => {
-        console.error(err);
-        console.log(`[sql] [createTable] [error]`);
-        console.log(this.#debugSql(query));
-        return err;
-      })
-      .then((result) => {
-        if (this.debug) {
-          console.log('[sql] [createTable]');
-          console.log(this.#debugSql(query));
-        }
-        return result;
-      });
+    await this.#db.run(query, undefined, 'createTable');
 
     // Save the table structure using an object with column names as keys
     this.#table = {};
@@ -863,6 +712,18 @@ class TinySqlQuery {
         };
       }
     }
+  }
+
+  /**
+   * Returns the TinySqlTags instance associated with the given column name,
+   * if it was defined as a "TAGS" column during table creation.
+   *
+   * @param {string} name - The column name to retrieve the tag editor for.
+   * @returns {TinySqlTags|null} - The TinySqlTags instance if it exists, otherwise null.
+   */
+  getTagEditor(name) {
+    if (this.#tagColumns[name]) return this.#tagColumns[name];
+    return null;
   }
 
   /**
@@ -939,6 +800,28 @@ class TinySqlQuery {
       return null;
     },
     /**
+     * Parses or sanitizes tag input to ensure it is a valid array of strings.
+     * - If the input is a JSON string, attempts to parse it as an array.
+     * - If the input is already an array, ensures all elements are strings; non-string elements are set to `null`.
+     * - Returns `null` if the input is neither a string nor an array, or if parsing fails.
+     */
+    tags: (raw) => {
+      let result;
+      if (typeof raw === 'string') {
+        try {
+          result = JSON.parse(raw);
+        } catch {
+          result = null;
+        }
+      }
+
+      if (Array.isArray(result)) {
+        for (const index in result) if (typeof result[index] !== 'string') result[index] = null;
+        return result;
+      }
+      return null;
+    },
+    /**
      * Validates that the value is a string, otherwise returns `null`.
      */
     text: (raw) => (typeof raw === 'string' ? raw : null),
@@ -987,6 +870,7 @@ class TinySqlQuery {
 
     // JSON-compatible field
     JSON: (raw) => this.#jsonEscape.json(raw),
+    TAGS: (raw) => this.#jsonEscape.tags(raw),
 
     // Textual representations
     TEXT: (raw) => this.#jsonEscape.text(raw),
@@ -1097,14 +981,6 @@ class TinySqlQuery {
   }
 
   /**
-   * Enables or disables debug output to console.
-   * @param {boolean} [isDebug=false]
-   */
-  setDebug(isDebug = false) {
-    this.debug = typeof isDebug === 'boolean' ? isDebug : false;
-  }
-
-  /**
    * Maps database engines to the corresponding property used
    * to check the number of affected rows after a write operation.
    *
@@ -1156,11 +1032,7 @@ class TinySqlQuery {
     const query = `SELECT COUNT(*) FROM ${this.#settings.name} WHERE ${this.#settings.id} = $1${useSub ? ` AND ${this.#settings.subId} = $2` : ''} LIMIT 1`;
     if (useSub) params.push(subId);
 
-    const result = await this.#db.get(query, params);
-    if (this.debug) {
-      console.log('[sql] [has]', params, result);
-      console.log(this.#debugSql(query));
-    }
+    const result = await this.#db.get(query, params, 'has');
     return objType(result, 'object') && result['COUNT(*)'] === 1 ? true : false;
   }
 
@@ -1172,6 +1044,11 @@ class TinySqlQuery {
   #jsonEscapeFix = {
     // Serializes any value into a JSON string.
     JSON: (raw) => JSON.stringify(raw),
+    TAGS: (raw) => {
+      const result = [];
+      for (const tag of raw) if (typeof tag === 'string') result.push(tag);
+      return JSON.stringify(result);
+    },
   };
 
   /**
@@ -1224,11 +1101,7 @@ class TinySqlQuery {
     const query = `UPDATE ${this.#settings.name} SET ${setClause} WHERE ${whereClause}`;
     const params = [...updateValues, ...whereCache.values];
 
-    const result = await this.#db.run(query, params);
-    if (this.debug) {
-      console.log('[sql] [advancedUpdate]', params, result);
-      console.log(this.#debugSql(query));
-    }
+    const result = await this.#db.run(query, params, 'advancedUpdate');
     return this.#getResultCount(result);
   }
 
@@ -1253,11 +1126,7 @@ class TinySqlQuery {
     const params = [...values, id];
     if (useSub) params.push(valueObj[this.#settings.subId]);
 
-    const result = await this.#db.run(query, params);
-    if (this.debug) {
-      console.log('[sql] [update]', params, result);
-      console.log(this.#debugSql(query));
-    }
+    const result = await this.#db.run(query, params, 'update');
     return this.#getResultCount(result);
   }
 
@@ -1343,12 +1212,8 @@ class TinySqlQuery {
 
     // Complete!
     const result = await (isArray
-      ? this.#db.all(query, allParams)
-      : this.#db.get(query, allParams));
-    if (this.debug) {
-      console.log('[sql] [set]', allParams, result);
-      console.log(this.#debugSql(query));
-    }
+      ? this.#db.all(query, allParams, 'multi-set')
+      : this.#db.get(query, allParams, 'set'));
     return result || null;
   }
 
@@ -1364,11 +1229,7 @@ class TinySqlQuery {
     const query = `SELECT ${this.#settings.select} FROM ${this.#settings.name} t 
                      ${this.#insertJoin()} WHERE t.${this.#settings.id} = $1${useSub ? ` AND t.${this.#settings.subId} = $2` : ''}`;
     if (useSub) params.push(subId);
-    const result = this.#jsonChecker(await this.#db.get(query, params));
-    if (this.debug) {
-      console.log('[sql] [get]', params, result);
-      console.log(this.#debugSql(query));
-    }
+    const result = this.#jsonChecker(await this.#db.get(query, params, 'get'));
     if (!result) return null;
     return result;
   }
@@ -1391,13 +1252,7 @@ class TinySqlQuery {
     if (!whereClause) throw new Error('Empty WHERE clause — deletion aborted for safety');
 
     const query = `DELETE FROM ${this.#settings.name} WHERE ${whereClause}`;
-    const result = await this.#db.run(query, pCache.values);
-
-    if (this.debug) {
-      console.log('[sql] [advancedDelete]', pCache.values, result);
-      console.log(this.#debugSql(query));
-    }
-
+    const result = await this.#db.run(query, pCache.values, 'advancedDelete');
     return this.#getResultCount(result);
   }
 
@@ -1413,11 +1268,7 @@ class TinySqlQuery {
     const params = [id];
     if (useSub) params.push(subId);
 
-    const result = await this.#db.run(query, params);
-    if (this.debug) {
-      console.log('[sql] [delete]', params, result);
-      console.log(this.#debugSql(query));
-    }
+    const result = await this.#db.run(query, params, 'delete');
     return this.#getResultCount(result);
   }
 
@@ -1439,13 +1290,8 @@ class TinySqlQuery {
                    ${orderClause} ${limitClause}`.trim();
 
     const params = filterId !== null ? [filterId, count] : [count];
-    const results = await this.#db.all(query, params);
+    const results = await this.#db.all(query, params, 'getAmount');
     for (const index in results) this.#jsonChecker(results[index]);
-
-    if (this.debug) {
-      console.log('[sql] [getAmount]', params, results);
-      console.log(this.#debugSql(query));
-    }
     return results;
   }
 
@@ -1464,13 +1310,8 @@ class TinySqlQuery {
                    ${whereClause}
                    ${orderClause}`.trim();
 
-    const results = await this.#db.all(query, filterId !== null ? [filterId] : []);
+    const results = await this.#db.all(query, filterId !== null ? [filterId] : [], 'getAll');
     for (const index in results) this.#jsonChecker(results[index]);
-
-    if (this.debug) {
-      console.log('[sql] [getAll]', filterId, results);
-      console.log(this.#debugSql(query));
-    }
     return results;
   }
 
@@ -1481,19 +1322,24 @@ class TinySqlQuery {
    * @param {Array<any>} params - The parameters for the SQL query.
    * @param {number} perPage - The number of items per page.
    * @param {number} page - The current page number (starting from 1).
+   * @param {string} queryName - The query name to insert into the sql debug.
    * @returns {Promise<{ items: any[], totalPages: number, totalItems: number }>}
    */
-  async #pagination(query, params, perPage, page) {
+  async #pagination(query, params, perPage, page, queryName = '') {
     const offset = (page - 1) * perPage;
     const isZero = perPage < 1;
 
     // Count total items
     const countQuery = `SELECT COUNT(*) as total FROM (${query}) AS count_wrapper`;
-    const { total } = !isZero ? await this.#db.get(countQuery, params) : { total: 0 };
+    const { total } = !isZero
+      ? await this.#db.get(countQuery, params, `pagination-${queryName}`)
+      : { total: 0 };
 
     // Fetch paginated items
     const paginatedQuery = `${query} LIMIT ? OFFSET ?`;
-    const items = !isZero ? await this.#db.all(paginatedQuery, [...params, perPage, offset]) : [];
+    const items = !isZero
+      ? await this.#db.all(paginatedQuery, [...params, perPage, offset], `pagination-${queryName}`)
+      : [];
 
     const totalPages = !isZero ? Math.ceil(total / perPage) : 0;
 
@@ -1775,7 +1621,7 @@ class TinySqlQuery {
       WHERE rn = 1
     `.trim();
 
-    const row = await this.#db.get(query, pCache.values);
+    const row = await this.#db.get(query, pCache.values, 'find');
     if (!row) return null;
 
     const total = parseInt(row.total);
@@ -1801,10 +1647,7 @@ class TinySqlQuery {
       response.item = row;
     }
 
-    if (this.debug) {
-      console.log('[sql] [find]', pCache.values, response);
-      console.log(this.#debugSql(query));
-    }
+    // Complete
     return response;
   }
 
@@ -1896,22 +1739,12 @@ class TinySqlQuery {
     let results;
 
     // Pagination
-    if (typeof perPage === 'number' && perPage > -1) {
-      results = await this.#pagination(query, values, perPage, page);
-      if (this.debug) {
-        console.log('[sql] [search:paginated]', values, results);
-        console.log(this.#debugSql(query));
-      }
-    }
-
+    if (typeof perPage === 'number' && perPage > -1)
+      results = await this.#pagination(query, values, perPage, page, 'search');
     // Normal
     else {
-      results = await this.#db.all(query, values);
+      results = await this.#db.all(query, values, 'search');
       for (const index in results) this.#jsonChecker(results[index]);
-      if (this.debug) {
-        console.log('[sql] [search]', values, results);
-        console.log(this.#debugSql(query));
-      }
     }
 
     // Complete
