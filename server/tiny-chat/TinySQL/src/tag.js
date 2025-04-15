@@ -136,11 +136,25 @@ class TinySqlTags {
     return this.#parseWhere(pCache, group);
   }
 
+  // Por favor não coloque o include aqui, ou seu código vai crashar.
+  #tagInputs = {
+    '^': { list: 'boosts', valueKey: 'boost' },
+    '~': { list: 'fuzzies', valueKey: 'fuzzy' },
+  };
+
   #extractSpecialsFromChunks(chunks) {
     const specials = [];
-    const boosts = [];
+    const outputGroups = {}; // Vai armazenar os grupos dinâmicos
+    const uniqueMap = {}; // Vai armazenar os sets dinâmicos
+
+    // Inicializando os sets para cada grupo definido em #tagInputs
+    for (const symbol in this.#tagInputs) {
+      const { list } = this.#tagInputs[symbol];
+      outputGroups[list] = [];
+      uniqueMap[list] = new Set();
+    }
+
     const uniqueTags = new Set();
-    const uniqueBoosts = new Set();
 
     for (let i = chunks.length - 1; i >= 0; i--) {
       const group = chunks[i];
@@ -148,27 +162,36 @@ class TinySqlTags {
       const remainingTerms = [];
 
       for (const term of terms) {
-        // Verifica se o termo contém um boost (indicado por "^")
-        if (term.includes('^')) {
-          const [termValue, boostValue] = term.split('^');
-          let boost = parseFloat(boostValue.replace(/\!/g, '-'));
-          if (Number.isNaN(boost)) boost = 1; // Se não houver valor de boost válido, define como 1
+        let matched = false;
 
-          // Se o noRepeat for true, verifica se o termo já foi adicionado
-          if (!uniqueBoosts.has(termValue.trim())) {
-            boosts.push({ term: termValue.trim(), boost });
-            uniqueBoosts.add(termValue.trim());
-          }
+        // Verificando se o termo contém algum dos símbolos definidos em #tagInputs
+        for (const symbol in this.#tagInputs) {
+          if (term.includes(symbol)) {
+            const { list, valueKey } = this.#tagInputs[symbol];
+            const [termValue, rawValue] = term.split(symbol);
+            let value = parseFloat(rawValue.replace(/\!/g, '-'));
+            if (Number.isNaN(value)) value = 1;
 
-          // Checar repeat de termos e permitir repetição dentro de grupos
-          if (!this.noRepeat || Array.isArray(group) || !uniqueTags.has(termValue.trim())) {
-            remainingTerms.push(termValue.trim());
-            if (!Array.isArray(group)) uniqueTags.add(termValue.trim());
+            // Adiciona o valor ao respectivo grupo, se ainda não tiver sido processado
+            if (!uniqueMap[list].has(termValue.trim())) {
+              outputGroups[list].push({ term: termValue.trim(), [valueKey]: value });
+              uniqueMap[list].add(termValue.trim());
+            }
+
+            // Verificando se o termo já foi adicionado no conjunto de tags únicas
+            if (!this.noRepeat || Array.isArray(group) || !uniqueTags.has(termValue.trim())) {
+              remainingTerms.push(termValue.trim());
+              if (!Array.isArray(group)) uniqueTags.add(termValue.trim());
+            }
+
+            matched = true;
+            break; // Para a verificação após o primeiro símbolo correspondente
           }
-          continue; // Ignora a validação do ":"
         }
 
-        // Se o termo contém ":", verifica se é um termo especial
+        if (matched) continue;
+
+        // Specials com ":"
         if (term.includes(':')) {
           const [key, ...rest] = term.split(':');
           const value = rest.join(':');
@@ -190,6 +213,7 @@ class TinySqlTags {
         }
       }
 
+      // Se não restarem termos, remove o grupo
       if (remainingTerms.length === 0) {
         chunks.splice(i, 1);
       } else {
@@ -197,7 +221,11 @@ class TinySqlTags {
       }
     }
 
-    return { specials, boosts };
+    // Retorna todos os grupos dinamicamente gerados
+    return {
+      specials,
+      ...outputGroups,
+    };
   }
 
   parseString(input) {
@@ -288,8 +316,8 @@ class TinySqlTags {
     flushBuffer();
     flushGroup();
 
-    const { specials, boosts } = this.#extractSpecialsFromChunks(chunks);
-    return { include: chunks, specials, boosts };
+    const outputGroups = this.#extractSpecialsFromChunks(chunks);
+    return { include: chunks, ...outputGroups };
   }
 
   safeParseString(input) {
