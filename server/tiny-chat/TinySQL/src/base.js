@@ -31,8 +31,27 @@ class TinySQL {
   #debug = false;
   #event = new EventEmitter();
   #debugCount = 0;
+  #consoleColors = true;
 
   constructor() {}
+
+  /**
+   * Enables or disables console color output for debug messages.
+   *
+   * @param {boolean} state - Set to `true` to enable colors, or `false` to disable.
+   */
+  setConsoleColors(state) {
+    this.#consoleColors = Boolean(state);
+  }
+
+  /**
+   * Returns whether console color output is currently enabled.
+   *
+   * @returns {boolean}
+   */
+  getConsoleColors() {
+    return this.#consoleColors === true;
+  }
 
   /**
    * Formats SQL for colorful and readable debug in terminal.
@@ -43,13 +62,14 @@ class TinySQL {
    * @returns {string} Colorized and formatted SQL string for terminal.
    */
   #debugSql(value) {
-    const RESET = '\x1b[0m';
-    const WHITE = '\x1b[37m';
-    const BLUE = '\x1b[34m';
-    const MAGENTA = '\x1b[35m';
-    const YELLOW = '\x1b[33m';
+    const useColor = this.#consoleColors !== false;
 
-    // SQL keywords to highlight
+    const RESET = useColor ? '\x1b[0m' : '';
+    const WHITE = useColor ? '\x1b[37m' : '';
+    const BLUE = useColor ? '\x1b[34m' : '';
+    const MAGENTA = useColor ? '\x1b[35m' : '';
+    const YELLOW = useColor ? '\x1b[33m' : '';
+
     const keywords = [
       'WITH',
       'SELECT',
@@ -92,7 +112,7 @@ class TinySQL {
     let formatted = value
       .trim()
       .replace(/\s+/g, ' ') // collapses multiple spaces
-      .replace(new RegExp(`\\s*(${keywords.join('|')})\\s+`, 'gi'), '\n$1 ') // quebra antes das keywords
+      .replace(new RegExp(`\\s*(${keywords.join('|')})\\s+`, 'gi'), '\n$1 ') // breaks before the keywords
       .replace(/,\s*/g, ', ') // well formatted commas
       .replace(/\n/g, '\n  '); // indentation
 
@@ -214,12 +234,26 @@ class TinySQL {
     return false;
   }
 
+  /**
+   * Formats a debug message string with colored ANSI tags for the console.
+   * Useful for consistent and readable debug logging with identifiers.
+   *
+   * @param {string|number} id - Identifier used in the SQL tag (e.g., query ID).
+   * @param {string} [debugName] - Optional label or context name for the debug log.
+   * @param {string} [status] - Optional status message (e.g., 'OK', 'ERROR', 'LOADING').
+   * @returns {string} - Formatted string with ANSI color codes for console output.
+   *
+   * Example output:
+   * [SQL][123] [DEBUG] [MyDebug] [OK]
+   */
   #debugConsoleText(id, debugName, status) {
-    const reset = '\x1b[0m';
-    const gray = '\x1b[90m';
-    const blue = '\x1b[34m';
-    const green = '\x1b[32m';
-    const cyan = '\x1b[36m';
+    const useColor = this.#consoleColors !== false;
+
+    const reset = useColor ? '\x1b[0m' : '';
+    const gray = useColor ? '\x1b[90m' : '';
+    const blue = useColor ? '\x1b[34m' : '';
+    const green = useColor ? '\x1b[32m' : '';
+    const cyan = useColor ? '\x1b[36m' : '';
 
     const tagSQL = `${gray}[${blue}SQL${gray}]${gray}[${blue}${id}${gray}]`;
     const tagDebug = `${gray}[${green}DEBUG${gray}]`;
@@ -230,6 +264,19 @@ class TinySQL {
     const tagStatus = typeof status === 'string' ? ` ${gray}[${status}${gray}]` : '';
 
     return `${tagSQL} ${tagDebug}${tagName}${tagStatus}${reset}`;
+  }
+
+  /**
+   * Public wrapper for the internal debug message formatter.
+   * Returns a formatted debug string with consistent styling.
+   *
+   * @param {string|number} id - Identifier used in the SQL tag (e.g., query ID).
+   * @param {string} [debugName] - Optional label or context name for the debug log.
+   * @param {string} [status] - Optional status message (e.g., 'OK', 'ERROR', 'LOADING').
+   * @returns {string} - ANSI-colored debug string for console output.
+   */
+  debugConsoleText(id, debugName, status) {
+    return this.#debugConsoleText(id, debugName, status);
   }
 
   /**
