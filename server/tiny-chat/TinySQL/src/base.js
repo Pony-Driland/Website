@@ -441,9 +441,9 @@ class TinySQL {
       const event = this.#event;
       const getId = () => this.#debugCount++;
       const isDebug = () => this.#debug;
-      const sendSqlDebug = (id, debugName, query) => {
+      const sendSqlDebug = (id, debugName, query, params) => {
         if (isDebug()) {
-          console.log(this.#debugConsoleText(id, debugName));
+          console.log(this.#debugConsoleText(id, debugName), params);
           console.log(this.#debugSql(query));
         }
       };
@@ -469,7 +469,7 @@ class TinySQL {
       this.all = async function (query, params = [], debugName = null) {
         return new Promise((resolve, reject) => {
           const id = getId();
-          sendSqlDebug(id, debugName, query);
+          sendSqlDebug(id, debugName, query, params);
           db.all(query, params)
             .then((result) => {
               sendSqlDebugResult(id, debugName, null, result);
@@ -489,7 +489,7 @@ class TinySQL {
       this.get = async function (query, params = [], debugName = null) {
         return new Promise((resolve, reject) => {
           const id = getId();
-          sendSqlDebug(id, debugName, query);
+          sendSqlDebug(id, debugName, query, params);
           db.get(query, params)
             .then((result) => {
               sendSqlDebugResult(id, debugName, null, result);
@@ -509,7 +509,7 @@ class TinySQL {
       this.run = async function (query, params, debugName = null) {
         return new Promise((resolve, reject) => {
           const id = getId();
-          sendSqlDebug(id, debugName, query);
+          sendSqlDebug(id, debugName, query, params);
           db.run(query, params)
             .then((result) => {
               sendSqlDebugResult(id, debugName, null, result);
@@ -574,9 +574,9 @@ class TinySQL {
 
       const getId = () => this.#debugCount++;
       const isDebug = () => this.#debug;
-      const sendSqlDebug = (id, debugName, query) => {
+      const sendSqlDebug = (id, debugName, query, params) => {
         if (isDebug()) {
-          console.log(this.#debugConsoleText(id, debugName));
+          console.log(this.#debugConsoleText(id, debugName), params);
           console.log(this.#debugSql(query));
         }
       };
@@ -603,7 +603,7 @@ class TinySQL {
         await db.open(); // Ensure the connection is open
         try {
           const id = getId();
-          sendSqlDebug(id, debugName, query);
+          sendSqlDebug(id, debugName, query, params);
           const res = await db.query(query, params);
           sendSqlDebugResult(id, debugName, null, res);
           return objType(res, 'object') && Array.isArray(res.rows) ? res.rows : null;
@@ -624,7 +624,7 @@ class TinySQL {
         await db.open(); // Ensure the connection is open
         try {
           const id = getId();
-          sendSqlDebug(id, debugName, query);
+          sendSqlDebug(id, debugName, query, params);
           const res = await db.query(query, params);
           sendSqlDebugResult(id, debugName, null, res);
           return objType(res, 'object') && Array.isArray(res.rows) && objType(res.rows[0], 'object')
@@ -647,7 +647,7 @@ class TinySQL {
         await db.open(); // Ensure the connection is open
         try {
           const id = getId();
-          sendSqlDebug(id, debugName, query);
+          sendSqlDebug(id, debugName, query, params);
           const res = await db.query(query, params);
           sendSqlDebugResult(id, debugName, null, res);
           return objType(res, 'object') ? res : null;
