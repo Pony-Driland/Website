@@ -1586,6 +1586,8 @@ class TinySqlQuery {
    *
    * @param {object} [searchData={}] - Main search configuration.
    * @param {object} [searchData.q={}] - Nested criteria object.
+   * @param {object[]|object|null} [searchData.tagCriteria] - One or multiple tag criteria groups.
+   * @param {string[]} [searchData.tagCriteriaOps] - Optional logical operators between tag groups (e.g., ['AND', 'OR']).
    * @param {number} [searchData.perPage] - Number of items per page.
    * @param {string|string[]|object|null} [searchData.select='*'] - Which columns to select. Set to null to skip item data.
    * @param {string} [searchData.order] - SQL ORDER BY clause. Defaults to configured order.
@@ -1593,35 +1595,70 @@ class TinySqlQuery {
    * @returns {Promise<{ page: number, pages: number, total: number, position: number, item?: object } | null>}
    */
   async find(searchData = {}) {
-    const filter = searchData.q || {};
-    const selectValue = searchData.select || '*';
+    const criteria = searchData.q || {};
+    const tagCriteria = searchData.tagCriteria || null;
+    const tagCriteriaOps = Array.isArray(searchData.tagCriteriaOps)
+      ? searchData.tagCriteriaOps
+      : [];
+
+    const selectValue = searchData.select ?? '*';
     const perPage = searchData.perPage || null;
     const order = searchData.order || this.#settings.order;
     const joinConfig = searchData.join || null;
 
-    if (!filter || typeof filter !== 'object') return null;
+    if (!criteria || typeof criteria !== 'object') return null;
     if (typeof perPage !== 'number' || perPage < 1) throw new Error('Invalid perPage value');
 
     const pCache = { index: 1, values: [] };
-    const whereClause = this.#parseWhere(pCache, filter);
+    const whereParts = [];
+
+    // Apply base criteria
+    if (Object.keys(criteria).length) {
+      whereParts.push(this.#parseWhere(pCache, criteria));
+    }
+
+    // Apply tagCriteria logic
+    if (Array.isArray(tagCriteria)) {
+      tagCriteria.forEach((group, i) => {
+        const column = group?.column || 'tags';
+        const tag = this.getTagEditor(column);
+        if (!tag) return;
+
+        const clause = tag.parseWhere(pCache, group);
+        if (!clause) return;
+
+        const op = i > 0 ? tagCriteriaOps[i - 1] || 'AND' : null;
+        if (op) whereParts.push(op);
+        whereParts.push(clause);
+      });
+    } else if (tagCriteria && typeof tagCriteria === 'object') {
+      const column = tagCriteria?.column || 'tags';
+      const tag = this.getTagEditor(column);
+      if (tag) {
+        const clause = tag.parseWhere(pCache, tagCriteria);
+        if (clause) whereParts.push(clause);
+      }
+    }
+
+    const whereClause = whereParts.length ? `WHERE ${whereParts.join(' ')}` : '';
     const orderClause = order ? `ORDER BY ${order}` : '';
 
     // Avoid selecting data if selectValue is null
     const selectedColumns = selectValue === null ? '' : `${this.#selectGenerator(selectValue)},`;
 
     const query = `
-      WITH matched AS (
-        SELECT ${selectedColumns}
-               ROW_NUMBER() OVER (${orderClause || 'ORDER BY (SELECT 1)'}) AS rn,
-               COUNT(*) OVER () AS total
-        FROM ${this.#settings.name} t
-        ${this.#parseJoin(joinConfig)}
-        ${whereClause ? `WHERE ${whereClause}` : ''}
-      )
-      SELECT *, rn AS position, CEIL(CAST(total AS FLOAT) / ${perPage}) AS pages
-      FROM matched
-      WHERE rn = 1
-    `.trim();
+    WITH matched AS (
+      SELECT ${selectedColumns}
+             ROW_NUMBER() OVER (${orderClause || 'ORDER BY (SELECT 1)'}) AS rn,
+             COUNT(*) OVER () AS total
+      FROM ${this.#settings.name} t
+      ${this.#parseJoin(joinConfig)}
+      ${whereClause}
+    )
+    SELECT *, rn AS position, CEIL(CAST(total AS FLOAT) / ${perPage}) AS pages
+    FROM matched
+    WHERE rn = 1
+  `.trim();
 
     const row = await this.#db.get(query, pCache.values, 'find');
     if (!row) return null;
@@ -1631,12 +1668,7 @@ class TinySqlQuery {
     const position = parseInt(row.position);
     const page = Math.floor((position - 1) / perPage) + 1;
 
-    const response = {
-      page,
-      pages,
-      total,
-      position,
-    };
+    const response = { page, pages, total, position };
 
     // If selectValue is NOT null, return the item
     if (selectValue !== null) {
@@ -1662,6 +1694,8 @@ class TinySqlQuery {
    * @param {object} [searchData={}] - Main search configuration.
    * @param {object} [searchData.q={}] - Nested criteria object.
    *        Can be a flat object style or grouped with `{ group: 'AND'|'OR', conditions: [...] }`.
+   * @param {object[]|object|null} [searchData.tagCriteria] - One or multiple tag criteria groups.
+   * @param {string[]} [searchData.tagCriteriaOps] - Optional logical operators between tag groups (e.g., ['AND', 'OR']).
    * @param {string|string[]|object} [searchData.select='*'] - Defines which columns or expressions should be selected in the query.
    * @param {number|null} [searchData.perPage=null] - Number of results per page. If set, pagination is applied.
    * @param {number} [searchData.page=1] - Page number to retrieve when `perPage` is used.
@@ -1710,17 +1744,47 @@ class TinySqlQuery {
     const order = searchData.order || this.#settings.order;
     const join = searchData.join || this.#settings.join;
     const limit = searchData.limit || null;
-    const criteria = searchData.q || {};
     const selectValue = searchData.select || '*';
     const perPage = searchData.perPage || null;
     const page = searchData.page || 1;
 
-    // Where
+    const criteria = searchData.q || {};
+    const tagCriteria = searchData.tagsQ || {};
+    const tagCriteriaOps = searchData.tagsOpsQ;
     const pCache = { index: 1, values: [] };
-    const whereClause = Object.keys(criteria).length
-      ? `WHERE ${this.#parseWhere(pCache, criteria)}`
-      : '';
 
+    // Where
+    const whereParts = [];
+
+    if (Object.keys(criteria).length) {
+      whereParts.push(this.#parseWhere(pCache, criteria));
+    }
+
+    if (Array.isArray(tagCriteria)) {
+      const operators = Array.isArray(tagCriteriaOps) ? tagCriteriaOps : [];
+
+      tagCriteria.forEach((group, i) => {
+        const column = group?.column || 'tags'; // default name if not set
+        const tag = this.getTagEditor(column);
+        if (!tag) return;
+
+        const clause = tag.parseWhere(pCache, group);
+        if (!clause) return;
+
+        const op = i > 0 ? operators[i - 1] || 'AND' : null;
+        if (op) whereParts.push(op);
+        whereParts.push(clause);
+      });
+    } else if (tagCriteria && typeof tagCriteria === 'object') {
+      const column = tagCriteria?.column || 'tags';
+      const tag = this.getTagEditor(column);
+      if (tag) {
+        const clause = tag.parseWhere(pCache, tagCriteria);
+        if (clause) whereParts.push(clause);
+      }
+    }
+
+    const whereClause = whereParts.length ? `WHERE ${whereParts.join(' ')}` : '';
     const { values } = pCache;
 
     // Order by
