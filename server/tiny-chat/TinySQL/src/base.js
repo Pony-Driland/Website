@@ -30,6 +30,7 @@ class TinySQL {
   #tables = {};
   #debug = false;
   #event = new EventEmitter();
+  #debugCount = 0;
 
   constructor() {}
 
@@ -213,14 +214,14 @@ class TinySQL {
     return false;
   }
 
-  #debugConsoleText(debugName, status) {
+  #debugConsoleText(id, debugName, status) {
     const reset = '\x1b[0m';
     const gray = '\x1b[90m';
     const blue = '\x1b[34m';
     const green = '\x1b[32m';
     const cyan = '\x1b[36m';
 
-    const tagSQL = `${gray}[${blue}SQL${gray}]`;
+    const tagSQL = `${gray}[${blue}SQL${gray}]${gray}[${blue}${id}${gray}]`;
     const tagDebug = `${gray}[${green}DEBUG${gray}]`;
     const tagName =
       typeof debugName === 'string' && debugName.length > 0
@@ -438,17 +439,18 @@ class TinySQL {
         reject(err);
       };
       const event = this.#event;
+      const getId = () => this.#debugCount++;
       const isDebug = () => this.#debug;
-      const sendSqlDebug = (debugName, query) => {
+      const sendSqlDebug = (id, debugName, query) => {
         if (isDebug()) {
-          console.log(this.#debugConsoleText(debugName));
+          console.log(this.#debugConsoleText(id, debugName));
           console.log(this.#debugSql(query));
         }
       };
-      const sendSqlDebugResult = (debugName, type, data) => {
+      const sendSqlDebugResult = (id, debugName, type, data) => {
         if (isDebug())
           console.log(
-            this.#debugConsoleText(debugName, type),
+            this.#debugConsoleText(id, debugName, type),
             typeof data !== 'undefined' &&
               data !== null &&
               (!Array.isArray(data) || data.length > 0)
@@ -466,10 +468,11 @@ class TinySQL {
        */
       this.all = async function (query, params = [], debugName = null) {
         return new Promise((resolve, reject) => {
-          sendSqlDebug(debugName, query);
+          const id = getId();
+          sendSqlDebug(id, debugName, query);
           db.all(query, params)
             .then((result) => {
-              sendSqlDebugResult(debugName, null, result);
+              sendSqlDebugResult(id, debugName, null, result);
               resolve(Array.isArray(result) ? result : null);
             })
             .catch((err) => rejectConnection(reject, err));
@@ -485,10 +488,11 @@ class TinySQL {
        */
       this.get = async function (query, params = [], debugName = null) {
         return new Promise((resolve, reject) => {
-          sendSqlDebug(debugName, query);
+          const id = getId();
+          sendSqlDebug(id, debugName, query);
           db.get(query, params)
             .then((result) => {
-              sendSqlDebugResult(debugName, null, result);
+              sendSqlDebugResult(id, debugName, null, result);
               resolve(objType(result, 'object') ? result : null);
             })
             .catch((err) => rejectConnection(reject, err));
@@ -504,10 +508,11 @@ class TinySQL {
        */
       this.run = async function (query, params, debugName = null) {
         return new Promise((resolve, reject) => {
-          sendSqlDebug(debugName, query);
+          const id = getId();
+          sendSqlDebug(id, debugName, query);
           db.run(query, params)
             .then((result) => {
-              sendSqlDebugResult(debugName, null, result);
+              sendSqlDebugResult(id, debugName, null, result);
               resolve(objType(result, 'object') ? result : null);
             })
             .catch((err) => rejectConnection(reject, err));
@@ -567,17 +572,18 @@ class TinySQL {
       const event = this.#event;
       db.on('error', rejectConnection);
 
+      const getId = () => this.#debugCount++;
       const isDebug = () => this.#debug;
-      const sendSqlDebug = (debugName, query) => {
+      const sendSqlDebug = (id, debugName, query) => {
         if (isDebug()) {
-          console.log(this.#debugConsoleText(debugName));
+          console.log(this.#debugConsoleText(id, debugName));
           console.log(this.#debugSql(query));
         }
       };
-      const sendSqlDebugResult = (debugName, type, data) => {
+      const sendSqlDebugResult = (id, debugName, type, data) => {
         if (isDebug())
           console.log(
-            this.#debugConsoleText(debugName, type),
+            this.#debugConsoleText(id, debugName, type),
             typeof data !== 'undefined' &&
               data !== null &&
               (!Array.isArray(data) || data.length > 0)
@@ -596,9 +602,10 @@ class TinySQL {
       this.all = async function (query, params = [], debugName = null) {
         await db.open(); // Ensure the connection is open
         try {
-          sendSqlDebug(debugName, query);
+          const id = getId();
+          sendSqlDebug(id, debugName, query);
           const res = await db.query(query, params);
-          sendSqlDebugResult(debugName, null, res);
+          sendSqlDebugResult(id, debugName, null, res);
           return objType(res, 'object') && Array.isArray(res.rows) ? res.rows : null;
         } catch (err) {
           rejectConnection(err);
@@ -616,9 +623,10 @@ class TinySQL {
       this.get = async function (query, params = [], debugName = null) {
         await db.open(); // Ensure the connection is open
         try {
-          sendSqlDebug(debugName, query);
+          const id = getId();
+          sendSqlDebug(id, debugName, query);
           const res = await db.query(query, params);
-          sendSqlDebugResult(debugName, null, res);
+          sendSqlDebugResult(id, debugName, null, res);
           return objType(res, 'object') && Array.isArray(res.rows) && objType(res.rows[0], 'object')
             ? res.rows[0]
             : null;
@@ -638,9 +646,10 @@ class TinySQL {
       this.run = async function (query, params, debugName = null) {
         await db.open(); // Ensure the connection is open
         try {
-          sendSqlDebug(debugName, query);
+          const id = getId();
+          sendSqlDebug(id, debugName, query);
           const res = await db.query(query, params);
-          sendSqlDebugResult(debugName, null, res);
+          sendSqlDebugResult(id, debugName, null, res);
           return objType(res, 'object') ? res : null;
         } catch (err) {
           rejectConnection(err);
