@@ -87,13 +87,13 @@ class TinySqlTags {
    *
    * This method allows dynamic addition of new tag input mappings by providing a `key`,
    * `list`, and `valueKey`. It validates the types of `list` and `valueKey`, and
-   * prevents adding a tag with the list name "include" as it is restricted.
+   * prevents adding a tag with the list name "include" and "column" as it is restricted.
    *
    * @param {string} key - The key (symbol) to associate with the tag input.
    * @param {string} list - The list name where the tag will be added.
    * @param {string} valueKey - The key for the value associated with the tag input.
    * @throws {Error} Throws an error if `list` or `valueKey` are not strings,
-   * or if the `list` name is "include".
+   * or if the `list` name is "include" or "column".
    */
   addTagInput(key, list, valueKey) {
     // Validation to ensure 'list' and 'valueKey' are strings
@@ -104,6 +104,11 @@ class TinySqlTags {
     // Prevents adding a tag with the list name "include"
     if (list === 'include') {
       throw new Error('Cannot add a tag with the list name "include"');
+    }
+
+    // Prevents adding a tag with the list name "column"
+    if (list === 'column') {
+      throw new Error('Cannot add a tag with the list name "column"');
     }
 
     // Adds the new tag input to #tagInputs
@@ -261,7 +266,7 @@ class TinySqlTags {
    * @param {Array<any>} [pCache.values=[]] - Collected values for SQL query binding.
    *
    * @param {Object} [group={}] - Tag group definition to build the clause from.
-   * @param {string} [group.column] - SQL column name for tag data (defaults to `this.defaultColumn`).
+   * @param {string} [group.column] - SQL column name for tag data (defaults to `this.getColumnName()`).
    * @param {string} [group.valueName] - Alias used for JSON values (defaults to `this.defaultValueName`).
    * @param {boolean} [group.allowWildcards=false] - Whether wildcards are allowed in matching.
    * @param {Array<string|string[]>} [group.include=[]] - Tag values or grouped OR conditions to include.
@@ -274,7 +279,7 @@ class TinySqlTags {
     if (!Array.isArray(pCache.values)) pCache.values = [];
 
     const where = [];
-    const tagsColumn = group.column || this.defaultColumn;
+    const tagsColumn = group.column || this.getColumnName();
     const tagsValue = group.valueName || this.defaultValueName;
     const allowWildcards = typeof group.allowWildcards === 'boolean' ? group.allowWildcards : false;
     const include = group.include || [];
@@ -468,12 +473,14 @@ class TinySqlTags {
    * @param {string} input - The user input string to parse.
    *
    * @returns {Object} An object containing:
+   *   - `column`: The column name from `this.getColumnName()`.
    *   - `include`: Array of tags and OR-groups to include in the query.
    *   - Additional properties (e.g., `boosts`, `specials`) depending on matches in `#tagInputs` or `specialQueries`.
    *
    * Example return:
    * ```js
    * {
+   *   column: 'tags',
    *   include: ['applejack', ['solo', 'duo'], 'pudding'],
    *   boosts: [{ term: 'applejack', boost: 2 }],
    *   specials: [{ key: 'source', value: 'ponybooru' }]
@@ -569,7 +576,7 @@ class TinySqlTags {
     flushGroup();
 
     const outputGroups = this.#extractSpecialsFromChunks(chunks);
-    return { include: chunks, ...outputGroups };
+    return { column: this.getColumnName(), include: chunks, ...outputGroups };
   }
 
   /**
@@ -587,7 +594,7 @@ class TinySqlTags {
    * @param {string} input - The raw user input string.
    *
    * @returns {Object} A structured result object returned by `parseString()`,
-   *   containing keys like `include`, `specials`, `boosts`, etc., depending on
+   *   containing keys like `column`, `include`, `specials`, `boosts`, etc., depending on
    *   the tags and expressions detected.
    *
    * @example
