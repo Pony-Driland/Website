@@ -22,11 +22,6 @@ global.window.moment = moment;
 var EventEmitter = require('events')
 global.window.EventEmitter = EventEmitter;
 
-// Json repair
-var Jsonrepair = require('jsonrepair');
-global.window.Jsonrepair = Jsonrepair;
-global.window.jsonrepair = Jsonrepair.jsonrepair;
-
 // Marked.js
 var marked = require('marked');
 global.window.marked = marked;

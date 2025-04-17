@@ -28,7 +28,12 @@ import * as JsStore from "jsstore";
 // Validate color
 import validateColor from "validate-color";
 
+// Tiny AI
+import { setTinyGoogleAi, TinyAiInstance } from 'tiny-ai-api';
+
 // Imports
+global.window.setTinyGoogleAi = setTinyGoogleAi;
+global.window.TinyAiInstance = TinyAiInstance;
 global.window.validateColor = validateColor;
 global.window.JsStore = JsStore;
 global.window.tippy = tippy;
