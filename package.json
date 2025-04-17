@@ -52,7 +52,6 @@
         "jquery": "^3.7.1",
         "js-base64": "^3.7.7",
         "js-loading-overlay": "^1.2.0",
-        "jsonrepair": "^3.12.0",
         "jsstore": "^4.9.0",
         "marked": "^15.0.7",
         "md5": "^2.3.0",
@@ -69,6 +68,7 @@
         "socket.io-client": "^4.8.1",
         "sqlite": "^5.1.1",
         "sqlite3": "^5.1.7",
+        "tiny-ai-api": "^1.0.4",
         "tippy.js": "^6.3.7",
         "validate-color": "^2.2.4"
     },

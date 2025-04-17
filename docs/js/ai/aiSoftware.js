@@ -84,7 +84,7 @@ const AiScriptStart = (connStore) => {
 
   // Read AI Apis
   const tinyIo = { client: null, firstTime: true };
-  const tinyAi = new TinyAiApi();
+  const tinyAi = new TinyAiInstance();
   const tinyStorage = new TinyAiStorage();
   let aiLogin = null;
   tinyAiScript.setAiLogin = (newAiLogin) => {
@@ -129,7 +129,7 @@ const AiScriptStart = (connStore) => {
 
       // Google Generative
       if (selectedAi === 'google-generative')
-        setGoogleAi(tinyAi, tinyStorage.getApiKey('google-generative')?.key);
+        setTinyGoogleAi(tinyAi, tinyStorage.getApiKey('google-generative')?.key);
 
       // Tiny Chat --> this is a multiplayer client session
       if (selectedAi === 'tiny-chat') tinyAiScript.mpClient = true;
