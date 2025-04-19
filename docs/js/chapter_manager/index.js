@@ -557,7 +557,7 @@ const openChapterMenu = (params = {}) => {
               if (!charData.value.startsWith('???') && !isNpc) {
                 // Prepare Data
                 const dataBase = $('<div>', { class: 'card-body' }).append(
-                  $('<h5>', { class: 'card-title' }).text(tinyLib.toTitleCase(charData.value)),
+                  $('<h5>', { class: 'card-title' }).text(toTitleCase(charData.value)),
                   $('<p>', { class: 'card-text small' }).text(
                     `Performed ${charData.count} dialogues`,
                   ),

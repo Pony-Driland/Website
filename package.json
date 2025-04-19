@@ -45,7 +45,7 @@
         "exifreader": "^4.26.0",
         "express": "^4.20.0",
         "file-saver": "^2.0.5",
-        "for-promise": "^1.4.3",
+        "for-promise": "^2.0.3",
         "gasparesganga-jquery-loading-overlay": "^2.1.7",
         "glob": "^11.0.1",
         "ini": "^5.0.0",
@@ -68,7 +68,8 @@
         "socket.io-client": "^4.8.1",
         "sqlite": "^5.1.1",
         "sqlite3": "^5.1.7",
-        "tiny-ai-api": "^1.0.5",
+        "tiny-ai-api": "^1.1.0",
+        "tiny-essentials": "^1.0.0",
         "tippy.js": "^6.3.7",
         "validate-color": "^2.2.4"
     },

@@ -58,7 +58,7 @@ musicManager.start.seamlessloop = function (item, newSound) {
         tinyValue = 0;
       }
 
-      let newVolume = tinyLib.rule3(tinyValue, 100, storyData.music.volume);
+      let newVolume = ruleOfThree(tinyValue, 100, storyData.music.volume);
       if (newVolume > 100) {
         newVolume = 100;
       }

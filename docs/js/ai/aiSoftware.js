@@ -819,7 +819,7 @@ const AiScriptStart = (connStore) => {
                       message: msg.parts[0].text,
                       id: msgId,
                     },
-                    msg.role === 'user' ? null : tinyLib.toTitleCase(msg.role),
+                    msg.role === 'user' ? null : toTitleCase(msg.role),
                   ),
                 );
               }
@@ -3373,7 +3373,7 @@ const AiScriptStart = (connStore) => {
                   message: msgData,
                   id: tinyCache.msgId,
                 },
-                role === 'user' ? null : tinyLib.toTitleCase(role),
+                role === 'user' ? null : toTitleCase(role),
               );
               addMessage(tinyCache.msgBallon);
             } else {
@@ -3838,7 +3838,7 @@ const AiScriptStart = (connStore) => {
         // Prepare renderer
         const tinyCache = {
           msg: data.message,
-          role: username ? tinyLib.toTitleCase(username) : 'User',
+          role: username ? toTitleCase(username) : 'User',
         };
 
         const msgBase = $('<div>', {

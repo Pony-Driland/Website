@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import { objType } from '../lib/objChecker';
+import { objType } from 'tiny-essentials';
 import db from './sql';
 
 export const userSockets = new Map(); // Socket users

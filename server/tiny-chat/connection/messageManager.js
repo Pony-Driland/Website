@@ -1,4 +1,4 @@
-import { countObj, objType } from '../lib/objChecker';
+import { countObj, objType } from 'tiny-essentials';
 import db from './sql';
 import {
   userMsgIsRateLimited,

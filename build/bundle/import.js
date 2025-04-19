@@ -6,7 +6,6 @@ import tippy from 'tippy.js';
 
 // For Promise
 import forPromise from 'for-promise';
-import { countObj, objType } from 'for-promise/utils/lib.mjs';
 
 // Photoswipe
 import PhotoSwipeLightbox from 'photoswipe';
@@ -30,6 +29,7 @@ import validateColor from "validate-color";
 
 // Tiny AI
 import { setTinyGoogleAi, TinyAiInstance } from 'tiny-ai-api';
+import { objType, countObj, shuffleArray, ruleOfThree, toTitleCase, formatDayTimer } from 'tiny-essentials';
 
 // Imports
 global.window.setTinyGoogleAi = setTinyGoogleAi;
@@ -39,8 +39,12 @@ global.window.JsStore = JsStore;
 global.window.tippy = tippy;
 global.window.io = io;
 global.window.forPromise = forPromise;
+global.window.ruleOfThree = ruleOfThree;
+global.window.toTitleCase = toTitleCase;
+global.window.formatDayTimer = formatDayTimer;
 global.window.objType = objType;
 global.window.countObj = countObj;
+global.window.shuffleArray = shuffleArray;
 global.window.Pizzicato = Pizzicato;
 global.window.PhotoSwipeLightbox = PhotoSwipeLightbox;
 // global.window.WalletConnectQR = WalletConnectQR;

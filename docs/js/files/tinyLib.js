@@ -231,19 +231,6 @@ tinyLib.formGroupCheck = function (data) {
   );
 };
 
-// https://stackoverflow.com/questions/15900485/correct-way-to-convert-size-in-bytes-to-kb-mb-gb-in-javascript
-tinyLib.formatBytes = function (bytes, decimals = 2) {
-  if (bytes === 0) return '0 Bytes';
-
-  const k = 1024;
-  const dm = decimals < 0 ? 0 : decimals;
-  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
-
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
-};
-
 alert = function (text, title = 'Browser Warning!') {
   return tinyLib.modal({
     title: title,
@@ -274,19 +261,6 @@ $.fn.selectRange = function (start, end) {
     const end = this[0].selectionEnd;
     return { start, end };
   }
-};
-
-// https://stackoverflow.com/questions/15900485/correct-way-to-convert-size-in-bytes-to-kb-mb-gb-in-javascript
-tinyLib.formatBytes = function (bytes, decimals = 2) {
-  if (bytes === 0) return '0 Bytes';
-
-  const k = 1024;
-  const dm = decimals < 0 ? 0 : decimals;
-  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
-
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 };
 
 // Alert
@@ -328,47 +302,6 @@ tinyLib.isPageBottom = function () {
   return window.innerHeight + window.scrollY >= document.body.offsetHeight;
 };
 
-// https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-tinyLib.shuffle = function (array) {
-  let currentIndex = array.length,
-    randomIndex;
-
-  // While there remain elements to shuffle...
-  while (currentIndex != 0) {
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-  }
-
-  return array;
-};
-
-// Rule 3
-tinyLib.rule3 = function (val1, val2, val3, inverse) {
-  if (inverse == true) {
-    return Number(val1 * val2) / val3;
-  } else {
-    return Number(val3 * val2) / val1;
-  }
-};
-
-// Title Case
-tinyLib.toTitleCase = function (str) {
-  return str.replace(/\w\S*/g, function (txt) {
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  });
-};
-
-tinyLib.toTitleCaseLowerFirst = function (str) {
-  const titleCased = str.replace(/\w\S*/g, function (txt) {
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  });
-  return titleCased.charAt(0).toLowerCase() + titleCased.slice(1);
-};
-
 // Remove AI tags
 tinyLib.removeAiTags = function (str) {
   return str.replace(/\<ai\>|\<\/ai\>/g, '');
@@ -384,33 +317,6 @@ tinyLib.booleanCheck = function (value) {
   } else {
     return false;
   }
-};
-
-tinyLib.formatTimer = function (seconds) {
-  const hours = Math.floor(seconds / 3600);
-  const minutes = Math.floor((seconds % 3600) / 60);
-  const secs = seconds % 60;
-
-  return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-};
-
-tinyLib.formatDayTimer = function (seconds) {
-  const days = Math.floor(seconds / (24 * 3600));
-  seconds %= 24 * 3600;
-  const hours = Math.floor(seconds / 3600);
-  seconds %= 3600;
-  const minutes = Math.floor(seconds / 60);
-  const remainingSeconds = seconds % 60;
-
-  // Build the display string with the conditions
-  let timeString = '';
-
-  if (days > 0) {
-    timeString += `${days}d `;
-  }
-  timeString += `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
-
-  return timeString.trim();
 };
 
 tinyLib.getGitUrlPath = function (text, type = 'g') {
