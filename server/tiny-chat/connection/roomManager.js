@@ -1,4 +1,4 @@
-import { objType } from '../lib/objChecker';
+import { objType } from 'tiny-essentials';
 import db from './sql';
 
 import {

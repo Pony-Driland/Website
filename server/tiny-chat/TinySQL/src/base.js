@@ -2,8 +2,8 @@ import { open } from 'sqlite';
 import sqlite3 from 'sqlite3';
 import { Client } from 'pg';
 import EventEmitter from 'events';
+import { objType } from 'tiny-essentials';
 
-import { objType } from '../../lib/objChecker';
 import TinySqlQuery from './query';
 
 /**

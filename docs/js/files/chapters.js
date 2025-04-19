@@ -91,7 +91,7 @@ const storyData = {
                         typeof data[item].character === 'string' &&
                         data[item].character.length > 0
                       ) {
-                        const character = tinyLib.toTitleCase(data[item].character);
+                        const character = toTitleCase(data[item].character);
                         const characterLower = data[item].character.toLowerCase();
 
                         let newData = storyData.characters.data.find(
@@ -124,7 +124,7 @@ const storyData = {
                       for (const item2 in textSplit) {
                         // Filter
                         const text = tinyLib.removeAiTags(
-                          tinyLib.toTitleCase(textSplit[item2].replace(/[^a-zA-Z]+/g, '')),
+                          toTitleCase(textSplit[item2].replace(/[^a-zA-Z]+/g, '')),
                         );
                         if (isNaN(Number(text)) && text.length > 0) {
                           // Count Data

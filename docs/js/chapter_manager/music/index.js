@@ -817,7 +817,7 @@ musicManager.startPlaylist = function () {
     // Check Status
     if (Array.isArray(storyData.music.playlist) && storyData.music.playlist.length > 0) {
       // Play Song
-      tinyLib.shuffle(storyData.music.playlist);
+      shuffleArray(storyData.music.playlist);
 
       const playSong = function () {
         if (

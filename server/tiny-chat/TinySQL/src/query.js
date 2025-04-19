@@ -1,5 +1,5 @@
 import { Client } from 'pg';
-import { objType } from '../../lib/objChecker';
+import { objType } from 'tiny-essentials';
 import TinySqlTags from './tag';
 
 const clientBase = new Client();

@@ -6,7 +6,6 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
 var _socket = require("socket.io-client");
 var _tippy = _interopRequireDefault(require("tippy.js"));
 var _forPromise = _interopRequireDefault(require("for-promise"));
-var _lib = require("for-promise/utils/lib.mjs");
 var _photoswipe = _interopRequireDefault(require("photoswipe"));
 var _pizzicato = _interopRequireDefault(require("pizzicato"));
 var _bignumber = _interopRequireDefault(require("bignumber.js"));
@@ -16,6 +15,7 @@ var _client = _interopRequireDefault(require("@walletconnect/client"));
 var JsStore = _interopRequireWildcard(require("jsstore"));
 var _validateColor = _interopRequireDefault(require("validate-color"));
 var _tinyAiApi = require("tiny-ai-api");
+var _tinyEssentials = require("tiny-essentials");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
@@ -47,8 +47,12 @@ global.window.JsStore = JsStore;
 global.window.tippy = _tippy["default"];
 global.window.io = _socket.io;
 global.window.forPromise = _forPromise["default"];
-global.window.objType = _lib.objType;
-global.window.countObj = _lib.countObj;
+global.window.ruleOfThree = _tinyEssentials.ruleOfThree;
+global.window.toTitleCase = _tinyEssentials.toTitleCase;
+global.window.formatDayTimer = _tinyEssentials.formatDayTimer;
+global.window.objType = _tinyEssentials.objType;
+global.window.countObj = _tinyEssentials.countObj;
+global.window.shuffleArray = _tinyEssentials.shuffleArray;
 global.window.Pizzicato = _pizzicato["default"];
 global.window.PhotoSwipeLightbox = _photoswipe["default"];
 // global.window.WalletConnectQR = WalletConnectQR;
@@ -58,7 +62,7 @@ global.window.WalletConnect = _client["default"];
 global.window.WalletConnectProvider = _web3Provider["default"];
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"@walletconnect/client":187,"@walletconnect/web3-provider":269,"bignumber.js":309,"ethers/lib.esm/index.js":432,"for-promise":439,"for-promise/utils/lib.mjs":440,"jsstore":489,"photoswipe":578,"pizzicato":580,"socket.io-client":631,"tiny-ai-api":681,"tippy.js":684,"validate-color":699}],2:[function(require,module,exports){
+},{"@walletconnect/client":187,"@walletconnect/web3-provider":269,"bignumber.js":309,"ethers/lib.esm/index.js":432,"for-promise":439,"jsstore":489,"photoswipe":578,"pizzicato":580,"socket.io-client":631,"tiny-ai-api":681,"tiny-essentials":690,"tippy.js":691,"validate-color":706}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30970,7 +30974,7 @@ function padString(str, length, left) {
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"buffer":313,"is-typedarray":476,"typedarray-to-buffer":687}],210:[function(require,module,exports){
+},{"buffer":313,"is-typedarray":476,"typedarray-to-buffer":694}],210:[function(require,module,exports){
 (function (global){(function (){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -31020,7 +31024,7 @@ const tslib_1 = require("tslib");
 tslib_1.__exportStar(require("./crypto"), exports);
 tslib_1.__exportStar(require("./env"), exports);
 
-},{"./crypto":210,"./env":211,"tslib":686}],213:[function(require,module,exports){
+},{"./crypto":210,"./env":211,"tslib":693}],213:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -31127,7 +31131,7 @@ var HTTPConnection = /*#__PURE__*/function (_EventEmitter) {
 }(_eventemitter["default"]);
 var _default = exports["default"] = HTTPConnection;
 
-},{"@walletconnect/utils":262,"eventemitter3":435,"xhr2-cookies":716}],214:[function(require,module,exports){
+},{"@walletconnect/utils":262,"eventemitter3":435,"xhr2-cookies":723}],214:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40901,7 +40905,7 @@ var WalletConnectProvider = /*#__PURE__*/function (_ProviderEngine) {
 }(ProviderEngine);
 var _default = exports["default"] = WalletConnectProvider;
 
-},{"@walletconnect/client":187,"@walletconnect/http-connection":213,"@walletconnect/qrcode-modal":225,"@walletconnect/utils":262,"web3-provider-engine":700,"web3-provider-engine/subproviders/cache":701,"web3-provider-engine/subproviders/filters":702,"web3-provider-engine/subproviders/fixture":703,"web3-provider-engine/subproviders/hooked-wallet":704,"web3-provider-engine/subproviders/nonce-tracker":706,"web3-provider-engine/subproviders/subscriptions":708}],270:[function(require,module,exports){
+},{"@walletconnect/client":187,"@walletconnect/http-connection":213,"@walletconnect/qrcode-modal":225,"@walletconnect/utils":262,"web3-provider-engine":707,"web3-provider-engine/subproviders/cache":708,"web3-provider-engine/subproviders/filters":709,"web3-provider-engine/subproviders/fixture":710,"web3-provider-engine/subproviders/hooked-wallet":711,"web3-provider-engine/subproviders/nonce-tracker":713,"web3-provider-engine/subproviders/subscriptions":715}],270:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getLocalStorage = exports.getLocalStorageOrThrow = exports.getCrypto = exports.getCryptoOrThrow = exports.getLocation = exports.getLocationOrThrow = exports.getNavigator = exports.getNavigatorOrThrow = exports.getDocument = exports.getDocumentOrThrow = exports.getFromWindowOrThrow = exports.getFromWindow = void 0;
@@ -54488,7 +54492,7 @@ function copy(text, options) {
 
 module.exports = copy;
 
-},{"toggle-selection":685}],327:[function(require,module,exports){
+},{"toggle-selection":692}],327:[function(require,module,exports){
 'use strict'
 var inherits = require('inherits')
 var MD5 = require('md5.js')
@@ -64354,7 +64358,7 @@ function createPayload(data){
   }, data)
 }
 
-},{"json-rpc-random-id":481,"xtend":721}],407:[function(require,module,exports){
+},{"json-rpc-random-id":481,"xtend":728}],407:[function(require,module,exports){
 const ethUtil = require('ethereumjs-util')
 const ethAbi = require('ethereumjs-abi')
 
@@ -71063,42 +71067,410 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = forPromise;
-var _lib = require("./utils/lib.mjs");
-//  Libs
+var _essentials = require("./utils/essentials.mjs");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); } //  Libs
+/**
+ * Runs an asynchronous iterative operation with advanced control over flow, breaks, and nested (extra) iterations.
+ * The function accepts a data object and a callback, and returns a Promise that resolves with iteration results.
+ *
+ * @function
+ * @param {Object} obj - The data object used to control the iteration process. It must follow a specific structure.
+ * @param {Object|number} obj.data - The main data source. Can be an array-like object, number (as count), or object for keys.
+ * @param {string} [obj.type] - Optional type of iteration. Currently supports `"while"` for while-like looping.
+ * @param {Function} [obj.checker] - Used only with `type: "while"` to determine loop continuation.
+ * @param {Function} callback - A function that will be called on each iteration step.
+ * The callback receives the following parameters:
+ *
+ * @callback callback
+ * @param {*} currentItem - The current item or index being iterated.
+ * @param {Function} result - Function to call when iteration step finishes. Accepts an optional forceBreak configuration.
+ * @param {Function} error - Function to call if an error is encountered.
+ * @param {Function} extra - Function to call to register additional (nested) iterations.
+ *
+ * @returns {Promise<Object>} Resolves with an object containing the result of the iteration process.
+ *
+ * The returned object structure is:
+ * @typedef {Object} IterationResult
+ * @property {boolean} error - Whether an error occurred.
+ * @property {boolean} forceBreak - Whether the iteration was forcefully broken.
+ * @property {number} count - How many steps were executed.
+ * @property {number} total - Total expected steps.
+ * @property {Array} items - The collected results from each callback.
+ * @property {Array} [extra] - If extras were used, contains an array of extra iteration results with the same structure.
+ *
+ * The `result()` function (inside the callback) accepts an optional argument:
+ * @param {boolean|Object} [forceBreak=false] - If true, breaks the iteration early.
+ * If an object is passed, it can contain:
+ *   @property {boolean} [break=false] - Whether to break the loop.
+ *   @property {boolean} [dontSendResult=false] - Prevents auto-resolve after completion.
+ *   @property {boolean} [forceResult=false] - Forces result resolution regardless of loop status.
+ *
+ * The `extra()` function (inside the callback) is used to spawn additional loops within the current loop.
+ * It must be passed a valid object like the main one, and returns:
+ * @returns {Object} An object with a `run(callback)` method to run the extra loop.
+ *
+ * @throws {Error} Throws if invalid input types are provided or during execution.
+ *
+ * @example
+ * const obj = { data: [1, 2, 3] };
+ *
+ * forPromise(obj, (item, result, error, extra) => {
+ *   console.log(item);
+ *   result(); // move to next
+ * }).then(res => console.log(res));
+ *
+ * @example
+ * const input = {
+ *   data: [1, 2, 3],
+ * };
+ *
+ * forPromise(input, (item, result, error, extraFn) => {
+ *   if (item === 2) return result({ break: true });
+ *   result();
+ * }).then(console.log).catch(console.error);
+ */
+function forPromise(obj, callback) {
+  return new Promise(function (resolve, reject) {
+    try {
+      if (_typeof(obj) !== 'object' || obj === null) throw new Error('Invalid object provided.');
+      if (typeof callback !== 'function') throw new Error('Callback must be a function.');
+    } catch (err) {
+      return reject(err);
+    }
+    // Validate Obj
+    var objValidated = (0, _essentials.superValidator)(obj);
+    // Validator
+    if (objValidated.confirmed) {
+      // Prepare Count
+      var items = {
+        error: false,
+        forceBreak: false,
+        count: 0,
+        total: null,
+        items: []
+      };
+      // Error Result
+      var error_result = function error_result(err) {
+        // Send Error Reject
+        items.error = true;
+        reject(err);
+      };
+      // Prepare Result
+      var result = function result(isExtra, extraIndex, item) {
+        var forceBreak = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+        // Prepare Edit
+        var item_to_edit = null;
+        // Not Extra
+        if (!isExtra) {
+          item_to_edit = items;
+        } else {
+          item_to_edit = extra.list[extraIndex];
+        }
+        // Force Break
+        var forceBreakResult = {
+          isObject: (0, _essentials.objType)(forceBreak, 'object')
+        };
+        // Is Boolean
+        if (!forceBreakResult.isObject) {
+          if (!item_to_edit.forceBreak) {
+            forceBreakResult.allowed = typeof forceBreak === 'boolean' && forceBreak;
+          } else {
+            forceBreakResult.allowed = false;
+          }
+          forceBreakResult.dontSendResult = false;
+          forceBreakResult.forceResult = false;
+        }
+        // Object
+        else {
+          if (!item_to_edit.forceBreak) forceBreakResult.allowed = typeof forceBreak["break"] === 'boolean' && forceBreak["break"];else forceBreakResult.allowed = false;
+          forceBreakResult.dontSendResult = typeof forceBreak.dontSendResult === 'boolean' && forceBreak.dontSendResult;
+          forceBreakResult.forceResult = typeof forceBreak.forceResult === 'boolean' && forceBreak.forceResult;
+        }
+        // No Error
+        if (!item_to_edit.error && !item_to_edit.forceBreak || forceBreakResult.forceResult) {
+          // Count
+          item_to_edit.count++;
+          // Normal
+          if (item !== null) {
+            // Add Item
+            item_to_edit.items.push(item);
+          }
+          // Set Force Break
+          if (!item_to_edit.forceBreak && forceBreakResult.allowed) {
+            item_to_edit.forceBreak = true;
+            item_to_edit.count = item_to_edit.total + 1;
+          }
+          // Complete
+          if (
+          // Can Send Results
+          !forceBreakResult.dontSendResult && (
+          // Count is Bigger
+          item_to_edit.count >= item_to_edit.total ||
+          // Type
+          typeof item_to_edit.type === 'string' &&
+          // While
+          item_to_edit.type === 'while' && item_to_edit.count > 0)) {
+            // Normal Result
+            if (!isExtra) {
+              if (!extra.enabled) resolve(items);
+            }
+            // Extra Result
+            else {
+              // Check Extra Exist
+              if (extra.list[extraIndex]) {
+                // Complete Check
+                extra.list[extraIndex].complete = true;
+                // Check List
+                var confirmation_checked = true;
+                // Detect Progress
+                for (var _item in extra.list) {
+                  if (!extra.list[_item].complete) {
+                    confirmation_checked = false;
+                    break;
+                  }
+                }
+                // Complete
+                if (confirmation_checked) {
+                  // Add Extra Info
+                  items.extra = extra.list;
+                  // Resolve
+                  resolve(items);
+                }
+              }
+              // Nope
+              else {
+                items.error = true;
+                reject(new Error("forAwait Extra Index ".concat(extraIndex, " not found.")));
+              }
+            }
+          }
+        }
+      };
+      // Run For
+      var runFor = function runFor(callback) {
+        var isExtra = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+        var index = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+        var new_extra = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+        // Prepare the Item
+        var the_item = null;
+        // Normal
+        if (!isExtra) the_item = obj;else the_item = new_extra;
+        // Run Script
+        var runFor_script = function runFor_script() {
+          var item = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+          // No Error
+          if (!items.error && !items.forceBreak) {
+            // Try
+            try {
+              // Result Function
+              var result_data = function result_data(forceBreak) {
+                return result(isExtra, index, item, forceBreak);
+              };
+              // Exist Item
+              if (item !== null) callback(item, result_data, error_result, extra.extra_function);
+              // Nope
+              else callback(result_data, error_result, extra.extra_function);
+            } catch (err) {
+              // Error
+              items.error = true;
+              reject(err);
+              return false;
+            }
+            // Normal Return
+            return true;
+          }
+          // Error
+          else return false;
+        };
+        // Start the For
+        if (typeof the_item.data !== 'number') {
+          // For Object
+          if (!the_item.type) {
+            // Start For
+            var for_used = false;
+            for (var item in the_item.data) {
+              for_used = true;
+              if (!runFor_script(item)) {
+                break;
+              }
+            }
+            // Not Used? Confirmed
+            if (!for_used) return result(isExtra, index, null);
+          }
+          // Type
+          else {
+            // Start a While
+            if (the_item.type === 'while') {
+              // Prepare
+              var _custom_do = function custom_do() {
+                // Validate
+                if (the_item.checker()) {
+                  // Prepare Edit
+                  var item_to_edit = null;
+                  // Not Extra
+                  if (!isExtra) {
+                    item_to_edit = items;
+                  } else {
+                    item_to_edit = extra.list[index];
+                  }
+                  // Add Total
+                  item_to_edit.total++;
+                  // Callback and Continue
+                  callback(function (forceBreak) {
+                    item_to_edit.count++;
+                    return result(isExtra, index, null, forceBreak);
+                  }, error_result, extra.extra_function);
+                  return _custom_do();
+                }
+                // Nope
+                else return result(isExtra, index, null);
+              };
+              // Start
+              _custom_do();
+            }
+            // Nothing
+            else {
+              items.error = true;
+              reject(new Error('Invalid Function Type!'));
+            }
+          }
+        }
+        // Number Type
+        else {
+          // Exist Number
+          if (the_item.data > 0) {
+            for (var _item2 = 0; _item2 < the_item.data; _item2++) {
+              if (!runFor_script(_item2)) {
+                break;
+              }
+            }
+          }
+          // Nope
+          else return result(isExtra, index, null);
+        }
+      };
+      // Detect Object Module
+      items.total = (0, _essentials.validateTotal)(obj.data);
+      // Type
+      if (objValidated.type) items.type = objValidated.type;
+      // Prepare Extra
+      var extra = {
+        // Enabled
+        enabled: false,
+        // Extra List
+        list: [],
+        // Functions
+        extra_function: function extra_function(new_extra) {
+          // Validate Obj
+          var objValidated = (0, _essentials.superValidator)(new_extra);
+          // Validator
+          if (objValidated.confirmed) {
+            // Prepare Extra
+            extra.enabled = true;
+            extra.list.push({
+              complete: false,
+              forceBreak: false,
+              count: 0,
+              total: null,
+              items: []
+            });
+            // Index
+            var index = extra.list.length - 1;
+            // Get Total
+            extra.list[index].total = (0, _essentials.validateTotal)(new_extra.data);
+            // Type
+            if (objValidated.type) extra.list[index].type = objValidated.type;
+            // Callback
+            return {
+              // Run Extra
+              run: function run(callback) {
+                // Run For
+                if (!items.error && !items.forceBreak) runFor(callback, true, index, new_extra);
+              }
+            };
+          }
+          // Nope
+          else {
+            var err = new Error('Invalid Object Extra Type to start the Script.');
+            items.error = true;
+            reject(err);
+            return null;
+          }
+        }
+      };
+      // Run For
+      runFor(callback);
+    }
+    // Nope
+    else reject(new Error('Invalid Object Type to start the Script.'));
+  });
+}
 
+},{"./utils/essentials.mjs":440}],440:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.countObj = countObj;
+exports.objType = objType;
+exports.superValidator = superValidator;
+exports.validateTotal = validateTotal;
+/**
+ * Validates the total value based on the type of the input.
+ *
+ * - If the input is a number, subtracts 1 and returns it.
+ * - If it's an object or array, returns its size using `countObj`.
+ * - Otherwise, returns 0.
+ *
+ * @param {*} obj - The input to validate and process.
+ * @returns {number} - The resulting total based on the input type.
+ *
+ * @example
+ * validateTotal(5); // 4
+ * validateTotal([1, 2, 3]); // 3
+ * validateTotal({ a: 1, b: 2 }); // 2
+ * validateTotal('invalid'); // 0
+ */
 function validateTotal(obj) {
   // Get Total
   var newTotal = 0;
   if (typeof obj !== 'number') {
-    if ((0, _lib.objType)(obj, 'object') || Array.isArray(obj)) {
-      newTotal = (0, _lib.countObj)(obj);
-    }
-  } else {
-    newTotal = obj - 1;
-  }
-
+    if (objType(obj, 'object') || Array.isArray(obj)) newTotal = countObj(obj);
+  } else newTotal = obj - 1;
   // Insert New Total
   return newTotal;
 }
+/**
+ * Performs a structured validation on a given object and returns a confirmation result.
+ *
+ * - Confirms validity if `obj.data` is an object, array, or number.
+ * - Also confirms if `obj.type` is `'while'`, and `obj.while` is defined, and `obj.checker` is a function.
+ *
+ * @param {*} obj - The input object to validate.
+ * @returns {{ confirmed: boolean, type?: string }} - Returns an object with a `confirmed` boolean.
+ *   If a "while" validation is detected, includes `type: 'while'`.
+ *
+ * @example
+ * superValidator({ data: [1, 2, 3] }); // { confirmed: true }
+ * superValidator({ type: 'while', while: true, checker: () => true }); // { confirmed: true, type: 'while' }
+ * superValidator({}); // { confirmed: false }
+ */
 function superValidator(obj) {
   // Start Module
   var result = {
     confirmed: false
   };
-
   // Normal
   if (
   // Main Type
-  (0, _lib.objType)(obj, 'object') && (
+  objType(obj, 'object') && (
   // Object
-  (0, _lib.objType)(obj.data, 'object') ||
+  objType(obj.data, 'object') ||
   // Array
   Array.isArray(obj.data) ||
   // Number
-  typeof obj.data === 'number')) {
-    result.confirmed = true;
-  }
-
+  typeof obj.data === 'number')) result.confirmed = true;
   // Type
   else if (typeof obj.type === 'string') {
     // While
@@ -71113,412 +71485,55 @@ function superValidator(obj) {
       result.type = 'while';
     }
   }
-
   // Complete
   return result;
 }
-function forPromise(obj, callback) {
-  return new Promise(function (resolve, reject) {
-    // Validate Obj
-    var objValidated = superValidator(obj);
-
-    // Validator
-    if (objValidated.confirmed) {
-      // Prepare Count
-      var items = {
-        error: false,
-        forceBreak: false,
-        count: 0,
-        total: null,
-        items: []
-      };
-
-      // Error Result
-      var error_result = function error_result(err) {
-        // Send Error Reject
-        items.error = true;
-        reject(err);
-
-        // Complete
-        return;
-      };
-
-      // Prepare Result
-      var result = function result(isExtra, extraIndex, item) {
-        var forceBreak = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-        // Prepare Edit
-        var item_to_edit = null;
-
-        // Not Extra
-        if (!isExtra) {
-          item_to_edit = items;
-        } else {
-          item_to_edit = extra.list[extraIndex];
-        }
-
-        // Force Break
-        var forceBreakResult = {
-          isObject: (0, _lib.objType)(forceBreak, 'object')
-        };
-
-        // Is Boolean
-        if (!forceBreakResult.isObject) {
-          if (!item_to_edit.forceBreak) {
-            forceBreakResult.allowed = typeof forceBreak === 'boolean' && forceBreak;
-          } else {
-            forceBreakResult.allowed = false;
-          }
-          forceBreakResult.dontSendResult = false;
-          forceBreakResult.forceResult = false;
-        }
-
-        // Object
-        else {
-          if (!item_to_edit.forceBreak) {
-            forceBreakResult.allowed = typeof forceBreak["break"] === 'boolean' && forceBreak["break"];
-          } else {
-            forceBreakResult.allowed = false;
-          }
-          forceBreakResult.dontSendResult = typeof forceBreak.dontSendResult === 'boolean' && forceBreak.dontSendResult;
-          forceBreakResult.forceResult = typeof forceBreak.forceResult === 'boolean' && forceBreak.forceResult;
-        }
-
-        // No Error
-        if (!item_to_edit.error && !item_to_edit.forceBreak || forceBreakResult.forceResult) {
-          // Count
-          item_to_edit.count++;
-
-          // Normal
-          if (item !== null) {
-            // Add Item
-            item_to_edit.items.push(item);
-          }
-
-          // Set Force Break
-          if (!item_to_edit.forceBreak && forceBreakResult.allowed) {
-            item_to_edit.forceBreak = true;
-            item_to_edit.count = item_to_edit.total + 1;
-          }
-
-          // Complete
-          if (
-          // Can Send Results
-          !forceBreakResult.dontSendResult && (
-          // Count is Bigger
-          item_to_edit.count >= item_to_edit.total ||
-          // Type
-          typeof item_to_edit.type === 'string' &&
-          // While
-          item_to_edit.type === 'while' && item_to_edit.count > 0)) {
-            // Normal Result
-            if (!isExtra) {
-              if (!extra.enabled) {
-                resolve(items);
-              }
-            }
-
-            // Extra Result
-            else {
-              // Check Extra Exist
-              if (extra.list[extraIndex]) {
-                // Complete Check
-                extra.list[extraIndex].complete = true;
-
-                // Check List
-                var confirmation_checked = true;
-
-                // Detect Progress
-                for (var _item in extra.list) {
-                  if (!extra.list[_item].complete) {
-                    confirmation_checked = false;
-                    break;
-                  }
-                }
-
-                // Complete
-                if (confirmation_checked) {
-                  // Add Extra Info
-                  items.extra = extra.list;
-
-                  // Resolve
-                  resolve(items);
-                }
-              }
-
-              // Nope
-              else {
-                items.error = true;
-                reject(new Error('forAwait Extra Index not found.'));
-              }
-            }
-          }
-        }
-
-        // Return
-        return;
-      };
-
-      // Run For
-      var runFor = function runFor(callback) {
-        var isExtra = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-        var index = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-        var new_extra = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
-        // Prepare the Item
-        var the_item = null;
-
-        // Normal
-        if (!isExtra) {
-          the_item = obj;
-        } else {
-          the_item = new_extra;
-        }
-
-        // Run Script
-        var runFor_script = function runFor_script() {
-          var item = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-          // No Error
-          if (!items.error && !items.forceBreak) {
-            // Try
-            try {
-              // Result Function
-              var result_data = function result_data(forceBreak) {
-                return result(isExtra, index, item, forceBreak);
-              };
-
-              // Exist Item
-              if (item !== null) {
-                callback(item, result_data, error_result, extra.extra_function);
-              }
-
-              // Nope
-              else {
-                callback(result_data, error_result, extra.extra_function);
-              }
-            } catch (err) {
-              // Error
-              items.error = true;
-              reject(err);
-              return false;
-            }
-
-            // Normal Return
-            return true;
-          }
-
-          // Error
-          else {
-            return false;
-          }
-        };
-
-        // Start the For
-        if (typeof the_item.data !== 'number') {
-          // For Object
-          if (!the_item.type) {
-            // Start For
-            var for_used = false;
-            for (var item in the_item.data) {
-              for_used = true;
-              if (!runFor_script(item)) {
-                break;
-              }
-            }
-
-            // Not Used? Confirmed
-            if (!for_used) {
-              return result(isExtra, index, null);
-            }
-          }
-
-          // Type
-          else {
-            // Start a While
-            if (the_item.type === 'while') {
-              // Prepare
-              var _custom_do = function custom_do() {
-                // Validate
-                if (the_item.checker()) {
-                  // Prepare Edit
-                  var item_to_edit = null;
-
-                  // Not Extra
-                  if (!isExtra) {
-                    item_to_edit = items;
-                  } else {
-                    item_to_edit = extra.list[index];
-                  }
-
-                  // Add Total
-                  item_to_edit.total++;
-
-                  // Callback and Continue
-                  callback(function (forceBreak) {
-                    item_to_edit.count++;
-                    return result(isExtra, index, null, forceBreak);
-                  }, error_result, extra.extra_function);
-                  return _custom_do();
-                }
-
-                // Nope
-                else {
-                  return result(isExtra, index, null);
-                }
-              };
-
-              // Start
-              _custom_do();
-            }
-
-            // Nothing
-            else {
-              items.error = true;
-              reject(new Error('Invalid Function Type!'));
-            }
-          }
-        }
-
-        // Number Type
-        else {
-          // Exist Number
-          if (the_item.data > 0) {
-            for (var _item2 = 0; _item2 < the_item.data; _item2++) {
-              if (!runFor_script(_item2)) {
-                break;
-              }
-            }
-          }
-
-          // Nope
-          else {
-            return result(isExtra, index, null);
-          }
-        }
-        return;
-      };
-
-      // Detect Object Module
-      items.total = validateTotal(obj.data);
-
-      // Type
-      if (objValidated.type) {
-        items.type = objValidated.type;
-      }
-
-      // Prepare Extra
-      var extra = {
-        // Enabled
-        enabled: false,
-        // Extra List
-        list: [],
-        // Functions
-        extra_function: function extra_function(new_extra) {
-          // Validate Obj
-          var objValidated = superValidator(new_extra);
-
-          // Validator
-          if (objValidated.confirmed) {
-            // Prepare Extra
-            extra.enabled = true;
-            extra.list.push({
-              complete: false,
-              forceBreak: false,
-              count: 0,
-              total: null,
-              items: []
-            });
-
-            // Index
-            var index = extra.list.length - 1;
-
-            // Get Total
-            extra.list[index].total = validateTotal(new_extra.data);
-
-            // Type
-            if (objValidated.type) {
-              extra.list[index].type = objValidated.type;
-            }
-
-            // Callback
-            return {
-              // Run Extra
-              run: function run(callback) {
-                // Run For
-                if (!items.error && !items.forceBreak) {
-                  runFor(callback, true, index, new_extra);
-                }
-
-                // Complete
-                return;
-              }
-            };
-          }
-
-          // Nope
-          else {
-            var err = new Error('Invalid Object Extra Type to start the Script.');
-            items.error = true;
-            reject(err);
-            return null;
-          }
-        }
-      };
-
-      // Run For
-      runFor(callback);
-    }
-
-    // Nope
-    else {
-      reject(new Error('Invalid Object Type to start the Script.'));
-    }
-
-    // Complete
-    return;
-  });
-}
-
-},{"./utils/lib.mjs":440}],440:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.countObj = countObj;
-exports.objType = objType;
+/**
+ * Checks the type of a given object or returns its type as a string.
+ *
+ * @param {*} obj - The object to check or identify.
+ * @param {string} [type] - Optional. If provided, checks whether the object matches this type (e.g., "object", "array", "string").
+ * @returns {boolean|string|null} - Returns `true` if the type matches, `false` if not,
+ *                                   the type string if no type is provided, or `null` if the object is `undefined`.
+ *
+ * @example
+ * objType([], 'array'); // true
+ * objType({}, 'object'); // true
+ * objType('hello'); // "string"
+ * objType(undefined); // null
+ */
 function objType(obj, type) {
   // Is Defined
   if (typeof obj !== 'undefined') {
+    // Get Obj Type
+    var result = Object.prototype.toString.call(obj).toLowerCase();
     // Check Obj Type
     if (typeof type === 'string') {
-      if (Object.prototype.toString.call(obj).toLowerCase() === "[object ".concat(type, "]")) {
-        return true;
-      }
+      if (result === "[object ".concat(type, "]")) return true;
       return false;
     }
-
-    // Get Obj Type
-
-    // Result
-    var result = Object.prototype.toString.call(obj).toLowerCase();
-
     // Send Result
     return result.substring(8, result.length - 1);
   }
-
   // Nope
   return null;
 }
+/**
+ * Counts the number of elements in an array or the number of properties in an object.
+ *
+ * @param {*} obj - The array or object to count.
+ * @returns {number} - The count of items (array elements or object keys), or `0` if the input is neither an array nor an object.
+ *
+ * @example
+ * countObj([1, 2, 3]); // 3
+ * countObj({ a: 1, b: 2 }); // 2
+ * countObj('not an object'); // 0
+ */
 function countObj(obj) {
   // Is Array
-  if (Array.isArray(obj)) {
-    return obj.length;
-  }
-
+  if (Array.isArray(obj)) return obj.length;
   // Object
-  if (objType(obj, 'object')) {
-    return Object.keys(obj).length;
-  }
-
+  if (objType(obj, 'object')) return Object.keys(obj).length;
   // Nothing
   return 0;
 }
@@ -73566,7 +73581,7 @@ function validateParams (params) {
   return params
 }
 
-},{"http":658,"url":694}],468:[function(require,module,exports){
+},{"http":658,"url":701}],468:[function(require,module,exports){
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
@@ -73955,7 +73970,7 @@ module.exports = function isTypedArray(value) {
   return !!whichTypedArray(value);
 };
 
-},{"which-typed-array":714}],476:[function(require,module,exports){
+},{"which-typed-array":721}],476:[function(require,module,exports){
 module.exports      = isTypedArray
 isTypedArray.strict = isStrictTypedArray
 isTypedArray.loose  = isLooseTypedArray
@@ -78895,7 +78910,7 @@ Writable.prototype._destroy = function (err, cb) {
   cb(err);
 };
 }).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../errors":496,"./_stream_duplex":497,"./internal/streams/destroy":504,"./internal/streams/state":508,"./internal/streams/stream":509,"_process":585,"buffer":313,"inherits":469,"util-deprecate":695}],502:[function(require,module,exports){
+},{"../errors":496,"./_stream_duplex":497,"./internal/streams/destroy":504,"./internal/streams/state":508,"./internal/streams/stream":509,"_process":585,"buffer":313,"inherits":469,"util-deprecate":702}],502:[function(require,module,exports){
 (function (process){(function (){
 'use strict';
 
@@ -80717,7 +80732,7 @@ arguments[4][499][0].apply(exports,arguments)
 arguments[4][500][0].apply(exports,arguments)
 },{"../errors":551,"./_stream_duplex":552,"dup":500,"inherits":469}],556:[function(require,module,exports){
 arguments[4][501][0].apply(exports,arguments)
-},{"../errors":551,"./_stream_duplex":552,"./internal/streams/destroy":559,"./internal/streams/state":563,"./internal/streams/stream":564,"_process":585,"buffer":313,"dup":501,"inherits":469,"util-deprecate":695}],557:[function(require,module,exports){
+},{"../errors":551,"./_stream_duplex":552,"./internal/streams/destroy":559,"./internal/streams/state":563,"./internal/streams/stream":564,"_process":585,"buffer":313,"dup":501,"inherits":469,"util-deprecate":702}],557:[function(require,module,exports){
 arguments[4][502][0].apply(exports,arguments)
 },{"./end-of-stream":560,"_process":585,"dup":502}],558:[function(require,module,exports){
 arguments[4][503][0].apply(exports,arguments)
@@ -90045,7 +90060,7 @@ arguments[4][499][0].apply(exports,arguments)
 arguments[4][500][0].apply(exports,arguments)
 },{"../errors":591,"./_stream_duplex":592,"dup":500,"inherits":469}],596:[function(require,module,exports){
 arguments[4][501][0].apply(exports,arguments)
-},{"../errors":591,"./_stream_duplex":592,"./internal/streams/destroy":599,"./internal/streams/state":603,"./internal/streams/stream":604,"_process":585,"buffer":313,"dup":501,"inherits":469,"util-deprecate":695}],597:[function(require,module,exports){
+},{"../errors":591,"./_stream_duplex":592,"./internal/streams/destroy":599,"./internal/streams/state":603,"./internal/streams/stream":604,"_process":585,"buffer":313,"dup":501,"inherits":469,"util-deprecate":702}],597:[function(require,module,exports){
 arguments[4][502][0].apply(exports,arguments)
 },{"./end-of-stream":600,"_process":585,"dup":502}],598:[function(require,module,exports){
 arguments[4][503][0].apply(exports,arguments)
@@ -90475,7 +90490,7 @@ function arrayClone(arr, n) {
   return copy;
 }
 
-},{"events/":436,"util":698}],611:[function(require,module,exports){
+},{"events/":436,"util":705}],611:[function(require,module,exports){
 'use strict';
 
 var callBound = require('call-bound');
@@ -95207,7 +95222,7 @@ arguments[4][499][0].apply(exports,arguments)
 arguments[4][500][0].apply(exports,arguments)
 },{"../errors":643,"./_stream_duplex":644,"dup":500,"inherits":469}],648:[function(require,module,exports){
 arguments[4][501][0].apply(exports,arguments)
-},{"../errors":643,"./_stream_duplex":644,"./internal/streams/destroy":651,"./internal/streams/state":655,"./internal/streams/stream":656,"_process":585,"buffer":313,"dup":501,"inherits":469,"util-deprecate":695}],649:[function(require,module,exports){
+},{"../errors":643,"./_stream_duplex":644,"./internal/streams/destroy":651,"./internal/streams/state":655,"./internal/streams/stream":656,"_process":585,"buffer":313,"dup":501,"inherits":469,"util-deprecate":702}],649:[function(require,module,exports){
 arguments[4][502][0].apply(exports,arguments)
 },{"./end-of-stream":652,"_process":585,"dup":502}],650:[function(require,module,exports){
 arguments[4][503][0].apply(exports,arguments)
@@ -95313,7 +95328,7 @@ http.METHODS = [
 	'UNSUBSCRIBE'
 ]
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./lib/request":660,"./lib/response":661,"builtin-status-codes":315,"url":694,"xtend":721}],659:[function(require,module,exports){
+},{"./lib/request":660,"./lib/response":661,"builtin-status-codes":315,"url":701,"xtend":728}],659:[function(require,module,exports){
 (function (global){(function (){
 exports.fetch = isFunction(global.fetch) && isFunction(global.ReadableStream)
 
@@ -95959,7 +95974,7 @@ arguments[4][499][0].apply(exports,arguments)
 arguments[4][500][0].apply(exports,arguments)
 },{"../errors":662,"./_stream_duplex":663,"dup":500,"inherits":469}],667:[function(require,module,exports){
 arguments[4][501][0].apply(exports,arguments)
-},{"../errors":662,"./_stream_duplex":663,"./internal/streams/destroy":670,"./internal/streams/state":674,"./internal/streams/stream":675,"_process":585,"buffer":313,"dup":501,"inherits":469,"util-deprecate":695}],668:[function(require,module,exports){
+},{"../errors":662,"./_stream_duplex":663,"./internal/streams/destroy":670,"./internal/streams/state":674,"./internal/streams/stream":675,"_process":585,"buffer":313,"dup":501,"inherits":469,"util-deprecate":702}],668:[function(require,module,exports){
 arguments[4][502][0].apply(exports,arguments)
 },{"./end-of-stream":671,"_process":585,"dup":502}],669:[function(require,module,exports){
 arguments[4][503][0].apply(exports,arguments)
@@ -96083,7 +96098,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _objectHash = _interopRequireDefault(require("object-hash"));
 var _events = _interopRequireDefault(require("events"));
-var _utils = require("./utils.mjs");
+var _tinyEssentials = require("tiny-essentials");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
@@ -96105,7 +96120,7 @@ function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
 function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
 function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
 /**
- * AI Server Communication API
+ * Tiny AI Server Communication API
  * -----------------------------
  * This class is responsible for managing AI session data, including models, history, and content generation.
  * The script is designed to interact with the AI API, providing a complete structure for creating user interfaces (UI) or AI-powered chatbots.
@@ -96217,9 +96232,9 @@ var TinyAiInstance = /*#__PURE__*/function (_EventEmitter) {
             if (!props || typeof props.type !== 'string' || typeof props.name !== 'string') {
               if (typeof history[name] === 'undefined') history.customList.push({
                 name: name,
-                type: (0, _utils.objType)(value)
+                type: (0, _tinyEssentials.objType)(value)
               });else throw new Error('This value name is already being used!');
-            } else if (props.type !== (0, _utils.objType)(value)) throw new Error("Invalid custom value type! ".concat(name, ": ").concat(props.type, " === ").concat((0, _utils.objType)(value)));
+            } else if (props.type !== (0, _tinyEssentials.objType)(value)) throw new Error("Invalid custom value type! ".concat(name, ": ").concat(props.type, " === ").concat((0, _tinyEssentials.objType)(value)));
           }
           // Add Tokens
           var selectedId = this.getId(id);
@@ -96259,7 +96274,7 @@ var TinyAiInstance = /*#__PURE__*/function (_EventEmitter) {
           var props = history.customList.find(function (item) {
             return item.name === name;
           });
-          if ((0, _utils.objType)(props, 'object') && typeof props.type === 'string' && typeof props.name === 'string') {
+          if ((0, _tinyEssentials.objType)(props, 'object') && typeof props.type === 'string' && typeof props.name === 'string') {
             // Reset Tokens
             var selectedId = this.getId(id);
             if (typeof this.history[selectedId].tokens[name] !== 'undefined') delete this.history[selectedId].tokens[name];
@@ -97222,7 +97237,7 @@ var TinyAiInstance = /*#__PURE__*/function (_EventEmitter) {
         var newId = this.history[selectedId].nextId;
         this.history[selectedId].nextId++;
         var hash = (0, _objectHash["default"])(data);
-        var tokenContent = (0, _utils.objType)(tokenData, 'object') ? tokenData : {
+        var tokenContent = (0, _tinyEssentials.objType)(tokenData, 'object') ? tokenData : {
           count: typeof tokenData === 'number' ? tokenData : null
         };
         this.history[selectedId].data.push(data);
@@ -97505,7 +97520,7 @@ function _capitalizeFirstLetter(str) {
 }
 var _default = exports["default"] = TinyAiInstance;
 
-},{"./utils.mjs":683,"events":436,"object-hash":570}],681:[function(require,module,exports){
+},{"events":436,"object-hash":570,"tiny-essentials":690}],681:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -97540,10 +97555,23 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.setTinyGoogleAi = exports.TinyGoogleAi = void 0;
+exports.TinyGoogleAi = void 0;
+exports.setTinyGoogleAi = setTinyGoogleAi;
 var _jsonrepair = require("jsonrepair");
 var _base = _interopRequireDefault(require("../base.mjs"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
+function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
+function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
+function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
@@ -97556,16 +97584,38 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 /**
  * Configures the Tiny AI Api to use the Google Gemini API.
  *
- * @param {Object} tinyGoogleAI - The TinyAiApi instance to be configured.
+ * This function sets up the Google Gemini API in a TinyAiApi instance, providing
+ * the required authentication and model parameters.
+ *
+ * @param {TinyAiInstance} tinyGoogleAI - The TinyAiApi instance to be configured.
  * @param {string} GEMINI_API_KEY - The API key for Google Gemini.
  * @param {string} [MODEL_DATA='gemini-2.0-flash'] - The model to use (default is 'gemini-2.0-flash').
  */
-var setTinyGoogleAi = exports.setTinyGoogleAi = function setTinyGoogleAi(tinyGoogleAI, GEMINI_API_KEY) {
+function setTinyGoogleAi(tinyGoogleAI, GEMINI_API_KEY) {
   var MODEL_DATA = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'gemini-2.0-flash';
   var apiUrl = 'https://generativelanguage.googleapis.com/v1beta';
   tinyGoogleAI.setApiKey(GEMINI_API_KEY);
   tinyGoogleAI.setModel(MODEL_DATA);
-  // Error codes
+  /**
+   * A comprehensive map of HTTP status codes and their corresponding human-readable descriptions.
+   *
+   * This object includes:
+   * - Standard HTTP status codes (1xx–5xx)
+   * - Cloudflare-specific codes (520–530, 598–599)
+   * - Nginx-specific codes (444, 494–499)
+   *
+   * These codes are useful for interpreting responses from HTTP requests and displaying
+   * user-friendly messages or handling programmatic logic based on response status.
+   *
+   * @constant
+   * @type {Object<number, string>}
+   *
+   * @example
+   * const message = errorCodes[404]; // "Not Found"
+   * if (status >= 400) {
+   *   console.warn(`Error ${status}: ${errorCodes[status] || 'Unknown Status Code'}`);
+   * }
+   */
   var errorCodes = {
     100: 'Continue',
     101: 'Switching Protocols',
@@ -97649,6 +97699,33 @@ var setTinyGoogleAi = exports.setTinyGoogleAi = function setTinyGoogleAi(tinyGoo
     497: 'HTTP Request Sent to HTTPS Port',
     499: 'Client Closed Request'
   };
+  /**
+   * Registers a predefined set of error codes and their associated messages for interpreting
+   * the finish reasons returned by the Google Generative AI API.
+   *
+   * Each error code maps to a human-readable explanation and optional display rules (e.g. `hide`).
+   * These can be used to provide meaningful messages in the UI or logs when handling model responses.
+   *
+   * @function
+   * @name tinyGoogleAI._setErrorCodes
+   * @param {Object<string, {text: string, hide?: boolean}>} errorCodes - An object where each key is an error/finish reason returned by the API,
+   * and the value contains a `text` message and optionally a `hide` flag to control visibility in UI.
+   *
+   * @returns {void}
+   *
+   * @example
+   * tinyGoogleAI._setErrorCodes({
+   *   STOP: { text: 'Natural stop point of the model or provided stop sequence.', hide: true },
+   *   MAX_TOKENS: { text: 'The maximum number of tokens as specified in the request was reached.' },
+   *   SAFETY: { text: 'The response candidate content was flagged for safety reasons.' },
+   *   ...
+   * });
+   *
+   * Example usage:
+   * const reason = response.finishReason;
+   * const errorInfo = tinyGoogleAI.getErrorCode(reason);
+   * console.log(errorInfo.text); // Shows friendly explanation for the finish reason
+   */
   tinyGoogleAI._setErrorCodes({
     FINISH_REASON_UNSPECIFIED: {
       text: 'Default value. This value is unused.'
@@ -97688,7 +97765,12 @@ var setTinyGoogleAi = exports.setTinyGoogleAi = function setTinyGoogleAi(tinyGoo
       text: 'Token generation stopped because generated images contain safety violations.'
     }
   });
-  // Build Error
+  /**
+   * Builds a formatted error object into finalData based on the Google AI response.
+   *
+   * @param {object} result - The API response containing an error object.
+   * @param {object} finalData - The object that will receive the formatted error.
+   */
   var buildErrorData = function buildErrorData(result, finalData) {
     finalData.error = {
       code: typeof result.error.code === 'number' ? result.error.code : null,
@@ -97697,7 +97779,15 @@ var setTinyGoogleAi = exports.setTinyGoogleAi = function setTinyGoogleAi(tinyGoo
     };
     if (result.error.details) finalData.error.details = result.error.details;
   };
-  // Build Request
+  /**
+   * Constructs the full request body for the Google Gemini API call.
+   *
+   * @param {object[]} data - An array of messages or content items to send.
+   * @param {object} [config={}] - Optional configuration for the model and generation parameters.
+   * @param {object|null} [cache=null] - Cached content to be reused (optional).
+   * @param {boolean} [cacheMode=false] - When true, disables generationConfig and safetySettings.
+   * @returns {object} requestBody - A fully structured request object for the Gemini API.
+   */
   var requestBuilder = function requestBuilder(data) {
     var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     var cache = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
@@ -97740,13 +97830,38 @@ var setTinyGoogleAi = exports.setTinyGoogleAi = function setTinyGoogleAi(tinyGoo
     // Complete
     return requestBody;
   };
-  // The Fetch API
   // https://ai.google.dev/api/generate-content?hl=pt-br#method:-models.generatecontent
+  /**
+   * Internal method that integrates with Google Gemini via generateContent or streamGenerateContent.
+   * It builds the request body, handles normal and streaming responses, parses tokens and content,
+   * and returns structured response data.
+   *
+   * @function
+   * @name tinyGoogleAI._setGenContent
+   * @param {string} apiKey - Your Google AI API key.
+   * @param {boolean} isStream - Whether the request is a streaming request.
+   * @param {object[]} data - An array of messages to send (prompt).
+   * @param {string} model - The Gemini model ID (e.g., "gemini-pro").
+   * @param {Function} streamingCallback - Callback for streaming results. Called with partials.
+   * @param {AbortController} controller - Optional abort controller for cancelling requests.
+   * @returns {Promise<object>} finalData - A promise that resolves with a structured response object:
+   * - finalData.contents: Parsed content output
+   * - finalData.tokenUsage: Usage info with prompt/candidate/total counts
+   * - finalData.modelVersion: Model version string
+   * - finalData._response: Raw response
+   * - finalData.error: (If error occurred) contains message, status, and code
+   */
   tinyGoogleAI._setGenContent(function (apiKey, isStream, data, model, streamingCallback, controller) {
     return new Promise(function (resolve, reject) {
       // Request
       var requestBody = requestBuilder(data);
-      // Usage metadata
+      /**
+       * Parses token usage metadata from the result object.
+       *
+       * @param {object} result - The API response containing usageMetadata.
+       * @returns {[object, boolean]} Tuple of metadata object and whether an error occurred.
+       * @private
+       */
       var buildUsageMetada = function buildUsageMetada(result) {
         var usageMetadata = {
           count: {
@@ -97768,7 +97883,13 @@ var setTinyGoogleAi = exports.setTinyGoogleAi = function setTinyGoogleAi(tinyGoo
         else needShowMetadataError = true;
         return [usageMetadata, needShowMetadataError];
       };
-      // Build content
+      /**
+       * Parses and adds content candidates to the final result object.
+       *
+       * @param {object} result - The result object from the API response.
+       * @param {object} finalData - The object where content candidates are appended.
+       * @private
+       */
       var buildContent = function buildContent(result, finalData) {
         if (Array.isArray(result.candidates)) {
           for (var index in result.candidates) {
@@ -97784,6 +97905,13 @@ var setTinyGoogleAi = exports.setTinyGoogleAi = function setTinyGoogleAi(tinyGoo
           }
         }
       };
+      /**
+       * Final handler that transforms the result into a structured response.
+       *
+       * @param {object} result - The response from the Gemini API.
+       * @returns {object} finalData - Structured result with content, usage, model version, or error.
+       * @private
+       */
       var finalPromise = function finalPromise(result) {
         // Prepare final data
         var finalData = {
@@ -97812,7 +97940,15 @@ var setTinyGoogleAi = exports.setTinyGoogleAi = function setTinyGoogleAi(tinyGoo
         // Complete
         return finalData;
       };
-      // Streaming response
+      /**
+       * Handles streaming Gemini response via Fetch and TextDecoder.
+       * Buffers content and sends back partials using the streamingCallback.
+       *
+       * @async
+       * @param {ReadableStream} stream - The ReadableStream from fetch().body
+       * @returns {Promise<void>}
+       * @private
+       */
       var streamingResponse = /*#__PURE__*/function () {
         var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(stream) {
           var reader, decoder, done, countData, streamResult, streamCache, readerData, value, streamDone, chunk, cleanedJson, jsonChunk, indexResult, result, tinyData, tinyResult, index, index2, item, finalData, _index, _index2;
@@ -97960,8 +98096,46 @@ var setTinyGoogleAi = exports.setTinyGoogleAi = function setTinyGoogleAi(tinyGoo
       ["catch"](reject);
     });
   });
-  // Models
   // https://ai.google.dev/api/models?hl=pt_br#method:-models.list
+  /**
+   * Registers a function to fetch and organize the list of available Google AI models.
+   * The returned models are grouped into categories (`main`, `exp`, `others`) and sorted based on a predefined versioning logic.
+   *
+   * @function
+   * @name tinyGoogleAI._setGetModels
+   * @param {function(string, number, string=): Promise<Object>} callback - A function that takes an API key, an optional page size, and an optional page token,
+   * and returns a Promise with the processed models data.
+   *
+   * @returns {void}
+   *
+   * @example
+   * tinyGoogleAI._setGetModels((apiKey, pageSize, pageToken) => { ... });
+   *
+   * Returned object when resolved:
+   * {
+   *   _response: <original API response>,
+   *   newData: [<processed and inserted model objects>]
+   * }
+   *
+   * Model structure inserted into `tinyGoogleAI`:
+   * {
+   *   _response: <original model>,
+   *   category: { displayName, id, index },
+   *   index: <number>,
+   *   name: <string>,
+   *   id: <string>,
+   *   displayName: <string>,
+   *   version: <string>,
+   *   description: <string>,
+   *   inputTokenLimit: <number>,
+   *   outputTokenLimit: <number>,
+   *   temperature: <number>,
+   *   maxTemperature: <number>,
+   *   topP: <number>,
+   *   topK: <number>,
+   *   supportedGenerationMethods: [<string>]
+   * }
+   */
   tinyGoogleAI._setGetModels(function (apiKey, pageSize, pageToken) {
     return new Promise(function (resolve, reject) {
       return fetch("".concat(apiUrl, "/models?key=").concat(encodeURIComponent(apiKey), "&pageSize=").concat(encodeURIComponent(pageSize)).concat(pageToken ? "&pageToken=".concat(encodeURIComponent(pageToken)) : ''), {
@@ -98100,8 +98274,31 @@ var setTinyGoogleAi = exports.setTinyGoogleAi = function setTinyGoogleAi(tinyGoo
       ["catch"](reject);
     });
   });
-  // Token Counter
   // https://ai.google.dev/api/tokens?hl=pt-br#method:-models.counttokens
+  /**
+   * Registers a function to calculate token usage for a given model and input data using Google AI's `countTokens` endpoint.
+   *
+   * @function
+   * @name tinyGoogleAI._setCountTokens
+   * @param {function(string, string, AbortController?, Object): Promise<Object>} callback - A function that takes an API key, model ID,
+   * an optional AbortController, and the input data for the token count request. Returns a Promise with token count information.
+   *
+   * @returns {void}
+   *
+   * @example
+   * tinyGoogleAI._setCountTokens((apiKey, model, controller, data) => { ... });
+   *
+   * Returned object when resolved:
+   * {
+   *   _response: <original API response>,
+   *   totalTokens: <number|null>,
+   *   cachedContentTokenCount: <number|null>,
+   *   promptTokensDetails: {
+   *     tokenCount: <number|null>,
+   *     modality: <string|null>
+   *   }
+   * }
+   */
   tinyGoogleAI._setCountTokens(function (apiKey, model, controller, data) {
     return new Promise(function (resolve, reject) {
       var dataContent = requestBuilder(data);
@@ -98155,19 +98352,30 @@ var setTinyGoogleAi = exports.setTinyGoogleAi = function setTinyGoogleAi(tinyGoo
   });
   // Complete
   return tinyGoogleAI;
-};
+}
 /**
- * Initializes and returns a TinyAiApi instance configured with the Google Gemini API.
+ * Creates and configures a new TinyAiInstance that is set up with the Google Gemini API.
  *
- * @function
+ * @class
+ * @extends TinyAiInstance
  * @param {string} GEMINI_API_KEY - The API key used to authenticate with the Google Gemini API.
  * @param {string} [MODEL_DATA='gemini-2.0-flash'] - Optional. The model identifier to use. Defaults to `'gemini-2.0-flash'`.
+ * @param {boolean} [isSingle=false] - If true, configures the instance to handle a single session only.
  * @returns {TinyAiInstance} A configured instance of TinyAiApi.
  */
-var TinyGoogleAi = exports.TinyGoogleAi = function TinyGoogleAi(GEMINI_API_KEY) {
-  var MODEL_DATA = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'gemini-2.0-flash';
-  return setTinyGoogleAi(new _base["default"](), GEMINI_API_KEY, MODEL_DATA);
-};
+var TinyGoogleAi = exports.TinyGoogleAi = /*#__PURE__*/function (_TinyAiInstance) {
+  function TinyGoogleAi(GEMINI_API_KEY) {
+    var _this;
+    var MODEL_DATA = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'gemini-2.0-flash';
+    var isSingle = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+    _classCallCheck(this, TinyGoogleAi);
+    _this = _callSuper(this, TinyGoogleAi, [isSingle]);
+    setTinyGoogleAi(_this, GEMINI_API_KEY, MODEL_DATA);
+    return _this;
+  }
+  _inherits(TinyGoogleAi, _TinyAiInstance);
+  return _createClass(TinyGoogleAi);
+}(_base["default"]);
 
 },{"../base.mjs":680,"jsonrepair":486}],683:[function(require,module,exports){
 "use strict";
@@ -98175,51 +98383,680 @@ var TinyGoogleAi = exports.TinyGoogleAi = function TinyGoogleAi(GEMINI_API_KEY) 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports["default"] = asyncReplace;
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+/**
+ * Asynchronously replaces matches in a string using a regex and an async function.
+ *
+ * @param {string} str - The input string to perform replacements on.
+ * @param {RegExp} regex - The regular expression to match substrings for replacement.
+ * @param {Function} asyncFn - An asynchronous function that returns a replacement for each match.
+ *                             It receives the same arguments as a standard `replace` callback.
+ * @returns {Promise<string>} The resulting string with all async replacements applied.
+ *
+ * @example
+ * await asyncReplace("Hello @user1 and @user2!", /@\w+/g, async (mention) => {
+ *   return await getUserNameFromMention(mention);
+ * });
+ */
+function asyncReplace(_x, _x2, _x3) {
+  return _asyncReplace.apply(this, arguments);
+}
+function _asyncReplace() {
+  _asyncReplace = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(str, regex, asyncFn) {
+    var promises, data;
+    return _regeneratorRuntime().wrap(function _callee$(_context) {
+      while (1) switch (_context.prev = _context.next) {
+        case 0:
+          promises = []; // Collect promises
+          str.replace(regex, function (match) {
+            for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+              args[_key - 1] = arguments[_key];
+            }
+            promises.push(asyncFn.apply(void 0, [match].concat(args)));
+            return match;
+          });
+          _context.next = 4;
+          return Promise.all(promises);
+        case 4:
+          data = _context.sent;
+          return _context.abrupt("return", str.replace(regex, function () {
+            return data.shift();
+          }));
+        case 6:
+        case "end":
+          return _context.stop();
+      }
+    }, _callee);
+  }));
+  return _asyncReplace.apply(this, arguments);
+}
+
+},{}],684:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+/**
+ * Class to manage user level-up logic based on experience points.
+ */
+var TinyLevelUp = /*#__PURE__*/function () {
+  /**
+   * Constructor
+   * @param {number} giveExp - Base experience value for random experience generation.
+   * @param {number} expLevel - Base experience needed to level up (per level).
+   */
+  function TinyLevelUp(giveExp, expLevel) {
+    _classCallCheck(this, TinyLevelUp);
+    this.giveExp = giveExp;
+    this.expLevel = expLevel;
+  }
+  /**
+   * Validates and adjusts the user's level based on their current experience.
+   * @param {Object} user - The user object containing experience and level properties.
+   * @returns {Object} The updated user object.
+   */
+  return _createClass(TinyLevelUp, [{
+    key: "expValidator",
+    value: function expValidator(user) {
+      var extraValue = 0;
+      var nextLevelExp = this.expLevel * user.level;
+      // Level Up
+      if (user.exp >= nextLevelExp) {
+        user.level++;
+        extraValue = user.exp - nextLevelExp;
+        user.exp = 0;
+        if (extraValue > 0) return this.give(user, extraValue, 'extra');
+      }
+      // Level Down
+      if (user.exp < 1 && user.level > 1) {
+        user.level--;
+        extraValue = Math.abs(user.exp);
+        user.exp = this.expLevel * user.level;
+        if (extraValue > 0) return this.remove(user, extraValue, 'extra');
+      }
+      return user;
+    }
+    /**
+     * Calculates the total experience based on the user's level.
+     * @param {Object} user - The user object containing experience and level properties.
+     * @returns {number} The total experience of the user.
+     */
+  }, {
+    key: "getTotalExp",
+    value: function getTotalExp(user) {
+      var totalExp = 0;
+      for (var p = 1; p <= user.level; p++) totalExp += this.expLevel * p;
+      totalExp += user.exp;
+      return totalExp;
+    }
+    /**
+     * Generates random experience points based on the configured multiplier.
+     * @param {number} multi - A multiplier for the generated experience.
+     * @returns {number} The generated experience points.
+     */
+  }, {
+    key: "expGenerator",
+    value: function expGenerator() {
+      var multi = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      return Math.floor(Math.random() * this.giveExp) + 1 * multi;
+    }
+    /**
+     * Gets the experience points required to reach the next level.
+     * @param {Object} user - The user object containing the level.
+     * @returns {number} The experience required for the next level.
+     */
+  }, {
+    key: "progress",
+    value: function progress(user) {
+      return this.expLevel * user.level;
+    }
+    /**
+     * Gets the experience points required to reach the next level.
+     * @param {Object} user - The user object containing the level.
+     * @returns {number} The experience required for the next level.
+     */
+  }, {
+    key: "getProgress",
+    value: function getProgress(user) {
+      return this.expLevel * user.level;
+    }
+    /**
+     * Sets the experience value for the user, adjusting their level if necessary.
+     * @param {Object} user - The user object.
+     * @param {number} value - The new experience value to set.
+     * @returns {Object} The updated user object.
+     */
+  }, {
+    key: "set",
+    value: function set(user, value) {
+      user.exp = value;
+      this.expValidator(user);
+      user.totalExp = this.getTotalExp(user);
+      return user;
+    }
+    /**
+     * Adds experience to the user, adjusting their level if necessary.
+     * @param {Object} user - The user object.
+     * @param {number} extraExp - Additional experience to be added.
+     * @param {string} type - Type of addition ('add' or 'extra').
+     * @param {number} multi - Multiplier for experience generation.
+     * @returns {Object} The updated user object.
+     */
+  }, {
+    key: "give",
+    value: function give(user) {
+      var extraExp = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+      var type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'add';
+      var multi = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
+      if (type === 'add') user.exp += this.expGenerator(multi) + extraExp;else if (type === 'extra') user.exp += extraExp;
+      this.expValidator(user);
+      user.totalExp = this.getTotalExp(user);
+      return user;
+    }
+    /**
+     * Removes experience from the user, adjusting their level if necessary.
+     * @param {Object} user - The user object.
+     * @param {number} extraExp - Experience to remove.
+     * @param {string} type - Type of removal ('add' or 'extra').
+     * @param {number} multi - Multiplier for experience generation.
+     * @returns {Object} The updated user object.
+     */
+  }, {
+    key: "remove",
+    value: function remove(user) {
+      var extraExp = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+      var type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'add';
+      var multi = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
+      if (type === 'add') user.exp -= this.expGenerator(multi) + extraExp;else if (type === 'extra') user.exp -= extraExp;
+      this.expValidator(user);
+      user.totalExp = this.getTotalExp(user);
+      return user;
+    }
+  }]);
+}();
+var _default = exports["default"] = TinyLevelUp;
+
+},{}],685:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.shuffleArray = shuffleArray;
+// https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+/**
+ * Randomly shuffles the elements of an array in place using the Fisher–Yates algorithm.
+ *
+ * This implementation ensures a uniform distribution of permutations.
+ * Original algorithm source: StackOverflow (link above).
+ *
+ * @param {string[]} items - The array to shuffle.
+ * @returns {string[]} The same array instance, now shuffled in place.
+ */
+function shuffleArray(items) {
+  var currentIndex = items.length,
+    randomIndex;
+  // While there remain elements to shuffle...
+  while (currentIndex !== 0) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    // And swap it with the current element.
+    var _ref = [items[randomIndex], items[currentIndex]];
+    items[currentIndex] = _ref[0];
+    items[randomIndex] = _ref[1];
+  }
+  return items;
+}
+
+},{}],686:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.formatCustomTimer = formatCustomTimer;
+exports.formatDayTimer = formatDayTimer;
+exports.formatTimer = formatTimer;
+exports.getTimeDuration = getTimeDuration;
+/**
+ * Calculates the time duration between the current time and a given time offset.
+ *
+ * @param {Date} timeData - The target time as a Date object.
+ * @param {string} [durationType='asSeconds'] - The type of duration to return. Can be 'asMilliseconds', 'asSeconds', 'asMinutes', 'asHours', 'asDays'.
+ * @param {Date|null} [now=null] - The current time as a Date object. Defaults to the current date and time if not provided.
+ * @returns {number|null} The calculated duration in the specified unit, or `null` if `timeData` is not provided.
+ */
+function getTimeDuration() {
+  var timeData = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Date();
+  var durationType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'asSeconds';
+  var now = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  if (timeData instanceof Date) {
+    var currentTime = now instanceof Date ? now : new Date();
+    var diffMs = timeData - currentTime;
+    switch (durationType) {
+      case 'asMilliseconds':
+        return diffMs;
+      case 'asSeconds':
+        return diffMs / 1000;
+      case 'asMinutes':
+        return diffMs / (1000 * 60);
+      case 'asHours':
+        return diffMs / (1000 * 60 * 60);
+      case 'asDays':
+        return diffMs / (1000 * 60 * 60 * 24);
+      default:
+        return diffMs / 1000;
+      // default to seconds
+    }
+  }
+  return null;
+}
+/**
+ * Formats a custom timer string based on total seconds and a detail level.
+ * Includes proper reallocation of lower units into higher ones, ensuring consistent hierarchy.
+ *
+ * @param {number} totalSeconds - The total amount of seconds to convert.
+ * @param {'seconds'|'minutes'|'hours'|'days'|'months'|'years'} level - The highest level to calculate and display.
+ * @param {string} [format='{time}'] - Output template with placeholders like {years}, {months}, {days}, {hours}, {minutes}, {seconds}, {time}, {total}.
+ * @returns {string} The formatted timer string.
+ */
+function formatCustomTimer(totalSeconds) {
+  var level = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'seconds';
+  var format = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '{time}';
+  totalSeconds = Math.max(0, Math.floor(totalSeconds));
+  var levels = ['seconds', 'minutes', 'hours', 'days', 'months', 'years'];
+  var index = levels.indexOf(level);
+  var include = {
+    years: index >= 5,
+    months: index >= 4,
+    days: index >= 3,
+    hours: index >= 2,
+    minutes: index >= 1,
+    seconds: index >= 0
+  };
+  var parts = {
+    years: include.years ? 0 : NaN,
+    months: include.months ? 0 : NaN,
+    days: include.days ? 0 : NaN,
+    hours: include.hours ? 0 : NaN,
+    minutes: include.minutes ? 0 : NaN,
+    seconds: include.seconds ? 0 : NaN,
+    total: NaN
+  };
+  var remaining = totalSeconds;
+  if (include.years || include.months || include.days) {
+    var baseDate = new Date(1980, 0, 1);
+    var targetDate = new Date(baseDate.getTime() + remaining * 1000);
+    var workingDate = new Date(baseDate);
+    // Years
+    if (include.years) {
+      while (new Date(workingDate.getFullYear() + 1, workingDate.getMonth(), workingDate.getDate()) <= targetDate) {
+        workingDate.setFullYear(workingDate.getFullYear() + 1);
+        parts.years++;
+      }
+    }
+    // Months
+    if (include.months) {
+      while (new Date(workingDate.getFullYear(), workingDate.getMonth() + 1, workingDate.getDate()) <= targetDate) {
+        workingDate.setMonth(workingDate.getMonth() + 1);
+        parts.months++;
+      }
+    }
+    // Days
+    if (include.days) {
+      while (new Date(workingDate.getFullYear(), workingDate.getMonth(), workingDate.getDate() + 1) <= targetDate) {
+        workingDate.setDate(workingDate.getDate() + 1);
+        parts.days++;
+      }
+    }
+    remaining = Math.floor((targetDate - workingDate) / 1000);
+  }
+  if (include.hours) {
+    parts.hours = Math.floor(remaining / 3600);
+    remaining %= 3600;
+  }
+  if (include.minutes) {
+    parts.minutes = Math.floor(remaining / 60);
+    remaining %= 60;
+  }
+  if (include.seconds) {
+    parts.seconds = remaining;
+  }
+  // Calculate total
+  var totalMap = {
+    seconds: include.seconds ? totalSeconds : NaN,
+    minutes: include.minutes ? totalSeconds / 60 : NaN,
+    hours: include.hours ? totalSeconds / 3600 : NaN,
+    days: include.days ? totalSeconds / 86400 : NaN,
+    months: include.months ? parts.years * 12 + parts.months + (parts.days || 0) / 30 : NaN,
+    years: include.years ? parts.years + (parts.months || 0) / 12 + (parts.days || 0) / 365 : NaN
+  };
+  parts.total = +(totalMap[level] || 0).toFixed(2).replace(/\.00$/, '');
+  var pad = function pad(n) {
+    return isNaN(n) ? 'NaN' : String(n).padStart(2, '0');
+  };
+  var timeString = [include.hours ? pad(parts.hours) : null, include.minutes ? pad(parts.minutes) : null, include.seconds ? pad(parts.seconds) : null].filter(function (v) {
+    return v !== null;
+  }).join(':');
+  return format.replace(/\{years\}/g, parts.years).replace(/\{months\}/g, parts.months).replace(/\{days\}/g, parts.days).replace(/\{hours\}/g, pad(parts.hours)).replace(/\{minutes\}/g, pad(parts.minutes)).replace(/\{seconds\}/g, pad(parts.seconds)).replace(/\{time\}/g, timeString).replace(/\{total\}/g, parts.total).trim();
+}
+/**
+ * Formats a duration (in seconds) into a timer string showing only hours, minutes, and seconds.
+ *
+ * Example output: "05:32:10"
+ *
+ * @param {number} seconds - The total number of seconds to format.
+ * @returns {string} The formatted timer string in "HH:MM:SS" format.
+ */
+function formatTimer(seconds) {
+  return formatCustomTimer(seconds, 'hours', '{hours}:{minutes}:{seconds}');
+}
+/**
+ * Formats a duration (in seconds) into a timer string including days, hours, minutes, and seconds.
+ *
+ * Example output: "2d 05:32:10"
+ *
+ * @param {number} seconds - The total number of seconds to format.
+ * @returns {string} The formatted timer string in "Xd HH:MM:SS" format.
+ */
+function formatDayTimer(seconds) {
+  return formatCustomTimer(seconds, 'days', '{days}d {hours}:{minutes}:{seconds}');
+}
+
+},{}],687:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.countObj = countObj;
 exports.objType = objType;
 /**
  * Checks the type of a given object or returns its type as a string.
  *
- * If a `type` string is provided, the function will return a boolean indicating
- * whether the object's internal [[Class]] matches the given type (case-sensitive).
- *
- * If no `type` is provided, it will return the object's internal type string
- * (e.g., `"array"`, `"object"`, `"string"`, etc.).
- *
- * @param {*} obj - The object or value to check or retrieve the type of.
- * @param {string} [type] - (Optional) The expected type to check against (e.g., `"Array"`, `"Object"`, `"String"`).
- * @returns {boolean|string|null} Returns:
- * - `true` if the object matches the given type,
- * - `false` if it doesn't match the type,
- * - the lowercase string name of the object's type if `type` is not provided,
- * - `null` if the object is `undefined`.
+ * @param {*} obj - The object to check or identify.
+ * @param {string} [type] - Optional. If provided, checks whether the object matches this type (e.g., "object", "array", "string").
+ * @returns {boolean|string|null} - Returns `true` if the type matches, `false` if not,
+ *                                   the type string if no type is provided, or `null` if the object is `undefined`.
  *
  * @example
- * objType([], 'Array'); // true
- * objType({}, 'Array'); // false
- * objType('hello'); // 'string'
+ * objType([], 'array'); // true
+ * objType({}, 'object'); // true
+ * objType('hello'); // "string"
  * objType(undefined); // null
  */
 function objType(obj, type) {
   // Is Defined
   if (typeof obj !== 'undefined') {
+    // Get Obj Type
+    var result = Object.prototype.toString.call(obj).toLowerCase();
     // Check Obj Type
     if (typeof type === 'string') {
-      if (Object.prototype.toString.call(obj).toLowerCase() === "[object ".concat(type, "]")) {
-        return true;
-      }
+      if (result === "[object ".concat(type, "]")) return true;
       return false;
     }
-    // Get Obj Type
-    // Result
-    var result = Object.prototype.toString.call(obj).toLowerCase();
     // Send Result
     return result.substring(8, result.length - 1);
   }
   // Nope
   return null;
 }
+/**
+ * Counts the number of elements in an array or the number of properties in an object.
+ *
+ * @param {*} obj - The array or object to count.
+ * @returns {number} - The count of items (array elements or object keys), or `0` if the input is neither an array nor an object.
+ *
+ * @example
+ * countObj([1, 2, 3]); // 3
+ * countObj({ a: 1, b: 2 }); // 2
+ * countObj('not an object'); // 0
+ */
+function countObj(obj) {
+  // Is Array
+  if (Array.isArray(obj)) return obj.length;
+  // Object
+  if (objType(obj, 'object')) return Object.keys(obj).length;
+  // Nothing
+  return 0;
+}
 
-},{}],684:[function(require,module,exports){
+},{}],688:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getAge = getAge;
+exports.getSimplePerc = getSimplePerc;
+exports.ruleOfThree = ruleOfThree;
+/**
+ * Executes a Rule of Three calculation.
+ *
+ * @param {number} val1 - The first reference value (numerator in direct proportion, denominator in inverse).
+ * @param {number} val2 - The second reference value (denominator in direct proportion, numerator in inverse).
+ * @param {number} val3 - The third value (numerator in direct proportion, denominator in inverse).
+ * @param {boolean} inverse - Whether the calculation should use inverse proportion (true for inverse, false for direct).
+ * @returns {number} The result of the Rule of Three operation.
+ *
+ * Rule of Three Formula (Direct Proportion):
+ *      val1 / val2 = val3 / result
+ *
+ * For Inverse Proportion:
+ *      val1 / val3 = val2 / result
+ *
+ * Visual Representation:
+ *
+ * For Direct Proportion:
+ *      val1      val2
+ *      -----  =  ------
+ *      val3      result
+ *
+ * For Inverse Proportion:
+ *      val1      val2
+ *      -----  =  ------
+ *      val3      result
+ *
+ * @example
+ * // Direct proportion:
+ * ruleOfThree.execute(2, 6, 3, false); // → 9
+ *
+ * @example
+ * // Inverse proportion:
+ * ruleOfThree.execute(2, 6, 3, true); // → 4
+ */
+function ruleOfThree(val1, val2, val3, inverse) {
+  return inverse ? Number(val1 * val2) / val3 : Number(val3 * val2) / val1;
+}
+/**
+ * Calculates a percentage of a given base value.
+ * @param {number} price - The base value.
+ * @param {number} percentage - The percentage to apply.
+ * @returns {number} The result of the percentage calculation.
+ *
+ * @example
+ * getSimplePerc(200, 15); // 30
+ */
+function getSimplePerc(price, percentage) {
+  return price * (percentage / 100);
+}
+/**
+ * Calculates the age based on the given date.
+ *
+ * @param {number|string|Date} timeData - The birth date (can be a timestamp, ISO string, or Date object).
+ * @param {Date|null} [now=null] - The Date object representing the current date. Defaults to the current date and time if not provided.
+ * @returns {number|null} The age in years, or null if `timeData` is not provided or invalid.
+ */
+function getAge() {
+  var timeData = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var now = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  if (typeof timeData !== 'undefined' && timeData !== null && timeData !== 0) {
+    var birthDate = new Date(timeData);
+    if (isNaN(birthDate)) return null;
+    var currentDate = now instanceof Date ? now : new Date();
+    var age = currentDate.getFullYear() - birthDate.getFullYear();
+    var currentMonth = currentDate.getMonth();
+    var birthMonth = birthDate.getMonth();
+    var currentDay = currentDate.getDate();
+    var birthDay = birthDate.getDate();
+    // Adjust if birthday hasn't occurred yet this year
+    if (currentMonth < birthMonth || currentMonth === birthMonth && currentDay < birthDay) age--;
+    return Math.abs(age);
+  }
+  return null;
+}
+
+},{}],689:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.toTitleCase = toTitleCase;
+exports.toTitleCaseLowerFirst = toTitleCaseLowerFirst;
+/**
+ * Converts a string to title case where the first letter of each word is capitalized.
+ * All other letters are converted to lowercase.
+ *
+ * Example: "hello world" -> "Hello World"
+ *
+ * @param {string} str - The string to be converted to title case.
+ * @returns {string} The string converted to title case.
+ */
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+}
+/**
+ * Converts a string to title case where the first letter of each word is capitalized,
+ * but the first letter of the entire string is left lowercase.
+ *
+ * Example: "hello world" -> "hello World"
+ *
+ * @param {string} str - The string to be converted to title case with the first letter in lowercase.
+ * @returns {string} The string converted to title case with the first letter in lowercase.
+ */
+function toTitleCaseLowerFirst(str) {
+  var titleCased = str.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+  return titleCased.charAt(0).toLowerCase() + titleCased.slice(1);
+}
+
+},{}],690:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "TinyLevelUp", {
+  enumerable: true,
+  get: function get() {
+    return _userLevel["default"];
+  }
+});
+Object.defineProperty(exports, "asyncReplace", {
+  enumerable: true,
+  get: function get() {
+    return _replaceAsync["default"];
+  }
+});
+Object.defineProperty(exports, "countObj", {
+  enumerable: true,
+  get: function get() {
+    return _objFilter.countObj;
+  }
+});
+Object.defineProperty(exports, "formatCustomTimer", {
+  enumerable: true,
+  get: function get() {
+    return _clock.formatCustomTimer;
+  }
+});
+Object.defineProperty(exports, "formatDayTimer", {
+  enumerable: true,
+  get: function get() {
+    return _clock.formatDayTimer;
+  }
+});
+Object.defineProperty(exports, "formatTimer", {
+  enumerable: true,
+  get: function get() {
+    return _clock.formatTimer;
+  }
+});
+Object.defineProperty(exports, "getAge", {
+  enumerable: true,
+  get: function get() {
+    return _simpleMath.getAge;
+  }
+});
+Object.defineProperty(exports, "getSimplePerc", {
+  enumerable: true,
+  get: function get() {
+    return _simpleMath.getSimplePerc;
+  }
+});
+Object.defineProperty(exports, "getTimeDuration", {
+  enumerable: true,
+  get: function get() {
+    return _clock.getTimeDuration;
+  }
+});
+Object.defineProperty(exports, "objType", {
+  enumerable: true,
+  get: function get() {
+    return _objFilter.objType;
+  }
+});
+Object.defineProperty(exports, "ruleOfThree", {
+  enumerable: true,
+  get: function get() {
+    return _simpleMath.ruleOfThree;
+  }
+});
+Object.defineProperty(exports, "shuffleArray", {
+  enumerable: true,
+  get: function get() {
+    return _array.shuffleArray;
+  }
+});
+Object.defineProperty(exports, "toTitleCase", {
+  enumerable: true,
+  get: function get() {
+    return _text.toTitleCase;
+  }
+});
+Object.defineProperty(exports, "toTitleCaseLowerFirst", {
+  enumerable: true,
+  get: function get() {
+    return _text.toTitleCaseLowerFirst;
+  }
+});
+var _replaceAsync = _interopRequireDefault(require("../legacy/libs/replaceAsync.mjs"));
+var _userLevel = _interopRequireDefault(require("../legacy/libs/userLevel.mjs"));
+var _array = require("./basics/array.mjs");
+var _clock = require("./basics/clock.mjs");
+var _objFilter = require("./basics/objFilter.mjs");
+var _simpleMath = require("./basics/simpleMath.mjs");
+var _text = require("./basics/text.mjs");
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+
+},{"../legacy/libs/replaceAsync.mjs":683,"../legacy/libs/userLevel.mjs":684,"./basics/array.mjs":685,"./basics/clock.mjs":686,"./basics/objFilter.mjs":687,"./basics/simpleMath.mjs":688,"./basics/text.mjs":689}],691:[function(require,module,exports){
 (function (process){(function (){
 "use strict";
 
@@ -100383,7 +101220,7 @@ tippy.setDefaultProps({
 var _default = exports["default"] = tippy;
 
 }).call(this)}).call(this,require('_process'))
-},{"@popperjs/core":148,"_process":585}],685:[function(require,module,exports){
+},{"@popperjs/core":148,"_process":585}],692:[function(require,module,exports){
 
 module.exports = function () {
   var selection = document.getSelection();
@@ -100424,7 +101261,7 @@ module.exports = function () {
   };
 };
 
-},{}],686:[function(require,module,exports){
+},{}],693:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -100804,7 +101641,7 @@ function __classPrivateFieldSet(receiver, privateMap, value) {
   return value;
 }
 
-},{}],687:[function(require,module,exports){
+},{}],694:[function(require,module,exports){
 (function (Buffer){(function (){
 /**
  * Convert a typed array to a Buffer without a copy
@@ -100833,7 +101670,7 @@ module.exports = function typedarrayToBuffer (arr) {
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"buffer":313,"is-typedarray":476}],688:[function(require,module,exports){
+},{"buffer":313,"is-typedarray":476}],695:[function(require,module,exports){
 (function (global){(function (){
 /*! https://mths.be/punycode v1.4.1 by @mathias */
 ;(function(root) {
@@ -101370,7 +102207,7 @@ module.exports = function typedarrayToBuffer (arr) {
 }(this));
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],689:[function(require,module,exports){
+},{}],696:[function(require,module,exports){
 'use strict';
 
 var replace = String.prototype.replace;
@@ -101395,7 +102232,7 @@ module.exports = {
     RFC3986: Format.RFC3986
 };
 
-},{}],690:[function(require,module,exports){
+},{}],697:[function(require,module,exports){
 'use strict';
 
 var stringify = require('./stringify');
@@ -101408,7 +102245,7 @@ module.exports = {
     stringify: stringify
 };
 
-},{"./formats":689,"./parse":691,"./stringify":692}],691:[function(require,module,exports){
+},{"./formats":696,"./parse":698,"./stringify":699}],698:[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -101738,7 +102575,7 @@ module.exports = function (str, opts) {
     return utils.compact(obj);
 };
 
-},{"./utils":693}],692:[function(require,module,exports){
+},{"./utils":700}],699:[function(require,module,exports){
 'use strict';
 
 var getSideChannel = require('side-channel');
@@ -102096,7 +102933,7 @@ module.exports = function (object, opts) {
     return joined.length > 0 ? prefix + joined : '';
 };
 
-},{"./formats":689,"./utils":693,"side-channel":629}],693:[function(require,module,exports){
+},{"./formats":696,"./utils":700,"side-channel":629}],700:[function(require,module,exports){
 'use strict';
 
 var formats = require('./formats');
@@ -102366,7 +103203,7 @@ module.exports = {
     merge: merge
 };
 
-},{"./formats":689}],694:[function(require,module,exports){
+},{"./formats":696}],701:[function(require,module,exports){
 /*
  * Copyright Joyent, Inc. and other Node contributors.
  *
@@ -103144,7 +103981,7 @@ exports.format = urlFormat;
 
 exports.Url = Url;
 
-},{"punycode/":688,"qs":690}],695:[function(require,module,exports){
+},{"punycode/":695,"qs":697}],702:[function(require,module,exports){
 (function (global){(function (){
 
 /**
@@ -103215,9 +104052,9 @@ function config (name) {
 }
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],696:[function(require,module,exports){
+},{}],703:[function(require,module,exports){
 arguments[4][276][0].apply(exports,arguments)
-},{"dup":276}],697:[function(require,module,exports){
+},{"dup":276}],704:[function(require,module,exports){
 // Currently in sync with Node.js lib/internal/util/types.js
 // https://github.com/nodejs/node/commit/112cc7c27551254aa2b17098fb774867f05ed0d9
 
@@ -103553,7 +104390,7 @@ exports.isAnyArrayBuffer = isAnyArrayBuffer;
   });
 });
 
-},{"is-arguments":470,"is-generator-function":472,"is-typed-array":475,"which-typed-array":714}],698:[function(require,module,exports){
+},{"is-arguments":470,"is-generator-function":472,"is-typed-array":475,"which-typed-array":721}],705:[function(require,module,exports){
 (function (process){(function (){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -104272,9 +105109,9 @@ function callbackify(original) {
 exports.callbackify = callbackify;
 
 }).call(this)}).call(this,require('_process'))
-},{"./support/isBuffer":696,"./support/types":697,"_process":585,"inherits":469}],699:[function(require,module,exports){
+},{"./support/isBuffer":703,"./support/types":704,"_process":585,"inherits":469}],706:[function(require,module,exports){
 module.exports=function(e){var r={};function t(n){if(r[n])return r[n].exports;var a=r[n]={i:n,l:!1,exports:{}};return e[n].call(a.exports,a,a.exports,t),a.l=!0,a.exports}return t.m=e,t.c=r,t.d=function(e,r,n){t.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:n})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,r){if(1&r&&(e=t(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(t.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var a in e)t.d(n,a,function(r){return e[r]}.bind(null,a));return n},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},t.p="",t(t.s=0)}([function(e,r,t){"use strict";t.r(r),t.d(r,"validateHTMLColorName",(function(){return l})),t.d(r,"validateHTMLColorSpecialName",(function(){return i})),t.d(r,"validateHTMLColorHex",(function(){return u})),t.d(r,"validateHTMLColorRgb",(function(){return g})),t.d(r,"validateHTMLColorHsl",(function(){return y})),t.d(r,"validateHTMLColorHwb",(function(){return L})),t.d(r,"validateHTMLColorLab",(function(){return S})),t.d(r,"validateHTMLColorLch",(function(){return m})),t.d(r,"validateHTMLColor",(function(){return G}));const n=e=>e&&"string"==typeof e,a=["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenrod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","DarkOrange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","Goldenrod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenrodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquamarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenrod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","RebeccaPurple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"],o=["currentColor","inherit","transparent"],l=e=>{let r=!1;return n(e)&&a.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},i=e=>{let r=!1;return n(e)&&o.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},u=e=>{if(n(e)){const r=/^#([\da-f]{3}){1,2}$|^#([\da-f]{4}){1,2}$/i;return e&&r.test(e)}return!1},d="(([\\d]{0,5})((\\.([\\d]{1,5}))?))",s=`(${d}%)`,c="(([0-9]|[1-9][0-9]|100)%)",f=`(${c}|(0?((\\.([\\d]{1,5}))?))|1)`,h=`([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?)([\\s]{1,5})${`(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?`}([\\s]{0,5})\\)`,$="(-?(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360)(deg)?)",g=e=>{if(n(e)){const r="([\\s]{0,5})([\\d]{1,5})%?([\\s]{0,5}),?",t="((([\\s]{0,5}),?([\\s]{0,5}))|(([\\s]{1,5})))",n=new RegExp(`^(rgb)a?\\(${`${r}${t}`}${`${r}${t}`}${`${r}${t}`}(${"(\\/?([\\s]{0,5})(0?\\.?([\\d]{1,5})%?([\\s]{0,5}))?|1|0)"})?\\)$`);return e&&n.test(e)}return!1},y=e=>{if(n(e)){const r=new RegExp(`^(hsl)a?\\((([\\s]{0,5})(${$}|${"(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-9][0-9]|400)grad)"}|${"((([0-5])?\\.([\\d]{1,5})|6\\.([0-9]|1[0-9]|2[0-8])|[0-6])rad)"}|${"((0?((\\.([\\d]{1,5}))?)|1)turn)"})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?|,?)([\\s]{0,5})(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?\\)$`);return e&&r.test(e)}return!1},L=e=>{if(n(e)){const r=new RegExp(`^(hwb\\(([\\s]{0,5})${$}([\\s]{1,5}))((0|${c})([\\s]{1,5}))((0|${c})${h}$`);return e&&r.test(e)}return!1},S=e=>{if(n(e)){const r="(-?(([0-9]|[1-9][0-9]|1[0-5][0-9])((\\.([\\d]{1,5}))?)?|160))",t=new RegExp(`^(lab\\(([\\s]{0,5})${s}([\\s]{1,5})${r}([\\s]{1,5})${r}${h}$`);return e&&t.test(e)}return!1},m=e=>{if(n(e)){const r="((([0-9]|[1-9][0-9])?((\\.([\\d]{1,5}))?)|100)(%)?)",t=""+d,n=`((${$})|(0|${f})|(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360))`,a=`(\\/([\\s]{0,5})${f})`,o=new RegExp(`^lch\\(${`(([\\s]{0,5})${r}([\\s]{1,5})${t}([\\s]{1,5})${n}([\\s]{0,5})(${a})?)`}\\)$`);return e&&o.test(e)}return!1},G=e=>!!(e&&u(e)||g(e)||y(e)||L(e)||S(e)||m(e));r.default=e=>!!(e&&u(e)||l(e)||i(e)||g(e)||y(e)||L(e)||S(e)||m(e))}]);
-},{}],700:[function(require,module,exports){
+},{}],707:[function(require,module,exports){
 const EventEmitter = require('events').EventEmitter
 const inherits = require('util').inherits
 const ethUtil = require('ethereumjs-util')
@@ -104550,7 +105387,7 @@ function toBufferBlock (jsonBlock) {
   }
 }
 
-},{"./util/create-payload.js":709,"./util/rpc-cache-utils.js":712,"./util/stoplight.js":713,"async/eachSeries":287,"async/map":303,"eth-block-tracker":380,"ethereumjs-util":426,"events":436,"util":698}],701:[function(require,module,exports){
+},{"./util/create-payload.js":716,"./util/rpc-cache-utils.js":719,"./util/stoplight.js":720,"async/eachSeries":287,"async/map":303,"eth-block-tracker":380,"ethereumjs-util":426,"events":436,"util":705}],708:[function(require,module,exports){
 const ProviderSubprovider = require('./json-rpc-engine-middleware')
 const createBlockCacheMiddleware = require('eth-json-rpc-middleware/block-cache')
 
@@ -104562,7 +105399,7 @@ class BlockCacheSubprovider extends ProviderSubprovider {
 
 module.exports = BlockCacheSubprovider
 
-},{"./json-rpc-engine-middleware":705,"eth-json-rpc-middleware/block-cache":403}],702:[function(require,module,exports){
+},{"./json-rpc-engine-middleware":712,"eth-json-rpc-middleware/block-cache":403}],709:[function(require,module,exports){
 const ProviderSubprovider = require('./json-rpc-engine-middleware')
 const createFilterMiddleware = require('eth-json-rpc-filters')
 
@@ -104576,7 +105413,7 @@ class SubscriptionsSubprovider extends ProviderSubprovider {
 
 module.exports = SubscriptionsSubprovider
 
-},{"./json-rpc-engine-middleware":705,"eth-json-rpc-filters":386}],703:[function(require,module,exports){
+},{"./json-rpc-engine-middleware":712,"eth-json-rpc-filters":386}],710:[function(require,module,exports){
 const inherits = require('util').inherits
 const Subprovider = require('./subprovider.js')
 
@@ -104606,7 +105443,7 @@ FixtureProvider.prototype.handleRequest = function(payload, next, end){
   }
 }
 
-},{"./subprovider.js":707,"util":698}],704:[function(require,module,exports){
+},{"./subprovider.js":714,"util":705}],711:[function(require,module,exports){
 /*
  * Emulate 'eth_accounts' / 'eth_sendTransaction' using 'eth_sendRawTransaction'
  *
@@ -105312,7 +106149,7 @@ function mustProvideInConstructor(methodName) {
   }
 }
 
-},{"../util/estimate-gas.js":710,"./subprovider.js":707,"async/parallel":304,"async/waterfall":305,"eth-sig-util":407,"ethereumjs-util":426,"semaphore":616,"util":698,"xtend":721}],705:[function(require,module,exports){
+},{"../util/estimate-gas.js":717,"./subprovider.js":714,"async/parallel":304,"async/waterfall":305,"eth-sig-util":407,"ethereumjs-util":426,"semaphore":616,"util":705,"xtend":728}],712:[function(require,module,exports){
 const Subprovider = require('./subprovider.js')
 
 // wraps a json-rpc-engine middleware in a subprovider interface
@@ -105368,7 +106205,7 @@ class JsonRpcEngineMiddlewareSubprovider extends Subprovider {
 
 module.exports = JsonRpcEngineMiddlewareSubprovider
 
-},{"./subprovider.js":707}],706:[function(require,module,exports){
+},{"./subprovider.js":714}],713:[function(require,module,exports){
 (function (Buffer){(function (){
 const inherits = require('util').inherits
 const Transaction = require('ethereumjs-tx')
@@ -105462,7 +106299,7 @@ NonceTrackerSubprovider.prototype.handleRequest = function(payload, next, end){
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"../util/rpc-cache-utils":712,"./subprovider.js":707,"buffer":313,"ethereumjs-tx":425,"ethereumjs-util":426,"util":698}],707:[function(require,module,exports){
+},{"../util/rpc-cache-utils":719,"./subprovider.js":714,"buffer":313,"ethereumjs-tx":425,"ethereumjs-util":426,"util":705}],714:[function(require,module,exports){
 const createPayload = require('../util/create-payload.js')
 
 module.exports = SubProvider
@@ -105506,7 +106343,7 @@ SubProvider.prototype.stop = function () {}
 
 SubProvider.prototype.start = function () {}
 
-},{"../util/create-payload.js":709}],708:[function(require,module,exports){
+},{"../util/create-payload.js":716}],715:[function(require,module,exports){
 const ProviderSubprovider = require('./json-rpc-engine-middleware')
 const createSubscriptionManager = require('eth-json-rpc-filters/subscriptionManager')
 
@@ -105524,7 +106361,7 @@ class SubscriptionsSubprovider extends ProviderSubprovider {
 
 module.exports = SubscriptionsSubprovider
 
-},{"./json-rpc-engine-middleware":705,"eth-json-rpc-filters/subscriptionManager":401}],709:[function(require,module,exports){
+},{"./json-rpc-engine-middleware":712,"eth-json-rpc-filters/subscriptionManager":401}],716:[function(require,module,exports){
 const getRandomId = require('./random-id.js')
 const extend = require('xtend')
 
@@ -105541,7 +106378,7 @@ function createPayload(data){
   }, data)
 }
 
-},{"./random-id.js":711,"xtend":721}],710:[function(require,module,exports){
+},{"./random-id.js":718,"xtend":728}],717:[function(require,module,exports){
 const createPayload = require('./create-payload.js')
 
 module.exports = estimateGas
@@ -105569,7 +106406,7 @@ function estimateGas(provider, txParams, cb) {
     cb(null, res.result)
   })
 }
-},{"./create-payload.js":709}],711:[function(require,module,exports){
+},{"./create-payload.js":716}],718:[function(require,module,exports){
 module.exports = createRandomId
 
 
@@ -105577,7 +106414,7 @@ function createRandomId () {
   // random id
   return Math.floor(Number.MAX_SAFE_INTEGER * Math.random())
 }
-},{}],712:[function(require,module,exports){
+},{}],719:[function(require,module,exports){
 const stringify = require('json-stable-stringify')
 
 module.exports = {
@@ -105726,7 +106563,7 @@ function cacheTypeForPayload(payload) {
   }
 }
 
-},{"json-stable-stringify":482}],713:[function(require,module,exports){
+},{"json-stable-stringify":482}],720:[function(require,module,exports){
 const EventEmitter = require('events').EventEmitter
 const inherits = require('util').inherits
 
@@ -105761,7 +106598,7 @@ Stoplight.prototype.await = function(fn){
     setTimeout(fn)
   }
 }
-},{"events":436,"util":698}],714:[function(require,module,exports){
+},{"events":436,"util":705}],721:[function(require,module,exports){
 (function (global){(function (){
 'use strict';
 
@@ -105877,7 +106714,7 @@ module.exports = function whichTypedArray(value) {
 };
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"available-typed-arrays":306,"call-bind":322,"call-bound":323,"for-each":438,"get-proto":446,"gopd":448,"has-tostringtag/shams":452}],715:[function(require,module,exports){
+},{"available-typed-arrays":306,"call-bind":322,"call-bound":323,"for-each":438,"get-proto":446,"gopd":448,"has-tostringtag/shams":452}],722:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -105923,7 +106760,7 @@ var SyntaxError = /** @class */ (function (_super) {
 }(Error));
 exports.SyntaxError = SyntaxError;
 
-},{}],716:[function(require,module,exports){
+},{}],723:[function(require,module,exports){
 "use strict";
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
@@ -105933,7 +106770,7 @@ __export(require("./xml-http-request"));
 var xml_http_request_event_target_1 = require("./xml-http-request-event-target");
 exports.XMLHttpRequestEventTarget = xml_http_request_event_target_1.XMLHttpRequestEventTarget;
 
-},{"./xml-http-request":720,"./xml-http-request-event-target":718}],717:[function(require,module,exports){
+},{"./xml-http-request":727,"./xml-http-request-event-target":725}],724:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ProgressEvent = /** @class */ (function () {
@@ -105949,7 +106786,7 @@ var ProgressEvent = /** @class */ (function () {
 }());
 exports.ProgressEvent = ProgressEvent;
 
-},{}],718:[function(require,module,exports){
+},{}],725:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var XMLHttpRequestEventTarget = /** @class */ (function () {
@@ -105991,7 +106828,7 @@ var XMLHttpRequestEventTarget = /** @class */ (function () {
 }());
 exports.XMLHttpRequestEventTarget = XMLHttpRequestEventTarget;
 
-},{}],719:[function(require,module,exports){
+},{}],726:[function(require,module,exports){
 (function (Buffer){(function (){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
@@ -106072,7 +106909,7 @@ var XMLHttpRequestUpload = /** @class */ (function (_super) {
 exports.XMLHttpRequestUpload = XMLHttpRequestUpload;
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"./xml-http-request-event-target":718,"buffer":313}],720:[function(require,module,exports){
+},{"./xml-http-request-event-target":725,"buffer":313}],727:[function(require,module,exports){
 (function (process,Buffer){(function (){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
@@ -106522,7 +107359,7 @@ XMLHttpRequest.prototype.nodejsHttpsAgent = https.globalAgent;
 XMLHttpRequest.prototype.nodejsBaseUrl = null;
 
 }).call(this)}).call(this,require('_process'),require("buffer").Buffer)
-},{"./errors":715,"./progress-event":717,"./xml-http-request-event-target":718,"./xml-http-request-upload":719,"_process":585,"buffer":313,"cookiejar":325,"http":658,"https":467,"os":577,"url":694}],721:[function(require,module,exports){
+},{"./errors":722,"./progress-event":724,"./xml-http-request-event-target":725,"./xml-http-request-upload":726,"_process":585,"buffer":313,"cookiejar":325,"http":658,"https":467,"os":577,"url":701}],728:[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;

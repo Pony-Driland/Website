@@ -4885,10 +4885,10 @@ for-each@^0.3.3, for-each@^0.3.5:
   dependencies:
     is-callable "^1.2.7"
 
-for-promise@^1.4.3:
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/for-promise/-/for-promise-1.4.3.tgz#04acb52f013846722a2098c547b6abad2806f44c"
-  integrity sha512-GHpaVIJdFYewYsyoH9JLlP+RW4tJHz6YWbKkGYq2O52CVonQ9IzNS+b9GauxEOddoTV//h/3ttZREbr4d7vwJw==
+for-promise@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/for-promise/-/for-promise-2.0.3.tgz#e71db12ad5b5d9e07318c4874dc14e806f66945d"
+  integrity sha512-FouhpOO+kgWfxszGsxN7NYlRWGUpf/nOT/w48v02tvXfjzy+hErb+P00j91kALV8iBlDNHeXZLlvQKtuyhCWMQ==
 
 foreground-child@^3.1.0:
   version "3.3.1"
@@ -9071,13 +9071,19 @@ timers-browserify@^1.0.1:
   dependencies:
     process "~0.11.0"
 
-tiny-ai-api@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/tiny-ai-api/-/tiny-ai-api-1.0.5.tgz#e6829de8695bc63b3348e5424f8653aac21e528c"
-  integrity sha512-Cv+y6JvHuNtQIfvn9ygTui3FsWXl1ms9liPMBIwIjYu7p2LC3tZwEXDRMV0NZtQ7TkMp2yfQ0+zPjCgSclCbIg==
+tiny-ai-api@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/tiny-ai-api/-/tiny-ai-api-1.1.0.tgz#df2364d209089bac9a918f860becb0bf02ab03bd"
+  integrity sha512-b1E85yqGSOVWh5GJ75zl17Ee9dGruVZcR95JQRER8HuPSutUKrPKEYQ81+NlhIjeHMvOX+6kbFpc14EeMwab6g==
   dependencies:
     jsonrepair "^3.12.0"
     object-hash "^3.0.0"
+    tiny-essentials "^1.0.0"
+
+tiny-essentials@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.0.0.tgz#7921ca61a26dbc6eb11c2fd6f1fe41335078306b"
+  integrity sha512-DROzaGTrQugWuWQZf2gcNQAdzNY2yGsZuhEZfjEEVC85JzRcfV14mSB1aMIpP7yMCQCyKizg8ALFYGbQoxsA7A==
 
 tippy.js@^6.3.7:
   version "6.3.7"
