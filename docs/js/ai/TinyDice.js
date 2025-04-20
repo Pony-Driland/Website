@@ -48,16 +48,117 @@ class TinyDice {
   #diceBase;
 
   /**
+   * Creates a cube DOM element with animated faces and randomized values.
+   *
+   * @private
+   * @param {number} result - The main value to appear on the front face.
+   * @param {number} max - The maximum possible value for the die.
+   * @param {boolean} [rollInfinity=false] - If true, the cube will spin infinitely.
+   * @returns {{ cube: HTMLElement, sequence: number[] }} - The cube element and an array of all face values.
+   */
+  #createCube;
+
+  /**
    * Creates a new TinyDice instance attached to a specified HTML element.
    *
    * @param {HTMLElement} diceBase - The HTML container element where the dice will be rendered.
+   * @param {function(number, number, boolean=, boolean=): {cube: HTMLElement, sequence: number[]}=} [createCubeScript=null]
+   *        - Optional function to override the internal cube creation logic.
+   *          If provided, it will be used instead of the built-in method.
+   *
+   *          The function should accept the following parameters:
+   *            - result {number} - The main value to appear on the front face of the die.
+   *            - max {number} - The maximum value allowed for a face of the die.
+   *            - canZero {boolean} [optional] - If true, faces can include the number 0.
+   *            - rollInfinity {boolean} [optional] - If true, the die spins infinitely.
+   *
+   *          And return:
+   *            - {HTMLElement} cube - The DOM element representing the dice cube.
+   *            - {number[]} sequence - An array containing all the face values of the die.
+   *
+   *
+   * When implementing a custom dice creation logic, you can use the following internal methods:
+   *
+   * @function tinyDice.addElement
+   * Adds a structured dice object to the internal list for tracking and future cleanup.
+   * This method expects an object with `faces`, `container`, and `wrapper` properties.
+   *
+   * @function tinyDice.rollNumber(max: number, canZero: boolean): number
+   * Generates a random number based on the maximum value and zero allowance.
+   * Useful when assigning values to non-front faces of the die.
+   *
+   * @function tinyDice.updateDiceFaceSkin(face: HTMLElement): void
+   * Applies the dice face style or skin to a given face element.
+   * This is usually a visual effect or texture that the user can define.
+   *
+   * @function tinyDice.addCubeId(): number
+   * Returns a unique identifier for each die. This value is typically used to set the `z-index`
+   * of the container, so that new dice appear above older ones.
+   *
+   *
    */
-  constructor(diceBase) {
+  constructor(diceBase, createCubeScript = null) {
+    if (typeof createCubeScript === 'function') this.#createCube = createCubeScript;
+    else this.#insertCreateCube();
+
     this.#diceBase = diceBase;
     this.#diceBase.classList.add('tiny-dice-body');
+
     this.diceArea = document.createElement('div');
     this.diceArea.classList.add('dice-area');
+
     this.#diceBase.appendChild(this.diceArea);
+  }
+
+  /**
+   * Increments and returns the current cube ID.
+   *
+   * This ID is used to set a unique z-index for each die,
+   * ensuring that newer dice appear above older ones in the stack.
+   *
+   * @returns {number} The current cube ID before incrementing.
+   */
+  addCubeId() {
+    return this.#cubeId++;
+  }
+
+  /**
+   * Validates and stores a new dice element into the internal list.
+   *
+   * This method ensures that the given object has the correct structure
+   * before appending it to the internal array of rendered dice elements.
+   *
+   * @private
+   * @param {object} item - The dice element object to validate and store.
+   * @param {HTMLElement[]} item.faces - An array of dice face elements.
+   * @param {HTMLElement} item.container - The container element for the die.
+   * @param {HTMLElement} item.wrapper - The inner wrapper that holds and rotates the cube.
+   * @returns {boolean} `true` if the item was valid and added; otherwise, `false`.
+   */
+  #addElement(item) {
+    if (objType(item, 'object') && Array.isArray(item.faces) && item.container && item.wrapper) {
+      this.#elements.push(item);
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * Adds a new dice element to the internal storage.
+   *
+   * This is the public wrapper for the internal method `#addElement`.
+   * It validates the structure of the dice element before adding.
+   *
+   * @param {{ faces: HTMLElement[], container: HTMLElement, wrapper: HTMLElement }} item
+   *        - The dice element object to add. It must contain:
+   *          - `faces`: an array of six face elements,
+   *          - `container`: the outer wrapper element,
+   *          - `wrapper`: the rotating inner cube element.
+   *
+   * @returns {boolean} `true` if the element was valid and added, otherwise `false`.
+   */
+  addElement(item) {
+    return this.#addElement(item);
   }
 
   /**
@@ -337,7 +438,7 @@ class TinyDice {
    * @private
    * @param {HTMLElement} face - The HTML element representing a dice face.
    */
-  #updateDiceSkin(face) {
+  #updateDiceFaceSkin(face) {
     // Skin
     face.style.background = this.getBgSkin();
     face.style.color = this.getTextSkin();
@@ -356,9 +457,22 @@ class TinyDice {
   }
 
   /**
+   * Updates the visual skin or style of a single dice face element.
+   *
+   * This is a public wrapper around the internal method `#updateDiceFaceSkin`,
+   * allowing external calls to apply the dice face style dynamically.
+   *
+   * @param {HTMLElement} face - The DOM element representing a single face of the die.
+   * @returns {void}
+   */
+  updateDiceFaceSkin(face) {
+    return this.#updateDiceFaceSkin(face);
+  }
+
+  /**
    * Updates the visual skin of all dice face elements currently rendered.
    * Iterates through each dice in `this.#elements` and applies the active
-   * background, text color, border, and background image styles using `#updateDiceSkin`.
+   * background, text color, border, and background image styles using `#updateDiceFaceSkin`.
    *
    * @public
    */
@@ -369,7 +483,7 @@ class TinyDice {
   /**
    * Updates the visual skin of a specific die by index.
    * Applies current background color, text color, border style, and background image
-   * to all face elements of the selected die using `#updateDiceSkin`.
+   * to all face elements of the selected die using `#updateDiceFaceSkin`.
    *
    * @public
    * @param {number|string} index - The index of the die to update.
@@ -378,7 +492,7 @@ class TinyDice {
   updateDiceSkin(index) {
     if (this.#elements[index]) {
       for (const index2 in this.#elements[index].faces)
-        this.#updateDiceSkin(this.#elements[index].faces[index2]);
+        this.#updateDiceFaceSkin(this.#elements[index].faces[index2]);
       return true;
     } else return false;
   }
@@ -402,6 +516,24 @@ class TinyDice {
       }
       return Math.floor(Math.random() * maxValue) + finalValue;
     } else return 0;
+  }
+
+  /**
+   * Generates a random integer between a lower bound and a maximum value.
+   *
+   * This is a public wrapper for the internal method `#rollNumber`, which handles
+   * dice-style number generation, optionally allowing zero as a result.
+   *
+   * @param {number} [max=0] - The maximum value (inclusive upper bound if `canZero` is true).
+   * @param {boolean} [canZero=false] - If true, the roll can return 0 (or a range starting from 0).
+   * @returns {number} A pseudo-random integer within the expected range.
+   *
+   * - If `canZero` is false: returns a number from 1 to `max`.
+   * - If `canZero` is true: returns a number from 0 to `max`.
+   * - If `max <= 0`: always returns 0.
+   */
+  rollNumber(max = 0, canZero = false) {
+    return this.#rollNumber(max, canZero);
   }
 
   /**
@@ -459,95 +591,107 @@ class TinyDice {
   }
 
   /**
-   * Creates a cube DOM element with animated faces and randomized values.
+   * Initializes the default cube creation function and assigns it to `this.#createCube`.
+   *
+   * This function builds a customizable cube with 6 animated faces, where each face is
+   * assigned a unique number (avoiding duplicates when possible). The front face shows the
+   * result value passed in, and the others are randomized based on the `max` value.
    *
    * @private
-   * @param {number} result - The main value to appear on the front face.
-   * @param {number} max - The maximum possible value for the die.
-   * @param {boolean} [rollInfinity=false] - If true, the cube will spin infinitely.
-   * @returns {{ cube: HTMLElement, sequence: number[] }} - The cube element and an array of all face values.
+   *
+   * @remarks
+   * If `createCubeScript` was not provided to the constructor, this method sets up the default cube generator.
+   *
+   * @returns {void}
+   *
+   * @see #createCube
+   *
+   * @function
    */
-  #createCube(result, max, canZero = false, rollInfinity = false) {
-    // Container
-    const diceElements = { faces: [] };
-    const container = document.createElement('div');
-    container.className = 'dice-container';
-    container.style.zIndex = 1000 + this.#cubeId++; // each dice with higher priority
-    diceElements.container = container;
+  #insertCreateCube() {
+    const tinyDice = this;
+    this.#createCube = (result, max, canZero = false, rollInfinity = false) => {
+      // Container
+      const diceElements = { faces: [] };
+      const container = document.createElement('div');
+      container.className = 'dice-container';
+      container.style.zIndex = 1000 + tinyDice.addCubeId(); // each dice with higher priority
+      diceElements.container = container;
 
-    // Wrapper
-    const wrapper = document.createElement('div');
-    wrapper.className = `cube-wrapper${rollInfinity ? ` spin-infinite` : ''}`;
-    diceElements.wrapper = wrapper;
+      // Wrapper
+      const wrapper = document.createElement('div');
+      wrapper.className = `cube-wrapper${rollInfinity ? ` spin-infinite` : ''}`;
+      diceElements.wrapper = wrapper;
 
-    // Get rot
-    const rotX = 360 * (3 + Math.floor(Math.random() * 5));
-    const rotY = 360 * (3 + Math.floor(Math.random() * 5));
+      // Get rot
+      const rotX = 360 * (3 + Math.floor(Math.random() * 5));
+      const rotY = 360 * (3 + Math.floor(Math.random() * 5));
 
-    // Wrapper animation
-    wrapper.style.animation = `spinCubeCustom 2s ease-in-out forwards`;
-    wrapper.style.setProperty('--rotX', `${rotX}deg`);
-    wrapper.style.setProperty('--rotY', `${rotY}deg`);
+      // Wrapper animation
+      wrapper.style.animation = `spinCubeCustom 2s ease-in-out forwards`;
+      wrapper.style.setProperty('--rotX', `${rotX}deg`);
+      wrapper.style.setProperty('--rotY', `${rotY}deg`);
 
-    // Create the cube
-    const sequence = [];
-    const countSeq = new Set();
-    const min = !canZero ? 0 : -1;
-    for (let i = 1; i <= 6; i++) {
-      // Element
-      const face = document.createElement('div');
-      face.className = `face face${i}`;
-      this.#updateDiceSkin(face);
+      // Create the cube
+      const sequence = [];
+      const countSeq = new Set();
+      const min = !canZero ? 0 : -1;
+      for (let i = 1; i <= 6; i++) {
+        // Element
+        const face = document.createElement('div');
+        face.className = `face face${i}`;
+        tinyDice.#updateDiceFaceSkin(face);
 
-      // Ignored results
-      if (i !== 1) {
-        let roll;
-        // Normal max
-        if (max > min) {
-          let extraValue = min;
-          let usingExtra = false;
-          do {
-            roll = !usingExtra ? this.#rollNumber(max, canZero) : extraValue;
-            if (usingExtra || sequence.length >= max) {
-              if (extraValue >= max) {
-                extraValue = min;
-                countSeq.clear();
+        // Ignored results
+        if (i !== 1) {
+          let roll;
+          // Normal max
+          if (max > min) {
+            let extraValue = min;
+            let usingExtra = false;
+            do {
+              roll = !usingExtra ? tinyDice.#rollNumber(max, canZero) : extraValue;
+              if (usingExtra || sequence.length >= max) {
+                if (extraValue >= max) {
+                  extraValue = min;
+                  countSeq.clear();
+                }
+                extraValue++;
+                usingExtra = true;
               }
-              extraValue++;
-              usingExtra = true;
-            }
-          } while (countSeq.has(roll));
+            } while (countSeq.has(roll));
+          }
+          // 0 or negative max
+          else roll = max;
+
+          // Insert sequence
+          sequence.push(roll);
+          countSeq.add(roll);
+          face.textContent = roll;
         }
-        // 0 or negative max
-        else roll = max;
-
-        // Insert sequence
-        sequence.push(roll);
-        countSeq.add(roll);
-        face.textContent = roll;
+        // The result!
+        else {
+          face.textContent = result;
+          sequence.push(result);
+          countSeq.add(result);
+        }
+        // Side added
+        wrapper.appendChild(face);
+        diceElements.faces.push(face);
       }
-      // The result!
-      else {
-        face.textContent = result;
-        sequence.push(result);
-        countSeq.add(result);
+
+      // Stop cube animation
+      if (!rollInfinity) {
+        setTimeout(() => {
+          if (wrapper) wrapper.classList.add('stopped');
+        }, 2000);
       }
-      // Side added
-      wrapper.appendChild(face);
-      diceElements.faces.push(face);
-    }
 
-    // Stop cube animation
-    if (!rollInfinity) {
-      setTimeout(() => {
-        if (wrapper) wrapper.classList.add('stopped');
-      }, 2000);
-    }
-
-    // Insert the cube
-    container.appendChild(wrapper);
-    this.#elements.push(diceElements);
-    return { cube: container, sequence };
+      // Insert the cube
+      container.appendChild(wrapper);
+      tinyDice.#addElement(diceElements);
+      return { cube: container, sequence };
+    };
   }
 
   /**
