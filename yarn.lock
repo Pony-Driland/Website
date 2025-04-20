@@ -9071,10 +9071,10 @@ timers-browserify@^1.0.1:
   dependencies:
     process "~0.11.0"
 
-tiny-ai-api@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/tiny-ai-api/-/tiny-ai-api-1.1.0.tgz#df2364d209089bac9a918f860becb0bf02ab03bd"
-  integrity sha512-b1E85yqGSOVWh5GJ75zl17Ee9dGruVZcR95JQRER8HuPSutUKrPKEYQ81+NlhIjeHMvOX+6kbFpc14EeMwab6g==
+tiny-ai-api@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/tiny-ai-api/-/tiny-ai-api-1.1.1.tgz#70ad8d53f5aa3346c9e39fa332da46fa564b0222"
+  integrity sha512-tZMRKoBa22kRoEIe7OaeJETAB/ZnWjKosrfDq4U1m+UsqxqeQNLQBpDymP/0gf2w8OowG+Eje0r0t6AwVmYi2g==
   dependencies:
     jsonrepair "^3.12.0"
     object-hash "^3.0.0"
