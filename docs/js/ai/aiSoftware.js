@@ -1473,18 +1473,10 @@ const AiScriptStart = (connStore) => {
           };
 
           // Form
-          const $maxValueCol = $('<div>')
-            .addClass('col-md-4')
-            .append(genConfig('maxValue', 'Max Value', 'number', 6, 1));
-
-          const $diceCountCol = $('<div>')
-            .addClass('col-md-4')
-            .append(genConfig('diceCount', 'Dice Count', 'number', 3, 1));
-
           const $perDieCol = $('<div>')
-            .addClass('col-md-4')
+            .addClass('col-md-12')
             .append(
-              genConfig('perDieValues', 'Per-Die Values (e.g., 6,12,20)', 'text', '', 'Optional'),
+              genConfig('perDieValues', 'Per-Die Values', 'text', '6', 'e.g., 6,12,20'),
             );
 
           const $allow0input = $('<input>')
@@ -1504,7 +1496,7 @@ const AiScriptStart = (connStore) => {
                 ),
             );
 
-          $formRow.append($maxValueCol, $diceCountCol, $perDieCol);
+          $formRow.append($perDieCol);
 
           // Roll button
           const $rollButton = tinyLib.bs.button('primary w-100 mb-4 mt-2').text('Roll Dice');
@@ -1521,13 +1513,11 @@ const AiScriptStart = (connStore) => {
             ['selectionTextSkin', 'selectionText', 'setSelectionTextSkin'],
           ];
 
-          // TinyDice logic
-          const dice = new TinyDice($diceContainer.get(0));
+          // TinyDices logic
+          const dice = new TinyDices($diceContainer.get(0));
           let updateTotalBase = null;
           $rollButton.on('click', async function () {
             // Get values
-            const max = parseInt(configs.maxValue.val()) || 6;
-            const count = parseInt(configs.diceCount.val()) || 1;
             const perDieRaw = configs.perDieValues.val().trim();
             const perDie = perDieRaw.length > 0 ? perDieRaw : null;
             const canZero = $allow0input.is(':checked');
@@ -1539,7 +1529,7 @@ const AiScriptStart = (connStore) => {
 
             // Offline
             if (!tinyCfg.isOnline) {
-              const result = dice.roll(max, count, perDie, canZero);
+              const result = dice.roll(perDie, canZero);
               let total = 0;
               for (const item of result) total += item.result;
               updateTotalBase = setTimeout(() => {
@@ -1550,17 +1540,13 @@ const AiScriptStart = (connStore) => {
             // Online
             else {
               // Prepare data
-              const diceParse = dice.getRollConfig(max, count, perDie);
-              const sameSides = diceParse.perDieData.length < 1 ? true : false;
+              const diceParse = dice.parseRollConfig(perDie);
               const sides = [];
-              if (sameSides)
-                for (let i = 0; i < diceParse.count; i++) sides.push(diceParse.maxGlobal);
-              else
-                for (const index in diceParse.perDieData) sides.push(diceParse.perDieData[index]);
+              for (const index in diceParse) sides.push(diceParse[index]);
 
               // Get result
               $(this).attr('disabled', true).addClass('disabled');
-              const result = await tinyIo.client.rollDice(sides, sameSides, canZero);
+              const result = await tinyIo.client.rollDice(sides, canZero);
               $(this).attr('disabled', false).removeClass('disabled');
 
               // Proccess Results
@@ -1817,7 +1803,7 @@ const AiScriptStart = (connStore) => {
 
           $root.append($applyBtn, $rollButton, $diceError, $diceContainer, $totalBase);
           updateAllSkins();
-          dice.roll(0, 3);
+          dice.roll([0, 0, 0]);
 
           // Start modal
           tinyLib.modal({

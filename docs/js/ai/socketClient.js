@@ -762,10 +762,9 @@ class TinyClientIo extends EventEmitter {
   }
 
   // Roll Dice
-  rollDice(dice = [], sameSides = false, canZero = false) {
+  rollDice(dice = [], canZero = false) {
     return this.#socketEmitApi('roll-dice', {
       roomId: this.#cfg.roomId,
-      sameSides,
       canZero,
       dice,
     });
