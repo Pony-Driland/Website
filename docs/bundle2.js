@@ -98537,7 +98537,7 @@ var TinyDices = /*#__PURE__*/function () {
     if (typeof createCubeScript === 'function') _classPrivateFieldSet(_createCube, this, createCubeScript);else _assertClassBrand(_TinyDices_brand, this, _insertCreateCube).call(this);
     if (diceBase && diceBase instanceof HTMLElement) {
       _classPrivateFieldSet(_diceBase, this, diceBase);
-      _classPrivateFieldGet(_diceBase, this).classList.add('tiny-dice-body');
+      _classPrivateFieldGet(_diceBase, this).classList.add('tiny-dices-body');
       this.diceArea = document.createElement('div');
       this.diceArea.classList.add('dice-area');
       _classPrivateFieldGet(_diceBase, this).appendChild(this.diceArea);
