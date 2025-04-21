@@ -9080,10 +9080,10 @@ tiny-ai-api@^1.1.1:
     object-hash "^3.0.0"
     tiny-essentials "^1.0.0"
 
-tiny-dices@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/tiny-dices/-/tiny-dices-1.0.2.tgz#55dd75bdcd181c8c01dda67fdfb552d81f68b1b6"
-  integrity sha512-GKQmnq+i/Mhg7FqcW7t4hwte88xIDdjztJt98RMJ4V3wyMARPvJQHvrkGlJQpm4hwTibhk5+HJlikpsPJxgWxQ==
+tiny-dices@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/tiny-dices/-/tiny-dices-1.0.3.tgz#79202e7fa43473ab6791283b8c62b232cb893f67"
+  integrity sha512-Io4Aerg0i8mQcq72zU9Ysu79KmWKQObNkeALemhPJeLGo5UN6KFGPZ0C2q8QghjyRZqplcXWwc67tekzfCgwbg==
   dependencies:
     tiny-essentials "^1.0.0"
     validate-color "^2.2.4"
