@@ -111,13 +111,12 @@ Deletes a message from the room history if the user has the necessary permission
 
 **Description:**
 
-Rolls one or more virtual dice in a chat room. Users can configure whether dice rolls include zero as a possible result (`canZero`), and whether all dice have the same number of sides (`sameSides`). The result is shared with all users in the room and can include personalized dice skins.
+Rolls one or more virtual dice in a chat room. Users can configure whether dice rolls include zero as a possible result (`canZero`). The result is shared with all users in the room and can include personalized dice skins.
 
 **Payload:**
 
 ```json
 {
-  "sameSides": true, // (Required) If true, all dice use the first value as the number of sides
   "canZero": false, // (Required) If true, rolls can include zero (e.g., 0 to N-1)
   "dice": [4, 4, 4], // (Required) Array of numbers indicating dice sides or count
   "roomId": "abc123", // (Required) The ID of the room where the roll occurs
@@ -176,8 +175,6 @@ Rolls one or more virtual dice in a chat room. Users can configure whether dice 
 - `roomId` must be a valid string.
 - `canZero` must be a boolean.
 - Dice sides must be integers ≥ 2.
-- If `sameSides` is `true`, only the first value in the `dice` array is used as the number of sides.
-- If `sameSides` is `false`, each dice in the array is rolled individually.
 
 **Skin Fallback:**
 
@@ -189,8 +186,7 @@ If no `diceSkin` is provided, the user's saved skin (from `set-dice`) is used.
 | ---- | ------------------------------------ |
 | 1    | Room not found                       |
 | 2    | User is not a member of the room     |
-| 3    | Invalid sameSides configuration      |
-| 4    | Invalid differentSides configuration |
+| 3    | Invalid differentSides configuration |
 
 **Rate Limiting:**
 

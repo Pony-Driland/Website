@@ -16,6 +16,7 @@ var JsStore = _interopRequireWildcard(require("jsstore"));
 var _validateColor = _interopRequireDefault(require("validate-color"));
 var _tinyAiApi = require("tiny-ai-api");
 var _tinyEssentials = require("tiny-essentials");
+var _tinyDices = _interopRequireDefault(require("tiny-dices"));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
@@ -40,6 +41,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default":
 // Tiny AI
 
 // Imports
+global.window.TinyDices = _tinyDices["default"];
 global.window.setTinyGoogleAi = _tinyAiApi.setTinyGoogleAi;
 global.window.TinyAiInstance = _tinyAiApi.TinyAiInstance;
 global.window.validateColor = _validateColor["default"];
@@ -62,7 +64,7 @@ global.window.WalletConnect = _client["default"];
 global.window.WalletConnectProvider = _web3Provider["default"];
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"@walletconnect/client":187,"@walletconnect/web3-provider":269,"bignumber.js":309,"ethers/lib.esm/index.js":432,"for-promise":439,"jsstore":489,"photoswipe":578,"pizzicato":580,"socket.io-client":631,"tiny-ai-api":681,"tiny-essentials":690,"tippy.js":691,"validate-color":706}],2:[function(require,module,exports){
+},{"@walletconnect/client":187,"@walletconnect/web3-provider":269,"bignumber.js":309,"ethers/lib.esm/index.js":432,"for-promise":439,"jsstore":489,"photoswipe":578,"pizzicato":580,"socket.io-client":631,"tiny-ai-api":681,"tiny-dices":683,"tiny-essentials":691,"tippy.js":692,"validate-color":707}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30974,7 +30976,7 @@ function padString(str, length, left) {
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"buffer":313,"is-typedarray":476,"typedarray-to-buffer":694}],210:[function(require,module,exports){
+},{"buffer":313,"is-typedarray":476,"typedarray-to-buffer":695}],210:[function(require,module,exports){
 (function (global){(function (){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -31024,7 +31026,7 @@ const tslib_1 = require("tslib");
 tslib_1.__exportStar(require("./crypto"), exports);
 tslib_1.__exportStar(require("./env"), exports);
 
-},{"./crypto":210,"./env":211,"tslib":693}],213:[function(require,module,exports){
+},{"./crypto":210,"./env":211,"tslib":694}],213:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -31131,7 +31133,7 @@ var HTTPConnection = /*#__PURE__*/function (_EventEmitter) {
 }(_eventemitter["default"]);
 var _default = exports["default"] = HTTPConnection;
 
-},{"@walletconnect/utils":262,"eventemitter3":435,"xhr2-cookies":723}],214:[function(require,module,exports){
+},{"@walletconnect/utils":262,"eventemitter3":435,"xhr2-cookies":724}],214:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40905,7 +40907,7 @@ var WalletConnectProvider = /*#__PURE__*/function (_ProviderEngine) {
 }(ProviderEngine);
 var _default = exports["default"] = WalletConnectProvider;
 
-},{"@walletconnect/client":187,"@walletconnect/http-connection":213,"@walletconnect/qrcode-modal":225,"@walletconnect/utils":262,"web3-provider-engine":707,"web3-provider-engine/subproviders/cache":708,"web3-provider-engine/subproviders/filters":709,"web3-provider-engine/subproviders/fixture":710,"web3-provider-engine/subproviders/hooked-wallet":711,"web3-provider-engine/subproviders/nonce-tracker":713,"web3-provider-engine/subproviders/subscriptions":715}],270:[function(require,module,exports){
+},{"@walletconnect/client":187,"@walletconnect/http-connection":213,"@walletconnect/qrcode-modal":225,"@walletconnect/utils":262,"web3-provider-engine":708,"web3-provider-engine/subproviders/cache":709,"web3-provider-engine/subproviders/filters":710,"web3-provider-engine/subproviders/fixture":711,"web3-provider-engine/subproviders/hooked-wallet":712,"web3-provider-engine/subproviders/nonce-tracker":714,"web3-provider-engine/subproviders/subscriptions":716}],270:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getLocalStorage = exports.getLocalStorageOrThrow = exports.getCrypto = exports.getCryptoOrThrow = exports.getLocation = exports.getLocationOrThrow = exports.getNavigator = exports.getNavigatorOrThrow = exports.getDocument = exports.getDocumentOrThrow = exports.getFromWindowOrThrow = exports.getFromWindow = void 0;
@@ -54492,7 +54494,7 @@ function copy(text, options) {
 
 module.exports = copy;
 
-},{"toggle-selection":692}],327:[function(require,module,exports){
+},{"toggle-selection":693}],327:[function(require,module,exports){
 'use strict'
 var inherits = require('inherits')
 var MD5 = require('md5.js')
@@ -64358,7 +64360,7 @@ function createPayload(data){
   }, data)
 }
 
-},{"json-rpc-random-id":481,"xtend":728}],407:[function(require,module,exports){
+},{"json-rpc-random-id":481,"xtend":729}],407:[function(require,module,exports){
 const ethUtil = require('ethereumjs-util')
 const ethAbi = require('ethereumjs-abi')
 
@@ -73581,7 +73583,7 @@ function validateParams (params) {
   return params
 }
 
-},{"http":658,"url":701}],468:[function(require,module,exports){
+},{"http":658,"url":702}],468:[function(require,module,exports){
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
@@ -73970,7 +73972,7 @@ module.exports = function isTypedArray(value) {
   return !!whichTypedArray(value);
 };
 
-},{"which-typed-array":721}],476:[function(require,module,exports){
+},{"which-typed-array":722}],476:[function(require,module,exports){
 module.exports      = isTypedArray
 isTypedArray.strict = isStrictTypedArray
 isTypedArray.loose  = isLooseTypedArray
@@ -78910,7 +78912,7 @@ Writable.prototype._destroy = function (err, cb) {
   cb(err);
 };
 }).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../errors":496,"./_stream_duplex":497,"./internal/streams/destroy":504,"./internal/streams/state":508,"./internal/streams/stream":509,"_process":585,"buffer":313,"inherits":469,"util-deprecate":702}],502:[function(require,module,exports){
+},{"../errors":496,"./_stream_duplex":497,"./internal/streams/destroy":504,"./internal/streams/state":508,"./internal/streams/stream":509,"_process":585,"buffer":313,"inherits":469,"util-deprecate":703}],502:[function(require,module,exports){
 (function (process){(function (){
 'use strict';
 
@@ -80732,7 +80734,7 @@ arguments[4][499][0].apply(exports,arguments)
 arguments[4][500][0].apply(exports,arguments)
 },{"../errors":551,"./_stream_duplex":552,"dup":500,"inherits":469}],556:[function(require,module,exports){
 arguments[4][501][0].apply(exports,arguments)
-},{"../errors":551,"./_stream_duplex":552,"./internal/streams/destroy":559,"./internal/streams/state":563,"./internal/streams/stream":564,"_process":585,"buffer":313,"dup":501,"inherits":469,"util-deprecate":702}],557:[function(require,module,exports){
+},{"../errors":551,"./_stream_duplex":552,"./internal/streams/destroy":559,"./internal/streams/state":563,"./internal/streams/stream":564,"_process":585,"buffer":313,"dup":501,"inherits":469,"util-deprecate":703}],557:[function(require,module,exports){
 arguments[4][502][0].apply(exports,arguments)
 },{"./end-of-stream":560,"_process":585,"dup":502}],558:[function(require,module,exports){
 arguments[4][503][0].apply(exports,arguments)
@@ -90060,7 +90062,7 @@ arguments[4][499][0].apply(exports,arguments)
 arguments[4][500][0].apply(exports,arguments)
 },{"../errors":591,"./_stream_duplex":592,"dup":500,"inherits":469}],596:[function(require,module,exports){
 arguments[4][501][0].apply(exports,arguments)
-},{"../errors":591,"./_stream_duplex":592,"./internal/streams/destroy":599,"./internal/streams/state":603,"./internal/streams/stream":604,"_process":585,"buffer":313,"dup":501,"inherits":469,"util-deprecate":702}],597:[function(require,module,exports){
+},{"../errors":591,"./_stream_duplex":592,"./internal/streams/destroy":599,"./internal/streams/state":603,"./internal/streams/stream":604,"_process":585,"buffer":313,"dup":501,"inherits":469,"util-deprecate":703}],597:[function(require,module,exports){
 arguments[4][502][0].apply(exports,arguments)
 },{"./end-of-stream":600,"_process":585,"dup":502}],598:[function(require,module,exports){
 arguments[4][503][0].apply(exports,arguments)
@@ -90490,7 +90492,7 @@ function arrayClone(arr, n) {
   return copy;
 }
 
-},{"events/":436,"util":705}],611:[function(require,module,exports){
+},{"events/":436,"util":706}],611:[function(require,module,exports){
 'use strict';
 
 var callBound = require('call-bound');
@@ -95222,7 +95224,7 @@ arguments[4][499][0].apply(exports,arguments)
 arguments[4][500][0].apply(exports,arguments)
 },{"../errors":643,"./_stream_duplex":644,"dup":500,"inherits":469}],648:[function(require,module,exports){
 arguments[4][501][0].apply(exports,arguments)
-},{"../errors":643,"./_stream_duplex":644,"./internal/streams/destroy":651,"./internal/streams/state":655,"./internal/streams/stream":656,"_process":585,"buffer":313,"dup":501,"inherits":469,"util-deprecate":702}],649:[function(require,module,exports){
+},{"../errors":643,"./_stream_duplex":644,"./internal/streams/destroy":651,"./internal/streams/state":655,"./internal/streams/stream":656,"_process":585,"buffer":313,"dup":501,"inherits":469,"util-deprecate":703}],649:[function(require,module,exports){
 arguments[4][502][0].apply(exports,arguments)
 },{"./end-of-stream":652,"_process":585,"dup":502}],650:[function(require,module,exports){
 arguments[4][503][0].apply(exports,arguments)
@@ -95328,7 +95330,7 @@ http.METHODS = [
 	'UNSUBSCRIBE'
 ]
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./lib/request":660,"./lib/response":661,"builtin-status-codes":315,"url":701,"xtend":728}],659:[function(require,module,exports){
+},{"./lib/request":660,"./lib/response":661,"builtin-status-codes":315,"url":702,"xtend":729}],659:[function(require,module,exports){
 (function (global){(function (){
 exports.fetch = isFunction(global.fetch) && isFunction(global.ReadableStream)
 
@@ -95974,7 +95976,7 @@ arguments[4][499][0].apply(exports,arguments)
 arguments[4][500][0].apply(exports,arguments)
 },{"../errors":662,"./_stream_duplex":663,"dup":500,"inherits":469}],667:[function(require,module,exports){
 arguments[4][501][0].apply(exports,arguments)
-},{"../errors":662,"./_stream_duplex":663,"./internal/streams/destroy":670,"./internal/streams/state":674,"./internal/streams/stream":675,"_process":585,"buffer":313,"dup":501,"inherits":469,"util-deprecate":702}],668:[function(require,module,exports){
+},{"../errors":662,"./_stream_duplex":663,"./internal/streams/destroy":670,"./internal/streams/state":674,"./internal/streams/stream":675,"_process":585,"buffer":313,"dup":501,"inherits":469,"util-deprecate":703}],668:[function(require,module,exports){
 arguments[4][502][0].apply(exports,arguments)
 },{"./end-of-stream":671,"_process":585,"dup":502}],669:[function(require,module,exports){
 arguments[4][503][0].apply(exports,arguments)
@@ -97520,7 +97522,7 @@ function _capitalizeFirstLetter(str) {
 }
 var _default = exports["default"] = TinyAiInstance;
 
-},{"events":436,"object-hash":570,"tiny-essentials":690}],681:[function(require,module,exports){
+},{"events":436,"object-hash":570,"tiny-essentials":691}],681:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -98380,6 +98382,888 @@ var TinyGoogleAi = exports.TinyGoogleAi = /*#__PURE__*/function (_TinyAiInstance
 },{"../base.mjs":680,"jsonrepair":486}],683:[function(require,module,exports){
 "use strict";
 
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _tinyEssentials = require("tiny-essentials");
+var _validateColor = _interopRequireDefault(require("validate-color"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _toArray(r) { return _arrayWithHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateMethodInitSpec(e, a) { _checkPrivateRedeclaration(e, a), a.add(e); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+/**
+ * TinyDices - JavaScript class for rendering animated 3D dice with HTML/CSS.
+ *
+ * Created by: Yasmin Seidel (JasminDreasond)
+ * Co-developed with: ChatGPT (OpenAI) as coding assistant
+ *
+ * Features:
+ * - Roll any number of dice
+ * - Supports custom max values per die
+ * - Optional spinning animation (infinite or ending)
+ * - Dynamic cube generation and animation
+ * - Option to include zero in rolls (canZero)
+ *
+ * Usage:
+ * const container = document.getElementById('myDice');
+ * const dice = new TinyDices(container);
+ *
+ * dice.roll('7,7,7');                    // Rolls 3d6
+ * dice.roll('6,12,20');                 // Rolls d6, d12, and d20
+ * dice.roll([10, 10], false, true);     // Rolls 2d10 with infinite spin
+ * dice.roll([10, 10], true);            // Rolls 2d10 starting from 0
+ * dice.roll([4, 8, 6], true, true);     // Rolls d4, d8, and d6 from 0 with infinite spin
+ *
+ * Customization:
+ * dice.setBgSkin('gray');                // Sets background skin to gray
+ * dice.setTextSkin('red');               // Sets text skin to red
+ * dice.setBorderSkin('2px solid black'); // Sets border skin to black
+ *
+ * dice.getBgSkin();                       // Gets current or default background skin
+ * dice.getTextSkin();                     // Gets current or default text skin
+ * dice.getBorderSkin();                   // Gets current or default border skin
+ */
+var _elements = /*#__PURE__*/new WeakMap();
+var _cubeId = /*#__PURE__*/new WeakMap();
+var _defaultBgSkin = /*#__PURE__*/new WeakMap();
+var _defaultBorderSkin = /*#__PURE__*/new WeakMap();
+var _defaultSelectionTextSkin = /*#__PURE__*/new WeakMap();
+var _defaultSelectionBgSkin = /*#__PURE__*/new WeakMap();
+var _defaultTextSkin = /*#__PURE__*/new WeakMap();
+var _selectionBgSkin = /*#__PURE__*/new WeakMap();
+var _selectionTextSkin = /*#__PURE__*/new WeakMap();
+var _bgSkin = /*#__PURE__*/new WeakMap();
+var _bgImg = /*#__PURE__*/new WeakMap();
+var _textSkin = /*#__PURE__*/new WeakMap();
+var _borderSkin = /*#__PURE__*/new WeakMap();
+var _diceBase = /*#__PURE__*/new WeakMap();
+var _destroyed = /*#__PURE__*/new WeakMap();
+var _createCube = /*#__PURE__*/new WeakMap();
+var _TinyDices_brand = /*#__PURE__*/new WeakSet();
+var TinyDices = /*#__PURE__*/function () {
+  /**
+   * Creates a new TinyDices instance attached to a specified HTML element.
+   *
+   * @param {HTMLElement} diceBase - The HTML container element where the dice will be rendered.
+   * @param {function(number, number, boolean=, boolean=): {cube: HTMLElement, sequence: number[]}=} [createCubeScript=null]
+   *        - Optional function to override the internal cube creation logic.
+   *          If provided, it will be used instead of the built-in method.
+   *
+   *          The function should accept the following parameters:
+   *            - result {number} - The main value to appear on the front face of the die.
+   *            - max {number} - The maximum value allowed for a face of the die.
+   *            - canZero {boolean} [optional] - If true, faces can include the number 0.
+   *            - rollInfinity {boolean} [optional] - If true, the die spins infinitely.
+   *
+   *          And return:
+   *            - {HTMLElement} cube - The DOM element representing the dice cube.
+   *            - {number[]} sequence - An array containing all the face values of the die.
+   *
+   *
+   * When implementing a custom dice creation logic, you can use the following internal methods:
+   *
+   * @function tinyDice.addElement
+   * Adds a structured dice object to the internal list for tracking and future cleanup.
+   * This method expects an object with `faces`, `container`, and `wrapper` properties.
+   *
+   * @function tinyDice.rollNumber(max: number, canZero: boolean): number
+   * Generates a random number based on the maximum value and zero allowance.
+   * Useful when assigning values to non-front faces of the die.
+   *
+   * @function tinyDice.updateDiceFaceSkin(face: HTMLElement): void
+   * Applies the dice face style or skin to a given face element.
+   * This is usually a visual effect or texture that the user can define.
+   *
+   * @function tinyDice.addCubeId(): number
+   * Returns a unique identifier for each die. This value is typically used to set the `z-index`
+   * of the container, so that new dice appear above older ones.
+   *
+   *
+   */
+  function TinyDices() {
+    var diceBase = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var createCubeScript = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    _classCallCheck(this, TinyDices);
+    /**
+     * @private
+     * Internal helper to check if the dice base element is a valid HTMLElement.
+     *
+     * @returns {boolean} - True if #diceBase is a valid HTMLElement.
+     */
+    _classPrivateMethodInitSpec(this, _TinyDices_brand);
+    _classPrivateFieldInitSpec(this, _elements, []);
+    _classPrivateFieldInitSpec(this, _cubeId, 0);
+    // used for incremental z-index to avoid overlapping issues
+    _classPrivateFieldInitSpec(this, _defaultBgSkin, 'linear-gradient(135deg, #ff3399, #33ccff)');
+    _classPrivateFieldInitSpec(this, _defaultBorderSkin, '2px solid rgba(255, 255, 255, 0.2)');
+    _classPrivateFieldInitSpec(this, _defaultSelectionTextSkin, '#FFF');
+    _classPrivateFieldInitSpec(this, _defaultSelectionBgSkin, '#000');
+    _classPrivateFieldInitSpec(this, _defaultTextSkin, 'white');
+    _classPrivateFieldInitSpec(this, _selectionBgSkin, void 0);
+    _classPrivateFieldInitSpec(this, _selectionTextSkin, void 0);
+    _classPrivateFieldInitSpec(this, _bgSkin, void 0);
+    _classPrivateFieldInitSpec(this, _bgImg, void 0);
+    _classPrivateFieldInitSpec(this, _textSkin, void 0);
+    _classPrivateFieldInitSpec(this, _borderSkin, void 0);
+    _classPrivateFieldInitSpec(this, _diceBase, void 0);
+    _classPrivateFieldInitSpec(this, _destroyed, false);
+    /**
+     * Creates a cube DOM element with animated faces and randomized values.
+     *
+     * @private
+     * @param {number} result - The main value to appear on the front face.
+     * @param {number} max - The maximum possible value for the die.
+     * @param {boolean} [rollInfinity=false] - If true, the cube will spin infinitely.
+     * @returns {{ cube: HTMLElement, sequence: number[] }} - The cube element and an array of all face values.
+     */
+    _classPrivateFieldInitSpec(this, _createCube, void 0);
+    if (typeof createCubeScript === 'function') _classPrivateFieldSet(_createCube, this, createCubeScript);else _assertClassBrand(_TinyDices_brand, this, _insertCreateCube).call(this);
+    if (diceBase && diceBase instanceof HTMLElement) {
+      _classPrivateFieldSet(_diceBase, this, diceBase);
+      _classPrivateFieldGet(_diceBase, this).classList.add('tiny-dice-body');
+      this.diceArea = document.createElement('div');
+      this.diceArea.classList.add('dice-area');
+      _classPrivateFieldGet(_diceBase, this).appendChild(this.diceArea);
+    }
+  }
+  return _createClass(TinyDices, [{
+    key: "existsHtml",
+    value:
+    /**
+     * Checks if the internal HTML structure (dice base container) still exists in the DOM.
+     *
+     * Useful to verify if the TinyDices component is still rendered and operational.
+     *
+     * @returns {boolean} - Returns `true` if the HTML elements exist, otherwise `false`.
+     */
+    function existsHtml() {
+      return _assertClassBrand(_TinyDices_brand, this, _existsHtml).call(this);
+    }
+    /**
+     * Increments and returns the current cube ID.
+     *
+     * This ID is used to set a unique z-index for each die,
+     * ensuring that newer dice appear above older ones in the stack.
+     *
+     * @returns {number} The current cube ID before incrementing.
+     */
+  }, {
+    key: "addCubeId",
+    value: function addCubeId() {
+      var _this$cubeId, _this$cubeId2;
+      return _classPrivateFieldSet(_cubeId, this, (_this$cubeId = _classPrivateFieldGet(_cubeId, this), _this$cubeId2 = _this$cubeId++, _this$cubeId)), _this$cubeId2;
+    }
+    /**
+     * Validates and stores a new dice element into the internal list.
+     *
+     * This method ensures that the given object has the correct structure
+     * before appending it to the internal array of rendered dice elements.
+     *
+     * @private
+     * @param {object} item - The dice element object to validate and store.
+     * @param {HTMLElement[]} item.faces - An array of dice face elements.
+     * @param {HTMLElement} item.container - The container element for the die.
+     * @param {HTMLElement} item.wrapper - The inner wrapper that holds and rotates the cube.
+     * @returns {boolean} `true` if the item was valid and added; otherwise, `false`.
+     */
+  }, {
+    key: "addElement",
+    value:
+    /**
+     * Adds a new dice element to the internal storage.
+     *
+     * This is the public wrapper for the internal method `#addElement`.
+     * It validates the structure of the dice element before adding.
+     *
+     * @param {{ faces: HTMLElement[], container: HTMLElement, wrapper: HTMLElement }} item
+     *        - The dice element object to add. It must contain:
+     *          - `faces`: an array of six face elements,
+     *          - `container`: the outer wrapper element,
+     *          - `wrapper`: the rotating inner cube element.
+     *
+     * @returns {boolean} `true` if the element was valid and added, otherwise `false`.
+     */
+    function addElement(item) {
+      return _assertClassBrand(_TinyDices_brand, this, _addElement).call(this, item);
+    }
+    /**
+     * Validates a background-image value restricted to safe data:image URLs only.
+     *
+     * @private
+     * @param {string} value - The CSS background-image value.
+     * @returns {boolean}
+     */
+  }, {
+    key: "setBgImg",
+    value:
+    /**
+     * Sets the background image using a `data:` URL or, optionally, a standard image URL if forced.
+     *
+     * For security reasons, only `data:` URLs are accepted by default to avoid external resource injection.
+     * You can override this restriction using the `forceUnsafe` flag, but this is discouraged unless trusted.
+     *
+     * @public
+     * @param {string|null} value - The background-image URL (must be a `data:` image by default).
+     * @param {boolean} [forceUnsafe=false] - Allows setting non-data URLs if true (use with caution).
+     */
+    function setBgImg(value) {
+      var forceUnsafe = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      _classPrivateFieldSet(_bgImg, this, typeof value === 'string' && (forceUnsafe || _assertClassBrand(_TinyDices_brand, this, _isValidDataImage).call(this, value)) ? value : null);
+    }
+    /**
+     * Returns the currently set background image if valid, or null.
+     *
+     * @public
+     * @returns {string|null} - The current background-image value (data:image URL) or null if none is set.
+     */
+  }, {
+    key: "getBgImg",
+    value: function getBgImg() {
+      return _classPrivateFieldGet(_bgImg, this) || null;
+    }
+    /**
+     * Sets the background skin style if it's a valid CSS color or linear-gradient.
+     * Prevents injection of unsafe or malformed styles.
+     *
+     * @param {string} skin - A valid CSS color string or gradient.
+     */
+  }, {
+    key: "setBgSkin",
+    value: function setBgSkin(skin) {
+      if (typeof skin !== 'string') {
+        _classPrivateFieldSet(_bgSkin, this, null);
+        return;
+      }
+      var trimmed = skin.trim();
+      var isGradient = _assertClassBrand(_TinyDices_brand, this, _isValidLinearGradient).call(this, trimmed);
+      var isColor = (0, _validateColor["default"])(trimmed);
+      _classPrivateFieldSet(_bgSkin, this, isGradient || isColor ? trimmed : null);
+    }
+    /**
+     * Gets the currently applied background skin.
+     * @returns {string} The current background skin, or the default if not set.
+     */
+  }, {
+    key: "getBgSkin",
+    value: function getBgSkin() {
+      return _classPrivateFieldGet(_bgSkin, this) || _classPrivateFieldGet(_defaultBgSkin, this);
+    }
+    /**
+     * Sets the text skin (style) of the dice numbers.
+     * @param {string|null} skin - The skin name to apply to the text. Pass null or non-string to reset to default.
+     */
+  }, {
+    key: "setTextSkin",
+    value: function setTextSkin(skin) {
+      _classPrivateFieldSet(_textSkin, this, typeof skin === 'string' && (0, _validateColor["default"])(skin) ? skin : null);
+    }
+    /**
+     * Gets the currently applied text skin.
+     * @returns {string} The current text skin, or the default if not set.
+     */
+  }, {
+    key: "getTextSkin",
+    value: function getTextSkin() {
+      return _classPrivateFieldGet(_textSkin, this) || _classPrivateFieldGet(_defaultTextSkin, this);
+    }
+    /**
+     * Sets the border skin (style) of the dice edges.
+     * @param {string|null} skin - The skin name to apply to the border. Pass null or non-string to reset to default.
+     */
+  }, {
+    key: "setBorderSkin",
+    value: function setBorderSkin(skin) {
+      _classPrivateFieldSet(_borderSkin, this, typeof skin === 'string' && _assertClassBrand(_TinyDices_brand, this, _isValidCssBorder).call(this, skin) ? skin : null);
+    }
+    /**
+     * Gets the currently applied border skin.
+     * @returns {string} The current border skin, or the default if not set.
+     */
+  }, {
+    key: "getBorderSkin",
+    value: function getBorderSkin() {
+      return _classPrivateFieldGet(_borderSkin, this) || _classPrivateFieldGet(_defaultBorderSkin, this);
+    }
+    /**
+     * Sets the background skin for selected dice.
+     * Accepts valid CSS color strings or `linear-gradient(...)`.
+     * Invalid values reset the skin to `null`.
+     *
+     * @public
+     * @param {string} skin - The CSS background to apply when a die is selected.
+     */
+  }, {
+    key: "setSelectionBgSkin",
+    value: function setSelectionBgSkin(skin) {
+      if (typeof skin !== 'string') {
+        _classPrivateFieldSet(_selectionBgSkin, this, null);
+        return;
+      }
+      var trimmed = skin.trim();
+      var isGradient = _assertClassBrand(_TinyDices_brand, this, _isValidLinearGradient).call(this, trimmed);
+      var isColor = (0, _validateColor["default"])(trimmed);
+      _classPrivateFieldSet(_selectionBgSkin, this, isGradient || isColor ? trimmed : null);
+    }
+    /**
+     * Gets the background skin used for selected dice.
+     * Returns the custom value if set; otherwise, returns the default.
+     *
+     * @public
+     * @returns {string} The current background skin for selected dice.
+     */
+  }, {
+    key: "getSelectionBgSkin",
+    value: function getSelectionBgSkin() {
+      return _classPrivateFieldGet(_selectionBgSkin, this) || _classPrivateFieldGet(_defaultSelectionBgSkin, this);
+    }
+    /**
+     * Sets the text color for selected dice.
+     * Only valid CSS color values are accepted.
+     * Invalid inputs will reset the color to `null`.
+     *
+     * @public
+     * @param {string} skin - The text color for selected dice.
+     */
+  }, {
+    key: "setSelectionTextSkin",
+    value: function setSelectionTextSkin(skin) {
+      _classPrivateFieldSet(_selectionTextSkin, this, typeof skin === 'string' && (0, _validateColor["default"])(skin) ? skin : null);
+    }
+    /**
+     * Gets the text color used for selected dice.
+     * Returns the custom value if set; otherwise, returns the default.
+     *
+     * @public
+     * @returns {string} The current text color for selected dice.
+     */
+  }, {
+    key: "getSelectionTextSkin",
+    value: function getSelectionTextSkin() {
+      return _classPrivateFieldGet(_selectionTextSkin, this) || _classPrivateFieldGet(_defaultSelectionTextSkin, this);
+    }
+    /**
+     * Applies the current visual skin to a specific dice face element.
+     * This includes background color, text color, border style, and optionally
+     * a `background-image` if set via `setBgImg`.
+     *
+     * @private
+     * @param {HTMLElement} face - The HTML element representing a dice face.
+     */
+  }, {
+    key: "updateDiceFaceSkin",
+    value:
+    /**
+     * Updates the visual skin or style of a single dice face element.
+     *
+     * This is a public wrapper around the internal method `#updateDiceFaceSkin`,
+     * allowing external calls to apply the dice face style dynamically.
+     *
+     * @param {HTMLElement} face - The DOM element representing a single face of the die.
+     * @returns {void}
+     */
+    function updateDiceFaceSkin(face) {
+      return _assertClassBrand(_TinyDices_brand, this, _updateDiceFaceSkin).call(this, face);
+    }
+    /**
+     * Updates the visual skin of all dice face elements currently rendered.
+     * Iterates through each dice in `this.#elements` and applies the active
+     * background, text color, border, and background image styles using `#updateDiceFaceSkin`.
+     *
+     * @public
+     */
+  }, {
+    key: "updateDicesSkin",
+    value: function updateDicesSkin() {
+      for (var index in _classPrivateFieldGet(_elements, this)) this.updateDiceSkin(index);
+    }
+    /**
+     * Updates the visual skin of a specific die by index.
+     * Applies current background color, text color, border style, and background image
+     * to all face elements of the selected die using `#updateDiceFaceSkin`.
+     *
+     * @public
+     * @param {number|string} index - The index of the die to update.
+     * @returns {boolean} Returns `true` if the die was found and updated; otherwise `false`.
+     */
+  }, {
+    key: "updateDiceSkin",
+    value: function updateDiceSkin(index) {
+      if (_classPrivateFieldGet(_elements, this)[index]) {
+        for (var index2 in _classPrivateFieldGet(_elements, this)[index].faces) _assertClassBrand(_TinyDices_brand, this, _updateDiceFaceSkin).call(this, _classPrivateFieldGet(_elements, this)[index].faces[index2]);
+        return true;
+      } else return false;
+    }
+    /**
+     * Generates a random integer between 1 and max (inclusive).
+     * If `canZero` is true, the range becomes 0 to max (inclusive).
+     *
+     * @private
+     * @param {number} max - The maximum value for the roll (inclusive).
+     * @param {boolean} [canZero=false] - Whether the result can include 0.
+     * @returns {number} A random integer between 1 and max, or 0 and max if `canZero` is true. Returns 0 if max <= 0.
+     */
+  }, {
+    key: "rollNumber",
+    value:
+    /**
+     * Generates a random integer between a lower bound and a maximum value.
+     *
+     * This is a public wrapper for the internal method `#rollNumber`, which handles
+     * dice-style number generation, optionally allowing zero as a result.
+     *
+     * @param {number} [max=0] - The maximum value (inclusive upper bound if `canZero` is true).
+     * @param {boolean} [canZero=false] - If true, the roll can return 0 (or a range starting from 0).
+     * @returns {number} A pseudo-random integer within the expected range.
+     *
+     * - If `canZero` is false: returns a number from 1 to `max`.
+     * - If `canZero` is true: returns a number from 0 to `max`.
+     * - If `max <= 0`: always returns 0.
+     */
+    function rollNumber() {
+      var max = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      var canZero = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      return _assertClassBrand(_TinyDices_brand, this, _rollNumber).call(this, max, canZero);
+    }
+    /**
+     * Parses input parameters to determine the dice configuration.
+     *
+     * @param {string|Array<number>} perDieValues - Optional: a comma-separated string or array of individual max values.
+     * @returns {number[]} - Parsed dice configuration.
+     */
+  }, {
+    key: "parseRollConfig",
+    value: function parseRollConfig() {
+      var perDieValues = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      // Get per die data
+      return typeof perDieValues === 'string' && perDieValues.length > 0 ? perDieValues.trim().split(',').map(function (raw) {
+        var val = 0;
+        try {
+          val = parseInt(raw.trim(), 10);
+        } catch (_unused) {
+          val = 0;
+        }
+        if (typeof val === 'number' && !Number.isNaN(val) && Number.isFinite(val) && val > -1) return val;
+        return -1;
+      }) : Array.isArray(perDieValues) ? perDieValues : [];
+    }
+    /**
+     * Inserts a single 3D die into the DOM with animation.
+     *
+     * @param {number} result - The value displayed on the front face of the die.
+     * @param {number} max - The maximum value for the die (used to generate other random faces).
+     * @param {boolean} [canZero=false] - Whether 0 is a valid face value.
+     * @param {boolean} [rollInfinity=false] - Whether the die should spin indefinitely.
+     * @returns {number[]} - An array representing the values on all six faces of the cube.
+     */
+  }, {
+    key: "insertDiceElement",
+    value: function insertDiceElement(result, max, canZero, rollInfinity) {
+      var _classPrivateFieldGet2 = _classPrivateFieldGet(_createCube, this).call(this, result, max, canZero, rollInfinity),
+        cube = _classPrivateFieldGet2.cube,
+        sequence = _classPrivateFieldGet2.sequence;
+      this.diceArea.appendChild(cube);
+      return sequence;
+    }
+    /**
+     * Clears all dice cubes from the display area.
+     * Resets internal cube counter to avoid z-index conflicts.
+     */
+  }, {
+    key: "clearDiceArea",
+    value: function clearDiceArea() {
+      _classPrivateFieldSet(_cubeId, this, 0);
+      if (_assertClassBrand(_TinyDices_brand, this, _existsHtml).call(this)) this.diceArea.innerHTML = '';
+      _classPrivateFieldSet(_elements, this, []);
+    }
+    /**
+     * Initializes the default cube creation function and assigns it to `this.#createCube`.
+     *
+     * This function builds a customizable cube with 6 animated faces, where each face is
+     * assigned a unique number (avoiding duplicates when possible). The front face shows the
+     * result value passed in, and the others are randomized based on the `max` value.
+     *
+     * @private
+     *
+     * @remarks
+     * If `createCubeScript` was not provided to the constructor, this method sets up the default cube generator.
+     *
+     * @returns {void}
+     *
+     * @see #createCube
+     *
+     * @function
+     */
+  }, {
+    key: "rollDice",
+    value:
+    /**
+     * Inserts a single die cube into the DOM using the specified configuration.
+     *
+     * @param {number} max - Default maximum value for dice (if no individual values are given).
+     * @param {boolean} [canZero=false] - Whether 0 is a valid result.
+     * @param {boolean} [rollInfinity=false] - Whether all dice should spin infinitely.
+     * @returns {{ result: number, sequence: number[] }} - Array with results and face sequences for each die.
+     */
+    function rollDice(max) {
+      var canZero = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      var rollInfinity = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : undefined;
+      var cube = {
+        result: _assertClassBrand(_TinyDices_brand, this, _rollNumber).call(this, max, canZero)
+      };
+      if (_assertClassBrand(_TinyDices_brand, this, _existsHtml).call(this)) cube.sequece = this.insertDiceElement(cube.result, max, canZero, rollInfinity);
+      return cube;
+    }
+    /**
+     * Inserts multiple dice cubes into the DOM using the specified configuration.
+     *
+     * @param {number[]} perDieData - Array of individual max values per die.
+     * @param {boolean} [canZero=false] - Whether 0 is a valid result on any die.
+     * @param {boolean} [rollInfinity=false] - Whether all dice should spin infinitely.
+     * @returns {Array<{ result: number, sequence: number[] }>} - Array with results and face sequences for each die.
+     */
+  }, {
+    key: "rollDices",
+    value: function rollDices(perDieData) {
+      var canZero = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      var rollInfinity = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      var cubes = [];
+      for (var _i = 0; _i < perDieData.length; _i++) {
+        var max = perDieData[_i];
+        var cube = {
+          result: _assertClassBrand(_TinyDices_brand, this, _rollNumber).call(this, max, canZero)
+        };
+        if (_assertClassBrand(_TinyDices_brand, this, _existsHtml).call(this)) cube.sequece = this.insertDiceElement(cube.result, max, canZero, rollInfinity);
+        cubes.push(cube);
+      }
+      return cubes;
+    }
+    /**
+     * Rolls the dice by clearing existing cubes and inserting new ones.
+     *
+     * @param {string|Array<number>} perDieInput - Either a comma-separated string or array of max values per die.
+     * @param {boolean} [canZero=false] - Whether 0 is a valid result.
+     * @param {boolean} [rollInfinity=false] - Whether dice spin infinitely.
+     * @returns {Array<{ result: number, sequence: number[] }>} - Array with results and face sequences for each die.
+     */
+  }, {
+    key: "roll",
+    value: function roll(perDieInput) {
+      var canZero = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      var rollInfinity = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      var perDieData = this.parseRollConfig(perDieInput);
+      this.clearDiceArea();
+      return this.rollDices(perDieData, canZero, rollInfinity);
+    }
+    /**
+     * Checks whether the TinyDices instance has been destroyed.
+     *
+     * @returns {boolean} - Returns `true` if the instance was destroyed, otherwise `false`.
+     *
+     * @example
+     * if (dice.isDestroyed()) {
+     *   console.warn('This instance is no longer usable.');
+     * }
+     */
+  }, {
+    key: "isDestroyed",
+    value: function isDestroyed() {
+      return _classPrivateFieldGet(_destroyed, this);
+    }
+    /**
+     * Completely destroys the TinyDices instance by removing DOM elements and resetting internal state.
+     *
+     * This method:
+     * - Clears all rendered dice.
+     * - Empties the base DOM elements (container, diceBase, diceArea).
+     * - Resets all visual skin configurations.
+     * - Nullifies DOM references.
+     * - Sets an internal flag to block further usage of the instance.
+     *
+     * @example
+     * dice.destroy(); // 💣 Cleans up everything and makes the instance unusable
+     */
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      // Clear any dice already rendered
+      this.clearDiceArea();
+      // Remove container element content (optional: comment if you want to preserve it)
+      if (this.container && this.container instanceof HTMLElement) this.container.innerHTML = '';
+      if (_classPrivateFieldGet(_diceBase, this) && _classPrivateFieldGet(_diceBase, this) instanceof HTMLElement) _classPrivateFieldGet(_diceBase, this).innerHTML = '';
+      if (this.diceArea && this.diceArea instanceof HTMLElement) this.diceArea.innerHTML = '';
+      // Optionally, unset the container reference
+      _classPrivateFieldSet(_diceBase, this, null);
+      this.diceArea = null;
+      this.container = null;
+      // Reset any styles or configs (if you store them in other properties, reset them here)
+      _classPrivateFieldSet(_defaultBgSkin, this, null);
+      _classPrivateFieldSet(_defaultBorderSkin, this, null);
+      _classPrivateFieldSet(_defaultSelectionTextSkin, this, null);
+      _classPrivateFieldSet(_defaultSelectionBgSkin, this, null);
+      _classPrivateFieldSet(_defaultTextSkin, this, null);
+      _classPrivateFieldSet(_selectionBgSkin, this, null);
+      _classPrivateFieldSet(_selectionTextSkin, this, null);
+      _classPrivateFieldSet(_bgSkin, this, null);
+      _classPrivateFieldSet(_bgImg, this, null);
+      _classPrivateFieldSet(_textSkin, this, null);
+      _classPrivateFieldSet(_borderSkin, this, null);
+      // Optionally, mark as destroyed to prevent further use
+      _classPrivateFieldSet(_destroyed, this, true);
+    }
+  }]);
+}();
+function _existsHtml() {
+  return _classPrivateFieldGet(_diceBase, this) && _classPrivateFieldGet(_diceBase, this) instanceof HTMLElement;
+}
+function _addElement(item) {
+  if ((0, _tinyEssentials.objType)(item, 'object') && Array.isArray(item.faces) && item.container && item.container instanceof HTMLElement && item.wrapper && item.wrapper instanceof HTMLElement) {
+    _classPrivateFieldGet(_elements, this).push(item);
+    return true;
+  }
+  return false;
+}
+function _isValidDataImage(value) {
+  if (typeof value !== 'string') return false;
+  var normalized = value.trim();
+  // Only allow data:image/... base64 or URL-encoded images
+  var dataUrlPattern = /^data:image\/(png|jpeg|jpg|gif|webp);base64,[a-z0-9+\/=]+$/i;
+  return dataUrlPattern.test(normalized);
+}
+/**
+ * Validates a linear-gradient string to prevent unsafe or malformed styles.
+ *
+ * @private
+ * @param {string} value - The CSS gradient string.
+ * @returns {boolean}
+ */
+function _isValidLinearGradient(value) {
+  if (typeof value !== 'string') return false;
+  var normalized = value.trim().toLowerCase();
+  // Must start with 'linear-gradient(' and end with ')'
+  if (!normalized.startsWith('linear-gradient(') || !normalized.endsWith(')')) {
+    return false;
+  }
+  // Block unsafe patterns
+  var unsafePattern = /(url\s*\(|expression\s*\(|javascript:|<|>|data:)/i;
+  if (unsafePattern.test(value)) {
+    return false;
+  }
+  // Extract content inside the parentheses
+  var content = value.slice(value.indexOf('(') + 1, -1).trim();
+  if (!content) return false;
+  // Safe split by commas outside of parentheses
+  var parts = [];
+  var buffer = '';
+  var depth = 0;
+  var _iterator = _createForOfIteratorHelper(content),
+    _step;
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var _char = _step.value;
+      if (_char === '(') depth++;
+      if (_char === ')') depth--;
+      if (_char === ',' && depth === 0) {
+        parts.push(buffer.trim());
+        buffer = '';
+      } else {
+        buffer += _char;
+      }
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+  if (buffer.trim()) parts.push(buffer.trim());
+  if (parts.length < 1) return false; // needs at least one component
+  var colorCount = 0;
+  for (var _i2 = 0; _i2 < parts.length; _i2++) {
+    var part = parts[_i2];
+    // First item can optionally be a direction or angle
+    if (_i2 === 0 && /^(to\s+\w+|\d+deg|[+-]?\d+rad|[+-]?\d+turn)$/i.test(part)) {
+      continue;
+    }
+    if ((0, _validateColor["default"])(part.trim())) {
+      colorCount++;
+    } else {
+      // Extract possible color value before any stop (e.g. "red 20%" → "red")
+      var colorCandidate = part.trim().split(/\s+/)[0];
+      if ((0, _validateColor["default"])(colorCandidate)) {
+        colorCount++;
+      } else {
+        return false; // invalid color
+      }
+    }
+  }
+  // Must have at least 1 valid color and no more than 50
+  return colorCount >= 1 && colorCount <= 50;
+}
+/**
+ * Validates a CSS border string like '1px solid red' or '2px dashed linear-gradient(...)'.
+ *
+ * @private
+ * @param {string} value - The CSS border string.
+ * @returns {boolean}
+ */
+function _isValidCssBorder(value) {
+  if (typeof value !== 'string') return false;
+  var parts = value.trim().split(/\s+/);
+  if (parts.length < 3) return false;
+  var _parts = _toArray(parts),
+    width = _parts[0],
+    style = _parts[1],
+    colorParts = _parts.slice(2);
+  var color = colorParts.join(' ');
+  // Validate width (basic check for length units)
+  var isValidWidth = /^(\d+(\.\d+)?)(px|em|rem|%)$/.test(width);
+  if (!isValidWidth) return false;
+  // Validate border style
+  var validStyles = ['none', 'solid', 'dashed', 'dotted', 'double', 'groove', 'ridge', 'inset', 'outset', 'hidden'];
+  if (!validStyles.includes(style)) return false;
+  // Validate color (either direct or linear-gradient)
+  return (0, _validateColor["default"])(color) || _assertClassBrand(_TinyDices_brand, this, _isValidLinearGradient).call(this, color);
+}
+function _updateDiceFaceSkin(face) {
+  // Skin
+  face.style.background = this.getBgSkin();
+  face.style.color = this.getTextSkin();
+  face.style.border = this.getBorderSkin();
+  face.style.setProperty('--dice-selection-bg', this.getSelectionBgSkin());
+  face.style.setProperty('--dice-selection-text', this.getSelectionTextSkin());
+  // Background image
+  var bgImg = this.getBgImg();
+  if (bgImg) {
+    face.style.backgroundImage = "url(\"".concat(bgImg, "\")");
+    face.style.backgroundPosition = 'center';
+    face.style.backgroundSize = '100%';
+    face.style.backgroundRepeat = 'repeat';
+  }
+}
+function _rollNumber() {
+  var max = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var canZero = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  // Throw an error if the value is not a valid number
+  if (typeof max !== 'number' || Number.isNaN(max)) {
+    throw new Error("Invalid die max value at index ".concat(i, ": ").concat(max, ". All values must be positive numbers."));
+  }
+  // Valid number
+  if (max > 0) {
+    var maxValue = max;
+    var finalValue = 1;
+    if (canZero) {
+      maxValue++;
+      finalValue--;
+    }
+    return Math.floor(Math.random() * maxValue) + finalValue;
+  } else return 0;
+}
+function _insertCreateCube() {
+  var tinyDice = this;
+  _classPrivateFieldSet(_createCube, this, function (result, max) {
+    var canZero = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+    var rollInfinity = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+    // Container
+    var diceElements = {
+      faces: []
+    };
+    var container = document.createElement('div');
+    container.className = 'dice-container';
+    container.style.zIndex = 1000 + tinyDice.addCubeId(); // each dice with higher priority
+    diceElements.container = container;
+    // Wrapper
+    var wrapper = document.createElement('div');
+    wrapper.className = "cube-wrapper".concat(rollInfinity ? " spin-infinite" : '');
+    diceElements.wrapper = wrapper;
+    // Get rot
+    var rotX = 360 * (3 + Math.floor(Math.random() * 5));
+    var rotY = 360 * (3 + Math.floor(Math.random() * 5));
+    // Wrapper animation
+    wrapper.style.animation = "tinyDiceSpinCubeCustom 2s ease-in-out forwards";
+    wrapper.style.setProperty('--rotX', "".concat(rotX, "deg"));
+    wrapper.style.setProperty('--rotY', "".concat(rotY, "deg"));
+    // Create the cube
+    var sequence = [];
+    var countSeq = new Set();
+    var min = !canZero ? 0 : -1;
+    for (var _i3 = 1; _i3 <= 6; _i3++) {
+      // Element
+      var face = document.createElement('div');
+      face.className = "face face".concat(_i3);
+      _assertClassBrand(_TinyDices_brand, tinyDice, _updateDiceFaceSkin).call(tinyDice, face);
+      // Ignored results
+      if (_i3 !== 1) {
+        var roll = void 0;
+        // Normal max
+        if (max > min) {
+          var extraValue = min;
+          var usingExtra = false;
+          do {
+            roll = !usingExtra ? _assertClassBrand(_TinyDices_brand, tinyDice, _rollNumber).call(tinyDice, max, canZero) : extraValue;
+            if (usingExtra || sequence.length >= max) {
+              if (extraValue >= max) {
+                extraValue = min;
+                countSeq.clear();
+              }
+              extraValue++;
+              usingExtra = true;
+            }
+          } while (countSeq.has(roll));
+        }
+        // 0 or negative max
+        else roll = max;
+        // Insert sequence
+        if (roll < 1) roll = 0;
+        sequence.push(roll);
+        countSeq.add(roll);
+        face.textContent = roll;
+      }
+      // The result!
+      else {
+        face.textContent = result;
+        sequence.push(result);
+        countSeq.add(result);
+      }
+      // Side added
+      wrapper.appendChild(face);
+      diceElements.faces.push(face);
+    }
+    // Stop cube animation
+    if (!rollInfinity) {
+      setTimeout(function () {
+        if (wrapper) wrapper.classList.add('stopped');
+      }, 2000);
+    }
+    // Insert the cube
+    container.appendChild(wrapper);
+    _assertClassBrand(_TinyDices_brand, tinyDice, _addElement).call(tinyDice, diceElements);
+    return {
+      cube: container,
+      sequence: sequence
+    };
+  });
+}
+var _default = exports["default"] = TinyDices;
+
+},{"tiny-essentials":691,"validate-color":707}],684:[function(require,module,exports){
+"use strict";
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -98435,7 +99319,7 @@ function _asyncReplace() {
   return _asyncReplace.apply(this, arguments);
 }
 
-},{}],684:[function(require,module,exports){
+},{}],685:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -98588,7 +99472,7 @@ var TinyLevelUp = /*#__PURE__*/function () {
 }();
 var _default = exports["default"] = TinyLevelUp;
 
-},{}],685:[function(require,module,exports){
+},{}],686:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -98621,7 +99505,7 @@ function shuffleArray(items) {
   return items;
 }
 
-},{}],686:[function(require,module,exports){
+},{}],687:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -98776,7 +99660,7 @@ function formatDayTimer(seconds) {
   return formatCustomTimer(seconds, 'days', '{days}d {hours}:{minutes}:{seconds}');
 }
 
-},{}],687:[function(require,module,exports){
+},{}],688:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -98834,7 +99718,7 @@ function countObj(obj) {
   return 0;
 }
 
-},{}],688:[function(require,module,exports){
+},{}],689:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -98919,7 +99803,7 @@ function getAge() {
   return null;
 }
 
-},{}],689:[function(require,module,exports){
+},{}],690:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -98957,7 +99841,7 @@ function toTitleCaseLowerFirst(str) {
   return titleCased.charAt(0).toLowerCase() + titleCased.slice(1);
 }
 
-},{}],690:[function(require,module,exports){
+},{}],691:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -99056,7 +99940,7 @@ var _simpleMath = require("./basics/simpleMath.mjs");
 var _text = require("./basics/text.mjs");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 
-},{"../legacy/libs/replaceAsync.mjs":683,"../legacy/libs/userLevel.mjs":684,"./basics/array.mjs":685,"./basics/clock.mjs":686,"./basics/objFilter.mjs":687,"./basics/simpleMath.mjs":688,"./basics/text.mjs":689}],691:[function(require,module,exports){
+},{"../legacy/libs/replaceAsync.mjs":684,"../legacy/libs/userLevel.mjs":685,"./basics/array.mjs":686,"./basics/clock.mjs":687,"./basics/objFilter.mjs":688,"./basics/simpleMath.mjs":689,"./basics/text.mjs":690}],692:[function(require,module,exports){
 (function (process){(function (){
 "use strict";
 
@@ -101220,7 +102104,7 @@ tippy.setDefaultProps({
 var _default = exports["default"] = tippy;
 
 }).call(this)}).call(this,require('_process'))
-},{"@popperjs/core":148,"_process":585}],692:[function(require,module,exports){
+},{"@popperjs/core":148,"_process":585}],693:[function(require,module,exports){
 
 module.exports = function () {
   var selection = document.getSelection();
@@ -101261,7 +102145,7 @@ module.exports = function () {
   };
 };
 
-},{}],693:[function(require,module,exports){
+},{}],694:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -101641,7 +102525,7 @@ function __classPrivateFieldSet(receiver, privateMap, value) {
   return value;
 }
 
-},{}],694:[function(require,module,exports){
+},{}],695:[function(require,module,exports){
 (function (Buffer){(function (){
 /**
  * Convert a typed array to a Buffer without a copy
@@ -101670,7 +102554,7 @@ module.exports = function typedarrayToBuffer (arr) {
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"buffer":313,"is-typedarray":476}],695:[function(require,module,exports){
+},{"buffer":313,"is-typedarray":476}],696:[function(require,module,exports){
 (function (global){(function (){
 /*! https://mths.be/punycode v1.4.1 by @mathias */
 ;(function(root) {
@@ -102207,7 +103091,7 @@ module.exports = function typedarrayToBuffer (arr) {
 }(this));
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],696:[function(require,module,exports){
+},{}],697:[function(require,module,exports){
 'use strict';
 
 var replace = String.prototype.replace;
@@ -102232,7 +103116,7 @@ module.exports = {
     RFC3986: Format.RFC3986
 };
 
-},{}],697:[function(require,module,exports){
+},{}],698:[function(require,module,exports){
 'use strict';
 
 var stringify = require('./stringify');
@@ -102245,7 +103129,7 @@ module.exports = {
     stringify: stringify
 };
 
-},{"./formats":696,"./parse":698,"./stringify":699}],698:[function(require,module,exports){
+},{"./formats":697,"./parse":699,"./stringify":700}],699:[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -102575,7 +103459,7 @@ module.exports = function (str, opts) {
     return utils.compact(obj);
 };
 
-},{"./utils":700}],699:[function(require,module,exports){
+},{"./utils":701}],700:[function(require,module,exports){
 'use strict';
 
 var getSideChannel = require('side-channel');
@@ -102933,7 +103817,7 @@ module.exports = function (object, opts) {
     return joined.length > 0 ? prefix + joined : '';
 };
 
-},{"./formats":696,"./utils":700,"side-channel":629}],700:[function(require,module,exports){
+},{"./formats":697,"./utils":701,"side-channel":629}],701:[function(require,module,exports){
 'use strict';
 
 var formats = require('./formats');
@@ -103203,7 +104087,7 @@ module.exports = {
     merge: merge
 };
 
-},{"./formats":696}],701:[function(require,module,exports){
+},{"./formats":697}],702:[function(require,module,exports){
 /*
  * Copyright Joyent, Inc. and other Node contributors.
  *
@@ -103981,7 +104865,7 @@ exports.format = urlFormat;
 
 exports.Url = Url;
 
-},{"punycode/":695,"qs":697}],702:[function(require,module,exports){
+},{"punycode/":696,"qs":698}],703:[function(require,module,exports){
 (function (global){(function (){
 
 /**
@@ -104052,9 +104936,9 @@ function config (name) {
 }
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],703:[function(require,module,exports){
+},{}],704:[function(require,module,exports){
 arguments[4][276][0].apply(exports,arguments)
-},{"dup":276}],704:[function(require,module,exports){
+},{"dup":276}],705:[function(require,module,exports){
 // Currently in sync with Node.js lib/internal/util/types.js
 // https://github.com/nodejs/node/commit/112cc7c27551254aa2b17098fb774867f05ed0d9
 
@@ -104390,7 +105274,7 @@ exports.isAnyArrayBuffer = isAnyArrayBuffer;
   });
 });
 
-},{"is-arguments":470,"is-generator-function":472,"is-typed-array":475,"which-typed-array":721}],705:[function(require,module,exports){
+},{"is-arguments":470,"is-generator-function":472,"is-typed-array":475,"which-typed-array":722}],706:[function(require,module,exports){
 (function (process){(function (){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -105109,9 +105993,9 @@ function callbackify(original) {
 exports.callbackify = callbackify;
 
 }).call(this)}).call(this,require('_process'))
-},{"./support/isBuffer":703,"./support/types":704,"_process":585,"inherits":469}],706:[function(require,module,exports){
+},{"./support/isBuffer":704,"./support/types":705,"_process":585,"inherits":469}],707:[function(require,module,exports){
 module.exports=function(e){var r={};function t(n){if(r[n])return r[n].exports;var a=r[n]={i:n,l:!1,exports:{}};return e[n].call(a.exports,a,a.exports,t),a.l=!0,a.exports}return t.m=e,t.c=r,t.d=function(e,r,n){t.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:n})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,r){if(1&r&&(e=t(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(t.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var a in e)t.d(n,a,function(r){return e[r]}.bind(null,a));return n},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},t.p="",t(t.s=0)}([function(e,r,t){"use strict";t.r(r),t.d(r,"validateHTMLColorName",(function(){return l})),t.d(r,"validateHTMLColorSpecialName",(function(){return i})),t.d(r,"validateHTMLColorHex",(function(){return u})),t.d(r,"validateHTMLColorRgb",(function(){return g})),t.d(r,"validateHTMLColorHsl",(function(){return y})),t.d(r,"validateHTMLColorHwb",(function(){return L})),t.d(r,"validateHTMLColorLab",(function(){return S})),t.d(r,"validateHTMLColorLch",(function(){return m})),t.d(r,"validateHTMLColor",(function(){return G}));const n=e=>e&&"string"==typeof e,a=["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenrod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","DarkOrange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","Goldenrod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenrodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquamarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenrod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","RebeccaPurple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"],o=["currentColor","inherit","transparent"],l=e=>{let r=!1;return n(e)&&a.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},i=e=>{let r=!1;return n(e)&&o.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},u=e=>{if(n(e)){const r=/^#([\da-f]{3}){1,2}$|^#([\da-f]{4}){1,2}$/i;return e&&r.test(e)}return!1},d="(([\\d]{0,5})((\\.([\\d]{1,5}))?))",s=`(${d}%)`,c="(([0-9]|[1-9][0-9]|100)%)",f=`(${c}|(0?((\\.([\\d]{1,5}))?))|1)`,h=`([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?)([\\s]{1,5})${`(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?`}([\\s]{0,5})\\)`,$="(-?(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360)(deg)?)",g=e=>{if(n(e)){const r="([\\s]{0,5})([\\d]{1,5})%?([\\s]{0,5}),?",t="((([\\s]{0,5}),?([\\s]{0,5}))|(([\\s]{1,5})))",n=new RegExp(`^(rgb)a?\\(${`${r}${t}`}${`${r}${t}`}${`${r}${t}`}(${"(\\/?([\\s]{0,5})(0?\\.?([\\d]{1,5})%?([\\s]{0,5}))?|1|0)"})?\\)$`);return e&&n.test(e)}return!1},y=e=>{if(n(e)){const r=new RegExp(`^(hsl)a?\\((([\\s]{0,5})(${$}|${"(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-9][0-9]|400)grad)"}|${"((([0-5])?\\.([\\d]{1,5})|6\\.([0-9]|1[0-9]|2[0-8])|[0-6])rad)"}|${"((0?((\\.([\\d]{1,5}))?)|1)turn)"})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?|,?)([\\s]{0,5})(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?\\)$`);return e&&r.test(e)}return!1},L=e=>{if(n(e)){const r=new RegExp(`^(hwb\\(([\\s]{0,5})${$}([\\s]{1,5}))((0|${c})([\\s]{1,5}))((0|${c})${h}$`);return e&&r.test(e)}return!1},S=e=>{if(n(e)){const r="(-?(([0-9]|[1-9][0-9]|1[0-5][0-9])((\\.([\\d]{1,5}))?)?|160))",t=new RegExp(`^(lab\\(([\\s]{0,5})${s}([\\s]{1,5})${r}([\\s]{1,5})${r}${h}$`);return e&&t.test(e)}return!1},m=e=>{if(n(e)){const r="((([0-9]|[1-9][0-9])?((\\.([\\d]{1,5}))?)|100)(%)?)",t=""+d,n=`((${$})|(0|${f})|(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360))`,a=`(\\/([\\s]{0,5})${f})`,o=new RegExp(`^lch\\(${`(([\\s]{0,5})${r}([\\s]{1,5})${t}([\\s]{1,5})${n}([\\s]{0,5})(${a})?)`}\\)$`);return e&&o.test(e)}return!1},G=e=>!!(e&&u(e)||g(e)||y(e)||L(e)||S(e)||m(e));r.default=e=>!!(e&&u(e)||l(e)||i(e)||g(e)||y(e)||L(e)||S(e)||m(e))}]);
-},{}],707:[function(require,module,exports){
+},{}],708:[function(require,module,exports){
 const EventEmitter = require('events').EventEmitter
 const inherits = require('util').inherits
 const ethUtil = require('ethereumjs-util')
@@ -105387,7 +106271,7 @@ function toBufferBlock (jsonBlock) {
   }
 }
 
-},{"./util/create-payload.js":716,"./util/rpc-cache-utils.js":719,"./util/stoplight.js":720,"async/eachSeries":287,"async/map":303,"eth-block-tracker":380,"ethereumjs-util":426,"events":436,"util":705}],708:[function(require,module,exports){
+},{"./util/create-payload.js":717,"./util/rpc-cache-utils.js":720,"./util/stoplight.js":721,"async/eachSeries":287,"async/map":303,"eth-block-tracker":380,"ethereumjs-util":426,"events":436,"util":706}],709:[function(require,module,exports){
 const ProviderSubprovider = require('./json-rpc-engine-middleware')
 const createBlockCacheMiddleware = require('eth-json-rpc-middleware/block-cache')
 
@@ -105399,7 +106283,7 @@ class BlockCacheSubprovider extends ProviderSubprovider {
 
 module.exports = BlockCacheSubprovider
 
-},{"./json-rpc-engine-middleware":712,"eth-json-rpc-middleware/block-cache":403}],709:[function(require,module,exports){
+},{"./json-rpc-engine-middleware":713,"eth-json-rpc-middleware/block-cache":403}],710:[function(require,module,exports){
 const ProviderSubprovider = require('./json-rpc-engine-middleware')
 const createFilterMiddleware = require('eth-json-rpc-filters')
 
@@ -105413,7 +106297,7 @@ class SubscriptionsSubprovider extends ProviderSubprovider {
 
 module.exports = SubscriptionsSubprovider
 
-},{"./json-rpc-engine-middleware":712,"eth-json-rpc-filters":386}],710:[function(require,module,exports){
+},{"./json-rpc-engine-middleware":713,"eth-json-rpc-filters":386}],711:[function(require,module,exports){
 const inherits = require('util').inherits
 const Subprovider = require('./subprovider.js')
 
@@ -105443,7 +106327,7 @@ FixtureProvider.prototype.handleRequest = function(payload, next, end){
   }
 }
 
-},{"./subprovider.js":714,"util":705}],711:[function(require,module,exports){
+},{"./subprovider.js":715,"util":706}],712:[function(require,module,exports){
 /*
  * Emulate 'eth_accounts' / 'eth_sendTransaction' using 'eth_sendRawTransaction'
  *
@@ -106149,7 +107033,7 @@ function mustProvideInConstructor(methodName) {
   }
 }
 
-},{"../util/estimate-gas.js":717,"./subprovider.js":714,"async/parallel":304,"async/waterfall":305,"eth-sig-util":407,"ethereumjs-util":426,"semaphore":616,"util":705,"xtend":728}],712:[function(require,module,exports){
+},{"../util/estimate-gas.js":718,"./subprovider.js":715,"async/parallel":304,"async/waterfall":305,"eth-sig-util":407,"ethereumjs-util":426,"semaphore":616,"util":706,"xtend":729}],713:[function(require,module,exports){
 const Subprovider = require('./subprovider.js')
 
 // wraps a json-rpc-engine middleware in a subprovider interface
@@ -106205,7 +107089,7 @@ class JsonRpcEngineMiddlewareSubprovider extends Subprovider {
 
 module.exports = JsonRpcEngineMiddlewareSubprovider
 
-},{"./subprovider.js":714}],713:[function(require,module,exports){
+},{"./subprovider.js":715}],714:[function(require,module,exports){
 (function (Buffer){(function (){
 const inherits = require('util').inherits
 const Transaction = require('ethereumjs-tx')
@@ -106299,7 +107183,7 @@ NonceTrackerSubprovider.prototype.handleRequest = function(payload, next, end){
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"../util/rpc-cache-utils":719,"./subprovider.js":714,"buffer":313,"ethereumjs-tx":425,"ethereumjs-util":426,"util":705}],714:[function(require,module,exports){
+},{"../util/rpc-cache-utils":720,"./subprovider.js":715,"buffer":313,"ethereumjs-tx":425,"ethereumjs-util":426,"util":706}],715:[function(require,module,exports){
 const createPayload = require('../util/create-payload.js')
 
 module.exports = SubProvider
@@ -106343,7 +107227,7 @@ SubProvider.prototype.stop = function () {}
 
 SubProvider.prototype.start = function () {}
 
-},{"../util/create-payload.js":716}],715:[function(require,module,exports){
+},{"../util/create-payload.js":717}],716:[function(require,module,exports){
 const ProviderSubprovider = require('./json-rpc-engine-middleware')
 const createSubscriptionManager = require('eth-json-rpc-filters/subscriptionManager')
 
@@ -106361,7 +107245,7 @@ class SubscriptionsSubprovider extends ProviderSubprovider {
 
 module.exports = SubscriptionsSubprovider
 
-},{"./json-rpc-engine-middleware":712,"eth-json-rpc-filters/subscriptionManager":401}],716:[function(require,module,exports){
+},{"./json-rpc-engine-middleware":713,"eth-json-rpc-filters/subscriptionManager":401}],717:[function(require,module,exports){
 const getRandomId = require('./random-id.js')
 const extend = require('xtend')
 
@@ -106378,7 +107262,7 @@ function createPayload(data){
   }, data)
 }
 
-},{"./random-id.js":718,"xtend":728}],717:[function(require,module,exports){
+},{"./random-id.js":719,"xtend":729}],718:[function(require,module,exports){
 const createPayload = require('./create-payload.js')
 
 module.exports = estimateGas
@@ -106406,7 +107290,7 @@ function estimateGas(provider, txParams, cb) {
     cb(null, res.result)
   })
 }
-},{"./create-payload.js":716}],718:[function(require,module,exports){
+},{"./create-payload.js":717}],719:[function(require,module,exports){
 module.exports = createRandomId
 
 
@@ -106414,7 +107298,7 @@ function createRandomId () {
   // random id
   return Math.floor(Number.MAX_SAFE_INTEGER * Math.random())
 }
-},{}],719:[function(require,module,exports){
+},{}],720:[function(require,module,exports){
 const stringify = require('json-stable-stringify')
 
 module.exports = {
@@ -106563,7 +107447,7 @@ function cacheTypeForPayload(payload) {
   }
 }
 
-},{"json-stable-stringify":482}],720:[function(require,module,exports){
+},{"json-stable-stringify":482}],721:[function(require,module,exports){
 const EventEmitter = require('events').EventEmitter
 const inherits = require('util').inherits
 
@@ -106598,7 +107482,7 @@ Stoplight.prototype.await = function(fn){
     setTimeout(fn)
   }
 }
-},{"events":436,"util":705}],721:[function(require,module,exports){
+},{"events":436,"util":706}],722:[function(require,module,exports){
 (function (global){(function (){
 'use strict';
 
@@ -106714,7 +107598,7 @@ module.exports = function whichTypedArray(value) {
 };
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"available-typed-arrays":306,"call-bind":322,"call-bound":323,"for-each":438,"get-proto":446,"gopd":448,"has-tostringtag/shams":452}],722:[function(require,module,exports){
+},{"available-typed-arrays":306,"call-bind":322,"call-bound":323,"for-each":438,"get-proto":446,"gopd":448,"has-tostringtag/shams":452}],723:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -106760,7 +107644,7 @@ var SyntaxError = /** @class */ (function (_super) {
 }(Error));
 exports.SyntaxError = SyntaxError;
 
-},{}],723:[function(require,module,exports){
+},{}],724:[function(require,module,exports){
 "use strict";
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
@@ -106770,7 +107654,7 @@ __export(require("./xml-http-request"));
 var xml_http_request_event_target_1 = require("./xml-http-request-event-target");
 exports.XMLHttpRequestEventTarget = xml_http_request_event_target_1.XMLHttpRequestEventTarget;
 
-},{"./xml-http-request":727,"./xml-http-request-event-target":725}],724:[function(require,module,exports){
+},{"./xml-http-request":728,"./xml-http-request-event-target":726}],725:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ProgressEvent = /** @class */ (function () {
@@ -106786,7 +107670,7 @@ var ProgressEvent = /** @class */ (function () {
 }());
 exports.ProgressEvent = ProgressEvent;
 
-},{}],725:[function(require,module,exports){
+},{}],726:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var XMLHttpRequestEventTarget = /** @class */ (function () {
@@ -106828,7 +107712,7 @@ var XMLHttpRequestEventTarget = /** @class */ (function () {
 }());
 exports.XMLHttpRequestEventTarget = XMLHttpRequestEventTarget;
 
-},{}],726:[function(require,module,exports){
+},{}],727:[function(require,module,exports){
 (function (Buffer){(function (){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
@@ -106909,7 +107793,7 @@ var XMLHttpRequestUpload = /** @class */ (function (_super) {
 exports.XMLHttpRequestUpload = XMLHttpRequestUpload;
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"./xml-http-request-event-target":725,"buffer":313}],727:[function(require,module,exports){
+},{"./xml-http-request-event-target":726,"buffer":313}],728:[function(require,module,exports){
 (function (process,Buffer){(function (){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
@@ -107359,7 +108243,7 @@ XMLHttpRequest.prototype.nodejsHttpsAgent = https.globalAgent;
 XMLHttpRequest.prototype.nodejsBaseUrl = null;
 
 }).call(this)}).call(this,require('_process'),require("buffer").Buffer)
-},{"./errors":722,"./progress-event":724,"./xml-http-request-event-target":725,"./xml-http-request-upload":726,"_process":585,"buffer":313,"cookiejar":325,"http":658,"https":467,"os":577,"url":701}],728:[function(require,module,exports){
+},{"./errors":723,"./progress-event":725,"./xml-http-request-event-target":726,"./xml-http-request-upload":727,"_process":585,"buffer":313,"cookiejar":325,"http":658,"https":467,"os":577,"url":702}],729:[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;

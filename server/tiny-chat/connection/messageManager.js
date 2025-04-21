@@ -260,7 +260,7 @@ export default function messageManager(socket, io) {
 
   socket.on('roll-dice', async (data, fn) => {
     if (noDataInfo(data, fn)) return;
-    const { sameSides, canZero, dice, diceSkin, roomId } = data;
+    const { canZero, dice, diceSkin, roomId } = data;
     // Validate input data
     if (
       !Array.isArray(dice) ||
@@ -312,21 +312,12 @@ export default function messageManager(socket, io) {
       total += roll;
     };
 
-    // Check if all dice should have the same number of sides
-    if (sameSides) {
-      const sides = dice[0];
-      if (typeof sides !== 'number' || sides < 2)
-        return fn({ error: true, code: 3, msg: 'Invalid dice of same sides configuration' });
-      // Roll all dice with the same number of sides
-      for (let i = 0; i < dice.length; i++) rollDice(sides);
-    } else {
-      // Roll dice with different number of sides
-      // Iterate over each die and roll with its respective number of sides
-      for (const sides of dice) {
-        if (typeof sides !== 'number' || sides < 2)
-          return fn({ error: true, code: 4, msg: 'Invalid dice of diff sides configuration' });
-        rollDice(sides);
-      }
+    // Roll dice with different number of sides
+    // Iterate over each die and roll with its respective number of sides
+    for (const sides of dice) {
+      if (typeof sides !== 'number' || sides < 0)
+        return fn({ error: true, code: 3, msg: 'Invalid dice of diff sides configuration' });
+      rollDice(sides);
     }
 
     // Complete
