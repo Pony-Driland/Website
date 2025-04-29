@@ -70,7 +70,7 @@
         "sqlite3": "^5.1.7",
         "tiny-ai-api": "^1.1.1",
         "tiny-dices": "^1.0.4",
-        "tiny-essentials": "^1.0.0",
+        "tiny-essentials": "^1.4.0",
         "tippy.js": "^6.3.7",
         "validate-color": "^2.2.4"
     },
