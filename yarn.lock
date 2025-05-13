@@ -9088,10 +9088,10 @@ tiny-dices@^1.0.4:
     tiny-essentials "^1.0.0"
     validate-color "^2.2.4"
 
-tiny-essentials@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.0.0.tgz#7921ca61a26dbc6eb11c2fd6f1fe41335078306b"
-  integrity sha512-DROzaGTrQugWuWQZf2gcNQAdzNY2yGsZuhEZfjEEVC85JzRcfV14mSB1aMIpP7yMCQCyKizg8ALFYGbQoxsA7A==
+tiny-essentials@^1.0.0, tiny-essentials@^1.8.4:
+  version "1.8.4"
+  resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.8.4.tgz#6389e6d28c90b82398cbbdc21925eee4cd03ec13"
+  integrity sha512-F6wsUjJfEttDaqxL449dC4YLNRlFB343mkG2J2NVdTXp46D0rIiOboiSMODS5q+pyaFTzXBpn9hcTb3MzHQW/A==
 
 tippy.js@^6.3.7:
   version "6.3.7"
