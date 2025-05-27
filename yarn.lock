@@ -9071,14 +9071,14 @@ timers-browserify@^1.0.1:
   dependencies:
     process "~0.11.0"
 
-tiny-ai-api@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/tiny-ai-api/-/tiny-ai-api-1.1.1.tgz#70ad8d53f5aa3346c9e39fa332da46fa564b0222"
-  integrity sha512-tZMRKoBa22kRoEIe7OaeJETAB/ZnWjKosrfDq4U1m+UsqxqeQNLQBpDymP/0gf2w8OowG+Eje0r0t6AwVmYi2g==
+tiny-ai-api@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/tiny-ai-api/-/tiny-ai-api-1.1.5.tgz#1bb4d3ca7037ed5294376ffa23466ef63d66218f"
+  integrity sha512-wnVvV3TFbAXHX5YKPfE7XxF7hX95aweaMpSPUhxPafp96njZBh+dGImtrUIrfqgkoVMcB7fsR7u9ZtYJ2d3m3w==
   dependencies:
     jsonrepair "^3.12.0"
     object-hash "^3.0.0"
-    tiny-essentials "^1.0.0"
+    tiny-essentials "^1.3.2"
 
 tiny-dices@^1.0.4:
   version "1.0.4"
@@ -9088,10 +9088,10 @@ tiny-dices@^1.0.4:
     tiny-essentials "^1.0.0"
     validate-color "^2.2.4"
 
-tiny-essentials@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.0.0.tgz#7921ca61a26dbc6eb11c2fd6f1fe41335078306b"
-  integrity sha512-DROzaGTrQugWuWQZf2gcNQAdzNY2yGsZuhEZfjEEVC85JzRcfV14mSB1aMIpP7yMCQCyKizg8ALFYGbQoxsA7A==
+tiny-essentials@^1.0.0, tiny-essentials@^1.3.2:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.10.0.tgz#6e66358a5f8e3877456c52e2694901d01a821b9d"
+  integrity sha512-sqp019XnebOtNwof5J6jY5vPMLIh9YbdrofgCV4pHnZmKfc0jA22u2GxSEN62us+X2fpc7SpyYCDyg69lmwQHQ==
 
 tippy.js@^6.3.7:
   version "6.3.7"
