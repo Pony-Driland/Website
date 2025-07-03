@@ -1,8 +1,8 @@
 import path from 'path';
-import TinySQL from '../TinySQL';
+import PuddySql from 'puddysql';
 import isDebug from '../isDebug';
 
-const db = new TinySQL();
+const db = new PuddySql.Instance();
 
 export const startDatabase = async (appStorage) => {
   const { config, appDir } = appStorage;

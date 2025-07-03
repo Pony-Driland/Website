@@ -1,14 +1,13 @@
-const express = require('express');
 const path = require('path');
+const TinyWebEssentials = require('tiny-server-essentials');
+process.env.NODE_ENV = 'development'
 
-const app = express();
+const http = new TinyWebEssentials.Express();
+http.init();
 const port = 3000;
 
-app.use(express.static(path.join(__dirname, '../docs')));
+http.freeMode(path.join(__dirname, '../docs'));
 
-const antiCors = require('./antiCors');
-antiCors(app);
-
-app.listen(port, () => {
+http.getServer().listen(port, () => {
     console.log(`Test app listening on port ${port}`);
 });
