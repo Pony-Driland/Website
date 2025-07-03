@@ -29,7 +29,7 @@ import validateColor from "validate-color";
 
 // Tiny AI
 import { setTinyGoogleAi, TinyAiInstance } from 'tiny-ai-api';
-import { objType, countObj, shuffleArray, ruleOfThree, toTitleCase, formatDayTimer, addAiMarkerShortcut } from 'tiny-essentials/dist/v1/basics/index.mjs';
+import { objType, countObj, shuffleArray, ruleOfThree, toTitleCase, formatDayTimer, addAiMarkerShortcut } from 'tiny-essentials';
 import TinyDices from 'tiny-dices';
 
 // Imports

@@ -10,7 +10,7 @@ const cssFiles = [
   'bootstrap/dist/css/bootstrap.min.css',
   'photoswipe/dist/photoswipe.css',
   'tiny-dices/dist/TinyDices.min.css',
-  'tiny-essentials/dist/aiMarker.min.css',
+  'tiny-essentials/dist/v1/css/aiMarker.min.css',
 ];
 
 // Async function to read and concatenate the CSS files
