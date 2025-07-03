@@ -9095,15 +9095,14 @@ function resolveName(resolver, nameOrPromise) {
         case 3:
           _context.p = 3;
           _t = _context.v;
-        case 4:
           if (!resolver) {
             logger.throwError("a provider or signer is needed to resolve ENS names", _logger.Logger.errors.UNSUPPORTED_OPERATION, {
               operation: "resolveName"
             });
           }
-          _context.n = 5;
+          _context.n = 4;
           return resolver.resolveName(name);
-        case 5:
+        case 4:
           address = _context.v;
           if (address == null) {
             logger.throwArgumentError("resolver or addr is not configured for ENS name", "name", name);
@@ -40031,6 +40030,8 @@ var WalletConnectProvider = /*#__PURE__*/function (_ProviderEngine) {
               return _context3.a(2, result);
             case 4:
               return _context3.a(2, _this.sendAsyncPromise(payload.method, payload.params));
+            case 5:
+              return _context3.a(2);
           }
         }, _callee3);
       }));
