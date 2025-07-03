@@ -644,15 +644,6 @@ body.thunder-effect #bg-sky .flash {
 }
 
 /* AI Tab */
-body.detect-made-by-ai .made-by-ai {
-  color: yellow;
-  text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
-}
-
 body:not(.can-ai) .nav-ai {
   display: none !important;
 }
