@@ -39,7 +39,7 @@ export default function userManager(socket, io) {
     }
 
     // Disconnect user
-    if (userSockets.has(userId)) userSockets.get(userId).disconnect();
+    if (userSockets.has(userId)) userSockets.get(userId).disconnect(true);
 
     // Add into the ban list
     const bannedUsers = db.getTable('banned');
@@ -109,7 +109,7 @@ export default function userManager(socket, io) {
     for (const userId of userIds) {
       const kickResult = {};
       if (userSockets.has(userId)) {
-        userSockets.get(userId).disconnect();
+        userSockets.get(userId).disconnect(true);
         kickResult.success = true;
       } else {
         kickResult.error = true;

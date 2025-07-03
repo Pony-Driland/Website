@@ -29,10 +29,11 @@ import validateColor from "validate-color";
 
 // Tiny AI
 import { setTinyGoogleAi, TinyAiInstance } from 'tiny-ai-api';
-import { objType, countObj, shuffleArray, ruleOfThree, toTitleCase, formatDayTimer } from 'tiny-essentials';
+import { objType, countObj, shuffleArray, ruleOfThree, toTitleCase, formatDayTimer, addAiMarkerShortcut } from 'tiny-essentials';
 import TinyDices from 'tiny-dices';
 
 // Imports
+addAiMarkerShortcut();
 global.window.TinyDices = TinyDices;
 global.window.setTinyGoogleAi = setTinyGoogleAi;
 global.window.TinyAiInstance = TinyAiInstance;
