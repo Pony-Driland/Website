@@ -56,6 +56,9 @@ But this art is already a concept of how Prisma would be within history.
 <img src="/img/characters/prisma/00015-1607304273.png" height="500">
 
 <img src="/img/characters/prisma/old/ref.jpg" height="500">
+
+The first version of the reference was made using an old Pony Diffusion model mixed with Rayane's original design reference.
+
 <a href="https://tantabus.ai/images/3856" target="_blank">Tantabus Page</a>
 
 ### Extra Image
