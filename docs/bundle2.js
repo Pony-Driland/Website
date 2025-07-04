@@ -39,6 +39,12 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default":
 
 // Tiny AI
 
+var startModules = new _tinyEssentials.TinyDomReadyManager();
+startModules.onReady(function () {
+  return (0, _tinyEssentials.installWindowHiddenScript)();
+});
+startModules.init();
+
 // Imports
 (0, _tinyEssentials.addAiMarkerShortcut)();
 global.window.TinyDices = _tinyDices["default"];
@@ -64,7 +70,7 @@ global.window.WalletConnect = _client["default"];
 global.window.WalletConnectProvider = _web3Provider["default"];
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"@walletconnect/client":187,"@walletconnect/web3-provider":269,"bignumber.js":309,"ethers/lib.esm/index.js":433,"for-promise":440,"jsstore":490,"photoswipe":580,"pizzicato":582,"socket.io-client":638,"tiny-ai-api":688,"tiny-dices":690,"tiny-essentials":715,"tippy.js":724,"validate-color":734}],2:[function(require,module,exports){
+},{"@walletconnect/client":187,"@walletconnect/web3-provider":269,"bignumber.js":309,"ethers/lib.esm/index.js":433,"for-promise":440,"jsstore":490,"photoswipe":580,"pizzicato":582,"socket.io-client":638,"tiny-ai-api":688,"tiny-dices":711,"tiny-essentials":736,"tippy.js":745,"validate-color":755}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30825,7 +30831,7 @@ function padString(str, length, left) {
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"buffer":314,"is-typedarray":477,"typedarray-to-buffer":727}],210:[function(require,module,exports){
+},{"buffer":314,"is-typedarray":477,"typedarray-to-buffer":748}],210:[function(require,module,exports){
 (function (global){(function (){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -30875,7 +30881,7 @@ const tslib_1 = require("tslib");
 tslib_1.__exportStar(require("./crypto"), exports);
 tslib_1.__exportStar(require("./env"), exports);
 
-},{"./crypto":210,"./env":211,"tslib":726}],213:[function(require,module,exports){
+},{"./crypto":210,"./env":211,"tslib":747}],213:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -30982,7 +30988,7 @@ var HTTPConnection = /*#__PURE__*/function (_EventEmitter) {
 }(_eventemitter["default"]);
 var _default = exports["default"] = HTTPConnection;
 
-},{"@walletconnect/utils":262,"eventemitter3":436,"xhr2-cookies":751}],214:[function(require,module,exports){
+},{"@walletconnect/utils":262,"eventemitter3":436,"xhr2-cookies":772}],214:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -40713,7 +40719,7 @@ var WalletConnectProvider = /*#__PURE__*/function (_ProviderEngine) {
 }(ProviderEngine);
 var _default = exports["default"] = WalletConnectProvider;
 
-},{"@walletconnect/client":187,"@walletconnect/http-connection":213,"@walletconnect/qrcode-modal":225,"@walletconnect/utils":262,"web3-provider-engine":735,"web3-provider-engine/subproviders/cache":736,"web3-provider-engine/subproviders/filters":737,"web3-provider-engine/subproviders/fixture":738,"web3-provider-engine/subproviders/hooked-wallet":739,"web3-provider-engine/subproviders/nonce-tracker":741,"web3-provider-engine/subproviders/subscriptions":743}],270:[function(require,module,exports){
+},{"@walletconnect/client":187,"@walletconnect/http-connection":213,"@walletconnect/qrcode-modal":225,"@walletconnect/utils":262,"web3-provider-engine":756,"web3-provider-engine/subproviders/cache":757,"web3-provider-engine/subproviders/filters":758,"web3-provider-engine/subproviders/fixture":759,"web3-provider-engine/subproviders/hooked-wallet":760,"web3-provider-engine/subproviders/nonce-tracker":762,"web3-provider-engine/subproviders/subscriptions":764}],270:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getLocalStorage = exports.getLocalStorageOrThrow = exports.getCrypto = exports.getCryptoOrThrow = exports.getLocation = exports.getLocationOrThrow = exports.getNavigator = exports.getNavigatorOrThrow = exports.getDocument = exports.getDocumentOrThrow = exports.getFromWindowOrThrow = exports.getFromWindow = void 0;
@@ -54303,7 +54309,7 @@ function copy(text, options) {
 
 module.exports = copy;
 
-},{"toggle-selection":725}],328:[function(require,module,exports){
+},{"toggle-selection":746}],328:[function(require,module,exports){
 'use strict'
 var inherits = require('inherits')
 var MD5 = require('md5.js')
@@ -64169,7 +64175,7 @@ function createPayload(data){
   }, data)
 }
 
-},{"json-rpc-random-id":482,"xtend":756}],408:[function(require,module,exports){
+},{"json-rpc-random-id":482,"xtend":777}],408:[function(require,module,exports){
 const ethUtil = require('ethereumjs-util')
 const ethAbi = require('ethereumjs-abi')
 
@@ -73413,7 +73419,7 @@ function validateParams (params) {
   return params
 }
 
-},{"http":665,"url":729}],469:[function(require,module,exports){
+},{"http":665,"url":750}],469:[function(require,module,exports){
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
@@ -73802,7 +73808,7 @@ module.exports = function isTypedArray(value) {
   return !!whichTypedArray(value);
 };
 
-},{"which-typed-array":749}],477:[function(require,module,exports){
+},{"which-typed-array":770}],477:[function(require,module,exports){
 module.exports      = isTypedArray
 isTypedArray.strict = isStrictTypedArray
 isTypedArray.loose  = isLooseTypedArray
@@ -78751,7 +78757,7 @@ Writable.prototype._destroy = function (err, cb) {
   cb(err);
 };
 }).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../errors":497,"./_stream_duplex":498,"./internal/streams/destroy":505,"./internal/streams/state":509,"./internal/streams/stream":510,"_process":587,"buffer":314,"inherits":470,"util-deprecate":730}],503:[function(require,module,exports){
+},{"../errors":497,"./_stream_duplex":498,"./internal/streams/destroy":505,"./internal/streams/state":509,"./internal/streams/stream":510,"_process":587,"buffer":314,"inherits":470,"util-deprecate":751}],503:[function(require,module,exports){
 (function (process){(function (){
 'use strict';
 
@@ -80573,7 +80579,7 @@ arguments[4][500][0].apply(exports,arguments)
 arguments[4][501][0].apply(exports,arguments)
 },{"../errors":552,"./_stream_duplex":553,"dup":501,"inherits":470}],557:[function(require,module,exports){
 arguments[4][502][0].apply(exports,arguments)
-},{"../errors":552,"./_stream_duplex":553,"./internal/streams/destroy":560,"./internal/streams/state":564,"./internal/streams/stream":565,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":730}],558:[function(require,module,exports){
+},{"../errors":552,"./_stream_duplex":553,"./internal/streams/destroy":560,"./internal/streams/state":564,"./internal/streams/stream":565,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":751}],558:[function(require,module,exports){
 arguments[4][503][0].apply(exports,arguments)
 },{"./end-of-stream":561,"_process":587,"dup":503}],559:[function(require,module,exports){
 arguments[4][504][0].apply(exports,arguments)
@@ -91430,7 +91436,7 @@ arguments[4][500][0].apply(exports,arguments)
 arguments[4][501][0].apply(exports,arguments)
 },{"../errors":598,"./_stream_duplex":599,"dup":501,"inherits":470}],603:[function(require,module,exports){
 arguments[4][502][0].apply(exports,arguments)
-},{"../errors":598,"./_stream_duplex":599,"./internal/streams/destroy":606,"./internal/streams/state":610,"./internal/streams/stream":611,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":730}],604:[function(require,module,exports){
+},{"../errors":598,"./_stream_duplex":599,"./internal/streams/destroy":606,"./internal/streams/state":610,"./internal/streams/stream":611,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":751}],604:[function(require,module,exports){
 arguments[4][503][0].apply(exports,arguments)
 },{"./end-of-stream":607,"_process":587,"dup":503}],605:[function(require,module,exports){
 arguments[4][504][0].apply(exports,arguments)
@@ -91860,7 +91866,7 @@ function arrayClone(arr, n) {
   return copy;
 }
 
-},{"events/":437,"util":733}],618:[function(require,module,exports){
+},{"events/":437,"util":754}],618:[function(require,module,exports){
 'use strict';
 
 var callBound = require('call-bound');
@@ -96592,7 +96598,7 @@ arguments[4][500][0].apply(exports,arguments)
 arguments[4][501][0].apply(exports,arguments)
 },{"../errors":650,"./_stream_duplex":651,"dup":501,"inherits":470}],655:[function(require,module,exports){
 arguments[4][502][0].apply(exports,arguments)
-},{"../errors":650,"./_stream_duplex":651,"./internal/streams/destroy":658,"./internal/streams/state":662,"./internal/streams/stream":663,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":730}],656:[function(require,module,exports){
+},{"../errors":650,"./_stream_duplex":651,"./internal/streams/destroy":658,"./internal/streams/state":662,"./internal/streams/stream":663,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":751}],656:[function(require,module,exports){
 arguments[4][503][0].apply(exports,arguments)
 },{"./end-of-stream":659,"_process":587,"dup":503}],657:[function(require,module,exports){
 arguments[4][504][0].apply(exports,arguments)
@@ -96698,7 +96704,7 @@ http.METHODS = [
 	'UNSUBSCRIBE'
 ]
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./lib/request":667,"./lib/response":668,"builtin-status-codes":316,"url":729,"xtend":756}],666:[function(require,module,exports){
+},{"./lib/request":667,"./lib/response":668,"builtin-status-codes":316,"url":750,"xtend":777}],666:[function(require,module,exports){
 (function (global){(function (){
 exports.fetch = isFunction(global.fetch) && isFunction(global.ReadableStream)
 
@@ -97344,7 +97350,7 @@ arguments[4][500][0].apply(exports,arguments)
 arguments[4][501][0].apply(exports,arguments)
 },{"../errors":669,"./_stream_duplex":670,"dup":501,"inherits":470}],674:[function(require,module,exports){
 arguments[4][502][0].apply(exports,arguments)
-},{"../errors":669,"./_stream_duplex":670,"./internal/streams/destroy":677,"./internal/streams/state":681,"./internal/streams/stream":682,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":730}],675:[function(require,module,exports){
+},{"../errors":669,"./_stream_duplex":670,"./internal/streams/destroy":677,"./internal/streams/state":681,"./internal/streams/stream":682,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":751}],675:[function(require,module,exports){
 arguments[4][503][0].apply(exports,arguments)
 },{"./end-of-stream":678,"_process":587,"dup":503}],676:[function(require,module,exports){
 arguments[4][504][0].apply(exports,arguments)
@@ -99182,7 +99188,7 @@ function _capitalizeFirstLetter(str) {
 }
 var _default = exports["default"] = TinyAiInstance;
 
-},{"events":437,"object-hash":571,"tiny-essentials":715}],688:[function(require,module,exports){
+},{"events":437,"object-hash":571,"tiny-essentials":702}],688:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -100112,909 +100118,6 @@ var TinyGoogleAi = exports.TinyGoogleAi = /*#__PURE__*/function (_TinyAiInstance
 },{"../TinyAiInstance.mjs":687,"jsonrepair":487}],690:[function(require,module,exports){
 "use strict";
 
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-var _tinyEssentials = require("tiny-essentials");
-var _validateColor = _interopRequireDefault(require("validate-color"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
-function _toArray(r) { return _arrayWithHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
-function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function _classPrivateMethodInitSpec(e, a) { _checkPrivateRedeclaration(e, a), a.add(e); }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
-function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
-function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
-function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
-function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
-/**
- * TinyDices - JavaScript class for rendering animated 3D dice with HTML/CSS.
- *
- * Created by: Yasmin Seidel (JasminDreasond)
- * Co-developed with: ChatGPT (OpenAI) as coding assistant
- *
- * Features:
- * - Roll any number of dice
- * - Supports custom max values per die
- * - Optional spinning animation (infinite or ending)
- * - Dynamic cube generation and animation
- * - Option to include zero in rolls (canZero)
- *
- * Usage:
- * const container = document.getElementById('myDice');
- * const dice = new TinyDices(container);
- *
- * dice.roll('7,7,7');                    // Rolls 3d6
- * dice.roll('6,12,20');                 // Rolls d6, d12, and d20
- * dice.roll([10, 10], false, true);     // Rolls 2d10 with infinite spin
- * dice.roll([10, 10], true);            // Rolls 2d10 starting from 0
- * dice.roll([4, 8, 6], true, true);     // Rolls d4, d8, and d6 from 0 with infinite spin
- *
- * Customization:
- * dice.setBgSkin('gray');                // Sets background skin to gray
- * dice.setTextSkin('red');               // Sets text skin to red
- * dice.setBorderSkin('2px solid black'); // Sets border skin to black
- *
- * dice.getBgSkin();                       // Gets current or default background skin
- * dice.getTextSkin();                     // Gets current or default text skin
- * dice.getBorderSkin();                   // Gets current or default border skin
- */
-var _elements = /*#__PURE__*/new WeakMap();
-var _cubeId = /*#__PURE__*/new WeakMap();
-var _destroyed = /*#__PURE__*/new WeakMap();
-var _defaultBgSkin = /*#__PURE__*/new WeakMap();
-var _defaultBorderSkin = /*#__PURE__*/new WeakMap();
-var _defaultSelectionTextSkin = /*#__PURE__*/new WeakMap();
-var _defaultSelectionBgSkin = /*#__PURE__*/new WeakMap();
-var _defaultTextSkin = /*#__PURE__*/new WeakMap();
-var _selectionBgSkin = /*#__PURE__*/new WeakMap();
-var _selectionTextSkin = /*#__PURE__*/new WeakMap();
-var _bgSkin = /*#__PURE__*/new WeakMap();
-var _bgImg = /*#__PURE__*/new WeakMap();
-var _textSkin = /*#__PURE__*/new WeakMap();
-var _borderSkin = /*#__PURE__*/new WeakMap();
-var _diceBase = /*#__PURE__*/new WeakMap();
-var _createCube = /*#__PURE__*/new WeakMap();
-var _TinyDices_brand = /*#__PURE__*/new WeakSet();
-var TinyDices = /*#__PURE__*/function () {
-  /**
-   * Creates a new TinyDices instance attached to a specified HTML element.
-   *
-   * @param {HTMLElement} diceBase - The HTML container element where the dice will be rendered.
-   * @param {(result: number, max: number, canZero?: boolean, rollInfinity?: boolean) => CubeResult} [createCubeScript=null]
-   *        - Optional function to override the internal cube creation logic.
-   *          If provided, it will be used instead of the built-in method.
-   *
-   *          The function should accept the following parameters:
-   *            - result {number} - The main value to appear on the front face of the die.
-   *            - max {number} - The maximum value allowed for a face of the die.
-   *            - canZero {boolean} [optional] - If true, faces can include the number 0.
-   *            - rollInfinity {boolean} [optional] - If true, the die spins infinitely.
-   *
-   *          And return:
-   *            - {HTMLElement} cube - The DOM element representing the dice cube.
-   *            - {number[]} sequence - An array containing all the face values of the die.
-   *
-   *
-   * When implementing a custom dice creation logic, you can use the following internal methods:
-   *
-   * @function tinyDice.addElement
-   * Adds a structured dice object to the internal list for tracking and future cleanup.
-   * This method expects an object with `faces`, `container`, and `wrapper` properties.
-   *
-   * @function tinyDice.rollNumber(max: number, canZero: boolean): number
-   * Generates a random number based on the maximum value and zero allowance.
-   * Useful when assigning values to non-front faces of the die.
-   *
-   * @function tinyDice.updateDiceFaceSkin(face: HTMLElement): void
-   * Applies the dice face style or skin to a given face element.
-   * This is usually a visual effect or texture that the user can define.
-   *
-   * @function tinyDice.addCubeId(): number
-   * Returns a unique identifier for each die. This value is typically used to set the `z-index`
-   * of the container, so that new dice appear above older ones.
-   *
-   *
-   */
-  function TinyDices(diceBase, createCubeScript) {
-    _classCallCheck(this, TinyDices);
-    /**
-     * Internal helper to check if the dice base element is a valid HTMLElement.
-     *
-     * @returns {boolean} - True if #diceBase is a valid HTMLElement.
-     */
-    _classPrivateMethodInitSpec(this, _TinyDices_brand);
-    /**
-     * @typedef {Object} DiceElement
-     * @property {HTMLElement[]} faces - An array of six face elements.
-     * @property {HTMLElement|null} container - The outer wrapper element.
-     * @property {HTMLElement|null} wrapper - The rotating inner cube element.
-     */
-    /**
-     * @typedef {Object} CubeResult
-     * @property {HTMLDivElement} cube - The DOM element representing the cube container.
-     * @property {number[]} sequence - The final sequence of values shown on each face.
-     */
-    /**
-     * Stores all current dice elements created by the instance.
-     *
-     * Each element follows the `DiceElement` structure, containing cube faces,
-     * its container, and the cube wrapper for rotation.
-     *
-     * @type {DiceElement[]}
-     */
-    _classPrivateFieldInitSpec(this, _elements, []);
-    _classPrivateFieldInitSpec(this, _cubeId, 0);
-    // used for incremental z-index to avoid overlapping issues
-    _classPrivateFieldInitSpec(this, _destroyed, false);
-    /** @type {string|null} */_classPrivateFieldInitSpec(this, _defaultBgSkin, 'linear-gradient(135deg, #ff3399, #33ccff)');
-    /** @type {string|null} */_classPrivateFieldInitSpec(this, _defaultBorderSkin, '2px solid rgba(255, 255, 255, 0.2)');
-    /** @type {string|null} */_classPrivateFieldInitSpec(this, _defaultSelectionTextSkin, '#FFF');
-    /** @type {string|null} */_classPrivateFieldInitSpec(this, _defaultSelectionBgSkin, '#000');
-    /** @type {string|null} */_classPrivateFieldInitSpec(this, _defaultTextSkin, 'white');
-    /** @type {string|null} */_classPrivateFieldInitSpec(this, _selectionBgSkin, null);
-    /** @type {string|null} */_classPrivateFieldInitSpec(this, _selectionTextSkin, null);
-    /** @type {string|null} */_classPrivateFieldInitSpec(this, _bgSkin, null);
-    /** @type {string|null} */_classPrivateFieldInitSpec(this, _bgImg, null);
-    /** @type {string|null} */_classPrivateFieldInitSpec(this, _textSkin, null);
-    /** @type {string|null} */_classPrivateFieldInitSpec(this, _borderSkin, null);
-    /** @type {HTMLElement|null} */_classPrivateFieldInitSpec(this, _diceBase, null);
-    /** @type {HTMLElement|null} */
-    _defineProperty(this, "diceArea", null);
-    /** @type {HTMLElement|null} */
-    _defineProperty(this, "container", null);
-    /**
-     * Creates a cube DOM element with animated faces and randomized values.
-     *
-     * @param {number} result - The main value to appear on the front face.
-     * @param {number} max - The maximum possible value for the die.
-     * @param {boolean} [rollInfinity=false] - If true, the cube will spin infinitely.
-     * @returns {CubeResult} - The cube element and an array of all face values.
-     */
-    _classPrivateFieldInitSpec(this, _createCube, void 0);
-    if (typeof createCubeScript === 'function') _classPrivateFieldSet(_createCube, this, createCubeScript);else _assertClassBrand(_TinyDices_brand, this, _insertCreateCube).call(this);
-    if (typeof HTMLElement !== 'undefined' && diceBase instanceof HTMLElement) {
-      _classPrivateFieldSet(_diceBase, this, diceBase);
-      _classPrivateFieldGet(_diceBase, this).classList.add('tiny-dices-body');
-      this.diceArea = document.createElement('div');
-      this.diceArea.classList.add('dice-area');
-      _classPrivateFieldGet(_diceBase, this).appendChild(this.diceArea);
-    }
-  }
-  return _createClass(TinyDices, [{
-    key: "existsHtml",
-    value:
-    /**
-     * Checks if the internal HTML structure (dice base container) still exists in the DOM.
-     *
-     * Useful to verify if the TinyDices component is still rendered and operational.
-     *
-     * @returns {boolean} - Returns `true` if the HTML elements exist, otherwise `false`.
-     */
-    function existsHtml() {
-      return _assertClassBrand(_TinyDices_brand, this, _existsHtml).call(this);
-    }
-    /**
-     * Increments and returns the current cube ID.
-     *
-     * This ID is used to set a unique z-index for each die,
-     * ensuring that newer dice appear above older ones in the stack.
-     *
-     * @returns {number} The current cube ID before incrementing.
-     */
-  }, {
-    key: "addCubeId",
-    value: function addCubeId() {
-      var _this$cubeId, _this$cubeId2;
-      return _classPrivateFieldSet(_cubeId, this, (_this$cubeId = _classPrivateFieldGet(_cubeId, this), _this$cubeId2 = _this$cubeId++, _this$cubeId)), _this$cubeId2;
-    }
-    /**
-     * Validates and stores a new dice element into the internal list.
-     *
-     * This method ensures that the given object has the correct structure
-     * before appending it to the internal array of rendered dice elements.
-     *
-     * @param {DiceElement} item - The dice element object to validate and store.
-     * @returns {boolean} `true` if the item was valid and added; otherwise, `false`.
-     */
-  }, {
-    key: "addElement",
-    value:
-    /**
-     * Adds a new dice element to the internal storage.
-     *
-     * This is the public wrapper for the internal method `#addElement`.
-     * It validates the structure of the dice element before adding.
-     *
-     * @param {DiceElement} item
-     *        - The dice element object to add. It must contain:
-     *          - `faces`: an array of six face elements,
-     *          - `container`: the outer wrapper element,
-     *          - `wrapper`: the rotating inner cube element.
-     *
-     * @returns {boolean} `true` if the element was valid and added, otherwise `false`.
-     */
-    function addElement(item) {
-      return _assertClassBrand(_TinyDices_brand, this, _addElement).call(this, item);
-    }
-    /**
-     * Validates a background-image value restricted to safe data:image URLs only.
-     *
-     * @param {string} value - The CSS background-image value.
-     * @returns {boolean}
-     */
-  }, {
-    key: "setBgImg",
-    value:
-    /**
-     * Sets the background image using a `data:` URL or, optionally, a standard image URL if forced.
-     *
-     * For security reasons, only `data:` URLs are accepted by default to avoid external resource injection.
-     * You can override this restriction using the `forceUnsafe` flag, but this is discouraged unless trusted.
-     *
-     * @param {string|null} value - The background-image URL (must be a `data:` image by default).
-     * @param {boolean} [forceUnsafe=false] - Allows setting non-data URLs if true (use with caution).
-     */
-    function setBgImg(value) {
-      var forceUnsafe = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-      _classPrivateFieldSet(_bgImg, this, typeof value === 'string' && (forceUnsafe || _assertClassBrand(_TinyDices_brand, this, _isValidDataImage).call(this, value)) ? value : null);
-    }
-    /**
-     * Returns the currently set background image if valid, or null.
-     *
-     * @returns {string|null} - The current background-image value (data:image URL) or null if none is set.
-     */
-  }, {
-    key: "getBgImg",
-    value: function getBgImg() {
-      return _classPrivateFieldGet(_bgImg, this) || null;
-    }
-    /**
-     * Sets the background skin style if it's a valid CSS color or linear-gradient.
-     * Prevents injection of unsafe or malformed styles.
-     *
-     * @param {string} skin - A valid CSS color string or gradient.
-     */
-  }, {
-    key: "setBgSkin",
-    value: function setBgSkin(skin) {
-      if (typeof skin !== 'string') {
-        _classPrivateFieldSet(_bgSkin, this, null);
-        return;
-      }
-      var trimmed = skin.trim();
-      var isGradient = _assertClassBrand(_TinyDices_brand, this, _isValidLinearGradient).call(this, trimmed);
-      var isColor = (0, _validateColor["default"])(trimmed);
-      _classPrivateFieldSet(_bgSkin, this, isGradient || isColor ? trimmed : null);
-    }
-    /**
-     * Gets the currently applied background skin.
-     * @returns {string|null} The current background skin, or the default if not set.
-     */
-  }, {
-    key: "getBgSkin",
-    value: function getBgSkin() {
-      return _classPrivateFieldGet(_bgSkin, this) || _classPrivateFieldGet(_defaultBgSkin, this);
-    }
-    /**
-     * Sets the text skin (style) of the dice numbers.
-     * @param {string|null} skin - The skin name to apply to the text. Pass null or non-string to reset to default.
-     */
-  }, {
-    key: "setTextSkin",
-    value: function setTextSkin(skin) {
-      _classPrivateFieldSet(_textSkin, this, typeof skin === 'string' && (0, _validateColor["default"])(skin) ? skin : null);
-    }
-    /**
-     * Gets the currently applied text skin.
-     * @returns {string|null} The current text skin, or the default if not set.
-     */
-  }, {
-    key: "getTextSkin",
-    value: function getTextSkin() {
-      return _classPrivateFieldGet(_textSkin, this) || _classPrivateFieldGet(_defaultTextSkin, this);
-    }
-    /**
-     * Sets the border skin (style) of the dice edges.
-     * @param {string|null} skin - The skin name to apply to the border. Pass null or non-string to reset to default.
-     */
-  }, {
-    key: "setBorderSkin",
-    value: function setBorderSkin(skin) {
-      _classPrivateFieldSet(_borderSkin, this, typeof skin === 'string' && _assertClassBrand(_TinyDices_brand, this, _isValidCssBorder).call(this, skin) ? skin : null);
-    }
-    /**
-     * Gets the currently applied border skin.
-     * @returns {string|null} The current border skin, or the default if not set.
-     */
-  }, {
-    key: "getBorderSkin",
-    value: function getBorderSkin() {
-      return _classPrivateFieldGet(_borderSkin, this) || _classPrivateFieldGet(_defaultBorderSkin, this);
-    }
-    /**
-     * Sets the background skin for selected dice.
-     * Accepts valid CSS color strings or `linear-gradient(...)`.
-     * Invalid values reset the skin to `null`.
-     *
-     * @param {string} skin - The CSS background to apply when a die is selected.
-     */
-  }, {
-    key: "setSelectionBgSkin",
-    value: function setSelectionBgSkin(skin) {
-      if (typeof skin !== 'string') {
-        _classPrivateFieldSet(_selectionBgSkin, this, null);
-        return;
-      }
-      var trimmed = skin.trim();
-      var isGradient = _assertClassBrand(_TinyDices_brand, this, _isValidLinearGradient).call(this, trimmed);
-      var isColor = (0, _validateColor["default"])(trimmed);
-      _classPrivateFieldSet(_selectionBgSkin, this, isGradient || isColor ? trimmed : null);
-    }
-    /**
-     * Gets the background skin used for selected dice.
-     * Returns the custom value if set; otherwise, returns the default.
-     *
-     * @returns {string|null} The current background skin for selected dice.
-     */
-  }, {
-    key: "getSelectionBgSkin",
-    value: function getSelectionBgSkin() {
-      return _classPrivateFieldGet(_selectionBgSkin, this) || _classPrivateFieldGet(_defaultSelectionBgSkin, this);
-    }
-    /**
-     * Sets the text color for selected dice.
-     * Only valid CSS color values are accepted.
-     * Invalid inputs will reset the color to `null`.
-     *
-     * @param {string} skin - The text color for selected dice.
-     */
-  }, {
-    key: "setSelectionTextSkin",
-    value: function setSelectionTextSkin(skin) {
-      _classPrivateFieldSet(_selectionTextSkin, this, typeof skin === 'string' && (0, _validateColor["default"])(skin) ? skin : null);
-    }
-    /**
-     * Gets the text color used for selected dice.
-     * Returns the custom value if set; otherwise, returns the default.
-     *
-     * @returns {string|null} The current text color for selected dice.
-     */
-  }, {
-    key: "getSelectionTextSkin",
-    value: function getSelectionTextSkin() {
-      return _classPrivateFieldGet(_selectionTextSkin, this) || _classPrivateFieldGet(_defaultSelectionTextSkin, this);
-    }
-    /**
-     * Applies the current visual skin to a specific dice face element.
-     * This includes background color, text color, border style, and optionally
-     * a `background-image` if set via `setBgImg`.
-     *
-     * @param {HTMLElement} face - The HTML element representing a dice face.
-     */
-  }, {
-    key: "updateDiceFaceSkin",
-    value:
-    /**
-     * Updates the visual skin or style of a single dice face element.
-     *
-     * This is a public wrapper around the internal method `#updateDiceFaceSkin`,
-     * allowing external calls to apply the dice face style dynamically.
-     *
-     * @param {HTMLElement} face - The DOM element representing a single face of the die.
-     * @returns {void}
-     */
-    function updateDiceFaceSkin(face) {
-      return _assertClassBrand(_TinyDices_brand, this, _updateDiceFaceSkin).call(this, face);
-    }
-    /**
-     * Updates the visual skin of all dice face elements currently rendered.
-     * Iterates through each dice in `this.#elements` and applies the active
-     * background, text color, border, and background image styles using `#updateDiceFaceSkin`.
-     *
-     */
-  }, {
-    key: "updateDicesSkin",
-    value: function updateDicesSkin() {
-      for (var index in _classPrivateFieldGet(_elements, this)) this.updateDiceSkin(index);
-    }
-    /**
-     * Updates the visual skin of a specific die by index.
-     * Applies current background color, text color, border style, and background image
-     * to all face elements of the selected die using `#updateDiceFaceSkin`.
-     *
-     * @param {number|string} index - The index of the die to update.
-     * @throws {Error} If the index is not a valid number or string convertible to number.
-     *
-     * @returns {boolean} Returns `true` if the die was found and updated; otherwise `false`.
-     */
-  }, {
-    key: "updateDiceSkin",
-    value: function updateDiceSkin(index) {
-      var parsedIndex = typeof index === 'string' ? parseInt(index) : typeof index === 'number' ? index : -1;
-      if (Number.isNaN(parsedIndex)) throw new Error('updateDiceSkin: index must be a number or a numeric string.');
-      var element = _classPrivateFieldGet(_elements, this)[parsedIndex];
-      if (element) {
-        for (var index2 in element.faces) _assertClassBrand(_TinyDices_brand, this, _updateDiceFaceSkin).call(this, element.faces[index2]);
-        return true;
-      } else return false;
-    }
-    /**
-     * Generates a random integer between 1 and max (inclusive).
-     * If `canZero` is true, the range becomes 0 to max (inclusive).
-     *
-     * @param {number} max - The maximum value for the roll (inclusive).
-     * @param {boolean} [canZero=false] - Whether the result can include 0.
-     * @returns {number} A random integer between 1 and max, or 0 and max if `canZero` is true. Returns 0 if max <= 0.
-     */
-  }, {
-    key: "rollNumber",
-    value:
-    /**
-     * Generates a random integer between a lower bound and a maximum value.
-     *
-     * This is a public wrapper for the internal method `#rollNumber`, which handles
-     * dice-style number generation, optionally allowing zero as a result.
-     *
-     * @param {number} [max=0] - The maximum value (inclusive upper bound if `canZero` is true).
-     * @param {boolean} [canZero=false] - If true, the roll can return 0 (or a range starting from 0).
-     * @returns {number} A pseudo-random integer within the expected range.
-     *
-     * - If `canZero` is false: returns a number from 1 to `max`.
-     * - If `canZero` is true: returns a number from 0 to `max`.
-     * - If `max <= 0`: always returns 0.
-     */
-    function rollNumber() {
-      var max = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-      var canZero = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-      return _assertClassBrand(_TinyDices_brand, this, _rollNumber).call(this, max, canZero);
-    }
-    /**
-     * Parses input parameters to determine the dice configuration.
-     *
-     * @param {string|Array<number>} perDieValues - Optional: a comma-separated string or array of individual max values.
-     * @returns {number[]} - Parsed dice configuration.
-     */
-  }, {
-    key: "parseRollConfig",
-    value: function parseRollConfig() {
-      var perDieValues = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-      // Get per die data
-      return typeof perDieValues === 'string' && perDieValues.length > 0 ? perDieValues.trim().split(',').map(function (raw) {
-        var val = 0;
-        try {
-          val = parseInt(raw.trim(), 10);
-        } catch (_unused) {
-          val = 0;
-        }
-        if (typeof val === 'number' && !Number.isNaN(val) && Number.isFinite(val) && val > -1) return val;
-        return -1;
-      }) : Array.isArray(perDieValues) ? perDieValues : [];
-    }
-    /**
-     * Inserts a single 3D die into the DOM with animation.
-     *
-     * @param {number} result - The value displayed on the front face of the die.
-     * @param {number} max - The maximum value for the die (used to generate other random faces).
-     * @param {boolean} [canZero=false] - Whether 0 is a valid face value.
-     * @param {boolean} [rollInfinity=false] - Whether the die should spin indefinitely.
-     *
-     * @throws {Error} If `this.diceArea` is not a valid HTMLElement.
-     * @throws {Error} If `this.#createCube` is not a function.
-     * @throws {Error} If cube creation fails or returns an invalid sequence.
-     * @returns {number[]} - An array representing the values on all six faces of the cube.
-     */
-  }, {
-    key: "insertDiceElement",
-    value: function insertDiceElement(result, max, canZero, rollInfinity) {
-      if (typeof HTMLElement === 'undefined' || !(this.diceArea instanceof HTMLElement)) throw new Error('insertDiceElement: this.diceArea is not a valid HTMLElement.');
-      if (typeof _classPrivateFieldGet(_createCube, this) !== 'function') throw new Error('insertDiceElement: this.#createCube is not a valid function.');
-      var _classPrivateFieldGet2 = _classPrivateFieldGet(_createCube, this).call(this, result, max, canZero, rollInfinity),
-        cube = _classPrivateFieldGet2.cube,
-        sequence = _classPrivateFieldGet2.sequence;
-      if (!Array.isArray(sequence)) throw new Error('insertDiceElement: invalid cube sequence returned.');
-      this.diceArea.appendChild(cube);
-      return sequence;
-    }
-    /**
-     * Clears all dice cubes from the display area.
-     * Resets internal cube counter to avoid z-index conflicts.
-     */
-  }, {
-    key: "clearDiceArea",
-    value: function clearDiceArea() {
-      _classPrivateFieldSet(_cubeId, this, 0);
-      if (typeof HTMLElement !== 'undefined' && this.diceArea instanceof HTMLElement) this.diceArea.innerHTML = '';
-      _classPrivateFieldSet(_elements, this, []);
-    }
-    /**
-     * Initializes the default cube creation function and assigns it to `this.#createCube`.
-     *
-     * This function builds a customizable cube with 6 animated faces, where each face is
-     * assigned a unique number (avoiding duplicates when possible). The front face shows the
-     * result value passed in, and the others are randomized based on the `max` value.
-     *
-     * @remarks
-     * If `createCubeScript` was not provided to the constructor, this method sets up the default cube generator.
-     *
-     * @returns {void}
-     *
-     * @function
-     */
-  }, {
-    key: "rollDice",
-    value:
-    /**
-     * Inserts a single die cube into the DOM using the specified configuration.
-     *
-     * @param {number} max - Default maximum value for dice (if no individual values are given).
-     * @param {boolean} [canZero=false] - Whether 0 is a valid result.
-     * @param {boolean} [rollInfinity=false] - Whether all dice should spin infinitely.
-     * @returns {{ result: number, sequence?: number[] }} - Array with results and face sequences for each die.
-     */
-    function rollDice(max) {
-      var canZero = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-      var rollInfinity = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : undefined;
-      var cube = {
-        result: _assertClassBrand(_TinyDices_brand, this, _rollNumber).call(this, max, canZero)
-      };
-      if (_assertClassBrand(_TinyDices_brand, this, _existsHtml).call(this))
-        // @ts-ignore
-        cube.sequence = this.insertDiceElement(cube.result, max, canZero, rollInfinity);
-      return cube;
-    }
-    /**
-     * Inserts multiple dice cubes into the DOM using the specified configuration.
-     *
-     * @param {number[]} perDieData - Array of individual max values per die.
-     * @param {boolean} [canZero=false] - Whether 0 is a valid result on any die.
-     * @param {boolean} [rollInfinity=false] - Whether all dice should spin infinitely.
-     * @returns {Array<{ result: number, sequence?: number[] }>} - Array with results and face sequences for each die.
-     */
-  }, {
-    key: "rollDices",
-    value: function rollDices(perDieData) {
-      var canZero = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-      var rollInfinity = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-      var cubes = [];
-      for (var i = 0; i < perDieData.length; i++) {
-        var max = perDieData[i];
-        var cube = {
-          result: _assertClassBrand(_TinyDices_brand, this, _rollNumber).call(this, max, canZero)
-        };
-        if (_assertClassBrand(_TinyDices_brand, this, _existsHtml).call(this))
-          // @ts-ignore
-          cube.sequence = this.insertDiceElement(cube.result, max, canZero, rollInfinity);
-        cubes.push(cube);
-      }
-      return cubes;
-    }
-    /**
-     * Rolls the dice by clearing existing cubes and inserting new ones.
-     *
-     * @param {string|Array<number>} perDieInput - Either a comma-separated string or array of max values per die.
-     * @param {boolean} [canZero=false] - Whether 0 is a valid result.
-     * @param {boolean} [rollInfinity=false] - Whether dice spin infinitely.
-     * @returns {Array<{ result: number, sequence?: number[] }>} - Array with results and face sequences for each die.
-     */
-  }, {
-    key: "roll",
-    value: function roll(perDieInput) {
-      var canZero = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-      var rollInfinity = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-      var perDieData = this.parseRollConfig(perDieInput);
-      this.clearDiceArea();
-      return this.rollDices(perDieData, canZero, rollInfinity);
-    }
-    /**
-     * Checks whether the TinyDices instance has been destroyed.
-     *
-     * @returns {boolean} - Returns `true` if the instance was destroyed, otherwise `false`.
-     *
-     * @example
-     * if (dice.isDestroyed()) {
-     *   console.warn('This instance is no longer usable.');
-     * }
-     */
-  }, {
-    key: "isDestroyed",
-    value: function isDestroyed() {
-      return _classPrivateFieldGet(_destroyed, this);
-    }
-    /**
-     * Completely destroys the TinyDices instance by removing DOM elements and resetting internal state.
-     *
-     * This method:
-     * - Clears all rendered dice.
-     * - Empties the base DOM elements (container, diceBase, diceArea).
-     * - Resets all visual skin configurations.
-     * - Nullifies DOM references.
-     * - Sets an internal flag to block further usage of the instance.
-     *
-     * @example
-     * dice.destroy(); // 💣 Cleans up everything and makes the instance unusable
-     */
-  }, {
-    key: "destroy",
-    value: function destroy() {
-      // Clear any dice already rendered
-      this.clearDiceArea();
-      // Remove container element content (optional: comment if you want to preserve it)
-      if (typeof HTMLElement !== 'undefined') {
-        if (this.container instanceof HTMLElement) this.container.innerHTML = '';
-        if (_classPrivateFieldGet(_diceBase, this) instanceof HTMLElement) _classPrivateFieldGet(_diceBase, this).innerHTML = '';
-        if (this.diceArea instanceof HTMLElement) this.diceArea.innerHTML = '';
-      }
-      // Optionally, unset the container reference
-      _classPrivateFieldSet(_diceBase, this, null);
-      this.diceArea = null;
-      this.container = null;
-      // Reset any styles or configs (if you store them in other properties, reset them here)
-      _classPrivateFieldSet(_defaultBgSkin, this, null);
-      _classPrivateFieldSet(_defaultBorderSkin, this, null);
-      _classPrivateFieldSet(_defaultSelectionTextSkin, this, null);
-      _classPrivateFieldSet(_defaultSelectionBgSkin, this, null);
-      _classPrivateFieldSet(_defaultTextSkin, this, null);
-      _classPrivateFieldSet(_selectionBgSkin, this, null);
-      _classPrivateFieldSet(_selectionTextSkin, this, null);
-      _classPrivateFieldSet(_bgSkin, this, null);
-      _classPrivateFieldSet(_bgImg, this, null);
-      _classPrivateFieldSet(_textSkin, this, null);
-      _classPrivateFieldSet(_borderSkin, this, null);
-      // Optionally, mark as destroyed to prevent further use
-      _classPrivateFieldSet(_destroyed, this, true);
-    }
-  }]);
-}();
-function _existsHtml() {
-  return typeof HTMLElement !== 'undefined' && _classPrivateFieldGet(_diceBase, this) instanceof HTMLElement ? true : false;
-}
-function _addElement(item) {
-  if ((0, _tinyEssentials.objType)(item, 'object') && Array.isArray(item.faces) && typeof HTMLElement !== 'undefined' && item.container instanceof HTMLElement && item.wrapper instanceof HTMLElement) {
-    _classPrivateFieldGet(_elements, this).push(item);
-    return true;
-  }
-  return false;
-}
-function _isValidDataImage(value) {
-  if (typeof value !== 'string') return false;
-  var normalized = value.trim();
-  // Only allow data:image/... base64 or URL-encoded images
-  var dataUrlPattern = /^data:image\/(png|jpeg|jpg|gif|webp);base64,[a-z0-9+\/=]+$/i;
-  return dataUrlPattern.test(normalized);
-}
-/**
- * Validates a linear-gradient string to prevent unsafe or malformed styles.
- *
- * @param {string} value - The CSS gradient string.
- * @returns {boolean}
- */
-function _isValidLinearGradient(value) {
-  if (typeof value !== 'string') return false;
-  var normalized = value.trim().toLowerCase();
-  // Must start with 'linear-gradient(' and end with ')'
-  if (!normalized.startsWith('linear-gradient(') || !normalized.endsWith(')')) {
-    return false;
-  }
-  // Block unsafe patterns
-  var unsafePattern = /(url\s*\(|expression\s*\(|javascript:|<|>|data:)/i;
-  if (unsafePattern.test(value)) {
-    return false;
-  }
-  // Extract content inside the parentheses
-  var content = value.slice(value.indexOf('(') + 1, -1).trim();
-  if (!content) return false;
-  // Safe split by commas outside of parentheses
-  var parts = [];
-  var buffer = '';
-  var depth = 0;
-  var _iterator = _createForOfIteratorHelper(content),
-    _step;
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var _char = _step.value;
-      if (_char === '(') depth++;
-      if (_char === ')') depth--;
-      if (_char === ',' && depth === 0) {
-        parts.push(buffer.trim());
-        buffer = '';
-      } else {
-        buffer += _char;
-      }
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
-  if (buffer.trim()) parts.push(buffer.trim());
-  if (parts.length < 1) return false; // needs at least one component
-  var colorCount = 0;
-  for (var i = 0; i < parts.length; i++) {
-    var part = parts[i];
-    // First item can optionally be a direction or angle
-    if (i === 0 && /^(to\s+\w+|\d+deg|[+-]?\d+rad|[+-]?\d+turn)$/i.test(part)) {
-      continue;
-    }
-    if ((0, _validateColor["default"])(part.trim())) {
-      colorCount++;
-    } else {
-      // Extract possible color value before any stop (e.g. "red 20%" → "red")
-      var colorCandidate = part.trim().split(/\s+/)[0];
-      if ((0, _validateColor["default"])(colorCandidate)) {
-        colorCount++;
-      } else {
-        return false; // invalid color
-      }
-    }
-  }
-  // Must have at least 1 valid color and no more than 50
-  return colorCount >= 1 && colorCount <= 50;
-}
-/**
- * Validates a CSS border string like '1px solid red' or '2px dashed linear-gradient(...)'.
- *
- * @param {string} value - The CSS border string.
- * @returns {boolean}
- */
-function _isValidCssBorder(value) {
-  if (typeof value !== 'string') return false;
-  var parts = value.trim().split(/\s+/);
-  if (parts.length < 3) return false;
-  var _parts = _toArray(parts),
-    width = _parts[0],
-    style = _parts[1],
-    colorParts = _parts.slice(2);
-  var color = colorParts.join(' ');
-  // Validate width (basic check for length units)
-  var isValidWidth = /^(\d+(\.\d+)?)(px|em|rem|%)$/.test(width);
-  if (!isValidWidth) return false;
-  // Validate border style
-  var validStyles = ['none', 'solid', 'dashed', 'dotted', 'double', 'groove', 'ridge', 'inset', 'outset', 'hidden'];
-  if (!validStyles.includes(style)) return false;
-  // Validate color (either direct or linear-gradient)
-  return (0, _validateColor["default"])(color) || _assertClassBrand(_TinyDices_brand, this, _isValidLinearGradient).call(this, color);
-}
-function _updateDiceFaceSkin(face) {
-  // Skin
-  face.style.background = this.getBgSkin() || '';
-  face.style.color = this.getTextSkin() || '';
-  face.style.border = this.getBorderSkin() || '';
-  face.style.setProperty('--dice-selection-bg', this.getSelectionBgSkin());
-  face.style.setProperty('--dice-selection-text', this.getSelectionTextSkin());
-  // Background image
-  var bgImg = this.getBgImg();
-  if (bgImg) {
-    face.style.backgroundImage = "url(\"".concat(bgImg, "\")");
-    face.style.backgroundPosition = 'center';
-    face.style.backgroundSize = '100%';
-    face.style.backgroundRepeat = 'repeat';
-  }
-}
-function _rollNumber() {
-  var max = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-  var canZero = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-  // Throw an error if the value is not a valid number
-  if (typeof max !== 'number' || Number.isNaN(max)) {
-    throw new Error("Invalid die max value: ".concat(max, ". All values must be positive numbers."));
-  }
-  // Valid number
-  if (max > 0) {
-    var maxValue = max;
-    var finalValue = 1;
-    if (canZero) {
-      maxValue++;
-      finalValue--;
-    }
-    return Math.floor(Math.random() * maxValue) + finalValue;
-  } else return 0;
-}
-function _insertCreateCube() {
-  var tinyDice = this;
-  /** @type {function(number, number, boolean=, boolean=): CubeResult} */
-  _classPrivateFieldSet(_createCube, this, function (result, max) {
-    var canZero = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-    var rollInfinity = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-    // Container
-    /** @type {DiceElement} */
-    var diceElements = {
-      faces: [],
-      container: null,
-      wrapper: null
-    };
-    var container = document.createElement('div');
-    container.className = 'dice-container';
-    container.style.zIndex = String(1000 + tinyDice.addCubeId()); // each dice with higher priority
-    diceElements.container = container;
-    // Wrapper
-    var wrapper = document.createElement('div');
-    wrapper.className = "cube-wrapper".concat(rollInfinity ? " spin-infinite" : '');
-    diceElements.wrapper = wrapper;
-    // Get rot
-    var rotX = 360 * (3 + Math.floor(Math.random() * 5));
-    var rotY = 360 * (3 + Math.floor(Math.random() * 5));
-    // Wrapper animation
-    wrapper.style.animation = "tinyDiceSpinCubeCustom 2s ease-in-out forwards";
-    wrapper.style.setProperty('--rotX', "".concat(rotX, "deg"));
-    wrapper.style.setProperty('--rotY', "".concat(rotY, "deg"));
-    // Create the cube
-    var sequence = [];
-    var countSeq = new Set();
-    var min = !canZero ? 0 : -1;
-    for (var i = 1; i <= 6; i++) {
-      // Element
-      var face = document.createElement('div');
-      face.className = "face face".concat(i);
-      _assertClassBrand(_TinyDices_brand, tinyDice, _updateDiceFaceSkin).call(tinyDice, face);
-      // Ignored results
-      if (i !== 1) {
-        var roll = void 0;
-        // Normal max
-        if (max > min) {
-          var extraValue = min;
-          var usingExtra = false;
-          do {
-            roll = !usingExtra ? _assertClassBrand(_TinyDices_brand, tinyDice, _rollNumber).call(tinyDice, max, canZero) : extraValue;
-            if (usingExtra || sequence.length >= max) {
-              if (extraValue >= max) {
-                extraValue = min;
-                countSeq.clear();
-              }
-              extraValue++;
-              usingExtra = true;
-            }
-          } while (countSeq.has(roll));
-        }
-        // 0 or negative max
-        else roll = max;
-        // Insert sequence
-        if (roll < 1) roll = 0;
-        sequence.push(roll);
-        countSeq.add(roll);
-        face.textContent = String(roll);
-      }
-      // The result!
-      else {
-        face.textContent = String(result);
-        sequence.push(result);
-        countSeq.add(result);
-      }
-      // Side added
-      wrapper.appendChild(face);
-      diceElements.faces.push(face);
-    }
-    // Stop cube animation
-    if (!rollInfinity) {
-      setTimeout(function () {
-        if (wrapper) wrapper.classList.add('stopped');
-      }, 2000);
-    }
-    // Insert the cube
-    container.appendChild(wrapper);
-    _assertClassBrand(_TinyDices_brand, tinyDice, _addElement).call(tinyDice, diceElements);
-    return {
-      cube: container,
-      sequence: sequence
-    };
-  });
-}
-var _default = exports["default"] = TinyDices;
-
-},{"tiny-essentials":699,"validate-color":734}],691:[function(require,module,exports){
-"use strict";
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -101047,7 +100150,7 @@ function arraySortPositions(item) {
   }
 }
 
-},{}],692:[function(require,module,exports){
+},{}],691:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -101105,7 +100208,7 @@ function _asyncReplace() {
   return _asyncReplace.apply(this, arguments);
 }
 
-},{}],693:[function(require,module,exports){
+},{}],692:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -101364,7 +100467,7 @@ var TinyLevelUp = /*#__PURE__*/function () {
 }();
 var _default = exports["default"] = TinyLevelUp;
 
-},{}],694:[function(require,module,exports){
+},{}],693:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -101397,7 +100500,7 @@ function shuffleArray(items) {
   return items;
 }
 
-},{}],695:[function(require,module,exports){
+},{}],694:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -101571,2085 +100674,7 @@ function formatDayTimer(seconds) {
   return formatCustomTimer(seconds, 'days', '{days}d {hours}:{minutes}:{seconds}');
 }
 
-},{}],696:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.checkObj = checkObj;
-exports.cloneObjTypeOrder = cloneObjTypeOrder;
-exports.countObj = countObj;
-exports.extendObjType = extendObjType;
-exports.getCheckObj = getCheckObj;
-exports.isJsonObject = isJsonObject;
-exports.objType = objType;
-exports.reorderObjTypeOrder = reorderObjTypeOrder;
-var _buffer = require("buffer");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-var isBrowser = typeof window !== 'undefined' && typeof window.document !== 'undefined';
-/**
- * An object containing type validation functions and their evaluation order.
- *
- * Each item in `typeValidator.items` is a function that receives any value
- * and returns a boolean indicating whether the value matches the corresponding type.
- *
- * The `order` array defines the priority in which types should be checked,
- * which can be useful for functions that infer types in a consistent manner.
- *
- */
-var typeValidator = {
-  items: {},
-  /**
-   * Evaluation order of the type checkers.
-   * @type {string[]}
-   * */
-  order: []
-};
-/** @typedef {Object.<string, (val: any) => *>} ExtendObjType */
-/** @typedef {Array<[string, (val: any) => *]>} ExtendObjTypeArray */
-/**
- * Adds new type checkers to the typeValidator without overwriting existing ones.
- *
- * Accepts either an object with named functions or an array of [key, fn] arrays.
- * If no index is provided, the type is inserted just before 'object' (if it exists), or at the end.
- *
- * @param {ExtendObjType|ExtendObjTypeArray} newItems
- *        - New type validators to be added.
- * @param {number} [index] - Optional. Position at which to insert each new type. Ignored if the type already exists.
- * @returns {string[]} - A list of successfully added type names.
- *
- * @example
- * extendObjType({
- *   htmlElement2: val => typeof HTMLElement !== 'undefined' && val instanceof HTMLElement
- * });
- *
- * @example
- * extendObjType([
- *   ['alpha', val => typeof val === 'string'],
- *   ['beta', val => Array.isArray(val)]
- * ]);
- */
-function extendObjType(newItems, index) {
-  var added = [];
-  var entries = Array.isArray(newItems) ? newItems : Object.entries(newItems);
-  var _iterator = _createForOfIteratorHelper(entries),
-    _step;
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var _step$value = _slicedToArray(_step.value, 2),
-        key = _step$value[0],
-        fn = _step$value[1];
-      if (!typeValidator.items.hasOwnProperty(key)) {
-        // @ts-ignore
-        typeValidator.items[key] = fn;
-        var insertAt = typeof index === 'number' ? index : -1; // Default to -1 if index isn't provided
-        // Default to before 'object', or to the end
-        if (insertAt === -1) {
-          var objectIndex = typeValidator.order.indexOf('object');
-          insertAt = objectIndex > -1 ? objectIndex : typeValidator.order.length;
-        }
-        // Ensure insertAt is a valid number and not out of bounds
-        insertAt = Math.min(Math.max(0, insertAt), typeValidator.order.length);
-        typeValidator.order.splice(insertAt, 0, key);
-        added.push(key);
-      }
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
-  return added;
-}
-/**
- * Reorders the typeValidator.order array according to a custom new order.
- * All values in the new order must already exist in the current order.
- * The function does not mutate the original array structure directly.
- *
- * @param {string[]} newOrder - The new order of type names.
- * @returns {boolean} - Returns true if the reorder was successful, false if invalid keys were found.
- *
- * @example
- * reorderObjTypeOrder([
- *   'string', 'number', 'array', 'object'
- * ]);
- */
-function reorderObjTypeOrder(newOrder) {
-  var currentOrder = _toConsumableArray(typeValidator.order); // shallow clone
-  // All keys in newOrder must exist in currentOrder
-  var isValid = newOrder.every(function (type) {
-    return currentOrder.includes(type);
-  });
-  if (!isValid) return false;
-  // Reassign only if valid
-  typeValidator.order = newOrder.slice(); // assign shallow copy
-  return true;
-}
-/**
- * Returns a cloned version of the `typeValidator.order` array.
- * The cloned array will not be affected by future changes to the original `order`.
- *
- * @returns {string[]} - A new array with the same values as `typeValidator.order`.
- */
-function cloneObjTypeOrder() {
-  return _toConsumableArray(typeValidator.order); // Creates a shallow copy of the array
-}
-/**
- * Returns the detected type name of a given value based on predefined type validators.
- *
- * This function uses `getType` with a predefined `typeValidator` to determine or compare types safely.
- * in the specified `typeValidator.order`. The first matching type is returned.
- *
- * If `val` is `null`, it immediately returns `'null'`.
- * If no match is found, it returns `'unknown'`.
- *
- * @param {any} val - The value whose type should be determined.
- * @returns {string} - The type name of the value (e.g., "array", "date", "map"), or "unknown" if no match is found.
- *
- * @example
- * getType([]); // "array"
- * getType(null); // "null"
- * getType(new Set()); // "set"
- * getType(() => {}); // "unknown"
- */
-var getType = function getType(val) {
-  if (val === null) return 'null';
-  // @ts-ignore
-  var _iterator2 = _createForOfIteratorHelper(typeValidator.order),
-    _step2;
-  try {
-    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-      var name = _step2.value;
-      // @ts-ignore
-      if (typeof typeValidator.items[name] !== 'function' || typeValidator.items[name](val)) return name;
-    }
-  } catch (err) {
-    _iterator2.e(err);
-  } finally {
-    _iterator2.f();
-  }
-  return 'unknown';
-};
-/**
- * Checks the type of a given object or returns its type as a string.
- *
- * @param {*} obj - The object to check or identify.
- * @param {string} [type] - Optional. If provided, checks whether the object matches this type (e.g., "object", "array", "string").
- * @returns {boolean|string|null} - Returns `true` if the type matches, `false` if not,
- *                                   the type string if no type is provided, or `null` if the object is `undefined`.
- *
- * @example
- * objType([], 'array'); // true
- * objType({}, 'object'); // true
- * objType('hello'); // "string"
- * objType(undefined); // null
- */
-function objType(obj, type) {
-  if (typeof obj === 'undefined') return null;
-  var result = getType(obj);
-  if (typeof type === 'string') return result === type.toLowerCase();
-  return result;
-}
-/**
- * Checks the type of a given object and returns the validation value if a known type is detected.
- *
- * @param {*} obj - The object to check or identify.
- * @returns {{ valid:*; type: string | null }} - Returns the type result.
- */
-function checkObj(obj) {
-  /** @type {{ valid:*; type: string | null }} */
-  var data = {
-    valid: null,
-    type: null
-  };
-  var _iterator3 = _createForOfIteratorHelper(typeValidator.order),
-    _step3;
-  try {
-    for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-      var name = _step3.value;
-      // @ts-ignore
-      if (typeof typeValidator.items[name] === 'function') {
-        // @ts-ignore
-        var result = typeValidator.items[name](obj);
-        if (result) {
-          data.valid = result;
-          data.type = name;
-          break;
-        }
-      }
-    }
-  } catch (err) {
-    _iterator3.e(err);
-  } finally {
-    _iterator3.f();
-  }
-  return data;
-}
-/**
- * Creates a clone of the functions from the `typeValidator` object.
- * It returns a new object where the keys are the same and the values are the cloned functions.
- */
-function getCheckObj() {
-  return Object.fromEntries(Object.entries(typeValidator.items).map(function (_ref) {
-    var _ref2 = _slicedToArray(_ref, 2),
-      key = _ref2[0],
-      fn = _ref2[1];
-    return [key, fn];
-  }));
-}
-/**
- * Counts the number of elements in an array or the number of properties in an object.
- *
- * @param {Array<*>|Record<string|number, any>} obj - The array or object to count.
- * @returns {number} - The count of items (array elements or object keys), or `0` if the input is neither an array nor an object.
- *
- * @example
- * countObj([1, 2, 3]); // 3
- * countObj({ a: 1, b: 2 }); // 2
- * countObj('not an object'); // 0
- */
-function countObj(obj) {
-  // Is Array
-  if (Array.isArray(obj)) return obj.length;
-  // Object
-  if (objType(obj, 'object')) return Object.keys(obj).length;
-  // Nothing
-  return 0;
-}
-/**
- * Determines whether a given value is a pure JSON object (plain object).
- *
- * A pure object satisfies the following:
- * - It is not null.
- * - Its type is "object".
- * - Its internal [[Class]] is "[object Object]".
- * - It is not an instance of built-in types like Array, Date, Map, Set, etc.
- *
- * This function is useful for strict data validation when you want to ensure
- * a value is a clean JSON-compatible object, free of class instances or special types.
- *
- * @param {unknown} value - The value to test.
- * @returns {value is Record<string | number | symbol, unknown>} Returns true if the value is a pure object.
- */
-function isJsonObject(value) {
-  if (value === null || _typeof(value) !== 'object') return false;
-  if (Array.isArray(value)) return false;
-  if (Object.prototype.toString.call(value) !== '[object Object]') return false;
-  return true;
-}
-// Insert obj types
-extendObjType([['undefined', /** @param {*} val @returns {val is undefined} */
-function (val) {
-  return typeof val === 'undefined';
-}], ['null', /** @param {*} val @returns {val is null} */
-function (val) {
-  return val === null;
-}], ['boolean', /** @param {*} val @returns {val is boolean} */
-function (val) {
-  return typeof val === 'boolean';
-}], ['number', /** @param {*} val @returns {val is number} */
-function (val) {
-  return typeof val === 'number' && !Number.isNaN(val);
-}], ['bigint', /** @param {*} val @returns {val is bigint} */
-function (val) {
-  return typeof val === 'bigint';
-}], ['string', /** @param {*} val @returns {val is string} */
-function (val) {
-  return typeof val === 'string';
-}], ['symbol', /** @param {*} val @returns {val is symbol} */
-function (val) {
-  return _typeof(val) === 'symbol';
-}], ['function', /** @param {*} val @returns {val is Function} */
-function (val) {
-  return typeof val === 'function';
-}], ['array', /** @param {*} val @returns {val is any[]} */
-function (val) {
-  return Array.isArray(val);
-}]]);
-if (!isBrowser) {
-  extendObjType([['buffer', /** @param {*} val @returns {val is Buffer} */
-  function (val) {
-    return typeof _buffer.Buffer !== 'undefined' && _buffer.Buffer.isBuffer(val);
-  }]]);
-}
-if (isBrowser) {
-  extendObjType([['file', /** @param {*} val @returns {val is File} */
-  function (val) {
-    return typeof File !== 'undefined' && val instanceof File;
-  }]]);
-}
-extendObjType([['date', /** @param {*} val @returns {val is Date} */
-function (val) {
-  return val instanceof Date;
-}], ['regexp', /** @param {*} val @returns {val is RegExp} */
-function (val) {
-  return val instanceof RegExp;
-}], ['map', /** @param {*} val @returns {val is Map<unknown, unknown>} */
-function (val) {
-  return val instanceof Map;
-}], ['set', /** @param {*} val @returns {val is Set<unknown>} */
-function (val) {
-  return val instanceof Set;
-}], ['weakmap', /** @param {*} val @returns {val is WeakMap<unknown, unknown>} */
-function (val) {
-  return val instanceof WeakMap;
-}], ['weakset', /** @param {*} val @returns {val is WeakSet<unknown>} */
-function (val) {
-  return val instanceof WeakSet;
-}], ['promise', /** @param {*} val @returns {val is Promise<unknown>} */
-function (val) {
-  return val instanceof Promise;
-}]]);
-if (isBrowser) {
-  extendObjType([['htmlelement', /** @param {*} val @returns {val is HTMLElement} */
-  function (val) {
-    return typeof HTMLElement !== 'undefined' && val instanceof HTMLElement;
-  }]]);
-}
-extendObjType([['object', /** @param {*} val @returns {val is Record<string | number | symbol, unknown>} */
-function (val) {
-  return isJsonObject(val);
-}]]);
-
-},{"buffer":314}],697:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.formatBytes = formatBytes;
-exports.getAge = getAge;
-exports.getSimplePerc = getSimplePerc;
-exports.ruleOfThree = ruleOfThree;
-/**
- * Executes a Rule of Three calculation.
- *
- * @param {number} val1 - The first reference value (numerator in direct proportion, denominator in inverse).
- * @param {number} val2 - The second reference value (denominator in direct proportion, numerator in inverse).
- * @param {number} val3 - The third value (numerator in direct proportion, denominator in inverse).
- * @param {boolean} [inverse] - Whether the calculation should use inverse proportion (true for inverse, false for direct).
- * @returns {number} The result of the Rule of Three operation.
- *
- * Rule of Three Formula (Direct Proportion):
- *      val1 / val2 = val3 / result
- *
- * For Inverse Proportion:
- *      val1 / val3 = val2 / result
- *
- * Visual Representation:
- *
- * For Direct Proportion:
- *      val1      val2
- *      -----  =  ------
- *      val3      result
- *
- * For Inverse Proportion:
- *      val1      val2
- *      -----  =  ------
- *      val3      result
- *
- * @example
- * // Direct proportion:
- * ruleOfThree.execute(2, 6, 3, false); // → 9
- *
- * @example
- * // Inverse proportion:
- * ruleOfThree.execute(2, 6, 3, true); // → 4
- */
-function ruleOfThree(val1, val2, val3) {
-  var inverse = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-  return inverse ? Number(val1 * val2) / val3 : Number(val3 * val2) / val1;
-}
-/**
- * Calculates a percentage of a given base value.
- * @param {number} price - The base value.
- * @param {number} percentage - The percentage to apply.
- * @returns {number} The result of the percentage calculation.
- *
- * @example
- * getSimplePerc(200, 15); // 30
- */
-function getSimplePerc(price, percentage) {
-  return price * (percentage / 100);
-}
-/**
- * Calculates the age based on the given date.
- *
- * @param {number|string|Date} timeData - The birth date (can be a timestamp, ISO string, or Date object).
- * @param {Date|null} [now=null] - The Date object representing the current date. Defaults to the current date and time if not provided.
- * @returns {number|null} The age in years, or null if `timeData` is not provided or invalid.
- */
-function getAge() {
-  var timeData = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-  var now = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-  if (typeof timeData !== 'undefined' && timeData !== null && timeData !== 0) {
-    var birthDate = new Date(timeData);
-    if (Number.isNaN(birthDate.getTime())) return null;
-    var currentDate = now instanceof Date ? now : new Date();
-    var age = currentDate.getFullYear() - birthDate.getFullYear();
-    var currentMonth = currentDate.getMonth();
-    var birthMonth = birthDate.getMonth();
-    var currentDay = currentDate.getDate();
-    var birthDay = birthDate.getDate();
-    // Adjust if birthday hasn't occurred yet this year
-    if (currentMonth < birthMonth || currentMonth === birthMonth && currentDay < birthDay) age--;
-    return Math.abs(age);
-  }
-  return null;
-}
-/**
- * @typedef {Object} FormattedByteResult
- * @property {string|null} unit - The resulting unit (e.g., 'MB', 'GB') or null if input is invalid.
- * @property {number|null} value - The numerical value in the chosen unit, or null if input is invalid.
- */
-/**
- * Converts a byte value into a human-readable format with unit and value separated.
- *
- * @param {number} bytes - The number of bytes to format. Must be a non-negative number.
- * @param {number|null} [decimals=null] - The number of decimal places to include in the result. Defaults to null. If negative, it will be treated as 0. If null, no rounding is applied.
- * @param {string|null} [maxUnit=null] - Optional unit limit. If provided, restricts conversion to this unit at most (e.g., 'MB' prevents conversion to 'GB' or higher). Must be one of: 'Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'.
- * @returns {FormattedByteResult} An object with the converted value and its corresponding unit. Returns nulls if input is invalid.
- *
- * @example
- * formatBytes(123456789);
- * // → { unit: 'MB', value: 117.74 }
- *
- * @example
- * formatBytes(1073741824, 2, 'MB');
- * // → { unit: 'MB', value: 1024 }
- */
-function formatBytes(bytes) {
-  var decimals = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-  var maxUnit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-  if (typeof bytes !== 'number' || bytes < 0) return {
-    unit: null,
-    value: null
-  };
-  if (bytes === 0) return {
-    unit: 'Bytes',
-    value: 0
-  };
-  var k = 1024;
-  var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-  var maxIndex = maxUnit && sizes.includes(maxUnit) ? sizes.indexOf(maxUnit) : sizes.length - 1;
-  var i = Math.min(Math.floor(Math.log(bytes) / Math.log(k)), maxIndex);
-  var value = bytes / Math.pow(k, i);
-  if (decimals !== null) {
-    var dm = decimals < 0 ? 0 : decimals;
-    value = parseFloat(value.toFixed(dm));
-  }
-  var unit = sizes[i];
-  return {
-    unit: unit,
-    value: value
-  };
-}
-
-},{}],698:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.addAiMarkerShortcut = addAiMarkerShortcut;
-exports.toTitleCase = toTitleCase;
-exports.toTitleCaseLowerFirst = toTitleCaseLowerFirst;
-/**
- * Converts a string to title case where the first letter of each word is capitalized.
- * All other letters are converted to lowercase.
- *
- * Example: "hello world" -> "Hello World"
- *
- * @param {string} str - The string to be converted to title case.
- * @returns {string} The string converted to title case.
- */
-function toTitleCase(str) {
-  return str.replace(/\w\S*/g, function (txt) {
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  });
-}
-/**
- * Converts a string to title case where the first letter of each word is capitalized,
- * but the first letter of the entire string is left lowercase.
- *
- * Example: "hello world" -> "hello World"
- *
- * @param {string} str - The string to be converted to title case with the first letter in lowercase.
- * @returns {string} The string converted to title case with the first letter in lowercase.
- */
-function toTitleCaseLowerFirst(str) {
-  var titleCased = str.replace(/\w\S*/g, function (txt) {
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  });
-  return titleCased.charAt(0).toLowerCase() + titleCased.slice(1);
-}
-/**
- * Enables a keyboard shortcut to toggle a CSS class on the document body.
- *
- * This function listens for a specific key combination: `Ctrl + Alt + [key]`.
- * When triggered, it prevents the default behavior and toggles the
- * `detect-made-by-ai` class on the `<body>`, which can be used to apply visual
- * indicators or filters on AI-generated content.
- *
- * If executed outside of a browser environment (e.g., in Node.js), the function logs an error and exits.
- * If the `<body>` is not available at the moment the shortcut is triggered, a warning is logged.
- *
- * @param {string} [key='a'] - The lowercase character key to be used in combination with Ctrl and Alt.
- */
-function addAiMarkerShortcut() {
-  var key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'a';
-  if (typeof HTMLElement === 'undefined') {
-    console.error('[AiMarkerShortcut] Environment does not support the DOM. This function must be run in a browser.');
-    return;
-  }
-  document.addEventListener('keydown', function (event) {
-    if (event.ctrlKey && event.altKey && event.key.toLowerCase() === key) {
-      event.preventDefault(); // Prevent any default behavior
-      if (!document.body) {
-        console.warn('[AiMarkerShortcut] <body> element not found. Cannot toggle class. Ensure the DOM is fully loaded when using the shortcut.');
-        return;
-      }
-      document.body.classList.toggle('detect-made-by-ai');
-    }
-  });
-}
-/*
-import { useEffect } from "react";
-
-function KeyPressHandler() {
-    useEffect(() => {
-        const handleKeyDown = (event) => {
-            if (event.ctrlKey && event.altKey && event.key.toLowerCase() === "a") {
-                event.preventDefault();
-                document.body.classList.toggle("detect-made-by-ai");
-            }
-        };
-        
-        document.addEventListener("keydown", handleKeyDown);
-        return () => {
-            document.removeEventListener("keydown", handleKeyDown);
-        };
-    }, []);
-
-    return null;
-}
-
-export default KeyPressHandler;
-*/
-
-},{}],699:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "ColorSafeStringify", {
-  enumerable: true,
-  get: function get() {
-    return _ColorSafeStringify["default"];
-  }
-});
-Object.defineProperty(exports, "TinyLevelUp", {
-  enumerable: true,
-  get: function get() {
-    return _userLevel["default"];
-  }
-});
-Object.defineProperty(exports, "TinyPromiseQueue", {
-  enumerable: true,
-  get: function get() {
-    return _TinyPromiseQueue["default"];
-  }
-});
-Object.defineProperty(exports, "TinyRateLimiter", {
-  enumerable: true,
-  get: function get() {
-    return _TinyRateLimiter["default"];
-  }
-});
-Object.defineProperty(exports, "addAiMarkerShortcut", {
-  enumerable: true,
-  get: function get() {
-    return _text.addAiMarkerShortcut;
-  }
-});
-Object.defineProperty(exports, "arraySortPositions", {
-  enumerable: true,
-  get: function get() {
-    return _arraySortPositions["default"];
-  }
-});
-Object.defineProperty(exports, "asyncReplace", {
-  enumerable: true,
-  get: function get() {
-    return _replaceAsync["default"];
-  }
-});
-Object.defineProperty(exports, "checkObj", {
-  enumerable: true,
-  get: function get() {
-    return _objFilter.checkObj;
-  }
-});
-Object.defineProperty(exports, "cloneObjTypeOrder", {
-  enumerable: true,
-  get: function get() {
-    return _objFilter.cloneObjTypeOrder;
-  }
-});
-Object.defineProperty(exports, "countObj", {
-  enumerable: true,
-  get: function get() {
-    return _objFilter.countObj;
-  }
-});
-Object.defineProperty(exports, "extendObjType", {
-  enumerable: true,
-  get: function get() {
-    return _objFilter.extendObjType;
-  }
-});
-Object.defineProperty(exports, "formatBytes", {
-  enumerable: true,
-  get: function get() {
-    return _simpleMath.formatBytes;
-  }
-});
-Object.defineProperty(exports, "formatCustomTimer", {
-  enumerable: true,
-  get: function get() {
-    return _clock.formatCustomTimer;
-  }
-});
-Object.defineProperty(exports, "formatDayTimer", {
-  enumerable: true,
-  get: function get() {
-    return _clock.formatDayTimer;
-  }
-});
-Object.defineProperty(exports, "formatTimer", {
-  enumerable: true,
-  get: function get() {
-    return _clock.formatTimer;
-  }
-});
-Object.defineProperty(exports, "getAge", {
-  enumerable: true,
-  get: function get() {
-    return _simpleMath.getAge;
-  }
-});
-Object.defineProperty(exports, "getSimplePerc", {
-  enumerable: true,
-  get: function get() {
-    return _simpleMath.getSimplePerc;
-  }
-});
-Object.defineProperty(exports, "getTimeDuration", {
-  enumerable: true,
-  get: function get() {
-    return _clock.getTimeDuration;
-  }
-});
-Object.defineProperty(exports, "isJsonObject", {
-  enumerable: true,
-  get: function get() {
-    return _objFilter.isJsonObject;
-  }
-});
-Object.defineProperty(exports, "objType", {
-  enumerable: true,
-  get: function get() {
-    return _objFilter.objType;
-  }
-});
-Object.defineProperty(exports, "reorderObjTypeOrder", {
-  enumerable: true,
-  get: function get() {
-    return _objFilter.reorderObjTypeOrder;
-  }
-});
-Object.defineProperty(exports, "ruleOfThree", {
-  enumerable: true,
-  get: function get() {
-    return _simpleMath.ruleOfThree;
-  }
-});
-Object.defineProperty(exports, "shuffleArray", {
-  enumerable: true,
-  get: function get() {
-    return _array.shuffleArray;
-  }
-});
-Object.defineProperty(exports, "toTitleCase", {
-  enumerable: true,
-  get: function get() {
-    return _text.toTitleCase;
-  }
-});
-Object.defineProperty(exports, "toTitleCaseLowerFirst", {
-  enumerable: true,
-  get: function get() {
-    return _text.toTitleCaseLowerFirst;
-  }
-});
-var _replaceAsync = _interopRequireDefault(require("../legacy/libs/replaceAsync.mjs"));
-var _userLevel = _interopRequireDefault(require("../legacy/libs/userLevel.mjs"));
-var _arraySortPositions = _interopRequireDefault(require("../legacy/libs/arraySortPositions.mjs"));
-var _array = require("./basics/array.mjs");
-var _clock = require("./basics/clock.mjs");
-var _objFilter = require("./basics/objFilter.mjs");
-var _simpleMath = require("./basics/simpleMath.mjs");
-var _text = require("./basics/text.mjs");
-var _ColorSafeStringify = _interopRequireDefault(require("./libs/ColorSafeStringify.mjs"));
-var _TinyPromiseQueue = _interopRequireDefault(require("./libs/TinyPromiseQueue.mjs"));
-var _TinyRateLimiter = _interopRequireDefault(require("./libs/TinyRateLimiter.mjs"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
-
-},{"../legacy/libs/arraySortPositions.mjs":691,"../legacy/libs/replaceAsync.mjs":692,"../legacy/libs/userLevel.mjs":693,"./basics/array.mjs":694,"./basics/clock.mjs":695,"./basics/objFilter.mjs":696,"./basics/simpleMath.mjs":697,"./basics/text.mjs":698,"./libs/ColorSafeStringify.mjs":700,"./libs/TinyPromiseQueue.mjs":701,"./libs/TinyRateLimiter.mjs":702}],700:[function(require,module,exports){
-"use strict";
-
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
-function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _classPrivateMethodInitSpec(e, a) { _checkPrivateRedeclaration(e, a), a.add(e); }
-function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
-function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
-function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
-function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
-function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
-var _colors = /*#__PURE__*/new WeakMap();
-var _ColorSafeStringify_brand = /*#__PURE__*/new WeakSet();
-/**
- * @typedef {Record<string, string>} ColorsList
- * Represents a mapping of color keys to ANSI escape codes.
- */
-var ColorSafeStringify = /*#__PURE__*/function () {
-  /**
-   * Constructs a new instance with an optional base preset or custom override.
-   * @param {ColorsList} [defaultColors] - Optional override for the default color scheme.
-   */
-  function ColorSafeStringify() {
-    var defaultColors = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    _classCallCheck(this, ColorSafeStringify);
-    /**
-     * Internal method to apply ANSI color codes to different parts of a JSON string.
-     * @param {string} str - Raw JSON string to be colorized.
-     * @param {ColorsList} colors - ANSI color mapping to be applied to each JSON element type.
-     * @returns {string} Colorized JSON string.
-     */
-    _classPrivateMethodInitSpec(this, _ColorSafeStringify_brand);
-    /**
-     * Currently active color configuration.
-     * @type {ColorsList}
-     */
-    _classPrivateFieldInitSpec(this, _colors, void 0);
-    _classPrivateFieldSet(_colors, this, _objectSpread(_objectSpread({}, _PRESETS._["default"]), defaultColors));
-  }
-  return _createClass(ColorSafeStringify, [{
-    key: "colorize",
-    value:
-    /**
-     * Colorizes a JSON string using the active or optionally overridden color set.
-     * @param {string} json - The JSON string to format.
-     * @param {ColorsList} [customColors] - Optional temporary color override.
-     * @returns {string}
-     */
-    function colorize(json) {
-      var customColors = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      var colors = _objectSpread(_objectSpread({}, _classPrivateFieldGet(_colors, this)), customColors);
-      return _assertClassBrand(_ColorSafeStringify_brand, this, _colorizeJSON).call(this, json, colors);
-    }
-    /**
-     * Returns the currently active color scheme.
-     * @returns {ColorsList}
-     */
-  }, {
-    key: "getColors",
-    value: function getColors() {
-      return _objectSpread({}, _classPrivateFieldGet(_colors, this));
-    }
-    /**
-     * Updates the current color scheme with a partial override.
-     * @param {Partial<ColorsList>} newColors
-     */
-  }, {
-    key: "updateColors",
-    value: function updateColors(newColors) {
-      Object.assign(_classPrivateFieldGet(_colors, this), newColors);
-    }
-    /**
-     * Resets the current color scheme to the default preset.
-     */
-  }, {
-    key: "resetColors",
-    value: function resetColors() {
-      _classPrivateFieldSet(_colors, this, _objectSpread({}, _PRESETS._["default"]));
-    }
-    /**
-     * Loads a color preset by name.
-     * @param {string} presetName - Name of the preset to load.
-     * @throws Will throw if the preset doesn't exist.
-     */
-  }, {
-    key: "loadColorPreset",
-    value: function loadColorPreset(presetName) {
-      var preset = _PRESETS._[presetName];
-      if (!preset) throw new Error("Preset \"".concat(presetName, "\" not found."));
-      _classPrivateFieldSet(_colors, this, _objectSpread({}, preset));
-    }
-    /**
-     * Saves a new custom color preset.
-     * @param {string} name - Name of the new preset.
-     * @param {ColorsList} colors - ANSI color map to save.
-     */
-  }, {
-    key: "saveColorPreset",
-    value: function saveColorPreset(name, colors) {
-      _PRESETS._[name] = _objectSpread({}, colors);
-    }
-    /**
-     * Returns a list of all available color preset names.
-     * @returns {string[]}
-     */
-  }, {
-    key: "getAvailablePresets",
-    value: function getAvailablePresets() {
-      return Object.keys(_PRESETS._);
-    }
-  }]);
-}();
-function _colorizeJSON(str, colors) {
-  /** @type {{ marker: string, key: string }[]} */
-  var keyMatches = [];
-  // Colorize numeric values
-  str = str.replace(/(?<!")\b(-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)\b(?!")/g, "".concat(colors.number, "$1").concat(colors.reset));
-  // Replace keys with temporary markers for later colorization
-  str = str.replace(/"([^"]+)":/g, function (_, key) {
-    var marker = "___KEY".concat(keyMatches.length, "___");
-    keyMatches.push({
-      marker: marker,
-      key: key
-    });
-    return "".concat(marker, ":"); // Keep the colon for valid syntax
-  });
-  // Replace strings and apply specific colors based on their content
-  str = str.replace(/"(?:\\.|[^"\\])*?"/g, function (match) {
-    var val = match.slice(1, -1); // Remove surrounding quotes
-    if (/^(https?|ftp):\/\/[^\s]+$/i.test(val)) {
-      return "".concat(colors.string_url).concat(match).concat(colors.reset);
-    }
-    if (/^(true|false|null)$/.test(val)) {
-      return "".concat(colors.string_bool).concat(match).concat(colors.reset);
-    }
-    if (/^-?\d+(\.\d+)?([eE][+-]?\d+)?$/.test(val)) {
-      return "".concat(colors.string_number).concat(match).concat(colors.reset);
-    }
-    return "".concat(colors.string).concat(match).concat(colors.reset);
-  });
-  // Replace markers with colorized keys
-  for (var _i = 0, _keyMatches = keyMatches; _i < _keyMatches.length; _i++) {
-    var _keyMatches$_i = _keyMatches[_i],
-      marker = _keyMatches$_i.marker,
-      key = _keyMatches$_i.key;
-    var regex = new RegExp(marker, 'g');
-    str = str.replace(regex, "".concat(colors.key, "\"").concat(key, "\"").concat(colors.reset));
-  }
-  // Colorize boolean values
-  str = str.replace(/(?<!")\b(true|false)\b(?!")/g, "".concat(colors["boolean"], "$1").concat(colors.reset));
-  // Colorize null values
-  str = str.replace(/(?<!")\bnull\b(?!")/g, "".concat(colors["null"], "null").concat(colors.reset));
-  // Highlight special placeholder values
-  str = str.replace(/\[Circular\]/g, "".concat(colors.special, "[Circular]").concat(colors.reset));
-  str = str.replace(/\[undefined\]/g, "".concat(colors.special, "[undefined]").concat(colors.reset));
-  // Colorize function string representations
-  str = str.replace(/"function[^]*?[^\\]"/g, "".concat(colors.func, "$&").concat(colors.reset));
-  return str;
-}
-/**
- * Preset collections (internal and user-defined).
- * @type {Record<string, ColorsList>}
- * @static
- */
-var _PRESETS = {
-  _: {
-    "default": {
-      reset: '\x1b[0m',
-      key: '\x1b[36m',
-      // Cyan (object keys)
-      string: '\x1b[32m',
-      // Green (regular strings)
-      string_url: '\x1b[34m',
-      // Blue (URLs)
-      string_bool: '\x1b[35m',
-      // Magenta (boolean/null in string form)
-      string_number: '\x1b[33m',
-      // Yellow (numbers in string form)
-      number: '\x1b[33m',
-      // Yellow (raw numbers)
-      "boolean": '\x1b[35m',
-      // Magenta (true/false)
-      "null": '\x1b[1;30m',
-      // Gray (null)
-      special: '\x1b[31m',
-      // Red (e.g., [Circular], [undefined])
-      func: '\x1b[90m' // Dim (function string representations)
-    },
-    solarized: {
-      reset: '\x1b[0m',
-      key: '\x1b[38;5;37m',
-      string: '\x1b[38;5;136m',
-      string_url: '\x1b[38;5;33m',
-      string_bool: '\x1b[38;5;166m',
-      string_number: '\x1b[38;5;136m',
-      number: '\x1b[38;5;136m',
-      "boolean": '\x1b[38;5;166m',
-      "null": '\x1b[38;5;241m',
-      special: '\x1b[38;5;160m',
-      func: '\x1b[38;5;244m'
-    },
-    monokai: {
-      reset: '\x1b[0m',
-      key: '\x1b[38;5;81m',
-      string: '\x1b[38;5;114m',
-      string_url: '\x1b[38;5;75m',
-      string_bool: '\x1b[38;5;204m',
-      string_number: '\x1b[38;5;221m',
-      number: '\x1b[38;5;221m',
-      "boolean": '\x1b[38;5;204m',
-      "null": '\x1b[38;5;241m',
-      special: '\x1b[38;5;160m',
-      func: '\x1b[38;5;102m'
-    }
-  }
-};
-var _default = exports["default"] = ColorSafeStringify;
-
-},{}],701:[function(require,module,exports){
-"use strict";
-
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
-function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
-function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _classPrivateMethodInitSpec(e, a) { _checkPrivateRedeclaration(e, a), a.add(e); }
-function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
-function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
-function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
-function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
-function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
-var _queue = /*#__PURE__*/new WeakMap();
-var _running = /*#__PURE__*/new WeakMap();
-var _timeouts = /*#__PURE__*/new WeakMap();
-var _blacklist = /*#__PURE__*/new WeakMap();
-var _TinyPromiseQueue_brand = /*#__PURE__*/new WeakSet();
-/**
- * @typedef {Object} QueuedTask
- * @property {(...args: any[]) => Promise<any>|Promise<any>} task - The async task to execute.
- * @property {(value: any) => any} resolve - The resolve function from the Promise.
- * @property {(reason?: any) => any} reject - The reject function from the Promise.
- * @property {string|undefined} [id] - Optional identifier for the task.
- * @property {string|null|undefined} [marker] - Optional marker for the task.
- * @property {number|null|undefined} [delay] - Optional delay (in ms) before the task is executed.
- */
-/**
- * A queue system for managing and executing asynchronous tasks sequentially, one at a time.
- *
- * Tasks can be delayed, reordered, canceled, and processed in strict order. The queue ensures that each task
- * is executed after the previous one finishes, and any task can be skipped or canceled if needed.
- *
- * @class
- */
-var TinyPromiseQueue = /*#__PURE__*/function () {
-  function TinyPromiseQueue() {
-    _classCallCheck(this, TinyPromiseQueue);
-    /**
-     * Processes the a normal task.
-     *
-     * @param {QueuedTask} data
-     *
-     * @returns {Promise<void>}
-     */
-    _classPrivateMethodInitSpec(this, _TinyPromiseQueue_brand);
-    /** @type {QueuedTask[]} */
-    _classPrivateFieldInitSpec(this, _queue, []);
-    _classPrivateFieldInitSpec(this, _running, false);
-    /** @type {Record<string, ReturnType<typeof setTimeout>>} */
-    _classPrivateFieldInitSpec(this, _timeouts, {});
-    /** @type {Set<string>} */
-    _classPrivateFieldInitSpec(this, _blacklist, new Set());
-  }
-  return _createClass(TinyPromiseQueue, [{
-    key: "isRunning",
-    value:
-    /**
-     * Returns whether the queue is currently processing a task.
-     *
-     * @returns {boolean}
-     */
-    function isRunning() {
-      return _classPrivateFieldGet(_running, this);
-    }
-  }, {
-    key: "getIndexById",
-    value:
-    /**
-     * Returns the index of a task by its ID.
-     *
-     * @param {string} id The ID of the task to locate.
-     * @returns {number} The index of the task in the queue, or -1 if not found.
-     */
-    function getIndexById(id) {
-      return _classPrivateFieldGet(_queue, this).findIndex(function (item) {
-        return item.id === id;
-      });
-    }
-    /**
-     * Returns a list of IDs for all tasks currently in the queue.
-     *
-     * @returns {{ index: number, id: string }[]} An array of task IDs currently queued.
-     */
-  }, {
-    key: "getQueuedIds",
-    value: function getQueuedIds() {
-      // @ts-ignore
-      return _classPrivateFieldGet(_queue, this).map(function (item, index) {
-        return {
-          index: index,
-          id: item.id
-        };
-      }).filter(function (entry) {
-        return typeof entry.id === 'string';
-      });
-    }
-    /**
-     * Reorders a task in the queue from one index to another.
-     *
-     * @param {number} fromIndex The current index of the task to move.
-     * @param {number} toIndex The index where the task should be placed.
-     */
-  }, {
-    key: "reorderQueue",
-    value: function reorderQueue(fromIndex, toIndex) {
-      if (typeof fromIndex !== 'number' || typeof toIndex !== 'number' || fromIndex < 0 || toIndex < 0 || fromIndex >= _classPrivateFieldGet(_queue, this).length || toIndex >= _classPrivateFieldGet(_queue, this).length) return;
-      var _classPrivateFieldGet2 = _classPrivateFieldGet(_queue, this).splice(fromIndex, 1),
-        _classPrivateFieldGet3 = _slicedToArray(_classPrivateFieldGet2, 1),
-        item = _classPrivateFieldGet3[0];
-      _classPrivateFieldGet(_queue, this).splice(toIndex, 0, item);
-    }
-    /**
-     * Inserts a point in the queue where subsequent tasks will be grouped and executed together in a Promise.all.
-     * If the queue is currently empty, behaves like a regular promise.
-     *
-     * @param {(...args: any[]) => Promise<any>|Promise<any>} task A function that returns a Promise.
-     * @param {string} [id] Optional ID to identify the task in the queue.
-     * @returns {Promise<any>} A Promise that resolves or rejects with the result of the task once it's processed.
-     * @throws {Error} Throws if param is invalid.
-     */
-  }, {
-    key: "enqueuePoint",
-    value: (function () {
-      var _enqueuePoint = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(task, id) {
-        var _this = this;
-        return _regenerator().w(function (_context) {
-          while (1) switch (_context.n) {
-            case 0:
-              if (!(typeof task !== 'function')) {
-                _context.n = 1;
-                break;
-              }
-              return _context.a(2, Promise.reject(new Error('Task must be a function returning a Promise.')));
-            case 1:
-              if (!(typeof id !== 'undefined' && typeof id !== 'string')) {
-                _context.n = 2;
-                break;
-              }
-              throw new Error('The "id" parameter must be a string.');
-            case 2:
-              if (_classPrivateFieldGet(_running, this)) {
-                _context.n = 3;
-                break;
-              }
-              return _context.a(2, task());
-            case 3:
-              return _context.a(2, new Promise(function (resolve, reject) {
-                _classPrivateFieldGet(_queue, _this).push({
-                  marker: 'POINT_MARKER',
-                  task: task,
-                  resolve: resolve,
-                  reject: reject,
-                  id: id
-                });
-                _assertClassBrand(_TinyPromiseQueue_brand, _this, _processQueue).call(_this);
-              }));
-          }
-        }, _callee, this);
-      }));
-      function enqueuePoint(_x, _x2) {
-        return _enqueuePoint.apply(this, arguments);
-      }
-      return enqueuePoint;
-    }()
-    /**
-     * Adds a new async task to the queue and ensures it runs in order after previous tasks.
-     * Optionally, a delay can be added before the task is executed.
-     *
-     * If the task is canceled before execution, it will be rejected with the message:
-     * "The function was canceled on TinyPromiseQueue."
-     *
-     * @param {(...args: any[]) => Promise<any>|Promise<any>} task A function that returns a Promise to be executed sequentially.
-     * @param {number|null} [delay] Optional delay (in ms) before the task is executed.
-     * @param {string} [id] Optional ID to identify the task in the queue.
-     * @returns {Promise<any>} A Promise that resolves or rejects with the result of the task once it's processed.
-     * @throws {Error} Throws if param is invalid.
-     */
-    )
-  }, {
-    key: "enqueue",
-    value: function enqueue(task, delay, id) {
-      var _this2 = this;
-      if (typeof task !== 'function') return Promise.reject(new Error('Task must be a function returning a Promise.'));
-      if (typeof delay !== 'undefined' && (typeof delay !== 'number' || delay < 0)) return Promise.reject(new Error('Delay must be a positive number or undefined.'));
-      if (typeof id !== 'undefined' && typeof id !== 'string') throw new Error('The "id" parameter must be a string.');
-      return new Promise(function (resolve, reject) {
-        _classPrivateFieldGet(_queue, _this2).push({
-          task: task,
-          resolve: resolve,
-          reject: reject,
-          id: id,
-          delay: delay
-        });
-        _assertClassBrand(_TinyPromiseQueue_brand, _this2, _processQueue).call(_this2);
-      });
-    }
-    /**
-     * Cancels a scheduled delay and removes the task from the queue.
-     * Adds the ID to a blacklist so the task is skipped if already being processed.
-     *
-     * @param {string} id The ID of the task to cancel.
-     * @returns {boolean} True if a delay was cancelled and the task was removed.
-     * @throws {Error} Throws if `id` is not a string.
-     */
-  }, {
-    key: "cancelTask",
-    value: function cancelTask(id) {
-      if (typeof id !== 'string') throw new Error('The "id" parameter must be a string.');
-      var cancelled = false;
-      if (id in _classPrivateFieldGet(_timeouts, this)) {
-        clearTimeout(_classPrivateFieldGet(_timeouts, this)[id]);
-        delete _classPrivateFieldGet(_timeouts, this)[id];
-        cancelled = true;
-      }
-      var index = this.getIndexById(id);
-      if (index !== -1) {
-        var _removed$reject;
-        var _classPrivateFieldGet4 = _classPrivateFieldGet(_queue, this).splice(index, 1),
-          _classPrivateFieldGet5 = _slicedToArray(_classPrivateFieldGet4, 1),
-          removed = _classPrivateFieldGet5[0];
-        removed === null || removed === void 0 || (_removed$reject = removed.reject) === null || _removed$reject === void 0 || _removed$reject.call(removed, new Error('The function was canceled on TinyPromiseQueue.'));
-        cancelled = true;
-      }
-      if (cancelled) _classPrivateFieldGet(_blacklist, this).add(id);
-      return cancelled;
-    }
-  }]);
-}();
-function _normalProcessQueue(_x3) {
-  return _normalProcessQueue2.apply(this, arguments);
-}
-function _normalProcessQueue2() {
-  _normalProcessQueue2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(data) {
-    var _this3 = this;
-    var task, resolve, reject, delay, id, result, _t;
-    return _regenerator().w(function (_context2) {
-      while (1) switch (_context2.n) {
-        case 0:
-          if (!(data && typeof data.task === 'function' && typeof data.resolve === 'function' && typeof data.reject === 'function')) {
-            _context2.n = 7;
-            break;
-          }
-          task = data.task, resolve = data.resolve, reject = data.reject, delay = data.delay, id = data.id;
-          _context2.p = 1;
-          if (!(id && _classPrivateFieldGet(_blacklist, this).has(id))) {
-            _context2.n = 2;
-            break;
-          }
-          reject(new Error('The function was canceled on TinyPromiseQueue.'));
-          _classPrivateFieldGet(_blacklist, this)["delete"](id);
-          _classPrivateFieldSet(_running, this, false);
-          _assertClassBrand(_TinyPromiseQueue_brand, this, _processQueue).call(this);
-          return _context2.a(2);
-        case 2:
-          if (!(delay && id)) {
-            _context2.n = 3;
-            break;
-          }
-          _context2.n = 3;
-          return new Promise(function (resolveDelay) {
-            var timeoutId = setTimeout(function () {
-              delete _classPrivateFieldGet(_timeouts, _this3)[id];
-              resolveDelay(null);
-            }, delay);
-            _classPrivateFieldGet(_timeouts, _this3)[id] = timeoutId;
-          });
-        case 3:
-          _context2.n = 4;
-          return task();
-        case 4:
-          result = _context2.v;
-          resolve(result);
-          _context2.n = 6;
-          break;
-        case 5:
-          _context2.p = 5;
-          _t = _context2.v;
-          reject(_t);
-        case 6:
-          _context2.p = 6;
-          _classPrivateFieldSet(_running, this, false);
-          _assertClassBrand(_TinyPromiseQueue_brand, this, _processQueue).call(this);
-          return _context2.f(6);
-        case 7:
-          return _context2.a(2);
-      }
-    }, _callee2, this, [[1, 5, 6, 7]]);
-  }));
-  return _normalProcessQueue2.apply(this, arguments);
-}
-/**
- * Processes a group task.
- *
- * @returns {Promise<void>}
- */
-function _groupProcessQueue() {
-  return _groupProcessQueue2.apply(this, arguments);
-}
-function _groupProcessQueue2() {
-  _groupProcessQueue2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4() {
-    var _this4 = this;
-    var grouped, _classPrivateFieldGet6;
-    return _regenerator().w(function (_context4) {
-      while (1) switch (_context4.n) {
-        case 0:
-          /** @type {Array<QueuedTask>} */
-          grouped = [];
-          while (_classPrivateFieldGet(_queue, this).length && ((_classPrivateFieldGet6 = _classPrivateFieldGet(_queue, this)[0]) === null || _classPrivateFieldGet6 === void 0 ? void 0 : _classPrivateFieldGet6.marker) === 'POINT_MARKER') {
-            // @ts-ignore
-            grouped.push(_classPrivateFieldGet(_queue, this).shift());
-          }
-          if (!(grouped.length === 0)) {
-            _context4.n = 1;
-            break;
-          }
-          _classPrivateFieldSet(_running, this, false);
-          _assertClassBrand(_TinyPromiseQueue_brand, this, _processQueue).call(this);
-          return _context4.a(2);
-        case 1:
-          _context4.n = 2;
-          return Promise.all(grouped.map(function (_ref) {
-            var task = _ref.task,
-              resolve = _ref.resolve,
-              reject = _ref.reject,
-              id = _ref.id;
-            return new Promise(/*#__PURE__*/function () {
-              var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(pResolve) {
-                return _regenerator().w(function (_context3) {
-                  while (1) switch (_context3.n) {
-                    case 0:
-                      if (!(id && _classPrivateFieldGet(_blacklist, _this4).has(id))) {
-                        _context3.n = 1;
-                        break;
-                      }
-                      _classPrivateFieldGet(_blacklist, _this4)["delete"](id);
-                      reject(new Error('The function was canceled on TinyPromiseQueue.'));
-                      pResolve(true);
-                      return _context3.a(2);
-                    case 1:
-                      _context3.n = 2;
-                      return task().then(resolve)["catch"](reject);
-                    case 2:
-                      pResolve(true);
-                    case 3:
-                      return _context3.a(2);
-                  }
-                }, _callee3);
-              }));
-              return function (_x4) {
-                return _ref2.apply(this, arguments);
-              };
-            }());
-          }));
-        case 2:
-          _classPrivateFieldSet(_running, this, false);
-          _assertClassBrand(_TinyPromiseQueue_brand, this, _processQueue).call(this);
-        case 3:
-          return _context4.a(2);
-      }
-    }, _callee4, this);
-  }));
-  return _groupProcessQueue2.apply(this, arguments);
-}
-/**
- * Processes the next task in the queue if not already running.
- * Ensures tasks are executed in order, one at a time.
- *
- * @returns {Promise<void>}
- */
-function _processQueue() {
-  return _processQueue2.apply(this, arguments);
-}
-function _processQueue2() {
-  _processQueue2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5() {
-    var _classPrivateFieldGet7, _classPrivateFieldGet8;
-    var data;
-    return _regenerator().w(function (_context5) {
-      while (1) switch (_context5.n) {
-        case 0:
-          if (!(_classPrivateFieldGet(_running, this) || _classPrivateFieldGet(_queue, this).length === 0)) {
-            _context5.n = 1;
-            break;
-          }
-          return _context5.a(2);
-        case 1:
-          _classPrivateFieldSet(_running, this, true);
-          if (typeof ((_classPrivateFieldGet7 = _classPrivateFieldGet(_queue, this)[0]) === null || _classPrivateFieldGet7 === void 0 ? void 0 : _classPrivateFieldGet7.marker) !== 'string' || ((_classPrivateFieldGet8 = _classPrivateFieldGet(_queue, this)[0]) === null || _classPrivateFieldGet8 === void 0 ? void 0 : _classPrivateFieldGet8.marker) !== 'POINT_MARKER') {
-            data = _classPrivateFieldGet(_queue, this).shift(); // @ts-ignore
-            _assertClassBrand(_TinyPromiseQueue_brand, this, _normalProcessQueue).call(this, data);
-          } else _assertClassBrand(_TinyPromiseQueue_brand, this, _groupProcessQueue).call(this);
-        case 2:
-          return _context5.a(2);
-      }
-    }, _callee5, this);
-  }));
-  return _processQueue2.apply(this, arguments);
-}
-var _default = exports["default"] = TinyPromiseQueue;
-
-},{}],702:[function(require,module,exports){
-(function (process){(function (){
-"use strict";
-
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
-function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
-function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
-function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
-function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
-function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
-var _maxMemory = /*#__PURE__*/new WeakMap();
-var _cleanupTimer = /*#__PURE__*/new WeakMap();
-var _maxHits = /*#__PURE__*/new WeakMap();
-var _interval = /*#__PURE__*/new WeakMap();
-var _cleanupInterval = /*#__PURE__*/new WeakMap();
-var _maxIdle = /*#__PURE__*/new WeakMap();
-var _onMemoryExceeded = /*#__PURE__*/new WeakMap();
-var _onGroupExpired = /*#__PURE__*/new WeakMap();
-/** @typedef {(groupId: string) => void} OnMemoryExceeded */
-/** @typedef {(groupId: string) => void} OnGroupExpired */
-/**
- * Class representing a flexible rate limiter per user or group.
- *
- * This rate limiter supports limiting per user or per group by mapping
- * userIds to a common groupId. All users within the same group share
- * rate limits.
- */
-var TinyRateLimiter = /*#__PURE__*/function () {
-  /**
-   * @param {Object} options
-   * @param {number|null} [options.maxMemory] - Max memory allowed
-   * @param {number} [options.maxHits] - Max interactions allowed
-   * @param {number} [options.interval] - Time window in milliseconds
-   * @param {number} [options.cleanupInterval] - Interval for automatic cleanup (ms)
-   * @param {number} [options.maxIdle=300000] - Max idle time for a user before being cleaned (ms)
-   */
-  function TinyRateLimiter(_ref) {
-    var _this = this;
-    var maxHits = _ref.maxHits,
-      interval = _ref.interval,
-      cleanupInterval = _ref.cleanupInterval,
-      _ref$maxIdle = _ref.maxIdle,
-      maxIdle = _ref$maxIdle === void 0 ? 300000 : _ref$maxIdle,
-      _ref$maxMemory = _ref.maxMemory,
-      maxMemory = _ref$maxMemory === void 0 ? 100000 : _ref$maxMemory;
-    _classCallCheck(this, TinyRateLimiter);
-    /** @type {number|null} */
-    _classPrivateFieldInitSpec(this, _maxMemory, null);
-    /** @type {NodeJS.Timeout|null} */
-    _classPrivateFieldInitSpec(this, _cleanupTimer, null);
-    /** @type {number|null|undefined} */
-    _classPrivateFieldInitSpec(this, _maxHits, null);
-    /** @type {number|null|undefined} */
-    _classPrivateFieldInitSpec(this, _interval, null);
-    /** @type {number|null|undefined} */
-    _classPrivateFieldInitSpec(this, _cleanupInterval, null);
-    /** @type {number|null|undefined} */
-    _classPrivateFieldInitSpec(this, _maxIdle, null);
-    /** @type {Map<string, number[]>} */
-    _defineProperty(this, "groupData", new Map());
-    // groupId -> timestamps[]
-    /** @type {Map<string, number>} */
-    _defineProperty(this, "lastSeen", new Map());
-    // groupId -> timestamp
-    /** @type {Map<string, string>} */
-    _defineProperty(this, "userToGroup", new Map());
-    // userId -> groupId
-    /** @type {Map<string, boolean>} */
-    _defineProperty(this, "groupFlags", new Map());
-    // groupId -> boolean
-    /**
-     * @type {Map<string, number>}
-     * Stores TTL (in ms) for each groupId individually
-     */
-    _defineProperty(this, "groupTTL", new Map());
-    /**
-     * @type {null|OnMemoryExceeded}
-     */
-    _classPrivateFieldInitSpec(this, _onMemoryExceeded, null);
-    /**
-     * @type {null|OnGroupExpired}
-     */
-    _classPrivateFieldInitSpec(this, _onGroupExpired, null);
-    /** @param {number|undefined} val */
-    var isPositiveInteger = function isPositiveInteger(val) {
-      return typeof val === 'number' && Number.isFinite(val) && val >= 1 && Number.isInteger(val);
-    };
-    var isMaxHitsValid = isPositiveInteger(maxHits);
-    var isIntervalValid = isPositiveInteger(interval);
-    var isCleanupValid = isPositiveInteger(cleanupInterval);
-    var isMaxIdleValid = isPositiveInteger(maxIdle);
-    if (!isMaxHitsValid && !isIntervalValid) throw new Error("RateLimiter requires at least one valid option: 'maxHits' or 'interval'.");
-    if (maxHits !== undefined && !isMaxHitsValid) throw new Error("'maxHits' must be a positive integer if defined.");
-    if (interval !== undefined && !isIntervalValid) throw new Error("'interval' must be a positive integer in milliseconds if defined.");
-    if (cleanupInterval !== undefined && !isCleanupValid) throw new Error("'cleanupInterval' must be a positive integer in milliseconds if defined.");
-    if (!isMaxIdleValid) throw new Error("'maxIdle' must be a positive integer in milliseconds.");
-    if (typeof maxMemory === 'number' && Number.isFinite(maxMemory) && maxMemory > 0) {
-      _classPrivateFieldSet(_maxMemory, this, Math.floor(maxMemory));
-    } else if (maxMemory === null || maxMemory === undefined) {
-      _classPrivateFieldSet(_maxMemory, this, null);
-    } else {
-      throw new Error('maxMemory must be a positive number or null');
-    }
-    _classPrivateFieldSet(_maxHits, this, isMaxHitsValid ? maxHits : null);
-    _classPrivateFieldSet(_interval, this, isIntervalValid ? interval : null);
-    _classPrivateFieldSet(_cleanupInterval, this, isCleanupValid ? cleanupInterval : null);
-    _classPrivateFieldSet(_maxIdle, this, maxIdle);
-    // Start automatic cleanup only if cleanupInterval is valid
-    if (_classPrivateFieldGet(_cleanupInterval, this) !== null) _classPrivateFieldSet(_cleanupTimer, this, setInterval(function () {
-      return _this._cleanup();
-    }, _classPrivateFieldGet(_cleanupInterval, this)));
-  }
-  /**
-   * Check if a given ID is a groupId (not a userId)
-   * @param {string} id
-   * @returns {boolean}
-   */
-  return _createClass(TinyRateLimiter, [{
-    key: "setOnMemoryExceeded",
-    value:
-    /**
-     * Set the callback to be triggered when a group exceeds its limit
-     * @param {OnMemoryExceeded} callback
-     */
-    function setOnMemoryExceeded(callback) {
-      if (typeof callback !== 'function') throw new Error('onMemoryExceeded must be a function');
-      _classPrivateFieldSet(_onMemoryExceeded, this, callback);
-    }
-    /**
-     * Clear the onMemoryExceeded callback
-     */
-  }, {
-    key: "clearOnMemoryExceeded",
-    value: function clearOnMemoryExceeded() {
-      _classPrivateFieldSet(_onMemoryExceeded, this, null);
-    }
-  }, {
-    key: "setOnGroupExpired",
-    value:
-    /**
-     * Set the callback to be triggered when a group expires and is removed.
-     *
-     * This callback is called automatically during cleanup when a group
-     * becomes inactive for longer than its TTL.
-     *
-     * @param {OnGroupExpired} callback - A function that receives the expired groupId.
-     */
-    function setOnGroupExpired(callback) {
-      if (typeof callback !== 'function') throw new Error('onGroupExpired must be a function');
-      _classPrivateFieldSet(_onGroupExpired, this, callback);
-    }
-    /**
-     * Clear the onGroupExpired callback
-     */
-  }, {
-    key: "clearOnGroupExpired",
-    value: function clearOnGroupExpired() {
-      _classPrivateFieldSet(_onGroupExpired, this, null);
-    }
-  }, {
-    key: "isGroupId",
-    value: function isGroupId(id) {
-      var result = this.groupFlags.get(id);
-      return typeof result === 'boolean' ? result : false;
-    }
-    /**
-     * Get all user IDs that belong to a given group.
-     * @param {string} groupId
-     * @returns {string[]}
-     */
-  }, {
-    key: "getUsersInGroup",
-    value: function getUsersInGroup(groupId) {
-      var users = [];
-      var _iterator = _createForOfIteratorHelper(this.userToGroup.entries()),
-        _step;
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var _step$value = _slicedToArray(_step.value, 2),
-            userId = _step$value[0],
-            assignedGroup = _step$value[1];
-          if (assignedGroup === groupId) {
-            users.push(userId);
-          }
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-      return users;
-    }
-    /**
-     * Set TTL (in milliseconds) for a specific group
-     * @param {string} groupId
-     * @param {number} ttl
-     */
-  }, {
-    key: "setGroupTTL",
-    value: function setGroupTTL(groupId, ttl) {
-      if (typeof ttl !== 'number' || !Number.isFinite(ttl) || ttl <= 0) throw new Error('TTL must be a positive number in milliseconds');
-      this.groupTTL.set(groupId, ttl);
-    }
-    /**
-     * Get TTL (in ms) for a specific group.
-     * @param {string} groupId
-     * @returns {number|null}
-     */
-  }, {
-    key: "getGroupTTL",
-    value: function getGroupTTL(groupId) {
-      var _this$groupTTL$get;
-      return (_this$groupTTL$get = this.groupTTL.get(groupId)) !== null && _this$groupTTL$get !== void 0 ? _this$groupTTL$get : null;
-    }
-    /**
-     * Delete the TTL setting for a specific group
-     * @param {string} groupId
-     */
-  }, {
-    key: "deleteGroupTTL",
-    value: function deleteGroupTTL(groupId) {
-      this.groupTTL["delete"](groupId);
-    }
-    /**
-     * Assign a userId to a groupId, with merge if user has existing data.
-     * @param {string} userId
-     * @param {string} groupId
-     * @throws {Error} If userId is already assigned to a different group
-     */
-  }, {
-    key: "assignToGroup",
-    value: function assignToGroup(userId, groupId) {
-      var existingGroup = this.userToGroup.get(userId);
-      if (existingGroup && existingGroup !== groupId) throw new Error("User ".concat(userId, " is already assigned to group ").concat(existingGroup));
-      // If the user is already in the group, nothing needs to be done
-      if (existingGroup === groupId) return;
-      var userData = this.groupData.get(userId);
-      // Associates the user to the group
-      if (this.isGroupId(userId)) {
-        var _iterator2 = _createForOfIteratorHelper(this.userToGroup.entries()),
-          _step2;
-        try {
-          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-            var _step2$value = _slicedToArray(_step2.value, 2),
-              uid = _step2$value[0],
-              gId = _step2$value[1];
-            if (gId === userId) this.userToGroup.set(uid, groupId);
-          }
-        } catch (err) {
-          _iterator2.e(err);
-        } finally {
-          _iterator2.f();
-        }
-        this.userToGroup["delete"](userId);
-      } else this.userToGroup.set(userId, groupId);
-      // If the user has no data, nothing needs to be done
-      if (!userData) return;
-      var groupData = this.groupData.get(groupId);
-      if (groupData) {
-        var _iterator3 = _createForOfIteratorHelper(userData),
-          _step3;
-        try {
-          for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-            var item = _step3.value;
-            groupData.push(item);
-          }
-        } catch (err) {
-          _iterator3.e(err);
-        } finally {
-          _iterator3.f();
-        }
-      } else {
-        var newData = [];
-        var _iterator4 = _createForOfIteratorHelper(userData),
-          _step4;
-        try {
-          for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-            var _item = _step4.value;
-            newData.push(_item);
-          }
-        } catch (err) {
-          _iterator4.e(err);
-        } finally {
-          _iterator4.f();
-        }
-        this.groupData.set(groupId, newData);
-      }
-      this.lastSeen.set(groupId, Date.now());
-      // Removes individual data as they are now in the group
-      this.groupFlags["delete"](userId);
-      this.groupData["delete"](userId);
-      this.lastSeen["delete"](userId);
-      this.groupTTL["delete"](userId);
-      this.groupFlags.set(groupId, true);
-    }
-    /**
-     * Get the groupId for a given userId
-     * @param {string} userId
-     * @returns {string}
-     */
-  }, {
-    key: "getGroupId",
-    value: function getGroupId(userId) {
-      return this.userToGroup.get(userId) || userId; // fallback: use userId as own group
-    }
-    /**
-     * Register a hit for a specific user
-     * @param {string} userId
-     */
-  }, {
-    key: "hit",
-    value: function hit(userId) {
-      var groupId = this.getGroupId(userId);
-      var now = Date.now();
-      if (!this.groupData.has(groupId)) {
-        this.groupData.set(groupId, []);
-        this.groupFlags.set(groupId, false);
-      }
-      var history = this.groupData.get(groupId);
-      if (!history) throw new Error("No data found for groupId: ".concat(groupId));
-      history.push(now);
-      this.lastSeen.set(groupId, now);
-      // Clean up old entries
-      if (_classPrivateFieldGet(_interval, this) !== null) {
-        var interval = this.getInterval();
-        var cutoff = now - interval;
-        while (history.length && history[0] < cutoff) {
-          history.shift();
-        }
-      }
-      // Optional: keep only the last N entries for memory optimization
-      if (_classPrivateFieldGet(_maxMemory, this) !== null && typeof _classPrivateFieldGet(_maxMemory, this) === 'number') {
-        if (history.length > _classPrivateFieldGet(_maxMemory, this)) {
-          history.splice(0, history.length - _classPrivateFieldGet(_maxMemory, this));
-          if (typeof _classPrivateFieldGet(_onMemoryExceeded, this) === 'function') _classPrivateFieldGet(_onMemoryExceeded, this).call(this, groupId);
-        }
-      }
-    }
-    /**
-     * Check if the user (via their group) is currently rate limited
-     * @param {string} userId
-     * @returns {boolean}
-     */
-  }, {
-    key: "isRateLimited",
-    value: function isRateLimited(userId) {
-      var groupId = this.getGroupId(userId);
-      if (!this.groupData.has(groupId)) return false;
-      var history = this.groupData.get(groupId);
-      if (!history) throw new Error("No data found for groupId: ".concat(groupId));
-      if (_classPrivateFieldGet(_interval, this) !== null) {
-        var now = Date.now();
-        var interval = this.getInterval();
-        var cutoff = now - interval;
-        var count = 0;
-        for (var i = history.length - 1; i >= 0; i--) {
-          if (history[i] > cutoff) count++;else break;
-        }
-        if (_classPrivateFieldGet(_maxHits, this) !== null) return count > this.getMaxHits();
-        return count > 0;
-      }
-      if (_classPrivateFieldGet(_maxHits, this) !== null) {
-        return history.length > this.getMaxHits();
-      }
-      return false;
-    }
-    /**
-     * Manually reset group data
-     * @param {string} groupId
-     */
-  }, {
-    key: "resetGroup",
-    value: function resetGroup(groupId) {
-      this.groupFlags["delete"](groupId);
-      this.groupData["delete"](groupId);
-      this.lastSeen["delete"](groupId);
-      this.groupTTL["delete"](groupId);
-    }
-    /**
-     * Manually reset user data.
-     *
-     * @deprecated Use `resetUserGroup(userId)` instead. This method will be removed in future versions.
-     * @param {string} userId
-     * @returns {void}
-     */
-  }, {
-    key: "reset",
-    value: function reset(userId) {
-      var _process;
-      if (((_process = process) === null || _process === void 0 || (_process = _process.env) === null || _process === void 0 ? void 0 : _process.NODE_ENV) !== 'production') console.warn("[TinyRateLimiter] 'reset()' is deprecated. Use 'resetUserGroup()' instead.");
-      return this.resetUserGroup(userId);
-    }
-    /**
-     * Manually reset a user mapping
-     * @param {string} userId
-     */
-  }, {
-    key: "resetUserGroup",
-    value: function resetUserGroup(userId) {
-      this.userToGroup["delete"](userId);
-    }
-    /**
-     * Set custom timestamps to a group
-     * @param {string} groupId
-     * @param {number[]} timestamps
-     */
-  }, {
-    key: "setData",
-    value: function setData(groupId, timestamps) {
-      if (!Array.isArray(timestamps)) throw new Error('timestamps must be an array of numbers.');
-      var _iterator5 = _createForOfIteratorHelper(timestamps),
-        _step5;
-      try {
-        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-          var t = _step5.value;
-          if (typeof t !== 'number' || !Number.isFinite(t)) {
-            throw new Error('All timestamps must be finite numbers.');
-          }
-        }
-      } catch (err) {
-        _iterator5.e(err);
-      } finally {
-        _iterator5.f();
-      }
-      if (!this.groupData.has(groupId)) this.groupFlags.set(groupId, false);
-      this.groupData.set(groupId, timestamps);
-      this.lastSeen.set(groupId, Date.now());
-    }
-    /**
-     * Check if a group has data
-     * @param {string} groupId
-     * @returns {boolean}
-     */
-  }, {
-    key: "hasData",
-    value: function hasData(groupId) {
-      return this.groupData.has(groupId);
-    }
-    /**
-     * Get timestamps from a group
-     * @param {string} groupId
-     * @returns {number[]}
-     */
-  }, {
-    key: "getData",
-    value: function getData(groupId) {
-      return this.groupData.get(groupId) || [];
-    }
-    /**
-     * Get the maximum idle time (in milliseconds) before a group is considered expired.
-     * @returns {number}
-     */
-  }, {
-    key: "getMaxIdle",
-    value: function getMaxIdle() {
-      if (typeof _classPrivateFieldGet(_maxIdle, this) !== 'number' || !Number.isFinite(_classPrivateFieldGet(_maxIdle, this)) || _classPrivateFieldGet(_maxIdle, this) < 0) {
-        throw new Error("'maxIdle' must be a non-negative finite number.");
-      }
-      return _classPrivateFieldGet(_maxIdle, this);
-    }
-    /**
-     * Set the maximum idle time (in milliseconds) before a group is considered expired.
-     * @param {number} ms
-     */
-  }, {
-    key: "setMaxIdle",
-    value: function setMaxIdle(ms) {
-      if (typeof ms !== 'number' || !Number.isFinite(ms) || ms < 0) {
-        throw new Error("'maxIdle' must be a non-negative finite number.");
-      }
-      _classPrivateFieldSet(_maxIdle, this, ms);
-    }
-    /**
-     * Cleanup old/inactive groups with individual TTLs
-     * @private
-     */
-  }, {
-    key: "_cleanup",
-    value: function _cleanup() {
-      var now = Date.now();
-      var _iterator6 = _createForOfIteratorHelper(this.lastSeen.entries()),
-        _step6;
-      try {
-        for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
-          var _this$getGroupTTL;
-          var _step6$value = _slicedToArray(_step6.value, 2),
-            groupId = _step6$value[0],
-            last = _step6$value[1];
-          var ttl = (_this$getGroupTTL = this.getGroupTTL(groupId)) !== null && _this$getGroupTTL !== void 0 ? _this$getGroupTTL : this.getMaxIdle();
-          if (now - last > ttl) {
-            this.groupFlags["delete"](groupId);
-            this.groupData["delete"](groupId);
-            this.lastSeen["delete"](groupId);
-            this.groupTTL["delete"](groupId);
-            // Notify subclass or external binding
-            if (typeof _classPrivateFieldGet(_onGroupExpired, this) === 'function') {
-              _classPrivateFieldGet(_onGroupExpired, this).call(this, groupId);
-            }
-          }
-        }
-      } catch (err) {
-        _iterator6.e(err);
-      } finally {
-        _iterator6.f();
-      }
-    }
-    /**
-     * Get list of active group IDs
-     * @returns {string[]}
-     */
-  }, {
-    key: "getActiveGroups",
-    value: function getActiveGroups() {
-      return Array.from(this.groupData.keys());
-    }
-    /**
-     * Get a shallow copy of all user-to-group mappings as a plain object
-     * @returns {Record<string, string>}
-     */
-  }, {
-    key: "getAllUserMappings",
-    value: function getAllUserMappings() {
-      return Object.fromEntries(this.userToGroup);
-    }
-    /**
-     * Get the interval window in milliseconds.
-     * @returns {number}
-     */
-  }, {
-    key: "getInterval",
-    value: function getInterval() {
-      if (typeof _classPrivateFieldGet(_interval, this) !== 'number' || !Number.isFinite(_classPrivateFieldGet(_interval, this))) {
-        throw new Error("'interval' is not a valid finite number.");
-      }
-      return _classPrivateFieldGet(_interval, this);
-    }
-    /**
-     * Get the maximum number of allowed hits.
-     * @returns {number}
-     */
-  }, {
-    key: "getMaxHits",
-    value: function getMaxHits() {
-      if (typeof _classPrivateFieldGet(_maxHits, this) !== 'number' || !Number.isFinite(_classPrivateFieldGet(_maxHits, this))) {
-        throw new Error("'maxHits' is not a valid finite number.");
-      }
-      return _classPrivateFieldGet(_maxHits, this);
-    }
-    /**
-     * Get the total number of hits recorded for a group.
-     * @param {string} groupId
-     * @returns {number}
-     */
-  }, {
-    key: "getTotalHits",
-    value: function getTotalHits(groupId) {
-      var history = this.groupData.get(groupId);
-      return Array.isArray(history) ? history.length : 0;
-    }
-    /**
-     * Get the timestamp of the last hit for a group.
-     * @param {string} groupId
-     * @returns {number|null}
-     */
-  }, {
-    key: "getLastHit",
-    value: function getLastHit(groupId) {
-      var history = this.groupData.get(groupId);
-      return history !== null && history !== void 0 && history.length ? history[history.length - 1] : null;
-    }
-    /**
-     * Get milliseconds since the last hit for a group.
-     * @param {string} groupId
-     * @returns {number|null}
-     */
-  }, {
-    key: "getTimeSinceLastHit",
-    value: function getTimeSinceLastHit(groupId) {
-      var last = this.getLastHit(groupId);
-      return last !== null ? Date.now() - last : null;
-    }
-    /**
-     * Internal utility to compute average spacing
-     * @private
-     * @param {number[]|undefined} history
-     * @returns {number|null}
-     */
-  }, {
-    key: "_calculateAverageSpacing",
-    value: function _calculateAverageSpacing(history) {
-      if (!Array.isArray(history) || history.length < 2) return null;
-      var total = 0;
-      for (var i = 1; i < history.length; i++) {
-        total += history[i] - history[i - 1];
-      }
-      return total / (history.length - 1);
-    }
-    /**
-     * Get average time between hits for a group (ms).
-     * @param {string} groupId
-     * @returns {number|null}
-     */
-  }, {
-    key: "getAverageHitSpacing",
-    value: function getAverageHitSpacing(groupId) {
-      return this._calculateAverageSpacing(this.groupData.get(groupId));
-    }
-    /**
-     * Get metrics about a group's activity.
-     * @param {string} groupId
-     * @returns {{
-     *   totalHits: number,
-     *   lastHit: number|null,
-     *   timeSinceLastHit: number|null,
-     *   averageHitSpacing: number|null
-     * }}
-     */
-  }, {
-    key: "getMetrics",
-    value: function getMetrics(groupId) {
-      var history = this.groupData.get(groupId);
-      if (!Array.isArray(history) || history.length === 0) {
-        return {
-          totalHits: 0,
-          lastHit: null,
-          timeSinceLastHit: null,
-          averageHitSpacing: null
-        };
-      }
-      var totalHits = history.length;
-      var lastHit = history[totalHits - 1];
-      var timeSinceLastHit = Date.now() - lastHit;
-      var averageHitSpacing = this._calculateAverageSpacing(history);
-      return {
-        totalHits: totalHits,
-        lastHit: lastHit,
-        timeSinceLastHit: timeSinceLastHit,
-        averageHitSpacing: averageHitSpacing
-      };
-    }
-    /**
-     * Destroy the rate limiter, stopping cleanup and clearing data
-     */
-  }, {
-    key: "destroy",
-    value: function destroy() {
-      if (_classPrivateFieldGet(_cleanupTimer, this)) clearInterval(_classPrivateFieldGet(_cleanupTimer, this));
-      this._cleanup();
-      this.groupData.clear();
-      this.lastSeen.clear();
-      this.userToGroup.clear();
-      this.groupTTL.clear();
-      this.groupFlags.clear();
-    }
-  }]);
-}();
-var _default = exports["default"] = TinyRateLimiter;
-
-}).call(this)}).call(this,require('_process'))
-},{"_process":587}],703:[function(require,module,exports){
-arguments[4][691][0].apply(exports,arguments)
-},{"dup":691}],704:[function(require,module,exports){
-arguments[4][692][0].apply(exports,arguments)
-},{"dup":692}],705:[function(require,module,exports){
-arguments[4][693][0].apply(exports,arguments)
-},{"dup":693}],706:[function(require,module,exports){
-arguments[4][694][0].apply(exports,arguments)
-},{"dup":694}],707:[function(require,module,exports){
-arguments[4][695][0].apply(exports,arguments)
-},{"dup":695}],708:[function(require,module,exports){
+},{}],695:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -103800,7 +100825,7 @@ var offFullScreenChange = exports.offFullScreenChange = function offFullScreenCh
   });
 };
 
-},{}],709:[function(require,module,exports){
+},{}],696:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -104161,9 +101186,359 @@ var getHtmlElPadding = exports.getHtmlElPadding = function getHtmlElPadding(el) 
   };
 };
 
-},{"./objFilter.mjs":710}],710:[function(require,module,exports){
-arguments[4][696][0].apply(exports,arguments)
-},{"buffer":314,"dup":696}],711:[function(require,module,exports){
+},{"./objFilter.mjs":697}],697:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.checkObj = checkObj;
+exports.cloneObjTypeOrder = cloneObjTypeOrder;
+exports.countObj = countObj;
+exports.extendObjType = extendObjType;
+exports.getCheckObj = getCheckObj;
+exports.isJsonObject = isJsonObject;
+exports.objType = objType;
+exports.reorderObjTypeOrder = reorderObjTypeOrder;
+var _buffer = require("buffer");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+var isBrowser = typeof window !== 'undefined' && typeof window.document !== 'undefined';
+/**
+ * An object containing type validation functions and their evaluation order.
+ *
+ * Each item in `typeValidator.items` is a function that receives any value
+ * and returns a boolean indicating whether the value matches the corresponding type.
+ *
+ * The `order` array defines the priority in which types should be checked,
+ * which can be useful for functions that infer types in a consistent manner.
+ *
+ */
+var typeValidator = {
+  items: {},
+  /**
+   * Evaluation order of the type checkers.
+   * @type {string[]}
+   * */
+  order: []
+};
+/** @typedef {Object.<string, (val: any) => *>} ExtendObjType */
+/** @typedef {Array<[string, (val: any) => *]>} ExtendObjTypeArray */
+/**
+ * Adds new type checkers to the typeValidator without overwriting existing ones.
+ *
+ * Accepts either an object with named functions or an array of [key, fn] arrays.
+ * If no index is provided, the type is inserted just before 'object' (if it exists), or at the end.
+ *
+ * @param {ExtendObjType|ExtendObjTypeArray} newItems
+ *        - New type validators to be added.
+ * @param {number} [index] - Optional. Position at which to insert each new type. Ignored if the type already exists.
+ * @returns {string[]} - A list of successfully added type names.
+ *
+ * @example
+ * extendObjType({
+ *   htmlElement2: val => typeof HTMLElement !== 'undefined' && val instanceof HTMLElement
+ * });
+ *
+ * @example
+ * extendObjType([
+ *   ['alpha', val => typeof val === 'string'],
+ *   ['beta', val => Array.isArray(val)]
+ * ]);
+ */
+function extendObjType(newItems, index) {
+  var added = [];
+  var entries = Array.isArray(newItems) ? newItems : Object.entries(newItems);
+  var _iterator = _createForOfIteratorHelper(entries),
+    _step;
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var _step$value = _slicedToArray(_step.value, 2),
+        key = _step$value[0],
+        fn = _step$value[1];
+      if (!typeValidator.items.hasOwnProperty(key)) {
+        // @ts-ignore
+        typeValidator.items[key] = fn;
+        var insertAt = typeof index === 'number' ? index : -1; // Default to -1 if index isn't provided
+        // Default to before 'object', or to the end
+        if (insertAt === -1) {
+          var objectIndex = typeValidator.order.indexOf('object');
+          insertAt = objectIndex > -1 ? objectIndex : typeValidator.order.length;
+        }
+        // Ensure insertAt is a valid number and not out of bounds
+        insertAt = Math.min(Math.max(0, insertAt), typeValidator.order.length);
+        typeValidator.order.splice(insertAt, 0, key);
+        added.push(key);
+      }
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+  return added;
+}
+/**
+ * Reorders the typeValidator.order array according to a custom new order.
+ * All values in the new order must already exist in the current order.
+ * The function does not mutate the original array structure directly.
+ *
+ * @param {string[]} newOrder - The new order of type names.
+ * @returns {boolean} - Returns true if the reorder was successful, false if invalid keys were found.
+ *
+ * @example
+ * reorderObjTypeOrder([
+ *   'string', 'number', 'array', 'object'
+ * ]);
+ */
+function reorderObjTypeOrder(newOrder) {
+  var currentOrder = _toConsumableArray(typeValidator.order); // shallow clone
+  // All keys in newOrder must exist in currentOrder
+  var isValid = newOrder.every(function (type) {
+    return currentOrder.includes(type);
+  });
+  if (!isValid) return false;
+  // Reassign only if valid
+  typeValidator.order = newOrder.slice(); // assign shallow copy
+  return true;
+}
+/**
+ * Returns a cloned version of the `typeValidator.order` array.
+ * The cloned array will not be affected by future changes to the original `order`.
+ *
+ * @returns {string[]} - A new array with the same values as `typeValidator.order`.
+ */
+function cloneObjTypeOrder() {
+  return _toConsumableArray(typeValidator.order); // Creates a shallow copy of the array
+}
+/**
+ * Returns the detected type name of a given value based on predefined type validators.
+ *
+ * This function uses `getType` with a predefined `typeValidator` to determine or compare types safely.
+ * in the specified `typeValidator.order`. The first matching type is returned.
+ *
+ * If `val` is `null`, it immediately returns `'null'`.
+ * If no match is found, it returns `'unknown'`.
+ *
+ * @param {any} val - The value whose type should be determined.
+ * @returns {string} - The type name of the value (e.g., "array", "date", "map"), or "unknown" if no match is found.
+ *
+ * @example
+ * getType([]); // "array"
+ * getType(null); // "null"
+ * getType(new Set()); // "set"
+ * getType(() => {}); // "unknown"
+ */
+var getType = function getType(val) {
+  if (val === null) return 'null';
+  // @ts-ignore
+  var _iterator2 = _createForOfIteratorHelper(typeValidator.order),
+    _step2;
+  try {
+    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+      var name = _step2.value;
+      // @ts-ignore
+      if (typeof typeValidator.items[name] !== 'function' || typeValidator.items[name](val)) return name;
+    }
+  } catch (err) {
+    _iterator2.e(err);
+  } finally {
+    _iterator2.f();
+  }
+  return 'unknown';
+};
+/**
+ * Checks the type of a given object or returns its type as a string.
+ *
+ * @param {*} obj - The object to check or identify.
+ * @param {string} [type] - Optional. If provided, checks whether the object matches this type (e.g., "object", "array", "string").
+ * @returns {boolean|string|null} - Returns `true` if the type matches, `false` if not,
+ *                                   the type string if no type is provided, or `null` if the object is `undefined`.
+ *
+ * @example
+ * objType([], 'array'); // true
+ * objType({}, 'object'); // true
+ * objType('hello'); // "string"
+ * objType(undefined); // null
+ */
+function objType(obj, type) {
+  if (typeof obj === 'undefined') return null;
+  var result = getType(obj);
+  if (typeof type === 'string') return result === type.toLowerCase();
+  return result;
+}
+/**
+ * Checks the type of a given object and returns the validation value if a known type is detected.
+ *
+ * @param {*} obj - The object to check or identify.
+ * @returns {{ valid:*; type: string | null }} - Returns the type result.
+ */
+function checkObj(obj) {
+  /** @type {{ valid:*; type: string | null }} */
+  var data = {
+    valid: null,
+    type: null
+  };
+  var _iterator3 = _createForOfIteratorHelper(typeValidator.order),
+    _step3;
+  try {
+    for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+      var name = _step3.value;
+      // @ts-ignore
+      if (typeof typeValidator.items[name] === 'function') {
+        // @ts-ignore
+        var result = typeValidator.items[name](obj);
+        if (result) {
+          data.valid = result;
+          data.type = name;
+          break;
+        }
+      }
+    }
+  } catch (err) {
+    _iterator3.e(err);
+  } finally {
+    _iterator3.f();
+  }
+  return data;
+}
+/**
+ * Creates a clone of the functions from the `typeValidator` object.
+ * It returns a new object where the keys are the same and the values are the cloned functions.
+ */
+function getCheckObj() {
+  return Object.fromEntries(Object.entries(typeValidator.items).map(function (_ref) {
+    var _ref2 = _slicedToArray(_ref, 2),
+      key = _ref2[0],
+      fn = _ref2[1];
+    return [key, fn];
+  }));
+}
+/**
+ * Counts the number of elements in an array or the number of properties in an object.
+ *
+ * @param {Array<*>|Record<string|number, any>} obj - The array or object to count.
+ * @returns {number} - The count of items (array elements or object keys), or `0` if the input is neither an array nor an object.
+ *
+ * @example
+ * countObj([1, 2, 3]); // 3
+ * countObj({ a: 1, b: 2 }); // 2
+ * countObj('not an object'); // 0
+ */
+function countObj(obj) {
+  // Is Array
+  if (Array.isArray(obj)) return obj.length;
+  // Object
+  if (objType(obj, 'object')) return Object.keys(obj).length;
+  // Nothing
+  return 0;
+}
+/**
+ * Determines whether a given value is a pure JSON object (plain object).
+ *
+ * A pure object satisfies the following:
+ * - It is not null.
+ * - Its type is "object".
+ * - Its internal [[Class]] is "[object Object]".
+ * - It is not an instance of built-in types like Array, Date, Map, Set, etc.
+ *
+ * This function is useful for strict data validation when you want to ensure
+ * a value is a clean JSON-compatible object, free of class instances or special types.
+ *
+ * @param {unknown} value - The value to test.
+ * @returns {value is Record<string | number | symbol, unknown>} Returns true if the value is a pure object.
+ */
+function isJsonObject(value) {
+  if (value === null || _typeof(value) !== 'object') return false;
+  if (Array.isArray(value)) return false;
+  if (Object.prototype.toString.call(value) !== '[object Object]') return false;
+  return true;
+}
+// Insert obj types
+extendObjType([['undefined', /** @param {*} val @returns {val is undefined} */
+function (val) {
+  return typeof val === 'undefined';
+}], ['null', /** @param {*} val @returns {val is null} */
+function (val) {
+  return val === null;
+}], ['boolean', /** @param {*} val @returns {val is boolean} */
+function (val) {
+  return typeof val === 'boolean';
+}], ['number', /** @param {*} val @returns {val is number} */
+function (val) {
+  return typeof val === 'number' && !Number.isNaN(val);
+}], ['bigint', /** @param {*} val @returns {val is bigint} */
+function (val) {
+  return typeof val === 'bigint';
+}], ['string', /** @param {*} val @returns {val is string} */
+function (val) {
+  return typeof val === 'string';
+}], ['symbol', /** @param {*} val @returns {val is symbol} */
+function (val) {
+  return _typeof(val) === 'symbol';
+}], ['function', /** @param {*} val @returns {val is Function} */
+function (val) {
+  return typeof val === 'function';
+}], ['array', /** @param {*} val @returns {val is any[]} */
+function (val) {
+  return Array.isArray(val);
+}]]);
+if (!isBrowser) {
+  extendObjType([['buffer', /** @param {*} val @returns {val is Buffer} */
+  function (val) {
+    return typeof _buffer.Buffer !== 'undefined' && _buffer.Buffer.isBuffer(val);
+  }]]);
+}
+if (isBrowser) {
+  extendObjType([['file', /** @param {*} val @returns {val is File} */
+  function (val) {
+    return typeof File !== 'undefined' && val instanceof File;
+  }]]);
+}
+extendObjType([['date', /** @param {*} val @returns {val is Date} */
+function (val) {
+  return val instanceof Date;
+}], ['regexp', /** @param {*} val @returns {val is RegExp} */
+function (val) {
+  return val instanceof RegExp;
+}], ['map', /** @param {*} val @returns {val is Map<unknown, unknown>} */
+function (val) {
+  return val instanceof Map;
+}], ['set', /** @param {*} val @returns {val is Set<unknown>} */
+function (val) {
+  return val instanceof Set;
+}], ['weakmap', /** @param {*} val @returns {val is WeakMap<unknown, unknown>} */
+function (val) {
+  return val instanceof WeakMap;
+}], ['weakset', /** @param {*} val @returns {val is WeakSet<unknown>} */
+function (val) {
+  return val instanceof WeakSet;
+}], ['promise', /** @param {*} val @returns {val is Promise<unknown>} */
+function (val) {
+  return val instanceof Promise;
+}]]);
+if (isBrowser) {
+  extendObjType([['htmlelement', /** @param {*} val @returns {val is HTMLElement} */
+  function (val) {
+    return typeof HTMLElement !== 'undefined' && val instanceof HTMLElement;
+  }]]);
+}
+extendObjType([['object', /** @param {*} val @returns {val is Record<string | number | symbol, unknown>} */
+function (val) {
+  return isJsonObject(val);
+}]]);
+
+},{"buffer":314}],698:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -104341,9 +101716,99 @@ function genFibonacciSeq() {
   return sequence;
 }
 
-},{}],712:[function(require,module,exports){
-arguments[4][698][0].apply(exports,arguments)
-},{"dup":698}],713:[function(require,module,exports){
+},{}],699:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addAiMarkerShortcut = addAiMarkerShortcut;
+exports.toTitleCase = toTitleCase;
+exports.toTitleCaseLowerFirst = toTitleCaseLowerFirst;
+/**
+ * Converts a string to title case where the first letter of each word is capitalized.
+ * All other letters are converted to lowercase.
+ *
+ * Example: "hello world" -> "Hello World"
+ *
+ * @param {string} str - The string to be converted to title case.
+ * @returns {string} The string converted to title case.
+ */
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+}
+/**
+ * Converts a string to title case where the first letter of each word is capitalized,
+ * but the first letter of the entire string is left lowercase.
+ *
+ * Example: "hello world" -> "hello World"
+ *
+ * @param {string} str - The string to be converted to title case with the first letter in lowercase.
+ * @returns {string} The string converted to title case with the first letter in lowercase.
+ */
+function toTitleCaseLowerFirst(str) {
+  var titleCased = str.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+  return titleCased.charAt(0).toLowerCase() + titleCased.slice(1);
+}
+/**
+ * Enables a keyboard shortcut to toggle a CSS class on the document body.
+ *
+ * This function listens for a specific key combination: `Ctrl + Alt + [key]`.
+ * When triggered, it prevents the default behavior and toggles the
+ * `detect-made-by-ai` class on the `<body>`, which can be used to apply visual
+ * indicators or filters on AI-generated content.
+ *
+ * If executed outside of a browser environment (e.g., in Node.js), the function logs an error and exits.
+ * If the `<body>` is not available at the moment the shortcut is triggered, a warning is logged.
+ *
+ * @param {string} [key='a'] - The lowercase character key to be used in combination with Ctrl and Alt.
+ */
+function addAiMarkerShortcut() {
+  var key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'a';
+  if (typeof HTMLElement === 'undefined') {
+    console.error('[AiMarkerShortcut] Environment does not support the DOM. This function must be run in a browser.');
+    return;
+  }
+  document.addEventListener('keydown', function (event) {
+    if (event.ctrlKey && event.altKey && event.key.toLowerCase() === key) {
+      event.preventDefault(); // Prevent any default behavior
+      if (!document.body) {
+        console.warn('[AiMarkerShortcut] <body> element not found. Cannot toggle class. Ensure the DOM is fully loaded when using the shortcut.');
+        return;
+      }
+      document.body.classList.toggle('detect-made-by-ai');
+    }
+  });
+}
+/*
+import { useEffect } from "react";
+
+function KeyPressHandler() {
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.ctrlKey && event.altKey && event.key.toLowerCase() === "a") {
+                event.preventDefault();
+                document.body.classList.toggle("detect-made-by-ai");
+            }
+        };
+        
+        document.addEventListener("keydown", handleKeyDown);
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, []);
+
+    return null;
+}
+
+export default KeyPressHandler;
+*/
+
+},{}],700:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -104929,7 +102394,7 @@ function _backupFileAsync() {
   return _backupFileAsync.apply(this, arguments);
 }
 
-},{"./normalFuncs.mjs":714,"fs":313,"fs/promises":313,"path":579}],714:[function(require,module,exports){
+},{"./normalFuncs.mjs":701,"fs":313,"fs/promises":313,"path":579}],701:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -105384,7 +102849,7 @@ function renameFilePadNumbers(dirPath) {
   }, extensions);
 }
 
-},{"../basics/text.mjs":712,"fs":313,"path":579}],715:[function(require,module,exports){
+},{"../basics/text.mjs":699,"fs":313,"path":579}],702:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -105856,9 +103321,236 @@ var _TinyDragger = _interopRequireDefault(require("./libs/TinyDragger.mjs"));
 var _TinyDomReadyManager = _interopRequireDefault(require("./libs/TinyDomReadyManager.mjs"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 
-},{"../legacy/libs/arraySortPositions.mjs":703,"../legacy/libs/replaceAsync.mjs":704,"../legacy/libs/userLevel.mjs":705,"./basics/array.mjs":706,"./basics/clock.mjs":707,"./basics/fullScreen.mjs":708,"./basics/html.mjs":709,"./basics/objFilter.mjs":710,"./basics/simpleMath.mjs":711,"./basics/text.mjs":712,"./fileManager/asyncFuncs.mjs":713,"./fileManager/normalFuncs.mjs":714,"./libs/ColorSafeStringify.mjs":716,"./libs/TinyDomReadyManager.mjs":717,"./libs/TinyDragDropDetector.mjs":718,"./libs/TinyDragger.mjs":719,"./libs/TinyNotifyCenter.mjs":720,"./libs/TinyPromiseQueue.mjs":721,"./libs/TinyRateLimiter.mjs":722,"./libs/TinyToastNotify.mjs":723}],716:[function(require,module,exports){
-arguments[4][700][0].apply(exports,arguments)
-},{"dup":700}],717:[function(require,module,exports){
+},{"../legacy/libs/arraySortPositions.mjs":690,"../legacy/libs/replaceAsync.mjs":691,"../legacy/libs/userLevel.mjs":692,"./basics/array.mjs":693,"./basics/clock.mjs":694,"./basics/fullScreen.mjs":695,"./basics/html.mjs":696,"./basics/objFilter.mjs":697,"./basics/simpleMath.mjs":698,"./basics/text.mjs":699,"./fileManager/asyncFuncs.mjs":700,"./fileManager/normalFuncs.mjs":701,"./libs/ColorSafeStringify.mjs":703,"./libs/TinyDomReadyManager.mjs":704,"./libs/TinyDragDropDetector.mjs":705,"./libs/TinyDragger.mjs":706,"./libs/TinyNotifyCenter.mjs":707,"./libs/TinyPromiseQueue.mjs":708,"./libs/TinyRateLimiter.mjs":709,"./libs/TinyToastNotify.mjs":710}],703:[function(require,module,exports){
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateMethodInitSpec(e, a) { _checkPrivateRedeclaration(e, a), a.add(e); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+var _colors = /*#__PURE__*/new WeakMap();
+var _ColorSafeStringify_brand = /*#__PURE__*/new WeakSet();
+/**
+ * @typedef {Record<string, string>} ColorsList
+ * Represents a mapping of color keys to ANSI escape codes.
+ */
+var ColorSafeStringify = /*#__PURE__*/function () {
+  /**
+   * Constructs a new instance with an optional base preset or custom override.
+   * @param {ColorsList} [defaultColors] - Optional override for the default color scheme.
+   */
+  function ColorSafeStringify() {
+    var defaultColors = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    _classCallCheck(this, ColorSafeStringify);
+    /**
+     * Internal method to apply ANSI color codes to different parts of a JSON string.
+     * @param {string} str - Raw JSON string to be colorized.
+     * @param {ColorsList} colors - ANSI color mapping to be applied to each JSON element type.
+     * @returns {string} Colorized JSON string.
+     */
+    _classPrivateMethodInitSpec(this, _ColorSafeStringify_brand);
+    /**
+     * Currently active color configuration.
+     * @type {ColorsList}
+     */
+    _classPrivateFieldInitSpec(this, _colors, void 0);
+    _classPrivateFieldSet(_colors, this, _objectSpread(_objectSpread({}, _PRESETS._["default"]), defaultColors));
+  }
+  return _createClass(ColorSafeStringify, [{
+    key: "colorize",
+    value:
+    /**
+     * Colorizes a JSON string using the active or optionally overridden color set.
+     * @param {string} json - The JSON string to format.
+     * @param {ColorsList} [customColors] - Optional temporary color override.
+     * @returns {string}
+     */
+    function colorize(json) {
+      var customColors = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var colors = _objectSpread(_objectSpread({}, _classPrivateFieldGet(_colors, this)), customColors);
+      return _assertClassBrand(_ColorSafeStringify_brand, this, _colorizeJSON).call(this, json, colors);
+    }
+    /**
+     * Returns the currently active color scheme.
+     * @returns {ColorsList}
+     */
+  }, {
+    key: "getColors",
+    value: function getColors() {
+      return _objectSpread({}, _classPrivateFieldGet(_colors, this));
+    }
+    /**
+     * Updates the current color scheme with a partial override.
+     * @param {Partial<ColorsList>} newColors
+     */
+  }, {
+    key: "updateColors",
+    value: function updateColors(newColors) {
+      Object.assign(_classPrivateFieldGet(_colors, this), newColors);
+    }
+    /**
+     * Resets the current color scheme to the default preset.
+     */
+  }, {
+    key: "resetColors",
+    value: function resetColors() {
+      _classPrivateFieldSet(_colors, this, _objectSpread({}, _PRESETS._["default"]));
+    }
+    /**
+     * Loads a color preset by name.
+     * @param {string} presetName - Name of the preset to load.
+     * @throws Will throw if the preset doesn't exist.
+     */
+  }, {
+    key: "loadColorPreset",
+    value: function loadColorPreset(presetName) {
+      var preset = _PRESETS._[presetName];
+      if (!preset) throw new Error("Preset \"".concat(presetName, "\" not found."));
+      _classPrivateFieldSet(_colors, this, _objectSpread({}, preset));
+    }
+    /**
+     * Saves a new custom color preset.
+     * @param {string} name - Name of the new preset.
+     * @param {ColorsList} colors - ANSI color map to save.
+     */
+  }, {
+    key: "saveColorPreset",
+    value: function saveColorPreset(name, colors) {
+      _PRESETS._[name] = _objectSpread({}, colors);
+    }
+    /**
+     * Returns a list of all available color preset names.
+     * @returns {string[]}
+     */
+  }, {
+    key: "getAvailablePresets",
+    value: function getAvailablePresets() {
+      return Object.keys(_PRESETS._);
+    }
+  }]);
+}();
+function _colorizeJSON(str, colors) {
+  /** @type {{ marker: string, key: string }[]} */
+  var keyMatches = [];
+  // Colorize numeric values
+  str = str.replace(/(?<!")\b(-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)\b(?!")/g, "".concat(colors.number, "$1").concat(colors.reset));
+  // Replace keys with temporary markers for later colorization
+  str = str.replace(/"([^"]+)":/g, function (_, key) {
+    var marker = "___KEY".concat(keyMatches.length, "___");
+    keyMatches.push({
+      marker: marker,
+      key: key
+    });
+    return "".concat(marker, ":"); // Keep the colon for valid syntax
+  });
+  // Replace strings and apply specific colors based on their content
+  str = str.replace(/"(?:\\.|[^"\\])*?"/g, function (match) {
+    var val = match.slice(1, -1); // Remove surrounding quotes
+    if (/^(https?|ftp):\/\/[^\s]+$/i.test(val)) {
+      return "".concat(colors.string_url).concat(match).concat(colors.reset);
+    }
+    if (/^(true|false|null)$/.test(val)) {
+      return "".concat(colors.string_bool).concat(match).concat(colors.reset);
+    }
+    if (/^-?\d+(\.\d+)?([eE][+-]?\d+)?$/.test(val)) {
+      return "".concat(colors.string_number).concat(match).concat(colors.reset);
+    }
+    return "".concat(colors.string).concat(match).concat(colors.reset);
+  });
+  // Replace markers with colorized keys
+  for (var _i = 0, _keyMatches = keyMatches; _i < _keyMatches.length; _i++) {
+    var _keyMatches$_i = _keyMatches[_i],
+      marker = _keyMatches$_i.marker,
+      key = _keyMatches$_i.key;
+    var regex = new RegExp(marker, 'g');
+    str = str.replace(regex, "".concat(colors.key, "\"").concat(key, "\"").concat(colors.reset));
+  }
+  // Colorize boolean values
+  str = str.replace(/(?<!")\b(true|false)\b(?!")/g, "".concat(colors["boolean"], "$1").concat(colors.reset));
+  // Colorize null values
+  str = str.replace(/(?<!")\bnull\b(?!")/g, "".concat(colors["null"], "null").concat(colors.reset));
+  // Highlight special placeholder values
+  str = str.replace(/\[Circular\]/g, "".concat(colors.special, "[Circular]").concat(colors.reset));
+  str = str.replace(/\[undefined\]/g, "".concat(colors.special, "[undefined]").concat(colors.reset));
+  // Colorize function string representations
+  str = str.replace(/"function[^]*?[^\\]"/g, "".concat(colors.func, "$&").concat(colors.reset));
+  return str;
+}
+/**
+ * Preset collections (internal and user-defined).
+ * @type {Record<string, ColorsList>}
+ * @static
+ */
+var _PRESETS = {
+  _: {
+    "default": {
+      reset: '\x1b[0m',
+      key: '\x1b[36m',
+      // Cyan (object keys)
+      string: '\x1b[32m',
+      // Green (regular strings)
+      string_url: '\x1b[34m',
+      // Blue (URLs)
+      string_bool: '\x1b[35m',
+      // Magenta (boolean/null in string form)
+      string_number: '\x1b[33m',
+      // Yellow (numbers in string form)
+      number: '\x1b[33m',
+      // Yellow (raw numbers)
+      "boolean": '\x1b[35m',
+      // Magenta (true/false)
+      "null": '\x1b[1;30m',
+      // Gray (null)
+      special: '\x1b[31m',
+      // Red (e.g., [Circular], [undefined])
+      func: '\x1b[90m' // Dim (function string representations)
+    },
+    solarized: {
+      reset: '\x1b[0m',
+      key: '\x1b[38;5;37m',
+      string: '\x1b[38;5;136m',
+      string_url: '\x1b[38;5;33m',
+      string_bool: '\x1b[38;5;166m',
+      string_number: '\x1b[38;5;136m',
+      number: '\x1b[38;5;136m',
+      "boolean": '\x1b[38;5;166m',
+      "null": '\x1b[38;5;241m',
+      special: '\x1b[38;5;160m',
+      func: '\x1b[38;5;244m'
+    },
+    monokai: {
+      reset: '\x1b[0m',
+      key: '\x1b[38;5;81m',
+      string: '\x1b[38;5;114m',
+      string_url: '\x1b[38;5;75m',
+      string_bool: '\x1b[38;5;204m',
+      string_number: '\x1b[38;5;221m',
+      number: '\x1b[38;5;221m',
+      "boolean": '\x1b[38;5;204m',
+      "null": '\x1b[38;5;241m',
+      special: '\x1b[38;5;160m',
+      func: '\x1b[38;5;102m'
+    }
+  }
+};
+var _default = exports["default"] = ColorSafeStringify;
+
+},{}],704:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -106071,7 +103763,7 @@ function _invokeHandler(handler) {
 }
 var _default = exports["default"] = TinyDomReadyManager;
 
-},{}],718:[function(require,module,exports){
+},{}],705:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -106352,7 +104044,7 @@ function _unbindEvents() {
 }
 var _default = exports["default"] = TinyDragDropDetector;
 
-},{}],719:[function(require,module,exports){
+},{}],706:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -107266,7 +104958,7 @@ function _checkDestroy() {
 }
 var _default = exports["default"] = TinyDragger;
 
-},{"../basics/html.mjs":709,"../basics/objFilter.mjs":710}],720:[function(require,module,exports){
+},{"../basics/html.mjs":696,"../basics/objFilter.mjs":697}],707:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -107724,11 +105416,1099 @@ function _updateCount(value) {
 }
 var _default = exports["default"] = TinyNotifyCenter;
 
-},{}],721:[function(require,module,exports){
-arguments[4][701][0].apply(exports,arguments)
-},{"dup":701}],722:[function(require,module,exports){
-arguments[4][702][0].apply(exports,arguments)
-},{"_process":587,"dup":702}],723:[function(require,module,exports){
+},{}],708:[function(require,module,exports){
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateMethodInitSpec(e, a) { _checkPrivateRedeclaration(e, a), a.add(e); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+var _queue = /*#__PURE__*/new WeakMap();
+var _running = /*#__PURE__*/new WeakMap();
+var _timeouts = /*#__PURE__*/new WeakMap();
+var _blacklist = /*#__PURE__*/new WeakMap();
+var _TinyPromiseQueue_brand = /*#__PURE__*/new WeakSet();
+/**
+ * @typedef {Object} QueuedTask
+ * @property {(...args: any[]) => Promise<any>|Promise<any>} task - The async task to execute.
+ * @property {(value: any) => any} resolve - The resolve function from the Promise.
+ * @property {(reason?: any) => any} reject - The reject function from the Promise.
+ * @property {string|undefined} [id] - Optional identifier for the task.
+ * @property {string|null|undefined} [marker] - Optional marker for the task.
+ * @property {number|null|undefined} [delay] - Optional delay (in ms) before the task is executed.
+ */
+/**
+ * A queue system for managing and executing asynchronous tasks sequentially, one at a time.
+ *
+ * Tasks can be delayed, reordered, canceled, and processed in strict order. The queue ensures that each task
+ * is executed after the previous one finishes, and any task can be skipped or canceled if needed.
+ *
+ * @class
+ */
+var TinyPromiseQueue = /*#__PURE__*/function () {
+  function TinyPromiseQueue() {
+    _classCallCheck(this, TinyPromiseQueue);
+    /**
+     * Processes the a normal task.
+     *
+     * @param {QueuedTask} data
+     *
+     * @returns {Promise<void>}
+     */
+    _classPrivateMethodInitSpec(this, _TinyPromiseQueue_brand);
+    /** @type {QueuedTask[]} */
+    _classPrivateFieldInitSpec(this, _queue, []);
+    _classPrivateFieldInitSpec(this, _running, false);
+    /** @type {Record<string, ReturnType<typeof setTimeout>>} */
+    _classPrivateFieldInitSpec(this, _timeouts, {});
+    /** @type {Set<string>} */
+    _classPrivateFieldInitSpec(this, _blacklist, new Set());
+  }
+  return _createClass(TinyPromiseQueue, [{
+    key: "isRunning",
+    value:
+    /**
+     * Returns whether the queue is currently processing a task.
+     *
+     * @returns {boolean}
+     */
+    function isRunning() {
+      return _classPrivateFieldGet(_running, this);
+    }
+  }, {
+    key: "getIndexById",
+    value:
+    /**
+     * Returns the index of a task by its ID.
+     *
+     * @param {string} id The ID of the task to locate.
+     * @returns {number} The index of the task in the queue, or -1 if not found.
+     */
+    function getIndexById(id) {
+      return _classPrivateFieldGet(_queue, this).findIndex(function (item) {
+        return item.id === id;
+      });
+    }
+    /**
+     * Returns a list of IDs for all tasks currently in the queue.
+     *
+     * @returns {{ index: number, id: string }[]} An array of task IDs currently queued.
+     */
+  }, {
+    key: "getQueuedIds",
+    value: function getQueuedIds() {
+      // @ts-ignore
+      return _classPrivateFieldGet(_queue, this).map(function (item, index) {
+        return {
+          index: index,
+          id: item.id
+        };
+      }).filter(function (entry) {
+        return typeof entry.id === 'string';
+      });
+    }
+    /**
+     * Reorders a task in the queue from one index to another.
+     *
+     * @param {number} fromIndex The current index of the task to move.
+     * @param {number} toIndex The index where the task should be placed.
+     */
+  }, {
+    key: "reorderQueue",
+    value: function reorderQueue(fromIndex, toIndex) {
+      if (typeof fromIndex !== 'number' || typeof toIndex !== 'number' || fromIndex < 0 || toIndex < 0 || fromIndex >= _classPrivateFieldGet(_queue, this).length || toIndex >= _classPrivateFieldGet(_queue, this).length) return;
+      var _classPrivateFieldGet2 = _classPrivateFieldGet(_queue, this).splice(fromIndex, 1),
+        _classPrivateFieldGet3 = _slicedToArray(_classPrivateFieldGet2, 1),
+        item = _classPrivateFieldGet3[0];
+      _classPrivateFieldGet(_queue, this).splice(toIndex, 0, item);
+    }
+    /**
+     * Inserts a point in the queue where subsequent tasks will be grouped and executed together in a Promise.all.
+     * If the queue is currently empty, behaves like a regular promise.
+     *
+     * @param {(...args: any[]) => Promise<any>|Promise<any>} task A function that returns a Promise.
+     * @param {string} [id] Optional ID to identify the task in the queue.
+     * @returns {Promise<any>} A Promise that resolves or rejects with the result of the task once it's processed.
+     * @throws {Error} Throws if param is invalid.
+     */
+  }, {
+    key: "enqueuePoint",
+    value: (function () {
+      var _enqueuePoint = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(task, id) {
+        var _this = this;
+        return _regenerator().w(function (_context) {
+          while (1) switch (_context.n) {
+            case 0:
+              if (!(typeof task !== 'function')) {
+                _context.n = 1;
+                break;
+              }
+              return _context.a(2, Promise.reject(new Error('Task must be a function returning a Promise.')));
+            case 1:
+              if (!(typeof id !== 'undefined' && typeof id !== 'string')) {
+                _context.n = 2;
+                break;
+              }
+              throw new Error('The "id" parameter must be a string.');
+            case 2:
+              if (_classPrivateFieldGet(_running, this)) {
+                _context.n = 3;
+                break;
+              }
+              return _context.a(2, task());
+            case 3:
+              return _context.a(2, new Promise(function (resolve, reject) {
+                _classPrivateFieldGet(_queue, _this).push({
+                  marker: 'POINT_MARKER',
+                  task: task,
+                  resolve: resolve,
+                  reject: reject,
+                  id: id
+                });
+                _assertClassBrand(_TinyPromiseQueue_brand, _this, _processQueue).call(_this);
+              }));
+          }
+        }, _callee, this);
+      }));
+      function enqueuePoint(_x, _x2) {
+        return _enqueuePoint.apply(this, arguments);
+      }
+      return enqueuePoint;
+    }()
+    /**
+     * Adds a new async task to the queue and ensures it runs in order after previous tasks.
+     * Optionally, a delay can be added before the task is executed.
+     *
+     * If the task is canceled before execution, it will be rejected with the message:
+     * "The function was canceled on TinyPromiseQueue."
+     *
+     * @param {(...args: any[]) => Promise<any>|Promise<any>} task A function that returns a Promise to be executed sequentially.
+     * @param {number|null} [delay] Optional delay (in ms) before the task is executed.
+     * @param {string} [id] Optional ID to identify the task in the queue.
+     * @returns {Promise<any>} A Promise that resolves or rejects with the result of the task once it's processed.
+     * @throws {Error} Throws if param is invalid.
+     */
+    )
+  }, {
+    key: "enqueue",
+    value: function enqueue(task, delay, id) {
+      var _this2 = this;
+      if (typeof task !== 'function') return Promise.reject(new Error('Task must be a function returning a Promise.'));
+      if (typeof delay !== 'undefined' && (typeof delay !== 'number' || delay < 0)) return Promise.reject(new Error('Delay must be a positive number or undefined.'));
+      if (typeof id !== 'undefined' && typeof id !== 'string') throw new Error('The "id" parameter must be a string.');
+      return new Promise(function (resolve, reject) {
+        _classPrivateFieldGet(_queue, _this2).push({
+          task: task,
+          resolve: resolve,
+          reject: reject,
+          id: id,
+          delay: delay
+        });
+        _assertClassBrand(_TinyPromiseQueue_brand, _this2, _processQueue).call(_this2);
+      });
+    }
+    /**
+     * Cancels a scheduled delay and removes the task from the queue.
+     * Adds the ID to a blacklist so the task is skipped if already being processed.
+     *
+     * @param {string} id The ID of the task to cancel.
+     * @returns {boolean} True if a delay was cancelled and the task was removed.
+     * @throws {Error} Throws if `id` is not a string.
+     */
+  }, {
+    key: "cancelTask",
+    value: function cancelTask(id) {
+      if (typeof id !== 'string') throw new Error('The "id" parameter must be a string.');
+      var cancelled = false;
+      if (id in _classPrivateFieldGet(_timeouts, this)) {
+        clearTimeout(_classPrivateFieldGet(_timeouts, this)[id]);
+        delete _classPrivateFieldGet(_timeouts, this)[id];
+        cancelled = true;
+      }
+      var index = this.getIndexById(id);
+      if (index !== -1) {
+        var _removed$reject;
+        var _classPrivateFieldGet4 = _classPrivateFieldGet(_queue, this).splice(index, 1),
+          _classPrivateFieldGet5 = _slicedToArray(_classPrivateFieldGet4, 1),
+          removed = _classPrivateFieldGet5[0];
+        removed === null || removed === void 0 || (_removed$reject = removed.reject) === null || _removed$reject === void 0 || _removed$reject.call(removed, new Error('The function was canceled on TinyPromiseQueue.'));
+        cancelled = true;
+      }
+      if (cancelled) _classPrivateFieldGet(_blacklist, this).add(id);
+      return cancelled;
+    }
+  }]);
+}();
+function _normalProcessQueue(_x3) {
+  return _normalProcessQueue2.apply(this, arguments);
+}
+function _normalProcessQueue2() {
+  _normalProcessQueue2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(data) {
+    var _this3 = this;
+    var task, resolve, reject, delay, id, result, _t;
+    return _regenerator().w(function (_context2) {
+      while (1) switch (_context2.n) {
+        case 0:
+          if (!(data && typeof data.task === 'function' && typeof data.resolve === 'function' && typeof data.reject === 'function')) {
+            _context2.n = 7;
+            break;
+          }
+          task = data.task, resolve = data.resolve, reject = data.reject, delay = data.delay, id = data.id;
+          _context2.p = 1;
+          if (!(id && _classPrivateFieldGet(_blacklist, this).has(id))) {
+            _context2.n = 2;
+            break;
+          }
+          reject(new Error('The function was canceled on TinyPromiseQueue.'));
+          _classPrivateFieldGet(_blacklist, this)["delete"](id);
+          _classPrivateFieldSet(_running, this, false);
+          _assertClassBrand(_TinyPromiseQueue_brand, this, _processQueue).call(this);
+          return _context2.a(2);
+        case 2:
+          if (!(delay && id)) {
+            _context2.n = 3;
+            break;
+          }
+          _context2.n = 3;
+          return new Promise(function (resolveDelay) {
+            var timeoutId = setTimeout(function () {
+              delete _classPrivateFieldGet(_timeouts, _this3)[id];
+              resolveDelay(null);
+            }, delay);
+            _classPrivateFieldGet(_timeouts, _this3)[id] = timeoutId;
+          });
+        case 3:
+          _context2.n = 4;
+          return task();
+        case 4:
+          result = _context2.v;
+          resolve(result);
+          _context2.n = 6;
+          break;
+        case 5:
+          _context2.p = 5;
+          _t = _context2.v;
+          reject(_t);
+        case 6:
+          _context2.p = 6;
+          _classPrivateFieldSet(_running, this, false);
+          _assertClassBrand(_TinyPromiseQueue_brand, this, _processQueue).call(this);
+          return _context2.f(6);
+        case 7:
+          return _context2.a(2);
+      }
+    }, _callee2, this, [[1, 5, 6, 7]]);
+  }));
+  return _normalProcessQueue2.apply(this, arguments);
+}
+/**
+ * Processes a group task.
+ *
+ * @returns {Promise<void>}
+ */
+function _groupProcessQueue() {
+  return _groupProcessQueue2.apply(this, arguments);
+}
+function _groupProcessQueue2() {
+  _groupProcessQueue2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4() {
+    var _this4 = this;
+    var grouped, _classPrivateFieldGet6;
+    return _regenerator().w(function (_context4) {
+      while (1) switch (_context4.n) {
+        case 0:
+          /** @type {Array<QueuedTask>} */
+          grouped = [];
+          while (_classPrivateFieldGet(_queue, this).length && ((_classPrivateFieldGet6 = _classPrivateFieldGet(_queue, this)[0]) === null || _classPrivateFieldGet6 === void 0 ? void 0 : _classPrivateFieldGet6.marker) === 'POINT_MARKER') {
+            // @ts-ignore
+            grouped.push(_classPrivateFieldGet(_queue, this).shift());
+          }
+          if (!(grouped.length === 0)) {
+            _context4.n = 1;
+            break;
+          }
+          _classPrivateFieldSet(_running, this, false);
+          _assertClassBrand(_TinyPromiseQueue_brand, this, _processQueue).call(this);
+          return _context4.a(2);
+        case 1:
+          _context4.n = 2;
+          return Promise.all(grouped.map(function (_ref) {
+            var task = _ref.task,
+              resolve = _ref.resolve,
+              reject = _ref.reject,
+              id = _ref.id;
+            return new Promise(/*#__PURE__*/function () {
+              var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(pResolve) {
+                return _regenerator().w(function (_context3) {
+                  while (1) switch (_context3.n) {
+                    case 0:
+                      if (!(id && _classPrivateFieldGet(_blacklist, _this4).has(id))) {
+                        _context3.n = 1;
+                        break;
+                      }
+                      _classPrivateFieldGet(_blacklist, _this4)["delete"](id);
+                      reject(new Error('The function was canceled on TinyPromiseQueue.'));
+                      pResolve(true);
+                      return _context3.a(2);
+                    case 1:
+                      _context3.n = 2;
+                      return task().then(resolve)["catch"](reject);
+                    case 2:
+                      pResolve(true);
+                    case 3:
+                      return _context3.a(2);
+                  }
+                }, _callee3);
+              }));
+              return function (_x4) {
+                return _ref2.apply(this, arguments);
+              };
+            }());
+          }));
+        case 2:
+          _classPrivateFieldSet(_running, this, false);
+          _assertClassBrand(_TinyPromiseQueue_brand, this, _processQueue).call(this);
+        case 3:
+          return _context4.a(2);
+      }
+    }, _callee4, this);
+  }));
+  return _groupProcessQueue2.apply(this, arguments);
+}
+/**
+ * Processes the next task in the queue if not already running.
+ * Ensures tasks are executed in order, one at a time.
+ *
+ * @returns {Promise<void>}
+ */
+function _processQueue() {
+  return _processQueue2.apply(this, arguments);
+}
+function _processQueue2() {
+  _processQueue2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5() {
+    var _classPrivateFieldGet7, _classPrivateFieldGet8;
+    var data;
+    return _regenerator().w(function (_context5) {
+      while (1) switch (_context5.n) {
+        case 0:
+          if (!(_classPrivateFieldGet(_running, this) || _classPrivateFieldGet(_queue, this).length === 0)) {
+            _context5.n = 1;
+            break;
+          }
+          return _context5.a(2);
+        case 1:
+          _classPrivateFieldSet(_running, this, true);
+          if (typeof ((_classPrivateFieldGet7 = _classPrivateFieldGet(_queue, this)[0]) === null || _classPrivateFieldGet7 === void 0 ? void 0 : _classPrivateFieldGet7.marker) !== 'string' || ((_classPrivateFieldGet8 = _classPrivateFieldGet(_queue, this)[0]) === null || _classPrivateFieldGet8 === void 0 ? void 0 : _classPrivateFieldGet8.marker) !== 'POINT_MARKER') {
+            data = _classPrivateFieldGet(_queue, this).shift(); // @ts-ignore
+            _assertClassBrand(_TinyPromiseQueue_brand, this, _normalProcessQueue).call(this, data);
+          } else _assertClassBrand(_TinyPromiseQueue_brand, this, _groupProcessQueue).call(this);
+        case 2:
+          return _context5.a(2);
+      }
+    }, _callee5, this);
+  }));
+  return _processQueue2.apply(this, arguments);
+}
+var _default = exports["default"] = TinyPromiseQueue;
+
+},{}],709:[function(require,module,exports){
+(function (process){(function (){
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+var _maxMemory = /*#__PURE__*/new WeakMap();
+var _cleanupTimer = /*#__PURE__*/new WeakMap();
+var _maxHits = /*#__PURE__*/new WeakMap();
+var _interval = /*#__PURE__*/new WeakMap();
+var _cleanupInterval = /*#__PURE__*/new WeakMap();
+var _maxIdle = /*#__PURE__*/new WeakMap();
+var _onMemoryExceeded = /*#__PURE__*/new WeakMap();
+var _onGroupExpired = /*#__PURE__*/new WeakMap();
+/** @typedef {(groupId: string) => void} OnMemoryExceeded */
+/** @typedef {(groupId: string) => void} OnGroupExpired */
+/**
+ * Class representing a flexible rate limiter per user or group.
+ *
+ * This rate limiter supports limiting per user or per group by mapping
+ * userIds to a common groupId. All users within the same group share
+ * rate limits.
+ */
+var TinyRateLimiter = /*#__PURE__*/function () {
+  /**
+   * @param {Object} options
+   * @param {number|null} [options.maxMemory] - Max memory allowed
+   * @param {number} [options.maxHits] - Max interactions allowed
+   * @param {number} [options.interval] - Time window in milliseconds
+   * @param {number} [options.cleanupInterval] - Interval for automatic cleanup (ms)
+   * @param {number} [options.maxIdle=300000] - Max idle time for a user before being cleaned (ms)
+   */
+  function TinyRateLimiter(_ref) {
+    var _this = this;
+    var maxHits = _ref.maxHits,
+      interval = _ref.interval,
+      cleanupInterval = _ref.cleanupInterval,
+      _ref$maxIdle = _ref.maxIdle,
+      maxIdle = _ref$maxIdle === void 0 ? 300000 : _ref$maxIdle,
+      _ref$maxMemory = _ref.maxMemory,
+      maxMemory = _ref$maxMemory === void 0 ? 100000 : _ref$maxMemory;
+    _classCallCheck(this, TinyRateLimiter);
+    /** @type {number|null} */
+    _classPrivateFieldInitSpec(this, _maxMemory, null);
+    /** @type {NodeJS.Timeout|null} */
+    _classPrivateFieldInitSpec(this, _cleanupTimer, null);
+    /** @type {number|null|undefined} */
+    _classPrivateFieldInitSpec(this, _maxHits, null);
+    /** @type {number|null|undefined} */
+    _classPrivateFieldInitSpec(this, _interval, null);
+    /** @type {number|null|undefined} */
+    _classPrivateFieldInitSpec(this, _cleanupInterval, null);
+    /** @type {number|null|undefined} */
+    _classPrivateFieldInitSpec(this, _maxIdle, null);
+    /** @type {Map<string, number[]>} */
+    _defineProperty(this, "groupData", new Map());
+    // groupId -> timestamps[]
+    /** @type {Map<string, number>} */
+    _defineProperty(this, "lastSeen", new Map());
+    // groupId -> timestamp
+    /** @type {Map<string, string>} */
+    _defineProperty(this, "userToGroup", new Map());
+    // userId -> groupId
+    /** @type {Map<string, boolean>} */
+    _defineProperty(this, "groupFlags", new Map());
+    // groupId -> boolean
+    /**
+     * @type {Map<string, number>}
+     * Stores TTL (in ms) for each groupId individually
+     */
+    _defineProperty(this, "groupTTL", new Map());
+    /**
+     * @type {null|OnMemoryExceeded}
+     */
+    _classPrivateFieldInitSpec(this, _onMemoryExceeded, null);
+    /**
+     * @type {null|OnGroupExpired}
+     */
+    _classPrivateFieldInitSpec(this, _onGroupExpired, null);
+    /** @param {number|undefined} val */
+    var isPositiveInteger = function isPositiveInteger(val) {
+      return typeof val === 'number' && Number.isFinite(val) && val >= 1 && Number.isInteger(val);
+    };
+    var isMaxHitsValid = isPositiveInteger(maxHits);
+    var isIntervalValid = isPositiveInteger(interval);
+    var isCleanupValid = isPositiveInteger(cleanupInterval);
+    var isMaxIdleValid = isPositiveInteger(maxIdle);
+    if (!isMaxHitsValid && !isIntervalValid) throw new Error("RateLimiter requires at least one valid option: 'maxHits' or 'interval'.");
+    if (maxHits !== undefined && !isMaxHitsValid) throw new Error("'maxHits' must be a positive integer if defined.");
+    if (interval !== undefined && !isIntervalValid) throw new Error("'interval' must be a positive integer in milliseconds if defined.");
+    if (cleanupInterval !== undefined && !isCleanupValid) throw new Error("'cleanupInterval' must be a positive integer in milliseconds if defined.");
+    if (!isMaxIdleValid) throw new Error("'maxIdle' must be a positive integer in milliseconds.");
+    if (typeof maxMemory === 'number' && Number.isFinite(maxMemory) && maxMemory > 0) {
+      _classPrivateFieldSet(_maxMemory, this, Math.floor(maxMemory));
+    } else if (maxMemory === null || maxMemory === undefined) {
+      _classPrivateFieldSet(_maxMemory, this, null);
+    } else {
+      throw new Error('maxMemory must be a positive number or null');
+    }
+    _classPrivateFieldSet(_maxHits, this, isMaxHitsValid ? maxHits : null);
+    _classPrivateFieldSet(_interval, this, isIntervalValid ? interval : null);
+    _classPrivateFieldSet(_cleanupInterval, this, isCleanupValid ? cleanupInterval : null);
+    _classPrivateFieldSet(_maxIdle, this, maxIdle);
+    // Start automatic cleanup only if cleanupInterval is valid
+    if (_classPrivateFieldGet(_cleanupInterval, this) !== null) _classPrivateFieldSet(_cleanupTimer, this, setInterval(function () {
+      return _this._cleanup();
+    }, _classPrivateFieldGet(_cleanupInterval, this)));
+  }
+  /**
+   * Check if a given ID is a groupId (not a userId)
+   * @param {string} id
+   * @returns {boolean}
+   */
+  return _createClass(TinyRateLimiter, [{
+    key: "setOnMemoryExceeded",
+    value:
+    /**
+     * Set the callback to be triggered when a group exceeds its limit
+     * @param {OnMemoryExceeded} callback
+     */
+    function setOnMemoryExceeded(callback) {
+      if (typeof callback !== 'function') throw new Error('onMemoryExceeded must be a function');
+      _classPrivateFieldSet(_onMemoryExceeded, this, callback);
+    }
+    /**
+     * Clear the onMemoryExceeded callback
+     */
+  }, {
+    key: "clearOnMemoryExceeded",
+    value: function clearOnMemoryExceeded() {
+      _classPrivateFieldSet(_onMemoryExceeded, this, null);
+    }
+  }, {
+    key: "setOnGroupExpired",
+    value:
+    /**
+     * Set the callback to be triggered when a group expires and is removed.
+     *
+     * This callback is called automatically during cleanup when a group
+     * becomes inactive for longer than its TTL.
+     *
+     * @param {OnGroupExpired} callback - A function that receives the expired groupId.
+     */
+    function setOnGroupExpired(callback) {
+      if (typeof callback !== 'function') throw new Error('onGroupExpired must be a function');
+      _classPrivateFieldSet(_onGroupExpired, this, callback);
+    }
+    /**
+     * Clear the onGroupExpired callback
+     */
+  }, {
+    key: "clearOnGroupExpired",
+    value: function clearOnGroupExpired() {
+      _classPrivateFieldSet(_onGroupExpired, this, null);
+    }
+  }, {
+    key: "isGroupId",
+    value: function isGroupId(id) {
+      var result = this.groupFlags.get(id);
+      return typeof result === 'boolean' ? result : false;
+    }
+    /**
+     * Get all user IDs that belong to a given group.
+     * @param {string} groupId
+     * @returns {string[]}
+     */
+  }, {
+    key: "getUsersInGroup",
+    value: function getUsersInGroup(groupId) {
+      var users = [];
+      var _iterator = _createForOfIteratorHelper(this.userToGroup.entries()),
+        _step;
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var _step$value = _slicedToArray(_step.value, 2),
+            userId = _step$value[0],
+            assignedGroup = _step$value[1];
+          if (assignedGroup === groupId) {
+            users.push(userId);
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+      return users;
+    }
+    /**
+     * Set TTL (in milliseconds) for a specific group
+     * @param {string} groupId
+     * @param {number} ttl
+     */
+  }, {
+    key: "setGroupTTL",
+    value: function setGroupTTL(groupId, ttl) {
+      if (typeof ttl !== 'number' || !Number.isFinite(ttl) || ttl <= 0) throw new Error('TTL must be a positive number in milliseconds');
+      this.groupTTL.set(groupId, ttl);
+    }
+    /**
+     * Get TTL (in ms) for a specific group.
+     * @param {string} groupId
+     * @returns {number|null}
+     */
+  }, {
+    key: "getGroupTTL",
+    value: function getGroupTTL(groupId) {
+      var _this$groupTTL$get;
+      return (_this$groupTTL$get = this.groupTTL.get(groupId)) !== null && _this$groupTTL$get !== void 0 ? _this$groupTTL$get : null;
+    }
+    /**
+     * Delete the TTL setting for a specific group
+     * @param {string} groupId
+     */
+  }, {
+    key: "deleteGroupTTL",
+    value: function deleteGroupTTL(groupId) {
+      this.groupTTL["delete"](groupId);
+    }
+    /**
+     * Assign a userId to a groupId, with merge if user has existing data.
+     * @param {string} userId
+     * @param {string} groupId
+     * @throws {Error} If userId is already assigned to a different group
+     */
+  }, {
+    key: "assignToGroup",
+    value: function assignToGroup(userId, groupId) {
+      var existingGroup = this.userToGroup.get(userId);
+      if (existingGroup && existingGroup !== groupId) throw new Error("User ".concat(userId, " is already assigned to group ").concat(existingGroup));
+      // If the user is already in the group, nothing needs to be done
+      if (existingGroup === groupId) return;
+      var userData = this.groupData.get(userId);
+      // Associates the user to the group
+      if (this.isGroupId(userId)) {
+        var _iterator2 = _createForOfIteratorHelper(this.userToGroup.entries()),
+          _step2;
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var _step2$value = _slicedToArray(_step2.value, 2),
+              uid = _step2$value[0],
+              gId = _step2$value[1];
+            if (gId === userId) this.userToGroup.set(uid, groupId);
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+        this.userToGroup["delete"](userId);
+      } else this.userToGroup.set(userId, groupId);
+      // If the user has no data, nothing needs to be done
+      if (!userData) return;
+      var groupData = this.groupData.get(groupId);
+      if (groupData) {
+        var _iterator3 = _createForOfIteratorHelper(userData),
+          _step3;
+        try {
+          for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+            var item = _step3.value;
+            groupData.push(item);
+          }
+        } catch (err) {
+          _iterator3.e(err);
+        } finally {
+          _iterator3.f();
+        }
+      } else {
+        var newData = [];
+        var _iterator4 = _createForOfIteratorHelper(userData),
+          _step4;
+        try {
+          for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+            var _item = _step4.value;
+            newData.push(_item);
+          }
+        } catch (err) {
+          _iterator4.e(err);
+        } finally {
+          _iterator4.f();
+        }
+        this.groupData.set(groupId, newData);
+      }
+      this.lastSeen.set(groupId, Date.now());
+      // Removes individual data as they are now in the group
+      this.groupFlags["delete"](userId);
+      this.groupData["delete"](userId);
+      this.lastSeen["delete"](userId);
+      this.groupTTL["delete"](userId);
+      this.groupFlags.set(groupId, true);
+    }
+    /**
+     * Get the groupId for a given userId
+     * @param {string} userId
+     * @returns {string}
+     */
+  }, {
+    key: "getGroupId",
+    value: function getGroupId(userId) {
+      return this.userToGroup.get(userId) || userId; // fallback: use userId as own group
+    }
+    /**
+     * Register a hit for a specific user
+     * @param {string} userId
+     */
+  }, {
+    key: "hit",
+    value: function hit(userId) {
+      var groupId = this.getGroupId(userId);
+      var now = Date.now();
+      if (!this.groupData.has(groupId)) {
+        this.groupData.set(groupId, []);
+        this.groupFlags.set(groupId, false);
+      }
+      var history = this.groupData.get(groupId);
+      if (!history) throw new Error("No data found for groupId: ".concat(groupId));
+      history.push(now);
+      this.lastSeen.set(groupId, now);
+      // Clean up old entries
+      if (_classPrivateFieldGet(_interval, this) !== null) {
+        var interval = this.getInterval();
+        var cutoff = now - interval;
+        while (history.length && history[0] < cutoff) {
+          history.shift();
+        }
+      }
+      // Optional: keep only the last N entries for memory optimization
+      if (_classPrivateFieldGet(_maxMemory, this) !== null && typeof _classPrivateFieldGet(_maxMemory, this) === 'number') {
+        if (history.length > _classPrivateFieldGet(_maxMemory, this)) {
+          history.splice(0, history.length - _classPrivateFieldGet(_maxMemory, this));
+          if (typeof _classPrivateFieldGet(_onMemoryExceeded, this) === 'function') _classPrivateFieldGet(_onMemoryExceeded, this).call(this, groupId);
+        }
+      }
+    }
+    /**
+     * Check if the user (via their group) is currently rate limited
+     * @param {string} userId
+     * @returns {boolean}
+     */
+  }, {
+    key: "isRateLimited",
+    value: function isRateLimited(userId) {
+      var groupId = this.getGroupId(userId);
+      if (!this.groupData.has(groupId)) return false;
+      var history = this.groupData.get(groupId);
+      if (!history) throw new Error("No data found for groupId: ".concat(groupId));
+      if (_classPrivateFieldGet(_interval, this) !== null) {
+        var now = Date.now();
+        var interval = this.getInterval();
+        var cutoff = now - interval;
+        var count = 0;
+        for (var i = history.length - 1; i >= 0; i--) {
+          if (history[i] > cutoff) count++;else break;
+        }
+        if (_classPrivateFieldGet(_maxHits, this) !== null) return count > this.getMaxHits();
+        return count > 0;
+      }
+      if (_classPrivateFieldGet(_maxHits, this) !== null) {
+        return history.length > this.getMaxHits();
+      }
+      return false;
+    }
+    /**
+     * Manually reset group data
+     * @param {string} groupId
+     */
+  }, {
+    key: "resetGroup",
+    value: function resetGroup(groupId) {
+      this.groupFlags["delete"](groupId);
+      this.groupData["delete"](groupId);
+      this.lastSeen["delete"](groupId);
+      this.groupTTL["delete"](groupId);
+    }
+    /**
+     * Manually reset user data.
+     *
+     * @deprecated Use `resetUserGroup(userId)` instead. This method will be removed in future versions.
+     * @param {string} userId
+     * @returns {void}
+     */
+  }, {
+    key: "reset",
+    value: function reset(userId) {
+      var _process;
+      if (((_process = process) === null || _process === void 0 || (_process = _process.env) === null || _process === void 0 ? void 0 : _process.NODE_ENV) !== 'production') console.warn("[TinyRateLimiter] 'reset()' is deprecated. Use 'resetUserGroup()' instead.");
+      return this.resetUserGroup(userId);
+    }
+    /**
+     * Manually reset a user mapping
+     * @param {string} userId
+     */
+  }, {
+    key: "resetUserGroup",
+    value: function resetUserGroup(userId) {
+      this.userToGroup["delete"](userId);
+    }
+    /**
+     * Set custom timestamps to a group
+     * @param {string} groupId
+     * @param {number[]} timestamps
+     */
+  }, {
+    key: "setData",
+    value: function setData(groupId, timestamps) {
+      if (!Array.isArray(timestamps)) throw new Error('timestamps must be an array of numbers.');
+      var _iterator5 = _createForOfIteratorHelper(timestamps),
+        _step5;
+      try {
+        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+          var t = _step5.value;
+          if (typeof t !== 'number' || !Number.isFinite(t)) {
+            throw new Error('All timestamps must be finite numbers.');
+          }
+        }
+      } catch (err) {
+        _iterator5.e(err);
+      } finally {
+        _iterator5.f();
+      }
+      if (!this.groupData.has(groupId)) this.groupFlags.set(groupId, false);
+      this.groupData.set(groupId, timestamps);
+      this.lastSeen.set(groupId, Date.now());
+    }
+    /**
+     * Check if a group has data
+     * @param {string} groupId
+     * @returns {boolean}
+     */
+  }, {
+    key: "hasData",
+    value: function hasData(groupId) {
+      return this.groupData.has(groupId);
+    }
+    /**
+     * Get timestamps from a group
+     * @param {string} groupId
+     * @returns {number[]}
+     */
+  }, {
+    key: "getData",
+    value: function getData(groupId) {
+      return this.groupData.get(groupId) || [];
+    }
+    /**
+     * Get the maximum idle time (in milliseconds) before a group is considered expired.
+     * @returns {number}
+     */
+  }, {
+    key: "getMaxIdle",
+    value: function getMaxIdle() {
+      if (typeof _classPrivateFieldGet(_maxIdle, this) !== 'number' || !Number.isFinite(_classPrivateFieldGet(_maxIdle, this)) || _classPrivateFieldGet(_maxIdle, this) < 0) {
+        throw new Error("'maxIdle' must be a non-negative finite number.");
+      }
+      return _classPrivateFieldGet(_maxIdle, this);
+    }
+    /**
+     * Set the maximum idle time (in milliseconds) before a group is considered expired.
+     * @param {number} ms
+     */
+  }, {
+    key: "setMaxIdle",
+    value: function setMaxIdle(ms) {
+      if (typeof ms !== 'number' || !Number.isFinite(ms) || ms < 0) {
+        throw new Error("'maxIdle' must be a non-negative finite number.");
+      }
+      _classPrivateFieldSet(_maxIdle, this, ms);
+    }
+    /**
+     * Cleanup old/inactive groups with individual TTLs
+     * @private
+     */
+  }, {
+    key: "_cleanup",
+    value: function _cleanup() {
+      var now = Date.now();
+      var _iterator6 = _createForOfIteratorHelper(this.lastSeen.entries()),
+        _step6;
+      try {
+        for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+          var _this$getGroupTTL;
+          var _step6$value = _slicedToArray(_step6.value, 2),
+            groupId = _step6$value[0],
+            last = _step6$value[1];
+          var ttl = (_this$getGroupTTL = this.getGroupTTL(groupId)) !== null && _this$getGroupTTL !== void 0 ? _this$getGroupTTL : this.getMaxIdle();
+          if (now - last > ttl) {
+            this.groupFlags["delete"](groupId);
+            this.groupData["delete"](groupId);
+            this.lastSeen["delete"](groupId);
+            this.groupTTL["delete"](groupId);
+            // Notify subclass or external binding
+            if (typeof _classPrivateFieldGet(_onGroupExpired, this) === 'function') {
+              _classPrivateFieldGet(_onGroupExpired, this).call(this, groupId);
+            }
+          }
+        }
+      } catch (err) {
+        _iterator6.e(err);
+      } finally {
+        _iterator6.f();
+      }
+    }
+    /**
+     * Get list of active group IDs
+     * @returns {string[]}
+     */
+  }, {
+    key: "getActiveGroups",
+    value: function getActiveGroups() {
+      return Array.from(this.groupData.keys());
+    }
+    /**
+     * Get a shallow copy of all user-to-group mappings as a plain object
+     * @returns {Record<string, string>}
+     */
+  }, {
+    key: "getAllUserMappings",
+    value: function getAllUserMappings() {
+      return Object.fromEntries(this.userToGroup);
+    }
+    /**
+     * Get the interval window in milliseconds.
+     * @returns {number}
+     */
+  }, {
+    key: "getInterval",
+    value: function getInterval() {
+      if (typeof _classPrivateFieldGet(_interval, this) !== 'number' || !Number.isFinite(_classPrivateFieldGet(_interval, this))) {
+        throw new Error("'interval' is not a valid finite number.");
+      }
+      return _classPrivateFieldGet(_interval, this);
+    }
+    /**
+     * Get the maximum number of allowed hits.
+     * @returns {number}
+     */
+  }, {
+    key: "getMaxHits",
+    value: function getMaxHits() {
+      if (typeof _classPrivateFieldGet(_maxHits, this) !== 'number' || !Number.isFinite(_classPrivateFieldGet(_maxHits, this))) {
+        throw new Error("'maxHits' is not a valid finite number.");
+      }
+      return _classPrivateFieldGet(_maxHits, this);
+    }
+    /**
+     * Get the total number of hits recorded for a group.
+     * @param {string} groupId
+     * @returns {number}
+     */
+  }, {
+    key: "getTotalHits",
+    value: function getTotalHits(groupId) {
+      var history = this.groupData.get(groupId);
+      return Array.isArray(history) ? history.length : 0;
+    }
+    /**
+     * Get the timestamp of the last hit for a group.
+     * @param {string} groupId
+     * @returns {number|null}
+     */
+  }, {
+    key: "getLastHit",
+    value: function getLastHit(groupId) {
+      var history = this.groupData.get(groupId);
+      return history !== null && history !== void 0 && history.length ? history[history.length - 1] : null;
+    }
+    /**
+     * Get milliseconds since the last hit for a group.
+     * @param {string} groupId
+     * @returns {number|null}
+     */
+  }, {
+    key: "getTimeSinceLastHit",
+    value: function getTimeSinceLastHit(groupId) {
+      var last = this.getLastHit(groupId);
+      return last !== null ? Date.now() - last : null;
+    }
+    /**
+     * Internal utility to compute average spacing
+     * @private
+     * @param {number[]|undefined} history
+     * @returns {number|null}
+     */
+  }, {
+    key: "_calculateAverageSpacing",
+    value: function _calculateAverageSpacing(history) {
+      if (!Array.isArray(history) || history.length < 2) return null;
+      var total = 0;
+      for (var i = 1; i < history.length; i++) {
+        total += history[i] - history[i - 1];
+      }
+      return total / (history.length - 1);
+    }
+    /**
+     * Get average time between hits for a group (ms).
+     * @param {string} groupId
+     * @returns {number|null}
+     */
+  }, {
+    key: "getAverageHitSpacing",
+    value: function getAverageHitSpacing(groupId) {
+      return this._calculateAverageSpacing(this.groupData.get(groupId));
+    }
+    /**
+     * Get metrics about a group's activity.
+     * @param {string} groupId
+     * @returns {{
+     *   totalHits: number,
+     *   lastHit: number|null,
+     *   timeSinceLastHit: number|null,
+     *   averageHitSpacing: number|null
+     * }}
+     */
+  }, {
+    key: "getMetrics",
+    value: function getMetrics(groupId) {
+      var history = this.groupData.get(groupId);
+      if (!Array.isArray(history) || history.length === 0) {
+        return {
+          totalHits: 0,
+          lastHit: null,
+          timeSinceLastHit: null,
+          averageHitSpacing: null
+        };
+      }
+      var totalHits = history.length;
+      var lastHit = history[totalHits - 1];
+      var timeSinceLastHit = Date.now() - lastHit;
+      var averageHitSpacing = this._calculateAverageSpacing(history);
+      return {
+        totalHits: totalHits,
+        lastHit: lastHit,
+        timeSinceLastHit: timeSinceLastHit,
+        averageHitSpacing: averageHitSpacing
+      };
+    }
+    /**
+     * Destroy the rate limiter, stopping cleanup and clearing data
+     */
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      if (_classPrivateFieldGet(_cleanupTimer, this)) clearInterval(_classPrivateFieldGet(_cleanupTimer, this));
+      this._cleanup();
+      this.groupData.clear();
+      this.lastSeen.clear();
+      this.userToGroup.clear();
+      this.groupTTL.clear();
+      this.groupFlags.clear();
+    }
+  }]);
+}();
+var _default = exports["default"] = TinyRateLimiter;
+
+}).call(this)}).call(this,require('_process'))
+},{"_process":587}],710:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -108141,7 +106921,2195 @@ function _validateTiming(value, name) {
 }
 var _default = exports["default"] = TinyToastNotify;
 
-},{}],724:[function(require,module,exports){
+},{}],711:[function(require,module,exports){
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _tinyEssentials = require("tiny-essentials");
+var _validateColor = _interopRequireDefault(require("validate-color"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _toArray(r) { return _arrayWithHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _classPrivateMethodInitSpec(e, a) { _checkPrivateRedeclaration(e, a), a.add(e); }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+/**
+ * TinyDices - JavaScript class for rendering animated 3D dice with HTML/CSS.
+ *
+ * Created by: Yasmin Seidel (JasminDreasond)
+ * Co-developed with: ChatGPT (OpenAI) as coding assistant
+ *
+ * Features:
+ * - Roll any number of dice
+ * - Supports custom max values per die
+ * - Optional spinning animation (infinite or ending)
+ * - Dynamic cube generation and animation
+ * - Option to include zero in rolls (canZero)
+ *
+ * Usage:
+ * const container = document.getElementById('myDice');
+ * const dice = new TinyDices(container);
+ *
+ * dice.roll('7,7,7');                    // Rolls 3d6
+ * dice.roll('6,12,20');                 // Rolls d6, d12, and d20
+ * dice.roll([10, 10], false, true);     // Rolls 2d10 with infinite spin
+ * dice.roll([10, 10], true);            // Rolls 2d10 starting from 0
+ * dice.roll([4, 8, 6], true, true);     // Rolls d4, d8, and d6 from 0 with infinite spin
+ *
+ * Customization:
+ * dice.setBgSkin('gray');                // Sets background skin to gray
+ * dice.setTextSkin('red');               // Sets text skin to red
+ * dice.setBorderSkin('2px solid black'); // Sets border skin to black
+ *
+ * dice.getBgSkin();                       // Gets current or default background skin
+ * dice.getTextSkin();                     // Gets current or default text skin
+ * dice.getBorderSkin();                   // Gets current or default border skin
+ */
+var _elements = /*#__PURE__*/new WeakMap();
+var _cubeId = /*#__PURE__*/new WeakMap();
+var _destroyed = /*#__PURE__*/new WeakMap();
+var _defaultBgSkin = /*#__PURE__*/new WeakMap();
+var _defaultBorderSkin = /*#__PURE__*/new WeakMap();
+var _defaultSelectionTextSkin = /*#__PURE__*/new WeakMap();
+var _defaultSelectionBgSkin = /*#__PURE__*/new WeakMap();
+var _defaultTextSkin = /*#__PURE__*/new WeakMap();
+var _selectionBgSkin = /*#__PURE__*/new WeakMap();
+var _selectionTextSkin = /*#__PURE__*/new WeakMap();
+var _bgSkin = /*#__PURE__*/new WeakMap();
+var _bgImg = /*#__PURE__*/new WeakMap();
+var _textSkin = /*#__PURE__*/new WeakMap();
+var _borderSkin = /*#__PURE__*/new WeakMap();
+var _diceBase = /*#__PURE__*/new WeakMap();
+var _createCube = /*#__PURE__*/new WeakMap();
+var _TinyDices_brand = /*#__PURE__*/new WeakSet();
+var TinyDices = /*#__PURE__*/function () {
+  /**
+   * Creates a new TinyDices instance attached to a specified HTML element.
+   *
+   * @param {HTMLElement} diceBase - The HTML container element where the dice will be rendered.
+   * @param {(result: number, max: number, canZero?: boolean, rollInfinity?: boolean) => CubeResult} [createCubeScript=null]
+   *        - Optional function to override the internal cube creation logic.
+   *          If provided, it will be used instead of the built-in method.
+   *
+   *          The function should accept the following parameters:
+   *            - result {number} - The main value to appear on the front face of the die.
+   *            - max {number} - The maximum value allowed for a face of the die.
+   *            - canZero {boolean} [optional] - If true, faces can include the number 0.
+   *            - rollInfinity {boolean} [optional] - If true, the die spins infinitely.
+   *
+   *          And return:
+   *            - {HTMLElement} cube - The DOM element representing the dice cube.
+   *            - {number[]} sequence - An array containing all the face values of the die.
+   *
+   *
+   * When implementing a custom dice creation logic, you can use the following internal methods:
+   *
+   * @function tinyDice.addElement
+   * Adds a structured dice object to the internal list for tracking and future cleanup.
+   * This method expects an object with `faces`, `container`, and `wrapper` properties.
+   *
+   * @function tinyDice.rollNumber(max: number, canZero: boolean): number
+   * Generates a random number based on the maximum value and zero allowance.
+   * Useful when assigning values to non-front faces of the die.
+   *
+   * @function tinyDice.updateDiceFaceSkin(face: HTMLElement): void
+   * Applies the dice face style or skin to a given face element.
+   * This is usually a visual effect or texture that the user can define.
+   *
+   * @function tinyDice.addCubeId(): number
+   * Returns a unique identifier for each die. This value is typically used to set the `z-index`
+   * of the container, so that new dice appear above older ones.
+   *
+   *
+   */
+  function TinyDices(diceBase, createCubeScript) {
+    _classCallCheck(this, TinyDices);
+    /**
+     * Internal helper to check if the dice base element is a valid HTMLElement.
+     *
+     * @returns {boolean} - True if #diceBase is a valid HTMLElement.
+     */
+    _classPrivateMethodInitSpec(this, _TinyDices_brand);
+    /**
+     * @typedef {Object} DiceElement
+     * @property {HTMLElement[]} faces - An array of six face elements.
+     * @property {HTMLElement|null} container - The outer wrapper element.
+     * @property {HTMLElement|null} wrapper - The rotating inner cube element.
+     */
+    /**
+     * @typedef {Object} CubeResult
+     * @property {HTMLDivElement} cube - The DOM element representing the cube container.
+     * @property {number[]} sequence - The final sequence of values shown on each face.
+     */
+    /**
+     * Stores all current dice elements created by the instance.
+     *
+     * Each element follows the `DiceElement` structure, containing cube faces,
+     * its container, and the cube wrapper for rotation.
+     *
+     * @type {DiceElement[]}
+     */
+    _classPrivateFieldInitSpec(this, _elements, []);
+    _classPrivateFieldInitSpec(this, _cubeId, 0);
+    // used for incremental z-index to avoid overlapping issues
+    _classPrivateFieldInitSpec(this, _destroyed, false);
+    /** @type {string|null} */_classPrivateFieldInitSpec(this, _defaultBgSkin, 'linear-gradient(135deg, #ff3399, #33ccff)');
+    /** @type {string|null} */_classPrivateFieldInitSpec(this, _defaultBorderSkin, '2px solid rgba(255, 255, 255, 0.2)');
+    /** @type {string|null} */_classPrivateFieldInitSpec(this, _defaultSelectionTextSkin, '#FFF');
+    /** @type {string|null} */_classPrivateFieldInitSpec(this, _defaultSelectionBgSkin, '#000');
+    /** @type {string|null} */_classPrivateFieldInitSpec(this, _defaultTextSkin, 'white');
+    /** @type {string|null} */_classPrivateFieldInitSpec(this, _selectionBgSkin, null);
+    /** @type {string|null} */_classPrivateFieldInitSpec(this, _selectionTextSkin, null);
+    /** @type {string|null} */_classPrivateFieldInitSpec(this, _bgSkin, null);
+    /** @type {string|null} */_classPrivateFieldInitSpec(this, _bgImg, null);
+    /** @type {string|null} */_classPrivateFieldInitSpec(this, _textSkin, null);
+    /** @type {string|null} */_classPrivateFieldInitSpec(this, _borderSkin, null);
+    /** @type {HTMLElement|null} */_classPrivateFieldInitSpec(this, _diceBase, null);
+    /** @type {HTMLElement|null} */
+    _defineProperty(this, "diceArea", null);
+    /** @type {HTMLElement|null} */
+    _defineProperty(this, "container", null);
+    /**
+     * Creates a cube DOM element with animated faces and randomized values.
+     *
+     * @param {number} result - The main value to appear on the front face.
+     * @param {number} max - The maximum possible value for the die.
+     * @param {boolean} [rollInfinity=false] - If true, the cube will spin infinitely.
+     * @returns {CubeResult} - The cube element and an array of all face values.
+     */
+    _classPrivateFieldInitSpec(this, _createCube, void 0);
+    if (typeof createCubeScript === 'function') _classPrivateFieldSet(_createCube, this, createCubeScript);else _assertClassBrand(_TinyDices_brand, this, _insertCreateCube).call(this);
+    if (typeof HTMLElement !== 'undefined' && diceBase instanceof HTMLElement) {
+      _classPrivateFieldSet(_diceBase, this, diceBase);
+      _classPrivateFieldGet(_diceBase, this).classList.add('tiny-dices-body');
+      this.diceArea = document.createElement('div');
+      this.diceArea.classList.add('dice-area');
+      _classPrivateFieldGet(_diceBase, this).appendChild(this.diceArea);
+    }
+  }
+  return _createClass(TinyDices, [{
+    key: "existsHtml",
+    value:
+    /**
+     * Checks if the internal HTML structure (dice base container) still exists in the DOM.
+     *
+     * Useful to verify if the TinyDices component is still rendered and operational.
+     *
+     * @returns {boolean} - Returns `true` if the HTML elements exist, otherwise `false`.
+     */
+    function existsHtml() {
+      return _assertClassBrand(_TinyDices_brand, this, _existsHtml).call(this);
+    }
+    /**
+     * Increments and returns the current cube ID.
+     *
+     * This ID is used to set a unique z-index for each die,
+     * ensuring that newer dice appear above older ones in the stack.
+     *
+     * @returns {number} The current cube ID before incrementing.
+     */
+  }, {
+    key: "addCubeId",
+    value: function addCubeId() {
+      var _this$cubeId, _this$cubeId2;
+      return _classPrivateFieldSet(_cubeId, this, (_this$cubeId = _classPrivateFieldGet(_cubeId, this), _this$cubeId2 = _this$cubeId++, _this$cubeId)), _this$cubeId2;
+    }
+    /**
+     * Validates and stores a new dice element into the internal list.
+     *
+     * This method ensures that the given object has the correct structure
+     * before appending it to the internal array of rendered dice elements.
+     *
+     * @param {DiceElement} item - The dice element object to validate and store.
+     * @returns {boolean} `true` if the item was valid and added; otherwise, `false`.
+     */
+  }, {
+    key: "addElement",
+    value:
+    /**
+     * Adds a new dice element to the internal storage.
+     *
+     * This is the public wrapper for the internal method `#addElement`.
+     * It validates the structure of the dice element before adding.
+     *
+     * @param {DiceElement} item
+     *        - The dice element object to add. It must contain:
+     *          - `faces`: an array of six face elements,
+     *          - `container`: the outer wrapper element,
+     *          - `wrapper`: the rotating inner cube element.
+     *
+     * @returns {boolean} `true` if the element was valid and added, otherwise `false`.
+     */
+    function addElement(item) {
+      return _assertClassBrand(_TinyDices_brand, this, _addElement).call(this, item);
+    }
+    /**
+     * Validates a background-image value restricted to safe data:image URLs only.
+     *
+     * @param {string} value - The CSS background-image value.
+     * @returns {boolean}
+     */
+  }, {
+    key: "setBgImg",
+    value:
+    /**
+     * Sets the background image using a `data:` URL or, optionally, a standard image URL if forced.
+     *
+     * For security reasons, only `data:` URLs are accepted by default to avoid external resource injection.
+     * You can override this restriction using the `forceUnsafe` flag, but this is discouraged unless trusted.
+     *
+     * @param {string|null} value - The background-image URL (must be a `data:` image by default).
+     * @param {boolean} [forceUnsafe=false] - Allows setting non-data URLs if true (use with caution).
+     */
+    function setBgImg(value) {
+      var forceUnsafe = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      _classPrivateFieldSet(_bgImg, this, typeof value === 'string' && (forceUnsafe || _assertClassBrand(_TinyDices_brand, this, _isValidDataImage).call(this, value)) ? value : null);
+    }
+    /**
+     * Returns the currently set background image if valid, or null.
+     *
+     * @returns {string|null} - The current background-image value (data:image URL) or null if none is set.
+     */
+  }, {
+    key: "getBgImg",
+    value: function getBgImg() {
+      return _classPrivateFieldGet(_bgImg, this) || null;
+    }
+    /**
+     * Sets the background skin style if it's a valid CSS color or linear-gradient.
+     * Prevents injection of unsafe or malformed styles.
+     *
+     * @param {string} skin - A valid CSS color string or gradient.
+     */
+  }, {
+    key: "setBgSkin",
+    value: function setBgSkin(skin) {
+      if (typeof skin !== 'string') {
+        _classPrivateFieldSet(_bgSkin, this, null);
+        return;
+      }
+      var trimmed = skin.trim();
+      var isGradient = _assertClassBrand(_TinyDices_brand, this, _isValidLinearGradient).call(this, trimmed);
+      var isColor = (0, _validateColor["default"])(trimmed);
+      _classPrivateFieldSet(_bgSkin, this, isGradient || isColor ? trimmed : null);
+    }
+    /**
+     * Gets the currently applied background skin.
+     * @returns {string|null} The current background skin, or the default if not set.
+     */
+  }, {
+    key: "getBgSkin",
+    value: function getBgSkin() {
+      return _classPrivateFieldGet(_bgSkin, this) || _classPrivateFieldGet(_defaultBgSkin, this);
+    }
+    /**
+     * Sets the text skin (style) of the dice numbers.
+     * @param {string|null} skin - The skin name to apply to the text. Pass null or non-string to reset to default.
+     */
+  }, {
+    key: "setTextSkin",
+    value: function setTextSkin(skin) {
+      _classPrivateFieldSet(_textSkin, this, typeof skin === 'string' && (0, _validateColor["default"])(skin) ? skin : null);
+    }
+    /**
+     * Gets the currently applied text skin.
+     * @returns {string|null} The current text skin, or the default if not set.
+     */
+  }, {
+    key: "getTextSkin",
+    value: function getTextSkin() {
+      return _classPrivateFieldGet(_textSkin, this) || _classPrivateFieldGet(_defaultTextSkin, this);
+    }
+    /**
+     * Sets the border skin (style) of the dice edges.
+     * @param {string|null} skin - The skin name to apply to the border. Pass null or non-string to reset to default.
+     */
+  }, {
+    key: "setBorderSkin",
+    value: function setBorderSkin(skin) {
+      _classPrivateFieldSet(_borderSkin, this, typeof skin === 'string' && _assertClassBrand(_TinyDices_brand, this, _isValidCssBorder).call(this, skin) ? skin : null);
+    }
+    /**
+     * Gets the currently applied border skin.
+     * @returns {string|null} The current border skin, or the default if not set.
+     */
+  }, {
+    key: "getBorderSkin",
+    value: function getBorderSkin() {
+      return _classPrivateFieldGet(_borderSkin, this) || _classPrivateFieldGet(_defaultBorderSkin, this);
+    }
+    /**
+     * Sets the background skin for selected dice.
+     * Accepts valid CSS color strings or `linear-gradient(...)`.
+     * Invalid values reset the skin to `null`.
+     *
+     * @param {string} skin - The CSS background to apply when a die is selected.
+     */
+  }, {
+    key: "setSelectionBgSkin",
+    value: function setSelectionBgSkin(skin) {
+      if (typeof skin !== 'string') {
+        _classPrivateFieldSet(_selectionBgSkin, this, null);
+        return;
+      }
+      var trimmed = skin.trim();
+      var isGradient = _assertClassBrand(_TinyDices_brand, this, _isValidLinearGradient).call(this, trimmed);
+      var isColor = (0, _validateColor["default"])(trimmed);
+      _classPrivateFieldSet(_selectionBgSkin, this, isGradient || isColor ? trimmed : null);
+    }
+    /**
+     * Gets the background skin used for selected dice.
+     * Returns the custom value if set; otherwise, returns the default.
+     *
+     * @returns {string|null} The current background skin for selected dice.
+     */
+  }, {
+    key: "getSelectionBgSkin",
+    value: function getSelectionBgSkin() {
+      return _classPrivateFieldGet(_selectionBgSkin, this) || _classPrivateFieldGet(_defaultSelectionBgSkin, this);
+    }
+    /**
+     * Sets the text color for selected dice.
+     * Only valid CSS color values are accepted.
+     * Invalid inputs will reset the color to `null`.
+     *
+     * @param {string} skin - The text color for selected dice.
+     */
+  }, {
+    key: "setSelectionTextSkin",
+    value: function setSelectionTextSkin(skin) {
+      _classPrivateFieldSet(_selectionTextSkin, this, typeof skin === 'string' && (0, _validateColor["default"])(skin) ? skin : null);
+    }
+    /**
+     * Gets the text color used for selected dice.
+     * Returns the custom value if set; otherwise, returns the default.
+     *
+     * @returns {string|null} The current text color for selected dice.
+     */
+  }, {
+    key: "getSelectionTextSkin",
+    value: function getSelectionTextSkin() {
+      return _classPrivateFieldGet(_selectionTextSkin, this) || _classPrivateFieldGet(_defaultSelectionTextSkin, this);
+    }
+    /**
+     * Applies the current visual skin to a specific dice face element.
+     * This includes background color, text color, border style, and optionally
+     * a `background-image` if set via `setBgImg`.
+     *
+     * @param {HTMLElement} face - The HTML element representing a dice face.
+     */
+  }, {
+    key: "updateDiceFaceSkin",
+    value:
+    /**
+     * Updates the visual skin or style of a single dice face element.
+     *
+     * This is a public wrapper around the internal method `#updateDiceFaceSkin`,
+     * allowing external calls to apply the dice face style dynamically.
+     *
+     * @param {HTMLElement} face - The DOM element representing a single face of the die.
+     * @returns {void}
+     */
+    function updateDiceFaceSkin(face) {
+      return _assertClassBrand(_TinyDices_brand, this, _updateDiceFaceSkin).call(this, face);
+    }
+    /**
+     * Updates the visual skin of all dice face elements currently rendered.
+     * Iterates through each dice in `this.#elements` and applies the active
+     * background, text color, border, and background image styles using `#updateDiceFaceSkin`.
+     *
+     */
+  }, {
+    key: "updateDicesSkin",
+    value: function updateDicesSkin() {
+      for (var index in _classPrivateFieldGet(_elements, this)) this.updateDiceSkin(index);
+    }
+    /**
+     * Updates the visual skin of a specific die by index.
+     * Applies current background color, text color, border style, and background image
+     * to all face elements of the selected die using `#updateDiceFaceSkin`.
+     *
+     * @param {number|string} index - The index of the die to update.
+     * @throws {Error} If the index is not a valid number or string convertible to number.
+     *
+     * @returns {boolean} Returns `true` if the die was found and updated; otherwise `false`.
+     */
+  }, {
+    key: "updateDiceSkin",
+    value: function updateDiceSkin(index) {
+      var parsedIndex = typeof index === 'string' ? parseInt(index) : typeof index === 'number' ? index : -1;
+      if (Number.isNaN(parsedIndex)) throw new Error('updateDiceSkin: index must be a number or a numeric string.');
+      var element = _classPrivateFieldGet(_elements, this)[parsedIndex];
+      if (element) {
+        for (var index2 in element.faces) _assertClassBrand(_TinyDices_brand, this, _updateDiceFaceSkin).call(this, element.faces[index2]);
+        return true;
+      } else return false;
+    }
+    /**
+     * Generates a random integer between 1 and max (inclusive).
+     * If `canZero` is true, the range becomes 0 to max (inclusive).
+     *
+     * @param {number} max - The maximum value for the roll (inclusive).
+     * @param {boolean} [canZero=false] - Whether the result can include 0.
+     * @returns {number} A random integer between 1 and max, or 0 and max if `canZero` is true. Returns 0 if max <= 0.
+     */
+  }, {
+    key: "rollNumber",
+    value:
+    /**
+     * Generates a random integer between a lower bound and a maximum value.
+     *
+     * This is a public wrapper for the internal method `#rollNumber`, which handles
+     * dice-style number generation, optionally allowing zero as a result.
+     *
+     * @param {number} [max=0] - The maximum value (inclusive upper bound if `canZero` is true).
+     * @param {boolean} [canZero=false] - If true, the roll can return 0 (or a range starting from 0).
+     * @returns {number} A pseudo-random integer within the expected range.
+     *
+     * - If `canZero` is false: returns a number from 1 to `max`.
+     * - If `canZero` is true: returns a number from 0 to `max`.
+     * - If `max <= 0`: always returns 0.
+     */
+    function rollNumber() {
+      var max = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      var canZero = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      return _assertClassBrand(_TinyDices_brand, this, _rollNumber).call(this, max, canZero);
+    }
+    /**
+     * Parses input parameters to determine the dice configuration.
+     *
+     * @param {string|Array<number>} perDieValues - Optional: a comma-separated string or array of individual max values.
+     * @returns {number[]} - Parsed dice configuration.
+     */
+  }, {
+    key: "parseRollConfig",
+    value: function parseRollConfig() {
+      var perDieValues = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      // Get per die data
+      return typeof perDieValues === 'string' && perDieValues.length > 0 ? perDieValues.trim().split(',').map(function (raw) {
+        var val = 0;
+        try {
+          val = parseInt(raw.trim(), 10);
+        } catch (_unused) {
+          val = 0;
+        }
+        if (typeof val === 'number' && !Number.isNaN(val) && Number.isFinite(val) && val > -1) return val;
+        return -1;
+      }) : Array.isArray(perDieValues) ? perDieValues : [];
+    }
+    /**
+     * Inserts a single 3D die into the DOM with animation.
+     *
+     * @param {number} result - The value displayed on the front face of the die.
+     * @param {number} max - The maximum value for the die (used to generate other random faces).
+     * @param {boolean} [canZero=false] - Whether 0 is a valid face value.
+     * @param {boolean} [rollInfinity=false] - Whether the die should spin indefinitely.
+     *
+     * @throws {Error} If `this.diceArea` is not a valid HTMLElement.
+     * @throws {Error} If `this.#createCube` is not a function.
+     * @throws {Error} If cube creation fails or returns an invalid sequence.
+     * @returns {number[]} - An array representing the values on all six faces of the cube.
+     */
+  }, {
+    key: "insertDiceElement",
+    value: function insertDiceElement(result, max, canZero, rollInfinity) {
+      if (typeof HTMLElement === 'undefined' || !(this.diceArea instanceof HTMLElement)) throw new Error('insertDiceElement: this.diceArea is not a valid HTMLElement.');
+      if (typeof _classPrivateFieldGet(_createCube, this) !== 'function') throw new Error('insertDiceElement: this.#createCube is not a valid function.');
+      var _classPrivateFieldGet2 = _classPrivateFieldGet(_createCube, this).call(this, result, max, canZero, rollInfinity),
+        cube = _classPrivateFieldGet2.cube,
+        sequence = _classPrivateFieldGet2.sequence;
+      if (!Array.isArray(sequence)) throw new Error('insertDiceElement: invalid cube sequence returned.');
+      this.diceArea.appendChild(cube);
+      return sequence;
+    }
+    /**
+     * Clears all dice cubes from the display area.
+     * Resets internal cube counter to avoid z-index conflicts.
+     */
+  }, {
+    key: "clearDiceArea",
+    value: function clearDiceArea() {
+      _classPrivateFieldSet(_cubeId, this, 0);
+      if (typeof HTMLElement !== 'undefined' && this.diceArea instanceof HTMLElement) this.diceArea.innerHTML = '';
+      _classPrivateFieldSet(_elements, this, []);
+    }
+    /**
+     * Initializes the default cube creation function and assigns it to `this.#createCube`.
+     *
+     * This function builds a customizable cube with 6 animated faces, where each face is
+     * assigned a unique number (avoiding duplicates when possible). The front face shows the
+     * result value passed in, and the others are randomized based on the `max` value.
+     *
+     * @remarks
+     * If `createCubeScript` was not provided to the constructor, this method sets up the default cube generator.
+     *
+     * @returns {void}
+     *
+     * @function
+     */
+  }, {
+    key: "rollDice",
+    value:
+    /**
+     * Inserts a single die cube into the DOM using the specified configuration.
+     *
+     * @param {number} max - Default maximum value for dice (if no individual values are given).
+     * @param {boolean} [canZero=false] - Whether 0 is a valid result.
+     * @param {boolean} [rollInfinity=false] - Whether all dice should spin infinitely.
+     * @returns {{ result: number, sequence?: number[] }} - Array with results and face sequences for each die.
+     */
+    function rollDice(max) {
+      var canZero = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      var rollInfinity = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : undefined;
+      var cube = {
+        result: _assertClassBrand(_TinyDices_brand, this, _rollNumber).call(this, max, canZero)
+      };
+      if (_assertClassBrand(_TinyDices_brand, this, _existsHtml).call(this))
+        // @ts-ignore
+        cube.sequence = this.insertDiceElement(cube.result, max, canZero, rollInfinity);
+      return cube;
+    }
+    /**
+     * Inserts multiple dice cubes into the DOM using the specified configuration.
+     *
+     * @param {number[]} perDieData - Array of individual max values per die.
+     * @param {boolean} [canZero=false] - Whether 0 is a valid result on any die.
+     * @param {boolean} [rollInfinity=false] - Whether all dice should spin infinitely.
+     * @returns {Array<{ result: number, sequence?: number[] }>} - Array with results and face sequences for each die.
+     */
+  }, {
+    key: "rollDices",
+    value: function rollDices(perDieData) {
+      var canZero = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      var rollInfinity = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      var cubes = [];
+      for (var i = 0; i < perDieData.length; i++) {
+        var max = perDieData[i];
+        var cube = {
+          result: _assertClassBrand(_TinyDices_brand, this, _rollNumber).call(this, max, canZero)
+        };
+        if (_assertClassBrand(_TinyDices_brand, this, _existsHtml).call(this))
+          // @ts-ignore
+          cube.sequence = this.insertDiceElement(cube.result, max, canZero, rollInfinity);
+        cubes.push(cube);
+      }
+      return cubes;
+    }
+    /**
+     * Rolls the dice by clearing existing cubes and inserting new ones.
+     *
+     * @param {string|Array<number>} perDieInput - Either a comma-separated string or array of max values per die.
+     * @param {boolean} [canZero=false] - Whether 0 is a valid result.
+     * @param {boolean} [rollInfinity=false] - Whether dice spin infinitely.
+     * @returns {Array<{ result: number, sequence?: number[] }>} - Array with results and face sequences for each die.
+     */
+  }, {
+    key: "roll",
+    value: function roll(perDieInput) {
+      var canZero = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      var rollInfinity = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      var perDieData = this.parseRollConfig(perDieInput);
+      this.clearDiceArea();
+      return this.rollDices(perDieData, canZero, rollInfinity);
+    }
+    /**
+     * Checks whether the TinyDices instance has been destroyed.
+     *
+     * @returns {boolean} - Returns `true` if the instance was destroyed, otherwise `false`.
+     *
+     * @example
+     * if (dice.isDestroyed()) {
+     *   console.warn('This instance is no longer usable.');
+     * }
+     */
+  }, {
+    key: "isDestroyed",
+    value: function isDestroyed() {
+      return _classPrivateFieldGet(_destroyed, this);
+    }
+    /**
+     * Completely destroys the TinyDices instance by removing DOM elements and resetting internal state.
+     *
+     * This method:
+     * - Clears all rendered dice.
+     * - Empties the base DOM elements (container, diceBase, diceArea).
+     * - Resets all visual skin configurations.
+     * - Nullifies DOM references.
+     * - Sets an internal flag to block further usage of the instance.
+     *
+     * @example
+     * dice.destroy(); // 💣 Cleans up everything and makes the instance unusable
+     */
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      // Clear any dice already rendered
+      this.clearDiceArea();
+      // Remove container element content (optional: comment if you want to preserve it)
+      if (typeof HTMLElement !== 'undefined') {
+        if (this.container instanceof HTMLElement) this.container.innerHTML = '';
+        if (_classPrivateFieldGet(_diceBase, this) instanceof HTMLElement) _classPrivateFieldGet(_diceBase, this).innerHTML = '';
+        if (this.diceArea instanceof HTMLElement) this.diceArea.innerHTML = '';
+      }
+      // Optionally, unset the container reference
+      _classPrivateFieldSet(_diceBase, this, null);
+      this.diceArea = null;
+      this.container = null;
+      // Reset any styles or configs (if you store them in other properties, reset them here)
+      _classPrivateFieldSet(_defaultBgSkin, this, null);
+      _classPrivateFieldSet(_defaultBorderSkin, this, null);
+      _classPrivateFieldSet(_defaultSelectionTextSkin, this, null);
+      _classPrivateFieldSet(_defaultSelectionBgSkin, this, null);
+      _classPrivateFieldSet(_defaultTextSkin, this, null);
+      _classPrivateFieldSet(_selectionBgSkin, this, null);
+      _classPrivateFieldSet(_selectionTextSkin, this, null);
+      _classPrivateFieldSet(_bgSkin, this, null);
+      _classPrivateFieldSet(_bgImg, this, null);
+      _classPrivateFieldSet(_textSkin, this, null);
+      _classPrivateFieldSet(_borderSkin, this, null);
+      // Optionally, mark as destroyed to prevent further use
+      _classPrivateFieldSet(_destroyed, this, true);
+    }
+  }]);
+}();
+function _existsHtml() {
+  return typeof HTMLElement !== 'undefined' && _classPrivateFieldGet(_diceBase, this) instanceof HTMLElement ? true : false;
+}
+function _addElement(item) {
+  if ((0, _tinyEssentials.objType)(item, 'object') && Array.isArray(item.faces) && typeof HTMLElement !== 'undefined' && item.container instanceof HTMLElement && item.wrapper instanceof HTMLElement) {
+    _classPrivateFieldGet(_elements, this).push(item);
+    return true;
+  }
+  return false;
+}
+function _isValidDataImage(value) {
+  if (typeof value !== 'string') return false;
+  var normalized = value.trim();
+  // Only allow data:image/... base64 or URL-encoded images
+  var dataUrlPattern = /^data:image\/(png|jpeg|jpg|gif|webp);base64,[a-z0-9+\/=]+$/i;
+  return dataUrlPattern.test(normalized);
+}
+/**
+ * Validates a linear-gradient string to prevent unsafe or malformed styles.
+ *
+ * @param {string} value - The CSS gradient string.
+ * @returns {boolean}
+ */
+function _isValidLinearGradient(value) {
+  if (typeof value !== 'string') return false;
+  var normalized = value.trim().toLowerCase();
+  // Must start with 'linear-gradient(' and end with ')'
+  if (!normalized.startsWith('linear-gradient(') || !normalized.endsWith(')')) {
+    return false;
+  }
+  // Block unsafe patterns
+  var unsafePattern = /(url\s*\(|expression\s*\(|javascript:|<|>|data:)/i;
+  if (unsafePattern.test(value)) {
+    return false;
+  }
+  // Extract content inside the parentheses
+  var content = value.slice(value.indexOf('(') + 1, -1).trim();
+  if (!content) return false;
+  // Safe split by commas outside of parentheses
+  var parts = [];
+  var buffer = '';
+  var depth = 0;
+  var _iterator = _createForOfIteratorHelper(content),
+    _step;
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var _char = _step.value;
+      if (_char === '(') depth++;
+      if (_char === ')') depth--;
+      if (_char === ',' && depth === 0) {
+        parts.push(buffer.trim());
+        buffer = '';
+      } else {
+        buffer += _char;
+      }
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+  if (buffer.trim()) parts.push(buffer.trim());
+  if (parts.length < 1) return false; // needs at least one component
+  var colorCount = 0;
+  for (var i = 0; i < parts.length; i++) {
+    var part = parts[i];
+    // First item can optionally be a direction or angle
+    if (i === 0 && /^(to\s+\w+|\d+deg|[+-]?\d+rad|[+-]?\d+turn)$/i.test(part)) {
+      continue;
+    }
+    if ((0, _validateColor["default"])(part.trim())) {
+      colorCount++;
+    } else {
+      // Extract possible color value before any stop (e.g. "red 20%" → "red")
+      var colorCandidate = part.trim().split(/\s+/)[0];
+      if ((0, _validateColor["default"])(colorCandidate)) {
+        colorCount++;
+      } else {
+        return false; // invalid color
+      }
+    }
+  }
+  // Must have at least 1 valid color and no more than 50
+  return colorCount >= 1 && colorCount <= 50;
+}
+/**
+ * Validates a CSS border string like '1px solid red' or '2px dashed linear-gradient(...)'.
+ *
+ * @param {string} value - The CSS border string.
+ * @returns {boolean}
+ */
+function _isValidCssBorder(value) {
+  if (typeof value !== 'string') return false;
+  var parts = value.trim().split(/\s+/);
+  if (parts.length < 3) return false;
+  var _parts = _toArray(parts),
+    width = _parts[0],
+    style = _parts[1],
+    colorParts = _parts.slice(2);
+  var color = colorParts.join(' ');
+  // Validate width (basic check for length units)
+  var isValidWidth = /^(\d+(\.\d+)?)(px|em|rem|%)$/.test(width);
+  if (!isValidWidth) return false;
+  // Validate border style
+  var validStyles = ['none', 'solid', 'dashed', 'dotted', 'double', 'groove', 'ridge', 'inset', 'outset', 'hidden'];
+  if (!validStyles.includes(style)) return false;
+  // Validate color (either direct or linear-gradient)
+  return (0, _validateColor["default"])(color) || _assertClassBrand(_TinyDices_brand, this, _isValidLinearGradient).call(this, color);
+}
+function _updateDiceFaceSkin(face) {
+  // Skin
+  face.style.background = this.getBgSkin() || '';
+  face.style.color = this.getTextSkin() || '';
+  face.style.border = this.getBorderSkin() || '';
+  face.style.setProperty('--dice-selection-bg', this.getSelectionBgSkin());
+  face.style.setProperty('--dice-selection-text', this.getSelectionTextSkin());
+  // Background image
+  var bgImg = this.getBgImg();
+  if (bgImg) {
+    face.style.backgroundImage = "url(\"".concat(bgImg, "\")");
+    face.style.backgroundPosition = 'center';
+    face.style.backgroundSize = '100%';
+    face.style.backgroundRepeat = 'repeat';
+  }
+}
+function _rollNumber() {
+  var max = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var canZero = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  // Throw an error if the value is not a valid number
+  if (typeof max !== 'number' || Number.isNaN(max)) {
+    throw new Error("Invalid die max value: ".concat(max, ". All values must be positive numbers."));
+  }
+  // Valid number
+  if (max > 0) {
+    var maxValue = max;
+    var finalValue = 1;
+    if (canZero) {
+      maxValue++;
+      finalValue--;
+    }
+    return Math.floor(Math.random() * maxValue) + finalValue;
+  } else return 0;
+}
+function _insertCreateCube() {
+  var tinyDice = this;
+  /** @type {function(number, number, boolean=, boolean=): CubeResult} */
+  _classPrivateFieldSet(_createCube, this, function (result, max) {
+    var canZero = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+    var rollInfinity = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+    // Container
+    /** @type {DiceElement} */
+    var diceElements = {
+      faces: [],
+      container: null,
+      wrapper: null
+    };
+    var container = document.createElement('div');
+    container.className = 'dice-container';
+    container.style.zIndex = String(1000 + tinyDice.addCubeId()); // each dice with higher priority
+    diceElements.container = container;
+    // Wrapper
+    var wrapper = document.createElement('div');
+    wrapper.className = "cube-wrapper".concat(rollInfinity ? " spin-infinite" : '');
+    diceElements.wrapper = wrapper;
+    // Get rot
+    var rotX = 360 * (3 + Math.floor(Math.random() * 5));
+    var rotY = 360 * (3 + Math.floor(Math.random() * 5));
+    // Wrapper animation
+    wrapper.style.animation = "tinyDiceSpinCubeCustom 2s ease-in-out forwards";
+    wrapper.style.setProperty('--rotX', "".concat(rotX, "deg"));
+    wrapper.style.setProperty('--rotY', "".concat(rotY, "deg"));
+    // Create the cube
+    var sequence = [];
+    var countSeq = new Set();
+    var min = !canZero ? 0 : -1;
+    for (var i = 1; i <= 6; i++) {
+      // Element
+      var face = document.createElement('div');
+      face.className = "face face".concat(i);
+      _assertClassBrand(_TinyDices_brand, tinyDice, _updateDiceFaceSkin).call(tinyDice, face);
+      // Ignored results
+      if (i !== 1) {
+        var roll = void 0;
+        // Normal max
+        if (max > min) {
+          var extraValue = min;
+          var usingExtra = false;
+          do {
+            roll = !usingExtra ? _assertClassBrand(_TinyDices_brand, tinyDice, _rollNumber).call(tinyDice, max, canZero) : extraValue;
+            if (usingExtra || sequence.length >= max) {
+              if (extraValue >= max) {
+                extraValue = min;
+                countSeq.clear();
+              }
+              extraValue++;
+              usingExtra = true;
+            }
+          } while (countSeq.has(roll));
+        }
+        // 0 or negative max
+        else roll = max;
+        // Insert sequence
+        if (roll < 1) roll = 0;
+        sequence.push(roll);
+        countSeq.add(roll);
+        face.textContent = String(roll);
+      }
+      // The result!
+      else {
+        face.textContent = String(result);
+        sequence.push(result);
+        countSeq.add(result);
+      }
+      // Side added
+      wrapper.appendChild(face);
+      diceElements.faces.push(face);
+    }
+    // Stop cube animation
+    if (!rollInfinity) {
+      setTimeout(function () {
+        if (wrapper) wrapper.classList.add('stopped');
+      }, 2000);
+    }
+    // Insert the cube
+    container.appendChild(wrapper);
+    _assertClassBrand(_TinyDices_brand, tinyDice, _addElement).call(tinyDice, diceElements);
+    return {
+      cube: container,
+      sequence: sequence
+    };
+  });
+}
+var _default = exports["default"] = TinyDices;
+
+},{"tiny-essentials":720,"validate-color":755}],712:[function(require,module,exports){
+arguments[4][690][0].apply(exports,arguments)
+},{"dup":690}],713:[function(require,module,exports){
+arguments[4][691][0].apply(exports,arguments)
+},{"dup":691}],714:[function(require,module,exports){
+arguments[4][692][0].apply(exports,arguments)
+},{"dup":692}],715:[function(require,module,exports){
+arguments[4][693][0].apply(exports,arguments)
+},{"dup":693}],716:[function(require,module,exports){
+arguments[4][694][0].apply(exports,arguments)
+},{"dup":694}],717:[function(require,module,exports){
+arguments[4][697][0].apply(exports,arguments)
+},{"buffer":314,"dup":697}],718:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.formatBytes = formatBytes;
+exports.getAge = getAge;
+exports.getSimplePerc = getSimplePerc;
+exports.ruleOfThree = ruleOfThree;
+/**
+ * Executes a Rule of Three calculation.
+ *
+ * @param {number} val1 - The first reference value (numerator in direct proportion, denominator in inverse).
+ * @param {number} val2 - The second reference value (denominator in direct proportion, numerator in inverse).
+ * @param {number} val3 - The third value (numerator in direct proportion, denominator in inverse).
+ * @param {boolean} [inverse] - Whether the calculation should use inverse proportion (true for inverse, false for direct).
+ * @returns {number} The result of the Rule of Three operation.
+ *
+ * Rule of Three Formula (Direct Proportion):
+ *      val1 / val2 = val3 / result
+ *
+ * For Inverse Proportion:
+ *      val1 / val3 = val2 / result
+ *
+ * Visual Representation:
+ *
+ * For Direct Proportion:
+ *      val1      val2
+ *      -----  =  ------
+ *      val3      result
+ *
+ * For Inverse Proportion:
+ *      val1      val2
+ *      -----  =  ------
+ *      val3      result
+ *
+ * @example
+ * // Direct proportion:
+ * ruleOfThree.execute(2, 6, 3, false); // → 9
+ *
+ * @example
+ * // Inverse proportion:
+ * ruleOfThree.execute(2, 6, 3, true); // → 4
+ */
+function ruleOfThree(val1, val2, val3) {
+  var inverse = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+  return inverse ? Number(val1 * val2) / val3 : Number(val3 * val2) / val1;
+}
+/**
+ * Calculates a percentage of a given base value.
+ * @param {number} price - The base value.
+ * @param {number} percentage - The percentage to apply.
+ * @returns {number} The result of the percentage calculation.
+ *
+ * @example
+ * getSimplePerc(200, 15); // 30
+ */
+function getSimplePerc(price, percentage) {
+  return price * (percentage / 100);
+}
+/**
+ * Calculates the age based on the given date.
+ *
+ * @param {number|string|Date} timeData - The birth date (can be a timestamp, ISO string, or Date object).
+ * @param {Date|null} [now=null] - The Date object representing the current date. Defaults to the current date and time if not provided.
+ * @returns {number|null} The age in years, or null if `timeData` is not provided or invalid.
+ */
+function getAge() {
+  var timeData = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var now = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  if (typeof timeData !== 'undefined' && timeData !== null && timeData !== 0) {
+    var birthDate = new Date(timeData);
+    if (Number.isNaN(birthDate.getTime())) return null;
+    var currentDate = now instanceof Date ? now : new Date();
+    var age = currentDate.getFullYear() - birthDate.getFullYear();
+    var currentMonth = currentDate.getMonth();
+    var birthMonth = birthDate.getMonth();
+    var currentDay = currentDate.getDate();
+    var birthDay = birthDate.getDate();
+    // Adjust if birthday hasn't occurred yet this year
+    if (currentMonth < birthMonth || currentMonth === birthMonth && currentDay < birthDay) age--;
+    return Math.abs(age);
+  }
+  return null;
+}
+/**
+ * @typedef {Object} FormattedByteResult
+ * @property {string|null} unit - The resulting unit (e.g., 'MB', 'GB') or null if input is invalid.
+ * @property {number|null} value - The numerical value in the chosen unit, or null if input is invalid.
+ */
+/**
+ * Converts a byte value into a human-readable format with unit and value separated.
+ *
+ * @param {number} bytes - The number of bytes to format. Must be a non-negative number.
+ * @param {number|null} [decimals=null] - The number of decimal places to include in the result. Defaults to null. If negative, it will be treated as 0. If null, no rounding is applied.
+ * @param {string|null} [maxUnit=null] - Optional unit limit. If provided, restricts conversion to this unit at most (e.g., 'MB' prevents conversion to 'GB' or higher). Must be one of: 'Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'.
+ * @returns {FormattedByteResult} An object with the converted value and its corresponding unit. Returns nulls if input is invalid.
+ *
+ * @example
+ * formatBytes(123456789);
+ * // → { unit: 'MB', value: 117.74 }
+ *
+ * @example
+ * formatBytes(1073741824, 2, 'MB');
+ * // → { unit: 'MB', value: 1024 }
+ */
+function formatBytes(bytes) {
+  var decimals = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  var maxUnit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  if (typeof bytes !== 'number' || bytes < 0) return {
+    unit: null,
+    value: null
+  };
+  if (bytes === 0) return {
+    unit: 'Bytes',
+    value: 0
+  };
+  var k = 1024;
+  var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  var maxIndex = maxUnit && sizes.includes(maxUnit) ? sizes.indexOf(maxUnit) : sizes.length - 1;
+  var i = Math.min(Math.floor(Math.log(bytes) / Math.log(k)), maxIndex);
+  var value = bytes / Math.pow(k, i);
+  if (decimals !== null) {
+    var dm = decimals < 0 ? 0 : decimals;
+    value = parseFloat(value.toFixed(dm));
+  }
+  var unit = sizes[i];
+  return {
+    unit: unit,
+    value: value
+  };
+}
+
+},{}],719:[function(require,module,exports){
+arguments[4][699][0].apply(exports,arguments)
+},{"dup":699}],720:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "ColorSafeStringify", {
+  enumerable: true,
+  get: function get() {
+    return _ColorSafeStringify["default"];
+  }
+});
+Object.defineProperty(exports, "TinyLevelUp", {
+  enumerable: true,
+  get: function get() {
+    return _userLevel["default"];
+  }
+});
+Object.defineProperty(exports, "TinyPromiseQueue", {
+  enumerable: true,
+  get: function get() {
+    return _TinyPromiseQueue["default"];
+  }
+});
+Object.defineProperty(exports, "TinyRateLimiter", {
+  enumerable: true,
+  get: function get() {
+    return _TinyRateLimiter["default"];
+  }
+});
+Object.defineProperty(exports, "addAiMarkerShortcut", {
+  enumerable: true,
+  get: function get() {
+    return _text.addAiMarkerShortcut;
+  }
+});
+Object.defineProperty(exports, "arraySortPositions", {
+  enumerable: true,
+  get: function get() {
+    return _arraySortPositions["default"];
+  }
+});
+Object.defineProperty(exports, "asyncReplace", {
+  enumerable: true,
+  get: function get() {
+    return _replaceAsync["default"];
+  }
+});
+Object.defineProperty(exports, "checkObj", {
+  enumerable: true,
+  get: function get() {
+    return _objFilter.checkObj;
+  }
+});
+Object.defineProperty(exports, "cloneObjTypeOrder", {
+  enumerable: true,
+  get: function get() {
+    return _objFilter.cloneObjTypeOrder;
+  }
+});
+Object.defineProperty(exports, "countObj", {
+  enumerable: true,
+  get: function get() {
+    return _objFilter.countObj;
+  }
+});
+Object.defineProperty(exports, "extendObjType", {
+  enumerable: true,
+  get: function get() {
+    return _objFilter.extendObjType;
+  }
+});
+Object.defineProperty(exports, "formatBytes", {
+  enumerable: true,
+  get: function get() {
+    return _simpleMath.formatBytes;
+  }
+});
+Object.defineProperty(exports, "formatCustomTimer", {
+  enumerable: true,
+  get: function get() {
+    return _clock.formatCustomTimer;
+  }
+});
+Object.defineProperty(exports, "formatDayTimer", {
+  enumerable: true,
+  get: function get() {
+    return _clock.formatDayTimer;
+  }
+});
+Object.defineProperty(exports, "formatTimer", {
+  enumerable: true,
+  get: function get() {
+    return _clock.formatTimer;
+  }
+});
+Object.defineProperty(exports, "getAge", {
+  enumerable: true,
+  get: function get() {
+    return _simpleMath.getAge;
+  }
+});
+Object.defineProperty(exports, "getSimplePerc", {
+  enumerable: true,
+  get: function get() {
+    return _simpleMath.getSimplePerc;
+  }
+});
+Object.defineProperty(exports, "getTimeDuration", {
+  enumerable: true,
+  get: function get() {
+    return _clock.getTimeDuration;
+  }
+});
+Object.defineProperty(exports, "isJsonObject", {
+  enumerable: true,
+  get: function get() {
+    return _objFilter.isJsonObject;
+  }
+});
+Object.defineProperty(exports, "objType", {
+  enumerable: true,
+  get: function get() {
+    return _objFilter.objType;
+  }
+});
+Object.defineProperty(exports, "reorderObjTypeOrder", {
+  enumerable: true,
+  get: function get() {
+    return _objFilter.reorderObjTypeOrder;
+  }
+});
+Object.defineProperty(exports, "ruleOfThree", {
+  enumerable: true,
+  get: function get() {
+    return _simpleMath.ruleOfThree;
+  }
+});
+Object.defineProperty(exports, "shuffleArray", {
+  enumerable: true,
+  get: function get() {
+    return _array.shuffleArray;
+  }
+});
+Object.defineProperty(exports, "toTitleCase", {
+  enumerable: true,
+  get: function get() {
+    return _text.toTitleCase;
+  }
+});
+Object.defineProperty(exports, "toTitleCaseLowerFirst", {
+  enumerable: true,
+  get: function get() {
+    return _text.toTitleCaseLowerFirst;
+  }
+});
+var _replaceAsync = _interopRequireDefault(require("../legacy/libs/replaceAsync.mjs"));
+var _userLevel = _interopRequireDefault(require("../legacy/libs/userLevel.mjs"));
+var _arraySortPositions = _interopRequireDefault(require("../legacy/libs/arraySortPositions.mjs"));
+var _array = require("./basics/array.mjs");
+var _clock = require("./basics/clock.mjs");
+var _objFilter = require("./basics/objFilter.mjs");
+var _simpleMath = require("./basics/simpleMath.mjs");
+var _text = require("./basics/text.mjs");
+var _ColorSafeStringify = _interopRequireDefault(require("./libs/ColorSafeStringify.mjs"));
+var _TinyPromiseQueue = _interopRequireDefault(require("./libs/TinyPromiseQueue.mjs"));
+var _TinyRateLimiter = _interopRequireDefault(require("./libs/TinyRateLimiter.mjs"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+
+},{"../legacy/libs/arraySortPositions.mjs":712,"../legacy/libs/replaceAsync.mjs":713,"../legacy/libs/userLevel.mjs":714,"./basics/array.mjs":715,"./basics/clock.mjs":716,"./basics/objFilter.mjs":717,"./basics/simpleMath.mjs":718,"./basics/text.mjs":719,"./libs/ColorSafeStringify.mjs":721,"./libs/TinyPromiseQueue.mjs":722,"./libs/TinyRateLimiter.mjs":723}],721:[function(require,module,exports){
+arguments[4][703][0].apply(exports,arguments)
+},{"dup":703}],722:[function(require,module,exports){
+arguments[4][708][0].apply(exports,arguments)
+},{"dup":708}],723:[function(require,module,exports){
+arguments[4][709][0].apply(exports,arguments)
+},{"_process":587,"dup":709}],724:[function(require,module,exports){
+arguments[4][690][0].apply(exports,arguments)
+},{"dup":690}],725:[function(require,module,exports){
+arguments[4][691][0].apply(exports,arguments)
+},{"dup":691}],726:[function(require,module,exports){
+arguments[4][692][0].apply(exports,arguments)
+},{"dup":692}],727:[function(require,module,exports){
+arguments[4][693][0].apply(exports,arguments)
+},{"dup":693}],728:[function(require,module,exports){
+arguments[4][694][0].apply(exports,arguments)
+},{"dup":694}],729:[function(require,module,exports){
+arguments[4][695][0].apply(exports,arguments)
+},{"dup":695}],730:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.areHtmlElsColliding = areHtmlElsColliding;
+exports.fetchJson = fetchJson;
+exports.getHtmlElPadding = exports.getHtmlElMargin = exports.getHtmlElBordersWidth = exports.getHtmlElBorders = void 0;
+exports.installWindowHiddenScript = installWindowHiddenScript;
+exports.readJsonBlob = readJsonBlob;
+exports.saveJsonFile = saveJsonFile;
+var _objFilter = require("./objFilter.mjs");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _regeneratorValues(e) { if (null != e) { var t = e["function" == typeof Symbol && Symbol.iterator || "@@iterator"], r = 0; if (t) return t.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) return { next: function next() { return e && r >= e.length && (e = void 0), { value: e && e[r++], done: !e }; } }; } throw new TypeError(_typeof(e) + " is not iterable"); }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+/**
+ * Checks if two DOM elements are colliding on the screen.
+ *
+ * @param {Element} elem1 - First DOM element.
+ * @param {Element} elem2 - Second DOM element.
+ * @returns {boolean} - Returns true if the elements are colliding.
+ */
+function areHtmlElsColliding(elem1, elem2) {
+  var rect1 = elem1.getBoundingClientRect();
+  var rect2 = elem2.getBoundingClientRect();
+  return !(rect1.right < rect2.left || rect1.left > rect2.right || rect1.bottom < rect2.top || rect1.top > rect2.bottom);
+}
+/**
+ * Reads and parses a JSON data using FileReader.
+ * Throws an error if the content is not valid JSON.
+ * @param {File} file
+ * @returns {Promise<any>}
+ */
+function readJsonBlob(file) {
+  return new Promise(function (resolve, reject) {
+    var reader = new FileReader();
+    reader.onload = function () {
+      try {
+        // @ts-ignore
+        var result = JSON.parse(reader.result);
+        resolve(result);
+      } catch (error) {
+        // @ts-ignore
+        reject(new Error("Invalid JSON in file: ".concat(file.name, "\n").concat(error.message)));
+      }
+    };
+    reader.onerror = function () {
+      reject(new Error("Error reading file: ".concat(file.name)));
+    };
+    reader.readAsText(file);
+  });
+}
+/**
+ * Saves a JSON object as a downloadable file.
+ * @param {string} filename
+ * @param {any} data
+ * @param {number} [spaces=2]
+ */
+function saveJsonFile(filename, data) {
+  var spaces = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 2;
+  var json = JSON.stringify(data, null, spaces);
+  var blob = new Blob([json], {
+    type: 'application/json'
+  });
+  var url = URL.createObjectURL(blob);
+  var link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+/**
+ * Loads and parses a JSON from a remote URL using Fetch API.
+ *
+ * @param {string} url - The full URL to fetch JSON from.
+ * @param {Object} [options] - Optional settings.
+ * @param {string} [options.method="GET"] - HTTP method to use (GET, POST, etc.).
+ * @param {any} [options.body] - Request body (only for methods like POST, PUT).
+ * @param {number} [options.timeout=0] - Timeout in milliseconds (ignored if signal is provided).
+ * @param {number} [options.retries=0] - Number of retry attempts (ignored if signal is provided).
+ * @param {Headers|Record<string, *>} [options.headers={}] - Additional headers.
+ * @param {AbortSignal|null} [options.signal] - External AbortSignal; disables timeout and retries.
+ * @returns {Promise<*>} Parsed JSON object.
+ * @throws {Error} Throws if fetch fails, times out, or returns invalid JSON.
+ */
+function fetchJson(_x) {
+  return _fetchJson.apply(this, arguments);
+}
+/**
+ * @typedef {Object} HtmlElBoxSides
+ * @property {number} x - Total horizontal size (left + right)
+ * @property {number} y - Total vertical size (top + bottom)
+ * @property {number} left
+ * @property {number} right
+ * @property {number} top
+ * @property {number} bottom
+ */
+/**
+ * Returns the total border width and individual sides from `border{Side}Width` CSS properties.
+ *
+ * @param {Element} el - The target DOM element.
+ * @returns {HtmlElBoxSides} - Total horizontal (x) and vertical (y) border widths, and each side individually.
+ */
+function _fetchJson() {
+  _fetchJson = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(url) {
+    var _ref,
+      _ref$method,
+      method,
+      body,
+      _ref$timeout,
+      timeout,
+      _ref$retries,
+      retries,
+      _ref$headers,
+      headers,
+      _ref$signal,
+      signal,
+      attempts,
+      lastError,
+      _loop,
+      _ret,
+      attempt,
+      _args2 = arguments;
+    return _regenerator().w(function (_context2) {
+      while (1) switch (_context2.n) {
+        case 0:
+          _ref = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : {}, _ref$method = _ref.method, method = _ref$method === void 0 ? 'GET' : _ref$method, body = _ref.body, _ref$timeout = _ref.timeout, timeout = _ref$timeout === void 0 ? 0 : _ref$timeout, _ref$retries = _ref.retries, retries = _ref$retries === void 0 ? 0 : _ref$retries, _ref$headers = _ref.headers, headers = _ref$headers === void 0 ? {} : _ref$headers, _ref$signal = _ref.signal, signal = _ref$signal === void 0 ? null : _ref$signal;
+          if (!(typeof url !== 'string' || !url.startsWith('../') && !url.startsWith('./') && !url.startsWith('/') && !url.startsWith('https://') && !url.startsWith('http://'))) {
+            _context2.n = 1;
+            break;
+          }
+          throw new Error('Invalid URL: must be a valid http or https address.');
+        case 1:
+          if (!(typeof method !== 'string' || !method.trim())) {
+            _context2.n = 2;
+            break;
+          }
+          throw new Error('Invalid method: must be a non-empty string.');
+        case 2:
+          if (signal) {
+            _context2.n = 4;
+            break;
+          }
+          if (!(typeof timeout !== 'number' || !Number.isFinite(timeout) || Number.isNaN(timeout) || timeout < 0)) {
+            _context2.n = 3;
+            break;
+          }
+          throw new Error('Invalid timeout: must be a positive number.');
+        case 3:
+          if (!(typeof retries !== 'number' || !Number.isFinite(retries) || Number.isNaN(retries) || retries < 0)) {
+            _context2.n = 4;
+            break;
+          }
+          throw new Error('Invalid retries: must be a positive number.');
+        case 4:
+          attempts = signal ? 1 : retries + 1;
+          /** @type {Error|null} */
+          lastError = null;
+          _loop = /*#__PURE__*/_regenerator().m(function _loop(attempt) {
+            var _controller$signal;
+            var controller, localSignal, timer, response, contentType, data, _t;
+            return _regenerator().w(function (_context) {
+              while (1) switch (_context.n) {
+                case 0:
+                  controller = signal ? null : new AbortController();
+                  localSignal = signal || ((_controller$signal = controller === null || controller === void 0 ? void 0 : controller.signal) !== null && _controller$signal !== void 0 ? _controller$signal : null);
+                  timer = !signal && timeout && controller ? setTimeout(function () {
+                    return controller.abort();
+                  }, timeout) : null;
+                  _context.p = 1;
+                  _context.n = 2;
+                  return fetch(url, {
+                    method: method.toUpperCase(),
+                    headers: _objectSpread({
+                      Accept: 'application/json'
+                    }, headers),
+                    body: body !== undefined ? (0, _objFilter.isJsonObject)(body) ? JSON.stringify(body) : body : undefined,
+                    signal: localSignal
+                  });
+                case 2:
+                  response = _context.v;
+                  if (timer) clearTimeout(timer);
+                  if (response.ok) {
+                    _context.n = 3;
+                    break;
+                  }
+                  throw new Error("HTTP error: ".concat(response.status, " ").concat(response.statusText));
+                case 3:
+                  contentType = response.headers.get('content-type') || '';
+                  if (contentType.includes('application/json')) {
+                    _context.n = 4;
+                    break;
+                  }
+                  throw new Error("Unexpected content-type: ".concat(contentType));
+                case 4:
+                  _context.n = 5;
+                  return response.json();
+                case 5:
+                  data = _context.v;
+                  if ((0, _objFilter.isJsonObject)(data)) {
+                    _context.n = 6;
+                    break;
+                  }
+                  throw new Error('Received invalid data instead of valid JSON.');
+                case 6:
+                  return _context.a(2, {
+                    v: data
+                  });
+                case 7:
+                  _context.p = 7;
+                  _t = _context.v;
+                  lastError = /** @type {Error} */_t;
+                  if (!signal) {
+                    _context.n = 8;
+                    break;
+                  }
+                  return _context.a(2, 0);
+                case 8:
+                  if (!(attempt < retries)) {
+                    _context.n = 9;
+                    break;
+                  }
+                  _context.n = 9;
+                  return new Promise(function (resolve) {
+                    return setTimeout(resolve, 300 * (attempt + 1));
+                  });
+                case 9:
+                  return _context.a(2);
+              }
+            }, _loop, null, [[1, 7]]);
+          });
+          attempt = 0;
+        case 5:
+          if (!(attempt < attempts)) {
+            _context2.n = 9;
+            break;
+          }
+          return _context2.d(_regeneratorValues(_loop(attempt)), 6);
+        case 6:
+          _ret = _context2.v;
+          if (!(_ret === 0)) {
+            _context2.n = 7;
+            break;
+          }
+          return _context2.a(3, 9);
+        case 7:
+          if (!_ret) {
+            _context2.n = 8;
+            break;
+          }
+          return _context2.a(2, _ret.v);
+        case 8:
+          attempt++;
+          _context2.n = 5;
+          break;
+        case 9:
+          throw new Error("Failed to fetch JSON from \"".concat(url, "\"").concat(lastError ? ": ".concat(lastError.message) : '.'));
+        case 10:
+          return _context2.a(2);
+      }
+    }, _callee);
+  }));
+  return _fetchJson.apply(this, arguments);
+}
+var getHtmlElBordersWidth = exports.getHtmlElBordersWidth = function getHtmlElBordersWidth(el) {
+  var styles = getComputedStyle(el);
+  var left = parseFloat(styles.borderLeftWidth) || 0;
+  var right = parseFloat(styles.borderRightWidth) || 0;
+  var top = parseFloat(styles.borderTopWidth) || 0;
+  var bottom = parseFloat(styles.borderBottomWidth) || 0;
+  var x = left + right;
+  var y = top + bottom;
+  return {
+    x: x,
+    y: y,
+    left: left,
+    right: right,
+    top: top,
+    bottom: bottom
+  };
+};
+/**
+ * Returns the total border size and individual sides from `border{Side}` CSS properties.
+ *
+ * @param {Element} el - The target DOM element.
+ * @returns {HtmlElBoxSides} - Total horizontal (x) and vertical (y) border sizes, and each side individually.
+ */
+var getHtmlElBorders = exports.getHtmlElBorders = function getHtmlElBorders(el) {
+  var styles = getComputedStyle(el);
+  var left = parseFloat(styles.borderLeft) || 0;
+  var right = parseFloat(styles.borderRight) || 0;
+  var top = parseFloat(styles.borderTop) || 0;
+  var bottom = parseFloat(styles.borderBottom) || 0;
+  var x = left + right;
+  var y = top + bottom;
+  return {
+    x: x,
+    y: y,
+    left: left,
+    right: right,
+    top: top,
+    bottom: bottom
+  };
+};
+/**
+ * Returns the total margin and individual sides from `margin{Side}` CSS properties.
+ *
+ * @param {Element} el - The target DOM element.
+ * @returns {HtmlElBoxSides} - Total horizontal (x) and vertical (y) margins, and each side individually.
+ */
+var getHtmlElMargin = exports.getHtmlElMargin = function getHtmlElMargin(el) {
+  var styles = getComputedStyle(el);
+  var left = parseFloat(styles.marginLeft) || 0;
+  var right = parseFloat(styles.marginRight) || 0;
+  var top = parseFloat(styles.marginTop) || 0;
+  var bottom = parseFloat(styles.marginBottom) || 0;
+  var x = left + right;
+  var y = top + bottom;
+  return {
+    x: x,
+    y: y,
+    left: left,
+    right: right,
+    top: top,
+    bottom: bottom
+  };
+};
+/**
+ * Returns the total padding and individual sides from `padding{Side}` CSS properties.
+ *
+ * @param {Element} el - The target DOM element.
+ * @returns {HtmlElBoxSides} - Total horizontal (x) and vertical (y) paddings, and each side individually.
+ */
+var getHtmlElPadding = exports.getHtmlElPadding = function getHtmlElPadding(el) {
+  var styles = getComputedStyle(el);
+  var left = parseFloat(styles.paddingLeft) || 0;
+  var right = parseFloat(styles.paddingRight) || 0;
+  var top = parseFloat(styles.paddingTop) || 0;
+  var bottom = parseFloat(styles.paddingBottom) || 0;
+  var x = left + right;
+  var y = top + bottom;
+  return {
+    x: x,
+    y: y,
+    left: left,
+    right: right,
+    top: top,
+    bottom: bottom
+  };
+};
+/**
+ * Installs a script that toggles CSS classes on a given element
+ * based on the page's visibility or focus state.
+ *
+ * @param {Object} [settings={}]
+ * @param {HTMLElement} [settings.element=document.body] - The element to receive visibility classes.
+ * @param {string} [settings.hiddenClass='windowHidden'] - CSS class applied when the page is hidden.
+ * @param {string} [settings.visibleClass='windowVisible'] - CSS class applied when the page is visible.
+ * @returns {() => void} Function that removes all installed event listeners.
+ */
+function installWindowHiddenScript() {
+  var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+    _ref2$element = _ref2.element,
+    element = _ref2$element === void 0 ? document.body : _ref2$element,
+    _ref2$hiddenClass = _ref2.hiddenClass,
+    hiddenClass = _ref2$hiddenClass === void 0 ? 'windowHidden' : _ref2$hiddenClass,
+    _ref2$visibleClass = _ref2.visibleClass,
+    visibleClass = _ref2$visibleClass === void 0 ? 'windowVisible' : _ref2$visibleClass;
+  var removeClass = function removeClass() {
+    element.classList.remove(hiddenClass);
+    element.classList.remove(visibleClass);
+  };
+  /** @type {string|null} */
+  var hiddenProp = null;
+  /** @type {(this: any, evt: Event) => void} */
+  var handler;
+  var visibilityEvents = ['visibilitychange', 'mozvisibilitychange', 'webkitvisibilitychange', 'msvisibilitychange'];
+  var visibilityProps = ['hidden', 'mozHidden', 'webkitHidden', 'msHidden'];
+  for (var i = 0; i < visibilityProps.length; i++) {
+    if (visibilityProps[i] in document) {
+      hiddenProp = visibilityProps[i];
+      break;
+    }
+  }
+  handler = function handler(evt) {
+    removeClass();
+    var type = evt === null || evt === void 0 ? void 0 : evt.type;
+    // @ts-ignore
+    var isHidden = hiddenProp && document[hiddenProp];
+    var visibleEvents = ['focus', 'focusin', 'pageshow'];
+    var hiddenEvents = ['blur', 'focusout', 'pagehide'];
+    if (visibleEvents.includes(type)) {
+      element.classList.add(visibleClass);
+    } else if (hiddenEvents.includes(type)) {
+      element.classList.add(hiddenClass);
+    } else {
+      element.classList.add(isHidden ? hiddenClass : visibleClass);
+    }
+  };
+  /** @type {() => void} */
+  var uninstall = function uninstall() {};
+  if (hiddenProp) {
+    var eventType = visibilityEvents[visibilityProps.indexOf(hiddenProp)];
+    document.addEventListener(eventType, handler);
+    window.addEventListener('focus', handler);
+    window.addEventListener('blur', handler);
+    uninstall = function uninstall() {
+      document.removeEventListener(eventType, handler);
+      window.removeEventListener('focus', handler);
+      window.removeEventListener('blur', handler);
+      removeClass();
+    };
+  } else if ('onfocusin' in document) {
+    // Fallback for IE9 and older
+    // @ts-ignore
+    document.onfocusin = document.onfocusout = handler;
+    uninstall = function uninstall() {
+      // @ts-ignore
+      document.onfocusin = document.onfocusout = null;
+      removeClass();
+    };
+  } else {
+    // Last resort fallback
+    window.onpageshow = window.onpagehide = window.onfocus = window.onblur = handler;
+    uninstall = function uninstall() {
+      window.onpageshow = window.onpagehide = window.onfocus = window.onblur = null;
+      removeClass();
+    };
+  }
+  // @ts-ignore
+  var simulatedEvent = new Event(hiddenProp && document[hiddenProp] ? 'blur' : 'focus');
+  handler(simulatedEvent);
+  return uninstall;
+}
+
+},{"./objFilter.mjs":731}],731:[function(require,module,exports){
+arguments[4][697][0].apply(exports,arguments)
+},{"buffer":314,"dup":697}],732:[function(require,module,exports){
+arguments[4][698][0].apply(exports,arguments)
+},{"dup":698}],733:[function(require,module,exports){
+arguments[4][699][0].apply(exports,arguments)
+},{"dup":699}],734:[function(require,module,exports){
+arguments[4][700][0].apply(exports,arguments)
+},{"./normalFuncs.mjs":735,"dup":700,"fs":313,"fs/promises":313,"path":579}],735:[function(require,module,exports){
+arguments[4][701][0].apply(exports,arguments)
+},{"../basics/text.mjs":733,"dup":701,"fs":313,"path":579}],736:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "ColorSafeStringify", {
+  enumerable: true,
+  get: function get() {
+    return _ColorSafeStringify["default"];
+  }
+});
+Object.defineProperty(exports, "TinyDomReadyManager", {
+  enumerable: true,
+  get: function get() {
+    return _TinyDomReadyManager["default"];
+  }
+});
+Object.defineProperty(exports, "TinyDragDropDetector", {
+  enumerable: true,
+  get: function get() {
+    return _TinyDragDropDetector["default"];
+  }
+});
+Object.defineProperty(exports, "TinyDragger", {
+  enumerable: true,
+  get: function get() {
+    return _TinyDragger["default"];
+  }
+});
+Object.defineProperty(exports, "TinyLevelUp", {
+  enumerable: true,
+  get: function get() {
+    return _userLevel["default"];
+  }
+});
+Object.defineProperty(exports, "TinyNotifyCenter", {
+  enumerable: true,
+  get: function get() {
+    return _TinyNotifyCenter["default"];
+  }
+});
+Object.defineProperty(exports, "TinyPromiseQueue", {
+  enumerable: true,
+  get: function get() {
+    return _TinyPromiseQueue["default"];
+  }
+});
+Object.defineProperty(exports, "TinyRateLimiter", {
+  enumerable: true,
+  get: function get() {
+    return _TinyRateLimiter["default"];
+  }
+});
+Object.defineProperty(exports, "TinyToastNotify", {
+  enumerable: true,
+  get: function get() {
+    return _TinyToastNotify["default"];
+  }
+});
+Object.defineProperty(exports, "addAiMarkerShortcut", {
+  enumerable: true,
+  get: function get() {
+    return _text.addAiMarkerShortcut;
+  }
+});
+Object.defineProperty(exports, "areHtmlElsColliding", {
+  enumerable: true,
+  get: function get() {
+    return _html.areHtmlElsColliding;
+  }
+});
+Object.defineProperty(exports, "arraySortPositions", {
+  enumerable: true,
+  get: function get() {
+    return _arraySortPositions["default"];
+  }
+});
+Object.defineProperty(exports, "asyncReplace", {
+  enumerable: true,
+  get: function get() {
+    return _replaceAsync["default"];
+  }
+});
+Object.defineProperty(exports, "backupFile", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.backupFile;
+  }
+});
+Object.defineProperty(exports, "checkObj", {
+  enumerable: true,
+  get: function get() {
+    return _objFilter.checkObj;
+  }
+});
+Object.defineProperty(exports, "clearDirectory", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.clearDirectory;
+  }
+});
+Object.defineProperty(exports, "clearDirectoryAsync", {
+  enumerable: true,
+  get: function get() {
+    return _asyncFuncs.clearDirectoryAsync;
+  }
+});
+Object.defineProperty(exports, "cloneObjTypeOrder", {
+  enumerable: true,
+  get: function get() {
+    return _objFilter.cloneObjTypeOrder;
+  }
+});
+Object.defineProperty(exports, "countObj", {
+  enumerable: true,
+  get: function get() {
+    return _objFilter.countObj;
+  }
+});
+Object.defineProperty(exports, "dirExists", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.dirExists;
+  }
+});
+Object.defineProperty(exports, "dirSize", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.dirSize;
+  }
+});
+Object.defineProperty(exports, "dirSizeAsync", {
+  enumerable: true,
+  get: function get() {
+    return _asyncFuncs.dirSizeAsync;
+  }
+});
+Object.defineProperty(exports, "documentIsFullScreen", {
+  enumerable: true,
+  get: function get() {
+    return _fullScreen.documentIsFullScreen;
+  }
+});
+Object.defineProperty(exports, "ensureCopyFile", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.ensureCopyFile;
+  }
+});
+Object.defineProperty(exports, "ensureDirectory", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.ensureDirectory;
+  }
+});
+Object.defineProperty(exports, "exitFullScreen", {
+  enumerable: true,
+  get: function get() {
+    return _fullScreen.exitFullScreen;
+  }
+});
+Object.defineProperty(exports, "extendObjType", {
+  enumerable: true,
+  get: function get() {
+    return _objFilter.extendObjType;
+  }
+});
+Object.defineProperty(exports, "fetchJson", {
+  enumerable: true,
+  get: function get() {
+    return _html.fetchJson;
+  }
+});
+Object.defineProperty(exports, "fileExists", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.fileExists;
+  }
+});
+Object.defineProperty(exports, "fileSize", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.fileSize;
+  }
+});
+Object.defineProperty(exports, "fileSizeAsync", {
+  enumerable: true,
+  get: function get() {
+    return _asyncFuncs.fileSizeAsync;
+  }
+});
+Object.defineProperty(exports, "formatBytes", {
+  enumerable: true,
+  get: function get() {
+    return _simpleMath.formatBytes;
+  }
+});
+Object.defineProperty(exports, "formatCustomTimer", {
+  enumerable: true,
+  get: function get() {
+    return _clock.formatCustomTimer;
+  }
+});
+Object.defineProperty(exports, "formatDayTimer", {
+  enumerable: true,
+  get: function get() {
+    return _clock.formatDayTimer;
+  }
+});
+Object.defineProperty(exports, "formatTimer", {
+  enumerable: true,
+  get: function get() {
+    return _clock.formatTimer;
+  }
+});
+Object.defineProperty(exports, "genFibonacciSeq", {
+  enumerable: true,
+  get: function get() {
+    return _simpleMath.genFibonacciSeq;
+  }
+});
+Object.defineProperty(exports, "getAge", {
+  enumerable: true,
+  get: function get() {
+    return _simpleMath.getAge;
+  }
+});
+Object.defineProperty(exports, "getHtmlElBorders", {
+  enumerable: true,
+  get: function get() {
+    return _html.getHtmlElBorders;
+  }
+});
+Object.defineProperty(exports, "getHtmlElBordersWidth", {
+  enumerable: true,
+  get: function get() {
+    return _html.getHtmlElBordersWidth;
+  }
+});
+Object.defineProperty(exports, "getHtmlElMargin", {
+  enumerable: true,
+  get: function get() {
+    return _html.getHtmlElMargin;
+  }
+});
+Object.defineProperty(exports, "getHtmlElPadding", {
+  enumerable: true,
+  get: function get() {
+    return _html.getHtmlElPadding;
+  }
+});
+Object.defineProperty(exports, "getLatestBackupPath", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.getLatestBackupPath;
+  }
+});
+Object.defineProperty(exports, "getSimplePerc", {
+  enumerable: true,
+  get: function get() {
+    return _simpleMath.getSimplePerc;
+  }
+});
+Object.defineProperty(exports, "getTimeDuration", {
+  enumerable: true,
+  get: function get() {
+    return _clock.getTimeDuration;
+  }
+});
+Object.defineProperty(exports, "installWindowHiddenScript", {
+  enumerable: true,
+  get: function get() {
+    return _html.installWindowHiddenScript;
+  }
+});
+Object.defineProperty(exports, "isDirEmpty", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.isDirEmpty;
+  }
+});
+Object.defineProperty(exports, "isDirEmptyAsync", {
+  enumerable: true,
+  get: function get() {
+    return _asyncFuncs.isDirEmptyAsync;
+  }
+});
+Object.defineProperty(exports, "isFullScreenMode", {
+  enumerable: true,
+  get: function get() {
+    return _fullScreen.isFullScreenMode;
+  }
+});
+Object.defineProperty(exports, "isJsonObject", {
+  enumerable: true,
+  get: function get() {
+    return _objFilter.isJsonObject;
+  }
+});
+Object.defineProperty(exports, "isScreenFilled", {
+  enumerable: true,
+  get: function get() {
+    return _fullScreen.isScreenFilled;
+  }
+});
+Object.defineProperty(exports, "listDirs", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.listDirs;
+  }
+});
+Object.defineProperty(exports, "listDirsAsync", {
+  enumerable: true,
+  get: function get() {
+    return _asyncFuncs.listDirsAsync;
+  }
+});
+Object.defineProperty(exports, "listFiles", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.listFiles;
+  }
+});
+Object.defineProperty(exports, "listFilesAsync", {
+  enumerable: true,
+  get: function get() {
+    return _asyncFuncs.listFilesAsync;
+  }
+});
+Object.defineProperty(exports, "objType", {
+  enumerable: true,
+  get: function get() {
+    return _objFilter.objType;
+  }
+});
+Object.defineProperty(exports, "offFullScreenChange", {
+  enumerable: true,
+  get: function get() {
+    return _fullScreen.offFullScreenChange;
+  }
+});
+Object.defineProperty(exports, "onFullScreenChange", {
+  enumerable: true,
+  get: function get() {
+    return _fullScreen.onFullScreenChange;
+  }
+});
+Object.defineProperty(exports, "readJsonBlob", {
+  enumerable: true,
+  get: function get() {
+    return _html.readJsonBlob;
+  }
+});
+Object.defineProperty(exports, "readJsonFile", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.readJsonFile;
+  }
+});
+Object.defineProperty(exports, "renameFileAddPrefixSuffix", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.renameFileAddPrefixSuffix;
+  }
+});
+Object.defineProperty(exports, "renameFileBatch", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.renameFileBatch;
+  }
+});
+Object.defineProperty(exports, "renameFileNormalizeCase", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.renameFileNormalizeCase;
+  }
+});
+Object.defineProperty(exports, "renameFilePadNumbers", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.renameFilePadNumbers;
+  }
+});
+Object.defineProperty(exports, "renameFileRegex", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.renameFileRegex;
+  }
+});
+Object.defineProperty(exports, "reorderObjTypeOrder", {
+  enumerable: true,
+  get: function get() {
+    return _objFilter.reorderObjTypeOrder;
+  }
+});
+Object.defineProperty(exports, "requestFullScreen", {
+  enumerable: true,
+  get: function get() {
+    return _fullScreen.requestFullScreen;
+  }
+});
+Object.defineProperty(exports, "restoreLatestBackup", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.restoreLatestBackup;
+  }
+});
+Object.defineProperty(exports, "ruleOfThree", {
+  enumerable: true,
+  get: function get() {
+    return _simpleMath.ruleOfThree;
+  }
+});
+Object.defineProperty(exports, "saveJsonFile", {
+  enumerable: true,
+  get: function get() {
+    return _html.saveJsonFile;
+  }
+});
+Object.defineProperty(exports, "shuffleArray", {
+  enumerable: true,
+  get: function get() {
+    return _array.shuffleArray;
+  }
+});
+Object.defineProperty(exports, "toTitleCase", {
+  enumerable: true,
+  get: function get() {
+    return _text.toTitleCase;
+  }
+});
+Object.defineProperty(exports, "toTitleCaseLowerFirst", {
+  enumerable: true,
+  get: function get() {
+    return _text.toTitleCaseLowerFirst;
+  }
+});
+Object.defineProperty(exports, "tryDeleteFile", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.tryDeleteFile;
+  }
+});
+Object.defineProperty(exports, "writeJsonFile", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.writeJsonFile;
+  }
+});
+Object.defineProperty(exports, "writeTextFile", {
+  enumerable: true,
+  get: function get() {
+    return _normalFuncs.writeTextFile;
+  }
+});
+var _replaceAsync = _interopRequireDefault(require("../legacy/libs/replaceAsync.mjs"));
+var _userLevel = _interopRequireDefault(require("../legacy/libs/userLevel.mjs"));
+var _arraySortPositions = _interopRequireDefault(require("../legacy/libs/arraySortPositions.mjs"));
+var _array = require("./basics/array.mjs");
+var _clock = require("./basics/clock.mjs");
+var _objFilter = require("./basics/objFilter.mjs");
+var _fullScreen = require("./basics/fullScreen.mjs");
+var _simpleMath = require("./basics/simpleMath.mjs");
+var _text = require("./basics/text.mjs");
+var _ColorSafeStringify = _interopRequireDefault(require("./libs/ColorSafeStringify.mjs"));
+var _TinyPromiseQueue = _interopRequireDefault(require("./libs/TinyPromiseQueue.mjs"));
+var _TinyRateLimiter = _interopRequireDefault(require("./libs/TinyRateLimiter.mjs"));
+var _TinyNotifyCenter = _interopRequireDefault(require("./libs/TinyNotifyCenter.mjs"));
+var _TinyToastNotify = _interopRequireDefault(require("./libs/TinyToastNotify.mjs"));
+var _html = require("./basics/html.mjs");
+var _TinyDragDropDetector = _interopRequireDefault(require("./libs/TinyDragDropDetector.mjs"));
+var _normalFuncs = require("./fileManager/normalFuncs.mjs");
+var _asyncFuncs = require("./fileManager/asyncFuncs.mjs");
+var _TinyDragger = _interopRequireDefault(require("./libs/TinyDragger.mjs"));
+var _TinyDomReadyManager = _interopRequireDefault(require("./libs/TinyDomReadyManager.mjs"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+
+},{"../legacy/libs/arraySortPositions.mjs":724,"../legacy/libs/replaceAsync.mjs":725,"../legacy/libs/userLevel.mjs":726,"./basics/array.mjs":727,"./basics/clock.mjs":728,"./basics/fullScreen.mjs":729,"./basics/html.mjs":730,"./basics/objFilter.mjs":731,"./basics/simpleMath.mjs":732,"./basics/text.mjs":733,"./fileManager/asyncFuncs.mjs":734,"./fileManager/normalFuncs.mjs":735,"./libs/ColorSafeStringify.mjs":737,"./libs/TinyDomReadyManager.mjs":738,"./libs/TinyDragDropDetector.mjs":739,"./libs/TinyDragger.mjs":740,"./libs/TinyNotifyCenter.mjs":741,"./libs/TinyPromiseQueue.mjs":742,"./libs/TinyRateLimiter.mjs":743,"./libs/TinyToastNotify.mjs":744}],737:[function(require,module,exports){
+arguments[4][703][0].apply(exports,arguments)
+},{"dup":703}],738:[function(require,module,exports){
+arguments[4][704][0].apply(exports,arguments)
+},{"dup":704}],739:[function(require,module,exports){
+arguments[4][705][0].apply(exports,arguments)
+},{"dup":705}],740:[function(require,module,exports){
+arguments[4][706][0].apply(exports,arguments)
+},{"../basics/html.mjs":730,"../basics/objFilter.mjs":731,"dup":706}],741:[function(require,module,exports){
+arguments[4][707][0].apply(exports,arguments)
+},{"dup":707}],742:[function(require,module,exports){
+arguments[4][708][0].apply(exports,arguments)
+},{"dup":708}],743:[function(require,module,exports){
+arguments[4][709][0].apply(exports,arguments)
+},{"_process":587,"dup":709}],744:[function(require,module,exports){
+arguments[4][710][0].apply(exports,arguments)
+},{"dup":710}],745:[function(require,module,exports){
 (function (process){(function (){
 "use strict";
 
@@ -110305,7 +111273,7 @@ tippy.setDefaultProps({
 var _default = exports["default"] = tippy;
 
 }).call(this)}).call(this,require('_process'))
-},{"@popperjs/core":148,"_process":587}],725:[function(require,module,exports){
+},{"@popperjs/core":148,"_process":587}],746:[function(require,module,exports){
 
 module.exports = function () {
   var selection = document.getSelection();
@@ -110346,7 +111314,7 @@ module.exports = function () {
   };
 };
 
-},{}],726:[function(require,module,exports){
+},{}],747:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -110726,7 +111694,7 @@ function __classPrivateFieldSet(receiver, privateMap, value) {
   return value;
 }
 
-},{}],727:[function(require,module,exports){
+},{}],748:[function(require,module,exports){
 (function (Buffer){(function (){
 /**
  * Convert a typed array to a Buffer without a copy
@@ -110755,7 +111723,7 @@ module.exports = function typedarrayToBuffer (arr) {
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"buffer":314,"is-typedarray":477}],728:[function(require,module,exports){
+},{"buffer":314,"is-typedarray":477}],749:[function(require,module,exports){
 (function (global){(function (){
 /*! https://mths.be/punycode v1.4.1 by @mathias */
 ;(function(root) {
@@ -111292,7 +112260,7 @@ module.exports = function typedarrayToBuffer (arr) {
 }(this));
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],729:[function(require,module,exports){
+},{}],750:[function(require,module,exports){
 /*
  * Copyright Joyent, Inc. and other Node contributors.
  *
@@ -112070,7 +113038,7 @@ exports.format = urlFormat;
 
 exports.Url = Url;
 
-},{"punycode/":728,"qs":589}],730:[function(require,module,exports){
+},{"punycode/":749,"qs":589}],751:[function(require,module,exports){
 (function (global){(function (){
 
 /**
@@ -112141,9 +113109,9 @@ function config (name) {
 }
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],731:[function(require,module,exports){
+},{}],752:[function(require,module,exports){
 arguments[4][276][0].apply(exports,arguments)
-},{"dup":276}],732:[function(require,module,exports){
+},{"dup":276}],753:[function(require,module,exports){
 // Currently in sync with Node.js lib/internal/util/types.js
 // https://github.com/nodejs/node/commit/112cc7c27551254aa2b17098fb774867f05ed0d9
 
@@ -112479,7 +113447,7 @@ exports.isAnyArrayBuffer = isAnyArrayBuffer;
   });
 });
 
-},{"is-arguments":471,"is-generator-function":473,"is-typed-array":476,"which-typed-array":749}],733:[function(require,module,exports){
+},{"is-arguments":471,"is-generator-function":473,"is-typed-array":476,"which-typed-array":770}],754:[function(require,module,exports){
 (function (process){(function (){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -113198,9 +114166,9 @@ function callbackify(original) {
 exports.callbackify = callbackify;
 
 }).call(this)}).call(this,require('_process'))
-},{"./support/isBuffer":731,"./support/types":732,"_process":587,"inherits":470}],734:[function(require,module,exports){
+},{"./support/isBuffer":752,"./support/types":753,"_process":587,"inherits":470}],755:[function(require,module,exports){
 module.exports=function(e){var r={};function t(n){if(r[n])return r[n].exports;var a=r[n]={i:n,l:!1,exports:{}};return e[n].call(a.exports,a,a.exports,t),a.l=!0,a.exports}return t.m=e,t.c=r,t.d=function(e,r,n){t.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:n})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,r){if(1&r&&(e=t(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(t.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var a in e)t.d(n,a,function(r){return e[r]}.bind(null,a));return n},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},t.p="",t(t.s=0)}([function(e,r,t){"use strict";t.r(r),t.d(r,"validateHTMLColorName",(function(){return l})),t.d(r,"validateHTMLColorSpecialName",(function(){return i})),t.d(r,"validateHTMLColorHex",(function(){return u})),t.d(r,"validateHTMLColorRgb",(function(){return g})),t.d(r,"validateHTMLColorHsl",(function(){return y})),t.d(r,"validateHTMLColorHwb",(function(){return L})),t.d(r,"validateHTMLColorLab",(function(){return S})),t.d(r,"validateHTMLColorLch",(function(){return m})),t.d(r,"validateHTMLColor",(function(){return G}));const n=e=>e&&"string"==typeof e,a=["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenrod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","DarkOrange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","Goldenrod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenrodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquamarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenrod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","RebeccaPurple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"],o=["currentColor","inherit","transparent"],l=e=>{let r=!1;return n(e)&&a.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},i=e=>{let r=!1;return n(e)&&o.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},u=e=>{if(n(e)){const r=/^#([\da-f]{3}){1,2}$|^#([\da-f]{4}){1,2}$/i;return e&&r.test(e)}return!1},d="(([\\d]{0,5})((\\.([\\d]{1,5}))?))",s=`(${d}%)`,c="(([0-9]|[1-9][0-9]|100)%)",f=`(${c}|(0?((\\.([\\d]{1,5}))?))|1)`,h=`([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?)([\\s]{1,5})${`(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?`}([\\s]{0,5})\\)`,$="(-?(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360)(deg)?)",g=e=>{if(n(e)){const r="([\\s]{0,5})([\\d]{1,5})%?([\\s]{0,5}),?",t="((([\\s]{0,5}),?([\\s]{0,5}))|(([\\s]{1,5})))",n=new RegExp(`^(rgb)a?\\(${`${r}${t}`}${`${r}${t}`}${`${r}${t}`}(${"(\\/?([\\s]{0,5})(0?\\.?([\\d]{1,5})%?([\\s]{0,5}))?|1|0)"})?\\)$`);return e&&n.test(e)}return!1},y=e=>{if(n(e)){const r=new RegExp(`^(hsl)a?\\((([\\s]{0,5})(${$}|${"(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-9][0-9]|400)grad)"}|${"((([0-5])?\\.([\\d]{1,5})|6\\.([0-9]|1[0-9]|2[0-8])|[0-6])rad)"}|${"((0?((\\.([\\d]{1,5}))?)|1)turn)"})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?|,?)([\\s]{0,5})(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?\\)$`);return e&&r.test(e)}return!1},L=e=>{if(n(e)){const r=new RegExp(`^(hwb\\(([\\s]{0,5})${$}([\\s]{1,5}))((0|${c})([\\s]{1,5}))((0|${c})${h}$`);return e&&r.test(e)}return!1},S=e=>{if(n(e)){const r="(-?(([0-9]|[1-9][0-9]|1[0-5][0-9])((\\.([\\d]{1,5}))?)?|160))",t=new RegExp(`^(lab\\(([\\s]{0,5})${s}([\\s]{1,5})${r}([\\s]{1,5})${r}${h}$`);return e&&t.test(e)}return!1},m=e=>{if(n(e)){const r="((([0-9]|[1-9][0-9])?((\\.([\\d]{1,5}))?)|100)(%)?)",t=""+d,n=`((${$})|(0|${f})|(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360))`,a=`(\\/([\\s]{0,5})${f})`,o=new RegExp(`^lch\\(${`(([\\s]{0,5})${r}([\\s]{1,5})${t}([\\s]{1,5})${n}([\\s]{0,5})(${a})?)`}\\)$`);return e&&o.test(e)}return!1},G=e=>!!(e&&u(e)||g(e)||y(e)||L(e)||S(e)||m(e));r.default=e=>!!(e&&u(e)||l(e)||i(e)||g(e)||y(e)||L(e)||S(e)||m(e))}]);
-},{}],735:[function(require,module,exports){
+},{}],756:[function(require,module,exports){
 const EventEmitter = require('events').EventEmitter
 const inherits = require('util').inherits
 const ethUtil = require('ethereumjs-util')
@@ -113476,7 +114444,7 @@ function toBufferBlock (jsonBlock) {
   }
 }
 
-},{"./util/create-payload.js":744,"./util/rpc-cache-utils.js":747,"./util/stoplight.js":748,"async/eachSeries":287,"async/map":303,"eth-block-tracker":381,"ethereumjs-util":427,"events":437,"util":733}],736:[function(require,module,exports){
+},{"./util/create-payload.js":765,"./util/rpc-cache-utils.js":768,"./util/stoplight.js":769,"async/eachSeries":287,"async/map":303,"eth-block-tracker":381,"ethereumjs-util":427,"events":437,"util":754}],757:[function(require,module,exports){
 const ProviderSubprovider = require('./json-rpc-engine-middleware')
 const createBlockCacheMiddleware = require('eth-json-rpc-middleware/block-cache')
 
@@ -113488,7 +114456,7 @@ class BlockCacheSubprovider extends ProviderSubprovider {
 
 module.exports = BlockCacheSubprovider
 
-},{"./json-rpc-engine-middleware":740,"eth-json-rpc-middleware/block-cache":404}],737:[function(require,module,exports){
+},{"./json-rpc-engine-middleware":761,"eth-json-rpc-middleware/block-cache":404}],758:[function(require,module,exports){
 const ProviderSubprovider = require('./json-rpc-engine-middleware')
 const createFilterMiddleware = require('eth-json-rpc-filters')
 
@@ -113502,7 +114470,7 @@ class SubscriptionsSubprovider extends ProviderSubprovider {
 
 module.exports = SubscriptionsSubprovider
 
-},{"./json-rpc-engine-middleware":740,"eth-json-rpc-filters":387}],738:[function(require,module,exports){
+},{"./json-rpc-engine-middleware":761,"eth-json-rpc-filters":387}],759:[function(require,module,exports){
 const inherits = require('util').inherits
 const Subprovider = require('./subprovider.js')
 
@@ -113532,7 +114500,7 @@ FixtureProvider.prototype.handleRequest = function(payload, next, end){
   }
 }
 
-},{"./subprovider.js":742,"util":733}],739:[function(require,module,exports){
+},{"./subprovider.js":763,"util":754}],760:[function(require,module,exports){
 /*
  * Emulate 'eth_accounts' / 'eth_sendTransaction' using 'eth_sendRawTransaction'
  *
@@ -114238,7 +115206,7 @@ function mustProvideInConstructor(methodName) {
   }
 }
 
-},{"../util/estimate-gas.js":745,"./subprovider.js":742,"async/parallel":304,"async/waterfall":305,"eth-sig-util":408,"ethereumjs-util":427,"semaphore":623,"util":733,"xtend":756}],740:[function(require,module,exports){
+},{"../util/estimate-gas.js":766,"./subprovider.js":763,"async/parallel":304,"async/waterfall":305,"eth-sig-util":408,"ethereumjs-util":427,"semaphore":623,"util":754,"xtend":777}],761:[function(require,module,exports){
 const Subprovider = require('./subprovider.js')
 
 // wraps a json-rpc-engine middleware in a subprovider interface
@@ -114294,7 +115262,7 @@ class JsonRpcEngineMiddlewareSubprovider extends Subprovider {
 
 module.exports = JsonRpcEngineMiddlewareSubprovider
 
-},{"./subprovider.js":742}],741:[function(require,module,exports){
+},{"./subprovider.js":763}],762:[function(require,module,exports){
 (function (Buffer){(function (){
 const inherits = require('util').inherits
 const Transaction = require('ethereumjs-tx')
@@ -114388,7 +115356,7 @@ NonceTrackerSubprovider.prototype.handleRequest = function(payload, next, end){
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"../util/rpc-cache-utils":747,"./subprovider.js":742,"buffer":314,"ethereumjs-tx":426,"ethereumjs-util":427,"util":733}],742:[function(require,module,exports){
+},{"../util/rpc-cache-utils":768,"./subprovider.js":763,"buffer":314,"ethereumjs-tx":426,"ethereumjs-util":427,"util":754}],763:[function(require,module,exports){
 const createPayload = require('../util/create-payload.js')
 
 module.exports = SubProvider
@@ -114432,7 +115400,7 @@ SubProvider.prototype.stop = function () {}
 
 SubProvider.prototype.start = function () {}
 
-},{"../util/create-payload.js":744}],743:[function(require,module,exports){
+},{"../util/create-payload.js":765}],764:[function(require,module,exports){
 const ProviderSubprovider = require('./json-rpc-engine-middleware')
 const createSubscriptionManager = require('eth-json-rpc-filters/subscriptionManager')
 
@@ -114450,7 +115418,7 @@ class SubscriptionsSubprovider extends ProviderSubprovider {
 
 module.exports = SubscriptionsSubprovider
 
-},{"./json-rpc-engine-middleware":740,"eth-json-rpc-filters/subscriptionManager":402}],744:[function(require,module,exports){
+},{"./json-rpc-engine-middleware":761,"eth-json-rpc-filters/subscriptionManager":402}],765:[function(require,module,exports){
 const getRandomId = require('./random-id.js')
 const extend = require('xtend')
 
@@ -114467,7 +115435,7 @@ function createPayload(data){
   }, data)
 }
 
-},{"./random-id.js":746,"xtend":756}],745:[function(require,module,exports){
+},{"./random-id.js":767,"xtend":777}],766:[function(require,module,exports){
 const createPayload = require('./create-payload.js')
 
 module.exports = estimateGas
@@ -114495,7 +115463,7 @@ function estimateGas(provider, txParams, cb) {
     cb(null, res.result)
   })
 }
-},{"./create-payload.js":744}],746:[function(require,module,exports){
+},{"./create-payload.js":765}],767:[function(require,module,exports){
 module.exports = createRandomId
 
 
@@ -114503,7 +115471,7 @@ function createRandomId () {
   // random id
   return Math.floor(Number.MAX_SAFE_INTEGER * Math.random())
 }
-},{}],747:[function(require,module,exports){
+},{}],768:[function(require,module,exports){
 const stringify = require('json-stable-stringify')
 
 module.exports = {
@@ -114652,7 +115620,7 @@ function cacheTypeForPayload(payload) {
   }
 }
 
-},{"json-stable-stringify":483}],748:[function(require,module,exports){
+},{"json-stable-stringify":483}],769:[function(require,module,exports){
 const EventEmitter = require('events').EventEmitter
 const inherits = require('util').inherits
 
@@ -114687,7 +115655,7 @@ Stoplight.prototype.await = function(fn){
     setTimeout(fn)
   }
 }
-},{"events":437,"util":733}],749:[function(require,module,exports){
+},{"events":437,"util":754}],770:[function(require,module,exports){
 (function (global){(function (){
 'use strict';
 
@@ -114803,7 +115771,7 @@ module.exports = function whichTypedArray(value) {
 };
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"available-typed-arrays":306,"call-bind":323,"call-bound":324,"for-each":439,"get-proto":447,"gopd":449,"has-tostringtag/shams":453}],750:[function(require,module,exports){
+},{"available-typed-arrays":306,"call-bind":323,"call-bound":324,"for-each":439,"get-proto":447,"gopd":449,"has-tostringtag/shams":453}],771:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -114849,7 +115817,7 @@ var SyntaxError = /** @class */ (function (_super) {
 }(Error));
 exports.SyntaxError = SyntaxError;
 
-},{}],751:[function(require,module,exports){
+},{}],772:[function(require,module,exports){
 "use strict";
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
@@ -114859,7 +115827,7 @@ __export(require("./xml-http-request"));
 var xml_http_request_event_target_1 = require("./xml-http-request-event-target");
 exports.XMLHttpRequestEventTarget = xml_http_request_event_target_1.XMLHttpRequestEventTarget;
 
-},{"./xml-http-request":755,"./xml-http-request-event-target":753}],752:[function(require,module,exports){
+},{"./xml-http-request":776,"./xml-http-request-event-target":774}],773:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ProgressEvent = /** @class */ (function () {
@@ -114875,7 +115843,7 @@ var ProgressEvent = /** @class */ (function () {
 }());
 exports.ProgressEvent = ProgressEvent;
 
-},{}],753:[function(require,module,exports){
+},{}],774:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var XMLHttpRequestEventTarget = /** @class */ (function () {
@@ -114917,7 +115885,7 @@ var XMLHttpRequestEventTarget = /** @class */ (function () {
 }());
 exports.XMLHttpRequestEventTarget = XMLHttpRequestEventTarget;
 
-},{}],754:[function(require,module,exports){
+},{}],775:[function(require,module,exports){
 (function (Buffer){(function (){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
@@ -114998,7 +115966,7 @@ var XMLHttpRequestUpload = /** @class */ (function (_super) {
 exports.XMLHttpRequestUpload = XMLHttpRequestUpload;
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"./xml-http-request-event-target":753,"buffer":314}],755:[function(require,module,exports){
+},{"./xml-http-request-event-target":774,"buffer":314}],776:[function(require,module,exports){
 (function (process,Buffer){(function (){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
@@ -115448,7 +116416,7 @@ XMLHttpRequest.prototype.nodejsHttpsAgent = https.globalAgent;
 XMLHttpRequest.prototype.nodejsBaseUrl = null;
 
 }).call(this)}).call(this,require('_process'),require("buffer").Buffer)
-},{"./errors":750,"./progress-event":752,"./xml-http-request-event-target":753,"./xml-http-request-upload":754,"_process":587,"buffer":314,"cookiejar":326,"http":665,"https":468,"os":578,"url":729}],756:[function(require,module,exports){
+},{"./errors":771,"./progress-event":773,"./xml-http-request-event-target":774,"./xml-http-request-upload":775,"_process":587,"buffer":314,"cookiejar":326,"http":665,"https":468,"os":578,"url":750}],777:[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;

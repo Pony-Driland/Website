@@ -45,44 +45,6 @@ $(() => {
 // Prepare Tiny Lib
 const tinyLib = {};
 
-(function () {
-  var hidden = 'windowHidden';
-
-  // Standards:
-  if (hidden in document) document.addEventListener('visibilitychange', onchange);
-  else if ((hidden = 'mozHidden') in document)
-    document.addEventListener('mozvisibilitychange', onchange);
-  else if ((hidden = 'webkitHidden') in document)
-    document.addEventListener('webkitvisibilitychange', onchange);
-  else if ((hidden = 'msHidden') in document)
-    document.addEventListener('msvisibilitychange', onchange);
-  // IE 9 and lower:
-  else if ('onfocusin' in document) document.onfocusin = document.onfocusout = onchange;
-  // All others:
-  else window.onpageshow = window.onpagehide = window.onfocus = window.onblur = onchange;
-
-  function onchange(evt) {
-    $('body').removeClass('windowHidden').removeClass('windowVisible');
-    var v = 'windowVisible',
-      h = 'windowHidden',
-      evtMap = {
-        focus: v,
-        focusin: v,
-        pageshow: v,
-        blur: h,
-        focusout: h,
-        pagehide: h,
-      };
-
-    evt = evt || window.event;
-    if (evt.type in evtMap) $('body').addClass(evtMap[evt.type]);
-    else $('body').addClass(this[hidden] ? 'windowHidden' : 'windowVisible');
-  }
-
-  // set the initial state (but only if browser supports the Page Visibility API)
-  if (document[hidden] !== undefined) onchange({ type: document[hidden] ? 'blur' : 'focus' });
-})();
-
 // MD Data manager
 tinyLib.mdManager = {};
 
@@ -229,14 +191,6 @@ tinyLib.formGroupCheck = function (data) {
     }).attr('checked', data.value),
     $('<label>', { class: 'form-check-label', for: data.id + '_input' }).text(data.title),
   );
-};
-
-alert = function (text, title = 'Browser Warning!') {
-  return tinyLib.modal({
-    title: title,
-    body: $('<div>', { class: 'text-break' }).css('white-space', 'pre-wrap').text(text),
-    dialog: 'modal-lg',
-  });
 };
 
 $.fn.selectRange = function (start, end) {

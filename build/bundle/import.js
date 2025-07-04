@@ -29,8 +29,12 @@ import validateColor from "validate-color";
 
 // Tiny AI
 import { setTinyGoogleAi, TinyAiInstance } from 'tiny-ai-api';
-import { objType, countObj, shuffleArray, ruleOfThree, toTitleCase, formatDayTimer, addAiMarkerShortcut } from 'tiny-essentials';
+import { objType, countObj, shuffleArray, ruleOfThree, toTitleCase, formatDayTimer, addAiMarkerShortcut, installWindowHiddenScript, TinyDomReadyManager } from 'tiny-essentials';
 import TinyDices from 'tiny-dices';
+
+const startModules = new TinyDomReadyManager();
+startModules.onReady(() => installWindowHiddenScript());
+startModules.init();
 
 // Imports
 addAiMarkerShortcut();
