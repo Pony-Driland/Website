@@ -29,15 +29,32 @@ import validateColor from "validate-color";
 
 // Tiny AI
 import { setTinyGoogleAi, TinyAiInstance } from 'tiny-ai-api';
-import { objType, countObj, shuffleArray, ruleOfThree, toTitleCase, formatDayTimer, addAiMarkerShortcut, installWindowHiddenScript, TinyDomReadyManager } from 'tiny-essentials';
+import { 
+    objType, 
+    countObj, 
+    shuffleArray, 
+    ruleOfThree, 
+    toTitleCase, 
+    formatDayTimer, 
+    addAiMarkerShortcut, 
+    installWindowHiddenScript, 
+    TinyDomReadyManager, 
+    fetchJson, 
+    readJsonBlob, 
+    TinyNotifications
+} from 'tiny-essentials';
 import TinyDices from 'tiny-dices';
 
 const startModules = new TinyDomReadyManager();
 startModules.onReady(() => installWindowHiddenScript());
 startModules.init();
 
+global.window.tinyNotification = new TinyNotifications({ audio: '/audio/notification.ogg', defaultIcon: '/img/icon/192.png' });
+
 // Imports
 addAiMarkerShortcut();
+global.window.readJsonBlob = readJsonBlob;
+global.window.fetchJson = fetchJson;
 global.window.TinyDices = TinyDices;
 global.window.setTinyGoogleAi = setTinyGoogleAi;
 global.window.TinyAiInstance = TinyAiInstance;

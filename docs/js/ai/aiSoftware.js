@@ -397,7 +397,6 @@ const AiScriptStart = (connStore) => {
   // Open AI Page
   tinyAiScript.open = async () => {
     let sessionEnabled = true;
-    tinyNotification.requestPerm();
     // Update Url
     urlUpdate('ai', 'AI Page');
 
@@ -3431,13 +3430,14 @@ const AiScriptStart = (connStore) => {
               // Remove class
               if (isComplete) {
                 const notificationError = () =>
-                  tinyNotification.send('System', 'Your message was not processed.');
+                  tinyNotification.send('System', { body: 'Your message was not processed.' });
 
                 if (tinyCache.msgBallon) {
                   tinyCache.msgBallon.removeClass('entering-ai-message');
                   const ballonCache = tinyCache.msgBallon.data('tiny-ai-cache');
                   if ($('body').hasClass('windowHidden')) {
-                    if (ballonCache) tinyNotification.send(ballonCache.role, ballonCache.msg);
+                    if (ballonCache)
+                      tinyNotification.send(ballonCache.role, { body: ballonCache.msg });
                     else notificationError();
                   }
                 } else if ($('body').hasClass('windowHidden')) notificationError();
@@ -3484,7 +3484,7 @@ const AiScriptStart = (connStore) => {
                 console.log(`AI Generator Error`, result.error);
                 alert(result.error.message);
                 if (typeof result.error.message === 'string' && result.error.message.length > 0)
-                  tinyNotification.send('Ai Error', result.error.message);
+                  tinyNotification.send('Ai Error', { body: result.error.message });
               }
 
               // Complete
@@ -4550,6 +4550,7 @@ const AiScriptStart = (connStore) => {
     }
 
     // Finished
+    await tinyNotification.requestPerm();
     $.LoadingOverlay('hide');
   };
 

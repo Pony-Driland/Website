@@ -422,23 +422,10 @@ tinyLib.upload.img = (button = null, callback = null, accept = '*') =>
 tinyLib.upload.json = (button = null, callback = null) =>
   tinyLib.upload.button({ accept: '.json' }, button, (event) => {
     const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        try {
-          // Read data
-          const jsonData = JSON.parse(e.target.result);
-          callback(null, jsonData);
-        } catch (err) {
-          callback(err, null);
-        }
-      };
-
-      reader.onerror = function (err) {
-        callback(err, null);
-      };
-      reader.readAsText(file);
-    }
+    if (file)
+      readJsonBlob(file)
+        .then((jsonData) => callback(null, jsonData))
+        .catch((err) => callback(err, null));
   });
 
 // Bootstrap

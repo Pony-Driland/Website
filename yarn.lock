@@ -9292,10 +9292,10 @@ tiny-essentials@^1.13.0:
   resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.13.0.tgz#d307a7d6899ac33fa1c6fae8a88dea92684a958e"
   integrity sha512-wrTa6h++9K7FLbpd/oyFvee8TF1HuU/x8P0ycys5CBW93HI81FQcBhWej4AuJqL2oGnqHVHt7IpiLIaxoNMtNg==
 
-tiny-essentials@^1.13.2:
-  version "1.13.2"
-  resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.13.2.tgz#91073870a4f4c991ce96839885774eea690bbf9d"
-  integrity sha512-fy+VVZIbsJ5ilQhcZ8TeKv+RoaRZEm108jHNXKEwhlz7UpG6ZIqVyMQQ5Vv8NphJ7z/XWmke637nRWq+oPzTIg==
+tiny-essentials@^1.14.0:
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/tiny-essentials/-/tiny-essentials-1.14.0.tgz#9bb7fc2680bff9e6ed278f0473beafedd350af26"
+  integrity sha512-zAgV8cjGYJeC/URuV2ByibkwVxltNTXSRrTN8dAhoZuVkQdu5pNZoTm0tm38q6BeVE2npQhc9tw8CtjExEE7Tg==
 
 tiny-essentials@^1.3.0:
   version "1.10.2"
