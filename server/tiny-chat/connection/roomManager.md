@@ -19,19 +19,15 @@ Checks whether a room with the provided `roomId` exists. Requires a valid user s
 #### Execution Flow
 
 1. **Data Validation:**
-
    - Verifies that the `roomId` is a valid string.
 
 2. **User Authentication:**
-
    - If no valid user is associated with the current socket, the function responds using `account not detect protocol` and exits.
 
 3. **Room Existence Check:**
-
    - Calls room check to determine if the room exists in the current system.
 
 4. **Return Result:**
-
    - Responds to the client using the provided callback `fn`, with an object:
      - `{ exists: true }` if the room exists.
      - `{ exists: false }` if the room does not exist.
@@ -77,41 +73,32 @@ Allows a user to join a specific room. Validates room credentials, room availabi
 #### Execution Flow
 
 1. **Data Validation:**
-
    - The `roomId` and `password` values are checked to ensure they are valid (e.g., `roomId` should be a string, and `password` should be a string).
 
 2. **User Authentication:**
-
    - The user's ID is fetched for data verification. If no user is detected, an error response is sent.
 
 3. **Rate Limiting:**
-
    - A check is performed to determine if the user has exceeded the rate limit for joining rooms. If the user is rate-limited, the function returns early.
 
 4. **Room Validation:**
    - The function checks if the room exists by attempting to retrieve it from the `rooms`. If the room is not found, an error message with code `1` ("Room not found") is returned.
 5. **Password Validation:**
-
    - If the room requires a password, it is validated against the password provided by the user (ignored by server moderators and server owner). If incorrect, an error message with code `2` ("Incorrect room password") is returned.
 
 6. **Room Capacity Check:**
-
    - The function checks if the room is full by comparing the number of users in the room with the room's maximum capacity. If the room is full, an error message with code `3` ("Room is full") is returned.
 
 7. **Room Disabled Check:**
-
    - If the room is disabled, and the user is not the server owner or a moderator, or the user is not the room owner, an error message with code `4` ("Room is disabled") is returned.
 
 8. **Banned Users Check:**
-
    - The function checks if the user is banned from the room. If the user is banned, an error message with code `5` ("You're banned") is returned.
 
 9. **Add User to Room:**
-
    - If all checks pass, the user is added to the room.
 
 10. **Send Room History and Settings:**
-
     - The room's chat history is retrieved. If no history exists, a new one is created and associated with the room.
     - The user is sent the following data:
       - `room-entered`: Data received to load the room on the user page.

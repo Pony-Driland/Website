@@ -1475,9 +1475,7 @@ const AiScriptStart = (connStore) => {
           // Form
           const $perDieCol = $('<div>')
             .addClass('col-md-12')
-            .append(
-              genConfig('perDieValues', 'Per-Die Values', 'text', '6', 'e.g., 6,12,20'),
-            );
+            .append(genConfig('perDieValues', 'Per-Die Values', 'text', '6', 'e.g., 6,12,20'));
 
           const $allow0input = $('<input>')
             .addClass('form-check-input')
