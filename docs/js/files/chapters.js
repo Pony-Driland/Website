@@ -75,12 +75,10 @@ const storyData = {
                 console.log(
                   './chapters/' + storyData.lang.active + '/' + chapter + '.json' + fileVersion,
                 );
-                $.getJSON(
+                fetchJson(
                   './chapters/' + storyData.lang.active + '/' + chapter + '.json' + fileVersion,
                 )
-
-                  // Complete
-                  .done(function (data) {
+                  .then((data) => {
                     // Insert Words Count
                     const wordCache = [];
                     let letters = 0;
@@ -296,7 +294,7 @@ const storyData = {
                   })
 
                   // Fail
-                  .fail(function (err) {
+                  .catch((err) => {
                     console.log(`Chapter ${chapter} failed during the load!`);
                     $.LoadingOverlay('hide');
                     failApp(err);

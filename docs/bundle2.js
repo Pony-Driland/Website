@@ -44,9 +44,15 @@ startModules.onReady(function () {
   return (0, _tinyEssentials.installWindowHiddenScript)();
 });
 startModules.init();
+global.window.tinyNotification = new _tinyEssentials.TinyNotifications({
+  audio: '/audio/notification.ogg',
+  defaultIcon: '/img/icon/192.png'
+});
 
 // Imports
 (0, _tinyEssentials.addAiMarkerShortcut)();
+global.window.readJsonBlob = _tinyEssentials.readJsonBlob;
+global.window.fetchJson = _tinyEssentials.fetchJson;
 global.window.TinyDices = _tinyDices["default"];
 global.window.setTinyGoogleAi = _tinyAiApi.setTinyGoogleAi;
 global.window.TinyAiInstance = _tinyAiApi.TinyAiInstance;
@@ -70,7 +76,7 @@ global.window.WalletConnect = _client["default"];
 global.window.WalletConnectProvider = _web3Provider["default"];
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"@walletconnect/client":187,"@walletconnect/web3-provider":269,"bignumber.js":309,"ethers/lib.esm/index.js":433,"for-promise":440,"jsstore":490,"photoswipe":580,"pizzicato":582,"socket.io-client":638,"tiny-ai-api":688,"tiny-dices":711,"tiny-essentials":736,"tippy.js":745,"validate-color":755}],2:[function(require,module,exports){
+},{"@walletconnect/client":187,"@walletconnect/web3-provider":269,"bignumber.js":309,"ethers/lib.esm/index.js":433,"for-promise":440,"jsstore":490,"photoswipe":580,"pizzicato":582,"socket.io-client":638,"tiny-ai-api":688,"tiny-dices":711,"tiny-essentials":736,"tippy.js":746,"validate-color":756}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30831,7 +30837,7 @@ function padString(str, length, left) {
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"buffer":314,"is-typedarray":477,"typedarray-to-buffer":748}],210:[function(require,module,exports){
+},{"buffer":314,"is-typedarray":477,"typedarray-to-buffer":749}],210:[function(require,module,exports){
 (function (global){(function (){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -30881,7 +30887,7 @@ const tslib_1 = require("tslib");
 tslib_1.__exportStar(require("./crypto"), exports);
 tslib_1.__exportStar(require("./env"), exports);
 
-},{"./crypto":210,"./env":211,"tslib":747}],213:[function(require,module,exports){
+},{"./crypto":210,"./env":211,"tslib":748}],213:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -30988,7 +30994,7 @@ var HTTPConnection = /*#__PURE__*/function (_EventEmitter) {
 }(_eventemitter["default"]);
 var _default = exports["default"] = HTTPConnection;
 
-},{"@walletconnect/utils":262,"eventemitter3":436,"xhr2-cookies":772}],214:[function(require,module,exports){
+},{"@walletconnect/utils":262,"eventemitter3":436,"xhr2-cookies":773}],214:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -40719,7 +40725,7 @@ var WalletConnectProvider = /*#__PURE__*/function (_ProviderEngine) {
 }(ProviderEngine);
 var _default = exports["default"] = WalletConnectProvider;
 
-},{"@walletconnect/client":187,"@walletconnect/http-connection":213,"@walletconnect/qrcode-modal":225,"@walletconnect/utils":262,"web3-provider-engine":756,"web3-provider-engine/subproviders/cache":757,"web3-provider-engine/subproviders/filters":758,"web3-provider-engine/subproviders/fixture":759,"web3-provider-engine/subproviders/hooked-wallet":760,"web3-provider-engine/subproviders/nonce-tracker":762,"web3-provider-engine/subproviders/subscriptions":764}],270:[function(require,module,exports){
+},{"@walletconnect/client":187,"@walletconnect/http-connection":213,"@walletconnect/qrcode-modal":225,"@walletconnect/utils":262,"web3-provider-engine":757,"web3-provider-engine/subproviders/cache":758,"web3-provider-engine/subproviders/filters":759,"web3-provider-engine/subproviders/fixture":760,"web3-provider-engine/subproviders/hooked-wallet":761,"web3-provider-engine/subproviders/nonce-tracker":763,"web3-provider-engine/subproviders/subscriptions":765}],270:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getLocalStorage = exports.getLocalStorageOrThrow = exports.getCrypto = exports.getCryptoOrThrow = exports.getLocation = exports.getLocationOrThrow = exports.getNavigator = exports.getNavigatorOrThrow = exports.getDocument = exports.getDocumentOrThrow = exports.getFromWindowOrThrow = exports.getFromWindow = void 0;
@@ -54309,7 +54315,7 @@ function copy(text, options) {
 
 module.exports = copy;
 
-},{"toggle-selection":746}],328:[function(require,module,exports){
+},{"toggle-selection":747}],328:[function(require,module,exports){
 'use strict'
 var inherits = require('inherits')
 var MD5 = require('md5.js')
@@ -64175,7 +64181,7 @@ function createPayload(data){
   }, data)
 }
 
-},{"json-rpc-random-id":482,"xtend":777}],408:[function(require,module,exports){
+},{"json-rpc-random-id":482,"xtend":778}],408:[function(require,module,exports){
 const ethUtil = require('ethereumjs-util')
 const ethAbi = require('ethereumjs-abi')
 
@@ -73419,7 +73425,7 @@ function validateParams (params) {
   return params
 }
 
-},{"http":665,"url":750}],469:[function(require,module,exports){
+},{"http":665,"url":751}],469:[function(require,module,exports){
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
@@ -73808,7 +73814,7 @@ module.exports = function isTypedArray(value) {
   return !!whichTypedArray(value);
 };
 
-},{"which-typed-array":770}],477:[function(require,module,exports){
+},{"which-typed-array":771}],477:[function(require,module,exports){
 module.exports      = isTypedArray
 isTypedArray.strict = isStrictTypedArray
 isTypedArray.loose  = isLooseTypedArray
@@ -78757,7 +78763,7 @@ Writable.prototype._destroy = function (err, cb) {
   cb(err);
 };
 }).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../errors":497,"./_stream_duplex":498,"./internal/streams/destroy":505,"./internal/streams/state":509,"./internal/streams/stream":510,"_process":587,"buffer":314,"inherits":470,"util-deprecate":751}],503:[function(require,module,exports){
+},{"../errors":497,"./_stream_duplex":498,"./internal/streams/destroy":505,"./internal/streams/state":509,"./internal/streams/stream":510,"_process":587,"buffer":314,"inherits":470,"util-deprecate":752}],503:[function(require,module,exports){
 (function (process){(function (){
 'use strict';
 
@@ -80579,7 +80585,7 @@ arguments[4][500][0].apply(exports,arguments)
 arguments[4][501][0].apply(exports,arguments)
 },{"../errors":552,"./_stream_duplex":553,"dup":501,"inherits":470}],557:[function(require,module,exports){
 arguments[4][502][0].apply(exports,arguments)
-},{"../errors":552,"./_stream_duplex":553,"./internal/streams/destroy":560,"./internal/streams/state":564,"./internal/streams/stream":565,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":751}],558:[function(require,module,exports){
+},{"../errors":552,"./_stream_duplex":553,"./internal/streams/destroy":560,"./internal/streams/state":564,"./internal/streams/stream":565,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":752}],558:[function(require,module,exports){
 arguments[4][503][0].apply(exports,arguments)
 },{"./end-of-stream":561,"_process":587,"dup":503}],559:[function(require,module,exports){
 arguments[4][504][0].apply(exports,arguments)
@@ -91436,7 +91442,7 @@ arguments[4][500][0].apply(exports,arguments)
 arguments[4][501][0].apply(exports,arguments)
 },{"../errors":598,"./_stream_duplex":599,"dup":501,"inherits":470}],603:[function(require,module,exports){
 arguments[4][502][0].apply(exports,arguments)
-},{"../errors":598,"./_stream_duplex":599,"./internal/streams/destroy":606,"./internal/streams/state":610,"./internal/streams/stream":611,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":751}],604:[function(require,module,exports){
+},{"../errors":598,"./_stream_duplex":599,"./internal/streams/destroy":606,"./internal/streams/state":610,"./internal/streams/stream":611,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":752}],604:[function(require,module,exports){
 arguments[4][503][0].apply(exports,arguments)
 },{"./end-of-stream":607,"_process":587,"dup":503}],605:[function(require,module,exports){
 arguments[4][504][0].apply(exports,arguments)
@@ -91866,7 +91872,7 @@ function arrayClone(arr, n) {
   return copy;
 }
 
-},{"events/":437,"util":754}],618:[function(require,module,exports){
+},{"events/":437,"util":755}],618:[function(require,module,exports){
 'use strict';
 
 var callBound = require('call-bound');
@@ -96598,7 +96604,7 @@ arguments[4][500][0].apply(exports,arguments)
 arguments[4][501][0].apply(exports,arguments)
 },{"../errors":650,"./_stream_duplex":651,"dup":501,"inherits":470}],655:[function(require,module,exports){
 arguments[4][502][0].apply(exports,arguments)
-},{"../errors":650,"./_stream_duplex":651,"./internal/streams/destroy":658,"./internal/streams/state":662,"./internal/streams/stream":663,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":751}],656:[function(require,module,exports){
+},{"../errors":650,"./_stream_duplex":651,"./internal/streams/destroy":658,"./internal/streams/state":662,"./internal/streams/stream":663,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":752}],656:[function(require,module,exports){
 arguments[4][503][0].apply(exports,arguments)
 },{"./end-of-stream":659,"_process":587,"dup":503}],657:[function(require,module,exports){
 arguments[4][504][0].apply(exports,arguments)
@@ -96704,7 +96710,7 @@ http.METHODS = [
 	'UNSUBSCRIBE'
 ]
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./lib/request":667,"./lib/response":668,"builtin-status-codes":316,"url":750,"xtend":777}],666:[function(require,module,exports){
+},{"./lib/request":667,"./lib/response":668,"builtin-status-codes":316,"url":751,"xtend":778}],666:[function(require,module,exports){
 (function (global){(function (){
 exports.fetch = isFunction(global.fetch) && isFunction(global.ReadableStream)
 
@@ -97350,7 +97356,7 @@ arguments[4][500][0].apply(exports,arguments)
 arguments[4][501][0].apply(exports,arguments)
 },{"../errors":669,"./_stream_duplex":670,"dup":501,"inherits":470}],674:[function(require,module,exports){
 arguments[4][502][0].apply(exports,arguments)
-},{"../errors":669,"./_stream_duplex":670,"./internal/streams/destroy":677,"./internal/streams/state":681,"./internal/streams/stream":682,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":751}],675:[function(require,module,exports){
+},{"../errors":669,"./_stream_duplex":670,"./internal/streams/destroy":677,"./internal/streams/state":681,"./internal/streams/stream":682,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":752}],675:[function(require,module,exports){
 arguments[4][503][0].apply(exports,arguments)
 },{"./end-of-stream":678,"_process":587,"dup":503}],676:[function(require,module,exports){
 arguments[4][504][0].apply(exports,arguments)
@@ -107824,7 +107830,7 @@ function _insertCreateCube() {
 }
 var _default = exports["default"] = TinyDices;
 
-},{"tiny-essentials":720,"validate-color":755}],712:[function(require,module,exports){
+},{"tiny-essentials":720,"validate-color":756}],712:[function(require,module,exports){
 arguments[4][690][0].apply(exports,arguments)
 },{"dup":690}],713:[function(require,module,exports){
 arguments[4][691][0].apply(exports,arguments)
@@ -108169,10 +108175,11 @@ exports.areHtmlElsColliding = areHtmlElsColliding;
 exports.fetchJson = fetchJson;
 exports.getHtmlElPadding = exports.getHtmlElMargin = exports.getHtmlElBordersWidth = exports.getHtmlElBorders = void 0;
 exports.installWindowHiddenScript = installWindowHiddenScript;
+exports.readBase64Blob = readBase64Blob;
+exports.readFileBlob = readFileBlob;
 exports.readJsonBlob = readJsonBlob;
 exports.saveJsonFile = saveJsonFile;
 var _objFilter = require("./objFilter.mjs");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _regeneratorValues(e) { if (null != e) { var t = e["function" == typeof Symbol && Symbol.iterator || "@@iterator"], r = 0; if (t) return t.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) return { next: function next() { return e && r >= e.length && (e = void 0), { value: e && e[r++], done: !e }; } }; } throw new TypeError(_typeof(e) + " is not iterable"); }
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
@@ -108183,6 +108190,13 @@ function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" 
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 /**
  * Checks if two DOM elements are colliding on the screen.
  *
@@ -108196,28 +108210,91 @@ function areHtmlElsColliding(elem1, elem2) {
   return !(rect1.right < rect2.left || rect1.left > rect2.right || rect1.bottom < rect2.top || rect1.top > rect2.bottom);
 }
 /**
- * Reads and parses a JSON data using FileReader.
- * Throws an error if the content is not valid JSON.
- * @param {File} file
- * @returns {Promise<any>}
+ * Reads the contents of a file using the specified FileReader method.
+ *
+ * @param {File} file - The file to be read.
+ * @param {'readAsArrayBuffer'|'readAsDataURL'|'readAsText'|'readAsBinaryString'} method -
+ *   The FileReader method to use for reading the file.
+ * @returns {Promise<any>} - A promise that resolves with the file content, according to the chosen method.
+ * @throws {Error} - If an unexpected error occurs while handling the result.
+ * @throws {DOMException} - If the FileReader encounters an error while reading the file.
  */
-function readJsonBlob(file) {
+function readFileBlob(file, method) {
   return new Promise(function (resolve, reject) {
     var reader = new FileReader();
     reader.onload = function () {
       try {
-        // @ts-ignore
-        var result = JSON.parse(reader.result);
-        resolve(result);
+        resolve(reader.result);
       } catch (error) {
-        // @ts-ignore
-        reject(new Error("Invalid JSON in file: ".concat(file.name, "\n").concat(error.message)));
+        reject(error);
       }
     };
     reader.onerror = function () {
-      reject(new Error("Error reading file: ".concat(file.name)));
+      reject(reader.error);
     };
-    reader.readAsText(file);
+    reader[method](file);
+  });
+}
+/**
+ * Reads a file as a Base64 string using FileReader, and optionally formats it as a full data URL.
+ *
+ * Performs strict validation to ensure the result is a valid Base64 string or a proper data URL.
+ *
+ * @param {File} file - The file to be read.
+ * @param {boolean|string} [isDataUrl=false] - If true, returns a full data URL; if false, returns only the Base64 string;
+ *   if a string is passed, it is used as the MIME type in the data URL.
+ * @returns {Promise<string>} - A promise that resolves with the Base64 string or data URL.
+ *
+ * @throws {TypeError} - If the result is not a string or if `isDataUrl` is not a valid type.
+ * @throws {Error} - If the result does not match the expected data URL format or Base64 structure.
+ * @throws {DOMException} - If the FileReader fails to read the file.
+ */
+function readBase64Blob(file) {
+  var isDataUrl = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  return new Promise(function (resolve, reject) {
+    if (typeof isDataUrl !== 'string' && typeof isDataUrl !== 'boolean') reject(new TypeError('The isDataUrl parameter must be a boolean or a string.'));
+    readFileBlob(file, 'readAsDataURL').then(
+    /**
+     * Ensure that the URL format is correct in the required pattern
+     * @param {string} base64Data
+     */
+    function (base64Data) {
+      if (typeof base64Data !== 'string') throw new TypeError('Expected file content to be a string.');
+      var match = base64Data.match(/^data:(.+);base64,(.*)$/);
+      if (!match || !match[2]) throw new Error('Invalid data URL format or missing Base64 content.');
+      var _match = _slicedToArray(match, 3),
+        mimeType = _match[1],
+        base64 = _match[2];
+      if (!/^[\w/+]+=*$/.test(base64)) throw new Error('Base64 content is malformed.');
+      if (typeof isDataUrl === 'boolean') return resolve(isDataUrl ? base64Data : base64);
+      if (!/^[\w-]+\/[\w.+-]+$/.test(isDataUrl)) throw new Error("Invalid MIME type string: ".concat(isDataUrl));
+      return resolve("data:".concat(isDataUrl, ";base64,").concat(base64));
+    })["catch"](reject);
+  });
+}
+/**
+ * Reads a file and strictly validates its content as proper JSON using FileReader.
+ *
+ * Performs several checks to ensure the file contains valid, parsable JSON data.
+ *
+ * @param {File} file - The file to be read. It must contain valid JSON as plain text.
+ * @returns {Promise<Record<string|number|symbol, any>|any[]>} - A promise that resolves with the parsed JSON object.
+ *
+ * @throws {SyntaxError} - If the file content is not valid JSON syntax.
+ * @throws {TypeError} - If the result is not a string or does not represent a JSON value.
+ * @throws {Error} - If the result is empty or structurally invalid as JSON.
+ * @throws {DOMException} - If the FileReader fails to read the file.
+ */
+function readJsonBlob(file) {
+  return new Promise(function (resolve, reject) {
+    return readFileBlob(file, 'readAsText').then(function (data) {
+      if (typeof data !== 'string') throw new TypeError('Expected file content to be a string.');
+      var trimmed = data.trim();
+      if (trimmed.length === 0) throw new Error('File is empty or contains only whitespace.');
+      var parsed = JSON.parse(trimmed);
+      if (_typeof(parsed) !== 'object' || parsed === null) throw new Error('Parsed content is not a valid JSON object or array.');
+      resolve(parsed);
+    })["catch"](reject);
   });
 }
 /**
@@ -108369,7 +108446,7 @@ function _fetchJson() {
                   return response.json();
                 case 5:
                   data = _context.v;
-                  if ((0, _objFilter.isJsonObject)(data)) {
+                  if (!(!Array.isArray(data) && !(0, _objFilter.isJsonObject)(data))) {
                     _context.n = 6;
                     break;
                   }
@@ -108522,13 +108599,17 @@ var getHtmlElPadding = exports.getHtmlElPadding = function getHtmlElPadding(el) 
 };
 /**
  * Installs a script that toggles CSS classes on a given element
- * based on the page's visibility or focus state.
+ * based on the page's visibility or focus state, and optionally
+ * triggers callbacks on visibility changes.
  *
  * @param {Object} [settings={}]
  * @param {HTMLElement} [settings.element=document.body] - The element to receive visibility classes.
  * @param {string} [settings.hiddenClass='windowHidden'] - CSS class applied when the page is hidden.
  * @param {string} [settings.visibleClass='windowVisible'] - CSS class applied when the page is visible.
+ * @param {() => void} [settings.onVisible] - Callback called when page becomes visible.
+ * @param {() => void} [settings.onHidden] - Callback called when page becomes hidden.
  * @returns {() => void} Function that removes all installed event listeners.
+ * @throws {TypeError} If any provided setting is invalid.
  */
 function installWindowHiddenScript() {
   var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
@@ -108537,15 +108618,20 @@ function installWindowHiddenScript() {
     _ref2$hiddenClass = _ref2.hiddenClass,
     hiddenClass = _ref2$hiddenClass === void 0 ? 'windowHidden' : _ref2$hiddenClass,
     _ref2$visibleClass = _ref2.visibleClass,
-    visibleClass = _ref2$visibleClass === void 0 ? 'windowVisible' : _ref2$visibleClass;
+    visibleClass = _ref2$visibleClass === void 0 ? 'windowVisible' : _ref2$visibleClass,
+    onVisible = _ref2.onVisible,
+    onHidden = _ref2.onHidden;
+  if (!(element instanceof HTMLElement)) throw new TypeError("\"element\" must be an instance of HTMLElement.");
+  if (typeof hiddenClass !== 'string') throw new TypeError("\"hiddenClass\" must be a string.");
+  if (typeof visibleClass !== 'string') throw new TypeError("\"visibleClass\" must be a string.");
+  if (onVisible !== undefined && typeof onVisible !== 'function') throw new TypeError("\"onVisible\" must be a function if provided.");
+  if (onHidden !== undefined && typeof onHidden !== 'function') throw new TypeError("\"onHidden\" must be a function if provided.");
   var removeClass = function removeClass() {
     element.classList.remove(hiddenClass);
     element.classList.remove(visibleClass);
   };
   /** @type {string|null} */
   var hiddenProp = null;
-  /** @type {(this: any, evt: Event) => void} */
-  var handler;
   var visibilityEvents = ['visibilitychange', 'mozvisibilitychange', 'webkitvisibilitychange', 'msvisibilitychange'];
   var visibilityProps = ['hidden', 'mozHidden', 'webkitHidden', 'msHidden'];
   for (var i = 0; i < visibilityProps.length; i++) {
@@ -108554,7 +108640,8 @@ function installWindowHiddenScript() {
       break;
     }
   }
-  handler = function handler(evt) {
+  /** @type {(this: any, evt: Event) => void} */
+  var handler = function handler(evt) {
     removeClass();
     var type = evt === null || evt === void 0 ? void 0 : evt.type;
     // @ts-ignore
@@ -108563,10 +108650,18 @@ function installWindowHiddenScript() {
     var hiddenEvents = ['blur', 'focusout', 'pagehide'];
     if (visibleEvents.includes(type)) {
       element.classList.add(visibleClass);
+      onVisible === null || onVisible === void 0 || onVisible();
     } else if (hiddenEvents.includes(type)) {
       element.classList.add(hiddenClass);
+      onHidden === null || onHidden === void 0 || onHidden();
     } else {
-      element.classList.add(isHidden ? hiddenClass : visibleClass);
+      if (isHidden) {
+        element.classList.add(hiddenClass);
+        onHidden === null || onHidden === void 0 || onHidden();
+      } else {
+        element.classList.add(visibleClass);
+        onVisible === null || onVisible === void 0 || onVisible();
+      }
     }
   };
   /** @type {() => void} */
@@ -108599,6 +108694,7 @@ function installWindowHiddenScript() {
       removeClass();
     };
   }
+  // Trigger initial state
   // @ts-ignore
   var simulatedEvent = new Event(hiddenProp && document[hiddenProp] ? 'blur' : 'focus');
   handler(simulatedEvent);
@@ -108610,8 +108706,134 @@ arguments[4][697][0].apply(exports,arguments)
 },{"buffer":314,"dup":697}],732:[function(require,module,exports){
 arguments[4][698][0].apply(exports,arguments)
 },{"dup":698}],733:[function(require,module,exports){
-arguments[4][699][0].apply(exports,arguments)
-},{"dup":699}],734:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addAiMarkerShortcut = addAiMarkerShortcut;
+exports.safeTextTrim = safeTextTrim;
+exports.toTitleCase = toTitleCase;
+exports.toTitleCaseLowerFirst = toTitleCaseLowerFirst;
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+/**
+ * Converts a string to title case where the first letter of each word is capitalized.
+ * All other letters are converted to lowercase.
+ *
+ * Example: "hello world" -> "Hello World"
+ *
+ * @param {string} str - The string to be converted to title case.
+ * @returns {string} The string converted to title case.
+ */
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+}
+/**
+ * Converts a string to title case where the first letter of each word is capitalized,
+ * but the first letter of the entire string is left lowercase.
+ *
+ * Example: "hello world" -> "hello World"
+ *
+ * @param {string} str - The string to be converted to title case with the first letter in lowercase.
+ * @returns {string} The string converted to title case with the first letter in lowercase.
+ */
+function toTitleCaseLowerFirst(str) {
+  var titleCased = str.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+  return titleCased.charAt(0).toLowerCase() + titleCased.slice(1);
+}
+/**
+ * Enables a keyboard shortcut to toggle a CSS class on the document body.
+ *
+ * This function listens for a specific key combination: `Ctrl + Alt + [key]`.
+ * When triggered, it prevents the default behavior and toggles the
+ * `detect-made-by-ai` class on the `<body>`, which can be used to apply visual
+ * indicators or filters on AI-generated content.
+ *
+ * If executed outside of a browser environment (e.g., in Node.js), the function logs an error and exits.
+ * If the `<body>` is not available at the moment the shortcut is triggered, a warning is logged.
+ *
+ * @param {string} [key='a'] - The lowercase character key to be used in combination with Ctrl and Alt.
+ */
+function addAiMarkerShortcut() {
+  var key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'a';
+  if (typeof HTMLElement === 'undefined') {
+    console.error('[AiMarkerShortcut] Environment does not support the DOM. This function must be run in a browser.');
+    return;
+  }
+  document.addEventListener('keydown', function (event) {
+    if (event.ctrlKey && event.altKey && event.key.toLowerCase() === key) {
+      event.preventDefault(); // Prevent any default behavior
+      if (!document.body) {
+        console.warn('[AiMarkerShortcut] <body> element not found. Cannot toggle class. Ensure the DOM is fully loaded when using the shortcut.');
+        return;
+      }
+      document.body.classList.toggle('detect-made-by-ai');
+    }
+  });
+}
+/**
+ * Trims a text string to a specified character limit, attempting to avoid cutting words in half.
+ * If a space is found before the limit and it's not too far from the limit (at least 60%),
+ * the cut is made at that space; otherwise, the text is hard-cut at the limit.
+ * If the input is shorter than the limit, it is returned unchanged.
+ *
+ * @param {string} text - The input text to be trimmed.
+ * @param {number} limit - The maximum number of characters allowed.
+ * @param {number} [safeCutZone=0.6] - A decimal between 0 and 1 representing the minimal acceptable position
+ *                                     (as a fraction of `limit`) to cut at a space. Defaults to 0.6.
+ * @returns {string} - The trimmed text, possibly ending with an ellipsis ("...").
+ * @throws {TypeError} - Throws if `text` is not a string.
+ * @throws {TypeError} - Throws if `limit` is not a positive integer.
+ * @throws {TypeError} - Throws if `safeCutZone` is not a number between 0 and 1 (inclusive).
+ */
+function safeTextTrim(text, limit) {
+  var safeCutZone = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0.6;
+  if (typeof text !== 'string') throw new TypeError("Expected a string for 'text', but received ".concat(_typeof(text)));
+  if (!Number.isInteger(limit) || limit <= 0) throw new TypeError("Expected 'limit' to be a positive integer, but received ".concat(limit));
+  if (typeof safeCutZone !== 'number' || safeCutZone < 0 || safeCutZone > 1) throw new TypeError("Expected 'safeCutZone' to be a number between 0 and 1, but received ".concat(safeCutZone));
+  var result = text.trim();
+  if (result.length > limit) {
+    // Try to cut the string into a space before the limit
+    var safeCut = result.lastIndexOf(' ', limit);
+    if (safeCut > 0 && safeCut >= limit * safeCutZone) {
+      // Only cuts where there is a space, and if the cut is not too early
+      return "".concat(result.substring(0, safeCut).trim(), "...");
+    } else {
+      // Emergency: Cuts straight to the limit and adds "...".
+      return "".concat(result.substring(0, limit).trim(), "...");
+    }
+  }
+  return result;
+}
+/*
+import { useEffect } from "react";
+
+function KeyPressHandler() {
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+            if (event.ctrlKey && event.altKey && event.key.toLowerCase() === "a") {
+                event.preventDefault();
+                document.body.classList.toggle("detect-made-by-ai");
+            }
+        };
+        
+        document.addEventListener("keydown", handleKeyDown);
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, []);
+
+    return null;
+}
+
+export default KeyPressHandler;
+*/
+
+},{}],734:[function(require,module,exports){
 arguments[4][700][0].apply(exports,arguments)
 },{"./normalFuncs.mjs":735,"dup":700,"fs":313,"fs/promises":313,"path":579}],735:[function(require,module,exports){
 arguments[4][701][0].apply(exports,arguments)
@@ -108649,6 +108871,12 @@ Object.defineProperty(exports, "TinyLevelUp", {
   enumerable: true,
   get: function get() {
     return _userLevel["default"];
+  }
+});
+Object.defineProperty(exports, "TinyNotifications", {
+  enumerable: true,
+  get: function get() {
+    return _TinyNotifications["default"];
   }
 });
 Object.defineProperty(exports, "TinyNotifyCenter", {
@@ -108963,6 +109191,18 @@ Object.defineProperty(exports, "onFullScreenChange", {
     return _fullScreen.onFullScreenChange;
   }
 });
+Object.defineProperty(exports, "readBase64Blob", {
+  enumerable: true,
+  get: function get() {
+    return _html.readBase64Blob;
+  }
+});
+Object.defineProperty(exports, "readFileBlob", {
+  enumerable: true,
+  get: function get() {
+    return _html.readFileBlob;
+  }
+});
 Object.defineProperty(exports, "readJsonBlob", {
   enumerable: true,
   get: function get() {
@@ -109029,6 +109269,12 @@ Object.defineProperty(exports, "ruleOfThree", {
     return _simpleMath.ruleOfThree;
   }
 });
+Object.defineProperty(exports, "safeTextTrim", {
+  enumerable: true,
+  get: function get() {
+    return _text.safeTextTrim;
+  }
+});
 Object.defineProperty(exports, "saveJsonFile", {
   enumerable: true,
   get: function get() {
@@ -109091,9 +109337,10 @@ var _normalFuncs = require("./fileManager/normalFuncs.mjs");
 var _asyncFuncs = require("./fileManager/asyncFuncs.mjs");
 var _TinyDragger = _interopRequireDefault(require("./libs/TinyDragger.mjs"));
 var _TinyDomReadyManager = _interopRequireDefault(require("./libs/TinyDomReadyManager.mjs"));
+var _TinyNotifications = _interopRequireDefault(require("./libs/TinyNotifications.mjs"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 
-},{"../legacy/libs/arraySortPositions.mjs":724,"../legacy/libs/replaceAsync.mjs":725,"../legacy/libs/userLevel.mjs":726,"./basics/array.mjs":727,"./basics/clock.mjs":728,"./basics/fullScreen.mjs":729,"./basics/html.mjs":730,"./basics/objFilter.mjs":731,"./basics/simpleMath.mjs":732,"./basics/text.mjs":733,"./fileManager/asyncFuncs.mjs":734,"./fileManager/normalFuncs.mjs":735,"./libs/ColorSafeStringify.mjs":737,"./libs/TinyDomReadyManager.mjs":738,"./libs/TinyDragDropDetector.mjs":739,"./libs/TinyDragger.mjs":740,"./libs/TinyNotifyCenter.mjs":741,"./libs/TinyPromiseQueue.mjs":742,"./libs/TinyRateLimiter.mjs":743,"./libs/TinyToastNotify.mjs":744}],737:[function(require,module,exports){
+},{"../legacy/libs/arraySortPositions.mjs":724,"../legacy/libs/replaceAsync.mjs":725,"../legacy/libs/userLevel.mjs":726,"./basics/array.mjs":727,"./basics/clock.mjs":728,"./basics/fullScreen.mjs":729,"./basics/html.mjs":730,"./basics/objFilter.mjs":731,"./basics/simpleMath.mjs":732,"./basics/text.mjs":733,"./fileManager/asyncFuncs.mjs":734,"./fileManager/normalFuncs.mjs":735,"./libs/ColorSafeStringify.mjs":737,"./libs/TinyDomReadyManager.mjs":738,"./libs/TinyDragDropDetector.mjs":739,"./libs/TinyDragger.mjs":740,"./libs/TinyNotifications.mjs":741,"./libs/TinyNotifyCenter.mjs":742,"./libs/TinyPromiseQueue.mjs":743,"./libs/TinyRateLimiter.mjs":744,"./libs/TinyToastNotify.mjs":745}],737:[function(require,module,exports){
 arguments[4][703][0].apply(exports,arguments)
 },{"dup":703}],738:[function(require,module,exports){
 arguments[4][704][0].apply(exports,arguments)
@@ -109102,14 +109349,276 @@ arguments[4][705][0].apply(exports,arguments)
 },{"dup":705}],740:[function(require,module,exports){
 arguments[4][706][0].apply(exports,arguments)
 },{"../basics/html.mjs":730,"../basics/objFilter.mjs":731,"dup":706}],741:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _text = require("../basics/text.mjs");
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+/**
+ * A utility class to manage browser notifications with sound and custom behavior.
+ * Useful for triggering system notifications with optional sound, avatar icon, body truncation, and click actions.
+ *
+ * @class
+ */
+var _allowed = /*#__PURE__*/new WeakMap();
+var _permissionRequested = /*#__PURE__*/new WeakMap();
+var _audio = /*#__PURE__*/new WeakMap();
+var _bodyLimit = /*#__PURE__*/new WeakMap();
+var _defaultIcon = /*#__PURE__*/new WeakMap();
+var _defaultOnClick = /*#__PURE__*/new WeakMap();
+var TinyNotifications = /*#__PURE__*/function () {
+  /**
+   * Constructs a new instance of TinyNotifications.
+   *
+   * @param {Object} [settings={}] - Optional settings to initialize the notification manager.
+   * @param {string|HTMLAudioElement|null} [settings.audio] - Path or URL to the audio file for notification sounds.
+   * @param {string|null} [settings.defaultIcon] - Default icon URL to be used in notifications.
+   * @param {number} [settings.bodyLimit=100] - Maximum number of characters allowed in the notification body.
+   * @param {(this: Notification, evt: Event) => any} [settings.defaultOnClick] - Default function to execute when a notification is clicked.
+   * @throws {TypeError} If any of the parameters are of an invalid type.
+   */
+  function TinyNotifications() {
+    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      _ref$audio = _ref.audio,
+      audio = _ref$audio === void 0 ? null : _ref$audio,
+      _ref$defaultIcon = _ref.defaultIcon,
+      defaultIcon = _ref$defaultIcon === void 0 ? null : _ref$defaultIcon,
+      _ref$bodyLimit = _ref.bodyLimit,
+      bodyLimit = _ref$bodyLimit === void 0 ? 100 : _ref$bodyLimit,
+      _ref$defaultOnClick = _ref.defaultOnClick,
+      defaultOnClick = _ref$defaultOnClick === void 0 ? function (event) {
+        event.preventDefault();
+        if (window.focus) window.focus();
+        this.close();
+      } : _ref$defaultOnClick;
+    _classCallCheck(this, TinyNotifications);
+    /** @type {boolean} Whether notifications are currently allowed by the user. */
+    _classPrivateFieldInitSpec(this, _allowed, false);
+    /** @type {boolean} Indicates whether the user has already requested permission at least once. */
+    _classPrivateFieldInitSpec(this, _permissionRequested, false);
+    /** @type {HTMLAudioElement|null} Audio element to play when a notification is triggered. */
+    _classPrivateFieldInitSpec(this, _audio, null);
+    /** @type {number} Maximum number of characters in the notification body. */
+    _classPrivateFieldInitSpec(this, _bodyLimit, 100);
+    /** @type {string|null} Default avatar icon URL for notifications. */
+    _classPrivateFieldInitSpec(this, _defaultIcon, null);
+    /** @type {(this: Notification, evt: Event) => any} Default handler when a notification is clicked. */
+    _classPrivateFieldInitSpec(this, _defaultOnClick, void 0);
+    if (!(audio instanceof HTMLAudioElement) && typeof audio !== 'string' && audio !== null) throw new TypeError('audio must be an instance of HTMLAudioElement or null.');
+    if (defaultIcon !== null && typeof defaultIcon !== 'string') throw new TypeError('defaultIcon must be a string or null.');
+    if (!Number.isFinite(bodyLimit) || bodyLimit < 0) throw new TypeError('bodyLimit must be a non-negative number.');
+    if (typeof defaultOnClick !== 'function') throw new TypeError('defaultOnClick must be a function.');
+    _classPrivateFieldSet(_audio, this, typeof audio !== 'string' ? audio : new Audio(audio));
+    _classPrivateFieldSet(_defaultIcon, this, defaultIcon);
+    _classPrivateFieldSet(_bodyLimit, this, bodyLimit);
+    _classPrivateFieldSet(_defaultOnClick, this, defaultOnClick);
+  }
+  /**
+   * Requests permission from the user to show notifications.
+   * Updates the internal `#allowed` flag.
+   *
+   * @returns {Promise<boolean>} Resolves to `true` if permission is granted, otherwise `false`.
+   */
+  return _createClass(TinyNotifications, [{
+    key: "requestPerm",
+    value: function requestPerm() {
+      var _this = this;
+      var tinyThis = this;
+      return new Promise(function (resolve, reject) {
+        if (tinyThis.isCompatible()) {
+          if (Notification.permission === 'default') {
+            Notification.requestPermission().then(function (permission) {
+              _classPrivateFieldSet(_permissionRequested, _this, true);
+              _classPrivateFieldSet(_allowed, tinyThis, permission === 'granted');
+              resolve(_classPrivateFieldGet(_allowed, tinyThis));
+            })["catch"](reject);
+          } else {
+            _classPrivateFieldSet(_permissionRequested, _this, true);
+            _classPrivateFieldSet(_allowed, tinyThis, Notification.permission === 'granted');
+            resolve(_classPrivateFieldGet(_allowed, tinyThis));
+          }
+        } else {
+          _classPrivateFieldSet(_permissionRequested, _this, true);
+          _classPrivateFieldSet(_allowed, tinyThis, false);
+          resolve(false);
+        }
+      });
+    }
+    /**
+     * Checks if the Notification API is supported by the current browser.
+     *
+     * @returns {boolean} Returns `true` if notifications are supported, otherwise `false`.
+     */
+  }, {
+    key: "isCompatible",
+    value: function isCompatible() {
+      return 'Notification' in window;
+    }
+    /**
+     * Sends a browser notification with the provided title and configuration.
+     * Truncates the body if necessary and plays a sound if configured.
+     *
+     * @param {string} title - The title of the notification.
+     * @param {NotificationOptions & { vibrate?: number[] }} [config={}] - Optional configuration for the notification.
+     * @returns {Notification|null} The created `Notification` instance, or `null` if permission is not granted.
+     * @throws {TypeError} If the title is not a string or config is not a valid object.
+     */
+  }, {
+    key: "send",
+    value: function send(title) {
+      var _this2 = this;
+      var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      if (!_classPrivateFieldGet(_permissionRequested, this)) throw new Error('You must call requestPerm() before sending a notification.');
+      if (typeof title !== 'string') throw new TypeError('title must be a string.');
+      if (_typeof(config) !== 'object' || config === null) throw new TypeError('config must be a non-null object.');
+      if (!_classPrivateFieldGet(_allowed, this)) return null;
+      var _config$icon = config.icon,
+        icon = _config$icon === void 0 ? _classPrivateFieldGet(_defaultIcon, this) || undefined : _config$icon,
+        _config$vibrate = config.vibrate,
+        vibrate = _config$vibrate === void 0 ? [200, 100, 200] : _config$vibrate;
+      var options = _objectSpread({}, config);
+      if (typeof icon === 'string') options.icon = icon;
+      if (Array.isArray(vibrate)) options.vibrate = vibrate;
+      if (typeof options.body === 'string') options.body = (0, _text.safeTextTrim)(options.body, _classPrivateFieldGet(_bodyLimit, this));
+      var notification = new Notification(title, options);
+      notification.addEventListener('show', function () {
+        if (!(_classPrivateFieldGet(_audio, _this2) instanceof HTMLAudioElement)) return;
+        _classPrivateFieldGet(_audio, _this2).currentTime = 0;
+        _classPrivateFieldGet(_audio, _this2).play()["catch"](function (err) {
+          return console.error(err);
+        });
+      });
+      if (typeof _classPrivateFieldGet(_defaultOnClick, this) === 'function') notification.addEventListener('click', _classPrivateFieldGet(_defaultOnClick, this));
+      return notification;
+    }
+    // === Getters and Setters ===
+    /**
+     * Whether the requestPerm() method was already called.
+     * @returns {boolean}
+     */
+  }, {
+    key: "wasPermissionRequested",
+    value: function wasPermissionRequested() {
+      return _classPrivateFieldGet(_permissionRequested, this);
+    }
+    /**
+     * Returns the current permission status.
+     * @returns {boolean} `true` if permission was granted, otherwise `false`.
+     */
+  }, {
+    key: "isAllowed",
+    value: function isAllowed() {
+      return _classPrivateFieldGet(_allowed, this);
+    }
+    /**
+     * Gets the current notification audio.
+     * @returns {HTMLAudioElement|null} The sound element, or `null` if not set.
+     */
+  }, {
+    key: "getAudio",
+    value: function getAudio() {
+      return _classPrivateFieldGet(_audio, this);
+    }
+    /**
+     * Sets the audio element used for notification sounds.
+     * @param {HTMLAudioElement|string|null} value - A valid `HTMLAudioElement` or `null` to disable sound.
+     * @throws {TypeError} If the value is not an `HTMLAudioElement` or `null`.
+     */
+  }, {
+    key: "setAudio",
+    value: function setAudio(value) {
+      if (!(value instanceof HTMLAudioElement) && typeof value !== 'string' && value !== null) throw new TypeError('sound must be an instance of HTMLAudioElement or null.');
+      _classPrivateFieldSet(_audio, this, typeof value !== 'string' ? value : new Audio(value));
+    }
+    /**
+     * Gets the maximum length of the notification body text.
+     * @returns {number} Number of characters allowed.
+     */
+  }, {
+    key: "getBodyLimit",
+    value: function getBodyLimit() {
+      return _classPrivateFieldGet(_bodyLimit, this);
+    }
+    /**
+     * Sets the maximum number of characters allowed in the notification body.
+     * @param {number} value - A non-negative integer.
+     * @throws {TypeError} If the value is not a valid non-negative number.
+     */
+  }, {
+    key: "setBodyLimit",
+    value: function setBodyLimit(value) {
+      if (!Number.isFinite(value) || value < 0) throw new TypeError('bodyLimit must be a non-negative number.');
+      _classPrivateFieldSet(_bodyLimit, this, value);
+    }
+    /**
+     * Gets the default avatar icon URL.
+     * @returns {string|null} The URL string or `null`.
+     */
+  }, {
+    key: "getDefaultAvatar",
+    value: function getDefaultAvatar() {
+      return _classPrivateFieldGet(_defaultIcon, this);
+    }
+    /**
+     * Sets the default avatar icon URL.
+     * @param {string|null} value - A string URL or `null` to disable default icon.
+     * @throws {TypeError} If the value is not a string or `null`.
+     */
+  }, {
+    key: "setDefaultAvatar",
+    value: function setDefaultAvatar(value) {
+      if (!(typeof value === 'string' || value === null)) throw new TypeError('defaultIcon must be a string or null.');
+      _classPrivateFieldSet(_defaultIcon, this, value);
+    }
+    /**
+     * Gets the default click event handler for notifications.
+     * @returns {(this: Notification, evt: Event) => any} The current click handler function.
+     */
+  }, {
+    key: "getDefaultOnClick",
+    value: function getDefaultOnClick() {
+      return _classPrivateFieldGet(_defaultOnClick, this);
+    }
+    /**
+     * Sets the default click event handler for notifications.
+     * @param {(this: Notification, evt: Event) => any} value - A function to handle the notification click event.
+     * @throws {TypeError} If the value is not a function.
+     */
+  }, {
+    key: "setDefaultOnClick",
+    value: function setDefaultOnClick(value) {
+      if (typeof value !== 'function') throw new TypeError('defaultOnClick must be a function.');
+      _classPrivateFieldSet(_defaultOnClick, this, value);
+    }
+  }]);
+}();
+var _default = exports["default"] = TinyNotifications;
+
+},{"../basics/text.mjs":733}],742:[function(require,module,exports){
 arguments[4][707][0].apply(exports,arguments)
-},{"dup":707}],742:[function(require,module,exports){
+},{"dup":707}],743:[function(require,module,exports){
 arguments[4][708][0].apply(exports,arguments)
-},{"dup":708}],743:[function(require,module,exports){
+},{"dup":708}],744:[function(require,module,exports){
 arguments[4][709][0].apply(exports,arguments)
-},{"_process":587,"dup":709}],744:[function(require,module,exports){
+},{"_process":587,"dup":709}],745:[function(require,module,exports){
 arguments[4][710][0].apply(exports,arguments)
-},{"dup":710}],745:[function(require,module,exports){
+},{"dup":710}],746:[function(require,module,exports){
 (function (process){(function (){
 "use strict";
 
@@ -111273,7 +111782,7 @@ tippy.setDefaultProps({
 var _default = exports["default"] = tippy;
 
 }).call(this)}).call(this,require('_process'))
-},{"@popperjs/core":148,"_process":587}],746:[function(require,module,exports){
+},{"@popperjs/core":148,"_process":587}],747:[function(require,module,exports){
 
 module.exports = function () {
   var selection = document.getSelection();
@@ -111314,7 +111823,7 @@ module.exports = function () {
   };
 };
 
-},{}],747:[function(require,module,exports){
+},{}],748:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -111694,7 +112203,7 @@ function __classPrivateFieldSet(receiver, privateMap, value) {
   return value;
 }
 
-},{}],748:[function(require,module,exports){
+},{}],749:[function(require,module,exports){
 (function (Buffer){(function (){
 /**
  * Convert a typed array to a Buffer without a copy
@@ -111723,7 +112232,7 @@ module.exports = function typedarrayToBuffer (arr) {
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"buffer":314,"is-typedarray":477}],749:[function(require,module,exports){
+},{"buffer":314,"is-typedarray":477}],750:[function(require,module,exports){
 (function (global){(function (){
 /*! https://mths.be/punycode v1.4.1 by @mathias */
 ;(function(root) {
@@ -112260,7 +112769,7 @@ module.exports = function typedarrayToBuffer (arr) {
 }(this));
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],750:[function(require,module,exports){
+},{}],751:[function(require,module,exports){
 /*
  * Copyright Joyent, Inc. and other Node contributors.
  *
@@ -113038,7 +113547,7 @@ exports.format = urlFormat;
 
 exports.Url = Url;
 
-},{"punycode/":749,"qs":589}],751:[function(require,module,exports){
+},{"punycode/":750,"qs":589}],752:[function(require,module,exports){
 (function (global){(function (){
 
 /**
@@ -113109,9 +113618,9 @@ function config (name) {
 }
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],752:[function(require,module,exports){
+},{}],753:[function(require,module,exports){
 arguments[4][276][0].apply(exports,arguments)
-},{"dup":276}],753:[function(require,module,exports){
+},{"dup":276}],754:[function(require,module,exports){
 // Currently in sync with Node.js lib/internal/util/types.js
 // https://github.com/nodejs/node/commit/112cc7c27551254aa2b17098fb774867f05ed0d9
 
@@ -113447,7 +113956,7 @@ exports.isAnyArrayBuffer = isAnyArrayBuffer;
   });
 });
 
-},{"is-arguments":471,"is-generator-function":473,"is-typed-array":476,"which-typed-array":770}],754:[function(require,module,exports){
+},{"is-arguments":471,"is-generator-function":473,"is-typed-array":476,"which-typed-array":771}],755:[function(require,module,exports){
 (function (process){(function (){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -114166,9 +114675,9 @@ function callbackify(original) {
 exports.callbackify = callbackify;
 
 }).call(this)}).call(this,require('_process'))
-},{"./support/isBuffer":752,"./support/types":753,"_process":587,"inherits":470}],755:[function(require,module,exports){
+},{"./support/isBuffer":753,"./support/types":754,"_process":587,"inherits":470}],756:[function(require,module,exports){
 module.exports=function(e){var r={};function t(n){if(r[n])return r[n].exports;var a=r[n]={i:n,l:!1,exports:{}};return e[n].call(a.exports,a,a.exports,t),a.l=!0,a.exports}return t.m=e,t.c=r,t.d=function(e,r,n){t.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:n})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,r){if(1&r&&(e=t(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(t.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var a in e)t.d(n,a,function(r){return e[r]}.bind(null,a));return n},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},t.p="",t(t.s=0)}([function(e,r,t){"use strict";t.r(r),t.d(r,"validateHTMLColorName",(function(){return l})),t.d(r,"validateHTMLColorSpecialName",(function(){return i})),t.d(r,"validateHTMLColorHex",(function(){return u})),t.d(r,"validateHTMLColorRgb",(function(){return g})),t.d(r,"validateHTMLColorHsl",(function(){return y})),t.d(r,"validateHTMLColorHwb",(function(){return L})),t.d(r,"validateHTMLColorLab",(function(){return S})),t.d(r,"validateHTMLColorLch",(function(){return m})),t.d(r,"validateHTMLColor",(function(){return G}));const n=e=>e&&"string"==typeof e,a=["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenrod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","DarkOrange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","Goldenrod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenrodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquamarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenrod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","RebeccaPurple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"],o=["currentColor","inherit","transparent"],l=e=>{let r=!1;return n(e)&&a.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},i=e=>{let r=!1;return n(e)&&o.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},u=e=>{if(n(e)){const r=/^#([\da-f]{3}){1,2}$|^#([\da-f]{4}){1,2}$/i;return e&&r.test(e)}return!1},d="(([\\d]{0,5})((\\.([\\d]{1,5}))?))",s=`(${d}%)`,c="(([0-9]|[1-9][0-9]|100)%)",f=`(${c}|(0?((\\.([\\d]{1,5}))?))|1)`,h=`([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?)([\\s]{1,5})${`(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?`}([\\s]{0,5})\\)`,$="(-?(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360)(deg)?)",g=e=>{if(n(e)){const r="([\\s]{0,5})([\\d]{1,5})%?([\\s]{0,5}),?",t="((([\\s]{0,5}),?([\\s]{0,5}))|(([\\s]{1,5})))",n=new RegExp(`^(rgb)a?\\(${`${r}${t}`}${`${r}${t}`}${`${r}${t}`}(${"(\\/?([\\s]{0,5})(0?\\.?([\\d]{1,5})%?([\\s]{0,5}))?|1|0)"})?\\)$`);return e&&n.test(e)}return!1},y=e=>{if(n(e)){const r=new RegExp(`^(hsl)a?\\((([\\s]{0,5})(${$}|${"(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-9][0-9]|400)grad)"}|${"((([0-5])?\\.([\\d]{1,5})|6\\.([0-9]|1[0-9]|2[0-8])|[0-6])rad)"}|${"((0?((\\.([\\d]{1,5}))?)|1)turn)"})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?|,?)([\\s]{0,5})(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?\\)$`);return e&&r.test(e)}return!1},L=e=>{if(n(e)){const r=new RegExp(`^(hwb\\(([\\s]{0,5})${$}([\\s]{1,5}))((0|${c})([\\s]{1,5}))((0|${c})${h}$`);return e&&r.test(e)}return!1},S=e=>{if(n(e)){const r="(-?(([0-9]|[1-9][0-9]|1[0-5][0-9])((\\.([\\d]{1,5}))?)?|160))",t=new RegExp(`^(lab\\(([\\s]{0,5})${s}([\\s]{1,5})${r}([\\s]{1,5})${r}${h}$`);return e&&t.test(e)}return!1},m=e=>{if(n(e)){const r="((([0-9]|[1-9][0-9])?((\\.([\\d]{1,5}))?)|100)(%)?)",t=""+d,n=`((${$})|(0|${f})|(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360))`,a=`(\\/([\\s]{0,5})${f})`,o=new RegExp(`^lch\\(${`(([\\s]{0,5})${r}([\\s]{1,5})${t}([\\s]{1,5})${n}([\\s]{0,5})(${a})?)`}\\)$`);return e&&o.test(e)}return!1},G=e=>!!(e&&u(e)||g(e)||y(e)||L(e)||S(e)||m(e));r.default=e=>!!(e&&u(e)||l(e)||i(e)||g(e)||y(e)||L(e)||S(e)||m(e))}]);
-},{}],756:[function(require,module,exports){
+},{}],757:[function(require,module,exports){
 const EventEmitter = require('events').EventEmitter
 const inherits = require('util').inherits
 const ethUtil = require('ethereumjs-util')
@@ -114444,7 +114953,7 @@ function toBufferBlock (jsonBlock) {
   }
 }
 
-},{"./util/create-payload.js":765,"./util/rpc-cache-utils.js":768,"./util/stoplight.js":769,"async/eachSeries":287,"async/map":303,"eth-block-tracker":381,"ethereumjs-util":427,"events":437,"util":754}],757:[function(require,module,exports){
+},{"./util/create-payload.js":766,"./util/rpc-cache-utils.js":769,"./util/stoplight.js":770,"async/eachSeries":287,"async/map":303,"eth-block-tracker":381,"ethereumjs-util":427,"events":437,"util":755}],758:[function(require,module,exports){
 const ProviderSubprovider = require('./json-rpc-engine-middleware')
 const createBlockCacheMiddleware = require('eth-json-rpc-middleware/block-cache')
 
@@ -114456,7 +114965,7 @@ class BlockCacheSubprovider extends ProviderSubprovider {
 
 module.exports = BlockCacheSubprovider
 
-},{"./json-rpc-engine-middleware":761,"eth-json-rpc-middleware/block-cache":404}],758:[function(require,module,exports){
+},{"./json-rpc-engine-middleware":762,"eth-json-rpc-middleware/block-cache":404}],759:[function(require,module,exports){
 const ProviderSubprovider = require('./json-rpc-engine-middleware')
 const createFilterMiddleware = require('eth-json-rpc-filters')
 
@@ -114470,7 +114979,7 @@ class SubscriptionsSubprovider extends ProviderSubprovider {
 
 module.exports = SubscriptionsSubprovider
 
-},{"./json-rpc-engine-middleware":761,"eth-json-rpc-filters":387}],759:[function(require,module,exports){
+},{"./json-rpc-engine-middleware":762,"eth-json-rpc-filters":387}],760:[function(require,module,exports){
 const inherits = require('util').inherits
 const Subprovider = require('./subprovider.js')
 
@@ -114500,7 +115009,7 @@ FixtureProvider.prototype.handleRequest = function(payload, next, end){
   }
 }
 
-},{"./subprovider.js":763,"util":754}],760:[function(require,module,exports){
+},{"./subprovider.js":764,"util":755}],761:[function(require,module,exports){
 /*
  * Emulate 'eth_accounts' / 'eth_sendTransaction' using 'eth_sendRawTransaction'
  *
@@ -115206,7 +115715,7 @@ function mustProvideInConstructor(methodName) {
   }
 }
 
-},{"../util/estimate-gas.js":766,"./subprovider.js":763,"async/parallel":304,"async/waterfall":305,"eth-sig-util":408,"ethereumjs-util":427,"semaphore":623,"util":754,"xtend":777}],761:[function(require,module,exports){
+},{"../util/estimate-gas.js":767,"./subprovider.js":764,"async/parallel":304,"async/waterfall":305,"eth-sig-util":408,"ethereumjs-util":427,"semaphore":623,"util":755,"xtend":778}],762:[function(require,module,exports){
 const Subprovider = require('./subprovider.js')
 
 // wraps a json-rpc-engine middleware in a subprovider interface
@@ -115262,7 +115771,7 @@ class JsonRpcEngineMiddlewareSubprovider extends Subprovider {
 
 module.exports = JsonRpcEngineMiddlewareSubprovider
 
-},{"./subprovider.js":763}],762:[function(require,module,exports){
+},{"./subprovider.js":764}],763:[function(require,module,exports){
 (function (Buffer){(function (){
 const inherits = require('util').inherits
 const Transaction = require('ethereumjs-tx')
@@ -115356,7 +115865,7 @@ NonceTrackerSubprovider.prototype.handleRequest = function(payload, next, end){
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"../util/rpc-cache-utils":768,"./subprovider.js":763,"buffer":314,"ethereumjs-tx":426,"ethereumjs-util":427,"util":754}],763:[function(require,module,exports){
+},{"../util/rpc-cache-utils":769,"./subprovider.js":764,"buffer":314,"ethereumjs-tx":426,"ethereumjs-util":427,"util":755}],764:[function(require,module,exports){
 const createPayload = require('../util/create-payload.js')
 
 module.exports = SubProvider
@@ -115400,7 +115909,7 @@ SubProvider.prototype.stop = function () {}
 
 SubProvider.prototype.start = function () {}
 
-},{"../util/create-payload.js":765}],764:[function(require,module,exports){
+},{"../util/create-payload.js":766}],765:[function(require,module,exports){
 const ProviderSubprovider = require('./json-rpc-engine-middleware')
 const createSubscriptionManager = require('eth-json-rpc-filters/subscriptionManager')
 
@@ -115418,7 +115927,7 @@ class SubscriptionsSubprovider extends ProviderSubprovider {
 
 module.exports = SubscriptionsSubprovider
 
-},{"./json-rpc-engine-middleware":761,"eth-json-rpc-filters/subscriptionManager":402}],765:[function(require,module,exports){
+},{"./json-rpc-engine-middleware":762,"eth-json-rpc-filters/subscriptionManager":402}],766:[function(require,module,exports){
 const getRandomId = require('./random-id.js')
 const extend = require('xtend')
 
@@ -115435,7 +115944,7 @@ function createPayload(data){
   }, data)
 }
 
-},{"./random-id.js":767,"xtend":777}],766:[function(require,module,exports){
+},{"./random-id.js":768,"xtend":778}],767:[function(require,module,exports){
 const createPayload = require('./create-payload.js')
 
 module.exports = estimateGas
@@ -115463,7 +115972,7 @@ function estimateGas(provider, txParams, cb) {
     cb(null, res.result)
   })
 }
-},{"./create-payload.js":765}],767:[function(require,module,exports){
+},{"./create-payload.js":766}],768:[function(require,module,exports){
 module.exports = createRandomId
 
 
@@ -115471,7 +115980,7 @@ function createRandomId () {
   // random id
   return Math.floor(Number.MAX_SAFE_INTEGER * Math.random())
 }
-},{}],768:[function(require,module,exports){
+},{}],769:[function(require,module,exports){
 const stringify = require('json-stable-stringify')
 
 module.exports = {
@@ -115620,7 +116129,7 @@ function cacheTypeForPayload(payload) {
   }
 }
 
-},{"json-stable-stringify":483}],769:[function(require,module,exports){
+},{"json-stable-stringify":483}],770:[function(require,module,exports){
 const EventEmitter = require('events').EventEmitter
 const inherits = require('util').inherits
 
@@ -115655,7 +116164,7 @@ Stoplight.prototype.await = function(fn){
     setTimeout(fn)
   }
 }
-},{"events":437,"util":754}],770:[function(require,module,exports){
+},{"events":437,"util":755}],771:[function(require,module,exports){
 (function (global){(function (){
 'use strict';
 
@@ -115771,7 +116280,7 @@ module.exports = function whichTypedArray(value) {
 };
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"available-typed-arrays":306,"call-bind":323,"call-bound":324,"for-each":439,"get-proto":447,"gopd":449,"has-tostringtag/shams":453}],771:[function(require,module,exports){
+},{"available-typed-arrays":306,"call-bind":323,"call-bound":324,"for-each":439,"get-proto":447,"gopd":449,"has-tostringtag/shams":453}],772:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -115817,7 +116326,7 @@ var SyntaxError = /** @class */ (function (_super) {
 }(Error));
 exports.SyntaxError = SyntaxError;
 
-},{}],772:[function(require,module,exports){
+},{}],773:[function(require,module,exports){
 "use strict";
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
@@ -115827,7 +116336,7 @@ __export(require("./xml-http-request"));
 var xml_http_request_event_target_1 = require("./xml-http-request-event-target");
 exports.XMLHttpRequestEventTarget = xml_http_request_event_target_1.XMLHttpRequestEventTarget;
 
-},{"./xml-http-request":776,"./xml-http-request-event-target":774}],773:[function(require,module,exports){
+},{"./xml-http-request":777,"./xml-http-request-event-target":775}],774:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ProgressEvent = /** @class */ (function () {
@@ -115843,7 +116352,7 @@ var ProgressEvent = /** @class */ (function () {
 }());
 exports.ProgressEvent = ProgressEvent;
 
-},{}],774:[function(require,module,exports){
+},{}],775:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var XMLHttpRequestEventTarget = /** @class */ (function () {
@@ -115885,7 +116394,7 @@ var XMLHttpRequestEventTarget = /** @class */ (function () {
 }());
 exports.XMLHttpRequestEventTarget = XMLHttpRequestEventTarget;
 
-},{}],775:[function(require,module,exports){
+},{}],776:[function(require,module,exports){
 (function (Buffer){(function (){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
@@ -115966,7 +116475,7 @@ var XMLHttpRequestUpload = /** @class */ (function (_super) {
 exports.XMLHttpRequestUpload = XMLHttpRequestUpload;
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"./xml-http-request-event-target":774,"buffer":314}],776:[function(require,module,exports){
+},{"./xml-http-request-event-target":775,"buffer":314}],777:[function(require,module,exports){
 (function (process,Buffer){(function (){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
@@ -116416,7 +116925,7 @@ XMLHttpRequest.prototype.nodejsHttpsAgent = https.globalAgent;
 XMLHttpRequest.prototype.nodejsBaseUrl = null;
 
 }).call(this)}).call(this,require('_process'),require("buffer").Buffer)
-},{"./errors":771,"./progress-event":773,"./xml-http-request-event-target":774,"./xml-http-request-upload":775,"_process":587,"buffer":314,"cookiejar":326,"http":665,"https":468,"os":578,"url":750}],777:[function(require,module,exports){
+},{"./errors":772,"./progress-event":774,"./xml-http-request-event-target":775,"./xml-http-request-upload":776,"_process":587,"buffer":314,"cookiejar":326,"http":665,"https":468,"os":578,"url":751}],778:[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;
