@@ -1,6 +1,7 @@
 // Get Path
 const path = require('path');
 const fs = require('fs');
+const { writeJsonFile } = require('tiny-essentials');
 
 // Get Fic Data
 const ficData = require('../publicFolder')();
@@ -28,7 +29,7 @@ fs.readdir(folderPath, (err, files) => {
 
             // Create oEmbed File
             console.log('Creating JSON oEmbed...');
-            fs.writeFileSync(path.join(ficData.path, './oEmbed/chapter/' + data.count + '.json'), JSON.stringify({
+            writeJsonFile(path.join(ficData.path, './oEmbed/chapter/' + data.count + '.json'), {
                 author_name: ficData.config.creator,
                 cache_age: 7200,
                 tags: ficData.config.chapterName[data.count].tags,
@@ -38,7 +39,7 @@ fs.readdir(folderPath, (err, files) => {
                 description: ficData.config.chapterName[data.count].description,
                 type: 'url',
                 version: '1.0'
-            }, null, 2));
+            }, 2);
             console.log('Done!');
 
             // Create HTML File

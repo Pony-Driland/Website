@@ -2,6 +2,7 @@
 const path = require('path');
 const fs = require('fs');
 const { glob } = require("glob");
+const { writeJsonFile } = require('tiny-essentials');
 
 const getDirectories = (src, callback) => glob(src + '/**/*')
     .then((data) => callback(null, data)).catch((err) => callback(err));
@@ -48,7 +49,7 @@ getDirectories(folderPath, (err, files) => {
                     jsonFile.color
                 ) {
                     console.log('Creating JSON oEmbed...');
-                    fs.writeFileSync(path.join(ficData.path, './oEmbed/characters/' + file.name + '.json'), JSON.stringify({
+                    writeJsonFile(path.join(ficData.path, './oEmbed/characters/' + file.name + '.json'), {
                         author_name: jsonFile.author_name,
                         url: imgUrl,
                         cache_age: 7200,
@@ -59,7 +60,7 @@ getDirectories(folderPath, (err, files) => {
                         description: jsonFile.description,
                         type: 'photo',
                         version: '1.0'
-                    }, null, 2));
+                    }, 2);
                     console.log('Done!');
 
                     // Create HTML File
