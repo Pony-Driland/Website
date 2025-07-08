@@ -40,7 +40,7 @@
         "bootstrap": "^5.3.7",
         "buffer": "^6.0.3",
         "clone": "^2.1.2",
-        "ethers": "5.8.0",
+        "ethers": "6.15.0",
         "events": "^3.3.0",
         "exifreader": "^4.31.1",
         "express": "^5.1.0",
