@@ -13,14 +13,6 @@ import PhotoSwipeLightbox from 'photoswipe';
 // Pizzicato
 import Pizzicato from 'pizzicato';
 
-// Web3
-import BigNumber from 'bignumber.js';
-import * as ethers from 'ethers/lib.esm/index.js';
-
-// import WalletConnectQR from '@walletconnect/qrcode-modal';
-import WalletConnectProvider from '@walletconnect/web3-provider';
-import WalletConnect from '@walletconnect/client';
-
 // jsstore
 import * as JsStore from "jsstore";
 
@@ -56,6 +48,7 @@ global.window.tinyNotification = new TinyNotifications({ audio: '/audio/notifica
 
 // Imports
 addAiMarkerShortcut();
+global.window.TinyDomReadyManager = TinyDomReadyManager;
 global.window.TinyAfterScrollWatcher = TinyAfterScrollWatcher;
 global.window.TinyHtml = TinyHtml;
 global.window.readBase64Blob = readBase64Blob;
@@ -77,8 +70,3 @@ global.window.countObj = countObj;
 global.window.shuffleArray = shuffleArray;
 global.window.Pizzicato = Pizzicato;
 global.window.PhotoSwipeLightbox = PhotoSwipeLightbox;
-// global.window.WalletConnectQR = WalletConnectQR;
-global.window.BigNumber = BigNumber;
-global.window.ethers = ethers;
-global.window.WalletConnect = WalletConnect;
-global.window.WalletConnectProvider = WalletConnectProvider;

@@ -280,7 +280,7 @@ const openNewAddress = function (data, isPopState = false, useCustom = false) {
 };
 
 // Pop State
-$(window).on('popstate', function () {
+new TinyHtml(window).on('popstate', () => {
   // Remove Fic Data
   clearFicData();
 
@@ -289,7 +289,7 @@ $(window).on('popstate', function () {
   const params = Object.fromEntries(urlSearchParams.entries());
 
   // Load Page
-  const loadPage = function () {
+  const loadPage = () => {
     if (storyData.urlPage !== params.path) {
       storyData.urlPage = params.path;
       if (params.path === 'read-fic') openChapterMenu(params);
@@ -436,9 +436,9 @@ const insertMarkdownFile = function (text, metadata = null, isMainPage = false, 
 
   // Top Page
   if (isMainPage) {
-    $('#top_page').removeClass('d-none');
+    TinyHtml.query('#top_page').removeClass('d-none');
   } else {
-    $('#top_page').addClass('d-none');
+    TinyHtml.query('#top_page').addClass('d-none');
   }
 
   const markdownHid = (text) =>
@@ -1186,23 +1186,6 @@ $(() => {
           text: 'Whistler (Character WIP)',
         });
 
-        // Meta Login
-        const metaLogin = {
-          base: $('<li>', { class: 'nav-item font-weight-bold' }),
-          title: 'Login',
-        };
-        if (puddyWeb3.existAccounts()) {
-          metaLogin.title = puddyWeb3.getAddress();
-        }
-
-        metaLogin.button = tinyLib.bs
-          .button({ dsBtn: true, id: 'login', class: 'nav-link web3-element' })
-          .attr('title', metaLogin.title)
-          .prepend(tinyLib.icon('fa-brands fa-ethereum me-2'));
-
-        metaLogin.base.prepend(metaLogin.button);
-        metaLogin.button.on('click', storyCfg.web3.login);
-
         // AI Login
         const aiLogin = {
           base: $('<li>', { class: 'nav-item font-weight-bold' }),
@@ -1324,7 +1307,6 @@ $(() => {
 
           // Login
           aiLogin.base,
-          metaLogin.base,
 
           // Read Fic
           $('<li>', {
@@ -1349,7 +1331,6 @@ $(() => {
         ];
 
         aiLogin.button.tooltip();
-        metaLogin.button.tooltip();
         return newItem;
       };
 
@@ -1662,5 +1643,5 @@ This same navbar will also show all the fic tools as "bookmark" and data progres
     });
   };
 
-  puddyWeb3.waitReadyProvider().then(startApp).catch(startApp);
+  startApp();
 });

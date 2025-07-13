@@ -13,8 +13,8 @@
   let firstTime = true;
   let deferredPrompt;
   window.matchMedia('(display-mode: standalone)').addEventListener('change', (evt) => {
-    const body = $('body');
-    body.removeClass('window-browser').removeClass('window-standalone');
+    const body = TinyHtml.query('body');
+    body.removeClass(['window-browser', 'window-standalone']);
 
     let displayMode = 'browser';
     if (evt.matches) {
@@ -296,24 +296,29 @@
     }
   }
 
-  const tinyPwa = new TinyPwa();
+  const initDom = new TinyDomReadyManager();
 
-  if (window.matchMedia('(display-mode: standalone)').matches) {
-    console.log(`[PWA] This is running as standalone.`);
-    $('body').addClass(`window-standalone`);
-    tinyPwa.emit('displayMode', 'standalone');
-  } else {
-    console.log(`[PWA] This is running as browser.`);
-    $('body').addClass(`window-browser`);
-    tinyPwa.emit('displayMode', 'browser');
-  }
+  initDom.onReady(() => {
+    const tinyPwa = new TinyPwa();
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      console.log(`[PWA] This is running as standalone.`);
+      TinyHtml.query('body').addClass(`window-standalone`);
+      tinyPwa.emit('displayMode', 'standalone');
+    } else {
+      console.log(`[PWA] This is running as browser.`);
+      TinyHtml.query('body').addClass(`window-browser`);
+      tinyPwa.emit('displayMode', 'browser');
+    }
 
-  window.tinyPwa = tinyPwa;
-  window.vanillaPwa = {
-    postMessage,
-    getDisplayMode: getPWADisplayMode,
-    isUsing: isUsingPWA,
-    clearFetch: clearFetchPwaCache,
-    install: installPWA,
-  };
+    window.tinyPwa = tinyPwa;
+    window.vanillaPwa = {
+      postMessage,
+      getDisplayMode: getPWADisplayMode,
+      isUsing: isUsingPWA,
+      clearFetch: clearFetchPwaCache,
+      install: installPWA,
+    };
+  });
+
+  initDom.init();
 })();
