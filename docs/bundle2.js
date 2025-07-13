@@ -51,6 +51,9 @@ global.window.tinyNotification = new _tinyEssentials.TinyNotifications({
 
 // Imports
 (0, _tinyEssentials.addAiMarkerShortcut)();
+global.window.TinyAfterScrollWatcher = _tinyEssentials.TinyAfterScrollWatcher;
+global.window.TinyHtml = _tinyEssentials.TinyHtml;
+global.window.readBase64Blob = _tinyEssentials.readBase64Blob;
 global.window.readJsonBlob = _tinyEssentials.readJsonBlob;
 global.window.fetchJson = _tinyEssentials.fetchJson;
 global.window.TinyDices = _tinyDices["default"];
@@ -76,7 +79,7 @@ global.window.WalletConnect = _client["default"];
 global.window.WalletConnectProvider = _web3Provider["default"];
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"@walletconnect/client":187,"@walletconnect/web3-provider":269,"bignumber.js":309,"ethers/lib.esm/index.js":433,"for-promise":440,"jsstore":490,"photoswipe":580,"pizzicato":582,"socket.io-client":638,"tiny-ai-api":688,"tiny-dices":711,"tiny-essentials":736,"tippy.js":746,"validate-color":756}],2:[function(require,module,exports){
+},{"@walletconnect/client":187,"@walletconnect/web3-provider":269,"bignumber.js":309,"ethers/lib.esm/index.js":433,"for-promise":440,"jsstore":490,"photoswipe":580,"pizzicato":582,"socket.io-client":638,"tiny-ai-api":688,"tiny-dices":711,"tiny-essentials":738,"tippy.js":750,"validate-color":760}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30837,7 +30840,7 @@ function padString(str, length, left) {
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"buffer":314,"is-typedarray":477,"typedarray-to-buffer":749}],210:[function(require,module,exports){
+},{"buffer":314,"is-typedarray":477,"typedarray-to-buffer":753}],210:[function(require,module,exports){
 (function (global){(function (){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -30887,7 +30890,7 @@ const tslib_1 = require("tslib");
 tslib_1.__exportStar(require("./crypto"), exports);
 tslib_1.__exportStar(require("./env"), exports);
 
-},{"./crypto":210,"./env":211,"tslib":748}],213:[function(require,module,exports){
+},{"./crypto":210,"./env":211,"tslib":752}],213:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -30994,7 +30997,7 @@ var HTTPConnection = /*#__PURE__*/function (_EventEmitter) {
 }(_eventemitter["default"]);
 var _default = exports["default"] = HTTPConnection;
 
-},{"@walletconnect/utils":262,"eventemitter3":436,"xhr2-cookies":773}],214:[function(require,module,exports){
+},{"@walletconnect/utils":262,"eventemitter3":436,"xhr2-cookies":777}],214:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -40725,7 +40728,7 @@ var WalletConnectProvider = /*#__PURE__*/function (_ProviderEngine) {
 }(ProviderEngine);
 var _default = exports["default"] = WalletConnectProvider;
 
-},{"@walletconnect/client":187,"@walletconnect/http-connection":213,"@walletconnect/qrcode-modal":225,"@walletconnect/utils":262,"web3-provider-engine":757,"web3-provider-engine/subproviders/cache":758,"web3-provider-engine/subproviders/filters":759,"web3-provider-engine/subproviders/fixture":760,"web3-provider-engine/subproviders/hooked-wallet":761,"web3-provider-engine/subproviders/nonce-tracker":763,"web3-provider-engine/subproviders/subscriptions":765}],270:[function(require,module,exports){
+},{"@walletconnect/client":187,"@walletconnect/http-connection":213,"@walletconnect/qrcode-modal":225,"@walletconnect/utils":262,"web3-provider-engine":761,"web3-provider-engine/subproviders/cache":762,"web3-provider-engine/subproviders/filters":763,"web3-provider-engine/subproviders/fixture":764,"web3-provider-engine/subproviders/hooked-wallet":765,"web3-provider-engine/subproviders/nonce-tracker":767,"web3-provider-engine/subproviders/subscriptions":769}],270:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getLocalStorage = exports.getLocalStorageOrThrow = exports.getCrypto = exports.getCryptoOrThrow = exports.getLocation = exports.getLocationOrThrow = exports.getNavigator = exports.getNavigatorOrThrow = exports.getDocument = exports.getDocumentOrThrow = exports.getFromWindowOrThrow = exports.getFromWindow = void 0;
@@ -54315,7 +54318,7 @@ function copy(text, options) {
 
 module.exports = copy;
 
-},{"toggle-selection":747}],328:[function(require,module,exports){
+},{"toggle-selection":751}],328:[function(require,module,exports){
 'use strict'
 var inherits = require('inherits')
 var MD5 = require('md5.js')
@@ -64181,7 +64184,7 @@ function createPayload(data){
   }, data)
 }
 
-},{"json-rpc-random-id":482,"xtend":778}],408:[function(require,module,exports){
+},{"json-rpc-random-id":482,"xtend":782}],408:[function(require,module,exports){
 const ethUtil = require('ethereumjs-util')
 const ethAbi = require('ethereumjs-abi')
 
@@ -73425,7 +73428,7 @@ function validateParams (params) {
   return params
 }
 
-},{"http":665,"url":751}],469:[function(require,module,exports){
+},{"http":665,"url":755}],469:[function(require,module,exports){
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
@@ -73814,7 +73817,7 @@ module.exports = function isTypedArray(value) {
   return !!whichTypedArray(value);
 };
 
-},{"which-typed-array":771}],477:[function(require,module,exports){
+},{"which-typed-array":775}],477:[function(require,module,exports){
 module.exports      = isTypedArray
 isTypedArray.strict = isStrictTypedArray
 isTypedArray.loose  = isLooseTypedArray
@@ -78763,7 +78766,7 @@ Writable.prototype._destroy = function (err, cb) {
   cb(err);
 };
 }).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../errors":497,"./_stream_duplex":498,"./internal/streams/destroy":505,"./internal/streams/state":509,"./internal/streams/stream":510,"_process":587,"buffer":314,"inherits":470,"util-deprecate":752}],503:[function(require,module,exports){
+},{"../errors":497,"./_stream_duplex":498,"./internal/streams/destroy":505,"./internal/streams/state":509,"./internal/streams/stream":510,"_process":587,"buffer":314,"inherits":470,"util-deprecate":756}],503:[function(require,module,exports){
 (function (process){(function (){
 'use strict';
 
@@ -80585,7 +80588,7 @@ arguments[4][500][0].apply(exports,arguments)
 arguments[4][501][0].apply(exports,arguments)
 },{"../errors":552,"./_stream_duplex":553,"dup":501,"inherits":470}],557:[function(require,module,exports){
 arguments[4][502][0].apply(exports,arguments)
-},{"../errors":552,"./_stream_duplex":553,"./internal/streams/destroy":560,"./internal/streams/state":564,"./internal/streams/stream":565,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":752}],558:[function(require,module,exports){
+},{"../errors":552,"./_stream_duplex":553,"./internal/streams/destroy":560,"./internal/streams/state":564,"./internal/streams/stream":565,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":756}],558:[function(require,module,exports){
 arguments[4][503][0].apply(exports,arguments)
 },{"./end-of-stream":561,"_process":587,"dup":503}],559:[function(require,module,exports){
 arguments[4][504][0].apply(exports,arguments)
@@ -91442,7 +91445,7 @@ arguments[4][500][0].apply(exports,arguments)
 arguments[4][501][0].apply(exports,arguments)
 },{"../errors":598,"./_stream_duplex":599,"dup":501,"inherits":470}],603:[function(require,module,exports){
 arguments[4][502][0].apply(exports,arguments)
-},{"../errors":598,"./_stream_duplex":599,"./internal/streams/destroy":606,"./internal/streams/state":610,"./internal/streams/stream":611,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":752}],604:[function(require,module,exports){
+},{"../errors":598,"./_stream_duplex":599,"./internal/streams/destroy":606,"./internal/streams/state":610,"./internal/streams/stream":611,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":756}],604:[function(require,module,exports){
 arguments[4][503][0].apply(exports,arguments)
 },{"./end-of-stream":607,"_process":587,"dup":503}],605:[function(require,module,exports){
 arguments[4][504][0].apply(exports,arguments)
@@ -91872,7 +91875,7 @@ function arrayClone(arr, n) {
   return copy;
 }
 
-},{"events/":437,"util":755}],618:[function(require,module,exports){
+},{"events/":437,"util":759}],618:[function(require,module,exports){
 'use strict';
 
 var callBound = require('call-bound');
@@ -96604,7 +96607,7 @@ arguments[4][500][0].apply(exports,arguments)
 arguments[4][501][0].apply(exports,arguments)
 },{"../errors":650,"./_stream_duplex":651,"dup":501,"inherits":470}],655:[function(require,module,exports){
 arguments[4][502][0].apply(exports,arguments)
-},{"../errors":650,"./_stream_duplex":651,"./internal/streams/destroy":658,"./internal/streams/state":662,"./internal/streams/stream":663,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":752}],656:[function(require,module,exports){
+},{"../errors":650,"./_stream_duplex":651,"./internal/streams/destroy":658,"./internal/streams/state":662,"./internal/streams/stream":663,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":756}],656:[function(require,module,exports){
 arguments[4][503][0].apply(exports,arguments)
 },{"./end-of-stream":659,"_process":587,"dup":503}],657:[function(require,module,exports){
 arguments[4][504][0].apply(exports,arguments)
@@ -96710,7 +96713,7 @@ http.METHODS = [
 	'UNSUBSCRIBE'
 ]
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./lib/request":667,"./lib/response":668,"builtin-status-codes":316,"url":751,"xtend":778}],666:[function(require,module,exports){
+},{"./lib/request":667,"./lib/response":668,"builtin-status-codes":316,"url":755,"xtend":782}],666:[function(require,module,exports){
 (function (global){(function (){
 exports.fetch = isFunction(global.fetch) && isFunction(global.ReadableStream)
 
@@ -97356,7 +97359,7 @@ arguments[4][500][0].apply(exports,arguments)
 arguments[4][501][0].apply(exports,arguments)
 },{"../errors":669,"./_stream_duplex":670,"dup":501,"inherits":470}],674:[function(require,module,exports){
 arguments[4][502][0].apply(exports,arguments)
-},{"../errors":669,"./_stream_duplex":670,"./internal/streams/destroy":677,"./internal/streams/state":681,"./internal/streams/stream":682,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":752}],675:[function(require,module,exports){
+},{"../errors":669,"./_stream_duplex":670,"./internal/streams/destroy":677,"./internal/streams/state":681,"./internal/streams/stream":682,"_process":587,"buffer":314,"dup":502,"inherits":470,"util-deprecate":756}],675:[function(require,module,exports){
 arguments[4][503][0].apply(exports,arguments)
 },{"./end-of-stream":678,"_process":587,"dup":503}],676:[function(require,module,exports){
 arguments[4][504][0].apply(exports,arguments)
@@ -107830,7 +107833,7 @@ function _insertCreateCube() {
 }
 var _default = exports["default"] = TinyDices;
 
-},{"tiny-essentials":720,"validate-color":756}],712:[function(require,module,exports){
+},{"tiny-essentials":720,"validate-color":760}],712:[function(require,module,exports){
 arguments[4][690][0].apply(exports,arguments)
 },{"dup":690}],713:[function(require,module,exports){
 arguments[4][691][0].apply(exports,arguments)
@@ -108164,16 +108167,420 @@ arguments[4][693][0].apply(exports,arguments)
 },{"dup":693}],728:[function(require,module,exports){
 arguments[4][694][0].apply(exports,arguments)
 },{"dup":694}],729:[function(require,module,exports){
-arguments[4][695][0].apply(exports,arguments)
-},{"dup":695}],730:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.areHtmlElsColliding = areHtmlElsColliding;
+exports.areElsPerfColliding = exports.areElsColliding = exports.areElsCollTop = exports.areElsCollRight = exports.areElsCollPerfTop = exports.areElsCollPerfRight = exports.areElsCollPerfLeft = exports.areElsCollPerfBottom = exports.areElsCollLeft = exports.areElsCollBottom = void 0;
+exports.getElsCollDetails = getElsCollDetails;
+exports.getElsCollDirDepth = getElsCollDirDepth;
+exports.getElsPerfColliding = exports.getElsColliding = exports.getElsCollOverlapPos = exports.getElsCollOverlap = void 0;
+exports.getElsRelativeCenterOffset = getElsRelativeCenterOffset;
+exports.getRectCenter = void 0;
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+/**
+ * A direction relative to a rectangle.
+ *
+ * Represents one of the four cardinal directions from the perspective of the element.
+ *
+ * @typedef {'top' | 'bottom' | 'left' | 'right'} Dirs
+ */
+/**
+ * Represents all directional aspects of a collision.
+ *
+ * @typedef {Object} CollDirs
+ * @property {Dirs | 'center' | null} in - The dominant direction of entry. `'center'` if all sides are equally overlapped. `null` if no collision.
+ * @property {Dirs | null} x - The horizontal direction (`'left'` or `'right'`) the collision is biased toward, or `null`.
+ * @property {Dirs | null} y - The vertical direction (`'top'` or `'bottom'`) the collision is biased toward, or `null`.
+ */
+/**
+ * Indicates if a collision is in the negative direction (rect2 is outside rect1).
+ *
+ * @typedef {Object} NegCollDirs
+ * @property {Dirs | null} x - Horizontal direction of negative overlap, if any.
+ * @property {Dirs | null} y - Vertical direction of negative overlap, if any.
+ */
+/**
+ * Collision depth values from each side of rect2 inside rect1.
+ *
+ * Positive values indicate penetration; negative values indicate gaps.
+ *
+ * @typedef {Object} CollData
+ * @property {number} top - Depth from rect2's top into rect1.
+ * @property {number} bottom - Depth from rect2's bottom into rect1.
+ * @property {number} left - Depth from rect2's left into rect1.
+ * @property {number} right - Depth from rect2's right into rect1.
+ */
+/**
+ * X and Y offset representing center difference between two rectangles.
+ *
+ * Useful to measure how far one element's center is from another.
+ *
+ * @typedef {Object} CollCenter
+ * @property {number} x - Horizontal distance in pixels from rect1's center to rect2's center.
+ * @property {number} y - Vertical distance in pixels from rect1's center to rect2's center.
+ */
+/**
+ * Represents a rectangular area in absolute pixel values.
+ *
+ * Similar to `DOMRect`, this object describes the dimensions and position of a box
+ * in the 2D plane, typically representing an element's bounding box.
+ *
+ * @typedef {Object} ObjRect
+ * @property {number} height - The total height of the rectangle in pixels.
+ * @property {number} width - The total width of the rectangle in pixels.
+ * @property {number} top - The Y-coordinate of the top edge of the rectangle.
+ * @property {number} bottom - The Y-coordinate of the bottom edge of the rectangle.
+ * @property {number} left - The X-coordinate of the left edge of the rectangle.
+ * @property {number} right - The X-coordinate of the right edge of the rectangle.
+ */
+// Normal collision checks (loose overlap detection)
+/**
+ * Checks if rect1 is completely above rect2 (no vertical overlap).
+ *
+ * @param {ObjRect} rect1 - The bounding rectangle of the first element.
+ * @param {ObjRect} rect2 - The bounding rectangle of the second element.
+ * @returns {boolean} True if rect1 is entirely above rect2.
+ */
+var areElsCollTop = exports.areElsCollTop = function areElsCollTop(rect1, rect2) {
+  return rect1.bottom < rect2.top;
+};
+/**
+ * Checks if rect1 is completely below rect2 (no vertical overlap).
+ *
+ * @param {ObjRect} rect1
+ * @param {ObjRect} rect2
+ * @returns {boolean} True if rect1 is entirely below rect2.
+ */
+var areElsCollBottom = exports.areElsCollBottom = function areElsCollBottom(rect1, rect2) {
+  return rect1.top > rect2.bottom;
+};
+/**
+ * Checks if rect1 is completely to the left of rect2 (no horizontal overlap).
+ *
+ * @param {ObjRect} rect1
+ * @param {ObjRect} rect2
+ * @returns {boolean} True if rect1 is entirely to the left of rect2.
+ */
+var areElsCollLeft = exports.areElsCollLeft = function areElsCollLeft(rect1, rect2) {
+  return rect1.right < rect2.left;
+};
+/**
+ * Checks if rect1 is completely to the right of rect2 (no horizontal overlap).
+ *
+ * @param {ObjRect} rect1
+ * @param {ObjRect} rect2
+ * @returns {boolean} True if rect1 is entirely to the right of rect2.
+ */
+var areElsCollRight = exports.areElsCollRight = function areElsCollRight(rect1, rect2) {
+  return rect1.left > rect2.right;
+};
+// Perfect collision checks (touch included)
+/**
+ * Checks if rect1 is perfectly above rect2 (no vertical touch or overlap).
+ *
+ * @param {ObjRect} rect1
+ * @param {ObjRect} rect2
+ * @returns {boolean} True if rect1 is fully above or touching rect2's top.
+ */
+var areElsCollPerfTop = exports.areElsCollPerfTop = function areElsCollPerfTop(rect1, rect2) {
+  return rect1.bottom <= rect2.top;
+};
+/**
+ * Checks if rect1 is perfectly below rect2 (no vertical touch or overlap).
+ *
+ * @param {ObjRect} rect1
+ * @param {ObjRect} rect2
+ * @returns {boolean} True if rect1 is fully below or touching rect2's bottom.
+ */
+var areElsCollPerfBottom = exports.areElsCollPerfBottom = function areElsCollPerfBottom(rect1, rect2) {
+  return rect1.top >= rect2.bottom;
+};
+/**
+ * Checks if rect1 is perfectly to the left of rect2 (no horizontal touch or overlap).
+ *
+ * @param {ObjRect} rect1
+ * @param {ObjRect} rect2
+ * @returns {boolean} True if rect1 is fully left or touching rect2's left.
+ */
+var areElsCollPerfLeft = exports.areElsCollPerfLeft = function areElsCollPerfLeft(rect1, rect2) {
+  return rect1.right <= rect2.left;
+};
+/**
+ * Checks if rect1 is perfectly to the right of rect2 (no horizontal touch or overlap).
+ *
+ * @param {ObjRect} rect1
+ * @param {ObjRect} rect2
+ * @returns {boolean} True if rect1 is fully right or touching rect2's right.
+ */
+var areElsCollPerfRight = exports.areElsCollPerfRight = function areElsCollPerfRight(rect1, rect2) {
+  return rect1.left >= rect2.right;
+};
+// Main collision check
+/**
+ * Returns true if rect1 and rect2 are colliding (partially or fully overlapping).
+ *
+ * @param {ObjRect} rect1
+ * @param {ObjRect} rect2
+ * @returns {boolean} True if there's any collision between rect1 and rect2.
+ */
+var areElsColliding = exports.areElsColliding = function areElsColliding(rect1, rect2) {
+  return !(areElsCollLeft(rect1, rect2) || areElsCollRight(rect1, rect2) || areElsCollTop(rect1, rect2) || areElsCollBottom(rect1, rect2));
+};
+/**
+ * Returns true if rect1 and rect2 are colliding or perfectly touching.
+ *
+ * @param {ObjRect} rect1
+ * @param {ObjRect} rect2
+ * @returns {boolean} True if there's any contact or overlap.
+ */
+var areElsPerfColliding = exports.areElsPerfColliding = function areElsPerfColliding(rect1, rect2) {
+  return !(areElsCollPerfLeft(rect1, rect2) || areElsCollPerfRight(rect1, rect2) || areElsCollPerfTop(rect1, rect2) || areElsCollPerfBottom(rect1, rect2));
+};
+// Collision direction guess (loose and perfect)
+/**
+ * Attempts to determine the direction rect1 entered rect2 based on loose overlap rules.
+ *
+ * @param {ObjRect} rect1
+ * @param {ObjRect} rect2
+ * @returns {string|null} 'top' | 'bottom' | 'left' | 'right' | null
+ */
+var getElsColliding = exports.getElsColliding = function getElsColliding(rect1, rect2) {
+  if (areElsCollLeft(rect1, rect2)) return 'left';else if (areElsCollRight(rect1, rect2)) return 'right';else if (areElsCollTop(rect1, rect2)) return 'top';else if (areElsCollBottom(rect1, rect2)) return 'bottom';
+  return null;
+};
+/**
+ * Attempts to determine the direction rect1 touched or entered rect2 using perfect mode.
+ *
+ * @param {ObjRect} rect1
+ * @param {ObjRect} rect2
+ * @returns {'top' | 'bottom' | 'left' | 'right' | null}
+ */
+var getElsPerfColliding = exports.getElsPerfColliding = function getElsPerfColliding(rect1, rect2) {
+  if (areElsCollPerfLeft(rect1, rect2)) return 'left';else if (areElsCollPerfRight(rect1, rect2)) return 'right';else if (areElsCollPerfTop(rect1, rect2)) return 'top';else if (areElsCollPerfBottom(rect1, rect2)) return 'bottom';
+  return null;
+};
+// Overlap Calculation
+/**
+ * Calculates overlap values between rect1 and rect2 in all directions.
+ *
+ * @param {ObjRect} rect1
+ * @param {ObjRect} rect2
+ * @returns {{
+ *   overlapLeft: number,
+ *   overlapRight: number,
+ *   overlapTop: number,
+ *   overlapBottom: number
+ * }} Distance of overlap from each direction (can be negative).
+ */
+var getElsCollOverlap = exports.getElsCollOverlap = function getElsCollOverlap(rect1, rect2) {
+  return {
+    overlapLeft: rect2.right - rect1.left,
+    overlapRight: rect1.right - rect2.left,
+    overlapTop: rect2.bottom - rect1.top,
+    overlapBottom: rect1.bottom - rect2.top
+  };
+};
+/**
+ * Determines directional collision based on overlap depth.
+ *
+ * @param {Object} [settings={}]
+ * @param {number} [settings.overlapLeft]
+ * @param {number} [settings.overlapRight]
+ * @param {number} [settings.overlapTop]
+ * @param {number} [settings.overlapBottom]
+ * @returns {{ dirX: Dirs, dirY: Dirs }} Direction of strongest X/Y overlap.
+ */
+var getElsCollOverlapPos = exports.getElsCollOverlapPos = function getElsCollOverlapPos() {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+    _ref$overlapLeft = _ref.overlapLeft,
+    overlapLeft = _ref$overlapLeft === void 0 ? -1 : _ref$overlapLeft,
+    _ref$overlapRight = _ref.overlapRight,
+    overlapRight = _ref$overlapRight === void 0 ? -1 : _ref$overlapRight,
+    _ref$overlapTop = _ref.overlapTop,
+    overlapTop = _ref$overlapTop === void 0 ? -1 : _ref$overlapTop,
+    _ref$overlapBottom = _ref.overlapBottom,
+    overlapBottom = _ref$overlapBottom === void 0 ? -1 : _ref$overlapBottom;
+  return {
+    dirX: overlapLeft < overlapRight ? 'right' : 'left',
+    dirY: overlapTop < overlapBottom ? 'bottom' : 'top'
+  };
+};
+// Center utils
+/**
+ * Calculates the center point (X and Y) of a given Rect.
+ *
+ * @param {ObjRect} rect - The bounding rectangle of the element.
+ * @returns {{ x: number, y: number }} An object with the `x` and `y` coordinates of the center.
+ */
+var getRectCenter = exports.getRectCenter = function getRectCenter(rect) {
+  return {
+    x: rect.left + rect.width / 2,
+    y: rect.top + rect.height / 2
+  };
+};
+/**
+ * Calculates the offset between the center of rect2 and the center of rect1.
+ *
+ * The values will be 0 when rect1 is perfectly centered over rect2.
+ *
+ * @param {ObjRect} rect1 - The bounding rectangle of the reference element.
+ * @param {ObjRect} rect2 - The bounding rectangle of the element being compared.
+ * @returns {{
+ *   x: number,
+ *   y: number
+ * }} An object with the X and Y offset in pixels from rect1's center to rect2's center.
+ */
+function getElsRelativeCenterOffset(rect1, rect2) {
+  var center1X = rect1.left + rect1.width / 2;
+  var center1Y = rect1.top + rect1.height / 2;
+  var center2X = rect2.left + rect2.width / 2;
+  var center2Y = rect2.top + rect2.height / 2;
+  return {
+    x: center2X - center1X,
+    y: center2Y - center1Y
+  };
+}
+// Direction & Depth detection
+/**
+ * Detects the direction of the dominant collision between two elements
+ * and calculates how deep the overlap is in both x and y axes.
+ *
+ * @param {ObjRect} rect1 - The bounding rectangle of the first element.
+ * @param {ObjRect} rect2 - The bounding rectangle of the second element.
+ * @returns {{
+ *   inDir: Dirs | null;
+ *   dirX: Dirs | null;
+ *   dirY: Dirs | null;
+ *   depthX: number;
+ *   depthY: number;
+ * }} An object containing the collision direction and how deep the overlap is.
+ */
+function getElsCollDirDepth(rect1, rect2) {
+  if (!areElsPerfColliding(rect1, rect2)) return {
+    inDir: null,
+    dirX: null,
+    dirY: null,
+    depthX: 0,
+    depthY: 0
+  };
+  var _getElsCollOverlap = getElsCollOverlap(rect1, rect2),
+    overlapLeft = _getElsCollOverlap.overlapLeft,
+    overlapRight = _getElsCollOverlap.overlapRight,
+    overlapTop = _getElsCollOverlap.overlapTop,
+    overlapBottom = _getElsCollOverlap.overlapBottom;
+  var _getElsCollOverlapPos = getElsCollOverlapPos({
+      overlapLeft: overlapLeft,
+      overlapRight: overlapRight,
+      overlapTop: overlapTop,
+      overlapBottom: overlapBottom
+    }),
+    dirX = _getElsCollOverlapPos.dirX,
+    dirY = _getElsCollOverlapPos.dirY;
+  var depthX = Math.min(overlapLeft, overlapRight);
+  var depthY = Math.min(overlapTop, overlapBottom);
+  /** @type {Dirs} */
+  var inDir;
+  if (depthX < depthY) inDir = dirX;else inDir = dirY;
+  return {
+    inDir: inDir,
+    dirX: dirX,
+    dirY: dirY,
+    depthX: depthX,
+    depthY: depthY
+  };
+}
+// Full detail report
+/**
+ * Detects the collision direction and depth between two DOMRects.
+ *
+ * @param {ObjRect} rect1 - The bounding rectangle of the first element.
+ * @param {ObjRect} rect2 - The bounding rectangle of the second element.
+ * @returns {{ depth: CollData; dirs: CollDirs; isNeg: NegCollDirs; }} Collision info or null if no collision is detected.
+ */
+function getElsCollDetails(rect1, rect2) {
+  var isColliding = areElsPerfColliding(rect1, rect2);
+  /** @type {CollDirs} */
+  var dirs = {
+    "in": null,
+    x: null,
+    y: null
+  };
+  /** @type {NegCollDirs} */
+  var isNeg = {
+    y: null,
+    x: null
+  };
+  /** @type {Record<Dirs, number>} */
+  var depth = {
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0
+  };
+  // Depth
+  // Yes, it's actually reversed the values orders
+  var _getElsCollOverlap2 = getElsCollOverlap(rect2, rect1),
+    overlapLeft = _getElsCollOverlap2.overlapLeft,
+    overlapRight = _getElsCollOverlap2.overlapRight,
+    overlapTop = _getElsCollOverlap2.overlapTop,
+    overlapBottom = _getElsCollOverlap2.overlapBottom;
+  depth.top = overlapTop;
+  depth.bottom = overlapBottom;
+  depth.left = overlapLeft;
+  depth.right = overlapRight;
+  // Dirs
+  /**
+   * Detect the direction with the smallest positive overlap (entry point)
+   * @type {[Dirs, number][]}
+   */
+  // @ts-ignore
+  var entries = Object.entries(depth).filter(function (_ref2) {
+    var _ref3 = _slicedToArray(_ref2, 2),
+      val = _ref3[1];
+    return val > 0;
+  }).sort(function (a, b) {
+    return a[1] - b[1];
+  });
+  // Yes, it's actually reversed the values orders here too
+  var _getElsCollOverlapPos2 = getElsCollOverlapPos({
+      overlapLeft: overlapRight,
+      overlapRight: overlapLeft,
+      overlapTop: overlapBottom,
+      overlapBottom: overlapTop
+    }),
+    dirX = _getElsCollOverlapPos2.dirX,
+    dirY = _getElsCollOverlapPos2.dirY;
+  dirs.y = dirY;
+  dirs.x = dirX;
+  // isNeg
+  if (depth.bottom < 0) isNeg.y = 'bottom';else if (depth.top < 0) isNeg.y = 'top';
+  if (depth.left < 0) isNeg.x = 'left';else if (depth.right < 0) isNeg.x = 'right';
+  // Inside Dir
+  dirs["in"] = isColliding ? depth.top === depth.bottom && depth.bottom === depth.left && depth.left === depth.right ? 'center' : entries.length ? entries[0][0] : 'top' : null; // fallback in case of exact match
+  // Complete
+  return {
+    dirs: dirs,
+    depth: depth,
+    isNeg: isNeg
+  };
+}
+
+},{}],730:[function(require,module,exports){
+arguments[4][695][0].apply(exports,arguments)
+},{"dup":695}],731:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.fetchJson = fetchJson;
-exports.getHtmlElPadding = exports.getHtmlElMargin = exports.getHtmlElBordersWidth = exports.getHtmlElBorders = void 0;
 exports.installWindowHiddenScript = installWindowHiddenScript;
 exports.readBase64Blob = readBase64Blob;
 exports.readFileBlob = readFileBlob;
@@ -108197,18 +108604,7 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-/**
- * Checks if two DOM elements are colliding on the screen.
- *
- * @param {Element} elem1 - First DOM element.
- * @param {Element} elem2 - Second DOM element.
- * @returns {boolean} - Returns true if the elements are colliding.
- */
-function areHtmlElsColliding(elem1, elem2) {
-  var rect1 = elem1.getBoundingClientRect();
-  var rect2 = elem2.getBoundingClientRect();
-  return !(rect1.right < rect2.left || rect1.left > rect2.right || rect1.bottom < rect2.top || rect1.top > rect2.bottom);
-}
+/////////////////////////////////////////////////////////////////
 /**
  * Reads the contents of a file using the specified FileReader method.
  *
@@ -108334,21 +108730,20 @@ function saveJsonFile(filename, data) {
  */
 function fetchJson(_x) {
   return _fetchJson.apply(this, arguments);
-}
+} ///////////////////////////////////////////////////////////////////////////////
 /**
- * @typedef {Object} HtmlElBoxSides
- * @property {number} x - Total horizontal size (left + right)
- * @property {number} y - Total vertical size (top + bottom)
- * @property {number} left
- * @property {number} right
- * @property {number} top
- * @property {number} bottom
- */
-/**
- * Returns the total border width and individual sides from `border{Side}Width` CSS properties.
+ * Installs a script that toggles CSS classes on a given element
+ * based on the page's visibility or focus state, and optionally
+ * triggers callbacks on visibility changes.
  *
- * @param {Element} el - The target DOM element.
- * @returns {HtmlElBoxSides} - Total horizontal (x) and vertical (y) border widths, and each side individually.
+ * @param {Object} [settings={}]
+ * @param {Element} [settings.element=document.body] - The element to receive visibility classes.
+ * @param {string} [settings.hiddenClass='windowHidden'] - CSS class applied when the page is hidden.
+ * @param {string} [settings.visibleClass='windowVisible'] - CSS class applied when the page is visible.
+ * @param {() => void} [settings.onVisible] - Callback called when page becomes visible.
+ * @param {() => void} [settings.onHidden] - Callback called when page becomes hidden.
+ * @returns {() => void} Function that removes all installed event listeners.
+ * @throws {TypeError} If any provided setting is invalid.
  */
 function _fetchJson() {
   _fetchJson = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(url) {
@@ -108511,106 +108906,6 @@ function _fetchJson() {
   }));
   return _fetchJson.apply(this, arguments);
 }
-var getHtmlElBordersWidth = exports.getHtmlElBordersWidth = function getHtmlElBordersWidth(el) {
-  var styles = getComputedStyle(el);
-  var left = parseFloat(styles.borderLeftWidth) || 0;
-  var right = parseFloat(styles.borderRightWidth) || 0;
-  var top = parseFloat(styles.borderTopWidth) || 0;
-  var bottom = parseFloat(styles.borderBottomWidth) || 0;
-  var x = left + right;
-  var y = top + bottom;
-  return {
-    x: x,
-    y: y,
-    left: left,
-    right: right,
-    top: top,
-    bottom: bottom
-  };
-};
-/**
- * Returns the total border size and individual sides from `border{Side}` CSS properties.
- *
- * @param {Element} el - The target DOM element.
- * @returns {HtmlElBoxSides} - Total horizontal (x) and vertical (y) border sizes, and each side individually.
- */
-var getHtmlElBorders = exports.getHtmlElBorders = function getHtmlElBorders(el) {
-  var styles = getComputedStyle(el);
-  var left = parseFloat(styles.borderLeft) || 0;
-  var right = parseFloat(styles.borderRight) || 0;
-  var top = parseFloat(styles.borderTop) || 0;
-  var bottom = parseFloat(styles.borderBottom) || 0;
-  var x = left + right;
-  var y = top + bottom;
-  return {
-    x: x,
-    y: y,
-    left: left,
-    right: right,
-    top: top,
-    bottom: bottom
-  };
-};
-/**
- * Returns the total margin and individual sides from `margin{Side}` CSS properties.
- *
- * @param {Element} el - The target DOM element.
- * @returns {HtmlElBoxSides} - Total horizontal (x) and vertical (y) margins, and each side individually.
- */
-var getHtmlElMargin = exports.getHtmlElMargin = function getHtmlElMargin(el) {
-  var styles = getComputedStyle(el);
-  var left = parseFloat(styles.marginLeft) || 0;
-  var right = parseFloat(styles.marginRight) || 0;
-  var top = parseFloat(styles.marginTop) || 0;
-  var bottom = parseFloat(styles.marginBottom) || 0;
-  var x = left + right;
-  var y = top + bottom;
-  return {
-    x: x,
-    y: y,
-    left: left,
-    right: right,
-    top: top,
-    bottom: bottom
-  };
-};
-/**
- * Returns the total padding and individual sides from `padding{Side}` CSS properties.
- *
- * @param {Element} el - The target DOM element.
- * @returns {HtmlElBoxSides} - Total horizontal (x) and vertical (y) paddings, and each side individually.
- */
-var getHtmlElPadding = exports.getHtmlElPadding = function getHtmlElPadding(el) {
-  var styles = getComputedStyle(el);
-  var left = parseFloat(styles.paddingLeft) || 0;
-  var right = parseFloat(styles.paddingRight) || 0;
-  var top = parseFloat(styles.paddingTop) || 0;
-  var bottom = parseFloat(styles.paddingBottom) || 0;
-  var x = left + right;
-  var y = top + bottom;
-  return {
-    x: x,
-    y: y,
-    left: left,
-    right: right,
-    top: top,
-    bottom: bottom
-  };
-};
-/**
- * Installs a script that toggles CSS classes on a given element
- * based on the page's visibility or focus state, and optionally
- * triggers callbacks on visibility changes.
- *
- * @param {Object} [settings={}]
- * @param {HTMLElement} [settings.element=document.body] - The element to receive visibility classes.
- * @param {string} [settings.hiddenClass='windowHidden'] - CSS class applied when the page is hidden.
- * @param {string} [settings.visibleClass='windowVisible'] - CSS class applied when the page is visible.
- * @param {() => void} [settings.onVisible] - Callback called when page becomes visible.
- * @param {() => void} [settings.onHidden] - Callback called when page becomes hidden.
- * @returns {() => void} Function that removes all installed event listeners.
- * @throws {TypeError} If any provided setting is invalid.
- */
 function installWindowHiddenScript() {
   var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
     _ref2$element = _ref2.element,
@@ -108621,7 +108916,7 @@ function installWindowHiddenScript() {
     visibleClass = _ref2$visibleClass === void 0 ? 'windowVisible' : _ref2$visibleClass,
     onVisible = _ref2.onVisible,
     onHidden = _ref2.onHidden;
-  if (!(element instanceof HTMLElement)) throw new TypeError("\"element\" must be an instance of HTMLElement.");
+  if (!(element instanceof Element)) throw new TypeError("\"element\" must be an instance of Element.");
   if (typeof hiddenClass !== 'string') throw new TypeError("\"hiddenClass\" must be a string.");
   if (typeof visibleClass !== 'string') throw new TypeError("\"visibleClass\" must be a string.");
   if (onVisible !== undefined && typeof onVisible !== 'function') throw new TypeError("\"onVisible\" must be a function if provided.");
@@ -108701,11 +108996,121 @@ function installWindowHiddenScript() {
   return uninstall;
 }
 
-},{"./objFilter.mjs":731}],731:[function(require,module,exports){
+},{"./objFilter.mjs":733}],732:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.areHtmlElsColliding = areHtmlElsColliding;
+exports.areHtmlElsPerfColliding = areHtmlElsPerfColliding;
+exports.getHtmlElPadding = exports.getHtmlElMargin = exports.getHtmlElBordersWidth = exports.getHtmlElBorders = void 0;
+exports.isInViewport = isInViewport;
+exports.isScrolledIntoView = isScrolledIntoView;
+var _TinyHtml = _interopRequireDefault(require("../libs/TinyHtml.mjs"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+/**
+ * Checks if two DOM elements are colliding on the screen.
+ *
+ * @param {Element} elem1 - First DOM element.
+ * @param {Element} elem2 - Second DOM element.
+ * @returns {boolean} - Returns true if the elements are colliding.
+ * @deprecated - Use TinyHtml.isCollWith instead.
+ */
+function areHtmlElsColliding(elem1, elem2) {
+  return _TinyHtml["default"].isCollWith(elem1, elem2);
+}
+/**
+ * Checks if two DOM elements are colliding on the screen.
+ *
+ * @param {Element} elem1 - First DOM element.
+ * @param {Element} elem2 - Second DOM element.
+ * @returns {boolean} - Returns true if the elements are colliding.
+ * @deprecated - Use TinyHtml.isCollPerfWith instead.
+ */
+function areHtmlElsPerfColliding(elem1, elem2) {
+  return _TinyHtml["default"].isCollPerfWith(elem1, elem2);
+}
+///////////////////////////////////////////////////////////////////////////
+/**
+ * @typedef {import('../libs/TinyHtml.mjs').HtmlElBoxSides} HtmlElBoxSides
+ */
+/**
+ * Returns the total border width and individual sides from `border{Side}Width` CSS properties.
+ *
+ * @param {Element} el - The target DOM element.
+ * @returns {HtmlElBoxSides} - Total horizontal (x) and vertical (y) border widths, and each side individually.
+ * @deprecated - Use TinyHtml.borderWidth instead.
+ */
+var getHtmlElBordersWidth = exports.getHtmlElBordersWidth = function getHtmlElBordersWidth(el) {
+  return _TinyHtml["default"].borderWidth(el);
+};
+/**
+ * Returns the total border size and individual sides from `border{Side}` CSS properties.
+ *
+ * @param {Element} el - The target DOM element.
+ * @returns {HtmlElBoxSides} - Total horizontal (x) and vertical (y) border sizes, and each side individually.
+ * @deprecated - Use TinyHtml.border instead.
+ */
+var getHtmlElBorders = exports.getHtmlElBorders = function getHtmlElBorders(el) {
+  return _TinyHtml["default"].border(el);
+};
+/**
+ * Returns the total margin and individual sides from `margin{Side}` CSS properties.
+ *
+ * @param {Element} el - The target DOM element.
+ * @returns {HtmlElBoxSides} - Total horizontal (x) and vertical (y) margins, and each side individually.
+ * @deprecated - Use TinyHtml.margin instead.
+ */
+var getHtmlElMargin = exports.getHtmlElMargin = function getHtmlElMargin(el) {
+  return _TinyHtml["default"].margin(el);
+};
+/**
+ * Returns the total padding and individual sides from `padding{Side}` CSS properties.
+ *
+ * @param {Element} el - The target DOM element.
+ * @returns {HtmlElBoxSides} - Total horizontal (x) and vertical (y) paddings, and each side individually.
+ * @deprecated - Use TinyHtml.padding instead.
+ */
+var getHtmlElPadding = exports.getHtmlElPadding = function getHtmlElPadding(el) {
+  return _TinyHtml["default"].padding(el);
+};
+/////////////////////////////////////////////////////////////
+// The new version will receive great modifications, the deprecated code has been preserved for non-glitch designs that are using the original code.
+/**
+ * Checks if the given element is at least partially visible in the viewport.
+ *
+ * @param {HTMLElement} element - The DOM element to check.
+ * @returns {boolean} True if the element is partially in the viewport, false otherwise.
+ * @deprecated - Use TinyHtml.isInViewport instead.
+ */
+function isInViewport(element) {
+  var elementTop = element.offsetTop;
+  var elementBottom = elementTop + element.offsetHeight;
+  var viewportTop = window.scrollY;
+  var viewportBottom = viewportTop + window.innerHeight;
+  return elementBottom > viewportTop && elementTop < viewportBottom;
+}
+/**
+ * Checks if the given element is fully visible in the viewport (top and bottom).
+ *
+ * @param {HTMLElement} element - The DOM element to check.
+ * @returns {boolean} True if the element is fully visible in the viewport, false otherwise.
+ * @deprecated - Use TinyHtml.isScrolledIntoView instead.
+ */
+function isScrolledIntoView(element) {
+  var viewportTop = window.scrollY;
+  var viewportBottom = viewportTop + window.innerHeight;
+  var elemTop = element.offsetTop;
+  var elemBottom = elemTop + element.offsetHeight;
+  return elemBottom <= viewportBottom && elemTop >= viewportTop;
+}
+
+},{"../libs/TinyHtml.mjs":744}],733:[function(require,module,exports){
 arguments[4][697][0].apply(exports,arguments)
-},{"buffer":314,"dup":697}],732:[function(require,module,exports){
+},{"buffer":314,"dup":697}],734:[function(require,module,exports){
 arguments[4][698][0].apply(exports,arguments)
-},{"dup":698}],733:[function(require,module,exports){
+},{"dup":698}],735:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -108833,11 +109238,11 @@ function KeyPressHandler() {
 export default KeyPressHandler;
 */
 
-},{}],734:[function(require,module,exports){
+},{}],736:[function(require,module,exports){
 arguments[4][700][0].apply(exports,arguments)
-},{"./normalFuncs.mjs":735,"dup":700,"fs":313,"fs/promises":313,"path":579}],735:[function(require,module,exports){
+},{"./normalFuncs.mjs":737,"dup":700,"fs":313,"fs/promises":313,"path":579}],737:[function(require,module,exports){
 arguments[4][701][0].apply(exports,arguments)
-},{"../basics/text.mjs":733,"dup":701,"fs":313,"path":579}],736:[function(require,module,exports){
+},{"../basics/text.mjs":735,"dup":701,"fs":313,"path":579}],738:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -108847,6 +109252,12 @@ Object.defineProperty(exports, "ColorSafeStringify", {
   enumerable: true,
   get: function get() {
     return _ColorSafeStringify["default"];
+  }
+});
+Object.defineProperty(exports, "TinyAfterScrollWatcher", {
+  enumerable: true,
+  get: function get() {
+    return _TinyAfterScrollWatcher["default"];
   }
 });
 Object.defineProperty(exports, "TinyDomReadyManager", {
@@ -108865,6 +109276,12 @@ Object.defineProperty(exports, "TinyDragger", {
   enumerable: true,
   get: function get() {
     return _TinyDragger["default"];
+  }
+});
+Object.defineProperty(exports, "TinyHtml", {
+  enumerable: true,
+  get: function get() {
+    return _TinyHtml["default"];
   }
 });
 Object.defineProperty(exports, "TinyLevelUp", {
@@ -108909,10 +109326,70 @@ Object.defineProperty(exports, "addAiMarkerShortcut", {
     return _text.addAiMarkerShortcut;
   }
 });
+Object.defineProperty(exports, "areElsCollBottom", {
+  enumerable: true,
+  get: function get() {
+    return _collision.areElsCollBottom;
+  }
+});
+Object.defineProperty(exports, "areElsCollLeft", {
+  enumerable: true,
+  get: function get() {
+    return _collision.areElsCollLeft;
+  }
+});
+Object.defineProperty(exports, "areElsCollPerfBottom", {
+  enumerable: true,
+  get: function get() {
+    return _collision.areElsCollPerfBottom;
+  }
+});
+Object.defineProperty(exports, "areElsCollPerfLeft", {
+  enumerable: true,
+  get: function get() {
+    return _collision.areElsCollPerfLeft;
+  }
+});
+Object.defineProperty(exports, "areElsCollPerfRight", {
+  enumerable: true,
+  get: function get() {
+    return _collision.areElsCollPerfRight;
+  }
+});
+Object.defineProperty(exports, "areElsCollPerfTop", {
+  enumerable: true,
+  get: function get() {
+    return _collision.areElsCollPerfTop;
+  }
+});
+Object.defineProperty(exports, "areElsCollRight", {
+  enumerable: true,
+  get: function get() {
+    return _collision.areElsCollRight;
+  }
+});
+Object.defineProperty(exports, "areElsCollTop", {
+  enumerable: true,
+  get: function get() {
+    return _collision.areElsCollTop;
+  }
+});
+Object.defineProperty(exports, "areElsColliding", {
+  enumerable: true,
+  get: function get() {
+    return _collision.areElsColliding;
+  }
+});
+Object.defineProperty(exports, "areElsPerfColliding", {
+  enumerable: true,
+  get: function get() {
+    return _collision.areElsPerfColliding;
+  }
+});
 Object.defineProperty(exports, "areHtmlElsColliding", {
   enumerable: true,
   get: function get() {
-    return _html.areHtmlElsColliding;
+    return _html_deprecated.areHtmlElsColliding;
   }
 });
 Object.defineProperty(exports, "arraySortPositions", {
@@ -109071,34 +109548,82 @@ Object.defineProperty(exports, "getAge", {
     return _simpleMath.getAge;
   }
 });
+Object.defineProperty(exports, "getElsCollDetails", {
+  enumerable: true,
+  get: function get() {
+    return _collision.getElsCollDetails;
+  }
+});
+Object.defineProperty(exports, "getElsCollDirDepth", {
+  enumerable: true,
+  get: function get() {
+    return _collision.getElsCollDirDepth;
+  }
+});
+Object.defineProperty(exports, "getElsCollOverlap", {
+  enumerable: true,
+  get: function get() {
+    return _collision.getElsCollOverlap;
+  }
+});
+Object.defineProperty(exports, "getElsCollOverlapPos", {
+  enumerable: true,
+  get: function get() {
+    return _collision.getElsCollOverlapPos;
+  }
+});
+Object.defineProperty(exports, "getElsColliding", {
+  enumerable: true,
+  get: function get() {
+    return _collision.getElsColliding;
+  }
+});
+Object.defineProperty(exports, "getElsPerfColliding", {
+  enumerable: true,
+  get: function get() {
+    return _collision.getElsPerfColliding;
+  }
+});
+Object.defineProperty(exports, "getElsRelativeCenterOffset", {
+  enumerable: true,
+  get: function get() {
+    return _collision.getElsRelativeCenterOffset;
+  }
+});
 Object.defineProperty(exports, "getHtmlElBorders", {
   enumerable: true,
   get: function get() {
-    return _html.getHtmlElBorders;
+    return _html_deprecated.getHtmlElBorders;
   }
 });
 Object.defineProperty(exports, "getHtmlElBordersWidth", {
   enumerable: true,
   get: function get() {
-    return _html.getHtmlElBordersWidth;
+    return _html_deprecated.getHtmlElBordersWidth;
   }
 });
 Object.defineProperty(exports, "getHtmlElMargin", {
   enumerable: true,
   get: function get() {
-    return _html.getHtmlElMargin;
+    return _html_deprecated.getHtmlElMargin;
   }
 });
 Object.defineProperty(exports, "getHtmlElPadding", {
   enumerable: true,
   get: function get() {
-    return _html.getHtmlElPadding;
+    return _html_deprecated.getHtmlElPadding;
   }
 });
 Object.defineProperty(exports, "getLatestBackupPath", {
   enumerable: true,
   get: function get() {
     return _normalFuncs.getLatestBackupPath;
+  }
+});
+Object.defineProperty(exports, "getRectCenter", {
+  enumerable: true,
+  get: function get() {
+    return _collision.getRectCenter;
   }
 });
 Object.defineProperty(exports, "getSimplePerc", {
@@ -109137,6 +109662,12 @@ Object.defineProperty(exports, "isFullScreenMode", {
     return _fullScreen.isFullScreenMode;
   }
 });
+Object.defineProperty(exports, "isInViewport", {
+  enumerable: true,
+  get: function get() {
+    return _html_deprecated.isInViewport;
+  }
+});
 Object.defineProperty(exports, "isJsonObject", {
   enumerable: true,
   get: function get() {
@@ -109147,6 +109678,12 @@ Object.defineProperty(exports, "isScreenFilled", {
   enumerable: true,
   get: function get() {
     return _fullScreen.isScreenFilled;
+  }
+});
+Object.defineProperty(exports, "isScrolledIntoView", {
+  enumerable: true,
+  get: function get() {
+    return _html_deprecated.isScrolledIntoView;
   }
 });
 Object.defineProperty(exports, "listDirs", {
@@ -109332,23 +109869,6015 @@ var _TinyRateLimiter = _interopRequireDefault(require("./libs/TinyRateLimiter.mj
 var _TinyNotifyCenter = _interopRequireDefault(require("./libs/TinyNotifyCenter.mjs"));
 var _TinyToastNotify = _interopRequireDefault(require("./libs/TinyToastNotify.mjs"));
 var _html = require("./basics/html.mjs");
+var _html_deprecated = require("./basics/html_deprecated.mjs");
 var _TinyDragDropDetector = _interopRequireDefault(require("./libs/TinyDragDropDetector.mjs"));
 var _normalFuncs = require("./fileManager/normalFuncs.mjs");
 var _asyncFuncs = require("./fileManager/asyncFuncs.mjs");
 var _TinyDragger = _interopRequireDefault(require("./libs/TinyDragger.mjs"));
 var _TinyDomReadyManager = _interopRequireDefault(require("./libs/TinyDomReadyManager.mjs"));
 var _TinyNotifications = _interopRequireDefault(require("./libs/TinyNotifications.mjs"));
+var _collision = require("./basics/collision.mjs");
+var _TinyHtml = _interopRequireDefault(require("./libs/TinyHtml.mjs"));
+var _TinyAfterScrollWatcher = _interopRequireDefault(require("./libs/TinyAfterScrollWatcher.mjs"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 
-},{"../legacy/libs/arraySortPositions.mjs":724,"../legacy/libs/replaceAsync.mjs":725,"../legacy/libs/userLevel.mjs":726,"./basics/array.mjs":727,"./basics/clock.mjs":728,"./basics/fullScreen.mjs":729,"./basics/html.mjs":730,"./basics/objFilter.mjs":731,"./basics/simpleMath.mjs":732,"./basics/text.mjs":733,"./fileManager/asyncFuncs.mjs":734,"./fileManager/normalFuncs.mjs":735,"./libs/ColorSafeStringify.mjs":737,"./libs/TinyDomReadyManager.mjs":738,"./libs/TinyDragDropDetector.mjs":739,"./libs/TinyDragger.mjs":740,"./libs/TinyNotifications.mjs":741,"./libs/TinyNotifyCenter.mjs":742,"./libs/TinyPromiseQueue.mjs":743,"./libs/TinyRateLimiter.mjs":744,"./libs/TinyToastNotify.mjs":745}],737:[function(require,module,exports){
+},{"../legacy/libs/arraySortPositions.mjs":724,"../legacy/libs/replaceAsync.mjs":725,"../legacy/libs/userLevel.mjs":726,"./basics/array.mjs":727,"./basics/clock.mjs":728,"./basics/collision.mjs":729,"./basics/fullScreen.mjs":730,"./basics/html.mjs":731,"./basics/html_deprecated.mjs":732,"./basics/objFilter.mjs":733,"./basics/simpleMath.mjs":734,"./basics/text.mjs":735,"./fileManager/asyncFuncs.mjs":736,"./fileManager/normalFuncs.mjs":737,"./libs/ColorSafeStringify.mjs":739,"./libs/TinyAfterScrollWatcher.mjs":740,"./libs/TinyDomReadyManager.mjs":741,"./libs/TinyDragDropDetector.mjs":742,"./libs/TinyDragger.mjs":743,"./libs/TinyHtml.mjs":744,"./libs/TinyNotifications.mjs":745,"./libs/TinyNotifyCenter.mjs":746,"./libs/TinyPromiseQueue.mjs":747,"./libs/TinyRateLimiter.mjs":748,"./libs/TinyToastNotify.mjs":749}],739:[function(require,module,exports){
 arguments[4][703][0].apply(exports,arguments)
-},{"dup":703}],738:[function(require,module,exports){
+},{"dup":703}],740:[function(require,module,exports){
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _classPrivateMethodInitSpec(e, a) { _checkPrivateRedeclaration(e, a), a.add(e); }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+var _scrollTarget = /*#__PURE__*/new WeakMap();
+var _lastScrollTime = /*#__PURE__*/new WeakMap();
+var _afterScrollQueue = /*#__PURE__*/new WeakMap();
+var _inactivityTime = /*#__PURE__*/new WeakMap();
+var _externalScrollListeners = /*#__PURE__*/new WeakMap();
+var _onStopListeners = /*#__PURE__*/new WeakMap();
+var _destroyed = /*#__PURE__*/new WeakMap();
+var _TinyAfterScrollWatcher_brand = /*#__PURE__*/new WeakSet();
+/**
+ * @typedef {(() => void)} FnData - Function with no arguments and no return value
+ */
+/**
+ * A function that handles a scroll event.
+ * It receives a standard `Event` object when a scroll occurs.
+ *
+ * @typedef {(ev: Event) => void} OnScrollFunc
+ */
+/**
+ * A scroll tracker that queues functions to be executed
+ * after the user stops scrolling a specific element or the window.
+ */
+var TinyAfterScrollWatcher = /*#__PURE__*/function () {
+  /**
+   * @param {Element|Window} scrollTarget - The element or window to track scrolling on
+   * @param {number} [inactivityTime=100] - Time in milliseconds to wait after scroll ends before executing the queue
+   * @throws {TypeError} If scrollTarget is not a valid Element or Window
+   * @throws {TypeError} If inactivityTime is not a positive number
+   */
+  function TinyAfterScrollWatcher() {
+    var _this = this;
+    var scrollTarget = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window;
+    var inactivityTime = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100;
+    _classCallCheck(this, TinyAfterScrollWatcher);
+    /**
+     * Continuously checks whether the user has stopped scrolling,
+     * and if so, runs all queued functions.
+     */
+    _classPrivateMethodInitSpec(this, _TinyAfterScrollWatcher_brand);
+    /** @type {Element|Window} */
+    _classPrivateFieldInitSpec(this, _scrollTarget, void 0);
+    /** @type {null|NodeJS.Timeout} */
+    _classPrivateFieldInitSpec(this, _lastScrollTime, null);
+    /** @type {FnData[]} */
+    _classPrivateFieldInitSpec(this, _afterScrollQueue, []);
+    /** @type {number} */
+    _classPrivateFieldInitSpec(this, _inactivityTime, 100);
+    /** @type {Set<OnScrollFunc>} */
+    _classPrivateFieldInitSpec(this, _externalScrollListeners, new Set());
+    /** @type {Set<FnData>} */
+    _classPrivateFieldInitSpec(this, _onStopListeners, new Set());
+    /** @type {boolean} */
+    _classPrivateFieldInitSpec(this, _destroyed, false);
+    _defineProperty(this, "_checkTimer", function () {
+      if (_classPrivateFieldGet(_lastScrollTime, _this)) clearTimeout(_classPrivateFieldGet(_lastScrollTime, _this));
+      _classPrivateFieldSet(_lastScrollTime, _this, setTimeout(function () {
+        _classPrivateFieldSet(_lastScrollTime, _this, null);
+        _assertClassBrand(_TinyAfterScrollWatcher_brand, _this, _checkQueue).call(_this);
+      }, _classPrivateFieldGet(_inactivityTime, _this)));
+    });
+    if (!(scrollTarget instanceof Element) && !(scrollTarget instanceof Window)) throw new TypeError('scrollTarget must be an Element or the Window object.');
+    _classPrivateFieldSet(_scrollTarget, this, scrollTarget);
+    this._checkTimer = this._checkTimer.bind(this);
+    _classPrivateFieldGet(_scrollTarget, this).addEventListener('scroll', this._checkTimer);
+    _classPrivateFieldSet(_inactivityTime, this, inactivityTime);
+  }
+  return _createClass(TinyAfterScrollWatcher, [{
+    key: "inactivityTime",
+    get:
+    /**
+     * Gets the current inactivity time in milliseconds.
+     * @returns {number}
+     */
+    function get() {
+      return _classPrivateFieldGet(_inactivityTime, this);
+    }
+    /**
+     * Sets a new inactivity time.
+     * Must be a positive number (in milliseconds).
+     * @param {number} value
+     * @throws {Error} If value is not a positive number
+     */,
+    set: function set(value) {
+      if (typeof value !== 'number' || value <= 0 || !Number.isFinite(value)) throw new Error('inactivityTime must be a positive number in milliseconds.');
+      _classPrivateFieldSet(_inactivityTime, this, value);
+    }
+  }, {
+    key: "doAfterScroll",
+    value:
+    /**
+     * Adds a function to be executed after scroll has stopped.
+     * The scroll is considered "stopped" after the configured inactivity time.
+     *
+     * @param {() => void} fn - A function to execute once scrolling has stopped.
+     * @throws {TypeError} If the argument is not a function.
+     */
+    function doAfterScroll(fn) {
+      if (typeof fn !== 'function') throw new TypeError('Argument must be a function.');
+      this.lastScrollTime = Date.now();
+      _classPrivateFieldGet(_afterScrollQueue, this).push(fn);
+    }
+    /**
+     * Registers a function to run once after scrolling has stopped,
+     * before any afterScrollQueue functions.
+     *
+     * @param {FnData} fn - A function to execute after scroll stop.
+     * @throws {TypeError} If the argument is not a function.
+     */
+  }, {
+    key: "onStop",
+    value: function onStop(fn) {
+      if (typeof fn !== 'function') throw new TypeError('Argument must be a function.');
+      _classPrivateFieldGet(_onStopListeners, this).add(fn);
+    }
+    /**
+     * Removes a previously registered onStop function.
+     *
+     * @param {FnData} fn - The function to remove.
+     * @throws {TypeError} If the argument is not a function.
+     */
+  }, {
+    key: "offStop",
+    value: function offStop(fn) {
+      if (typeof fn !== 'function') throw new TypeError('Argument must be a function.');
+      _classPrivateFieldGet(_onStopListeners, this)["delete"](fn);
+    }
+    /**
+     * Registers an external scroll listener on the tracked element.
+     *
+     * @param {OnScrollFunc} fn - The scroll listener to add
+     * @throws {TypeError} If the argument is not a function.
+     */
+  }, {
+    key: "onScroll",
+    value: function onScroll(fn) {
+      if (typeof fn !== 'function') throw new TypeError('Argument must be a function.');
+      _classPrivateFieldGet(_scrollTarget, this).addEventListener('scroll', fn);
+      _classPrivateFieldGet(_externalScrollListeners, this).add(fn);
+    }
+    /**
+     * Removes a previously registered scroll listener from the tracked element.
+     *
+     * @param {OnScrollFunc} fn - The scroll listener to remove
+     * @throws {TypeError} If the argument is not a function.
+     */
+  }, {
+    key: "offScroll",
+    value: function offScroll(fn) {
+      if (typeof fn !== 'function') throw new TypeError('Argument must be a function.');
+      if (_classPrivateFieldGet(_externalScrollListeners, this).has(fn)) {
+        _classPrivateFieldGet(_scrollTarget, this).removeEventListener('scroll', fn);
+        _classPrivateFieldGet(_externalScrollListeners, this)["delete"](fn);
+      }
+    }
+    /**
+     * Destroys the watcher by removing internal listeners and clearing data.
+     */
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      if (_classPrivateFieldGet(_destroyed, this)) return;
+      _classPrivateFieldSet(_destroyed, this, true);
+      _classPrivateFieldGet(_scrollTarget, this).removeEventListener('scroll', this._checkTimer);
+      var _iterator = _createForOfIteratorHelper(_classPrivateFieldGet(_externalScrollListeners, this)),
+        _step;
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var fn = _step.value;
+          _classPrivateFieldGet(_scrollTarget, this).removeEventListener('scroll', fn);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+      _classPrivateFieldGet(_externalScrollListeners, this).clear();
+      _classPrivateFieldGet(_onStopListeners, this).clear();
+    }
+  }]);
+}();
+function _checkQueue() {
+  if (_classPrivateFieldGet(_destroyed, this)) return;
+  // Runs all onStop first listeners
+  var _iterator2 = _createForOfIteratorHelper(_classPrivateFieldGet(_onStopListeners, this)),
+    _step2;
+  try {
+    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+      var _fn = _step2.value;
+      if (typeof _fn === 'function') _fn();
+    }
+    // Then execute the queue afterScrollQueue
+  } catch (err) {
+    _iterator2.e(err);
+  } finally {
+    _iterator2.f();
+  }
+  while (_classPrivateFieldGet(_afterScrollQueue, this).length) {
+    var fn = _classPrivateFieldGet(_afterScrollQueue, this).pop();
+    if (typeof fn === 'function') fn();
+  }
+}
+var _default = exports["default"] = TinyAfterScrollWatcher;
+
+},{}],741:[function(require,module,exports){
 arguments[4][704][0].apply(exports,arguments)
-},{"dup":704}],739:[function(require,module,exports){
+},{"dup":704}],742:[function(require,module,exports){
 arguments[4][705][0].apply(exports,arguments)
-},{"dup":705}],740:[function(require,module,exports){
-arguments[4][706][0].apply(exports,arguments)
-},{"../basics/html.mjs":730,"../basics/objFilter.mjs":731,"dup":706}],741:[function(require,module,exports){
+},{"dup":705}],743:[function(require,module,exports){
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _TinyHtml = _interopRequireDefault(require("./TinyHtml.mjs"));
+var TinyCollision = _interopRequireWildcard(require("../basics/collision.mjs"));
+var _objFilter = require("../basics/objFilter.mjs");
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _classPrivateMethodInitSpec(e, a) { _checkPrivateRedeclaration(e, a), a.add(e); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+/**
+ * @typedef {Object} VibrationPatterns
+ * @property {number[]|false} start - Pattern to vibrate on start
+ * @property {number[]|false} end - Pattern to vibrate on end
+ * @property {number[]|false} collide - Pattern to vibrate on collision
+ * @property {number[]|false} move - Pattern to vibrate while moving
+ */
+/**
+ * TinyDragger enables drag-and-drop functionality for a DOM element.
+ * It supports jail boundaries, optional collision detection, vibration feedback,
+ * automatic reverting, proxy dragging, and event dispatching.
+ */
+var _enabled = /*#__PURE__*/new WeakMap();
+var _destroyed = /*#__PURE__*/new WeakMap();
+var _offsetY = /*#__PURE__*/new WeakMap();
+var _offsetX = /*#__PURE__*/new WeakMap();
+var _mirrorElem = /*#__PURE__*/new WeakMap();
+var _multiCollision = /*#__PURE__*/new WeakMap();
+var _lockInsideJail = /*#__PURE__*/new WeakMap();
+var _revertOnDrop = /*#__PURE__*/new WeakMap();
+var _dragging = /*#__PURE__*/new WeakMap();
+var _collisionByMouse = /*#__PURE__*/new WeakMap();
+var _dropInJailOnly = /*#__PURE__*/new WeakMap();
+var _lastCollision = /*#__PURE__*/new WeakMap();
+var _collidables = /*#__PURE__*/new WeakMap();
+var _dragProxy = /*#__PURE__*/new WeakMap();
+var _vibration = /*#__PURE__*/new WeakMap();
+var _jail = /*#__PURE__*/new WeakMap();
+var _target = /*#__PURE__*/new WeakMap();
+var _dragHiddenClass = /*#__PURE__*/new WeakMap();
+var _classDragging = /*#__PURE__*/new WeakMap();
+var _classBodyDragging = /*#__PURE__*/new WeakMap();
+var _classJailDragging = /*#__PURE__*/new WeakMap();
+var _classJailDragDisabled = /*#__PURE__*/new WeakMap();
+var _classDragCollision = /*#__PURE__*/new WeakMap();
+var _defaultZIndex = /*#__PURE__*/new WeakMap();
+var _TinyDragger_brand = /*#__PURE__*/new WeakSet();
+var _collisionsMarked = /*#__PURE__*/new WeakMap();
+var TinyDragger = /*#__PURE__*/function () {
+  /** @typedef {(event: TouchEvent) => void} TouchDragEvent */
+  /**
+   * @param {HTMLElement|TinyHtml} targetElement - The element to make draggable.
+   * @param {Object} [options={}] - Configuration options.
+   * @param {HTMLElement} [options.jail] - Optional container to restrict dragging within.
+   * @param {boolean} [options.mirrorElem=true] - Use a visual clone instead of dragging the original element.
+   * @param {number} [options.defaultZIndex] - Sets the z-index value applied when dragging starts.
+   * @param {boolean} [options.collisionByMouse=false] - Use mouse position for collision instead of element rect.
+   * @param {string} [options.classDragging='dragging'] - CSS class applied to the clone during dragging.
+   * @param {string} [options.classBodyDragging='drag-active'] - CSS class applied to <body> during dragging.
+   * @param {string} [options.classJailDragging='jail-drag-active'] - CSS class applied to jail element during drag.
+   * @param {string} [options.classJailDragDisabled='jail-drag-disabled'] - CSS class applied to jail element disabled.
+   * @param {string} [options.classDragCollision='dragging-collision'] - CSS class applied to collision element.
+   * @param {boolean} [options.lockInsideJail=false] - Restrict movement within the jail container.
+   * @param {boolean} [options.dropInJailOnly=false] - Restrict drop within the jail container.
+   * @param {boolean} [options.multiCollision=false] - Enables returning multiple collided elements.
+   * @param {VibrationPatterns|false} [options.vibration=false] - Vibration feedback configuration.
+   * @param {boolean} [options.revertOnDrop=false] - Whether to return to original position on drop.
+   * @param {string} [options.classHidden='drag-hidden'] - CSS class to hide original element during dragging.
+   * @throws {Error} If any option has an invalid type.
+   */
+  function TinyDragger(targetElement) {
+    var _this = this;
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    _classCallCheck(this, TinyDragger);
+    /**
+     * Handles the start of a drag event.
+     * @param {MouseEvent|Touch} event - The initiating event.
+     */
+    _classPrivateMethodInitSpec(this, _TinyDragger_brand);
+    _classPrivateFieldInitSpec(this, _enabled, true);
+    _classPrivateFieldInitSpec(this, _destroyed, false);
+    _classPrivateFieldInitSpec(this, _offsetY, 0);
+    _classPrivateFieldInitSpec(this, _offsetX, 0);
+    _classPrivateFieldInitSpec(this, _mirrorElem, true);
+    _classPrivateFieldInitSpec(this, _multiCollision, false);
+    _classPrivateFieldInitSpec(this, _lockInsideJail, false);
+    _classPrivateFieldInitSpec(this, _revertOnDrop, false);
+    _classPrivateFieldInitSpec(this, _dragging, false);
+    _classPrivateFieldInitSpec(this, _collisionByMouse, false);
+    _classPrivateFieldInitSpec(this, _dropInJailOnly, false);
+    /** @type {HTMLElement|null} */
+    _classPrivateFieldInitSpec(this, _lastCollision, null);
+    /** @type {HTMLElement[]} */
+    _classPrivateFieldInitSpec(this, _collidables, []);
+    /** @type {HTMLElement|null} */
+    _classPrivateFieldInitSpec(this, _dragProxy, null);
+    /** @type {VibrationPatterns} */
+    _classPrivateFieldInitSpec(this, _vibration, {
+      start: false,
+      end: false,
+      collide: false,
+      move: false
+    });
+    /** @type {HTMLElement|null} */
+    _classPrivateFieldInitSpec(this, _jail, null);
+    /** @type {HTMLElement} */
+    _classPrivateFieldInitSpec(this, _target, void 0);
+    _classPrivateFieldInitSpec(this, _dragHiddenClass, 'drag-hidden');
+    _classPrivateFieldInitSpec(this, _classDragging, 'dragging');
+    _classPrivateFieldInitSpec(this, _classBodyDragging, 'drag-active');
+    _classPrivateFieldInitSpec(this, _classJailDragging, 'jail-drag-active');
+    _classPrivateFieldInitSpec(this, _classJailDragDisabled, 'jail-drag-disabled');
+    _classPrivateFieldInitSpec(this, _classDragCollision, 'dragging-collision');
+    _classPrivateFieldInitSpec(this, _defaultZIndex, 9999);
+    /** @type {HTMLElement[]} */
+    _classPrivateFieldInitSpec(this, _collisionsMarked, []);
+    var targetElem = !(targetElement instanceof _TinyHtml["default"]) ? targetElement : targetElement.get();
+    if (!(targetElem instanceof HTMLElement)) throw new Error('TinyDragger requires a valid target HTMLElement to initialize.');
+    _classPrivateFieldSet(_target, this, targetElem);
+    // === Validations ===
+    if (options.jail !== undefined && !(options.jail instanceof HTMLElement)) throw new Error('The "jail" option must be an HTMLElement if provided.');
+    if (options.defaultZIndex !== undefined) this.setDefaultZIndex(options.defaultZIndex);
+    if (options.vibration !== undefined && options.vibration !== false && !(0, _objFilter.isJsonObject)(options.vibration)) throw new Error('The "vibration" option must be an object or false.');
+    /**
+     * @param {any} val
+     * @param {string} name
+     */
+    var validateBoolean = function validateBoolean(val, name) {
+      if (val !== undefined && typeof val !== 'boolean') {
+        throw new Error("The \"".concat(name, "\" option must be a boolean."));
+      }
+    };
+    /**
+     * @param {any} val
+     * @param {string} name
+     */
+    var validateString = function validateString(val, name) {
+      if (val !== undefined && typeof val !== 'string') {
+        throw new Error("The \"".concat(name, "\" option must be a string."));
+      }
+    };
+    validateBoolean(options.mirrorElem, 'mirrorElem');
+    validateBoolean(options.collisionByMouse, 'collisionByMouse');
+    validateBoolean(options.lockInsideJail, 'lockInsideJail');
+    validateBoolean(options.dropInJailOnly, 'dropInJailOnly');
+    validateBoolean(options.revertOnDrop, 'revertOnDrop');
+    validateBoolean(options.multiCollision, 'multiCollision');
+    validateString(options.classDragging, 'classDragging');
+    validateString(options.classBodyDragging, 'classBodyDragging');
+    validateString(options.classJailDragging, 'classJailDragging');
+    validateString(options.classJailDragDisabled, 'classJailDragDisabled');
+    validateString(options.classDragCollision, 'classDragCollision');
+    validateString(options.classHidden, 'classHidden');
+    if (options.jail instanceof HTMLElement) _classPrivateFieldSet(_jail, this, options.jail);
+    /** @type {VibrationPatterns} */
+    var vibrationTemplate = {
+      start: false,
+      end: false,
+      collide: false,
+      move: false
+    };
+    _classPrivateFieldSet(_vibration, this, Object.assign(vibrationTemplate, (0, _objFilter.isJsonObject)(options.vibration) ? options.vibration : {}));
+    if (typeof options.classDragging === 'string') _classPrivateFieldSet(_classDragging, this, options.classDragging);
+    if (typeof options.classBodyDragging === 'string') _classPrivateFieldSet(_classBodyDragging, this, options.classBodyDragging);
+    if (typeof options.classJailDragging === 'string') _classPrivateFieldSet(_classJailDragging, this, options.classJailDragging);
+    if (typeof options.classJailDragDisabled === 'string') _classPrivateFieldSet(_classJailDragDisabled, this, options.classJailDragDisabled);
+    if (typeof options.classHidden === 'string') _classPrivateFieldSet(_dragHiddenClass, this, options.classHidden);
+    if (typeof options.classDragCollision === 'string') _classPrivateFieldSet(_classDragCollision, this, options.classDragCollision);
+    if (typeof options.collisionByMouse === 'boolean') _classPrivateFieldSet(_collisionByMouse, this, options.collisionByMouse);
+    if (typeof options.mirrorElem === 'boolean') _classPrivateFieldSet(_mirrorElem, this, options.mirrorElem);
+    if (typeof options.revertOnDrop === 'boolean') _classPrivateFieldSet(_revertOnDrop, this, options.revertOnDrop);
+    if (typeof options.lockInsideJail === 'boolean') _classPrivateFieldSet(_lockInsideJail, this, options.lockInsideJail);
+    if (typeof options.dropInJailOnly === 'boolean') _classPrivateFieldSet(_dropInJailOnly, this, options.dropInJailOnly);
+    if (typeof options.multiCollision === 'boolean') _classPrivateFieldSet(_multiCollision, this, options.multiCollision);
+    /** @private */
+    this._onMouseDown = _assertClassBrand(_TinyDragger_brand, this, _startDrag).bind(this);
+    /** @private */
+    this._onMouseMove = _assertClassBrand(_TinyDragger_brand, this, _drag).bind(this);
+    /** @private */
+    this._onMouseUp = _assertClassBrand(_TinyDragger_brand, this, _endDrag).bind(this);
+    /**
+     * @type {TouchDragEvent}
+     * @private
+     */
+    this._onTouchStart = function (e) {
+      return _assertClassBrand(_TinyDragger_brand, _this, _startDrag).call(_this, e.touches[0]);
+    };
+    /**
+     * @type {TouchDragEvent}
+     * @private
+     */
+    this._onTouchMove = function (e) {
+      return _assertClassBrand(_TinyDragger_brand, _this, _drag).call(_this, e.touches[0]);
+    };
+    /**
+     * @type {TouchDragEvent}
+     * @private
+     */
+    this._onTouchEnd = function (e) {
+      return _assertClassBrand(_TinyDragger_brand, _this, _endDrag).call(_this, e.changedTouches[0]);
+    };
+    _classPrivateFieldGet(_target, this).addEventListener('mousedown', this._onMouseDown);
+    _classPrivateFieldGet(_target, this).addEventListener('touchstart', this._onTouchStart, {
+      passive: false
+    });
+  }
+  /**
+   * Enables the drag functionality.
+   */
+  return _createClass(TinyDragger, [{
+    key: "enable",
+    value: function enable() {
+      _assertClassBrand(_TinyDragger_brand, this, _checkDestroy).call(this);
+      if (_classPrivateFieldGet(_jail, this)) _classPrivateFieldGet(_jail, this).classList.add(_classPrivateFieldGet(_classJailDragDisabled, this));
+      _classPrivateFieldSet(_enabled, this, true);
+    }
+    /**
+     * Disables the drag functionality.
+     */
+  }, {
+    key: "disable",
+    value: function disable() {
+      if (_classPrivateFieldGet(_jail, this)) _classPrivateFieldGet(_jail, this).classList.remove(_classPrivateFieldGet(_classJailDragDisabled, this));
+      _classPrivateFieldSet(_enabled, this, false);
+    }
+    /**
+     * Adds an element to be considered for collision detection.
+     * @param {HTMLElement} element - The element to track collisions with.
+     * @throws {Error} If the element is not a valid HTMLElement.
+     */
+  }, {
+    key: "addCollidable",
+    value: function addCollidable(element) {
+      _assertClassBrand(_TinyDragger_brand, this, _checkDestroy).call(this);
+      if (!(element instanceof HTMLElement)) throw new Error('addCollidable expects an HTMLElement as argument.');
+      if (!_classPrivateFieldGet(_collidables, this).includes(element)) _classPrivateFieldGet(_collidables, this).push(element);
+    }
+    /**
+     * Removes a collidable element from the tracking list.
+     * @param {HTMLElement} element - The element to remove.
+     * @throws {Error} If the element is not a valid HTMLElement.
+     */
+  }, {
+    key: "removeCollidable",
+    value: function removeCollidable(element) {
+      _assertClassBrand(_TinyDragger_brand, this, _checkDestroy).call(this);
+      if (!(element instanceof HTMLElement)) throw new Error('removeCollidable expects an HTMLElement as argument.');
+      _classPrivateFieldSet(_collidables, this, _classPrivateFieldGet(_collidables, this).filter(function (el) {
+        return el !== element;
+      }));
+    }
+    /**
+     * Sets vibration patterns for drag events.
+     * @param {Object} [param0={}] - Vibration pattern configuration.
+     * @param {number[]|false} [param0.startPattern=false] - Vibration on drag start.
+     * @param {number[]|false} [param0.endPattern=false] - Vibration on drag end.
+     * @param {number[]|false} [param0.collidePattern=false] - Vibration on collision.
+     * @param {number[]|false} [param0.movePattern=false] - Vibration during movement.
+     * @throws {Error} If any pattern is not false or an array of numbers.
+     */
+  }, {
+    key: "setVibrationPattern",
+    value: function setVibrationPattern() {
+      var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        _ref$startPattern = _ref.startPattern,
+        startPattern = _ref$startPattern === void 0 ? false : _ref$startPattern,
+        _ref$endPattern = _ref.endPattern,
+        endPattern = _ref$endPattern === void 0 ? false : _ref$endPattern,
+        _ref$collidePattern = _ref.collidePattern,
+        collidePattern = _ref$collidePattern === void 0 ? false : _ref$collidePattern,
+        _ref$movePattern = _ref.movePattern,
+        movePattern = _ref$movePattern === void 0 ? false : _ref$movePattern;
+      _assertClassBrand(_TinyDragger_brand, this, _checkDestroy).call(this);
+      /** @param {any} value */
+      var isValidPattern = function isValidPattern(value) {
+        return value === false || Array.isArray(value) && value.every(function (n) {
+          return typeof n === 'number';
+        });
+      };
+      if (!isValidPattern(startPattern)) throw new Error('Invalid "startPattern": must be false or an array of numbers.');
+      if (!isValidPattern(endPattern)) throw new Error('Invalid "endPattern": must be false or an array of numbers.');
+      if (!isValidPattern(collidePattern)) throw new Error('Invalid "collidePattern": must be false or an array of numbers.');
+      if (!isValidPattern(movePattern)) throw new Error('Invalid "movePattern": must be false or an array of numbers.');
+      _classPrivateFieldSet(_vibration, this, {
+        start: startPattern,
+        end: endPattern,
+        collide: collidePattern,
+        move: movePattern
+      });
+    }
+    /**
+     * Disables all vibration feedback.
+     */
+  }, {
+    key: "disableVibration",
+    value: function disableVibration() {
+      _assertClassBrand(_TinyDragger_brand, this, _checkDestroy).call(this);
+      _classPrivateFieldSet(_vibration, this, {
+        start: false,
+        end: false,
+        collide: false,
+        move: false
+      });
+    }
+    /**
+     * Calculates the cursor offset relative to the top-left of the target element.
+     * @param {MouseEvent|Touch} event - The mouse or touch event.
+     * @returns {{x: number, y: number}} The offset in pixels.
+     * @throws {Error} If event is not a MouseEvent or Touch with clientX/clientY.
+     */
+  }, {
+    key: "getOffset",
+    value: function getOffset(event) {
+      _assertClassBrand(_TinyDragger_brand, this, _checkDestroy).call(this);
+      if (!(event instanceof MouseEvent) && !(event instanceof Touch) || typeof event.clientX !== 'number' || typeof event.clientY !== 'number') throw new Error('getOffset expects an event with valid clientX and clientY coordinates.');
+      var targetRect = _classPrivateFieldGet(_target, this).getBoundingClientRect();
+      var _TinyHtml$borderWidth = _TinyHtml["default"].borderWidth(_classPrivateFieldGet(_target, this)),
+        borderLeft = _TinyHtml$borderWidth.left,
+        borderTop = _TinyHtml$borderWidth.top;
+      return {
+        x: event.clientX - targetRect.left + borderLeft,
+        y: event.clientY - targetRect.top + borderTop
+      };
+    }
+  }, {
+    key: "checkDragCollision",
+    value:
+    /**
+     * Handles dragging collision.
+     * @param {MouseEvent|Touch} event - The drag event.
+     */
+    function checkDragCollision(event) {
+      var _this2 = this;
+      var _this$execCollision = this.execCollision(event),
+        collidedElements = _this$execCollision.collidedElements;
+      var first = collidedElements[0] || null;
+      // Removes old marking if necessary
+      if (_classPrivateFieldGet(_lastCollision, this) && !collidedElements.includes(_classPrivateFieldGet(_lastCollision, this))) {
+        _assertClassBrand(_TinyDragger_brand, this, _removeCollision).call(this);
+      }
+      // Adds Marking for All Colluded
+      collidedElements.forEach(function (el) {
+        return _assertClassBrand(_TinyDragger_brand, _this2, _addCollision).call(_this2, el);
+      });
+      // Removes markings from who no longer collided
+      _classPrivateFieldGet(_collidables, this).forEach(function (el) {
+        if (!collidedElements.includes(el)) {
+          el.classList.remove(_classPrivateFieldGet(_classDragCollision, _this2));
+        }
+      });
+      if (navigator.vibrate && Array.isArray(_classPrivateFieldGet(_vibration, this).collide) && collidedElements.length > 0) {
+        navigator.vibrate(_classPrivateFieldGet(_vibration, this).collide);
+      }
+      _classPrivateFieldSet(_lastCollision, this, first);
+    }
+    /**
+     * Handles dragging movement.
+     * @param {MouseEvent|Touch} event - The drag event.
+     */
+  }, {
+    key: "execCollision",
+    value:
+    /**
+     * Handles the collision of a drag.
+     * @param {MouseEvent|Touch} event - The release event.
+     * @returns {{ inJail: boolean; collidedElements: (HTMLElement | null)[] }}
+     */
+    function execCollision(event) {
+      var _classPrivateFieldGet2;
+      if (_classPrivateFieldGet(_destroyed, this) || !_classPrivateFieldGet(_dragProxy, this)) return {
+        inJail: false,
+        collidedElements: []
+      };
+      var collidedElements = [];
+      var inJail = true;
+      var jailRect = (_classPrivateFieldGet2 = _classPrivateFieldGet(_jail, this)) === null || _classPrivateFieldGet2 === void 0 ? void 0 : _classPrivateFieldGet2.getBoundingClientRect();
+      if (_classPrivateFieldGet(_collisionByMouse, this)) {
+        var x = event.clientX;
+        var y = event.clientY;
+        if (_classPrivateFieldGet(_dropInJailOnly, this) && _classPrivateFieldGet(_jail, this) && jailRect) {
+          inJail = x >= jailRect.left && x <= jailRect.right && y >= jailRect.top && y <= jailRect.bottom;
+        }
+        collidedElements = inJail ? _classPrivateFieldGet(_multiCollision, this) ? this.getAllCollidedElements(x, y) : [this.getCollidedElement(x, y)].filter(Boolean) : [];
+      } else {
+        var rect = _classPrivateFieldGet(_dragProxy, this).getBoundingClientRect();
+        if (_classPrivateFieldGet(_dropInJailOnly, this) && _classPrivateFieldGet(_jail, this) && jailRect) {
+          inJail = rect.left >= jailRect.left && rect.right <= jailRect.right && rect.top >= jailRect.top && rect.bottom <= jailRect.bottom;
+        }
+        collidedElements = inJail ? _classPrivateFieldGet(_multiCollision, this) ? this.getAllCollidedElementsByRect(rect) : [this.getCollidedElementByRect(rect)].filter(Boolean) : [];
+      }
+      return {
+        inJail: inJail,
+        collidedElements: collidedElements
+      };
+    }
+    /**
+     * Handles the end of a drag.
+     * @param {MouseEvent|Touch} event - The release event.
+     */
+  }, {
+    key: "getAllCollidedElementsByRect",
+    value:
+    /**
+     * Returns all elements currently colliding with the given rectangle.
+     *
+     * @param {DOMRect} rect - Bounding rectangle of the dragged proxy.
+     * @returns {HTMLElement[]} A list of all collided elements.
+     * @throws {Error} If the input is not a valid DOMRect with numeric bounds.
+     */
+    function getAllCollidedElementsByRect(rect) {
+      var _this3 = this;
+      _assertClassBrand(_TinyDragger_brand, this, _checkDestroy).call(this);
+      if (!(rect instanceof DOMRect) || typeof rect.left !== 'number' || typeof rect.right !== 'number' || typeof rect.top !== 'number' || typeof rect.bottom !== 'number') throw new Error('getCollidedElementByRect expects a valid DOMRect object.');
+      return _classPrivateFieldGet(_collidables, this).filter(function (el) {
+        return _assertClassBrand(_TinyDragger_brand, _this3, _getCollidedElementByRect).call(_this3, el, rect);
+      });
+    }
+    /**
+     * Detects collision based on rectangle intersection.
+     * @param {DOMRect} rect - Bounding rectangle of the dragged proxy.
+     * @returns {HTMLElement|null} The collided element or null.
+     * @throws {Error} If rect is not a DOMRect with valid numeric properties.
+     */
+  }, {
+    key: "getCollidedElementByRect",
+    value: function getCollidedElementByRect(rect) {
+      var _this4 = this;
+      _assertClassBrand(_TinyDragger_brand, this, _checkDestroy).call(this);
+      if (!(rect instanceof DOMRect) || typeof rect.left !== 'number' || typeof rect.right !== 'number' || typeof rect.top !== 'number' || typeof rect.bottom !== 'number') throw new Error('getCollidedElementByRect expects a valid DOMRect object.');
+      return _classPrivateFieldGet(_collidables, this).find(function (el) {
+        return _assertClassBrand(_TinyDragger_brand, _this4, _getCollidedElementByRect).call(_this4, el, rect);
+      }) || null;
+    }
+    /**
+     * Checks whether a given (x, y) coordinate is inside the bounding rectangle of an element.
+     *
+     * @param {HTMLElement} el - The element to test for collision.
+     * @param {number} x - Horizontal screen coordinate.
+     * @param {number} y - Vertical screen coordinate.
+     * @returns {boolean} True if the point is within the element's bounds.
+     */
+  }, {
+    key: "getAllCollidedElements",
+    value:
+    /**
+     * @param {number} x - Horizontal screen coordinate.
+     * @param {number} y - Vertical screen coordinate.
+     * @returns {HTMLElement[]} The collided element or null.
+     */
+    function getAllCollidedElements(x, y) {
+      var _this5 = this;
+      _assertClassBrand(_TinyDragger_brand, this, _checkDestroy).call(this);
+      if (typeof x !== 'number' || typeof y !== 'number') throw new Error('getCollidedElement expects numeric x and y coordinates.');
+      return _classPrivateFieldGet(_collidables, this).filter(function (el) {
+        return _assertClassBrand(_TinyDragger_brand, _this5, _getCollidedElement).call(_this5, el, x, y);
+      });
+    }
+    /**
+     * Detects collision with a point using element bounding rectangles.
+     * @param {number} x - Horizontal screen coordinate.
+     * @param {number} y - Vertical screen coordinate.
+     * @returns {HTMLElement|null} The collided element or null.
+     */
+  }, {
+    key: "getCollidedElement",
+    value: function getCollidedElement(x, y) {
+      var _this6 = this;
+      _assertClassBrand(_TinyDragger_brand, this, _checkDestroy).call(this);
+      if (typeof x !== 'number' || typeof y !== 'number') throw new Error('getCollidedElement expects numeric x and y coordinates.');
+      return _classPrivateFieldGet(_collidables, this).find(function (el) {
+        return _assertClassBrand(_TinyDragger_brand, _this6, _getCollidedElement).call(_this6, el, x, y);
+      }) || null;
+    }
+    /**
+     * Dispatches a custom event from the target element.
+     * @param {string} type - The event name.
+     */
+  }, {
+    key: "getDragging",
+    value:
+    /**
+     * Gets whether dragging is currently active.
+     * @returns {boolean}
+     */
+    function getDragging() {
+      return _classPrivateFieldGet(_dragging, this);
+    }
+    /**
+     * Gets whether movement is restricted inside the jail container.
+     * @returns {boolean}
+     */
+  }, {
+    key: "getLockInsideJail",
+    value: function getLockInsideJail() {
+      return _classPrivateFieldGet(_lockInsideJail, this);
+    }
+    /**
+     * Sets whether movement is restricted inside the jail container.
+     * @param {boolean} value
+     */
+  }, {
+    key: "setLockInsideJail",
+    value: function setLockInsideJail(value) {
+      if (typeof value !== 'boolean') throw new Error('lockInsideJail must be a boolean.');
+      _classPrivateFieldSet(_lockInsideJail, this, value);
+    }
+    /**
+     * Gets whether the element should revert to original position on drop.
+     * @returns {boolean}
+     */
+  }, {
+    key: "getRevertOnDrop",
+    value: function getRevertOnDrop() {
+      return _classPrivateFieldGet(_revertOnDrop, this);
+    }
+    /**
+     * Sets whether the element should revert to original position on drop.
+     * @param {boolean} value
+     */
+  }, {
+    key: "setRevertOnDrop",
+    value: function setRevertOnDrop(value) {
+      if (typeof value !== 'boolean') throw new Error('revertOnDrop must be a boolean.');
+      _classPrivateFieldSet(_revertOnDrop, this, value);
+    }
+    /**
+     * Gets whether collision detection uses mouse position.
+     * @returns {boolean}
+     */
+  }, {
+    key: "getCollisionByMouse",
+    value: function getCollisionByMouse() {
+      return _classPrivateFieldGet(_collisionByMouse, this);
+    }
+    /**
+     * Sets whether collision detection uses mouse position.
+     * @param {boolean} value
+     */
+  }, {
+    key: "setCollisionByMouse",
+    value: function setCollisionByMouse(value) {
+      if (typeof value !== 'boolean') throw new Error('collisionByMouse must be a boolean.');
+      _classPrivateFieldSet(_collisionByMouse, this, value);
+    }
+    /**
+     * Gets whether dropping is restricted inside the jail container.
+     * @returns {boolean}
+     */
+  }, {
+    key: "getDropInJailOnly",
+    value: function getDropInJailOnly() {
+      return _classPrivateFieldGet(_dropInJailOnly, this);
+    }
+    /**
+     * Sets whether dropping is restricted inside the jail container.
+     * @param {boolean} value
+     */
+  }, {
+    key: "setDropInJailOnly",
+    value: function setDropInJailOnly(value) {
+      if (typeof value !== 'boolean') throw new Error('dropInJailOnly must be a boolean.');
+      _classPrivateFieldSet(_dropInJailOnly, this, value);
+    }
+    /**
+     * Returns the current default z-index used for draggable items.
+     * @returns {number}
+     */
+  }, {
+    key: "getDefaultZIndex",
+    value: function getDefaultZIndex() {
+      return _classPrivateFieldGet(_defaultZIndex, this);
+    }
+    /**
+     * Sets a new default z-index for draggable items.
+     * @param {number} newZIndex
+     */
+  }, {
+    key: "setDefaultZIndex",
+    value: function setDefaultZIndex(newZIndex) {
+      if (typeof newZIndex !== 'number' || !Number.isFinite(newZIndex)) throw new TypeError('Z-index must be a finite number.');
+      _classPrivateFieldSet(_defaultZIndex, this, newZIndex);
+    }
+    /**
+     * Returns whether the draggable element is mirrored or the original.
+     * @returns {boolean}
+     */
+  }, {
+    key: "isMirrorEnabled",
+    value: function isMirrorEnabled() {
+      return _classPrivateFieldGet(_mirrorElem, this);
+    }
+    /**
+     * Sets whether the draggable element should be a mirror or the original.
+     * @param {boolean} useMirror
+     */
+  }, {
+    key: "setMirrorEnabled",
+    value: function setMirrorEnabled(useMirror) {
+      if (typeof useMirror !== 'boolean') throw new TypeError('Mirror setting must be a boolean.');
+      _classPrivateFieldSet(_mirrorElem, this, useMirror);
+    }
+    /**
+     * Returns the original target element being dragged.
+     * @returns {HTMLElement}
+     */
+  }, {
+    key: "getTarget",
+    value: function getTarget() {
+      return _classPrivateFieldGet(_target, this);
+    }
+    /**
+     * Returns the current jail container (if any).
+     * @returns {HTMLElement|null}
+     */
+  }, {
+    key: "getJail",
+    value: function getJail() {
+      return _classPrivateFieldGet(_jail, this);
+    }
+    /**
+     * Returns the current proxy element being dragged (if any).
+     * @returns {HTMLElement|null}
+     */
+  }, {
+    key: "getDragProxy",
+    value: function getDragProxy() {
+      return _classPrivateFieldGet(_dragProxy, this);
+    }
+    /**
+     * Returns the last collided element (if any).
+     * @returns {HTMLElement|null}
+     */
+  }, {
+    key: "getLastCollision",
+    value: function getLastCollision() {
+      return _classPrivateFieldGet(_lastCollision, this);
+    }
+    /**
+     * Returns all registered collidable elements.
+     * @returns {HTMLElement[]}
+     */
+  }, {
+    key: "getCollidables",
+    value: function getCollidables() {
+      return _toConsumableArray(_classPrivateFieldGet(_collidables, this));
+    }
+    /**
+     * Returns the CSS class used to hide the target during drag.
+     * @returns {string}
+     */
+  }, {
+    key: "getDragHiddenClass",
+    value: function getDragHiddenClass() {
+      return _classPrivateFieldGet(_dragHiddenClass, this);
+    }
+    /**
+     * Returns the CSS class applied to the clone during dragging.
+     * @returns {string}
+     */
+  }, {
+    key: "getClassDragging",
+    value: function getClassDragging() {
+      return _classPrivateFieldGet(_classDragging, this);
+    }
+    /**
+     * Returns the CSS class applied to <body> during dragging.
+     * @returns {string}
+     */
+  }, {
+    key: "getClassBodyDragging",
+    value: function getClassBodyDragging() {
+      return _classPrivateFieldGet(_classBodyDragging, this);
+    }
+    /**
+     * Returns the CSS class applied to the jail during dragging.
+     * @returns {string}
+     */
+  }, {
+    key: "getClassJailDragging",
+    value: function getClassJailDragging() {
+      return _classPrivateFieldGet(_classJailDragging, this);
+    }
+    /**
+     * Returns the CSS class applied to the jail when dragging is disabled.
+     * @returns {string}
+     */
+  }, {
+    key: "getClassJailDragDisabled",
+    value: function getClassJailDragDisabled() {
+      return _classPrivateFieldGet(_classJailDragDisabled, this);
+    }
+    /**
+     * Returns the CSS class applied to a collided element.
+     * @returns {string}
+     */
+  }, {
+    key: "getClassDragCollision",
+    value: function getClassDragCollision() {
+      return _classPrivateFieldGet(_classDragCollision, this);
+    }
+    /**
+     * Returns the full vibration configuration.
+     * @returns {VibrationPatterns}
+     */
+  }, {
+    key: "getVibrations",
+    value: function getVibrations() {
+      return _objectSpread({}, _classPrivateFieldGet(_vibration, this));
+    }
+    /**
+     * Returns the vibration pattern for drag start.
+     * @returns {number[]|boolean}
+     */
+  }, {
+    key: "getStartVibration",
+    value: function getStartVibration() {
+      return _classPrivateFieldGet(_vibration, this).start;
+    }
+    /**
+     * Returns the vibration pattern for drag end.
+     * @returns {number[]|boolean}
+     */
+  }, {
+    key: "getEndVibration",
+    value: function getEndVibration() {
+      return _classPrivateFieldGet(_vibration, this).end;
+    }
+    /**
+     * Returns the vibration pattern for collisions.
+     * @returns {number[]|boolean}
+     */
+  }, {
+    key: "getCollideVibration",
+    value: function getCollideVibration() {
+      return _classPrivateFieldGet(_vibration, this).collide;
+    }
+    /**
+     * Returns the vibration pattern during movement.
+     * @returns {number[]|boolean}
+     */
+  }, {
+    key: "getMoveVibration",
+    value: function getMoveVibration() {
+      return _classPrivateFieldGet(_vibration, this).move;
+    }
+    /**
+     * Returns whether the dragger is currently enabled.
+     * @returns {boolean}
+     */
+  }, {
+    key: "isEnabled",
+    value: function isEnabled() {
+      return _classPrivateFieldGet(_enabled, this);
+    }
+    /**
+     * Internal method to verify if the instance has been destroyed.
+     * Throws an error if any operation is attempted after destruction.
+     */
+  }, {
+    key: "destroy",
+    value:
+    /**
+     * Completely disables drag-and-drop and cleans up all event listeners.
+     * Does NOT remove the original HTML element.
+     */
+    function destroy() {
+      if (_classPrivateFieldGet(_destroyed, this)) return;
+      this.disable();
+      _classPrivateFieldGet(_target, this).removeEventListener('mousedown', this._onMouseDown);
+      _classPrivateFieldGet(_target, this).removeEventListener('touchstart', this._onTouchStart);
+      document.removeEventListener('mousemove', this._onMouseMove);
+      document.removeEventListener('mouseup', this._onMouseUp);
+      document.removeEventListener('touchmove', this._onTouchMove);
+      document.removeEventListener('touchend', this._onTouchEnd);
+      if (_classPrivateFieldGet(_lastCollision, this)) _assertClassBrand(_TinyDragger_brand, this, _removeCollision).call(this);
+      if (_classPrivateFieldGet(_dragProxy, this)) {
+        if (_classPrivateFieldGet(_mirrorElem, this)) _classPrivateFieldGet(_dragProxy, this).remove();else Object.assign(_classPrivateFieldGet(_dragProxy, this).style, {
+          position: '',
+          pointerEvents: '',
+          left: '',
+          top: '',
+          width: '',
+          height: '',
+          zIndex: ''
+        });
+        _classPrivateFieldSet(_dragProxy, this, null);
+      }
+      _classPrivateFieldSet(_collidables, this, []);
+      _classPrivateFieldSet(_dragging, this, false);
+      _classPrivateFieldSet(_lastCollision, this, null);
+      if (_classPrivateFieldGet(_mirrorElem, this)) _classPrivateFieldGet(_target, this).classList.remove(_classPrivateFieldGet(_dragHiddenClass, this));
+      _classPrivateFieldGet(_target, this).classList.remove(_classPrivateFieldGet(_classDragging, this));
+      document.body.classList.remove(_classPrivateFieldGet(_classBodyDragging, this));
+      if (_classPrivateFieldGet(_jail, this)) _classPrivateFieldGet(_jail, this).classList.remove(_classPrivateFieldGet(_classJailDragging, this), _classPrivateFieldGet(_classJailDragDisabled, this));
+      _classPrivateFieldSet(_destroyed, this, true);
+    }
+  }]);
+}();
+function _startDrag(event) {
+  if (event instanceof MouseEvent) event.preventDefault();
+  if (_classPrivateFieldGet(_destroyed, this) || !_classPrivateFieldGet(_enabled, this) || !_classPrivateFieldGet(_target, this).parentElement) return;
+  if (_classPrivateFieldGet(_mirrorElem, this)) {
+    var dragProxy = _classPrivateFieldGet(_target, this).cloneNode(true);
+    if (!(dragProxy instanceof HTMLElement)) throw new Error('[TinyDragger] INVALID DRAG ELEMENT!');
+    _classPrivateFieldSet(_dragProxy, this, dragProxy);
+  } else _classPrivateFieldSet(_dragProxy, this, _classPrivateFieldGet(_target, this));
+  _classPrivateFieldSet(_dragging, this, true);
+  var rect = _classPrivateFieldGet(_target, this).getBoundingClientRect();
+  Object.assign(_classPrivateFieldGet(_dragProxy, this).style, {
+    position: 'absolute',
+    pointerEvents: 'none',
+    left: "".concat(_classPrivateFieldGet(_target, this).offsetLeft, "px"),
+    top: "".concat(_classPrivateFieldGet(_target, this).offsetTop, "px"),
+    width: "".concat(rect.width, "px"),
+    height: "".concat(rect.height, "px"),
+    zIndex: _classPrivateFieldGet(_defaultZIndex, this)
+  });
+  if (_classPrivateFieldGet(_mirrorElem, this)) {
+    _classPrivateFieldGet(_target, this).classList.add(_classPrivateFieldGet(_dragHiddenClass, this));
+    _classPrivateFieldGet(_target, this).parentElement.appendChild(_classPrivateFieldGet(_dragProxy, this));
+  }
+  var _this$getOffset = this.getOffset(event),
+    offsetX = _this$getOffset.x,
+    offsetY = _this$getOffset.y;
+  _classPrivateFieldSet(_offsetX, this, offsetX);
+  _classPrivateFieldSet(_offsetY, this, offsetY);
+  _classPrivateFieldGet(_dragProxy, this).classList.add(_classPrivateFieldGet(_classDragging, this));
+  document.body.classList.add(_classPrivateFieldGet(_classBodyDragging, this));
+  if (_classPrivateFieldGet(_jail, this)) _classPrivateFieldGet(_jail, this).classList.add(_classPrivateFieldGet(_classJailDragging, this));
+  document.addEventListener('mousemove', this._onMouseMove);
+  document.addEventListener('mouseup', this._onMouseUp);
+  document.addEventListener('touchmove', this._onTouchMove, {
+    passive: false
+  });
+  document.addEventListener('touchend', this._onTouchEnd);
+  if (navigator.vibrate && Array.isArray(_classPrivateFieldGet(_vibration, this).start)) {
+    navigator.vibrate(_classPrivateFieldGet(_vibration, this).start);
+  }
+  this.checkDragCollision(event);
+  _assertClassBrand(_TinyDragger_brand, this, _dispatchEvent).call(this, 'drag');
+}
+/**
+ * Marks an element as currently collided by adding the collision CSS class.
+ * The element is stored in an internal list for easy removal later.
+ *
+ * @param {HTMLElement|null} el - The element to mark as collided.
+ */
+function _addCollision(el) {
+  if (!el) return;
+  el.classList.add(_classPrivateFieldGet(_classDragCollision, this));
+  _classPrivateFieldGet(_collisionsMarked, this).push(el);
+}
+/**
+ * Removes the collision CSS class from all previously marked elements.
+ * Also clears the last single collision element, if set.
+ *
+ */
+function _removeCollision() {
+  while (_classPrivateFieldGet(_collisionsMarked, this).length > 0) {
+    var el = _classPrivateFieldGet(_collisionsMarked, this).shift();
+    if (el) el.classList.remove(_classPrivateFieldGet(_classDragCollision, this));
+  }
+  if (!_classPrivateFieldGet(_lastCollision, this)) return;
+  _classPrivateFieldGet(_lastCollision, this).classList.remove(_classPrivateFieldGet(_classDragCollision, this));
+}
+function _drag(event) {
+  if (event instanceof MouseEvent) event.preventDefault();
+  if (_classPrivateFieldGet(_destroyed, this) || !_classPrivateFieldGet(_dragging, this) || !_classPrivateFieldGet(_enabled, this) || !_classPrivateFieldGet(_dragProxy, this)) return;
+  var parent = _classPrivateFieldGet(_dragProxy, this).offsetParent || document.body;
+  var parentRect = parent.getBoundingClientRect();
+  var x = event.clientX - parentRect.left - _classPrivateFieldGet(_offsetX, this);
+  var y = event.clientY - parentRect.top - _classPrivateFieldGet(_offsetY, this);
+  if (_classPrivateFieldGet(_lockInsideJail, this) && _classPrivateFieldGet(_jail, this)) {
+    var jailRect = _classPrivateFieldGet(_jail, this).getBoundingClientRect();
+    var targetRect = _classPrivateFieldGet(_dragProxy, this).getBoundingClientRect();
+    var jailLeft = jailRect.left - parentRect.left;
+    var jailTop = jailRect.top - parentRect.top;
+    var _TinyHtml$borderWidth2 = _TinyHtml["default"].borderWidth(_classPrivateFieldGet(_jail, this)),
+      borderX = _TinyHtml$borderWidth2.x,
+      borderY = _TinyHtml$borderWidth2.y;
+    var maxX = jailLeft + jailRect.width - targetRect.width - borderY;
+    var maxY = jailTop + jailRect.height - targetRect.height - borderX;
+    x = Math.max(jailLeft, Math.min(x, maxX));
+    y = Math.max(jailTop, Math.min(y, maxY));
+  }
+  _classPrivateFieldGet(_dragProxy, this).style.position = 'absolute';
+  _classPrivateFieldGet(_dragProxy, this).style.left = "".concat(x, "px");
+  _classPrivateFieldGet(_dragProxy, this).style.top = "".concat(y, "px");
+  if (navigator.vibrate && Array.isArray(_classPrivateFieldGet(_vibration, this).move)) {
+    navigator.vibrate(_classPrivateFieldGet(_vibration, this).move);
+  }
+  this.checkDragCollision(event);
+  _assertClassBrand(_TinyDragger_brand, this, _dispatchEvent).call(this, 'dragging');
+}
+function _endDrag(event) {
+  if (event instanceof MouseEvent) event.preventDefault();
+  if (_classPrivateFieldGet(_destroyed, this) || !_classPrivateFieldGet(_dragging, this)) return;
+  _classPrivateFieldSet(_dragging, this, false);
+  if (!_classPrivateFieldGet(_dragProxy, this)) return;
+  _classPrivateFieldGet(_target, this).classList.remove(_classPrivateFieldGet(_classDragging, this));
+  document.body.classList.remove(_classPrivateFieldGet(_classBodyDragging, this));
+  if (_classPrivateFieldGet(_jail, this)) _classPrivateFieldGet(_jail, this).classList.remove(_classPrivateFieldGet(_classJailDragging, this));
+  document.removeEventListener('mousemove', this._onMouseMove);
+  document.removeEventListener('mouseup', this._onMouseUp);
+  document.removeEventListener('touchmove', this._onTouchMove);
+  document.removeEventListener('touchend', this._onTouchEnd);
+  var _this$execCollision2 = this.execCollision(event),
+    collidedElements = _this$execCollision2.collidedElements;
+  if (navigator.vibrate && Array.isArray(_classPrivateFieldGet(_vibration, this).end)) {
+    navigator.vibrate(_classPrivateFieldGet(_vibration, this).end);
+  }
+  var newX = _classPrivateFieldGet(_dragProxy, this).style.left;
+  var newY = _classPrivateFieldGet(_dragProxy, this).style.top;
+  if (_classPrivateFieldGet(_dragProxy, this)) {
+    if (_classPrivateFieldGet(_mirrorElem, this)) _classPrivateFieldGet(_dragProxy, this).remove();else Object.assign(_classPrivateFieldGet(_dragProxy, this).style, {
+      position: '',
+      pointerEvents: '',
+      left: '',
+      top: '',
+      width: '',
+      height: '',
+      zIndex: ''
+    });
+    _classPrivateFieldSet(_dragProxy, this, null);
+  }
+  if (_classPrivateFieldGet(_lastCollision, this)) _assertClassBrand(_TinyDragger_brand, this, _removeCollision).call(this);
+  _classPrivateFieldSet(_lastCollision, this, null);
+  if (_classPrivateFieldGet(_mirrorElem, this)) _classPrivateFieldGet(_target, this).classList.remove(_classPrivateFieldGet(_dragHiddenClass, this));
+  if (!_classPrivateFieldGet(_revertOnDrop, this)) {
+    _classPrivateFieldGet(_target, this).style.left = newX;
+    _classPrivateFieldGet(_target, this).style.top = newY;
+  }
+  var dropEvent = new CustomEvent('drop', {
+    detail: {
+      targets: collidedElements,
+      first: collidedElements[0] || null
+    }
+  });
+  _classPrivateFieldGet(_target, this).dispatchEvent(dropEvent);
+}
+/**
+ * Checks if the provided element intersects with the given bounding rectangle.
+ *
+ * @param {HTMLElement} el - The element to test for collision.
+ * @param {DOMRect} rect - The bounding rectangle to check against.
+ * @returns {boolean} True if the element intersects with the rectangle.
+ */
+function _getCollidedElementByRect(el, rect) {
+  var elRect = el.getBoundingClientRect();
+  return !(rect.right < elRect.left || rect.left > elRect.right || rect.bottom < elRect.top || rect.top > elRect.bottom);
+}
+function _getCollidedElement(el, x, y) {
+  var rect = el.getBoundingClientRect();
+  return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+}
+function _dispatchEvent(type) {
+  var event = new CustomEvent(type);
+  _classPrivateFieldGet(_target, this).dispatchEvent(event);
+}
+function _checkDestroy() {
+  if (_classPrivateFieldGet(_destroyed, this)) throw new Error('This TinyDragger instance has been destroyed and can no longer be used.');
+}
+_defineProperty(TinyDragger, "Utils", _objectSpread(_objectSpread({}, TinyCollision), {}, {
+  TinyHtml: _TinyHtml["default"]
+}));
+var _default = exports["default"] = TinyDragger;
+
+},{"../basics/collision.mjs":729,"../basics/objFilter.mjs":733,"./TinyHtml.mjs":744}],744:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var TinyCollision = _interopRequireWildcard(require("../basics/collision.mjs"));
+var _TinyHtml;
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+var areElsColliding = TinyCollision.areElsColliding,
+  areElsPerfColliding = TinyCollision.areElsPerfColliding,
+  areElsCollTop = TinyCollision.areElsCollTop,
+  areElsCollBottom = TinyCollision.areElsCollBottom,
+  areElsCollLeft = TinyCollision.areElsCollLeft,
+  areElsCollRight = TinyCollision.areElsCollRight;
+/**
+ * Represents a raw Node element or an instance of TinyHtml.
+ * This type is used to abstract interactions with both plain elements
+ * and wrapped elements via the TinyHtml class.
+ *
+ * @typedef {Node|TinyHtml|null} TinyNode
+ */
+/**
+ * Represents a raw DOM element or an instance of TinyHtml.
+ * This type is used to abstract interactions with both plain elements
+ * and wrapped elements via the TinyHtml class.
+ *
+ * @typedef {Element|TinyHtml} TinyElement
+ */
+/**
+ * Represents a raw DOM html element or an instance of TinyHtml.
+ * This type is used to abstract interactions with both plain elements
+ * and wrapped elements via the TinyHtml class.
+ *
+ * @typedef {HTMLElement|TinyHtml} TinyHtmlElement
+ */
+/**
+ * Represents a raw DOM event target element or an instance of TinyHtml.
+ * This type is used to abstract interactions with both plain elements
+ * and wrapped elements via the TinyHtml class.
+ *
+ * @typedef {EventTarget|TinyHtml} TinyEventTarget
+ */
+/**
+ * Represents a raw DOM input element or an instance of TinyHtml.
+ * This type is used to abstract interactions with both plain elements
+ * and wrapped elements via the TinyHtml class.
+ *
+ * @typedef {InputElement|TinyHtml} TinyInputElement
+ */
+/**
+ * Represents a raw DOM element/window or an instance of TinyHtml.
+ * This type is used to abstract interactions with both plain elements
+ * and wrapped elements via the TinyHtml class.
+ *
+ * @typedef {ElementAndWindow|TinyHtml} TinyElementAndWindow
+ */
+/**
+ * Represents a value that can be either a DOM Element or the global Window object.
+ * Useful for functions that operate generically on scrollable or measurable targets.
+ *
+ * @typedef {Element|Window} ElementAndWindow
+ */
+/**
+ * A parameter type used for filtering or matching elements.
+ * It can be:
+ * - A string (CSS selector),
+ * - A raw DOM element,
+ * - An array of raw DOM elements,
+ * - A filtering function that receives an index and element,
+ *   and returns true if it matches.
+ *
+ * @typedef {string|Element|Element[]|((index: number, el: Element) => boolean)} WinnowRequest
+ */
+/**
+ * Elements accepted as constructor values for TinyHtml.
+ * These include common DOM elements and root containers.
+ *
+ * @typedef {Window|Element|Document} ConstructorElValues
+ */
+/**
+ * The handler function used in event listeners.
+ *
+ * @typedef {(e: Event) => any} EventRegistryHandle
+ */
+/**
+ * Options passed to `addEventListener` or `removeEventListener`.
+ * Can be a boolean or an object of type `AddEventListenerOptions`.
+ *
+ * @typedef {boolean|AddEventListenerOptions} EventRegistryOptions
+ */
+/**
+ * Structure describing a registered event callback and its options.
+ *
+ * @typedef {Object} EventRegistryItem
+ * @property {EventRegistryHandle} handler - The function to be executed when the event is triggered.
+ * @property {EventRegistryOptions} [options] - Optional configuration passed to the listener.
+ */
+/**
+ * Maps event names (e.g., `"click"`, `"keydown"`) to a list of registered handlers and options.
+ *
+ * @typedef {Record<string, EventRegistryItem[]>} EventRegistryList
+ */
+/**
+ * WeakMap storing all event listeners per element.
+ * Each element has a registry mapping event names to their handler lists.
+ *
+ * @type {WeakMap<ConstructorElValues|EventTarget, EventRegistryList>}
+ */
+var __eventRegistry = new WeakMap();
+/**
+ * A key-value store associated with a specific DOM element.
+ * Keys are strings, and values can be of any type.
+ *
+ * @typedef {Record<string, *>} ElementDataStore
+ */
+/**
+ * WeakMap to hold private data for elements
+ *
+ * @type {WeakMap<ConstructorElValues, ElementDataStore>}
+ */
+var __elementDataMap = new WeakMap();
+/**
+ * Stores directional collision locks separately.
+ * Each direction has its own WeakMap to allow independent locking.
+ *
+ * @type {{
+ *   top: WeakMap<Element, true>,
+ *   bottom: WeakMap<Element, true>,
+ *   left: WeakMap<Element, true>,
+ *   right: WeakMap<Element, true>
+ * }}
+ */
+var __elemCollision = {
+  top: new WeakMap(),
+  bottom: new WeakMap(),
+  left: new WeakMap(),
+  right: new WeakMap()
+};
+/**
+ * Possible directions from which a collision was detected and locked.
+ *
+ * @typedef {'top'|'bottom'|'left'|'right'} CollisionDirLock
+ */
+/**
+ * @typedef {Object} HtmlElBoxSides
+ * @property {number} x - Total horizontal size (left + right)
+ * @property {number} y - Total vertical size (top + bottom)
+ * @property {number} left
+ * @property {number} right
+ * @property {number} top
+ * @property {number} bottom
+ */
+/**
+ * @typedef {string | number | Date | boolean | null} SetValueBase - Primitive types accepted as input values.
+ */
+/**
+ * @typedef {'string' | 'date' | 'number'} GetValueTypes
+ * Types of value extractors supported by TinyHtml._valTypes.
+ */
+/**
+ * @typedef {SetValueBase|SetValueBase[]} SetValueList - A single value or an array of values to be assigned to the input element.
+ */
+/**
+ * A list of HTML form elements that can have a `.value` property used by TinyHtml.
+ * Includes common input types used in forms.
+ *
+ * @typedef {HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement|HTMLOptionElement} InputElement
+ */
+/**
+ * TinyHtml is a utility class that provides static and instance-level methods
+ * for precise dimension and position computations on HTML elements.
+ * It mimics some jQuery functionalities while using native browser APIs.
+ *
+ * Inspired by the jQuery project's open source implementations of element dimension
+ * and offset utilities. This class serves as a lightweight alternative using modern DOM APIs.
+ *
+ * @class
+ */
+var _el = /*#__PURE__*/new WeakMap();
+var TinyHtml = /*#__PURE__*/function () {
+  /**
+   * Creates an instance of TinyHtml for a specific Element.
+   * Useful when you want to operate repeatedly on the same element using instance methods.
+   * @param {ConstructorElValues} el - The element to wrap and manipulate.
+   */
+  function TinyHtml(el) {
+    _classCallCheck(this, TinyHtml);
+    //////////////////////////////////////////////////////////////////
+    /** @type {ElementDataStore} */
+    _defineProperty(this, "_data", {});
+    //////////////////////////////////////////////////////
+    /**
+     * The target HTML element for instance-level operations.
+     * @type {ConstructorElValues}
+     */
+    _classPrivateFieldInitSpec(this, _el, void 0);
+    if (el instanceof TinyHtml) throw new Error("[TinyHtml] You are trying to put a TinyHtml inside another TinyHtml in constructor.");
+    if (!(el instanceof Element) && !(el instanceof Window) && !(el instanceof Document)) throw new Error("[TinyHtml] Invalid Target in constructor.");
+    _classPrivateFieldSet(_el, this, el);
+  }
+  /**
+   * Checks whether the given object is a window.
+   * @param {*} obj - The object to test.
+   * @returns {obj is Window} - True if it's a Window.
+   */
+  return _createClass(TinyHtml, [{
+    key: "get",
+    value:
+    //////////////////////////////////////////////////////////////////
+    /**
+     * Returns the current target held by this instance.
+     *
+     * @returns {ConstructorElValues} - The instance's target element.
+     */
+    function get() {
+      return _classPrivateFieldGet(_el, this);
+    }
+    /**
+     * Returns the current Element held by this instance.
+     *
+     * @param {string} where - The method name or context calling this.
+     * @returns {ConstructorElValues} - The instance's element.
+     * @readonly
+     */
+  }, {
+    key: "_getElement",
+    value: function _getElement(where) {
+      if (!(_classPrivateFieldGet(_el, this) instanceof Element) && !(_classPrivateFieldGet(_el, this) instanceof Window) && !(_classPrivateFieldGet(_el, this) instanceof Document)) throw new Error("[TinyHtml] Invalid Element in ".concat(where, "()."));
+      return _classPrivateFieldGet(_el, this);
+    }
+    //////////////////////////////////////////////////////
+    /**
+     * @param {TinyElement|EventTarget|null|(TinyElement|EventTarget|null)[]} elems
+     * @param {string} where
+     * @param {any[]} TheTinyElements
+     * @param {string[]} elemName
+     * @returns {any[]}
+     * @readonly
+     */
+  }, {
+    key: "not",
+    value:
+    /**
+     * Returns only the elements **not** matching the given selector or function.
+     *
+     * @param {WinnowRequest} selector
+     * @returns {Element[]}
+     */
+    function not(selector) {
+      return TinyHtml.not(this, selector);
+    }
+    /**
+     * Finds elements matching a selector within a context.
+     *
+     * @param {TinyElement|TinyElement[]} context
+     * @param {string} selector
+     * @returns {Element[]}
+     */
+  }, {
+    key: "find",
+    value:
+    /**
+     * Finds elements in your element matching a selector within a context.
+     *
+     * @param {string} selector
+     * @returns {Element[]}
+     */
+    function find(selector) {
+      return TinyHtml.find(this, selector);
+    }
+    /**
+     * Checks if at least one element matches the selector.
+     *
+     * @param {TinyElement|TinyElement[]} elems
+     * @param {WinnowRequest} selector
+     * @returns {boolean}
+     */
+  }, {
+    key: "is",
+    value:
+    /**
+     * Checks if the element matches the selector.
+     *
+     * @param {WinnowRequest} selector
+     * @returns {boolean}
+     */
+    function is(selector) {
+      return TinyHtml.is(this, selector);
+    }
+    /**
+     * Returns elements from the current list that contain the given target(s).
+     * @param {TinyElement|TinyElement[]} roots - A single element or an array of elements (DOM or TinyHtml).
+     * @param {string|TinyElement|TinyElement[]} target - Selector or DOM element(s).
+     * @returns {Element[]} Elements that contain the target.
+     */
+  }, {
+    key: "has",
+    value:
+    /**
+     * Return if the element has the target(s).
+     * @param {string|TinyElement|TinyElement[]} target - Selector or DOM element(s).
+     * @returns {boolean} Elements that contain the target.
+     */
+    function has(target) {
+      return TinyHtml.has(this, target).length > 0;
+    }
+    /**
+     * Finds the closest ancestor (including self) that matches the selector.
+     *
+     * @param {TinyElement|TinyElement[]} els - A single element or an array of elements (DOM or TinyHtml).
+     * @param {string|Element} selector - A selector string or DOM element to match.
+     * @param {Element|null} [context] - An optional context to stop searching.
+     * @returns {Element[]}
+     */
+  }, {
+    key: "closest",
+    value:
+    /**
+     * Finds the closest ancestor (including self) that matches the selector.
+     *
+     * @param {string|Element} selector - A selector string or DOM element to match.
+     * @param {Element|null} [context] - An optional context to stop searching.
+     * @returns {Element[]}
+     */
+    function closest(selector, context) {
+      return TinyHtml.closest(this, selector, context);
+    }
+    /**
+     * Compares two DOM elements to determine if they refer to the same node in the document.
+     *
+     * This performs a strict equality check (`===`) between the two elements.
+     *
+     * @param {TinyNode} elem - The first DOM element to compare.
+     * @param {TinyNode} otherElem - The second DOM element to compare.
+     * @returns {boolean} `true` if both elements are the same DOM node; otherwise, `false`.
+     */
+  }, {
+    key: "isSameDom",
+    value:
+    /**
+     * Compares two DOM elements to determine if they refer to the same node in the document.
+     *
+     * This performs a strict equality check (`===`) between the two elements.
+     *
+     * @param {TinyNode} elem - The DOM element to compare.
+     * @returns {boolean} `true` if both elements are the same DOM node; otherwise, `false`.
+     */
+    function isSameDom(elem) {
+      return TinyHtml.isSameDom(this, elem);
+    }
+  }, {
+    key: "data",
+    value:
+    /**
+     * Retrieves data associated with a DOM element.
+     *
+     * If a `key` is provided, the corresponding value is returned.
+     * If no `key` is given, a shallow copy of all stored data is returned.
+     *
+     * @param {string} [key] - The specific key to retrieve from the data store.
+     * @param {boolean} [isPrivate=false] - Whether to access the private data store.
+     * @returns {ElementDataStore|undefined|any} - The stored value, all data, or undefined if the key doesn't exist.
+     */
+    function data(key, isPrivate) {
+      return TinyHtml.data(this, key, isPrivate);
+    }
+    /**
+     * Stores a value associated with a specific key for a DOM element.
+     *
+     * @param {TinyElement} el - The DOM element.
+     * @param {string} key - The key under which the data will be stored.
+     * @param {any} value - The value to store.
+     * @param {boolean} [isPrivate=false] - Whether to store the data in the private store.
+     * @returns {void}
+     */
+  }, {
+    key: "setData",
+    value:
+    /**
+     * Stores a value associated with a specific key for a DOM element.
+     *
+     * @param {string} key - The key under which the data will be stored.
+     * @param {any} value - The value to store.
+     * @param {boolean} [isPrivate=false] - Whether to store the data in the private store.
+     * @returns {void}
+     */
+    function setData(key, value) {
+      var isPrivate = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      return TinyHtml.setData(this, key, value, isPrivate);
+    }
+    //////////////////////////////////////////////////////
+    /**
+     * Get the sibling element in a given direction.
+     *
+     * @param {TinyNode} el
+     * @param {"previousSibling"|"nextSibling"} direction
+     * @param {string} where
+     * @returns {ChildNode|null}
+     * @readonly
+     */
+  }, {
+    key: "parent",
+    value:
+    /**
+     * Returns the direct parent node of the given element, excluding document fragments.
+     *
+     * @returns {ParentNode|null} The parent node or null if not found.
+     */
+    function parent() {
+      return TinyHtml.parent(this);
+    }
+    /**
+     * Returns all ancestor nodes of the given element, optionally stopping before a specific ancestor.
+     *
+     * @param {TinyNode} el - The DOM node to start from.
+     * @param {TinyNode|string} [until] - A node or selector to stop before.
+     * @returns {ChildNode[]} An array of ancestor nodes.
+     */
+  }, {
+    key: "parents",
+    value:
+    /**
+     * Returns all ancestor nodes of the given element, optionally stopping before a specific ancestor.
+     *
+     * @param {TinyNode|string} [until] - A node or selector to stop before.
+     * @returns {ChildNode[]} An array of ancestor nodes.
+     */
+    function parents(until) {
+      return TinyHtml.parents(this, until);
+    }
+    /**
+     * Returns the next sibling of the given element.
+     *
+     * @param {TinyNode} el - The DOM node to start from.
+     * @returns {ChildNode|null} The next sibling or null if none found.
+     */
+  }, {
+    key: "next",
+    value:
+    /**
+     * Returns the next sibling of the given element.
+     *
+     * @returns {ChildNode|null} The next sibling or null if none found.
+     */
+    function next() {
+      return TinyHtml.next(this);
+    }
+    /**
+     * Returns the previous sibling of the given element.
+     *
+     * @param {TinyNode} el - The DOM node to start from.
+     * @returns {ChildNode|null} The previous sibling or null if none found.
+     */
+  }, {
+    key: "prev",
+    value:
+    /**
+     * Returns the previous sibling of the given element.
+     *
+     * @returns {ChildNode|null} The previous sibling or null if none found.
+     */
+    function prev() {
+      return TinyHtml.prev(this);
+    }
+    /**
+     * Returns all next sibling nodes after the given element.
+     *
+     * @param {TinyNode} el - The DOM node to start from.
+     * @returns {ChildNode[]} An array of next sibling nodes.
+     */
+  }, {
+    key: "nextAll",
+    value:
+    /**
+     * Returns all next sibling nodes after the given element.
+     *
+     * @returns {ChildNode[]} An array of next sibling nodes.
+     */
+    function nextAll() {
+      return TinyHtml.nextAll(this);
+    }
+    /**
+     * Returns all previous sibling nodes before the given element.
+     *
+     * @param {TinyNode} el - The DOM node to start from.
+     * @returns {ChildNode[]} An array of previous sibling nodes.
+     */
+  }, {
+    key: "prevAll",
+    value:
+    /**
+     * Returns all previous sibling nodes before the given element.
+     *
+     * @returns {ChildNode[]} An array of previous sibling nodes.
+     */
+    function prevAll() {
+      return TinyHtml.prevAll(this);
+    }
+    /**
+     * Returns all next sibling nodes up to (but not including) the node matched by a selector or element.
+     *
+     * @param {TinyNode} el - The DOM node to start from.
+     * @param {TinyNode|string} [until] - A node or selector to stop before.
+     * @returns {ChildNode[]} An array of next sibling nodes.
+     */
+  }, {
+    key: "nextUntil",
+    value:
+    /**
+     * Returns all next sibling nodes up to (but not including) the node matched by a selector or element.
+     *
+     * @param {TinyNode|string} [until] - A node or selector to stop before.
+     * @returns {ChildNode[]} An array of next sibling nodes.
+     */
+    function nextUntil(until) {
+      return TinyHtml.nextUntil(this, until);
+    }
+    /**
+     * Returns all previous sibling nodes up to (but not including) the node matched by a selector or element.
+     *
+     * @param {TinyNode} el - The DOM node to start from.
+     * @param {TinyNode|string} [until] - A node or selector to stop before.
+     * @returns {ChildNode[]} An array of previous sibling nodes.
+     */
+  }, {
+    key: "prevUntil",
+    value:
+    /**
+     * Returns all previous sibling nodes up to (but not including) the node matched by a selector or element.
+     *
+     * @param {TinyNode|string} [until] - A node or selector to stop before.
+     * @returns {ChildNode[]} An array of previous sibling nodes.
+     */
+    function prevUntil(until) {
+      return TinyHtml.prevUntil(this, until);
+    }
+    /**
+     * Returns all sibling nodes of the given element, excluding itself.
+     *
+     * @param {TinyNode} el - The DOM node to find siblings of.
+     * @returns {ChildNode[]} An array of sibling nodes.
+     */
+  }, {
+    key: "siblings",
+    value:
+    /**
+     * Returns all sibling nodes of the given element, excluding itself.
+     *
+     * @returns {ChildNode[]} An array of sibling nodes.
+     */
+    function siblings() {
+      return TinyHtml.siblings(this);
+    }
+    /**
+     * Returns all child nodes of the given element.
+     *
+     * @param {TinyNode} el - The DOM node to get children from.
+     * @returns {ChildNode[]} An array of child nodes.
+     */
+  }, {
+    key: "children",
+    value:
+    /**
+     * Returns all child nodes of the given element.
+     *
+     * @returns {ChildNode[]} An array of child nodes.
+     */
+    function children() {
+      return TinyHtml.children(this);
+    }
+    /**
+     * Returns the contents of the given node. For `<template>` it returns its content; for `<iframe>`, the document.
+     *
+     * @param {TinyNode} el - The DOM node to get contents from.
+     * @returns {(ChildNode|DocumentFragment)[]|Document[]} An array of child nodes or the content document of an iframe.
+     */
+  }, {
+    key: "contents",
+    value:
+    /**
+     * Returns the contents of the given node. For `<template>` it returns its content; for `<iframe>`, the document.
+     *
+     * @returns {(ChildNode|DocumentFragment)[]|Document[]} An array of child nodes or the content document of an iframe.
+     */
+    function contents() {
+      return TinyHtml.contents(this);
+    }
+    /**
+     * Clone each element.
+     * @param {TinyNode|TinyNode[]} el
+     * @param {boolean} [deep=true]
+     * @returns {Node[]}
+     */
+  }, {
+    key: "clone",
+    value:
+    /**
+     * Clone the element.
+     * @param {boolean} [deep=true]
+     * @returns {Node}
+     */
+    function clone(deep) {
+      return TinyHtml.clone(this, deep)[0];
+    }
+    /**
+     * Normalize and validate nodes before DOM insertion.
+     * Converts TinyNode-like structures or strings into DOM-compatible nodes.
+     * @type {(where: string, ...nodes: (TinyNode | TinyNode[] | string)[]) => (Node | string)[]}
+     * @readonly
+     */
+  }, {
+    key: "append",
+    value:
+    /**
+     * Appends child elements or strings to the end of the target element(s).
+     *
+     * @param {...(TinyNode | TinyNode[] | string)} children - The child elements or text to append.
+     */
+    function append() {
+      for (var _len = arguments.length, children = new Array(_len), _key = 0; _key < _len; _key++) {
+        children[_key] = arguments[_key];
+      }
+      return TinyHtml.append.apply(TinyHtml, [this].concat(children));
+    }
+    /**
+     * Prepends child elements or strings to the beginning of the target element(s).
+     *
+     * @param {TinyElement | TinyElement[]} el - The target element(s) to receive children.
+     * @param {...(TinyNode | TinyNode[] | string)} children - The child elements or text to prepend.
+     */
+  }, {
+    key: "prepend",
+    value:
+    /**
+     * Prepends child elements or strings to the beginning of the target element(s).
+     *
+     * @param {...(TinyNode | TinyNode[] | string)} children - The child elements or text to prepend.
+     */
+    function prepend() {
+      for (var _len2 = arguments.length, children = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        children[_key2] = arguments[_key2];
+      }
+      return TinyHtml.prepend.apply(TinyHtml, [this].concat(children));
+    }
+    /**
+     * Inserts elements or strings immediately before the target element(s) in the DOM.
+     *
+     * @param {TinyElement | TinyElement[]} el - The target element(s) before which new content is inserted.
+     * @param {...(TinyNode | TinyNode[] | string)} children - Elements or text to insert before the target.
+     */
+  }, {
+    key: "before",
+    value:
+    /**
+     * Inserts elements or strings immediately before the target element(s) in the DOM.
+     *
+     * @param {...(TinyNode | TinyNode[] | string)} children - Elements or text to insert before the target.
+     */
+    function before() {
+      for (var _len3 = arguments.length, children = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+        children[_key3] = arguments[_key3];
+      }
+      return TinyHtml.before.apply(TinyHtml, [this].concat(children));
+    }
+    /**
+     * Inserts elements or strings immediately after the target element(s) in the DOM.
+     *
+     * @param {TinyElement | TinyElement[]} el - The target element(s) after which new content is inserted.
+     * @param {...(TinyNode | TinyNode[] | string)} children - Elements or text to insert after the target.
+     */
+  }, {
+    key: "after",
+    value:
+    /**
+     * Inserts elements or strings immediately after the target element(s) in the DOM.
+     *
+     * @param {...(TinyNode | TinyNode[] | string)} children - Elements or text to insert after the target.
+     */
+    function after() {
+      for (var _len4 = arguments.length, children = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+        children[_key4] = arguments[_key4];
+      }
+      return TinyHtml.after.apply(TinyHtml, [this].concat(children));
+    }
+    /**
+     * Replaces the target element(s) in the DOM with new elements or text.
+     *
+     * @param {TinyElement | TinyElement[]} el - The element(s) to be replaced.
+     * @param {...(TinyNode | TinyNode[] | string)} newNodes - New elements or text to replace the target.
+     */
+  }, {
+    key: "replaceWith",
+    value:
+    /**
+     * Replaces the target element(s) in the DOM with new elements or text.
+     *
+     * @param {...(TinyNode | TinyNode[] | string)} newNodes - New elements or text to replace the target.
+     */
+    function replaceWith() {
+      for (var _len5 = arguments.length, newNodes = new Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
+        newNodes[_key5] = arguments[_key5];
+      }
+      return TinyHtml.replaceWith.apply(TinyHtml, [this].concat(newNodes));
+    }
+    /**
+     * Appends the given element(s) to each target element in sequence.
+     *
+     * @param {TinyNode | TinyNode[]} el - The element(s) to append.
+     * @param {TinyNode | TinyNode[]} targets - Target element(s) where content will be appended.
+     */
+  }, {
+    key: "appendTo",
+    value:
+    /**
+     * Appends the given element(s) to each target element in sequence.
+     *
+     * @param {TinyNode | TinyNode[]} targets - Target element(s) where content will be appended.
+     */
+    function appendTo(targets) {
+      return TinyHtml.appendTo(this, targets);
+    }
+    /**
+     * Prepends the given element(s) to each target element in sequence.
+     *
+     * @param {TinyElement | TinyElement[]} el - The element(s) to prepend.
+     * @param {TinyElement | TinyElement[]} targets - Target element(s) where content will be prepended.
+     */
+  }, {
+    key: "prependTo",
+    value:
+    /**
+     * Prepends the given element(s) to each target element in sequence.
+     *
+     * @param {TinyElement | TinyElement[]} targets - Target element(s) where content will be prepended.
+     */
+    function prependTo(targets) {
+      return TinyHtml.prependTo(this, targets);
+    }
+    /**
+     * Inserts the element before a child of a given target, or before the target itself.
+     *
+     * @param {TinyNode | TinyNode[]} el - The element(s) to insert.
+     * @param {TinyNode | TinyNode[]} target - The reference element where insertion happens.
+     * @param {TinyNode | TinyNode[] | null} [child=null] - Optional child to insert before, defaults to target.
+     */
+  }, {
+    key: "insertBefore",
+    value:
+    /**
+     * Inserts the element before a child of a given target, or before the target itself.
+     *
+     * @param {TinyNode | TinyNode[]} target - The reference element where insertion happens.
+     * @param {TinyNode | TinyNode[] | null} [child=null] - Optional child to insert before, defaults to target.
+     */
+    function insertBefore(target, child) {
+      return TinyHtml.insertBefore(this, target, child);
+    }
+    /**
+     * Inserts the element after a child of a given target, or after the target itself.
+     *
+     * @param {TinyNode | TinyNode[]} el - The element(s) to insert.
+     * @param {TinyNode | TinyNode[]} target - The reference element where insertion happens.
+     * @param {TinyNode | TinyNode[] | null} [child=null] - Optional child to insert after, defaults to target.
+     */
+  }, {
+    key: "insertAfter",
+    value:
+    /**
+     * Inserts the element after a child of a given target, or after the target itself.
+     *
+     * @param {TinyNode | TinyNode[]} target - The reference element where insertion happens.
+     * @param {TinyNode | TinyNode[] | null} [child=null] - Optional child to insert after, defaults to target.
+     */
+    function insertAfter(target, child) {
+      return TinyHtml.insertAfter(this, target, child);
+    }
+    /**
+     * Replaces all target elements with the provided element(s).
+     * If multiple targets exist, the inserted elements are cloned accordingly.
+     *
+     * @param {TinyNode | TinyNode[]} el - The new element(s) to insert.
+     * @param {TinyNode | TinyNode[]} targets - The elements to be replaced.
+     */
+  }, {
+    key: "replaceAll",
+    value:
+    /**
+     * Replaces all target elements with the provided element(s).
+     * If multiple targets exist, the inserted elements are cloned accordingly.
+     *
+     * @param {TinyNode | TinyNode[]} targets - The elements to be replaced.
+     */
+    function replaceAll(targets) {
+      return TinyHtml.replaceAll(this, targets);
+    }
+  }, {
+    key: "css",
+    value:
+    /**
+     * Returns the full computed CSS styles for the given element.
+     *
+     * @returns {CSSStyleDeclaration} The computed style object for the element.
+     */
+    function css() {
+      return TinyHtml.css(this);
+    }
+    /**
+     * Returns the value of a specific computed CSS property from the given element as a string.
+     *
+     * @param {TinyElement} el - The element to retrieve the style property from.
+     * @param {string} prop - The name of the CSS property (camelCase or kebab-case).
+     * @returns {string|null} The value of the CSS property as a string, or null if not found or invalid.
+     */
+  }, {
+    key: "cssString",
+    value:
+    /**
+     * Returns the value of a specific computed CSS property from the given element as a string.
+     *
+     * @param {string} prop - The name of the CSS property (camelCase or kebab-case).
+     * @returns {string|null} The value of the CSS property as a string, or null if not found or invalid.
+     */
+    function cssString(prop) {
+      return TinyHtml.cssString(this, prop);
+    }
+    /**
+     * Returns a subset of computed CSS styles based on the given list of properties.
+     *
+     * @param {TinyElement} el - The element to retrieve styles from.
+     * @param {string[]} prop - An array of CSS property names to retrieve.
+     * @returns {Partial<CSSStyleDeclaration>} An object containing the requested styles.
+     */
+  }, {
+    key: "cssList",
+    value:
+    /**
+     * Returns a subset of computed CSS styles based on the given list of properties.
+     *
+     * @param {string[]} prop - An array of CSS property names to retrieve.
+     * @returns {Partial<CSSStyleDeclaration>} An object containing the requested styles.
+     */
+    function cssList(prop) {
+      return TinyHtml.cssList(this, prop);
+    }
+    /**
+     * Returns the computed CSS float value of a property.
+     * @param {TinyElement} el - The element to inspect.
+     * @param {string} prop - The CSS property.
+     * @returns {number} - The parsed float value.
+     */
+  }, {
+    key: "cssFloat",
+    value:
+    /**
+     * Returns the computed CSS float value of a property.
+     * @param {string} prop - The CSS property.
+     * @returns {number} - The parsed float value.
+     */
+    function cssFloat(prop) {
+      return TinyHtml.cssFloat(this, prop);
+    }
+    /**
+     * Returns computed float values of multiple CSS properties.
+     * @param {TinyElement} el - The element to inspect.
+     * @param {string[]} prop - An array of CSS properties.
+     * @returns {Record<string, number>} - Map of property to float value.
+     */
+  }, {
+    key: "cssFloats",
+    value:
+    /**
+     * Returns computed float values of multiple CSS properties.
+     * @param {string[]} prop - An array of CSS properties.
+     * @returns {Record<string, number>} - Map of property to float value.
+     */
+    function cssFloats(prop) {
+      return TinyHtml.cssFloats(this, prop);
+    }
+    //////////////////////////////////////////////////////////////////////
+    /**
+     * Stores camelCase to kebab-case CSS property aliases.
+     *
+     * Used to normalize property names when interacting with `element.style` or `getComputedStyle`.
+     *
+     * ⚠️ This object should not be modified directly. Use `TinyHtml.cssPropAliases` instead to ensure reverse mappings stay in sync.
+     *
+     * Example of how to add a new alias:
+     *
+     * ```js
+     * TinyHtml.cssPropAliases.tinyPudding = 'tiny-pudding';
+     * ```
+     *
+     * This will automatically update `TinyHtml.cssPropRevAliases['tiny-pudding']` with `'tinyPudding'`.
+     *
+     * @type {Record<string | symbol, string>}
+     */
+  }, {
+    key: "setStyle",
+    value:
+    /**
+     * Sets one or more CSS inline style properties on the given element(s).
+     *
+     * - If `prop` is a string, the `value` will be applied to that property.
+     * - If `prop` is an object, each key-value pair will be applied as a CSS property and value.
+     *
+     * @param {string|Object} prop - The property name or an object with key-value pairs
+     * @param {string|null} [value=null] - The value to set (if `prop` is a string)
+     */
+    function setStyle(prop, value) {
+      return TinyHtml.setStyle(this, prop, value);
+    }
+    /**
+     * Gets the value of a specific inline style property.
+     *
+     * Returns only the value set directly via the `style` attribute.
+     *
+     * @param {TinyHtmlElement|TinyHtmlElement[]} el - A single element to inspect.
+     * @param {string} prop - The style property name to retrieve.
+     * @returns {string} The style value of the specified property.
+     */
+  }, {
+    key: "getStyle",
+    value:
+    /**
+     * Gets the value of a specific inline style property.
+     *
+     * Returns only the value set directly via the `style` attribute.
+     *
+     * @param {string} prop - The style property name to retrieve.
+     * @returns {string} The style value of the specified property.
+     */
+    function getStyle(prop) {
+      return TinyHtml.getStyle(this, prop);
+    }
+    /**
+     * Gets all inline styles defined directly on the element (`style` attribute).
+     *
+     * Returns an object with all property-value pairs in kebab-case format.
+     *
+     * @param {TinyHtmlElement|TinyHtmlElement[]} el - A single element to inspect.
+     * @param {Object} [settings={}] - Optional configuration settings.
+     * @param {boolean} [settings.camelCase=false] - If `true`, the property names will be converted to camelCase.
+     * @param {boolean} [settings.rawAttr=false] - If `true`, reads the style string from the `style` attribute instead of using the style object.
+     * @returns {Record<string, string>} All inline styles as an object.
+     *
+     * @throws {TypeError} If `camelCase` or `rawAttr` is not a boolean.
+     */
+  }, {
+    key: "style",
+    value:
+    /**
+     * Gets all inline styles defined directly on the element (`style` attribute).
+     *
+     * Returns an object with all property-value pairs in kebab-case format.
+     *
+     * @param {Object} [settings={}] - Optional configuration settings.
+     * @param {boolean} [settings.camelCase=false] - If `true`, the property names will be converted to camelCase.
+     * @param {boolean} [settings.rawAttr=false] - If `true`, reads the style string from the `style` attribute instead of using the style object.
+     * @returns {Record<string, string>} All inline styles as an object.
+     */
+    function style(settings) {
+      return TinyHtml.style(this, settings);
+    }
+    /**
+     * Removes one or more inline CSS properties from the given element(s).
+     *
+     * @param {TinyHtmlElement|TinyHtmlElement[]} el - A single element or an array of elements.
+     * @param {string|string[]} prop - A property name or an array of property names to remove.
+     */
+  }, {
+    key: "removeStyle",
+    value:
+    /**
+     * Removes one or more inline CSS properties from the given element(s).
+     *
+     * @param {string|string[]} prop - A property name or an array of property names to remove.
+     */
+    function removeStyle(prop) {
+      return TinyHtml.removeStyle(this, prop);
+    }
+    /**
+     * Toggles a CSS property value between two given values.
+     *
+     * The current computed value is compared to `val1`. If it matches, the property is set to `val2`. Otherwise, it is set to `val1`.
+     *
+     * @param {TinyHtmlElement|TinyHtmlElement[]} el - A single element or an array of elements.
+     * @param {string} prop - The CSS property to toggle.
+     * @param {string} val1 - The first value (used as "current" check).
+     * @param {string} val2 - The second value (used as the "alternative").
+     */
+  }, {
+    key: "toggleStyle",
+    value:
+    /**
+     * Toggles a CSS property value between two given values.
+     *
+     * The current computed value is compared to `val1`. If it matches, the property is set to `val2`. Otherwise, it is set to `val1`.
+     *
+     * @param {string} prop - The CSS property to toggle.
+     * @param {string} val1 - The first value (used as "current" check).
+     * @param {string} val2 - The second value (used as the "alternative").
+     */
+    function toggleStyle(prop, val1, val2) {
+      return TinyHtml.toggleStyle(this, prop, val1, val2);
+    }
+    /**
+     * Removes all inline styles (`style` attribute) from the given element(s).
+     *
+     * @param {TinyElement|TinyElement[]} el - A single element or an array of elements.
+     */
+  }, {
+    key: "clearStyle",
+    value:
+    /**
+     * Removes all inline styles (`style` attribute) from the given element(s).
+     *
+     */
+    function clearStyle() {
+      return TinyHtml.clearStyle(this);
+    }
+    //////////////////////////////////////////////////////////////////////
+    /**
+     * Focus the element.
+     *
+     * @param {TinyHtmlElement} el - The element or a selector string.
+     */
+  }, {
+    key: "focus",
+    value:
+    /**
+     * Focus the element.
+     */
+    function focus() {
+      return TinyHtml.focus(this);
+    }
+    /**
+     * Blur the element.
+     *
+     * @param {TinyHtmlElement} el - The element or a selector string.
+     */
+  }, {
+    key: "blur",
+    value:
+    /**
+     * Blur the element.
+     */
+    function blur() {
+      return TinyHtml.blur(this);
+    }
+    //////////////////////////////////////////////////////////////////////
+    /**
+     * Sets the vertical scroll position of the window.
+     * @param {number} value - Sets the scroll position.
+     */
+  }, {
+    key: "getDimension",
+    value:
+    /**
+     * Gets the width or height of an element based on the box model.
+     * @param {"width"|"height"} type - Dimension type.
+     * @param {"content"|"padding"|"border"|"margin"} extra - Box model context.
+     * @returns {number} - Computed dimension.
+     */
+    function getDimension(type, extra) {
+      return TinyHtml.getDimension(this, type, extra);
+    }
+    /**
+     * Sets the height of the element.
+     * @param {TinyHtmlElement} el - Target element.
+     * @param {string|number} value - Height value.
+     * @throws {TypeError} If `value` is neither a string nor number.
+     */
+  }, {
+    key: "setHeight",
+    value:
+    /**
+     * Sets the height of the element.
+     * @param {string|number} value - Height value.
+     */
+    function setHeight(value) {
+      return TinyHtml.setHeight(this, value);
+    }
+    /**
+     * Sets the width of the element.
+     * @param {TinyHtmlElement} el - Target element.
+     * @param {string|number} value - Width value.
+     * @throws {TypeError} If `value` is neither a string nor number.
+     */
+  }, {
+    key: "setWidth",
+    value:
+    /**
+     * Sets the width of the element.
+     * @param {string|number} value - Width value.
+     */
+    function setWidth(value) {
+      return TinyHtml.setWidth(this, value);
+    }
+    /**
+     * Returns content box height.
+     * @param {TinyElementAndWindow} el - Target element.
+     * @returns {number}
+     */
+  }, {
+    key: "height",
+    value:
+    /**
+     * Returns content box height.
+     * @returns {number}
+     */
+    function height() {
+      return TinyHtml.height(this);
+    }
+    /**
+     * Returns content box width.
+     * @param {TinyElementAndWindow} el - Target element.
+     * @returns {number}
+     */
+  }, {
+    key: "width",
+    value:
+    /**
+     * Returns content box width.
+     * @returns {number}
+     */
+    function width() {
+      return TinyHtml.width(this);
+    }
+    /**
+     * Returns padding box height.
+     * @param {TinyElementAndWindow} el - Target element.
+     * @returns {number}
+     */
+  }, {
+    key: "innerHeight",
+    value:
+    /**
+     * Returns padding box height.
+     * @returns {number}
+     */
+    function innerHeight() {
+      return TinyHtml.innerHeight(this);
+    }
+    /**
+     * Returns padding box width.
+     * @param {TinyElementAndWindow} el - Target element.
+     * @returns {number}
+     */
+  }, {
+    key: "innerWidth",
+    value:
+    /**
+     * Returns padding box width.
+     * @returns {number}
+     */
+    function innerWidth() {
+      return TinyHtml.innerWidth(this);
+    }
+    /**
+     * Returns outer height of the element, optionally including margin.
+     * @param {TinyElementAndWindow} el - Target element.
+     * @param {boolean} [includeMargin=false] - Whether to include margin.
+     * @returns {number}
+     */
+  }, {
+    key: "outerHeight",
+    value:
+    /**
+     * Returns outer height of the element, optionally including margin.
+     * @param {boolean} [includeMargin=false] - Whether to include margin.
+     * @returns {number}
+     */
+    function outerHeight(includeMargin) {
+      return TinyHtml.outerHeight(this, includeMargin);
+    }
+    /**
+     * Returns outer width of the element, optionally including margin.
+     * @param {TinyElementAndWindow} el - Target element.
+     * @param {boolean} [includeMargin=false] - Whether to include margin.
+     * @returns {number}
+     */
+  }, {
+    key: "outerWidth",
+    value:
+    /**
+     * Returns outer width of the element, optionally including margin.
+     * @param {boolean} [includeMargin=false] - Whether to include margin.
+     * @returns {number}
+     */
+    function outerWidth(includeMargin) {
+      return TinyHtml.outerWidth(this, includeMargin);
+    }
+    //////////////////////////////////////////////////
+    /**
+     * Gets the offset of the element relative to the document.
+     * @param {TinyElement} el - Target element.
+     * @returns {{top: number, left: number}}
+     */
+  }, {
+    key: "offset",
+    value:
+    /**
+     * Gets the offset of the element relative to the document.
+     * @returns {{top: number, left: number}}
+     */
+    function offset() {
+      return TinyHtml.offset(this);
+    }
+    /**
+     * Gets the position of the element relative to its offset parent.
+     * @param {TinyHtmlElement} el - Target element.
+     * @returns {{top: number, left: number}}
+     */
+  }, {
+    key: "position",
+    value:
+    /**
+     * Gets the position of the element relative to its offset parent.
+     * @returns {{top: number, left: number}}
+     */
+    function position() {
+      return TinyHtml.position(this);
+    }
+    /**
+     * Gets the closest positioned ancestor element.
+     * @param {TinyHtmlElement} el - Target element.
+     * @returns {HTMLElement} - Offset parent element.
+     */
+  }, {
+    key: "offsetParent",
+    value:
+    /**
+     * Gets the closest positioned ancestor element.
+     * @returns {HTMLElement} - Offset parent element.
+     */
+    function offsetParent() {
+      return TinyHtml.offsetParent(this);
+    }
+    /**
+     * Gets the vertical scroll position.
+     * @param {TinyElementAndWindow} el - Element or window.
+     * @returns {number}
+     */
+  }, {
+    key: "scrollTop",
+    value:
+    /**
+     * Gets the vertical scroll position.
+     * @returns {number}
+     */
+    function scrollTop() {
+      return TinyHtml.scrollTop(this);
+    }
+    /**
+     * Gets the horizontal scroll position.
+     * @param {TinyElementAndWindow} el - Element or window.
+     * @returns {number}
+     */
+  }, {
+    key: "scrollLeft",
+    value:
+    /**
+     * Gets the horizontal scroll position.
+     * @returns {number}
+     */
+    function scrollLeft() {
+      return TinyHtml.scrollLeft(this);
+    }
+    /**
+     * Sets the vertical scroll position.
+     * @param {TinyElementAndWindow|TinyElementAndWindow[]} el - Element or window.
+     * @param {number} value - Scroll top value.
+     */
+  }, {
+    key: "setScrollTop",
+    value:
+    /**
+     * Sets the vertical scroll position.
+     * @param {number} value - Scroll top value.
+     */
+    function setScrollTop(value) {
+      return TinyHtml.setScrollTop(this, value);
+    }
+    /**
+     * Sets the horizontal scroll position.
+     * @param {TinyElementAndWindow|TinyElementAndWindow[]} el - Element or window.
+     * @param {number} value - Scroll left value.
+     */
+  }, {
+    key: "setScrollLeft",
+    value:
+    /**
+     * Sets the horizontal scroll position.
+     * @param {number} value - Scroll left value.
+     */
+    function setScrollLeft(value) {
+      return TinyHtml.setScrollLeft(this, value);
+    }
+    /**
+     * Returns the total border width and individual sides from `border{Side}Width` CSS properties.
+     *
+     * @param {TinyElement} el - The target DOM element.
+     * @returns {HtmlElBoxSides} - Total horizontal (x) and vertical (y) border widths, and each side individually.
+     */
+  }, {
+    key: "borderWidth",
+    value:
+    /**
+     * Returns the total border width and individual sides from `border{Side}Width` CSS properties.
+     *
+     * @returns {HtmlElBoxSides} - Total horizontal (x) and vertical (y) border widths, and each side individually.
+     */
+    function borderWidth() {
+      return TinyHtml.borderWidth(this);
+    }
+    /**
+     * Returns the total border size and individual sides from `border{Side}` CSS properties.
+     *
+     * @param {TinyElement} el - The target DOM element.
+     * @returns {HtmlElBoxSides} - Total horizontal (x) and vertical (y) border sizes, and each side individually.
+     */
+  }, {
+    key: "border",
+    value:
+    /**
+     * Returns the total border size and individual sides from `border{Side}` CSS properties.
+     *
+     * @returns {HtmlElBoxSides} - Total horizontal (x) and vertical (y) border sizes, and each side individually.
+     */
+    function border() {
+      return TinyHtml.border(this);
+    }
+    /**
+     * Returns the total margin and individual sides from `margin{Side}` CSS properties.
+     *
+     * @param {TinyElement} el - The target DOM element.
+     * @returns {HtmlElBoxSides} - Total horizontal (x) and vertical (y) margins, and each side individually.
+     */
+  }, {
+    key: "margin",
+    value:
+    /**
+     * Returns the total margin and individual sides from `margin{Side}` CSS properties.
+     *
+     * @returns {HtmlElBoxSides} - Total horizontal (x) and vertical (y) margins, and each side individually.
+     */
+    function margin() {
+      return TinyHtml.margin(this);
+    }
+    /**
+     * Returns the total padding and individual sides from `padding{Side}` CSS properties.
+     *
+     * @param {TinyElement} el - The target DOM element.
+     * @returns {HtmlElBoxSides} - Total horizontal (x) and vertical (y) paddings, and each side individually.
+     */
+  }, {
+    key: "padding",
+    value:
+    /**
+     * Returns the total padding and individual sides from `padding{Side}` CSS properties.
+     *
+     * @returns {HtmlElBoxSides} - Total horizontal (x) and vertical (y) paddings, and each side individually.
+     */
+    function padding() {
+      return TinyHtml.padding(this);
+    }
+    /////////////////////////////////////////////
+    /**
+     * Adds one or more CSS class names to the element.
+     * @type {(el: TinyElement|TinyElement[], ...tokens: string[]) => void} - One or more class names to add.
+     */
+  }, {
+    key: "addClass",
+    value:
+    /**
+     * Adds one or more CSS class names to the element.
+     * @type {(...tokens: string[]) => void} - One or more class names to add.
+     */
+    function addClass() {
+      for (var _len6 = arguments.length, args = new Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {
+        args[_key6] = arguments[_key6];
+      }
+      return TinyHtml.addClass.apply(TinyHtml, [this].concat(args));
+    }
+    /**
+     * Removes one or more CSS class names from the element.
+     * @type {(el: TinyElement|TinyElement[], ...tokens: string[]) => void} - One or more class names to remove.
+     */
+  }, {
+    key: "removeClass",
+    value:
+    /**
+     * Removes one or more CSS class names from the element.
+     * @type {(...tokens: string[]) => void} - One or more class names to remove.
+     */
+    function removeClass() {
+      for (var _len7 = arguments.length, args = new Array(_len7), _key7 = 0; _key7 < _len7; _key7++) {
+        args[_key7] = arguments[_key7];
+      }
+      return TinyHtml.removeClass.apply(TinyHtml, [this].concat(args));
+    }
+    /**
+     * Replaces an existing class name with a new one.
+     * @param {TinyElement|TinyElement[]} el - Target element.
+     * @param {string} token - The class name to be replaced.
+     * @param {string} newToken - The new class name to apply.
+     * @returns {boolean[]} Whether the replacement was successful.
+     * @throws {TypeError} If either argument is not a string.
+     */
+  }, {
+    key: "replaceClass",
+    value:
+    /**
+     * Replaces an existing class name with a new one.
+     * @param {string} token - The class name to be replaced.
+     * @param {string} newToken - The new class name to apply.
+     * @returns {boolean} Whether the replacement was successful.
+     * @throws {TypeError} If either argument is not a string.
+     */
+    function replaceClass(token, newToken) {
+      return TinyHtml.replaceClass(this, token, newToken)[0];
+    }
+    /**
+     * Returns the class name at the specified index.
+     * @param {TinyElement} el - Target element.
+     * @param {number} index - The index of the class name.
+     * @returns {string|null} The class name at the index or null if not found.
+     * @throws {TypeError} If the index is not a number.
+     */
+  }, {
+    key: "classItem",
+    value:
+    /**
+     * Returns the class name at the specified index.
+     * @param {number} index - The index of the class name.
+     * @returns {string|null} The class name at the index or null if not found.
+     * @throws {TypeError} If the index is not a number.
+     */
+    function classItem(index) {
+      return TinyHtml.classItem(this, index);
+    }
+    /**
+     * Toggles a class name on the element with an optional force boolean.
+     * @param {TinyElement|TinyElement[]} el - Target element.
+     * @param {string} token - The class name to toggle.
+     * @param {boolean} [force] - If true, adds the class; if false, removes it.
+     * @returns {boolean[]} Whether the class is present after the toggle.
+     * @throws {TypeError} If token is not a string or force is not a boolean.
+     */
+  }, {
+    key: "toggleClass",
+    value:
+    /**
+     * Toggles a class name on the element with an optional force boolean.
+     * @param {string} token - The class name to toggle.
+     * @param {boolean} force - If true, adds the class; if false, removes it.
+     * @returns {boolean} Whether the class is present after the toggle.
+     * @throws {TypeError} If token is not a string or force is not a boolean.
+     */
+    function toggleClass(token, force) {
+      return TinyHtml.toggleClass(this, token, force)[0];
+    }
+    /**
+     * Checks if the element contains the given class name.
+     * @param {TinyElement} el - Target element.
+     * @param {string} token - The class name to check.
+     * @returns {boolean} True if the class is present, false otherwise.
+     * @throws {TypeError} If token is not a string.
+     */
+  }, {
+    key: "hasClass",
+    value:
+    /**
+     * Checks if the element contains the given class name.
+     * @param {string} token - The class name to check.
+     * @returns {boolean} True if the class is present, false otherwise.
+     * @throws {TypeError} If token is not a string.
+     */
+    function hasClass(token) {
+      return TinyHtml.hasClass(this, token);
+    }
+    /**
+     * Returns the number of classes applied to the element.
+     * @param {TinyElement} el - Target element.
+     * @returns {number} The number of classes.
+     */
+  }, {
+    key: "classLength",
+    value:
+    /**
+     * Returns the number of classes applied to the element.
+     * @returns {number} The number of classes.
+     */
+    function classLength() {
+      return TinyHtml.classLength(this);
+    }
+    /**
+     * Returns all class names as an array of strings.
+     * @param {TinyElement} el - Target element.
+     * @returns {string[]} An array of class names.
+     */
+  }, {
+    key: "classList",
+    value:
+    /**
+     * Returns all class names as an array of strings.
+     * @returns {string[]} An array of class names.
+     */
+    function classList() {
+      return TinyHtml.classList(this);
+    }
+    /////////////////////////////////////////
+    /**
+     * Returns the tag name of the element.
+     * @param {TinyElement} el - Target element.
+     * @returns {string} The tag name in uppercase.
+     */
+  }, {
+    key: "tagName",
+    value:
+    /**
+     * Returns the tag name of the element.
+     * @returns {string} The tag name in uppercase.
+     */
+    function tagName() {
+      return TinyHtml.tagName(this);
+    }
+    /**
+     * Returns the ID of the element.
+     * @param {TinyElement} el - Target element.
+     * @returns {string} The element's ID.
+     */
+  }, {
+    key: "id",
+    value:
+    /**
+     * Returns the ID of the element.
+     * @returns {string} The element's ID.
+     */
+    function id() {
+      return TinyHtml.id(this);
+    }
+    /**
+     * Returns the text content of the element.
+     * @param {TinyElement} el - Target element.
+     * @returns {string|null} The text content or null if none.
+     */
+  }, {
+    key: "text",
+    value:
+    /**
+     * Returns the text content of the element.
+     * @returns {string|null} The text content or null if none.
+     */
+    function text() {
+      return TinyHtml.text(this);
+    }
+    /**
+     * Set text content of elements.
+     * @param {TinyElement|TinyElement[]} el
+     * @param {string} value
+     */
+  }, {
+    key: "setText",
+    value:
+    /**
+     * Set text content of the element.
+     * @param {string} value
+     */
+    function setText(value) {
+      return TinyHtml.setText(this, value);
+    }
+    /**
+     * Remove all child nodes from each element.
+     * @param {TinyElement|TinyElement[]} el
+     */
+  }, {
+    key: "empty",
+    value:
+    /**
+     * Remove all child nodes of the element.
+     */
+    function empty() {
+      return TinyHtml.empty(this);
+    }
+    /**
+     * Get the innerHTML of the element.
+     * @param {TinyElement|TinyElement[]} el
+     * @returns {string}
+     */
+  }, {
+    key: "html",
+    value:
+    /**
+     * Get the innerHTML of the element.
+     * @returns {string}
+     */
+    function html() {
+      return TinyHtml.html(this);
+    }
+    /**
+     * Set the innerHTML of each element.
+     * @param {TinyElement|TinyElement[]} el
+     * @param {string} value
+     */
+  }, {
+    key: "setHtml",
+    value:
+    /**
+     * Set the innerHTML of the element.
+     * @param {string} value
+     */
+    function setHtml(value) {
+      return TinyHtml.setHtml(this, value);
+    }
+    /** @readonly */
+  }, {
+    key: "setVal",
+    value:
+    /**
+     * Sets the value of the current HTML value element (input, select, textarea, etc.).
+     * Accepts strings, numbers, booleans or arrays of these values, or a callback function that computes them.
+     *
+     * @param {SetValueList|((el: InputElement, val: SetValueList) => SetValueList)} value - The value to assign or a function that returns it.
+     * @throws {Error} If the computed value is not a valid string or boolean.
+     */
+    function setVal(value) {
+      return TinyHtml.setVal(this, value);
+    }
+    /**
+     * Maps value types to their corresponding getter functions.
+     * Each function extracts a value of a specific type from a compatible HTMLInputElement.
+     * @readonly
+     */
+  }, {
+    key: "_val",
+    value:
+    /**
+     * Retrieves the raw value from the HTML input element.
+     * If a custom value hook exists, it will be used first.
+     *
+     * @param {GetValueTypes} type - The type of value to retrieve ("string", "date", or "number").
+     * @param {string} where - The context/method name using this validation.
+     * @returns {any} The raw value retrieved from the element or hook.
+     * @readonly
+     */
+    function _val(where, type) {
+      return TinyHtml._val(this, where, type);
+    }
+    /**
+     * Gets the value of the current HTML value element.
+     *
+     * @param {TinyInputElement} el - Target element.
+     * @returns {SetValueList} The normalized value, with carriage returns removed.
+     */
+  }, {
+    key: "val",
+    value:
+    /**
+     * Gets the value of the current HTML value element.
+     *
+     * @returns {SetValueList} The normalized value, with carriage returns removed.
+     */
+    function val() {
+      return TinyHtml.val(this);
+    }
+    /**
+     * Gets the text of the current HTML value element (for text).
+     *
+     * @param {TinyInputElement} el - Target element.
+     * @returns {string} The text value.
+     * @throws {Error} If the element is not a string value.
+     */
+  }, {
+    key: "valTxt",
+    value:
+    /**
+     * Gets the text of the current HTML value element (for text).
+     *
+     * @returns {string} The text value.
+     * @throws {Error} If the element is not a string value.
+     */
+    function valTxt() {
+      return TinyHtml.valTxt(this);
+    }
+    /**
+     * Internal helper to get a value from an input expected to return an array.
+     *
+     * @param {TinyInputElement} el - Target element.
+     * @param {string} where - The method name or context using this validation (for error reporting).
+     * @param {GetValueTypes} type - The type of value to retrieve ("string", "date", or "number").
+     * @returns {SetValueBase[]} - The validated value as an array.
+     * @throws {Error} If the returned value is not an array.
+     * @readonly
+     */
+  }, {
+    key: "_valArr",
+    value:
+    /**
+     * Internal helper to get a value from an input expected to return an array.
+     *
+     * @param {string} where - The method name or context using this validation (for error reporting).
+     * @param {GetValueTypes} type - The type of value to retrieve ("string", "date", or "number").
+     * @returns {SetValueBase[]} - The validated value as an array.
+     * @throws {Error} If the returned value is not an array.
+     * @readonly
+     */
+    function _valArr(where, type) {
+      return TinyHtml._valArr(this, where, type);
+    }
+    /**
+     * Gets the raw value as a generic array of the current HTML value element (for select).
+     *
+     * @param {TinyInputElement} el - Target element.
+     * @returns {SetValueBase[]} - The value cast as a generic array.
+     * @throws {Error} If the value is not a valid array.
+     */
+  }, {
+    key: "valArr",
+    value:
+    /**
+     * Gets the raw value as a generic array of the current HTML value element (for select).
+     *
+     * @returns {SetValueBase[]} - The value cast as a generic array.
+     * @throws {Error} If the value is not a valid array.
+     */
+    function valArr() {
+      return TinyHtml.valArr(this);
+    }
+    /**
+     * Gets the current value parsed as a number (for number/text).
+     *
+     * @param {TinyInputElement} el - Target element.
+     * @returns {number} The numeric value.
+     * @throws {Error} If the element is not a number-compatible input or value is NaN.
+     */
+  }, {
+    key: "valNb",
+    value:
+    /**
+     * Gets the current value parsed as a number (for number/text).
+     *
+     * @returns {number} The numeric value.
+     * @throws {Error} If the element is not a number-compatible input or value is NaN.
+     */
+    function valNb() {
+      return TinyHtml.valNb(this);
+    }
+    /**
+     * Gets the current value parsed as a Date (for time/date).
+     *
+     * @param {TinyInputElement} el - Target element.
+     * @returns {Date} The date value.
+     * @throws {Error} If the element is not a date-compatible input.
+     */
+  }, {
+    key: "valDate",
+    value:
+    /**
+     * Gets the current value parsed as a Date (for time/date).
+     *
+     * @returns {Date} The date value.
+     * @throws {Error} If the element is not a date-compatible input.
+     */
+    function valDate() {
+      return TinyHtml.valDate(this);
+    }
+    /**
+     * Checks if the input element is boolean (for checkboxes/radios).
+     *
+     * @param {TinyInputElement} el - Target element.
+     * @returns {boolean} True if the input is considered checked (value === "on"), false otherwise.
+     * @throws {Error} If the element is not a checkbox/radio input.
+     */
+  }, {
+    key: "valBool",
+    value:
+    /**
+     * Checks if the input element is boolean (for checkboxes/radios).
+     *
+     * @returns {boolean} True if the input is considered checked (value === "on"), false otherwise.
+     * @throws {Error} If the element is not a checkbox/radio input.
+     */
+    function valBool() {
+      return TinyHtml.valBool(this);
+    }
+    ////////////////////////////////////////////
+    /**
+     * Registers an event listener on the specified element.
+     *
+     * @param {TinyEventTarget|TinyEventTarget[]} el - The target to listen on.
+     * @param {string} event - The event type (e.g. 'click', 'keydown').
+     * @param {EventRegistryHandle} handler - The callback function to run on event.
+     * @param {EventRegistryOptions} [options] - Optional event listener options.
+     */
+  }, {
+    key: "on",
+    value:
+    /**
+     * Registers an event listener on the specified element.
+     *
+     * @param {string} event - The event type (e.g. 'click', 'keydown').
+     * @param {EventRegistryHandle} handler - The callback function to run on event.
+     * @param {EventRegistryOptions} [options] - Optional event listener options.
+     */
+    function on(event, handler, options) {
+      return TinyHtml.on(this, event, handler, options);
+    }
+    /**
+     * Registers an event listener that runs only once, then is removed.
+     *
+     * @param {TinyEventTarget|TinyEventTarget[]} el - The target to listen on.
+     * @param {string} event - The event type (e.g. 'click', 'keydown').
+     * @param {EventRegistryHandle} handler - The callback function to run on event.
+     * @param {EventRegistryOptions} [options={}] - Optional event listener options.
+     */
+  }, {
+    key: "once",
+    value:
+    /**
+     * Registers an event listener that runs only once, then is removed.
+     *
+     * @param {string} event - The event type (e.g. 'click', 'keydown').
+     * @param {EventRegistryHandle} handler - The callback function to run on event.
+     * @param {EventRegistryOptions} [options={}] - Optional event listener options.
+     */
+    function once(event, handler) {
+      var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+      return TinyHtml.once(this, event, handler, options);
+    }
+    /**
+     * Removes a specific event listener from an element.
+     *
+     * @param {TinyEventTarget|TinyEventTarget[]} el - The target element.
+     * @param {string} event - The event type.
+     * @param {EventRegistryHandle} handler - The function originally bound to the event.
+     * @param {boolean|EventListenerOptions} [options] - Optional listener options.
+     */
+  }, {
+    key: "off",
+    value:
+    /**
+     * Removes a specific event listener from an element.
+     *
+     * @param {string} event - The event type.
+     * @param {EventRegistryHandle} handler - The function originally bound to the event.
+     * @param {boolean|EventListenerOptions} [options] - Optional listener options.
+     */
+    function off(event, handler, options) {
+      return TinyHtml.off(this, event, handler, options);
+    }
+    /**
+     * Removes all event listeners of a specific type from the element.
+     *
+     * @param {TinyEventTarget|TinyEventTarget[]} el - The target element.
+     * @param {string} event - The event type to remove (e.g. 'click').
+     */
+  }, {
+    key: "offAll",
+    value:
+    /**
+     * Removes all event listeners of a specific type from the element.
+     *
+     * @param {string} event - The event type to remove (e.g. 'click').
+     */
+    function offAll(event) {
+      return TinyHtml.offAll(this, event);
+    }
+    /**
+     * Removes all event listeners of all types from the element.
+     *
+     * @param {TinyEventTarget|TinyEventTarget[]} el - The target element.
+     * @param {((handler: EventListenerOrEventListenerObject, event: string) => boolean)|null} [filterFn=null] -
+     *        Optional filter function to selectively remove specific handlers.
+     */
+  }, {
+    key: "offAllTypes",
+    value:
+    /**
+     * Removes all event listeners of all types from the element.
+     *
+     * @param {((handler: EventListenerOrEventListenerObject, event: string) => boolean)|null} [filterFn=null] -
+     *        Optional filter function to selectively remove specific handlers.
+     */
+    function offAllTypes() {
+      var filterFn = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      return TinyHtml.offAllTypes(this, filterFn);
+    }
+    /**
+     * Triggers all handlers associated with a specific event on the given element.
+     *
+     * @param {TinyEventTarget|TinyEventTarget[]} el - Target element where the event should be triggered.
+     * @param {string} event - Name of the event to trigger.
+     * @param {Event|CustomEvent|CustomEventInit} [payload] - Optional event object or data to pass.
+     */
+  }, {
+    key: "trigger",
+    value:
+    /**
+     * Triggers all handlers associated with a specific event on the given element.
+     *
+     * @param {string} event - Name of the event to trigger.
+     * @param {Event|CustomEvent|CustomEventInit} [payload] - Optional event object or data to pass.
+     */
+    function trigger(event) {
+      var payload = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      return TinyHtml.trigger(this, event, payload);
+    }
+    ///////////////////////////////////////////////////////////////
+    /**
+     * Property name normalization similar to jQuery's propFix.
+     * @readonly
+     */
+  }, {
+    key: "attr",
+    value:
+    /**
+     * Get an attribute on an element.
+     * @param {string} name
+     * @returns {string|null}
+     */
+    function attr(name) {
+      return TinyHtml.attr(this, name);
+    }
+    /**
+     * Set an attribute on an element.
+     * @param {TinyElement|TinyElement[]} el
+     * @param {string} name
+     * @param {string|null} [value=null]
+     */
+  }, {
+    key: "setAttr",
+    value:
+    /**
+     * Set an attribute on an element.
+     * @param {string} name
+     * @param {string|null} [value=null]
+     */
+    function setAttr(name, value) {
+      return TinyHtml.setAttr(this, name, value);
+    }
+    /**
+     * Remove attribute(s) from an element.
+     * @param {TinyElement|TinyElement[]} el
+     * @param {string} name Space-separated list of attributes.
+     */
+  }, {
+    key: "removeAttr",
+    value:
+    /**
+     * Remove attribute(s) from an element.
+     * @param {string} name Space-separated list of attributes.
+     */
+    function removeAttr(name) {
+      return TinyHtml.removeAttr(this, name);
+    }
+    /**
+     * Check if an attribute exists on an element.
+     * @param {TinyElement} el
+     * @param {string} name
+     * @returns {boolean}
+     */
+  }, {
+    key: "hasAttr",
+    value:
+    /**
+     * Check if an attribute exists on an element.
+     * @param {string} name
+     * @returns {boolean}
+     */
+    function hasAttr(name) {
+      return TinyHtml.hasAttr(this, name);
+    }
+    /**
+     * Check if a property exists.
+     * @param {TinyElement} el
+     * @param {string} name
+     * @returns {boolean}
+     */
+  }, {
+    key: "hasProp",
+    value:
+    /**
+     * Check if a property exists.
+     * @param {string} name
+     * @returns {boolean}
+     */
+    function hasProp(name) {
+      return TinyHtml.hasProp(this, name);
+    }
+    /**
+     * Set a property on an element.
+     * @param {TinyElement|TinyElement[]} el
+     * @param {string} name
+     */
+  }, {
+    key: "addProp",
+    value:
+    /**
+     * Set a property on an element.
+     * @param {string} name
+     */
+    function addProp(name) {
+      return TinyHtml.addProp(this, name);
+    }
+    /**
+     * Remove a property from an element.
+     * @param {TinyElement|TinyElement[]} el
+     * @param {string} name
+     */
+  }, {
+    key: "removeProp",
+    value:
+    /**
+     * Remove a property from an element.
+     * @param {string} name
+     */
+    function removeProp(name) {
+      return TinyHtml.removeProp(this, name);
+    }
+    /**
+     * Toggle a boolean property.
+     * @param {TinyElement|TinyElement[]} el
+     * @param {string} name
+     * @param {boolean} [force]
+     */
+  }, {
+    key: "toggleProp",
+    value:
+    /**
+     * Toggle a boolean property.
+     * @param {string} name
+     * @param {boolean} [force]
+     */
+    function toggleProp(name, force) {
+      return TinyHtml.toggleProp(this, name, force);
+    }
+    /////////////////////////////////////////////////////
+    /**
+     * Removes an element from the DOM.
+     * @param {TinyElement|TinyElement[]} el - The DOM element or selector to remove.
+     */
+  }, {
+    key: "remove",
+    value:
+    /**
+     * Removes the element from the DOM.
+     */
+    function remove() {
+      return TinyHtml.remove(this);
+    }
+    /**
+     * Returns the index of the first element within its parent or relative to a selector/element.
+     *
+     * @param {TinyElement} el - The element target
+     * @param {string|TinyElement|null} [el2] - Optional target to compare index against.
+     * @returns {number}
+     */
+  }, {
+    key: "index",
+    value:
+    /**
+     * Returns the index of the first element within its parent or relative to a selector/element.
+     *
+     * @param {string|TinyElement|null} [elem] - Optional target to compare index against.
+     * @returns {number}
+     */
+    function index(elem) {
+      return TinyHtml.index(this, elem);
+    }
+    ////////////////////////////////////////////////////////////////////
+    /**
+     * Creates a new DOMRect object by copying the base rect and applying optional additional dimensions.
+     *
+     * @param {DOMRect} rect - The base rectangle to be cloned and extended.
+     * @param {Partial<DOMRect>} extraRect - Additional dimensions to apply to the base rect (e.g., extra padding or offset).
+     * @returns {DOMRect} - A new DOMRect object with the combined dimensions.
+     * @readonly
+     */
+  }, {
+    key: "isCollWith",
+    value:
+    /**
+     * Determines if two HTML elements are colliding, using a simple bounding box comparison.
+     *
+     * @param {TinyElement} el2 - The second element to compare.
+     * @param {Partial<ObjRect>} [extraRect] - Optional values to expand the size of the first element's rect.
+     * @returns {boolean} - `true` if the elements are colliding, `false` otherwise.
+     */
+    function isCollWith(el2, extraRect) {
+      return TinyHtml.isCollWith(this, el2, extraRect);
+    }
+    /**
+     * Determines if two HTML elements are colliding using a pixel-perfect collision algorithm.
+     *
+     * @param {TinyElement} el1 - The first element to compare.
+     * @param {TinyElement} el2 - The second element to compare.
+     * @param {Partial<ObjRect>} [extraRect] - Optional values to expand the size of the first element's rect.
+     * @returns {boolean} - `true` if the elements are colliding with higher precision, `false` otherwise.
+     */
+  }, {
+    key: "isCollPerfWith",
+    value:
+    /**
+     * Determines if two HTML elements are colliding using a pixel-perfect collision algorithm.
+     *
+     * @param {TinyElement} el2 - The second element to compare.
+     * @param {Partial<ObjRect>} [extraRect] - Optional values to expand the size of the first element's rect.
+     * @returns {boolean} - `true` if the elements are colliding with higher precision, `false` otherwise.
+     */
+    function isCollPerfWith(el2, extraRect) {
+      return TinyHtml.isCollPerfWith(this, el2, extraRect);
+    }
+    /**
+     * Determines whether two elements are colliding with a directional lock mechanism.
+     *
+     * This function tracks the direction from which an element (`elem1`) initially collided with another,
+     * and keeps the collision "locked" until the element exits the collision from the same direction.
+     *
+     * - If `isColliding` is true and no lock is stored yet, it saves the direction of entry.
+     * - If `isColliding` is false but a previous lock exists, it checks if the element has exited
+     *   in the same direction it entered to remove the lock.
+     *
+     * @param {boolean} isColliding - Indicates whether `rect1` and `rect2` are currently colliding.
+     * @param {DOMRect} rect1 - The bounding box of the first element.
+     * @param {DOMRect} rect2 - The bounding box of the second element.
+     * @param {Element} elem1 - The element to track collision state for.
+     * @param {CollisionDirLock} lockDirection - The direction from which the collision was first detected.
+     * @returns {boolean} Returns `true` if the element is still considered colliding (locked), otherwise `false`.
+     * @readonly
+     */
+  }, {
+    key: "isCollWithLock",
+    value:
+    /**
+     * Checks if two DOM elements are colliding on the screen, and locks the collision
+     * until the element exits through the same side it entered.
+     *
+     * @param {TinyElement} el2 - Second DOM element (e.g. a container or boundary element).
+     * @param {CollisionDirLock} lockDirection - Direction that must be respected to unlock the collision.
+     * @param {Partial<ObjRect>} [extraRect] - Optional values to expand the size of the first element's rect.
+     * @returns {boolean} True if collision is still active.
+     */
+    function isCollWithLock(el2, lockDirection, extraRect) {
+      return TinyHtml.isCollWithLock(this, el2, lockDirection, extraRect);
+    }
+    /**
+     * Checks if two DOM elements are colliding on the screen, and locks the collision
+     * until the element exits through the same side it entered.
+     *
+     * @param {TinyElement} el1 - First DOM element (e.g. draggable or moving element).
+     * @param {TinyElement} el2 - Second DOM element (e.g. a container or boundary element).
+     * @param {CollisionDirLock} lockDirection - Direction that must be respected to unlock the collision.
+     * @param {Partial<ObjRect>} [extraRect] - Optional values to expand the size of the first element's rect.
+     * @returns {boolean} True if collision is still active.
+     */
+  }, {
+    key: "isCollPerfWithLock",
+    value:
+    /**
+     * Checks if two DOM elements are colliding on the screen, and locks the collision
+     * until the element exits through the same side it entered.
+     *
+     * @param {TinyElement} el2 - Second DOM element (e.g. a container or boundary element).
+     * @param {CollisionDirLock} lockDirection - Direction that must be respected to unlock the collision.
+     * @param {Partial<ObjRect>} [extraRect] - Optional values to expand the size of the first element's rect.
+     * @returns {boolean} True if collision is still active.
+     */
+    function isCollPerfWithLock(el2, lockDirection, extraRect) {
+      return TinyHtml.isCollPerfWithLock(this, el2, lockDirection, extraRect);
+    }
+    /**
+     * Resets all collision locks for a specific element (for all directions).
+     *
+     * @param {TinyElement} el - The element whose locks should be removed.
+     * @returns {boolean} True if at least one lock was removed.
+     */
+  }, {
+    key: "resetCollLock",
+    value:
+    /**
+     * Resets the collision lock for a specific element.
+     *
+     * This removes any previously stored collision direction for the given element,
+     * effectively unlocking its collision state.
+     *
+     * @returns {boolean} Returns `true` if a lock was removed, `false` if no lock was present.
+     */
+    function resetCollLock() {
+      return TinyHtml.resetCollLock(this);
+    }
+    /**
+     * Resets the collision lock for a specific element and direction.
+     *
+     * @param {TinyElement} el - The element whose lock should be removed.
+     * @param {CollisionDirLock} direction - The direction to clear the lock from.
+     * @returns {boolean} True if the lock was removed.
+     */
+  }, {
+    key: "resetCollLockDir",
+    value:
+    /**
+     * Resets the collision lock for a specific element and direction.
+     *
+     * @param {CollisionDirLock} direction - The direction to clear the lock from.
+     * @returns {boolean} True if the lock was removed.
+     */
+    function resetCollLockDir(direction) {
+      return TinyHtml.resetCollLockDir(this, direction);
+    }
+    //////////////////////////////////////////////////////////////////////////////
+    /**
+     * Checks if the given element is at least partially visible in the viewport.
+     *
+     * @param {TinyElement} el - The DOM element to check.
+     * @returns {boolean} True if the element is partially in the viewport, false otherwise.
+     */
+  }, {
+    key: "isInViewport",
+    value:
+    /**
+     * Checks if the given element is at least partially visible in the viewport.
+     *
+     * @returns {boolean} True if the element is partially in the viewport, false otherwise.
+     */
+    function isInViewport() {
+      return TinyHtml.isInViewport(this);
+    }
+    /**
+     * Checks if the given element is fully visible in the viewport (top and bottom).
+     *
+     * @param {TinyElement} el - The DOM element to check.
+     * @returns {boolean} True if the element is fully visible in the viewport, false otherwise.
+     */
+  }, {
+    key: "isScrolledIntoView",
+    value:
+    /**
+     * Checks if the given element is fully visible in the viewport (top and bottom).
+     *
+     * @returns {boolean} True if the element is fully visible in the viewport, false otherwise.
+     */
+    function isScrolledIntoView() {
+      return TinyHtml.isScrolledIntoView(this);
+    }
+  }], [{
+    key: "query",
+    value:
+    /**
+     * Queries the document for the first element matching the CSS selector and wraps it in a TinyHtml instance.
+     *
+     * @param {string} selector - A valid CSS selector string.
+     * @returns {TinyHtml} A TinyHtml instance wrapping the matched element.
+     * @throws {Error} If no element matches the selector.
+     */
+    function query(selector) {
+      var newEl = document.querySelector(selector);
+      if (!newEl) throw new Error("[TinyHtml] query(): No element found for selector \"".concat(selector, "\"."));
+      return new TinyHtml(newEl);
+    }
+    /**
+     * Queries the document for all elements matching the CSS selector and wraps them in TinyHtml instances.
+     *
+     * @param {string} selector - A valid CSS selector string.
+     * @returns {TinyHtml[]} An array of TinyHtml instances wrapping the matched elements.
+     */
+  }, {
+    key: "queryAll",
+    value: function queryAll(selector) {
+      var newEls = document.querySelectorAll(selector);
+      return TinyHtml.toTinyElm(_toConsumableArray(newEls));
+    }
+    /**
+     * Retrieves an element by its ID and wraps it in a TinyHtml instance.
+     *
+     * @param {string} selector - The ID of the element to retrieve.
+     * @returns {TinyHtml} A TinyHtml instance wrapping the found element.
+     * @throws {Error} If no element is found with the specified ID.
+     */
+  }, {
+    key: "getById",
+    value: function getById(selector) {
+      var newEl = document.getElementById(selector);
+      if (!newEl) throw new Error("[TinyHtml] getById(): No element found with ID \"".concat(selector, "\"."));
+      return new TinyHtml(newEl);
+    }
+    /**
+     * Retrieves all elements with the specified class name and wraps them in TinyHtml instances.
+     *
+     * @param {string} selector - The class name to search for.
+     * @returns {TinyHtml[]} An array of TinyHtml instances wrapping the found elements.
+     */
+  }, {
+    key: "getByClassName",
+    value: function getByClassName(selector) {
+      var newEls = document.getElementsByClassName(selector);
+      return TinyHtml.toTinyElm(_toConsumableArray(newEls));
+    }
+    /**
+     * Retrieves all elements with the specified name attribute and wraps them in TinyHtml instances.
+     *
+     * @param {string} selector - The name attribute to search for.
+     * @returns {TinyHtml[]} An array of TinyHtml instances wrapping the found elements.
+     */
+  }, {
+    key: "getByName",
+    value: function getByName(selector) {
+      var newEls = document.getElementsByName(selector);
+      return TinyHtml.toTinyElm(_toConsumableArray(newEls));
+    }
+    /**
+     * Retrieves all elements with the specified local tag name within the given namespace URI,
+     * and wraps them in TinyHtml instances.
+     *
+     * @param {string} localName - The local name (tag) of the elements to search for.
+     * @param {string|null} [namespaceURI='http://www.w3.org/1999/xhtml'] - The namespace URI to search within.
+     * @returns {TinyHtml[]} An array of TinyHtml instances wrapping the found elements.
+     */
+  }, {
+    key: "getByTagNameNS",
+    value: function getByTagNameNS(localName) {
+      var namespaceURI = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'http://www.w3.org/1999/xhtml';
+      var newEls = document.getElementsByTagNameNS(namespaceURI, localName);
+      return TinyHtml.toTinyElm(_toConsumableArray(newEls));
+    }
+  }, {
+    key: "_preElemsTemplate",
+    value: function _preElemsTemplate(elems, where, TheTinyElements, elemName) {
+      /** @param {(TinyElement|EventTarget|null)[]} item */
+      var checkElement = function checkElement(item) {
+        return item.map(function (elem) {
+          var result = elem instanceof TinyHtml ? elem._getElement(where) : elem;
+          var allowed = false;
+          var _iterator = _createForOfIteratorHelper(TheTinyElements),
+            _step;
+          try {
+            for (_iterator.s(); !(_step = _iterator.n()).done;) {
+              var TheTinyElement = _step.value;
+              if (result instanceof TheTinyElement) {
+                allowed = true;
+                break;
+              }
+            }
+          } catch (err) {
+            _iterator.e(err);
+          } finally {
+            _iterator.f();
+          }
+          if (!allowed) throw new Error("[TinyHtml] Invalid element of the list \"".concat(elemName.join(','), "\" in ").concat(where, "()."));
+          return result;
+        });
+      };
+      if (!Array.isArray(elems)) return checkElement([elems]);
+      return checkElement(elems);
+    }
+    /**
+     * @param {TinyElement|EventTarget|null|(TinyElement|EventTarget|null)[]} elems
+     * @param {string} where
+     * @param {any[]} TheTinyElements
+     * @param {string[]} elemName
+     * @param {boolean} [canNull=false]
+     * @returns {any}
+     * @readonly
+     */
+  }, {
+    key: "_preElemTemplate",
+    value: function _preElemTemplate(elems, where, TheTinyElements, elemName) {
+      var canNull = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
+      /** @param {(TinyElement|EventTarget|null)[]} item */
+      var checkElement = function checkElement(item) {
+        var elem = item[0];
+        var result = elem instanceof TinyHtml ? elem._getElement(where) : elem;
+        var allowed = false;
+        var _iterator2 = _createForOfIteratorHelper(TheTinyElements),
+          _step2;
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var TheTinyElement = _step2.value;
+            if (result instanceof TheTinyElement) {
+              allowed = true;
+              break;
+            }
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+        if (canNull && (result === null || typeof result === 'undefined')) {
+          result = null;
+          allowed = true;
+        }
+        if (!allowed) throw new Error("[TinyHtml] Invalid element of the list \"".concat(elemName.join(','), "\" in ").concat(where, "()."));
+        return result;
+      };
+      if (!Array.isArray(elems)) return checkElement([elems]);
+      if (elems.length > 1) throw new Error("[TinyHtml] Invalid element amount in ".concat(where, "() (Received ").concat(elems.length, "/1)."));
+      return checkElement(elems);
+    }
+    /**
+     * Ensures the input is returned as an array.
+     * Useful to normalize operations across multiple or single elements.
+     *
+     * @param {TinyElement|TinyElement[]} elems - A single element or array of elements.
+     * @param {string} where - The method or context name where validation is being called.
+     * @returns {Element[]} - Always returns an array of elements.
+     * @readonly
+     */
+  }, {
+    key: "_preElems",
+    value: function _preElems(elems, where) {
+      return TinyHtml._preElemsTemplate(elems, where, [Element], ['Element']);
+    }
+    /**
+     * Ensures the input is returned as an single element.
+     * Useful to normalize operations across multiple or single elements.
+     *
+     * @param {TinyElement|TinyElement[]} elems - A single element or array of elements.
+     * @param {string} where - The method or context name where validation is being called.
+     * @returns {Element} - Always returns an single element.
+     * @readonly
+     */
+  }, {
+    key: "_preElem",
+    value: function _preElem(elems, where) {
+      return TinyHtml._preElemTemplate(elems, where, [Element], ['Element']);
+    }
+    /**
+     * Ensures the input is returned as an array.
+     * Useful to normalize operations across multiple or single nodes.
+     *
+     * @param {TinyNode|TinyNode[]} elems - A single node or array of nodes.
+     * @param {string} where - The method or context name where validation is being called.
+     * @returns {Node[]} - Always returns an array of nodes.
+     * @readonly
+     */
+  }, {
+    key: "_preNodeElems",
+    value: function _preNodeElems(elems, where) {
+      return TinyHtml._preElemsTemplate(elems, where, [Node], ['Node']);
+    }
+    /**
+     * Ensures the input is returned as an single node.
+     * Useful to normalize operations across multiple or single nodes.
+     *
+     * @param {TinyNode|TinyNode[]} elems - A single node or array of nodes.
+     * @param {string} where - The method or context name where validation is being called.
+     * @returns {Node} - Always returns an single node.
+     * @readonly
+     */
+  }, {
+    key: "_preNodeElem",
+    value: function _preNodeElem(elems, where) {
+      return TinyHtml._preElemTemplate(elems, where, [Node], ['Node']);
+    }
+    /**
+     * Ensures the input is returned as an single node.
+     * Useful to normalize operations across multiple or single nodes.
+     *
+     * @param {TinyNode|TinyNode[]} elems - A single node or array of nodes.
+     * @param {string} where - The method or context name where validation is being called.
+     * @returns {Node|null} - Always returns an single node or null.
+     * @readonly
+     */
+  }, {
+    key: "_preNodeElemWithNull",
+    value: function _preNodeElemWithNull(elems, where) {
+      return TinyHtml._preElemTemplate(elems, where, [Node], ['Node'], true);
+    }
+    /**
+     * Ensures the input is returned as an array.
+     * Useful to normalize operations across multiple or single html elements.
+     *
+     * @param {TinyElement|TinyElement[]} elems - A single html element or array of html elements.
+     * @param {string} where - The method or context name where validation is being called.
+     * @returns {HTMLElement[]} - Always returns an array of html elements.
+     * @readonly
+     */
+  }, {
+    key: "_preHtmlElems",
+    value: function _preHtmlElems(elems, where) {
+      return TinyHtml._preElemsTemplate(elems, where, [HTMLElement], ['HTMLElement']);
+    }
+    /**
+     * Ensures the input is returned as an single html element.
+     * Useful to normalize operations across multiple or single html elements.
+     *
+     * @param {TinyElement|TinyElement[]} elems - A single html element or array of html elements.
+     * @param {string} where - The method or context name where validation is being called.
+     * @returns {HTMLElement} - Always returns an single html element.
+     * @readonly
+     */
+  }, {
+    key: "_preHtmlElem",
+    value: function _preHtmlElem(elems, where) {
+      return TinyHtml._preElemTemplate(elems, where, [HTMLElement], ['HTMLElement']);
+    }
+    /**
+     * Ensures the input is returned as an array.
+     * Useful to normalize operations across multiple or single event target elements.
+     *
+     * @param {TinyInputElement|TinyInputElement[]} elems - A single event target element or array of html elements.
+     * @param {string} where - The method or context name where validation is being called.
+     * @returns {InputElement[]} - Always returns an array of event target elements.
+     * @readonly
+     */
+  }, {
+    key: "_preInputElems",
+    value: function _preInputElems(elems, where) {
+      return TinyHtml._preElemsTemplate(elems, where, [HTMLInputElement, HTMLSelectElement, HTMLTextAreaElement, HTMLOptionElement], ['HTMLInputElement', 'HTMLSelectElement', 'HTMLTextAreaElement', 'HTMLOptionElement']);
+    }
+    /**
+     * Ensures the input is returned as an single event target element.
+     * Useful to normalize operations across multiple or single event target elements.
+     *
+     * @param {TinyInputElement|TinyInputElement[]} elems - A single event target element or array of html elements.
+     * @param {string} where - The method or context name where validation is being called.
+     * @returns {InputElement} - Always returns an single event target element.
+     * @readonly
+     */
+  }, {
+    key: "_preInputElem",
+    value: function _preInputElem(elems, where) {
+      return TinyHtml._preElemTemplate(elems, where, [HTMLInputElement, HTMLSelectElement, HTMLTextAreaElement, HTMLOptionElement], ['HTMLInputElement', 'HTMLSelectElement', 'HTMLTextAreaElement', 'HTMLOptionElement']);
+    }
+    /**
+     * Ensures the input is returned as an array.
+     * Useful to normalize operations across multiple or single event target elements.
+     *
+     * @param {TinyEventTarget|TinyEventTarget[]} elems - A single event target element or array of html elements.
+     * @param {string} where - The method or context name where validation is being called.
+     * @returns {EventTarget[]} - Always returns an array of event target elements.
+     * @readonly
+     */
+  }, {
+    key: "_preEventTargetElems",
+    value: function _preEventTargetElems(elems, where) {
+      return TinyHtml._preElemsTemplate(elems, where, [EventTarget], ['EventTarget']);
+    }
+    /**
+     * Ensures the input is returned as an single event target element.
+     * Useful to normalize operations across multiple or single event target elements.
+     *
+     * @param {TinyEventTarget|TinyEventTarget[]} elems - A single event target element or array of html elements.
+     * @param {string} where - The method or context name where validation is being called.
+     * @returns {EventTarget} - Always returns an single event target element.
+     * @readonly
+     */
+  }, {
+    key: "_preEventTargetElem",
+    value: function _preEventTargetElem(elems, where) {
+      return TinyHtml._preElemTemplate(elems, where, [EventTarget], ['EventTarget']);
+    }
+    /**
+     * Ensures the input is returned as an array.
+     * Useful to normalize operations across multiple or single element/window elements.
+     *
+     * @param {TinyElementAndWindow|TinyElementAndWindow[]} elems - A single element/window element or array of html elements.
+     * @param {string} where - The method or context name where validation is being called.
+     * @returns {ElementAndWindow[]} - Always returns an array of element/window elements.
+     * @readonly
+     */
+  }, {
+    key: "_preElemsAndWindow",
+    value: function _preElemsAndWindow(elems, where) {
+      return TinyHtml._preElemsTemplate(elems, where, [Element, Window], ['Element', 'Window']);
+    }
+    /**
+     * Ensures the input is returned as an single element/window element.
+     * Useful to normalize operations across multiple or single element/window elements.
+     *
+     * @param {TinyElementAndWindow|TinyElementAndWindow[]} elems - A single element/window element or array of html elements.
+     * @param {string} where - The method or context name where validation is being called.
+     * @returns {ElementAndWindow} - Always returns an single element/window element.
+     * @readonly
+     */
+  }, {
+    key: "_preElemAndWindow",
+    value: function _preElemAndWindow(elems, where) {
+      return TinyHtml._preElemTemplate(elems, where, [Element, Window], ['Element', 'Window']);
+    }
+    /**
+     * Normalizes and converts one or more DOM elements (or TinyHtml instances)
+     * into an array of `TinyHtml` instances.
+     *
+     * - If a plain DOM element is passed, it is wrapped into a `TinyHtml` instance.
+     * - If a `TinyHtml` instance is already passed, it is preserved.
+     * - If an array is passed, all elements inside are converted accordingly.
+     *
+     * This ensures consistent access to methods of the `TinyHtml` class regardless
+     * of the input form.
+     *
+     * @param {TinyElement|TinyElement[]} elems - A single element or an array of elements (DOM or TinyHtml).
+     * @returns {TinyHtml[]} An array of TinyHtml instances corresponding to the input elements.
+     */
+  }, {
+    key: "toTinyElm",
+    value: function toTinyElm(elems) {
+      /** @param {TinyElement[]} item */
+      var checkElement = function checkElement(item) {
+        return item.map(function (elem) {
+          return !(elem instanceof TinyHtml) ? new TinyHtml(elem) : elem;
+        });
+      };
+      if (!Array.isArray(elems)) return checkElement([elems]);
+      return checkElement(elems);
+    }
+    /**
+     * Extracts native `Element` instances from one or more elements,
+     * which can be either raw DOM elements or wrapped in `TinyHtml`.
+     *
+     * - If a `TinyHtml` instance is passed, its internal DOM element is extracted.
+     * - If a raw DOM element is passed, it is returned as-is.
+     * - If an array is passed, each element is processed accordingly.
+     *
+     * This function guarantees that the return value is always an array of
+     * raw `Element` objects, regardless of whether the input was
+     * a mix of `TinyHtml` or native DOM elements.
+     *
+     * @param {TinyElement|TinyElement[]} elems - A single element or an array of elements (DOM or TinyHtml`).
+     * @returns {Element[]} An array of Element instances extracted from the input.
+     */
+  }, {
+    key: "fromTinyElm",
+    value: function fromTinyElm(elems) {
+      /** @param {TinyElement[]} item */
+      var checkElement = function checkElement(item) {
+        return item.map(function (elem) {
+          return /** @type {Element} */elem instanceof TinyHtml ? elem._getElement('fromTinyElm') : elem;
+        });
+      };
+      if (!Array.isArray(elems)) return checkElement([elems]);
+      return checkElement(elems);
+    }
+    /**
+     * Filters an array of elements based on a selector, function, element, or array of elements.
+     *
+     * @param {TinyElement|TinyElement[]} elems
+     * @param {WinnowRequest} qualifier
+     * @param {string} where - The context/method name using this validation.
+     * @param {boolean} not Whether to invert the result (used for .not())
+     * @returns {Element[]}
+     */
+  }, {
+    key: "winnow",
+    value: function winnow(elems, qualifier, where) {
+      var not = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+      if (typeof not !== 'boolean') throw new TypeError('The "not" must be a boolean.');
+      if (typeof qualifier === 'function') {
+        return TinyHtml._preElems(elems, where).filter(function (el, i) {
+          return !!qualifier.call(el, i, el) !== not;
+        });
+      }
+      if (qualifier instanceof Element) {
+        return TinyHtml._preElems(elems, where).filter(function (el) {
+          return el === qualifier !== not;
+        });
+      }
+      if (Array.isArray(qualifier) || typeof qualifier !== 'string' &&
+      // @ts-ignore
+      qualifier.length != null) {
+        return TinyHtml._preElems(elems, where).filter(function (el) {
+          return qualifier.includes(el) !== not;
+        });
+      }
+      // Assume it's a selector string
+      var selector = qualifier;
+      if (not) selector = ":not(".concat(selector, ")");
+      return TinyHtml._preElems(elems, where).filter(function (el) {
+        return el.nodeType === 1 && el.matches(selector);
+      });
+    }
+    /**
+     * Filters a set of elements by a CSS selector.
+     *
+     * @param {TinyElement|TinyElement[]} elems
+     * @param {string} selector
+     * @param {boolean} not
+     * @returns {Element[]}
+     */
+  }, {
+    key: "filter",
+    value: function filter(elems, selector) {
+      var not = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      if (not) selector = ":not(".concat(selector, ")");
+      return TinyHtml._preElems(elems, 'filter').filter(function (el) {
+        return el.nodeType === 1 && el.matches(selector);
+      });
+    }
+    /**
+     * Returns only the elements matching the given selector or function.
+     *
+     * @param {TinyElement|TinyElement[]} elems
+     * @param {WinnowRequest} selector
+     * @returns {Element[]}
+     */
+  }, {
+    key: "filterOnly",
+    value: function filterOnly(elems, selector) {
+      return TinyHtml.winnow(elems, selector, 'filterOnly', false);
+    }
+    /**
+     * Returns only the elements **not** matching the given selector or function.
+     *
+     * @param {TinyElement|TinyElement[]} elems
+     * @param {WinnowRequest} selector
+     * @returns {Element[]}
+     */
+  }, {
+    key: "not",
+    value: function not(elems, selector) {
+      return TinyHtml.winnow(elems, selector, 'not', true);
+    }
+  }, {
+    key: "find",
+    value: function find(context, selector) {
+      var result = [];
+      var _iterator3 = _createForOfIteratorHelper(TinyHtml._preElems(context, 'find')),
+        _step3;
+      try {
+        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+          var el = _step3.value;
+          result.push.apply(result, _toConsumableArray(el.querySelectorAll(selector)));
+        }
+      } catch (err) {
+        _iterator3.e(err);
+      } finally {
+        _iterator3.f();
+      }
+      return _toConsumableArray(new Set(result));
+    }
+  }, {
+    key: "is",
+    value: function is(elems, selector) {
+      return TinyHtml.winnow(elems, selector, 'is', false).length > 0;
+    }
+  }, {
+    key: "has",
+    value: function has(roots, target) {
+      var targets = typeof target === 'string' ? _toConsumableArray(document.querySelectorAll(target)) : TinyHtml._preElems(target, 'has');
+      return TinyHtml._preElems(roots, 'has').filter(function (root) {
+        return targets.some(function (t) {
+          return root && root.contains(t);
+        });
+      });
+    }
+  }, {
+    key: "closest",
+    value: function closest(els, selector, context) {
+      var matched = [];
+      var _iterator4 = _createForOfIteratorHelper(TinyHtml._preElems(els, 'closest')),
+        _step4;
+      try {
+        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+          var el = _step4.value;
+          /** @type {Element | null} */
+          var current = el;
+          while (current && current !== context) {
+            if (current.nodeType === 1 && (typeof selector === 'string' ? current.matches(selector) : current === selector)) {
+              matched.push(current);
+              break;
+            }
+            current = current.parentElement;
+          }
+        }
+      } catch (err) {
+        _iterator4.e(err);
+      } finally {
+        _iterator4.f();
+      }
+      return _toConsumableArray(new Set(matched));
+    }
+  }, {
+    key: "isSameDom",
+    value: function isSameDom(elem, otherElem) {
+      return TinyHtml._preNodeElem(elem, 'isSameDom') === TinyHtml._preNodeElem(otherElem, 'isSameDom');
+    }
+  }, {
+    key: "data",
+    value:
+    /**
+     * Retrieves data associated with a DOM element.
+     *
+     * If a `key` is provided, the corresponding value is returned.
+     * If no `key` is given, a shallow copy of all stored data is returned.
+     *
+     * @param {TinyElement} el - The DOM element.
+     * @param {string|null} [key] - The specific key to retrieve from the data store.
+     * @param {boolean} [isPrivate=false] - Whether to access the private data store.
+     * @returns {ElementDataStore|undefined|any} - The stored value, all data, or undefined if the key doesn't exist.
+     */
+    function data(el, key) {
+      var isPrivate = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      // Get or initialize the data object
+      var data = TinyHtml._dataSelector[!isPrivate ? 'public' : 'private']('data', el);
+      // Getter for all
+      if (key === undefined || key === null) return _objectSpread({}, data);
+      // Getter for specific key
+      if (typeof key !== 'string') throw new TypeError('The key must be a string.');
+      return data.hasOwnProperty(key) ? data[key] : undefined;
+    }
+  }, {
+    key: "setData",
+    value: function setData(el, key, value) {
+      var isPrivate = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+      var data = TinyHtml._dataSelector[!isPrivate ? 'public' : 'private']('setData', el);
+      if (typeof key !== 'string') throw new TypeError('The key must be a string.');
+      data[key] = value;
+    }
+  }, {
+    key: "_getSibling",
+    value: function _getSibling(el, direction, where) {
+      /** @type {Node|null} */
+      var newCurrent = TinyHtml._preNodeElemWithNull(el, where);
+      while (newCurrent && (newCurrent = newCurrent[direction]) && newCurrent.nodeType !== 1) {}
+      if (!(newCurrent instanceof Node)) return null;
+      return /** @type {ChildNode} */newCurrent;
+    }
+    /**
+     * Get all sibling elements excluding the given one.
+     *
+     * @param {Node|null} start
+     * @param {Node|null} [exclude]
+     * @returns {ChildNode[]}
+     * @readonly
+     */
+  }, {
+    key: "_getSiblings",
+    value: function _getSiblings(start, exclude) {
+      /** @type {Node|null} */
+      var st = start;
+      var siblings = [];
+      for (; st; st = st.nextSibling) {
+        if (st.nodeType === 1 && st !== exclude) {
+          siblings.push(st);
+        }
+      }
+      return /** @type {ChildNode[]} */siblings;
+    }
+    /**
+     * Traverse DOM in a direction collecting elements.
+     *
+     * @param {TinyNode} el
+     * @param {"parentNode"|"nextSibling"|"previousSibling"} direction
+     * @param {TinyNode|string} [until]
+     * @param {string} [where='domDir']
+     * @returns {ChildNode[]}
+     */
+  }, {
+    key: "domDir",
+    value: function domDir(el, direction, until) {
+      var where = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'domDir';
+      if (typeof direction !== 'string') throw new TypeError('The "direction" must be a string.');
+      var elem = TinyHtml._preNodeElemWithNull(el, where);
+      var matched = [];
+      // @ts-ignore
+      while (elem && (elem = elem[direction])) {
+        if (elem.nodeType !== 1) continue;
+        if (until && (typeof until === 'string' ?
+        // @ts-ignore
+        elem.matches(until) : elem === until)) break;
+        matched.push(elem);
+      }
+      return /** @type {ChildNode[]} */matched;
+    }
+    /**
+     * Returns the direct parent node of the given element, excluding document fragments.
+     *
+     * @param {TinyNode} el - The DOM node to find the parent of.
+     * @returns {ParentNode|null} The parent node or null if not found.
+     */
+  }, {
+    key: "parent",
+    value: function parent(el) {
+      var elem = TinyHtml._preNodeElemWithNull(el, 'parent');
+      var parent = elem ? elem.parentNode : null;
+      return parent && parent.nodeType !== 11 ? parent : null;
+    }
+  }, {
+    key: "parents",
+    value: function parents(el, until) {
+      return TinyHtml.domDir(el, 'parentNode', until, 'parents');
+    }
+  }, {
+    key: "next",
+    value: function next(el) {
+      return TinyHtml._getSibling(el, 'nextSibling', 'next');
+    }
+  }, {
+    key: "prev",
+    value: function prev(el) {
+      return TinyHtml._getSibling(el, 'previousSibling', 'prev');
+    }
+  }, {
+    key: "nextAll",
+    value: function nextAll(el) {
+      return TinyHtml.domDir(el, 'nextSibling', undefined, 'nextAll');
+    }
+  }, {
+    key: "prevAll",
+    value: function prevAll(el) {
+      return TinyHtml.domDir(el, 'previousSibling', undefined, 'prevAll');
+    }
+  }, {
+    key: "nextUntil",
+    value: function nextUntil(el, until) {
+      return TinyHtml.domDir(el, 'nextSibling', until, 'nextUtil');
+    }
+  }, {
+    key: "prevUntil",
+    value: function prevUntil(el, until) {
+      return TinyHtml.domDir(el, 'previousSibling', until, 'prevUtil');
+    }
+  }, {
+    key: "siblings",
+    value: function siblings(el) {
+      var elem = TinyHtml._preNodeElemWithNull(el, 'siblings');
+      return TinyHtml._getSiblings(elem && elem.parentNode ? elem.parentNode.firstChild : null, elem);
+    }
+  }, {
+    key: "children",
+    value: function children(el) {
+      var elem = TinyHtml._preNodeElemWithNull(el, 'children');
+      return TinyHtml._getSiblings(elem ? elem.firstChild : null);
+    }
+  }, {
+    key: "contents",
+    value: function contents(el) {
+      var elem = TinyHtml._preNodeElemWithNull(el, 'contents');
+      if (elem instanceof HTMLIFrameElement && elem.contentDocument != null && Object.getPrototypeOf(elem.contentDocument)) {
+        return [elem.contentDocument];
+      }
+      if (elem instanceof HTMLTemplateElement) {
+        return Array.from((elem.content || elem).childNodes);
+      }
+      if (elem) return Array.from(elem.childNodes);
+      return [];
+    }
+  }, {
+    key: "clone",
+    value: function clone(el) {
+      var deep = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+      if (typeof deep !== 'boolean') throw new TypeError('The "deep" must be a boolean.');
+      return TinyHtml._preNodeElems(el, 'clone').map(function (el) {
+        return el.cloneNode(deep);
+      });
+    }
+  }, {
+    key: "_appendChecker",
+    value: function _appendChecker(where) {
+      var results = [];
+      for (var _len8 = arguments.length, nodes = new Array(_len8 > 1 ? _len8 - 1 : 0), _key8 = 1; _key8 < _len8; _key8++) {
+        nodes[_key8 - 1] = arguments[_key8];
+      }
+      var nds = [].concat(nodes);
+      for (var index in nds) {
+        if (typeof nds[index] !== 'string') {
+          results.push(TinyHtml._preNodeElem(nds[index], where));
+        } else results.push(nds[index]);
+      }
+      return results;
+    }
+    /**
+     * Appends child elements or strings to the end of the target element(s).
+     *
+     * @param {TinyElement | TinyElement[]} el - The target element(s) to receive children.
+     * @param {...(TinyNode | TinyNode[] | string)} children - The child elements or text to append.
+     */
+  }, {
+    key: "append",
+    value: function append(el) {
+      var elem = TinyHtml._preElem(el, 'append');
+      for (var _len9 = arguments.length, children = new Array(_len9 > 1 ? _len9 - 1 : 0), _key9 = 1; _key9 < _len9; _key9++) {
+        children[_key9 - 1] = arguments[_key9];
+      }
+      elem.append.apply(elem, _toConsumableArray(TinyHtml._appendChecker.apply(TinyHtml, ['append'].concat(children))));
+    }
+  }, {
+    key: "prepend",
+    value: function prepend(el) {
+      var elem = TinyHtml._preElem(el, 'prepend');
+      for (var _len0 = arguments.length, children = new Array(_len0 > 1 ? _len0 - 1 : 0), _key0 = 1; _key0 < _len0; _key0++) {
+        children[_key0 - 1] = arguments[_key0];
+      }
+      elem.prepend.apply(elem, _toConsumableArray(TinyHtml._appendChecker.apply(TinyHtml, ['prepend'].concat(children))));
+    }
+  }, {
+    key: "before",
+    value: function before(el) {
+      var elem = TinyHtml._preElem(el, 'before');
+      for (var _len1 = arguments.length, children = new Array(_len1 > 1 ? _len1 - 1 : 0), _key1 = 1; _key1 < _len1; _key1++) {
+        children[_key1 - 1] = arguments[_key1];
+      }
+      elem.before.apply(elem, _toConsumableArray(TinyHtml._appendChecker.apply(TinyHtml, ['before'].concat(children))));
+    }
+  }, {
+    key: "after",
+    value: function after(el) {
+      var elem = TinyHtml._preElem(el, 'after');
+      for (var _len10 = arguments.length, children = new Array(_len10 > 1 ? _len10 - 1 : 0), _key10 = 1; _key10 < _len10; _key10++) {
+        children[_key10 - 1] = arguments[_key10];
+      }
+      elem.after.apply(elem, _toConsumableArray(TinyHtml._appendChecker.apply(TinyHtml, ['after'].concat(children))));
+    }
+  }, {
+    key: "replaceWith",
+    value: function replaceWith(el) {
+      var elem = TinyHtml._preElem(el, 'replaceWith');
+      for (var _len11 = arguments.length, newNodes = new Array(_len11 > 1 ? _len11 - 1 : 0), _key11 = 1; _key11 < _len11; _key11++) {
+        newNodes[_key11 - 1] = arguments[_key11];
+      }
+      elem.replaceWith.apply(elem, _toConsumableArray(TinyHtml._appendChecker.apply(TinyHtml, ['replaceWith'].concat(newNodes))));
+    }
+  }, {
+    key: "appendTo",
+    value: function appendTo(el, targets) {
+      var elems = TinyHtml._preNodeElems(el, 'appendTo');
+      var tars = TinyHtml._preNodeElems(targets, 'appendTo');
+      tars.forEach(function (target, i) {
+        elems.forEach(function (elem) {
+          return target.appendChild(i === tars.length - 1 ? elem : elem.cloneNode(true));
+        });
+      });
+    }
+  }, {
+    key: "prependTo",
+    value: function prependTo(el, targets) {
+      var elems = TinyHtml._preElems(el, 'prependTo');
+      var tars = TinyHtml._preElems(targets, 'prependTo');
+      tars.forEach(function (target, i) {
+        elems.slice().reverse().forEach(function (elem) {
+          return target.prepend(i === tars.length - 1 ? elem : elem.cloneNode(true));
+        });
+      });
+    }
+  }, {
+    key: "insertBefore",
+    value: function insertBefore(el, target) {
+      var child = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+      var elem = TinyHtml._preNodeElem(el, 'insertBefore');
+      var targ = TinyHtml._preNodeElem(target, 'insertBefore');
+      var childNode = TinyHtml._preNodeElemWithNull(child, 'insertBefore');
+      if (!targ.parentNode) throw new Error('');
+      targ.parentNode.insertBefore(elem, childNode || targ);
+    }
+  }, {
+    key: "insertAfter",
+    value: function insertAfter(el, target) {
+      var child = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+      var elem = TinyHtml._preNodeElem(el, 'insertAfter');
+      var targ = TinyHtml._preNodeElem(target, 'insertBefore');
+      var childNode = TinyHtml._preNodeElemWithNull(child, 'insertBefore');
+      if (!targ.parentNode) throw new Error('');
+      targ.parentNode.insertBefore(elem, childNode || targ.nextSibling);
+    }
+  }, {
+    key: "replaceAll",
+    value: function replaceAll(el, targets) {
+      var elems = TinyHtml._preNodeElems(el, 'replaceAll');
+      var tars = TinyHtml._preNodeElems(targets, 'replaceAll');
+      tars.forEach(function (target, i) {
+        var parent = target.parentNode;
+        elems.forEach(function (elem) {
+          if (parent) parent.replaceChild(i === tars.length - 1 ? elem : elem.cloneNode(true), target);
+        });
+      });
+    }
+  }, {
+    key: "isWindow",
+    value: function isWindow(obj) {
+      return obj != null && obj === obj.window;
+    }
+    /////////////////////////////////////////////////////
+    /**
+     * Returns the full computed CSS styles for the given element.
+     *
+     * @param {TinyElement} el - The element to retrieve styles from.
+     * @returns {CSSStyleDeclaration} The computed style object for the element.
+     */
+  }, {
+    key: "css",
+    value: function css(el) {
+      var elem = TinyHtml._preElem(el, 'css');
+      return window.getComputedStyle(elem);
+    }
+  }, {
+    key: "cssString",
+    value: function cssString(el, prop) {
+      var elem = TinyHtml._preElem(el, 'cssString');
+      if (typeof prop !== 'string') throw new TypeError('The prop must be a string.');
+      // @ts-ignore
+      var val = window.getComputedStyle(elem)[prop];
+      return typeof val === 'string' ? val : typeof val === 'number' ? val.toString() : null;
+    }
+  }, {
+    key: "cssList",
+    value: function cssList(el, prop) {
+      var elem = TinyHtml._preElem(el, 'cssList');
+      if (!Array.isArray(prop)) throw new TypeError('The prop must be an array of strings.');
+      var css = window.getComputedStyle(elem);
+      /** @type {Partial<CSSStyleDeclaration>} */
+      var result = {};
+      var _iterator5 = _createForOfIteratorHelper(prop),
+        _step5;
+      try {
+        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+          var p = _step5.value;
+          if (typeof p !== 'undefined') {
+            // @ts-ignore
+            result[p] = css.getPropertyValue(p);
+          }
+        }
+      } catch (err) {
+        _iterator5.e(err);
+      } finally {
+        _iterator5.f();
+      }
+      return result;
+    }
+  }, {
+    key: "cssFloat",
+    value: function cssFloat(el, prop) {
+      var elem = TinyHtml._preElem(el, 'cssFloat');
+      if (typeof prop !== 'string') throw new TypeError('The prop must be a string.');
+      // @ts-ignore
+      var val = window.getComputedStyle(elem)[prop];
+      return parseFloat(val) || 0;
+    }
+  }, {
+    key: "cssFloats",
+    value: function cssFloats(el, prop) {
+      var elem = TinyHtml._preElem(el, 'cssFloats');
+      if (!Array.isArray(prop)) throw new TypeError('The prop must be an array of strings.');
+      var css = window.getComputedStyle(elem);
+      /** @type {Record<string, number>} */
+      var result = {};
+      var _iterator6 = _createForOfIteratorHelper(prop),
+        _step6;
+      try {
+        for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+          var name = _step6.value;
+          // @ts-ignore
+          result[name] = parseFloat(css[name]) || 0;
+        }
+      } catch (err) {
+        _iterator6.e(err);
+      } finally {
+        _iterator6.f();
+      }
+      return result;
+    }
+  }, {
+    key: "toStyleKc",
+    value:
+    /**
+     * Converts a camelCase string to kebab-case
+     * @param {string} str
+     * @returns {string}
+     */
+    function toStyleKc(str) {
+      if (typeof TinyHtml.cssPropAliases[str] === 'string') return TinyHtml.cssPropAliases[str];
+      return str;
+    }
+    /**
+     * Converts a kebab-case string to camelCase
+     * @param {string} str
+     * @returns {string}
+     */
+  }, {
+    key: "toStyleCc",
+    value: function toStyleCc(str) {
+      if (typeof TinyHtml.cssPropRevAliases[str] === 'string') return TinyHtml.cssPropRevAliases[str];
+      return str;
+    }
+    /**
+     * Sets one or more CSS inline style properties on the given element(s).
+     *
+     * - If `prop` is a string, the `value` will be applied to that property.
+     * - If `prop` is an object, each key-value pair will be applied as a CSS property and value.
+     *
+     * @param {TinyHtmlElement|TinyHtmlElement[]} el - The element to inspect.
+     * @param {string|Object} prop - The property name or an object with key-value pairs
+     * @param {string|null} [value=null] - The value to set (if `prop` is a string)
+     */
+  }, {
+    key: "setStyle",
+    value: function setStyle(el, prop) {
+      var value = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+      TinyHtml._preHtmlElems(el, 'setStyle').forEach(function (elem) {
+        if (_typeof(prop) === 'object') {
+          for (var _i = 0, _Object$entries = Object.entries(prop); _i < _Object$entries.length; _i++) {
+            var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+              k = _Object$entries$_i[0],
+              v = _Object$entries$_i[1];
+            elem.style.setProperty(TinyHtml.toStyleKc(k), typeof v === 'string' ? v : typeof v === 'number' ? "".concat(v, "px") : String(v));
+          }
+        } else elem.style.setProperty(TinyHtml.toStyleKc(prop), value);
+      });
+    }
+  }, {
+    key: "getStyle",
+    value: function getStyle(el, prop) {
+      return TinyHtml._preHtmlElem(el, 'getStyle').style.getPropertyValue(TinyHtml.toStyleKc(prop));
+    }
+  }, {
+    key: "style",
+    value: function style(el) {
+      var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+        _ref$camelCase = _ref.camelCase,
+        camelCase = _ref$camelCase === void 0 ? false : _ref$camelCase,
+        _ref$rawAttr = _ref.rawAttr,
+        rawAttr = _ref$rawAttr === void 0 ? false : _ref$rawAttr;
+      if (typeof camelCase !== 'boolean') throw new TypeError("\"camelCase\" must be a boolean. Received: ".concat(_typeof(camelCase)));
+      if (typeof rawAttr !== 'boolean') throw new TypeError("\"rawAttr\" must be a boolean. Received: ".concat(_typeof(rawAttr)));
+      var elem = TinyHtml._preHtmlElem(el, 'style');
+      /** @type {Record<string, string>} */
+      var result = {};
+      if (rawAttr) {
+        var raw = elem.getAttribute('style') || '';
+        var entries = raw.split(';');
+        var _iterator7 = _createForOfIteratorHelper(entries),
+          _step7;
+        try {
+          for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+            var entry = _step7.value;
+            var _entry$split = entry.split(':'),
+              _entry$split2 = _slicedToArray(_entry$split, 2),
+              rawProp = _entry$split2[0],
+              rawVal = _entry$split2[1];
+            if (!rawProp || !rawVal) continue;
+            var prop = rawProp.trim();
+            var value = rawVal.trim();
+            result[camelCase ? TinyHtml.toStyleCc(prop) : prop] = value;
+          }
+        } catch (err) {
+          _iterator7.e(err);
+        } finally {
+          _iterator7.f();
+        }
+      } else {
+        var styles = elem.style;
+        for (var i = 0; i < styles.length; i++) {
+          var _prop = styles[i]; // Already in kebab-case
+          var _value = styles.getPropertyValue(_prop);
+          result[camelCase ? TinyHtml.toStyleCc(_prop) : _prop] = _value;
+        }
+      }
+      return result;
+    }
+  }, {
+    key: "removeStyle",
+    value: function removeStyle(el, prop) {
+      TinyHtml._preHtmlElems(el, 'removeStyle').forEach(function (elem) {
+        if (Array.isArray(prop)) {
+          var _iterator8 = _createForOfIteratorHelper(prop),
+            _step8;
+          try {
+            for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
+              var p = _step8.value;
+              elem.style.removeProperty(TinyHtml.toStyleKc(p));
+            }
+          } catch (err) {
+            _iterator8.e(err);
+          } finally {
+            _iterator8.f();
+          }
+        } else elem.style.removeProperty(TinyHtml.toStyleKc(prop));
+      });
+    }
+  }, {
+    key: "toggleStyle",
+    value: function toggleStyle(el, prop, val1, val2) {
+      TinyHtml._preHtmlElems(el, 'toggleStyle').forEach(function (elem) {
+        var current = TinyHtml.getStyle(elem, prop).trim();
+        var newVal = current === TinyHtml.toStyleKc(val1) ? val2 : val1;
+        TinyHtml.setStyle(elem, prop, newVal);
+      });
+    }
+  }, {
+    key: "clearStyle",
+    value: function clearStyle(el) {
+      TinyHtml._preElems(el, 'clearStyle').forEach(function (elem) {
+        return elem.removeAttribute('style');
+      });
+    }
+  }, {
+    key: "focus",
+    value: function focus(el) {
+      var elem = TinyHtml._preHtmlElem(el, 'focus');
+      elem.focus();
+    }
+  }, {
+    key: "blur",
+    value: function blur(el) {
+      var elem = TinyHtml._preHtmlElem(el, 'blur');
+      elem.blur();
+    }
+  }, {
+    key: "setWinScrollTop",
+    value: function setWinScrollTop(value) {
+      if (typeof value !== 'number') throw new TypeError('The value must be a number.');
+      window.scrollTo({
+        top: value
+      });
+    }
+    /**
+     * Sets the horizontal scroll position of the window.
+     * @param {number} value - Sets the scroll position.
+     */
+  }, {
+    key: "setWinScrollLeft",
+    value: function setWinScrollLeft(value) {
+      if (typeof value !== 'number') throw new TypeError('The value must be a number.');
+      window.scrollTo({
+        left: value
+      });
+    }
+    /**
+     * Gets the vertical scroll position of the window.
+     * @returns {number} - The current scroll top value.
+     */
+  }, {
+    key: "winScrollTop",
+    value: function winScrollTop() {
+      return window.scrollY || document.documentElement.scrollTop;
+    }
+    /**
+     * Gets the horizontal scroll position of the window.
+     * @returns {number} - The current scroll left value.
+     */
+  }, {
+    key: "winScrollLeft",
+    value: function winScrollLeft() {
+      return window.scrollX || document.documentElement.scrollLeft;
+    }
+    /**
+     * Returns the current height of the viewport.
+     * @returns {number} - Viewport height in pixels.
+     */
+  }, {
+    key: "winInnerHeight",
+    value: function winInnerHeight() {
+      return window.innerHeight || document.documentElement.clientHeight;
+    }
+    /**
+     * Returns the current width of the viewport.
+     * @returns {number} - Viewport width in pixels.
+     */
+  }, {
+    key: "winInnerWidth",
+    value: function winInnerWidth() {
+      return window.innerWidth || document.documentElement.clientWidth;
+    }
+    /**
+     * Gets the width or height of an element based on the box model.
+     * @param {TinyElementAndWindow} el - The element or window.
+     * @param {"width"|"height"} type - Dimension type.
+     * @param {"content"|"padding"|"border"|"margin"} [extra='content'] - Box model context.
+     * @returns {number} - Computed dimension.
+     * @throws {TypeError} If `type` or `extra` is not a string.
+     */
+  }, {
+    key: "getDimension",
+    value: function getDimension(el, type) {
+      var extra = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'content';
+      var elem = TinyHtml._preElemAndWindow(el, 'getDimension');
+      if (typeof type !== 'string') throw new TypeError('The type must be a string.');
+      if (typeof extra !== 'string') throw new TypeError('The extra must be a string.');
+      var name = type === 'width' ? 'Width' : 'Height';
+      if (TinyHtml.isWindow(elem)) {
+        return extra === 'margin' ?
+        // @ts-ignore
+        elem['inner' + name] :
+        // @ts-ignore
+        elem.document.documentElement['client' + name];
+      }
+      /** @type {Element} */
+      var elHtml = elem;
+      if (elHtml.nodeType === 9) {
+        // @ts-ignore
+        var doc = elHtml.documentElement;
+        return Math.max(
+        // @ts-ignore
+        elHtml.body['scroll' + name], doc['scroll' + name],
+        // @ts-ignore
+        elHtml.body['offset' + name], doc['offset' + name], doc['client' + name]);
+      }
+      var size = elHtml.getBoundingClientRect()[type];
+      /**
+       * Auxiliary function to add measures on one side and the other
+       * @param {string} prefix
+       */
+      function sumSides(prefix) {
+        if (type === 'width') {
+          return TinyHtml.cssFloat(elHtml, prefix + 'Left') + TinyHtml.cssFloat(elHtml, prefix + 'Right');
+        } else {
+          return TinyHtml.cssFloat(elHtml, prefix + 'Top') + TinyHtml.cssFloat(elHtml, prefix + 'Bottom');
+        }
+      }
+      switch (extra) {
+        case 'content':
+          // remove padding + border
+          size -= sumSides('padding');
+          size -= sumSides('border');
+          break;
+        case 'padding':
+          // remove border only (padding included in the bounding rect)
+          size -= sumSides('border');
+          break;
+        case 'border':
+          // bounding rect already includes border + padding, so do not move the size
+          break;
+        case 'margin':
+          // adds margin (margin is out of bounding rect)
+          size += sumSides('margin');
+          break;
+      }
+      return size;
+    }
+  }, {
+    key: "setHeight",
+    value: function setHeight(el, value) {
+      var elem = TinyHtml._preHtmlElem(el, 'setHeight');
+      if (typeof value !== 'number' && typeof value !== 'string') throw new TypeError('The value must be a string or number.');
+      elem.style.height = typeof value === 'number' ? "".concat(value, "px") : value;
+    }
+  }, {
+    key: "setWidth",
+    value: function setWidth(el, value) {
+      var elem = TinyHtml._preHtmlElem(el, 'setWidth');
+      if (typeof value !== 'number' && typeof value !== 'string') throw new TypeError('The value must be a string or number.');
+      elem.style.width = typeof value === 'number' ? "".concat(value, "px") : value;
+    }
+  }, {
+    key: "height",
+    value: function height(el) {
+      var elem = TinyHtml._preElemAndWindow(el, 'height');
+      return TinyHtml.getDimension(elem, 'height', 'content');
+    }
+  }, {
+    key: "width",
+    value: function width(el) {
+      var elem = TinyHtml._preElemAndWindow(el, 'width');
+      return TinyHtml.getDimension(elem, 'width', 'content');
+    }
+  }, {
+    key: "innerHeight",
+    value: function innerHeight(el) {
+      var elem = TinyHtml._preElemAndWindow(el, 'innerHeight');
+      return TinyHtml.getDimension(elem, 'height', 'padding');
+    }
+  }, {
+    key: "innerWidth",
+    value: function innerWidth(el) {
+      var elem = TinyHtml._preElemAndWindow(el, 'innerWidth');
+      return TinyHtml.getDimension(elem, 'width', 'padding');
+    }
+  }, {
+    key: "outerHeight",
+    value: function outerHeight(el) {
+      var includeMargin = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      if (typeof includeMargin !== 'boolean') throw new TypeError('The "includeMargin" must be a boolean.');
+      var elem = TinyHtml._preElemAndWindow(el, 'outerHeight');
+      return TinyHtml.getDimension(elem, 'height', includeMargin ? 'margin' : 'border');
+    }
+  }, {
+    key: "outerWidth",
+    value: function outerWidth(el) {
+      var includeMargin = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      if (typeof includeMargin !== 'boolean') throw new TypeError('The "includeMargin" must be a boolean.');
+      var elem = TinyHtml._preElemAndWindow(el, 'outerWidth');
+      return TinyHtml.getDimension(elem, 'width', includeMargin ? 'margin' : 'border');
+    }
+  }, {
+    key: "offset",
+    value: function offset(el) {
+      var elem = TinyHtml._preElem(el, 'offset');
+      var rect = elem.getBoundingClientRect();
+      var scrollTop = window.scrollY || document.documentElement.scrollTop;
+      var scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+      return {
+        top: rect.top + scrollTop,
+        left: rect.left + scrollLeft
+      };
+    }
+  }, {
+    key: "position",
+    value: function position(el) {
+      var elem = TinyHtml._preHtmlElem(el, 'position');
+      var offsetParent;
+      var offset;
+      var parentOffset = {
+        top: 0,
+        left: 0
+      };
+      var computedStyle = window.getComputedStyle(elem);
+      if (computedStyle.position === 'fixed') {
+        offset = elem.getBoundingClientRect();
+      } else {
+        offset = TinyHtml.offset(elem);
+        offsetParent = elem.offsetParent || document.documentElement;
+        var _window$getComputedSt = window.getComputedStyle(offsetParent),
+          _position = _window$getComputedSt.position;
+        while (offsetParent instanceof HTMLElement && (offsetParent === document.body || offsetParent === document.documentElement) && _position === 'static') {
+          offsetParent = offsetParent.parentNode;
+        }
+        if (offsetParent instanceof HTMLElement && offsetParent !== elem && offsetParent.nodeType === 1) {
+          var _TinyHtml$cssFloats = TinyHtml.cssFloats(offsetParent, ['borderTopWidth', 'borderLeftWidth']),
+            borderTopWidth = _TinyHtml$cssFloats.borderTopWidth,
+            borderLeftWidth = _TinyHtml$cssFloats.borderLeftWidth;
+          parentOffset = TinyHtml.offset(offsetParent);
+          parentOffset.top += borderTopWidth;
+          parentOffset.left += borderLeftWidth;
+        }
+      }
+      return {
+        top: offset.top - parentOffset.top - TinyHtml.cssFloat(elem, 'marginTop'),
+        left: offset.left - parentOffset.left - TinyHtml.cssFloat(elem, 'marginLeft')
+      };
+    }
+  }, {
+    key: "offsetParent",
+    value: function offsetParent(el) {
+      var elem = TinyHtml._preHtmlElem(el, 'offsetParent');
+      var offsetParent = elem.offsetParent;
+      while (offsetParent instanceof HTMLElement && window.getComputedStyle(offsetParent).position === 'static') {
+        offsetParent = offsetParent.offsetParent;
+      }
+      // Fallback to document.documentElement
+      return offsetParent instanceof HTMLElement ? offsetParent : document.documentElement;
+    }
+  }, {
+    key: "scrollTop",
+    value: function scrollTop(el) {
+      var elem = TinyHtml._preElemAndWindow(el, 'scrollTop');
+      if (TinyHtml.isWindow(elem)) return elem.pageYOffset;
+      // @ts-ignore
+      if (elem.nodeType === 9) return elem.defaultView.pageYOffset;
+      return elem.scrollTop;
+    }
+  }, {
+    key: "scrollLeft",
+    value: function scrollLeft(el) {
+      var elem = TinyHtml._preElemAndWindow(el, 'scrollLeft');
+      if (TinyHtml.isWindow(elem)) return elem.pageXOffset;
+      // @ts-ignore
+      if (elem.nodeType === 9) return elem.defaultView.pageXOffset;
+      return elem.scrollLeft;
+    }
+  }, {
+    key: "setScrollTop",
+    value: function setScrollTop(el, value) {
+      if (typeof value !== 'number') throw new TypeError('ScrollTop value must be a number.');
+      TinyHtml._preElemsAndWindow(el, 'setScrollTop').forEach(function (elem) {
+        if (TinyHtml.isWindow(elem)) {
+          elem.scrollTo(elem.pageXOffset, value);
+        } else if (elem.nodeType === 9) {
+          // @ts-ignore
+          elem.defaultView.scrollTo(elem.defaultView.pageXOffset, value);
+        } else {
+          elem.scrollTop = value;
+        }
+      });
+    }
+  }, {
+    key: "setScrollLeft",
+    value: function setScrollLeft(el, value) {
+      if (typeof value !== 'number') throw new TypeError('ScrollLeft value must be a number.');
+      TinyHtml._preElemsAndWindow(el, 'setScrollLeft').forEach(function (elem) {
+        if (TinyHtml.isWindow(elem)) {
+          elem.scrollTo(value, elem.pageYOffset);
+        } else if (elem.nodeType === 9) {
+          // @ts-ignore
+          elem.defaultView.scrollTo(value, elem.defaultView.pageYOffset);
+        } else {
+          elem.scrollLeft = value;
+        }
+      });
+    }
+  }, {
+    key: "borderWidth",
+    value: function borderWidth(el) {
+      var elem = TinyHtml._preElem(el, 'borderWidth');
+      var _TinyHtml$cssFloats2 = TinyHtml.cssFloats(elem, ['borderLeftWidth', 'borderRightWidth', 'borderTopWidth', 'borderBottomWidth']),
+        left = _TinyHtml$cssFloats2.borderLeftWidth,
+        right = _TinyHtml$cssFloats2.borderRightWidth,
+        top = _TinyHtml$cssFloats2.borderTopWidth,
+        bottom = _TinyHtml$cssFloats2.borderBottomWidth;
+      var x = left + right;
+      var y = top + bottom;
+      return {
+        x: x,
+        y: y,
+        left: left,
+        right: right,
+        top: top,
+        bottom: bottom
+      };
+    }
+  }, {
+    key: "border",
+    value: function border(el) {
+      var elem = TinyHtml._preElem(el, 'border');
+      var _TinyHtml$cssFloats3 = TinyHtml.cssFloats(elem, ['borderLeft', 'borderRight', 'borderTop', 'borderBottom']),
+        left = _TinyHtml$cssFloats3.borderLeft,
+        right = _TinyHtml$cssFloats3.borderRight,
+        top = _TinyHtml$cssFloats3.borderTop,
+        bottom = _TinyHtml$cssFloats3.borderBottom;
+      var x = left + right;
+      var y = top + bottom;
+      return {
+        x: x,
+        y: y,
+        left: left,
+        right: right,
+        top: top,
+        bottom: bottom
+      };
+    }
+  }, {
+    key: "margin",
+    value: function margin(el) {
+      var elem = TinyHtml._preElem(el, 'margin');
+      var _TinyHtml$cssFloats4 = TinyHtml.cssFloats(elem, ['marginLeft', 'marginRight', 'marginTop', 'marginBottom']),
+        left = _TinyHtml$cssFloats4.marginLeft,
+        right = _TinyHtml$cssFloats4.marginRight,
+        top = _TinyHtml$cssFloats4.marginTop,
+        bottom = _TinyHtml$cssFloats4.marginBottom;
+      var x = left + right;
+      var y = top + bottom;
+      return {
+        x: x,
+        y: y,
+        left: left,
+        right: right,
+        top: top,
+        bottom: bottom
+      };
+    }
+  }, {
+    key: "padding",
+    value: function padding(el) {
+      var elem = TinyHtml._preElem(el, 'padding');
+      var _TinyHtml$cssFloats5 = TinyHtml.cssFloats(elem, ['paddingLeft', 'paddingRight', 'paddingTop', 'paddingBottom']),
+        left = _TinyHtml$cssFloats5.paddingLeft,
+        right = _TinyHtml$cssFloats5.paddingRight,
+        top = _TinyHtml$cssFloats5.paddingTop,
+        bottom = _TinyHtml$cssFloats5.paddingBottom;
+      var x = left + right;
+      var y = top + bottom;
+      return {
+        x: x,
+        y: y,
+        left: left,
+        right: right,
+        top: top,
+        bottom: bottom
+      };
+    }
+  }, {
+    key: "addClass",
+    value: function addClass(el) {
+      for (var _len12 = arguments.length, args = new Array(_len12 > 1 ? _len12 - 1 : 0), _key12 = 1; _key12 < _len12; _key12++) {
+        args[_key12 - 1] = arguments[_key12];
+      }
+      TinyHtml._preElems(el, 'addClass').forEach(function (elem) {
+        var _elem$classList;
+        return (_elem$classList = elem.classList).add.apply(_elem$classList, args);
+      });
+    }
+  }, {
+    key: "removeClass",
+    value: function removeClass(el) {
+      for (var _len13 = arguments.length, args = new Array(_len13 > 1 ? _len13 - 1 : 0), _key13 = 1; _key13 < _len13; _key13++) {
+        args[_key13 - 1] = arguments[_key13];
+      }
+      TinyHtml._preElems(el, 'removeClass').forEach(function (elem) {
+        var _elem$classList2;
+        return (_elem$classList2 = elem.classList).remove.apply(_elem$classList2, args);
+      });
+    }
+  }, {
+    key: "replaceClass",
+    value: function replaceClass(el, token, newToken) {
+      if (typeof token !== 'string') throw new TypeError('The "token" parameter must be a string.');
+      if (typeof newToken !== 'string') throw new TypeError('The "newToken" parameter must be a string.');
+      /** @type {boolean[]} */
+      var result = [];
+      TinyHtml._preElems(el, 'replaceClass').forEach(function (elem) {
+        return result.push(elem.classList.replace(token, newToken));
+      });
+      return result;
+    }
+  }, {
+    key: "classItem",
+    value: function classItem(el, index) {
+      var elem = TinyHtml._preElem(el, 'classItem');
+      if (typeof index !== 'number') throw new TypeError('The "index" parameter must be a number.');
+      return elem.classList.item(index);
+    }
+  }, {
+    key: "toggleClass",
+    value: function toggleClass(el, token, force) {
+      if (typeof token !== 'string') throw new TypeError('The "token" parameter must be a string.');
+      if (typeof force !== 'undefined' && typeof force !== 'boolean') throw new TypeError('The "force" parameter must be a boolean.');
+      /** @type {boolean[]} */
+      var result = [];
+      TinyHtml._preElems(el, 'toggleClass').forEach(function (elem) {
+        return result.push(elem.classList.toggle(token, force));
+      });
+      return result;
+    }
+  }, {
+    key: "hasClass",
+    value: function hasClass(el, token) {
+      var elem = TinyHtml._preElem(el, 'hasClass');
+      if (typeof token !== 'string') throw new TypeError('The "token" parameter must be a string.');
+      return elem.classList.contains(token);
+    }
+  }, {
+    key: "classLength",
+    value: function classLength(el) {
+      var elem = TinyHtml._preElem(el, 'classLength');
+      return elem.classList.length;
+    }
+  }, {
+    key: "classList",
+    value: function classList(el) {
+      var elem = TinyHtml._preElem(el, 'classList');
+      return elem.classList.values().toArray();
+    }
+  }, {
+    key: "tagName",
+    value: function tagName(el) {
+      var elem = TinyHtml._preElem(el, 'tagName');
+      return elem.tagName;
+    }
+  }, {
+    key: "id",
+    value: function id(el) {
+      var elem = TinyHtml._preElem(el, 'id');
+      return elem.id;
+    }
+  }, {
+    key: "text",
+    value: function text(el) {
+      var elem = TinyHtml._preElem(el, 'text');
+      return elem.textContent;
+    }
+  }, {
+    key: "setText",
+    value: function setText(el, value) {
+      if (typeof value !== 'string') throw new Error('Value is not a valid string.');
+      TinyHtml._preElems(el, 'setText').forEach(function (el) {
+        return el.textContent = value;
+      });
+    }
+  }, {
+    key: "empty",
+    value: function empty(el) {
+      TinyHtml._preElems(el, 'empty').forEach(function (el) {
+        return el.textContent = '';
+      });
+    }
+  }, {
+    key: "html",
+    value: function html(el) {
+      var elem = TinyHtml._preElem(el, 'html');
+      return elem.innerHTML;
+    }
+  }, {
+    key: "setHtml",
+    value: function setHtml(el, value) {
+      if (typeof value !== 'string') throw new Error('Value is not a valid string.');
+      TinyHtml._preElems(el, 'setHtml').forEach(function (el) {
+        return el.innerHTML = value;
+      });
+    }
+  }, {
+    key: "setVal",
+    value:
+    /**
+     * Sets the value of the current HTML value element (input, select, textarea, etc.).
+     * Accepts strings, numbers, booleans or arrays of these values, or a callback function that computes them.
+     *
+     * @param {TinyInputElement|TinyInputElement[]} el - Target element.
+     * @param {SetValueList|((el: InputElement, val: SetValueList) => SetValueList)} value - The value to assign or a function that returns it.
+     * @throws {Error} If the computed value is not a valid string or boolean.
+     */
+    function setVal(el, value) {
+      TinyHtml._preInputElems(el, 'setVal').forEach(function (elem) {
+        /**
+         * @param {SetValueBase[]} array
+         * @param {(v: SetValueBase, i: number) => SetValueBase} callback
+         */
+        var mapArray = function mapArray(array, callback) {
+          var result = [];
+          for (var i = 0; i < array.length; i++) {
+            result.push(callback(array[i], i));
+          }
+          return result;
+        };
+        if (elem.nodeType !== 1) return;
+        /** @type {SetValueList} */
+        var valToSet = typeof value === 'function' ? value(elem, TinyHtml.val(elem)) : value;
+        if (valToSet == null) {
+          valToSet = '';
+        } else if (typeof valToSet === 'number') {
+          valToSet = String(valToSet);
+        } else if (Array.isArray(valToSet)) {
+          valToSet = mapArray(valToSet, function (v) {
+            return v == null ? '' : String(v);
+          });
+        }
+        // @ts-ignore
+        var hook = TinyHtml._valHooks[elem.type] || TinyHtml._valHooks[elem.nodeName.toLowerCase()];
+        if (!hook || typeof hook.set !== 'function' || hook.set(elem, valToSet, 'value') === undefined) {
+          if (typeof valToSet !== 'string' && typeof valToSet !== 'boolean') throw new Error("Invalid setValue \"".concat(_typeof(valToSet), "\" value."));
+          if (typeof valToSet === 'string') elem.value = valToSet;
+        }
+      });
+    }
+  }, {
+    key: "_getValByType",
+    value:
+    /**
+     * Gets the value of an input element according to the specified type.
+     *
+     * @param {InputElement} elem - The input element to extract the value from.
+     * @param {GetValueTypes} type - The type of value to retrieve ("string", "date", or "number").
+     * @param {string} where - The context/method name using this validation.
+     * @returns {any} The extracted value, depending on the type.
+     * @throws {Error} If the element is not an HTMLInputElement or if the type handler is invalid.
+     * @readonly
+     */
+    function _getValByType(elem, type, where) {
+      if (typeof type !== 'string') throw new TypeError('The "type" must be a string.');
+      if (typeof where !== 'string') throw new TypeError('The "where" must be a string.');
+      if (!(elem instanceof HTMLInputElement)) throw new Error("Provided element is not an HTMLInputElement in ".concat(where, "()."));
+      if (typeof TinyHtml._valTypes[type] !== 'function') throw new Error("No handler found for type \"".concat(type, "\" in ").concat(where, "()."));
+      // @ts-ignore
+      return TinyHtml._valTypes[type](elem);
+    }
+    /**
+     * Retrieves the raw value from the HTML input element.
+     * If a custom value hook exists, it will be used first.
+     *
+     * @param {TinyInputElement} el - Target element.
+     * @param {GetValueTypes} type - The type of value to retrieve ("string", "date", or "number").
+     * @param {string} where - The context/method name using this validation.
+     * @returns {any} The raw value retrieved from the element or hook.
+     * @readonly
+     */
+  }, {
+    key: "_val",
+    value: function _val(el, where, type) {
+      var elem = TinyHtml._preInputElem(el, where);
+      // @ts-ignore
+      var hook = TinyHtml._valHooks[elem.type] || TinyHtml._valHooks[elem.nodeName.toLowerCase()];
+      if (hook && typeof hook.get === 'function') {
+        var ret = hook.get(elem, 'value', type);
+        if (ret !== undefined) return typeof ret === 'string' ? ret.replace(/\r/g, '') : ret;
+      }
+      return TinyHtml._getValByType(elem, type, where);
+    }
+  }, {
+    key: "val",
+    value: function val(el) {
+      return /** @type {SetValueList} */TinyHtml._val(el, 'val', 'string');
+    }
+  }, {
+    key: "valTxt",
+    value: function valTxt(el) {
+      /** @type {string} */
+      var ret = TinyHtml._val(el, 'valTxt', 'string');
+      if (typeof ret !== 'string' && ret !== null) throw new Error('Value is not a valid string.');
+      return ret == null ? '' : typeof ret === 'string' ? ret.replace(/\r/g, '') : ret;
+    }
+  }, {
+    key: "_valArr",
+    value: function _valArr(el, where, type) {
+      /** @type {SetValueBase[]} */
+      var ret = TinyHtml._val(el, where, type);
+      if (!Array.isArray(ret)) throw new Error("Value expected an array but got ".concat(_typeof(ret), "."));
+      return ret;
+    }
+  }, {
+    key: "valArr",
+    value: function valArr(el) {
+      return TinyHtml._valArr(el, 'valArr', 'string');
+    }
+  }, {
+    key: "valNb",
+    value: function valNb(el) {
+      var elem = TinyHtml._preInputElem(el, 'valNb');
+      if (!(elem instanceof HTMLInputElement)) throw new Error('Element must be an input element.');
+      /** @type {number} */
+      var result = TinyHtml._val(el, 'valNb', 'number');
+      if (Number.isNaN(result)) throw new Error('Value is not a valid number.');
+      return result;
+    }
+  }, {
+    key: "valDate",
+    value: function valDate(el) {
+      var elem = TinyHtml._preInputElem(el, 'valDate');
+      if (!(elem instanceof HTMLInputElement)) throw new Error('Element must be an input element.');
+      /** @type {Date} */
+      var result = TinyHtml._val(el, 'valDate', 'date');
+      if (!(result instanceof Date)) throw new Error('Value is not a valid date.');
+      return result;
+    }
+  }, {
+    key: "valBool",
+    value: function valBool(el) {
+      var elem = TinyHtml._preInputElem(el, 'valBool');
+      if (!(elem instanceof HTMLInputElement)) throw new Error('Element must be an input element.');
+      return TinyHtml.val(elem) === 'on' ? true : false;
+    }
+  }, {
+    key: "on",
+    value: function on(el, event, handler, options) {
+      if (typeof event !== 'string') throw new TypeError('The event name must be a string.');
+      TinyHtml._preEventTargetElems(el, 'on').forEach(function (elem) {
+        elem.addEventListener(event, handler, options);
+        if (!__eventRegistry.has(elem)) __eventRegistry.set(elem, {});
+        var events = __eventRegistry.get(elem);
+        if (!events) return;
+        if (!Array.isArray(events[event])) events[event] = [];
+        events[event].push({
+          handler: handler,
+          options: options
+        });
+      });
+    }
+  }, {
+    key: "once",
+    value: function once(el, event, handler) {
+      var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+      if (typeof event !== 'string') throw new TypeError('The event name must be a string.');
+      TinyHtml._preEventTargetElems(el, 'once').forEach(function (elem) {
+        /** @type {EventRegistryHandle} e */
+        var _wrapped = function wrapped(e) {
+          TinyHtml.off(elem, event, _wrapped);
+          handler(e);
+        };
+        TinyHtml.on(elem, event, _wrapped, typeof options === 'boolean' ? options : _objectSpread(_objectSpread({}, options), {}, {
+          once: true
+        }));
+      });
+    }
+  }, {
+    key: "off",
+    value: function off(el, event, handler, options) {
+      if (typeof event !== 'string') throw new TypeError('The event name must be a string.');
+      TinyHtml._preEventTargetElems(el, 'off').forEach(function (elem) {
+        elem.removeEventListener(event, handler, options);
+        var events = __eventRegistry.get(elem);
+        if (events && events[event]) {
+          events[event] = events[event].filter(function (entry) {
+            return entry.handler !== handler;
+          });
+          if (events[event].length === 0) delete events[event];
+        }
+      });
+    }
+  }, {
+    key: "offAll",
+    value: function offAll(el, event) {
+      if (typeof event !== 'string') throw new TypeError('The event name must be a string.');
+      TinyHtml._preEventTargetElems(el, 'offAll').forEach(function (elem) {
+        var events = __eventRegistry.get(elem);
+        if (events && events[event]) {
+          var _iterator9 = _createForOfIteratorHelper(events[event]),
+            _step9;
+          try {
+            for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
+              var entry = _step9.value;
+              elem.removeEventListener(event, entry.handler, entry.options);
+            }
+          } catch (err) {
+            _iterator9.e(err);
+          } finally {
+            _iterator9.f();
+          }
+          delete events[event];
+        }
+      });
+    }
+  }, {
+    key: "offAllTypes",
+    value: function offAllTypes(el) {
+      var filterFn = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      if (filterFn !== null && typeof filterFn !== 'function') throw new TypeError('The "filterFn" must be a function.');
+      TinyHtml._preEventTargetElems(el, 'offAllTypes').forEach(function (elem) {
+        var events = __eventRegistry.get(elem);
+        if (!events) return;
+        for (var event in events) {
+          var _iterator0 = _createForOfIteratorHelper(events[event]),
+            _step0;
+          try {
+            for (_iterator0.s(); !(_step0 = _iterator0.n()).done;) {
+              var entry = _step0.value;
+              if (typeof filterFn !== 'function' || filterFn(entry.handler, event)) {
+                elem.removeEventListener(event, entry.handler, entry.options);
+              }
+            }
+          } catch (err) {
+            _iterator0.e(err);
+          } finally {
+            _iterator0.f();
+          }
+        }
+        __eventRegistry["delete"](elem);
+      });
+    }
+  }, {
+    key: "trigger",
+    value: function trigger(el, event) {
+      var payload = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+      if (typeof event !== 'string') throw new TypeError('The event name must be a string.');
+      TinyHtml._preEventTargetElems(el, 'trigger').forEach(function (elem) {
+        var evt = payload instanceof Event || payload instanceof CustomEvent ? payload : new CustomEvent(event, {
+          bubbles: true,
+          cancelable: true,
+          detail: payload
+        });
+        elem.dispatchEvent(evt);
+      });
+    }
+  }, {
+    key: "attr",
+    value:
+    /**
+     * Get an attribute on an element.
+     * @param {TinyElement} el
+     * @param {string} name
+     * @returns {string|null}
+     */
+    function attr(el, name) {
+      if (typeof name !== 'string') throw new TypeError('The "name" must be a string.');
+      var elem = TinyHtml._preElem(el, 'attr');
+      return elem.getAttribute(name);
+    }
+  }, {
+    key: "setAttr",
+    value: function setAttr(el, name) {
+      var value = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+      if (typeof name !== 'string') throw new TypeError('The "name" must be a string.');
+      if (value !== null && typeof value !== 'string') throw new TypeError('The "value" must be a string.');
+      TinyHtml._preElems(el, 'setAttr').forEach(function (elem) {
+        if (value === null) elem.removeAttribute(name);else elem.setAttribute(name, value);
+      });
+    }
+  }, {
+    key: "removeAttr",
+    value: function removeAttr(el, name) {
+      if (typeof name !== 'string') throw new TypeError('The "name" must be a string.');
+      TinyHtml._preElems(el, 'removeAttr').forEach(function (elem) {
+        return elem.removeAttribute(name);
+      });
+    }
+  }, {
+    key: "hasAttr",
+    value: function hasAttr(el, name) {
+      if (typeof name !== 'string') throw new TypeError('The "name" must be a string.');
+      var elem = TinyHtml._preElem(el, 'hasAttr');
+      return elem.hasAttribute(name);
+    }
+  }, {
+    key: "hasProp",
+    value: function hasProp(el, name) {
+      if (typeof name !== 'string') throw new TypeError('The "name" must be a string.');
+      var elem = TinyHtml._preElem(el, 'hasProp');
+      // @ts-ignore
+      var propName = TinyHtml._propFix[name] || name;
+      // @ts-ignore
+      return !!elem[propName];
+    }
+  }, {
+    key: "addProp",
+    value: function addProp(el, name) {
+      if (typeof name !== 'string') throw new TypeError('The "name" must be a string.');
+      TinyHtml._preElems(el, 'addProp').forEach(function (elem) {
+        // @ts-ignore
+        name = TinyHtml._propFix[name] || name;
+        // @ts-ignore
+        elem[name] = true;
+      });
+    }
+  }, {
+    key: "removeProp",
+    value: function removeProp(el, name) {
+      if (typeof name !== 'string') throw new TypeError('The "name" must be a string.');
+      TinyHtml._preElems(el, 'removeProp').forEach(function (elem) {
+        // @ts-ignore
+        name = TinyHtml._propFix[name] || name;
+        // @ts-ignore
+        elem[name] = false;
+      });
+    }
+  }, {
+    key: "toggleProp",
+    value: function toggleProp(el, name, force) {
+      if (typeof name !== 'string') throw new TypeError('The "name" must be a string.');
+      if (typeof force !== 'undefined' && typeof force !== 'boolean') throw new TypeError('The "force" must be a boolean.');
+      TinyHtml._preElems(el, 'toggleProp').forEach(function (elem) {
+        // @ts-ignore
+        var propName = TinyHtml._propFix[name] || name;
+        // @ts-ignore
+        var shouldEnable = force === undefined ? !elem[propName] : force;
+        // @ts-ignore
+        if (shouldEnable) TinyHtml.addProp(elem, name);else TinyHtml.removeProp(elem, name);
+      });
+    }
+  }, {
+    key: "remove",
+    value: function remove(el) {
+      TinyHtml._preElems(el, 'remove').forEach(function (elem) {
+        return elem.remove();
+      });
+    }
+  }, {
+    key: "index",
+    value: function index(el) {
+      var el2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      var elem = TinyHtml._preElem(el, 'index');
+      if (!elem) return -1;
+      if (!el2) {
+        var _elem$parentNode;
+        return Array.prototype.indexOf.call(((_elem$parentNode = elem.parentNode) === null || _elem$parentNode === void 0 ? void 0 : _elem$parentNode.children) || [], elem);
+      }
+      if (el2) {
+        var matchEls = typeof el2 === 'string' ? document.querySelectorAll(el2) : TinyHtml._preElems(el2, 'index');
+        return Array.prototype.indexOf.call(matchEls, elem);
+      }
+      return -1;
+    }
+  }, {
+    key: "_getCustomRect",
+    value: function _getCustomRect(rect, extraRect) {
+      /** @type {DOMRect} */
+      var result = {
+        height: 0,
+        width: 0,
+        x: 0,
+        y: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        top: 0,
+        toJSON: function toJSON() {
+          throw new Error('Function not implemented.');
+        }
+      };
+      for (var name in rect) {
+        // @ts-ignore
+        if (typeof rect[name] === 'number')
+          // @ts-ignore
+          result[name] = rect[name];
+      }
+      if (_typeof(extraRect) !== 'object' || extraRect === null || Array.isArray(extraRect)) throw new Error('');
+      var _extraRect$height = extraRect.height,
+        height = _extraRect$height === void 0 ? 0 : _extraRect$height,
+        _extraRect$width = extraRect.width,
+        width = _extraRect$width === void 0 ? 0 : _extraRect$width,
+        _extraRect$top = extraRect.top,
+        top = _extraRect$top === void 0 ? 0 : _extraRect$top,
+        _extraRect$bottom = extraRect.bottom,
+        bottom = _extraRect$bottom === void 0 ? 0 : _extraRect$bottom,
+        _extraRect$left = extraRect.left,
+        left = _extraRect$left === void 0 ? 0 : _extraRect$left,
+        _extraRect$right = extraRect.right,
+        right = _extraRect$right === void 0 ? 0 : _extraRect$right;
+      if (typeof height !== 'number') throw new Error('');
+      if (typeof width !== 'number') throw new Error('');
+      if (typeof top !== 'number') throw new Error('');
+      if (typeof bottom !== 'number') throw new Error('');
+      if (typeof left !== 'number') throw new Error('');
+      if (typeof right !== 'number') throw new Error('');
+      // @ts-ignore
+      result.height += height;
+      // @ts-ignore
+      result.width += width;
+      // @ts-ignore
+      result.top += top;
+      // @ts-ignore
+      result.bottom += bottom;
+      // @ts-ignore
+      result.left += left;
+      // @ts-ignore
+      result.right += right;
+      return result;
+    }
+    /**
+     * Determines if two HTML elements are colliding, using a simple bounding box comparison.
+     *
+     * @param {TinyElement} el1 - The first element to compare.
+     * @param {TinyElement} el2 - The second element to compare.
+     * @param {Partial<ObjRect>} [extraRect] - Optional values to expand the size of the first element's rect.
+     * @returns {boolean} - `true` if the elements are colliding, `false` otherwise.
+     */
+  }, {
+    key: "isCollWith",
+    value: function isCollWith(el1, el2) {
+      var extraRect = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+      var rect1 = TinyHtml._getCustomRect(TinyHtml._preElem(el1, 'isCollWith').getBoundingClientRect(), extraRect);
+      var rect2 = TinyHtml._preElem(el2, 'isCollWith').getBoundingClientRect();
+      return areElsColliding(rect1, rect2);
+    }
+  }, {
+    key: "isCollPerfWith",
+    value: function isCollPerfWith(el1, el2) {
+      var extraRect = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+      var rect1 = TinyHtml._getCustomRect(TinyHtml._preElem(el1, 'isCollPerfWith').getBoundingClientRect(), extraRect);
+      var rect2 = TinyHtml._preElem(el2, 'isCollPerfWith').getBoundingClientRect();
+      return areElsPerfColliding(rect1, rect2);
+    }
+  }, {
+    key: "_isCollWithLock",
+    value: function _isCollWithLock(isColliding, rect1, rect2, elem1, lockDirection) {
+      var lockMap = __elemCollision[lockDirection];
+      if (isColliding) {
+        // Save entry direction
+        if (!lockMap.has(elem1)) {
+          lockMap.set(elem1, true);
+        }
+        return true;
+      }
+      // Handle unlock logic
+      if (lockMap.has(elem1)) {
+        var shouldUnlock = false;
+        switch (lockDirection) {
+          case 'top':
+            shouldUnlock = areElsCollTop(rect1, rect2);
+            break;
+          case 'bottom':
+            shouldUnlock = areElsCollBottom(rect1, rect2);
+            break;
+          case 'left':
+            shouldUnlock = areElsCollLeft(rect1, rect2);
+            break;
+          case 'right':
+            shouldUnlock = areElsCollRight(rect1, rect2);
+            break;
+        }
+        if (shouldUnlock) lockMap["delete"](elem1);
+        return lockMap.has(elem1); // still colliding (locked)
+      }
+      return false;
+    }
+    /**
+     * Checks if two DOM elements are colliding on the screen, and locks the collision
+     * until the element exits through the same side it entered.
+     *
+     * @param {TinyElement} el1 - First DOM element (e.g. draggable or moving element).
+     * @param {TinyElement} el2 - Second DOM element (e.g. a container or boundary element).
+     * @param {CollisionDirLock} lockDirection - Direction that must be respected to unlock the collision.
+     * @param {Partial<ObjRect>} [extraRect] - Optional values to expand the size of the first element's rect.
+     * @returns {boolean} True if collision is still active.
+     */
+  }, {
+    key: "isCollWithLock",
+    value: function isCollWithLock(el1, el2, lockDirection) {
+      var extraRect = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+      var elem1 = TinyHtml._preElem(el1, 'isCollWithLock');
+      var elem2 = TinyHtml._preElem(el2, 'isCollWithLock');
+      var rect1 = TinyHtml._getCustomRect(elem1.getBoundingClientRect(), extraRect);
+      var rect2 = elem2.getBoundingClientRect();
+      var isColliding = areElsColliding(rect1, rect2);
+      return TinyHtml._isCollWithLock(isColliding, rect1, rect2, elem1, lockDirection);
+    }
+  }, {
+    key: "isCollPerfWithLock",
+    value: function isCollPerfWithLock(el1, el2, lockDirection) {
+      var extraRect = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+      var elem1 = TinyHtml._preElem(el1, 'isCollPerfWithLock');
+      var elem2 = TinyHtml._preElem(el2, 'isCollPerfWithLock');
+      var rect1 = TinyHtml._getCustomRect(elem1.getBoundingClientRect(), extraRect);
+      var rect2 = elem2.getBoundingClientRect();
+      var isColliding = areElsPerfColliding(rect1, rect2);
+      return TinyHtml._isCollWithLock(isColliding, rect1, rect2, elem1, lockDirection);
+    }
+  }, {
+    key: "resetCollLock",
+    value: function resetCollLock(el) {
+      var elem = TinyHtml._preElem(el, 'resetCollLock');
+      var removed = false;
+      for (var _i2 = 0, _arr = /** @type {CollisionDirLock[]} */['top', 'bottom', 'left', 'right']; _i2 < _arr.length; _i2++) {
+        var dir = _arr[_i2];
+        if (__elemCollision[dir].has(elem)) {
+          __elemCollision[dir]["delete"](elem);
+          removed = true;
+        }
+      }
+      return removed;
+    }
+  }, {
+    key: "resetCollLockDir",
+    value: function resetCollLockDir(el, direction) {
+      var elem = TinyHtml._preElem(el, 'resetCollLockDir');
+      var lockMap = __elemCollision[direction];
+      if (lockMap.has(elem)) {
+        lockMap["delete"](elem);
+        return true;
+      }
+      return false;
+    }
+  }, {
+    key: "isInViewport",
+    value: function isInViewport(el) {
+      var elem = TinyHtml._preElem(el, 'isInViewport');
+      var elementTop = TinyHtml.offset(elem).top;
+      var elementBottom = elementTop + TinyHtml.outerHeight(elem);
+      var viewportTop = TinyHtml.scrollTop(window);
+      var viewportBottom = viewportTop + TinyHtml.height(window);
+      return elementBottom > viewportTop && elementTop < viewportBottom;
+    }
+  }, {
+    key: "isScrolledIntoView",
+    value: function isScrolledIntoView(el) {
+      var elem = TinyHtml._preElem(el, 'isScrolledIntoView');
+      var docViewTop = TinyHtml.scrollTop(window);
+      var docViewBottom = docViewTop + TinyHtml.height(window);
+      var elemTop = TinyHtml.offset(elem).top;
+      var elemBottom = elemTop + TinyHtml.height(elem);
+      return elemBottom <= docViewBottom && elemTop >= docViewTop;
+    }
+  }]);
+}();
+_TinyHtml = TinyHtml;
+/** @typedef {import('../basics/collision.mjs').ObjRect} ObjRect */
+_defineProperty(TinyHtml, "Utils", _objectSpread({}, TinyCollision));
+/**
+ * Internal data selectors for accessing public or private data stores.
+ *
+ * @type {Record<string, (where: string, elem: TinyElement) => ElementDataStore>}
+ * @readonly
+ */
+_defineProperty(TinyHtml, "_dataSelector", {
+  "public": function _public(where, el) {
+    var elem = _TinyHtml._preElem(el, where);
+    var data = __elementDataMap.get(elem);
+    if (!data) {
+      data = {};
+      __elementDataMap.set(elem, data);
+    }
+    return data;
+  },
+  "private": function _private(where, el) {
+    if (!(el instanceof _TinyHtml)) throw new Error("Element must be a TinyHtml instance to execute ".concat(where, "()."));
+    return el._data;
+  }
+});
+var _cssPropAliases = {
+  _: {
+    alignContent: 'align-content',
+    alignItems: 'align-items',
+    alignSelf: 'align-self',
+    animationDelay: 'animation-delay',
+    animationDirection: 'animation-direction',
+    animationDuration: 'animation-duration',
+    animationFillMode: 'animation-fill-mode',
+    animationIterationCount: 'animation-iteration-count',
+    animationName: 'animation-name',
+    animationPlayState: 'animation-play-state',
+    animationTimingFunction: 'animation-timing-function',
+    backfaceVisibility: 'backface-visibility',
+    backgroundAttachment: 'background-attachment',
+    backgroundBlendMode: 'background-blend-mode',
+    backgroundClip: 'background-clip',
+    backgroundColor: 'background-color',
+    backgroundImage: 'background-image',
+    backgroundOrigin: 'background-origin',
+    backgroundPosition: 'background-position',
+    backgroundRepeat: 'background-repeat',
+    backgroundSize: 'background-size',
+    borderBottom: 'border-bottom',
+    borderBottomColor: 'border-bottom-color',
+    borderBottomLeftRadius: 'border-bottom-left-radius',
+    borderBottomRightRadius: 'border-bottom-right-radius',
+    borderBottomStyle: 'border-bottom-style',
+    borderBottomWidth: 'border-bottom-width',
+    borderCollapse: 'border-collapse',
+    borderColor: 'border-color',
+    borderImage: 'border-image',
+    borderImageOutset: 'border-image-outset',
+    borderImageRepeat: 'border-image-repeat',
+    borderImageSlice: 'border-image-slice',
+    borderImageSource: 'border-image-source',
+    borderImageWidth: 'border-image-width',
+    borderLeft: 'border-left',
+    borderLeftColor: 'border-left-color',
+    borderLeftStyle: 'border-left-style',
+    borderLeftWidth: 'border-left-width',
+    borderRadius: 'border-radius',
+    borderRight: 'border-right',
+    borderRightColor: 'border-right-color',
+    borderRightStyle: 'border-right-style',
+    borderRightWidth: 'border-right-width',
+    borderSpacing: 'border-spacing',
+    borderStyle: 'border-style',
+    borderTop: 'border-top',
+    borderTopColor: 'border-top-color',
+    borderTopLeftRadius: 'border-top-left-radius',
+    borderTopRightRadius: 'border-top-right-radius',
+    borderTopStyle: 'border-top-style',
+    borderTopWidth: 'border-top-width',
+    borderWidth: 'border-width',
+    boxDecorationBreak: 'box-decoration-break',
+    boxShadow: 'box-shadow',
+    boxSizing: 'box-sizing',
+    breakAfter: 'break-after',
+    breakBefore: 'break-before',
+    breakInside: 'break-inside',
+    captionSide: 'caption-side',
+    caretColor: 'caret-color',
+    clipPath: 'clip-path',
+    columnCount: 'column-count',
+    columnFill: 'column-fill',
+    columnGap: 'column-gap',
+    columnRule: 'column-rule',
+    columnRuleColor: 'column-rule-color',
+    columnRuleStyle: 'column-rule-style',
+    columnRuleWidth: 'column-rule-width',
+    columnSpan: 'column-span',
+    columnWidth: 'column-width',
+    counterIncrement: 'counter-increment',
+    counterReset: 'counter-reset',
+    emptyCells: 'empty-cells',
+    flexBasis: 'flex-basis',
+    flexDirection: 'flex-direction',
+    flexFlow: 'flex-flow',
+    flexGrow: 'flex-grow',
+    flexShrink: 'flex-shrink',
+    flexWrap: 'flex-wrap',
+    fontFamily: 'font-family',
+    fontFeatureSettings: 'font-feature-settings',
+    fontKerning: 'font-kerning',
+    fontLanguageOverride: 'font-language-override',
+    fontSize: 'font-size',
+    fontSizeAdjust: 'font-size-adjust',
+    fontStretch: 'font-stretch',
+    fontStyle: 'font-style',
+    fontSynthesis: 'font-synthesis',
+    fontVariant: 'font-variant',
+    fontVariantAlternates: 'font-variant-alternates',
+    fontVariantCaps: 'font-variant-caps',
+    fontVariantEastAsian: 'font-variant-east-asian',
+    fontVariantLigatures: 'font-variant-ligatures',
+    fontVariantNumeric: 'font-variant-numeric',
+    fontVariantPosition: 'font-variant-position',
+    fontWeight: 'font-weight',
+    gridArea: 'grid-area',
+    gridAutoColumns: 'grid-auto-columns',
+    gridAutoFlow: 'grid-auto-flow',
+    gridAutoRows: 'grid-auto-rows',
+    gridColumn: 'grid-column',
+    gridColumnEnd: 'grid-column-end',
+    gridColumnGap: 'grid-column-gap',
+    gridColumnStart: 'grid-column-start',
+    gridGap: 'grid-gap',
+    gridRow: 'grid-row',
+    gridRowEnd: 'grid-row-end',
+    gridRowGap: 'grid-row-gap',
+    gridRowStart: 'grid-row-start',
+    gridTemplate: 'grid-template',
+    gridTemplateAreas: 'grid-template-areas',
+    gridTemplateColumns: 'grid-template-columns',
+    gridTemplateRows: 'grid-template-rows',
+    imageRendering: 'image-rendering',
+    justifyContent: 'justify-content',
+    letterSpacing: 'letter-spacing',
+    lineBreak: 'line-break',
+    lineHeight: 'line-height',
+    listStyle: 'list-style',
+    listStyleImage: 'list-style-image',
+    listStylePosition: 'list-style-position',
+    listStyleType: 'list-style-type',
+    marginBottom: 'margin-bottom',
+    marginLeft: 'margin-left',
+    marginRight: 'margin-right',
+    marginTop: 'margin-top',
+    maskClip: 'mask-clip',
+    maskComposite: 'mask-composite',
+    maskImage: 'mask-image',
+    maskMode: 'mask-mode',
+    maskOrigin: 'mask-origin',
+    maskPosition: 'mask-position',
+    maskRepeat: 'mask-repeat',
+    maskSize: 'mask-size',
+    maskType: 'mask-type',
+    maxHeight: 'max-height',
+    maxWidth: 'max-width',
+    minHeight: 'min-height',
+    minWidth: 'min-width',
+    mixBlendMode: 'mix-blend-mode',
+    objectFit: 'object-fit',
+    objectPosition: 'object-position',
+    offsetAnchor: 'offset-anchor',
+    offsetDistance: 'offset-distance',
+    offsetPath: 'offset-path',
+    offsetRotate: 'offset-rotate',
+    outlineColor: 'outline-color',
+    outlineOffset: 'outline-offset',
+    outlineStyle: 'outline-style',
+    outlineWidth: 'outline-width',
+    overflowAnchor: 'overflow-anchor',
+    overflowWrap: 'overflow-wrap',
+    overflowX: 'overflow-x',
+    overflowY: 'overflow-y',
+    paddingBottom: 'padding-bottom',
+    paddingLeft: 'padding-left',
+    paddingRight: 'padding-right',
+    paddingTop: 'padding-top',
+    pageBreakAfter: 'page-break-after',
+    pageBreakBefore: 'page-break-before',
+    pageBreakInside: 'page-break-inside',
+    perspectiveOrigin: 'perspective-origin',
+    placeContent: 'place-content',
+    placeItems: 'place-items',
+    placeSelf: 'place-self',
+    pointerEvents: 'pointer-events',
+    rowGap: 'row-gap',
+    scrollBehavior: 'scroll-behavior',
+    scrollMargin: 'scroll-margin',
+    scrollMarginBlock: 'scroll-margin-block',
+    scrollMarginBlockEnd: 'scroll-margin-block-end',
+    scrollMarginBlockStart: 'scroll-margin-block-start',
+    scrollMarginBottom: 'scroll-margin-bottom',
+    scrollMarginInline: 'scroll-margin-inline',
+    scrollMarginInlineEnd: 'scroll-margin-inline-end',
+    scrollMarginInlineStart: 'scroll-margin-inline-start',
+    scrollMarginLeft: 'scroll-margin-left',
+    scrollMarginRight: 'scroll-margin-right',
+    scrollMarginTop: 'scroll-margin-top',
+    scrollPadding: 'scroll-padding',
+    scrollPaddingBlock: 'scroll-padding-block',
+    scrollPaddingBlockEnd: 'scroll-padding-block-end',
+    scrollPaddingBlockStart: 'scroll-padding-block-start',
+    scrollPaddingBottom: 'scroll-padding-bottom',
+    scrollPaddingInline: 'scroll-padding-inline',
+    scrollPaddingInlineEnd: 'scroll-padding-inline-end',
+    scrollPaddingInlineStart: 'scroll-padding-inline-start',
+    scrollPaddingLeft: 'scroll-padding-left',
+    scrollPaddingRight: 'scroll-padding-right',
+    scrollPaddingTop: 'scroll-padding-top',
+    scrollSnapAlign: 'scroll-snap-align',
+    scrollSnapStop: 'scroll-snap-stop',
+    scrollSnapType: 'scroll-snap-type',
+    shapeImageThreshold: 'shape-image-threshold',
+    shapeMargin: 'shape-margin',
+    shapeOutside: 'shape-outside',
+    tabSize: 'tab-size',
+    tableLayout: 'table-layout',
+    textAlign: 'text-align',
+    textAlignLast: 'text-align-last',
+    textCombineUpright: 'text-combine-upright',
+    textDecoration: 'text-decoration',
+    textDecorationColor: 'text-decoration-color',
+    textDecorationLine: 'text-decoration-line',
+    textDecorationStyle: 'text-decoration-style',
+    textIndent: 'text-indent',
+    textJustify: 'text-justify',
+    textOrientation: 'text-orientation',
+    textOverflow: 'text-overflow',
+    textShadow: 'text-shadow',
+    textTransform: 'text-transform',
+    transformBox: 'transform-box',
+    transformOrigin: 'transform-origin',
+    transformStyle: 'transform-style',
+    transitionDelay: 'transition-delay',
+    transitionDuration: 'transition-duration',
+    transitionProperty: 'transition-property',
+    transitionTimingFunction: 'transition-timing-function',
+    unicodeBidi: 'unicode-bidi',
+    userSelect: 'user-select',
+    verticalAlign: 'vertical-align',
+    whiteSpace: 'white-space',
+    willChange: 'will-change',
+    wordBreak: 'word-break',
+    wordSpacing: 'word-spacing',
+    wordWrap: 'word-wrap',
+    writingMode: 'writing-mode',
+    zIndex: 'z-index',
+    WebkitTransform: '-webkit-transform',
+    WebkitTransition: '-webkit-transition',
+    WebkitBoxShadow: '-webkit-box-shadow',
+    MozBoxShadow: '-moz-box-shadow',
+    MozTransform: '-moz-transform',
+    MozTransition: '-moz-transition',
+    msTransform: '-ms-transform',
+    msTransition: '-ms-transition'
+  }
+};
+/** @type {Record<string | symbol, string>} */
+_defineProperty(TinyHtml, "cssPropAliases", new Proxy(_cssPropAliases._, {
+  set: function set(target, camelCaseKey, kebabValue) {
+    target[camelCaseKey] = kebabValue;
+    // @ts-ignore
+    _TinyHtml.cssPropRevAliases[kebabValue] = camelCaseKey;
+    return true;
+  }
+}));
+/** @type {Record<string | symbol, string>} */
+_defineProperty(TinyHtml, "cssPropRevAliases", Object.fromEntries(Object.entries(_cssPropAliases._).map(function (_ref2) {
+  var _ref3 = _slicedToArray(_ref2, 2),
+    camel = _ref3[0],
+    kebab = _ref3[1];
+  return [kebab, camel];
+})));
+_defineProperty(TinyHtml, "_valHooks", {
+  option: {
+    /**
+     * @param {HTMLOptionElement} elem
+     * @returns {string|null}
+     */
+    get: function get(elem) {
+      var val = elem.getAttribute('value');
+      return val != null ? val : elem.textContent;
+    }
+  },
+  select: {
+    /**
+     * @param {HTMLSelectElement} elem
+     * @returns {(string | null)[] | string | null}
+     */
+    get: function get(elem) {
+      var options = elem.options;
+      var index = elem.selectedIndex;
+      var isSingle = elem.type === 'select-one';
+      var max = isSingle ? index + 1 : options.length;
+      /** @type {(string | null)[] | null} */
+      var values = [];
+      var i = index < 0 ? max : isSingle ? index : 0;
+      for (; i < max; i++) {
+        var option = options[i];
+        /** @type {HTMLSelectElement|null} */
+        // @ts-ignore
+        var parentNode = option.parentNode;
+        if ((option.selected || i === index) && !option.disabled && (!parentNode || !parentNode.disabled || parentNode.tagName !== 'OPTGROUP')) {
+          var val = _TinyHtml._valHooks.option.get(option);
+          if (isSingle) return val;
+          values.push(val);
+        }
+      }
+      return values;
+    },
+    /**
+     * @param {HTMLSelectElement} elem
+     * @param {string[]|string} value
+     */
+    set: function set(elem, value) {
+      var options = elem.options;
+      var values = Array.isArray(value) ? value.map(String) : [String(value)];
+      var optionSet = false;
+      for (var i = 0; i < options.length; i++) {
+        var option = options[i];
+        var optionVal = _TinyHtml._valHooks.option.get(option);
+        if (typeof optionVal === 'string' && (option.selected = values.includes(optionVal))) {
+          optionSet = true;
+        }
+      }
+      if (!optionSet) {
+        elem.selectedIndex = -1;
+      }
+      return values;
+    }
+  },
+  radio: {
+    /**
+     * @param {HTMLInputElement} elem
+     * @returns {string}
+     */
+    get: function get(elem) {
+      return elem.checked ? 'on' : 'off';
+    },
+    /**
+     * @param {HTMLInputElement} elem
+     * @param {string[]} value
+     */
+    set: function set(elem, value) {
+      if (typeof value === 'boolean') {
+        var label = elem.closest('label');
+        if (value && label) {
+          var otherRadios = label.querySelectorAll('input[type="radio"]');
+          otherRadios.forEach(function (otherRadio) {
+            if (otherRadio instanceof HTMLInputElement && otherRadio !== elem) otherRadio.checked = false;
+          });
+        }
+        elem.checked = value;
+        return value;
+      }
+    }
+  },
+  checkbox: {
+    /**
+     * @param {HTMLInputElement} elem
+     * @returns {string}
+     */
+    get: function get(elem) {
+      return elem.checked ? 'on' : 'off';
+    },
+    /**
+     * @param {HTMLInputElement} elem
+     * @param {boolean} value
+     */
+    set: function set(elem, value) {
+      if (typeof value === 'boolean') {
+        elem.checked = value;
+        return value;
+      }
+    }
+  }
+});
+_defineProperty(TinyHtml, "_valTypes", {
+  /**
+   * Gets the string value from any HTMLInputElement.
+   * @type {(elem: HTMLInputElement) => string}
+   */
+  string: function string(elem) {
+    return elem.value;
+  },
+  /**
+   * Gets the value as a Date object from supported input types.
+   * Valid only for types: "date", "datetime-local", "month", "time", "week".
+   * Returns `null` if the field is empty or invalid.
+   * @type {(elem: HTMLInputElement & { type: "date" | "datetime-local" | "month" | "time" | "week" }) => Date | null}
+   */
+  date: function date(elem) {
+    return elem.valueAsDate;
+  },
+  /**
+   * Gets the numeric value from supported input types.
+   * Valid for types: "number", "range", "date", "time".
+   * Returns `NaN` if the value is invalid or empty.
+   * @type {(elem: HTMLInputElement & { type: "number" | "range" | "date" | "time" }) => number}
+   */
+  number: function number(elem) {
+    return elem.valueAsNumber;
+  }
+});
+_defineProperty(TinyHtml, "_propFix", {
+  "for": 'htmlFor',
+  "class": 'className'
+});
+var _default = exports["default"] = TinyHtml;
+
+},{"../basics/collision.mjs":729}],745:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -109610,15 +116139,15 @@ var TinyNotifications = /*#__PURE__*/function () {
 }();
 var _default = exports["default"] = TinyNotifications;
 
-},{"../basics/text.mjs":733}],742:[function(require,module,exports){
+},{"../basics/text.mjs":735}],746:[function(require,module,exports){
 arguments[4][707][0].apply(exports,arguments)
-},{"dup":707}],743:[function(require,module,exports){
+},{"dup":707}],747:[function(require,module,exports){
 arguments[4][708][0].apply(exports,arguments)
-},{"dup":708}],744:[function(require,module,exports){
+},{"dup":708}],748:[function(require,module,exports){
 arguments[4][709][0].apply(exports,arguments)
-},{"_process":587,"dup":709}],745:[function(require,module,exports){
+},{"_process":587,"dup":709}],749:[function(require,module,exports){
 arguments[4][710][0].apply(exports,arguments)
-},{"dup":710}],746:[function(require,module,exports){
+},{"dup":710}],750:[function(require,module,exports){
 (function (process){(function (){
 "use strict";
 
@@ -111782,7 +118311,7 @@ tippy.setDefaultProps({
 var _default = exports["default"] = tippy;
 
 }).call(this)}).call(this,require('_process'))
-},{"@popperjs/core":148,"_process":587}],747:[function(require,module,exports){
+},{"@popperjs/core":148,"_process":587}],751:[function(require,module,exports){
 
 module.exports = function () {
   var selection = document.getSelection();
@@ -111823,7 +118352,7 @@ module.exports = function () {
   };
 };
 
-},{}],748:[function(require,module,exports){
+},{}],752:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -112203,7 +118732,7 @@ function __classPrivateFieldSet(receiver, privateMap, value) {
   return value;
 }
 
-},{}],749:[function(require,module,exports){
+},{}],753:[function(require,module,exports){
 (function (Buffer){(function (){
 /**
  * Convert a typed array to a Buffer without a copy
@@ -112232,7 +118761,7 @@ module.exports = function typedarrayToBuffer (arr) {
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"buffer":314,"is-typedarray":477}],750:[function(require,module,exports){
+},{"buffer":314,"is-typedarray":477}],754:[function(require,module,exports){
 (function (global){(function (){
 /*! https://mths.be/punycode v1.4.1 by @mathias */
 ;(function(root) {
@@ -112769,7 +119298,7 @@ module.exports = function typedarrayToBuffer (arr) {
 }(this));
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],751:[function(require,module,exports){
+},{}],755:[function(require,module,exports){
 /*
  * Copyright Joyent, Inc. and other Node contributors.
  *
@@ -113547,7 +120076,7 @@ exports.format = urlFormat;
 
 exports.Url = Url;
 
-},{"punycode/":750,"qs":589}],752:[function(require,module,exports){
+},{"punycode/":754,"qs":589}],756:[function(require,module,exports){
 (function (global){(function (){
 
 /**
@@ -113618,9 +120147,9 @@ function config (name) {
 }
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],753:[function(require,module,exports){
+},{}],757:[function(require,module,exports){
 arguments[4][276][0].apply(exports,arguments)
-},{"dup":276}],754:[function(require,module,exports){
+},{"dup":276}],758:[function(require,module,exports){
 // Currently in sync with Node.js lib/internal/util/types.js
 // https://github.com/nodejs/node/commit/112cc7c27551254aa2b17098fb774867f05ed0d9
 
@@ -113956,7 +120485,7 @@ exports.isAnyArrayBuffer = isAnyArrayBuffer;
   });
 });
 
-},{"is-arguments":471,"is-generator-function":473,"is-typed-array":476,"which-typed-array":771}],755:[function(require,module,exports){
+},{"is-arguments":471,"is-generator-function":473,"is-typed-array":476,"which-typed-array":775}],759:[function(require,module,exports){
 (function (process){(function (){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -114675,9 +121204,9 @@ function callbackify(original) {
 exports.callbackify = callbackify;
 
 }).call(this)}).call(this,require('_process'))
-},{"./support/isBuffer":753,"./support/types":754,"_process":587,"inherits":470}],756:[function(require,module,exports){
+},{"./support/isBuffer":757,"./support/types":758,"_process":587,"inherits":470}],760:[function(require,module,exports){
 module.exports=function(e){var r={};function t(n){if(r[n])return r[n].exports;var a=r[n]={i:n,l:!1,exports:{}};return e[n].call(a.exports,a,a.exports,t),a.l=!0,a.exports}return t.m=e,t.c=r,t.d=function(e,r,n){t.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:n})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,r){if(1&r&&(e=t(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(t.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var a in e)t.d(n,a,function(r){return e[r]}.bind(null,a));return n},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},t.p="",t(t.s=0)}([function(e,r,t){"use strict";t.r(r),t.d(r,"validateHTMLColorName",(function(){return l})),t.d(r,"validateHTMLColorSpecialName",(function(){return i})),t.d(r,"validateHTMLColorHex",(function(){return u})),t.d(r,"validateHTMLColorRgb",(function(){return g})),t.d(r,"validateHTMLColorHsl",(function(){return y})),t.d(r,"validateHTMLColorHwb",(function(){return L})),t.d(r,"validateHTMLColorLab",(function(){return S})),t.d(r,"validateHTMLColorLch",(function(){return m})),t.d(r,"validateHTMLColor",(function(){return G}));const n=e=>e&&"string"==typeof e,a=["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenrod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","DarkOrange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","Goldenrod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenrodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquamarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenrod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","RebeccaPurple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"],o=["currentColor","inherit","transparent"],l=e=>{let r=!1;return n(e)&&a.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},i=e=>{let r=!1;return n(e)&&o.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},u=e=>{if(n(e)){const r=/^#([\da-f]{3}){1,2}$|^#([\da-f]{4}){1,2}$/i;return e&&r.test(e)}return!1},d="(([\\d]{0,5})((\\.([\\d]{1,5}))?))",s=`(${d}%)`,c="(([0-9]|[1-9][0-9]|100)%)",f=`(${c}|(0?((\\.([\\d]{1,5}))?))|1)`,h=`([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?)([\\s]{1,5})${`(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?`}([\\s]{0,5})\\)`,$="(-?(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360)(deg)?)",g=e=>{if(n(e)){const r="([\\s]{0,5})([\\d]{1,5})%?([\\s]{0,5}),?",t="((([\\s]{0,5}),?([\\s]{0,5}))|(([\\s]{1,5})))",n=new RegExp(`^(rgb)a?\\(${`${r}${t}`}${`${r}${t}`}${`${r}${t}`}(${"(\\/?([\\s]{0,5})(0?\\.?([\\d]{1,5})%?([\\s]{0,5}))?|1|0)"})?\\)$`);return e&&n.test(e)}return!1},y=e=>{if(n(e)){const r=new RegExp(`^(hsl)a?\\((([\\s]{0,5})(${$}|${"(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-9][0-9]|400)grad)"}|${"((([0-5])?\\.([\\d]{1,5})|6\\.([0-9]|1[0-9]|2[0-8])|[0-6])rad)"}|${"((0?((\\.([\\d]{1,5}))?)|1)turn)"})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?|,?)([\\s]{0,5})(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?\\)$`);return e&&r.test(e)}return!1},L=e=>{if(n(e)){const r=new RegExp(`^(hwb\\(([\\s]{0,5})${$}([\\s]{1,5}))((0|${c})([\\s]{1,5}))((0|${c})${h}$`);return e&&r.test(e)}return!1},S=e=>{if(n(e)){const r="(-?(([0-9]|[1-9][0-9]|1[0-5][0-9])((\\.([\\d]{1,5}))?)?|160))",t=new RegExp(`^(lab\\(([\\s]{0,5})${s}([\\s]{1,5})${r}([\\s]{1,5})${r}${h}$`);return e&&t.test(e)}return!1},m=e=>{if(n(e)){const r="((([0-9]|[1-9][0-9])?((\\.([\\d]{1,5}))?)|100)(%)?)",t=""+d,n=`((${$})|(0|${f})|(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360))`,a=`(\\/([\\s]{0,5})${f})`,o=new RegExp(`^lch\\(${`(([\\s]{0,5})${r}([\\s]{1,5})${t}([\\s]{1,5})${n}([\\s]{0,5})(${a})?)`}\\)$`);return e&&o.test(e)}return!1},G=e=>!!(e&&u(e)||g(e)||y(e)||L(e)||S(e)||m(e));r.default=e=>!!(e&&u(e)||l(e)||i(e)||g(e)||y(e)||L(e)||S(e)||m(e))}]);
-},{}],757:[function(require,module,exports){
+},{}],761:[function(require,module,exports){
 const EventEmitter = require('events').EventEmitter
 const inherits = require('util').inherits
 const ethUtil = require('ethereumjs-util')
@@ -114953,7 +121482,7 @@ function toBufferBlock (jsonBlock) {
   }
 }
 
-},{"./util/create-payload.js":766,"./util/rpc-cache-utils.js":769,"./util/stoplight.js":770,"async/eachSeries":287,"async/map":303,"eth-block-tracker":381,"ethereumjs-util":427,"events":437,"util":755}],758:[function(require,module,exports){
+},{"./util/create-payload.js":770,"./util/rpc-cache-utils.js":773,"./util/stoplight.js":774,"async/eachSeries":287,"async/map":303,"eth-block-tracker":381,"ethereumjs-util":427,"events":437,"util":759}],762:[function(require,module,exports){
 const ProviderSubprovider = require('./json-rpc-engine-middleware')
 const createBlockCacheMiddleware = require('eth-json-rpc-middleware/block-cache')
 
@@ -114965,7 +121494,7 @@ class BlockCacheSubprovider extends ProviderSubprovider {
 
 module.exports = BlockCacheSubprovider
 
-},{"./json-rpc-engine-middleware":762,"eth-json-rpc-middleware/block-cache":404}],759:[function(require,module,exports){
+},{"./json-rpc-engine-middleware":766,"eth-json-rpc-middleware/block-cache":404}],763:[function(require,module,exports){
 const ProviderSubprovider = require('./json-rpc-engine-middleware')
 const createFilterMiddleware = require('eth-json-rpc-filters')
 
@@ -114979,7 +121508,7 @@ class SubscriptionsSubprovider extends ProviderSubprovider {
 
 module.exports = SubscriptionsSubprovider
 
-},{"./json-rpc-engine-middleware":762,"eth-json-rpc-filters":387}],760:[function(require,module,exports){
+},{"./json-rpc-engine-middleware":766,"eth-json-rpc-filters":387}],764:[function(require,module,exports){
 const inherits = require('util').inherits
 const Subprovider = require('./subprovider.js')
 
@@ -115009,7 +121538,7 @@ FixtureProvider.prototype.handleRequest = function(payload, next, end){
   }
 }
 
-},{"./subprovider.js":764,"util":755}],761:[function(require,module,exports){
+},{"./subprovider.js":768,"util":759}],765:[function(require,module,exports){
 /*
  * Emulate 'eth_accounts' / 'eth_sendTransaction' using 'eth_sendRawTransaction'
  *
@@ -115715,7 +122244,7 @@ function mustProvideInConstructor(methodName) {
   }
 }
 
-},{"../util/estimate-gas.js":767,"./subprovider.js":764,"async/parallel":304,"async/waterfall":305,"eth-sig-util":408,"ethereumjs-util":427,"semaphore":623,"util":755,"xtend":778}],762:[function(require,module,exports){
+},{"../util/estimate-gas.js":771,"./subprovider.js":768,"async/parallel":304,"async/waterfall":305,"eth-sig-util":408,"ethereumjs-util":427,"semaphore":623,"util":759,"xtend":782}],766:[function(require,module,exports){
 const Subprovider = require('./subprovider.js')
 
 // wraps a json-rpc-engine middleware in a subprovider interface
@@ -115771,7 +122300,7 @@ class JsonRpcEngineMiddlewareSubprovider extends Subprovider {
 
 module.exports = JsonRpcEngineMiddlewareSubprovider
 
-},{"./subprovider.js":764}],763:[function(require,module,exports){
+},{"./subprovider.js":768}],767:[function(require,module,exports){
 (function (Buffer){(function (){
 const inherits = require('util').inherits
 const Transaction = require('ethereumjs-tx')
@@ -115865,7 +122394,7 @@ NonceTrackerSubprovider.prototype.handleRequest = function(payload, next, end){
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"../util/rpc-cache-utils":769,"./subprovider.js":764,"buffer":314,"ethereumjs-tx":426,"ethereumjs-util":427,"util":755}],764:[function(require,module,exports){
+},{"../util/rpc-cache-utils":773,"./subprovider.js":768,"buffer":314,"ethereumjs-tx":426,"ethereumjs-util":427,"util":759}],768:[function(require,module,exports){
 const createPayload = require('../util/create-payload.js')
 
 module.exports = SubProvider
@@ -115909,7 +122438,7 @@ SubProvider.prototype.stop = function () {}
 
 SubProvider.prototype.start = function () {}
 
-},{"../util/create-payload.js":766}],765:[function(require,module,exports){
+},{"../util/create-payload.js":770}],769:[function(require,module,exports){
 const ProviderSubprovider = require('./json-rpc-engine-middleware')
 const createSubscriptionManager = require('eth-json-rpc-filters/subscriptionManager')
 
@@ -115927,7 +122456,7 @@ class SubscriptionsSubprovider extends ProviderSubprovider {
 
 module.exports = SubscriptionsSubprovider
 
-},{"./json-rpc-engine-middleware":762,"eth-json-rpc-filters/subscriptionManager":402}],766:[function(require,module,exports){
+},{"./json-rpc-engine-middleware":766,"eth-json-rpc-filters/subscriptionManager":402}],770:[function(require,module,exports){
 const getRandomId = require('./random-id.js')
 const extend = require('xtend')
 
@@ -115944,7 +122473,7 @@ function createPayload(data){
   }, data)
 }
 
-},{"./random-id.js":768,"xtend":778}],767:[function(require,module,exports){
+},{"./random-id.js":772,"xtend":782}],771:[function(require,module,exports){
 const createPayload = require('./create-payload.js')
 
 module.exports = estimateGas
@@ -115972,7 +122501,7 @@ function estimateGas(provider, txParams, cb) {
     cb(null, res.result)
   })
 }
-},{"./create-payload.js":766}],768:[function(require,module,exports){
+},{"./create-payload.js":770}],772:[function(require,module,exports){
 module.exports = createRandomId
 
 
@@ -115980,7 +122509,7 @@ function createRandomId () {
   // random id
   return Math.floor(Number.MAX_SAFE_INTEGER * Math.random())
 }
-},{}],769:[function(require,module,exports){
+},{}],773:[function(require,module,exports){
 const stringify = require('json-stable-stringify')
 
 module.exports = {
@@ -116129,7 +122658,7 @@ function cacheTypeForPayload(payload) {
   }
 }
 
-},{"json-stable-stringify":483}],770:[function(require,module,exports){
+},{"json-stable-stringify":483}],774:[function(require,module,exports){
 const EventEmitter = require('events').EventEmitter
 const inherits = require('util').inherits
 
@@ -116164,7 +122693,7 @@ Stoplight.prototype.await = function(fn){
     setTimeout(fn)
   }
 }
-},{"events":437,"util":755}],771:[function(require,module,exports){
+},{"events":437,"util":759}],775:[function(require,module,exports){
 (function (global){(function (){
 'use strict';
 
@@ -116280,7 +122809,7 @@ module.exports = function whichTypedArray(value) {
 };
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"available-typed-arrays":306,"call-bind":323,"call-bound":324,"for-each":439,"get-proto":447,"gopd":449,"has-tostringtag/shams":453}],772:[function(require,module,exports){
+},{"available-typed-arrays":306,"call-bind":323,"call-bound":324,"for-each":439,"get-proto":447,"gopd":449,"has-tostringtag/shams":453}],776:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -116326,7 +122855,7 @@ var SyntaxError = /** @class */ (function (_super) {
 }(Error));
 exports.SyntaxError = SyntaxError;
 
-},{}],773:[function(require,module,exports){
+},{}],777:[function(require,module,exports){
 "use strict";
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
@@ -116336,7 +122865,7 @@ __export(require("./xml-http-request"));
 var xml_http_request_event_target_1 = require("./xml-http-request-event-target");
 exports.XMLHttpRequestEventTarget = xml_http_request_event_target_1.XMLHttpRequestEventTarget;
 
-},{"./xml-http-request":777,"./xml-http-request-event-target":775}],774:[function(require,module,exports){
+},{"./xml-http-request":781,"./xml-http-request-event-target":779}],778:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ProgressEvent = /** @class */ (function () {
@@ -116352,7 +122881,7 @@ var ProgressEvent = /** @class */ (function () {
 }());
 exports.ProgressEvent = ProgressEvent;
 
-},{}],775:[function(require,module,exports){
+},{}],779:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var XMLHttpRequestEventTarget = /** @class */ (function () {
@@ -116394,7 +122923,7 @@ var XMLHttpRequestEventTarget = /** @class */ (function () {
 }());
 exports.XMLHttpRequestEventTarget = XMLHttpRequestEventTarget;
 
-},{}],776:[function(require,module,exports){
+},{}],780:[function(require,module,exports){
 (function (Buffer){(function (){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
@@ -116475,7 +123004,7 @@ var XMLHttpRequestUpload = /** @class */ (function (_super) {
 exports.XMLHttpRequestUpload = XMLHttpRequestUpload;
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"./xml-http-request-event-target":775,"buffer":314}],777:[function(require,module,exports){
+},{"./xml-http-request-event-target":779,"buffer":314}],781:[function(require,module,exports){
 (function (process,Buffer){(function (){
 "use strict";
 var __extends = (this && this.__extends) || (function () {
@@ -116925,7 +123454,7 @@ XMLHttpRequest.prototype.nodejsHttpsAgent = https.globalAgent;
 XMLHttpRequest.prototype.nodejsBaseUrl = null;
 
 }).call(this)}).call(this,require('_process'),require("buffer").Buffer)
-},{"./errors":772,"./progress-event":774,"./xml-http-request-event-target":775,"./xml-http-request-upload":776,"_process":587,"buffer":314,"cookiejar":326,"http":665,"https":468,"os":578,"url":751}],778:[function(require,module,exports){
+},{"./errors":776,"./progress-event":778,"./xml-http-request-event-target":779,"./xml-http-request-upload":780,"_process":587,"buffer":314,"cookiejar":326,"http":665,"https":468,"os":578,"url":755}],782:[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;
