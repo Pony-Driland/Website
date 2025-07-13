@@ -39,5 +39,4 @@ Some specific folders may have instructions on how to use them. Then feel free t
 - When reading the story, the user can see at the top of the screen indicators showing what is happening in the environment of story.
 - TTS Speaker to read the story through audio.
 - Wiki page integrated into the website to view character information.
-- Optional non-profit cloud system using web3 technology for you to save your progress. You need to have a web3 extension installed in your browser to be visible.
 - AI chatbot for the user to have fun with the fic universe through roleplay, or natural conversations.
