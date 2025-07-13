@@ -41,7 +41,10 @@ import {
     TinyDomReadyManager, 
     fetchJson, 
     readJsonBlob, 
-    TinyNotifications
+    TinyNotifications,
+    readBase64Blob,
+    TinyHtml,
+    TinyAfterScrollWatcher
 } from 'tiny-essentials';
 import TinyDices from 'tiny-dices';
 
@@ -53,6 +56,9 @@ global.window.tinyNotification = new TinyNotifications({ audio: '/audio/notifica
 
 // Imports
 addAiMarkerShortcut();
+global.window.TinyAfterScrollWatcher = TinyAfterScrollWatcher;
+global.window.TinyHtml = TinyHtml;
+global.window.readBase64Blob = readBase64Blob;
 global.window.readJsonBlob = readJsonBlob;
 global.window.fetchJson = fetchJson;
 global.window.TinyDices = TinyDices;

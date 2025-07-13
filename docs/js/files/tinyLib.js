@@ -278,87 +278,6 @@ tinyLib.getGitUrlPath = function (text, type = 'g') {
   return new RegExp(typeof text === 'string' ? text.replace('{url}', tinyUrl) : tinyUrl, type);
 };
 
-// Visible Item
-$.fn.isInViewport = function () {
-  const elementTop = $(this).offset().top;
-  const elementBottom = elementTop + $(this).outerHeight();
-
-  const viewportTop = $(window).scrollTop();
-  const viewportBottom = viewportTop + $(window).height();
-
-  return elementBottom > viewportTop && elementTop < viewportBottom;
-};
-
-$.fn.isScrolledIntoView = function () {
-  const docViewTop = $(window).scrollTop();
-  const docViewBottom = docViewTop + $(window).height();
-
-  const elemTop = $(this).offset().top;
-  const elemBottom = elemTop + $(this).height();
-
-  return elemBottom <= docViewBottom && elemTop >= docViewTop;
-};
-
-$.fn.visibleOnWindow = function () {
-  // Don't include behind the header
-  const header = $('#md-navbar');
-  let headerOffset = 0;
-  if (header) {
-    headerOffset = header.outerHeight();
-  }
-
-  let element = $(this);
-  if (element) {
-    element = element[0];
-    if (element) {
-      let position = element.getBoundingClientRect();
-      if (
-        position &&
-        typeof position.top === 'number' &&
-        typeof position.bottom === 'number' &&
-        typeof window.innerHeight === 'number'
-      ) {
-        // checking whether fully visible
-        if (position.top >= headerOffset && position.bottom <= window.innerHeight) {
-          return 'full';
-        }
-
-        // checking for partial visibility
-        else if (position.top < window.innerHeight && position.bottom >= headerOffset) {
-          return 'partial';
-        }
-
-        // Nothing
-        else {
-          return null;
-        }
-      } else {
-        return null;
-      }
-    } else {
-      return null;
-    }
-  }
-};
-
-tinyLib.lastScrollTime = 0;
-window.addEventListener('scroll', function () {
-  tinyLib.lastScrollTime = new Date().getTime();
-});
-tinyLib.afterScrollQueue = [];
-(tinyLib.afterScrollCheck = function () {
-  requestAnimationFrame(tinyLib.afterScrollCheck);
-  if (new Date().getTime() - tinyLib.lastScrollTime > 100) {
-    while (tinyLib.afterScrollQueue.length) {
-      tinyLib.afterScrollQueue.pop()();
-    }
-  }
-})();
-tinyLib.doAfterScroll = function (f) {
-  tinyLib.lastScrollTime = new Date().getTime();
-  tinyLib.afterScrollQueue.push(f);
-};
-
 // Icon
 tinyLib.icon = (classItem) => $('<i>', { class: classItem });
 
@@ -387,31 +306,15 @@ tinyLib.upload.dataUrl = (button = null, baseFormat = '', callback = null, accep
   tinyLib.upload.button({ accept: `${baseFormat}/${accept}` }, button, (event) => {
     const file = event.target.files[0];
     if (!file) return;
-
     // Image type validation
     if (!file.type.startsWith(`${baseFormat}/`)) {
       callback(new Error('Selected file is not an image'), null);
       return;
     }
-
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      try {
-        const base64Data = e.target.result;
-        const format = file.type.split('/')[1]; // ex: <format>/png → png
-        // Ensure that the URL format is correct in the required pattern
-        const dataUrl = `data:${baseFormat}/${format};base64,${base64Data.split(',')[1]}`;
-        callback(null, dataUrl);
-      } catch (err) {
-        callback(err, null);
-      }
-    };
-
-    reader.onerror = function (err) {
-      callback(err, null);
-    };
-
-    reader.readAsDataURL(file);
+    // Complete
+    readBase64Blob(file, `${baseFormat}/${format}`)
+      .then((dataUrl) => callback(null, dataUrl))
+      .catch((err) => callback(err, null));
   });
 
 // Image upload

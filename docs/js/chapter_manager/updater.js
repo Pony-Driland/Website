@@ -28,7 +28,7 @@ cacheChapterUpdater.setActiveItem = function (item, scrollIntoView = false) {
 
     if (scrollIntoView) {
       cacheChapterUpdater.locked = true;
-      tinyLib.doAfterScroll(function () {
+      winScroller.doAfterScroll(() => {
         cacheChapterUpdater.locked = false;
       });
 
@@ -45,6 +45,7 @@ cacheChapterUpdater.setActiveItem = function (item, scrollIntoView = false) {
 };
 
 // Read Data on Scroll
+const winScroller = new TinyAfterScrollWatcher(window);
 $(window).on('resize scroll', function () {
   if (ttsManager.enabled) {
     return;
@@ -56,9 +57,11 @@ $(window).on('resize scroll', function () {
 
     // Normal Mode
     if (!tinyLib.isPageBottom()) {
+      const mdNavbar = $('#md-navbar').get(0);
       // Detect Selected Item
       for (const item in storyData.chapter.html) {
-        if (storyData.chapter.html[item].visibleOnWindow() === 'full') {
+        const tinyItem = storyData.chapter.html[item].get(0);
+        if (TinyHtml.isInViewport(tinyItem) && !TinyHtml.isCollWith(tinyItem, mdNavbar)) {
           selectedItem = Number(item);
           break;
         }
