@@ -248,29 +248,9 @@ tinyLib.goToByScrollTop = function (speed = 'slow') {
   );
 };
 
-tinyLib.isPageTop = function () {
-  return $(window).scrollTop() + $(window).height() === $(document).height();
-};
-
-tinyLib.isPageBottom = function () {
-  return window.innerHeight + window.scrollY >= document.body.offsetHeight;
-};
-
 // Remove AI tags
 tinyLib.removeAiTags = function (str) {
   return str.replace(/\<ai\>|\<\/ai\>/g, '');
-};
-
-// Boolean Checker
-tinyLib.booleanCheck = function (value) {
-  if (
-    typeof value !== 'undefined' &&
-    (value === 'true' || value === '1' || value === true || value === 1 || value === 'on')
-  ) {
-    return true;
-  } else {
-    return false;
-  }
 };
 
 tinyLib.getGitUrlPath = function (text, type = 'g') {

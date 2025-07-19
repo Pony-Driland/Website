@@ -56,7 +56,7 @@ $(window).on('resize scroll', function () {
     let selectedItem = 0;
 
     // Normal Mode
-    if (!tinyLib.isPageBottom()) {
+    if (!TinyHtml.isPageBottom()) {
       const mdNavbar = $('#md-navbar').get(0);
       // Detect Selected Item
       for (const item in storyData.chapter.html) {

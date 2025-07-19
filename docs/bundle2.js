@@ -67,7 +67,7 @@ global.window.Pizzicato = _pizzicato["default"];
 global.window.PhotoSwipeLightbox = _photoswipe["default"];
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"for-promise":85,"jsstore":91,"photoswipe":95,"pizzicato":96,"socket.io-client":99,"tiny-ai-api":110,"tiny-dices":133,"tiny-essentials":160,"tippy.js":172,"validate-color":173}],2:[function(require,module,exports){
+},{"for-promise":85,"jsstore":91,"photoswipe":95,"pizzicato":96,"socket.io-client":99,"tiny-ai-api":110,"tiny-dices":133,"tiny-essentials":160,"tippy.js":174,"validate-color":175}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29308,7 +29308,7 @@ function _insertCreateCube() {
 }
 var _default = exports["default"] = TinyDices;
 
-},{"tiny-essentials":142,"validate-color":173}],134:[function(require,module,exports){
+},{"tiny-essentials":142,"validate-color":175}],134:[function(require,module,exports){
 arguments[4][112][0].apply(exports,arguments)
 },{"dup":112}],135:[function(require,module,exports){
 arguments[4][113][0].apply(exports,arguments)
@@ -30055,6 +30055,7 @@ arguments[4][117][0].apply(exports,arguments)
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.fetchBlob = fetchBlob;
 exports.fetchJson = fetchJson;
 exports.installWindowHiddenScript = installWindowHiddenScript;
 exports.readBase64Blob = readBase64Blob;
@@ -30190,49 +30191,44 @@ function saveJsonFile(filename, data) {
   URL.revokeObjectURL(url);
 }
 /**
+ * @typedef {Object} FetchTemplateOptions
+ * @property {string} [method="GET"] - HTTP method to use (GET, POST, etc.).
+ * @property {any} [body] - Request body (only for methods like POST, PUT).
+ * @property {number} [timeout=0] - Timeout in milliseconds (ignored if signal is provided).
+ * @property {number} [retries=0] - Number of retry attempts (ignored if signal is provided).
+ * @property {Headers|Record<string, *>} [headers={}] - Additional headers.
+ * @property {AbortSignal|null} [signal] - External AbortSignal; disables timeout and retries.
+ */
+/**
+ * @param {string} url - The full URL to fetch data from.
+ * @param {FetchTemplateOptions} [options] - Optional settings.
+ * @returns {Promise<Response>} Result data.
+ * @throws {Error} Throws if fetch fails, times out.
+ */
+function fetchTemplate(_x) {
+  return _fetchTemplate.apply(this, arguments);
+}
+/**
  * Loads and parses a JSON from a remote URL using Fetch API.
  *
  * @param {string} url - The full URL to fetch JSON from.
  * @param {Object} [options] - Optional settings.
- * @param {string} [options.method="GET"] - HTTP method to use (GET, POST, etc.).
- * @param {any} [options.body] - Request body (only for methods like POST, PUT).
- * @param {number} [options.timeout=0] - Timeout in milliseconds (ignored if signal is provided).
- * @param {number} [options.retries=0] - Number of retry attempts (ignored if signal is provided).
- * @param {Headers|Record<string, *>} [options.headers={}] - Additional headers.
- * @param {AbortSignal|null} [options.signal] - External AbortSignal; disables timeout and retries.
- * @returns {Promise<*>} Parsed JSON object.
+ * @returns {Promise<any[] | Record<string | number | symbol, unknown>>} Parsed JSON object.
  * @throws {Error} Throws if fetch fails, times out, or returns invalid JSON.
  */
-function fetchJson(_x) {
-  return _fetchJson.apply(this, arguments);
-} ///////////////////////////////////////////////////////////////////////////////
-/**
- * Installs a script that toggles CSS classes on a given element
- * based on the page's visibility or focus state, and optionally
- * triggers callbacks on visibility changes.
- *
- * @param {Object} [settings={}]
- * @param {Element} [settings.element=document.body] - The element to receive visibility classes.
- * @param {string} [settings.hiddenClass='windowHidden'] - CSS class applied when the page is hidden.
- * @param {string} [settings.visibleClass='windowVisible'] - CSS class applied when the page is visible.
- * @param {() => void} [settings.onVisible] - Callback called when page becomes visible.
- * @param {() => void} [settings.onHidden] - Callback called when page becomes hidden.
- * @returns {() => void} Function that removes all installed event listeners.
- * @throws {TypeError} If any provided setting is invalid.
- */
-function _fetchJson() {
-  _fetchJson = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(url) {
-    var _ref,
-      _ref$method,
+function _fetchTemplate() {
+  _fetchTemplate = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(url) {
+    var _ref2,
+      _ref2$method,
       method,
       body,
-      _ref$timeout,
+      _ref2$timeout,
       timeout,
-      _ref$retries,
+      _ref2$retries,
       retries,
-      _ref$headers,
+      _ref2$headers,
       headers,
-      _ref$signal,
+      _ref2$signal,
       signal,
       attempts,
       lastError,
@@ -30243,7 +30239,7 @@ function _fetchJson() {
     return _regenerator().w(function (_context2) {
       while (1) switch (_context2.n) {
         case 0:
-          _ref = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : {}, _ref$method = _ref.method, method = _ref$method === void 0 ? 'GET' : _ref$method, body = _ref.body, _ref$timeout = _ref.timeout, timeout = _ref$timeout === void 0 ? 0 : _ref$timeout, _ref$retries = _ref.retries, retries = _ref$retries === void 0 ? 0 : _ref$retries, _ref$headers = _ref.headers, headers = _ref$headers === void 0 ? {} : _ref$headers, _ref$signal = _ref.signal, signal = _ref$signal === void 0 ? null : _ref$signal;
+          _ref2 = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : {}, _ref2$method = _ref2.method, method = _ref2$method === void 0 ? 'GET' : _ref2$method, body = _ref2.body, _ref2$timeout = _ref2.timeout, timeout = _ref2$timeout === void 0 ? 0 : _ref2$timeout, _ref2$retries = _ref2.retries, retries = _ref2$retries === void 0 ? 0 : _ref2$retries, _ref2$headers = _ref2.headers, headers = _ref2$headers === void 0 ? {} : _ref2$headers, _ref2$signal = _ref2.signal, signal = _ref2$signal === void 0 ? null : _ref2$signal;
           if (!(typeof url !== 'string' || !url.startsWith('../') && !url.startsWith('./') && !url.startsWith('/') && !url.startsWith('https://') && !url.startsWith('http://'))) {
             _context2.n = 1;
             break;
@@ -30277,7 +30273,7 @@ function _fetchJson() {
           lastError = null;
           _loop = /*#__PURE__*/_regenerator().m(function _loop(attempt) {
             var _controller$signal;
-            var controller, localSignal, timer, response, contentType, data, _t;
+            var controller, localSignal, timer, response, _t;
             return _regenerator().w(function (_context) {
               while (1) switch (_context.n) {
                 case 0:
@@ -30305,48 +30301,31 @@ function _fetchJson() {
                   }
                   throw new Error("HTTP error: ".concat(response.status, " ").concat(response.statusText));
                 case 3:
-                  contentType = response.headers.get('content-type') || '';
-                  if (contentType.includes('application/json')) {
-                    _context.n = 4;
-                    break;
-                  }
-                  throw new Error("Unexpected content-type: ".concat(contentType));
-                case 4:
-                  _context.n = 5;
-                  return response.json();
-                case 5:
-                  data = _context.v;
-                  if (!(!Array.isArray(data) && !(0, _objFilter.isJsonObject)(data))) {
-                    _context.n = 6;
-                    break;
-                  }
-                  throw new Error('Received invalid data instead of valid JSON.');
-                case 6:
                   return _context.a(2, {
-                    v: data
+                    v: response
                   });
-                case 7:
-                  _context.p = 7;
+                case 4:
+                  _context.p = 4;
                   _t = _context.v;
                   lastError = /** @type {Error} */_t;
                   if (!signal) {
-                    _context.n = 8;
+                    _context.n = 5;
                     break;
                   }
                   return _context.a(2, 0);
-                case 8:
+                case 5:
                   if (!(attempt < retries)) {
-                    _context.n = 9;
+                    _context.n = 6;
                     break;
                   }
-                  _context.n = 9;
+                  _context.n = 6;
                   return new Promise(function (resolve) {
                     return setTimeout(resolve, 300 * (attempt + 1));
                   });
-                case 9:
+                case 6:
                   return _context.a(2);
               }
-            }, _loop, null, [[1, 7]]);
+            }, _loop, null, [[1, 4]]);
           });
           attempt = 0;
         case 5:
@@ -30379,18 +30358,129 @@ function _fetchJson() {
       }
     }, _callee);
   }));
+  return _fetchTemplate.apply(this, arguments);
+}
+function fetchJson(_x2, _x3) {
   return _fetchJson.apply(this, arguments);
 }
+/**
+ * Loads a remote file as a Blob using Fetch API.
+ *
+ * @param {string} url - The full URL to fetch the file from.
+ * @param {Object} [options] - Optional fetch options.
+ * @param {string[]} [allowedMimeTypes] - Optional list of accepted MIME types (e.g., ['image/jpeg']).
+ * @returns {Promise<Blob>} - The fetched file as a Blob.
+ * @throws {Error} Throws if fetch fails, response is not ok, or MIME type is not allowed.
+ */
+function _fetchJson() {
+  _fetchJson = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(url, options) {
+    return _regenerator().w(function (_context4) {
+      while (1) switch (_context4.n) {
+        case 0:
+          return _context4.a(2, new Promise(function (resolve, reject) {
+            fetchTemplate(url, options).then(/*#__PURE__*/function () {
+              var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(res) {
+                var contentType, data;
+                return _regenerator().w(function (_context3) {
+                  while (1) switch (_context3.n) {
+                    case 0:
+                      contentType = res.headers.get('content-type') || '';
+                      if (contentType.includes('application/json')) {
+                        _context3.n = 1;
+                        break;
+                      }
+                      throw new Error("Unexpected content-type: ".concat(contentType));
+                    case 1:
+                      _context3.n = 2;
+                      return res.json();
+                    case 2:
+                      data = _context3.v;
+                      if (!(!Array.isArray(data) && !(0, _objFilter.isJsonObject)(data))) {
+                        _context3.n = 3;
+                        break;
+                      }
+                      throw new Error('Received invalid data instead of valid JSON.');
+                    case 3:
+                      return _context3.a(2, resolve(data));
+                  }
+                }, _callee2);
+              }));
+              return function (_x7) {
+                return _ref3.apply(this, arguments);
+              };
+            }())["catch"](reject);
+          }));
+      }
+    }, _callee3);
+  }));
+  return _fetchJson.apply(this, arguments);
+}
+function fetchBlob(_x4, _x5, _x6) {
+  return _fetchBlob.apply(this, arguments);
+} ///////////////////////////////////////////////////////////////////////////////
+/**
+ * Installs a script that toggles CSS classes on a given element
+ * based on the page's visibility or focus state, and optionally
+ * triggers callbacks on visibility changes.
+ *
+ * @param {Object} [settings={}]
+ * @param {Element} [settings.element=document.body] - The element to receive visibility classes.
+ * @param {string} [settings.hiddenClass='windowHidden'] - CSS class applied when the page is hidden.
+ * @param {string} [settings.visibleClass='windowVisible'] - CSS class applied when the page is visible.
+ * @param {() => void} [settings.onVisible] - Callback called when page becomes visible.
+ * @param {() => void} [settings.onHidden] - Callback called when page becomes hidden.
+ * @returns {() => void} Function that removes all installed event listeners.
+ * @throws {TypeError} If any provided setting is invalid.
+ */
+function _fetchBlob() {
+  _fetchBlob = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5(url, allowedMimeTypes, options) {
+    return _regenerator().w(function (_context6) {
+      while (1) switch (_context6.n) {
+        case 0:
+          return _context6.a(2, new Promise(function (resolve, reject) {
+            fetchTemplate(url, options).then(/*#__PURE__*/function () {
+              var _ref4 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(res) {
+                var contentType, data;
+                return _regenerator().w(function (_context5) {
+                  while (1) switch (_context5.n) {
+                    case 0:
+                      contentType = res.headers.get('content-type') || '';
+                      if (!(Array.isArray(allowedMimeTypes) && allowedMimeTypes.length > 0 && !allowedMimeTypes.some(function (type) {
+                        return contentType.includes(type);
+                      }))) {
+                        _context5.n = 1;
+                        break;
+                      }
+                      throw new Error("Blocked MIME type: ".concat(contentType));
+                    case 1:
+                      _context5.n = 2;
+                      return res.blob();
+                    case 2:
+                      data = _context5.v;
+                      return _context5.a(2, resolve(data));
+                  }
+                }, _callee4);
+              }));
+              return function (_x8) {
+                return _ref4.apply(this, arguments);
+              };
+            }())["catch"](reject);
+          }));
+      }
+    }, _callee5);
+  }));
+  return _fetchBlob.apply(this, arguments);
+}
 function installWindowHiddenScript() {
-  var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-    _ref2$element = _ref2.element,
-    element = _ref2$element === void 0 ? document.body : _ref2$element,
-    _ref2$hiddenClass = _ref2.hiddenClass,
-    hiddenClass = _ref2$hiddenClass === void 0 ? 'windowHidden' : _ref2$hiddenClass,
-    _ref2$visibleClass = _ref2.visibleClass,
-    visibleClass = _ref2$visibleClass === void 0 ? 'windowVisible' : _ref2$visibleClass,
-    onVisible = _ref2.onVisible,
-    onHidden = _ref2.onHidden;
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+    _ref$element = _ref.element,
+    element = _ref$element === void 0 ? document.body : _ref$element,
+    _ref$hiddenClass = _ref.hiddenClass,
+    hiddenClass = _ref$hiddenClass === void 0 ? 'windowHidden' : _ref$hiddenClass,
+    _ref$visibleClass = _ref.visibleClass,
+    visibleClass = _ref$visibleClass === void 0 ? 'windowVisible' : _ref$visibleClass,
+    onVisible = _ref.onVisible,
+    onHidden = _ref.onHidden;
   if (!(element instanceof Element)) throw new TypeError("\"element\" must be an instance of Element.");
   if (typeof hiddenClass !== 'string') throw new TypeError("\"hiddenClass\" must be a string.");
   if (typeof visibleClass !== 'string') throw new TypeError("\"visibleClass\" must be a string.");
@@ -30789,10 +30879,22 @@ Object.defineProperty(exports, "TinyRateLimiter", {
     return _TinyRateLimiter["default"];
   }
 });
+Object.defineProperty(exports, "TinySmartScroller", {
+  enumerable: true,
+  get: function get() {
+    return _TinySmartScroller["default"];
+  }
+});
 Object.defineProperty(exports, "TinyToastNotify", {
   enumerable: true,
   get: function get() {
     return _TinyToastNotify["default"];
+  }
+});
+Object.defineProperty(exports, "UltraRandomMsgGen", {
+  enumerable: true,
+  get: function get() {
+    return _UltraRandomMsgGen["default"];
   }
 });
 Object.defineProperty(exports, "addAiMarkerShortcut", {
@@ -31354,9 +31456,11 @@ var _TinyNotifications = _interopRequireDefault(require("./libs/TinyNotification
 var _collision = require("./basics/collision.mjs");
 var _TinyHtml = _interopRequireDefault(require("./libs/TinyHtml.mjs"));
 var _TinyAfterScrollWatcher = _interopRequireDefault(require("./libs/TinyAfterScrollWatcher.mjs"));
+var _UltraRandomMsgGen = _interopRequireDefault(require("./libs/UltraRandomMsgGen.mjs"));
+var _TinySmartScroller = _interopRequireDefault(require("./libs/TinySmartScroller.mjs"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 
-},{"../legacy/libs/arraySortPositions.mjs":146,"../legacy/libs/replaceAsync.mjs":147,"../legacy/libs/userLevel.mjs":148,"./basics/array.mjs":149,"./basics/clock.mjs":150,"./basics/collision.mjs":151,"./basics/fullScreen.mjs":152,"./basics/html.mjs":153,"./basics/html_deprecated.mjs":154,"./basics/objFilter.mjs":155,"./basics/simpleMath.mjs":156,"./basics/text.mjs":157,"./fileManager/asyncFuncs.mjs":158,"./fileManager/normalFuncs.mjs":159,"./libs/ColorSafeStringify.mjs":161,"./libs/TinyAfterScrollWatcher.mjs":162,"./libs/TinyDomReadyManager.mjs":163,"./libs/TinyDragDropDetector.mjs":164,"./libs/TinyDragger.mjs":165,"./libs/TinyHtml.mjs":166,"./libs/TinyNotifications.mjs":167,"./libs/TinyNotifyCenter.mjs":168,"./libs/TinyPromiseQueue.mjs":169,"./libs/TinyRateLimiter.mjs":170,"./libs/TinyToastNotify.mjs":171}],161:[function(require,module,exports){
+},{"../legacy/libs/arraySortPositions.mjs":146,"../legacy/libs/replaceAsync.mjs":147,"../legacy/libs/userLevel.mjs":148,"./basics/array.mjs":149,"./basics/clock.mjs":150,"./basics/collision.mjs":151,"./basics/fullScreen.mjs":152,"./basics/html.mjs":153,"./basics/html_deprecated.mjs":154,"./basics/objFilter.mjs":155,"./basics/simpleMath.mjs":156,"./basics/text.mjs":157,"./fileManager/asyncFuncs.mjs":158,"./fileManager/normalFuncs.mjs":159,"./libs/ColorSafeStringify.mjs":161,"./libs/TinyAfterScrollWatcher.mjs":162,"./libs/TinyDomReadyManager.mjs":163,"./libs/TinyDragDropDetector.mjs":164,"./libs/TinyDragger.mjs":165,"./libs/TinyHtml.mjs":166,"./libs/TinyNotifications.mjs":167,"./libs/TinyNotifyCenter.mjs":168,"./libs/TinyPromiseQueue.mjs":169,"./libs/TinyRateLimiter.mjs":170,"./libs/TinySmartScroller.mjs":171,"./libs/TinyToastNotify.mjs":172,"./libs/UltraRandomMsgGen.mjs":173}],161:[function(require,module,exports){
 arguments[4][125][0].apply(exports,arguments)
 },{"dup":125}],162:[function(require,module,exports){
 "use strict";
@@ -32591,7 +32695,6 @@ function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLim
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
@@ -32602,6 +32705,7 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
 function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
@@ -32668,6 +32772,19 @@ var areElsColliding = TinyCollision.areElsColliding,
  * @typedef {Element|Window} ElementAndWindow
  */
 /**
+ * Represents a raw DOM element/window/document or an instance of TinyHtml.
+ * This type is used to abstract interactions with both plain elements
+ * and wrapped elements via the TinyHtml class.
+ *
+ * @typedef {ElementAndWinAndDoc|TinyHtml} TinyElementAndWinAndDoc
+ */
+/**
+ * Represents a value that can be either a DOM Element, or the global Window object, or the document object.
+ * Useful for functions that operate generically on scrollable or measurable targets.
+ *
+ * @typedef {Element|Window|Document} ElementAndWinAndDoc
+ */
+/**
  * A parameter type used for filtering or matching elements.
  * It can be:
  * - A string (CSS selector),
@@ -32682,7 +32799,7 @@ var areElsColliding = TinyCollision.areElsColliding,
  * Elements accepted as constructor values for TinyHtml.
  * These include common DOM elements and root containers.
  *
- * @typedef {Window|Element|Document} ConstructorElValues
+ * @typedef {Window|Element|Document|Text} ConstructorElValues
  */
 /**
  * The handler function used in event listeners.
@@ -32802,7 +32919,7 @@ var TinyHtml = /*#__PURE__*/function () {
      */
     _classPrivateFieldInitSpec(this, _el, void 0);
     if (el instanceof TinyHtml) throw new Error("[TinyHtml] You are trying to put a TinyHtml inside another TinyHtml in constructor.");
-    if (!(el instanceof Element) && !(el instanceof Window) && !(el instanceof Document)) throw new Error("[TinyHtml] Invalid Target in constructor.");
+    if (!(el instanceof Element) && !(el instanceof Window) && !(el instanceof Document) && !(el instanceof Text)) throw new Error("[TinyHtml] Invalid Target in constructor.");
     _classPrivateFieldSet(_el, this, el);
   }
   /**
@@ -32811,15 +32928,84 @@ var TinyHtml = /*#__PURE__*/function () {
    * @returns {obj is Window} - True if it's a Window.
    */
   return _createClass(TinyHtml, [{
-    key: "get",
+    key: "querySelector",
     value:
+    /**
+     * Queries the element for the first element matching the CSS selector and wraps it in a TinyHtml instance.
+     *
+     * @param {string} selector - A valid CSS selector string.
+     * @returns {TinyHtml|null} A TinyHtml instance wrapping the matched element.
+     */
+    function querySelector(selector) {
+      return TinyHtml.query(selector, TinyHtml._preElem(this, 'query'));
+    }
+    /**
+     * Queries the document for all elements matching the CSS selector and wraps them in TinyHtml instances.
+     *
+     * @param {string} selector - A valid CSS selector string.
+     * @param {Document|Element} elem - Target element.
+     * @returns {TinyHtml[]} An array of TinyHtml instances wrapping the matched elements.
+     */
+  }, {
+    key: "querySelectorAll",
+    value:
+    /**
+     * Queries the element for all elements matching the CSS selector and wraps them in TinyHtml instances.
+     *
+     * @param {string} selector - A valid CSS selector string.
+     * @returns {TinyHtml[]} An array of TinyHtml instances wrapping the matched elements.
+     */
+    function querySelectorAll(selector) {
+      return TinyHtml.queryAll(selector, TinyHtml._preElem(this, 'queryAll'));
+    }
+    /**
+     * Retrieves an element by its ID and wraps it in a TinyHtml instance.
+     *
+     * @param {string} selector - The ID of the element to retrieve.
+     * @returns {TinyHtml|null} A TinyHtml instance wrapping the found element.
+     */
+  }, {
+    key: "getElementsByClassName",
+    value:
+    /**
+     * Retrieves all elements with the specified class name and wraps them in TinyHtml instances.
+     *
+     * @param {string} selector - The class name to search for.
+     * @returns {TinyHtml[]} An array of TinyHtml instances wrapping the found elements.
+     */
+    function getElementsByClassName(selector) {
+      return TinyHtml.getByClassName(selector, TinyHtml._preElem(this, 'getByClassName'));
+    }
+    /**
+     * Retrieves all elements with the specified name attribute and wraps them in TinyHtml instances.
+     *
+     * @param {string} selector - The name attribute to search for.
+     * @returns {TinyHtml[]} An array of TinyHtml instances wrapping the found elements.
+     */
+  }, {
+    key: "getElementsByTagNameNS",
+    value:
+    /**
+     * Retrieves all elements with the specified local tag name within the given namespace URI,
+     * and wraps them in TinyHtml instances.
+     *
+     * @param {string} localName - The local name (tag) of the elements to search for.
+     * @param {string|null} [namespaceURI='http://www.w3.org/1999/xhtml'] - The namespace URI to search within.
+     * @returns {TinyHtml[]} An array of TinyHtml instances wrapping the found elements.
+     */
+    function getElementsByTagNameNS(localName) {
+      var namespaceURI = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'http://www.w3.org/1999/xhtml';
+      return TinyHtml.getByTagNameNS(localName, namespaceURI, TinyHtml._preElem(this, 'getByTagNameNS'));
+    }
     //////////////////////////////////////////////////////////////////
     /**
      * Returns the current target held by this instance.
      *
      * @returns {ConstructorElValues} - The instance's target element.
      */
-    function get() {
+  }, {
+    key: "get",
+    value: function get() {
       return _classPrivateFieldGet(_el, this);
     }
     /**
@@ -32978,7 +33164,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * @param {string} key - The key under which the data will be stored.
      * @param {any} value - The value to store.
      * @param {boolean} [isPrivate=false] - Whether to store the data in the private store.
-     * @returns {void}
+     * @returns {TinyElement}
      */
   }, {
     key: "setData",
@@ -32989,7 +33175,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * @param {string} key - The key under which the data will be stored.
      * @param {any} value - The value to store.
      * @param {boolean} [isPrivate=false] - Whether to store the data in the private store.
-     * @returns {void}
+     * @returns {TinyElement}
      */
     function setData(key, value) {
       var isPrivate = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
@@ -33222,6 +33408,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Appends child elements or strings to the end of the target element(s).
      *
      * @param {...(TinyNode | TinyNode[] | string)} children - The child elements or text to append.
+     * @returns {TinyElement}
      */
     function append() {
       for (var _len = arguments.length, children = new Array(_len), _key = 0; _key < _len; _key++) {
@@ -33232,8 +33419,9 @@ var TinyHtml = /*#__PURE__*/function () {
     /**
      * Prepends child elements or strings to the beginning of the target element(s).
      *
-     * @param {TinyElement | TinyElement[]} el - The target element(s) to receive children.
+     * @param {TinyElement} el - The target element(s) to receive children.
      * @param {...(TinyNode | TinyNode[] | string)} children - The child elements or text to prepend.
+     * @returns {TinyElement}
      */
   }, {
     key: "prepend",
@@ -33242,6 +33430,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Prepends child elements or strings to the beginning of the target element(s).
      *
      * @param {...(TinyNode | TinyNode[] | string)} children - The child elements or text to prepend.
+     * @returns {TinyElement}
      */
     function prepend() {
       for (var _len2 = arguments.length, children = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
@@ -33252,8 +33441,9 @@ var TinyHtml = /*#__PURE__*/function () {
     /**
      * Inserts elements or strings immediately before the target element(s) in the DOM.
      *
-     * @param {TinyElement | TinyElement[]} el - The target element(s) before which new content is inserted.
+     * @param {TinyElement} el - The target element(s) before which new content is inserted.
      * @param {...(TinyNode | TinyNode[] | string)} children - Elements or text to insert before the target.
+     * @returns {TinyElement}
      */
   }, {
     key: "before",
@@ -33262,6 +33452,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Inserts elements or strings immediately before the target element(s) in the DOM.
      *
      * @param {...(TinyNode | TinyNode[] | string)} children - Elements or text to insert before the target.
+     * @returns {TinyElement}
      */
     function before() {
       for (var _len3 = arguments.length, children = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
@@ -33272,8 +33463,9 @@ var TinyHtml = /*#__PURE__*/function () {
     /**
      * Inserts elements or strings immediately after the target element(s) in the DOM.
      *
-     * @param {TinyElement | TinyElement[]} el - The target element(s) after which new content is inserted.
+     * @param {TinyElement} el - The target element(s) after which new content is inserted.
      * @param {...(TinyNode | TinyNode[] | string)} children - Elements or text to insert after the target.
+     * @returns {TinyElement}
      */
   }, {
     key: "after",
@@ -33282,6 +33474,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Inserts elements or strings immediately after the target element(s) in the DOM.
      *
      * @param {...(TinyNode | TinyNode[] | string)} children - Elements or text to insert after the target.
+     * @returns {TinyElement}
      */
     function after() {
       for (var _len4 = arguments.length, children = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
@@ -33292,8 +33485,9 @@ var TinyHtml = /*#__PURE__*/function () {
     /**
      * Replaces the target element(s) in the DOM with new elements or text.
      *
-     * @param {TinyElement | TinyElement[]} el - The element(s) to be replaced.
+     * @param {TinyElement} el - The element(s) to be replaced.
      * @param {...(TinyNode | TinyNode[] | string)} newNodes - New elements or text to replace the target.
+     * @returns {TinyElement}
      */
   }, {
     key: "replaceWith",
@@ -33302,6 +33496,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Replaces the target element(s) in the DOM with new elements or text.
      *
      * @param {...(TinyNode | TinyNode[] | string)} newNodes - New elements or text to replace the target.
+     * @returns {TinyElement}
      */
     function replaceWith() {
       for (var _len5 = arguments.length, newNodes = new Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
@@ -33314,6 +33509,7 @@ var TinyHtml = /*#__PURE__*/function () {
      *
      * @param {TinyNode | TinyNode[]} el - The element(s) to append.
      * @param {TinyNode | TinyNode[]} targets - Target element(s) where content will be appended.
+     * @returns {TinyNode|TinyNode[]}
      */
   }, {
     key: "appendTo",
@@ -33322,6 +33518,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Appends the given element(s) to each target element in sequence.
      *
      * @param {TinyNode | TinyNode[]} targets - Target element(s) where content will be appended.
+     * @returns {TinyNode|TinyNode[]}
      */
     function appendTo(targets) {
       return TinyHtml.appendTo(this, targets);
@@ -33331,6 +33528,7 @@ var TinyHtml = /*#__PURE__*/function () {
      *
      * @param {TinyElement | TinyElement[]} el - The element(s) to prepend.
      * @param {TinyElement | TinyElement[]} targets - Target element(s) where content will be prepended.
+     * @returns {TinyElement|TinyElement[]}
      */
   }, {
     key: "prependTo",
@@ -33339,6 +33537,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Prepends the given element(s) to each target element in sequence.
      *
      * @param {TinyElement | TinyElement[]} targets - Target element(s) where content will be prepended.
+     * @returns {TinyElement|TinyElement[]}
      */
     function prependTo(targets) {
       return TinyHtml.prependTo(this, targets);
@@ -33349,6 +33548,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * @param {TinyNode | TinyNode[]} el - The element(s) to insert.
      * @param {TinyNode | TinyNode[]} target - The reference element where insertion happens.
      * @param {TinyNode | TinyNode[] | null} [child=null] - Optional child to insert before, defaults to target.
+     * @returns {TinyNode|TinyNode[]}
      */
   }, {
     key: "insertBefore",
@@ -33358,6 +33558,7 @@ var TinyHtml = /*#__PURE__*/function () {
      *
      * @param {TinyNode | TinyNode[]} target - The reference element where insertion happens.
      * @param {TinyNode | TinyNode[] | null} [child=null] - Optional child to insert before, defaults to target.
+     * @returns {TinyNode|TinyNode[]}
      */
     function insertBefore(target, child) {
       return TinyHtml.insertBefore(this, target, child);
@@ -33368,6 +33569,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * @param {TinyNode | TinyNode[]} el - The element(s) to insert.
      * @param {TinyNode | TinyNode[]} target - The reference element where insertion happens.
      * @param {TinyNode | TinyNode[] | null} [child=null] - Optional child to insert after, defaults to target.
+     * @returns {TinyNode|TinyNode[]}
      */
   }, {
     key: "insertAfter",
@@ -33377,6 +33579,7 @@ var TinyHtml = /*#__PURE__*/function () {
      *
      * @param {TinyNode | TinyNode[]} target - The reference element where insertion happens.
      * @param {TinyNode | TinyNode[] | null} [child=null] - Optional child to insert after, defaults to target.
+     * @returns {TinyNode|TinyNode[]}
      */
     function insertAfter(target, child) {
       return TinyHtml.insertAfter(this, target, child);
@@ -33387,6 +33590,7 @@ var TinyHtml = /*#__PURE__*/function () {
      *
      * @param {TinyNode | TinyNode[]} el - The new element(s) to insert.
      * @param {TinyNode | TinyNode[]} targets - The elements to be replaced.
+     * @returns {TinyNode|TinyNode[]}
      */
   }, {
     key: "replaceAll",
@@ -33396,6 +33600,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * If multiple targets exist, the inserted elements are cloned accordingly.
      *
      * @param {TinyNode | TinyNode[]} targets - The elements to be replaced.
+     * @returns {TinyNode|TinyNode[]}
      */
     function replaceAll(targets) {
       return TinyHtml.replaceAll(this, targets);
@@ -33512,6 +33717,7 @@ var TinyHtml = /*#__PURE__*/function () {
      *
      * @param {string|Object} prop - The property name or an object with key-value pairs
      * @param {string|null} [value=null] - The value to set (if `prop` is a string)
+     * @returns {TinyHtmlElement|TinyHtmlElement[]}
      */
     function setStyle(prop, value) {
       return TinyHtml.setStyle(this, prop, value);
@@ -33573,6 +33779,7 @@ var TinyHtml = /*#__PURE__*/function () {
      *
      * @param {TinyHtmlElement|TinyHtmlElement[]} el - A single element or an array of elements.
      * @param {string|string[]} prop - A property name or an array of property names to remove.
+     * @returns {TinyHtmlElement|TinyHtmlElement[]}
      */
   }, {
     key: "removeStyle",
@@ -33581,6 +33788,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Removes one or more inline CSS properties from the given element(s).
      *
      * @param {string|string[]} prop - A property name or an array of property names to remove.
+     * @returns {TinyHtmlElement|TinyHtmlElement[]}
      */
     function removeStyle(prop) {
       return TinyHtml.removeStyle(this, prop);
@@ -33594,6 +33802,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * @param {string} prop - The CSS property to toggle.
      * @param {string} val1 - The first value (used as "current" check).
      * @param {string} val2 - The second value (used as the "alternative").
+     * @returns {TinyHtmlElement|TinyHtmlElement[]}
      */
   }, {
     key: "toggleStyle",
@@ -33606,6 +33815,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * @param {string} prop - The CSS property to toggle.
      * @param {string} val1 - The first value (used as "current" check).
      * @param {string} val2 - The second value (used as the "alternative").
+     * @returns {TinyHtmlElement|TinyHtmlElement[]}
      */
     function toggleStyle(prop, val1, val2) {
       return TinyHtml.toggleStyle(this, prop, val1, val2);
@@ -33614,13 +33824,14 @@ var TinyHtml = /*#__PURE__*/function () {
      * Removes all inline styles (`style` attribute) from the given element(s).
      *
      * @param {TinyElement|TinyElement[]} el - A single element or an array of elements.
+     * @returns {TinyElement|TinyElement[]}
      */
   }, {
     key: "clearStyle",
     value:
     /**
      * Removes all inline styles (`style` attribute) from the given element(s).
-     *
+     * @returns {TinyElement|TinyElement[]}
      */
     function clearStyle() {
       return TinyHtml.clearStyle(this);
@@ -33630,12 +33841,14 @@ var TinyHtml = /*#__PURE__*/function () {
      * Focus the element.
      *
      * @param {TinyHtmlElement} el - The element or a selector string.
+     * @returns {TinyHtmlElement}
      */
   }, {
     key: "focus",
     value:
     /**
      * Focus the element.
+     * @returns {TinyHtmlElement}
      */
     function focus() {
       return TinyHtml.focus(this);
@@ -33644,20 +33857,26 @@ var TinyHtml = /*#__PURE__*/function () {
      * Blur the element.
      *
      * @param {TinyHtmlElement} el - The element or a selector string.
+     * @returns {TinyHtmlElement}
      */
   }, {
     key: "blur",
     value:
     /**
      * Blur the element.
+     * @returns {TinyHtmlElement}
      */
     function blur() {
       return TinyHtml.blur(this);
     }
-    //////////////////////////////////////////////////////////////////////
     /**
-     * Sets the vertical scroll position of the window.
-     * @param {number} value - Sets the scroll position.
+     * Interprets a value as a boolean `true` if it matches a common truthy representation.
+     *
+     * This method checks if the input is any of the common forms used to represent `true`,
+     * such as the string `'true'`, `'1'`, `'on'`, the boolean `true`, or the number `1`.
+     *
+     * @param {string|boolean|number} [value] - The value to interpret as boolean.
+     * @returns {boolean} `true` if the value represents a truthy state, otherwise `false`.
      */
   }, {
     key: "getDimension",
@@ -33676,6 +33895,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * @param {TinyHtmlElement} el - Target element.
      * @param {string|number} value - Height value.
      * @throws {TypeError} If `value` is neither a string nor number.
+     * @returns {TinyHtmlElement}
      */
   }, {
     key: "setHeight",
@@ -33683,6 +33903,7 @@ var TinyHtml = /*#__PURE__*/function () {
     /**
      * Sets the height of the element.
      * @param {string|number} value - Height value.
+     * @returns {TinyHtmlElement}
      */
     function setHeight(value) {
       return TinyHtml.setHeight(this, value);
@@ -33692,6 +33913,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * @param {TinyHtmlElement} el - Target element.
      * @param {string|number} value - Width value.
      * @throws {TypeError} If `value` is neither a string nor number.
+     * @returns {TinyHtmlElement}
      */
   }, {
     key: "setWidth",
@@ -33699,13 +33921,14 @@ var TinyHtml = /*#__PURE__*/function () {
     /**
      * Sets the width of the element.
      * @param {string|number} value - Width value.
+     * @returns {TinyHtmlElement}
      */
     function setWidth(value) {
       return TinyHtml.setWidth(this, value);
     }
     /**
      * Returns content box height.
-     * @param {TinyElementAndWindow} el - Target element.
+     * @param {TinyElementAndWinAndDoc} el - Target element.
      * @returns {number}
      */
   }, {
@@ -33720,7 +33943,7 @@ var TinyHtml = /*#__PURE__*/function () {
     }
     /**
      * Returns content box width.
-     * @param {TinyElementAndWindow} el - Target element.
+     * @param {TinyElementAndWinAndDoc} el - Target element.
      * @returns {number}
      */
   }, {
@@ -33735,7 +33958,7 @@ var TinyHtml = /*#__PURE__*/function () {
     }
     /**
      * Returns padding box height.
-     * @param {TinyElementAndWindow} el - Target element.
+     * @param {TinyElementAndWinAndDoc} el - Target element.
      * @returns {number}
      */
   }, {
@@ -33750,7 +33973,7 @@ var TinyHtml = /*#__PURE__*/function () {
     }
     /**
      * Returns padding box width.
-     * @param {TinyElementAndWindow} el - Target element.
+     * @param {TinyElementAndWinAndDoc} el - Target element.
      * @returns {number}
      */
   }, {
@@ -33765,7 +33988,7 @@ var TinyHtml = /*#__PURE__*/function () {
     }
     /**
      * Returns outer height of the element, optionally including margin.
-     * @param {TinyElementAndWindow} el - Target element.
+     * @param {TinyElementAndWinAndDoc} el - Target element.
      * @param {boolean} [includeMargin=false] - Whether to include margin.
      * @returns {number}
      */
@@ -33782,7 +34005,7 @@ var TinyHtml = /*#__PURE__*/function () {
     }
     /**
      * Returns outer width of the element, optionally including margin.
-     * @param {TinyElementAndWindow} el - Target element.
+     * @param {TinyElementAndWinAndDoc} el - Target element.
      * @param {boolean} [includeMargin=false] - Whether to include margin.
      * @returns {number}
      */
@@ -33877,6 +34100,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Sets the vertical scroll position.
      * @param {TinyElementAndWindow|TinyElementAndWindow[]} el - Element or window.
      * @param {number} value - Scroll top value.
+     * @returns {TinyElementAndWindow|TinyElementAndWindow[]}
      */
   }, {
     key: "setScrollTop",
@@ -33884,6 +34108,7 @@ var TinyHtml = /*#__PURE__*/function () {
     /**
      * Sets the vertical scroll position.
      * @param {number} value - Scroll top value.
+     * @returns {TinyElementAndWindow|TinyElementAndWindow[]}
      */
     function setScrollTop(value) {
       return TinyHtml.setScrollTop(this, value);
@@ -33892,6 +34117,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Sets the horizontal scroll position.
      * @param {TinyElementAndWindow|TinyElementAndWindow[]} el - Element or window.
      * @param {number} value - Scroll left value.
+     * @returns {TinyElementAndWindow|TinyElementAndWindow[]}
      */
   }, {
     key: "setScrollLeft",
@@ -33899,6 +34125,7 @@ var TinyHtml = /*#__PURE__*/function () {
     /**
      * Sets the horizontal scroll position.
      * @param {number} value - Scroll left value.
+     * @returns {TinyElementAndWindow|TinyElementAndWindow[]}
      */
     function setScrollLeft(value) {
       return TinyHtml.setScrollLeft(this, value);
@@ -33974,14 +34201,14 @@ var TinyHtml = /*#__PURE__*/function () {
     /////////////////////////////////////////////
     /**
      * Adds one or more CSS class names to the element.
-     * @type {(el: TinyElement|TinyElement[], ...tokens: string[]) => void} - One or more class names to add.
+     * @type {(el: TinyElement|TinyElement[], ...tokens: string[]) => (TinyElement|TinyElement[])} - One or more class names to add.
      */
   }, {
     key: "addClass",
     value:
     /**
      * Adds one or more CSS class names to the element.
-     * @type {(...tokens: string[]) => void} - One or more class names to add.
+     * @type {(...tokens: string[]) => (TinyElement|TinyElement[])} - One or more class names to add.
      */
     function addClass() {
       for (var _len6 = arguments.length, args = new Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {
@@ -33991,14 +34218,14 @@ var TinyHtml = /*#__PURE__*/function () {
     }
     /**
      * Removes one or more CSS class names from the element.
-     * @type {(el: TinyElement|TinyElement[], ...tokens: string[]) => void} - One or more class names to remove.
+     * @type {(el: TinyElement|TinyElement[], ...tokens: string[]) => (TinyElement|TinyElement[])} - One or more class names to remove.
      */
   }, {
     key: "removeClass",
     value:
     /**
      * Removes one or more CSS class names from the element.
-     * @type {(...tokens: string[]) => void} - One or more class names to remove.
+     * @type {(...tokens: string[]) => (TinyElement|TinyElement[])} - One or more class names to remove.
      */
     function removeClass() {
       for (var _len7 = arguments.length, args = new Array(_len7), _key7 = 0; _key7 < _len7; _key7++) {
@@ -34166,6 +34393,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Set text content of elements.
      * @param {TinyElement|TinyElement[]} el
      * @param {string} value
+     * @returns {TinyElement|TinyElement[]}
      */
   }, {
     key: "setText",
@@ -34173,6 +34401,7 @@ var TinyHtml = /*#__PURE__*/function () {
     /**
      * Set text content of the element.
      * @param {string} value
+     * @returns {TinyElement|TinyElement[]}
      */
     function setText(value) {
       return TinyHtml.setText(this, value);
@@ -34180,19 +34409,22 @@ var TinyHtml = /*#__PURE__*/function () {
     /**
      * Remove all child nodes from each element.
      * @param {TinyElement|TinyElement[]} el
+     * @returns {TinyElement|TinyElement[]}
      */
   }, {
     key: "empty",
     value:
     /**
      * Remove all child nodes of the element.
+     * @returns {TinyElement|TinyElement[]}
      */
     function empty() {
       return TinyHtml.empty(this);
     }
     /**
      * Get the innerHTML of the element.
-     * @param {TinyElement|TinyElement[]} el
+     * @param {TinyElement} el
+     * @param {GetHTMLOptions} [ops]
      * @returns {string}
      */
   }, {
@@ -34200,15 +34432,17 @@ var TinyHtml = /*#__PURE__*/function () {
     value:
     /**
      * Get the innerHTML of the element.
+     * @param {GetHTMLOptions} [ops]
      * @returns {string}
      */
-    function html() {
-      return TinyHtml.html(this);
+    function html(ops) {
+      return TinyHtml.html(this, ops);
     }
     /**
      * Set the innerHTML of each element.
      * @param {TinyElement|TinyElement[]} el
      * @param {string} value
+     * @returns {TinyElement|TinyElement[]}
      */
   }, {
     key: "setHtml",
@@ -34216,6 +34450,7 @@ var TinyHtml = /*#__PURE__*/function () {
     /**
      * Set the innerHTML of the element.
      * @param {string} value
+     * @returns {TinyElement|TinyElement[]}
      */
     function setHtml(value) {
       return TinyHtml.setHtml(this, value);
@@ -34229,6 +34464,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Accepts strings, numbers, booleans or arrays of these values, or a callback function that computes them.
      *
      * @param {SetValueList|((el: InputElement, val: SetValueList) => SetValueList)} value - The value to assign or a function that returns it.
+     * @returns {TinyInputElement|TinyInputElement[]}
      * @throws {Error} If the computed value is not a valid string or boolean.
      */
     function setVal(value) {
@@ -34399,6 +34635,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * @param {string} event - The event type (e.g. 'click', 'keydown').
      * @param {EventRegistryHandle} handler - The callback function to run on event.
      * @param {EventRegistryOptions} [options] - Optional event listener options.
+     * @returns {TinyEventTarget|TinyEventTarget[]}
      */
   }, {
     key: "on",
@@ -34409,6 +34646,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * @param {string} event - The event type (e.g. 'click', 'keydown').
      * @param {EventRegistryHandle} handler - The callback function to run on event.
      * @param {EventRegistryOptions} [options] - Optional event listener options.
+     * @returns {TinyEventTarget|TinyEventTarget[]}
      */
     function on(event, handler, options) {
       return TinyHtml.on(this, event, handler, options);
@@ -34420,6 +34658,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * @param {string} event - The event type (e.g. 'click', 'keydown').
      * @param {EventRegistryHandle} handler - The callback function to run on event.
      * @param {EventRegistryOptions} [options={}] - Optional event listener options.
+     * @returns {TinyEventTarget|TinyEventTarget[]}
      */
   }, {
     key: "once",
@@ -34430,6 +34669,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * @param {string} event - The event type (e.g. 'click', 'keydown').
      * @param {EventRegistryHandle} handler - The callback function to run on event.
      * @param {EventRegistryOptions} [options={}] - Optional event listener options.
+     * @returns {TinyEventTarget|TinyEventTarget[]}
      */
     function once(event, handler) {
       var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
@@ -34442,6 +34682,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * @param {string} event - The event type.
      * @param {EventRegistryHandle} handler - The function originally bound to the event.
      * @param {boolean|EventListenerOptions} [options] - Optional listener options.
+     * @returns {TinyEventTarget|TinyEventTarget[]}
      */
   }, {
     key: "off",
@@ -34452,6 +34693,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * @param {string} event - The event type.
      * @param {EventRegistryHandle} handler - The function originally bound to the event.
      * @param {boolean|EventListenerOptions} [options] - Optional listener options.
+     * @returns {TinyEventTarget|TinyEventTarget[]}
      */
     function off(event, handler, options) {
       return TinyHtml.off(this, event, handler, options);
@@ -34461,6 +34703,7 @@ var TinyHtml = /*#__PURE__*/function () {
      *
      * @param {TinyEventTarget|TinyEventTarget[]} el - The target element.
      * @param {string} event - The event type to remove (e.g. 'click').
+     * @returns {TinyEventTarget|TinyEventTarget[]}
      */
   }, {
     key: "offAll",
@@ -34469,6 +34712,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Removes all event listeners of a specific type from the element.
      *
      * @param {string} event - The event type to remove (e.g. 'click').
+     * @returns {TinyEventTarget|TinyEventTarget[]}
      */
     function offAll(event) {
       return TinyHtml.offAll(this, event);
@@ -34479,6 +34723,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * @param {TinyEventTarget|TinyEventTarget[]} el - The target element.
      * @param {((handler: EventListenerOrEventListenerObject, event: string) => boolean)|null} [filterFn=null] -
      *        Optional filter function to selectively remove specific handlers.
+     * @returns {TinyEventTarget|TinyEventTarget[]}
      */
   }, {
     key: "offAllTypes",
@@ -34488,6 +34733,7 @@ var TinyHtml = /*#__PURE__*/function () {
      *
      * @param {((handler: EventListenerOrEventListenerObject, event: string) => boolean)|null} [filterFn=null] -
      *        Optional filter function to selectively remove specific handlers.
+     * @returns {TinyEventTarget|TinyEventTarget[]}
      */
     function offAllTypes() {
       var filterFn = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
@@ -34499,6 +34745,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * @param {TinyEventTarget|TinyEventTarget[]} el - Target element where the event should be triggered.
      * @param {string} event - Name of the event to trigger.
      * @param {Event|CustomEvent|CustomEventInit} [payload] - Optional event object or data to pass.
+     * @returns {TinyEventTarget|TinyEventTarget[]}
      */
   }, {
     key: "trigger",
@@ -34508,6 +34755,7 @@ var TinyHtml = /*#__PURE__*/function () {
      *
      * @param {string} event - Name of the event to trigger.
      * @param {Event|CustomEvent|CustomEventInit} [payload] - Optional event object or data to pass.
+     * @returns {TinyEventTarget|TinyEventTarget[]}
      */
     function trigger(event) {
       var payload = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -34534,6 +34782,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * @param {TinyElement|TinyElement[]} el
      * @param {string} name
      * @param {string|null} [value=null]
+     * @returns {TinyElement|TinyElement[]}
      */
   }, {
     key: "setAttr",
@@ -34542,6 +34791,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Set an attribute on an element.
      * @param {string} name
      * @param {string|null} [value=null]
+     * @returns {TinyElement|TinyElement[]}
      */
     function setAttr(name, value) {
       return TinyHtml.setAttr(this, name, value);
@@ -34550,6 +34800,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Remove attribute(s) from an element.
      * @param {TinyElement|TinyElement[]} el
      * @param {string} name Space-separated list of attributes.
+     * @returns {TinyElement|TinyElement[]}
      */
   }, {
     key: "removeAttr",
@@ -34557,6 +34808,7 @@ var TinyHtml = /*#__PURE__*/function () {
     /**
      * Remove attribute(s) from an element.
      * @param {string} name Space-separated list of attributes.
+     * @returns {TinyElement|TinyElement[]}
      */
     function removeAttr(name) {
       return TinyHtml.removeAttr(this, name);
@@ -34599,6 +34851,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Set a property on an element.
      * @param {TinyElement|TinyElement[]} el
      * @param {string} name
+     * @returns {TinyElement|TinyElement[]}
      */
   }, {
     key: "addProp",
@@ -34606,6 +34859,7 @@ var TinyHtml = /*#__PURE__*/function () {
     /**
      * Set a property on an element.
      * @param {string} name
+     * @returns {TinyElement|TinyElement[]}
      */
     function addProp(name) {
       return TinyHtml.addProp(this, name);
@@ -34614,6 +34868,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Remove a property from an element.
      * @param {TinyElement|TinyElement[]} el
      * @param {string} name
+     * @returns {TinyElement|TinyElement[]}
      */
   }, {
     key: "removeProp",
@@ -34621,6 +34876,7 @@ var TinyHtml = /*#__PURE__*/function () {
     /**
      * Remove a property from an element.
      * @param {string} name
+     * @returns {TinyElement|TinyElement[]}
      */
     function removeProp(name) {
       return TinyHtml.removeProp(this, name);
@@ -34646,12 +34902,14 @@ var TinyHtml = /*#__PURE__*/function () {
     /**
      * Removes an element from the DOM.
      * @param {TinyElement|TinyElement[]} el - The DOM element or selector to remove.
+     * @returns {TinyElement|TinyElement[]}
      */
   }, {
     key: "remove",
     value:
     /**
      * Removes the element from the DOM.
+     * @returns {TinyElement|TinyElement[]}
      */
     function remove() {
       return TinyHtml.remove(this);
@@ -34850,65 +35108,157 @@ var TinyHtml = /*#__PURE__*/function () {
     function isScrolledIntoView() {
       return TinyHtml.isScrolledIntoView(this);
     }
-  }], [{
-    key: "query",
+    /**
+     * Checks if the given element is at least partially visible within the boundaries of a container.
+     *
+     * @param {TinyElement} el - The DOM element to check.
+     * @param {TinyElement} cont - The container element acting as the viewport.
+     * @returns {boolean} True if the element is partially visible within the container, false otherwise.
+     */
+  }, {
+    key: "isInContainer",
     value:
+    /**
+     * Checks if the given element is at least partially visible within the boundaries of a container.
+     *
+     * @param {TinyElement} cont - The container element acting as the viewport.
+     * @returns {boolean} True if the element is partially visible within the container, false otherwise.
+     */
+    function isInContainer(cont) {
+      return TinyHtml.isInContainer(this, cont);
+    }
+    /**
+     * Checks if the given element is fully visible within the boundaries of a container (top and bottom).
+     *
+     * @param {TinyElement} el - The DOM element to check.
+     * @param {TinyElement} cont - The container element acting as the viewport.
+     * @returns {boolean} True if the element is fully visible within the container, false otherwise.
+     */
+  }, {
+    key: "isFullyInContainer",
+    value:
+    /**
+     * Checks if the given element is fully visible within the boundaries of a container (top and bottom).
+     *
+     * @param {TinyElement} cont - The container element acting as the viewport.
+     * @returns {boolean} True if the element is fully visible within the container, false otherwise.
+     */
+    function isFullyInContainer(cont) {
+      return TinyHtml.isFullyInContainer(this, cont);
+    }
+    /**
+     * Checks if an element has scrollable content.
+     *
+     * @param {TinyElement} el - The DOM element to check.
+     * @returns {{ v: boolean, h: boolean }} - True if scroll is needed in that direction.
+     */
+  }, {
+    key: "hasScroll",
+    value:
+    /**
+     * Checks if an element has scrollable content.
+     *
+     * @returns {{ v: boolean, h: boolean }} - True if scroll is needed in that direction.
+     */
+    function hasScroll() {
+      return TinyHtml.hasScroll(this);
+    }
+  }], [{
+    key: "createElement",
+    value:
+    /**
+     * Creates a new DOM element with the specified tag name and options, then wraps it in a TinyHtml instance.
+     *
+     * @param {string} tagName - The tag name of the element to create (e.g., 'div', 'span').
+     * @param {ElementCreationOptions} ops - Optional settings for creating the element.
+     * @returns {TinyHtml} A TinyHtml instance wrapping the newly created DOM element.
+     * @throws {TypeError} If tagName is not a string or ops is not an object.
+     */
+    function createElement(tagName, ops) {
+      if (typeof tagName !== 'string') throw new TypeError("[TinyHtml] createElement(): The tagName must be a string.");
+      if (typeof ops !== 'undefined' && _typeof(ops) !== 'object') throw new TypeError("[TinyHtml] createElement(): The ops must be a object.");
+      return new TinyHtml(document.createElement(tagName, ops));
+    }
+    /**
+     * Creates a new TinyHtml instance that wraps a DOM TextNode.
+     *
+     * This method is useful when you want to insert raw text content into the DOM
+     * without it being interpreted as HTML. The returned instance behaves like any
+     * other TinyHtml element and can be appended or manipulated as needed.
+     *
+     * @param {string} value - The plain text content to be wrapped in a TextNode.
+     * @returns {TinyHtml} A TinyHtml instance wrapping the newly created DOM TextNode.
+     * @throws {TypeError} If the provided value is not a string.
+     */
+  }, {
+    key: "createTextNode",
+    value: function createTextNode(value) {
+      if (typeof value !== 'string') throw new TypeError("[TinyHtml] createTextNode(): The value must be a string.");
+      return new TinyHtml(document.createTextNode(value));
+    }
+    /**
+     * Creates an HTMLElement or TextNode from an HTML string.
+     * Supports both elements and plain text.
+     *
+     * @param {string} htmlString - The HTML string to convert.
+     * @returns {TinyHtml} - A single HTMLElement or TextNode.
+     */
+  }, {
+    key: "createElementFromHTML",
+    value: function createElementFromHTML(htmlString) {
+      var template = document.createElement('template');
+      htmlString = htmlString.trim();
+      // If it's only text (e.g., no "<" tag), return a TextNode
+      if (!htmlString.startsWith('<')) {
+        return TinyHtml.createTextNode(htmlString);
+      }
+      template.innerHTML = htmlString;
+      if (!(template.content.firstChild instanceof Element)) throw new Error('');
+      return new TinyHtml(template.content.firstChild);
+    }
     /**
      * Queries the document for the first element matching the CSS selector and wraps it in a TinyHtml instance.
      *
      * @param {string} selector - A valid CSS selector string.
-     * @returns {TinyHtml} A TinyHtml instance wrapping the matched element.
-     * @throws {Error} If no element matches the selector.
+     * @param {Document|Element} elem - Target element.
+     * @returns {TinyHtml|null} A TinyHtml instance wrapping the matched element.
      */
-    function query(selector) {
-      var newEl = document.querySelector(selector);
-      if (!newEl) throw new Error("[TinyHtml] query(): No element found for selector \"".concat(selector, "\"."));
+  }, {
+    key: "query",
+    value: function query(selector) {
+      var elem = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+      var newEl = elem.querySelector(selector);
+      if (!newEl) return null;
       return new TinyHtml(newEl);
     }
-    /**
-     * Queries the document for all elements matching the CSS selector and wraps them in TinyHtml instances.
-     *
-     * @param {string} selector - A valid CSS selector string.
-     * @returns {TinyHtml[]} An array of TinyHtml instances wrapping the matched elements.
-     */
   }, {
     key: "queryAll",
     value: function queryAll(selector) {
-      var newEls = document.querySelectorAll(selector);
+      var elem = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+      var newEls = elem.querySelectorAll(selector);
       return TinyHtml.toTinyElm(_toConsumableArray(newEls));
     }
-    /**
-     * Retrieves an element by its ID and wraps it in a TinyHtml instance.
-     *
-     * @param {string} selector - The ID of the element to retrieve.
-     * @returns {TinyHtml} A TinyHtml instance wrapping the found element.
-     * @throws {Error} If no element is found with the specified ID.
-     */
   }, {
     key: "getById",
     value: function getById(selector) {
       var newEl = document.getElementById(selector);
-      if (!newEl) throw new Error("[TinyHtml] getById(): No element found with ID \"".concat(selector, "\"."));
+      if (!newEl) return null;
       return new TinyHtml(newEl);
     }
     /**
      * Retrieves all elements with the specified class name and wraps them in TinyHtml instances.
      *
      * @param {string} selector - The class name to search for.
+     * @param {Document|Element} elem - Target element.
      * @returns {TinyHtml[]} An array of TinyHtml instances wrapping the found elements.
      */
   }, {
     key: "getByClassName",
     value: function getByClassName(selector) {
-      var newEls = document.getElementsByClassName(selector);
+      var elem = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+      var newEls = elem.getElementsByClassName(selector);
       return TinyHtml.toTinyElm(_toConsumableArray(newEls));
     }
-    /**
-     * Retrieves all elements with the specified name attribute and wraps them in TinyHtml instances.
-     *
-     * @param {string} selector - The name attribute to search for.
-     * @returns {TinyHtml[]} An array of TinyHtml instances wrapping the found elements.
-     */
   }, {
     key: "getByName",
     value: function getByName(selector) {
@@ -34921,13 +35271,15 @@ var TinyHtml = /*#__PURE__*/function () {
      *
      * @param {string} localName - The local name (tag) of the elements to search for.
      * @param {string|null} [namespaceURI='http://www.w3.org/1999/xhtml'] - The namespace URI to search within.
+     * @param {Document|Element} elem - Target element.
      * @returns {TinyHtml[]} An array of TinyHtml instances wrapping the found elements.
      */
   }, {
     key: "getByTagNameNS",
     value: function getByTagNameNS(localName) {
       var namespaceURI = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'http://www.w3.org/1999/xhtml';
-      var newEls = document.getElementsByTagNameNS(namespaceURI, localName);
+      var elem = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : document;
+      var newEls = elem.getElementsByTagNameNS(namespaceURI, localName);
       return TinyHtml.toTinyElm(_toConsumableArray(newEls));
     }
   }, {
@@ -35187,6 +35539,39 @@ var TinyHtml = /*#__PURE__*/function () {
       return TinyHtml._preElemTemplate(elems, where, [Element, Window], ['Element', 'Window']);
     }
     /**
+     * Ensures the input is returned as an array.
+     * Useful to normalize operations across multiple or single element/window/document elements.
+     *
+     * @param {TinyElementAndWinAndDoc|TinyElementAndWinAndDoc[]} elems - A single element/window element or array of html elements.
+     * @param {string} where - The method or context name where validation is being called.
+     * @returns {ElementAndWindow[]} - Always returns an array of element/window elements.
+     * @readonly
+     */
+  }, {
+    key: "_preElemsAndWinAndDoc",
+    value: function _preElemsAndWinAndDoc(elems, where) {
+      var result = TinyHtml._preElemsTemplate(elems, where, [Element, Window, Document], ['Element', 'Window', 'Document']);
+      return result.map(function (elem) {
+        return !(elem instanceof Document) ? elem : elem.documentElement;
+      });
+    }
+    /**
+     * Ensures the input is returned as an single element/window/document element.
+     * Useful to normalize operations across multiple or single element/window/document elements.
+     *
+     * @param {TinyElementAndWinAndDoc|TinyElementAndWinAndDoc[]} elems - A single element/window element or array of html elements.
+     * @param {string} where - The method or context name where validation is being called.
+     * @returns {ElementAndWindow} - Always returns an single element/window element.
+     * @readonly
+     */
+  }, {
+    key: "_preElemAndWinAndDoc",
+    value: function _preElemAndWinAndDoc(elems, where) {
+      var result = TinyHtml._preElemTemplate(elems, where, [Element, Window, Document], ['Element', 'Window', 'Document']);
+      if (result instanceof Document) return result.documentElement;
+      return result;
+    }
+    /**
      * Normalizes and converts one or more DOM elements (or TinyHtml instances)
      * into an array of `TinyHtml` instances.
      *
@@ -35413,6 +35798,7 @@ var TinyHtml = /*#__PURE__*/function () {
       var data = TinyHtml._dataSelector[!isPrivate ? 'public' : 'private']('setData', el);
       if (typeof key !== 'string') throw new TypeError('The key must be a string.');
       data[key] = value;
+      return el;
     }
   }, {
     key: "_getSibling",
@@ -35570,8 +35956,9 @@ var TinyHtml = /*#__PURE__*/function () {
     /**
      * Appends child elements or strings to the end of the target element(s).
      *
-     * @param {TinyElement | TinyElement[]} el - The target element(s) to receive children.
+     * @param {TinyElement} el - The target element(s) to receive children.
      * @param {...(TinyNode | TinyNode[] | string)} children - The child elements or text to append.
+     * @returns {TinyElement}
      */
   }, {
     key: "append",
@@ -35581,6 +35968,7 @@ var TinyHtml = /*#__PURE__*/function () {
         children[_key9 - 1] = arguments[_key9];
       }
       elem.append.apply(elem, _toConsumableArray(TinyHtml._appendChecker.apply(TinyHtml, ['append'].concat(children))));
+      return el;
     }
   }, {
     key: "prepend",
@@ -35590,6 +35978,7 @@ var TinyHtml = /*#__PURE__*/function () {
         children[_key0 - 1] = arguments[_key0];
       }
       elem.prepend.apply(elem, _toConsumableArray(TinyHtml._appendChecker.apply(TinyHtml, ['prepend'].concat(children))));
+      return el;
     }
   }, {
     key: "before",
@@ -35599,6 +35988,7 @@ var TinyHtml = /*#__PURE__*/function () {
         children[_key1 - 1] = arguments[_key1];
       }
       elem.before.apply(elem, _toConsumableArray(TinyHtml._appendChecker.apply(TinyHtml, ['before'].concat(children))));
+      return el;
     }
   }, {
     key: "after",
@@ -35608,6 +35998,7 @@ var TinyHtml = /*#__PURE__*/function () {
         children[_key10 - 1] = arguments[_key10];
       }
       elem.after.apply(elem, _toConsumableArray(TinyHtml._appendChecker.apply(TinyHtml, ['after'].concat(children))));
+      return el;
     }
   }, {
     key: "replaceWith",
@@ -35617,6 +36008,7 @@ var TinyHtml = /*#__PURE__*/function () {
         newNodes[_key11 - 1] = arguments[_key11];
       }
       elem.replaceWith.apply(elem, _toConsumableArray(TinyHtml._appendChecker.apply(TinyHtml, ['replaceWith'].concat(newNodes))));
+      return el;
     }
   }, {
     key: "appendTo",
@@ -35628,6 +36020,7 @@ var TinyHtml = /*#__PURE__*/function () {
           return target.appendChild(i === tars.length - 1 ? elem : elem.cloneNode(true));
         });
       });
+      return el;
     }
   }, {
     key: "prependTo",
@@ -35639,6 +36032,7 @@ var TinyHtml = /*#__PURE__*/function () {
           return target.prepend(i === tars.length - 1 ? elem : elem.cloneNode(true));
         });
       });
+      return el;
     }
   }, {
     key: "insertBefore",
@@ -35649,6 +36043,7 @@ var TinyHtml = /*#__PURE__*/function () {
       var childNode = TinyHtml._preNodeElemWithNull(child, 'insertBefore');
       if (!targ.parentNode) throw new Error('');
       targ.parentNode.insertBefore(elem, childNode || targ);
+      return el;
     }
   }, {
     key: "insertAfter",
@@ -35659,6 +36054,7 @@ var TinyHtml = /*#__PURE__*/function () {
       var childNode = TinyHtml._preNodeElemWithNull(child, 'insertBefore');
       if (!targ.parentNode) throw new Error('');
       targ.parentNode.insertBefore(elem, childNode || targ.nextSibling);
+      return el;
     }
   }, {
     key: "replaceAll",
@@ -35671,6 +36067,7 @@ var TinyHtml = /*#__PURE__*/function () {
           if (parent) parent.replaceChild(i === tars.length - 1 ? elem : elem.cloneNode(true), target);
         });
       });
+      return el;
     }
   }, {
     key: "isWindow",
@@ -35788,6 +36185,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * @param {TinyHtmlElement|TinyHtmlElement[]} el - The element to inspect.
      * @param {string|Object} prop - The property name or an object with key-value pairs
      * @param {string|null} [value=null] - The value to set (if `prop` is a string)
+     * @returns {TinyHtmlElement|TinyHtmlElement[]}
      */
   }, {
     key: "setStyle",
@@ -35803,6 +36201,7 @@ var TinyHtml = /*#__PURE__*/function () {
           }
         } else elem.style.setProperty(TinyHtml.toStyleKc(prop), value);
       });
+      return el;
     }
   }, {
     key: "getStyle",
@@ -35873,6 +36272,7 @@ var TinyHtml = /*#__PURE__*/function () {
           }
         } else elem.style.removeProperty(TinyHtml.toStyleKc(prop));
       });
+      return el;
     }
   }, {
     key: "toggleStyle",
@@ -35882,6 +36282,7 @@ var TinyHtml = /*#__PURE__*/function () {
         var newVal = current === TinyHtml.toStyleKc(val1) ? val2 : val1;
         TinyHtml.setStyle(elem, prop, newVal);
       });
+      return el;
     }
   }, {
     key: "clearStyle",
@@ -35889,19 +36290,36 @@ var TinyHtml = /*#__PURE__*/function () {
       TinyHtml._preElems(el, 'clearStyle').forEach(function (elem) {
         return elem.removeAttribute('style');
       });
+      return el;
     }
   }, {
     key: "focus",
     value: function focus(el) {
       var elem = TinyHtml._preHtmlElem(el, 'focus');
       elem.focus();
+      return el;
     }
   }, {
     key: "blur",
     value: function blur(el) {
       var elem = TinyHtml._preHtmlElem(el, 'blur');
       elem.blur();
+      return el;
     }
+  }, {
+    key: "boolCheck",
+    value: function boolCheck(value) {
+      if (typeof value !== 'undefined' && (value === 'true' || value === '1' || value === true || value === 'on' || typeof value === 'number' && value > 0)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    //////////////////////////////////////////////////////////////////////
+    /**
+     * Sets the vertical scroll position of the window.
+     * @param {number} value - Sets the scroll position.
+     */
   }, {
     key: "setWinScrollTop",
     value: function setWinScrollTop(value) {
@@ -35959,8 +36377,34 @@ var TinyHtml = /*#__PURE__*/function () {
       return window.innerWidth || document.documentElement.clientWidth;
     }
     /**
+     * Checks if the page is currently scrolled to the very top.
+     *
+     * This method compares the current vertical scroll position with the total document height.
+     * It's useful for detecting if the user has reached the top of the page.
+     *
+     * @returns {boolean} `true` if the page is scrolled to the top, otherwise `false`.
+     */
+  }, {
+    key: "isPageTop",
+    value: function isPageTop() {
+      return window.scrollY === 0;
+    }
+    /**
+     * Checks if the page is currently scrolled to the very bottom.
+     *
+     * This method uses the `scrollY` and `innerHeight` properties to determine if the
+     * user has reached the end of the document.
+     *
+     * @returns {boolean} `true` if the page is scrolled to the bottom, otherwise `false`.
+     */
+  }, {
+    key: "isPageBottom",
+    value: function isPageBottom() {
+      return window.innerHeight + window.scrollY >= document.body.offsetHeight;
+    }
+    /**
      * Gets the width or height of an element based on the box model.
-     * @param {TinyElementAndWindow} el - The element or window.
+     * @param {TinyElementAndWinAndDoc} el - The element or window.
      * @param {"width"|"height"} type - Dimension type.
      * @param {"content"|"padding"|"border"|"margin"} [extra='content'] - Box model context.
      * @returns {number} - Computed dimension.
@@ -35970,7 +36414,7 @@ var TinyHtml = /*#__PURE__*/function () {
     key: "getDimension",
     value: function getDimension(el, type) {
       var extra = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'content';
-      var elem = TinyHtml._preElemAndWindow(el, 'getDimension');
+      var elem = TinyHtml._preElemAndWinAndDoc(el, 'getDimension');
       if (typeof type !== 'string') throw new TypeError('The type must be a string.');
       if (typeof extra !== 'string') throw new TypeError('The extra must be a string.');
       var name = type === 'width' ? 'Width' : 'Height';
@@ -36030,6 +36474,7 @@ var TinyHtml = /*#__PURE__*/function () {
       var elem = TinyHtml._preHtmlElem(el, 'setHeight');
       if (typeof value !== 'number' && typeof value !== 'string') throw new TypeError('The value must be a string or number.');
       elem.style.height = typeof value === 'number' ? "".concat(value, "px") : value;
+      return el;
     }
   }, {
     key: "setWidth",
@@ -36037,29 +36482,30 @@ var TinyHtml = /*#__PURE__*/function () {
       var elem = TinyHtml._preHtmlElem(el, 'setWidth');
       if (typeof value !== 'number' && typeof value !== 'string') throw new TypeError('The value must be a string or number.');
       elem.style.width = typeof value === 'number' ? "".concat(value, "px") : value;
+      return el;
     }
   }, {
     key: "height",
     value: function height(el) {
-      var elem = TinyHtml._preElemAndWindow(el, 'height');
+      var elem = TinyHtml._preElemAndWinAndDoc(el, 'height');
       return TinyHtml.getDimension(elem, 'height', 'content');
     }
   }, {
     key: "width",
     value: function width(el) {
-      var elem = TinyHtml._preElemAndWindow(el, 'width');
+      var elem = TinyHtml._preElemAndWinAndDoc(el, 'width');
       return TinyHtml.getDimension(elem, 'width', 'content');
     }
   }, {
     key: "innerHeight",
     value: function innerHeight(el) {
-      var elem = TinyHtml._preElemAndWindow(el, 'innerHeight');
+      var elem = TinyHtml._preElemAndWinAndDoc(el, 'innerHeight');
       return TinyHtml.getDimension(elem, 'height', 'padding');
     }
   }, {
     key: "innerWidth",
     value: function innerWidth(el) {
-      var elem = TinyHtml._preElemAndWindow(el, 'innerWidth');
+      var elem = TinyHtml._preElemAndWinAndDoc(el, 'innerWidth');
       return TinyHtml.getDimension(elem, 'width', 'padding');
     }
   }, {
@@ -36067,7 +36513,7 @@ var TinyHtml = /*#__PURE__*/function () {
     value: function outerHeight(el) {
       var includeMargin = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
       if (typeof includeMargin !== 'boolean') throw new TypeError('The "includeMargin" must be a boolean.');
-      var elem = TinyHtml._preElemAndWindow(el, 'outerHeight');
+      var elem = TinyHtml._preElemAndWinAndDoc(el, 'outerHeight');
       return TinyHtml.getDimension(elem, 'height', includeMargin ? 'margin' : 'border');
     }
   }, {
@@ -36075,7 +36521,7 @@ var TinyHtml = /*#__PURE__*/function () {
     value: function outerWidth(el) {
       var includeMargin = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
       if (typeof includeMargin !== 'boolean') throw new TypeError('The "includeMargin" must be a boolean.');
-      var elem = TinyHtml._preElemAndWindow(el, 'outerWidth');
+      var elem = TinyHtml._preElemAndWinAndDoc(el, 'outerWidth');
       return TinyHtml.getDimension(elem, 'width', includeMargin ? 'margin' : 'border');
     }
   }, {
@@ -36168,6 +36614,7 @@ var TinyHtml = /*#__PURE__*/function () {
           elem.scrollTop = value;
         }
       });
+      return el;
     }
   }, {
     key: "setScrollLeft",
@@ -36183,6 +36630,7 @@ var TinyHtml = /*#__PURE__*/function () {
           elem.scrollLeft = value;
         }
       });
+      return el;
     }
   }, {
     key: "borderWidth",
@@ -36274,6 +36722,7 @@ var TinyHtml = /*#__PURE__*/function () {
         var _elem$classList;
         return (_elem$classList = elem.classList).add.apply(_elem$classList, args);
       });
+      return el;
     }
   }, {
     key: "removeClass",
@@ -36285,6 +36734,7 @@ var TinyHtml = /*#__PURE__*/function () {
         var _elem$classList2;
         return (_elem$classList2 = elem.classList).remove.apply(_elem$classList2, args);
       });
+      return el;
     }
   }, {
     key: "replaceClass",
@@ -36361,6 +36811,7 @@ var TinyHtml = /*#__PURE__*/function () {
       TinyHtml._preElems(el, 'setText').forEach(function (el) {
         return el.textContent = value;
       });
+      return el;
     }
   }, {
     key: "empty",
@@ -36368,12 +36819,13 @@ var TinyHtml = /*#__PURE__*/function () {
       TinyHtml._preElems(el, 'empty').forEach(function (el) {
         return el.textContent = '';
       });
+      return el;
     }
   }, {
     key: "html",
-    value: function html(el) {
+    value: function html(el, ops) {
       var elem = TinyHtml._preElem(el, 'html');
-      return elem.innerHTML;
+      return elem.getHTML(ops);
     }
   }, {
     key: "setHtml",
@@ -36382,6 +36834,7 @@ var TinyHtml = /*#__PURE__*/function () {
       TinyHtml._preElems(el, 'setHtml').forEach(function (el) {
         return el.innerHTML = value;
       });
+      return el;
     }
   }, {
     key: "setVal",
@@ -36393,6 +36846,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * @param {TinyInputElement|TinyInputElement[]} el - Target element.
      * @param {SetValueList|((el: InputElement, val: SetValueList) => SetValueList)} value - The value to assign or a function that returns it.
      * @throws {Error} If the computed value is not a valid string or boolean.
+     * @returns {TinyInputElement|TinyInputElement[]}
      */
     function setVal(el, value) {
       TinyHtml._preInputElems(el, 'setVal').forEach(function (elem) {
@@ -36426,6 +36880,7 @@ var TinyHtml = /*#__PURE__*/function () {
           if (typeof valToSet === 'string') elem.value = valToSet;
         }
       });
+      return el;
     }
   }, {
     key: "_getValByType",
@@ -36538,6 +36993,7 @@ var TinyHtml = /*#__PURE__*/function () {
           options: options
         });
       });
+      return el;
     }
   }, {
     key: "once",
@@ -36554,6 +37010,7 @@ var TinyHtml = /*#__PURE__*/function () {
           once: true
         }));
       });
+      return el;
     }
   }, {
     key: "off",
@@ -36569,6 +37026,7 @@ var TinyHtml = /*#__PURE__*/function () {
           if (events[event].length === 0) delete events[event];
         }
       });
+      return el;
     }
   }, {
     key: "offAll",
@@ -36592,6 +37050,7 @@ var TinyHtml = /*#__PURE__*/function () {
           delete events[event];
         }
       });
+      return el;
     }
   }, {
     key: "offAllTypes",
@@ -36619,6 +37078,7 @@ var TinyHtml = /*#__PURE__*/function () {
         }
         __eventRegistry["delete"](elem);
       });
+      return el;
     }
   }, {
     key: "trigger",
@@ -36633,6 +37093,7 @@ var TinyHtml = /*#__PURE__*/function () {
         });
         elem.dispatchEvent(evt);
       });
+      return el;
     }
   }, {
     key: "attr",
@@ -36657,6 +37118,7 @@ var TinyHtml = /*#__PURE__*/function () {
       TinyHtml._preElems(el, 'setAttr').forEach(function (elem) {
         if (value === null) elem.removeAttribute(name);else elem.setAttribute(name, value);
       });
+      return el;
     }
   }, {
     key: "removeAttr",
@@ -36665,6 +37127,7 @@ var TinyHtml = /*#__PURE__*/function () {
       TinyHtml._preElems(el, 'removeAttr').forEach(function (elem) {
         return elem.removeAttribute(name);
       });
+      return el;
     }
   }, {
     key: "hasAttr",
@@ -36693,6 +37156,7 @@ var TinyHtml = /*#__PURE__*/function () {
         // @ts-ignore
         elem[name] = true;
       });
+      return el;
     }
   }, {
     key: "removeProp",
@@ -36704,6 +37168,7 @@ var TinyHtml = /*#__PURE__*/function () {
         // @ts-ignore
         elem[name] = false;
       });
+      return el;
     }
   }, {
     key: "toggleProp",
@@ -36725,6 +37190,7 @@ var TinyHtml = /*#__PURE__*/function () {
       TinyHtml._preElems(el, 'remove').forEach(function (elem) {
         return elem.remove();
       });
+      return el;
     }
   }, {
     key: "index",
@@ -36916,6 +37382,11 @@ var TinyHtml = /*#__PURE__*/function () {
     key: "isInViewport",
     value: function isInViewport(el) {
       var elem = TinyHtml._preElem(el, 'isInViewport');
+      if (!elem.checkVisibility({
+        contentVisibilityAuto: false,
+        opacityProperty: false,
+        visibilityProperty: false
+      })) return false;
       var elementTop = TinyHtml.offset(elem).top;
       var elementBottom = elementTop + TinyHtml.outerHeight(elem);
       var viewportTop = TinyHtml.scrollTop(window);
@@ -36926,11 +37397,56 @@ var TinyHtml = /*#__PURE__*/function () {
     key: "isScrolledIntoView",
     value: function isScrolledIntoView(el) {
       var elem = TinyHtml._preElem(el, 'isScrolledIntoView');
+      if (!elem.checkVisibility({
+        contentVisibilityAuto: false,
+        opacityProperty: false,
+        visibilityProperty: false
+      })) return false;
       var docViewTop = TinyHtml.scrollTop(window);
       var docViewBottom = docViewTop + TinyHtml.height(window);
       var elemTop = TinyHtml.offset(elem).top;
       var elemBottom = elemTop + TinyHtml.height(elem);
       return elemBottom <= docViewBottom && elemTop >= docViewTop;
+    }
+  }, {
+    key: "isInContainer",
+    value: function isInContainer(el, cont) {
+      var elem = TinyHtml._preElem(el, 'isInContainer');
+      var container = TinyHtml._preElem(cont, 'isInContainer');
+      if (!elem.checkVisibility({
+        contentVisibilityAuto: false,
+        opacityProperty: false,
+        visibilityProperty: false
+      })) return false;
+      var elemRect = elem.getBoundingClientRect();
+      var containerRect = container.getBoundingClientRect();
+      var verticallyVisible = elemRect.bottom > containerRect.top && elemRect.top < containerRect.bottom;
+      var horizontallyVisible = elemRect.right > containerRect.left && elemRect.left < containerRect.right;
+      return verticallyVisible && horizontallyVisible;
+    }
+  }, {
+    key: "isFullyInContainer",
+    value: function isFullyInContainer(el, cont) {
+      var elem = TinyHtml._preElem(el, 'isScrolledIntoView');
+      var container = TinyHtml._preElem(cont, 'isInContainer');
+      if (!elem.checkVisibility({
+        contentVisibilityAuto: false,
+        opacityProperty: false,
+        visibilityProperty: false
+      })) return false;
+      var elemRect = elem.getBoundingClientRect();
+      var containerRect = container.getBoundingClientRect();
+      var isFullyVisible = elemRect.top >= containerRect.top && elemRect.bottom <= containerRect.bottom && elemRect.left >= containerRect.left && elemRect.right <= containerRect.right;
+      return isFullyVisible;
+    }
+  }, {
+    key: "hasScroll",
+    value: function hasScroll(el) {
+      var elem = TinyHtml._preElem(el, 'hasScroll');
+      return {
+        v: elem.scrollHeight > elem.clientHeight,
+        h: elem.scrollWidth > elem.clientWidth
+      };
     }
   }]);
 }();
@@ -37621,8 +38137,1827 @@ arguments[4][130][0].apply(exports,arguments)
 },{"dup":130}],170:[function(require,module,exports){
 arguments[4][131][0].apply(exports,arguments)
 },{"_process":97,"dup":131}],171:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _TinyHtml = _interopRequireDefault(require("./TinyHtml.mjs"));
+var TinyCollision = _interopRequireWildcard(require("../basics/collision.mjs"));
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+/**
+ * Represents the dimensions of a DOM element.
+ *
+ * @typedef {Object} NodeSizes
+ * @property {number} height - The height of the element in pixels.
+ * @property {number} width - The width of the element in pixels.
+ */
+/**
+ * A callback function that receives node size change data and optionally returns a modified NodeSizes object.
+ *
+ * @callback NodeSizesEvent
+ * @param {Element} elem - The DOM element whose size is being tracked.
+ * @param {{ old: NodeSizes, now: NodeSizes }} sizes - The old and new size measurements of the element.
+ * @param {{ old: number, now: number }} elemAmount - The number of matching elements before and after the update.
+ * @returns {NodeSizes|undefined} A modified NodeSizes object to override the default measurement, or undefined to use the original.
+ */
+/**
+ * A generic scroll-related event listener callback function.
+ *
+ * @callback ScrollListenersFunc
+ * @param {any} payload - The data payload passed when the scroll event is triggered. The type may vary depending on the event.
+ * @returns {void}
+ */
+/**
+ * TinySmartScroller is a utility class designed to enhance and manage scroll behaviors within containers or the window.
+ *
+ * It enables advanced scroll monitoring, auto-scrolling to bottom, preserving scroll position during DOM changes,
+ * and detecting visibility changes of elements. This is particularly useful for dynamic UIs like chat applications,
+ * feed viewers, or live content containers.
+ *
+ * Features:
+ * - Detects when the scroll reaches the top, bottom, or custom boundaries
+ * - Supports automatic scrolling to the bottom unless the user scrolls away
+ * - Observes DOM mutations and resizes, and adapts scroll position accordingly
+ * - Emits scroll-related events such as 'onScrollBoundary', 'onAutoScroll', and 'onScrollPause'
+ * - Includes customizable scroll correction filters for layout shift mitigation
+ * - Handles media element load events (e.g. `<img>`, `<iframe>`, `<video>`) to prevent sudden scroll jumps
+ *
+ * This class is **not framework-dependent** and works with vanilla DOM elements and the window object.
+ */
+var _oldSizes = /*#__PURE__*/new WeakMap();
+var _newSizes = /*#__PURE__*/new WeakMap();
+var _newVisibles = /*#__PURE__*/new WeakMap();
+var _oldVisibles = /*#__PURE__*/new WeakMap();
+var _newVisiblesByTime = /*#__PURE__*/new WeakMap();
+var _oldVisiblesByTime = /*#__PURE__*/new WeakMap();
+var _scrollListeners = /*#__PURE__*/new WeakMap();
+var _resizeObserver = /*#__PURE__*/new WeakMap();
+var _mutationObserver = /*#__PURE__*/new WeakMap();
+var _loadTags = /*#__PURE__*/new WeakMap();
+var _handler = /*#__PURE__*/new WeakMap();
+var _isAtBottom = /*#__PURE__*/new WeakMap();
+var _isAtTop = /*#__PURE__*/new WeakMap();
+var _isAtCustomTop = /*#__PURE__*/new WeakMap();
+var _isAtCustomBottom = /*#__PURE__*/new WeakMap();
+var _querySelector = /*#__PURE__*/new WeakMap();
+var _useWindow = /*#__PURE__*/new WeakMap();
+var _destroyed = /*#__PURE__*/new WeakMap();
+var _scrollPaused = /*#__PURE__*/new WeakMap();
+var _autoScrollBottom = /*#__PURE__*/new WeakMap();
+var _observeMutations = /*#__PURE__*/new WeakMap();
+var _preserveScrollOnLayoutShift = /*#__PURE__*/new WeakMap();
+var _debounceTime = /*#__PURE__*/new WeakMap();
+var _elemAmount = /*#__PURE__*/new WeakMap();
+var _elemOldAmount = /*#__PURE__*/new WeakMap();
+var _lastKnownScrollBottomOffset = /*#__PURE__*/new WeakMap();
+var _extraScrollBoundary = /*#__PURE__*/new WeakMap();
+var _attributeFilter = /*#__PURE__*/new WeakMap();
+var _target = /*#__PURE__*/new WeakMap();
+var _sizeFilter = /*#__PURE__*/new WeakMap();
+var TinySmartScroller = /*#__PURE__*/function () {
+  /**
+   * Creates a new instance of TinySmartScroller, attaching scroll and resize observers to manage
+   * automatic scroll behaviors, layout shift correction, and visibility tracking.
+   *
+   * @param {Element|Window} target - The scroll container to monitor. Can be an element or `window`.
+   * @param {Object} [options={}] - Optional settings to configure scroll behavior.
+   * @param {number} [options.extraScrollBoundary=0] - Extra margin in pixels to extend scroll boundary detection.
+   * @param {boolean} [options.autoScrollBottom=true] - Whether to auto-scroll to bottom on layout updates.
+   * @param {boolean} [options.observeMutations=true] - Enables MutationObserver to detect DOM changes.
+   * @param {boolean} [options.preserveScrollOnLayoutShift=true] - Prevents scroll jumps when layout changes.
+   * @param {number} [options.debounceTime=100] - Debounce time in milliseconds for scroll events.
+   * @param {string|null} [options.querySelector=null] - Optional CSS selector to filter observed child nodes.
+   * @param {string[]|Set<string>|null} [options.attributeFilter=['class', 'style', 'src', 'data-*', 'height', 'width']]
+   *     - Which attributes to observe for changes.
+   */
+  function TinySmartScroller(target) {
+    var _this = this;
+    var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref$extraScrollBound = _ref.extraScrollBoundary,
+      extraScrollBoundary = _ref$extraScrollBound === void 0 ? 0 : _ref$extraScrollBound,
+      _ref$autoScrollBottom = _ref.autoScrollBottom,
+      autoScrollBottom = _ref$autoScrollBottom === void 0 ? true : _ref$autoScrollBottom,
+      _ref$observeMutations = _ref.observeMutations,
+      observeMutations = _ref$observeMutations === void 0 ? true : _ref$observeMutations,
+      _ref$preserveScrollOn = _ref.preserveScrollOnLayoutShift,
+      preserveScrollOnLayoutShift = _ref$preserveScrollOn === void 0 ? true : _ref$preserveScrollOn,
+      _ref$debounceTime = _ref.debounceTime,
+      debounceTime = _ref$debounceTime === void 0 ? 100 : _ref$debounceTime,
+      _ref$querySelector = _ref.querySelector,
+      querySelector = _ref$querySelector === void 0 ? null : _ref$querySelector,
+      _ref$attributeFilter = _ref.attributeFilter,
+      attributeFilter = _ref$attributeFilter === void 0 ? ['class', 'style', 'src', 'data-*', 'height', 'width'] : _ref$attributeFilter;
+    _classCallCheck(this, TinySmartScroller);
+    /** @type {WeakMap<Element, NodeSizes>} */
+    _classPrivateFieldInitSpec(this, _oldSizes, new WeakMap());
+    /** @type {WeakMap<Element, NodeSizes>} */
+    _classPrivateFieldInitSpec(this, _newSizes, new WeakMap());
+    /** @type {WeakMap<Element, boolean>} */
+    _classPrivateFieldInitSpec(this, _newVisibles, new WeakMap());
+    /** @type {WeakMap<Element, boolean>} */
+    _classPrivateFieldInitSpec(this, _oldVisibles, new WeakMap());
+    /** @type {WeakMap<Element, boolean>} */
+    _classPrivateFieldInitSpec(this, _newVisiblesByTime, new WeakMap());
+    /** @type {WeakMap<Element, boolean>} */
+    _classPrivateFieldInitSpec(this, _oldVisiblesByTime, new WeakMap());
+    /** @type {Record<string, ScrollListenersFunc[]>} */
+    _classPrivateFieldInitSpec(this, _scrollListeners, {});
+    /** @type {ResizeObserver|null} */
+    _classPrivateFieldInitSpec(this, _resizeObserver, null);
+    /** @type {MutationObserver|null} */
+    _classPrivateFieldInitSpec(this, _mutationObserver, null);
+    /** @type {Set<string>} */
+    _classPrivateFieldInitSpec(this, _loadTags, new Set(['IMG', 'IFRAME', 'VIDEO']));
+    /** @type {null|EventListenerOrEventListenerObject} */
+    _classPrivateFieldInitSpec(this, _handler, null);
+    _classPrivateFieldInitSpec(this, _isAtBottom, false);
+    _classPrivateFieldInitSpec(this, _isAtTop, false);
+    _classPrivateFieldInitSpec(this, _isAtCustomTop, false);
+    _classPrivateFieldInitSpec(this, _isAtCustomBottom, false);
+    _classPrivateFieldInitSpec(this, _querySelector, '');
+    _classPrivateFieldInitSpec(this, _useWindow, false);
+    _classPrivateFieldInitSpec(this, _destroyed, false);
+    _classPrivateFieldInitSpec(this, _scrollPaused, false);
+    _classPrivateFieldInitSpec(this, _autoScrollBottom, false);
+    _classPrivateFieldInitSpec(this, _observeMutations, false);
+    _classPrivateFieldInitSpec(this, _preserveScrollOnLayoutShift, false);
+    _classPrivateFieldInitSpec(this, _debounceTime, 0);
+    _classPrivateFieldInitSpec(this, _elemAmount, 0);
+    _classPrivateFieldInitSpec(this, _elemOldAmount, 0);
+    _classPrivateFieldInitSpec(this, _lastKnownScrollBottomOffset, 0);
+    _classPrivateFieldInitSpec(this, _extraScrollBoundary, 0);
+    /** @type {Set<string>} */
+    _classPrivateFieldInitSpec(this, _attributeFilter, void 0);
+    /** @type {Element} */
+    _classPrivateFieldInitSpec(this, _target, void 0);
+    /** @type {Set<NodeSizesEvent>} */
+    _classPrivateFieldInitSpec(this, _sizeFilter, new Set());
+    // === target ===
+    if (!(target instanceof Element || target === window)) throw new TypeError("TinySmartScroller: 'target' must be a DOM Element or 'window', but got ".concat(_typeof(target)));
+    // === extraScrollBoundary ===
+    if (typeof extraScrollBoundary !== 'number' || Number.isNaN(extraScrollBoundary)) throw new TypeError("TinySmartScroller: 'extraScrollBoundary' must be a valid number, received ".concat(extraScrollBoundary));
+    // === autoScrollBottom ===
+    if (typeof autoScrollBottom !== 'boolean') throw new TypeError("TinySmartScroller: 'autoScrollBottom' must be a boolean, received ".concat(_typeof(autoScrollBottom)));
+    // === observeMutations ===
+    if (typeof observeMutations !== 'boolean') throw new TypeError("TinySmartScroller: 'observeMutations' must be a boolean, received ".concat(_typeof(observeMutations)));
+    // === preserveScrollOnLayoutShift ===
+    if (typeof preserveScrollOnLayoutShift !== 'boolean') throw new TypeError("TinySmartScroller: 'preserveScrollOnLayoutShift' must be a boolean, received ".concat(_typeof(preserveScrollOnLayoutShift)));
+    // === debounceTime ===
+    if (typeof debounceTime !== 'number' || debounceTime < 0 || Number.isNaN(debounceTime)) throw new TypeError("TinySmartScroller: 'debounceTime' must be a non-negative number, received ".concat(debounceTime));
+    // === querySelector ===
+    if (querySelector !== null && typeof querySelector !== 'string') throw new TypeError("TinySmartScroller: 'querySelector' must be a string or null, received ".concat(_typeof(querySelector)));
+    // === attributeFilter ===
+    var isValidAttrList = attributeFilter === null || Array.isArray(attributeFilter) || attributeFilter instanceof Set;
+    if (!isValidAttrList) throw new TypeError("TinySmartScroller: 'attributeFilter' must be an array, Set, or null. Got ".concat(_typeof(attributeFilter)));
+    // Start values
+    _classPrivateFieldSet(_target, this, target instanceof Window ? document.documentElement : target);
+    _classPrivateFieldSet(_useWindow, this, target instanceof Window);
+    _classPrivateFieldSet(_autoScrollBottom, this, autoScrollBottom);
+    _classPrivateFieldSet(_observeMutations, this, observeMutations);
+    _classPrivateFieldSet(_preserveScrollOnLayoutShift, this, preserveScrollOnLayoutShift);
+    _classPrivateFieldSet(_debounceTime, this, debounceTime);
+    _classPrivateFieldSet(_extraScrollBoundary, this, extraScrollBoundary);
+    _classPrivateFieldSet(_querySelector, this, querySelector || '');
+    _classPrivateFieldSet(_attributeFilter, this, new Set(attributeFilter || undefined));
+    // Bind scroll
+    /** @type {NodeJS.Timeout} */
+    var timeout;
+    _classPrivateFieldSet(_handler, this, function () {
+      _this._scrollDataUpdater();
+      clearTimeout(timeout);
+      timeout = setTimeout(function () {
+        return _this._onScroll();
+      }, _classPrivateFieldGet(_debounceTime, _this));
+    });
+    (_classPrivateFieldGet(_useWindow, this) ? window : _classPrivateFieldGet(_target, this)).addEventListener('scroll', _classPrivateFieldGet(_handler, this), {
+      passive: true
+    });
+    // Mutations
+    if (_classPrivateFieldGet(_observeMutations, this)) {
+      this._observeMutations();
+      this._observeResizes(_classPrivateFieldGet(_target, this).children);
+    }
+    this._scrollDataUpdater();
+  }
+  /**
+   * Returns a size difference callback that only reacts when height changes, filtered by tag name.
+   *
+   * @param {string[]} filter - List of tag names to allow. If empty, all tags are accepted.
+   * @returns {NodeSizesEvent} A function that compares previous and current height, returning height delta.
+   */
+  return _createClass(TinySmartScroller, [{
+    key: "getSimpleOnHeight",
+    value: function getSimpleOnHeight() {
+      var filter = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      if (!Array.isArray(filter)) throw new TypeError('getSimpleOnHeight(filter): filter must be an array of tag names');
+      return function (elem, sizes, amounts) {
+        if (filter.length > 0 && !filter.includes(elem.tagName) || amounts.now !== amounts.old) return;
+        var oldSize = sizes.old;
+        var newSize = sizes.now;
+        var height = newSize.height - oldSize.height;
+        return {
+          height: height,
+          width: 0
+        };
+      };
+    }
+    /**
+     * Adds a height difference callback to the size filter system.
+     *
+     * @param {string[]} filter - List of tag names to allow.
+     * @returns {NodeSizesEvent} The added size difference callback.
+     */
+  }, {
+    key: "addSimpleOnHeight",
+    value: function addSimpleOnHeight(filter) {
+      if (!Array.isArray(filter)) throw new TypeError('addSimpleOnHeight(filter): filter must be an array of tag names');
+      var result = this.getSimpleOnHeight(filter);
+      this.onSize(result);
+      return result;
+    }
+    /**
+     * Returns a list of all currently tracked load tags.
+     *
+     * @returns {string[]} Array of tag names.
+     */
+  }, {
+    key: "getLoadTags",
+    value: function getLoadTags() {
+      return Array.from(_classPrivateFieldGet(_loadTags, this));
+    }
+    /**
+     * Adds a new tag to the set of load tags.
+     *
+     * @param {string} tag - The tag name to add (e.g., 'IMG').
+     */
+  }, {
+    key: "addLoadTag",
+    value: function addLoadTag(tag) {
+      if (typeof tag !== 'string') throw new TypeError('addLoadTag(tag): tag must be a string');
+      _classPrivateFieldGet(_loadTags, this).add(tag.toUpperCase());
+    }
+    /**
+     * Removes a tag from the set of load tags.
+     *
+     * @param {string} tag - The tag name to remove.
+     */
+  }, {
+    key: "removeLoadTag",
+    value: function removeLoadTag(tag) {
+      if (typeof tag !== 'string') throw new TypeError('removeLoadTag(tag): tag must be a string');
+      _classPrivateFieldGet(_loadTags, this)["delete"](tag.toUpperCase());
+    }
+    /**
+     * Checks whether a tag is tracked as a load tag.
+     *
+     * @param {string} tag - The tag name to check.
+     * @returns {boolean} True if the tag is being tracked.
+     */
+  }, {
+    key: "hasLoadTag",
+    value: function hasLoadTag(tag) {
+      if (typeof tag !== 'string') throw new TypeError('hasLoadTag(tag): tag must be a string');
+      return _classPrivateFieldGet(_loadTags, this).has(tag.toUpperCase());
+    }
+    /**
+     * Clears the set of load tags. If `addDefault` is true, it will reset to the default tags: 'IMG', 'IFRAME', and 'VIDEO'.
+     *
+     * @param {boolean} [addDefault=false] - Whether to restore the default tags after clearing.
+     * @throws {TypeError} If `addDefault` is not a boolean.
+     */
+  }, {
+    key: "resetLoadTags",
+    value: function resetLoadTags() {
+      var addDefault = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+      if (typeof addDefault !== 'boolean') throw new TypeError('resetLoadTags(addDefault): addDefault must be a boolean');
+      _classPrivateFieldGet(_loadTags, this).clear();
+      if (!addDefault) return;
+      _classPrivateFieldGet(_loadTags, this).add('IMG');
+      _classPrivateFieldGet(_loadTags, this).add('IFRAME');
+      _classPrivateFieldGet(_loadTags, this).add('VIDEO');
+    }
+    /**
+     * Returns a list of all currently tracked attribute filters.
+     *
+     * @returns {string[]} Array of attribute names.
+     */
+  }, {
+    key: "getAttributeFilters",
+    value: function getAttributeFilters() {
+      return Array.from(_classPrivateFieldGet(_attributeFilter, this));
+    }
+    /**
+     * Adds an attribute to the filter list.
+     *
+     * @param {string} attr - The attribute name to add.
+     */
+  }, {
+    key: "addAttributeFilter",
+    value: function addAttributeFilter(attr) {
+      if (typeof attr !== 'string') throw new TypeError('addAttributeFilter(attr): attr must be a string');
+      _classPrivateFieldGet(_attributeFilter, this).add(attr);
+    }
+    /**
+     * Removes an attribute from the filter list.
+     *
+     * @param {string} attr - The attribute name to remove.
+     */
+  }, {
+    key: "removeAttributeFilter",
+    value: function removeAttributeFilter(attr) {
+      if (typeof attr !== 'string') throw new TypeError('removeAttributeFilter(attr): attr must be a string');
+      _classPrivateFieldGet(_attributeFilter, this)["delete"](attr);
+    }
+    /**
+     * Checks whether a specific attribute is being filtered.
+     *
+     * @param {string} attr - The attribute name to check.
+     * @returns {boolean} True if the attribute is being filtered.
+     */
+  }, {
+    key: "hasAttributeFilter",
+    value: function hasAttributeFilter(attr) {
+      if (typeof attr !== 'string') throw new TypeError('hasAttributeFilter(attr): attr must be a string');
+      return _classPrivateFieldGet(_attributeFilter, this).has(attr);
+    }
+    /**
+     * Clears the set of observed attribute filters. If `addDefault` is true, it will reset to the default attributes:
+     * 'class', 'style', 'src', 'data-*', 'height', and 'width'.
+     *
+     * @param {boolean} [addDefault=false] - Whether to restore the default attribute filters after clearing.
+     * @throws {TypeError} If `addDefault` is not a boolean.
+     */
+  }, {
+    key: "resetAttributeFilters",
+    value: function resetAttributeFilters() {
+      var _this2 = this;
+      var addDefault = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+      if (typeof addDefault !== 'boolean') throw new TypeError('resetAttributeFilters(addDefault): addDefault must be a boolean');
+      _classPrivateFieldGet(_attributeFilter, this).clear();
+      if (!addDefault) return;
+      ['class', 'style', 'src', 'data-*', 'height', 'width'].forEach(function (attr) {
+        return _classPrivateFieldGet(_attributeFilter, _this2).add(attr);
+      });
+    }
+    /**
+     * Registers a custom node size change handler to the internal size filter set.
+     *
+     * @param {NodeSizesEvent} handler - Function that compares old and new sizes.
+     */
+  }, {
+    key: "onSize",
+    value: function onSize(handler) {
+      if (_classPrivateFieldGet(_destroyed, this)) return;
+      if (typeof handler !== 'function') throw new TypeError('onSize(handler): handler must be a function');
+      _classPrivateFieldGet(_sizeFilter, this).add(handler);
+    }
+    /**
+     * Unregisters a previously registered size handler from the internal filter set.
+     *
+     * @param {NodeSizesEvent} handler - The handler function to remove.
+     */
+  }, {
+    key: "offSize",
+    value: function offSize(handler) {
+      if (_classPrivateFieldGet(_destroyed, this)) return;
+      if (typeof handler !== 'function') throw new TypeError('offSize(handler): handler must be a function');
+      _classPrivateFieldGet(_sizeFilter, this)["delete"](handler);
+    }
+    /**
+     * Adds a scroll-related event listener.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {ScrollListenersFunc} handler - Callback function to be called when event fires.
+     */
+  }, {
+    key: "on",
+    value: function on(event, handler) {
+      if (_classPrivateFieldGet(_destroyed, this)) return;
+      if (typeof event !== 'string') throw new TypeError('on(event, handler): event name must be a string');
+      if (typeof handler !== 'function') throw new TypeError('on(event, handler): handler must be a function');
+      if (!_classPrivateFieldGet(_scrollListeners, this)[event]) _classPrivateFieldGet(_scrollListeners, this)[event] = [];
+      _classPrivateFieldGet(_scrollListeners, this)[event].push(handler);
+    }
+    /**
+     * Removes a previously registered scroll-related event listener.
+     *
+     * @param {string} event - The name of the event to remove the handler from.
+     * @param {ScrollListenersFunc} handler - The specific callback function to remove.
+     */
+  }, {
+    key: "off",
+    value: function off(event, handler) {
+      if (_classPrivateFieldGet(_destroyed, this)) return;
+      if (typeof event !== 'string') throw new TypeError('off(event, handler): event name must be a string');
+      if (typeof handler !== 'function') throw new TypeError('off(event, handler): handler must be a function');
+      var listeners = _classPrivateFieldGet(_scrollListeners, this)[event];
+      if (!Array.isArray(listeners)) return;
+      var index = listeners.indexOf(handler);
+      if (index !== -1) listeners.splice(index, 1);
+      // Optionally clean up empty arrays (optional)
+      if (listeners.length === 0) delete _classPrivateFieldGet(_scrollListeners, this)[event];
+    }
+    /**
+     * Checks which elements inside the target are currently visible and updates internal maps.
+     *
+     * @returns {Map<Element, { oldIsVisible: boolean; isVisible: boolean }>} Visibility comparison results.
+     */
+  }, {
+    key: "_scrollDataUpdater",
+    value: function _scrollDataUpdater() {
+      var _this3 = this;
+      var results = new Map();
+      _classPrivateFieldGet(_target, this).querySelectorAll(_classPrivateFieldGet(_querySelector, this) || '*').forEach(function (target) {
+        var _classPrivateFieldGet2;
+        var oldIsVisible = (_classPrivateFieldGet2 = _classPrivateFieldGet(_newVisibles, _this3).get(target)) !== null && _classPrivateFieldGet2 !== void 0 ? _classPrivateFieldGet2 : false;
+        _classPrivateFieldGet(_oldVisibles, _this3).set(target, oldIsVisible);
+        var isVisible = _TinyHtml["default"].isInContainer(_classPrivateFieldGet(_target, _this3), target);
+        _classPrivateFieldGet(_newVisibles, _this3).set(target, isVisible);
+        results.set(target, {
+          oldIsVisible: oldIsVisible,
+          isVisible: isVisible
+        });
+      });
+      return results;
+    }
+    /**
+     * Emits a scroll-related event to all registered listeners.
+     *
+     * @param {string} event - Event name.
+     * @param {*} [payload] - Optional event data payload.
+     */
+  }, {
+    key: "_emit",
+    value: function _emit(event, payload) {
+      if (_classPrivateFieldGet(_destroyed, this)) return;
+      if (typeof event !== 'string') throw new TypeError('_emit(event, payload): event name must be a string');
+      (_classPrivateFieldGet(_scrollListeners, this)[event] || []).forEach(function (fn) {
+        return fn(payload);
+      });
+    }
+    /**
+     * Handles scroll events, calculates position-related statuses, and emits appropriate events.
+     */
+  }, {
+    key: "_onScroll",
+    value: function _onScroll() {
+      if (_classPrivateFieldGet(_destroyed, this)) return;
+      // Get values
+      var scrollCache = this._scrollDataUpdater();
+      var el = _classPrivateFieldGet(_target, this);
+      var scrollTop = el.scrollTop;
+      var scrollHeight = el.scrollHeight;
+      var clientHeight = el.clientHeight;
+      // Prepare sroll values
+      var scrollResult = {
+        scrollTop: scrollTop,
+        scrollHeight: scrollHeight,
+        clientHeight: clientHeight
+      };
+      var atResult = null;
+      var atCustomResult = null;
+      var atTop = scrollTop === 0;
+      var atBottom = scrollTop + clientHeight >= scrollHeight - 1;
+      var atCustomTop = scrollTop <= 0 + _classPrivateFieldGet(_extraScrollBoundary, this);
+      var atCustomBottom = scrollTop + clientHeight >= scrollHeight - 1 - _classPrivateFieldGet(_extraScrollBoundary, this);
+      // Scroll results
+      if (atTop && atBottom) atResult = 'all';else if (atTop) atResult = 'top';else if (atBottom) atResult = 'bottom';
+      if (atCustomTop && atCustomBottom) atCustomResult = 'all';else if (atCustomTop) atCustomResult = 'top';else if (atCustomBottom) atCustomResult = 'bottom';
+      _classPrivateFieldSet(_isAtTop, this, atTop);
+      _classPrivateFieldSet(_isAtBottom, this, atBottom);
+      _classPrivateFieldSet(_isAtCustomTop, this, atCustomTop);
+      _classPrivateFieldSet(_isAtCustomBottom, this, atCustomBottom);
+      _classPrivateFieldSet(_scrollPaused, this, !(_classPrivateFieldGet(_autoScrollBottom, this) && _classPrivateFieldGet(_isAtBottom, this)));
+      _classPrivateFieldSet(_lastKnownScrollBottomOffset, this, scrollHeight - scrollTop - clientHeight);
+      // Send results
+      this._emit('onScrollBoundary', _objectSpread(_objectSpread({
+        status: atResult
+      }, scrollResult), {}, {
+        scrollCache: scrollCache
+      }));
+      this._emit('onExtraScrollBoundary', _objectSpread(_objectSpread({
+        status: atCustomResult
+      }, scrollResult), {}, {
+        scrollCache: scrollCache
+      }));
+      if (!_classPrivateFieldGet(_scrollPaused, this)) {
+        this._emit('onAutoScroll', _objectSpread(_objectSpread({}, scrollResult), {}, {
+          scrollCache: scrollCache
+        }));
+      } else {
+        this._emit('onScrollPause', _objectSpread(_objectSpread({}, scrollResult), {}, {
+          scrollCache: scrollCache
+        }));
+      }
+    }
+    /**
+     * Attempts to correct the scroll position when layout shifts happen, preserving the user position if needed.
+     *
+     * @param {Element[]} [targets=[]] - List of elements involved in the size change.
+     */
+  }, {
+    key: "_fixScroll",
+    value: function _fixScroll() {
+      var _this4 = this;
+      var targets = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      if (_classPrivateFieldGet(_destroyed, this)) return;
+      // === Validation ===
+      if (!Array.isArray(targets)) throw new TypeError('_fixScroll: targets must be an array of Elements');
+      // Get Scroll data
+      var prevScrollHeight = _classPrivateFieldGet(_target, this).scrollHeight;
+      var prevScrollTop = _classPrivateFieldGet(_target, this).scrollTop;
+      var prevBottomOffset = _classPrivateFieldGet(_target, this).scrollHeight - _classPrivateFieldGet(_target, this).scrollTop - _classPrivateFieldGet(_target, this).clientHeight;
+      // Get new size
+      var newScrollHeight = _classPrivateFieldGet(_target, this).scrollHeight;
+      var heightDelta = newScrollHeight - prevScrollHeight;
+      /** @type {() => NodeSizes} */
+      var calculateScrollSize = function calculateScrollSize() {
+        // Run size getter
+        var scrollSize = {
+          height: 0,
+          width: 0
+        };
+        var _iterator = _createForOfIteratorHelper(targets),
+          _step;
+        try {
+          var _loop = function _loop() {
+            var target = _step.value;
+            var tgOs = _classPrivateFieldGet(_oldSizes, _this4).get(target) || {
+              height: 0,
+              width: 0
+            };
+            var tgNs = _classPrivateFieldGet(_newSizes, _this4).get(target) || {
+              height: 0,
+              width: 0
+            };
+            _classPrivateFieldGet(_sizeFilter, _this4).forEach(function (fn) {
+              /** @type {NodeSizes| undefined} */
+              var sizes = fn(target, {
+                old: tgOs,
+                now: tgNs
+              }, {
+                old: _classPrivateFieldGet(_elemOldAmount, _this4),
+                now: _classPrivateFieldGet(_elemAmount, _this4)
+              });
+              // Fix size
+              if (_classPrivateFieldGet(_newVisibles, _this4).get(target) || _classPrivateFieldGet(_newVisiblesByTime, _this4).get(target)) {
+                if (typeof sizes !== 'undefined' && _typeof(sizes) !== 'object') throw new Error('_fixScroll: size filter must return an object or undefined');
+                if (typeof sizes === 'undefined') return;
+                scrollSize.height = sizes.height;
+                scrollSize.width = sizes.width;
+              }
+            });
+          };
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            _loop();
+          }
+          // Checker
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+        if (typeof scrollSize.height !== 'number' && scrollSize.height < 0) throw new Error('_fixScroll: invalid scrollSize.height value');
+        if (typeof scrollSize.width !== 'number' && scrollSize.width < 0) throw new Error('_fixScroll: invalid scrollSize.width value');
+        if (scrollSize.height !== 0 || scrollSize.width !== 0) {
+          var _iterator2 = _createForOfIteratorHelper(targets),
+            _step2;
+          try {
+            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+              var _classPrivateFieldGet3, _classPrivateFieldGet4;
+              var target = _step2.value;
+              _classPrivateFieldGet(_newVisiblesByTime, _this4).set(target, (_classPrivateFieldGet3 = _classPrivateFieldGet(_newVisibles, _this4).get(target)) !== null && _classPrivateFieldGet3 !== void 0 ? _classPrivateFieldGet3 : false);
+              _classPrivateFieldGet(_oldVisiblesByTime, _this4).set(target, (_classPrivateFieldGet4 = _classPrivateFieldGet(_oldVisibles, _this4).get(target)) !== null && _classPrivateFieldGet4 !== void 0 ? _classPrivateFieldGet4 : false);
+            }
+          } catch (err) {
+            _iterator2.e(err);
+          } finally {
+            _iterator2.f();
+          }
+        }
+        return scrollSize;
+      };
+      // Fix scroll size
+      if (_classPrivateFieldGet(_elemOldAmount, this) > 0 && _TinyHtml["default"].hasScroll(_classPrivateFieldGet(_target, this)).v && _classPrivateFieldGet(_autoScrollBottom, this) && _classPrivateFieldGet(_preserveScrollOnLayoutShift, this) && !_classPrivateFieldGet(_isAtBottom, this) && !_classPrivateFieldGet(_isAtTop, this)) {
+        var scrollSize = calculateScrollSize();
+        // Complete
+        _classPrivateFieldGet(_target, this).scrollTop = prevScrollTop + heightDelta + scrollSize.height;
+        if (scrollSize.width > 0) _classPrivateFieldGet(_target, this).scrollLeft = _classPrivateFieldGet(_target, this).scrollLeft + scrollSize.width;
+      }
+      // Normal stuff
+      else if (!_classPrivateFieldGet(_scrollPaused, this) && _classPrivateFieldGet(_autoScrollBottom, this)) {
+        calculateScrollSize();
+        this.scrollToBottom();
+      } else if (!_classPrivateFieldGet(_autoScrollBottom, this) && !_classPrivateFieldGet(_isAtBottom, this)) {
+        calculateScrollSize();
+        _classPrivateFieldGet(_target, this).scrollTop = _classPrivateFieldGet(_target, this).scrollHeight - _classPrivateFieldGet(_target, this).clientHeight - prevBottomOffset;
+      }
+    }
+    /**
+     * Sets up a MutationObserver to watch for DOM changes and react accordingly to maintain scroll consistency.
+     */
+  }, {
+    key: "_observeMutations",
+    value: function _observeMutations() {
+      var _this5 = this;
+      _classPrivateFieldSet(_mutationObserver, this, new MutationObserver(function (mutations) {
+        if (_classPrivateFieldGet(_destroyed, _this5)) return;
+        _this5._scrollDataUpdater();
+        _classPrivateFieldSet(_elemOldAmount, _this5, _classPrivateFieldGet(_elemAmount, _this5));
+        _classPrivateFieldSet(_elemAmount, _this5, _classPrivateFieldGet(_target, _this5).childElementCount);
+        mutations.forEach(function (mutation) {
+          mutation.addedNodes.forEach(function (node) {
+            if (!(node instanceof Element) || node.nodeType !== 1) return;
+            _this5._observeResizes([node]);
+            _this5._listenLoadEvents(node);
+            if (_classPrivateFieldGet(_querySelector, _this5)) {
+              var children = node.querySelectorAll(_classPrivateFieldGet(_querySelector, _this5));
+              _this5._observeResizes(children);
+              _this5._listenLoadEvents(children);
+            }
+          });
+        });
+        _this5._fixScroll();
+      }));
+      // Install observer
+      _classPrivateFieldGet(_mutationObserver, this).observe(_classPrivateFieldGet(_target, this), {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: _classPrivateFieldGet(_attributeFilter, this).size > 0 ? Array.from(_classPrivateFieldGet(_attributeFilter, this)) : undefined
+      });
+    }
+    /**
+     * Adds a ResizeObserver to monitor elements' size changes and trigger layout adjustments.
+     *
+     * @param {NodeListOf<Element>|Element[]|HTMLCollection} elements - Elements to observe.
+     */
+  }, {
+    key: "_observeResizes",
+    value: function _observeResizes(elements) {
+      var _this6 = this;
+      // Add resize observer
+      if (!_classPrivateFieldGet(_resizeObserver, this)) {
+        _classPrivateFieldSet(_resizeObserver, this, new ResizeObserver(function (entries) {
+          if (_classPrivateFieldGet(_destroyed, _this6)) return;
+          _this6._scrollDataUpdater();
+          /** @type {Element[]} */
+          var targets = [];
+          var _iterator3 = _createForOfIteratorHelper(entries),
+            _step3;
+          try {
+            for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+              var entry = _step3.value;
+              // Target
+              var target = entry.target;
+              // Update old size
+              var oldSize = _classPrivateFieldGet(_newSizes, _this6).get(target);
+              if (oldSize) _classPrivateFieldGet(_oldSizes, _this6).set(target, oldSize);
+              // Set new size
+              var _entry$contentRect = entry.contentRect,
+                width = _entry$contentRect.width,
+                height = _entry$contentRect.height;
+              _classPrivateFieldGet(_newSizes, _this6).set(target, {
+                width: width,
+                height: height
+              });
+              targets.push(target);
+            }
+            // Animation frame
+          } catch (err) {
+            _iterator3.e(err);
+          } finally {
+            _iterator3.f();
+          }
+          _this6._fixScroll(targets);
+        }));
+      }
+      // Execute observer
+      Array.from(elements).forEach(function (el) {
+        if (!_classPrivateFieldGet(_resizeObserver, _this6)) throw new Error('_observeResizes: ResizeObserver instance is not initialized');
+        _classPrivateFieldGet(_resizeObserver, _this6).observe(el);
+      });
+    }
+    /**
+     * Listens for media/content load events (e.g., images, iframes, videos) to trigger scroll updates.
+     *
+     * @param {NodeListOf<Element>|Element} elements - Target element(s) to listen on.
+     */
+  }, {
+    key: "_listenLoadEvents",
+    value: function _listenLoadEvents(elements) {
+      var _this7 = this;
+      if (_classPrivateFieldGet(_destroyed, this)) return;
+      var list = elements instanceof NodeList ? Array.from(elements) : [elements];
+      list.forEach(function (el) {
+        if (_classPrivateFieldGet(_loadTags, _this7).has(el.tagName)) {
+          // @ts-ignore
+          if (!el.complete) {
+            el.addEventListener('load', function () {
+              _this7._scrollDataUpdater();
+              if (!_classPrivateFieldGet(_scrollPaused, _this7) && _classPrivateFieldGet(_autoScrollBottom, _this7)) {
+                _this7.scrollToBottom();
+              }
+            });
+          }
+        }
+      });
+    }
+    /**
+     * Returns the internal scroll container element being monitored.
+     *
+     * @returns {Element} The DOM element used as the scroll container target.
+     */
+  }, {
+    key: "target",
+    get: function get() {
+      return _classPrivateFieldGet(_target, this);
+    }
+    /**
+     * Returns the previous size of a given element, or undefined if not tracked.
+     *
+     * @param {Element} el - The DOM element to query.
+     * @returns {NodeSizes|null} The old size, or undefined.
+     */
+  }, {
+    key: "getOldSize",
+    value: function getOldSize(el) {
+      var _classPrivateFieldGet5;
+      return (_classPrivateFieldGet5 = _classPrivateFieldGet(_oldSizes, this).get(el)) !== null && _classPrivateFieldGet5 !== void 0 ? _classPrivateFieldGet5 : null;
+    }
+    /**
+     * Returns the current size of a given element, or undefined if not tracked.
+     *
+     * @param {Element} el - The DOM element to query.
+     * @returns {NodeSizes|null} The new size, or undefined.
+     */
+  }, {
+    key: "getNewSize",
+    value: function getNewSize(el) {
+      var _classPrivateFieldGet6;
+      return (_classPrivateFieldGet6 = _classPrivateFieldGet(_newSizes, this).get(el)) !== null && _classPrivateFieldGet6 !== void 0 ? _classPrivateFieldGet6 : null;
+    }
+    /**
+     * Returns whether the given element was visible in the last scroll update.
+     *
+     * @param {Element} el - The DOM element to check.
+     * @returns {boolean} True if visible, false if not, or undefined if not tracked.
+     */
+  }, {
+    key: "wasVisible",
+    value: function wasVisible(el) {
+      var _classPrivateFieldGet7;
+      return (_classPrivateFieldGet7 = _classPrivateFieldGet(_oldVisibles, this).get(el)) !== null && _classPrivateFieldGet7 !== void 0 ? _classPrivateFieldGet7 : false;
+    }
+    /**
+     * Returns whether the given element is currently visible.
+     *
+     * @param {Element} el - The DOM element to check.
+     * @returns {boolean} True if visible, false if not, or undefined if not tracked.
+     */
+  }, {
+    key: "isVisible",
+    value: function isVisible(el) {
+      var _classPrivateFieldGet8;
+      return (_classPrivateFieldGet8 = _classPrivateFieldGet(_newVisibles, this).get(el)) !== null && _classPrivateFieldGet8 !== void 0 ? _classPrivateFieldGet8 : false;
+    }
+    /**
+     * Returns whether the element was visible in the last time-based visibility check.
+     *
+     * @param {Element} el - The DOM element to check.
+     * @returns {boolean} Visibility state from the previous timed check.
+     */
+  }, {
+    key: "wasTimedVisible",
+    value: function wasTimedVisible(el) {
+      var _classPrivateFieldGet9;
+      return (_classPrivateFieldGet9 = _classPrivateFieldGet(_oldVisiblesByTime, this).get(el)) !== null && _classPrivateFieldGet9 !== void 0 ? _classPrivateFieldGet9 : false;
+    }
+    /**
+     * Returns whether the element is currently visible in the time-based check.
+     *
+     * @param {Element} el - The DOM element to check.
+     * @returns {boolean} Visibility state from the current timed check.
+     */
+  }, {
+    key: "isTimedVisible",
+    value: function isTimedVisible(el) {
+      var _classPrivateFieldGet0;
+      return (_classPrivateFieldGet0 = _classPrivateFieldGet(_newVisiblesByTime, this).get(el)) !== null && _classPrivateFieldGet0 !== void 0 ? _classPrivateFieldGet0 : false;
+    }
+    /**
+     * Sets the extra scroll boundary margin used when determining if the user is at a "custom" bottom or top.
+     *
+     * @param {number} value - Pixels of additional margin to use.
+     */
+  }, {
+    key: "setExtraScrollBoundary",
+    value: function setExtraScrollBoundary(value) {
+      if (typeof value !== 'number' || Number.isNaN(value)) throw new TypeError('setExtraScrollBoundary(value): value must be a valid number');
+      _classPrivateFieldSet(_extraScrollBoundary, this, value);
+    }
+    /**
+     * Returns the current extra scroll boundary setting.
+     *
+     * @returns {number}
+     */
+  }, {
+    key: "getExtraScrollBoundary",
+    value: function getExtraScrollBoundary() {
+      return _classPrivateFieldGet(_extraScrollBoundary, this);
+    }
+    /**
+     * Returns the last known distance (in pixels) from the bottom of the scroll container.
+     *
+     * @returns {number}
+     */
+  }, {
+    key: "getLastKnownScrollBottomOffset",
+    value: function getLastKnownScrollBottomOffset() {
+      return _classPrivateFieldGet(_lastKnownScrollBottomOffset, this);
+    }
+    /**
+     * Forces the scroll position to move to the very bottom of the target.
+     */
+  }, {
+    key: "scrollToBottom",
+    value: function scrollToBottom() {
+      _classPrivateFieldGet(_target, this).scrollTop = _classPrivateFieldGet(_target, this).scrollHeight;
+    }
+    /**
+     * Forces the scroll position to move to the very top of the target.
+     */
+  }, {
+    key: "scrollToTop",
+    value: function scrollToTop() {
+      _classPrivateFieldGet(_target, this).scrollTop = 0;
+    }
+    /**
+     * Checks if the user is within the defined extra scroll boundary from the bottom.
+     *
+     * @returns {boolean}
+     */
+  }, {
+    key: "isUserAtCustomBottom",
+    value: function isUserAtCustomBottom() {
+      return _classPrivateFieldGet(_isAtCustomBottom, this);
+    }
+    /**
+     * Checks if the user is within the defined extra scroll boundary from the top.
+     *
+     * @returns {boolean}
+     */
+  }, {
+    key: "isUserAtCustomTop",
+    value: function isUserAtCustomTop() {
+      return _classPrivateFieldGet(_isAtCustomTop, this);
+    }
+    /**
+     * Returns true if the user is currently scrolled to the bottom of the element.
+     *
+     * @returns {boolean}
+     */
+  }, {
+    key: "isUserAtBottom",
+    value: function isUserAtBottom() {
+      return _classPrivateFieldGet(_isAtBottom, this);
+    }
+    /**
+     * Returns true if the user is currently scrolled to the top of the element.
+     *
+     * @returns {boolean}
+     */
+  }, {
+    key: "isUserAtTop",
+    value: function isUserAtTop() {
+      return _classPrivateFieldGet(_isAtTop, this);
+    }
+    /**
+     * Returns true if automatic scrolling is currently paused.
+     *
+     * @returns {boolean}
+     */
+  }, {
+    key: "isScrollPaused",
+    value: function isScrollPaused() {
+      return _classPrivateFieldGet(_scrollPaused, this);
+    }
+    /**
+     * Returns whether the target is the window object.
+     *
+     * @returns {boolean} True if the scroll target is window, false otherwise.
+     */
+  }, {
+    key: "isWindow",
+    value: function isWindow() {
+      return _classPrivateFieldGet(_useWindow, this);
+    }
+    /**
+     * Returns whether the instance has been destroyed.
+     *
+     * @returns {boolean} True if the instance is destroyed, false otherwise.
+     */
+  }, {
+    key: "isDestroyed",
+    value: function isDestroyed() {
+      return _classPrivateFieldGet(_destroyed, this);
+    }
+    /**
+     * Returns whether auto-scroll-to-bottom is enabled.
+     *
+     * @returns {boolean} True if auto-scroll is active, false otherwise.
+     */
+  }, {
+    key: "getAutoScrollBottom",
+    value: function getAutoScrollBottom() {
+      return _classPrivateFieldGet(_autoScrollBottom, this);
+    }
+    /**
+     * Returns whether MutationObserver is enabled.
+     *
+     * @returns {boolean} True if mutation observation is active, false otherwise.
+     */
+  }, {
+    key: "getObserveMutations",
+    value: function getObserveMutations() {
+      return _classPrivateFieldGet(_observeMutations, this);
+    }
+    /**
+     * Returns whether layout shift protection is enabled.
+     *
+     * @returns {boolean} True if scroll preservation is active, false otherwise.
+     */
+  }, {
+    key: "getPreserveScrollOnLayoutShift",
+    value: function getPreserveScrollOnLayoutShift() {
+      return _classPrivateFieldGet(_preserveScrollOnLayoutShift, this);
+    }
+    /**
+     * Returns the debounce delay in milliseconds used for scroll events.
+     *
+     * @returns {number} Debounce delay time.
+     */
+  }, {
+    key: "getDebounceTime",
+    value: function getDebounceTime() {
+      return _classPrivateFieldGet(_debounceTime, this);
+    }
+    /**
+     * Returns the current number of matching elements observed inside the scroll target.
+     *
+     * @returns {number} Current count of matching elements.
+     */
+  }, {
+    key: "getElemAmount",
+    value: function getElemAmount() {
+      return _classPrivateFieldGet(_elemAmount, this);
+    }
+    /**
+     * Returns the previous known count of matching elements from the last update.
+     *
+     * @returns {number} Previous count of matching elements.
+     */
+  }, {
+    key: "getPrevElemAmount",
+    value: function getPrevElemAmount() {
+      return _classPrivateFieldGet(_elemOldAmount, this);
+    }
+    /**
+     * Returns the query selector string used to filter observed elements.
+     *
+     * @returns {string} The CSS selector string, or an empty string if none was provided.
+     */
+  }, {
+    key: "getQuerySelector",
+    value: function getQuerySelector() {
+      return _classPrivateFieldGet(_querySelector, this);
+    }
+    /**
+     * Disconnects all listeners, observers, and clears memory structures.
+     * Once destroyed, this instance should no longer be used.
+     */
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      if (_classPrivateFieldGet(_destroyed, this)) return;
+      _classPrivateFieldSet(_destroyed, this, true);
+      // Disconnects MutationObserver
+      if (_classPrivateFieldGet(_mutationObserver, this)) {
+        _classPrivateFieldGet(_mutationObserver, this).disconnect();
+        _classPrivateFieldSet(_mutationObserver, this, null);
+      }
+      // Disconnect ResizeObserver
+      if (_classPrivateFieldGet(_resizeObserver, this)) {
+        _classPrivateFieldGet(_resizeObserver, this).disconnect();
+        _classPrivateFieldSet(_resizeObserver, this, null);
+      }
+      // Removes scroll listener
+      var target = _classPrivateFieldGet(_useWindow, this) ? window : _classPrivateFieldGet(_target, this);
+      if (_classPrivateFieldGet(_handler, this)) target.removeEventListener('scroll', _classPrivateFieldGet(_handler, this));
+      // Clean the WeakMaps
+      _classPrivateFieldSet(_oldSizes, this, new WeakMap());
+      _classPrivateFieldSet(_newSizes, this, new WeakMap());
+      _classPrivateFieldSet(_newVisibles, this, new WeakMap());
+      _classPrivateFieldSet(_oldVisibles, this, new WeakMap());
+      _classPrivateFieldSet(_newVisiblesByTime, this, new WeakMap());
+      _classPrivateFieldSet(_oldVisiblesByTime, this, new WeakMap());
+      // Cleans listeners and filters
+      _classPrivateFieldSet(_scrollListeners, this, {});
+      _classPrivateFieldGet(_sizeFilter, this).clear();
+      _classPrivateFieldGet(_loadTags, this).clear();
+    }
+  }]);
+}();
+_defineProperty(TinySmartScroller, "Utils", _objectSpread(_objectSpread({}, TinyCollision), {}, {
+  TinyHtml: _TinyHtml["default"]
+}));
+var _default = exports["default"] = TinySmartScroller;
+
+},{"../basics/collision.mjs":151,"./TinyHtml.mjs":166}],172:[function(require,module,exports){
 arguments[4][132][0].apply(exports,arguments)
-},{"dup":132}],172:[function(require,module,exports){
+},{"dup":132}],173:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+var defaultWords = ['lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit', 'sed', 'do', 'eiusmod', 'tempor', 'incididunt', 'ut', 'labore', 'et', 'dolore', 'magna', 'aliqua'];
+var defaultEmojis = ['😂', '🌈', '🤖', '💥', '🐸', '🍕', '🦄', '🧠', '🧬', '🚀', '🫠', '💫', '🍩', '👾', '🎉', '🥴', '🐙', '🧃', '🪐', '🎈', '🧸', '👻', '🥳', '🍭', '💖', '😺', '🌮', '🪅', '🎮', '🥓', '🍮'];
+var defaultNouns = ['pudding', 'bean', 'snuggle', 'bloop', 'jelly', 'unicorn', 'floof', 'giggle', 'bubble', 'muffin', 'puff', 'pickle', 'goblin', 'waffle', 'sprinkle', 'cupcake', 'fizzle', 'marshmallow', 'duckling', 'sock', 'cloud', 'teacup', 'nugget', 'gnome', 'hug', 'moonbean', 'crayon', 'jiggle', 'glitter', 'carrot', 'goober'];
+var defaultVerbs = ['wiggles', 'bounces', 'flies', 'splats', 'scoots', 'giggles', 'wigglesnacks', 'twirls', 'boops', 'pops', 'sings', 'hugs', 'floats', 'glows', 'flaps', 'mlems', 'dances', 'puddles', 'nomnoms', 'wigglejumps', 'sniffs', 'tumbles', 'slides', 'chirps', 'burps', 'sparkles', 'waddles', 'rambles', 'blinks', 'mews'];
+var defaultAdjectives = ['fluffy', 'silly', 'yummy', 'squishy', 'wobbly', 'magical', 'tiny', 'sleepy', 'wiggly', 'bubbly', 'glittery', 'fuzzy', 'jiggly', 'sparkly', 'giggly', 'crunchy', 'goofy', 'soft', 'mushy', 'sweet', 'loopy', 'floaty', 'bonkers', 'chewy', 'ticklish', 'dreamy', 'pastel', 'cozy', 'teensy', 'grumbly'];
+var defaultTemplates = [
+// 🧁 Tiny
+'Boop!', 'Wiggle achieved.', 'Oops, {noun} everywhere!', 'Tiny {adj} {noun}, big {adj} {noun}.', 'Snuggle initiated with a {adj} {noun}.', '{adj} vibes only, powered by {noun}.', 'No {noun}, no {noun}.', 'Bounce first, {verb} later.', 'Mlem. {verb}. {noun}.', '{noun} go brrr and {verb}.', 'Why not? {noun} did. Then {noun} followed.',
+// 🍬 Simple
+'A {adj} {noun} just {verb} near the {adj} window.', 'That {adj} {noun} stole my {noun}!', 'Look, a {adj} {noun} trying to {verb} again!', 'Every {noun} deserves a {adj} nap.', 'The {adj} {noun} is my {adj} spirit animal.', 'Someone call the {noun}, it’s {verb}ing and {verb}ing again!', 'Don’t touch the {adj} {noun}. It {verb}s loudly.', '{noun} forgot how {noun}s work and just {verb}ed.',
+// 🍩 Averages
+'There once was a {adj} {noun} who loved to {verb} with a {adj} {noun} all day.', 'Apparently, {noun}s are banned from {verb}ing and {verb}ing in the {noun} library.', 'That {adj} noise? Just a {noun} learning to {verb} on a {adj} {noun}.', 'I saw a {adj} {noun} {verb} so hard, it became a {adj} muffin.', 'The {adj} {noun} met a {adj} pickle and everything {verb}ed.', '{noun}s are like {noun}: {adj}, unpredictable, and wiggly.', 'Don’t judge a {adj} {noun} by its ability to {verb}, or by its {adj} hat.', 'All I wanted was peace, but a {adj} {noun} with a {adj} {noun} had other plans.',
+// 🍓 Giants
+'One {adj} morning, a {adj} {noun} decided it was finally time to {verb}, but halfway through, it tripped on a {noun} and turned into a {adj} marshmallow.', 'I tried to be {adj} today, but then a {noun} {verb}ed across my {noun} and typed “asdfgh{noun}” repeatedly.', 'If you think you’ve seen everything, wait until a {adj} {noun} {verb}s on a {noun} wearing {adj} socks with tiny {noun}s.', 'No one ever believed the stories about the ancient {adj} {noun} who could {verb} with such {adj} grace that entire {noun}s turned pink out of embarrassment.', 'A curious {adj} {noun} wandered into a {noun} shop, not knowing that its destiny involved twelve {adj} {noun}s, one rubber {noun}, and a suspiciously quiet {adj} llama.',
+// 🍒 Giants and narratives
+'In a land where every {adj} {noun} was made of pudding and the sky was {adj} whipped cream, one brave {adj} {noun} set out to discover the legendary Spoon of {noun}s, facing obstacles like bouncing {noun}s, sassy {noun}s, and the Great Wobble of the {noun}.', 'Once upon a {adj} time, long before the {noun}s learned to {verb}, there existed a tiny {adj} {noun} who dreamed of swimming in a pool made entirely of {adj} glitter pudding while {verb}ing off-key lullabies to passing {noun}s with monocles.', 'The Council of {noun}s gathered in {adj} secret when the sacred {adj} {noun} started to {verb} uncontrollably, threatening the entire {adj} dessert-based civilization with spontaneous {noun} jiggles and uncontainable {noun} fits across the {noun}.',
+// ☎️ Chats and chats
+'Hey... do you ever wonder if {noun}s dream of {noun}s?', 'Okay but hear me out: what if the {adj} {noun} could actually {verb} backwards?', 'Can we talk about the {noun} that just {verb}ed and vanished?', 'So I was talking to a {noun}, and it told me to stop being {adj}. Rude.', 'Not to alarm you, but there’s a {adj} {noun} behind you doing the {verb}.', 'Why does this {noun} keep staring at me like I owe it pudding?', 'Is this a safe space to admit I accidentally {verb}ed a {noun}?', 'I just walked into the room and someone shouted “{adj} {noun}!” — what did I miss?', 'Wait... we were supposed to bring a {noun}? No one told me!', 'Okay but what if the {adj} {noun} has feelings too?', 'Be honest, do I look like a {noun} that forgot how to {verb}?', 'If I say "oops", do I still have to explain why the {noun} is glowing?', 'I don’t know what’s going on but I brought snacks and a confused {noun}.', 'Do you think pudding knows it’s pudding? Just a thought.', 'Is this about the time I {verb}ed the {adj} {noun} by accident? Because I can explain.',
+// 🌀 Confusions, unexpected entrances, lost people
+'Wait, are we talking about {noun}s or am I on the wrong chat again?', 'What is this group even about? I just saw "pudding" and joined.', 'Hi! I have no idea what’s happening but I’m here and I brought a {noun}.', 'I blinked and now there’s a {adj} {noun} in charge of everything.', 'Can someone please explain why the {noun} is floating and chanting?', 'Okay who gave the {noun} access to glitter and emotional support pickles?', 'I came for a calm discussion and now there’s a {adj} battle between {noun}s.', 'Not sure if I’m early, late, or inside a {noun} dream.', 'I was gone for 3 minutes and now someone’s riding a {noun} into the pudding realm.', 'This isn’t the pudding appreciation group, is it? ...oh no.', 'So... who summoned the {adj} {noun} this time? Be honest.', 'I came here for vibes and stayed for the {noun}s.', 'Does anyone else hear faint giggling or is that just the {adj} {noun} again?', 'I feel like I missed step one, two, and also three of this conversation.', 'All I asked was “what’s up?” and now I’m emotionally attached to a {noun}.',
+// 💬 More interactive chat style
+'Me: "I’ll be normal today." Also me: *{verb}s into a meeting riding a {adj} {noun}*', '"It’s just pudding," they said. "It can’t hurt you," they said. They were wrong.', 'I said one nice thing to a {noun} and now it follows me everywhere.', 'Can we take a moment to appreciate how the {adj} {noun} is just vibing?', 'Who put a tiny hat on the {noun}? Because that’s adorable.', 'My life has been different ever since the {noun} started {verb}ing.', 'Raise your hand if you’ve ever been personally attacked by a {adj} {noun}.', '"Don’t be weird," they said. So I became a {noun} instead.', 'Do {noun}s have feelings? Asking for a {adj} friend.', 'I trusted the {noun} and all I got was a glitter-covered sock.', 'Plot twist: the {adj} {noun} was inside us all along.',
+// Mini cute explosions and chaos
+'The {adj} {noun} {verb} and {verb} all over the {adj} {noun}!', 'Oops! {noun}s {verb}ed into the {adj} {noun} while {verb}ing crazily.', '{adj}, {adj}, and more {adj} {noun}s just {verb}ed by!', 'Why does the {adj} {noun} keep {verb}ing and {verb}ing without stopping?', 'Look! A {adj} {noun}, a {adj} {noun}, and a {noun} all {verb}ing together!', 'Sometimes, the {noun} just {verb}s, then {verb}s again, and never stops being {adj}.',
+// Phrases with repetition and multiple spaces for chaos
+'{noun}, {noun}, and {noun} — all {verb}ing and {verb}ing in a {adj} {noun}.', 'I saw a {adj} {noun} {verb}, then another {noun} {verb}ing with a {adj} {noun}.', 'The {noun} {verb}s {verb} while the {adj} {noun} {verb}s and the {noun} just {verb}s.', 'Can a {adj} {noun} {verb} {verb} without a {adj} {noun} watching?',
+// Phrases with interactions and breaks for fun
+'Whoa! The {adj} {noun} just {verb}ed... and then {verb}ed again!', 'Hey... did you see that {adj} {noun} {verb} over there?', 'Umm, the {noun} is {verb}ing but also {verb}ing and {verb}ing!', 'Lol! {noun}s {verb} so {adj}ly, it’s impossible not to giggle.',
+// Mini exaggerated and cute dialogues
+'"Hey! What’s up?" asked the {adj} {noun}, who {verb}ed loudly.', '"I’m just a {adj} {noun} trying to {verb}, you know?"', '"Did you see the {adj} {noun} that just {verb}ed in the pudding?"', '"No way! The {noun} {verb}s better than me!"', '"Wait, the {adj} {noun} said it would {verb}, but it {verb}ed instead!"',
+// Extensive, crazy and fun narrative phrases
+'Once upon a {adj} {noun}, a group of {adj} {noun}s {verb}ed through the {adj} forest, singing {adj} songs and eating {noun}s made of pudding.', 'The legend tells of a {adj} {noun} who could {verb} faster than any {noun} ever seen, leaving trails of {adj} sparkles behind.', 'Every day, the {adj} {noun} would {verb} around the {adj} meadow, trying to convince the {noun}s to join the grand pudding party.', 'No one knows why the {adj} {noun} suddenly {verb}ed and then {verb}ed again, but everyone agrees it was the cutest thing they ever saw.', 'In the kingdom of {adj} {noun}s, only the bravest {noun} dared to {verb} the giant pudding monster, armed with nothing but {adj} smiles and jellybeans.',
+// Total cases with many placeholders
+'{adj} {noun} {verb} {verb} {verb} {noun} {verb} {adj} {noun} {verb} {noun}!', '{noun} {noun} {verb} {adj} {noun} and then {verb} {verb} the {adj} {noun}.', '{verb} the {adj} {noun}, then {verb} the {noun} while {verb}ing {adj}ly.', 'Can the {adj} {noun} {verb} and {verb} the {adj} {noun} at the same time?', '{noun} {verb} {noun} {verb}, but the {adj} {noun} {verb}s better.',
+// Frases with cute interjections and silly sounds
+'Boop! The {adj} {noun} just {verb}ed in the pudding.', 'Bloop bloop, the {noun} is {verb}ing all over again!', 'Mlem mlem, a {adj} {noun} {verb}s quietly in the corner.', 'Splat! {noun} {verb}ed right on the {adj} {noun}.', 'Yum! A {adj} {noun} just {verb}ed in my mouth.',
+// Phrases with silly questions
+'Do {noun}s really {verb} when nobody’s watching?', 'Why does the {adj} {noun} always {verb} at midnight?', 'Can a {noun} be too {adj} to {verb} properly?', 'Is it normal for a {adj} {noun} to {verb} three times in a row?', 'Who taught the {noun} to {verb} like that?',
+// Frases of confusion and fun surprises
+'Wait, did the {adj} {noun} just {verb} itself?', 'I can’t believe the {noun} {verb}ed into a {adj} {noun}!', 'Suddenly, a {adj} {noun} appeared and started to {verb} wildly.', 'That {noun} was {verb}ing so {adj}ly it broke the pudding meter.', 'Everyone’s talking about the {adj} {noun} that {verb}ed out of nowhere.'];
+/**
+ * @typedef {'mixed'|'readable'|'chaotic'|'natural'} RandomMsgModes
+ * Defines how the message content is generated:
+ * - `mixed`: Combines readable words, gibberish, symbols, emojis, etc.
+ * - `readable`: Focuses on human-readable words only.
+ * - `chaotic`: Pure chaos, mostly gibberish and symbols.
+ * - `natural`: Uses structured grammar templates to form silly but proper sentences.
+ */
+/**
+ * @typedef {'inline'|'end'|'none'} EmojiPlacement
+ * Controls where emojis are placed:
+ * - `inline`: Emojis may appear throughout the text.
+ * - `end`: Emojis appear at the end of lines.
+ * - `none`: No emojis will be used.
+ */
+/**
+ * @typedef {Object} MsgGenConfig
+ * Configuration object for customizing message generation.
+ *
+ * @property {number} minLength - Minimum total length (in characters) of the final generated text.
+ * @property {number} maxLength - Maximum total length (in characters) of the final generated text.
+ * @property {boolean} readable - Whether to favor readable word-like strings.
+ * @property {boolean} useEmojis - Whether emojis are allowed in the generated content.
+ * @property {boolean} includeNumbers - Whether random numbers can appear in the text.
+ * @property {boolean} includeSymbols - Whether random symbols (e.g., !@#) are included.
+ * @property {boolean} allowWeirdSpacing - Enables fun spacing effects (e.g., extra spaces, newlines, uppercase words).
+ *
+ * @property {string[]} emojiSet - List of emojis to choose from. Overrides default set if provided.
+ * @property {string[]} wordSet - List of base words used in readable and mixed modes.
+ *
+ * @property {RandomMsgModes} mode - Determines the overall generation strategy (`mixed`, `readable`, `chaotic`, or `natural`).
+ *
+ * @property {Object} grammar - Grammar configuration used when `mode` is set to `'natural'`.
+ * @property {string[]} grammar.templates - Sentence templates using placeholders (`{noun}`, `{verb}`, `{adj}`).
+ * @property {string[]} grammar.nouns - List of nouns to insert into `{noun}` placeholders.
+ * @property {string[]} grammar.verbs - List of verbs to insert into `{verb}` placeholders.
+ * @property {string[]} grammar.adjectives - List of adjectives to insert into `{adj}` placeholders.
+ *
+ * @property {boolean} repeatWords - If false, avoids repeating the same word within a single generation.
+ * @property {EmojiPlacement} emojiPlacement - Controls how emojis are placed in the text.
+ *
+ * @property {Object} [paragraphs] - Optional paragraph configuration.
+ * @property {number} paragraphs.min - Minimum number of paragraphs to generate.
+ * @property {number} paragraphs.max - Maximum number of paragraphs to generate.
+ *
+ * @property {Object} line - Configuration for line-based generation.
+ * @property {number} line.minLength - Minimum number of characters per line.
+ * @property {number} line.maxLength - Maximum number of characters per line.
+ * @property {number} line.emojiChance - Probability (0 to 1) that a line will end with an emoji when allowed.
+ */
+/**
+ * UltraRandomMsgGen - Phrase templates and word lists
+ *
+ * Portions of the templates, word sets, and phrase structures
+ * were generated and expanded by ChatGPT (OpenAI).
+ *
+ * This content was crafted to produce innocent, playful, and diverse
+ * random messages focused on a pudding-themed, whimsical style.
+ *
+ * @class
+ */
+var UltraRandomMsgGen = /*#__PURE__*/function () {
+  /**
+   * Creates an instance of UltraRandomMsgGen.
+   *
+   * @param {Object} [config={}] - Configuration object to customize the generator.
+   * @param {number} [config.minLength=10] - Minimum total length (in characters) of generated text.
+   * @param {number} [config.maxLength=300] - Maximum total length (in characters) of generated text.
+   * @param {boolean} [config.readable=true] - Whether to generate readable words or random strings.
+   * @param {boolean} [config.useEmojis=true] - Whether to include emojis in the generated text.
+   * @param {boolean} [config.includeNumbers=true] - Whether to include numbers randomly.
+   * @param {boolean} [config.includeSymbols=true] - Whether to include symbols randomly.
+   * @param {boolean} [config.allowWeirdSpacing=false] - Whether to allow weird spacing (newlines, extra spaces, uppercase).
+   * @param {string[]} [config.emojiSet] - Array of emojis to use (defaults to internal emoji set).
+   * @param {string[]} [config.wordSet] - Array of words to use (defaults to internal word set).
+   * @param {RandomMsgModes} [config.mode='mixed'] - Mode of text generation.
+   * @param {Object} [config.grammar] - Grammar configuration with templates and word categories.
+   * @param {string[]} [config.grammar.templates] - Array of string templates with placeholders for generating sentences.
+   * @param {string[]} [config.grammar.nouns] - Array of noun strings for template substitution.
+   * @param {string[]} [config.grammar.verbs] - Array of verb strings for template substitution.
+   * @param {string[]} [config.grammar.adjectives] - Array of adjective strings for template substitution.
+   * @param {boolean} [config.repeatWords=true] - Whether to allow repeating words in the output.
+   * @param {EmojiPlacement} [config.emojiPlacement='inline'] - Placement mode for emojis in generated text.
+   * @param {Object} [config.paragraphs] - Paragraph configuration object or null for single block text.
+   * @param {number} [config.paragraphs.min] - Minimum number of paragraphs to generate.
+   * @param {number} [config.paragraphs.max] - Maximum number of paragraphs to generate.
+   * @param {Object} [config.line] - Line configuration for generated text.
+   * @param {number} [config.line.minLength=20] - Minimum length (characters) per line.
+   * @param {number} [config.line.maxLength=120] - Maximum length (characters) per line.
+   * @param {number} [config.line.emojiChance=0.3] - Probability (0–1) of placing emoji per line.
+   */
+  function UltraRandomMsgGen() {
+    var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    _classCallCheck(this, UltraRandomMsgGen);
+    /** @type {MsgGenConfig} */
+    _defineProperty(this, "config", {
+      minLength: 10,
+      maxLength: 300,
+      readable: true,
+      useEmojis: true,
+      includeNumbers: true,
+      includeSymbols: true,
+      allowWeirdSpacing: false,
+      emojiSet: [],
+      wordSet: [],
+      mode: 'mixed',
+      // 'mixed', 'readable', 'chaotic'
+      grammar: {
+        templates: [],
+        nouns: [],
+        verbs: [],
+        adjectives: []
+      },
+      repeatWords: true,
+      emojiPlacement: 'inline',
+      // 'inline' | 'end' | 'none'
+      line: {
+        minLength: 20,
+        maxLength: 120,
+        emojiChance: 0.3 // 30% chance per line
+      }
+    });
+    this.symbols = '!@#$%^&*()-_=+[]{}|;:,.<>?/\\~'.split('');
+    var minLength = config.minLength,
+      maxLength = config.maxLength,
+      readable = config.readable,
+      useEmojis = config.useEmojis,
+      includeNumbers = config.includeNumbers,
+      includeSymbols = config.includeSymbols,
+      allowWeirdSpacing = config.allowWeirdSpacing,
+      emojiSet = config.emojiSet,
+      wordSet = config.wordSet,
+      mode = config.mode,
+      grammar = config.grammar,
+      repeatWords = config.repeatWords,
+      emojiPlacement = config.emojiPlacement,
+      paragraphs = config.paragraphs,
+      line = config.line;
+    // Validations
+    if (minLength !== undefined && (!Number.isInteger(minLength) || minLength < 1)) {
+      throw new TypeError('config.minLength must be an integer >= 1');
+    }
+    if (maxLength !== undefined && (!Number.isInteger(maxLength) || maxLength < 1)) {
+      throw new TypeError('config.maxLength must be an integer >= 1');
+    }
+    if (minLength !== undefined && maxLength !== undefined && minLength > maxLength) {
+      throw new RangeError('config.minLength cannot be greater than config.maxLength');
+    }
+    if (readable !== undefined && typeof readable !== 'boolean') {
+      throw new TypeError('config.readable must be a boolean');
+    }
+    if (useEmojis !== undefined && typeof useEmojis !== 'boolean') {
+      throw new TypeError('config.useEmojis must be a boolean');
+    }
+    if (includeNumbers !== undefined && typeof includeNumbers !== 'boolean') {
+      throw new TypeError('config.includeNumbers must be a boolean');
+    }
+    if (includeSymbols !== undefined && typeof includeSymbols !== 'boolean') {
+      throw new TypeError('config.includeSymbols must be a boolean');
+    }
+    if (allowWeirdSpacing !== undefined && typeof allowWeirdSpacing !== 'boolean') {
+      throw new TypeError('config.allowWeirdSpacing must be a boolean');
+    }
+    if (emojiSet !== undefined && !Array.isArray(emojiSet)) {
+      throw new TypeError('config.emojiSet must be an array of strings');
+    }
+    if (wordSet !== undefined && !Array.isArray(wordSet)) {
+      throw new TypeError('config.wordSet must be an array of strings');
+    }
+    if (mode !== undefined && !['mixed', 'readable', 'chaotic', 'natural'].includes(mode)) {
+      throw new RangeError('config.mode must be one of: "mixed", "readable", "chaotic", "natural');
+    }
+    if (grammar !== undefined) {
+      if (_typeof(grammar) !== 'object' || grammar === null) {
+        throw new TypeError('config.grammar must be an object');
+      }
+      var templates = grammar.templates,
+        nouns = grammar.nouns,
+        verbs = grammar.verbs,
+        adjectives = grammar.adjectives;
+      if (templates !== undefined && !Array.isArray(templates)) {
+        throw new TypeError('config.grammar.templates must be an array of strings');
+      }
+      if (nouns !== undefined && !Array.isArray(nouns)) {
+        throw new TypeError('config.grammar.nouns must be an array of strings');
+      }
+      if (verbs !== undefined && !Array.isArray(verbs)) {
+        throw new TypeError('config.grammar.verbs must be an array of strings');
+      }
+      if (adjectives !== undefined && !Array.isArray(adjectives)) {
+        throw new TypeError('config.grammar.adjectives must be an array of strings');
+      }
+    }
+    if (repeatWords !== undefined && typeof repeatWords !== 'boolean') {
+      throw new TypeError('config.repeatWords must be a boolean');
+    }
+    if (emojiPlacement !== undefined && !['inline', 'end', 'none'].includes(emojiPlacement)) {
+      throw new RangeError('config.emojiPlacement must be one of: "inline", "end", "none"');
+    }
+    if (paragraphs !== undefined) {
+      if (_typeof(paragraphs) !== 'object') {
+        throw new TypeError('config.paragraphs must be an object or null');
+      }
+      var min = paragraphs.min,
+        max = paragraphs.max;
+      if (min !== undefined && (!Number.isInteger(min) || min < 1)) {
+        throw new TypeError('config.paragraphs.min must be an integer >= 1');
+      }
+      if (max !== undefined && (!Number.isInteger(max) || max < 1)) {
+        throw new TypeError('config.paragraphs.max must be an integer >= 1');
+      }
+      if (min !== undefined && max !== undefined && min > max) {
+        throw new RangeError('config.paragraphs.min cannot be greater than config.paragraphs.max');
+      }
+    }
+    if (line !== undefined) {
+      if (_typeof(line) !== 'object' || line === null) {
+        throw new TypeError('config.line must be an object');
+      }
+      var lineMin = line.minLength,
+        lineMax = line.maxLength,
+        emojiChance = line.emojiChance;
+      if (lineMin !== undefined && (!Number.isInteger(lineMin) || lineMin < 1)) {
+        throw new TypeError('config.line.minLength must be an integer >= 1');
+      }
+      if (lineMax !== undefined && (!Number.isInteger(lineMax) || lineMax < 1)) {
+        throw new TypeError('config.line.maxLength must be an integer >= 1');
+      }
+      if (lineMin !== undefined && lineMax !== undefined && lineMin > lineMax) {
+        throw new RangeError('config.line.minLength cannot be greater than config.line.maxLength');
+      }
+      if (emojiChance !== undefined && (typeof emojiChance !== 'number' || emojiChance < 0 || emojiChance > 1)) {
+        throw new RangeError('config.line.emojiChance must be a number between 0 and 1');
+      }
+    }
+    this.config.emojiSet = [].concat(defaultEmojis);
+    this.config.wordSet = [].concat(defaultWords);
+    this.config.grammar.templates = [].concat(defaultTemplates);
+    this.config.grammar.nouns = [].concat(defaultNouns);
+    this.config.grammar.verbs = [].concat(defaultVerbs);
+    this.config.grammar.adjectives = [].concat(defaultAdjectives);
+    Object.assign(this.config, config);
+  }
+  /**
+   * Merges new configuration values into the current instance.
+   * @param {Object} newConfig - Object with one or more configuration overrides.
+   * @returns {UltraRandomMsgGen} - The instance for chaining.
+   */
+  return _createClass(UltraRandomMsgGen, [{
+    key: "configure",
+    value: function configure() {
+      var newConfig = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      Object.assign(this.config, newConfig);
+      return this;
+    }
+    /**
+     * Replaces the entire list of grammar templates.
+     * @param {...string[]} templates - One or more arrays or strings containing sentence templates.
+     * @returns {UltraRandomMsgGen} - The instance for chaining.
+     */
+  }, {
+    key: "setGrammarTemplates",
+    value: function setGrammarTemplates() {
+      for (var _len = arguments.length, templates = new Array(_len), _key = 0; _key < _len; _key++) {
+        templates[_key] = arguments[_key];
+      }
+      this.config.grammar.templates = templates.flat();
+      return this;
+    }
+    /**
+     * Adds new grammar templates to the existing list.
+     * @param {...string[]} templates - One or more arrays or strings containing sentence templates.
+     * @returns {UltraRandomMsgGen} - The instance for chaining.
+     */
+  }, {
+    key: "addGrammarTemplates",
+    value: function addGrammarTemplates() {
+      var _this$config$grammar$;
+      for (var _len2 = arguments.length, templates = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        templates[_key2] = arguments[_key2];
+      }
+      (_this$config$grammar$ = this.config.grammar.templates).push.apply(_this$config$grammar$, _toConsumableArray(templates.flat()));
+      return this;
+    }
+    /**
+     * Replaces the list of noun words used in grammar templates.
+     * @param {...string[]} nouns - One or more arrays or strings of nouns.
+     * @returns {UltraRandomMsgGen} - The instance for chaining.
+     */
+  }, {
+    key: "setGrammarNouns",
+    value: function setGrammarNouns() {
+      for (var _len3 = arguments.length, nouns = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+        nouns[_key3] = arguments[_key3];
+      }
+      this.config.grammar.nouns = nouns.flat();
+      return this;
+    }
+    /**
+     * Adds noun words to the existing list used in grammar templates.
+     * @param {...string[]} nouns - One or more arrays or strings of nouns.
+     * @returns {UltraRandomMsgGen} - The instance for chaining.
+     */
+  }, {
+    key: "addGrammarNouns",
+    value: function addGrammarNouns() {
+      var _this$config$grammar$2;
+      for (var _len4 = arguments.length, nouns = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+        nouns[_key4] = arguments[_key4];
+      }
+      (_this$config$grammar$2 = this.config.grammar.nouns).push.apply(_this$config$grammar$2, _toConsumableArray(nouns.flat()));
+      return this;
+    }
+    /**
+     * Replaces the list of verb words used in grammar templates.
+     * @param {...string[]} verbs - One or more arrays or strings of verbs.
+     * @returns {UltraRandomMsgGen} - The instance for chaining.
+     */
+  }, {
+    key: "setGrammarVerbs",
+    value: function setGrammarVerbs() {
+      for (var _len5 = arguments.length, verbs = new Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
+        verbs[_key5] = arguments[_key5];
+      }
+      this.config.grammar.verbs = verbs.flat();
+      return this;
+    }
+    /**
+     * Adds verb words to the existing list used in grammar templates.
+     * @param {...string[]} verbs - One or more arrays or strings of verbs.
+     * @returns {UltraRandomMsgGen} - The instance for chaining.
+     */
+  }, {
+    key: "addGrammarVerbs",
+    value: function addGrammarVerbs() {
+      var _this$config$grammar$3;
+      for (var _len6 = arguments.length, verbs = new Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {
+        verbs[_key6] = arguments[_key6];
+      }
+      (_this$config$grammar$3 = this.config.grammar.verbs).push.apply(_this$config$grammar$3, _toConsumableArray(verbs.flat()));
+      return this;
+    }
+    /**
+     * Replaces the list of adjective words used in grammar templates.
+     * @param {...string[]} adjectives - One or more arrays or strings of adjectives.
+     * @returns {UltraRandomMsgGen} - The instance for chaining.
+     */
+  }, {
+    key: "setGrammarAdjectives",
+    value: function setGrammarAdjectives() {
+      for (var _len7 = arguments.length, adjectives = new Array(_len7), _key7 = 0; _key7 < _len7; _key7++) {
+        adjectives[_key7] = arguments[_key7];
+      }
+      this.config.grammar.adjectives = adjectives.flat();
+      return this;
+    }
+    /**
+     * Adds adjective words to the existing list used in grammar templates.
+     * @param {...string[]} adjectives - One or more arrays or strings of adjectives.
+     * @returns {UltraRandomMsgGen} - The instance for chaining.
+     */
+  }, {
+    key: "addGrammarAdjectives",
+    value: function addGrammarAdjectives() {
+      var _this$config$grammar$4;
+      for (var _len8 = arguments.length, adjectives = new Array(_len8), _key8 = 0; _key8 < _len8; _key8++) {
+        adjectives[_key8] = arguments[_key8];
+      }
+      (_this$config$grammar$4 = this.config.grammar.adjectives).push.apply(_this$config$grammar$4, _toConsumableArray(adjectives.flat()));
+      return this;
+    }
+    /**
+     * Removes specific grammar templates from the current list.
+     * @param {...string[]} templates - One or more arrays or strings of templates to remove.
+     * @returns {UltraRandomMsgGen} - The instance for chaining.
+     */
+  }, {
+    key: "removeGrammarTemplates",
+    value: function removeGrammarTemplates() {
+      for (var _len9 = arguments.length, templates = new Array(_len9), _key9 = 0; _key9 < _len9; _key9++) {
+        templates[_key9] = arguments[_key9];
+      }
+      var removeSet = new Set(templates.flat());
+      this.config.grammar.templates = this.config.grammar.templates.filter(function (t) {
+        return !removeSet.has(t);
+      });
+      return this;
+    }
+    /**
+     * Removes specific noun words from the grammar noun list.
+     * @param {...string[]} nouns - One or more arrays or strings of nouns to remove.
+     * @returns {UltraRandomMsgGen} - The instance for chaining.
+     */
+  }, {
+    key: "removeGrammarNouns",
+    value: function removeGrammarNouns() {
+      for (var _len0 = arguments.length, nouns = new Array(_len0), _key0 = 0; _key0 < _len0; _key0++) {
+        nouns[_key0] = arguments[_key0];
+      }
+      var removeSet = new Set(nouns.flat());
+      this.config.grammar.nouns = this.config.grammar.nouns.filter(function (n) {
+        return !removeSet.has(n);
+      });
+      return this;
+    }
+    /**
+     * Removes specific verb words from the grammar verb list.
+     * @param {...string[]} verbs - One or more arrays or strings of verbs to remove.
+     * @returns {UltraRandomMsgGen} - The instance for chaining.
+     */
+  }, {
+    key: "removeGrammarVerbs",
+    value: function removeGrammarVerbs() {
+      for (var _len1 = arguments.length, verbs = new Array(_len1), _key1 = 0; _key1 < _len1; _key1++) {
+        verbs[_key1] = arguments[_key1];
+      }
+      var removeSet = new Set(verbs.flat());
+      this.config.grammar.verbs = this.config.grammar.verbs.filter(function (v) {
+        return !removeSet.has(v);
+      });
+      return this;
+    }
+    /**
+     * Removes specific adjective words from the grammar adjective list.
+     * @param {...string[]} adjectives - One or more arrays or strings of adjectives to remove.
+     * @returns {UltraRandomMsgGen} - The instance for chaining.
+     */
+  }, {
+    key: "removeGrammarAdjectives",
+    value: function removeGrammarAdjectives() {
+      for (var _len10 = arguments.length, adjectives = new Array(_len10), _key10 = 0; _key10 < _len10; _key10++) {
+        adjectives[_key10] = arguments[_key10];
+      }
+      var removeSet = new Set(adjectives.flat());
+      this.config.grammar.adjectives = this.config.grammar.adjectives.filter(function (a) {
+        return !removeSet.has(a);
+      });
+      return this;
+    }
+    /**
+     * Replaces the entire word set used in readable/mixed modes.
+     * @param {...string[]} words - One or more arrays or strings of words.
+     * @returns {UltraRandomMsgGen} - The instance for chaining.
+     */
+  }, {
+    key: "setWords",
+    value: function setWords() {
+      for (var _len11 = arguments.length, words = new Array(_len11), _key11 = 0; _key11 < _len11; _key11++) {
+        words[_key11] = arguments[_key11];
+      }
+      this.config.wordSet = words.flat();
+      return this;
+    }
+    /**
+     * Adds new words to the word set used in readable/mixed modes.
+     * @param {...string[]} words - One or more arrays or strings of words.
+     * @returns {UltraRandomMsgGen} - The instance for chaining.
+     */
+  }, {
+    key: "addWords",
+    value: function addWords() {
+      var _this$config$wordSet;
+      for (var _len12 = arguments.length, words = new Array(_len12), _key12 = 0; _key12 < _len12; _key12++) {
+        words[_key12] = arguments[_key12];
+      }
+      (_this$config$wordSet = this.config.wordSet).push.apply(_this$config$wordSet, _toConsumableArray(words.flat()));
+      return this;
+    }
+    /**
+     * Removes specific words from the word set.
+     * @param {...string[]} words - Words to be removed.
+     * @returns {UltraRandomMsgGen} - The instance for chaining.
+     */
+  }, {
+    key: "removeWords",
+    value: function removeWords() {
+      for (var _len13 = arguments.length, words = new Array(_len13), _key13 = 0; _key13 < _len13; _key13++) {
+        words[_key13] = arguments[_key13];
+      }
+      var removeSet = new Set(words.flat());
+      this.config.wordSet = this.config.wordSet.filter(function (word) {
+        return !removeSet.has(word);
+      });
+      return this;
+    }
+    /**
+     * Replaces the emoji set used in generated output.
+     * @param {...string[]} emojis - One or more arrays or strings of emojis.
+     * @returns {UltraRandomMsgGen} - The instance for chaining.
+     */
+  }, {
+    key: "setEmojis",
+    value: function setEmojis() {
+      for (var _len14 = arguments.length, emojis = new Array(_len14), _key14 = 0; _key14 < _len14; _key14++) {
+        emojis[_key14] = arguments[_key14];
+      }
+      this.config.emojiSet = emojis.flat();
+      return this;
+    }
+    /**
+     * Adds new emojis to the emoji set.
+     * @param {...string[]} emojis - One or more arrays or strings of emojis.
+     * @returns {UltraRandomMsgGen} - The instance for chaining.
+     */
+  }, {
+    key: "addEmojis",
+    value: function addEmojis() {
+      var _this$config$emojiSet;
+      for (var _len15 = arguments.length, emojis = new Array(_len15), _key15 = 0; _key15 < _len15; _key15++) {
+        emojis[_key15] = arguments[_key15];
+      }
+      (_this$config$emojiSet = this.config.emojiSet).push.apply(_this$config$emojiSet, _toConsumableArray(emojis.flat()));
+      return this;
+    }
+    /**
+     * Removes specific emojis from the emoji set.
+     * @param {...string[]} emojis - Emojis to be removed.
+     * @returns {UltraRandomMsgGen} - The instance for chaining.
+     */
+  }, {
+    key: "removeEmojis",
+    value: function removeEmojis() {
+      for (var _len16 = arguments.length, emojis = new Array(_len16), _key16 = 0; _key16 < _len16; _key16++) {
+        emojis[_key16] = arguments[_key16];
+      }
+      var removeSet = new Set(emojis.flat());
+      this.config.emojiSet = this.config.emojiSet.filter(function (emoji) {
+        return !removeSet.has(emoji);
+      });
+      return this;
+    }
+    /**
+     * Returns a random item from an array.
+     * @private
+     * @param {string[]} array - Array to pick from.
+     * @returns {string} - Random item from array.
+     */
+  }, {
+    key: "_getRandomItem",
+    value: function _getRandomItem(array) {
+      return array[Math.floor(Math.random() * array.length)];
+    }
+    /**
+     * Generates a single random content chunk based on the mode and settings.
+     * @private
+     * @returns {string} - A chunk (word, emoji, symbol, number, etc.).
+     */
+  }, {
+    key: "_generateChunk",
+    value: function _generateChunk() {
+      var _this$config = this.config,
+        wordSet = _this$config.wordSet,
+        emojiSet = _this$config.emojiSet,
+        includeNumbers = _this$config.includeNumbers,
+        includeSymbols = _this$config.includeSymbols,
+        useEmojis = _this$config.useEmojis,
+        readable = _this$config.readable,
+        mode = _this$config.mode,
+        emojiPlacement = _this$config.emojiPlacement;
+      if (mode === 'natural') {
+        return this._generateNaturalSentence();
+      }
+      var pools = [];
+      if (readable || mode === 'readable' || mode === 'mixed') {
+        pools.push(this._getRandomItem(wordSet));
+      }
+      if (mode === 'chaotic' || mode === 'mixed') {
+        pools.push(Math.random().toString(36).slice(2));
+      }
+      if (includeNumbers) {
+        pools.push(Math.floor(Math.random() * 99999).toString());
+      }
+      if (includeSymbols) {
+        pools.push(this._getRandomItem(this.symbols));
+      }
+      if (emojiPlacement === 'inline' && useEmojis && emojiSet.length) {
+        pools.push(this._getRandomItem(emojiSet));
+      }
+      return this._getRandomItem(pools);
+    }
+    /**
+     * Generates a natural sentence by replacing placeholders in a template.
+     * @private
+     * @returns {string} - A generated sentence.
+     */
+  }, {
+    key: "_generateNaturalSentence",
+    value: function _generateNaturalSentence() {
+      var _this = this;
+      var _this$config$grammar = this.config.grammar,
+        templates = _this$config$grammar.templates,
+        nouns = _this$config$grammar.nouns,
+        verbs = _this$config$grammar.verbs,
+        adjectives = _this$config$grammar.adjectives;
+      var template = this._getRandomItem(templates);
+      return template.replace(/{noun}/g, function () {
+        return _this._getRandomItem(nouns);
+      }).replace(/{verb}/g, function () {
+        return _this._getRandomItem(verbs);
+      }).replace(/{adj}/g, function () {
+        return _this._getRandomItem(adjectives);
+      });
+    }
+    /**
+     * Generates a single line of text with target length and rules.
+     * @private
+     * @param {number} targetLength - Target character length for the line.
+     * @param {Set<string>} [seenWords] - Set of already used words (for avoiding repeats).
+     * @returns {string} - A generated line.
+     */
+  }, {
+    key: "_generateLine",
+    value: function _generateLine(targetLength, seenWords) {
+      var _this$config2 = this.config,
+        allowWeirdSpacing = _this$config2.allowWeirdSpacing,
+        repeatWords = _this$config2.repeatWords,
+        readable = _this$config2.readable,
+        emojiSet = _this$config2.emojiSet,
+        useEmojis = _this$config2.useEmojis,
+        emojiPlacement = _this$config2.emojiPlacement,
+        line = _this$config2.line;
+      var parts = [];
+      seenWords !== null && seenWords !== void 0 ? seenWords : seenWords = new Set();
+      while (parts.join(' ').length < targetLength) {
+        var chunk = this._generateChunk();
+        if (!repeatWords && seenWords.has(chunk)) continue;
+        seenWords.add(chunk);
+        if (allowWeirdSpacing) {
+          if (Math.random() < 0.1) chunk = '\n' + chunk;
+          if (Math.random() < 0.1) chunk = '   ' + chunk;
+          if (Math.random() < 0.05) chunk = chunk.toUpperCase();
+        }
+        parts.push(chunk);
+      }
+      var lineText = parts.join(readable ? ' ' : '');
+      if (emojiPlacement === 'end' && useEmojis && emojiSet.length && Math.random() < ((line === null || line === void 0 ? void 0 : line.emojiChance) || 0)) {
+        lineText += ' ' + this._getRandomItem(emojiSet);
+      }
+      return lineText;
+    }
+    /**
+     * Generates lines to form a paragraph based on total length.
+     * @private
+     * @param {number} totalLength - Total target character count for the paragraph.
+     * @returns {string[]} - Array of lines that form the paragraph.
+     */
+  }, {
+    key: "_generateParagraphLines",
+    value: function _generateParagraphLines(totalLength) {
+      var line = this.config.line;
+      var lines = [];
+      var seenWords = new Set();
+      var currentTotal = 0;
+      while (currentTotal < totalLength) {
+        var lineLength = Math.floor(Math.random() * (line.maxLength - line.minLength + 1) + line.minLength);
+        var adjustedLength = Math.min(lineLength, totalLength - currentTotal);
+        lines.push(this._generateLine(adjustedLength, seenWords));
+        currentTotal += adjustedLength;
+      }
+      return lines;
+    }
+    /**
+     * Generates the final random message, which can be a paragraph or block of lines.
+     * Uses full configuration rules (grammar, symbols, emojis, etc).
+     * @returns {string} - A full generated message.
+     */
+  }, {
+    key: "generate",
+    value: function generate() {
+      var _this$config3 = this.config,
+        minLength = _this$config3.minLength,
+        maxLength = _this$config3.maxLength,
+        paragraphs = _this$config3.paragraphs;
+      var totalLength = Math.floor(Math.random() * (maxLength - minLength + 1)) + minLength;
+      if (paragraphs && _typeof(paragraphs) === 'object') {
+        var paraCount = Math.floor(Math.random() * (paragraphs.max - paragraphs.min + 1)) + paragraphs.min;
+        var approxLength = Math.floor(totalLength / paraCount);
+        var paragraphsArray = [];
+        for (var i = 0; i < paraCount; i++) {
+          var lines = this._generateParagraphLines(approxLength);
+          paragraphsArray.push(lines.join('\n'));
+        }
+        return paragraphsArray.join('\n\n');
+      }
+      return this._generateParagraphLines(totalLength).join('\n');
+    }
+  }]);
+}();
+/** @type {string[]} */
+_defineProperty(UltraRandomMsgGen, "defaultWords", defaultWords);
+/** @type {string[]} */
+_defineProperty(UltraRandomMsgGen, "defaultEmojis", defaultEmojis);
+/** @type {string[]} */
+_defineProperty(UltraRandomMsgGen, "defaultNouns", defaultNouns);
+/** @type {string[]} */
+_defineProperty(UltraRandomMsgGen, "defaultVerbs", defaultVerbs);
+/** @type {string[]} */
+_defineProperty(UltraRandomMsgGen, "defaultAdjectives", defaultAdjectives);
+/** @type {string[]} */
+_defineProperty(UltraRandomMsgGen, "defaultTemplates", defaultTemplates);
+var _default = exports["default"] = UltraRandomMsgGen;
+
+},{}],174:[function(require,module,exports){
 (function (process){(function (){
 "use strict";
 
@@ -39786,6 +42121,6 @@ tippy.setDefaultProps({
 var _default = exports["default"] = tippy;
 
 }).call(this)}).call(this,require('_process'))
-},{"@popperjs/core":27,"_process":97}],173:[function(require,module,exports){
+},{"@popperjs/core":27,"_process":97}],175:[function(require,module,exports){
 module.exports=function(e){var r={};function t(n){if(r[n])return r[n].exports;var a=r[n]={i:n,l:!1,exports:{}};return e[n].call(a.exports,a,a.exports,t),a.l=!0,a.exports}return t.m=e,t.c=r,t.d=function(e,r,n){t.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:n})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,r){if(1&r&&(e=t(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(t.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var a in e)t.d(n,a,function(r){return e[r]}.bind(null,a));return n},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},t.p="",t(t.s=0)}([function(e,r,t){"use strict";t.r(r),t.d(r,"validateHTMLColorName",(function(){return l})),t.d(r,"validateHTMLColorSpecialName",(function(){return i})),t.d(r,"validateHTMLColorHex",(function(){return u})),t.d(r,"validateHTMLColorRgb",(function(){return g})),t.d(r,"validateHTMLColorHsl",(function(){return y})),t.d(r,"validateHTMLColorHwb",(function(){return L})),t.d(r,"validateHTMLColorLab",(function(){return S})),t.d(r,"validateHTMLColorLch",(function(){return m})),t.d(r,"validateHTMLColor",(function(){return G}));const n=e=>e&&"string"==typeof e,a=["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenrod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","DarkOrange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","Goldenrod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenrodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquamarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenrod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","RebeccaPurple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"],o=["currentColor","inherit","transparent"],l=e=>{let r=!1;return n(e)&&a.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},i=e=>{let r=!1;return n(e)&&o.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},u=e=>{if(n(e)){const r=/^#([\da-f]{3}){1,2}$|^#([\da-f]{4}){1,2}$/i;return e&&r.test(e)}return!1},d="(([\\d]{0,5})((\\.([\\d]{1,5}))?))",s=`(${d}%)`,c="(([0-9]|[1-9][0-9]|100)%)",f=`(${c}|(0?((\\.([\\d]{1,5}))?))|1)`,h=`([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?)([\\s]{1,5})${`(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?`}([\\s]{0,5})\\)`,$="(-?(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360)(deg)?)",g=e=>{if(n(e)){const r="([\\s]{0,5})([\\d]{1,5})%?([\\s]{0,5}),?",t="((([\\s]{0,5}),?([\\s]{0,5}))|(([\\s]{1,5})))",n=new RegExp(`^(rgb)a?\\(${`${r}${t}`}${`${r}${t}`}${`${r}${t}`}(${"(\\/?([\\s]{0,5})(0?\\.?([\\d]{1,5})%?([\\s]{0,5}))?|1|0)"})?\\)$`);return e&&n.test(e)}return!1},y=e=>{if(n(e)){const r=new RegExp(`^(hsl)a?\\((([\\s]{0,5})(${$}|${"(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-9][0-9]|400)grad)"}|${"((([0-5])?\\.([\\d]{1,5})|6\\.([0-9]|1[0-9]|2[0-8])|[0-6])rad)"}|${"((0?((\\.([\\d]{1,5}))?)|1)turn)"})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?|,?)([\\s]{0,5})(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?\\)$`);return e&&r.test(e)}return!1},L=e=>{if(n(e)){const r=new RegExp(`^(hwb\\(([\\s]{0,5})${$}([\\s]{1,5}))((0|${c})([\\s]{1,5}))((0|${c})${h}$`);return e&&r.test(e)}return!1},S=e=>{if(n(e)){const r="(-?(([0-9]|[1-9][0-9]|1[0-5][0-9])((\\.([\\d]{1,5}))?)?|160))",t=new RegExp(`^(lab\\(([\\s]{0,5})${s}([\\s]{1,5})${r}([\\s]{1,5})${r}${h}$`);return e&&t.test(e)}return!1},m=e=>{if(n(e)){const r="((([0-9]|[1-9][0-9])?((\\.([\\d]{1,5}))?)|100)(%)?)",t=""+d,n=`((${$})|(0|${f})|(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360))`,a=`(\\/([\\s]{0,5})${f})`,o=new RegExp(`^lch\\(${`(([\\s]{0,5})${r}([\\s]{1,5})${t}([\\s]{1,5})${n}([\\s]{0,5})(${a})?)`}\\)$`);return e&&o.test(e)}return!1},G=e=>!!(e&&u(e)||g(e)||y(e)||L(e)||S(e)||m(e));r.default=e=>!!(e&&u(e)||l(e)||i(e)||g(e)||y(e)||L(e)||S(e)||m(e))}]);
 },{}]},{},[1]);
