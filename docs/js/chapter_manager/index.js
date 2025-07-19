@@ -351,7 +351,7 @@ const openChapterMenu = (params = {}) => {
         insertTableData(table, tPage);
 
         // Scroll
-        tinyLib.goToByScroll($('#app'), 0);
+        TinyHtml.setWinScrollTop(TinyHtml.getById('app').offset().top);
         tinyPag[where][1].bootstrapPaginator('show', page);
         $(window).trigger('scroll');
       });
@@ -420,7 +420,7 @@ const openChapterMenu = (params = {}) => {
         insertTableData(table, pagination);
       }
 
-      tinyLib.goToByScroll($('#app'), 0);
+      TinyHtml.setWinScrollTop(TinyHtml.getById('app').offset().top);
       $(window).trigger('scroll');
     };
 
@@ -495,7 +495,10 @@ const openChapterMenu = (params = {}) => {
 
     // Complete
     $(window).trigger('scroll');
-    if (line !== null) tinyLib.goToByScroll($('#markdown-read [line="' + line + '"]'), 0);
+    if (line !== null) {
+      const tinyLine = TinyHtml.query('#markdown-read [line="' + line + '"]');
+      if (tinyLine) TinyHtml.setWinScrollTop(tinyLine.offset().top);
+    }
     rainMode.start();
     return;
   };

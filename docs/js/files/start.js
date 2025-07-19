@@ -737,7 +737,7 @@ const openMDFile = function (url, isMain = false) {
             console.log(`${url.endsWith('.md') ? 'MD' : 'HTML'} File opened successfully!`);
             insertMarkdownFile(fileLines, metadata, isMain, url.endsWith('.md') ? false : true);
 
-            tinyLib.goToByScrollTop(0);
+            TinyHtml.setWinScrollTop(0);
             $.LoadingOverlay('hide');
             urlUpdate(url, title);
           } catch (err) {

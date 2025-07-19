@@ -13,7 +13,7 @@
         "example:tiny-chat-timedmap": "npx babel-node server/tiny-chat/old/examples/TimedMap.js",
         "install": "yarn build-bundle",
         "build-bundle": "browserify build/bundle/require -o docs/bundle.js && browserify build/bundle/import -p esmify --ignore fs --ignore fs/promises > docs/bundle2.js && npx babel-node build/bundle/css && npx babel-node build/bundle/files",
-        "fix:prettier": "prettier --write ./docs/js/chapter_manager/* && prettier --write ./docs/js/files/* && prettier --write ./docs/js/ai/* && prettier --write ./docs/js/pwa/* && prettier --write ./docs/js/crypto/* && prettier --write ./server/tiny-chat/*",
+        "fix:prettier": "prettier --write ./docs/js/chapter_manager/* && prettier --write ./docs/js/files/* && prettier --write ./docs/js/ai/* && prettier --write ./docs/js/pwa/* && prettier --write ./server/tiny-chat/*",
         "update-base64": "node ./build/base64",
         "update-chapter": "node ./build/chapter",
         "update-characters": "node ./build/characters",
