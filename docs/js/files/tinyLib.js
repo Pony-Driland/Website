@@ -226,28 +226,6 @@ alert = function (text, title = 'Browser Warning!') {
   });
 };
 
-// This is a functions that scrolls to #{blah}link
-tinyLib.goToByScroll = function (id, speed = 'slow') {
-  const offset = id.offset();
-  if (offset) {
-    $('html,body').animate(
-      {
-        scrollTop: offset.top,
-      },
-      speed,
-    );
-  }
-};
-
-tinyLib.goToByScrollTop = function (speed = 'slow') {
-  $('html,body').animate(
-    {
-      scrollTop: 0,
-    },
-    speed,
-  );
-};
-
 // Remove AI tags
 tinyLib.removeAiTags = function (str) {
   return str.replace(/\<ai\>|\<\/ai\>/g, '');
