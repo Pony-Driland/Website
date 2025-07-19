@@ -139,7 +139,7 @@ const storyDialogue = {
     if (Array.isArray(data.nsfw)) {
       let nsfwValue = false;
       for (const item in data.nsfw) {
-        nsfwValue = tinyLib.booleanCheck(localStorage.getItem('NSFW' + data.nsfw[item]));
+        nsfwValue = TinyHtml.boolCheck(localStorage.getItem('NSFW' + data.nsfw[item]));
         if (nsfwValue) {
           break;
         }
@@ -758,7 +758,7 @@ const openChapterMenu = (params = {}) => {
                         // Add NSFW Item
                         if (storyCfg.nsfw[NSFWITEM]) {
                           // Get Value
-                          let nsfwValue = tinyLib.booleanCheck(
+                          let nsfwValue = TinyHtml.boolCheck(
                             localStorage.getItem('NSFW' + NSFWITEM),
                           );
 
