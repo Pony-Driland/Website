@@ -193,30 +193,6 @@ tinyLib.formGroupCheck = function (data) {
   );
 };
 
-$.fn.selectRange = function (start, end) {
-  if (typeof start === 'number') {
-    if (typeof end !== 'number') {
-      end = start;
-    }
-    return this.each(function () {
-      if (this.setSelectionRange) {
-        this.trigger('focus');
-        this.setSelectionRange(start, end);
-      } else if (this.createTextRange) {
-        var range = this.createTextRange();
-        range.collapse(true);
-        range.moveEnd('character', end);
-        range.moveStart('character', start);
-        range.select();
-      }
-    });
-  } else {
-    const start = this[0].selectionStart;
-    const end = this[0].selectionEnd;
-    return { start, end };
-  }
-};
-
 // Alert
 alert = function (text, title = 'Browser Warning!') {
   return tinyLib.modal({

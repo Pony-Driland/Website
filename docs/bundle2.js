@@ -43,6 +43,7 @@ global.window.tinyNotification = new _tinyEssentials.TinyNotifications({
 
 // Imports
 (0, _tinyEssentials.addAiMarkerShortcut)();
+global.window.TinyTextRangeEditor = _tinyEssentials.TinyTextRangeEditor;
 global.window.TinyDomReadyManager = _tinyEssentials.TinyDomReadyManager;
 global.window.TinyAfterScrollWatcher = _tinyEssentials.TinyAfterScrollWatcher;
 global.window.TinyHtml = _tinyEssentials.TinyHtml;
@@ -67,7 +68,7 @@ global.window.Pizzicato = _pizzicato["default"];
 global.window.PhotoSwipeLightbox = _photoswipe["default"];
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"for-promise":85,"jsstore":91,"photoswipe":95,"pizzicato":96,"socket.io-client":99,"tiny-ai-api":110,"tiny-dices":133,"tiny-essentials":160,"tippy.js":174,"validate-color":175}],2:[function(require,module,exports){
+},{"for-promise":85,"jsstore":91,"photoswipe":95,"pizzicato":96,"socket.io-client":99,"tiny-ai-api":110,"tiny-dices":133,"tiny-essentials":160,"tippy.js":176,"validate-color":177}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29308,7 +29309,7 @@ function _insertCreateCube() {
 }
 var _default = exports["default"] = TinyDices;
 
-},{"tiny-essentials":142,"validate-color":175}],134:[function(require,module,exports){
+},{"tiny-essentials":142,"validate-color":177}],134:[function(require,module,exports){
 arguments[4][112][0].apply(exports,arguments)
 },{"dup":112}],135:[function(require,module,exports){
 arguments[4][113][0].apply(exports,arguments)
@@ -30671,7 +30672,7 @@ function isScrolledIntoView(element) {
   return elemBottom <= viewportBottom && elemTop >= viewportTop;
 }
 
-},{"../libs/TinyHtml.mjs":166}],155:[function(require,module,exports){
+},{"../libs/TinyHtml.mjs":167}],155:[function(require,module,exports){
 arguments[4][119][0].apply(exports,arguments)
 },{"buffer":62,"dup":119}],156:[function(require,module,exports){
 arguments[4][120][0].apply(exports,arguments)
@@ -30825,6 +30826,12 @@ Object.defineProperty(exports, "TinyAfterScrollWatcher", {
     return _TinyAfterScrollWatcher["default"];
   }
 });
+Object.defineProperty(exports, "TinyClipboard", {
+  enumerable: true,
+  get: function get() {
+    return _TinyClipboard["default"];
+  }
+});
 Object.defineProperty(exports, "TinyDomReadyManager", {
   enumerable: true,
   get: function get() {
@@ -30883,6 +30890,12 @@ Object.defineProperty(exports, "TinySmartScroller", {
   enumerable: true,
   get: function get() {
     return _TinySmartScroller["default"];
+  }
+});
+Object.defineProperty(exports, "TinyTextRangeEditor", {
+  enumerable: true,
+  get: function get() {
+    return _TinyTextRangeEditor["default"];
   }
 });
 Object.defineProperty(exports, "TinyToastNotify", {
@@ -31458,9 +31471,11 @@ var _TinyHtml = _interopRequireDefault(require("./libs/TinyHtml.mjs"));
 var _TinyAfterScrollWatcher = _interopRequireDefault(require("./libs/TinyAfterScrollWatcher.mjs"));
 var _UltraRandomMsgGen = _interopRequireDefault(require("./libs/UltraRandomMsgGen.mjs"));
 var _TinySmartScroller = _interopRequireDefault(require("./libs/TinySmartScroller.mjs"));
+var _TinyTextRangeEditor = _interopRequireDefault(require("./libs/TinyTextRangeEditor.mjs"));
+var _TinyClipboard = _interopRequireDefault(require("./libs/TinyClipboard.mjs"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 
-},{"../legacy/libs/arraySortPositions.mjs":146,"../legacy/libs/replaceAsync.mjs":147,"../legacy/libs/userLevel.mjs":148,"./basics/array.mjs":149,"./basics/clock.mjs":150,"./basics/collision.mjs":151,"./basics/fullScreen.mjs":152,"./basics/html.mjs":153,"./basics/html_deprecated.mjs":154,"./basics/objFilter.mjs":155,"./basics/simpleMath.mjs":156,"./basics/text.mjs":157,"./fileManager/asyncFuncs.mjs":158,"./fileManager/normalFuncs.mjs":159,"./libs/ColorSafeStringify.mjs":161,"./libs/TinyAfterScrollWatcher.mjs":162,"./libs/TinyDomReadyManager.mjs":163,"./libs/TinyDragDropDetector.mjs":164,"./libs/TinyDragger.mjs":165,"./libs/TinyHtml.mjs":166,"./libs/TinyNotifications.mjs":167,"./libs/TinyNotifyCenter.mjs":168,"./libs/TinyPromiseQueue.mjs":169,"./libs/TinyRateLimiter.mjs":170,"./libs/TinySmartScroller.mjs":171,"./libs/TinyToastNotify.mjs":172,"./libs/UltraRandomMsgGen.mjs":173}],161:[function(require,module,exports){
+},{"../legacy/libs/arraySortPositions.mjs":146,"../legacy/libs/replaceAsync.mjs":147,"../legacy/libs/userLevel.mjs":148,"./basics/array.mjs":149,"./basics/clock.mjs":150,"./basics/collision.mjs":151,"./basics/fullScreen.mjs":152,"./basics/html.mjs":153,"./basics/html_deprecated.mjs":154,"./basics/objFilter.mjs":155,"./basics/simpleMath.mjs":156,"./basics/text.mjs":157,"./fileManager/asyncFuncs.mjs":158,"./fileManager/normalFuncs.mjs":159,"./libs/ColorSafeStringify.mjs":161,"./libs/TinyAfterScrollWatcher.mjs":162,"./libs/TinyClipboard.mjs":163,"./libs/TinyDomReadyManager.mjs":164,"./libs/TinyDragDropDetector.mjs":165,"./libs/TinyDragger.mjs":166,"./libs/TinyHtml.mjs":167,"./libs/TinyNotifications.mjs":168,"./libs/TinyNotifyCenter.mjs":169,"./libs/TinyPromiseQueue.mjs":170,"./libs/TinyRateLimiter.mjs":171,"./libs/TinySmartScroller.mjs":172,"./libs/TinyTextRangeEditor.mjs":173,"./libs/TinyToastNotify.mjs":174,"./libs/UltraRandomMsgGen.mjs":175}],161:[function(require,module,exports){
 arguments[4][125][0].apply(exports,arguments)
 },{"dup":125}],162:[function(require,module,exports){
 "use strict";
@@ -31688,10 +31703,690 @@ function _checkQueue() {
 var _default = exports["default"] = TinyAfterScrollWatcher;
 
 },{}],163:[function(require,module,exports){
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+var _existExecCommand = /*#__PURE__*/new WeakMap();
+var _existNavigator = /*#__PURE__*/new WeakMap();
+var _copyText = /*#__PURE__*/new WeakMap();
+var _copyBlob = /*#__PURE__*/new WeakMap();
+/**
+ * Utility class to handle clipboard operations for text and blob data.
+ * Supports modern Clipboard API, custom platform, and legacy execCommand fallback.
+ */
+var TinyClipboard = /*#__PURE__*/function () {
+  /**
+   * Constructs a new TinyClipboard instance.
+   * Automatically detects and configures available clipboard APIs.
+   */
+  function TinyClipboard() {
+    _classCallCheck(this, TinyClipboard);
+    /**
+     * Indicates whether the legacy `document.execCommand()` API is available.
+     * Used as a fallback for clipboard operations when modern APIs are not supported.
+     *
+     * @type {boolean}
+     */
+    _classPrivateFieldInitSpec(this, _existExecCommand, false);
+    /**
+     * Indicates whether the modern Clipboard API (`navigator.clipboard`) is available.
+     *
+     * @type {boolean}
+     */
+    _classPrivateFieldInitSpec(this, _existNavigator, false);
+    /**
+     * Function used to copy plain text to the clipboard.
+     * Can be overridden using `setCopyText()`.
+     *
+     * @type {((text: string) => Promise<void>) | null}
+     */
+    _classPrivateFieldInitSpec(this, _copyText, null);
+    /**
+     * Function used to copy a Blob (binary data) to the clipboard.
+     * Can be overridden using `setCopyBlob()`.
+     *
+     * @type {((blob: Blob) => Promise<void>) | null}
+     */
+    _classPrivateFieldInitSpec(this, _copyBlob, null);
+    // Whether the Clipboard API is available.
+    if (typeof navigator.clipboard !== 'undefined' && navigator.clipboard !== null) {
+      _classPrivateFieldSet(_existNavigator, this, true);
+      _classPrivateFieldSet(_copyText, this, function (text) {
+        return navigator.clipboard.writeText(text);
+      });
+      _classPrivateFieldSet(_copyBlob, this, function (blob) {
+        return navigator.clipboard.write([new ClipboardItem(_defineProperty({}, blob.type, blob))]);
+      });
+    }
+    /**
+     * @type {boolean}
+     * Whether the legacy execCommand API is available.
+     */
+    _classPrivateFieldSet(_existExecCommand, this, typeof document.execCommand !== 'undefined' && document.execCommand !== null);
+  }
+  /**
+   * Override the default text copy behavior.
+   * This allows you to provide your own clipboard implementation or
+   * integrate with external systems like Capacitor or Electron.
+   *
+   * @param {(text: string) => Promise<void>} callback - The function to use for copying text.
+   * @throws {TypeError} If the callback is not a function.
+   */
+  return _createClass(TinyClipboard, [{
+    key: "setCopyText",
+    value: function setCopyText(callback) {
+      if (typeof callback !== 'function') throw new TypeError('setCopyText expected a function that returns Promise<void>.');
+      _classPrivateFieldSet(_copyText, this, callback);
+    }
+    /**
+     * Override the default blob copy behavior.
+     * This allows you to provide a custom clipboard handling method for blob data.
+     *
+     * @param {(blob: Blob) => Promise<void>} callback - The function to use for copying blob data.
+     * @throws {TypeError} If the callback is not a function.
+     */
+  }, {
+    key: "setCopyBlob",
+    value: function setCopyBlob(callback) {
+      if (typeof callback !== 'function') throw new TypeError('setCopyBlob expected a function that returns Promise<void>.');
+      _classPrivateFieldSet(_copyBlob, this, callback);
+    }
+    /**
+     * Copy a plain text string to the clipboard.
+     * Uses modern or legacy fallback.
+     *
+     * @param {string} text - The text string to be copied.
+     * @returns {Promise<void>} A promise resolving when the text is copied or boolean for legacy.
+     */
+  }, {
+    key: "copyText",
+    value: function copyText(text) {
+      if (typeof text !== 'string') throw new TypeError('copyText expected a string.');
+      // Clipboard API
+      if (_classPrivateFieldGet(_copyText, this)) return _classPrivateFieldGet(_copyText, this).call(this, text);
+      // Classic API
+      else if (_classPrivateFieldGet(_existExecCommand, this)) {
+        var host = document.body;
+        var copyInput = document.createElement('input');
+        copyInput.style.position = 'fixed';
+        copyInput.style.opacity = '0';
+        copyInput.value = text;
+        host.append(copyInput);
+        copyInput.select();
+        copyInput.setSelectionRange(0, 99999);
+        document.execCommand('Copy');
+        copyInput.remove();
+        return new Promise(function (resolve) {
+          return resolve(undefined);
+        });
+      }
+      throw new Error('Clipboard API not found!');
+    }
+    /**
+     * Copy a Blob (binary data) to the clipboard.
+     *
+     * @param {Blob} blob - The blob object to copy.
+     * @returns {Promise<void>} A promise that resolves when the blob is copied or null on fallback.
+     */
+  }, {
+    key: "copyBlob",
+    value: function copyBlob(blob) {
+      var _this = this;
+      if (!(blob instanceof Blob)) throw new TypeError('copyBlob expected a Blob instance.');
+      return new Promise(function (resolve, reject) {
+        if (_classPrivateFieldGet(_copyBlob, _this)) {
+          return _classPrivateFieldGet(_copyBlob, _this).call(_this, blob).then(resolve)["catch"](reject);
+        }
+        throw new Error('Clipboard API not found!');
+      });
+    }
+    /**
+     * Internal: Handle getting blob data from a clipboard item.
+     *
+     * @private
+     * @param {string} type - The MIME type to fetch.
+     * @param {ClipboardItem} clipboardItem - Clipboard item instance.
+     * @returns {Promise<Blob>} A promise that resolves with the Blob.
+     */
+  }, {
+    key: "_handleBlob",
+    value: function _handleBlob(type, clipboardItem) {
+      return clipboardItem.getType(type);
+    }
+    /**
+     * Internal: Handle getting plain text from a clipboard item.
+     *
+     * @private
+     * @param {string} type - The MIME type (should be 'text/plain').
+     * @param {ClipboardItem} clipboardItem - Clipboard item instance.
+     * @returns {Promise<string>} A promise that resolves with the text content.
+     */
+  }, {
+    key: "_handleText",
+    value: function _handleText(type, clipboardItem) {
+      return this._handleBlob(type, clipboardItem).then(function (blob) {
+        return blob.text();
+      });
+    }
+    /**
+     * Read clipboard data based on filters like type, mime, index.
+     *
+     * @param {number|null} [index=0] - Item index or null for all.
+     * @param {'text'|'custom'|null} [type=null] - Data type to filter.
+     * @param {string|null} [mimeFormat=null] - MIME type or prefix.
+     * @param {boolean} [fixValue=false] - If true, exact match on MIME type.
+     * @returns {Promise<Blob|string|Array<Blob|string>|null>} A promise resolving with matching data.
+     */
+  }, {
+    key: "_readData",
+    value: function _readData() {
+      var _this2 = this;
+      var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      var mimeFormat = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+      var fixValue = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+      return new Promise(function (resolve, reject) {
+        _this2._read(index).then(function (items) {
+          if (!items) return resolve(null);
+          /** @type {Array<Blob|string>} */
+          var finalResult = [];
+          // Complete task
+          var continueLoop = true;
+          /**
+           * @param {string} mimeType
+           * @param {ClipboardItem} item
+           */
+          var completeTask = /*#__PURE__*/function () {
+            var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(mimeType, item) {
+              var result, _result, _result2;
+              return _regenerator().w(function (_context) {
+                while (1) switch (_context.n) {
+                  case 0:
+                    if (continueLoop) {
+                      _context.n = 1;
+                      break;
+                    }
+                    return _context.a(2);
+                  case 1:
+                    if (!((type === null || type === 'custom') && typeof mimeFormat === 'string' && (!fixValue && mimeType.startsWith(mimeFormat) || fixValue && mimeType === mimeFormat))) {
+                      _context.n = 3;
+                      break;
+                    }
+                    continueLoop = false;
+                    _context.n = 2;
+                    return _this2._handleBlob(mimeType, item);
+                  case 2:
+                    result = _context.v;
+                    if (result) finalResult.push(result);
+                    _context.n = 7;
+                    break;
+                  case 3:
+                    if (!((type === null || type === 'text') && mimeType === 'text/plain')) {
+                      _context.n = 5;
+                      break;
+                    }
+                    continueLoop = false;
+                    _context.n = 4;
+                    return _this2._handleText(mimeType, item);
+                  case 4:
+                    _result = _context.v;
+                    if (_result) finalResult.push(_result);
+                    _context.n = 7;
+                    break;
+                  case 5:
+                    if (!(type === null)) {
+                      _context.n = 7;
+                      break;
+                    }
+                    continueLoop = false;
+                    _context.n = 6;
+                    return _this2._handleBlob(mimeType, item);
+                  case 6:
+                    _result2 = _context.v;
+                    if (_result2) finalResult.push(_result2);
+                  case 7:
+                    return _context.a(2);
+                }
+              }, _callee);
+            }));
+            return function completeTask(_x, _x2) {
+              return _ref.apply(this, arguments);
+            };
+          }();
+          /** @type {Promise<void>[]} */
+          var promises = [];
+          /**
+           * Read Item
+           * @param {ClipboardItem | ClipboardItems} item
+           */
+          var readItem = function readItem(item) {
+            if (!(item instanceof ClipboardItem)) throw new Error('Expected ClipboardItem when reading data.');
+            for (var tIndex in item.types) promises.push(completeTask(item.types[tIndex], item));
+          };
+          // Specific Item
+          if (typeof index === 'number' && !Number.isNaN(index) && Number.isFinite(index) && index > -1) {
+            readItem(items);
+            Promise.all(promises).then(function () {
+              if (finalResult[0]) resolve(finalResult[0]);else resolve(null);
+            })["catch"](reject);
+          }
+          // All
+          else if (Array.isArray(items)) {
+            for (var tIndex in items) readItem(items[tIndex]);
+            Promise.all(promises).then(function () {
+              return resolve(finalResult);
+            })["catch"](reject);
+          }
+        })
+        // Fail
+        ["catch"](reject);
+      });
+    }
+    /**
+     * Read plain text from the clipboard (single item by index).
+     *
+     * @param {number} [index=0] - The index of the clipboard item to read.
+     * @returns {Promise<string|null>} A promise that resolves to the clipboard text or null.
+     */
+  }, {
+    key: "readText",
+    value: (function () {
+      var _readText = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
+        var index,
+          value,
+          _args2 = arguments;
+        return _regenerator().w(function (_context2) {
+          while (1) switch (_context2.n) {
+            case 0:
+              index = _args2.length > 0 && _args2[0] !== undefined ? _args2[0] : 0;
+              _context2.n = 1;
+              return this._readData(index, 'text');
+            case 1:
+              value = _context2.v;
+              if (!(typeof value !== 'string')) {
+                _context2.n = 2;
+                break;
+              }
+              throw new Error('Failed to read text: expected string result.');
+            case 2:
+              return _context2.a(2, value);
+          }
+        }, _callee2, this);
+      }));
+      function readText() {
+        return _readText.apply(this, arguments);
+      }
+      return readText;
+    }()
+    /**
+     * Read custom clipboard data based on MIME type from a specific index.
+     *
+     * @param {string|null} [mimeFormat=null] - MIME prefix to match (e.g., "image/").
+     * @param {boolean} [fixValue=false] - If true, matches exact MIME instead of prefix.
+     * @param {number} [index=0] - Clipboard item index.
+     * @returns {Promise<Blob|null>} A promise resolving with a blob or null.
+     */
+    )
+  }, {
+    key: "readCustom",
+    value: (function () {
+      var _readCustom = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
+        var mimeFormat,
+          fixValue,
+          index,
+          value,
+          _args3 = arguments;
+        return _regenerator().w(function (_context3) {
+          while (1) switch (_context3.n) {
+            case 0:
+              mimeFormat = _args3.length > 0 && _args3[0] !== undefined ? _args3[0] : null;
+              fixValue = _args3.length > 1 && _args3[1] !== undefined ? _args3[1] : false;
+              index = _args3.length > 2 && _args3[2] !== undefined ? _args3[2] : 0;
+              _context3.n = 1;
+              return this._readData(index, 'custom', mimeFormat, fixValue);
+            case 1:
+              value = _context3.v;
+              if (value instanceof Blob) {
+                _context3.n = 2;
+                break;
+              }
+              throw new Error('Failed to read custom data: expected Blob.');
+            case 2:
+              return _context3.a(2, value);
+          }
+        }, _callee3, this);
+      }));
+      function readCustom() {
+        return _readCustom.apply(this, arguments);
+      }
+      return readCustom;
+    }()
+    /**
+     * Read all available plain text entries from the clipboard.
+     *
+     * @returns {Promise<string[]>} A promise resolving to an array of strings or null.
+     */
+    )
+  }, {
+    key: "readAllTexts",
+    value: (function () {
+      var _readAllTexts = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4() {
+        var values;
+        return _regenerator().w(function (_context4) {
+          while (1) switch (_context4.n) {
+            case 0:
+              _context4.n = 1;
+              return this._readData(null, 'text');
+            case 1:
+              values = _context4.v;
+              if (Array.isArray(values)) {
+                _context4.n = 2;
+                break;
+              }
+              throw new Error('Expected array of strings when reading all texts.');
+            case 2:
+              if (values.every(function (value) {
+                return typeof value === 'string';
+              })) {
+                _context4.n = 3;
+                break;
+              }
+              throw new Error('Some values returned were not strings.');
+            case 3:
+              return _context4.a(2, values);
+          }
+        }, _callee4, this);
+      }));
+      function readAllTexts() {
+        return _readAllTexts.apply(this, arguments);
+      }
+      return readAllTexts;
+    }()
+    /**
+     * Read all clipboard data matching a specific custom MIME type.
+     *
+     * @param {string|null} [mimeFormat=null] - MIME prefix or exact type.
+     * @param {boolean} [fixValue=false] - Match prefix or exact MIME.
+     * @returns {Promise<Blob[]>} A promise resolving with array of Blobs or null.
+     */
+    )
+  }, {
+    key: "readAllCustom",
+    value: (function () {
+      var _readAllCustom = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5() {
+        var mimeFormat,
+          fixValue,
+          values,
+          _args5 = arguments;
+        return _regenerator().w(function (_context5) {
+          while (1) switch (_context5.n) {
+            case 0:
+              mimeFormat = _args5.length > 0 && _args5[0] !== undefined ? _args5[0] : null;
+              fixValue = _args5.length > 1 && _args5[1] !== undefined ? _args5[1] : false;
+              _context5.n = 1;
+              return this._readData(null, 'custom', mimeFormat, fixValue);
+            case 1:
+              values = _context5.v;
+              if (Array.isArray(values)) {
+                _context5.n = 2;
+                break;
+              }
+              throw new Error('Expected array of blobs when reading all custom items.');
+            case 2:
+              if (values.every(function (value) {
+                return value instanceof Blob;
+              })) {
+                _context5.n = 3;
+                break;
+              }
+              throw new Error('Some values returned were not Blob instances.');
+            case 3:
+              return _context5.a(2, values);
+          }
+        }, _callee5, this);
+      }));
+      function readAllCustom() {
+        return _readAllCustom.apply(this, arguments);
+      }
+      return readAllCustom;
+    }()
+    /**
+     * Read all clipboard data as Blob or text depending on type.
+     *
+     * @param {'text'|'custom'|null} [type=null] - The type of data to retrieve.
+     * @param {string|null} [mimeFormat=null] - The MIME type or prefix to match.
+     * @returns {Promise<Array<Blob|string>>} A promise resolving with matching data array.
+     */
+    )
+  }, {
+    key: "readAllData",
+    value: (function () {
+      var _readAllData = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6() {
+        var type,
+          mimeFormat,
+          value,
+          _args6 = arguments;
+        return _regenerator().w(function (_context6) {
+          while (1) switch (_context6.n) {
+            case 0:
+              type = _args6.length > 0 && _args6[0] !== undefined ? _args6[0] : null;
+              mimeFormat = _args6.length > 1 && _args6[1] !== undefined ? _args6[1] : null;
+              _context6.n = 1;
+              return this._readData(null, type, mimeFormat);
+            case 1:
+              value = _context6.v;
+              if (Array.isArray(value)) {
+                _context6.n = 2;
+                break;
+              }
+              throw new Error('Expected array result when reading all data.');
+            case 2:
+              return _context6.a(2, value);
+          }
+        }, _callee6, this);
+      }));
+      function readAllData() {
+        return _readAllData.apply(this, arguments);
+      }
+      return readAllData;
+    }()
+    /**
+     * Read clipboard data at a specific index or all if null.
+     *
+     * @param {number|null} index - Index of the item to retrieve or null to get all.
+     * @returns {Promise<ClipboardItem|ClipboardItems|null>} A promise resolving with a clipboard item or array of items.
+     */
+    )
+  }, {
+    key: "_read",
+    value: function _read(index) {
+      var _this3 = this;
+      return new Promise(function (resolve, reject) {
+        if (!_classPrivateFieldGet(_existNavigator, _this3)) reject(new Error('Clipboard API not found!'));
+        navigator.clipboard.read().then(function (items) {
+          // Index is number
+          if (typeof index === 'number') {
+            if (Number.isNaN(index) || !Number.isFinite(index) || index < 0) throw new Error("Invalid index value: ".concat(index));
+            if (items[index]) resolve(items[index]);
+            // Not found
+            else resolve(null);
+          }
+          // Get All
+          resolve(items);
+        })["catch"](reject);
+      });
+    }
+    /**
+     * Read clipboard data at a specific index.
+     *
+     * @param {number} index - Index of the item to retrieve
+     * @returns {Promise<ClipboardItem|null>} A promise resolving with a clipboard item.
+     */
+  }, {
+    key: "readIndex",
+    value: (function () {
+      var _readIndex = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7(index) {
+        var value;
+        return _regenerator().w(function (_context7) {
+          while (1) switch (_context7.n) {
+            case 0:
+              _context7.n = 1;
+              return this._read(index);
+            case 1:
+              value = _context7.v;
+              if (!(value !== null && !(value instanceof ClipboardItem))) {
+                _context7.n = 2;
+                break;
+              }
+              throw new Error("Value at index ".concat(index, " is not a ClipboardItem."));
+            case 2:
+              return _context7.a(2, value);
+          }
+        }, _callee7, this);
+      }));
+      function readIndex(_x3) {
+        return _readIndex.apply(this, arguments);
+      }
+      return readIndex;
+    }()
+    /**
+     * Read all clipboard content without any filters.
+     *
+     * @returns {Promise<ClipboardItems>} A promise resolving with all clipboard items.
+     */
+    )
+  }, {
+    key: "readAll",
+    value: (function () {
+      var _readAll = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8() {
+        var value, _iterator, _step, item, _t;
+        return _regenerator().w(function (_context8) {
+          while (1) switch (_context8.n) {
+            case 0:
+              _context8.n = 1;
+              return this._read(null);
+            case 1:
+              value = _context8.v;
+              if (Array.isArray(value)) {
+                _context8.n = 2;
+                break;
+              }
+              throw new Error('Expected array result from clipboard read.');
+            case 2:
+              _iterator = _createForOfIteratorHelper(value);
+              _context8.p = 3;
+              _iterator.s();
+            case 4:
+              if ((_step = _iterator.n()).done) {
+                _context8.n = 6;
+                break;
+              }
+              item = _step.value;
+              if (item instanceof ClipboardItem) {
+                _context8.n = 5;
+                break;
+              }
+              throw new Error('Invalid item type found in clipboard result.');
+            case 5:
+              _context8.n = 4;
+              break;
+            case 6:
+              _context8.n = 8;
+              break;
+            case 7:
+              _context8.p = 7;
+              _t = _context8.v;
+              _iterator.e(_t);
+            case 8:
+              _context8.p = 8;
+              _iterator.f();
+              return _context8.f(8);
+            case 9:
+              return _context8.a(2, value);
+          }
+        }, _callee8, this, [[3, 7, 8, 9]]);
+      }));
+      function readAll() {
+        return _readAll.apply(this, arguments);
+      }
+      return readAll;
+    }()
+    /**
+     * Returns whether the legacy `document.execCommand()` API is available.
+     * This can be used to determine if a fallback clipboard method is usable.
+     *
+     * @returns {boolean} True if `document.execCommand` is available.
+     */
+    )
+  }, {
+    key: "isExecCommandAvailable",
+    value: function isExecCommandAvailable() {
+      return _classPrivateFieldGet(_existExecCommand, this);
+    }
+    /**
+     * Returns whether the modern Clipboard API (`navigator.clipboard`) is available.
+     * Useful to know if full clipboard features can be accessed.
+     *
+     * @returns {boolean} True if `navigator.clipboard` is available.
+     */
+  }, {
+    key: "isNavigatorClipboardAvailable",
+    value: function isNavigatorClipboardAvailable() {
+      return _classPrivateFieldGet(_existNavigator, this);
+    }
+    /**
+     * Returns the function used to copy plain text to the clipboard.
+     * This function may be built-in or set manually via `setCopyText`.
+     *
+     * @returns {((text: string) => Promise<void>) | null} The current text copy function or null if unavailable.
+     */
+  }, {
+    key: "getCopyTextFunc",
+    value: function getCopyTextFunc() {
+      return _classPrivateFieldGet(_copyText, this);
+    }
+    /**
+     * Returns the function used to copy Blob (binary data) to the clipboard.
+     * This function may be built-in or set manually via `setCopyBlob`.
+     *
+     * @returns {((blob: Blob) => Promise<void>) | null} The current blob copy function or null if unavailable.
+     */
+  }, {
+    key: "getCopyBlobFunc",
+    value: function getCopyBlobFunc() {
+      return _classPrivateFieldGet(_copyBlob, this);
+    }
+  }]);
+}();
+var _default = exports["default"] = TinyClipboard;
+
+},{}],164:[function(require,module,exports){
 arguments[4][126][0].apply(exports,arguments)
-},{"dup":126}],164:[function(require,module,exports){
+},{"dup":126}],165:[function(require,module,exports){
 arguments[4][127][0].apply(exports,arguments)
-},{"dup":127}],165:[function(require,module,exports){
+},{"dup":127}],166:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -32681,7 +33376,7 @@ _defineProperty(TinyDragger, "Utils", _objectSpread(_objectSpread({}, TinyCollis
 }));
 var _default = exports["default"] = TinyDragger;
 
-},{"../basics/collision.mjs":151,"../basics/objFilter.mjs":155,"./TinyHtml.mjs":166}],166:[function(require,module,exports){
+},{"../basics/collision.mjs":151,"../basics/objFilter.mjs":155,"./TinyHtml.mjs":167}],167:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32723,6 +33418,17 @@ var areElsColliding = TinyCollision.areElsColliding,
   areElsCollBottom = TinyCollision.areElsCollBottom,
   areElsCollLeft = TinyCollision.areElsCollLeft,
   areElsCollRight = TinyCollision.areElsCollRight;
+/**
+ * Callback invoked on each animation frame with the current scroll position,
+ * normalized animation time (`0` to `1`), and a completion flag.
+ *
+ * @typedef {(progress: { x: number, y: number, isComplete: boolean, time: number }) => void} OnScrollAnimation
+ */
+/**
+ * A list of supported easing function names for smooth animations.
+ *
+ * @typedef {'linear' | 'easeInQuad' | 'easeOutQuad' | 'easeInOutQuad' | 'easeInCubic' | 'easeOutCubic' | 'easeInOutCubic'} Easings
+ */
 /**
  * Represents a raw Node element or an instance of TinyHtml.
  * This type is used to abstract interactions with both plain elements
@@ -32785,6 +33491,19 @@ var areElsColliding = TinyCollision.areElsColliding,
  * @typedef {Element|Window|Document} ElementAndWinAndDoc
  */
 /**
+ * Represents a raw DOM element with document or an instance of TinyHtml.
+ * This type is used to abstract interactions with both plain elements
+ * and wrapped elements via the TinyHtml class.
+ *
+ * @typedef {ElementWithDoc|TinyHtml} TinyElementWithDoc
+ */
+/**
+ * Represents a value that can be either a DOM Element, or the document object.
+ * Useful for functions that operate generically on measurable targets.
+ *
+ * @typedef {Element|Document} ElementWithDoc
+ */
+/**
  * A parameter type used for filtering or matching elements.
  * It can be:
  * - A string (CSS selector),
@@ -32802,11 +33521,6 @@ var areElsColliding = TinyCollision.areElsColliding,
  * @typedef {Window|Element|Document|Text} ConstructorElValues
  */
 /**
- * The handler function used in event listeners.
- *
- * @typedef {(e: Event) => any} EventRegistryHandle
- */
-/**
  * Options passed to `addEventListener` or `removeEventListener`.
  * Can be a boolean or an object of type `AddEventListenerOptions`.
  *
@@ -32816,7 +33530,7 @@ var areElsColliding = TinyCollision.areElsColliding,
  * Structure describing a registered event callback and its options.
  *
  * @typedef {Object} EventRegistryItem
- * @property {EventRegistryHandle} handler - The function to be executed when the event is triggered.
+ * @property {EventListenerOrEventListenerObject|null} handler - The function to be executed when the event is triggered.
  * @property {EventRegistryOptions} [options] - Optional configuration passed to the listener.
  */
 /**
@@ -34022,6 +34736,27 @@ var TinyHtml = /*#__PURE__*/function () {
     }
     //////////////////////////////////////////////////
     /**
+     * Applies an animation to one or multiple TinyElement instances.
+     *
+     * @param {TinyElement|TinyElement[]} el - A single TinyElement or an array of TinyElements to animate.
+     * @param {Keyframe[] | PropertyIndexedKeyframes | null} keyframes - The keyframes used to define the animation.
+     * @param {number | KeyframeAnimationOptions} [ops] - Timing or configuration options for the animation.
+     * @returns {TinyElement|TinyElement[]}
+     */
+  }, {
+    key: "animate",
+    value:
+    /**
+     * Applies an animation to one or multiple TinyElement instances.
+     *
+     * @param {Keyframe[] | PropertyIndexedKeyframes | null} keyframes - The keyframes used to define the animation.
+     * @param {number | KeyframeAnimationOptions} [ops] - Timing or configuration options for the animation.
+     * @returns {TinyElement|TinyElement[]}
+     */
+    function animate(keyframes, ops) {
+      return TinyHtml.animate(this, keyframes, ops);
+    }
+    /**
      * Gets the offset of the element relative to the document.
      * @param {TinyElement} el - Target element.
      * @returns {{top: number, left: number}}
@@ -34095,6 +34830,45 @@ var TinyHtml = /*#__PURE__*/function () {
      */
     function scrollLeft() {
       return TinyHtml.scrollLeft(this);
+    }
+    /**
+     * Collection of easing functions used for scroll and animation calculations.
+     * Each function receives a normalized time value (`t` from 0 to 1) and returns the eased progress.
+     *
+     * @type {Record<string, (t: number) => number>}
+     */
+  }, {
+    key: "scrollToXY",
+    value:
+    /**
+     * Smoothly scrolls one or more elements (or the window) to the specified X and Y coordinates
+     * using a custom duration and easing function.
+     *
+     * If `duration` or a valid `easing` is not provided, the scroll will be performed immediately.
+     *
+     * @param {Object} [settings={}] - Configuration object for the scroll animation.
+     * @param {number} [settings.targetX] - The horizontal scroll target in pixels.
+     * @param {number} [settings.targetY] - The vertical scroll target in pixels.
+     * @param {number} [settings.duration] - The duration of the animation in milliseconds.
+     * @param {Easings} [settings.easing] - The easing function name to use for the scroll animation.
+     * @param {OnScrollAnimation} [settings.onAnimation] - Optional callback invoked on each animation
+     *   frame with the current scroll position, normalized animation time (`0` to `1`), and a completion flag.
+     * @returns {TinyElementAndWindow|TinyElementAndWindow[]}
+     */
+    function scrollToXY() {
+      var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        targetX = _ref.targetX,
+        targetY = _ref.targetY,
+        duration = _ref.duration,
+        easing = _ref.easing,
+        onAnimation = _ref.onAnimation;
+      return TinyHtml.scrollToXY(this, {
+        targetX: targetX,
+        targetY: targetY,
+        duration: duration,
+        easing: easing,
+        onAnimation: onAnimation
+      });
     }
     /**
      * Sets the vertical scroll position.
@@ -34629,11 +35403,86 @@ var TinyHtml = /*#__PURE__*/function () {
     }
     ////////////////////////////////////////////
     /**
+     * Registers a listener for the "paste" event to extract files and text from the clipboard (e.g., when the user presses Ctrl+V).
+     *
+     * This method allows reacting to pasted content by providing separate callbacks for files and plain text.
+     * Useful for building file upload areas, rich-text editors, or input enhancements.
+     *
+     * @param {TinyElementWithDoc|TinyElementWithDoc[]} el - The target element(s) where the "paste" event will be listened.
+     * @param {Object} [settings={}] - Optional callbacks to handle clipboard content.
+     * @param {(data: DataTransferItem, file: File) => void} [settings.onFilePaste] - Called for each file pasted from the clipboard (e.g., images).
+     * @param {(data: DataTransferItem, text: string) => void} [settings.onTextPaste] - Called when plain text is pasted from the clipboard.
+     * @returns {EventListenerOrEventListenerObject} The internal "paste" event handler used.
+     */
+  }, {
+    key: "listenForPaste",
+    value:
+    /**
+     * Registers a listener for the "paste" event to extract files and text from the clipboard (e.g., when the user presses Ctrl+V).
+     *
+     * This method allows reacting to pasted content by providing separate callbacks for files and plain text.
+     * Useful for building file upload areas, rich-text editors, or input enhancements.
+     *
+     * @param {Object} [settings={}] - Optional callbacks to handle clipboard content.
+     * @param {(data: DataTransferItem, file: File) => void} [settings.onFilePaste] - Called for each file pasted from the clipboard (e.g., images).
+     * @param {(data: DataTransferItem, text: string) => void} [settings.onTextPaste] - Called when plain text is pasted from the clipboard.
+     * @returns {EventListenerOrEventListenerObject} The internal "paste" event handler used.
+     */
+    function listenForPaste() {
+      var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        onFilePaste = _ref2.onFilePaste,
+        onTextPaste = _ref2.onTextPaste;
+      return TinyHtml.listenForPaste(this, {
+        onFilePaste: onFilePaste,
+        onTextPaste: onTextPaste
+      });
+    }
+    /**
+     * Checks if the element has a listener for a specific event.
+     *
+     * @param {TinyEventTarget} el - The element to check.
+     * @param {string} event - The event name to check.
+     * @returns {boolean}
+     */
+  }, {
+    key: "hasEventListener",
+    value:
+    /**
+     * Checks if the element has a listener for a specific event.
+     *
+     * @param {string} event - The event name to check.
+     * @returns {boolean}
+     */
+    function hasEventListener(event) {
+      return TinyHtml.hasEventListener(this, event);
+    }
+    /**
+     * Checks if the element has the exact handler registered for a specific event.
+     *
+     * @param {TinyEventTarget} el - The element to check.
+     * @param {string} event - The event name to check.
+     * @param {EventListenerOrEventListenerObject} handler - The handler function to check.
+     * @returns {boolean}
+     */
+  }, {
+    key: "hasExactEventListener",
+    value:
+    /**
+     * Checks if the element has the exact handler registered for a specific event.
+     *
+     * @param {string} event - The event name to check.
+     * @param {EventListenerOrEventListenerObject} handler - The handler function to check.
+     * @returns {boolean}
+     */
+    function hasExactEventListener(event, handler) {
+      return TinyHtml.hasExactEventListener(this, event, handler);
+    }
+    /**
      * Registers an event listener on the specified element.
      *
      * @param {TinyEventTarget|TinyEventTarget[]} el - The target to listen on.
      * @param {string} event - The event type (e.g. 'click', 'keydown').
-     * @param {EventRegistryHandle} handler - The callback function to run on event.
+     * @param {EventListenerOrEventListenerObject|null} handler - The callback function to run on event.
      * @param {EventRegistryOptions} [options] - Optional event listener options.
      * @returns {TinyEventTarget|TinyEventTarget[]}
      */
@@ -34644,7 +35493,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Registers an event listener on the specified element.
      *
      * @param {string} event - The event type (e.g. 'click', 'keydown').
-     * @param {EventRegistryHandle} handler - The callback function to run on event.
+     * @param {EventListenerOrEventListenerObject|null} handler - The callback function to run on event.
      * @param {EventRegistryOptions} [options] - Optional event listener options.
      * @returns {TinyEventTarget|TinyEventTarget[]}
      */
@@ -34656,7 +35505,7 @@ var TinyHtml = /*#__PURE__*/function () {
      *
      * @param {TinyEventTarget|TinyEventTarget[]} el - The target to listen on.
      * @param {string} event - The event type (e.g. 'click', 'keydown').
-     * @param {EventRegistryHandle} handler - The callback function to run on event.
+     * @param {EventListenerOrEventListenerObject} handler - The callback function to run on event.
      * @param {EventRegistryOptions} [options={}] - Optional event listener options.
      * @returns {TinyEventTarget|TinyEventTarget[]}
      */
@@ -34667,7 +35516,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Registers an event listener that runs only once, then is removed.
      *
      * @param {string} event - The event type (e.g. 'click', 'keydown').
-     * @param {EventRegistryHandle} handler - The callback function to run on event.
+     * @param {EventListenerOrEventListenerObject} handler - The callback function to run on event.
      * @param {EventRegistryOptions} [options={}] - Optional event listener options.
      * @returns {TinyEventTarget|TinyEventTarget[]}
      */
@@ -34680,7 +35529,7 @@ var TinyHtml = /*#__PURE__*/function () {
      *
      * @param {TinyEventTarget|TinyEventTarget[]} el - The target element.
      * @param {string} event - The event type.
-     * @param {EventRegistryHandle} handler - The function originally bound to the event.
+     * @param {EventListenerOrEventListenerObject|null} handler - The function originally bound to the event.
      * @param {boolean|EventListenerOptions} [options] - Optional listener options.
      * @returns {TinyEventTarget|TinyEventTarget[]}
      */
@@ -34691,7 +35540,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Removes a specific event listener from an element.
      *
      * @param {string} event - The event type.
-     * @param {EventRegistryHandle} handler - The function originally bound to the event.
+     * @param {EventListenerOrEventListenerObject|null} handler - The function originally bound to the event.
      * @param {boolean|EventListenerOptions} [options] - Optional listener options.
      * @returns {TinyEventTarget|TinyEventTarget[]}
      */
@@ -34721,7 +35570,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Removes all event listeners of all types from the element.
      *
      * @param {TinyEventTarget|TinyEventTarget[]} el - The target element.
-     * @param {((handler: EventListenerOrEventListenerObject, event: string) => boolean)|null} [filterFn=null] -
+     * @param {((handler: EventListenerOrEventListenerObject|null, event: string) => boolean)|null} [filterFn=null] -
      *        Optional filter function to selectively remove specific handlers.
      * @returns {TinyEventTarget|TinyEventTarget[]}
      */
@@ -34731,7 +35580,7 @@ var TinyHtml = /*#__PURE__*/function () {
     /**
      * Removes all event listeners of all types from the element.
      *
-     * @param {((handler: EventListenerOrEventListenerObject, event: string) => boolean)|null} [filterFn=null] -
+     * @param {((handler: EventListenerOrEventListenerObject|null, event: string) => boolean)|null} [filterFn=null] -
      *        Optional filter function to selectively remove specific handlers.
      * @returns {TinyEventTarget|TinyEventTarget[]}
      */
@@ -35542,9 +36391,9 @@ var TinyHtml = /*#__PURE__*/function () {
      * Ensures the input is returned as an array.
      * Useful to normalize operations across multiple or single element/window/document elements.
      *
-     * @param {TinyElementAndWinAndDoc|TinyElementAndWinAndDoc[]} elems - A single element/window element or array of html elements.
+     * @param {TinyElementAndWinAndDoc|TinyElementAndWinAndDoc[]} elems - A single element/document/window element or array of html elements.
      * @param {string} where - The method or context name where validation is being called.
-     * @returns {ElementAndWindow[]} - Always returns an array of element/window elements.
+     * @returns {ElementAndWindow[]} - Always returns an array of element/document/window elements.
      * @readonly
      */
   }, {
@@ -35559,9 +36408,9 @@ var TinyHtml = /*#__PURE__*/function () {
      * Ensures the input is returned as an single element/window/document element.
      * Useful to normalize operations across multiple or single element/window/document elements.
      *
-     * @param {TinyElementAndWinAndDoc|TinyElementAndWinAndDoc[]} elems - A single element/window element or array of html elements.
+     * @param {TinyElementAndWinAndDoc|TinyElementAndWinAndDoc[]} elems - A single element/document/window element or array of html elements.
      * @param {string} where - The method or context name where validation is being called.
-     * @returns {ElementAndWindow} - Always returns an single element/window element.
+     * @returns {ElementAndWindow} - Always returns an single element/document/window element.
      * @readonly
      */
   }, {
@@ -35570,6 +36419,34 @@ var TinyHtml = /*#__PURE__*/function () {
       var result = TinyHtml._preElemTemplate(elems, where, [Element, Window, Document], ['Element', 'Window', 'Document']);
       if (result instanceof Document) return result.documentElement;
       return result;
+    }
+    /**
+     * Ensures the input is returned as an array.
+     * Useful to normalize operations across multiple or single element with document elements.
+     *
+     * @param {TinyElementWithDoc|TinyElementWithDoc[]} elems - A single element with document element or array of html elements.
+     * @param {string} where - The method or context name where validation is being called.
+     * @returns {ElementWithDoc[]} - Always returns an array of element with document elements.
+     * @readonly
+     */
+  }, {
+    key: "_preElemsWithDoc",
+    value: function _preElemsWithDoc(elems, where) {
+      return TinyHtml._preElemsTemplate(elems, where, [Element, Document], ['Element', 'Document']);
+    }
+    /**
+     * Ensures the input is returned as an single element with document element.
+     * Useful to normalize operations across multiple or single element with document elements.
+     *
+     * @param {TinyElementWithDoc|TinyElementWithDoc[]} elems - A single element/window element or array of html elements.
+     * @param {string} where - The method or context name where validation is being called.
+     * @returns {ElementWithDoc} - Always returns an single element/window element.
+     * @readonly
+     */
+  }, {
+    key: "_preElemWithDoc",
+    value: function _preElemWithDoc(elems, where) {
+      return TinyHtml._preElemTemplate(elems, where, [Element, Document], ['Element', 'Document']);
     }
     /**
      * Normalizes and converts one or more DOM elements (or TinyHtml instances)
@@ -36211,11 +37088,11 @@ var TinyHtml = /*#__PURE__*/function () {
   }, {
     key: "style",
     value: function style(el) {
-      var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-        _ref$camelCase = _ref.camelCase,
-        camelCase = _ref$camelCase === void 0 ? false : _ref$camelCase,
-        _ref$rawAttr = _ref.rawAttr,
-        rawAttr = _ref$rawAttr === void 0 ? false : _ref$rawAttr;
+      var _ref3 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+        _ref3$camelCase = _ref3.camelCase,
+        camelCase = _ref3$camelCase === void 0 ? false : _ref3$camelCase,
+        _ref3$rawAttr = _ref3.rawAttr,
+        rawAttr = _ref3$rawAttr === void 0 ? false : _ref3$rawAttr;
       if (typeof camelCase !== 'boolean') throw new TypeError("\"camelCase\" must be a boolean. Received: ".concat(_typeof(camelCase)));
       if (typeof rawAttr !== 'boolean') throw new TypeError("\"rawAttr\" must be a boolean. Received: ".concat(_typeof(rawAttr)));
       var elem = TinyHtml._preHtmlElem(el, 'style');
@@ -36324,9 +37201,7 @@ var TinyHtml = /*#__PURE__*/function () {
     key: "setWinScrollTop",
     value: function setWinScrollTop(value) {
       if (typeof value !== 'number') throw new TypeError('The value must be a number.');
-      window.scrollTo({
-        top: value
-      });
+      TinyHtml.setScrollTop(window, value);
     }
     /**
      * Sets the horizontal scroll position of the window.
@@ -36336,9 +37211,7 @@ var TinyHtml = /*#__PURE__*/function () {
     key: "setWinScrollLeft",
     value: function setWinScrollLeft(value) {
       if (typeof value !== 'number') throw new TypeError('The value must be a number.');
-      window.scrollTo({
-        left: value
-      });
+      TinyHtml.setScrollLeft(window, value);
     }
     /**
      * Gets the vertical scroll position of the window.
@@ -36525,6 +37398,14 @@ var TinyHtml = /*#__PURE__*/function () {
       return TinyHtml.getDimension(elem, 'width', includeMargin ? 'margin' : 'border');
     }
   }, {
+    key: "animate",
+    value: function animate(el, keyframes, ops) {
+      TinyHtml._preElems(el, 'animate').forEach(function (elem) {
+        return elem.animate(keyframes, ops);
+      });
+      return el;
+    }
+  }, {
     key: "offset",
     value: function offset(el) {
       var elem = TinyHtml._preElem(el, 'offset');
@@ -36601,36 +37482,113 @@ var TinyHtml = /*#__PURE__*/function () {
       return elem.scrollLeft;
     }
   }, {
+    key: "scrollToXY",
+    value:
+    /**
+     * Smoothly scrolls one or more elements (or the window) to the specified X and Y coordinates
+     * using a custom duration and easing function.
+     *
+     * If `duration` or a valid `easing` is not provided, the scroll will be performed immediately.
+     *
+     * @param {TinyElementAndWindow | TinyElementAndWindow[]} el - A single element, array of elements, or the window to scroll.
+     * @param {Object} [settings={}] - Configuration object for the scroll animation.
+     * @param {number} [settings.targetX] - The horizontal scroll target in pixels.
+     * @param {number} [settings.targetY] - The vertical scroll target in pixels.
+     * @param {number} [settings.duration] - The duration of the animation in milliseconds.
+     * @param {Easings} [settings.easing] - The easing function name to use for the scroll animation.
+     * @param {OnScrollAnimation} [settings.onAnimation] - Optional callback invoked on each animation
+     *   frame with the current scroll position, normalized animation time (`0` to `1`), and a completion flag.
+     * @returns {TinyElementAndWindow|TinyElementAndWindow[]}
+     * @throws {TypeError} If `el` is not a valid element, array, or window.
+     * @throws {TypeError} If `targetX` or `targetY` is defined but not a number.
+     * @throws {TypeError} If `duration` is defined but not a number.
+     * @throws {TypeError} If `easing` is defined but not a valid easing function name.
+     * @throws {TypeError} If `onAnimation` is defined but not a function.
+     */
+    function scrollToXY(el) {
+      var _ref4 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+        targetX = _ref4.targetX,
+        targetY = _ref4.targetY,
+        duration = _ref4.duration,
+        easing = _ref4.easing,
+        onAnimation = _ref4.onAnimation;
+      if (targetX !== undefined && typeof targetX !== 'number') throw new TypeError('`targetX` must be a number if provided.');
+      if (targetY !== undefined && typeof targetY !== 'number') throw new TypeError('`targetY` must be a number if provided.');
+      if (duration !== undefined && typeof duration !== 'number') throw new TypeError('`duration` must be a number if provided.');
+      if (easing !== undefined && typeof easing !== 'string') throw new TypeError('`easing` must be a string if provided.');
+      if (easing !== undefined && typeof TinyHtml.easings[easing] !== 'function') throw new TypeError("Unknown easing function: \"".concat(easing, "\"."));
+      if (onAnimation !== undefined && typeof onAnimation !== 'function') throw new TypeError('`onAnimation` must be a function if provided.');
+      /**
+       * Performs an instant scroll to the given coordinates.
+       *
+       * @param {ElementAndWindow} elem - The element or window to scroll.
+       * @param {number} newX - The final horizontal scroll position.
+       * @param {number} newY - The final vertical scroll position.
+       * @param {number} time - Normalized progress value.
+       */
+      var executeScroll = function executeScroll(elem, newX, newY, time) {
+        if (elem instanceof Window) {
+          window.scrollTo(newX, newY);
+        } else if (elem.nodeType === 9) {
+          // @ts-ignore
+          elem.defaultView.scrollTo(newX, newY);
+        } else {
+          var startX = elem instanceof Window ? window.scrollX : elem.scrollLeft;
+          var startY = elem instanceof Window ? window.scrollY : elem.scrollTop;
+          if (startX !== newX) elem.scrollLeft = newX;
+          if (startY !== newY) elem.scrollTop = newY;
+        }
+        if (typeof onAnimation === 'function') onAnimation({
+          x: newX,
+          y: newY,
+          isComplete: time >= 1,
+          time: time
+        });
+      };
+      TinyHtml._preElemsAndWindow(el, 'scrollToXY').forEach(function (elem) {
+        var startX = elem instanceof Window ? window.scrollX : elem.scrollLeft;
+        var startY = elem instanceof Window ? window.scrollY : elem.scrollTop;
+        var targX = targetX !== null && targetX !== void 0 ? targetX : startX;
+        var targY = targetY !== null && targetY !== void 0 ? targetY : startY;
+        var changeX = targX - startX;
+        var changeY = targY - startY;
+        var ease = typeof easing === 'string' && TinyHtml.easings[easing] || null;
+        if (typeof duration !== 'number' || typeof ease !== 'function') return executeScroll(elem, targX, targY, 1);
+        var startTime = performance.now();
+        var dur = duration !== null && duration !== void 0 ? duration : 0;
+        /**
+         * Animates the scroll position based on easing and time.
+         *
+         * @param {number} currentTime - Timestamp provided by requestAnimationFrame.
+         */
+        function animateScroll(currentTime) {
+          if (typeof ease !== 'function') return;
+          var time = Math.min(1, (currentTime - startTime) / dur);
+          var easedTime = ease(time);
+          var newX = startX + changeX * easedTime;
+          var newY = startY + changeY * easedTime;
+          executeScroll(elem, newX, newY, time);
+          if (time < 1) requestAnimationFrame(animateScroll);
+        }
+        requestAnimationFrame(animateScroll);
+      });
+      return el;
+    }
+  }, {
     key: "setScrollTop",
     value: function setScrollTop(el, value) {
       if (typeof value !== 'number') throw new TypeError('ScrollTop value must be a number.');
-      TinyHtml._preElemsAndWindow(el, 'setScrollTop').forEach(function (elem) {
-        if (TinyHtml.isWindow(elem)) {
-          elem.scrollTo(elem.pageXOffset, value);
-        } else if (elem.nodeType === 9) {
-          // @ts-ignore
-          elem.defaultView.scrollTo(elem.defaultView.pageXOffset, value);
-        } else {
-          elem.scrollTop = value;
-        }
+      return TinyHtml.scrollToXY(el, {
+        targetY: value
       });
-      return el;
     }
   }, {
     key: "setScrollLeft",
     value: function setScrollLeft(el, value) {
       if (typeof value !== 'number') throw new TypeError('ScrollLeft value must be a number.');
-      TinyHtml._preElemsAndWindow(el, 'setScrollLeft').forEach(function (elem) {
-        if (TinyHtml.isWindow(elem)) {
-          elem.scrollTo(value, elem.pageYOffset);
-        } else if (elem.nodeType === 9) {
-          // @ts-ignore
-          elem.defaultView.scrollTo(value, elem.defaultView.pageYOffset);
-        } else {
-          elem.scrollLeft = value;
-        }
+      return TinyHtml.scrollToXY(el, {
+        targetX: value
       });
-      return el;
     }
   }, {
     key: "borderWidth",
@@ -36979,6 +37937,69 @@ var TinyHtml = /*#__PURE__*/function () {
       return TinyHtml.val(elem) === 'on' ? true : false;
     }
   }, {
+    key: "listenForPaste",
+    value: function listenForPaste(el) {
+      var _ref5 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+        onFilePaste = _ref5.onFilePaste,
+        onTextPaste = _ref5.onTextPaste;
+      if (typeof onFilePaste !== 'undefined' && typeof onFilePaste !== 'function') throw new TypeError('onFilePaste must be a function.');
+      if (typeof onTextPaste !== 'undefined' && typeof onTextPaste !== 'function') throw new TypeError('onTextPaste must be a function.');
+      /** @type {EventListenerOrEventListenerObject} */
+      var pasteEvent = function pasteEvent(event) {
+        var _event$clipboardData;
+        if (!(event instanceof ClipboardEvent)) return;
+        var items = ((_event$clipboardData = event.clipboardData) === null || _event$clipboardData === void 0 ? void 0 : _event$clipboardData.items) || [];
+        var _iterator9 = _createForOfIteratorHelper(items),
+          _step9;
+        try {
+          var _loop = function _loop() {
+            var item = _step9.value;
+            if (item.kind === 'file') {
+              if (typeof onFilePaste === 'function') {
+                var file = item.getAsFile();
+                if (file) onFilePaste(item, file);
+              }
+            } else if (item.kind === 'string') {
+              if (typeof onTextPaste === 'function') item.getAsString(function (text) {
+                return onTextPaste(item, text);
+              });
+            }
+          };
+          for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
+            _loop();
+          }
+        } catch (err) {
+          _iterator9.e(err);
+        } finally {
+          _iterator9.f();
+        }
+      };
+      TinyHtml._preElemsWithDoc(el, 'listenForPaste').forEach(function (elem) {
+        return TinyHtml.on(elem, 'paste', pasteEvent);
+      });
+      return pasteEvent;
+    }
+  }, {
+    key: "hasEventListener",
+    value: function hasEventListener(el, event) {
+      var elem = TinyHtml._preEventTargetElem(el, 'hasEventListener');
+      if (!__eventRegistry.has(elem)) return false;
+      var events = __eventRegistry.get(elem);
+      return !!(events && Array.isArray(events[event]) && events[event].length > 0);
+    }
+  }, {
+    key: "hasExactEventListener",
+    value: function hasExactEventListener(el, event, handler) {
+      var elem = TinyHtml._preEventTargetElem(el, 'hasExactEventListener');
+      if (typeof handler !== 'function') throw new TypeError('The "handler" must be a function.');
+      if (!__eventRegistry.has(elem)) return false;
+      var events = __eventRegistry.get(elem);
+      if (!events || !Array.isArray(events[event])) return false;
+      return events[event].some(function (item) {
+        return item.handler === handler;
+      });
+    }
+  }, {
     key: "on",
     value: function on(el, event, handler, options) {
       if (typeof event !== 'string') throw new TypeError('The event name must be a string.');
@@ -37001,10 +38022,10 @@ var TinyHtml = /*#__PURE__*/function () {
       var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
       if (typeof event !== 'string') throw new TypeError('The event name must be a string.');
       TinyHtml._preEventTargetElems(el, 'once').forEach(function (elem) {
-        /** @type {EventRegistryHandle} e */
+        /** @type {EventListenerOrEventListenerObject} */
         var _wrapped = function wrapped(e) {
           TinyHtml.off(elem, event, _wrapped);
-          handler(e);
+          if (typeof handler === 'function') handler(e);
         };
         TinyHtml.on(elem, event, _wrapped, typeof options === 'boolean' ? options : _objectSpread(_objectSpread({}, options), {}, {
           once: true
@@ -37035,17 +38056,17 @@ var TinyHtml = /*#__PURE__*/function () {
       TinyHtml._preEventTargetElems(el, 'offAll').forEach(function (elem) {
         var events = __eventRegistry.get(elem);
         if (events && events[event]) {
-          var _iterator9 = _createForOfIteratorHelper(events[event]),
-            _step9;
+          var _iterator0 = _createForOfIteratorHelper(events[event]),
+            _step0;
           try {
-            for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
-              var entry = _step9.value;
+            for (_iterator0.s(); !(_step0 = _iterator0.n()).done;) {
+              var entry = _step0.value;
               elem.removeEventListener(event, entry.handler, entry.options);
             }
           } catch (err) {
-            _iterator9.e(err);
+            _iterator0.e(err);
           } finally {
-            _iterator9.f();
+            _iterator0.f();
           }
           delete events[event];
         }
@@ -37061,19 +38082,19 @@ var TinyHtml = /*#__PURE__*/function () {
         var events = __eventRegistry.get(elem);
         if (!events) return;
         for (var event in events) {
-          var _iterator0 = _createForOfIteratorHelper(events[event]),
-            _step0;
+          var _iterator1 = _createForOfIteratorHelper(events[event]),
+            _step1;
           try {
-            for (_iterator0.s(); !(_step0 = _iterator0.n()).done;) {
-              var entry = _step0.value;
+            for (_iterator1.s(); !(_step1 = _iterator1.n()).done;) {
+              var entry = _step1.value;
               if (typeof filterFn !== 'function' || filterFn(entry.handler, event)) {
                 elem.removeEventListener(event, entry.handler, entry.options);
               }
             }
           } catch (err) {
-            _iterator0.e(err);
+            _iterator1.e(err);
           } finally {
-            _iterator0.f();
+            _iterator1.f();
           }
         }
         __eventRegistry["delete"](elem);
@@ -37725,12 +38746,35 @@ _defineProperty(TinyHtml, "cssPropAliases", new Proxy(_cssPropAliases._, {
   }
 }));
 /** @type {Record<string | symbol, string>} */
-_defineProperty(TinyHtml, "cssPropRevAliases", Object.fromEntries(Object.entries(_cssPropAliases._).map(function (_ref2) {
-  var _ref3 = _slicedToArray(_ref2, 2),
-    camel = _ref3[0],
-    kebab = _ref3[1];
+_defineProperty(TinyHtml, "cssPropRevAliases", Object.fromEntries(Object.entries(_cssPropAliases._).map(function (_ref6) {
+  var _ref7 = _slicedToArray(_ref6, 2),
+    camel = _ref7[0],
+    kebab = _ref7[1];
   return [kebab, camel];
 })));
+_defineProperty(TinyHtml, "easings", {
+  linear: function linear(t) {
+    return t;
+  },
+  easeInQuad: function easeInQuad(t) {
+    return t * t;
+  },
+  easeOutQuad: function easeOutQuad(t) {
+    return t * (2 - t);
+  },
+  easeInOutQuad: function easeInOutQuad(t) {
+    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+  },
+  easeInCubic: function easeInCubic(t) {
+    return t * t * t;
+  },
+  easeOutCubic: function easeOutCubic(t) {
+    return --t * t * t + 1;
+  },
+  easeInOutCubic: function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+  }
+});
 _defineProperty(TinyHtml, "_valHooks", {
   option: {
     /**
@@ -37868,7 +38912,7 @@ _defineProperty(TinyHtml, "_propFix", {
 });
 var _default = exports["default"] = TinyHtml;
 
-},{"../basics/collision.mjs":151}],167:[function(require,module,exports){
+},{"../basics/collision.mjs":151}],168:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38130,13 +39174,13 @@ var TinyNotifications = /*#__PURE__*/function () {
 }();
 var _default = exports["default"] = TinyNotifications;
 
-},{"../basics/text.mjs":157}],168:[function(require,module,exports){
+},{"../basics/text.mjs":157}],169:[function(require,module,exports){
 arguments[4][129][0].apply(exports,arguments)
-},{"dup":129}],169:[function(require,module,exports){
+},{"dup":129}],170:[function(require,module,exports){
 arguments[4][130][0].apply(exports,arguments)
-},{"dup":130}],170:[function(require,module,exports){
+},{"dup":130}],171:[function(require,module,exports){
 arguments[4][131][0].apply(exports,arguments)
-},{"_process":97,"dup":131}],171:[function(require,module,exports){
+},{"_process":97,"dup":131}],172:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39193,9 +40237,505 @@ _defineProperty(TinySmartScroller, "Utils", _objectSpread(_objectSpread({}, Tiny
 }));
 var _default = exports["default"] = TinySmartScroller;
 
-},{"../basics/collision.mjs":151,"./TinyHtml.mjs":166}],172:[function(require,module,exports){
+},{"../basics/collision.mjs":151,"./TinyHtml.mjs":167}],173:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+var _el = /*#__PURE__*/new WeakMap();
+var _openTag = /*#__PURE__*/new WeakMap();
+var _closeTag = /*#__PURE__*/new WeakMap();
+/**
+ * A full-featured text range editor for `<input>` and `<textarea>` elements,
+ * including advanced utilities for BBCode or similar tag-based markup editing.
+ */
+var TinyTextRangeEditor = /*#__PURE__*/function () {
+  /**
+   * @param {HTMLInputElement | HTMLTextAreaElement} elem - The target editable input or textarea element.
+   * @param {Object} [settings={}] - Optional tag symbol customization.
+   * @param {string} [settings.openTag='['] - The character or symbol used to start a tag (e.g., `'['`).
+   * @param {string} [settings.closeTag=']'] - The character or symbol used to end a tag (e.g., `']'`).
+   */
+  function TinyTextRangeEditor(elem) {
+    var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref$openTag = _ref.openTag,
+      openTag = _ref$openTag === void 0 ? '[' : _ref$openTag,
+      _ref$closeTag = _ref.closeTag,
+      closeTag = _ref$closeTag === void 0 ? ']' : _ref$closeTag;
+    _classCallCheck(this, TinyTextRangeEditor);
+    /** @type {HTMLInputElement | HTMLTextAreaElement} */
+    _classPrivateFieldInitSpec(this, _el, void 0);
+    /** @type {string} */
+    _classPrivateFieldInitSpec(this, _openTag, void 0);
+    /** @type {string} */
+    _classPrivateFieldInitSpec(this, _closeTag, void 0);
+    if (!(elem instanceof HTMLInputElement || elem instanceof HTMLTextAreaElement)) throw new TypeError('Element must be an input or textarea.');
+    if (typeof openTag !== 'string') throw new TypeError('openTag must be a string.');
+    if (typeof closeTag !== 'string') throw new TypeError('closeTag must be a string.');
+    _classPrivateFieldSet(_el, this, elem);
+    _classPrivateFieldSet(_openTag, this, openTag);
+    _classPrivateFieldSet(_closeTag, this, closeTag);
+  }
+  /** @returns {string} The current open tag symbol. */
+  return _createClass(TinyTextRangeEditor, [{
+    key: "getOpenTag",
+    value: function getOpenTag() {
+      return _classPrivateFieldGet(_openTag, this);
+    }
+    /** @returns {string} The current close tag symbol. */
+  }, {
+    key: "getCloseTag",
+    value: function getCloseTag() {
+      return _classPrivateFieldGet(_closeTag, this);
+    }
+    /** @param {string} tag - New open tag symbol to use (e.g., `'['`). */
+  }, {
+    key: "setOpenTag",
+    value: function setOpenTag(tag) {
+      if (typeof tag !== 'string') throw new TypeError('Open tag must be a string.');
+      _classPrivateFieldSet(_openTag, this, tag);
+    }
+    /** @param {string} tag - New close tag symbol to use (e.g., `']'`). */
+  }, {
+    key: "setCloseTag",
+    value: function setCloseTag(tag) {
+      if (typeof tag !== 'string') throw new TypeError('Close tag must be a string.');
+      _classPrivateFieldSet(_closeTag, this, tag);
+    }
+    /**
+     * Ensures the element has focus.
+     * @returns {TinyTextRangeEditor}
+     */
+  }, {
+    key: "ensureFocus",
+    value: function ensureFocus() {
+      if (document.activeElement !== _classPrivateFieldGet(_el, this)) _classPrivateFieldGet(_el, this).focus();
+      return this;
+    }
+    /**
+     * Focus the element.
+     * @returns {TinyTextRangeEditor}
+     */
+  }, {
+    key: "focus",
+    value: function focus() {
+      _classPrivateFieldGet(_el, this).focus();
+      return this;
+    }
+    /** @returns {{ start: number, end: number }} The current selection range. */
+  }, {
+    key: "getSelectionRange",
+    value: function getSelectionRange() {
+      var _classPrivateFieldGet2, _classPrivateFieldGet3;
+      return {
+        start: (_classPrivateFieldGet2 = _classPrivateFieldGet(_el, this).selectionStart) !== null && _classPrivateFieldGet2 !== void 0 ? _classPrivateFieldGet2 : NaN,
+        end: (_classPrivateFieldGet3 = _classPrivateFieldGet(_el, this).selectionEnd) !== null && _classPrivateFieldGet3 !== void 0 ? _classPrivateFieldGet3 : NaN
+      };
+    }
+    /**
+     * Sets the current selection range.
+     * @param {number} start - Start index.
+     * @param {number} end - End index.
+     * @param {boolean} [preserveScroll=true] - Whether to preserve scroll position.
+     * @returns {TinyTextRangeEditor}
+     */
+  }, {
+    key: "setSelectionRange",
+    value: function setSelectionRange(start, end) {
+      var preserveScroll = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+      if (typeof start !== 'number' || typeof end !== 'number') throw new TypeError('start and end must be numbers.');
+      if (typeof preserveScroll !== 'boolean') throw new TypeError('preserveScroll must be a boolean.');
+      var scrollTop = _classPrivateFieldGet(_el, this).scrollTop;
+      var scrollLeft = _classPrivateFieldGet(_el, this).scrollLeft;
+      _classPrivateFieldGet(_el, this).setSelectionRange(start, end);
+      if (preserveScroll) {
+        _classPrivateFieldGet(_el, this).scrollTop = scrollTop;
+        _classPrivateFieldGet(_el, this).scrollLeft = scrollLeft;
+      }
+      return this;
+    }
+    /** @returns {string} The full current text value. */
+  }, {
+    key: "getValue",
+    value: function getValue() {
+      return _classPrivateFieldGet(_el, this).value;
+    }
+    /**
+     * Sets the full value of the element.
+     * @param {string} value - The new value to assign.
+     * @returns {TinyTextRangeEditor}
+     */
+  }, {
+    key: "setValue",
+    value: function setValue(value) {
+      if (typeof value !== 'string') throw new TypeError('Value must be a string.');
+      _classPrivateFieldGet(_el, this).value = value;
+      return this;
+    }
+    /** @returns {string} The currently selected text. */
+  }, {
+    key: "getSelectedText",
+    value: function getSelectedText() {
+      var _this$getSelectionRan = this.getSelectionRange(),
+        start = _this$getSelectionRan.start,
+        end = _this$getSelectionRan.end;
+      return _classPrivateFieldGet(_el, this).value.slice(start, end);
+    }
+    /**
+     * Inserts text at the current selection, replacing any selected content.
+     * @param {string} text - The text to insert.
+     * @param {Object} [settings={}] - Optional auto-spacing behavior.
+     * @param {'start' | 'end' | 'preserve'} [settings.newCursor='end'] - Controls caret position after insertion.
+     * @param {boolean} [settings.autoSpacing=false]
+     * @param {boolean} [settings.autoSpaceLeft=false]
+     * @param {boolean} [settings.autoSpaceRight=false]
+     * @returns {TinyTextRangeEditor}
+     */
+  }, {
+    key: "insertText",
+    value: function insertText(text) {
+      var _ref2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+        _ref2$newCursor = _ref2.newCursor,
+        newCursor = _ref2$newCursor === void 0 ? 'end' : _ref2$newCursor,
+        _ref2$autoSpacing = _ref2.autoSpacing,
+        autoSpacing = _ref2$autoSpacing === void 0 ? false : _ref2$autoSpacing,
+        _ref2$autoSpaceLeft = _ref2.autoSpaceLeft,
+        autoSpaceLeft = _ref2$autoSpaceLeft === void 0 ? autoSpacing : _ref2$autoSpaceLeft,
+        _ref2$autoSpaceRight = _ref2.autoSpaceRight,
+        autoSpaceRight = _ref2$autoSpaceRight === void 0 ? autoSpacing : _ref2$autoSpaceRight;
+      if (typeof text !== 'string') throw new TypeError('Text must be a string.');
+      if (!['start', 'end', 'preserve'].includes(newCursor)) throw new TypeError("newCursor must be one of 'start', 'end', or 'preserve'.");
+      if (typeof autoSpacing !== 'boolean') throw new TypeError('autoSpacing must be a boolean.');
+      if (typeof autoSpaceLeft !== 'boolean') throw new TypeError('autoSpaceLeft must be a boolean.');
+      if (typeof autoSpaceRight !== 'boolean') throw new TypeError('autoSpaceRight must be a boolean.');
+      var _this$getSelectionRan2 = this.getSelectionRange(),
+        start = _this$getSelectionRan2.start,
+        end = _this$getSelectionRan2.end;
+      var value = _classPrivateFieldGet(_el, this).value;
+      var leftChar = value[start - 1] || '';
+      var rightChar = value[end] || '';
+      var addLeft = autoSpaceLeft && leftChar && !/\s/.test(leftChar);
+      var addRight = autoSpaceRight && rightChar && !/\s/.test(rightChar);
+      var finalText = "".concat(addLeft ? ' ' : '').concat(text).concat(addRight ? ' ' : '');
+      var newValue = value.slice(0, start) + finalText + value.slice(end);
+      this.setValue(newValue);
+      var cursorPos = start;
+      if (newCursor === 'end') cursorPos = start + finalText.length;else if (newCursor === 'preserve') cursorPos = start;
+      this.setSelectionRange(cursorPos, cursorPos);
+      return this;
+    }
+    /**
+     * Deletes the currently selected text.
+     * @returns {TinyTextRangeEditor}
+     */
+  }, {
+    key: "deleteSelection",
+    value: function deleteSelection() {
+      this.insertText('');
+      return this;
+    }
+    /**
+     * Replaces the selection using a transformation function.
+     * @param {(selected: string) => string} transformer - Function that modifies the selected text.
+     * @returns {TinyTextRangeEditor}
+     */
+  }, {
+    key: "transformSelection",
+    value: function transformSelection(transformer) {
+      if (typeof transformer !== 'function') throw new TypeError('transformer must be a function.');
+      var _this$getSelectionRan3 = this.getSelectionRange(),
+        start = _this$getSelectionRan3.start;
+      var selected = this.getSelectedText();
+      var transformed = transformer(selected);
+      this.insertText(transformed);
+      this.setSelectionRange(start, start + transformed.length);
+      return this;
+    }
+    /**
+     * Surrounds current selection with prefix and suffix.
+     * @param {string} prefix - Text to insert before.
+     * @param {string} suffix - Text to insert after.
+     * @returns {TinyTextRangeEditor}
+     */
+  }, {
+    key: "surroundSelection",
+    value: function surroundSelection(prefix, suffix) {
+      if (typeof prefix !== 'string' || typeof suffix !== 'string') throw new TypeError('prefix and suffix must be strings.');
+      var selected = this.getSelectedText();
+      this.insertText("".concat(prefix).concat(selected).concat(suffix));
+      return this;
+    }
+    /**
+     * Moves the caret by a given offset.
+     * @param {number} offset - Characters to move.
+     * @returns {TinyTextRangeEditor}
+     */
+  }, {
+    key: "moveCaret",
+    value: function moveCaret(offset) {
+      if (typeof offset !== 'number') throw new TypeError('offset must be a number.');
+      var _this$getSelectionRan4 = this.getSelectionRange(),
+        start = _this$getSelectionRan4.start;
+      var pos = Math.max(0, start + offset);
+      this.setSelectionRange(pos, pos);
+      return this;
+    }
+    /**
+     * Selects all content in the field.
+     * @returns {TinyTextRangeEditor}
+     */
+  }, {
+    key: "selectAll",
+    value: function selectAll() {
+      this.setSelectionRange(0, _classPrivateFieldGet(_el, this).value.length);
+      return this;
+    }
+    /**
+     * Expands the current selection by character amounts.
+     * @param {number} before - Characters to expand to the left.
+     * @param {number} after - Characters to expand to the right.
+     * @returns {TinyTextRangeEditor}
+     */
+  }, {
+    key: "expandSelection",
+    value: function expandSelection(before, after) {
+      if (typeof before !== 'number' || typeof after !== 'number') throw new TypeError('before and after must be numbers.');
+      var _this$getSelectionRan5 = this.getSelectionRange(),
+        start = _this$getSelectionRan5.start,
+        end = _this$getSelectionRan5.end;
+      var newStart = Math.max(0, start - before);
+      var newEnd = Math.min(_classPrivateFieldGet(_el, this).value.length, end + after);
+      this.setSelectionRange(newStart, newEnd);
+      return this;
+    }
+    /**
+     * Replaces all regex matches in the content.
+     * @param {RegExp} regex - Regex to match.
+     * @param {(match: string) => string} replacer - Replacement function.
+     * @returns {TinyTextRangeEditor}
+     */
+  }, {
+    key: "replaceAll",
+    value: function replaceAll(regex, replacer) {
+      if (!(regex instanceof RegExp)) throw new TypeError('regex must be a RegExp.');
+      if (typeof replacer !== 'function') throw new TypeError('replacer must be a function.');
+      var newValue = _classPrivateFieldGet(_el, this).value.replace(regex, replacer);
+      this.setValue(newValue);
+      return this;
+    }
+    /**
+     * Replaces all regex matches within the currently selected text.
+     *
+     * @param {RegExp} regex - Regular expression to match inside selection.
+     * @param {(match: string) => string} replacer - Function to replace each match.
+     * @returns {TinyTextRangeEditor}
+     */
+  }, {
+    key: "replaceInSelection",
+    value: function replaceInSelection(regex, replacer) {
+      if (!(regex instanceof RegExp)) throw new TypeError('regex must be a RegExp.');
+      if (typeof replacer !== 'function') throw new TypeError('replacer must be a function.');
+      var _this$getSelectionRan6 = this.getSelectionRange(),
+        start = _this$getSelectionRan6.start,
+        end = _this$getSelectionRan6.end;
+      var original = _classPrivateFieldGet(_el, this).value;
+      var selected = original.slice(start, end);
+      var replaced = selected.replace(regex, replacer);
+      var updated = original.slice(0, start) + replaced + original.slice(end);
+      this.setValue(updated);
+      this.setSelectionRange(start, start + replaced.length);
+      return this;
+    }
+    /**
+     * Toggles a code around the current selection.
+     * If it's already wrapped, unwraps it.
+     * @param {string} codeName - The code to toggle.
+     * @returns {TinyTextRangeEditor}
+     */
+  }, {
+    key: "toggleCode",
+    value: function toggleCode(codeName) {
+      if (typeof codeName !== 'string') throw new TypeError('codeName must be a string.');
+      var selected = this.getSelectedText();
+      if (selected.startsWith(codeName) && selected.endsWith(codeName)) {
+        var unwrapped = selected.slice(codeName.length, selected.length - codeName.length);
+        this.insertText(unwrapped);
+      } else {
+        this.insertText("".concat(codeName).concat(selected).concat(codeName));
+      }
+      return this;
+    }
+    /**
+     * Converts a list of attributes into a string suitable for tag insertion.
+     *
+     * This method supports both standard key-value attribute objects (e.g., `{ key: "value" }`)
+     * and boolean-style attribute arrays (e.g., `[ "disabled", "autofocus" ]`).
+     *
+     * - Attributes passed as an array will render as boolean attributes (e.g., `disabled autofocus`)
+     * - Attributes passed as an object will render as `key="value"` pairs (or just `key` if the value is an empty string)
+     *
+     * @param {Record<string, string> | string[]} attributes - The attributes to serialize into a tag string.
+     *   - If an array: treated as a list of boolean-style attributes.
+     *   - If an object: treated as key-value pairs.
+     *
+     * @throws {TypeError} If the array contains non-strings, or the object contains non-string values.
+     * @returns {string} A string of serialized attributes for use inside a tag.
+     *
+     * @example
+     * // Using object attributes
+     * _insertAttr({ size: "12", color: "red" });
+     * // Returns: 'size="12" color="red"'
+     *
+     * @example
+     * // Using boolean attributes
+     * _insertAttr(["disabled", "autofocus"]);
+     * // Returns: 'disabled autofocus'
+     *
+     * @example
+     * // Using mixed/empty object values
+     * _insertAttr({ checked: "", class: "btn" });
+     * // Returns: 'checked class="btn"'
+     */
+  }, {
+    key: "_insertAttr",
+    value: function _insertAttr(attributes) {
+      // Reuse attribute logic
+      var attrStr = '';
+      if (Array.isArray(attributes)) {
+        // string[]
+        if (!attributes.every(function (attr) {
+          return typeof attr === 'string';
+        })) throw new TypeError('All entries in attributes array must be strings.');
+        attrStr = attributes.map(function (attr) {
+          return "".concat(attr);
+        }).join(' ');
+      } else if (_typeof(attributes) === 'object' && attributes !== null) {
+        // Record<string, string>
+        attrStr = Object.entries(attributes).map(function (_ref3) {
+          var _ref4 = _slicedToArray(_ref3, 2),
+            key = _ref4[0],
+            val = _ref4[1];
+          if (typeof val !== 'string') throw new TypeError('All entries in attributes object must be strings.');
+          return "".concat(key).concat(val.length > 0 ? "=\"".concat(val, "\"") : '');
+        }).join(' ');
+      } else {
+        throw new TypeError('attributes must be an object or an array of strings.');
+      }
+      return attrStr;
+    }
+    /**
+     * Wraps the current selection with a tag, optionally including attributes.
+     *
+     * @param {string} tagName - The tag name (e.g., `b`, `color`, etc.).
+     * @param {Record<string,string> | string[]} [attributes={}] - Optional attributes for the opening tag.
+     *   - If an object: key-value pairs (e.g., `{ color: "red" }` → `color="red"`).
+     *   - If an array: boolean attributes (e.g., `["disabled", "readonly"]`).
+     *
+     * @returns {TinyTextRangeEditor}
+     */
+  }, {
+    key: "wrapWithTag",
+    value: function wrapWithTag(tagName) {
+      var attributes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      if (typeof tagName !== 'string') throw new TypeError('tagName must be a string.');
+      var attrStr = this._insertAttr(attributes);
+      var openTag = attrStr ? "".concat(_classPrivateFieldGet(_openTag, this)).concat(tagName, " ").concat(attrStr).concat(_classPrivateFieldGet(_closeTag, this)) : "".concat(_classPrivateFieldGet(_openTag, this)).concat(tagName).concat(_classPrivateFieldGet(_closeTag, this));
+      var closeTag = "".concat(_classPrivateFieldGet(_openTag, this), "/").concat(tagName).concat(_classPrivateFieldGet(_closeTag, this));
+      this.surroundSelection(openTag, closeTag);
+      return this;
+    }
+    /**
+     * Inserts a tag with optional inner content.
+     * @param {string} tagName - The tag to insert.
+     * @param {string} [content=''] - Optional content between tags.
+     * @param {Record<string,string> | string[]} [attributes={}] - Optional attributes or list of empty attributes.
+     * @returns {TinyTextRangeEditor}
+     */
+  }, {
+    key: "insertTag",
+    value: function insertTag(tagName) {
+      var content = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+      var attributes = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+      if (typeof tagName !== 'string') throw new TypeError('tagName must be a string.');
+      if (typeof content !== 'string') throw new TypeError('content must be a string.');
+      var attrStr = this._insertAttr(attributes);
+      var open = attrStr ? "".concat(_classPrivateFieldGet(_openTag, this)).concat(tagName, " ").concat(attrStr).concat(_classPrivateFieldGet(_closeTag, this)) : "".concat(_classPrivateFieldGet(_openTag, this)).concat(tagName).concat(_classPrivateFieldGet(_closeTag, this));
+      var close = "".concat(_classPrivateFieldGet(_openTag, this), "/").concat(tagName).concat(_classPrivateFieldGet(_closeTag, this));
+      this.insertText("".concat(open).concat(content).concat(close));
+      return this;
+    }
+    /**
+     * Inserts a self-closing tag.
+     * @param {string} tagName - The tag name.
+     * @param {Record<string,string> | string[]} [attributes={}] - Optional attributes or list of empty attributes.
+     * @returns {TinyTextRangeEditor}
+     */
+  }, {
+    key: "insertSelfClosingTag",
+    value: function insertSelfClosingTag(tagName) {
+      var attributes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      if (typeof tagName !== 'string') throw new TypeError('tagName must be a string.');
+      var attrStr = this._insertAttr(attributes);
+      var tag = attrStr ? "".concat(_classPrivateFieldGet(_openTag, this)).concat(tagName, " ").concat(attrStr).concat(_classPrivateFieldGet(_closeTag, this)) : "".concat(_classPrivateFieldGet(_openTag, this)).concat(tagName).concat(_classPrivateFieldGet(_closeTag, this));
+      this.insertText(tag);
+      return this;
+    }
+    /**
+     * Toggles a tag around the current selection.
+     * Supports tags with attributes. If already wrapped, it unwraps.
+     * @param {string} tagName - The tag to toggle.
+     * @param {Record<string,string> | string[]} [attributes={}] - Optional attributes to apply when wrapping.
+     * @returns {TinyTextRangeEditor}
+     */
+  }, {
+    key: "toggleTag",
+    value: function toggleTag(tagName) {
+      var attributes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      if (typeof tagName !== 'string') throw new TypeError('tagName must be a string.');
+      var selected = this.getSelectedText();
+      // Regex: opening tag with optional attributes, and closing tag
+      var openRegex = new RegExp("^\\[".concat(tagName, "(\\s+[^\\]]*)?\\]"));
+      var closeRegex = new RegExp("\\[/".concat(tagName, "\\]$"));
+      var hasOpen = openRegex.test(selected);
+      var hasClose = closeRegex.test(selected);
+      if (hasOpen && hasClose) {
+        var unwrapped = selected.replace(openRegex, '') // remove opening tag
+        .replace(closeRegex, ''); // remove closing tag
+        this.insertText(unwrapped);
+      } else {
+        var attrStr = this._insertAttr(attributes);
+        var open = attrStr ? "".concat(_classPrivateFieldGet(_openTag, this)).concat(tagName, " ").concat(attrStr).concat(_classPrivateFieldGet(_closeTag, this)) : "".concat(_classPrivateFieldGet(_openTag, this)).concat(tagName).concat(_classPrivateFieldGet(_closeTag, this));
+        var close = "".concat(_classPrivateFieldGet(_openTag, this), "/").concat(tagName).concat(_classPrivateFieldGet(_closeTag, this));
+        this.insertText("".concat(open).concat(selected).concat(close));
+      }
+      return this;
+    }
+  }]);
+}();
+var _default = exports["default"] = TinyTextRangeEditor;
+
+},{}],174:[function(require,module,exports){
 arguments[4][132][0].apply(exports,arguments)
-},{"dup":132}],173:[function(require,module,exports){
+},{"dup":132}],175:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39957,7 +41497,7 @@ _defineProperty(UltraRandomMsgGen, "defaultAdjectives", defaultAdjectives);
 _defineProperty(UltraRandomMsgGen, "defaultTemplates", defaultTemplates);
 var _default = exports["default"] = UltraRandomMsgGen;
 
-},{}],174:[function(require,module,exports){
+},{}],176:[function(require,module,exports){
 (function (process){(function (){
 "use strict";
 
@@ -42121,6 +43661,6 @@ tippy.setDefaultProps({
 var _default = exports["default"] = tippy;
 
 }).call(this)}).call(this,require('_process'))
-},{"@popperjs/core":27,"_process":97}],175:[function(require,module,exports){
+},{"@popperjs/core":27,"_process":97}],177:[function(require,module,exports){
 module.exports=function(e){var r={};function t(n){if(r[n])return r[n].exports;var a=r[n]={i:n,l:!1,exports:{}};return e[n].call(a.exports,a,a.exports,t),a.l=!0,a.exports}return t.m=e,t.c=r,t.d=function(e,r,n){t.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:n})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,r){if(1&r&&(e=t(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(t.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var a in e)t.d(n,a,function(r){return e[r]}.bind(null,a));return n},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},t.p="",t(t.s=0)}([function(e,r,t){"use strict";t.r(r),t.d(r,"validateHTMLColorName",(function(){return l})),t.d(r,"validateHTMLColorSpecialName",(function(){return i})),t.d(r,"validateHTMLColorHex",(function(){return u})),t.d(r,"validateHTMLColorRgb",(function(){return g})),t.d(r,"validateHTMLColorHsl",(function(){return y})),t.d(r,"validateHTMLColorHwb",(function(){return L})),t.d(r,"validateHTMLColorLab",(function(){return S})),t.d(r,"validateHTMLColorLch",(function(){return m})),t.d(r,"validateHTMLColor",(function(){return G}));const n=e=>e&&"string"==typeof e,a=["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenrod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","DarkOrange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","Goldenrod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenrodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquamarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenrod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","RebeccaPurple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"],o=["currentColor","inherit","transparent"],l=e=>{let r=!1;return n(e)&&a.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},i=e=>{let r=!1;return n(e)&&o.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},u=e=>{if(n(e)){const r=/^#([\da-f]{3}){1,2}$|^#([\da-f]{4}){1,2}$/i;return e&&r.test(e)}return!1},d="(([\\d]{0,5})((\\.([\\d]{1,5}))?))",s=`(${d}%)`,c="(([0-9]|[1-9][0-9]|100)%)",f=`(${c}|(0?((\\.([\\d]{1,5}))?))|1)`,h=`([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?)([\\s]{1,5})${`(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?`}([\\s]{0,5})\\)`,$="(-?(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360)(deg)?)",g=e=>{if(n(e)){const r="([\\s]{0,5})([\\d]{1,5})%?([\\s]{0,5}),?",t="((([\\s]{0,5}),?([\\s]{0,5}))|(([\\s]{1,5})))",n=new RegExp(`^(rgb)a?\\(${`${r}${t}`}${`${r}${t}`}${`${r}${t}`}(${"(\\/?([\\s]{0,5})(0?\\.?([\\d]{1,5})%?([\\s]{0,5}))?|1|0)"})?\\)$`);return e&&n.test(e)}return!1},y=e=>{if(n(e)){const r=new RegExp(`^(hsl)a?\\((([\\s]{0,5})(${$}|${"(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-9][0-9]|400)grad)"}|${"((([0-5])?\\.([\\d]{1,5})|6\\.([0-9]|1[0-9]|2[0-8])|[0-6])rad)"}|${"((0?((\\.([\\d]{1,5}))?)|1)turn)"})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?|,?)([\\s]{0,5})(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?\\)$`);return e&&r.test(e)}return!1},L=e=>{if(n(e)){const r=new RegExp(`^(hwb\\(([\\s]{0,5})${$}([\\s]{1,5}))((0|${c})([\\s]{1,5}))((0|${c})${h}$`);return e&&r.test(e)}return!1},S=e=>{if(n(e)){const r="(-?(([0-9]|[1-9][0-9]|1[0-5][0-9])((\\.([\\d]{1,5}))?)?|160))",t=new RegExp(`^(lab\\(([\\s]{0,5})${s}([\\s]{1,5})${r}([\\s]{1,5})${r}${h}$`);return e&&t.test(e)}return!1},m=e=>{if(n(e)){const r="((([0-9]|[1-9][0-9])?((\\.([\\d]{1,5}))?)|100)(%)?)",t=""+d,n=`((${$})|(0|${f})|(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360))`,a=`(\\/([\\s]{0,5})${f})`,o=new RegExp(`^lch\\(${`(([\\s]{0,5})${r}([\\s]{1,5})${t}([\\s]{1,5})${n}([\\s]{0,5})(${a})?)`}\\)$`);return e&&o.test(e)}return!1},G=e=>!!(e&&u(e)||g(e)||y(e)||L(e)||S(e)||m(e));r.default=e=>!!(e&&u(e)||l(e)||i(e)||g(e)||y(e)||L(e)||S(e)||m(e))}]);
 },{}]},{},[1]);
