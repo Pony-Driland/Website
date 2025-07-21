@@ -36,7 +36,8 @@ import {
     TinyNotifications,
     readBase64Blob,
     TinyHtml,
-    TinyAfterScrollWatcher
+    TinyAfterScrollWatcher,
+    TinyTextRangeEditor,
 } from 'tiny-essentials';
 import TinyDices from 'tiny-dices';
 
@@ -48,6 +49,7 @@ global.window.tinyNotification = new TinyNotifications({ audio: '/audio/notifica
 
 // Imports
 addAiMarkerShortcut();
+global.window.TinyTextRangeEditor = TinyTextRangeEditor;
 global.window.TinyDomReadyManager = TinyDomReadyManager;
 global.window.TinyAfterScrollWatcher = TinyAfterScrollWatcher;
 global.window.TinyHtml = TinyHtml;

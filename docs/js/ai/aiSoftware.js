@@ -1169,6 +1169,7 @@ const AiScriptStart = (connStore) => {
         });
         textarea.val(config.textarea);
         if (config.readOnly) textarea.prop('readOnly', true);
+        const textEditor = new TinyTextRangeEditor(textarea[0]);
 
         // Templates list
         if (
@@ -1353,24 +1354,8 @@ const AiScriptStart = (connStore) => {
             textareaAdd.val('DEFAULT');
 
             // Insert text
-            if (typeof text === 'string' && text.length > 0) {
-              // Cursor position
-              const start = textarea.prop('selectionStart');
-              const end = textarea.prop('selectionEnd');
-
-              // Textarea content
-              const content = textarea.val();
-
-              // Insert new text
-              textarea.val(content.substring(0, start) + text + content.substring(end));
-
-              // New cursor position
-              const newCursorPosition = start + text.length;
-              textarea
-                .prop('selectionStart', newCursorPosition)
-                .prop('selectionEnd', newCursorPosition)
-                .trigger('focus');
-            }
+            if (typeof text === 'string' && text.length > 0)
+              textEditor.insertText(text, { autoSpacing: true }).focus();
           });
 
           // Insert into body
