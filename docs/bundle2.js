@@ -43,7 +43,7 @@ global.window.tinyNotification = new _tinyEssentials.TinyNotifications({
 
 // Imports
 (0, _tinyEssentials.addAiMarkerShortcut)();
-global.window.tinyLocalStorage = new _tinyEssentials.TinyLocalStorage();
+global.window.tinyLs = new _tinyEssentials.TinyLocalStorage();
 global.window.TinyTextRangeEditor = _tinyEssentials.TinyTextRangeEditor;
 global.window.TinyDomReadyManager = _tinyEssentials.TinyDomReadyManager;
 global.window.TinyAfterScrollWatcher = _tinyEssentials.TinyAfterScrollWatcher;
@@ -40493,6 +40493,8 @@ function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.h
 var customEncoders = new Map();
 /** @type {Map<any, DecodeFn>} */
 var customDecoders = new Map();
+/** @type {Set<any>} */
+var customTypesFreezed = new Set(['string', 'boolean', 'number', 'object', 'array', String, Boolean, Number, Object, Array, BigInt, Symbol]);
 /**
  * A function that encodes a value into a serializable JSON-compatible format.
  *
@@ -40810,11 +40812,11 @@ var TinyLocalStorage = /*#__PURE__*/function () {
     }
     ///////////////////////////////////////////////////
     /**
-     * Registers a new JSON-serializable type with its encoder and decoder.
+     * Checks whether a JSON-serializable type is already registered.
      *
-     * @param {any} type - The type or primitive type name (e.g. `"bigint"`, `"symbol"`, etc).
-     * @param {EncodeFn} encodeFn - The function that encodes the value.
-     * @param {DecodeFn} decodeFn - An object with `check` and `decode` methods for restoring the value.
+     * @param {any} type - The type identifier, which can be a string (e.g., `"bigint"`, `"symbol"`)
+     *                     or a reference to a class/constructor function.
+     * @returns {boolean} True if the type has both an encoder and decoder registered.
      */
   }, {
     key: "setLocalStorage",
@@ -41025,7 +41027,10 @@ var TinyLocalStorage = /*#__PURE__*/function () {
       if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
       if (typeof data !== 'string') throw new Error('Value must be a string.');
       this.emit('setString', name, data);
-      return _classPrivateFieldGet(_localStorage, this).setItem(name, data);
+      return _classPrivateFieldGet(_localStorage, this).setItem(name, JSON.stringify({
+        __string__: true,
+        value: data
+      }));
     }
     /**
      * Retrieves a string value from `localStorage`.
@@ -41038,6 +41043,15 @@ var TinyLocalStorage = /*#__PURE__*/function () {
     value: function getString(name) {
       if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
       var value = _classPrivateFieldGet(_localStorage, this).getItem(name);
+      try {
+        /** @type {{ value: string; __string__: boolean }} */
+        // @ts-ignore
+        value = JSON.parse(value);
+        if (!(0, _objChecker.isJsonObject)(value) || !value.__string__ || typeof value.value !== 'string') return null;
+        value = value.value;
+      } catch (_unused) {
+        value = null;
+      }
       if (typeof value === 'string') return value;
       return null;
     }
@@ -41136,21 +41150,44 @@ var TinyLocalStorage = /*#__PURE__*/function () {
       _classPrivateFieldGet(_events, this).offAllTypes();
     }
   }], [{
-    key: "registerJsonType",
-    value: function registerJsonType(type, encodeFn, decodeFn) {
-      customEncoders.set(type, encodeFn);
-      customDecoders.set(type, decodeFn);
+    key: "hasJsonType",
+    value: function hasJsonType(type) {
+      return customEncoders.has(type) && customDecoders.has(type) || customTypesFreezed.has(type);
     }
     /**
-     * Removes a previously registered custom type from the encoding/decoding system.
+     * Registers a new JSON-serializable type with its encoder and decoder.
      *
-     * @param {string} type - The primitive name or constructor reference used in registration.
+     * @param {any} type - The type identifier, which can be a string (e.g., `"bigint"`, `"symbol"`)
+     *                     or a reference to a class/constructor function.
+     * @param {EncodeFn} encodeFn - A function that receives a value of this type and returns a JSON-safe representation.
+     * @param {DecodeFn} decodeFn - An object with `check(value)` to identify this type and `decode(value)` to restore it.
+     * @param {boolean} [freezeType=false] - If true, prevents this type from being unregistered later.
+     * @throws {Error} Throws an error if the type is frozen and cannot be registered.
+     */
+  }, {
+    key: "registerJsonType",
+    value: function registerJsonType(type, encodeFn, decodeFn) {
+      var freezeType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+      if (customTypesFreezed.has(type)) throw new Error("Cannot register type \"".concat(type, "\" because it is frozen."));
+      customEncoders.set(type, encodeFn);
+      customDecoders.set(type, decodeFn);
+      if (freezeType) customTypesFreezed.add(type);
+    }
+    /**
+     * Unregisters a previously registered custom type from the encoding/decoding system.
+     *
+     * @param {any} type - The primitive name or constructor reference used in the registration.
+     * @returns {boolean} Returns true if the type existed and was removed, or false if it wasn't found.
+     * @throws {Error} Throws an error if the type is frozen and cannot be unregistered.
      */
   }, {
     key: "deleteJsonType",
     value: function deleteJsonType(type) {
-      customEncoders["delete"](type);
-      customDecoders["delete"](type);
+      if (customTypesFreezed.has(type)) throw new Error("Cannot remove type \"".concat(type, "\" because it is frozen."));
+      var isDeleted = false;
+      if (customEncoders["delete"](type)) isDeleted = true;
+      if (customDecoders["delete"](type)) isDeleted = true;
+      return isDeleted;
     }
     //////////////////////////////////////////////////////
     /**
@@ -41279,7 +41316,7 @@ function _getJson(name, defaultData) {
   try {
     // @ts-ignore
     parsed = JSON.parse(raw);
-  } catch (_unused) {
+  } catch (_unused2) {
     // @ts-ignore
     return fallback;
   }
@@ -41311,7 +41348,7 @@ TinyLocalStorage.registerJsonType(Map, function (value, encodeSpecialJson) {
       return [k, decodeSpecialJson(v)];
     }));
   }
-});
+}, true);
 // Set
 TinyLocalStorage.registerJsonType(Set, function (value, encodeSpecialJson) {
   return {
@@ -41325,7 +41362,7 @@ TinyLocalStorage.registerJsonType(Set, function (value, encodeSpecialJson) {
   decode: function decode(value, decodeSpecialJson) {
     return new Set(value.data.map(decodeSpecialJson));
   }
-});
+}, true);
 // Date
 TinyLocalStorage.registerJsonType(Date, function (value) {
   return {
@@ -41339,7 +41376,7 @@ TinyLocalStorage.registerJsonType(Date, function (value) {
   decode: function decode(value) {
     return new Date(value.value);
   }
-});
+}, true);
 // Regex
 TinyLocalStorage.registerJsonType(RegExp, function (value) {
   return {
@@ -41354,7 +41391,7 @@ TinyLocalStorage.registerJsonType(RegExp, function (value) {
   decode: function decode(value) {
     return new RegExp(value.source, value.flags);
   }
-});
+}, true);
 // Big Int
 TinyLocalStorage.registerJsonType('bigint', function (value) {
   return {
@@ -41368,7 +41405,7 @@ TinyLocalStorage.registerJsonType('bigint', function (value) {
   decode: function decode(value) {
     return BigInt(value.value);
   }
-});
+}, true);
 // Symbol
 TinyLocalStorage.registerJsonType('symbol', function (value) {
   var _ref5, _Symbol$keyFor;
@@ -41384,7 +41421,7 @@ TinyLocalStorage.registerJsonType('symbol', function (value) {
     var key = value.key;
     return key != null ? Symbol["for"](key) : Symbol();
   }
-});
+}, true);
 var _default = exports["default"] = TinyLocalStorage;
 
 },{"../basics/objChecker.mjs":155,"./TinyEvents.mjs":169}],172:[function(require,module,exports){

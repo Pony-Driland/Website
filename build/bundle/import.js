@@ -50,7 +50,7 @@ global.window.tinyNotification = new TinyNotifications({ audio: '/audio/notifica
 
 // Imports
 addAiMarkerShortcut();
-global.window.tinyLocalStorage = new TinyLocalStorage();
+global.window.tinyLs = new TinyLocalStorage();
 global.window.TinyTextRangeEditor = TinyTextRangeEditor;
 global.window.TinyDomReadyManager = TinyDomReadyManager;
 global.window.TinyAfterScrollWatcher = TinyAfterScrollWatcher;
