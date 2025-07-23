@@ -49,7 +49,7 @@ storyData.youtube = {
       storyData.youtube.qualityList = storyData.youtube.player.getAvailableQualityLevels();
 
       // Storage Volume
-      const storageVolume = Number(tinyLocalStorage.getItem('storyVolume'));
+      const storageVolume = Number(tinyLs.getItem('storyVolume'));
       if (
         isNaN(storageVolume) ||
         !isFinite(storageVolume) ||
@@ -63,10 +63,10 @@ storyData.youtube = {
         ) {
           storyData.youtube.volume = 100;
           storyData.youtube.player.setVolume(100);
-          tinyLocalStorage.setItem('storyVolume', 100);
+          tinyLs.setItem('storyVolume', 100);
           storyData.music.volume = 100;
         } else {
-          tinyLocalStorage.setItem('storyVolume', storyData.youtube.volume);
+          tinyLs.setItem('storyVolume', storyData.youtube.volume);
         }
       } else {
         storyData.youtube.volume = storageVolume;
@@ -150,7 +150,7 @@ storyData.youtube = {
 
   // Volume
   setVolume: function (number) {
-    tinyLocalStorage.setItem('storyVolume', Number(number));
+    tinyLs.setItem('storyVolume', Number(number));
     storyData.youtube.volume = Number(number);
     storyData.youtube.player.setVolume(Number(number));
     storyData.music.volume = Number(number);

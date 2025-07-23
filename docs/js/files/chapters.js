@@ -55,7 +55,7 @@ const storyData = {
       }
     },
   ) {
-    if (tinyLocalStorage.localStorageExists()) {
+    if (tinyLs.localStorageExists()) {
       if (typeof startApp === 'function') {
         // Start App
         const startTinyApp = function () {
@@ -164,7 +164,7 @@ const storyData = {
                     storyData.wordsCount[chapter] = words;
                     storyData.wordsCount.total += words;
                     storyData.chapter.bookmark[chapter] = Number(
-                      tinyLocalStorage.getItem('bookmark' + chapter),
+                      tinyLs.getItem('bookmark' + chapter),
                     );
                     if (
                       isNaN(storyData.chapter.bookmark[chapter]) ||
@@ -174,12 +174,12 @@ const storyData = {
                       storyData.chapter.bookmark[chapter] = 1;
                     }
 
-                    const isNew = !tinyLocalStorage.getItem('chapter' + chapter + 'MD5');
+                    const isNew = !tinyLs.getItem('chapter' + chapter + 'MD5');
                     let isUpdate = false;
                     if (!isNew) {
                       isUpdate =
                         objHash(storyData.data[chapter]) !==
-                        tinyLocalStorage.getItem('chapter' + chapter + 'MD5');
+                        tinyLs.getItem('chapter' + chapter + 'MD5');
                     }
 
                     if (isNew) {
@@ -309,7 +309,7 @@ const storyData = {
         };
 
         // Auto Bookmark
-        storyData.autoBookmark = plugValue(tinyLocalStorage.getItem('autoBookMark'));
+        storyData.autoBookmark = plugValue(tinyLs.getItem('autoBookMark'));
 
         // Start App
         $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
