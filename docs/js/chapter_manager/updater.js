@@ -283,7 +283,7 @@ cacheChapterUpdater.data = function (lastPage) {
 
     // Update Title
     if (!storyData.chapter.blockLineSave) {
-      localStorage.setItem('bookmark' + storyData.chapter.selected, storyData.chapter.line);
+      tinyLocalStorage.setItem('bookmark' + storyData.chapter.selected, storyData.chapter.line);
       storyData.chapter.bookmark[storyData.chapter.selected] = storyData.chapter.line;
     }
 

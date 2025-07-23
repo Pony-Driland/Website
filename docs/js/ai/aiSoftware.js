@@ -3,10 +3,10 @@ class TinyAiStorage extends EventEmitter {
   constructor() {
     super();
 
-    this._selected = localStorage.getItem('tiny-ai-storage-selected');
+    this._selected = tinyLocalStorage.getItem('tiny-ai-storage-selected');
     if (typeof this._selected !== 'string') this._selected = null;
 
-    this.storage = localStorage.getItem('tiny-ai-storage');
+    this.storage = tinyLocalStorage.getItem('tiny-ai-storage');
     try {
       this.storage = JSON.parse(this.storage);
       if (!this.storage) this.storage = {};
@@ -16,7 +16,7 @@ class TinyAiStorage extends EventEmitter {
   }
 
   _saveApiStorage() {
-    localStorage.setItem('tiny-ai-storage', JSON.stringify(this.storage));
+    tinyLocalStorage.setItem('tiny-ai-storage', JSON.stringify(this.storage));
     this.emit('saveApiStorage', this.storage);
   }
 
@@ -29,7 +29,7 @@ class TinyAiStorage extends EventEmitter {
       !objType(this.storage[this._selected], 'object')
     ) {
       this._selected = null;
-      localStorage.removeItem('tiny-ai-storage-selected');
+      tinyLocalStorage.removeItem('tiny-ai-storage-selected');
     }
   }
 
@@ -42,8 +42,8 @@ class TinyAiStorage extends EventEmitter {
         ? value
         : null;
 
-    if (this._selected) localStorage.setItem('tiny-ai-storage-selected', this._selected);
-    else localStorage.removeItem('tiny-ai-storage-selected');
+    if (this._selected) tinyLocalStorage.setItem('tiny-ai-storage-selected', this._selected);
+    else tinyLocalStorage.removeItem('tiny-ai-storage-selected');
   }
 
   selectedAi() {
@@ -414,7 +414,7 @@ const AiScriptStart = (connStore) => {
       try {
         // Get data
         const now = moment();
-        const totalTime = JSON.parse(localStorage.getItem('total-time-using-ai') || '{}');
+        const totalTime = JSON.parse(tinyLocalStorage.getItem('total-time-using-ai') || '{}');
 
         if (typeof totalTime.now !== 'number') totalTime.now = now.valueOf();
         if (typeof totalTime.secondsUsed !== 'number') totalTime.secondsUsed = 0;
@@ -426,7 +426,7 @@ const AiScriptStart = (connStore) => {
 
         // Complete
         totalTime.now = now.valueOf();
-        localStorage.setItem('total-time-using-ai', JSON.stringify(totalTime));
+        tinyLocalStorage.setItem('total-time-using-ai', JSON.stringify(totalTime));
         if (aiLogin) {
           aiLogin.secondsUsed = totalTime.secondsUsed;
           aiLogin.updateTitle();
@@ -766,7 +766,7 @@ const AiScriptStart = (connStore) => {
 
               // Restore textarea
               if (ficConfigs.selected) {
-                let textBackup = localStorage.getItem(`tiny-ai-textarea-${ficConfigs.selected}`);
+                let textBackup = tinyLocalStorage.getItem(`tiny-ai-textarea-${ficConfigs.selected}`);
                 if (typeof textBackup !== 'string') textBackup = '';
                 msgInput.val(textBackup).trigger('input');
               }
@@ -1429,14 +1429,14 @@ const AiScriptStart = (connStore) => {
             const ratelimit = tinyIo.client.getRateLimit() || { dice: {}, size: {} };
             if (objType(ratelimit.dice, 'object')) tinyCfg.rateLimit = ratelimit.dice;
           } else {
-            tinyCfg.data.img = localStorage.getItem(`tiny-dice-img`) || undefined;
-            tinyCfg.data.bg = localStorage.getItem(`tiny-dice-bg`) || 'white';
-            tinyCfg.data.text = localStorage.getItem(`tiny-dice-text`) || 'black';
+            tinyCfg.data.img = tinyLocalStorage.getItem(`tiny-dice-img`) || undefined;
+            tinyCfg.data.bg = tinyLocalStorage.getItem(`tiny-dice-bg`) || 'white';
+            tinyCfg.data.text = tinyLocalStorage.getItem(`tiny-dice-text`) || 'black';
             tinyCfg.data.border =
-              localStorage.getItem(`tiny-dice-border`) || '2px solid rgba(0, 0, 0, 0.05)';
-            tinyCfg.data.selectionBg = localStorage.getItem(`tiny-dice-selection-bg`) || 'black';
+              tinyLocalStorage.getItem(`tiny-dice-border`) || '2px solid rgba(0, 0, 0, 0.05)';
+            tinyCfg.data.selectionBg = tinyLocalStorage.getItem(`tiny-dice-selection-bg`) || 'black';
             tinyCfg.data.selectionText =
-              localStorage.getItem(`tiny-dice-selection-text`) || 'white';
+              tinyLocalStorage.getItem(`tiny-dice-selection-text`) || 'white';
           }
 
           // Form template
@@ -1714,8 +1714,8 @@ const AiScriptStart = (connStore) => {
           const updateDiceData = (where, dataName, value) => {
             dice[where](value);
             if (!tinyIo.client) {
-              if (value) localStorage.setItem(`tiny-dice-${dataName}`, value);
-              else localStorage.removeItem(`tiny-dice-${dataName}`);
+              if (value) tinyLocalStorage.setItem(`tiny-dice-${dataName}`, value);
+              else tinyLocalStorage.removeItem(`tiny-dice-${dataName}`);
             }
             dice.updateDicesSkin();
           };
@@ -2840,7 +2840,7 @@ const AiScriptStart = (connStore) => {
 
             // New model value
             modelSelector.val(
-              localStorage.getItem('tiny-ai-storage-model-selected') || tinyAi.getModel(),
+              tinyLocalStorage.getItem('tiny-ai-storage-model-selected') || tinyAi.getModel(),
             );
             modelSelector.trigger('change');
           }
@@ -2879,7 +2879,7 @@ const AiScriptStart = (connStore) => {
           const model = tinyAi.getModelData(newModel);
           if (model) {
             insertDefaultSettings(model, newModel);
-            localStorage.setItem('tiny-ai-storage-model-selected', newModel);
+            tinyLocalStorage.setItem('tiny-ai-storage-model-selected', newModel);
             if (tinyAi.getData()) tinyAi.setModel(newModel, ficConfigs.selected);
           } else {
             tokenCount.total.text(0);
@@ -2889,7 +2889,7 @@ const AiScriptStart = (connStore) => {
             topK.reset().disable();
             presencePenalty.reset().disable();
             frequencyPenalty.reset().disable();
-            localStorage.removeItem('tiny-ai-storage-model-selected');
+            tinyLocalStorage.removeItem('tiny-ai-storage-model-selected');
           }
 
           if (!isFirstTime && !ignoreTokenUpdater && !modelSelector.prop('disabled'))
@@ -3552,7 +3552,7 @@ const AiScriptStart = (connStore) => {
           chatContainer.scrollTop(scrollBefore + heightDiff);
 
           // Value
-          localStorage.setItem(
+          tinyLocalStorage.setItem(
             `tiny-ai-textarea-${ficConfigs.selected}`,
             typeof value === 'string' ? value : '',
           );
