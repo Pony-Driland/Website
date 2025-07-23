@@ -38,6 +38,7 @@ import {
     TinyHtml,
     TinyAfterScrollWatcher,
     TinyTextRangeEditor,
+    TinyLocalStorage,
 } from 'tiny-essentials';
 import TinyDices from 'tiny-dices';
 
@@ -49,6 +50,7 @@ global.window.tinyNotification = new TinyNotifications({ audio: '/audio/notifica
 
 // Imports
 addAiMarkerShortcut();
+global.window.tinyLocalStorage = new TinyLocalStorage();
 global.window.TinyTextRangeEditor = TinyTextRangeEditor;
 global.window.TinyDomReadyManager = TinyDomReadyManager;
 global.window.TinyAfterScrollWatcher = TinyAfterScrollWatcher;

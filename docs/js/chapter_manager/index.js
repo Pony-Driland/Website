@@ -139,7 +139,7 @@ const storyDialogue = {
     if (Array.isArray(data.nsfw)) {
       let nsfwValue = false;
       for (const item in data.nsfw) {
-        nsfwValue = TinyHtml.boolCheck(localStorage.getItem('NSFW' + data.nsfw[item]));
+        nsfwValue = TinyHtml.boolCheck(tinyLocalStorage.getItem('NSFW' + data.nsfw[item]));
         if (nsfwValue) {
           break;
         }
@@ -313,7 +313,7 @@ const openChapterMenu = (params = {}) => {
     storyData.chapter.ficPageData = filtedItems;
 
     // Save MD5
-    localStorage.setItem('chapter' + chapter + 'MD5', objHash(storyData.data[chapter]));
+    tinyLocalStorage.setItem('chapter' + chapter + 'MD5', objHash(storyData.data[chapter]));
 
     // Pagination
     const pagination = paginateArray(filtedItems, page, storyCfg.itemsPerPage);
@@ -762,7 +762,7 @@ const openChapterMenu = (params = {}) => {
                         if (storyCfg.nsfw[NSFWITEM]) {
                           // Get Value
                           let nsfwValue = TinyHtml.boolCheck(
-                            localStorage.getItem('NSFW' + NSFWITEM),
+                            tinyLocalStorage.getItem('NSFW' + NSFWITEM),
                           );
 
                           // Set Button Text
@@ -791,7 +791,7 @@ const openChapterMenu = (params = {}) => {
                                     .on('click', function () {
                                       // Enable
                                       if (!nsfwValue) {
-                                        localStorage.setItem('NSFW' + NSFWITEM, true);
+                                        tinyLocalStorage.setItem('NSFW' + NSFWITEM, true);
                                         nsfwValue = true;
                                         $(this)
                                           .removeClass('btn-success')
@@ -801,7 +801,7 @@ const openChapterMenu = (params = {}) => {
 
                                       // Disable
                                       else {
-                                        localStorage.setItem('NSFW' + NSFWITEM, false);
+                                        tinyLocalStorage.setItem('NSFW' + NSFWITEM, false);
                                         nsfwValue = false;
                                         $(this)
                                           .removeClass('btn-danger')
@@ -869,7 +869,7 @@ const openChapterMenu = (params = {}) => {
         isNewValue.attr('title', 'Click to mark as read').tooltip();
         isNewValue.on('click', function () {
           // Clear is new value
-          localStorage.setItem('chapter' + chapter + 'MD5', objHash(storyData.data[chapter]));
+          tinyLocalStorage.setItem('chapter' + chapter + 'MD5', objHash(storyData.data[chapter]));
           storyData.isNew[chapter] = 0;
 
           // Remove tooltip

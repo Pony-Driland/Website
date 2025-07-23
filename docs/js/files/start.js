@@ -1631,8 +1631,8 @@ $(() => {
       fn();
 
       // First Time
-      if (!localStorage.getItem('firstTime')) {
-        localStorage.setItem('firstTime', true);
+      if (!tinyLocalStorage.getItem('firstTime')) {
+        tinyLocalStorage.setItem('firstTime', true);
         alert(
           `If this is the first time you enter the website, remember that to browse the website, use navbar at the top of the page. If you want to read the fic, go to the "Read Fic" page that is in the right corner of the navbar.
 

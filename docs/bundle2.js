@@ -43,6 +43,7 @@ global.window.tinyNotification = new _tinyEssentials.TinyNotifications({
 
 // Imports
 (0, _tinyEssentials.addAiMarkerShortcut)();
+global.window.tinyLocalStorage = new _tinyEssentials.TinyLocalStorage();
 global.window.TinyTextRangeEditor = _tinyEssentials.TinyTextRangeEditor;
 global.window.TinyDomReadyManager = _tinyEssentials.TinyDomReadyManager;
 global.window.TinyAfterScrollWatcher = _tinyEssentials.TinyAfterScrollWatcher;
@@ -68,7 +69,7 @@ global.window.Pizzicato = _pizzicato["default"];
 global.window.PhotoSwipeLightbox = _photoswipe["default"];
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"for-promise":85,"jsstore":91,"photoswipe":95,"pizzicato":96,"socket.io-client":99,"tiny-ai-api":110,"tiny-dices":133,"tiny-essentials":160,"tippy.js":176,"validate-color":177}],2:[function(require,module,exports){
+},{"for-promise":85,"jsstore":91,"photoswipe":95,"pizzicato":96,"socket.io-client":99,"tiny-ai-api":110,"tiny-dices":133,"tiny-essentials":161,"tippy.js":181,"validate-color":182}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29309,7 +29310,7 @@ function _insertCreateCube() {
 }
 var _default = exports["default"] = TinyDices;
 
-},{"tiny-essentials":142,"validate-color":177}],134:[function(require,module,exports){
+},{"tiny-essentials":142,"validate-color":182}],134:[function(require,module,exports){
 arguments[4][112][0].apply(exports,arguments)
 },{"dup":112}],135:[function(require,module,exports){
 arguments[4][113][0].apply(exports,arguments)
@@ -30063,7 +30064,7 @@ exports.readBase64Blob = readBase64Blob;
 exports.readFileBlob = readFileBlob;
 exports.readJsonBlob = readJsonBlob;
 exports.saveJsonFile = saveJsonFile;
-var _objFilter = require("./objFilter.mjs");
+var _objChecker = require("./objChecker.mjs");
 function _regeneratorValues(e) { if (null != e) { var t = e["function" == typeof Symbol && Symbol.iterator || "@@iterator"], r = 0; if (t) return t.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) return { next: function next() { return e && r >= e.length && (e = void 0), { value: e && e[r++], done: !e }; } }; } throw new TypeError(_typeof(e) + " is not iterable"); }
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
@@ -30290,7 +30291,7 @@ function _fetchTemplate() {
                     headers: _objectSpread({
                       Accept: 'application/json'
                     }, headers),
-                    body: body !== undefined ? (0, _objFilter.isJsonObject)(body) ? JSON.stringify(body) : body : undefined,
+                    body: body !== undefined ? (0, _objChecker.isJsonObject)(body) ? JSON.stringify(body) : body : undefined,
                     signal: localSignal
                   });
                 case 2:
@@ -30396,7 +30397,7 @@ function _fetchJson() {
                       return res.json();
                     case 2:
                       data = _context3.v;
-                      if (!(!Array.isArray(data) && !(0, _objFilter.isJsonObject)(data))) {
+                      if (!(!Array.isArray(data) && !(0, _objChecker.isJsonObject)(data))) {
                         _context3.n = 3;
                         break;
                       }
@@ -30428,8 +30429,8 @@ function fetchBlob(_x4, _x5, _x6) {
  * @param {Element} [settings.element=document.body] - The element to receive visibility classes.
  * @param {string} [settings.hiddenClass='windowHidden'] - CSS class applied when the page is hidden.
  * @param {string} [settings.visibleClass='windowVisible'] - CSS class applied when the page is visible.
- * @param {() => void} [settings.onVisible] - Callback called when page becomes visible.
- * @param {() => void} [settings.onHidden] - Callback called when page becomes hidden.
+ * @param {(data: { type: string; oldType: string; oldClass: string; }) => void} [settings.onVisible] - Callback called when page becomes visible.
+ * @param {(data: { type: string; oldType: string; oldClass: string; }) => void} [settings.onHidden] - Callback called when page becomes hidden.
  * @returns {() => void} Function that removes all installed event listeners.
  * @throws {TypeError} If any provided setting is invalid.
  */
@@ -30487,6 +30488,8 @@ function installWindowHiddenScript() {
   if (typeof visibleClass !== 'string') throw new TypeError("\"visibleClass\" must be a string.");
   if (onVisible !== undefined && typeof onVisible !== 'function') throw new TypeError("\"onVisible\" must be a function if provided.");
   if (onHidden !== undefined && typeof onHidden !== 'function') throw new TypeError("\"onHidden\" must be a function if provided.");
+  var oldType = '';
+  var oldClass = '';
   var removeClass = function removeClass() {
     element.classList.remove(hiddenClass);
     element.classList.remove(visibleClass);
@@ -30511,19 +30514,40 @@ function installWindowHiddenScript() {
     var hiddenEvents = ['blur', 'focusout', 'pagehide'];
     if (visibleEvents.includes(type)) {
       element.classList.add(visibleClass);
-      onVisible === null || onVisible === void 0 || onVisible();
+      onVisible === null || onVisible === void 0 || onVisible({
+        type: type,
+        oldClass: oldClass,
+        oldType: oldType
+      });
+      oldClass = visibleClass;
     } else if (hiddenEvents.includes(type)) {
       element.classList.add(hiddenClass);
-      onHidden === null || onHidden === void 0 || onHidden();
+      onHidden === null || onHidden === void 0 || onHidden({
+        type: type,
+        oldClass: oldClass,
+        oldType: oldType
+      });
+      oldClass = hiddenClass;
     } else {
       if (isHidden) {
         element.classList.add(hiddenClass);
-        onHidden === null || onHidden === void 0 || onHidden();
+        onHidden === null || onHidden === void 0 || onHidden({
+          type: type,
+          oldClass: oldClass,
+          oldType: oldType
+        });
+        oldClass = hiddenClass;
       } else {
         element.classList.add(visibleClass);
-        onVisible === null || onVisible === void 0 || onVisible();
+        onVisible === null || onVisible === void 0 || onVisible({
+          type: type,
+          oldClass: oldClass,
+          oldType: oldType
+        });
+        oldClass = visibleClass;
       }
     }
+    oldType = type;
   };
   /** @type {() => void} */
   var uninstall = function uninstall() {};
@@ -30562,7 +30586,7 @@ function installWindowHiddenScript() {
   return uninstall;
 }
 
-},{"./objFilter.mjs":155}],154:[function(require,module,exports){
+},{"./objChecker.mjs":155}],154:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30672,11 +30696,382 @@ function isScrolledIntoView(element) {
   return elemBottom <= viewportBottom && elemTop >= viewportTop;
 }
 
-},{"../libs/TinyHtml.mjs":167}],155:[function(require,module,exports){
-arguments[4][119][0].apply(exports,arguments)
-},{"buffer":62,"dup":119}],156:[function(require,module,exports){
+},{"../libs/TinyHtml.mjs":170}],155:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.countObj = countObj;
+exports.isJsonObject = isJsonObject;
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+/**
+ * Counts the number of elements in an array or the number of properties in an object.
+ *
+ * @param {Array<*>|Record<string | number | symbol, any>} obj - The array or object to count.
+ * @returns {number} - The count of items (array elements or object keys), or `0` if the input is neither an array nor an object.
+ *
+ * @example
+ * countObj([1, 2, 3]); // 3
+ * countObj({ a: 1, b: 2 }); // 2
+ * countObj('not an object'); // 0
+ */
+function countObj(obj) {
+  // Is Array
+  if (Array.isArray(obj)) return obj.length;
+  // Object
+  if (isJsonObject(obj)) return Object.keys(obj).length;
+  // Nothing
+  return 0;
+}
+/**
+ * Determines whether a given value is a pure JSON object (plain object).
+ *
+ * A pure object satisfies the following:
+ * - It is not null.
+ * - Its type is "object".
+ * - Its internal [[Class]] is "[object Object]".
+ * - It is not an instance of built-in types like Array, Date, Map, Set, etc.
+ *
+ * This function is useful for strict data validation when you want to ensure
+ * a value is a clean JSON-compatible object, free of class instances or special types.
+ *
+ * @param {unknown} value - The value to test.
+ * @returns {value is Record<string | number | symbol, unknown>} Returns true if the value is a pure object.
+ */
+function isJsonObject(value) {
+  if (value === null || _typeof(value) !== 'object') return false;
+  if (Array.isArray(value)) return false;
+  if (Object.prototype.toString.call(value) !== '[object Object]') return false;
+  return true;
+}
+
+},{}],156:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.checkObj = checkObj;
+exports.cloneObjTypeOrder = cloneObjTypeOrder;
+Object.defineProperty(exports, "countObj", {
+  enumerable: true,
+  get: function get() {
+    return _objChecker.countObj;
+  }
+});
+exports.extendObjType = extendObjType;
+exports.getCheckObj = getCheckObj;
+Object.defineProperty(exports, "isJsonObject", {
+  enumerable: true,
+  get: function get() {
+    return _objChecker.isJsonObject;
+  }
+});
+exports.objType = objType;
+exports.reorderObjTypeOrder = reorderObjTypeOrder;
+var _buffer = require("buffer");
+var _objChecker = require("./objChecker.mjs");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+var isBrowser = typeof window !== 'undefined' && typeof window.document !== 'undefined';
+/**
+ * An object containing type validation functions and their evaluation order.
+ *
+ * Each item in `typeValidator.items` is a function that receives any value
+ * and returns a boolean indicating whether the value matches the corresponding type.
+ *
+ * The `order` array defines the priority in which types should be checked,
+ * which can be useful for functions that infer types in a consistent manner.
+ *
+ */
+var typeValidator = {
+  items: {},
+  /**
+   * Evaluation order of the type checkers.
+   * @type {string[]}
+   * */
+  order: []
+};
+/** @typedef {Object.<string, (val: any) => *>} ExtendObjType */
+/** @typedef {Array<[string, (val: any) => *]>} ExtendObjTypeArray */
+/**
+ * Adds new type checkers to the typeValidator without overwriting existing ones.
+ *
+ * Accepts either an object with named functions or an array of [key, fn] arrays.
+ * If no index is provided, the type is inserted just before 'object' (if it exists), or at the end.
+ *
+ * @param {ExtendObjType|ExtendObjTypeArray} newItems
+ *        - New type validators to be added.
+ * @param {number} [index] - Optional. Position at which to insert each new type. Ignored if the type already exists.
+ * @returns {string[]} - A list of successfully added type names.
+ *
+ * @example
+ * extendObjType({
+ *   htmlElement2: val => typeof HTMLElement !== 'undefined' && val instanceof HTMLElement
+ * });
+ *
+ * @example
+ * extendObjType([
+ *   ['alpha', val => typeof val === 'string'],
+ *   ['beta', val => Array.isArray(val)]
+ * ]);
+ */
+function extendObjType(newItems, index) {
+  var added = [];
+  var entries = Array.isArray(newItems) ? newItems : Object.entries(newItems);
+  var _iterator = _createForOfIteratorHelper(entries),
+    _step;
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var _step$value = _slicedToArray(_step.value, 2),
+        key = _step$value[0],
+        fn = _step$value[1];
+      if (!typeValidator.items.hasOwnProperty(key)) {
+        // @ts-ignore
+        typeValidator.items[key] = fn;
+        var insertAt = typeof index === 'number' ? index : -1; // Default to -1 if index isn't provided
+        // Default to before 'object', or to the end
+        if (insertAt === -1) {
+          var objectIndex = typeValidator.order.indexOf('object');
+          insertAt = objectIndex > -1 ? objectIndex : typeValidator.order.length;
+        }
+        // Ensure insertAt is a valid number and not out of bounds
+        insertAt = Math.min(Math.max(0, insertAt), typeValidator.order.length);
+        typeValidator.order.splice(insertAt, 0, key);
+        added.push(key);
+      }
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+  return added;
+}
+/**
+ * Reorders the typeValidator.order array according to a custom new order.
+ * All values in the new order must already exist in the current order.
+ * The function does not mutate the original array structure directly.
+ *
+ * @param {string[]} newOrder - The new order of type names.
+ * @returns {boolean} - Returns true if the reorder was successful, false if invalid keys were found.
+ *
+ * @example
+ * reorderObjTypeOrder([
+ *   'string', 'number', 'array', 'object'
+ * ]);
+ */
+function reorderObjTypeOrder(newOrder) {
+  var currentOrder = _toConsumableArray(typeValidator.order); // shallow clone
+  // All keys in newOrder must exist in currentOrder
+  var isValid = newOrder.every(function (type) {
+    return currentOrder.includes(type);
+  });
+  if (!isValid) return false;
+  // Reassign only if valid
+  typeValidator.order = newOrder.slice(); // assign shallow copy
+  return true;
+}
+/**
+ * Returns a cloned version of the `typeValidator.order` array.
+ * The cloned array will not be affected by future changes to the original `order`.
+ *
+ * @returns {string[]} - A new array with the same values as `typeValidator.order`.
+ */
+function cloneObjTypeOrder() {
+  return _toConsumableArray(typeValidator.order); // Creates a shallow copy of the array
+}
+/**
+ * Returns the detected type name of a given value based on predefined type validators.
+ *
+ * This function uses `getType` with a predefined `typeValidator` to determine or compare types safely.
+ * in the specified `typeValidator.order`. The first matching type is returned.
+ *
+ * If `val` is `null`, it immediately returns `'null'`.
+ * If no match is found, it returns `'unknown'`.
+ *
+ * @param {any} val - The value whose type should be determined.
+ * @returns {string} - The type name of the value (e.g., "array", "date", "map"), or "unknown" if no match is found.
+ *
+ * @example
+ * getType([]); // "array"
+ * getType(null); // "null"
+ * getType(new Set()); // "set"
+ * getType(() => {}); // "unknown"
+ */
+var getType = function getType(val) {
+  if (val === null) return 'null';
+  // @ts-ignore
+  var _iterator2 = _createForOfIteratorHelper(typeValidator.order),
+    _step2;
+  try {
+    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+      var name = _step2.value;
+      // @ts-ignore
+      if (typeof typeValidator.items[name] !== 'function' || typeValidator.items[name](val)) return name;
+    }
+  } catch (err) {
+    _iterator2.e(err);
+  } finally {
+    _iterator2.f();
+  }
+  return 'unknown';
+};
+/**
+ * Checks the type of a given object or returns its type as a string.
+ *
+ * @param {*} obj - The object to check or identify.
+ * @param {string} [type] - Optional. If provided, checks whether the object matches this type (e.g., "object", "array", "string").
+ * @returns {boolean|string|null} - Returns `true` if the type matches, `false` if not,
+ *                                   the type string if no type is provided, or `null` if the object is `undefined`.
+ *
+ * @example
+ * objType([], 'array'); // true
+ * objType({}, 'object'); // true
+ * objType('hello'); // "string"
+ * objType(undefined); // null
+ */
+function objType(obj, type) {
+  if (typeof obj === 'undefined') return null;
+  var result = getType(obj);
+  if (typeof type === 'string') return result === type.toLowerCase();
+  return result;
+}
+/**
+ * Checks the type of a given object and returns the validation value if a known type is detected.
+ *
+ * @param {*} obj - The object to check or identify.
+ * @returns {{ valid:*; type: string | null }} - Returns the type result.
+ */
+function checkObj(obj) {
+  /** @type {{ valid:*; type: string | null }} */
+  var data = {
+    valid: null,
+    type: null
+  };
+  var _iterator3 = _createForOfIteratorHelper(typeValidator.order),
+    _step3;
+  try {
+    for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+      var name = _step3.value;
+      // @ts-ignore
+      if (typeof typeValidator.items[name] === 'function') {
+        // @ts-ignore
+        var result = typeValidator.items[name](obj);
+        if (result) {
+          data.valid = result;
+          data.type = name;
+          break;
+        }
+      }
+    }
+  } catch (err) {
+    _iterator3.e(err);
+  } finally {
+    _iterator3.f();
+  }
+  return data;
+}
+/**
+ * Creates a clone of the functions from the `typeValidator` object.
+ * It returns a new object where the keys are the same and the values are the cloned functions.
+ */
+function getCheckObj() {
+  return Object.fromEntries(Object.entries(typeValidator.items).map(function (_ref) {
+    var _ref2 = _slicedToArray(_ref, 2),
+      key = _ref2[0],
+      fn = _ref2[1];
+    return [key, fn];
+  }));
+}
+// Insert obj types
+extendObjType([['undefined', /** @param {*} val @returns {val is undefined} */
+function (val) {
+  return typeof val === 'undefined';
+}], ['null', /** @param {*} val @returns {val is null} */
+function (val) {
+  return val === null;
+}], ['boolean', /** @param {*} val @returns {val is boolean} */
+function (val) {
+  return typeof val === 'boolean';
+}], ['number', /** @param {*} val @returns {val is number} */
+function (val) {
+  return typeof val === 'number' && !Number.isNaN(val);
+}], ['bigint', /** @param {*} val @returns {val is bigint} */
+function (val) {
+  return typeof val === 'bigint';
+}], ['string', /** @param {*} val @returns {val is string} */
+function (val) {
+  return typeof val === 'string';
+}], ['symbol', /** @param {*} val @returns {val is symbol} */
+function (val) {
+  return _typeof(val) === 'symbol';
+}], ['function', /** @param {*} val @returns {val is Function} */
+function (val) {
+  return typeof val === 'function';
+}], ['array', /** @param {*} val @returns {val is any[]} */
+function (val) {
+  return Array.isArray(val);
+}]]);
+if (!isBrowser) {
+  extendObjType([['buffer', /** @param {*} val @returns {val is Buffer} */
+  function (val) {
+    return typeof _buffer.Buffer !== 'undefined' && _buffer.Buffer.isBuffer(val);
+  }]]);
+}
+if (isBrowser) {
+  extendObjType([['file', /** @param {*} val @returns {val is File} */
+  function (val) {
+    return typeof File !== 'undefined' && val instanceof File;
+  }]]);
+}
+extendObjType([['date', /** @param {*} val @returns {val is Date} */
+function (val) {
+  return val instanceof Date;
+}], ['regexp', /** @param {*} val @returns {val is RegExp} */
+function (val) {
+  return val instanceof RegExp;
+}], ['map', /** @param {*} val @returns {val is Map<unknown, unknown>} */
+function (val) {
+  return val instanceof Map;
+}], ['set', /** @param {*} val @returns {val is Set<unknown>} */
+function (val) {
+  return val instanceof Set;
+}], ['weakmap', /** @param {*} val @returns {val is WeakMap<unknown, unknown>} */
+function (val) {
+  return val instanceof WeakMap;
+}], ['weakset', /** @param {*} val @returns {val is WeakSet<unknown>} */
+function (val) {
+  return val instanceof WeakSet;
+}], ['promise', /** @param {*} val @returns {val is Promise<unknown>} */
+function (val) {
+  return val instanceof Promise;
+}]]);
+if (isBrowser) {
+  extendObjType([['htmlelement', /** @param {*} val @returns {val is HTMLElement} */
+  function (val) {
+    return typeof HTMLElement !== 'undefined' && val instanceof HTMLElement;
+  }]]);
+}
+extendObjType([['object', /** @param {*} val @returns {val is Record<string | number | symbol, unknown>} */
+function (val) {
+  return (0, _objChecker.isJsonObject)(val);
+}]]);
+
+},{"./objChecker.mjs":155,"buffer":62}],157:[function(require,module,exports){
 arguments[4][120][0].apply(exports,arguments)
-},{"dup":120}],157:[function(require,module,exports){
+},{"dup":120}],158:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30804,11 +31199,11 @@ function KeyPressHandler() {
 export default KeyPressHandler;
 */
 
-},{}],158:[function(require,module,exports){
+},{}],159:[function(require,module,exports){
 arguments[4][122][0].apply(exports,arguments)
-},{"./normalFuncs.mjs":159,"dup":122,"fs":61,"fs/promises":61,"path":94}],159:[function(require,module,exports){
+},{"./normalFuncs.mjs":160,"dup":122,"fs":61,"fs/promises":61,"path":94}],160:[function(require,module,exports){
 arguments[4][123][0].apply(exports,arguments)
-},{"../basics/text.mjs":157,"dup":123,"fs":61,"path":94}],160:[function(require,module,exports){
+},{"../basics/text.mjs":158,"dup":123,"fs":61,"path":94}],161:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30832,6 +31227,12 @@ Object.defineProperty(exports, "TinyClipboard", {
     return _TinyClipboard["default"];
   }
 });
+Object.defineProperty(exports, "TinyColorConverter", {
+  enumerable: true,
+  get: function get() {
+    return _TinyColorConverter["default"];
+  }
+});
 Object.defineProperty(exports, "TinyDomReadyManager", {
   enumerable: true,
   get: function get() {
@@ -30850,6 +31251,12 @@ Object.defineProperty(exports, "TinyDragger", {
     return _TinyDragger["default"];
   }
 });
+Object.defineProperty(exports, "TinyEvents", {
+  enumerable: true,
+  get: function get() {
+    return _TinyEvents["default"];
+  }
+});
 Object.defineProperty(exports, "TinyHtml", {
   enumerable: true,
   get: function get() {
@@ -30860,6 +31267,12 @@ Object.defineProperty(exports, "TinyLevelUp", {
   enumerable: true,
   get: function get() {
     return _userLevel["default"];
+  }
+});
+Object.defineProperty(exports, "TinyLocalStorage", {
+  enumerable: true,
+  get: function get() {
+    return _TinyLocalStorage["default"];
   }
 });
 Object.defineProperty(exports, "TinyNotifications", {
@@ -30896,6 +31309,12 @@ Object.defineProperty(exports, "TinyTextRangeEditor", {
   enumerable: true,
   get: function get() {
     return _TinyTextRangeEditor["default"];
+  }
+});
+Object.defineProperty(exports, "TinyTimeout", {
+  enumerable: true,
+  get: function get() {
+    return _TinyTimeout["default"];
   }
 });
 Object.defineProperty(exports, "TinyToastNotify", {
@@ -31027,7 +31446,7 @@ Object.defineProperty(exports, "cloneObjTypeOrder", {
 Object.defineProperty(exports, "countObj", {
   enumerable: true,
   get: function get() {
-    return _objFilter.countObj;
+    return _objChecker.countObj;
   }
 });
 Object.defineProperty(exports, "dirExists", {
@@ -31261,7 +31680,7 @@ Object.defineProperty(exports, "isInViewport", {
 Object.defineProperty(exports, "isJsonObject", {
   enumerable: true,
   get: function get() {
-    return _objFilter.isJsonObject;
+    return _objChecker.isJsonObject;
   }
 });
 Object.defineProperty(exports, "isScreenFilled", {
@@ -31450,6 +31869,7 @@ var _arraySortPositions = _interopRequireDefault(require("../legacy/libs/arraySo
 var _array = require("./basics/array.mjs");
 var _clock = require("./basics/clock.mjs");
 var _objFilter = require("./basics/objFilter.mjs");
+var _objChecker = require("./basics/objChecker.mjs");
 var _fullScreen = require("./basics/fullScreen.mjs");
 var _simpleMath = require("./basics/simpleMath.mjs");
 var _text = require("./basics/text.mjs");
@@ -31473,11 +31893,15 @@ var _UltraRandomMsgGen = _interopRequireDefault(require("./libs/UltraRandomMsgGe
 var _TinySmartScroller = _interopRequireDefault(require("./libs/TinySmartScroller.mjs"));
 var _TinyTextRangeEditor = _interopRequireDefault(require("./libs/TinyTextRangeEditor.mjs"));
 var _TinyClipboard = _interopRequireDefault(require("./libs/TinyClipboard.mjs"));
+var _TinyColorConverter = _interopRequireDefault(require("./libs/TinyColorConverter.mjs"));
+var _TinyTimeout = _interopRequireDefault(require("./libs/TinyTimeout.mjs"));
+var _TinyEvents = _interopRequireDefault(require("./libs/TinyEvents.mjs"));
+var _TinyLocalStorage = _interopRequireDefault(require("./libs/TinyLocalStorage.mjs"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 
-},{"../legacy/libs/arraySortPositions.mjs":146,"../legacy/libs/replaceAsync.mjs":147,"../legacy/libs/userLevel.mjs":148,"./basics/array.mjs":149,"./basics/clock.mjs":150,"./basics/collision.mjs":151,"./basics/fullScreen.mjs":152,"./basics/html.mjs":153,"./basics/html_deprecated.mjs":154,"./basics/objFilter.mjs":155,"./basics/simpleMath.mjs":156,"./basics/text.mjs":157,"./fileManager/asyncFuncs.mjs":158,"./fileManager/normalFuncs.mjs":159,"./libs/ColorSafeStringify.mjs":161,"./libs/TinyAfterScrollWatcher.mjs":162,"./libs/TinyClipboard.mjs":163,"./libs/TinyDomReadyManager.mjs":164,"./libs/TinyDragDropDetector.mjs":165,"./libs/TinyDragger.mjs":166,"./libs/TinyHtml.mjs":167,"./libs/TinyNotifications.mjs":168,"./libs/TinyNotifyCenter.mjs":169,"./libs/TinyPromiseQueue.mjs":170,"./libs/TinyRateLimiter.mjs":171,"./libs/TinySmartScroller.mjs":172,"./libs/TinyTextRangeEditor.mjs":173,"./libs/TinyToastNotify.mjs":174,"./libs/UltraRandomMsgGen.mjs":175}],161:[function(require,module,exports){
+},{"../legacy/libs/arraySortPositions.mjs":146,"../legacy/libs/replaceAsync.mjs":147,"../legacy/libs/userLevel.mjs":148,"./basics/array.mjs":149,"./basics/clock.mjs":150,"./basics/collision.mjs":151,"./basics/fullScreen.mjs":152,"./basics/html.mjs":153,"./basics/html_deprecated.mjs":154,"./basics/objChecker.mjs":155,"./basics/objFilter.mjs":156,"./basics/simpleMath.mjs":157,"./basics/text.mjs":158,"./fileManager/asyncFuncs.mjs":159,"./fileManager/normalFuncs.mjs":160,"./libs/ColorSafeStringify.mjs":162,"./libs/TinyAfterScrollWatcher.mjs":163,"./libs/TinyClipboard.mjs":164,"./libs/TinyColorConverter.mjs":165,"./libs/TinyDomReadyManager.mjs":166,"./libs/TinyDragDropDetector.mjs":167,"./libs/TinyDragger.mjs":168,"./libs/TinyEvents.mjs":169,"./libs/TinyHtml.mjs":170,"./libs/TinyLocalStorage.mjs":171,"./libs/TinyNotifications.mjs":172,"./libs/TinyNotifyCenter.mjs":173,"./libs/TinyPromiseQueue.mjs":174,"./libs/TinyRateLimiter.mjs":175,"./libs/TinySmartScroller.mjs":176,"./libs/TinyTextRangeEditor.mjs":177,"./libs/TinyTimeout.mjs":178,"./libs/TinyToastNotify.mjs":179,"./libs/UltraRandomMsgGen.mjs":180}],162:[function(require,module,exports){
 arguments[4][125][0].apply(exports,arguments)
-},{"dup":125}],162:[function(require,module,exports){
+},{"dup":125}],163:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -31702,7 +32126,7 @@ function _checkQueue() {
 }
 var _default = exports["default"] = TinyAfterScrollWatcher;
 
-},{}],163:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -32382,11 +32806,729 @@ var TinyClipboard = /*#__PURE__*/function () {
 }();
 var _default = exports["default"] = TinyClipboard;
 
-},{}],164:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+var _original = /*#__PURE__*/new WeakMap();
+var _rgba = /*#__PURE__*/new WeakMap();
+var _checkIsHsl = /*#__PURE__*/new WeakMap();
+/**
+ * Represents a color in RGBA format.
+ * Each element must be a number between 0 and 255.
+ * The fourth value represents the alpha (transparency) channel.
+ *
+ * @typedef {number[]} RgbaColor
+ * @property {number} 0 - Red component (0–255)
+ * @property {number} 1 - Green component (0–255)
+ * @property {number} 2 - Blue component (0–255)
+ * @property {number} 3 - Alpha component (0–255)
+ */
+/**
+ * Represents a color in RGB format.
+ * Each element must be a number between 0 and 255.
+ *
+ * @typedef {number[]} RgbColor
+ * @property {number} 0 - Red component (0–255)
+ * @property {number} 1 - Green component (0–255)
+ * @property {number} 2 - Blue component (0–255)
+ */
+/**
+ * Represents a color in HSLA format.
+ * The fourth value represents the alpha (transparency) channel.
+ *
+ * @typedef {number[]} HslaColor
+ * @property {number} 0 - Hue (0–360)
+ * @property {number} 1 - Saturation (0–100)
+ * @property {number} 2 - Lightness (0–100)
+ * @property {number} 3 - Alpha component (0–255)
+ */
+/**
+ * Represents a color in HSL format.
+ *
+ * @typedef {number[]} HslColor
+ * @property {number} 0 - Hue (0–360)
+ * @property {number} 1 - Saturation (0–100)
+ * @property {number} 2 - Lightness (0–100)
+ */
+/**
+ * Represents a hex color.
+ *
+ * @typedef {string} HexColor
+ */
+/**
+ * A union type representing various accepted color formats.
+ * Can be a hex color string, a numeric value, or an array-based RGB/RGBA representation.
+ *
+ * @typedef {HexColor | number | RgbColor | RgbaColor} ColorTypes
+ */
+/**
+ * @typedef {Object} RgbaResult
+ * @property {number} r - Red component (0–255)
+ * @property {number} g - Green component (0–255)
+ * @property {number} b - Blue component (0–255)
+ * @property {number} a - Alpha component (0–255)
+ */
+/**
+ * @typedef {Object} RgbResult
+ * @property {number} r - Red component (0–255)
+ * @property {number} g - Green component (0–255)
+ * @property {number} b - Blue component (0–255)
+ */
+/**
+ * @typedef {Object} HexResult
+ * @property {string} hex - Hex color
+ */
+/**
+ * @typedef {Object} HslResult
+ * @property {number} h - Hue (0–360)
+ * @property {number} s - Saturation (0–100)
+ * @property {number} l - Lightness (0–100)
+ */
+/**
+ * A class that allows converting colors between all common formats.
+ */
+var TinyColorConverter = /*#__PURE__*/function () {
+  /**
+   * @param {ColorTypes|null} [input=null] - Any valid color (hex, rgb string, rgba string, hsl(a), css name, array or int).
+   * @param {boolean} [checkIsHsl=false]
+   */
+  function TinyColorConverter() {
+    var input = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var checkIsHsl = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    _classCallCheck(this, TinyColorConverter);
+    // Class Script
+    /** @type {ColorTypes} */
+    _classPrivateFieldInitSpec(this, _original, '#000000');
+    /** @type {RgbaColor} */
+    _classPrivateFieldInitSpec(this, _rgba, [0, 0, 0, 0]);
+    _classPrivateFieldInitSpec(this, _checkIsHsl, void 0);
+    _classPrivateFieldSet(_checkIsHsl, this, checkIsHsl);
+    if (typeof input !== 'undefined' && input !== null) this.setColor(input);
+  }
+  /**
+   * @param {ColorTypes} input - Any valid color (hex, rgb string, rgba string, hsl(a), css name, array or int).
+   */
+  return _createClass(TinyColorConverter, [{
+    key: "setColor",
+    value: function setColor(input) {
+      _classPrivateFieldSet(_original, this, input);
+      var isHsl = _classPrivateFieldGet(_checkIsHsl, this) && Array.isArray(input) && input[0] <= 360 && input[1] <= 100 && input[2] <= 100;
+      _classPrivateFieldSet(_rgba, this, TinyColorConverter.parseInput(input, isHsl));
+    }
+    /**
+     * Returns HSLA array.
+     * @returns {HslaColor}
+     */
+  }, {
+    key: "toHslaArray",
+    value: function toHslaArray() {
+      var _classPrivateFieldGet2 = _classPrivateFieldGet(_rgba, this),
+        _classPrivateFieldGet3 = _slicedToArray(_classPrivateFieldGet2, 4),
+        r = _classPrivateFieldGet3[0],
+        g = _classPrivateFieldGet3[1],
+        b = _classPrivateFieldGet3[2],
+        a = _classPrivateFieldGet3[3];
+      return TinyColorConverter.rgbaToHsla(r, g, b, a);
+    }
+    /**
+     * Returns RGB string.
+     * @returns {string}
+     */
+  }, {
+    key: "toHslString",
+    value: function toHslString() {
+      var _classPrivateFieldGet4 = _classPrivateFieldGet(_rgba, this),
+        _classPrivateFieldGet5 = _slicedToArray(_classPrivateFieldGet4, 3),
+        r = _classPrivateFieldGet5[0],
+        g = _classPrivateFieldGet5[1],
+        b = _classPrivateFieldGet5[2];
+      var _TinyColorConverter$r = TinyColorConverter.rgbaToHsl(r, g, b),
+        _TinyColorConverter$r2 = _slicedToArray(_TinyColorConverter$r, 3),
+        h = _TinyColorConverter$r2[0],
+        s = _TinyColorConverter$r2[1],
+        l = _TinyColorConverter$r2[2];
+      return "hsl(".concat(h, ", ").concat(s, "%, ").concat(l, "%)");
+    }
+    /**
+     * Returns RGBA string.
+     * @returns {string}
+     */
+  }, {
+    key: "toHslaString",
+    value: function toHslaString() {
+      var _classPrivateFieldGet6 = _classPrivateFieldGet(_rgba, this),
+        _classPrivateFieldGet7 = _slicedToArray(_classPrivateFieldGet6, 4),
+        r = _classPrivateFieldGet7[0],
+        g = _classPrivateFieldGet7[1],
+        b = _classPrivateFieldGet7[2],
+        a = _classPrivateFieldGet7[3];
+      var _TinyColorConverter$r3 = TinyColorConverter.rgbaToHsla(r, g, b, a),
+        _TinyColorConverter$r4 = _slicedToArray(_TinyColorConverter$r3, 4),
+        h = _TinyColorConverter$r4[0],
+        s = _TinyColorConverter$r4[1],
+        l = _TinyColorConverter$r4[2],
+        a2 = _TinyColorConverter$r4[3];
+      return "hsla(".concat(h, ", ").concat(s, "%, ").concat(l, "%, ").concat(a2 !== null && a2 !== void 0 ? a2 : 1, ")");
+    }
+    /**
+     * Returns RGBA array.
+     * @returns {RgbaColor}
+     */
+  }, {
+    key: "toRgbaArray",
+    value: function toRgbaArray() {
+      return _toConsumableArray(_classPrivateFieldGet(_rgba, this));
+    }
+    /**
+     * Returns RGB string.
+     * @returns {string}
+     */
+  }, {
+    key: "toRgbString",
+    value: function toRgbString() {
+      var _classPrivateFieldGet8 = _classPrivateFieldGet(_rgba, this),
+        _classPrivateFieldGet9 = _slicedToArray(_classPrivateFieldGet8, 3),
+        r = _classPrivateFieldGet9[0],
+        g = _classPrivateFieldGet9[1],
+        b = _classPrivateFieldGet9[2];
+      return "rgb(".concat(r, ", ").concat(g, ", ").concat(b, ")");
+    }
+    /**
+     * Returns RGBA string.
+     * @returns {string}
+     */
+  }, {
+    key: "toRgbaString",
+    value: function toRgbaString() {
+      var _classPrivateFieldGet0 = _classPrivateFieldGet(_rgba, this),
+        _classPrivateFieldGet1 = _slicedToArray(_classPrivateFieldGet0, 4),
+        r = _classPrivateFieldGet1[0],
+        g = _classPrivateFieldGet1[1],
+        b = _classPrivateFieldGet1[2],
+        a = _classPrivateFieldGet1[3];
+      return "rgba(".concat(r, ", ").concat(g, ", ").concat(b, ", ").concat(a !== null && a !== void 0 ? a : 1, ")");
+    }
+    /**
+     * Returns hex color.
+     * @returns {HexColor}
+     */
+  }, {
+    key: "toHex",
+    value: function toHex() {
+      var _classPrivateFieldGet10 = _classPrivateFieldGet(_rgba, this),
+        _classPrivateFieldGet11 = _slicedToArray(_classPrivateFieldGet10, 3),
+        r = _classPrivateFieldGet11[0],
+        g = _classPrivateFieldGet11[1],
+        b = _classPrivateFieldGet11[2];
+      return TinyColorConverter.rgbToHex(r, g, b);
+    }
+    /**
+     * Returns color as integer.
+     * @returns {number}
+     */
+  }, {
+    key: "toInt",
+    value: function toInt() {
+      var _classPrivateFieldGet12 = _classPrivateFieldGet(_rgba, this),
+        _classPrivateFieldGet13 = _slicedToArray(_classPrivateFieldGet12, 3),
+        r = _classPrivateFieldGet13[0],
+        g = _classPrivateFieldGet13[1],
+        b = _classPrivateFieldGet13[2];
+      return TinyColorConverter.rgbToInt(r, g, b);
+    }
+    /**
+     * Returns the original input.
+     * @returns {ColorTypes}
+     */
+  }, {
+    key: "getOriginal",
+    value: function getOriginal() {
+      return _classPrivateFieldGet(_original, this);
+    }
+  }], [{
+    key: "_rca",
+    value:
+    /**
+     * Generates a smooth gradient of colors based on sine wave patterns.
+     *
+     * @see {@link https://www.npmjs.com/package/rainbow-colors-array} Code Reference
+     * @param {number} [len=24] - The number of colors to generate.
+     * @param {'rgb'|'hex'|'hsl'} [type='rgb'] - The format of the colors returned: `'rgb'`, `'hex'`, or `'hsl'`.
+     * @param {boolean} [pastel=false] - If true, generates pastel tones by adjusting the intensity and offset.
+     * @returns {Array<RgbResult|HexResult|HslResult>} An array of color values in the selected format:
+     */
+    function _rca(len, type, pastel) {
+      var eq1 = 127;
+      var eq2 = 128;
+      if (len === undefined) {
+        len = 24;
+      }
+      if (type === undefined) {
+        type = 'rgb';
+      }
+      if (pastel === true) {
+        eq1 = 55;
+        eq2 = 200;
+      }
+      var frequency = Math.PI * 2 / len;
+      var cvparr = [];
+      for (var i = 0; i < len; ++i) {
+        var red = Math.sin(frequency * i + 2) * eq1 + eq2;
+        var green = Math.sin(frequency * i + 0) * eq1 + eq2;
+        var blue = Math.sin(frequency * i + 4) * eq1 + eq2;
+        switch (type) {
+          case 'hex':
+            cvparr.push({
+              hex: this.rgbToHex(Math.round(red), Math.round(green), Math.round(blue))
+            });
+            break;
+          case 'rgb':
+            cvparr.push({
+              r: red,
+              g: green,
+              b: blue
+            });
+            break;
+          case 'hsl':
+            var _this$rgbaToHsl = this.rgbaToHsl(Math.round(red), Math.round(green), Math.round(blue)),
+              _this$rgbaToHsl2 = _slicedToArray(_this$rgbaToHsl, 3),
+              h = _this$rgbaToHsl2[0],
+              s = _this$rgbaToHsl2[1],
+              l = _this$rgbaToHsl2[2];
+            cvparr.push({
+              h: h,
+              s: s,
+              l: l
+            });
+            break;
+        }
+      }
+      return cvparr;
+    }
+    /**
+     * Generates a smooth gradient of colors based on sine wave patterns.
+     *
+     * @param {number} [len=24] - The number of colors to generate.
+     * @param {boolean} [pastel=false] - If true, generates pastel tones by adjusting the intensity and offset.
+     * @returns {RgbResult[]} An array of rgb color values.
+     */
+  }, {
+    key: "rcaRgb",
+    value: function rcaRgb(len, pastel) {
+      return /** @type {RgbResult[]} */TinyColorConverter._rca(len, 'rgb', pastel);
+    }
+    /**
+     * Generates a smooth gradient of colors based on sine wave patterns.
+     *
+     * @param {number} [len=24] - The number of colors to generate.
+     * @param {boolean} [pastel=false] - If true, generates pastel tones by adjusting the intensity and offset.
+     * @returns {HslResult[]} An array of hsl color values.
+     */
+  }, {
+    key: "rcaHsl",
+    value: function rcaHsl(len, pastel) {
+      return /** @type {HslResult[]} */TinyColorConverter._rca(len, 'hsl', pastel);
+    }
+    /**
+     * Generates a smooth gradient of colors based on sine wave patterns.
+     *
+     * @param {number} [len=24] - The number of colors to generate.
+     * @param {boolean} [pastel=false] - If true, generates pastel tones by adjusting the intensity and offset.
+     * @returns {HexResult[]} An array of hex color values.
+     */
+  }, {
+    key: "rcaHex",
+    value: function rcaHex(len, pastel) {
+      return /** @type {HexResult[]} */TinyColorConverter._rca(len, 'hex', pastel);
+    }
+    /**
+     * Generates a random color in hexadecimal format.
+     *
+     * @returns {HexColor} A hex color string (e.g. `#a3e5f2`).
+     */
+  }, {
+    key: "randomColor",
+    value: function randomColor() {
+      var hex = Math.floor(Math.random() * 0x1000000).toString(16);
+      return "#".concat(hex.padStart(6, '0'));
+    }
+    /**
+     * Parses input into RGBA array.
+     * @param {ColorTypes} input
+     * @param {boolean} isHsl
+     * @returns {RgbaColor}
+     */
+  }, {
+    key: "parseInput",
+    value: function parseInput(input, isHsl) {
+      if (typeof input === 'string') {
+        input = input.trim().toLowerCase();
+        if (input.startsWith('#')) return this.hexToRgba(input);
+        if (input.startsWith('rgb')) return this.rgbStringToRgbaArray(input);
+        if (input.startsWith('hsl')) return this.hslStringToRgbaArray(input);
+      }
+      if (typeof input === 'number') return this.intToRgba(input);
+      if (Array.isArray(input) && (input.length === 3 || input.length === 4) && input.every(function (item) {
+        return typeof item === 'number';
+      })) {
+        if (isHsl) {
+          var _input = input,
+            _input2 = _slicedToArray(_input, 4),
+            h = _input2[0],
+            s = _input2[1],
+            l = _input2[2],
+            a2 = _input2[3];
+          if (h <= 360 && s <= 100 && l <= 100) return this.hslToRgba(h, s, l, a2);
+        }
+        return [].concat(_toConsumableArray(input), [1]).slice(0, 4);
+      }
+      throw new Error('Unsupported color format.');
+    }
+    // HSL Color
+    /**
+     * Converts hsl to integer.
+     * @param {number} h - Hue (0–360)
+     * @param {number} s - Saturation (0–100)
+     * @param {number} l - Lightness (0–100)
+     * @returns {number}
+     */
+  }, {
+    key: "hslToInt",
+    value: function hslToInt(h, s, l) {
+      var _TinyColorConverter$h = TinyColorConverter.hslToRgba(h, s, l),
+        _TinyColorConverter$h2 = _slicedToArray(_TinyColorConverter$h, 3),
+        r = _TinyColorConverter$h2[0],
+        g = _TinyColorConverter$h2[1],
+        b = _TinyColorConverter$h2[2];
+      return TinyColorConverter.rgbToInt(r, g, b);
+    }
+    /**
+     * Converts hsl to hex.
+     * @param {number} h - Hue (0–360)
+     * @param {number} s - Saturation (0–100)
+     * @param {number} l - Lightness (0–100)
+     * @returns {HexColor}
+     */
+  }, {
+    key: "hslToHex",
+    value: function hslToHex(h, s, l) {
+      var _TinyColorConverter$h3 = TinyColorConverter.hslToRgba(h, s, l),
+        _TinyColorConverter$h4 = _slicedToArray(_TinyColorConverter$h3, 3),
+        r = _TinyColorConverter$h4[0],
+        g = _TinyColorConverter$h4[1],
+        b = _TinyColorConverter$h4[2];
+      return TinyColorConverter.rgbToHex(r, g, b);
+    }
+    /**
+     * Converts hsl(a) string to RGBA array.
+     * @param {string} hsl
+     * @returns {RgbaColor}
+     */
+  }, {
+    key: "hslStringToRgbaArray",
+    value: function hslStringToRgbaArray(hsl) {
+      var _hsl$match;
+      var match = (_hsl$match = hsl.match(/[\d.]+/g)) === null || _hsl$match === void 0 ? void 0 : _hsl$match.map(Number);
+      if (!match || match.length < 3) return [0, 0, 0, 1];
+      var _match = _slicedToArray(match, 4),
+        h = _match[0],
+        s = _match[1],
+        l = _match[2],
+        _match$ = _match[3],
+        a = _match$ === void 0 ? 1 : _match$;
+      return this.hslToRgba(h, s, l, a);
+    }
+    /**
+     * Converts HSL or HSLA to RGBA.
+     * @param {number} h - Hue (0–360)
+     * @param {number} s - Saturation (0–100)
+     * @param {number} l - Lightness (0–100)
+     * @param {number} [a=1] - Alpha (0–1)
+     * @returns {RgbaColor}
+     */
+  }, {
+    key: "hslToRgba",
+    value: function hslToRgba(h, s, l) {
+      var a = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
+      s /= 100;
+      l /= 100;
+      /** @type {(n: number) => number} */
+      var k = function k(n) {
+        return (n + h / 30) % 12;
+      };
+      var a_ = s * Math.min(l, 1 - l);
+      /** @type {(n: number) => number} */
+      var f = function f(n) {
+        return l - a_ * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+      };
+      return [Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255), a];
+    }
+    /**
+     * Converts HSL or HSLA to RGB.
+     * @param {number} h - Hue (0–360)
+     * @param {number} s - Saturation (0–100)
+     * @param {number} l - Lightness (0–100)
+     * @param {number} [a=1] - Alpha (0–1)
+     * @returns {RgbColor}
+     */
+  }, {
+    key: "hslToRgb",
+    value: function hslToRgb(h, s, l) {
+      var a = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
+      return TinyColorConverter.hslToRgba(h, s, l, a).slice(0, 3);
+    }
+    // Hex Color
+    /**
+     * Converts hex to integer.
+     * @param {HexColor} hex
+     * @returns {number}
+     */
+  }, {
+    key: "hexToInt",
+    value: function hexToInt(hex) {
+      return parseInt(hex.replace(/^#/, ''), 16);
+    }
+    /**
+     * Converts hex string to HSL array.
+     * @param {HexColor} hex
+     * @returns {HslColor}
+     */
+  }, {
+    key: "hexToHsl",
+    value: function hexToHsl(hex) {
+      var _TinyColorConverter$h5 = TinyColorConverter.hexToRgba(hex),
+        _TinyColorConverter$h6 = _slicedToArray(_TinyColorConverter$h5, 4),
+        r = _TinyColorConverter$h6[0],
+        g = _TinyColorConverter$h6[1],
+        b = _TinyColorConverter$h6[2],
+        a = _TinyColorConverter$h6[3];
+      return TinyColorConverter.rgbaToHsl(r, g, b, a);
+    }
+    /**
+     * Converts hex string to HSL array.
+     * @param {HexColor} hex
+     * @returns {HslaColor}
+     */
+  }, {
+    key: "hexToHsla",
+    value: function hexToHsla(hex) {
+      var _TinyColorConverter$h7 = TinyColorConverter.hexToRgba(hex),
+        _TinyColorConverter$h8 = _slicedToArray(_TinyColorConverter$h7, 4),
+        r = _TinyColorConverter$h8[0],
+        g = _TinyColorConverter$h8[1],
+        b = _TinyColorConverter$h8[2],
+        a = _TinyColorConverter$h8[3];
+      return TinyColorConverter.rgbaToHsla(r, g, b, a);
+    }
+    /**
+     * Converts hex string to RGBA array.
+     * @param {HexColor} hex
+     * @returns {RgbaColor}
+     */
+  }, {
+    key: "hexToRgba",
+    value: function hexToRgba(hex) {
+      hex = hex.replace(/^#/, '');
+      if (hex.length === 3) hex = hex.split('').map(function (c) {
+        return c + c;
+      }).join('');
+      var intVal = parseInt(hex, 16);
+      var r = intVal >> 16 & 255;
+      var g = intVal >> 8 & 255;
+      var b = intVal & 255;
+      return [r, g, b, 1];
+    }
+    /**
+     * Converts HEX to RGB.
+     * @param {HexColor} hex
+     * @returns {RgbColor}
+     */
+  }, {
+    key: "hexToRgb",
+    value: function hexToRgb(hex) {
+      return this.hexToRgba(hex).slice(0, 3);
+    }
+    // RGBA Color
+    /**
+     * Converts RGB to HEX.
+     * @param {number} r
+     * @param {number} g
+     * @param {number} b
+     * @returns {HexColor}
+     */
+  }, {
+    key: "rgbToHex",
+    value: function rgbToHex(r, g, b) {
+      return '#' + [r, g, b].map(function (v) {
+        return v.toString(16).padStart(2, '0');
+      }).join('');
+    }
+    /**
+     * Converts RGB to integer.
+     * @param {number} r
+     * @param {number} g
+     * @param {number} b
+     * @returns {number}
+     */
+  }, {
+    key: "rgbToInt",
+    value: function rgbToInt(r, g, b) {
+      return r << 16 | g << 8 | b;
+    }
+    /**
+     * Converts RGBA to HSLA.
+     * @param {number} r
+     * @param {number} g
+     * @param {number} b
+     * @param {number} [a=1]
+     * @returns {HslaColor}
+     */
+  }, {
+    key: "rgbaToHsla",
+    value: function rgbaToHsla(r, g, b) {
+      var a = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
+      r /= 255;
+      g /= 255;
+      b /= 255;
+      var max = Math.max(r, g, b);
+      var min = Math.min(r, g, b);
+      var h = 0,
+        s = 0,
+        l = (max + min) / 2;
+      var d = max - min;
+      if (d !== 0) {
+        s = d / (1 - Math.abs(2 * l - 1));
+        switch (max) {
+          case r:
+            h = (g - b) / d + (g < b ? 6 : 0);
+            break;
+          case g:
+            h = (b - r) / d + 2;
+            break;
+          case b:
+            h = (r - g) / d + 4;
+            break;
+        }
+        h *= 60;
+      }
+      return [Math.round(h), Math.round(s * 100), Math.round(l * 100), a];
+    }
+    /**
+     * Converts RGBA to HSL.
+     * @param {number} r
+     * @param {number} g
+     * @param {number} b
+     * @param {number} [a=1]
+     * @returns {HslColor}
+     */
+  }, {
+    key: "rgbaToHsl",
+    value: function rgbaToHsl(r, g, b, a) {
+      return this.rgbaToHsla(r, g, b, a).slice(0, 3);
+    }
+    /**
+     * Converts rgb(a) string to RGBA array.
+     * @param {string} rgb
+     * @returns {RgbaColor}
+     */
+  }, {
+    key: "rgbStringToRgbaArray",
+    value: function rgbStringToRgbaArray(rgb) {
+      var _rgb$match;
+      var match = (_rgb$match = rgb.match(/[\d.]+/g)) === null || _rgb$match === void 0 ? void 0 : _rgb$match.map(Number);
+      if (!match) return [];
+      return [].concat(_toConsumableArray(match), [1]).slice(0, 4);
+    }
+    // Integer Color
+    /**
+     * Converts integer color to HSL.
+     * @param {number} int
+     * @returns {HslColor}
+     */
+  }, {
+    key: "intToHsl",
+    value: function intToHsl(_int) {
+      var _TinyColorConverter$i = TinyColorConverter.intToRgba(_int),
+        _TinyColorConverter$i2 = _slicedToArray(_TinyColorConverter$i, 4),
+        r = _TinyColorConverter$i2[0],
+        g = _TinyColorConverter$i2[1],
+        b = _TinyColorConverter$i2[2],
+        a = _TinyColorConverter$i2[3];
+      return TinyColorConverter.rgbaToHsl(r, g, b, a);
+    }
+    /**
+     * Converts integer color to HSL.
+     * @param {number} int
+     * @returns {HslaColor}
+     */
+  }, {
+    key: "intToHsla",
+    value: function intToHsla(_int2) {
+      var _TinyColorConverter$i3 = TinyColorConverter.intToRgba(_int2),
+        _TinyColorConverter$i4 = _slicedToArray(_TinyColorConverter$i3, 4),
+        r = _TinyColorConverter$i4[0],
+        g = _TinyColorConverter$i4[1],
+        b = _TinyColorConverter$i4[2],
+        a = _TinyColorConverter$i4[3];
+      return TinyColorConverter.rgbaToHsla(r, g, b, a);
+    }
+    /**
+     * Converts integer color to hex.
+     * @param {number} int
+     * @returns {HexColor}
+     */
+  }, {
+    key: "intToHex",
+    value: function intToHex(_int3) {
+      return '#' + _int3.toString(16).padStart(6, '0');
+    }
+    /**
+     * Converts an integer (0xRRGGBB) to RGBA.
+     * @param {number} value
+     * @returns {RgbaColor}
+     */
+  }, {
+    key: "intToRgba",
+    value: function intToRgba(value) {
+      var r = value >> 16 & 255;
+      var g = value >> 8 & 255;
+      var b = value & 255;
+      return [r, g, b, 1];
+    }
+  }]);
+}();
+var _default = exports["default"] = TinyColorConverter;
+
+},{}],166:[function(require,module,exports){
 arguments[4][126][0].apply(exports,arguments)
-},{"dup":126}],165:[function(require,module,exports){
+},{"dup":126}],167:[function(require,module,exports){
 arguments[4][127][0].apply(exports,arguments)
-},{"dup":127}],166:[function(require,module,exports){
+},{"dup":127}],168:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -32396,7 +33538,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _TinyHtml = _interopRequireDefault(require("./TinyHtml.mjs"));
 var TinyCollision = _interopRequireWildcard(require("../basics/collision.mjs"));
-var _objFilter = require("../basics/objFilter.mjs");
+var _objChecker = require("../basics/objChecker.mjs");
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -32531,7 +33673,7 @@ var TinyDragger = /*#__PURE__*/function () {
     // === Validations ===
     if (options.jail !== undefined && !(options.jail instanceof HTMLElement)) throw new Error('The "jail" option must be an HTMLElement if provided.');
     if (options.defaultZIndex !== undefined) this.setDefaultZIndex(options.defaultZIndex);
-    if (options.vibration !== undefined && options.vibration !== false && !(0, _objFilter.isJsonObject)(options.vibration)) throw new Error('The "vibration" option must be an object or false.');
+    if (options.vibration !== undefined && options.vibration !== false && !(0, _objChecker.isJsonObject)(options.vibration)) throw new Error('The "vibration" option must be an object or false.');
     /**
      * @param {any} val
      * @param {string} name
@@ -32570,7 +33712,7 @@ var TinyDragger = /*#__PURE__*/function () {
       collide: false,
       move: false
     };
-    _classPrivateFieldSet(_vibration, this, Object.assign(vibrationTemplate, (0, _objFilter.isJsonObject)(options.vibration) ? options.vibration : {}));
+    _classPrivateFieldSet(_vibration, this, Object.assign(vibrationTemplate, (0, _objChecker.isJsonObject)(options.vibration) ? options.vibration : {}));
     if (typeof options.classDragging === 'string') _classPrivateFieldSet(_classDragging, this, options.classDragging);
     if (typeof options.classBodyDragging === 'string') _classPrivateFieldSet(_classBodyDragging, this, options.classBodyDragging);
     if (typeof options.classJailDragging === 'string') _classPrivateFieldSet(_classJailDragging, this, options.classJailDragging);
@@ -33376,7 +34518,412 @@ _defineProperty(TinyDragger, "Utils", _objectSpread(_objectSpread({}, TinyCollis
 }));
 var _default = exports["default"] = TinyDragger;
 
-},{"../basics/collision.mjs":151,"../basics/objFilter.mjs":155,"./TinyHtml.mjs":167}],167:[function(require,module,exports){
+},{"../basics/collision.mjs":151,"../basics/objChecker.mjs":155,"./TinyHtml.mjs":170}],169:[function(require,module,exports){
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateMethodInitSpec(e, a) { _checkPrivateRedeclaration(e, a), a.add(e); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+var _listeners = /*#__PURE__*/new WeakMap();
+var _maxListeners = /*#__PURE__*/new WeakMap();
+var _throwMaxListeners = /*#__PURE__*/new WeakMap();
+var _TinyEvents_brand = /*#__PURE__*/new WeakSet();
+/**
+ * A generic event listener callback function.
+ *
+ * @callback handler
+ * @param {...any} payload - The data payload passed when the event is triggered.
+ * @returns {void}
+ */
+/**
+ * TinyEvents provides a minimalistic event emitter system similar to Node.js's EventEmitter,
+ * enabling components to subscribe to, emit, and manage events and their listeners.
+ *
+ * Features include:
+ * - Adding/removing event listeners (`on`, `off`, `offAll`, `offAllTypes`)
+ * - One-time listeners (`once`)
+ * - Emitting events (`emit`)
+ * - Listener inspection and limits (`listenerCount`, `listeners`, `eventNames`)
+ * - Maximum listener control (`setMaxListeners`, `getMaxListeners`)
+ *
+ * This class is useful for lightweight, dependency-free publish/subscribe event handling
+ * within modular JavaScript applications.
+ *
+ * @class
+ */
+var TinyEvents = /*#__PURE__*/function () {
+  function TinyEvents() {
+    _classCallCheck(this, TinyEvents);
+    ///////////////////////////////////////////////////
+    /**
+     * Internal method to prepend a listener with options.
+     *
+     * @param {string} event - Event name.
+     * @param {handler} handler - The callback function.
+     * @param {Object} [settings={}] - Optional settings.
+     * @param {boolean} [settings.once=false] - If the listener should be executed once.
+     */
+    _classPrivateMethodInitSpec(this, _TinyEvents_brand);
+    /** @type {Map<string, { handler: handler; config: { once: boolean } }[]>} */
+    _classPrivateFieldInitSpec(this, _listeners, new Map());
+    /** @type {number} */
+    _classPrivateFieldInitSpec(this, _maxListeners, 10);
+    /** @type {boolean} */
+    _classPrivateFieldInitSpec(this, _throwMaxListeners, false);
+  }
+  return _createClass(TinyEvents, [{
+    key: "setThrowOnMaxListeners",
+    value:
+    /**
+     * Enables or disables throwing an error when the maximum number of listeners is exceeded.
+     *
+     * @param {boolean} shouldThrow - If true, an error will be thrown when the max is exceeded.
+     */
+    function setThrowOnMaxListeners(shouldThrow) {
+      if (typeof shouldThrow !== 'boolean') throw new TypeError('setThrowOnMaxListeners(value): value must be a boolean');
+      _classPrivateFieldSet(_throwMaxListeners, this, shouldThrow);
+    }
+    /**
+     * Checks whether an error will be thrown when the max listener limit is exceeded.
+     *
+     * @returns {boolean} True if an error will be thrown, false if only a warning is shown.
+     */
+  }, {
+    key: "getThrowOnMaxListeners",
+    value: function getThrowOnMaxListeners() {
+      return _classPrivateFieldGet(_throwMaxListeners, this);
+    }
+  }, {
+    key: "prependListener",
+    value:
+    /**
+     * Adds a listener to the beginning of the listeners array for the specified event.
+     *
+     * @param {string} event - Event name.
+     * @param {handler} handler - The callback function.
+     */
+    function prependListener(event, handler) {
+      if (typeof event !== 'string') throw new TypeError('prepend(event, handler): event name must be a string');
+      if (typeof handler !== 'function') throw new TypeError('prepend(event, handler): handler must be a function');
+      _assertClassBrand(_TinyEvents_brand, this, _prepend).call(this, event, handler);
+    }
+    /**
+     * Adds a one-time listener to the beginning of the listeners array for the specified event.
+     *
+     * @param {string} event - Event name.
+     * @param {handler} handler - The callback function.
+     * @returns {handler} - The wrapped handler used internally.
+     */
+  }, {
+    key: "prependListenerOnce",
+    value: function prependListenerOnce(event, handler) {
+      var _this = this;
+      if (typeof event !== 'string') throw new TypeError('prependOnceListener(event, handler): event name must be a string');
+      if (typeof handler !== 'function') throw new TypeError('prependOnceListener(event, handler): handler must be a function');
+      /** @type {handler} */
+      var _wrapped = function wrapped() {
+        _this.off(event, _wrapped);
+        handler.apply(void 0, arguments);
+      };
+      _assertClassBrand(_TinyEvents_brand, this, _prepend).call(this, event, _wrapped, {
+        once: true
+      });
+      return _wrapped;
+    }
+    ////////////////////////////////////////////////////////////
+    /**
+     * Adds a event listener.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {handler} handler - Callback function to be called when event fires.
+     * @param {Object} [settings={}] - Optional settings.
+     * @param {boolean} [settings.once=false] - This is a once event.
+     */
+  }, {
+    key: "on",
+    value:
+    /**
+     * Adds a event listener.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {handler} handler - Callback function to be called when event fires.
+     */
+    function on(event, handler) {
+      if (typeof event !== 'string') throw new TypeError('on(event, handler): event name must be a string');
+      if (typeof handler !== 'function') throw new TypeError('on(event, handler): handler must be a function');
+      return _assertClassBrand(_TinyEvents_brand, this, _on).call(this, event, handler);
+    }
+    /**
+     * Registers an event listener that runs only once, then is removed.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {handler} handler - The callback function to run on event.
+     * @returns {handler} - The wrapped version of the handler.
+     */
+  }, {
+    key: "once",
+    value: function once(event, handler) {
+      var _this2 = this;
+      if (typeof event !== 'string') throw new TypeError('The event name must be a string.');
+      if (typeof handler !== 'function') throw new TypeError('once(event, handler): handler must be a function');
+      /** @type {handler} */
+      var _wrapped2 = function wrapped(e) {
+        _this2.off(event, _wrapped2);
+        if (typeof handler === 'function') handler(e);
+      };
+      _assertClassBrand(_TinyEvents_brand, this, _on).call(this, event, _wrapped2, {
+        once: true
+      });
+      return _wrapped2;
+    }
+    /**
+     * Adds a event listener.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {handler} handler - Callback function to be called when event fires.
+     */
+  }, {
+    key: "appendListener",
+    value: function appendListener(event, handler) {
+      return this.on(event, handler);
+    }
+    /**
+     * Registers an event listener that runs only once, then is removed.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {handler} handler - The callback function to run on event.
+     * @returns {handler} - The wrapped version of the handler.
+     */
+  }, {
+    key: "appendListenerOnce",
+    value: function appendListenerOnce(event, handler) {
+      return this.once(event, handler);
+    }
+    ///////////////////////////////////////////////
+    /**
+     * Removes a previously registered event listener.
+     *
+     * @param {string} event - The name of the event to remove the handler from.
+     * @param {handler} handler - The specific callback function to remove.
+     */
+  }, {
+    key: "off",
+    value: function off(event, handler) {
+      if (typeof event !== 'string') throw new TypeError('off(event, handler): event name must be a string');
+      if (typeof handler !== 'function') throw new TypeError('off(event, handler): handler must be a function');
+      var listeners = _classPrivateFieldGet(_listeners, this).get(event);
+      if (!Array.isArray(listeners)) return;
+      var index = listeners.findIndex(function (listener) {
+        return listener.handler === handler;
+      });
+      if (index !== -1) listeners.splice(index, 1);
+      // Optionally clean up empty arrays (optional)
+      if (listeners.length === 0) _classPrivateFieldGet(_listeners, this)["delete"](event);
+    }
+    /**
+     * Removes all event listeners of a specific type from the element.
+     *
+     * @param {string} event - The event type to remove (e.g. 'onScrollBoundary').
+     */
+  }, {
+    key: "offAll",
+    value: function offAll(event) {
+      if (typeof event !== 'string') throw new TypeError('The event name must be a string.');
+      _classPrivateFieldGet(_listeners, this)["delete"](event);
+    }
+    /**
+     * Removes all event listeners of all types from the element.
+     */
+  }, {
+    key: "offAllTypes",
+    value: function offAllTypes() {
+      _classPrivateFieldGet(_listeners, this).clear();
+    }
+    /////////////////////////////////////////////
+    /**
+     * Returns the number of listeners for a given event.
+     *
+     * @param {string} event - The name of the event.
+     * @returns {number} Number of listeners for the event.
+     */
+  }, {
+    key: "listenerCount",
+    value: function listenerCount(event) {
+      if (typeof event !== 'string') throw new TypeError('listenerCount(event): event name must be a string');
+      var listeners = _classPrivateFieldGet(_listeners, this).get(event);
+      return Array.isArray(listeners) ? listeners.length : 0;
+    }
+    /**
+     * Returns a copy of the array of listeners for the specified event.
+     *
+     * @param {string} event - The name of the event.
+     * @returns {handler[]} Array of listener functions.
+     */
+  }, {
+    key: "listeners",
+    value: function listeners(event) {
+      if (typeof event !== 'string') throw new TypeError('listeners(event): event name must be a string');
+      var listeners = _classPrivateFieldGet(_listeners, this).get(event);
+      return Array.isArray(listeners) ? _toConsumableArray(listeners).filter(function (listener) {
+        return !listener.config.once;
+      }).map(function (listener) {
+        return listener.handler;
+      }) : [];
+    }
+    /**
+     * Returns a copy of the array of listeners for the specified event.
+     *
+     * @param {string} event - The name of the event.
+     * @returns {handler[]} Array of listener functions.
+     */
+  }, {
+    key: "onceListeners",
+    value: function onceListeners(event) {
+      if (typeof event !== 'string') throw new TypeError('onceListeners(event): event name must be a string');
+      var listeners = _classPrivateFieldGet(_listeners, this).get(event);
+      return Array.isArray(listeners) ? _toConsumableArray(listeners).filter(function (listener) {
+        return listener.config.once;
+      }).map(function (listener) {
+        return listener.handler;
+      }) : [];
+    }
+    /**
+     * Returns a copy of the internal listeners array for the specified event,
+     * including wrapper functions like those used by `.once()`.
+     * @param {string | symbol} event - The event name.
+     * @returns {handler[]} An array of raw listener functions.
+     */
+  }, {
+    key: "allListeners",
+    value: function allListeners(event) {
+      if (typeof event !== 'string') throw new TypeError('allListeners(event): event name must be a string');
+      var listeners = _classPrivateFieldGet(_listeners, this).get(event);
+      return Array.isArray(listeners) ? _toConsumableArray(listeners).map(function (listener) {
+        return listener.handler;
+      }) : [];
+    }
+    /**
+     * Returns an array of event names for which there are registered listeners.
+     *
+     * @returns {string[]} Array of registered event names.
+     */
+  }, {
+    key: "eventNames",
+    value: function eventNames() {
+      return _toConsumableArray(_classPrivateFieldGet(_listeners, this).keys());
+    }
+    /**
+     * Emits an event, triggering all registered handlers for that event.
+     *
+     * @param {string} event - The event name to emit.
+     * @param {...any} payload - Optional data to pass to each handler.
+     * @returns {boolean} True if any listeners were called, false otherwise.
+     */
+  }, {
+    key: "emit",
+    value: function emit(event) {
+      for (var _len = arguments.length, payload = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        payload[_key - 1] = arguments[_key];
+      }
+      if (typeof event !== 'string') throw new TypeError('emit(event, data): event name must be a string');
+      var listeners = _classPrivateFieldGet(_listeners, this).get(event);
+      if (!Array.isArray(listeners) || listeners.length === 0) return false;
+      // Call all listeners with the provided data
+      listeners.forEach(function (listener) {
+        return listener.handler.apply(listener, payload);
+      });
+      return true;
+    }
+    ///////////////////////////////////
+    /**
+     * Sets the maximum number of listeners per event before a warning is shown.
+     *
+     * @param {number} n - The maximum number of listeners.
+     */
+  }, {
+    key: "setMaxListeners",
+    value: function setMaxListeners(n) {
+      if (!Number.isInteger(n) || n < 0) throw new TypeError('setMaxListeners(n): n must be a non-negative integer');
+      _classPrivateFieldSet(_maxListeners, this, n);
+    }
+    /**
+     * Gets the maximum number of listeners allowed per event.
+     *
+     * @returns {number} The maximum number of listeners.
+     */
+  }, {
+    key: "getMaxListeners",
+    value: function getMaxListeners() {
+      return _classPrivateFieldGet(_maxListeners, this);
+    }
+  }]);
+}();
+function _prepend(event, handler) {
+  var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+    _ref$once = _ref.once,
+    once = _ref$once === void 0 ? false : _ref$once;
+  var eventData = _classPrivateFieldGet(_listeners, this).get(event);
+  if (!Array.isArray(eventData)) {
+    eventData = [];
+    _classPrivateFieldGet(_listeners, this).set(event, eventData);
+  }
+  eventData.unshift({
+    handler: handler,
+    config: {
+      once: once
+    }
+  });
+  var max = _classPrivateFieldGet(_maxListeners, this);
+  if (max > 0 && eventData.length > max) {
+    var warnMessage = "Possible memory leak detected. ".concat(eventData.length, " \"").concat(event, "\" listeners added. ") + "Use setMaxListeners() to increase limit.";
+    if (!_classPrivateFieldGet(_throwMaxListeners, this)) console.warn(warnMessage);else throw new Error(warnMessage);
+  }
+}
+function _on(event, handler) {
+  var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+    _ref2$once = _ref2.once,
+    once = _ref2$once === void 0 ? false : _ref2$once;
+  var eventData = _classPrivateFieldGet(_listeners, this).get(event);
+  if (!Array.isArray(eventData)) {
+    eventData = [];
+    _classPrivateFieldGet(_listeners, this).set(event, eventData);
+  }
+  eventData.push({
+    handler: handler,
+    config: {
+      once: once
+    }
+  });
+  // Warn if listener count exceeds the max allowed
+  var max = _classPrivateFieldGet(_maxListeners, this);
+  if (max > 0 && eventData.length > max) {
+    var warnMessage = "Possible memory leak detected. ".concat(eventData.length, " \"").concat(event, "\" listeners added. ") + "Use setMaxListeners() to increase limit.";
+    if (!_classPrivateFieldGet(_throwMaxListeners, this)) console.warn(warnMessage);else throw new Error(warnMessage);
+  }
+}
+var _default = exports["default"] = TinyEvents;
+
+},{}],170:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38912,7 +40459,935 @@ _defineProperty(TinyHtml, "_propFix", {
 });
 var _default = exports["default"] = TinyHtml;
 
-},{"../basics/collision.mjs":151}],168:[function(require,module,exports){
+},{"../basics/collision.mjs":151}],171:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _objChecker = require("../basics/objChecker.mjs");
+var _TinyEvents = _interopRequireDefault(require("./TinyEvents.mjs"));
+var _TinyLocalStorage;
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateMethodInitSpec(e, a) { _checkPrivateRedeclaration(e, a), a.add(e); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+/** @type {Map<any, EncodeFn>} */
+var customEncoders = new Map();
+/** @type {Map<any, DecodeFn>} */
+var customDecoders = new Map();
+/**
+ * A function that encodes a value into a serializable JSON-compatible format.
+ *
+ * @callback EncodeFn
+ * @param {any} value - The value to encode.
+ * @param {encodeSpecialJson} encodeSpecialJson - Recursive encoder helper.
+ * @returns {any} The encoded value.
+ */
+/**
+ * An object that defines how to check and decode a specific serialized type.
+ *
+ * @typedef {Object} DecodeFn
+ * @property {(value: any) => any} check - Checks if the value matches the custom encoded structure.
+ * @property {(value: any, decodeSpecialJson: decodeSpecialJson) => any} decode - Decodes the structure back into its original form.
+ */
+/**
+ * Encodes extended JSON-compatible structures recursively.
+ * @callback encodeSpecialJson
+ * @param {any} value
+ * @returns {any}
+ */
+/**
+ * Decodes extended JSON-compatible structures recursively.
+ * @callback decodeSpecialJson
+ * @param {any} value
+ * @returns {any}
+ */
+/**
+ * Represents a value that can be safely stored and restored using JSON in `localStorage`,
+ * including structures like arrays, plain objects, Map and Set.
+ *
+ * - `Record<string|number|symbol, any>` → plain object (e.g., `{ key: value }`)
+ * - `any[]` → array of any JSON-serializable values
+ * - `Map<string|number|symbol, any>` → converted to `{ __map__: true, data: [[k, v], ...] }`
+ * - `Set<any>` → converted to `{ __set__: true, data: [v1, v2, ...] }`
+ *
+ * These conversions allow complex structures to be restored after JSON serialization.
+ *
+ * @typedef {(Record<string|number|symbol, any> | any[] | Map<string|number|symbol, any> | Set<any>)} LocalStorageJsonValue
+ */
+/**
+ * A powerful wrapper for Web Storage (`localStorage` or `sessionStorage`) that supports
+ * type-safe methods and full JSON-like structure encoding and decoding.
+ *
+ * `TinyLocalStorage` allows storing and retrieving complex types such as:
+ * - `Map`, `Set`
+ * - `Date`, `RegExp`
+ * - `BigInt`, `Symbol`
+ * - `undefined`, `null`
+ * - Plain objects and arrays
+ *
+ * Includes:
+ * - Type-specific `set` and `get` methods (`setDate`, `getBool`, etc.)
+ * - `getValue()` to retrieve any structure regardless of type
+ * - Auto-encoding/decoding with support for custom types via `registerJsonType`
+ * - Built-in event system (`TinyEvents`) to listen for changes
+ * - Optional fallback values on decoding errors
+ *
+ * Supports registering and unregistering custom types via:
+ * - `registerJsonType(...)`
+ * - `deleteJsonType(...)`
+ *
+ * This class is suitable for applications that require structured persistence in the browser.
+ */
+var _events = /*#__PURE__*/new WeakMap();
+var _localStorage = /*#__PURE__*/new WeakMap();
+var _storageEvent = /*#__PURE__*/new WeakMap();
+var _TinyLocalStorage_brand = /*#__PURE__*/new WeakSet();
+var TinyLocalStorage = /*#__PURE__*/function () {
+  /**
+   * Initializes the TinyLocalStorage instance and sets up cross-tab sync.
+   *
+   * Adds listener for the native `storage` event to support tab synchronization.
+   */
+  function TinyLocalStorage() {
+    var _this = this;
+    _classCallCheck(this, TinyLocalStorage);
+    /**
+     * Automatically serializes nested instances.
+     *
+     * @param {string} name - The key under which to store the data.
+     * @param {*} data - The data to be serialized.
+     * @returns {*}
+     */
+    _classPrivateMethodInitSpec(this, _TinyLocalStorage_brand);
+    /** @typedef {import('./TinyEvents.mjs').handler} handler */
+    _classPrivateFieldInitSpec(this, _events, new _TinyEvents["default"]());
+    //////////////////////////////////////////////////////
+    /** @type {Storage} */
+    _classPrivateFieldInitSpec(this, _localStorage, window.localStorage);
+    /** @type {(ev: StorageEvent) => any} */
+    _classPrivateFieldInitSpec(this, _storageEvent, function (ev) {
+      return _this.emit('storage', ev);
+    });
+    window.addEventListener('storage', _classPrivateFieldGet(_storageEvent, this));
+  }
+  /**
+   * Defines a custom storage interface (e.g. `sessionStorage`).
+   *
+   * @param {Storage} localstorage - A valid Storage object (localStorage or sessionStorage).
+   */
+  return _createClass(TinyLocalStorage, [{
+    key: "setThrowOnMaxListeners",
+    value:
+    /**
+     * Enables or disables throwing an error when the maximum number of listeners is exceeded.
+     *
+     * @param {boolean} shouldThrow - If true, an error will be thrown when the max is exceeded.
+     */
+    function setThrowOnMaxListeners(shouldThrow) {
+      return _classPrivateFieldGet(_events, this).setThrowOnMaxListeners(shouldThrow);
+    }
+    /**
+     * Checks whether an error will be thrown when the max listener limit is exceeded.
+     *
+     * @returns {boolean} True if an error will be thrown, false if only a warning is shown.
+     */
+  }, {
+    key: "getThrowOnMaxListeners",
+    value: function getThrowOnMaxListeners() {
+      return _classPrivateFieldGet(_events, this).getThrowOnMaxListeners();
+    }
+    /////////////////////////////////////////////////////////////
+    /**
+     * Adds a listener to the beginning of the listeners array for the specified event.
+     *
+     * @param {string} event - Event name.
+     * @param {handler} handler - The callback function.
+     */
+  }, {
+    key: "prependListener",
+    value: function prependListener(event, handler) {
+      return _classPrivateFieldGet(_events, this).prependListener(event, handler);
+    }
+    /**
+     * Adds a one-time listener to the beginning of the listeners array for the specified event.
+     *
+     * @param {string} event - Event name.
+     * @param {handler} handler - The callback function.
+     * @returns {handler} - The wrapped handler used internally.
+     */
+  }, {
+    key: "prependListenerOnce",
+    value: function prependListenerOnce(event, handler) {
+      return _classPrivateFieldGet(_events, this).prependListenerOnce(event, handler);
+    }
+    //////////////////////////////////////////////////////////////////////
+    /**
+     * Adds a event listener.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {handler} handler - Callback function to be called when event fires.
+     */
+  }, {
+    key: "appendListener",
+    value: function appendListener(event, handler) {
+      return _classPrivateFieldGet(_events, this).appendListener(event, handler);
+    }
+    /**
+     * Registers an event listener that runs only once, then is removed.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {handler} handler - The callback function to run on event.
+     * @returns {handler} - The wrapped version of the handler.
+     */
+  }, {
+    key: "appendListenerOnce",
+    value: function appendListenerOnce(event, handler) {
+      return _classPrivateFieldGet(_events, this).appendListenerOnce(event, handler);
+    }
+    /**
+     * Adds a event listener.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {handler} handler - Callback function to be called when event fires.
+     */
+  }, {
+    key: "on",
+    value: function on(event, handler) {
+      return _classPrivateFieldGet(_events, this).on(event, handler);
+    }
+    /**
+     * Registers an event listener that runs only once, then is removed.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {handler} handler - The callback function to run on event.
+     * @returns {handler} - The wrapped version of the handler.
+     */
+  }, {
+    key: "once",
+    value: function once(event, handler) {
+      return _classPrivateFieldGet(_events, this).once(event, handler);
+    }
+    ////////////////////////////////////////////////////////////////////
+    /**
+     * Removes a previously registered event listener.
+     *
+     * @param {string} event - The name of the event to remove the handler from.
+     * @param {handler} handler - The specific callback function to remove.
+     */
+  }, {
+    key: "off",
+    value: function off(event, handler) {
+      return _classPrivateFieldGet(_events, this).off(event, handler);
+    }
+    /**
+     * Removes all event listeners of a specific type from the element.
+     *
+     * @param {string} event - The event type to remove (e.g. 'onScrollBoundary').
+     */
+  }, {
+    key: "offAll",
+    value: function offAll(event) {
+      return _classPrivateFieldGet(_events, this).offAll(event);
+    }
+    /**
+     * Removes all event listeners of all types from the element.
+     */
+  }, {
+    key: "offAllTypes",
+    value: function offAllTypes() {
+      return _classPrivateFieldGet(_events, this).offAllTypes();
+    }
+    ////////////////////////////////////////////////////////////
+    /**
+     * Returns the number of listeners for a given event.
+     *
+     * @param {string} event - The name of the event.
+     * @returns {number} Number of listeners for the event.
+     */
+  }, {
+    key: "listenerCount",
+    value: function listenerCount(event) {
+      return _classPrivateFieldGet(_events, this).listenerCount(event);
+    }
+    /**
+     * Returns a copy of the array of listeners for the specified event.
+     *
+     * @param {string} event - The name of the event.
+     * @returns {handler[]} Array of listener functions.
+     */
+  }, {
+    key: "listeners",
+    value: function listeners(event) {
+      return _classPrivateFieldGet(_events, this).listeners(event);
+    }
+    /**
+     * Returns a copy of the array of listeners for the specified event.
+     *
+     * @param {string} event - The name of the event.
+     * @returns {handler[]} Array of listener functions.
+     */
+  }, {
+    key: "onceListeners",
+    value: function onceListeners(event) {
+      return _classPrivateFieldGet(_events, this).onceListeners(event);
+    }
+    /**
+     * Returns a copy of the internal listeners array for the specified event,
+     * including wrapper functions like those used by `.once()`.
+     * @param {string | symbol} event - The event name.
+     * @returns {handler[]} An array of raw listener functions.
+     */
+  }, {
+    key: "allListeners",
+    value: function allListeners(event) {
+      return _classPrivateFieldGet(_events, this).allListeners(event);
+    }
+    /**
+     * Returns an array of event names for which there are registered listeners.
+     *
+     * @returns {string[]} Array of registered event names.
+     */
+  }, {
+    key: "eventNames",
+    value: function eventNames() {
+      return _classPrivateFieldGet(_events, this).eventNames();
+    }
+    //////////////////////////////////////////////////////
+    /**
+     * Emits an event, triggering all registered handlers for that event.
+     *
+     * @param {string} event - The event name to emit.
+     * @param {...any} payload - Optional data to pass to each handler.
+     * @returns {boolean} True if any listeners were called, false otherwise.
+     */
+  }, {
+    key: "emit",
+    value: function emit(event) {
+      var _classPrivateFieldGet2;
+      for (var _len = arguments.length, payload = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        payload[_key - 1] = arguments[_key];
+      }
+      return (_classPrivateFieldGet2 = _classPrivateFieldGet(_events, this)).emit.apply(_classPrivateFieldGet2, [event].concat(payload));
+    }
+    /**
+     * Sets the maximum number of listeners per event before a warning is shown.
+     *
+     * @param {number} n - The maximum number of listeners.
+     */
+  }, {
+    key: "setMaxListeners",
+    value: function setMaxListeners(n) {
+      return _classPrivateFieldGet(_events, this).setMaxListeners(n);
+    }
+    /**
+     * Gets the maximum number of listeners allowed per event.
+     *
+     * @returns {number} The maximum number of listeners.
+     */
+  }, {
+    key: "getMaxListeners",
+    value: function getMaxListeners() {
+      return _classPrivateFieldGet(_events, this).getMaxListeners();
+    }
+    ///////////////////////////////////////////////////
+    /**
+     * Registers a new JSON-serializable type with its encoder and decoder.
+     *
+     * @param {any} type - The type or primitive type name (e.g. `"bigint"`, `"symbol"`, etc).
+     * @param {EncodeFn} encodeFn - The function that encodes the value.
+     * @param {DecodeFn} decodeFn - An object with `check` and `decode` methods for restoring the value.
+     */
+  }, {
+    key: "setLocalStorage",
+    value: function setLocalStorage(localstorage) {
+      if (!(localstorage instanceof Storage)) throw new Error('Argument must be a valid instance of Storage.');
+      _classPrivateFieldSet(_localStorage, this, localstorage);
+    }
+    /**
+     * Checks if `localStorage` is supported by the current environment.
+     *
+     * @returns {boolean} True if `localStorage` exists, false otherwise.
+     */
+  }, {
+    key: "localStorageExists",
+    value: function localStorageExists() {
+      return _classPrivateFieldGet(_localStorage, this) instanceof Storage;
+    }
+  }, {
+    key: "setJson",
+    value:
+    /**
+     * Stores a JSON-compatible value in `localStorage`.
+     *
+     * Automatically serializes nested `Map` and `Set` instances.
+     *
+     * @param {string} name - The key under which to store the data.
+     * @param {LocalStorageJsonValue} data - The data to be serialized and stored.
+     */
+    function setJson(name, data) {
+      if (!(0, _objChecker.isJsonObject)(data) && !Array.isArray(data) && !(data instanceof Map) && !(data instanceof Set)) {
+        throw new Error('The storage value is not a valid JSON-compatible structure.');
+      }
+      var encoded = _assertClassBrand(_TinyLocalStorage_brand, this, _setJson).call(this, name, data);
+      this.emit('setJson', name, data);
+      return _classPrivateFieldGet(_localStorage, this).setItem(name, JSON.stringify(encoded));
+    }
+    /**
+     * Retrieves a value from `localStorage`.
+     *
+     * Automatically restores nested instances.
+     *
+     * @param {string} name - The key to retrieve.
+     * @param {'array'|'obj'|'map'|'set'|'null'} [defaultData] - Default fallback format if value is invalid.
+     * @returns {{ decoded: any, fallback: any }} The parsed object or fallback.
+     */
+  }, {
+    key: "getJson",
+    value:
+    /**
+     * Retrieves and parses a JSON value from `localStorage`.
+     *
+     * Automatically restores nested `Map` and `Set` instances.
+     *
+     * @param {string} name - The key to retrieve.
+     * @param {'array'|'obj'|'map'|'set'|'null'} [defaultData] - Default fallback format if value is invalid.
+     * @returns {LocalStorageJsonValue|null} The parsed object or fallback.
+     */
+    function getJson(name, defaultData) {
+      var _assertClassBrand$cal = _assertClassBrand(_TinyLocalStorage_brand, this, _getJson).call(this, name, defaultData),
+        decoded = _assertClassBrand$cal.decoded,
+        fallback = _assertClassBrand$cal.fallback;
+      if (decoded instanceof Map || decoded instanceof Set || Array.isArray(decoded) || (0, _objChecker.isJsonObject)(decoded)) return decoded;
+      return fallback;
+    }
+    /**
+     * Stores a Date in localStorage.
+     * @param {string} name
+     * @param {Date} data
+     */
+  }, {
+    key: "setDate",
+    value: function setDate(name, data) {
+      if (!(data instanceof Date)) throw new Error('Value must be a Date.');
+      var encoded = _assertClassBrand(_TinyLocalStorage_brand, this, _setJson).call(this, name, data);
+      this.emit('setDate', name, data);
+      return _classPrivateFieldGet(_localStorage, this).setItem(name, JSON.stringify(encoded));
+    }
+    /**
+     * Retrieves a Date from localStorage.
+     * @param {string} name
+     * @returns {Date|null}
+     */
+  }, {
+    key: "getDate",
+    value: function getDate(name) {
+      var value = _assertClassBrand(_TinyLocalStorage_brand, this, _getJson).call(this, name).decoded;
+      return value instanceof Date ? value : null;
+    }
+    /**
+     * Stores a RegExp in localStorage.
+     * @param {string} name
+     * @param {RegExp} data
+     */
+  }, {
+    key: "setRegExp",
+    value: function setRegExp(name, data) {
+      if (!(data instanceof RegExp)) throw new Error('Value must be a RegExp.');
+      var encoded = _assertClassBrand(_TinyLocalStorage_brand, this, _setJson).call(this, name, data);
+      this.emit('setRegExp', name, data);
+      return _classPrivateFieldGet(_localStorage, this).setItem(name, JSON.stringify(encoded));
+    }
+    /**
+     * Retrieves a RegExp from localStorage.
+     * @param {string} name
+     * @returns {RegExp|null}
+     */
+  }, {
+    key: "getRegExp",
+    value: function getRegExp(name) {
+      var value = _assertClassBrand(_TinyLocalStorage_brand, this, _getJson).call(this, name).decoded;
+      return value instanceof RegExp ? value : null;
+    }
+    /**
+     * Stores a BigInt in localStorage.
+     * @param {string} name
+     * @param {bigint} data
+     */
+  }, {
+    key: "setBigInt",
+    value: function setBigInt(name, data) {
+      if (typeof data !== 'bigint') throw new Error('Value must be a BigInt.');
+      var encoded = _assertClassBrand(_TinyLocalStorage_brand, this, _setJson).call(this, name, data);
+      this.emit('setBigInt', name, data);
+      return _classPrivateFieldGet(_localStorage, this).setItem(name, JSON.stringify(encoded));
+    }
+    /**
+     * Retrieves a BigInt from localStorage.
+     * @param {string} name
+     * @returns {bigint|null}
+     */
+  }, {
+    key: "getBigInt",
+    value: function getBigInt(name) {
+      var value = _assertClassBrand(_TinyLocalStorage_brand, this, _getJson).call(this, name).decoded;
+      return typeof value === 'bigint' ? value : null;
+    }
+    /**
+     * Stores a Symbol in localStorage.
+     * Only global symbols (`Symbol.for`) will preserve the key.
+     * @param {string} name
+     * @param {symbol} data
+     */
+  }, {
+    key: "setSymbol",
+    value: function setSymbol(name, data) {
+      if (_typeof(data) !== 'symbol') throw new Error('Value must be a Symbol.');
+      var encoded = _assertClassBrand(_TinyLocalStorage_brand, this, _setJson).call(this, name, data);
+      this.emit('setSymbol', name, data);
+      return _classPrivateFieldGet(_localStorage, this).setItem(name, JSON.stringify(encoded));
+    }
+    /**
+     * Retrieves a Symbol from localStorage.
+     * @param {string} name
+     * @returns {symbol|null}
+     */
+  }, {
+    key: "getSymbol",
+    value: function getSymbol(name) {
+      var value = _assertClassBrand(_TinyLocalStorage_brand, this, _getJson).call(this, name).decoded;
+      return _typeof(value) === 'symbol' ? value : null;
+    }
+    /**
+     * Retrieves a value from `localStorage`.
+     *
+     * @param {string} name - The key to retrieve.
+     * @returns {any} The stored value or null if not found.
+     */
+  }, {
+    key: "getValue",
+    value: function getValue(name) {
+      var _assertClassBrand$cal2;
+      return (_assertClassBrand$cal2 = _assertClassBrand(_TinyLocalStorage_brand, this, _getJson).call(this, name).decoded) !== null && _assertClassBrand$cal2 !== void 0 ? _assertClassBrand$cal2 : null;
+    }
+    /**
+     * Stores a raw string value in `localStorage`.
+     *
+     * @param {string} name - The key to use.
+     * @param {any} data - The data to store.
+     */
+  }, {
+    key: "setItem",
+    value: function setItem(name, data) {
+      if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
+      this.emit('setItem', name, data);
+      return _classPrivateFieldGet(_localStorage, this).setItem(name, data);
+    }
+    /**
+     * Retrieves a raw string value from `localStorage`.
+     *
+     * @param {string} name - The key to retrieve.
+     * @returns {string|null} The stored value or null if not found.
+     */
+  }, {
+    key: "getItem",
+    value: function getItem(name) {
+      if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
+      return _classPrivateFieldGet(_localStorage, this).getItem(name);
+    }
+    /**
+     * Stores a string in `localStorage`, ensuring the data is a valid string.
+     *
+     * @param {string} name - The key to store the string under.
+     * @param {string} data - The string to store.
+     */
+  }, {
+    key: "setString",
+    value: function setString(name, data) {
+      if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
+      if (typeof data !== 'string') throw new Error('Value must be a string.');
+      this.emit('setString', name, data);
+      return _classPrivateFieldGet(_localStorage, this).setItem(name, data);
+    }
+    /**
+     * Retrieves a string value from `localStorage`.
+     *
+     * @param {string} name - The key to retrieve.
+     * @returns {string|null} The string if valid, or null.
+     */
+  }, {
+    key: "getString",
+    value: function getString(name) {
+      if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
+      var value = _classPrivateFieldGet(_localStorage, this).getItem(name);
+      if (typeof value === 'string') return value;
+      return null;
+    }
+    /**
+     * Stores a number value in `localStorage`.
+     *
+     * @param {string} name - The key to use.
+     * @param {number} data - The number to store.
+     */
+  }, {
+    key: "setNumber",
+    value: function setNumber(name, data) {
+      if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
+      if (typeof data !== 'number') throw new Error('Value must be a number.');
+      this.emit('setNumber', name, data);
+      return _classPrivateFieldGet(_localStorage, this).setItem(name, String(data));
+    }
+    /**
+     * Retrieves a number from `localStorage`.
+     *
+     * @param {string} name - The key to retrieve.
+     * @returns {number|null} The number or null if invalid.
+     */
+  }, {
+    key: "getNumber",
+    value: function getNumber(name) {
+      if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
+      /** @type {number|string|null} */
+      var number = _classPrivateFieldGet(_localStorage, this).getItem(name);
+      if (typeof number === 'number') return number;
+      if (typeof number === 'string' && number.length > 0) {
+        number = parseFloat(number);
+        if (!Number.isNaN(number)) return number;
+      }
+      return null;
+    }
+    /**
+     * Stores a boolean value in `localStorage`.
+     *
+     * @param {string} name - The key to use.
+     * @param {boolean} data - The boolean value to store.
+     */
+  }, {
+    key: "setBool",
+    value: function setBool(name, data) {
+      if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
+      if (typeof data !== 'boolean') throw new Error('Value must be a boolean.');
+      this.emit('setBool', name, data);
+      return _classPrivateFieldGet(_localStorage, this).setItem(name, String(data));
+    }
+    /**
+     * Retrieves a boolean value from `localStorage`.
+     *
+     * @param {string} name - The key to retrieve.
+     * @returns {boolean|null} The boolean or null if invalid.
+     */
+  }, {
+    key: "getBool",
+    value: function getBool(name) {
+      if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
+      var value = _classPrivateFieldGet(_localStorage, this).getItem(name);
+      if (typeof value === 'boolean') return value;
+      if (typeof value === 'string') {
+        if (value === 'true') return true;
+        if (value === 'false') return false;
+      }
+      return null;
+    }
+    /**
+     * Removes a value from `localStorage`.
+     *
+     * @param {string} name - The key to remove.
+     */
+  }, {
+    key: "removeItem",
+    value: function removeItem(name) {
+      if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
+      this.emit('removeItem', name);
+      return _classPrivateFieldGet(_localStorage, this).removeItem(name);
+    }
+    /**
+     * Clears all data from `localStorage`.
+     */
+  }, {
+    key: "clearLocalStorage",
+    value: function clearLocalStorage() {
+      return _classPrivateFieldGet(_localStorage, this).clear();
+    }
+    /**
+     * Destroys the storage instance by removing the storage event listener.
+     */
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      window.removeEventListener('storage', _classPrivateFieldGet(_storageEvent, this));
+      _classPrivateFieldGet(_events, this).offAllTypes();
+    }
+  }], [{
+    key: "registerJsonType",
+    value: function registerJsonType(type, encodeFn, decodeFn) {
+      customEncoders.set(type, encodeFn);
+      customDecoders.set(type, decodeFn);
+    }
+    /**
+     * Removes a previously registered custom type from the encoding/decoding system.
+     *
+     * @param {string} type - The primitive name or constructor reference used in registration.
+     */
+  }, {
+    key: "deleteJsonType",
+    value: function deleteJsonType(type) {
+      customEncoders["delete"](type);
+      customDecoders["delete"](type);
+    }
+    //////////////////////////////////////////////////////
+    /**
+     * Recursively serializes a value to a JSON-compatible format.
+     *
+     * This includes custom types (via `registerJsonType`), plus support for:
+     * - `undefined` → `{ __undefined__: true }`
+     * - `null` → `{ __null__: true }`
+     *
+     * @type {encodeSpecialJson}
+     */
+  }, {
+    key: "encodeSpecialJson",
+    value: function encodeSpecialJson(value) {
+      if (typeof value === 'undefined') return {
+        __undefined__: true
+      };
+      if (value === null) return {
+        __null__: true
+      };
+      var _iterator = _createForOfIteratorHelper(customEncoders.entries()),
+        _step;
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var _step$value = _slicedToArray(_step.value, 2),
+            type = _step$value[0],
+            encoder = _step$value[1];
+          if (typeof type !== 'string' && value instanceof type || _typeof(value) === type) {
+            return encoder(value, TinyLocalStorage.encodeSpecialJson);
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+      if (Array.isArray(value)) {
+        return value.map(TinyLocalStorage.encodeSpecialJson);
+      }
+      if ((0, _objChecker.isJsonObject)(value)) {
+        var encoded = {};
+        for (var key in value) {
+          // @ts-ignore
+          encoded[key] = TinyLocalStorage.encodeSpecialJson(value[key]);
+        }
+        return encoded;
+      }
+      return value;
+    }
+    /**
+     * Recursively deserializes a JSON-compatible value into its original structure.
+     *
+     * Automatically handles:
+     * - `__undefined__` → `undefined`
+     * - `__null__` → `null`
+     * - Any type registered via `registerJsonType`
+     *
+     * @type {decodeSpecialJson}
+     */
+  }, {
+    key: "decodeSpecialJson",
+    value: function decodeSpecialJson(value) {
+      var isJson = (0, _objChecker.isJsonObject)(value);
+      if (isJson) {
+        if (value.__undefined__) return undefined;
+        if (value.__null__) return null;
+      }
+      if (Array.isArray(value)) {
+        return value.map(TinyLocalStorage.decodeSpecialJson);
+      }
+      if (isJson) {
+        var _iterator2 = _createForOfIteratorHelper(customDecoders.entries()),
+          _step2;
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var _step2$value = _slicedToArray(_step2.value, 2),
+              type = _step2$value[0],
+              decoder = _step2$value[1];
+            if (decoder.check && decoder.check(value)) {
+              return decoder.decode(value, TinyLocalStorage.decodeSpecialJson);
+            }
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+        var decoded = {};
+        for (var key in value) {
+          // @ts-ignore
+          decoded[key] = TinyLocalStorage.decodeSpecialJson(value[key]);
+        }
+        return decoded;
+      }
+      return value;
+    }
+  }]);
+}(); // First registers
+// Map
+_TinyLocalStorage = TinyLocalStorage;
+function _setJson(name, data) {
+  if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
+  return _TinyLocalStorage.encodeSpecialJson(data);
+}
+function _getJson(name, defaultData) {
+  if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
+  var raw = _classPrivateFieldGet(_localStorage, this).getItem(name);
+  var fallbackTypes = {
+    obj: function obj() {
+      return {};
+    },
+    array: function array() {
+      return [];
+    },
+    map: function map() {
+      return new Map();
+    },
+    set: function set() {
+      return new Set();
+    }
+  };
+  var fallback =
+  // @ts-ignore
+  typeof fallbackTypes[defaultData] === 'function' ? fallbackTypes[defaultData]() : null;
+  var parsed;
+  try {
+    // @ts-ignore
+    parsed = JSON.parse(raw);
+  } catch (_unused) {
+    // @ts-ignore
+    return fallback;
+  }
+  return {
+    decoded: _TinyLocalStorage.decodeSpecialJson(parsed),
+    fallback: fallback
+  };
+}
+TinyLocalStorage.registerJsonType(Map, function (value, encodeSpecialJson) {
+  return {
+    __map__: true,
+    data: Array.from(value.entries()).map(function (_ref) {
+      var _ref2 = _slicedToArray(_ref, 2),
+        k = _ref2[0],
+        v = _ref2[1];
+      return [k, encodeSpecialJson(v)];
+    })
+  };
+}, {
+  check: function check(value) {
+    return value.__map__;
+  },
+  /** @param {{ data: any[] }} value */
+  decode: function decode(value, decodeSpecialJson) {
+    return new Map(value.data.map(function (_ref3) {
+      var _ref4 = _slicedToArray(_ref3, 2),
+        k = _ref4[0],
+        v = _ref4[1];
+      return [k, decodeSpecialJson(v)];
+    }));
+  }
+});
+// Set
+TinyLocalStorage.registerJsonType(Set, function (value, encodeSpecialJson) {
+  return {
+    __set__: true,
+    data: Array.from(value).map(encodeSpecialJson)
+  };
+}, {
+  check: function check(value) {
+    return value.__set__;
+  },
+  decode: function decode(value, decodeSpecialJson) {
+    return new Set(value.data.map(decodeSpecialJson));
+  }
+});
+// Date
+TinyLocalStorage.registerJsonType(Date, function (value) {
+  return {
+    __date__: true,
+    value: value.toISOString()
+  };
+}, {
+  check: function check(value) {
+    return value.__date__;
+  },
+  decode: function decode(value) {
+    return new Date(value.value);
+  }
+});
+// Regex
+TinyLocalStorage.registerJsonType(RegExp, function (value) {
+  return {
+    __regexp__: true,
+    source: value.source,
+    flags: value.flags
+  };
+}, {
+  check: function check(value) {
+    return value.__regexp__;
+  },
+  decode: function decode(value) {
+    return new RegExp(value.source, value.flags);
+  }
+});
+// Big Int
+TinyLocalStorage.registerJsonType('bigint', function (value) {
+  return {
+    __bigint__: true,
+    value: value.toString()
+  };
+}, {
+  check: function check(value) {
+    return value.__bigint__;
+  },
+  decode: function decode(value) {
+    return BigInt(value.value);
+  }
+});
+// Symbol
+TinyLocalStorage.registerJsonType('symbol', function (value) {
+  var _ref5, _Symbol$keyFor;
+  return {
+    __symbol__: true,
+    key: (_ref5 = (_Symbol$keyFor = Symbol.keyFor(value)) !== null && _Symbol$keyFor !== void 0 ? _Symbol$keyFor : value.description) !== null && _ref5 !== void 0 ? _ref5 : null
+  };
+}, {
+  check: function check(value) {
+    return value.__symbol__;
+  },
+  decode: function decode(value) {
+    var key = value.key;
+    return key != null ? Symbol["for"](key) : Symbol();
+  }
+});
+var _default = exports["default"] = TinyLocalStorage;
+
+},{"../basics/objChecker.mjs":155,"./TinyEvents.mjs":169}],172:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39174,13 +41649,13 @@ var TinyNotifications = /*#__PURE__*/function () {
 }();
 var _default = exports["default"] = TinyNotifications;
 
-},{"../basics/text.mjs":157}],169:[function(require,module,exports){
+},{"../basics/text.mjs":158}],173:[function(require,module,exports){
 arguments[4][129][0].apply(exports,arguments)
-},{"dup":129}],170:[function(require,module,exports){
+},{"dup":129}],174:[function(require,module,exports){
 arguments[4][130][0].apply(exports,arguments)
-},{"dup":130}],171:[function(require,module,exports){
+},{"dup":130}],175:[function(require,module,exports){
 arguments[4][131][0].apply(exports,arguments)
-},{"_process":97,"dup":131}],172:[function(require,module,exports){
+},{"_process":97,"dup":131}],176:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39189,6 +41664,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _TinyHtml = _interopRequireDefault(require("./TinyHtml.mjs"));
 var TinyCollision = _interopRequireWildcard(require("../basics/collision.mjs"));
+var _TinyEvents = _interopRequireDefault(require("./TinyEvents.mjs"));
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
@@ -39205,8 +41681,8 @@ function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("C
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
 function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
 function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
 /**
  * Represents the dimensions of a DOM element.
@@ -39248,13 +41724,13 @@ function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.h
  *
  * This class is **not framework-dependent** and works with vanilla DOM elements and the window object.
  */
+var _events = /*#__PURE__*/new WeakMap();
 var _oldSizes = /*#__PURE__*/new WeakMap();
 var _newSizes = /*#__PURE__*/new WeakMap();
 var _newVisibles = /*#__PURE__*/new WeakMap();
 var _oldVisibles = /*#__PURE__*/new WeakMap();
 var _newVisiblesByTime = /*#__PURE__*/new WeakMap();
 var _oldVisiblesByTime = /*#__PURE__*/new WeakMap();
-var _scrollListeners = /*#__PURE__*/new WeakMap();
 var _resizeObserver = /*#__PURE__*/new WeakMap();
 var _mutationObserver = /*#__PURE__*/new WeakMap();
 var _loadTags = /*#__PURE__*/new WeakMap();
@@ -39312,6 +41788,8 @@ var TinySmartScroller = /*#__PURE__*/function () {
       _ref$attributeFilter = _ref.attributeFilter,
       attributeFilter = _ref$attributeFilter === void 0 ? ['class', 'style', 'src', 'data-*', 'height', 'width'] : _ref$attributeFilter;
     _classCallCheck(this, TinySmartScroller);
+    _classPrivateFieldInitSpec(this, _events, new _TinyEvents["default"]());
+    ///////////////////////////////////////////////////
     /** @type {WeakMap<Element, NodeSizes>} */
     _classPrivateFieldInitSpec(this, _oldSizes, new WeakMap());
     /** @type {WeakMap<Element, NodeSizes>} */
@@ -39324,8 +41802,6 @@ var TinySmartScroller = /*#__PURE__*/function () {
     _classPrivateFieldInitSpec(this, _newVisiblesByTime, new WeakMap());
     /** @type {WeakMap<Element, boolean>} */
     _classPrivateFieldInitSpec(this, _oldVisiblesByTime, new WeakMap());
-    /** @type {Record<string, ScrollListenersFunc[]>} */
-    _classPrivateFieldInitSpec(this, _scrollListeners, {});
     /** @type {ResizeObserver|null} */
     _classPrivateFieldInitSpec(this, _resizeObserver, null);
     /** @type {MutationObserver|null} */
@@ -39410,6 +41886,220 @@ var TinySmartScroller = /*#__PURE__*/function () {
    * @returns {NodeSizesEvent} A function that compares previous and current height, returning height delta.
    */
   return _createClass(TinySmartScroller, [{
+    key: "setThrowOnMaxListeners",
+    value:
+    /**
+     * Enables or disables throwing an error when the maximum number of listeners is exceeded.
+     *
+     * @param {boolean} shouldThrow - If true, an error will be thrown when the max is exceeded.
+     */
+    function setThrowOnMaxListeners(shouldThrow) {
+      return _classPrivateFieldGet(_events, this).setThrowOnMaxListeners(shouldThrow);
+    }
+    /**
+     * Checks whether an error will be thrown when the max listener limit is exceeded.
+     *
+     * @returns {boolean} True if an error will be thrown, false if only a warning is shown.
+     */
+  }, {
+    key: "getThrowOnMaxListeners",
+    value: function getThrowOnMaxListeners() {
+      return _classPrivateFieldGet(_events, this).getThrowOnMaxListeners();
+    }
+    /////////////////////////////////////////////////////////////
+    /**
+     * Adds a listener to the beginning of the listeners array for the specified event.
+     *
+     * @param {string} event - Event name.
+     * @param {ScrollListenersFunc} handler - The callback function.
+     */
+  }, {
+    key: "prependListener",
+    value: function prependListener(event, handler) {
+      return _classPrivateFieldGet(_events, this).prependListener(event, handler);
+    }
+    /**
+     * Adds a one-time listener to the beginning of the listeners array for the specified event.
+     *
+     * @param {string} event - Event name.
+     * @param {ScrollListenersFunc} handler - The callback function.
+     * @returns {ScrollListenersFunc} - The wrapped handler used internally.
+     */
+  }, {
+    key: "prependListenerOnce",
+    value: function prependListenerOnce(event, handler) {
+      return _classPrivateFieldGet(_events, this).prependListenerOnce(event, handler);
+    }
+    //////////////////////////////////////////////////////////////////////
+    /**
+     * Adds a event listener.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {ScrollListenersFunc} handler - Callback function to be called when event fires.
+     */
+  }, {
+    key: "appendListener",
+    value: function appendListener(event, handler) {
+      return _classPrivateFieldGet(_events, this).appendListener(event, handler);
+    }
+    /**
+     * Registers an event listener that runs only once, then is removed.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {ScrollListenersFunc} handler - The callback function to run on event.
+     * @returns {ScrollListenersFunc} - The wrapped version of the handler.
+     */
+  }, {
+    key: "appendListenerOnce",
+    value: function appendListenerOnce(event, handler) {
+      return _classPrivateFieldGet(_events, this).appendListenerOnce(event, handler);
+    }
+    /**
+     * Adds a event listener.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {ScrollListenersFunc} handler - Callback function to be called when event fires.
+     */
+  }, {
+    key: "on",
+    value: function on(event, handler) {
+      return _classPrivateFieldGet(_events, this).on(event, handler);
+    }
+    /**
+     * Registers an event listener that runs only once, then is removed.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {ScrollListenersFunc} handler - The callback function to run on event.
+     * @returns {ScrollListenersFunc} - The wrapped version of the handler.
+     */
+  }, {
+    key: "once",
+    value: function once(event, handler) {
+      return _classPrivateFieldGet(_events, this).once(event, handler);
+    }
+    ////////////////////////////////////////////////////////////////////
+    /**
+     * Removes a previously registered event listener.
+     *
+     * @param {string} event - The name of the event to remove the handler from.
+     * @param {ScrollListenersFunc} handler - The specific callback function to remove.
+     */
+  }, {
+    key: "off",
+    value: function off(event, handler) {
+      return _classPrivateFieldGet(_events, this).off(event, handler);
+    }
+    /**
+     * Removes all event listeners of a specific type from the element.
+     *
+     * @param {string} event - The event type to remove (e.g. 'onScrollBoundary').
+     */
+  }, {
+    key: "offAll",
+    value: function offAll(event) {
+      return _classPrivateFieldGet(_events, this).offAll(event);
+    }
+    /**
+     * Removes all event listeners of all types from the element.
+     */
+  }, {
+    key: "offAllTypes",
+    value: function offAllTypes() {
+      return _classPrivateFieldGet(_events, this).offAllTypes();
+    }
+    ////////////////////////////////////////////////////////////
+    /**
+     * Returns the number of listeners for a given event.
+     *
+     * @param {string} event - The name of the event.
+     * @returns {number} Number of listeners for the event.
+     */
+  }, {
+    key: "listenerCount",
+    value: function listenerCount(event) {
+      return _classPrivateFieldGet(_events, this).listenerCount(event);
+    }
+    /**
+     * Returns a copy of the array of listeners for the specified event.
+     *
+     * @param {string} event - The name of the event.
+     * @returns {ScrollListenersFunc[]} Array of listener functions.
+     */
+  }, {
+    key: "listeners",
+    value: function listeners(event) {
+      return _classPrivateFieldGet(_events, this).listeners(event);
+    }
+    /**
+     * Returns a copy of the array of listeners for the specified event.
+     *
+     * @param {string} event - The name of the event.
+     * @returns {ScrollListenersFunc[]} Array of listener functions.
+     */
+  }, {
+    key: "onceListeners",
+    value: function onceListeners(event) {
+      return _classPrivateFieldGet(_events, this).onceListeners(event);
+    }
+    /**
+     * Returns a copy of the internal listeners array for the specified event,
+     * including wrapper functions like those used by `.once()`.
+     * @param {string | symbol} event - The event name.
+     * @returns {ScrollListenersFunc[]} An array of raw listener functions.
+     */
+  }, {
+    key: "allListeners",
+    value: function allListeners(event) {
+      return _classPrivateFieldGet(_events, this).allListeners(event);
+    }
+    /**
+     * Returns an array of event names for which there are registered listeners.
+     *
+     * @returns {string[]} Array of registered event names.
+     */
+  }, {
+    key: "eventNames",
+    value: function eventNames() {
+      return _classPrivateFieldGet(_events, this).eventNames();
+    }
+    //////////////////////////////////////////////////////
+    /**
+     * Emits an event, triggering all registered handlers for that event.
+     *
+     * @param {string} event - The event name to emit.
+     * @param {...any} payload - Optional data to pass to each handler.
+     * @returns {boolean} True if any listeners were called, false otherwise.
+     */
+  }, {
+    key: "emit",
+    value: function emit(event) {
+      var _classPrivateFieldGet2;
+      for (var _len = arguments.length, payload = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        payload[_key - 1] = arguments[_key];
+      }
+      return (_classPrivateFieldGet2 = _classPrivateFieldGet(_events, this)).emit.apply(_classPrivateFieldGet2, [event].concat(payload));
+    }
+    /**
+     * Sets the maximum number of listeners per event before a warning is shown.
+     *
+     * @param {number} n - The maximum number of listeners.
+     */
+  }, {
+    key: "setMaxListeners",
+    value: function setMaxListeners(n) {
+      return _classPrivateFieldGet(_events, this).setMaxListeners(n);
+    }
+    /**
+     * Gets the maximum number of listeners allowed per event.
+     *
+     * @returns {number} The maximum number of listeners.
+     */
+  }, {
+    key: "getMaxListeners",
+    value: function getMaxListeners() {
+      return _classPrivateFieldGet(_events, this).getMaxListeners();
+    }
+  }, {
     key: "getSimpleOnHeight",
     value: function getSimpleOnHeight() {
       var filter = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -39588,40 +42278,6 @@ var TinySmartScroller = /*#__PURE__*/function () {
       _classPrivateFieldGet(_sizeFilter, this)["delete"](handler);
     }
     /**
-     * Adds a scroll-related event listener.
-     *
-     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
-     * @param {ScrollListenersFunc} handler - Callback function to be called when event fires.
-     */
-  }, {
-    key: "on",
-    value: function on(event, handler) {
-      if (_classPrivateFieldGet(_destroyed, this)) return;
-      if (typeof event !== 'string') throw new TypeError('on(event, handler): event name must be a string');
-      if (typeof handler !== 'function') throw new TypeError('on(event, handler): handler must be a function');
-      if (!_classPrivateFieldGet(_scrollListeners, this)[event]) _classPrivateFieldGet(_scrollListeners, this)[event] = [];
-      _classPrivateFieldGet(_scrollListeners, this)[event].push(handler);
-    }
-    /**
-     * Removes a previously registered scroll-related event listener.
-     *
-     * @param {string} event - The name of the event to remove the handler from.
-     * @param {ScrollListenersFunc} handler - The specific callback function to remove.
-     */
-  }, {
-    key: "off",
-    value: function off(event, handler) {
-      if (_classPrivateFieldGet(_destroyed, this)) return;
-      if (typeof event !== 'string') throw new TypeError('off(event, handler): event name must be a string');
-      if (typeof handler !== 'function') throw new TypeError('off(event, handler): handler must be a function');
-      var listeners = _classPrivateFieldGet(_scrollListeners, this)[event];
-      if (!Array.isArray(listeners)) return;
-      var index = listeners.indexOf(handler);
-      if (index !== -1) listeners.splice(index, 1);
-      // Optionally clean up empty arrays (optional)
-      if (listeners.length === 0) delete _classPrivateFieldGet(_scrollListeners, this)[event];
-    }
-    /**
      * Checks which elements inside the target are currently visible and updates internal maps.
      *
      * @returns {Map<Element, { oldIsVisible: boolean; isVisible: boolean }>} Visibility comparison results.
@@ -39632,8 +42288,8 @@ var TinySmartScroller = /*#__PURE__*/function () {
       var _this3 = this;
       var results = new Map();
       _classPrivateFieldGet(_target, this).querySelectorAll(_classPrivateFieldGet(_querySelector, this) || '*').forEach(function (target) {
-        var _classPrivateFieldGet2;
-        var oldIsVisible = (_classPrivateFieldGet2 = _classPrivateFieldGet(_newVisibles, _this3).get(target)) !== null && _classPrivateFieldGet2 !== void 0 ? _classPrivateFieldGet2 : false;
+        var _classPrivateFieldGet3;
+        var oldIsVisible = (_classPrivateFieldGet3 = _classPrivateFieldGet(_newVisibles, _this3).get(target)) !== null && _classPrivateFieldGet3 !== void 0 ? _classPrivateFieldGet3 : false;
         _classPrivateFieldGet(_oldVisibles, _this3).set(target, oldIsVisible);
         var isVisible = _TinyHtml["default"].isInContainer(_classPrivateFieldGet(_target, _this3), target);
         _classPrivateFieldGet(_newVisibles, _this3).set(target, isVisible);
@@ -39649,15 +42305,12 @@ var TinySmartScroller = /*#__PURE__*/function () {
      *
      * @param {string} event - Event name.
      * @param {*} [payload] - Optional event data payload.
+     * @deprecated - Use emit() instead.
      */
   }, {
     key: "_emit",
     value: function _emit(event, payload) {
-      if (_classPrivateFieldGet(_destroyed, this)) return;
-      if (typeof event !== 'string') throw new TypeError('_emit(event, payload): event name must be a string');
-      (_classPrivateFieldGet(_scrollListeners, this)[event] || []).forEach(function (fn) {
-        return fn(payload);
-      });
+      this.emit(event, payload);
     }
     /**
      * Handles scroll events, calculates position-related statuses, and emits appropriate events.
@@ -39694,22 +42347,22 @@ var TinySmartScroller = /*#__PURE__*/function () {
       _classPrivateFieldSet(_scrollPaused, this, !(_classPrivateFieldGet(_autoScrollBottom, this) && _classPrivateFieldGet(_isAtBottom, this)));
       _classPrivateFieldSet(_lastKnownScrollBottomOffset, this, scrollHeight - scrollTop - clientHeight);
       // Send results
-      this._emit('onScrollBoundary', _objectSpread(_objectSpread({
+      this.emit('onScrollBoundary', _objectSpread(_objectSpread({
         status: atResult
       }, scrollResult), {}, {
         scrollCache: scrollCache
       }));
-      this._emit('onExtraScrollBoundary', _objectSpread(_objectSpread({
+      this.emit('onExtraScrollBoundary', _objectSpread(_objectSpread({
         status: atCustomResult
       }, scrollResult), {}, {
         scrollCache: scrollCache
       }));
       if (!_classPrivateFieldGet(_scrollPaused, this)) {
-        this._emit('onAutoScroll', _objectSpread(_objectSpread({}, scrollResult), {}, {
+        this.emit('onAutoScroll', _objectSpread(_objectSpread({}, scrollResult), {}, {
           scrollCache: scrollCache
         }));
       } else {
-        this._emit('onScrollPause', _objectSpread(_objectSpread({}, scrollResult), {}, {
+        this.emit('onScrollPause', _objectSpread(_objectSpread({}, scrollResult), {}, {
           scrollCache: scrollCache
         }));
       }
@@ -39788,10 +42441,10 @@ var TinySmartScroller = /*#__PURE__*/function () {
             _step2;
           try {
             for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-              var _classPrivateFieldGet3, _classPrivateFieldGet4;
+              var _classPrivateFieldGet4, _classPrivateFieldGet5;
               var target = _step2.value;
-              _classPrivateFieldGet(_newVisiblesByTime, _this4).set(target, (_classPrivateFieldGet3 = _classPrivateFieldGet(_newVisibles, _this4).get(target)) !== null && _classPrivateFieldGet3 !== void 0 ? _classPrivateFieldGet3 : false);
-              _classPrivateFieldGet(_oldVisiblesByTime, _this4).set(target, (_classPrivateFieldGet4 = _classPrivateFieldGet(_oldVisibles, _this4).get(target)) !== null && _classPrivateFieldGet4 !== void 0 ? _classPrivateFieldGet4 : false);
+              _classPrivateFieldGet(_newVisiblesByTime, _this4).set(target, (_classPrivateFieldGet4 = _classPrivateFieldGet(_newVisibles, _this4).get(target)) !== null && _classPrivateFieldGet4 !== void 0 ? _classPrivateFieldGet4 : false);
+              _classPrivateFieldGet(_oldVisiblesByTime, _this4).set(target, (_classPrivateFieldGet5 = _classPrivateFieldGet(_oldVisibles, _this4).get(target)) !== null && _classPrivateFieldGet5 !== void 0 ? _classPrivateFieldGet5 : false);
             }
           } catch (err) {
             _iterator2.e(err);
@@ -39946,8 +42599,8 @@ var TinySmartScroller = /*#__PURE__*/function () {
   }, {
     key: "getOldSize",
     value: function getOldSize(el) {
-      var _classPrivateFieldGet5;
-      return (_classPrivateFieldGet5 = _classPrivateFieldGet(_oldSizes, this).get(el)) !== null && _classPrivateFieldGet5 !== void 0 ? _classPrivateFieldGet5 : null;
+      var _classPrivateFieldGet6;
+      return (_classPrivateFieldGet6 = _classPrivateFieldGet(_oldSizes, this).get(el)) !== null && _classPrivateFieldGet6 !== void 0 ? _classPrivateFieldGet6 : null;
     }
     /**
      * Returns the current size of a given element, or undefined if not tracked.
@@ -39958,8 +42611,8 @@ var TinySmartScroller = /*#__PURE__*/function () {
   }, {
     key: "getNewSize",
     value: function getNewSize(el) {
-      var _classPrivateFieldGet6;
-      return (_classPrivateFieldGet6 = _classPrivateFieldGet(_newSizes, this).get(el)) !== null && _classPrivateFieldGet6 !== void 0 ? _classPrivateFieldGet6 : null;
+      var _classPrivateFieldGet7;
+      return (_classPrivateFieldGet7 = _classPrivateFieldGet(_newSizes, this).get(el)) !== null && _classPrivateFieldGet7 !== void 0 ? _classPrivateFieldGet7 : null;
     }
     /**
      * Returns whether the given element was visible in the last scroll update.
@@ -39970,8 +42623,8 @@ var TinySmartScroller = /*#__PURE__*/function () {
   }, {
     key: "wasVisible",
     value: function wasVisible(el) {
-      var _classPrivateFieldGet7;
-      return (_classPrivateFieldGet7 = _classPrivateFieldGet(_oldVisibles, this).get(el)) !== null && _classPrivateFieldGet7 !== void 0 ? _classPrivateFieldGet7 : false;
+      var _classPrivateFieldGet8;
+      return (_classPrivateFieldGet8 = _classPrivateFieldGet(_oldVisibles, this).get(el)) !== null && _classPrivateFieldGet8 !== void 0 ? _classPrivateFieldGet8 : false;
     }
     /**
      * Returns whether the given element is currently visible.
@@ -39982,8 +42635,8 @@ var TinySmartScroller = /*#__PURE__*/function () {
   }, {
     key: "isVisible",
     value: function isVisible(el) {
-      var _classPrivateFieldGet8;
-      return (_classPrivateFieldGet8 = _classPrivateFieldGet(_newVisibles, this).get(el)) !== null && _classPrivateFieldGet8 !== void 0 ? _classPrivateFieldGet8 : false;
+      var _classPrivateFieldGet9;
+      return (_classPrivateFieldGet9 = _classPrivateFieldGet(_newVisibles, this).get(el)) !== null && _classPrivateFieldGet9 !== void 0 ? _classPrivateFieldGet9 : false;
     }
     /**
      * Returns whether the element was visible in the last time-based visibility check.
@@ -39994,8 +42647,8 @@ var TinySmartScroller = /*#__PURE__*/function () {
   }, {
     key: "wasTimedVisible",
     value: function wasTimedVisible(el) {
-      var _classPrivateFieldGet9;
-      return (_classPrivateFieldGet9 = _classPrivateFieldGet(_oldVisiblesByTime, this).get(el)) !== null && _classPrivateFieldGet9 !== void 0 ? _classPrivateFieldGet9 : false;
+      var _classPrivateFieldGet0;
+      return (_classPrivateFieldGet0 = _classPrivateFieldGet(_oldVisiblesByTime, this).get(el)) !== null && _classPrivateFieldGet0 !== void 0 ? _classPrivateFieldGet0 : false;
     }
     /**
      * Returns whether the element is currently visible in the time-based check.
@@ -40006,8 +42659,8 @@ var TinySmartScroller = /*#__PURE__*/function () {
   }, {
     key: "isTimedVisible",
     value: function isTimedVisible(el) {
-      var _classPrivateFieldGet0;
-      return (_classPrivateFieldGet0 = _classPrivateFieldGet(_newVisiblesByTime, this).get(el)) !== null && _classPrivateFieldGet0 !== void 0 ? _classPrivateFieldGet0 : false;
+      var _classPrivateFieldGet1;
+      return (_classPrivateFieldGet1 = _classPrivateFieldGet(_newVisiblesByTime, this).get(el)) !== null && _classPrivateFieldGet1 !== void 0 ? _classPrivateFieldGet1 : false;
     }
     /**
      * Sets the extra scroll boundary margin used when determining if the user is at a "custom" bottom or top.
@@ -40226,7 +42879,7 @@ var TinySmartScroller = /*#__PURE__*/function () {
       _classPrivateFieldSet(_newVisiblesByTime, this, new WeakMap());
       _classPrivateFieldSet(_oldVisiblesByTime, this, new WeakMap());
       // Cleans listeners and filters
-      _classPrivateFieldSet(_scrollListeners, this, {});
+      _classPrivateFieldGet(_events, this).offAllTypes();
       _classPrivateFieldGet(_sizeFilter, this).clear();
       _classPrivateFieldGet(_loadTags, this).clear();
     }
@@ -40237,7 +42890,7 @@ _defineProperty(TinySmartScroller, "Utils", _objectSpread(_objectSpread({}, Tiny
 }));
 var _default = exports["default"] = TinySmartScroller;
 
-},{"../basics/collision.mjs":151,"./TinyHtml.mjs":167}],173:[function(require,module,exports){
+},{"../basics/collision.mjs":151,"./TinyEvents.mjs":169,"./TinyHtml.mjs":170}],177:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40733,9 +43386,226 @@ var TinyTextRangeEditor = /*#__PURE__*/function () {
 }();
 var _default = exports["default"] = TinyTextRangeEditor;
 
-},{}],174:[function(require,module,exports){
+},{}],178:[function(require,module,exports){
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+var _isDestroyed = /*#__PURE__*/new WeakMap();
+var _allowAutoConfigChange = /*#__PURE__*/new WeakMap();
+var _cooldownWatcherTime = /*#__PURE__*/new WeakMap();
+var _cooldownWatcher = /*#__PURE__*/new WeakMap();
+var _timeoutFixer = /*#__PURE__*/new WeakMap();
+/**
+ * A utility class to manage dynamically adjusted timeouts based on how often
+ * each unique ID is triggered. Also provides polling support for asynchronous conditions.
+ */
+var TinyTimeout = /*#__PURE__*/function () {
+  /**
+   * Creates a new instance of TinyTimeout.
+   *
+   * @param {Object} [options={}] Optional configuration object.
+   * @param {number} [options.cooldownWatcherTime=5000] Interval in milliseconds for reducing `now` counters.
+   * @param {boolean} [options.allowAutoConfigChange=false] Whether to allow auto value changes for existing IDs.
+   */
+  function TinyTimeout() {
+    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      _ref$cooldownWatcherT = _ref.cooldownWatcherTime,
+      cooldownWatcherTime = _ref$cooldownWatcherT === void 0 ? 5000 : _ref$cooldownWatcherT,
+      _ref$allowAutoConfigC = _ref.allowAutoConfigChange,
+      allowAutoConfigChange = _ref$allowAutoConfigC === void 0 ? false : _ref$allowAutoConfigC;
+    _classCallCheck(this, TinyTimeout);
+    /** @type {boolean} Whether this instance has been destroyed. */
+    _classPrivateFieldInitSpec(this, _isDestroyed, false);
+    /** @type {boolean} Whether to allow auto-updating an ID's timeout config if `value` changes. */
+    _classPrivateFieldInitSpec(this, _allowAutoConfigChange, void 0);
+    /** @type {number} The interval time (ms) used to decrement cooldown counters. */
+    _classPrivateFieldInitSpec(this, _cooldownWatcherTime, void 0);
+    /** @type {NodeJS.Timeout|null} Reference to the internal cooldown interval. */
+    _classPrivateFieldInitSpec(this, _cooldownWatcher, null);
+    /**
+     * Internal map that keeps track of how many times each ID has been triggered,
+     * along with the base multiplier used to calculate delays.
+     *
+     * @type {Map<string, { value: number, now: number }>}
+     */
+    _classPrivateFieldInitSpec(this, _timeoutFixer, new Map());
+    if (!Number.isFinite(cooldownWatcherTime) || cooldownWatcherTime <= 0) throw new TypeError("Expected 'cooldownWatcherTime' to be a positive number.");
+    if (typeof allowAutoConfigChange !== 'boolean') throw new TypeError("Expected 'allowAutoConfigChange' to be a boolean.");
+    _classPrivateFieldSet(_cooldownWatcherTime, this, cooldownWatcherTime);
+    _classPrivateFieldSet(_allowAutoConfigChange, this, allowAutoConfigChange);
+    this.setCooldownWatcherTime(cooldownWatcherTime);
+  }
+  /**
+   * Whether this instance has been destroyed and is no longer usable.
+   *
+   * @returns {boolean}
+   */
+  return _createClass(TinyTimeout, [{
+    key: "isDestroyed",
+    value: function isDestroyed() {
+      return _classPrivateFieldGet(_isDestroyed, this);
+    }
+    /**
+     * Whether auto config change is enabled.
+     *
+     * @returns {boolean}
+     */
+  }, {
+    key: "getAllowAutoConfigChange",
+    value: function getAllowAutoConfigChange() {
+      return _classPrivateFieldGet(_allowAutoConfigChange, this);
+    }
+    /**
+     * Gets the interval time used for cooldown decrementing.
+     *
+     * @returns {number}
+     */
+  }, {
+    key: "getCooldownWatcherTime",
+    value: function getCooldownWatcherTime() {
+      return _classPrivateFieldGet(_cooldownWatcherTime, this);
+    }
+    /**
+     * Sets whether to allow auto-updating an ID's timeout config if `value` changes.
+     *
+     * @param {boolean} value
+     */
+  }, {
+    key: "setAllowAutoConfigChange",
+    value: function setAllowAutoConfigChange(value) {
+      if (typeof value !== 'boolean') throw new TypeError("Expected 'value' to be a boolean.");
+      _classPrivateFieldSet(_allowAutoConfigChange, this, value);
+    }
+    /**
+     * Sets the cooldown watcher interval time.
+     * Automatically resets the interval if it was already running.
+     *
+     * @param {number} value
+     */
+  }, {
+    key: "setCooldownWatcherTime",
+    value: function setCooldownWatcherTime(value) {
+      var _this = this;
+      if (_classPrivateFieldGet(_isDestroyed, this)) throw new Error('TinyTimeout has been destroyed.');
+      if (!Number.isFinite(value) || value <= 0) throw new TypeError("Expected 'value' to be a positive number.");
+      _classPrivateFieldSet(_cooldownWatcherTime, this, value);
+      if (_classPrivateFieldGet(_cooldownWatcher, this)) clearInterval(_classPrivateFieldGet(_cooldownWatcher, this));
+      _classPrivateFieldSet(_cooldownWatcher, this, setInterval(function () {
+        _classPrivateFieldGet(_timeoutFixer, _this).forEach(function (data) {
+          if (data.now > 0) data.now--;
+        });
+      }, _classPrivateFieldGet(_cooldownWatcherTime, this)));
+    }
+    /**
+     * Schedules a callback using a dynamically adjusted timeout based on usage frequency.
+     * The more often an ID is triggered, the longer the timeout becomes,
+     * scaled by the provided `value`. Optionally, the delay can be limited by `limit`.
+     *
+     * @param {string} id - A unique identifier to track timeout usage.
+     * @param {Function} callback - The function to execute after the delay.
+     * @param {number} value - Base delay multiplier in milliseconds.
+     * @param {number|null} [limit=null] - Optional maximum delay cap.
+     * @returns {number} Handle to the scheduled timeout.
+     * @throws {Error} Throws if the instance has been destroyed or arguments are invalid.
+     */
+  }, {
+    key: "set",
+    value: function set(id, callback, value) {
+      var limit = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+      if (_classPrivateFieldGet(_isDestroyed, this)) throw new Error('TinyTimeout has been destroyed.');
+      if (typeof id !== 'string' || id.trim() === '') throw new TypeError("Expected 'id' to be a non-empty string.");
+      if (typeof callback !== 'function') throw new TypeError("Expected 'callback' to be a function.");
+      if (!Number.isFinite(value) || value < 0) throw new TypeError("Expected 'value' to be a non-negative number.");
+      if (limit !== null && (!Number.isFinite(limit) || limit < 0)) throw new TypeError("Expected 'limit' to be null or a non-negative number.");
+      var entry = _classPrivateFieldGet(_timeoutFixer, this).get(id);
+      if (!entry || _classPrivateFieldGet(_allowAutoConfigChange, this) && value !== entry.value) {
+        entry = {
+          value: value,
+          now: 0
+        };
+        _classPrivateFieldGet(_timeoutFixer, this).set(id, entry);
+      }
+      var delay = entry.value * entry.now;
+      entry.now++;
+      return setTimeout(callback, typeof limit === 'number' ? Math.min(delay, limit) : delay);
+    }
+    /**
+     * Waits until a provided function returns `true`, checking repeatedly at the defined interval.
+     * Useful for polling asynchronous conditions.
+     *
+     * @param {() => boolean} getValue - A function that returns `true` when the condition is met.
+     * @param {number} [checkInterval=100] - How often (in ms) to check the condition.
+     * @returns {Promise<void>} Resolves when the condition is met.
+     * @throws {TypeError} If arguments are invalid.
+     */
+  }, {
+    key: "waitForTrue",
+    value:
+    /**
+     * Instance version of `waitForTrue`, which defaults to using the instance's
+     * cooldownWatcherTime if not explicitly provided.
+     *
+     * @param {() => boolean} getValue - A function that returns `true` when the condition is met.
+     * @param {number|null} [checkInterval=100] - How often (in ms) to check the condition.
+     * @returns {Promise<void>} Resolves when the condition is met.
+     * @throws {Error} If the instance is destroyed or arguments are invalid.
+     */
+    function waitForTrue(getValue) {
+      var checkInterval = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100;
+      if (_classPrivateFieldGet(_isDestroyed, this)) throw new Error('TinyTimeout has been destroyed.');
+      if (typeof getValue !== 'function') throw new TypeError("Expected 'getValue' to be a function.");
+      if (checkInterval !== null && (!Number.isFinite(checkInterval) || checkInterval <= 0)) throw new TypeError("Expected 'checkInterval' to be null or a positive number.");
+      return TinyTimeout.waitForTrue(getValue, checkInterval !== null && checkInterval !== void 0 ? checkInterval : _classPrivateFieldGet(_cooldownWatcherTime, this));
+    }
+    /**
+     * Cleans up all internal references and stops the cooldown watcher.
+     * After calling this, the instance becomes unusable.
+     */
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      if (_classPrivateFieldGet(_isDestroyed, this)) return;
+      _classPrivateFieldSet(_isDestroyed, this, true);
+      if (_classPrivateFieldGet(_cooldownWatcher, this)) clearInterval(_classPrivateFieldGet(_cooldownWatcher, this));
+      _classPrivateFieldSet(_cooldownWatcher, this, null);
+      _classPrivateFieldGet(_timeoutFixer, this).clear();
+    }
+  }], [{
+    key: "waitForTrue",
+    value: function waitForTrue(getValue) {
+      var checkInterval = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100;
+      if (typeof getValue !== 'function') throw new TypeError("Expected 'getValue' to be a function.");
+      if (!Number.isFinite(checkInterval) || checkInterval <= 0) throw new TypeError("Expected 'checkInterval' to be a positive number.");
+      return new Promise(function (resolve) {
+        var interval = setInterval(function () {
+          if (getValue()) {
+            clearInterval(interval);
+            resolve();
+          }
+        }, checkInterval);
+      });
+    }
+  }]);
+}();
+var _default = exports["default"] = TinyTimeout;
+
+},{}],179:[function(require,module,exports){
 arguments[4][132][0].apply(exports,arguments)
-},{"dup":132}],175:[function(require,module,exports){
+},{"dup":132}],180:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41497,7 +44367,7 @@ _defineProperty(UltraRandomMsgGen, "defaultAdjectives", defaultAdjectives);
 _defineProperty(UltraRandomMsgGen, "defaultTemplates", defaultTemplates);
 var _default = exports["default"] = UltraRandomMsgGen;
 
-},{}],176:[function(require,module,exports){
+},{}],181:[function(require,module,exports){
 (function (process){(function (){
 "use strict";
 
@@ -43661,6 +46531,6 @@ tippy.setDefaultProps({
 var _default = exports["default"] = tippy;
 
 }).call(this)}).call(this,require('_process'))
-},{"@popperjs/core":27,"_process":97}],177:[function(require,module,exports){
+},{"@popperjs/core":27,"_process":97}],182:[function(require,module,exports){
 module.exports=function(e){var r={};function t(n){if(r[n])return r[n].exports;var a=r[n]={i:n,l:!1,exports:{}};return e[n].call(a.exports,a,a.exports,t),a.l=!0,a.exports}return t.m=e,t.c=r,t.d=function(e,r,n){t.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:n})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,r){if(1&r&&(e=t(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(t.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var a in e)t.d(n,a,function(r){return e[r]}.bind(null,a));return n},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},t.p="",t(t.s=0)}([function(e,r,t){"use strict";t.r(r),t.d(r,"validateHTMLColorName",(function(){return l})),t.d(r,"validateHTMLColorSpecialName",(function(){return i})),t.d(r,"validateHTMLColorHex",(function(){return u})),t.d(r,"validateHTMLColorRgb",(function(){return g})),t.d(r,"validateHTMLColorHsl",(function(){return y})),t.d(r,"validateHTMLColorHwb",(function(){return L})),t.d(r,"validateHTMLColorLab",(function(){return S})),t.d(r,"validateHTMLColorLch",(function(){return m})),t.d(r,"validateHTMLColor",(function(){return G}));const n=e=>e&&"string"==typeof e,a=["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenrod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","DarkOrange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","Goldenrod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenrodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquamarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenrod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","RebeccaPurple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"],o=["currentColor","inherit","transparent"],l=e=>{let r=!1;return n(e)&&a.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},i=e=>{let r=!1;return n(e)&&o.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},u=e=>{if(n(e)){const r=/^#([\da-f]{3}){1,2}$|^#([\da-f]{4}){1,2}$/i;return e&&r.test(e)}return!1},d="(([\\d]{0,5})((\\.([\\d]{1,5}))?))",s=`(${d}%)`,c="(([0-9]|[1-9][0-9]|100)%)",f=`(${c}|(0?((\\.([\\d]{1,5}))?))|1)`,h=`([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?)([\\s]{1,5})${`(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?`}([\\s]{0,5})\\)`,$="(-?(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360)(deg)?)",g=e=>{if(n(e)){const r="([\\s]{0,5})([\\d]{1,5})%?([\\s]{0,5}),?",t="((([\\s]{0,5}),?([\\s]{0,5}))|(([\\s]{1,5})))",n=new RegExp(`^(rgb)a?\\(${`${r}${t}`}${`${r}${t}`}${`${r}${t}`}(${"(\\/?([\\s]{0,5})(0?\\.?([\\d]{1,5})%?([\\s]{0,5}))?|1|0)"})?\\)$`);return e&&n.test(e)}return!1},y=e=>{if(n(e)){const r=new RegExp(`^(hsl)a?\\((([\\s]{0,5})(${$}|${"(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-9][0-9]|400)grad)"}|${"((([0-5])?\\.([\\d]{1,5})|6\\.([0-9]|1[0-9]|2[0-8])|[0-6])rad)"}|${"((0?((\\.([\\d]{1,5}))?)|1)turn)"})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?|,?)([\\s]{0,5})(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?\\)$`);return e&&r.test(e)}return!1},L=e=>{if(n(e)){const r=new RegExp(`^(hwb\\(([\\s]{0,5})${$}([\\s]{1,5}))((0|${c})([\\s]{1,5}))((0|${c})${h}$`);return e&&r.test(e)}return!1},S=e=>{if(n(e)){const r="(-?(([0-9]|[1-9][0-9]|1[0-5][0-9])((\\.([\\d]{1,5}))?)?|160))",t=new RegExp(`^(lab\\(([\\s]{0,5})${s}([\\s]{1,5})${r}([\\s]{1,5})${r}${h}$`);return e&&t.test(e)}return!1},m=e=>{if(n(e)){const r="((([0-9]|[1-9][0-9])?((\\.([\\d]{1,5}))?)|100)(%)?)",t=""+d,n=`((${$})|(0|${f})|(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360))`,a=`(\\/([\\s]{0,5})${f})`,o=new RegExp(`^lch\\(${`(([\\s]{0,5})${r}([\\s]{1,5})${t}([\\s]{1,5})${n}([\\s]{0,5})(${a})?)`}\\)$`);return e&&o.test(e)}return!1},G=e=>!!(e&&u(e)||g(e)||y(e)||L(e)||S(e)||m(e));r.default=e=>!!(e&&u(e)||l(e)||i(e)||g(e)||y(e)||L(e)||S(e)||m(e))}]);
 },{}]},{},[1]);
