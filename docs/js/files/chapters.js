@@ -62,7 +62,7 @@ const storyData = {
     storyData.autoBookmark = plugValue(tinyLs.getItem('autoBookMark'));
 
     // Start App
-    $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
+    circleLoader.start('Loading readme...');
 
     // Read Data Base
     const readme = await fetch('/readme.html' + fileVersion, {
@@ -72,7 +72,7 @@ const storyData = {
       .then((res) => res.text())
       .catch((err) => {
         console.log(`README.md failed during the load!`);
-        $.LoadingOverlay('hide');
+        circleLoader.close();
         failApp(err);
       });
     if (!readme) throw new Error('No readme data to start the app.');
@@ -82,13 +82,15 @@ const storyData = {
     for (let i = 0; i < storyData.chapter.amount; i++) {
       // Data
       const chapter = i + 1;
+      circleLoader.close();
+      circleLoader.start(`Loading chapter ${chapter}...`);
       console.log(`Loading Chapter ${chapter}...`);
       console.log('./chapters/' + storyData.lang.active + '/' + chapter + '.json' + fileVersion);
       const data = await fetchJson(
         './chapters/' + storyData.lang.active + '/' + chapter + '.json' + fileVersion,
       ).catch((err) => {
         console.log(`Chapter ${chapter} failed during the load!`);
-        $.LoadingOverlay('hide');
+        circleLoader.close();
         failApp(err);
       });
       if (!data) throw new Error('No chapter data found.');
@@ -249,6 +251,8 @@ const storyData = {
     };
 
     let dbError = false;
+    circleLoader.close();
+    circleLoader.start('Loading local database...');
     await connStore
       .initDb({
         name: 'pony-driland',
@@ -292,7 +296,7 @@ const storyData = {
     startApp(
       connStore,
       () => {
-        $.LoadingOverlay('hide');
+        circleLoader.close();
         console.log('UI loaded!');
       },
       readme,

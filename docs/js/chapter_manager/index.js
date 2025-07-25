@@ -263,7 +263,7 @@ const openChapterMenu = (params = {}) => {
     // Load Sounds
     if (storyCfg.sfx) {
       console.log(`Loading Audio Data...`);
-      $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
+      circleLoader.start();
 
       if (!storyData.sfx) {
         storyData.sfx = {};
@@ -296,7 +296,7 @@ const openChapterMenu = (params = {}) => {
         }
       }
 
-      $.LoadingOverlay('hide');
+      circleLoader.close();
       console.log(`Audio Data Loaded!`);
     }
 

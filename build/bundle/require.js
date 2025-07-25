@@ -47,7 +47,6 @@ global.window.saveAs = FileSaver.saveAs;
 var jQuery = require("jquery");
 global.window.jQuery = jQuery;
 global.window.$ = jQuery;
-require('gasparesganga-jquery-loading-overlay');
 
 // Bootstrap
 var bootstrap = require("bootstrap");

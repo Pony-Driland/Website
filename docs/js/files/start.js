@@ -681,7 +681,7 @@ const openMDFile = function (url, isMain = false) {
     if (url !== 'MAIN') {
       // Read Data Base
       console.log(`Opening MD file "${url}"...`);
-      $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
+      circleLoader.start();
 
       // Load ajax
       $.ajax({
@@ -738,11 +738,11 @@ const openMDFile = function (url, isMain = false) {
             insertMarkdownFile(fileLines, metadata, isMain, url.endsWith('.md') ? false : true);
 
             TinyHtml.setWinScrollTop(0);
-            $.LoadingOverlay('hide');
+            circleLoader.close();
             urlUpdate(url, title);
           } catch (err) {
             // Error!
-            $.LoadingOverlay('hide');
+            circleLoader.close();
             console.error(err);
             alert(err.message);
           }
@@ -750,7 +750,7 @@ const openMDFile = function (url, isMain = false) {
 
         // Fail
         .fail((err) => {
-          $.LoadingOverlay('hide');
+          circleLoader.close();
           console.error(err);
           alert(err.message);
         });
