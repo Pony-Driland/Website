@@ -780,7 +780,7 @@ const openChapterMenu = (params = {}) => {
                                   $('<h5>', { class: 'card-title' }).text(
                                     storyCfg.nsfw[NSFWITEM].name,
                                   ),
-                                  $('<p>', { class: 'card-text small' }).text(
+                                  $('<p>', { class: `card-text small${storyCfg.nsfw[NSFWITEM].aiMsg ? ' made-by-ai' : ''}` }).text(
                                     storyCfg.nsfw[NSFWITEM].description,
                                   ),
 
