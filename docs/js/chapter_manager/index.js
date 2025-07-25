@@ -704,27 +704,30 @@ const openChapterMenu = (params = {}) => {
         tinyLib.bs
           .alert('info')
           .text(
-            'Every time you read a chapter, it will automatically save where you left off. This checkpoint is saved on your browser, if you want to transfer your checkpoint to other computers, save the URL of your checkpoint that will appear when you open a chapter.',
+            'Each time you read a chapter, your progress is automatically saved. This checkpoint is stored in your browser. If you want to continue reading on another device, simply save the checkpoint URL that appears when you open a chapter.',
           )
-          .prepend(tinyLib.icon('fas fa-info-circle me-3')),
+          .prepend(tinyLib.icon('fas fa-info-circle me-3'))
+          .addClass('made-by-ai'),
 
         tinyLib.bs
           .alert('info')
           .text(
-            "Disclaimer: All songs played on this page are played directly from Youtube. This means that many songs do not belong to me and are being used only to please the reading environment. I recognize that if an artist asks to remove a song, I will replace it with another song. And all the songs that are played are counted as views on the original author's youtube channel. The official music page link will also be available in the player info icon.",
+            "Disclaimer: All songs on this page are streamed directly from YouTube. This means many tracks are not owned by me and are used solely to enhance the reading experience. I acknowledge that if any artist requests removal, the song will be replaced. All songs played count as views on the original creator's YouTube channel. You can find the official music page via the info icon on the player.",
           )
-          .prepend(tinyLib.icon('fas fa-info-circle me-3')),
+          .prepend(tinyLib.icon('fas fa-info-circle me-3'))
+          .addClass('made-by-ai'),
 
         tinyLib.bs
           .alert('info')
           .text(
-            'Our site does not have access to your access information, but some third-party applications installed on this page can collect your navigation data. YouTube, Google, Cloudflare.',
+            'This site does not collect your personal access data. However, some third-party services used on this page — such as YouTube, Google, and Cloudflare — may collect browsing information.',
           )
-          .prepend(tinyLib.icon('fas fa-info-circle me-3')),
+          .prepend(tinyLib.icon('fas fa-info-circle me-3'))
+          .addClass('made-by-ai'),
       ),
 
       $('<h2>')
-        .text(`Please choose a chapter to read.`)
+        .text(`Please select a chapter to read.`)
         .prepend(tinyLib.icon('fas fa-book-open me-3'))
         .append(
           tinyLib.bs
@@ -735,9 +738,11 @@ const openChapterMenu = (params = {}) => {
               let existNSFW = false;
               let nsfwContent = $('<center>', {
                 class: 'm-3 small text-warning',
-              }).text(
-                'No mature content was detected. It may be that soon some mature content will be added.',
-              );
+              })
+                .addClass('made-by-ai')
+                .text(
+                  'No mature content has been detected. However, some may be added in the future.',
+                );
               const nsfwList = [];
 
               // Detect Fic Mature Content
@@ -780,9 +785,9 @@ const openChapterMenu = (params = {}) => {
                                   $('<h5>', { class: 'card-title' }).text(
                                     storyCfg.nsfw[NSFWITEM].name,
                                   ),
-                                  $('<p>', { class: `card-text small${storyCfg.nsfw[NSFWITEM].aiMsg ? ' made-by-ai' : ''}` }).text(
-                                    storyCfg.nsfw[NSFWITEM].description,
-                                  ),
+                                  $('<p>', {
+                                    class: `card-text small${storyCfg.nsfw[NSFWITEM].aiMsg ? ' made-by-ai' : ''}`,
+                                  }).text(storyCfg.nsfw[NSFWITEM].description),
 
                                   tinyLib.bs
                                     .button(buttonClass)
@@ -843,9 +848,11 @@ const openChapterMenu = (params = {}) => {
               });
             }),
         ),
-      $('<h5>').text(
-        `When you open a chapter, look at the top of the page. You will find extra tools and even a bookmark manager to save your progress in your browser.`,
-      ),
+      $('<h5>')
+        .addClass('made-by-ai')
+        .text(
+          `When you open a chapter, look at the top of the page. You'll find extra tools, including a bookmark manager to save your progress directly in your browser.`,
+        ),
     );
 
     // Read More Data
