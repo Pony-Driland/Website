@@ -1,5 +1,5 @@
 $(function () {
-  $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
+  circleLoader.start();
   const newURL = $('#newURL').attr('href');
   if (
     typeof newURL === 'string' &&

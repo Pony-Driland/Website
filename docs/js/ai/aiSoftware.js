@@ -442,7 +442,7 @@ const AiScriptStart = (connStore) => {
 
     // Start loading page
     let isFirstTime = true;
-    $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
+    circleLoader.start();
     if (tinyAiScript.isEnabled()) {
       const contentEnabler = new EnablerAiContent();
       const rpgData = new RpgData();
@@ -791,7 +791,7 @@ const AiScriptStart = (connStore) => {
             })
             .catch((err) => {
               alert(err.message);
-              $.LoadingOverlay('hide');
+              circleLoader.close();
               reject(err);
             });
         });
@@ -2904,7 +2904,7 @@ const AiScriptStart = (connStore) => {
         'Load more models',
         async () => {
           if (!tinyAiScript.noai && !tinyAiScript.mpClient) {
-            $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
+            circleLoader.start();
             await tinyAi.getModels(100);
 
             if (!tinyAi._nextModelsPageToken) {
@@ -2913,7 +2913,7 @@ const AiScriptStart = (connStore) => {
             }
 
             updateModelList();
-            $.LoadingOverlay('hide');
+            circleLoader.close();
           }
         },
         !tinyAi._nextModelsPageToken,
@@ -4379,23 +4379,23 @@ const AiScriptStart = (connStore) => {
               // Error
               else {
                 sendSocketError(result);
-                $.LoadingOverlay('hide');
+                circleLoader.close();
               }
             });
 
             client.on('roomError', (result) => {
               sendSocketError(result);
-              $.LoadingOverlay('hide');
+              circleLoader.close();
             });
 
             client.on('roomNotFound', () => {
               makeTempMessage('The room was not found', rpgCfg.ip);
-              $.LoadingOverlay('hide');
+              circleLoader.close();
             });
 
             client.on('roomJoinned', (result) => {
               makeTempMessage(`You successfully entered the room **${result.roomId}**!`, rpgCfg.ip);
-              $.LoadingOverlay('hide');
+              circleLoader.close();
             });
 
             // Disconnected
@@ -4414,7 +4414,7 @@ const AiScriptStart = (connStore) => {
               // Prepare disconnect progress
               if (tinyAiScript.mpClient) {
                 // Is active
-                if (client.isActive()) $.LoadingOverlay('show', { background: 'rgba(0,0,0, 0.5)' });
+                if (client.isActive()) circleLoader.start();
                 // Disable page
                 else {
                   contentEnabler.deBase();
@@ -4535,7 +4535,7 @@ const AiScriptStart = (connStore) => {
 
     // Finished
     await tinyNotification.requestPerm();
-    $.LoadingOverlay('hide');
+    circleLoader.close();
   };
 
   // Complete

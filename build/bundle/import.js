@@ -19,6 +19,9 @@ import * as JsStore from "jsstore";
 // Validate color
 import validateColor from "validate-color";
 
+// Circle Loader
+import { Loader } from 'circle-loader';
+
 // Tiny AI
 import { setTinyGoogleAi, TinyAiInstance } from 'tiny-ai-api';
 import { 
@@ -50,6 +53,7 @@ global.window.tinyNotification = new TinyNotifications({ audio: '/audio/notifica
 
 // Imports
 addAiMarkerShortcut();
+global.window.circleLoader = Loader;
 global.window.tinyLs = new TinyLocalStorage('pony-driland');
 global.window.TinyTextRangeEditor = TinyTextRangeEditor;
 global.window.TinyDomReadyManager = TinyDomReadyManager;
