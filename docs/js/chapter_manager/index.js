@@ -834,8 +834,8 @@ const openChapterMenu = (params = {}) => {
               tinyLib.modal({
                 title: [tinyLib.icon('fas fa-eye me-3'), 'Mature Content Settings'],
                 body: $('<center>').append(
-                  $('<p>', { class: 'text-danger' }).text(
-                    "Don't expect fantastic +18 stuff here. The mature content will not try to be explicit, and it is only used to enrich the content of the fic (example: bring more realistic scenes). By activating these settings, you agree that you are responsible for the content you consume and that you are over 18 years old!",
+                  $('<p>', { class: 'text-danger made-by-ai' }).text(
+                    "Don't expect any explicit 18+ content here. The mature themes are not graphic and are only used to add depth to the story — for example, to make certain scenes feel more realistic. By enabling these settings, you confirm that you are over 18 and accept full responsibility for the content you choose to view.",
                   ),
                   nsfwDIV,
                 ),
