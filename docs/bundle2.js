@@ -43,7 +43,7 @@ global.window.tinyNotification = new _tinyEssentials.TinyNotifications({
 
 // Imports
 (0, _tinyEssentials.addAiMarkerShortcut)();
-global.window.tinyLs = new _tinyEssentials.TinyLocalStorage();
+global.window.tinyLs = new _tinyEssentials.TinyLocalStorage('pony-driland');
 global.window.TinyTextRangeEditor = _tinyEssentials.TinyTextRangeEditor;
 global.window.TinyDomReadyManager = _tinyEssentials.TinyDomReadyManager;
 global.window.TinyAfterScrollWatcher = _tinyEssentials.TinyAfterScrollWatcher;
@@ -69,7 +69,7 @@ global.window.Pizzicato = _pizzicato["default"];
 global.window.PhotoSwipeLightbox = _photoswipe["default"];
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"for-promise":85,"jsstore":91,"photoswipe":95,"pizzicato":96,"socket.io-client":99,"tiny-ai-api":110,"tiny-dices":133,"tiny-essentials":161,"tippy.js":181,"validate-color":182}],2:[function(require,module,exports){
+},{"for-promise":85,"jsstore":91,"photoswipe":95,"pizzicato":96,"socket.io-client":99,"tiny-ai-api":110,"tiny-dices":133,"tiny-essentials":161,"tippy.js":183,"validate-color":184}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29310,7 +29310,7 @@ function _insertCreateCube() {
 }
 var _default = exports["default"] = TinyDices;
 
-},{"tiny-essentials":142,"validate-color":182}],134:[function(require,module,exports){
+},{"tiny-essentials":142,"validate-color":184}],134:[function(require,module,exports){
 arguments[4][112][0].apply(exports,arguments)
 },{"dup":112}],135:[function(require,module,exports){
 arguments[4][113][0].apply(exports,arguments)
@@ -31263,6 +31263,12 @@ Object.defineProperty(exports, "TinyHtml", {
     return _TinyHtml["default"];
   }
 });
+Object.defineProperty(exports, "TinyIframeEvents", {
+  enumerable: true,
+  get: function get() {
+    return _TinyIframeEvents["default"];
+  }
+});
 Object.defineProperty(exports, "TinyLevelUp", {
   enumerable: true,
   get: function get() {
@@ -31273,6 +31279,12 @@ Object.defineProperty(exports, "TinyLocalStorage", {
   enumerable: true,
   get: function get() {
     return _TinyLocalStorage["default"];
+  }
+});
+Object.defineProperty(exports, "TinyNewWinEvents", {
+  enumerable: true,
+  get: function get() {
+    return _TinyNewWinEvents["default"];
   }
 });
 Object.defineProperty(exports, "TinyNotifications", {
@@ -31897,9 +31909,11 @@ var _TinyColorConverter = _interopRequireDefault(require("./libs/TinyColorConver
 var _TinyTimeout = _interopRequireDefault(require("./libs/TinyTimeout.mjs"));
 var _TinyEvents = _interopRequireDefault(require("./libs/TinyEvents.mjs"));
 var _TinyLocalStorage = _interopRequireDefault(require("./libs/TinyLocalStorage.mjs"));
+var _TinyIframeEvents = _interopRequireDefault(require("./libs/TinyIframeEvents.mjs"));
+var _TinyNewWinEvents = _interopRequireDefault(require("./libs/TinyNewWinEvents.mjs"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 
-},{"../legacy/libs/arraySortPositions.mjs":146,"../legacy/libs/replaceAsync.mjs":147,"../legacy/libs/userLevel.mjs":148,"./basics/array.mjs":149,"./basics/clock.mjs":150,"./basics/collision.mjs":151,"./basics/fullScreen.mjs":152,"./basics/html.mjs":153,"./basics/html_deprecated.mjs":154,"./basics/objChecker.mjs":155,"./basics/objFilter.mjs":156,"./basics/simpleMath.mjs":157,"./basics/text.mjs":158,"./fileManager/asyncFuncs.mjs":159,"./fileManager/normalFuncs.mjs":160,"./libs/ColorSafeStringify.mjs":162,"./libs/TinyAfterScrollWatcher.mjs":163,"./libs/TinyClipboard.mjs":164,"./libs/TinyColorConverter.mjs":165,"./libs/TinyDomReadyManager.mjs":166,"./libs/TinyDragDropDetector.mjs":167,"./libs/TinyDragger.mjs":168,"./libs/TinyEvents.mjs":169,"./libs/TinyHtml.mjs":170,"./libs/TinyLocalStorage.mjs":171,"./libs/TinyNotifications.mjs":172,"./libs/TinyNotifyCenter.mjs":173,"./libs/TinyPromiseQueue.mjs":174,"./libs/TinyRateLimiter.mjs":175,"./libs/TinySmartScroller.mjs":176,"./libs/TinyTextRangeEditor.mjs":177,"./libs/TinyTimeout.mjs":178,"./libs/TinyToastNotify.mjs":179,"./libs/UltraRandomMsgGen.mjs":180}],162:[function(require,module,exports){
+},{"../legacy/libs/arraySortPositions.mjs":146,"../legacy/libs/replaceAsync.mjs":147,"../legacy/libs/userLevel.mjs":148,"./basics/array.mjs":149,"./basics/clock.mjs":150,"./basics/collision.mjs":151,"./basics/fullScreen.mjs":152,"./basics/html.mjs":153,"./basics/html_deprecated.mjs":154,"./basics/objChecker.mjs":155,"./basics/objFilter.mjs":156,"./basics/simpleMath.mjs":157,"./basics/text.mjs":158,"./fileManager/asyncFuncs.mjs":159,"./fileManager/normalFuncs.mjs":160,"./libs/ColorSafeStringify.mjs":162,"./libs/TinyAfterScrollWatcher.mjs":163,"./libs/TinyClipboard.mjs":164,"./libs/TinyColorConverter.mjs":165,"./libs/TinyDomReadyManager.mjs":166,"./libs/TinyDragDropDetector.mjs":167,"./libs/TinyDragger.mjs":168,"./libs/TinyEvents.mjs":169,"./libs/TinyHtml.mjs":170,"./libs/TinyIframeEvents.mjs":171,"./libs/TinyLocalStorage.mjs":172,"./libs/TinyNewWinEvents.mjs":173,"./libs/TinyNotifications.mjs":174,"./libs/TinyNotifyCenter.mjs":175,"./libs/TinyPromiseQueue.mjs":176,"./libs/TinyRateLimiter.mjs":177,"./libs/TinySmartScroller.mjs":178,"./libs/TinyTextRangeEditor.mjs":179,"./libs/TinyTimeout.mjs":180,"./libs/TinyToastNotify.mjs":181,"./libs/UltraRandomMsgGen.mjs":182}],162:[function(require,module,exports){
 arguments[4][125][0].apply(exports,arguments)
 },{"dup":125}],163:[function(require,module,exports){
 "use strict";
@@ -40468,6 +40482,422 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _objChecker = require("../basics/objChecker.mjs");
 var _TinyEvents = _interopRequireDefault(require("./TinyEvents.mjs"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateMethodInitSpec(e, a) { _checkPrivateRedeclaration(e, a), a.add(e); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+/** @type {WeakMap<Window, TinyIframeEvents>} */
+var instances = new WeakMap();
+/**
+ * @callback handler
+ * A function to handle incoming event payloads.
+ * @param {any} payload - The data sent by the emitter.
+ * @param {MessageEvent<any>} event - Metadata about the message.
+ */
+/**
+ * A flexible event routing system for structured communication
+ * between a parent window and its iframe using `postMessage`.
+ *
+ * This class abstracts the complexity of cross-origin and window-type handling,
+ * allowing both the iframe and parent to:
+ * - Send events with arbitrary payloads
+ * - Listen to specific event names
+ * - Filter events by origin and source
+ * - Work symmetrically from both sides with automatic direction handling
+ *
+ * Use this class when building applications that require modular, event-driven
+ * communication across embedded frames.
+ */
+var _events = /*#__PURE__*/new WeakMap();
+var _targetWindow = /*#__PURE__*/new WeakMap();
+var _targetOrigin = /*#__PURE__*/new WeakMap();
+var _selfType = /*#__PURE__*/new WeakMap();
+var _isDestroyed = /*#__PURE__*/new WeakMap();
+var _ready = /*#__PURE__*/new WeakMap();
+var _pendingQueue = /*#__PURE__*/new WeakMap();
+var _secretEventName = /*#__PURE__*/new WeakMap();
+var _TinyIframeEvents_brand = /*#__PURE__*/new WeakSet();
+var TinyIframeEvents = /*#__PURE__*/function () {
+  /**
+   * Creates a new TinyIframeEvents instance to manage communication between iframe and parent.
+   * Automatically determines the current context (`iframe` or `parent`) based on the `targetWindow`.
+   *
+   * @param {Object} config - Configuration object.
+   * @param {HTMLIFrameElement} [config.targetIframe] - The target window to post messages to. Defaults to `window.parent` (assumes this is inside an iframe).
+   * @param {string} [config.targetOrigin] - The target origin to restrict messages to. Defaults to `window.location.origin`.
+   */
+  function TinyIframeEvents() {
+    var _targetIframe$content;
+    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      targetIframe = _ref.targetIframe,
+      targetOrigin = _ref.targetOrigin;
+    _classCallCheck(this, TinyIframeEvents);
+    /**
+     * Marks the communication as ready and flushes any queued messages.
+     */
+    _classPrivateMethodInitSpec(this, _TinyIframeEvents_brand);
+    _classPrivateFieldInitSpec(this, _events, new _TinyEvents["default"]());
+    ///////////////////////////////////////////////////
+    /** @type {Window} */
+    _classPrivateFieldInitSpec(this, _targetWindow, void 0);
+    /** @type {string} */
+    _classPrivateFieldInitSpec(this, _targetOrigin, void 0);
+    /** @type {string} */
+    _classPrivateFieldInitSpec(this, _selfType, void 0);
+    /** @type {boolean} */
+    _classPrivateFieldInitSpec(this, _isDestroyed, false);
+    /** @type {boolean} */
+    _classPrivateFieldInitSpec(this, _ready, false);
+    /**
+     * @typedef {object} IframeEventBase
+     * @property {string} eventName - The name of the custom event route.
+     * @property {any} payload - The data being sent (can be any type).
+     * @property {'iframe' | 'parent'} direction - Indicates the sender: 'iframe' or 'parent'.
+     */
+    /**
+     * Queue of messages emitted before connection is ready
+     * @type {IframeEventBase[]}
+     */
+    _classPrivateFieldInitSpec(this, _pendingQueue, []);
+    /** @type {string} Internal message type for routed communication */
+    _classPrivateFieldInitSpec(this, _secretEventName, '__tinyIframeEvent__');
+    if (typeof targetIframe !== 'undefined' && (!(targetIframe instanceof HTMLIFrameElement) || !targetIframe.contentWindow)) throw new TypeError("[TinyIframeEvents] Invalid \"targetIframe\" provided: expected a HTML Iframe Element, received ".concat(_typeof(targetIframe)));
+    if (typeof targetOrigin !== 'undefined' && typeof targetOrigin !== 'string') throw new TypeError("[TinyIframeEvents] Invalid \"targetOrigin\" provided: expected a string, received ".concat(_typeof(targetOrigin)));
+    _classPrivateFieldSet(_targetWindow, this, (_targetIframe$content = targetIframe === null || targetIframe === void 0 ? void 0 : targetIframe.contentWindow) !== null && _targetIframe$content !== void 0 ? _targetIframe$content : window.parent);
+    _classPrivateFieldSet(_targetOrigin, this, targetOrigin !== null && targetOrigin !== void 0 ? targetOrigin : window.location.origin);
+    _classPrivateFieldSet(_selfType, this, !targetIframe ? 'iframe' : 'parent');
+    if (instances.has(_classPrivateFieldGet(_targetWindow, this))) throw new Error('Duplicate window reference.');
+    this._boundOnMessage = _assertClassBrand(_TinyIframeEvents_brand, this, _onMessage).bind(this);
+    this._boundOnceMessage = _assertClassBrand(_TinyIframeEvents_brand, this, _onceMessage).bind(this);
+    if (_classPrivateFieldGet(_targetWindow, this).document.readyState === 'complete' || _classPrivateFieldGet(_targetWindow, this).document.readyState === 'interactive') _assertClassBrand(_TinyIframeEvents_brand, this, _onceMessage).call(this);else {
+      _classPrivateFieldGet(_targetWindow, this).addEventListener('load', this._boundOnceMessage, false);
+      _classPrivateFieldGet(_targetWindow, this).addEventListener('DOMContentLoaded', this._boundOnceMessage, false);
+    }
+    window.addEventListener('message', this._boundOnMessage, false);
+    instances.set(_classPrivateFieldGet(_targetWindow, this), this);
+  }
+  return _createClass(TinyIframeEvents, [{
+    key: "setThrowOnMaxListeners",
+    value:
+    /**
+     * Enables or disables throwing an error when the maximum number of listeners is exceeded.
+     *
+     * @param {boolean} shouldThrow - If true, an error will be thrown when the max is exceeded.
+     */
+    function setThrowOnMaxListeners(shouldThrow) {
+      return _classPrivateFieldGet(_events, this).setThrowOnMaxListeners(shouldThrow);
+    }
+    /**
+     * Checks whether an error will be thrown when the max listener limit is exceeded.
+     *
+     * @returns {boolean} True if an error will be thrown, false if only a warning is shown.
+     */
+  }, {
+    key: "getThrowOnMaxListeners",
+    value: function getThrowOnMaxListeners() {
+      return _classPrivateFieldGet(_events, this).getThrowOnMaxListeners();
+    }
+    /////////////////////////////////////////////////////////////
+    /**
+     * Adds a listener to the beginning of the listeners array for the specified event.
+     *
+     * @param {string} event - Event name.
+     * @param {handler} handler - The callback function.
+     */
+  }, {
+    key: "prependListener",
+    value: function prependListener(event, handler) {
+      return _classPrivateFieldGet(_events, this).prependListener(event, handler);
+    }
+    /**
+     * Adds a one-time listener to the beginning of the listeners array for the specified event.
+     *
+     * @param {string} event - Event name.
+     * @param {handler} handler - The callback function.
+     * @returns {handler} - The wrapped handler used internally.
+     */
+  }, {
+    key: "prependListenerOnce",
+    value: function prependListenerOnce(event, handler) {
+      return _classPrivateFieldGet(_events, this).prependListenerOnce(event, handler);
+    }
+    //////////////////////////////////////////////////////////////////////
+    /**
+     * Adds a event listener.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {handler} handler - Callback function to be called when event fires.
+     */
+  }, {
+    key: "appendListener",
+    value: function appendListener(event, handler) {
+      return _classPrivateFieldGet(_events, this).appendListener(event, handler);
+    }
+    /**
+     * Registers an event listener that runs only once, then is removed.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {handler} handler - The callback function to run on event.
+     * @returns {handler} - The wrapped version of the handler.
+     */
+  }, {
+    key: "appendListenerOnce",
+    value: function appendListenerOnce(event, handler) {
+      return _classPrivateFieldGet(_events, this).appendListenerOnce(event, handler);
+    }
+    /**
+     * Adds a event listener.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {handler} handler - Callback function to be called when event fires.
+     */
+  }, {
+    key: "on",
+    value: function on(event, handler) {
+      return _classPrivateFieldGet(_events, this).on(event, handler);
+    }
+    /**
+     * Registers an event listener that runs only once, then is removed.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {handler} handler - The callback function to run on event.
+     * @returns {handler} - The wrapped version of the handler.
+     */
+  }, {
+    key: "once",
+    value: function once(event, handler) {
+      return _classPrivateFieldGet(_events, this).once(event, handler);
+    }
+    ////////////////////////////////////////////////////////////////////
+    /**
+     * Removes a previously registered event listener.
+     *
+     * @param {string} event - The name of the event to remove the handler from.
+     * @param {handler} handler - The specific callback function to remove.
+     */
+  }, {
+    key: "off",
+    value: function off(event, handler) {
+      return _classPrivateFieldGet(_events, this).off(event, handler);
+    }
+    /**
+     * Removes all event listeners of a specific type from the element.
+     *
+     * @param {string} event - The event type to remove (e.g. 'onScrollBoundary').
+     */
+  }, {
+    key: "offAll",
+    value: function offAll(event) {
+      return _classPrivateFieldGet(_events, this).offAll(event);
+    }
+    /**
+     * Removes all event listeners of all types from the element.
+     */
+  }, {
+    key: "offAllTypes",
+    value: function offAllTypes() {
+      return _classPrivateFieldGet(_events, this).offAllTypes();
+    }
+    ////////////////////////////////////////////////////////////
+    /**
+     * Returns the number of listeners for a given event.
+     *
+     * @param {string} event - The name of the event.
+     * @returns {number} Number of listeners for the event.
+     */
+  }, {
+    key: "listenerCount",
+    value: function listenerCount(event) {
+      return _classPrivateFieldGet(_events, this).listenerCount(event);
+    }
+    /**
+     * Returns a copy of the array of listeners for the specified event.
+     *
+     * @param {string} event - The name of the event.
+     * @returns {handler[]} Array of listener functions.
+     */
+  }, {
+    key: "listeners",
+    value: function listeners(event) {
+      return _classPrivateFieldGet(_events, this).listeners(event);
+    }
+    /**
+     * Returns a copy of the array of listeners for the specified event.
+     *
+     * @param {string} event - The name of the event.
+     * @returns {handler[]} Array of listener functions.
+     */
+  }, {
+    key: "onceListeners",
+    value: function onceListeners(event) {
+      return _classPrivateFieldGet(_events, this).onceListeners(event);
+    }
+    /**
+     * Returns a copy of the internal listeners array for the specified event,
+     * including wrapper functions like those used by `.once()`.
+     * @param {string | symbol} event - The event name.
+     * @returns {handler[]} An array of raw listener functions.
+     */
+  }, {
+    key: "allListeners",
+    value: function allListeners(event) {
+      return _classPrivateFieldGet(_events, this).allListeners(event);
+    }
+    /**
+     * Returns an array of event names for which there are registered listeners.
+     *
+     * @returns {string[]} Array of registered event names.
+     */
+  }, {
+    key: "eventNames",
+    value: function eventNames() {
+      return _classPrivateFieldGet(_events, this).eventNames();
+    }
+    //////////////////////////////////////////////////////
+    /**
+     * Sets the maximum number of listeners per event before a warning is shown.
+     *
+     * @param {number} n - The maximum number of listeners.
+     */
+  }, {
+    key: "setMaxListeners",
+    value: function setMaxListeners(n) {
+      return _classPrivateFieldGet(_events, this).setMaxListeners(n);
+    }
+    /**
+     * Gets the maximum number of listeners allowed per event.
+     *
+     * @returns {number} The maximum number of listeners.
+     */
+  }, {
+    key: "getMaxListeners",
+    value: function getMaxListeners() {
+      return _classPrivateFieldGet(_events, this).getMaxListeners();
+    }
+  }, {
+    key: "secretEventName",
+    get:
+    /**
+     * Gets the internal secret iframe event name.
+     * @returns {string}
+     */
+    function get() {
+      return _classPrivateFieldGet(_secretEventName, this);
+    }
+    /**
+     * Sets the internal secret iframe event name.
+     * @param {string} name
+     * @throws {TypeError} If the value is not a string.
+     */,
+    set: function set(name) {
+      if (typeof name !== 'string') throw new TypeError('TinyIframeEvents: secretEventName must be a string.');
+      _classPrivateFieldSet(_secretEventName, this, name);
+    }
+  }, {
+    key: "emit",
+    value:
+    /**
+     * Sends an event to the target window.
+     *
+     * @param {string} eventName - A unique name identifying the event.
+     * @param {*} payload - The data to send with the event. Can be any serializable value.
+     * @throws {Error} If `eventName` is not a string.
+     */
+    function emit(eventName, payload) {
+      if (typeof eventName !== 'string') throw new TypeError('Event name must be a string.');
+      if (_classPrivateFieldGet(_isDestroyed, this)) throw new Error('Cannot emit: instance has been destroyed.');
+      /** @type {IframeEventBase} */
+      var message = _defineProperty(_defineProperty(_defineProperty(_defineProperty({}, _classPrivateFieldGet(_secretEventName, this), true), "eventName", eventName), "payload", payload), "direction", _classPrivateFieldGet(_selfType, this) === 'parent' ? 'iframe' : 'parent');
+      if (!_classPrivateFieldGet(_ready, this)) {
+        _classPrivateFieldGet(_pendingQueue, this).push(message);
+        return;
+      }
+      _classPrivateFieldGet(_targetWindow, this).postMessage(message, _classPrivateFieldGet(_targetOrigin, this));
+    }
+    /**
+     * Sends all pending messages queued before handshake completion.
+     *
+     * @returns {void}
+     */
+  }, {
+    key: "isDestroyed",
+    value:
+    /**
+     * Checks if the communication instance has been destroyed.
+     *
+     * @returns {boolean}
+     */
+    function isDestroyed() {
+      return _classPrivateFieldGet(_isDestroyed, this);
+    }
+    /**
+     * Unsubscribes all registered event listeners and removes the message handler.
+     * Call this when the instance is no longer needed to prevent memory leaks.
+     */
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      _classPrivateFieldSet(_isDestroyed, this, true);
+      window.removeEventListener('message', this._boundOnMessage);
+      _classPrivateFieldGet(_targetWindow, this).removeEventListener('load', this._boundOnceMessage, false);
+      _classPrivateFieldGet(_targetWindow, this).removeEventListener('DOMContentLoaded', this._boundOnceMessage, false);
+      _classPrivateFieldGet(_events, this).offAllTypes();
+      _classPrivateFieldSet(_pendingQueue, this, []);
+      instances["delete"](_classPrivateFieldGet(_targetWindow, this));
+    }
+  }]);
+}();
+function _onceMessage() {
+  if (_classPrivateFieldGet(_ready, this)) return;
+  _classPrivateFieldSet(_ready, this, true);
+  _assertClassBrand(_TinyIframeEvents_brand, this, _flushQueue).call(this);
+}
+/**
+ * Internal handler for the message event. Filters and dispatches incoming messages.
+ *
+ * @param {MessageEvent<any>} event - The message event received via `postMessage`.
+ */
+function _onMessage(event) {
+  var data = event.data,
+    source = event.source;
+  // Reject non-object or unrelated messages
+  if (!(0, _objChecker.isJsonObject)(data) || !data[_classPrivateFieldGet(_secretEventName, this)]) return;
+  var eventName = data.eventName,
+    payload = data.payload,
+    direction = data.direction;
+  // Reject if not from the expected window (for security)
+  if (source !== _classPrivateFieldGet(_targetWindow, this)) return;
+  // Reject if direction is not meant for this side
+  if (_classPrivateFieldGet(_selfType, this) === 'iframe' && direction !== 'iframe' || _classPrivateFieldGet(_selfType, this) === 'parent' && direction !== 'parent') return;
+  _classPrivateFieldGet(_events, this).emit(/** @type {string} */eventName, payload, event);
+}
+function _flushQueue() {
+  while (_classPrivateFieldGet(_pendingQueue, this).length) {
+    var data = _classPrivateFieldGet(_pendingQueue, this).shift();
+    if (data) _classPrivateFieldGet(_targetWindow, this).postMessage(data, _classPrivateFieldGet(_targetOrigin, this));
+  }
+}
+var _default = exports["default"] = TinyIframeEvents;
+
+},{"../basics/objChecker.mjs":155,"./TinyEvents.mjs":169}],172:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _objChecker = require("../basics/objChecker.mjs");
+var _TinyEvents = _interopRequireDefault(require("./TinyEvents.mjs"));
 var _TinyLocalStorage;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
@@ -40561,6 +40991,8 @@ var customTypesFreezed = new Set(['string', 'boolean', 'number', 'object', 'arra
  */
 var _events = /*#__PURE__*/new WeakMap();
 var _localStorage = /*#__PURE__*/new WeakMap();
+var _dbKey = /*#__PURE__*/new WeakMap();
+var _version = /*#__PURE__*/new WeakMap();
 var _storageEvent = /*#__PURE__*/new WeakMap();
 var _TinyLocalStorage_brand = /*#__PURE__*/new WeakSet();
 var TinyLocalStorage = /*#__PURE__*/function () {
@@ -40568,16 +41000,20 @@ var TinyLocalStorage = /*#__PURE__*/function () {
    * Initializes the TinyLocalStorage instance and sets up cross-tab sync.
    *
    * Adds listener for the native `storage` event to support tab synchronization.
+   * @param {string} [dbName] - Unique database name.
    */
-  function TinyLocalStorage() {
+  function TinyLocalStorage(dbName) {
     var _this = this;
     _classCallCheck(this, TinyLocalStorage);
     /**
-     * Automatically serializes nested instances.
+     * Validates that a given key does not conflict with internal database keys.
      *
-     * @param {string} name - The key under which to store the data.
-     * @param {*} data - The data to be serialized.
-     * @returns {*}
+     * This method is used to prevent accidental overwriting of reserved `LSDB::` keys
+     * in `localStorage`, which are used internally by TinyLocalStorage for versioning
+     * and data management.
+     *
+     * @param {string} name - The key to validate before writing to localStorage.
+     * @throws {Error} If the key starts with `LSDB::`.
      */
     _classPrivateMethodInitSpec(this, _TinyLocalStorage_brand);
     /** @typedef {import('./TinyEvents.mjs').handler} handler */
@@ -40585,17 +41021,18 @@ var TinyLocalStorage = /*#__PURE__*/function () {
     //////////////////////////////////////////////////////
     /** @type {Storage} */
     _classPrivateFieldInitSpec(this, _localStorage, window.localStorage);
+    /** @type {string|null} */
+    _classPrivateFieldInitSpec(this, _dbKey, null);
+    /** @type {number} */
+    _classPrivateFieldInitSpec(this, _version, 0);
     /** @type {(ev: StorageEvent) => any} */
     _classPrivateFieldInitSpec(this, _storageEvent, function (ev) {
       return _this.emit('storage', ev);
     });
+    if (typeof dbName !== 'undefined' && typeof dbName !== 'string') throw new TypeError('TinyLocalStorage: dbName must be a string if provided.');
+    if (typeof dbName === 'string') _classPrivateFieldSet(_dbKey, this, "LSDB::".concat(dbName));
     window.addEventListener('storage', _classPrivateFieldGet(_storageEvent, this));
   }
-  /**
-   * Defines a custom storage interface (e.g. `sessionStorage`).
-   *
-   * @param {Storage} localstorage - A valid Storage object (localStorage or sessionStorage).
-   */
   return _createClass(TinyLocalStorage, [{
     key: "setThrowOnMaxListeners",
     value:
@@ -40819,9 +41256,60 @@ var TinyLocalStorage = /*#__PURE__*/function () {
      * @returns {boolean} True if the type has both an encoder and decoder registered.
      */
   }, {
+    key: "updateStorageVersion",
+    value:
+    /**
+     * Updates the version of the storage and triggers migration if needed.
+     *
+     * @param {number} version - Desired version of the database.
+     * @param {(oldVersion: number, newVersion: number) => void} onUpgrade - Callback to perform migration logic.
+     * @throws {Error} If the database key has not been initialized.
+     * @throws {TypeError} If `version` is not a valid positive number.
+     * @throws {TypeError} If `onUpgrade` is not a function.
+     */
+    function updateStorageVersion(version, onUpgrade) {
+      if (typeof _classPrivateFieldGet(_dbKey, this) !== 'string') throw new Error('TinyLocalStorage: Database key is not initialized. Set a valid dbName in the constructor.');
+      if (typeof version !== 'number' || Number.isNaN(version) || version < 1) throw new TypeError('TinyLocalStorage: version must be a positive number.');
+      if (typeof onUpgrade !== 'function') throw new TypeError('TinyLocalStorage: onUpgrade must be a function.');
+      // @ts-ignore
+      var savedVersion = parseInt(localStorage.getItem(_classPrivateFieldGet(_dbKey, this)), 10) || 0;
+      if (typeof savedVersion !== 'number' || Number.isNaN(savedVersion) || savedVersion < 0) throw new TypeError('TinyLocalStorage: saved version in localStorage is not a valid number.');
+      if (version < savedVersion) throw new Error("TinyLocalStorage: Cannot downgrade database version from ".concat(savedVersion, " to ").concat(version, "."));
+      if (version > savedVersion) {
+        onUpgrade(savedVersion, version);
+        localStorage.setItem(_classPrivateFieldGet(_dbKey, this), String(version));
+        _classPrivateFieldSet(_version, this, version);
+      }
+    }
+    /**
+     * Gets the current database key used in localStorage.
+     *
+     * @returns {string|null} The database key, or null if not set.
+     */
+  }, {
+    key: "getDbKey",
+    value: function getDbKey() {
+      return _classPrivateFieldGet(_dbKey, this);
+    }
+    /**
+     * Gets the current version of the database.
+     *
+     * @returns {number} The current version number.
+     */
+  }, {
+    key: "getVersion",
+    value: function getVersion() {
+      return _classPrivateFieldGet(_version, this);
+    }
+    /**
+     * Defines a custom storage interface (e.g. `sessionStorage`).
+     *
+     * @param {Storage} localstorage - A valid Storage object (localStorage or sessionStorage).
+     */
+  }, {
     key: "setLocalStorage",
     value: function setLocalStorage(localstorage) {
-      if (!(localstorage instanceof Storage)) throw new Error('Argument must be a valid instance of Storage.');
+      if (!(localstorage instanceof Storage)) throw new TypeError('Argument must be a valid instance of Storage.');
       _classPrivateFieldSet(_localStorage, this, localstorage);
     }
     /**
@@ -40834,6 +41322,13 @@ var TinyLocalStorage = /*#__PURE__*/function () {
     value: function localStorageExists() {
       return _classPrivateFieldGet(_localStorage, this) instanceof Storage;
     }
+    /**
+     * Automatically serializes nested instances.
+     *
+     * @param {string} name - The key under which to store the data.
+     * @param {*} data - The data to be serialized.
+     * @returns {*}
+     */
   }, {
     key: "setJson",
     value:
@@ -40846,8 +41341,9 @@ var TinyLocalStorage = /*#__PURE__*/function () {
      * @param {LocalStorageJsonValue} data - The data to be serialized and stored.
      */
     function setJson(name, data) {
+      _assertClassBrand(_TinyLocalStorage_brand, this, _isProtectedDbKey).call(this, name);
       if (!(0, _objChecker.isJsonObject)(data) && !Array.isArray(data) && !(data instanceof Map) && !(data instanceof Set)) {
-        throw new Error('The storage value is not a valid JSON-compatible structure.');
+        throw new TypeError('The storage value is not a valid JSON-compatible structure.');
       }
       var encoded = _assertClassBrand(_TinyLocalStorage_brand, this, _setJson).call(this, name, data);
       this.emit('setJson', name, data);
@@ -40889,7 +41385,8 @@ var TinyLocalStorage = /*#__PURE__*/function () {
   }, {
     key: "setDate",
     value: function setDate(name, data) {
-      if (!(data instanceof Date)) throw new Error('Value must be a Date.');
+      _assertClassBrand(_TinyLocalStorage_brand, this, _isProtectedDbKey).call(this, name);
+      if (!(data instanceof Date)) throw new TypeError('Value must be a Date.');
       var encoded = _assertClassBrand(_TinyLocalStorage_brand, this, _setJson).call(this, name, data);
       this.emit('setDate', name, data);
       return _classPrivateFieldGet(_localStorage, this).setItem(name, JSON.stringify(encoded));
@@ -40913,7 +41410,8 @@ var TinyLocalStorage = /*#__PURE__*/function () {
   }, {
     key: "setRegExp",
     value: function setRegExp(name, data) {
-      if (!(data instanceof RegExp)) throw new Error('Value must be a RegExp.');
+      _assertClassBrand(_TinyLocalStorage_brand, this, _isProtectedDbKey).call(this, name);
+      if (!(data instanceof RegExp)) throw new TypeError('Value must be a RegExp.');
       var encoded = _assertClassBrand(_TinyLocalStorage_brand, this, _setJson).call(this, name, data);
       this.emit('setRegExp', name, data);
       return _classPrivateFieldGet(_localStorage, this).setItem(name, JSON.stringify(encoded));
@@ -40937,7 +41435,8 @@ var TinyLocalStorage = /*#__PURE__*/function () {
   }, {
     key: "setBigInt",
     value: function setBigInt(name, data) {
-      if (typeof data !== 'bigint') throw new Error('Value must be a BigInt.');
+      _assertClassBrand(_TinyLocalStorage_brand, this, _isProtectedDbKey).call(this, name);
+      if (typeof data !== 'bigint') throw new TypeError('Value must be a BigInt.');
       var encoded = _assertClassBrand(_TinyLocalStorage_brand, this, _setJson).call(this, name, data);
       this.emit('setBigInt', name, data);
       return _classPrivateFieldGet(_localStorage, this).setItem(name, JSON.stringify(encoded));
@@ -40962,7 +41461,8 @@ var TinyLocalStorage = /*#__PURE__*/function () {
   }, {
     key: "setSymbol",
     value: function setSymbol(name, data) {
-      if (_typeof(data) !== 'symbol') throw new Error('Value must be a Symbol.');
+      _assertClassBrand(_TinyLocalStorage_brand, this, _isProtectedDbKey).call(this, name);
+      if (_typeof(data) !== 'symbol') throw new TypeError('Value must be a Symbol.');
       var encoded = _assertClassBrand(_TinyLocalStorage_brand, this, _setJson).call(this, name, data);
       this.emit('setSymbol', name, data);
       return _classPrivateFieldGet(_localStorage, this).setItem(name, JSON.stringify(encoded));
@@ -40999,7 +41499,8 @@ var TinyLocalStorage = /*#__PURE__*/function () {
   }, {
     key: "setItem",
     value: function setItem(name, data) {
-      if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
+      _assertClassBrand(_TinyLocalStorage_brand, this, _isProtectedDbKey).call(this, name);
+      if (typeof name !== 'string' || !name.length) throw new TypeError('Key must be a non-empty string.');
       this.emit('setItem', name, data);
       return _classPrivateFieldGet(_localStorage, this).setItem(name, data);
     }
@@ -41012,7 +41513,7 @@ var TinyLocalStorage = /*#__PURE__*/function () {
   }, {
     key: "getItem",
     value: function getItem(name) {
-      if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
+      if (typeof name !== 'string' || !name.length) throw new TypeError('Key must be a non-empty string.');
       return _classPrivateFieldGet(_localStorage, this).getItem(name);
     }
     /**
@@ -41024,8 +41525,9 @@ var TinyLocalStorage = /*#__PURE__*/function () {
   }, {
     key: "setString",
     value: function setString(name, data) {
-      if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
-      if (typeof data !== 'string') throw new Error('Value must be a string.');
+      _assertClassBrand(_TinyLocalStorage_brand, this, _isProtectedDbKey).call(this, name);
+      if (typeof name !== 'string' || !name.length) throw new TypeError('Key must be a non-empty string.');
+      if (typeof data !== 'string') throw new TypeError('Value must be a string.');
       this.emit('setString', name, data);
       return _classPrivateFieldGet(_localStorage, this).setItem(name, JSON.stringify({
         __string__: true,
@@ -41041,7 +41543,7 @@ var TinyLocalStorage = /*#__PURE__*/function () {
   }, {
     key: "getString",
     value: function getString(name) {
-      if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
+      if (typeof name !== 'string' || !name.length) throw new TypeError('Key must be a non-empty string.');
       var value = _classPrivateFieldGet(_localStorage, this).getItem(name);
       try {
         /** @type {{ value: string; __string__: boolean }} */
@@ -41064,8 +41566,9 @@ var TinyLocalStorage = /*#__PURE__*/function () {
   }, {
     key: "setNumber",
     value: function setNumber(name, data) {
-      if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
-      if (typeof data !== 'number') throw new Error('Value must be a number.');
+      _assertClassBrand(_TinyLocalStorage_brand, this, _isProtectedDbKey).call(this, name);
+      if (typeof name !== 'string' || !name.length) throw new TypeError('Key must be a non-empty string.');
+      if (typeof data !== 'number') throw new TypeError('Value must be a number.');
       this.emit('setNumber', name, data);
       return _classPrivateFieldGet(_localStorage, this).setItem(name, String(data));
     }
@@ -41078,7 +41581,7 @@ var TinyLocalStorage = /*#__PURE__*/function () {
   }, {
     key: "getNumber",
     value: function getNumber(name) {
-      if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
+      if (typeof name !== 'string' || !name.length) throw new TypeError('Key must be a non-empty string.');
       /** @type {number|string|null} */
       var number = _classPrivateFieldGet(_localStorage, this).getItem(name);
       if (typeof number === 'number') return number;
@@ -41097,8 +41600,9 @@ var TinyLocalStorage = /*#__PURE__*/function () {
   }, {
     key: "setBool",
     value: function setBool(name, data) {
-      if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
-      if (typeof data !== 'boolean') throw new Error('Value must be a boolean.');
+      _assertClassBrand(_TinyLocalStorage_brand, this, _isProtectedDbKey).call(this, name);
+      if (typeof name !== 'string' || !name.length) throw new TypeError('Key must be a non-empty string.');
+      if (typeof data !== 'boolean') throw new TypeError('Value must be a boolean.');
       this.emit('setBool', name, data);
       return _classPrivateFieldGet(_localStorage, this).setItem(name, String(data));
     }
@@ -41111,7 +41615,7 @@ var TinyLocalStorage = /*#__PURE__*/function () {
   }, {
     key: "getBool",
     value: function getBool(name) {
-      if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
+      if (typeof name !== 'string' || !name.length) throw new TypeError('Key must be a non-empty string.');
       var value = _classPrivateFieldGet(_localStorage, this).getItem(name);
       if (typeof value === 'boolean') return value;
       if (typeof value === 'string') {
@@ -41128,7 +41632,7 @@ var TinyLocalStorage = /*#__PURE__*/function () {
   }, {
     key: "removeItem",
     value: function removeItem(name) {
-      if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
+      if (typeof name !== 'string' || !name.length) throw new TypeError('Key must be a non-empty string.');
       this.emit('removeItem', name);
       return _classPrivateFieldGet(_localStorage, this).removeItem(name);
     }
@@ -41288,12 +41792,15 @@ var TinyLocalStorage = /*#__PURE__*/function () {
 }(); // First registers
 // Map
 _TinyLocalStorage = TinyLocalStorage;
+function _isProtectedDbKey(name) {
+  if (typeof name === 'string' && name.startsWith('LSDB::')) throw new Error("TinyLocalStorage: Key \"".concat(name, "\" may conflict with reserved dbKeys."));
+}
 function _setJson(name, data) {
-  if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
+  if (typeof name !== 'string' || !name.length) throw new TypeError('Key must be a non-empty string.');
   return _TinyLocalStorage.encodeSpecialJson(data);
 }
 function _getJson(name, defaultData) {
-  if (typeof name !== 'string' || !name.length) throw new Error('Key must be a non-empty string.');
+  if (typeof name !== 'string' || !name.length) throw new TypeError('Key must be a non-empty string.');
   var raw = _classPrivateFieldGet(_localStorage, this).getItem(name);
   var fallbackTypes = {
     obj: function obj() {
@@ -41424,7 +41931,540 @@ TinyLocalStorage.registerJsonType('symbol', function (value) {
 }, true);
 var _default = exports["default"] = TinyLocalStorage;
 
-},{"../basics/objChecker.mjs":155,"./TinyEvents.mjs":169}],172:[function(require,module,exports){
+},{"../basics/objChecker.mjs":155,"./TinyEvents.mjs":169}],173:[function(require,module,exports){
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _TinyEvents = _interopRequireDefault(require("./TinyEvents.mjs"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateMethodInitSpec(e, a) { _checkPrivateRedeclaration(e, a), a.add(e); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+/**
+ * Stores polling intervals associated with window references.
+ * Used to detect when the window is closed.
+ *
+ * @type {WeakMap<Window, NodeJS.Timeout>}
+ */
+var pollClosedInterval = new WeakMap();
+/**
+ * @callback handler
+ * A function to handle incoming event payloads.
+ * @param {any} payload - The data sent by the emitter.
+ * @param {MessageEvent<any>} event - Metadata about the message.
+ */
+/**
+ * TinyNewWinEvents provides structured communication between a main window
+ * and a child window (created using window.open) using postMessage.
+ *
+ * It supports routing, queuing messages until handshake is ready,
+ * connection status checks, and close detection.
+ *
+ * @class
+ */
+var _events = /*#__PURE__*/new WeakMap();
+var _windowRef = /*#__PURE__*/new WeakMap();
+var _targetOrigin = /*#__PURE__*/new WeakMap();
+var _pendingQueue = /*#__PURE__*/new WeakMap();
+var _ready = /*#__PURE__*/new WeakMap();
+var _isHost = /*#__PURE__*/new WeakMap();
+var _pollClosedInterval = /*#__PURE__*/new WeakMap();
+var _readyEventName = /*#__PURE__*/new WeakMap();
+var _routeEventName = /*#__PURE__*/new WeakMap();
+var _TinyNewWinEvents_brand = /*#__PURE__*/new WeakSet();
+var TinyNewWinEvents = /*#__PURE__*/function () {
+  /**
+   * Initializes a TinyNewWinEvents instance for communication.
+   *
+   * @param {Object} [settings={}] Configuration object.
+   * @param {string} [settings.targetOrigin] Origin to enforce in postMessage.
+   * @param {string} [settings.url] URL string to open.
+   * @param {string} [settings.name] Window name (required if opening a new window).
+   * @param {string} [settings.features] Features string for `window.open`.
+   *
+   * @throws {Error} If `name` is "_blank", which is not allowed.
+   * @throws {TypeError} If `targetOrigin`, `url`, or `features` are not strings (when provided).
+   * @throws {Error} If the window reference is invalid or already being tracked.
+   */
+  function TinyNewWinEvents() {
+    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      targetOrigin = _ref.targetOrigin,
+      url = _ref.url,
+      name = _ref.name,
+      features = _ref.features;
+    _classCallCheck(this, TinyNewWinEvents);
+    /**
+     * Internal message handler.
+     *
+     * @param {MessageEvent} event
+     * @returns {void}
+     */
+    _classPrivateMethodInitSpec(this, _TinyNewWinEvents_brand);
+    _classPrivateFieldInitSpec(this, _events, new _TinyEvents["default"]());
+    ///////////////////////////////////////////////////
+    /** @type {Window|null} Reference to the opened or parent window */
+    _classPrivateFieldInitSpec(this, _windowRef, void 0);
+    /** @type {string} Expected origin for postMessage communication */
+    _classPrivateFieldInitSpec(this, _targetOrigin, void 0);
+    /** @type {{ route: string, payload: any }[]} Queue of messages emitted before connection is ready */
+    _classPrivateFieldInitSpec(this, _pendingQueue, []);
+    /** @type {boolean} True if handshake between windows is complete */
+    _classPrivateFieldInitSpec(this, _ready, false);
+    /** @type {boolean} True if this instance is the main window (host) */
+    _classPrivateFieldInitSpec(this, _isHost, false);
+    /** @type {NodeJS.Timeout|null} Interval for polling child window closure */
+    _classPrivateFieldInitSpec(this, _pollClosedInterval, null);
+    /** @type {string} Internal message type for handshake */
+    _classPrivateFieldInitSpec(this, _readyEventName, '__TNE_READY__');
+    /** @type {string} Internal message type for routed communication */
+    _classPrivateFieldInitSpec(this, _routeEventName, '__TNE_ROUTE__');
+    if (typeof name === 'string' && name === '_blank') throw new Error('TinyNewWinEvents: The window name "_blank" is not supported. Please use a custom name to allow tracking.');
+    if (typeof targetOrigin !== 'undefined' && typeof targetOrigin !== 'string') throw new TypeError('TinyNewWinEvents: The "targetOrigin" option must be a string.');
+    if (typeof url !== 'undefined' && typeof url !== 'string') throw new TypeError('TinyNewWinEvents: The "url" option must be a string.');
+    if (typeof features !== 'undefined' && typeof features !== 'string') throw new TypeError('TinyNewWinEvents: The "features" option must be a string if provided.');
+    // Open Page
+    if (typeof url === 'undefined') _classPrivateFieldSet(_windowRef, this, window.opener);
+    // Main Page
+    else {
+      _classPrivateFieldSet(_windowRef, this, typeof url === 'string' ? window.open(url, name, features) : url);
+      _classPrivateFieldSet(_isHost, this, true);
+    }
+    if (!_classPrivateFieldGet(_windowRef, this) || pollClosedInterval.has(_classPrivateFieldGet(_windowRef, this))) throw new Error('Invalid or duplicate window reference.');
+    _classPrivateFieldSet(_targetOrigin, this, targetOrigin !== null && targetOrigin !== void 0 ? targetOrigin : window.location.origin);
+    this._handleMessage = _assertClassBrand(_TinyNewWinEvents_brand, this, _handleMessage).bind(this);
+    window.addEventListener('message', this._handleMessage, false);
+    // Sends handshake if it is host (main window)
+    if (!_classPrivateFieldGet(_isHost, this)) {
+      _assertClassBrand(_TinyNewWinEvents_brand, this, _postRaw).call(this, _classPrivateFieldGet(_readyEventName, this), null);
+      _assertClassBrand(_TinyNewWinEvents_brand, this, _startCloseWatcher).call(this);
+    }
+  }
+  /**
+   * Returns the internal window reference.
+   *
+   * @returns {Window|null}
+   */
+  return _createClass(TinyNewWinEvents, [{
+    key: "setThrowOnMaxListeners",
+    value:
+    /**
+     * Enables or disables throwing an error when the maximum number of listeners is exceeded.
+     *
+     * @param {boolean} shouldThrow - If true, an error will be thrown when the max is exceeded.
+     */
+    function setThrowOnMaxListeners(shouldThrow) {
+      return _classPrivateFieldGet(_events, this).setThrowOnMaxListeners(shouldThrow);
+    }
+    /**
+     * Checks whether an error will be thrown when the max listener limit is exceeded.
+     *
+     * @returns {boolean} True if an error will be thrown, false if only a warning is shown.
+     */
+  }, {
+    key: "getThrowOnMaxListeners",
+    value: function getThrowOnMaxListeners() {
+      return _classPrivateFieldGet(_events, this).getThrowOnMaxListeners();
+    }
+    /////////////////////////////////////////////////////////////
+    /**
+     * Adds a listener to the beginning of the listeners array for the specified event.
+     *
+     * @param {string} event - Event name.
+     * @param {handler} handler - The callback function.
+     */
+  }, {
+    key: "prependListener",
+    value: function prependListener(event, handler) {
+      return _classPrivateFieldGet(_events, this).prependListener(event, handler);
+    }
+    /**
+     * Adds a one-time listener to the beginning of the listeners array for the specified event.
+     *
+     * @param {string} event - Event name.
+     * @param {handler} handler - The callback function.
+     * @returns {handler} - The wrapped handler used internally.
+     */
+  }, {
+    key: "prependListenerOnce",
+    value: function prependListenerOnce(event, handler) {
+      return _classPrivateFieldGet(_events, this).prependListenerOnce(event, handler);
+    }
+    //////////////////////////////////////////////////////////////////////
+    /**
+     * Adds a event listener.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {handler} handler - Callback function to be called when event fires.
+     */
+  }, {
+    key: "appendListener",
+    value: function appendListener(event, handler) {
+      return _classPrivateFieldGet(_events, this).appendListener(event, handler);
+    }
+    /**
+     * Registers an event listener that runs only once, then is removed.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {handler} handler - The callback function to run on event.
+     * @returns {handler} - The wrapped version of the handler.
+     */
+  }, {
+    key: "appendListenerOnce",
+    value: function appendListenerOnce(event, handler) {
+      return _classPrivateFieldGet(_events, this).appendListenerOnce(event, handler);
+    }
+    /**
+     * Adds a event listener.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {handler} handler - Callback function to be called when event fires.
+     */
+  }, {
+    key: "on",
+    value: function on(event, handler) {
+      return _classPrivateFieldGet(_events, this).on(event, handler);
+    }
+    /**
+     * Registers an event listener that runs only once, then is removed.
+     *
+     * @param {string} event - Event name, such as 'onScrollBoundary' or 'onAutoScroll'.
+     * @param {handler} handler - The callback function to run on event.
+     * @returns {handler} - The wrapped version of the handler.
+     */
+  }, {
+    key: "once",
+    value: function once(event, handler) {
+      return _classPrivateFieldGet(_events, this).once(event, handler);
+    }
+    ////////////////////////////////////////////////////////////////////
+    /**
+     * Removes a previously registered event listener.
+     *
+     * @param {string} event - The name of the event to remove the handler from.
+     * @param {handler} handler - The specific callback function to remove.
+     */
+  }, {
+    key: "off",
+    value: function off(event, handler) {
+      return _classPrivateFieldGet(_events, this).off(event, handler);
+    }
+    /**
+     * Removes all event listeners of a specific type from the element.
+     *
+     * @param {string} event - The event type to remove (e.g. 'onScrollBoundary').
+     */
+  }, {
+    key: "offAll",
+    value: function offAll(event) {
+      return _classPrivateFieldGet(_events, this).offAll(event);
+    }
+    /**
+     * Removes all event listeners of all types from the element.
+     */
+  }, {
+    key: "offAllTypes",
+    value: function offAllTypes() {
+      return _classPrivateFieldGet(_events, this).offAllTypes();
+    }
+    ////////////////////////////////////////////////////////////
+    /**
+     * Returns the number of listeners for a given event.
+     *
+     * @param {string} event - The name of the event.
+     * @returns {number} Number of listeners for the event.
+     */
+  }, {
+    key: "listenerCount",
+    value: function listenerCount(event) {
+      return _classPrivateFieldGet(_events, this).listenerCount(event);
+    }
+    /**
+     * Returns a copy of the array of listeners for the specified event.
+     *
+     * @param {string} event - The name of the event.
+     * @returns {handler[]} Array of listener functions.
+     */
+  }, {
+    key: "listeners",
+    value: function listeners(event) {
+      return _classPrivateFieldGet(_events, this).listeners(event);
+    }
+    /**
+     * Returns a copy of the array of listeners for the specified event.
+     *
+     * @param {string} event - The name of the event.
+     * @returns {handler[]} Array of listener functions.
+     */
+  }, {
+    key: "onceListeners",
+    value: function onceListeners(event) {
+      return _classPrivateFieldGet(_events, this).onceListeners(event);
+    }
+    /**
+     * Returns a copy of the internal listeners array for the specified event,
+     * including wrapper functions like those used by `.once()`.
+     * @param {string | symbol} event - The event name.
+     * @returns {handler[]} An array of raw listener functions.
+     */
+  }, {
+    key: "allListeners",
+    value: function allListeners(event) {
+      return _classPrivateFieldGet(_events, this).allListeners(event);
+    }
+    /**
+     * Returns an array of event names for which there are registered listeners.
+     *
+     * @returns {string[]} Array of registered event names.
+     */
+  }, {
+    key: "eventNames",
+    value: function eventNames() {
+      return _classPrivateFieldGet(_events, this).eventNames();
+    }
+    //////////////////////////////////////////////////////
+    /**
+     * Sets the maximum number of listeners per event before a warning is shown.
+     *
+     * @param {number} n - The maximum number of listeners.
+     */
+  }, {
+    key: "setMaxListeners",
+    value: function setMaxListeners(n) {
+      return _classPrivateFieldGet(_events, this).setMaxListeners(n);
+    }
+    /**
+     * Gets the maximum number of listeners allowed per event.
+     *
+     * @returns {number} The maximum number of listeners.
+     */
+  }, {
+    key: "getMaxListeners",
+    value: function getMaxListeners() {
+      return _classPrivateFieldGet(_events, this).getMaxListeners();
+    }
+  }, {
+    key: "readyEventName",
+    get:
+    /**
+     * Gets the internal handshake event name.
+     * @returns {string}
+     */
+    function get() {
+      return _classPrivateFieldGet(_readyEventName, this);
+    }
+    /**
+     * Sets the internal handshake event name.
+     * @param {string} name
+     * @throws {TypeError} If the value is not a string.
+     */,
+    set: function set(name) {
+      if (typeof name !== 'string') throw new TypeError('TinyNewWinEvents: readyEventName must be a string.');
+      _classPrivateFieldSet(_readyEventName, this, name);
+    }
+    /**
+     * Gets the internal route event name.
+     * @returns {string}
+     */
+  }, {
+    key: "routeEventName",
+    get: function get() {
+      return _classPrivateFieldGet(_routeEventName, this);
+    }
+    /**
+     * Sets the internal route event name.
+     * @param {string} name
+     * @throws {TypeError} If the value is not a string.
+     */,
+    set: function set(name) {
+      if (typeof name !== 'string') throw new TypeError('TinyNewWinEvents: routeEventName must be a string.');
+      _classPrivateFieldSet(_routeEventName, this, name);
+    }
+  }, {
+    key: "getWin",
+    value: function getWin() {
+      return _classPrivateFieldGet(_windowRef, this);
+    }
+  }, {
+    key: "close",
+    value:
+    /**
+     * Closes the child window (only allowed from the host).
+     *
+     * @returns {void}
+     */
+    function close() {
+      if (!_classPrivateFieldGet(_isHost, this)) throw new Error('Only host can close the window.');
+      if (_classPrivateFieldGet(_windowRef, this) && !_classPrivateFieldGet(_windowRef, this).closed) _classPrivateFieldGet(_windowRef, this).close();
+    }
+    /**
+     * Emits a message to the other window on a specific route.
+     * If the handshake is not yet complete, the message is queued.
+     * Throws an error if the instance has already been destroyed.
+     *
+     * @param {string} route - Route name used to identify the message handler.
+     * @param {any} payload - Data to send along with the message.
+     * @throws {Error} If the instance is already destroyed.
+     * @returns {void}
+     */
+  }, {
+    key: "emit",
+    value: function emit(route, payload) {
+      if (typeof route !== 'string') throw new TypeError('Event name must be a string.');
+      if (this.isDestroyed()) throw new Error('Cannot emit: instance has been destroyed.');
+      if (!_classPrivateFieldGet(_ready, this)) {
+        _classPrivateFieldGet(_pendingQueue, this).push({
+          route: route,
+          payload: payload
+        });
+        return;
+      }
+      _assertClassBrand(_TinyNewWinEvents_brand, this, _postRaw).call(this, _classPrivateFieldGet(_routeEventName, this), payload, route);
+    }
+    /**
+     * Checks if the connection is active and the window is still open.
+     *
+     * @returns {boolean}
+     */
+  }, {
+    key: "isConnected",
+    value: function isConnected() {
+      return _classPrivateFieldGet(_ready, this) && _classPrivateFieldGet(_windowRef, this) && !_classPrivateFieldGet(_windowRef, this).closed ? true : false;
+    }
+    /**
+     * Starts polling to detect when the window is closed.
+     *
+     * @returns {void}
+     */
+  }, {
+    key: "onClose",
+    value:
+    /**
+     * Registers a callback for when the window is closed.
+     *
+     * @param {handler} callback Callback to run on close
+     * @returns {void}
+     */
+    function onClose(callback) {
+      return _classPrivateFieldGet(_events, this).on('WINDOW_REF_CLOSED', callback);
+    }
+    /**
+     * Unregisters a previously registered close callback.
+     *
+     * @param {handler} callback Callback to remove
+     * @returns {void}
+     */
+  }, {
+    key: "offClose",
+    value: function offClose(callback) {
+      return _classPrivateFieldGet(_events, this).off('WINDOW_REF_CLOSED', callback);
+    }
+    /**
+     * Checks if the communication instance has been destroyed.
+     *
+     * @returns {boolean}
+     */
+  }, {
+    key: "isDestroyed",
+    value: function isDestroyed() {
+      return !_classPrivateFieldGet(_windowRef, this);
+    }
+    /**
+     * Destroys the communication instance, cleaning up all resources and listeners.
+     *
+     * @returns {void}
+     */
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      if (!_classPrivateFieldGet(_windowRef, this)) return;
+      if (_classPrivateFieldGet(_pollClosedInterval, this)) {
+        clearInterval(_classPrivateFieldGet(_pollClosedInterval, this));
+        _classPrivateFieldSet(_pollClosedInterval, this, null);
+        pollClosedInterval["delete"](_classPrivateFieldGet(_windowRef, this));
+      }
+      window.removeEventListener('message', this._handleMessage);
+      _classPrivateFieldSet(_pendingQueue, this, []);
+      _classPrivateFieldSet(_ready, this, false);
+      _classPrivateFieldSet(_windowRef, this, null);
+      _classPrivateFieldGet(_events, this).offAllTypes();
+    }
+  }]);
+}();
+function _handleMessage(event) {
+  if (!event.source || _classPrivateFieldGet(_windowRef, this) && event.source !== _classPrivateFieldGet(_windowRef, this)) return;
+  var _ref2 = event.data || {},
+    type = _ref2.type,
+    route = _ref2.route,
+    payload = _ref2.payload;
+  if (type === _classPrivateFieldGet(_readyEventName, this)) {
+    _classPrivateFieldSet(_ready, this, true);
+    _assertClassBrand(_TinyNewWinEvents_brand, this, _flushQueue).call(this);
+    _assertClassBrand(_TinyNewWinEvents_brand, this, _startCloseWatcher).call(this); // start watcher after handshake (for child window)
+    if (_classPrivateFieldGet(_isHost, this)) _assertClassBrand(_TinyNewWinEvents_brand, this, _postRaw).call(this, _classPrivateFieldGet(_readyEventName, this), null);
+    return;
+  }
+  if (type === _classPrivateFieldGet(_routeEventName, this)) _classPrivateFieldGet(_events, this).emit(route, payload, event);
+}
+/**
+ * Sends all pending messages queued before handshake completion.
+ *
+ * @returns {void}
+ */
+function _flushQueue() {
+  while (_classPrivateFieldGet(_pendingQueue, this).length) {
+    var data = _classPrivateFieldGet(_pendingQueue, this).shift();
+    if (data) {
+      var route = data.route,
+        payload = data.payload;
+      this.emit(route, payload);
+    }
+  }
+}
+/**
+ * Sends a raw postMessage with given type and payload.
+ *
+ * @param {string} type Internal message type
+ * @param {any} payload Data to send
+ * @param {string} [route=''] Optional route name
+ * @returns {void}
+ */
+function _postRaw(type, payload) {
+  var _classPrivateFieldGet2;
+  var route = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+  if (_classPrivateFieldGet(_windowRef, this) && _classPrivateFieldGet(_windowRef, this).closed) return;
+  (_classPrivateFieldGet2 = _classPrivateFieldGet(_windowRef, this)) === null || _classPrivateFieldGet2 === void 0 || _classPrivateFieldGet2.postMessage({
+    type: type,
+    route: route,
+    payload: payload
+  }, _classPrivateFieldGet(_targetOrigin, this));
+}
+function _startCloseWatcher() {
+  var _this = this;
+  if (!_classPrivateFieldGet(_windowRef, this) || _classPrivateFieldGet(_pollClosedInterval, this)) return;
+  _classPrivateFieldSet(_pollClosedInterval, this, setInterval(function () {
+    var _classPrivateFieldGet3;
+    if ((_classPrivateFieldGet3 = _classPrivateFieldGet(_windowRef, _this)) !== null && _classPrivateFieldGet3 !== void 0 && _classPrivateFieldGet3.closed) {
+      _classPrivateFieldGet(_events, _this).emit('WINDOW_REF_CLOSED');
+      _this.destroy();
+    }
+  }, 500));
+  pollClosedInterval.set(_classPrivateFieldGet(_windowRef, this), _classPrivateFieldGet(_pollClosedInterval, this));
+}
+var _default = exports["default"] = TinyNewWinEvents;
+
+},{"./TinyEvents.mjs":169}],174:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41686,13 +42726,13 @@ var TinyNotifications = /*#__PURE__*/function () {
 }();
 var _default = exports["default"] = TinyNotifications;
 
-},{"../basics/text.mjs":158}],173:[function(require,module,exports){
+},{"../basics/text.mjs":158}],175:[function(require,module,exports){
 arguments[4][129][0].apply(exports,arguments)
-},{"dup":129}],174:[function(require,module,exports){
+},{"dup":129}],176:[function(require,module,exports){
 arguments[4][130][0].apply(exports,arguments)
-},{"dup":130}],175:[function(require,module,exports){
+},{"dup":130}],177:[function(require,module,exports){
 arguments[4][131][0].apply(exports,arguments)
-},{"_process":97,"dup":131}],176:[function(require,module,exports){
+},{"_process":97,"dup":131}],178:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42927,7 +43967,7 @@ _defineProperty(TinySmartScroller, "Utils", _objectSpread(_objectSpread({}, Tiny
 }));
 var _default = exports["default"] = TinySmartScroller;
 
-},{"../basics/collision.mjs":151,"./TinyEvents.mjs":169,"./TinyHtml.mjs":170}],177:[function(require,module,exports){
+},{"../basics/collision.mjs":151,"./TinyEvents.mjs":169,"./TinyHtml.mjs":170}],179:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43423,7 +44463,7 @@ var TinyTextRangeEditor = /*#__PURE__*/function () {
 }();
 var _default = exports["default"] = TinyTextRangeEditor;
 
-},{}],178:[function(require,module,exports){
+},{}],180:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -43640,9 +44680,9 @@ var TinyTimeout = /*#__PURE__*/function () {
 }();
 var _default = exports["default"] = TinyTimeout;
 
-},{}],179:[function(require,module,exports){
+},{}],181:[function(require,module,exports){
 arguments[4][132][0].apply(exports,arguments)
-},{"dup":132}],180:[function(require,module,exports){
+},{"dup":132}],182:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44404,7 +45444,7 @@ _defineProperty(UltraRandomMsgGen, "defaultAdjectives", defaultAdjectives);
 _defineProperty(UltraRandomMsgGen, "defaultTemplates", defaultTemplates);
 var _default = exports["default"] = UltraRandomMsgGen;
 
-},{}],181:[function(require,module,exports){
+},{}],183:[function(require,module,exports){
 (function (process){(function (){
 "use strict";
 
@@ -46568,6 +47608,6 @@ tippy.setDefaultProps({
 var _default = exports["default"] = tippy;
 
 }).call(this)}).call(this,require('_process'))
-},{"@popperjs/core":27,"_process":97}],182:[function(require,module,exports){
+},{"@popperjs/core":27,"_process":97}],184:[function(require,module,exports){
 module.exports=function(e){var r={};function t(n){if(r[n])return r[n].exports;var a=r[n]={i:n,l:!1,exports:{}};return e[n].call(a.exports,a,a.exports,t),a.l=!0,a.exports}return t.m=e,t.c=r,t.d=function(e,r,n){t.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:n})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,r){if(1&r&&(e=t(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(t.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var a in e)t.d(n,a,function(r){return e[r]}.bind(null,a));return n},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},t.p="",t(t.s=0)}([function(e,r,t){"use strict";t.r(r),t.d(r,"validateHTMLColorName",(function(){return l})),t.d(r,"validateHTMLColorSpecialName",(function(){return i})),t.d(r,"validateHTMLColorHex",(function(){return u})),t.d(r,"validateHTMLColorRgb",(function(){return g})),t.d(r,"validateHTMLColorHsl",(function(){return y})),t.d(r,"validateHTMLColorHwb",(function(){return L})),t.d(r,"validateHTMLColorLab",(function(){return S})),t.d(r,"validateHTMLColorLch",(function(){return m})),t.d(r,"validateHTMLColor",(function(){return G}));const n=e=>e&&"string"==typeof e,a=["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenrod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","DarkOrange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","Goldenrod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenrodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquamarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenrod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","RebeccaPurple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"],o=["currentColor","inherit","transparent"],l=e=>{let r=!1;return n(e)&&a.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},i=e=>{let r=!1;return n(e)&&o.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},u=e=>{if(n(e)){const r=/^#([\da-f]{3}){1,2}$|^#([\da-f]{4}){1,2}$/i;return e&&r.test(e)}return!1},d="(([\\d]{0,5})((\\.([\\d]{1,5}))?))",s=`(${d}%)`,c="(([0-9]|[1-9][0-9]|100)%)",f=`(${c}|(0?((\\.([\\d]{1,5}))?))|1)`,h=`([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?)([\\s]{1,5})${`(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?`}([\\s]{0,5})\\)`,$="(-?(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360)(deg)?)",g=e=>{if(n(e)){const r="([\\s]{0,5})([\\d]{1,5})%?([\\s]{0,5}),?",t="((([\\s]{0,5}),?([\\s]{0,5}))|(([\\s]{1,5})))",n=new RegExp(`^(rgb)a?\\(${`${r}${t}`}${`${r}${t}`}${`${r}${t}`}(${"(\\/?([\\s]{0,5})(0?\\.?([\\d]{1,5})%?([\\s]{0,5}))?|1|0)"})?\\)$`);return e&&n.test(e)}return!1},y=e=>{if(n(e)){const r=new RegExp(`^(hsl)a?\\((([\\s]{0,5})(${$}|${"(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-9][0-9]|400)grad)"}|${"((([0-5])?\\.([\\d]{1,5})|6\\.([0-9]|1[0-9]|2[0-8])|[0-6])rad)"}|${"((0?((\\.([\\d]{1,5}))?)|1)turn)"})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?|,?)([\\s]{0,5})(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?\\)$`);return e&&r.test(e)}return!1},L=e=>{if(n(e)){const r=new RegExp(`^(hwb\\(([\\s]{0,5})${$}([\\s]{1,5}))((0|${c})([\\s]{1,5}))((0|${c})${h}$`);return e&&r.test(e)}return!1},S=e=>{if(n(e)){const r="(-?(([0-9]|[1-9][0-9]|1[0-5][0-9])((\\.([\\d]{1,5}))?)?|160))",t=new RegExp(`^(lab\\(([\\s]{0,5})${s}([\\s]{1,5})${r}([\\s]{1,5})${r}${h}$`);return e&&t.test(e)}return!1},m=e=>{if(n(e)){const r="((([0-9]|[1-9][0-9])?((\\.([\\d]{1,5}))?)|100)(%)?)",t=""+d,n=`((${$})|(0|${f})|(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360))`,a=`(\\/([\\s]{0,5})${f})`,o=new RegExp(`^lch\\(${`(([\\s]{0,5})${r}([\\s]{1,5})${t}([\\s]{1,5})${n}([\\s]{0,5})(${a})?)`}\\)$`);return e&&o.test(e)}return!1},G=e=>!!(e&&u(e)||g(e)||y(e)||L(e)||S(e)||m(e));r.default=e=>!!(e&&u(e)||l(e)||i(e)||g(e)||y(e)||L(e)||S(e)||m(e))}]);
 },{}]},{},[1]);
