@@ -1435,8 +1435,7 @@ const AiScriptStart = (connStore) => {
             tinyCfg.data.border =
               tinyLs.getItem(`tiny-dice-border`) || '2px solid rgba(0, 0, 0, 0.05)';
             tinyCfg.data.selectionBg = tinyLs.getItem(`tiny-dice-selection-bg`) || 'black';
-            tinyCfg.data.selectionText =
-              tinyLs.getItem(`tiny-dice-selection-text`) || 'white';
+            tinyCfg.data.selectionText = tinyLs.getItem(`tiny-dice-selection-text`) || 'white';
           }
 
           // Form template

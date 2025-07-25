@@ -137,7 +137,7 @@ const storyCfg = {
         color4: '#5e5e5e'
     },
 
-    // NSFW Config (You can freely add as many NSFW filters as you like.)
+    // Mature Content Config (You can freely add as many NSFW filters as you like.)
     nsfw: {
         vore: {
             size: 12,

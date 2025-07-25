@@ -134,7 +134,7 @@ const storyDialogue = {
     }
   },
 
-  // NSFW Checker
+  // Mature Content Checker
   nsfwChecker: function (data) {
     if (Array.isArray(data.nsfw)) {
       let nsfwValue = false;
@@ -729,18 +729,18 @@ const openChapterMenu = (params = {}) => {
         .append(
           tinyLib.bs
             .button('info btn-sm ms-3')
-            .text('Choose Optional NSFW Content')
+            .text('Choose Optional Mature Content')
             .on('click', () => {
               // Nothing NSFW
               let existNSFW = false;
               let nsfwContent = $('<center>', {
                 class: 'm-3 small text-warning',
               }).text(
-                'No NSFW content was detected. It may be that soon some NSFW content will be added.',
+                'No mature content was detected. It may be that soon some mature content will be added.',
               );
               const nsfwList = [];
 
-              // Detect Fic NSFW
+              // Detect Fic Mature Content
               for (const fic in storyData.data) {
                 for (const item in storyData.data[fic]) {
                   if (storyData.data[fic][item].nsfw) {
@@ -750,7 +750,7 @@ const openChapterMenu = (params = {}) => {
                         const NSFWITEM = storyData.data[fic][item].nsfw[nsfwItem];
                         nsfwList.push(NSFWITEM);
 
-                        // Convert NSFW Content
+                        // Convert Mature Content
                         if (!existNSFW) {
                           nsfwContent = [];
                         }
@@ -758,12 +758,10 @@ const openChapterMenu = (params = {}) => {
                         // Exist Now
                         existNSFW = true;
 
-                        // Add NSFW Item
+                        // Add Mature Content Item
                         if (storyCfg.nsfw[NSFWITEM]) {
                           // Get Value
-                          let nsfwValue = TinyHtml.boolCheck(
-                            tinyLs.getItem('NSFW' + NSFWITEM),
-                          );
+                          let nsfwValue = TinyHtml.boolCheck(tinyLs.getItem('NSFW' + NSFWITEM));
 
                           // Set Button Text
                           let buttonClass = 'success';
@@ -825,7 +823,7 @@ const openChapterMenu = (params = {}) => {
                 }
               }
 
-              // NSFW Item
+              // Mature Content Item
               const nsfwDIV = $('<div>');
               nsfwDIV.append(nsfwContent);
               if (existNSFW) {
@@ -834,10 +832,10 @@ const openChapterMenu = (params = {}) => {
 
               // Modal
               tinyLib.modal({
-                title: [tinyLib.icon('fas fa-eye me-3'), 'NSFW Settings'],
+                title: [tinyLib.icon('fas fa-eye me-3'), 'Mature Content Settings'],
                 body: $('<center>').append(
                   $('<p>', { class: 'text-danger' }).text(
-                    "Don't expect fantastic +18 stuff here. The NSFW content will not try to be explicit, and it is only used to enrich the content of the fic (example: bring more realistic scenes). By activating these settings, you agree that you are responsible for the content you consume and that you are over 18 years old!",
+                    "Don't expect fantastic +18 stuff here. The mature content will not try to be explicit, and it is only used to enrich the content of the fic (example: bring more realistic scenes). By activating these settings, you agree that you are responsible for the content you consume and that you are over 18 years old!",
                   ),
                   nsfwDIV,
                 ),
