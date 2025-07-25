@@ -141,18 +141,21 @@ const storyCfg = {
     nsfw: {
         vore: {
             size: 12,
+            aiMsg: true,
             name: 'Vore',
-            description: 'The scale of this content is small or medium. The vore parts is more related to the characters that make sense of this type of behavior. You are responsible that you will accept seeing possible sinister or uncomfortable scenes for some specific audiences. Disabling it will not interfere with the main story. The censored version will just skip these parts, warning what happened, focusing only on the useful information for the reader to understand the story. But maybe you\'ll skip some extra canonical infos.'
+            description: 'The scale of this content is small to medium. The vore elements are tied to characters for whom this behavior makes narrative sense. By continuing, you acknowledge that you may encounter scenes some audiences could find unsettling or eerie. Disabling this content will not affect the main story. The censored version will simply skip these parts with a brief summary, focusing on essential information for understanding the plot — though some optional canonical details may be missed.'
         },
         questionable: {
             size: 6,
+            aiMsg: true,
             name: 'Questionable',
-            description: 'The scale of this content is small, there\'s nothing sexually explicit inside story, but the questionable content is present in some quick scenes. Disabling this option will make you skip optional scenes or see some censored dialogues.'
+            description: 'The scale of this content is small. There is no sexually explicit material in the story, but some brief scenes may include questionable content. Disabling this option will skip optional scenes or display censored dialogue instead.'
         },
         extreme_violence: {
             size: 6,
+            aiMsg: true,
             name: 'Extreme Violence',
-            description: 'The details of some battle scenes can be uncomfortable or can cause nausea in some readers. By disabling this option you will decrease the level of violence in the story. Activate at your own risk, I will not be responsible for your decisions.'
+            description: 'Some battle scenes may contain details that are uncomfortable or potentially nauseating for some readers. Disabling this option will reduce the level of violence in the story. Enable at your own risk — I am not responsible for your choices.'
         }
     },
 
