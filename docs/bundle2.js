@@ -33745,7 +33745,7 @@ var TinyDragger = /*#__PURE__*/function () {
     _classPrivateFieldInitSpec(this, _defaultZIndex, 9999);
     /** @type {HTMLElement[]} */
     _classPrivateFieldInitSpec(this, _collisionsMarked, []);
-    var targetElem = !(targetElement instanceof _TinyHtml["default"]) ? targetElement : targetElement.get();
+    var targetElem = !(targetElement instanceof _TinyHtml["default"]) ? targetElement : targetElement.get(0);
     if (!(targetElem instanceof HTMLElement)) throw new Error('TinyDragger requires a valid target HTMLElement to initialize.');
     _classPrivateFieldSet(_target, this, targetElem);
     // === Validations ===
@@ -35019,13 +35019,13 @@ function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbol
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
 function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
 function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
@@ -35244,7 +35244,7 @@ var TinyHtml = /*#__PURE__*/function () {
   /**
    * Creates an instance of TinyHtml for a specific Element.
    * Useful when you want to operate repeatedly on the same element using instance methods.
-   * @param {ConstructorElValues} el - The element to wrap and manipulate.
+   * @param {ConstructorElValues|ConstructorElValues[]|NodeListOf<Element>|HTMLCollectionOf<Element>|NodeListOf<HTMLElement>} el - The element to wrap and manipulate.
    */
   function TinyHtml(el) {
     _classCallCheck(this, TinyHtml);
@@ -35254,12 +35254,29 @@ var TinyHtml = /*#__PURE__*/function () {
     //////////////////////////////////////////////////////
     /**
      * The target HTML element for instance-level operations.
-     * @type {ConstructorElValues}
+     * @type {ConstructorElValues[]}
      */
     _classPrivateFieldInitSpec(this, _el, void 0);
     if (el instanceof TinyHtml) throw new Error("[TinyHtml] You are trying to put a TinyHtml inside another TinyHtml in constructor.");
-    if (!(el instanceof Element) && !(el instanceof Window) && !(el instanceof Document) && !(el instanceof Text)) throw new Error("[TinyHtml] Invalid Target in constructor.");
-    _classPrivateFieldSet(_el, this, el);
+    /** @param {any[]} els */
+    var elCheck = function elCheck(els) {
+      if (!els.every(function (el) {
+        return el instanceof Element || el instanceof Window || el instanceof Document || el instanceof Text;
+      })) throw new Error("[TinyHtml] Invalid Target in constructor.");
+    };
+    if (Array.isArray(el)) {
+      elCheck(el);
+      _classPrivateFieldSet(_el, this, el);
+    } else if (el instanceof NodeList || el instanceof HTMLCollection) {
+      var els = _toConsumableArray(el);
+      elCheck(els);
+      _classPrivateFieldSet(_el, this, els);
+    } else {
+      var _els = [el];
+      elCheck(_els);
+      // @ts-ignore
+      _classPrivateFieldSet(_el, this, _els);
+    }
   }
   /**
    * Checks whether the given object is a window.
@@ -35283,7 +35300,7 @@ var TinyHtml = /*#__PURE__*/function () {
      *
      * @param {string} selector - A valid CSS selector string.
      * @param {Document|Element} elem - Target element.
-     * @returns {TinyHtml[]} An array of TinyHtml instances wrapping the matched elements.
+     * @returns {TinyHtml} An array of TinyHtml instances wrapping the matched elements.
      */
   }, {
     key: "querySelectorAll",
@@ -35292,7 +35309,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Queries the element for all elements matching the CSS selector and wraps them in TinyHtml instances.
      *
      * @param {string} selector - A valid CSS selector string.
-     * @returns {TinyHtml[]} An array of TinyHtml instances wrapping the matched elements.
+     * @returns {TinyHtml} An array of TinyHtml instances wrapping the matched elements.
      */
     function querySelectorAll(selector) {
       return TinyHtml.queryAll(selector, TinyHtml._preElem(this, 'queryAll'));
@@ -35310,7 +35327,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Retrieves all elements with the specified class name and wraps them in TinyHtml instances.
      *
      * @param {string} selector - The class name to search for.
-     * @returns {TinyHtml[]} An array of TinyHtml instances wrapping the found elements.
+     * @returns {TinyHtml} An array of TinyHtml instances wrapping the found elements.
      */
     function getElementsByClassName(selector) {
       return TinyHtml.getByClassName(selector, TinyHtml._preElem(this, 'getByClassName'));
@@ -35319,7 +35336,7 @@ var TinyHtml = /*#__PURE__*/function () {
      * Retrieves all elements with the specified name attribute and wraps them in TinyHtml instances.
      *
      * @param {string} selector - The name attribute to search for.
-     * @returns {TinyHtml[]} An array of TinyHtml instances wrapping the found elements.
+     * @returns {TinyHtml} An array of TinyHtml instances wrapping the found elements.
      */
   }, {
     key: "getElementsByTagNameNS",
@@ -35330,7 +35347,7 @@ var TinyHtml = /*#__PURE__*/function () {
      *
      * @param {string} localName - The local name (tag) of the elements to search for.
      * @param {string|null} [namespaceURI='http://www.w3.org/1999/xhtml'] - The namespace URI to search within.
-     * @returns {TinyHtml[]} An array of TinyHtml instances wrapping the found elements.
+     * @returns {TinyHtml} An array of TinyHtml instances wrapping the found elements.
      */
     function getElementsByTagNameNS(localName) {
       var namespaceURI = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'http://www.w3.org/1999/xhtml';
@@ -35340,33 +35357,91 @@ var TinyHtml = /*#__PURE__*/function () {
     /**
      * Returns the current target held by this instance.
      *
+     * @param {number} index - The index of the element to retrieve.
      * @returns {ConstructorElValues} - The instance's target element.
      */
   }, {
     key: "get",
-    value: function get() {
-      return _classPrivateFieldGet(_el, this);
+    value: function get(index) {
+      if (typeof index !== 'number') throw new TypeError('The index must be a number.');
+      if (!_classPrivateFieldGet(_el, this)[index]) throw new Error("No element found at index ".concat(index, "."));
+      return _classPrivateFieldGet(_el, this)[index];
+    }
+    /**
+     * Extracts a single DOM element from the internal list at the specified index.
+     *
+     * @param {number} index - The index of the element to extract.
+     * @returns {TinyHtml} A new TinyHtml instance wrapping the extracted element.
+     */
+  }, {
+    key: "extract",
+    value: function extract(index) {
+      if (typeof index !== 'number') throw new TypeError('The index must be a number.');
+      if (!_classPrivateFieldGet(_el, this)[index]) throw new Error("Cannot extract: no element exists at index ".concat(index, "."));
+      return new TinyHtml(_classPrivateFieldGet(_el, this)[index]);
+    }
+    /**
+     * Checks whether the element exists at the given index.
+     *
+     * @param {number} index - The index to check.
+     * @returns {boolean} - True if the element exists; otherwise, false.
+     */
+  }, {
+    key: "exists",
+    value: function exists(index) {
+      if (typeof index !== 'number') throw new TypeError('The index must be a number.');
+      if (!_classPrivateFieldGet(_el, this)[index]) return false;
+      return true;
+    }
+    /**
+     * Returns the current targets held by this instance.
+     *
+     * @returns {ConstructorElValues[]} - The instance's targets element.
+     */
+  }, {
+    key: "getAll",
+    value: function getAll() {
+      return _toConsumableArray(_classPrivateFieldGet(_el, this));
     }
     /**
      * Returns the current Element held by this instance.
      *
      * @param {string} where - The method name or context calling this.
+     * @param {number} index - The index of the element to retrieve.
      * @returns {ConstructorElValues} - The instance's element.
      * @readonly
      */
   }, {
     key: "_getElement",
-    value: function _getElement(where) {
-      if (!(_classPrivateFieldGet(_el, this) instanceof Element) && !(_classPrivateFieldGet(_el, this) instanceof Window) && !(_classPrivateFieldGet(_el, this) instanceof Document)) throw new Error("[TinyHtml] Invalid Element in ".concat(where, "()."));
-      return _classPrivateFieldGet(_el, this);
+    value: function _getElement(where, index) {
+      if (!(_classPrivateFieldGet(_el, this)[index] instanceof Element) && !(_classPrivateFieldGet(_el, this)[index] instanceof Window) && !(_classPrivateFieldGet(_el, this)[index] instanceof Document)) throw new Error("[TinyHtml] Invalid Element in ".concat(where, "()."));
+      return _classPrivateFieldGet(_el, this)[index];
+    }
+    /**
+     * Returns the current Elements held by this instance.
+     *
+     * @param {string} where - The method name or context calling this.
+     * @returns {ConstructorElValues[]} - The instance's elements.
+     * @readonly
+     */
+  }, {
+    key: "_getElements",
+    value: function _getElements(where) {
+      if (!_classPrivateFieldGet(_el, this).every(function (el) {
+        return el instanceof Element || el instanceof Window || el instanceof Document;
+      })) throw new Error("[TinyHtml] Invalid Element in ".concat(where, "()."));
+      return _toConsumableArray(_classPrivateFieldGet(_el, this));
     }
     //////////////////////////////////////////////////////
     /**
-     * @param {TinyElement|EventTarget|null|(TinyElement|EventTarget|null)[]} elems
-     * @param {string} where
-     * @param {any[]} TheTinyElements
-     * @param {string[]} elemName
-     * @returns {any[]}
+     * Prepares and validates multiple elements against allowed types.
+     *
+     * @param {TinyElement | EventTarget | null | (TinyElement | EventTarget | null)[]} elems - The input elements to validate.
+     * @param {string} where - The method name or context calling this.
+     * @param {any[]} TheTinyElements - The list of allowed constructors (e.g., Element, Document).
+     * @param {string[]} elemName - The list of expected element names for error reporting.
+     * @returns {any[]} - A flat array of validated elements.
+     * @throws {Error} - If any element is not an instance of one of the allowed types.
      * @readonly
      */
   }, {
@@ -37237,8 +37312,14 @@ var TinyHtml = /*#__PURE__*/function () {
     }
     ///////////////////////////////////////////////////////////////
     /**
-     * Property name normalization similar to jQuery's propFix.
-     * @readonly
+     * Internal property name normalization map (similar to jQuery's `propFix`).
+     * Maps attribute-like names to their JavaScript DOM property equivalents.
+     *
+     * Example: `'for'` ➝ `'htmlFor'`, `'class'` ➝ `'className'`.
+     *
+     * ⚠️ Do not modify this object directly. Use `TinyHtml.propFix` to ensure reverse mapping (`attrFix`) remains in sync.
+     *
+     * @type {Record<string | symbol, string>}
      */
   }, {
     key: "attr",
@@ -37638,17 +37719,45 @@ var TinyHtml = /*#__PURE__*/function () {
       return TinyHtml.hasScroll(this);
     }
   }], [{
-    key: "createElement",
+    key: "createFrom",
     value:
+    /**
+     * Creates a new TinyHtml element from a tag name and optional attributes.
+     *
+     * You can alias this method for convenience:
+     * ```js
+     * const createElement = TinyHtml.createFrom;
+     * const myDiv = createElement('div', { class: 'box' });
+     * ```
+     *
+     * @param {string} tagName - The HTML tag name (e.g., 'div', 'span', 'button').
+     * @param {Record<string, string|null>} [attrs] - Optional key-value pairs representing HTML attributes.
+     *                                                If the value is `null`, the attribute will still be set with an empty value.
+     * @returns {TinyHtml} - A new instance of TinyHtml representing the created element.
+     * @throws {TypeError} - If `tagName` is not a string, or `attrs` is not a plain object when defined.
+     */
+    function createFrom(tagName, attrs) {
+      if (typeof tagName !== 'string') throw new TypeError('The "tagName" must be a string.');
+      if (typeof attrs !== 'undefined' && _typeof(attrs) !== 'object') throw new TypeError('The "attrs" must be a object.');
+      var elem = TinyHtml.createElement(tagName);
+      if (_typeof(attrs) === 'object') {
+        for (var attrName in attrs) {
+          elem.setAttr(attrName, attrs[attrName]);
+        }
+      }
+      return elem;
+    }
     /**
      * Creates a new DOM element with the specified tag name and options, then wraps it in a TinyHtml instance.
      *
      * @param {string} tagName - The tag name of the element to create (e.g., 'div', 'span').
-     * @param {ElementCreationOptions} ops - Optional settings for creating the element.
+     * @param {ElementCreationOptions} [ops] - Optional settings for creating the element.
      * @returns {TinyHtml} A TinyHtml instance wrapping the newly created DOM element.
      * @throws {TypeError} If tagName is not a string or ops is not an object.
      */
-    function createElement(tagName, ops) {
+  }, {
+    key: "createElement",
+    value: function createElement(tagName, ops) {
       if (typeof tagName !== 'string') throw new TypeError("[TinyHtml] createElement(): The tagName must be a string.");
       if (typeof ops !== 'undefined' && _typeof(ops) !== 'object') throw new TypeError("[TinyHtml] createElement(): The ops must be a object.");
       return new TinyHtml(document.createElement(tagName, ops));
@@ -37687,7 +37796,7 @@ var TinyHtml = /*#__PURE__*/function () {
         return TinyHtml.createTextNode(htmlString);
       }
       template.innerHTML = htmlString;
-      if (!(template.content.firstChild instanceof Element)) throw new Error('');
+      if (!(template.content.firstChild instanceof Element)) throw new Error('The HTML string must contain a valid HTML element.');
       return new TinyHtml(template.content.firstChild);
     }
     /**
@@ -37709,8 +37818,7 @@ var TinyHtml = /*#__PURE__*/function () {
     key: "queryAll",
     value: function queryAll(selector) {
       var elem = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
-      var newEls = elem.querySelectorAll(selector);
-      return TinyHtml.toTinyElm(_toConsumableArray(newEls));
+      return new TinyHtml(elem.querySelectorAll(selector));
     }
   }, {
     key: "getById",
@@ -37724,20 +37832,18 @@ var TinyHtml = /*#__PURE__*/function () {
      *
      * @param {string} selector - The class name to search for.
      * @param {Document|Element} elem - Target element.
-     * @returns {TinyHtml[]} An array of TinyHtml instances wrapping the found elements.
+     * @returns {TinyHtml} An array of TinyHtml instances wrapping the found elements.
      */
   }, {
     key: "getByClassName",
     value: function getByClassName(selector) {
       var elem = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
-      var newEls = elem.getElementsByClassName(selector);
-      return TinyHtml.toTinyElm(_toConsumableArray(newEls));
+      return new TinyHtml(elem.getElementsByClassName(selector));
     }
   }, {
     key: "getByName",
     value: function getByName(selector) {
-      var newEls = document.getElementsByName(selector);
-      return TinyHtml.toTinyElm(_toConsumableArray(newEls));
+      return new TinyHtml(document.getElementsByName(selector));
     }
     /**
      * Retrieves all elements with the specified local tag name within the given namespace URI,
@@ -37746,53 +37852,60 @@ var TinyHtml = /*#__PURE__*/function () {
      * @param {string} localName - The local name (tag) of the elements to search for.
      * @param {string|null} [namespaceURI='http://www.w3.org/1999/xhtml'] - The namespace URI to search within.
      * @param {Document|Element} elem - Target element.
-     * @returns {TinyHtml[]} An array of TinyHtml instances wrapping the found elements.
+     * @returns {TinyHtml} An array of TinyHtml instances wrapping the found elements.
      */
   }, {
     key: "getByTagNameNS",
     value: function getByTagNameNS(localName) {
       var namespaceURI = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'http://www.w3.org/1999/xhtml';
       var elem = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : document;
-      var newEls = elem.getElementsByTagNameNS(namespaceURI, localName);
-      return TinyHtml.toTinyElm(_toConsumableArray(newEls));
+      return new TinyHtml(elem.getElementsByTagNameNS(namespaceURI, localName));
     }
   }, {
     key: "_preElemsTemplate",
     value: function _preElemsTemplate(elems, where, TheTinyElements, elemName) {
       /** @param {(TinyElement|EventTarget|null)[]} item */
       var checkElement = function checkElement(item) {
-        return item.map(function (elem) {
-          var result = elem instanceof TinyHtml ? elem._getElement(where) : elem;
-          var allowed = false;
-          var _iterator = _createForOfIteratorHelper(TheTinyElements),
-            _step;
-          try {
-            for (_iterator.s(); !(_step = _iterator.n()).done;) {
-              var TheTinyElement = _step.value;
-              if (result instanceof TheTinyElement) {
-                allowed = true;
-                break;
+        /** @type {any[]} */
+        var results = [];
+        item.map(function (elem) {
+          return (elem instanceof TinyHtml ? elem._getElements(where) : [elem]).map(function (result) {
+            var allowed = false;
+            var _iterator = _createForOfIteratorHelper(TheTinyElements),
+              _step;
+            try {
+              for (_iterator.s(); !(_step = _iterator.n()).done;) {
+                var TheTinyElement = _step.value;
+                if (result instanceof TheTinyElement) {
+                  allowed = true;
+                  break;
+                }
               }
+            } catch (err) {
+              _iterator.e(err);
+            } finally {
+              _iterator.f();
             }
-          } catch (err) {
-            _iterator.e(err);
-          } finally {
-            _iterator.f();
-          }
-          if (!allowed) throw new Error("[TinyHtml] Invalid element of the list \"".concat(elemName.join(','), "\" in ").concat(where, "()."));
-          return result;
+            if (!allowed) throw new Error("[TinyHtml] Invalid element of the list \"".concat(elemName.join(','), "\" in ").concat(where, "()."));
+            results.push(result);
+            return result;
+          });
         });
+        return results;
       };
       if (!Array.isArray(elems)) return checkElement([elems]);
       return checkElement(elems);
     }
     /**
-     * @param {TinyElement|EventTarget|null|(TinyElement|EventTarget|null)[]} elems
-     * @param {string} where
-     * @param {any[]} TheTinyElements
-     * @param {string[]} elemName
-     * @param {boolean} [canNull=false]
-     * @returns {any}
+     * Prepares and validates a single element against allowed types.
+     *
+     * @param {TinyElement | EventTarget | null | (TinyElement | EventTarget | null)[]} elems - The input element or list to validate.
+     * @param {string} where - The method name or context calling this.
+     * @param {any[]} TheTinyElements - The list of allowed constructors (e.g., Element, Document).
+     * @param {string[]} elemName - The list of expected element names for error reporting.
+     * @param {boolean} [canNull=false] - Whether `null` is allowed as a valid value.
+     * @returns {any} - The validated element or `null` if allowed.
+     * @throws {Error} - If the element is not valid or if multiple elements are provided.
      * @readonly
      */
   }, {
@@ -37802,14 +37915,15 @@ var TinyHtml = /*#__PURE__*/function () {
       /** @param {(TinyElement|EventTarget|null)[]} item */
       var checkElement = function checkElement(item) {
         var elem = item[0];
-        var result = elem instanceof TinyHtml ? elem._getElement(where) : elem;
+        var result = elem instanceof TinyHtml ? elem._getElements(where) : [elem];
+        if (result.length > 1) throw new Error("[TinyHtml] Invalid element amount in ".concat(where, "() (Received ").concat(result.length, "/1)."));
         var allowed = false;
         var _iterator2 = _createForOfIteratorHelper(TheTinyElements),
           _step2;
         try {
           for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
             var TheTinyElement = _step2.value;
-            if (result instanceof TheTinyElement) {
+            if (result[0] instanceof TheTinyElement) {
               allowed = true;
               break;
             }
@@ -37819,12 +37933,12 @@ var TinyHtml = /*#__PURE__*/function () {
         } finally {
           _iterator2.f();
         }
-        if (canNull && (result === null || typeof result === 'undefined')) {
-          result = null;
+        if (canNull && (result[0] === null || typeof result[0] === 'undefined')) {
+          result[0] = null;
           allowed = true;
         }
         if (!allowed) throw new Error("[TinyHtml] Invalid element of the list \"".concat(elemName.join(','), "\" in ").concat(where, "()."));
-        return result;
+        return result[0];
       };
       if (!Array.isArray(elems)) return checkElement([elems]);
       if (elems.length > 1) throw new Error("[TinyHtml] Invalid element amount in ".concat(where, "() (Received ").concat(elems.length, "/1)."));
@@ -38119,9 +38233,14 @@ var TinyHtml = /*#__PURE__*/function () {
     value: function fromTinyElm(elems) {
       /** @param {TinyElement[]} item */
       var checkElement = function checkElement(item) {
-        return item.map(function (elem) {
-          return /** @type {Element} */elem instanceof TinyHtml ? elem._getElement('fromTinyElm') : elem;
+        /** @type {Element[]} */
+        var result = [];
+        item.map(function (elem) {
+          return /** @type {Element[]} */(elem instanceof TinyHtml ? elem._getElements('fromTinyElm') : [elem]).map(function (elem) {
+            return result.push(elem);
+          });
         });
+        return result;
       };
       if (!Array.isArray(elems)) return checkElement([elems]);
       return checkElement(elems);
@@ -38543,7 +38662,7 @@ var TinyHtml = /*#__PURE__*/function () {
       var elem = TinyHtml._preNodeElem(el, 'insertBefore');
       var targ = TinyHtml._preNodeElem(target, 'insertBefore');
       var childNode = TinyHtml._preNodeElemWithNull(child, 'insertBefore');
-      if (!targ.parentNode) throw new Error('');
+      if (!targ.parentNode) throw new Error('The target element has no parent node to insert before.');
       targ.parentNode.insertBefore(elem, childNode || targ);
       return el;
     }
@@ -38554,7 +38673,7 @@ var TinyHtml = /*#__PURE__*/function () {
       var elem = TinyHtml._preNodeElem(el, 'insertAfter');
       var targ = TinyHtml._preNodeElem(target, 'insertBefore');
       var childNode = TinyHtml._preNodeElemWithNull(child, 'insertBefore');
-      if (!targ.parentNode) throw new Error('');
+      if (!targ.parentNode) throw new Error('The target element has no parent node to insert after.');
       targ.parentNode.insertBefore(elem, childNode || targ.nextSibling);
       return el;
     }
@@ -39481,7 +39600,7 @@ var TinyHtml = /*#__PURE__*/function () {
     function _getValByType(elem, type, where) {
       if (typeof type !== 'string') throw new TypeError('The "type" must be a string.');
       if (typeof where !== 'string') throw new TypeError('The "where" must be a string.');
-      if (!(elem instanceof HTMLInputElement)) throw new Error("Provided element is not an HTMLInputElement in ".concat(where, "()."));
+      if (!(elem instanceof HTMLInputElement) && !(elem instanceof HTMLTextAreaElement)) throw new Error("Provided element is not an HTMLInputElement in ".concat(where, "()."));
       if (typeof TinyHtml._valTypes[type] !== 'function') throw new Error("No handler found for type \"".concat(type, "\" in ").concat(where, "()."));
       // @ts-ignore
       return TinyHtml._valTypes[type](elem);
@@ -39742,18 +39861,50 @@ var TinyHtml = /*#__PURE__*/function () {
       return el;
     }
   }, {
-    key: "attr",
+    key: "getPropName",
     value:
+    /**
+     * Normalizes an attribute name to its corresponding DOM property name.
+     *
+     * Example: `'class'` ➝ `'className'`, `'for'` ➝ `'htmlFor'`.
+     * If the name is not mapped, it returns the original name.
+     *
+     * @param {string} name - The attribute name to normalize.
+     * @returns {string} - The corresponding property name.
+     */
+    function getPropName(name) {
+      // @ts-ignore
+      var propName = typeof TinyHtml.propFix[name] === 'string' ? TinyHtml.propFix[name] : name;
+      return propName;
+    }
+    /**
+     * Converts a DOM property name back to its corresponding attribute name.
+     *
+     * Example: `'className'` ➝ `'class'`, `'htmlFor'` ➝ `'for'`.
+     * If the name is not mapped, it returns the original name.
+     *
+     * @param {string} name - The property name to convert.
+     * @returns {string} - The corresponding attribute name.
+     */
+  }, {
+    key: "getAttrName",
+    value: function getAttrName(name) {
+      // @ts-ignore
+      var propName = typeof TinyHtml.attrFix[name] === 'string' ? TinyHtml.attrFix[name] : name;
+      return propName;
+    }
     /**
      * Get an attribute on an element.
      * @param {TinyElement} el
      * @param {string} name
      * @returns {string|null}
      */
-    function attr(el, name) {
+  }, {
+    key: "attr",
+    value: function attr(el, name) {
       if (typeof name !== 'string') throw new TypeError('The "name" must be a string.');
       var elem = TinyHtml._preElem(el, 'attr');
-      return elem.getAttribute(name);
+      return elem.getAttribute(TinyHtml.getAttrName(name));
     }
   }, {
     key: "setAttr",
@@ -39762,7 +39913,7 @@ var TinyHtml = /*#__PURE__*/function () {
       if (typeof name !== 'string') throw new TypeError('The "name" must be a string.');
       if (value !== null && typeof value !== 'string') throw new TypeError('The "value" must be a string.');
       TinyHtml._preElems(el, 'setAttr').forEach(function (elem) {
-        if (value === null) elem.removeAttribute(name);else elem.setAttribute(name, value);
+        if (value === null) elem.removeAttribute(TinyHtml.getAttrName(name));else elem.setAttribute(TinyHtml.getAttrName(name), value);
       });
       return el;
     }
@@ -39771,7 +39922,7 @@ var TinyHtml = /*#__PURE__*/function () {
     value: function removeAttr(el, name) {
       if (typeof name !== 'string') throw new TypeError('The "name" must be a string.');
       TinyHtml._preElems(el, 'removeAttr').forEach(function (elem) {
-        return elem.removeAttribute(name);
+        return elem.removeAttribute(TinyHtml.getAttrName(name));
       });
       return el;
     }
@@ -39780,7 +39931,7 @@ var TinyHtml = /*#__PURE__*/function () {
     value: function hasAttr(el, name) {
       if (typeof name !== 'string') throw new TypeError('The "name" must be a string.');
       var elem = TinyHtml._preElem(el, 'hasAttr');
-      return elem.hasAttribute(name);
+      return elem.hasAttribute(TinyHtml.getAttrName(name));
     }
   }, {
     key: "hasProp",
@@ -39788,9 +39939,7 @@ var TinyHtml = /*#__PURE__*/function () {
       if (typeof name !== 'string') throw new TypeError('The "name" must be a string.');
       var elem = TinyHtml._preElem(el, 'hasProp');
       // @ts-ignore
-      var propName = TinyHtml._propFix[name] || name;
-      // @ts-ignore
-      return !!elem[propName];
+      return !!elem[TinyHtml.getPropName(name)];
     }
   }, {
     key: "addProp",
@@ -39798,9 +39947,7 @@ var TinyHtml = /*#__PURE__*/function () {
       if (typeof name !== 'string') throw new TypeError('The "name" must be a string.');
       TinyHtml._preElems(el, 'addProp').forEach(function (elem) {
         // @ts-ignore
-        name = TinyHtml._propFix[name] || name;
-        // @ts-ignore
-        elem[name] = true;
+        elem[TinyHtml.getPropName(name)] = true;
       });
       return el;
     }
@@ -39810,9 +39957,7 @@ var TinyHtml = /*#__PURE__*/function () {
       if (typeof name !== 'string') throw new TypeError('The "name" must be a string.');
       TinyHtml._preElems(el, 'removeProp').forEach(function (elem) {
         // @ts-ignore
-        name = TinyHtml._propFix[name] || name;
-        // @ts-ignore
-        elem[name] = false;
+        elem[TinyHtml.getPropName(name)] = false;
       });
       return el;
     }
@@ -39823,9 +39968,7 @@ var TinyHtml = /*#__PURE__*/function () {
       if (typeof force !== 'undefined' && typeof force !== 'boolean') throw new TypeError('The "force" must be a boolean.');
       TinyHtml._preElems(el, 'toggleProp').forEach(function (elem) {
         // @ts-ignore
-        var propName = TinyHtml._propFix[name] || name;
-        // @ts-ignore
-        var shouldEnable = force === undefined ? !elem[propName] : force;
+        var shouldEnable = force === undefined ? !elem[TinyHtml.getPropName(name)] : force;
         // @ts-ignore
         if (shouldEnable) TinyHtml.addProp(elem, name);else TinyHtml.removeProp(elem, name);
       });
@@ -39877,7 +40020,7 @@ var TinyHtml = /*#__PURE__*/function () {
           // @ts-ignore
           result[name] = rect[name];
       }
-      if (_typeof(extraRect) !== 'object' || extraRect === null || Array.isArray(extraRect)) throw new Error('');
+      if (_typeof(extraRect) !== 'object' || extraRect === null || Array.isArray(extraRect)) throw new Error('extraRect must be a non-null object.');
       var _extraRect$height = extraRect.height,
         height = _extraRect$height === void 0 ? 0 : _extraRect$height,
         _extraRect$width = extraRect.width,
@@ -39890,12 +40033,12 @@ var TinyHtml = /*#__PURE__*/function () {
         left = _extraRect$left === void 0 ? 0 : _extraRect$left,
         _extraRect$right = extraRect.right,
         right = _extraRect$right === void 0 ? 0 : _extraRect$right;
-      if (typeof height !== 'number') throw new Error('');
-      if (typeof width !== 'number') throw new Error('');
-      if (typeof top !== 'number') throw new Error('');
-      if (typeof bottom !== 'number') throw new Error('');
-      if (typeof left !== 'number') throw new Error('');
-      if (typeof right !== 'number') throw new Error('');
+      if (typeof height !== 'number') throw new Error('extraRect.height must be a number.');
+      if (typeof width !== 'number') throw new Error('extraRect.width must be a number.');
+      if (typeof top !== 'number') throw new Error('extraRect.top must be a number.');
+      if (typeof bottom !== 'number') throw new Error('extraRect.bottom must be a number.');
+      if (typeof left !== 'number') throw new Error('extraRect.left must be a number.');
+      if (typeof right !== 'number') throw new Error('extraRect.right must be a number.');
       // @ts-ignore
       result.height += height;
       // @ts-ignore
@@ -40361,7 +40504,13 @@ var _cssPropAliases = {
     msTransition: '-ms-transition'
   }
 };
-/** @type {Record<string | symbol, string>} */
+/**
+ * Public proxy to manage camelCase ➝ kebab-case CSS property aliasing.
+ *
+ * Modifying this object ensures that the reverse mapping in `cssPropRevAliases` is updated accordingly.
+ *
+ * @type {Record<string | symbol, string>}
+ */
 _defineProperty(TinyHtml, "cssPropAliases", new Proxy(_cssPropAliases._, {
   set: function set(target, camelCaseKey, kebabValue) {
     target[camelCaseKey] = kebabValue;
@@ -40370,7 +40519,13 @@ _defineProperty(TinyHtml, "cssPropAliases", new Proxy(_cssPropAliases._, {
     return true;
   }
 }));
-/** @type {Record<string | symbol, string>} */
+/**
+ * Reverse map of `cssPropAliases`, mapping kebab-case back to camelCase CSS property names.
+ *
+ * This enables consistent bidirectional lookups of style properties.
+ *
+ * @type {Record<string | symbol, string>}
+ */
 _defineProperty(TinyHtml, "cssPropRevAliases", Object.fromEntries(Object.entries(_cssPropAliases._).map(function (_ref6) {
   var _ref7 = _slicedToArray(_ref6, 2),
     camel = _ref7[0],
@@ -40531,10 +40686,40 @@ _defineProperty(TinyHtml, "_valTypes", {
     return elem.valueAsNumber;
   }
 });
-_defineProperty(TinyHtml, "_propFix", {
-  "for": 'htmlFor',
-  "class": 'className'
-});
+var _propFix = {
+  _: {
+    "for": 'htmlFor',
+    "class": 'className'
+  }
+};
+/**
+ * Public proxy for normalized DOM property names.
+ *
+ * Setting a new entry here will also automatically update the reverse map in `TinyHtml.attrFix`.
+ *
+ * @type {Record<string | symbol, string>}
+ */
+_defineProperty(TinyHtml, "propFix", new Proxy(_propFix._, {
+  set: function set(target, val1, val2) {
+    target[val1] = val2;
+    // @ts-ignore
+    _TinyHtml.attrFix[val2] = val1;
+    return true;
+  }
+}));
+/**
+ * Reverse map of `propFix`, mapping property names back to their attribute equivalents.
+ *
+ * Used when converting DOM property names into HTML attribute names.
+ *
+ * @type {Record<string | symbol, string>}
+ */
+_defineProperty(TinyHtml, "attrFix", Object.fromEntries(Object.entries(_propFix._).map(function (_ref8) {
+  var _ref9 = _slicedToArray(_ref8, 2),
+    val1 = _ref9[0],
+    val2 = _ref9[1];
+  return [val2, val1];
+})));
 var _default = exports["default"] = TinyHtml;
 
 },{"../basics/collision.mjs":152}],172:[function(require,module,exports){
