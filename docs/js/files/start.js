@@ -672,7 +672,7 @@ const clearFicData = function () {
 };
 
 // Open MD File
-const openMDFile = function (url, isMain = false) {
+const openMDFile = async (url, isMain = false) => {
   if (typeof url === 'string') {
     // Remove Fic Data
     clearFicData();
@@ -684,76 +684,73 @@ const openMDFile = function (url, isMain = false) {
       circleLoader.start();
 
       // Load ajax
-      $.ajax({
-        url: `${url.startsWith('/') ? url : `/${url}`}${fileVersion}`,
-        type: 'get',
+      const fileData = await fetch(`${url.startsWith('/') ? url : `/${url}`}${fileVersion}`, {
+        method: 'GET',
         dataType: 'text',
       })
-        // Complete
-        .done(function (fileData) {
-          try {
-            // Get metadata
-            const fileLines = tinyLib.mdManager.removeMetadata(fileData);
-            const md = tinyLib.mdManager.extractMetadata(fileData);
-            const title = md.title;
-
-            // Prepare metadata (script created by ChatGPT)
-            const metadata = {};
-            const githubRegex = tinyLib.getGitUrlPath('{url}docs\\/');
-            for (const key in md) {
-              const match = key.match(/^([^_]+)(?:_(\d+))+/);
-              if (match) {
-                const name = match[1];
-                const indices = match[0].split('_').slice(1).map(Number);
-
-                if (!metadata[name]) {
-                  metadata[name] = [];
-                }
-
-                let currentLevel = metadata[name];
-                for (let i = 0; i < indices.length - 1; i++) {
-                  if (!currentLevel[indices[i]]) {
-                    currentLevel[indices[i]] = [];
-                  }
-                  currentLevel = currentLevel[indices[i]];
-                }
-
-                const markdownLink = md[key].match(/^\[(.*?)\]\((.*?)\)$/);
-                if (markdownLink) {
-                  currentLevel[indices[indices.length - 1]] = {
-                    text: markdownLink[1],
-                    url: markdownLink[2],
-                    isRepUrl: githubRegex.test(markdownLink[2])
-                      ? markdownLink[2].replace(githubRegex, '')
-                      : null,
-                  };
-                } else {
-                  currentLevel[indices[indices.length - 1]] = md[key];
-                }
-              } else metadata[key] = md[key];
-            }
-
-            // Complete! Insert data into page
-            console.log(`${url.endsWith('.md') ? 'MD' : 'HTML'} File opened successfully!`);
-            insertMarkdownFile(fileLines, metadata, isMain, url.endsWith('.md') ? false : true);
-
-            TinyHtml.setWinScrollTop(0);
-            circleLoader.close();
-            urlUpdate(url, title);
-          } catch (err) {
-            // Error!
-            circleLoader.close();
-            console.error(err);
-            alert(err.message);
-          }
-        })
-
-        // Fail
-        .fail((err) => {
+        .then((res) => res.text())
+        .catch((err) => {
           circleLoader.close();
           console.error(err);
           alert(err.message);
         });
+
+      if (!fileData) return;
+      try {
+        // Get metadata
+        const fileLines = tinyLib.mdManager.removeMetadata(fileData);
+        const md = tinyLib.mdManager.extractMetadata(fileData);
+        const title = md.title;
+
+        // Prepare metadata (script created by ChatGPT)
+        const metadata = {};
+        const githubRegex = tinyLib.getGitUrlPath('{url}docs\\/');
+        for (const key in md) {
+          const match = key.match(/^([^_]+)(?:_(\d+))+/);
+          if (match) {
+            const name = match[1];
+            const indices = match[0].split('_').slice(1).map(Number);
+
+            if (!metadata[name]) {
+              metadata[name] = [];
+            }
+
+            let currentLevel = metadata[name];
+            for (let i = 0; i < indices.length - 1; i++) {
+              if (!currentLevel[indices[i]]) {
+                currentLevel[indices[i]] = [];
+              }
+              currentLevel = currentLevel[indices[i]];
+            }
+
+            const markdownLink = md[key].match(/^\[(.*?)\]\((.*?)\)$/);
+            if (markdownLink) {
+              currentLevel[indices[indices.length - 1]] = {
+                text: markdownLink[1],
+                url: markdownLink[2],
+                isRepUrl: githubRegex.test(markdownLink[2])
+                  ? markdownLink[2].replace(githubRegex, '')
+                  : null,
+              };
+            } else {
+              currentLevel[indices[indices.length - 1]] = md[key];
+            }
+          } else metadata[key] = md[key];
+        }
+
+        // Complete! Insert data into page
+        console.log(`${url.endsWith('.md') ? 'MD' : 'HTML'} File opened successfully!`);
+        insertMarkdownFile(fileLines, metadata, isMain, url.endsWith('.md') ? false : true);
+
+        TinyHtml.setWinScrollTop(0);
+        circleLoader.close();
+        urlUpdate(url, title);
+      } catch (err) {
+        // Error!
+        circleLoader.close();
+        console.error(err);
+        alert(err.message);
+      }
     }
 
     // Main page

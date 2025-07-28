@@ -2,18 +2,6 @@
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 
-// On Off Validator
-const plugValue = (item) => {
-  if (
-    (typeof item === 'string' && (item === 'true' || item === 'on' || item === '1')) ||
-    ((typeof item === 'boolean' || typeof item === 'number') && item)
-  ) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
 // Prepare Data
 const storyData = {
   // Info
@@ -57,9 +45,6 @@ const storyData = {
   ) => {
     if (!tinyLs.localStorageExists()) return failApp(new Error('Local Storage API not found!'));
     if (typeof startApp !== 'function') return failApp(new Error('Start App not found!'));
-
-    // Auto Bookmark
-    storyData.autoBookmark = plugValue(tinyLs.getItem('autoBookMark'));
 
     // Start App
     circleLoader.start('Loading readme...');
