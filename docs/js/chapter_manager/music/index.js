@@ -201,16 +201,18 @@ storyData.youtube = {
                 // Set Embed
                 if (!storyData.youtube.embed) {
                   storyData.youtube.embed = {};
-                  $.ajax({
-                    url:
-                      'https://www.youtube.com/oembed?format=json&url=' +
+                  fetch(
+                    'https://www.youtube.com/oembed?format=json&url=' +
                       encodeURIComponent(
                         `https://www.youtube.com/watch?v=` + storyData.youtube.videoID,
                       ),
-                    type: 'get',
-                    dataType: 'json',
-                  })
-                    .done(function (jsonVideo) {
+                    {
+                      method: 'GET',
+                      dataType: 'json',
+                    },
+                  )
+                    .then((res) => res.json())
+                    .then((jsonVideo) => {
                       console.log(`Youtube video embed loaded!`, storyData.youtube.videoID);
                       storyData.youtube.embed = jsonVideo;
 
@@ -234,7 +236,7 @@ storyData.youtube = {
                           storyData.youtube.player.pauseVideo();
                       }
                     })
-                    .fail((err) => {
+                    .catch((err) => {
                       console.error(err);
                       alert(err.message);
                     });
