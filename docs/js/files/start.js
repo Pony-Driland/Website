@@ -1631,9 +1631,10 @@ $(() => {
       if (!tinyLs.getItem('firstTime')) {
         tinyLs.setItem('firstTime', true);
         alert(
-          `If this is the first time you enter the website, remember that to browse the website, use navbar at the top of the page. If you want to read the fic, go to the "Read Fic" page that is in the right corner of the navbar.
-
-This same navbar will also show all the fic tools as "bookmark" and data progress of the story. Although we have an account system, you are not required to use. Please use only what you really find necessary to use.`,
+          `If this is your first time visiting the website, remember that you can navigate using the navbar at the top of the page. ` +
+            `To read the fic, just click on the "Read Fic" link located in the top-right corner of the navbar. ` +
+            `The same navbar also gives you access to fic-related tools like bookmarks and story progress tracking.` +
+            `\n\nDue to restrictions from some countries, the website is required to track your country of origin to restrict some resources.`,
           'Welcome to Pony Driland!',
         );
       }
