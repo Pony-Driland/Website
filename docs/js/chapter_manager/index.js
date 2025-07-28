@@ -263,12 +263,15 @@ const openChapterMenu = (params = {}) => {
     // Load Sounds
     if (storyCfg.sfx) {
       console.log(`Loading Audio Data...`);
-      circleLoader.start();
+      circleLoader.start(`Loading audio data...`);
 
-      if (!storyData.sfx) {
-        storyData.sfx = {};
-      }
+      if (!storyData.sfx) storyData.sfx = {};
+      const countAudioTotal = countObj(storyCfg.sfx);
+      let countAudio = 0;
       for (const item in storyCfg.sfx) {
+        countAudio++;
+        circleLoader.close();
+        circleLoader.start(`Loading audio data ${countAudio}/${countAudioTotal}...`);
         if (
           !storyData.sfx[item] &&
           typeof storyCfg.sfx[item].type === 'string' &&
