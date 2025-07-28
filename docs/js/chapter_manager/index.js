@@ -532,6 +532,15 @@ const openChapterMenu = (params = {}) => {
   // Nope. Choose One
   else {
     const markdownRead = $('#markdown-read');
+    const isNoNsfw =
+      tinyLs.getString('user-country') &&
+      storyCfg.noNsfw.includes(tinyLs.getString('user-country'));
+
+    if (isNoNsfw) {
+      for (const item in storyCfg.nsfw) {
+        if (tinyLs.getItem('NSFW' + item)) tinyLs.removeItem('NSFW' + item);
+      }
+    }
 
     // Prepare Choose
     markdownRead.append(
@@ -734,8 +743,9 @@ const openChapterMenu = (params = {}) => {
         .prepend(tinyLib.icon('fas fa-book-open me-3'))
         .append(
           tinyLib.bs
-            .button('info btn-sm ms-3')
-            .text('Choose Optional Mature Content')
+            .button(`${!isNoNsfw ? 'info' : 'danger'} btn-sm ms-3`)
+            .text(!isNoNsfw ? 'Choose Optional Mature Content' : 'Disabled in your region')
+            .prop('disabled', isNoNsfw)
             .on('click', () => {
               // Nothing NSFW
               let existNSFW = false;

@@ -3291,7 +3291,7 @@ const AiScriptStart = (connStore) => {
                 usingUpdateToken = false;
               })
               .catch((err) => {
-                alert(err.message, 'Error get AI tokens');
+                alert(err.message, 'Error: AI tokens getter');
                 console.error(err);
                 stopLoadingMessage();
                 usingUpdateToken = false;
@@ -4144,7 +4144,7 @@ const AiScriptStart = (connStore) => {
               tinyIo.client.updateRoomSettings(newSettings).then((result) => {
                 if (result.error)
                   alert(
-                    `Your data has not been saved! Try again!\n${result.msg}\nCode: ${result.code}`,
+                    `⚠️ Your data was not saved! Please try again.\nError Message:${result.msg}\nCode: ${result.code}`,
                   );
               });
 
@@ -4528,7 +4528,7 @@ const AiScriptStart = (connStore) => {
     // No AI data
     else {
       alert(
-        'You did not activate AI mode in your session. Please click the robot icon and activate and then come back here again.',
+        'AI mode is currently disabled for your session. Please click the robot icon to activate it, then come back here.',
         'AI Page',
       );
     }

@@ -277,6 +277,20 @@ const storyData = {
     delete storyData.start;
     console.log('App Started!');
     console.log('Loading UI...');
+
+    circleLoader.close();
+    circleLoader.start('Starting website...');
+    if (
+      location.hostname !== 'localhost' &&
+      location.hostname !== '127.0.0.1' &&
+      !tinyLs.getString('user-country')
+    ) {
+      const userCountry = await fetch('https://api.country.is/')
+        .then((res) => res.json())
+        .catch(console.error);
+      if (isJsonObject(userCountry)) tinyLs.setString('user-country', userCountry.country);
+    }
+
     // Start app now
     startApp(
       connStore,
