@@ -42,6 +42,7 @@ import {
     TinyAfterScrollWatcher,
     TinyTextRangeEditor,
     TinyLocalStorage,
+    getSimplePerc,
 } from 'tiny-essentials';
 import TinyDices from 'tiny-dices';
 
@@ -53,6 +54,7 @@ global.window.tinyNotification = new TinyNotifications({ audio: '/audio/notifica
 
 // Imports
 addAiMarkerShortcut();
+global.window.getSimplePerc = getSimplePerc;
 global.window.circleLoader = Loader;
 global.window.tinyLs = new TinyLocalStorage('pony-driland');
 global.window.TinyTextRangeEditor = TinyTextRangeEditor;

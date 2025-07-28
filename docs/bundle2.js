@@ -46,6 +46,7 @@ global.window.tinyNotification = new _tinyEssentials.TinyNotifications({
 
 // Imports
 (0, _tinyEssentials.addAiMarkerShortcut)();
+global.window.getSimplePerc = _tinyEssentials.getSimplePerc;
 global.window.circleLoader = _circleLoader.Loader;
 global.window.tinyLs = new _tinyEssentials.TinyLocalStorage('pony-driland');
 global.window.TinyTextRangeEditor = _tinyEssentials.TinyTextRangeEditor;
