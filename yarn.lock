@@ -3936,10 +3936,10 @@ for-each@^0.3.3, for-each@^0.3.5:
   dependencies:
     is-callable "^1.2.7"
 
-for-promise@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/for-promise/-/for-promise-2.0.4.tgz#06f0829e732e63dc4874989a2b3442ca697bd3a5"
-  integrity sha512-hC+L3YuT1A3CAK3KzMWF6hwvUwEtF87Inr8n3nQETJvga4LNisszCAxCT/2IsdJJ7eBG5h5jr9ymK3yjRFuaUw==
+for-promise@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/for-promise/-/for-promise-2.0.5.tgz#930b03ff3e0fca7d095863e5ea7e5d77097a8637"
+  integrity sha512-zLiAEn9SeGtxiiWh4GoozVuOphNX4C3oN2soT48AMYRR/1ISg6mlJem99feCq9mEY+a2JQ1mVdvbE6Yj4GUuiA==
 
 foreground-child@^3.3.1:
   version "3.3.1"
