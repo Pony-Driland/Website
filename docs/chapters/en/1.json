@@ -112,7 +112,7 @@
 
     {
         "type": "action",
-        "value": "Vinny was surprised by what Yasmin said, Vinny speaks in a curious way."
+        "value": "Vinny was surprised by what Yasmin said, Vinny says in a curious way."
     },
 
     {
@@ -1558,7 +1558,7 @@
     },
 
     {
-        "value": "Vinny speak calmly and surprised.",
+        "value": "Vinny say calmly and surprised.",
         "type": "action"
     },
 
@@ -1636,7 +1636,7 @@
     },
 
     {
-        "value": "Kenny speaks confidently.",
+        "value": "Kenny says confidently.",
         "type": "action"
     },
 
@@ -1757,7 +1757,7 @@
     },
 
     {
-        "value": "Kenny speak a little scared for a seconds. So Kenny got a little emotional remembering this information, but then he responded.",
+        "value": "Kenny say a little scared for a seconds. So Kenny got a little emotional remembering this information, but then he responded.",
         "type": "action"
     },
 
@@ -1865,7 +1865,7 @@
     },
 
     {
-        "value": "Vinny speak ironically but friendly. So Vinny help Kenny.",
+        "value": "Vinny say ironically but friendly. So Vinny help Kenny.",
         "type": "action"
     },
 
@@ -2066,7 +2066,7 @@
     },
 
     {
-        "value": "Kenny fought the magic again until he could finally speak. So he spoke out loud.",
+        "value": "Kenny fought the magic again until he could finally say. So he spoke out loud.",
         "type": "action"
     },
 
@@ -2144,7 +2144,7 @@
                 { "value": "sword-hard-move", "type": "show" }
             ]
         },
-        "value": "Vinny speak somewhat ironically while trying to resist the provocations. So the sword that was floating and suddenly stuck on the ground 2 centimeters from Vinny face.",
+        "value": "Vinny say somewhat ironically while trying to resist the provocations. So the sword that was floating and suddenly stuck on the ground 2 centimeters from Vinny face.",
         "type": "action"
     },
 
@@ -2172,7 +2172,7 @@
     },
 
     {
-        "value": "So Vinny tried to keep calm and started to speak in a rhetorical way.",
+        "value": "So Vinny tried to keep calm and started to say in a rhetorical way.",
         "type": "action"
     },
 
@@ -3256,7 +3256,7 @@
     },
 
     {
-        "value": "Vinny speaks with irony more speaking playfully. Kenny was getting a little nervous and worried again.",
+        "value": "Vinny says with irony more speaking playfully. Kenny was getting a little nervous and worried again.",
         "type": "action"
     },
 
@@ -3895,7 +3895,7 @@
     },
 
     {
-        "value": "Raquel speaks nervously while feeling ashamed. Kenny then reacts with jealousy and speaks.",
+        "value": "Raquel says nervously while feeling ashamed. Kenny then reacts with jealousy and says.",
         "type": "action"
     },
 
@@ -4011,7 +4011,7 @@
     },
 
     {
-        "value": "Weeeeeeell... This isn't magic. I think it's just the way of talking, I liked to talk in a way that made people act in my way, a way of talking rhetorical, I liked and respected people a lot in my world that through conversation could change the world, but next to them, I'm a nobody. But at least I can speak well and even understand people. I think the name of this is empathy, I have a lot of empathy",
+        "value": "Weeeeeeell... This isn't magic. I think it's just the way of talking, I liked to talk in a way that made people act in my way, a way of talking rhetorical, I liked and respected people a lot in my world that through conversation could change the world, but next to them, I'm a nobody. But at least I can say well and even understand people. I think the name of this is empathy, I have a lot of empathy",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -4087,7 +4087,7 @@
     },
 
     {
-        "value": "Kenny was a little surprised and then responded. Kenny speaks sadly and worried by James situation.",
+        "value": "Kenny was a little surprised and then responded. Kenny says sadly and worried by James situation.",
         "type": "action"
     },
 
@@ -4793,7 +4793,7 @@
     },
 
     {
-        "value": "Vinny speak loudly with some fear.",
+        "value": "Vinny say loudly with some fear.",
         "type": "action"
     },
 
@@ -5183,7 +5183,7 @@
     },
 
     {
-        "value": "Vinny speaks sarcastically with the intention of whoever was close to hear. James got even more disgusted and asked Vinny to keep his voice down.",
+        "value": "Vinny says sarcastically with the intention of whoever was close to hear. James got even more disgusted and asked Vinny to keep his voice down.",
         "type": "action"
     },
 
@@ -5450,7 +5450,7 @@
     },
 
     {
-        "value": "James speaks completely confused, trying to understand what is happening.",
+        "value": "James says completely confused, trying to understand what is happening.",
         "type": "action"
     },
 
@@ -5461,7 +5461,7 @@
     },
 
     {
-        "value": "Vinny speaks with a hopeful face. James was slowly starting to give up on the situation and was completely annoyed.",
+        "value": "Vinny says with a hopeful face. James was slowly starting to give up on the situation and was completely annoyed.",
         "type": "action"
     },
 
@@ -6231,7 +6231,7 @@
     },
 
     {
-        "value": "Vinny speaks sarcastically.",
+        "value": "Vinny says sarcastically.",
         "type": "action"
     },
 
@@ -6667,7 +6667,7 @@
     },
 
     {
-        "value": "James then took a deep breath, preparing to speak his next words, he looked uncomfortable and a little worried about himself.",
+        "value": "James then took a deep breath, preparing to say his next words, he looked uncomfortable and a little worried about himself.",
         "type": "action"
     },
 
@@ -6770,7 +6770,7 @@
     },
 
     {
-        "value": "Vinny then showed a little sadness and loneliness, then entered the tent again. Vinny speaks very quietly.",
+        "value": "Vinny then showed a little sadness and loneliness, then entered the tent again. Vinny says very quietly.",
         "type": "action"
     },
 
@@ -6885,7 +6885,7 @@
     },
 
     {
-        "value": "James pulled the blanket to cover heself more while he continued to sleep. Vinny was a little outraged at James' laziness, so he thought of something. So Vinny speaks sarcastically and desperately.",
+        "value": "James pulled the blanket to cover heself more while he continued to sleep. Vinny was a little outraged at James' laziness, so he thought of something. So Vinny says sarcastically and desperately.",
         "type": "action"
     },
 
@@ -6902,7 +6902,7 @@
     },
 
     {
-        "value": "James moved desperately trying to look for the notebook, and poked Vinny's face, trying to find something that looked like the Notebook. Vinny laugh a little, realizing what a silly accident he was making happen. Vinny speak very loud.",
+        "value": "James moved desperately trying to look for the notebook, and poked Vinny's face, trying to find something that looked like the Notebook. Vinny laugh a little, realizing what a silly accident he was making happen. Vinny say very loud.",
         "type": "action"
     },
 
@@ -9494,7 +9494,7 @@
     },
 
     {
-        "value": "Speak up my adventure companion! How was the acquisition of this beautiful sword?",
+        "value": "Say something my adventure companion! How was the acquisition of this beautiful sword?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -9746,7 +9746,7 @@
     },
 
     {
-        "value": "Vinny was a little worried to see James' behavior, so Vinny tried to be faster. Vinny speaks with little irony.",
+        "value": "Vinny was a little worried to see James' behavior, so Vinny tried to be faster. Vinny says with little irony.",
         "type": "action"
     },
 
@@ -10201,7 +10201,7 @@
     },
 
     {
-        "value": "Vinny speaks very low when the talk ends. Rayane was a little worried and a little sad to hear this.",
+        "value": "Vinny says very low when the talk ends. Rayane was a little worried and a little sad to hear this.",
         "type": "action"
     },
 
@@ -10707,7 +10707,7 @@
     },
 
     {
-        "value": "James authorized the entrance of the door. Then the door was opened, revealing it to be an elevator. So Vinny speaks in a surreptitious manner.",
+        "value": "James authorized the entrance of the door. Then the door was opened, revealing it to be an elevator. So Vinny says in a surreptitious manner.",
         "type": "action"
     },
 
@@ -15124,7 +15124,7 @@
     },
 
     {
-        "value": "Vinny empathized with Rayane during the talk. Vinny then tried to speak very calmly.",
+        "value": "Vinny empathized with Rayane during the talk. Vinny then tried to say very calmly.",
         "type": "action"
     },
 
@@ -15707,7 +15707,7 @@
     },
 
     {
-        "value": "Vinny speaks ironically at Rayane.",
+        "value": "Vinny says ironically at Rayane.",
         "type": "action"
     },
 
@@ -15953,7 +15953,7 @@
     },
 
     {
-        "value": "D-do you speak from experience? Is the night dangerous?",
+        "value": "D-do you say from experience? Is the night dangerous?",
         "character": "Vinny",
         "type": "dialogue"
     },
@@ -18081,7 +18081,7 @@
     },
 
     {
-        "value": "Vinny looks at the bottom of the cave. Vinny was a little worried and thoughtful. Vinny speaks in a tone of irony.",
+        "value": "Vinny looks at the bottom of the cave. Vinny was a little worried and thoughtful. Vinny says in a tone of irony.",
         "type": "action"
     },
 
@@ -21561,7 +21561,7 @@
     },
 
     {
-        "value": "Vinny tried to speak even a little lower and looked at James.",
+        "value": "Vinny tried to say even a little lower and looked at James.",
         "type": "action"
     },
 
@@ -21691,7 +21691,7 @@
     },
 
     {
-        "value": "James was quiet and embarrassed for a few seconds. Vinny turns off the flashlight and looks around again for a few seconds. So Vinny and James saw that Rayane was using her hoof to cover the mouth of a mysterious pony that was trying to call for help. And she was levitating the sword near the pony to keep the pony quiet. James and Vinny was extremely surprised and tried to speak as quietly as possible.",
+        "value": "James was quiet and embarrassed for a few seconds. Vinny turns off the flashlight and looks around again for a few seconds. So Vinny and James saw that Rayane was using her hoof to cover the mouth of a mysterious pony that was trying to call for help. And she was levitating the sword near the pony to keep the pony quiet. James and Vinny was extremely surprised and tried to say as quietly as possible.",
         "type": "action"
     },
 
