@@ -75,7 +75,7 @@ global.window.Pizzicato = _pizzicato["default"];
 global.window.PhotoSwipeLightbox = _photoswipe["default"];
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"circle-loader":63,"for-promise":86,"jsstore":92,"photoswipe":96,"pizzicato":97,"socket.io-client":100,"tiny-ai-api":111,"tiny-dices":134,"tiny-essentials":162,"tippy.js":184,"validate-color":185}],2:[function(require,module,exports){
+},{"circle-loader":63,"for-promise":86,"jsstore":92,"photoswipe":96,"pizzicato":97,"socket.io-client":100,"tiny-ai-api":111,"tiny-dices":134,"tiny-essentials":162,"tippy.js":185,"validate-color":186}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29376,7 +29376,7 @@ function _insertCreateCube() {
 }
 var _default = exports["default"] = TinyDices;
 
-},{"tiny-essentials":143,"validate-color":185}],135:[function(require,module,exports){
+},{"tiny-essentials":143,"validate-color":186}],135:[function(require,module,exports){
 arguments[4][113][0].apply(exports,arguments)
 },{"dup":113}],136:[function(require,module,exports){
 arguments[4][114][0].apply(exports,arguments)
@@ -30125,6 +30125,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.fetchBlob = fetchBlob;
 exports.fetchJson = fetchJson;
+exports.fetchText = fetchText;
 exports.installWindowHiddenScript = installWindowHiddenScript;
 exports.readBase64Blob = readBase64Blob;
 exports.readFileBlob = readFileBlob;
@@ -30280,7 +30281,7 @@ function fetchTemplate(_x) {
  * Loads and parses a JSON from a remote URL using Fetch API.
  *
  * @param {string} url - The full URL to fetch JSON from.
- * @param {Object} [options] - Optional settings.
+ * @param {FetchTemplateOptions} [options] - Optional settings.
  * @returns {Promise<any[] | Record<string | number | symbol, unknown>>} Parsed JSON object.
  * @throws {Error} Throws if fetch fails, times out, or returns invalid JSON.
  */
@@ -30435,7 +30436,7 @@ function fetchJson(_x2, _x3) {
  * Loads a remote file as a Blob using Fetch API.
  *
  * @param {string} url - The full URL to fetch the file from.
- * @param {Object} [options] - Optional fetch options.
+ * @param {FetchTemplateOptions} [options] - Optional fetch options.
  * @param {string[]} [allowedMimeTypes] - Optional list of accepted MIME types (e.g., ['image/jpeg']).
  * @returns {Promise<Blob>} - The fetched file as a Blob.
  * @throws {Error} Throws if fetch fails, response is not ok, or MIME type is not allowed.
@@ -30473,7 +30474,7 @@ function _fetchJson() {
                   }
                 }, _callee2);
               }));
-              return function (_x7) {
+              return function (_x0) {
                 return _ref3.apply(this, arguments);
               };
             }())["catch"](reject);
@@ -30485,20 +30486,15 @@ function _fetchJson() {
 }
 function fetchBlob(_x4, _x5, _x6) {
   return _fetchBlob.apply(this, arguments);
-} ///////////////////////////////////////////////////////////////////////////////
+}
 /**
- * Installs a script that toggles CSS classes on a given element
- * based on the page's visibility or focus state, and optionally
- * triggers callbacks on visibility changes.
+ * Loads a remote file as a text using Fetch API.
  *
- * @param {Object} [settings={}]
- * @param {Element} [settings.element=document.body] - The element to receive visibility classes.
- * @param {string} [settings.hiddenClass='windowHidden'] - CSS class applied when the page is hidden.
- * @param {string} [settings.visibleClass='windowVisible'] - CSS class applied when the page is visible.
- * @param {(data: { type: string; oldType: string; oldClass: string; }) => void} [settings.onVisible] - Callback called when page becomes visible.
- * @param {(data: { type: string; oldType: string; oldClass: string; }) => void} [settings.onHidden] - Callback called when page becomes hidden.
- * @returns {() => void} Function that removes all installed event listeners.
- * @throws {TypeError} If any provided setting is invalid.
+ * @param {string} url - The full URL to fetch the file from.
+ * @param {FetchTemplateOptions} [options] - Optional fetch options.
+ * @param {string[]} [allowedMimeTypes] - Optional list of accepted MIME types (e.g., ['image/jpeg']).
+ * @returns {Promise<string>} - The fetched file as a text.
+ * @throws {Error} Throws if fetch fails, response is not ok, or MIME type is not allowed.
  */
 function _fetchBlob() {
   _fetchBlob = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5(url, allowedMimeTypes, options) {
@@ -30529,7 +30525,7 @@ function _fetchBlob() {
                   }
                 }, _callee4);
               }));
-              return function (_x8) {
+              return function (_x1) {
                 return _ref4.apply(this, arguments);
               };
             }())["catch"](reject);
@@ -30538,6 +30534,62 @@ function _fetchBlob() {
     }, _callee5);
   }));
   return _fetchBlob.apply(this, arguments);
+}
+function fetchText(_x7, _x8, _x9) {
+  return _fetchText.apply(this, arguments);
+} ///////////////////////////////////////////////////////////////////////////////
+/**
+ * Installs a script that toggles CSS classes on a given element
+ * based on the page's visibility or focus state, and optionally
+ * triggers callbacks on visibility changes.
+ *
+ * @param {Object} [settings={}]
+ * @param {Element} [settings.element=document.body] - The element to receive visibility classes.
+ * @param {string} [settings.hiddenClass='windowHidden'] - CSS class applied when the page is hidden.
+ * @param {string} [settings.visibleClass='windowVisible'] - CSS class applied when the page is visible.
+ * @param {(data: { type: string; oldType: string; oldClass: string; }) => void} [settings.onVisible] - Callback called when page becomes visible.
+ * @param {(data: { type: string; oldType: string; oldClass: string; }) => void} [settings.onHidden] - Callback called when page becomes hidden.
+ * @returns {() => void} Function that removes all installed event listeners.
+ * @throws {TypeError} If any provided setting is invalid.
+ */
+function _fetchText() {
+  _fetchText = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7(url, allowedMimeTypes, options) {
+    return _regenerator().w(function (_context8) {
+      while (1) switch (_context8.n) {
+        case 0:
+          return _context8.a(2, new Promise(function (resolve, reject) {
+            fetchTemplate(url, options).then(/*#__PURE__*/function () {
+              var _ref5 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6(res) {
+                var contentType, data;
+                return _regenerator().w(function (_context7) {
+                  while (1) switch (_context7.n) {
+                    case 0:
+                      contentType = res.headers.get('content-type') || '';
+                      if (!(Array.isArray(allowedMimeTypes) && allowedMimeTypes.length > 0 && !allowedMimeTypes.some(function (type) {
+                        return contentType.includes(type);
+                      }))) {
+                        _context7.n = 1;
+                        break;
+                      }
+                      throw new Error("Blocked MIME type: ".concat(contentType));
+                    case 1:
+                      _context7.n = 2;
+                      return res.text();
+                    case 2:
+                      data = _context7.v;
+                      return _context7.a(2, resolve(data));
+                  }
+                }, _callee6);
+              }));
+              return function (_x10) {
+                return _ref5.apply(this, arguments);
+              };
+            }())["catch"](reject);
+          }));
+      }
+    }, _callee7);
+  }));
+  return _fetchText.apply(this, arguments);
 }
 function installWindowHiddenScript() {
   var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
@@ -31136,8 +31188,202 @@ function (val) {
 }]]);
 
 },{"./objChecker.mjs":156,"buffer":62}],158:[function(require,module,exports){
-arguments[4][121][0].apply(exports,arguments)
-},{"dup":121}],159:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.formatBytes = formatBytes;
+exports.genFibonacciSeq = genFibonacciSeq;
+exports.getAge = getAge;
+exports.getPercentage = getPercentage;
+exports.getSimplePerc = getSimplePerc;
+exports.ruleOfThree = ruleOfThree;
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+/**
+ * Executes a Rule of Three calculation.
+ *
+ * @param {number} val1 - The first reference value (numerator in direct proportion, denominator in inverse).
+ * @param {number} val2 - The second reference value (denominator in direct proportion, numerator in inverse).
+ * @param {number} val3 - The third value (numerator in direct proportion, denominator in inverse).
+ * @param {boolean} [inverse] - Whether the calculation should use inverse proportion (true for inverse, false for direct).
+ * @returns {number} The result of the Rule of Three operation.
+ *
+ * Rule of Three Formula (Direct Proportion):
+ *      val1 / val2 = val3 / result
+ *
+ * For Inverse Proportion:
+ *      val1 / val3 = val2 / result
+ *
+ * Visual Representation:
+ *
+ * For Direct Proportion:
+ *      val1      val2
+ *      -----  =  ------
+ *      val3      result
+ *
+ * For Inverse Proportion:
+ *      val1      val2
+ *      -----  =  ------
+ *      val3      result
+ *
+ * @example
+ * // Direct proportion:
+ * ruleOfThree.execute(2, 6, 3, false); // → 9
+ *
+ * @example
+ * // Inverse proportion:
+ * ruleOfThree.execute(2, 6, 3, true); // → 4
+ */
+function ruleOfThree(val1, val2, val3) {
+  var inverse = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+  return inverse ? Number(val1 * val2) / val3 : Number(val3 * val2) / val1;
+}
+/**
+ * Calculates the actual value that corresponds to a percentage of a base number.
+ * Unlike `getPercentage`, which tells how much something represents in percent,
+ * this function tells how much a given percentage *is worth* in value.
+ *
+ * @param {number} price - The base number to apply the percentage to.
+ * @param {number} percentage - The percentage to calculate from the base.
+ * @returns {number} The resulting value of the percentage.
+ *
+ * @example
+ * getSimplePerc(200, 15); // 30
+ */
+function getSimplePerc(price, percentage) {
+  return price * (percentage / 100);
+}
+/**
+ * Calculates how much percent a partial value represents of the total value.
+ *
+ * @param {number} part - The partial value to compare.
+ * @param {number} total - The total or maximum value.
+ * @returns {number} The percentage that 'part' represents of 'total'.
+ *
+ * @example
+ * getPercentage(5, 100); // 5
+ */
+function getPercentage(part, total) {
+  if (total === 0) return 0;
+  return part / total * 100;
+}
+/**
+ * Calculates the age based on the given date.
+ *
+ * @param {number|string|Date} timeData - The birth date (can be a timestamp, ISO string, or Date object).
+ * @param {Date|null} [now=null] - The Date object representing the current date. Defaults to the current date and time if not provided.
+ * @returns {number|null} The age in years, or null if `timeData` is not provided or invalid.
+ */
+function getAge() {
+  var timeData = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  var now = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  if (typeof timeData !== 'undefined' && timeData !== null && timeData !== 0) {
+    var birthDate = new Date(timeData);
+    if (Number.isNaN(birthDate.getTime())) return null;
+    var currentDate = now instanceof Date ? now : new Date();
+    var age = currentDate.getFullYear() - birthDate.getFullYear();
+    var currentMonth = currentDate.getMonth();
+    var birthMonth = birthDate.getMonth();
+    var currentDay = currentDate.getDate();
+    var birthDay = birthDate.getDate();
+    // Adjust if birthday hasn't occurred yet this year
+    if (currentMonth < birthMonth || currentMonth === birthMonth && currentDay < birthDay) age--;
+    return Math.abs(age);
+  }
+  return null;
+}
+/**
+ * @typedef {Object} FormattedByteResult
+ * @property {string|null} unit - The resulting unit (e.g., 'MB', 'GB') or null if input is invalid.
+ * @property {number|null} value - The numerical value in the chosen unit, or null if input is invalid.
+ */
+/**
+ * Converts a byte value into a human-readable format with unit and value separated.
+ *
+ * @param {number} bytes - The number of bytes to format. Must be a non-negative number.
+ * @param {number|null} [decimals=null] - The number of decimal places to include in the result. Defaults to null. If negative, it will be treated as 0. If null, no rounding is applied.
+ * @param {string|null} [maxUnit=null] - Optional unit limit. If provided, restricts conversion to this unit at most (e.g., 'MB' prevents conversion to 'GB' or higher). Must be one of: 'Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'.
+ * @returns {FormattedByteResult} An object with the converted value and its corresponding unit. Returns nulls if input is invalid.
+ *
+ * @example
+ * formatBytes(123456789);
+ * // → { unit: 'MB', value: 117.74 }
+ *
+ * @example
+ * formatBytes(1073741824, 2, 'MB');
+ * // → { unit: 'MB', value: 1024 }
+ */
+function formatBytes(bytes) {
+  var decimals = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  var maxUnit = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  if (typeof bytes !== 'number' || bytes < 0) return {
+    unit: null,
+    value: null
+  };
+  if (bytes === 0) return {
+    unit: 'Bytes',
+    value: 0
+  };
+  var k = 1024;
+  var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  var maxIndex = maxUnit && sizes.includes(maxUnit) ? sizes.indexOf(maxUnit) : sizes.length - 1;
+  var i = Math.min(Math.floor(Math.log(bytes) / Math.log(k)), maxIndex);
+  var value = bytes / Math.pow(k, i);
+  if (decimals !== null) {
+    var dm = decimals < 0 ? 0 : decimals;
+    value = parseFloat(value.toFixed(dm));
+  }
+  var unit = sizes[i];
+  return {
+    unit: unit,
+    value: value
+  };
+}
+/**
+ * Generates a Fibonacci-like sequence as an array of vectors.
+ *
+ * @param {Object} [settings={}]
+ * @param {number[]} [settings.baseValues=[0, 1]] - An array of two starting numbers (e.g. [0, 1] or [1, 1]).
+ * @param {number} [settings.length=10] - Total number of items to generate in the sequence.
+ * @param {(a: number, b: number, index: number) => number} [settings.combiner=((a, b) => a + b)] - A custom function to combine previous two numbers.
+ * @returns {number[]} The resulting Fibonacci sequence.
+ *
+ * FibonacciVectors2D
+ * @example
+ * generateFibonacciSequence({
+ *   baseValues: [[0, 1], [1, 1]],
+ *   length: 10,
+ *   combiner: ([x1, y1], [x2, y2]) => [x1 + x2, y1 + y2]
+ * });
+ *
+ * @beta
+ */
+function genFibonacciSeq() {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+    _ref$baseValues = _ref.baseValues,
+    baseValues = _ref$baseValues === void 0 ? [0, 1] : _ref$baseValues,
+    _ref$length = _ref.length,
+    length = _ref$length === void 0 ? 10 : _ref$length,
+    _ref$combiner = _ref.combiner,
+    combiner = _ref$combiner === void 0 ? function (a, b) {
+      return a + b;
+    } : _ref$combiner;
+  if (!Array.isArray(baseValues) || baseValues.length !== 2) throw new Error('baseValues must be an array of exactly two numbers');
+  var sequence = _toConsumableArray(baseValues.slice(0, 2));
+  for (var i = 2; i < length; i++) {
+    var next = combiner(sequence[i - 2], sequence[i - 1], i);
+    sequence.push(next);
+  }
+  return sequence;
+}
+
+},{}],159:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31389,6 +31635,12 @@ Object.defineProperty(exports, "TinyTextRangeEditor", {
     return _TinyTextRangeEditor["default"];
   }
 });
+Object.defineProperty(exports, "TinyTextarea", {
+  enumerable: true,
+  get: function get() {
+    return _TinyTextarea["default"];
+  }
+});
 Object.defineProperty(exports, "TinyTimeout", {
   enumerable: true,
   get: function get() {
@@ -31581,6 +31833,12 @@ Object.defineProperty(exports, "fetchJson", {
     return _html.fetchJson;
   }
 });
+Object.defineProperty(exports, "fetchText", {
+  enumerable: true,
+  get: function get() {
+    return _html.fetchText;
+  }
+});
 Object.defineProperty(exports, "fileExists", {
   enumerable: true,
   get: function get() {
@@ -31705,6 +31963,12 @@ Object.defineProperty(exports, "getLatestBackupPath", {
   enumerable: true,
   get: function get() {
     return _normalFuncs.getLatestBackupPath;
+  }
+});
+Object.defineProperty(exports, "getPercentage", {
+  enumerable: true,
+  get: function get() {
+    return _simpleMath.getPercentage;
   }
 });
 Object.defineProperty(exports, "getRectCenter", {
@@ -31977,9 +32241,10 @@ var _TinyEvents = _interopRequireDefault(require("./libs/TinyEvents.mjs"));
 var _TinyLocalStorage = _interopRequireDefault(require("./libs/TinyLocalStorage.mjs"));
 var _TinyIframeEvents = _interopRequireDefault(require("./libs/TinyIframeEvents.mjs"));
 var _TinyNewWinEvents = _interopRequireDefault(require("./libs/TinyNewWinEvents.mjs"));
+var _TinyTextarea = _interopRequireDefault(require("./libs/TinyTextarea.mjs"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 
-},{"../legacy/libs/arraySortPositions.mjs":147,"../legacy/libs/replaceAsync.mjs":148,"../legacy/libs/userLevel.mjs":149,"./basics/array.mjs":150,"./basics/clock.mjs":151,"./basics/collision.mjs":152,"./basics/fullScreen.mjs":153,"./basics/html.mjs":154,"./basics/html_deprecated.mjs":155,"./basics/objChecker.mjs":156,"./basics/objFilter.mjs":157,"./basics/simpleMath.mjs":158,"./basics/text.mjs":159,"./fileManager/asyncFuncs.mjs":160,"./fileManager/normalFuncs.mjs":161,"./libs/ColorSafeStringify.mjs":163,"./libs/TinyAfterScrollWatcher.mjs":164,"./libs/TinyClipboard.mjs":165,"./libs/TinyColorConverter.mjs":166,"./libs/TinyDomReadyManager.mjs":167,"./libs/TinyDragDropDetector.mjs":168,"./libs/TinyDragger.mjs":169,"./libs/TinyEvents.mjs":170,"./libs/TinyHtml.mjs":171,"./libs/TinyIframeEvents.mjs":172,"./libs/TinyLocalStorage.mjs":173,"./libs/TinyNewWinEvents.mjs":174,"./libs/TinyNotifications.mjs":175,"./libs/TinyNotifyCenter.mjs":176,"./libs/TinyPromiseQueue.mjs":177,"./libs/TinyRateLimiter.mjs":178,"./libs/TinySmartScroller.mjs":179,"./libs/TinyTextRangeEditor.mjs":180,"./libs/TinyTimeout.mjs":181,"./libs/TinyToastNotify.mjs":182,"./libs/UltraRandomMsgGen.mjs":183}],163:[function(require,module,exports){
+},{"../legacy/libs/arraySortPositions.mjs":147,"../legacy/libs/replaceAsync.mjs":148,"../legacy/libs/userLevel.mjs":149,"./basics/array.mjs":150,"./basics/clock.mjs":151,"./basics/collision.mjs":152,"./basics/fullScreen.mjs":153,"./basics/html.mjs":154,"./basics/html_deprecated.mjs":155,"./basics/objChecker.mjs":156,"./basics/objFilter.mjs":157,"./basics/simpleMath.mjs":158,"./basics/text.mjs":159,"./fileManager/asyncFuncs.mjs":160,"./fileManager/normalFuncs.mjs":161,"./libs/ColorSafeStringify.mjs":163,"./libs/TinyAfterScrollWatcher.mjs":164,"./libs/TinyClipboard.mjs":165,"./libs/TinyColorConverter.mjs":166,"./libs/TinyDomReadyManager.mjs":167,"./libs/TinyDragDropDetector.mjs":168,"./libs/TinyDragger.mjs":169,"./libs/TinyEvents.mjs":170,"./libs/TinyHtml.mjs":171,"./libs/TinyIframeEvents.mjs":172,"./libs/TinyLocalStorage.mjs":173,"./libs/TinyNewWinEvents.mjs":174,"./libs/TinyNotifications.mjs":175,"./libs/TinyNotifyCenter.mjs":176,"./libs/TinyPromiseQueue.mjs":177,"./libs/TinyRateLimiter.mjs":178,"./libs/TinySmartScroller.mjs":179,"./libs/TinyTextRangeEditor.mjs":180,"./libs/TinyTextarea.mjs":181,"./libs/TinyTimeout.mjs":182,"./libs/TinyToastNotify.mjs":183,"./libs/UltraRandomMsgGen.mjs":184}],163:[function(require,module,exports){
 arguments[4][126][0].apply(exports,arguments)
 },{"dup":126}],164:[function(require,module,exports){
 "use strict";
@@ -35013,15 +35278,20 @@ exports["default"] = void 0;
 var TinyCollision = _interopRequireWildcard(require("../basics/collision.mjs"));
 var _TinyHtml;
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
-function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _toArray(r) { return _arrayWithHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -35232,6 +35502,15 @@ var __elemCollision = {
  * @typedef {HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement|HTMLOptionElement} InputElement
  */
 /**
+ * Represents a parsed HTML element in JSON-like array form.
+ *
+ * @typedef {[
+ *   tagName: string, // The tag name of the element (e.g., 'div', 'img')
+ *   attributes: Record<string, string>, // All element attributes as key-value pairs
+ *   ...children: (string | HtmlParsed)[] // Text or nested elements
+ * ]} HtmlParsed
+ */
+/**
  * TinyHtml is a utility class that provides static and instance-level methods
  * for precise dimension and position computations on HTML elements.
  * It mimics some jQuery functionalities while using native browser APIs.
@@ -35416,7 +35695,7 @@ var TinyHtml = /*#__PURE__*/function () {
   }, {
     key: "_getElement",
     value: function _getElement(where, index) {
-      if (!(_classPrivateFieldGet(_el, this)[index] instanceof Element) && !(_classPrivateFieldGet(_el, this)[index] instanceof Window) && !(_classPrivateFieldGet(_el, this)[index] instanceof Document)) throw new Error("[TinyHtml] Invalid Element in ".concat(where, "()."));
+      if (!(_classPrivateFieldGet(_el, this)[index] instanceof Element) && !(_classPrivateFieldGet(_el, this)[index] instanceof Window) && !(_classPrivateFieldGet(_el, this)[index] instanceof Document) && !(_classPrivateFieldGet(_el, this)[index] instanceof Text)) throw new Error("[TinyHtml] Invalid Element in ".concat(where, "()."));
       return _classPrivateFieldGet(_el, this)[index];
     }
     /**
@@ -35430,7 +35709,7 @@ var TinyHtml = /*#__PURE__*/function () {
     key: "_getElements",
     value: function _getElements(where) {
       if (!_classPrivateFieldGet(_el, this).every(function (el) {
-        return el instanceof Element || el instanceof Window || el instanceof Document;
+        return el instanceof Element || el instanceof Window || el instanceof Document || el instanceof Text;
       })) throw new Error("[TinyHtml] Invalid Element in ".concat(where, "()."));
       return _toConsumableArray(_classPrivateFieldGet(_el, this));
     }
@@ -36020,6 +36299,17 @@ var TinyHtml = /*#__PURE__*/function () {
      */
     function replaceAll(targets) {
       return TinyHtml.replaceAll(this, targets);
+    }
+  }, {
+    key: "size",
+    get:
+    /**
+     * Returns the number of elements currently stored in the internal element list.
+     *
+     * @returns {number} The total count of elements.
+     */
+    function get() {
+      return _classPrivateFieldGet(_el, this).length;
     }
   }, {
     key: "css",
@@ -37721,8 +38011,276 @@ var TinyHtml = /*#__PURE__*/function () {
       return TinyHtml.hasScroll(this);
     }
   }], [{
-    key: "createFrom",
-    value:
+    key: "fetchHtmlFile",
+    value: (
+    /**
+     * Fetches an HTML file from the given URL, parses it to JSON.
+     *
+     * @param {string | URL | globalThis.Request} url - The URL of the HTML file.
+     * @param {RequestInit} [ops] - Optional fetch configuration (e.g., method, headers, cache, etc).
+     * @returns {Promise<HtmlParsed[]>} A promise that resolves with the parsed JSON representation of the HTML structure.
+     */
+    function () {
+      var _fetchHtmlFile = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(url) {
+        var ops,
+          res,
+          contentType,
+          html,
+          _args = arguments;
+        return _regenerator().w(function (_context) {
+          while (1) switch (_context.n) {
+            case 0:
+              ops = _args.length > 1 && _args[1] !== undefined ? _args[1] : {
+                method: 'GET'
+              };
+              _context.n = 1;
+              return fetch(url, ops);
+            case 1:
+              res = _context.v;
+              contentType = res.headers.get('Content-Type') || '';
+              if (res.ok) {
+                _context.n = 2;
+                break;
+              }
+              throw new Error("Failed to fetch: ".concat(res.status, " ").concat(res.statusText));
+            case 2:
+              if (contentType.includes('text/html')) {
+                _context.n = 3;
+                break;
+              }
+              throw new Error("Invalid content type: ".concat(contentType, " (expected text/html)"));
+            case 3:
+              _context.n = 4;
+              return res.text();
+            case 4:
+              html = _context.v;
+              return _context.a(2, TinyHtml.htmlToJson(html));
+          }
+        }, _callee);
+      }));
+      function fetchHtmlFile(_x) {
+        return _fetchHtmlFile.apply(this, arguments);
+      }
+      return fetchHtmlFile;
+    }()
+    /**
+     * Fetches an HTML file from the given URL, parses it to JSON, then converts it to DOM nodes.
+     *
+     * @param {string} url - The URL of the HTML file.
+     * @param {RequestInit} [ops] - Optional fetch configuration (e.g., method, headers, cache, etc).
+     * @returns {Promise<(HTMLElement|Text)[]>} A promise that resolves with the DOM nodes.
+     */
+    )
+  }, {
+    key: "fetchHtmlNodes",
+    value: (function () {
+      var _fetchHtmlNodes = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(url, ops) {
+        var json;
+        return _regenerator().w(function (_context2) {
+          while (1) switch (_context2.n) {
+            case 0:
+              _context2.n = 1;
+              return TinyHtml.fetchHtmlFile(url, ops);
+            case 1:
+              json = _context2.v;
+              return _context2.a(2, TinyHtml.jsonToNodes(json));
+          }
+        }, _callee2);
+      }));
+      function fetchHtmlNodes(_x2, _x3) {
+        return _fetchHtmlNodes.apply(this, arguments);
+      }
+      return fetchHtmlNodes;
+    }()
+    /**
+     * Fetches an HTML file from the given URL, parses it to JSON, then converts it to TinyHtml instances.
+     *
+     * @param {string} url - The URL of the HTML file.
+     * @param {RequestInit} [ops] - Optional fetch configuration (e.g., method, headers, cache, etc).
+     * @returns {Promise<TinyHtml[]>} A promise that resolves with the TinyHtml instances.
+     */
+    )
+  }, {
+    key: "fetchHtmlTinyElems",
+    value: (function () {
+      var _fetchHtmlTinyElems = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(url, ops) {
+        var nodes;
+        return _regenerator().w(function (_context3) {
+          while (1) switch (_context3.n) {
+            case 0:
+              _context3.n = 1;
+              return TinyHtml.fetchHtmlNodes(url, ops);
+            case 1:
+              nodes = _context3.v;
+              return _context3.a(2, TinyHtml.toTinyElm(nodes));
+          }
+        }, _callee3);
+      }));
+      function fetchHtmlTinyElems(_x4, _x5) {
+        return _fetchHtmlTinyElems.apply(this, arguments);
+      }
+      return fetchHtmlTinyElems;
+    }()
+    /**
+     * Converts the content of a <template> to an array of HtmlParsed.
+     *
+     * @param {HTMLTemplateElement} nodes
+     * @returns {HtmlParsed[]}
+     */
+    )
+  }, {
+    key: "templateToJson",
+    value: function templateToJson(nodes) {
+      return TinyHtml.htmlToJson(_toConsumableArray(nodes.content.childNodes).map(function (node) {
+        return node instanceof Element ? node.getHTML() : node instanceof Text ? node.textContent : '';
+      }).join(''));
+    }
+    /**
+     * Converts the content of a <template> to real DOM nodes.
+     *
+     * @param {HTMLTemplateElement} nodes
+     * @returns {(Element|Text)[]}
+     */
+  }, {
+    key: "templateToNodes",
+    value: function templateToNodes(nodes) {
+      /** @type {(Element|Text)[]} */
+      var result = [];
+      _toConsumableArray(nodes.content.cloneNode(true).childNodes).map(function (node) {
+        if (!(node instanceof Element) && !(node instanceof Text) && !(node instanceof Comment)) throw new Error("Expected only Element nodes in <template>, but found: ".concat(node.constructor.name));
+        if (!(node instanceof Comment)) result.push(node);
+      });
+      return result;
+    }
+    /**
+     * Converts the content of a <template> to an array of TinyHtml elements.
+     *
+     * @param {HTMLTemplateElement} nodes
+     * @returns {TinyHtml[]}
+     */
+  }, {
+    key: "templateToTinyElems",
+    value: function templateToTinyElems(nodes) {
+      return TinyHtml.toTinyElm(TinyHtml.templateToNodes(nodes));
+    }
+    /**
+     * Parses a full HTML string into a JSON-like structure.
+     *
+     * @param {string} htmlString - Full HTML markup as a string.
+     * @returns {HtmlParsed[]} An array of parsed HTML elements in structured format.
+     */
+  }, {
+    key: "htmlToJson",
+    value: function htmlToJson(htmlString) {
+      var container = document.createElement('div');
+      container.innerHTML = htmlString.trim();
+      var result = [];
+      /**
+       * @param {Node} el
+       * @returns {*}
+       */
+      var _parseElement = function parseElement(el) {
+        if (el instanceof Comment) return null;
+        if (el instanceof Text) {
+          var _el$textContent;
+          var text = (_el$textContent = el.textContent) === null || _el$textContent === void 0 ? void 0 : _el$textContent.trim();
+          return text ? text : null;
+        }
+        if (!(el instanceof Element)) return null;
+        var tag = el.tagName.toLowerCase();
+        /** @type {Record<string, string>} */
+        var props = {};
+        var _iterator = _createForOfIteratorHelper(el.attributes),
+          _step;
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var attr = _step.value;
+            props[TinyHtml.getPropName(attr.name)] = attr.value;
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+        var children = Array.from(el.childNodes).map(_parseElement).filter(Boolean);
+        return children.length > 0 ? [tag, props].concat(_toConsumableArray(children)) : [tag, props];
+      };
+      var _iterator2 = _createForOfIteratorHelper(container.childNodes),
+        _step2;
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var child = _step2.value;
+          var parsed = _parseElement(child);
+          if (parsed) result.push(parsed);
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+      container.innerHTML = '';
+      return result;
+    }
+    /**
+     * Converts a JSON-like HTML structure back to DOM Elements.
+     *
+     * @param {HtmlParsed[]} jsonArray - Parsed JSON format of HTML.
+     * @returns {(HTMLElement|Text)[]} List of DOM nodes.
+     */
+  }, {
+    key: "jsonToNodes",
+    value: function jsonToNodes(jsonArray) {
+      /**
+       * @param {HtmlParsed|string} nodeData
+       * @returns {HTMLElement|Text}
+       */
+      var _createElement = function createElement(nodeData) {
+        if (typeof nodeData === 'string') {
+          return document.createTextNode(nodeData);
+        }
+        if (!Array.isArray(nodeData)) return document.createTextNode('');
+        var _nodeData = _toArray(nodeData),
+          tag = _nodeData[0],
+          props = _nodeData[1],
+          children = _nodeData.slice(2);
+        var el = document.createElement(tag);
+        for (var _i = 0, _Object$entries = Object.entries(props); _i < _Object$entries.length; _i++) {
+          var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+            key = _Object$entries$_i[0],
+            value = _Object$entries$_i[1];
+          el.setAttribute(TinyHtml.getAttrName(key), value);
+        }
+        var _iterator3 = _createForOfIteratorHelper(children),
+          _step3;
+        try {
+          for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+            var child = _step3.value;
+            var childEl = _createElement(child);
+            if (childEl instanceof Comment) continue;
+            el.appendChild(childEl);
+          }
+        } catch (err) {
+          _iterator3.e(err);
+        } finally {
+          _iterator3.f();
+        }
+        return el;
+      };
+      return jsonArray.map(_createElement).filter(function (node) {
+        return !(node instanceof Comment);
+      });
+    }
+    /**
+     * Converts a JSON-like HTML structure back to TinyHtml instances.
+     *
+     * @param {HtmlParsed[]} jsonArray - Parsed JSON format of HTML.
+     * @returns {TinyHtml[]} List of TinyHtml instances.
+     */
+  }, {
+    key: "jsonToTinyElems",
+    value: function jsonToTinyElems(jsonArray) {
+      return TinyHtml.toTinyElm(TinyHtml.jsonToNodes(jsonArray));
+    }
     /**
      * Creates a new TinyHtml element from a tag name and optional attributes.
      *
@@ -37738,7 +38296,9 @@ var TinyHtml = /*#__PURE__*/function () {
      * @returns {TinyHtml} - A new instance of TinyHtml representing the created element.
      * @throws {TypeError} - If `tagName` is not a string, or `attrs` is not a plain object when defined.
      */
-    function createFrom(tagName, attrs) {
+  }, {
+    key: "createFrom",
+    value: function createFrom(tagName, attrs) {
       if (typeof tagName !== 'string') throw new TypeError('The "tagName" must be a string.');
       if (typeof attrs !== 'undefined' && _typeof(attrs) !== 'object') throw new TypeError('The "attrs" must be a object.');
       var elem = TinyHtml.createElement(tagName);
@@ -37873,20 +38433,20 @@ var TinyHtml = /*#__PURE__*/function () {
         item.map(function (elem) {
           return (elem instanceof TinyHtml ? elem._getElements(where) : [elem]).map(function (result) {
             var allowed = false;
-            var _iterator = _createForOfIteratorHelper(TheTinyElements),
-              _step;
+            var _iterator4 = _createForOfIteratorHelper(TheTinyElements),
+              _step4;
             try {
-              for (_iterator.s(); !(_step = _iterator.n()).done;) {
-                var TheTinyElement = _step.value;
+              for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+                var TheTinyElement = _step4.value;
                 if (result instanceof TheTinyElement) {
                   allowed = true;
                   break;
                 }
               }
             } catch (err) {
-              _iterator.e(err);
+              _iterator4.e(err);
             } finally {
-              _iterator.f();
+              _iterator4.f();
             }
             if (!allowed) throw new Error("[TinyHtml] Invalid element of the list \"".concat(elemName.join(','), "\" in ").concat(where, "()."));
             results.push(result);
@@ -37920,20 +38480,20 @@ var TinyHtml = /*#__PURE__*/function () {
         var result = elem instanceof TinyHtml ? elem._getElements(where) : [elem];
         if (result.length > 1) throw new Error("[TinyHtml] Invalid element amount in ".concat(where, "() (Received ").concat(result.length, "/1)."));
         var allowed = false;
-        var _iterator2 = _createForOfIteratorHelper(TheTinyElements),
-          _step2;
+        var _iterator5 = _createForOfIteratorHelper(TheTinyElements),
+          _step5;
         try {
-          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-            var TheTinyElement = _step2.value;
+          for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+            var TheTinyElement = _step5.value;
             if (result[0] instanceof TheTinyElement) {
               allowed = true;
               break;
             }
           }
         } catch (err) {
-          _iterator2.e(err);
+          _iterator5.e(err);
         } finally {
-          _iterator2.f();
+          _iterator5.f();
         }
         if (canNull && (result[0] === null || typeof result[0] === 'undefined')) {
           result[0] = null;
@@ -38200,13 +38760,13 @@ var TinyHtml = /*#__PURE__*/function () {
      * This ensures consistent access to methods of the `TinyHtml` class regardless
      * of the input form.
      *
-     * @param {TinyElement|TinyElement[]} elems - A single element or an array of elements (DOM or TinyHtml).
+     * @param {TinyElement|Text|(TinyElement|Text)[]} elems - A single element or an array of elements (DOM or TinyHtml).
      * @returns {TinyHtml[]} An array of TinyHtml instances corresponding to the input elements.
      */
   }, {
     key: "toTinyElm",
     value: function toTinyElm(elems) {
-      /** @param {TinyElement[]} item */
+      /** @param {(TinyElement|Text)[]} item */
       var checkElement = function checkElement(item) {
         return item.map(function (elem) {
           return !(elem instanceof TinyHtml) ? new TinyHtml(elem) : elem;
@@ -38330,17 +38890,17 @@ var TinyHtml = /*#__PURE__*/function () {
     key: "find",
     value: function find(context, selector) {
       var result = [];
-      var _iterator3 = _createForOfIteratorHelper(TinyHtml._preElems(context, 'find')),
-        _step3;
+      var _iterator6 = _createForOfIteratorHelper(TinyHtml._preElems(context, 'find')),
+        _step6;
       try {
-        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-          var el = _step3.value;
+        for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+          var el = _step6.value;
           result.push.apply(result, _toConsumableArray(el.querySelectorAll(selector)));
         }
       } catch (err) {
-        _iterator3.e(err);
+        _iterator6.e(err);
       } finally {
-        _iterator3.f();
+        _iterator6.f();
       }
       return _toConsumableArray(new Set(result));
     }
@@ -38363,11 +38923,11 @@ var TinyHtml = /*#__PURE__*/function () {
     key: "closest",
     value: function closest(els, selector, context) {
       var matched = [];
-      var _iterator4 = _createForOfIteratorHelper(TinyHtml._preElems(els, 'closest')),
-        _step4;
+      var _iterator7 = _createForOfIteratorHelper(TinyHtml._preElems(els, 'closest')),
+        _step7;
       try {
-        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-          var el = _step4.value;
+        for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+          var el = _step7.value;
           /** @type {Element | null} */
           var current = el;
           while (current && current !== context) {
@@ -38379,9 +38939,9 @@ var TinyHtml = /*#__PURE__*/function () {
           }
         }
       } catch (err) {
-        _iterator4.e(err);
+        _iterator7.e(err);
       } finally {
-        _iterator4.f();
+        _iterator7.f();
       }
       return _toConsumableArray(new Set(matched));
     }
@@ -38727,20 +39287,20 @@ var TinyHtml = /*#__PURE__*/function () {
       var css = window.getComputedStyle(elem);
       /** @type {Partial<CSSStyleDeclaration>} */
       var result = {};
-      var _iterator5 = _createForOfIteratorHelper(prop),
-        _step5;
+      var _iterator8 = _createForOfIteratorHelper(prop),
+        _step8;
       try {
-        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-          var p = _step5.value;
+        for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
+          var p = _step8.value;
           if (typeof p !== 'undefined') {
             // @ts-ignore
             result[p] = css.getPropertyValue(p);
           }
         }
       } catch (err) {
-        _iterator5.e(err);
+        _iterator8.e(err);
       } finally {
-        _iterator5.f();
+        _iterator8.f();
       }
       return result;
     }
@@ -38761,18 +39321,18 @@ var TinyHtml = /*#__PURE__*/function () {
       var css = window.getComputedStyle(elem);
       /** @type {Record<string, number>} */
       var result = {};
-      var _iterator6 = _createForOfIteratorHelper(prop),
-        _step6;
+      var _iterator9 = _createForOfIteratorHelper(prop),
+        _step9;
       try {
-        for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
-          var name = _step6.value;
+        for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
+          var name = _step9.value;
           // @ts-ignore
           result[name] = parseFloat(css[name]) || 0;
         }
       } catch (err) {
-        _iterator6.e(err);
+        _iterator9.e(err);
       } finally {
-        _iterator6.f();
+        _iterator9.f();
       }
       return result;
     }
@@ -38816,10 +39376,10 @@ var TinyHtml = /*#__PURE__*/function () {
       var value = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
       TinyHtml._preHtmlElems(el, 'setStyle').forEach(function (elem) {
         if (_typeof(prop) === 'object') {
-          for (var _i = 0, _Object$entries = Object.entries(prop); _i < _Object$entries.length; _i++) {
-            var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
-              k = _Object$entries$_i[0],
-              v = _Object$entries$_i[1];
+          for (var _i2 = 0, _Object$entries2 = Object.entries(prop); _i2 < _Object$entries2.length; _i2++) {
+            var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i2], 2),
+              k = _Object$entries2$_i[0],
+              v = _Object$entries2$_i[1];
             elem.style.setProperty(TinyHtml.toStyleKc(k), typeof v === 'string' ? v : typeof v === 'number' ? "".concat(v, "px") : String(v));
           }
         } else elem.style.setProperty(TinyHtml.toStyleKc(prop), value);
@@ -38847,11 +39407,11 @@ var TinyHtml = /*#__PURE__*/function () {
       if (rawAttr) {
         var raw = elem.getAttribute('style') || '';
         var entries = raw.split(';');
-        var _iterator7 = _createForOfIteratorHelper(entries),
-          _step7;
+        var _iterator0 = _createForOfIteratorHelper(entries),
+          _step0;
         try {
-          for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
-            var entry = _step7.value;
+          for (_iterator0.s(); !(_step0 = _iterator0.n()).done;) {
+            var entry = _step0.value;
             var _entry$split = entry.split(':'),
               _entry$split2 = _slicedToArray(_entry$split, 2),
               rawProp = _entry$split2[0],
@@ -38862,9 +39422,9 @@ var TinyHtml = /*#__PURE__*/function () {
             result[camelCase ? TinyHtml.toStyleCc(prop) : prop] = value;
           }
         } catch (err) {
-          _iterator7.e(err);
+          _iterator0.e(err);
         } finally {
-          _iterator7.f();
+          _iterator0.f();
         }
       } else {
         var styles = elem.style;
@@ -38881,17 +39441,17 @@ var TinyHtml = /*#__PURE__*/function () {
     value: function removeStyle(el, prop) {
       TinyHtml._preHtmlElems(el, 'removeStyle').forEach(function (elem) {
         if (Array.isArray(prop)) {
-          var _iterator8 = _createForOfIteratorHelper(prop),
-            _step8;
+          var _iterator1 = _createForOfIteratorHelper(prop),
+            _step1;
           try {
-            for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
-              var p = _step8.value;
+            for (_iterator1.s(); !(_step1 = _iterator1.n()).done;) {
+              var p = _step1.value;
               elem.style.removeProperty(TinyHtml.toStyleKc(p));
             }
           } catch (err) {
-            _iterator8.e(err);
+            _iterator1.e(err);
           } finally {
-            _iterator8.f();
+            _iterator1.f();
           }
         } else elem.style.removeProperty(TinyHtml.toStyleKc(prop));
       });
@@ -39695,11 +40255,11 @@ var TinyHtml = /*#__PURE__*/function () {
         var _event$clipboardData;
         if (!(event instanceof ClipboardEvent)) return;
         var items = ((_event$clipboardData = event.clipboardData) === null || _event$clipboardData === void 0 ? void 0 : _event$clipboardData.items) || [];
-        var _iterator9 = _createForOfIteratorHelper(items),
-          _step9;
+        var _iterator10 = _createForOfIteratorHelper(items),
+          _step10;
         try {
           var _loop = function _loop() {
-            var item = _step9.value;
+            var item = _step10.value;
             if (item.kind === 'file') {
               if (typeof onFilePaste === 'function') {
                 var file = item.getAsFile();
@@ -39711,13 +40271,13 @@ var TinyHtml = /*#__PURE__*/function () {
               });
             }
           };
-          for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
+          for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
             _loop();
           }
         } catch (err) {
-          _iterator9.e(err);
+          _iterator10.e(err);
         } finally {
-          _iterator9.f();
+          _iterator10.f();
         }
       };
       TinyHtml._preElemsWithDoc(el, 'listenForPaste').forEach(function (elem) {
@@ -39802,17 +40362,17 @@ var TinyHtml = /*#__PURE__*/function () {
       TinyHtml._preEventTargetElems(el, 'offAll').forEach(function (elem) {
         var events = __eventRegistry.get(elem);
         if (events && events[event]) {
-          var _iterator0 = _createForOfIteratorHelper(events[event]),
-            _step0;
+          var _iterator11 = _createForOfIteratorHelper(events[event]),
+            _step11;
           try {
-            for (_iterator0.s(); !(_step0 = _iterator0.n()).done;) {
-              var entry = _step0.value;
+            for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
+              var entry = _step11.value;
               elem.removeEventListener(event, entry.handler, entry.options);
             }
           } catch (err) {
-            _iterator0.e(err);
+            _iterator11.e(err);
           } finally {
-            _iterator0.f();
+            _iterator11.f();
           }
           delete events[event];
         }
@@ -39828,19 +40388,19 @@ var TinyHtml = /*#__PURE__*/function () {
         var events = __eventRegistry.get(elem);
         if (!events) return;
         for (var event in events) {
-          var _iterator1 = _createForOfIteratorHelper(events[event]),
-            _step1;
+          var _iterator12 = _createForOfIteratorHelper(events[event]),
+            _step12;
           try {
-            for (_iterator1.s(); !(_step1 = _iterator1.n()).done;) {
-              var entry = _step1.value;
+            for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
+              var entry = _step12.value;
               if (typeof filterFn !== 'function' || filterFn(entry.handler, event)) {
                 elem.removeEventListener(event, entry.handler, entry.options);
               }
             }
           } catch (err) {
-            _iterator1.e(err);
+            _iterator12.e(err);
           } finally {
-            _iterator1.f();
+            _iterator12.f();
           }
         }
         __eventRegistry["delete"](elem);
@@ -40149,8 +40709,8 @@ var TinyHtml = /*#__PURE__*/function () {
     value: function resetCollLock(el) {
       var elem = TinyHtml._preElem(el, 'resetCollLock');
       var removed = false;
-      for (var _i2 = 0, _arr = /** @type {CollisionDirLock[]} */['top', 'bottom', 'left', 'right']; _i2 < _arr.length; _i2++) {
-        var dir = _arr[_i2];
+      for (var _i3 = 0, _arr = /** @type {CollisionDirLock[]} */['top', 'bottom', 'left', 'right']; _i3 < _arr.length; _i3++) {
+        var dir = _arr[_i3];
         if (__elemCollision[dir].has(elem)) {
           __elemCollision[dir]["delete"](elem);
           removed = true;
@@ -43063,6 +43623,10 @@ var _resizeObserver = /*#__PURE__*/new WeakMap();
 var _mutationObserver = /*#__PURE__*/new WeakMap();
 var _loadTags = /*#__PURE__*/new WeakMap();
 var _handler = /*#__PURE__*/new WeakMap();
+var _isPastAtBottom = /*#__PURE__*/new WeakMap();
+var _isPastAtTop = /*#__PURE__*/new WeakMap();
+var _isPastAtCustomTop = /*#__PURE__*/new WeakMap();
+var _isPastAtCustomBottom = /*#__PURE__*/new WeakMap();
 var _isAtBottom = /*#__PURE__*/new WeakMap();
 var _isAtTop = /*#__PURE__*/new WeakMap();
 var _isAtCustomTop = /*#__PURE__*/new WeakMap();
@@ -43138,6 +43702,10 @@ var TinySmartScroller = /*#__PURE__*/function () {
     _classPrivateFieldInitSpec(this, _loadTags, new Set(['IMG', 'IFRAME', 'VIDEO']));
     /** @type {null|EventListenerOrEventListenerObject} */
     _classPrivateFieldInitSpec(this, _handler, null);
+    _classPrivateFieldInitSpec(this, _isPastAtBottom, false);
+    _classPrivateFieldInitSpec(this, _isPastAtTop, false);
+    _classPrivateFieldInitSpec(this, _isPastAtCustomTop, false);
+    _classPrivateFieldInitSpec(this, _isPastAtCustomBottom, false);
     _classPrivateFieldInitSpec(this, _isAtBottom, false);
     _classPrivateFieldInitSpec(this, _isAtTop, false);
     _classPrivateFieldInitSpec(this, _isAtCustomTop, false);
@@ -43646,6 +44214,7 @@ var TinySmartScroller = /*#__PURE__*/function () {
   }, {
     key: "_onScroll",
     value: function _onScroll() {
+      var _classPrivateFieldGet4, _classPrivateFieldGet5, _classPrivateFieldGet6, _classPrivateFieldGet7;
       if (_classPrivateFieldGet(_destroyed, this)) return;
       // Get values
       var scrollCache = this._scrollDataUpdater();
@@ -43668,6 +44237,10 @@ var TinySmartScroller = /*#__PURE__*/function () {
       // Scroll results
       if (atTop && atBottom) atResult = 'all';else if (atTop) atResult = 'top';else if (atBottom) atResult = 'bottom';
       if (atCustomTop && atCustomBottom) atCustomResult = 'all';else if (atCustomTop) atCustomResult = 'top';else if (atCustomBottom) atCustomResult = 'bottom';
+      _classPrivateFieldSet(_isPastAtTop, this, (_classPrivateFieldGet4 = _classPrivateFieldGet(_isAtTop, this)) !== null && _classPrivateFieldGet4 !== void 0 ? _classPrivateFieldGet4 : false);
+      _classPrivateFieldSet(_isPastAtBottom, this, (_classPrivateFieldGet5 = _classPrivateFieldGet(_isAtBottom, this)) !== null && _classPrivateFieldGet5 !== void 0 ? _classPrivateFieldGet5 : false);
+      _classPrivateFieldSet(_isPastAtCustomTop, this, (_classPrivateFieldGet6 = _classPrivateFieldGet(_isAtCustomTop, this)) !== null && _classPrivateFieldGet6 !== void 0 ? _classPrivateFieldGet6 : false);
+      _classPrivateFieldSet(_isPastAtCustomBottom, this, (_classPrivateFieldGet7 = _classPrivateFieldGet(_isAtCustomBottom, this)) !== null && _classPrivateFieldGet7 !== void 0 ? _classPrivateFieldGet7 : false);
       _classPrivateFieldSet(_isAtTop, this, atTop);
       _classPrivateFieldSet(_isAtBottom, this, atBottom);
       _classPrivateFieldSet(_isAtCustomTop, this, atCustomTop);
@@ -43769,10 +44342,10 @@ var TinySmartScroller = /*#__PURE__*/function () {
             _step2;
           try {
             for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-              var _classPrivateFieldGet4, _classPrivateFieldGet5;
+              var _classPrivateFieldGet8, _classPrivateFieldGet9;
               var target = _step2.value;
-              _classPrivateFieldGet(_newVisiblesByTime, _this4).set(target, (_classPrivateFieldGet4 = _classPrivateFieldGet(_newVisibles, _this4).get(target)) !== null && _classPrivateFieldGet4 !== void 0 ? _classPrivateFieldGet4 : false);
-              _classPrivateFieldGet(_oldVisiblesByTime, _this4).set(target, (_classPrivateFieldGet5 = _classPrivateFieldGet(_oldVisibles, _this4).get(target)) !== null && _classPrivateFieldGet5 !== void 0 ? _classPrivateFieldGet5 : false);
+              _classPrivateFieldGet(_newVisiblesByTime, _this4).set(target, (_classPrivateFieldGet8 = _classPrivateFieldGet(_newVisibles, _this4).get(target)) !== null && _classPrivateFieldGet8 !== void 0 ? _classPrivateFieldGet8 : false);
+              _classPrivateFieldGet(_oldVisiblesByTime, _this4).set(target, (_classPrivateFieldGet9 = _classPrivateFieldGet(_oldVisibles, _this4).get(target)) !== null && _classPrivateFieldGet9 !== void 0 ? _classPrivateFieldGet9 : false);
             }
           } catch (err) {
             _iterator2.e(err);
@@ -43927,8 +44500,8 @@ var TinySmartScroller = /*#__PURE__*/function () {
   }, {
     key: "getOldSize",
     value: function getOldSize(el) {
-      var _classPrivateFieldGet6;
-      return (_classPrivateFieldGet6 = _classPrivateFieldGet(_oldSizes, this).get(el)) !== null && _classPrivateFieldGet6 !== void 0 ? _classPrivateFieldGet6 : null;
+      var _classPrivateFieldGet0;
+      return (_classPrivateFieldGet0 = _classPrivateFieldGet(_oldSizes, this).get(el)) !== null && _classPrivateFieldGet0 !== void 0 ? _classPrivateFieldGet0 : null;
     }
     /**
      * Returns the current size of a given element, or undefined if not tracked.
@@ -43939,8 +44512,8 @@ var TinySmartScroller = /*#__PURE__*/function () {
   }, {
     key: "getNewSize",
     value: function getNewSize(el) {
-      var _classPrivateFieldGet7;
-      return (_classPrivateFieldGet7 = _classPrivateFieldGet(_newSizes, this).get(el)) !== null && _classPrivateFieldGet7 !== void 0 ? _classPrivateFieldGet7 : null;
+      var _classPrivateFieldGet1;
+      return (_classPrivateFieldGet1 = _classPrivateFieldGet(_newSizes, this).get(el)) !== null && _classPrivateFieldGet1 !== void 0 ? _classPrivateFieldGet1 : null;
     }
     /**
      * Returns whether the given element was visible in the last scroll update.
@@ -43951,8 +44524,8 @@ var TinySmartScroller = /*#__PURE__*/function () {
   }, {
     key: "wasVisible",
     value: function wasVisible(el) {
-      var _classPrivateFieldGet8;
-      return (_classPrivateFieldGet8 = _classPrivateFieldGet(_oldVisibles, this).get(el)) !== null && _classPrivateFieldGet8 !== void 0 ? _classPrivateFieldGet8 : false;
+      var _classPrivateFieldGet10;
+      return (_classPrivateFieldGet10 = _classPrivateFieldGet(_oldVisibles, this).get(el)) !== null && _classPrivateFieldGet10 !== void 0 ? _classPrivateFieldGet10 : false;
     }
     /**
      * Returns whether the given element is currently visible.
@@ -43963,8 +44536,8 @@ var TinySmartScroller = /*#__PURE__*/function () {
   }, {
     key: "isVisible",
     value: function isVisible(el) {
-      var _classPrivateFieldGet9;
-      return (_classPrivateFieldGet9 = _classPrivateFieldGet(_newVisibles, this).get(el)) !== null && _classPrivateFieldGet9 !== void 0 ? _classPrivateFieldGet9 : false;
+      var _classPrivateFieldGet11;
+      return (_classPrivateFieldGet11 = _classPrivateFieldGet(_newVisibles, this).get(el)) !== null && _classPrivateFieldGet11 !== void 0 ? _classPrivateFieldGet11 : false;
     }
     /**
      * Returns whether the element was visible in the last time-based visibility check.
@@ -43975,8 +44548,8 @@ var TinySmartScroller = /*#__PURE__*/function () {
   }, {
     key: "wasTimedVisible",
     value: function wasTimedVisible(el) {
-      var _classPrivateFieldGet0;
-      return (_classPrivateFieldGet0 = _classPrivateFieldGet(_oldVisiblesByTime, this).get(el)) !== null && _classPrivateFieldGet0 !== void 0 ? _classPrivateFieldGet0 : false;
+      var _classPrivateFieldGet12;
+      return (_classPrivateFieldGet12 = _classPrivateFieldGet(_oldVisiblesByTime, this).get(el)) !== null && _classPrivateFieldGet12 !== void 0 ? _classPrivateFieldGet12 : false;
     }
     /**
      * Returns whether the element is currently visible in the time-based check.
@@ -43987,8 +44560,8 @@ var TinySmartScroller = /*#__PURE__*/function () {
   }, {
     key: "isTimedVisible",
     value: function isTimedVisible(el) {
-      var _classPrivateFieldGet1;
-      return (_classPrivateFieldGet1 = _classPrivateFieldGet(_newVisiblesByTime, this).get(el)) !== null && _classPrivateFieldGet1 !== void 0 ? _classPrivateFieldGet1 : false;
+      var _classPrivateFieldGet13;
+      return (_classPrivateFieldGet13 = _classPrivateFieldGet(_newVisiblesByTime, this).get(el)) !== null && _classPrivateFieldGet13 !== void 0 ? _classPrivateFieldGet13 : false;
     }
     /**
      * Sets the extra scroll boundary margin used when determining if the user is at a "custom" bottom or top.
@@ -44043,6 +44616,87 @@ var TinySmartScroller = /*#__PURE__*/function () {
      * @returns {boolean}
      */
   }, {
+    key: "isAtCustomBottom",
+    value: function isAtCustomBottom() {
+      return _classPrivateFieldGet(_isAtCustomBottom, this);
+    }
+    /**
+     * Checks if the user is within the defined extra scroll boundary from the top.
+     *
+     * @returns {boolean}
+     */
+  }, {
+    key: "isAtCustomTop",
+    value: function isAtCustomTop() {
+      return _classPrivateFieldGet(_isAtCustomTop, this);
+    }
+    /**
+     * Returns true if the user is currently scrolled to the bottom of the element.
+     *
+     * @returns {boolean}
+     */
+  }, {
+    key: "isAtBottom",
+    value: function isAtBottom() {
+      return _classPrivateFieldGet(_isAtBottom, this);
+    }
+    /**
+     * Returns true if the user is currently scrolled to the top of the element.
+     *
+     * @returns {boolean}
+     */
+  }, {
+    key: "isAtTop",
+    value: function isAtTop() {
+      return _classPrivateFieldGet(_isAtTop, this);
+    }
+    /**
+     * Returns true if the user has already passed beyond the bottom boundary at some point.
+     *
+     * @returns {boolean}
+     */
+  }, {
+    key: "isPastAtBottom",
+    value: function isPastAtBottom() {
+      return _classPrivateFieldGet(_isPastAtBottom, this);
+    }
+    /**
+     * Returns true if the user has already passed beyond the top boundary at some point.
+     *
+     * @returns {boolean}
+     */
+  }, {
+    key: "isPastAtTop",
+    value: function isPastAtTop() {
+      return _classPrivateFieldGet(_isPastAtTop, this);
+    }
+    /**
+     * Returns true if the user has passed beyond the defined extra scroll boundary from the top at some point.
+     *
+     * @returns {boolean}
+     */
+  }, {
+    key: "isPastAtCustomTop",
+    value: function isPastAtCustomTop() {
+      return _classPrivateFieldGet(_isPastAtCustomTop, this);
+    }
+    /**
+     * Returns true if the user has passed beyond the defined extra scroll boundary from the bottom at some point.
+     *
+     * @returns {boolean}
+     */
+  }, {
+    key: "isPastAtCustomBottom",
+    value: function isPastAtCustomBottom() {
+      return _classPrivateFieldGet(_isPastAtCustomBottom, this);
+    }
+    /**
+     * Checks if the user is within the defined extra scroll boundary from the bottom.
+     *
+     * @returns {boolean}
+     * @deprecated - Use isAtCustomBottom instead.
+     */
+  }, {
     key: "isUserAtCustomBottom",
     value: function isUserAtCustomBottom() {
       return _classPrivateFieldGet(_isAtCustomBottom, this);
@@ -44051,6 +44705,7 @@ var TinySmartScroller = /*#__PURE__*/function () {
      * Checks if the user is within the defined extra scroll boundary from the top.
      *
      * @returns {boolean}
+     * @deprecated - Use isAtCustomTop instead.
      */
   }, {
     key: "isUserAtCustomTop",
@@ -44061,6 +44716,7 @@ var TinySmartScroller = /*#__PURE__*/function () {
      * Returns true if the user is currently scrolled to the bottom of the element.
      *
      * @returns {boolean}
+     * @deprecated - Use isAtBottom instead.
      */
   }, {
     key: "isUserAtBottom",
@@ -44071,6 +44727,7 @@ var TinySmartScroller = /*#__PURE__*/function () {
      * Returns true if the user is currently scrolled to the top of the element.
      *
      * @returns {boolean}
+     * @deprecated - Use isAtTop instead.
      */
   }, {
     key: "isUserAtTop",
@@ -44717,6 +45374,260 @@ var _default = exports["default"] = TinyTextRangeEditor;
 },{}],181:[function(require,module,exports){
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateMethodInitSpec(e, a) { _checkPrivateRedeclaration(e, a), a.add(e); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+var _lineHeight = /*#__PURE__*/new WeakMap();
+var _maxRows = /*#__PURE__*/new WeakMap();
+var _extraHeight = /*#__PURE__*/new WeakMap();
+var _lastKnownHeight = /*#__PURE__*/new WeakMap();
+var _lastKnownRows = /*#__PURE__*/new WeakMap();
+var _textarea = /*#__PURE__*/new WeakMap();
+var _onResize = /*#__PURE__*/new WeakMap();
+var _onInput = /*#__PURE__*/new WeakMap();
+var _TinyTextarea_brand = /*#__PURE__*/new WeakSet();
+/**
+ * @typedef {Object} OnInputInfo
+ * @property {number} breakLines - Total number of `\n` line breaks in the textarea value.
+ * @property {number} height - Final calculated height (in pixels) applied to the textarea.
+ * @property {number} scrollHeight - Internal scrollHeight before limiting.
+ * @property {number} maxHeight - Maximum allowed height before scrolling is forced.
+ * @property {number} lineHeight - Height of one line of text, computed from CSS.
+ * @property {number} maxRows - Maximum number of visible rows allowed.
+ * @property {number} rows - Effective number of visual rows being used.
+ */
+/**
+ * A lightweight utility class that automatically adjusts the height of a `<textarea>`
+ * element based on its content. It prevents scrollbars by expanding vertically as needed,
+ * up to a configurable maximum number of visible rows.
+ *
+ * Features:
+ * - Automatically resizes the textarea as the user types
+ * - Prevents vertical scrollbars until a maximum row limit is reached
+ * - Supports additional height padding
+ * - Provides real-time callbacks for input and resize events
+ * - Allows manual refresh and cleanup of behavior
+ *
+ * Ideal for chat inputs, note editors, or any form where dynamic space usage
+ * is preferred without relying on scrollbars too early.
+ *
+ * @class
+ * @beta
+ */
+var TinyTextarea = /*#__PURE__*/function () {
+  /**
+   * Creates a new TinyTextarea instance.
+   *
+   * @param {HTMLTextAreaElement} textarea - The `<textarea>` element to enhance.
+   * @param {Object} [options={}] - Optional configuration parameters.
+   * @param {number} [options.maxRows] - Maximum number of visible rows before scrolling.
+   * @param {number} [options.extraHeight] - Additional pixels to add to final height.
+   * @param {(info: OnInputInfo) => void} [options.onResize] - Callback when the number of rows changes.
+   * @param {(info: OnInputInfo) => void} [options.onInput] - Callback on every input event.
+   * @throws {Error} If `textarea` is not a valid `<textarea>` element.
+   * @throws {TypeError} If provided options are of invalid types.
+   */
+  function TinyTextarea(textarea) {
+    var _options$maxRows,
+      _options$extraHeight,
+      _options$onResize,
+      _options$onInput,
+      _this = this;
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    _classCallCheck(this, TinyTextarea);
+    /**
+     * Automatically resize the textarea based on its content and notify listeners.
+     * Triggers `onResize` if the number of rows has changed.
+     * Always triggers `onInput`.
+     */
+    _classPrivateMethodInitSpec(this, _TinyTextarea_brand);
+    _classPrivateFieldInitSpec(this, _lineHeight, void 0);
+    _classPrivateFieldInitSpec(this, _maxRows, void 0);
+    _classPrivateFieldInitSpec(this, _extraHeight, void 0);
+    _classPrivateFieldInitSpec(this, _lastKnownHeight, 0);
+    _classPrivateFieldInitSpec(this, _lastKnownRows, 0);
+    /** @type {HTMLTextAreaElement} */
+    _classPrivateFieldInitSpec(this, _textarea, void 0);
+    /**
+     * @type {((info: OnInputInfo) => void) | null}
+     */
+    _classPrivateFieldInitSpec(this, _onResize, null);
+    /**
+     * @type {((info: OnInputInfo) => void) | null}
+     */
+    _classPrivateFieldInitSpec(this, _onInput, null);
+    if (!(textarea instanceof HTMLTextAreaElement)) throw new Error('TinyTextarea: Provided element is not a <textarea>.');
+    if (_typeof(options) !== 'object' || options === null) throw new TypeError('TinyTextarea: Options must be an object if provided.');
+    if ('maxRows' in options && typeof options.maxRows !== 'number') throw new TypeError('TinyTextarea: `maxRows` must be a number.');
+    if ('extraHeight' in options && typeof options.extraHeight !== 'number') throw new TypeError('TinyTextarea: `extraHeight` must be a number.');
+    if ('onResize' in options && typeof options.onResize !== 'function') throw new TypeError('TinyTextarea: `onResize` must be a function.');
+    if ('onInput' in options && typeof options.onInput !== 'function') throw new TypeError('TinyTextarea: `onInput` must be a function.');
+    _classPrivateFieldSet(_textarea, this, textarea);
+    _classPrivateFieldSet(_maxRows, this, ((_options$maxRows = options.maxRows) !== null && _options$maxRows !== void 0 ? _options$maxRows : 5) + 1);
+    _classPrivateFieldSet(_extraHeight, this, (_options$extraHeight = options.extraHeight) !== null && _options$extraHeight !== void 0 ? _options$extraHeight : 0);
+    _classPrivateFieldSet(_onResize, this, (_options$onResize = options.onResize) !== null && _options$onResize !== void 0 ? _options$onResize : null);
+    _classPrivateFieldSet(_onInput, this, (_options$onInput = options.onInput) !== null && _options$onInput !== void 0 ? _options$onInput : null);
+    _classPrivateFieldSet(_lineHeight, this, _assertClassBrand(_TinyTextarea_brand, this, _getLineHeight).call(this));
+    textarea.style.overflowY = 'hidden';
+    textarea.style.resize = 'none';
+    this._handleInput = function () {
+      return _assertClassBrand(_TinyTextarea_brand, _this, _resize).call(_this);
+    };
+    textarea.addEventListener('input', this._handleInput);
+    _assertClassBrand(_TinyTextarea_brand, this, _resize).call(this);
+  }
+  return _createClass(TinyTextarea, [{
+    key: "lineHeight",
+    get:
+    /**
+     * Returns the computed line height in pixels.
+     * @returns {number}
+     */
+    function get() {
+      return _classPrivateFieldGet(_lineHeight, this);
+    }
+    /**
+     * Returns the maximum number of rows allowed.
+     * @returns {number}
+     */
+  }, {
+    key: "maxRows",
+    get: function get() {
+      return _classPrivateFieldGet(_maxRows, this) - 1;
+    }
+    /**
+     * Returns the additional height added to the textarea.
+     * @returns {number}
+     */
+  }, {
+    key: "extraHeight",
+    get: function get() {
+      return _classPrivateFieldGet(_extraHeight, this);
+    }
+    /**
+     * Returns the most recently applied height.
+     * @returns {number}
+     */
+  }, {
+    key: "currentHeight",
+    get: function get() {
+      return _classPrivateFieldGet(_lastKnownHeight, this);
+    }
+    /**
+     * Returns the most recently calculated row count.
+     * @returns {number}
+     */
+  }, {
+    key: "currentRows",
+    get: function get() {
+      return _classPrivateFieldGet(_lastKnownRows, this);
+    }
+    /**
+     * Returns the original textarea element managed by this instance.
+     * @returns {HTMLTextAreaElement}
+     */
+  }, {
+    key: "textarea",
+    get: function get() {
+      return _classPrivateFieldGet(_textarea, this);
+    }
+  }, {
+    key: "getData",
+    value:
+    /**
+     * Returns the latest height and row count of the textarea.
+     * @returns {{ height: number, rows: number }} - Last known resize state.
+     */
+    function getData() {
+      return {
+        rows: _classPrivateFieldGet(_lastKnownRows, this),
+        height: _classPrivateFieldGet(_lastKnownHeight, this)
+      };
+    }
+    /**
+     * Manually trigger a resize check.
+     */
+  }, {
+    key: "refresh",
+    value: function refresh() {
+      _assertClassBrand(_TinyTextarea_brand, this, _resize).call(this);
+    }
+    /**
+     * Cleans up internal listeners and disables dynamic behavior.
+     */
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      _classPrivateFieldGet(_textarea, this).removeEventListener('input', this._handleInput);
+    }
+  }]);
+}();
+function _resize() {
+  _classPrivateFieldGet(_textarea, this).style.height = 'auto';
+  var style = window.getComputedStyle(_classPrivateFieldGet(_textarea, this));
+  var paddingTop = parseFloat(style.paddingTop) || 0;
+  var paddingBottom = parseFloat(style.paddingBottom) || 0;
+  var breakLines = (_classPrivateFieldGet(_textarea, this).value.match(/\n/g) || []).length;
+  var scrollHeight = _classPrivateFieldGet(_textarea, this).scrollHeight;
+  var maxHeight = _classPrivateFieldGet(_lineHeight, this) * _classPrivateFieldGet(_maxRows, this);
+  var newHeight = Math.ceil(Math.min(scrollHeight, maxHeight) - paddingTop - paddingBottom + _classPrivateFieldGet(_extraHeight, this));
+  // const rows = Math.round(newHeight / this.#lineHeight);
+  var maxRows = _classPrivateFieldGet(_maxRows, this) - 1;
+  var rows = breakLines < maxRows ? breakLines + 1 : maxRows;
+  _classPrivateFieldGet(_textarea, this).style.height = "".concat(newHeight, "px");
+  _classPrivateFieldGet(_textarea, this).style.overflowY = scrollHeight > maxHeight ? 'auto' : 'hidden';
+  _classPrivateFieldSet(_lastKnownHeight, this, newHeight);
+  var info = {
+    breakLines: breakLines,
+    rows: rows,
+    height: newHeight,
+    scrollHeight: scrollHeight,
+    maxHeight: maxHeight,
+    lineHeight: _classPrivateFieldGet(_lineHeight, this),
+    maxRows: maxRows
+  };
+  if (rows !== _classPrivateFieldGet(_lastKnownRows, this)) {
+    _classPrivateFieldSet(_lastKnownRows, this, rows);
+    if (typeof _classPrivateFieldGet(_onResize, this) === 'function') {
+      _classPrivateFieldGet(_onResize, this).call(this, _objectSpread({}, info));
+    }
+  }
+  if (typeof _classPrivateFieldGet(_onInput, this) === 'function') {
+    _classPrivateFieldGet(_onInput, this).call(this, info);
+  }
+}
+/**
+ * Computes the current line height from the textarea's computed styles.
+ * Falls back to `fontSize * 1.2` if lineHeight is not a number.
+ * @returns {number} - The computed line height in pixels.
+ */
+function _getLineHeight() {
+  var style = window.getComputedStyle(_classPrivateFieldGet(_textarea, this));
+  var line = parseFloat(style.lineHeight);
+  if (!Number.isNaN(line)) return line;
+  return parseFloat(style.fontSize) * 1.2;
+}
+var _default = exports["default"] = TinyTextarea;
+
+},{}],182:[function(require,module,exports){
+"use strict";
+
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -44931,9 +45842,9 @@ var TinyTimeout = /*#__PURE__*/function () {
 }();
 var _default = exports["default"] = TinyTimeout;
 
-},{}],182:[function(require,module,exports){
+},{}],183:[function(require,module,exports){
 arguments[4][133][0].apply(exports,arguments)
-},{"dup":133}],183:[function(require,module,exports){
+},{"dup":133}],184:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45695,7 +46606,7 @@ _defineProperty(UltraRandomMsgGen, "defaultAdjectives", defaultAdjectives);
 _defineProperty(UltraRandomMsgGen, "defaultTemplates", defaultTemplates);
 var _default = exports["default"] = UltraRandomMsgGen;
 
-},{}],184:[function(require,module,exports){
+},{}],185:[function(require,module,exports){
 (function (process){(function (){
 "use strict";
 
@@ -47859,6 +48770,6 @@ tippy.setDefaultProps({
 var _default = exports["default"] = tippy;
 
 }).call(this)}).call(this,require('_process'))
-},{"@popperjs/core":27,"_process":98}],185:[function(require,module,exports){
+},{"@popperjs/core":27,"_process":98}],186:[function(require,module,exports){
 module.exports=function(e){var r={};function t(n){if(r[n])return r[n].exports;var a=r[n]={i:n,l:!1,exports:{}};return e[n].call(a.exports,a,a.exports,t),a.l=!0,a.exports}return t.m=e,t.c=r,t.d=function(e,r,n){t.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:n})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,r){if(1&r&&(e=t(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(t.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var a in e)t.d(n,a,function(r){return e[r]}.bind(null,a));return n},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},t.p="",t(t.s=0)}([function(e,r,t){"use strict";t.r(r),t.d(r,"validateHTMLColorName",(function(){return l})),t.d(r,"validateHTMLColorSpecialName",(function(){return i})),t.d(r,"validateHTMLColorHex",(function(){return u})),t.d(r,"validateHTMLColorRgb",(function(){return g})),t.d(r,"validateHTMLColorHsl",(function(){return y})),t.d(r,"validateHTMLColorHwb",(function(){return L})),t.d(r,"validateHTMLColorLab",(function(){return S})),t.d(r,"validateHTMLColorLch",(function(){return m})),t.d(r,"validateHTMLColor",(function(){return G}));const n=e=>e&&"string"==typeof e,a=["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenrod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","DarkOrange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","Goldenrod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenrodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquamarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenrod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","RebeccaPurple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"],o=["currentColor","inherit","transparent"],l=e=>{let r=!1;return n(e)&&a.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},i=e=>{let r=!1;return n(e)&&o.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},u=e=>{if(n(e)){const r=/^#([\da-f]{3}){1,2}$|^#([\da-f]{4}){1,2}$/i;return e&&r.test(e)}return!1},d="(([\\d]{0,5})((\\.([\\d]{1,5}))?))",s=`(${d}%)`,c="(([0-9]|[1-9][0-9]|100)%)",f=`(${c}|(0?((\\.([\\d]{1,5}))?))|1)`,h=`([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?)([\\s]{1,5})${`(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?`}([\\s]{0,5})\\)`,$="(-?(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360)(deg)?)",g=e=>{if(n(e)){const r="([\\s]{0,5})([\\d]{1,5})%?([\\s]{0,5}),?",t="((([\\s]{0,5}),?([\\s]{0,5}))|(([\\s]{1,5})))",n=new RegExp(`^(rgb)a?\\(${`${r}${t}`}${`${r}${t}`}${`${r}${t}`}(${"(\\/?([\\s]{0,5})(0?\\.?([\\d]{1,5})%?([\\s]{0,5}))?|1|0)"})?\\)$`);return e&&n.test(e)}return!1},y=e=>{if(n(e)){const r=new RegExp(`^(hsl)a?\\((([\\s]{0,5})(${$}|${"(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-9][0-9]|400)grad)"}|${"((([0-5])?\\.([\\d]{1,5})|6\\.([0-9]|1[0-9]|2[0-8])|[0-6])rad)"}|${"((0?((\\.([\\d]{1,5}))?)|1)turn)"})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?|,?)([\\s]{0,5})(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?\\)$`);return e&&r.test(e)}return!1},L=e=>{if(n(e)){const r=new RegExp(`^(hwb\\(([\\s]{0,5})${$}([\\s]{1,5}))((0|${c})([\\s]{1,5}))((0|${c})${h}$`);return e&&r.test(e)}return!1},S=e=>{if(n(e)){const r="(-?(([0-9]|[1-9][0-9]|1[0-5][0-9])((\\.([\\d]{1,5}))?)?|160))",t=new RegExp(`^(lab\\(([\\s]{0,5})${s}([\\s]{1,5})${r}([\\s]{1,5})${r}${h}$`);return e&&t.test(e)}return!1},m=e=>{if(n(e)){const r="((([0-9]|[1-9][0-9])?((\\.([\\d]{1,5}))?)|100)(%)?)",t=""+d,n=`((${$})|(0|${f})|(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360))`,a=`(\\/([\\s]{0,5})${f})`,o=new RegExp(`^lch\\(${`(([\\s]{0,5})${r}([\\s]{1,5})${t}([\\s]{1,5})${n}([\\s]{0,5})(${a})?)`}\\)$`);return e&&o.test(e)}return!1},G=e=>!!(e&&u(e)||g(e)||y(e)||L(e)||S(e)||m(e));r.default=e=>!!(e&&u(e)||l(e)||i(e)||g(e)||y(e)||L(e)||S(e)||m(e))}]);
 },{}]},{},[1]);
