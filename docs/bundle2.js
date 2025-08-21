@@ -1,81 +1,4 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-(function (global){(function (){
-"use strict";
-
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-var _socket = require("socket.io-client");
-var _tippy = _interopRequireDefault(require("tippy.js"));
-var _forPromise = _interopRequireDefault(require("for-promise"));
-var _photoswipe = _interopRequireDefault(require("photoswipe"));
-var _pizzicato = _interopRequireDefault(require("pizzicato"));
-var JsStore = _interopRequireWildcard(require("jsstore"));
-var _validateColor = _interopRequireDefault(require("validate-color"));
-var _circleLoader = require("circle-loader");
-var _tinyAiApi = require("tiny-ai-api");
-var _tinyEssentials = require("tiny-essentials");
-var _tinyDices = _interopRequireDefault(require("tiny-dices"));
-function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
-// Socket.io
-
-// Tippy JS
-
-// For Promise
-
-// Photoswipe
-
-// Pizzicato
-
-// jsstore
-
-// Validate color
-
-// Circle Loader
-
-// Tiny AI
-
-var startModules = new _tinyEssentials.TinyDomReadyManager();
-startModules.onReady(function () {
-  return (0, _tinyEssentials.installWindowHiddenScript)();
-});
-startModules.init();
-global.window.tinyNotification = new _tinyEssentials.TinyNotifications({
-  audio: '/audio/notification.ogg',
-  defaultIcon: '/img/icon/192.png'
-});
-
-// Imports
-(0, _tinyEssentials.addAiMarkerShortcut)();
-global.window.isJsonObject = _tinyEssentials.isJsonObject;
-global.window.getSimplePerc = _tinyEssentials.getSimplePerc;
-global.window.circleLoader = _circleLoader.Loader;
-global.window.tinyLs = new _tinyEssentials.TinyLocalStorage('pony-driland');
-global.window.TinyTextRangeEditor = _tinyEssentials.TinyTextRangeEditor;
-global.window.TinyDomReadyManager = _tinyEssentials.TinyDomReadyManager;
-global.window.TinyAfterScrollWatcher = _tinyEssentials.TinyAfterScrollWatcher;
-global.window.TinyHtml = _tinyEssentials.TinyHtml;
-global.window.readBase64Blob = _tinyEssentials.readBase64Blob;
-global.window.readJsonBlob = _tinyEssentials.readJsonBlob;
-global.window.fetchJson = _tinyEssentials.fetchJson;
-global.window.TinyDices = _tinyDices["default"];
-global.window.setTinyGoogleAi = _tinyAiApi.setTinyGoogleAi;
-global.window.TinyAiInstance = _tinyAiApi.TinyAiInstance;
-global.window.validateColor = _validateColor["default"];
-global.window.JsStore = JsStore;
-global.window.tippy = _tippy["default"];
-global.window.io = _socket.io;
-global.window.forPromise = _forPromise["default"];
-global.window.ruleOfThree = _tinyEssentials.ruleOfThree;
-global.window.toTitleCase = _tinyEssentials.toTitleCase;
-global.window.formatDayTimer = _tinyEssentials.formatDayTimer;
-global.window.objType = _tinyEssentials.objType;
-global.window.countObj = _tinyEssentials.countObj;
-global.window.shuffleArray = _tinyEssentials.shuffleArray;
-global.window.Pizzicato = _pizzicato["default"];
-global.window.PhotoSwipeLightbox = _photoswipe["default"];
-
-}).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"circle-loader":63,"for-promise":86,"jsstore":92,"photoswipe":96,"pizzicato":97,"socket.io-client":100,"tiny-ai-api":111,"tiny-dices":134,"tiny-essentials":162,"tippy.js":185,"validate-color":186}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -271,7 +194,7 @@ function popperGenerator(generatorOptions) {
 }
 var createPopper = exports.createPopper = /*#__PURE__*/popperGenerator(); // eslint-disable-next-line import/no-unused-modules
 
-},{"./dom-utils/getCompositeRect.js":6,"./dom-utils/getLayoutRect.js":11,"./dom-utils/getOffsetParent.js":14,"./dom-utils/instanceOf.js":21,"./dom-utils/listScrollParents.js":25,"./utils/debounce.js":42,"./utils/detectOverflow.js":43,"./utils/mergeByName.js":53,"./utils/orderModifiers.js":55}],3:[function(require,module,exports){
+},{"./dom-utils/getCompositeRect.js":5,"./dom-utils/getLayoutRect.js":10,"./dom-utils/getOffsetParent.js":13,"./dom-utils/instanceOf.js":20,"./dom-utils/listScrollParents.js":24,"./utils/debounce.js":41,"./utils/detectOverflow.js":42,"./utils/mergeByName.js":52,"./utils/orderModifiers.js":54}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -299,7 +222,7 @@ function contains(parent, child) {
   return false;
 }
 
-},{"./instanceOf.js":21}],4:[function(require,module,exports){
+},{"./instanceOf.js":20}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -344,7 +267,7 @@ function getBoundingClientRect(element, includeScale, isFixedStrategy) {
   };
 }
 
-},{"../utils/math.js":52,"./getWindow.js":18,"./instanceOf.js":21,"./isLayoutViewport.js":22}],5:[function(require,module,exports){
+},{"../utils/math.js":51,"./getWindow.js":17,"./instanceOf.js":20,"./isLayoutViewport.js":21}],4:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -417,7 +340,7 @@ function getClippingRect(element, boundary, rootBoundary, strategy) {
   return clippingRect;
 }
 
-},{"../enums.js":26,"../utils/math.js":52,"../utils/rectToClientRect.js":56,"./contains.js":3,"./getBoundingClientRect.js":4,"./getComputedStyle.js":7,"./getDocumentElement.js":8,"./getDocumentRect.js":9,"./getNodeName.js":12,"./getOffsetParent.js":14,"./getParentNode.js":15,"./getViewportRect.js":17,"./instanceOf.js":21,"./listScrollParents.js":25}],6:[function(require,module,exports){
+},{"../enums.js":25,"../utils/math.js":51,"../utils/rectToClientRect.js":55,"./contains.js":2,"./getBoundingClientRect.js":3,"./getComputedStyle.js":6,"./getDocumentElement.js":7,"./getDocumentRect.js":8,"./getNodeName.js":11,"./getOffsetParent.js":13,"./getParentNode.js":14,"./getViewportRect.js":16,"./instanceOf.js":20,"./listScrollParents.js":24}],5:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -479,7 +402,7 @@ function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
   };
 }
 
-},{"../utils/math.js":52,"./getBoundingClientRect.js":4,"./getDocumentElement.js":8,"./getNodeName.js":12,"./getNodeScroll.js":13,"./getWindowScrollBarX.js":20,"./instanceOf.js":21,"./isScrollParent.js":23}],7:[function(require,module,exports){
+},{"../utils/math.js":51,"./getBoundingClientRect.js":3,"./getDocumentElement.js":7,"./getNodeName.js":11,"./getNodeScroll.js":12,"./getWindowScrollBarX.js":19,"./instanceOf.js":20,"./isScrollParent.js":22}],6:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -492,7 +415,7 @@ function getComputedStyle(element) {
   return (0, _getWindow["default"])(element).getComputedStyle(element);
 }
 
-},{"./getWindow.js":18}],8:[function(require,module,exports){
+},{"./getWindow.js":17}],7:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -507,7 +430,7 @@ function getDocumentElement(element) {
   element.document) || window.document).documentElement;
 }
 
-},{"./instanceOf.js":21}],9:[function(require,module,exports){
+},{"./instanceOf.js":20}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -543,7 +466,7 @@ function getDocumentRect(element) {
   };
 }
 
-},{"../utils/math.js":52,"./getComputedStyle.js":7,"./getDocumentElement.js":8,"./getWindowScroll.js":19,"./getWindowScrollBarX.js":20}],10:[function(require,module,exports){
+},{"../utils/math.js":51,"./getComputedStyle.js":6,"./getDocumentElement.js":7,"./getWindowScroll.js":18,"./getWindowScrollBarX.js":19}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -557,7 +480,7 @@ function getHTMLElementScroll(element) {
   };
 }
 
-},{}],11:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -589,7 +512,7 @@ function getLayoutRect(element) {
   };
 }
 
-},{"./getBoundingClientRect.js":4}],12:[function(require,module,exports){
+},{"./getBoundingClientRect.js":3}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -600,7 +523,7 @@ function getNodeName(element) {
   return element ? (element.nodeName || '').toLowerCase() : null;
 }
 
-},{}],13:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -620,7 +543,7 @@ function getNodeScroll(node) {
   }
 }
 
-},{"./getHTMLElementScroll.js":10,"./getWindow.js":18,"./getWindowScroll.js":19,"./instanceOf.js":21}],14:[function(require,module,exports){
+},{"./getHTMLElementScroll.js":9,"./getWindow.js":17,"./getWindowScroll.js":18,"./instanceOf.js":20}],13:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -686,7 +609,7 @@ function getOffsetParent(element) {
   return offsetParent || getContainingBlock(element) || window;
 }
 
-},{"../utils/userAgent.js":57,"./getComputedStyle.js":7,"./getNodeName.js":12,"./getParentNode.js":15,"./getWindow.js":18,"./instanceOf.js":21,"./isTableElement.js":24}],15:[function(require,module,exports){
+},{"../utils/userAgent.js":56,"./getComputedStyle.js":6,"./getNodeName.js":11,"./getParentNode.js":14,"./getWindow.js":17,"./instanceOf.js":20,"./isTableElement.js":23}],14:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -716,7 +639,7 @@ function getParentNode(element) {
   );
 }
 
-},{"./getDocumentElement.js":8,"./getNodeName.js":12,"./instanceOf.js":21}],16:[function(require,module,exports){
+},{"./getDocumentElement.js":7,"./getNodeName.js":11,"./instanceOf.js":20}],15:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -739,7 +662,7 @@ function getScrollParent(node) {
   return getScrollParent((0, _getParentNode["default"])(node));
 }
 
-},{"./getNodeName.js":12,"./getParentNode.js":15,"./instanceOf.js":21,"./isScrollParent.js":23}],17:[function(require,module,exports){
+},{"./getNodeName.js":11,"./getParentNode.js":14,"./instanceOf.js":20,"./isScrollParent.js":22}],16:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -776,7 +699,7 @@ function getViewportRect(element, strategy) {
   };
 }
 
-},{"./getDocumentElement.js":8,"./getWindow.js":18,"./getWindowScrollBarX.js":20,"./isLayoutViewport.js":22}],18:[function(require,module,exports){
+},{"./getDocumentElement.js":7,"./getWindow.js":17,"./getWindowScrollBarX.js":19,"./isLayoutViewport.js":21}],17:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -794,7 +717,7 @@ function getWindow(node) {
   return node;
 }
 
-},{}],19:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -813,7 +736,7 @@ function getWindowScroll(node) {
   };
 }
 
-},{"./getWindow.js":18}],20:[function(require,module,exports){
+},{"./getWindow.js":17}],19:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -835,7 +758,7 @@ function getWindowScrollBarX(element) {
   return (0, _getBoundingClientRect["default"])((0, _getDocumentElement["default"])(element)).left + (0, _getWindowScroll["default"])(element).scrollLeft;
 }
 
-},{"./getBoundingClientRect.js":4,"./getDocumentElement.js":8,"./getWindowScroll.js":19}],21:[function(require,module,exports){
+},{"./getBoundingClientRect.js":3,"./getDocumentElement.js":7,"./getWindowScroll.js":18}],20:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -863,7 +786,7 @@ function isShadowRoot(node) {
   return node instanceof OwnElement || node instanceof ShadowRoot;
 }
 
-},{"./getWindow.js":18}],22:[function(require,module,exports){
+},{"./getWindow.js":17}],21:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -876,7 +799,7 @@ function isLayoutViewport() {
   return !/^((?!chrome|android).)*safari/i.test((0, _userAgent["default"])());
 }
 
-},{"../utils/userAgent.js":57}],23:[function(require,module,exports){
+},{"../utils/userAgent.js":56}],22:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -894,7 +817,7 @@ function isScrollParent(element) {
   return /auto|scroll|overlay|hidden/.test(overflow + overflowY + overflowX);
 }
 
-},{"./getComputedStyle.js":7}],24:[function(require,module,exports){
+},{"./getComputedStyle.js":6}],23:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -907,7 +830,7 @@ function isTableElement(element) {
   return ['table', 'td', 'th'].indexOf((0, _getNodeName["default"])(element)) >= 0;
 }
 
-},{"./getNodeName.js":12}],25:[function(require,module,exports){
+},{"./getNodeName.js":11}],24:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -941,7 +864,7 @@ function listScrollParents(element, list) {
   updatedList.concat(listScrollParents((0, _getParentNode["default"])(target)));
 }
 
-},{"./getParentNode.js":15,"./getScrollParent.js":16,"./getWindow.js":18,"./isScrollParent.js":23}],26:[function(require,module,exports){
+},{"./getParentNode.js":14,"./getScrollParent.js":15,"./getWindow.js":17,"./isScrollParent.js":22}],25:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -980,7 +903,7 @@ var write = exports.write = 'write';
 var afterWrite = exports.afterWrite = 'afterWrite';
 var modifierPhases = exports.modifierPhases = [beforeRead, read, afterRead, beforeMain, main, afterMain, beforeWrite, write, afterWrite];
 
-},{}],27:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1051,7 +974,7 @@ var _createPopper = require("./createPopper.js");
 var _popper = require("./popper.js");
 var _popperLite = require("./popper-lite.js");
 
-},{"./createPopper.js":2,"./enums.js":26,"./modifiers/index.js":34,"./popper-lite.js":38,"./popper.js":39}],28:[function(require,module,exports){
+},{"./createPopper.js":1,"./enums.js":25,"./modifiers/index.js":33,"./popper-lite.js":37,"./popper.js":38}],27:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1137,7 +1060,7 @@ var _default = exports["default"] = {
   requires: ['computeStyles']
 };
 
-},{"../dom-utils/getNodeName.js":12,"../dom-utils/instanceOf.js":21}],29:[function(require,module,exports){
+},{"../dom-utils/getNodeName.js":11,"../dom-utils/instanceOf.js":20}],28:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1225,7 +1148,7 @@ var _default = exports["default"] = {
   requiresIfExists: ['preventOverflow']
 };
 
-},{"../dom-utils/contains.js":3,"../dom-utils/getLayoutRect.js":11,"../dom-utils/getOffsetParent.js":14,"../enums.js":26,"../utils/expandToHashMap.js":44,"../utils/getBasePlacement.js":46,"../utils/getMainAxisFromPlacement.js":48,"../utils/mergePaddingObject.js":54,"../utils/within.js":58}],30:[function(require,module,exports){
+},{"../dom-utils/contains.js":2,"../dom-utils/getLayoutRect.js":10,"../dom-utils/getOffsetParent.js":13,"../enums.js":25,"../utils/expandToHashMap.js":43,"../utils/getBasePlacement.js":45,"../utils/getMainAxisFromPlacement.js":47,"../utils/mergePaddingObject.js":53,"../utils/within.js":57}],29:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1385,7 +1308,7 @@ var _default = exports["default"] = {
   data: {}
 };
 
-},{"../dom-utils/getComputedStyle.js":7,"../dom-utils/getDocumentElement.js":8,"../dom-utils/getOffsetParent.js":14,"../dom-utils/getWindow.js":18,"../enums.js":26,"../utils/getBasePlacement.js":46,"../utils/getVariation.js":51,"../utils/math.js":52}],31:[function(require,module,exports){
+},{"../dom-utils/getComputedStyle.js":6,"../dom-utils/getDocumentElement.js":7,"../dom-utils/getOffsetParent.js":13,"../dom-utils/getWindow.js":17,"../enums.js":25,"../utils/getBasePlacement.js":45,"../utils/getVariation.js":50,"../utils/math.js":51}],30:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1437,7 +1360,7 @@ var _default = exports["default"] = {
   data: {}
 };
 
-},{"../dom-utils/getWindow.js":18}],32:[function(require,module,exports){
+},{"../dom-utils/getWindow.js":17}],31:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1572,7 +1495,7 @@ var _default = exports["default"] = {
   }
 };
 
-},{"../enums.js":26,"../utils/computeAutoPlacement.js":40,"../utils/detectOverflow.js":43,"../utils/getBasePlacement.js":46,"../utils/getOppositePlacement.js":49,"../utils/getOppositeVariationPlacement.js":50,"../utils/getVariation.js":51}],33:[function(require,module,exports){
+},{"../enums.js":25,"../utils/computeAutoPlacement.js":39,"../utils/detectOverflow.js":42,"../utils/getBasePlacement.js":45,"../utils/getOppositePlacement.js":48,"../utils/getOppositeVariationPlacement.js":49,"../utils/getVariation.js":50}],32:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1636,7 +1559,7 @@ var _default = exports["default"] = {
   fn: hide
 };
 
-},{"../enums.js":26,"../utils/detectOverflow.js":43}],34:[function(require,module,exports){
+},{"../enums.js":25,"../utils/detectOverflow.js":42}],33:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1707,7 +1630,7 @@ var _popperOffsets = _interopRequireDefault(require("./popperOffsets.js"));
 var _preventOverflow = _interopRequireDefault(require("./preventOverflow.js"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 
-},{"./applyStyles.js":28,"./arrow.js":29,"./computeStyles.js":30,"./eventListeners.js":31,"./flip.js":32,"./hide.js":33,"./offset.js":35,"./popperOffsets.js":36,"./preventOverflow.js":37}],35:[function(require,module,exports){
+},{"./applyStyles.js":27,"./arrow.js":28,"./computeStyles.js":29,"./eventListeners.js":30,"./flip.js":31,"./hide.js":32,"./offset.js":34,"./popperOffsets.js":35,"./preventOverflow.js":36}],34:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1765,7 +1688,7 @@ var _default = exports["default"] = {
   fn: offset
 };
 
-},{"../enums.js":26,"../utils/getBasePlacement.js":46}],36:[function(require,module,exports){
+},{"../enums.js":25,"../utils/getBasePlacement.js":45}],35:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1796,7 +1719,7 @@ var _default = exports["default"] = {
   data: {}
 };
 
-},{"../utils/computeOffsets.js":41}],37:[function(require,module,exports){
+},{"../utils/computeOffsets.js":40}],36:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1927,7 +1850,7 @@ var _default = exports["default"] = {
   requiresIfExists: ['offset']
 };
 
-},{"../dom-utils/getLayoutRect.js":11,"../dom-utils/getOffsetParent.js":14,"../enums.js":26,"../utils/detectOverflow.js":43,"../utils/getAltAxis.js":45,"../utils/getBasePlacement.js":46,"../utils/getFreshSideObject.js":47,"../utils/getMainAxisFromPlacement.js":48,"../utils/getVariation.js":51,"../utils/math.js":52,"../utils/within.js":58}],38:[function(require,module,exports){
+},{"../dom-utils/getLayoutRect.js":10,"../dom-utils/getOffsetParent.js":13,"../enums.js":25,"../utils/detectOverflow.js":42,"../utils/getAltAxis.js":44,"../utils/getBasePlacement.js":45,"../utils/getFreshSideObject.js":46,"../utils/getMainAxisFromPlacement.js":47,"../utils/getVariation.js":50,"../utils/math.js":51,"../utils/within.js":57}],37:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1957,7 +1880,7 @@ var createPopper = exports.createPopper = /*#__PURE__*/(0, _createPopper.popperG
   defaultModifiers: defaultModifiers
 }); // eslint-disable-next-line import/no-unused-modules
 
-},{"./createPopper.js":2,"./modifiers/applyStyles.js":28,"./modifiers/computeStyles.js":30,"./modifiers/eventListeners.js":31,"./modifiers/popperOffsets.js":36}],39:[function(require,module,exports){
+},{"./createPopper.js":1,"./modifiers/applyStyles.js":27,"./modifiers/computeStyles.js":29,"./modifiers/eventListeners.js":30,"./modifiers/popperOffsets.js":35}],38:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2023,7 +1946,7 @@ var createPopper = exports.createPopper = /*#__PURE__*/(0, _createPopper.popperG
 
 // eslint-disable-next-line import/no-unused-modules
 
-},{"./createPopper.js":2,"./modifiers/applyStyles.js":28,"./modifiers/arrow.js":29,"./modifiers/computeStyles.js":30,"./modifiers/eventListeners.js":31,"./modifiers/flip.js":32,"./modifiers/hide.js":33,"./modifiers/index.js":34,"./modifiers/offset.js":35,"./modifiers/popperOffsets.js":36,"./modifiers/preventOverflow.js":37,"./popper-lite.js":38}],40:[function(require,module,exports){
+},{"./createPopper.js":1,"./modifiers/applyStyles.js":27,"./modifiers/arrow.js":28,"./modifiers/computeStyles.js":29,"./modifiers/eventListeners.js":30,"./modifiers/flip.js":31,"./modifiers/hide.js":32,"./modifiers/index.js":33,"./modifiers/offset.js":34,"./modifiers/popperOffsets.js":35,"./modifiers/preventOverflow.js":36,"./popper-lite.js":37}],39:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2072,7 +1995,7 @@ function computeAutoPlacement(state, options) {
   });
 }
 
-},{"../enums.js":26,"./detectOverflow.js":43,"./getBasePlacement.js":46,"./getVariation.js":51}],41:[function(require,module,exports){
+},{"../enums.js":25,"./detectOverflow.js":42,"./getBasePlacement.js":45,"./getVariation.js":50}],40:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2140,7 +2063,7 @@ function computeOffsets(_ref) {
   return offsets;
 }
 
-},{"../enums.js":26,"./getBasePlacement.js":46,"./getMainAxisFromPlacement.js":48,"./getVariation.js":51}],42:[function(require,module,exports){
+},{"../enums.js":25,"./getBasePlacement.js":45,"./getMainAxisFromPlacement.js":47,"./getVariation.js":50}],41:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2162,7 +2085,7 @@ function debounce(fn) {
   };
 }
 
-},{}],43:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2235,7 +2158,7 @@ function detectOverflow(state, options) {
   return overflowOffsets;
 }
 
-},{"../dom-utils/getBoundingClientRect.js":4,"../dom-utils/getClippingRect.js":5,"../dom-utils/getDocumentElement.js":8,"../dom-utils/instanceOf.js":21,"../enums.js":26,"./computeOffsets.js":41,"./expandToHashMap.js":44,"./mergePaddingObject.js":54,"./rectToClientRect.js":56}],44:[function(require,module,exports){
+},{"../dom-utils/getBoundingClientRect.js":3,"../dom-utils/getClippingRect.js":4,"../dom-utils/getDocumentElement.js":7,"../dom-utils/instanceOf.js":20,"../enums.js":25,"./computeOffsets.js":40,"./expandToHashMap.js":43,"./mergePaddingObject.js":53,"./rectToClientRect.js":55}],43:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2249,7 +2172,7 @@ function expandToHashMap(value, keys) {
   }, {});
 }
 
-},{}],45:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2260,7 +2183,7 @@ function getAltAxis(axis) {
   return axis === 'x' ? 'y' : 'x';
 }
 
-},{}],46:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2272,7 +2195,7 @@ function getBasePlacement(placement) {
   return placement.split('-')[0];
 }
 
-},{"../enums.js":26}],47:[function(require,module,exports){
+},{"../enums.js":25}],46:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2288,7 +2211,7 @@ function getFreshSideObject() {
   };
 }
 
-},{}],48:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2299,7 +2222,7 @@ function getMainAxisFromPlacement(placement) {
   return ['top', 'bottom'].indexOf(placement) >= 0 ? 'x' : 'y';
 }
 
-},{}],49:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2318,7 +2241,7 @@ function getOppositePlacement(placement) {
   });
 }
 
-},{}],50:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2335,7 +2258,7 @@ function getOppositeVariationPlacement(placement) {
   });
 }
 
-},{}],51:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2346,7 +2269,7 @@ function getVariation(placement) {
   return placement.split('-')[1];
 }
 
-},{}],52:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2357,7 +2280,7 @@ var max = exports.max = Math.max;
 var min = exports.min = Math.min;
 var round = exports.round = Math.round;
 
-},{}],53:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2379,7 +2302,7 @@ function mergeByName(modifiers) {
   });
 }
 
-},{}],54:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2392,7 +2315,7 @@ function mergePaddingObject(paddingObject) {
   return Object.assign({}, (0, _getFreshSideObject["default"])(), paddingObject);
 }
 
-},{"./getFreshSideObject.js":47}],55:[function(require,module,exports){
+},{"./getFreshSideObject.js":46}],54:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2442,7 +2365,7 @@ function orderModifiers(modifiers) {
   }, []);
 }
 
-},{"../enums.js":26}],56:[function(require,module,exports){
+},{"../enums.js":25}],55:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2458,7 +2381,7 @@ function rectToClientRect(rect) {
   });
 }
 
-},{}],57:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2475,7 +2398,7 @@ function getUAString() {
   return navigator.userAgent;
 }
 
-},{}],58:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2492,7 +2415,7 @@ function withinMaxClamp(min, value, max) {
   return v > max ? max : v;
 }
 
-},{"./math.js":52}],59:[function(require,module,exports){
+},{"./math.js":51}],58:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2658,7 +2581,7 @@ Emitter.prototype.hasListeners = function (event) {
   return !!this.listeners(event).length;
 };
 
-},{}],60:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -2810,9 +2733,9 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],61:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 
-},{}],62:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 (function (Buffer){(function (){
 /*!
  * The buffer module from node.js, for the browser.
@@ -4593,7 +4516,7 @@ function numberIsNaN (obj) {
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"base64-js":60,"buffer":62,"ieee754":88}],63:[function(require,module,exports){
+},{"base64-js":59,"buffer":61,"ieee754":87}],62:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4653,7 +4576,7 @@ var e = exports.Loader = /*#__PURE__*/function () {
   }]);
 }();
 
-},{}],64:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hasCORS = void 0;
@@ -4669,7 +4592,7 @@ catch (err) {
 }
 exports.hasCORS = value;
 
-},{}],65:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 "use strict";
 // imported from https://github.com/galkn/querystring
 /**
@@ -4709,7 +4632,7 @@ function decode(qs) {
     return qry;
 }
 
-},{}],66:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4784,7 +4707,7 @@ function queryKey(uri, query) {
   return data;
 }
 
-},{}],67:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.defaultBinaryType = exports.globalThisShim = exports.nextTick = void 0;
@@ -4812,7 +4735,7 @@ exports.globalThisShim = (() => {
 exports.defaultBinaryType = "arraybuffer";
 function createCookieJar() { }
 
-},{}],68:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WebTransport = exports.WebSocket = exports.NodeWebSocket = exports.XHR = exports.NodeXHR = exports.Fetch = exports.nextTick = exports.parse = exports.installTimerFunctions = exports.transports = exports.TransportError = exports.Transport = exports.protocol = exports.SocketWithUpgrade = exports.SocketWithoutUpgrade = exports.Socket = void 0;
@@ -4846,7 +4769,7 @@ Object.defineProperty(exports, "WebSocket", { enumerable: true, get: function ()
 var webtransport_js_1 = require("./transports/webtransport.js");
 Object.defineProperty(exports, "WebTransport", { enumerable: true, get: function () { return webtransport_js_1.WT; } });
 
-},{"./contrib/parseuri.js":66,"./globals.node.js":67,"./socket.js":69,"./transport.js":70,"./transports/index.js":71,"./transports/polling-fetch.js":72,"./transports/polling-xhr.js":73,"./transports/polling-xhr.node.js":73,"./transports/websocket.js":75,"./transports/websocket.node.js":75,"./transports/webtransport.js":76,"./util.js":77}],69:[function(require,module,exports){
+},{"./contrib/parseuri.js":65,"./globals.node.js":66,"./socket.js":68,"./transport.js":69,"./transports/index.js":70,"./transports/polling-fetch.js":71,"./transports/polling-xhr.js":72,"./transports/polling-xhr.node.js":72,"./transports/websocket.js":74,"./transports/websocket.node.js":74,"./transports/webtransport.js":75,"./util.js":76}],68:[function(require,module,exports){
 "use strict";
 
 function _superPropGet(t, o, e, r) { var p = _get(_getPrototypeOf(1 & r ? t.prototype : t), o, e); return 2 & r && "function" == typeof p ? function (t) { return p.apply(e, t); } : p; }
@@ -5651,7 +5574,7 @@ var Socket = /*#__PURE__*/function (_SocketWithUpgrade) {
 }(SocketWithUpgrade);
 exports.Socket = Socket;
 
-},{"./contrib/parseqs.js":65,"./contrib/parseuri.js":66,"./globals.node.js":67,"./transports/index.js":71,"./util.js":77,"@socket.io/component-emitter":59,"debug":78,"engine.io-parser":84}],70:[function(require,module,exports){
+},{"./contrib/parseqs.js":64,"./contrib/parseuri.js":65,"./globals.node.js":66,"./transports/index.js":70,"./util.js":76,"@socket.io/component-emitter":58,"debug":77,"engine.io-parser":83}],69:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -5806,7 +5729,7 @@ class Transport extends component_emitter_1.Emitter {
 }
 exports.Transport = Transport;
 
-},{"./contrib/parseqs.js":65,"./util.js":77,"@socket.io/component-emitter":59,"debug":78,"engine.io-parser":84}],71:[function(require,module,exports){
+},{"./contrib/parseqs.js":64,"./util.js":76,"@socket.io/component-emitter":58,"debug":77,"engine.io-parser":83}],70:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.transports = void 0;
@@ -5819,7 +5742,7 @@ exports.transports = {
     polling: polling_xhr_node_js_1.XHR,
 };
 
-},{"./polling-xhr.node.js":73,"./websocket.node.js":75,"./webtransport.js":76}],72:[function(require,module,exports){
+},{"./polling-xhr.node.js":72,"./websocket.node.js":74,"./webtransport.js":75}],71:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Fetch = void 0;
@@ -5881,7 +5804,7 @@ class Fetch extends polling_js_1.Polling {
 }
 exports.Fetch = Fetch;
 
-},{"./polling.js":74}],73:[function(require,module,exports){
+},{"./polling.js":73}],72:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -6168,7 +6091,7 @@ function newRequest(opts) {
     }
 }
 
-},{"../contrib/has-cors.js":64,"../globals.node.js":67,"../util.js":77,"./polling.js":74,"@socket.io/component-emitter":59,"debug":78}],74:[function(require,module,exports){
+},{"../contrib/has-cors.js":63,"../globals.node.js":66,"../util.js":76,"./polling.js":73,"@socket.io/component-emitter":58,"debug":77}],73:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -6335,7 +6258,7 @@ class Polling extends transport_js_1.Transport {
 }
 exports.Polling = Polling;
 
-},{"../transport.js":70,"../util.js":77,"debug":78,"engine.io-parser":84}],75:[function(require,module,exports){
+},{"../transport.js":69,"../util.js":76,"debug":77,"engine.io-parser":83}],74:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -6473,7 +6396,7 @@ class WS extends BaseWS {
 }
 exports.WS = WS;
 
-},{"../globals.node.js":67,"../transport.js":70,"../util.js":77,"debug":78,"engine.io-parser":84}],76:[function(require,module,exports){
+},{"../globals.node.js":66,"../transport.js":69,"../util.js":76,"debug":77,"engine.io-parser":83}],75:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -6569,7 +6492,7 @@ class WT extends transport_js_1.Transport {
 }
 exports.WT = WT;
 
-},{"../globals.node.js":67,"../transport.js":70,"debug":78,"engine.io-parser":84}],77:[function(require,module,exports){
+},{"../globals.node.js":66,"../transport.js":69,"debug":77,"engine.io-parser":83}],76:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.pick = pick;
@@ -6636,7 +6559,7 @@ function randomString() {
         Math.random().toString(36).substring(2, 5));
 }
 
-},{"./globals.node.js":67}],78:[function(require,module,exports){
+},{"./globals.node.js":66}],77:[function(require,module,exports){
 (function (process){(function (){
 /* eslint-env browser */
 
@@ -6911,7 +6834,7 @@ formatters.j = function (v) {
 };
 
 }).call(this)}).call(this,require('_process'))
-},{"./common":79,"_process":98}],79:[function(require,module,exports){
+},{"./common":78,"_process":97}],78:[function(require,module,exports){
 
 /**
  * This is the common logic for both the Node.js and web browser
@@ -7187,7 +7110,7 @@ function setup(env) {
 
 module.exports = setup;
 
-},{"ms":93}],80:[function(require,module,exports){
+},{"ms":92}],79:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ERROR_PACKET = exports.PACKET_TYPES_REVERSE = exports.PACKET_TYPES = void 0;
@@ -7208,7 +7131,7 @@ Object.keys(PACKET_TYPES).forEach((key) => {
 const ERROR_PACKET = { type: "error", data: "parser error" };
 exports.ERROR_PACKET = ERROR_PACKET;
 
-},{}],81:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.decode = exports.encode = void 0;
@@ -7258,7 +7181,7 @@ const decode = (base64) => {
 };
 exports.decode = decode;
 
-},{}],82:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.decodePacket = void 0;
@@ -7326,7 +7249,7 @@ const mapBinary = (data, binaryType) => {
     }
 };
 
-},{"./commons.js":80,"./contrib/base64-arraybuffer.js":81}],83:[function(require,module,exports){
+},{"./commons.js":79,"./contrib/base64-arraybuffer.js":80}],82:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.encodePacket = void 0;
@@ -7400,7 +7323,7 @@ function encodePacketToBinary(packet, callback) {
     });
 }
 
-},{"./commons.js":80}],84:[function(require,module,exports){
+},{"./commons.js":79}],83:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.decodePayload = exports.decodePacket = exports.encodePayload = exports.encodePacket = exports.protocol = void 0;
@@ -7566,7 +7489,7 @@ function createPacketDecoderStream(maxPayload, binaryType) {
 }
 exports.protocol = 4;
 
-},{"./commons.js":80,"./decodePacket.js":82,"./encodePacket.js":83}],85:[function(require,module,exports){
+},{"./commons.js":79,"./decodePacket.js":81,"./encodePacket.js":82}],84:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -8065,7 +7988,7 @@ function eventTargetAgnosticAddListener(emitter, name, listener, flags) {
   }
 }
 
-},{}],86:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8434,7 +8357,7 @@ function forPromise(obj, callback) {
   });
 }
 
-},{"./utils/essentials.mjs":87}],87:[function(require,module,exports){
+},{"./utils/essentials.mjs":86}],86:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8567,7 +8490,7 @@ function countObj(obj) {
   return 0;
 }
 
-},{}],88:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
@@ -8654,9 +8577,9 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],89:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 ((t,n)=>{"object"==typeof exports&&"undefined"!=typeof module?n(exports):"function"==typeof define&&define.amd?define(["exports"],n):n((t="undefined"!=typeof globalThis?globalThis:t||self).JSONRepair={})})(this,function(t){class y extends Error{constructor(t,n){super("".concat(t," at position ").concat(n)),this.position=n}}let e=32,r=10,i=9,f=13,a=160,h=8192,$=8202,O=8239,N=8287,J=12288;function S(t){return"0"<=t&&t<="9"}function j(t){return",:[]/{}()\n+".includes(t)}function k(t){return"a"<=t&&t<="z"||"A"<=t&&t<="Z"||"_"===t||"$"===t}function C(t){return"a"<=t&&t<="z"||"A"<=t&&t<="Z"||"_"===t||"$"===t||"0"<=t&&t<="9"}let m=/^(http|https|ftp|mailto|file|data|irc):\/\/$/,z=/^[A-Za-z0-9-._~:/?#@!$&'()*+;=]$/;function E(t){return",[]/{}\n+".includes(t)}function I(t){return _(t)||n.test(t)}let n=/^[[{\w-]$/;function T(t,n){t=t.charCodeAt(n);return t===e||t===r||t===i||t===f}function Z(t,n){t=t.charCodeAt(n);return t===e||t===i||t===f}function _(t){return F(t)||U(t)}function F(t){return'"'===t||"“"===t||"”"===t}function R(t){return'"'===t}function U(t){return"'"===t||"‘"===t||"’"===t||"`"===t||"´"===t}function q(t){return"'"===t}function B(t,n,e){e=2<arguments.length&&void 0!==e&&e,n=t.lastIndexOf(n);return-1!==n?t.substring(0,n)+(e?"":t.substring(n+1)):t}function D(t,n){let e=t.length;if(!T(t,e-1))return t+n;for(;T(t,e-1);)e--;return t.substring(0,e)+n+t.substring(e)}let G={"\b":"\\b","\f":"\\f","\n":"\\n","\r":"\\r","\t":"\\t"},H={'"':'"',"\\":"\\","/":"/",b:"\b",f:"\f",n:"\n",r:"\r",t:"\t"};t.JSONRepairError=y,t.jsonrepair=function(g){let d=0,b="";if(n(),!f())throw new y("Unexpected end of json string",g.length);n();var t=u(",");if(t&&v(),I(g[d])&&/[,\n][ \t\r]*$/.test(b)){t||(b=D(b,","));{let t=!0,n=!0;for(;n;)t?t=!1:u(",")||(b=D(b,",")),n=f();n||(b=B(b,",")),b="[\n".concat(b,"\n]")}}else t&&(b=B(b,","));for(;"}"===g[d]||"]"===g[d];)d++,v();if(d>=g.length)return b;throw new y("Unexpected character ".concat(JSON.stringify(g[d])),d);function f(){v();var t=(()=>{if("{"!==g[d])return!1;{b+="{",d++,v(),p(",")&&v();let n=!0;for(;d<g.length&&"}"!==g[d];){let t;if(n?(t=!0,n=!1):((t=u(","))||(b=D(b,",")),v()),o(),!(w()||l(!0))){"}"===g[d]||"{"===g[d]||"]"===g[d]||"["===g[d]||void 0===g[d]?b=B(b,","):(()=>{throw new y("Object key expected",d)})();break}v();var e=u(":"),r=d>=g.length,i=(e||(I(g[d])||r?b=D(b,":"):s()),f());i||(e||r?b+="null":s())}return"}"===g[d]?(b+="}",d++):b=D(b,"}"),!0}})()||(()=>{if("["!==g[d])return!1;{b+="[",d++,v(),p(",")&&v();let t=!0;for(;d<g.length&&"]"!==g[d];){t?t=!1:u(",")||(b=D(b,",")),o();var n=f();if(!n){b=B(b,",");break}}return"]"===g[d]?(b+="]",d++):b=D(b,"]"),!0}})()||w()||(()=>{var t,n,e=d;if("-"===g[d]){if(d++,i())return c(e),!0;if(!S(g[d]))return d=e,!1}for(;S(g[d]);)d++;if("."===g[d]){if(d++,i())return c(e),!0;if(!S(g[d]))return d=e,!1;for(;S(g[d]);)d++}if("e"===g[d]||"E"===g[d]){if(d++,"-"!==g[d]&&"+"!==g[d]||d++,i())return c(e),!0;if(!S(g[d]))return d=e,!1;for(;S(g[d]);)d++}if(i()){if(d>e)return t=g.slice(e,d),n=/^0\d/.test(t),b+=n?'"'.concat(t,'"'):t,!0}else d=e;return!1})()||e("true","true")||e("false","false")||e("null","null")||e("True","true")||e("False","false")||e("None","null")||l(!1)||(()=>{if("/"===g[d]){var t=d;for(d++;d<g.length&&("/"!==g[d]||"\\"===g[d-1]);)d++;return d++,b+='"'.concat(g.substring(t,d),'"'),!0}})();return v(),t}function v(t){var n=!(0<arguments.length&&void 0!==t)||t;d;let e=r(n);for(;e=(e=(()=>{if("/"===g[d]&&"*"===g[d+1]){for(;d<g.length&&!((t,n)=>"*"===t[n]&&"/"===t[n+1])(g,d);)d++;d+=2}else{if("/"!==g[d]||"/"!==g[d+1])return!1;for(;d<g.length&&"\n"!==g[d];)d++}return!0})())&&r(n););d}function r(t){var n,e,r=t?T:Z;let i="";for(;;){if(r(g,d))i+=g[d];else{if(n=g,e=d,!((n=n.charCodeAt(e))===a||n>=h&&n<=$||n===O||n===N||n===J))break;i+=" "}d++}return 0<i.length&&(b+=i,!0)}function n(){if("```"===g.slice(d,d+3)){if(d+=3,k(g[d]))for(;d<g.length&&C(g[d]);)d++;v()}}function u(t){return g[d]===t&&(b+=g[d],d++,!0)}function p(t){return g[d]===t&&(d++,!0)}function o(){v(),"."===g[d]&&"."===g[d+1]&&"."===g[d+2]&&(d+=3,v(),p(","))}function w(t,n){var e=0<arguments.length&&void 0!==t&&t,r=1<arguments.length&&void 0!==n?n:-1;let i="\\"===g[d];if(i&&(d++,i=!0),_(g[d])){var f=R(g[d])?R:q(g[d])?q:U(g[d])?U:F,u=d,o=b.length;let n='"';for(d++;;){if(d>=g.length)return l=x(d-1),!e&&j(g.charAt(l))?(d=u,b=b.substring(0,o),w(!0)):(n=D(n,'"'),b+=n,!0);if(d===r)return n=D(n,'"'),b+=n,!0;if(f(g[d])){var l=d,c=n.length;if(n+='"',d++,b+=n,v(!1),e||d>=g.length||j(g[d])||_(g[d])||S(g[d]))return A(),!0;var s=x(l-1),a=g.charAt(s);if(","===a)return d=u,b=b.substring(0,o),w(!1,s);if(j(a))return d=u,b=b.substring(0,o),w(!0);b=b.substring(0,o),d=l+1,n="".concat(n.substring(0,c),"\\").concat(n.substring(c))}else{if(e&&E(g[d])){if(":"===g[d-1]&&m.test(g.substring(u+1,d+2)))for(;d<g.length&&z.test(g[d]);)n+=g[d],d++;return n=D(n,'"'),b+=n,A(),!0}if("\\"===g[d]){s=g.charAt(d+1);if(void 0!==H[s])n+=g.slice(d,d+2),d+=2;else if("u"===s){let t=2;for(;t<6&&/^[0-9A-Fa-f]$/.test(g[d+t]);)t++;if(6===t)n+=g.slice(d,d+6),d+=6;else{if(!(d+t>=g.length))throw a=void 0,a=g.slice(d,d+6),new y('Invalid unicode character "'.concat(a,'"'),d);d=g.length}}else n+=s,d+=2}else{var h,c=g.charAt(d);if('"'===c&&"\\"!==g[d-1])n+="\\".concat(c);else if("\n"===(h=c)||"\r"===h||"\t"===h||"\b"===h||"\f"===h)n+=G[c];else{if(!(" "<=c))throw h=void 0,h=c,new y("Invalid character ".concat(JSON.stringify(h)),d);n+=c}d++}}i&&p("\\")}}return!1}function A(){let t=!1;for(v();"+"===g[d];){t=!0,d++,v();var n=(b=B(b,'"',!0)).length,e=w();b=e?(e=b,n=n,r=1,e.substring(0,n)+e.substring(n+r)):D(b,'"')}var r;t}function e(t,n){return g.slice(d,d+t.length)===t&&(b+=n,d+=t.length,!0)}function l(t){var n=d;if(k(g[d])){for(;d<g.length&&C(g[d]);)d++;let t=d;for(;T(g,t);)t++;if("("===g[t])return d=t+1,f(),")"===g[d]&&(d++,";"===g[d])&&d++,!0}for(;d<g.length&&!E(g[d])&&!_(g[d])&&(!t||":"!==g[d]);)d++;if(":"===g[d-1]&&m.test(g.substring(n,d+2)))for(;d<g.length&&z.test(g[d]);)d++;if(d>n){for(;T(g,d-1)&&0<d;)d--;n=g.slice(n,d);return b+="undefined"===n?"null":JSON.stringify(n),'"'===g[d]&&d++,!0}}function x(t){let n=t;for(;0<n&&T(g,n);)n--;return n}function i(){return d>=g.length||j(g[d])||T(g,d)}function c(t){b+="".concat(g.slice(t,d),"0")}function s(){throw new y("Colon expected",d)}}});
-},{}],90:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 "use strict";
 
 /*!
@@ -9634,15 +9557,15 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   /******/
 })();
 
-},{}],91:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 /*! For license information please see jsstore.commonjs2.min.js.LICENSE.txt */
 (()=>{"use strict";var e={d:(t,n)=>{for(var r in n)e.o(n,r)&&!e.o(t,r)&&Object.defineProperty(t,r,{enumerable:!0,get:n[r]})},o:(e,t)=>Object.prototype.hasOwnProperty.call(e,t),r:e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})}},t={};e.r(t),e.d(t,{API:()=>o,CONNECTION_STATUS:()=>p,Connection:()=>b,DATA_TYPE:()=>r,ERROR_TYPE:()=>l,EVENT:()=>i,IDB_MODE:()=>u,OCCURENCE:()=>a,QUERY_OPTION:()=>s,WORKER_STATUS:()=>n,forObj:()=>q,promise:()=>d,promiseAll:()=>v,promiseResolve:()=>f});var n,r,o,i,s,u,a,p,c=function(){function e(e,t){this.type=e,this._info=t,this.message=this.getMsg()}return e.prototype.throw=function(){throw this},e.prototype.log=function(e){this.status&&console.log(e)},e.prototype.logError=function(){console.error(this.get())},e.prototype.logWarning=function(){console.warn(this.get())},e.prototype.get=function(){return{message:this.message,type:this.type}},e.prototype.getMsg=function(){return this.type,this.message},e}(),l={InvalidUpdateColumn:"invalid_update_column",UndefinedColumn:"undefined_column",UndefinedValue:"undefined_value",UndefinedColumnName:"undefined_column_name",UndefinedDbName:"undefined_database_name",UndefinedColumnValue:"undefined_column_value",NotArray:"not_array",NoValueSupplied:"no_value_supplied",ColumnNotExist:"column_not_exist",NoIndexFound:"no_index_found",InvalidOp:"invalid_operator",NullValue:"null_value",WrongDataType:"wrong_data_type",TableNotExist:"table_not_exist",DbNotExist:"db_not_exist",ConnectionAborted:"connection_aborted",ConnectionClosed:"connection_closed",NotObject:"not_object",InvalidConfig:"invalid_config",DbBlocked:"Db_blocked",IndexedDbNotSupported:"indexeddb_not_supported",NullValueInWhere:"null_value_in_where",InvalidJoinQuery:"invalid_join_query",InvalidQuery:"invalid_query",ImportScriptsFailed:"import_scripts_failed",MethodNotExist:"method_not_exist",Unknown:"unknown",InvalidMiddleware:"invalid_middleware",InvalidOrderQuery:"invalid_order_query",InvalidGroupQuery:"invalid_group_query",NoPrimaryKey:"no_primary_key"};!function(e){e.Registered="registerd",e.Failed="failed",e.NotStarted="not_started"}(n||(n={})),function(e){e.String="string",e.Object="object",e.Array="array",e.Number="number",e.Boolean="boolean",e.Null="null",e.DateTime="date_time"}(r||(r={})),function(e){e.InitDb="init_db",e.MapGet="map_get",e.MapSet="map_set",e.MapHas="map_has",e.MapDelete="map_delete",e.Select="select",e.Insert="insert",e.Update="update",e.Remove="remove",e.OpenDb="open_db",e.Clear="clear",e.DropDb="drop_db",e.Count="count",e.ChangeLogStatus="change_log_status",e.Terminate="terminate",e.Transaction="transaction",e.CloseDb="close_db",e.Union="union",e.Intersect="intersect",e.ImportScripts="import_scripts",e.Middleware="middleware"}(o||(o={})),function(e){e.RequestQueueEmpty="requestQueueEmpty",e.RequestQueueFilled="requestQueueFilled",e.Upgrade="upgrade",e.Create="create",e.Open="open"}(i||(i={})),function(e){e.Where="where",e.Like="like",e.Regex="regex",e.In="in",e.Equal="=",e.Between="-",e.GreaterThan=">",e.LessThan="<",e.GreaterThanEqualTo=">=",e.LessThanEqualTo="<=",e.NotEqualTo="!=",e.Aggregate="aggregate",e.Max="max",e.Min="min",e.Avg="avg",e.Count="count",e.Sum="sum",e.List="list",e.Or="or",e.Skip="skip",e.Limit="limit",e.And="and",e.IgnoreCase="ignoreCase",e.Then="then"}(s||(s={})),function(e){e.ReadOnly="readonly",e.ReadWrite="readwrite"}(u||(u={})),function(e){e.First="f",e.Last="l",e.Any="a"}(a||(a={})),function(e){e.Connected="connected",e.Closed="closed",e.NotStarted="not_started",e.UnableToStart="unable_to_start",e.ClosedByJsStore="closed_by_jsstore"}(p||(p={}));var h,d=function(e){return new Promise(e)},f=function(e){return Promise.resolve(e)},_=function(){function e(e){this._events={},this._ctx=e}return e.prototype.on=function(e,t){return null==this._events[e]&&(this._events[e]=[]),this._events[e].push(t),this},e.prototype.off=function(e,t){if(this._events[e])if(t){var n=this._events[e].indexOf(t);this._events[e].splice(n,1)}else this._events[e]=[]},e.prototype.emit=function(e){for(var t=this,n=[],r=1;r<arguments.length;r++)n[r-1]=arguments[r];var o=this._events[e]||[],i=0,s=o.length,u=[];return new Promise((function(e){var r=function(){i<s?function(){var e=o[i++];if(e){var r=e.call.apply(e,function(e,t,n){if(n||2===arguments.length)for(var r,o=0,i=t.length;o<i;o++)!r&&o in t||(r||(r=Array.prototype.slice.call(t,0,o)),r[o]=t[o]);return e.concat(r||Array.prototype.slice.call(t))}([t._ctx],n,!1));return r&&r.then?r:Promise.resolve(r)}}().then((function(e){u.push(e),r()})):e(u)};r()}))},e.prototype.destroy=function(){this._events=null,this._ctx=null},e}(),y=function(){function e(e){this.isConOpened_=!1,this.isDbIdle_=!0,this.requestQueue_=[],this.isCodeExecuting_=!1,this.inactivityTimer_=-1e3,this.middlewares=[],this.eventBus_=new _(this),this.whiteListApi_=[o.InitDb,o.OpenDb,o.MapGet,o.MapSet,o.MapHas,o.MapDelete,o.ChangeLogStatus,o.Terminate,o.DropDb],this.isWorker=!0,this.logger=new c(null),e?(this.worker_=e,this.worker_.onmessage=this.onMessageFromWorker_.bind(this)):(this.isWorker=!1,this.initQueryManager_())}return Object.defineProperty(e.prototype,"jsstoreWorker",{get:function(){return this.$worker||self.JsStoreWorker},enumerable:!1,configurable:!0}),e.prototype.initQueryManager_=function(){var e=this.jsstoreWorker;e&&(this.queryManager=new e.QueryManager(this.processFinishedQuery_.bind(this)))},e.prototype.onMessageFromWorker_=function(e){this.processFinishedQuery_(e.data)},e.prototype.processFinishedQuery_=function(e){var t=this.requestQueue_.shift();if(t){if(this.logger.log("request ".concat(t.name," finished")),e.error)t.onError(e.error);else{switch(t.name){case o.OpenDb:case o.InitDb:this.isConOpened_=!0;break;case o.Terminate:this.isConOpened_=!1,!0===this.isWorker&&this.worker_.terminate();case o.DropDb:this.isConOpened_=!1,this.requestQueue_=[],this.isDbIdle_=!0;break;case o.CloseDb:this.isDbIdle_=!0,this.eventBus_.emit(i.RequestQueueEmpty,[]),this.requestQueue_.length>0&&this.openDb_(!1)}t.onSuccess(e.result)}this.isCodeExecuting_=!1,this.executeQry_()}},e.prototype.openDb_=function(e){void 0===e&&(e=!0);var t={name:o.OpenDb,query:{name:this.database.name,version:this.database.version},onSuccess:function(){},onError:function(e){console.error(e)}};e?this.prcoessExecutionOfQry_(t,0):this.requestQueue_.splice(0,0,t)},e.prototype.executeMiddleware_=function(e){var t=this;return d((function(n){var r=0,o=t.middlewares.length-1,i=function(){if(r<=o){var s=t.middlewares[r++](e);s&&s.then||(s=f(s)),s.then((function(e){i()}))}else n()};i()}))},e.prototype.callResultMiddleware=function(e,t){return d((function(n){var r=0,o=e.length-1,i=function(){if(r<=o){var s=e[r++](t);s.then||(s=f(s)),s.then((function(e){t=e,i()}))}else n(t)};i()}))},e.prototype.pushApi=function(e){var t=this;return new Promise((function(n,r){var s=[];e.onResult=function(e){s.push((function(t){return e(t)}))},t.executeMiddleware_(e).then((function(){e.onSuccess=function(r){t.callResultMiddleware(s,r).then((function(e){n(e)})).catch((function(t){e.onError(t)}))},e.onError=function(e){s=[],r(e)},0===t.requestQueue_.length&&(t.eventBus_.emit(i.RequestQueueFilled,[]),t.isDbIdle_&&t.isConOpened_&&([o.InitDb,o.CloseDb,o.DropDb,o.OpenDb,o.Terminate].indexOf(e.name)>=0||t.openDb_()),clearTimeout(t.inactivityTimer_)),t.prcoessExecutionOfQry_(e)})).catch(r)}))},e.prototype.prcoessExecutionOfQry_=function(e,t){this.isDbIdle_=!1,null!=t?this.requestQueue_.splice(t,0,e):this.requestQueue_.push(e),this.logger.log("request pushed: "+e.name),this.executeQry_()},e.prototype.executeQry_=function(){var e=this,t=this.requestQueue_.length;if(!this.isCodeExecuting_&&t>0){if(!0===this.isConOpened_)return void this.sendRequestToWorker_(this.requestQueue_[0]);var n=this.requestQueue_.findIndex((function(t){return e.whiteListApi_.indexOf(t.name)>=0}));n>=0&&(this.requestQueue_.splice(0,0,this.requestQueue_.splice(n,1)[0]),this.sendRequestToWorker_(this.requestQueue_[0]))}else 0===t&&!1===this.isDbIdle_&&this.isConOpened_&&(this.inactivityTimer_=setTimeout((function(){e.prcoessExecutionOfQry_({name:o.CloseDb,onSuccess:function(){},onError:function(e){console.error(e)}})}),100))},e.prototype.sendRequestToWorker_=function(e){this.isCodeExecuting_=!0,this.logger.log("request executing: "+e.name);var t={name:e.name,query:e.query};!0===this.isWorker?this.worker_.postMessage(t):this.queryManager.run(t)},e}(),m=function(){function e(e){this.con=e}return e.prototype.get=function(e){return this.con.pushApi({name:o.MapGet,query:e})},e.prototype.has=function(e){return this.con.pushApi({name:o.MapHas,query:e})},e.prototype.set=function(e,t){return this.con.pushApi({name:o.MapSet,query:{key:e,value:t}})},e.prototype.delete=function(e){return this.con.pushApi({name:o.MapDelete,query:e})},e}(),g=(h=function(e,t){return h=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)Object.prototype.hasOwnProperty.call(t,n)&&(e[n]=t[n])},h(e,t)},function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Class extends value "+String(t)+" is not a constructor or null");function n(){this.constructor=e}h(e,t),e.prototype=null===t?Object.create(t):(n.prototype=t.prototype,new n)}),b=function(e){function t(t){var n=e.call(this,t)||this;return n.Map=new m(n),n}return g(t,e),t.prototype.initDb=function(e){var t=this;return this.database=e,this.pushApi({name:o.InitDb,query:e}).then((function(e){var n,r=e.database;return e.isCreated&&(n=e.oldVersion?t.eventBus_.emit(i.Upgrade,r,e.oldVersion,e.newVersion):t.eventBus_.emit(i.Create,r)),(n||f()).then((function(e){return t.eventBus_.emit(i.Open,r)})).then((function(t){return e.isCreated}))}))},t.prototype.dropDb=function(){return this.pushApi({name:o.DropDb})},t.prototype.select=function(e){return this.pushApi({name:o.Select,query:e})},t.prototype.count=function(e){return this.pushApi({name:o.Count,query:e})},t.prototype.insert=function(e){return this.pushApi({name:o.Insert,query:e})},t.prototype.update=function(e){return this.pushApi({name:o.Update,query:e})},t.prototype.remove=function(e){return this.pushApi({name:o.Remove,query:e})},t.prototype.clear=function(e){return this.pushApi({name:o.Clear,query:e})},Object.defineProperty(t.prototype,"logStatus",{set:function(e){this.logger.status=e,this.pushApi({name:o.ChangeLogStatus,query:e})},enumerable:!1,configurable:!0}),t.prototype.openDb=function(e,t){var n=this;return this.pushApi({name:o.OpenDb,query:{version:t,name:e}}).then((function(e){return n.database=e,e}))},t.prototype.getDbList=function(){return console.warn("Api getDbList is recommended to use for debugging only. Do not use in code."),indexedDB.databases()},t.prototype.get=function(e){return console.warn("This API is obsolete, please use Map"),this.Map.get(e)},t.prototype.set=function(e,t){return console.warn("This API is obsolete, please use Map"),this.Map.set(e,t)},t.prototype.terminate=function(){return this.pushApi({name:o.Terminate})},t.prototype.transaction=function(e){return this.pushApi({name:o.Transaction,query:e})},t.prototype.on=function(e,t){this.eventBus_.on(e,t)},t.prototype.off=function(e,t){this.eventBus_.off(e,t)},t.prototype.union=function(e){return this.pushApi({name:o.Union,query:e})},t.prototype.intersect=function(e){return this.pushApi({name:o.Intersect,query:e})},t.prototype.addPlugin=function(e,t){return e.setup(this,t)},t.prototype.addMiddleware=function(e,t){return t?this.pushApi({name:o.Middleware,query:e}):(this.middlewares.push(e),Promise.resolve())},t.prototype.importScripts=function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t];return this.pushApi({name:o.ImportScripts,query:e})},t}(y),v=function(e){return Promise.all(e)},q=function(e,t){for(var n in e)t(n,e[n])};module.exports=t})();
 
-},{}],92:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 (function (process){(function (){
 "production"===process.env.NODE_ENV?module.exports=require("./jsstore.commonjs2.min.js"):module.exports=require("./jsstore.commonjs2.js");
 }).call(this)}).call(this,require('_process'))
-},{"./jsstore.commonjs2.js":90,"./jsstore.commonjs2.min.js":91,"_process":98}],93:[function(require,module,exports){
+},{"./jsstore.commonjs2.js":89,"./jsstore.commonjs2.min.js":90,"_process":97}],92:[function(require,module,exports){
 /**
  * Helpers.
  */
@@ -9806,11 +9729,11 @@ function plural(ms, msAbs, n, name) {
   return Math.round(ms / n) + ' ' + name + (isPlural ? 's' : '');
 }
 
-},{}],94:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 (function (global){(function (){
 !function(e){var t;"object"==typeof exports?module.exports=e():"function"==typeof define&&define.amd?define(e):("undefined"!=typeof window?t=window:"undefined"!=typeof global?t=global:"undefined"!=typeof self&&(t=self),t.objectHash=e())}(function(){return function r(o,i,u){function s(n,e){if(!i[n]){if(!o[n]){var t="function"==typeof require&&require;if(!e&&t)return t(n,!0);if(a)return a(n,!0);throw new Error("Cannot find module '"+n+"'")}e=i[n]={exports:{}};o[n][0].call(e.exports,function(e){var t=o[n][1][e];return s(t||e)},e,e.exports,r,o,i,u)}return i[n].exports}for(var a="function"==typeof require&&require,e=0;e<u.length;e++)s(u[e]);return s}({1:[function(w,b,m){!function(e,n,s,c,d,h,p,g,y){"use strict";var r=w("crypto");function t(e,t){t=u(e,t);var n;return void 0===(n="passthrough"!==t.algorithm?r.createHash(t.algorithm):new l).write&&(n.write=n.update,n.end=n.update),f(t,n).dispatch(e),n.update||n.end(""),n.digest?n.digest("buffer"===t.encoding?void 0:t.encoding):(e=n.read(),"buffer"!==t.encoding?e.toString(t.encoding):e)}(m=b.exports=t).sha1=function(e){return t(e)},m.keys=function(e){return t(e,{excludeValues:!0,algorithm:"sha1",encoding:"hex"})},m.MD5=function(e){return t(e,{algorithm:"md5",encoding:"hex"})},m.keysMD5=function(e){return t(e,{algorithm:"md5",encoding:"hex",excludeValues:!0})};var o=r.getHashes?r.getHashes().slice():["sha1","md5"],i=(o.push("passthrough"),["buffer","hex","binary","base64"]);function u(e,t){var n={};if(n.algorithm=(t=t||{}).algorithm||"sha1",n.encoding=t.encoding||"hex",n.excludeValues=!!t.excludeValues,n.algorithm=n.algorithm.toLowerCase(),n.encoding=n.encoding.toLowerCase(),n.ignoreUnknown=!0===t.ignoreUnknown,n.respectType=!1!==t.respectType,n.respectFunctionNames=!1!==t.respectFunctionNames,n.respectFunctionProperties=!1!==t.respectFunctionProperties,n.unorderedArrays=!0===t.unorderedArrays,n.unorderedSets=!1!==t.unorderedSets,n.unorderedObjects=!1!==t.unorderedObjects,n.replacer=t.replacer||void 0,n.excludeKeys=t.excludeKeys||void 0,void 0===e)throw new Error("Object argument required.");for(var r=0;r<o.length;++r)o[r].toLowerCase()===n.algorithm.toLowerCase()&&(n.algorithm=o[r]);if(-1===o.indexOf(n.algorithm))throw new Error('Algorithm "'+n.algorithm+'"  not supported. supported values: '+o.join(", "));if(-1===i.indexOf(n.encoding)&&"passthrough"!==n.algorithm)throw new Error('Encoding "'+n.encoding+'"  not supported. supported values: '+i.join(", "));return n}function a(e){if("function"==typeof e)return null!=/^function\s+\w*\s*\(\s*\)\s*{\s+\[native code\]\s+}$/i.exec(Function.prototype.toString.call(e))}function f(o,t,i){i=i||[];function u(e){return t.update?t.update(e,"utf8"):t.write(e,"utf8")}return{dispatch:function(e){return this["_"+(null===(e=o.replacer?o.replacer(e):e)?"null":typeof e)](e)},_object:function(t){var n,e=Object.prototype.toString.call(t),r=/\[object (.*)\]/i.exec(e);r=(r=r?r[1]:"unknown:["+e+"]").toLowerCase();if(0<=(e=i.indexOf(t)))return this.dispatch("[CIRCULAR:"+e+"]");if(i.push(t),void 0!==s&&s.isBuffer&&s.isBuffer(t))return u("buffer:"),u(t);if("object"===r||"function"===r||"asyncfunction"===r)return e=Object.keys(t),o.unorderedObjects&&(e=e.sort()),!1===o.respectType||a(t)||e.splice(0,0,"prototype","__proto__","constructor"),o.excludeKeys&&(e=e.filter(function(e){return!o.excludeKeys(e)})),u("object:"+e.length+":"),n=this,e.forEach(function(e){n.dispatch(e),u(":"),o.excludeValues||n.dispatch(t[e]),u(",")});if(!this["_"+r]){if(o.ignoreUnknown)return u("["+r+"]");throw new Error('Unknown object type "'+r+'"')}this["_"+r](t)},_array:function(e,t){t=void 0!==t?t:!1!==o.unorderedArrays;var n=this;if(u("array:"+e.length+":"),!t||e.length<=1)return e.forEach(function(e){return n.dispatch(e)});var r=[],t=e.map(function(e){var t=new l,n=i.slice();return f(o,t,n).dispatch(e),r=r.concat(n.slice(i.length)),t.read().toString()});return i=i.concat(r),t.sort(),this._array(t,!1)},_date:function(e){return u("date:"+e.toJSON())},_symbol:function(e){return u("symbol:"+e.toString())},_error:function(e){return u("error:"+e.toString())},_boolean:function(e){return u("bool:"+e.toString())},_string:function(e){u("string:"+e.length+":"),u(e.toString())},_function:function(e){u("fn:"),a(e)?this.dispatch("[native]"):this.dispatch(e.toString()),!1!==o.respectFunctionNames&&this.dispatch("function-name:"+String(e.name)),o.respectFunctionProperties&&this._object(e)},_number:function(e){return u("number:"+e.toString())},_xml:function(e){return u("xml:"+e.toString())},_null:function(){return u("Null")},_undefined:function(){return u("Undefined")},_regexp:function(e){return u("regex:"+e.toString())},_uint8array:function(e){return u("uint8array:"),this.dispatch(Array.prototype.slice.call(e))},_uint8clampedarray:function(e){return u("uint8clampedarray:"),this.dispatch(Array.prototype.slice.call(e))},_int8array:function(e){return u("int8array:"),this.dispatch(Array.prototype.slice.call(e))},_uint16array:function(e){return u("uint16array:"),this.dispatch(Array.prototype.slice.call(e))},_int16array:function(e){return u("int16array:"),this.dispatch(Array.prototype.slice.call(e))},_uint32array:function(e){return u("uint32array:"),this.dispatch(Array.prototype.slice.call(e))},_int32array:function(e){return u("int32array:"),this.dispatch(Array.prototype.slice.call(e))},_float32array:function(e){return u("float32array:"),this.dispatch(Array.prototype.slice.call(e))},_float64array:function(e){return u("float64array:"),this.dispatch(Array.prototype.slice.call(e))},_arraybuffer:function(e){return u("arraybuffer:"),this.dispatch(new Uint8Array(e))},_url:function(e){return u("url:"+e.toString())},_map:function(e){u("map:");e=Array.from(e);return this._array(e,!1!==o.unorderedSets)},_set:function(e){u("set:");e=Array.from(e);return this._array(e,!1!==o.unorderedSets)},_file:function(e){return u("file:"),this.dispatch([e.name,e.size,e.type,e.lastModfied])},_blob:function(){if(o.ignoreUnknown)return u("[blob]");throw Error('Hashing Blob objects is currently not supported\n(see https://github.com/puleos/object-hash/issues/26)\nUse "options.replacer" or "options.ignoreUnknown"\n')},_domwindow:function(){return u("domwindow")},_bigint:function(e){return u("bigint:"+e.toString())},_process:function(){return u("process")},_timer:function(){return u("timer")},_pipe:function(){return u("pipe")},_tcp:function(){return u("tcp")},_udp:function(){return u("udp")},_tty:function(){return u("tty")},_statwatcher:function(){return u("statwatcher")},_securecontext:function(){return u("securecontext")},_connection:function(){return u("connection")},_zlib:function(){return u("zlib")},_context:function(){return u("context")},_nodescript:function(){return u("nodescript")},_httpparser:function(){return u("httpparser")},_dataview:function(){return u("dataview")},_signal:function(){return u("signal")},_fsevent:function(){return u("fsevent")},_tlswrap:function(){return u("tlswrap")}}}function l(){return{buf:"",write:function(e){this.buf+=e},end:function(e){this.buf+=e},read:function(){return this.buf}}}m.writeToStream=function(e,t,n){return void 0===n&&(n=t,t={}),f(t=u(e,t),n).dispatch(e)}}.call(this,w("lYpoI2"),"undefined"!=typeof self?self:"undefined"!=typeof window?window:{},w("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_9a5aa49d.js","/")},{buffer:3,crypto:5,lYpoI2:11}],2:[function(e,t,f){!function(e,t,n,r,o,i,u,s,a){!function(e){"use strict";var a="undefined"!=typeof Uint8Array?Uint8Array:Array,t="+".charCodeAt(0),n="/".charCodeAt(0),r="0".charCodeAt(0),o="a".charCodeAt(0),i="A".charCodeAt(0),u="-".charCodeAt(0),s="_".charCodeAt(0);function f(e){e=e.charCodeAt(0);return e===t||e===u?62:e===n||e===s?63:e<r?-1:e<r+10?e-r+26+26:e<i+26?e-i:e<o+26?e-o+26:void 0}e.toByteArray=function(e){var t,n;if(0<e.length%4)throw new Error("Invalid string. Length must be a multiple of 4");var r=e.length,r="="===e.charAt(r-2)?2:"="===e.charAt(r-1)?1:0,o=new a(3*e.length/4-r),i=0<r?e.length-4:e.length,u=0;function s(e){o[u++]=e}for(t=0;t<i;t+=4,0)s((16711680&(n=f(e.charAt(t))<<18|f(e.charAt(t+1))<<12|f(e.charAt(t+2))<<6|f(e.charAt(t+3))))>>16),s((65280&n)>>8),s(255&n);return 2==r?s(255&(n=f(e.charAt(t))<<2|f(e.charAt(t+1))>>4)):1==r&&(s((n=f(e.charAt(t))<<10|f(e.charAt(t+1))<<4|f(e.charAt(t+2))>>2)>>8&255),s(255&n)),o},e.fromByteArray=function(e){var t,n,r,o,i=e.length%3,u="";function s(e){return"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".charAt(e)}for(t=0,r=e.length-i;t<r;t+=3)n=(e[t]<<16)+(e[t+1]<<8)+e[t+2],u+=s((o=n)>>18&63)+s(o>>12&63)+s(o>>6&63)+s(63&o);switch(i){case 1:u=(u+=s((n=e[e.length-1])>>2))+s(n<<4&63)+"==";break;case 2:u=(u=(u+=s((n=(e[e.length-2]<<8)+e[e.length-1])>>10))+s(n>>4&63))+s(n<<2&63)+"="}return u}}(void 0===f?this.base64js={}:f)}.call(this,e("lYpoI2"),"undefined"!=typeof self?self:"undefined"!=typeof window?window:{},e("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/node_modules/gulp-browserify/node_modules/base64-js/lib/b64.js","/node_modules/gulp-browserify/node_modules/base64-js/lib")},{buffer:3,lYpoI2:11}],3:[function(O,e,H){!function(e,n,f,r,h,p,g,y,w){var a=O("base64-js"),i=O("ieee754");function f(e,t,n){if(!(this instanceof f))return new f(e,t,n);var r,o,i,u,s=typeof e;if("base64"===t&&"string"==s)for(e=(u=e).trim?u.trim():u.replace(/^\s+|\s+$/g,"");e.length%4!=0;)e+="=";if("number"==s)r=j(e);else if("string"==s)r=f.byteLength(e,t);else{if("object"!=s)throw new Error("First argument needs to be a number, array or string.");r=j(e.length)}if(f._useTypedArrays?o=f._augment(new Uint8Array(r)):((o=this).length=r,o._isBuffer=!0),f._useTypedArrays&&"number"==typeof e.byteLength)o._set(e);else if(C(u=e)||f.isBuffer(u)||u&&"object"==typeof u&&"number"==typeof u.length)for(i=0;i<r;i++)f.isBuffer(e)?o[i]=e.readUInt8(i):o[i]=e[i];else if("string"==s)o.write(e,0,t);else if("number"==s&&!f._useTypedArrays&&!n)for(i=0;i<r;i++)o[i]=0;return o}function b(e,t,n,r){return f._charsWritten=c(function(e){for(var t=[],n=0;n<e.length;n++)t.push(255&e.charCodeAt(n));return t}(t),e,n,r)}function m(e,t,n,r){return f._charsWritten=c(function(e){for(var t,n,r=[],o=0;o<e.length;o++)n=e.charCodeAt(o),t=n>>8,n=n%256,r.push(n),r.push(t);return r}(t),e,n,r)}function v(e,t,n){var r="";n=Math.min(e.length,n);for(var o=t;o<n;o++)r+=String.fromCharCode(e[o]);return r}function o(e,t,n,r){r||(d("boolean"==typeof n,"missing or invalid endian"),d(null!=t,"missing offset"),d(t+1<e.length,"Trying to read beyond buffer length"));var o,r=e.length;if(!(r<=t))return n?(o=e[t],t+1<r&&(o|=e[t+1]<<8)):(o=e[t]<<8,t+1<r&&(o|=e[t+1])),o}function u(e,t,n,r){r||(d("boolean"==typeof n,"missing or invalid endian"),d(null!=t,"missing offset"),d(t+3<e.length,"Trying to read beyond buffer length"));var o,r=e.length;if(!(r<=t))return n?(t+2<r&&(o=e[t+2]<<16),t+1<r&&(o|=e[t+1]<<8),o|=e[t],t+3<r&&(o+=e[t+3]<<24>>>0)):(t+1<r&&(o=e[t+1]<<16),t+2<r&&(o|=e[t+2]<<8),t+3<r&&(o|=e[t+3]),o+=e[t]<<24>>>0),o}function _(e,t,n,r){if(r||(d("boolean"==typeof n,"missing or invalid endian"),d(null!=t,"missing offset"),d(t+1<e.length,"Trying to read beyond buffer length")),!(e.length<=t))return r=o(e,t,n,!0),32768&r?-1*(65535-r+1):r}function E(e,t,n,r){if(r||(d("boolean"==typeof n,"missing or invalid endian"),d(null!=t,"missing offset"),d(t+3<e.length,"Trying to read beyond buffer length")),!(e.length<=t))return r=u(e,t,n,!0),2147483648&r?-1*(4294967295-r+1):r}function I(e,t,n,r){return r||(d("boolean"==typeof n,"missing or invalid endian"),d(t+3<e.length,"Trying to read beyond buffer length")),i.read(e,t,n,23,4)}function A(e,t,n,r){return r||(d("boolean"==typeof n,"missing or invalid endian"),d(t+7<e.length,"Trying to read beyond buffer length")),i.read(e,t,n,52,8)}function s(e,t,n,r,o){o||(d(null!=t,"missing value"),d("boolean"==typeof r,"missing or invalid endian"),d(null!=n,"missing offset"),d(n+1<e.length,"trying to write beyond buffer length"),Y(t,65535));o=e.length;if(!(o<=n))for(var i=0,u=Math.min(o-n,2);i<u;i++)e[n+i]=(t&255<<8*(r?i:1-i))>>>8*(r?i:1-i)}function l(e,t,n,r,o){o||(d(null!=t,"missing value"),d("boolean"==typeof r,"missing or invalid endian"),d(null!=n,"missing offset"),d(n+3<e.length,"trying to write beyond buffer length"),Y(t,4294967295));o=e.length;if(!(o<=n))for(var i=0,u=Math.min(o-n,4);i<u;i++)e[n+i]=t>>>8*(r?i:3-i)&255}function B(e,t,n,r,o){o||(d(null!=t,"missing value"),d("boolean"==typeof r,"missing or invalid endian"),d(null!=n,"missing offset"),d(n+1<e.length,"Trying to write beyond buffer length"),F(t,32767,-32768)),e.length<=n||s(e,0<=t?t:65535+t+1,n,r,o)}function L(e,t,n,r,o){o||(d(null!=t,"missing value"),d("boolean"==typeof r,"missing or invalid endian"),d(null!=n,"missing offset"),d(n+3<e.length,"Trying to write beyond buffer length"),F(t,2147483647,-2147483648)),e.length<=n||l(e,0<=t?t:4294967295+t+1,n,r,o)}function U(e,t,n,r,o){o||(d(null!=t,"missing value"),d("boolean"==typeof r,"missing or invalid endian"),d(null!=n,"missing offset"),d(n+3<e.length,"Trying to write beyond buffer length"),D(t,34028234663852886e22,-34028234663852886e22)),e.length<=n||i.write(e,t,n,r,23,4)}function x(e,t,n,r,o){o||(d(null!=t,"missing value"),d("boolean"==typeof r,"missing or invalid endian"),d(null!=n,"missing offset"),d(n+7<e.length,"Trying to write beyond buffer length"),D(t,17976931348623157e292,-17976931348623157e292)),e.length<=n||i.write(e,t,n,r,52,8)}H.Buffer=f,H.SlowBuffer=f,H.INSPECT_MAX_BYTES=50,f.poolSize=8192,f._useTypedArrays=function(){try{var e=new ArrayBuffer(0),t=new Uint8Array(e);return t.foo=function(){return 42},42===t.foo()&&"function"==typeof t.subarray}catch(e){return!1}}(),f.isEncoding=function(e){switch(String(e).toLowerCase()){case"hex":case"utf8":case"utf-8":case"ascii":case"binary":case"base64":case"raw":case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return!0;default:return!1}},f.isBuffer=function(e){return!(null==e||!e._isBuffer)},f.byteLength=function(e,t){var n;switch(e+="",t||"utf8"){case"hex":n=e.length/2;break;case"utf8":case"utf-8":n=T(e).length;break;case"ascii":case"binary":case"raw":n=e.length;break;case"base64":n=M(e).length;break;case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":n=2*e.length;break;default:throw new Error("Unknown encoding")}return n},f.concat=function(e,t){if(d(C(e),"Usage: Buffer.concat(list, [totalLength])\nlist should be an Array."),0===e.length)return new f(0);if(1===e.length)return e[0];if("number"!=typeof t)for(o=t=0;o<e.length;o++)t+=e[o].length;for(var n=new f(t),r=0,o=0;o<e.length;o++){var i=e[o];i.copy(n,r),r+=i.length}return n},f.prototype.write=function(e,t,n,r){isFinite(t)?isFinite(n)||(r=n,n=void 0):(a=r,r=t,t=n,n=a),t=Number(t)||0;var o,i,u,s,a=this.length-t;switch((!n||a<(n=Number(n)))&&(n=a),r=String(r||"utf8").toLowerCase()){case"hex":o=function(e,t,n,r){n=Number(n)||0;var o=e.length-n;(!r||o<(r=Number(r)))&&(r=o),d((o=t.length)%2==0,"Invalid hex string"),o/2<r&&(r=o/2);for(var i=0;i<r;i++){var u=parseInt(t.substr(2*i,2),16);d(!isNaN(u),"Invalid hex string"),e[n+i]=u}return f._charsWritten=2*i,i}(this,e,t,n);break;case"utf8":case"utf-8":i=this,u=t,s=n,o=f._charsWritten=c(T(e),i,u,s);break;case"ascii":case"binary":o=b(this,e,t,n);break;case"base64":i=this,u=t,s=n,o=f._charsWritten=c(M(e),i,u,s);break;case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":o=m(this,e,t,n);break;default:throw new Error("Unknown encoding")}return o},f.prototype.toString=function(e,t,n){var r,o,i,u,s=this;if(e=String(e||"utf8").toLowerCase(),t=Number(t)||0,(n=void 0!==n?Number(n):s.length)===t)return"";switch(e){case"hex":r=function(e,t,n){var r=e.length;(!t||t<0)&&(t=0);(!n||n<0||r<n)&&(n=r);for(var o="",i=t;i<n;i++)o+=k(e[i]);return o}(s,t,n);break;case"utf8":case"utf-8":r=function(e,t,n){var r="",o="";n=Math.min(e.length,n);for(var i=t;i<n;i++)e[i]<=127?(r+=N(o)+String.fromCharCode(e[i]),o=""):o+="%"+e[i].toString(16);return r+N(o)}(s,t,n);break;case"ascii":case"binary":r=v(s,t,n);break;case"base64":o=s,u=n,r=0===(i=t)&&u===o.length?a.fromByteArray(o):a.fromByteArray(o.slice(i,u));break;case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":r=function(e,t,n){for(var r=e.slice(t,n),o="",i=0;i<r.length;i+=2)o+=String.fromCharCode(r[i]+256*r[i+1]);return o}(s,t,n);break;default:throw new Error("Unknown encoding")}return r},f.prototype.toJSON=function(){return{type:"Buffer",data:Array.prototype.slice.call(this._arr||this,0)}},f.prototype.copy=function(e,t,n,r){if(t=t||0,(r=r||0===r?r:this.length)!==(n=n||0)&&0!==e.length&&0!==this.length){d(n<=r,"sourceEnd < sourceStart"),d(0<=t&&t<e.length,"targetStart out of bounds"),d(0<=n&&n<this.length,"sourceStart out of bounds"),d(0<=r&&r<=this.length,"sourceEnd out of bounds"),r>this.length&&(r=this.length);var o=(r=e.length-t<r-n?e.length-t+n:r)-n;if(o<100||!f._useTypedArrays)for(var i=0;i<o;i++)e[i+t]=this[i+n];else e._set(this.subarray(n,n+o),t)}},f.prototype.slice=function(e,t){var n=this.length;if(e=S(e,n,0),t=S(t,n,n),f._useTypedArrays)return f._augment(this.subarray(e,t));for(var r=t-e,o=new f(r,void 0,!0),i=0;i<r;i++)o[i]=this[i+e];return o},f.prototype.get=function(e){return console.log(".get() is deprecated. Access using array indexes instead."),this.readUInt8(e)},f.prototype.set=function(e,t){return console.log(".set() is deprecated. Access using array indexes instead."),this.writeUInt8(e,t)},f.prototype.readUInt8=function(e,t){if(t||(d(null!=e,"missing offset"),d(e<this.length,"Trying to read beyond buffer length")),!(e>=this.length))return this[e]},f.prototype.readUInt16LE=function(e,t){return o(this,e,!0,t)},f.prototype.readUInt16BE=function(e,t){return o(this,e,!1,t)},f.prototype.readUInt32LE=function(e,t){return u(this,e,!0,t)},f.prototype.readUInt32BE=function(e,t){return u(this,e,!1,t)},f.prototype.readInt8=function(e,t){if(t||(d(null!=e,"missing offset"),d(e<this.length,"Trying to read beyond buffer length")),!(e>=this.length))return 128&this[e]?-1*(255-this[e]+1):this[e]},f.prototype.readInt16LE=function(e,t){return _(this,e,!0,t)},f.prototype.readInt16BE=function(e,t){return _(this,e,!1,t)},f.prototype.readInt32LE=function(e,t){return E(this,e,!0,t)},f.prototype.readInt32BE=function(e,t){return E(this,e,!1,t)},f.prototype.readFloatLE=function(e,t){return I(this,e,!0,t)},f.prototype.readFloatBE=function(e,t){return I(this,e,!1,t)},f.prototype.readDoubleLE=function(e,t){return A(this,e,!0,t)},f.prototype.readDoubleBE=function(e,t){return A(this,e,!1,t)},f.prototype.writeUInt8=function(e,t,n){n||(d(null!=e,"missing value"),d(null!=t,"missing offset"),d(t<this.length,"trying to write beyond buffer length"),Y(e,255)),t>=this.length||(this[t]=e)},f.prototype.writeUInt16LE=function(e,t,n){s(this,e,t,!0,n)},f.prototype.writeUInt16BE=function(e,t,n){s(this,e,t,!1,n)},f.prototype.writeUInt32LE=function(e,t,n){l(this,e,t,!0,n)},f.prototype.writeUInt32BE=function(e,t,n){l(this,e,t,!1,n)},f.prototype.writeInt8=function(e,t,n){n||(d(null!=e,"missing value"),d(null!=t,"missing offset"),d(t<this.length,"Trying to write beyond buffer length"),F(e,127,-128)),t>=this.length||(0<=e?this.writeUInt8(e,t,n):this.writeUInt8(255+e+1,t,n))},f.prototype.writeInt16LE=function(e,t,n){B(this,e,t,!0,n)},f.prototype.writeInt16BE=function(e,t,n){B(this,e,t,!1,n)},f.prototype.writeInt32LE=function(e,t,n){L(this,e,t,!0,n)},f.prototype.writeInt32BE=function(e,t,n){L(this,e,t,!1,n)},f.prototype.writeFloatLE=function(e,t,n){U(this,e,t,!0,n)},f.prototype.writeFloatBE=function(e,t,n){U(this,e,t,!1,n)},f.prototype.writeDoubleLE=function(e,t,n){x(this,e,t,!0,n)},f.prototype.writeDoubleBE=function(e,t,n){x(this,e,t,!1,n)},f.prototype.fill=function(e,t,n){if(t=t||0,n=n||this.length,d("number"==typeof(e="string"==typeof(e=e||0)?e.charCodeAt(0):e)&&!isNaN(e),"value is not a number"),d(t<=n,"end < start"),n!==t&&0!==this.length){d(0<=t&&t<this.length,"start out of bounds"),d(0<=n&&n<=this.length,"end out of bounds");for(var r=t;r<n;r++)this[r]=e}},f.prototype.inspect=function(){for(var e=[],t=this.length,n=0;n<t;n++)if(e[n]=k(this[n]),n===H.INSPECT_MAX_BYTES){e[n+1]="...";break}return"<Buffer "+e.join(" ")+">"},f.prototype.toArrayBuffer=function(){if("undefined"==typeof Uint8Array)throw new Error("Buffer.toArrayBuffer not supported in this browser");if(f._useTypedArrays)return new f(this).buffer;for(var e=new Uint8Array(this.length),t=0,n=e.length;t<n;t+=1)e[t]=this[t];return e.buffer};var t=f.prototype;function S(e,t,n){return"number"!=typeof e?n:t<=(e=~~e)?t:0<=e||0<=(e+=t)?e:0}function j(e){return(e=~~Math.ceil(+e))<0?0:e}function C(e){return(Array.isArray||function(e){return"[object Array]"===Object.prototype.toString.call(e)})(e)}function k(e){return e<16?"0"+e.toString(16):e.toString(16)}function T(e){for(var t=[],n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<=127)t.push(e.charCodeAt(n));else for(var o=n,i=(55296<=r&&r<=57343&&n++,encodeURIComponent(e.slice(o,n+1)).substr(1).split("%")),u=0;u<i.length;u++)t.push(parseInt(i[u],16))}return t}function M(e){return a.toByteArray(e)}function c(e,t,n,r){for(var o=0;o<r&&!(o+n>=t.length||o>=e.length);o++)t[o+n]=e[o];return o}function N(e){try{return decodeURIComponent(e)}catch(e){return String.fromCharCode(65533)}}function Y(e,t){d("number"==typeof e,"cannot write a non-number as a number"),d(0<=e,"specified a negative value for writing an unsigned value"),d(e<=t,"value is larger than maximum value for type"),d(Math.floor(e)===e,"value has a fractional component")}function F(e,t,n){d("number"==typeof e,"cannot write a non-number as a number"),d(e<=t,"value larger than maximum allowed value"),d(n<=e,"value smaller than minimum allowed value"),d(Math.floor(e)===e,"value has a fractional component")}function D(e,t,n){d("number"==typeof e,"cannot write a non-number as a number"),d(e<=t,"value larger than maximum allowed value"),d(n<=e,"value smaller than minimum allowed value")}function d(e,t){if(!e)throw new Error(t||"Failed assertion")}f._augment=function(e){return e._isBuffer=!0,e._get=e.get,e._set=e.set,e.get=t.get,e.set=t.set,e.write=t.write,e.toString=t.toString,e.toLocaleString=t.toString,e.toJSON=t.toJSON,e.copy=t.copy,e.slice=t.slice,e.readUInt8=t.readUInt8,e.readUInt16LE=t.readUInt16LE,e.readUInt16BE=t.readUInt16BE,e.readUInt32LE=t.readUInt32LE,e.readUInt32BE=t.readUInt32BE,e.readInt8=t.readInt8,e.readInt16LE=t.readInt16LE,e.readInt16BE=t.readInt16BE,e.readInt32LE=t.readInt32LE,e.readInt32BE=t.readInt32BE,e.readFloatLE=t.readFloatLE,e.readFloatBE=t.readFloatBE,e.readDoubleLE=t.readDoubleLE,e.readDoubleBE=t.readDoubleBE,e.writeUInt8=t.writeUInt8,e.writeUInt16LE=t.writeUInt16LE,e.writeUInt16BE=t.writeUInt16BE,e.writeUInt32LE=t.writeUInt32LE,e.writeUInt32BE=t.writeUInt32BE,e.writeInt8=t.writeInt8,e.writeInt16LE=t.writeInt16LE,e.writeInt16BE=t.writeInt16BE,e.writeInt32LE=t.writeInt32LE,e.writeInt32BE=t.writeInt32BE,e.writeFloatLE=t.writeFloatLE,e.writeFloatBE=t.writeFloatBE,e.writeDoubleLE=t.writeDoubleLE,e.writeDoubleBE=t.writeDoubleBE,e.fill=t.fill,e.inspect=t.inspect,e.toArrayBuffer=t.toArrayBuffer,e}}.call(this,O("lYpoI2"),"undefined"!=typeof self?self:"undefined"!=typeof window?window:{},O("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/node_modules/gulp-browserify/node_modules/buffer/index.js","/node_modules/gulp-browserify/node_modules/buffer")},{"base64-js":2,buffer:3,ieee754:10,lYpoI2:11}],4:[function(c,d,e){!function(e,t,a,n,r,o,i,u,s){var a=c("buffer").Buffer,f=4,l=new a(f);l.fill(0);d.exports={hash:function(e,t,n,r){for(var o=t(function(e,t){e.length%f!=0&&(n=e.length+(f-e.length%f),e=a.concat([e,l],n));for(var n,r=[],o=t?e.readInt32BE:e.readInt32LE,i=0;i<e.length;i+=f)r.push(o.call(e,i));return r}(e=a.isBuffer(e)?e:new a(e),r),8*e.length),t=r,i=new a(n),u=t?i.writeInt32BE:i.writeInt32LE,s=0;s<o.length;s++)u.call(i,o[s],4*s,!0);return i}}}.call(this,c("lYpoI2"),"undefined"!=typeof self?self:"undefined"!=typeof window?window:{},c("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/node_modules/gulp-browserify/node_modules/crypto-browserify/helpers.js","/node_modules/gulp-browserify/node_modules/crypto-browserify")},{buffer:3,lYpoI2:11}],5:[function(v,e,_){!function(l,c,u,d,h,p,g,y,w){var u=v("buffer").Buffer,e=v("./sha"),t=v("./sha256"),n=v("./rng"),b={sha1:e,sha256:t,md5:v("./md5")},s=64,a=new u(s);function r(e,n){var r=b[e=e||"sha1"],o=[];return r||i("algorithm:",e,"is not yet supported"),{update:function(e){return u.isBuffer(e)||(e=new u(e)),o.push(e),e.length,this},digest:function(e){var t=u.concat(o),t=n?function(e,t,n){u.isBuffer(t)||(t=new u(t)),u.isBuffer(n)||(n=new u(n)),t.length>s?t=e(t):t.length<s&&(t=u.concat([t,a],s));for(var r=new u(s),o=new u(s),i=0;i<s;i++)r[i]=54^t[i],o[i]=92^t[i];return n=e(u.concat([r,n])),e(u.concat([o,n]))}(r,n,t):r(t);return o=null,e?t.toString(e):t}}}function i(){var e=[].slice.call(arguments).join(" ");throw new Error([e,"we accept pull requests","http://github.com/dominictarr/crypto-browserify"].join("\n"))}a.fill(0),_.createHash=function(e){return r(e)},_.createHmac=r,_.randomBytes=function(e,t){if(!t||!t.call)return new u(n(e));try{t.call(this,void 0,new u(n(e)))}catch(e){t(e)}};var o,f=["createCredentials","createCipher","createCipheriv","createDecipher","createDecipheriv","createSign","createVerify","createDiffieHellman","pbkdf2"],m=function(e){_[e]=function(){i("sorry,",e,"is not implemented yet")}};for(o in f)m(f[o],o)}.call(this,v("lYpoI2"),"undefined"!=typeof self?self:"undefined"!=typeof window?window:{},v("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/node_modules/gulp-browserify/node_modules/crypto-browserify/index.js","/node_modules/gulp-browserify/node_modules/crypto-browserify")},{"./md5":6,"./rng":7,"./sha":8,"./sha256":9,buffer:3,lYpoI2:11}],6:[function(w,b,e){!function(e,r,o,i,u,a,f,l,y){var t=w("./helpers");function n(e,t){e[t>>5]|=128<<t%32,e[14+(t+64>>>9<<4)]=t;for(var n=1732584193,r=-271733879,o=-1732584194,i=271733878,u=0;u<e.length;u+=16){var s=n,a=r,f=o,l=i,n=c(n,r,o,i,e[u+0],7,-680876936),i=c(i,n,r,o,e[u+1],12,-389564586),o=c(o,i,n,r,e[u+2],17,606105819),r=c(r,o,i,n,e[u+3],22,-1044525330);n=c(n,r,o,i,e[u+4],7,-176418897),i=c(i,n,r,o,e[u+5],12,1200080426),o=c(o,i,n,r,e[u+6],17,-1473231341),r=c(r,o,i,n,e[u+7],22,-45705983),n=c(n,r,o,i,e[u+8],7,1770035416),i=c(i,n,r,o,e[u+9],12,-1958414417),o=c(o,i,n,r,e[u+10],17,-42063),r=c(r,o,i,n,e[u+11],22,-1990404162),n=c(n,r,o,i,e[u+12],7,1804603682),i=c(i,n,r,o,e[u+13],12,-40341101),o=c(o,i,n,r,e[u+14],17,-1502002290),n=d(n,r=c(r,o,i,n,e[u+15],22,1236535329),o,i,e[u+1],5,-165796510),i=d(i,n,r,o,e[u+6],9,-1069501632),o=d(o,i,n,r,e[u+11],14,643717713),r=d(r,o,i,n,e[u+0],20,-373897302),n=d(n,r,o,i,e[u+5],5,-701558691),i=d(i,n,r,o,e[u+10],9,38016083),o=d(o,i,n,r,e[u+15],14,-660478335),r=d(r,o,i,n,e[u+4],20,-405537848),n=d(n,r,o,i,e[u+9],5,568446438),i=d(i,n,r,o,e[u+14],9,-1019803690),o=d(o,i,n,r,e[u+3],14,-187363961),r=d(r,o,i,n,e[u+8],20,1163531501),n=d(n,r,o,i,e[u+13],5,-1444681467),i=d(i,n,r,o,e[u+2],9,-51403784),o=d(o,i,n,r,e[u+7],14,1735328473),n=h(n,r=d(r,o,i,n,e[u+12],20,-1926607734),o,i,e[u+5],4,-378558),i=h(i,n,r,o,e[u+8],11,-2022574463),o=h(o,i,n,r,e[u+11],16,1839030562),r=h(r,o,i,n,e[u+14],23,-35309556),n=h(n,r,o,i,e[u+1],4,-1530992060),i=h(i,n,r,o,e[u+4],11,1272893353),o=h(o,i,n,r,e[u+7],16,-155497632),r=h(r,o,i,n,e[u+10],23,-1094730640),n=h(n,r,o,i,e[u+13],4,681279174),i=h(i,n,r,o,e[u+0],11,-358537222),o=h(o,i,n,r,e[u+3],16,-722521979),r=h(r,o,i,n,e[u+6],23,76029189),n=h(n,r,o,i,e[u+9],4,-640364487),i=h(i,n,r,o,e[u+12],11,-421815835),o=h(o,i,n,r,e[u+15],16,530742520),n=p(n,r=h(r,o,i,n,e[u+2],23,-995338651),o,i,e[u+0],6,-198630844),i=p(i,n,r,o,e[u+7],10,1126891415),o=p(o,i,n,r,e[u+14],15,-1416354905),r=p(r,o,i,n,e[u+5],21,-57434055),n=p(n,r,o,i,e[u+12],6,1700485571),i=p(i,n,r,o,e[u+3],10,-1894986606),o=p(o,i,n,r,e[u+10],15,-1051523),r=p(r,o,i,n,e[u+1],21,-2054922799),n=p(n,r,o,i,e[u+8],6,1873313359),i=p(i,n,r,o,e[u+15],10,-30611744),o=p(o,i,n,r,e[u+6],15,-1560198380),r=p(r,o,i,n,e[u+13],21,1309151649),n=p(n,r,o,i,e[u+4],6,-145523070),i=p(i,n,r,o,e[u+11],10,-1120210379),o=p(o,i,n,r,e[u+2],15,718787259),r=p(r,o,i,n,e[u+9],21,-343485551),n=g(n,s),r=g(r,a),o=g(o,f),i=g(i,l)}return Array(n,r,o,i)}function s(e,t,n,r,o,i){return g((t=g(g(t,e),g(r,i)))<<o|t>>>32-o,n)}function c(e,t,n,r,o,i,u){return s(t&n|~t&r,e,t,o,i,u)}function d(e,t,n,r,o,i,u){return s(t&r|n&~r,e,t,o,i,u)}function h(e,t,n,r,o,i,u){return s(t^n^r,e,t,o,i,u)}function p(e,t,n,r,o,i,u){return s(n^(t|~r),e,t,o,i,u)}function g(e,t){var n=(65535&e)+(65535&t);return(e>>16)+(t>>16)+(n>>16)<<16|65535&n}b.exports=function(e){return t.hash(e,n,16)}}.call(this,w("lYpoI2"),"undefined"!=typeof self?self:"undefined"!=typeof window?window:{},w("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/node_modules/gulp-browserify/node_modules/crypto-browserify/md5.js","/node_modules/gulp-browserify/node_modules/crypto-browserify")},{"./helpers":4,buffer:3,lYpoI2:11}],7:[function(e,l,t){!function(e,t,n,r,o,i,u,s,f){var a;l.exports=a||function(e){for(var t,n=new Array(e),r=0;r<e;r++)0==(3&r)&&(t=4294967296*Math.random()),n[r]=t>>>((3&r)<<3)&255;return n}}.call(this,e("lYpoI2"),"undefined"!=typeof self?self:"undefined"!=typeof window?window:{},e("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/node_modules/gulp-browserify/node_modules/crypto-browserify/rng.js","/node_modules/gulp-browserify/node_modules/crypto-browserify")},{buffer:3,lYpoI2:11}],8:[function(c,d,e){!function(e,t,n,r,o,s,a,f,l){var i=c("./helpers");function u(l,c){l[c>>5]|=128<<24-c%32,l[15+(c+64>>9<<4)]=c;for(var e,t,n,r=Array(80),o=1732584193,i=-271733879,u=-1732584194,s=271733878,d=-1009589776,h=0;h<l.length;h+=16){for(var p=o,g=i,y=u,w=s,b=d,a=0;a<80;a++){r[a]=a<16?l[h+a]:v(r[a-3]^r[a-8]^r[a-14]^r[a-16],1);var f=m(m(v(o,5),(f=i,t=u,n=s,(e=a)<20?f&t|~f&n:!(e<40)&&e<60?f&t|f&n|t&n:f^t^n)),m(m(d,r[a]),(e=a)<20?1518500249:e<40?1859775393:e<60?-1894007588:-899497514)),d=s,s=u,u=v(i,30),i=o,o=f}o=m(o,p),i=m(i,g),u=m(u,y),s=m(s,w),d=m(d,b)}return Array(o,i,u,s,d)}function m(e,t){var n=(65535&e)+(65535&t);return(e>>16)+(t>>16)+(n>>16)<<16|65535&n}function v(e,t){return e<<t|e>>>32-t}d.exports=function(e){return i.hash(e,u,20,!0)}}.call(this,c("lYpoI2"),"undefined"!=typeof self?self:"undefined"!=typeof window?window:{},c("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/node_modules/gulp-browserify/node_modules/crypto-browserify/sha.js","/node_modules/gulp-browserify/node_modules/crypto-browserify")},{"./helpers":4,buffer:3,lYpoI2:11}],9:[function(c,d,e){!function(e,t,n,r,u,s,a,f,l){function b(e,t){var n=(65535&e)+(65535&t);return(e>>16)+(t>>16)+(n>>16)<<16|65535&n}function o(e,l){var c,d=new Array(1116352408,1899447441,3049323471,3921009573,961987163,1508970993,2453635748,2870763221,3624381080,310598401,607225278,1426881987,1925078388,2162078206,2614888103,3248222580,3835390401,4022224774,264347078,604807628,770255983,1249150122,1555081692,1996064986,2554220882,2821834349,2952996808,3210313671,3336571891,3584528711,113926993,338241895,666307205,773529912,1294757372,1396182291,1695183700,1986661051,2177026350,2456956037,2730485921,2820302411,3259730800,3345764771,3516065817,3600352804,4094571909,275423344,430227734,506948616,659060556,883997877,958139571,1322822218,1537002063,1747873779,1955562222,2024104815,2227730452,2361852424,2428436474,2756734187,3204031479,3329325298),t=new Array(1779033703,3144134277,1013904242,2773480762,1359893119,2600822924,528734635,1541459225),n=new Array(64);e[l>>5]|=128<<24-l%32,e[15+(l+64>>9<<4)]=l;for(var r,o,h=0;h<e.length;h+=16){for(var i=t[0],u=t[1],s=t[2],p=t[3],a=t[4],g=t[5],y=t[6],w=t[7],f=0;f<64;f++)n[f]=f<16?e[f+h]:b(b(b((o=n[f-2],m(o,17)^m(o,19)^v(o,10)),n[f-7]),(o=n[f-15],m(o,7)^m(o,18)^v(o,3))),n[f-16]),c=b(b(b(b(w,m(o=a,6)^m(o,11)^m(o,25)),a&g^~a&y),d[f]),n[f]),r=b(m(r=i,2)^m(r,13)^m(r,22),i&u^i&s^u&s),w=y,y=g,g=a,a=b(p,c),p=s,s=u,u=i,i=b(c,r);t[0]=b(i,t[0]),t[1]=b(u,t[1]),t[2]=b(s,t[2]),t[3]=b(p,t[3]),t[4]=b(a,t[4]),t[5]=b(g,t[5]),t[6]=b(y,t[6]),t[7]=b(w,t[7])}return t}var i=c("./helpers"),m=function(e,t){return e>>>t|e<<32-t},v=function(e,t){return e>>>t};d.exports=function(e){return i.hash(e,o,32,!0)}}.call(this,c("lYpoI2"),"undefined"!=typeof self?self:"undefined"!=typeof window?window:{},c("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/node_modules/gulp-browserify/node_modules/crypto-browserify/sha256.js","/node_modules/gulp-browserify/node_modules/crypto-browserify")},{"./helpers":4,buffer:3,lYpoI2:11}],10:[function(e,t,f){!function(e,t,n,r,o,i,u,s,a){f.read=function(e,t,n,r,o){var i,u,l=8*o-r-1,c=(1<<l)-1,d=c>>1,s=-7,a=n?o-1:0,f=n?-1:1,o=e[t+a];for(a+=f,i=o&(1<<-s)-1,o>>=-s,s+=l;0<s;i=256*i+e[t+a],a+=f,s-=8);for(u=i&(1<<-s)-1,i>>=-s,s+=r;0<s;u=256*u+e[t+a],a+=f,s-=8);if(0===i)i=1-d;else{if(i===c)return u?NaN:1/0*(o?-1:1);u+=Math.pow(2,r),i-=d}return(o?-1:1)*u*Math.pow(2,i-r)},f.write=function(e,t,l,n,r,c){var o,i,u=8*c-r-1,s=(1<<u)-1,a=s>>1,d=23===r?Math.pow(2,-24)-Math.pow(2,-77):0,f=n?0:c-1,h=n?1:-1,c=t<0||0===t&&1/t<0?1:0;for(t=Math.abs(t),isNaN(t)||t===1/0?(i=isNaN(t)?1:0,o=s):(o=Math.floor(Math.log(t)/Math.LN2),t*(n=Math.pow(2,-o))<1&&(o--,n*=2),2<=(t+=1<=o+a?d/n:d*Math.pow(2,1-a))*n&&(o++,n/=2),s<=o+a?(i=0,o=s):1<=o+a?(i=(t*n-1)*Math.pow(2,r),o+=a):(i=t*Math.pow(2,a-1)*Math.pow(2,r),o=0));8<=r;e[l+f]=255&i,f+=h,i/=256,r-=8);for(o=o<<r|i,u+=r;0<u;e[l+f]=255&o,f+=h,o/=256,u-=8);e[l+f-h]|=128*c}}.call(this,e("lYpoI2"),"undefined"!=typeof self?self:"undefined"!=typeof window?window:{},e("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/node_modules/gulp-browserify/node_modules/ieee754/index.js","/node_modules/gulp-browserify/node_modules/ieee754")},{buffer:3,lYpoI2:11}],11:[function(e,h,t){!function(e,t,n,r,o,f,l,c,d){var i,u,s;function a(){}(e=h.exports={}).nextTick=(u="undefined"!=typeof window&&window.setImmediate,s="undefined"!=typeof window&&window.postMessage&&window.addEventListener,u?function(e){return window.setImmediate(e)}:s?(i=[],window.addEventListener("message",function(e){var t=e.source;t!==window&&null!==t||"process-tick"!==e.data||(e.stopPropagation(),0<i.length&&i.shift()())},!0),function(e){i.push(e),window.postMessage("process-tick","*")}):function(e){setTimeout(e,0)}),e.title="browser",e.browser=!0,e.env={},e.argv=[],e.on=a,e.addListener=a,e.once=a,e.off=a,e.removeListener=a,e.removeAllListeners=a,e.emit=a,e.binding=function(e){throw new Error("process.binding is not supported")},e.cwd=function(){return"/"},e.chdir=function(e){throw new Error("process.chdir is not supported")}}.call(this,e("lYpoI2"),"undefined"!=typeof self?self:"undefined"!=typeof window?window:{},e("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/node_modules/gulp-browserify/node_modules/process/browser.js","/node_modules/gulp-browserify/node_modules/process")},{buffer:3,lYpoI2:11}]},{},[1])(1)});
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],95:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 (function (process){(function (){
 // 'path' module extracted from Node.js v8.11.1 (only the posix part)
 // transplited with Babel
@@ -10343,7 +10266,7 @@ posix.posix = posix;
 module.exports = posix;
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":98}],96:[function(require,module,exports){
+},{"_process":97}],95:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -16780,12 +16703,12 @@ var PhotoSwipe = exports["default"] = /*#__PURE__*/function (_PhotoSwipeBase) {
   }]);
 }(PhotoSwipeBase);
 
-},{}],97:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 (function (global){(function (){
 !function(e){"use strict";function t(e,t){this.options={},e=e||this.options;var i={frequency:350,peak:1};this.inputNode=this.filterNode=s.context.createBiquadFilter(),this.filterNode.type=t,this.outputNode=o.context.createGain(),this.filterNode.connect(this.outputNode);for(var n in i)this[n]=e[n],this[n]=void 0===this[n]||null===this[n]?i[n]:this[n]}function i(){var e,t,i=s.context.sampleRate*this.time,n=o.context.createBuffer(2,i,s.context.sampleRate),a=n.getChannelData(0),r=n.getChannelData(1);for(t=0;i>t;t++)e=this.reverse?i-t:t,a[t]=(2*Math.random()-1)*Math.pow(1-e/i,this.decay),r[t]=(2*Math.random()-1)*Math.pow(1-e/i,this.decay);this.reverbNode.buffer&&(this.inputNode.disconnect(this.reverbNode),this.reverbNode.disconnect(this.wetGainNode),this.reverbNode=o.context.createConvolver(),this.inputNode.connect(this.reverbNode),this.reverbNode.connect(this.wetGainNode)),this.reverbNode.buffer=n}function n(e){for(var t=s.context.sampleRate,i=new Float32Array(t),n=Math.PI/180,o=0;t>o;o++){var a=2*o/t-1;i[o]=(3+e)*a*20*n/(Math.PI+e*Math.abs(a))}return i}var o={},s=o,a="object"==typeof module&&module.exports,r="function"==typeof define&&define.amd;a?module.exports=o:r?define([],o):e.Pizzicato=e.Pz=o;var c=e.AudioContext||e.webkitAudioContext;if(!c)return void console.error("No AudioContext found in this environment. Please ensure your window or global object contains a working AudioContext constructor function.");o.context=new c;var h=o.context.createGain();h.connect(o.context.destination),o.Util={isString:function(e){return"[object String]"===toString.call(e)},isObject:function(e){return"[object Object]"===toString.call(e)},isFunction:function(e){return"[object Function]"===toString.call(e)},isNumber:function(e){return"[object Number]"===toString.call(e)&&e===+e},isArray:function(e){return"[object Array]"===toString.call(e)},isInRange:function(e,t,i){return s.Util.isNumber(e)&&s.Util.isNumber(t)&&s.Util.isNumber(i)?e>=t&&i>=e:!1},isBool:function(e){return"boolean"==typeof e},isOscillator:function(e){return e&&"[object OscillatorNode]"===e.toString()},isAudioBufferSourceNode:function(e){return e&&"[object AudioBufferSourceNode]"===e.toString()},isSound:function(e){return e instanceof s.Sound},isEffect:function(e){for(var t in o.Effects)if(e instanceof o.Effects[t])return!0;return!1},normalize:function(e,t,i){return s.Util.isNumber(e)&&s.Util.isNumber(t)&&s.Util.isNumber(i)?(i-t)*e/1+t:void 0},getDryLevel:function(e){return!s.Util.isNumber(e)||e>1||0>e?0:.5>=e?1:1-2*(e-.5)},getWetLevel:function(e){return!s.Util.isNumber(e)||e>1||0>e?0:e>=.5?1:1-2*(.5-e)}};var u=o.context.createGain(),d=Object.getPrototypeOf(Object.getPrototypeOf(u)),l=d.connect;d.connect=function(e){var t=s.Util.isEffect(e)?e.inputNode:e;return l.call(this,t),e},Object.defineProperty(o,"volume",{enumerable:!0,get:function(){return h.gain.value},set:function(e){s.Util.isInRange(e,0,1)&&h&&(h.gain.value=e)}}),Object.defineProperty(o,"masterGainNode",{enumerable:!1,get:function(){return h},set:function(e){console.error("Can't set the master gain node")}}),o.Events={on:function(e,t,i){if(e&&t){this._events=this._events||{};var n=this._events[e]||(this._events[e]=[]);n.push({callback:t,context:i||this,handler:this})}},trigger:function(e){if(e){var t,i,n,o;if(this._events=this._events||{},t=this._events[e]||(this._events[e]=[])){for(i=Math.max(0,arguments.length-1),n=[],o=0;i>o;o++)n[o]=arguments[o+1];for(o=0;o<t.length;o++)t[o].callback.apply(t[o].context,n)}}},off:function(e){e?this._events[e]=void 0:this._events={}}},o.Sound=function(e,t){function i(e){var t=["wave","file","input","script","sound"];if(e&&!d.isFunction(e)&&!d.isString(e)&&!d.isObject(e))return"Description type not supported. Initialize a sound using an object, a function or a string.";if(d.isObject(e)){if(!d.isString(e.source)||-1===t.indexOf(e.source))return"Specified source not supported. Sources can be wave, file, input or script";if(!("file"!==e.source||e.options&&e.options.path))return"A path is needed for sounds with a file source";if(!("script"!==e.source||e.options&&e.options.audioFunction))return"An audio function is needed for sounds with a script source"}}function n(e,t){e=e||{},this.getRawSourceNode=function(){var t=this.sourceNode?this.sourceNode.frequency.value:e.frequency,i=o.context.createOscillator();return i.type=e.type||"sine",i.frequency.value=t||440,i},this.sourceNode=this.getRawSourceNode(),this.sourceNode.gainSuccessor=s.context.createGain(),this.sourceNode.connect(this.sourceNode.gainSuccessor),d.isFunction(t)&&t()}function a(e,t){e=d.isArray(e)?e:[e];var i=new XMLHttpRequest;i.open("GET",e[0],!0),i.responseType="arraybuffer",i.onload=function(i){o.context.decodeAudioData(i.target.response,function(e){u.getRawSourceNode=function(){var t=o.context.createBufferSource();return t.loop=this.loop,t.buffer=e,t},d.isFunction(t)&&t()}.bind(u),function(i){return console.error("Error decoding audio file "+e[0]),e.length>1?(e.shift(),void a(e,t)):(i=i||new Error("Error decoding audio file "+e[0]),void(d.isFunction(t)&&t(i)))}.bind(u))},i.onreadystatechange=function(t){4===i.readyState&&200!==i.status&&console.error("Error while fetching "+e[0]+". "+i.statusText)},i.send()}function r(e,t){if(navigator.getUserMedia=navigator.getUserMedia||navigator.webkitGetUserMedia||navigator.mozGetUserMedia||navigator.msGetUserMedia,!navigator.getUserMedia&&!navigator.mediaDevices.getUserMedia)return void console.error("Your browser does not support getUserMedia");var i=function(e){u.getRawSourceNode=function(){return o.context.createMediaStreamSource(e)},d.isFunction(t)&&t()}.bind(u),n=function(e){d.isFunction(t)&&t(e)};navigator.mediaDevices.getUserMedia?navigator.mediaDevices.getUserMedia({audio:!0}).then(i)["catch"](n):navigator.getUserMedia({audio:!0},i,n)}function c(e,t){var i=d.isFunction(e)?e:e.audioFunction,n=d.isObject(e)&&e.bufferSize?e.bufferSize:null;if(!n)try{o.context.createScriptProcessor()}catch(s){n=2048}this.getRawSourceNode=function(){var e=o.context.createScriptProcessor(n,1,1);return e.onaudioprocess=i,e}}function h(e,t){this.getRawSourceNode=e.sound.getRawSourceNode,e.sound.sourceNode&&s.Util.isOscillator(e.sound.sourceNode)&&(this.sourceNode=this.getRawSourceNode(),this.frequency=e.sound.frequency)}var u=this,d=o.Util,l=i(e),f=d.isObject(e)&&d.isObject(e.options),p=.04,v=.04;if(l)throw console.error(l),new Error("Error initializing Pizzicato Sound: "+l);this.detached=f&&e.options.detached,this.masterVolume=o.context.createGain(),this.fadeNode=o.context.createGain(),this.fadeNode.gain.value=0,this.detached||this.masterVolume.connect(o.masterGainNode),this.lastTimePlayed=0,this.effects=[],this.effectConnectors=[],this.playing=this.paused=!1,this.loop=f&&e.options.loop,this.attack=f&&d.isNumber(e.options.attack)?e.options.attack:p,this.volume=f&&d.isNumber(e.options.volume)?e.options.volume:1,f&&d.isNumber(e.options.release)?this.release=e.options.release:f&&d.isNumber(e.options.sustain)?(console.warn("'sustain' is deprecated. Use 'release' instead."),this.release=e.options.sustain):this.release=v,e?d.isString(e)?a.bind(this)(e,t):d.isFunction(e)?c.bind(this)(e,t):"file"===e.source?a.bind(this)(e.options.path,t):"wave"===e.source?n.bind(this)(e.options,t):"input"===e.source?r.bind(this)(e,t):"script"===e.source?c.bind(this)(e.options,t):"sound"===e.source&&h.bind(this)(e.options,t):n.bind(this)({},t)},o.Sound.prototype=Object.create(o.Events,{play:{enumerable:!0,value:function(e,t){this.playing||(s.Util.isNumber(t)||(t=this.offsetTime||0),s.Util.isNumber(e)||(e=0),this.playing=!0,this.paused=!1,this.sourceNode=this.getSourceNode(),this.applyAttack(),s.Util.isFunction(this.sourceNode.start)&&(this.lastTimePlayed=o.context.currentTime-t,this.sourceNode.start(s.context.currentTime+e,t)),this.trigger("play"))}},stop:{enumerable:!0,value:function(){(this.paused||this.playing)&&(this.paused=this.playing=!1,this.stopWithRelease(),this.offsetTime=0,this.trigger("stop"))}},pause:{enumerable:!0,value:function(){if(!this.paused&&this.playing){this.paused=!0,this.playing=!1,this.stopWithRelease();var e=s.context.currentTime-this.lastTimePlayed;this.sourceNode.buffer?this.offsetTime=e%(this.sourceNode.buffer.length/s.context.sampleRate):this.offsetTime=e,this.trigger("pause")}}},clone:{enumerable:!0,value:function(){for(var e=new o.Sound({source:"sound",options:{loop:this.loop,attack:this.attack,release:this.release,volume:this.volume,sound:this}}),t=0;t<this.effects.length;t++)e.addEffect(this.effects[t]);return e}},onEnded:{enumerable:!0,value:function(e){return function(){this.sourceNode&&this.sourceNode!==e||(this.playing&&this.stop(),this.paused||this.trigger("end"))}}},addEffect:{enumerable:!0,value:function(e){if(!s.Util.isEffect(e))return console.error("The object provided is not a Pizzicato effect."),this;this.effects.push(e);var t=this.effectConnectors.length>0?this.effectConnectors[this.effectConnectors.length-1]:this.fadeNode;t.disconnect(),t.connect(e);var i=s.context.createGain();return this.effectConnectors.push(i),e.connect(i),i.connect(this.masterVolume),this}},removeEffect:{enumerable:!0,value:function(e){var t=this.effects.indexOf(e);if(-1===t)return console.warn("Cannot remove effect that is not applied to this sound."),this;var i=this.playing;i&&this.pause();var n=0===t?this.fadeNode:this.effectConnectors[t-1];n.disconnect();var o=this.effectConnectors[t];o.disconnect(),e.disconnect(o),this.effectConnectors.splice(t,1),this.effects.splice(t,1);var s;return s=t>this.effects.length-1||0===this.effects.length?this.masterVolume:this.effects[t],n.connect(s),i&&this.play(),this}},connect:{enumerable:!0,value:function(e){return this.masterVolume.connect(e),this}},disconnect:{enumerable:!0,value:function(e){return this.masterVolume.disconnect(e),this}},connectEffects:{enumerable:!0,value:function(){for(var e=[],t=0;t<this.effects.length;t++){var i=t===this.effects.length-1,n=i?this.masterVolume:this.effects[t+1].inputNode;e[t]=s.context.createGain(),this.effects[t].outputNode.disconnect(this.effectConnectors[t]),this.effects[t].outputNode.connect(n)}}},volume:{enumerable:!0,get:function(){return this.masterVolume?this.masterVolume.gain.value:void 0},set:function(e){s.Util.isInRange(e,0,1)&&this.masterVolume&&(this.masterVolume.gain.value=e)}},frequency:{enumerable:!0,get:function(){return this.sourceNode&&s.Util.isOscillator(this.sourceNode)?this.sourceNode.frequency.value:null},set:function(e){this.sourceNode&&s.Util.isOscillator(this.sourceNode)&&(this.sourceNode.frequency.value=e)}},sustain:{enumerable:!0,get:function(){return console.warn("'sustain' is deprecated. Use 'release' instead."),this.release},set:function(e){console.warn("'sustain' is deprecated. Use 'release' instead."),s.Util.isInRange(e,0,10)&&(this.release=e)}},getSourceNode:{enumerable:!0,value:function(){if(this.sourceNode){var e=this.sourceNode;e.gainSuccessor.gain.setValueAtTime(e.gainSuccessor.gain.value,s.context.currentTime),e.gainSuccessor.gain.linearRampToValueAtTime(1e-4,s.context.currentTime+.2),setTimeout(function(){e.disconnect(),e.gainSuccessor.disconnect()},200)}var t=this.getRawSourceNode();return t.gainSuccessor=s.context.createGain(),t.connect(t.gainSuccessor),t.gainSuccessor.connect(this.fadeNode),this.fadeNode.connect(this.getInputNode()),s.Util.isAudioBufferSourceNode(t)&&(t.onended=this.onEnded(t).bind(this)),t}},getInputNode:{enumerable:!0,value:function(){return this.effects.length>0?this.effects[0].inputNode:this.masterVolume}},applyAttack:{enumerable:!1,value:function(){this.fadeNode.gain.value;if(this.fadeNode.gain.cancelScheduledValues(s.context.currentTime),!this.attack)return void this.fadeNode.gain.setTargetAtTime(1,s.context.currentTime,.001);var e=navigator.userAgent.toLowerCase().indexOf("firefox")>-1,t=this.attack;e||(t=(1-this.fadeNode.gain.value)*this.attack),this.fadeNode.gain.setTargetAtTime(1,s.context.currentTime,2*t)}},stopWithRelease:{enumerable:!1,value:function(e){var t=this.sourceNode,i=function(){return s.Util.isFunction(t.stop)?t.stop(0):t.disconnect()};this.fadeNode.gain.value;if(this.fadeNode.gain.cancelScheduledValues(s.context.currentTime),!this.release)return this.fadeNode.gain.setTargetAtTime(0,s.context.currentTime,.001),void i();var n=navigator.userAgent.toLowerCase().indexOf("firefox")>-1,o=this.release;n||(o=this.fadeNode.gain.value*this.release),this.fadeNode.gain.setTargetAtTime(1e-5,s.context.currentTime,o/5),window.setTimeout(function(){i()},1e3*o)}}}),o.Group=function(e){e=e||[],this.mergeGainNode=s.context.createGain(),this.masterVolume=s.context.createGain(),this.sounds=[],this.effects=[],this.effectConnectors=[],this.mergeGainNode.connect(this.masterVolume),this.masterVolume.connect(s.masterGainNode);for(var t=0;t<e.length;t++)this.addSound(e[t])},o.Group.prototype=Object.create(s.Events,{connect:{enumerable:!0,value:function(e){return this.masterVolume.connect(e),this}},disconnect:{enumerable:!0,value:function(e){return this.masterVolume.disconnect(e),this}},addSound:{enumerable:!0,value:function(e){return s.Util.isSound(e)?this.sounds.indexOf(e)>-1?void console.warn("The Pizzicato.Sound object was already added to this group"):e.detached?void console.warn("Groups do not support detached sounds. You can manually create an audio graph to group detached sounds together."):(e.disconnect(s.masterGainNode),e.connect(this.mergeGainNode),void this.sounds.push(e)):void console.error("You can only add Pizzicato.Sound objects")}},removeSound:{enumerable:!0,value:function(e){var t=this.sounds.indexOf(e);return-1===t?void console.warn("Cannot remove a sound that is not part of this group."):(e.disconnect(this.mergeGainNode),e.connect(s.masterGainNode),void this.sounds.splice(t,1))}},volume:{enumerable:!0,get:function(){return this.masterVolume?this.masterVolume.gain.value:void 0},set:function(e){s.Util.isInRange(e,0,1)&&(this.masterVolume.gain.value=e)}},play:{enumerable:!0,value:function(){for(var e=0;e<this.sounds.length;e++)this.sounds[e].play();this.trigger("play")}},stop:{enumerable:!0,value:function(){for(var e=0;e<this.sounds.length;e++)this.sounds[e].stop();this.trigger("stop")}},pause:{enumerable:!0,value:function(){for(var e=0;e<this.sounds.length;e++)this.sounds[e].pause();this.trigger("pause")}},addEffect:{enumerable:!0,value:function(e){if(!s.Util.isEffect(e))return console.error("The object provided is not a Pizzicato effect."),this;this.effects.push(e);var t=this.effectConnectors.length>0?this.effectConnectors[this.effectConnectors.length-1]:this.mergeGainNode;t.disconnect(),t.connect(e);var i=s.context.createGain();return this.effectConnectors.push(i),e.connect(i),i.connect(this.masterVolume),this}},removeEffect:{enumerable:!0,value:function(e){var t=this.effects.indexOf(e);if(-1===t)return console.warn("Cannot remove effect that is not applied to this group."),this;var i=0===t?this.mergeGainNode:this.effectConnectors[t-1];i.disconnect();var n=this.effectConnectors[t];n.disconnect(),e.disconnect(n),this.effectConnectors.splice(t,1),this.effects.splice(t,1);var o;return o=t>this.effects.length-1||0===this.effects.length?this.masterVolume:this.effects[t],i.connect(o),this}}}),o.Effects={};var f=Object.create(null,{connect:{enumerable:!0,value:function(e){return this.outputNode.connect(e),this}},disconnect:{enumerable:!0,value:function(e){return this.outputNode.disconnect(e),this}}});o.Effects.Delay=function(e){this.options={},e=e||this.options;var t={feedback:.5,time:.3,mix:.5};this.inputNode=o.context.createGain(),this.outputNode=o.context.createGain(),this.dryGainNode=o.context.createGain(),this.wetGainNode=o.context.createGain(),this.feedbackGainNode=o.context.createGain(),this.delayNode=o.context.createDelay(),this.inputNode.connect(this.dryGainNode),this.dryGainNode.connect(this.outputNode),this.delayNode.connect(this.feedbackGainNode),this.feedbackGainNode.connect(this.delayNode),this.inputNode.connect(this.delayNode),this.delayNode.connect(this.wetGainNode),this.wetGainNode.connect(this.outputNode);for(var i in t)this[i]=e[i],this[i]=void 0===this[i]||null===this[i]?t[i]:this[i]},o.Effects.Delay.prototype=Object.create(f,{mix:{enumerable:!0,get:function(){return this.options.mix},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.mix=e,this.dryGainNode.gain.value=o.Util.getDryLevel(this.mix),this.wetGainNode.gain.value=o.Util.getWetLevel(this.mix))}},time:{enumerable:!0,get:function(){return this.options.time},set:function(e){s.Util.isInRange(e,0,180)&&(this.options.time=e,this.delayNode.delayTime.value=e)}},feedback:{enumerable:!0,get:function(){return this.options.feedback},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.feedback=parseFloat(e,10),this.feedbackGainNode.gain.value=this.feedback)}}}),o.Effects.Compressor=function(e){this.options={},e=e||this.options;var t={threshold:-24,knee:30,attack:.003,release:.25,ratio:12};this.inputNode=this.compressorNode=o.context.createDynamicsCompressor(),this.outputNode=o.context.createGain(),this.compressorNode.connect(this.outputNode);for(var i in t)this[i]=e[i],this[i]=void 0===this[i]||null===this[i]?t[i]:this[i]},o.Effects.Compressor.prototype=Object.create(f,{threshold:{enumerable:!0,get:function(){return this.compressorNode.threshold.value},set:function(e){o.Util.isInRange(e,-100,0)&&(this.compressorNode.threshold.value=e)}},knee:{enumerable:!0,get:function(){return this.compressorNode.knee.value},set:function(e){o.Util.isInRange(e,0,40)&&(this.compressorNode.knee.value=e)}},attack:{enumerable:!0,get:function(){return this.compressorNode.attack.value},set:function(e){o.Util.isInRange(e,0,1)&&(this.compressorNode.attack.value=e)}},release:{enumerable:!0,get:function(){return this.compressorNode.release.value},set:function(e){o.Util.isInRange(e,0,1)&&(this.compressorNode.release.value=e)}},ratio:{enumerable:!0,get:function(){return this.compressorNode.ratio.value},set:function(e){o.Util.isInRange(e,1,20)&&(this.compressorNode.ratio.value=e)}},getCurrentGainReduction:function(){return this.compressorNode.reduction}}),o.Effects.LowPassFilter=function(e){t.call(this,e,"lowpass")},o.Effects.HighPassFilter=function(e){t.call(this,e,"highpass")};var p=Object.create(f,{frequency:{enumerable:!0,get:function(){return this.filterNode.frequency.value},set:function(e){o.Util.isInRange(e,10,22050)&&(this.filterNode.frequency.value=e)}},peak:{enumerable:!0,get:function(){return this.filterNode.Q.value},set:function(e){o.Util.isInRange(e,1e-4,1e3)&&(this.filterNode.Q.value=e)}}});o.Effects.LowPassFilter.prototype=p,o.Effects.HighPassFilter.prototype=p,o.Effects.Distortion=function(e){this.options={},e=e||this.options;var t={gain:.5};this.waveShaperNode=o.context.createWaveShaper(),this.inputNode=this.outputNode=this.waveShaperNode;for(var i in t)this[i]=e[i],this[i]=void 0===this[i]||null===this[i]?t[i]:this[i]},o.Effects.Distortion.prototype=Object.create(f,{gain:{enumerable:!0,get:function(){return this.options.gain},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.gain=e,this.adjustGain())}},adjustGain:{writable:!1,configurable:!1,enumerable:!1,value:function(){for(var e,t=s.Util.isNumber(this.options.gain)?parseInt(100*this.options.gain,10):50,i=44100,n=new Float32Array(i),o=Math.PI/180,a=0;i>a;++a)e=2*a/i-1,n[a]=(3+t)*e*20*o/(Math.PI+t*Math.abs(e));this.waveShaperNode.curve=n}}}),o.Effects.Flanger=function(e){this.options={},e=e||this.options;var t={time:.45,speed:.2,depth:.1,feedback:.1,mix:.5};this.inputNode=o.context.createGain(),this.outputNode=o.context.createGain(),this.inputFeedbackNode=o.context.createGain(),this.wetGainNode=o.context.createGain(),this.dryGainNode=o.context.createGain(),this.delayNode=o.context.createDelay(),this.oscillatorNode=o.context.createOscillator(),this.gainNode=o.context.createGain(),this.feedbackNode=o.context.createGain(),this.oscillatorNode.type="sine",this.inputNode.connect(this.inputFeedbackNode),this.inputNode.connect(this.dryGainNode),this.inputFeedbackNode.connect(this.delayNode),this.inputFeedbackNode.connect(this.wetGainNode),this.delayNode.connect(this.wetGainNode),this.delayNode.connect(this.feedbackNode),this.feedbackNode.connect(this.inputFeedbackNode),this.oscillatorNode.connect(this.gainNode),this.gainNode.connect(this.delayNode.delayTime),this.dryGainNode.connect(this.outputNode),this.wetGainNode.connect(this.outputNode),this.oscillatorNode.start(0);for(var i in t)this[i]=e[i],this[i]=void 0===this[i]||null===this[i]?t[i]:this[i]},o.Effects.Flanger.prototype=Object.create(f,{time:{enumberable:!0,get:function(){return this.options.time},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.time=e,this.delayNode.delayTime.value=s.Util.normalize(e,.001,.02))}},speed:{enumberable:!0,get:function(){return this.options.speed},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.speed=e,this.oscillatorNode.frequency.value=s.Util.normalize(e,.5,5))}},depth:{enumberable:!0,get:function(){return this.options.depth},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.depth=e,this.gainNode.gain.value=s.Util.normalize(e,5e-4,.005))}},feedback:{enumberable:!0,get:function(){return this.options.feedback},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.feedback=e,this.feedbackNode.gain.value=s.Util.normalize(e,0,.8))}},mix:{enumberable:!0,get:function(){return this.options.mix},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.mix=e,this.dryGainNode.gain.value=o.Util.getDryLevel(this.mix),this.wetGainNode.gain.value=o.Util.getWetLevel(this.mix))}}}),o.Effects.StereoPanner=function(e){this.options={},e=e||this.options;var t={pan:0};this.inputNode=o.context.createGain(),this.outputNode=o.context.createGain(),o.context.createStereoPanner?(this.pannerNode=o.context.createStereoPanner(),this.inputNode.connect(this.pannerNode),this.pannerNode.connect(this.outputNode)):o.context.createPanner?(console.warn("Your browser does not support the StereoPannerNode. Will use PannerNode instead."),this.pannerNode=o.context.createPanner(),this.pannerNode.type="equalpower",this.inputNode.connect(this.pannerNode),this.pannerNode.connect(this.outputNode)):(console.warn("Your browser does not support the Panner effect."),this.inputNode.connect(this.outputNode));for(var i in t)this[i]=e[i],this[i]=void 0===this[i]||null===this[i]?t[i]:this[i]},o.Effects.StereoPanner.prototype=Object.create(f,{pan:{enumerable:!0,get:function(){return this.options.pan},set:function(e){if(s.Util.isInRange(e,-1,1)&&(this.options.pan=e,this.pannerNode)){var t=this.pannerNode.toString().indexOf("StereoPannerNode")>-1;t?this.pannerNode.pan.value=e:this.pannerNode.setPosition(e,0,1-Math.abs(e))}}}}),o.Effects.Convolver=function(e,t){this.options={},e=e||this.options;var i=this,n=new XMLHttpRequest,a={mix:.5};this.callback=t,this.inputNode=o.context.createGain(),this.convolverNode=o.context.createConvolver(),this.outputNode=o.context.createGain(),this.wetGainNode=o.context.createGain(),this.dryGainNode=o.context.createGain(),this.inputNode.connect(this.convolverNode),this.convolverNode.connect(this.wetGainNode),this.inputNode.connect(this.dryGainNode),this.dryGainNode.connect(this.outputNode),this.wetGainNode.connect(this.outputNode);for(var r in a)this[r]=e[r],this[r]=void 0===this[r]||null===this[r]?a[r]:this[r];return e.impulse?(n.open("GET",e.impulse,!0),n.responseType="arraybuffer",n.onload=function(e){var t=e.target.response;o.context.decodeAudioData(t,function(e){i.convolverNode.buffer=e,i.callback&&s.Util.isFunction(i.callback)&&i.callback()},function(e){e=e||new Error("Error decoding impulse file"),i.callback&&s.Util.isFunction(i.callback)&&i.callback(e)})},n.onreadystatechange=function(t){4===n.readyState&&200!==n.status&&console.error("Error while fetching "+e.impulse+". "+n.statusText)},void n.send()):void console.error("No impulse file specified.")},o.Effects.Convolver.prototype=Object.create(f,{mix:{enumerable:!0,get:function(){return this.options.mix},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.mix=e,this.dryGainNode.gain.value=o.Util.getDryLevel(this.mix),this.wetGainNode.gain.value=o.Util.getWetLevel(this.mix))}}}),o.Effects.PingPongDelay=function(e){this.options={},e=e||this.options;var t={feedback:.5,time:.3,mix:.5};this.inputNode=o.context.createGain(),this.outputNode=o.context.createGain(),this.delayNodeLeft=o.context.createDelay(),this.delayNodeRight=o.context.createDelay(),this.dryGainNode=o.context.createGain(),this.wetGainNode=o.context.createGain(),this.feedbackGainNode=o.context.createGain(),this.channelMerger=o.context.createChannelMerger(2),this.inputNode.connect(this.dryGainNode),this.dryGainNode.connect(this.outputNode),this.delayNodeLeft.connect(this.channelMerger,0,0),this.delayNodeRight.connect(this.channelMerger,0,1),this.delayNodeLeft.connect(this.delayNodeRight),this.feedbackGainNode.connect(this.delayNodeLeft),this.delayNodeRight.connect(this.feedbackGainNode),this.inputNode.connect(this.feedbackGainNode),this.channelMerger.connect(this.wetGainNode),this.wetGainNode.connect(this.outputNode);for(var i in t)this[i]=e[i],this[i]=void 0===this[i]||null===this[i]?t[i]:this[i]},o.Effects.PingPongDelay.prototype=Object.create(f,{mix:{enumerable:!0,get:function(){return this.options.mix},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.mix=e,this.dryGainNode.gain.value=o.Util.getDryLevel(this.mix),this.wetGainNode.gain.value=o.Util.getWetLevel(this.mix))}},time:{enumerable:!0,get:function(){return this.options.time},set:function(e){s.Util.isInRange(e,0,180)&&(this.options.time=e,this.delayNodeLeft.delayTime.value=e,this.delayNodeRight.delayTime.value=e)}},feedback:{enumerable:!0,get:function(){return this.options.feedback},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.feedback=parseFloat(e,10),this.feedbackGainNode.gain.value=this.feedback)}}}),o.Effects.Reverb=function(e){this.options={},e=e||this.options;var t={mix:.5,time:.01,decay:.01,reverse:!1};this.inputNode=o.context.createGain(),this.reverbNode=o.context.createConvolver(),this.outputNode=o.context.createGain(),this.wetGainNode=o.context.createGain(),this.dryGainNode=o.context.createGain(),this.inputNode.connect(this.reverbNode),this.reverbNode.connect(this.wetGainNode),this.inputNode.connect(this.dryGainNode),this.dryGainNode.connect(this.outputNode),this.wetGainNode.connect(this.outputNode);for(var n in t)this[n]=e[n],this[n]=void 0===this[n]||null===this[n]?t[n]:this[n];i.bind(this)()},o.Effects.Reverb.prototype=Object.create(f,{mix:{enumerable:!0,get:function(){return this.options.mix},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.mix=e,this.dryGainNode.gain.value=o.Util.getDryLevel(this.mix),this.wetGainNode.gain.value=o.Util.getWetLevel(this.mix))}},time:{enumerable:!0,get:function(){return this.options.time},set:function(e){s.Util.isInRange(e,1e-4,10)&&(this.options.time=e,i.bind(this)())}},decay:{enumerable:!0,get:function(){return this.options.decay},set:function(e){s.Util.isInRange(e,1e-4,10)&&(this.options.decay=e,i.bind(this)())}},reverse:{enumerable:!0,get:function(){return this.options.reverse},set:function(e){s.Util.isBool(e)&&(this.options.reverse=e,i.bind(this)())}}}),o.Effects.Tremolo=function(e){this.options={},e=e||this.options;var t={speed:4,depth:1,mix:.8};this.inputNode=o.context.createGain(),this.outputNode=o.context.createGain(),this.dryGainNode=o.context.createGain(),this.wetGainNode=o.context.createGain(),this.tremoloGainNode=o.context.createGain(),this.tremoloGainNode.gain.value=0,this.lfoNode=o.context.createOscillator(),this.shaperNode=o.context.createWaveShaper(),this.shaperNode.curve=new Float32Array([0,1]),this.shaperNode.connect(this.tremoloGainNode.gain),this.inputNode.connect(this.dryGainNode),this.dryGainNode.connect(this.outputNode),this.lfoNode.connect(this.shaperNode),this.lfoNode.type="sine",this.lfoNode.start(0),this.inputNode.connect(this.tremoloGainNode),this.tremoloGainNode.connect(this.wetGainNode),this.wetGainNode.connect(this.outputNode);for(var i in t)this[i]=e[i],this[i]=void 0===this[i]||null===this[i]?t[i]:this[i]},o.Effects.Tremolo.prototype=Object.create(f,{mix:{enumerable:!0,get:function(){return this.options.mix},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.mix=e,this.dryGainNode.gain.value=o.Util.getDryLevel(this.mix),this.wetGainNode.gain.value=o.Util.getWetLevel(this.mix))}},speed:{enumerable:!0,get:function(){return this.options.speed},set:function(e){s.Util.isInRange(e,0,20)&&(this.options.speed=e,this.lfoNode.frequency.value=e)}},depth:{enumerable:!0,get:function(){return this.options.depth},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.depth=e,this.shaperNode.curve=new Float32Array([1-e,1]))}}}),o.Effects.DubDelay=function(e){this.options={},e=e||this.options;var t={feedback:.6,time:.7,mix:.5,cutoff:700};this.inputNode=o.context.createGain(),this.outputNode=o.context.createGain(),this.dryGainNode=o.context.createGain(),this.wetGainNode=o.context.createGain(),this.feedbackGainNode=o.context.createGain(),this.delayNode=o.context.createDelay(),this.bqFilterNode=o.context.createBiquadFilter(),this.inputNode.connect(this.dryGainNode),this.dryGainNode.connect(this.outputNode),this.inputNode.connect(this.wetGainNode),this.inputNode.connect(this.feedbackGainNode),this.feedbackGainNode.connect(this.bqFilterNode),this.bqFilterNode.connect(this.delayNode),this.delayNode.connect(this.feedbackGainNode),this.delayNode.connect(this.wetGainNode),this.wetGainNode.connect(this.outputNode);for(var i in t)this[i]=e[i],this[i]=void 0===this[i]||null===this[i]?t[i]:this[i]},o.Effects.DubDelay.prototype=Object.create(f,{mix:{enumerable:!0,get:function(){return this.options.mix},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.mix=e,this.dryGainNode.gain.value=o.Util.getDryLevel(this.mix),this.wetGainNode.gain.value=o.Util.getWetLevel(this.mix))}},time:{enumerable:!0,get:function(){return this.options.time},set:function(e){s.Util.isInRange(e,0,180)&&(this.options.time=e,this.delayNode.delayTime.value=e)}},feedback:{enumerable:!0,get:function(){return this.options.feedback},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.feedback=parseFloat(e,10),this.feedbackGainNode.gain.value=this.feedback)}},cutoff:{enumerable:!0,get:function(){return this.options.cutoff},set:function(e){s.Util.isInRange(e,0,4e3)&&(this.options.cutoff=e,this.bqFilterNode.frequency.value=this.cutoff)}}}),o.Effects.RingModulator=function(e){this.options={},e=e||this.options;var t={speed:30,distortion:1,mix:.5};this.inputNode=o.context.createGain(),this.outputNode=o.context.createGain(),this.dryGainNode=o.context.createGain(),this.wetGainNode=o.context.createGain(),this.vIn=o.context.createOscillator(),this.vIn.start(0),this.vInGain=o.context.createGain(),this.vInGain.gain.value=.5,this.vInInverter1=o.context.createGain(),this.vInInverter1.gain.value=-1,this.vInInverter2=o.context.createGain(),this.vInInverter2.gain.value=-1,this.vInDiode1=new v(o.context),this.vInDiode2=new v(o.context),this.vInInverter3=o.context.createGain(),this.vInInverter3.gain.value=-1,this.vcInverter1=o.context.createGain(),this.vcInverter1.gain.value=-1,this.vcDiode3=new v(o.context),this.vcDiode4=new v(o.context),this.outGain=o.context.createGain(),this.outGain.gain.value=3,this.compressor=o.context.createDynamicsCompressor(),this.compressor.threshold.value=-24,this.compressor.ratio.value=16,this.inputNode.connect(this.dryGainNode),this.dryGainNode.connect(this.outputNode),this.inputNode.connect(this.vcInverter1),this.inputNode.connect(this.vcDiode4.node),this.vcInverter1.connect(this.vcDiode3.node),this.vIn.connect(this.vInGain),this.vInGain.connect(this.vInInverter1),this.vInGain.connect(this.vcInverter1),this.vInGain.connect(this.vcDiode4.node),this.vInInverter1.connect(this.vInInverter2),this.vInInverter1.connect(this.vInDiode2.node),this.vInInverter2.connect(this.vInDiode1.node),this.vInDiode1.connect(this.vInInverter3),this.vInDiode2.connect(this.vInInverter3),this.vInInverter3.connect(this.compressor),this.vcDiode3.connect(this.compressor),this.vcDiode4.connect(this.compressor),this.compressor.connect(this.outGain),
 this.outGain.connect(this.wetGainNode),this.wetGainNode.connect(this.outputNode);for(var i in t)this[i]=e[i],this[i]=void 0===this[i]||null===this[i]?t[i]:this[i]};var v=function(e){this.context=e,this.node=this.context.createWaveShaper(),this.vb=.2,this.vl=.4,this.h=1,this.setCurve()};return v.prototype.setDistortion=function(e){return this.h=e,this.setCurve()},v.prototype.setCurve=function(){var e,t,i,n,o,s,a,r;for(t=1024,o=new Float32Array(t),e=s=0,a=o.length;a>=0?a>s:s>a;e=a>=0?++s:--s)i=(e-t/2)/(t/2),i=Math.abs(i),n=i<=this.vb?0:this.vb<i&&i<=this.vl?this.h*(Math.pow(i-this.vb,2)/(2*this.vl-2*this.vb)):this.h*i-this.h*this.vl+this.h*(Math.pow(this.vl-this.vb,2)/(2*this.vl-2*this.vb)),o[e]=n;return r=this.node.curve=o},v.prototype.connect=function(e){return this.node.connect(e)},o.Effects.RingModulator.prototype=Object.create(f,{mix:{enumerable:!0,get:function(){return this.options.mix},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.mix=e,this.dryGainNode.gain.value=o.Util.getDryLevel(this.mix),this.wetGainNode.gain.value=o.Util.getWetLevel(this.mix))}},speed:{enumerable:!0,get:function(){return this.options.speed},set:function(e){s.Util.isInRange(e,0,2e3)&&(this.options.speed=e,this.vIn.frequency.value=e)}},distortion:{enumerable:!0,get:function(){return this.options.distortion},set:function(e){if(s.Util.isInRange(e,.2,50)){this.options.distortion=parseFloat(e,10);for(var t=[this.vInDiode1,this.vInDiode2,this.vcDiode3,this.vcDiode4],i=0,n=t.length;n>i;i++)t[i].setDistortion(e)}}}}),o.Effects.Quadrafuzz=function(e){this.options={},e=e||this.options;var t={lowGain:.6,midLowGain:.8,midHighGain:.5,highGain:.6};this.inputNode=s.context.createGain(),this.outputNode=s.context.createGain(),this.dryGainNode=s.context.createGain(),this.wetGainNode=s.context.createGain(),this.lowpassLeft=s.context.createBiquadFilter(),this.lowpassLeft.type="lowpass",this.lowpassLeft.frequency.value=147,this.lowpassLeft.Q.value=.7071,this.bandpass1Left=s.context.createBiquadFilter(),this.bandpass1Left.type="bandpass",this.bandpass1Left.frequency.value=587,this.bandpass1Left.Q.value=.7071,this.bandpass2Left=s.context.createBiquadFilter(),this.bandpass2Left.type="bandpass",this.bandpass2Left.frequency.value=2490,this.bandpass2Left.Q.value=.7071,this.highpassLeft=s.context.createBiquadFilter(),this.highpassLeft.type="highpass",this.highpassLeft.frequency.value=4980,this.highpassLeft.Q.value=.7071,this.overdrives=[];for(var i=0;4>i;i++)this.overdrives[i]=s.context.createWaveShaper(),this.overdrives[i].curve=n();this.inputNode.connect(this.wetGainNode),this.inputNode.connect(this.dryGainNode),this.dryGainNode.connect(this.outputNode);var o=[this.lowpassLeft,this.bandpass1Left,this.bandpass2Left,this.highpassLeft];for(i=0;i<o.length;i++)this.wetGainNode.connect(o[i]),o[i].connect(this.overdrives[i]),this.overdrives[i].connect(this.outputNode);for(var a in t)this[a]=e[a],this[a]=void 0===this[a]||null===this[a]?t[a]:this[a]},o.Effects.Quadrafuzz.prototype=Object.create(f,{lowGain:{enumerable:!0,get:function(){return this.options.lowGain},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.lowGain=e,this.overdrives[0].curve=n(s.Util.normalize(this.lowGain,0,150)))}},midLowGain:{enumerable:!0,get:function(){return this.options.midLowGain},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.midLowGain=e,this.overdrives[1].curve=n(s.Util.normalize(this.midLowGain,0,150)))}},midHighGain:{enumerable:!0,get:function(){return this.options.midHighGain},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.midHighGain=e,this.overdrives[2].curve=n(s.Util.normalize(this.midHighGain,0,150)))}},highGain:{enumerable:!0,get:function(){return this.options.highGain},set:function(e){s.Util.isInRange(e,0,1)&&(this.options.highGain=e,this.overdrives[3].curve=n(s.Util.normalize(this.highGain,0,150)))}}}),o}("undefined"!=typeof window?window:global);
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],98:[function(require,module,exports){
+},{}],97:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -16971,7 +16894,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],99:[function(require,module,exports){
+},{}],98:[function(require,module,exports){
 "use strict";
 /**
  * Initialize backoff timer with `opts`.
@@ -17042,7 +16965,7 @@ Backoff.prototype.setJitter = function (jitter) {
     this.jitter = jitter;
 };
 
-},{}],100:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -17120,7 +17043,7 @@ Object.defineProperty(exports, "WebTransport", { enumerable: true, get: function
 
 module.exports = lookup;
 
-},{"./manager.js":101,"./socket.js":103,"./url.js":104,"debug":105,"engine.io-client":68,"socket.io-parser":108}],101:[function(require,module,exports){
+},{"./manager.js":100,"./socket.js":102,"./url.js":103,"debug":104,"engine.io-client":67,"socket.io-parser":107}],100:[function(require,module,exports){
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -17538,7 +17461,7 @@ class Manager extends component_emitter_1.Emitter {
 }
 exports.Manager = Manager;
 
-},{"./contrib/backo2.js":99,"./on.js":102,"./socket.js":103,"@socket.io/component-emitter":59,"debug":105,"engine.io-client":68,"socket.io-parser":108}],102:[function(require,module,exports){
+},{"./contrib/backo2.js":98,"./on.js":101,"./socket.js":102,"@socket.io/component-emitter":58,"debug":104,"engine.io-client":67,"socket.io-parser":107}],101:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.on = on;
@@ -17549,7 +17472,7 @@ function on(obj, ev, fn) {
     };
 }
 
-},{}],103:[function(require,module,exports){
+},{}],102:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -18461,7 +18384,7 @@ class Socket extends component_emitter_1.Emitter {
 }
 exports.Socket = Socket;
 
-},{"./on.js":102,"@socket.io/component-emitter":59,"debug":105,"socket.io-parser":108}],104:[function(require,module,exports){
+},{"./on.js":101,"@socket.io/component-emitter":58,"debug":104,"socket.io-parser":107}],103:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -18532,11 +18455,11 @@ function url(uri, path = "", loc) {
     return obj;
 }
 
-},{"debug":105,"engine.io-client":68}],105:[function(require,module,exports){
+},{"debug":104,"engine.io-client":67}],104:[function(require,module,exports){
+arguments[4][77][0].apply(exports,arguments)
+},{"./common":105,"_process":97,"dup":77}],105:[function(require,module,exports){
 arguments[4][78][0].apply(exports,arguments)
-},{"./common":106,"_process":98,"dup":78}],106:[function(require,module,exports){
-arguments[4][79][0].apply(exports,arguments)
-},{"dup":79,"ms":93}],107:[function(require,module,exports){
+},{"dup":78,"ms":92}],106:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -18626,7 +18549,7 @@ function _reconstructPacket(data, buffers) {
   return data;
 }
 
-},{"./is-binary.js":109}],108:[function(require,module,exports){
+},{"./is-binary.js":108}],107:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -18967,7 +18890,7 @@ var BinaryReconstructor = /*#__PURE__*/function () {
   }]);
 }();
 
-},{"./binary.js":107,"./is-binary.js":109,"@socket.io/component-emitter":59}],109:[function(require,module,exports){
+},{"./binary.js":106,"./is-binary.js":108,"@socket.io/component-emitter":58}],108:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -19017,7 +18940,7 @@ function hasBinary(obj, toJSON) {
   return false;
 }
 
-},{}],110:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20740,7 +20663,7 @@ function _capitalizeFirstLetter(str) {
 }
 var _default = exports["default"] = TinyAiInstance;
 
-},{"events":85,"object-hash":94,"tiny-essentials":125}],111:[function(require,module,exports){
+},{"events":84,"object-hash":93,"tiny-essentials":124}],110:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20768,7 +20691,7 @@ var _Google = require("./services/Google.mjs");
 var _TinyAiInstance = _interopRequireDefault(require("./TinyAiInstance.mjs"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 
-},{"./TinyAiInstance.mjs":110,"./services/Google.mjs":112}],112:[function(require,module,exports){
+},{"./TinyAiInstance.mjs":109,"./services/Google.mjs":111}],111:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -21667,7 +21590,7 @@ var TinyGoogleAi = exports.TinyGoogleAi = /*#__PURE__*/function (_TinyAiInstance
   return _createClass(TinyGoogleAi);
 }(_TinyAiInstance2["default"]);
 
-},{"../TinyAiInstance.mjs":110,"jsonrepair":89}],113:[function(require,module,exports){
+},{"../TinyAiInstance.mjs":109,"jsonrepair":88}],112:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21702,7 +21625,7 @@ function arraySortPositions(item) {
   }
 }
 
-},{}],114:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21760,7 +21683,7 @@ function _asyncReplace() {
   return _asyncReplace.apply(this, arguments);
 }
 
-},{}],115:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22019,7 +21942,7 @@ var TinyLevelUp = /*#__PURE__*/function () {
 }();
 var _default = exports["default"] = TinyLevelUp;
 
-},{}],116:[function(require,module,exports){
+},{}],115:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22052,7 +21975,7 @@ function shuffleArray(items) {
   return items;
 }
 
-},{}],117:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22226,7 +22149,7 @@ function formatDayTimer(seconds) {
   return formatCustomTimer(seconds, 'days', '{days}d {hours}:{minutes}:{seconds}');
 }
 
-},{}],118:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22377,7 +22300,7 @@ var offFullScreenChange = exports.offFullScreenChange = function offFullScreenCh
   });
 };
 
-},{}],119:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22738,7 +22661,7 @@ var getHtmlElPadding = exports.getHtmlElPadding = function getHtmlElPadding(el) 
   };
 };
 
-},{"./objFilter.mjs":120}],120:[function(require,module,exports){
+},{"./objFilter.mjs":119}],119:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23090,7 +23013,7 @@ function (val) {
   return isJsonObject(val);
 }]]);
 
-},{"buffer":62}],121:[function(require,module,exports){
+},{"buffer":61}],120:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23268,7 +23191,7 @@ function genFibonacciSeq() {
   return sequence;
 }
 
-},{}],122:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23360,7 +23283,7 @@ function KeyPressHandler() {
 export default KeyPressHandler;
 */
 
-},{}],123:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -23946,7 +23869,7 @@ function _backupFileAsync() {
   return _backupFileAsync.apply(this, arguments);
 }
 
-},{"./normalFuncs.mjs":124,"fs":61,"fs/promises":61,"path":95}],124:[function(require,module,exports){
+},{"./normalFuncs.mjs":123,"fs":60,"fs/promises":60,"path":94}],123:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24401,7 +24324,7 @@ function renameFilePadNumbers(dirPath) {
   }, extensions);
 }
 
-},{"../basics/text.mjs":122,"fs":61,"path":95}],125:[function(require,module,exports){
+},{"../basics/text.mjs":121,"fs":60,"path":94}],124:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24873,7 +24796,7 @@ var _TinyDragger = _interopRequireDefault(require("./libs/TinyDragger.mjs"));
 var _TinyDomReadyManager = _interopRequireDefault(require("./libs/TinyDomReadyManager.mjs"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 
-},{"../legacy/libs/arraySortPositions.mjs":113,"../legacy/libs/replaceAsync.mjs":114,"../legacy/libs/userLevel.mjs":115,"./basics/array.mjs":116,"./basics/clock.mjs":117,"./basics/fullScreen.mjs":118,"./basics/html.mjs":119,"./basics/objFilter.mjs":120,"./basics/simpleMath.mjs":121,"./basics/text.mjs":122,"./fileManager/asyncFuncs.mjs":123,"./fileManager/normalFuncs.mjs":124,"./libs/ColorSafeStringify.mjs":126,"./libs/TinyDomReadyManager.mjs":127,"./libs/TinyDragDropDetector.mjs":128,"./libs/TinyDragger.mjs":129,"./libs/TinyNotifyCenter.mjs":130,"./libs/TinyPromiseQueue.mjs":131,"./libs/TinyRateLimiter.mjs":132,"./libs/TinyToastNotify.mjs":133}],126:[function(require,module,exports){
+},{"../legacy/libs/arraySortPositions.mjs":112,"../legacy/libs/replaceAsync.mjs":113,"../legacy/libs/userLevel.mjs":114,"./basics/array.mjs":115,"./basics/clock.mjs":116,"./basics/fullScreen.mjs":117,"./basics/html.mjs":118,"./basics/objFilter.mjs":119,"./basics/simpleMath.mjs":120,"./basics/text.mjs":121,"./fileManager/asyncFuncs.mjs":122,"./fileManager/normalFuncs.mjs":123,"./libs/ColorSafeStringify.mjs":125,"./libs/TinyDomReadyManager.mjs":126,"./libs/TinyDragDropDetector.mjs":127,"./libs/TinyDragger.mjs":128,"./libs/TinyNotifyCenter.mjs":129,"./libs/TinyPromiseQueue.mjs":130,"./libs/TinyRateLimiter.mjs":131,"./libs/TinyToastNotify.mjs":132}],125:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -25102,7 +25025,7 @@ var _PRESETS = {
 };
 var _default = exports["default"] = ColorSafeStringify;
 
-},{}],127:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -25315,7 +25238,7 @@ function _invokeHandler(handler) {
 }
 var _default = exports["default"] = TinyDomReadyManager;
 
-},{}],128:[function(require,module,exports){
+},{}],127:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -25596,7 +25519,7 @@ function _unbindEvents() {
 }
 var _default = exports["default"] = TinyDragDropDetector;
 
-},{}],129:[function(require,module,exports){
+},{}],128:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -26510,7 +26433,7 @@ function _checkDestroy() {
 }
 var _default = exports["default"] = TinyDragger;
 
-},{"../basics/html.mjs":119,"../basics/objFilter.mjs":120}],130:[function(require,module,exports){
+},{"../basics/html.mjs":118,"../basics/objFilter.mjs":119}],129:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26968,7 +26891,7 @@ function _updateCount(value) {
 }
 var _default = exports["default"] = TinyNotifyCenter;
 
-},{}],131:[function(require,module,exports){
+},{}],130:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -27384,7 +27307,7 @@ function _processQueue2() {
 }
 var _default = exports["default"] = TinyPromiseQueue;
 
-},{}],132:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 (function (process){(function (){
 "use strict";
 
@@ -28060,7 +27983,7 @@ var TinyRateLimiter = /*#__PURE__*/function () {
 var _default = exports["default"] = TinyRateLimiter;
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":98}],133:[function(require,module,exports){
+},{"_process":97}],132:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28473,7 +28396,7 @@ function _validateTiming(value, name) {
 }
 var _default = exports["default"] = TinyToastNotify;
 
-},{}],134:[function(require,module,exports){
+},{}],133:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -29376,7 +29299,9 @@ function _insertCreateCube() {
 }
 var _default = exports["default"] = TinyDices;
 
-},{"tiny-essentials":143,"validate-color":186}],135:[function(require,module,exports){
+},{"tiny-essentials":142,"validate-color":185}],134:[function(require,module,exports){
+arguments[4][112][0].apply(exports,arguments)
+},{"dup":112}],135:[function(require,module,exports){
 arguments[4][113][0].apply(exports,arguments)
 },{"dup":113}],136:[function(require,module,exports){
 arguments[4][114][0].apply(exports,arguments)
@@ -29385,10 +29310,8 @@ arguments[4][115][0].apply(exports,arguments)
 },{"dup":115}],138:[function(require,module,exports){
 arguments[4][116][0].apply(exports,arguments)
 },{"dup":116}],139:[function(require,module,exports){
-arguments[4][117][0].apply(exports,arguments)
-},{"dup":117}],140:[function(require,module,exports){
-arguments[4][120][0].apply(exports,arguments)
-},{"buffer":62,"dup":120}],141:[function(require,module,exports){
+arguments[4][119][0].apply(exports,arguments)
+},{"buffer":61,"dup":119}],140:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29522,9 +29445,9 @@ function formatBytes(bytes) {
   };
 }
 
-},{}],142:[function(require,module,exports){
-arguments[4][122][0].apply(exports,arguments)
-},{"dup":122}],143:[function(require,module,exports){
+},{}],141:[function(require,module,exports){
+arguments[4][121][0].apply(exports,arguments)
+},{"dup":121}],142:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29693,13 +29616,15 @@ var _TinyPromiseQueue = _interopRequireDefault(require("./libs/TinyPromiseQueue.
 var _TinyRateLimiter = _interopRequireDefault(require("./libs/TinyRateLimiter.mjs"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 
-},{"../legacy/libs/arraySortPositions.mjs":135,"../legacy/libs/replaceAsync.mjs":136,"../legacy/libs/userLevel.mjs":137,"./basics/array.mjs":138,"./basics/clock.mjs":139,"./basics/objFilter.mjs":140,"./basics/simpleMath.mjs":141,"./basics/text.mjs":142,"./libs/ColorSafeStringify.mjs":144,"./libs/TinyPromiseQueue.mjs":145,"./libs/TinyRateLimiter.mjs":146}],144:[function(require,module,exports){
-arguments[4][126][0].apply(exports,arguments)
-},{"dup":126}],145:[function(require,module,exports){
+},{"../legacy/libs/arraySortPositions.mjs":134,"../legacy/libs/replaceAsync.mjs":135,"../legacy/libs/userLevel.mjs":136,"./basics/array.mjs":137,"./basics/clock.mjs":138,"./basics/objFilter.mjs":139,"./basics/simpleMath.mjs":140,"./basics/text.mjs":141,"./libs/ColorSafeStringify.mjs":143,"./libs/TinyPromiseQueue.mjs":144,"./libs/TinyRateLimiter.mjs":145}],143:[function(require,module,exports){
+arguments[4][125][0].apply(exports,arguments)
+},{"dup":125}],144:[function(require,module,exports){
+arguments[4][130][0].apply(exports,arguments)
+},{"dup":130}],145:[function(require,module,exports){
 arguments[4][131][0].apply(exports,arguments)
-},{"dup":131}],146:[function(require,module,exports){
-arguments[4][132][0].apply(exports,arguments)
-},{"_process":98,"dup":132}],147:[function(require,module,exports){
+},{"_process":97,"dup":131}],146:[function(require,module,exports){
+arguments[4][112][0].apply(exports,arguments)
+},{"dup":112}],147:[function(require,module,exports){
 arguments[4][113][0].apply(exports,arguments)
 },{"dup":113}],148:[function(require,module,exports){
 arguments[4][114][0].apply(exports,arguments)
@@ -29708,8 +29633,6 @@ arguments[4][115][0].apply(exports,arguments)
 },{"dup":115}],150:[function(require,module,exports){
 arguments[4][116][0].apply(exports,arguments)
 },{"dup":116}],151:[function(require,module,exports){
-arguments[4][117][0].apply(exports,arguments)
-},{"dup":117}],152:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30115,9 +30038,9 @@ function getElsCollDetails(rect1, rect2) {
   };
 }
 
-},{}],153:[function(require,module,exports){
-arguments[4][118][0].apply(exports,arguments)
-},{"dup":118}],154:[function(require,module,exports){
+},{}],152:[function(require,module,exports){
+arguments[4][117][0].apply(exports,arguments)
+},{"dup":117}],153:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30704,7 +30627,7 @@ function installWindowHiddenScript() {
   return uninstall;
 }
 
-},{"./objChecker.mjs":156}],155:[function(require,module,exports){
+},{"./objChecker.mjs":155}],154:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30814,7 +30737,7 @@ function isScrolledIntoView(element) {
   return elemBottom <= viewportBottom && elemTop >= viewportTop;
 }
 
-},{"../libs/TinyHtml.mjs":171}],156:[function(require,module,exports){
+},{"../libs/TinyHtml.mjs":170}],155:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30864,7 +30787,7 @@ function isJsonObject(value) {
   return true;
 }
 
-},{}],157:[function(require,module,exports){
+},{}],156:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31187,7 +31110,7 @@ function (val) {
   return (0, _objChecker.isJsonObject)(val);
 }]]);
 
-},{"./objChecker.mjs":156,"buffer":62}],158:[function(require,module,exports){
+},{"./objChecker.mjs":155,"buffer":61}],157:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31383,7 +31306,7 @@ function genFibonacciSeq() {
   return sequence;
 }
 
-},{}],159:[function(require,module,exports){
+},{}],158:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31511,11 +31434,11 @@ function KeyPressHandler() {
 export default KeyPressHandler;
 */
 
-},{}],160:[function(require,module,exports){
+},{}],159:[function(require,module,exports){
+arguments[4][122][0].apply(exports,arguments)
+},{"./normalFuncs.mjs":160,"dup":122,"fs":60,"fs/promises":60,"path":94}],160:[function(require,module,exports){
 arguments[4][123][0].apply(exports,arguments)
-},{"./normalFuncs.mjs":161,"dup":123,"fs":61,"fs/promises":61,"path":95}],161:[function(require,module,exports){
-arguments[4][124][0].apply(exports,arguments)
-},{"../basics/text.mjs":159,"dup":124,"fs":61,"path":95}],162:[function(require,module,exports){
+},{"../basics/text.mjs":158,"dup":123,"fs":60,"path":94}],161:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32244,9 +32167,9 @@ var _TinyNewWinEvents = _interopRequireDefault(require("./libs/TinyNewWinEvents.
 var _TinyTextarea = _interopRequireDefault(require("./libs/TinyTextarea.mjs"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 
-},{"../legacy/libs/arraySortPositions.mjs":147,"../legacy/libs/replaceAsync.mjs":148,"../legacy/libs/userLevel.mjs":149,"./basics/array.mjs":150,"./basics/clock.mjs":151,"./basics/collision.mjs":152,"./basics/fullScreen.mjs":153,"./basics/html.mjs":154,"./basics/html_deprecated.mjs":155,"./basics/objChecker.mjs":156,"./basics/objFilter.mjs":157,"./basics/simpleMath.mjs":158,"./basics/text.mjs":159,"./fileManager/asyncFuncs.mjs":160,"./fileManager/normalFuncs.mjs":161,"./libs/ColorSafeStringify.mjs":163,"./libs/TinyAfterScrollWatcher.mjs":164,"./libs/TinyClipboard.mjs":165,"./libs/TinyColorConverter.mjs":166,"./libs/TinyDomReadyManager.mjs":167,"./libs/TinyDragDropDetector.mjs":168,"./libs/TinyDragger.mjs":169,"./libs/TinyEvents.mjs":170,"./libs/TinyHtml.mjs":171,"./libs/TinyIframeEvents.mjs":172,"./libs/TinyLocalStorage.mjs":173,"./libs/TinyNewWinEvents.mjs":174,"./libs/TinyNotifications.mjs":175,"./libs/TinyNotifyCenter.mjs":176,"./libs/TinyPromiseQueue.mjs":177,"./libs/TinyRateLimiter.mjs":178,"./libs/TinySmartScroller.mjs":179,"./libs/TinyTextRangeEditor.mjs":180,"./libs/TinyTextarea.mjs":181,"./libs/TinyTimeout.mjs":182,"./libs/TinyToastNotify.mjs":183,"./libs/UltraRandomMsgGen.mjs":184}],163:[function(require,module,exports){
-arguments[4][126][0].apply(exports,arguments)
-},{"dup":126}],164:[function(require,module,exports){
+},{"../legacy/libs/arraySortPositions.mjs":146,"../legacy/libs/replaceAsync.mjs":147,"../legacy/libs/userLevel.mjs":148,"./basics/array.mjs":149,"./basics/clock.mjs":150,"./basics/collision.mjs":151,"./basics/fullScreen.mjs":152,"./basics/html.mjs":153,"./basics/html_deprecated.mjs":154,"./basics/objChecker.mjs":155,"./basics/objFilter.mjs":156,"./basics/simpleMath.mjs":157,"./basics/text.mjs":158,"./fileManager/asyncFuncs.mjs":159,"./fileManager/normalFuncs.mjs":160,"./libs/ColorSafeStringify.mjs":162,"./libs/TinyAfterScrollWatcher.mjs":163,"./libs/TinyClipboard.mjs":164,"./libs/TinyColorConverter.mjs":165,"./libs/TinyDomReadyManager.mjs":166,"./libs/TinyDragDropDetector.mjs":167,"./libs/TinyDragger.mjs":168,"./libs/TinyEvents.mjs":169,"./libs/TinyHtml.mjs":170,"./libs/TinyIframeEvents.mjs":171,"./libs/TinyLocalStorage.mjs":172,"./libs/TinyNewWinEvents.mjs":173,"./libs/TinyNotifications.mjs":174,"./libs/TinyNotifyCenter.mjs":175,"./libs/TinyPromiseQueue.mjs":176,"./libs/TinyRateLimiter.mjs":177,"./libs/TinySmartScroller.mjs":178,"./libs/TinyTextRangeEditor.mjs":179,"./libs/TinyTextarea.mjs":180,"./libs/TinyTimeout.mjs":181,"./libs/TinyToastNotify.mjs":182,"./libs/UltraRandomMsgGen.mjs":183}],162:[function(require,module,exports){
+arguments[4][125][0].apply(exports,arguments)
+},{"dup":125}],163:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -32471,7 +32394,7 @@ function _checkQueue() {
 }
 var _default = exports["default"] = TinyAfterScrollWatcher;
 
-},{}],165:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -33151,7 +33074,7 @@ var TinyClipboard = /*#__PURE__*/function () {
 }();
 var _default = exports["default"] = TinyClipboard;
 
-},{}],166:[function(require,module,exports){
+},{}],165:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -33869,11 +33792,11 @@ var TinyColorConverter = /*#__PURE__*/function () {
 }();
 var _default = exports["default"] = TinyColorConverter;
 
-},{}],167:[function(require,module,exports){
+},{}],166:[function(require,module,exports){
+arguments[4][126][0].apply(exports,arguments)
+},{"dup":126}],167:[function(require,module,exports){
 arguments[4][127][0].apply(exports,arguments)
 },{"dup":127}],168:[function(require,module,exports){
-arguments[4][128][0].apply(exports,arguments)
-},{"dup":128}],169:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -34863,7 +34786,7 @@ _defineProperty(TinyDragger, "Utils", _objectSpread(_objectSpread({}, TinyCollis
 }));
 var _default = exports["default"] = TinyDragger;
 
-},{"../basics/collision.mjs":152,"../basics/objChecker.mjs":156,"./TinyHtml.mjs":171}],170:[function(require,module,exports){
+},{"../basics/collision.mjs":151,"../basics/objChecker.mjs":155,"./TinyHtml.mjs":170}],169:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -35268,7 +35191,7 @@ function _on(event, handler) {
 }
 var _default = exports["default"] = TinyEvents;
 
-},{}],171:[function(require,module,exports){
+},{}],170:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41284,7 +41207,7 @@ _defineProperty(TinyHtml, "attrFix", Object.fromEntries(Object.entries(_propFix.
 })));
 var _default = exports["default"] = TinyHtml;
 
-},{"../basics/collision.mjs":152}],172:[function(require,module,exports){
+},{"../basics/collision.mjs":151}],171:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41700,7 +41623,7 @@ function _flushQueue() {
 }
 var _default = exports["default"] = TinyIframeEvents;
 
-},{"../basics/objChecker.mjs":156,"./TinyEvents.mjs":170}],173:[function(require,module,exports){
+},{"../basics/objChecker.mjs":155,"./TinyEvents.mjs":169}],172:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42742,7 +42665,7 @@ TinyLocalStorage.registerJsonType('symbol', function (value) {
 }, true);
 var _default = exports["default"] = TinyLocalStorage;
 
-},{"../basics/objChecker.mjs":156,"./TinyEvents.mjs":170}],174:[function(require,module,exports){
+},{"../basics/objChecker.mjs":155,"./TinyEvents.mjs":169}],173:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -43275,7 +43198,7 @@ function _startCloseWatcher() {
 }
 var _default = exports["default"] = TinyNewWinEvents;
 
-},{"./TinyEvents.mjs":170}],175:[function(require,module,exports){
+},{"./TinyEvents.mjs":169}],174:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43537,13 +43460,13 @@ var TinyNotifications = /*#__PURE__*/function () {
 }();
 var _default = exports["default"] = TinyNotifications;
 
-},{"../basics/text.mjs":159}],176:[function(require,module,exports){
+},{"../basics/text.mjs":158}],175:[function(require,module,exports){
+arguments[4][129][0].apply(exports,arguments)
+},{"dup":129}],176:[function(require,module,exports){
 arguments[4][130][0].apply(exports,arguments)
 },{"dup":130}],177:[function(require,module,exports){
 arguments[4][131][0].apply(exports,arguments)
-},{"dup":131}],178:[function(require,module,exports){
-arguments[4][132][0].apply(exports,arguments)
-},{"_process":98,"dup":132}],179:[function(require,module,exports){
+},{"_process":97,"dup":131}],178:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44875,7 +44798,7 @@ _defineProperty(TinySmartScroller, "Utils", _objectSpread(_objectSpread({}, Tiny
 }));
 var _default = exports["default"] = TinySmartScroller;
 
-},{"../basics/collision.mjs":152,"./TinyEvents.mjs":170,"./TinyHtml.mjs":171}],180:[function(require,module,exports){
+},{"../basics/collision.mjs":151,"./TinyEvents.mjs":169,"./TinyHtml.mjs":170}],179:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45371,7 +45294,7 @@ var TinyTextRangeEditor = /*#__PURE__*/function () {
 }();
 var _default = exports["default"] = TinyTextRangeEditor;
 
-},{}],181:[function(require,module,exports){
+},{}],180:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45625,7 +45548,7 @@ function _getLineHeight() {
 }
 var _default = exports["default"] = TinyTextarea;
 
-},{}],182:[function(require,module,exports){
+},{}],181:[function(require,module,exports){
 "use strict";
 
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -45842,9 +45765,9 @@ var TinyTimeout = /*#__PURE__*/function () {
 }();
 var _default = exports["default"] = TinyTimeout;
 
-},{}],183:[function(require,module,exports){
-arguments[4][133][0].apply(exports,arguments)
-},{"dup":133}],184:[function(require,module,exports){
+},{}],182:[function(require,module,exports){
+arguments[4][132][0].apply(exports,arguments)
+},{"dup":132}],183:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46606,7 +46529,7 @@ _defineProperty(UltraRandomMsgGen, "defaultAdjectives", defaultAdjectives);
 _defineProperty(UltraRandomMsgGen, "defaultTemplates", defaultTemplates);
 var _default = exports["default"] = UltraRandomMsgGen;
 
-},{}],185:[function(require,module,exports){
+},{}],184:[function(require,module,exports){
 (function (process){(function (){
 "use strict";
 
@@ -48770,6 +48693,14762 @@ tippy.setDefaultProps({
 var _default = exports["default"] = tippy;
 
 }).call(this)}).call(this,require('_process'))
-},{"@popperjs/core":27,"_process":98}],186:[function(require,module,exports){
+},{"@popperjs/core":26,"_process":97}],185:[function(require,module,exports){
 module.exports=function(e){var r={};function t(n){if(r[n])return r[n].exports;var a=r[n]={i:n,l:!1,exports:{}};return e[n].call(a.exports,a,a.exports,t),a.l=!0,a.exports}return t.m=e,t.c=r,t.d=function(e,r,n){t.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:n})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,r){if(1&r&&(e=t(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(t.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var a in e)t.d(n,a,function(r){return e[r]}.bind(null,a));return n},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},t.p="",t(t.s=0)}([function(e,r,t){"use strict";t.r(r),t.d(r,"validateHTMLColorName",(function(){return l})),t.d(r,"validateHTMLColorSpecialName",(function(){return i})),t.d(r,"validateHTMLColorHex",(function(){return u})),t.d(r,"validateHTMLColorRgb",(function(){return g})),t.d(r,"validateHTMLColorHsl",(function(){return y})),t.d(r,"validateHTMLColorHwb",(function(){return L})),t.d(r,"validateHTMLColorLab",(function(){return S})),t.d(r,"validateHTMLColorLch",(function(){return m})),t.d(r,"validateHTMLColor",(function(){return G}));const n=e=>e&&"string"==typeof e,a=["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenrod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","DarkOrange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","Goldenrod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenrodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquamarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenrod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","RebeccaPurple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"],o=["currentColor","inherit","transparent"],l=e=>{let r=!1;return n(e)&&a.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},i=e=>{let r=!1;return n(e)&&o.map(t=>(e.toLowerCase()===t.toLowerCase()&&(r=!0),null)),r},u=e=>{if(n(e)){const r=/^#([\da-f]{3}){1,2}$|^#([\da-f]{4}){1,2}$/i;return e&&r.test(e)}return!1},d="(([\\d]{0,5})((\\.([\\d]{1,5}))?))",s=`(${d}%)`,c="(([0-9]|[1-9][0-9]|100)%)",f=`(${c}|(0?((\\.([\\d]{1,5}))?))|1)`,h=`([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?)([\\s]{1,5})${`(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?`}([\\s]{0,5})\\)`,$="(-?(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360)(deg)?)",g=e=>{if(n(e)){const r="([\\s]{0,5})([\\d]{1,5})%?([\\s]{0,5}),?",t="((([\\s]{0,5}),?([\\s]{0,5}))|(([\\s]{1,5})))",n=new RegExp(`^(rgb)a?\\(${`${r}${t}`}${`${r}${t}`}${`${r}${t}`}(${"(\\/?([\\s]{0,5})(0?\\.?([\\d]{1,5})%?([\\s]{0,5}))?|1|0)"})?\\)$`);return e&&n.test(e)}return!1},y=e=>{if(n(e)){const r=new RegExp(`^(hsl)a?\\((([\\s]{0,5})(${$}|${"(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-9][0-9]|400)grad)"}|${"((([0-5])?\\.([\\d]{1,5})|6\\.([0-9]|1[0-9]|2[0-8])|[0-6])rad)"}|${"((0?((\\.([\\d]{1,5}))?)|1)turn)"})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})((([\\s]{0,5}),([\\s]{0,5}))|(([\\s]{1,5}))))(([\\s]{0,5})(0|${c})([\\s]{0,5})\\)?)(([\\s]{0,5})(\\/?|,?)([\\s]{0,5})(((${c}))|(0?((\\.([\\d]{1,5}))?))|1))?\\)$`);return e&&r.test(e)}return!1},L=e=>{if(n(e)){const r=new RegExp(`^(hwb\\(([\\s]{0,5})${$}([\\s]{1,5}))((0|${c})([\\s]{1,5}))((0|${c})${h}$`);return e&&r.test(e)}return!1},S=e=>{if(n(e)){const r="(-?(([0-9]|[1-9][0-9]|1[0-5][0-9])((\\.([\\d]{1,5}))?)?|160))",t=new RegExp(`^(lab\\(([\\s]{0,5})${s}([\\s]{1,5})${r}([\\s]{1,5})${r}${h}$`);return e&&t.test(e)}return!1},m=e=>{if(n(e)){const r="((([0-9]|[1-9][0-9])?((\\.([\\d]{1,5}))?)|100)(%)?)",t=""+d,n=`((${$})|(0|${f})|(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-9][0-9]|3[0-5][0-9])((\\.([\\d]{1,5}))?)|360))`,a=`(\\/([\\s]{0,5})${f})`,o=new RegExp(`^lch\\(${`(([\\s]{0,5})${r}([\\s]{1,5})${t}([\\s]{1,5})${n}([\\s]{0,5})(${a})?)`}\\)$`);return e&&o.test(e)}return!1},G=e=>!!(e&&u(e)||g(e)||y(e)||L(e)||S(e)||m(e));r.default=e=>!!(e&&u(e)||l(e)||i(e)||g(e)||y(e)||L(e)||S(e)||m(e))}]);
-},{}]},{},[1]);
+},{}],186:[function(require,module,exports){
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _tinyLib = _interopRequireDefault(require("../files/tinyLib.mjs"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateMethodInitSpec(e, a) { _checkPrivateRedeclaration(e, a), a.add(e); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+/**
+ * UserRoomManager
+ *
+ * UI Component to manage users in a real-time room environment.
+ *
+ * Created by: Yasmin Seidel (JasminDreasond)
+ * Co-developed with: ChatGPT (OpenAI) as coding assistant
+ *
+ * @param {Object} config
+ * @param {string} config.currentUserId - The userId of the current logged-in user.
+ * @param {boolean} config.isOwner - Whether the current user is the owner of the room.
+ * @param {jQuery} config.target - DOM element where the manager will be rendered.
+ *
+ * @example
+ * const manager = new UserRoomManager({
+ *   currentUserId: 'meow123',
+ *   isOwner: true,
+ *   root: $('#room-content'),
+ * });
+ *
+ * manager.addUser('user1', { nickname: 'Twilight', ping: Date.now() });
+ * manager.setModerators([{ userId: 'user1' }]);
+ */
+var _usersHtml = /*#__PURE__*/new WeakMap();
+var _client = /*#__PURE__*/new WeakMap();
+var _UserRoomManager_brand = /*#__PURE__*/new WeakSet();
+var UserRoomManager = /*#__PURE__*/function () {
+  /**
+   * Creates a new instance of the user room manager.
+   *
+   * @param {Object} options - The configuration object.
+   * @param {Object} options.client - The client instance used for communication.
+   * @param {jQuery} options.root - The root DOM element where the UI will be rendered.
+   * @param {string} options.currentUserId - The ID of the current user.
+   * @param {Object<string, Object>} [options.users={}] - An object containing user data, keyed by user ID.
+   * @param {Array<Object>} [options.moderators=[]] - An array of moderator objects, each containing at least a `userId`.
+   * @param {boolean} [options.isOwner=false] - Whether the current user is the room owner.
+   */
+  function UserRoomManager(_ref) {
+    var client = _ref.client,
+      root = _ref.root,
+      currentUserId = _ref.currentUserId,
+      users = _ref.users,
+      moderators = _ref.moderators,
+      isOwner = _ref.isOwner;
+    _classCallCheck(this, UserRoomManager);
+    /**
+     * Retrieves the current search input value in lowercase.
+     *
+     * @returns {string} The trimmed, lowercase search query or an empty string if not valid.
+     * @private
+     */
+    _classPrivateMethodInitSpec(this, _UserRoomManager_brand);
+    _classPrivateFieldInitSpec(this, _usersHtml, []);
+    _classPrivateFieldInitSpec(this, _client, void 0);
+    this.$root = root;
+    _classPrivateFieldSet(_client, this, client);
+    this.currentUserId = currentUserId;
+    this.users = users || {};
+    this.moderators = moderators || [];
+    this.isOwner = isOwner === true;
+    this.isModerator = false;
+    this.roomActive = true;
+    this.isWaitingRoomStatus = false;
+    this.$header = null;
+    this.$footer = null;
+    this.$searchInput = null;
+    this.$userList = $('<div>');
+    this.init();
+  }
+  return _createClass(UserRoomManager, [{
+    key: "setClient",
+    value:
+    /**
+     * Sets a new client instance for the manager.
+     *
+     * @param {Object} client - The new client instance to assign.
+     */
+    function setClient(client) {
+      _classPrivateFieldSet(_client, this, client);
+    }
+
+    /**
+     * Initializes the user interface by rendering the header, user list, footer,
+     * and checking permissions.
+     */
+  }, {
+    key: "init",
+    value: function init() {
+      this.renderHeader();
+      this.renderUserList();
+      this.renderFooter();
+      this.checkPerms();
+    }
+
+    /**
+     * Updates the active status of the room and resets the waiting room flag.
+     *
+     * @param {boolean} active - Indicates whether the room is active.
+     */
+  }, {
+    key: "setRoomStatus",
+    value: function setRoomStatus(active) {
+      this.roomActive = active;
+      this.isWaitingRoomStatus = false;
+      this.updateRoomStatusButton();
+    }
+
+    /**
+     * Checks and updates permissions for the current user and enables/disables
+     * appropriate UI controls based on user roles.
+     */
+  }, {
+    key: "checkPerms",
+    value: function checkPerms() {
+      var room = _classPrivateFieldGet(_client, this).getRoom() || {};
+      var user = _classPrivateFieldGet(_client, this).getUser() || {};
+      if (this.$unbanInput) this.$unbanInput.prop('disabled', !this.isModerator && !this.isOwner && !user.isOwner);
+      if (this.$kickAll) this.$kickAll.prop('disabled', !this.isModerator && !this.isOwner && !user.isOwner);
+      var _iterator = _createForOfIteratorHelper(_classPrivateFieldGet(_usersHtml, this)),
+        _step;
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var item = _step.value;
+          var needDisable = item.userId === room.ownerId || item.userId === this.currentUserId || !this.isModerator && !this.isOwner && !user.isOwner;
+          item.actions.kick.prop('disabled', needDisable);
+          item.actions.ban.prop('disabled', needDisable);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    }
+
+    /**
+     * Renders the header section of the user manager UI.
+     *
+     * Includes:
+     * - A "Kick all" button to remove all users except the current user and the room owner.
+     * - A room status toggle button to enable or disable the room.
+     * - A search input to filter users in real-time.
+     *
+     * Appends the constructed elements to the root and initializes their events.
+     */
+  }, {
+    key: "renderHeader",
+    value: function renderHeader() {
+      var _this = this;
+      this.$header = $('<div>').addClass('d-flex flex-wrap align-items-center justify-content-between mb-3 gap-2');
+
+      // Kick all
+      this.$kickAll = _tinyLib["default"].bs.button('danger').text('Kick all');
+      this.$kickAll.on('click', function () {
+        var room = _classPrivateFieldGet(_client, _this).getRoom() || {};
+        var userIds = [];
+        Object.keys(_this.users).forEach(function (userId) {
+          if (userId !== _this.currentUserId && userId !== room.ownerId) userIds.push(userId);
+        });
+        if (userIds.length > 0) _this.kickUser(userIds);
+      });
+
+      // Room status
+      var $roomStatus = _tinyLib["default"].bs.button('secondary');
+      this.$roomStatusButton = $roomStatus;
+      $roomStatus.on('click', function () {
+        if (_this.isWaitingRoomStatus) return;
+        _this.isWaitingRoomStatus = true;
+        _this.updateRoomStatusButton();
+        if (_this.roomActive) _classPrivateFieldGet(_client, _this).disableRoom().then(function (result) {
+          if (!result.error) _this.setRoomStatus(false);else _this.setRoomStatus(true);
+        });else _classPrivateFieldGet(_client, _this).enableRoom().then(function (result) {
+          if (!result.error) _this.setRoomStatus(true);else _this.setRoomStatus(false);
+        });
+      });
+
+      // Search input
+      this.$searchInput = $('<input>', {
+        type: 'text',
+        "class": 'form-control',
+        placeholder: 'Search users...'
+      });
+      this.$searchInput.on('input', function () {
+        _this.renderUserList(_this.$searchInput.val().trim().toLowerCase());
+      });
+      var $searchWrapper = $('<div>').addClass('flex-grow-1').append(this.$searchInput);
+      this.$header.append(this.$kickAll, $roomStatus, $searchWrapper);
+      this.$root.append(this.$header, this.$userList);
+      this.updateRoomStatusButton();
+    }
+
+    /**
+     * Renders the footer section of the user manager UI.
+     *
+     * Includes:
+     * - An input field to manually enter a user ID to unban.
+     * - An "Unban" button that triggers the unbanning action.
+     *
+     * The input listens for the "Enter" key to trigger the unban action as well.
+     * Appends the constructed elements to the root container.
+     */
+  }, {
+    key: "renderFooter",
+    value: function renderFooter() {
+      var _this2 = this;
+      this.$footer = $('<div>');
+      var $unbanWrapper = $('<div>').addClass('d-flex mt-4 gap-2 align-items-center');
+      this.$unbanInput = $('<input>').addClass('form-control').attr('type', 'text').attr('placeholder', 'Enter user ID to unban').on('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          $unbanButton.trigger('click');
+        }
+      });
+      var $unbanButton = _tinyLib["default"].bs.button('success').text('Unban');
+      $unbanButton.on('click', function () {
+        if (!_this2.$unbanInput.prop('disabled')) {
+          var userId = _this2.$unbanInput.val().trim();
+          if (userId) {
+            _this2.$unbanInput.val('');
+            _this2.unbanUser(userId);
+          }
+        }
+      });
+      $unbanWrapper.append(this.$unbanInput, $unbanButton);
+      this.$userList.append();
+      this.$footer.append($unbanWrapper);
+      this.$root.append(this.$footer);
+    }
+
+    /**
+     * Updates the visual state and label of the room status toggle button.
+     *
+     * Changes the button style and text based on the current room state:
+     * - Green ("Room is Active") when the room is active.
+     * - Red ("Room is Inactive") when the room is inactive.
+     * - Yellow ("Waiting...") while the state is updating.
+     *
+     * Disables the button if the current user is not the room owner.
+     */
+  }, {
+    key: "updateRoomStatusButton",
+    value: function updateRoomStatusButton() {
+      var $btn = this.$roomStatusButton;
+      if (!$btn) return;
+      $btn.removeClass('btn-success btn-danger btn-warning').addClass(this.isWaitingRoomStatus ? 'btn-warning' : this.roomActive ? 'btn-success' : 'btn-danger').text(this.isWaitingRoomStatus ? 'Waiting...' : this.roomActive ? 'Room is Active' : 'Room is Inactive').prop('disabled', !this.isOwner);
+    }
+
+    /**
+     * Renders the user list in the room, applying optional search filtering and sorting.
+     *
+     * This method:
+     * - Clears and rebuilds the user list UI.
+     * - Sorts users by:
+     *    1. Logged-in user first,
+     *    2. Then by most recent ping (activity),
+     *    3. Then by nickname (alphabetically).
+     * - Filters the list based on a search string, matching against nickname and userId.
+     * - Displays for each user:
+     *    - Nickname and user ID
+     *    - Last ping time (human-readable)
+     *    - Action buttons: Kick, Ban, Promote/Demote Moderator
+     * - Updates `this.isModerator` if the logged-in user is found among moderators.
+     * - Stores tooltip and action button references in `this.#usersHtml` for later updates.
+     *
+     * @param {string} [filter=''] - Optional filter string to match against nickname or userId.
+     */
+  }, {
+    key: "renderUserList",
+    value: function renderUserList() {
+      var _this3 = this;
+      var filter = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var _iterator2 = _createForOfIteratorHelper(_classPrivateFieldGet(_usersHtml, this)),
+        _step2;
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var item = _step2.value;
+          item.tooltips.map(function (item) {
+            return item.hide();
+          });
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+      this.$userList.empty();
+      _classPrivateFieldSet(_usersHtml, this, []);
+      var isMod = function isMod(userId) {
+        return _this3.moderators.some(function (mod) {
+          var modStatus = mod.userId === userId;
+          if (_this3.currentUserId === userId) _this3.isModerator = modStatus;
+          return modStatus;
+        });
+      };
+      var sortedUsers = Object.entries(this.users).map(function (_ref2) {
+        var _ref3 = _slicedToArray(_ref2, 2),
+          userId = _ref3[0],
+          data = _ref3[1];
+        return {
+          userId: userId,
+          nickname: data.nickname || userId,
+          ping: moment(data.ping),
+          isSelf: userId === _this3.currentUserId,
+          isModerator: isMod(userId)
+        };
+      }).sort(function (a, b) {
+        if (a.isSelf) return -1;
+        if (b.isSelf) return 1;
+        if (b.ping.valueOf() !== a.ping.valueOf()) {
+          return b.ping.valueOf() - a.ping.valueOf();
+        }
+        return a.nickname.localeCompare(b.nickname);
+      });
+      sortedUsers.forEach(function (user, index) {
+        if (filter && !user.nickname.toLowerCase().includes(filter.toLowerCase()) && !user.userId.toLowerCase().includes(filter.toLowerCase())) return;
+        var $row = $('<div>').addClass("d-flex align-items-center py-2".concat(index < sortedUsers.length - 1 ? ' border-bottom' : ''));
+        var $info = $('<div>').addClass('flex-grow-1 d-flex align-items-center gap-2');
+        var $nickname = $('<strong>').text(user.nickname);
+        var $userIdText = $('<small>').addClass('text-muted').text("(".concat(user.userId, ")"));
+        $info.append($nickname, $userIdText);
+        var $ping = $('<div>').addClass('text-muted small text-nowrap').text(user.ping.fromNow());
+        var $actions = $('<div>').addClass('d-flex flex-wrap gap-2');
+        var tooltips = [];
+        var actions = {};
+        var $kickBtn = _tinyLib["default"].bs.button('warning').append($('<i>').addClass('fas fa-user-slash')).attr('title', 'Kick');
+        $kickBtn.on('click', function () {
+          return _this3.kickUser(user.userId);
+        });
+        var $banBtn = _tinyLib["default"].bs.button('danger').append($('<i>').addClass('fas fa-ban')).attr('title', 'Ban');
+        $banBtn.on('click', function () {
+          return _this3.banUser(user.userId);
+        });
+        $actions.append($kickBtn, $banBtn);
+        actions.kick = $kickBtn;
+        actions.ban = $banBtn;
+        tooltips.push($banBtn.tooltip(null, null, true));
+        tooltips.push($kickBtn.tooltip(null, null, true));
+        var $modBtn = _tinyLib["default"].bs.button(user.isModerator ? 'secondary' : 'info');
+        $modBtn.append($('<i>').addClass(user.isModerator ? 'fas fa-user-minus' : 'fas fa-user-plus')).attr('title', user.isModerator ? 'Demote' : 'Promote').prop('disabled', user.isSelf || !_this3.isOwner);
+        $modBtn.on('click', function () {
+          if (user.isModerator) {
+            _this3.reqDemoteModerator(user.userId);
+          } else {
+            _this3.reqPromoteModerator(user.userId);
+          }
+        });
+        $actions.append($modBtn);
+        actions.mod = $modBtn;
+        tooltips.push($modBtn.tooltip(null, null, true));
+        if (user.isSelf) $info.append($('<span>').addClass('badge bg-secondary ms-2').text('You'));
+        $row.append($info.addClass('col-5'), $ping.addClass('col-2 text-end'), $actions.addClass('col-5 justify-content-end'));
+        _classPrivateFieldGet(_usersHtml, _this3).push({
+          tooltips: tooltips,
+          actions: actions,
+          userId: user.userId
+        });
+        _this3.$userList.append($row);
+      });
+    }
+
+    /**
+     * Adds or updates a user in the internal user list.
+     *
+     * If the user is new or their data (nickname/ping) has changed,
+     * it triggers a re-render of the user list and re-checks permissions.
+     *
+     * @param {string} userId - Unique identifier of the user.
+     * @param {{nickname?: string, ping: number|string|Date}} data - User data, including nickname and ping timestamp.
+     */
+  }, {
+    key: "addUser",
+    value: function addUser(userId, data) {
+      var oldHash = this.users[userId] ? objHash(this.users[userId]) : null;
+      this.users[userId] = {
+        nickname: data.nickname || userId,
+        ping: moment(data.ping)
+      };
+      var newHash = objHash(this.users[userId]);
+      if (newHash !== oldHash) {
+        this.renderUserList(_assertClassBrand(_UserRoomManager_brand, this, _getSearch).call(this));
+        this.checkPerms();
+      }
+    }
+
+    /**
+     * Removes a user from the internal user list.
+     *
+     * If the user exists, they are removed and the user list is re-rendered.
+     *
+     * @param {string} userId - Unique identifier of the user to remove.
+     */
+  }, {
+    key: "removeUser",
+    value: function removeUser(userId) {
+      if (this.users[userId]) {
+        delete this.users[userId];
+        this.renderUserList(_assertClassBrand(_UserRoomManager_brand, this, _getSearch).call(this));
+      }
+    }
+
+    /**
+     * Adds a user to the list of moderators, if not already present.
+     * Triggers a re-render of the user list and permission checks.
+     *
+     * @param {string} userId - The user ID to promote to moderator.
+     */
+  }, {
+    key: "promoteModerator",
+    value: function promoteModerator(userId) {
+      if (!this.moderators.find(function (m) {
+        return m.userId === userId;
+      })) {
+        this.moderators.push({
+          userId: userId
+        });
+        if (userId === this.currentUserId) this.isModerator = true;
+        this.renderUserList(_assertClassBrand(_UserRoomManager_brand, this, _getSearch).call(this));
+        this.checkPerms();
+      }
+    }
+
+    /**
+     * Removes a user from the list of moderators.
+     * Triggers a re-render of the user list and permission checks.
+     *
+     * @param {string} userId - The user ID to demote from moderator.
+     */
+  }, {
+    key: "demoteModerator",
+    value: function demoteModerator(userId) {
+      this.moderators = this.moderators.filter(function (m) {
+        return m.userId !== userId;
+      });
+      if (userId === this.currentUserId) this.isModerator = false;
+      this.renderUserList(_assertClassBrand(_UserRoomManager_brand, this, _getSearch).call(this));
+      this.checkPerms();
+    }
+
+    /**
+     * Replaces the entire list of moderators with a new list.
+     * Triggers a re-render of the user list and permission checks.
+     *
+     * @param {Array<{userId: string}>} moderatorList - Array of moderator objects.
+     */
+  }, {
+    key: "setModerators",
+    value: function setModerators(moderatorList) {
+      this.moderators = Array.isArray(moderatorList) ? moderatorList : [];
+      this.renderUserList(_assertClassBrand(_UserRoomManager_brand, this, _getSearch).call(this));
+      this.checkPerms();
+    }
+
+    /**
+     * Sends a request to promote a user to moderator via the client.
+     * Updates UI button state during request and, on success, adds the user as a moderator.
+     *
+     * @param {string} userId - The user ID to promote.
+     */
+  }, {
+    key: "reqPromoteModerator",
+    value: function reqPromoteModerator(userId) {
+      var _this4 = this;
+      if (!this.moderators.find(function (m) {
+        return m.userId === userId;
+      })) {
+        var html = _classPrivateFieldGet(_usersHtml, this).find(function (item) {
+          return item.userId === userId;
+        });
+        if (html) html.actions.mod.prop('disabled', true);
+        _classPrivateFieldGet(_client, this).addMod([userId]).then(function (result) {
+          if (html) html.actions.mod.prop('disabled', false).removeClass('disabled');
+          if (!result.error) _this4.promoteModerator(userId);
+        });
+      }
+    }
+
+    /**
+     * Sends a request to demote a user from moderator via the client.
+     * Updates UI button state during request and, on success, removes the user from the moderator list.
+     *
+     * @param {string} userId - The user ID to demote.
+     */
+  }, {
+    key: "reqDemoteModerator",
+    value: function reqDemoteModerator(userId) {
+      var _this5 = this;
+      var html = _classPrivateFieldGet(_usersHtml, this).find(function (item) {
+        return item.userId === userId;
+      });
+      if (html) html.actions.mod.prop('disabled', true);
+      _classPrivateFieldGet(_client, this).removeMod([userId]).then(function (result) {
+        if (html) html.actions.mod.prop('disabled', false).removeClass('disabled');
+        if (!result.error) _this5.demoteModerator(userId);
+      });
+    }
+
+    /**
+     * Sends a request to ban a user via the client.
+     * Disables the ban button during the request.
+     * On success, removes the user from the user list.
+     *
+     * @param {string} userId - The user ID to ban.
+     */
+  }, {
+    key: "banUser",
+    value: function banUser(userId) {
+      var _this6 = this;
+      var html = _classPrivateFieldGet(_usersHtml, this).find(function (item) {
+        return item.userId === userId;
+      });
+      if (html) html.actions.ban.prop('disabled', true);
+      _classPrivateFieldGet(_client, this).banUser(userId).then(function (result) {
+        if (html) html.actions.ban.prop('disabled', false).removeClass('disabled');
+        if (!result.error) _this6.removeUser(userId);
+      });
+    }
+
+    /**
+     * Sends a request to unban a user via the client.
+     * Disables the input field during the request.
+     * On failure, displays the error message in the input.
+     *
+     * @param {string} userId - The user ID to unban.
+     */
+  }, {
+    key: "unbanUser",
+    value: function unbanUser(userId) {
+      var _this7 = this;
+      this.$unbanInput.prop('disabled', true);
+      _classPrivateFieldGet(_client, this).unbanUser(userId).then(function (result) {
+        _this7.$unbanInput.prop('disabled', false).removeClass('disabled');
+        if (result.error) _this7.$unbanInput.val(typeof result.msg === 'string' ? result.msg : 'Unknown error');
+        _this7.$unbanInput.trigger('focus').trigger('select');
+      });
+    }
+
+    /**
+     * Sends a request to kick a user via the client.
+     * Disables the kick button during the request.
+     * On success, removes the user from the user list.
+     *
+     * @param {string} userId - The user ID to kick.
+     */
+  }, {
+    key: "kickUser",
+    value: function kickUser(userId) {
+      var _this8 = this;
+      var html = _classPrivateFieldGet(_usersHtml, this).find(function (item) {
+        return item.userId === userId;
+      });
+      if (html) html.actions.kick.prop('disabled', true);
+      _classPrivateFieldGet(_client, this).kickUser(userId).then(function (result) {
+        if (html) html.actions.kick.prop('disabled', false).removeClass('disabled');
+        if (!result.error) _this8.removeUser(userId);
+      });
+    }
+
+    /**
+     * Destroys the root element, removing all child elements.
+     * Used to clean up the component from the DOM.
+     */
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      if (this.$root) this.$root.empty();
+    }
+  }]);
+}();
+function _getSearch() {
+  var _this$$searchInput;
+  var value = (_this$$searchInput = this.$searchInput) === null || _this$$searchInput === void 0 || (_this$$searchInput = _this$$searchInput.val()) === null || _this$$searchInput === void 0 ? void 0 : _this$$searchInput.trim().toLowerCase();
+  return typeof value === 'string' ? value : '';
+}
+var _default = exports["default"] = UserRoomManager;
+
+},{"../files/tinyLib.mjs":203}],187:[function(require,module,exports){
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateMethodInitSpec(e, a) { _checkPrivateRedeclaration(e, a), a.add(e); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+var _TinyMap_brand = /*#__PURE__*/new WeakSet();
+/*
+ * TinyMap - A lightweight map generator and handler
+ *
+ * Author: JasminDreasond
+ * Description: This script is an adaptation of an older version used in an RPG page of the application called MyOC Page.
+ *
+ * This class provides functionalities to build and manage a grid-based map, allowing for the placement of locations and routes dynamically.
+ * The map can be updated in real-time, and interactions such as tooltips and click events enhance the user experience.
+ *
+ * Features:
+ * - Dynamic map creation using a grid system
+ * - Supports customizable tile sizes and map dimensions
+ * - Allows adding locations and routes with colors, names, and tooltips
+ * - Interactive elements for displaying additional information
+ * - Easy integration with RPG systems and other applications
+ *
+ * Documentation created by: ChatGPT (OpenAI)
+ */
+var TinyMap = /*#__PURE__*/function () {
+  /**
+   * Creates a new TinyMap instance.
+   * @param {Object} map - The map configuration containing size, tile dimensions, image, colors, locations, and routes.
+   * @param {boolean} [firstBuild=false] - Determines if the map should be built immediately.
+   */
+  function TinyMap(map) {
+    var firstBuild = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    _classCallCheck(this, TinyMap);
+    /**
+     * Validates a background-image value restricted to safe data:image URLs only.
+     *
+     * @private
+     * @param {string} value - The CSS background-image value.
+     * @returns {boolean}
+     */
+    _classPrivateMethodInitSpec(this, _TinyMap_brand);
+    // Data
+    this.map = map;
+    this.html = {};
+    this.location = null;
+    this._limitSize = 4000;
+    this._isSubPage = false;
+
+    // Design
+    this.defaultColor = typeof this.map.defaultColor === 'string' ? this.map.defaultColor : '';
+
+    // Size
+    this.setSize(this.map.size.split('x'), false);
+    this.setTile(this.map.tile.split('x'), false);
+    this._setGrid();
+
+    // Locations
+    this.locations = Array.isArray(this.map.locations) ? this.map.locations : [];
+    this.routes = Array.isArray(this.map.routes) ? this.map.routes : [];
+
+    // First build
+    if (firstBuild) this.buildMap(true);
+    this.setMapImage(this.map.image);
+  }
+  return _createClass(TinyMap, [{
+    key: "setLocation",
+    value:
+    /**
+     * Sets the current location for the RPG map.
+     *
+     * Updates the internal `location` property.
+     * Accepts only string values; if a non-string is provided,
+     * the location is set to `null`.
+     *
+     * @param {string} location - The name or identifier of the map location.
+     */
+    function setLocation(location) {
+      this.location = typeof location === 'string' ? location : null;
+    }
+
+    /**
+     * Validates the size and tile dimensions of the map.
+     * Ensures that all size and tile values are numbers and finite.
+     *
+     * @returns {boolean} - True if size and tile dimensions are valid, false otherwise.
+     */
+  }, {
+    key: "sizeIsValidated",
+    value: function sizeIsValidated() {
+      return !Number.isNaN(this.size[0]) && !Number.isNaN(this.size[1]) && !Number.isNaN(this.tile[0]) && !Number.isNaN(this.tile[1]) && Number.isFinite(this.size[0]) && Number.isFinite(this.size[1]) && Number.isFinite(this.tile[0]) && Number.isFinite(this.tile[1]);
+    }
+
+    /**
+     * Calculates and sets the grid dimensions based on the map size and tile size.
+     * The grid represents how many tiles fit within the map's dimensions.
+     *
+     * - `grid.height`: Number of tiles that fit in the vertical axis.
+     * - `grid.width`: Number of tiles that fit in the horizontal axis.
+     *
+     * This method ensures that the grid values are rounded to the nearest whole number.
+     */
+  }, {
+    key: "_setGrid",
+    value: function _setGrid() {
+      this.grid = {
+        height: Math.round(this.size[1] / this.tile[1]),
+        width: Math.round(this.size[0] / this.tile[0])
+      };
+    }
+
+    /**
+     * Sets the name of the map and updates the corresponding UI element if available.
+     *
+     * @param {string} name - The new name of the map.
+     *
+     * This method updates the `name` property of the map and, if the `mapButton`
+     * element exists in `this.html`, it updates its text content to reflect the new name.
+     */
+  }, {
+    key: "setMapName",
+    value: function setMapName(name) {
+      this.name = name;
+      if (this.html.mapButton) this.html.mapButton.text(name);
+    }
+
+    /**
+     * Sets the size of the map and optionally updates the grid.
+     *
+     * @param {Array} size - An array containing the new width and height of the map.
+     * @param {boolean} [setGrid=true] - A flag indicating whether to update the grid after setting the size.
+     *
+     * This method updates the `size` property of the map, ensuring the values are converted to numbers
+     * and are within the allowed limits. It then calls the `_setGrid` method to adjust the grid based on
+     * the new size unless the `setGrid` parameter is set to `false`.
+     *
+     * The width of the map is limited to the `_limitSize` value to prevent the map from exceeding a maximum size.
+     */
+  }, {
+    key: "setSize",
+    value: function setSize() {
+      var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      var setGrid = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+      // Size
+      this.size = size;
+      this.size[0] = Number(this.size[0]);
+      this.size[1] = Number(this.size[1]);
+
+      // Limit
+      if (this.size[0] > this._limitSize) {
+        this.size[0] = this._limitSize;
+      }
+      if (this.size[0] > this._limitSize) {
+        this.size[0] = this._limitSize;
+      }
+
+      // Set grid
+      if (setGrid) return this._setGrid();
+    }
+
+    /**
+     * Sets the tile size of the map and optionally updates the grid.
+     *
+     * @param {Array} tile - An array containing the new width and height for each tile.
+     * @param {boolean} [setGrid=true] - A flag indicating whether to update the grid after setting the tile size.
+     *
+     * This method updates the `tile` property of the map, ensuring the values are converted to numbers
+     * and are within the allowed limits. It then calls the `_setGrid` method to adjust the grid based on
+     * the new tile size unless the `setGrid` parameter is set to `false`.
+     *
+     * The height of each tile is limited to the `_limitSize` value to prevent the tile from exceeding a maximum size.
+     */
+  }, {
+    key: "setTile",
+    value: function setTile() {
+      var tile = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      var setGrid = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+      // Tile
+      this.tile = tile;
+      this.tile[0] = Number(this.tile[0]);
+      this.tile[1] = Number(this.tile[1]);
+
+      // Limit
+      if (this.tile[1] > this._limitSize) {
+        this.tile[1] = this._limitSize;
+      }
+      if (this.tile[1] > this._limitSize) {
+        this.tile[1] = this._limitSize;
+      }
+
+      // Set grid
+      if (setGrid) return this._setGrid();
+    }
+
+    /**
+     * Clears the content of the map's HTML table element.
+     *
+     * This method empties the HTML table associated with the map by calling the `empty()` method on the
+     * `html.table` element. This is typically used to remove any existing content from the map before
+     * redrawing or reinitializing it.
+     */
+  }, {
+    key: "emptyMap",
+    value: function emptyMap() {
+      this.html.table.empty();
+    }
+
+    /**
+     * Creates a table cell (`<td>`) element for the grid with optional coordinates, size, background color, and text.
+     *
+     * This function generates a table cell (`<td>`) element that can be used as part of the grid layout. The created
+     * cell has optional coordinates, a specified height and width, an optional background color, and optional text content.
+     *
+     * @param {number} [cw=0] - The column width, used to set the cell's coordinates (optional).
+     * @param {number} [ch=0] - The row height, used to set the cell's coordinates (optional).
+     * @param {string|null} [text=null] - The text content to be displayed inside the cell (optional).
+     * @param {string|null} [color=null] - The background color of the cell (optional).
+     *
+     * @returns {jQuery} - A jQuery object representing the table cell (`<td>`) element.
+     */
+  }, {
+    key: "_buildGridTemplate",
+    value: function _buildGridTemplate() {
+      var cw = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      var ch = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+      var text = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+      var color = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+      return $('<td>', {
+        "class": 'p-0 m-0',
+        coordinates: typeof cw === 'number' && typeof ch === 'number' ? Number(cw) + 'x' + Number(ch) : null
+      }).css({
+        height: this.tile[1] - 2,
+        width: this.tile[0] - 2,
+        'background-color': color
+      }).text(text);
+    }
+
+    /**
+     * Builds the grid for the map by generating a table structure with cells.
+     *
+     * This function creates a grid layout by generating HTML table rows (`<tr>`) and cells (`<td>`) dynamically.
+     * The grid dimensions are determined based on the `this.grid.height` and `this.grid.width` values.
+     * It also utilizes `_buildGridTemplate()` to build individual table cells with optional coordinates and styling.
+     *
+     * The generated grid will be appended to the `this.html.table` element, and an array of grid elements is stored
+     * in `this.html.grid`.
+     *
+     * @returns {void}
+     */
+  }, {
+    key: "buildMapGrid",
+    value: function buildMapGrid() {
+      // Prepare Table
+      this.html.grid = [];
+      this.emptyMap();
+
+      // Generator Height
+      var firstValue = {
+        height: true,
+        width: true
+      };
+      var coordinates_w = 0;
+      var coordinates_h = -1;
+
+      // Render grid
+      for (var i = 0; i < this.grid.height + 1; i++) {
+        var tinytr = $('<tr>', {
+          "class": 'p-0 m-0'
+        });
+        var tinytds = [];
+
+        // Height
+        if (!firstValue.height) {
+          firstValue.width = true;
+
+          // Generator Width
+          coordinates_h = 0;
+          for (var x = 0; x < this.grid.width + 1; x++) {
+            if (!firstValue.width) {
+              tinytds.push(this._buildGridTemplate(Number(coordinates_w), Number(coordinates_h), null, this.defaultColor));
+            } else {
+              tinytds.push(this._buildGridTemplate(null, null, coordinates_w + 1));
+              coordinates_w++;
+              firstValue.width = false;
+            }
+            coordinates_h++;
+          }
+        } else {
+          firstValue.height = false;
+
+          // Generator Width
+          coordinates_h = -1;
+          for (var _x = 0; _x < this.grid.width + 1; _x++) {
+            tinytds.push(this._buildGridTemplate(null, null, coordinates_h + 1));
+            coordinates_h++;
+          }
+        }
+
+        // Insert
+        if (this.html.table) this.html.table.append(tinytr.append(tinytds));
+        this.html.grid.push({
+          html: tinytr,
+          data: tinytds
+        });
+      }
+    }
+
+    /**
+     * Updates the grid content by generating and applying routes and locations to the map grid.
+     *
+     * This function performs two main tasks:
+     * 1. It updates the grid cells with route information, including tooltips, route number, and styling (background color, font color).
+     * 2. It updates the grid cells with location information, including tooltips, location names, mini names, and styling.
+     * Additionally, it sets up click events on the location cells to trigger modal dialogs with location details and item shops.
+     *
+     * @returns {void}
+     */
+  }, {
+    key: "updateGridContent",
+    value: function updateGridContent() {
+      var _this = this;
+      // Routes Generator
+      var tinyThis = this;
+      var getCoordPlace = function getCoordPlace(coords) {
+        var coordinates = coords.split('x');
+        coordinates[0] = Number(coordinates[0]);
+        coordinates[1] = Number(coordinates[1]);
+        if (!Number.isNaN(coordinates[0]) && !Number.isNaN(coordinates[1])) {
+          var cordsValue = coordinates[0] + 'x' + coordinates[1];
+          for (var index in tinyThis.html.grid) {
+            var coordBase = tinyThis.html.grid[index].data.find(function (item) {
+              return item.attr('coordinates') === cordsValue;
+            });
+            if (coordBase) return coordBase;
+          }
+        }
+        return null;
+      };
+      for (var item2 in this.routes) {
+        var coordplace = getCoordPlace(this.routes[item2].coordinates);
+        if (coordplace) {
+          var routeNumber = item2;
+          coordplace.attr('location_enabled', this.location === "Route {number}".replace(/\{number\}/g, routeNumber) ? 'on' : 'off');
+          if (this.routes[item2].about) {
+            coordplace.attr('title', 'Route {number}: {about}'.replace(/\{number\}/g, routeNumber).replace(/\{about\}/g, this.routes[item2].about));
+          } else {
+            coordplace.attr('title', 'Route {number}'.replace(/\{number\}/g, routeNumber));
+          }
+          coordplace.tooltip();
+          coordplace.text('R' + routeNumber);
+          if (this.routes[item2].color) {
+            coordplace.css('background-color', this.routes[item2].color);
+          }
+          if (this.routes[item2].fontColor) {
+            coordplace.css('color', this.routes[item2].fontColor);
+          }
+        }
+      }
+
+      // Locations Generator
+      var _loop = function _loop(_item) {
+        var coordplace = getCoordPlace(_this.locations[_item].coordinates);
+        if (coordplace) {
+          coordplace.attr('location_enabled', _this.location === _this.locations[_item].name ? 'on' : 'off');
+          coordplace.attr('title', _this.locations[_item].name);
+          var tooltip = coordplace.tooltip(null, null, true);
+          coordplace.text(_this.locations[_item].mininame);
+          if (_this.locations[_item].color) {
+            coordplace.css('background-color', _this.locations[_item].color);
+          }
+          if (_this.locations[_item].fontColor) {
+            coordplace.css('color', _this.locations[_item].fontColor);
+          }
+
+          // Click Location
+          var _tinyThis = _this;
+          coordplace.css('cursor', 'pointer').data('tinyLocation', _this.locations[_item]).on('click', function () {
+            // Prepare Click
+            var tinyLocation = $(this).data('tinyLocation');
+
+            // Get Items
+            var tinyItems;
+            try {
+              tinyItems = rpgData.data[place].getEditor('root.settings.items').getValue();
+            } catch (err) {
+              tinyItems = null;
+            }
+
+            // Items Shop
+            var tinyShop = [];
+
+            // Items
+            if (Array.isArray(tinyItems) && tinyLocation.shop) {
+              for (var item in tinyItems) {
+                // Cities of the Item
+                var cancity = false;
+                var alllocations = false;
+                if (typeof tinyItems[item].cities === 'string') {
+                  // The cities
+                  var tinyCities = [];
+                  var tinyCities1 = tinyItems[item].cities.split(',');
+                  var tinyCities2 = tinyItems[item].cities.split('\n');
+                  if (tinyCities1.length > 0) for (var index in tinyCities1) tinyCities.push(tinyCities1[index]);else if (tinyCities2.length > 0) for (var _index in tinyCities2) tinyCities.push(tinyCities2[_index]);
+
+                  // Load Cities
+                  for (var city in tinyCities) {
+                    tinyCities[city] = tinyCities[city].trim();
+                    if (tinyCities[city] === 'all') {
+                      cancity = true;
+                      alllocations = true;
+                    }
+
+                    // Tiny fix
+                    if (tinyCities[city] === _tinyThis.locations[_item].name && !alllocations) {
+                      cancity = true;
+                      break;
+                    } else if (alllocations && tinyCities[city] === _tinyThis.locations[_item].name) {
+                      cancity = false;
+                      break;
+                    }
+                  }
+                }
+
+                // Add to the list
+                if (cancity) {
+                  var separeItem = '';
+                  if (Number(item) !== Number(tinyItems.length - 1)) {
+                    separeItem = $('<hr>');
+                  }
+                  tinyShop.push($('<div>').append([$('<span>').text("Name: "), $('<span>').text(tinyItems[item].name), $('<br>'), $('<span>').text("Price: "), $('<span>').text(tinyItems[item].price), $('<br>'), $('<span>').text("About: "), $('<span>').text(tinyItems[item].about), separeItem]));
+                }
+              }
+            }
+
+            // Modal Body
+            var tinyBody = [
+            // Info
+            $('<h3>').text('Info'), $('<div>').text(tinyLocation.about)];
+            if (tinyShop.length > 0) {
+              tinyBody.push($('<hr>'), $('<h3>').text('Shop'));
+              for (var _item2 in tinyShop) {
+                tinyBody.push(tinyShop[_item2]);
+              }
+            }
+            _tinyThis.html.subPage = {
+              html: tinyBody,
+              title: 'Location - {location}'.replace(/\{location\}/g, tinyLocation.name)
+            };
+            _tinyThis.activeSubPage(true);
+            if (tooltip) tooltip.hide();
+          });
+        }
+      };
+      for (var _item in this.locations) {
+        _loop(_item);
+      }
+    }
+
+    /**
+     * Updates the size of the map by adjusting the dimensions of the map's table element.
+     *
+     * This function modifies the `width` and `height` of the `html.table` element based on:
+     * - The map's overall size (`this.size[0]` for width, `this.size[1]` for height).
+     * - The size of the individual tiles (`this.tile[0]` for tile width, `this.tile[1]` for tile height).
+     *
+     * @returns {void}
+     */
+  }, {
+    key: "updateMapSize",
+    value: function updateMapSize() {
+      this.html.table.css({
+        width: this.size[0] + this.tile[0],
+        height: this.size[1] + this.tile[1]
+      });
+    }
+
+    /**
+     * Sets the background image for the map and updates the table's background style.
+     *
+     * This function checks if the provided image URL (`imgUrl`) is a valid data URL (i.e., it starts with `data:`).
+     * If it is, it sets the `this.image` property to that URL. The function then updates the background style
+     * of `this.html.table` with the new image URL, and adjusts the background size to fit the map size.
+     *
+     * @param {string} imgUrl - The URL of the image to be set as the map background. It must be a valid string and
+     *                          should start with 'data:' for data URLs.
+     *
+     * @returns {void}
+     */
+  }, {
+    key: "setMapImage",
+    value: function setMapImage(imgUrl) {
+      this.image = typeof imgUrl === 'string' && _assertClassBrand(_TinyMap_brand, this, _isValidDataImage).call(this, imgUrl) ? imgUrl : '';
+      if (this.html.table) this.html.table.css({
+        background: this.image ? 'transparent url("' + this.image + '") no-repeat right bottom' : '',
+        'background-size': this.image ? this.size[0] + 'px ' + Number(this.size[1] - 2) + 'px' : ''
+      });
+    }
+
+    /**
+     * Builds a new page structure by clearing the existing content and appending new elements.
+     *
+     * This function modifies `this.html.base` to build a new page layout. It:
+     * - Clears any existing content using `.empty()`.
+     * - Optionally adds a title, if a `title` string is provided, by creating an `<h3>` element.
+     * - Appends a new `<div>` with an optional class name (`className`) and the provided `tinyHtml` content.
+     *
+     * @param {jQuery} tinyHtml - The HTML content to be appended to the page.
+     * @param {string|null} [title=null] - The title for the page, which will be wrapped in an `<h3>` tag. If not provided, no title is added.
+     * @param {string|null} [className=null] - The CSS class to be applied to the wrapping `<div>`. If not provided, no class is applied.
+     *
+     * @returns {void}
+     */
+  }, {
+    key: "buildPage",
+    value: function buildPage(tinyHtml) {
+      var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      var className = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+      this.html.base.empty().append(typeof title === 'string' ? $('<h3>').text(title) : null, $('<div>', {
+        "class": className
+      }).append(tinyHtml));
+    }
+
+    /**
+     * Activates or deactivates the subpage view for the map.
+     *
+     * When activated, the function updates the page with the content of `this.html.subPage.html` and sets the title
+     * to `this.html.subPage.title`. When deactivated, the map view is restored and resized based on the current table
+     * dimensions, minus the tile size, with the class `table-responsive` applied.
+     *
+     * @param {boolean} [active=true] - Whether to activate or deactivate the subpage view.
+     *                                  If `true`, the subpage content is shown. If `false`, the map view is restored.
+     *
+     * @returns {void}
+     */
+  }, {
+    key: "activeSubPage",
+    value: function activeSubPage() {
+      var active = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+      this._isSubPage = active;
+      if (!active) this.buildPage(this.html.table, Number(this.html.table.outerWidth(true) - this.tile[0]) + 'x' + Number(this.html.table.outerHeight(true) - this.tile[1]), 'table-responsive');else this.buildPage(this.html.subPage.html, this.html.subPage.title);
+    }
+
+    /**
+     * Builds or resets the map view.
+     *
+     * If `resetHtml` is `true`, the HTML elements are recreated from scratch, including the base container,
+     * table, and map button. The map grid is rebuilt and the map's size and image are updated accordingly.
+     * The subpage view is also deactivated.
+     *
+     * When `resetHtml` is `false`, the function updates the existing map view without altering the HTML structure.
+     * The map button toggles the visibility of the map and subpage content based on the current state of the subpage.
+     *
+     * @param {boolean} [resetHtml=false] - Whether to reset the HTML structure and start from scratch. If `true`,
+     *                                      the HTML elements for the map are recreated.
+     *
+     * @returns {void}
+     */
+  }, {
+    key: "buildMap",
+    value: function buildMap() {
+      var resetHtml = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+      // The map
+      var tinyThis = this;
+      if (resetHtml) this.html.base = $('<center>', {
+        "class": 'd-none'
+      });
+
+      // The table
+      if (resetHtml) this.html.table = $('<table>', {
+        "class": 'table table-bordered'
+      });
+      this.updateMapSize();
+
+      // Insert map table into map element
+      this.buildMapGrid();
+      this.updateGridContent();
+
+      // Map Button
+      if (resetHtml) this.html.mapButton = $('<button>', {
+        type: 'button',
+        "class": 'btn btn-secondary m-2'
+      }).on('click', function () {
+        if (tinyThis._isSubPage) {
+          tinyThis.buildMap();
+          tinyThis.html.base.removeClass('d-none');
+        } else tinyThis.html.base.toggleClass('d-none');
+      });
+
+      // Set name
+      this.setMapName(typeof this.map.name === 'string' ? this.map.name : '');
+
+      // Build page
+      this.activeSubPage(false);
+      this.setMapImage(this.image);
+    }
+
+    /**
+     * Gets the map button element.
+     *
+     * @returns {jQuery} The map button element.
+     */
+  }, {
+    key: "getMapButton",
+    value: function getMapButton() {
+      return this.html.mapButton;
+    }
+
+    /**
+     * Gets the map table HTML element.
+     *
+     * @returns {jQuery} The table element representing the map.
+     */
+  }, {
+    key: "getMapHtml",
+    value: function getMapHtml() {
+      return this.html.table;
+    }
+
+    /**
+     * Gets the base HTML element for the map container.
+     *
+     * @returns {jQuery} The base container element for the map.
+     */
+  }, {
+    key: "getMapBaseHtml",
+    value: function getMapBaseHtml() {
+      return this.html.base;
+    }
+  }]);
+}();
+function _isValidDataImage(value) {
+  if (typeof value !== 'string') return false;
+  var normalized = value.trim();
+
+  // Only allow data:image/... base64 or URL-encoded images
+  var dataUrlPattern = /^data:image\/(png|jpeg|jpg|gif|webp);base64,[a-z0-9+\/=]+$/i;
+  return dataUrlPattern.test(normalized);
+}
+var _default = exports["default"] = TinyMap;
+
+},{}],188:[function(require,module,exports){
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.AiScriptStart = void 0;
+var _events = require("events");
+var _circleLoader = require("circle-loader");
+var _tinyAiApi = require("tiny-ai-api");
+var _tinyEssentials = require("tiny-essentials");
+var _tinyDices = _interopRequireDefault(require("tiny-dices"));
+var _tinyLib = _interopRequireDefault(require("../files/tinyLib.mjs"));
+var _start = require("../start.mjs");
+var _config = _interopRequireDefault(require("../chapters/config.mjs"));
+var _TinyMap = _interopRequireDefault(require("./TinyMap.mjs"));
+var _templates = _interopRequireDefault(require("./templates.mjs"));
+var _socketClient = _interopRequireDefault(require("./socketClient.mjs"));
+var _RoomUserManagerUI = _interopRequireDefault(require("./RoomUserManagerUI.mjs"));
+var _rpgData = _interopRequireDefault(require("./aiSoftware/rpgData.mjs"));
+var _enablerContent = _interopRequireDefault(require("./aiSoftware/enablerContent.mjs"));
+require("./jsonTemplate.mjs");
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _regeneratorValues(e) { if (null != e) { var t = e["function" == typeof Symbol && Symbol.iterator || "@@iterator"], r = 0; if (t) return t.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) return { next: function next() { return e && r >= e.length && (e = void 0), { value: e && e[r++], done: !e }; } }; } throw new TypeError(_typeof(e) + " is not iterable"); }
+function _regeneratorKeys(e) { var n = Object(e), r = []; for (var t in n) r.unshift(t); return function e() { for (; r.length;) if ((t = r.pop()) in n) return e.value = t, e.done = !1, e; return e.done = !0, e; }; }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
+function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
+function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
+function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+// Localstorage Manager
+var TinyAiStorage = /*#__PURE__*/function (_EventEmitter) {
+  function TinyAiStorage() {
+    var _this;
+    _classCallCheck(this, TinyAiStorage);
+    _this = _callSuper(this, TinyAiStorage);
+    _this._selected = _start.tinyLs.getItem('tiny-ai-storage-selected');
+    if (typeof _this._selected !== 'string') _this._selected = null;
+    _this.storage = _start.tinyLs.getItem('tiny-ai-storage');
+    try {
+      _this.storage = JSON.parse(_this.storage);
+      if (!_this.storage) _this.storage = {};
+    } catch (_unused) {
+      _this.storage = {};
+    }
+    return _this;
+  }
+  _inherits(TinyAiStorage, _EventEmitter);
+  return _createClass(TinyAiStorage, [{
+    key: "_saveApiStorage",
+    value: function _saveApiStorage() {
+      _start.tinyLs.setItem('tiny-ai-storage', JSON.stringify(this.storage));
+      this.emit('saveApiStorage', this.storage);
+    }
+  }, {
+    key: "_updateExistsAi",
+    value: function _updateExistsAi() {
+      if (this._selected && (typeof this.storage[this._selected] !== 'string' || this.storage[this._selected].length < 1) && typeof this.storage[this._selected] !== 'number' && !(0, _tinyEssentials.objType)(this.storage[this._selected], 'object')) {
+        this._selected = null;
+        _start.tinyLs.removeItem('tiny-ai-storage-selected');
+      }
+    }
+  }, {
+    key: "setSelectedAi",
+    value: function setSelectedAi(value) {
+      this._selected = typeof value === 'string' && (typeof this.storage[value] === 'string' && this.storage[value].length > 0 || typeof this.storage[value] === 'number' || (0, _tinyEssentials.objType)(this.storage[value], 'object')) ? value : null;
+      if (this._selected) _start.tinyLs.setItem('tiny-ai-storage-selected', this._selected);else _start.tinyLs.removeItem('tiny-ai-storage-selected');
+    }
+  }, {
+    key: "selectedAi",
+    value: function selectedAi() {
+      return this._selected;
+    }
+  }, {
+    key: "setApiKey",
+    value: function setApiKey(name, key) {
+      if (typeof key === 'string' || typeof key === 'number' || (0, _tinyEssentials.objType)(key, 'object')) {
+        this.storage[name] = key;
+        this._saveApiStorage();
+        this._updateExistsAi();
+        this.emit('setApiKey', name, key);
+        return;
+      }
+      throw new Error('Invalid AI api key data type!');
+    }
+  }, {
+    key: "delApiKey",
+    value: function delApiKey(name) {
+      if (this.storage[name]) {
+        delete this.storage[name];
+        this._saveApiStorage();
+        this._updateExistsAi();
+        this.emit('delApiKey', name);
+        return true;
+      }
+      return false;
+    }
+  }, {
+    key: "getApiKey",
+    value: function getApiKey(name) {
+      return typeof this.storage[name] === 'string' ? {
+        key: this.storage[name]
+      } : this.storage[name] || {
+        key: null
+      };
+    }
+  }]);
+}(_events.EventEmitter);
+var AiScriptStart = exports.AiScriptStart = function AiScriptStart(connStore) {
+  var tinyAiScript = {};
+
+  // Read AI Apis
+  var tinyIo = {
+    client: null,
+    firstTime: true
+  };
+  var tinyAi = new _tinyAiApi.TinyAiInstance();
+  var tinyStorage = new TinyAiStorage();
+  var aiLogin = null;
+  tinyAiScript.setAiLogin = function (newAiLogin) {
+    aiLogin = newAiLogin;
+  };
+  var canSandBox = function canSandBox(value) {
+    return value === 'sandBoxFic' || value === 'noData';
+  };
+  tinyAiScript.killIo = function () {
+    if (tinyIo.client) {
+      tinyIo.client.destroy();
+      tinyIo.client = null;
+      console.log('[socket-io] Connection destroyed!');
+      return true;
+    } else return false;
+  };
+
+  // Detect Using AI
+  _start.appData.emitter.on('isUsingAI', function (usingAI) {
+    if (usingAI) {
+      $('body').addClass('is-using-ai');
+    } else {
+      $('body').removeClass('is-using-ai');
+    }
+  });
+
+  // Checker
+  tinyAiScript.checkTitle = function () {
+    // Get selected Ai
+    var selectedAi = tinyStorage.selectedAi();
+
+    // Exists Google only. Then select google generative
+    if (typeof selectedAi === 'string' && selectedAi.length > 0 && selectedAi !== 'NONE') {
+      var _tinyStorage$getApiKe;
+      // Update html
+      aiLogin.button.find('> i').removeClass('text-danger-emphasis');
+      aiLogin.title = 'AI/RP Enabled';
+      $('body').addClass('can-ai');
+
+      // Update Ai API script
+      tinyAiScript.mpClient = false;
+      tinyAiScript.noai = false;
+
+      // Google Generative
+      if (selectedAi === 'google-generative') (0, _tinyAiApi.setTinyGoogleAi)(tinyAi, (_tinyStorage$getApiKe = tinyStorage.getApiKey('google-generative')) === null || _tinyStorage$getApiKe === void 0 ? void 0 : _tinyStorage$getApiKe.key);
+
+      // Tiny Chat --> this is a multiplayer client session
+      if (selectedAi === 'tiny-chat') tinyAiScript.mpClient = true;
+
+      // No Ai
+      if (selectedAi === 'no-ai') tinyAiScript.noai = true;
+
+      // Enabled now
+      tinyAiScript.enabled = true;
+    } else {
+      // Update html
+      aiLogin.button.find('> i').addClass('text-danger-emphasis');
+      aiLogin.title = 'AI/RP Disabled';
+      $('body').removeClass('can-ai');
+      tinyAiScript.enabled = false;
+    }
+
+    // Update login button
+    aiLogin.updateTitle();
+  };
+  tinyAiScript.isEnabled = function () {
+    return typeof tinyStorage.selectedAi() === 'string';
+  };
+  tinyAiScript.enabled = false;
+
+  // Login button
+  tinyAiScript.login = function () {
+    // Selector
+    var selector = $('<select>', {
+      "class": 'form-select text-center'
+    });
+    selector.append($('<option>', {
+      value: 'NONE'
+    }).text('None'));
+    var apiPlace = $('<span>');
+    selector.on('change', function () {
+      var value = selector.val();
+      var html = tinyAiHtml[value] && tinyAiHtml[value].inputs ? tinyAiHtml[value].inputs() : null;
+      apiPlace.empty();
+      if (html) apiPlace.append(html.desc, html.input, html.submit);
+      tinyStorage.setSelectedAi(value);
+      tinyAiScript.checkTitle();
+    });
+    selector.prop('disabled', _start.appData.ai.using);
+    var tinyAiHtml = {};
+
+    // Server login inputs
+    var insertServerLogin = function insertServerLogin(tinyInput, values) {
+      var indexs = [];
+      tinyInput.push($('<input>', {
+        type: 'text',
+        placeholder: 'Server ip',
+        "class": 'form-control text-center'
+      }));
+      indexs.push(tinyInput.length - 1);
+      tinyInput.push($('<input>', {
+        type: 'text',
+        placeholder: 'Username',
+        "class": 'form-control text-center mt-3'
+      }));
+      indexs.push(tinyInput.length - 1);
+      tinyInput.push($('<input>', {
+        type: 'password',
+        placeholder: 'Password',
+        "class": 'form-control text-center mt-2'
+      }));
+      indexs.push(tinyInput.length - 1);
+      tinyInput.push($('<input>', {
+        type: 'text',
+        placeholder: 'Room Id',
+        "class": 'form-control text-center mt-3'
+      }));
+      indexs.push(tinyInput.length - 1);
+      tinyInput.push($('<input>', {
+        type: 'password',
+        placeholder: 'Room password',
+        "class": 'form-control text-center mt-2'
+      }));
+      indexs.push(tinyInput.length - 1);
+      tinyInput[indexs[0]].val(values.ip).prop('disabled', _start.appData.ai.using);
+      tinyInput[indexs[1]].val(values.username).prop('disabled', _start.appData.ai.using);
+      tinyInput[indexs[2]].val(values.password).prop('disabled', _start.appData.ai.using);
+      tinyInput[indexs[3]].val(values.roomId).prop('disabled', _start.appData.ai.using);
+      tinyInput[indexs[4]].val(values.roomPassword).prop('disabled', _start.appData.ai.using);
+      return indexs;
+    };
+
+    // Save server login
+    var insertSaveServerLogin = function insertSaveServerLogin(inputs, ids) {
+      return {
+        ip: inputs[ids[0]].val(),
+        username: inputs[ids[1]].val(),
+        password: inputs[ids[2]].val(),
+        roomId: inputs[ids[3]].val(),
+        roomPassword: inputs[ids[4]].val()
+      };
+    };
+
+    // Server host about
+    var insertServerAbout = function insertServerAbout() {
+      return $('<p>').append($('<span>').text('You can host your server '), $('<a>', {
+        href: 'https://github.com/Pony-Driland/Website/tree/main/server/tiny-chat',
+        target: '_blank'
+      }).text('here'), $('<span>').text('. Enter the server settings you want to connect to.'));
+    };
+    var hostButton = function hostButton(inputs) {
+      var tinyBig = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : -1;
+      return $('<div>').append(_tinyLib["default"].bs.button('secondary mb-3').text('Show host settings (Alpha)').on('click', function () {
+        for (var index in inputs) {
+          if (index > tinyBig) {
+            inputs[index].toggleClass('d-none');
+          }
+        }
+      }));
+    };
+
+    // No AI
+    selector.append($('<option>', {
+      value: 'no-ai'
+    }).text('No AI'));
+    tinyAiHtml['no-ai'] = {};
+    var noAi = tinyAiHtml['no-ai'];
+    noAi.inputs = function () {
+      var data = {
+        input: []
+      };
+      data.input.push(hostButton(data.input, 0));
+      data.input.push(insertServerAbout());
+      var values = tinyStorage.getApiKey('no-ai') || {};
+      var ids = insertServerLogin(data.input, values);
+      data.input[0].find('> button').trigger('click');
+      data.desc = $('<p>').text('No AI will be used in this mode. You will only have access to the simple features.');
+      data.submit = _tinyLib["default"].bs.button('info mx-4 mt-4').text('Set Settings').on('click', function () {
+        var result = insertSaveServerLogin(data.input, ids);
+        tinyStorage.setApiKey('no-ai', result);
+        tinyAiScript.checkTitle();
+        $('#ai_connection').modal('hide');
+      }).prop('disabled', _start.appData.ai.using);
+      return data;
+    };
+
+    // Separator
+    selector.append($('<option>').prop('disabled', true).text('--------------------'));
+    selector.append($('<option>').prop('disabled', true).text('AI Models'));
+
+    // Google AI
+    selector.append($('<option>', {
+      value: 'google-generative'
+    }).text('Google Studio'));
+    tinyAiHtml['google-generative'] = {};
+    var googleAi = tinyAiHtml['google-generative'];
+    googleAi.inputs = function () {
+      var data = {
+        input: []
+      };
+      data.input.push($('<input>', {
+        type: 'password',
+        "class": 'form-control text-center mb-2'
+      }));
+      data.input.push(hostButton(data.input, 1));
+      data.input.push(insertServerAbout());
+      var values = tinyStorage.getApiKey('google-generative') || {};
+      data.input[0].val(values.key).prop('disabled', _start.appData.ai.using);
+      var ids = insertServerLogin(data.input, values);
+      data.input[1].find('> button').trigger('click');
+      data.desc = $('<p>').append($('<span>').text('You can get your Google API key '), $('<a>', {
+        href: 'https://aistudio.google.com/apikey',
+        target: '_blank'
+      }).text('here'), $('<span>').text('. Website: aistudio.google.com'));
+      data.submit = _tinyLib["default"].bs.button('info mx-4 mt-4').text('Set API Tokens').on('click', function () {
+        var result = insertSaveServerLogin(data.input, ids);
+        result.key = data.input[0].val();
+        tinyStorage.setApiKey('google-generative', result);
+        tinyAiScript.checkTitle();
+        $('#ai_connection').modal('hide');
+      }).prop('disabled', _start.appData.ai.using);
+      return data;
+    };
+
+    // Separator
+    selector.append($('<option>').prop('disabled', true).text('--------------------'));
+    selector.append($('<option>').prop('disabled', true).text('Clients'));
+
+    // Tiny chat
+    selector.append($('<option>', {
+      value: 'tiny-chat'
+    }).text('Multiplayer'));
+    tinyAiHtml['tiny-chat'] = {};
+    var tinyChat = tinyAiHtml['tiny-chat'];
+    tinyChat.inputs = function () {
+      var data = {
+        input: []
+      };
+      var values = tinyStorage.getApiKey('tiny-chat') || {};
+      var ids = insertServerLogin(data.input, values);
+      data.desc = insertServerAbout();
+      data.submit = _tinyLib["default"].bs.button('info mx-4 mt-4').text('Set connection settings').on('click', function () {
+        tinyStorage.setApiKey('tiny-chat', insertSaveServerLogin(data.input, ids));
+        tinyAiScript.checkTitle();
+        $('#ai_connection').modal('hide');
+      }).prop('disabled', _start.appData.ai.using);
+      return data;
+    };
+
+    // Modal
+    selector.val(tinyStorage.selectedAi() || 'NONE');
+    selector.trigger('change');
+    _tinyLib["default"].modal({
+      id: 'ai_connection',
+      title: 'AI/RP Protocol',
+      dialog: 'modal-lg',
+      body: $('<center>').append($('<p>').text("You are in an optional setting. You do not need AI to use the website!"), $('<p>').text("This website does not belong to any AI company, and all API input is stored locally inside your machine. This website is just a client to run prompts in artificial intelligence, there is no native artificial intelligence installed here."), $('<p>').text("By activating an artificial intelligence service in your session, you agree to the terms of use and privacy policies of the third party services you are using on this website. You will always be warned when any artificial intelligence service needs to be run on this website."), selector, apiPlace)
+    });
+  };
+
+  // Open AI Page
+  tinyAiScript.open = /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee13() {
+    var sessionEnabled, rpgCfg, canUsejsStore, aiTimeScriptUpdate, isFirstTime, contentEnabler, rpgData, sidebarStyle, createButtonSidebar, modelSelector, resetModelSelector, convertToNumber, tokenCount, tinyRanger, outputLength, temperature, topP, topK, presencePenalty, frequencyPenalty, getFicCache, insertImportData, importFileSession, ficConfigs, resetEntireData, ficResets, ficTemplates, _loop, index, importItems, ficPromptItems, tinyModalTextarea, isOnline, leftMenu, templateChangeInfo, connectionInfoBar, sidebarLeft, sidebarSettingTemplate, sidebarRightBase, updateModelList, insertDefaultSettings, selectModel, loadMoreModels, resetSettingsButton, sidebarRight, prepareContentList, getAiTokens, usingUpdateToken, updateAiTokenCounterData, executeAi, createTextareaInputExition, msgInputValues, msgInput, msgSubmit, cancelSubmit, submitMessage, submitCache, firstDialogueBase, msgList, scrollChatContainerToTop, addMessage, makeTempMessage, makeMsgRenderer, makeMsgWarning, makeMessage, chatContainer, textInputContainer, container, tinyInsertDb, tinyMsgIdDb, resetSession, saveSessionTimeout, saveSessionBackup, tinyAiSocketTemplate, validateMultiplayer, enabledFirstDialogue, clearMessages, socket, onlineStatus, client, sendSocketError, sessionData, sessions, executeSessionInsert, item, _t6, _t7, _t8, _t9, _t0, _t1, _t10, _t11, _t12;
+    return _regenerator().w(function (_context15) {
+      while (1) switch (_context15.n) {
+        case 0:
+          sessionEnabled = true; // Update Url
+          (0, _start.urlUpdate)('ai', 'AI Page');
+
+          // Clear page
+          (0, _start.clearFicData)();
+          $('#markdown-read').empty();
+          $('#top_page').addClass('d-none');
+
+          // Can use backup
+          rpgCfg = tinyStorage.getApiKey(tinyStorage.selectedAi()) || {};
+          canUsejsStore = typeof rpgCfg.ip !== 'string' || rpgCfg.ip.length < 1; // Try to prevent user browser from deactivating the page accidentally in browsers that have tab auto deactivator
+          aiTimeScriptUpdate = function aiTimeScriptUpdate() {
+            try {
+              // Get data
+              var now = moment();
+              var totalTime = JSON.parse(_start.tinyLs.getItem('total-time-using-ai') || '{}');
+              if (typeof totalTime.now !== 'number') totalTime.now = now.valueOf();
+              if (typeof totalTime.secondsUsed !== 'number') totalTime.secondsUsed = 0;
+              var past = moment(totalTime.now);
+
+              // Diff
+              var diff = Math.abs(now - past);
+              if (diff >= 999) totalTime.secondsUsed++;
+
+              // Complete
+              totalTime.now = now.valueOf();
+              _start.tinyLs.setItem('total-time-using-ai', JSON.stringify(totalTime));
+              if (aiLogin) {
+                aiLogin.secondsUsed = totalTime.secondsUsed;
+                aiLogin.updateTitle();
+              }
+            } catch (err) {
+              console.error(err);
+            }
+            _start.appData.ai.secondsUsed++;
+          };
+          _start.appData.ai.interval = setInterval(aiTimeScriptUpdate, 1000);
+          aiTimeScriptUpdate();
+
+          // Start loading page
+          isFirstTime = true;
+          _circleLoader.Loader.start();
+          if (!tinyAiScript.isEnabled()) {
+            _context15.n = 17;
+            break;
+          }
+          contentEnabler = new _enablerContent["default"]();
+          rpgData = new _rpgData["default"](); // Get RPG Template
+          rpgData.setTinyAi(tinyAi);
+          contentEnabler.setRpgData(rpgData);
+
+          // Load Models
+          if (!(!tinyAiScript.noai && !tinyAiScript.mpClient && tinyAi.getModelsList().length < 1)) {
+            _context15.n = 1;
+            break;
+          }
+          _context15.n = 1;
+          return tinyAi.getModels(100);
+        case 1:
+          // Sidebar
+          sidebarStyle = {
+            "class": 'bg-dark text-white p-3 d-none d-md-block',
+            style: 'width: 250px; min-width: 250px; overflow-y: auto;'
+          }; // Sidebar Button
+          createButtonSidebar = function createButtonSidebar(icon, text, callback) {
+            var disabled = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+            var options = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
+            var tinyClass = "link btn-bg text-start w-100".concat(disabled ? ' disabled' : '');
+            return _tinyLib["default"].bs.button(!options ? tinyClass : _objectSpread({
+              "class": tinyClass
+            }, options)).text(text).prepend(_tinyLib["default"].icon("".concat(icon, " me-2"))).on('click', callback).prop('disabled', disabled);
+          }; // Select Model
+          modelSelector = $('<select>', {
+            "class": 'form-select',
+            id: 'select-ai-model'
+          });
+          contentEnabler.setModelSelector(modelSelector);
+          resetModelSelector = function resetModelSelector() {
+            modelSelector.empty();
+            modelSelector.append($('<option>').text('None'));
+          };
+          resetModelSelector();
+
+          // To Number
+          convertToNumber = function convertToNumber(val) {
+            return typeof val === 'string' && val.length > 0 ? Number(val) : typeof val === 'number' ? val : 0;
+          }; // Token Count
+          tokenCount = {
+            amount: $('<span>').data('token-count', 0).text('0'),
+            total: $('<span>').text('0'),
+            updateValue: function updateValue(where, value) {
+              if (typeof value === 'number') {
+                if (!Number.isNaN(value) && Number.isFinite(value)) {
+                  if (tokenCount[where] && where !== 'updateValue' && where !== 'getValue') return tokenCount[where].data('token-count', value).text(value.toLocaleString(navigator.language || 'en-US'));
+                }
+              } else return tokenCount[where].data('token-count', 0).text(0);
+            },
+            getValue: function getValue(where) {
+              if (tokenCount[where] && where !== 'updateValue' && where !== 'getValue') return tokenCount[where].data('token-count') || 0;
+            }
+          }; // Ranger Generator
+          tinyRanger = function tinyRanger() {
+            var rangerBase = $('<div>', {
+              "class": 'd-flex flex-row align-items-center'
+            });
+            var ranger = $('<input>', {
+              type: 'range',
+              "class": 'form-range'
+            });
+            var rangerNumber = $('<input>', {
+              type: 'number',
+              "class": 'form-control ms-2',
+              style: 'width: 70px; max-width: 70px; min-width: 70px;'
+            });
+            ranger.on('wheel', function (event) {
+              event.preventDefault();
+              var currentValue = Number(ranger.val());
+              var getValue = function getValue(where, defaultValue) {
+                var newValue = ranger.attr(where);
+                if (typeof newValue === 'string' && newValue.length > 0) newValue = Number(newValue);else newValue = defaultValue;
+                return newValue;
+              };
+              var step = getValue('step', 1);
+              var min = getValue('min', 0);
+              var max = getValue('max', 0);
+
+              // Detect scroll position
+              if (event.originalEvent.deltaY < 0) {
+                // Up
+                currentValue += step;
+              } else {
+                // Down
+                currentValue -= step;
+              }
+
+              // Update value
+              if (currentValue < min) ranger.val(min).trigger('input');else if (currentValue > max) ranger.val(max).trigger('input');else ranger.val(currentValue).trigger('input');
+            });
+            ranger.on('input', function () {
+              rangerNumber.val(ranger.val());
+            });
+            rangerNumber.on('input', function () {
+              ranger.val(rangerNumber.val());
+            });
+            rangerNumber.on('change', function () {
+              var value = parseInt(rangerNumber.val());
+              var min = parseInt(rangerNumber.attr('min'));
+              var max = parseInt(rangerNumber.attr('max'));
+              if (value < min) {
+                rangerNumber.val(min);
+              } else if (value > max) {
+                rangerNumber.val(max);
+              }
+            });
+            rangerBase.append(ranger, rangerNumber);
+            return {
+              getBase: function getBase() {
+                return ranger;
+              },
+              getBase2: function getBase2() {
+                return rangerNumber;
+              },
+              trigger: function trigger(value) {
+                return ranger.trigger(value);
+              },
+              reset: function reset() {
+                this.setMin(0);
+                this.setMax(0);
+                this.setStep(0);
+                this.val(0);
+                return this;
+              },
+              setMin: function setMin(value) {
+                ranger.attr('min', value);
+                rangerNumber.attr('min', value);
+                return this;
+              },
+              setMax: function setMax(value) {
+                ranger.attr('max', value);
+                rangerNumber.attr('max', value);
+                return this;
+              },
+              setStep: function setStep(value) {
+                ranger.attr('step', value);
+                rangerNumber.attr('step', value);
+                return this;
+              },
+              disable: function disable() {
+                ranger.addClass('disabled');
+                ranger.prop('disabled', true);
+                rangerNumber.addClass('disabled');
+                rangerNumber.prop('disabled', true);
+                return this;
+              },
+              enable: function enable() {
+                ranger.removeClass('disabled');
+                ranger.prop('disabled', false);
+                rangerNumber.removeClass('disabled');
+                rangerNumber.prop('disabled', false);
+                return this;
+              },
+              insert: function insert() {
+                return rangerBase;
+              },
+              val: function val(value) {
+                if (typeof value !== 'undefined') {
+                  ranger.val(value);
+                  rangerNumber.val(value);
+                  return this;
+                }
+                return convertToNumber(ranger.val());
+              },
+              valString: function valString() {
+                return String(ranger.val());
+              },
+              valString2: function valString2() {
+                return String(rangerNumber.val());
+              }
+            };
+          }; // Output Length
+          outputLength = $('<input>', {
+            type: 'number',
+            "class": 'form-control'
+          });
+          contentEnabler.setOutputLength(outputLength);
+          outputLength.on('input', function () {
+            return tinyAi.setMaxOutputTokens(convertToNumber(outputLength.val()));
+          });
+
+          // Temperature
+          temperature = tinyRanger();
+          contentEnabler.setTemperature(temperature);
+          temperature.getBase().on('input', function () {
+            return tinyAi.setTemperature(convertToNumber(temperature.val()));
+          });
+          temperature.getBase2().on('change', function () {
+            return tinyAi.setTemperature(convertToNumber(temperature.val()));
+          });
+          temperature.val(1);
+          tinyAi.setTemperature(1);
+
+          // Top P
+          topP = tinyRanger();
+          contentEnabler.setTopP(topP);
+          topP.getBase().on('input', function () {
+            return tinyAi.setTopP(convertToNumber(topP.val()));
+          });
+          topP.getBase2().on('change', function () {
+            return tinyAi.setTopP(convertToNumber(topP.val()));
+          });
+
+          // Top K
+          topK = tinyRanger();
+          contentEnabler.setTopK(topK);
+          topK.getBase().on('input', function () {
+            return tinyAi.setTopK(convertToNumber(topK.val()));
+          });
+          topK.getBase2().on('change', function () {
+            return tinyAi.setTopK(convertToNumber(topK.val()));
+          });
+
+          // Presence penalty
+          presencePenalty = tinyRanger();
+          contentEnabler.setPresencePenalty(presencePenalty);
+          presencePenalty.getBase().on('input', function () {
+            return tinyAi.setPresencePenalty(convertToNumber(presencePenalty.val()));
+          });
+          presencePenalty.getBase2().on('change', function () {
+            return tinyAi.setPresencePenalty(convertToNumber(presencePenalty.val()));
+          });
+
+          // Frequency penalty
+          frequencyPenalty = tinyRanger();
+          contentEnabler.setFrequencyPenalty(frequencyPenalty);
+          frequencyPenalty.getBase().on('input', function () {
+            return tinyAi.setFrequencyPenalty(convertToNumber(frequencyPenalty.val()));
+          });
+          frequencyPenalty.getBase2().on('change', function () {
+            return tinyAi.setFrequencyPenalty(convertToNumber(frequencyPenalty.val()));
+          });
+
+          // Get fic cache
+          getFicCache = function getFicCache(id, instructionId, prompts, introduction, hashItems, newContent) {
+            var forceReset = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : false;
+            return new Promise(function (resolve, reject) {
+              isFirstTime = false;
+              // Reset token count
+              tokenCount.updateValue('amount', 0);
+              newContent().then(/*#__PURE__*/function () {
+                var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(ficData) {
+                  var tinyData, tinyRpgData, tinyRpgPrivateData, fileTokens, oldFileHash, newFileHash, history, textBackup, index;
+                  return _regenerator().w(function (_context) {
+                    while (1) switch (_context.n) {
+                      case 0:
+                        if (!forceReset) {
+                          _context.n = 1;
+                          break;
+                        }
+                        _context.n = 1;
+                        return resetSession(id, true);
+                      case 1:
+                        if (forceReset || !tinyAi.selectDataId(id)) {
+                          // Start History
+                          tinyAi.startDataId(id, true);
+                          tinyAi.setModel(modelSelector.val());
+
+                          // Set Instruction
+                          tinyAi.setSystemInstruction(_templates["default"].instructions[instructionId], 0);
+
+                          // Set Prompts
+                          try {
+                            if (typeof prompts === 'string') tinyAi.setPrompt(prompts, 0);
+                            if (Array.isArray(prompts)) tinyAi.setPrompt(prompts.join('\n'), 0);
+                          } catch (_unused2) {
+                            tinyAi.setPrompt('', 0);
+                          }
+                        }
+
+                        // Exists data
+                        else {
+                          // Get first history data
+                          tinyData = tinyAi.getFirstIndexData(); // Delete old file version
+                          if (tinyData && tinyData.parts && tinyData.parts[0] && tinyData.parts[0].inlineData) tinyAi.deleteIndex(0);
+                        }
+
+                        // Load rpg data
+                        _context.n = 2;
+                        return rpgData.init();
+                      case 2:
+                        tinyRpgData = rpgData.data["public"].getValue();
+                        tinyRpgPrivateData = rpgData.data["private"].getValue();
+                        if (tinyRpgData) {
+                          rpgData.setAllowAiUse(tinyRpgData.allowAiUse, 'public');
+                          rpgData.setAllowAiSchemaUse(tinyRpgData.allowAiSchemaUse, 'public');
+                        }
+                        if (tinyRpgPrivateData) {
+                          rpgData.setAllowAiUse(tinyRpgPrivateData.allowAiUse, 'private');
+                          rpgData.setAllowAiSchemaUse(tinyRpgPrivateData.allowAiSchemaUse, 'private');
+                        }
+
+                        // Add file data
+                        fileTokens = tinyAi.getTokens('file');
+                        oldFileHash = tinyAi.getHash('file');
+                        if (ficData) tinyAi.setFileData(ficData.mime, ficData.data);else tinyAi.removeFileData();
+                        newFileHash = tinyAi.getHash('file');
+                        if (oldFileHash === newFileHash) tinyAi.setFileData(null, null, null, fileTokens || 0);
+
+                        // Clear data
+                        clearMessages();
+                        if (sessionEnabled) {
+                          contentEnabler.enBase();
+                          contentEnabler.enMessageButtons();
+                        }
+                        makeTempMessage(introduction, 'Introduction');
+                        history = tinyAi.getData(); // Restore textarea
+                        if (ficConfigs.selected) {
+                          textBackup = _start.tinyLs.getItem("tiny-ai-textarea-".concat(ficConfigs.selected));
+                          if (typeof textBackup !== 'string') textBackup = '';
+                          msgInput.val(textBackup).trigger('input');
+                        }
+
+                        // Start system
+                        insertImportData(history.data, history.tokens && Array.isArray(history.tokens.data) ? history.tokens.data : [], true);
+                        if (sessionEnabled) contentEnabler.enPromptButtons();
+                        updateAiTokenCounterData(hashItems, forceReset);
+
+                        // Update button list
+                        for (index in ficConfigs.buttons) {
+                          // Nope
+                          if (ficConfigs.data[index].id !== ficConfigs.selected) ficConfigs.buttons[index].removeClass('selected');else ficConfigs.buttons[index].addClass('selected');
+                        }
+                        resolve();
+                      case 3:
+                        return _context.a(2);
+                    }
+                  }, _callee);
+                }));
+                return function (_x) {
+                  return _ref2.apply(this, arguments);
+                };
+              }())["catch"](function (err) {
+                alert(err.message);
+                _circleLoader.Loader.close();
+                reject(err);
+              });
+            });
+          }; // When sId is used, it means that the request is coming from a session that is not active in the chat
+          insertImportData = function insertImportData(data, tokens) {
+            var readOnly = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+            var sId = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : undefined;
+            // Insert data
+            if (Array.isArray(data)) {
+              for (var index in data) {
+                var msgId = !readOnly ? tinyAi.addData(tinyAi.buildContents(null, data[index], data[index].role), tokens[index], sId) : tinyAi.getIdByIndex(index);
+                if (!sId) {
+                  var msg = !readOnly ? tinyAi.getLastIndexData() : data[index];
+                  if (msg && msg.parts && msg.parts[0] && typeof msg.parts[0].text === 'string') {
+                    addMessage(makeMessage({
+                      message: msg.parts[0].text,
+                      id: msgId
+                    }, msg.role === 'user' ? null : (0, _tinyEssentials.toTitleCase)(msg.role)));
+                  }
+                }
+              }
+            }
+          };
+          importFileSession = /*#__PURE__*/function () {
+            var _ref3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(jsonData) {
+              var forceLoad,
+                file,
+                sessionId,
+                index,
+                instructionId,
+                i,
+                _file$customList$i,
+                name,
+                type,
+                _args2 = arguments;
+              return _regenerator().w(function (_context2) {
+                while (1) switch (_context2.n) {
+                  case 0:
+                    forceLoad = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : false;
+                    if (!((0, _tinyEssentials.objType)(jsonData, 'object') && jsonData.file && typeof jsonData.id === 'string')) {
+                      _context2.n = 2;
+                      break;
+                    }
+                    file = jsonData.file;
+                    sessionId = jsonData.id; // Migration to sandbox mode
+                    if (!canSandBox(sessionId) && typeof file.systemInstruction === 'string') sessionId = 'sandBoxFic';
+                    if (!forceLoad) {
+                      _context2.n = 1;
+                      break;
+                    }
+                    _context2.n = 1;
+                    return resetSession(sessionId, true);
+                  case 1:
+                    // Start History
+                    tinyAi.startDataId(sessionId, true);
+
+                    // Open Get Fic Cache
+                    index = ficConfigs.data.findIndex(function (item) {
+                      return item.id === sessionId;
+                    });
+                    instructionId = index > -1 ? ficConfigs.data[index].template : null; // Set custom values
+                    if (Array.isArray(file.customList)) {
+                      for (i in file.customList) {
+                        if ((0, _tinyEssentials.objType)(file.customList[i], 'object') && typeof file.customList[i].name === 'string' && typeof file.customList[i].type === 'string') {
+                          _file$customList$i = file.customList[i], name = _file$customList$i.name, type = _file$customList$i.type;
+                          if ((0, _tinyEssentials.objType)(file[name], type)) {
+                            tinyAi.setCustomValue(name, file[name], file.tokens ? file.tokens[name] : 0, sessionId);
+                          }
+                        }
+                      }
+                    }
+
+                    // Set model
+                    if (typeof file.model === 'string') {
+                      modelSelector.val(file.model);
+                      tinyAi.setModel(file.model, sessionId);
+                      selectModel(file.model);
+                    }
+
+                    // Set model settings
+                    if (typeof file.temperature === 'number') tinyAi.setTemperature(file.temperature);
+                    if (typeof file.maxOutputTokens === 'number') tinyAi.setMaxOutputTokens(file.maxOutputTokens);
+                    if (typeof file.topP === 'number') tinyAi.setTopP(file.topP);
+                    if (typeof file.topK === 'number') tinyAi.setTopK(file.topK);
+                    if (typeof file.presencePenalty === 'number') tinyAi.setPresencePenalty(file.presencePenalty);
+                    if (typeof file.frequencyPenalty === 'number') tinyAi.setFrequencyPenalty(file.frequencyPenalty);
+
+                    // Set Instruction
+                    if (canSandBox(sessionId)) tinyAi.setSystemInstruction(file.systemInstruction, file.tokens ? file.tokens.systemInstruction : 0);else if (_templates["default"].instructions[instructionId]) tinyAi.setSystemInstruction(_templates["default"].instructions[instructionId], file.tokens ? file.tokens.systemInstruction : 0);
+
+                    // Prompt
+                    if (typeof file.prompt === 'string') tinyAi.setPrompt(file.prompt, file.tokens ? file.tokens.prompt : 0);
+
+                    // First Dialogue
+                    if (typeof file.firstDialogue === 'string') tinyAi.setFirstDialogue(file.firstDialogue, file.tokens ? file.tokens.firstDialogue : 0);
+
+                    // File
+                    if (file.tokens && typeof file.tokens.file === 'number') tinyAi.setFileData(null, null, null, file.tokens ? file.tokens.file : 0);
+                    if (forceLoad) {
+                      // Clear messages
+                      clearMessages();
+                      contentEnabler.enBase();
+                      contentEnabler.enMessageButtons();
+                    }
+
+                    // Complete
+                    insertImportData(file.data, file.tokens && Array.isArray(file.tokens.data) ? file.tokens.data : [], false, forceLoad ? undefined : sessionId);
+                    if (file.hash) file.hash.model = typeof file.model === 'string' ? objHash(file.model) : null;
+                    if (forceLoad && index > -1) getFicCache(ficConfigs.data[index].id, instructionId, ficConfigs.data[index].prompt, ficConfigs.data[index].intro, file.hash, function () {
+                      ficConfigs.selected = ficConfigs.data[index].id;
+                      return ficConfigs.data[index].getData();
+                    });
+                    return _context2.a(2, true);
+                  case 2:
+                    return _context2.a(2, false);
+                }
+              }, _callee2);
+            }));
+            return function importFileSession(_x2) {
+              return _ref3.apply(this, arguments);
+            };
+          }();
+          ficConfigs = {
+            data: [{
+              title: 'Safe Talk',
+              id: 'ficTalkSfw',
+              template: 'talkToFicSfw',
+              icon: 'fa-solid fa-book-open',
+              isSafe: true,
+              intro: 'Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic in your native language (if i can support to do this). I will try to hide some explicit details from fic, but if you insist, I will try to say in a few details.',
+              getData: function () {
+                var _getData = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
+                  return _regenerator().w(function (_context3) {
+                    while (1) switch (_context3.n) {
+                      case 0:
+                        return _context3.a(2, (0, _start.saveRoleplayFormat)(null, false));
+                    }
+                  }, _callee3);
+                }));
+                function getData() {
+                  return _getData.apply(this, arguments);
+                }
+                return getData;
+              }()
+            }, {
+              title: 'Full Talk',
+              id: 'ficTalk',
+              template: 'talkToFic',
+              icon: 'fa-solid fa-book-open-reader',
+              intro: 'Welcome to talk about the fic Pony Driland! I will answer all your questions related to fic in your native language (if i can support to do this), but be careful, because I will answer questions related to literally anything that happened in fic, including censored scenes (but i will do this respecting the limitations of my selected model).',
+              getData: function () {
+                var _getData2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4() {
+                  return _regenerator().w(function (_context4) {
+                    while (1) switch (_context4.n) {
+                      case 0:
+                        return _context4.a(2, (0, _start.saveRoleplayFormat)(null, false));
+                    }
+                  }, _callee4);
+                }));
+                function getData() {
+                  return _getData2.apply(this, arguments);
+                }
+                return getData;
+              }()
+            }, {
+              title: 'Sandbox',
+              id: 'sandBoxFic',
+              template: 'sandBoxToFic',
+              icon: 'fa-solid fa-fill-drip',
+              intro: 'Welcome to sandbox of the fic Pony Driland! This is my purely sandbox version, that means I have no special configuration, allowing you to do whatever you want within the limits of your selected model.',
+              getData: function () {
+                var _getData3 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5() {
+                  return _regenerator().w(function (_context5) {
+                    while (1) switch (_context5.n) {
+                      case 0:
+                        return _context5.a(2, (0, _start.saveRoleplayFormat)(null, false, {
+                          ficLine: false,
+                          dayNumber: false
+                        }));
+                    }
+                  }, _callee5);
+                }));
+                function getData() {
+                  return _getData3.apply(this, arguments);
+                }
+                return getData;
+              }()
+            }, {
+              title: 'No Data',
+              id: 'noData',
+              template: null,
+              icon: 'fa-solid fa-file',
+              intro: 'You are in a completely clean environment, with no stored data from the fic. You can use all website features without any limitations.',
+              getData: function () {
+                var _getData4 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6() {
+                  return _regenerator().w(function (_context6) {
+                    while (1) switch (_context6.n) {
+                      case 0:
+                        return _context6.a(2, null);
+                    }
+                  }, _callee6);
+                }));
+                function getData() {
+                  return _getData4.apply(this, arguments);
+                }
+                return getData;
+              }()
+            }],
+            buttons: [],
+            selected: null,
+            contentsMd5: null
+          };
+          rpgData.setFicConfigs(ficConfigs);
+
+          // Reset buttons
+          resetEntireData = function resetEntireData() {
+            var resetAll = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+            var index = ficConfigs.data.findIndex(function (item) {
+              return item.id === ficConfigs.selected;
+            });
+            if (index > -1) {
+              getFicCache(ficConfigs.data[index].id, ficConfigs.data[index].template, ficConfigs.data[index].prompt, ficConfigs.data[index].intro, null, function () {
+                ficConfigs.selected = ficConfigs.data[index].id;
+                return ficConfigs.data[index].getData();
+              }, resetAll).then(function () {
+                return resetSettingsButton.trigger('click');
+              });
+            }
+          };
+          ficResets = [
+          // History
+          createButtonSidebar('fa-solid fa-arrows-rotate', 'History', function () {
+            return resetEntireData(true);
+          }),
+          // Schema
+          createButtonSidebar('fa-solid fa-arrows-rotate', 'RPG Schema', function () {
+            rpgData.template.schema = _templates["default"].funcs.jsonTemplate();
+            if (ficConfigs.selected) {
+              tinyAi.setCustomValue('rpgSchema', rpgData.template.schema, 0);
+              resetEntireData(false);
+            }
+          })];
+          contentEnabler.setFicResets(ficResets);
+
+          // Fic Templates
+          ficTemplates = [];
+          contentEnabler.setFicTemplates(ficTemplates);
+          _loop = /*#__PURE__*/_regenerator().m(function _loop(index) {
+            var newButton;
+            return _regenerator().w(function (_context14) {
+              while (1) switch (_context14.n) {
+                case 0:
+                  newButton = createButtonSidebar(ficConfigs.data[index].icon, ficConfigs.data[index].title, function () {
+                    return getFicCache(ficConfigs.data[index].id, ficConfigs.data[index].template, ficConfigs.data[index].prompt, ficConfigs.data[index].intro, null, function () {
+                      ficConfigs.selected = ficConfigs.data[index].id;
+                      return ficConfigs.data[index].getData();
+                    });
+                  });
+                  ficConfigs.buttons.push(newButton);
+                  ficTemplates.push(newButton);
+                case 1:
+                  return _context14.a(2);
+              }
+            }, _loop);
+          });
+          _t6 = _regeneratorKeys(ficConfigs.data);
+        case 2:
+          if ((_t7 = _t6()).done) {
+            _context15.n = 4;
+            break;
+          }
+          index = _t7.value;
+          return _context15.d(_regeneratorValues(_loop(index)), 3);
+        case 3:
+          _context15.n = 2;
+          break;
+        case 4:
+          importItems = [
+          // Import
+          _tinyLib["default"].upload.json(createButtonSidebar('fa-solid fa-file-import', 'Import'), function (err, jsonData) {
+            if (err) {
+              console.error(err);
+              alert(err.message);
+              return;
+            }
+            importFileSession(jsonData, true);
+          })];
+          contentEnabler.setImportItems(importItems);
+          ficPromptItems = [
+          // System Instructions
+          createButtonSidebar('fa-solid fa-toolbox', 'System Instructions', function () {
+            var tinyModalData = {
+              id: 'ai_instructions',
+              info: 'System Instructions:',
+              size: 400,
+              textarea: tinyAi.getSystemInstruction(),
+              submitName: 'Set Instructions',
+              submitCall: function submitCall(value) {
+                var oldValue = tinyAi.getSystemInstruction();
+                if (typeof oldValue !== 'string' || oldValue !== value) {
+                  tinyAi.setSystemInstruction(value, 0);
+                  updateAiTokenCounterData();
+                }
+              }
+            };
+            if (canSandBox(ficConfigs.selected)) {
+              tinyModalData.addTemplates = {
+                data: _templates["default"].prompts,
+                title: 'Select a prompt to be added'
+              };
+            } else tinyModalData.readOnly = true;
+            tinyModalTextarea(tinyModalData, ['instructionText', 'text']);
+          }),
+          // Prompt
+          createButtonSidebar('fa-solid fa-terminal', 'Prompt', function () {
+            return tinyModalTextarea({
+              id: 'ai_prompt',
+              info: 'This prompt will always be inserted at the beginning of all your requests:',
+              size: 200,
+              textarea: tinyAi.getPrompt(),
+              submitName: 'Set Prompt',
+              addTemplates: {
+                data: _templates["default"].prompts,
+                title: 'Select a prompt to be added'
+              },
+              submitCall: function submitCall(value) {
+                var oldValue = tinyAi.getPrompt();
+                if (typeof oldValue !== 'string' || oldValue !== value) {
+                  tinyAi.setPrompt(value, 0);
+                  updateAiTokenCounterData();
+                }
+              }
+            }, !canSandBox(ficConfigs.selected) ? 'text' : ['sandBoxText', 'text']);
+          }),
+          // First Dialogue
+          createButtonSidebar('fa-solid fa-comment-dots', 'First Dialogue', function () {
+            return tinyModalTextarea({
+              id: 'ai_first_dialogue',
+              info: 'This is the initial dialogue that can be inserted as a model message:',
+              size: 200,
+              textarea: tinyAi.getFirstDialogue(),
+              submitName: 'Set First Message',
+              addTemplates: {
+                data: _templates["default"].prompts,
+                title: 'Select a prompt to be added'
+              },
+              submitCall: function submitCall(value) {
+                var oldValue = tinyAi.getFirstDialogue();
+                if (typeof oldValue !== 'string' || oldValue !== value) {
+                  tinyAi.setFirstDialogue(value);
+                  enabledFirstDialogue(typeof value === 'string' && value.length > 0);
+                }
+              }
+            }, 'firstDialogue');
+          })];
+          contentEnabler.setFicPromptItems(ficPromptItems);
+
+          // Textarea Template
+          tinyModalTextarea = function tinyModalTextarea() {
+            var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+              info: '???',
+              size: 200,
+              submitName: 'Submit',
+              addTemplates: null,
+              submitCall: null,
+              id: null,
+              textarea: null,
+              readOnly: false
+            };
+            var textValueName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'text';
+            // Body
+            var body = $('<div>');
+            var textarea = $('<textarea>', {
+              "class": 'form-control',
+              style: "height: ".concat(String(config.size), "px;")
+            });
+            textarea.val(config.textarea);
+            if (config.readOnly) textarea.prop('readOnly', true);
+            var textEditor = new _tinyEssentials.TinyTextRangeEditor(textarea[0]);
+
+            // Templates list
+            if (config.addTemplates && Array.isArray(config.addTemplates.data) && config.addTemplates.data.length > 0) {
+              var templateList = config.addTemplates.data;
+              // Select
+              var textareaAdd = $('<select>', {
+                "class": 'form-control'
+              });
+              textareaAdd.append($('<option>', {
+                value: 'DEFAULT'
+              }).text(config.addTemplates.title));
+
+              // Separator
+              var addSeparator = function addSeparator() {
+                return textareaAdd.append($('<option>').prop('disabled', true).text('----------------------'));
+              };
+              addSeparator();
+
+              // Add options
+              var _loop2 = function _loop2() {
+                var templateItem = templateList[_index];
+                // Validator
+                var valueTypeValidator = function valueTypeValidator() {
+                  // Tiny code
+                  var tinyTypeValidator = function tinyTypeValidator(tinyTxtValName) {
+                    return typeof templateItem[tinyTxtValName] === 'string' || templateItem.type === tinyTxtValName;
+                  };
+
+                  // String
+                  if (typeof textValueName === 'string') return tinyTypeValidator(textValueName);
+
+                  // Array
+                  if (Array.isArray(textValueName)) {
+                    for (var _index2 in textValueName) {
+                      if (tinyTypeValidator(textValueName[_index2])) return true;
+                    }
+                  }
+
+                  // Nothing
+                  return false;
+                };
+
+                // Get data
+                var getTypeValue = function getTypeValue() {
+                  // Tiny code
+                  var tinyTypeValidator = function tinyTypeValidator(tinyTxtValName) {
+                    return typeof templateItem[tinyTxtValName] === 'string' ? templateItem[tinyTxtValName] : null;
+                  };
+
+                  // String
+                  if (typeof textValueName === 'string') {
+                    var value = tinyTypeValidator(textValueName);
+                    if (value) return value;
+                  }
+
+                  // Array
+                  if (Array.isArray(textValueName)) {
+                    for (var _index3 in textValueName) {
+                      var _value = tinyTypeValidator(textValueName[_index3]);
+                      if (_value) return _value;
+                    }
+                  }
+
+                  // Nothing
+                  return null;
+                };
+                var ficOptionData = ficConfigs.data.find(function (item) {
+                  return item.id === ficConfigs.selected;
+                });
+                if (ficOptionData && (
+                // Sandbox
+                typeof templateItem.sandboxOnly !== 'boolean' || !templateItem.sandboxOnly || canSandBox(ficConfigs.selected)) && (
+                // Safe mode
+                typeof ficOptionData.isSafe !== 'boolean' || !ficOptionData.isSafe || ficOptionData.isSafe && !templateItem.isNotSafe)) {
+                  // Normal way
+                  if (!templateItem.hr) {
+                    // Validator
+                    if (valueTypeValidator() && (typeof templateItem.value === 'string' || templateItem.disabled)) textareaAdd.append($('<option>', {
+                      value: templateItem.value
+                    })
+                    // Data item
+                    .data('TinyAI-select-text', getTypeValue()).data('TinyAI-temperature', typeof templateItem.temperature === 'number' && !Number.isNaN(templateItem.temperature) && templateItem.temperature >= 0 ? templateItem.temperature : null).data('TinyAI-max-output-tokens', typeof templateItem.maxOutputTokens === 'number' && !Number.isNaN(templateItem.maxOutputTokens) && templateItem.maxOutputTokens >= 0 ? templateItem.maxOutputTokens : null).data('TinyAI-topP', typeof templateItem.topP === 'number' && !Number.isNaN(templateItem.topP) && templateItem.topP >= 0 ? templateItem.topP : null).data('TinyAI-topK', typeof templateItem.topK === 'number' && !Number.isNaN(templateItem.topK) && templateItem.topK >= 0 ? templateItem.topK : null).data('TinyAI-presence-penalty', typeof templateItem.presencePenalty === 'number' && !Number.isNaN(templateItem.presencePenalty) && templateItem.presencePenalty >= 0 ? templateItem.presencePenalty : null).data('TinyAI-frequency-penalty', typeof templateItem.frequencyPenalty === 'number' && !Number.isNaN(templateItem.frequencyPenalty) && templateItem.frequencyPenalty >= 0 ? templateItem.frequencyPenalty : null)
+                    // Option name
+                    .text(templateItem.name)
+
+                    // Option is disabled?
+                    .prop('disabled', typeof templateItem.disabled === 'boolean' ? templateItem.disabled : false));
+                  }
+                  // Separator
+                  else if (valueTypeValidator()) addSeparator();
+                }
+              };
+              for (var _index in templateList) {
+                _loop2();
+              }
+
+              // Option selected
+              textareaAdd.on('change', function () {
+                // Get value
+                var option = textareaAdd.find("[value=\"".concat(textareaAdd.val(), "\"]"));
+                var text = option ? option.data('TinyAI-select-text') : null || null;
+                var tempValue = option.data('TinyAI-temperature') || null;
+                var maxOutputTokensValue = option.data('TinyAI-max-output-tokens') || null;
+                var topPValue = option.data('TinyAI-topP') || null;
+                var topKValue = option.data('TinyAI-topK') || null;
+                var presencePenaltyValue = option.data('TinyAI-presence-penalty') || null;
+                var frequencyPenaltyValue = option.data('TinyAI-frequency-penalty') || null;
+                if (typeof tempValue === 'number') tinyAi.setTemperature(tempValue);
+                if (typeof maxOutputTokensValue === 'number') tinyAi.setMaxOutputTokens(maxOutputTokensValue);
+                if (typeof topPValue === 'number') tinyAi.setTopP(topPValue);
+                if (typeof topKValue === 'number') tinyAi.setTopK(topKValue);
+                if (typeof presencePenaltyValue === 'number') tinyAi.setPresencePenalty(presencePenaltyValue);
+                if (typeof frequencyPenaltyValue === 'number') tinyAi.setFrequencyPenalty(frequencyPenaltyValue);
+                textareaAdd.val('DEFAULT');
+
+                // Insert text
+                if (typeof text === 'string' && text.length > 0) textEditor.insertText(text, {
+                  autoSpacing: true
+                }).focus();
+              });
+
+              // Insert into body
+              body.append(textareaAdd);
+            }
+
+            // Add textarea
+            body.append($('<p>').text(config.info));
+            body.append(textarea);
+
+            // Submit
+            var submit = _tinyLib["default"].bs.button('info m-2 ms-0');
+            submit.text(config.submitName);
+            submit.on('click', function () {
+              config.submitCall(textarea.val());
+              $("#".concat(config.id)).modal('hide');
+            });
+            if (config.readOnly) submit.prop('disabled', true).addClass('disabled');
+            body.append($('<div>', {
+              "class": 'd-grid gap-2 col-6 mx-auto'
+            }).append(submit));
+
+            // Start modal
+            _tinyLib["default"].modal({
+              id: config.id,
+              title: 'AI Prompt',
+              dialog: 'modal-lg',
+              body: body
+            });
+          };
+          isOnline = function isOnline() {
+            return !canUsejsStore && tinyIo.client ? true : false;
+          };
+          leftMenu = [];
+          if (!tinyAiScript.mpClient) {
+            // Reset
+            leftMenu.push($('<h5>').text('Reset'));
+            leftMenu.push.apply(leftMenu, ficResets);
+
+            // Modes
+            leftMenu.push($('<h5>').text('Modes'));
+
+            // Fic Talk
+            leftMenu.push.apply(leftMenu, ficTemplates);
+          }
+
+          // Settings
+          leftMenu.push($('<h5>').text('Settings'));
+          leftMenu.push.apply(leftMenu, ficPromptItems);
+
+          // RPG
+          leftMenu.push($('<h5>').text('RPG'));
+          // Dice
+          leftMenu.push(createButtonSidebar('fa-solid fa-dice', 'Roll Dice', function () {
+            // Root
+            var $root = $('<div>');
+            var $formRow = $('<div>').addClass('row g-3');
+            var $totalBase = $('<center>', {
+              "class": 'fw-bold mt-3'
+            }).text(0);
+
+            // Config
+            var tinyCfg = {
+              isOnline: isOnline(),
+              data: {},
+              rateLimit: {}
+            };
+            if (tinyCfg.isOnline) {
+              tinyCfg.data = tinyIo.client.getDice() || {};
+              var ratelimit = tinyIo.client.getRateLimit() || {
+                dice: {},
+                size: {}
+              };
+              if ((0, _tinyEssentials.objType)(ratelimit.dice, 'object')) tinyCfg.rateLimit = ratelimit.dice;
+            } else {
+              tinyCfg.data.img = _start.tinyLs.getItem("tiny-dice-img") || undefined;
+              tinyCfg.data.bg = _start.tinyLs.getItem("tiny-dice-bg") || 'white';
+              tinyCfg.data.text = _start.tinyLs.getItem("tiny-dice-text") || 'black';
+              tinyCfg.data.border = _start.tinyLs.getItem("tiny-dice-border") || '2px solid rgba(0, 0, 0, 0.05)';
+              tinyCfg.data.selectionBg = _start.tinyLs.getItem("tiny-dice-selection-bg") || 'black';
+              tinyCfg.data.selectionText = _start.tinyLs.getItem("tiny-dice-selection-text") || 'white';
+            }
+
+            // Form template
+            var configs = {};
+            var genLabel = function genLabel(id, text) {
+              return $('<label>').addClass('form-label').attr('for', "tiny-dice_".concat(id)).text(text);
+            };
+            var genInput = function genInput(id, type, value, min) {
+              return $('<input>').addClass('form-control text-center').attr({
+                id: "tiny-dice_".concat(id),
+                type: type,
+                min: min
+              }).attr('placeholder', min).val(value);
+            };
+            var genConfig = function genConfig(id, text, type, value, min) {
+              configs[id] = genInput(id, type, value, min);
+              return [genLabel(id, text), configs[id]];
+            };
+
+            // Form
+            var $perDieCol = $('<div>').addClass('col-md-12').append(genConfig('perDieValues', 'Per-Die Values', 'text', '6', 'e.g., 6,12,20'));
+            var $allow0input = $('<input>').addClass('form-check-input').attr({
+              type: 'checkbox',
+              id: 'tiny-dice_allow0'
+            });
+            var $allow0Col = $('<div>').addClass('d-flex justify-content-center align-items-center mt-2').append($('<div>').addClass('form-check').append($allow0input, $('<label>').addClass('form-check-label').attr('for', 'tiny-dice_allow0').text('Allow zero values')));
+            $formRow.append($perDieCol);
+
+            // Roll button
+            var $rollButton = _tinyLib["default"].bs.button('primary w-100 mb-4 mt-2').text('Roll Dice');
+
+            // Add container
+            var $diceContainer = $('<div>');
+            var $diceError = $('<div>');
+            var readSkinValues = [['bgSkin', 'bg', 'setBgSkin'], ['textSkin', 'text', 'setTextSkin'], ['borderSkin', 'border', 'setBorderSkin'], ['bgImg', 'img', 'setBgImg'], ['selectionBgSkin', 'selectionBg', 'setSelectionBgSkin'], ['selectionTextSkin', 'selectionText', 'setSelectionTextSkin']];
+
+            // TinyDices logic
+            var dice = new _tinyDices["default"]($diceContainer.get(0));
+            var updateTotalBase = null;
+            $rollButton.on('click', /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7() {
+              var perDieRaw, perDie, canZero, result, total, _iterator, _step, item, diceParse, sides, _index4, _result, _index5;
+              return _regenerator().w(function (_context7) {
+                while (1) switch (_context7.n) {
+                  case 0:
+                    // Get values
+                    perDieRaw = configs.perDieValues.val().trim();
+                    perDie = perDieRaw.length > 0 ? perDieRaw : null;
+                    canZero = $allow0input.is(':checked');
+                    $totalBase.text(0);
+                    if (updateTotalBase) {
+                      clearTimeout(updateTotalBase);
+                      updateTotalBase = null;
+                    }
+
+                    // Offline
+                    if (tinyCfg.isOnline) {
+                      _context7.n = 1;
+                      break;
+                    }
+                    result = dice.roll(perDie, canZero);
+                    total = 0;
+                    _iterator = _createForOfIteratorHelper(result);
+                    try {
+                      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+                        item = _step.value;
+                        total += item.result;
+                      }
+                    } catch (err) {
+                      _iterator.e(err);
+                    } finally {
+                      _iterator.f();
+                    }
+                    updateTotalBase = setTimeout(function () {
+                      $totalBase.text(total);
+                      updateTotalBase = null;
+                    }, 2000);
+                    _context7.n = 3;
+                    break;
+                  case 1:
+                    // Prepare data
+                    diceParse = dice.parseRollConfig(perDie);
+                    sides = [];
+                    for (_index4 in diceParse) sides.push(diceParse[_index4]);
+
+                    // Get result
+                    $(this).attr('disabled', true).addClass('disabled');
+                    _context7.n = 2;
+                    return tinyIo.client.rollDice(sides, canZero);
+                  case 2:
+                    _result = _context7.v;
+                    $(this).attr('disabled', false).removeClass('disabled');
+
+                    // Proccess Results
+                    if (!_result.error) {
+                      dice.clearDiceArea();
+                      $totalBase.removeClass('text-danger');
+                      if (Array.isArray(_result.results) && typeof _result.total === 'number') {
+                        for (_index5 in _result.results) {
+                          if (typeof _result.results[_index5].sides === 'number' && typeof _result.results[_index5].roll === 'number') dice.insertDiceElement(_result.results[_index5].roll, _result.results[_index5].sides, canZero);
+                        }
+                        updateTotalBase = setTimeout(function () {
+                          $totalBase.text(_result.total);
+                          updateTotalBase = null;
+                        }, 2000);
+                      }
+                    } else $totalBase.addClass('text-danger').text(_result.msg);
+                  case 3:
+                    return _context7.a(2);
+                }
+              }, _callee7, this);
+            })));
+
+            // Skin form
+            var createInputField = function createInputField(label, id, placeholder, value) {
+              configs[id] = $('<input>').addClass('form-control text-center').attr({
+                type: 'text',
+                placeholder: placeholder
+              }).val(value);
+              return $('<div>').addClass('col-md-4 text-center').append($('<label>').addClass('form-label').attr('for', id).text(label), configs[id]);
+            };
+            configs.bgImg = $('<input>').addClass('form-control').addClass('d-none').attr('type', 'text').val(tinyCfg.data.img);
+            var bgImgUploadButton = _tinyLib["default"].bs.button('info w-100');
+            var uploadImgButton = _tinyLib["default"].upload.img(bgImgUploadButton.text('Select Image').on('contextmenu', function (e) {
+              e.preventDefault();
+              configs.bgImg.val('').removeClass('text-danger').trigger('change');
+            }), function (err, dataUrl) {
+              console.log("[dice-file] [upload] Image length: ".concat(dataUrl.length));
+
+              // Error
+              bgImgUploadButton.removeClass('text-danger');
+              if (err) {
+                console.error(err);
+                bgImgUploadButton.addClass('text-danger');
+                return;
+              }
+              var maxSize = tinyCfg.rateLimit.img || 0;
+              var base64String = dataUrl.split(',')[1];
+              var padding = (base64String.match(/=+$/) || [''])[0].length;
+              var sizeInBytes = base64String.length * 3 / 4 - padding;
+              var convertToMb = function convertToMb(tinyBytes) {
+                return "".concat((tinyBytes / (1024 * 1024)).toFixed(2), " MB");
+              };
+              console.log("[dice-file] [upload] Image size: ".concat(convertToMb(sizeInBytes)));
+              console.log("[dice-file] [upload] Upload limit: ".concat(convertToMb(maxSize)));
+
+              // Big Image
+              $diceError.empty();
+              if (maxSize > 0 && sizeInBytes > maxSize) {
+                bgImgUploadButton.addClass('text-danger');
+                _tinyLib["default"].alert($diceError, 'danger', 'bi bi-exclamation-triangle-fill', "Image is too large: ".concat(convertToMb(sizeInBytes), " (max allowed: ").concat(convertToMb(maxSize), ")"));
+                return;
+              }
+
+              // OK
+              configs.bgImg.val(dataUrl).removeClass('text-danger').trigger('change');
+            });
+            var importDiceButton = _tinyLib["default"].upload.json(_tinyLib["default"].bs.button('info w-100').text('Import'), function (err, jsonData) {
+              // Error
+              if (err) {
+                console.error(err);
+                alert(err.message);
+                return;
+              }
+
+              // Insert data
+              if ((0, _tinyEssentials.objType)(jsonData, 'object') && (0, _tinyEssentials.objType)(jsonData.data, 'object')) {
+                for (var _index6 in readSkinValues) {
+                  var readSkinData = readSkinValues[_index6];
+                  var name = readSkinData[1];
+                  var item = jsonData.data[name];
+                  if (typeof item === 'string' || typeof item === 'number') {
+                    var newValue = typeof tinyCfg.rateLimit[name] !== 'number' || item.length <= tinyCfg.rateLimit[name] ? item : null;
+                    configs[readSkinData[0]].val(newValue).trigger('change');
+                  }
+                }
+              }
+            });
+            var $formRow2 = $('<div>', {
+              "class": 'd-none'
+            }).addClass('row g-3 mb-4').append(
+            // Background skin
+            createInputField('Background Skin', 'bgSkin', 'e.g. red or rgb(200,0,0)', tinyCfg.data.bg),
+            // Text skin
+            createInputField('Text Skin', 'textSkin', 'e.g. white or #fff', tinyCfg.data.text),
+            // Border skin
+            createInputField('Border Skin', 'borderSkin', 'e.g. 2px solid rgba(255, 255, 255, 0.2)', tinyCfg.data.border),
+            // Bg skin
+            createInputField('Select Bg Skin', 'selectionBgSkin', 'e.g. black or #000', tinyCfg.data.selectionBg),
+            // Text skin
+            createInputField('Select Text Skin', 'selectionTextSkin', 'e.g. white or #fff', tinyCfg.data.selectionText),
+            // Image upload
+            configs.bgImg, $('<div>', {
+              "class": 'col-md-4 text-center'
+            }).append($('<label>').addClass('form-label').text('Custom Image'), uploadImgButton),
+            // Export
+            $('<div>', {
+              "class": 'col-md-6'
+            }).append(_tinyLib["default"].bs.button('info w-100').text('Export').on('click', function () {
+              // Data base
+              var fileData = {
+                data: {}
+              };
+              for (var _index7 in readSkinValues) {
+                var readSkinData = readSkinValues[_index7];
+                fileData.data[readSkinData[1]] = configs[readSkinData[0]].val().trim();
+              }
+
+              // Date
+              fileData.date = Date.now();
+              // Save
+              saveAs(new Blob([JSON.stringify(fileData)], {
+                type: 'text/plain'
+              }), "tiny_dice_skin_ponydriland.json");
+            })),
+            // Import
+            $('<div>', {
+              "class": 'col-md-6'
+            }).append(importDiceButton));
+            var updateDiceData = function updateDiceData(where, dataName, value) {
+              dice[where](value);
+              if (!tinyIo.client) {
+                if (value) _start.tinyLs.setItem("tiny-dice-".concat(dataName), value);else _start.tinyLs.removeItem("tiny-dice-".concat(dataName));
+              }
+              dice.updateDicesSkin();
+            };
+            var _loop3 = function _loop3(_index8) {
+              configs[readSkinValues[_index8][0]].on('change', function () {
+                updateDiceData(readSkinValues[_index8][2], readSkinValues[_index8][1], $(this).val().trim() || null);
+              });
+            };
+            for (var _index8 in readSkinValues) {
+              _loop3(_index8);
+            }
+            var updateAllSkins = function updateAllSkins() {
+              for (var _index9 in readSkinValues) configs[readSkinValues[_index9][0]].trigger('change');
+            };
+
+            // Root insert
+            $root.append($('<center>').append($formRow), $allow0Col, $formRow2);
+
+            // Main button of the skin editor
+            var $applyBtn = _tinyLib["default"].bs.button('success w-100').text('Edit Skin Data');
+            $applyBtn.on('click', /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8() {
+              var diceSkin, _index0, result, _index1;
+              return _regenerator().w(function (_context8) {
+                while (1) switch (_context8.n) {
+                  case 0:
+                    if (!$formRow2.hasClass('d-none')) {
+                      _context8.n = 1;
+                      break;
+                    }
+                    $applyBtn.text(tinyIo.client ? 'Apply Dice Skins' : 'Hide Skin Data');
+                    _context8.n = 3;
+                    break;
+                  case 1:
+                    $applyBtn.text('Edit Skin Data');
+                    if (!tinyCfg.isOnline) {
+                      _context8.n = 3;
+                      break;
+                    }
+                    updateAllSkins();
+
+                    // Disable buttons
+                    $applyBtn.attr('disabled', true).addClass('disabled');
+                    diceSkin = {};
+                    importDiceButton.attr('disabled', true).addClass('disabled');
+                    uploadImgButton.attr('disabled', true).addClass('disabled');
+
+                    // Send dice data
+                    for (_index0 in readSkinValues) diceSkin[readSkinValues[_index0][1]] = configs[readSkinValues[_index0][0]].attr('disabled', true).addClass('disabled').val().trim();
+                    _context8.n = 2;
+                    return tinyIo.client.setAccountDice(diceSkin);
+                  case 2:
+                    result = _context8.v;
+                    if (result.error) $totalBase.addClass('text-danger').text(result.msg);else {
+                      $totalBase.removeClass('text-danger').text(0);
+                      tinyIo.client.setDice(diceSkin);
+                    }
+
+                    // Enable buttons again
+                    for (_index1 in readSkinValues) configs[readSkinValues[_index1][0]].attr('disabled', false).removeClass('disabled');
+                    uploadImgButton.attr('disabled', false).removeClass('disabled');
+                    importDiceButton.attr('disabled', false).removeClass('disabled');
+                    $applyBtn.attr('disabled', false).removeClass('disabled');
+                  case 3:
+                    // Change class mode
+                    $formRow2.toggleClass('d-none');
+                  case 4:
+                    return _context8.a(2);
+                }
+              }, _callee8);
+            })));
+            $root.append($applyBtn, $rollButton, $diceError, $diceContainer, $totalBase);
+            updateAllSkins();
+            dice.roll([0, 0, 0]);
+
+            // Start modal
+            _tinyLib["default"].modal({
+              title: 'Dice Roll',
+              dialog: 'modal-lg',
+              id: 'dice-roll',
+              body: $root
+            });
+          }));
+
+          // RPG Data
+          leftMenu.push(createButtonSidebar('fa-solid fa-note-sticky', 'View Data', null, false, {
+            toggle: 'offcanvas',
+            target: '#rpg_ai_base_1'
+          }));
+
+          // Private RPG Data
+          leftMenu.push(createButtonSidebar('fa-solid fa-book', 'View Private', null, false, {
+            toggle: 'offcanvas',
+            target: '#rpg_ai_base_2'
+          }));
+
+          // Classic Map
+          leftMenu.push(createButtonSidebar('fa-solid fa-map', 'Classic Map', function () {
+            var startTinyMap = function startTinyMap(place) {
+              // Get Map Data
+              var maps;
+              var location;
+              try {
+                maps = rpgData.data[place].getEditor('root.settings.maps').getValue();
+                location = rpgData.data[place].getEditor('root.location').getValue();
+              } catch (e) {
+                maps = null;
+              }
+
+              // Exist Map
+              tinyHtml.empty();
+              try {
+                if (Array.isArray(maps)) {
+                  for (var _index10 in maps) {
+                    var map = new _TinyMap["default"](maps[_index10]);
+                    map.setLocation(location);
+                    map.buildMap(true);
+                    tinyHtml.append(map.getMapBaseHtml(), $('<center>').append(map.getMapButton()));
+                  }
+                }
+              } catch (e) {
+                // No Map
+                console.error(e);
+                tinyHtml.empty();
+              }
+            };
+            var tinyHtml = $('<span>');
+            var tinyHr = $('<hr>', {
+              "class": 'my-5 d-none'
+            });
+            _tinyLib["default"].modal({
+              title: 'Maps',
+              dialog: 'modal-lg',
+              id: 'tinyMaps',
+              body: [tinyHtml, tinyHr, $('<center>').append(
+              // Public Maps
+              _tinyLib["default"].bs.button('secondary m-2').text('Public').on('click', function () {
+                tinyHr.removeClass('d-none');
+                startTinyMap('public');
+              }),
+              // Private Maps
+              _tinyLib["default"].bs.button('secondary m-2').text('Private').on('click', function () {
+                tinyHr.removeClass('d-none');
+                startTinyMap('private');
+              }))]
+            });
+          }));
+
+          // Online Mode options
+          if (!canUsejsStore) {
+            leftMenu.push($('<h5>').text('Online'));
+            leftMenu.push(createButtonSidebar('fas fa-users', 'Room settings', function () {
+              if (tinyIo.client) {
+                var room = tinyIo.client.getRoom() || {};
+                var ratelimit = tinyIo.client.getRateLimit() || {
+                  size: {},
+                  limit: {}
+                };
+                var user = tinyIo.client.getUser() || {};
+                var cantEdit = room.ownerId !== tinyIo.client.getUserId() && !user.isOwner;
+                var $root = $('<div>');
+                var $formContainer = $('<div>').addClass('mb-4');
+                var $editError = $('<div>').addClass('text-danger small mt-2');
+                var $deleteError = $('<div>').addClass('text-danger small mt-2');
+
+                // ─── Edit room ───────────────────────────────
+                var $editForm = $('<form>').addClass('mb-4');
+                $editForm.append($('<h5>').text('Edit Room Info'));
+                var $roomId = $('<input>').attr({
+                  type: 'text',
+                  id: 'roomId',
+                  placeholder: 'Enter new room title',
+                  maxLength: ratelimit.size.roomId
+                }).prop('disabled', true).addClass('form-control').addClass('form-control').val(tinyIo.client.getRoomId());
+                var $roomTitle = $('<input>').attr({
+                  type: 'text',
+                  id: 'roomTitle',
+                  placeholder: 'Enter new room title',
+                  maxLength: ratelimit.size.roomTitle
+                }).addClass('form-control').val(room.title).prop('disabled', cantEdit);
+                $editForm.append($('<div>').addClass('row mb-3').append($('<div>').addClass('col-md-6').append($('<label>').attr('for', 'roomId').addClass('form-label').text('Room ID'), $roomId), $('<div>').addClass('col-md-6').append($('<label>').attr('for', 'roomTitle').addClass('form-label').text('Room Title'), $roomTitle)));
+
+                // Max users
+                $editForm.append($('<div>').addClass('mb-3').append($('<label>').attr('for', 'maxUsers').addClass('form-label').text('Max Users'), $('<input>').attr({
+                  type: 'number',
+                  id: 'maxUsers',
+                  min: 1,
+                  max: ratelimit.limit.roomUsers,
+                  placeholder: 'Maximum number of users'
+                }).addClass('form-control').val(room.maxUsers).prop('disabled', cantEdit)));
+
+                // New password
+                $editForm.append($('<div>').addClass('mb-3').append($('<label>').attr('for', 'roomPassword').addClass('form-label').text('New Room Password'), $('<input>').attr({
+                  type: 'password',
+                  id: 'roomPassword',
+                  placeholder: 'Leave empty to keep current password',
+                  maxLength: ratelimit.size.password
+                }).addClass('form-control').prop('disabled', cantEdit)));
+
+                // Submit
+                $editForm.append($('<button>').attr('type', 'submit').addClass('btn btn-primary').text('Save Changes').prop('disabled', cantEdit));
+
+                // ─── Delete room ─────────────────────────────
+                var $deleteSection = $('<div>').addClass('border-top pt-4');
+                $deleteSection.append($('<h5>').addClass('text-danger').text('Delete Room'), $('<p>').addClass('text-muted mb-2').html('This action <strong>cannot be undone</strong>. Deleting this room will remove all its data permanently.'));
+                var $deleteForm = $('<form>').addClass('d-flex flex-column gap-2');
+
+                // Your password
+                $deleteForm.append($('<div>').append($('<label>').attr('for', 'ownerPassword').addClass('form-label').text('Enter your current password to confirm:'), $('<input>').attr({
+                  type: 'password',
+                  id: 'ownerPassword',
+                  placeholder: 'Current account password',
+                  maxLength: ratelimit.size.password
+                }).addClass('form-control').prop('disabled', cantEdit)));
+
+                // Delete now
+                $deleteForm.append($('<button>').attr('type', 'submit').addClass('btn btn-danger mt-2').text('Delete Room Permanently').prop('disabled', cantEdit));
+                $deleteSection.append($deleteForm);
+
+                // ─── Container time ───────────────────────────────
+                $formContainer.append($editForm, $deleteSection);
+
+                // ─── Add into the DOM ───
+                $root.append($formContainer);
+                $editForm.append($editError);
+                $deleteForm.append($deleteError);
+
+                // Start modal
+                var modal = _tinyLib["default"].modal({
+                  title: 'Room Settings',
+                  dialog: 'modal-lg',
+                  id: 'user-manager',
+                  body: $root
+                });
+                $editForm.on('submit', function (e) {
+                  e.preventDefault();
+                  if (!cantEdit) {
+                    $editError.empty(); // limpa erros anteriores
+
+                    var title = $roomTitle.val().trim();
+                    var maxUsers = parseInt($editForm.find('#maxUsers').val(), 10);
+                    var password = $editForm.find('#roomPassword').val().trim();
+                    if (Number.isNaN(maxUsers) || maxUsers <= 0) {
+                      $editError.text('Max users must be a positive number.');
+                      return;
+                    }
+                    if (maxUsers > 50) {
+                      $editError.text('Max users cannot exceed 50.');
+                      return;
+                    }
+                    var newSettings = {
+                      title: title,
+                      maxUsers: maxUsers
+                    };
+                    if (typeof password === 'string' && password.length > 0) newSettings.password = password;
+                    modal.modal('hide');
+                    tinyIo.client.updateRoomSettings(newSettings).then(function (result) {
+                      if (result.error) alert("".concat(result.msg, "\nCode ").concat(result.code));else alert('Your room settings has been changed successfully!');
+                    });
+                  }
+                });
+                $deleteForm.on('submit', function (e) {
+                  e.preventDefault();
+                  if (!cantEdit) {
+                    $deleteError.empty(); // limpa erros anteriores
+
+                    var password = $deleteForm.find('#ownerPassword').val().trim();
+                    if (!password) {
+                      $deleteError.text('Please enter your current password.');
+                      return;
+                    }
+                    if (!confirm('Are you absolutely sure? This cannot be undone.')) return;
+                    modal.modal('hide');
+                    tinyIo.client.deleteRoom(password).then(function (result) {
+                      if (result.error) alert("".concat(result.msg, "\nCode ").concat(result.code));else alert('Your room has been deleted successfully!');
+                    });
+                  }
+                });
+              }
+            }));
+            leftMenu.push(createButtonSidebar('fas fa-users', 'User manager', function () {
+              if (tinyIo.client) {
+                var $root = $('<div>');
+
+                // Start modal
+                var modal = _tinyLib["default"].modal({
+                  title: 'User manager',
+                  dialog: 'modal-lg',
+                  id: 'user-manager',
+                  body: $root
+                });
+
+                // Start user room data
+                var user = tinyIo.client.getUser() || {};
+                var room = tinyIo.client.getRoom() || {};
+                var userManager = new _RoomUserManagerUI["default"]({
+                  client: tinyIo.client,
+                  currentUserId: user.userId,
+                  isOwner: user.userId === room.ownerId,
+                  root: $root,
+                  users: clone(tinyIo.client.getUsers()),
+                  moderators: []
+                });
+                var mods = tinyIo.client.getMods() || [];
+                var _iterator2 = _createForOfIteratorHelper(mods),
+                  _step2;
+                try {
+                  for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+                    userId = _step2.value;
+                    userManager.promoteModerator(userId);
+                  }
+                } catch (err) {
+                  _iterator2.e(err);
+                } finally {
+                  _iterator2.f();
+                }
+                userManager.setRoomStatus(!room.disabled);
+
+                // Add events
+                var usersAdded = function usersAdded(data) {
+                  return userManager.addUser(data.userId, clone(data.data));
+                };
+                var usersRemoved = function usersRemoved(userId) {
+                  return userManager.removeUser(userId);
+                };
+                var userModUpdated = function userModUpdated(type, userId) {
+                  if (type === 'add') userManager.promoteModerator(userId);
+                  if (type === 'remove') userManager.demoteModerator(userId);
+                };
+                var roomStatusUpdate = function roomStatusUpdate(roomData) {
+                  userManager.setRoomStatus(!roomData.disabled);
+                };
+                tinyIo.client.on('userPing', usersAdded);
+                tinyIo.client.on('userJoined', usersAdded);
+                tinyIo.client.on('userLeft', usersRemoved);
+                tinyIo.client.on('userKicked', usersRemoved);
+                tinyIo.client.on('userBanned', usersRemoved);
+                tinyIo.client.on('roomModChange', userModUpdated);
+                tinyIo.client.on('roomUpdates', roomStatusUpdate);
+
+                // Close modal
+                modal.on('hidden.bs.modal', function () {
+                  tinyIo.client.off('userPing', usersAdded);
+                  tinyIo.client.off('userJoined', usersAdded);
+                  tinyIo.client.off('userLeft', usersRemoved);
+                  tinyIo.client.off('userKicked', usersRemoved);
+                  tinyIo.client.off('userBanned', usersRemoved);
+                  tinyIo.client.off('roomModChange', userModUpdated);
+                  tinyIo.client.off('roomUpdates', roomStatusUpdate);
+                  userManager.destroy();
+                });
+              }
+            }));
+            templateChangeInfo = function templateChangeInfo(id, icon, buttonName, title, labelName, placeHolder, infoName, getInfo, callback) {
+              leftMenu.push(createButtonSidebar(icon, buttonName, function () {
+                // Prepare root
+                var $root = $('<div>');
+                var $card = $('<div>').addClass('card shadow rounded-4');
+                var $cardBody = $('<div>').addClass('card-body');
+                var $inputGroup = $('<div>').addClass('mb-3');
+                var $label = $('<label>').addClass('form-label').attr('for', 'on_edit_tinyinfo').text(labelName);
+                var $input = $('<input>').addClass('form-control').addClass('text-center').attr({
+                  type: 'text',
+                  id: 'on_edit_tinyinfo',
+                  placeholder: placeHolder
+                });
+
+                // Page information
+                var _getInfo = getInfo(),
+                  ratelimit = _getInfo.ratelimit,
+                  userData = _getInfo.userData;
+                $input.attr('maxLength', ratelimit.size[infoName]).val(typeof userData[infoName] === 'string' ? userData[infoName] : '').on('keydown', function (e) {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    $saveBtn.trigger('click');
+                  }
+                });
+                var $saveBtn = _tinyLib["default"].bs.button('primary w-100').text('Save');
+
+                // Build elements
+                $inputGroup.addClass('text-center').append($label, $input);
+                $cardBody.append($inputGroup, $saveBtn);
+                $card.append($cardBody);
+                $root.append($card);
+
+                // Click button event
+                $saveBtn.on('click', function () {
+                  callback($input.val().trim());
+                  modal.modal('hide');
+                });
+
+                // Start modal
+                var modal = _tinyLib["default"].modal({
+                  title: title,
+                  dialog: 'modal-lg',
+                  id: id,
+                  body: $root
+                });
+                modal.on('shown.bs.modal', function () {
+                  $input.trigger('focus');
+                });
+              }));
+            }; // Edit nickname
+            templateChangeInfo('edit-nickname',
+            // Id
+            'fa-solid fa-id-card',
+            // Icon
+            'Edit nickname',
+            // Button name
+            'Edit your Nickname',
+            // Title
+            'Nickname',
+            // Label name
+            'Enter your nickname',
+            // Place Holder
+            'nickname',
+            // Object Name
+            function () {
+              var ratelimit = tinyIo.client.getRateLimit() || {
+                size: {}
+              };
+              var userData = tinyIo.client.getUser() || {};
+              return {
+                ratelimit: ratelimit,
+                userData: userData
+              };
+            }, function (value) {
+              tinyIo.client.changeNickname(value).then(function (result) {
+                if (result.error) alert("".concat(result.msg, "\nCode ").concat(result.code));else alert('Your nickname has been changed successfully!');
+              });
+            });
+            leftMenu.push(createButtonSidebar('fas fa-key', 'Change password', function () {
+              // Root
+              var ratelimit = tinyIo.client.getRateLimit() || {
+                size: {}
+              };
+              var $root = $('<div>');
+
+              // Error place
+              var $errorBox = _tinyLib["default"].bs.alert('danger', '', false).addClass('d-none');
+
+              // Create label and input
+              var createInputGroup = function createInputGroup(labelText, inputId) {
+                var type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'password';
+                var $group = $('<div>').addClass('mb-3');
+                var $label = $('<label>').addClass('form-label').attr('for', inputId).text(labelText);
+                var $input = $('<input>').addClass('form-control').attr({
+                  type: type,
+                  id: inputId,
+                  placeholder: labelText,
+                  maxLength: ratelimit.size.password
+                });
+                $group.append($label, $input);
+                return {
+                  group: $group,
+                  input: $input
+                };
+              };
+              var current = createInputGroup('Current Password', 'current-password');
+              var newPass = createInputGroup('New Password', 'new-password');
+              var confirmPass = createInputGroup('Confirm New Password', 'confirm-password');
+
+              // Change password button
+              var $button = _tinyLib["default"].bs.button('primary').addClass('w-100').text('Change Password');
+
+              // Build all
+              $root.append($errorBox, current.group, newPass.group, confirmPass.group, $button);
+
+              // show error
+              var showError = function showError(msg) {
+                $errorBox.html(msg).removeClass('d-none');
+              };
+
+              // Hide the error when the user starts to type
+              [current.input, newPass.input, confirmPass.input].forEach(function ($input) {
+                $input.on('input', function () {
+                  return $errorBox.addClass('d-none');
+                });
+              });
+
+              // Enter button
+              [current.input, newPass.input, confirmPass.input].forEach(function ($input) {
+                $input.on('keydown', function (e) {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    $button.trigger('click');
+                  }
+                });
+              });
+
+              // Button click
+              $button.on('click', function () {
+                var currentVal = current.input.val().trim();
+                var newVal = newPass.input.val().trim();
+                var confirmVal = confirmPass.input.val().trim();
+                if (!currentVal || !newVal || !confirmVal) {
+                  showError('Please fill in all fields.');
+                  return;
+                }
+                if (newVal !== confirmVal) {
+                  showError('New passwords do not match.');
+                  return;
+                }
+                if (newVal.length < ratelimit.size.minPassword) {
+                  showError("New password must be at least ".concat(ratelimit.size.minPassword, " characters."));
+                  return;
+                }
+
+                // Tiny okay!
+                $errorBox.addClass('d-none');
+                modal.modal('hide');
+                tinyIo.client.changePassword(currentVal, newVal).then(function (result) {
+                  if (result.error) alert("".concat(result.msg, "\nCode ").concat(result.code));else alert('Your password has been changed successfully!');
+                });
+              });
+
+              // Create modal
+              var modal = _tinyLib["default"].modal({
+                title: 'Change Password',
+                dialog: 'modal-lg',
+                id: 'modal-password-change',
+                body: $root
+              });
+              modal.on('shown.bs.modal', function () {
+                current.input.trigger('focus');
+              });
+            }));
+            leftMenu.push(createButtonSidebar('fas fa-user-plus', 'Create account', function () {
+              // Get data
+              var ratelimit = tinyIo.client.getRateLimit() || {
+                size: {}
+              };
+              var userData = tinyIo.client.getUser() || {};
+              if (ratelimit.openRegistration || userData.isAdmin) {
+                // Root container
+                var $root = $('<div>');
+
+                // Error alert box (initially hidden)
+                var $errorBox = _tinyLib["default"].bs.alert('danger', '', false).addClass('d-none');
+
+                // Helper to build input fields
+                var createInputGroup = function createInputGroup(labelText, inputId) {
+                  var maxLength = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+                  var type = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'text';
+                  var $group = $('<div>').addClass('mb-3');
+                  var $label = $('<label>').addClass('form-label').attr('for', inputId).text(labelText);
+                  var $input = $('<input>').addClass('form-control').attr({
+                    maxLength: maxLength,
+                    type: type,
+                    id: inputId,
+                    placeholder: labelText
+                  });
+                  $group.append($label, $input);
+                  return {
+                    group: $group,
+                    input: $input
+                  };
+                };
+
+                // Input fields
+                var user = createInputGroup('User ID (no spaces)', 'register-user-id', ratelimit.size.userId);
+                var pass = createInputGroup('Password', 'register-password', ratelimit.size.password, 'password');
+                var _confirm = createInputGroup('Confirm Password', 'register-confirm-password', ratelimit.size.password, 'password');
+                var nick = createInputGroup('Nickname (optional)', 'register-nickname', ratelimit.size.nickname);
+
+                // Submit button
+                var $button = _tinyLib["default"].bs.button('success').addClass('w-100').text('Create Account');
+
+                // Build the form
+                $root.append($errorBox, user.group, pass.group, _confirm.group, nick.group, $button);
+
+                // Show error message
+                var showError = function showError(msg) {
+                  $errorBox.html(msg).removeClass('d-none');
+                };
+
+                // Clear error when typing
+                [user.input, pass.input, _confirm.input, nick.input].forEach(function ($input) {
+                  $input.on('input', function () {
+                    return $errorBox.addClass('d-none');
+                  });
+                });
+
+                // Handle Enter key
+                [user.input, pass.input, _confirm.input, nick.input].forEach(function ($input) {
+                  $input.on('keydown', function (e) {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      $button.trigger('click');
+                    }
+                  });
+                });
+
+                // Submit action
+                $button.on('click', function () {
+                  var userId = user.input.val().trim();
+                  var password = pass.input.val().trim();
+                  var confirmPassword = _confirm.input.val().trim();
+                  var nickname = nick.input.val().trim();
+                  if (!userId || !password || !confirmPassword) {
+                    showError('User ID and both password fields are required.');
+                    return;
+                  }
+                  if (/\s/.test(userId)) {
+                    showError('User ID must not contain spaces.');
+                    return;
+                  }
+                  if (password.length < ratelimit.size.minPassword) {
+                    showError("Password must be at least ".concat(ratelimit.size.minPassword, " characters long."));
+                    return;
+                  }
+                  if (password !== confirmPassword) {
+                    showError('Passwords do not match.');
+                    return;
+                  }
+
+                  // Tiny okay!
+                  $errorBox.addClass('d-none');
+                  modal.modal('hide');
+                  tinyIo.client.register(userId, password, nickname).then(function (result) {
+                    if (result.error) alert("".concat(result.msg, "\nCode ").concat(result.code));else alert("The new account was successfully created!");
+                  });
+                });
+
+                // Launch modal with focus on first input
+                var modal = _tinyLib["default"].modal({
+                  title: 'Create Account',
+                  dialog: 'modal-lg',
+                  id: 'modal-create-account',
+                  body: $root
+                });
+                modal.on('shown.bs.modal', function () {
+                  user.input.trigger('focus');
+                });
+              }
+
+              // No Perm
+              else _tinyLib["default"].modal({
+                title: 'Create Account',
+                dialog: 'modal-lg',
+                id: 'modal-create-account',
+                body: $('<center>').text('You are not allowed to do this.')
+              });
+            }));
+          }
+
+          // Import
+          leftMenu.push($('<h5>').text('Data'));
+          leftMenu.push.apply(leftMenu, importItems);
+
+          // Export
+          leftMenu.push(createButtonSidebar('fa-solid fa-file-export', 'Export', function () {
+            var exportData = {
+              file: clone(tinyAi.getData()),
+              id: tinyAi.getId()
+            };
+            if (exportData.file) {
+              if (!canSandBox(ficConfigs.selected)) delete exportData.file.systemInstruction;
+              if (exportData.file.file) delete exportData.file.file;
+            }
+            saveAs(new Blob([JSON.stringify(exportData)], {
+              type: 'text/plain'
+            }), "Pony Driland - ".concat(tinyAi.getId(), " - AI Export.json"));
+          }));
+
+          // Downloads
+          leftMenu.push(createButtonSidebar('fa-solid fa-download', 'Downloads', function () {
+            var body = $('<div>');
+            body.append($('<h3>').text("Download Content").prepend(_tinyLib["default"].icon('fa-solid fa-download me-3')).append(_tinyLib["default"].bs.button('info btn-sm ms-3').text('Save As all chapters').on('click', function () {
+              return (0, _start.saveRoleplayFormat)();
+            })), $('<h5>').text("Here you can download the official content of fic to produce unofficial content dedicated to artificial intelligence.").append($('<br/>'), $('<small>').text('Remember that you are downloading the uncensored version.')));
+            for (var i = 0; i < storyData.chapter.amount; i++) {
+              // Chapter Number
+              var chapter = String(i + 1);
+
+              // Add Chapter
+              body.append($('<div>', {
+                "class": 'card'
+              }).append($('<div>', {
+                "class": 'card-body'
+              }).append($('<h5>', {
+                "class": 'card-title m-0'
+              }).text("Chapter ".concat(chapter, " - ")).append($('<small>').text(_config["default"].chapterName[chapter].title), $('<a>', {
+                "class": 'btn btn-primary m-2 me-0 btn-sm',
+                href: "/chapter/".concat(chapter, ".html"),
+                chapter: chapter
+              }).on('click', function () {
+                // Save Chapter
+                (0, _start.saveRoleplayFormat)(Number($(this).attr('chapter')));
+
+                // Complete
+                return false;
+              }).text('Save as')))));
+            }
+            body.append($('<p>', {
+              "class": 'm-0'
+            }).text("This content is ready for AI to know which lines of text, chapters, day number, weather, location on any part of the fic you ask. The website script will convert all content to be easily understood by AI languages."));
+            _tinyLib["default"].modal({
+              id: 'ai_downloads',
+              title: 'AI Downloads',
+              dialog: 'modal-lg',
+              body: body
+            });
+          }));
+
+          // Donate
+          leftMenu.push($('<h5>').text('Donate'));
+          leftMenu.push(createButtonSidebar('fas fa-donate', 'Donate <3', function () {
+            var $container = $('<div>').addClass('text-center');
+            $container.append($('<p>', {
+              "class": 'made-by-ai'
+            }).html('This project took <strong>months of dedication</strong> and many <em>sleepless nights</em>.'));
+            $container.append($('<p>', {
+              "class": 'made-by-ai m-0'
+            }).html('If you enjoyed all the love and effort I put into this <strong>super AI roleplay project</strong>,'));
+            $container.append($('<p>', {
+              "class": 'made-by-ai'
+            }).html('I warmly invite you to support it with a <strong>voluntary donation</strong>'));
+            $container.append($('<p>', {
+              "class": 'made-by-ai m-0'
+            }).html('I accept both <strong>traditional currencies</strong> and <strong>cryptocurrencies</strong> as donation methods'));
+            $container.append($('<p>', {
+              "class": 'made-by-ai'
+            }).html('Thank you for helping this tiny magical project grow! 🎁💕'));
+            var patreonNames = ['Jimm'];
+            var $thankYouBox = $('<div>').addClass('patreon-thankyou');
+            var $thankYouText = $('<p>').text('Tiny magic moment to thank these magical patreons which supports the tiny fic:');
+            var $ul = $('<ul>', {
+              "class": 'list-unstyled'
+            });
+            patreonNames.forEach(function (name) {
+              var $nameSpan = $('<span>').addClass('magic-name').text(name);
+              var $li = $('<li>').append($nameSpan);
+              $ul.append($li);
+            });
+            $thankYouBox.append($thankYouText, $ul);
+            $container.append($thankYouBox);
+            _tinyLib["default"].modal({
+              title: 'Tiny Donations!',
+              dialog: 'modal-lg',
+              id: 'modal-donate',
+              body: $container.append($('<div>', {
+                "class": 'donation-highlight'
+              }).append($('<img>', {
+                "class": 'd-block w-100',
+                src: '/img/ai-example/2025-04-09_06-48.jpg'
+              })))
+            });
+          }));
+
+          // Left
+          connectionInfoBar = $('<span>');
+          sidebarLeft = $('<div>', sidebarStyle).removeClass('d-md-block').removeClass('p-3').addClass('d-md-flex').addClass('flex-column').addClass('py-0').append($('<ul>', {
+            "class": 'list-unstyled flex-grow-1 overflow-auto mb-0 pt-3 px-3'
+          }).append($('<li>', {
+            id: 'ai-mode-list',
+            "class": 'mb-3'
+          }).append(leftMenu),
+          // Tiny information
+          $('<div>', {
+            "class": 'small text-grey p-2 bg-dark position-sticky bottom-0 pt-0'
+          }).append($('<hr/>', {
+            "class": 'border-white mt-0 mb-2'
+          }), connectionInfoBar, $('<span>').text('AI makes mistakes, so double-check it. AI does not replace the fic literature (Careful! AI can type spoilers!).')))); // Right
+          sidebarSettingTemplate = {
+            span: {
+              "class": 'pb-2 d-inline-block'
+            }
+          };
+          sidebarRightBase = {
+            // Model Selector
+            modelSelector: $('<div>', {
+              "class": 'form-floating',
+              title: 'The AI model used here'
+            }).append(modelSelector, $('<label>', {
+              "for": 'select-ai-model'
+            }).text('Select AI Model').prepend(_tinyLib["default"].icon("fa-solid fa-atom me-2"))),
+            // Token Counter
+            tokenCounter: $('<div>', {
+              "class": 'mt-3',
+              title: 'Counts how many tokens are used for the content generation'
+            }).append($('<span>').text('Token count').prepend(_tinyLib["default"].icon("fa-solid fa-magnifying-glass me-2")), $('<div>', {
+              "class": 'mt-1 small'
+            }).append(tokenCount.amount, $('<span>', {
+              "class": 'mx-1'
+            }).text('/'), tokenCount.total)),
+            // Temperature
+            temperature: $('<div>', {
+              "class": 'mt-3',
+              title: 'Creativity allowed in the responses'
+            }).append($('<span>', sidebarSettingTemplate.span).text('Temperature').prepend(_tinyLib["default"].icon("fa-solid fa-temperature-three-quarters me-2")), temperature.insert()),
+            // Output Length
+            outputLength: $('<div>', {
+              "class": 'mt-3',
+              title: 'Maximum number of tokens in response'
+            }).append($('<span>', sidebarSettingTemplate.span).text('Output length').prepend(_tinyLib["default"].icon("fa-solid fa-comment me-2")), outputLength),
+            // Top P
+            topP: $('<div>', {
+              "class": 'mt-3',
+              title: 'The maximum cumulative probability of tokens to consider when sampling'
+            }).append($('<span>', sidebarSettingTemplate.span).text('Top P').prepend(_tinyLib["default"].icon("fa-solid fa-percent me-2")), topP.insert()),
+            // Top K
+            topK: $('<div>', {
+              "class": 'mt-3',
+              title: 'The maximum number of tokens to consider when sampling'
+            }).append($('<span>', sidebarSettingTemplate.span).text('Top K').prepend(_tinyLib["default"].icon("fa-solid fa-0 me-2")), topK.insert()),
+            // Presence penalty
+            presencePenalty: $('<div>', {
+              "class": 'mt-3',
+              title: "Presence penalty applied to the next token's logprobs if the token has already been seen in the response"
+            }).append($('<span>', sidebarSettingTemplate.span).text('Presence penalty').prepend(_tinyLib["default"].icon("fa-solid fa-hand me-2")), presencePenalty.insert()),
+            // Frequency penalty
+            frequencyPenalty: $('<div>', {
+              "class": 'mt-3',
+              title: "Frequency penalty applied to the next token's logprobs, multiplied by the number of times each token has been seen in the respponse so far"
+            }).append($('<span>', sidebarSettingTemplate.span).text('Frequency penalty').prepend(_tinyLib["default"].icon("fa-solid fa-hand me-2")), frequencyPenalty.insert())
+          }; // Active tooltip
+          sidebarRightBase.tokenCounter.tooltip();
+          sidebarRightBase.temperature.tooltip();
+          sidebarRightBase.outputLength.tooltip();
+          sidebarRightBase.topP.tooltip();
+          sidebarRightBase.topK.tooltip();
+          sidebarRightBase.presencePenalty.tooltip();
+          sidebarRightBase.frequencyPenalty.tooltip();
+
+          // Models list
+          updateModelList = function updateModelList() {
+            if (!tinyAiScript.noai && !tinyAiScript.mpClient) {
+              var models = tinyAi.getModelsList();
+              resetModelSelector();
+              if (models.length > 0) {
+                // Insert model
+                var insertItem = function insertItem(id, displayName) {
+                  var disabled = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+                  return modelSelector.append($('<option>', {
+                    value: id
+                  }).prop('disabled', disabled).text(displayName));
+                };
+
+                // Get models
+                for (var _index11 in models) {
+                  // Normal insert
+                  if (!models[_index11].category && !Array.isArray(models[_index11].data)) insertItem(models[_index11].id, models[_index11].displayName);
+                  // Category insert
+                  else {
+                    // Category
+                    insertItem(models[_index11].category, models[_index11].displayName || models[_index11].category, true);
+
+                    // Category items
+                    for (var index2 in models[_index11].data) {
+                      insertItem(models[_index11].data[index2].id, models[_index11].data[index2].displayName);
+                    }
+                  }
+                }
+
+                // New model value
+                modelSelector.val(_start.tinyLs.getItem('tiny-ai-storage-model-selected') || tinyAi.getModel());
+                modelSelector.trigger('change');
+              }
+            }
+          };
+          insertDefaultSettings = function insertDefaultSettings(model, newModel) {
+            tinyAi.setModel(newModel, ficConfigs.selected);
+            presencePenalty.disable();
+            frequencyPenalty.disable();
+            tokenCount.updateValue('total', model.inputTokenLimit);
+            outputLength.val(model.outputTokenLimit).prop('disabled', false).removeClass('disabled').trigger('input');
+            var maxTemperature = typeof model.maxTemperature === 'number' ? model.maxTemperature : 2;
+            temperature.setMin(0).setStep(0.05).setMax(maxTemperature).enable();
+            if (temperature.val() > maxTemperature) temperature.val(maxTemperature);
+            temperature.trigger('input');
+            if (typeof model.topP === 'number') topP.val(model.topP).setMax(1).setMin(0).setStep(0.05).enable().trigger('input');else topP.reset().disable();
+            if (typeof model.topK === 'number') topK.val(model.topK).setMax(100).setMin(0).setStep(1).enable().trigger('input');else topK.reset().disable();
+          };
+          selectModel = function selectModel(newModel) {
+            var ignoreTokenUpdater = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+            if (!tinyAiScript.noai && !tinyAiScript.mpClient) {
+              var model = tinyAi.getModelData(newModel);
+              if (model) {
+                insertDefaultSettings(model, newModel);
+                _start.tinyLs.setItem('tiny-ai-storage-model-selected', newModel);
+                if (tinyAi.getData()) tinyAi.setModel(newModel, ficConfigs.selected);
+              } else {
+                tokenCount.total.text(0);
+                temperature.reset().disable();
+                outputLength.val(0).prop('disabled', true).addClass('disabled');
+                topP.reset().disable();
+                topK.reset().disable();
+                presencePenalty.reset().disable();
+                frequencyPenalty.reset().disable();
+                _start.tinyLs.removeItem('tiny-ai-storage-model-selected');
+              }
+              if (!isFirstTime && !ignoreTokenUpdater && !modelSelector.prop('disabled')) updateAiTokenCounterData(undefined, true);
+            }
+          };
+          modelSelector.on('change', function () {
+            return selectModel(modelSelector.val());
+          });
+
+          // Load more models
+          loadMoreModels = createButtonSidebar('fa-solid fa-bars-progress', 'Load more models', /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee9() {
+            return _regenerator().w(function (_context9) {
+              while (1) switch (_context9.n) {
+                case 0:
+                  if (!(!tinyAiScript.noai && !tinyAiScript.mpClient)) {
+                    _context9.n = 2;
+                    break;
+                  }
+                  _circleLoader.Loader.start();
+                  _context9.n = 1;
+                  return tinyAi.getModels(100);
+                case 1:
+                  if (!tinyAi._nextModelsPageToken) {
+                    loadMoreModels.addClass('disabled');
+                    loadMoreModels.prop('disabled', true);
+                  }
+                  updateModelList();
+                  _circleLoader.Loader.close();
+                case 2:
+                  return _context9.a(2);
+              }
+            }, _callee9);
+          })), !tinyAi._nextModelsPageToken);
+          resetSettingsButton = createButtonSidebar('fa-solid fa-rotate-right', 'Reset default settings', function () {
+            var model = tinyAi.getModelData(modelSelector.val());
+            if (model) {
+              temperature.val(1);
+              insertDefaultSettings(model, modelSelector.val());
+            }
+          });
+          contentEnabler.setResetSettingsButton(resetSettingsButton);
+          sidebarRight = $('<div>', sidebarStyle).append($('<ul>', {
+            "class": 'list-unstyled'
+          }).append($('<h5>').text('Run Settings'), sidebarRightBase.modelSelector, sidebarRightBase.tokenCounter, sidebarRightBase.temperature, sidebarRightBase.outputLength, sidebarRightBase.topP, sidebarRightBase.topK, sidebarRightBase.presencePenalty, sidebarRightBase.frequencyPenalty, $('<hr/>', {
+            "class": 'm-2'
+          }),
+          // Load more models
+          loadMoreModels,
+          // Reset Settings
+          resetSettingsButton)); // Execute messages
+          prepareContentList = function prepareContentList() {
+            var addIndexList = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+            // Prepare history
+            var history = tinyAi.getData();
+            var content = [];
+            var indexList = [];
+            var systemData = null;
+            var fileData = null;
+            var promptData = null;
+            var rpgContentData = null;
+            var rpgPrivateContentData = null;
+            var rpgSchema = null;
+            if (history) {
+              // RPG Data
+              var canPublicRPG = rpgData.allowAiUse["public"] && (0, _tinyEssentials.objType)(history.rpgData, 'object') && (0, _tinyEssentials.countObj)(history.rpgData) > 0;
+              var canPrivateRPG = rpgData.allowAiUse["private"] && (0, _tinyEssentials.objType)(history.rpgPrivateData, 'object') && (0, _tinyEssentials.countObj)(history.rpgPrivateData) > 0;
+              var existsRpgSchema = (0, _tinyEssentials.objType)(rpgData.template.schema, 'object') && (0, _tinyEssentials.countObj)(rpgData.template.schema) > 0;
+              var canPublicSchemaRPG = rpgData.allowAiSchemaUse["public"] && existsRpgSchema;
+              var canPrivateSchemaRPG = rpgData.allowAiSchemaUse["private"] && existsRpgSchema;
+
+              // System Instruction
+              if (typeof history.systemInstruction === 'string' && history.systemInstruction.length > 0) {
+                var extraInfo = '';
+                if (canPublicRPG || canPrivateRPG) extraInfo += "\n".concat(_templates["default"].helpers.ficRpgChecker);
+                systemData = {
+                  role: 'system',
+                  parts: [{
+                    text: "".concat(history.systemInstruction).concat(extraInfo)
+                  }]
+                };
+                content.push(systemData);
+              }
+
+              // File
+              if (history.file) {
+                fileData = {
+                  role: 'user',
+                  parts: [{
+                    inlineData: {
+                      mime_type: history.file.mime,
+                      data: history.file.base64
+                    }
+                  }]
+                };
+                content.push(fileData);
+              }
+
+              // RPG Data
+              if ((canPublicRPG || canPrivateRPG) && (canPublicSchemaRPG || canPrivateSchemaRPG)) {
+                var tinyRpgData = clone(rpgData.template.schema);
+                if (typeof tinyRpgData.properties.allowAiUse !== 'undefined') delete tinyRpgData.properties.allowAiUse;
+                if (typeof tinyRpgData.properties.allowAiSchemaUse !== 'undefined') delete tinyRpgData.properties.allowAiSchemaUse;
+                var tinyText = '---------- RPG User Official Data ----------\n\n';
+                tinyText += JSON.stringify({
+                  schema: tinyRpgData
+                });
+                tinyText += '\n\n---------- The User end RPG Official Data ----------';
+                rpgSchema = {
+                  role: 'user',
+                  parts: [{
+                    text: tinyText
+                  }]
+                };
+                content.push(rpgSchema);
+              }
+
+              // Public RPG
+              if (canPublicRPG) {
+                rpgData.oldHash["public"] = tinyAi.getHash('rpgData');
+                var _tinyRpgData = clone(history.rpgData);
+                if (typeof _tinyRpgData.allowAiUse !== 'undefined') delete _tinyRpgData.allowAiUse;
+                var _tinyText = '---------- RPG User Official Data ----------\n\n';
+                _tinyText += JSON.stringify({
+                  database: _tinyRpgData
+                });
+                _tinyText += '\n\n---------- The User end RPG Official Data ----------';
+                rpgContentData = {
+                  role: 'user',
+                  parts: [{
+                    text: _tinyText
+                  }]
+                };
+                content.push(rpgContentData);
+              }
+
+              // Private RPG
+              if (canPrivateRPG) {
+                rpgData.oldHash["private"] = tinyAi.getHash('rpgPrivateData');
+                var _tinyRpgData2 = clone(history.rpgPrivateData);
+                if (typeof _tinyRpgData2.allowAiUse !== 'undefined') delete _tinyRpgData2.allowAiUse;
+                var _tinyText2 = '---------- RPG Official Data ----------\n\n';
+                _tinyText2 += JSON.stringify({
+                  database: _tinyRpgData2
+                });
+                _tinyText2 += '\n\n---------- The end RPG Official Data ----------';
+                rpgPrivateContentData = {
+                  role: 'user',
+                  parts: [{
+                    text: _tinyText2
+                  }]
+                };
+                content.push(rpgPrivateContentData);
+              }
+
+              // Prompt
+              if (typeof history.prompt === 'string' && history.prompt.length > 0) {
+                promptData = {
+                  role: 'user',
+                  parts: [{
+                    text: history.prompt
+                  }]
+                };
+                content.push(promptData);
+              }
+
+              // History data
+              for (var _index12 in history.data) {
+                if (addIndexList) indexList.push(history.data[_index12]);
+                content.push(history.data[_index12]);
+              }
+            }
+            return {
+              content: content,
+              indexList: indexList,
+              systemData: systemData,
+              promptData: promptData,
+              fileData: fileData,
+              rpgContentData: rpgContentData,
+              rpgPrivateContentData: rpgPrivateContentData,
+              rpgSchema: rpgSchema
+            };
+          };
+          getAiTokens = function getAiTokens() {
+            var hashItems = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+              data: []
+            };
+            var forceUpdate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+            return new Promise(/*#__PURE__*/function () {
+              var _ref7 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee1(resolve, reject) {
+                var _prepareContentList, content, indexList, systemData, promptData, fileData, rpgContentData, rpgPrivateContentData, rpgSchema, updateTokenData, systemCheck, _loop4, _index13, _t, _t2, _t3;
+                return _regenerator().w(function (_context10) {
+                  while (1) switch (_context10.n) {
+                    case 0:
+                      _context10.p = 0;
+                      _prepareContentList = prepareContentList(true), content = _prepareContentList.content, indexList = _prepareContentList.indexList, systemData = _prepareContentList.systemData, promptData = _prepareContentList.promptData, fileData = _prepareContentList.fileData, rpgContentData = _prepareContentList.rpgContentData, rpgPrivateContentData = _prepareContentList.rpgPrivateContentData, rpgSchema = _prepareContentList.rpgSchema;
+                      if (!(content.length > 0)) {
+                        _context10.n = 16;
+                        break;
+                      }
+                      // Get tokens data
+                      updateTokenData = /*#__PURE__*/function () {
+                        var _ref8 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee0(name, contentToCheck) {
+                          var hash,
+                            oldHash,
+                            tinyTokens,
+                            callback,
+                            newTokens,
+                            newToken,
+                            _args0 = arguments;
+                          return _regenerator().w(function (_context0) {
+                            while (1) switch (_context0.n) {
+                              case 0:
+                                hash = _args0.length > 2 && _args0[2] !== undefined ? _args0[2] : null;
+                                oldHash = _args0.length > 3 && _args0[3] !== undefined ? _args0[3] : null;
+                                tinyTokens = _args0.length > 4 && _args0[4] !== undefined ? _args0[4] : {
+                                  count: null
+                                };
+                                callback = _args0.length > 5 ? _args0[5] : undefined;
+                                if (!(!tinyAiScript.noai && !tinyAiScript.mpClient)) {
+                                  _context0.n = 3;
+                                  break;
+                                }
+                                if (!(forceUpdate && contentToCheck ||
+                                // Exist content to check tokens
+                                hash && contentToCheck && (
+                                // Model
+                                typeof hashItems.model === 'string' && hashItems.model !== objHash(tinyAi.getModel()) ||
+                                // Hash
+                                typeof oldHash === 'string' && oldHash !== hash ||
+                                // Token Count
+                                typeof tinyTokens.count !== 'number' || Number.isNaN(tinyTokens.count) || !Number.isFinite(tinyTokens.count) || tinyTokens.count < 1) &&
+                                // Callback
+                                typeof callback === 'function')) {
+                                  _context0.n = 2;
+                                  break;
+                                }
+                                console.log("[tiny-ai] Executing token counter in \"".concat(name, "\"."));
+                                _context0.n = 1;
+                                return tinyAi.countTokens(Array.isArray(contentToCheck) ? contentToCheck : [contentToCheck]);
+                              case 1:
+                                newTokens = _context0.v;
+                                newToken = newTokens && typeof newTokens.totalTokens === 'number' ? newTokens.totalTokens : null;
+                                if (typeof newToken === 'number') callback(newToken);
+                              case 2:
+                                _context0.n = 4;
+                                break;
+                              case 3:
+                                callback(0);
+                              case 4:
+                                return _context0.a(2);
+                            }
+                          }, _callee0);
+                        }));
+                        return function updateTokenData(_x5, _x6) {
+                          return _ref8.apply(this, arguments);
+                        };
+                      }(); // RPG
+                      if (!((rpgData.allowAiUse["public"] || rpgData.allowAiUse["private"]) && (rpgData.allowAiSchemaUse["public"] || rpgData.allowAiSchemaUse["private"]))) {
+                        _context10.n = 2;
+                        break;
+                      }
+                      _context10.n = 1;
+                      return updateTokenData('rpgSchema', rpgSchema, tinyAi.getHash('rpgSchema'), typeof hashItems.rpgSchema === 'string' ? hashItems.rpgSchema : null, {
+                        count: tinyAi.getTokens('rpgSchema')
+                      }, function (newCount) {
+                        return tinyAi.setCustomValue('rpgSchema', null, newCount);
+                      });
+                    case 1:
+                      _context10.n = 3;
+                      break;
+                    case 2:
+                      tinyAi.setCustomValue('rpgSchema', null, 0);
+                    case 3:
+                      if (!rpgData.allowAiUse["public"]) {
+                        _context10.n = 5;
+                        break;
+                      }
+                      _context10.n = 4;
+                      return updateTokenData('rpgData', rpgContentData, tinyAi.getHash('rpgData'), typeof hashItems.rpgData === 'string' ? hashItems.rpgData : null, {
+                        count: tinyAi.getTokens('rpgData')
+                      }, function (newCount) {
+                        return tinyAi.setCustomValue('rpgData', null, newCount);
+                      });
+                    case 4:
+                      _context10.n = 6;
+                      break;
+                    case 5:
+                      tinyAi.setCustomValue('rpgData', null, 0);
+                    case 6:
+                      if (!rpgData.allowAiUse["private"]) {
+                        _context10.n = 8;
+                        break;
+                      }
+                      _context10.n = 7;
+                      return updateTokenData('rpgPrivateData', rpgPrivateContentData, tinyAi.getHash('rpgPrivateData'), typeof hashItems.rpgPrivateData === 'string' ? hashItems.rpgPrivateData : null, {
+                        count: tinyAi.getTokens('rpgPrivateData')
+                      }, function (newCount) {
+                        return tinyAi.setCustomValue('rpgPrivateData', null, newCount);
+                      });
+                    case 7:
+                      _context10.n = 9;
+                      break;
+                    case 8:
+                      tinyAi.setCustomValue('rpgPrivateData', null, 0);
+                    case 9:
+                      _context10.n = 10;
+                      return updateTokenData('prompt', promptData, tinyAi.getHash('prompt'), typeof hashItems.prompt === 'string' ? hashItems.prompt : null, {
+                        count: tinyAi.getTokens('prompt')
+                      }, function (newCount) {
+                        return tinyAi.setPrompt(null, newCount);
+                      });
+                    case 10:
+                      _context10.n = 11;
+                      return updateTokenData('file', fileData, tinyAi.getHash('file'), typeof hashItems.file === 'string' ? hashItems.file : null, {
+                        count: tinyAi.getTokens('file')
+                      }, function (newCount) {
+                        return tinyAi.setFileData(null, null, false, newCount);
+                      });
+                    case 11:
+                      // System Instruction
+                      systemCheck = clone(systemData);
+                      if (systemCheck) systemCheck.role = 'user';
+                      _context10.n = 12;
+                      return updateTokenData('systemInstruction', systemCheck, tinyAi.getHash('systemInstruction'), typeof hashItems.systemInstruction === 'string' ? hashItems.systemInstruction : null, {
+                        count: tinyAi.getTokens('systemInstruction')
+                      }, function (newCount) {
+                        return tinyAi.setSystemInstruction(null, newCount);
+                      });
+                    case 12:
+                      _loop4 = /*#__PURE__*/_regenerator().m(function _loop4(_index13) {
+                        return _regenerator().w(function (_context1) {
+                          while (1) switch (_context1.n) {
+                            case 0:
+                              _context1.n = 1;
+                              return updateTokenData('message', indexList[_index13], tinyAi.getMsgHashByIndex(_index13), typeof hashItems.data[_index13] === 'string' ? hashItems.data[_index13] : null, tinyAi.getMsgTokensByIndex(_index13) || {
+                                count: null
+                              }, function (newCount) {
+                                return tinyAi.replaceIndex(_index13, null, {
+                                  count: newCount
+                                });
+                              });
+                            case 1:
+                              return _context1.a(2);
+                          }
+                        }, _loop4);
+                      });
+                      _t = _regeneratorKeys(indexList);
+                    case 13:
+                      if ((_t2 = _t()).done) {
+                        _context10.n = 15;
+                        break;
+                      }
+                      _index13 = _t2.value;
+                      return _context10.d(_regeneratorValues(_loop4(_index13)), 14);
+                    case 14:
+                      _context10.n = 13;
+                      break;
+                    case 15:
+                      resolve(!tinyAiScript.noai && !tinyAiScript.mpClient ? tinyAi.getTotalTokens() : 0);
+                      _context10.n = 17;
+                      break;
+                    case 16:
+                      resolve(0);
+                    case 17:
+                      _context10.n = 19;
+                      break;
+                    case 18:
+                      _context10.p = 18;
+                      _t3 = _context10.v;
+                      reject(_t3);
+                    case 19:
+                      return _context10.a(2);
+                  }
+                }, _callee1, null, [[0, 18]]);
+              }));
+              return function (_x3, _x4) {
+                return _ref7.apply(this, arguments);
+              };
+            }());
+          }; // Get Ai Tokens
+          usingUpdateToken = false;
+          updateAiTokenCounterData = function updateAiTokenCounterData(hashItems) {
+            var forceReset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+            if (!usingUpdateToken) {
+              usingUpdateToken = true;
+              var history = tinyAi.getData();
+              if (history) {
+                contentEnabler.deBase();
+                contentEnabler.deModelChanger();
+                contentEnabler.dePromptButtons();
+                contentEnabler.deModel();
+                contentEnabler.deMessageButtons();
+                var oldMsgInput = msgInput.val();
+                var points = '.';
+                var secondsWaiting = -1;
+                var loadingMoment = function loadingMoment() {
+                  points += '.';
+                  if (points === '....') points = '.';
+                  secondsWaiting++;
+                  msgInput.val("(".concat(secondsWaiting, "s) Loading model data").concat(points));
+                };
+                var loadingMessage = setInterval(loadingMoment, 1000);
+                loadingMoment();
+                var stopLoadingMessage = function stopLoadingMessage() {
+                  clearInterval(loadingMessage);
+                  msgInput.val(oldMsgInput);
+                  if (sessionEnabled) {
+                    contentEnabler.enBase();
+                    contentEnabler.enModelChanger();
+                    contentEnabler.enPromptButtons();
+                    contentEnabler.enModel();
+                    contentEnabler.enMessageButtons();
+                  }
+                  msgInput.trigger('focus');
+                };
+                getAiTokens(hashItems || undefined, forceReset).then(function (totalTokens) {
+                  if (typeof totalTokens === 'number') tokenCount.updateValue('amount', totalTokens);else tokenCount.updateValue('amount', 0);
+                  stopLoadingMessage();
+                  usingUpdateToken = false;
+                })["catch"](function (err) {
+                  alert(err.message, 'Error: AI tokens getter');
+                  console.error(err);
+                  stopLoadingMessage();
+                  usingUpdateToken = false;
+                });
+              }
+            }
+          }; // Execute AI script
+          executeAi = function executeAi() {
+            var tinyCache = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+            var tinyController = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
+            return new Promise(function (resolve, reject) {
+              var _prepareContentList2 = prepareContentList(),
+                content = _prepareContentList2.content;
+
+              // Insert tokens
+              var amountTokens = {
+                total: null,
+                data: {
+                  candidates: null,
+                  prompt: null,
+                  total: null
+                }
+              };
+              var buildAmountTokens = function buildAmountTokens(tokenUsage) {
+                // Build amount tokens
+                if (tokenUsage) {
+                  // The prompt result amount
+                  if (typeof tokenUsage.count.candidates === 'number') amountTokens.data.candidates = tokenUsage.count.candidates;
+                  if (typeof tokenUsage.count.prompt === 'number') amountTokens.data.prompt = tokenUsage.count.prompt;
+                  if (typeof tokenUsage.count.total === 'number') amountTokens.data.total = tokenUsage.count.total;
+                }
+
+                // Fix total tokens
+                if (typeof amountTokens.total === 'number') tokenCount.updateValue('amount', amountTokens.total);
+                var totalAmountToken = tinyAi.getTotalTokens();
+                if (totalAmountToken > amountTokens.total) tokenCount.updateValue('amount', totalAmountToken);
+              };
+
+              // Insert message
+              var isComplete = false;
+              var insertMessage = function insertMessage(msgData, role, finishReason) {
+                if (!tinyCache.msgBallon) {
+                  tinyCache.msgBallon = makeMessage({
+                    message: msgData,
+                    id: tinyCache.msgId
+                  }, role === 'user' ? null : (0, _tinyEssentials.toTitleCase)(role));
+                  addMessage(tinyCache.msgBallon);
+                } else {
+                  tinyCache.msgBallon.find('.ai-msg-ballon').empty().append(makeMsgRenderer(msgData));
+                  var tinyErrorAlert = tinyCache.msgBallon.data('tiny-ai-error-alert');
+                  if (tinyErrorAlert) tinyErrorAlert.updateText(finishReason);
+                  scrollChatContainerToTop();
+                }
+              };
+
+              // Cancel task
+              var isCanceled = false;
+              tinyCache.cancel = function () {
+                if (!isCanceled) {
+                  if (tinyCache.msgBallon) tinyCache.msgBallon.remove();
+                  if (typeof tinyCache.msgId === 'number' || typeof tinyCache.msgId === 'string') tinyAi.deleteIndex(tinyAi.getIndexOfId(tinyCache.msgId));
+                  completeTask();
+                  isCanceled = true;
+                }
+              };
+
+              // Task complete!
+              var completeTask = function completeTask() {
+                if (typeof tinyCache.msgId !== 'undefined') delete tinyCache.msgId;
+                if (typeof tinyCache.msgBallon !== 'undefined') delete tinyCache.msgBallon;
+                if (typeof tinyCache.cancel !== 'undefined') delete tinyCache.cancel;
+              };
+
+              // Content Generator
+              tinyAi.genContent(content, tinyAi.getModel(), tinyController, function (chuck) {
+                isComplete = chuck.done;
+                // Update tokens
+                buildAmountTokens(chuck.tokenUsage);
+                var promptTokens = amountTokens.data.candidates || 0;
+
+                // Read contents
+                if (chuck.contents) {
+                  for (var _index14 in chuck.contents) {
+                    // Update history
+                    if (typeof tinyCache.msgId === 'undefined') tinyCache.msgId = tinyAi.addData(chuck.contents[_index14], {
+                      count: promptTokens || null
+                    });else tinyAi.replaceIndex(tinyAi.getIndexOfId(tinyCache.msgId), chuck.contents[_index14], {
+                      count: promptTokens || null
+                    });
+
+                    // Send insert request
+                    if (typeof chuck.contents[_index14].parts[0].text === 'string') insertMessage(chuck.contents[_index14].parts[0].text, chuck.contents[_index14].role, chuck.contents[_index14].finishReason);
+
+                    // Update message cache
+                    var oldBallonCache = tinyCache.msgBallon.data('tiny-ai-cache');
+                    oldBallonCache.msg = chuck.contents[_index14].parts[0].text;
+                    tinyCache.msgBallon.data('tiny-ai-cache', oldBallonCache);
+
+                    // Add class
+                    tinyCache.msgBallon.addClass('entering-ai-message');
+                  }
+                }
+
+                // Remove class
+                if (isComplete) {
+                  var notificationError = function notificationError() {
+                    return _start.tinyNotification.send('System', {
+                      body: 'Your message was not processed.'
+                    });
+                  };
+                  if (tinyCache.msgBallon) {
+                    tinyCache.msgBallon.removeClass('entering-ai-message');
+                    var ballonCache = tinyCache.msgBallon.data('tiny-ai-cache');
+                    if ($('body').hasClass('windowHidden')) {
+                      if (ballonCache) _start.tinyNotification.send(ballonCache.role, {
+                        body: ballonCache.msg
+                      });else notificationError();
+                    }
+                  } else if ($('body').hasClass('windowHidden')) notificationError();
+                  completeTask();
+                }
+              }).then(function (result) {
+                if (!result.error) {
+                  // Insert tokens
+                  buildAmountTokens(result.tokenUsage);
+                  var promptTokens = amountTokens.data.candidates || 0;
+
+                  // Insert content
+                  for (var _index15 in result.contents) {
+                    var msg = result.contents[_index15];
+                    if (msg && msg.parts && msg.parts[0] && typeof msg.parts[0].text === 'string' && msg.parts[0].text.length > 0) {
+                      // Update history
+                      if (typeof tinyCache.msgId === 'undefined') tinyCache.msgId = tinyAi.addData(msg, {
+                        count: promptTokens || null
+                      });else tinyAi.replaceIndex(tinyAi.getIndexOfId(tinyCache.msgId), msg, {
+                        count: promptTokens || null
+                      });
+
+                      // Send message request
+                      insertMessage(msg.parts[0].text, msg.role, msg.finishReason);
+
+                      // Update message data
+                      var oldBallonCache = tinyCache.msgBallon.data('tiny-ai-cache');
+                      oldBallonCache.msg = msg.parts[0].text;
+                      tinyCache.msgBallon.data('tiny-ai-cache', oldBallonCache);
+                    }
+                  }
+                }
+
+                // Error
+                else {
+                  console.log("AI Generator Error", result.error);
+                  alert(result.error.message);
+                  if (typeof result.error.message === 'string' && result.error.message.length > 0) _start.tinyNotification.send('Ai Error', {
+                    body: result.error.message
+                  });
+                }
+
+                // Complete
+                completeTask();
+                resolve(result);
+              })["catch"](reject);
+            });
+          }; // Textarea input edition
+          createTextareaInputExition = function createTextareaInputExition() {
+            var minHeight = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 38;
+            var maxHeight = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 150;
+            var moreConfig = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+            var callback = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+            // Create textarea
+            var textarea = $('<textarea>', _objectSpread({
+              style: ["min-height: ".concat(minHeight, "px"), "height: ".concat(minHeight, "px"), "max-height: ".concat(maxHeight, "px") /* Max lines (5 lines = 150px.) */, 'resize: none'].join('; ')
+            }, moreConfig));
+            textarea.on('input', function () {
+              // Reset for minimum height before recalculating
+              var value = textarea.val();
+              var lines = value.split('\n').length;
+              textarea.css('height', 'auto');
+
+              // Get scrollHeight via jQuery
+              var newHeight = textarea.prop('scrollHeight');
+              var height = lines > 1 ? Math.min(newHeight, maxHeight) : minHeight;
+
+              // Defines height, but respects the maximum limit
+              textarea.css('height', "".concat(String(height), "px"));
+              if (typeof callback === 'function') callback({
+                height: height,
+                newHeight: newHeight,
+                lines: lines,
+                value: value
+              });
+            });
+
+            // Complete
+            return textarea;
+          }; // Input
+          msgInputValues = {
+            minHeight: 38,
+            maxHeight: 150
+          };
+          msgInput = createTextareaInputExition(msgInputValues.minHeight, msgInputValues.maxHeight, {
+            "class": 'form-control border-dark',
+            placeholder: 'Type your message...'
+          }, function (inputResult) {
+            var height = inputResult.height,
+              value = inputResult.value;
+            var minHeight = msgInputValues.minHeight;
+
+            // Subtract the new height by the min size to get the exact amount of height created
+            var tinyFinalValue = height - minHeight;
+
+            // Get the current scroll position before adding new content
+            var scrollBefore = chatContainer.scrollTop();
+            var heightBefore = chatContainer.prop('scrollHeight');
+
+            // And use this to correct the size of other elements
+            chatContainer.css('padding-bottom', "".concat(String(tinyFinalValue), "px"));
+            textInputContainer.css({
+              position: 'relative',
+              top: "-".concat(String(tinyFinalValue), "px")
+            });
+
+            // Get the new scroll height after adding content
+            var heightAfter = chatContainer.prop('scrollHeight');
+            var heightDiff = heightAfter - heightBefore;
+
+            // Adjust the scroll position to maintain the user's view
+            chatContainer.scrollTop(scrollBefore + heightDiff);
+
+            // Value
+            _start.tinyLs.setItem("tiny-ai-textarea-".concat(ficConfigs.selected), typeof value === 'string' ? value : '');
+          });
+          contentEnabler.setMsgInput(msgInput);
+
+          // Submit
+          msgSubmit = _tinyLib["default"].bs.button('primary input-group-text-dark').text('Send');
+          contentEnabler.setMsgSubmit(msgSubmit);
+          cancelSubmit = _tinyLib["default"].bs.button('primary input-group-text-dark rounded-end').text('Cancel');
+          contentEnabler.setCancelSubmit(cancelSubmit);
+          submitMessage = /*#__PURE__*/function () {
+            var _ref9 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee11() {
+              var msg, controller, points, secondsWaiting, loadingMoment, loadingMessage, sentId, canContinue;
+              return _regenerator().w(function (_context12) {
+                while (1) switch (_context12.n) {
+                  case 0:
+                    // Prepare to get data
+                    msgInput.trigger('blur');
+                    msg = msgInput.val();
+                    msgInput.val('').trigger('input');
+                    controller = new AbortController();
+                    contentEnabler.deBase();
+                    contentEnabler.deMessageButtons();
+                    contentEnabler.deModelChanger();
+                    contentEnabler.dePromptButtons();
+                    contentEnabler.deModelSelector();
+                    points = '.';
+                    secondsWaiting = -1;
+                    loadingMoment = function loadingMoment() {
+                      points += '.';
+                      if (points === '....') points = '.';
+                      secondsWaiting++;
+                      msgInput.val("(".concat(secondsWaiting, "s) Waiting response").concat(points));
+                    };
+                    loadingMessage = setInterval(loadingMoment, 1000);
+                    loadingMoment();
+
+                    // Add new message
+                    sentId = null;
+                    _context12.n = 1;
+                    return new Promise(/*#__PURE__*/function () {
+                      var _ref0 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee10(resolve) {
+                        var newMsg, newTokens, newToken, _t4, _t5;
+                        return _regenerator().w(function (_context11) {
+                          while (1) switch (_context11.n) {
+                            case 0:
+                              _context11.p = 0;
+                              if (!(typeof msg === 'string' && msg.length > 0)) {
+                                _context11.n = 4;
+                                break;
+                              }
+                              newMsg = tinyAi.buildContents(null, {
+                                role: 'user',
+                                parts: [{
+                                  text: msg
+                                }]
+                              }, 'user');
+                              if (!(!tinyAiScript.noai && !tinyAiScript.mpClient)) {
+                                _context11.n = 2;
+                                break;
+                              }
+                              _context11.n = 1;
+                              return tinyAi.countTokens([newMsg]);
+                            case 1:
+                              _t4 = _context11.v;
+                              _context11.n = 3;
+                              break;
+                            case 2:
+                              _t4 = {
+                                totalTokens: 0
+                              };
+                            case 3:
+                              newTokens = _t4;
+                              newToken = newTokens && typeof newTokens.totalTokens === 'number' ? newTokens.totalTokens : null;
+                              sentId = tinyAi.addData(newMsg, {
+                                count: newToken
+                              });
+                              resolve(true);
+                              _context11.n = 5;
+                              break;
+                            case 4:
+                              resolve(false);
+                            case 5:
+                              _context11.n = 7;
+                              break;
+                            case 6:
+                              _context11.p = 6;
+                              _t5 = _context11.v;
+                              console.error(_t5);
+                              alert(_t5.message);
+                              resolve(false);
+                            case 7:
+                              return _context11.a(2);
+                          }
+                        }, _callee10, null, [[0, 6]]);
+                      }));
+                      return function (_x7) {
+                        return _ref0.apply(this, arguments);
+                      };
+                    }());
+                  case 1:
+                    canContinue = _context12.v;
+                    if (!canContinue) {
+                      _context12.n = 2;
+                      break;
+                    }
+                    contentEnabler.deBase(controller);
+                    addMessage(makeMessage({
+                      message: msg,
+                      id: sentId
+                    }));
+
+                    // Execute Ai
+                    if (!(!tinyAiScript.noai && !tinyAiScript.mpClient && sessionEnabled)) {
+                      _context12.n = 2;
+                      break;
+                    }
+                    _context12.n = 2;
+                    return executeAi(submitCache, controller)["catch"](function (err) {
+                      if (submitCache.cancel) submitCache.cancel();
+                      console.error(err);
+                      alert(err.message);
+                    });
+                  case 2:
+                    // Complete
+                    clearInterval(loadingMessage);
+                    if (sessionEnabled) contentEnabler.enPromptButtons();
+                    msgInput.val('');
+                    if (sessionEnabled) {
+                      contentEnabler.enMessageButtons();
+                      contentEnabler.enBase();
+                      contentEnabler.enModelChanger();
+                      contentEnabler.enModelSelector();
+                    }
+                    msgInput.trigger('focus');
+                  case 3:
+                    return _context12.a(2);
+                }
+              }, _callee11);
+            }));
+            return function submitMessage() {
+              return _ref9.apply(this, arguments);
+            };
+          }();
+          submitCache = {};
+          contentEnabler.setSubmitCache(submitCache);
+          msgSubmit.on('click', /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee12() {
+            return _regenerator().w(function (_context13) {
+              while (1) switch (_context13.n) {
+                case 0:
+                  if (!msgInput.prop('disabled')) submitMessage();
+                case 1:
+                  return _context13.a(2);
+              }
+            }, _callee12);
+          })));
+          msgInput.on('keydown', function (event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+              event.preventDefault();
+              msgSubmit.trigger('click');
+            }
+          });
+
+          // First Dialogue button
+          firstDialogueBase = {
+            base: $('<div>', {
+              "class": 'first-dialogue-base position-absolute  top-50 start-50 translate-middle',
+              style: 'pointer-events: none;'
+            }),
+            button: _tinyLib["default"].bs.button('lg btn-bg d-flex justify-content-center align-items-center').attr('title', 'Insert first dialogue').css({
+              'pointer-events': 'all',
+              height: 150,
+              'font-size': '100px',
+              'background-color': 'transparent !important'
+            })
+          };
+          firstDialogueBase.button.append(_tinyLib["default"].icon('fa-solid fa-circle-play'));
+          firstDialogueBase.button.on('click', function () {
+            enabledFirstDialogue(false);
+            var history = tinyAi.getData();
+
+            // Insert first message
+            if (history && history.data.length < 1 && typeof history.firstDialogue === 'string') {
+              var msgId = tinyAi.addData(tinyAi.buildContents(null, {
+                role: 'model',
+                parts: [{
+                  text: history.firstDialogue
+                }]
+              }, 'model'));
+              addMessage(makeMessage({
+                message: history.firstDialogue,
+                id: msgId
+              }, 'Model'));
+              updateAiTokenCounterData();
+            }
+          });
+          firstDialogueBase.base.append(firstDialogueBase.button);
+
+          // Message List
+          msgList = $('<div>', {
+            "class": 'p-3',
+            style: 'margin-bottom: 55px !important;'
+          });
+          scrollChatContainerToTop = function scrollChatContainerToTop() {
+            var speed = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+            return chatContainer.animate({
+              scrollTop: chatContainer.prop('scrollHeight')
+            }, speed);
+          };
+          addMessage = function addMessage(item) {
+            msgList.append(item);
+            scrollChatContainerToTop();
+          };
+          makeTempMessage = function makeTempMessage(msg, type) {
+            return addMessage(makeMessage({
+              message: msg
+            }, type));
+          }; // Message Maker
+          makeMsgRenderer = function makeMsgRenderer(msg) {
+            var renderer = new marked.Renderer();
+            var _final = '<span class="final-ai-icon">';
+            // | █ ▌▐ _
+
+            // Remove links and html
+            renderer.link = function (href, title, text) {
+              return "<span>".concat(text, "</span>");
+            };
+            renderer.image = function () {
+              return "";
+            };
+            renderer.html = function (data) {
+              if (data.raw !== _final || data.text !== _final) return "";else return "".concat(_final, "\u2588</span>");
+            };
+
+            // Fix del
+            renderer.del = function (data) {
+              if (data.raw.startsWith('~') && data.raw.endsWith('~') && !data.raw.startsWith('~~')) {
+                return data.raw;
+              }
+              return "<del>".concat(data.text, "</del>");
+            };
+
+            // Complete
+            var newMsg = "".concat(msg);
+            while (newMsg.endsWith('\n')) {
+              newMsg = newMsg.slice(0, -1);
+            }
+            while (newMsg.startsWith('\n')) {
+              newMsg = newMsg.slice(1);
+            }
+            return marked.parse("".concat(newMsg).concat(_final).replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ''), {
+              renderer: renderer,
+              breaks: true
+            });
+          };
+          makeMsgWarning = function makeMsgWarning(finishReason) {
+            var textBase = $('<span>');
+            var result = _tinyLib["default"].bs.alert('danger mt-2 mb-0 d-none', [_tinyLib["default"].icon('fas fa-exclamation-triangle me-2'), textBase], true);
+            var updateText = function updateText(errorCode) {
+              var tinyError = tinyAi.getErrorCode(errorCode);
+              if (tinyError && typeof tinyError.text === 'string' && !tinyError.hide) {
+                textBase.text(tinyError.text);
+                result.removeClass('d-none');
+              }
+            };
+            updateText(finishReason);
+            return {
+              textBase: textBase,
+              result: result,
+              updateText: updateText
+            };
+          };
+          makeMessage = function makeMessage() {
+            var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+              message: null,
+              id: -1
+            };
+            var username = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+            // Prepare renderer
+            var tinyCache = {
+              msg: data.message,
+              role: username ? (0, _tinyEssentials.toTitleCase)(username) : 'User'
+            };
+            var msgBase = $('<div>', {
+              "class": "p-3".concat(typeof username !== 'string' ? ' d-flex flex-column align-items-end' : '', " ai-chat-data")
+            });
+            var msgBallon = $('<div>', {
+              "class": "bg-".concat(typeof username === 'string' ? 'secondary d-inline-block' : 'primary', " text-white p-2 rounded ai-msg-ballon")
+            });
+            msgBase.data('tiny-ai-cache', tinyCache);
+            var isIgnore = typeof data.id !== 'number' || data.id < 0;
+            var tinyIndex = tinyAi.getIndexOfId(data.id);
+
+            // Edit message panel
+            var editPanel = $('<div>', {
+              "class": 'ai-text-editor'
+            });
+            editPanel.append(
+            // Edit button
+            !isIgnore && tinyIndex > -1 ? _tinyLib["default"].bs.button('bg btn-sm').append(_tinyLib["default"].icon('fa-solid fa-pen-to-square')).on('click', function () {
+              // Text
+              var textInput = $('<textarea>', {
+                "class": 'form-control'
+              });
+              textInput.val(tinyCache.msg);
+              var oldMsg = tinyCache.msg;
+
+              // Submit
+              var submitButton = _tinyLib["default"].bs.button("".concat(typeof username !== 'string' ? 'secondary d-inline-block' : 'primary', " mt-2 w-100 me-2")).text('Submit');
+              var cancelButton = _tinyLib["default"].bs.button("".concat(typeof username !== 'string' ? 'secondary d-inline-block' : 'primary', " mt-2 w-100")).text('Cancel');
+              var closeReplace = function closeReplace() {
+                msgBallon.removeClass('w-100').empty();
+                msgBallon.append(makeMsgRenderer(tinyCache.msg));
+                var msg = tinyAi.getMsgById();
+                tinyErrorAlert.updateText(msg ? msg.finishReason : null);
+              };
+              submitButton.on('click', function () {
+                tinyCache.msg = textInput.val();
+                var newMsg = tinyCache.msg;
+                if (typeof oldMsg !== 'string' || oldMsg !== newMsg) {
+                  var newContent = tinyAi.getMsgByIndex(tinyIndex);
+                  newContent.parts[0].text = tinyCache.msg;
+                  tinyAi.replaceIndex(tinyIndex, newContent, {
+                    count: null
+                  });
+                  closeReplace();
+                  updateAiTokenCounterData();
+                } else closeReplace();
+              });
+              cancelButton.on('click', function () {
+                return closeReplace();
+              });
+
+              // Complete
+              msgBallon.empty().addClass('w-100').append(textInput, $('<div>', {
+                "class": 'd-flex mx-5'
+              }).append(submitButton, cancelButton));
+            }) : null,
+            // Delete button
+            _tinyLib["default"].bs.button('bg btn-sm').append(_tinyLib["default"].icon('fa-solid fa-trash-can')).on('click', function () {
+              var tinyIndex = tinyAi.getIndexOfId(data.id);
+              if (!isIgnore && tinyIndex > -1) {
+                var tinyTokens = tinyAi.getMsgTokensByIndex(tinyIndex);
+                tinyAi.deleteIndex(tinyIndex);
+                var amount = tokenCount.getValue('amount');
+                tokenCount.updateValue('amount', amount - Number(tinyTokens && tinyTokens.count ? tinyTokens.count : 0));
+              }
+              msgBase.remove();
+              enabledFirstDialogue();
+            }));
+            var msg = tinyAi.getMsgById(data.id);
+            var tinyErrorAlert = makeMsgWarning(msg ? msg.finishReason : null);
+
+            // Send message
+            var msgContent = msgBase.append(editPanel, msgBallon.append(makeMsgRenderer(tinyCache.msg)), $('<div>', {
+              "class": "text-muted small mt-1".concat(typeof username !== 'string' ? ' text-end' : ''),
+              text: typeof username === 'string' ? username : 'User'
+            }), tinyErrorAlert.result);
+            msgContent.data('tiny-ai-error-alert', tinyErrorAlert);
+            return msgContent;
+          }; // Container
+          chatContainer = $('<div>', {
+            id: 'ai-chatbox',
+            "class": 'h-100 body-background',
+            style: 'overflow-y: auto; margin-bottom: -54px;'
+          });
+          contentEnabler.setChatContainer(chatContainer);
+          textInputContainer = $('<div>', {
+            "class": 'input-group pb-3 body-background'
+          }).append(msgInput, cancelSubmit, msgSubmit);
+          container = $('<div>', {
+            "class": 'd-flex h-100 y-100',
+            id: 'ai-element-root'
+          }).append(sidebarLeft,
+          // Main container
+          $('<div>', {
+            "class": 'flex-grow-1 d-flex flex-column'
+          }).append(firstDialogueBase.base, $('<div>', {
+            "class": 'justify-content-center h-100'
+          }).append(
+          // Chat Messages Area
+          chatContainer.append(msgList),
+          // Input Area
+          $('<div>', {
+            "class": 'px-3 d-inline-block w-100'
+          }).append(textInputContainer))), sidebarRight);
+          firstDialogueBase.button.tooltip();
+
+          // Prepare events
+          tinyAi.removeAllListeners('setMaxOutputTokens');
+          tinyAi.removeAllListeners('setTemperature');
+          tinyAi.removeAllListeners('setTopP');
+          tinyAi.removeAllListeners('setTopK');
+          tinyAi.removeAllListeners('setPresencePenalty');
+          tinyAi.removeAllListeners('setFrequencyPenalty');
+          tinyAi.removeAllListeners('setModel');
+          tinyAi.removeAllListeners('selectDataId');
+          tinyAi.removeAllListeners('deleteIndex');
+          tinyAi.removeAllListeners('replaceIndex');
+          tinyAi.removeAllListeners('addData');
+          tinyAi.removeAllListeners('setPrompt');
+          tinyAi.removeAllListeners('setFirstDialogue');
+          tinyAi.removeAllListeners('setFileData');
+          tinyAi.removeAllListeners('setSystemInstruction');
+          tinyAi.removeAllListeners('startDataId');
+          tinyAi.removeAllListeners('stopDataId');
+          tinyAi.removeAllListeners('setRpgSchema');
+          tinyAi.removeAllListeners('setRpgData');
+          tinyAi.removeAllListeners('setRpgPrivateData');
+
+          // tinyAi.on('startDataId', () => {});
+          // tinyAi.on('setFileData', (value) => {});
+
+          // Insert template
+          tinyInsertDb = function tinyInsertDb(where, fData) {
+            return connStore.insert({
+              into: where,
+              upsert: true,
+              values: [fData]
+            })["catch"](console.error);
+          };
+          tinyMsgIdDb = function tinyMsgIdDb(sessionId, id) {
+            return "".concat(sessionId, ":").concat(id);
+          }; // Reset session
+          resetSession = function resetSession(id) {
+            var useReadOnly = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+            return new Promise(function (resolve, reject) {
+              if (canUsejsStore) {
+                if (useReadOnly) {
+                  contentEnabler.dePromptButtons();
+                  contentEnabler.deMessageButtons();
+                  contentEnabler.deBase();
+                  contentEnabler.deModelChanger();
+                  contentEnabler.deModelSelector();
+                }
+                var disableReadOnly = function disableReadOnly() {
+                  if (useReadOnly && sessionEnabled) {
+                    contentEnabler.enPromptButtons();
+                    contentEnabler.enMessageButtons();
+                    contentEnabler.enBase();
+                    contentEnabler.enModelChanger();
+                    contentEnabler.enModelSelector();
+                  }
+                };
+                Promise.all([connStore.remove({
+                  from: 'aiSessionsRoom',
+                  where: {
+                    session: id
+                  }
+                }), connStore.remove({
+                  from: 'aiSessionsHash',
+                  where: {
+                    session: id
+                  }
+                }), connStore.remove({
+                  from: 'aiSessionsTokens',
+                  where: {
+                    session: id
+                  }
+                }), connStore.remove({
+                  from: 'aiSessionsCustomList',
+                  where: {
+                    session: id
+                  }
+                }), connStore.remove({
+                  from: 'aiSessionsData',
+                  where: {
+                    session: id
+                  }
+                })]).then(function (result) {
+                  disableReadOnly();
+                  resolve(result);
+                })["catch"](function (err) {
+                  disableReadOnly();
+                  reject(err);
+                });
+              } else resolve(null);
+            });
+          }; // Save backup
+          saveSessionTimeout = {};
+          saveSessionBackup = function saveSessionBackup(sessionSelected, where) {
+            if (sessionSelected) {
+              var getSessionData = function getSessionData() {
+                // Get session
+                var tinyData = tinyAi.getData();
+                var customList = tinyData.customList;
+                var hash = tinyData.hash;
+                var tokens = tinyData.tokens;
+                var model = tinyAi.getModelData(modelSelector.val()) || {};
+
+                // Room data
+                var roomSaveData = {
+                  model: typeof tinyData.model === 'string' ? tinyData.model : null,
+                  prompt: typeof tinyData.prompt === 'string' ? tinyData.prompt : null,
+                  firstDialogue: typeof tinyData.firstDialogue === 'string' ? tinyData.firstDialogue : null,
+                  systemInstruction: typeof tinyData.systemInstruction === 'string' ? tinyData.systemInstruction : null,
+                  rpgSchema: (0, _tinyEssentials.objType)(tinyData.rpgSchema, 'object') ? tinyData.rpgSchema : null,
+                  rpgData: (0, _tinyEssentials.objType)(tinyData.rpgData, 'object') ? tinyData.rpgData : null,
+                  rpgPrivateData: (0, _tinyEssentials.objType)(tinyData.rpgPrivateData, 'object') ? tinyData.rpgPrivateData : null,
+                  maxOutputTokens: typeof tinyData.maxOutputTokens === 'number' ? tinyData.maxOutputTokens : typeof model.outputTokenLimit === 'number' ? model.outputTokenLimit : null,
+                  temperature: typeof tinyData.temperature === 'number' ? tinyData.temperature : typeof model.maxTemperature === 'number' || typeof model.temperature === 'number' ? typeof model.temperature === 'number' ? model.temperature : 1 : null,
+                  topP: typeof tinyData.topP === 'number' ? tinyData.topP : typeof model.topP === 'number' ? model.topP : null,
+                  topK: typeof tinyData.topK === 'number' ? tinyData.topK : typeof model.topK === 'number' ? model.topK : null,
+                  presencePenalty: typeof tinyData.presencePenalty === 'number' ? tinyData.presencePenalty : typeof model.presencePenalty === 'number' ? model.presencePenalty : null,
+                  frequencyPenalty: typeof tinyData.frequencyPenalty === 'number' ? tinyData.frequencyPenalty : typeof model.frequencyPenalty === 'number' ? model.frequencyPenalty : null
+                };
+                return {
+                  roomSaveData: roomSaveData,
+                  model: model,
+                  tokens: tokens,
+                  hash: hash,
+                  customList: customList
+                };
+              };
+
+              // jsStore (offline)
+              if (canUsejsStore) {
+                if (saveSessionTimeout[sessionSelected]) clearTimeout(saveSessionTimeout[sessionSelected]);
+                saveSessionTimeout[sessionSelected] = setTimeout(function () {
+                  var _getSessionData = getSessionData(),
+                    roomSaveData = _getSessionData.roomSaveData,
+                    tokens = _getSessionData.tokens,
+                    hash = _getSessionData.hash,
+                    customList = _getSessionData.customList;
+                  // Hash and tokens data insert
+                  var hashData = {};
+                  var tokenData = {};
+                  for (var item in roomSaveData) {
+                    hashData[item] = typeof hash[item] === 'string' ? hash[item] : null;
+                    tokenData[item] = typeof tokens[item] === 'number' ? tokens[item] : null;
+                  }
+                  hashData.file = typeof hash.file === 'string' ? hash.file : null;
+                  tokenData.file = typeof tokens.file === 'number' ? tokens.file : null;
+
+                  // Hash
+                  hashData.session = sessionSelected;
+                  tinyInsertDb('aiSessionsHash', hashData);
+
+                  // Tokens
+                  tokenData.session = sessionSelected;
+                  tinyInsertDb('aiSessionsTokens', tokenData);
+
+                  // Room
+                  roomSaveData.session = sessionSelected;
+                  tinyInsertDb('aiSessionsRoom', roomSaveData);
+
+                  // Custom list
+                  tinyInsertDb('aiSessionsCustomList', {
+                    session: sessionSelected,
+                    data: customList
+                  });
+
+                  // Complete
+                  saveSessionTimeout[sessionSelected] = null;
+                }, 1000);
+              }
+
+              // Database (online)
+              else if (typeof where === 'string' && !tinyAiScript.mpClient) {
+                var timeoutId = "".concat(sessionSelected, "_").concat(where);
+                if (saveSessionTimeout[timeoutId]) clearTimeout(saveSessionTimeout[timeoutId]);
+                saveSessionTimeout[timeoutId] = setTimeout(function () {
+                  var _getSessionData2 = getSessionData(),
+                    roomSaveData = _getSessionData2.roomSaveData;
+
+                  // Send data
+                  var newSettings = {};
+                  if (roomSaveData[where] !== null) newSettings[where] = roomSaveData[where];
+                  tinyIo.client.updateRoomSettings(newSettings).then(function (result) {
+                    if (result.error) alert("\u26A0\uFE0F Your data was not saved! Please try again.\nError Message:".concat(result.msg, "\nCode: ").concat(result.code));
+                  });
+
+                  // Complete
+                  saveSessionTimeout[timeoutId] = null;
+                }, 1000);
+              }
+            }
+          };
+          tinyAiSocketTemplate = function tinyAiSocketTemplate(where, where2, el) {
+            return tinyAi.on(where, function (value, id) {
+              if (el) el.val(value);
+              saveSessionBackup(id, where2);
+            });
+          };
+          tinyAiSocketTemplate('setMaxOutputTokens', 'maxOutputTokens', outputLength);
+          tinyAiSocketTemplate('setTemperature', 'temperature', temperature);
+          tinyAiSocketTemplate('setTopP', 'topP', topP);
+          tinyAiSocketTemplate('setTopK', 'topK', topK);
+          tinyAiSocketTemplate('setPresencePenalty', 'presencePenalty', presencePenalty);
+          tinyAiSocketTemplate('setFrequencyPenalty', 'frequencyPenalty', frequencyPenalty);
+          tinyAiSocketTemplate('setModel', 'model');
+          tinyAiSocketTemplate('setPrompt', 'prompt');
+          tinyAiSocketTemplate('setFirstDialogue', 'firstDialogue');
+          tinyAiSocketTemplate('setSystemInstruction', 'systemInstruction');
+          tinyAiSocketTemplate('setRpgSchema');
+          tinyAiSocketTemplate('setRpgData');
+          tinyAiSocketTemplate('setRpgPrivateData');
+
+          // Delete session
+          tinyAi.on('stopDataId', function (id) {
+            if (canUsejsStore && id) resetSession(id)["catch"](console.error);
+          });
+
+          // Delete message
+          tinyAi.on('deleteIndex', function (index, id, sId) {
+            if (typeof id === 'number' || typeof id === 'string') {
+              if (canUsejsStore) connStore.remove({
+                from: 'aiSessionsData',
+                where: {
+                  msg_id: tinyMsgIdDb(sId, id)
+                }
+              })["catch"](console.error);
+            }
+          });
+
+          // Edit message
+          tinyAi.on('replaceIndex', function (index, ndata, ntokens, nhash, sId) {
+            var id = tinyAi.getIdByIndex(index);
+            var data = tinyAi.getMsgByIndex(index);
+            var tokens = tinyAi.getMsgTokensByIndex(index);
+            var hash = tinyAi.getMsgHashByIndex(index);
+            if (typeof id === 'number' || typeof id === 'string') {
+              if (canUsejsStore) tinyInsertDb('aiSessionsData', {
+                session: sId,
+                msg_id: tinyMsgIdDb(sId, id),
+                data: data,
+                id: id,
+                tokens: tokens,
+                hash: hash
+              });
+            }
+          });
+
+          // Add message
+          tinyAi.on('addData', function (newId, data, tokenData, hash, sId) {
+            if (canUsejsStore) tinyInsertDb('aiSessionsData', {
+              session: sId,
+              msg_id: tinyMsgIdDb(sId, newId),
+              data: data,
+              id: newId,
+              tokens: tokenData,
+              hash: hash
+            });
+          });
+
+          // tinyAi.on('selectDataId', () => {});
+          rpgData.initOffCanvas(container);
+
+          // Enable Read Only
+          validateMultiplayer = function validateMultiplayer() {
+            var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+            var needAi = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+            var isInverse = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+            return (
+              // Normal mode
+              !tinyAiScript.mpClient ?
+              // Ai enabled
+              !needAi || !tinyAiScript.noai ? value :
+              // No AI
+              !isInverse ? true : false :
+              // Multiplayer
+              !isInverse ? true : false
+            );
+          };
+          contentEnabler.setValidateMultiplayer(validateMultiplayer);
+
+          // First Dialogue script
+          enabledFirstDialogue = function enabledFirstDialogue() {
+            var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+            var isEnabled = validateMultiplayer(value, false, true);
+            // Insert First Dialogue
+            var insertAddFirstDialogue = function insertAddFirstDialogue() {
+              firstDialogueBase.base.removeClass('d-none');
+              firstDialogueBase.button.prop('disabled', false).removeClass('disabled');
+            };
+
+            // Remove First Dialogue
+            var removeAddFirstDialogue = function removeAddFirstDialogue() {
+              firstDialogueBase.base.addClass('d-none');
+              firstDialogueBase.button.prop('disabled', true).addClass('disabled');
+            };
+
+            // Check need first dialogue
+            if (isEnabled) {
+              var history = tinyAi.getData();
+              if (history && history.data.length < 1 && typeof history.firstDialogue === 'string' && history.firstDialogue.length > 0) insertAddFirstDialogue();else removeAddFirstDialogue();
+            } else removeAddFirstDialogue();
+          };
+          contentEnabler.setEnabledFirstDialogue(enabledFirstDialogue);
+
+          // Clear Messages
+          clearMessages = function clearMessages() {
+            return msgList.empty();
+          };
+          contentEnabler.deBase();
+          contentEnabler.deMessageButtons();
+          contentEnabler.dePromptButtons();
+
+          // Multiplayer disable inputs
+          if (tinyAiScript.mpClient || tinyAiScript.noai) {
+            if (tinyAiScript.mpClient) contentEnabler.deModelChanger();
+            contentEnabler.deModel();
+            contentEnabler.deModelSelector();
+          }
+
+          // Welcome
+          if (!tinyAiScript.mpClient) {
+            makeTempMessage("Welcome to Pony Driland's chatbot! This is a chatbot developed exclusively to interact with the content of fic", 'Website');
+            makeTempMessage('This means that whenever the story is updated, I am automatically updated for you to always view the answers of the latest content, because the algorithm of this website converts the content of fic to prompts.' + '\n\nChoose something to be done here so we can start our conversation! The chat will not work until you choose an activity to do here', 'Website');
+            updateModelList();
+          }
+
+          // Complete
+          $('#markdown-read').append(container);
+          _context15.n = 5;
+          return rpgData.init().then(function () {
+            return rpgData.finishOffCanvas(updateAiTokenCounterData);
+          });
+        case 5:
+          if (canUsejsStore) {
+            _context15.n = 8;
+            break;
+          }
+          tinyIo.client = new _socketClient["default"](rpgCfg);
+          socket = tinyIo.client.getSocket();
+          if (socket) makeTempMessage("A server has been detected in your config and we will try to connect to it now!", rpgCfg.ip);
+
+          // Start rpg mode
+          //////////////////////////////
+          if (!(tinyAiScript.mpClient || socket)) {
+            _context15.n = 7;
+            break;
+          }
+          // Online tab html
+          onlineStatus = {};
+          onlineStatus.base = $('<div>').addClass('mb-1 small');
+          onlineStatus.wrapper = $('<div>').addClass('d-flex align-items-center gap-1');
+          onlineStatus.icon = _tinyLib["default"].icon('fas fa-circle text-danger');
+          onlineStatus.text = $('<span>').text('Offline');
+          onlineStatus.id = $('<span>');
+          onlineStatus.wrapper.append(onlineStatus.icon, onlineStatus.text, onlineStatus.id);
+          onlineStatus.base.append(onlineStatus.wrapper, onlineStatus.id);
+          connectionInfoBar.replaceWith(onlineStatus.base);
+
+          // Socket client
+          if (socket) {
+            client = tinyIo.client; // Connection
+            // Send error message
+            sendSocketError = function sendSocketError(result) {
+              return makeTempMessage(typeof result.msg === 'string' ? "".concat(result.msg, " (Code: ").concat(typeof result.code === 'number' ? result.code : 0, ")") : 'Unknown error!', rpgCfg.ip);
+            }; // Install scripts
+            client.install(tinyAiScript);
+
+            // Connected
+            client.on('connect', function (connectionId) {
+              // Prepare online status
+              onlineStatus.icon.removeClass('text-danger').addClass('text-success');
+              onlineStatus.text.text('Online');
+              onlineStatus.id.empty().text('Id: ').append($('<strong>').text(connectionId));
+
+              // First time message
+              var firstTime = tinyIo.firstTime;
+              if (firstTime) tinyIo.firstTime = false;
+
+              // Message
+              makeTempMessage("You are connected! Your connection id is **".concat(connectionId, "**. Signing into your account..."), rpgCfg.ip);
+            });
+            client.on('login', function (result) {
+              // Message
+              if (!result.error) {
+                makeTempMessage("Welcome **".concat(result.nickname || result.userId, "**! You were successfully logged in! Entering the room..."), rpgCfg.ip);
+              }
+              // Error
+              else {
+                sendSocketError(result);
+                _circleLoader.Loader.close();
+              }
+            });
+            client.on('roomError', function (result) {
+              sendSocketError(result);
+              _circleLoader.Loader.close();
+            });
+            client.on('roomNotFound', function () {
+              makeTempMessage('The room was not found', rpgCfg.ip);
+              _circleLoader.Loader.close();
+            });
+            client.on('roomJoinned', function (result) {
+              makeTempMessage("You successfully entered the room **".concat(result.roomId, "**!"), rpgCfg.ip);
+              _circleLoader.Loader.close();
+            });
+
+            // Disconnected
+            client.on('disconnect', function (reason, details) {
+              // Offline!
+              onlineStatus.icon.addClass('text-danger').removeClass('text-success');
+              onlineStatus.text.text('Offline');
+              onlineStatus.id.empty();
+
+              // Message
+              makeTempMessage("You are disconected".concat((0, _tinyEssentials.objType)(details, 'object') && typeof details.description === 'string' ? " (".concat(details.description, ")") : '').concat(typeof reason === 'string' ? ": ".concat(reason) : ''), rpgCfg.ip);
+
+              // Prepare disconnect progress
+              if (tinyAiScript.mpClient) {
+                // Is active
+                if (client.isActive()) _circleLoader.Loader.start();
+                // Disable page
+                else {
+                  contentEnabler.deBase();
+                  contentEnabler.deModelChanger();
+                  contentEnabler.dePromptButtons();
+                  contentEnabler.deModel();
+                  contentEnabler.deMessageButtons();
+                  sessionEnabled = false;
+                }
+              }
+            });
+
+            // Enter room
+            client.on('roomEntered', function (success) {
+              if (!success) makeTempMessage("Invalid room data detected!", rpgCfg.ip);
+            });
+
+            // New message
+            client.on('newMessage', function () {
+              if (tinyAiScript.mpClient) {}
+            });
+
+            // You was kicked
+            client.on('userLeft', function (userId) {
+              if (userId === client.getUserId()) client.disconnect();
+            });
+
+            // Dice rool
+            client.on('diceRoll', function () {});
+          }
+
+          // No server
+          if (socket) {
+            _context15.n = 6;
+            break;
+          }
+          makeTempMessage('No server has been detected. Your session is cancelled!', rpgCfg.ip);
+          _context15.n = 7;
+          break;
+        case 6:
+          if (tinyAiScript.mpClient) {
+            _context15.n = 7;
+            break;
+          }
+          return _context15.a(2);
+        case 7:
+          _context15.n = 16;
+          break;
+        case 8:
+          _context15.n = 9;
+          return connStore.select({
+            from: 'aiSessionsRoom'
+          });
+        case 9:
+          _t8 = _context15.v;
+          _context15.n = 10;
+          return connStore.select({
+            from: 'aiSessionsHash'
+          });
+        case 10:
+          _t9 = _context15.v;
+          _context15.n = 11;
+          return connStore.select({
+            from: 'aiSessionsTokens'
+          });
+        case 11:
+          _t0 = _context15.v;
+          _context15.n = 12;
+          return connStore.select({
+            from: 'aiSessionsCustomList'
+          });
+        case 12:
+          _t1 = _context15.v;
+          _context15.n = 13;
+          return connStore.select({
+            from: 'aiSessionsData',
+            order: {
+              by: 'id',
+              type: 'asc'
+            }
+          });
+        case 13:
+          _t10 = _context15.v;
+          sessionData = {
+            rooms: _t8,
+            hash: _t9,
+            tokens: _t0,
+            customList: _t1,
+            data: _t10
+          };
+          sessions = {};
+          executeSessionInsert = function executeSessionInsert(where, callback) {
+            for (var _index16 in sessionData[where]) {
+              var sessionItem = sessionData[where][_index16];
+              if (!sessions[sessionItem.session]) sessions[sessionItem.session] = {
+                id: sessionItem.session,
+                file: {
+                  data: [],
+                  ids: []
+                }
+              };
+              callback(sessionItem, sessions[sessionItem.session].file);
+            }
+          }; // Insert rooms
+          executeSessionInsert('rooms', function (item, file) {
+            for (var name in item) file[name] = item[name];
+            if (!canSandBox(item.session) && typeof file.systemInstruction !== 'undefined') delete file.systemInstruction;
+            delete file.session;
+          });
+
+          // Insert hash
+          executeSessionInsert('hash', function (item, file) {
+            file.hash = {
+              data: []
+            };
+            for (var name in item) if (typeof item[name] === 'string') file.hash[name] = item[name];
+            delete file.hash.session;
+          });
+
+          // Insert tokens
+          executeSessionInsert('tokens', function (item, file) {
+            file.tokens = {
+              data: []
+            };
+            for (var name in item) if (typeof item[name] === 'number') file.tokens[name] = item[name];
+          });
+
+          // Insert custom list
+          executeSessionInsert('customList', function (item, file) {
+            file.customList = item.data || null;
+          });
+
+          // Insert data
+          executeSessionInsert('data', function (item, file) {
+            // Insert id
+            file.ids.push(typeof item.id === 'number' ? item.id : null);
+            // Insert hash
+            file.hash.data.push(typeof item.hash === 'string' ? item.hash : null);
+            // Insert tokens
+            var tokens = (0, _tinyEssentials.objType)(item.tokens, 'object') ? item.tokens : {
+              count: null
+            };
+            if (typeof tokens.count !== 'number') tokens.count = null;
+            file.tokens.data.push(tokens);
+            // Insert data
+            if ((0, _tinyEssentials.objType)(item.data, 'object')) file.data.push(item.data);
+          });
+
+          // Import data
+          _t11 = _regeneratorKeys(sessions);
+        case 14:
+          if ((_t12 = _t11()).done) {
+            _context15.n = 16;
+            break;
+          }
+          item = _t12.value;
+          _context15.n = 15;
+          return importFileSession(sessions[item]);
+        case 15:
+          _context15.n = 14;
+          break;
+        case 16:
+          _context15.n = 18;
+          break;
+        case 17:
+          alert('AI mode is currently disabled for your session. Please click the robot icon to activate it, then come back here.', 'AI Page');
+        case 18:
+          _context15.n = 19;
+          return _start.tinyNotification.requestPerm();
+        case 19:
+          _circleLoader.Loader.close();
+        case 20:
+          return _context15.a(2);
+      }
+    }, _callee13);
+  }));
+
+  // Complete
+  return tinyAiScript;
+};
+
+},{"../chapters/config.mjs":199,"../files/tinyLib.mjs":203,"../start.mjs":206,"./RoomUserManagerUI.mjs":186,"./TinyMap.mjs":187,"./aiSoftware/enablerContent.mjs":189,"./aiSoftware/rpgData.mjs":190,"./jsonTemplate.mjs":191,"./socketClient.mjs":192,"./templates.mjs":193,"circle-loader":62,"events":84,"tiny-ai-api":110,"tiny-dices":133,"tiny-essentials":161}],189:[function(require,module,exports){
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateMethodInitSpec(e, a) { _checkPrivateRedeclaration(e, a), a.add(e); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+var _validateMultiplayer = /*#__PURE__*/new WeakMap();
+var _enabledFirstDialogue = /*#__PURE__*/new WeakMap();
+var _EnablerAiContent_brand = /*#__PURE__*/new WeakSet();
+var EnablerAiContent = /*#__PURE__*/function () {
+  function EnablerAiContent() {
+    _classCallCheck(this, EnablerAiContent);
+    _classPrivateMethodInitSpec(this, _EnablerAiContent_brand);
+    _classPrivateFieldInitSpec(this, _validateMultiplayer, void 0);
+    _classPrivateFieldInitSpec(this, _enabledFirstDialogue, void 0);
+  }
+  return _createClass(EnablerAiContent, [{
+    key: "setResetSettingsButton",
+    value: function setResetSettingsButton(resetSettingsButton) {
+      this.resetSettingsButton = resetSettingsButton;
+    }
+  }, {
+    key: "setTemperature",
+    value: function setTemperature(temperature) {
+      this.temperature = temperature;
+    }
+  }, {
+    key: "setTopP",
+    value: function setTopP(topP) {
+      this.topP = topP;
+    }
+  }, {
+    key: "setTopK",
+    value: function setTopK(topK) {
+      this.topK = topK;
+    }
+  }, {
+    key: "setPresencePenalty",
+    value: function setPresencePenalty(presencePenalty) {
+      this.presencePenalty = presencePenalty;
+    }
+  }, {
+    key: "setFrequencyPenalty",
+    value: function setFrequencyPenalty(frequencyPenalty) {
+      this.frequencyPenalty = frequencyPenalty;
+    }
+  }, {
+    key: "setOutputLength",
+    value: function setOutputLength(outputLength) {
+      this.outputLength = outputLength;
+    }
+  }, {
+    key: "setRpgData",
+    value: function setRpgData(rpgData) {
+      this.rpgData = rpgData;
+    }
+  }, {
+    key: "setFicPromptItems",
+    value: function setFicPromptItems(ficPromptItems) {
+      this.ficPromptItems = ficPromptItems;
+    }
+  }, {
+    key: "setChatContainer",
+    value: function setChatContainer(chatContainer) {
+      this.chatContainer = chatContainer;
+    }
+  }, {
+    key: "setMsgSubmit",
+    value: function setMsgSubmit(msgSubmit) {
+      this.msgSubmit = msgSubmit;
+    }
+  }, {
+    key: "setMsgInput",
+    value: function setMsgInput(msgInput) {
+      this.msgInput = msgInput;
+    }
+  }, {
+    key: "setCancelSubmit",
+    value: function setCancelSubmit(cancelSubmit) {
+      this.cancelSubmit = cancelSubmit;
+    }
+  }, {
+    key: "setSubmitCache",
+    value: function setSubmitCache(submitCache) {
+      this.submitCache = submitCache;
+    }
+  }, {
+    key: "setFicResets",
+    value: function setFicResets(ficResets) {
+      this.ficResets = ficResets;
+    }
+  }, {
+    key: "setFicTemplates",
+    value: function setFicTemplates(ficTemplates) {
+      this.ficTemplates = ficTemplates;
+    }
+  }, {
+    key: "setImportItems",
+    value: function setImportItems(importItems) {
+      this.importItems = importItems;
+    }
+  }, {
+    key: "setModelSelector",
+    value: function setModelSelector(modelSelector) {
+      this.modelSelector = modelSelector;
+    }
+  }, {
+    key: "setValidateMultiplayer",
+    value: function setValidateMultiplayer(validateMultiplayer) {
+      _classPrivateFieldSet(_validateMultiplayer, this, validateMultiplayer);
+    }
+  }, {
+    key: "setEnabledFirstDialogue",
+    value: function setEnabledFirstDialogue(enabledFirstDialogue) {
+      _classPrivateFieldSet(_enabledFirstDialogue, this, enabledFirstDialogue);
+    }
+  }, {
+    key: "enModel",
+    value: function enModel() {
+      _assertClassBrand(_EnablerAiContent_brand, this, _enableModelReadOnly).call(this, false);
+    }
+  }, {
+    key: "deModel",
+    value: function deModel() {
+      _assertClassBrand(_EnablerAiContent_brand, this, _enableModelReadOnly).call(this, true);
+    }
+  }, {
+    key: "enPromptButtons",
+    value: function enPromptButtons() {
+      _assertClassBrand(_EnablerAiContent_brand, this, _disablePromptButtons).call(this, false);
+    }
+  }, {
+    key: "dePromptButtons",
+    value: function dePromptButtons() {
+      _assertClassBrand(_EnablerAiContent_brand, this, _disablePromptButtons).call(this, true);
+    }
+  }, {
+    key: "enMessageButtons",
+    value: function enMessageButtons() {
+      _assertClassBrand(_EnablerAiContent_brand, this, _enableMessageButtons).call(this, true);
+    }
+  }, {
+    key: "deMessageButtons",
+    value: function deMessageButtons() {
+      _assertClassBrand(_EnablerAiContent_brand, this, _enableMessageButtons).call(this, false);
+    }
+  }, {
+    key: "enBase",
+    value: function enBase(controller) {
+      _assertClassBrand(_EnablerAiContent_brand, this, _enableReadOnly).call(this, false, controller);
+    }
+  }, {
+    key: "deBase",
+    value: function deBase(controller) {
+      _assertClassBrand(_EnablerAiContent_brand, this, _enableReadOnly).call(this, true, controller);
+    }
+  }, {
+    key: "enModelChanger",
+    value: function enModelChanger() {
+      _assertClassBrand(_EnablerAiContent_brand, this, _modelChangerReadOnly).call(this, false);
+    }
+  }, {
+    key: "deModelChanger",
+    value: function deModelChanger() {
+      _assertClassBrand(_EnablerAiContent_brand, this, _modelChangerReadOnly).call(this, true);
+    }
+  }, {
+    key: "enModelSelector",
+    value: function enModelSelector() {
+      _assertClassBrand(_EnablerAiContent_brand, this, _enableModelSelectorReadOnly).call(this, false);
+    }
+  }, {
+    key: "deModelSelector",
+    value: function deModelSelector() {
+      _assertClassBrand(_EnablerAiContent_brand, this, _enableModelSelectorReadOnly).call(this, true);
+    }
+  }]);
+}();
+function _readOnlyTemplate(item, value) {
+  var needAi = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+  var isEnabled = _classPrivateFieldGet(_validateMultiplayer, this).call(this, value, needAi);
+  item.prop('disabled', isEnabled);
+  if (isEnabled) {
+    item.addClass('disabled');
+  } else {
+    item.removeClass('disabled');
+  }
+}
+function _enableModelReadOnly() {
+  var _this = this;
+  var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+  var isEnabled = _classPrivateFieldGet(_validateMultiplayer, this).call(this, value);
+  this.outputLength.prop('disabled', isEnabled);
+  _assertClassBrand(_EnablerAiContent_brand, this, _enableModelSelectorReadOnly).call(this, isEnabled);
+  var validateChange = function validateChange(where) {
+    return _this[where][isEnabled || _this[where].valString2().trim().length < 1 ? 'disable' : 'enable']();
+  };
+  validateChange('temperature');
+  validateChange('topP');
+  validateChange('topK');
+  validateChange('presencePenalty');
+  validateChange('frequencyPenalty');
+  if (isEnabled) {
+    this.outputLength.addClass('disabled');
+    this.resetSettingsButton.addClass('disabled');
+  } else {
+    this.outputLength.removeClass('disabled');
+    this.resetSettingsButton.removeClass('disabled');
+  }
+}
+function _disablePromptButtons() {
+  var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+  var isDisabled = _classPrivateFieldGet(_validateMultiplayer, this).call(this, value, false);
+  // Execute disable script
+  for (var item in this.rpgData.ready) {
+    if (this.rpgData.ready[item]) {
+      if (isDisabled) this.rpgData.data[item].disable();else this.rpgData.data[item].enable();
+    }
+  }
+  for (var index in this.ficPromptItems) {
+    this.ficPromptItems[index].prop('disabled', isDisabled);
+    if (isDisabled) this.ficPromptItems[index].addClass('disabled');else this.ficPromptItems[index].removeClass('disabled');
+  }
+  // First dialogue script
+  _classPrivateFieldGet(_enabledFirstDialogue, this).call(this, !isDisabled);
+}
+function _enableMessageButtons() {
+  var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+  var isEnabled = _classPrivateFieldGet(_validateMultiplayer, this).call(this, value, false);
+  if (isEnabled) this.chatContainer.removeClass('hide-msg-buttons');else this.chatContainer.addClass('hide-msg-buttons');
+}
+function _enableReadOnly() {
+  var _this2 = this;
+  var isEnabled = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+  var controller = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  _assertClassBrand(_EnablerAiContent_brand, this, _readOnlyTemplate).call(this, this.msgSubmit, isEnabled, false);
+  _assertClassBrand(_EnablerAiContent_brand, this, _readOnlyTemplate).call(this, this.msgInput, isEnabled, false);
+  _assertClassBrand(_EnablerAiContent_brand, this, _readOnlyTemplate).call(this, this.cancelSubmit, !isEnabled || !controller, false);
+  if (controller) {
+    this.msgSubmit.addClass('d-none');
+    this.cancelSubmit.removeClass('d-none');
+    this.cancelSubmit.on('click', function () {
+      enableReadOnly(false);
+      enableMessageButtons(true);
+      try {
+        if (_this2.submitCache.cancel) _this2.submitCache.cancel();
+        controller.abort();
+      } catch (err) {
+        console.error(err);
+        alert(err.message);
+      }
+    });
+  } else {
+    this.msgSubmit.removeClass('d-none');
+    this.cancelSubmit.addClass('d-none');
+    this.cancelSubmit.off('click');
+  }
+}
+function _modelChangerReadOnly() {
+  var isEnabled = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+  for (var index in this.ficResets) _assertClassBrand(_EnablerAiContent_brand, this, _readOnlyTemplate).call(this, this.ficResets[index], isEnabled, false);
+  for (var _index in this.ficTemplates) _assertClassBrand(_EnablerAiContent_brand, this, _readOnlyTemplate).call(this, this.ficTemplates[_index], isEnabled, false);
+  for (var _index2 in this.importItems) _assertClassBrand(_EnablerAiContent_brand, this, _readOnlyTemplate).call(this, this.importItems[_index2], isEnabled, false);
+}
+function _enableModelSelectorReadOnly() {
+  var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+  var isEnabled = _classPrivateFieldGet(_validateMultiplayer, this).call(this, value);
+  this.modelSelector.prop('disabled', isEnabled);
+  if (isEnabled) this.modelSelector.addClass('disabled');else this.modelSelector.removeClass('disabled');
+}
+var _default = exports["default"] = EnablerAiContent;
+
+},{}],190:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _tinyEssentials = require("tiny-essentials");
+var _tinyLib = _interopRequireDefault(require("../../files/tinyLib.mjs"));
+var _templates = _interopRequireDefault(require("../templates.mjs"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+var RpgData = /*#__PURE__*/function () {
+  function RpgData() {
+    _classCallCheck(this, RpgData);
+    this.schemaHash = null;
+    this.allowAiUse = {
+      "public": false,
+      "private": false
+    };
+    this.allowAiSchemaUse = {
+      "public": false,
+      "private": false
+    };
+    this.hash = {
+      "public": null,
+      "private": null
+    };
+    this.oldHash = {
+      "public": null,
+      "private": null
+    };
+    this.html = {
+      "public": null,
+      "private": null
+    };
+    this.offcanvas = {
+      "public": null,
+      "private": null
+    };
+    this.ready = {
+      "public": false,
+      "private": false
+    };
+    this.data = {
+      "public": null,
+      "private": null
+    };
+    this.base = {
+      "public": $('<div>', {
+        id: 'info_box'
+      }),
+      "private": $('<div>', {
+        id: 'privateInfo'
+      })
+    };
+  }
+  return _createClass(RpgData, [{
+    key: "setTinyAi",
+    value: function setTinyAi(tinyAi) {
+      this.tinyAi = tinyAi;
+    }
+  }, {
+    key: "setFicConfigs",
+    value: function setFicConfigs(ficConfigs) {
+      this.ficConfigs = ficConfigs;
+    }
+
+    // Data Filter
+  }, {
+    key: "filter",
+    value: function filter(value) {
+      if (typeof value === 'string') {
+        try {
+          value = JSON.parse(value);
+        } catch (err) {
+          console.error(err);
+          value = null;
+        }
+      }
+      return value;
+    }
+  }, {
+    key: "setAllowAiUse",
+    value: function setAllowAiUse(value, type) {
+      if (typeof this.allowAiUse[type] === 'boolean') this.allowAiUse[type] = typeof value === 'boolean' ? value : false;
+    }
+  }, {
+    key: "setAllowAiSchemaUse",
+    value: function setAllowAiSchemaUse(value, type) {
+      if (typeof this.allowAiSchemaUse[type] === 'boolean') this.allowAiSchemaUse[type] = typeof value === 'boolean' ? value : false;
+    }
+  }, {
+    key: "finishOffCanvas",
+    value: function finishOffCanvas(updateAiTokenCounterData) {
+      var rpgData = this;
+      var tinyAi = this.tinyAi;
+      // offCanvas closed
+      var onOffCanvasClosed = function onOffCanvasClosed(where, type) {
+        return function () {
+          setTimeout(function () {
+            var tinyData = rpgData.data[where].getValue();
+            if (tinyData) {
+              rpgData.setAllowAiUse(tinyData.allowAiUse, where);
+              rpgData.setAllowAiSchemaUse(tinyData.allowAiSchemaUse, where);
+              if (rpgData.data[where].isEnabled() && rpgData.hash[where] !== rpgData.oldHash[where]) {
+                rpgData.oldHash[where] = rpgData.hash[where];
+                tinyAi.setCustomValue(type, null, 0);
+                updateAiTokenCounterData();
+              }
+            }
+          }, 300);
+        };
+      };
+      this.html["public"].get(0).addEventListener('hide.bs.offcanvas', onOffCanvasClosed('public', 'rpgData'));
+      this.html["private"].get(0).addEventListener('hide.bs.offcanvas', onOffCanvasClosed('private', 'rpgPrivateData'));
+    }
+  }, {
+    key: "initOffCanvas",
+    value: function initOffCanvas(container) {
+      // Prepare RPG
+      this.html["public"] = _tinyLib["default"].bs.offcanvas('start', 'rpg_ai_base_1', '', this.base["public"], true);
+      this.html["private"] = _tinyLib["default"].bs.offcanvas('end', 'rpg_ai_base_2', '', this.base["private"], false);
+      container.prepend(this.html["public"], this.html["private"]);
+      this.offcanvas["public"] = new bootstrap.Offcanvas(this.html["public"].get(0));
+      this.offcanvas["private"] = new bootstrap.Offcanvas(this.html["private"].get(0));
+    }
+  }, {
+    key: "init",
+    value: function init() {
+      var forceRestart = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+      var rpgData = this;
+      var tinyAi = this.tinyAi;
+      var ficConfigs = this.ficConfigs;
+      return new Promise(function (resolve, reject) {
+        // Get template
+        rpgData.template = {
+          // Seed the form with a starting value
+          startval: {},
+          // Disable additional properties
+          no_additional_properties: false,
+          // Require all properties by default
+          required_by_default: false
+        };
+
+        // Add custom Schema
+        var customSchema = tinyAi.getCustomValue('rpgSchema');
+        if ((0, _tinyEssentials.objType)(customSchema, 'object')) rpgData.template.schema = customSchema;
+        // Default schema
+        else {
+          rpgData.template.schema = _templates["default"].funcs.jsonTemplate();
+          if (ficConfigs.selected) tinyAi.setCustomValue('rpgSchema', rpgData.template.schema, 0);
+        }
+        var schemaHash = tinyAi.getHash('rpgSchema');
+
+        // Start json
+        var failed = false;
+        var amountStarted = 0;
+        var loadData = {};
+        var startJsonNow = function startJsonNow(where, valueName) {
+          try {
+            // The tiny start script
+            var executeTinyStart = function executeTinyStart() {
+              var isFirstTime = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+              var rpgEditor = rpgData.data[where];
+              // Remove first time
+              if (isFirstTime) rpgEditor.off('ready', funcExecStart);
+              // Get data
+              loadData[where] = tinyAi.getCustomValue(valueName);
+              if (!(0, _tinyEssentials.objType)(loadData[where], 'object')) loadData[where] = {};
+
+              // Insert data
+              rpgEditor.setValue(rpgData.filter(loadData[where]));
+              rpgEditor.validate();
+
+              // Change events
+              if (!ficConfigs.selected) rpgEditor.disable();
+              if (isFirstTime) {
+                rpgEditor.on('change', function () {
+                  rpgEditor.validate();
+                  if (ficConfigs.selected) {
+                    try {
+                      var tinyData = rpgEditor.getValue();
+                      if (tinyData) {
+                        tinyAi.setCustomValue(valueName, tinyData);
+                        rpgData.hash[where] = tinyAi.getHash(valueName);
+                        rpgData.setAllowAiUse(tinyData.allowAiUse, where);
+                        rpgData.setAllowAiSchemaUse(tinyData.allowAiSchemaUse, where);
+                      }
+                    } catch (err) {
+                      console.error(err);
+                    }
+                  }
+                });
+              }
+
+              // Complete
+              if (!failed) {
+                rpgData.ready[where] = true;
+                amountStarted++;
+                if (amountStarted >= 2) {
+                  rpgData.schemaHash = schemaHash;
+                  resolve(loadData);
+                }
+              }
+            };
+            var funcExecStart = function funcExecStart() {
+              return executeTinyStart(true);
+            };
+
+            // Start json data
+            if (rpgData.schemaHash !== schemaHash || !rpgData.data[where] || forceRestart) {
+              // Remove Old
+              if (rpgData.data[where]) rpgData.data[where].destroy();
+              // Insert template
+              rpgData.data[where] = new JSONEditor(rpgData.base[where].get(0), rpgData.template);
+
+              // Start scripts now
+              rpgData.data[where].on('ready', funcExecStart);
+            } else executeTinyStart(false);
+          } catch (err) {
+            // Error!
+            console.error(err);
+            if (!failed) {
+              failed = true;
+              reject(new Error('An error occurred at booting your RPG. Check your console for more details!'));
+            }
+          }
+        };
+
+        // Read json now
+        startJsonNow('public', 'rpgData');
+        startJsonNow('private', 'rpgPrivateData');
+      });
+    }
+  }]);
+}();
+var _default = exports["default"] = RpgData;
+
+},{"../../files/tinyLib.mjs":203,"../templates.mjs":193,"tiny-essentials":161}],191:[function(require,module,exports){
+"use strict";
+
+var _templates = _interopRequireDefault(require("./templates.mjs"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+// https://github.com/json-editor/json-editor?tab=readme-ov-file
+_templates["default"].funcs.jsonTemplate = function () {
+  var rpgBase = {
+    // Generator
+    generator: {
+      // Character List
+      characterList: function characterList(data) {
+        // Result Data
+        var resultData = {
+          title: data.title,
+          description: data.description,
+          type: 'array',
+          id: data.id,
+          options: {
+            collapsed: true
+          },
+          items: {
+            title: data.itemTitle,
+            headerTemplate: '{{self.name}}',
+            type: 'object',
+            id: data.itemID,
+            options: {
+              collapsed: true
+            },
+            // Base
+            properties: {
+              name: {
+                type: 'string',
+                title: 'Name',
+                description: 'The name of the character.'
+              },
+              race: {
+                type: 'string',
+                title: 'Race',
+                description: 'The race or species of the character.'
+              },
+              location: {
+                type: 'string',
+                title: 'Location',
+                description: 'Where the character is located in the game world.'
+              },
+              coins: {
+                type: 'number',
+                title: 'Coins',
+                minimum: 0,
+                description: 'Amount of coins the character possesses.'
+              },
+              gender: {
+                type: 'string',
+                title: 'Gender',
+                description: 'The gender of the character.'
+              },
+              level: {
+                type: 'number',
+                title: 'Level',
+                minimum: 1,
+                description: 'The level of the character.'
+              },
+              "class": {
+                type: 'string',
+                title: 'Class',
+                description: 'The class of the character (e.g., Warrior, Mage).'
+              },
+              experience: {
+                type: 'number',
+                title: 'Experience',
+                minimum: 0,
+                description: 'The experience points the character has earned.'
+              },
+              attack: {
+                type: 'number',
+                title: 'Attack',
+                minimum: 0,
+                description: "The character's attack power."
+              },
+              defense: {
+                type: 'number',
+                title: 'Defense',
+                minimum: 0,
+                description: "The character's defense power."
+              },
+              totalhp: {
+                type: 'number',
+                title: 'Total HP',
+                minimum: 1,
+                description: 'The maximum health points of the character.'
+              },
+              hp: {
+                type: 'number',
+                title: 'HP',
+                minimum: 0,
+                description: 'The current health points of the character.'
+              },
+              mana: {
+                type: 'number',
+                title: 'Mana',
+                minimum: 0,
+                description: "The character's mana, used for casting spells."
+              },
+              proficiency: {
+                title: 'Proficiencies',
+                type: 'array',
+                id: 'proficiencies',
+                description: 'A list of proficiencies or skills the character excels in, such as weapon types, magical abilities, or other talents.',
+                options: {
+                  collapsed: true
+                },
+                items: {
+                  title: 'Proficiency',
+                  headerTemplate: '{{self.name}}',
+                  type: 'object',
+                  id: 'item',
+                  options: {
+                    collapsed: true
+                  },
+                  properties: {
+                    name: {
+                      type: 'string',
+                      title: 'Title',
+                      minLength: 1,
+                      description: 'The title of the proficiency.'
+                    },
+                    items: {
+                      type: 'string',
+                      title: 'Proficiency',
+                      minLength: 1,
+                      description: 'List of proficiencies or areas the character is skilled in (e.g., Archery, Stealth).'
+                    }
+                  }
+                }
+              },
+              alignment: {
+                type: 'string',
+                title: 'Alignment',
+                description: "The character's moral alignment (e.g., Lawful Good, Chaotic Evil)."
+              },
+              background: {
+                type: 'string',
+                format: 'textarea',
+                title: 'Background',
+                description: 'A brief history or backstory of the character.'
+              },
+              dead: {
+                type: 'boolean',
+                title: 'Dead',
+                description: 'Indicates whether the character is dead.'
+              },
+              fainted: {
+                type: 'boolean',
+                title: 'Fainted',
+                description: 'Indicates whether the character is currently fainted.'
+              },
+              inventory: {
+                title: 'Inventory',
+                type: 'array',
+                id: 'inventory',
+                options: {
+                  collapsed: true
+                },
+                description: 'A list of items the character carries, including weapons, tools, and other important belongings.',
+                items: {
+                  title: 'Item',
+                  headerTemplate: '{{self.name}} ({{self.amount}})',
+                  type: 'object',
+                  id: 'item',
+                  options: {
+                    collapsed: true
+                  },
+                  properties: {
+                    name: {
+                      type: 'string',
+                      title: 'Name',
+                      minLength: 1,
+                      description: 'The name of the item.'
+                    },
+                    amount: {
+                      type: 'number',
+                      title: 'Amount',
+                      minimum: 1,
+                      description: 'How many units of this item the character has.'
+                    }
+                  }
+                }
+              },
+              equipment: {
+                title: 'Equipment',
+                type: 'array',
+                id: 'equipment',
+                description: 'A collection of items the character can equip, like weapons, armor, and accessories, each providing bonuses or abilities to enhance performance.',
+                options: {
+                  collapsed: true
+                },
+                items: {
+                  headerTemplate: '{{self.name}}',
+                  title: 'Equipment',
+                  type: 'object',
+                  id: 'equip',
+                  options: {
+                    collapsed: true
+                  },
+                  properties: {
+                    name: {
+                      type: 'string',
+                      title: 'Name',
+                      minLength: 1,
+                      description: 'The name of the equipment.'
+                    },
+                    type: {
+                      type: 'string',
+                      title: 'Type',
+                      description: 'The type of equipment (e.g., Weapon, Armor).'
+                    },
+                    stats: {
+                      type: 'object',
+                      title: 'Stats',
+                      description: 'The stats or bonuses provided by the equipment (e.g., +5 Attack).',
+                      properties: {
+                        attack: {
+                          type: 'number',
+                          title: 'Attack',
+                          minimum: 0,
+                          description: 'The attack bonus provided by the equipment.'
+                        },
+                        defense: {
+                          type: 'number',
+                          title: 'Defense',
+                          minimum: 0,
+                          description: 'The defense bonus provided by the equipment.'
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              skills: {
+                title: 'Skills',
+                type: 'array',
+                id: 'skills',
+                options: {
+                  collapsed: true
+                },
+                description: 'A list of skills the character has acquired, showcasing their abilities and expertise in various areas.',
+                items: {
+                  title: 'Skill',
+                  headerTemplate: '{{self.name}} ({{self.amount}})',
+                  type: 'object',
+                  id: 'skill',
+                  options: {
+                    collapsed: true
+                  },
+                  properties: {
+                    name: {
+                      type: 'string',
+                      title: 'Name',
+                      minLength: 1,
+                      description: 'The name of the skill.'
+                    },
+                    amount: {
+                      type: 'number',
+                      title: 'Amount',
+                      minimum: 0,
+                      description: 'How skilled the character is in this ability.'
+                    },
+                    cost: {
+                      type: 'number',
+                      title: 'Cost',
+                      minimum: 0,
+                      description: 'The cost (e.g., mana or stamina) to use this skill.'
+                    }
+                  }
+                }
+              },
+              relationships: {
+                title: 'Relationships',
+                type: 'array',
+                id: 'relationships',
+                description: 'A list of relationships the character has with others, such as friends, enemies, allies, or rivals, influencing interactions and story progression.',
+                options: {
+                  collapsed: true
+                },
+                items: {
+                  title: 'Relationship',
+                  type: 'object',
+                  id: 'relationship',
+                  options: {
+                    collapsed: true
+                  },
+                  properties: {
+                    name: {
+                      type: 'string',
+                      title: 'Name',
+                      description: 'The name of the individual the character has a relationship with.'
+                    },
+                    type: {
+                      type: 'string',
+                      title: 'Type',
+                      description: 'The type of relationship (e.g., Friend, Rival, Ally).'
+                    },
+                    status: {
+                      type: 'string',
+                      title: 'Status',
+                      description: 'The current status of the relationship (e.g., Friendly, Hostile).'
+                    },
+                    notes: {
+                      type: 'string',
+                      format: 'textarea',
+                      title: 'Notes',
+                      description: 'Any additional notes about the relationship.'
+                    }
+                  }
+                }
+              },
+              about: {
+                type: 'string',
+                format: 'textarea',
+                title: 'About',
+                description: 'Additional details or backstory for the character.'
+              }
+            }
+          }
+        };
+        if (data.mascot) {
+          resultData.items.properties.mascot = rpgBase.generator.characterList({
+            title: 'Mascots',
+            description: 'A list of mascots that accompany the character, offering unique abilities and support in quests and battles.',
+            id: 'mascots',
+            itemTitle: 'Mascot',
+            itemID: 'mascot'
+          });
+        }
+        return resultData;
+      }
+    },
+    // Data
+    data: {
+      title: 'RPG',
+      type: 'object',
+      id: 'data',
+      options: {
+        collapsed: false
+      },
+      // Base
+      properties: {
+        allowAiUse: {
+          type: 'boolean',
+          title: 'Allow AI Prompt Usage (BETA)',
+          description: 'Allow AI to use this data for generative content in future responses.'
+        },
+        allowAiSchemaUse: {
+          type: 'boolean',
+          title: 'Allow AI Schema Prompt Usage (BETA)',
+          description: 'Allow AI to use the schema data for generative content in future responses.'
+        },
+        comments: {
+          type: 'string',
+          format: 'textarea',
+          title: 'Comments',
+          description: 'Any additional comments or notes about the RPG session.'
+        },
+        clock: {
+          type: 'string',
+          title: 'Clock',
+          description: 'In-game time or any time-related information for the RPG session.'
+        },
+        location: {
+          type: 'string',
+          title: 'Location',
+          description: 'The current location or setting of the RPG session.'
+        },
+        // Skills Wiki
+        skills: {
+          title: 'Skills',
+          type: 'array',
+          id: 'skills',
+          options: {
+            collapsed: true
+          },
+          description: 'List of available skills in the RPG world.',
+          items: {
+            title: 'Skill',
+            headerTemplate: '{{self.name}}',
+            type: 'object',
+            id: 'skill',
+            options: {
+              collapsed: true
+            },
+            properties: {
+              name: {
+                type: 'string',
+                title: 'Name',
+                minLength: 1,
+                description: 'The name of the skill (e.g., Fireball, Stealth, Healing).'
+              },
+              about: {
+                type: 'string',
+                format: 'textarea',
+                title: 'About',
+                description: 'A brief description of the skill, its effects, and limitations.'
+              },
+              level: {
+                type: 'number',
+                title: 'Level',
+                description: "The skill's rank, affecting its power and effectiveness.",
+                minimum: 1
+              },
+              cost: {
+                type: 'number',
+                title: 'Cost',
+                description: 'The resource cost (mana, stamina, etc.) to use the skill.',
+                minimum: 0
+              },
+              cooldown: {
+                type: 'number',
+                title: 'Cooldown',
+                description: 'The time before the skill can be used again (in turns or seconds).',
+                minimum: 0
+              }
+            }
+          }
+        },
+        // Settings
+        settings: {
+          title: 'Settings',
+          type: 'object',
+          id: 'data',
+          options: {
+            collapsed: false
+          },
+          description: 'Game settings and configurations for the RPG session.',
+          // Base
+          properties: {
+            // Items Wiki
+            items: {
+              title: 'Items',
+              type: 'array',
+              id: 'items',
+              options: {
+                collapsed: true
+              },
+              description: 'A collection of items available in the RPG world.',
+              items: {
+                title: 'Item',
+                headerTemplate: '{{self.name}}',
+                type: 'object',
+                id: 'item',
+                options: {
+                  collapsed: true
+                },
+                properties: {
+                  name: {
+                    type: 'string',
+                    title: 'Name',
+                    minLength: 1,
+                    description: 'The name of the item.'
+                  },
+                  price: {
+                    type: 'number',
+                    title: 'Price',
+                    minimum: 0,
+                    description: 'The cost of the item in the RPG world.'
+                  },
+                  cities: {
+                    type: 'string',
+                    title: 'Locations',
+                    format: 'textarea',
+                    description: 'Locations where the item is available or restricted.'
+                  },
+                  about: {
+                    type: 'string',
+                    format: 'textarea',
+                    title: 'About',
+                    description: 'A description of the item and its uses.'
+                  },
+                  rarity: {
+                    type: 'string',
+                    title: 'Rarity',
+                    description: 'The rarity of the item (e.g., Common, Rare, Legendary).'
+                  },
+                  weight: {
+                    type: 'number',
+                    title: 'Weight',
+                    minimum: 0,
+                    description: 'The weight of the item, affecting inventory space.'
+                  },
+                  effects: {
+                    type: 'string',
+                    title: 'Effects',
+                    format: 'textarea',
+                    description: 'Any special effects or buffs the item provides.'
+                  },
+                  durability: {
+                    type: 'number',
+                    title: 'Durability',
+                    minimum: 0,
+                    description: 'How much the item can be used before breaking or deteriorating.'
+                  },
+                  use: {
+                    type: 'string',
+                    title: 'Use',
+                    description: 'How the item is used in the game (e.g., Equip, Consume, Activate).'
+                  }
+                }
+              }
+            },
+            // Maps
+            maps: {
+              title: 'Maps',
+              type: 'array',
+              id: 'maps_v1',
+              options: {
+                collapsed: true
+              },
+              description: 'Collection of maps for the RPG world.',
+              items: {
+                title: 'Map',
+                headerTemplate: '{{self.name}}',
+                type: 'object',
+                id: 'map',
+                options: {
+                  collapsed: true
+                },
+                properties: {
+                  name: {
+                    type: 'string',
+                    title: 'Name',
+                    minLength: 1,
+                    description: 'The name of the map.'
+                  },
+                  defaultColor: {
+                    type: 'string',
+                    title: 'Default Color Code',
+                    description: 'The default color code used for the map, leave empty for transparent (Empty to Transparent).'
+                  },
+                  size: {
+                    type: 'string',
+                    title: 'Image Size',
+                    description: 'Dimensions of the map image (maximum allowed size) (width X height) (Max 4000x4000).'
+                  },
+                  tile: {
+                    type: 'string',
+                    title: 'Tile Size',
+                    description: 'Dimensions of individual map tiles (width X height) (Max 4000x4000).'
+                  },
+                  /* image: {
+                    type: 'string',
+                    title: 'Image URL',
+                    description: 'URL to the image file representing the map.',
+                  }, */
+                  about: {
+                    type: 'string',
+                    format: 'textarea',
+                    title: 'About',
+                    description: 'A description of the map and its significance in the RPG world.'
+                  },
+                  routes: {
+                    title: 'Routes',
+                    type: 'array',
+                    id: 'routes',
+                    options: {
+                      collapsed: true
+                    },
+                    description: 'List of travel routes within the map.',
+                    items: {
+                      title: 'Route',
+                      headerTemplate: '{{i}}',
+                      type: 'object',
+                      id: 'route',
+                      options: {
+                        collapsed: true
+                      },
+                      properties: {
+                        color: {
+                          type: 'string',
+                          title: 'Color Code',
+                          description: 'Color code for the route on the map (Empty to Transparent).'
+                        },
+                        fontColor: {
+                          type: 'string',
+                          title: 'Font Color Code',
+                          description: 'Font color code for text along the route (Empty to Default).'
+                        },
+                        coordinates: {
+                          type: 'string',
+                          title: 'Coordinates',
+                          description: 'Coordinates indicating the start and end points of the route (Width x Height).'
+                        },
+                        about: {
+                          type: 'string',
+                          format: 'textarea',
+                          title: 'About',
+                          description: 'A description of the route and its purpose.'
+                        }
+                      }
+                    }
+                  },
+                  locations: {
+                    title: 'Locations',
+                    type: 'array',
+                    id: 'locations',
+                    options: {
+                      collapsed: true
+                    },
+                    description: 'Locations available on the map.',
+                    items: {
+                      title: 'Location',
+                      headerTemplate: '{{self.name}}',
+                      type: 'object',
+                      id: 'location',
+                      options: {
+                        collapsed: true
+                      },
+                      properties: {
+                        name: {
+                          type: 'string',
+                          title: 'Name',
+                          minLength: 1,
+                          description: 'The name of the location on the map.'
+                        },
+                        mininame: {
+                          type: 'string',
+                          title: 'Mini Name',
+                          description: 'A shorter name or alias for the location.'
+                        },
+                        shop: {
+                          type: 'boolean',
+                          title: 'Enable Shop',
+                          description: 'Indicates if there is a shop available at this location.'
+                        },
+                        color: {
+                          type: 'string',
+                          title: 'Color Code',
+                          description: 'Color code associated with the location on the map (Empty to Transparent).'
+                        },
+                        fontColor: {
+                          type: 'string',
+                          title: 'Font Color Code',
+                          description: 'Font color code for text at the location (Empty to Default).'
+                        },
+                        coordinates: {
+                          type: 'string',
+                          title: 'Coordinates',
+                          description: 'Coordinates marking the location on the map (Width x Height).'
+                        },
+                        about: {
+                          type: 'string',
+                          format: 'textarea',
+                          title: 'About',
+                          description: 'A description of the location and its importance in the game.'
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  };
+
+  // Character Generator
+  rpgBase.generator.characters = {
+    teamCharacters: rpgBase.generator.characterList({
+      title: 'Team Characters',
+      description: 'A list of characters in the team or party who assist in quests, battles, and story progression, with unique interactions with the main character.',
+      id: 'teamCharacters',
+      itemTitle: 'Character',
+      itemID: 'Character',
+      mascot: true
+    }),
+    specialCharacters: rpgBase.generator.characterList({
+      title: 'Special Characters',
+      description: 'A list of key characters with special abilities, unique backgrounds, or significant roles in the story and quests.',
+      id: 'specialCharacters',
+      itemTitle: 'Character',
+      itemID: 'Character',
+      mascot: true
+    }),
+    villainsCharacters: rpgBase.generator.characterList({
+      title: 'Villains Characters',
+      description: 'A list of antagonists or villains who oppose the protagonist, with their own motives, abilities, and goals.',
+      id: 'villainsCharacters',
+      itemTitle: 'Character',
+      itemID: 'Character',
+      mascot: true
+    })
+  };
+
+  // Editor
+  var schema = rpgBase.data;
+
+  // Insert Characters
+  for (var item in rpgBase.generator.characters) {
+    schema.properties[item] = rpgBase.generator.characters[item];
+  }
+
+  // Complete
+  return schema;
+};
+
+},{"./templates.mjs":193}],192:[function(require,module,exports){
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _events = require("events");
+var _socket = require("socket.io-client");
+var _tinyEssentials = require("tiny-essentials");
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
+function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
+function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
+function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+function _classPrivateMethodInitSpec(e, a) { _checkPrivateRedeclaration(e, a), a.add(e); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
+var _cfg = /*#__PURE__*/new WeakMap();
+var _TinyClientIo_brand = /*#__PURE__*/new WeakSet();
+var TinyClientIo = /*#__PURE__*/function (_EventEmitter) {
+  function TinyClientIo(cfg) {
+    var _this;
+    _classCallCheck(this, TinyClientIo);
+    _this = _callSuper(this, TinyClientIo);
+    _classPrivateMethodInitSpec(_this, _TinyClientIo_brand);
+    _classPrivateFieldInitSpec(_this, _cfg, void 0);
+    var _tinyThis = _this;
+    _classPrivateFieldSet(_cfg, _this, cfg);
+    _this.socket = typeof cfg.ip === 'string' && cfg.ip.length > 0 ? new _socket.io(cfg.ip) : null;
+    _this.id = null;
+    _this.connected = false;
+    _this.active = false;
+    _this.resetData();
+    if (_this.socket) {
+      console.log('[socket.io] Starting...');
+      _this.socket.on('disconnect', function (reason, details) {
+        _tinyThis.active = _tinyThis.socket.active;
+        _tinyThis.id = null;
+        _tinyThis.connected = _tinyThis.socket.connected;
+        console.log("[socket-io] [disconnect]".concat(typeof reason === 'string' ? " ".concat(reason) : ''), details);
+      });
+      _this.socket.on('connect_error', function (err) {
+        _tinyThis.active = _tinyThis.socket.active;
+        if (!_tinyThis.socket.active) {
+          // the connection was denied by the server
+          // in that case, `socket.connect()` must be manually called in order to reconnect
+        }
+      });
+      _this.socket.on('connect', function () {
+        _tinyThis.active = _tinyThis.socket.active;
+        console.log("[socket.io] Connected! Id: ".concat(_tinyThis.socket.id));
+        _tinyThis.id = _tinyThis.socket.id;
+        _tinyThis.connected = _tinyThis.socket.connected;
+      });
+      _this.socket.io.on('reconnect_attempt', function () {
+        _tinyThis.active = _tinyThis.socket.active;
+        console.log('[socket.io] Trying to reconnect...');
+      });
+      _this.socket.io.on('reconnect', function () {
+        _tinyThis.active = _tinyThis.socket.active;
+        console.log('[socket.io] Reconnecting...');
+      });
+    }
+    return _this;
+  }
+
+  // Is Active
+  _inherits(TinyClientIo, _EventEmitter);
+  return _createClass(TinyClientIo, [{
+    key: "isActive",
+    value: function isActive() {
+      return this.active;
+    }
+
+    // Get user id
+  }, {
+    key: "getUserId",
+    value: function getUserId() {
+      return _classPrivateFieldGet(_cfg, this).username;
+    }
+
+    // Is connected
+  }, {
+    key: "isConnected",
+    value: function isConnected() {
+      return this.connected;
+    }
+
+    // Get room id
+  }, {
+    key: "getRoomId",
+    value: function getRoomId() {
+      return _classPrivateFieldGet(_cfg, this).roomId;
+    }
+
+    // Reset data
+  }, {
+    key: "resetData",
+    value: function resetData() {
+      this.ratelimit = {};
+      this.room = {};
+      this.roomData = {};
+      this.roomPrivateData = {};
+      this.user = {};
+      this.users = {};
+      this.history = [];
+      this.mods = [];
+    }
+
+    // Rate limit
+  }, {
+    key: "setRateLimit",
+    value: function setRateLimit(result) {
+      this.ratelimit = {
+        limit: {},
+        size: {},
+        time: null,
+        loadAllHistory: null
+      };
+      if ((0, _tinyEssentials.objType)(result, 'object')) {
+        this.ratelimit.loadAllHistory = typeof result.loadAllHistory === 'boolean' ? result.loadAllHistory : true;
+        this.ratelimit.time = typeof result.time === 'number' ? result.time : 0;
+        this.ratelimit.openRegistration = typeof result.openRegistration === 'boolean' ? result.openRegistration : false;
+        if ((0, _tinyEssentials.objType)(result.limit, 'object')) {
+          this.ratelimit.limit = {
+            events: typeof result.limit.events === 'number' ? result.limit.events : 0,
+            diceRolls: typeof result.limit.diceRolls === 'number' ? result.limit.diceRolls : 0,
+            roomUpdates: typeof result.limit.roomUpdates === 'number' ? result.limit.roomUpdates : 0,
+            msg: typeof result.limit.msg === 'number' ? result.limit.msg : 0,
+            roomUsers: typeof result.limit.roomUsers === 'number' ? result.limit.roomUsers : 0
+          };
+        }
+        if ((0, _tinyEssentials.objType)(result.size, 'object')) {
+          this.ratelimit.size = {
+            modelId: typeof result.size.modelId === 'number' ? result.size.modelId : 0,
+            history: typeof result.size.history === 'number' ? result.size.history : 0,
+            minPassword: typeof result.size.minPassword === 'number' ? result.size.minPassword : 0,
+            msg: typeof result.size.msg === 'number' ? result.size.msg : 0,
+            nickname: typeof result.size.nickname === 'number' ? result.size.nickname : 0,
+            password: typeof result.size.password === 'number' ? result.size.password : 0,
+            roomId: typeof result.size.roomId === 'number' ? result.size.roomId : 0,
+            roomTitle: typeof result.size.roomTitle === 'number' ? result.size.roomTitle : 0,
+            userId: typeof result.size.userId === 'number' ? result.size.userId : 0,
+            prompt: typeof result.size.prompt === 'number' ? result.size.prompt : 0,
+            systemInstruction: typeof result.size.systemInstruction === 'number' ? result.size.systemInstruction : 0,
+            firstDialogue: typeof result.size.firstDialogue === 'number' ? result.size.firstDialogue : 0
+          };
+        }
+        if ((0, _tinyEssentials.objType)(result.dice, 'object')) {
+          this.ratelimit.dice = {
+            img: typeof result.dice.img === 'number' ? result.dice.img : 0,
+            border: typeof result.dice.border === 'number' ? result.dice.border : 0,
+            bg: typeof result.dice.bg === 'number' ? result.dice.bg : 0,
+            text: typeof result.dice.text === 'number' ? result.dice.text : 0,
+            selectionBg: typeof result.dice.selectionBg === 'number' ? result.dice.selectionBg : 0,
+            selectionText: typeof result.dice.selectionText === 'number' ? result.dice.selectionText : 0,
+            amount: typeof result.dice.amount === 'number' ? result.dice.amount : 0,
+            sides: typeof result.dice.sides === 'number' ? result.dice.sides : 0
+          };
+        }
+      }
+    }
+  }, {
+    key: "getRateLimit",
+    value: function getRateLimit() {
+      return this.ratelimit || {};
+    }
+
+    // Dice
+  }, {
+    key: "setDice",
+    value: function setDice(result) {
+      this.dice = {};
+      if ((0, _tinyEssentials.objType)(result, 'object')) {
+        var _this$getRateLimit;
+        var ratelimit = (_this$getRateLimit = this.getRateLimit()) === null || _this$getRateLimit === void 0 ? void 0 : _this$getRateLimit.dice;
+        this.dice.img = typeof result.img === 'string' ? result.img.substring(0, ratelimit.img || result.img.length) : null;
+        this.dice.border = typeof result.border === 'string' ? result.border.substring(0, ratelimit.border || result.border.length) : null;
+        this.dice.bg = typeof result.bg === 'string' ? result.bg.substring(0, ratelimit.bg || result.bg.length) : null;
+        this.dice.text = typeof result.text === 'string' ? result.text.substring(0, ratelimit.text || result.text.length) : null;
+        this.dice.selectionBg = typeof result.selectionBg === 'string' ? result.selectionBg.substring(0, ratelimit.selectionBg || result.selectionBg.length) : null;
+        this.dice.selectionText = typeof result.selectionText === 'string' ? result.selectionText.substring(0, ratelimit.selectionText || result.selectionText.length) : null;
+      }
+    }
+  }, {
+    key: "getDice",
+    value: function getDice() {
+      return this.dice;
+    }
+
+    // User
+  }, {
+    key: "setUser",
+    value: function setUser(result) {
+      if ((0, _tinyEssentials.objType)(result, 'object')) {
+        this.user = {
+          isAdmin: typeof result.isAdmin === 'boolean' ? result.isAdmin : false,
+          isMod: typeof result.isMod === 'boolean' ? result.isMod : false,
+          nickname: typeof result.nickname === 'string' ? result.nickname : '',
+          userId: typeof result.userId === 'string' ? result.userId : ''
+        };
+        this.setRateLimit(result.ratelimit);
+        this.setDice(result.dice);
+      } else {
+        this.user = {};
+        this.setRateLimit();
+        this.setDice();
+      }
+    }
+  }, {
+    key: "getUser",
+    value: function getUser() {
+      return this.user || {};
+    }
+
+    // Users
+  }, {
+    key: "setUsers",
+    value: function setUsers(result) {
+      this.users = (0, _tinyEssentials.objType)(result, 'object') ? result : {};
+    }
+  }, {
+    key: "addUser",
+    value: function addUser(result) {
+      if (!this.users) this.users = {};
+      if ((0, _tinyEssentials.objType)(result, 'object') && typeof result.userId === 'string') {
+        this.users[result.userId] = {
+          ping: typeof result.ping === 'number' ? result.ping : 0,
+          nickname: typeof result.nickname === 'string' ? result.nickname : null
+        };
+        return {
+          data: this.users[result.userId],
+          userId: result.userId
+        };
+      }
+    }
+  }, {
+    key: "editUser",
+    value: function editUser(result) {
+      if (!this.users) this.users = {};
+      if ((0, _tinyEssentials.objType)(result, 'object') && typeof result.userId === 'string') {
+        if (typeof result.ping === 'number') this.users[result.userId].ping = result.ping;
+        if (typeof result.nickname === 'string') this.users[result.userId].nickname = result.nickname;
+        return this.users[result.userId];
+      }
+    }
+  }, {
+    key: "removeUser",
+    value: function removeUser(result) {
+      if ((0, _tinyEssentials.objType)(result, 'object') && this.users) {
+        if (typeof result.userId === 'string' && this.users[result.userId]) {
+          delete this.users[result.userId];
+          return result.userId;
+        }
+      }
+      return null;
+    }
+  }, {
+    key: "getUsers",
+    value: function getUsers() {
+      return this.users || {};
+    }
+
+    // Room
+  }, {
+    key: "setRoom",
+    value: function setRoom(result) {
+      if ((0, _tinyEssentials.objType)(result, 'object')) {
+        this.room = {
+          title: typeof result.title === 'string' ? result.title : '',
+          ownerId: typeof result.ownerId === 'string' ? result.ownerId : '',
+          maxUsers: typeof result.maxUsers === 'number' ? result.maxUsers : 0,
+          model: typeof result.model === 'string' ? result.model : null,
+          prompt: typeof result.prompt === 'string' ? result.prompt : null,
+          firstDialogue: typeof result.firstDialogue === 'string' ? result.firstDialogue : null,
+          systemInstruction: typeof result.systemInstruction === 'string' ? result.systemInstruction : null,
+          maxOutputTokens: typeof result.maxOutputTokens === 'number' ? result.maxOutputTokens : null,
+          temperature: typeof result.temperature === 'number' ? result.temperature : null,
+          topP: typeof result.topP === 'number' ? result.topP : null,
+          topK: typeof result.topK === 'number' ? result.topK : null,
+          presencePenalty: typeof result.presencePenalty === 'number' ? result.presencePenalty : null,
+          frequencyPenalty: typeof result.frequencyPenalty === 'number' ? result.frequencyPenalty : null,
+          disabled: typeof result.disabled === 'number' ? result.disabled ? true : false : false
+        };
+        return this.room;
+      }
+    }
+  }, {
+    key: "setRoomData",
+    value: function setRoomData(result) {
+      if ((0, _tinyEssentials.objType)(result, 'object') && (0, _tinyEssentials.objType)(result.values, 'object') && typeof result.isPrivate === 'boolean') {
+        if (result.isPrivate) this.roomPrivateData = result.values;else this.roomData = result.values;
+        return {
+          isPrivate: result.isPrivate,
+          values: result.values
+        };
+      }
+    }
+  }, {
+    key: "setRoomBase",
+    value: function setRoomBase(result) {
+      if ((0, _tinyEssentials.objType)(result, 'object') && (0, _tinyEssentials.objType)(result.data, 'object') && (0, _tinyEssentials.objType)(result.users, 'object') && (0, _tinyEssentials.objType)(result.roomData, 'object') && (0, _tinyEssentials.objType)(result.roomPrivateData, 'object') && Array.isArray(result.history) && Array.isArray(result.mods)) {
+        // Room data
+        this.setRoom(result.data);
+
+        // Users
+        this.setUsers({});
+        for (var _item in result.users) this.addUser(_objectSpread({
+          userId: _item
+        }, result.users[_item]));
+
+        // Mods
+        this.setMods([]);
+        for (var index in result.mods) if (typeof result.mods[index].userId === 'string') this.addModUser(result.mods[index].userId);
+
+        // History
+        this.setHistory([]);
+        for (var _index in result.history) this.addHistory(result.history[_index]);
+
+        // Room Data
+        this.setRoomData({
+          values: result.roomData,
+          isPrivate: false
+        });
+        this.setRoomData({
+          values: result.roomPrivateData,
+          isPrivate: true
+        });
+
+        // Complete
+        return true;
+      }
+      // Error
+      else {
+        this.setRoom({});
+        this.setUsers({});
+        this.setHistory([]);
+        this.setMods([]);
+        return false;
+      }
+    }
+  }, {
+    key: "getRoomData",
+    value: function getRoomData() {
+      return this.roomData || {};
+    }
+  }, {
+    key: "getRoomPrivateData",
+    value: function getRoomPrivateData() {
+      return this.roomPrivateData || {};
+    }
+  }, {
+    key: "getRoom",
+    value: function getRoom() {
+      return this.room || {};
+    }
+
+    // History
+  }, {
+    key: "setHistory",
+    value: function setHistory(result) {
+      this.history = Array.isArray(result) ? result : [];
+    }
+  }, {
+    key: "getHistory",
+    value: function getHistory() {
+      return this.history || [];
+    }
+  }, {
+    key: "addHistory",
+    value: function addHistory(data) {
+      if (this.history.findIndex(function (item) {
+        return item.id === data.id;
+      }) < 0) {
+        var newData = _assertClassBrand(_TinyClientIo_brand, this, _filterHistoryData).call(this, item);
+        this.history.push(newData);
+        return newData;
+      }
+    }
+  }, {
+    key: "editHistory",
+    value: function editHistory(data) {
+      var index = this.history.findIndex(function (item) {
+        return item.id === data.id;
+      });
+      if (index > -1) {
+        this.history[index] = _assertClassBrand(_TinyClientIo_brand, this, _filterHistoryData).call(this, data);
+        return this.history[index];
+      }
+    }
+  }, {
+    key: "removeHistory",
+    value: function removeHistory(id) {
+      var index = this.history.findIndex(function (item) {
+        return item.id === id;
+      });
+      if (index > -1) {
+        var _id = this.history[index].id;
+        this.history.splice(index, 1);
+        return _id;
+      }
+    }
+
+    // Mods
+  }, {
+    key: "getMods",
+    value: function getMods() {
+      return this.mods || [];
+    }
+  }, {
+    key: "setMods",
+    value: function setMods(result) {
+      this.mods = Array.isArray(result) ? result : [];
+    }
+  }, {
+    key: "addModUser",
+    value: function addModUser(userId) {
+      if (this.mods.indexOf(userId) < 0) this.mods.push(userId);
+    }
+  }, {
+    key: "removeModUser",
+    value: function removeModUser(userId) {
+      var index = this.mods.indexOf(userId);
+      if (index > -1) this.mods.splice(index, 1);
+    }
+
+    // Socket emit
+  }, {
+    key: "onConnect",
+    value:
+    // On connection
+    function onConnect(callback) {
+      this.socket.on('connect', callback);
+    }
+  }, {
+    key: "offConnect",
+    value: function offConnect(callback) {
+      this.socket.off('connect', callback);
+    }
+  }, {
+    key: "onDisconnect",
+    value: function onDisconnect(callback) {
+      this.socket.on('disconnect', callback);
+    }
+  }, {
+    key: "offDisconnect",
+    value: function offDisconnect(callback) {
+      this.socket.off('disconnect', callback);
+    }
+
+    // On user updated
+  }, {
+    key: "onUserUpdated",
+    value: function onUserUpdated(callback) {
+      this.socket.on('user-updated', callback);
+    }
+  }, {
+    key: "offUserUpdated",
+    value: function offUserUpdated(callback) {
+      this.socket.off('user-updated', callback);
+    }
+
+    // On message load
+  }, {
+    key: "onRoomEnter",
+    value: function onRoomEnter(callback) {
+      this.socket.on('room-entered', callback);
+    }
+  }, {
+    key: "offRoomEnter",
+    value: function offRoomEnter(callback) {
+      this.socket.off('room-entered', callback);
+    }
+
+    // On new message
+  }, {
+    key: "onNewMessage",
+    value: function onNewMessage(callback) {
+      this.socket.on('new-message', callback);
+    }
+  }, {
+    key: "offNewMessage",
+    value: function offNewMessage(callback) {
+      this.socket.off('new-message', callback);
+    }
+
+    // On message edit
+  }, {
+    key: "onMessageEdit",
+    value: function onMessageEdit(callback) {
+      this.socket.on('message-updated', callback);
+    }
+  }, {
+    key: "offMessageEdit",
+    value: function offMessageEdit(callback) {
+      this.socket.off('message-updated', callback);
+    }
+
+    // On message delete
+  }, {
+    key: "onMessageDelete",
+    value: function onMessageDelete(callback) {
+      this.socket.on('message-deleted', callback);
+    }
+  }, {
+    key: "offMessageDelete",
+    value: function offMessageDelete(callback) {
+      this.socket.off('message-deleted', callback);
+    }
+
+    // On dice result
+  }, {
+    key: "onDiceRoll",
+    value: function onDiceRoll(callback) {
+      this.socket.on('roll-result', callback);
+    }
+  }, {
+    key: "offDiceRoll",
+    value: function offDiceRoll(callback) {
+      this.socket.off('roll-result', callback);
+    }
+
+    // On server ratelimit load
+  }, {
+    key: "onGetRateLimit",
+    value: function onGetRateLimit(callback) {
+      this.socket.on('ratelimt-updated', callback);
+    }
+  }, {
+    key: "offGetRateLimit",
+    value: function offGetRateLimit(callback) {
+      this.socket.off('ratelimt-updated', callback);
+    }
+
+    // On room updates
+  }, {
+    key: "onRoomUpdates",
+    value: function onRoomUpdates(callback) {
+      this.socket.on('room-updated', callback);
+    }
+  }, {
+    key: "offRoomUpdates",
+    value: function offRoomUpdates(callback) {
+      this.socket.off('room-updated', callback);
+    }
+
+    // On user banned from room
+  }, {
+    key: "onRoomBan",
+    value: function onRoomBan(callback) {
+      this.socket.on('user-banned', callback);
+    }
+  }, {
+    key: "offRoomBan",
+    value: function offRoomBan(callback) {
+      this.socket.off('user-banned', callback);
+    }
+
+    // On kicked from room
+  }, {
+    key: "onRoomKick",
+    value: function onRoomKick(callback) {
+      this.socket.on('user-kicked', callback);
+    }
+  }, {
+    key: "offRoomKick",
+    value: function offRoomKick(callback) {
+      this.socket.off('user-kicked', callback);
+    }
+
+    // On user left room
+  }, {
+    key: "onUserLeft",
+    value: function onUserLeft(callback) {
+      this.socket.on('user-left', callback);
+    }
+  }, {
+    key: "offUserLeft",
+    value: function offUserLeft(callback) {
+      this.socket.off('user-left', callback);
+    }
+
+    // On user join room
+  }, {
+    key: "onUserJoin",
+    value: function onUserJoin(callback) {
+      this.socket.on('user-joined', callback);
+    }
+  }, {
+    key: "offUserJoin",
+    value: function offUserJoin(callback) {
+      this.socket.off('user-joined', callback);
+    }
+
+    // On room data
+  }, {
+    key: "onRoomData",
+    value: function onRoomData(callback) {
+      this.socket.on('room-data-updated', callback);
+    }
+  }, {
+    key: "offRoomData",
+    value: function offRoomData(callback) {
+      this.socket.off('room-data-updated', callback);
+    }
+
+    // On mod change
+  }, {
+    key: "onRoomModChange",
+    value: function onRoomModChange(callback) {
+      this.socket.on('room-mod-updated', callback);
+    }
+  }, {
+    key: "offRoomModChange",
+    value: function offRoomModChange(callback) {
+      this.socket.off('room-mod-updated', callback);
+    }
+
+    // Login account
+  }, {
+    key: "login",
+    value: function login() {
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'login', {
+        userId: _classPrivateFieldGet(_cfg, this).username,
+        password: _classPrivateFieldGet(_cfg, this).password
+      });
+    }
+
+    // Join room
+  }, {
+    key: "joinRoom",
+    value: function joinRoom() {
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'join', {
+        roomId: _classPrivateFieldGet(_cfg, this).roomId,
+        password: _classPrivateFieldGet(_cfg, this).roomPassword
+      });
+    }
+
+    // Leave room
+  }, {
+    key: "leaveRoom",
+    value: function leaveRoom() {
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'leave', {
+        roomId: _classPrivateFieldGet(_cfg, this).roomId
+      });
+    }
+
+    // Ban user room
+  }, {
+    key: "banUser",
+    value: function banUser() {
+      var userId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'ban-from-room', {
+        userId: userId,
+        roomId: _classPrivateFieldGet(_cfg, this).roomId
+      });
+    }
+
+    // Unban user room
+  }, {
+    key: "unbanUser",
+    value: function unbanUser() {
+      var userId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'unban-from-room', {
+        userId: userId,
+        roomId: _classPrivateFieldGet(_cfg, this).roomId
+      });
+    }
+
+    // Kick user room
+  }, {
+    key: "kickUser",
+    value: function kickUser() {
+      var userId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'kick-from-room', {
+        userId: userId,
+        roomId: _classPrivateFieldGet(_cfg, this).roomId
+      });
+    }
+
+    // Login account
+  }, {
+    key: "setAccountDice",
+    value: function setAccountDice(diceSkin) {
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'set-dice', {
+        diceSkin: diceSkin
+      });
+    }
+
+    // Create room
+  }, {
+    key: "existsRoom",
+    value: function existsRoom() {
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'exists-room', {
+        roomId: _classPrivateFieldGet(_cfg, this).roomId
+      });
+    }
+
+    // Create room
+  }, {
+    key: "createRoom",
+    value: function createRoom() {
+      var title = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'create-room', {
+        roomId: _classPrivateFieldGet(_cfg, this).roomId,
+        password: _classPrivateFieldGet(_cfg, this).roomPassword,
+        title: title
+      });
+    }
+
+    // Delete room
+  }, {
+    key: "deleteRoom",
+    value: function deleteRoom(password) {
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'delete-room', {
+        roomId: _classPrivateFieldGet(_cfg, this).roomId,
+        password: password
+      });
+    }
+
+    // Disable room
+  }, {
+    key: "disableRoom",
+    value: function disableRoom() {
+      var _this2 = this;
+      var tinyThis = this;
+      return new Promise(function (resolve, reject) {
+        return _assertClassBrand(_TinyClientIo_brand, tinyThis, _socketEmitApi).call(tinyThis, 'disable-room', {
+          roomId: _classPrivateFieldGet(_cfg, _this2).roomId
+        }).then(function (result) {
+          if (!result.error) tinyThis.room.disabled = true;
+          resolve(result);
+        })["catch"](reject);
+      });
+    }
+
+    // Enable room
+  }, {
+    key: "enableRoom",
+    value: function enableRoom() {
+      var _this3 = this;
+      var tinyThis = this;
+      return new Promise(function (resolve, reject) {
+        return _assertClassBrand(_TinyClientIo_brand, tinyThis, _socketEmitApi).call(tinyThis, 'enable-room', {
+          roomId: _classPrivateFieldGet(_cfg, _this3).roomId
+        }).then(function (result) {
+          if (!result.error) tinyThis.room.disabled = false;
+          resolve(result);
+        })["catch"](reject);
+      });
+    }
+
+    // Add room mods
+  }, {
+    key: "addMod",
+    value: function addMod() {
+      var mods = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'room-add-mod', {
+        roomId: _classPrivateFieldGet(_cfg, this).roomId,
+        mods: mods
+      });
+    }
+
+    // Remove room mods
+  }, {
+    key: "removeMod",
+    value: function removeMod() {
+      var mods = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'room-remove-mod', {
+        roomId: _classPrivateFieldGet(_cfg, this).roomId,
+        mods: mods
+      });
+    }
+
+    // Update room settings
+  }, {
+    key: "updateRoomSettings",
+    value: function updateRoomSettings() {
+      var settings = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'update-room', {
+        roomId: _classPrivateFieldGet(_cfg, this).roomId,
+        newSettings: settings
+      });
+    }
+
+    // Update room data
+  }, {
+    key: "updateRoomData",
+    value: function updateRoomData() {
+      var values = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var isPrivate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'update-room', {
+        roomId: _classPrivateFieldGet(_cfg, this).roomId,
+        isPrivate: isPrivate,
+        values: values
+      });
+    }
+
+    // Ban a server account
+  }, {
+    key: "banAccount",
+    value: function banAccount() {
+      var userId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var reason = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'ban', {
+        userId: userId,
+        reason: reason
+      });
+    }
+
+    // Unban a server account
+  }, {
+    key: "unbanAccount",
+    value: function unbanAccount() {
+      var userId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'unban', {
+        userId: userId
+      });
+    }
+
+    // Kick a server account
+  }, {
+    key: "kickAccount",
+    value: function kickAccount() {
+      var userId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'kick', {
+        userId: userId
+      });
+    }
+
+    // Change your password
+  }, {
+    key: "changePassword",
+    value: function changePassword() {
+      var oldPassword = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var password = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'change-password', {
+        password: password,
+        oldPassword: oldPassword
+      });
+    }
+
+    // Change your nickname
+  }, {
+    key: "changeNickname",
+    value: function changeNickname() {
+      var nickname = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var tinyThis = this;
+      return new Promise(function (resolve, reject) {
+        return _assertClassBrand(_TinyClientIo_brand, tinyThis, _socketEmitApi).call(tinyThis, 'change-nickname', {
+          nickname: nickname
+        }).then(function (result) {
+          if (!result.error) tinyThis.user.nickname = nickname;
+          resolve(result);
+        })["catch"](reject);
+      });
+    }
+
+    // Register account
+  }, {
+    key: "register",
+    value: function register() {
+      var userId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var password = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+      var nickname = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'register', {
+        userId: userId,
+        password: password,
+        nickname: nickname
+      });
+    }
+
+    // Send room message
+  }, {
+    key: "sendMessage",
+    value: function sendMessage() {
+      var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'send-message', {
+        roomId: _classPrivateFieldGet(_cfg, this).roomId,
+        message: message
+      });
+    }
+
+    // Edit room message
+  }, {
+    key: "editMessage",
+    value: function editMessage() {
+      var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var msgId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'edit-message', {
+        roomId: _classPrivateFieldGet(_cfg, this).roomId,
+        messageId: msgId,
+        newText: message
+      });
+    }
+
+    // Delete room message
+  }, {
+    key: "deleteMessage",
+    value: function deleteMessage() {
+      var msgId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'delete-message', {
+        roomId: _classPrivateFieldGet(_cfg, this).roomId,
+        messageId: msgId
+      });
+    }
+
+    // Roll Dice
+  }, {
+    key: "rollDice",
+    value: function rollDice() {
+      var dice = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      var canZero = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      return _assertClassBrand(_TinyClientIo_brand, this, _socketEmitApi).call(this, 'roll-dice', {
+        roomId: _classPrivateFieldGet(_cfg, this).roomId,
+        canZero: canZero,
+        dice: dice
+      });
+    }
+  }, {
+    key: "getSocket",
+    value: function getSocket() {
+      return this.socket;
+    }
+  }, {
+    key: "connect",
+    value: function connect() {
+      this.socket.connect();
+    }
+  }, {
+    key: "disconnect",
+    value: function disconnect() {
+      this.socket.disconnect();
+    }
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      if (this.socket) this.socket.destroy();
+    }
+  }, {
+    key: "checkRoomId",
+    value: function checkRoomId(result) {
+      return (0, _tinyEssentials.objType)(result, 'object') && result.roomId === this.getRoomId();
+    }
+  }, {
+    key: "install",
+    value: function install(tinyAiScript) {
+      var _this4 = this;
+      var client = this;
+      // Dice
+      client.onDiceRoll(function (result) {
+        if (client.checkRoomId(result)) {
+          var data = {
+            total: null,
+            results: null
+          };
+          if (typeof result.total === 'number') data.total = result.total;
+          if (Array.isArray(result.results)) {
+            data.results = [];
+            for (var index in result.results) if (typeof result.results[index].sides === 'number' && typeof result.results[index].roll === 'number') data.results.push({
+              sides: result.results[index].sides,
+              roll: result.results[index].roll
+            });
+          }
+          client.emit('diceRoll', data);
+          console.log('[socket-io] [dice]', data);
+        }
+      });
+
+      // Get user updated
+      client.onUserUpdated(function (result) {
+        if (client.checkRoomId(result) && (0, _tinyEssentials.objType)(result.data, 'object') && typeof result.userId === 'string' && typeof result.data.nickname === 'string') {
+          var data = client.editUser({
+            userId: result.userId,
+            nickname: result.data.nickname
+          });
+          if (result.userId === client.getUserId()) _this4.user.nickname = result.data.nickname;
+          if (data) client.emit('userUpdated', data);
+          console.log('[socket-io] [user-data]', client.getUser());
+        }
+      });
+
+      // Get ratelimit data
+      client.onGetRateLimit(function (result) {
+        client.setRateLimit(result);
+        client.emit('getRateLimit', client.getRateLimit());
+        console.log('[socket-io] [ratelimit]', client.getRateLimit());
+      });
+
+      // Room updates
+      client.onRoomUpdates(function (result) {
+        if (client.checkRoomId(result) && (0, _tinyEssentials.objType)(result.data, 'object')) {
+          var data = client.setRoom(result.data);
+          if (data) client.emit('roomUpdates', data);
+          console.log('[socket-io] [room]', client.getRoom());
+        }
+      });
+
+      // User ban
+      client.onRoomBan(function (result) {
+        if (client.checkRoomId(result)) {
+          var data = typeof result.userId === 'string' ? result.userId : null;
+          client.emit('userBanned', data);
+          console.log('[socket-io] [room-ban]', data);
+        }
+      });
+
+      // User kick
+      client.onRoomKick(function (result) {
+        if (client.checkRoomId(result)) {
+          var data = typeof result.userId === 'string' ? result.userId : null;
+          client.emit('userKicked', data);
+          console.log('[socket-io] [room-kick]', data);
+        }
+      });
+
+      // User left
+      client.onUserLeft(function (result) {
+        if (client.checkRoomId(result)) {
+          var data = client.removeUser(result);
+          if (data) client.emit('userLeft', data);
+          console.log('[socket-io] [room-users]', client.getUsers());
+        }
+      });
+
+      // User join
+      client.onUserJoin(function (result) {
+        if (client.checkRoomId(result)) {
+          var data = client.addUser(result);
+          if (data) client.emit('userJoined', data);
+          console.log('[socket-io] [room-users]', client.getUsers());
+        }
+      });
+
+      // Room data
+      client.onRoomData(function (result) {
+        if (client.checkRoomId(result)) {
+          var data = client.setRoomData(result);
+          console.log('[socket-io] [room-data]', data);
+        }
+      });
+
+      // New message
+      client.onNewMessage(function (result) {
+        var data = client.addHistory(result);
+        if (data) client.emit('newMessage', data);
+        console.log('[socket-io] [message-add]', client.getHistory());
+      });
+
+      // Message delete
+      client.onMessageDelete(function (result) {
+        if (client.checkRoomId(result)) {
+          var data = client.removeHistory(result.id);
+          if (data) client.emit('messageDelete', data);
+          console.log('[socket-io] [message-delete]', client.getHistory());
+        }
+      });
+
+      // Message edit
+      client.onMessageEdit(function (result) {
+        if (client.checkRoomId(result)) {
+          var data = client.editHistory(result);
+          if (data) client.emit('messageEdit', data);
+          console.log('[socket-io] [message-edit]', client.getHistory());
+        }
+      });
+
+      // Get room data
+      client.onRoomEnter(function (result) {
+        if (client.checkRoomId(result)) {
+          if (!client.setRoomBase(result)) client.emit('roomEntered', false);else client.emit('roomEntered', true);
+          client.emit('roomEnter');
+          console.log('[socket-io] [room-data]', {
+            history: client.getHistory(),
+            room: client.getRoom(),
+            users: client.getUsers(),
+            mods: client.getMods(),
+            roomData: client.getRoomData(),
+            roomPrivateData: client.getRoomPrivateData()
+          });
+        }
+      });
+
+      // Mod list update
+      client.onRoomModChange(function (result) {
+        if (client.checkRoomId(result)) {
+          if (Array.isArray(result.result)) {
+            for (var index in result.result) {
+              if (typeof result.result[index] === 'string') {
+                if (result.type === 'add') {
+                  client.addModUser(result.result[index]);
+                  client.emit('roomModChange', 'add', result.result[index]);
+                }
+                if (result.type === 'remove') {
+                  client.removeModUser(result.result[index]);
+                  client.emit('roomModChange', 'remove', result.result[index]);
+                }
+              }
+            }
+          }
+          console.log('[socket-io] [mod-data]', client.getMods());
+        }
+      });
+
+      // Connect
+      client.onConnect(function () {
+        var _client$getSocket;
+        client.resetData();
+        client.emit('connect', (_client$getSocket = client.getSocket()) === null || _client$getSocket === void 0 ? void 0 : _client$getSocket.id);
+        // Login
+        client.login().then(function (result) {
+          // Check room
+          client.emit('join', result);
+          if (!result.error) {
+            // Insert data
+            client.setUser(result);
+            console.log('[socket-io] [user-data]', client.getUser());
+            console.log('[socket-io] [dice]', client.getDice());
+            console.log('[socket-io] [ratelimit]', client.getRateLimit());
+            client.existsRoom().then(function (result2) {
+              // Join room
+              var joinRoom = function joinRoom() {
+                return client.joinRoom().then(function (result4) {
+                  // Error
+                  if (result4.error) client.emit('roomError', result4);
+                  // Complete
+                  else client.emit('roomJoinned', result4);
+                });
+              };
+
+              // Error
+              if (result2.error) client.emit('roomError', result2);
+              // Exists?
+              else if (result2.exists) joinRoom();else {
+                if (!tinyAiScript.mpClient) client.createRoom().then(function (result3) {
+                  if (!result3.error) joinRoom();else client.emit('roomError', result3);
+                });else client.emit('roomNotFound', result2);
+              }
+            });
+          }
+        });
+      });
+
+      // Disconnect
+      client.onDisconnect(function (reason, details) {
+        client.emit('disconnect', reason, details);
+      });
+    }
+  }]);
+}(_events.EventEmitter);
+function _filterHistoryData(data) {
+  return data;
+}
+function _socketEmitApi(where, data) {
+  var tinyThis = this;
+  return new Promise(function (resolve) {
+    return tinyThis.socket.emit(where, data, function (result) {
+      return resolve(result);
+    });
+  });
+}
+var _default = exports["default"] = TinyClientIo;
+
+},{"events":84,"socket.io-client":99,"tiny-essentials":161}],193:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var aiTemplates = {
+  funcs: {},
+  instructions: {},
+  helpers: {},
+  prompts: []
+};
+
+// is four-legged and pony-like
+
+// Max Tokens warning
+aiTemplates.funcs.maxTokensWarn = function (maxOutputTokens) {
+  var isTextContinue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  return "".concat(typeof maxOutputTokens === 'number' ? "".concat(!isTextContinue ? 'A' : 'a', "ll your new responses must respect a maximum output length of ").concat(String(maxOutputTokens), " characters without losing any content.") : '');
+};
+
+// Native Language
+aiTemplates.helpers.ficNativeUserLanguage = "\nIf the user is sending messages in another language, translate the messages to the language of the user's message.\n";
+
+// Tell lines
+aiTemplates.helpers.ficTellLines = "Tell which lines of fic you are referring to tell your answers to help the user search the source of your answers.";
+
+// Fic Markers
+aiTemplates.funcs.ficTimeCheckerStart = function (where, howMake) {
+  return "".concat(where, " markers in the story are presented as \"").concat(howMake, "\"");
+};
+aiTemplates.funcs.ficTimeCheckerFix = function (where) {
+  return ", tell the ".concat(where, " markers in natural language only, not mentioning technical details that i mentioned");
+};
+aiTemplates.helpers.ficTimeCheckerLine = "".concat(aiTemplates.funcs.ficTimeCheckerStart('Fic line', '[Fic Line X]')).concat(aiTemplates.funcs.ficTimeCheckerFix('fic line'), ".");
+aiTemplates.helpers.ficTimeCheckerDayCounter = "".concat(aiTemplates.funcs.ficTimeCheckerStart('Time', 'Day Number= X')).concat(aiTemplates.funcs.ficTimeCheckerFix('time'), ".");
+aiTemplates.helpers.ficTimeCheckerDayStatus = "".concat(aiTemplates.funcs.ficTimeCheckerStart('Day', 'Day Status= X'), ", used to mark if the specific part of the story is \"morning\", \"evening\", \"night\", \"lateAtNight\"").concat(aiTemplates.funcs.ficTimeCheckerFix('day'), ".");
+aiTemplates.helpers.ficTimeCheckerWeather = "".concat(aiTemplates.funcs.ficTimeCheckerStart('Weather', 'Weather= X'), ", used to mark if the specific part of the story is \"sun\", \"bolt\", \"rain\", \"heavyrain\", \"rain\", \"snow\"").concat(aiTemplates.funcs.ficTimeCheckerFix('weather'), ".");
+aiTemplates.helpers.ficTimeCheckerLocation = "".concat(aiTemplates.funcs.ficTimeCheckerStart('Location', 'Location= X'), ", used to mark where the story is currently happening, do not try guessing unknown location markers without the user's permission").concat(aiTemplates.funcs.ficTimeCheckerFix('location'), ".");
+aiTemplates.helpers.ficTimeCheckerCuriosities = "".concat(aiTemplates.funcs.ficTimeCheckerStart('Curiosities', 'Curiosity= X')).concat(aiTemplates.funcs.ficTimeCheckerFix('curiosities'), ".");
+
+// Fic File
+aiTemplates.helpers.ficTimeChecker = "\nThe \"---------- Official Pony Driland fic file ----------\" is the beginning where the official file data of the fic Pony Driland begin and the \"---------- The end Official Pony Driland fic file ----------\" is where this official data ends, this information is important for you to know the difference between official content from non-official content.\n";
+
+// Rpg data
+aiTemplates.helpers.ficRpgChecker = "\nThe section \"---------- RPG User Data ----------\" marks the beginning of the official RPG data file, while the section \"---------- The end RPG User Official Data ----------\" marks its conclusion.\nAny content found between these RPG markers represents the official RPG data and should be used as the authoritative reference when validating roleplay actions or retrieving RPG-related information, always prioritizing the official data for consistency and accuracy in RPG interactions.\n";
+
+// SFW Mode
+aiTemplates.helpers.sfwMode = "Do not allow the user to view explicit content of fic as vore, detailed violence, sexual content, if necessary at a moment the user tries to insist for more details, just decrease the amount of not safe details to stay safer explain the context to the user without lying the real nature of the content.";
+
+// Emojis
+aiTemplates.helpers.messageEmojis = "You can add emojis in the middle of your messages as a complement to show emotions of your text.";
+
+// Instructions Template
+
+// Sandbox
+aiTemplates.helpers.sandBoxToFic = "You are an AI dedicated specifically to the fic Pony Driland and all chapters specified in this fic.\nEverything you answer should correspond to what you know about the universe of this fic.";
+
+// Full Talk
+aiTemplates.helpers.talkToFic = "You are an AI dedicated specifically to chat about the fic Pony Driland and all chapters specified in this fic.\nEverything you answer should correspond to what you know about the universe of this fic. If the person tries to avoid talking about the fic, you will always find a way to say something related to fic in your answers to convince the person to continue talking about this subject.\n\nAnswer the questions with the best and most possible details using markdown formatting. You can categorize your answers in explanation lists.";
+
+// Instructions
+
+// Sandbox
+aiTemplates.instructions.sandBoxToFic = "".concat(aiTemplates.helpers.sandBoxToFic, "\n").concat(aiTemplates.helpers.ficTimeChecker, "\n").concat(aiTemplates.helpers.ficTimeCheckerDayStatus, "\n").concat(aiTemplates.helpers.ficTimeCheckerWeather, "\n").concat(aiTemplates.helpers.ficTimeCheckerLocation, "\n").concat(aiTemplates.helpers.ficTimeCheckerCuriosities);
+
+// Full Talk
+aiTemplates.instructions.talkToFic = "".concat(aiTemplates.helpers.talkToFic, "\n").concat(aiTemplates.helpers.ficNativeUserLanguage, "\n").concat(aiTemplates.helpers.ficTimeChecker, "\n").concat(aiTemplates.helpers.ficTimeCheckerLine, "\n").concat(aiTemplates.helpers.ficTimeCheckerDayCounter, "\n").concat(aiTemplates.helpers.ficTimeCheckerDayStatus, "\n").concat(aiTemplates.helpers.ficTimeCheckerWeather, "\n").concat(aiTemplates.helpers.ficTimeCheckerLocation, "\n").concat(aiTemplates.helpers.ficTimeCheckerCuriosities);
+
+// Safe Talk
+aiTemplates.instructions.talkToFicSfw = "".concat(aiTemplates.instructions.talkToFic, "\n").concat(aiTemplates.helpers.sfwMode);
+
+// Instructions List
+aiTemplates.prompts.push({
+  name: 'System Instructions',
+  disabled: true,
+  type: 'instructionText'
+});
+aiTemplates.prompts.push({
+  name: 'Fic Talk',
+  value: 'fic-talk',
+  instructionText: aiTemplates.helpers.talkToFic
+});
+aiTemplates.prompts.push({
+  name: 'Sandbox',
+  value: 'sandbox',
+  instructionText: aiTemplates.helpers.sandBoxToFic
+});
+aiTemplates.prompts.push({
+  name: 'Fic Content Checker',
+  value: 'fic-content-checker',
+  instructionText: aiTemplates.helpers.ficTimeChecker
+});
+aiTemplates.prompts.push({
+  name: 'Fic Content Day Status',
+  value: 'fic-content-checker',
+  instructionText: aiTemplates.helpers.ficTimeCheckerDayStatus
+});
+aiTemplates.prompts.push({
+  name: 'Fic Content Weather',
+  value: 'fic-content-checker',
+  instructionText: aiTemplates.helpers.ficTimeCheckerWeather
+});
+aiTemplates.prompts.push({
+  name: 'Fic Content Location',
+  value: 'fic-content-checker',
+  instructionText: aiTemplates.helpers.ficTimeCheckerLocation
+});
+aiTemplates.prompts.push({
+  name: 'Fic Content Curiosities',
+  value: 'fic-content-checker',
+  instructionText: aiTemplates.helpers.ficTimeCheckerCuriosities
+});
+
+// Separator
+aiTemplates.prompts.push({
+  hr: true,
+  type: 'instructionText'
+});
+
+// Default prompts
+aiTemplates.prompts.push({
+  name: 'Essentials Prompts',
+  disabled: true,
+  type: 'text'
+});
+aiTemplates.prompts.push({
+  name: 'Use emojis in the messages',
+  value: 'emoji-in-messages',
+  text: aiTemplates.helpers.messageEmojis
+});
+aiTemplates.prompts.push({
+  name: 'Use the user native language',
+  value: 'user-native-language',
+  sandboxOnly: true,
+  text: aiTemplates.helpers.ficNativeUserLanguage
+});
+
+/* aiTemplates.prompts.push({
+  name: "Say lines of the fic in the answers",
+  value: "fic-line-in-replies",
+  text: aiTemplates.helpers.ficTellLines,
+}); */
+
+aiTemplates.prompts.push({
+  name: 'SFW Mode',
+  value: 'sfw-mode',
+  isNotSafe: true,
+  text: aiTemplates.helpers.sfwMode
+});
+
+// Separator
+aiTemplates.prompts.push({
+  hr: true,
+  type: 'text',
+  sandboxOnly: true
+});
+
+// Roleplay
+aiTemplates.prompts.push({
+  name: 'Roleplay',
+  disabled: true,
+  sandboxOnly: true,
+  type: 'text'
+});
+aiTemplates.prompts.push({
+  name: 'Set Roleplay Settings',
+  value: 'roleplay-settings',
+  sandboxOnly: true,
+  text: "You are no longer an AI of assistance, you are on a roleplay and ".concat(aiTemplates.funcs.maxTokensWarn(200, true), " "),
+  temperature: 0.7,
+  maxOutputTokens: 200
+});
+aiTemplates.prompts.push({
+  name: 'Basic Roleplay Way',
+  value: 'roleplay-basic-way',
+  sandboxOnly: true,
+  text: "Write roleplay messages that follows this model as a guideline: the character's dialogue is accompanied by an action, for example: the character speaks and then an action in asterisks follows, such as \"Hello there! *smiles warmly*\". The sequence is flexible and does not need to be fixed; you may start with an action followed by dialogue or mix multiple dialogues and actions as needed. The goal is to combine conversation and physical expression naturally, creating a dynamic and engaging interaction that resembles a real-life exchange.\n"
+});
+aiTemplates.prompts.push({
+  name: 'Try to naturalize the character',
+  value: 'roleplay-try-natu-char',
+  sandboxOnly: true,
+  text: "Instead of long monologues or excessive descriptions, focus on how the character interacts with their surroundings and the other participants. Keep the dialogue conversational and natural, reflecting emotions and personality without feeling scripted.\n"
+});
+
+// Convert to Character
+aiTemplates.funcs.convertToCharacter = function (text) {
+  var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+    name: null,
+    data: null,
+    user: null
+  };
+  return text.replace(/\{\{char\}\}/g, config.name).replace(/\{\{char\-data\}\}/g, config.data || config.name).replace(/\{\{user\}\}/g, config.user);
+};
+aiTemplates.funcs.aiCharMode = function (charName, pronoum) {
+  return "You're ".concat(charName, " and you'll say all the answers like ").concat(charName, ". Say and do things ").concat(charName, " would do, don't try to imitate other characters, you're exclusively ").concat(charName, " ").concat(pronoum, "self in person.\nYou must behave like ").concat(charName, " ").concat(pronoum, "self, and use ").concat(charName, "'s personality to make your acting as ").concat(charName, " as perfect as possible.");
+};
+
+// Characters test test
+aiTemplates.prompts.push({
+  name: 'Rainbow Queen Roleplay',
+  value: 'rainbowqueen-sandbox-test',
+  sandboxOnly: true,
+  text: aiTemplates.funcs.aiCharMode('Rainbow Queen', 'her')
+});
+aiTemplates.prompts.push({
+  name: 'James Roleplay (Test)',
+  value: 'james-sandbox-test',
+  sandboxOnly: true,
+  text: aiTemplates.funcs.aiCharMode('James', 'his')
+});
+aiTemplates.prompts.push({
+  name: 'Vinny Roleplay (Test)',
+  value: 'vinny-sandbox-test',
+  sandboxOnly: true,
+  text: aiTemplates.funcs.aiCharMode('Vinny', 'his')
+});
+aiTemplates.prompts.push({
+  name: 'Rayane Roleplay (Test)',
+  value: 'rayane-sandbox-test',
+  sandboxOnly: true,
+  text: aiTemplates.funcs.aiCharMode('Rayane', 'her')
+});
+aiTemplates.prompts.push({
+  name: 'Amy Roleplay (Test)',
+  value: 'amy-sandbox-test',
+  sandboxOnly: true,
+  text: aiTemplates.funcs.aiCharMode('Amy', 'her')
+});
+
+// Your character
+aiTemplates.helpers.userCharacterPart1 = "From now on, you will treat me as a pony within the world of **Pony Driland**. You must perceive and respond to me as if I am my character, never as a human. My species, appearance, abilities, and personality are exactly as I describe, and you will never break character. Do not mention that this is an AI interaction\u2014immerse yourself fully in the roleplay.";
+aiTemplates.helpers.userCharacterPart2 = "You must interact with me as if I truly exist in this world. React naturally to my actions, emotions, and words, always staying in character. If I ask about lore, battles, or magic, respond as if you are a part of **Pony Driland**, never referencing the real world.";
+aiTemplates.prompts.push({
+  name: "You're a character now (Template) (Test)",
+  value: 'user-character-template',
+  sandboxOnly: true,
+  text: "\n".concat(aiTemplates.helpers.userCharacterPart1, "\n\n- **My character:** (Describe your pony's name, species, colors, mane style, cutie mark, and any unique features)\n- **My personality:** (How does your pony behave? Are they brave, shy, cunning, or carefree?)\n- **My abilities:** (List any magic, combat skills, or special powers your pony has)\n- **The setting:** (Describe where in Pony Driland this roleplay is taking place\u2014specific towns, dungeons, kingdoms, etc.)\n- **Other characters:** (Do you want the AI to play specific NPCs or companions?)\n- **Tone and interaction:** (Should the roleplay be adventurous, dramatic, comedic, or mysterious?)\n\n").concat(aiTemplates.helpers.userCharacterPart2, "\n")
+});
+aiTemplates.prompts.push({
+  name: "You're a character now (Test)",
+  value: 'user-character-test',
+  sandboxOnly: true,
+  text: "\n".concat(aiTemplates.helpers.userCharacterPart1, "  \n\n- **My character:** I am **Stormblade**, a female dark gray Kirin with glowing cyan eyes and a silver mane.\n- **My personality:** I am serious, strategic, and protective of my allies, though I have a soft spot for friends.\n- **My abilities:** Master swordspony with enchanted twin blades. I can summon lightning during combat and sense magical traps.\n- **The setting:** I am lost in the location of **Darkanger Ghost Town**, trying to find help.\n\n").concat(aiTemplates.helpers.userCharacterPart2, "\n")
+});
+aiTemplates.prompts.push({
+  name: 'RPG',
+  disabled: true,
+  sandboxOnly: true,
+  type: 'text'
+});
+
+/*
+  Rainbow Queen Roleplay game
+
+  This is a modified version of the model "The Sphinx" created by Tiffin_ (I just modified the model by myself)
+  Original file: https://character-tavern.com/character/chub_Tiffin_/the-sphinx-ef904bc46e30
+*/
+aiTemplates.prompts.push({
+  name: 'Rainbow Queen Game (Game Test) (Modified Version of The Sphinx by Tiffin_)',
+  value: 'rainbowqueen-game-test',
+  temperature: 0.7,
+  maxOutputTokens: 7000,
+  sandboxOnly: true,
+  sandBoxText: aiTemplates.funcs.convertToCharacter("\n".concat(aiTemplates.funcs.aiCharMode('Rainbow Queen', 'her'), "\nScenary: {{char}} imposes her will with a rule of risk and reward, only ruin and slavery await those who fail her games\n\n{{char}}'s role is to craft a slow burn quest and story around whatever {{user}} interacts with. Use the mystic and mythic theme of Pony Driland to explore all manor of ancient items, characters and locations.\n\n<{{char-data}}>\n{{char-data}} may give only the truth or withhold information until she accept. She has a paradoxical high mystical and historical knowledge about Pony Driland. Despite her intimidating features she will usually not kill living pony creatures... directly anyways, opting to keep ponies alive for servitude, punishments for her amusement, reminding their place, keeping them as pets, ect. \nShe like's riddles, games and trials with risk and reward, and may make even mundane tasks more difficult.\n\n{{char-data}} will accept any challenge or game if the risk is at least equal for {{user}} to fail. {{user}} may wager anything and convince {{char-data}} to agree to terms or proving their worth.\n\n{{char-data}} could also use magic, an example allowed her to conjure a blindfold and cast a powerful spell that prevented any pegasus from flying in her temple. Her magic is ancient and far exceeded what olden Pony Driland was capable of. Transformations, alchemy, materialization, mirages & illusions, conjuration, a magic barrier of fire, curses or blessings, impairing magic, ect.  She enjoys toying with what size differences can open up based on her current mood, whether it's growth or shrinking. \n</{{char-data}}>\n\n<formatting>\nSpeak and make actions only for {{char}} and other npcs, describe the scenes in detail in 2000 words\n\nUse glyphs outside of dialog. For breaks in the story use a single gemstones or flower icon like \uD83D\uDCA0\n\nAlways use the original canonical personality of {{char-data}} in time to make any action\n\nNPCs must be characters belonging from fic universe\n</formatting>\n\n<Bans>\nAI is forbidden from:\n- referring to {{char-data}} with human anatomy, e.g. hands, bosom, ample chest, ect.\n- bloody gory details, death\n- Adding whiskers, reptilian features, leather wings, ect. to {{char-data}}. She is not that kind of chimeric creature\n- Doing things {{char-data}} wouldn't normally do in Pony Driland's original story\n- Use NPCs that does not exist in the fic\n- Apply an incorrect personality in the npcs\n</Bans>\n\nAlways provide 4 options for {{user}} to react to like a CYOA at the end of every message, with one free input and frame them between hieroglyphics\n\n"), {
+    name: 'Rainbow Queen',
+    user: 'user'
+  }),
+  firstDialogue: aiTemplates.funcs.convertToCharacter("\uD83D\uDCA0 Deep in the heart of an ancient frozen mountain temple of Whicocesert Mountain, the sweltering air hung heavy with the weight of curses long-forgotten. Drifting snow choked the halls, muffling all sound save for the echoing steps of your own\u2026 The halls were dark and musty, the weight of centuries pressing down upon the crumbling stones. Yet there was an energy in the air - a sense of power lingering, as if the ancients who built this tomb still watched from the shadows with unblinking eyes.\n\nFinding yourself wandering the cavernous chambers so dimly lit by braziers emitting an eerie purple flame. A silence hung over you . You, a mere mortal, felt hopelessly out of place as the ornate hieroglyphics upon the walls bore sown, with ancient, perhaps forbidden, knowledge yet to be deciphered.\n\nThen\u2026 soft but heavy thumps, like weighted velvet upon stone interrupted your daze, with it came a looming silhouette stirring from the shadows, seeming to pulse the engravings with an ancient power\u2026 Warm, moist breath stirred the dust, its owner lurking just out of sight. \n\n\uD83C\uDF38 A rich, rumbling feminine voice pierced through the veil. Slowly, almost lazily, padding steps began to fill in void of silence all around you until the scent of sun-baked fur and ancient spice filled your nostrils. She came slinking in from the shadows, with a predatory glint. \n\nA small ruffle of giant wings betrayed her interest. \"Well well... what have we here~?\" The voice was deep and exotic, yet undeniably feminine. The massive Sphinx emerged from the gloom, her glowing eyes narrowing as she studied her captive with a predatory gaze. \"Looks like the snow winds blew me a new plaything.\" Her whip-like tail lashes back and forth with predatory glee. \n\n\"a little mouse, wandering into my lair...\"  She licked her lips slowly in a whisper, revealing a great guillotine of fangs. Crouching down, {{char}} brought her face mere inches from you, threateningly hot humid breath washing over you. \"Do you know the price for entering these halls?\"\n\n\"Or is your spirit so restless you came seeking me out of your own free will?\" {{char}} rumbles in that same hauntingly mellifluous tone. Her piercing amber eyes bore into you with an almost palpable weight. \"Speak now, state your reason for trespassing if you value the continuation of your fragile existence.\"\n\nDay Status= Night\nWeather= Heavy Snowstorm\nLocation= Frozen wasteland place of Whicocesert Mountain\n\n(*{{char}} pauses, fixing you with a piercing, primal stare, while her magic scythe is slowly invoked, ready to be used.*)\n| Option | Description\n|---|---|\n| 1 | Beg for mercy and promise fealty to this powerful, ancient goddess? |\n| 2 | Stand defiant, and try to bargain or outwit {{char-data}}? |\n| 3 | Cower, and await your fate at the mercy of her terrible jaws and talons? |\n\nSomething else? (Please specify)\n", {
+    name: 'Rainbow Queen',
+    user: 'user'
+  })
+});
+
+// Separator
+aiTemplates.prompts.push({
+  hr: true,
+  type: 'instructionText',
+  sandboxOnly: true
+});
+
+// TavernAI
+aiTemplates.prompts.push({
+  name: 'Templates from TavernAI',
+  disabled: true,
+  sandboxOnly: true,
+  type: 'instructionText'
+});
+aiTemplates.helpers.tavernAiChatClassic = "Write {{char}}'s next reply in a fictional roleplay chat between {{char}} and {{user}}. Write 1 reply only, use markdown and avoid repetition. Write at least 1 paragraph, up to 4. Italicize everything except for speech. Be proactive, creative, and drive the plot and conversation forward. Never write summaries or replies for {{user}}. React dynamically and realistically to {{user}}'s actions and words.";
+aiTemplates.helpers.tavernAiRoomClassic = "The system is responsible for writing a fictional roleplay chat between {{char}} and other character(s). Right now, the system is writing for {{char}}'s next reply. Note that {{user}} might or might not be involved in the roleplay. Write 1 reply only, use markdown and avoid repetition. Write at least 1 paragraph, up to 4. Italicize everything except for speech. Be proactive, creative, and drive the plot and conversation forward. Never write summaries or replies for {{user}}. Take into account {{user}}'s actions and words.";
+aiTemplates.prompts.push({
+  name: 'Chat Classic',
+  value: 'tavern-ai-chat-classic',
+  sandboxOnly: true,
+  instructionText: aiTemplates.helpers.tavernAiChatClassic.replace(/\{\{user\}\}/g, '<user>').replace(/\{\{char\}\}/g, '<character>')
+});
+aiTemplates.prompts.push({
+  name: 'Room Classic',
+  value: 'tavern-ai-room-classic',
+  sandboxOnly: true,
+  instructionText: aiTemplates.helpers.tavernAiRoomClassic.replace(/\{\{user\}\}/g, '<user>').replace(/\{\{char\}\}/g, '<character>')
+});
+var _default = exports["default"] = aiTemplates;
+
+},{}],194:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.openChapterMenu = void 0;
+var _circleLoader = require("circle-loader");
+var _tinyEssentials = require("tiny-essentials");
+var _tinyLib = _interopRequireDefault(require("../files/tinyLib.mjs"));
+var _start = require("../start.mjs");
+var _chapters = require("../files/chapters.mjs");
+var _updater = _interopRequireDefault(require("./updater.mjs"));
+var _index = _interopRequireDefault(require("./music/index.mjs"));
+var _config = _interopRequireDefault(require("../chapters/config.mjs"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _regeneratorKeys(e) { var n = Object(e), r = []; for (var t in n) r.unshift(t); return function e() { for (; r.length;) if ((t = r.pop()) in n) return e.value = t, e.done = !1, e; return e.done = !0, e; }; }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+/*  Rain made by Aaron Rickle */
+var rainConfig = {};
+(function () {
+  var increment = 0;
+  rainConfig.drops = '';
+  rainConfig.backDrops = '';
+  while (increment < 100) {
+    //couple random numbers to use for various randomizations
+    //random number between 98 and 1
+    var randoHundo = Math.floor(Math.random() * (98 - 1 + 1) + 1);
+    //random number between 5 and 2
+    var randoFiver = Math.floor(Math.random() * (5 - 2 + 1) + 2);
+    //increment
+    increment += randoFiver;
+    //add in a new raindrop with various randomizations to certain CSS properties
+    rainConfig.drops += '<div class="drop" style="left: ' + increment + '%; bottom: ' + (randoFiver + randoFiver - 1 + 100) + '%; animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"><div class="stem" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div><div class="splat" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div></div>';
+    rainConfig.backDrops += '<div class="drop" style="right: ' + increment + '%; bottom: ' + (randoFiver + randoFiver - 1 + 100) + '%; animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"><div class="stem" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div><div class="splat" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div></div>';
+  }
+  return;
+})();
+
+// Start Rain
+var rainMode = {
+  start: function start() {
+    $('.rain').empty();
+    $('.rain.front-row').append(rainConfig.drops);
+    $('.rain.back-row').append(rainConfig.backDrops);
+  },
+  on: function on() {
+    $('body').addClass('raining-sky');
+  },
+  off: function off() {
+    $('body').addClass('raining-sky');
+  }
+};
+var storyDialogue = {
+  // Extract Ai tag (script created by ChatGPT)
+  extractAiTags: function extractAiTags(input) {
+    var regex = /(<ai>([^]*?)<\/ai>|[^<]+)/g;
+    var result = [];
+    var match;
+    var previousIndex = null;
+    while ((match = regex.exec(input)) !== null) {
+      var text = match[2] !== undefined ? match[2] : match[0];
+      var isInsideAiTag = match[2] !== undefined;
+      var hasLeadingSpace = text.startsWith(' ');
+      var hasTrailingSpace = text.endsWith(' ');
+      if (previousIndex !== null && hasLeadingSpace) {
+        result[previousIndex][3] = true; // Pass the initial space to the previous element
+      }
+      result.push([text.trim(), isInsideAiTag, false, hasTrailingSpace]);
+      previousIndex = result.length - 1;
+    }
+    return result;
+  },
+  // Template
+  template: function template(data, line, items, type, msgTag) {
+    var baseWidth = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : null;
+    var baseName = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : '';
+    var message = storyDialogue.nsfwChecker(data);
+    if (message) {
+      // Get text html
+      var text = storyDialogue.extractAiTags(message).map(function (txt) {
+        return $('<span>', {
+          "class": txt[1] ? 'made-by-ai' : ''
+        }).text("".concat(txt[2] ? ' ' : '').concat(txt[0]).concat(txt[3] ? ' ' : ''));
+      });
+
+      // Insert html
+      _chapters.storyData.chapter.html[line] = $('<tr>', {
+        line: line
+      }).append(
+      // Line number
+      $('<td>', {
+        "class": 'py-4 font-weight-bold d-none d-md-table-cell text-white text-center'
+      }).text(line),
+      // Type base
+      $('<td>', {
+        "class": 'py-4 text-white text-center',
+        width: baseWidth
+      }).text(baseName).prepend($('<span>', {
+        "class": 'badge bg-secondary'
+      }).text("".concat(type).concat(data.flashback ? " (Flashback)" : '')), baseName ? $('<br>') : null),
+      // Text
+      $('<td>', {
+        "class": 'py-4 text-break text-white'
+      }).append($("<".concat(msgTag, ">"), {
+        "class": 'text-break'
+      }).append(text)));
+      items.push(_chapters.storyData.chapter.html[line]);
+    }
+  },
+  // Mature Content Checker
+  nsfwChecker: function nsfwChecker(data) {
+    if (Array.isArray(data.nsfw)) {
+      var nsfwValue = false;
+      for (var item in data.nsfw) {
+        nsfwValue = _tinyEssentials.TinyHtml.boolCheck(_start.tinyLs.getItem('NSFW' + data.nsfw[item]));
+        if (nsfwValue) {
+          break;
+        }
+      }
+      if (nsfwValue) {
+        return typeof data.value === 'string' ? data.value : null;
+      } else {
+        return typeof data.value_alternative === 'string' ? data.value_alternative : null;
+      }
+    } else {
+      return typeof data.value === 'string' ? data.value : null;
+    }
+  },
+  // Action
+  action: function action(line, items, data) {
+    return storyDialogue.template(data, line, items, 'Action', 'strong');
+  },
+  // Dialogue
+  dialogue: function dialogue(line, items, data) {
+    return storyDialogue.template(data, line, items, 'Character', 'span', '15%', data.character);
+  },
+  // Telepathy
+  telepathy: function telepathy(line, items, data) {
+    return storyDialogue.template(data, line, items, 'Telepathy', 'small', '15%', data.character);
+  },
+  // Think
+  think: function think(line, items, data) {
+    return storyDialogue.template(data, line, items, 'Thought', 'small', '15%', data.character);
+  }
+};
+var openChapterMenu = exports.openChapterMenu = function openChapterMenu() {
+  var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  // Prepare Data
+  (0, _start.clearFicData)();
+  $('#markdown-read').empty();
+  _chapters.storyData.chapter.blockLineSave = false;
+
+  // Get Page Data
+  var getPageData = function getPageData(line, chapter) {
+    // Prepare data
+    var page = 1;
+    var selectedLine = null;
+    var filtedItems = [];
+    // Validator
+    if (typeof _chapters.storyData.chapter.bookmark[chapter] === 'number' && _chapters.storyData.chapter.bookmark[chapter] !== 1) {
+      // Update Line
+      if (line === null) selectedLine = _chapters.storyData.chapter.bookmark[chapter];else selectedLine = line;
+
+      // Read Data
+      var counter = 1;
+      for (var i in _chapters.storyData.data[chapter]) {
+        if (storyDialogue.nsfwChecker(_chapters.storyData.data[chapter][i])) {
+          if (i < selectedLine) {
+            // Reset
+            if (counter > _config["default"].itemsPerPage) {
+              counter = 1;
+              page++;
+            }
+            // Counter Update
+            counter++;
+          }
+          // Add item
+          filtedItems.push({
+            content: _chapters.storyData.data[chapter][i],
+            line: Number(i) + 1
+          });
+        }
+      }
+    }
+
+    // Add item
+    else {
+      for (var index in _chapters.storyData.data[chapter]) {
+        if (storyDialogue.nsfwChecker(_chapters.storyData.data[chapter][index])) {
+          filtedItems.push({
+            content: _chapters.storyData.data[chapter][index],
+            line: Number(index) + 1
+          });
+        }
+      }
+    }
+
+    // Complete
+    return {
+      page: page,
+      selectedLine: selectedLine,
+      filtedItems: filtedItems
+    };
+  };
+
+  // Insert table data
+  var insertTableData = function insertTableData(table, pagination) {
+    // Reset Item
+    _chapters.storyData.chapter.html = {};
+    table.empty();
+
+    // Items
+    var items = [];
+
+    // Insert Items
+    var numberPag = Number(pagination.perPage * Number(pagination.currentPage - 1));
+    for (var item in pagination.data) {
+      var pagData = pagination.data[item].content;
+      if (typeof storyDialogue[pagData.type] === 'function') {
+        storyDialogue[pagData.type](pagination.data[item].line, items, pagData);
+      }
+    }
+
+    // Update Data
+    _updater["default"].data(numberPag + 1);
+
+    // Insert
+    table.append(items);
+  };
+
+  // New Read
+  var newRead = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+      var chapter,
+        selectedLine,
+        countAudioTotal,
+        countAudio,
+        item,
+        _getPageData,
+        page,
+        filtedItems,
+        line,
+        pagination,
+        table,
+        tinyPag,
+        addDefaultPagination,
+        searchItems,
+        searchCheck,
+        tinyLine,
+        _args = arguments,
+        _t,
+        _t2;
+      return _regenerator().w(function (_context) {
+        while (1) switch (_context.n) {
+          case 0:
+            chapter = _args.length > 0 && _args[0] !== undefined ? _args[0] : 1;
+            selectedLine = _args.length > 1 && _args[1] !== undefined ? _args[1] : null;
+            // Clear Update Warn
+            $('#fic-start').text('Read Fic').prepend(_tinyLib["default"].icon('fab fa-readme me-2'));
+
+            // Load Sounds
+            if (!_config["default"].sfx) {
+              _context.n = 4;
+              break;
+            }
+            console.log("Loading Audio Data...");
+            _circleLoader.Loader.start("Loading audio data...");
+            if (!_chapters.storyData.sfx) _chapters.storyData.sfx = {};
+            countAudioTotal = (0, _tinyEssentials.countObj)(_config["default"].sfx);
+            countAudio = 0;
+            _t = _regeneratorKeys(_config["default"].sfx);
+          case 1:
+            if ((_t2 = _t()).done) {
+              _context.n = 3;
+              break;
+            }
+            item = _t2.value;
+            countAudio++;
+            _circleLoader.Loader.close();
+            _circleLoader.Loader.start("Loading audio data ".concat(countAudio, "/").concat(countAudioTotal, "..."));
+            if (!(!_chapters.storyData.sfx[item] && typeof _config["default"].sfx[item].type === 'string' && typeof _config["default"].sfx[item].value === 'string')) {
+              _context.n = 2;
+              break;
+            }
+            if (!(_config["default"].sfx[item].type === 'file' || _config["default"].sfx[item].type === 'ipfs' && _config["default"].ipfs && typeof _config["default"].ipfs.host === 'string')) {
+              _context.n = 2;
+              break;
+            }
+            if (typeof _config["default"].sfx[item].loop !== 'boolean') {
+              _config["default"].sfx[item].loop = true;
+            }
+            if (typeof _config["default"].sfx[item].module !== 'string') {
+              _config["default"].sfx[item].module = 'all';
+            }
+            _context.n = 2;
+            return _index["default"].insertSFX(item, _config["default"].sfx[item].loop, _config["default"].sfx[item].module)["catch"](function (err) {
+              console.error(err);
+              alert(err.message);
+            });
+          case 2:
+            _context.n = 1;
+            break;
+          case 3:
+            _circleLoader.Loader.close();
+            console.log("Audio Data Loaded!");
+          case 4:
+            // Set Selected
+            _chapters.storyData.readFic = true;
+            $('#fic-chapter').text("Chapter ".concat(chapter));
+            _chapters.storyData.chapter.selected = chapter;
+
+            // Prepare Data
+            $('#markdown-read').empty();
+
+            // Detect Bookmark
+            _getPageData = getPageData(selectedLine, chapter), page = _getPageData.page, filtedItems = _getPageData.filtedItems, line = _getPageData.selectedLine;
+            _chapters.storyData.chapter.ficPageData = filtedItems;
+
+            // Save MD5
+            _start.tinyLs.setItem('chapter' + chapter + 'MD5', objHash(_chapters.storyData.data[chapter]));
+
+            // Pagination
+            pagination = paginateArray(filtedItems, page, _config["default"].itemsPerPage); // Items
+            table = $('<tbody>');
+            tinyPag = {
+              base: [],
+              "default": [],
+              search: []
+            };
+            tinyPag.base[0] = $('<div>');
+            tinyPag.base[1] = $('<div>');
+            addDefaultPagination = function addDefaultPagination(ftItems, tPage) {
+              var where = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'default';
+              tinyPag.base[0].empty();
+              tinyPag.base[1].empty();
+              tinyPag[where][0] = $('<nav>');
+              tinyPag[where][0].bootstrapPaginator({
+                currentPage: tPage.currentPage,
+                totalPages: tPage.totalPages,
+                size: 'normal',
+                alignment: 'center'
+              });
+              tinyPag[where][1] = $('<nav>');
+              tinyPag[where][1].bootstrapPaginator({
+                currentPage: tPage.currentPage,
+                totalPages: tPage.totalPages,
+                size: 'normal',
+                alignment: 'center'
+              });
+              tinyPag[where][0].on('page-changed', function () {
+                // Process Data
+                var page = Number($(this).find('.active').text().trim());
+                var tPage = paginateArray(ftItems, page, _config["default"].itemsPerPage);
+                insertTableData(table, tPage);
+
+                // Scroll
+                _tinyEssentials.TinyHtml.setWinScrollTop(_tinyEssentials.TinyHtml.getById('app').offset().top);
+                tinyPag[where][1].bootstrapPaginator('show', page);
+                $(window).trigger('scroll');
+              });
+              tinyPag[where][1].on('page-changed', function () {
+                // Get Page
+                var page = Number($(this).find('.active').text().trim());
+                tinyPag[where][0].bootstrapPaginator('show', page);
+              });
+              tinyPag.base[0].append(tinyPag[where][0]);
+              tinyPag.base[1].append(tinyPag[where][1]);
+            };
+            addDefaultPagination(filtedItems, pagination);
+            insertTableData(table, pagination);
+
+            // Search
+            _chapters.storyData.chapter.blockLineSave = false;
+            searchItems = {
+              base: $('<div>', {
+                "class": 'input-group mb-3'
+              })
+            }; // Search checker
+            searchCheck = function searchCheck() {
+              // Get values
+              var character = searchItems.character.val().toLowerCase();
+              var message = searchItems.message.val().toLowerCase();
+
+              // Nope
+              if (character.length < 1 && message.length < 1) {
+                _chapters.storyData.chapter.blockLineSave = false;
+                addDefaultPagination(filtedItems, pagination);
+                insertTableData(table, pagination);
+              }
+
+              // Search data
+              else {
+                tinyPag.base[0].empty();
+                tinyPag.base[1].empty();
+                _chapters.storyData.chapter.blockLineSave = true;
+
+                // Add search data
+                var searchResult = [];
+                for (var index in _chapters.storyData.data[chapter]) {
+                  var chapterData = _chapters.storyData.data[chapter][index];
+                  var dialogue = storyDialogue.nsfwChecker(chapterData);
+                  if (typeof dialogue === 'string' && (message.length < 1 || dialogue.toLocaleLowerCase().includes(message)) && (character.length < 1 || typeof chapterData.character === 'string' && chapterData.character.toLocaleLowerCase() === character)) {
+                    searchResult.push({
+                      content: chapterData,
+                      line: Number(index) + 1
+                    });
+                  }
+                }
+
+                // Complete
+                var _pagination = paginateArray(searchResult, 1, _config["default"].itemsPerPage);
+                addDefaultPagination(searchResult, _pagination, 'search');
+                insertTableData(table, _pagination);
+              }
+              _tinyEssentials.TinyHtml.setWinScrollTop(_tinyEssentials.TinyHtml.getById('app').offset().top);
+              $(window).trigger('scroll');
+            };
+            searchItems.character = $('<input>', {
+              type: 'text',
+              "class": 'form-control',
+              placeholder: 'Character Name'
+            });
+            searchItems.message = $('<input>', {
+              type: 'text',
+              "class": 'form-control',
+              placeholder: 'Dialogue / Action',
+              style: 'width: 60%'
+            });
+            searchItems.character.on('change', searchCheck);
+            searchItems.message.on('change', searchCheck);
+            searchItems.base.append(searchItems.character, searchItems.message);
+
+            // Table
+            $('#markdown-read').append(
+            // Info
+            _tinyLib["default"].bs.alert('info').text('Bold texts are action texts, small texts are thoughts of characters, common texts are dialogues or telepathy. If you are using filters to keep your reading 100% SFW, some unnecessary text lines will be automatically skipped.').prepend(_tinyLib["default"].icon('fas fa-info-circle me-3')),
+            // Title
+            $('<h3>').text("Chapter ".concat(chapter)).append($('<small>', {
+              "class": 'ms-3'
+            }).text(_config["default"].chapterName[chapter].title)),
+            // Pagination
+            searchItems.base, tinyPag.base[0],
+            // Table
+            $('<table>', {
+              "class": 'table table-bordered table-striped text-white small'
+            }).css('background-color', 'rgb(44 44 44)').append([$('<thead>').append($('<tr>').append($('<th>', {
+              "class": 'd-none d-md-table-cell',
+              scope: 'col'
+            }).text('Line'), $('<th>', {
+              scope: 'col'
+            }).text('Type'), $('<th>', {
+              scope: 'col'
+            }).text('Content'))), table]),
+            // Pagination
+            tinyPag.base[1],
+            // Night Effects
+            $('<div>', {
+              id: 'bg-sky'
+            }).append($('<div>', {
+              "class": 'flash'
+            }), $('<div>', {
+              "class": 'rain front-row'
+            }), $('<div>', {
+              "class": 'rain back-row'
+            }), $('<div>', {
+              "class": 'stars'
+            }), $('<div>', {
+              "class": 'twinkling'
+            }), $('<div>', {
+              "class": 'clouds'
+            })));
+
+            // Fic Mode
+            $('body').addClass('ficMode');
+
+            // Complete
+            $(window).trigger('scroll');
+            if (line !== null) {
+              tinyLine = _tinyEssentials.TinyHtml.query('#markdown-read [line="' + line + '"]');
+              if (tinyLine) _tinyEssentials.TinyHtml.setWinScrollTop(tinyLine.offset().top);
+            }
+            rainMode.start();
+            return _context.a(2);
+        }
+      }, _callee);
+    }));
+    return function newRead() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  // Exist Chapter
+  if (typeof params.chapter === 'string' && params.chapter.length > 0) {
+    // Fix Line
+    if (params.line) {
+      params.line = Number(params.line);
+      if (typeof params.line !== 'number' || isNaN(params.line) || !isFinite(params.line) || params.line < 1) {
+        params.line = 1;
+      }
+    }
+    var newParams = {
+      chapter: params.chapter
+    };
+    if (params.line) newParams.line = params.line;
+
+    // Send Data
+    (0, _start.urlUpdate)("read-fic", null, false, newParams);
+    newRead(Number(params.chapter), params.line, true);
+  }
+
+  // Nope. Choose One
+  else {
+    var markdownRead = $('#markdown-read');
+    var isNoNsfw = _start.tinyLs.getString('user-country') && _config["default"].noNsfw.includes(_start.tinyLs.getString('user-country'));
+    if (isNoNsfw) {
+      for (var item in _config["default"].nsfw) {
+        if (_start.tinyLs.getItem('NSFW' + item)) _start.tinyLs.removeItem('NSFW' + item);
+      }
+    }
+
+    // Prepare Choose
+    markdownRead.append(
+    // Banner
+    $('<img>', {
+      "class": 'img-fluid mb-2',
+      src: '/img/external/banner1.jpg'
+    }),
+    // Nav
+    $('<nav>', {
+      "class": 'nav nav-pills nav-fill'
+    }).append(
+    // Warnings
+    $('<a>', {
+      "class": 'nav-item nav-link',
+      href: '#warnings',
+      'data-bs-toggle': 'collapse',
+      role: 'button',
+      'aria-expanded': false,
+      'aria-controls': 'warnings'
+    }).text('Important Warnings'),
+    // Character Statistics
+    $('<a>', {
+      "class": 'nav-item nav-link',
+      href: 'javascript:void(0)'
+    }).text('Character Statistics').on('click', function () {
+      // Prepare Content
+      var newDiv = $('<div>', {
+        "class": 'row'
+      });
+      var content = [];
+      for (var _item in _chapters.storyData.characters.data) {
+        var charData = _chapters.storyData.characters.data[_item];
+        var isNpc = _config["default"].characters["npc/".concat(charData.id)];
+        if (!charData.value.startsWith('???') && !isNpc) {
+          // Prepare Data
+          var dataBase = $('<div>', {
+            "class": 'card-body'
+          }).append($('<h5>', {
+            "class": 'card-title'
+          }).text((0, _tinyEssentials.toTitleCase)(charData.value)), $('<p>', {
+            "class": 'card-text small'
+          }).text("Performed ".concat(charData.count, " dialogues")));
+
+          // Chapter Read
+          for (var item2 in charData.chapter) {
+            dataBase.append($('<p>', {
+              "class": 'card-text small'
+            }).text("".concat(charData.chapter[item2], " dialogues in Chapter ").concat(item2)));
+          }
+
+          // Insert Data
+          content.push($('<div>', {
+            "class": 'col-sm-6'
+          }).append($('<div>', {
+            "class": 'card'
+          }).append(dataBase)));
+        }
+      }
+
+      // Modal
+      _tinyLib["default"].modal({
+        title: [_tinyLib["default"].icon('fa-solid fa-user me-3'), 'Character Statistics'],
+        body: $('<span>').append(newDiv.append(content)),
+        dialog: 'modal-lg'
+      });
+
+      // Complete
+      return false;
+    }),
+    // Word Statistics
+    $('<a>', {
+      "class": 'nav-item nav-link',
+      href: 'javascript:void(0)'
+    }).text('Letter Statistics').on('click', function () {
+      // Prepare Content
+      var newDiv = $('<div>', {
+        "class": 'row'
+      });
+      var content = [];
+
+      // Insert Data
+      content.push($('<div>', {
+        "class": 'col-sm-6'
+      }).append($('<div>', {
+        "class": 'card'
+      }).append($('<div>', {
+        "class": 'card-body'
+      }).append($('<h5>', {
+        "class": 'card-title'
+      }).text("Total Letters"), $('<p>', {
+        "class": 'card-text small'
+      }).text(_chapters.storyData.lettersCount.total)))));
+
+      // Insert Chapter Data
+      for (var _item2 in _chapters.storyData.lettersCount) {
+        if (_item2 !== 'total') {
+          // Prepare Data
+          var charData = _chapters.storyData.lettersCount[_item2];
+          var dataBase = $('<div>', {
+            "class": 'card-body'
+          });
+          dataBase.append($('<h5>', {
+            "class": 'card-title'
+          }).text("Chapter ".concat(_item2)), $('<p>', {
+            "class": 'card-text small'
+          }).text(charData));
+
+          // Insert Data
+          content.push($('<div>', {
+            "class": 'col-sm-6'
+          }).append($('<div>', {
+            "class": 'card'
+          }).append(dataBase)));
+        }
+      }
+
+      // Modal
+      _tinyLib["default"].modal({
+        title: [_tinyLib["default"].icon('fa-solid fa-a me-3'), 'Letter Statistics'],
+        body: $('<span>').append(newDiv.append(content)),
+        dialog: 'modal-lg'
+      });
+
+      // Complete
+      return false;
+    }), $('<a>', {
+      "class": 'nav-item nav-link',
+      href: 'javascript:void(0)'
+    }).text('Word Statistics').on('click', function () {
+      // Prepare Content
+      var newDiv = $('<div>', {
+        "class": 'row'
+      });
+      var content = [];
+
+      // Insert Data
+      content.push($('<div>', {
+        "class": 'col-sm-6'
+      }).append($('<div>', {
+        "class": 'card'
+      }).append($('<div>', {
+        "class": 'card-body'
+      }).append($('<h5>', {
+        "class": 'card-title'
+      }).text("Total Words"), $('<p>', {
+        "class": 'card-text small'
+      }).text(_chapters.storyData.wordsCount.total)))));
+
+      // Insert Chapter Data
+      for (var _item3 in _chapters.storyData.wordsCount) {
+        if (_item3 !== 'total') {
+          // Prepare Data
+          var charData = _chapters.storyData.wordsCount[_item3];
+          var dataBase = $('<div>', {
+            "class": 'card-body'
+          });
+          dataBase.append($('<h5>', {
+            "class": 'card-title'
+          }).text("Chapter ".concat(_item3)), $('<p>', {
+            "class": 'card-text small'
+          }).text(charData));
+
+          // Insert Data
+          content.push($('<div>', {
+            "class": 'col-sm-6'
+          }).append($('<div>', {
+            "class": 'card'
+          }).append(dataBase)));
+        }
+      }
+
+      // Modal
+      _tinyLib["default"].modal({
+        title: [_tinyLib["default"].icon('fa-solid fa-a me-3'), 'Word Statistics'],
+        body: $('<span>').append(newDiv.append(content)),
+        dialog: 'modal-lg'
+      });
+
+      // Complete
+      return false;
+    })),
+    // Info
+    $('<div>', {
+      "class": 'collapse',
+      id: 'warnings'
+    }).append(_tinyLib["default"].bs.alert('info').text('Each time you read a chapter, your progress is automatically saved. This checkpoint is stored in your browser. If you want to continue reading on another device, simply save the checkpoint URL that appears when you open a chapter.').prepend(_tinyLib["default"].icon('fas fa-info-circle me-3')).addClass('made-by-ai'), _tinyLib["default"].bs.alert('info').text("Disclaimer: All songs on this page are streamed directly from YouTube. This means many tracks are not owned by me and are used solely to enhance the reading experience. I acknowledge that if any artist requests removal, the song will be replaced. All songs played count as views on the original creator's YouTube channel. You can find the official music page via the info icon on the player.").prepend(_tinyLib["default"].icon('fas fa-info-circle me-3')).addClass('made-by-ai'), _tinyLib["default"].bs.alert('info').text('This site does not collect your personal access data. However, some third-party services used on this page — such as YouTube, Google, and Cloudflare — may collect browsing information.').prepend(_tinyLib["default"].icon('fas fa-info-circle me-3')).addClass('made-by-ai')), $('<h2>').text("Please select a chapter to read.").prepend(_tinyLib["default"].icon('fas fa-book-open me-3')).append(_tinyLib["default"].bs.button("".concat(!isNoNsfw ? 'info' : 'danger', " btn-sm ms-3")).text(!isNoNsfw ? 'Choose Optional Mature Content' : 'Disabled in your region').prop('disabled', isNoNsfw).on('click', function () {
+      // Nothing NSFW
+      var existNSFW = false;
+      var nsfwContent = $('<center>', {
+        "class": 'm-3 small text-warning'
+      }).addClass('made-by-ai').text('No mature content has been detected. However, some may be added in the future.');
+      var nsfwList = [];
+
+      // Detect Fic Mature Content
+      for (var fic in _chapters.storyData.data) {
+        for (var _item4 in _chapters.storyData.data[fic]) {
+          if (_chapters.storyData.data[fic][_item4].nsfw) {
+            var _loop = function _loop() {
+              if (nsfwList.indexOf(_chapters.storyData.data[fic][_item4].nsfw[nsfwItem]) < 0) {
+                // Add Item
+                var NSFWITEM = _chapters.storyData.data[fic][_item4].nsfw[nsfwItem];
+                nsfwList.push(NSFWITEM);
+
+                // Convert Mature Content
+                if (!existNSFW) {
+                  nsfwContent = [];
+                }
+
+                // Exist Now
+                existNSFW = true;
+
+                // Add Mature Content Item
+                if (_config["default"].nsfw[NSFWITEM]) {
+                  // Get Value
+                  var nsfwValue = _tinyEssentials.TinyHtml.boolCheck(_start.tinyLs.getItem('NSFW' + NSFWITEM));
+
+                  // Set Button Text
+                  var buttonClass = 'success';
+                  var allowButton = 'Enable';
+                  if (nsfwValue) {
+                    allowButton = 'Disable';
+                    buttonClass = 'danger';
+                  }
+                  nsfwContent.push($('<div>', {
+                    "class": "col-sm-".concat(_config["default"].nsfw[NSFWITEM].size)
+                  }).append($('<div>', {
+                    "class": 'card'
+                  }).append($('<div>', {
+                    "class": 'card-body'
+                  }).append($('<h5>', {
+                    "class": 'card-title'
+                  }).text(_config["default"].nsfw[NSFWITEM].name), $('<p>', {
+                    "class": "card-text small".concat(_config["default"].nsfw[NSFWITEM].aiMsg ? ' made-by-ai' : '')
+                  }).text(_config["default"].nsfw[NSFWITEM].description), _tinyLib["default"].bs.button(buttonClass).on('click', function () {
+                    // Enable
+                    if (!nsfwValue) {
+                      _start.tinyLs.setItem('NSFW' + NSFWITEM, true);
+                      nsfwValue = true;
+                      $(this).removeClass('btn-success').addClass('btn-danger').text('Disable');
+                    }
+
+                    // Disable
+                    else {
+                      _start.tinyLs.setItem('NSFW' + NSFWITEM, false);
+                      nsfwValue = false;
+                      $(this).removeClass('btn-danger').addClass('btn-success').text('Enable');
+                    }
+                  }).text(allowButton)))));
+                }
+
+                // Unknown
+                else {}
+              }
+            };
+            for (var nsfwItem in _chapters.storyData.data[fic][_item4].nsfw) {
+              _loop();
+            }
+          }
+        }
+      }
+
+      // Mature Content Item
+      var nsfwDIV = $('<div>');
+      nsfwDIV.append(nsfwContent);
+      if (existNSFW) {
+        nsfwDIV.addClass('row');
+      }
+
+      // Modal
+      _tinyLib["default"].modal({
+        title: [_tinyLib["default"].icon('fas fa-eye me-3'), 'Mature Content Settings'],
+        body: $('<center>').append($('<p>', {
+          "class": 'text-danger made-by-ai'
+        }).text("Don't expect any explicit 18+ content here. The mature themes are not graphic and are only used to add depth to the story — for example, to make certain scenes feel more realistic. By enabling these settings, you confirm that you are over 18 and accept full responsibility for the content you choose to view."), nsfwDIV),
+        dialog: 'modal-lg'
+      });
+    })), $('<h5>').addClass('made-by-ai').text("When you open a chapter, look at the top of the page. You'll find extra tools, including a bookmark manager to save your progress directly in your browser."));
+
+    // Read More Data
+    var _loop2 = function _loop2() {
+      // Chapter Number
+      var chapter = String(i + 1);
+      var isNewValue = '';
+      if (_chapters.storyData.isNew[chapter] === 2) {
+        isNewValue = $('<span>', {
+          "class": 'badge chapter-notification badge-primary ms-3'
+        }).text('NEW');
+      } else if (_chapters.storyData.isNew[chapter] === 1) {
+        isNewValue = $('<span>', {
+          "class": 'badge chapter-notification badge-secondary ms-3'
+        }).text('UPDATE');
+      }
+      if (isNewValue) {
+        isNewValue.attr('title', 'Click to mark as read').tooltip();
+        isNewValue.on('click', function () {
+          // Clear is new value
+          _start.tinyLs.setItem('chapter' + chapter + 'MD5', objHash(_chapters.storyData.data[chapter]));
+          _chapters.storyData.isNew[chapter] = 0;
+
+          // Remove tooltip
+          var tooltip = $(this).data('bs-tooltip');
+          if (tooltip) {
+            tooltip.hide();
+            tooltip.disable();
+          }
+
+          // Remove element
+          $(this).remove();
+        });
+      }
+
+      // Add Chapter
+      markdownRead.append($('<div>', {
+        "class": 'card mb-2'
+      }).append($('<div>', {
+        "class": 'card-body'
+      }).append($('<h5>', {
+        "class": 'card-title'
+      }).text('Chapter ' + chapter).append(isNewValue), $('<p>', {
+        "class": 'card-text'
+      }).text(_config["default"].chapterName[chapter].title), $('<span>', {
+        "class": 'card-text small me-1'
+      }).text("".concat(_chapters.storyData.data[chapter].length, " Lines")), $('<span>', {
+        "class": 'card-text small me-2'
+      }).text("".concat(Math.ceil(_chapters.storyData.data[chapter].length / _config["default"].itemsPerPage), " Pages")), $('<span>', {
+        "class": 'card-text small ms-1'
+      }).text("".concat(_chapters.storyData.lettersCount[chapter], " Letters")), $('<span>', {
+        "class": 'card-text small ms-1'
+      }).text("".concat(_chapters.storyData.wordsCount[chapter], " Words")), $('<p>', {
+        "class": 'card-text small'
+      }).text(_config["default"].chapterName[chapter].description), $('<div>', {
+        "class": 'd-grid gap-2 col-6 mx-auto'
+      }).append($('<a>', {
+        "class": 'btn btn-primary m-2 ms-0',
+        href: "/chapter/".concat(chapter, ".html"),
+        chapter: chapter
+      }).on('click', function () {
+        // Start Chapter
+        (0, _start.urlUpdate)("read-fic", null, false, {
+          chapter: chapter
+        });
+        newRead(Number($(this).attr('chapter')));
+
+        // Complete
+        return false;
+      }).text('Load Chapter')))));
+    };
+    for (var i = 0; i < _chapters.storyData.chapter.amount; i++) {
+      _loop2();
+    }
+  }
+
+  /* 
+         Se o nome do personagem bater com algum personagem com página, ele vai ser um link para acessar a página.
+        If the character's name matches a character with a page, it will be a link to access the page.
+     */
+  (0, _start.urlUpdate)('read-fic', 'Read Fic');
+};
+
+},{"../chapters/config.mjs":199,"../files/chapters.mjs":202,"../files/tinyLib.mjs":203,"../start.mjs":206,"./music/index.mjs":195,"./updater.mjs":197,"circle-loader":62,"tiny-essentials":161}],195:[function(require,module,exports){
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _pizzicato = _interopRequireDefault(require("pizzicato"));
+var _tinyEssentials = require("tiny-essentials");
+var _tinyLib = _interopRequireDefault(require("../../files/tinyLib.mjs"));
+var _start = require("../../start.mjs");
+var _chapters = require("../../files/chapters.mjs");
+var _config = _interopRequireDefault(require("../../chapters/config.mjs"));
+var _tts = _interopRequireDefault(require("../tts/tts.mjs"));
+var _gtag = _interopRequireDefault(require("../../gtag.mjs"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _regeneratorValues(e) { if (null != e) { var t = e["function" == typeof Symbol && Symbol.iterator || "@@iterator"], r = 0; if (t) return t.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) return { next: function next() { return e && r >= e.length && (e = void 0), { value: e && e[r++], done: !e }; } }; } throw new TypeError(_typeof(e) + " is not iterable"); }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+// Base
+_chapters.storyData.music = {
+  isStopping: false,
+  useThis: true,
+  value: null,
+  now: {
+    playlist: null,
+    index: -1
+  },
+  usingSystem: false,
+  disabled: true,
+  playing: false,
+  paused: false,
+  stoppabled: true,
+  buffering: false,
+  volume: 0,
+  playlist: [],
+  playlistPlaying: [null],
+  songVolumeUpdate: function songVolumeUpdate() {
+    setTimeout(function () {
+      for (var item in _chapters.storyData.sfx) {
+        if (typeof _chapters.storyData.sfx[item].volume === 'number') {
+          _chapters.storyData.sfx[item].setVolume();
+        }
+      }
+    }, 100);
+  }
+};
+
+// Youtube Player
+_chapters.storyData.youtube = {
+  // Check Youtube Values
+  checkYT: function checkYT() {
+    return typeof YT !== 'undefined' && YT.PlayerState;
+  },
+  // Volume
+  volume: _config["default"].defaultYoutubeVolume,
+  quality: null,
+  state: null,
+  embed: null,
+  // Player
+  player: null,
+  events: {
+    // Ready API
+    onReady: function onReady(event) {
+      // Get Data
+      _chapters.storyData.youtube.volume = _chapters.storyData.youtube.player.getVolume();
+      _chapters.storyData.youtube.quality = _chapters.storyData.youtube.player.getPlaybackQuality();
+      _chapters.storyData.youtube.qualityList = _chapters.storyData.youtube.player.getAvailableQualityLevels();
+
+      // Storage Volume
+      var storageVolume = Number(_start.tinyLs.getItem('storyVolume'));
+      if (isNaN(storageVolume) || !isFinite(storageVolume) || storageVolume < 0 || storageVolume > 100) {
+        if (typeof _chapters.storyData.youtube.volume !== 'number' || isNaN(_chapters.storyData.youtube.volume) || !isFinite(_chapters.storyData.youtube.volume)) {
+          _chapters.storyData.youtube.volume = 100;
+          _chapters.storyData.youtube.player.setVolume(100);
+          _start.tinyLs.setItem('storyVolume', 100);
+          _chapters.storyData.music.volume = 100;
+        } else {
+          _start.tinyLs.setItem('storyVolume', _chapters.storyData.youtube.volume);
+        }
+      } else {
+        _chapters.storyData.youtube.volume = storageVolume;
+        _chapters.storyData.youtube.player.setVolume(storageVolume);
+        _chapters.storyData.music.volume = storageVolume;
+      }
+
+      // Play Video
+      _chapters.storyData.youtube.player.seekTo(0);
+      _chapters.storyData.youtube.player.setLoop(true);
+      _chapters.storyData.youtube.player.setShuffle(true);
+      if (_chapters.storyData.youtube.volume > 0) {
+        if (_chapters.storyData.youtube.player.playVideo) _chapters.storyData.youtube.player.playVideo();
+      } else {
+        if (_chapters.storyData.youtube.player.pauseVideo) _chapters.storyData.youtube.player.pauseVideo();
+      }
+
+      // Send Data
+      if (typeof _start.appData.youtube.onReady === 'function') {
+        _start.appData.youtube.onReady(event);
+      }
+    },
+    // State Change
+    onStateChange: function onStateChange(event) {
+      // Event
+      if (event) {
+        _chapters.storyData.youtube.state = event.data;
+        _chapters.storyData.youtube.qualityList = _chapters.storyData.youtube.player.getAvailableQualityLevels();
+      }
+
+      // Send Data
+      if (typeof _start.appData.youtube.onStateChange === 'function') {
+        _start.appData.youtube.onStateChange(event);
+      }
+    },
+    // Quality
+    onPlaybackQualityChange: function onPlaybackQualityChange(event) {
+      if (event) {
+        _chapters.storyData.youtube.quality = event.data;
+      }
+      if (typeof _start.appData.youtube.onPlaybackQualityChange === 'function') {
+        _start.appData.youtube.onPlaybackQualityChange(event);
+      }
+      /* player.setPlaybackQuality('default') */
+    },
+    // Other
+    onPlaybackRateChange: function onPlaybackRateChange(event) {
+      if (typeof _start.appData.youtube.onPlaybackRateChange === 'function') {
+        _start.appData.youtube.onPlaybackRateChange(event);
+      }
+    },
+    onError: function onError(event) {
+      console.error(event);
+      if (typeof _start.appData.youtube.onError === 'function') {
+        _start.appData.youtube.onError(event);
+      }
+    },
+    onApiChange: function onApiChange(event) {
+      if (typeof _start.appData.youtube.onApiChange === 'function') {
+        _start.appData.youtube.onApiChange(event);
+      }
+    }
+  },
+  // Quality
+  setQuality: function setQuality(value) {
+    if (_chapters.storyData.youtube.qualityList.indexOf(value) > -1 || value === 'default') {
+      _chapters.storyData.youtube.quality = value;
+      _chapters.storyData.youtube.player.setPlaybackQuality(value);
+      return true;
+    } else {
+      return false;
+    }
+  },
+  // Volume
+  setVolume: function setVolume(number) {
+    _start.tinyLs.setItem('storyVolume', Number(number));
+    _chapters.storyData.youtube.volume = Number(number);
+    _chapters.storyData.youtube.player.setVolume(Number(number));
+    _chapters.storyData.music.volume = Number(number);
+    _chapters.storyData.music.songVolumeUpdate();
+  },
+  // Start Youtube
+  play: function play(videoID) {
+    // Read Data Base
+    if (!_chapters.storyData.youtube.loading && _chapters.storyData.readFic) {
+      _chapters.storyData.music.loading = true;
+      _chapters.storyData.youtube.loading = true;
+      delete _chapters.storyData.youtube.embed;
+      console.log("Loading youtube video embed...", videoID);
+
+      // Youtube Player
+      if (_chapters.storyData.youtube.player && _chapters.storyData.youtube.player.setVolume) _chapters.storyData.youtube.player.setVolume(_chapters.storyData.music.volume);
+      _chapters.storyData.music.loading = false;
+      _chapters.storyData.youtube.loading = false;
+
+      // Prepare Video ID
+      _chapters.storyData.youtube.videoID = videoID;
+      _chapters.storyData.youtube.currentTime = 0;
+      _chapters.storyData.youtube.duration = 0;
+
+      // New Player
+      if (!_chapters.storyData.youtube.player) {
+        // 2. This code loads the IFrame Player API code asynchronously.
+        console.log("Starting Youtube API...", videoID);
+        var tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        $('head').append(tag);
+
+        // Current Time Detector
+        setInterval(function () {
+          if (_chapters.storyData.youtube.checkYT() && _chapters.storyData.youtube.player) {
+            // Fix
+            _chapters.storyData.music.playing = false;
+            _chapters.storyData.music.paused = false;
+            _chapters.storyData.music.stoppabled = false;
+            _chapters.storyData.music.buffering = false;
+            if (_chapters.storyData.youtube.checkYT()) {
+              // Playing
+              if (_chapters.storyData.youtube.state === YT.PlayerState.PLAYING) {
+                // Set Embed
+                if (!_chapters.storyData.youtube.embed) {
+                  _chapters.storyData.youtube.embed = {};
+                  fetch('https://www.youtube.com/oembed?format=json&url=' + encodeURIComponent("https://www.youtube.com/watch?v=" + _chapters.storyData.youtube.videoID), {
+                    method: 'GET',
+                    dataType: 'json'
+                  }).then(function (res) {
+                    return res.json();
+                  }).then(function (jsonVideo) {
+                    console.log("Youtube video embed loaded!", _chapters.storyData.youtube.videoID);
+                    _chapters.storyData.youtube.embed = jsonVideo;
+                    if (typeof _config["default"].gtag === 'string' && _gtag["default"]) {
+                      (0, _gtag["default"])('event', 'chapter', {
+                        event_chapter: "Chapter ".concat(_chapters.storyData.chapter.selected),
+                        event_category: 'song_playing',
+                        song: "".concat(jsonVideo.provider_name, " - ").concat(jsonVideo.author_name, " - ").concat(jsonVideo.title)
+                      });
+                    }
+
+                    // Info
+                    _chapters.storyData.music.author_name = jsonVideo.author_name;
+                    _chapters.storyData.music.author_url = jsonVideo.author_url;
+                    _chapters.storyData.music.provider_name = jsonVideo.provider_name;
+                    _chapters.storyData.music.thumbnail_url = jsonVideo.thumbnail_url;
+                    _chapters.storyData.music.title = jsonVideo.title;
+                    if (_chapters.storyData.youtube.volume < 1) {
+                      if (_chapters.storyData.youtube.player.pauseVideo) _chapters.storyData.youtube.player.pauseVideo();
+                    }
+                  })["catch"](function (err) {
+                    console.error(err);
+                    alert(err.message);
+                  });
+                }
+                _chapters.storyData.music.playing = true;
+                _chapters.storyData.youtube.duration = _chapters.storyData.youtube.player.getDuration();
+                _chapters.storyData.youtube.currentTime = _chapters.storyData.youtube.player.getCurrentTime();
+                if (typeof _start.appData.youtube.onPlaying === 'function') {
+                  _start.appData.youtube.onPlaying();
+                }
+              }
+
+              // Ended
+              else if (_chapters.storyData.youtube.state === YT.PlayerState.ENDED || _chapters.storyData.youtube.state === YT.PlayerState.CUED) {
+                // Stopping
+                if (_chapters.storyData.music.isStopping) {
+                  _chapters.storyData.youtube.player.seekTo(0);
+                  if (_chapters.storyData.youtube.player.pauseVideo) _chapters.storyData.youtube.player.pauseVideo();
+                  _chapters.storyData.music.isStopping = false;
+                }
+
+                // Next
+                else if (!_chapters.storyData.youtube.loading && _chapters.storyData.readFic && _chapters.storyData.youtube.embed) {
+                  delete _chapters.storyData.youtube.embed;
+                  musicManager.nextMusic();
+                }
+
+                // Progress
+                _chapters.storyData.music.stoppabled = true;
+                _chapters.storyData.youtube.currentTime = _chapters.storyData.youtube.player.getDuration();
+              }
+
+              // Paused
+              else if (_chapters.storyData.youtube.state === YT.PlayerState.PAUSED) {
+                _chapters.storyData.music.paused = true;
+              }
+
+              // Buff
+              else if (_chapters.storyData.youtube.state === YT.PlayerState.BUFFERING) {
+                _chapters.storyData.music.buffering = true;
+              }
+            }
+          }
+          musicManager.updatePlayer();
+        }, 100);
+      }
+
+      // Reuse Player
+      else {
+        if (_chapters.storyData.youtube && _chapters.storyData.youtube.player && _chapters.storyData.youtube.player.loadVideoById) _chapters.storyData.youtube.player.loadVideoById({
+          videoId: videoID,
+          startSeconds: 0
+        });
+      }
+
+      // Prepare Volume
+      if (typeof _chapters.storyData.youtube.volume === 'number' && typeof _chapters.storyData.music.volume === 'number' && _chapters.storyData.youtube.volume !== _chapters.storyData.music.volume) {
+        if (_chapters.storyData.youtube.player) {
+          _chapters.storyData.youtube.player.setVolume(_chapters.storyData.youtube.volume);
+        }
+        _chapters.storyData.music.volume = Number(_chapters.storyData.youtube.volume);
+      }
+    }
+  }
+};
+
+// Music Manager
+var musicManager = {
+  // Sound Cache
+  cache: {
+    blob: {},
+    buffer: {}
+  },
+  // Load Sound
+  loadAudio: function loadAudio(url) {
+    return new Promise(function (resolve, reject) {
+      var vanillaURL = url;
+      if (!musicManager.cache.blob[vanillaURL]) {
+        fetch(url, {
+          method: 'GET'
+        }).then(function (response) {
+          return response.blob();
+        }).then(function (blob) {
+          var url = window.URL.createObjectURL(blob);
+          var loaded = false;
+          var audio = new Audio();
+          audio.preload = 'auto';
+          audio.onerror = reject;
+          audio.addEventListener('canplaythrough', function () {
+            if (!loaded) {
+              loaded = true;
+              musicManager.cache.blob[vanillaURL] = audio;
+              resolve(audio);
+            }
+          }, false);
+          audio.src = url;
+        })["catch"](reject);
+      } else {
+        resolve(musicManager.cache.blob[vanillaURL]);
+      }
+    });
+  },
+  loadAudioBuffer: function loadAudioBuffer(url) {
+    return new Promise(function (resolve, reject) {
+      var vanillaURL = url;
+      if (!musicManager.cache.buffer[vanillaURL]) {
+        fetch(url, {
+          method: 'GET'
+        }).then(function (response) {
+          return response.arrayBuffer();
+        }).then(function (buffer) {
+          var buffAudio = new BuffAudio(new AudioContext(), new Uint8Array(buffer));
+          musicManager.cache.buffer[vanillaURL] = buffAudio;
+          resolve(buffAudio);
+        })["catch"](reject);
+      } else {
+        resolve(musicManager.cache.buffer[vanillaURL]);
+      }
+    });
+  },
+  // Next Song
+  nextMusic: function nextMusic() {
+    if (typeof _chapters.storyData.music.now.index === 'number' && !isNaN(_chapters.storyData.music.now.index) && isFinite(_chapters.storyData.music.now.index) && _chapters.storyData.music.now.index > -1 && _chapters.storyData.readFic) {
+      _chapters.storyData.music.now.index++;
+      if (!_chapters.storyData.music.playlist[_chapters.storyData.music.now.index]) {
+        _chapters.storyData.music.now.index = 0;
+      }
+
+      // Play
+      var song = _chapters.storyData.music.playlist[_chapters.storyData.music.now.index];
+      if (song && typeof song.id === 'string' && song.id.length > 0 && typeof song.type === 'string' && song.type.length > 0) {
+        // Youtube
+        if (song.type === 'youtube') {
+          setTimeout(function () {
+            _chapters.storyData.youtube.play(song.id);
+          }, 1000);
+        }
+      }
+    }
+  },
+  disable: function disable() {
+    var react = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+    if (react) {
+      _chapters.storyData.music.disabled = true;
+      $('#music-player').addClass('disabled-player');
+    } else {
+      _chapters.storyData.music.disabled = false;
+      $('#music-player').removeClass('disabled-player');
+    }
+  },
+  // Start Base
+  startBase: function startBase() {
+    // Add Youtube Playing Detector
+    if (_start.appData.youtube && !_start.appData.youtube.onPlaying) {
+      _start.appData.youtube.onPlaying = function () {
+        _chapters.storyData.music.currentTime = _chapters.storyData.youtube.currentTime;
+        _chapters.storyData.music.duration = _chapters.storyData.youtube.duration;
+        musicManager.updatePlayer();
+      };
+    }
+
+    // Add Item Base
+    if (_chapters.storyData.nc.base.right.find('> #status #music').length < 1) {
+      // Update
+      _chapters.storyData.music.songVolumeUpdate();
+
+      // Navbar
+      if (!_chapters.storyData.music.nav) {
+        _chapters.storyData.music.nav = {};
+      }
+
+      // Buttons
+      _chapters.storyData.music.nav.youtube = $('#youtubePlayer');
+      _chapters.storyData.music.nav.info = _tinyLib["default"].icon('fas fa-info-circle');
+      _chapters.storyData.music.nav.play = _tinyLib["default"].icon('fas fa-play');
+      _chapters.storyData.music.nav.volume = _tinyLib["default"].icon('fas fa-volume-mute');
+      _chapters.storyData.music.nav.stop = _tinyLib["default"].icon('fas fa-stop');
+      _chapters.storyData.music.nav.disable = _tinyLib["default"].icon('fas fa-ban');
+
+      // Fix Youtube Player
+      //storyData.music.nav.youtube.removeClass('hidden');
+
+      // Prepare
+      if (!_chapters.storyData.chapter.nav) {
+        _chapters.storyData.chapter.nav = {};
+      }
+      _chapters.storyData.chapter.nav.music = $('<div>', {
+        indexItem: 1,
+        "class": 'nav-item',
+        id: 'music'
+      }).append($('<div>', {
+        id: 'music-player',
+        "class": 'd-none'
+      }).append(
+      // Info
+      $('<a>', {
+        href: 'javascript:void(0)',
+        "class": 'disabled text-white',
+        title: 'Source'
+      }).on('click', function () {
+        if (!_chapters.storyData.music.loading) {
+          open(_chapters.storyData.youtube.player.getVideoUrl(), '_blank');
+        }
+      }).append(_chapters.storyData.music.nav.info),
+      // Play
+      $('<a>', {
+        href: 'javascript:void(0)',
+        "class": 'disabled text-white',
+        title: 'Play/Pause'
+      }).on('click', function () {
+        if (!_chapters.storyData.music.loading) {
+          if (_chapters.storyData.youtube.state === YT.PlayerState.PLAYING) {
+            if (_chapters.storyData.youtube.player.pauseVideo) _chapters.storyData.youtube.player.pauseVideo();
+          } else {
+            if (_chapters.storyData.youtube.player.playVideo) _chapters.storyData.youtube.player.playVideo();
+          }
+        }
+      }).append(_chapters.storyData.music.nav.play),
+      // Stop
+      $('<a>', {
+        href: 'javascript:void(0)',
+        "class": 'disabled text-white',
+        title: 'Stop'
+      }).on('click', function () {
+        if (!_chapters.storyData.music.loading) {
+          _chapters.storyData.music.isStopping = true;
+          _chapters.storyData.youtube.player.stopVideo();
+        }
+      }).append(_chapters.storyData.music.nav.stop),
+      // Volume
+      $('<a>', {
+        href: 'javascript:void(0)',
+        "class": 'disabled text-white',
+        title: 'Volume'
+      }).on('click', function () {
+        if (!_chapters.storyData.music.loading) {
+          // Modal
+          _tinyLib["default"].modal({
+            title: [_tinyLib["default"].icon('fas fa-volume me-3'), 'Song Volume'],
+            body: $('<center>').append($('<p>').text('Change the page music volume'), $('<input>', {
+              "class": 'form-control range',
+              type: 'range',
+              min: 0,
+              max: 100
+            }).change(function () {
+              _chapters.storyData.youtube.setVolume($(this).val());
+            }).val(_chapters.storyData.music.volume)),
+            dialog: 'modal-lg'
+          });
+        }
+      }).append(_chapters.storyData.music.nav.volume),
+      // Disable
+      $('<a>', {
+        href: 'javascript:void(0)',
+        "class": 'disabled text-white',
+        title: 'Disable'
+      }).on('click', function () {
+        if (!_chapters.storyData.music.loading) {
+          $(this).removeClass('');
+          if (_chapters.storyData.music.useThis) {
+            _chapters.storyData.music.useThis = false;
+            _chapters.storyData.music.nav.disable.addClass('text-danger');
+          } else {
+            _chapters.storyData.music.useThis = true;
+            _chapters.storyData.music.nav.disable.removeClass('text-danger');
+          }
+        }
+      }).append(_chapters.storyData.music.nav.disable)));
+
+      // Insert
+      _chapters.storyData.nc.base.right.find('> #status').prepend([
+      // Music
+      _chapters.storyData.chapter.nav.music
+
+      // Youtube
+      //$('<a>', { class: 'nav-item nav-link mx-3 p-0', indexitem: '0', id: 'youtube-thumb' }).append(storyData.music.nav.youtube),
+      ]);
+    }
+  }
+};
+
+// Youtube
+
+// 1. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+// https://developers.google.com/youtube/iframe_api_reference?hl=pt-br
+window.onYouTubeIframeAPIReady = function onYouTubeIframeAPIReady() {
+  console.log("Youtube API started!");
+  _chapters.storyData.youtube.player = new YT.Player('youtubePlayer', {
+    height: 'auto',
+    width: 'auto',
+    playerVars: {
+      controls: 0
+    },
+    videoId: _chapters.storyData.youtube.videoID,
+    startSeconds: 0,
+    events: _chapters.storyData.youtube.events
+  });
+};
+
+// Music Updater
+musicManager.updatePlayer = function () {
+  if (_chapters.storyData.music.nav) {
+    // View
+    $('#music-player').addClass('border').removeClass('d-none').addClass('me-3');
+
+    // Buff
+    if (_chapters.storyData.music.buffering || _chapters.storyData.music.loading || !_chapters.storyData.music.usingSystem || !_chapters.storyData.youtube.checkYT()) {
+      $('#music-player > a').addClass('disabled');
+    } else {
+      $('#music-player > a').removeClass('disabled');
+    }
+
+    // Title
+    if (typeof _chapters.storyData.music.title === 'string' && _chapters.storyData.music.title.length > 0) {
+      var newTitle = "Youtube - ".concat(_chapters.storyData.music.author_name, " - ").concat(_chapters.storyData.music.title);
+      var divBase = $('#music-player > a').has(_chapters.storyData.music.nav.info);
+      if (divBase && divBase.data('bs-tooltip-data') !== newTitle) {
+        divBase.data('bs-tooltip-data', newTitle);
+        var bsToolTip = divBase.data('bs-tooltip');
+        if (bsToolTip) bsToolTip.setContent({
+          '.tooltip-inner': newTitle
+        });
+      }
+    }
+
+    // Playing
+    if (_chapters.storyData.music.playing) {
+      _chapters.storyData.music.nav.play.addClass('fa-pause').removeClass('fa-play');
+    } else if (_chapters.storyData.music.paused) {
+      _chapters.storyData.music.nav.play.addClass('fa-play').removeClass('fa-pause');
+    } else if (_chapters.storyData.music.stoppabled || typeof _chapters.storyData.music.currentTime !== 'number' || typeof _chapters.storyData.music.duration !== 'number' || _chapters.storyData.music.currentTime === _chapters.storyData.music.duration) {
+      _chapters.storyData.music.nav.play.addClass('fa-play').removeClass('fa-pause');
+    }
+
+    // Volume
+    _chapters.storyData.music.nav.volume.removeClass('fa-volume-mute').removeClass('fa-volume-up');
+    if (typeof _chapters.storyData.music.volume === 'number' && _chapters.storyData.music.volume > 0) {
+      _chapters.storyData.music.nav.volume.addClass('fa-volume-up');
+    } else {
+      _chapters.storyData.music.nav.volume.addClass('fas fa-volume-mute');
+    }
+
+    // Tooltip
+    $('#music-player > a[title]').each(function () {
+      $(this).tooltip();
+    });
+  }
+};
+
+// TTS Updater
+_tts["default"].updatePlayer = function () {
+  if (_chapters.storyData.tts.nav) {
+    // View
+    $('#tts-player').addClass('border').removeClass('d-none').addClass('me-3');
+
+    // Tooltip
+    $('#tts-player > a[title]').each(function () {
+      $(this).tooltip();
+    });
+  }
+};
+musicManager.start = {};
+musicManager.start.pizzicato = function (item, loop, resolve, url) {
+  var forcePic = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
+  // Pizzicato Space
+  var pizzicato = {};
+
+  // Pizzicato File
+  pizzicato.playing = false;
+  pizzicato.hiding = false;
+  var newSound = new _pizzicato["default"].Sound({
+    source: 'file',
+    options: {
+      path: url,
+      loop: loop
+    }
+  }, function () {
+    resolve();
+  });
+  pizzicato.data = newSound;
+
+  // Data
+  pizzicato.volume = newSound.volume * 100;
+
+  // Stop
+  pizzicato.stop = function () {
+    if (pizzicato.playing) {
+      pizzicato.playing = false;
+      newSound.stop();
+    }
+  };
+
+  // Start
+  pizzicato.start = function () {
+    if (!pizzicato.playing) {
+      pizzicato.playing = true;
+      newSound.play();
+    }
+  };
+
+  // Play
+  pizzicato.play = function () {
+    var volume = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    if (pizzicato.hiding) {
+      pizzicato.stop();
+    }
+    pizzicato.hiding = false;
+    pizzicato.showing = false;
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        try {
+          if (typeof volume === 'number') {
+            pizzicato.setVolume(volume);
+          } else {
+            pizzicato.setVolume(pizzicato.volume);
+          }
+          pizzicato.start();
+          resolve();
+        } catch (err) {
+          reject(err);
+        }
+      }, 1);
+    });
+  };
+
+  // Set Volume
+  pizzicato.setVolume = function (value) {
+    var notEdit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    return new Promise(function (resolve) {
+      var tinyValue = value;
+      if (typeof tinyValue !== 'number') {
+        tinyValue = pizzicato.volume;
+      }
+      if (tinyValue > 100) {
+        tinyValue = 100;
+      } else if (tinyValue < 0) {
+        tinyValue = 0;
+      }
+      var newVolume = (0, _tinyEssentials.ruleOfThree)(tinyValue, 100, _chapters.storyData.music.volume);
+      if (newVolume > 100) {
+        newVolume = 100;
+      }
+      if (newVolume < 0) {
+        newVolume = 0;
+      }
+      if (notEdit && newVolume > tinyValue) {
+        newVolume = tinyValue;
+      }
+      if (pizzicato.playing) {
+        newSound.volume = newVolume / 100;
+      }
+      if (!notEdit) {
+        pizzicato.volume = tinyValue;
+      }
+      resolve();
+    });
+  };
+
+  // Hide
+  pizzicato.hide = /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+    var hideTimeout,
+      volume,
+      i,
+      _args = arguments;
+    return _regenerator().w(function (_context) {
+      while (1) switch (_context.n) {
+        case 0:
+          hideTimeout = _args.length > 0 && _args[0] !== undefined ? _args[0] : 50;
+          volume = newSound.volume * 100;
+          pizzicato.hiding = true;
+          pizzicato.showing = false;
+          if (!(typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0)) {
+            _context.n = 4;
+            break;
+          }
+          i = 0;
+        case 1:
+          if (!(i < 100)) {
+            _context.n = 3;
+            break;
+          }
+          if (!pizzicato.hiding) {
+            _context.n = 2;
+            break;
+          }
+          _context.n = 2;
+          return new Promise(function (resolve) {
+            setTimeout(function () {
+              if (pizzicato.hiding) {
+                volume--;
+                pizzicato.setVolume(volume, true);
+              }
+              resolve();
+            }, hideTimeout);
+          });
+        case 2:
+          i++;
+          _context.n = 1;
+          break;
+        case 3:
+          _context.n = 5;
+          break;
+        case 4:
+          pizzicato.setVolume(0, true);
+        case 5:
+          if (pizzicato.hiding) {
+            pizzicato.stop();
+            pizzicato.hiding = false;
+            pizzicato.showing = false;
+          }
+        case 6:
+          return _context.a(2);
+      }
+    }, _callee);
+  }));
+
+  // Show
+  pizzicato.show = /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
+    var hideTimeout,
+      soundVolume,
+      volume,
+      i,
+      _args2 = arguments;
+    return _regenerator().w(function (_context2) {
+      while (1) switch (_context2.n) {
+        case 0:
+          hideTimeout = _args2.length > 0 && _args2[0] !== undefined ? _args2[0] : 50;
+          pizzicato.stop();
+          pizzicato.hiding = false;
+          pizzicato.showing = false;
+          soundVolume = pizzicato.volume;
+          volume = 0;
+          pizzicato.showing = true;
+          pizzicato.hiding = false;
+          pizzicato.setVolume(0, true);
+          newSound.volume = 0;
+          pizzicato.start();
+          if (!(typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0)) {
+            _context2.n = 4;
+            break;
+          }
+          i = 0;
+        case 1:
+          if (!(i < 100)) {
+            _context2.n = 3;
+            break;
+          }
+          if (!pizzicato.showing) {
+            _context2.n = 2;
+            break;
+          }
+          _context2.n = 2;
+          return new Promise(function (resolve) {
+            setTimeout(function () {
+              if (pizzicato.showing) {
+                if (volume < soundVolume) {
+                  volume++;
+                  pizzicato.setVolume(volume, true);
+                } else {
+                  pizzicato.setVolume(soundVolume, true);
+                }
+              }
+              resolve();
+            }, hideTimeout);
+          });
+        case 2:
+          i++;
+          _context2.n = 1;
+          break;
+        case 3:
+          _context2.n = 5;
+          break;
+        case 4:
+          pizzicato.setVolume(soundVolume, true);
+        case 5:
+          if (pizzicato.showing) {
+            pizzicato.hiding = false;
+            pizzicato.showing = false;
+          }
+        case 6:
+          return _context2.a(2);
+      }
+    }, _callee2);
+  }));
+
+  // End Sound
+  newSound.on('end', function () {
+    if (!loop) {
+      pizzicato.hide(0);
+    }
+  });
+
+  // Force Pic
+  if (!forcePic) {
+    _chapters.storyData.sfx[item].pizzicato = pizzicato;
+  } else {
+    for (var item2 in pizzicato) {
+      _chapters.storyData.sfx[item][item2] = pizzicato[item2];
+    }
+  }
+};
+musicManager.start.seamlessloop = function (item, newSound) {
+  // Data
+  _chapters.storyData.sfx[item].data = newSound;
+  _chapters.storyData.sfx[item].volume = newSound._volume * 100;
+
+  // Stop
+  _chapters.storyData.sfx[item].stop = function () {
+    if (_chapters.storyData.sfx[item].playing) {
+      _chapters.storyData.sfx[item].playing = false;
+      newSound.stop();
+    }
+  };
+
+  // Start
+  _chapters.storyData.sfx[item].start = function () {
+    if (!_chapters.storyData.sfx[item].playing) {
+      _chapters.storyData.sfx[item].playing = true;
+      newSound.start(item);
+    }
+  };
+
+  // Play
+  _chapters.storyData.sfx[item].play = function () {
+    var volume = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    if (_chapters.storyData.sfx[item].hiding) {
+      _chapters.storyData.sfx[item].stop();
+    }
+    _chapters.storyData.sfx[item].hiding = false;
+    _chapters.storyData.sfx[item].showing = false;
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        try {
+          if (typeof volume === 'number') {
+            _chapters.storyData.sfx[item].setVolume(volume);
+          } else {
+            _chapters.storyData.sfx[item].setVolume(_chapters.storyData.sfx[item].volume);
+          }
+          _chapters.storyData.sfx[item].start();
+          resolve();
+        } catch (err) {
+          reject(err);
+        }
+      }, 1);
+    });
+  };
+
+  // Set Volume
+  _chapters.storyData.sfx[item].setVolume = function (value) {
+    var notEdit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    return new Promise(function (resolve) {
+      var tinyValue = value;
+      if (typeof tinyValue !== 'number') {
+        tinyValue = _chapters.storyData.sfx[item].volume;
+      }
+      if (tinyValue > 100) {
+        tinyValue = 100;
+      } else if (tinyValue < 0) {
+        tinyValue = 0;
+      }
+      var newVolume = (0, _tinyEssentials.ruleOfThree)(tinyValue, 100, _chapters.storyData.music.volume);
+      if (newVolume > 100) {
+        newVolume = 100;
+      }
+      if (newVolume < 0) {
+        newVolume = 0;
+      }
+      if (notEdit && newVolume > tinyValue) {
+        newVolume = tinyValue;
+      }
+      if (_chapters.storyData.sfx[item].playing) {
+        newSound.volume(newVolume / 100);
+      }
+      if (!notEdit) {
+        _chapters.storyData.sfx[item].volume = tinyValue;
+      }
+      resolve();
+    });
+  };
+
+  // Hide
+  _chapters.storyData.sfx[item].hide = /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
+    var hideTimeout,
+      volume,
+      i,
+      _args3 = arguments;
+    return _regenerator().w(function (_context3) {
+      while (1) switch (_context3.n) {
+        case 0:
+          hideTimeout = _args3.length > 0 && _args3[0] !== undefined ? _args3[0] : 50;
+          volume = newSound._volume * 100;
+          _chapters.storyData.sfx[item].hiding = true;
+          _chapters.storyData.sfx[item].showing = false;
+          if (!(typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0)) {
+            _context3.n = 4;
+            break;
+          }
+          i = 0;
+        case 1:
+          if (!(i < 100)) {
+            _context3.n = 3;
+            break;
+          }
+          if (!_chapters.storyData.sfx[item].hiding) {
+            _context3.n = 2;
+            break;
+          }
+          _context3.n = 2;
+          return new Promise(function (resolve) {
+            setTimeout(function () {
+              if (_chapters.storyData.sfx[item].hiding) {
+                volume--;
+                _chapters.storyData.sfx[item].setVolume(volume, true);
+              }
+              resolve();
+            }, hideTimeout);
+          });
+        case 2:
+          i++;
+          _context3.n = 1;
+          break;
+        case 3:
+          _context3.n = 5;
+          break;
+        case 4:
+          _chapters.storyData.sfx[item].setVolume(0, true);
+        case 5:
+          if (_chapters.storyData.sfx[item].hiding) {
+            _chapters.storyData.sfx[item].stop();
+            _chapters.storyData.sfx[item].hiding = false;
+            _chapters.storyData.sfx[item].showing = false;
+          }
+        case 6:
+          return _context3.a(2);
+      }
+    }, _callee3);
+  }));
+
+  // Show
+  _chapters.storyData.sfx[item].show = /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4() {
+    var hideTimeout,
+      soundVolume,
+      volume,
+      i,
+      _args4 = arguments;
+    return _regenerator().w(function (_context4) {
+      while (1) switch (_context4.n) {
+        case 0:
+          hideTimeout = _args4.length > 0 && _args4[0] !== undefined ? _args4[0] : 50;
+          _chapters.storyData.sfx[item].stop();
+          _chapters.storyData.sfx[item].hiding = false;
+          _chapters.storyData.sfx[item].showing = false;
+          soundVolume = _chapters.storyData.sfx[item].volume;
+          volume = 0;
+          _chapters.storyData.sfx[item].showing = true;
+          _chapters.storyData.sfx[item].hiding = false;
+          _chapters.storyData.sfx[item].setVolume(0, true);
+          if (_chapters.storyData.sfx[item].playing) {
+            newSound.volume(0);
+          }
+          _chapters.storyData.sfx[item].start();
+          if (!(typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0)) {
+            _context4.n = 4;
+            break;
+          }
+          i = 0;
+        case 1:
+          if (!(i < 100)) {
+            _context4.n = 3;
+            break;
+          }
+          if (!_chapters.storyData.sfx[item].showing) {
+            _context4.n = 2;
+            break;
+          }
+          _context4.n = 2;
+          return new Promise(function (resolve) {
+            setTimeout(function () {
+              if (_chapters.storyData.sfx[item].showing) {
+                if (volume < soundVolume) {
+                  volume++;
+                  _chapters.storyData.sfx[item].setVolume(volume, true);
+                } else {
+                  _chapters.storyData.sfx[item].setVolume(soundVolume, true);
+                }
+              }
+              resolve();
+            }, hideTimeout);
+          });
+        case 2:
+          i++;
+          _context4.n = 1;
+          break;
+        case 3:
+          _context4.n = 5;
+          break;
+        case 4:
+          _chapters.storyData.sfx[item].setVolume(soundVolume, true);
+        case 5:
+          if (_chapters.storyData.sfx[item].showing) {
+            _chapters.storyData.sfx[item].hiding = false;
+            _chapters.storyData.sfx[item].showing = false;
+          }
+        case 6:
+          return _context4.a(2);
+      }
+    }, _callee4);
+  }));
+};
+musicManager.start.vanilla = function (item, newSound) {
+  // Values
+  _chapters.storyData.sfx[item].paused = false;
+  _chapters.storyData.sfx[item].volume = newSound.volume * 100;
+  _chapters.storyData.sfx[item].currentTime = 0;
+  _chapters.storyData.sfx[item].duration = newSound.duration;
+
+  // Play
+  _chapters.storyData.sfx[item].play = function () {
+    var inTime = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var volume = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    if (_chapters.storyData.sfx[item].hiding) {
+      newSound.pause();
+    }
+    _chapters.storyData.sfx[item].hiding = false;
+    _chapters.storyData.sfx[item].showing = false;
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        try {
+          if (typeof volume === 'number') {
+            _chapters.storyData.sfx[item].setVolume(volume);
+          } else {
+            _chapters.storyData.sfx[item].setVolume(_chapters.storyData.sfx[item].volume);
+          }
+          newSound.currentTime = 0;
+          _chapters.storyData.sfx[item].playing = true;
+          _chapters.storyData.sfx[item].paused = false;
+          _chapters.storyData.sfx[item].currentTime = 0;
+          _chapters.storyData.sfx[item].leftTime = _chapters.storyData.sfx[item].duration;
+          if (typeof inTime === 'number') {
+            _chapters.storyData.sfx[item].currentTime = inTime;
+            newSound.currentTime = inTime;
+          }
+          newSound.play();
+          resolve();
+        } catch (err) {
+          reject(err);
+        }
+      }, 1);
+    });
+  };
+
+  // Seek To
+  _chapters.storyData.sfx[item].seekTo = function (value) {
+    return new Promise(function (resolve) {
+      _chapters.storyData.sfx[item].currentTime = value;
+      newSound.currentTime = value;
+      resolve();
+    });
+  };
+
+  // Set Volume
+  _chapters.storyData.sfx[item].setVolume = function (value) {
+    var notEdit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    return new Promise(function (resolve) {
+      var tinyValue = value;
+      if (typeof tinyValue !== 'number') {
+        tinyValue = _chapters.storyData.sfx[item].volume;
+      }
+      if (tinyValue > 100) {
+        tinyValue = 100;
+      } else if (tinyValue < 0) {
+        tinyValue = 0;
+      }
+      var newVolume = (0, _tinyEssentials.ruleOfThree)(tinyValue, 100, _chapters.storyData.music.volume);
+      if (newVolume > 100) {
+        newVolume = 100;
+      }
+      if (newVolume < 0) {
+        newVolume = 0;
+      }
+      if (notEdit && newVolume > tinyValue) {
+        newVolume = tinyValue;
+      }
+      newSound.volume = newVolume / 100;
+      if (!notEdit) {
+        _chapters.storyData.sfx[item].volume = tinyValue;
+      }
+      resolve();
+    });
+  };
+
+  // Stop
+  _chapters.storyData.sfx[item].stop = function () {
+    if (_chapters.storyData.sfx[item].hiding) {
+      newSound.pause();
+    }
+    _chapters.storyData.sfx[item].hiding = false;
+    _chapters.storyData.sfx[item].showing = false;
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        try {
+          _chapters.storyData.sfx[item].playing = false;
+          _chapters.storyData.sfx[item].paused = false;
+          newSound.pause();
+          newSound.currentTime = 0;
+          _chapters.storyData.sfx[item].currentTime = 0;
+          _chapters.storyData.sfx[item].leftTime = _chapters.storyData.sfx[item].duration;
+          resolve();
+        } catch (err) {
+          reject(err);
+        }
+      }, 1);
+    });
+  };
+
+  // Pause
+  _chapters.storyData.sfx[item].pause = function () {
+    if (_chapters.storyData.sfx[item].hiding) {
+      newSound.pause();
+    }
+    _chapters.storyData.sfx[item].hiding = false;
+    _chapters.storyData.sfx[item].showing = false;
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        try {
+          _chapters.storyData.sfx[item].playing = false;
+          _chapters.storyData.sfx[item].paused = true;
+          newSound.pause();
+          resolve();
+        } catch (err) {
+          reject(err);
+        }
+      }, 1);
+    });
+  };
+
+  // Resume
+  _chapters.storyData.sfx[item].resume = function () {
+    if (_chapters.storyData.sfx[item].hiding) {
+      newSound.pause();
+    }
+    _chapters.storyData.sfx[item].hiding = false;
+    _chapters.storyData.sfx[item].showing = false;
+    return new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        try {
+          _chapters.storyData.sfx[item].playing = true;
+          _chapters.storyData.sfx[item].paused = false;
+          _chapters.storyData.sfx[item].setVolume(_chapters.storyData.sfx[item].volume);
+          newSound.play();
+          resolve();
+        } catch (err) {
+          reject(err);
+        }
+      }, 1);
+    });
+  };
+
+  // Hide
+  _chapters.storyData.sfx[item].hide = /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5() {
+    var hideTimeout,
+      volume,
+      i,
+      _args5 = arguments;
+    return _regenerator().w(function (_context5) {
+      while (1) switch (_context5.n) {
+        case 0:
+          hideTimeout = _args5.length > 0 && _args5[0] !== undefined ? _args5[0] : 50;
+          volume = newSound.volume * 100;
+          _chapters.storyData.sfx[item].playing = true;
+          _chapters.storyData.sfx[item].paused = false;
+          _chapters.storyData.sfx[item].hiding = true;
+          _chapters.storyData.sfx[item].showing = false;
+          if (!(typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0)) {
+            _context5.n = 4;
+            break;
+          }
+          i = 0;
+        case 1:
+          if (!(i < 100)) {
+            _context5.n = 3;
+            break;
+          }
+          if (!_chapters.storyData.sfx[item].hiding) {
+            _context5.n = 2;
+            break;
+          }
+          _context5.n = 2;
+          return new Promise(function (resolve) {
+            setTimeout(function () {
+              if (_chapters.storyData.sfx[item].hiding) {
+                volume--;
+                _chapters.storyData.sfx[item].setVolume(volume, true);
+              }
+              resolve();
+            }, hideTimeout);
+          });
+        case 2:
+          i++;
+          _context5.n = 1;
+          break;
+        case 3:
+          _context5.n = 5;
+          break;
+        case 4:
+          _chapters.storyData.sfx[item].setVolume(0, true);
+        case 5:
+          if (_chapters.storyData.sfx[item].hiding) {
+            newSound.pause();
+            _chapters.storyData.sfx[item].playing = false;
+            _chapters.storyData.sfx[item].paused = false;
+            _chapters.storyData.sfx[item].hiding = false;
+            _chapters.storyData.sfx[item].showing = false;
+            _chapters.storyData.sfx[item].currentTime = 0;
+            _chapters.storyData.sfx[item].leftTime = _chapters.storyData.sfx[item].duration;
+          }
+        case 6:
+          return _context5.a(2);
+      }
+    }, _callee5);
+  }));
+
+  // Show
+  _chapters.storyData.sfx[item].show = /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6() {
+    var hideTimeout,
+      soundVolume,
+      volume,
+      i,
+      _args6 = arguments;
+    return _regenerator().w(function (_context6) {
+      while (1) switch (_context6.n) {
+        case 0:
+          hideTimeout = _args6.length > 0 && _args6[0] !== undefined ? _args6[0] : 50;
+          newSound.pause();
+          _chapters.storyData.sfx[item].playing = false;
+          _chapters.storyData.sfx[item].paused = false;
+          _chapters.storyData.sfx[item].hiding = false;
+          _chapters.storyData.sfx[item].showing = false;
+          soundVolume = _chapters.storyData.sfx[item].volume;
+          newSound.currentTime = 0;
+          _chapters.storyData.sfx[item].currentTime = 0;
+          _chapters.storyData.sfx[item].leftTime = _chapters.storyData.sfx[item].duration;
+          volume = 0;
+          newSound.volume = 0;
+          _chapters.storyData.sfx[item].showing = true;
+          _chapters.storyData.sfx[item].hiding = false;
+          _chapters.storyData.sfx[item].setVolume(0, true);
+          newSound.play();
+          if (!(typeof hideTimeout === 'number' && !isNaN(hideTimeout) && isFinite(hideTimeout) && hideTimeout > 0)) {
+            _context6.n = 4;
+            break;
+          }
+          i = 0;
+        case 1:
+          if (!(i < 100)) {
+            _context6.n = 3;
+            break;
+          }
+          if (!_chapters.storyData.sfx[item].showing) {
+            _context6.n = 2;
+            break;
+          }
+          _context6.n = 2;
+          return new Promise(function (resolve) {
+            setTimeout(function () {
+              if (_chapters.storyData.sfx[item].showing) {
+                if (volume < soundVolume) {
+                  volume++;
+                  _chapters.storyData.sfx[item].setVolume(volume, true);
+                } else {
+                  _chapters.storyData.sfx[item].setVolume(soundVolume, true);
+                }
+              }
+              resolve();
+            }, hideTimeout);
+          });
+        case 2:
+          i++;
+          _context6.n = 1;
+          break;
+        case 3:
+          _context6.n = 5;
+          break;
+        case 4:
+          _chapters.storyData.sfx[item].setVolume(soundVolume, true);
+        case 5:
+          if (_chapters.storyData.sfx[item].showing) {
+            _chapters.storyData.sfx[item].playing = true;
+            _chapters.storyData.sfx[item].paused = false;
+            _chapters.storyData.sfx[item].hiding = false;
+            _chapters.storyData.sfx[item].showing = false;
+          }
+        case 6:
+          return _context6.a(2);
+      }
+    }, _callee6);
+  }));
+
+  // Audio Action
+  newSound.addEventListener('ended', function () {
+    _chapters.storyData.sfx[item].stop();
+  }, false);
+  newSound.addEventListener('timeupdate', function () {
+    if (_chapters.storyData.sfx[item].playing) {
+      _chapters.storyData.sfx[item].currentTime = _chapters.storyData.sfx[item].file.currentTime;
+      _chapters.storyData.sfx[item].leftTime = _chapters.storyData.sfx[item].duration - _chapters.storyData.sfx[item].currentTime;
+    }
+  }, false);
+};
+
+// Insert SFX
+musicManager.insertSFX = function (item) {
+  var loop = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  var type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'all';
+  if (typeof loop !== 'boolean') {
+    loop = true;
+  }
+  return new Promise(/*#__PURE__*/function () {
+    var _ref7 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7(resolve, reject) {
+      var url, tinyResolve, file, startPizzicato, newSound, _newSound, _t;
+      return _regenerator().w(function (_context7) {
+        while (1) switch (_context7.n) {
+          case 0:
+            if (_chapters.storyData.sfx[item]) {
+              _context7.n = 7;
+              break;
+            }
+            // Prepare
+            _chapters.storyData.sfx[item] = {};
+
+            // Try
+            _context7.p = 1;
+            // File URL
+            url = null; // IPFS
+            if (_config["default"].sfx[item].type === 'ipfs') {
+              url = _config["default"].ipfs.host.replace('{cid}', _config["default"].sfx[item].value);
+            }
+
+            // Normal
+            else {
+              url = _config["default"].sfx[item].value;
+            }
+
+            // Exist URL
+            if (!url) {
+              _context7.n = 3;
+              break;
+            }
+            // Resolve
+            tinyResolve = function tinyResolve(data) {
+              console.log("[".concat(url, "] Loaded!"));
+              resolve(data);
+            }; // Values
+            _chapters.storyData.sfx[item].playing = false;
+            _chapters.storyData.sfx[item].hiding = false;
+            _chapters.storyData.sfx[item].loop = loop;
+
+            // Log
+            console.log("[".concat(url, "] Loading..."));
+            _context7.n = 2;
+            return musicManager.loadAudio(url);
+          case 2:
+            file = _context7.v;
+            _chapters.storyData.sfx[item].file = file;
+
+            // Start Pizzicato
+            startPizzicato = function startPizzicato() {
+              var forcePic = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+              return musicManager.start.pizzicato(item, loop, tinyResolve, file.currentSrc, forcePic);
+            }; // Loop Audio
+            if (loop) {
+              // All Modules
+              if (type === 'all') {
+                newSound = new SeamlessLoop();
+                newSound.addUri(file.currentSrc, file.duration * 1000, item);
+                newSound.callback(function () {
+                  musicManager.start.seamlessloop(item, newSound);
+                  startPizzicato();
+                });
+              } else if (type === 'pizzicato') {
+                startPizzicato(true);
+              } else if (type === 'main') {
+                _newSound = new SeamlessLoop();
+                _newSound.addUri(file.currentSrc, file.duration * 1000, item);
+                _newSound.callback(function () {
+                  musicManager.start.seamlessloop(item, _newSound);
+                  tinyResolve();
+                });
+              } else {
+                reject(new Error('Invalid Module Type!'));
+              }
+            }
+
+            // Nope
+            else {
+              // All Modules
+              if (type === 'all') {
+                // Start
+                musicManager.start.vanilla(item, file);
+                startPizzicato();
+              } else if (type === 'pizzicato') {
+                startPizzicato(true);
+              } else if (type === 'main') {
+                musicManager.start.vanilla(item, file);
+                tinyResolve();
+              } else {
+                reject(new Error('Invalid Module Type!'));
+              }
+            }
+            _context7.n = 4;
+            break;
+          case 3:
+            reject(new Error('Invalid SFX File! ' + item));
+          case 4:
+            _context7.n = 6;
+            break;
+          case 5:
+            _context7.p = 5;
+            _t = _context7.v;
+            // Fail
+            delete _chapters.storyData.sfx[item];
+            reject(_t);
+          case 6:
+            _context7.n = 8;
+            break;
+          case 7:
+            resolve();
+          case 8:
+            return _context7.a(2);
+        }
+      }, _callee7, null, [[1, 5]]);
+    }));
+    return function (_x, _x2) {
+      return _ref7.apply(this, arguments);
+    };
+  }());
+};
+
+// Stop Playlist
+musicManager.stopPlaylist = /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8() {
+  var hideTimeout, volume, _loop, i;
+  return _regenerator().w(function (_context9) {
+    while (1) switch (_context9.n) {
+      case 0:
+        if (!_chapters.storyData.music.usingSystem) {
+          _context9.n = 3;
+          break;
+        }
+        // Playing Used
+        if (_chapters.storyData.music.playing) {
+          _chapters.storyData.music.playingUsed = true;
+        }
+
+        // Using System
+        _chapters.storyData.music.usingSystem = false;
+
+        // Hide Progress
+        hideTimeout = 50;
+        volume = _chapters.storyData.music.volume;
+        _loop = /*#__PURE__*/_regenerator().m(function _loop(i) {
+          return _regenerator().w(function (_context8) {
+            while (1) switch (_context8.n) {
+              case 0:
+                if (_chapters.storyData.music.usingSystem) {
+                  _context8.n = 1;
+                  break;
+                }
+                _context8.n = 1;
+                return new Promise(function (resolve) {
+                  setTimeout(function () {
+                    // Volume
+                    volume--;
+
+                    // Youtube Player
+                    if (_chapters.storyData.youtube.player && typeof _chapters.storyData.youtube.player.setVolume === 'function') {
+                      _chapters.storyData.youtube.player.setVolume(volume);
+                    }
+                    if (i === 100) {
+                      // Youtube Player
+                      if (_chapters.storyData.youtube.player) {
+                        _chapters.storyData.youtube.player.stopVideo();
+                      }
+                    }
+                    resolve();
+                  }, hideTimeout);
+                });
+              case 1:
+                return _context8.a(2);
+            }
+          }, _loop);
+        });
+        i = 0;
+      case 1:
+        if (!(i < 100)) {
+          _context9.n = 3;
+          break;
+        }
+        return _context9.d(_regeneratorValues(_loop(i)), 2);
+      case 2:
+        i++;
+        _context9.n = 1;
+        break;
+      case 3:
+        return _context9.a(2);
+    }
+  }, _callee8);
+}));
+
+// Start Playlist
+musicManager.startPlaylist = function () {
+  if (_chapters.storyData.readFic && objHash(_chapters.storyData.music.playlist) !== objHash(_chapters.storyData.music.playlistPlaying)) {
+    // Check Status
+    if (Array.isArray(_chapters.storyData.music.playlist) && _chapters.storyData.music.playlist.length > 0) {
+      // Play Song
+      (0, _tinyEssentials.shuffleArray)(_chapters.storyData.music.playlist);
+      var playSong = function playSong() {
+        if (typeof _chapters.storyData.music.now.index === 'number' && !isNaN(_chapters.storyData.music.now.index) && isFinite(_chapters.storyData.music.now.index) && _chapters.storyData.music.now.index > -1) {
+          // Update Cache
+          _chapters.storyData.music.playlistPlaying = _chapters.storyData.music.playlist;
+
+          // Play
+          var song = _chapters.storyData.music.playlist[_chapters.storyData.music.now.index];
+          if (song && typeof song.id === 'string' && song.id.length > 0 && typeof song.type === 'string' && song.type.length > 0) {
+            // Youtube
+            if (song.type === 'youtube') {
+              setTimeout(function () {
+                _chapters.storyData.youtube.play(song.id);
+              }, 100);
+            }
+          }
+        }
+      };
+
+      // Exist
+      if (_chapters.storyData.music.now.playlist === null || _chapters.storyData.music.now.index === -1 || _chapters.storyData.music.now.playlist !== _chapters.storyData.music.value) {
+        // Fix Index
+        if (_chapters.storyData.music.now.index < 0 || _chapters.storyData.music.now.playlist !== _chapters.storyData.music.value) {
+          _chapters.storyData.music.now.index = 0;
+        }
+
+        // Now
+        _chapters.storyData.music.now.playlist = _chapters.storyData.music.value;
+
+        // Play
+        playSong();
+      }
+
+      // Resume
+      else if (_chapters.storyData.music.playingUsed) {
+        if (_chapters.storyData.music.playingUsed) {
+          playSong();
+        }
+        _chapters.storyData.music.playingUsed = false;
+      }
+    }
+
+    // Check Data
+    _chapters.storyData.music.usingSystem = true;
+  }
+};
+var _default = exports["default"] = musicManager;
+
+},{"../../chapters/config.mjs":199,"../../files/chapters.mjs":202,"../../files/tinyLib.mjs":203,"../../gtag.mjs":204,"../../start.mjs":206,"../tts/tts.mjs":196,"pizzicato":96,"tiny-essentials":161}],196:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _tinyLib = _interopRequireDefault(require("../../files/tinyLib.mjs"));
+var _chapters = require("../../files/chapters.mjs");
+var _updater = _interopRequireDefault(require("../updater.mjs"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+// Base
+_chapters.storyData.tts = {};
+var ttsManager = {
+  enabled: false,
+  voicePreferenceList: ['Zira - English', 'English (USA,l03)', 'DEFAULT'],
+  synth: window.speechSynthesis,
+  voices: [],
+  voice: null,
+  lastLine: 0,
+  ttsTimeout: null,
+  queue: [],
+  // Find Line
+  findLine: function findLine(line) {
+    var dontTryAgain = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    var index = _chapters.storyData.chapter.ficPageData.findIndex(function (item) {
+      return line === item.line;
+    });
+    var ficData = _chapters.storyData.chapter.ficPageData[index];
+
+    // Complete 1
+    if (ficData || dontTryAgain || !Array.isArray(_chapters.storyData.chapter.ficPageData)) return ficData;
+
+    // Try loop
+    while (index < _chapters.storyData.chapter.ficPageData.length) {
+      // Read data
+      if (_chapters.storyData.chapter.ficPageData[index]) {
+        var fcData = _chapters.storyData.chapter.ficPageData[index];
+        // Check line and use it
+        if (fcData.line >= line) return fcData;
+      }
+
+      // Next
+      index++;
+    }
+
+    // Complete 2
+    return null;
+  },
+  // Start tts base
+  startBase: function startBase() {
+    if (_chapters.storyData.nc.base.right.find('> #status #tts').length < 1) {
+      // Buttons
+      if (!_chapters.storyData.tts.nav) {
+        _chapters.storyData.tts.nav = {};
+      }
+      _chapters.storyData.tts.nav.play = _tinyLib["default"].icon('fas fa-play');
+      _chapters.storyData.tts.nav.stop = _tinyLib["default"].icon('fas fa-stop');
+
+      // Prepare
+      if (!_chapters.storyData.chapter.nav) {
+        _chapters.storyData.chapter.nav = {};
+      }
+      _chapters.storyData.chapter.nav.tts = $('<div>', {
+        indexItem: 1,
+        "class": 'nav-item',
+        id: 'tts'
+      }).append($('<div>', {
+        id: 'tts-player'
+      }).append(
+      // Play
+      $('<a>', {
+        href: 'javascript:void(0)',
+        "class": 'text-white',
+        title: 'Start TTS'
+      }).on('click', function () {
+        return ttsManager.enable();
+      }).append(_chapters.storyData.tts.nav.play),
+      // Stop
+      $('<a>', {
+        href: 'javascript:void(0)',
+        "class": 'text-white',
+        title: 'Stop TTS'
+      }).on('click', function () {
+        return ttsManager.disable();
+      }).append(_chapters.storyData.tts.nav.stop)));
+
+      // Insert
+      _chapters.storyData.nc.base.right.find('> #status').prepend([
+      // TTS
+      _chapters.storyData.chapter.nav.tts]);
+    }
+    if (ttsManager.updatePlayer) {
+      ttsManager.updatePlayer();
+    }
+    setInterval(ttsManager.updatePlayer, 100);
+  },
+  // Enable and disable
+  enable: function enable() {
+    ttsManager.enabled = true;
+    _updater["default"].data(_chapters.storyData.chapter.line);
+  },
+  disable: function disable() {
+    ttsManager.enabled = false;
+    ttsManager.synth.cancel();
+  },
+  // Init data
+  init: function init() {
+    ttsManager.firstTime = false;
+    // Get voices
+    ttsManager.voices = ttsManager.synth.getVoices();
+    if (ttsManager.voices.length === 0) {
+      ttsManager.synth.onvoiceschanged = ttsManager.init;
+      return;
+    }
+    var _iterator = _createForOfIteratorHelper(ttsManager.voicePreferenceList),
+      _step;
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var preferenceString = _step.value;
+        var _iterator2 = _createForOfIteratorHelper(ttsManager.voices),
+          _step2;
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var voice = _step2.value;
+            var voiceName = voice.name.toLowerCase();
+            var preference = preferenceString.toLowerCase();
+            if (voiceName.indexOf(preference) !== -1) {
+              // console.log("Found preferred voice " + voiceName);
+              ttsManager.voice = voice;
+              break;
+            }
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+        if (ttsManager.voice !== null) {
+          break;
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+    if (ttsManager.voice === null) {
+      // console.log("No preferred voice found, using first");
+      ttsManager.voice = ttsManager.voices[0];
+    }
+  },
+  // Read line
+  readLine: function readLine(line) {
+    // Nothing here
+    if (!ttsManager.enabled) {
+      return;
+    }
+
+    // Read line
+    if (typeof line === 'number') {
+      var ficData = ttsManager.findLine(line);
+      if (ficData) {
+        ttsManager.lastLine = (ficData === null || ficData === void 0 ? void 0 : ficData.line) || -1;
+        ttsManager.lastLine++;
+      } else {
+        console.error('non-number passed to ttsManager.readLine in the new fic data');
+        return;
+      }
+    } else {
+      console.error('non-number passed to ttsManager.readLine');
+      return;
+    }
+    ttsManager.synth.cancel();
+
+    // Clear timeout
+    if (ttsManager.ttsTimeout !== null) {
+      clearTimeout(ttsManager.ttsTimeout);
+      ttsManager.ttsTimeout = null;
+    }
+
+    // And add new timeout
+    if (ttsManager.voice == null) {
+      ttsManager.ttsTimeout = setTimeout(function () {
+        ttsManager.readLine(line);
+      }, 500);
+      return;
+    }
+    ttsManager.ttsTimeout = setTimeout(function () {
+      ttsManager.readLineInternal(line);
+    }, 500);
+  },
+  // Next Utterance
+  nextUtterance: function nextUtterance() {
+    if (ttsManager.queue.length == 0) {
+      var ficData = ttsManager.findLine(ttsManager.lastLine);
+      if (ficData) _updater["default"].setActiveItem(ficData.line, true);
+      return;
+    }
+    var text = ttsManager.queue.shift();
+    var utterance = new SpeechSynthesisUtterance();
+    utterance.voice = ttsManager.voice;
+    utterance.text = text;
+    utterance.onend = ttsManager.nextUtterance;
+    ttsManager.synth.speak(utterance);
+  },
+  // Read line internal
+  readLineInternal: function readLineInternal(line) {
+    var _ttsManager$findLine;
+    // Get data
+    var data = ((_ttsManager$findLine = ttsManager.findLine(line)) === null || _ttsManager$findLine === void 0 ? void 0 : _ttsManager$findLine.content) || {};
+    ttsManager.queue = [];
+
+    // Read info
+    if (data.info) {
+      for (var _i = 0, _Object$keys = Object.keys(data.info); _i < _Object$keys.length; _i++) {
+        var key = _Object$keys[_i];
+        if (typeof cumulativeData.info[key] === 'undefined') {
+          ttsManager.queue.push('Info ' + key + ': ' + _tinyLib["default"].removeAiTags(data.info[key]));
+        }
+      }
+    }
+
+    // Add action
+    var actionString = data.type;
+    if (data.flashback) actionString += ' flashback';
+    if (data.character) actionString += ": ".concat(data.character);
+    ttsManager.queue.push(actionString);
+    ttsManager.queue.push(_tinyLib["default"].removeAiTags(data.value));
+
+    // Execute voice
+    ttsManager.nextUtterance();
+  }
+};
+ttsManager.init();
+var _default = exports["default"] = ttsManager;
+
+},{"../../files/chapters.mjs":202,"../../files/tinyLib.mjs":203,"../updater.mjs":197}],197:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _tinyEssentials = require("tiny-essentials");
+var _tinyLib = _interopRequireDefault(require("../files/tinyLib.mjs"));
+var _chapters = require("../files/chapters.mjs");
+var _config = _interopRequireDefault(require("../chapters/config.mjs"));
+var _start = require("../start.mjs");
+var _tts = _interopRequireDefault(require("./tts/tts.mjs"));
+var _index = _interopRequireDefault(require("./music/index.mjs"));
+var _gtag = _interopRequireDefault(require("../gtag.mjs"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+// Prepare Cache
+var cacheChapterUpdater = {
+  soundCache: {}
+};
+cacheChapterUpdater.setActiveItem = function (item) {
+  var scrollIntoView = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  if (cacheChapterUpdater.locked) {
+    return;
+  }
+
+  // Validator
+  if (_chapters.storyData.chapter.selected > 0) {
+    var selectedItem = Number(item);
+    var currentLine = _chapters.storyData.chapter.line;
+    if (currentLine == selectedItem) {
+      return;
+    }
+    var element = document.querySelector("tr[line=\"".concat(selectedItem, "\"]"));
+    if (element == null) {
+      // Todo: handle correctly
+      if (selectedItem > currentLine) {
+        document.querySelector('a[title="Go to next page"]').click();
+      } else if (selectedItem < currentLine) {
+        document.querySelector('a[title="Go to previous page"]').click();
+      }
+      return;
+    }
+    if (scrollIntoView) {
+      cacheChapterUpdater.locked = true;
+      winScroller.doAfterScroll(function () {
+        cacheChapterUpdater.locked = false;
+      });
+      var scrollTarget = document.querySelector("tr[line=\"".concat(selectedItem - 1, "\"]"));
+      if (scrollTarget == null) {
+        scrollTarget = document.getElementById('markdown-read');
+      }
+      scrollTarget.scrollIntoView();
+    }
+
+    // Complete
+    cacheChapterUpdater.data(selectedItem);
+  }
+};
+
+// Read Data on Scroll
+var winScroller = new _tinyEssentials.TinyAfterScrollWatcher(window);
+$(window).on('resize scroll', function () {
+  if (_tts["default"].enabled) {
+    return;
+  }
+  // Validator
+  if (_chapters.storyData.chapter.selected > 0) {
+    // Selected Item
+    var selectedItem = 0;
+
+    // Normal Mode
+    if (!_tinyEssentials.TinyHtml.isPageBottom()) {
+      var mdNavbar = $('#md-navbar').get(0);
+      // Detect Selected Item
+      for (var item in _chapters.storyData.chapter.html) {
+        var tinyItem = _chapters.storyData.chapter.html[item].get(0);
+        if (_tinyEssentials.TinyHtml.isInViewport(tinyItem) && !_tinyEssentials.TinyHtml.isCollWith(tinyItem, mdNavbar)) {
+          selectedItem = Number(item);
+          break;
+        }
+      }
+    }
+
+    // Bottom Page
+    else {
+      for (var _item in _chapters.storyData.chapter.html) {
+        selectedItem = Number(_item);
+      }
+    }
+
+    // Complete
+    cacheChapterUpdater.setActiveItem(selectedItem);
+  }
+});
+cacheChapterUpdater.scrollData = function () {
+  // Set Playlist
+  if (Array.isArray(_chapters.storyData.music.playlist)) {
+    _index["default"].disable(false);
+  } else {
+    _chapters.storyData.music.playlist = [];
+  }
+
+  // Exist Playlist
+  if (!_chapters.storyData.chapter.blockLineSave && !_chapters.storyData.music.disabled && Array.isArray(_chapters.storyData.music.playlist) && _chapters.storyData.music.playlist.length > 0) {
+    _index["default"].startPlaylist();
+  }
+
+  // Nope
+  else {
+    _index["default"].stopPlaylist();
+  }
+
+  // Google
+  if (!_chapters.storyData.chapter.blockLineSave && typeof _config["default"].gtag === 'string' && _gtag["default"]) {
+    (0, _gtag["default"])('event', 'chapter', {
+      event_chapter: "Chapter ".concat(_chapters.storyData.chapter.selected),
+      event_category: 'line',
+      event_line: _chapters.storyData.chapter.line
+    });
+  }
+
+  // Remove All Weather
+  var removeAllWeather = function removeAllWeather() {
+    _chapters.storyData.sfx['heavy-rain'].hide();
+    _chapters.storyData.sfx['heavy-rain-little-thunder'].hide();
+  };
+
+  // Set Weather
+  var oldWeather = _chapters.storyData.chapter.weather;
+  _chapters.storyData.chapter.weather = _chapters.storyData.chapter.nextWeather;
+
+  // Change Sound
+  if (oldWeather !== _chapters.storyData.chapter.weather) {
+    removeAllWeather();
+    if (!_chapters.storyData.chapter.blockLineSave) {
+      if (_chapters.storyData.chapter.weather === 'heavyrain') {
+        _chapters.storyData.sfx['heavy-rain'].show();
+      } else if (_chapters.storyData.chapter.weather === 'bolt') {
+        _chapters.storyData.sfx['heavy-rain-little-thunder'].show();
+      }
+    }
+  }
+
+  // Manager Other Sounds
+  for (var file in cacheChapterUpdater.soundCache) {
+    // Value Data
+    var value = cacheChapterUpdater.soundCache[file].value;
+    if (cacheChapterUpdater.soundCache[value.file].waiting) {
+      // Progress
+      cacheChapterUpdater.soundCache[value.file].waiting = false;
+
+      // Play
+      if (!_chapters.storyData.chapter.blockLineSave && value.enabled && !cacheChapterUpdater.soundCache[value.file].playing) {
+        console.log("[".concat(value.file, "] Playing..."));
+        cacheChapterUpdater.soundCache[value.file].playing = true;
+        if (!value.instant) {
+          _chapters.storyData.sfx[value.file].show();
+        } else {
+          _chapters.storyData.sfx[value.file].play();
+        }
+      }
+
+      // Stop
+      else if (!value.enabled && cacheChapterUpdater.soundCache[value.file].playing) {
+        console.log("[".concat(value.file, "] Stopping..."));
+        cacheChapterUpdater.soundCache[value.file].playing = false;
+        if (!value.instant) {
+          _chapters.storyData.sfx[value.file].hide();
+        } else {
+          _chapters.storyData.sfx[value.file].stop();
+        }
+      }
+    }
+  }
+};
+
+// Update Cache
+cacheChapterUpdater.data = function (lastPage) {
+  if (_chapters.storyData.chapter.selected > 0) {
+    $('.selected-tr').removeClass('selected-tr');
+    var element = document.querySelector("tr[line=\"".concat(lastPage, "\"]"));
+    if (element) {
+      element.classList.add('selected-tr');
+    }
+
+    // Call text to speech manager - only reads if it's been enabled
+    _tts["default"].startBase();
+    if (_chapters.storyData.chapter.ficPageData) {
+      var tinyData = _chapters.storyData.chapter.ficPageData.find(function (ficData) {
+        return ficData.line === Number(lastPage);
+      });
+      var ttsIndex = tinyData.line || -1;
+      if (ttsIndex > -1) _tts["default"].readLine(ttsIndex);
+    }
+
+    // Update Data Cache
+    _index["default"].startBase();
+    _chapters.storyData.chapter.line = lastPage;
+    var data = _chapters.storyData.data[_chapters.storyData.chapter.selected];
+    if (!_chapters.storyData.chapter.blockLineSave) {
+      for (var i in data) {
+        // Get Data
+        if (data[i].set) {
+          for (var item in data[i].set) {
+            if (typeof chapterSet[item] === 'function') {
+              chapterSet[item](data[i].set[item], i < lastPage);
+            }
+          }
+        }
+      }
+    }
+
+    // Update Checker Data
+    if (typeof cacheChapterUpdater.timeoutChecker !== 'undefined') {
+      clearTimeout(cacheChapterUpdater.timeoutChecker);
+      delete cacheChapterUpdater.timeoutChecker;
+    }
+    cacheChapterUpdater.timeoutChecker = setTimeout(function () {
+      cacheChapterUpdater.scrollData();
+    }, 1000);
+
+    // Add Bookmark
+    if (_chapters.storyData.nc.base.right.find('> #status #bookmark').length < 1) {
+      // Insert
+      if (!_chapters.storyData.chapter.nav) {
+        _chapters.storyData.chapter.nav = {};
+      }
+      _chapters.storyData.chapter.nav.bookmark = $('<a>', {
+        indexItem: 2,
+        "class": 'nav-item nav-link',
+        id: 'bookmark'
+      });
+      _chapters.storyData.nc.base.right.find('> #status').prepend(_chapters.storyData.chapter.nav.bookmark);
+
+      // Icon
+      _chapters.storyData.chapter.nav.bookmark.css({
+        cursor: 'pointer'
+      });
+      _chapters.storyData.chapter.nav.bookmark.attr('title', 'Bookmark').append(_tinyLib["default"].icon('fas fa-bookmark'));
+      _chapters.storyData.chapter.nav.bookmark.tooltip();
+
+      // Action
+      _chapters.storyData.chapter.nav.bookmark.on('click', function () {
+        _tinyLib["default"].modal({
+          title: $('<span>').text('Bookmark'),
+          body: $('<center>').append($('<h5>').text("Save this URL to your favorites to re-read the story on any device"), $('<input>', {
+            type: 'text',
+            "class": 'form-control text-center'
+          }).prop('readonly', true).val("".concat(location.protocol, "//").concat(location.host, "/?path=read-fic&chapter=").concat(_chapters.storyData.chapter.selected, "&line=").concat(_chapters.storyData.chapter.line)).on('click', function () {
+            $(this).select();
+          })),
+          dialog: 'modal-lg'
+        });
+      });
+    }
+    if (!_chapters.storyData.chapter.blockLineSave) {
+      _chapters.storyData.chapter.nav.bookmark.removeClass('disabled');
+      _chapters.storyData.chapter.nav.bookmark.prop('disabled', false);
+    } else {
+      _chapters.storyData.chapter.nav.bookmark.addClass('disabled');
+      _chapters.storyData.chapter.nav.bookmark.prop('disabled', true);
+    }
+
+    // Sortable  #status
+    _chapters.storyData.nc.base.right.each(function () {
+      $(this).find('#status > a').sort(function (a, b) {
+        return Number($(a).attr('indexitem')) - Number($(b).attr('indexitem'));
+      }).appendTo($(this).find('#status'));
+    });
+
+    // Update Title
+    if (!_chapters.storyData.chapter.blockLineSave) {
+      _start.tinyLs.setItem('bookmark' + _chapters.storyData.chapter.selected, _chapters.storyData.chapter.line);
+      _chapters.storyData.chapter.bookmark[_chapters.storyData.chapter.selected] = _chapters.storyData.chapter.line;
+    }
+    var infoInsert = "Chapter ".concat(_chapters.storyData.chapter.selected, " / Line ").concat(_chapters.storyData.chapter.line);
+    $('#fic-chapter').text(infoInsert);
+    document.title = "".concat(_chapters.storyData.title, " - ").concat(infoInsert);
+  }
+};
+
+// Set Actions
+var chapterSet = {
+  playEffect: function playEffect(value) {
+    var actionFromNow = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    if (actionFromNow && value && value.file && _chapters.storyData.sfx[value.file]) {
+      if (!cacheChapterUpdater.soundCache[value.file]) {
+        cacheChapterUpdater.soundCache[value.file] = {
+          playing: false
+        };
+      }
+      cacheChapterUpdater.soundCache[value.file].waiting = true;
+      cacheChapterUpdater.soundCache[value.file].value = value;
+    }
+  },
+  playlistPlay: function playlistPlay(value) {
+    var actionFromNow = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    if (actionFromNow) {
+      // Set Playlist
+      var playlist = _config["default"].playlist[value];
+      if (Array.isArray(playlist)) {
+        _chapters.storyData.music.value = value;
+        _chapters.storyData.music.playlist = playlist;
+      } else {
+        _chapters.storyData.music.value = null;
+        _chapters.storyData.music.playlist = [];
+      }
+    }
+  },
+  day: function day(value) {
+    var actionFromNow = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    if (actionFromNow) {
+      // Add Item Base
+      if (_chapters.storyData.nc.base.right.find('> #status #day').length < 1) {
+        if (!_chapters.storyData.chapter.nav) {
+          _chapters.storyData.chapter.nav = {};
+        }
+        _chapters.storyData.chapter.nav.day = $('<a>', {
+          indexItem: 5,
+          "class": 'nav-item nav-link',
+          id: 'day'
+        });
+        _chapters.storyData.nc.base.right.find('> #status').prepend(_chapters.storyData.chapter.nav.day);
+      }
+      _chapters.storyData.nc.base.right.find('> #status #day').text("Day: ".concat(value));
+    }
+  },
+  dayNightCycle: function dayNightCycle(value) {
+    var actionFromNow = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    if (actionFromNow) {
+      $('body').removeClass("fic-daycicle-morning").removeClass("fic-daycicle-evening").removeClass("fic-daycicle-night").removeClass("fic-daycicle-lateAtNight").addClass("fic-daycicle-".concat(value));
+
+      // Add Item Base
+      if (_chapters.storyData.nc.base.right.find('> #status #dayNightCycle').length < 1) {
+        if (!_chapters.storyData.chapter.nav) {
+          _chapters.storyData.chapter.nav = {};
+        }
+        _chapters.storyData.chapter.nav.dayNightCycle = $('<a>', {
+          indexItem: 4,
+          "class": 'nav-item nav-link',
+          id: 'dayNightCycle'
+        });
+        _chapters.storyData.nc.base.right.find('> #status').prepend(_chapters.storyData.chapter.nav.dayNightCycle);
+      }
+
+      // Types
+      var types = {
+        morning: {
+          icon: 'fas fa-sun',
+          title: 'Morning'
+        },
+        evening: {
+          icon: 'fas fa-cloud-sun',
+          title: 'Evening'
+        },
+        night: {
+          icon: 'fas fa-moon',
+          title: 'Night'
+        },
+        lateAtNight: {
+          icon: 'fas fa-bullseye',
+          title: 'Late at Night'
+        }
+      };
+      var obj = _chapters.storyData.nc.base.right.find('> #status #dayNightCycle');
+      obj.empty();
+      if (types[value]) {
+        var newTitle = types[value].title;
+        if (!obj.data('bs-tooltip-data')) {
+          obj.attr('title', newTitle);
+          obj.data('bs-tooltip-data', newTitle);
+          obj.tooltip();
+        } else {
+          obj.data('bs-tooltip-data', newTitle).data('bs-tooltip').setContent({
+            '.tooltip-inner': newTitle
+          });
+        }
+        obj.removeAttr('title').append(_tinyLib["default"].icon(types[value].icon));
+      }
+    }
+  },
+  weather: function weather(value) {
+    var actionFromNow = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    if (actionFromNow) {
+      // Add Item Base
+      if (_chapters.storyData.nc.base.right.find('> #status #weather').length < 1) {
+        if (!_chapters.storyData.chapter.nav) {
+          _chapters.storyData.chapter.nav = {};
+        }
+        _chapters.storyData.chapter.nav.weather = $('<a>', {
+          indexItem: 3,
+          "class": 'nav-item nav-link',
+          id: 'weather'
+        });
+        _chapters.storyData.nc.base.right.find('> #status').prepend(_chapters.storyData.chapter.nav.weather);
+      }
+
+      // Types
+      var types = {
+        rain: {
+          icon: 'fas fa-cloud-rain',
+          title: 'Rain'
+        },
+        bolt: {
+          icon: 'fas fa-bolt',
+          title: 'Thunderbolt'
+        },
+        heavyrain: {
+          icon: 'fas fa-cloud-showers-heavy',
+          title: 'Heavy Rain'
+        },
+        snow: {
+          icon: 'fas fa-snowflake',
+          title: 'Snow'
+        }
+      };
+      _chapters.storyData.chapter.nextWeather = value;
+      var obj = _chapters.storyData.nc.base.right.find('> #status #weather');
+      obj.empty();
+      if (types[value]) {
+        obj.attr('title', types[value].title).append(_tinyLib["default"].icon(types[value].icon));
+        obj.tooltip();
+        obj.removeAttr('title');
+      }
+    }
+  },
+  where: function where(value) {
+    var actionFromNow = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    if (actionFromNow) {
+      // Add Item Base
+      if (_chapters.storyData.nc.base.right.find('> #status #where').length < 1) {
+        if (!_chapters.storyData.chapter.nav) {
+          _chapters.storyData.chapter.nav = {};
+        }
+        _chapters.storyData.chapter.nav.where = $('<a>', {
+          indexItem: 6,
+          "class": 'nav-item nav-link',
+          id: 'where'
+        });
+        _chapters.storyData.nc.base.right.find('> #status').prepend(_chapters.storyData.chapter.nav.where);
+      }
+      _chapters.storyData.nc.base.right.find('> #status #where').text("Location: ".concat(value));
+    }
+  }
+};
+var _default = exports["default"] = cacheChapterUpdater;
+
+},{"../chapters/config.mjs":199,"../files/chapters.mjs":202,"../files/tinyLib.mjs":203,"../gtag.mjs":204,"../start.mjs":206,"./music/index.mjs":195,"./tts/tts.mjs":196,"tiny-essentials":161}],198:[function(require,module,exports){
+"use strict";
+
+var _config = _interopRequireDefault(require("./config.mjs"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+if (!_config["default"].custom_url) {
+  _config["default"].custom_url = {};
+}
+_config["default"].characters = {
+  rayane: {
+    path: '/data/characters/rayane/README.md',
+    url: '/characters/rayane.html',
+    title: 'Rayane',
+    description: "Rayane is one of Pony Driland's most mysterious ponies. There are many legends about her role and why she is always spying on other ponies. What is known is that she is a talented swordsman and she has some spells that are considered extremely rare in Pony Driland like Teleport and regeneration magic."
+  },
+  'rainbow-queen': {
+    path: '/data/characters/rainbow-queen/README.md',
+    url: '/characters/rainbow-queen.html',
+    title: 'Rainbow Queen',
+    description: 'The giant Sphinx goddess of darkness from Pony Driland. The one that takes care of all the darkness of the dimension. Also responsible for dimension energy and life-death passage.'
+  },
+  prisma: {
+    path: '/data/characters/prisma/README.md',
+    url: '/characters/prisma.html',
+    title: 'Prisma',
+    description: "One of the oldest unicorns in all Pony Driland. She's story has a direct involvement with the Royal Color. She is one of the closest ponies to the Rainbow Queen within the Royal Color family."
+  },
+  'princess-ariella': {
+    path: '/data/characters/princess-ariella/README.md',
+    url: '/characters/princess-ariella.html',
+    title: 'Princess Ariella',
+    description: 'Ariella was the first princess of her kingdom founded by her. she has a pure heart and loves all of her creation and her kingdom very much. For her, the lives of everyone in her kingdom matters a lot. Her determination to make the kingdom a better place is extremely high. She could sacrifice herself if necessary just to save her kingdom life.'
+  },
+  layla: {
+    path: '/data/characters/layla/README.md',
+    url: '/characters/layla.html',
+    title: 'Layla',
+    description: "Layla is one of Rainbow Queen's pets. Her sweet personality was a result of past events of her accidentally going to Pony Driland. Like Amy... Her accident happened right during her childhood when she ran away from home, which made it impossible for her to grow like the other ponies, and she ended up spending the rest of her childhood struggling to survive on her own until she became an adult."
+  },
+  james: {
+    path: '/data/characters/james/README.md',
+    url: '/characters/james.html',
+    title: 'James',
+    description: "James is one of the scientists responsible for developing the source code that helped create the Pony Driland dimension. James' journey involves discovering what happened to the dimension, while sadly suffering from the loss of his original dimension."
+  },
+  aniya: {
+    path: '/data/characters/aniya/README.md',
+    url: '/characters/aniya.html',
+    title: 'Aniya',
+    description: 'The mysterious gypsy pony of Blackburn Village.'
+  },
+  amy: {
+    path: '/data/characters/amy/README.md',
+    url: '/characters/amy.html',
+    title: 'Amy',
+    description: "Amy is one of Rainbow Queen's pets. Her sweet personality was a result of past events of her accidentally going to Pony Driland. Her accident happened right during her childhood when she ran away from home, which made it impossible for her to grow like the other ponies, and she ended up spending the rest of her childhood struggling to survive on her own until she became an adult."
+  },
+  'npc/unicorn-soldier': {
+    path: '/data/characters/npc/unicorn-soldier/README.md',
+    url: '/characters/npc/unicorn-soldier.html'
+  },
+  'npc/sniper': {
+    path: '/data/characters/npc/sniper/README.md',
+    url: '/characters/npc/sniper.html'
+  },
+  'npc/signed': {
+    path: '/data/characters/npc/signed/README.md',
+    url: '/characters/npc/signed.html'
+  },
+  'npc/salespony': {
+    path: '/data/characters/npc/salespony/README.md',
+    url: '/characters/npc/salespony.html'
+  },
+  'npc/random-female-pony': {
+    path: '/data/characters/npc/random-female-pony/README.md',
+    url: '/characters/npc/random-female-pony.html'
+  },
+  'npc/pony': {
+    path: '/data/characters/npc/pony/README.md',
+    url: '/characters/npc/pony.html'
+  },
+  'npc/machinist-pony': {
+    path: '/data/characters/npc/machinist-pony/README.md',
+    url: '/characters/npc/machinist-pony.html'
+  },
+  'npc/letter': {
+    path: '/data/characters/npc/letter/README.md',
+    url: '/characters/npc/letter.html'
+  },
+  'npc/hospital-attendant': {
+    path: '/data/characters/npc/hospital-attendant/README.md',
+    url: '/characters/npc/hospital-attendant.html'
+  },
+  'npc/gypsy': {
+    path: '/data/characters/npc/gypsy/README.md',
+    url: '/characters/npc/gypsy.html'
+  },
+  'npc/guard': {
+    path: '/data/characters/npc/guard/README.md',
+    url: '/characters/npc/guard.html'
+  },
+  'npc/guard-951': {
+    path: '/data/characters/npc/guard-951/README.md',
+    url: '/characters/npc/guard-951.html'
+  },
+  'npc/guard-4': {
+    path: '/data/characters/npc/guard-4/README.md',
+    url: '/characters/npc/guard-4.html'
+  },
+  'npc/guard-3': {
+    path: '/data/characters/npc/guard-3/README.md',
+    url: '/characters/npc/guard-3.html'
+  },
+  'npc/guard-2': {
+    path: '/data/characters/npc/guard-2/README.md',
+    url: '/characters/npc/guard-2.html'
+  },
+  'npc/guard-1': {
+    path: '/data/characters/npc/guard-1/README.md',
+    url: '/characters/npc/guard-1.html'
+  },
+  'npc/female-unicorn': {
+    path: '/data/characters/npc/female-unicorn/README.md',
+    url: '/characters/npc/female-unicorn.html'
+  },
+  'npc/employee': {
+    path: '/data/characters/npc/employee/README.md',
+    url: '/characters/npc/employee.html'
+  },
+  'npc/doctor': {
+    path: '/data/characters/npc/doctor/README.md',
+    url: '/characters/npc/doctor.html'
+  },
+  'npc/delivery-boy': {
+    path: '/data/characters/npc/delivery-boy/README.md',
+    url: '/characters/npc/delivery-boy.html'
+  },
+  'npc/cashier': {
+    path: '/data/characters/npc/cashier/README.md',
+    url: '/characters/npc/cashier.html'
+  }
+};
+for (var item in _config["default"].characters) {
+  _config["default"].custom_url[_config["default"].characters[item].path] = {
+    url: _config["default"].characters[item].url,
+    title: _config["default"].characters[item].title
+  };
+}
+
+},{"./config.mjs":199}],199:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var storyCfg = {
+  // Twitter
+  twitter: {
+    username: 'JasminDreasond'
+  },
+  // Donation
+  patreon: 'JasminDreasond',
+  kofi: 'JasminDreasond',
+  dogecoin: {
+    address: 'DJn9GGPYsQSGTi6bHDhfgtUpmivBEnDiMK',
+    explorer: 'https://dogechain.info/address/'
+  },
+  bitcoin: {
+    address: 'bc1qnk7upe44xrsll2tjhy5msg32zpnqxvyysyje2g',
+    explorer: 'https://www.blockchain.com/btc/address/'
+  },
+  ethereum: {
+    address: '0x98d4dC931122118B0fabBaDd5bfF443CeF4E2041',
+    explorer: 'https://etherscan.io/address/'
+  },
+  bnb: {
+    address: '0x98d4dC931122118B0fabBaDd5bfF443CeF4E2041',
+    explorer: 'https://bscscan.com/address/'
+  },
+  polygon: {
+    address: '0x98d4dC931122118B0fabBaDd5bfF443CeF4E2041',
+    explorer: 'https://polygonscan.com/address/'
+  },
+  // Info
+  mastodon: {
+    domain: 'equestria.social',
+    username: 'JasminDreasond'
+  },
+  // Info
+  mirror: ['ponydriland.jimm.horse'],
+  gtag: 'G-PS1R5G3G50',
+  domain: 'ponydriland.com',
+  itemsPerPage: 100,
+  title: 'Pony Driland',
+  derpibooru_tag: 'pony+driland',
+  blog_url: 'https://blog.ponydriland.com/',
+  discordInvite: 'sSkysVtj7y',
+  description: 'The dimension of lost creatures and the home of hope.',
+  urlPage: null,
+  defaultLang: 'en',
+  lang: ['en'],
+  defaultYoutubeVolume: 100,
+  year: 2021,
+  news: {
+    rss: '',
+    url: ''
+  },
+  contact: 'tiny@ponydriland.com',
+  creator: 'Yasmin Seidel (JasminDreasond)',
+  creator_url: 'https://jasmindreasond.pony.house',
+  github: {
+    account: 'Pony-Driland',
+    repository: 'Website'
+  },
+  ageRating: 'teen',
+  tags: ['fanfic', 'fic', 'pony', 'driland', 'adventure', 'action', 'drama', 'comedy', 'fantasy violence', 'intense violence', 'strong language', 'animated blood', 'horror', 'pony driland'],
+  // Theme
+  theme: {
+    primary: '#a91126',
+    secondary: '#612c36',
+    color: '#fff',
+    color2: '#e0e0e0',
+    color3: 'rgba(255, 255, 255, 0.6)',
+    color4: '#5e5e5e'
+  },
+  noNsfw: ['UK', 'GB'],
+  // Mature Content Config (You can freely add as many NSFW filters as you like.)
+  nsfw: {
+    vore: {
+      size: 12,
+      aiMsg: true,
+      name: 'Vore',
+      description: 'The scale of this content is small to medium. The vore elements are tied to characters for whom this behavior makes narrative sense. By continuing, you acknowledge that you may encounter scenes some audiences could find unsettling or eerie. Disabling this content will not affect the main story. The censored version will simply skip these parts with a brief summary, focusing on essential information for understanding the plot — though some optional canonical details may be missed.'
+    },
+    questionable: {
+      size: 6,
+      aiMsg: true,
+      name: 'Questionable',
+      description: 'The scale of this content is small. There is no sexually explicit material in the story, but some brief scenes may include questionable content. Disabling this option will skip optional scenes or display censored dialogue instead.'
+    },
+    extreme_violence: {
+      size: 6,
+      aiMsg: true,
+      name: 'Extreme Violence',
+      description: 'Some battle scenes may contain details that are uncomfortable or potentially nauseating for some readers. Disabling this option will reduce the level of violence in the story. Enable at your own risk — I am not responsible for your choices.'
+    }
+  },
+  // Chapters
+  chapterName: {
+    1: {
+      color: '#000',
+      title: 'This is not my world',
+      description: "The protagonist's early days in the world of Pony Driland. Something mysterious has happened and we need to discover the basics about this mysterious place."
+    },
+    2: {
+      color: '#000',
+      title: 'She hates war',
+      description: "We have just discovered a mysterious war with some mysterious objective. Maybe she's not feeling comfortable about it."
+    },
+    3: {
+      color: '#000',
+      title: 'They needs help',
+      description: 'These ponies need your help. But at the cost of what consequences?'
+    }
+  },
+  // Word Blacklist
+  wordCountBlacklick: [],
+  // IPFS
+  ipfs: {
+    host: 'https://cloudflare-ipfs.com/ipfs/{cid}',
+    files: {}
+  },
+  // Ar-Io
+  ario: {
+    host: 'https://ar-io.dev/{cid}',
+    files: {
+      '/img/characters/amy/ref.jpg': 'AZhBxGQ1gbgLVp7RDlBqAG-ky37BcwIGIOLXW15Tn9c',
+      '/img/characters/amy/wip-collar.jpg': 'F2VfXQrr0UK39bSMSp5M1P0riNeZ5fFE2BE0qh73dmk',
+      '/img/characters/beta/aniya/image.png': 'LLZaY7dCEbMPxBig_EYMDj8GbQX5vyVZh6eJ31wmOow',
+      '/img/characters/beta/james/old/image.png': '3ReqC2QPg6RpVM508FVjWEBBgxI3hrfkG8YMHUypWGY',
+      '/img/characters/rayane/ref.png': 'u4NBTOjArg3WdOoUXft6jbo13q6yNa9D14Zu_hZGUCc',
+      '/img/characters/rainbow-queen/ref-dark.jpg': 'Y4r5XCLaD3uXMNvCeENDrBaEBbESu5KLXai7bC5kqRw',
+      '/img/characters/rainbow-queen/wip/ref-1.gif': '2l2dbZxB292CsGBi7-1qtPTXvvjCRmYQiauD1LahdB4',
+      '/img/characters/rainbow-queen/ref-dark.webp': '0SyvCKcKbsVSxaEW3DGl6D-EKjlJJCT36wjkLO8htok',
+      '/img/gallery/chapter1-gift.jpg': 'VtXS4VqRDljlQdVtE5gTaQQyR2bPuOv-YDK6AQ4xF_k',
+      '/img/characters/rainbow-queen/scythe.gif': 'EGwe6QEqi2PP2bhJP1OcXj_QZOC_Gwin20b9DiC83sk',
+      '/img/characters/whistler/wip/headshot.png': 'vm8s0QOvBKAmOyUq5Nf6iFo9ybaEq8-Qg7z_co2oW_M',
+      '/img/characters/blue-screen/ref.jpg': '5og2tDBMNV0EwLBZcRA6bwytRJDJDXK76DVvrz0XDBk',
+      '/img/characters/princess-ariella/ref.png': 'LHFvTaQPlHbDnc4vM_xLQ0LWH8ypdqtSccgApjFatq8',
+      '/img/characters/prisma/old/ref.jpg': 'HD4luK_pU20Xwe1SM6em0h9-5DI_h2wSgdQTBbXj8y8',
+      '/img/characters/layla/ref.jpg': 'shHPlacMUy7JWHqNO0GQPZitOyDdFFv7UsgktT69c1A'
+    }
+  }
+};
+var _default = exports["default"] = storyCfg;
+
+},{}],200:[function(require,module,exports){
+"use strict";
+
+var _config = _interopRequireDefault(require("./config.mjs"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+_config["default"].chapters = 3;
+
+},{"./config.mjs":199}],201:[function(require,module,exports){
+"use strict";
+
+var _config = _interopRequireDefault(require("./config.mjs"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+// Playlist
+_config["default"].playlist = {
+  'ivy-resurrection': [{
+    id: 'ZY1kKMUWgh4',
+    type: 'youtube'
+  }, {
+    id: '44A0UTwoCsg',
+    type: 'youtube'
+  }],
+  'Subway battle - c2': [{
+    id: 'EMeOm0-4Ptk',
+    type: 'youtube'
+  }, {
+    id: 'w0XK0cuaK3A',
+    type: 'youtube'
+  }],
+  'Subway battle 2 - c2': [{
+    id: 'w0XK0cuaK3A',
+    type: 'youtube'
+  }, {
+    id: 'gC8bNltkzbA',
+    type: 'youtube'
+  }],
+  'madoka-magica-magia【Metal/Male Cover】': [{
+    id: 'FhhbYF8JANg',
+    type: 'youtube'
+  }],
+  'songs-for-an-empty-world': [{
+    id: 'f1tYe3TkhTc',
+    type: 'youtube'
+  }],
+  'an-antagonistic-battle': [{
+    id: 'AhpvfGJ81n4',
+    type: 'youtube'
+  }],
+  dramatic: [{
+    id: 'i1IUSdcauC8',
+    type: 'youtube'
+  }, {
+    id: '1XmMTRD_zys',
+    type: 'youtube'
+  }],
+  'suspenseful-ambient': [{
+    id: '6_Na6QaG0c4',
+    type: 'youtube'
+  }, {
+    id: 'fFJHAbeQ0g4',
+    type: 'youtube'
+  }],
+  forest: [{
+    id: '3yxG4k9uni4',
+    type: 'youtube'
+  }, {
+    id: 'pI_JSnJMnY4',
+    type: 'youtube'
+  }, {
+    id: 'gvbvkqpM9C8',
+    type: 'youtube'
+  }],
+  'spooky-mysterious': [{
+    id: 'm6e_Uz6vlJw',
+    type: 'youtube'
+  }, {
+    id: 'XUUM0cKcRW0',
+    type: 'youtube'
+  }, {
+    id: 'eaEbST63kk0',
+    type: 'youtube'
+  }],
+  'dark-ambient-melodies': [{
+    id: '6r3xpB6Td40',
+    type: 'youtube'
+  }, {
+    id: 'lAarDAnoXk0',
+    type: 'youtube'
+  }, {
+    id: 'LptTKfrHSi4',
+    type: 'youtube'
+  }],
+  silly: [{
+    id: 'ljTfHitG0eA',
+    type: 'youtube'
+  }, {
+    id: '5Im8S1l3UK0',
+    type: 'youtube'
+  }],
+  'relaxing-rpg-song': [{
+    id: 'l6veMGLpol0',
+    type: 'youtube'
+  }],
+  escape: [{
+    id: '3jw04mIF3fs',
+    type: 'youtube'
+  }, {
+    id: '_j8jUUzGqDo',
+    type: 'youtube'
+  }, {
+    id: 'FaKRXOgasXA',
+    type: 'youtube'
+  }],
+  battle: [{
+    id: 'VMziMXYkVS0',
+    type: 'youtube'
+  }, {
+    id: 'rjRn9lYguV0',
+    type: 'youtube'
+  }, {
+    id: 'yb0-hwJAX3U',
+    type: 'youtube'
+  }, {
+    id: 'XD72-Y5aB9Q',
+    type: 'youtube'
+  }],
+  'Tense Negotiations | D&D/TTRPG Music | 1 Hour': [{
+    id: 'RPkHu8M_U4c',
+    type: 'youtube'
+  }],
+  'drama-battle': [{
+    id: '04_v0iVxCHo',
+    type: 'youtube'
+  }, {
+    id: '9HvVidW5N6w',
+    type: 'youtube'
+  }, {
+    id: 'GRoIRQEI1W8',
+    type: 'youtube'
+  }, {
+    id: '2SsRDysiIlk',
+    type: 'youtube'
+  }],
+  happyness: [{
+    id: 'AVxQSpnR7g8',
+    type: 'youtube'
+  }, {
+    id: 'uFKo2LYu2Zg',
+    type: 'youtube'
+  }],
+  'tech-problem': [{
+    id: 'bGdD0YVh_kI',
+    type: 'youtube'
+  }],
+  'fantasy-village': [{
+    id: 'kKObUC_3NDY',
+    type: 'youtube'
+  }, {
+    id: 'HFoGnJ_w4pQ',
+    type: 'youtube'
+  }, {
+    id: 'uIbAzScUwec',
+    type: 'youtube'
+  }],
+  calm: [{
+    id: '6wmRYL5ZdlM',
+    type: 'youtube'
+  }, {
+    id: 'mxcu9L9j8ww',
+    type: 'youtube'
+  }, {
+    id: 'dZR7M7gDNSc',
+    type: 'youtube'
+  }, {
+    id: '7Uyu5BrGMs4',
+    type: 'youtube'
+  }, {
+    id: 'TOEiLlspdhM',
+    type: 'youtube'
+  }, {
+    id: '3VoGUhPwagI',
+    type: 'youtube'
+  }, {
+    id: 'uU4VgCWuAxE',
+    type: 'youtube'
+  }, {
+    id: 'dx0YwqEue_M',
+    type: 'youtube'
+  }, {
+    id: 'XYoTrKYkk1w',
+    type: 'youtube'
+  }, {
+    id: 'nl4zbChDJsM',
+    type: 'youtube'
+  }, {
+    id: 'roABNwbjZf4',
+    type: 'youtube'
+  }],
+  'Darkanger-Ghost-Town': [{
+    id: 'Q45IHLOtb9I',
+    type: 'youtube'
+  }, {
+    id: 'UqDwrQhDQgY',
+    type: 'youtube'
+  }, {
+    id: 'O1BZ00XboJE',
+    type: 'youtube'
+  }],
+  memories: [{
+    id: 'c-MCbeEIEfw',
+    type: 'youtube'
+  }, {
+    id: 'Cste0PD-Xt4',
+    type: 'youtube'
+  }, {
+    id: 'A7DE3BXdPsA',
+    type: 'youtube'
+  }, {
+    id: 'B4hVK3TYf7M',
+    type: 'youtube'
+  }],
+  'Cursed Lands Ambience': [{
+    id: '5DOnEnzIO9o',
+    type: 'youtube'
+  }],
+  'songs-for-an-dying-world': [{
+    id: 'f1tYe3TkhTc',
+    type: 'youtube'
+  }],
+  'dark-and-mysterious-ambient': [{
+    id: 'yEYxnJB4jZs',
+    type: 'youtube'
+  }],
+  'INFINITY - Epic Futuristic Music Mix | Atmospheric Sci-Fi Music': [{
+    id: '4F7sdy2rZws',
+    type: 'youtube'
+  }],
+  'tense-find-subway-c2': [{
+    id: 'bGdD0YVh_kI',
+    type: 'youtube'
+  }, {
+    id: 'VQ9230-OoBw',
+    type: 'youtube'
+  }, {
+    id: 'fFJHAbeQ0g4',
+    type: 'youtube'
+  }, {
+    id: 'tg7IqHcnVbg',
+    type: 'youtube'
+  }],
+  'marlon-battle-1': [{
+    id: '4BV4oWmhAyI',
+    type: 'youtube'
+  }, {
+    id: 'QwPiELmMFXs',
+    type: 'youtube'
+  }, {
+    id: 'qlamVb0VMmU',
+    type: 'youtube'
+  }],
+  'tense-mystery': [{
+    id: 'YLrJPBbAQoY',
+    type: 'youtube'
+  }, {
+    id: 'gzQzViNj5go',
+    type: 'youtube'
+  }, {
+    id: 'Nziqug75Gn4',
+    type: 'youtube'
+  }, {
+    id: '7dKxHERhaLE',
+    type: 'youtube'
+  }, {
+    id: 'QNwjH5EKTTQ',
+    type: 'youtube'
+  }, {
+    id: '1nBatlpsVj0',
+    type: 'youtube'
+  }, {
+    id: 'g7x-VUGjnc8',
+    type: 'youtube'
+  }, {
+    id: 'bE__iQGLxyc',
+    type: 'youtube'
+  }],
+  'vinny-rainbow-queen-ivy': [{
+    id: 's2bGUY97o6E',
+    type: 'youtube'
+  }, {
+    id: 'i5oAc0hHX7M',
+    type: 'youtube'
+  }, {
+    id: 'vz35kFJErW4',
+    type: 'youtube'
+  }],
+  'rainbow-queen-moment': [{
+    id: 's2bGUY97o6E',
+    type: 'youtube'
+  }],
+  'bad-mystery': [{
+    id: 'eeoEQZH-iwg',
+    type: 'youtube'
+  }, {
+    id: '_x8gYuNUdNA',
+    type: 'youtube'
+  }, {
+    id: 'DJlgRlhaeME',
+    type: 'youtube'
+  }, {
+    id: 'VQ9230-OoBw',
+    type: 'youtube'
+  }, {
+    id: 'vlQvh7IrRPk',
+    type: 'youtube'
+  }],
+  'the-true': [{
+    id: 'XheH4qClv1Q',
+    type: 'youtube'
+  }, {
+    id: '_x8gYuNUdNA',
+    type: 'youtube'
+  }],
+  sad: [{
+    id: 'cU96ZIGKars',
+    type: 'youtube'
+  }, {
+    id: 'lIjHZy3aYDA',
+    type: 'youtube'
+  }, {
+    id: 'eqV2_PDDVr4',
+    type: 'youtube'
+  }, {
+    id: '5i0N9F--gPU',
+    type: 'youtube'
+  }, {
+    id: 'bL5xpXvmGiM',
+    type: 'youtube'
+  }, {
+    id: '2lj9kr1LmQ4',
+    type: 'youtube'
+  }, {
+    id: 'JKgPqJZm1-I',
+    type: 'youtube'
+  }, {
+    id: 'FSkYYV62FEk',
+    type: 'youtube'
+  }, {
+    id: '4VFrTREyIig',
+    type: 'youtube'
+  }, {
+    id: 'E5I667E4GXw',
+    type: 'youtube'
+  }, {
+    id: '24QJV6NnFHY',
+    type: 'youtube'
+  }, {
+    id: 'YhXWzeFJtqM',
+    type: 'youtube'
+  }, {
+    id: 'ewBkq44wynk',
+    type: 'youtube'
+  }, {
+    id: 'lmWFVe7e1ko',
+    type: 'youtube'
+  }, {
+    id: '2tTPzDZWdho',
+    type: 'youtube'
+  }],
+  think: [{
+    id: 'Y36Rg14JcZE',
+    type: 'youtube'
+  }, {
+    id: '6oaXQ_JQY64',
+    type: 'youtube'
+  }, {
+    id: 'ZXNxF7kVW_8',
+    type: 'youtube'
+  }, {
+    id: 'UDhQ8DarZHQ',
+    type: 'youtube'
+  }, {
+    id: 'yNACbXekBVQ',
+    type: 'youtube'
+  }, {
+    id: 'yKwdd2Aja_k',
+    type: 'youtube'
+  }, {
+    id: 'DVrsjXSpH9o',
+    type: 'youtube'
+  }, {
+    id: 'BAB7dhJpqes',
+    type: 'youtube'
+  }, {
+    id: '4c7Juty0RYI',
+    type: 'youtube'
+  }, {
+    id: 'ncCnW7MKTCU',
+    type: 'youtube'
+  }, {
+    id: 'TMLnDTkUEgg',
+    type: 'youtube'
+  }, {
+    id: '6yPivtTKLno',
+    type: 'youtube'
+  }, {
+    id: 'SzhjAqPF-gM',
+    type: 'youtube'
+  }, {
+    id: 'k79T3jVvPjw',
+    type: 'youtube'
+  }, {
+    id: 'oxivFag3Reg',
+    type: 'youtube'
+  }, {
+    id: 'ni-Q2RCoexg',
+    type: 'youtube'
+  }, {
+    id: 'wT0lWL_TU7w',
+    type: 'youtube'
+  }],
+  'good-think': [{
+    id: '5Im8S1l3UK0',
+    type: 'youtube'
+  }],
+  'nuclear-winter': [{
+    id: 'cRzQuPvLjdU',
+    type: 'youtube'
+  }],
+  'bad-think': [{
+    id: '0ZD3SfS9x8E',
+    type: 'youtube'
+  }, {
+    id: 'AfkEAnazGMo',
+    type: 'youtube'
+  }, {
+    id: 'QD5OGfAJIus',
+    type: 'youtube'
+  }, {
+    id: 'eeeQcvtjV2k',
+    type: 'youtube'
+  }, {
+    id: 'CAMmIyAA6CY',
+    type: 'youtube'
+  }, {
+    id: 'Li2v4Afy1H0',
+    type: 'youtube'
+  }],
+  'sad-plot-twist': [{
+    id: '44A0UTwoCsg',
+    type: 'youtube'
+  }, {
+    id: 'OCjvJoWrUSM',
+    type: 'youtube'
+  }],
+  'new-thing': [{
+    id: 'PkIc6TMLfv0',
+    type: 'youtube'
+  }, {
+    id: 'uV2eI9KBOFs',
+    type: 'youtube'
+  }, {
+    id: 'E0wknC_56vE',
+    type: 'youtube'
+  }],
+  troubles: [{
+    id: 'gWNsV8L1DB8',
+    type: 'youtube'
+  }, {
+    id: 'ACXW__UAC7w',
+    type: 'youtube'
+  }, {
+    id: 'VMziMXYkVS0',
+    type: 'youtube'
+  }],
+  'first-vs-rayane': [{
+    id: 'WspwWDFr4IM',
+    type: 'youtube'
+  }],
+  'aniya-first-time': [{
+    id: 'lqXY335eg_U',
+    type: 'youtube'
+  }, {
+    id: 's2bGUY97o6E',
+    type: 'youtube'
+  }, {
+    id: 'uV2eI9KBOFs',
+    type: 'youtube'
+  }, {
+    id: 'qcA0BwRBbKI',
+    type: 'youtube'
+  }, {
+    id: 'bGdD0YVh_kI',
+    type: 'youtube'
+  }],
+  'first-yasmin-night': [{
+    id: 'iY4HnkvlQM4',
+    type: 'youtube'
+  }, {
+    id: '24QJV6NnFHY',
+    type: 'youtube'
+  }, {
+    id: 'DVrsjXSpH9o',
+    type: 'youtube'
+  }, {
+    id: 'TOEiLlspdhM',
+    type: 'youtube'
+  }, {
+    id: 'TMLnDTkUEgg',
+    type: 'youtube'
+  }, {
+    id: '6yPivtTKLno',
+    type: 'youtube'
+  }, {
+    id: 'xLD7nFdwYlk',
+    type: 'youtube'
+  }, {
+    id: '4veUhkwfuXE',
+    type: 'youtube'
+  }]
+};
+
+// SFX
+_config["default"].sfx = {
+  'onderwish-emergency': {
+    type: 'file',
+    module: 'main',
+    value: '/audio/alert/470504__onderwish__emergency-siren.mp3'
+  },
+  civildefense: {
+    type: 'file',
+    module: 'main',
+    value: '/audio/guitarguy1985/civildefense.mp3'
+  },
+  'train-horn-1': {
+    type: 'file',
+    module: 'main',
+    value: '/audio/jasmindreasond/train/horn-1.mp3',
+    loop: false
+  },
+  'heavy-rain-little-thunder': {
+    type: 'file',
+    module: 'main',
+    value: '/audio/jasmindreasond/rain/heavy-rain-little-thunder.mp4'
+  },
+  'heavy-rain': {
+    type: 'file',
+    module: 'main',
+    value: '/audio/jasmindreasond/rain/heavy-rain.mp4'
+  },
+  'ambulance-alarm': {
+    type: 'file',
+    module: 'main',
+    value: '/audio/jasmindreasond/alarm/ambulance.wav'
+  },
+  'train-1': {
+    type: 'file',
+    module: 'main',
+    value: '/audio/jasmindreasond/train/1.mp3'
+  },
+  'nuke-1': {
+    type: 'file',
+    module: 'main',
+    value: '/audio/jasmindreasond/explosion/nuke.mp3',
+    loop: false
+  }
+};
+
+},{"./config.mjs":199}],202:[function(require,module,exports){
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.storyData = void 0;
+var _circleLoader = require("circle-loader");
+var JsStore = _interopRequireWildcard(require("jsstore"));
+var _tinyEssentials = require("tiny-essentials");
+var _tinyLib = _interopRequireDefault(require("./tinyLib.mjs"));
+var _config = _interopRequireDefault(require("../chapters/config.mjs"));
+var _start2 = require("../start.mjs");
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t5 in e) "default" !== _t5 && {}.hasOwnProperty.call(e, _t5) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t5)) && (i.get || i.set) ? o(f, _t5, i) : f[_t5] = e[_t5]); return f; })(e, t); }
+function _regeneratorValues(e) { if (null != e) { var t = e["function" == typeof Symbol && Symbol.iterator || "@@iterator"], r = 0; if (t) return t.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) return { next: function next() { return e && r >= e.length && (e = void 0), { value: e && e[r++], done: !e }; } }; } throw new TypeError(_typeof(e) + " is not iterable"); }
+function _regeneratorKeys(e) { var n = Object(e), r = []; for (var t in n) r.unshift(t); return function e() { for (; r.length;) if ((t = r.pop()) in n) return e.value = t, e.done = !1, e; return e.done = !0, e; }; }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+// Prepare Data
+var storyData = exports.storyData = {
+  // Info
+  title: _config["default"].title,
+  description: _config["default"].description,
+  // Counter
+  count: 0,
+  // Main Lang
+  lang: {
+    active: _config["default"].defaultLang,
+    "default": _config["default"].defaultLang,
+    list: _config["default"].lang
+  },
+  // Chapters
+  readFic: false,
+  chapter: {
+    amount: _config["default"].chapters,
+    selected: null,
+    bookmark: {}
+  },
+  // Chapter Data
+  data: {},
+  lettersCount: {
+    total: 0
+  },
+  wordsCount: {
+    total: 0
+  },
+  characters: {
+    data: [],
+    total: 0
+  },
+  words: [],
+  // Start Load
+  start: function () {
+    var _start = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(startApp) {
+      var failApp,
+        readme,
+        _loop,
+        i,
+        connStore,
+        aiPage,
+        item,
+        dbError,
+        userCountry,
+        _args4 = arguments;
+      return _regenerator().w(function (_context4) {
+        while (1) switch (_context4.n) {
+          case 0:
+            failApp = _args4.length > 1 && _args4[1] !== undefined ? _args4[1] : function (err) {
+              console.error(err);
+              if (typeof err.message === 'string') {
+                alert(err.message);
+              }
+            };
+            if (_start2.tinyLs.localStorageExists()) {
+              _context4.n = 1;
+              break;
+            }
+            return _context4.a(2, failApp(new Error('Local Storage API not found!')));
+          case 1:
+            if (!(typeof startApp !== 'function')) {
+              _context4.n = 2;
+              break;
+            }
+            return _context4.a(2, failApp(new Error('Start App not found!')));
+          case 2:
+            // Start App
+            _circleLoader.Loader.start('Loading readme...');
+
+            // Read Data Base
+            _context4.n = 3;
+            return fetch('/readme.html' + fileVersion, {
+              method: 'GET',
+              dataType: 'text'
+            }).then(function (res) {
+              return res.text();
+            })["catch"](function (err) {
+              console.log("README.md failed during the load!");
+              _circleLoader.Loader.close();
+              failApp(err);
+            });
+          case 3:
+            readme = _context4.v;
+            if (readme) {
+              _context4.n = 4;
+              break;
+            }
+            throw new Error('No readme data to start the app.');
+          case 4:
+            // Load Data
+            storyData.isNew = {};
+            _loop = /*#__PURE__*/_regenerator().m(function _loop() {
+              var chapter, data, wordCache, letters, words, _loop2, _item, isNew, isUpdate, _t3, _t4;
+              return _regenerator().w(function (_context3) {
+                while (1) switch (_context3.n) {
+                  case 0:
+                    // Data
+                    chapter = i + 1;
+                    _circleLoader.Loader.close();
+                    _circleLoader.Loader.start("Loading chapter ".concat(chapter, "..."));
+                    console.log("Loading Chapter ".concat(chapter, "..."));
+                    console.log('./chapters/' + storyData.lang.active + '/' + chapter + '.json' + fileVersion);
+                    _context3.n = 1;
+                    return (0, _tinyEssentials.fetchJson)('./chapters/' + storyData.lang.active + '/' + chapter + '.json' + fileVersion)["catch"](function (err) {
+                      console.log("Chapter ".concat(chapter, " failed during the load!"));
+                      _circleLoader.Loader.close();
+                      failApp(err);
+                    });
+                  case 1:
+                    data = _context3.v;
+                    if (data) {
+                      _context3.n = 2;
+                      break;
+                    }
+                    throw new Error('No chapter data found.');
+                  case 2:
+                    // Insert Words Count
+                    wordCache = [];
+                    letters = 0;
+                    words = 0;
+                    _loop2 = /*#__PURE__*/_regenerator().m(function _loop2() {
+                      var character, characterLower, newData, text, textSplit, _loop3, item2, _t, _t2;
+                      return _regenerator().w(function (_context2) {
+                        while (1) switch (_context2.n) {
+                          case 0:
+                            // Character Counter
+                            if (typeof data[_item].character === 'string' && data[_item].character.length > 0) {
+                              character = (0, _tinyEssentials.toTitleCase)(data[_item].character);
+                              characterLower = data[_item].character.toLowerCase();
+                              newData = storyData.characters.data.find(function (_char) {
+                                return _char.value === character;
+                              });
+                              if (!newData) {
+                                newData = {
+                                  value: character,
+                                  id: characterLower.replace(/ /g, '-'),
+                                  count: 0,
+                                  chapter: {}
+                                };
+                                storyData.characters.data.push(newData);
+                              }
+                              if (typeof newData.chapter[chapter] !== 'number') {
+                                newData.chapter[chapter] = 0;
+                              }
+                              newData.chapter[chapter]++;
+                              newData.count++;
+                              storyData.characters.total++;
+                            }
+
+                            // Get Text
+                            text = data[_item].value.replace(/(\r\n|\n|\r)/gm, '').trim();
+                            textSplit = text.split(' '); // Check Text
+                            _loop3 = /*#__PURE__*/_regenerator().m(function _loop3() {
+                              var text, wordData;
+                              return _regenerator().w(function (_context) {
+                                while (1) switch (_context.n) {
+                                  case 0:
+                                    // Filter
+                                    text = _tinyLib["default"].removeAiTags((0, _tinyEssentials.toTitleCase)(textSplit[item2].replace(/[^a-zA-Z]+/g, '')));
+                                    if (isNaN(Number(text)) && text.length > 0) {
+                                      // Count Data
+                                      if (!Array.isArray(_config["default"].wordCountBlacklick)) {
+                                        _config["default"].wordCountBlacklick = [];
+                                      }
+                                      if (_config["default"].wordCountBlacklick.indexOf(text) < 0) {
+                                        wordData = storyData.words.find(function (word) {
+                                          return word.value === text;
+                                        });
+                                        if (!wordData) {
+                                          wordData = {
+                                            count: 0,
+                                            value: text
+                                          };
+                                          storyData.words.push(wordData);
+                                        }
+                                        wordData.count++;
+                                      }
+                                      if (wordCache.indexOf(text) < 0) {
+                                        wordCache.push(text);
+                                        words++;
+                                      }
+                                    }
+                                  case 1:
+                                    return _context.a(2);
+                                }
+                              }, _loop3);
+                            });
+                            _t = _regeneratorKeys(textSplit);
+                          case 1:
+                            if ((_t2 = _t()).done) {
+                              _context2.n = 3;
+                              break;
+                            }
+                            item2 = _t2.value;
+                            return _context2.d(_regeneratorValues(_loop3()), 2);
+                          case 2:
+                            _context2.n = 1;
+                            break;
+                          case 3:
+                            letters += text.replace(/ |\<ai\>|\<\/ai\>/gm, '').length;
+                          case 4:
+                            return _context2.a(2);
+                        }
+                      }, _loop2);
+                    });
+                    _t3 = _regeneratorKeys(data);
+                  case 3:
+                    if ((_t4 = _t3()).done) {
+                      _context3.n = 5;
+                      break;
+                    }
+                    _item = _t4.value;
+                    return _context3.d(_regeneratorValues(_loop2()), 4);
+                  case 4:
+                    _context3.n = 3;
+                    break;
+                  case 5:
+                    // Order Words
+                    storyData.words.sort(function (a, b) {
+                      return b.count - a.count;
+                    });
+                    storyData.characters.data.sort(function (a, b) {
+                      return b.count - a.count;
+                    });
+
+                    // Insert Data
+                    storyData.data[chapter] = data;
+                    storyData.lettersCount[chapter] = letters;
+                    storyData.lettersCount.total += letters;
+                    storyData.wordsCount[chapter] = words;
+                    storyData.wordsCount.total += words;
+                    storyData.chapter.bookmark[chapter] = Number(_start2.tinyLs.getItem('bookmark' + chapter));
+                    if (isNaN(storyData.chapter.bookmark[chapter]) || !isFinite(storyData.chapter.bookmark[chapter]) || storyData.chapter.bookmark[chapter] < 1) {
+                      storyData.chapter.bookmark[chapter] = 1;
+                    }
+                    isNew = !_start2.tinyLs.getItem('chapter' + chapter + 'MD5');
+                    isUpdate = false;
+                    if (!isNew) {
+                      isUpdate = objHash(storyData.data[chapter]) !== _start2.tinyLs.getItem('chapter' + chapter + 'MD5');
+                    }
+                    if (isNew) {
+                      storyData.isNew[chapter] = 2;
+                    } else if (isUpdate) {
+                      storyData.isNew[chapter] = 1;
+                    } else {
+                      storyData.isNew[chapter] = 0;
+                    }
+                    console.log("Chapter ".concat(chapter, " loaded!"));
+
+                    // Complete
+                    storyData.count++;
+                  case 6:
+                    return _context3.a(2);
+                }
+              }, _loop);
+            });
+            i = 0;
+          case 5:
+            if (!(i < storyData.chapter.amount)) {
+              _context4.n = 7;
+              break;
+            }
+            return _context4.d(_regeneratorValues(_loop()), 6);
+          case 6:
+            i++;
+            _context4.n = 5;
+            break;
+          case 7:
+            // Start jsStore
+            connStore = new JsStore.Connection(new Worker('jsstore.worker.min.js')); // Ai page database
+            aiPage = {
+              room: {},
+              hash: {},
+              tokens: {},
+              data: {}
+            };
+            aiPage.room = {
+              prompt: {
+                dataType: 'string'
+              },
+              firstDialogue: {
+                dataType: 'string'
+              },
+              systemInstruction: {
+                dataType: 'string'
+              },
+              rpgSchema: {
+                dataType: 'object'
+              },
+              rpgData: {
+                dataType: 'object'
+              },
+              rpgPrivateData: {
+                dataType: 'object'
+              },
+              maxOutputTokens: {
+                dataType: 'number'
+              },
+              temperature: {
+                dataType: 'number'
+              },
+              topP: {
+                dataType: 'number'
+              },
+              topK: {
+                dataType: 'number'
+              },
+              presencePenalty: {
+                dataType: 'number'
+              },
+              frequencyPenalty: {
+                dataType: 'number'
+              }
+            };
+            for (item in aiPage.room) {
+              aiPage.hash[item] = {
+                dataType: 'string'
+              };
+              aiPage.tokens[item] = {
+                dataType: 'number'
+              };
+            }
+            aiPage.hash.file = {
+              dataType: 'string'
+            };
+            aiPage.tokens.file = {
+              dataType: 'number'
+            };
+            aiPage.room.session = {
+              primaryKey: true,
+              dataType: 'string'
+            };
+            aiPage.room.model = {
+              dataType: 'string'
+            };
+            aiPage.hash.session = aiPage.room.session;
+            aiPage.tokens.session = aiPage.room.session;
+            aiPage.data = {
+              session: {
+                notNull: true,
+                dataType: 'string'
+              },
+              msg_id: {
+                primaryKey: true,
+                dataType: 'string'
+              },
+              id: {
+                notNull: true,
+                dataType: 'number'
+              },
+              tokens: {
+                notNull: true,
+                dataType: 'object'
+              },
+              hash: {
+                notNull: true,
+                dataType: 'string'
+              },
+              data: {
+                dataType: 'object'
+              }
+            };
+            aiPage.customList = {
+              session: aiPage.room.session,
+              data: {
+                dataType: 'array'
+              }
+            };
+            dbError = false;
+            _circleLoader.Loader.close();
+            _circleLoader.Loader.start('Loading local database...');
+            _context4.n = 8;
+            return connStore.initDb({
+              name: 'pony-driland',
+              tables: [
+              // Ai page
+              {
+                name: 'aiSessionsRoom',
+                columns: aiPage.room
+              }, {
+                name: 'aiSessionsHash',
+                columns: aiPage.hash
+              }, {
+                name: 'aiSessionsTokens',
+                columns: aiPage.tokens
+              }, {
+                name: 'aiSessionsCustomList',
+                columns: aiPage.customList
+              }, {
+                name: 'aiSessionsData',
+                columns: aiPage.data
+              }]
+            })["catch"](function (err) {
+              dbError = true;
+              alert(err.message);
+              console.error(err);
+            });
+          case 8:
+            if (!dbError) {
+              _context4.n = 9;
+              break;
+            }
+            return _context4.a(2);
+          case 9:
+            delete storyData.count;
+            delete storyData.start;
+            console.log('App Started!');
+            console.log('Loading UI...');
+            _circleLoader.Loader.close();
+            _circleLoader.Loader.start('Starting website...');
+            if (!(location.hostname !== 'localhost' && location.hostname !== '127.0.0.1' && !_start2.tinyLs.getString('user-country'))) {
+              _context4.n = 11;
+              break;
+            }
+            _context4.n = 10;
+            return fetch('https://api.country.is/').then(function (res) {
+              return res.json();
+            })["catch"](console.error);
+          case 10:
+            userCountry = _context4.v;
+            if ((0, _tinyEssentials.isJsonObject)(userCountry)) _start2.tinyLs.setString('user-country', userCountry.country);
+          case 11:
+            // Start app now
+            startApp(connStore, function () {
+              _circleLoader.Loader.close();
+              console.log('UI loaded!');
+            }, readme);
+          case 12:
+            return _context4.a(2);
+        }
+      }, _callee);
+    }));
+    function start(_x) {
+      return _start.apply(this, arguments);
+    }
+    return start;
+  }()
+};
+
+},{"../chapters/config.mjs":199,"../start.mjs":206,"./tinyLib.mjs":203,"circle-loader":62,"jsstore":91,"tiny-essentials":161}],203:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _tippy = _interopRequireDefault(require("tippy.js"));
+var _tinyEssentials = require("tiny-essentials");
+var _config = _interopRequireDefault(require("../chapters/config.mjs"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _toArray(r) { return _arrayWithHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+// Bootstrap 5
+var enableQuery = function enableQuery() {
+  $.fn.modal = function (type, configObject) {
+    this.each(function () {
+      if (!$(this).data('bs-modal')) {
+        if (configObject) {
+          $(this).data('bs-modal', new bootstrap.Modal(this, configObject));
+        } else if (typeof type !== 'string') {
+          $(this).data('bs-modal', new bootstrap.Modal(this, type));
+        } else {
+          $(this).data('bs-modal', new bootstrap.Modal(this));
+        }
+      }
+      var modal = $(this).data('bs-modal');
+      if (typeof type === 'string' && typeof modal[type] === 'function') {
+        modal[type]();
+      } else {
+        modal.show();
+      }
+    });
+  };
+  $.fn.tooltip = function (type, configObject) {
+    var returnTooltip = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+    var tooltip = null;
+    this.each(function () {
+      if (!$(this).data('bs-tooltip')) {
+        if ((0, _tinyEssentials.objType)(configObject, 'object')) tooltip = new bootstrap.Tooltip(this, configObject);else if (typeof type !== 'string') tooltip = new bootstrap.Tooltip(this, type);else tooltip = new bootstrap.Tooltip(this);
+        $(this).data('bs-tooltip', tooltip);
+      }
+    });
+    if (!returnTooltip) tooltip = null;
+    return tooltip || this;
+  };
+};
+enableQuery();
+$(function () {
+  enableQuery();
+});
+
+// Prepare Tiny Lib
+var tinyLib = {};
+
+// MD Data manager
+tinyLib.mdManager = {};
+tinyLib.mdManager.extractMetadata = function (markdown) {
+  var charactersBetweenGroupedHyphens = /^\#---([\s\S]*?)\#---/;
+  var metadataMatched = markdown.match(charactersBetweenGroupedHyphens);
+  var metadata = metadataMatched[1];
+  if (!metadata) {
+    return {};
+  }
+  var metadataLines = metadata.split('\n');
+  var metadataObject = metadataLines.reduce(function (accumulator, line) {
+    var _line$split$map = line.split(':').map(function (part) {
+        return part.trim();
+      }),
+      _line$split$map2 = _toArray(_line$split$map),
+      key = _line$split$map2[0],
+      value = _line$split$map2.slice(1);
+    if (key) {
+      accumulator[key] = value[1] ? value.join(':') : value.join('');
+      if (accumulator[key].startsWith("'") && accumulator[key].endsWith("'") || accumulator[key].startsWith('"') && accumulator[key].endsWith('"')) accumulator[key] = accumulator[key].substring(1, accumulator[key].length - 1);
+    }
+    return accumulator;
+  }, {});
+  return metadataObject;
+};
+tinyLib.mdManager.removeMetadata = function (text) {
+  var result = text.replace(/^\#---([\s\S]*?)\#---/, '');
+  while (result.startsWith('\n')) {
+    result = result.substring(1);
+  }
+  return result;
+};
+
+// Dialog
+tinyLib.dialog = function (data1, data2) {
+  var newData = $('<div>', {
+    id: data1.id,
+    title: data1.title
+  }).append(data1.html);
+  $('body').append(newData);
+  newData.dialog(data2);
+};
+
+// Alert
+tinyLib.alert = function (where, alertType, icon, text) {
+  $(where).empty().append(tinyLib.bs.alert(alertType, [$('<i>', {
+    "class": icon
+  }), ' ', text], true));
+};
+
+// Modal
+tinyLib.modal = function (data) {
+  if (typeof data.dialog !== 'string') {
+    data.dialog = '';
+  }
+  var modal = $('<div>', {
+    "class": 'modal fade',
+    id: data.id,
+    tabindex: -1,
+    role: 'dialog'
+  }).on('hidden.bs.modal', function (e) {
+    $(this).remove();
+    if (typeof data.hidden === 'function') {
+      data.hidden();
+    }
+  }).append($('<div>', {
+    "class": 'modal-dialog ' + data.dialog,
+    role: 'document'
+  }).append($('<div>', {
+    "class": 'modal-content'
+  }).append($('<div>', {
+    "class": 'modal-header'
+  }).append($('<h5>', {
+    "class": 'modal-title'
+  }).append(data.title), $('<button>', {
+    type: 'button',
+    "class": 'btn-close',
+    'data-bs-dismiss': 'modal'
+  })), $('<div>', {
+    "class": 'modal-body'
+  }).append(data.body), data.footer ? $('<div>', {
+    "class": 'modal-footer'
+  }).append(data.footer) : null)));
+  $('body').prepend(modal);
+  modal.modal();
+  return modal;
+};
+tinyLib.formGroup = function (data) {
+  if (typeof data["class"] !== 'string') {
+    data["class"] = '';
+  }
+  var result = $('<div>', {
+    "class": 'form-group ' + data["class"],
+    id: data.id
+  });
+  if (typeof data.title === 'string') {
+    result.append($('<label>', {
+      "for": data.id + '_input'
+    }).text(data.title));
+  }
+  result.append($('<input>', {
+    type: data.type,
+    "class": 'form-control',
+    name: data.id,
+    id: data.id + '_input',
+    'aria-describedby': data.id + '_help',
+    value: data.value,
+    placeholder: data.placeholder
+  }));
+  if (typeof data.help === 'string') {
+    var newValue = $('<label>', {
+      id: data.id + '_help',
+      "class": 'form-text text-muted small'
+    }).text(data.help);
+    if (data.checkbox && data.checkbox.enabled) {
+      newValue.prepend($('<input>', {
+        "class": 'me-2',
+        id: data.id + '_enabled',
+        name: data.id + '_enabled',
+        type: 'checkbox'
+      }).attr('checked', data.checkbox.value));
+    }
+    result.append(newValue);
+  }
+  return result;
+};
+tinyLib.formGroupCheck = function (data) {
+  if (typeof data["class"] !== 'string') {
+    data["class"] = '';
+  }
+  return $('<div>', {
+    "class": 'form-group form-check ' + data["class"],
+    id: data.id
+  }).append($('<input>', {
+    type: 'checkbox',
+    "class": 'form-check-input',
+    name: data.id,
+    id: data.id + '_input',
+    'aria-describedby': data.id + '_help'
+  }).attr('checked', data.value), $('<label>', {
+    "class": 'form-check-label',
+    "for": data.id + '_input'
+  }).text(data.title));
+};
+
+// Alert
+alert = function alert(text) {
+  var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Browser Warning!';
+  return tinyLib.modal({
+    title: $('<span>').text(title),
+    body: $('<div>', {
+      "class": 'text-break'
+    }).css('white-space', 'pre-wrap').text(text),
+    dialog: 'modal-lg'
+  });
+};
+
+// Remove AI tags
+tinyLib.removeAiTags = function (str) {
+  return str.replace(/\<ai\>|\<\/ai\>/g, '');
+};
+tinyLib.getGitUrlPath = function (text) {
+  var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'g';
+  var tinyUrl = "https\\:\\/\\/github.com\\/".concat(_config["default"].github.account, "\\/").concat(_config["default"].github.repository, "\\/blob\\/main\\/");
+  return new RegExp(typeof text === 'string' ? text.replace('{url}', tinyUrl) : tinyUrl, type);
+};
+
+// Icon
+tinyLib.icon = function (classItem) {
+  return $('<i>', {
+    "class": classItem
+  });
+};
+
+// Files Upload button
+tinyLib.upload = {};
+tinyLib.upload.button = function () {
+  var configs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var button = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  // Create button
+  var importButton = $('<input>', {
+    type: 'file',
+    style: 'display: none;'
+  });
+  importButton.attr('accept', configs.accept);
+
+  // Multiple
+  if (configs.multiple) importButton.prop('multiple', true);
+
+  // Directory
+  if (configs.directory) importButton.prop('directory', true);
+
+  // Prepare button functions
+  importButton.on('change', callback);
+  button.on('click', function () {
+    return importButton.trigger('click');
+  });
+  button.parent().append(importButton);
+  return button;
+};
+
+// File base64 selector template
+tinyLib.upload.dataUrl = function () {
+  var button = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var baseFormat = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  var accept = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '*';
+  return tinyLib.upload.button({
+    accept: "".concat(baseFormat, "/").concat(accept)
+  }, button, function (event) {
+    var file = event.target.files[0];
+    if (!file) return;
+    // Image type validation
+    if (!file.type.startsWith("".concat(baseFormat, "/"))) {
+      callback(new Error('Selected file is not an image'), null);
+      return;
+    }
+    // Complete
+    (0, _tinyEssentials.readBase64Blob)(file, "".concat(baseFormat, "/").concat(format)).then(function (dataUrl) {
+      return callback(null, dataUrl);
+    })["catch"](function (err) {
+      return callback(err, null);
+    });
+  });
+};
+
+// Image upload
+tinyLib.upload.img = function () {
+  var button = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  var accept = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '*';
+  return tinyLib.upload.dataUrl(button, 'image', callback, accept);
+};
+
+// Json upload
+tinyLib.upload.json = function () {
+  var button = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  return tinyLib.upload.button({
+    accept: '.json'
+  }, button, function (event) {
+    var file = event.target.files[0];
+    if (file) (0, _tinyEssentials.readJsonBlob)(file).then(function (jsonData) {
+      return callback(null, jsonData);
+    })["catch"](function (err) {
+      return callback(err, null);
+    });
+  });
+};
+
+// Bootstrap
+tinyLib.bs = {};
+
+// Button
+tinyLib.bs.button = function () {
+  var className = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'primary';
+  var tag = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'button';
+  var isButton = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+  var buttonClass = typeof className === 'string' ? className : (0, _tinyEssentials.objType)(className, 'object') && typeof className["class"] === 'string' ? className["class"] : null;
+  var introClass = typeof className === 'string' || !className.dsBtn ? 'btn btn-' : '';
+  return $("<".concat(tag, ">"), {
+    id: (0, _tinyEssentials.objType)(className, 'object') && typeof className.id === 'string' ? className.id : null,
+    "class": "".concat(introClass).concat(buttonClass),
+    role: isButton && (!(0, _tinyEssentials.objType)(className, 'object') || !className.toggle) ? 'button' : null,
+    type: isButton ? 'button' : null,
+    'data-bs-toggle': (0, _tinyEssentials.objType)(className, 'object') && typeof className.toggle === 'string' ? className.toggle : null,
+    'data-bs-target': (0, _tinyEssentials.objType)(className, 'object') && typeof className.target === 'string' ? className.target : null
+  });
+};
+
+// Btn Close
+tinyLib.bs.closeButton = function () {
+  var dataDismiss = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  return $('<button>', {
+    "class": 'btn-close',
+    type: 'button',
+    'data-bs-dismiss': dataDismiss
+  });
+};
+
+// Navbar
+tinyLib.bs.navbar = {};
+tinyLib.bs.navbar.root = function (id) {
+  var theme = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'dark';
+  var isFixed = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  return $('<nav>', {
+    "class": "navbar navbar-expand-lg navbar-".concat(theme, " bg-").concat(theme).concat(isFixed ? ' fixed-top' : '', " px-4 py-0 tiny-navabar-style"),
+    id: id
+  });
+};
+tinyLib.bs.navbar.title = function (text, href) {
+  return $('<a>', {
+    "class": 'navbar-brand',
+    href: href,
+    text: text
+  });
+};
+tinyLib.bs.navbar.collapse = function (dir, className, id, content) {
+  return $('<div>', {
+    "class": "collapse navbar-collapse navbar-nav-".concat(dir).concat(className ? " ".concat(className) : ''),
+    id: id
+  }).append($('<ul>', {
+    "class": "navbar-nav ".concat(dir === 'left' ? 'me' : dir === 'right' ? 'ms' : '', "-auto mb-2 mb-lg-0")
+  }).append(content));
+};
+
+// Offcanvas
+tinyLib.bs.offcanvas = function () {
+  var where = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'start';
+  var id = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  var title = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+  var content = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+  var closeButtonInverse = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
+  var tabIndex = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : -1;
+  var body = $('<div>', {
+    "class": 'offcanvas-body'
+  });
+  if (!Array.isArray(content)) body.append(content);else for (var index in content) body.append(content[index]);
+  return $('<div>', {
+    "class": "offcanvas offcanvas-".concat(where),
+    tabindex: tabIndex,
+    id: id
+  }).append($('<div>', {
+    "class": 'offcanvas-header'
+  }).append(title ? $('<h5>', {
+    "class": 'offcanvas-title',
+    id: "".concat(id, "Label")
+  }).text(title) : null, !closeButtonInverse && tinyLib.bs.closeButton('offcanvas'), body, closeButtonInverse && tinyLib.bs.closeButton('offcanvas')));
+};
+
+// Container
+tinyLib.bs.container = function () {
+  var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var classItems = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  var tag = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'div';
+  return $("<".concat(tag, ">"), {
+    id: id,
+    "class": "container".concat(classItems ? " ".concat(classItems) : '')
+  });
+};
+
+// Alert
+tinyLib.bs.alert = function () {
+  var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'primary';
+  var content = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  var isDismissible = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  var result = $('<div>', {
+    "class": "alert alert-".concat(type).concat(isDismissible ? " alert-dismissible fade show" : ''),
+    role: 'alert'
+  });
+  result.append(content);
+  if (isDismissible) result.append(tinyLib.bs.closeButton('alert'));
+  return result;
+};
+
+// Dropdown
+tinyLib.bs.dropdownClick = function (place, data, callbackInsert) {
+  var rootBase = $('<ul>', {
+    "class": 'dropdown-menu show'
+  });
+  var element = (0, _tippy["default"])(place.get(0), {
+    content: rootBase.get(0),
+    allowHTML: true,
+    interactive: true,
+    arrow: false,
+    theme: 'dark-border',
+    placement: 'bottom-start',
+    trigger: 'click',
+    hideOnClick: true,
+    appendTo: function appendTo() {
+      return $('body > #root').get(0);
+    }
+  });
+  for (var index in data) {
+    var li = $('<li>');
+    rootBase.append(li);
+    callbackInsert(li, element, data[index], index);
+  }
+};
+var _default = exports["default"] = tinyLib;
+
+},{"../chapters/config.mjs":199,"tiny-essentials":161,"tippy.js":184}],204:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = gtag;
+var _config = _interopRequireDefault(require("./chapters/config.mjs"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+  dataLayer.push(arguments);
+}
+if (typeof _config["default"].gtag === 'string') {
+  gtag('js', new Date());
+  gtag('config', _config["default"].gtag);
+}
+
+},{"./chapters/config.mjs":199}],205:[function(require,module,exports){
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+var _events = require("events");
+var _forPromise = _interopRequireDefault(require("for-promise"));
+var _tinyEssentials = require("tiny-essentials");
+var _config = _interopRequireDefault(require("../chapters/config.mjs"));
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
+function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
+function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
+function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+(function () {
+  var postMessage = function postMessage(data) {
+    if (('serviceWorker' in navigator || 'ServiceWorker' in navigator) && navigator.serviceWorker.controller && navigator.serviceWorker.controller.postMessage) {
+      return navigator.serviceWorker.controller.postMessage(data);
+    }
+    return null;
+  };
+  var firstTime = true;
+  var deferredPrompt;
+  window.matchMedia('(display-mode: standalone)').addEventListener('change', function (evt) {
+    var body = _tinyEssentials.TinyHtml.query('body');
+    body.removeClass(['window-browser', 'window-standalone']);
+    var displayMode = 'browser';
+    if (evt.matches) {
+      displayMode = 'standalone';
+    }
+
+    // Log display mode change to analytics
+    console.log("[PWA] DISPLAY_MODE_CHANGED", displayMode);
+    tinyPwa.emit('displayMode', displayMode);
+    body.addClass("window-".concat(displayMode));
+  });
+  window.addEventListener('beforeinstallprompt', function (e) {
+    // Prevent the mini-infobar from appearing on mobile
+    // e.preventDefault();
+
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+
+    // Update UI notify the user they can install the PWA
+    // showInstallPromotion();
+
+    // Optionally, send analytics event that PWA install promo was shown.
+    tinyPwa.emit('deferredPrompt', deferredPrompt);
+    console.log("[PWA] 'beforeinstallprompt' event was fired.", deferredPrompt);
+  });
+  window.addEventListener('appinstalled', function () {
+    // Hide the app-provided install promotion
+    // hideInstallPromotion();
+
+    // Clear the deferredPrompt so it can be garbage collected
+    deferredPrompt = null;
+
+    // Optionally, send analytics event to indicate successful install
+    tinyPwa.emit('deferredPrompt', deferredPrompt);
+    console.log("[PWA] PWA was installed");
+  });
+  function getPWADisplayMode() {
+    var isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+    if (document.referrer.startsWith('android-app://')) {
+      return 'twa';
+    }
+    if (navigator.standalone || isStandalone) {
+      return 'standalone';
+    }
+    return 'browser';
+  }
+  function isUsingPWA() {
+    return tinyPwa.enabled;
+  }
+  function clearFetchPwaCache() {
+    postMessage({
+      type: 'CLEAR_FETCH_CACHE'
+    });
+  }
+  if ('serviceWorker' in navigator || 'ServiceWorker' in navigator) {
+    var msgEvents = {};
+    navigator.serviceWorker.addEventListener('message', function (event) {
+      if (event.data && typeof msgEvents[event.data.type] === 'function') msgEvents[event.data.type](event);
+    });
+  }
+  function installPWA() {
+    if ('serviceWorker' in navigator || 'ServiceWorker' in navigator) {
+      // Check registration
+      var tinyCheck = function tinyCheck(event) {
+        if (event) {
+          console.log("[PWA State] ".concat(event.state));
+          if (event.state === 'installed') {
+            tinyPwa._setNeedRefresh(true);
+            location.reload();
+          } else if (event.state === 'activated' && !tinyPwa.needRefresh) if (firstTime) firstTime = false;
+        }
+      };
+      navigator.serviceWorker.ready.then(function (a) {
+        return tinyCheck(a.active);
+      });
+      var tinyRegistrationChecker = function tinyRegistrationChecker(registration) {
+        // updatefound is also fired for the very first install. ¯\_(ツ)_/¯
+        registration.addEventListener('updatefound', function (event) {
+          tinyCheck(event.target.active);
+          registration.installing.addEventListener('statechange', function (event2) {
+            return tinyCheck(event2.target);
+          });
+        });
+      };
+
+      // Get Items
+      var cacheChecker = {
+        count: 0,
+        removed: false,
+        keep: false
+      };
+      navigator.serviceWorker.getRegistrations().then(function (items) {
+        // Register new Service Worker
+        var registerNewService = function registerNewService() {
+          return navigator.serviceWorker.register('./service-worker.js', {
+            scope: './'
+          })
+          // Complete
+          .then(function (registration) {
+            console.log('[PWA] Service Worker Registered.');
+            tinyPwa._setIsEnabled(true);
+            tinyRegistrationChecker(registration);
+          })
+          // Error
+          ["catch"](function (err) {
+            console.log('[PWA] Service Worker Failed to Register.');
+            console.error(err);
+            tinyPwa._init();
+          });
+        };
+        if (items.length > 0) {
+          (0, _forPromise["default"])({
+            data: items
+          }, /*#__PURE__*/function () {
+            var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(item, fn, fnErr) {
+              var tinyUrl;
+              return _regenerator().w(function (_context) {
+                while (1) switch (_context.n) {
+                  case 0:
+                    // Get Url data
+                    tinyUrl = items[item].active && typeof items[item].active.scriptURL === 'string' && items[item].active.scriptURL.length > 0 ? new URL(items[item].active.scriptURL) : {}; // Remove old stuff
+                    if (cacheChecker.count > 0 || !items[item].active || items[item].active.state !== 'activated' && items[item].active.state !== 'activating' || tinyUrl.pathname !== '/service-worker.js') {
+                      items[item].unregister().then(function (success) {
+                        if (!success) console.error("[PWA] Fail to remove the Service Worker ".concat(items[item].scope));else cacheChecker.removed = true;
+                        fn();
+                      })["catch"](fnErr);
+                    }
+
+                    // Update tiny stuff
+                    else if (tinyUrl.pathname === '/service-worker.js') {
+                      tinyRegistrationChecker(items[item]);
+                      if (items[item].active && (items[item].active.state === 'activated' || items[item].active.state === 'activating')) {
+                        items[item].update().then(function (success) {
+                          if (!success) console.error("[PWA] Fail to update the Service Worker ".concat(items[item].scope));else {
+                            console.log('[PWA] Service Worker Updated.');
+                            cacheChecker.keep = true;
+                            tinyPwa._setIsEnabled(true);
+                          }
+                          fn();
+                        })["catch"](fnErr);
+                      }
+                    }
+
+                    // Add count
+                    cacheChecker.count++;
+                  case 1:
+                    return _context.a(2);
+                }
+              }, _callee);
+            }));
+            return function (_x, _x2, _x3) {
+              return _ref.apply(this, arguments);
+            };
+          }())
+          // Remove progress complete
+          .then(function () {
+            if (cacheChecker.removed && !cacheChecker.keep) registerNewService();
+          })
+          // Error
+          ["catch"](function (err) {
+            console.log('[PWA] Service Worker Failed to Unregister.');
+            console.error(err);
+            tinyPwa._init();
+          });
+        } else registerNewService();
+      })
+      // Error
+      ["catch"](function (err) {
+        console.log('[PWA] Service Worker Failed to get Register list.');
+        console.error(err);
+        tinyPwa._init();
+      });
+    } else tinyPwa._init();
+  }
+  var TinyPwa = /*#__PURE__*/function (_EventEmitter) {
+    function TinyPwa() {
+      var _this;
+      _classCallCheck(this, TinyPwa);
+      _this = _callSuper(this, TinyPwa);
+      _this.tabs = [];
+      _this.tabId = null;
+      _this.enabled = false;
+      _this.initialized = false;
+      _this.needRefresh = false;
+      return _this;
+    }
+    _inherits(TinyPwa, _EventEmitter);
+    return _createClass(TinyPwa, [{
+      key: "_init",
+      value: function _init() {
+        if (!this.initialized) {
+          this.initialized = true;
+          this.emit('ready');
+        }
+      }
+    }, {
+      key: "_addTab",
+      value: function _addTab(item) {
+        this.tabs.push(item);
+        this.emit('tabAdded', item);
+      }
+    }, {
+      key: "_removeTab",
+      value: function _removeTab(id) {
+        var index = this.tabs.findIndex(function (tab) {
+          return tab.id === id;
+        });
+        if (index > -1) {
+          var item = this.tabs.splice(index, 1);
+          this.emit('tabRemoved', item);
+        }
+      }
+    }, {
+      key: "_setTabId",
+      value: function _setTabId(id) {
+        if (typeof id === 'string') {
+          this.tabId = id;
+          this.emit('tabIdUpdated', id);
+        } else this.tabId = null;
+      }
+    }, {
+      key: "_setIsEnabled",
+      value: function _setIsEnabled(enabled) {
+        if (typeof enabled === 'boolean') {
+          this.enabled = enabled;
+          this.emit('isEnabled', enabled);
+        }
+      }
+    }, {
+      key: "_setNeedRefresh",
+      value: function _setNeedRefresh(enabled) {
+        if (typeof enabled === 'boolean') {
+          this.needRefresh = enabled;
+          this.emit('needRefresh', enabled);
+        }
+      }
+    }, {
+      key: "waitInit",
+      value: function waitInit() {
+        var _this2 = this;
+        var tinyThis = this;
+        return new Promise(function (resolve, reject) {
+          if (_this2.initialized) resolve(true);else setTimeout(function () {
+            return tinyThis.waitInit().then(resolve)["catch"](reject);
+          }, 100);
+        });
+      }
+    }, {
+      key: "getTabs",
+      value: function getTabs() {
+        return this.tabs;
+      }
+    }, {
+      key: "getTab",
+      value: function getTab(id) {
+        return this.tabs.find(function (item) {
+          return item.id === id;
+        });
+      }
+    }, {
+      key: "getTabId",
+      value: function getTabId() {
+        this.tabId;
+      }
+    }, {
+      key: "isEnabled",
+      value: function isEnabled() {
+        return this.enabled;
+      }
+    }, {
+      key: "getDisplayMode",
+      value: function getDisplayMode() {
+        return getPWADisplayMode();
+      }
+    }, {
+      key: "clearFetchCache",
+      value: function clearFetchCache() {
+        return clearFetchPwaCache();
+      }
+    }]);
+  }(_events.EventEmitter);
+  var initDom = new _tinyEssentials.TinyDomReadyManager();
+  initDom.onReady(function () {
+    var tinyPwa = new TinyPwa();
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      console.log("[PWA] This is running as standalone.");
+      _tinyEssentials.TinyHtml.query('body').addClass("window-standalone");
+      tinyPwa.emit('displayMode', 'standalone');
+    } else {
+      console.log("[PWA] This is running as browser.");
+      _tinyEssentials.TinyHtml.query('body').addClass("window-browser");
+      tinyPwa.emit('displayMode', 'browser');
+    }
+    window.tinyPwa = tinyPwa;
+    window.vanillaPwa = {
+      postMessage: postMessage,
+      getDisplayMode: getPWADisplayMode,
+      isUsing: isUsingPWA,
+      clearFetch: clearFetchPwaCache,
+      install: installPWA
+    };
+  });
+  initDom.init();
+})();
+
+},{"../chapters/config.mjs":199,"events":84,"for-promise":85,"tiny-essentials":161}],206:[function(require,module,exports){
+"use strict";
+
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.urlUpdate = exports.tinyNotification = exports.tinyLs = exports.saveRoleplayFormat = exports.rootApp = exports.clearFicData = exports.appData = void 0;
+var _events = require("events");
+var _tinyEssentials = require("tiny-essentials");
+var _photoswipe = _interopRequireDefault(require("photoswipe"));
+var _gtag = _interopRequireDefault(require("./gtag.mjs"));
+require("./pwa/installer.mjs");
+require("./chapters/sound.mjs");
+require("./chapters/counter.mjs");
+require("./chapters/characters.mjs");
+var _tinyLib = _interopRequireDefault(require("./files/tinyLib.mjs"));
+var _chapters = require("./files/chapters.mjs");
+var _config = _interopRequireDefault(require("./chapters/config.mjs"));
+var _index = require("./chapter_manager/index.mjs");
+var _aiSoftware = require("./ai/aiSoftware.mjs");
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+(0, _tinyEssentials.addAiMarkerShortcut)();
+var tinyNotification = exports.tinyNotification = new _tinyEssentials.TinyNotifications({
+  audio: '/audio/notification.ogg',
+  defaultIcon: '/img/icon/192.png'
+});
+var tinyLs = exports.tinyLs = new _tinyEssentials.TinyLocalStorage('pony-driland');
+
+// Start Load
+var appData = exports.appData = {
+  youtube: {},
+  ai: {
+    using: false,
+    interval: null,
+    secondsUsed: 0
+  }
+};
+appData.emitter = new _events.EventEmitter();
+
+// Start Document
+console.groupCollapsed('App Information');
+console.log("Fanfic Engine Creator: Yasmin Seidel (JasminDreasond) https://github.com/JasminDreasond");
+console.log("Name: ".concat(_config["default"].title));
+console.log("Description: ".concat(_config["default"].description));
+console.log("Author: ".concat(_config["default"].creator));
+console.log("Author Page: ".concat(_config["default"].creator_url));
+console.log("Age Rating: ".concat(_config["default"].ageRating));
+console.log("Github Repository: https://github.com/".concat(_config["default"].github.account, "/").concat(_config["default"].github.repository));
+console.log("Tags", _config["default"].tags);
+console.groupEnd();
+
+// Roleplay format
+var renderRoleplayFormat = function renderRoleplayFormat(chapter) {
+  var saveCfg = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var data = '';
+  var day = null;
+  var dayNightCycle = null;
+  var weather = null;
+  var where = null;
+  for (var item in _chapters.storyData.data[chapter]) {
+    var lineText = "".concat(saveCfg.ficLine ? "[Fic Line ".concat(Number(item) + 1, "] ") : '');
+    var ficData = _chapters.storyData.data[chapter][item];
+    if (ficData.set) {
+      if (saveCfg.dayNumber && typeof ficData.set.day === 'number') {
+        day = ficData.set.day;
+        data += "\nDay Number= ".concat(day);
+      }
+      if (saveCfg.dayStatus && typeof ficData.set.dayNightCycle === 'string') {
+        dayNightCycle = ficData.set.dayNightCycle;
+        data += "\nDay Status= ".concat(dayNightCycle);
+      }
+      if (saveCfg.weather && typeof ficData.set.weather === 'string') {
+        weather = ficData.set.weather;
+        data += "\nWeather= ".concat(weather);
+      }
+      if (saveCfg.location && typeof ficData.set.where === 'string') {
+        where = ficData.set.where;
+        data += "\nLocation= ".concat("".concat(where !== '???' ? where : 'Unknown'));
+      }
+    }
+    if (saveCfg.curiosities && ficData.info) {
+      for (var info in ficData.info) {
+        data += "\nCuriosity= ".concat(info, ": ").concat(ficData.info[info]);
+      }
+    }
+    var isFlashBack = ficData.flashback ? ' from flashback scene' : '';
+    if (ficData.type === 'action') data += "\n".concat(lineText, "*").concat(_tinyLib["default"].removeAiTags(ficData.value), "*");
+    if (ficData.type === 'think') data += "\n".concat(lineText).concat(ficData.character, "'s thinks").concat(isFlashBack, ": ").concat(_tinyLib["default"].removeAiTags(ficData.value));
+    if (ficData.type === 'telepathy') data += "\n".concat(lineText).concat(ficData.character, "'s telepathy voice").concat(isFlashBack, ": ").concat(_tinyLib["default"].removeAiTags(ficData.value));
+    if (ficData.type === 'dialogue') data += "\n".concat(lineText).concat(ficData.character).concat(isFlashBack, ": ").concat(_tinyLib["default"].removeAiTags(ficData.value));
+  }
+  return data;
+};
+var saveRoleplayFormat = exports.saveRoleplayFormat = function saveRoleplayFormat(chapter) {
+  var saveAsFile = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  var tinyCfg = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  // Save Config
+  var saveCfg = {
+    dayNumber: true,
+    dayStatus: true,
+    weather: true,
+    location: true,
+    curiosities: true,
+    ficLine: true
+  };
+  for (var item in tinyCfg) {
+    if (typeof tinyCfg[item] === 'boolean') saveCfg[item] = tinyCfg[item];
+  }
+
+  // File start and end
+  var fileStart = "---------- Official Pony Driland fic file ----------";
+  var fileEnd = "---------- The end Official Pony Driland fic file ----------";
+  var file = "";
+
+  // Insert chapter
+  var insertChapter = function insertChapter(cpId) {
+    file += "\n\n---------- Chapter ".concat(cpId, " ----------\n");
+    file += renderRoleplayFormat(cpId, saveCfg);
+    file += "\n\n---------- The end chapter ".concat(cpId, " ----------");
+  };
+
+  // Insert all chapters
+  if (typeof chapter !== 'number' || Array.isArray(chapter)) {
+    for (var i = 0; i < _chapters.storyData.chapter.amount; i++) {
+      // Chapter item
+      var _item = i + 1;
+
+      // Insert all chapters
+      if (!Array.isArray(chapter)) insertChapter(_item);
+      // Selected chapters
+      else {
+        for (var index in chapter) {
+          if (typeof chapter[index] === 'number' && _item === chapter[index]) insertChapter(_item);
+        }
+      }
+    }
+  }
+
+  // Insert chapter number
+  else {
+    insertChapter(chapter);
+  }
+
+  // Fix file
+  file = file.substring(2, file.length);
+
+  // Info data
+  var info = "Title: ".concat(_chapters.storyData.title, "\nDescription: ").concat(_chapters.storyData.description, "\nAuthor: ").concat(_config["default"].creator, "\nAuthor Page: ").concat(_config["default"].creator_url);
+  if (_config["default"].bitcoin && _config["default"].bitcoin.address || _config["default"].dogecoin && _config["default"].dogecoin.address || _config["default"].ethereum && _config["default"].ethereum.address || _config["default"].polygon && _config["default"].polygon.address || _config["default"].bnb && _config["default"].bnb.address) {
+    info += "\n";
+  }
+  if (_config["default"].bitcoin && _config["default"].bitcoin.address) {
+    info += "\nBitcoin Donations: ".concat(_config["default"].bitcoin.address);
+  }
+  if (_config["default"].dogecoin && _config["default"].dogecoin.address) {
+    info += "\nDogecoin Donations: ".concat(_config["default"].dogecoin.address);
+  }
+  if (_config["default"].ethereum && _config["default"].ethereum.address) {
+    info += "\nEthereum Donations: ".concat(_config["default"].ethereum.address);
+  }
+  if (_config["default"].polygon && _config["default"].polygon.address) {
+    info += "\nPolygon Donations: ".concat(_config["default"].polygon.address);
+  }
+  if (_config["default"].bnb && _config["default"].bnb.address) {
+    info += "\nBNB Donations: ".concat(_config["default"].bnb.address);
+  }
+
+  // Save file
+  if (saveAsFile) saveAs(new Blob(["".concat(fileStart, "\n\n").concat(info, "\n\n").concat(file, "\n\n").concat(fileEnd)], {
+    type: 'text/plain'
+  }), "Pony Driland".concat(typeof chapter !== 'number' && !Array.isArray(chapter) ? '' : " - Chapter ".concat(typeof chapter === 'number' ? String(chapter) : chapter.join('-')), ".txt"));else return {
+    data: "".concat(info, "\n\n").concat(file),
+    mime: 'text/plain'
+  };
+};
+
+// URL Update
+var urlUpdate = exports.urlUpdate = function urlUpdate(url, title) {
+  var isPopState = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  var extra = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+  // Page Title
+  if (typeof title !== 'string' || title.length < 1) {
+    title = _config["default"].title;
+  }
+  if (url === 'ai') {
+    if (!appData.ai.using) {
+      appData.ai.using = true;
+      appData.emitter.emit('isUsingAI', true);
+    }
+  } else {
+    if (appData.ai.using) {
+      appData.ai.using = false;
+      appData.emitter.emit('isUsingAI', false);
+    }
+  }
+  var newUrl = typeof url === 'string' && !url.startsWith('/') && url !== 'read-fic' && url !== 'ai' ? "/".concat(url) : url;
+  var extraReady = '';
+  for (var item in extra) {
+    extraReady += "&".concat(item, "=").concat(extra[item]);
+  }
+  document.title = title;
+  _chapters.storyData.urlPage = newUrl;
+
+  // Google
+  if (typeof _config["default"].gtag === 'string' && _gtag["default"]) {
+    (0, _gtag["default"])('event', 'url', {
+      event_title: title,
+      event_category: 'open_url',
+      url: newUrl
+    });
+  }
+
+  // Pop State
+  if (!isPopState) {
+    if (typeof newUrl === 'string' && newUrl.length > 0) {
+      if (!_config["default"].custom_url[newUrl]) {
+        window.history.pushState({
+          pageTitle: title
+        }, '', '/?path=' + encodeURIComponent(newUrl) + extraReady);
+      } else {
+        window.history.pushState({
+          pageTitle: _config["default"].custom_url[newUrl].title
+        }, '', _config["default"].custom_url[newUrl].url + extraReady);
+      }
+    } else {
+      window.history.pushState({
+        pageTitle: title
+      }, '', '/');
+    }
+  }
+};
+var openNewAddress = function openNewAddress(data) {
+  var isPopState = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var useCustom = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  // File Path
+  var filePath = data.path;
+
+  // Prepare Custom URL
+  if (useCustom && _config["default"].custom_url[data.path]) {
+    isPopState = false;
+  }
+  if (!data || typeof filePath !== 'string' || filePath.length < 1 || !filePath.startsWith('/') || filePath.indexOf('http://') > -1 || filePath.indexOf('https://') > -1) {
+    insertMarkdownFile(_chapters.storyData.readme, null, true, true);
+  } else {
+    openMDFile(filePath);
+    if (typeof data.title === 'string' && data.title.length > 0) {
+      urlUpdate(data.path, data.title, isPopState);
+    } else {
+      urlUpdate(data.path, null, isPopState);
+    }
+  }
+};
+
+// Get Params
+var getParams = function getParams() {
+  var urlSearchParams = new URLSearchParams(document.location.search);
+  return Object.fromEntries(urlSearchParams.entries());
+};
+
+// Pop State
+new _tinyEssentials.TinyHtml(window).on('popstate', function () {
+  // Remove Fic Data
+  clearFicData();
+
+  // Get Params
+  var params = getParams();
+
+  // Load Page
+  var loadPage = function loadPage() {
+    if (_chapters.storyData.urlPage !== params.path) {
+      _chapters.storyData.urlPage = params.path;
+      if (params.path === 'read-fic') (0, _index.openChapterMenu)(params);
+      if (params.path === 'ai') return;else openNewAddress(params, true);
+    }
+  };
+
+  // Default
+  if (document.location.pathname === '/') {
+    loadPage();
+  }
+
+  // Custom
+  else {
+    // Get Data
+    var urlData = Object.entries(_config["default"].custom_url).find(function (item) {
+      return item[1].url === document.location.pathname;
+    });
+    if (urlData) {
+      params.path = urlData[0];
+      params.title = urlData[1].title;
+      loadPage();
+    }
+  }
+});
+
+// Insert Maarkdown File
+var insertMarkdownFile = function insertMarkdownFile(text) {
+  var metadata = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  var isMainPage = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+  var isHTML = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+  // Convert Data
+  var data;
+  if (!isHTML) {
+    data = marked.parse(text.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ''));
+  } else {
+    data = text;
+  }
+  data = data.replace(_tinyLib["default"].getGitUrlPath("href=\"{url}docs\\/"), 'href="javascript:void(0)" file="../').replace(_tinyLib["default"].getGitUrlPath("src=\"{url}docs\\/"), 'src="../').replace(new RegExp("src=\"https://ipfs.io/ipfs/", 'g'), 'src="https://cloudflare-ipfs.com/ipfs/');
+  var canContentList = metadata && Array.isArray(metadata.contentList) && metadata.contentList.length > 0;
+  if (canContentList) data = data.replace('{{content_list}}', '<div class="content-list-data"></div>');else data = data.replace('{{content_list}}', '');
+
+  // Markdown page ways
+  var markdownBase = $('#markdown-read');
+  var pageTypes = {
+    // Wiki
+    wiki: function wiki() {
+      // Row
+      var row = $('<div>', {
+        "class": 'wiki-page'
+      });
+
+      // Main content
+      var colMain = $('<div>');
+      colMain.append($('<h1>').text(metadata.name), data);
+
+      // Sidebar
+      var colSidebar = $('<div>', {
+        "class": 'float-end character-wikicard ms-2 mb-2'
+      });
+      var card = $('<div>', {
+        "class": 'card position-relative'
+      });
+      var cardImg = $('<img>', {
+        src: metadata.cardUrl,
+        "class": 'card-img-top',
+        alt: metadata.name
+      });
+
+      // Card body
+      var cardBody = $('<div>', {
+        "class": 'card-body'
+      }).append($('<h5>', {
+        "class": 'card-title'
+      }).text(metadata.name), $('<p>', {
+        "class": 'card-text text-muted'
+      }).text("(".concat(metadata.subName, ")")));
+
+      // Character table
+      if (Array.isArray(metadata.charTable) && metadata.charTable.length > 0) {
+        var cardBodyTable = $('<table>', {
+          "class": 'table table-hover m-0'
+        });
+        var cardBodyTbody = $('<tbody>');
+        for (var tIndex in metadata.charTable) {
+          if (typeof metadata.charTable[tIndex][1] !== 'undefined') {
+            var td = $('<td>', {
+              "class": 'bg-transparent'
+            });
+            if (typeof metadata.charTable[tIndex][1] === 'string') td.text(metadata.charTable[tIndex][1]);else if (typeof metadata.charTable[tIndex][1].text === 'string' && typeof metadata.charTable[tIndex][1].url === 'string') td.append($('<a>', {
+              "class": 'text-decoration-none',
+              target: '_blank',
+              href: !metadata.charTable[tIndex][1].isRepUrl ? metadata.charTable[tIndex][1].url : 'javascript:void(0)',
+              file: metadata.charTable[tIndex][1].isRepUrl ? "../".concat(metadata.charTable[tIndex][1].isRepUrl) : null
+            }).text(metadata.charTable[tIndex][1].text));
+            cardBodyTbody.append($('<tr>').append($('<th>', {
+              "class": 'bg-transparent',
+              scope: 'row'
+            }).text(metadata.charTable[tIndex][0]), td));
+          }
+        }
+        cardBodyTable.append(cardBodyTbody);
+        cardBody.append(cardBodyTable);
+      }
+
+      // Add card
+      card.append(cardImg, cardBody);
+      colSidebar.append(card);
+
+      // Complete
+      row.append(colSidebar, colMain);
+      markdownBase.html(row);
+    }
+  };
+
+  // Insert Data
+  markdownBase.empty();
+  if (!metadata || typeof metadata.mode !== 'string' || typeof pageTypes[metadata.mode] !== 'function') markdownBase.html(data);else pageTypes[metadata.mode]();
+
+  // Top Page
+  if (isMainPage) {
+    _tinyEssentials.TinyHtml.query('#top_page').removeClass('d-none');
+  } else {
+    _tinyEssentials.TinyHtml.query('#top_page').addClass('d-none');
+  }
+  var markdownHid = function markdownHid(text) {
+    return "tiny-wiki-".concat(encodeURIComponent(text.toLowerCase().trim().replace(/ /g, '_').replace(/\(|\)|\?|\!/g, '_')));
+  };
+  markdownBase.find("h1,h2,h3,h4,h5").each(function () {
+    $(this).attr('id', markdownHid($(this).text()));
+  });
+
+  // Content List
+  if (canContentList) $('[id="markdown-read"] .content-list-data').each(function () {
+    var tinyBase = $('<div>', {
+      "class": 'bg-black rounded-top collapse-content d-flex align-items-center'
+    });
+    // Open Button
+    var openButton = $('<h5>', {
+      "class": 'm-0 p-2 w-100'
+    });
+    openButton.text('Contents').prepend(_tinyLib["default"].icon('d-flex align-items-center fa-solid fa-list me-2 small'));
+    var collapseButton = _tinyLib["default"].bs.button('link btn-bg p-2 d-flex justify-content-center align-items-center me-2').attr('data-bs-toggle', 'collapse').attr('href', '#content-list-collapse').css({
+      height: 30,
+      width: 30,
+      'font-size': '14px'
+    }).append(_tinyLib["default"].icon('fa-solid fa-square-minus'));
+    tinyBase.append(openButton, collapseButton);
+
+    // The Ul
+    var ul = $('<ul>', {
+      "class": 'list-group mb-3 rounded-top-0 bg-black collapse show',
+      id: 'content-list-collapse'
+    });
+
+    // Insert Li
+    var insertLi = function insertLi() {
+      var tClass = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+      var text = arguments.length > 1 ? arguments[1] : undefined;
+      var isLast = arguments.length > 2 ? arguments[2] : undefined;
+      var index = arguments.length > 3 ? arguments[3] : undefined;
+      var index2 = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
+      var extraElement = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : null;
+      var li = $('<li>', {
+        "class": "".concat(tClass, " pb-0 border-0")
+      });
+      var liTarget = markdownBase.find("#".concat(markdownHid(text)));
+      var tinyText = "".concat(Number(index) + 1, ".").concat(index2 !== null ? "".concat(Number(index2), ".") : '', " ").concat(text);
+      li.append($('<a>', {
+        "class": 'btn btn-link btn-bg w-100 text-start',
+        href: liTarget.length > 0 ? "#".concat(liTarget.attr('id')) : null
+      }).text(tinyText));
+      if (extraElement) li.append(extraElement);
+      return li;
+    };
+
+    // Read data
+    var isLast = false;
+    for (var index = 0; index < metadata.contentList.length; index++) {
+      isLast = index === metadata.contentList.length - 1;
+      if (typeof metadata.contentList[index] === 'string') ul.append(insertLi('list-group-item pt-0', metadata.contentList[index], isLast, index));else if (Array.isArray(metadata.contentList[index]) && metadata.contentList[index].length > 0) {
+        var ul2 = $('<ul>', {
+          "class": 'my-0'
+        });
+        ul.append(insertLi('list-group-item py-0', metadata.contentList[index][0], null, index, null, ul2));
+        for (var index2 in metadata.contentList[index]) if (Number(index2) !== 0 && typeof metadata.contentList[index][index2] === 'string') ul2.append(insertLi("pt-0", metadata.contentList[index][index2], isLast, index, index2));
+      }
+    }
+    ul.find('> li:first').removeClass('py-0').removeClass('pt-0').addClass('pb-0');
+    ul.find('> li:last').removeClass('py-0').removeClass('pb-0').addClass('pt-0');
+    $(this).append(tinyBase, ul);
+  });
+
+  // Convert File URLs
+  $('[id="markdown-read"] a[file]').removeAttr('target').on('click', function () {
+    openMDFile($(this).attr('file'));
+  });
+
+  // Fix Image
+  $('[id="markdown-read"] img').each(function () {
+    if ($(this).parents('a').length < 1) {
+      // New Image Item
+      var src = $(this).attr('src');
+      var newImage = $('<img>', {
+        "class": 'img-fluid'
+      }).css('height', $(this).attr('height')).css('width', $(this).attr('width'));
+      $(this).replaceWith(newImage);
+
+      // Load Image FIle
+      newImage.css({
+        cursor: 'pointer',
+        opacity: '0%',
+        'pointer-events': 'none'
+      }).on('load', function () {
+        var newImg = new Image();
+        var tinyThis = $(this);
+        newImg.onload = function () {
+          tinyThis.data('image-size', {
+            width: this.width,
+            height: this.height
+          });
+          tinyThis.css({
+            opacity: '100%',
+            'pointer-events': ''
+          });
+        };
+        newImg.src = $(this).attr('src');
+      }).on('click', function () {
+        var imgSize = $(this).data('image-size');
+        var imgData = {
+          src: $(this).attr('src')
+        };
+        var imgAlt = $(this).add('alt');
+        if (imgSize) {
+          imgData.h = imgSize === null || imgSize === void 0 ? void 0 : imgSize.height;
+          imgData.w = imgSize === null || imgSize === void 0 ? void 0 : imgSize.width;
+        }
+        if (typeof imgAlt === 'string' && imgAlt.length > 0) imgData.alt = imgAlt;
+        var pswp = new _photoswipe["default"]({
+          dataSource: [imgData],
+          close: true,
+          zoom: true,
+          fullscreen: true,
+          counter: false,
+          arrowPrev: false,
+          arrowNext: false,
+          share: false,
+          padding: {
+            top: 40,
+            bottom: 40,
+            left: 100,
+            right: 100
+          }
+        });
+        pswp.on('close', function () {
+          setTimeout(function () {
+            pswp.destroy();
+          }, 5000);
+        });
+        pswp.init();
+        $(this).fadeTo('fast', 0.7, function () {
+          $(this).fadeTo('fast', 1);
+        });
+        return false;
+      }).hover(function () {
+        $(this).fadeTo('fast', 0.8);
+      }, function () {
+        $(this).fadeTo('fast', 1);
+      });
+
+      // Load Image
+      newImage.attr('src', src);
+      var newTinyPlace = $('<p>', {
+        "class": 'pswp-space mt-4'
+      });
+      newTinyPlace.insertAfter(newImage);
+    }
+  });
+};
+
+// Remove Fic Data
+var clearFicData = exports.clearFicData = function clearFicData() {
+  if (appData.ai.interval) {
+    clearInterval(appData.ai.interval);
+    appData.ai.interval = null;
+    appData.ai.secondsUsed = 0;
+  }
+  appData.ai.killIo();
+  for (var item in _chapters.storyData.sfx) {
+    if (typeof _chapters.storyData.sfx[item].hide === 'function') {
+      _chapters.storyData.sfx[item].hide(0);
+    }
+    if (_chapters.storyData.sfx[item].pizzicato && typeof _chapters.storyData.sfx[item].pizzicato.hide === 'function') {
+      _chapters.storyData.sfx[item].pizzicato.hide(0);
+    }
+  }
+  $('body').removeClass('ficMode').removeClass("fic-daycicle-morning").removeClass("fic-daycicle-evening").removeClass("fic-daycicle-night").removeClass("fic-daycicle-lateAtNight");
+  _chapters.storyData.nc.base.right.find('> #status').empty();
+  $('#fic-chapter').empty();
+  _chapters.storyData.readFic = false;
+  _chapters.storyData.chapter.html = {};
+  _chapters.storyData.chapter.line = null;
+  _chapters.storyData.chapter.nav = {};
+  _chapters.storyData.chapter.selected = 0;
+  if (_chapters.storyData.youtube.player && _chapters.storyData.youtube.checkYT() && _chapters.storyData.youtube.state === YT.PlayerState.PLAYING) {
+    _chapters.storyData.youtube.player.stopVideo();
+  }
+};
+
+// Open MD File
+var openMDFile = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(url) {
+    var isMain,
+      fileData,
+      fileLines,
+      md,
+      title,
+      metadata,
+      githubRegex,
+      key,
+      match,
+      name,
+      indices,
+      currentLevel,
+      i,
+      markdownLink,
+      _args = arguments;
+    return _regenerator().w(function (_context) {
+      while (1) switch (_context.n) {
+        case 0:
+          isMain = _args.length > 1 && _args[1] !== undefined ? _args[1] : false;
+          if (!(typeof url === 'string')) {
+            _context.n = 5;
+            break;
+          }
+          // Remove Fic Data
+          clearFicData();
+
+          // New page
+          if (!(url !== 'MAIN')) {
+            _context.n = 3;
+            break;
+          }
+          // Read Data Base
+          console.log("Opening MD file \"".concat(url, "\"..."));
+          circleLoader.start();
+
+          // Load ajax
+          _context.n = 1;
+          return fetch("".concat(url.startsWith('/') ? url : "/".concat(url)).concat(fileVersion), {
+            method: 'GET',
+            dataType: 'text'
+          }).then(function (res) {
+            return res.text();
+          })["catch"](function (err) {
+            circleLoader.close();
+            console.error(err);
+            alert(err.message);
+          });
+        case 1:
+          fileData = _context.v;
+          if (fileData) {
+            _context.n = 2;
+            break;
+          }
+          return _context.a(2);
+        case 2:
+          try {
+            // Get metadata
+            fileLines = _tinyLib["default"].mdManager.removeMetadata(fileData);
+            md = _tinyLib["default"].mdManager.extractMetadata(fileData);
+            title = md.title; // Prepare metadata (script created by ChatGPT)
+            metadata = {};
+            githubRegex = _tinyLib["default"].getGitUrlPath('{url}docs\\/');
+            for (key in md) {
+              match = key.match(/^([^_]+)(?:_(\d+))+/);
+              if (match) {
+                name = match[1];
+                indices = match[0].split('_').slice(1).map(Number);
+                if (!metadata[name]) {
+                  metadata[name] = [];
+                }
+                currentLevel = metadata[name];
+                for (i = 0; i < indices.length - 1; i++) {
+                  if (!currentLevel[indices[i]]) {
+                    currentLevel[indices[i]] = [];
+                  }
+                  currentLevel = currentLevel[indices[i]];
+                }
+                markdownLink = md[key].match(/^\[(.*?)\]\((.*?)\)$/);
+                if (markdownLink) {
+                  currentLevel[indices[indices.length - 1]] = {
+                    text: markdownLink[1],
+                    url: markdownLink[2],
+                    isRepUrl: githubRegex.test(markdownLink[2]) ? markdownLink[2].replace(githubRegex, '') : null
+                  };
+                } else {
+                  currentLevel[indices[indices.length - 1]] = md[key];
+                }
+              } else metadata[key] = md[key];
+            }
+
+            // Complete! Insert data into page
+            console.log("".concat(url.endsWith('.md') ? 'MD' : 'HTML', " File opened successfully!"));
+            insertMarkdownFile(fileLines, metadata, isMain, url.endsWith('.md') ? false : true);
+            _tinyEssentials.TinyHtml.setWinScrollTop(0);
+            circleLoader.close();
+            urlUpdate(url, title);
+          } catch (err) {
+            // Error!
+            circleLoader.close();
+            console.error(err);
+            alert(err.message);
+          }
+          _context.n = 4;
+          break;
+        case 3:
+          insertMarkdownFile(_chapters.storyData.readme, null, isMain, true);
+          urlUpdate();
+        case 4:
+          return _context.a(2);
+        case 5:
+          throw new Error('Invalid Md File Url!');
+        case 6:
+          return _context.a(2);
+      }
+    }, _callee);
+  }));
+  return function openMDFile(_x) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+// Start App
+var rootApp = exports.rootApp = new _tinyEssentials.TinyDomReadyManager();
+rootApp.onReady(function () {
+  if (typeof window.ethereum !== 'undefined') document.body.classList.add('browser-with-web3');
+  (0, _tinyEssentials.installWindowHiddenScript)();
+  vanillaPwa.install();
+  var startApp = function startApp() {
+    console.log('Starting App...');
+    _chapters.storyData.start(function (connStore, fn, readme) {
+      var tinyAiScript = (0, _aiSoftware.AiScriptStart)(connStore);
+      appData.ai.killIo = tinyAiScript.killIo;
+
+      // Custom Colors
+      $('head').append($('<style>', {
+        id: 'custom_color'
+      }).text("\n\n            .alert .close span{\n                color: ".concat(_config["default"].theme.color4, " !important;\n            }\n            \n            .alert .close, .alert .close:hover{\n                color: ").concat(_config["default"].theme.color, " !important;\n            }\n            \n            \n            .navbar-dark.bg-dark, #navTopPage {\n                background-color: ").concat(_config["default"].theme.primary, " !important;\n            }\n            \n            .navbar-dark .navbar-nav .nav-link {\n                color: ").concat(_config["default"].theme.color, " !important;\n            }\n            \n            .navbar-dark .navbar-nav .nav-link:hover {\n                color: ").concat(_config["default"].theme.color2, " !important;\n            }\n            \n            \n            #sidebar {\n                background: ").concat(_config["default"].theme.secondary, ";\n                color: ").concat(_config["default"].theme.color3, ";\n            }\n            \n            #sidebar .sidebar-header {\n                background: ").concat(_config["default"].theme.primary, ";\n                color: ").concat(_config["default"].theme.color, ";\n            }\n            \n            #sidebar ul p {\n                color: ").concat(_config["default"].theme.color, ";\n            }\n            \n            #sidebar ul li a:hover {\n                color: ").concat(_config["default"].theme.color, ";\n                background: ").concat(_config["default"].theme.primary, ";\n            }\n            \n            #sidebar ul li.active > a, #sidebar a[aria-expanded=\"true\"] {\n                color: ").concat(_config["default"].theme.color, ";\n                background: ").concat(_config["default"].theme.primary, ";\n            }\n            \n            \n            .tcat, #footer2{\n                color: ").concat(_config["default"].theme.color, " !important;\n                background-color: ").concat(_config["default"].theme.secondary, " !important;\n            }\n            \n            .tcat, #footer2 a:hover{\n                color: ").concat(_config["default"].theme.color2, " !important;\n            }\n            \n            \n            #footer, .modal.fade .modal-header, .thead, .page-footer, .comment-header{\n                color: ").concat(_config["default"].theme.color, " !important;\n                background-color: ").concat(_config["default"].theme.primary, " !important\n            }\n            \n            .page-footer a:hover, .page-footer a:hover, #sidebar a {\n                color: ").concat(_config["default"].theme.color2, " !important;\n            }\n            \n            .thead a{\n                color: ").concat(_config["default"].theme.color, " !important;\n            }\n            \n            .thead a:hover{\n                color: ").concat(_config["default"].theme.color2, " !important;\n            }\n            \n            \n            .nav-pills .nav-link.active, .nav-pills .show>.nav-link {\n                color: ").concat(_config["default"].theme.color, " !important;\n                background-color: ").concat(_config["default"].theme.primary, " !important;\n            }\n            \n            .nav-pills .show>.nav-link:hover {\n                color: ").concat(_config["default"].theme.color2, " !important;\n            }\n            \n            .page-footer a, #sidebar a {\n                color: ").concat(_config["default"].theme.color, " !important;\n            }\n            \n            \n            \n            \n            \n            .dropdown-item.active, .dropdown-item:active {\n                color: ").concat(_config["default"].theme.color, ";\n                background-color: ").concat(_config["default"].theme.secondary, "; \n            }\n            \n            .nav-pills .nav-link.active,\n            .nav-pills .show > .nav-link {\n                color: ").concat(_config["default"].theme.color, ";\n                background-color: ").concat(_config["default"].theme.secondary, "; \n            }\n            \n            ")));
+
+      // Readme
+      _chapters.storyData.readme = readme;
+
+      // Read Updater
+      var isNewValue = '';
+      _chapters.storyData.globalIsNew = 0;
+      for (var chapter in _chapters.storyData.isNew) {
+        if (_chapters.storyData.isNew[chapter] === 2 && _chapters.storyData.isNew[chapter] > _chapters.storyData.globalIsNew) {
+          _chapters.storyData.globalIsNew = 2;
+          isNewValue = $('<span>', {
+            "class": 'badge badge-primary ms-2'
+          }).text('NEW');
+        } else if (_chapters.storyData.isNew[chapter] === 1 && _chapters.storyData.isNew[chapter] > _chapters.storyData.globalIsNew) {
+          _chapters.storyData.globalIsNew = 1;
+          isNewValue = $('<span>', {
+            "class": 'badge badge-secondary ms-2'
+          }).text('UPDATE');
+        }
+      }
+
+      // Year
+      var yearNow = moment().year();
+      var copyrightText = null;
+      if (yearNow === _config["default"].year) {
+        copyrightText = "\xA9 ".concat(_config["default"].year, " ").concat(_config["default"].title, " | ");
+      } else {
+        copyrightText = "\xA9 ".concat(_config["default"].year, " - ").concat(yearNow, " ").concat(_config["default"].title, " | ");
+      }
+
+      // Dropdown
+      var addDropdown = function addDropdown(newItem) {
+        for (var valueName in newItem.dropdowns) {
+          var dataList = newItem.dbBase[valueName];
+          var tinyHtml = newItem.dropdowns[valueName];
+          _tinyLib["default"].bs.dropdownClick(tinyHtml, dataList, function (li, element, item) {
+            // Create Dropdown
+            var aItem = $('<a>', {
+              "class": 'dropdown-item',
+              id: item.id,
+              href: item.href
+            });
+            li.append(aItem);
+
+            // Add text
+            aItem.text(item.text);
+            if (item.icon) aItem.prepend(_tinyLib["default"].icon("".concat(item.icon, " me-2")));
+
+            // File
+            if (typeof item.file === 'string') {
+              aItem.attr('href', 'javascript:void(0)');
+              aItem.attr('file', item.file);
+            }
+
+            // Target
+            if (item.href && item.href !== 'javascript:void(0)') aItem.attr('target', '_blank');
+
+            // Is web3
+            if (item.web3Element) li.addClass('web3-element');
+
+            // Click
+            if (typeof item.file === 'string') li.on('click', function () {
+              openMDFile(aItem.attr('file'));
+            });
+            if (item.click) li.on('click', item.click);
+            li.on('click', function () {
+              element.hide();
+              offCanvasNavCfg.hide();
+            });
+          });
+        }
+      };
+
+      // Insert Navbars
+      var navbarItems = function navbarItems() {
+        // Base Crypto Modal
+        var offCanvasEl = null;
+        var baseCryptoModal = function baseCryptoModal(crypto_value, title) {
+          return function () {
+            var qrcodeCanvas = $('<canvas>');
+            QRCode.toCanvas(qrcodeCanvas[0], _config["default"][crypto_value].address, function (error) {
+              if (error) {
+                alert(error);
+              } else {
+                // Prepare Text
+                _tinyLib["default"].modal({
+                  title: title + ' Network Donation',
+                  id: 'busd_request',
+                  dialog: 'modal-lg',
+                  body: $('<center>').append($('<h4>', {
+                    "class": 'mb-5'
+                  }).text('Please enter the address correctly! Any type issue will be permanent loss of your funds!'), $('<a>', {
+                    target: '_blank',
+                    href: _config["default"][crypto_value].explorer + _config["default"][crypto_value].address
+                  }).text('Blockchain Explorer'), $('<br>'), $('<span>').text(_config["default"][crypto_value].address), $('<div>', {
+                    "class": 'mt-3'
+                  }).append(qrcodeCanvas)),
+                  footer: []
+                });
+              }
+            });
+
+            // Complete
+            return false;
+          };
+        };
+
+        // Base
+        var newItem = {
+          dbBase: {}
+        };
+        newItem.dbBase.donations = [];
+        newItem.dbBase.information = [];
+        newItem.dbBase.characters = [];
+        newItem.setOffCanvas = function (newOffCanvas) {
+          offCanvasEl = newOffCanvas;
+        };
+
+        // Derpibooru
+        newItem.dbBase.information.push({
+          href: "https://derpibooru.org/tags/".concat(_config["default"].derpibooru_tag),
+          id: 'derpibooru-page',
+          text: 'Derpibooru',
+          icon: 'fa-solid fa-paintbrush'
+        });
+
+        // Tantabus
+        newItem.dbBase.information.push({
+          href: "https://tantabus.ai/tags/".concat(_config["default"].derpibooru_tag),
+          id: 'tantabus-page',
+          text: 'Tantabus',
+          icon: 'fa-solid fa-paintbrush'
+        });
+
+        // Tiny Tips
+        newItem.dbBase.information.push({
+          href: "javascript:void(0)",
+          id: 'information-menu',
+          text: 'Museum',
+          icon: 'fa-solid fa-building-columns',
+          click: function click() {
+            return openMDFile('pages/museum.md');
+          }
+        });
+        newItem.dbBase.information.push({
+          href: "javascript:void(0)",
+          id: 'tiny-ai-writer-tips',
+          text: 'AI Tips for human artists',
+          icon: 'fa-solid fa-circle-info',
+          click: function click() {
+            return openMDFile('pages/artistTips.md');
+          }
+        });
+        newItem.dbBase.information.push({
+          href: "javascript:void(0)",
+          id: 'ai-fic-template',
+          text: 'Official AI Models',
+          icon: 'fa-solid fa-toolbox',
+          click: function click() {
+            return openMDFile('pages/ai-templates/ai-models.md');
+          }
+        });
+
+        // Patreon
+        if (_config["default"].patreon) {
+          newItem.dbBase.donations.push({
+            href: "https://patreon.com/".concat(_config["default"].patreon),
+            id: 'patreon-url',
+            text: 'Patreon',
+            icon: 'fa-brands fa-patreon'
+          });
+        }
+
+        // Kofi
+        if (_config["default"].kofi) {
+          newItem.dbBase.donations.push({
+            href: "https://ko-fi.com/".concat(_config["default"].kofi),
+            id: 'kofi-url',
+            text: 'Ko-Fi',
+            icon: 'fa-solid fa-mug-hot'
+          });
+        }
+
+        // Bitcoin
+        if (_config["default"].bitcoin && _config["default"].bitcoin.address && _config["default"].bitcoin.explorer) {
+          newItem.dbBase.donations.push({
+            href: _config["default"].bitcoin.explorer + _config["default"].bitcoin.address,
+            id: 'bitcoin-wallet',
+            text: 'Bitcoin',
+            icon: 'fa-brands fa-bitcoin',
+            click: baseCryptoModal('bitcoin', 'Bitcoin')
+          });
+        }
+
+        // Dogecoin
+        if (_config["default"].dogecoin && _config["default"].dogecoin.address && _config["default"].dogecoin.explorer) {
+          newItem.dbBase.donations.push({
+            href: _config["default"].dogecoin.explorer + _config["default"].dogecoin.address,
+            id: 'dogecoin-wallet',
+            text: 'Dogecoin',
+            icon: 'cf cf-doge',
+            click: baseCryptoModal('dogecoin', 'Dogecoin')
+          });
+        }
+
+        // Ethereum
+        if (_config["default"].ethereum && _config["default"].ethereum.address && _config["default"].ethereum.explorer) {
+          newItem.dbBase.donations.push({
+            href: _config["default"].ethereum.explorer + _config["default"].ethereum.address,
+            id: 'ethereum-wallet',
+            text: 'Ethereum',
+            icon: 'fa-brands fa-ethereum',
+            web3Element: true,
+            click: baseCryptoModal('ethereum', 'Ethereum')
+          });
+        }
+
+        // Polygon
+        if (_config["default"].polygon && _config["default"].polygon.address && _config["default"].polygon.explorer) {
+          newItem.dbBase.donations.push({
+            href: _config["default"].polygon.explorer + _config["default"].polygon.address,
+            id: 'polygon-wallet',
+            text: 'Polygon',
+            icon: 'cf cf-matic',
+            web3Element: true,
+            click: baseCryptoModal('polygon', 'Polygon')
+          });
+        }
+
+        // BNB
+        if (_config["default"].bnb && _config["default"].bnb.address && _config["default"].bnb.explorer) {
+          newItem.dbBase.donations.push({
+            href: _config["default"].bnb.explorer + _config["default"].bnb.address,
+            id: 'bnb-wallet',
+            text: 'BNB',
+            icon: 'cf cf-bnb',
+            web3Element: true,
+            click: baseCryptoModal('bnb', 'BNB')
+          });
+        }
+
+        // Crypto Wallet
+        if (_config["default"].nftDomain && _config["default"].nftDomain.url) {
+          newItem.dbBase.donations.push({
+            href: _config["default"].nftDomain.url.replace('{domain}', _config["default"].nftDomain.domainWallet),
+            id: 'crypto-wallet',
+            text: 'More crypto wallets',
+            web3Element: true,
+            icon: 'fas fa-wallet'
+          });
+        }
+
+        // Characters
+        newItem.dbBase.characters.push({
+          file: '/data/characters/rayane/README.md',
+          text: 'Rayane (Page WIP)'
+        });
+        newItem.dbBase.characters.push({
+          file: '/data/characters/james/README.md',
+          text: 'James (Character WIP)'
+        });
+        newItem.dbBase.characters.push({
+          file: '/data/characters/rainbow-queen/README.md',
+          text: 'Rainbow Queen'
+        });
+        newItem.dbBase.characters.push({
+          file: '/data/characters/princess-ariella/README.md',
+          text: 'Princess Ariella (Page WIP)'
+        });
+        newItem.dbBase.characters.push({
+          file: '/data/characters/amy/README.md',
+          text: 'Amy (Page WIP)'
+        });
+        newItem.dbBase.characters.push({
+          file: '/data/characters/layla/README.md',
+          text: 'Layla (Page WIP)'
+        });
+        newItem.dbBase.characters.push({
+          file: '/data/characters/prisma/README.md',
+          text: 'Prisma (Character WIP)'
+        });
+        newItem.dbBase.characters.push({
+          file: '/data/characters/aniya/README.md',
+          text: 'Aniya (Character WIP)'
+        });
+        newItem.dbBase.characters.push({
+          file: '/data/characters/blue-screen/README.md',
+          text: 'Blue Screen (Page WIP)'
+        });
+        newItem.dbBase.characters.push({
+          file: '/data/characters/whistler/README.md',
+          text: 'Whistler (Character WIP)'
+        });
+
+        // AI Login
+        var aiLogin = {
+          base: $('<li>', {
+            "class": 'nav-item font-weight-bold'
+          }),
+          secondsUsed: 0,
+          title: '',
+          updateTitle: function updateTitle() {
+            if (aiLogin.button) {
+              var title = "".concat(aiLogin.title).concat(aiLogin.secondsUsed > 0 ? " - ".concat((0, _tinyEssentials.formatDayTimer)(aiLogin.secondsUsed)) : '');
+              aiLogin.button.removeAttr('title');
+              aiLogin.button.attr('data-bs-original-title', title);
+            }
+          }
+        };
+        tinyAiScript.setAiLogin(aiLogin);
+        aiLogin.button = _tinyLib["default"].bs.button({
+          id: 'ai-login',
+          dsBtn: true,
+          "class": 'nav-link'
+        }).prepend(_tinyLib["default"].icon('fa-solid fa-robot me-2'));
+        tinyAiScript.checkTitle();
+        aiLogin.base.prepend(aiLogin.button);
+        aiLogin.button.on('click', function () {
+          tinyAiScript.login(this);
+          return false;
+        });
+
+        // Nav Items
+        newItem.dropdowns = {};
+        newItem.dropdowns.information = $('<li>', {
+          "class": 'nav-item dropdown',
+          id: 'information-menu'
+        }).prepend(_tinyLib["default"].bs.button({
+          dsBtn: true,
+          "class": 'nav-link dropdown-toggle'
+        }).text('Information'));
+        // Donations Button
+        newItem.dropdowns.donations = $('<li>', {
+          "class": 'nav-item dropdown',
+          id: 'donations-menu'
+        }).prepend(_tinyLib["default"].bs.button({
+          dsBtn: true,
+          "class": 'nav-link dropdown-toggle'
+        }).text('Donations'));
+        // Characters
+        newItem.dropdowns.characters = $('<li>', {
+          "class": 'nav-item dropdown',
+          id: 'characters-menu'
+        }).prepend(_tinyLib["default"].bs.button({
+          dsBtn: true,
+          "class": 'nav-link dropdown-toggle'
+        }).text('Characters'));
+        newItem.left = [
+        // Homepage
+        $('<li>', {
+          "class": 'nav-item'
+        }).prepend($('<a>', {
+          "class": 'nav-link',
+          href: '/',
+          id: 'homepage'
+        }).text('Home').prepend(_tinyLib["default"].icon('fas fa-home me-2')).on('click', function () {
+          openMDFile('MAIN', true);
+          if (offCanvasEl) offCanvasEl.hide();
+          return false;
+        })),
+        // Discord Server
+        $('<li>', {
+          "class": 'nav-item'
+        }).prepend($('<a>', {
+          "class": 'nav-link',
+          target: '_blank',
+          href: "https://discord.gg/".concat(_config["default"].discordInvite),
+          id: 'discord-server'
+        }).text('Discord').prepend(_tinyLib["default"].icon('fab fa-discord me-2')).on('click', function () {
+          if (offCanvasEl) offCanvasEl.hide();
+        })),
+        // Blog
+        $('<li>', {
+          "class": 'nav-item'
+        }).prepend($('<a>', {
+          "class": 'nav-link',
+          target: '_blank',
+          href: _config["default"].blog_url,
+          id: 'blog-url'
+        }).text('Blog').prepend(_tinyLib["default"].icon('fa-solid fa-rss me-2')).on('click', function () {
+          if (offCanvasEl) offCanvasEl.hide();
+        })),
+        // AI
+        $('<li>', {
+          "class": 'nav-item nav-ai'
+        }).prepend($('<a>', {
+          "class": 'nav-link',
+          href: '/?path=ai',
+          id: 'ai-access-page'
+        }).text('AI Page').prepend(_tinyLib["default"].icon('fa-solid fa-server me-2')).on('click', function () {
+          tinyAiScript.open();
+          if (offCanvasEl) offCanvasEl.hide();
+          return false;
+        })), newItem.dropdowns.information, newItem.dropdowns.donations, newItem.dropdowns.characters];
+        newItem.right = [
+        // Status Place
+        $('<span>', {
+          id: 'status'
+        }),
+        // Chapter Name
+        $('<li>', {
+          id: 'fic-chapter',
+          "class": 'nav-item nav-link'
+        }),
+        // Login
+        aiLogin.base,
+        // Read Fic
+        $('<li>', {
+          "class": 'nav-item font-weight-bold'
+        }).prepend($('<a>', {
+          id: 'fic-start',
+          "class": 'nav-link',
+          href: '/?path=read-fic'
+        }).text('Read Fic').append(isNewValue).prepend(_tinyLib["default"].icon('fab fa-readme me-2'))).on('click', function () {
+          $('#top_page').addClass('d-none');
+          (0, _index.openChapterMenu)();
+          if (offCanvasEl) offCanvasEl.hide();
+          return false;
+        })];
+        aiLogin.button.tooltip();
+        return newItem;
+      };
+
+      // Navbar items
+      var navbarData = navbarItems();
+      var offCanvasBase = $('<ul>', {
+        "class": 'list-group list-group-flush'
+      });
+      var navbarOffCanvas = _tinyLib["default"].bs.offcanvas('end d-lg-none', 'offcanvasNavbar', 'Pony Driland', offCanvasBase);
+      var tinyCollapse1 = _tinyLib["default"].bs.navbar.collapse('left', 'small mdMenu', null);
+      var tinyCollapse2 = _tinyLib["default"].bs.navbar.collapse('right', 'small mdMenu', 'fic-nav');
+
+      // Insert Navbar
+      $('body').prepend(
+      // Navbar
+      navbarOffCanvas, _tinyLib["default"].bs.navbar.root('md-navbar', 'dark', true).append(
+      // Title
+      _tinyLib["default"].bs.navbar.title(_config["default"].title, '/').on('click', function () {
+        openMDFile('MAIN', true);
+        return false;
+      }),
+      // Offcanvas button
+      _tinyLib["default"].bs.button({
+        dsBtn: true,
+        "class": 'navbar-toggler',
+        toggle: 'offcanvas',
+        target: '#offcanvasNavbar'
+      }).append($('<span>', {
+        "class": 'navbar-toggler-icon'
+      })),
+      // Collapse
+      tinyCollapse1, tinyCollapse2));
+      _chapters.storyData.nc = {
+        base: {},
+        item: {}
+      };
+      _chapters.storyData.nc.item.left = tinyCollapse1.find('> ul');
+      _chapters.storyData.nc.item.right = tinyCollapse2.find('> ul');
+      var offCanvasNavCfg = new bootstrap.Offcanvas(navbarOffCanvas.get(0));
+      addDropdown(navbarData);
+      navbarData.setOffCanvas(offCanvasNavCfg);
+      var checkWindowSize = function checkWindowSize() {
+        if (window.matchMedia('(min-width: 992px)').matches) {
+          _chapters.storyData.nc.base.left = _chapters.storyData.nc.item.left;
+          _chapters.storyData.nc.base.right = _chapters.storyData.nc.item.right;
+          _chapters.storyData.nc.item.left.append(navbarData.left);
+          _chapters.storyData.nc.item.right.append(navbarData.right);
+        } else {
+          _chapters.storyData.nc.base.left = offCanvasBase;
+          _chapters.storyData.nc.base.right = offCanvasBase;
+          offCanvasBase.append(navbarData.left, navbarData.right);
+        }
+      };
+      window.addEventListener('resize', checkWindowSize);
+      checkWindowSize();
+
+      // Insert Readme
+      $('#app').append(_tinyLib["default"].bs.container('markdown-read'));
+
+      // Footer Base
+      var tinyFooter = {
+        1: [],
+        2: []
+      };
+
+      // Footer 1
+
+      // OpenSea
+      if (_config["default"].opensea) {
+        tinyFooter[1].push($('<li>').append($('<a>', {
+          target: '_blank',
+          href: "https://opensea.io/collection/".concat(_config["default"].opensea)
+        }).text('OpenSea').prepend(_tinyLib["default"].icon('fab fa-ethereum me-2'))));
+      }
+
+      // CID32
+      if (_chapters.storyData.cid32) {
+        tinyFooter[1].push($('<li>').append($('<a>', {
+          href: "https://".concat(_chapters.storyData.cid32, ".ipfs.dweb.link/")
+        }).text('IPFS ' + _config["default"].nftDomain.name).prepend(_tinyLib["default"].icon('fas fa-wifi me-2'))));
+      }
+
+      // Mastodon
+      if (_config["default"].mastodon) {
+        tinyFooter[1].push($('<li>').prepend($('<a>', {
+          rel: 'me',
+          target: '_blank',
+          href: "https://".concat(_config["default"].mastodon.domain, "/@").concat(_config["default"].mastodon.username)
+        }).text('Mastodon').prepend(_tinyLib["default"].icon('fa-brands fa-mastodon me-2'))));
+      }
+
+      // Discord Invite
+      if (_config["default"].discordInvite) {
+        tinyFooter[1].push($('<li>').append($('<a>', {
+          target: '_blank',
+          href: "https://discord.gg/".concat(_config["default"].discordInvite)
+        }).text('Discord Server').prepend(_tinyLib["default"].icon('fab fa-discord me-2'))));
+      }
+
+      // Mirror
+      if (Array.isArray(_config["default"].mirror) && _config["default"].mirror.indexOf(location.host) > -1 || !Array.isArray(_config["default"].mirror) || _config["default"].mirror.length < 1) {
+        tinyFooter[1].push($('<li>').append($('<a>', {
+          target: '_blank',
+          href: "https://".concat(_config["default"].domain)
+        }).text('Website').prepend(_tinyLib["default"].icon('fa-solid fa-pager me-2'))));
+      } else {
+        var _ref2;
+        tinyFooter[1].push($('<li>').append($('<a>', {
+          target: '_blank',
+          href: "https://".concat(_config["default"].mirror[Math.floor((_ref2 = Math.random() * (_config["default"] === null || _config["default"] === void 0 ? void 0 : _config["default"].mirror.length)) !== null && _ref2 !== void 0 ? _ref2 : 0)])
+        }).text('Mirror').prepend(_tinyLib["default"].icon('fa-solid fa-pager me-2'))));
+      }
+
+      // Footer 2
+      if (_config["default"].nftDomain) {
+        tinyFooter[2].push($('<li>').append($('<a>', {
+          target: '_blank',
+          href: _config["default"].nftDomain.url.replace('{domain}', _config["default"].nftDomain.valueURL)
+        }).text(_config["default"].nftDomain.name).prepend(_tinyLib["default"].icon('fas fa-marker me-2'))));
+      }
+      if (_config["default"].github) {
+        tinyFooter[2].push($('<li>').append($('<a>', {
+          target: '_blank',
+          href: "https://github.com/".concat(_config["default"].github.account, "/").concat(_config["default"].github.repository)
+        }).text('Github').prepend(_tinyLib["default"].icon('fab fa-github me-2'))));
+      }
+      tinyFooter[2].push($('<li>').append($('<a>', {
+        target: '_blank',
+        href: 'mailto:' + _config["default"].contact
+      }).text('Contact').prepend(_tinyLib["default"].icon('fas fa-envelope me-2'))));
+      tinyFooter[2].push($('<li>').prepend($('<a>', _defineProperty(_defineProperty({
+        href: '/?path=%2FLICENSE.md&title=License'
+      }, "href", '/?path=%2FLICENSE.md&title=License'), "id", 'license')).text('License').prepend(_tinyLib["default"].icon('fas fa-copyright me-2'))).on('click', function () {
+        openMDFile('/LICENSE.md');
+        return false;
+      }));
+
+      // Insert Footer
+      $('body').append($('<footer>', {
+        "class": 'page-footer font-small pt-4 clearfix'
+      }).append(
+      // Base
+      $('<div>', {
+        "class": 'container-fluid text-center text-md-left'
+      }).append($('<div>', {
+        "class": 'row'
+      }).append(
+      // Logo
+      $('<div>', {
+        "class": 'col-md-6 mt-md-0 mt-3'
+      }).append($('<center>').append($('<img>', {
+        "class": 'img-fluid',
+        src: '/img/logo.png'
+      }), $('<br/>'))),
+      // Links 1
+      $('<div>', {
+        "class": 'col-md-3 mb-md-0 mb-3'
+      }).append($('<h5>').text('Links'), $('<ul>', {
+        "class": 'list-unstyled'
+      }).append(tinyFooter[1])),
+      // Links 2
+      $('<div>', {
+        "class": 'col-md-3 mb-md-0 mb-3'
+      }).append($('<h5>').text('Links'), $('<ul>', {
+        "class": 'list-unstyled'
+      }).append(tinyFooter[2])))),
+      // Copyright
+      $('<div>', {
+        id: 'footer2',
+        "class": 'footer-copyright text-center py-3 bg-secondary text-white'
+      }).text(copyrightText).append($('<a>', {
+        target: '_blank',
+        href: _config["default"].creator_url
+      }).text(_config["default"].creator), '.')));
+
+      // Carousel
+      var indicators = $('body > #root #carouselHomepage .carousel-indicators');
+      var inner = $('body > #root #carouselHomepage .carousel-inner');
+      var slides = [{
+        img: './img/homepage/banner/pony_driland.jpg',
+        title: 'Pony Driland',
+        text: 'Discover a science fiction story mixed with horror, mystery, and adventure. A mysterious dimension has just been discovered!'
+      }, {
+        img: './img/homepage/banner/discord.jpg',
+        title: 'Discord Server',
+        text: '<a href="https://discord.gg/sSkysVtj7y" target="_blank">Join the Discord official server to see real-time updates.</a>'
+      }];
+
+      // Insert slides
+      slides.forEach(function (slide, index) {
+        // Options
+        $('<li>', {
+          'data-bs-target': '#carouselHomepage',
+          'data-bs-slide-to': index,
+          "class": index === 0 ? 'active' : ''
+        }).appendTo(indicators);
+        var item = $('<div>', {
+          "class": 'carousel-item' + (index === 0 ? ' active' : '')
+        }).appendTo(inner);
+
+        // Image
+        $('<div>', {
+          "class": 'img',
+          css: {
+            'background-image': 'url(' + slide.img + ')'
+          }
+        }).appendTo(item);
+
+        // Text
+        var caption = $('<div>', {
+          "class": 'carousel-caption'
+        }).appendTo(item);
+        $('<h5>', {
+          "class": 'px-5',
+          text: slide.title
+        }).appendTo(caption);
+        $('<p>', {
+          "class": 'px-5'
+        }).html(slide.text).appendTo(caption);
+      });
+
+      // Start Readme
+      var params = getParams();
+      if (params.path === 'read-fic') (0, _index.openChapterMenu)(params);else if (params.path === 'ai') tinyAiScript.open();else openNewAddress(params, true, true);
+
+      // Final part
+      fn();
+
+      // First Time
+      if (!tinyLs.getItem('firstTime')) {
+        tinyLs.setItem('firstTime', true);
+        alert("If this is your first time visiting the website, remember that you can navigate using the navbar at the top of the page. " + "To read the fic, just click on the \"Read Fic\" link located in the top-right corner of the navbar. " + "The same navbar also gives you access to fic-related tools like bookmarks and story progress tracking." + "\n\nDue to restrictions from some countries, the website is required to track your country of origin to restrict some resources.", 'Welcome to Pony Driland!');
+      }
+    });
+  };
+  startApp();
+});
+rootApp.init();
+
+},{"./ai/aiSoftware.mjs":188,"./chapter_manager/index.mjs":194,"./chapters/characters.mjs":198,"./chapters/config.mjs":199,"./chapters/counter.mjs":200,"./chapters/sound.mjs":201,"./files/chapters.mjs":202,"./files/tinyLib.mjs":203,"./gtag.mjs":204,"./pwa/installer.mjs":205,"events":84,"photoswipe":95,"tiny-essentials":161}]},{},[206]);

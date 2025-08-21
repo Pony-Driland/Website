@@ -18,10 +18,6 @@ global.window.moment = moment;
 // var buffer = require('buffer');
 // global.window.buffer = buffer;
 
-// Events
-var EventEmitter = require('events')
-global.window.EventEmitter = EventEmitter;
-
 // Marked.js
 var marked = require('marked');
 global.window.marked = marked;
