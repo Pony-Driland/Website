@@ -41,7 +41,7 @@
         "exifreader": "^4.31.1",
         "express": "^5.1.0",
         "file-saver": "^2.0.5",
-        "for-promise": "^2.0.4",
+        "for-promise": "^2.0.5",
         "glob": "^11.0.3",
         "ini": "^5.0.0",
         "jquery": "^3.7.1",
