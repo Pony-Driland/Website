@@ -720,10 +720,13 @@ const openMDFile = async (url, isMain = false) => {
       Loader.start();
 
       // Load ajax
-      const fileData = await fetch(`${url.startsWith('/') ? url : `/${url}`}${fileVersion}`, {
-        method: 'GET',
-        dataType: 'text',
-      })
+      const fileData = await fetch(
+        `${url.startsWith('/') ? url : `/${url}`}${window.fileVersion ?? ''}`,
+        {
+          method: 'GET',
+          dataType: 'text',
+        },
+      )
         .then((res) => res.text())
         .catch((err) => {
           Loader.close();

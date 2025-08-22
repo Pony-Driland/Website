@@ -123,7 +123,7 @@ getDirectories(folderPath, (err, files) => {
         <!-- Script -->
         <script src="../bundle.js"></script>
         <script src="../bundle2.js"></script>
-        <script src="../js/files/redirect.js"></script>
+        <script src="../redirect.js"></script>
     
     </head>
     <body><div id="newURL" href="/?path=%2Fdata%2Fcharacters%2F${file.name}%2FREADME.md&title=${encodeURIComponent(jsonFile.title)}"></div></body>
