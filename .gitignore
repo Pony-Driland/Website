@@ -14,7 +14,7 @@ lerna-debug.log*
 
 *.kra~
 *-autosave.kra
-temp_notes.md
+/temp/*
 
 ponydriland_tiny_chat
 tiny-chat_data

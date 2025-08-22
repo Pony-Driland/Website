@@ -2,14 +2,13 @@
 const path = require('path');
 const fs = require('fs');
 const { glob } = require("glob");
-const { writeJsonFile } = require('tiny-essentials');
+const { writeJsonFile, ensureDirectory } = require('tiny-essentials');
 
 const getDirectories = (src, callback) => glob(src + '/**/*')
     .then((data) => callback(null, data)).catch((err) => callback(err));
 
 // Get Fic Data
 const ficData = require('../publicFolder')();
-console.log(ficData);
 
 const selectedType = 'none';
 
@@ -32,8 +31,9 @@ getDirectories(folderPath, (err, files) => {
                 console.group(file.base);
 
                 // Get JSON
-                const jsonFile = require(path.join(file.dir, './' + file.name + '.json'));
-                console.log('JSON File', jsonFile);
+                const jsonFilePath = path.join(file.dir, './' + file.name + '.json');
+                const jsonFile = require(jsonFilePath);
+                console.log('JSON File', jsonFilePath);
 
                 const imgUrl = selectedType === 'ipfs' && ficData.config.ipfs.files[jsonFile.image] ? ficData.config.ipfs.host.replace('{cid}', ficData.config.ipfs.files[jsonFile.image]) :
                     selectedType === 'ario' && ficData.config.ario.files[jsonFile.image] ? ficData.config.ario.host.replace('{cid}', ficData.config.ario.files[jsonFile.image]) :
@@ -49,7 +49,9 @@ getDirectories(folderPath, (err, files) => {
                     jsonFile.color
                 ) {
                     console.log('Creating JSON oEmbed...');
-                    writeJsonFile(path.join(ficData.path, './oEmbed/characters/' + file.name + '.json'), {
+                    ensureDirectory(path.join(ficData.dist, './oEmbed'));
+                    ensureDirectory(path.join(ficData.dist, './oEmbed/characters'));
+                    writeJsonFile(path.join(ficData.dist, './oEmbed/characters/' + file.name + '.json'), {
                         author_name: jsonFile.author_name,
                         url: imgUrl,
                         cache_age: 7200,
@@ -65,7 +67,8 @@ getDirectories(folderPath, (err, files) => {
 
                     // Create HTML File
                     console.log('Creating HTML...');
-                    fs.writeFileSync(path.join(ficData.path, './characters/' + file.name + '.html'), `
+                    ensureDirectory(path.join(ficData.dist, './characters'));
+                    fs.writeFileSync(path.join(ficData.dist, './characters/' + file.name + '.html'), `
 <!doctype html>
 <html lang="en">
     <head>
@@ -120,7 +123,7 @@ getDirectories(folderPath, (err, files) => {
         <!-- Script -->
         <script src="../bundle.js"></script>
         <script src="../bundle2.js"></script>
-        <script src="../js/files/redirect.js"></script>
+        <script src="../redirect.js"></script>
     
     </head>
     <body><div id="newURL" href="/?path=%2Fdata%2Fcharacters%2F${file.name}%2FREADME.md&title=${encodeURIComponent(jsonFile.title)}"></div></body>
@@ -152,7 +155,9 @@ getDirectories(folderPath, (err, files) => {
 
         // Custom List
         console.log('Creating JS...');
-        fs.writeFileSync(path.join(ficData.path, './chapters/characters.js'), `
+        fs.writeFileSync(path.join(ficData.src, './chapters/characters.mjs'), `
+import storyCfg from './config.mjs';
+
 if(!storyCfg.custom_url) { storyCfg.custom_url = {}; }
 storyCfg.characters = ${JSON.stringify(customURLs, null, 2)};
 for(const item in storyCfg.characters) {

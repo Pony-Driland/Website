@@ -2,7 +2,7 @@
 <h1>Pony Driland</h1>
 
 <center>
-<img src="https://github.com/Pony-Driland/Website/blob/main/docs/img/external/banner1.jpg?raw=true">
+<img src="./public/img/external/banner1.jpg">
 </center>
 <br/><br/>
 <p>

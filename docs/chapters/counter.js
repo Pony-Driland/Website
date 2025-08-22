@@ -1,1 +1,0 @@
-storyCfg.chapters = 3;
