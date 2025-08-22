@@ -12,16 +12,16 @@ Don't forget to give credits if you want to use my fanfic website building syste
 
 /build/characters/data
 
-/docs/chapters/en (Or whatever language you have set.)
+/public/chapters/en (Or whatever language you have set.)
 
-/docs/chapters/config.js
+/public/chapters/config.js
 
-/docs/img
+/public/img
 
-/docs/404.html
+/public/404.html
 
-/docs/ipfs-404.html
+/public/ipfs-404.html
 
-/docs/manifest.json
+/public/manifest.json
 
-/docs/README.md
+/public/README.md

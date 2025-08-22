@@ -21,22 +21,24 @@ const path = require('path');
 // Folders Path
 const keybaseFolder = 'Pony-Driland-Keybase';
 const rootPath = path.join(__dirname, '../..');
-const websitePath = path.join(rootPath, './docs');
+const websitePath = [
+    path.join(rootPath, './public'),
+    path.join(rootPath, './dist/public')
+];
 const destPath = path.join(__dirname, '../../../' + keybaseFolder);
 
 // Action
-console.log(`Copy Dir "${websitePath}" ==> "${destPath}"`);
-copydir(websitePath, destPath, {
-    utimes: true, // keep add time and modify time
-    mode: true, // keep file mode
-    cover: true // cover file when exists, default is true
-}, function (err) {
-
-    // Success
-    if (!err) {
-
+const indexExec = (index) => new Promise((resolve, reject) => {
+    console.log(`Copy Dir "${websitePath[index]}" ==> "${destPath}"`);
+    copydir(websitePath[index], destPath, {
+        utimes: true, // keep add time and modify time
+        mode: true, // keep file mode
+        cover: true // cover file when exists, default is true
+    }, (err) => {
+        if (err) return reject(err);
         // Complete
         console.log('Copy Complete!');
+        resolve(undefined);
         /* console.log('starting child 1');
 
         // Git Push
@@ -77,9 +79,9 @@ copydir(websitePath, destPath, {
 
         });
         */
-    }
-
-    // Error
-    else { console.error(err); }
-
+    });
 });
+
+const promises = [];
+for (const index in websitePath) promises.push(indexExec(index));
+Promise.all(promises);
