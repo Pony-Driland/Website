@@ -22,7 +22,7 @@ import gtag from './gtag.mjs';
 
 import '../build/bundle/bootstrap-paginator.mjs';
 
-import './pwa/installer.mjs';
+import { vanillaPwa } from './pwa/installer.mjs';
 import './chapters/sound.mjs';
 import './chapters/counter.mjs';
 import './chapters/characters.mjs';
